@@ -1,101 +1,101 @@
 ---
-title: A System Center Operations Manager értékelése az Azure Monitor segítségével
-description: A System Center Operations Manager állapotfelmérési megoldássegítségével rendszeres időközönként felmérheti a környezetek kockázatát és állapotát.
+title: System Center Operations Manager értékelése Azure Monitor
+description: A System Center Operations Manager Health Check megoldással rendszeres időközönként felmérhetővé teheti a környezetek kockázatait és állapotát.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055412"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
-![System Center Operations Manager állapotellenőrzés szimbóluma](./media/scom-assessment/scom-assessment-symbol.png)
+![System Center Operations Manager Health Check szimbólum](./media/scom-assessment/scom-assessment-symbol.png)
 
-A System Center Operations Manager állapot-ellenőrzési megoldással rendszeres időközönként felmérheti a System Center Operations Manager felügyeleti csoportjának kockázatát és állapotát. Ez a cikk segít a megoldás telepítésében, konfigurálásaés használatában, így korrekciós műveleteket tehet le a lehetséges problémák ra.
+A System Center Operations Manager Health Check megoldással rendszeres időközönként felmérhetővé teheti a System Center Operations Manager felügyeleti csoport kockázatait és állapotát. Ebből a cikkből megtudhatja, hogyan telepítheti, konfigurálhatja és használhatja a megoldást úgy, hogy a lehetséges problémák megoldásához javítsa a megfelelő lépéseket.
 
-Ez a megoldás a telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza. A javaslatok négy kiemelt területre vannak kategorizálva, amelyek segítenek a kockázat gyors megértésében és a korrekciós intézkedések meghozatalában.
+Ez a megoldás a telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza. A javaslatok négy kiemelt területre vannak kategorizálva, amelyek segítségével gyorsan megismerheti a kockázatokat, és elvégezheti a megfelelő lépéseket.
 
-A javaslatok a Microsoft mérnökei által több ezer ügyféllátogatás során szerzett tudáson és tapasztalaton alapulnak. Minden egyes javaslat útmutatást nyújt arról, hogy egy probléma miért lehet fontos az Ön számára, és hogyan valósíthatja meg a javasolt módosításokat.
+A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatásból nyert ismeretekre és tapasztalatokra épülnek. Az egyes javaslatok útmutatást nyújtanak arról, hogy miért fontos a probléma, és hogyan valósítja meg a javasolt módosításokat.
 
-Kiválaszthatja a szervezet számára legfontosabb fókuszterületeket, és nyomon követheti a kockázatmentes és egészséges környezet megmaradása felé tett előrehaladást.
+Kiválaszthatja a szervezete számára legfontosabb fókusz területeket, és nyomon követheti az előrehaladást a kockázatmentes és kifogástalan állapotú környezetek futtatásának irányába.
 
-Miután hozzáadta a megoldást, és elvégezte az értékelést, a fókuszterületek összefoglaló információi megjelennek az infrastruktúra **System Center Operations Manager Állapot-ellenőrzési** irányítópultján. Az alábbi szakaszok ismertetik, hogyan használhatja a **System Center Operations Manager állapotfelmérési** irányítópultján található információkat, ahol megtekintheti, majd az Operations Manager környezetben ajánlott műveleteket érhet el.
+A megoldás hozzáadása és az értékelés elvégzése után a fókusz területekre vonatkozó összefoglaló információk az infrastruktúra **System Center Operations Manager Health Check** irányítópultján jelennek meg. Az alábbi szakaszok azt ismertetik, hogyan használhatók a **System Center Operations Manager Health Check** irányítópulton található információk, ahol megtekintheti és elvégezheti a Operations Manager-környezethez javasolt műveleteket.
 
-![A System Center Operations Manager megoldáscsempéje](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
+![System Center Operations Manager megoldás csempe](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![System Center Operations Manager állapotfelmérési irányítópultja](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
+![System Center Operations Manager Health Check irányítópult](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 
-A megoldás együttműködik a Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager és a Microsoft System Központ Operations Manager 1807. A .NET Framework 4.6.2 támogatott verzióját minden felügyeleti kiszolgálóra telepíteni kell.
+A megoldás a Microsoft System Center 2012 Operations Manager Service Pack 1, a Microsoft System Center 2012 R2 Operations Manager, a Microsoft System Center 2016 Operations Manager, a Microsoft System Center 2016 Operations Manager és a Microsoft System Center Operations Manager 1807 esetében működik. A .NET-keretrendszer 4.6.2 egy támogatott verzióját kell telepíteni az egyes felügyeleti kiszolgálókon.
 
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-- Az állapot-ellenőrzés megoldás használata előtt a Log Analytics, a megoldás telepítve kell lennie. Telepítse a megoldást az [Azure piactérről.](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)
+- Az állapot-ellenőrzési megoldás Log Analyticsban való használata előtt telepítenie kell a megoldást. Telepítse a megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)-ről.
 
-- Miután hozzáadja a megoldást a munkaterülethez, a **System Center Operations Manager állapotfelmérés** csempéje az irányítópulton egy további konfigurációra vonatkozó szükséges üzenetet jelenít meg. Kattintson a csempére, és kövesse az oldalon említett konfigurációs lépéseket
+- Miután hozzáadta a megoldást a munkaterülethez, az irányítópulton lévő **System Center Operations Manager Health Check** csempén megjelenik egy további szükséges konfigurációs üzenet. Kattintson a csempére, és kövesse az oldalon említett konfigurációs lépéseket.
 
-  ![A System Center Operations Manager irányítópultjának csempéje](./media/scom-assessment/scom-configrequired-tile.png)
+  ![Irányítópult-csempe System Center Operations Manager](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
-> A System Center Operations Manager konfigurálása parancsfájl használatával végezhető el a megoldás Log Analytics konfigurációs lapján említett lépések végrehajtásával.
+> System Center Operations Manager konfigurációját parancsfájl használatával hajthatja végre, a Log Analytics megoldás konfigurációs lapján említett lépéseket követve.
 
- Az értékelés az Operations Manager operations konzolon keresztültörténő konfigurálásához hajtsa végre az alábbi lépéseket a következő sorrendben:
-1. [A Futtatás másként fiók beállítása a System Center Operations Manager állapot-ellenőrzéséhez](#operations-manager-run-as-accounts-for-log-analytics)  
-2. A System Center Operations Manager állapot-ellenőrzési szabályának konfigurálása
+ Az értékelés Operations Manager operatív konzolon keresztüli konfigurálásához hajtsa végre az alábbi lépéseket a következő sorrendben:
+1. [A futtató fiók beállítása System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
+2. A System Center Operations Manager Health Check szabály konfigurálása
 
 ## <a name="system-center-operations-manager-health-check-data-collection-details"></a>A System Center Operations Manager állapot-ellenőrzés által végzett adatgyűjtés részletei
 
-A System Center Operations Manager állapot-ellenőrzési megoldás a következő forrásokból gyűjtadatokat:
+A System Center Operations Manager Health Check-megoldás az alábbi forrásokból gyűjt adatokat:
 
 * Registry
 * Windows Management Instrumentation (WMI)
 * Eseménynapló
 * Fájladatok
-* Közvetlenül az Operations Manager powershell- és SQL-lekérdezések használatával, a megadott felügyeleti kiszolgálóról.  
+* Közvetlenül a Operations Manager PowerShell-és SQL-lekérdezések használatával a megadott felügyeleti kiszolgálóról.  
 
-Az adatokat a felügyeleti kiszolgálón gyűjtjük, és hétnaponta továbbítjuk a Log Analytics szolgáltatásnak.  
+Az adatok gyűjtése a felügyeleti kiszolgálón történik, és hét naponta Log Analytics továbbítva.  
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Futtató Operations Manager-fiókok a Log Analyticshez
 
-A Log Analytics a számítási feladatok felügyeleti csomagjaira épül, hogy értéknövelő szolgáltatásokat nyújtson. Minden számítási feladat hoz munkaterhelés-specifikus jogosultságokat futtatni felügyeleti csomagok egy másik biztonsági környezetben, például egy tartományi felhasználói fiók. Konfigurálja az Operations Manager Futtatás mint fiók kiemelt hitelesítő adatokkal. További információt a [Futtatás másként fiók létrehozása](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) az Operations Manager dokumentációjában című témakörben talál.
+A Log Analytics a számítási feladatokhoz a felügyeleti csomagokra épít a szolgáltatások értékének megadása érdekében. Minden munkaterheléshez a felügyeleti csomagok más biztonsági környezetben, például egy tartományi felhasználói fiókban való futtatásához munkaterhelés-specifikus jogosultságok szükségesek. Operations Manager futtató fiók konfigurálása emelt szintű hitelesítő adatokkal. További információ: [futtató fiók létrehozása](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) a Operations Manager dokumentációjában.
 
-Az alábbi információk segítségével állíthatja be az Operations Manager Futtatás másként fiókját a System Center Operations Manager állapotfelméréséhez.
+Az alábbi információk segítségével állíthatja be System Center Operations Manager Health Check Operations Manager futtató fiókját.
 
 ### <a name="set-the-run-as-account"></a>A futtató fiók beállítása
 
-A Futtatás másként fióknak a folytatás előtt meg kell felelnie a következő követelményeknek:
+A folytatás előtt a futtató fióknak a következő követelményeknek kell megfelelnie:
 
-* Olyan tartományi felhasználói fiók, amely a helyi Rendszergazdák csoport tagja az Operations Manager szerepkört támogató kiszolgálókon – felügyeleti kiszolgáló, az operatív, adatraktárt és ACS-adatbázist üzemeltető SQL Server, Jelentéskészítés, Webkonzol és Átjárókiszolgáló.
-* Az értékelés alatt álló felügyeleti csoport műveleti vezető rendszergazdai szerepköre
-* Ha a fiók nem rendelkezik SQL sysadmin jogosultságokkal, akkor hajtsa végre a [parancsfájlt,](#sql-script-to-grant-granular-permissions-to-the-run-as-account) hogy részletes engedélyeket adjon a fióknak minden olyan SQL Server-példányon, amely az Operations Manager-adatbázisok egy vagy egészét tartalmazza.
+* Olyan tartományi felhasználói fiók, amely a helyi Rendszergazdák csoport tagja a Operations Manager szerepkör-felügyeleti kiszolgálót támogató összes kiszolgálón, SQL Server az operatív, adattárház-és ACS-adatbázist, jelentéskészítést, webkonzolt és átjáró kiszolgálót.
+* A felügyelt felügyeleti csoport Operation Manager-rendszergazdai szerepköre
+* Ha a fiók nem rendelkezik SQL sysadmin jogosultságokkal, akkor hajtsa végre a [parancsfájlt](#sql-script-to-grant-granular-permissions-to-the-run-as-account) , hogy részletes engedélyeket adjon a fióknak minden olyan SQL Server-példányhoz, amely a Operations Manager-adatbázisok egyikét vagy mindegyikét üzemelteti.
 
-1. Az Operations Manager konzolon válassza a **Felügyeleti** navigációs gombot.
-2. A **Futtatás konfigurációként csoportban**kattintson a **Fiókok**elemre.
-3. A **Futtatás fiókként létrehozása** varázsló **Bevezetés** lapján kattintson a **Tovább**gombra.
-4. Az **Általános tulajdonságok** lapon válassza a **Windows** elemet a **Futtatás fióktípusként listában.**
-5. Írjon be egy megjelenítendő nevet a **Megjelenítendő név** mezőbe, és tetszés szerint írjon be egy leírást a **Leírás** mezőbe, majd kattintson a **Tovább**gombra.
-6. A **Terjesztésbiztonság** lapon válassza a **Biztonságosabb**lehetőséget.
-7. Kattintson **a Létrehozás gombra.**  
+1. A Operations Manager-konzolon válassza a **felügyelet** navigáció gombot.
+2. A **futtató konfiguráció**alatt kattintson a **fiókok**elemre.
+3. A **futtató fiók létrehozása** varázslóban a **Bevezetés** lapon kattintson a **tovább**gombra.
+4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
+5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább**gombra.
+6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
+7. Kattintson a **Létrehozás**gombra.  
 
-Most, hogy a Futtatás másként fiók létrejött, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált Futtatás mint profilhoz kell társítania, hogy a munkafolyamatok a hitelesítő adatokhasználatával fussanak.  
+Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
-1. A **Futtatás konfigurációként**csoportban a **Fiókok**csoportban kattintson duplán a korábban létrehozott fiókra.
-2. A **Distribution (Terjesztő)** lapon kattintson a **Hozzáadás** a **Kijelölt számítógépekhez** jelölőnégyzetre, és adja hozzá a fiók terjesztéséhez a felügyeleti kiszolgálót.  A módosítások mentéséhez kattintson kétszer az **OK** gombra.
-3. A **Futtatás konfigurációként csoportban**kattintson a **Profilok gombra.**
-4. Keresse meg az *SCOM értékelési profilját*.
-5. A profil neve: *Microsoft System Center Operations Manager Állapot-ellenőrzés Futtatás profilként*.
-6. Kattintson a jobb gombbal, és frissítse a tulajdonságait, és adja hozzá a korábban létrehozott Futtatás mint fiókhoz.
+1. A **futtató konfiguráció**, **fiókok**pontban, az eredmények ablaktábláján kattintson duplán a korábban létrehozott fiókra.
+2. A **terjesztés** lapon kattintson a **Hozzáadás** elemre a **kijelölt számítógépek** mezőben, és adja hozzá a felügyeleti kiszolgálót a fiók terjesztéséhez.  Kattintson kétszer **az OK gombra** a módosítások mentéséhez.
+3. A **futtató konfiguráció**alatt kattintson a **profilok**elemre.
+4. Keresse meg a *SCOM-felmérési profilt*.
+5. A profil nevének a következőkkel kell rendelkeznie: *Microsoft System Center Operations Manager Health Check futtató profil*.
+6. Kattintson a jobb gombbal, és frissítse a tulajdonságait, és adja hozzá a korábban létrehozott futtató fiókot.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Az SQL-szkript, amely részletes engedélyeket biztosít a futtató fiók számára
 
-Hajtsa végre a következő SQL-parancsfájlt, hogy megadja a szükséges engedélyeket a Futtatás másként fiókhoz az operations manager által használt, az operatív, adatraktárt és Az ACS-adatbázist üzemeltető SQL Server-példányon.
+Futtassa a következő SQL-szkriptet a szükséges engedélyek megadásához a futtató fiókhoz az operatív, adattárház-és ACS-adatbázist üzemeltető Operations Manager által használt SQL Server példányon.
 
 ```
 -- Replace <UserName> with the actual user name being used as Run As Account.
@@ -145,154 +145,154 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Az állapot-ellenőrzési szabály konfigurálása
 
-A System Center Operations Manager állapotellenőrző megoldás felügyeleti csomagja tartalmaz egy *Microsoft System Center Operations Manager Run Health Check Rule*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásáért. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
+A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Operations Manager állapotellenőrzési szabálya le van tiltva. Az állapot-ellenőrzés futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Ehhez a következő lépések szükségesek.
+Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Ehhez a következő lépések szükségesek.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>A szabály engedélyezése egy adott felügyeleti kiszolgáló számára
 
-1. Az Operations Manager műveleti konzol **Szerzői** munkaterületén keresse meg a *Microsoft System Center Operations Manager Állapotellenőrző szabály futtatására vonatkozó* szabályt a **Szabályok** ablaktáblán.
-2. A keresési eredmények között válassza ki azt, amelyik a *Típus: Felügyeleti kiszolgáló*szöveget tartalmazza.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson **a Felülbírálások parancsra** > **az osztály egy adott objektumához: Management Server**.
-4.  A rendelkezésre álló felügyeleti kiszolgálók listájában válassza ki azt a felügyeleti kiszolgálót, amelyen a szabálynak futnia kell.  Ennek ugyanaznak a felügyeleti kiszolgálónak kell lennie, amelyet korábban konfigurált a Futtatás másként fiók társítására.
-5.  Győződjön meg arról, hogy a felülbírálási értéket **True** értékre **módosítja** az Engedélyezett paraméter értékéhez.<br><br> ![paraméter felülbírálása](./media/scom-assessment/rule.png)
+1. Az Operations Manager operatív konzol **szerzői** műveletek munkaterületén keresse meg a **szabály panelen a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
+2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson **a felülbírálások elemre** > a**következő osztály egy adott objektumához: felügyeleti kiszolgáló**.
+4.  Az elérhető felügyeleti kiszolgálók listában válassza ki azt a felügyeleti kiszolgálót, ahol a szabályt futtatni kell.  Ennek a felügyeleti kiszolgálónak kell lennie, amelyet korábban konfigurált a futtató fiókhoz való hozzárendeléséhez.
+5.  Győződjön meg arról, hogy az **engedélyezett** paraméterérték értéke **true (igaz** ) értékre módosul.<br><br> ![felülbírálási paraméter](./media/scom-assessment/rule.png)
 
-    Amíg még ebben az ablakban van, konfigurálja a futtatási gyakoriságot a következő eljárással.
+    Ebben az ablakban még a következő eljárással konfigurálhatja a Futtatás gyakoriságát.
 
 #### <a name="configure-the-run-frequency"></a>A futás gyakoriságának konfigurálása
 
-Az értékelés alapértelmezés szerint 10 080 percenként (vagy hét naponta) fut. Az értéket legalább 1440 perces (vagy egy napos) értékre bírálhatja felül. Az érték az egymást követő értékelési futtatások között szükséges minimális időeltolódást jelenti. Az intervallum felülbírálásához kövesse az alábbi lépéseket.
+Az értékelés úgy van konfigurálva, hogy alapértelmezés szerint 10 080 percenként (vagy hét napig) fusson. Az értéket felülbírálhatja 1440 perc (vagy egy nap) minimális értékre. Az érték azt jelzi, hogy az egymást követő értékelés futtatása esetén milyen minimális időtartam szükséges. Az intervallum felülbírálásához kövesse az alábbi lépéseket.
 
-1. Az Operations Manager konzol **Szerzői** munkaterületén keresse meg a *Microsoft System Center Operations Manager Állapotellenőrzési szabály futtatására vonatkozó* szabályt a **Szabályok** szakaszban.
-2. A keresési eredmények között válassza ki azt, amelyik a *Típus: Felügyeleti kiszolgáló*szöveget tartalmazza.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson a >  **Szabály felülbírálása parancsra az**osztály összes**objektuma, a Felügyeleti kiszolgáló parancsra.**
-4. Módosítsa az **Intervallum** paraméter értékét a kívánt intervallumértékre. Az alábbi példában az érték 1440 percre (egy napra) van állítva.<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
+1. A Operations Manager-konzol **szerzői műveletek** munkaterületén keresse meg a **szabály szakaszban a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
+2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson a >  **szabály felülbírálása**a**következő osztály összes objektumához: felügyeleti kiszolgáló**.
+4. Módosítsa az **intervallum** paraméter értékét a kívánt intervallum értékre. Az alábbi példában az érték 1440 percre van állítva (egy nap).<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
 
-    Ha az érték 1440 percnél rövidebbre van állítva, akkor a szabály egynapos időközönként fut. Ebben a példában a szabály figyelmen kívül hagyja az intervallum értékét, és egy napos gyakorisággal fut.
+    Ha az érték 1440 percnél kisebb, akkor a szabály egy nap elteltével fut. Ebben a példában a szabály figyelmen kívül hagyja az intervallum értékét, és egy nap gyakorisággal fut.
 
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>A javaslatok rangsorolásának ismertetése
 
-Minden ajánlás súlyozási értéket kap, amely azonosítja az ajánlás relatív fontosságát. Csak a 10 legfontosabb ajánlások jelennek meg.
+Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontosságát azonosítja. Csak a 10 legfontosabb javaslat jelenik meg.
 
 ### <a name="how-weights-are-calculated"></a>A súlyozás kiszámítása
 
-A súlyozás három fő tényezőn alapuló összesített érték:
+A súlyozások három fő tényezőn alapuló összesített értékek:
 
-- Annak *valószínűsége,* hogy az azonosított probléma problémákat okoz. Nagyobb valószínűséggel felel meg az ajánlás nagyobb összpontszámának.
-- A probléma *hatása* a szervezetre, ha problémát okoz. A nagyobb hatás megegyezik a nagyobb általános pontszám az ajánlás.
-- Az ajánlás végrehajtásához szükséges *erőfeszítés.* A nagyobb erőfeszítés megegyezik egy kisebb általános pontszám az ajánlás.
+- Az *probability* észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+- A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
+- A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
-Az egyes ajánlások súlyozását az egyes kiemelt területre rendelkezésre álló összpontszám százalékában fejezik ki. Ha például a rendelkezésre állás és az üzletmenet-folytonosság i fókuszterület ének javaslata 5%-os pontszámmal rendelkezik, az ajánlás megvalósítása 5%-kal növeli az általános rendelkezésre állási és üzletmenet-folytonossági pontszámot.
+Az egyes javaslatok súlyozása az egyes fókuszokhoz rendelkezésre álló teljes pontszám százalékában van kifejezve. Ha például egy, a rendelkezésre állási és az üzletmenet-folytonossági területen található javaslat 5%-os pontszámmal rendelkezik, a javaslat megvalósítása a teljes rendelkezésre állási és üzletmenet-folytonossági pontszámot 5%-kal növeli.
 
 ### <a name="focus-areas"></a>Fókuszterületek
 
-**Rendelkezésre állás és üzletmenet-folytonosság** – Ez a kiemelt terület a szolgáltatás rendelkezésre állására, az infrastruktúra rugalmasságára és az üzleti védelemre vonatkozó javaslatokat mutatja be.
+**Rendelkezésre állás és Üzletmenet-folytonosság** – ez a fókusz a szolgáltatás rendelkezésre állására, az infrastruktúra rugalmasságára és az üzleti védelemre vonatkozó javaslatokat mutatja be.
 
-**Teljesítmény és méretezhetőség** – Ez a kiemelt terület javaslatokat jelenít meg a szervezet informatikai infrastruktúrájának növekedéséhez, annak biztosításához, hogy az informatikai környezet megfeleljen az aktuális teljesítménykövetelményeknek, és képes legyen reagálni a változó infrastrukturális igényekre.
+**Teljesítmény és méretezhetőség** – ez a fókusz a szervezet informatikai infrastruktúrájának növekedését segítő ajánlásokat mutat be, így biztosíthatja, hogy az informatikai környezet megfeleljen a jelenlegi teljesítménybeli követelményeknek, és képes legyen reagálni az infrastrukturális igények változására.
 
-**Frissítés, áttelepítés és telepítés** – Ez a kiemelt terület javaslatokat tartalmaz az SQL Server frissítésének, áttelepítésének és meglévő infrastruktúrára való telepítésének elősegítésére.
+**Frissítés, áttelepítés és üzembe helyezés** – ez a fókusz olyan javaslatokat mutat be, amelyek segítik a SQL Server frissítését, áttelepítését és üzembe helyezését a meglévő infrastruktúrán.
 
-**Műveletek és figyelés** – Ez a kiemelt terület javaslatokat tartalmaz az informatikai műveletek egyszerűsítésére, a megelőző karbantartás megvalósítására és a teljesítmény maximalizálására.
+**Műveletek és monitorozás** – ez a fókusz az informatikai műveletek egyszerűsítését, a megelőző karbantartás megvalósítását és a teljesítmény maximalizálása érdekében ajánlásokat mutat be.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Érdemes 100%-ra törekedni minden fókuszterületen?
 
-Nem feltétlenül. A javaslatok a Microsoft mérnökei által több ezer ügyféllátogatás során szerzett tudáson és tapasztalaton alapulnak. Azonban nincs két kiszolgálói infrastruktúra azonos, és a konkrét javaslatok többé-kevésbé relevánsak lehetnek az Ön számára. Egyes biztonsági javaslatok például kevésbé relevánsak lehetnek, ha a virtuális gépek nincsenek kitéve az internetnek. Egyes rendelkezésre állási javaslatok kevésbé relevánsak lehetnek az alacsony prioritású ad hoc adatgyűjtést és -jelentéskészítést biztosító szolgáltatások esetében. Az érett vállalkozás számára fontos kérdések kevésbé fontosak lehetnek az induló vállalkozások számára. Előfordulhat, hogy meg szeretné határozni, hogy mely fókuszterületek a prioritások, majd nézze meg, hogyan változnak a pontszámok az idő múlásával.
+Nem feltétlenül. A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatáson keresztül szerzett ismeretekre és tapasztalatokra épülnek. Azonban két kiszolgálói infrastruktúra sem azonos, és a konkrét javaslatok többé vagy kevésbé fontosak lehetnek. Előfordulhat például, hogy bizonyos biztonsági javaslatok kevésbé fontosak, ha a virtuális gépek nem lesznek elérhetők az internethez. Egyes rendelkezésre állási javaslatok kevésbé fontosak lehetnek az alacsony prioritású ad hoc adatgyűjtést és jelentéskészítést biztosító szolgáltatások esetében. Az érett üzleti tevékenység szempontjából fontos problémák kevésbé fontosak az indításhoz. Érdemes lehet azonosítani, hogy mely Kiemelt területek legyenek a prioritásai, és hogyan változnak meg a pontszámok időbeli változása.
 
-Minden ajánlás útmutatást tartalmaz arról, hogy miért fontos. Ez az útmutató segítségével kiértékelheti, hogy a javaslat megvalósítása megfelelő-e az Informatikai szolgáltatások jellegére és a szervezet üzleti igényeire tekintettel.
+Minden javaslat tartalmaz útmutatást arról, hogy miért fontos. Ezzel az útmutatóval kiértékelheti, hogy az ajánlás alkalmazása megfelelő-e Önnek, az informatikai szolgáltatások természetétől és a szervezet üzleti igényeinek megfelelően.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Az állapotfelmérés fókuszterületének ajánlásainak használata
+## <a name="use-health-check-focus-area-recommendations"></a>Az állapot-ellenőrzési fókusz területtel kapcsolatos javaslatok használata
 
-Az állapot-ellenőrzési megoldás használata előtt a Log Analytics, a megoldás telepítve kell lennie. A megoldások telepítéséről a [Felügyeleti megoldás telepítése című](../../azure-monitor/insights/solutions.md)témakörben olvashat bővebben. A telepítés után megtekintheti a javaslatok összegzését a System Center Operations Manager állapotfelmérés csempéjével az Azure Portalon a munkaterület **áttekintése lapján.**
+Mielőtt állapot-ellenőrzési megoldást szeretne használni a Log Analyticsban, telepítenie kell a megoldást. A megoldások telepítésével kapcsolatos további információkért lásd: [felügyeleti megoldás telepítése](../../azure-monitor/insights/solutions.md). A telepítése után megtekintheti a javaslatok összefoglalását a Azure Portal munkaterületének **Áttekintés** lapján található System Center Operations Manager Health Check csempe használatával.
 
-Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd részletezze a javaslatokat.
+Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd a részletes ajánlásokat.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A kiemelt területre vonatkozó ajánlások megtekintése és korrekciós intézkedések meghozása
-1. Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a rendszerbe.
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A fókusz területre vonatkozó javaslatok megtekintése és a kijavítani kívánt művelet elvégzése
+1. Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-3. A Log Analytics-előfizetések ablaktáblán jelöljön ki egy munkaterületet, majd kattintson a **Munkaterület összesítő** menüpontjára.  
-4. Az **Áttekintés** lapon kattintson a **System Center Operations Manager Állapot-ellenőrzési** csempére.
-5. A **System Center Operations Manager állapotfelméréslapján** tekintse át az összefoglaló információkat az egyik fókuszterület-panelen, majd kattintson az egyikre az adott fókuszterületre vonatkozó javaslatok megtekintéséhez.
-6. A fókuszterület bármelyik oldalán megtekintheti a környezetéhez készített rangsorolt javaslatokat. Kattintson az **Érintett objektumok** csoportban egy javaslatra a javaslat meghirdetésének részleteinek megtekintéséhez.<br><br> ![fókuszterület](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. A **Javasolt műveletek**részben javasolt korrekciós intézkedéseket végrehajthatja. Az elem kezelése után a későbbi értékelések rögzítik, hogy az ajánlott műveleteket végrehajtották, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumokként**jelennek meg.
+3. A Log Analytics-előfizetések ablaktáblán válasszon ki egy munkaterületet, majd kattintson a **munkaterület-összefoglalás** menüpontra.  
+4. Az **Áttekintés** lapon kattintson a **System Center Operations Manager Health Check** csempére.
+5. A **System Center Operations Manager Health Check** oldalon tekintse át az összefoglaló információkat a fókuszban található egyik panelen, majd kattintson az egyikre a fókuszhoz tartozó javaslatok megtekintéséhez.
+6. A fókusz oldalain megtekintheti a környezetére vonatkozó rangsorolt javaslatokat. Az **érintett objektumok** alatt található javaslatra kattintva megtekintheti a javaslat hátterének részleteit.<br><br> ![fókusz terület](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
 
 ## <a name="ignore-recommendations"></a>Javaslatok figyelmen kívül hagyása
 
-Ha olyan javaslatokkal rendelkezik, amelyeket figyelmen kívül szeretne hagyni, létrehozhat egy szövegfájlt, amelyet a Log Analytics használ, hogy megakadályozza a javaslatok megjelenését az értékelési eredményekben.
+Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létrehozhat egy szövegfájlt, amelyet Log Analytics használ, hogy megakadályozza a javaslatok megjelenését az értékelés eredményei között.
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>A figyelmen kívül hagyni kívánt javaslatok azonosítása
-1. Az Azure Portalon a Log Analytics munkaterület lap a kiválasztott munkaterület, kattintson a **Log Search** menüelem.
-2. Az alábbi lekérdezéssel felsorolhatja azokat a javaslatokat, amelyek a környezetben lévő számítógépek esetében sikertelenek voltak.
+1. A kiválasztott munkaterülethez tartozó Log Analytics munkaterület lapon kattintson a **naplóbeli keresés** menüelemre a Azure Portal.
+2. A következő lekérdezéssel listázhatja azokat a javaslatokat, amelyek a környezetében lévő számítógépeken sikertelenek voltak.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Ha a munkaterület et az [új Log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md)frissítették, akkor a fenti lekérdezés a következőre változik.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Az alábbiakban egy képernyőképet mutat a Naplókeresés lekérdezésről:<br><br> ![naplóbeli keresés](./media/scom-assessment/scom-log-search.png)<br>
+    Az alábbi képernyőképen a napló keresési lekérdezése látható:<br><br> ![naplóbeli keresés](./media/scom-assessment/scom-log-search.png)<br>
 
-3. Válassza ki a figyelmen kívül hagyni kívánt javaslatokat. A következő eljárásban az Ajánlásazonosító értékeit fogja használni.
+3. Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt szövegfájl létrehozása és használata
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
 
-1. Hozzon létre egy IgnoreRecommendations.txt nevű fájlt.
-2. Illessze be vagy írja be az egyes javaslatazonosítókat minden olyan javaslathoz, amelyet a Log Analytics figyelmen kívül hagy egy külön sorban, majd mentse és zárja be a fájlt.
-3. Helyezze a fájlt a következő mappába minden olyan számítógépen, ahol azt szeretné, hogy a Log Analytics figyelmen kívül hagyja a javaslatokat.
-4. Az Operations Manager felügyeleti kiszolgálón - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
+1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Log Analytics külön sorban, majd mentse és zárjuk be a fájlt.
+3. Helyezze a fájlt a következő mappába az összes olyan számítógépen, amelyen Log Analytics szeretné figyelmen kívül hagyni a javaslatokat.
+4. A Operations Manager felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>A javaslatok figyelmen kívül hagyása
 
-1. A következő ütemezett értékelés futtatása után alapértelmezés szerint hétnaponta a megadott javaslatok figyelmen kívül hagyása, és nem jelennek meg az állapot-ellenőrzés irányítópultján.
-2. A következő naplókeresési lekérdezések segítségével listázhatja az összes figyelmen kívül hagyott javaslatot.
+1. A következő ütemezett értékelés futtatása után, alapértelmezés szerint hét naponta, a megadott javaslatok figyelmen kívül lesznek hagyva, és nem jelennek meg az állapot-ellenőrzési irányítópulton.
+2. A következő naplóbeli keresési lekérdezésekkel listázhatja az összes figyelmen kívül hagyott javaslatot.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
     >[!NOTE]
-    > Ha a munkaterület et az [új Log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md)frissítették, akkor a fenti lekérdezés a következőre változik.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Ha később úgy dönt, hogy figyelmen kívül hagyott javaslatokat szeretne látni, távolítsa el az IgnoreRecommendations.txt fájlokat, vagy távolítsa el belőlük az ajánlási azonosítókat.
+3. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health Check megoldás – gyakori kérdések
 
-*Hozzáadtam az Állapotfelmérés megoldást a Log Analytics-munkaterülethez. De nem látom az ajánlásokat. miért ne?* A megoldás hozzáadása után a következő lépésekkel tekintse meg a javaslatokat a Log Analytics irányítópulton.  
+*Felvettem az állapot-ellenőrzési megoldást az Log Analytics munkaterületre. A javaslatok azonban nem jelennek meg. miért ne?* A megoldás hozzáadása után a következő lépésekkel tekintheti meg a Log Analytics irányítópulton található javaslatokat.  
 
-- [A Futtatás másként fiók beállítása a System Center Operations Manager állapot-ellenőrzéséhez](#operations-manager-run-as-accounts-for-log-analytics)  
-- [A System Center Operations Manager állapot-ellenőrzési szabályának konfigurálása](#configure-the-health-check-rule)
+- [A futtató fiók beállítása System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
+- [A System Center Operations Manager Health Check szabály konfigurálása](#configure-the-health-check-rule)
 
 
-*Van mód annak konfigurálására, hogy milyen gyakran fut az ellenőrzés?* Igen. Lásd: [A futtatási gyakoriság konfigurálása](#configure-the-run-frequency).
+*Van mód arra, hogy beállítsa, milyen gyakran fusson az ellenőrzések?* Igen. Lásd: [a Futtatás gyakoriságának konfigurálása](#configure-the-run-frequency).
 
-*Ha a rendszer egy másik kiszolgálót fedez fel a System Center Operations Manager állapot-ellenőrzési megoldás hozzáadása után, akkor a rendszer ellenőrzi?* Igen, a felfedezés után a rendszer ettől kezdve, alapértelmezés szerint hétnaponta ellenőrzi.
+*Ha a System Center Operations Manager Health Check-megoldás hozzáadása után egy másik kiszolgáló is fel van derítve, a rendszer ellenőrzi?* Igen, a felderítés után a rendszer alapértelmezés szerint minden hét nap múlva bejelöli a következőt:.
 
-*Mi a neve annak a folyamatnak, amely az adatgyűjtést végzi?* TanácsadóÉrtékelése.exe
+*Mi az adatgyűjtés folyamatának neve?* AdvisorAssessment. exe
 
-*Hol fut az AdvisorAssessment.exe folyamat?* Az AdvisorAssessment.exe a felügyeleti kiszolgáló HealthService folyamata alatt fut, ahol az állapotellenőrzési szabály engedélyezve van. Ezzel a folyamattal a teljes környezet felderítése távoli adatgyűjtéssel érhető el.
+*Hová fut a AdvisorAssessment. exe folyamat?* A AdvisorAssessment. exe azon felügyeleti kiszolgáló HealthService folyamatán fut, amelyen az állapot-ellenőrzési szabály engedélyezve van. Ezzel a folyamattal a teljes környezet felderítése a távoli adatgyűjtésen keresztül érhető el.
 
-*Mennyi ideig tart az adatgyűjtés?* Az adatgyűjtés a kiszolgálón körülbelül egy órát vesz igénybe. Hosszabb időt vehet igénybe olyan környezetekben, amelyek számos Operations Manager-példányt vagy adatbázist rendelkeznek.
+*Mennyi ideig tart az adatgyűjtés?* A kiszolgálón az adatgyűjtés körülbelül egy órát vesz igénybe. A sok Operations Manager példánnyal vagy adatbázissal rendelkező környezetekben hosszabb időt is igénybe vehet.
 
-*Mi a teendő, ha az értékelés időköze 1440 percnél rövidebb revansot tesz ki?* Az értékelés előre konfigurálva van, hogy naponta legfeljebb egyszer fusson. Ha 1440 percnél kisebb értékre bírálja felül az intervallumértéket, akkor az értékelés 1440 percet használ intervallumértékként.
+*Mi a teendő, ha az értékelés intervallumát kevesebb mint 1440 percre állítja be?* Az értékelés előre konfigurálva van, hogy naponta legfeljebb egyszer fusson. Ha az intervallum értéke 1440 percnél kisebb értékre van felülbírálva, akkor az értékelés az 1440 percet használja az intervallum értékeként.
 
-*Hogyan lehet tudni, hogy vannak-e előfeltételek?* Ha az állapot-ellenőrzés futott, és nem látja az eredményeket, akkor valószínű, hogy az ellenőrzés néhány előfeltétele sikertelen volt. A lekérdezéseket: `Operation Solution=SCOMAssessment` `SCOMAssessmentRecommendation FocusArea=Prerequisites` és a Naplókeresés a sikertelen előfeltételek megtekintéséhez.
+*Honnan tudható, hogy vannak-e előfeltételi hibák?* Ha az állapot-ellenőrzés futott, és nem jelenik meg az eredmények, akkor valószínű, hogy az ellenőrzés egyes előfeltételei nem teljesülnek. Lekérdezéseket futtathat: `Operation Solution=SCOMAssessment` és `SCOMAssessmentRecommendation FocusArea=Prerequisites` a naplóbeli keresésben megtekintheti a sikertelen előfeltételeket.
 
-*Van egy `Failed to connect to the SQL Instance (….).` üzenet az előfeltételhibákban. Mi a probléma?* Az AdvisorAssessment.exe, az adatokat gyűjtő folyamat a HealthService folyamat alatt fut a felügyeleti kiszolgálón. Az állapot-ellenőrzés részeként a folyamat megpróbál csatlakozni ahhoz az SQL-kiszolgálóhoz, amelyen az Operations Manager adatbázis található. Ez a hiba akkor fordulhat elő, ha a tűzfalszabályok blokkolják a kapcsolatot az SQL Server-példánysal.
+*Az előfeltételként szükséges hibákkal kapcsolatos `Failed to connect to the SQL Instance (….).` üzenet jelenik meg. Mi a probléma?* A AdvisorAssessment. exe, az adatokat gyűjtő folyamat a HealthService folyamat alatt fut a felügyeleti kiszolgálón. Az állapot-ellenőrzési eljárás részeként a folyamat megkísérli a kapcsolódást ahhoz a SQL Serverhoz, ahol a Operations Manager-adatbázis megtalálható. Ez a hiba akkor fordulhat elő, ha a tűzfalszabályok letiltják a SQL Server-példányhoz való kapcsolódást.
 
-*Milyen típusú adatokat gyűjtenek?* A rendszer a következő típusú adatokat gyűjti: - WMI-adatok - Rendszerleíró adatbázis - EventLog-adatok – Operations Manager-adatok a Windows PowerShellen, az SQL-lekérdezéseken és a Fájladat-gyűjtőn keresztül.
+*Milyen típusú adatokat gyűjt?* A rendszer a következő adattípusokat gyűjti össze:-WMI-adatok-beállításjegyzék-adatok-Eseménynapló-adatOperations Manager adatok a Windows PowerShell, az SQL-lekérdezések és a fájl-információ gyűjtő használatával.
 
-*Miért kell konfigurálnom a Futtatás másként fiókot?* Az Operations Manager segítségével különböző SQL-lekérdezések futnak. Ahhoz, hogy futtathassák őket, a futtatási fióknak rendelkeznie kell a szükséges engedélyekkel. Ezenkívül a WMI lekérdezéséhez helyi rendszergazdai hitelesítő adatokra van szükség.
+*Miért van szükség egy futtató fiók konfigurálására?* A Operations Manager különböző SQL-lekérdezéseket futtat. Ahhoz, hogy futtatni lehessen őket, a szükséges engedélyekkel rendelkező futtató fiókot kell használnia. Emellett helyi rendszergazdai hitelesítő adatokra van szükség a WMI lekérdezéséhez.
 
-*Miért csak a 10 legfontosabb javaslat jelenjen meg?* Ahelyett, hogy a feladatok teljes körű, elsöprő listáját adná meg, javasoljuk, hogy először a rangsorolt ajánlások kezelésére összpontosítson. Miután megszólította őket, további javaslatok válnak elérhetővé. Ha szeretné látni a részletes listát, megtekintheti az összes javaslatot a Naplókeresés használatával.
+*Miért csak az első 10 ajánlás jelenjen meg?* A feladatok teljes körű listájának megadása helyett javasoljuk, hogy először a rangsorolt javaslatok kezelésére koncentráljon. A megoldásuk után további javaslatok válnak elérhetővé. Ha szeretné megtekinteni a részletes listát, az összes javaslatot megtekintheti a naplóbeli keresés használatával.
 
-*Van rá mód, hogy figyelmen kívül hagyja az ajánlást?* Igen, tekintse meg a [Figyelmen kívül hagyása javaslatokat](#ignore-recommendations).
+*Van lehetőség arra, hogy figyelmen kívül hagyja a javaslatot?* Igen, tekintse meg a [javaslatok mellőzése](#ignore-recommendations)című témakört.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A naplókban megtudhatja,](../../azure-monitor/log-query/log-query-overview.md) hogyan elemezheti a System Center Operations Manager állapotfelmérési adatait és javaslatait.
+- A [naplókban](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes System Center Operations Manager Health Checki információkat és javaslatokat.

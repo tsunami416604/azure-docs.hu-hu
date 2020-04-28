@@ -1,6 +1,6 @@
 ---
-title: Webes API-k hívása asztali alkalmazásból – Microsoft identity platform | Azure
-description: További információ a webes API-kat meghívjaó asztali alkalmazások létrehozásáról
+title: Webes API-k meghívása asztali alkalmazásból – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882964"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás: Webes API hívása
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás: webes API meghívása
 
-Most, hogy rendelkezik egy jogkivonatot, meghívhat egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
 
 ## <a name="call-a-web-api"></a>Webes API-hívás
 
@@ -60,13 +60,13 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Webes API hívása az MSAL-ban iOS és macOS rendszeren
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Webes API meghívása iOS és macOS rendszerű MSAL
 
-A jogkivonatok beszerzésének `MSALResult` módszerei egy objektumot adnak vissza. `MSALResult`egy webes `accessToken` API-híváshoz használható tulajdonságot. Adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez, mielőtt a védett webes API eléréséhez hívást kezdeményezne.
+A jogkivonatok beszerzésének módszerei `MSALResult` egy objektumot adnak vissza. `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A védett webes API-hoz való hozzáférés meghívása előtt adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez.
 
-C célkitűzés:
+Objective-C:
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -80,7 +80,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Swift:
+Swift
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -92,9 +92,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Több API hívása: Növekményes hozzájárulás és feltételes hozzáférés
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Több API meghívása: növekményes beleegyezettés és feltételes hozzáférés
 
-Ha ugyanannak a felhasználónak több API-t szeretne hívni, `AcquireTokenSilent`miután az első API-hoz egy jogkivonatot kap, hívja meg a . Az idő nagy részében a többi API-hoz kap egy jogkivonatot.
+Ha több API-t szeretne meghívni ugyanahhoz a felhasználóhoz, az első API-hoz tartozó jogkivonat `AcquireTokenSilent`beszerzése után hívja meg a következőt:. A többi API-hoz az idő nagy részében csendes tokent kap.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -104,10 +104,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Interakcióra akkor van szükség, ha:
+A beavatkozásra akkor van szükség, ha:
 
-- A felhasználó hozzájárult az első API-hoz, de most több hatókörhöz is hozzá kell járulnia. Ez a fajta hozzájárulás az úgynevezett növekményes hozzájárulás.
-- Az első API nem igényel többtényezős hitelesítést, de a következő nem.
+- A felhasználó jóváhagyta az első API-t, de most hozzá kell járulnia további hatókörökhöz. Az ilyen típusú beleegyező beleegyező beleegyezett.
+- Az első API-nak nem volt szükség többtényezős hitelesítésre, de a következő lépés.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

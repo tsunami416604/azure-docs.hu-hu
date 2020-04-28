@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-munkafüzetek használata az Azure AD tartományi szolgáltatásokkal | Microsoft dokumentumok
-description: Megtudhatja, hogy miként tekintheti át a biztonsági naplózásokat az Azure Active Directory tartományi szolgáltatások felügyelt tartományában az Azure Monitor munkafüzetek használatával.
+title: Azure Monitor munkafüzetek használata Azure AD Domain Services használatával | Microsoft Docs
+description: Megtudhatja, hogyan használhatja Azure Monitor munkafüzeteket a biztonsági naplózás áttekintéséhez és a Azure Active Directory Domain Services felügyelt tartományok problémáinak megismeréséhez.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,103 +10,103 @@ ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
 ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654470"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése az Azure AD tartományi szolgáltatásokban az Azure Monitor munkafüzetek használatával
+# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure AD Domain Services Azure Monitor munkafüzetek használatával
 
-Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) által felügyelt tartomány állapotának megismerése érdekében engedélyezheti a biztonsági naplózási eseményeket. Ezek a biztonsági naplózási események ezután áttekinthetők az Azure Monitor munkafüzetek használatával, amelyek a szöveget, az elemzési lekérdezéseket és a paramétereket gazdag interaktív jelentésekké kombinálják. Az Azure AD DS munkafüzetsablonokat tartalmaz a biztonsági áttekintéshez és a fióktevékenységhez, amelyek lehetővé teszik a naplózási események beásására és a környezet kezelésére.
+A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány állapotának megismerése érdekében engedélyezheti a biztonsági naplózási eseményeket. Ezek a biztonsági naplózási események később áttekinthetők a szövegeket, elemzési lekérdezéseket és paramétereket kombináló Azure Monitor munkafüzetek gazdag interaktív jelentésekben való használatával. Az Azure AD DS tartalmaz olyan munkafüzet-sablonokat a biztonsági áttekintéshez és a fiók tevékenységekhez, amelyek lehetővé teszik a naplózási események bevezetését és a környezet kezelését.
 
-Ez a cikk bemutatja, hogyan használhatja az Azure Monitor munkafüzetek biztonsági naplózási események az Azure AD DS-ben.
+Ez a cikk bemutatja, hogyan használhatók Azure Monitor munkafüzetek az Azure AD DS biztonsági naplózási eseményeinek áttekintéséhez.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
+A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
-    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
-* Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományban engedélyezett biztonsági naplózási események, amelyek adatokat továbbítanak egy Log Analytics-munkaterületre.
-    * Szükség esetén [engedélyezze az Azure Active Directory tartományi szolgáltatások biztonsági naplózását.][enable-security-audits]
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+* A biztonsági naplózási események engedélyezve vannak a Azure Active Directory Domain Services felügyelt tartományon, amelyek az adatLog Analytics-munkaterületre továbbítanak.
+    * Ha szükséges, [engedélyezze a Azure Active Directory Domain Services biztonsági naplózását][enable-security-audits].
 
-## <a name="azure-monitor-workbooks-overview"></a>Az Azure Monitor-munkafüzetek áttekintése
+## <a name="azure-monitor-workbooks-overview"></a>Azure Monitor munkafüzetek áttekintése
 
-Ha a biztonsági naplózási események be vannak kapcsolva az Azure AD DS-ben, nehéz lehet elemezni és azonosítani a felügyelt tartomány problémáit. Az Azure Monitor lehetővé teszi, hogy ezeket a biztonsági naplózási eseményeket összesítse, és lekérdezze az adatokat. Az Azure Monitor munkafüzetek segítségével vizualizálhatja ezeket az adatokat, hogy gyorsabban és egyszerűbben azonosíthassa a problémákat.
+Ha a biztonsági naplózási események be vannak kapcsolva az Azure AD DSban, nehéz lehet elemezni és azonosítani a felügyelt tartomány hibáit. Azure Monitor segítségével összesítheti ezeket a biztonsági naplózási eseményeket, és lekérdezheti az adatokat. A Azure Monitor munkafüzetek segítségével megjelenítheti ezeket az adatelemeket, hogy gyorsabban és könnyebben azonosíthatók legyenek a problémák.
 
-A munkafüzetsablonok válogatott jelentések, amelyeket több felhasználó és csoport rugalmas újrafelhasználására terveztek. Amikor megnyit egy munkafüzetsablont, az Azure Monitor környezetből származó adatok betöltődnek. A sablonokat anélkül is használhatja, hogy az hatással lenne a szervezet más felhasználóira, és a sablon alapján mentheti saját munkafüzeteit.
+A munkafüzet-sablonok olyan kurátori jelentések, amelyek több felhasználó és csapat rugalmas újrafelhasználására lettek kialakítva. Munkafüzet-sablon megnyitásakor a rendszer betölti a Azure Monitor-környezetből származó adatok betöltését. A sablonokat a szervezet más felhasználóira gyakorolt hatása nélkül is használhatja, és a sablon alapján mentheti a saját munkafüzeteit.
 
-Az Azure AD DS a következő két munkafüzetsablont tartalmazza:
+Az Azure AD DS a következő két munkafüzet-sablont tartalmazza:
 
-* Biztonsági áttekintő jelentés
-* Partnertevékenység-jelentés
+* Biztonsági áttekintés jelentés
+* Fiók tevékenységi jelentése
 
-A munkafüzetek szerkesztéséről és kezeléséről az [Azure Monitor munkafüzetek – áttekintés című témakörben olvashat bővebben.](../azure-monitor/platform/workbooks-overview.md)
+A munkafüzetek szerkesztésével és kezelésével kapcsolatos további információkért lásd: [Azure monitor munkafüzetek áttekintése](../azure-monitor/platform/workbooks-overview.md).
 
-## <a name="use-the-security-overview-report-workbook"></a>A biztonsági áttekintő jelentés munkafüzetének használata
+## <a name="use-the-security-overview-report-workbook"></a>A biztonsági áttekintés jelentés munkafüzetének használata
 
-A használat jobb megértése és a potenciális biztonsági fenyegetések azonosítása érdekében a biztonsági áttekintő jelentés összefoglalja a bejelentkezési adatokat, és azonosítja azokat a fiókokat, amelyeket esetleg ellenőrizni szeretne. Megtekintheti az eseményeket egy adott dátumtartományban, és részletezheti az adott bejelentkezési eseményeket, például a rossz jelszókísérleteket, vagy ahol a fiók le van tiltva.
+A biztonsági áttekintési jelentés összefoglalja a bejelentkezési adatokat, és azonosítja azokat a fiókokat, amelyek segítségével jobban megismerheti a használatot, és azonosíthatja a lehetséges biztonsági fenyegetéseket. Megtekintheti egy adott dátumtartomány eseményeit, és részletezheti a megadott bejelentkezési eseményeket, például a hibás jelszavakat, illetve a fiók letiltását.
 
-A biztonsági áttekintő jelentés munkafüzetsablonjának eléréséhez hajtsa végre az alábbi lépéseket:
+A biztonsági áttekintés jelentés munkafüzet-sablonjának eléréséhez hajtsa végre a következő lépéseket:
 
-1. Keresse meg és válassza ki az **Azure Active Directory tartományi szolgáltatásokat** az Azure Portalon.
+1. Keresse meg és válassza ki **Azure Active Directory Domain Services** a Azure Portal.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*
-1. A bal oldali menüben válassza a **Figyelés > munkafüzetek**
+1. A bal oldali menüben válassza a **figyelés > munkafüzetek** lehetőséget.
 
-    ![Válassza a Munkafüzetek menüt az Azure Portalon](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Válassza a munkafüzetek menü lehetőséget a Azure Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
-1. Válassza ki a **Biztonsági áttekintés jelentést**.
-1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetést, majd az Azure Monitor munkaterületét. Válasszon **egy időtartományt**, például *az Elmúlt 7 napot.*
+1. Válassza a **biztonsági áttekintés jelentést**.
+1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd Azure Monitor munkaterületet. Válasszon **időtartományt**, például az *utolsó 7 napot*.
 
-    ![Válassza a Munkafüzetek menüt az Azure Portalon](./media/use-azure-monitor-workbooks/select-query-filters.png)
+    ![Válassza a munkafüzetek menü lehetőséget a Azure Portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    A **Mozaik nézet** és a Diagram **nézet** beállításai is módosíthatók az adatok igény szerint való elemzéséhez és megjelenítéséhez
+    A **csempék** és a **diagram nézet** beállításainak módosításával a kívánt módon elemezheti és megjelenítheti az adatmegjelenítést
 
-1. Egy adott eseménytípusba való részletezéshez válassza ki a **Bejelentkezési eredménykártyák** egyikét, például a *Zárolt fiók,* akövetkező példában látható módon:
+1. Egy adott eseménytípus részletezéséhez válassza ki az egyik **bejelentkezési eredmény** kártyát, például a *fiók kizárva*lehetőséget, ahogy az alábbi példában is látható:
 
-    ![Példa biztonsági áttekintő jelentés adataira az Azure Monitor munkafüzeteiben](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
+    ![Példa a biztonsági áttekintésre Azure Monitor munkafüzetekbe vizualizációzott adatjelentések](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
 
-1. A biztonsági áttekintő jelentés alsó része a diagram alatt lebontja a kiválasztott tevékenységtípust. A jobb oldalon szereplő felhasználónevek szerint szűrhet, ahogy az a következő példajelentésben látható:
+1. A diagram alatti biztonsági áttekintés jelentés alsó részében a kiválasztott tevékenységtípus megszakad. A jobb oldalon lévő felhasználónevek alapján szűrheti, ahogy az alábbi példában is látható:
 
     [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
-## <a name="use-the-account-activity-report-workbook"></a>A fióktevékenység-jelentés munkafüzetének használata
+## <a name="use-the-account-activity-report-workbook"></a>A fiók tevékenységi jelentés munkafüzetének használata
 
-Egy adott felhasználói fiókkal kapcsolatos problémák elhárítása érdekében a fióktevékenység-jelentés lebontja a részletes naplónapló-információkat. Tekintse át, ha egy rossz felhasználónév vagy jelszó volt megadva a bejelentkezés során, és a bejelentkezési kísérlet forrása.
+Ha segítségre van szüksége egy adott felhasználói fiókkal kapcsolatos problémák elhárításához, akkor a fiók tevékenységi jelentése megszakítja a naplózási Eseménynapló részletes információit. Áttekintheti, hogy mikor adtak meg rossz felhasználónevet vagy jelszót a bejelentkezés során, valamint a bejelentkezési kísérlet forrását.
 
-A fióktevékenység-jelentés munkafüzetsablonjának eléréséhez hajtsa végre az alábbi lépéseket:
+A fiók tevékenységi jelentéshez tartozó munkafüzet-sablon eléréséhez hajtsa végre a következő lépéseket:
 
-1. Keresse meg és válassza ki az **Azure Active Directory tartományi szolgáltatásokat** az Azure Portalon.
+1. Keresse meg és válassza ki **Azure Active Directory Domain Services** a Azure Portal.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*
-1. A bal oldali menüben válassza a **Figyelés > munkafüzetek**
-1. Válassza ki a **Partnertevékenység-jelentést**.
-1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetést, majd az Azure Monitor munkaterületét. Válasszon egy **időtartományt**, például *az Elmúlt 30 napot,* majd azt, hogy a **Csempe nézet** hogyan képviselje az adatokat. Szűrhet **fiók felhasználóneve**, például *felix*, ahogy az a következő példajelentésben látható:
+1. A bal oldali menüben válassza a **figyelés > munkafüzetek** lehetőséget.
+1. Válassza ki a **fiók tevékenységének jelentését**.
+1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd Azure Monitor munkaterületet. Válassza ki az **időtartományt**, például az *utolsó 30 napot*, majd azt, hogy a **Mozaik nézet** hogyan legyen ábrázolva az adathalmazban. Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix*nevet:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
-    A diagram alatti területen az egyes bejelentkezési események, valamint a tevékenység eredménye és a forrás munkaállomás információkat. Ez az információ segíthet meghatározni a bejelentkezési események ismétlődő forrásait, amelyek fiókzárolást okozhatnak, vagy potenciális támadást jelezhetnek.
+    A diagram alatti rész az egyes bejelentkezési eseményeket mutatja be, valamint olyan információkat, mint például a tevékenység eredménye és a forrás munkaállomás. Ezek az információk segíthetnek meghatározni a bejelentkezési események ismételt forrásait, amelyek a fiókok zárolását okozhatják, vagy potenciális támadást jelezhetnek.
 
-A biztonsági áttekintő jelentéshez ugyanúgy, ha a jelentés tetején lévő különböző csempékbe is leáshat, hogy szükség szerint megjelenítse és elemezze az adatokat.
+A biztonsági áttekintés jelentéshez hasonlóan a jelentés tetején található különböző csempéket is megtekintheti, és szükség szerint jelenítheti meg és elemezheti az információkat.
 
 ## <a name="save-and-edit-workbooks"></a>Munkafüzetek mentése és szerkesztése
 
-Az Azure AD DS által biztosított két sablonmunkafüzet jó kiindulópont a saját adatelemzéssel. Ha részletesebb adatokat kell beolvasnia az adatlekérdezésekben és vizsgálatokban, mentheti saját munkafüzeteit, és szerkesztheti a lekérdezéseket.
+Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a saját adatelemzéshez. Ha részletesebb információra van szüksége az adatlekérdezésekről és a vizsgálatokról, mentheti a saját munkafüzeteit, és szerkesztheti a lekérdezéseket.
 
-1. A munkafüzetsablonok másolatának mentéséhez jelölje be a Szerkesztés **> a Mentés > megosztott jelentésekként**lehetőséget, majd adjon meg egy nevet, és mentse azt.
-1. A sablon saját példányából válassza a **Szerkesztés** lehetőséget a szerkesztési módba való belépéshez. A jelentés bármely része mellett **kiválaszthatja** a kék Szerkesztés gombot, és módosíthatja azt.
+1. Ha menteni szeretné a munkafüzetek egyik sablonjának másolatát, válassza a **szerkesztés > Mentés másként > megosztott jelentések**lehetőséget, majd adjon meg egy nevet, és mentse.
+1. A sablon saját példányáról válassza a **Szerkesztés** lehetőséget a szerkesztési mód megadásához. A jelentés bármely része mellett a kék **Szerkesztés** gombot is választhatja, és módosíthatja azt.
 
-Az Azure Monitor-munkafüzetek összes diagramja és táblája Kusto-lekérdezések használatával jön létre. A saját lekérdezések létrehozásáról további információt az [Azure Monitor naplólekérdezései][azure-monitor-queries] és [a Kusto-lekérdezések oktatóanyaga című témakörben talál.][kusto-queries]
+Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
 
 ## <a name="next-steps"></a>További lépések
 
-Ha módosítania kell a jelszó- és zárolási házirendeket, olvassa el [a Felügyelt tartományok jelszó- és fiókzárolási házirendjecímű témakört.][password-policy]
+Ha módosítania kell a jelszó-és a zárolási házirendeket, tekintse [meg a felügyelt tartományokra vonatkozó jelszó-és fiókzárolási házirendeket][password-policy].
 
-A felhasználókkal kapcsolatos problémákról megtudhatja, hogy miként háríthatók el [a fiókbejelentkezési vagy][troubleshoot-sign-in] [fiókzárolási problémák.][troubleshoot-account-lockout]
+A felhasználókkal kapcsolatos problémák esetén megismerheti a [fiókok bejelentkezési problémáinak][troubleshoot-sign-in] vagy [fiókzárolási problémáinak][troubleshoot-account-lockout]elhárítását.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

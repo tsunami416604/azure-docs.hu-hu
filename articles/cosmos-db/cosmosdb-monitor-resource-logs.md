@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB-adatok figyelése az Azure Diagnosztikai beállítások használatával
-description: Megtudhatja, hogy miként figyelheti az Azure Cosmos DB-ben tárolt adatok teljesítményét és rendelkezésre állását az Azure Diagnostic siai beállításokkal
+title: Azure Cosmos DB-adatellenőrzés az Azure diagnosztikai beállításainak használatával
+description: Ismerje meg, hogyan használható az Azure diagnosztikai beállításai a Azure Cosmos DB tárolt adatmennyiség és rendelkezésre állás figyelésére
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
 ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521043"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Az Azure Cosmos DB-adatok figyelése az Azure diagnosztikai beállításainak használatával
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
 
-Az Azure diagnosztikai beállításai az erőforrásnaplók gyűjtésére szolgálnak. Az Azure-erőforrás naplók által kibocsátott egy erőforrás, és gazdag, gyakori adatokat az adott erőforrás működéséről. Ezeket a naplókat kérésenként rögzíti, és "adatsíknaplóknak" is nevezik őket. Néhány példa az adatsík-műveletekre: törlés, beszúrás és olvasási hírcsatorna. Ezeknek a naplóknak a tartalma erőforrástípustól függően változik.
+Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére szolgálnak. Az Azure-erőforrás-naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és a továbbiakban "adatsíkok naplóiként" is emlegetik. Néhány példa az adatsík-műveletekre: delete, INSERT és readFeed. A naplók tartalma az erőforrástípus alapján változik.
 
-A platformmetrikák és a tevékenységnaplók gyűjtése automatikusan történik, mivel létre kell hoznia egy diagnosztikai beállítást az erőforrásnaplók összegyűjtéséhez vagy az Azure Monitoron kívülre továbbításhoz. Az Azure Cosmos-fiókok diagnosztikai beállítását az alábbi lépések végrehajtásával kapcsolhatja be:
+A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg az Azure Cosmos-fiókot. Nyissa **meg** a Diagnosztikai beállítások ablaktáblát, és válassza **a Diagnosztikai beállítás hozzáadása** lehetőséget.
+1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
-1. A **Diagnosztikai beállítások** ablaktáblán töltse ki az űrlapot a következő adatokkal: 
+1. A **diagnosztikai beállítások** panelen töltse ki az űrlapot a következő részletekkel: 
 
-    * **Név**: Adja meg a létrehozandó naplók nevét.
+    * **Név**: adjon meg egy nevet a létrehozandó naplók számára.
 
-    * A naplókat archiválhatja **egy tárfiókba,** **streamelheti egy eseményközpontba** vagy **elküldheti a Log Analytics szolgáltatásba**
+    * A naplókat tárolhatja **archiválásra egy Storage-fiókba**, **streamet egy Event hub** -ba, vagy **elküldheti log Analytics**
 
-1. Diagnosztikai beállítás létrehozásakor megadhatja, hogy a naplók melyik kategóriáját kell összegyűjteni. Az Azure Cosmos DB által támogatott naplók kategóriái az alábbiakban láthatók az általuk gyűjtött mintanaplóval együtt:
+1. Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure Cosmos DB által támogatott naplók kategóriái a következőkkel együtt vannak felsorolva:
 
- * **DataPlaneRequests:** Válassza ezt a lehetőséget a háttér-kérelmek naplózásához az összes API-k, amelyek magukban foglalják az SQL, Graph, MongoDB, Cassandra és table API-fiókok az Azure Cosmos DB. A legfontosabb tulajdonságok `Requestcharge`a `statusCode` `clientIPaddress`következők: `partitionID`, , , és .
+ * **DataPlaneRequests**: válassza ezt a lehetőséget, ha a háttérbeli kérelmeket naplózni szeretné az összes API-ra, beleértve az SQL-, Graph-, MongoDB-, Cassandra-és Table API-fiókokat Azure Cosmos db. A fontos tulajdonságok a következők: `Requestcharge`, `statusCode` `clientIPaddress`, és `partitionID`.
 
     ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests:** Válassza ezt a lehetőséget a felhasználó által kezdeményezett kérelmek naplózásához az előtéri az Azure Cosmos DB MongoDB API-jának kiszolgálásához. Ez a naplótípus más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságok `Requestcharge`a `opCode`következők: , . Ha engedélyezi a MongoRequests a diagnosztikai naplók, győződjön meg róla, hogy kapcsolja ki a DataPlaneRequests. Az API-n minden kérelemhez egy naplót láthat.
+* **MongoRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a MongoDB API-ra irányuló Azure Cosmos db kérések kiszolgálásához. Ez a napló típusa más API-fiókok esetében nem érhető el. A fontos tulajdonságok a következők: `Requestcharge`, `opCode`. Ha engedélyezi a MongoRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* **CassandraRequests:** Válassza ezt a lehetőséget a felhasználó által kezdeményezett kérelmek naplózásához az előtéri az Azure Cosmos DB Cassandra API-jának kiszolgálásához. Ez a naplótípus más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságai `requestCharge` `piiCommandText`a `operationName`, , . Ha engedélyezi a CassandraRequests-t a diagnosztikai naplókban, győződjön meg arról, hogy kikapcsolja a DataPlaneRequests.When you enable CassandraRequests in diagnostics logs, make sure to turn off the DataPlaneRequests. Az API-n minden kérelemhez egy naplót láthat.
+* **CassandraRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből, hogy a kérelmeket a CASSANDRA Azure Cosmos db API-jával kézbesítse. Ez a napló típusa más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságok a következők `operationName` `requestCharge`:,. `piiCommandText` Ha engedélyezi a CassandraRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
 
-* **QueryRuntimeStatistics**: Ezzel a beállítással naplózva a végrehajtott lekérdezésszöveget. Ez a naplótípus csak az SQL API-fiókok hoz érhető el.
+* **QueryRuntimeStatistics**: válassza ezt a lehetőséget a végrehajtott lekérdezési szöveg naplózásához. Ez a naplózási típus csak az SQL API-fiókok esetében érhető el.
 
     ```json
     { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
     ```
 
-* **PartitionKeyStatistics**: Válassza ezt a lehetőséget a partíciókulcsok statisztikáinak naplózásához. Ez jelenleg a partíciókulcsok tárolási méretével (KB) jelenik meg. Tekintse meg a [hibaelhárítási problémák segítségével azure diagnosztikai lekérdezések](#diagnostic-queries) szakasza ebben a cikkben. Például a "PartitionKeyStatistics" (PartitionKeyStatistics) kifejezést használó lekérdezések. A napló az első három partíciókulcson kerül kibocsátásra, amelyek a legtöbb adattárolót foglalják el. Ez a napló olyan adatokat tartalmaz, mint például az előfizetés azonosítója, a régió neve, az adatbázis neve, a gyűjtemény neve, a partíciókulcs és a tárterület mérete kb-ban.
+* **PartitionKeyStatistics**: válassza ezt a lehetőséget a partíciós kulcsok statisztikáinak naplózásához. Ez jelenleg a partíciós kulcsok tárolási méretével (KB) van ábrázolva. Tekintse meg a jelen cikk [Azure diagnosztikai lekérdezések használatával kapcsolatos hibaelhárítási problémáit](#diagnostic-queries) . Például a "PartitionKeyStatistics" kifejezést használó lekérdezések. A rendszer kibocsátja a naplót a legtöbb adattárolást elfoglaló első három partíciós kulcson. Ez a napló olyan adatmennyiséget tartalmaz, mint például az előfizetés azonosítója, a régió neve, az adatbázis neve, a gyűjtemény neve, a partíció kulcsa, valamint a tárterület mérete KB-ban.
 
     ```json
     { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
     ```
 
-* **PartitionKeyRUConsumption**: Ez a napló a partíciókulcsok másodpercenkénti összesített RU/s-felhasználását jelenti. Jelenleg az Azure Cosmos DB csak az SQL API-fiókokhoz, valamint a pontolvasási/-olvasási és tárolt eljárási műveletekhez jelent partíciókulcsokat. más API-k és művelettípusok nem támogatottak. Más API-k esetében a diagnosztikai naplótábla partíciókulcs-oszlopa üres lesz. Ez a napló olyan adatokat tartalmaz, mint az előfizetés azonosítója, a régió neve, az adatbázis neve, a gyűjtemény neve, a partíciókulcs, a művelet típusa és a kérelemdíj. Tekintse meg a [hibaelhárítási problémák segítségével azure diagnosztikai lekérdezések](#diagnostic-queries) szakasza ebben a cikkben. Például a "PartitionKeyRUConsumption" (PartitionKeyRUConsumption) használó lekérdezések. 
+* **PartitionKeyRUConsumption**: Ez a napló a partíciós kulcsok aggregált másodpercenkénti számát jelenti. A Azure Cosmos DB jelenleg csak az SQL API-fiókok, valamint a pont írási/olvasási és tárolt eljárási műveleteinek partíciós kulcsait jelenti. más API-k és műveleti típusok nem támogatottak. Más API-k esetén a diagnosztikai napló tábla partíciós kulcs oszlopa üres lesz. Ez a napló olyan adattípusokat tartalmaz, mint például az előfizetés azonosítója, a régió neve, az adatbázis neve, a gyűjtemény neve, a partíció kulcsa, a művelet típusa és a kérelem díja. Tekintse meg a jelen cikk [Azure diagnosztikai lekérdezések használatával kapcsolatos hibaelhárítási problémáit](#diagnostic-queries) . Például a "PartitionKeyRUConsumption" kifejezést használó lekérdezések. 
 
-* **ControlPlaneRequests**: Ez a napló részleteket tartalmaz a vezérlősík-műveletekről, például egy fiók létrehozásáról, egy régió hozzáadásáról vagy eltávolításáról, a fiókreplikációs beállítások frissítésével stb. Ez a naplótípus minden API-típushoz elérhető, amelyek tartalmazzák az SQL (Core), a MongoDB, a Gremlin, a Cassandra, a Table API.
+* **ControlPlaneRequests**: Ez a napló a vezérlési sík műveleteivel, például a fiókok létrehozásával, a régiók hozzáadásával vagy eltávolításával, a fiók replikációs beállításainak frissítésével kapcsolatos részleteket tartalmazza. Ez a napló típusa minden olyan API-típushoz elérhető, amely tartalmazza az SQL (mag), a MongoDB, a Gremlin, a Cassandra és a Table API.
 
-* **Kérések:** Válassza ezt a lehetőséget az Azure Cosmos DB metrikaadatok gyűjtéséhez a diagnosztikai beállításban lévő célhelyekre. Ez ugyanazokat az adatokat gyűjtött automatikusan az Azure Metrics. Metrikaadatok gyűjtése erőforrásnaplókkal mindkét típusú adat együtt elemzéséhez és metrikaadatok küldéséhez az Azure Monitoron kívül.
+* **Kérelmek**: akkor válassza ezt a lehetőséget, ha a Azure Cosmos DBről a diagnosztikai beállításokban lévő célhelyekre szeretne metrikus adatokat gyűjteni. Ez ugyanazokat az adatokat gyűjti össze automatikusan az Azure-Mérőszámokban. A metrikai adatok összegyűjtése az erőforrás-naplókkal mindkét típusú adat elemzéséhez, valamint a Azure Monitoron kívüli metrikai adatok küldéséhez.
 
-Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállítások létrehozásáról az [Azure-naplónaplók és metrikák gyűjtéséhez diagnosztikai beállítás létrehozása az Azure-cikkben című témakörben](../azure-monitor/platform/diagnostic-settings.md) olvashat részletesen.
+A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes információkért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Diagnosztikai lekérdezésekkel kapcsolatos problémák elhárítása
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Diagnosztikai lekérdezésekkel kapcsolatos hibák elhárítása
 
-1. Hogyan juthat el a kérelem díjak drága lekérdezések?
+1. Hogyan kérheti le a költséges lekérdezések díjait?
 
    ```Kusto
    AzureDiagnostics
@@ -88,7 +88,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | limit 100
    ```
 
-1. Hogyan lehet megtalálni, hogy mely műveletek szedik a legtöbb RU/s-t?
+1. Hogyan lehet megkeresni, hogy mely műveletek zajlanak a legtöbb RU/s?
 
     ```Kusto
    AzureDiagnostics
@@ -96,7 +96,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | where TimeGenerated >= ago(2h) 
    | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
-1. Hogyan juthat be a disztribúció a különböző műveletek?
+1. Hogyan kérheti le a különböző műveletek terjesztését?
 
    ```Kusto
    AzureDiagnostics
@@ -105,7 +105,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Mi a partíció által felhasznált maximális átviteli teljesítmény?
+1. Mi a partíció által felhasznált maximális átviteli sebesség?
 
    ```Kusto
    AzureDiagnostics
@@ -114,7 +114,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | summarize max(requestCharge_s) by bin(TimeGenerated, 1h), partitionId_g
    ```
 
-1. Hogyan juthat el az információt a partíciókulcsok RU / s fogyasztás másodpercenként?
+1. Hogyan kérheti le a másodpercenkénti RU/s-fogyasztási kulcsok adatait?
 
    ```Kusto
    AzureDiagnostics 
@@ -123,7 +123,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | order by TimeGenerated asc 
    ```
 
-1. Egy adott partíciókulcs kérelemdíjának bekérése
+1. Egy adott partíciós kulcs igénylési díjainak beszerzése
 
    ```Kusto
    AzureDiagnostics 
@@ -131,7 +131,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | where parse_json(partitionKey_s)[0] == "2" 
    ```
 
-1. Hogyan juthat el a felső partíció kulcsok a legtöbb RU /s egy adott időszakban fogyasztott? 
+1. Hogyan lehet a legfelső szintű partíciós kulcsokat lekérni a legtöbb RU/s értékkel egy adott időszakban? 
 
    ```Kusto
    AzureDiagnostics 
@@ -141,7 +141,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | order by total desc
     ```
 
-1. Hogyan juthat el a naplókat a partíciókulcsok, amelyek tárolási mérete nagyobb, mint 8 GB?
+1. A naplófájlok beszerzése azokhoz a partíciós kulcsokhoz, amelyek tárolási mérete meghaladja a 8 GB-ot?
 
    ```Kusto
    AzureDiagnostics
@@ -149,7 +149,7 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Hogyan juthat partíció kulcs statisztikák kiértékelése ferde között az első három partíciót adatbázis-fiók?
+1. A partíciós kulcs statisztikáinak beszerzése, hogy kiértékelje az adatbázis-fiók három partíciójának kiértékelését?
 
     ```Kusto
     AzureDiagnostics 
@@ -159,5 +159,5 @@ Az Azure Portal, a CLI vagy a PowerShell használatával diagnosztikai beállít
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Monitor az Azure Cosmos DB-hoz](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
-* [Az Azure Cosmos DB metrikák figyelése és hibakeresése](use-metrics.md)
+* [Azure Cosmos DB Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
+* [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

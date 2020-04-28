@@ -1,6 +1,6 @@
 ---
-title: Jelentések & naplók megtekintése a jogosultságkezelésben - Azure AD
-description: Megtudhatja, hogyan tekintheti meg a felhasználói hozzárendelések jelentését és a naplónaplókat az Azure Active Directory jogosultságkezelésében.
+title: Jelentések megtekintése a jogosultságok kezelése & naplófájljaiban – Azure AD
+description: Megtudhatja, hogyan tekintheti meg a felhasználó-hozzárendelési jelentést és a naplókat Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -17,98 +17,98 @@ ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128423"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Jelentések és naplók megtekintése az Azure AD-jogosultságok kezelésében
 
-Az Azure AD jogosultságkezelési jelentések és az Azure AD naplózási napló további részleteket tartalmaz arról, hogy a felhasználók milyen erőforrásokhoz férhetnek hozzá. Rendszergazdaként megtekintheti a felhasználó hozzáférési csomagjait és erőforrás-hozzárendeléseit, és megtekintheti a kérelemnaplókat naplózási célokra vagy a felhasználó kérésének állapotának meghatározásához. Ez a cikk ismerteti, hogyan használhatja a jogosultságkezelési jelentések és az Azure AD naplózási naplók.
+Az Azure AD-jogosultságok kezelési jelentései és az Azure AD-napló további részleteket tartalmaz arról, hogy a felhasználók milyen erőforrásokhoz férhetnek hozzá. Rendszergazdaként megtekintheti a felhasználók hozzáférési csomagjait és erőforrás-hozzárendeléseit, valamint naplózási célból megtekintheti a kérelmek naplóit, illetve meghatározhatja a felhasználó kérelmének állapotát. Ez a cikk a jogosultsági felügyeleti jelentések és az Azure AD naplóinak használatát ismerteti.
 
-Az alábbi videóból megtudhatja, hogyan tekintheti meg, hogy a felhasználók milyen erőforrásokhoz férhetnek hozzá a jogosultságkezelésben:
+Tekintse meg az alábbi videót, amelyből megtudhatja, hogy miként tekintheti meg, hogy a felhasználók hogyan férhetnek hozzá a jogosultságok kezeléséhez:
 
 >[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-access-packages-for-a-user"></a>Felhasználó hozzáférési csomagjainak megtekintése
 
-Ez a jelentés lehetővé teszi a felhasználó által igényelhető összes hozzáférési csomag és a felhasználóhoz jelenleg hozzárendelt hozzáférési csomagok listáját.
+Ez a jelentés lehetővé teszi a felhasználó által igényelhető összes hozzáférési csomag, valamint a felhasználóhoz jelenleg hozzárendelt hozzáférési csomagok listázását.
 
-**Előfeltételi szerepkör:** Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Kattintson **az Azure Active Directory,** majd **az Identitáscégcégcég**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
 
-1. A bal oldali menüben kattintson a **Jelentések parancsra.**
+1. A bal oldali menüben kattintson a **jelentések**elemre.
 
-1. Kattintson **a felhasználó Access-csomagjai elemre.**
+1. Kattintson **a felhasználók hozzáférési csomagjai**elemre.
 
-1. Kattintson **a Felhasználók kijelölése** gombra a Felhasználók kiválasztása ablaktábla megnyitásához.
+1. Kattintson a **felhasználók kiválasztása** lehetőségre a felhasználók kiválasztása ablaktábla megnyitásához.
 
-1. Keresse meg a felhasználót a listában, majd kattintson a **Kijelölés gombra.**
+1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás**elemre.
 
-    A **Kérheti** lap megjeleníti a felhasználó által igényelhető hozzáférési csomagok listáját. Ezt a listát a hozzáférési csomagokhoz definiált [kérelemházirendek](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) határozzák meg. 
+    A kérhető **kérelem** lap megjeleníti a felhasználó által kérhető hozzáférési csomagok listáját. Ezt a listát a hozzáférési csomagokhoz definiált [kérési szabályzatok](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) határozzák meg. 
 
-    ![Felhasználói csomagok elérése](./media/entitlement-management-reports/access-packages-report.png)
+    ![Felhasználók hozzáférési csomagjai](./media/entitlement-management-reports/access-packages-report.png)
 
-1. Ha egy hozzáférési csomaghoz egynél több erőforrásszerepkör vagy házirend tartozik, a kijelölés részleteinek megtekintéséhez kattintson az erőforrás-szerepkörökre vagy házirend-bejegyzésre.
+1. Ha egynél több erőforrás-szerepkör vagy-szabályzat van egy hozzáférési csomaghoz, kattintson az erőforrás-szerepkörök vagy-házirendek bejegyzésre a kijelölés részleteinek megtekintéséhez.
 
-1. A **Hozzárendelt** fülre kattintva megtekintheti a felhasználóhoz jelenleg hozzárendelt hozzáférési csomagok listáját. Ha egy hozzáférési csomag hozzá van rendelve egy felhasználóhoz, az azt jelenti, hogy a felhasználó hozzáfér a hozzáférési csomag összes erőforrásszerepköréhez.
+1. A **hozzárendelt** lapra kattintva megtekintheti a felhasználóhoz jelenleg hozzárendelt hozzáférési csomagok listáját. Ha egy hozzáférési csomag hozzá van rendelve egy felhasználóhoz, az azt jelenti, hogy a felhasználó hozzáféréssel rendelkezik a hozzáférési csomagban található összes erőforrás-szerepkörhöz.
 
 ## <a name="view-resource-assignments-for-a-user"></a>Felhasználó erőforrás-hozzárendeléseinek megtekintése
 
-Ez a jelentés lehetővé teszi a jogosultságkezelésben a felhasználóhoz jelenleg hozzárendelt erőforrások listázását. Ne feledje, hogy ez a jelentés a jogosultságkezeléssel kezelt erőforrásokra készült. Előfordulhat, hogy a felhasználó a jogosultságkezelésen kívül más erőforrásokhoz is hozzáférhet a címtárban.
+Ez a jelentés lehetővé teszi, hogy a jogosultságok kezelésében jelenleg a felhasználóhoz rendelt erőforrásokat sorolja fel. Vegye figyelembe, hogy ez a jelentés a jogosultsági felügyelettel felügyelt erőforrásokhoz használható. Előfordulhat, hogy a felhasználó a jogosultságok felügyelete kívül más erőforrásokhoz is hozzáfér a címtárban.
 
-**Előfeltételi szerepkör:** Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Kattintson **az Azure Active Directory,** majd **az Identitáscégcégcég**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
 
-1. A bal oldali menüben kattintson a **Jelentések parancsra.**
+1. A bal oldali menüben kattintson a **jelentések**elemre.
 
 1. Kattintson **a felhasználó erőforrás-hozzárendelései**elemre.
 
-1. Kattintson **a Felhasználók kijelölése** gombra a Felhasználók kiválasztása ablaktábla megnyitásához.
+1. Kattintson a **felhasználók kiválasztása** lehetőségre a felhasználók kiválasztása ablaktábla megnyitásához.
 
-1. Keresse meg a felhasználót a listában, majd kattintson a **Kijelölés gombra.**
+1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás**elemre.
 
-    Megjelenik a felhasználóhoz jelenleg hozzárendelt erőforrások listája. A lista azt a hozzáférési csomagot és házirendet is megjeleníti, amelytől az erőforrásszerepkört kapták, valamint a hozzáférés kezdési és befejezési dátumát.
+    Megjelenik a felhasználóhoz jelenleg hozzárendelt erőforrások listája. A lista tartalmazza azt a hozzáférési csomagot és házirendet is, amelyhez az erőforrás-szerepkör származik, valamint a hozzáférés kezdési és befejezési dátumát.
     
-    Ha egy felhasználó két vagy több csomagban fér hozzá ugyanahhoz az erőforráshoz, egy nyílra kattintva megtekintheti az egyes csomagokat és házirendeket.
+    Ha egy felhasználó ugyanahhoz az erőforráshoz van hozzáférése két vagy több csomagban, akkor a nyílra kattintva megtekintheti az egyes csomagokat és házirendeket.
 
     ![Felhasználó erőforrás-hozzárendelései](./media/entitlement-management-reports/resource-assignments-report.png)
 
-## <a name="determine-the-status-of-a-users-request"></a>A felhasználó kérésének állapotának meghatározása
+## <a name="determine-the-status-of-a-users-request"></a>Felhasználói kérés állapotának meghatározása
 
-Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan kért és kapott hozzáférést egy hozzáférési csomaghoz, használhatja az Azure AD naplózási naplóját. Különösen a naplórekordok és a `EntitlementManagement` `UserManagement` kategóriák segítségével további részleteket kaphat az egyes kérelmek feldolgozási lépéseiről.  
+Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan kért és kapott hozzáférést egy hozzáférési csomaghoz, használhatja az Azure AD naplót. A `EntitlementManagement` és `UserManagement` a kategóriákban található naplóbejegyzések használatával további részleteket tudhat meg az egyes kérelmek feldolgozási lépéseiről.  
 
-1. Kattintson **az Azure Active Directory,** majd **a Naplók naplózása parancsra.**
+1. Kattintson a **Azure Active Directory** , majd a **naplók**elemre.
 
-1. A lap tetején módosítsa a `EntitlementManagement` `UserManagement` **Kategóriát** vagy a , a keresett naplózási rekordtól függően.  
+1. A felső részen módosítsa a **kategóriát** a `EntitlementManagement` vagy `UserManagement`a értékre a keresett naplózási rekordtól függően.  
 
 1. Kattintson az **Alkalmaz** gombra.
 
-1. A naplók letöltéséhez kattintson a **Letöltés gombra.**
+1. A naplók letöltéséhez kattintson a **Download (Letöltés**) gombra.
 
-Amikor az Azure AD új kérelmet kap, naplórekordot ír, amelyben a `User requests access package assignment` **kategória** és `EntitlementManagement` a **tevékenység** általában.  Az Azure Portalon létrehozott közvetlen hozzárendelés esetén **Activity** a naplózási rekord `Administrator directly assigns user to access package`Tevékenység mezője a , és a hozzárendelést végző felhasználót az **ActorUserPrincipalName**azonosítja.
+Amikor az Azure AD új kérést kap, egy naplózási rekordot ír, amelyben a **Kategória** szerepel `EntitlementManagement` , és a **tevékenység** általában `User requests access package assignment`.  A Azure Portalban létrehozott közvetlen hozzárendelés esetén a naplózási rekord `Administrator directly assigns user to access package` **tevékenység** mezőjében a **ActorUserPrincipalName**azonosítja a hozzárendelést végrehajtó felhasználót.
 
 Az Azure AD további naplózási rekordokat fog írni, amíg a kérelem folyamatban van, beleértve a következőket:
 
 | Kategória | Tevékenység | Kérelem állapota |
 | :---- | :------------ | :------------ |
-| `EntitlementManagement` | `Auto approve access package assignment request` | A kérelemhez nincs szükség jóváhagyásra |
-| `UserManagement` | `Create request approval` | A kérelem hez jóváhagyás szükséges |
-| `UserManagement` | `Add approver to request approval` | A kérelem hez jóváhagyás szükséges |
+| `EntitlementManagement` | `Auto approve access package assignment request` | A kérelem nem igényel jóváhagyást |
+| `UserManagement` | `Create request approval` | A kérelem jóváhagyást igényel |
+| `UserManagement` | `Add approver to request approval` | A kérelem jóváhagyást igényel |
 | `EntitlementManagement` | `Approve access package assignment request` | Kérelem jóváhagyva |
-| `EntitlementManagement` | `Ready to fulfill access package assignment request` |A kérelem jóváhagyva, vagy nem igényel jóváhagyást |
+| `EntitlementManagement` | `Ready to fulfill access package assignment request` |A kérelem jóváhagyva vagy nem igényel jóváhagyást |
 
-Amikor egy felhasználóhoz hozzáférés van rendelve, az Azure `EntitlementManagement` AD naplórekordot ír a **tevékenységgel** `Fulfill access package assignment`rendelkező kategóriához.  A hozzáférést kapó felhasználót az **ActorUserPrincipalName** mező azonosítja.
+Amikor egy felhasználóhoz hozzáférési hozzáférés van rendelve, az Azure AD egy naplózási `EntitlementManagement` rekordot ír a kategóriába a **tevékenységgel** `Fulfill access package assignment`.  Az **ActorUserPrincipalName** mező azonosítja a hozzáférést fogadó felhasználót.
 
-Ha a hozzáférés nincs hozzárendelve, majd az Azure `EntitlementManagement` AD `Deny access package assignment request`naplórekordot ír a **kategóriához a tevékenységgel,** ha a kérelmet egy jóváhagyó megtagadta, vagy `Access package assignment request timed out (no approver action taken)`ha a kérelem időtúlodott, mielőtt a jóváhagyó jóváhagyhatja.
+Ha a hozzáférés nem lett hozzárendelve, akkor az Azure AD egy naplózási `EntitlementManagement` rekordot ír **Activity** a tevékenység `Deny access package assignment request`kategóriába, ha a kérést egy jóváhagyó megtagadta `Access package assignment request timed out (no approver action taken)`, vagy ha a kérelem túllépte az időkorlátot a jóváhagyó jóváhagyása előtt.
 
-Amikor a felhasználó hozzáférési csomag-hozzárendelése lejár, a felhasználó megszakítja vagy egy rendszergazda eltávolítja, majd `EntitlementManagement` az Azure `Remove access package assignment`AD naplórekordot ír a **kategóriához a tevékenységgel.**
+Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhasználó megszakította vagy eltávolítja a rendszergazdát, akkor az Azure AD naplózási rekordot ír a `EntitlementManagement` **tevékenységgel** rendelkező kategóriához `Remove access package assignment`.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Jelentések és naplók archiválása](entitlement-management-logs-and-reporting.md)
-- [Az Azure AD-jogosultságok kezelésének hibaelhárítása](entitlement-management-troubleshoot.md)
-- [Gyakori forgatókönyvek](entitlement-management-scenarios.md)
+- [Az Azure AD-jogosultságok kezelése – problémamegoldás](entitlement-management-troubleshoot.md)
+- [Gyakori helyzetek](entitlement-management-scenarios.md)

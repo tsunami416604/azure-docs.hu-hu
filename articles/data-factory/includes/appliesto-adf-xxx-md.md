@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 7c5508ff085e33bdaef16113330bf94b8af49479
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398818"
 ---
-<Token>**VONATKOZIK:** ![](../media/applies-to/yes.png)igen Azure ![](../media/applies-to/no.png)Data Factory nem Azure Synapse Analytics (Előzetes verzió)</Token>
+<Token>**A** ![következőkre vonatkozik](../media/applies-to/yes.png): ![igen](../media/applies-to/no.png)Azure Data Factory nincs Azure szinapszis Analytics (előzetes verzió)</Token>

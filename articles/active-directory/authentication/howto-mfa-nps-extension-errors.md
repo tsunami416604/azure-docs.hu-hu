@@ -1,6 +1,6 @@
 ---
-title: Az Azure MFA NPS-bővítmény hibáinak elhárítása – Azure Active Directory
-description: Segítség az Azure többtényezős hitelesítéshez való kapcsolathívási kiszolgáló bővítményével kapcsolatos problémák megoldásához
+title: Az Azure MFA NPS-bővítmény hibaelhárítása – Azure Active Directory
+description: Segítség kérése az Azure hálózati házirend-bővítményével kapcsolatos problémák megoldásához Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,102 +12,102 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653718"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből
 
-Ha hibákat tapasztal az Azure többtényezős hitelesítés hez a nps-bővítményben, használja ezt a cikket a megoldás gyorsabb eléréséhez. A hálózati házirend-kiszolgáló bővítménynaplói az Eseménynaplóban találhatók az **Egyéni nézetek** > **kiszolgálói szerepkörök** > **hálózati házirend és hozzáférési szolgáltatások** csoportban azon a kiszolgálón, amelyen a hálózati házirend-kiszolgáló bővítmény telepítve van.
+Ha az Azure Multi-Factor Authentication hálózati házirend-bővítményével kapcsolatos hibákba ütközik, ebben a cikkben gyorsan elérheti a felbontást. A hálózati házirend-kiszolgáló bővítmény naplófájljai a Eseménynapló **egyéni nézetek** > **kiszolgálói szerepkörök** > **hálózati házirend-és elérési szolgáltatások** részében találhatók azon a kiszolgálón, amelyen a hálózati házirend-bővítmény telepítve van.
 
-## <a name="troubleshooting-steps-for-common-errors"></a>A gyakori hibák elhárítási lépései
+## <a name="troubleshooting-steps-for-common-errors"></a>Gyakori hibák elhárítási lépései
 
 | Hibakód | Hibaelhárítási lépések |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | [Lépjen kapcsolatba](#contact-microsoft-support)az ügyfélszolgálattal, és sorolja fel a naplók gyűjtésére szolgáló lépések listáját. Adjon meg annyi információt a hiba előtt történtekről, mint ahiba, beleértve a bérlői azonosítót és a felhasználó egyszerű nevét (UPN). |
-| **CLIENT_CERT_INSTALL_ERROR** | Lehet, hogy az ügyféltanúsítvány telepítése vagy a bérlőhöz társított probléma merül fel. Az ügyféltanúsítványokkal kapcsolatos problémák kivizsgálásához kövesse [az MFA hálózati házirend-kiszolgáló bővítmény hibaelhárítása](howto-mfa-nps-extension.md#troubleshooting) című témakör utasításait. |
-| **ESTS_TOKEN_ERROR** | Kövesse az [MFA nps bővítmény hibaelhárítása](howto-mfa-nps-extension.md#troubleshooting) című témakör utasításait az ügyféltanúsítvány- és ADAL-tokenproblémák kivizsgálásához. |
-| **HTTPS_COMMUNICATION_ERROR** | A hálózati kiszolgáló nem tud válaszokat kapni az Azure MFA-tól. Ellenőrizze, hogy a tűzfalak kétirányúan vannak-e nyitva a be- éshttps://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | A kapcsolati kiszolgálón a kapcsolatikiszolgáló bővítménye, ellenőrizze, hogy el tudja-e érni `https://adnotifications.windowsazure.com` a és `https://login.microsoftonline.com/`a . Ha ezek a webhelyek nem töltődnek be, hárítsa el a kiszolgálón lévő kapcsolódáshibáit. |
-| **NPS-bővítmény az Azure MFA-hoz:** <br> Az Azure MFA-bővítmény e-alapú n-ps-bővítmény csak az AccessAccept-állapotban lévő Radius-kérelmek másodlagos hitelesítését hajtja végre. AccessReject válaszállapotú felhasználónévre érkezett kérelem, figyelmen kívül hagyva a kérést. | Ez a hiba általában az AD hitelesítési hibáját tükrözi, vagy azt, hogy a hálózati kiszolgáló nem tud válaszokat kapni az Azure AD-től. Ellenőrizze, hogy a tűzfalak kétirányúan `https://adnotifications.windowsazure.com` vannak-e nyitva a 80-as és 443-as portokról érkező és onnan érkező és `https://login.microsoftonline.com` használó forgalom számára. Azt is fontos ellenőrizni, hogy a Hálózati hozzáférési engedélyek TELEFONOS bevitel lapján a beállítás "hozzáférés vezérlése hálózati házirenden keresztül" beállítással van-e beállítva. Ez a hiba akkor is előidézhető, ha a felhasználóhoz nincs licenc rendelve. |
-| **REGISTRY_CONFIG_ERROR** | Hiányzik egy kulcs az alkalmazás rendszerleíró adatbázisából, ami azért lehet, mert a [PowerShell-parancsfájl](howto-mfa-nps-extension.md#install-the-nps-extension) nem futott a telepítés után. A hibaüzenetnek tartalmaznia kell a hiányzó kulcsot. Győződjön meg arról, hogy a kulcs a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa mappában van. |
-| **REQUEST_FORMAT_ERROR** <br> A sugárkérelemből hiányzik a kötelező radius felhasználónév\Azonosító attribútum. Annak ellenőrzése, hogy a n-ps fogadott-e RADIUS-kérelmeket | Ez a hiba általában egy telepítési problémát tükröz. A nps kiterjesztést radius-kérelmek fogadására képes nps-kiszolgálókra kell telepíteni. Az RDG és rras szolgáltatások függőségeként telepített nps-kiszolgálók nem fogadnak radius-kérelmeket. A nps kiterjesztés nem működik, ha ilyen telepítésekre van telepítve, és a hibák kivannak, mivel nem tudja olvasni a hitelesítési kérelem részleteit. |
-| **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a nps és a NAS-kiszolgálók közötti jelszótitkosítási protokoll támogatja a használt másodlagos hitelesítési módszert. **A PAP** támogatja az Azure MFA összes hitelesítési módszerét a felhőben: telefonhívás, egyirányú szöveges üzenet, mobilalkalmazás-értesítés és mobilalkalmazás-ellenőrző kód. **A CHAPV2** és **az EAP** támogatja a telefonhívást és a mobilalkalmazás-értesítéseket. |
-| **USERNAME_CANONICALIZATION_ERROR** | Ellenőrizze, hogy a felhasználó jelen van-e a helyszíni Active Directory-példányban, és hogy a nps szolgáltatás rendelkezik-e a címtár eléréséhez szükséges engedélyekkel. Ha erdőközi bizalmi kapcsolatokat használ, további segítségért [forduljon](#contact-microsoft-support) az ügyfélszolgálathoz. |
+| **CONTACT_SUPPORT** | [Forduljon az ügyfélszolgálathoz](#contact-microsoft-support), és nevezze el a naplók összegyűjtéséhez szükséges lépések listáját. Annyi információt adjon meg, amely a hiba előtt történt, beleértve a bérlői azonosítót és az egyszerű felhasználónevet (UPN). |
+| **CLIENT_CERT_INSTALL_ERROR** | Előfordulhat, hogy az ügyféltanúsítvány telepítésének vagy a bérlőhöz való hozzárendelésének problémája lehet. Az ügyfél-tanúsítványokkal kapcsolatos problémák kivizsgálásához kövesse az [MFA NPS-bővítmény hibáinak elhárítása című](howto-mfa-nps-extension.md#troubleshooting) témakör utasításait. |
+| **ESTS_TOKEN_ERROR** | Az ügyfél-tanúsítvány és az ADAL token problémáinak vizsgálatához kövesse az [MFA NPS-bővítmény hibáinak elhárítása](howto-mfa-nps-extension.md#troubleshooting) című témakör utasításait. |
+| **HTTPS_COMMUNICATION_ERROR** | Az NPS-kiszolgáló nem tud válaszokat kapni az Azure MFA-ból. Győződjön meg arról, hogy a tűzfalak a és a rendszer felé irányuló forgalom kétirányú megnyitásahttps://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | A hálózati házirend-kiszolgálót futtató kiszolgálón ellenőrizze, hogy elérhető `https://adnotifications.windowsazure.com` -e a és `https://login.microsoftonline.com/`a. Ha ezek a helyek nem töltődnek be, akkor hárítsa el a kapcsolódást az adott kiszolgálón. |
+| **NPS-bővítmény az Azure MFA-hoz:** <br> A hálózati házirend-kiszolgáló bővítménye az Azure MFA esetében csak a AccessAccept állapotban lévő RADIUS-kérelmek másodlagos hitelesítését hajtja végre. A válasz állapot AccessReject rendelkező felhasználói felhasználónévre vonatkozó kérelem érkezett, figyelmen kívül hagyva a kérést. | Ez a hiba általában egy hitelesítési hibát jelez az AD-ben, illetve azt, hogy az NPS-kiszolgáló nem tud válaszokat kapni az Azure AD-től. Győződjön meg arról, hogy a tűzfalak a 80-es és a 443 `https://adnotifications.windowsazure.com` - `https://login.microsoftonline.com` es porton keresztüli és onnan érkező, illetve onnan érkező és onnan érkező forgalom számára vannak Azt is fontos ellenőrizni, hogy a hálózati hozzáférési engedélyek Betárcsázás lapján a beállítás "hozzáférés vezérlése az NPS-hálózati házirend alapján" értékre van-e állítva. Ez a hiba akkor is aktiválható, ha a felhasználóhoz nincs hozzárendelve licenc. |
+| **REGISTRY_CONFIG_ERROR** | Hiányzik egy kulcs az alkalmazás beállításjegyzékében, ennek oka az lehet, hogy a [PowerShell-parancsfájlt](howto-mfa-nps-extension.md#install-the-nps-extension) a telepítés után nem futtatták. A hibaüzenetnek tartalmaznia kell a hiányzó kulcsot. Győződjön meg arról, hogy rendelkezik a kulcs HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
+| **REQUEST_FORMAT_ERROR** <br> A RADIUS-kérelemből hiányzik a kötelező RADIUS-userName\Identifier attribútum. A hálózati házirend-kiszolgáló RADIUS-kérelmek fogadásának ellenőrzése | Ez a hiba általában egy telepítési problémát tükröz. A hálózati házirend-kiszolgáló bővítményét telepíteni kell a RADIUS-kérelmeket fogadó NPS-kiszolgálókon. Azok a hálózati házirend-kiszolgálók, amelyek függőségként vannak telepítve a RDG és az RRAS szolgáltatáshoz, nem kapják meg a RADIUS-kéréseket. A hálózati házirend-kiszolgáló bővítmény nem működik, ha az ilyen telepítések és hibák miatt nem tudja olvasni a hitelesítési kérelem részleteit. |
+| **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a hálózati házirend-kiszolgáló és a NAS kiszolgálók közötti jelszó-titkosítási protokoll támogatja a másodlagos hitelesítési módszert, amelyet használ. A **pap** az Azure MFA összes hitelesítési módszerét támogatja a felhőben: telefonhívás, egyirányú szöveges üzenet, Mobile App Notification és Mobile App ellenőrző kód. A **CHAPv2** és az **EAP** támogatja a telefonhívást és a Mobile apps-értesítést. |
+| **USERNAME_CANONICALIZATION_ERROR** | Ellenőrizze, hogy a felhasználó szerepel-e a helyszíni Active Directory-példányban, és hogy a hálózati házirend-kiszolgáló rendelkezik-e jogosultságokkal a címtár eléréséhez. Ha erdők közötti megbízhatósági kapcsolatot használ, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
 
-### <a name="alternate-login-id-errors"></a>Alternatív bejelentkezési azonosítóhibák
-
-| Hibakód | Hibaüzenet | Hibaelhárítási lépések |
-| ---------- | ------------- | --------------------- |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: a userObjectSid-keresés nem sikerült | Ellenőrizze, hogy a felhasználó létezik-e a helyszíni Active Directory-példányban. Ha erdőközi bizalmi kapcsolatokat használ, további segítségért [forduljon](#contact-microsoft-support) az ügyfélszolgálathoz. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: A másik bejelentkezési azonosító javallott | Ellenőrizze, hogy LDAP_ALTERNATE_LOGINID_ATTRIBUTE [érvényes active directory attribútumra](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)van-e beállítva. <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG értéke Igaz, vagy LDAP_LOOKUP_FORESTS nem üres értékkel van konfigurálva, ellenőrizze, hogy konfigurált-e globális katalógust, és hogy az AlternateLoginId attribútum hozzá lett-e adva. <br><br> Ha LDAP_LOOKUP_FORESTS nem üres értékkel van konfigurálva, ellenőrizze, hogy az érték helyes-e. Ha egynél több erdőnév van, a neveket pontosvesszővel kell elválasztani, nem szóközökkel. <br><br> Ha ezek a lépések nem oldják meg a problémát, további segítségért [forduljon](#contact-microsoft-support) az ügyfélszolgálathoz. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Az alternatív loginId érték üres | Ellenőrizze, hogy az AlternateLoginId attribútum konfigurálva van-e a felhasználó számára. |
-
-## <a name="errors-your-users-may-encounter"></a>A felhasználók által esetlegesen előforduló hibák
+### <a name="alternate-login-id-errors"></a>Másodlagos bejelentkezési AZONOSÍTÓval kapcsolatos hibák
 
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
 | ---------- | ------------- | --------------------- |
-| **Hozzáférés megtagadva** | A hívó bérlője nem rendelkezik hozzáférési engedélyekkel a felhasználó hitelesítéséhez | Ellenőrizze, hogy a bérlői tartomány és az egyszerű felhasználónév (UPN) tartománya megegyezik-e. Győződjön meg például arról, hogy user@contoso.com a Contoso-bérlő hitelesítése történik. Az upn egy érvényes felhasználót jelöl a bérlő számára az Azure-ban. |
-| **AuthenticationMethodNotConfigured** | A megadott hitelesítési módszer nincs konfigurálva a felhasználószámára | A felhasználó nak adja hozzá vagy ellenőrizze az ellenőrzési módszereit a [Beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben található utasításoknak megfelelően. |
-| **AuthenticationMethodNotSupported** | A megadott hitelesítési módszer nem támogatott. | Gyűjtse össze a hibaüzenetet tartalmazó összes naplót, és [lépjen kapcsolatba az ügyfélszolgálattal.](#contact-microsoft-support) Amikor kapcsolatba lép az ügyfélszolgálattal, adja meg a felhasználónevet és a hibát kiváltó másodlagos ellenőrzési módszert. |
-| **BecAccess Megtagadva** | MSODS Bec hívás visszamegtagadott hozzáférés megtagadva, valószínűleg a felhasználónév nincs definiálva a bérlőben | A felhasználó jelen van az Active Directory ban a helyszíni, de nem szinkronizálja az Azure AD az AD Connect. Vagy a felhasználó hiányzik a bérlő. Adja hozzá a felhasználót az Azure AD-hez, és vegye rá őket, hogy a [kétlépéses ellenőrzés beállításainak kezelése](../user-help/multi-factor-authentication-end-user-manage-settings.md)című utasításaiknak megfelelően adják hozzá ellenőrzési módszereiket. |
-| **InvalidFormat** vagy **StrongAuthenticationServiceInvalidParameter** | A telefonszám felismerhetetlen formátumú | A felhasználó javítsa ki az ellenőrző telefonszámokat. |
-| **Érvénytelen munkamenet** | A megadott munkamenet érvénytelen vagy lejárt | A munkamenet több mint három percet vett igénybe. A hitelesítési kérelem megírását követő három percen belül ellenőrizze, hogy a felhasználó beírja-e az ellenőrző kódot, vagy válaszol-e az alkalmazásértesítésre. Ha ez nem oldja meg a problémát, ellenőrizze, hogy nincsenek-e hálózati késések az ügyfél, a NAS Server, a Hálózati házirend-kiszolgáló és az Azure MFA-végpont között.  |
-| **NoDefaultAuthenticationMethodisconfigured** | Nem volt beállítva alapértelmezett hitelesítési módszer a felhasználóhoz | A felhasználó nak adja hozzá vagy ellenőrizze az ellenőrzési módszereit a [Beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben található utasításoknak megfelelően. Ellenőrizze, hogy a felhasználó az alapértelmezett hitelesítési módszert választotta-e, és konfigurálta-e a metódust a fiókjához. |
-| **OathCodePinIncorrect** | Hibás kód és pin beírva. | Ez a hiba nem várható a nps bővítményben. Ha a felhasználó ezt tapasztalja, forduljon az [ügyfélszolgálathoz](#contact-microsoft-support) hibaelhárítási segítségért. |
-| **A ProofDataNotFound** | A próbanyomat-adatok nincsenek konfigurálva a megadott hitelesítési módszerhez. | A felhasználó próbálkozzon egy másik ellenőrzési módszerrel, vagy adjon hozzá új ellenőrzési módszereket a [Beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című utasításainak megfelelően. Ha a felhasználó továbbra is látja ezt a hibát, miután megerősítette, hogy az ellenőrzési módszer megfelelően van beállítva, [forduljon az ügyfélszolgálathoz.](#contact-microsoft-support) |
-| **SMSAuthFailedWrongCodePinEntered** | Hibás kód és pin beírva. (1. | Ez a hiba nem várható a nps bővítményben. Ha a felhasználó ezt tapasztalja, forduljon az [ügyfélszolgálathoz](#contact-microsoft-support) hibaelhárítási segítségért. |
-| **Bérlő blokkolva** | A bérlő le van tiltva | [Lépjen kapcsolatba](#contact-microsoft-support) a címtár-azonosítóval az Azure Portalon az Azure AD-tulajdonságok lapján. |
-| **A felhasználó nem található** | A megadott felhasználó nem található. | A bérlő már nem látható aktívként az Azure AD-ben. Ellenőrizze, hogy az előfizetés aktív-e, és rendelkezik-e a szükséges első féltől származó alkalmazásokkal. Győződjön meg arról is, hogy a tanúsítvány tulajdonosában a bérlő a várt módon van elvárható, és a tanúsítvány továbbra is érvényes és regisztrálva van a szolgáltatásnév alatt. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: a userObjectSid keresése nem sikerült | Ellenőrizze, hogy a felhasználó létezik-e a helyszíni Active Directory-példányban. Ha erdők közötti megbízhatósági kapcsolatot használ, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: nem sikerült a másodlagos LoginId keresése | Ellenőrizze, hogy a LDAP_ALTERNATE_LOGINID_ATTRIBUTE [érvényes Active Directory-attribútumra](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)van-e beállítva. <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG értéke TRUE (igaz), vagy a LDAP_LOOKUP_FORESTS nem üres értékkel van konfigurálva, ellenőrizze, hogy a globális katalógust konfigurálta-e, és hogy a AlternateLoginId attribútum hozzá van-e adva. <br><br> Ha LDAP_LOOKUP_FORESTS nem üres értékre van konfigurálva, ellenőrizze, hogy helyes-e az érték. Ha egynél több erdő neve van, a neveket pontosvesszővel kell elválasztani, nem szóközöket. <br><br> Ha ezek a lépések nem javítják a problémát, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: a másodlagos LoginId értéke üres | Ellenőrizze, hogy a AlternateLoginId attribútum konfigurálva van-e a felhasználó számára. |
 
-## <a name="messages-your-users-may-encounter-that-arent-errors"></a>A felhasználók által esetlegesen előforduló olyan üzenetek, amelyek nem hibák
+## <a name="errors-your-users-may-encounter"></a>A felhasználók által észlelt hibák
 
-Előfordulhat, hogy a felhasználók üzeneteket kapnak a többtényezős hitelesítéstől, mert a hitelesítési kérelmet nem sikerült. Ezek nem hibák a konfigurációs termékben, hanem szándékos figyelmeztetések, amelyek indokolják, hogy miért lett megtagadva egy hitelesítési kérelem.
+| Hibakód | Hibaüzenet | Hibaelhárítási lépések |
+| ---------- | ------------- | --------------------- |
+| **AccessDenied** | A hívó bérlője nem rendelkezik hozzáférési engedélyekkel a felhasználó hitelesítéséhez | Győződjön meg arról, hogy a bérlő tartománya és az egyszerű felhasználónév (UPN) tartománya azonos-e. Győződjön meg például arról, hogy user@contoso.com a a contoso-bérlőre próbál hitelesíteni. Az UPN az Azure-beli Bérlő érvényes felhasználóját jelöli. |
+| **AuthenticationMethodNotConfigured** | A megadott hitelesítési módszer nincs konfigurálva a felhasználóhoz. | A felhasználó a [beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben leírtak szerint adja hozzá vagy ellenőrizze az ellenőrzési módszereiket. |
+| **AuthenticationMethodNotSupported** | A megadott hitelesítési módszer nem támogatott. | Gyűjtse össze az összes olyan naplót, amely tartalmazza ezt a hibát, és [forduljon az ügyfélszolgálathoz](#contact-microsoft-support). Ha kapcsolatba lép a támogatási szolgálattal, adja meg a hibát kiváltó felhasználónevet és másodlagos ellenőrzési módszert. |
+| **BecAccessDenied** | A MSODS Bec-hívás visszautasította a hozzáférést, valószínűleg a Felhasználónév nincs definiálva a bérlőben | A felhasználó a helyszíni Active Directoryban található, de az AD-kapcsolat nem szinkronizálja az Azure AD-be. Vagy a felhasználó hiányzik a bérlőhöz. Adja hozzá a felhasználót az Azure AD-hez, és adja hozzá az ellenőrzési módszereiket a [beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben leírtaknak megfelelően. |
+| **InvalidFormat** vagy **StrongAuthenticationServiceInvalidParameter** | A telefonszám nem felismerhető formátumban van | Állítsa be a felhasználó számára az ellenőrző telefonszámok helyességét. |
+| **InvalidSession** | A megadott munkamenet érvénytelen vagy lejárt | A munkamenet végrehajtása több mint három percet vett igénybe. Győződjön meg arról, hogy a felhasználó beírja az ellenőrző kódot, vagy válaszol az alkalmazás értesítésére a hitelesítési kérés kezdeményezését követő három percen belül. Ha ez nem oldja meg a problémát, ellenőrizze, hogy nincsenek-e hálózati késések az ügyfél, a NAS-kiszolgáló, a hálózati házirend-kiszolgáló és az Azure MFA-végpont között.  |
+| **NoDefaultAuthenticationMethodIsConfigured** | Nincs beállítva alapértelmezett hitelesítési módszer a felhasználóhoz | A felhasználó a [beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben leírtak szerint adja hozzá vagy ellenőrizze az ellenőrzési módszereiket. Győződjön meg arról, hogy a felhasználó az alapértelmezett hitelesítési módszert választotta, és konfigurálta a fiókját. |
+| **OathCodePinIncorrect** | Helytelen kód és PIN-kód van megadva. | Ez a hiba nem várható a hálózati házirend-kiszolgáló bővítményében. Ha a felhasználó ezt tapasztalja, [forduljon a támogatási szolgálathoz](#contact-microsoft-support) hibaelhárítási segítségért. |
+| **ProofDataNotFound** | Nem lett konfigurálva a megadott hitelesítési módszerhez tartozó igazoló adatbázis. | A felhasználó egy másik ellenőrzési módszert kell kipróbálnia, vagy új ellenőrzési módszereket kell megadnia a [beállítások kezelése a kétlépéses ellenőrzéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md)című részben leírtak szerint. Ha a felhasználó továbbra is ezt a hibát látja, miután meggyőződött róla, hogy az ellenőrzési módszer helyesen van beállítva, [forduljon az ügyfélszolgálathoz](#contact-microsoft-support). |
+| **SMSAuthFailedWrongCodePinEntered** | Helytelen kód és PIN-kód van megadva. (OneWaySMS) | Ez a hiba nem várható a hálózati házirend-kiszolgáló bővítményében. Ha a felhasználó ezt tapasztalja, [forduljon a támogatási szolgálathoz](#contact-microsoft-support) hibaelhárítási segítségért. |
+| **TenantIsBlocked** | A bérlő blokkolva van | Az Azure Portal Azure AD Tulajdonságok lapján [lépjen kapcsolatba az ügyfélszolgálattal](#contact-microsoft-support) a CÍMTÁR-azonosítóval. |
+| **UserNotFound** | A megadott felhasználó nem található | A bérlő már nem látható aktívként az Azure AD-ben. Győződjön meg arról, hogy az előfizetése aktív, és rendelkezik a szükséges első féltől származó alkalmazásokkal. Győződjön meg arról is, hogy a tanúsítvány tulajdonosának bérlője a várt módon van-e, és a tanúsítvány továbbra is érvényes és regisztrálva van az egyszerű szolgáltatásban. |
+
+## <a name="messages-your-users-may-encounter-that-arent-errors"></a>A felhasználók által esetlegesen előforduló üzenetek
+
+Időnként előfordulhat, hogy a felhasználók Multi-Factor Authentication üzeneteket kapnak, mert a hitelesítési kérelem sikertelen volt. Ezek nem hibák a konfiguráció termékében, de szándékos figyelmeztetések, amelyek elmagyarázzák a hitelesítési kérelem elutasításának okát.
 
 | Hibakód | Hibaüzenet | Javasolt lépések | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Hibás kód beírva\OATH kód helytelen | A felhasználó rossz kódot adott meg. Kérje meg őket, hogy próbálkozzanak újra új kód kérésével, vagy jelentkezzenbe újra. | 
-| **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte a maximálisan megengedett kódismétlést | A felhasználó túl sokszor nem felelt meg az ellenőrzési kihíváson. A beállításoktól függően előfordulhat, hogy egy rendszergazdanak fel kell oldania a zárolást.  |
-| **SMSAuthFailedWrongCodeEntered** | Hibás kód bevitele/Szöveges üzenet OTP helytelen | A felhasználó rossz kódot adott meg. Kérje meg őket, hogy próbálkozzanak újra új kód kérésével, vagy jelentkezzenbe újra. |
+| **OathCodeIncorrect** | Helytelen a kód entered\OATH kódja | A felhasználó érvénytelen kódot adott meg. Próbálkozzon újra egy új kód igénylésével vagy a bejelentkezés újbóli megkeresésével. | 
+| **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte az újrapróbálkozások maximális megengedett kódját | A felhasználó túl sokszor nem tudta megerősíteni az ellenőrzési feladatot. A beállításoktól függően előfordulhat, hogy a rendszergazdának most fel kell oldania a tiltást.  |
+| **SMSAuthFailedWrongCodeEntered** | Helytelen kód van megadva/szöveges üzenet, OTP helytelen | A felhasználó érvénytelen kódot adott meg. Próbálkozzon újra egy új kód igénylésével vagy a bejelentkezés újbóli megkeresésével. |
 
-## <a name="errors-that-require-support"></a>Támogatást igénylő hibák
+## <a name="errors-that-require-support"></a>Támogatásra szoruló hibák
 
-Ha a következő hibák valamelyikével találkozik, javasoljuk, hogy kérjen segítséget az [ügyfélszolgálattól.](#contact-microsoft-support) Nincs olyan szabványos lépéskészlet, amely képes lenne kezelni ezeket a hibákat. Amikor kapcsolatba lép az ügyfélszolgálattal, győződjön meg arról, hogy a lehető legtöbb információt adja meg a hibához vezető lépésekről és a bérlői adatokról.
+Ha ezen hibák valamelyikével találkozik, javasoljuk, hogy forduljon az [ügyfélszolgálathoz](#contact-microsoft-support) a diagnosztikai súgóhoz. Nincs olyan szabványos lépés, amely képes kezelni ezeket a hibákat. Ha felveszi a kapcsolatot a támogatási szolgálattal, ügyeljen arra, hogy a lehető legtöbbet adja meg a hibához vezető lépéseknek és a bérlői információknak.
 
 | Hibakód | Hibaüzenet |
 | ---------- | ------------- |
-| **InvalidParameter paraméter** | A kérelem nem lehet null |
-| **InvalidParameter paraméter** | Az ObjectId nem lehet null vagy üres a ReplicationScope esetében:{0} |
-| **InvalidParameter paraméter** | A 0}\ \{vállalatnév hossza hosszabb, mint a megengedett maximális hossz.{1} |
-| **InvalidParameter paraméter** | A UserPrincipalName nem lehet null vagy üres. |
-| **InvalidParameter paraméter** | A megadott TenantId formátuma nem megfelelő |
-| **InvalidParameter paraméter** | A munkamenet-azonosító nem lehet null vagy üres |
-| **InvalidParameter paraméter** | Nem oldotta fel a ProofData a kérésből vagy az Msods-ból. A ProofData ismeretlen |
+| **InvalidParameter** | A kérelem nem lehet null értékű. |
+| **InvalidParameter** | A ObjectId nem lehet null értékű vagy üres a ReplicationScope:{0} |
+| **InvalidParameter** | A cégnév \{0} \ hossza hosszabb a megengedett maximális hossznál{1} |
+| **InvalidParameter** | A UserPrincipalName nem lehet null értékű vagy üres. |
+| **InvalidParameter** | A megadott TenantId formátuma nem megfelelő. |
+| **InvalidParameter** | A munkamenet-azonosító nem lehet null értékű vagy üres. |
+| **InvalidParameter** | Nem oldható fel ProofData a kérelemből vagy a Msods. A ProofData ismeretlen |
 | **InternalError** |  |
 | **OathCodePinIncorrect** |  |
 | **VersionNotSupported** |  |
-| **MFAPinNotBeállítás** |  |
+| **MFAPinNotSetup** |  |
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="troubleshoot-user-accounts"></a>Felhasználói fiókok – problémamegoldás
+### <a name="troubleshoot-user-accounts"></a>Felhasználói fiókok hibakeresése
 
-Ha a felhasználóknak problémái vannak [a kétlépéses ellenőrzéssel,](../user-help/multi-factor-authentication-end-user-troubleshoot.md)segítsen nekik a problémák öndiagnosztizálásában.
+Ha a felhasználók a [kétlépéses ellenőrzés során problémákba ütköznek](../user-help/multi-factor-authentication-end-user-troubleshoot.md), segítsen nekik öndiagnosztizálásban.
 
-### <a name="health-check-script"></a>Állapot-ellenőrző parancsfájl
+### <a name="health-check-script"></a>Állapot-ellenőrzési parancsfájl
 
-Az [Azure MFA NFA NPS-bővítmény állapot-ellenőrzési parancsfájl](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) alapvető állapot-ellenőrzést hajt végre a hálózati híváshálózati bővítmény hibaelhárításakor. Futtassa a parancsfájlt, és válassza a 3.
+Az [Azure MFA NPS-bővítmény állapot-ellenőrzési szkriptje](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) alapszintű állapot-ellenőrzést hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor. Futtassa a szkriptet, és válassza a 3. lehetőséget.
 
 ### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
-Ha további segítségre van szüksége, forduljon egy támogatási szakemberhez az [Azure többtényezős hitelesítési kiszolgálótámogatásán](https://support.microsoft.com/oas/default.aspx?prid=14947)keresztül. Amikor kapcsolatba lép velünk, hasznos, ha a lehető legtöbb információt meg tudja mondani a problémáról. A megadott információk közé tartozik az oldal, ahol a hibát látta, a konkrét hibakód, az adott munkamenet-azonosító, a hibát megkezdő felhasználó azonosítója és a hibakeresési naplók.
+Ha további segítségre van szüksége, forduljon a támogatási szakemberekhez az [Azure multi-Factor Authentication-kiszolgáló ügyfélszolgálatán](https://support.microsoft.com/oas/default.aspx?prid=14947)keresztül. Amikor kapcsolatba lép velünk, hasznos lehet, ha a lehető legtöbb információt felveheti a probléma megoldására. A megadható információk közé tartozik az a lap, ahol a hiba, a megadott hibakód, a megadott munkamenet-azonosító, a hibát megtekintő felhasználó azonosítója és a hibakeresési naplók szerepelnek.
 
-A hibakeresési naplók támogatási diagnosztikához történő gyűjtéséhez hajtsa végre az alábbi lépéseket a nps-kiszolgálón:
+A támogatási diagnosztika hibakeresési naplóinak összegyűjtéséhez kövesse az alábbi lépéseket az NPS-kiszolgálón:
 
-1. A Rendszerleíróadatbázis-szerkesztő megnyitása és a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa VERBOSE_LOG **true** értékre való tallózással **TRUE**
-2. Nyisson meg egy Rendszergazda parancssort, és futtassa a következő parancsokat:
+1. Nyissa meg a Beállításszerkesztőt, és tallózással keresse meg HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** **true** értékre
+2. Nyisson meg egy rendszergazdai parancssort, és futtassa a következő parancsokat:
 
    ```
    Mkdir c:\NPS
@@ -119,7 +119,7 @@ A hibakeresési naplók támogatási diagnosztikához történő gyűjtéséhez 
 
 3. Reprodukálja a hibát
 
-4. Állítsa le a nyomkövetést az alábbi parancsokkal:
+4. Állítsa le a nyomkövetést a következő parancsokkal:
 
    ```
    logman stop "NPSExtension" -ets
@@ -130,5 +130,5 @@ A hibakeresési naplók támogatási diagnosztikához történő gyűjtéséhez 
    Start .
    ```
 
-5. A Rendszerleíróadatbázis-szerkesztő megnyitása és a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa **VERBOSE_LOG** false **értékre** való tallózással
+5. Nyissa meg a Beállításszerkesztőt, és keresse meg az HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa beállítása **VERBOSE_LOG** **hamis** értékre
 6. Zip a C:\NPS mappa tartalmát, és csatolja a tömörített fájlt a támogatási esethez.

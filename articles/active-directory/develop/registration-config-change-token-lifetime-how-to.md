@@ -1,6 +1,6 @@
 ---
-title: Token élettartamalapértelmezett beállításainak módosítása az egyéni Azure AD-alkalmazásokban
-description: Az Azure AD-n fejlesztett alkalmazás token élettartamra vonatkozó szabályzatai frissítése
+title: A jogkivonat élettartamának alapértelmezett értékeinek módosítása egyéni Azure AD-alkalmazásokhoz
+description: Az Azure AD-ben fejleszthető, az alkalmazásra vonatkozó jogkivonat élettartamára vonatkozó szabályzatok frissítése
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: fc71ebe61fba8c1bdb6b7625b16a50d8995a581a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883353"
 ---
-# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Egyéni fejlesztésű alkalmazások jogkivonat-élettartam-alapértelmezéseinek módosítása
+# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>A jogkivonat élettartamának alapértelmezett értékeinek módosítása egyéni fejlesztésű alkalmazásokhoz
 
-Ez a cikk bemutatja, hogyan használhatja az Azure AD PowerShell egy token élettartamra vonatkozó szabályzat beállítása. Az Azure AD Premium lehetővé teszi az alkalmazásfejlesztők és a bérlői rendszergazdák számára a nem bizalmas ügyfelek számára kiadott jogkivonatok élettartamának konfigurálását. A jogkivonat élettartamára vonatkozó szabályzatok bérlői alapon vagy az elérésben lévő erőforrásokkal vannak beállítva.
+Ez a cikk bemutatja, hogyan használható az Azure AD PowerShell a jogkivonat-élettartam szabályzatának beállításához. Prémium szintű Azure AD lehetővé teszi az alkalmazások fejlesztői és bérlői rendszergazdái számára a nem bizalmas ügyfelek számára kiállított jogkivonatok élettartamának konfigurálását. A jogkivonat élettartamára vonatkozó szabályzatok a bérlőre érvényesek, vagy az elérni kívánt erőforrások.
 
-1. Token élettartamra vonatkozó szabályzat beállításához le kell töltenie az [Azure AD PowerShell-modult.](https://www.powershellgallery.com/packages/AzureADPreview)
-1. Futtassa a **Connect-AzureAD -Confirm** parancsot.
+1. A jogkivonat-élettartam szabályzatának beállításához le kell töltenie az [Azure ad PowerShell-modult](https://www.powershellgallery.com/packages/AzureADPreview).
+1. Futtassa a **kapcsolat-AzureAD-Confirm** parancsot.
 
-    Íme egy példa házirend, amely beállítja a maximális kor egytényezős frissítési jogkivonatot. Hozza létre a házirendet:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
+    Az alábbi példa olyan szabályzatot állít be, amely beállítja a maximális életkorú, egytényezős frissítési tokent. Hozza létre a szabályzatot:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse meg a konfigurálható jogkivonat élettartamát az Azure AD-ben,](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes) hogy megtudja, hogyan konfigurálhatja az Azure AD által kiadott jogkivonat-élettartamokat, beleértve azt is, hogyan állíthatja be a jogkivonat élettartamát a szervezet összes alkalmazásához, egy több-bérlős alkalmazáshoz vagy a szervezet egy adott egyszerű szolgáltatásához. 
-* [Azure AD token hivatkozás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
+* Tekintse meg a [konfigurálható jogkivonat élettartamait az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes) , amelyből megtudhatja, hogyan konfigurálhatja az Azure ad által kiadott jogkivonat-élettartamokat, beleértve a jogkivonat-élettartamok beállítását a szervezet összes alkalmazásához, egy több-bérlős alkalmazáshoz vagy a szervezet egy adott egyszerű szolgáltatásához. 
+* [Azure AD-jogkivonat – dokumentáció](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)

@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomag kérés- és jóváhagyási beállításainak módosítása az Azure AD jogosultságkezelésében – Azure Active Directory
-description: Megtudhatja, hogyan módosíthatja egy hozzáférési csomag kérési és jóváhagyási beállításait az Azure Active Directory jogosultságkezelésében.
+title: Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+description: Megtudhatja, hogyan módosíthatja a hozzáférési csomagokra vonatkozó kérelmeket és jóváhagyási beállításokat Azure Active Directory jogosultságok kezelése során.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,82 +17,82 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0eae4f53283c33f3d7372a606f8c0a3ac27d079
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655931"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag kérés- és jóváhagyási beállításainak módosítása az Azure AD-jogosultságkezelésben
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében
 
-Hozzáférési csomagkezelőként bármikor módosíthatja azon felhasználókat, akik hozzáférési csomagot kérhetnek a házirend szerkesztésével vagy új házirend hozzáadásával. A jóváhagyási beállításokat is módosíthatja.
+Hozzáférés-csomagkezelőként módosíthatja azokat a felhasználókat, akik bármikor igényelhetnek hozzáférési csomagot a szabályzat szerkesztésével vagy új szabályzat hozzáadásával. A jóváhagyási beállításokat is módosíthatja.
 
-Ez a cikk azt ismerteti, hogyan módosíthatja egy meglévő hozzáférési csomag kérési és jóváhagyási beállításait.
+Ez a cikk azt ismerteti, hogyan lehet módosítani egy meglévő hozzáférési csomag kérését és jóváhagyási beállításait.
 
 ## <a name="choose-between-one-or-multiple-polices"></a>Válasszon egy vagy több rendőr közül
 
-A hozzáférési csomag igénylésének módja egy házirend. Hozzáférési csomag létrehozásakor megadhatja azt a kérelem- és jóváhagyási beállítást, amely házirendet hoz létre. A legtöbb hozzáférési csomag egyetlen szabályzattal rendelkezik, de egyetlen hozzáférési csomag több szabályzattal is rendelkezhet. Ha azt szeretné, hogy a felhasználók különböző csoportjai különböző kérési és jóváhagyási beállításokkal kapjanak hozzárendeléseket, akkor több házirendet is létrehozhat egy hozzáférési csomaghoz. Például egyetlen házirend nem használható belső és külső felhasználók hozzárendelésére ugyanahhoz a hozzáférési csomaghoz. Azonban létrehozhat két szabályzatot ugyanabban a hozzáférési csomagban – egyet belső, egyet pedig külső felhasználók számára. Ha több szabályzat vonatkozik egy felhasználóra, a rendszer a kérés időpontjában kéri, hogy válassza ki azt a házirendet, amelyhez hozzá szeretné rendelni őket. Az alábbi ábrán egy két házirendet rendelkező hozzáférési csomag látható.
+Azt határozza meg, hogy ki kérheti a hozzáférési csomag igénylését egy szabályzattal. Hozzáférési csomag létrehozásakor meg kell adnia a kérés és a jóváhagyás beállítást, amely létrehoz egy szabályzatot. A legtöbb hozzáférési csomag egyetlen házirenddel fog rendelkezni, de egyetlen hozzáférési csomag több házirenddel is rendelkezhet. Hozzon létre több szabályzatot egy hozzáférési csomaghoz, ha engedélyezni szeretné, hogy a különböző felhasználók különböző kérelmeket és jóváhagyási beállításokat kapjanak a hozzárendelésekhez. Például egyetlen házirend nem használható belső és külső felhasználók ugyanahhoz a hozzáférési csomaghoz való hozzárendeléséhez. Ugyanakkor két házirendet is létrehozhat ugyanabban a hozzáférési csomagban – egyet a belső felhasználókhoz, egyet pedig a külső felhasználókhoz. Ha több házirend is érvényes a felhasználóra, a rendszer a kérésük időpontjában kérni fogja, hogy válassza ki azt a szabályzatot, amelyet hozzá szeretne rendelni. Az alábbi ábrán két házirendet tartalmazó hozzáférési csomag látható.
 
 ![Több házirend egy hozzáférési csomagban](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| Forgatókönyv | Házirendek száma |
+| Forgatókönyv | Szabályzatok száma |
 | --- | --- |
-| Azt szeretném, hogy a címtárban lévő összes felhasználó ugyanazt a kérési és jóváhagyási beállításokat kívánja megegyeznie egy hozzáférési csomaghoz | Eggyel |
-| Azt szeretném, hogy bizonyos csatlakoztatott szervezetek összes felhasználója hozzáférést kérjen | Eggyel |
-| Azt akarom, hogy a felhasználók a könyvtárban, valamint a felhasználók kívül a könyvtárban, hogy kérjen egy hozzáférési csomag | Többszörös |
-| Egyes felhasználók számára különböző jóváhagyási beállításokat szeretnék megadni | Többszörös |
-| Azt akarom, hogy egyes felhasználók hozzáférjenek a csomag-hozzárendelésekhez, míg más felhasználók kiterjeszthetik hozzáférésüket | Többszörös |
+| Szeretném, hogy a címtárban lévő összes felhasználó ugyanazzal a kéréssel és jóváhagyási beállításokkal rendelkezzen a hozzáférési csomaghoz | Eggyel |
+| Azt szeretném, hogy az egyes csatlakoztatott szervezetek összes felhasználója hozzáférhessen egy hozzáférési csomag igényléséhez | Eggyel |
+| Szeretném engedélyezni a címtárban lévő felhasználókat és a címtáron kívüli felhasználókat a hozzáférési csomag igényléséhez | Többszörös |
+| Különböző jóváhagyási beállításokat szeretnék megadni egyes felhasználók számára | Többszörös |
+| Azt szeretném, hogy egyes felhasználók a csomagok hozzárendelései lejárnak, míg más felhasználók is kiterjeszthetik a hozzáférésüket | Többszörös |
 
-A több házirend alkalmazásakor használt prioritási logikáról a [Több házirend](entitlement-management-troubleshoot.md#multiple-policies
-)című témakörben talál további információt.
+További információ a több házirend alkalmazása esetén használt prioritási logikáról: [több szabályzat](entitlement-management-troubleshoot.md#multiple-policies
+).
 
-### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Meglévő kérelem- és jóváhagyási házirend megnyitása
+### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>A kérelem és a jóváhagyási beállítások meglévő házirendjének megnyitása
 
-A hozzáférési csomag kérési és jóváhagyási beállításainak módosításához meg kell nyitnia a megfelelő házirendet. Az alábbi lépésekkel nyissa meg a hozzáférési csomag kérési és jóváhagyási beállításait.
+Egy hozzáférési csomag kérésének és jóváhagyási beállításainak módosításához meg kell nyitnia a megfelelő szabályzatot. Az alábbi lépéseket követve megnyithatja egy hozzáférési csomag kérésének és jóváhagyásának beállításait.
 
-**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson az **Access-csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **Házirendek,** majd a szerkesztni kívánt házirend elemre.
+1. Kattintson a **házirendek** elemre, majd kattintson a szerkeszteni kívánt szabályzatra.
 
-    A Házirend részletei ablaktábla a lap alján nyílik meg.
+    Megnyílik a szabályzat részletei ablaktábla az oldal alján.
 
-    ![Access csomag – Házirend részletei ablaktábla](./media/entitlement-management-shared/policy-details.png)
+    ![Hozzáférési csomag – szabályzat részletei ablaktábla](./media/entitlement-management-shared/policy-details.png)
 
-1. A házirend szerkesztéséhez kattintson a **Szerkesztés** gombra.
+1. A szabályzat szerkesztéséhez kattintson a **Szerkesztés** gombra.
 
-    ![Access csomag – Házirend szerkesztése](./media/entitlement-management-shared/policy-edit.png)
+    ![Hozzáférési csomag – szabályzat szerkesztése](./media/entitlement-management-shared/policy-edit.png)
 
-1. A kérelmek és **jóváhagyásbeállításainak** megnyitásához kattintson a Kérések fülre.
+1. Kattintson a **kérelmek** lapra a kérelem és a jóváhagyás beállításainak megnyitásához.
 
-1. Hajtsa végre a következő kérelemszakaszok egyikében végrehajtott lépéseket.
+1. Hajtsa végre a következő kérelmek egyikének lépéseit.
 
-### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Új kérelem- és jóváhagyási házirend hozzáadása
+### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Új szabályzat kérésének és jóváhagyási beállításainak megadása
 
-Ha olyan felhasználókat hoz létre, amelyeknek eltérő kérési és jóváhagyási beállításokkal kell rendelkezniük, akkor valószínűleg új szabályzatot kell létrehoznia. Az alábbi lépésekkel új házirendet vehet fel egy meglévő hozzáférési csomagba.
+Ha olyan felhasználói készlettel rendelkezik, amelyeknek különböző kérés-és jóváhagyási beállításokkal kell rendelkezniük, valószínűleg létre kell hoznia egy új szabályzatot. Kövesse az alábbi lépéseket egy új szabályzat meglévő hozzáférési csomaghoz való hozzáadásának megkezdéséhez.
 
-**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menüben kattintson az **Access-csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson **a Házirendek,** majd **a Házirend hozzáadása gombra.**
+1. Kattintson a **házirendek** , majd a **házirend hozzáadása**elemre.
 
-1. Írja be a házirend nevét és leírását.
+1. Adja meg a szabályzat nevét és leírását.
 
-    ![Házirend létrehozása névvel és leírással](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+    ![Szabályzat létrehozása névvel és leírással](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. A **Tovább** gombra kattintva nyissa meg a **Kérések** lapot.
+1. A **tovább** gombra kattintva nyissa meg a **kérelmek** lapot.
 
-1. Hajtsa végre a következő kérelemszakaszok egyikében végrehajtott lépéseket.
+1. Hajtsa végre a következő kérelmek egyikének lépéseit.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-Ha házirendet szerkeszt, kattintson a **Frissítés gombra.** Ha új házirendet ad hozzá, kattintson a **Létrehozás gombra.**
+Ha szerkeszt egy házirendet, kattintson a **frissítés**gombra. Ha új szabályzatot ad hozzá, kattintson a **Létrehozás**gombra.
 
 ## <a name="next-steps"></a>További lépések
 

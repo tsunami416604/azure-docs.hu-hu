@@ -1,6 +1,6 @@
 ---
-title: Annak konfigurálása, hogy a végfelhasználók hogyan járulnak hozzá az Azure AD-t használó alkalmazásokhoz
-description: Ismerje meg, hogyan kezelheti, hogyan és mikor járulhatnak hozzá a felhasználók a szervezet adataihoz hozzáféréssel rendelkező alkalmazásokhoz.
+title: Annak konfigurálása, hogy a végfelhasználók miként egyeznek az Azure AD-vel az alkalmazásokkal
+description: Megtudhatja, hogyan és mikor férhet hozzá a felhasználók a szervezet adataihoz hozzáférő alkalmazásokhoz.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,83 +13,83 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80519626"
 ---
-# <a name="configure-how-end-users-consent-to-applications"></a>Annak konfigurálása, hogy a végfelhasználók hogyan járuljanak hozzá az alkalmazásokhoz
+# <a name="configure-how-end-users-consent-to-applications"></a>Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz
 
-Az alkalmazások integrálhatók a Microsoft Identity platformmal, így a felhasználók bejelentkezhetnek munkahelyi vagy iskolai fiókjukkal az Azure Active Directoryban (Azure AD), és hozzáférhetnek a szervezet adataihoz, hogy gazdag adatalapú élményt nyújtsanak. A különböző engedélyek lehetővé teszik, hogy az alkalmazás különböző szintű hozzáférést biztosítson a felhasználók és a szervezet adataihoz.
+Az alkalmazások integrálása a Microsoft Identity platformmal lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a Azure Active Directory (Azure AD) munkahelyi vagy iskolai fiókjával, és a szervezet adataihoz hozzáférjenek, hogy gazdag adatvezérelt felhasználói élményt nyújtsanak. A különböző engedélyek lehetővé teszik, hogy az alkalmazás különböző szintű hozzáférést biztosítson a felhasználók és a szervezete adataihoz.
 
-Alapértelmezés szerint a felhasználók beleegyezhetnek abba, hogy az alkalmazások hozzáférjenek a szervezet adataihoz, bár csak bizonyos engedélyekhez. Alapértelmezés szerint például a felhasználó beleegyezhet abba, hogy egy alkalmazás hozzáférjen a saját postaládájához vagy a Csapat teams-beszélgetéseihez egy olyan csapat számára, amely a felhasználó tulajdonában van, de nem járulhat hozzá ahhoz, hogy egy alkalmazás felügyelet nélküli hozzáférést biztosítson a szervezet összes SharePoint-webhelyének olvasásához és írásához. Bár lehetővé teszi a felhasználók beleegyezését önmagukban lehetővé teszi, hogy a felhasználók könnyen beszerezni hasznos alkalmazások, amelyek integrálhatók a Microsoft 365, az Azure és más szolgáltatások, ez kockázatot jelenthet, ha nem használják, és gondosan figyelt.
+Alapértelmezés szerint a felhasználók beleegyeznek a szervezet adataihoz hozzáférő alkalmazásokhoz, de csak bizonyos engedélyekhez. Alapértelmezés szerint például egy felhasználó hozzájárulhat ahhoz, hogy egy alkalmazás hozzáférhessen a saját postaládájához, vagy a csapatnak a felhasználó tulajdonában lévő csapatával, de nem tudja beleegyezni, hogy a szervezet összes SharePoint-webhelye számára lehetővé teszi az alkalmazás felügyelet nélküli elérését. A felhasználók saját maguk is engedélyezhetik, hogy a felhasználók egyszerűen beszerezzék a Microsoft 365-, Azure-és egyéb szolgáltatásokkal integrálható hasznos alkalmazásokat, és ez kockázatot jelenthet, ha nem használatos és nem figyeli őket körültekintően.
 
-A Microsoft azt javasolja, hogy tiltsa le a jövőbeli felhasználói hozzájárulási műveleteket a felület csökkentése és a kockázat csökkentése érdekében. Ha a felhasználó hozzájárulása le van tiltva, a korábbi hozzájárulási támogatás továbbra is tiszteletben marad, de minden jövőbeli hozzájárulási műveletet egy rendszergazdának kell végrehajtania. Bérlői szintű rendszergazdai jóváhagyást kérhetnek a felhasználók egy integrált [rendszergazdai hozzájárulási kérelem munkafolyamat](configure-admin-consent-workflow.md) vagy a saját támogatási folyamatok. További részletekért tekintse [meg az Öt lépés a személyazonossági infrastruktúra védelméhez.](../../security/fundamentals/steps-secure-identity.md)
+A Microsoft javasolja a jövőbeli felhasználói engedélyezési műveletek letiltását a felület csökkentése és a kockázat enyhítése érdekében. Ha a felhasználói hozzájárulás le van tiltva, a korábbi hozzájárulási támogatások továbbra is érvényben maradnak, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A felhasználók teljes körű rendszergazdai jogosultságot kérhetnek a felhasználóknak egy integrált [rendszergazdai engedélyezési kérelem-munkafolyamattal](configure-admin-consent-workflow.md) vagy a saját támogatási folyamataival. További részletekért tekintse [meg az identitás-infrastruktúra biztonságossá tételének öt lépését](../../security/fundamentals/steps-secure-identity.md) .
 
-## <a name="configure-user-consent-to-applications"></a>Felhasználói hozzájárulás konfigurálása az alkalmazásokhoz
-### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Felhasználói hozzájárulás letiltása vagy engedélyezése az Azure Portalról
+## <a name="configure-user-consent-to-applications"></a>Felhasználói beleegyező alkalmazások konfigurálása
+### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Felhasználói engedély letiltása vagy engedélyezése a Azure Portal
 
-Az Azure Portal segítségével letilthatja vagy engedélyezheti, hogy a felhasználók hozzájáruljanak a szervezet adataihoz hozzáférő alkalmazásokhoz:
+A Azure Portal segítségével letilthatja vagy engedélyezheti a felhasználók számára, hogy hozzáférjenek a szervezet adataihoz hozzáférő alkalmazásokhoz:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) [globális rendszergazdaként.](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)
-2. Válassza az **Azure Active Directory**, majd a Vállalati **alkalmazások**, majd a Felhasználói **beállítások lehetőséget.**
-3. A felhasználói hozzájárulás engedélyezése vagy letiltása a vezérlő **címkével: A felhasználók beleegyezhetnek abba, hogy a vállalati adatokhoz a nevükben hozzáférő alkalmazások hozzáférjenek.**
-4. (Nem kötelező) Konfigurálja [a rendszergazdai hozzájárulási kérelem munkafolyamatát](configure-admin-consent-workflow.md) annak biztosítására, hogy azok a felhasználók, akik nem járulhatnak hozzá az alkalmazáshoz, jóváhagyást kérhetnek.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+2. Válassza a **Azure Active Directory**, majd a **vállalati alkalmazások**, majd a **felhasználói beállítások**lehetőséget.
+3. Engedélyezheti vagy letilthatja a felhasználói belekötést a **felhasználók nevében, ha a felhasználó beleegyezik abba, hogy az alkalmazások hozzáférjenek a vállalati adatokhoz**.
+4. Választható Adja meg a [rendszergazdai hozzájárulási kérelem munkafolyamatát](configure-admin-consent-workflow.md) annak biztosítása érdekében, hogy az alkalmazásnak nem engedélyezett felhasználók jóváhagyást kérjenek.
 
 > [!TIP]
-> Annak engedélyezéséhez, hogy a felhasználók rendszergazdai felülvizsgálatot kérjenek egy olyan alkalmazásról, amelyhez a felhasználó nem járulhat hozzá (például azért, mert a felhasználói hozzájárulás le van tiltva, vagy mert az alkalmazás olyan engedélyeket kér, amelyeket a felhasználó nem adhat meg), fontolja meg [a rendszergazdai hozzájárulási munkafolyamat konfigurálását.](configure-admin-consent-workflow.md)
+> Annak lehetővé tétele érdekében, hogy a felhasználók egy olyan alkalmazásra vonatkozó rendszergazdai felülvizsgálatot kérjenek, amelynek a felhasználó számára nem engedélyezett a jóváhagyása (például azért, mert a felhasználói belefoglalást letiltották, vagy mert az alkalmazás olyan engedélyeket kér, amelyeknek a felhasználó nem engedélyezte a hozzáférést), érdemes [konfigurálni a rendszergazdai belefoglalási munkafolyamatot](configure-admin-consent-workflow.md).
 
-### <a name="disable-or-enable-user-consent-using-powershell"></a>Felhasználói hozzájárulás letiltása vagy engedélyezése a PowerShell használatával
+### <a name="disable-or-enable-user-consent-using-powershell"></a>Felhasználói engedély letiltása vagy engedélyezése a PowerShell használatával
 
-Az Azure AD PowerShell v1 modul[(MSOnline)](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)használatával engedélyezheti vagy letilthatja a felhasználók beleegyezését a szervezet adataihoz hozzáférő alkalmazásokhoz.
+Az Azure AD PowerShell v1 modult ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)) használva engedélyezheti vagy letilthatja a felhasználók számára, hogy hozzáférjenek a szervezet adataihoz hozzáférő alkalmazásokhoz.
 
-1. Jelentkezzen be a szervezetbe a parancsmag futtatásával:
+1. Jelentkezzen be a szervezetbe a következő parancsmag futtatásával:
 
     ```powershell
     Connect-MsolService
     ```
 
-2. Ellenőrizze, hogy a parancsmag futtatásával engedélyezve van-e a felhasználói hozzájárulás:
+2. Ellenőrizze, hogy engedélyezve van-e a felhasználói engedély a következő parancsmag futtatásával:
 
     ```powershell
     Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
     ```
 
-3. A felhasználói hozzájárulás engedélyezése vagy letiltása. A felhasználói hozzájárulás letiltásához például futtassa a parancsmast:
+3. Felhasználói engedély engedélyezése vagy letiltása. Ha például le szeretné tiltani a felhasználói engedélyt, futtassa a következő parancsmagot:
 
     ```powershell
     Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
     ```
 
-## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Csoporttulajdonosi hozzájárulás konfigurálása a csoportadatokhoz hozzáférő alkalmazásokhoz
+## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása
 
 > [!IMPORTANT]
-> A következő információk egy közelgő funkció, amely lehetővé teszi a csoport tulajdonosok számára, hogy alkalmazások hozzáférést a csoportok adatait. Ha ez a funkció megjelent, alapértelmezés szerint engedélyezve lesz. Bár ez a funkció még nem jelent meg széles körben, ezekkel az utasításokkal letilthatja a funkciót a kiadás előtt.
+> A következő információk egy közelgő funkcióra vonatkoznak, amely lehetővé teszi a csoport tulajdonosai számára, hogy hozzáférést biztosítanak az alkalmazások számára a csoportjuk adataihoz. Ha ez a funkció megjelent, alapértelmezés szerint engedélyezve lesz. Bár ez a funkció még nem jelent meg széles körben, ezekkel az utasításokkal letilthatja a funkciót a kiadás előtt.
 
-A csoporttulajdonosok engedélyezhetik, hogy az alkalmazások (például a külső gyártók által közzétett alkalmazások) hozzáférjenek a szervezet csoporthoz társított adataihoz. Egy csapattulajdonos (aki a csapat Office 365-csoportjának tulajdonosa) engedélyezheti például, hogy egy alkalmazás elolvassa a csapat összes Teams-üzenetét, vagy felsorolja a csoport tagjainak alapvető profilját.
+A csoport tulajdonosai engedélyezhetik az alkalmazások (például a harmadik féltől származó gyártók által közzétett alkalmazások) számára, hogy hozzáférjenek a szervezethez a csoporthoz társított adataihoz. Például a csapat tulajdonosa (aki a csapat Office 365-csoportjának tulajdonosa) lehetővé teszi az alkalmazás számára, hogy beolvassa az összes csapat üzenetet a csapatban, vagy listázza a csoport tagjainak alapszintű profilját.
 
 > [!NOTE]
-> Ettől a beállítástól függetlenül a csoport tulajdonosa mindig hozzáadhat más felhasználókat vagy alkalmazásokat közvetlenül csoporttulajdonosként.
+> Ettől a beállítástól függetlenül a csoport tulajdonosának mindig lehetősége van más felhasználók vagy alkalmazások közvetlen hozzáadására csoport tulajdonosaként.
 
-### <a name="configure-group-owner-consent-using-powershell"></a>Csoporttulajdonosi hozzájárulás konfigurálása a PowerShell használatával
+### <a name="configure-group-owner-consent-using-powershell"></a>Csoport tulajdonosi engedélyének konfigurálása a PowerShell használatával
 
-Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)használatával engedélyezheti vagy letilthatja a csoporttulajdonosok azon képességét, hogy hozzájáruljanak ahhoz, hogy a szervezet adataihoz hozzáférő alkalmazások a saját csoportjaikhoz hozzáférjenek.
+Az Azure AD PowerShell előzetes verziójának ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) használatával engedélyezheti vagy letilthatja a csoport tulajdonosai számára, hogy a szervezet adataihoz hozzáférjenek a saját csoportok számára.
 
-1. Győződjön meg arról, hogy az [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult használja (ez a lépés akkor fontos, ha telepítette az [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modult és az [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult is).
+1. Győződjön meg arról, hogy a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult használja (ez a lépés akkor fontos, ha a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) modult és a [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) modult is telepítette).
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-2. Csatlakozzon az Azure AD PowerShellhez.
+2. Kapcsolódjon az Azure AD PowerShell-hez.
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. A *hozzájárulási házirend beállításai* könyvtárbeállításainak aktuális lekérése a bérlőben. Ehhez ellenőrizni kell, hogy a szolgáltatás könyvtárbeállításai létrejöttek-e, és ha nem, akkor a megfelelő könyvtárbeállítási sablon értékeit kell használni.
+3. Az aktuális érték beolvasása a bérlőben a *beleegyező házirend-beállítások* címtár-beállításainál. Ehhez ellenőrizni kell, hogy a szolgáltatáshoz tartozó címtár-beállítások létre lettek-e hozva, és ha nem, akkor a megfelelő címtár-beállítási sablon értékeit használja.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -104,14 +104,14 @@ Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-4. Ismerje meg a beállítási értékeket. Két beállítási érték határozza meg, hogy mely felhasználók engedélyezhetik az alkalmazások számára a csoport adataihoz való hozzáférést:
+4. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Logikai |  Jelző, amely azt jelzi, hogy a csoportok tulajdonosai adhatnak-e csoportspecifikus engedélyeket. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha _az EnableGroupSpecificConsent_ értéke "True", és ez az érték egy csoport objektumazonosítójára van állítva, akkor az azonosított csoport tagjai jogosultak csoportspecifikus engedélyeket adni a saját csoportjuknak. |
+    | _EnableGroupSpecificConsent_   | Logikai |  Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját csoportok számára. |
 
-5. A kívánt konfiguráció beállítási értékeinek frissítése:
+5. Módosítsa a kívánt konfiguráció beállításait:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -143,37 +143,37 @@ Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.
     }
     ```
 
-## <a name="configure-risk-based-step-up-consent"></a>Kockázatalapú step-up hozzájárulás konfigurálása
+## <a name="configure-risk-based-step-up-consent"></a>Kockázatalapú lépésekre vonatkozó engedély konfigurálása
 
-A kockázatalapú step-up hozzájárulás segít csökkenteni a felhasználók kitettségét a rosszindulatú alkalmazások illegális [hozzájárulási kérelmeket.](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) Ha a Microsoft kockázatos végfelhasználói hozzájárulási kérelmet észlel, a kérelemhez "step-up" szükséges a rendszergazdai hozzájáruláshoz. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményez viselkedésváltozást, ha a végfelhasználói jóváhagyás engedélyezve van.
+A kockázatalapú lépésekre vonatkozó belefoglalással csökkenthető a felhasználók által a jogosulatlan belefoglalást [kérő](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)rosszindulatú alkalmazásokkal szembeni kitettség. Ha a Microsoft egy kockázatos végfelhasználói kérést észlel, a kérelemhez "Step-up" értékre van szükség a rendszergazdai beleegyező művelethez. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményezi a viselkedést, ha engedélyezve van a végfelhasználói engedély.
 
-Kockázatos hozzájárulási kérelem észlelésekor a hozzájárulási üzenet egy üzenetet jelenít meg, amely jelzi, hogy rendszergazdai jóváhagyásra van szükség. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó elküldheti a kérelmet egy rendszergazdának további ellenőrzésre közvetlenül a hozzájárulási kérelemből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
+Kockázatos beleegyezési kérelem észlelésekor a beleegyezés kérése üzenet jelenik meg, amely jelzi, hogy a rendszergazda jóváhagyása szükséges. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó a kérést egy rendszergazdának küldheti el további áttekintés céljából közvetlenül a hozzájárulási kérésből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
 
-* **AADSTS90094:** &lt;ClientAppDisplayName&gt; engedélyre van szüksége, hogy hozzáférjen a szervezet erőforrásaihoz, hogy csak egy rendszergazda adhat. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+* **AADSTS90094:** &lt;a&gt; clientAppDisplayName engedélyre van szüksége ahhoz, hogy a szervezet erőforrásai hozzáférhessenek, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
-Ebben az esetben egy naplózási esemény is naplózza a kategória "ApplicationManagement", tevékenység típusa "Hozzájárulás az alkalmazáshoz" és állapot oka a "Kockázatos alkalmazás észlelt".
+Ebben az esetben a rendszer naplózási eseményt is naplóz a "ApplicationManagement" kategóriába, a "beleegyezés az alkalmazásba" és a "kockázatos alkalmazás észlelése" állapot miatt.
 
 > [!IMPORTANT]
-> A rendszergazdáknak a jóváhagyás előtt gondosan ki kell [értékelniük az összes hozzájárulási kérelmet,](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) különösen akkor, ha a Microsoft kockázatot észlelt.
+> A rendszergazdáknak a jóváhagyás előtt körültekintően ki kell [értékelniük az összes jóváhagyási kérést](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) , különösen akkor, ha a Microsoft kockázatot észlelt.
 
-### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú step-up hozzájárulás letiltása vagy újbóli engedélyezése a PowerShell használatával
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú lépésenkénti belefoglalási engedély letiltása vagy újbóli engedélyezése a PowerShell használatával
 
-Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)használatával letilthatja a rendszergazdai hozzájáruláshoz szükséges előrelépést azokban az esetekben, amikor a Microsoft kockázatot észlel, vagy újra engedélyezheti, ha korábban le volt tiltva.
+Az Azure AD PowerShell előzetes verziójának ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) használatával letilthatja a rendszergazdai belefoglalásra vonatkozó lépést abban az esetben, ha a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
 
-Ez a fentiekben bemutatott lépésekkel végezhető el a [csoporttulajdonos identikéna PowerShell használatával történő konfigurálásához,](#configure-group-owner-consent-using-powershell)de egy másik beállítási érték helyettesítéséhez. Három különbség van a lépésekben: 
+Ezt a fentiekben látható lépések végrehajtásával végezheti el a [csoport tulajdonosi engedélyének a PowerShell használatával történő konfigurálásához](#configure-group-owner-consent-using-powershell), de más beállítások értékét is behelyettesítheti. A lépések három különbséggel rendelkeznek: 
 
-1. Ismerje meg a kockázatalapú step-up hozzájárulás beállítási értékeit:
+1. A kockázati alapú lépésekre vonatkozó beleegyezés értékeinek ismertetése:
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely jelzi, ha a felhasználó hozzájárulása le lesz tiltva, ha kockázatos kérést észlel. |
+    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 
-2. A 3.
+2. Helyettesítse be a következő értéket a 3. lépésben:
 
     ```powershell
     $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
-3. Az 5.
+3. Helyettesítse be a következők egyikét az 5. lépésben:
 
     ```powershell
     # Disable risk-based step-up consent entirely
@@ -187,12 +187,12 @@ Ez a fentiekben bemutatott lépésekkel végezhető el a [csoporttulajdonos iden
 
 ## <a name="next-steps"></a>További lépések
 
-[A rendszergazdai hozzájárulási munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
+[Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 
-[További információ az alkalmazásokhoz való hozzájárulás kezeléséről és a hozzájárulási kérelmek kiértékeléséről](manage-consent-requests.md)
+[Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
 
-[Bérlői rendszergazdai hozzájárulás megadása egy alkalmazáshoz](grant-admin-consent.md)
+[Bérlői szintű rendszergazdai jóváhagyás engedélyezése egy alkalmazás számára](grant-admin-consent.md)
 
-[Engedélyek és hozzájárulás a Microsoft identitásplatformján](../develop/active-directory-v2-scopes.md)
+[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
 
-[Azure AD a StackOverflow-n](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

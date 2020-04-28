@@ -1,6 +1,6 @@
 ---
-title: Asztali alkalmazás hívásának webes API-jainak áthelyezése éles környezetbe – Microsoft identity platform | Azure
-description: Megtudhatja, hogy miként helyezhet át webes API-kat éles környezetbe hívó asztali alkalmazásokat
+title: A webes API-k az éles környezetben való hívása a Microsoft Identity platformba | Azure
+description: Ismerje meg, hogyan helyezhet át egy olyan asztali alkalmazást, amely webes API-kat hív meg éles környezetben
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,33 +12,33 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882879"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívjaó asztali alkalmazás: Ugrás éles környezetbe
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó asztali alkalmazás: áthelyezés éles környezetbe
 
-Ebből a cikkből megtudhatja, hogyan helyezheti át az asztali alkalmazást, amely webes API-kat hív éles környezetbe.
+Ebből a cikkből megtudhatja, hogyan helyezheti át az asztali alkalmazást, amely webes API-kat hív meg éles környezetben.
 
-## <a name="handle-errors-in-desktop-applications"></a>Az asztali alkalmazások hibáinak kezelése
+## <a name="handle-errors-in-desktop-applications"></a>Hibák kezelése asztali alkalmazásokban
 
-A különböző folyamatok, megtanulta, hogyan kell kezelni a hibákat a csendes folyamatok, ahogy az a kódkódrészletek. Azt is látta, hogy vannak olyan esetek, ahol interakcióra van szükség, mint a növekményes hozzájárulás és a feltételes hozzáférés.
+A különböző folyamatokban megtanulta, hogyan kezelheti a csendes folyamatok hibáit, ahogy azt a kódrészletek is szemléltetik. Azt is láthatta, hogy vannak olyan esetek, amikor beavatkozásra van szükség, a növekményes beleegyező és feltételes hozzáférés esetén.
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>A felhasználó előzetes hozzájárulása több erőforráshoz
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>A felhasználó beleegyezett több erőforrásra
 
 > [!NOTE]
-> Több erőforrás beleegyezésének beszerzése a Microsoft Identity platformhoz működik, de az Azure Active Directory (Azure AD) B2C-hez nem. Az Azure AD B2C csak a rendszergazdai jóváhagyást támogatja, a felhasználó beleegyezését nem.
+> A Microsoft Identity platform számos erőforrásának beszerzése, de Azure Active Directory (Azure AD) B2C esetében nem. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
 
-A Microsoft identity platform (2.0- as verzió) végpontjával nem kaphat jogkivonatot egyszerre több erőforráshoz. A `scopes` paraméter csak egyetlen erőforrás hatóköreit tartalmazhatja. A paraméter használatával biztosíthatja, hogy a felhasználó `extraScopesToConsent` a paraméter használatával előzetesen beleegyezik több erőforráshoz.
+A Microsoft Identity platform (v 2.0) végpontján egyszerre több erőforráshoz nem kaphat tokent. A `scopes` paraméter csak egyetlen erőforráshoz tartalmazhat hatóköröket. A `extraScopesToConsent` paraméter használatával biztosíthatja, hogy a felhasználó előre beleegyezett több erőforrásba.
 
 Előfordulhat például, hogy két erőforrással rendelkezik, amelyek mindegyike két hatókörrel rendelkezik:
 
-- `https://mytenant.onmicrosoft.com/customerapi`a hatályokkal `customer.read` és a`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`a hatályokkal `vendor.read` és a`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`a hatókörökkel `customer.read` és`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`a hatókörökkel `vendor.read` és`vendor.write`
 
-Ebben a példában `.WithAdditionalPromptToConsent` használja a `extraScopesToConsent` paramétert tartalmazó módosítót.
+Ebben a példában a `.WithAdditionalPromptToConsent` `extraScopesToConsent` paraméterrel rendelkező módosítót használja.
 
 Ilyenek például a következők:
 
@@ -63,9 +63,9 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>Az MSAL-ban iOS és macOS rendszeren
+### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
 
-C célkitűzés:
+Objective-C:
 
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -79,7 +79,7 @@ interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-Swift:
+Swift
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -93,17 +93,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-Ez a hívás kap egy hozzáférési jogkivonatot az első webes API-t.
+Ez a hívás egy hozzáférési jogkivonatot kap az első webes API-hoz.
 
-Ha meg kell hívnia a második `AcquireTokenSilent` webes API-t, hívja meg az API-t.
+Ha meg kell hívnia a második webes API-t, `AcquireTokenSilent` hívja meg az API-t.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>A Microsoft személyes fiókjának újbóli beleegyezése szükséges az alkalmazás minden futtatásakor
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>A Microsoft személyes fiókjának minden egyes futtatásakor újra kell egyeznie
 
-A Microsoft személyes fiók felhasználói számára a szándékolt viselkedés az, ha minden natív ügyfél (asztali vagy mobilalkalmazás) hívás engedélyezéséhez minden natív ügyfél (asztali vagy mobilalkalmazás) hívásengedélyezéséhez újra kéri a beleegyezést. A natív ügyfélidentitás eredendően nem biztonságos, ami ellentétes a bizalmas ügyfélalkalmazás-identitással. A bizalmas ügyfélalkalmazások titkos kapcsolatot cserélnek a Microsoft Identity platformmal személyazonosságuk igazolására. A Microsoft identity platform úgy döntött, hogy enyhíti ezt a bizonytalanságot a fogyasztói szolgáltatások által kéri a felhasználó beleegyezését minden egyes alkalommal, amikor az alkalmazás engedélyezett.
+A személyes Microsoft-fiókok felhasználói számára a kívánt viselkedés az összes natív ügyfél (asztali vagy mobil alkalmazás) hívása, amely engedélyezi a jóváhagyást. A natív ügyfél-identitás eredendően nem biztonságos, ami ellentétben áll a bizalmas ügyfélalkalmazás identitásával. A bizalmas ügyfélalkalmazások a Microsoft Identity platformmal titokban cserélik identitását. A Microsoft Identity platform úgy döntött, hogy csökkenti a fogyasztói szolgáltatások biztonságának kockázatát azáltal, hogy minden alkalommal, amikor az alkalmazás engedélyt kap, a felhasználó hozzájárulását kéri.
 
 ## <a name="next-steps"></a>További lépések
 

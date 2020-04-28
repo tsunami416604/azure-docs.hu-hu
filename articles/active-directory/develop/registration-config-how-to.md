@@ -1,6 +1,6 @@
 ---
 title: Végpontok konfigurálása
-description: Az Azure AD-vel fejlesztett vagy az Azure AD-vel regisztrálandó egyéni alkalmazások hitelesítési végpontjainak megkeresése.
+description: Az Azure AD-vel fejlesztett vagy regisztrált egyéni alkalmazás hitelesítési végpontjának megkeresése.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883270"
 ---
 # <a name="how-to-configure-endpoints"></a>Végpontok konfigurálása
 
-Az alkalmazás hitelesítési végpontjait az [Azure Portalon](https://portal.azure.com)találhatja meg.
+Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https://portal.azure.com)találja.
 
--   Nyissa meg az [Azure Portalt.](https://portal.azure.com)
+-   Navigáljon a [Azure Portal](https://portal.azure.com).
 
--   A bal oldali navigációs ablakban kattintson az **Azure Active Directory**elemre.
+-   A bal oldali navigációs panelen kattintson a **Azure Active Directory**elemre.
 
--   Kattintson **az Alkalmazásregisztrációk gombra,** és válassza **a Végpontok**lehetőséget.
+-   Kattintson az **alkalmazás-regisztrációk** elemre, és válassza a **végpontok**lehetőséget.
 
--   Ez nyissa meg a **Végpontok** lapot, amely felsorolja a bérlő összes hitelesítési végpontját.
+-   Ekkor megnyílik a **végpontok** lap, amely felsorolja a bérlő összes hitelesítési végpontját.
 
--   Használja a végpont ot a használt hitelesítési protokoll, együtt az alkalmazás azonosítóját, hogy a hitelesítési kérelem az alkalmazásra jellemző.
+-   Használja az Ön által használt hitelesítési protokollhoz tartozó végpontot, az alkalmazás-AZONOSÍTÓval együtt az alkalmazásra vonatkozó hitelesítési kérelem kiépítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

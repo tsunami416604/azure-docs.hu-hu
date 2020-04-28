@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések (GYAKORI KÉRDÉSEK) – Azure Active Directory | Microsoft dokumentumok
-description: Gyakori kérdések és válaszok az Azure-ról és az Azure Active Directoryról, a jelszókezelésről és az alkalmazáshozzáférésről.
+title: Gyakori kérdések (GYIK) – Azure Active Directory | Microsoft Docs
+description: Gyakori kérdések és válaszok az Azure és a Azure Active Directory, a jelszavas kezelés és az alkalmazás-hozzáférés terén.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,22 +14,22 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875792"
 ---
-# <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések az Azure Active Directoryval kapcsolatban
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések a Azure Active Directory
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
 
 További információkért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md).
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Az Azure és az Azure Active Directory elérése
-**K: Miért kap "Nem található előfizetések" amikor megpróbálom elérni az Azure AD az Azure Portalon?**
+**K: Miért kapok "nem találhatók előfizetések" kifejezést, amikor megpróbálom elérni az Azure AD-t a Azure Portal?**
 
-**V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Office 365-előfizetéssel vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
+**V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Office 365-vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
 ) vagy egy fizetős előfizetést.
 
 További információkért lásd:
@@ -37,7 +37,7 @@ További információkért lásd:
 * [How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**K: Milyen kapcsolat van az Azure AD, az Office 365 és az Azure között?**
+**K: milyen kapcsolat áll fenn az Azure AD, az Office 365 és az Azure között?**
 
 **V:** Az Azure AD általános identitás- és hozzáférési képességeket nyújt az összes webes szolgáltatáshoz. Akár az Office 365, a Microsoft Azure, az Intune vagy más rendszert használ, már használja az Azure AD-t a bejelentkezés és a hozzáférés-kezelés bekapcsolásához ezen szolgáltatások mindegyikéhez.
 
@@ -47,13 +47,13 @@ A fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Securit
 
 ---
 
-**K: Mi a különbség a tulajdonos és a globális rendszergazda között?**
+**K: mi a különbség a tulajdonos és a globális rendszergazda között?**
 
-**A.** Alapértelmezés szerint az a személy, aki feliratkozik egy Azure-előfizetésre, az Azure-erőforrások tulajdonosi szerepkörrel van elrendelve. A tulajdonos használhatja a Microsoft-fiókot, vagy egy munkahelyi vagy iskolai fiókot a címtárból, amelyhez az Azure-előfizetés társítva van.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
+**A:** Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a tulajdonos szerepkört rendeli hozzá az Azure-erőforrásokhoz. A tulajdonos Microsoft-fiók vagy munkahelyi vagy iskolai fiókot is használhat a címtárból, amelyhez az Azure-előfizetés társítva van.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
 
-Ha másoknak ugyanazzal az előfizetéssel kell bejelentkezniük és szolgáltatásokhoz kell hozzáférniük, hozzárendelheti őket a megfelelő [beépített szerepkörhöz.](../../role-based-access-control/built-in-roles.md) További információt a [Hozzáférés kezelése az RBAC és az Azure Portal használatával című témakörben talál.](../../role-based-access-control/role-assignments-portal.md)
+Ha másoknak ugyanazzal az előfizetéssel kell bejelentkezniük, és hozzá kell férniük a szolgáltatásokhoz, a megfelelő [beépített szerepkört](../../role-based-access-control/built-in-roles.md)is hozzárendelheti. További információ: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
-Alapértelmezés szerint az a személy, aki feliratkozik egy Azure-előfizetésre, a címtár globális rendszergazdai szerepkörrel van elrendelve. A globális rendszergazda hozzáfér az Azure AD címtár összes szolgáltatásához. Az Azure AD egy másik rendszergazdai szerepkörök a címtár és az identitással kapcsolatos szolgáltatások kezeléséhez rendelkezik. Ezek a rendszergazdák az Azure Portalon különböző funkciókhoz férhetnek hozzá. A rendszergazda iszerepköre határozza meg, hogy mit tehetnek, például felhasználókat hozhat létre vagy szerkeszthet, rendszergazdai szerepköröket rendelhet másokhoz, alaphelyzetbe állíthatja a felhasználói jelszavakat, kezelheti a felhasználói licenceket, vagy kezelheti a tartományokat.  Az Azure AD címtár-rendszergazdákról és azok szerepköreiről további információt a [Felhasználó hozzárendelése rendszergazdai szerepkörökhöz az Azure Active Directoryban](active-directory-users-assign-role-azure-portal.md) és [a Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)című témakörben talál.
+Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a globális rendszergazdai szerepkört rendeli hozzá a címtárhoz. A globális rendszergazda hozzáfér az összes Azure AD Directory-szolgáltatáshoz. Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtár és az identitással kapcsolatos funkciók kezeléséhez. Ezek a rendszergazdák hozzáférhetnek a Azure Portal különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehetnek, például felhasználók létrehozása vagy szerkesztése, rendszergazdai szerepkörök kiosztása mások számára, felhasználói jelszavak alaphelyzetbe állítása, felhasználói licencek kezelése vagy tartományok kezelése.  Az Azure AD címtár-rendszergazdákkal és azok szerepköreivel kapcsolatos további információkért lásd: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md) és [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).
 
 Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Security, átfogó vállalati méretű felügyeleti és biztonsági megoldásokkal egészítenek ki más webes szolgáltatásokat, például az Office 365-öt és a Microsoft Azure-t.
 
@@ -83,14 +83,14 @@ További információkért lásd: [Helyszíni identitások integrálása az Azur
 
 **V:** Csak a helyszíni címtár és az Azure AD között kell beállítania egyszeri bejelentkezést (SSO-t). Amíg az Azure AD-n keresztül éri el a felhőalkalmazásokat, a szolgáltatás automatikusan átirányítja a felhasználókat, hogy megfelelően hitelesíteni tudják magukat a helyszíni hitelesítő adataikkal.
 
-Az Egyszeri bejelentkezés helyszíni megvalósításához könnyen elérhető az összevonási megoldásokkal, például az Active Directory összevonási szolgáltatásokkal (AD FS), vagy a jelszókivonat-szinkronizálás konfigurálásával. Az Azure AD Connect konfigurációs varázslóval könnyedén telepítheti mindkét lehetőséget.
+A helyszíni egyszeri bejelentkezés megvalósítása egyszerűen megvalósítható összevonási megoldásokkal, például Active Directory összevonási szolgáltatások (AD FS) (AD FS), vagy a jelszó-kivonat szinkronizálásának konfigurálásával. A Azure AD Connect konfigurációs varázslóval könnyedén telepítheti mindkét lehetőséget.
 
 További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md).
 
 ---
 **K: Az Azure AD-ben elérhető önkiszolgáló portál a szervezetemben lévő felhasználók számára?**
 
-**V:** Igen, az Azure AD az [Azure AD Hozzáférési panelén](https://myapps.microsoft.com) keresztül biztosítja a felhasználóknak az önkiszolgáló felületet és az alkalmazások elérését. Ha Ön Office 365-ügyfél, az [Office 365 portálon](https://portal.office.com)számos hasonló funkciót találhat.
+**V:** Igen, az Azure AD az [Azure AD Hozzáférési panelén](https://myapps.microsoft.com) keresztül biztosítja a felhasználóknak az önkiszolgáló felületet és az alkalmazások elérését. Ha Ön Office 365-ügyfél, az [office 365-portálon](https://portal.office.com)számos különböző funkció közül választhat.
 
 További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
@@ -103,7 +103,7 @@ További információkért lásd: [A helyszíni identitás-infrastruktúra és a
 
 ---
 ## <a name="password-management"></a>Jelszókezelés
-**K: Használhatom az Azure AD jelszó-visszaírását jelszószinkronizálás nélkül? (Ebben a forgatókönyvben az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) jelszó-visszaírással használható, és nem tárolhatja a jelszavakat a felhőben?)**
+**K: használhatom az Azure AD-jelszavakat jelszó-szinkronizálás nélkül? (Ebben az esetben lehetséges az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) használata a jelszó-visszaírással, és nem tárolja a jelszavakat a felhőben?)**
 
 **V:** Nem kell szinkronizálnia az Active Directory-jelszavakat az Azure AD-vel a visszaírás engedélyezéséhez. Összevont környezetben az Azure AD egyszeri bejelentkezés (SSO) a helyszíni címtárra támaszkodik a felhasználó hitelesítéséhez. Ehhez a forgatókönyvhöz nem kell nyomon követni a helyszíni jelszót az Azure AD-ben.
 
@@ -139,9 +139,9 @@ Azure AD-felhasználók esetében a rendszergazdák a következő módszerek val
 
 A fiókok zárolásához ennél kifinomultabb stratégiát alkalmazunk.  A zárolás a kérés IP-címe és a megadott jelszavak alapján történik. A zárolás időtartama annál hosszabb, minél inkább valószínűsíthető, hogy támadásról van szó.  
 
-**K: Bizonyos (gyakori) jelszavakat elutasítanak a "ezt a jelszót már sokszor használták", ez az aktuális active directoryban használt jelszavakra vonatkozik?**
+**K: bizonyos (gyakori) jelszavak elutasítása a "Ez a jelszó sokszor használatban van" üzenettel, ez a jelenlegi Active Directoryban használt jelszavakra vonatkozik?**
 
-Ez olyan jelszavakra vonatkozik, amelyek globálisan gyakoriak, például a "Jelszó" és az "123456" bármely változatára.
+Ez olyan jelszavakra utal, amelyek globálisan gyakoriak, például a "password" és a "123456" bármely változata.
 
 **K: Blokkolja a rendszer a kétes forrásokból (botnetek, TOR-végpontok) érkező bejelentkezési kéréseket a B2C-bérlőkön, vagy ehhez alap- vagy prémium szintű bérlőre van szükség?**
 
@@ -158,7 +158,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 ---
 **K: Mit tegyek, ha a kívánt alkalmazás nem szerepel az Azure AD Marketplace-en?**
 
-**V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításoktól függően konfigurálhatja az SSO-t és az automatikus kiépítést.  
+**V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításaitól függően beállíthatja az egyszeri bejelentkezést és az automatizált üzembe helyezést.  
 
 További információkért lásd:
 
@@ -175,7 +175,7 @@ További információkért lásd:
 * Közvetlen bejelentkezés az összevont alkalmazásokba
 * Mélyhivatkozások az összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 
-További információ: [Végfelhasználói élmény alkalmazásokhoz](../manage-apps/end-user-experiences.md).
+További információ: [végfelhasználói élmények az alkalmazásokhoz](../manage-apps/end-user-experiences.md).
 
 ---
 **K: Az Azure AD milyen különböző módokon teszi lehetővé a hitelesítést és az egyszeri bejelentkezést az alkalmazásokba?**
@@ -185,11 +185,11 @@ További információ: [Végfelhasználói élmény alkalmazásokhoz](../manage-
 További információkért lásd:
 
 * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-scenarios.md)
-* [Active Directory hitelesítési protokolljai](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Egyszeri bejelentkezés az Azure AD-ben](../manage-apps/what-is-single-sign-on.md)
+* [Hitelesítési protokollok Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Egyszeri bejelentkezés az Azure AD-beli alkalmazásokhoz](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**K: Hozzáadhatok helyszíni alkalmazásokat?**
+**K: Hozzáadhatok olyan alkalmazásokat, amelyeken a helyszínen fut?**
 
 **V:** Az Azure AD-alkalmazásproxy egyszerű és biztonságos hozzáférést nyújt az Ön által választott helyszíni webalkalmazásokhoz. Ezeket az alkalmazásokat ugyanúgy érheti el, ahogyan a szolgáltatott szoftverek (SaaS) alkalmazásokat az Azure AD-ben. Nincs szükség VPN-re vagy a hálózati infrastruktúra módosítására.  
 
@@ -198,12 +198,12 @@ További információért lásd: [Helyszíni alkalmazások biztonságos távoli 
 ---
 **K: Hogyan követelhetem meg a többtényezős hitelesítést az adott alkalmazásokhoz hozzáféréssel rendelkező felhasználóknál?**
 
-**A.** Az Azure AD feltételes hozzáféréssel minden alkalmazáshoz egyedi hozzáférési szabályzatot rendelhet hozzá. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
+**A:** Az Azure AD feltételes hozzáférésével minden alkalmazáshoz hozzárendelhet egyedi hozzáférési szabályzatot. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
 
 További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](../conditional-access/overview.md).
 
 ---
-**K: Mi az automatikus felhasználói kiépítés az SaaS-alkalmazásokhoz?**
+**K: Mi az az automatizált felhasználói kiépítés SaaS-alkalmazásokhoz?**
 
 **V:** Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását számos népszerű felhőalapú SaaS alkalmazásban.
 
@@ -212,4 +212,4 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 ---
 **K: Állíthatok be biztonságos LDAP-kapcsolatot az Azure AD-vel?**
 
-**A.**  nem. Az Azure AD nem támogatja közvetlenül a Lightweight Directory Access Protocol (LDAP) protokollt vagy a Biztonságos LDAP protokollt. Azonban lehetőség van az Azure AD Tartományi szolgáltatások (Azure AD DS) példányának engedélyezésére az Azure AD-bérlőn, megfelelően konfigurált hálózati biztonsági csoportokkal az Azure Networkingen keresztül az LDAP-kapcsolat eléréséhez. További információ: [Biztonságos LDAP konfigurálása Egy Azure Active Directory tartományi szolgáltatások felügyelt tartományához](../../active-directory-domain-services/tutorial-configure-ldaps.md)
+**A:**  nem. Az Azure AD nem támogatja a Lightweight Directory Access Protocol (LDAP) protokollt vagy Secure LDAP közvetlenül. Az Azure AD-bérlőn azonban lehetőség van arra, hogy a megfelelő módon konfigurált hálózati biztonsági csoportokkal engedélyezze az Azure-beli Azure AD Domain Services (Azure AD DS) példányt az LDAP-kapcsolat eléréséhez. További információ: [biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz](../../active-directory-domain-services/tutorial-configure-ldaps.md)

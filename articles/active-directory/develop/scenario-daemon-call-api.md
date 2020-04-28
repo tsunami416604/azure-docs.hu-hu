@@ -1,6 +1,6 @@
 ---
-title: Webes API felhívása démonalkalmazásból – Microsoft identity platform | Azure
-description: További információ a webes API-kat meghívjaó démonalkalmazások létrehozásáról
+title: Webes API meghívása egy Daemon-alkalmazásból – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó Daemon-alkalmazást
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885446"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>A webes API-kat meghívó Démonalkalmazás – webes API hívása az alkalmazásból
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Webes API-kat meghívó Daemon-alkalmazás – webes API meghívása az alkalmazásból
 
-A .NET démonalkalmazások webes API-t hívhatnak. A .NET démonalkalmazások több előre jóváhagyott webes API-t is hívhatnak.
+A .NET Daemon-alkalmazások hívhatnak webes API-t. A .NET Daemon-alkalmazások számos előre jóváhagyott webes API-t is meghívhatnak.
 
-## <a name="calling-a-web-api-from-a-daemon-application"></a>Webes API hívása démonalkalmazásból
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Webes API meghívása egy Daemon-alkalmazásból
 
-A jogkivonat ot az API-k hívására a következőképpen használhatja:
+A token használatával a következő módon hívhat meg API-t:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -61,25 +61,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>Több API hívása
+## <a name="calling-several-apis"></a>Több API meghívása
 
-A démonalkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. A démonalkalmazások hoz nem járulhozzá növekményes hozzájárulás. (Nincs felhasználói beavatkozás.) A bérlői rendszergazdának előzetesen meg kell adnia a beleegyezést az alkalmazáshoz és az összes API-engedélyhez. Ha több API-t szeretne hívni, minden erőforráshoz be kell `AcquireTokenForClient`szereznie egy jogkivonatot, minden alkalommal, amikor meghívja. Az MSAL az alkalmazásjogkivonat-gyorsítótárat fogja használni a szükségtelen szolgáltatáshívások elkerülése érdekében.
+A Daemon-alkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. A Daemon-alkalmazásokhoz nem szükséges növekményes beleegyezni. (Nincs felhasználói beavatkozás.) A bérlői rendszergazdának előre meg kell adnia a belefoglalást az alkalmazáshoz és az összes API-engedélyhez. Ha több API-t szeretne meghívni, minden alkalommal meg kell adnia egy jogkivonatot minden egyes erőforráshoz `AcquireTokenForClient`. A MSAL az alkalmazás-jogkivonat gyorsítótárát fogja használni a szükségtelen szolgáltatási hívások elkerülése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Démon alkalmazás – ugrás éles környezetre](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Démon alkalmazás – ugrás éles környezetre](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Démon alkalmazás – ugrás éles környezetre](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

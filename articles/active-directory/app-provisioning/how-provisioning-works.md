@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-kiépítés működésének megismerése | Microsoft dokumentumok
-description: Ismerje meg, hogyan működik az Azure AD kiépítése
+title: Az Azure AD-kiépítés működésének megismerése | Microsoft Docs
+description: Az Azure AD-kiépítés működésének megismerése
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,179 +16,179 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884885"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
-Az automatikus kiépítés a felhasználói identitások és szerepkörök létrehozását a felhőalapú alkalmazásokban, amelyekhez a felhasználóknak hozzáférésre van szükségük. A felhasználói identitások létrehozása mellett az automatikus kiépítés magában foglalja a felhasználói identitások karbantartását és eltávolítását az állapot vagy a szerepkörök változásakor. A központi telepítés megkezdése előtt tekintse át ezt a cikket, hogy megtudja, hogyan működik az Azure AD-szolgáltatás kiépítése, és konfigurációs javaslatokat kaphat. 
+Az automatikus kiépítés olyan felhasználói identitások és szerepkörök létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. A központi telepítés megkezdése előtt tekintse át ezt a cikket, amelyből megtudhatja, hogyan működik az Azure AD-alkalmazás, és milyen javaslatokat kaphat. 
 
-Az **Azure AD-kiépítési szolgáltatás** a felhasználók számára a SaaS-alkalmazások és más rendszerek csatlakoztatásával a rendszer a tartományok közötti identitáskezelés (SCIM) 2.0 felhasználói felügyeleti API-végpont az alkalmazás szállítója által biztosított. Ez az SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozzon létre, frissítsen és távolítson el felhasználókat. A kiválasztott alkalmazások esetében a létesítési szolgáltatás további identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti kiépítéshez használt csatorna HTTPS TLS-titkosítással van titkosítva.
+Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az alkalmazás gyártójától származó tartományok közötti IDENTITÁSKEZELÉS (SCIM) 2,0 felhasználói felügyeleti API-végponthoz való csatlakozással. Ez a SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozza létre, frissítse és távolítsa el a felhasználókat. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti kiépítés során használt csatorna HTTPS TLS titkosítás használatával van titkosítva.
 
 
-![Az Azure AD-kiépítési szolgáltatás](./media/how-provisioning-works/provisioning0.PNG)
-*1.*
+![Azure ad-kiépítési szolgáltatás](./media/how-provisioning-works/provisioning0.PNG)
+*1. ábrája: az Azure ad kiépítési szolgáltatása*
 
-![Kimenő felhasználói kiépítési](./media/how-provisioning-works/provisioning1.PNG)
-munkafolyamat*2.*
+![Kimenő felhasználó kiépítési munkafolyamata](./media/how-provisioning-works/provisioning1.PNG)
+*2. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből a népszerű SaaS-alkalmazásokba*
 
-![Bejövő felhasználói kiépítési](./media/how-provisioning-works/provisioning2.PNG)
-munkafolyamat*3.*
+![Bejövő felhasználó kiépítési munkafolyamata](./media/how-provisioning-works/provisioning2.PNG)
+*3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból Azure Active Directory és a Windows Server* rendszerre Active Directory
 
-## <a name="provisioning-using-scim-20"></a>Kiépítés az SCIM 2.0 használatával
+## <a name="provisioning-using-scim-20"></a>Kiépítés a SCIM 2,0 használatával
 
-Az Azure AD-kiépítési szolgáltatás az [SCIM 2.0 protokollt](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) használja az automatikus kiépítéshez. A szolgáltatás csatlakozik az alkalmazás SCIM-végpontjához, és scim felhasználói objektumséma és REST API-k segítségével automatizálja a felhasználók és csoportok kiépítését és kiépítésmegszüntetését. Egy SCIM-alapú kiépítési összekötő az Azure AD-gyűjteményben a legtöbb alkalmazás számára biztosított. Amikor alkalmazásokat készít az Azure AD-hez, a fejlesztők az SCIM 2.0 felhasználói felügyeleti API-t használhatják egy SCIM-végpont létrehozásához, amely integrálja az Azure AD-t a kiépítéshez. További információt az [SCIM-végpont létrehozása és a felhasználói kiépítés konfigurálása című témakörben talál.](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+Az Azure AD-kiépítési szolgáltatás a [SCIM 2,0 protokollt](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) használja az automatikus kiépítés számára. A szolgáltatás csatlakozik az alkalmazáshoz a SCIM-végponthoz, és a felhasználók és csoportok kiépítése és kiépítése automatizálható a SCIM felhasználói objektumok sémája és a REST API-k használatával. Az Azure AD-katalógus legtöbb alkalmazásához SCIM-alapú létesítési összekötőt biztosítunk. Az Azure AD-alkalmazások létrehozásakor a fejlesztők a SCIM 2,0 User Management API-val olyan SCIM-végpontot hozhatnak létre, amely integrálja az Azure AD-t az üzembe helyezéshez. Részletekért lásd: [scim-végpont létrehozása és a felhasználók üzembe](../app-provisioning/use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 
-Ha egy olyan alkalmazáshoz szeretne automatikus Azure AD-kiépítési összekötőt kérni, amely jelenleg nem rendelkezik ilyentel, töltsön ki egy [Azure Active Directory-alkalmazáskérelmet.](https://aka.ms/aadapprequest)
+Ha olyan alkalmazáshoz szeretne automatikus Azure AD-kiépítési összekötőt igényelni, amely még nem rendelkezik ilyennel, töltsön ki egy [Azure Active Directory alkalmazás-kérelmet](https://aka.ms/aadapprequest).
 
 ## <a name="authorization"></a>Engedélyezés
 
-Hitelesítő adatok szükségesek az Azure AD az alkalmazás felhasználói felügyeleti API-hoz való csatlakozáshoz. Az alkalmazás automatikus felhasználói kiépítésének konfigurálása közben érvényes hitelesítő adatokat kell megadnia. Az alkalmazás oktatóanyagára hivatkozva megtalálhatja az alkalmazás hitelesítő adatok típusait és követelményeit. Az Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megkísérli az alkalmazás létesítési alkalmazáshoz való csatlakozást a megadott hitelesítő adatok használatával.
+A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. Az alkalmazáshoz tartozó hitelesítő adatokat és követelményeket az alkalmazásra vonatkozó oktatóanyagra utalva találja meg. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
 
-Ha saml-alapú egyszeri bejelentkezés is konfigurálva van az alkalmazáshoz, az Azure AD belső, alkalmazásonkénti tárolási korlátja 1024 bájt. Ez a korlát tartalmazza az összes tanúsítványt, titkos jogkivonatokat, hitelesítő adatokat és az alkalmazás egyetlen példányához társított összes konfigurációs adatot (más néven egyszerű szolgáltatásrekordot az Azure AD-ben). Saml-alapú egyszeri bejelentkezés konfigurálásakor az SAML-jogkivonatok aláírásához használt tanúsítvány gyakran a terület több mint 50%-át használja fel. A felhasználó létesítése során megadott további elemek (titkos tokenek, URI-k, értesítési e-mail-címek, felhasználónevek és jelszavak) túlléphetik a tárolási korlátot. További információt a [Rendszergazdahitelesítő adatok mentése a felhasználói kiépítés konfigurálása során](../manage-apps/application-provisioning-config-problem-storage-limit.md)című témakörben talál.
+Ha SAML-alapú egyszeri bejelentkezést is konfigurál az alkalmazáshoz, az Azure AD belső, alkalmazáson belüli tárolási korlátja 1024 bájt. Ez a korlát magában foglalja az alkalmazás egyetlen példányához társított összes tanúsítványt, titkos jogkivonatot, hitelesítő adatokat és kapcsolódó konfigurációs adatot (más néven az Azure AD-beli egyszerű szolgáltatásnév). Ha az SAML-alapú egyszeri bejelentkezés konfigurálva van, az SAML-tokenek aláírására használt tanúsítvány gyakran a terület 50%-át használja fel. A felhasználók üzembe helyezése során megadott további elemek (titkos jogkivonatok, URI-k, értesítő e-mail-címek, felhasználónevek és jelszavak) meghaladják a tárolási korlátot. További információ: a [rendszergazdai hitelesítő adatok mentése a felhasználó üzembe helyezésének beállítása során](../manage-apps/application-provisioning-config-problem-storage-limit.md).
 
-## <a name="mapping-attributes"></a>Hozzárendelési attribútumok
+## <a name="mapping-attributes"></a>Leképezési attribútumok
 
-Ha engedélyezi a felhasználó kiépítése egy külső SaaS-alkalmazás, az Azure Portal szabályozza az attribútum értékeit attribútumleképezések en keresztül. A leképezések határozzák meg az Azure AD és a célalkalmazás között a felhasználói fiókok kiépítésekor vagy frissítésekor átfolyó felhasználói attribútumokat.
+Ha engedélyezi a felhasználók kiosztását egy külső SaaS-alkalmazáshoz, a Azure Portal attribútum-hozzárendeléseken keresztül vezérli az attribútum értékeit. A leképezések határozzák meg az Azure AD és a célalkalmazás közötti felhasználói attribútumokat, amikor a felhasználói fiókokat kiépítik vagy frissítik.
 
-Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között egy előre konfigurált attribútum- és attribútumleképezési készlet található. Egyes alkalmazások más típusú objektumokat is kezelnek a Felhasználókkal együtt, például a Csoportokkal együtt.
+Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált attribútumok és attribútumok vannak megadva. Egyes alkalmazások más típusú objektumokat is kezelhetnek a felhasználók, például a csoportok mellett.
 
-A kiépítés beállításakor fontos, hogy tekintse át és konfigurálja az attribútum-leképezések és munkafolyamatok, amelyek meghatározzák, hogy mely felhasználói (vagy csoport) tulajdonságok áramlását az Azure AD az alkalmazásba. Tekintse át és konfigurálja a megfelelő tulajdonságot (**Objektumok egyeztetése ezzel az attribútummal**), amely a két rendszer közötti felhasználók/csoportok egyedi azonosítására és egyezésére szolgál.
+A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az**attribútumot használó objektumok egyeztetése**), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
 
-Az alapértelmezett attribútum-hozzárendeléseket az üzleti igényeknek megfelelően szabhatja testre. Így módosíthatja vagy törölheti a meglévő attribútum-leképezéseket, vagy új attribútum-leképezéseket hozhat létre. További információt a [Felhasználói kiépítési attribútumleképezések testreszabása SaaS-alkalmazásokhoz.](../manage-apps/customize-application-attributes.md)
+Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](../manage-apps/customize-application-attributes.md).
 
-SaaS-alkalmazásba való kiépítés konfigurálásakor az attribútumleképezések egyik megadott típusa egy kifejezésleképezés. Ezekhez a leképezésekhez meg kell írnia egy parancsfájl-szerű kifejezést, amely lehetővé teszi a felhasználók adatainak a SaaS-alkalmazás számára elfogadhatóbb formátumgá alakítását. További információt az [Attribútumleképezések kifejezések írása című témakörben talál.](functions-for-customizing-application-data.md)
+Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attribútumok egyike egy kifejezés-hozzárendelés. Ezen hozzárendelések esetében olyan parancsfájl-szerű kifejezést kell írnia, amely lehetővé teszi a felhasználói adatai átalakítását olyan formátumokra, amelyek az SaaS-alkalmazás számára elfogadhatóak. Részletekért lásd: [kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md).
 
-## <a name="scoping"></a>Hatókör 
+## <a name="scoping"></a>Tartalmazó 
 ### <a name="assignment-based-scoping"></a>Hozzárendelés-alapú hatókör
 
-Az Azure AD-ből egy SaaS-alkalmazásba történő kimenő kiépítése esetén a [leggyakoribb](../manage-apps/assign-user-or-group-access-portal.md) módja annak, hogy meghatározza, mely felhasználók vannak kiépítés hatókörében. Mivel a felhasználói hozzárendelések is használják egyszeri bejelentkezés engedélyezéséhez, ugyanazt a módszert lehet használni a hozzáférés és a kiépítés kezelésére. A hozzárendelés-alapú hatókör nem vonatkozik a bejövő kiépítési forgatókönyvekre, például a Workday és a Successfactors.
+Az Azure AD-ből egy SaaS-alkalmazásba való kimenő kiépítés esetén a felhasználók [vagy csoportok hozzárendeléseire](../manage-apps/assign-user-or-group-access-portal.md) támaszkodva a leggyakoribb módszer annak meghatározására, hogy mely felhasználók tartoznak a kiépítés hatálya alá. Mivel a felhasználói hozzárendelések az egyszeri bejelentkezés engedélyezéséhez is használatosak, ugyanezt a módszert használhatja a hozzáférés és a kiépítés kezelésére is. A hozzárendelés-alapú hatókör nem vonatkozik a bejövő kiépítési forgatókönyvekre, például a munkanapokra és a SuccessFactors.
 
-* **Csoportok.** Az Azure AD Premium-licenccsomag használatával csoportok segítségével hozzáférést rendelhet egy SaaS-alkalmazáshoz. Ezt követően, ha a létesítési hatókör van beállítva, hogy **csak a hozzárendelt felhasználók és csoportok szinkronizálása,** az Azure AD-létesítési szolgáltatás kiépítése vagy de-provision felhasználók alapján, hogy ők az alkalmazáshoz rendelt csoport tagjai. Maga a csoportobjektum nincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportobjektumokat. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "False" értékű.
+* **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására**van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "false" (hamis) értékre van állítva.
 
-* **Dinamikus csoportok.** Az Azure AD felhasználói létesítési szolgáltatás képes olvasni és kiépíteni a felhasználók [dinamikus csoportokban.](../users-groups-roles/groups-create-rule.md) Tartsa szem előtt ezeket a kifogásokat és ajánlásokat:
+* **Dinamikus csoportok.** Az Azure AD-beli felhasználó-kiépítési szolgáltatás a [dinamikus csoportokba](../users-groups-roles/groups-create-rule.md)tartozó felhasználókat tudja olvasni és kiépíteni. Tartsa szem előtt ezeket a figyelmeztetéseket és javaslatokat:
 
-  * A dinamikus csoportok hatással lehetnek az Azure AD-ről saas-alkalmazásokra történő végpontok között történő kiépítés teljesítményére.
+  * A dinamikus csoportok befolyásolhatják a végpontok közötti kiépítés teljesítményét az Azure AD-ből az SaaS-alkalmazásokba.
 
-  * Adinamikus csoport ban lévő felhasználó kiépítésének vagy kiépítésének gyorsavá vált egy SaaS-alkalmazásban, attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. A dinamikus csoportok feldolgozási állapotának ellenőrzéséről a [Tagsági szabály feldolgozási állapotának ellenőrzése](../users-groups-roles/groups-create-rule.md)című témakörben talál további információt.
+  * A dinamikus csoportokban lévő felhasználók egy SaaS-alkalmazásban való kiépítésének vagy kiépítésének gyorsasága attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. További információ a dinamikus csoportok feldolgozási állapotának vizsgálatáról: [tagsági szabály feldolgozási állapotának](../users-groups-roles/groups-create-rule.md)megtekintése.
 
-  * Ha egy felhasználó elveszíti a dinamikus csoport tagságát, akkor kiépítési eseménynek minősül. Fontolja meg ezt a forgatókönyvet, amikor szabályokat hoz létre a dinamikus csoportokhoz.
+  * Ha a felhasználó elveszti a dinamikus csoport tagságát, akkor az egy kiépítési eseménynek számít. Vegye figyelembe ezt a forgatókönyvet a dinamikus csoportok szabályainak létrehozásakor.
 
-* **Beágyazott csoportok.** Az Azure AD felhasználói létesítési szolgáltatás nem tudja olvasni vagy kiépíteni a beágyazott csoportokban lévő felhasználókat. A szolgáltatás csak olvasni és kiépíteni a felhasználók, amelyek közvetlen tagjai egy explicit módon hozzárendelt csoport. A "csoportalapú hozzárendelések alkalmazásokhoz" korlátozása az egyszeri bejelentkezést is érinti [(lásd: Csoport használata a SaaS-alkalmazásokhoz való hozzáférés kezeléséhez).](../users-groups-roles/groups-saasapps.md) Ehelyett közvetlenül rendeljehozzá, vagy más módon hatókört a [csoportok,](define-conditional-rules-for-provisioning-user-accounts.md) amelyek tartalmazzák a felhasználók, akikki ki kell építeni.
+* **Beágyazott csoportok.** Az Azure AD-beli felhasználói kiépítési szolgáltatás nem tudja beolvasni vagy kiépíteni a felhasználókat a beágyazott csoportokban. A szolgáltatás csak olyan felhasználókat tud olvasni és kiépíteni, akik közvetlenül tagjai egy explicit módon hozzárendelt csoportnak. Ez a "csoportos hozzárendelések alkalmazások számára" korlátozás az egyszeri bejelentkezést is befolyásolja (lásd: [csoport használata az SaaS-alkalmazásokhoz való hozzáférés kezeléséhez](../users-groups-roles/groups-saasapps.md)). Ehelyett közvetlenül a kiépíteni kívánt felhasználókat tartalmazó csoportokban vagy más [hatókörben](define-conditional-rules-for-provisioning-user-accounts.md) kell kiosztania.
 
-### <a name="attribute-based-scoping"></a>Attribútumalapú hatókör 
+### <a name="attribute-based-scoping"></a>Attribútum-alapú hatókör 
 
-A hatókörszűrők segítségével attribútumalapú szabályokat határozhat meg, amelyek meghatározzák, hogy mely felhasználók vannak kiépítve egy alkalmazásba. Ez a módszer gyakran használják a bejövő kiépítése a HCM-alkalmazások az Azure AD és az Active Directory. Hatókör-szűrők az egyes Azure AD-felhasználók létesítési összekötőattribútum-leképezések részeként konfigurálva vannak konfigurálva. Az attribútumalapú hatókörszűrők konfigurálásáról az [Attribútumalapú alkalmazáskiépítés hatókörszűrőkkel című témakörben](define-conditional-rules-for-provisioning-user-accounts.md)talál további információt.
+A hatókör-szűrők használatával olyan attribútum-alapú szabályokat határozhat meg, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz. Ezt a módszert általában a HCM-alkalmazásokból az Azure AD-be és a Active Directoryra való bejövő kiépítés esetén használják. A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési összekötők attribútum-hozzárendeléseinek részeként vannak konfigurálva. Az attribútum-alapú hatóköri szűrők konfigurálásával kapcsolatos részletekért lásd: [attribútum-alapú alkalmazás kiépítés hatóköri szűrőkkel](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ### <a name="b2b-guest-users"></a>B2B (vendég) felhasználók
 
-Az Azure AD-felhasználói kiépítési szolgáltatás használatával b2B (vagy vendég) felhasználók kiépítése az Azure AD SaaS-alkalmazások. Azonban a B2B-felhasználók számára, hogy jelentkezzen be a SaaS-alkalmazás az Azure AD használatával, a SaaS-alkalmazás nak rendelkeznie kell az SAML-alapú egyszeri bejelentkezési képesség konfigurálva egy adott módon. ARról, hogy miként konfigurálhatja a SaaS-alkalmazásokat a B2B-felhasználók bejelentkezésének támogatására, olvassa [el az SaaS-alkalmazások konfigurálása a B2B együttműködéshez](../b2b/configure-saas-apps.md)című témakört.
+Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../b2b/configure-saas-apps.md).
 
-Ne feledje, hogy a vendégfelhasználó userPrincipalName gyakran "alias#EXT#@domain.com" néven van tárolva. ha a userPrincipalName forrásattribútumként szerepel az attribútumleképezésekben, a #EXT# a rendszer eltávolítja a userPrincipalName-ből. Ha azt szeretné, hogy a #EXT# jelen legyen, cserélje le a userPrincipalName-t az originalUserPrincipalName attribútumra. 
+Vegye figyelembe, hogy a vendég felhasználóhoz tartozó userPrincipalName gyakran "alias # EXT #@domain.com"-ként tárolja a rendszer. Ha a userPrincipalName az attribútum-hozzárendelések forrása attribútumként szerepel, a #EXT # el lesz távolítva a userPrincipalName. Ha a #EXT # elemre van szüksége, cserélje le a userPrincipalName és a originalUserPrincipalName tulajdonságot a forrás attribútumként. 
 
-## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: Kezdeti és növekményes
+## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 
-Ha az Azure AD a forrásrendszer, a létesítési szolgáltatás a [Különbözeti lekérdezés használata a Microsoft Graph-adatok változásainak nyomon követésére](https://docs.microsoft.com/graph/delta-query-overview) a felhasználók és csoportok figyelésére. A kiépítési szolgáltatás egy kezdeti ciklust futtat a forrásrendszeren és a célrendszeren, amelyet időszakos növekményes ciklusok követnek.
+Ha az Azure AD a forrásrendszer, a kiépítési szolgáltatás a [különbözeti lekérdezés használatával követi nyomon](https://docs.microsoft.com/graph/delta-query-overview) a felhasználók és csoportok figyelését a Microsoft Graph-adatértékeken. A kiépítési szolgáltatás kezdeti ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusok után.
 
 ### <a name="initial-cycle"></a>Kezdeti ciklus
 
-A létesítési szolgáltatás indításakor az első ciklus:
+A kiépítési szolgáltatás indításakor az első ciklus a következőket eredményezi:
 
-1. Az összes felhasználó és csoport lekérdezése a forrásrendszerből, az [attribútum-hozzárendelésekben](customize-application-attributes.md)definiált összes attribútum beolvasása.
+1. Az összes felhasználó és csoport lekérdezése a forrásoldali rendszerből, az [attribútum-hozzárendelésekben](customize-application-attributes.md)definiált összes attribútum beolvasása.
 
-2. Szűrje a visszaadott felhasználókat és [csoportokat](../manage-apps/assign-user-or-group-access-portal.md) bármely konfigurált hozzárendelés vagy [attribútumalapú hatókörszűrő](define-conditional-rules-for-provisioning-user-accounts.md)használatával.
+2. A visszaadott felhasználók és csoportok szűrése bármely konfigurált [hozzárendelés](../manage-apps/assign-user-or-group-access-portal.md) vagy [attribútum-alapú hatókör-szűrő](define-conditional-rules-for-provisioning-user-accounts.md)használatával.
 
-3. Amikor egy felhasználó hozzá van rendelve, vagy a kiépítés hatókörében van, a szolgáltatás lekérdezi a célrendszert egy megfelelő felhasználó számára a megadott [egyező attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties)használatával. Példa: Ha a userPrincipal név a forrásrendszerben az egyező attribútum, és leképezi a userName a célrendszerben, majd a létesítési szolgáltatás lekérdezi a célrendszer userNames, amelyek megfelelnek a userPrincipal név értékeit a forrásrendszerben.
+3. Ha egy felhasználó hozzá van rendelve vagy hatókörben van az üzembe helyezéshez, a szolgáltatás lekérdezi a megfelelő felhasználót a megadott [egyező attribútumokkal](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha a userPrincipal neve megegyezik a megfelelő attribútummal, és leképezi a felhasználónevet a célként megadott rendszeren, a kiépítési szolgáltatás lekérdezi a célként megadott rendszerrendszert a forrásrendszer userPrincipal-értékeinek megfelelő felhasználónevek számára.
 
-4. Ha egy megfelelő felhasználó nem található a célrendszerben, akkor a forrásrendszerből visszaadott attribútumok használatával jön létre. A felhasználói fiók létrehozása után a létesítési szolgáltatás észleli és gyorsítótárazza a célrendszer azonosítóját az új felhasználó számára. Ez az azonosító az adott felhasználó összes jövőbeli műveletének futtatására szolgál.
+4. Ha nem található egyező felhasználó a célszámítógépen, a rendszer a forrásrendszer által visszaadott attribútumok használatával hozza létre. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját. Ez az azonosító az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 
-5. Ha egy megfelelő felhasználó tanak, akkor a forrásrendszer által biztosított attribútumok használatával frissül. A felhasználói fiók egyeztetése után a létesítési szolgáltatás észleli és gyorsítótárazza a célrendszer azonosítóját az új felhasználó számára. Ez az azonosító az adott felhasználó összes jövőbeli műveletének futtatására szolgál.
+5. Ha a rendszer megfelelő felhasználót talál, az a forrásrendszer által megadott attribútumok használatával frissül. A felhasználói fiók egyeztetése után a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját. Ez az azonosító az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 
-6. Ha az attribútumleképezések "referencia" attribútumokat tartalmaznak, a szolgáltatás további frissítéseket végez a célrendszeren a hivatkozott objektumok létrehozásához és csatolásához. Előfordulhat például, hogy egy felhasználó rendelkezik egy "Manager" attribútummal a célrendszerben, amely a célrendszerben létrehozott másik felhasználóhoz kapcsolódik.
+6. Ha az attribútum-hozzárendelések "Reference" attribútumokat tartalmaznak, a szolgáltatás további frissítéseket hoz létre a célszámítógépen a hivatkozott objektumok létrehozásához és összekapcsolásához. Előfordulhat például, hogy egy felhasználó "Manager" attribútummal rendelkezik a célszámítógépen, amely egy másik, a célszámítógépen létrehozott felhasználóhoz van társítva.
 
-7. A kezdeti ciklus végén megmarad egy vízjel, amely a későbbi növekményes ciklusok kiindulópontját biztosítja.
+7. A kezdeti ciklus végén maradjon egy vízjelet, amely a későbbi növekményes ciklusok kiindulási pontját adja meg.
 
-Egyes alkalmazások, például a ServiceNow, a G Suite és a Box nem csak a felhasználók kiépítését, hanem a csoportok és tagjaik kiépítését is támogatják. Ezekben az esetekben, ha a csoport kiépítése engedélyezve van a [leképezések,](customize-application-attributes.md)a létesítési szolgáltatás szinkronizálja a felhasználók és a csoportok, majd később szinkronizálja a csoporttagságok.
+Egyes alkalmazások, például a ServiceNow, a G Suite és a Box támogatása nem csupán a felhasználókat, hanem a csoportok és a tagjaik létesítését is támogatják. Ezekben az esetekben, ha a csoportok kiosztása engedélyezve van a [leképezésekben](customize-application-attributes.md), a kiépítési szolgáltatás szinkronizálja a felhasználókat és a csoportokat, majd később szinkronizálja a csoporttagságok körét.
 
 ### <a name="incremental-cycles"></a>Növekményes ciklusok
 
-A kezdeti ciklus után az összes többi ciklus:
+A kezdeti ciklus után az összes többi ciklus a következő lesz:
 
-1. A forrásrendszer lekérdezése minden olyan felhasználó és csoport számára, amely az utolsó vízjel tárolása óta frissült.
+1. A forrásrendszer lekérdezése minden olyan felhasználó és csoport esetében, amelyet az utolsó vízjel tárolása óta frissítettek.
 
-2. Szűrje a visszaadott felhasználókat és [csoportokat](../manage-apps/assign-user-or-group-access-portal.md) bármely konfigurált hozzárendelés vagy [attribútumalapú hatókörszűrő](define-conditional-rules-for-provisioning-user-accounts.md)használatával.
+2. A visszaadott felhasználók és csoportok szűrése bármely konfigurált [hozzárendelés](../manage-apps/assign-user-or-group-access-portal.md) vagy [attribútum-alapú hatókör-szűrő](define-conditional-rules-for-provisioning-user-accounts.md)használatával.
 
-3. Amikor egy felhasználó hozzá van rendelve, vagy a kiépítés hatókörében van, a szolgáltatás lekérdezi a célrendszert egy megfelelő felhasználó számára a megadott [egyező attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties)használatával.
+3. Ha egy felhasználó hozzá van rendelve vagy hatókörben van az üzembe helyezéshez, a szolgáltatás lekérdezi a megfelelő felhasználót a megadott [egyező attribútumokkal](customize-application-attributes.md#understanding-attribute-mapping-properties).
 
-4. Ha egy megfelelő felhasználó nem található a célrendszerben, akkor a forrásrendszerből visszaadott attribútumok használatával jön létre. A felhasználói fiók létrehozása után a létesítési szolgáltatás észleli és gyorsítótárazza a célrendszer azonosítóját az új felhasználó számára. Ez az azonosító az adott felhasználó összes jövőbeli műveletének futtatására szolgál.
+4. Ha nem található egyező felhasználó a célszámítógépen, a rendszer a forrásrendszer által visszaadott attribútumok használatával hozza létre. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját. Ez az azonosító az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 
-5. Ha egy megfelelő felhasználó tanak, akkor a forrásrendszer által biztosított attribútumok használatával frissül. Ha egy újonnan hozzárendelt fiók, amely egyeztetett, a létesítési szolgáltatás észleli és gyorsítótárazza a célrendszer azonosítóját az új felhasználó számára. Ez az azonosító az adott felhasználó összes jövőbeli műveletének futtatására szolgál.
+5. Ha a rendszer megfelelő felhasználót talál, az a forrásrendszer által megadott attribútumok használatával frissül. Ha egy újonnan hozzárendelt fiók, amely megfelel, a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját. Ez az azonosító az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 
-6. Ha az attribútumleképezések "referencia" attribútumokat tartalmaznak, a szolgáltatás további frissítéseket végez a célrendszeren a hivatkozott objektumok létrehozásához és csatolásához. Előfordulhat például, hogy egy felhasználó rendelkezik egy "Manager" attribútummal a célrendszerben, amely a célrendszerben létrehozott másik felhasználóhoz kapcsolódik.
+6. Ha az attribútum-hozzárendelések "Reference" attribútumokat tartalmaznak, a szolgáltatás további frissítéseket hoz létre a célszámítógépen a hivatkozott objektumok létrehozásához és összekapcsolásához. Előfordulhat például, hogy egy felhasználó "Manager" attribútummal rendelkezik a célszámítógépen, amely egy másik, a célszámítógépen létrehozott felhasználóhoz van társítva.
 
-7. Ha egy felhasználó, amely korábban a kiépítési hatókör eltávolítása hatókör, beleértve a hozzárendelés nélküli, a szolgáltatás letiltja a felhasználót a célrendszerben egy frissítés segítségével.
+7. Ha egy korábban a kiépítés hatókörében lévő felhasználó el lett távolítva a hatókörből, beleértve a hozzá nem rendelt szolgáltatást, a szolgáltatás egy frissítésen keresztül letiltja a felhasználót a célszámítógépen.
 
-8. Ha egy felhasználó, aki korábban a kiépítési hatókörle van tiltva, vagy ideiglenesen törölt a forrásrendszerben, a szolgáltatás letiltja a felhasználót a célrendszerben egy frissítés en keresztül.
+8. Ha egy korábban a kiépítés hatókörében lévő felhasználó le van tiltva vagy nem törlődik a forrásrendszer, a szolgáltatás egy frissítésen keresztül letiltja a felhasználót a célszámítógépen.
 
-9. Ha egy felhasználó, amely korábban a kiépítési hatókörben van, a forrásrendszerben törölt, a szolgáltatás törli a felhasználót a célrendszerben. Az Azure AD-ben a felhasználók a helyreállíthatóan törölt 30 nap után ők helyreállíthatóan törölt.
+9. Ha egy korábban a kiépítés hatókörében lévő felhasználó nem törlődik a forrásoldali rendszeren, a szolgáltatás törli a felhasználót a célszámítógépen. Az Azure AD-ben a felhasználók a törlés után 30 nappal törlődnek.
 
-10. A növekményes ciklus végén egy új vízjel megőrzése, amely a későbbi növekményes ciklusok kiindulópontját biztosítja.
+10. A növekményes ciklus végén egy új vízjel marad, amely a későbbi növekményes ciklusok kiindulási pontját adja meg.
 
 > [!NOTE]
-> A **Létrehozás**, **frissítés**vagy **törlés** műveleteket a Hozzárendelések szakasz **Célobjektum-műveletek** jelölőnégyzetével [tilthatja](customize-application-attributes.md) le. A rendszer egy olyan mezőből, mint például a "accountEnabled" mezőből származó attribútumleképezés segítségével is szabályozza a felhasználó letiltásának logikáját.
+> A **létrehozási**, **frissítési**vagy **törlési** műveletet letilthatja a [leképezések](customize-application-attributes.md) szakasz **cél objektum műveletei** jelölőnégyzetének használatával. A felhasználók egy frissítés során való letiltásának logikáját a (z) "accountEnabled" mezőből származó attribútum-hozzárendeléssel is ellenőrzik.
 
-A létesítési szolgáltatás továbbra is fut back-to-back növekményes ciklusok a végtelenségig, az [oktatóanyag-specifikus az egyes alkalmazások.](../saas-apps/tutorial-list.md) A növekményes ciklusok addig folytatódnak, amíg az alábbi események valamelyike be nem következik:
+A kiépítési szolgáltatás továbbra is határozatlan időre futtatja az [egyes alkalmazásokra vonatkozó oktatóanyagban](../saas-apps/tutorial-list.md)meghatározott időközöket. A növekményes ciklusok addig folytatódnak, amíg az alábbi események egyike nem következik be:
 
-- A szolgáltatás manuálisan leáll az Azure Portalhasználatával, vagy a megfelelő Microsoft Graph API-parancs használatával.
-- Egy új kezdeti ciklus aktiválódik a **Clear állapot és újraindítás** beállítás az Azure Portalon, vagy a megfelelő Microsoft Graph API-parancs használatával. Ez a művelet törli a tárolt vízjelet, és az összes forrásobjektum újra kiértékelését eredményezi.
-- Az új kezdeti ciklus az attribútumleképezések vagy a hatókörszűrők változása miatt aktiválódik. Ez a művelet törli a tárolt vízjelet is, és az összes forrásobjektum újra kiértékelését eredményezi.
-- A létesítési folyamat a magas hibaarány miatt karanténba kerül (lásd alább), és négy hétnél tovább karanténban marad. Ebben az esetben a szolgáltatás automatikusan le lesz tiltva.
+- A szolgáltatás kézi leállítása a Azure Portal használatával vagy a megfelelő Microsoft Graph API-parancs használatával történik.
+- A rendszer az új kezdeti ciklust a Azure Portal **törlési állapot és újraindítás** lehetőségével, vagy a megfelelő Microsoft Graph API-parancs használatával indítja el. Ez a művelet törli a tárolt vízjeleket, és az összes forrásobjektum kiértékelését okozza.
+- Az attribútum-hozzárendelések és a hatóköri szűrők változása miatt új kezdeti ciklust indít a rendszer. Ezzel a művelettel az összes tárolt vízjel törlődik, és az összes forrásoldali objektum újbóli kiértékelését okozza.
+- A kiépítési folyamat Karanténba kerül (lásd alább), magas hiba miatt, és több mint négy hétig karanténba marad. Ebben az esetben a szolgáltatás automatikusan le lesz tiltva.
 
 ### <a name="errors-and-retries"></a>Hibák és újrapróbálkozások
 
-Ha a célrendszer hibája megakadályozza, hogy egy adott felhasználót hozzáadjanak, frissítsenek vagy törölnek a célrendszerben, a művelet a következő szinkronizálási ciklusban újra próbálkozik. Ha a felhasználó továbbra is sikertelen, majd az újrapróbálkozások csökkenni kezd, és fokozatosan visszaskálázás napi egy kísérletre. A hiba megoldásához a rendszergazdáknak ellenőrizniük kell a [létesítési naplókat](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) a kiváltó ok meghatározásához, és meg kell tenniük a megfelelő lépéseket. Gyakori hibák lehetnek:
+Ha a célrendszer egyik hibája megakadályozza, hogy egy adott felhasználó hozzá legyen adva, frissítve vagy törölve legyen a célszámítógépen, a rendszer a következő szinkronizálási ciklusban újrapróbálkozik a művelettel. Ha a felhasználó továbbra is sikertelen, akkor az újrapróbálkozások kevesebb gyakorisággal fognak megtörténni, és a napi egyszeri próbálkozásra fokozatosan visszakerülnek. A hiba elhárításához a rendszergazdáknak ellenőriznie kell a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) a kiváltó ok okának megállapításához és a megfelelő művelet meghozatalához. Gyakori hibák a következők lehetnek:
 
-- Azok a felhasználók, akiknek nincs olyan attribútumuk a forrásrendszerben, amely a célrendszerben szükséges
-- Azok a felhasználók, akik attribútumértékkel rendelkeznek a forrásrendszerben, amelyhez egyedi megkötés van érvényben a célrendszerben, és ugyanaz az érték szerepel egy másik felhasználói bejegyzésben
+- Azok a felhasználók, akik nem rendelkeznek olyan attribútummal, amely a célként megadott rendszerhez szükséges a forrásoldali rendszeren
+- Azok a felhasználók, akiknek attribútum értéke van abban a forrásrendszer esetében, amelyhez egyedi korlátozás van megadva a célszámítógépen, és ugyanaz az érték egy másik felhasználói rekordban van
 
-Ezeket a hibákat úgy oldhatja meg, hogy módosítja az érintett felhasználó attribútumértékeit a forrásrendszerben, vagy módosítja az attribútumleképezéseket, hogy azok ne okozzanak ütközést.
+Hárítsa el ezeket a hibákat úgy, hogy módosítja az érintett felhasználóhoz tartozó attribútumérték értékét a forrásrendszer vagy az attribútumok leképezésének módosításával, hogy ne okozzák az ütközéseket.
 
 ### <a name="quarantine"></a>Karantén
 
-Ha a célrendszeren keresztül kezdeményezett hívások többsége vagy mindegyike egy hiba (például érvénytelen rendszergazdai hitelesítő adatok) miatt következetesen sikertelen, a létesítési feladat "karantén" állapotba kerül. Ez az állapot a [kiépítési összefoglaló jelentésben](../manage-apps/check-status-user-account-provisioning.md) és e-mailben jelenik meg, ha az Azure Portalon e-mail-értesítések vannak konfigurálva.
+Ha a megcélzott rendszerre irányuló hívások többsége vagy mindegyike egy hiba miatt nem sikerül (például érvénytelen rendszergazdai hitelesítő adatok), a kiépítési feladat "karantén" állapotba kerül. Ez az állapot a [kiépítési összefoglaló jelentésben](../manage-apps/check-status-user-account-provisioning.md) és e-mailben, ha az e-mailes értesítések konfigurálva vannak a Azure Portalban.
 
-Karanténban a növekményes ciklusok gyakorisága fokozatosan csökken naponta egyszer.
+Karantén esetén a növekményes ciklusok gyakorisága naponta egyszer csökken.
 
-A kiépítési feladat kilép a karanténból, miután az összes jogsértő hibát kijavították, és a következő szinkronizálási ciklus elindul. Ha a létesítési feladat négy hétnél hosszabb ideig karanténban marad, a létesítési feladat le van tiltva. A karantén állapotáról [itt](../manage-apps/application-provisioning-quarantine-status.md)olvashat bővebben.
+A kiépítési feladatok kilépnek a karanténba helyezésből az összes jogsértő hiba kijavítása után, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](../manage-apps/application-provisioning-quarantine-status.md).
 
 ### <a name="how-long-provisioning-takes"></a>Mennyi időt vesz igénybe az átadás?
 
-A teljesítmény attól függ, hogy a létesítési feladat fut egy kezdeti kiépítési ciklus vagy egy növekményes ciklus. A kiépítés hosszú ságáról és a kiépítési szolgáltatás állapotának figyeléséről [a Felhasználói kiépítés állapotának ellenőrzése című](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)témakörben talál részletesen.
+A teljesítmény attól függ, hogy a kiépítési feladatok kezdeti kiépítési ciklust vagy növekményes ciklust futtatnak-e. A kiépítés időtartamáról és a kiépítési szolgáltatás állapotának figyeléséről a következő témakörben tájékozódhat: [a felhasználó kiépítési állapotának ellenőrzésével](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)kapcsolatos információk.
 
-### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hogyan állapítható meg, hogy a felhasználók megfelelően vannak-e kiépítve?
+### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hogyan állapítható meg, hogy a felhasználók megfelelően lettek-e kiépítve
 
-A felhasználói létesítési szolgáltatás által futtatott összes művelet et az Azure [AD-kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)rögzítik. A naplók tartalmazzák a forrás- és célrendszereken végzett összes olvasási és írási műveletet, valamint az egyes műveletek során olvasott vagy írt felhasználói adatokat. A kiépítési naplók azure portalon való olvasásáról a [kiépítési jelentéskészítési útmutatóban](../manage-apps/check-status-user-account-provisioning.md)olvashat.
+A felhasználói kiépítési szolgáltatás által futtatott összes művelet rögzítve van az Azure AD- [létesítési naplókban (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). A naplók tartalmazzák a forrás-és a megcélzott rendszerekre vonatkozó összes olvasási és írási műveletet, valamint az egyes műveletek során beolvasott vagy írt felhasználói adatok tartalmát. További információ a kiépítési naplók beolvasásáról a Azure Portalban: a [kiépítési jelentési útmutató](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="de-provisioning"></a>Kiépítés ből való kiépítés
+## <a name="de-provisioning"></a>Kiépítés megszüntetése
 
-Az Azure AD-kiépítési szolgáltatás a forrás- és célrendszereket szinkronban tartja a fiókok kiszervezésének megszüntetésével, amikor a felhasználóknak már nem kell hozzáférniük. 
+Az Azure AD-kiépítési szolgáltatás megőrzi a forrás-és a megcélzott rendszereket a kiépítési fiókok szinkronizálásával, ha a felhasználóknak többé nem férnek hozzá. 
 
-Az Azure AD-kiépítési szolgáltatás ideiglenesen törli a felhasználót egy alkalmazásból, amikor az alkalmazás iszlamista törlésre kerül (frissítési kérelem aktív = hamis) és a következő események bármelyike történik:
+Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót az alkalmazásban, ha az alkalmazás suupports a Soft deletes (Update Request with Active = false), és az alábbi események bármelyike előfordul:
 
 * A felhasználói fiók törlődik az Azure AD-ben
-*   A felhasználó nincs hozzárendelve az alkalmazásból
-*   A felhasználó már nem felel meg a hatókörszűrőnek, és nem terjed ki a hatókörből
-    * Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás ideiglenesen törli vagy letiltja a hatókörön kívül eső felhasználókat. Ha felül szeretné bírni ezt az alapértelmezett viselkedést, beállíthatja, hogy a jelző [kihagyja a hatókörön kívüli törléseket.](../app-provisioning/skip-out-of-scope-deletions.md)
-*   Az AccountEnabled tulajdonság értéke Hamis.
+*   A felhasználó nincs kiosztva az alkalmazásból
+*   A felhasználó már nem felel meg egy hatóköri szűrőnek, és kikerül a hatókörből
+    * Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához](../app-provisioning/skip-out-of-scope-deletions.md).
+*   A AccountEnabled tulajdonság értéke false (hamis)
 
-Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a helyreállítható törlést, a kiépítési szolgáltatás DELETE-kérelmet küld a felhasználó végleges törlésére az alkalmazásból. 
+Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból. 
 
-30 nappal azután, hogy egy felhasználó törlődik az Azure AD-ben, véglegesen törlődnek a bérlőből. Ezen a ponton a létesítési szolgáltatás küld egy DELETE kérelmet véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót véglegesen,](../fundamentals/active-directory-users-restore.md)amely törlési kérelmet küld az alkalmazásnak.
+30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
 
-Ha az attribútumleképezésekben IsSoftDeleted attribútum jelenik meg, a rendszer meghatározza a felhasználó állapotát, valamint azt, hogy küldjön-e egy frissítési kérelmet aktív = false értékkel a felhasználó helyrehozása érdekében. 
+Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát határozza meg, valamint azt, hogy az aktív = false értékkel rendelkező frissítési kérést szeretné-e elküldeni a felhasználó számára. 
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -196,6 +196,6 @@ Ha az attribútumleképezésekben IsSoftDeleted attribútum jelenik meg, a rends
 
 [Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében](../manage-apps/configure-automatic-user-provisioning-portal.md)
 
-[SciM-végpont létrehozása és kiépítés konfigurálása saját alkalmazás létrehozásakor](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+[Hozzon létre egy SCIM-végpontot, és konfigurálja a létesítést saját alkalmazás létrehozásakor](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[A felhasználók alkalmazásba való konfigurálásával és kiépítésével kapcsolatos problémák elhárítása.](../manage-apps/application-provisioning-config-problem.md)
+[A felhasználók egy alkalmazáshoz való konfigurálásával és üzembe helyezésével kapcsolatos problémák elhárítása](../manage-apps/application-provisioning-config-problem.md).

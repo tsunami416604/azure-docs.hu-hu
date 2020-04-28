@@ -1,7 +1,7 @@
 ---
 title: Megosztott eszköz mód iOS-eszközökhöz
 titleSuffix: Microsoft identity platform | Azure
-description: További információ arról, hogyan engedélyezheti a megosztott eszközmódot, hogy az Első vonalbeli dolgozók megoszthassák az iOS-eszközöket
+description: Megtudhatja, hogyan engedélyezheti a Firstline-feldolgozók számára az iOS-eszközök megosztását a megosztott eszköz mód engedélyezésével
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550252"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Megosztott eszköz mód iOS-eszközökhöz
@@ -25,74 +25,74 @@ ms.locfileid: "80550252"
 > [!NOTE]
 > Ez a funkció nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Első vonalban dolgozók, mint a kiskereskedelmi partnerek, a hajózószemélyzet tagjai, és a helyszíni szolgáltatások munkavállalók gyakran használják a megosztott mobil eszköz munkájuk elvégzéséhez. Ezek a megosztott eszközök biztonsági kockázatot jelenthetnek, ha a felhasználók szándékosan vagy sem megosztják jelszavukat vagy PIN-adataikat, hogy hozzáférjenek az ügyfél- és üzleti adatokhoz a megosztott eszközön.
+A Firstline-feldolgozók, például a kiskereskedelmi munkatársak, a hajózószemélyzet tagjai és a helyszíni szolgáltatások feldolgozói gyakran közös mobileszköz használatával végzik munkájukat. Ezek a megosztott eszközök biztonsági kockázatokat jelenthetnek, ha a felhasználók a jelszavukat vagy PIN-fájljaikat szándékosan vagy nem használják, hogy hozzáférjenek a megosztott eszközön lévő ügyfél-és üzleti adataihoz.
 
-A megosztott eszköz mód lehetővé teszi, hogy az iOS 13-as vagy újabb rendszert úgy állítsa be, hogy azokat az alkalmazottak könnyebben és biztonságosabban osztják meg. Az alkalmazottak gyorsan bejelentkezhetnek és hozzáférhetnek az ügyfelek adataihoz. Amikor befejezték a műszakot vagy a feladatot, kijelentkezhetnek az eszközről, és azonnal készen állnak a következő alkalmazott használatára.
+A megosztott eszköz mód lehetővé teszi az iOS 13 vagy újabb rendszerű eszközök konfigurálását, hogy könnyebben és biztonságosan lehessen megosztani az alkalmazottakat. Az alkalmazottak gyorsan jelentkezhetnek be és érhetik el az ügyfelek adatait. Ha végzett a váltással vagy a feladattal, kijelentkezhetnek az eszközről, és azonnal készen állnak a következő alkalmazott általi használatra.
 
-A megosztott eszköz mód az eszköz Microsoft identitással támogatott felügyeletét is biztosítja.
+A megosztott eszköz mód a Microsoft identitás-vezérlésű felügyeletét is biztosítja az eszköz számára.
 
-Ez a szolgáltatás a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) használja az eszközön lévő felhasználók kezelésére és a [Microsoft Enterprise Egyszeri bejelentkezés Apple-eszközökre történő terjesztésére.](apple-sso-plugin.md)
+Ez a funkció a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) használja az eszközön lévő felhasználók felügyeletéhez, valamint az [Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul](apple-sso-plugin.md)terjesztéséhez.
 
-## <a name="create-a-shared-device-mode-app"></a>Megosztott eszközmódú alkalmazás létrehozása
+## <a name="create-a-shared-device-mode-app"></a>Megosztott eszköz módú alkalmazás létrehozása
 
-Megosztott eszközmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttműködnek:
+Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttesen működnek:
 
-1. **Az alkalmazásfejlesztők** egyfiókos alkalmazást írnak (a többfiókos alkalmazások nem támogatottak megosztott eszköz módban), és olyan kódot írnak, amely kezeli a megosztott eszközkijelentkezést.
+1. Az **alkalmazások fejlesztői** egy egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz üzemmódban), és kódot írhatnak a megosztott eszközök kijelentkezéséhez hasonló dolgok kezelésére.
 
-1. **Az eszközadminisztrátorok előkészítik** az eszközt a megosztásra egy mobileszköz-felügyeleti (MDM) szolgáltató, például a Microsoft Intune használatával a szervezetükben lévő eszközök kezeléséhez. Az MDM leküldéses a Microsoft Authenticator alkalmazást az eszközökre, és bekapcsolja a "Megosztott mód" minden eszköz egy profil frissítés az eszközre. Ez a megosztott mód beállítás módosítja az eszközön támogatott alkalmazások viselkedését. Az MDM-szolgáltató tól kapott konfiguráció beállítja az eszköz megosztott eszközmódját, és engedélyezi a Microsoft Enterprise Egyszeri bejelentkezést az [Apple-eszközökhöz,](apple-sso-plugin.md) amely a megosztott eszközmódhoz szükséges.
+1. Az eszközök **rendszergazdái** megoszthatják az eszközt egy mobileszköz-felügyeleti (Mdm-) szolgáltató használatával, mint a Microsoft Intune a szervezet eszközeinek kezeléséhez. A MDM leküldi a Microsoft Authenticator alkalmazást az eszközökre, és bekapcsolja a "Shared Mode" (megosztott mód) lehetőséget az eszközön a profil frissítése során. Ez a megosztott üzemmódú beállítás a támogatott alkalmazások viselkedését módosítja az eszközön. Ez a konfiguráció a MDM-szolgáltatónál beállítja az eszköz megosztott eszközének módját, és engedélyezi a [Microsoft Enterprise SSO beépülő modult az Apple-eszközökhöz](apple-sso-plugin.md) , amelyek a megosztott eszköz üzemmódhoz szükségesek.
 
-1. [**Csak nyilvános előzetes verzióban szükséges**] A [Felhőeszköz-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) szerepkörrel rendelkező felhasználóknak el kell indítaniuk a [Microsoft Authenticator alkalmazást,](../user-help/user-help-auth-app-overview.md) és csatlakozniuk kell az eszközükhöz a szervezethez.
+1. [**Csak a nyilvános előzetes**verzióban szükséges] A [felhőalapú eszköz rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) szerepkörrel rendelkező felhasználónak el kell indítania a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) , és csatlakoztatnia kell az eszközét a szervezethez.
 
-    A szervezeti szerepkörök tagságának konfigurálása az Azure Portalon: **Azure Active Directory** > **szerepkörök és rendszergazdák** > **felhőalapú eszközfelügyelő**
+    A szervezeti szerepkörök tagságának konfigurálása a Azure Portal: **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Felhőbeli eszköz rendszergazdája**
 
-Az alábbi szakaszok segítségével frissítheti az alkalmazást a megosztott eszközmód támogatásához.
+A következő fejezetek segítséget nyújtanak az alkalmazás frissítésében a megosztott eszközök üzemmódjának támogatásához.
 
-## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>Az Intune használata a megosztott eszközmód engedélyezéséhez & SSO-bővítmény
+## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>Az Intune használata a megosztott eszközök üzemmódjának & SSO-bővítményének engedélyezéséhez
 
 > [!NOTE]
-> A következő lépés csak nyilvános előzetes verzióban szükséges.
+> A következő lépés csak a nyilvános előzetes verzióban szükséges.
 
-Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszközmódot. Az iOS 13+ rendszert telepíteni kell, és be kell iratkozni. Az MDM-konfigurációnak engedélyeznie kell a [Microsoft Enterprise SSO beépülő modult is az Apple-eszközökhöz.](apple-sso-plugin.md) Ha többet szeretne megtudni az SSO-bővítményekről, tekintse meg az [Apple-videót.](https://developer.apple.com/videos/play/tech-talks/301/)
+Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszköz üzemmódot. Telepíteni kell az iOS 13 + alkalmazást, és regisztrálni kell a MDM. A MDM-konfigurációnak engedélyeznie kell a [Microsoft Enterprise SSO beépülő modult is az Apple-eszközökhöz](apple-sso-plugin.md). Az SSO-bővítményekkel kapcsolatos további tudnivalókért tekintse meg az [Apple videót](https://developer.apple.com/videos/play/tech-talks/301/).
 
-1. Az Intune konfigurációs portálján mondja meg az eszköznek, hogy engedélyezze a Microsoft Enterprise Egyszeri bejelentkezést az [Apple-eszközökhöz](apple-sso-plugin.md) a következő konfigurációval:
+1. Az Intune konfigurációs portálján adja meg az eszközt, hogy engedélyezze a [Microsoft Enterprise SSO beépülő modult az Apple-eszközökhöz](apple-sso-plugin.md) a következő konfigurációval:
 
-    - **Típus**: Átirányítás
-    - **Extension ID**: com.microsoft.azureauthenticator.ssoextension
-    - **Csapat azonosítója**: SGGM6D27TK
-    - **URL-címek:**https://login.microsoftonline.com
-    - További konfigurálandó adatok:
+    - **Típus**: átirányítás
+    - **BŐVÍTMÉNY azonosítója**: com. microsoft. azureauthenticator. ssoextension
+    - **Csoport azonosítója**: SGGM6D27TK
+    - **URL-címek**:https://login.microsoftonline.com
+    - További konfigurálandó információk:
       - Kulcs: sharedDeviceMode
-      - Típus: Logikai
-      - Érték: Igaz
+      - Típus: Boolean
+      - Érték: true
 
-    Az Intune-nal való konfigurálásról az [Intune konfigurációs dokumentációjában](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)olvashat bővebben.
+    Az Intune-nal való konfigurálással kapcsolatos további információkért tekintse meg az [Intune konfigurációs dokumentációját](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
 
-1. Ezután konfigurálja az MDM-et úgy, hogy a Microsoft Authenticator alkalmazást egy MDM-profilon keresztül az eszközre tolja.
+1. Ezután konfigurálja úgy a MDM, hogy az MDM-profilon keresztül leküldje a Microsoft Authenticator alkalmazást az eszközre.
 
-    A Megosztott eszköz mód bekapcsolására a következő konfigurációs beállításokat kell beállítani:
+    A megosztott eszköz üzemmód bekapcsolásához állítsa be a következő konfigurációs beállításokat:
 
     - 1. konfiguráció:
       - Kulcs: sharedDeviceMode
-      - Típus: Logikai
-      - Érték: Igaz
+      - Típus: Boolean
+      - Érték: true
 
-## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>Az iOS-alkalmazás módosítása a megosztott eszközmód támogatásához
+## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>IOS-alkalmazás módosítása a megosztott eszközök üzemmódjának támogatásához
 
-A felhasználók attól függenek, hogy az adataik nem szivárogtak-e ki egy másik felhasználónak. A következő szakaszok hasznos jelzéseket adnak az alkalmazásnak, hogy változás történt, és kezelni kell.
+A felhasználók attól függnek, hogy az adatok nem szivárognak-e egy másik felhasználó felé. A következő szakaszokban olyan hasznos jelek láthatók, amelyek jelzik, hogy a változás bekövetkezett, és kezelni kell az alkalmazást.
 
-Ön a felelős azért, hogy minden alkalommal ellenőrizze a felhasználó állapotát az eszközön, amikor az alkalmazást használja, majd törölje az előző felhasználó adatait. Ez magában foglalja, ha újra betölti a háttérben a többfeladatos.
+Ön felelős az eszközön lévő felhasználó állapotának ellenőrzésében az alkalmazás minden használatakor, majd az előző felhasználó adatait törli. Ez magában foglalja a többszörös feladatokból származó háttérből való újratöltést.
 
-A felhasználói módosítás esetén gondoskodnia kell arról, hogy az előző felhasználó adatai törlődjenek, és hogy az alkalmazásban megjelenő gyorsítótárazott adatok törlődjenek. Javasoljuk, hogy önnek és vállalatának végezzen biztonsági ellenőrzési folyamatot az alkalmazás frissítése után, hogy támogassa a megosztott eszközmódot.
+A felhasználó változásakor győződjön meg arról, hogy az előző felhasználó adatai törlődnek, és az alkalmazásban megjelenő gyorsítótárazott adatfájlok törlődnek. Javasoljuk, hogy az alkalmazás frissítése után a megosztott eszköz üzemmódjának támogatásához a vállalat biztonsági felülvizsgálati folyamatot végezzen.
 
-### <a name="detect-shared-device-mode"></a>Megosztott eszköz mód észlelése
+### <a name="detect-shared-device-mode"></a>Megosztott eszköz üzemmódjának észlelése
 
-A megosztott eszköz mód észlelése fontos az alkalmazás számára. Számos alkalmazás felhasználói élményének (UX) módosítására lesz szükség, ha az alkalmazást megosztott eszközön használják. Előfordulhat például, hogy az alkalmazás rendelkezik egy "Regisztráció" funkcióval, amely nem megfelelő az első vonalbeli dolgozó számára, mert valószínűleg már rendelkezik fiókkal. Előfordulhat, hogy további biztonságot szeretne adni az alkalmazás adatkezeléséhez, ha megosztott eszköz módban van.
+A megosztott eszköz mód észlelése fontos az alkalmazás számára. Számos alkalmazáshoz szükség van a felhasználói élmény (UX) módosítására, ha az alkalmazás egy megosztott eszközön van használatban. Előfordulhat például, hogy az alkalmazás "regisztráció" funkcióval rendelkezik, amely nem felel meg a Firstline-feldolgozók számára, mert valószínűleg már van fiókja. Ha megosztott eszköz módban van, további biztonságot is hozzáadhat az alkalmazás adatkezeléséhez.
 
-Az `getDeviceInformationWithParameters:completionBlock:` API segítségével `MSALPublicClientApplication` határozza meg, ha egy alkalmazás fut egy eszközön megosztott eszköz módban.
+A alkalmazásban található `getDeviceInformationWithParameters:completionBlock:` API `MSALPublicClientApplication` -val megállapíthatja, hogy egy eszköz megosztott eszköz módban fut-e.
 
-A következő kódrészletek példákat `getDeviceInformationWithParameters:completionBlock:` mutatnak be az API használatára.
+A következő kódrészletek példákat mutatnak az `getDeviceInformationWithParameters:completionBlock:` API használatára.
 
 #### <a name="swift"></a>Swift
 
@@ -124,11 +124,11 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 }];
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>A bejelentkezett felhasználó beszereznie, és annak megállapítása, hogy a felhasználó megváltozott-e az eszközön
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>A bejelentkezett felhasználó beolvasása, és annak megállapítása, hogy a felhasználó módosult-e az eszközön
 
-A megosztott eszközmód támogatásának másik fontos része a felhasználó állapotának meghatározása az eszközön, és az alkalmazásadatok törlése, ha a felhasználó megváltozott, vagy ha egyáltalán nincs felhasználó az eszközön. Ön felelős annak biztosításáért, hogy az adatok ne szivárogjanak ki egy másik felhasználónak.
+A megosztott eszköz üzemmód támogatásának egy másik fontos része a felhasználó állapotának megállapítása az eszközön, és az alkalmazásadatok törlése, ha a felhasználó módosult, vagy ha az eszközön nincs felhasználó. Ön felelős azért, hogy gondoskodjon arról, hogy az adatvédelem ne legyen kiszivárgott egy másik felhasználónak.
 
-Az API `getCurrentAccountWithParameters:completionBlock:` segítségével lekérdezheti a jelenleg bejelentkezett fiókot az eszközön.
+Az `getCurrentAccountWithParameters:completionBlock:` API-val a jelenleg bejelentkezett fiókot lehet lekérdezni az eszközön.
 
 #### <a name="swift"></a>Swift
 
@@ -157,9 +157,9 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 }];
 ```
 
-### <a name="globally-sign-in-a-user"></a>Globális bejelentkezés egy felhasználóba
+### <a name="globally-sign-in-a-user"></a>Globális bejelentkezés felhasználóként
 
-Ha egy eszköz megosztott eszközként van konfigurálva, az alkalmazás meghívhatja az `acquireTokenWithParameters:completionBlock:` API-t a fiókba való bejelentkezéshez. A fiók globálisan elérhető lesz az eszközön lévő összes jogosult alkalmazáshoz, miután az első alkalmazás aláírja a fiókot.
+Ha egy eszköz megosztott eszközként van konfigurálva, az alkalmazás meghívja az `acquireTokenWithParameters:completionBlock:` API-t, hogy jelentkezzen be a fiókba. A fiók az első alkalmazásnak a fiókba való bejelentkezése után globálisan elérhető lesz az eszközön az összes jogosult alkalmazás számára.
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -173,14 +173,14 @@ parameters.loginHint = self.loginHintTextField.text;
 
 ### <a name="globally-sign-out-a-user"></a>Felhasználó globális kijelentkezése
 
-A következő kód eltávolítja a bejelentkezett fiókot, és törli a gyorsítótárazott jogkivonatokat nem csak az alkalmazásból, hanem a megosztott eszköz módban lévő eszközről is. Ez azonban nem törli az *adatokat* az alkalmazásból. Törölnie kell az adatokat az alkalmazásból, valamint törölnie kell az alkalmazás által a felhasználó számára megjelenített gyorsítótárazott adatokat.
+A következő kód eltávolítja a bejelentkezett fiókot, és törli a gyorsítótárazott jogkivonatokat nem csak az alkalmazásból, hanem a megosztott eszköz módban lévő eszközről is. Azonban nem törli az alkalmazásból származó *adatok* törlését. Törölnie kell az alkalmazásból az adatait, valamint törölnie kell az alkalmazás által a felhasználónak megjelenített gyorsítótárazott adatok törlését.
 
 #### <a name="clear-browser-state"></a>Böngésző állapotának törlése
 
 > [!NOTE]
-> A következő lépés csak nyilvános előzetes verzióban szükséges.
+> A következő lépés csak a nyilvános előzetes verzióban szükséges.
 
-Ebben a nyilvános előzetes verzióban az [Apple-eszközökmicrosoft Enterprise Egyszeri bejelentkezés e-kiszolgálója](apple-sso-plugin.md) csak az alkalmazások esetében törli az állapotot. Nem egyértelmű, hogy a Safari böngészője állapota nem egyértelmű. Azt javasoljuk, hogy manuálisan törölje a böngészőmunkamenetet, hogy a felhasználói állapot nyomai ne maradhassanak hátra. Az alábbi opcionális `signoutFromBrowser` tulajdonsággal törölheti a cookie-kat. Ez azt eredményezi, hogy a böngésző rövid időre elindul az eszközön.
+Ebben a nyilvános előzetes verzióban az [Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul](apple-sso-plugin.md) csak az alkalmazások állapotát törli. A Safari böngésző nem törli az állapotot. Javasoljuk, hogy manuálisan törölje a böngésző-munkamenetet annak biztosításához, hogy a felhasználói állapot nyomkövetése ne maradjon hátra. A cookie-k törléséhez az alább látható opcionális `signoutFromBrowser` tulajdonságot használhatja. Ez azt eredményezi, hogy a böngésző röviden elindít az eszközön.
 
 #### <a name="swift"></a>Swift
 
@@ -223,6 +223,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>További lépések
 
-A megosztott eszközmód működés közbeni megtekintéséhez a Következő kódminta a GitHubon tartalmaz egy példát egy Firstline Worker alkalmazás futtatására egy iOS-eszközön megosztott eszköz módban:
+Ha szeretné megtekinteni a megosztott eszköz üzemmódot a műveletben, a GitHubon a következő mintakód példaként egy Firstline Worker-alkalmazás futtatására használható egy iOS-eszközön a megosztott eszköz módban:
 
-[MSAL iOS Swift Microsoft Graph API minta](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)
+[MSAL iOS Swift Microsoft Graph API-minta](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

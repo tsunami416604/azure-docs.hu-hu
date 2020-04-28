@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platform hitelesítési protokolljai
-description: A Microsoft identity platform által támogatott hitelesítési protokollok áttekintése
+title: Microsoft Identity platform hitelesítési protokollok
+description: A Microsoft Identity platform által támogatott hitelesítési protokollok áttekintése
 author: rwike77
 services: active-directory
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884681"
 ---
-# <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft identity platform hitelesítési protokolljai
+# <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft Identity platform hitelesítési protokollok
 
-A Microsoft identity platform a legszélesebb körben használt hitelesítési és engedélyezési protokollok közül többet is támogat. Az ebben a szakaszban található témakörök ismertetik a támogatott protokollokat és azok megvalósítását a Microsoft identity platformon. A témakörök között szerepelt a támogatott jogcímtípusok áttekintése, az összevonási metaadatok használatának bemutatása, részletes OAuth 2.0. és saml 2.0 protokoll referencia dokumentációját, valamint egy hibaelhárítási szakaszt.
+A Microsoft Identity platform számos, a legszélesebb körben használt hitelesítési és engedélyezési protokollt támogat. A szakasz témakörei a támogatott protokollokat és azok megvalósítását írják le a Microsoft Identity platformon. A témakörökbe beletartozik a támogatott jogcím-típusok áttekintése, az összevonási metaadatok használatának bemutatása, részletes OAuth 2,0. és a SAML 2,0 protokoll dokumentációját, valamint egy hibaelhárítási szakaszt.
 
-## <a name="authentication-protocols-articles-and-reference"></a>Hitelesítési protokollok cikkei és hivatkozásai
+## <a name="authentication-protocols-articles-and-reference"></a>A hitelesítési protokollok cikkei és referenciái
 
-* [Fontos tudnivalók a kulcsváltás aláírásáról a Microsoft identitásplatformon](active-directory-signing-key-rollover.md) – Ismerje meg a Microsoft identity platform aláírókulcs-váltási ütemét, a kulcs automatikus frissítéséhez szükséges módosításokat, valamint a leggyakoribb alkalmazási forgatókönyvek frissítésének módjáról szóló vitát.
-* [Támogatott jogkivonat- és jogcímtípusok](id-tokens.md) – Ismerje meg a microsofti identitásplatform által kioldott jogkivonatokat.
-* [OAuth 2.0 a Microsoft identity platformon](v2-oauth2-auth-code-flow.md) – Ismerje meg az OAuth 2.0 megvalósítását a Microsoft identitásplatformján.
-* [OpenID Connect 1.0](v2-protocols-oidc.md) – Ismerje meg, hogyan használhatja az OAuth 2.0-s hitelesítési protokollt.
-* [Szolgáltatáshívások szolgáltatáshoz ügyfélhitelesítő adatokkal](v2-oauth2-client-creds-grant-flow.md) – Ismerje meg, hogyan használhatja az OAuth 2.0 ügyfélhitelesítő adatokat a szolgáltatás-szolgáltatáshívásokhoz.
-* [Szolgáltatáshívások szolgáltatáshoz szolgáltatáshívások](v2-oauth2-on-behalf-of-flow.md) a folyamat nevében – Ismerje meg, hogyan használhatja az OAuth 2.0 A szolgáltatáshívások hoz a szolgáltatáshívásokat.
-* [SAML protokollhivatkozás](active-directory-saml-protocol-reference.md) – Ismerje meg a Microsoft identity platform egyszeri bejelentkezési és egyszeri kijelentkezési SAML-profiljait.
+* [Fontos információk a kulcs átváltásáról a Microsoft Identity platformon](active-directory-signing-key-rollover.md) – további információ a Microsoft Identity platform aláírási kulcsának átváltási ritmusáról, a kulcs automatikus frissítéséhez szükséges módosítások, valamint a leggyakoribb alkalmazás-forgatókönyvek frissítésének ismertetése.
+* [Támogatott jogkivonatok és jogcímek](id-tokens.md) – megismerheti a Microsoft Identity platform által felmerülő jogkivonatokban lévő jogcímeket.
+* [OAuth 2,0 a Microsoft Identity platformon](v2-oauth2-auth-code-flow.md) – Ismerje meg a OAuth 2,0 megvalósítását a Microsoft Identity platformon.
+* [OpenID Connect 1,0](v2-protocols-oidc.md) – Ismerje meg, hogyan használható az OAuth 2,0, hitelesítési protokoll a hitelesítéshez.
+* [Szolgáltatások közötti hívások ügyfél-hitelesítő adatokkal](v2-oauth2-client-creds-grant-flow.md) – megtudhatja, hogyan használhatja a OAuth 2,0-ügyfél hitelesítő adatait a szolgáltatás és a szolgáltatás közötti hívások megadására.
+* [A szolgáltatás és a szolgáltatás közötti hívások hívása folyamaton](v2-oauth2-on-behalf-of-flow.md) keresztül – megtudhatja, hogyan használhatja a OAuth 2,0-et a szolgáltatás és a szolgáltatás közötti hívásokhoz.
+* [SAML protokoll referenciája](active-directory-saml-protocol-reference.md) – a Microsoft Identity platform egyszeri bejelentkezéses és egyszeri kijelentkezési SAML-profiljainak megismerése.
 
 ## <a name="see-also"></a>Lásd még
 
-* [A Microsoft identitásplatform – áttekintés](v2-overview.md)
-* [Active Directory-kódminták](sample-v2-code.md)
+* [A Microsoft Identity platform áttekintése](v2-overview.md)
+* [Active Directory kód mintái](sample-v2-code.md)

@@ -1,6 +1,6 @@
 ---
-title: Egyoldalas alkalmazás konfigurálása – Microsoft identitásplatform | Azure
-description: További információ egyoldalas alkalmazás létrehozásáról (az alkalmazás kódkonfigurációja)
+title: Egyoldalas alkalmazás konfigurálása – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,28 +12,28 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882335"
 ---
-# <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: Kód konfigurációja
+# <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: kód konfigurálása
 
-További információ az egyoldalas alkalmazás (SPA) kódjának konfigurálásáról.
+Megtudhatja, hogyan konfigurálhatja az egyoldalas alkalmazás (SPA) kódját.
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>Implicit folyamatot támogató MSAL-függvénytárak
+## <a name="msal-libraries-that-support-implicit-flow"></a>Az implicit folyamatot támogató MSAL-kódtárak
 
-A Microsoft identity platform a következő Microsoft Authentication Library (MSAL) tárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások alkalmazásával:
+A Microsoft Identity platform a következő Microsoft Authentication Library-(MSAL-) kódtárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások használatával:
 
-| MSAL könyvtár | Leírás |
+| MSAL-könyvtár | Leírás |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-kódtár bármely olyan ügyféloldali webalkalmazásban, amely JavaScript- vagy SPA-keretrendszereken keresztül készült, például az Angular, a Vue.js és a React.js. |
-| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Burkolja a core MSAL.js könyvtár, hogy egyszerűsítse a használatát egyoldalas alkalmazásokban, amelyek az Angular keretrendszeren keresztül épülnek. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-függvénytár bármely olyan ügyféloldali webalkalmazásban, amelyet JavaScript vagy SPA keretrendszerek, például a szögletes, a Vue. js és a reakciós. js használatával építettek. |
+| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Az alapszintű MSAL. js függvénytár burkolója, amely egyszerűbbé teszi a szögletes keretrendszeren alapuló egyoldalas alkalmazásokban való használatát. |
 
-## <a name="application-code-configuration"></a>Alkalmazáskód-konfiguráció
+## <a name="application-code-configuration"></a>Alkalmazás kódjának konfigurálása
 
-Az MSAL-tárban az alkalmazás regisztrációs adatai a tár inicializálása során konfigurációként lesznek átadhatók.
+Egy MSAL-könyvtárban a könyvtár inicializálásakor az alkalmazás regisztrációs adatai a konfigurációnak megfelelően továbbítódnak.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -50,7 +50,7 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-A konfigurálható beállításokról az [Alkalmazás inicializálása az MSAL.js alkalmazással](msal-js-initializing-client-applications.md)című témakörben talál további információt.
+A konfigurálható beállításokkal kapcsolatos további információkért lásd: [alkalmazás inicializálása a MSAL. js-szel](msal-js-initializing-client-applications.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 

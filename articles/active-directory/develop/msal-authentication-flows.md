@@ -1,7 +1,7 @@
 ---
-title: MSAL hitelesítési folyamatok | Azure
+title: MSAL-hitelesítési folyamatok | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a Microsoft hitelesítési könyvtár (MSAL) által használt hitelesítési folyamatokat és támogatásokat.
+description: Ismerkedjen meg a Microsoft Authentication Library (MSAL) által használt hitelesítési folyamatokkal és támogatásokkal.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,222 +14,222 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050510"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
-Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különböző hitelesítési folyamatokat ismerteti.  Ezek a folyamatok számos különböző alkalmazási forgatókönyvben használhatók.
+Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különböző hitelesítési folyamatokat ismerteti.  Ezek a folyamatok különféle alkalmazási forgatókönyvekben használhatók.
 
-| Folyamat | Leírás | Használt|  
+| Folyamat | Leírás | Használatban|  
 | ---- | ----------- | ------- | 
-| [Interaktív](#interactive) | Lekéri a jogkivonatot egy interaktív folyamat, amely kéri a felhasználó hitelesítő adatokat egy böngészőben vagy előugró ablakban keresztül. | [Asztali alkalmazások](scenario-desktop-overview.md), [mobilalkalmazások](scenario-mobile-overview.md) |
-| [Implicit támogatás](#implicit-grant) | Lehetővé teszi, hogy az alkalmazás jogkivonatokat kapjon a háttérkiszolgáló hitelesítő adatok cseréjének végrehajtása nélkül. Ez lehetővé teszi, hogy az alkalmazás jelentkezzen be a felhasználó, a munkamenet karbantartása, és tokenek más webes API-k, mind az ügyfél JavaScript-kód.| [Egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) |
-| [Engedélyezési kód](#authorization-code) | Az eszközre telepített alkalmazásokban használható a védett erőforrások, például a webes API-k eléréséhez. Ez lehetővé teszi a bejelentkezési és API-hozzáférést a mobil- és asztali alkalmazásokhoz. | [Asztali alkalmazások,](scenario-desktop-overview.md) [mobilalkalmazások](scenario-mobile-overview.md), [webalkalmazások](scenario-web-app-call-api-overview.md) | 
-| [Nevében](#on-behalf-of) | Egy alkalmazás meghívja a szolgáltatás vagy webes API-t, amely viszont meg kell hívnia egy másik szolgáltatás vagy webes API-t. Az ötlet a delegált felhasználói identitás és engedélyek propagálása a kérelemláncon keresztül. | [Webes API-k](scenario-web-api-call-api-overview.md) |
-| [Ügyfél-hitelesítő adatok](#client-credentials) | Lehetővé teszi a webes üzemeltetésű erőforrások elérését egy alkalmazás identitásának használatával. Gyakran használják a kiszolgálók közötti interakciókhoz, amelyeknek a háttérben kell futniuk, a felhasználóval való azonnali beavatkozás nélkül. | [Démonalkalmazások](scenario-daemon-overview.md) |
-| [Eszköz kódja](#device-code) | Lehetővé teszi a felhasználók számára, hogy bejelentkezve a bemeneti korlátozott eszközök, például egy smart TV, IoT-eszköz vagy nyomtató. | [Asztali/mobilalkalmazások](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
-| [Integrált Windows-hitelesítés](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Lehetővé teszi, hogy a tartományban vagy az Azure Active Directoryban (Azure AD) csatlakozott számítógépeken lévő alkalmazások csendesen szerezzenek be egy jogkivonatot (a felhasználó felhasználói felületi beavatkozása nélkül).| [Asztali/mobilalkalmazások](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Felhasználónév/jelszó](scenario-desktop-acquire-token.md#username-and-password) | Lehetővé teszi, hogy egy alkalmazás közvetlenül kezelje a jelszavát. Ez a folyamat nem ajánlott. | [Asztali/mobilalkalmazások](scenario-desktop-acquire-token.md#username-and-password) |
+| [Interaktív](#interactive) | Lekérdezi a jogkivonatot egy interaktív folyamaton keresztül, amely egy böngészőben vagy előugró ablakban kéri a felhasználótól a hitelesítő adatokat. | [Asztali alkalmazások](scenario-desktop-overview.md), [Mobile apps](scenario-mobile-overview.md) |
+| [Implicit támogatás](#implicit-grant) | Lehetővé teszi, hogy az alkalmazás jogkivonatokat kapjon a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.| [Egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) |
+| [Engedélyezési kód](#authorization-code) | Az eszközre telepített alkalmazásokban használatos a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. | [Asztali alkalmazások](scenario-desktop-overview.md), [Mobile apps](scenario-mobile-overview.md), [Web Apps](scenario-web-app-call-api-overview.md) | 
+| [Nevében](#on-behalf-of) | Egy alkalmazás meghívja a szolgáltatást vagy a webes API-t, amely viszont egy másik szolgáltatást vagy webes API-t kell meghívnia. Az a cél, hogy a delegált felhasználói identitást és engedélyeket a kérési láncon keresztül propagálja. | [Webes API-k](scenario-web-api-call-api-overview.md) |
+| [Ügyfél-hitelesítő adatok](#client-credentials) | Lehetővé teszi, hogy egy alkalmazás identitásának használatával hozzáférjen a webkiszolgálón lévő erőforrásokhoz. Általában olyan kiszolgálók közötti interakciók esetében használatos, amelyeket a háttérben kell futtatni, anélkül, hogy a felhasználóval való azonnali interakcióra lenne szükség. | [Démonalkalmazások](scenario-daemon-overview.md) |
+| [Eszköz kódja](#device-code) | Lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a bemeneti korlátozás alá tartozó eszközökre, például egy intelligens TV-re, egy IoT-eszközre vagy egy nyomtatóra. | [Asztali/mobil alkalmazások](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
+| [Integrált Windows-hitelesítés](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Lehetővé teszi, hogy a tartományon vagy Azure Active Directoryon (Azure AD-ben) lévő alkalmazások a tokenek csendes beszerzéséhez (felhasználói FELÜLETi interakció nélkül) beszerezzék a jogkivonatot.| [Asztali/mobil alkalmazások](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Felhasználónév/jelszó](scenario-desktop-acquire-token.md#username-and-password) | Lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavuk kezelését követően jelentkezzen be a felhasználóba. Ez a folyamat nem ajánlott. | [Asztali/mobil alkalmazások](scenario-desktop-acquire-token.md#username-and-password) |
 
-## <a name="how-each-flow-emits-tokens-and-codes"></a>Hogyan bocsát ki az egyes folyamatok jogkivonatokat és kódokat?
+## <a name="how-each-flow-emits-tokens-and-codes"></a>Az egyes folyamatok tokeneket és kódokat bocsátanak ki
  
-Attól függően, hogy az ügyfél épül, használhatja a Microsoft identitásplatform által támogatott hitelesítési folyamatok egy (vagy több) használatát.  Ezek a folyamatok különböző jogkivonatokat (id_tokens, frissítési jogkivonatokat, hozzáférési jogkivonatokat) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek, hogy működjenek. Ez a diagram áttekintést nyújt:
+Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
  
-|Folyamat | Megköveteli | id_token | hozzáférési jogkivonat | token frissítése | engedélyezési kód | 
+|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
-|[Engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hibrid OIDC-folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
-|[Token beváltásának frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token frissítése | x | x | x| |
+|[Hibrid OIDC folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Jogkivonat-beváltások frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | jogkivonat frissítése | x | x | x| |
 |[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
-|[Eszközkód-áramlás](v2-oauth2-device-code.md) | | x| x| x| |
-|[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazásoknál)| | |
+|[Eszköz kódjának folyamata](v2-oauth2-device-code.md) | | x| x| x| |
+|[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
  
-Az implicit módban kibocsátott tokenek hosszkorlátozással rendelkeznek, mivel az URL-en keresztül visszakerülnek a böngészőbe (hol `response_mode` van `query` vagy `fragment`).  Egyes böngészőkben korlátozható az URL mérete, amelyet a böngészősávba lehet helyezni, és ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek, `groups` vagy `wids` jogcímek.
+Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol `response_mode` a `query` vagy `fragment`a) a böngészőbe kerül vissza.  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
 
 ## <a name="interactive"></a>Interaktív
 
-Az MSAL támogatja, hogy interaktívmódon kérje a felhasználóhitelesítő adatait a bejelentkezéshez, és szerezzen be egy jogkivonatot ezekkel a hitelesítő adatokkal.
+A MSAL támogatja a bejelentkezéshez szükséges hitelesítő adatok megadását és a tokenek beszerzését a hitelesítő adatok használatával.
 
 ![Interaktív folyamat diagramja](media/msal-authentication-flows/interactive.png)
 
-A MSAL.NET használatával kapcsolatos további információ az adott platformokon lévő tokenek interaktív megszerzéséhez:
+További információ a MSAL.NET és a jogkivonatok interaktív beszerzéséről adott platformokon:
 - [Xamarin Android](msal-net-xamarin-android-considerations.md)
 - [Xamarin iOS](msal-net-xamarin-ios-considerations.md)
 - [Univerzális Windows-platform](msal-net-uwp-considerations.md)
 
-Az MSAL.js alkalmazásban található interaktív hívásokról az [MSAL.js interaktív kérések gyors viselkedése](msal-js-prompt-behavior.md)című témakörben talál további információt.
+A MSAL. js-ben található interaktív hívásokkal kapcsolatos további információkért lásd: [MSAL. js interaktív kérések esetén a prompt viselkedése](msal-js-prompt-behavior.md).
 
 ## <a name="implicit-grant"></a>Implicit támogatás
 
-Az MSAL támogatja az [OAuth 2 implicit támogatási folyamatot,](v2-oauth2-implicit-grant-flow.md)amely lehetővé teszi, hogy az alkalmazás a háttérkiszolgálóhitelesítő adatok cseréje nélkül szerezzen be jogkivonatokat a Microsoft identitásplatformról. Ez lehetővé teszi, hogy az alkalmazás jelentkezzen be a felhasználó, a munkamenet karbantartása, és tokenek más webes API-k, mind az ügyfél JavaScript-kód.
+A MSAL támogatja a [OAuth 2 implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md), amely lehetővé teszi, hogy az alkalmazás jogkivonatokat szerezzen be a Microsoft Identity platformról a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.
 
-![Implicit támogatási folyamat diagramja](media/msal-authentication-flows/implicit-grant.svg)
+![Implicit engedélyezési folyamat ábrája](media/msal-authentication-flows/implicit-grant.svg)
 
-Számos modern webes alkalmazás ügyféloldali, egyoldalas alkalmazásként készült, javascript vagy SPA keretrendszer használatával, például Angular, Vue.js és React.js néven. Ezek az alkalmazások webböngészőben futnak, és eltérő hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webalkalmazások. A Microsoft identity platform lehetővé teszi, hogy az egyoldalas alkalmazások jelentkezzen be a felhasználók, és get jogkivonatok eléréséhez háttérszolgáltatások vagy webes API-k, az implicit támogatási folyamat használatával. Az implicit folyamat lehetővé teszi, hogy az alkalmazás azonosító jogkivonatokat kapjon a hitelesített felhasználó nak, és a védett API-k hívásához szükséges jogkivonatokat is.
+Számos modern webalkalmazást ügyféloldali, egyoldalas alkalmazásként, JavaScript vagy SPA-keretrendszer, például a szögletes, a Vue. js és a reakciós. js használatával írt be. Ezek az alkalmazások webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások. A Microsoft Identity platform lehetővé teszi, hogy az egyoldalas alkalmazások bejelentkezzenek a felhasználókba, és jogkivonatokat kérjenek a háttér-szolgáltatások vagy webes API-k elérésére az implicit engedélyezési folyamat használatával. Az implicit folyamat lehetővé teszi, hogy az alkalmazás azonosító jogkivonatokat kapjon a hitelesített felhasználó képviseletére, valamint a védett API-k meghívásához szükséges jogkivonatok elérésére is.
 
-Ez a hitelesítési folyamat nem tartalmazza az alkalmazásforgatókönyveket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például electron és React-Native, mert további képességeket igényelnek a natív platformokkal való interakcióhoz.
+Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az Electron-et és a reakciós Natívt, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
 ## <a name="authorization-code"></a>Engedélyezési kód
 
-Az MSAL támogatja az [OAuth 2 engedélyezési kód megadását.](v2-oauth2-auth-code-flow.md) Ez a támogatás olyan alkalmazásokban használható, amelyek egy eszközre vannak telepítve a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez. Ez lehetővé teszi a bejelentkezési és API-hozzáférést a mobil- és asztali alkalmazásokhoz. 
+A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
-Amikor a felhasználók bejelentkeznek a webes alkalmazásokba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód beváltja a web API-k hívásához szükséges jogkivonat beszerzéséhez. A ASP.NET és ASP.NET Core webalkalmazásokban az egyetlen cél `AcquireTokenByAuthorizationCode` az, hogy egy jogkivonatot adjon hozzá a jogkivonat-gyorsítótárhoz. A jogkivonatot ezután az alkalmazás használhatja (általában a vezérlőkben, amelyek `AcquireTokenSilent`csak egy jogkivonatot kapnak egy API-hoz a használatával).
+Amikor a felhasználók bejelentkeznek a webalkalmazásba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód a webes API-k hívására szolgáló token beszerzéséhez lett beváltva. A ASP.NET és a ASP.NET Core webalkalmazások esetében az egyetlen `AcquireTokenByAuthorizationCode` célja, hogy egy tokent adjon hozzá a jogkivonat-gyorsítótárhoz. Ezt követően az alkalmazás használhatja a jogkivonatot (általában a vezérlőkben, amely csak az API-k tokenjét kapja meg `AcquireTokenSilent`a használatával).
 
-![Engedélyezési kódfolyamat diagramja](media/msal-authentication-flows/authorization-code.png)
+![Az engedélyezési kód folyamatának ábrája](media/msal-authentication-flows/authorization-code.png)
 
 Az előző ábrán az alkalmazás:
 
-1. Egy hozzáférési jogkivonatra beváltott engedélyezési kódot kér.
-2. A hozzáférési jogkivonat ot használja egy webes API hívásához.
+1. Egy hozzáférési jogkivonat számára beváltott engedélyezési kódot kér.
+2. A hozzáférési token használatával hívja meg a webes API-t.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-- Az engedélyezési kódot csak egyszer használhatja a jogkivonat beváltásához. Ne próbálja meg többször is beszerezni a jogkivonatot ugyanazzal az engedélyezési kóddal (ezt a protokollszabvány-specifikáció kifejezetten tiltja). Ha szándékosan többször is beváltja a kódot, vagy mert nem tudja, hogy egy keretrendszer is megteszi, a következő hibaüzenet et kapja:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
+- A jogkivonat beváltásához csak egyszer használhatja az engedélyezési kódot. Ne próbálja meg többször bekérni a jogkivonatot ugyanazzal az engedélyezési kóddal (a protokoll szabványos specifikációja explicit módon tiltja). Ha a kódot többször is beváltja, vagy ha nem tudja, hogy egy keretrendszer is elvégzi az Ön számára, a következő hibaüzenet jelenik meg:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Ha ASP.NET vagy ASP.NET Core alkalmazás, ez akkor fordulhat elő, ha nem mondja el a keretrendszernek, hogy már beváltotta az engedélyezési kódot. Ehhez meg kell hívnia `context.HandleCodeRedemption()` az `AuthorizationCodeReceived` eseménykezelő metódusát.
+- Ha ASP.NET vagy ASP.NET Core alkalmazást ír, akkor ez akkor fordulhat elő, ha nem adja meg azt a keretrendszert, amelyet már beváltotta az engedélyezési kódot. Ehhez meg kell hívnia az `context.HandleCodeRedemption()` `AuthorizationCodeReceived` eseménykezelő metódusát.
 
-- Ne ossza meg a hozzáférési jogkivonatot ASP.NET, ami megakadályozhatja a növekményes hozzájárulás megfelelő előfordulását. További információt a probléma #693 című témakörben [talál.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693)
+- Ne ossza meg a hozzáférési tokent a ASP.NET-mel, ami megakadályozhatja a növekményes hozzáférés megfelelő működését. További információ: [#693 kiadása](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
 ## <a name="on-behalf-of"></a>Nevében
 
-Az MSAL támogatja az [OAuth 2 hitelesítési folyamatot.](v2-oauth2-on-behalf-of-flow.md)  Ez a folyamat akkor használatos, amikor egy alkalmazás meghívja a szolgáltatás vagy webes API-t, amely viszont meg kell hívnia egy másik szolgáltatás vagy webes API-t. Az ötlet a delegált felhasználói identitás és engedélyek propagálása a kérelemláncon keresztül. Ahhoz, hogy a középső rétegbeli szolgáltatás hitelesített kérelmeket küldjön az alsóbb rétegbeli szolgáltatásnak, a felhasználó nevében biztosítania kell egy hozzáférési jogkivonatot a Microsoft identitásplatformról.
+A MSAL támogatja a [2. OAuth a hitelesítési folyamathoz](v2-oauth2-on-behalf-of-flow.md).  Ezt a folyamatot akkor kell használni, ha egy alkalmazás egy szolgáltatást vagy webes API-t hív meg, ami viszont egy másik szolgáltatást vagy webes API-t igényel. Az a cél, hogy a delegált felhasználói identitást és engedélyeket a kérési láncon keresztül propagálja. Ahhoz, hogy a középső szintű szolgáltatás hitelesített kéréseket továbbítson az alárendelt szolgáltatásnak, a felhasználó nevében védenie kell egy hozzáférési jogkivonatot a Microsoft Identity platformon.
 
-![Az áramlás nevében történő diagram](media/msal-authentication-flows/on-behalf-of.png)
+![A folyamaton belüli adatforgalom diagramja](media/msal-authentication-flows/on-behalf-of.png)
 
 A fenti diagram elemei:
 
-1. Az alkalmazás beszerez egy hozzáférési jogkivonatot a webes API-hoz.
-2. Egy ügyfél (webes, asztali, mobil vagy egyoldalas alkalmazás) meghívja a védett webes API-t, hozzáadva a hozzáférési jogkivonatot tulajdonosi jogkivonatként a HTTP-kérelem hitelesítési fejlécében. A webes API hitelesíti a felhasználót.
+1. Az alkalmazás egy hozzáférési jogkivonatot vásárol a webes API-hoz.
+2. Egy ügyfél (web, Desktop, mobil vagy egylapos alkalmazás) egy védett webes API-t hív meg, amely a hozzáférési tokent tulajdonosi jogkivonatként adja hozzá a HTTP-kérelem hitelesítési fejlécéhez. A webes API hitelesíti a felhasználót.
 3. Amikor az ügyfél meghívja a webes API-t, a webes API egy másik jogkivonatot kér a felhasználó nevében.  
-4. A védett webes API ezt a jogkivonatot használja egy alsóbb rétegbeli webes API-hívásához a felhasználó nevében.  A webes API később is kérhet jogkivonatokat más alsóbb rétegbeli API-k (de még mindig ugyanannak a felhasználónak a nevében).
+4. A védett webes API ezt a tokent használja az alárendelt webes API-k hívására a felhasználó nevében.  A webes API később más alsóbb rétegbeli API-k számára is igényelhet jogkivonatokat (de ugyanazon felhasználó nevében továbbra is).
 
 ## <a name="client-credentials"></a>Ügyfél-hitelesítő adatok
 
-Az MSAL támogatja az [OAuth 2 ügyfél hitelesítő adatait.](v2-oauth2-client-creds-grant-flow.md) Ez a folyamat lehetővé teszi a webes üzemeltetésű erőforrások elérését egy alkalmazás identitásának használatával. Az ilyen típusú támogatást gyakran használják a kiszolgálók közötti interakciókhoz, amelyeknek a háttérben kell futniuk, a felhasználóval való azonnali interakció nélkül. Az ilyen típusú alkalmazásokat gyakran démonnak vagy szolgáltatásfióknak nevezik. 
+A MSAL támogatja a [OAuth 2 ügyfél-hitelesítő adatok folyamatát](v2-oauth2-client-creds-grant-flow.md). Ez a folyamat lehetővé teszi a web-alapú erőforrások elérését egy alkalmazás identitásának használatával. Ezt a típust általában olyan kiszolgálók közötti interakciók esetén használják, amelyeknek a háttérben kell futniuk, anélkül, hogy a felhasználóval való azonnali interakcióra lenne szükség. Ezeket az alkalmazásokat gyakran démonoknak vagy szolgáltatásfiókoknek nevezzük. 
 
-Az ügyfél hitelesítő adatok at ad flow lehetővé teszi, hogy egy webszolgáltatás (egy bizalmas ügyfél) használja a saját hitelesítő adatait, ahelyett, hogy megszemélyesíteni egy felhasználó, hitelesítésre, amikor egy másik webszolgáltatás hívása. Ebben a forgatókönyvben az ügyfél általában egy középső rétegű webszolgáltatás, egy démonszolgáltatás vagy egy webhely. A magasabb szintű biztonság érdekében a Microsoft identity platform azt is lehetővé teszi, hogy a hívó szolgáltatás egy tanúsítványt használjon (a közös titok helyett) hitelesítő adatként.
+Az ügyfél hitelesítő adatainak megadása lehetővé teszi a webszolgáltatások (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. Ebben az esetben az ügyfél általában egy közepes szintű webszolgáltatás, egy démon-szolgáltatás vagy egy webhely. A Microsoft Identity platform lehetővé teszi, hogy a hívó szolgáltatás hitelesítő adatként használjon tanúsítványokat (közös titok helyett).
 
 > [!NOTE]
-> A bizalmas ügyfélfolyamat nem érhető el a mobil platformokon (UWP, Xamarin.iOS és Xamarin.Android), mert ezek csak a nyilvános ügyfélalkalmazásokat támogatják. A nyilvános ügyfélalkalmazások nem tudják, hogyan bizonyítsa az alkalmazás identitását az identitásszolgáltatónak. Biztonságos kapcsolat érhető el a webapp vagy webes API-háttérrendszereken egy tanúsítvány telepítésével.
+> A bizalmas ügyfél folyamata nem érhető el a mobil platformokon (UWP, Xamarin. iOS és Xamarin. Android), mert ezek csak a nyilvános ügyfélalkalmazások támogatását támogatják. A nyilvános ügyfélalkalmazások nem tudják, hogyan igazolják az alkalmazás identitását az identitás-szolgáltatónak. Egy biztonságos kapcsolat a webalkalmazáson vagy a webes API-ban is elérhető, ha egy tanúsítványt telepít.
 
-MSAL.NET kétféle ügyfélhitelesítő adatot támogat. Ezeket az ügyfélhitelesítő adatokat regisztrálni kell az Azure AD-vel. A hitelesítő adatok a kódban a bizalmas ügyfélalkalmazás konstruktorainak kerülnek átadásra.
+A MSAL.NET két típusú ügyfél-hitelesítő adatot támogat. Az ügyfél hitelesítő adatait regisztrálni kell az Azure AD-ben. A hitelesítő adatokat a rendszer a bizalmas ügyfélalkalmazás konstruktorai számára adja át a kódban.
 
-### <a name="application-secrets"></a>Alkalmazásttitok
+### <a name="application-secrets"></a>Alkalmazás-titkok
 
-![A bizalmas ügyfél diagramja jelszóval](media/msal-authentication-flows/confidential-client-password.png)
+![Bizalmas ügyfél jelszavas diagramja](media/msal-authentication-flows/confidential-client-password.png)
 
 Az előző ábrán az alkalmazás:
 
-1. Jogkivonat beszerzése alkalmazástitkos vagy jelszó hitelesítő adatok használatával.
-2. A jogkivonatot használja az erőforrás kéréseihez.
+1. Jogkivonat beszerzése az alkalmazás titkos kódjának vagy a jelszó hitelesítő adatainak használatával.
+2. A jogkivonat használatával teszi elérhetővé az erőforrás kéréseit.
 
 ### <a name="certificates"></a>Tanúsítványok
 
-![A bizalmas ügyfél diagramja a cert-tel](media/msal-authentication-flows/confidential-client-certificate.png)
+![A bizalmas ügyfél tanúsítványának ábrája](media/msal-authentication-flows/confidential-client-certificate.png)
 
 Az előző ábrán az alkalmazás:
 
-1. Jogkivonat beszerzése a tanúsítvány hitelesítő adataival.
-2. A jogkivonatot használja az erőforrás kéréseihez.
+1. Jogkivonat beszerzése a tanúsítvány hitelesítő adatainak használatával.
+2. A jogkivonat használatával teszi elérhetővé az erőforrás kéréseit.
 
-Ezeknek az ügyfélhitelesítő adatoknak a következőknek kell lenniük:
-- Regisztrálva van az Azure AD-nél.
-- Átment az építőiparban a bizalmas ügyfél alkalmazás a kódot.
+Ezeknek az ügyfél-hitelesítő adatoknak a következőkre van szükségük:
+- Regisztrálva van az Azure AD-ben.
+- A kódot a bizalmas ügyfélalkalmazás felépítése során adták át.
 
 ## <a name="device-code"></a>Eszköz kódja
 
-Az MSAL támogatja az [OAuth 2 eszközkód-folyamatot,](v2-oauth2-device-code.md)amely lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a bemeneti korlátozott eszközökre, például egy intelligens TV-re, IoT-eszközre vagy nyomtatóra. Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. Az eszközkód-áramlás lehetővé teszi, hogy a felhasználó egy másik eszközt (például egy másik számítógépet vagy mobiltelefont) használjon az interaktív bejelentkezéshez, ahol az eszköz vagy az operációs rendszer nem biztosít webböngészőt.
+A MSAL támogatja a [2. OAuth](v2-oauth2-device-code.md), amely lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a bevitt eszközökre, például egy intelligens TV-re, IoT-eszközre vagy nyomtatóra. Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. Az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt (például egy másik számítógépet vagy egy mobiltelefont) használjon az interaktív bejelentkezéshez, ahol az eszköz vagy az operációs rendszer nem biztosít webböngészőt.
 
-Az eszközkód-folyamat használatával az alkalmazás jogkivonatokat szerez be egy kétlépéses folyamaton keresztül, amelyet kifejezetten ezekhez az eszközökhöz vagy operációs rendszerekhez terveztek. Ilyen alkalmazások például az IoT-eszközökön vagy parancssori eszközökön (CLI) futó alkalmazások. 
+Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, kifejezetten ezekhez az eszközökhöz vagy operációs rendszerekhez. Ilyen alkalmazások például a IoT-eszközökön vagy parancssori eszközökön (CLI) futók. 
 
-![Az eszközkód-folyamat diagramja](media/msal-authentication-flows/device-code.png)
+![Az eszköz kódjának folyamatábrája](media/msal-authentication-flows/device-code.png)
 
 A fenti diagram elemei:
 
-1. Amikor felhasználói hitelesítésre van szükség, az alkalmazás egy kódot ad meg, és megkéri a felhasználót, hogy `https://microsoft.com/devicelogin`használjon egy másik eszközt (például egy internethez csatlakoztatott okostelefont) egy URL-cím (például ) megugrásához. A felhasználó ezután kéri, hogy adja meg a kódot, és folytatja a szokásos hitelesítési élményt, beleértve a hozzájárulási utasításokat és a többtényezős hitelesítés, ha szükséges.
+1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont) az URL-címhez való `https://microsoft.com/devicelogin`ugráshoz (például). A rendszer ezután megkéri a felhasználót a kód megadására, és a normál hitelesítési felülettel folytatja, beleértve a hozzájárulási kéréseket és a többtényezős hitelesítést, ha szükséges.
 
-2. Sikeres hitelesítés után a parancssori alkalmazás fogadja a szükséges jogkivonatokat egy hátsó csatornán keresztül, és használja őket a szükséges webes API-hívások végrehajtásához.
+2. A sikeres hitelesítés után a parancssori alkalmazás egy visszaadott csatornán keresztül fogadja a szükséges jogkivonatokat, és ezeket használja a szükséges webes API-hívások végrehajtásához.
 
 ### <a name="constraints"></a>Korlátozások
 
-- Az eszközkód-folyamat csak nyilvános ügyfélalkalmazásokon érhető el.
+- Az eszköz kódjának folyamata csak a nyilvános ügyfélalkalmazások esetében érhető el.
 - A nyilvános ügyfélalkalmazás összeállításakor átadott hatóságnak a következők egyikének kell lennie:
-  - Bérlő (az az `https://login.microsoftonline.com/{tenant}/` `{tenant}` űrlap, ahol a bérlőazonosítót képviselő GUID vagy a bérlőhöz társított tartomány).
-  - Minden munkahelyi és iskolai`https://login.microsoftonline.com/organizations/`számlák ( ).
-- A Microsoft személyes fiókok még nem támogatja az Azure AD v2.0-végpont `/consumers` (nem használhatja a vagy a `/common` bérlők).
+  - Bérlő (az űrlapon `https://login.microsoftonline.com/{tenant}/` `{tenant}` a bérlői azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
+  - Bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`).
+- Az Azure AD v 2.0-végpontja még nem támogatja a Microsoft személyes fiókjait (nem `/common` használhatja `/consumers` a vagy a bérlőt).
 
 ## <a name="integrated-windows-authentication"></a>Beépített Windows-hitelesítés
 
-Az MSAL támogatja az integrált Windows-hitelesítést (IWA) olyan asztali vagy mobilalkalmazásokhoz, amelyek olyan tartományhoz csatlakoznak, vagy az Azure AD csatlakozott a Windows-számítógéphez. Az IWA használatával ezek az alkalmazások némán szerezhetnek be egy jogkivonatot (a felhasználó felhasználói felületi beavatkozása nélkül). 
+A MSAL támogatja az integrált Windows-hitelesítést (IWA) olyan asztali vagy mobil alkalmazások esetében, amelyek tartományhoz csatlakoztatott vagy Azure AD-hez csatlakoztatott Windows-számítógépen futnak. Az IWA használatával ezek az alkalmazások csendesen tudják beszerezni a jogkivonatot (a felhasználó felhasználói FELÜLETének beavatkozása nélkül). 
 
 ![Integrált Windows-hitelesítés diagramja](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 Az előző ábrán az alkalmazás:
 
-1. Token beszerzése integrált Windows-hitelesítéssel.
-2. A jogkivonatot használja az erőforrás kéréseihez.
+1. Jogkivonat beszerzése integrált Windows-hitelesítés használatával.
+2. A jogkivonat használatával teszi elérhetővé az erőforrás kéréseit.
 
 ### <a name="constraints"></a>Korlátozások
 
-Az IWA csak az összevont felhasználókat támogatja, ami azt jelenti, hogy az Active Directoryban létrehozott és az Azure AD által támogatott felhasználók. Közvetlenül az Azure AD-ben létrehozott felhasználók, Active Directory-biztonsági mentés nélkül (felügyelt felhasználók) nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nincs hatással a [felhasználónév/jelszó folyamatára.](#usernamepassword)
+A IWA csak az összevont felhasználókat támogatja, ami azt jelenti, hogy az Azure AD-ben létrehozott és Active Directory által támogatott felhasználók. A közvetlenül az Azure AD-ben létrehozott felhasználók Active Directory biztonsági mentés nélkül (felügyelt felhasználók) nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a [Felhasználónév/jelszó folyamatát](#usernamepassword).
 
-Az IWA a .
+A IWA a .NET-keretrendszer, a .NET Core és a Univerzális Windows-platform platformokhoz írt alkalmazások esetében használható.
 
-Az IWA nem kerüli meg a többtényezős hitelesítést. Ha többtényezős hitelesítés van konfigurálva, az IWA sikertelen lehet, ha többtényezős hitelesítési kihívásra van szükség. A többtényezős hitelesítés felhasználói beavatkozást igényel.
+A IWA nem kerüli el a többtényezős hitelesítést. Ha a többtényezős hitelesítés konfigurálva van, a IWA sikertelen lehet, ha egy multi-Factor Authentication-kihívásra van szükség. A többtényezős hitelesítéshez felhasználói beavatkozás szükséges.
 
-Nem szabályozhatja, hogy az identitásszolgáltató mikor kéri a kétfaktoros hitelesítést. A bérlői rendszergazda igen. Általában kétfaktoros hitelesítésre van szükség, ha egy másik országból jelentkezik be, ha nem VPN-en keresztül csatlakozik egy vállalati hálózathoz, és néha akkor is, ha VPN-en keresztül csatlakozik. Az Azure AD a i segítségével folyamatosan megtudhatja, ha kétfaktoros hitelesítésre van szükség. Ha az IWA nem sikerül, vissza kell lépnie egy [interaktív felhasználói üzenetre] (#interactive).
+Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér kétfaktoros hitelesítést. A bérlői rendszergazda nem. A kétfaktoros hitelesítés általában akkor szükséges, ha egy másik országból jelentkezik be, ha nem VPN-kapcsolaton keresztül kapcsolódik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Az Azure AD a mesterséges intelligencia használatával folyamatosan megtanulja, hogy kétfaktoros hitelesítésre van-e szükség. Ha a IWA sikertelen, akkor vissza kell térnie egy [interaktív felhasználói üzenetre] (#interactive).
 
 A nyilvános ügyfélalkalmazás összeállításakor átadott hatóságnak a következők egyikének kell lennie:
-- Bérlő (az az `https://login.microsoftonline.com/{tenant}/` `tenant` űrlap, ahol a bérlőazonosítót képviselő guid vagy a bérlőhöz társított tartomány található).
-- Minden munkahelyi és iskolai`https://login.microsoftonline.com/organizations/`számlák ( ). A Microsoft személyes fiókjai nem támogatottak (nem használhatja vagy `/common` `/consumers` nem használhatja a bérlőket).
+- Bérlő (az űrlapon `https://login.microsoftonline.com/{tenant}/` `tenant` a bérlői azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
+- Bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`). A Microsoft személyes fiókjai nem támogatottak (nem `/common` használhatók `/consumers` vagy bérlők).
 
-Mivel az IWA egy csendes folyamat, az alábbiak egyikének igaznak kell lennie:
-- Az alkalmazás felhasználójának korábban hozzá kell járulnia az alkalmazás használatához. 
-- A bérlő i. rendszergazda korábban már hozzájárult ahhoz, hogy a bérlő összes felhasználója használja az alkalmazást.
+Mivel a IWA egy csendes folyamat, a következők egyikének igaznak kell lennie:
+- Az alkalmazás felhasználójának előzőleg el kell juttatnia az alkalmazás használatát. 
+- A bérlői rendszergazdának előzőleg el kell juttatnia a bérlő összes felhasználója számára az alkalmazás használatát.
 
 Ez azt jelenti, hogy az alábbiak egyike igaz:
-- Ön, mint fejlesztő, saját maga választotta a **Grant** szolgáltatást az Azure Portalon.
-- Egy bérlői rendszergazda az alkalmazás regisztrációjának **API-engedélyek** lapján **a(z) {tenant domain} rendszergazdai hozzájárulásának megadása/visszavonása** lehetőséget választotta (lásd: [Engedélyek hozzáadása webes API-khoz).](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
-- Ön módot adott arra, hogy a felhasználók hozzájáruljanak az alkalmazáshoz (lásd: [Egyéni felhasználó hozzájárulásának kérése).](v2-permissions-and-consent.md#requesting-individual-user-consent)
-- Megadta a módját, hogy a bérlői rendszergazda hozzájáruljon az alkalmazáshoz (lásd: [rendszergazdai hozzájárulás).](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)
+- A fejlesztőknek Ön **is kiválasztotta a Azure Portal** saját magának.
+- A bérlői rendszergazda kiválasztotta az alkalmazás regisztrációjának **API-engedélyek** lapján a **{bérlői tartomány} rendszergazdai jóváhagyásának engedélyezése/visszavonása** lehetőséget (lásd: a [webes API-k eléréséhez szükséges engedélyek hozzáadása](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Lehetővé teszi, hogy a felhasználók beleegyeznek az alkalmazásba (lásd: [egyéni felhasználói belefoglalási kérelem kérése](v2-permissions-and-consent.md#requesting-individual-user-consent)).
+- Lehetővé teszi, hogy a bérlői rendszergazda beleegyezett az alkalmazásba (lásd: [rendszergazdai engedély](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Az IWA-folyamat engedélyezve van a .NET asztali, a .NET Core és a Windows Universal Platform alkalmazásokhoz. A .NET Core rendszerben meg kell adnia a felhasználónevet az IWA-nak, mert a .NET Core nem tud felhasználóneveket beszerezni az operációs rendszerből.
+A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Universal platform alkalmazásaihoz. A .NET Core-ban meg kell adnia a felhasználónevet a IWA számára, mivel a .NET Core nem tud felhasználóneveket beolvasni az operációs rendszerből.
   
-A hozzájárulással kapcsolatos további információkért lásd a [2.0-s és a 2.0-s és a hozzájárulási engedélyt.](v2-permissions-and-consent.md)
+További információ a beleegyező adatokról: [v 2.0 engedélyek és beleegyezik](v2-permissions-and-consent.md).
 
 ## <a name="usernamepassword"></a>Felhasználónév/jelszó
 
-Az MSAL támogatja az [OAuth 2 erőforrás-tulajdonos jelszó-hitelesítő adatok megadását,](v2-oauth-ropc.md)amely lehetővé teszi, hogy egy alkalmazás közvetlenül kezelje a jelszavát. Az asztali alkalmazásban a felhasználónév/jelszó folyamat segítségével némán szerezhet be egy jogkivonatot. Az alkalmazás használata kor nincs szükség felhasználói felületre.
+A MSAL támogatja a [OAuth 2 erőforrás-tulajdonos jelszavas hitelesítő adatait](v2-oauth-ropc.md), amely lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavuk kezelésével jelentkezzen be a felhasználóba. Az asztali alkalmazásban a username/Password folyamat használatával csendesen lehet lekérni a jogkivonatot. Az alkalmazás használatakor nincs szükség felhasználói felületre.
 
-![A felhasználónév/jelszó folyamat ábrája](media/msal-authentication-flows/username-password.png)
+![A Felhasználónév/jelszó folyamat ábrája](media/msal-authentication-flows/username-password.png)
 
 Az előző ábrán az alkalmazás:
 
-1. A jogkivonat ot a felhasználónév és a jelszó elküldésével szerzi be az identitásszolgáltatónak.
-2. Webes API-t hív meg a jogkivonat használatával.
+1. A rendszer a Felhasználónév és a jelszó megadásával szerzi be a jogkivonatot az identitás-szolgáltatónak.
+2. Meghívja a webes API-t a token használatával.
 
 > [!WARNING]
-> Ez a folyamat nem ajánlott. Ez megköveteli a magas fokú bizalom és a felhasználói kitettség.  Ezt a folyamatot csak akkor használja, ha más, biztonságosabb, folyamatok nem használhatók. További információ: [Mi a megoldás a jelszavak növekvő problémájára?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+> Ez a folyamat nem ajánlott. Magas fokú megbízhatóságot és felhasználói expozíciót igényel.  Ezt a folyamatot csak akkor használja, ha más, biztonságosabb, a folyamatok nem használhatók. További információ: [Mi a megoldás a jelszavak egyre növekvő problémájára?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-A token csendes beszerzésének előnyben részesített folyamata a Windows tartományhoz csatlakozó gépeken [az integrált Windows-hitelesítés](#integrated-windows-authentication). Ellenkező esetben [használhatja az Eszközkód-folyamatot](#device-code)is.
+A jogkivonatok Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](#integrated-windows-authentication). Ellenkező esetben az [eszköz kódjának folyamatát](#device-code)is használhatja.
 
-Bár ez bizonyos esetekben hasznos (DevOps-forgatókönyvek), ha felhasználónevet/jelszót szeretne használni interaktív forgatókönyvekben, ahol saját felhasználói felületet biztosít, próbálja meg elkerülni azt. Felhasználónév/jelszó használatával:
-- Azok a felhasználók, akiknek többtényezős hitelesítést kell végezniük, nem tudnak bejelentkezni (mivel nincs interakció).
+Bár ez bizonyos esetekben hasznos (DevOps forgatókönyvek), ha olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, próbálja meg elkerülni. Felhasználónév/jelszó használatával:
+- A többtényezős hitelesítést igénylő felhasználók nem fognak tudni bejelentkezni (mivel nincs interakció).
 - A felhasználók nem tudnak egyszeri bejelentkezést végezni.
 
 ### <a name="constraints"></a>Korlátozások
 
-Az integrált [Windows-hitelesítési megkötéseken](#integrated-windows-authentication)kívül a következő korlátozások is érvényesek:
+Az [integrált Windows-hitelesítési korlátozásokon](#integrated-windows-authentication)kívül a következő korlátozások is érvényesek:
 
-- A felhasználónév/jelszó folyamat nem kompatibilis a feltételes hozzáférés és a többtényezős hitelesítés. Ennek következtében, ha az alkalmazás fut egy Azure AD-bérlő, ahol a bérlői rendszergazda többtényezős hitelesítést igényel, nem használhatja ezt a folyamatot. Sok szervezet csinálja ezt.
-- Ez szerkezet egyetlen részére dolgozik és iskola számlák ( nem Mikroszkóp számlák).
-- A folyamat elérhető a .NET asztalon és a .NET Core rendszeren, de az univerzális Windows platformon nem.
+- A Felhasználónév/jelszó folyamat nem kompatibilis a feltételes hozzáféréssel és a többtényezős hitelesítéssel. Ennek következményeként, ha az alkalmazás egy Azure AD-bérlőn fut, ahol a bérlői rendszergazda a többtényezős hitelesítést igényli, nem használhatja ezt a folyamatot. Számos szervezet ezt teszi.
+- Csak munkahelyi és iskolai fiókok (nem Microsoft-fiókok) esetében működik.
+- A folyamat elérhető a .NET Desktopban és a .NET Core-on, de nem Univerzális Windows-platformon.
 
-### <a name="azure-ad-b2c-specifics"></a>Az Azure AD B2C-specifikus ad
+### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C sajátosságok
 
-A MSAL.NET és az Azure AD B2C használatával kapcsolatos további tudnivalókért olvassa el [a ROPC használata az Azure AD B2C(MSAL.NET) című témakört.](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)
+További információ a MSAL.NET és a Azure AD B2C használatáról: a [ROPC használata Azure ad B2C (MSAL.net)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c).

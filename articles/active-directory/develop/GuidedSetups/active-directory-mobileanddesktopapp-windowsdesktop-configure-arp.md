@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 Windows asztali első lépések – Config
-description: Hogyan kaphat egy Windows Asztali .NET (XAML) alkalmazás egy hozzáférési jogkivonatot, és hogyan hívhat ja meg az Azure Active Directory v2-végpontja által védett API-t.
+title: Azure AD v2 Windows asztali Első lépések – konfiguráció
+description: Egy Windowsos asztali .NET-(XAML-) alkalmazás hozzáférési jogkivonatának beszerzése és egy Azure Active Directory v2-végpont által védett API meghívása.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 01/29/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: d82f9beecb1b558fca094c31f8c6718c990debd1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885769"
 ---
-# <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatainak hozzáadása az alkalmazáshoz
-Ebben a lépésben hozzá kell adnia az alkalmazásazonosítót a projekthez.
+# <a name="add-the-applications-registration-information-to-your-app"></a>Adja hozzá az alkalmazás regisztrációs adatait az alkalmazáshoz
+Ebben a lépésben hozzá kell adnia az alkalmazás azonosítóját a projekthez.
 
-1.  Nyissa `App.xaml.cs` meg és cserélje `ClientId` ki a következő sort:
+1.  Nyissa meg `App.xaml.cs` és cserélje le a `ClientId` -t tartalmazó sort:
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus eseményrács forrásaként
-description: A Service Bus-események Azure Event Griddel való szolgáltatásához megadott tulajdonságok ismertetése
+title: Azure Service Bus Event Grid forrásként
+description: A Service Bus eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393245"
 ---
-# <a name="azure-service-bus-as-an-event-grid-source"></a>Az Azure Service Bus eseményrács-forrásként
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus Event Grid forrásként
 
-Ez a cikk a Service Bus-események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
+Ez a cikk a Service Bus eseményeinek tulajdonságait és sémáját ismerteti.Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
 
-### <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető események típusai
 
-A Service Bus a következő eseménytípusokat bocsátja ki:
+Service Bus a következő típusú eseményeket bocsátja ki:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Akkor merül fel, ha aktív üzenetek vannak egy várólistában vagy előfizetésben, és nem figyelnek a fogadók. |
-| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Ha aktív üzenetek vannak a Kézbesítetlen levelek várólistájában, és nincsenek aktív figyelők. |
+| Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Akkor következik be, amikor aktív üzenetek vannak egy várólistában vagy előfizetésben, és nincsenek figyelő fogadók. |
+| Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Akkor következik be, amikor aktív üzenetek vannak egy kézbesítetlen levelek várólistájában, és nincsenek aktív figyelők. |
 
-### <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa eseményre
 
-A következő példa a figyelők esemény nélküli aktív üzenetek sémáját mutatja be:
+Az alábbi példa a figyelőkkel nem rendelkező aktív üzenetek sémáját mutatja be:
 
 ```json
 [{
@@ -53,7 +53,7 @@ A következő példa a figyelők esemény nélküli aktív üzenetek sémáját 
 }]
 ```
 
-A kézbesítetlen levelek várólistájának eseményének sémája hasonló:
+A kézbesítetlen levelek várólistája esemény sémája hasonló:
 
 ```json
 [{
@@ -77,16 +77,16 @@ A kézbesítetlen levelek várólistájának eseményének sémája hasonló:
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény legfelső szintű adatokat rendelkezik:
+Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| id | sztring | Az esemény egyedi azonosítója |
-| data | objektum | Blob tárolási esemény adatai. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -94,22 +94,22 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| namespaceName | sztring | A Service Bus névtér, amelyben az erőforrás létezik. |
-| requestUri | sztring | Az adott várólistára vagy az eseményt kibocsátó előfizetésre mutató URI.The URI to the specific queue or subscription ening the event. |
-| entityType | sztring | Az eseményeket (várólistát vagy előfizetést) kibocsátó Service Bus entitás típusa. |
-| queueName (sornév) | sztring | Az aktív üzeneteket tartalmazó várólista, ha várólistára iratkozik. Érték null, ha a témakörök / előfizetések. |
-| topicName (témakör neve) | sztring | A témakör, amelyhez a Service Bus-előfizetés aktív üzeneteket tartalmaz. Null érték, ha várólistát használ. |
-| subscriptionName | sztring | A Service Bus-előfizetés aktív üzenetekkel. Null érték, ha várólistát használ. |
+| Namespacename tulajdonság | sztring | A Service Bus névtér, amelyben az erőforrás található. |
+| requestUri | sztring | Az eseményt kibocsátó adott üzenetsor vagy előfizetés URI azonosítója. |
+| entityType | sztring | Az eseményeket kibocsátó Service Bus entitás típusa (Üzenetsor vagy előfizetés). |
+| queueName | sztring | Az üzenetsor aktív üzenetekkel, ha egy várólistára van előfizetni. Az érték null, ha témaköröket vagy előfizetéseket használ. |
+| topicName | sztring | A témakör az aktív üzenetekkel rendelkező Service Bus-előfizetéshez tartozik. Az érték null, ha üzenetsor használata. |
+| subscriptionName | sztring | A Service Bus-előfizetés aktív üzenetekkel. Az érték null, ha üzenetsor használata. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 |Cím  |Leírás  |
 |---------|---------|
-| [Oktatóanyag: Azure Service Bus az Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Event Grid üzeneteket küld a Service Bus témakörből a függvényalkalmazásnak és a logikai alkalmazásnak. |
-| [Az Azure Service Bus –Event Grid integráció](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és az Event Grid integrálásának áttekintése. |
+| [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
+| [Azure Service Bus az integráció Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és a Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
-* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
-* Az Azure Event Grid service bus használatával kapcsolatos részletekért tekintse meg a [Service Bus to Event Grid integrációs áttekintést.](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md)
-* Próbálja meg [fogadni a Service Bus-eseményeket a Functions vagy a Logic Apps segítségével.](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
+* A Azure Event Grid és a Service Bus használatával kapcsolatos további részletekért tekintse meg az [integráció áttekintése című Service Bus Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md).
+* Próbálja meg [Service Bus-események fogadását functions vagy Logic apps](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json).

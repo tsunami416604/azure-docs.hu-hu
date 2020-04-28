@@ -1,7 +1,7 @@
 ---
-title: Az SSO konfigurálása macOS és iOS rendszeren
+title: SSO konfigurálása macOS és iOS rendszeren
 titleSuffix: Microsoft identity platform
-description: További információ az egyszeri bejelentkezés (SSO) macOS és iOS rendszeren való konfigurálásáról.
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést (SSO) macOS és iOS rendszeren.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881248"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: Az SSO konfigurálása macOS és iOS rendszeren
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: az SSO konfigurálása macOS és iOS rendszeren
 
-A macOS és iOS rendszerhez készült Microsoft Authentication Library (MSAL) támogatja a macOS/iOS alkalmazások és böngészők közötti egyszeri bejelentkezést (SSO). Ez a cikk a következő SSO-forgatókönyveket ismerteti:
+A macOS és az iOS rendszerhez készült Microsoft Authentication Library (MSAL) támogatja az egyszeri bejelentkezést (SSO) macOS/iOS-alkalmazások és-böngészők között. Ez a cikk a következő SSO-forgatókönyveket ismerteti:
 
-- [Csendes sso több alkalmazás között](#silent-sso-between-apps)
+- [Csendes SSO több alkalmazás között](#silent-sso-between-apps)
 
-Az ilyen típusú sso működik több alkalmazás között, amelyeket ugyanaz az Apple Developer forgalmaz. Csendes egyszeri szolgáltatót biztosít (azaz a felhasználó nem kéri a hitelesítő adatokat) a más alkalmazások által a kulcskarikából írt frissítési jogkivonatok olvasásával, és a hozzáférési jogkivonatok csendes cseréje.  
+Az ilyen típusú egyszeri bejelentkezés az azonos Apple Developer által terjesztett több alkalmazás között működik. Csendes SSO-t (azaz a felhasználót nem kéri a hitelesítő adatok megadására) a kulcstartóban más alkalmazások által írt frissítési tokenek olvasásával, valamint a hozzáférési tokenek csendes cseréjével.  
 
-- [SSO hitelesítési brókeren keresztül](#sso-through-authentication-broker-on-ios)
+- [Egyszeri bejelentkezés a hitelesítési közvetítőn keresztül](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
 > Ez a folyamat macOS rendszeren nem érhető el.
 
-A Microsoft olyan alkalmazásokat, úgynevezett brókereket biztosít, amelyek lehetővé teszik az SSO-t a különböző szállítóktól származó alkalmazások között, feltéve, hogy a mobileszköz regisztrálva van az Azure Active Directoryban (AAD). Az ilyen típusú sso igényel közvetítő alkalmazást kell telepíteni a felhasználó eszközére.
+A Microsoft közvetítőknek nevezett alkalmazásokat biztosít, amelyek lehetővé teszik a különböző gyártóktól származó alkalmazások közötti egyszeri bejelentkezést, amennyiben a mobileszköz regisztrálva van Azure Active Directory (HRE). Az ilyen típusú SSO használatához a felhasználó eszközén telepítve kell lennie egy Broker-alkalmazásnak.
 
-- **SSO között MSAL és safari**
+- **Egyszeri bejelentkezés a MSAL és a Safari között**
 
-Az sso az [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) osztályon keresztül érhető el. Más alkalmazások meglévő bejelentkezési állapotát és a Safari böngészőt használja. Ez nem korlátozódik az ugyanazon Apple Developer által terjesztett alkalmazásokra, de némi felhasználói beavatkozást igényel.
+Az SSO a [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) osztályon keresztül érhető el. A meglévő bejelentkezési állapotot használja más alkalmazásokból és a Safari böngészőből. Nem korlátozódik az azonos Apple Developer által terjesztett alkalmazásokra, de a felhasználói beavatkozásra van szükség.
 
-Ha az alkalmazás alapértelmezett webnézetét használja a felhasználók bejelentkezéséhez, automatikus egyszeri bejelentkezést kap az MSAL-alapú alkalmazások és a Safari között. Ha többet szeretne megtudni az MSAL által támogatott webes nézetekről, látogasson el [a Böngészők és webnézetek testreszabása című webhelyre.](customize-webviews.md)
-
-> [!IMPORTANT]
-> Ez a fajta sso jelenleg nem érhető el macOS rendszeren. A macOS rendszeren csak a WKWebView-t támogatja, amely nem rendelkezik SSO-támogatással a Safari val. 
-
-- **Csendes sso az ADAL és az MSAL macOS/iOS alkalmazások között**
-
-Az MSAL Objective-C támogatja az adal objektív-C-alapú alkalmazásokkal rendelkező áttelepítést és egyszeri sso-t. Az alkalmazásokat ugyanannak az Apple Developernek kell terjesztenie.
-
-Lásd: [SSO között ADAL és MSAL alkalmazások macOS és iOS](sso-between-adal-msal-apps-macos-ios.md) utasításokat alkalmazások közötti Egyszeri szolgáltatások Között ADAL és MSAL-alapú alkalmazások.
-
-## <a name="silent-sso-between-apps"></a>Csendes sso az alkalmazások között
-
-Az MSAL támogatja az sso megosztást az iOS kulcskarika-hozzáférési csoportokon keresztül.
-
-Az SSO-nak az alkalmazások közötti engedélyezéséhez a következő lépéseket kell megtennie, amelyeket az alábbiakban részletesebben ismertetünk:
-
-1. Győződjön meg arról, hogy minden alkalmazás ugyanazt az ügyfélazonosítót vagy alkalmazásazonosítót használja.
-1. Győződjön meg arról, hogy az összes alkalmazás ugyanazt az aláírási tanúsítványt az Apple- től, hogy megoszthassa a kulcsláncokat.
-1. Kérje ugyanazt a kulcskarika jogosultságot az egyes alkalmazásokhoz.
-1. Tájékoztassa az MSAL SDK-kat a megosztott kulcskarikáról, amelyet használni szeretne, ha az eltér az alapértelmezetttől.
-
-### <a name="use-the-same-client-id-and-application-id"></a>Ugyanazt az ügyfélazonosítót és alkalmazásazonosítót használja
-
-Ahhoz, hogy a Microsoft identity platform tudja, mely alkalmazások oszthatják meg a jogkivonatokat, ezeknek az alkalmazásoknak ugyanazt az ügyfélazonosítót vagy alkalmazásazonosítót kell megosztaniuk. Ez az az egyedi azonosító, amelyet akkor kapott, amikor regisztrálta az első alkalmazást a portálon.
-
-A Microsoft identity platform azt mondja az azonos alkalmazásazonosítót használó alkalmazásoknak, hogy **átirányítási URI-k segítségével.** Minden alkalmazás rendelkezhet több átirányítási URI-k regisztrálva a bevezetési portálon. A csomag minden alkalmazás a csomag ban lesz egy másik átirányítási URI.Each app in your suite will have a different redirect URI. Például:
-
-App1 átirányításURI:`msauth.com.contoso.mytestapp1://auth`  
-App2 átirányításURI:`msauth.com.contoso.mytestapp2://auth`  
-App3 átirányításURI:`msauth.com.contoso.mytestapp3://auth`  
+Ha az alkalmazásban az alapértelmezett webes nézetet használja a felhasználók bejelentkezni, a rendszer automatikusan egyszeri bejelentkezést kap a MSAL-alapú alkalmazások és a Safari között. Ha többet szeretne megtudni a MSAL által támogatott webes nézetekről, tekintse meg a [böngészők és Webnézetek testreszabása](customize-webviews.md)című témakört.
 
 > [!IMPORTANT]
-> Az átirányítási uris formátumának kompatibilisnek kell lennie az MSAL-támogatottformátummal, amelyet az [MSAL átirányítási URI formátumkövetelményei dokumentálnak.](redirect-uris-ios.md#msal-redirect-uri-format-requirements)
+> Ez a típusú egyszeri bejelentkezés jelenleg nem érhető el macOS rendszeren. A macOS-MSAL csak olyan WKWebView-ket támogat, amelyek nem rendelkeznek SSO-támogatással a Safariban. 
 
-### <a name="setup-keychain-sharing-between-applications"></a>Kulcskarika-megosztás beállítása az alkalmazások között
+- **Csendes SSO a ADAL és a MSAL macOS/iOS-alkalmazások között**
 
-A kulcskarika-megosztás engedélyezéséhez tekintse meg az Apple [Képességek hozzáadása](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) című cikkét. Az a fontos, hogy eldöntse, mit szeretne a kulcskarikának hívni, és adja hozzá ezt a képességet az összes alkalmazásához, amely részt vesz az SSO-ban.
+A MSAL Objective-C a ADAL Objective-C-alapú alkalmazásokkal támogatja az áttelepítést és az egyszeri bejelentkezést. Az alkalmazásokat az Apple Developer szolgáltatásnak kell elosztania.
 
-Ha a jogosultságok megfelelően vannak beállítva, `entitlements.plist` megjelenik egy fájl a projektkönyvtárban, amely a következő példához hasonlót tartalmaz:
+A ADAL és a MSAL-alapú alkalmazások közötti, az alkalmazások közötti egyszeri bejelentkezésre vonatkozó utasításokért tekintse [meg a MacOS és iOS rendszerű ADAL és MSAL alkalmazások közötti SSO](sso-between-adal-msal-apps-macos-ios.md) -t.
+
+## <a name="silent-sso-between-apps"></a>Csendes SSO alkalmazások között
+
+Az MSAL támogatja az egyszeri bejelentkezéses megosztást iOS-alapú kulcstartó-hozzáférési csoportokon keresztül.
+
+Ha engedélyezni szeretné az egyszeri bejelentkezést az alkalmazásokban, a következő lépéseket kell elvégeznie, amelyeket az alábbi részletesebben ismertetünk:
+
+1. Győződjön meg arról, hogy az összes alkalmazás ugyanazt az ügyfél-azonosítót vagy az alkalmazás AZONOSÍTÓját használja.
+1. Győződjön meg arról, hogy az összes alkalmazás ugyanazzal az aláírási tanúsítvánnyal rendelkezik az Apple-től, hogy meg tudja osztani a kulcstartókat.
+1. Az egyes alkalmazásokhoz ugyanazt a kulcstartó jogosultságot kell kérnie.
+1. Adja meg a MSAL SDK-kat arról, hogy milyen megosztott kulcstartót szeretne használni, ha az eltér az alapértelmezetttől.
+
+### <a name="use-the-same-client-id-and-application-id"></a>Ugyanaz az ügyfél-azonosító és alkalmazás-azonosító használata
+
+Ahhoz, hogy a Microsoft Identity platform tudja, mely alkalmazások oszthatják meg a jogkivonatokat, az alkalmazásoknak azonos ügyfél-azonosítót vagy alkalmazás-azonosítót kell megosztaniuk. Ez az egyedi azonosító, amelyet az első alkalmazásnak a portálon való regisztrálása során adott meg.
+
+A Microsoft Identity platform azt mutatja be, hogy az azonos alkalmazás-azonosítót használó alkalmazások **átirányítási URI**-k. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
+
+App1 átirányítási URI:`msauth.com.contoso.mytestapp1://auth`  
+App2 átirányítási URI:`msauth.com.contoso.mytestapp2://auth`  
+App3 átirányítási URI:`msauth.com.contoso.mytestapp3://auth`  
+
+> [!IMPORTANT]
+> Az átirányítási URI-k formátumának kompatibilisnek kell lennie a MSAL által támogatott formátummal, amely a [MSAL átirányítási URI-formátumának követelményeiben](redirect-uris-ios.md#msal-redirect-uri-format-requirements)van dokumentálva.
+
+### <a name="setup-keychain-sharing-between-applications"></a>A kulcstartó megosztásának beállítása az alkalmazások között
+
+A kulcstartó megosztásának engedélyezéséhez tekintse meg az Apple [hozzáadási képességeivel](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) foglalkozó cikket. Fontos, hogy eldöntse, mit szeretne meghívni a kulcstartót, és ezt a képességet adja hozzá az összes olyan alkalmazáshoz, amely az egyszeri bejelentkezésben részt vesz.
+
+Ha helyesen állította be a jogosultságokat, egy olyan `entitlements.plist` fájlt fog látni a projekt könyvtárában, amely a következőhöz hasonló példát tartalmaz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -94,21 +94,21 @@ Ha a jogosultságok megfelelően vannak beállítva, `entitlements.plist` megjel
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>Új kulcskarika-csoport hozzáadása
+#### <a name="add-a-new-keychain-group"></a>Új kulcstartó-csoport hozzáadása
 
-Adjon hozzá egy új kulcskarika-csoportot a projekt **képességek hez.** A kulcskarika-csoportnak a következőknek kell lennie:
+Vegyen fel egy új kulcstartó-csoportot a projekt **képességeibe**. A kulcstartó csoportnak a következőket kell tennie:
 * `com.microsoft.adalcache`iOS rendszeren 
 * `com.microsoft.identity.universalstorage`macOS rendszeren.
 
-![kulcskarika példa](media/single-sign-on-macos-ios/keychain-example.png)
+![kulcstartó – példa](media/single-sign-on-macos-ios/keychain-example.png)
 
-További információt a [kulcskarika-csoportok című témakörben talál.](howto-v2-keychain-objc.md)
+További információ: kulcstartó- [csoportok](howto-v2-keychain-objc.md).
 
-## <a name="configure-the-application-object"></a>Az alkalmazásobjektum konfigurálása
+## <a name="configure-the-application-object"></a>Az alkalmazás-objektum konfigurálása
 
-Miután minden alkalmazásban engedélyezve van a kulcskarika-jogosultság, és készen áll `MSALPublicClientApplication` az Egyszeri bejelentkezés használatára, konfigurálja a kulcskarika-hozzáférési csoporttal a következő példában szereplő módon:
+Miután az összes alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, konfigurálja `MSALPublicClientApplication` a kulcstartó-hozzáférési csoporttal a következő példában látható módon:
 
-C célkitűzés:
+Objective-C:
 
 ```objc
 NSError *error = nil;
@@ -118,7 +118,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-Swift:
+Swift
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -133,19 +133,19 @@ do {
 ```
 
 > [!WARNING]
-> Amikor megoszt egy kulcskarikát az alkalmazások között, bármely alkalmazás törölheti a felhasználókat, vagy akár az összes jogkivonatot az alkalmazáson keresztül.
-> Ez különösen akkor, ha olyan alkalmazásokkal rendelkezik, amelyek a háttérmunka jogkivonataira támaszkodnak.
-> A kulcskarika megosztása azt jelenti, hogy nagyon óvatosnak kell lennie, amikor az alkalmazás microsoftidentitás-SDK eltávolítási műveleteket használ.
+> Amikor megoszt egy kulcstartót az alkalmazásai között, bármelyik alkalmazás törölheti a felhasználókat, vagy akár az összes tokent az alkalmazásban.
+> Ez különösen hatással van arra, ha olyan alkalmazásokkal rendelkezik, amelyek jogkivonatokat használnak a háttérben végzett munkához.
+> A kulcstartó megosztása azt jelenti, hogy nagyon körültekintően kell lennie, ha az alkalmazás Microsoft Identity SDK eltávolítási műveleteket használ.
 
-Ennyi az egész! A Microsoft identity SDK mostantól megosztja a hitelesítő adatokat az összes alkalmazásban. A fióklista az alkalmazáspéldányok között is meg lesz osztva.
+Ennyi az egész! A Microsoft Identity SDK mostantól megosztja a hitelesítő adatokat az összes alkalmazáson belül. A fiókok listája az alkalmazás példányai között is meg lesz osztva.
 
-## <a name="sso-through-authentication-broker-on-ios"></a>SSO hitelesítési brókeren keresztül iOS rendszeren
+## <a name="sso-through-authentication-broker-on-ios"></a>Egyszeri bejelentkezés a hitelesítési ügynökön keresztül iOS rendszeren
 
-Az MSAL támogatja a Microsoft Authenticator-nal való felügyelt hitelesítést. A Microsoft Authenticator sso-t biztosít az AAD regisztrált eszközökhöz, és segít az alkalmazásnak a feltételes hozzáférési házirendek követésében.
+A MSAL támogatja a Microsoft Authenticator felügyelt hitelesítését. A Microsoft Authenticator egyszeri bejelentkezést biztosít a HRE regisztrált eszközökhöz, és segít az alkalmazásnak a feltételes hozzáférési szabályzatok követésében is.
 
-A következő lépések az SSO engedélyezésének módját egy hitelesítési bróker használatával engedélyezheti az alkalmazáshoz:
+Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az alkalmazáshoz tartozó hitelesítési közvetítő használatával:
 
-1. Regisztráljon egy brókerkompatibilis átirányítási URI-formátumot az alkalmazás info.plistájában. A bróker kompatibilis átirányítási `msauth.<app.bundle.id>://auth`URI formátum . Cserélje ki a '<app.bundle.id app.bundle.id>" helyett az alkalmazás csomagazonosítóját. Például:
+1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI `msauth.<app.bundle.id>://auth`formátuma. Cserélje le az "<app.bundle.id>" "helyére az alkalmazás Bundle-azonosítójával. Például:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +154,7 @@ A következő lépések az SSO engedélyezésének módját egy hitelesítési b
     </array>
     ```
 
-1. A következő sémák felvétele az alkalmazás `LSApplicationQueriesSchemes`info.p listájára az alábbi:
+1. Adja hozzá az alábbi sémákat az alkalmazás info. plist fájljában `LSApplicationQueriesSchemes`:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,9 +164,9 @@ A következő lépések az SSO engedélyezésének módját egy hitelesítési b
     </array>
     ```
 
-1. A visszahívások `AppDelegate.m` kezeléséhez adja hozzá a következőket a fájlhoz:
+1. Adja hozzá a következőt `AppDelegate.m` a fájlhoz a visszahívások kezeléséhez:
 
-    C célkitűzés:
+    Objective-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -175,7 +175,7 @@ A következő lépések az SSO engedélyezésének módját egy hitelesítési b
     }
     ```
     
-    Swift:
+    Swift
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -183,10 +183,10 @@ A következő lépések az SSO engedélyezésének módját egy hitelesítési b
     }
     ```
     
-**Ha Xcode 11-et használ,** akkor az MSAL visszahívását a `SceneDelegate` fájlba kell helyeznie.
-Ha támogatja mind az UISceneDelegate, mind az UIApplicationDelegate programot a régebbi iOS rendszerrel való kompatibilitásérdekében, az MSAL-visszahívást mindkét fájlba be kell helyezni.
+**Ha a Xcode 11**-et használja, helyette a MSAL visszahívást kell elhelyeznie a `SceneDelegate` fájlba.
+Ha mind a UISceneDelegate, mind a UIApplicationDelegate támogatja a régebbi iOS-kompatibilitást, akkor a MSAL visszahívást mindkét fájlba be kell helyezni.
 
-C célkitűzés:
+Objective-C:
 
 ```objc
  - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
@@ -199,7 +199,7 @@ C célkitűzés:
  }
 ```
 
-Swift:
+Swift
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -217,4 +217,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [hitelesítési folyamatokról és az alkalmazásforgatókönyvekről](authentication-flows-app-scenarios.md)
+További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

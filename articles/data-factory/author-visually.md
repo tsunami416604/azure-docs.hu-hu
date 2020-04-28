@@ -1,6 +1,6 @@
 ---
-title: Vizuális szerzői
-description: Ismerje meg, hogyan használhatja a vizuális szerzői lehetőségeket az Azure Data Factoryban
+title: Vizuális szerzői műveletek
+description: Ismerje meg, hogyan használható a Visual authoring a Azure Data Factory
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,50 +11,50 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418490"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Vizuális szerzői jog az Azure Data Factoryban
+# <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az Azure Data Factory felhasználói felület (UX) lehetővé teszi, hogy vizuálisan az adatok-előállító erőforrásait anélkül, hogy bármilyen kódot írni. A tevékenységeket áthúzhatja egy folyamatvászonra, tesztfuttatásokat hajthat végre, iteratív módon debugot, valamint telepítheti és figyelheti a folyamatfuttatásokat.
+A Azure Data Factory felhasználói felületi élmény (UX) segítségével vizuálisan hozhat létre és helyezhet üzembe erőforrásokat az adatai-előállító számára anélkül, hogy kódot kellene írnia. A tevékenységeket áthúzhatja egy csővezeték-vászonra, tesztelheti a iteratív, hibakeresést végezhet, valamint telepítheti és figyelheti a folyamat futtatását.
 
-Jelenleg az Azure Data Factory UX csak a Microsoft Edge és a Google Chrome támogatja.
+Jelenleg a Azure Data Factory UX csak a Microsoft Edge és a Google Chrome esetében támogatott.
 
 ## <a name="authoring-canvas"></a>Szerzői vászon
 
-A **szerzői vászon**megnyitásához kattintson a ceruza ikonra. 
+A **szerzői műveletek vászon**megnyitásához kattintson a ceruza ikonra. 
 
 ![Szerzői vászon](media/author-visually/authoring-canvas.png)
 
-Itt fogja megalkotni a folyamatokat, tevékenységeket, adatkészleteket, összekapcsolt szolgáltatásokat, adatfolyamokat, eseményindítókat és integrációs futtatásokat, amelyek a gyárat alkotják. A folyamat létrehozásának megkezdéséhez a szerzői vászon használatával az [Adatok másolása a másolási tevékenység használatával című témakörben található.](tutorial-copy-data-portal.md) 
+Itt hozza létre a gyárat alkotó folyamatokat, tevékenységeket, adatkészleteket, társított szolgáltatásokat, adatfolyamatokat, eseményindítókat és integrációs modulokat. A folyamat létrehozásához a szerzői műveletek vászon használatával megtudhatja, hogyan másolhat egy folyamatot a [másolási tevékenység használatával](tutorial-copy-data-portal.md). 
 
-Az alapértelmezett vizuális szerzői élmény közvetlenül a Data Factory szolgáltatással működik. Az Azure Repos Git- vagy GitHub-integráció is támogatott, hogy lehetővé tegye a forrásvezérlést és az együttműködést az adatfeldolgozó folyamatokon végzett munkához. Ha többet szeretne megtudni a szerzői élmények közötti különbségekről, olvassa el a Forrásvezérlés az Azure Data Factory ban című [témakört.](source-control.md)
+Az alapértelmezett vizualizáció-létrehozási élmény közvetlenül a Data Factory szolgáltatással működik. Az Azure Repos git vagy GitHub integrációja is támogatott, hogy lehetővé váljon a verziókövetés és az együttműködés a saját adatfeldolgozó-folyamatokban. Ha többet szeretne megtudni a szerzői műveletek közötti különbségekről, tekintse meg a [Azure Data Factory a verziókövetés](source-control.md)című témakört.
 
 ## <a name="expressions-and-functions"></a>Kifejezések és függvények
 
-Kifejezések és függvények statikus értékek helyett számos tulajdonság megadására használható az Azure Data Factoryban.
+A kifejezések és függvények a statikus értékek helyett használhatók a Azure Data Factory számos tulajdonságának megadásához.
 
-Ha egy tulajdonságértékhez kifejezést szeretne megadni, válassza **a Dinamikus tartalom hozzáadása** lehetőséget, vagy kattintson az Alt + **P** gombra, miközben a mezőre fókuszál.
+Egy tulajdonság értékének megadásához válassza a **dinamikus tartalom hozzáadása** lehetőséget, vagy kattintson az **ALT + P** gombra a mezőre való fókuszálás közben.
 
 ![Dinamikus tartalom hozzáadása](media/author-visually/dynamic-content-1.png)
 
-Ezzel megnyitja a **Data Factory Expression Builder,** ahol hozhat létre kifejezéseket a támogatott rendszerváltozók, tevékenység kimenet, funkciók és a felhasználó által megadott változók vagy paraméterek. 
+Ekkor megnyílik a **Data Factory Expression Builder** , amelyen létrehozhat kifejezéseket a támogatott rendszerváltozók, a tevékenységek kimenete, a függvények és a felhasználó által megadott változók vagy paraméterek alapján. 
 
 ![Kifejezésszerkesztő](media/author-visually/dynamic-content-2.png)
 
-A kifejezés nyelvéről további információt az [Azure Data Factory kifejezések és függvények](control-flow-expression-language-functions.md)című témakörében talál.
+A kifejezés nyelvével kapcsolatos további információkért lásd: [kifejezések és függvények a Azure Data Factoryban](control-flow-expression-language-functions.md).
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-Válassza **a Visszajelzés** lehetőséget a szolgáltatásokkal kapcsolatos megjegyzések hez vagy az eszközrel kapcsolatos problémákról való értesítéshez:
+Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A folyamatok figyeléséről és kezeléséről a [Folyamatok figyelése és kezelése programozott módon.](monitor-programmatically.md)
+A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.

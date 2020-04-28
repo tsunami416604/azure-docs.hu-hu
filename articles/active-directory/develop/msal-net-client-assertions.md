@@ -1,7 +1,7 @@
 ---
-title: Ügyfél állítások (MSAL.NET) | Azure
+title: Ügyfél-kijelentések (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Információ a bizalmas ügyfélalkalmazások aláírt ügyfélállítások támogatásáról a Microsoft Authentication Library for .NET (MSAL.NET) alkalmazásban.
+description: Ismerje meg a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatásban a bizalmas ügyfélalkalmazások támogatásához aláírt ügyfél-kijelentéseket.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,32 +14,32 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050291"
 ---
-# <a name="confidential-client-assertions"></a>Bizalmas ügyfélállítások
+# <a name="confidential-client-assertions"></a>Bizalmas ügyfél-kijelentések
 
-Annak érdekében, hogy személyazonosságukat, bizalmas ügyfélalkalmazások cseréje egy titkos Azure AD. A titok lehet:
-- Ügyféltitok (alkalmazásjelszó).
-- Szabványos jogcímeket tartalmazó aláírt állítások létrehozásához használt tanúsítvány.
+Személyazonosságuk igazolása érdekében a bizalmas ügyfélalkalmazások az Azure AD-vel titkos kulcsot cserélnek. A titok a következőket teheti:
+- Az ügyfél titkos kulcsa (alkalmazás jelszava).
+- Egy tanúsítvány, amely egy standard jogcímeket tartalmazó aláírt jogcím összeállítására szolgál.
 
-Ez a titok közvetlenül is aláírható állítás lehet.
+Ez a titok közvetlenül is aláírható.
 
-MSAL.NET négy módszerrel rendelkezik a bizalmas ügyfélalkalmazás hitelesítő adatainak vagy érvényesítésének biztosításához:
+A MSAL.NET négy módszerrel biztosíthatja a bizalmas ügyfélalkalmazás számára a hitelesítő adatokat vagy kijelentéseket:
 - `.WithClientSecret()`
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 > [!NOTE]
-> Bár lehetséges az `WithClientAssertion()` API-t a bizalmas ügyfél jogkivonatai beszerzésére, nem javasoljuk, hogy alapértelmezés szerint használja, mivel fejlettebb, és nagyon specifikus forgatókönyvek kezelésére tervezték, amelyek nem gyakoriak. Az `.WithCertificate()` API használatával MSAL.NET kezelni ezt az Ön számára. Ez az api lehetővé teszi a hitelesítési kérelem testreszabását, ha szükséges, de a legtöbb hitelesítési forgatókönyvhez elegendő lesz a hitelesítési `.WithCertificate()` esetek ben létrehozott alapértelmezett állítás. Ez az API is használható kerülő megoldásként bizonyos esetekben, amikor MSAL.NET nem hajtja végre az aláírási művelet belsőleg.
+> Habár az `WithClientAssertion()` API-t használhatja a bizalmas ügyfélhez tartozó jogkivonatok megszerzéséhez, azt nem javasoljuk, hogy alapértelmezés szerint használja, mivel ez fejlettebb, és a nagyon konkrét, nem gyakori forgatókönyvek kezelésére szolgál. Az API `.WithCertificate()` használata lehetővé teszi, hogy a MSAL.net kezelje ezt. Ez az API lehetővé teszi a hitelesítési kérelem testreszabását, ha szükséges, de a által `.WithCertificate()` létrehozott alapértelmezett állítás elegendő a legtöbb hitelesítési forgatókönyvhöz. Ez az API megkerülő megoldásként is használható olyan helyzetekben, ahol a MSAL.NET nem tudja belsőleg végrehajtani az aláírási műveletet.
 
-### <a name="signed-assertions"></a>Aláírt állítások
+### <a name="signed-assertions"></a>Aláírt kijelentések
 
-Az aláírt ügyfél-kijelentés egy aláírt JWT formájában, amely tartalmazza az Azure AD által kódolt, szükséges hitelesítési jogcímeket tartalmazó hasznos adat. A használatához:
+Az aláírt ügyfél egy aláírt JWT formáját ölti az Azure AD által megkövetelt, Base64 kódolású, szükséges hitelesítési jogcímeket tartalmazó adattartalommal. A használatához:
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -52,14 +52,14 @@ Az Azure AD által várt jogcímek a következők:
 
 Jogcím típusa | Érték | Leírás
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Az "aud" (közönség) jogcím azonosítja azokat a címzetteket, akiknek a JWT-t szánják (itt Azure AD) Lásd [RFC 7519, 4.1.3 szakasz]
-Exp | Cs Jún 27 2019 15:04:17 GMT+0200 (román nyári idő) | Az "exp" (lejárati idő) jogcím azonosítja a lejárati időt, vagy amely után a JWT nem fogadható el a feldolgozásra. Lásd [RFC 7519, 4.1.4. szakasz]
-Iss | {Ügyfélazonosító} | Az "iss" (kibocsátó) jogcím azonosítja a JWT-t kibocsátó főkötelezettet. A jogcím feldolgozása alkalmazásspecifikus. Az "iss" érték stringoruri értéket tartalmazó kis- és nagybetűket megkülönböztető karakterlánc. [RFC 7519, 4.1.1. szakasz]
-Jti | (Guid) | A "jti" (JWT-azonosító) jogcím a JWT egyedi azonosítóját tartalmazza. Az azonosító értéket úgy kell hozzárendelni, hogy biztosítsa, hogy elhanyagolható a valószínűsége annak, hogy ugyanazt az értéket véletlenül egy másik adatobjektumhoz rendelik; ha az alkalmazás több kibocsátót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között is. A "jti" követelés felhasználható a JWT visszajátszásának megakadályozására. A "jti" érték egy kis- és nagybetűket megkülönböztető karakterlánc. [RFC 7519, 4.1.7. szakasz]
-nbf | Cs Jún 27 2019 14:54:17 GMT+0200 (román nyári idő) | Az "nbf" (nem korábban) állítás azonosítja azt az időt, amely előtt a JWT nem fogadható el feldolgozásra. [RFC 7519, 4.1.5. szakasz]
-Al | {Ügyfélazonosító} | A "sub" (tárgy) állítás azonosítja a JWT tárgyát. A JWT-ben található állítások általában a témával kapcsolatos állítások. A tárgy értékét vagy úgy kell hatókörrel tekinteni, hogy a kibocsátó kontextusában helyileg egyedi legyen, vagy globálisan egyedinek kell lennie. Lásd a [7519. számú RFC 4.1.2. szakasza]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szántak (itt az Azure AD) lásd: [RFC 7519, 4.1.3. szakasz].
+exp | Thu Jun 27 2019 15:04:17 GMT + 0200 (romantikus nyári idő) | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz]
+ISS | ClientID | Az "ISS" (kibocsátói) jogcím azonosítja a JWT kiállító rendszerbiztonsági tag. A jogcím feldolgozása alkalmazásspecifikus. Az "ISS" érték egy kis-és nagybetűket megkülönböztető karakterlánc, amely egy StringOrURI értéket tartalmaz. [RFC 7519, 4.1.1. szakasz]
+JTI | (GUID) | A "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon kell hozzárendelni, amely biztosítja, hogy az adott érték egy másik adatobjektumhoz is legyen véletlenül hozzárendelve. Ha az alkalmazás több kiállítót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között. A "kezdeményezés" jogcímet arra használhatja, hogy megakadályozza a JWT lejátszását. A "kezdeményezés" érték kis-és nagybetűket megkülönböztető karakterlánc. [RFC 7519, szakasz 4.1.7]
+NBF | Thu Jun 27 2019 14:54:17 GMT + 0200 (romantikus nyári idő) | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, szakasz 4.1.5]
+Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lévő jogcímek általában a tárgyra vonatkozó utasítások. A tulajdonos értékének hatóköre csak helyileg egyedi lehet a kiállító kontextusában, vagy globálisan egyedinek kell lennie. A lásd: [RFC 7519, 4.1.2. szakasz]
 
-Íme egy példa arra, hogyan kell ezeket az állításokat megalkotni:
+Íme egy példa a jogcímek kiépítésére:
 
 ```csharp
 private static IDictionary<string, string> GetClaims()
@@ -85,7 +85,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-Itt van, hogyan kézműves aláírt ügyfél állítás:
+Az alábbi lépésekből megtudhatja, hogyan lehet aláírt ügyfél-kijelentést készíteni:
 
 ```csharp
 string Encode(byte[] arg)
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatív módszer
 
-Lehetősége van arra is, hogy a [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre a helyestnlásdmert. A kód lesz egy elegánsabb, amint az alábbi példában:
+Lehetősége van arra is, hogy a [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre az állítást. A kód az alábbi példában látható módon elegáns lesz:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -168,7 +168,7 @@ Lehetősége van arra is, hogy a [Microsoft.IdentityModel.JsonWebTokens](https:/
         }
 ```
 
-Miután az aláírt ügyfél állítás, akkor használja azt az MSAL apis az alábbiak szerint.
+Ha már rendelkezik az aláírt ügyfél-állítással, használhatja a MSAL API-kkal az alább látható módon.
 
 ```csharp
             string signedClientAssertion = GetSignedClientAssertion();
@@ -179,9 +179,9 @@ Miután az aláírt ügyfél állítás, akkor használja azt az MSAL apis az al
                 .Build();
 ```
 
-### <a name="withclientclaims"></a>Ügyféljogcímek
+### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`alapértelmezés szerint egy aláírt feltételt hoz létre, amely tartalmazza az Azure AD által várt jogcímeket, valamint a további ügyféljogcímeket, amelyeket el szeretne küldeni. Itt van egy kód részlet, hogyan kell csinálni.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Alapértelmezés szerint az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfél-jogcímeket tartalmazó aláírt állítást fog létrehozni. Az alábbi kódrészlettel teheti ezt meg.
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -194,6 +194,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-Ha a szótárban található jogcímek egyike megegyezik a kötelező jogcímek egyikével, a kiegészítő jogcím értékét veszi figyelembe a jogcím értéke. Felülírja a MSAL.NET által kiszámított jogcímeket.
+Ha a bejelentkezett szótár egyik jogcíme megegyezik a kötelező jogcímek egyikével, a rendszer a további jogcím értékét is figyelembe veszi. Felülbírálja a MSAL.NET által kiszámított jogcímeket.
 
-Ha azt szeretné, hogy a saját jogcímek, beleértve az `false` Azure `mergeWithDefaultClaims` AD által várt kötelező jogcímek, adja át a paraméter.
+Ha meg szeretné adni saját jogcímeit, beleértve az Azure AD által várt kötelező jogcímeket, `false` adja meg `mergeWithDefaultClaims` a paramétert.

@@ -1,7 +1,7 @@
 ---
-title: REST API jogcímek cseréje érvényesítésként
+title: Jogcímek REST API érvényesítésként
 titleSuffix: Azure AD B2C
-description: Forgatókönyv az Azure AD B2C felhasználói út létrehozásához, amely a RESTful szolgáltatásokkal kommunikál.
+description: Útmutató a REST-szolgáltatásokkal kommunikáló Azure AD B2C felhasználói út létrehozásához.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80330821"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Forgatókönyv: Rest API-jogcímek cseréjének integrálása az Azure AD B2C felhasználói útba a felhasználói bevitel érvényesítéséhez
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Bemutató: REST API jogcímek cseréje a Azure AD B2C felhasználói úton a felhasználói bevitel érvényesítéséhez
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory B2C (Azure AD B2C) adakai identitáskezelési keretrendszer (IEF) lehetővé teszi az identitásfejlesztők számára, hogy egy FELHASZNÁLÓI út során integrálják a RESTful API-val való interakciót.  A forgatókönyv végén létrehozhat egy Azure AD B2C felhasználói utat, amely a [RESTful szolgáltatásokkal](custom-policy-rest-api-intro.md) együttműködve ellenőrzi a felhasználói bevitelt.
+Az Azure Active Directory B2C (Azure AD B2C) által kiépített Identity Experience Framework (IEF) lehetővé teszi az identitás-fejlesztők számára, hogy a felhasználói úton lévő REST API-val integrálják az interakciót.  A bemutató végén létrehozhat egy Azure AD B2C felhasználói utat, amely a [Rest-szolgáltatásokkal](custom-policy-rest-api-intro.md) együttműködve érvényesíti a felhasználói adatokat.
 
-Ebben a forgatókönyvben hozzáadjuk a felhasználók számára, hogy adja meg a hűségszámot az Azure AD B2C regisztrációs oldalon. Ezeket az adatokat a REST API-ba elküldve ellenőrizsszük, hogy az e-mail és a hűségszám ezen kombinációja le van-e képezve egy promóciós kódhoz. Ha a REST API talál egy promóciós kódot a felhasználó, vissza kerül az Azure AD B2C. Végül a promóciós kód kerül be a jogkivonat-jogcímek az alkalmazás számára, hogy felhasználja.
+Ebben a forgatókönyvben felvesszük a lehetőséget, hogy a felhasználók hűséget adjanak meg a Azure AD B2C regisztrációs oldalon. A rendszer ellenőrzi, hogy az e-mailek és a lojalitási számok e kombinációja egy promóciós kódra van-e rendelve, ha az adatokat egy REST API küldi el. Ha a REST API promóciós kódot talál ehhez a felhasználóhoz, a rendszer visszaadja a Azure AD B2C. Végül a promóciós kód bekerül a jogkivonat jogcímeibe, amelyeket az alkalmazás használni fog.
 
-Az interakciót vezénylési lépésként is tervezheti. Ez akkor megfelelő, ha a REST API nem ellenőrzi az adatokat a képernyőn, és mindig jogcímeket ad vissza. További információ: [Forgatókönyv: Rest API-jogcímek cseréjének integrálása az Azure AD B2C felhasználói út vezénylési lépésként.](custom-policy-rest-api-claims-exchange.md)
+Az interakciót összehangoló lépésként is megtervezheti. Ez akkor megfelelő, ha a REST API nem fogja érvényesíteni a képernyőn lévő adatellenőrzést, és mindig visszaadja a jogcímeket. További információkért lásd: bemutató [: REST API jogcím-cserék integrálása a Azure ad B2C felhasználói úton](custom-policy-rest-api-claims-exchange.md)az előkészítési lépésként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hajtsa végre az Egyéni házirendek – Első lépések című [lépéseit.](custom-policy-get-started.md) Rendelkeznie kell egy működő egyéni szabályzat a regisztrációhoz és a helyi fiókkal való bejelentkezéshez.
-- Ismerje meg, hogyan [integrálhatja a REST API-jogcímek cseréjét az Azure AD B2C egyéni szabályzatába.](custom-policy-rest-api-intro.md)
+- Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit. A bejelentkezéshez és a helyi fiókokkal való bejelentkezéshez egyéni szabályzatot kell használnia.
+- Ismerje meg, hogyan [integrálhatja REST API jogcímek cseréjét a Azure ad B2C egyéni szabályzatba](custom-policy-rest-api-intro.md).
 
-## <a name="prepare-a-rest-api-endpoint"></a>REST API-végpont előkészítése
+## <a name="prepare-a-rest-api-endpoint"></a>REST API végpont előkészítése
 
-Ebben a forgatókönyvben rendelkeznie kell egy REST API-t, amely ellenőrzi, hogy egy e-mail cím regisztrálva van-e a háttérrendszer egy hűségazonosítóval. Ha regisztrálva van, a REST API-nak vissza kell adnia egy regisztrációs promóciós kódot, amelyet az ügyfél az alkalmazáson belüli áruk megvásárlásához használhat. Ellenkező esetben a REST API-nak http 409-es hibaüzenetet kell visszaadnia: "A(z) "{loyalty ID}" hűségazonosító nincs társítva a következő höz: "{email}" e-mail cím.".
+Ehhez a bemutatóhoz rendelkeznie kell egy REST API, amely ellenőrzi, hogy van-e e-mail-cím regisztrálva a háttérrendszer-AZONOSÍTÓval. Ha regisztrálva van, a REST API egy regisztrációs promóciós kódot kell visszaadnia, amelyet az ügyfél az alkalmazáson belüli termékek vásárlásához használhat. Ellenkező esetben a REST API HTTP 409 hibaüzenetet ad vissza: a (z) "törzsvásárlói azonosító {törzsvásárlói azonosító}" nincs társítva a (z) {e-mail} e-mail-címével. "
 
-A következő JSON-kód bemutatja az Azure AD B2C által a REST API-végpontnak küldött adatokat. 
+A következő JSON-kód azt mutatja be, Azure AD B2C az REST API végpontnak küldi el azokat. 
 
 ```json
 {
@@ -47,7 +47,7 @@ A következő JSON-kód bemutatja az Azure AD B2C által a REST API-végpontnak 
 }
 ```
 
-Miután a REST API érvényesíti az adatokat, vissza kell adnia egy HTTP 200 (Ok), a következő JSON-adatokkal:
+Miután a REST API érvényesíti az adatait, a következő JSON-adataival kell visszaadnia a HTTP 200 (ok) t:
 
 ```json
 {
@@ -55,7 +55,7 @@ Miután a REST API érvényesíti az adatokat, vissza kell adnia egy HTTP 200 (O
 }
 ```
 
-Ha az ellenőrzés sikertelen, a REST API-nak http 409-es (Ütközés) http-t kell visszaadnia a `userMessage` JSON-elemmel. Az IEF elvárja a `userMessage` REST API-t visszaadott állítást. Ez a jogcím karakterláncként jelenik meg a felhasználó számára, ha az érvényesítés sikertelen.
+Ha az ellenőrzés nem sikerült, a REST API HTTP 409 (ütközés) értéket kell visszaadnia `userMessage` a JSON-elemmel. A IEF a REST API által `userMessage` visszaadott jogcímet várja. Ez a jogcím karakterláncként jelenik meg a felhasználó számára, ha az ellenőrzés sikertelen.
 
 ```json
 {
@@ -65,13 +65,13 @@ Ha az ellenőrzés sikertelen, a REST API-nak http 409-es (Ütközés) http-t ke
 }
 ```
 
-A REST API-végpont beállítása kívül esik a cikk hatókörén. Létrehoztunk egy [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) mintát. A teljes Azure-függvénykódot a [GitHubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
+A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létrehoztunk egy [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) mintát. Az Azure-függvény teljes kódját a [githubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
 
-## <a name="define-claims"></a>Jogcímek definiálása
+## <a name="define-claims"></a>Jogcímek meghatározása
 
-A jogcím az adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabályzat végrehajtása során. A jogcímek deklarálhatók a [jogcímséma](claimsschema.md) szakaszban. 
+A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A jogcímeket a [jogcímek sémája](claimsschema.md) szakaszon belül deklarálhatja. 
 
-1. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez.  
@@ -93,9 +93,9 @@ A jogcím az adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabály
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>A RESTful API műszaki profiljának konfigurálása 
+## <a name="configure-the-restful-api-technical-profile"></a>A REST API technikai profiljának konfigurálása 
 
-A [restful technikai profil](restful-technical-profile.md) támogatást nyújt a saját RESTful szolgáltatáshoz való kapcsolódáshoz. Az Azure AD B2C adatokat küld a `InputClaims` RESTful szolgáltatás `OutputClaims` egy gyűjteményben, és adatokat kap vissza egy gyűjteményben. Keresse meg a **ClaimsProviders** elemet, és adjon hozzá egy új jogcímszolgáltatót az alábbiak szerint:
+A [Rest-technikai profil](restful-technical-profile.md) támogatja a saját Rest-szolgáltatáshoz való kapcsolódást. Azure AD B2C adatokat küld a REST-szolgáltatásnak egy `InputClaims` gyűjteményben, és adatokat fogad vissza egy `OutputClaims` gyűjteményben. Keresse meg a **ClaimsProviders** elemet, és vegyen fel egy új jogcím-szolgáltatót az alábbiak szerint:
 
 ```xml
 <ClaimsProvider>
@@ -128,17 +128,17 @@ A [restful technikai profil](restful-technical-profile.md) támogatást nyújt a
 </ClaimsProvider>
 ```
 
-Ebben a példában a `userLanguage` lesz elküldve `lang` a REST szolgáltatás, mint a JSON hasznos adat. A jogcím `userLanguage` értéke az aktuális felhasználói nyelv azonosítóját tartalmazza. További információt a [jogcímfeloldó című](claim-resolver-overview.md)témakörben talál.
+Ebben a példában a `userLanguage` a rendszer ELKÜLDI a REST szolgáltatásnak `lang` a JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
 
-A fenti `AuthenticationType` `AllowInsecureAuthInProduction` megjegyzéseket, és adja meg a módosításokat kell végrehajtani, amikor egy éles környezetben. A RESTful API-k éles környezetben való védelméről a [Biztonságos RESTful API című témakörben](secure-rest-api.md)olvashat.
+A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
 
-## <a name="validate-the-user-input"></a>A felhasználói bevitel ellenőrzése
+## <a name="validate-the-user-input"></a>Felhasználói bevitel ellenőrzése
 
-Ahhoz, hogy a regisztráció során megkaphassa a felhasználó hűségszámát, engedélyeznie kell, hogy a felhasználó beírja ezeket az adatokat a képernyőn. Adja hozzá a **hűségazonosító** kimeneti jogcímet a regisztrációs laphoz, és adja hozzá `OutputClaims` a meglévő regisztrációs technikai profil szakasz eleméhez. Adja meg a kimeneti jogcímek teljes listáját a jogcímek képernyőn megjelenő sorrendjének szabályozásához.  
+A felhasználó hűségi számának a regisztráció során való beszerzéséhez engedélyeznie kell a felhasználónak, hogy adja meg ezeket az adatfájlokat a képernyőn. Adja hozzá a **loyaltyId** kimeneti jogcímet a regisztrációs laphoz úgy, hogy hozzáadja a meglévő regisztrációs technikai profil szakaszának `OutputClaims` eleméhez. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn.  
 
-Adja hozzá az érvényesítési technikai profilhivatkozást a `REST-ValidateProfile`regisztrációs technikai profilhoz, amely a . Az új érvényesítési technikai profil hozzáadódik az `<ValidationTechnicalProfiles>` alapházirendben meghatározott gyűjtemény tetejéhez. Ez a viselkedés azt jelenti, hogy csak a sikeres érvényesítés után az Azure AD B2C továbblép a fiók létrehozásához a címtárban.   
+Adja hozzá az érvényesítési technikai profil referenciáját a regisztrációs technikai profilhoz, amely meghívja a `REST-ValidateProfile`-t. Az új érvényesítési technikai profil az alapházirendben definiált `<ValidationTechnicalProfiles>` gyűjtemény tetejéhez lesz hozzáadva. Ez azt jelenti, hogy csak a sikeres ellenőrzés után Azure AD B2C továbblép a fiók létrehozásához a címtárban.   
 
-1. Keresse meg a **ClaimsProviders** elemet. Új jogcímszolgáltató hozzáadása az alábbiak szerint:
+1. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új jogcím-szolgáltatót az alábbiak szerint:
 
     ```xml
     <ClaimsProvider>
@@ -190,9 +190,9 @@ Adja hozzá az érvényesítési technikai profilhivatkozást a `REST-ValidatePr
     </ClaimsProvider>
     ```
 
-## <a name="include-a-claim-in-the-token"></a>Jogcím felvétele a jogkivonatba 
+## <a name="include-a-claim-in-the-token"></a>Jogcím belefoglalása a jogkivonatba 
 
-Ha vissza szeretné küldeni a promóciós kód igényt a függő <em> `SocialAndLocalAccounts/` </em> entitás alkalmazás, adjon hozzá egy kimeneti jogcímet a fájlhoz. A kimeneti jogcím lehetővé teszi, hogy a jogcím sikeres felhasználói út után hozzáadódik a jogkivonathoz, és elküldésre kerül az alkalmazásnak. Módosítsa a technikai profil elem a függő `promoCode` entitás szakaszban hozzáadja a kimeneti jogcímként.
+Ha vissza szeretné állítani a promóciós kód jogcímet a függő entitás alkalmazásához, adjon hozzá egy kimeneti <em> `SocialAndLocalAccounts/` </em> jogcímet a fájlhoz. A kimeneti jogcímek lehetővé teszik, hogy a rendszer sikeres felhasználói út után hozzáadja a jogcímet a jogkivonathoz, és az alkalmazás megkapja az alkalmazást. Módosítsa a technikai profil elemet a függő entitás szakaszban a kimeneti Jogcím hozzáadásához `promoCode` .
  
 ```xml
 <RelyingParty>
@@ -215,19 +215,19 @@ Ha vissza szeretné küldeni a promóciós kód igényt a függő <em> `SocialAn
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>Az egyéni házirend tesztelése
+## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD-bérlőt tartalmazó könyvtárat.
-1. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
-1. Válassza **az Identitáskezelési keretrendszert**.
-1. Válassza **az Egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirendfájlokat: *TrustFrameworkExtensions.xml*és *SignUpOrSignin.xml*. 
-1. Jelölje ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, és kattintson a **Futtatás gombra.**
-1. Önnek képesnek kell lennie arra, hogy iratkozzon fel egy e-mail címet.
-1. Kattintson a **Regisztráció most** linkre.
-1. A **Hűségazonosító**mezőbe írja be a 1234-es beírást, és kattintson a **Folytatás**gombra. Ezen a ponton meg kell kapnia egy érvényesítési hibaüzenetet.
-1. Váltson másik értékre, és kattintson a **Folytatás gombra.**
-1. Az alkalmazásnak küldött jogkivonat `promoCode` tartalmazza a jogcímet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
+1. Válassza az **identitási élmény keretrendszert**.
+1. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkExtensions. XML*és *SignUpOrSignin. XML*. 
+1. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
+1. Regisztrálnia kell egy e-mail-cím használatával.
+1. Kattintson a **regisztrálás most** hivatkozásra.
+1. A **saját hűség-azonosítójában**írja be a 1234 értéket, majd kattintson a **Folytatás**gombra. Ezen a ponton egy érvényesítési hibaüzenet jelenik meg.
+1. Váltson át egy másik értékre, és kattintson a **Folytatás**gombra.
+1. Az alkalmazásnak visszaadott jogkivonat tartalmazza a `promoCode` jogcímet.
 
 ```json
 {
@@ -255,8 +255,8 @@ Ha vissza szeretné küldeni a promóciós kód igényt a függő <em> `SocialAn
 
 ## <a name="next-steps"></a>További lépések
 
-Az API-k védelméről az alábbi cikkekben olvashat:
+Az API-k biztonságossá tételéhez tekintse meg a következő cikkeket:
 
-- [Forgatókönyv: Integrálja a REST API-jogcímek cseréjét az Azure AD B2C felhasználói útba vezénylési lépésként](custom-policy-rest-api-claims-exchange.md)
-- [Biztosítsa a RESTful API-t](secure-rest-api.md)
-- [Hivatkozás: RESTful műszaki profil](restful-technical-profile.md)
+- [Bemutató: REST API jogcím-cserék integrálása a Azure AD B2C felhasználói úton az előkészítési lépésként](custom-policy-rest-api-claims-exchange.md)
+- [A REST API biztonságossá tétele](secure-rest-api.md)
+- [Hivatkozás: REST-technikai profil](restful-technical-profile.md)

@@ -1,6 +1,6 @@
 ---
-title: Érvényesítési különbségek támogatott fióktípusok szerint – Microsoft identity platform | Azure
-description: Ismerje meg a különböző támogatott fióktípusok különböző tulajdonságainak érvényesítési különbségeit, amikor regisztrálja az alkalmazást a Microsoft identitásplatformra.
+title: Az érvényesítési különbségek támogatott fióktípus alapján – Microsoft Identity platform | Azure
+description: Az alkalmazás Microsoft Identity platformmal való regisztrálásakor megismerheti a különböző támogatott fióktípus különböző tulajdonságainak érvényesítési különbségeit.
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
@@ -11,43 +11,43 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128860"
 ---
-# <a name="validation-differences-by-supported-account-types-signinaudience"></a>Érvényesítési különbségek támogatott fióktípusok szerint (signInAudience)
+# <a name="validation-differences-by-supported-account-types-signinaudience"></a>Érvényesítési eltérések támogatott fióktípus (signInAudience) alapján
 
-Amikor regisztrál egy alkalmazást a Microsoft identity platform a fejlesztők számára, meg kell adnia, hogy milyen fióktípusokat támogat az alkalmazás. Az alkalmazásobjektumban és a `signInAudience`jegyzékfájlban ez a tulajdonság a .
+Amikor a fejlesztők számára a Microsoft Identity platformmal regisztrál egy alkalmazást, a rendszer megkéri, hogy válassza ki az alkalmazás által támogatott fióktípus típusát. Az Application objektumban és a manifest-ben ez `signInAudience`a tulajdonság.
 
 A lehetőségek a következők:
 
-- *AzureADMyOrg:* Csak fiókok a szervezeti címtárban, ahol az alkalmazás regisztrálva van (egybérlős)
-- *AzureADMultipleOrgs*: Fiókok bármely szervezeti címtárban (több-bérlős)
-- *AzureAD ésPersonalMicrosoftAccount*: Bármely szervezeti címtárban (több-bérlős) és személyes Microsoft-fiókban (például Skype-on, Xbox- és Outlook.com) lévő fiókok
+- *AzureADMyOrg*: csak a szervezeti könyvtárban lévő azon fiókok, amelyeken az alkalmazás regisztrálva van (egybérlős)
+- *AzureADMultipleOrgs*: bármely szervezeti címtár fiókjai (több-bérlős)
+- *AzureADandPersonalMicrosoftAccount*: fiókok bármely szervezeti címtárban (több-bérlős) és személyes Microsoft-fiókokban (például Skype, Xbox és Outlook.com)
 
-Regisztrált alkalmazások esetén a Támogatott fióktípusok értékét az alkalmazás **Hitelesítés** szakaszában találja. A szálláshely alatt is `signInAudience` megtalálható a **jegyzékben.**
+A regisztrált alkalmazások esetében a támogatott fióktípus értékét az alkalmazás **hitelesítés** szakaszában találja. A `signInAudience` **jegyzékfájlban**található tulajdonság alatt is megtalálhatja.
 
-A tulajdonsághoz kiválasztott érték hatással van az alkalmazásobjektum más tulajdonságaira is. Ennek eredményeképpen, ha módosítja ezt a tulajdonságot, előfordulhat, hogy először más tulajdonságokat kell módosítania.
+Az ehhez a tulajdonsághoz kiválasztott érték hatással van az alkalmazás egyéb tulajdonságaira. Ennek eredményeképpen, ha módosítja ezt a tulajdonságot, akkor előfordulhat, hogy először módosítania kell a többi tulajdonságot.
 
-Az alábbi táblázatban a különböző támogatott fióktípusok különböző tulajdonságainak ellenőrzési különbségeit.
+Tekintse meg a következő táblázatot a különböző támogatott fióktípus különböző tulajdonságainak érvényesítési eltéréseit illetően.
 
 | Tulajdonság | `AzureADMyOrg` | `AzureADMultipleOrgs` | `AzureADandPersonalMicrosoftAccount` és `PersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
-| Alkalmazásazonosító URI`identifierURIs`( )  | Egyedinek kell lennie a bérlőben <br><br> urn:// rendszerek támogatottak <br><br> A helyettesítő karakterek nem támogatottak <br><br> A lekérdezési karakterláncok és töredékek támogatottak <br><br> Legfeljebb 255 karakter hosszúsága <br><br> Nincs korlátozás* az azonosítóuri-k számára  | Globálisan egyedinek kell lennie <br><br> urn:// rendszerek támogatottak <br><br> A helyettesítő karakterek nem támogatottak <br><br> A lekérdezési karakterláncok és töredékek támogatottak <br><br> Legfeljebb 255 karakter hosszúsága <br><br> Nincs korlátozás* az azonosítóuri-k számára | Globálisan egyedinek kell lennie <br><br> urn:// rendszerek nem támogatottak <br><br> A helyettesítő karakterek, töredékek és lekérdezési karakterláncok nem támogatottak <br><br> Legfeljebb 120 karakter hosszúsága <br><br> Legfeljebb 50 azonosítóURI |
-| Tanúsítványok`keyCredentials`( ) | Szimmetrikus aláíró kulcs | Szimmetrikus aláíró kulcs | Titkosítási és aszimmetrikus aláíró kulcs | 
-| Ügyféltitkok`passwordCredentials`( ) | Nincs korlátozás* | Nincs korlátozás* | Ha a liveSDK engedélyezve van: Legfeljebb 2 ügyféltitok | 
-| Irányított URI-k`replyURLs`( ) | További információ: [Az URI/reply URL-korlátozások átirányítása és](reply-url.md) korlátozásai. | | | 
-| API-engedélyek`requiredResourceAccess`( ) | Nincs korlátozás* | Nincs korlátozás* | Engedélyezett erőforrásonként legfeljebb 30 engedély (pl. Microsoft Graph) | 
-| Az API által meghatározott`oauth2Permissions`hatókörök ( ) | A hatókör maximális hossza 120 karakter <br><br> Nincs korlátozva* a megadott hatókörök számára | A hatókör maximális hossza 120 karakter <br><br> Nincs korlátozva* a megadott hatókörök számára |  A hatókör maximális hossza 40 karakter <br><br> Legfeljebb 100 definiált hatókör | 
-| Engedélyezett ügyfélalkalmazások`preautorizedApplications`( ) | Nincs korlátozás* | Nincs korlátozás* | Összesen maximum 500 <br><br> Legfeljebb 100 ügyfélalkalmazás van definiálva <br><br> Ügyfelenként legfeljebb 30 hatókör | 
-| appRoles alkalmazás | Támogatott <br> Nincs korlátozás* | Támogatott <br> Nincs korlátozás* | Nem támogatott | 
-| Kijelentkezés URL-címe | http://localhostengedélyezett <br><br> Legfeljebb 255 karakter hosszúsága | http://localhostengedélyezett <br><br> Legfeljebb 255 karakter hosszúsága | <br><br> https://localhostmegengedett, http://localhost sikertelen az MSA-ban <br><br> Legfeljebb 255 karakter hosszúsága <br><br> Http-séma nem engedélyezett <br><br> A helyettesítő karakterek nem támogatottak | 
+| Alkalmazás-azonosító URI`identifierURIs`-ja ()  | Egyedinek kell lennie a bérlőben <br><br> a urn://-sémák támogatottak <br><br> A helyettesítő karakterek használata nem támogatott <br><br> A lekérdezési karakterláncok és töredékek támogatottak <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> Nincs korlát * a identifierURIs száma alapján  | Globálisan egyedinek kell lennie <br><br> a urn://-sémák támogatottak <br><br> A helyettesítő karakterek használata nem támogatott <br><br> A lekérdezési karakterláncok és töredékek támogatottak <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> Nincs korlát * a identifierURIs száma alapján | Globálisan egyedinek kell lennie <br><br> a urn://-sémák nem támogatottak <br><br> Helyettesítő karakterek, töredékek és lekérdezési karakterláncok nem támogatottak <br><br> Legfeljebb 120 karakter hosszú lehet <br><br> Legfeljebb 50 identifierURIs |
+| Tanúsítványok (`keyCredentials`) | Szimmetrikus aláíró kulcs | Szimmetrikus aláíró kulcs | Titkosítási és aszimmetrikus aláírási kulcs | 
+| Ügyfél-titkok`passwordCredentials`() | Nincs korlát * | Nincs korlát * | Ha a liveSDK engedélyezve van: legfeljebb 2 ügyfél titka | 
+| Átirányítási URI`replyURLs`-k () | További információért lásd: [átirányítási URI/válasz URL-címekre vonatkozó korlátozások és korlátozások](reply-url.md) . | | | 
+| API-engedélyek`requiredResourceAccess`() | Nincs korlát * | Nincs korlát * | Legfeljebb 30 engedély engedélyezett erőforráson (például Microsoft Graph) | 
+| Az API által definiált hatókörök`oauth2Permissions`() | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán |  A hatókör nevének maximális hossza 40 karakter <br><br> Legfeljebb 100 hatókör definiálva | 
+| Felhatalmazott ügyfélalkalmazások`preautorizedApplications`() | Nincs korlát * | Nincs korlát * | Maximális 500 összesen <br><br> Legfeljebb 100 ügyfél-alkalmazás definiálva <br><br> Ügyfél által definiált maximális 30 hatókör | 
+| appRoles | Támogatott <br> Nincs korlát * | Támogatott <br> Nincs korlát * | Nem támogatott | 
+| Kijelentkezési URL-cím | http://localhostengedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | http://localhostengedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | <br><br> https://localhostengedélyezett, http://localhost sikertelen a MSA <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> HTTP-séma használata nem engedélyezett <br><br> A helyettesítő karakterek használata nem támogatott | 
 
-*Az alkalmazásobjektum összes gyűjteménytulajdonságában körülbelül 1000 elem van korlátozva
+* Az alkalmazás-objektum összes gyűjteményi tulajdonságában a 1000-es elemek globális korlátja
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [az alkalmazásregisztrációról](app-objects-and-service-principals.md)
-- További információ az [alkalmazásjegyzékről](reference-app-manifest.md)
+- Tudnivalók az [alkalmazások regisztrálásáról](app-objects-and-service-principals.md)
+- Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése

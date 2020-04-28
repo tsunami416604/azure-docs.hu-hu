@@ -1,6 +1,6 @@
 ---
-title: Az Azure többtényezős hitelesítésfelhasználói beállításainak kezelése – Azure Active Directory
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directory felhasználói beállításait az Azure többtényezős hitelesítéshez
+title: Az Azure Multi-Factor Authentication-Azure Active Directory felhasználói beállításainak kezelése
+description: Ismerje meg, hogyan konfigurálhatja Azure Active Directory Azure-beli felhasználói beállításait Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,44 +12,44 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309759"
 ---
-# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Az Azure többtényezős hitelesítéséhez szükséges felhasználói beállítások kezelése
+# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication felhasználói beállításainak kezelése
 
-Az Azure többtényezős hitelesítés felhasználóinak kezeléséhez megkövetelheti a felhasználóktól, hogy alaphelyzetbe állítsák jelszavukat, újra regisztráljanak az MFA-ra, vagy visszavonják a meglévő Többtényezős hitelesítési munkameneteket. Az alkalmazásjelszavakat definiáló felhasználók számára is törölheti ezeket a jelszavakat, így az örökölt hitelesítés sikertelen lesz ezekben az alkalmazásokban. Ezekre a műveletekre akkor lehet szükség, ha segítséget kell nyújtania egy felhasználónak, vagy vissza szeretné állítani a biztonsági állapotukat.
+Az Azure Multi-Factor Authentication felhasználóinak kezeléséhez megkövetelheti a felhasználóktól, hogy alaphelyzetbe állítsa a jelszavát, regisztrálja újra az MFA-t, vagy vonja vissza a meglévő MFA-munkameneteket. Azon felhasználók esetében, akik definiált alkalmazási jelszavakkal rendelkeznek, dönthet úgy is, hogy törli ezeket a jelszavakat, így a régi hitelesítés sikertelen lesz az alkalmazásokban. Ezek a műveletek akkor lehetnek szükségesek, ha segítséget kell nyújtania egy felhasználónak, vagy szeretné visszaállítani a biztonsági állapotát.
 
 ## <a name="manage-user-authentication-options"></a>Felhasználói hitelesítési beállítások kezelése
 
-Ha a *hitelesítési rendszergazda szerepkört* kapta, megkövetelheti a felhasználóktól, hogy alaphelyzetbe állítsák jelszavukat, újra regisztráljanak az MFA-ra, vagy visszavonják a meglévő Többfa-munkameneteket a felhasználói objektumból. A felhasználói beállítások kezeléséhez hajtsa végre az alábbi lépéseket:
+Ha a *hitelesítési rendszergazda* szerepkört rendelte hozzá, megkövetelheti a felhasználóktól a jelszavuk visszaállítását, az MFA regisztrálását, illetve a meglévő MFA-munkamenetek visszavonását a felhasználói objektumból. A felhasználói beállítások kezeléséhez végezze el a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldalon válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
-1. Válassza ki azt a felhasználót, akien műveletet kíván végrehajtani, és válassza a **Hitelesítési módszerek**lehetőséget. Az ablak tetején válasszon az alábbi lehetőségek közül a felhasználó számára:
-   - **A jelszó alaphelyzetbe állítása** visszaállítja a felhasználó jelszavát, és hozzárendel egy ideiglenes jelszót, amelyet a következő bejelentkezéskor módosítani kell.
-   - **Az MFA újbóli regisztrálásának megkövetelése** leteszi, hogy amikor a felhasználó legközelebb bejelentkezik, a rendszer új MFA-hitelesítési módszert kell beállítania.
-   - **Az MFA-munkamenetek visszavonása** törli a felhasználó által megjegyzett MFA-munkameneteket, és megköveteli tőlük, hogy az eszközön lévő házirend által igényelt következő alkalommal hajtsák végre az MFA-t.
+1. A bal oldalon válassza **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Válassza ki azt a felhasználót, akinek műveletet kíván végrehajtani, és válassza a **hitelesítési módszerek**lehetőséget. Az ablak tetején válassza a következő lehetőségek egyikét a felhasználó számára:
+   - A **jelszó alaphelyzetbe állítása** visszaállítja a felhasználó jelszavát, és egy ideiglenes jelszót rendel hozzá, amelyet a következő bejelentkezéskor módosítani kell.
+   - Az **MFA ismételt regisztrálásának megkövetelése** lehetővé teszi, hogy amikor a felhasználó legközelebb bejelentkezik, egy új MFA hitelesítési módszer beállítására van szükség.
+   - Az **MFA-munkamenetek visszavonása** törli a felhasználó által megjegyzett MFA-munkameneteket, és azt igényli, hogy az MFA-t a következő alkalommal kell végrehajtania, amikor a szabályzat az eszközön szükséges.
 
-   ![Hitelesítési módszerek kezelése az Azure Portalról](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   ![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-## <a name="delete-users-existing-app-passwords"></a>Meglévő alkalmazásjelszavak törlése a felhasználókszámára
+## <a name="delete-users-existing-app-passwords"></a>Meglévő alkalmazások jelszavainak törlése
 
-Szükség esetén törölheti a felhasználó által létrehozott összes alkalmazásjelszót. Az alkalmazásjelszavakhoz társított nem böngészős alkalmazások mindaddig nem működnek, amíg létre nem jön egy új alkalmazásjelszó. A művelet végrehajtásához *globális rendszergazdai* engedélyek szükségesek.
+Ha szükséges, törölheti az összes olyan alkalmazás jelszavát, amelyet a felhasználó hozott létre. Az alkalmazás jelszavával társított nem böngészőbeli alkalmazások nem működnek, amíg új alkalmazás jelszava nem jön létre. A művelet végrehajtásához *globális rendszergazdai* jogosultságok szükségesek.
 
-Felhasználó alkalmazásjeleinek törléséhez hajtsa végre az alábbi lépéseket:
+A felhasználók alkalmazási jelszavának törléséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldalon válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
-1. Válassza a **Többtényezős hitelesítés lehetőséget.** Előfordulhat, hogy a menüpont megtekintéséhez jobbra kell görgetnie. Válassza ki az alábbi példaképernyőképet az Azure Portal teljes ablakának és menühelyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Válassza a többtényezős hitelesítést az Azure AD Felhasználók ablakából")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-1. Jelölje be a kezelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A gyorslépési lehetőségek listája a jobb oldalon jelenik meg.
-1. Válassza **a Felhasználói beállítások kezelése**lehetőséget, majd jelölje be a Kijelölt felhasználók által létrehozott összes meglévő alkalmazásjelszó törlése jelölőnégyzetet, **ahogy**az a következő példában is látható: ![Az összes meglévő alkalmazásjelszó törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-1. Válassza a **Mentés**lehetőséget, majd zárja be a **bezárását.**
+1. A bal oldali oldalon válassza **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Válassza a **multi-Factor Authentication**lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
+1. Válassza a **felhasználói beállítások kezelése**lehetőséget, majd jelölje be a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése**jelölőnégyzetet az alábbi példában látható módon ![: az összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Válassza a **Mentés**, majd a **Bezárás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk segített az egyes felhasználói beállítások konfigurálásához. Az Azure többtényezős hitelesítési szolgáltatásbeállításainak konfigurálása az [Azure többtényezős hitelesítési beállításainak konfigurálása című](howto-mfa-mfasettings.md) témakörben olvashat.
+Ez a cikk segített az egyes felhasználói beállítások konfigurálásában. Az Azure Multi-Factor Authentication szolgáltatás beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)
 
-Ha a felhasználóknak segítségre van szükségük, olvassa el az [Azure többtényezős hitelesítéshez szükséges felhasználói útmutatót.](../user-help/multi-factor-authentication-end-user.md)
+Ha a felhasználóknak segítségre van szüksége, tekintse meg az [Azure multi-Factor Authentication felhasználói útmutatóját](../user-help/multi-factor-authentication-end-user.md).

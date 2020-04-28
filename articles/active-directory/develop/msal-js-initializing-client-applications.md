@@ -1,7 +1,7 @@
 ---
-title: MSAL.js ügyfélalkalmazások inicializálása | Azure
+title: MSAL. js-ügyfélalkalmazások inicializálása | Azure
 titleSuffix: Microsoft identity platform
-description: Információ az ügyfélalkalmazások inicializálásáról a Microsoft Authentication Library for JavaScript (MSAL.js) használatával.
+description: Ismerkedjen meg az ügyfélalkalmazások inicializálásával a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010154"
 ---
-# <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása az MSAL.js használatával
-Ez a cikk a Microsoft Authentication Library for JavaScript (MSAL.js) inicializálását ismerteti egy felhasználói ügynökalkalmazás példányával. A user-agent alkalmazás a nyilvános ügyfélalkalmazás egy olyan formája, amelyben az ügyfélkód végrehajtása egy felhasználói ügynökben, például egy webböngészőben történik. Ezek az ügyfelek nem tárolnak titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Ha többet szeretne megtudni az ügyfélalkalmazás típusairól és az alkalmazás konfigurációs beállításairól, olvassa el az [áttekintést.](msal-client-applications.md)
+# <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása a MSAL. js használatával
+Ez a cikk a Microsoft hitelesítési függvénytárának a JavaScripthez (MSAL. js) való inicializálását ismerteti egy felhasználói ügynök alkalmazás egy példányával. A User-Agent alkalmazás a nyilvános ügyfélalkalmazás olyan formája, amelyben az ügyfél kódja egy felhasználói ügynökön, például egy böngészőben fut. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Egy alkalmazás inicializálása előtt először regisztrálnia kell [azt az Azure Portalon,](scenario-spa-app-registration.md) hogy az alkalmazás integrálható legyen a Microsoft identitásplatformmal. A regisztráció után a következő információkra lehet szüksége (amelyek az Azure Portalon találhatók):
+Az alkalmazás inicializálása előtt először [regisztrálnia kell a Azure Portal](scenario-spa-app-registration.md) , hogy az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
-- Az ügyfélazonosító (az alkalmazás GUID azonosítóját képviselő karakterlánc)
-- Az identitásszolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési közönsége. Ezt a két paramétert együttesen hatóságnak nevezzük.
-- A bérlői azonosító, ha egy üzletági alkalmazást kizárólag a szervezet (más néven egybérlős alkalmazás) számára ír.
-- A webalkalmazások esetében be kell állítania az átirányítási uri-t is, ahol az identitásszolgáltató visszatér az alkalmazáshoz a biztonsági jogkivonatokkal.
+- Az ügyfél-azonosító (az alkalmazás GUID azonosítóját jelölő sztring)
+- Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
+- A bérlő azonosítója, ha csak az Ön szervezete számára (egy egybérlős alkalmazás is megnevezett) üzletági alkalmazást ír.
+- A webalkalmazások esetében meg kell adnia azt a redirectUri is, amelyben az identitás-szolgáltató visszatér az alkalmazáshoz a biztonsági jogkivonatokkal.
 
 ## <a name="initializing-applications"></a>Alkalmazások inicializálása
 
-Az MSAL.js az alábbiak szerint használható egy egyszerű JavaScript/Typescript alkalmazásban. A MSAL hitelesítési környezet inicializálása egy konfigurációs objektummal történő példányosítással. `UserAgentApplication` A MSAL.js inicializálásához szükséges minimális konfiguráció az alkalmazás ügyfélazonosítója, amelyet az alkalmazásregisztrációs portálról kell beszereznie.
+A MSAL. js a következőképpen használható egy egyszerű JavaScript/írógéppel-alkalmazásban. Inicializálja a MSAL hitelesítési környezetét egy `UserAgentApplication` konfigurációs objektummal való létrehozással. A MSAL. js inicializálásához szükséges minimális konfiguráció az alkalmazás clientID, amelyet az alkalmazás regisztrációs portálján kell megszereznie.
 
-Az Átirányítási folyamatokkal`loginRedirect` ( `acquireTokenRedirect`és ) az MSAL.js 1.2.x vagy korábbi fájlokkal rendelkező hitelesítési `handleRedirectCallback()` módszerek esetében explicit módon kell regisztrálnia egy visszahívást a sikeres vagy a módszeren keresztüli hiba érdekében. Erre azért van szükség, mert az átirányítási folyamatok nem adnak vissza ígéreteket, mint az előugró felületű módszerek. Ez lett választható MSAL.js változat 1.3.0.
+Az átirányítási folyamatokkal (`loginRedirect` és `acquireTokenRedirect`) rendelkező hitelesítési módszerek esetében a MSAL. js 1.2. x vagy korábbi verziókban explicit módon regisztrálnia kell egy visszahívást a sikerhez vagy a hibához a metóduson keresztül. `handleRedirectCallback()` Erre azért van szükség, mert az átirányítási folyamatok nem adnak vissza ígéreteket az előugró felülettel rendelkező metódusként. Ez a MSAL. js 1.3.0 verziójában nem kötelező.
 
 ```javascript
 // Configuration object constructed
@@ -56,11 +56,11 @@ function authCallback(error, response) {
 myMSALObj.handleRedirectCallback(authCallback);
 ```
 
-Az MSAL.js célja, hogy egyetlen példánysal és konfigurációval `UserAgentApplication` rendelkezik, hogy egyetlen hitelesítési környezetet képviseljen. Több példány használata nem ajánlott, mivel ütköző gyorsítótár-bejegyzéseket és viselkedést okoznak a böngészőben.
+A `UserAgentApplication` MSAL. js úgy lett kialakítva, hogy egyetlen példánnyal és konfigurációval rendelkezzen egyetlen hitelesítési környezettel. Több példány nem ajánlott, mert ütköző gyorsítótár-bejegyzéseket és viselkedést okoznak a böngészőben.
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Az MSAL.js program az alábbi konfigurációs objektummal rendelkezik, amely `UserAgentApplication`konfigurálható beállításokat biztosít a példány létrehozásához.
+A MSAL. js egy olyan konfigurációs objektummal rendelkezik, amely a példányának létrehozásához rendelkezésre álló konfigurálható beállítások csoportosítását teszi lehetővé `UserAgentApplication`.
 
 ```javascript
 type storage = "localStorage" | "sessionStorage";
@@ -105,40 +105,40 @@ export type Configuration = {
 };
 ```
 
-Az alábbiakban a konfigurációs objektumban jelenleg támogatott konfigurálható beállítások teljes készlete látható:
+Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálható beállítások teljes készlete:
 
-- **clientID**: Kötelező. Az alkalmazás ügyfélazonosítója, ezt az alkalmazásregisztrációs portálról kell beszereznie.
+- **clientID**: kötelező. Az alkalmazás clientID az alkalmazás regisztrációs portálján kell megszereznie.
 
-- **hatóság**: Nem kötelező. Olyan URL-cím, amely egy olyan könyvtárat jelez, amelytől az MSAL jogkivonatokat kérhet. Az alapértelmezett `https://login.microsoftonline.com/common`érték a következő: .
-    * Az Azure AD-ben az&lt;űrlap&gt;/&lt;&gt;https:// &lt;példány&gt; közönsége, ahol példány az `https://login.microsoftonline.com`identitásszolgáltató tartomány (például ) és &lt;a közönség&gt; egy azonosító, amely a bejelentkezési közönséget jelöli. Ez a következő értékek lehetnek:
-        * `https://login.microsoftonline.com/<tenant>`- a bérlő a bérlőhöz társított tartomány, például contoso.onmicrosoft.com, vagy a címtár `TenantID` tulajdonságát képviselő GUID, amely csak egy adott szervezet felhasználóinak bejelentkezéséhez használatos.
-        * `https://login.microsoftonline.com/common`- Munkahelyi és iskolai fiókkal vagy Microsoft-személyes fiókkal rendelkező felhasználók bejelentkezéséhez használható.
-        * `https://login.microsoftonline.com/organizations/`- Munkahelyi és iskolai fiókkal rendelkező felhasználók jelentkezéséhez.
-        * `https://login.microsoftonline.com/consumers/`- Használt bejelentkezni a felhasználók csak a személyes Microsoft-fiók (élő).
-    * Az Azure AD B2C,ez `https://<instance>/tfp/<tenant>/<policyName>/`az űrlap, ahol példányaz Azure AD B2C tartomány, azaz {your-tenant-name}.b2clogin.com, bérlő az Azure AD B2C bérlő neve, azaz {your-tenant-name}.onmicrosoft.com, policyName a neve a B2C házirend et alkalmazni.
+- **szolgáltató**: nem kötelező. Egy olyan könyvtárat jelző URL-cím, amelyből a MSAL jogkivonatokat kérhet. Az alapértelmezett érték: `https://login.microsoftonline.com/common`.
+    * Az Azure ad-ben&lt;az https://-példány&gt;/&lt;célközönsége&gt;, ahol &lt;a példány&gt; az identitás-szolgáltató tartománya (például `https://login.microsoftonline.com`), a &lt;célközönség&gt; pedig a bejelentkezési célközönséget jelképező azonosító. Ez a következő értékeket veheti fel:
+        * `https://login.microsoftonline.com/<tenant>`– a bérlő a bérlőhöz társított tartomány, például a contoso.onmicrosoft.com, vagy a címtár azon `TenantID` tulajdonságát JELKÉPEZő GUID, amely kizárólag egy adott szervezet felhasználói számára való bejelentkezéshez használatos.
+        * `https://login.microsoftonline.com/common`-Munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal való bejelentkezéshez használatos.
+        * `https://login.microsoftonline.com/organizations/`-A felhasználók munkahelyi és iskolai fiókkal való bejelentkezéséhez használatos.
+        * `https://login.microsoftonline.com/consumers/`– Csak a személyes Microsoft-fiók (élő) felhasználókkal való bejelentkezéshez használatos.
+    * Azure AD B2C, `https://<instance>/tfp/<tenant>/<policyName>/`a példány a Azure ad B2C tartomány, azaz a (z) {Your-bérlő-Name}. b2clogin. com, bérlő az Azure ad B2C bérlő neve, azaz {a-bérlő-Name}. onmicrosoft. com, policyName az alkalmazandó B2C-szabályzat neve.
 
 
-- **validateAuthority**: Nem kötelező.  Ellenőrizze a tokenek kibocsátóját. Az alapértelmezett szint a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és házirendenként eltérő lehet, `false`a hatóság-érvényesítés nem fog működni, és a értékre kell állítani.
+- **validateAuthority**: nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett szint a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és be `false`kell állítani a következőt:.
 
-- **redirectUri**: Nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás hitelesítési válaszokat küldhet és fogadhat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével. Alapértelmezés szerint `window.location.href`a.
+- **redirectUri**: nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével. Alapértelmezett értéke `window.location.href`.
 
-- **postLogoutRedirectUri**: Nem kötelező.  A kijelentkezés `postLogoutRedirectUri` után átirányítja a felhasználót. Az alapértelmezett `redirectUri`érték a .
+- **postLogoutRedirectUri**: nem kötelező.  A kijelentkezés `postLogoutRedirectUri` után átirányítja a felhasználót. Az alapértelmezett érték `redirectUri`:.
 
-- **navigateToLoginRequestUrl**: Nem kötelező. A bejelentkezés után ki lehet kapcsolni az alapértelmezett navigációt a kezdőlapról. Alapértelmezett érték: true (igaz). Ez csak átirányítási folyamatokhoz használatos.
+- **navigateToLoginRequestUrl**: nem kötelező. Kikapcsolhatja az alapértelmezett navigációt a Start lapon a bejelentkezés után. Alapértelmezett érték: true (igaz). Ez csak az átirányítási folyamatok esetében használatos.
 
-- **cacheLocation**: Nem kötelező.  A böngésző tárhelyét vagy `localStorage` a ikonra állítja. `sessionStorage` A mező alapértelmezett értéke: `sessionStorage`.
+- **cacheLocation**: nem kötelező.  A böngésző tárterületének beállítása `localStorage` a `sessionStorage`vagy a értékre. A mező alapértelmezett értéke: `sessionStorage`.
 
-- **storeAuthStateInCookie**: Nem kötelező.  Ez a jelző az MSAL.js v0.2.2-ben került bevezetésre a Microsoft Internet Explorer és a Microsoft Edge [hitelesítési ciklusával kapcsolatos problémák](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) javításaként. Engedélyezze, `storeAuthStateInCookie` hogy a jelző igaz legyen, hogy kihasználhassa ezt a javítást. Ha ez engedélyezve van, az MSAL.js tárolja a hitelesítő kérelem állapotát, amely a böngésző cookie-iban az auth folyamatok érvényesítéséhez szükséges. Alapértelmezés szerint ez a `false`jelző a értékre van állítva.
+- **storeAuthStateInCookie**: nem kötelező.  Ez a jelző a MSAL. js v 0.2.2-ben jelent meg, a Microsoft Internet Explorer és a Microsoft Edge [hitelesítési ciklusával kapcsolatos problémák](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) elhárítása érdekében. A javítás kihasználása érdekében engedélyezze a jelzőt `storeAuthStateInCookie` True (igaz) értékre. Ha ez a beállítás engedélyezve van, a MSAL. js tárolja a hitelesítő kérések állapotát a böngésző cookie-jai hitelesítési folyamatainak érvényesítéséhez. Alapértelmezés szerint ez a jelző a következőre van beállítva: `false`.
 
-- **logger**: Nem kötelező.  A naplózó objektum egy visszahívási példány, amely a fejlesztő által biztosítható a naplók felhasználásához és közzétételéhez egyéni módon. Az áthaladó naplózó objektummal kapcsolatos részletekért lásd [a naplózást az msal.js fájlban.](msal-logging.md)
+- **naplózó**: nem kötelező.  Egy visszahívási példánnyal rendelkező naplózó objektum, amelyet a fejlesztő biztosíthat, és egyéni módon tehet közzé naplókat. A Logger objektum átadásával kapcsolatos részletekért tekintse meg a [msal. js naplózása](msal-logging.md)című témakört.
 
-- **loadFrameTimeout:** Nem kötelező.  Az Azure AD-ből érkező jogkivonat-megújítási válasz előtti inaktivitás ezredmásodperces számát időtúltöltésnek kell tekinteni. Az alapértelmezett érték 6 másodperc.
+- **loadFrameTimeout**: nem kötelező.  Az Azure AD-beli jogkivonat-megújítási válasz előtt ennyi ezredmásodperc inaktivitást kell figyelembe venni. Az alapértelmezett érték 6 másodperc.
 
-- **tokenRenewalOffsetSeconds**: Nem kötelező. A token megújításához szükséges eltolási ablakot a lejárat előtt beállító ezredmásodpercek száma. Az alapértelmezett érték 300 ezredmásodperc.
+- **tokenRenewalOffsetSeconds**: nem kötelező. Azon ezredmásodpercek száma, amelyek a token lejárata előtti megújításához szükséges eltolási időszakot határozzák meg. Az alapértelmezett érték 300 ezredmásodperc.
 
-- **navigateFrameWait**: Nem kötelező. Az ezredmásodpercek száma, amely beállítja a várakozási időt, mielőtt a rejtett iframe-ek elnavigálnának a célhelyükre. Az alapértelmezett érték 500 ezredmásodperc.
+- **navigateFrameWait**: nem kötelező. Azon ezredmásodpercek száma, amely a várakozási időt állítja be a rejtett iframe-elemek célhelyre való navigálása előtt. Az alapértelmezett érték 500 ezredmásodperc.
 
-Ezek csak az MSAL Angular burkolókönyvtárból öröklődhetnek:
-- **unprotectedResources**: Nem kötelező.  Nem védett erőforrásokat tartalmazó URI-k tömbje. Az MSAL nem csatol jogkivonatot az uri-val rendelkező kimenő kérelmekhez. Alapértelmezés szerint `null`a.
+Ezek csak a MSAL szögletes burkoló könyvtárából érvényesek.
+- **unprotectedResources**: nem kötelező.  Nem védett erőforrásokhoz tartozó URI-k tömbje. A MSAL nem csatol jogkivonatot az ezen URI azonosítóval rendelkező kimenő kérelmekhez. Alapértelmezett értéke `null`.
 
-- **protectedResourceMap**: Nem kötelező.  Ez az erőforrások leképezése az MSAL által használt hatókörökhez a webes API-hívások hozzáférési jogkivonatainak automatikus csatolásához. Az erőforráshoz egyetlen hozzáférési jogkivonat kerül beszerzésre. Így egy adott erőforrás elérési útját ahttps://graph.microsoft.com/v1.0/mekövetkezőképpen képezheti le: {" ", ["user.read"]]}, vagy az erőforrás alkalmazás URL-címe: {"https://graph.microsoft.com/", ["user.read", "mail.send"]}. Ez cors hívások esetén szükséges. Alapértelmezés szerint `null`a.
+- **protectedResourceMap**: nem kötelező.  Ez a MSAL által a hozzáférési jogkivonatok webes API-hívásokban való automatikus csatolásához használt hatókörökre való leképezése. A rendszer egyetlen hozzáférési jogkivonatot kapott az erőforráshoz. Így a következőképpen képezhető le egy adott erőforrás elérési útja: {https://graph.microsoft.com/v1.0/me"", ["user. Read"]} vagy az erőforrás alkalmazás URL-címe a következőként:https://graph.microsoft.com/{"", ["user. Read", "mail. Send"]}. Ez a CORS-hívásokhoz szükséges. Alapértelmezett értéke `null`.

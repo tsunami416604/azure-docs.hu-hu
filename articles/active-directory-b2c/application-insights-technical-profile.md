@@ -1,7 +1,7 @@
 ---
-title: Az Application Insights technikai profiljának definiálása egyéni szabályzatban
+title: Application Insights technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
-description: Az Application Insights technikai profiljának definiálása egyéni szabályzatban az Azure Active Directory B2C-ben.
+description: Application Insights technikai profilt definiálhat egy egyéni házirendben Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80108574"
 ---
-# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Az Application Insights technikai profiljának definiálása egy Azure AD B2C egyéni szabályzatban
+# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Application Insights műszaki profil definiálása egy Azure AD B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory B2C (Azure AD B2C) támogatja az eseményadatok közvetlen küldését az [Application Insightsnak](../azure-monitor/app/app-insights-overview.md) az Azure AD B2C-nek biztosított instrumentációs kulcs használatával.  Az Application Insights technikai profiljával részletes és személyre szabott eseménynaplókat kaphat a felhasználói utakhoz:
+A Azure Active Directory B2C (Azure AD B2C) a Azure AD B2C számára biztosított rendszerállapot-kulcs használatával támogatja az esemény-adatok közvetlenül a [Application Insightsre](../azure-monitor/app/app-insights-overview.md) való küldését.  Application Insights technikai profillal részletes és testreszabott eseménynaplókat kaphat a felhasználói számára:
 
-* Betekintést nyerhet a felhasználók viselkedéséről.
-* Saját szabályzatok elhárítása fejlesztés vagy éles környezetben.
-* A teljesítmény mérése.
-* Értesítéseket hozhat létre az Application Insightsból.
+* A felhasználói viselkedés megállapítása.
+* Saját házirendek fejlesztése a fejlesztésben vagy éles környezetben.
+* Teljesítmény mérése.
+* Értesítések létrehozása Application Insightsból.
 
 
 ## <a name="protocol"></a>Protocol (Protokoll)
 
-A **Protokoll** elem **Name** attribútumát a `Proprietary`parancsra kell állítani. A **kezelő** attribútumának tartalmaznia kell az Azure AD B2C által az Application Insightshoz használt protokollkezelő szerelvény teljesen minősített nevét:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+A **protokoll** elem `Proprietary` **Name** attribútumát be kell állítani. A **kezelő** attribútumnak tartalmaznia kell a Azure AD B2C által Application Insights számára használt protokollkezelő-szerelvény teljes nevét:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-A következő példa bemutatja a közös Application Insights technikai profil. Az Application Insights egyéb technikai profiljai közé tartozik az AzureInsights-Common a konfiguráció jának kihasználásához.  
+Az alábbi példa a közös Application Insights műszaki profilt mutatja be. Az egyéb Application Insights technikai profilok közé tartozik a AzureInsights, hogy kihasználja a konfigurációját.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">
@@ -45,7 +45,7 @@ A következő példa bemutatja a közös Application Insights technikai profil. 
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-Az **InputClaims** elem az Application Insightsnak küldandó jogcímek listáját tartalmazza. A jogcím nevét is leképezheti egy olyan névre, amelyet az Application Insightsban szeretne megjeleníteni. A következő példa bemutatja, hogyan küldhet telemetriák at Application Insights. Az esemény tulajdonságai a szintaxison keresztül kerülnek hozzáadásra, `{property:NAME}`ahol a NAME tulajdonság hozzáadódik az eseményhez. A DefaultValue lehet statikus érték vagy a támogatott [jogcímfeloldók](claim-resolver-overview.md)egyike által feloldott érték.
+A **szabályzattípushoz** elem a Application Insights küldendő jogcímek listáját tartalmazza. A jogcím nevét egy olyan névre is leképezheti, amelyet szeretne Application Insights megjeleníteni. Az alábbi példa bemutatja, hogyan küldhet telemetriáiról a Application Insightsba. Egy esemény tulajdonságainak hozzáadása a szintaxissal `{property:NAME}`történik, ahol a Name tulajdonság az eseményhez kerül. A DefaultValue lehet statikus érték vagy olyan érték, amelyet a rendszer a támogatott [jogcím](claim-resolver-overview.md)-feloldások egyikével feloldott.
 
 ```XML
 <InputClaims>
@@ -56,31 +56,31 @@ Az **InputClaims** elem az Application Insightsnak küldandó jogcímek listáj�
 </InputClaims>
 ```
 
-Az **InputClaimsTransformations** elem tartalmazhat **InputClaimsTransformation** elemek gyűjteményét, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Application Insights nak való küldés előtt.
+A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak, mielőtt elküldené őket a Application Insightsba.
 
-## <a name="persist-claims"></a>Követelések megőrzése
+## <a name="persist-claims"></a>Jogcímek fenntartása
 
-A PersistedClaims elem nem használatos.
+A PersistedClaims elem nincs használatban.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A OutputClaims és a OutputClaimsTransformations elemek nem használatosak.
+A OutputClaims és a OutputClaimsTransformations elemek nincsenek használatban.
 
-## <a name="cryptographic-keys"></a>Kriptográfiai kulcsok
+## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
-A Kriptográfiai kulcsok elem nem használatos.
+A CryptographicKeys elem nincs használatban.
 
 
 ## <a name="metadata"></a>Metaadatok
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| InstrumentationKey (Műszerezési kulcs)| Igen | Az Application Insights [instrumentation kulcs](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), amely az események naplózására szolgál. | 
-| DeveloperMode| Nem | Logikai érték, amely azt jelzi, hogy engedélyezve van-e a fejlesztői mód. Lehetséges `true` értékek: `false` vagy (alapértelmezett). Ez a metaadat határozza meg az események pufferelését. Minimális eseménymennyiséggel rendelkező fejlesztői módban a fejlesztői mód engedélyezése esetén az események azonnal elküldésre kerülnek az Application Insightsba.|  
-|DisableTelemetria |Nem |Logikai érték, amely azt jelzi, hogy a telemetriai adatokat engedélyezni kell-e vagy sem. Lehetséges `true` értékek: `false` vagy (alapértelmezett).| 
+| InstrumentationKey| Igen | A Application Insights kialakítási [kulcs](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), amely az események naplózására szolgál majd. | 
+| DeveloperMode| Nem | Logikai érték, amely jelzi, hogy engedélyezve van-e a fejlesztői mód. Lehetséges értékek: `true` vagy `false` (alapértelmezett). Ez a metaadatok azt vezérlik, hogy az események hogyan legyenek puffereltek. A minimális méretű eseménnyel rendelkező fejlesztési környezetekben a fejlesztői üzemmód engedélyezésekor a rendszer azonnal elvégzi az események küldését Application Insights.|  
+|DisableTelemetry |Nem |Logikai érték, amely azt jelzi, hogy engedélyezni kell-e a telemetria. Lehetséges értékek: `true` vagy `false` (alapértelmezett).| 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Application Insights-erőforrás létrehozása](../azure-monitor/app/create-new-resource.md)
-- Megtudhatja, hogy [miként követheti nyomon a felhasználói viselkedést az Azure Active Directory B2C szolgáltatásában az Application Insights használatával](analytics-with-application-insights.md)
+- [Application Insights erőforrás létrehozása](../azure-monitor/app/create-new-resource.md)
+- Megtudhatja, hogyan [követheti nyomon a felhasználói viselkedést Azure Active Directory B2C használatával Application Insights](analytics-with-application-insights.md)

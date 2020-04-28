@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az RDS SQL Server áttelepítése online az SQL-adatbázisba'
+title: 'Oktatóanyag: RDS SQL Server online migrálása SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Ismerje meg, hogyan hajthat végre online áttelepítést az RDS SQL Server kiszolgálóról az Azure SQL Database egyetlen adatbázisába vagy felügyelt példányba az Azure Database Migration Service használatával.
+description: Ismerje meg, hogyan végezhet el egy online áttelepítést az RDS SQL Serverról Azure SQL Database önálló adatbázisra vagy felügyelt példányra az Azure Database Migration Service használatával.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -13,18 +13,18 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298872"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: Az RDS SQL Server áttelepítése az Azure SQL Database-be vagy egy Azure SQL Database felügyelt példányába online a DMS használatával
-Az Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy RDS SQL Server-példányból az [Azure SQL Database-be](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database által felügyelt példányba](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) minimális állásidővel. Ebben az oktatóanyagban az **Adventureworks2012** adatbázist az SQL Server 2012 (vagy újabb) RDS SQL Server példányára visszaállított adatbázisát az Azure SQL Database vagy egy Azure SQL Database által felügyelt példányba telepíti át az Azure Database Migration Service használatával.
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: RDS SQL Server migrálása Azure SQL Database vagy Azure SQL Database felügyelt példányra online a DMS használatával
+A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy RDS SQL Server-példányról a [Azure SQL Databasere](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) , minimális állásidővel. Ebben az oktatóanyagban a **Adventureworks2012** -adatbázist a Azure Database Migration Service SQL Server 2012 (vagy újabb) egy RDS SQL Server példányára állítja át, hogy Azure SQL Database vagy Azure SQL Database felügyelt példányra telepítse.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Hozzon létre egy példányt az Azure SQL Database vagy egy Azure SQL Database felügyelt példány. 
+> * Hozzon létre egy Azure SQL Database vagy egy Azure SQL Database felügyelt példány példányát. 
 > * A mintaséma migrálása a Data Migration Assistant szolgáltatás használatával.
 > * Egy Azure Database Migration Service-példány létrehozása.
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
@@ -33,50 +33,50 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Migrálási jelentés letöltése.
 
 > [!NOTE]
-> Az Azure Database Migration Service online áttelepítés végrehajtásához létre kell adnia egy példányt a prémium díjszabási szint alapján. További információkért tekintse meg az Azure Database Migration Service [díjszabási](https://azure.microsoft.com/pricing/details/database-migration/) lap.
+> Az online áttelepítés végrehajtásához a Azure Database Migration Service használatával egy példányt kell létrehozni a prémium szintű díjszabás alapján. További információkért tekintse meg a Azure Database Migration Service [díjszabását](https://azure.microsoft.com/pricing/details/database-migration/) ismertető oldalt.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Ez a cikk az RDS SQL Server-ről az Azure SQL Database-re vagy egy Azure SQL Database által felügyelt példányra való online áttelepítést ismerteti.
+Ez a cikk az RDS SQL Serverról Azure SQL Databasere vagy Azure SQL Database felügyelt példányra történő online áttelepítést ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* [RdS SQL Server adatbázis](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)létrehozása .
-* Hozzon létre egy példányt az Azure SQL Database, amelyet a cikk részletesen az [Azure PORTALon Hozzon létre.](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)
+* Hozzon létre egy [RDS SQL Server-adatbázist](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html).
+* Hozzon létre egy Azure SQL Database egy példányát, amelyet a [Azure Portal Azure SQL Database-adatbázis létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)című cikkben részletesen ismertet.
 
     > [!NOTE]
-    > Ha egy Azure SQL Database felügyelt példányba migrál, kövesse az [Azure SQL Database felügyelt példányának létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)című cikk részleteit, majd hozzon létre egy **AdventureWorks2012**nevű üres adatbázist. 
+    > Ha Azure SQL Database felügyelt példányra végez áttelepítést, kövesse a [Azure SQL Database felügyelt példány létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)című cikk részletes ismertetését, majd hozzon létre egy **AdventureWorks2012**nevű üres adatbázist. 
  
 * Töltse le a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 3.3-as vagy újabb verzióját.
-* Hozzon létre egy Microsoft Azure virtuális hálózatot az Azure adatbázis-áttelepítési szolgáltatáshoz az Azure Resource Manager telepítési modelljének használatával. Ha egy Azure SQL Database felügyelt példányba migrál, győződjön meg arról, hogy a DMS-példányt ugyanabban a virtuális hálózatban hozza létre, amelyet az Azure SQL Database felügyelt példányához használnak, de egy másik alhálózatban.  Ha másik virtuális hálózatot használ a DMS-hez, létre kell hoznia egy virtuális hálózati társviszony-létesítést a két virtuális hálózat között. A virtuális hálózat létrehozásáról további információt a [Virtuális hálózati dokumentációban](https://docs.microsoft.com/azure/virtual-network/)és különösen a részletes en című rövid útmutatóban talál.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Servicehoz a Azure Resource Manager üzembe helyezési modell használatával. Ha Azure SQL Database felügyelt példányra végez áttelepítést, mindenképpen hozza létre a DMS-példányt ugyanabban a virtuális hálózatban, amelyet a Azure SQL Database felügyelt példányhoz használ, de egy másik alhálózaton.  Ha másik virtuális hálózatot használ a DMS-hez, létre kell hoznia egy virtuális hálózatot a két virtuális hálózat között. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 
     > [!NOTE]
-    > A virtuális hálózat beállítása során, ha az ExpressRoute szolgáltatást hálózati társviszony-létesítéssel használja a Microsofthoz, adja hozzá a következő [szolgáltatásvégpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatás ki lesz építve:
+    > Ha a virtuális hálózat beállítása során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
     >
-    > * Cél adatbázis-végpont (például SQL-végpont, Cosmos DB-végpont és így tovább)
+    > * Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont stb.)
     > * Tárolási végpont
-    > * Szolgáltatásbusz végpontja
+    > * Service Bus-végpont
     >
-    > Erre a konfigurációra azért van szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal. 
+    > Erre a konfigurációra azért van szükség, mert a Azure Database Migration Service nem rendelkezik internetkapcsolattal. 
 
-* Győződjön meg arról, hogy a virtuális hálózati biztonsági csoport szabályai nem blokkolják a következő bejövő kommunikációs portokat az Azure Database Migration Service szolgáltatásba: 443, 53, 9354, 445, 12000. A virtuális hálózati NSG-forgalom szűrésével kapcsolatos további részleteket a [Hálózati forgalom szűrése hálózati biztonsági csoportokkal című témakörben olvashat.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
 * Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
-* Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure database migration service-hez használt virtuális hálózat alhálózati tartományát.
-* Győződjön meg arról, hogy a forrás RDS SQL Server-példányhoz való csatlakozáshoz használt hitelesítő adatok egy olyan fiókhoz vannak társítva, amely a "Processadmin" kiszolgálói szerepkör tagja, és az "db_owner" adatbázis-szerepkörök tagja az összes áttelepítendő adatbázisban.
-* Győződjön meg arról, hogy a célhoz használt Azure SQL Database-példányhoz való csatlakozáshoz használt hitelesítő adatok CONTROL DATABASE engedéllyel rendelkeznek a cél Azure SQL-adatbázisokra és a rendszergazdai szerepkör egy tagjára, ha egy Azure SQL Database felügyelt példányba való áttelepítéskor.
-* A forrás RDS SQL Server verziónak SQL Server 2012-es és újabb verziónak kell lennie. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
-* Engedélyezze a Change Data Capture (CDC) módosítását az RDS SQL Server adatbázisában és az áttelepítésre kijelölt összes felhasználói táblában.
+* Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt virtuális hálózat alhálózati tartományát.
+* Győződjön meg arról, hogy az RDS SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok egy olyan fiókhoz vannak társítva, amely a "processadmin" kiszolgálói szerepkör tagja, valamint az összes áttelepítendő adatbázis "db_owner" adatbázis-szerepkörének tagja.
+* Győződjön meg arról, hogy a TARGET Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok SZABÁLYOZzák az adatbázis engedélyeit a cél Azure SQL-adatbázisokon, valamint a sysadmin (rendszergazda) szerepkör tagját, ha Azure SQL Database felügyelt példányra végez áttelepítést
+* A forrásként szolgáló RDS SQL Server verziójának a 2012-es vagy újabb SQL Server kell lennie. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
+* Engedélyezze az adatváltozások rögzítését (CDC) az RDS SQL Server adatbázison és az összes áttelepítésre kiválasztott felhasználói táblán.
     > [!NOTE]
-    > Az alábbi parancsfájl segítségével engedélyezheti a CDC-t egy RDS SQL Server adatbázisban.
+    > Az alábbi szkripttel engedélyezheti a CDC használatát egy RDS SQL Server-adatbázison.
     ```
     exec msdb.dbo.rds_cdc_enable_db 'AdventureWorks2012'
     ```
-    > Használhatja az alábbi szkriptet, hogy a CDC minden táblában.
+    > Az alábbi szkripttel engedélyezheti a CDC használatát az összes táblán.
     ```
     use <Database name>
     go
@@ -98,10 +98,10 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     További információk: [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
 
 ## <a name="migrate-the-sample-schema"></a>A mintaséma migrálása
-A DMA segítségével telepítse át a sémát az Azure SQL Database-be.
+A DMA használatával telepítse át a sémát Azure SQL Databaseba.
 
 > [!NOTE]
-> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL-adatbázist. Az oktatóanyag alkalmazásában az Azure SQL Database neve **AdventureWorks2012,** de bármilyen nevet megadhat.
+> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL-adatbázist. Ebben az oktatóanyagban a Azure SQL Database neve **AdventureWorks2012**, de megadhatja a kívánt nevet.
 
 Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához végezze el a következő lépéseket:
 
@@ -118,7 +118,7 @@ Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához vég
 
     ![Data Migration Assistant forráskapcsolati adatok](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. Válassza a **Tovább**lehetőséget, a **Csatlakozás a célkiszolgálóhoz**csoportban adja meg az Azure SQL-adatbázis célkapcsolatának részleteit, válassza a **Csatlakozás**lehetőséget, majd válassza ki **az** Azure-adatbázist, amelyet előre kiépített az Azure SQL Database-ben.
+6. Kattintson a **tovább**gombra, a **Csatlakozás a célkiszolgálóra**lehetőségnél adja meg az Azure SQL Database cél kapcsolati adatait, válassza a **Csatlakozás**lehetőséget, majd válassza ki azt a **AdventureWorksAzure** -adatbázist, amelyet előre kiépített Azure SQL Databaseban.
 
     ![Data Migration Assistant célkapcsolati adatok](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
@@ -146,7 +146,7 @@ Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához vég
 
     ![Erőforrás-szolgáltatók megtekintése](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. Keresse meg az áttelepítést, majd jobbra a **Microsoft.DataMigration**programtól, és válassza a **Regisztráció**lehetőséget.
+3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration**jobb oldalán válassza a **regisztráció**lehetőséget.
 
     ![Erőforrás-szolgáltató regisztrálása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-register-resource-provider.png)    
 
@@ -164,13 +164,13 @@ Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához vég
 
 4. Válassza ki azt a helyet, amelyen az Azure Database Migration Service példányát létre szeretné hozni. 
 
-5. Jelöljön ki egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
+5. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
-    A virtuális hálózat hozzáférést biztosít az Azure Database Migration Service számára a forrás SQL Server és a cél Azure SQL Database-példány eléréséhez.
+    A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás-SQL Server és a célként megadott Azure SQL Database példányhoz.
 
-    A virtuális hálózat Azure Portalon való létrehozásáról további információt a Virtuális hálózat létrehozása az Azure Portal használatával című témakörben [talál.](https://aka.ms/DMSVnet)
+    Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
 
-6. Válasszon ki egy tarifacsomagot; az online áttelepítéshez mindenképpen válassza ki a prémium díjszabási szintet.
+6. Válasszon árképzési szintet; az online áttelepítés esetében ügyeljen arra, hogy a prémium szintű díjszabást válassza.
 
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
@@ -191,20 +191,20 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
      ![Az Azure Database Migration Service személyes példányának megkeresése](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
 3. Válassza a + **Új migrálási projekt** lehetőséget.
-4. Az **Új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **Forráskiszolgáló típusa** mezőben válassza az **AWS RDS for SQL Server**lehetőséget, a **Célkiszolgáló típusa** szövegmezőben válassza az Azure SQL **Database**lehetőséget.
+4. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **SQL Server AWS RDS**lehetőséget, a **célkiszolgáló típusa** szövegmezőben válassza a **Azure SQL Database**lehetőséget.
 
     > [!NOTE]
-    > A célkiszolgáló típusa, válassza az **Azure SQL Database** áttelepítéséhez mind az Azure SQL Database singleton adatbázis, valamint egy Azure SQL Database felügyelt példány.
+    > A célkiszolgáló típusa beállításnál válassza a **Azure SQL Database** lehetőséget az áttelepítéshez Azure SQL Database egypéldányos adatbázisra, valamint egy Azure SQL Database felügyelt példányra.
 
-5. A **Tevékenység típusának kiválasztása** csoportban válassza az **Online adatáttelepítés**lehetőséget.
+5. A **tevékenység típusának** kiválasztása szakaszban válassza az **online adatáttelepítés**lehetőséget.
 
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy válassza **az online adatok áttelepítése**; offline áttelepítések nem támogatottak ebben a forgatókönyvben.
+    > Ügyeljen arra, hogy **online adatáttelepítést**válasszon; az offline áttelepítések nem támogatottak ebben a forgatókönyvben.
 
     ![Azure Database Migration Service-projekt létrehozása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > Másik lehetőségként **választhatja** a Projekt létrehozása csak az áttelepítési projekt most, és az áttelepítés későbbi végrehajtásához lehetőséget.
+    > Másik lehetőségként választhatja a **projekt létrehozása** lehetőséget az áttelepítési projekt létrehozásához, és később végrehajthatja az áttelepítést.
 
 6. Kattintson a **Mentés** gombra.
 
@@ -223,7 +223,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     Ha nincs telepítve egy megbízható tanúsítvány, az SQL Server a példány indításakor előállít egy önaláírt tanúsítványt. A rendszer ezt a tanúsítványt használja az ügyfélkapcsolatok hitelesítő adatainak titkosítására.
 
     > [!CAUTION]
-    > Az önaláírt tanúsítvánnyal titkosított TLS-kapcsolatok nem nyújtanak erős biztonságot. Az ilyen tanúsítványok közbeékelődéses támadásoknak vannak kitéve. Ne hagyatkozzon a TLS-re, amely önaláírt tanúsítványokat használ éles környezetben vagy az internethez kapcsolódó kiszolgálókon.
+    > Az önaláírt tanúsítvánnyal titkosított TLS-kapcsolatok nem biztosítanak erős biztonságot. Az ilyen tanúsítványok közbeékelődéses támadásoknak vannak kitéve. Az önaláírt tanúsítványokat nem szabad a TLS-t használni éles környezetben vagy az internethez csatlakozó kiszolgálókon.
 
    ![Forrás részletei](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
@@ -241,19 +241,19 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 3. Válassza a **Mentés**, lehetőséget, majd a **Táblák kiválasztása** képernyőn bontsa ki a táblák listáját, és tekintse át az érintett mezőket.
 
-    Az Azure Database Migration Service automatikusan kiválasztja az összes üres forrástáblát, amely a célként szolgáló Azure SQL Database-példányon megtalálható. Ha olyan táblákat szeretne újrakivándorolni, amelyek már tartalmaznak adatokat, explicit módon ki kell jelölnie a képernyőn megjelenő táblákat.
+    Az Azure Database Migration Service automatikusan kiválasztja az összes üres forrástáblát, amely a célként szolgáló Azure SQL Database-példányon megtalálható. Ha olyan táblákat szeretne újratelepíteni, amelyek már tartalmaznak adatfájlokat, explicit módon ki kell választania a táblákat ezen a képernyőn.
 
     ![Select tables (Táblák kiválasztása)](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. A következő speciális online áttelepítési beállítások megadása után válassza a **Mentés** **gombot.**
+4. A következő **speciális Online áttelepítési beállítások**megadása után válassza a **Mentés**lehetőséget.
 
     | Beállítás | Leírás |
     | ------------- | ------------- |
-    | **A párhuzamosan betölthető táblák maximális száma** | Megadja, hogy a DMS hány táblát hajt végre párhuzamosan az áttelepítés során. Az alapértelmezett érték 5, de beállítható egy optimális értékre, hogy megfeleljen a poc áttelepítések en alapuló speciális áttelepítési igényeknek. |
-    | **A forrástábla csonkolása** | Itt adható meg, hogy a DMS csonkolja-e a céltáblát az áttelepítés során. Ez a beállítás akkor lehet hasznos, ha egy vagy több tábla csonkul az áttelepítési folyamat részeként. |
-    | **Nagy méretű objektumok (LOB) adatainak konfigurálása** | Itt adható meg, hogy a DMS korlátlan LOB-adatokat telepít-e át, vagy egy adott méretre korlátozza-e az áttelepített LOB-adatokat.  Ha a lob-adatok áttelepítése korlátozva van, a rendszer csonkolja az ezen a korláton túli lob-adatokat. Éles áttelepítések esetén ajánlott a **Korlátlan LOB-méret engedélyezése** az adatvesztés megelőzése érdekében. Ha a korlátlan lob-méretet szeretné megadni, a teljesítmény javítása érdekében jelölje be az **Üzletág-adatok áttelepítése egyetlen blokkban jelölőnégyzetet, ha a lob-méret kisebb (KB).** |
+    | **A párhuzamosan betölteni kívánt táblázatok maximális száma** | Meghatározza, hogy a DMS hány táblát hajt végre párhuzamosan az áttelepítés során. Az alapértelmezett érték 5, de beállítható úgy, hogy az optimális érték legyen az adott áttelepítési igényeknek megfelelő POC-Migrálás alapján. |
+    | **A forrástábla csonkítása esetén** | Meghatározza, hogy a DMS csonkolja-e a cél táblát az áttelepítés során. Ez a beállítás akkor lehet hasznos, ha egy vagy több tábla az áttelepítési folyamat részeként van csonkítva. |
+    | **A nagyméretű objektumok (LOB) beállításainak konfigurálása** | Megadja, hogy a DMS nem telepít-e le korlátlan LOB-adatmennyiséget, vagy korlátozza az áttelepített LOB-adatmennyiséget.  Ha a LOB-adatáttelepítés korlátja korlátozott, a rendszer csonkolja a korláton túli LOB-adatkereteket. Éles áttelepítés esetén javasolt a **korlátlan LOB-méret engedélyezése** az adatvesztés elkerülése érdekében. Ha a korlátlan LOB-méret engedélyezését adja meg, jelölje be a **LOB-adat áttelepítése egyetlen blokkban, ha az LOB-méret kisebb, mint (kb) a** teljesítmény javítása érdekében jelölőnégyzetet. |
 
-    ![Speciális online áttelepítési beállítások megadása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
+    ![A speciális Online áttelepítési beállítások megadása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
 5. Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
 
@@ -291,7 +291,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure SQL DatabaseL-be való online áttelepítések során fellépő ismert problémákról és korlátozásokról az Ismert problémák és megoldások az [Azure SQL Database online áttelepítéseivel című témakörben](known-issues-azure-sql-online.md)olvashat.
+* Az Azure SQL Database-be történő online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról a [Azure SQL Database online áttelepítéssel kapcsolatos ismert problémák és megkerülő megoldások](known-issues-azure-sql-online.md)című cikkben olvashat.
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Az Azure SQL Database szolgáltatásról a [Mi az Azure SQL Database szolgáltatás?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)cikkben olvashat.
-* Az Azure SQL Database felügyelt példányairól az [Azure SQL Database felügyelt példányai című](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)lapon talál további információt.
+* További információ a Azure SQL Databaseről: [Mi a Azure SQL Database szolgáltatás?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+* Azure SQL Database felügyelt példányokkal kapcsolatos információkért tekintse meg [Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)lapon.

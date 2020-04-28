@@ -1,6 +1,6 @@
 ---
-title: A számla kezelése és az ingyenes díjszabási csomagból való konvertálás az Azure IoT Central alkalmazásban | Microsoft dokumentumok
-description: Rendszergazdaként ismerje meg, hogyan kezelheti a számlát, és hogyan léphet át az ingyenes díjcsomagról egy szabványos díjcsomagra az Azure IoT Central alkalmazásban
+title: Az Azure IoT Central alkalmazás ingyenes díjszabási csomagjából kezelheti a számláját, és átalakíthatja azokat | Microsoft Docs
+description: Rendszergazdaként megtudhatja, hogyan kezelheti számláját, és hogyan helyezheti át az ingyenes díjszabási csomagot az Azure IoT Central-alkalmazásban található standard díjszabási csomagra
 author: v-krghan
 ms.author: v-krghan
 ms.date: 12/09/2019
@@ -9,65 +9,65 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157507"
 ---
-# <a name="manage-your-bill-in-an-iot-central-application"></a>A számla kezelése egy IoT Central alkalmazásban
+# <a name="manage-your-bill-in-an-iot-central-application"></a>Számla kezelése IoT Central alkalmazásban
 
-Ez a cikk ismerteti, hogyan, rendszergazdaként kezelheti a számlát az Azure IoT Central alkalmazás a felügyeleti szakaszban. Megtudhatja, hogyan helyezheti át alkalmazását az ingyenes díjszabási tervről egy szabványos díjcsomagra, valamint azt is, hogyan frissítheti vagy csökkentheti az árképzési tervet.
+Ez a cikk azt ismerteti, hogyan kezelheti a számlát az Azure IoT Central alkalmazásban az adminisztráció szakaszban. Megtudhatja, hogyan helyezheti át alkalmazását az ingyenes díjszabási csomagból egy standard díjszabási csomagra, és hogyan frissítheti és minősítheti a díjszabási tervet.
 
-A **Felügyeleti** szakasz eléréséhez és használatához *rendszergazdai* szerepkörben kell lennie, vagy egyéni felhasználói szerepkörrel kell *rendelkeznie,* amely lehetővé teszi az Azure IoT Central alkalmazás számlázásának megtekintését. Ha létrehoz egy Azure IoT Central-alkalmazást, a rendszer automatikusan hozzárendeli az adott alkalmazás **rendszergazdai** szerepköréhez.
+Az **Adminisztráció** szakasz eléréséhez és használatához *rendszergazdai* szerepkörrel vagy *egyéni felhasználói szerepkörrel* kell rendelkeznie, amely lehetővé teszi az Azure IoT Central-alkalmazások számlázásának megtekintését. Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan hozzárendeli az adott alkalmazáshoz tartozó **rendszergazdai** szerepkörhöz.
 
-## <a name="move-from-free-to-standard-pricing-plan"></a>Áttérés az ingyenes díjcsomagról a normál árképzési tervre
+## <a name="move-from-free-to-standard-pricing-plan"></a>Az ingyenesről a standard díjszabási csomagra való áttérés
 
-- Az ingyenes díjszabási csomagot használó alkalmazások hét napig ingyenesek, mielőtt lejárnak. Az adatok elvesztésének elkerülése érdekében bármikor áthelyezheti őket egy szabványos díjcsomagba, mielőtt azok lejárnának.
-- A szabványos díjszabási csomagot használó alkalmazások díja eszközönként kerül felszámításra, az első két eszköz pedig alkalmazásonként ingyenes.
+- Az ingyenes díjszabási csomagot használó alkalmazások a lejárat előtt hét napig díjmentesek. Az adatvesztés elkerülése érdekében a lejárat előtt bármikor áthelyezheti őket egy standard díjszabási csomagba.
+- A standard díjszabási csomagot használó alkalmazások díja eszközönként, az első két eszköz esetében pedig ingyenes.
 
 További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
 
-A díjszabási szakaszban áthelyezheti az alkalmazást az ingyenesről egy szabványos díjcsomagra.
+A díjszabás szakaszban az alkalmazást ingyenesen áthelyezheti a standard díjszabási csomagba.
 
-Az önkiszolgáló folyamat végrehajtásához hajtsa végre az alábbi lépéseket:
+Az önkiszolgáló folyamat végrehajtásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg az **Adminisztráció** szakasz **Árképzés** lapját.
+1. Lépjen az **Adminisztráció** szakasz **díjszabás** lapjára.
 
-    ![Próbaállapota](media/howto-view-bill/freetrialbilling.png)
+    ![Próbaverzió állapota](media/howto-view-bill/freetrialbilling.png)
 
-1. Válassza **a Konvertálás fizetős sémává**lehetőséget.
+1. Válassza **a konvertálás fizetős csomagra**lehetőséget.
 
     ![Próbaverzió konvertálása](media/howto-view-bill/convert.png)
 
-1. Válassza ki a megfelelő Azure Active Directoryt, majd az Azure-előfizetést, amelyet fizetős csomagot használó alkalmazáshoz kell használni.
+1. Válassza ki a megfelelő Azure Active Directory, majd a fizetős csomagot használó alkalmazáshoz használni kívánt Azure-előfizetést.
 
-1. Miután **kiválasztotta**a Konvertálás lehetőséget, az alkalmazás most már fizetős csomagot használ, és elkezdi a számlázást.
+1. Az **átalakítás**lehetőség kiválasztását követően az alkalmazás mostantól fizetős csomagot használ, és megkezdi a számlázást.
 
 > [!Note]
-> Alapértelmezés szerint *standard 2* árképzési séma lesz.
+> Alapértelmezés szerint a *Standard 2* díjszabási csomagra vált.
 
 ## <a name="how-to-change-your-application-pricing-plan"></a>Az alkalmazás díjszabási tervének módosítása
 
-A szabványos díjszabási csomagot használó alkalmazások díja eszközönként kerül felszámításra, az első két eszköz pedig alkalmazásonként ingyenes.
+A standard díjszabási csomagot használó alkalmazások díja eszközönként, az első két eszköz esetében pedig ingyenes.
 
-A díjszabási szakaszban bármikor frissítheti vagy visszaminősítheti az Azure IoT-díjszabási csomagot.
+A díjszabás szakaszban bármikor frissítheti vagy visszaállíthatja az Azure IoT díjszabási csomagját.
 
-1. Nyissa meg az **Adminisztráció** szakasz **Árképzés** lapját.
+1. Lépjen az **Adminisztráció** szakasz **díjszabás** lapjára.
 
-    ![Próbaállapota](media/howto-view-bill/pricing.png)
+    ![Próbaverzió állapota](media/howto-view-bill/pricing.png)
 
-1. Válassza a **Sémát,** és kattintson a **Mentés** gombra a frissítéshez vagy a visszaminősítéshez.
+1. Válassza ki a **csomagot** , és kattintson a **Mentés** gombra a frissítéshez vagy a visszalépéshez.
 
 ## <a name="view-your-bill"></a>Számla megtekintése
 
-1. Válassza ki a megfelelő Azure Active Directoryt, majd az Azure-előfizetést, amelyet fizetős csomagot használó alkalmazáshoz kell használni.
+1. Válassza ki a megfelelő Azure Active Directory, majd a fizetős csomagot használó alkalmazáshoz használni kívánt Azure-előfizetést.
 
-1. Miután **kiválasztotta**a Konvertálás lehetőséget, az alkalmazás most már fizetős csomagot használ, és elkezdi a számlázást.
+1. Az **átalakítás**lehetőség kiválasztását követően az alkalmazás mostantól fizetős csomagot használ, és megkezdi a számlázást.
 
 > [!Note]
-> Alapértelmezés szerint *standard 2* árképzési séma lesz.
+> Alapértelmezés szerint a *Standard 2* díjszabási csomagra vált.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett a számlával az Azure IoT Central alkalmazásban, a javasolt következő lépés az [alkalmazás felhasználói felületének testreszabása](howto-customize-ui.md) az Azure IoT Centralban.
+Most, hogy megismerte, hogyan kezelheti a számláját az Azure IoT Central alkalmazásban, a javasolt következő lépés az [alkalmazás felhasználói felületének testreszabása](howto-customize-ui.md) az Azure IoT Central-ban című témakörben olvashat.

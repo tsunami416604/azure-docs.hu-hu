@@ -1,6 +1,6 @@
 ---
-title: Több-bérlős alkalmazás hozzáadása az Azure AD-alkalmazásgyűjteményhez
-description: Bemutatja, hogyan sorolhatja fel az egyéni fejlesztésű több-bérlős alkalmazást az Azure AD-alkalmazásgyűjteményben.
+title: Több-bérlős alkalmazás hozzáadása az Azure AD Application Galleryhez
+description: Ez a cikk azt ismerteti, hogy miként listázható a saját fejlesztésű több-bérlős alkalmazás az Azure AD Application Galleryben.
 services: active-directory
 documentationCenter: na
 author: rwike77
@@ -14,37 +14,37 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883253"
 ---
-# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Több-bérlős alkalmazás hozzáadása az Azure AD-alkalmazásgyűjteményhez
+# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Több-bérlős alkalmazás hozzáadása az Azure AD Application Galleryhez
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Mi az Azure AD alkalmazáskatalógus?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Mi az Azure AD Application Gallery?
 
-Az Azure Active Directory (Azure AD) egy felhőalapú identitásszolgáltatás. Az [Azure AD-alkalmazáskatalógus](https://azure.microsoft.com/marketplace/active-directory/all/) az Azure Marketplace-alkalmazásboltban található, ahol az összes alkalmazás-összekötő közzé van téve az egyszeri bejelentkezéshez és a felhasználói kiépítéshez. Az Azure AD-t identitásszolgáltatóként használó ügyfelek megtalálják az itt közzétett különböző SaaS-alkalmazás-összekötőket. A rendszergazdák az alkalmazáskatalógusból adnak hozzá összekötőket, majd konfigurálják és használják az összekötőket egyszeri bejelentkezéshez és kiépítéshez. Az Azure AD támogatja az összes főbb összevonási protokollt, beleértve az SAML 2.0, az OpenID Connect, az OAuth és a WS-Fed egyszeri bejelentkezést. 
+A Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás. Az [Azure ad-alkalmazás](https://azure.microsoft.com/marketplace/active-directory/all/) katalógusa az Azure Marketplace App Store-ban található, ahol az összes alkalmazás-összekötő közzé van téve az egyszeri bejelentkezéshez és a felhasználók üzembe helyezéséhez. Az Azure AD-t identitás-szolgáltatóként használó ügyfeleink megtalálják az itt közzétett különböző SaaS-alkalmazás-összekötőket. A rendszergazdák hozzáadhatnak összekötőket az alkalmazás-katalógusból, majd konfigurálhatják és használhatják az összekötőket az egyszeri bejelentkezéshez és az üzembe helyezéshez. Az Azure AD az összes jelentősebb összevonási protokollt támogatja, beleértve az SAML 2,0, az OpenID Connect, a OAuth és a WS-fed használatát az egyszeri bejelentkezéshez. 
 
-## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML vagy az OpenIDConnect
-Ha egy több-bérlős alkalmazás, amely szeretne szerepelni az Azure AD-alkalmazáskatalógusban, először meg kell győződnie arról, hogy az alkalmazás támogatja az alábbi egyszeri bejelentkezési technológiák egyikét:
+## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML-t vagy a OpenIDConnect-t
+Ha rendelkezik egy több-bérlős alkalmazással, amelyet az Azure AD-alkalmazás-katalógusban szeretne felvenni, először győződjön meg arról, hogy az alkalmazás támogatja a következő egyszeri bejelentkezési technológiák egyikét:
 
-- **OpenID Connect:** Az alkalmazás listázásához hozza létre a több-bérlős alkalmazást az Azure AD-ben, és valósítsa meg az [Azure AD jóváhagyási keretrendszert](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) az alkalmazáshoz. Küldje el a bejelentkezési kérelmet egy közös végpontra, hogy bármely ügyfél beleegyezését adja az alkalmazáshoz. Szabályozhatja a felhasználó hozzáférését a bérlői azonosító és a jogkivonatban kapott felhasználói upn alapján. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory alkalmazásgalériában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című listában ismertetett folyamat használatával.
+- **OpenID Connect**: az alkalmazás listájának létrehozásához hozza létre a több-bérlős alkalmazást az Azure ad-ben, és implementálja az [Azure ad-beli engedélyezési keretrendszert](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) az alkalmazáshoz. Küldje el a bejelentkezési kérést egy közös végpontra, hogy bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a jogkivonatban kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című részében ismertetett eljárással.
 
-- **SAML**: Ha az alkalmazás támogatja az SAML 2.0-s, az alkalmazás felsorolható a galériában. Kövesse az [alkalmazás listázása az Azure Active Directory alkalmazásgalériában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című útmutató utasításait.
+- **SAML**: Ha az alkalmazása támogatja az SAML 2,0-et, az alkalmazás a katalógusban is szerepelhet. Kövesse az [alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakör utasításait.
 
-## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Ha az alkalmazás nem támogatja az SAML vagy az OpenIDConnect
-Az SAML-t vagy OpenIDConnect-et nem támogató alkalmazások továbbra is integrálhatók az alkalmazásgalériába a jelszó egyszeri bejelentkezési technológiával.
+## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Ha az alkalmazás nem támogatja az SAML-t vagy a OpenIDConnect-t
+Az SAML-vagy OpenIDConnect-t nem támogató alkalmazások továbbra is integrálhatók az alkalmazás-katalógusba a jelszó egyszeri bejelentkezési technológiájának használatával.
 
-Jelszó egyszeri bejelentkezés, más néven jelszó tároló, lehetővé teszi, hogy kezelje a felhasználói hozzáférés és a jelszavakat a webes alkalmazások, amelyek nem támogatják az identitás-összevonás. Olyan esetekben is hasznos, amikor több felhasználónak kell megosztania egyetlen fiókot, például a szervezet közösségi média alkalmazásfiókjaival. 
+A jelszavas egyszeri bejelentkezés, más néven a jelszó-tároló, lehetővé teszi a felhasználói hozzáférés és jelszavak kezelését az identitás-összevonást nem támogató webalkalmazásokhoz. Olyan helyzetekben is hasznos, amikor több felhasználónak egyetlen fiókot kell megosztania, például a szervezete közösségi Media app-fiókjaival. 
 
-Ha ezzel a technológiával szeretné felsorolni az alkalmazást:
-1. Hozzon létre egy HTML bejelentkezési lapot tartalmazó webalkalmazást a [jelszó egyszeri bejelentkezésének](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)konfigurálásához. 
-2. Küldje el a kérelmet az [alkalmazás listázása az Azure Active Directory alkalmazásgalériában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című dokumentumban leírtak szerint.
+Ha az alkalmazást a következő technológiával szeretné listázni:
+1. Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési oldalt a [jelszó-egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)konfigurálásához. 
+2. Küldje el a kérelmet az [alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakörben leírtak szerint.
 
-## <a name="escalations"></a>Torkolljon
+## <a name="escalations"></a>Azok következményeinek
 
-Az esetleges eszkalációk esetén küldjön e-mailt [az Azure AD SSO-integrációs csapatnak,](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) és a lehető leghamarabb visszahívjuk.
+Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs csapatának](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) , és a lehető leghamarabb visszakerülünk Önnek.
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan [listázhatja az alkalmazást az Azure Active Directory alkalmazásgalériában.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)
+Megtudhatja, hogyan [listázhatja az alkalmazást az Azure Active Directory alkalmazás-](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)katalógusban.

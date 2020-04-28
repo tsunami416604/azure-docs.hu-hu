@@ -1,6 +1,6 @@
 ---
-title: Beszerezni egy token hívni egy webes API (egyoldalas alkalmazások) - Microsoft identity platform | Azure
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (szerezzen be egy jogkivonatot egy API hívásához)
+title: Token beszerzése webes API-k meghívásához (egylapos alkalmazások) – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (token beszerzése API meghívásához)
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,36 +12,36 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882318"
 ---
-# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: Jogkivonat beszerzése API-hívásához
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: token beszerzése egy API meghívásához
 
-Az MSAL.js-rel rendelkező API-k tokenek beszerzésének mintája az, `acquireTokenSilent` hogy először kíséreljen meg egy csendes jogkivonat-kérelmet a metódus használatával. Ha ezt a metódust hívják meg, a tár először ellenőrzi a gyorsítótárat a böngésző tárolójában, hogy létezik-e érvényes jogkivonat, és visszaadja azt. Ha nincs érvényes jogkivonat a gyorsítótárban, egy csendes jogkivonat-kérelmet küld az Azure Active Directorynak (Azure AD) egy rejtett iframe-ből. Ez a módszer lehetővé teszi a kódtár számára a jogkivonatok megújítását is. Az Azure AD egyszeri bejelentkezési munkamenetről és jogkivonat élettartamának [értékeiről a Token élettartama című témakörben](active-directory-configurable-token-lifetimes.md)talál további információt.
+A MSAL. js használatával az API-k jogkivonatok beszerzésének mintája először egy csendes jogkivonat-kérést `acquireTokenSilent` próbál meg használni a metódussal. A metódus meghívásakor a függvénytár először ellenőrzi a gyorsítótárat a böngésző tárolójában, hogy létezik-e érvényes jogkivonat, és visszaadja azt. Ha nem található érvényes jogkivonat a gyorsítótárban, egy csendes jogkivonat-kérést küld Azure Active Directory (Azure AD) egy rejtett iframe-ből. Ez a módszer azt is lehetővé teszi, hogy a könyvtár megújítsa a jogkivonatokat. További információ az egyszeri bejelentkezési munkamenetről és a jogkivonat élettartamának értékéről az Azure AD-ben: [token élettartama](active-directory-configurable-token-lifetimes.md).
 
-A csendes jogkivonat-kérelmek az Azure AD sikertelen lehet okok miatt, például egy lejárt Azure AD-munkamenet vagy a jelszó módosítása. Ebben az esetben meghívhatja az interaktív módszerek egyikét (amely a felhasználót kéri a jogkivonatok beszerzésére:
+Az Azure AD-ba érkező csendes jogkivonat-kérések sikertelenek lehetnek olyan okokból, mint a lejárt Azure AD-munkamenet vagy a jelszó módosítása. Ebben az esetben meghívhatja az egyik interaktív metódust (amely felszólítja a felhasználót) a tokenek beszerzésére:
 
-* [Előugró ablak](#acquire-a-token-with-a-pop-up-window), a`acquireTokenPopup`
-* [Átirányítás](#acquire-a-token-with-a-redirect), a`acquireTokenRedirect`
+* [Előugró ablak](#acquire-a-token-with-a-pop-up-window), a használatával`acquireTokenPopup`
+* [Átirányítás](#acquire-a-token-with-a-redirect)a használatával`acquireTokenRedirect`
 
-## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Válasszon az előugró vagy átirányítási élmény közül
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Válasszon egy előugró vagy átirányítási élmény közül
 
- Nem használhatja mind az előugró és átirányítási módszereket az alkalmazásban. Az előugró vagy átirányítási élmény közötti választás az alkalmazásfolyamattól függ:
+ Az alkalmazásban nem használhatók az előugró és az átirányítási módszerek. Az előugró vagy átirányítási élmény közötti választás az alkalmazási folyamattól függ:
 
-* Ha nem szeretné, hogy a felhasználók a hitelesítés során eltávolodjanak a fő alkalmazáslaptól, az előugró módszert javasoljuk. Mivel a hitelesítési átirányítás előugró ablakban történik, a fő alkalmazás állapota megmarad.
+* Ha nem szeretné, hogy a felhasználók a hitelesítés során elmozdulnak az alkalmazás főoldaláról, javasoljuk, hogy az előugró metódust. Mivel a hitelesítés átirányítása egy előugró ablakban történik, a fő alkalmazás állapota megmarad.
 
-* Ha a felhasználók böngészőkorlátozásokkal vagy olyan házirendekkel rendelkeznek, amelyeknél az előugró ablakok le vannak tiltva, használhatja az átirányítási módszert. Használja az átirányítási módszert az Internet Explorer böngészővel, mert ismert problémák vannak [az Internet Explorer előugró ablakaival.](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)
+* Ha a felhasználók olyan böngészőbeli korlátozásokkal vagy házirendekkel rendelkeznek, amelyekben az előugró ablakok le vannak tiltva, használhatja az átirányítási módszert. Használja az átirányítás módszert az Internet Explorer böngészővel, mert az [Internet Explorerben ismert problémák léptek fel az előugró ablakokban](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-Beállíthatja az API-hatókörök, amelyek a hozzáférési jogkivonatot, hogy tartalmazza a hozzáférési jogkivonat-kérelem létrehozásakor. Vegye figyelembe, hogy az összes kért hatókörök nem adható meg a hozzáférési jogkivonat. Ez a felhasználó beleegyezésétől függ.
+Megadhatja azokat az API-hatóköröket, amelyeknek a hozzáférési jogkivonatot fel kell vennie a hozzáférési jogkivonat-kérelem létrehozásakor. Vegye figyelembe, hogy az összes kért hatókör nem adható meg a hozzáférési jogkivonatban. Ez a felhasználó beleegyezik.
 
-## <a name="acquire-a-token-with-a-pop-up-window"></a>Token beszerzése előugró ablakkal
+## <a name="acquire-a-token-with-a-pop-up-window"></a>Token beszerzése előugró ablakban
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő kód egyesíti a korábban leírt mintát az előugró felület módszereivel:
+A következő kód az előugró felület módszereivel ötvözi a korábban leírt mintát:
 
 ```javascript
 const accessTokenRequest = {
@@ -68,9 +68,9 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-Az MSAL-gyűrűs biztosítja a HTTP-elfogó, amely automatikusan beszerzi a hozzáférési jogkivonatokat csendben, és csatolja őket a HTTP-kérelmek API-khoz.
+A MSAL szögletes burkolója biztosítja a HTTP Interceptor-t, amely a hozzáférési jogkivonatokat csendes üzemmódban automatikusan beszerzi, és csatolja őket a HTTP-kérésekhez API-khoz.
 
-Az API-k hatóköreit a `protectedResourceMap` konfigurációs beállításban adhatja meg. `MsalInterceptor`kérni fogja ezeket a hatóköröket, amikor automatikusan beszerzi a jogkivonatokat.
+A `protectedResourceMap` konfigurációs beállításban megadhatja az API-k hatóköreit. `MsalInterceptor`a a jogkivonatok automatikus beszerzése után fogja kérni ezeket a hatóköröket.
 
 ```javascript
 // app.module.ts
@@ -109,7 +109,7 @@ Az API-k hatóköreit a `protectedResourceMap` konfigurációs beállításban a
 export class AppModule { }
 ```
 
-A néma token-beszerzés sikeréhez és sikertelenségéhez az MSAL Angular olyan visszahívásokat biztosít, amelyekre előfizethet. Az is fontos, hogy ne feledje, hogy leiratkozni.
+A csendes jogkivonat beszerzésének sikerességéhez és meghibásodásához a MSAL szögletes visszahívásokat biztosít, amelyek előfizethetnek a szolgáltatásra. Fontos megjegyezni a leiratkozást is.
 
 ```javascript
 // In app.component.ts
@@ -126,15 +126,15 @@ ngOnDestroy() {
  }
 ```
 
-Azt is megteheti, hogy explicit módon szerez jogkivonatokat a beszerzés-token metódusok használatával az alapvető MSAL.js könyvtárban leírtak szerint.
+Azt is megteheti, hogy a tokeneket explicit módon beolvassa a beszerzési lexikális metódusok használatával, ahogy azt az alapvető MSAL. js-függvénytárban ismertetjük.
 
 ---
 
-## <a name="acquire-a-token-with-a-redirect"></a>Token beszerzése átirányítással
+## <a name="acquire-a-token-with-a-redirect"></a>Token beszerzése átirányítás
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő minta a korábban leírt, de látható egy átirányítási módszerrel a jogkivonatok interaktív megszerzéséhez. Regisztrálnia kell az átirányításvisszahívást, ahogy azt korábban említettük.
+A következő minta a korábban leírtaknak megfelelően, de a tokenek interaktív beszerzésére szolgáló átirányítási módszerrel látható. A korábban említettek szerint regisztrálnia kell az átirányítás visszahívását.
 
 ```javascript
 function authCallback(error, response) {
@@ -160,15 +160,15 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-## <a name="request-optional-claims"></a>Opcionális jogcímek kérése
+## <a name="request-optional-claims"></a>Választható jogcímek kérése
 
-A választható jogcímek a következő célokra használhatók:
+A választható jogcímeket a következő célokra használhatja:
 
-- További jogcímeket az alkalmazás jogkivonataiban.
-- Módosíthatja bizonyos jogcímek viselkedését, amelyeket az Azure AD jogkivonatokban ad vissza.
+- Adja meg az alkalmazáshoz tartozó jogkivonatok további jogcímeit.
+- Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
 - Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
-Ha nem kötelező `IdToken`jogcímeket szeretne kérni a `claimsRequest` alkalmazásban, `AuthenticationParameters.ts` akkor az osztály mezőjébe karakterláncba kötött jogcímobjektumot is küldhet.
+Ha választható jogcímeket `IdToken`szeretne kérni a alkalmazásban, a sztringesített jogcím- `claimsRequest` objektumot az `AuthenticationParameters.ts` osztály mezőjébe küldheti.
 
 ```javascript
 "optionalClaims":
@@ -188,11 +188,11 @@ var request = {
 myMSALObj.acquireTokenPopup(request);
 ```
 
-További információ: [Választható jogcímek](active-directory-optional-claims.md).
+További információ: [opcionális jogcímek](active-directory-optional-claims.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-Ez a kód megegyezik a korábban leírt.
+Ez a kód megegyezik a korábban leírtak szerint.
 
 ---
 

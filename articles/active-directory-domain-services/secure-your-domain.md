@@ -1,6 +1,6 @@
 ---
-title: Biztonságos Azure AD tartományi szolgáltatások | Microsoft dokumentumok
-description: Megtudhatja, hogyan tilthatja le a gyenge titkosításokat, a régi protokollokat és az NTLM jelszókivonat-szinkronizálást egy Azure Active Directory tartományi szolgáltatások által kezelt tartományban.
+title: Biztonságos Azure AD Domain Services | Microsoft Docs
+description: Megtudhatja, hogyan tilthatja le a gyenge titkosításokat, a régi protokollokat és az NTLM jelszó-kivonatolási szinkronizálást egy Azure Active Directory Domain Services felügyelt tartományhoz.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,41 +12,41 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654726"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Gyenge titkosítások és jelszókivonat-szinkronizálás letiltása az Azure AD tartományi szolgáltatások által kezelt tartomány biztonságossá tétele érdekében
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
 
-Alapértelmezés szerint az Azure Active Directory tartományi szolgáltatások (Azure AD DS) lehetővé teszi a titkosítások, például az NTLM v1 és a TLS v1 használatát. Ezek a rejtjelek szükség lehet néhány régebbi alkalmazások, de gyengének minősülnek, és letiltható, ha nincs rájuk szükség. Ha az Azure AD Connect használatával helyszíni hibrid kapcsolattal rendelkezik, letilthatja az NTLM jelszókivétek szinkronizálását is.
+Alapértelmezés szerint a Azure Active Directory Domain Services (Azure AD DS) lehetővé teszi a titkosítások, például az NTLM v1 és a TLS v1 használatát. Ezek a titkosítási funkciók bizonyos örökölt alkalmazásokhoz szükségesek lehetnek, de gyengenak számítanak, és ha nincs rá szükségük, le lehet tiltani őket. Ha Azure AD Connect használatával helyszíni hibrid kapcsolattal rendelkezik, le is tilthatja az NTLM-jelszó kivonatok szinkronizálását.
 
-Ez a cikk bemutatja, hogyan tilthatja le az NTLM v1 és TLS v1 titkosításokat, és hogyan tilthatja le az NTLM jelszókivonat-szinkronizálást.
+Ez a cikk bemutatja, hogyan tilthatja le az NTLM v1 és a TLS v1 titkosítást, és letiltja az NTLM-jelszó kivonatának szinkronizálását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk végrehajtásához a következő erőforrásokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory tartományi szolgáltatások példányát.][create-azure-ad-ds-instance]
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
 * Az Azure PowerShell telepítése és konfigurálása.
-    * Szükség esetén kövesse az utasításokat [az Azure PowerShell-modul telepítéséhez és az Azure-előfizetéshez való csatlakozáshoz.](/powershell/azure/install-az-ps)
-    * Győződjön meg arról, hogy a [Connect-AzAccount][Connect-AzAccount] parancsmag használatával jelentkezik be az Azure-előfizetésbe.
-* Telepítse és konfigurálja az Azure AD PowerShellt.
-    * Szükség esetén kövesse az utasításokat [az Azure AD PowerShell-modul telepítéséhez és az Azure AD-hez való csatlakozáshoz.](/powershell/azure/active-directory/install-adv2)
-    * Győződjön meg arról, hogy a [Connect-AzureAD-parancsmag][Connect-AzureAD] használatával bejelentkezik az Azure AD-bérlőbe.
+    * Ha szükséges, kövesse az utasításokat a [Azure PowerShell modul telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz](/powershell/azure/install-az-ps).
+    * Győződjön meg róla, hogy bejelentkezik az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] parancsmag használatával.
+* Az Azure AD PowerShell telepítése és konfigurálása.
+    * Ha szükséges, kövesse az [Azure ad PowerShell-modul telepítésére és az Azure ad-hez való kapcsolódásra](/powershell/azure/active-directory/install-adv2)vonatkozó utasításokat.
+    * Győződjön meg arról, hogy bejelentkezik az Azure AD-bérlőbe a [AzureAD][Connect-AzureAD] parancsmag használatával.
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Gyenge titkosítások és NTLM jelszókivonat-szinkronizálás letiltása
+## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Gyenge titkosítási és NTLM-jelszó-kivonatolási szinkronizálás letiltása
 
-A gyenge titkosítási csomagok és az NTLM-hitelesítő adatok kivonatának szinkronizálásának letiltásához jelentkezzen be az Azure-fiókjába, majd a [Get-AzResource][Get-AzResource] parancsmag használatával vegye le az Azure AD DS-erőforrást:
+A gyenge titkosítási csomagok és az NTLM hitelesítő adatok kivonatának szinkronizálásának letiltásához jelentkezzen be az Azure-fiókjába, majd szerezze be az Azure AD DS-erőforrást a [Get-AzResource][Get-AzResource] parancsmag használatával:
 
 > [!TIP]
-> Ha hibaüzenetet kap a [Get-AzResource][Get-AzResource] paranccsal, amely szerint a *Microsoft.AAD/DomainServices* erőforrás nem létezik, [növelje a hozzáférést az összes Azure-előfizetés és felügyeleti csoport kezeléséhez.][global-admin]
+> Ha a [Get-AzResource][Get-AzResource] parancs használatával hibaüzenetet kap, hogy a *Microsoft. HRE/DomainServices* erőforrás nem létezik, [emelje a hozzáférést az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez][global-admin].
 
 ```powershell
 Login-AzAccount
@@ -54,30 +54,30 @@ Login-AzAccount
 $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 ```
 
-Ezután adja meg a *DomainSecuritySettings parancsot* a következő biztonsági beállítások konfigurálásához:
+Ezután adja meg a *DomainSecuritySettings* a következő biztonsági beállítások konfigurálásához:
 
-1. Tiltsa le az NTLM v1-es támogatását.
-2. Tiltsa le az NTLM jelszókivétek szinkronizálását a helyszíni AD-ből.
+1. Tiltsa le az NTLM v1 támogatását.
+2. Tiltsa le az NTLM-jelszó kivonatok szinkronizálását a helyszíni AD-ből.
 3. Tiltsa le a TLS v1-et.
 
 > [!IMPORTANT]
-> A felhasználók és a szolgáltatásfiókok nem hajthatnak végre LDAP-alapú egyszerű kötéseket, ha letiltja az NTLM jelszókivonat-szinkronizálást az Azure AD DS felügyelt tartományában. Ha egyszerű LDAP-kötéseket kell végrehajtania, ne állítsa be a *"SyncNtlmPasswords"="Disabled";* biztonsági konfigurációs beállítást a következő parancsban.
+> A felhasználók és a szolgáltatásfiókok nem hajthatnak végre LDAP egyszerű kötéseket, ha letiltja az NTLM-jelszó kivonatának szinkronizálását az Azure AD DS felügyelt tartományban. Ha LDAP egyszerű kötéseket kell végrehajtania, ne állítsa be a *"SyncNtlmPasswords" = "Letiltva";* biztonsági konfiguráció beállítást a következő parancsban.
 
 ```powershell
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Végül alkalmazza a meghatározott biztonsági beállításokat az Azure AD DS felügyelt tartománya a [Set-AzResource][Set-AzResource] parancsmag használatával. Adja meg az Azure AD DS-erőforrást az első lépésből, és az előző lépés biztonsági beállításait.
+Végül alkalmazza a definiált biztonsági beállításokat az Azure AD DS felügyelt tartományra a [set-AzResource][Set-AzResource] parancsmag használatával. Az első lépésből válassza ki az Azure AD DS-erőforrást, és az előző lépés biztonsági beállításait.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Néhány percet vesz igénybe, amíg a biztonsági beállításokat alkalmazni kell az Azure AD DS felügyelt tartományban.
+Néhány percet vesz igénybe, hogy a biztonsági beállítások az Azure AD DS felügyelt tartományra legyenek alkalmazva.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a szinkronizálási folyamatról, olvassa el [az Objektumok és hitelesítő adatok szinkronizálásának módját az Azure AD DS által kezelt tartományban.][synchronization]
+További információ a szinkronizálási folyamatról: az [objektumok és a hitelesítő adatok szinkronizálása egy Azure AD DS felügyelt tartományban][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

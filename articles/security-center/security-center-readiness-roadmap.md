@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879462"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
@@ -43,7 +43,7 @@ Ahhoz, hogy a lehető legnagyobb mértékben kihasználhassa a Security Center �
 A következő forrásanyagok segítségére lehetnek a tervezési és műveleti folyamatok során.
 
 Cikk
-* [Útmutató az Azure Security Center tervezési és üzemeltetési útmutatójához](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center tervezési és üzemeltetési útmutató](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Számítógépek regisztrációja a Security Centerben
@@ -73,7 +73,7 @@ Videó
 * [Biztonsági hibák csökkentése az Azure Security Center használatával](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>A Security Center használata incidensmegoldásra
-A költségek és a károk csökkentése érdekében fontos, hogy a támadás előtt legyen egy incidens-reagálási terv. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
+A költségek és a károk csökkentése érdekében fontos, hogy a támadás megkezdése előtt egy incidensre vonatkozó válaszintézkedések legyenek érvényben. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
 
 Az alábbi forrásanyagokból megtudhatja, hogyan építhető be a Security Center az incidensmegoldási folyamatba.
 
@@ -83,21 +83,21 @@ Videók
 
 Cikkek    
 * [Az Azure Security Center használata incidensmegoldásra](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [A válaszok automatizálása a Munkafolyamat-automatizálással](workflow-automation.md)
+* [Válasz automatizálása a munkafolyamat-automatizálással](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Speciális felhővédelem
 
-Az Azure-beli virtuális gépek kihasználhatják a Security Center speciális felhővédelmi képességeit. Ezek a képességek közé tartozik a just-in-time virtuális gép (VM) hozzáférés, és az adaptív alkalmazásvezérlők.
+Az Azure-beli virtuális gépek kihasználhatják a Security Center speciális felhővédelmi képességeit. Ezen képességek közé tartozik az igény szerinti virtuális gépekhez való hozzáférés, valamint az adaptív alkalmazások vezérlése.
 
 Az alábbi forrásanyagokból megismerheti, hogyan használhatja ezeket a képességeket a Security Centerben.
 
 Videók    
-* [Azure Security Center – Just-in-time virtuális gép-hozzáférés](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center – igény szerinti virtuális gépekhez való hozzáférés](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center – Adaptív alkalmazásvezérlők](https://youtu.be/wWWekI1Y9ck)
 
 Cikkek    
-* [A virtuális gépek hozzáférésének kezelése a just-in-time használatával](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Adaptív alkalmazásvezérlők az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [A virtuális gépekhez való hozzáférés kezelése igény szerint](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Adaptív alkalmazás-vezérlőelemek Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Gyakorlati tevékenységek
 
@@ -105,7 +105,7 @@ Cikkek
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)
 * [Security Center – REST API-dokumentációs oldal](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center – gyakori kérdések (GYIK)](https://docs.microsoft.com/azure/security-center/security-center-faq)
@@ -114,7 +114,7 @@ Cikkek
 * [Ajánlott hálózati biztonsági eljárások](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS-javaslatok](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Megfelelőség](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [A naplóelemzési ügyfelek mostantól használhatják az Azure Security Centert hibrid felhőbeli számítási feladataik védelmére](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [A log Analytics-ügyfelek mostantól a Azure Security Center használatával védik a hibrid felhőalapú számítási feladatait](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Közösségi forrásanyagok
 

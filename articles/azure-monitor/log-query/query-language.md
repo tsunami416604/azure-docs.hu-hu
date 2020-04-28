@@ -1,60 +1,60 @@
 ---
-title: Azure Monitor naplólekérdezései | Microsoft dokumentumok
-description: Az Azure Monitor naplólekérdezéseinek írása ként szolgáló erőforrásokra mutató hivatkozások.
+title: Azure Monitor log-lekérdezések | Microsoft Docs
+description: Az erőforrásokra mutató hivatkozások, amelyekkel megtudhatja, hogyan írhat napló lekérdezéseket Azure Monitorban.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
 ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631798"
 ---
-# <a name="azure-monitor-log-queries"></a>Azure Monitor naplólekérdezései
+# <a name="azure-monitor-log-queries"></a>Azure Monitor log-lekérdezések
 
-Az Azure Monitor-naplók az Azure Data Explorerre épülnek, és az Azure Monitor naplólekérdezései ugyanannak a Kusto lekérdezési nyelvnek a verzióját használják. A [Kusto lekérdezési nyelvi dokumentáció](/azure/kusto/query) tartalmazza a nyelv összes részletét, és az Azure Monitor naplólekérdezéseinek írásához elsődleges erőforrásnak kell lennie. Ez a lap hivatkozásokat tartalmaz más forrásokhoz a lekérdezések írásának és a nyelv Azure Monitor-implementációjával kapcsolatos különbségek megismeréséhez.
+Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a napló lekérdezései ugyanazt a Kusto-lekérdezési nyelvet használják. A [Kusto lekérdezési nyelv dokumentációja](/azure/kusto/query) tartalmazza a nyelv összes részletét, és az elsődleges erőforrásnak kell lennie Azure monitor log-lekérdezések írásához. Ez a lap más forrásokra mutató hivatkozásokat tartalmaz, amelyekkel megtudhatja, hogyan írhat lekérdezéseket és a nyelv Azure Monitor megvalósításával kapcsolatos különbségeket.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
-- [Az Azure Monitor Log Analytics használata](get-started-portal.md) egy lecke a lekérdezések írásához és az eredmények nek az Azure Portalon való kezeléséhez.
-- [Az Azure Monitor naplólekérdezéseinek első lépései](get-started-queries.md) az Azure Monitor naplóadatainak használatával történő lekérdezések írása.
+- Első [lépések a Azure Monitor log Analytics](get-started-portal.md) a lekérdezések írásához és az eredményekkel való együttműködéshez szükséges lecke a Azure Portalban.
+- A [Azure monitor log-lekérdezések használatának első lépései](get-started-queries.md) a lekérdezések Azure monitor naplózási adataival való írásának tanulságai.
 
 ## <a name="concepts"></a>Alapelvek
 
-- [Az Azure Monitor naplóadatainak elemzése](../../azure-monitor/log-query/log-query-overview.md) rövid áttekintést nyújt a naplólekérdezésekről, és ismerteti az Azure Monitor naplóadatainak felépítését.
-- [A naplóadatok megtekintése és elemzése az Azure Monitorban](../../azure-monitor/log-query/portals.md) ismerteti azokat a portálokat, ahol naplólekérdezéseket hoz létre és futtat.
+- A [Azure monitor naplózási információinak elemzése](../../azure-monitor/log-query/log-query-overview.md) rövid áttekintést nyújt a naplók lekérdezéséről, és leírja, hogyan épülnek fel Azure monitor naplózási információk.
+- A [naplózási adatok megtekintése és elemzése Azure monitor ismerteti azokat](../../azure-monitor/log-query/portals.md) a portálokat, amelyeken a naplók létrehozása és futtatása folyamatban van.
 
 ## <a name="reference"></a>Referencia
 
-- [A lekérdezési nyelv hivatkozása](/azure/kusto/query) a Kusto lekérdezési nyelv teljes nyelvi hivatkozása.
-- [Az Azure Monitor naplólekérdezési nyelvi különbségek](data-explorer-difference.md) ismerteti a Kusto lekérdezési nyelv verziói közötti különbségeket.
-- [Az Azure Monitor naplórekordjainak szabványos tulajdonságai](../../azure-monitor/platform/log-standard-properties.md) olyan tulajdonságokat írnak le, amelyek az Azure Monitor összes naplóadataihoz szabványosak.
-- [Az Azure Monitor ban erőforrásközi naplólekérdezéseket hajthat végre,](../../azure-monitor/log-query/cross-workspace-query.md) amely leírja, hogyan írhat naplólekérdezéseket, amelyek több Log Analytics-munkaterületről és Application Insights-alkalmazásból származó adatokat használnak.
+- A [lekérdezés nyelvi referenciája](/azure/kusto/query) a Kusto lekérdezési nyelvének teljes nyelvi referenciája.
+- [Azure monitor a naplózási lekérdezés nyelvi eltérései](data-explorer-difference.md) a Kusto lekérdezési nyelv verziói közötti különbségeket ismertetik.
+- [A Azure monitor naplóbejegyzések szabványos tulajdonságai](../../azure-monitor/platform/log-standard-properties.md) olyan tulajdonságokat mutatnak be, amelyek az összes Azure monitor naplózási adatként szabványosak.
+- [Erőforrás-naplózási lekérdezések végrehajtása Azure monitor ismerteti a](../../azure-monitor/log-query/cross-workspace-query.md) több log Analytics munkaterületről és Application Insights alkalmazásokból származó adatokkal rendelkező naplók írását.
 
 ## <a name="examples"></a>Példák
 
-- [Az Azure Monitor naplólekérdezési példái](examples.md) példalekérdezéseket tartalmaz az Azure Monitor naplóadatai használatával.
+- A [Azure monitor log lekérdezési példák](examples.md) példaként szolgálnak a Azure monitor naplózási adataival.
 
 ## <a name="lessons"></a>Leckék
 
-- [A karakterláncok az Azure Monitor naplólekérdezések](string-operations.md) használatával a karakterlánc-adatok kal való együttműködés.
-- [A dátumidő-értékek használata az Azure Monitor naplólekérdezésekben](datetime-operations.md) ismerteti, hogyan dolgozhat a dátum- és időadatokkal.
-- [Aggregációk az Azure Monitor naplólekérdezések](aggregations.md) és [a speciális összesítések az Azure Monitor naplólekérdezések](advanced-aggregations.md) ismertetik, hogyan összesítheti és összegezheti az adatokat.
-- [Az Azure Monitor naplólekérdezéseiaz Azure Monitor naplólekérdezéseinek](joins.md) használatával ismertetjük, hogyan lehet több táblából adatokat összeadni.
-- [A JSON és az azure-figyelő naplólekérdezéseinek json- és adatstruktúrák](json-data-structures.md) kal való együttműködése ismerteti a jsonadatok elemzésével.
-- [Speciális naplólekérdezések írása az Azure Monitorban](advanced-query-writing.md) ismerteti az összetett lekérdezések létrehozásának és a kód újrafelhasználásának stratégiáit.
-- [Diagramok és diagramok létrehozása az Azure Monitor naplólekérdezések](charts.md) ismerteti, hogyan vizualizálhatja az adatokat egy naplólekérdezés.
+- A karakterláncok [használata Azure monitor napló lekérdezésekben](string-operations.md) leírja, hogyan használható a sztring-adatmennyiség.
+- A dátum-és [időértékek Azure monitor napló lekérdezésekben való használata](datetime-operations.md) a dátum-és időadatokkal való munkavégzést ismerteti.
+- [Az Azure monitor naplózási lekérdezésekben](aggregations.md) és [a speciális összesítésekben szereplő összesítések a Azure monitor-naplókban](advanced-aggregations.md) azt írják le, hogyan összesítheti és összesítheti az adatokat.
+- [A Azure monitor log-lekérdezések](joins.md) összekapcsolásai azt írják le, hogyan lehet több táblából összekapcsolni az adatokkal.
+- A [JSON-és adatszerkezetek használata a Azure monitor-napló lekérdezésekben](json-data-structures.md) leírja a JSON-adatelemzés módját.
+- [A speciális naplók írásakor a Azure monitor](advanced-query-writing.md) ismerteti az összetett lekérdezések létrehozásához és a kód újbóli felhasználásához szükséges stratégiákat.
+- [Diagramok és diagramok létrehozása Azure monitor naplókból](charts.md) – ez a cikk azt ismerteti, Hogyan jeleníthető meg az adatok naplózási lekérdezésből.
 
 ## <a name="cheatsheets"></a>Hasznos tanácsok
 
-- [SQL-Azure Monitor napló lekérdezés](sql-cheatsheet.md) segíti a felhasználókat, akik már ismerik az SQL.
-- [Splunk az Azure Monitor napló lekérdezési](splunk-cheatsheet.md) segíti a felhasználókat, akik már ismerik a Splunk.
+- [Az SQL – Azure monitor a log lekérdezés](sql-cheatsheet.md) segítséget nyújt a már ismerős SQL-felhasználók számára.
+- [A Splunk Azure monitor log lekérdezés](splunk-cheatsheet.md) segítséget nyújt a splunk már ismerős felhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Kusto lekérdezési nyelvének teljes referenciadokumentációjának](/azure/kusto/query/)elérése.
+- Nyissa [meg a Kusto lekérdezési nyelvének teljes dokumentációját](/azure/kusto/query/).

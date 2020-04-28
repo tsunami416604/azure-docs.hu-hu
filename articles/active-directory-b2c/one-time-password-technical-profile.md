@@ -1,7 +1,7 @@
 ---
-title: Egyszeri jelszó-ellenőrzés engedélyezése
+title: Egyszeri jelszó (OTP) hitelesítésének engedélyezése
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan állíthat be egy egyszeri jelszó (OTP) forgatókönyv et az Azure AD B2C egyéni szabályzatok használatával.
+description: Ismerje meg, hogyan állíthat be egyszeri jelszavas (OTP) forgatókönyvet Azure AD B2C egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332781"
 ---
-# <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszótechnikai profil definiálása az Azure AD B2C egyéni szabályzatában
+# <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory B2C (Azure AD B2C) támogatja az egyszeri jelszó létrehozásának és ellenőrzésének kezelését. Egy technikai profil segítségével hozzon létre egy kódot, majd ellenőrizze, hogy a kód később.
+A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az egyszeri jelszavak létrehozásának és ellenőrzésének kezeléséhez. Használjon egy technikai profilt a kód létrehozásához, majd később ellenőrizze a kódot.
 
-Az egyszeri jelszó technikai profil is visszaadhat egy hibaüzenetet a kód ellenőrzés során. Tervezze meg az integrációt az egyszeri jelszóval **egy érvényesítési technikai profil**használatával. Az érvényesítési technikai profil meghívja az egyszeri jelszó technikai profilt a kód ellenőrzéséhez. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott adatokat, mielőtt a felhasználói út folytatódik. Az érvényesítési technikai profil egy hibaüzenet jelenik meg egy önérvényesítő oldalon.
+Az egyszeri jelszóval kapcsolatos technikai profil a kód ellenőrzése során hibaüzenetet is jelez. Tervezze meg az integrációt az egyszeri jelszóval egy **érvényesítési technikai profil**használatával. Az érvényesítési technikai profil a kód ellenőrzéséhez az egyszeri jelszó-technikai profilt hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
 
 ## <a name="protocol"></a>Protocol (Protokoll)
 
-A **Protokoll** elem **Name** attribútumát a `Proprietary`parancsra kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure AD B2C által használt protokollkezelő szerelvény teljesen minősített nevét:
+A **protokoll** elem `Proprietary` **Name** attribútumát be kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
 
 ```XML
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
-A következő példa egy egyszeri jelszótechnikai profilt mutat be:
+Az alábbi példa egy egyszeri jelszóval rendelkező technikai profilt mutat be:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
@@ -45,44 +45,44 @@ A következő példa egy egyszeri jelszótechnikai profilt mutat be:
 
 ## <a name="generate-code"></a>Kód létrehozása
 
-A technikai profil első módja egy kód létrehozása. Az alábbiakban az ehhez a módhoz konfigurálható beállításokat talál.
+Ennek a technikai profilnak az első módja egy kód létrehozása. Alább láthatók az ehhez a módhoz konfigurálható beállítások.
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
-Az **InputClaims** elem az egyszeri jelszóprotokoll-szolgáltatónak való küldéshez szükséges jogcímek listáját tartalmazza. A jogcím nevét az alábbi névre is leképezheti.
+A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójának küldendő jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| Jogcímhivatkozásazonosítója | Kötelező | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A kód későbbi ellenőrzésére szoruló felhasználó azonosítására szolgáló azonosító. Gyakran használják annak a célnak az azonosítójaként, ahová a kódot kézbesítik, például e-mail cím vagy telefonszám. |
+| azonosító | Igen | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 
-Az **InputClaimsTransformations** elem tartalmazhat **InputClaimsTransformation** elemek gyűjteményét, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldenék az egyszeri jelszóprotokoll-szolgáltatónak.
+A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
 ### <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem az egyszeri jelszóprotokoll-szolgáltató által létrehozott jogcímek listáját tartalmazza. A jogcím nevét az alábbi névre is leképezheti.
+A **OutputClaims** elem az egyszeri jelszavas protokoll szolgáltatója által létrehozott jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| Jogcímhivatkozásazonosítója | Kötelező | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| otpGenerált | Igen | A létrehozott kód, amelynek munkamenetét az Azure AD B2C kezeli. |
+| otpGenerated | Igen | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
 
-A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
+A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
 ### <a name="metadata"></a>Metaadatok
 
-A kódlétrehozási mód konfigurálásához a következő beállítások használhatók:
+A kód generálási módjának konfigurálásához a következő beállításokat használhatja:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInszszek | Nem | Idő másodpercben a kód lejáratáig. Minimum: `60`; Maximális: `1200`; Alapértelmezett: `600`. |
-| Kódhossza | Nem | A kód hossza. Az alapértelmezett érték `6`. |
-| Karakterkészlet | Nem | A kód karakterkészlete, reguláris kifejezésben való használatra formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
-| NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősülne. Az alapértelmezett érték `5`. |
+| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60`; Maximum: `1200`; Alapértelmezett: `600`. |
+| CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
+| CharacterSet | Nem | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
+| NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `GenerateCode`. |
-| ÚjrafelhasználásSameCode | Nem | Azt jelzi, hogy meg kell-e adni egy duplikált kódot, és nem kell-e új kódot generálni, ha az adott kód még nem járt le, és még mindig érvényes. Az alapértelmezett érték `false`. |
+| ReuseSameCode | Nem | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
 
 ### <a name="example"></a>Példa
 
-A következő `TechnicalProfile` példa kód létrehozásához használható:
+A következő példa `TechnicalProfile` a kód generálására szolgál:
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
@@ -107,28 +107,28 @@ A következő `TechnicalProfile` példa kód létrehozásához használható:
 
 ## <a name="verify-code"></a>Kód ellenőrzése
 
-A technikai profil második módja egy kód ellenőrzése. Az alábbiakban az ehhez a módhoz konfigurálható beállításokat talál.
+A technikai profil második módja egy kód ellenőrzése. Alább láthatók az ehhez a módhoz konfigurálható beállítások.
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
-Az **InputClaims** elem az egyszeri jelszóprotokoll-szolgáltatónak való küldéshez szükséges jogcímek listáját tartalmazza. A jogcím nevét az alábbi névre is leképezheti.
+A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójának küldendő jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| Jogcímhivatkozásazonosítója | Kötelező | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A korábban kódot létrehozó felhasználó azonosítására szolgáló azonosító. Gyakran használják annak a célnak az azonosítójaként, ahová a kódot kézbesítik, például e-mail cím vagy telefonszám. |
+| azonosító | Igen | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 | otpToVerify | Igen | A felhasználó által megadott ellenőrző kód. |
 
-Az **InputClaimsTransformations** elem tartalmazhat **InputClaimsTransformation** elemek gyűjteményét, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldenék az egyszeri jelszóprotokoll-szolgáltatónak.
+A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
 ### <a name="output-claims"></a>Kimeneti jogcímek
 
-A protokollszolgáltató kódellenőrzése során nem biztosítottak kimeneti jogcímek.
+Nincsenek megadva kimeneti jogcímek a protokoll-szolgáltató kódjának ellenőrzése során.
 
-A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
+A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
 ### <a name="metadata"></a>Metaadatok
 
-A következő beállítások használhatók a kódellenőrzési módban:
+A következő beállítások használhatók a kód-ellenőrzési mód használatára:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
@@ -137,18 +137,18 @@ A következő beállítások használhatók a kódellenőrzési módban:
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
 
-A következő metaadatok segítségével konfigurálhatja a kódellenőrzési hiba esetén megjelenő hibaüzeneteket. A metaadatokat az önérvényesítő technikai profilban kell [konfigurálni.](self-asserted-technical-profile.md) A hibaüzenetek [honosíthatók](localization-string-ids.md#one-time-password-error-messages).
+A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén megjelenő hibaüzeneteket. A metaadatokat az [önérvényesített](self-asserted-technical-profile.md) technikai profilban kell konfigurálni. A hibaüzenetek [honosítható](localization-string-ids.md#one-time-password-error-messages).
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesnotExist | Nem | A kódellenőrzési munkamenet lejárta esetén a felhasználó nak megjelenítendő üzenet. Ez vagy a kód lejárt, vagy a kód soha nem jött létre egy adott azonosítót. |
-| UserMessageIfMaxRetryAttempted | Nem | Az üzenet, amelyet akkor jelenít meg a felhasználónak, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
-| UserMessageIfInvalidCode | Nem | Az üzenet, amelyet a felhasználónak meg kell jelenítenie, ha érvénytelen kódot adott meg. |
-|UserMessageIfSessionConflict|Nem| A felhasználó nak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
+| UserMessageIfSessionDoesNotExist | Nem | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
+| UserMessageIfMaxRetryAttempted | Nem | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
+| UserMessageIfInvalidCode | Nem | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
+|UserMessageIfSessionConflict|Nem| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
 
 ### <a name="example"></a>Példa
 
-A következő `TechnicalProfile` példa a kód ellenőrzésére szolgál:
+A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
@@ -166,7 +166,7 @@ A következő `TechnicalProfile` példa a kód ellenőrzésére szolgál:
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd a következő cikket, például az egyszeri jelszó technikai profil egyéni e-mail ellenőrzés:
+A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszeri jelszavas technikai profilt:
 
-- [Egyéni e-mailek ellenőrzése az Azure Active Directory B2C-ben](custom-email.md)
+- [Egyéni e-mail-ellenőrzés Azure Active Directory B2C](custom-email.md)
 

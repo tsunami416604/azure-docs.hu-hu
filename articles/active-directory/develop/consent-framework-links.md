@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazás hozzájárulásának működése
-description: További információ arról, hogyan működik az Azure AD-hozzájárulási keretrendszer, amely ből megtudhatja, hogyan használhatja azt az Azure AD-n való alkalmazások fejlesztése során
+title: Az alkalmazás-beleegyezettés működése
+description: 'További információ az Azure AD-beli engedélyezési keretrendszer működéséről: hogyan használható az Azure AD-alkalmazások fejlesztéséhez'
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885548"
 ---
-# <a name="how-application-consent-works"></a>Az alkalmazás hozzájárulásának működése
+# <a name="how-application-consent-works"></a>Az alkalmazás-beleegyezettés működése
 
-Ez a cikk segít többet megtudni, hogyan működik az Azure AD-hozzájárulási keretrendszer, így hatékonyabban fejlesztheti az alkalmazásokat.
+Ebből a cikkből megtudhatja, hogyan működik az Azure AD-keretrendszer, így hatékonyabban fejlesztheti alkalmazásait.
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- Általános ismereteket kaphat [arról, hogy a hozzájárulás hogyan teszi lehetővé az erőforrás-tulajdonos számára az alkalmazás erőforrásokhoz való hozzáférésének szabályozását.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent)
-- Részletes áttekintést kaphat [arról, hogy az Azure AD-hozzájárulási keretrendszer hogyan valósítja meg a beleegyezést.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- További részletes, megtudhatja, [hogyan egy több-bérlős alkalmazás használhatja a jóváhagyási keretet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) a "felhasználó" és a "rendszergazda" hozzájárulás megvalósításához, támogatva a fejlettebb többrétegű alkalmazásminták.
-- További mélységért ismerje meg, [hogyan támogatja a jóváhagyást az OAuth 2.0 protokollréteg az engedélyezési kód engedélyezési folyamat során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- Általános ismeretek arról, hogy [a beleegyezés hogyan teszi lehetővé az erőforrás-tulajdonosok számára az alkalmazások erőforrásokhoz való hozzáférésének szabályozását](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
+- Részletes áttekintést kaphat [arról, hogy az Azure ad-beli engedélyezési keretrendszer hogyan valósítja meg a hozzájárulásukat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- További részletekért tekintse meg, [Hogyan használhatják a több-bérlős alkalmazások a](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, és támogatják a fejlettebb többrétegű alkalmazás-mintákat.
+- További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>További lépések
-[AzureAD-veremtúlcsordulás](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

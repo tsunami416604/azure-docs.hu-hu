@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN-átjáró: Egyéni útvonalak hirdetése a P2S VPN-ügyfelek számára'
-description: Az egyéni útvonalak nak a helyek közötti ügyfelekre való hirdetésének lépései
+title: 'Azure VPN Gateway: egyéni útvonalak meghirdetése P2S VPN-ügyfelek számára'
+description: Az egyéni útvonalaknak a pont-hely típusú ügyfelekhez való reklámozásának lépései
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756897"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak hirdetése P2S VPN-ügyfelek számára
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
 
-Előfordulhat, hogy egyéni útvonalakat szeretne hirdetni az összes pont-hely VPN-ügyfélszámára. Ha például engedélyezte a virtuális hálózat tárolóvégpontjait, és azt szeretné, hogy a távoli felhasználók a VPN-kapcsolaton keresztül is hozzáférhessenek ezekhez a tárfiókokhoz. A tárolóvégpont IP-címét az összes távoli felhasználó számára hirdetheti, így a tárfiókba irányuló forgalom a VPN-alagúton, és nem a nyilvános interneten keresztül történik.
+Érdemes lehet egyéni útvonalakat reklámozni az összes pont – hely VPN-ügyfélre. Ha például engedélyezte a tárolási végpontokat a VNet, és azt szeretné, hogy a távoli felhasználók hozzáférhessenek ezekhez a Storage-fiókokhoz a VPN-kapcsolaton keresztül. Meghirdetheti a tároló végpontjának IP-címét az összes távoli felhasználó számára, hogy a Storage-fiók felé irányuló forgalom a VPN-alagúton, ne pedig a nyilvános interneten legyen.
 
 ![Azure VPN Gateway többhelyes kapcsolat – példa](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
 
-## <a name="to-advertise-custom-routes"></a>Egyéni útvonalak hirdetése
+## <a name="to-advertise-custom-routes"></a>Egyéni útvonalak meghirdetése
 
-Egyéni útvonalak hirdetéséhez `Set-AzVirtualNetworkGateway cmdlet`használja a t. A következő példa bemutatja, hogyan hirdetheti az IP-címet a [Contoso tárfiók-táblákhoz.](https://contoso.table.core.windows.net)
+Egyéni útvonalak meghirdetéséhez használja a `Set-AzVirtualNetworkGateway cmdlet`következőt:. Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
 
-1. Ping *contoso.table.core.windows.net,* és jegyezze fel az IP-címet. Példa:
+1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Például:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,14 +38,14 @@ Egyéni útvonalak hirdetéséhez `Set-AzVirtualNetworkGateway cmdlet`használja
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elkülönítéséhez. Példa:
+3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elválasztásához. Például:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
     ```
 ## <a name="to-view-custom-routes"></a>Egyéni útvonalak megtekintése
 
-Az alábbi példával tekintheti meg az egyéni útvonalakat:
+Az alábbi példa az egyéni útvonalak megtekintésére használható:
 
   ```azurepowershell-interactive
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
@@ -53,7 +53,7 @@ Az alábbi példával tekintheti meg az egyéni útvonalakat:
   ```
 ## <a name="to-delete-custom-routes"></a>Egyéni útvonalak törlése
 
-Az alábbi példával törölheti az egyéni útvonalakat:
+Az alábbi példa használatával törölheti az egyéni útvonalakat:
 
   ```azurepowershell-interactive
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
@@ -61,4 +61,4 @@ Az alábbi példával törölheti az egyéni útvonalakat:
   ```
 ## <a name="next-steps"></a>További lépések
 
-További P2S útválasztási információkért olvassa el [a pont-hely útválasztás – szó.](vpn-gateway-about-point-to-site-routing.md)
+További P2S-útválasztási információk: [Tudnivalók a pont – hely útválasztásról](vpn-gateway-about-point-to-site-routing.md).

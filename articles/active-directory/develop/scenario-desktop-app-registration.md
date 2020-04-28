@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat hívó asztali alkalmazások regisztrálása – Microsoft identity platform | Azure
-description: Megtudhatja, hogy miként hozhat létre webes API-kat meghívja (alkalmazásregisztráció)
+title: Webes API-kat meghívó asztali alkalmazások regisztrálása – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást (alkalmazás-regisztráció)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,50 +12,50 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885157"
 ---
-# <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívjaó asztali alkalmazás: Alkalmazásregisztráció
+# <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
-Ez a cikk az asztali alkalmazások alkalmazásregisztrációs sajátosságait ismerteti.
+Ez a cikk az asztali alkalmazások alkalmazás-regisztrálási sajátosságait ismerteti.
 
 ## <a name="supported-account-types"></a>Támogatott fióktípusok
 
-Az asztali alkalmazásokáltal támogatott fióktípusok a kivilágítani kívánt élménytől függenek. E kapcsolat miatt a támogatott fióktípusok a használni kívánt folyamatoktól függenek.
+Az asztali alkalmazásokban támogatott fióktípus attól függ, hogy milyen élményre van szüksége. A kapcsolat miatt a támogatott fióktípus a használni kívánt folyamatoktól függ.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Interaktív tokenek megszerzésének célközönsége
+### <a name="audience-for-interactive-token-acquisition"></a>Célközönség az interaktív jogkivonat-beszerzéshez
 
-Ha asztali alkalmazása interaktív hitelesítést használ, bármilyen [fióktípusból](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)bejelentkezhet a felhasználókhoz.
+Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fióktípus](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)használatával bejelentkezhet a felhasználókba.
 
-### <a name="audience-for-desktop-app-silent-flows"></a>Az asztali alkalmazások csendes folyamatainak célközönsége
+### <a name="audience-for-desktop-app-silent-flows"></a>Hallgatóság az asztali alkalmazások csendes folyamataihoz
 
-- Az integrált Windows-hitelesítés vagy felhasználónév és jelszó használatához az alkalmazásnak be kell jelentkeznie a saját bérlőjében lévő felhasználókhoz, például ha ön üzletági (LOB) fejlesztő. Vagy az Azure Active Directory-szervezetekben az alkalmazásnak be kell jelentkeznie a saját bérlője, ha egy isv-forgatókönyv. Ezek a hitelesítési folyamatok nem támogatottak a Microsoft személyes fiókok.
-- Ha eszközkód-folyamatot szeretne használni, még nem jelentkezhet be a felhasználóka Microsoft-személyes fiókjukkal.
-- Ha olyan közösségi identitással rendelkező felhasználókat jelentkezbe be, amelyek megfelelnek egy üzleti és kereskedelmi (B2C) jogosultságnak és házirendnek, csak az interaktív és felhasználónév-jelszó hitelesítést használhatja.
+- Ha integrált Windows-hitelesítést vagy felhasználónevet és jelszót szeretne használni, az alkalmazásnak be kell jelentkeznie a saját bérlőben lévő felhasználókba, például ha Ön üzletági (LOB) fejlesztő. Vagy Azure Active Directory szervezetekben az alkalmazásnak saját bérlőben kell bejelentkeznie a felhasználókba, ha az ISV-forgatókönyv. Ezek a hitelesítési folyamatok nem támogatottak a Microsoft személyes fiókjaiban.
+- Ha az eszköz kódját szeretné használni, a felhasználók nem jelentkezhetnek be a Microsoft személyes fiókjaival.
+- Ha a felhasználók olyan közösségi identitásokkal jelentkeznek be, amelyek átadják a vállalattól a kereskedelmi (B2C) hatóságot és a szabályzatot, akkor csak az interaktív és a Felhasználónév-jelszó típusú hitelesítést használhatja.
 
-## <a name="redirect-uris"></a>Uri-k átirányítása
+## <a name="redirect-uris"></a>Átirányítási URI-k
 
 Az asztali alkalmazásokban használandó átirányítási URI-k a használni kívánt folyamattól függenek.
 
-- Ha interaktív hitelesítést vagy eszközkód-áramlást használ, használja a használatát. `https://login.microsoftonline.com/common/oauth2/nativeclient` A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítése** szakaszban.
+- Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát `https://login.microsoftonline.com/common/oauth2/nativeclient`használja, használja a t. A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
   
   > [!IMPORTANT]
-  > Ma MSAL.NET alapértelmezés szerint egy másik átirányítási URI-t használ a Windows rendszeren futó asztali alkalmazásokban (`urn:ietf:wg:oauth:2.0:oob`). A jövőben módosítani szeretnénk ezt az alapértelmezett beállítást, ezért `https://login.microsoftonline.com/common/oauth2/nativeclient`javasoljuk, hogy használja a használatát.
+  > Napjainkban a MSAL.NET egy másik átirányítási URI-t használ a Windows (`urn:ietf:wg:oauth:2.0:oob`) rendszeren futó asztali alkalmazásokban. A jövőben módosítani fogjuk ezt az alapértelmezett értéket, ezért javasoljuk, hogy használja `https://login.microsoftonline.com/common/oauth2/nativeclient`a következőt:.
 
-- Ha natív Objective-C vagy Swift alkalmazást hoz létre macOS-hez, regisztrálja az átirányítási URI-t az alkalmazás csomagazonosítója alapján a következő formátumban: msauth.<your.app.bundle.id>://auth. Cserélje le <your.app.bundle.id> az alkalmazás csomagazonosítójára.
-- Ha az alkalmazás csak integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell átirányítási URI-t regisztrálnia az alkalmazáshoz. Ezek a folyamatok egy oda-vissza a Microsoft identity platform v2.0 végpont. Az alkalmazás nem lesz visszahívva egy adott URI-n.
-- Az eszközkód-áramlás, az integrált Windows-hitelesítés, valamint a felhasználónév és a jelszó megkülönböztetéséhez egy olyan bizalmas ügyfélalkalmazás-folyamattól, amely nem rendelkezik átirányítási URI-k (a démonalkalmazásokban használt ügyfélhitelesítő adatfolyam) megkülönböztetéséhez, ki kell fejeznie, hogy az alkalmazás nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítése** szakaszt. A **Speciális beállítások** alszakasz **Alapértelmezett ügyféltípus** bekezdésében válassza az **Igen** a **Kezelés alkalmazáshoz nyilvános ügyfélként**lehetőséget.
+- Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: msauth. <your.app.bundle.id>://auth. cserélje le <your.app.bundle.id> az alkalmazás Bundle-azonosítójával.
+- Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
+- Ha meg szeretné különböztetni az eszköz kódját, az integrált Windows-hitelesítést, valamint egy olyan bizalmas ügyfélalkalmazás-folyamathoz tartozó felhasználónevet és jelszót, amely nem rendelkezik átirányítási URI-azonosítóval (a démon-alkalmazásokban használt ügyfél-hitelesítő adatok folyamata), meg kell adnia, hogy az alkalmazás egy nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítés** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** csoportjában válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére**.
 
   ![Nyilvános ügyfél engedélyezése](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Az asztali alkalmazások a bejelentkezett felhasználó API-jait hívják meg. Delegált engedélyeket kell kérniük. Nem kérhetnek alkalmazásengedélyeket, amelyeket csak [démonalkalmazásokban](scenario-daemon-overview.md)kezelnek.
+Asztali alkalmazások hívás API-kat a bejelentkezett felhasználó számára. Delegált engedélyeket kell kérniük. Nem igényelhetnek alkalmazás-engedélyeket, amelyek csak Daemon- [alkalmazásokban](scenario-daemon-overview.md)vannak kezelve.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Asztali alkalmazás: Alkalmazás konfigurációja](scenario-desktop-app-configuration.md)
+> [Asztali alkalmazás: alkalmazás konfigurációja](scenario-desktop-app-configuration.md)

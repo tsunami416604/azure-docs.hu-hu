@@ -1,7 +1,7 @@
 ---
-title: Webes API-kat megnevező mobilalkalmazás létrehozása | Azure
+title: Webes API-kat meghívó Mobile-alkalmazás létrehozása | Azure
 titleSuffix: Microsoft identity platform | Azure
-description: Megtudhatja, hogy miként hozhat létre webes API-kat meghívja mobilalkalmazást (áttekintés)
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (áttekintés)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882573"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>Eset: Webes API-kat meghívjaó mobilalkalmazás
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó mobil alkalmazás
 
-További információ a webes API-kat meghívjaó mobilalkalmazás létrehozásáról.
+Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,35 +30,35 @@ További információ a webes API-kat meghívjaó mobilalkalmazás létrehozás�
 
 ## <a name="getting-started"></a>Első lépések
 
-Hozza létre első mobilalkalmazását, és próbálja ki a rövid útmutatót.
+Hozza létre az első mobil alkalmazást, és próbálja ki a gyors üzembe helyezést.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Jogkivonat beszerzése és Microsoft Graph API hívása Android-alkalmazásból](./quickstart-v2-android.md)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása Android-alkalmazásból](./quickstart-v2-android.md)
 >
-> [Rövid útmutató: Jogkivonat beszerzése és microsoft graph API hívása iOS-alkalmazásból](./quickstart-v2-ios.md)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása iOS-alkalmazásból](./quickstart-v2-ios.md)
 >
-> [Rövid útmutató: Token beszerzése és a Microsoft Graph API hívása Xamarin iOS és Android alkalmazásból](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Xamarin iOS-és Android-alkalmazásból](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>Áttekintés
 
-A mobilalkalmazások számára elengedhetetlen a személyre szabott, zökkenőmentes felhasználói élmény.  A Microsoft identity platform lehetővé teszi a mobilfejlesztők számára, hogy ezt a felhasználói élményt iOS és Android felhasználók számára hozzák létre. Az alkalmazás az Azure Active Directory (Azure AD) felhasználóiban, a személyes Microsoft-fiók-felhasználókban és az Azure AD B2C-felhasználókban is bejelentkezhet. Azt is beszerezheti a jogkivonatokat, hogy hívja meg a webes API-t a nevükben. Ezeknek a folyamatoknak a megvalósításához a Microsoft Authentication Library (MSAL) programot használjuk. Az MSAL megvalósítja az [OAuth2.0 engedélyezési kód folyamatát.](v2-oauth2-auth-code-flow.md)
+A mobil alkalmazások esetében elengedhetetlen a személyre szabott, zökkenőmentes felhasználói élmény.  A Microsoft Identity platform lehetővé teszi a mobil fejlesztők számára, hogy az iOS-és Android-felhasználók számára is létrehozzák az élményt. Az alkalmazás bejelentkezhet Azure Active Directory (Azure AD) felhasználókba, személyes Microsoft-fiók felhasználókba és Azure AD B2C felhasználókba. Emellett jogkivonatokat is beszerezzen a webes API-k nevében történő meghívásához. Ezeknek a folyamatoknak a megvalósításához a Microsoft Authentication Library (MSAL) használatát fogjuk használni. A MSAL az iparági szabványnak megfelelő [OAuth 2.0 engedélyezési kódját](v2-oauth2-auth-code-flow.md)valósítja meg.
 
 ![Démonalkalmazások](./media/scenarios/mobile-app.svg)
 
-A mobilalkalmazásokkal kapcsolatos szempontok:
+A Mobile apps szempontjai:
 
-- **A felhasználói élmény kulcsfontosságú:** Lehetővé teheti a felhasználók számára, hogy a bejelentkezés előtt lássák az alkalmazás értékét. Csak a szükséges engedélyeket kérje.
-- **Az összes felhasználói konfiguráció támogatása:** Sok mobilüzleti felhasználónak be kell tartania a feltételes hozzáférési szabályzatokat és az eszközmegfelelőségi szabályzatokat. Ügyeljen arra, hogy támogassa ezeket a kulcsfontosságú forgatókönyveket.
-- **Egyszeri bejelentkezés (SSO) megvalósítása:** Az MSAL és a Microsoft identity platform használatával engedélyezheti az egyszeri bejelentkezést az eszköz böngészőjében vagy a Microsoft Authenticatoron (és az Intune Vállalati portálon Androidon).
-- **Megosztott eszközmód megvalósítása:** Engedélyezze az alkalmazás használható megosztott eszköz forgatókönyvek, például a kórházak, a gyártás, a kiskereskedelem és a pénzügyek. [További információ a megosztott eszközmód támogatásáról.](msal-shared-devices.md)
+- A **felhasználói élmény kulcsfontosságú**: lehetővé teszi, hogy a felhasználók a bejelentkezés előtt lássák az alkalmazás értékét. Csak a szükséges engedélyeket kérje.
+- **Az összes felhasználói konfiguráció támogatása**: sok mobil üzleti felhasználónak be kell tartania a feltételes hozzáférési házirendeket és az eszköz-megfelelőségi szabályzatokat. Ügyeljen arra, hogy támogassa ezeket a kulcsfontosságú forgatókönyveket.
+- **Egyszeri bejelentkezés (SSO) implementálása**: a MSAL és a Microsoft Identity platform használatával engedélyezheti az egyszeri bejelentkezést az eszköz böngészőjében vagy Microsoft Authenticator (és az Androidon is Intune céges portál).
+- **Megosztott eszköz mód implementálása**: lehetővé teszi, hogy alkalmazása megosztott eszközökön, például kórházakban, a gyártásban, a kereskedelemben és a pénzügyben is használható legyen. [További információ a megosztott eszköz üzemmódjának támogatásáról](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Sajátosságai
 
-A Microsoft identitásplatformon mobilalkalmazás létrehozásakor tartsa szem előtt az alábbi szempontokat:
+Vegye figyelembe a következő szempontokat, amikor a Microsoft Identity platformon létrehoz egy Mobile alkalmazást:
 
-- A platformtól függően előfordulhat, hogy a felhasználók első bejelentkezésekor bizonyos felhasználói beavatkozásra van szükség. Az iOS-nek például meg kell mutatnia a felhasználói beavatkozást, amikor először használják az Egyszeri bejelentkezést a Microsoft Authenticator (és az Android Intune Vállalati portálon) keresztül.
-- IOS és Android rendszeren az MSAL külső böngészőt használhat a felhasználók bejelentkezéséhez. Előfordulhat, hogy a külső böngésző az alkalmazás tetején jelenik meg.
-- Soha ne használjon titkos kulcsot mobilalkalmazásban. Ezekben az alkalmazásokban a titkos kulcsok minden felhasználó számára elérhetők.
+- A platformtól függően előfordulhat, hogy egyes felhasználói beavatkozásokra akkor van szükség, amikor a felhasználók először jelentkeznek be. Az iOS esetében például az alkalmazások számára a felhasználói interakció megjelenítésére van szükség, amikor az egyszeri bejelentkezést az első alkalommal használja Microsoft Authenticator (és Intune Céges portál az Android rendszeren).
+- Az iOS és az Android rendszereken a MSAL külső böngésző használatával jelentkezhet be a felhasználókba. Előfordulhat, hogy a külső böngésző az alkalmazás tetején jelenik meg.
+- Soha ne használjon titkos kulcsot a mobil alkalmazásokban. Ezekben az alkalmazásokban a titkok minden felhasználó számára elérhetők.
 
 ## <a name="next-steps"></a>További lépések
 

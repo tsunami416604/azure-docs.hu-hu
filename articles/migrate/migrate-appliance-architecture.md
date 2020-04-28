@@ -1,95 +1,95 @@
 ---
-title: Azure Migrate berendezés architektúra
-description: Áttekintést nyújt az Azure Áttelepítési készülék kiszolgáló felmérésés áttelepítése során használt.
+title: Az Azure Migrate-berendezés architektúrája
+description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80389018"
 ---
-# <a name="azure-migrate-appliance-architecture"></a>Azure Migrate berendezés architektúra
+# <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
-Ez a cikk ismerteti az Azure Migrate berendezés architektúráját és folyamatait. Az Azure Migrate készülék egy könnyű berendezés, amely a helyszínen üzembe helyezett, a virtuális gépek és a fizikai kiszolgálók felderítésére az Azure-ba való migráláshoz. 
+Ez a cikk a Azure Migrate berendezés architektúráját és folyamatait ismerteti. Az Azure Migrate készülék egy helyileg üzembe helyezett, kis üzemben lévő berendezés, amely a virtuális gépeket és fizikai kiszolgálókat észleli az Azure-ba való Migrálás során. 
 
 ## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
-Az Azure Migrate készülék a következő forgatókönyvekben használatos.
+A Azure Migrate készüléket a következő esetekben használja a rendszer.
 
 **Forgatókönyv** | **Eszköz** | **Alkalmazási cél** 
 --- | --- | ---
-**VMware VM értékelés** | Azure Áttelepítés:Kiszolgálófelmérés | Fedezze fel a VMware virtuális gépeket.<br/><br/> Fedezze fel a gépalkalmazásokat és függőségeket.<br/><br/> Gyűjtse össze a gép metaadatait és a teljesítménymetaadatait, és küldje el az Azure-ba.
-**VMware virtuális gép áttelepítése (ügynök nélküli)** | Azure áttelepítése:Kiszolgáló áttelepítése | Fedezze fel a VMware virtuális gépeket<br/><br/>  VMware virtuális gépek replikálása [ügynök nélküli áttelepítéssel.](server-migrate-overview.md)
-**Hyper-V VM értékelés** | Azure Áttelepítés:Kiszolgálófelmérés | Fedezze fel a Hyper-V virtuális gépeket.<br/><br/> Gyűjtse össze a gép metaadatait és a teljesítménymetaadatait, és küldje el az Azure-ba.
-**Fizikai gép** |  Azure Áttelepítés:Kiszolgálófelmérés |  Fedezze fel a fizikai szervereket.<br/><br/> Gyűjtse össze a gép metaadatait és a teljesítménymetaadatait, és küldje el az Azure-ba.
+**VMware virtuális gép értékelése** | Azure Migrate: kiszolgáló értékelése | VMware virtuális gépek felderítése.<br/><br/> Gépi alkalmazások és függőségek felderítése.<br/><br/> A számítógép metaadatainak és a teljesítmény metaadatainak összegyűjtése, valamint az Azure-ba való küldés.
+**VMware virtuális gép migrálása (ügynök nélkül)** | Azure Migrate: kiszolgáló áttelepítése | VMware virtuális gépek felderítése<br/><br/>  VMware virtuális gépek replikálása [ügynök nélküli áttelepítéssel](server-migrate-overview.md).
+**Hyper-V virtuális gépek felmérése** | Azure Migrate: kiszolgáló értékelése | Hyper-V virtuális gépek felderítése.<br/><br/> A számítógép metaadatainak és a teljesítmény metaadatainak összegyűjtése, valamint az Azure-ba való küldés.
+**Fizikai gép** |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgálók felderítése.<br/><br/> A számítógép metaadatainak és a teljesítmény metaadatainak összegyűjtése, valamint az Azure-ba való küldés.
 
-## <a name="appliance-components"></a>A készülék alkatrészei
+## <a name="appliance-components"></a>Berendezés összetevői
 
-A készülék számos alkatrészből áll.
+A készülék számos összetevővel rendelkezik.
 
-- **Felügyeleti alkalmazás:** Ez egy webes alkalmazás a felhasználói bevitel hez a berendezés üzembe helyezése során. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos.
-- **Felderítési ügynök**: Az ügynök összegyűjti a gép konfigurációs adatait. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos. 
-- **Értékelő ügynök**: Az ügynök teljesítményadatokat gyűjt. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos.
-- **DRA-ügynök:** VM-replikáció vezénylése, és koordinálja a replikált gépek és az Azure közötti kommunikációt. Csak akkor használatos, ha a VMware virtuális gépek replikálása az Azure-ba ügynök nélküli áttelepítés használatával.
-- **Átjáró**: Replikált adatokküldése az Azure-ba. Csak akkor használatos, ha a VMware virtuális gépek replikálása az Azure-ba ügynök nélküli áttelepítés használatával.
-- **Automatikus frissítési szolgáltatás**: Frissíti a készülék összetevőit (24 óránként fut).
-
-
-
-## <a name="appliance-deployment"></a>A berendezés üzembe helyezése
-
-- Az Azure Migrate készülék beállítható egy sablon t [a Hyper-V](how-to-set-up-appliance-hyper-v.md) vagy [a VMware](how-to-set-up-appliance-vmware.md) vagy egy PowerShell script telepítő [vmware/Hyper-V](deploy-appliance-script.md), és [a fizikai kiszolgálók.](how-to-set-up-appliance-physical.md) 
-- A készüléktámogatási követelmények és a telepítési előfeltételek a [készülék támogatási mátrixában](migrate-appliance.md)vannak összefoglalva.
+- **Felügyeleti alkalmazás**: ez egy webalkalmazás felhasználói bevitelhez a készülék üzembe helyezése során. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.
+- **Felderítési ügynök**: az ügynök a számítógép-konfigurációs adatokat gyűjti. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos. 
+- **Értékelő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.
+- **DRA-ügynök**: a virtuális gépek replikálását és a replikált számítógépek és az Azure közötti kommunikáció koordinálását koordinálja. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.
+- **Átjáró**: replikált adatokat küld az Azure-nak. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.
+- **Automatikus frissítési szolgáltatás**: a készülék összetevőinek frissítése (24 óránként fut).
 
 
-## <a name="appliance-registration"></a>A készülék regisztrációja
 
-A berendezés beállítása során regisztrálja a készüléket az Azure Migrate, és a táblázatban összefoglalt műveletek bekövetkeznek.
+## <a name="appliance-deployment"></a>Berendezések üzembe helyezése
+
+- A Azure Migrate készülék a [Hyper-V](how-to-set-up-appliance-hyper-v.md) vagy a [VMware](how-to-set-up-appliance-vmware.md) sablon használatával, vagy a [VMware/Hyper-v](deploy-appliance-script.md)-hez készült PowerShell-parancsfájl-telepítővel, valamint a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)esetében állítható be. 
+- A berendezések támogatásának követelményeit és az üzembe helyezés előfeltételeit a [készülék támogatási mátrixa](migrate-appliance.md)összegzi.
+
+
+## <a name="appliance-registration"></a>Készülék regisztrálása
+
+A készülék telepítése során regisztrálja a készüléket Azure Migrate, és a táblázatban összefoglalt műveletek bekövetkeznek.
 
 **Művelet** | **Részletek** | **Engedélyek**
 --- | --- | ---
-**Forrásszolgáltatók regisztrálása** | Ezek az erőforrás-szolgáltatók regisztrálva vannak a készülék beállítása során kiválasztott előfizetésben: Microsoft.OffAzure, Microsoft.Migrate és Microsoft.KeyVault.<br/><br/> Az erőforrás-szolgáltató regisztrálása úgy konfigurálja az előfizetést, hogy működjön együtt az erőforrás-szolgáltatóval. | Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetéshez.
-**Azure AD-alkalmazáskommunikáció létrehozása** | Az Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást a készüléken futó ügynökök és az Azure-on futó megfelelő szolgáltatásaik közötti kommunikációhoz (hitelesítés és engedélyezés).<br/><br/> Ez az alkalmazás nem rendelkezik jogosultságokkal az Azure Resource Manager-hívások hoz, vagy RBAC-hozzáférés bármely erőforráson. | Az alkalmazás létrehozásához szüksége van ezekre az [engedélyekre](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) az Azure Migrate számára.
-**Azure AD-alkalmazások létrehozása-kulcstároló** | Ez az alkalmazás csak a VMware virtuális gépek ügynök nélküli áttelepítéséhez jön létre az Azure-ba.<br/><br/> Kizárólag a felhasználó ügynök nélküli áttelepítési előfizetésében létrehozott kulcstartó eléréséhez használható.<br/><br/> RBAC-hozzáféréssel rendelkezik az Azure key vault (az ügyfél bérlője által létrehozott), amikor a felderítés a készülékről kezdeményezett. | Az alkalmazás létrehozásához szüksége van ezekre az [engedélyekre](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) az Azure Migrate számára.
+**Forrásoldali szolgáltatók regisztrálása** | Ezek az erőforrás-szolgáltatók regisztrálva vannak a készülék beállítása során kiválasztott előfizetésben: Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó.<br/><br/> Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. | Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
+**Azure AD-alkalmazás létrehozása – kommunikáció** | A Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást a készüléken futó ügynökök és az Azure-on futó megfelelő szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez).<br/><br/> Az alkalmazásnak nincs jogosultsága Azure Resource Manager hívásokat kezdeményezni, vagy RBAC hozzáférést bármilyen erőforráshoz. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) kell rendelkeznie.
+**Azure AD-alkalmazások létrehozása – Key Vault** | Ez az alkalmazás csak a VMware virtuális gépeknek az Azure-ba irányuló ügynök nélküli áttelepítéséhez jön létre.<br/><br/> Kizárólag az ügynök nélküli áttelepítés felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.<br/><br/> A RBAC hozzáférése az Azure Key vaultban (az ügyfél bérlője alapján jött létre), ha a felderítést kezdeményezik a készülékről. | A Azure Migrate az alkalmazás létrehozásához szükséges [engedélyekkel](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) kell rendelkeznie.
 
 
 
 ## <a name="collected-data"></a>Összegyűjtött adatok
 
-Az ügyfél által az összes telepítési forgatókönyvhöz gyűjtött adatokat a [készülék támogatási mátrixa](migrate-appliance.md)foglalja össze.
+Az ügyfél által az összes központi telepítési forgatókönyvhöz gyűjtött adatokat a [készülék támogatási mátrixa](migrate-appliance.md)összegzi.
 
 ## <a name="discovery-and-collection-process"></a>Felderítési és gyűjtési folyamat
 
 ![Architektúra](./media/migrate-appliance-architecture/architecture.png)
 
-A készülék a következő folyamat tal kommunikál a vCenter-kiszolgálókkal és a Hyper-V gazdagépekkel/fürttel.
+A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal és a Hyper-V-gazdagépekkel/-fürtökkel.
 
-1. **Felderítés megkezdése**:
-    - Amikor elindítja a discovery a Hyper-V készülék, kommunikál a Hyper-V állomások WinRM portok 5985 (HTTP) és 5986 (HTTPS).
-    - Amikor elindítja a felderítést a VMware-készüléken, alapértelmezés szerint kommunikál a vCenter-kiszolgálóval a 443-as TCP-porton. Ha a vCenter-kiszolgáló egy másik porton figyel, konfigurálhatja azt a készülék webalkalmazásban.
-2. **Metaadatok és teljesítményadatok gyűjtése:**
-    - A készülék egy közös információs modell (CIM) munkamenetet használ a Hyper-V VM adatok gyűjtésére a Hyper-V állomásról az 5985-ös és az 5986-os porton.
-    - A készülék alapértelmezés szerint a 443-as porttal kommunikál, hogy vmware vm-adatokat gyűjtsön a vCenter Server kiszolgálóról.
-3. **Adatok küldése:** A készülék elküldi az összegyűjtött adatokat az Azure Migrate Server Assessment és az Azure Migrate Server Migration ssl-porton keresztül 443. A készülék az interneten keresztül csatlakozhat az Azure-hoz, vagy használhatja az ExpressRoute-ot nyilvános/Microsoft-társviszony-létesítéssel.
-    - A teljesítményadatok hoz a készülék valós idejű kihasználtsági adatokat gyűjt.
-        - A VMware teljesítményadatait 20 másodpercenként, a Hyper-V esetében pedig 30 másodpercenként gyűjtjük a teljesítményadatokat az egyes teljesítménymutatók esetében.
-        - Az összegyűjtött adatok at göngyölítve 10 percig egyetlen adatpontot hozlétre.
-        - A maximális kihasználtsági érték az összes 20/30 másodperces adatpont közül van kiválasztva, és elküldi az Azure-nak az értékelés kiszámításához.
-        - Az értékelési tulajdonságokban megadott percentilis érték (50th/90th/95th/99th) alapján a tízperces pontok növekvő sorrendben vannak rendezve, és a megfelelő percentilis érték az értékelés kiszámításához használatosak.
-    - Server Migration esetén a készülék megkezdi a virtuális gép adatok gyűjtését, és replikálja azOkat az Azure-ba.
-4. **Felmérheti és áttelepítheti:** Most már létrehozhat értékeléseket a készülék által az Azure Migrate Server Assessment használatával gyűjtött metaadatokból. Emellett a VMware virtuális gépek áttelepítése is megkezdheti az Azure Áttelepítési kiszolgáló áttelepítése használatával ügynök nélküli virtuális gép replikációjának vezénylése.
-
-
+1. **Felderítés elindítása**:
+    - Amikor elindítja a felderítést a Hyper-V berendezésen, az a 5985-as (HTTP) és a 5986 (HTTPS) WinRM-portok Hyper-V-gazdagépekkel kommunikál.
+    - Amikor elindítja a felderítést a VMware készüléken, az a 443-as TCP-porton keresztül kommunikál a vCenter-kiszolgálóval. Ha a vCenter-kiszolgáló egy másik portot figyel, konfigurálhatja azt a berendezés webalkalmazásban.
+2. **Metaadatok és teljesítményadatok összegyűjtése**:
+    - A készülék egy CIM-(CIM-) munkamenetet használ a Hyper-V virtuális gépek adatainak a Hyper-V-gazdagépről a 5985-es és 5986-es portokon való összegyűjtéséhez.
+    - A készülék alapértelmezés szerint az 443-as porttal kommunikál a VMware virtuális gépek adatainak a vCenter Serverból való összegyűjtéséhez.
+3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül. A készülék az interneten keresztül tud csatlakozni az Azure-hoz, vagy használhatja a ExpressRoute nyilvános/Microsoft-partneri kapcsolattal is.
+    - A teljesítményadatok esetében a készülék valós idejű kihasználtsági adatokat gyűjt.
+        - A teljesítményadatokat a rendszer minden egyes teljesítménymutató esetében 20 másodpercenként gyűjti a VMware-hez, és minden 30 másodpercenként a Hyper-V-hez.
+        - Az összegyűjtött adatokat a rendszer összesíti, hogy egy adatpontot 10 percen belül hozzon létre.
+        - A csúcsérték kihasználtsági értéke a 20/30 másodperces adatpontból van kiválasztva, és az Azure-ba az értékelés kiszámításához lett küldve.
+        - Az értékelés tulajdonságaiban (50/90/95./esetek 99%) megadott százalékos érték alapján a tíz perces pont növekvő sorrendbe kerül, és az értékelés kiszámításához a megfelelő percentilis értéket használja a rendszer.
+    - A kiszolgáló áttelepítése esetén a készülék elkezdi a virtuális gépekkel kapcsolatos adatok gyűjtését, és replikálja azt az Azure-ba.
+4. **Értékelés és Migrálás**: most már létrehozhat értékeléseket a készülék által gyűjtött metaadatokból Azure Migrate Server Assessment használatával. Emellett a VMware virtuális gépek áttelepítését is megkezdheti Azure Migrate kiszolgáló áttelepítésével az ügynök nélküli virtuális gép replikálásának előkészítéséhez.
 
 
 
-## <a name="appliance-upgrades"></a>A készülék frissítései
 
-A készülék frissítése az Azure Migrate ügynökök a készüléken futó frissítéseket. Ez automatikusan megtörténik, mert az automatikus frissítés alapértelmezés szerint engedélyezve van a készüléken. Az alapértelmezett beállítás módosításával manuálisan frissítheti az ügyintézőket.
 
-A beállításjegyzékben az automatikus frissítést úgy kapcsolja ki, hogy a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" billentyűt 0-ra (Duplaszó) állítja.
+## <a name="appliance-upgrades"></a>Berendezések frissítése
+
+A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynökök frissülnek. Ez automatikusan megtörténik, mivel alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken. Az alapértelmezett beállítás módosításával manuálisan is frissítheti az ügynököket.
+
+Ha kikapcsolja az automatikus frissítést a beállításjegyzékben, állítsa a HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" kulcsot 0 (DWORD) értékre.
 
  
 

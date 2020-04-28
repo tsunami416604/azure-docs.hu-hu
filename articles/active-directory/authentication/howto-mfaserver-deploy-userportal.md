@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653212"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
@@ -29,7 +29,7 @@ A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhas
 A felhasználói portált a környezettől függően érdemes lehet az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra, illetve egy másik, internetkapcsolattal rendelkező kiszolgálóra telepíteni.
 
 > [!IMPORTANT]
-> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
+> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
 ![MFA-kiszolgáló felhasználói portáljának bejelentkezési lapja](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -43,41 +43,41 @@ Mindkét forgatókönyvre érvényes, hogy ha az Azure Multi-Factor Authenticati
 1. Nyissa meg a Multi-Factor Authentication-kiszolgáló konzolját.
 2. Lépjen a **Web Service SDK** részre, majd válassza a **Web Service SDK telepítése** lehetőséget.
 3. Végezze el a telepítést az alapértelmezett értékekkel, hacsak nem kell valamilyen okból módosítania őket.
-4. TLS/SSL-tanúsítvány kötése az IIS-ben lévő helyhez.
+4. Kösse a TLS/SSL-tanúsítványt a webhelyhez az IIS-ben.
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón történő beállításával kapcsolatban, olvassa el az [SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
-A webszolgáltatás SDK-ját TLS/SSL tanúsítvánnyal kell biztosítani. Erre a célra megfelel egy önaláírt tanúsítvány. Importálja a tanúsítványt a Felhasználói portál webkiszolgálón található helyi számítógépfiók "Megbízható legfelső szintű hitelesítésszolgáltatók" tárolójába, hogy a TLS-kapcsolat megtervezésekor megbízzon a tanúsítványban.
+A Web Service SDK-t TLS/SSL-tanúsítvánnyal kell védeni. Erre a célra megfelel egy önaláírt tanúsítvány. Importálja a tanúsítványt a felhasználói portál webkiszolgálóján lévő helyi számítógépfiók "megbízható legfelső szintű hitelesítésszolgáltatók" tárolójába, hogy az megbízhatónak minősítse ezt a tanúsítványt a TLS-kapcsolat indításakor.
 
 ![MFA-kiszolgáló konfigurálása – Web Service SDK](./media/howto-mfaserver-deploy-userportal/sdk.png)
 
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálón
 
-A következő előfeltételek szükségesek a felhasználói portál nak az Azure többtényezős hitelesítési kiszolgálóval **azonos kiszolgálóra** való telepítéséhez:
+A következő előfeltételek szükségesek ahhoz, hogy a felhasználói portált **ugyanarra a kiszolgálóra** telepítse, mint az Azure multi-Factor Authentication-kiszolgáló:
 
 * IIS, beleértve az ASP.NET-et és az IIS 6 metabázisával való kompatibilitási funkciót (IIS 7 vagy újabb verzió esetén)
 * Egy fiók rendszergazdai jogosultságokkal a számítógéphez és a tartományhoz, ha szükséges. A fióknak engedéllyel kell rendelkeznie Active Directory-biztonságicsoportok létrehozásához.
-* Biztosítsa a felhasználói portált TLS/SSL tanúsítvánnyal.
-* Biztosítsa az Azure többtényezős hitelesítési webszolgáltatás SDK tls/Ssl tanúsítvánnyal.
+* A felhasználói portál védelme TLS/SSL-tanúsítvánnyal.
+* Az Azure Multi-Factor Authentication Web Service SDK védelme TLS/SSL-tanúsítvánnyal.
 
 A felhasználói portál üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg az Azure Multi-Factor Authentication-kiszolgáló konzolját, kattintson a bal oldali menüben lévő **Felhasználói portál** ikonra, majd kattintson a **Felhasználói portál telepítése** parancsra.
 2. Végezze el a telepítést az alapértelmezett értékekkel, hacsak nem kell valamilyen okból módosítania őket.
-3. TLS/SSL-tanúsítvány kötése az IIS-ben lévő helyhez
+3. TLS/SSL-tanúsítvány kötése a webhelyhez az IIS-ben
 
    > [!NOTE]
-   > Ez a TLS/SSL tanúsítvány általában nyilvánosan aláírt TLS/SSL tanúsítvány.
+   > Ez a TLS/SSL-tanúsítvány általában nyilvánosan aláírt TLS/SSL-tanúsítvány.
 
-4. Nyisson meg egy webböngészőt bármely számítógépről, és keresse `https://mfa.contoso.com/MultiFactorAuth`meg azt az URL-címet, amelyre a felhasználói portált telepítették (Példa: ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+4. Nyisson meg egy webböngészőt bármilyen számítógépről, és navigáljon arra az URL-címre, ahol a felhasználói `https://mfa.contoso.com/MultiFactorAuth`portál telepítve van (például:). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
 ![MFA-kiszolgáló felhasználói portáljának telepítése](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón történő beállításával kapcsolatban, olvassa el az [SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>A felhasználói portál telepítése különálló kiszolgálón
 
-Ha az a kiszolgáló, amelyen az Azure többtényezős hitelesítési kiszolgálója fut, nem internetfelé néz, telepítse a felhasználói portált egy **külön, internetre néző kiszolgálóra.**
+Ha az Azure Multi-Factor Authentication-kiszolgáló rendszert futtató kiszolgáló nem Internetes elérésű, akkor a felhasználói portált **külön, internetkapcsolattal rendelkező kiszolgálón**kell telepíteni.
 
 Ha a szervezete egyik ellenőrzési módszerként a Microsoft Authenticator appot használja, és telepíteni szeretné a felhasználói portált a saját kiszolgálóján, az alábbi feltételeknek kell teljesülniük:
 
@@ -85,19 +85,19 @@ Ha a szervezete egyik ellenőrzési módszerként a Microsoft Authenticator appo
 * A felhasználói portált a Microsoft Internet Information Services (IIS) 6.x-es vagy újabb verzióját futtató internetes webkiszolgálóra kell telepítenie.
 * Az IIS 6.x használatakor győződjön meg arról, hogy az ASP.NET 2.0.50727-es verziója telepítve van, regisztrálva van, és a beállítása **Engedélyezve**.
 * Az IIS 7.x vagy újabb verzió használatakor IIS, beleértve az alapszintű hitelesítést, az ASP.NET-et és az IIS 6 metabázisával való kompatibilitási funkciót.
-* Biztosítsa a felhasználói portált TLS/SSL tanúsítvánnyal.
-* Biztosítsa az Azure többtényezős hitelesítési webszolgáltatás SDK tls/Ssl tanúsítvánnyal.
-* Győződjön meg arról, hogy a felhasználói portál csatlakozhat az Azure többtényezős hitelesítéswebszolgáltatás SDK TLS/SSL-en keresztül.
+* A felhasználói portál védelme TLS/SSL-tanúsítvánnyal.
+* Az Azure Multi-Factor Authentication Web Service SDK védelme TLS/SSL-tanúsítvánnyal.
+* Győződjön meg arról, hogy a felhasználói portál a TLS/SSL protokollon keresztül tud csatlakozni az Azure Multi-Factor Authentication Web Service SDK-hoz.
 * A felhasználói portálnak képesnek kell lennie arra, hogy a „PhoneFactor-adminisztrátorok” nevű biztonsági csoportban található szolgáltatásfiók hitelesítő adataival végezzen hitelesítést az Azure Multi-Factor Authentication Web Service SDK-ban. Ez a szolgáltatásfiók és csoport az Active Directoryban található meg, ha az Azure Multi-Factor Authentication-kiszolgáló tartományhoz csatlakoztatott kiszolgálón fut. Ez a szolgáltatásfiók és csoport helyben található meg az Azure Multi-Factor Authentication-kiszolgálón, ha az nincs tartományhoz csatlakoztatva.
 
 A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól eltérő kiszolgálón való telepítésének lépései a következők:
 
 1. **Az MFA-kiszolgálón** lépjen a telepítés helyére (például C:\Program Files\Multi-Factor Authentication Server), majd másolja a **MultiFactorAuthenticationUserPortalSetup64** fájlt egy olyan helyre, ahol hozzáférhet az interneteléréssel rendelkező kiszolgáló, amelyen telepíteni szeretné.
 2. **Az interneteléréssel rendelkező webkiszolgálón** futtassa a Multi-Factor AuthenticationMobileAppWebServiceSetup telepítőfájlt rendszergazdaként, szükség esetén módosítsa a Hely beállítást, és tetszés szerint adjon meg egy rövid nevet a virtuális címtár számára.
-3. TLS/SSL-tanúsítvány kötése az IIS-ben lévő helyhez.
+3. Kösse a TLS/SSL-tanúsítványt a webhelyhez az IIS-ben.
 
    > [!NOTE]
-   > Ez a TLS/SSL tanúsítvány általában nyilvánosan aláírt TLS/SSL tanúsítvány.
+   > Ez a TLS/SSL-tanúsítvány általában nyilvánosan aláírt TLS/SSL-tanúsítvány.
 
 4. Lépjen a **C:\inetpub\wwwroot\MultiFactorAuth** helyre.
 5. Szerkessze a Web.config fájlt a Jegyzettömbben.
@@ -105,12 +105,12 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
     * Keresse meg a **"USE_WEB_SERVICE_SDK"** kulcsot, és módosítsa **value="false"** értékről **value="true"** értékre.
     * Keresse meg a **„WEB_SERVICE_SDK_AUTHENTICATION_USERNAME”** kulcsot, és módosítsa a **value=""** értéket **value="DOMAIN\User"** értékre, ahol a DOMAIN\User egy olyan szolgáltatásfiók, amely a „PhoneFactor-adminisztrátorok” csoport tagja.
     * Keresse meg a **„WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD”** kulcsot, és módosítsa a **value=""** értéket **value="Password"** értékre, ahol a Password az előző sorban megadott szolgáltatásfiókhoz tartozó jelszó.
-    * Keresse meg **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** az értéket, és módosítsa ezt a helyőrző URL-t a webszolgáltatás SDK URL-címére, amelyet a 2.
+    * Keresse meg az **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** értéket, és módosítsa ezt a helyőrző URL-címet a 2. lépésben telepített Web Service SDK URL-címére.
     * Mentse a Web.Config fájlt, és zárja be a Jegyzettömböt.
 
-6. Nyisson meg egy webböngészőt bármely számítógépről, és keresse `https://mfa.contoso.com/MultiFactorAuth`meg azt az URL-címet, amelyre a felhasználói portált telepítették (Példa: ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+6. Nyisson meg egy webböngészőt bármilyen számítógépről, és navigáljon arra az URL-címre, ahol a felhasználói `https://mfa.contoso.com/MultiFactorAuth`portál telepítve van (például:). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón történő beállításával kapcsolatban, olvassa el az [SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 
@@ -118,7 +118,7 @@ Most, hogy telepítette a felhasználói portált, konfigurálnia kell az Azure 
 
 1. Az Azure Multi-Factor Authentication-kiszolgáló konzoljában kattintson a **Felhasználói portál** ikonra. A Beállítások lapon írja be a felhasználói portál URL-címét a **Felhasználói portál URL-címe** szövegmezőbe. Ez az URL-cím a felhasználóknak küldött e-mailekben szerepel a felhasználók Azure Multi-Factor Authentication-kiszolgálóra való importálásakor, ha az e-mailes funkció engedélyezve van.
 2. Válassza ki a felhasználói portálon használni kívánt beállításokat. Ha például a felhasználók választhatják ki a hitelesítési módszereket, győződjön meg arról, hogy a **Módszer kiválasztásának engedélyezése a felhasználóknak** jelölőnégyzet be van jelölve azokkal a módszerekkel együtt, amelyek közül választhatnak.
-3. A Rendszergazdák lapon határozza meg, hogy ki legyen a **Rendszergazdák** lap. Részletes rendszergazdai engedélyeket hozhat létre a Hozzáadás/szerkesztés mezőkben található jelölőnégyzetekkel és legördülő listákkal.
+3. Határozza meg, hogy kik legyenek a rendszergazdák a **rendszergazdák** lapon. A Hozzáadás/szerkesztés mezőkben a jelölőnégyzetek és a legördülő lista használatával részletes rendszergazdai engedélyeket hozhat létre.
 
 Választható konfiguráció:
 
@@ -146,15 +146,15 @@ Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a f
 | Naplózás engedélyezése | Lehetővé teszi a naplózást a felhasználói portálon. A naplófájlok a következő helyen találhatók: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 > [!IMPORTANT]
-> 2019 márciusátantól a telefonhívási beállítások nem lesznek elérhetők az MFA Server-felhasználók számára az ingyenes/próba verziós Azure AD-bérlőkben. Az SMS-üzeneteket ez a változás nem érinti. A telefonhívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a módosítás csak az ingyenes/próba verziós Azure AD-bérlők.
+> 2019 márciusában a telefonhívási lehetőségek nem lesznek elérhetők az MFA-kiszolgáló felhasználói számára ingyenes/próbaverziós Azure AD-bérlők esetében. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a változás csak az ingyenes/próbaverziós Azure AD-bérlőket befolyásolja.
 
 Ezen beállítások láthatóvá válnak a portálon a felhasználók számára, ha engedélyezettek és be vannak jelentkezve a felhasználói portálra.
 
-![Az MFA-kiszolgálófiók kezelése a felhasználói portál használatával](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Az MFA-kiszolgáló fiókjának kezelése a felhasználói portál használatával](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Önkiszolgáló felhasználói regisztráció
 
-Ha azt szeretné, hogy a felhasználók bejelentkezhessenek és regisztrálhassanak, a Beállítások lap Felhasználók **jelentkezésének engedélyezése** és a **Felhasználói regisztráció engedélyezése** lehetőséget kell választania.
+Ha azt szeretné, hogy a felhasználók bejelentkezzenek és regisztráljanak, be kell jelölnie a **felhasználók bejelentkezésének engedélyezése** és a **felhasználói beléptetési beállítások engedélyezése** a beállítások lapon. Ne feledje, hogy a kiválasztott beállítások hatással vannak a felhasználó bejelentkezési felületére.
 
 Amikor például egy felhasználó először jelentkezik be a felhasználói portálra, az Azure Multi-Factor Authentication felhasználói beállítási lapjára kerül. Az Azure Multi-Factor Authentication konfigurációjától függően lehet, hogy a felhasználó kiválaszthatja a hitelesítési módszert.
 
@@ -162,11 +162,11 @@ Ha a felhasználók a Hanghívás ellenőrzési módszert választják vagy ha e
 
 ![Elsődleges és másodlagos telefonszámok regisztrálása](./media/howto-mfaserver-deploy-userportal/backupphone.png)
 
-Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód létrehozását is kéri. A telefonszám(ok) és a PIN-kód (ha van) megadása után a felhasználó a **Hívjon fel a hitelesítéshez** gombra kattint. Az Azure többtényezős hitelesítése telefonhívások ellenőrzését végzi el a felhasználó elsődleges telefonszámán. A felhasználónak fogadnia kell a hívást, és meg kell adnia a PIN-kódját (ha van), majd meg kell nyomnia a # gombot az önregisztrációs folyamat következő lépésére való továbblépéshez.
+Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód létrehozását is kéri. A telefonszám(ok) és a PIN-kód (ha van) megadása után a felhasználó a **Hívjon fel a hitelesítéshez** gombra kattint. Az Azure Multi-Factor Authentication telefonhívás-ellenőrzést hajt végre a felhasználó elsődleges telefonszámán. A felhasználónak fogadnia kell a hívást, és meg kell adnia a PIN-kódját (ha van), majd meg kell nyomnia a # gombot az önregisztrációs folyamat következő lépésére való továbblépéshez.
 
-Ha a felhasználók a szöveges üzenetes ellenőrzési módszert választják, vagy ha ez a módszer van előre konfigurálva, a lapon meg kell adniuk a mobiltelefonszámukat. Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám és a PIN-kód (ha van) beírása után a felhasználó a **Küldjön SMS-t a hitelesítéshez** gombra kattint. Az Azure többtényezős hitelesítés sms-ellenőrzést végez a felhasználó mobiltelefonján. A felhasználó egyszeri jelszót (one-time-passcode, OTP) tartalmazó SMS-t kap, és válaszol az üzenetre az OTP-vel és a PIN-kódjával (ha van).
+Ha a felhasználók a szöveges üzenetes ellenőrzési módszert választják, vagy ha ez a módszer van előre konfigurálva, a lapon meg kell adniuk a mobiltelefonszámukat. Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám és a PIN-kód (ha van) beírása után a felhasználó a **Küldjön SMS-t a hitelesítéshez** gombra kattint. Az Azure Multi-Factor Authentication SMS-ellenőrzést végez a felhasználó mobiltelefonjára. A felhasználó egyszeri jelszót (one-time-passcode, OTP) tartalmazó SMS-t kap, és válaszol az üzenetre az OTP-vel és a PIN-kódjával (ha van).
 
-![Felhasználói portál ellenőrzése SMS-ben](./media/howto-mfaserver-deploy-userportal/text.png)
+![Felhasználói portál ellenőrzése SMS-sel](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Ha a felhasználó a mobilalkalmazásos ellenőrzési módszert választja, az oldal felkéri, hogy telepítse a Microsoft Authenticator alkalmazást az eszközére, és hozzon létre egy aktiválási kódot. Az alkalmazás telepítése után a felhasználónak az Aktiváló kód előállítása gombra kell kattintania.
 
@@ -175,7 +175,7 @@ Ha a felhasználó a mobilalkalmazásos ellenőrzési módszert választja, az o
 
 A lap ezután megjelenít egy aktiválási kódot és egy URL-címet egy vonalkód képével együtt. Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri. A felhasználó beírja az aktiválási kódot és az URL-címet a Microsoft Authenticator alkalmazásba, vagy a vonalkódolvasóval beolvassa a vonalkódot, majd az Aktiválás gombra kattint.
 
-Az aktiválás elvégzése után a felhasználó a **Hitelesítsen most** gombra kattint. Az Azure többtényezős hitelesítése ellenőrzést végez a felhasználó mobilalkalmazásában. A felhasználónak meg kell adnia a PIN-kódját (ha van) és a mobilalkalmazásban a Hitelesítés gombra kell kattintania, hogy az önregisztrációs folyamat következő lépésére ugorjon.
+Az aktiválás elvégzése után a felhasználó a **Hitelesítsen most** gombra kattint. Az Azure Multi-Factor Authentication ellenőrzést végez a felhasználó Mobile alkalmazásával. A felhasználónak meg kell adnia a PIN-kódját (ha van) és a mobilalkalmazásban a Hitelesítés gombra kell kattintania, hogy az önregisztrációs folyamat következő lépésére ugorjon.
 
 Ha a rendszergazdák úgy konfigurálták az Azure Multi-Factor Authentication-kiszolgálót, hogy biztonsági kérdéseket és válaszokat gyűjtsön, a felhasználó a Biztonsági kérdések lapra kerül. A felhasználónak ki kell választania négy biztonsági kérdést, és meg kell válaszolnia azokat.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory alkalmazásjegyzék ismertetése
-description: Az Azure Active Directory alkalmazásjegyzék részletes lefedettsége, amely egy alkalmazás identitáskonfigurációját képviseli egy Azure AD-bérlőben, és az OAuth-engedélyezés, a hozzájárulási élmény és egyebek megkönnyítésére szolgál.
+title: A Azure Active Directory alkalmazás jegyzékfájljának ismertetése
+description: A Azure Active Directory alkalmazás jegyzékének részletes lefedettsége, amely egy Azure AD-bérlőben az alkalmazás identitás-konfigurációját jelöli, és a OAuth engedélyezésének, a hozzájárulási élménynek és egyéb megoldásoknak a megkönnyítése érdekében használatos.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,41 +13,41 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450881"
 ---
-# <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory alkalmazás jegyzékfájlja
+# <a name="azure-active-directory-app-manifest"></a>Azure Active Directory alkalmazás jegyzékfájlja
 
-Az alkalmazásjegyzék tartalmazza egy alkalmazásobjektum összes attribútumának definícióját a Microsoft identity platformon. Az alkalmazásobjektum frissítésének mechanizmusaként is szolgál. Az alkalmazás entitásról és annak sémájáról a [Graph API Application entitás dokumentációjában](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)olvashat bővebben.
+Az alkalmazás jegyzékfájlja a Microsoft Identity platform alkalmazás-objektumának összes attribútumának definícióját tartalmazza. Az alkalmazás-objektum frissítésére szolgáló mechanizmusként is szolgál. Az alkalmazás entitásával és annak sémájával kapcsolatos további információkért tekintse meg a [Graph API alkalmazás-entitás dokumentációját](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
 
-Az alkalmazások attribútumait az Azure Portalon vagy programozott módon konfigurálhatja a [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan esetek, ahol az alkalmazásjegyzéket kell szerkeszteni az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
+Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
 
-* Ha regisztrálta az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókként, nem módosíthatja a támogatott Microsoft-fiókokat a felhasználói felületen. Ehelyett az alkalmazásjegyzék-szerkesztőt kell használnia a támogatott fióktípus módosításához.
-* Ha meg kell adnia az alkalmazás által támogatott engedélyeket és szerepköröket, módosítania kell az alkalmazásjegyzéket.
+* Ha az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókkal regisztrálta, a felhasználói felületen nem módosíthatja a támogatott Microsoft-fiókokat. Ehelyett az Application manifest Editort kell használnia a támogatott fióktípus módosításához.
+* Ha meg kell határoznia az alkalmazás által támogatott engedélyeket és szerepköröket, módosítania kell az alkalmazás jegyzékfájlját.
 
-## <a name="configure-the-app-manifest"></a>Az alkalmazásjegyzék konfigurálása
+## <a name="configure-the-app-manifest"></a>Az alkalmazás jegyzékfájljának konfigurálása
 
-Az alkalmazásjegyzék konfigurálása:
+Az alkalmazás jegyzékfájljának konfigurálása:
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com) Keresse meg és válassza ki az **Azure Active Directory** szolgáltatást.
-1. Válassza **az Alkalmazásregisztrációk lehetőséget.**
+1. Lépjen a [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Válassza ki a konfigurálni kívánt alkalmazást.
-1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékszerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését a portálon belül. Szükség esetén a **Letöltés** lehetőséget választva helyileg szerkesztheti a jegyzékfájlt, majd az Upload segítségével újra **alkalmazhatja** azt az alkalmazásra.
+1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését a portálon belül. Ha szeretné, a **Letöltés** lehetőségre kattintva helyileg szerkesztheti a jegyzékfájlt, majd a **feltöltés** funkcióval újra alkalmazhatja azt az alkalmazásra.
 
-## <a name="manifest-reference"></a>Jegyzékfájl hivatkozása
+## <a name="manifest-reference"></a>Jegyzékfájl-hivatkozás
 
-Ez a szakasz az alkalmazásjegyzékben található attribútumokat ismerteti.
+Ez a szakasz az alkalmazás jegyzékfájljában található attribútumokat ismerteti.
 
-### <a name="id-attribute"></a>id attribútum
+### <a name="id-attribute"></a>azonosító attribútum
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
 | id | Sztring |
 
-A címtárban lévő alkalmazás egyedi azonosítója. Ez az azonosító nem az az azonosító, amelyet az alkalmazás azonosítására használnak bármely protokolltranzakcióban. Az objektum címtárlekérdezésekben való hivatkozására szolgál.
+Az alkalmazás egyedi azonosítója a címtárban. Ez az azonosító nem az alkalmazás azonosítására szolgáló azonosító a protokoll tranzakciójában. Ez az objektum címtárbeli lekérdezésekben való hivatkozására szolgál.
 
 Példa:
 
@@ -59,15 +59,15 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| accessTokenAcceptedVersion | Érvényteleníthető Int32 |
+| accessTokenAcceptedVersion | Üres Int32 |
 
-Megadja az erőforrás által várt hozzáférési jogkivonat-verziót. Ez a paraméter módosítja a hozzáférési jogkivonat kéréséhez használt végponttól vagy ügyféltől függetlenül előállított JWT verzióját és formátumát.
+Megadja az erőforrás által várt hozzáférési jogkivonat verzióját. Ezzel a paraméterrel megváltoztatható a végpont vagy az ügyfél által a hozzáférési jogkivonat igényléséhez használt JWT-verzió és-formátum.
 
-A használt végpontot ( 1.0 vagy 2.0) az ügyfél választja ki, és csak a id_tokens verzióját érinti. Az erőforrásokat explicit `accesstokenAcceptedVersion` módon kell konfigurálni a támogatott hozzáférési jogkivonat-formátum jelzésére.
+A használt végpontot (v 1.0 vagy v 2.0) az ügyfél választja ki, és csak a id_tokens verzióját érinti. Az erőforrásoknak explicit módon be `accesstokenAcceptedVersion` kell állítaniuk a hozzáférést a támogatott hozzáférési jogkivonat formátumának jelzéséhez.
 
-A lehetséges `accesstokenAcceptedVersion` értékek: 1, 2 vagy null. Ha az érték null, ez a paraméter alapértelmezés szerint 1, amely megfelel a v1.0 végpont.
+A lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy NULL. Ha az érték null, a paraméter alapértelmezett értéke 1, amely a v 1.0 végpontnak felel meg.
 
-Ha `signInAudience` `AzureADandPersonalMicrosoftAccount`van , az `2`értéknek a nak kell lennie.
+Ha `signInAudience` a `AzureADandPersonalMicrosoftAccount`értéke, akkor az értéknek kell lennie `2`.
 
 Példa:
 
@@ -75,13 +75,13 @@ Példa:
     "accessTokenAcceptedVersion": 2,
 ```
 
-### <a name="addins-attribute"></a>addIns attribútum
+### <a name="addins-attribute"></a>Bővítmények attribútuma
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| Kiegészítők | Gyűjtemény |
+| Bővítmények | Gyűjtemény |
 
-Olyan egyéni viselkedést határoz meg, amelyet egy fogyasztó szolgáltatás egy alkalmazás adott környezetben történő hívására használhat. A fájlfolyamok megjelenítésére alkalmas alkalmazások `addIns` például beállíthatják a "FileHandler" funkció tulajdonságát. Ez a paraméter lehetővé teszi, hogy az Olyan szolgáltatások, mint az Office 365, meghívja az alkalmazást egy olyan dokumentum kontextusában, amelyen a felhasználó dolgozik.
+Meghatározza azt az egyéni viselkedést, amelyet a felhasználó szolgáltatás használhat az alkalmazások adott környezetben való meghívásához. Előfordulhat például, hogy a file streameket megjelenítő alkalmazások a `addIns` "FileHandler" funkció tulajdonságát is megadhatják. Ez a paraméter lehetővé teszi, hogy az Office 365-hez hasonló szolgáltatások hívja meg az alkalmazást egy olyan dokumentum kontextusában, amelyben a felhasználó dolgozik.
 
 Példa:
 
@@ -104,9 +104,9 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| engedélyező Nyilvánosügyfél | Logikai |
+| allowPublicClient | Logikai |
 
-Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint a replyUrlsWithType alkalmazástípusból következtet. Vannak bizonyos forgatókönyvek, ahol az Azure AD nem tudja meghatározni az ügyfélalkalmazás típusát. Például az egyik ilyen forgatókönyv a [ROPC-folyamat,](https://tools.ietf.org/html/rfc6749#section-4.3) ahol a HTTP-kérelem URL-átirányítás nélkül történik). Ezekben az esetekben az Azure AD fogja értelmezni az alkalmazás típusát a tulajdonság értéke alapján. Ha ez az érték igaz, a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték hamis, ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
+Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint kikövetkezteti az alkalmazás típusát a replyUrlsWithType. Vannak olyan helyzetek, amikor az Azure AD nem tudja megállapítani az ügyfél-alkalmazás típusát. Például az egyik ilyen forgatókönyv az a [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) folyamat, amelyben a HTTP-kérelem URL-átirányítás nélkül történik. Ezekben az esetekben az Azure AD az alkalmazás típusát a tulajdonság értéke alapján fogja értelmezni. Ha az érték TRUE (igaz), a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
 
 Példa:
 
@@ -120,10 +120,10 @@ Példa:
 | :--- | :--- |
 | availableToOtherTenants | Logikai |
 
-Állítsa igaz, ha az alkalmazás más bérlőkkel van megosztva; ellenkező esetben hamis.
+Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
 > [!NOTE]
-> Ez az attribútum csak az **alkalmazásregisztrációk (Örökölt)** élményben érhető el. Az `signInAudience` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `signInAudience` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="appid-attribute"></a>appId attribútum
 
@@ -131,7 +131,7 @@ Példa:
 | :--- | :--- |
 | appId | Sztring |
 
-Az Azure AD által egy alkalmazáshoz rendelt alkalmazás egyedi azonosítóját adja meg.
+Az Azure AD által az alkalmazáshoz hozzárendelt alkalmazás egyedi azonosítóját adja meg.
 
 Példa:
 
@@ -143,9 +143,9 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| appRoles alkalmazás | Gyűjtemény |
+| appRoles | Gyűjtemény |
 
-Az alkalmazás által deklarálható szerepkörök gyűjteményét adja meg. Ezek a szerepkörök hozzárendelhetők a felhasználókhoz, csoportokhoz vagy szolgáltatásnévi tagokhoz. További példákat és információkat az [Alkalmazásszerepkörök hozzáadása az alkalmazásban című témakörben talál, és fogadja őket a jogkivonatban.](howto-add-app-roles-in-azure-ad-apps.md)
+Meghatározza az alkalmazás által deklarált szerepkörök gyűjteményét. Ezeket a szerepköröket felhasználókhoz, csoportokhoz vagy egyszerű szolgáltatásokhoz rendelheti hozzá. További példák és információk: alkalmazások [szerepköreinek hozzáadása az alkalmazásban és fogadása a jogkivonatban](howto-add-app-roles-in-azure-ad-apps.md).
 
 Példa:
 
@@ -173,7 +173,7 @@ Példa:
 Az alkalmazás megjelenítendő neve.
 
 > [!NOTE]
-> Ez az attribútum csak az **alkalmazásregisztrációk (Örökölt)** élményben érhető el. Az `name` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `name` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="errorurl-attribute"></a>errorUrl attribútum
 
@@ -187,13 +187,13 @@ Támogatott.
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-|groupMembershipClaims (csoporttagságjogcímek) | Sztring |
+|groupMembershipClaims | Sztring |
 
-Konfigurálja `groups` a felhasználó vagy az OAuth 2.0 hozzáférési jogkivonatban kiadott jogcímet, amelyet az alkalmazás elvár. Az attribútum beállításához használja az alábbi érvényes karakterláncértékek egyikét:
+Az alkalmazás által `groups` várt felhasználói vagy OAuth 2,0 hozzáférési jogkivonatban kiadott jogcímet konfigurálja. Az attribútum beállításához használja a következő érvényes karakterlánc-értékek egyikét:
 
 - `"None"`
-- `"SecurityGroup"`(biztonsági csoportok és Azure AD-szerepkörök esetén)
-- `"All"`(ez lefogja az összes biztonsági csoportok, terjesztési csoportok és az Azure AD címtárszerepkörök, amelyek a bejelentkezett felhasználó tagja.
+- `"SecurityGroup"`(biztonsági csoportokhoz és Azure AD-szerepkörökhöz)
+- `"All"`(ez az összes olyan biztonsági csoportot, terjesztési csoportot és Azure AD-címtárbeli szerepkört megkapja, amely tagja a bejelentkezett felhasználónak.
 
 Példa:
 
@@ -201,16 +201,16 @@ Példa:
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>kezdőlap attribútuma
+### <a name="homepage-attribute"></a>Kezdőlap attribútum
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| Honlap |Sztring |
+| Kezdőlap |Sztring |
 
-Az alkalmazás honlapjának URL-címe.
+Az alkalmazás kezdőlapjának URL-címe.
 
 > [!NOTE]
-> Ez az attribútum csak az **alkalmazásregisztrációk (Örökölt)** élményben érhető el. Az `signInUrl` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `signInUrl` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="objectid-attribute"></a>objectId attribútum
 
@@ -218,9 +218,9 @@ Az alkalmazás honlapjának URL-címe.
 | :--- | :--- |
 |objectId | Sztring |
 
-A címtárban lévő alkalmazás egyedi azonosítója.
+Az alkalmazás egyedi azonosítója a címtárban.
 
-Ez csak az **alkalmazásregisztrációk (Legacy)** élményben érhető el. Az `id` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+Ez csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `id` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 Példa:
 
@@ -232,11 +232,11 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| választható jogcímek | Sztring |
+| optionalClaims | Sztring |
 
-A biztonsági jogkivonat-szolgáltatás által adott alkalmazáshoz visszaadott opcionális jogcímek.
+A jogkivonatban az adott alkalmazás biztonsági jogkivonat szolgáltatása által visszaadott választható jogcímek.
 
-Jelenleg a személyes fiókokat és az Azure AD-t (az alkalmazásregisztrációs portálon keresztül regisztrált) támogató alkalmazások nem használhatnak választható jogcímeket. Azonban a v2.0-végpont használatával regisztrált alkalmazások csak az Azure AD-hez a manifesztben kért opcionális jogcímek. További információ: [Választható jogcímek](active-directory-optional-claims.md).
+Jelenleg a személyes fiókokat és az Azure AD-t támogató alkalmazások (az alkalmazás regisztrációs portálján keresztül regisztrálva) nem használhatják a választható jogcímeket. Az csak az Azure AD-ben a 2.0-s végponton regisztrált alkalmazások azonban megkapják a jegyzékfájlban kért választható jogcímeket is. További információ: [opcionális jogcímek](active-directory-optional-claims.md).
 
 Példa:
 
@@ -252,7 +252,7 @@ Példa:
 | :--- | :--- |
 | identifierUris | Karakterlánc-tömb |
 
-Felhasználó által definiált URI(k), amelyek egyedileg azonosítják a webalkalmazást az Azure AD-bérlőn belül, vagy egy ellenőrzött egyéni tartományban, ha az alkalmazás több-bérlős.
+A felhasználó által definiált URI-k, amelyek egyedileg azonosítanak egy webalkalmazást az Azure AD-bérlőn belül, vagy egy ellenőrzött egyéni tartományon belül, ha az alkalmazás több-bérlős.
 
 Példa:
 
@@ -264,9 +264,9 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| információs url-címek | Sztring |
+| informationalUrls | Sztring |
 
-Megadja az alkalmazás szolgáltatási feltételeire és adatvédelmi nyilatkozatára mutató hivatkozásokat. A szolgáltatási feltételek és az adatvédelmi nyilatkozat a felhasználói hozzájárulási élményen keresztül jelennek meg a felhasználók számára. További információ: [Útmutató: Szolgáltatási feltételek hozzáadása és adatvédelmi nyilatkozat a regisztrált Azure AD-alkalmazásokhoz.](howto-add-terms-of-service-privacy-statement.md)
+Megadja az alkalmazás használati feltételeire és az adatvédelmi nyilatkozatra mutató hivatkozásokat. A használati feltételek és az adatvédelmi nyilatkozat a felhasználói beleegyező felületen keresztül történik. További információkért lásd [: útmutató: a regisztrált Azure ad-alkalmazások használati feltételeinek és adatvédelmi nyilatkozatának hozzáadása](howto-add-terms-of-service-privacy-statement.md).
 
 Példa:
 
@@ -279,13 +279,13 @@ Példa:
     },
 ```
 
-### <a name="keycredentials-attribute"></a>keyCredentials attribútum
+### <a name="keycredentials-attribute"></a>a hitelesítő adatok attribútuma
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
 | keyCredentials | Gyűjtemény |
 
-Az alkalmazáshoz rendelt hitelesítő adatokra, karakterlánc-alapú megosztott titkos kulcsokra és X.509-tanúsítványokra mutató hivatkozásokat tartalmaz. Ezek a hitelesítő adatok a hozzáférési jogkivonatok kérésekor használatosak (amikor az alkalmazás inkább ügyfélként működik, mint erőforrás).
+Az alkalmazáshoz rendelt hitelesítő adatokra, a karakterlánc-alapú közös titkokra és az X. 509 tanúsítványokra mutató hivatkozásokat tartalmazza. A rendszer ezeket a hitelesítő adatokat használja hozzáférési tokenek kérésekor (ha az alkalmazás ügyfélként működik, nem pedig erőforrásként).
 
 Példa:
 
@@ -309,7 +309,7 @@ Példa:
 | :--- | :--- |
 | knownClientApplications | Karakterlánc-tömb |
 
-A hozzájárulás kötegeléséhez használható, ha olyan megoldással rendelkezik, amely két részből áll: egy ügyfélalkalmazásból és egy egyéni webes API-alkalmazásból. Ha megadja az ügyfélalkalmazás alkalmazásazonosítóját ebben az értékben, a felhasználónak csak egyszer kell hozzájárulnia az ügyfélalkalmazáshoz. Az Azure AD tudni fogja, hogy az ügyfél beleegyezése implicit módon a webes API-hoz való hozzájárulás. Automatikusan üzembe foglalja a szolgáltatásnévugyanazt az ügyfél és a webes API-t egy időben. Mind az ügyfél, mind a web API-alkalmazás regisztrálva kell lennie ugyanabban a bérlőben.
+A csomagban való beszerzéshez használatos, ha olyan megoldással rendelkezik, amely két részt tartalmaz: egy ügyfélalkalmazás és egy egyéni webes API-alkalmazás. Ha ezt az értéket adja meg az ügyfélalkalmazás appID, a felhasználónak csak egyszer kell megadnia az ügyfélalkalmazás számára. Az Azure AD tudni fogja, hogy az ügyfélnek való hozzájárulás implicit módon hozzájárul a webes API-hoz. A szolgáltatás automatikusan kiépíti az ügyfél és a webes API-hoz tartozó egyszerű szolgáltatásokat. Az ügyfélnek és a webes API-alkalmazásnak is regisztrálva kell lennie ugyanabban a bérlőben.
 
 Példa:
 
@@ -323,7 +323,7 @@ Példa:
 | :--- | :--- |
 | logoUrl | Sztring |
 
-Csak olyan írásvédett érték, amely a CDN URL-címére mutat a portálon feltöltött embléma elemre.
+Csak olvasható érték, amely arra a CDN URL-címre mutat, amelyet a portálon töltöttek fel.
 
 Példa:
 
@@ -337,7 +337,7 @@ Példa:
 | :--- | :--- |
 | logoutUrl | Sztring |
 
-Az alkalmazásból kijelentkező URL-cím.
+Az alkalmazásból kijelentkezni kívánt URL-cím.
 
 Példa:
 
@@ -345,7 +345,7 @@ Példa:
     "logoutUrl": "https://MyRegisteredAppLogout",
 ```
 
-### <a name="name-attribute"></a>name attribútum
+### <a name="name-attribute"></a>név attribútum
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
@@ -365,7 +365,7 @@ Példa:
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Logikai |
 
-Itt adható meg, hogy a webalkalmazás kérhet-e OAuth2.0 implicit folyamat-hozzáférési jogkivonatokat. Az alapértelmezett érték hamis. Ez a jelző böngészőalapú alkalmazásokhoz, például a JavaScript egyoldalas alkalmazásokhoz használatos. További információért `OAuth 2.0 implicit grant flow` írja be a tartalomjegyzékbe az implicit folyamattal kapcsolatos témaköröket.
+Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be a `OAuth 2.0 implicit grant flow` tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
 Példa:
 
@@ -379,7 +379,7 @@ Példa:
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | Logikai |
 
-Itt adható meg, hogy a webalkalmazás kérhet-e OAuth2.0 implicit folyamatazonosító jogkivonatokat. Az alapértelmezett érték hamis. Ez a jelző böngészőalapú alkalmazásokhoz, például a JavaScript egyoldalas alkalmazásokhoz használatos.
+Megadja, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow ID-tokeneket. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos.
 
 Példa:
 
@@ -391,9 +391,9 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2Engedélyek | Gyűjtemény |
+| oauth2Permissions | Gyűjtemény |
 
-Az OAuth 2.0 engedélyható körök gyűjteményét adja meg, amelyeket a webes API (erőforrás) alkalmazás az ügyfélalkalmazások számára elérhetővé. Ezek az engedélyható körök a jóváhagyás során adhatók meg az ügyfélalkalmazásoknak.
+Megadja a OAuth 2,0 jogosultsági hatókörök gyűjteményét, amelyeket a webes API-(erőforrás-) alkalmazás az ügyfélalkalmazások számára tesz elérhetővé. A jogosultsági hatókörök az ügyfélalkalmazások számára is megadhatók a hozzájárulás során.
 
 Példa:
 
@@ -418,7 +418,7 @@ Példa:
 | :--- | :--- |
 | oauth2RequiredPostResponse | Logikai |
 
-Itt adható meg, hogy az OAuth 2.0-s tokenkérelmek részeként az Azure AD engedélyezi-e a POST-kérelmeket, szemben a GET-kérelmekkel. Az alapértelmezett érték hamis, amely azt adja meg, hogy csak a GET-kérelmek engedélyezettek legyenek.
+Azt határozza meg, hogy a OAuth 2,0 jogkivonat-kérelmek részeként az Azure AD engedélyezi-e a POST kéréseket, a kérések helyett. Az alapértelmezett érték a False (hamis), amely azt határozza meg, hogy csak a GET kérelmek engedélyezettek lesznek.
 
 Példa:
 
@@ -430,10 +430,10 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| parentalControlSettings (szülői felügyelet– Beállítások | Sztring |
+| parentalControlSettings | Sztring |
 
-- `countriesBlockedForMinors`meghatározza azokat az országokat, amelyekben az alkalmazás kiskorúak számára le van tiltva.
-- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó korcsoportszabályt. `Allow`Beállítható , `RequireConsentForPrivacyServices`, `RequireConsentForMinors` `RequireConsentForKids`, `BlockMinors`vagy .  
+- `countriesBlockedForMinors`meghatározza azokat az országokat, amelyekben az alkalmazás le van tiltva a kiskorúak számára.
+- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható `Allow`a `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids`következőre:,,, `BlockMinors`vagy.  
 
 Példa:
 
@@ -450,7 +450,7 @@ Példa:
 | :--- | :--- |
 | passwordCredentials | Gyűjtemény |
 
-Lásd a `keyCredentials` szálláshely leírását.
+Tekintse meg a `keyCredentials` tulajdonság leírását.
 
 Példa:
 
@@ -472,7 +472,7 @@ Példa:
 | :--- | :--- |
 | preAuthorizedApplications | Gyűjtemény |
 
-Felsorolja az alkalmazásokat és a kért engedélyeket az implicit hozzájáruláshoz. Az alkalmazáshoz való hozzájáruláshoz rendszergazda szükséges. a preAuthorizedApplications nem követeli meg a felhasználótól, hogy hozzájáruljon a kért engedélyekhez. A preAuthorizedApplications listában felsorolt engedélyekhez nincs szükség a felhasználó beleegyezésére. A preAuthorizedApplications ben nem szereplő további kért engedélyek azonban felhasználói jóváhagyást igényelnek.
+Felsorolja az alkalmazásokat és a kért engedélyeket az implicit engedélyhez. Megköveteli, hogy a rendszergazda beleegyezett az alkalmazásba. a preAuthorizedApplications nem szükséges, hogy a felhasználó beleegyezik a kért engedélyekkel. A preAuthorizedApplications felsorolt engedélyek nem igénylik a felhasználói hozzájárulásukat. Azonban a preAuthorizedApplications-ben nem szereplő további kért engedélyek felhasználói beleegyezett.
 
 Példa:
 
@@ -491,11 +491,11 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| nyilvános ügyfél | Logikai|
+| publicClient | Logikai|
 
-Itt adható meg, hogy az alkalmazás nyilvános ügyfél-e (például mobileszközön futó telepített alkalmazás). 
+Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás). 
 
-Ez a tulajdonság csak az **alkalmazásregisztrációk (Legacy)** felületén érhető el. Az `allowPublicClient` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `allowPublicClient` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain attribútum
 
@@ -503,7 +503,7 @@ Ez a tulajdonság csak az **alkalmazásregisztrációk (Legacy)** felületén é
 | :--- | :--- |
 | publisherDomain | Sztring |
 
-Az alkalmazás ellenőrzött közzétevői tartománya. Csak olvasható.
+Az alkalmazás ellenőrzött közzétevő tartománya. Csak olvasható.
 
 Példa:
 
@@ -517,9 +517,9 @@ Példa:
 | :--- | :--- |
 | replyUrls | Sztringtömb |
 
-Ez a többértékű tulajdonság tartalmazza a regisztrált redirect_uri értékek listáját, amelyeket az Azure AD elfogad célként a jogkivonatok visszaküldésekor.
+Ez a többértékű tulajdonság azon regisztrált redirect_uri értékek listáját tartalmazza, amelyeket az Azure AD a célhelyként fogad el a tokenek visszaküldésekor.
 
-Ez a tulajdonság csak az **alkalmazásregisztrációk (Legacy)** felületén érhető el. Az `replyUrlsWithType` [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) élményben.
+Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `replyUrlsWithType` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType attribútum
 
@@ -527,12 +527,12 @@ Ez a tulajdonság csak az **alkalmazásregisztrációk (Legacy)** felületén é
 | :--- | :--- |
 | replyUrlsWithType | Gyűjtemény |
 
-Ez a többértékű tulajdonság tartalmazza a regisztrált redirect_uri értékek listáját, amelyeket az Azure AD elfogad célként a jogkivonatok visszaküldésekor. Minden URI-értéknek tartalmaznia kell egy társított alkalmazástípus-értéket. A támogatott típusértékek a következők:
+Ez a többértékű tulajdonság azon regisztrált redirect_uri értékek listáját tartalmazza, amelyeket az Azure AD a célhelyként fogad el a tokenek visszaküldésekor. Minden URI-értéknek tartalmaznia kell egy társított alkalmazás típusú értéket. A támogatott típusú értékek a következők:
 
 - `Web`
 - `InstalledClient`
 
-További információ: [replyUrl korlátozások és korlátozások](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+További információ: [replyUrl-korlátozások és korlátozások](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 
 Példa:
 
@@ -551,10 +551,10 @@ Példa:
 | :--- | :--- |
 | requiredResourceAccess | Gyűjtemény |
 
-Dinamikus hozzájárulással `requiredResourceAccess` a rendszergazdai hozzájárulási és a felhasználói hozzájárulási élményt a statikus beleegyezést használó felhasználók számára hajtja. Ez a paraméter azonban nem hajt a felhasználói hozzájárulási élményt az általános esetben.
+A dinamikus beleegyezőség révén a rendszergazda beleegyezik a rendszergazdai jogosultságokkal, `requiredResourceAccess` és a felhasználók beleegyeznek a statikus beleegyezett. Ez a paraméter azonban nem teszi elérhetővé a felhasználói beleegyező élményt az általános esethez.
 
-- `resourceAppId`annak az erőforrásnak az egyedi azonosítója, amelyhez az alkalmazásnak hozzáférésre van szüksége. Ennek az értéknek meg kell egyeznie a célerőforrás-alkalmazásban deklarált alkalmazásazonosítóval.
-- `resourceAccess`Egy olyan tömb, amely felsorolja az OAuth2.0 engedélyhatóköröket és alkalmazásszerepköröket, amelyeket az alkalmazás a megadott erőforrásból igényel. A `id` megadott `type` erőforrások értékeit és értékeit tartalmazza.
+- `resourceAppId`annak az erőforrásnak az egyedi azonosítója, amelyhez az alkalmazásnak hozzá kell férnie. Ennek az értéknek meg kell egyeznie a célként megadott erőforrás-alkalmazásban deklarált appId.
+- `resourceAccess`a egy olyan tömb, amely felsorolja az alkalmazás által a megadott erőforrás által igényelt OAuth 2.0 engedély-hatóköröket és alkalmazás-szerepköröket. A megadott `id` erőforrások `type` és értékek értékét tartalmazza.
 
 Példa:
 
@@ -590,7 +590,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| jelInUrl | Sztring |
+| signInUrl | Sztring |
 
 Megadja az alkalmazás kezdőlapjának URL-címét.
 
@@ -606,11 +606,11 @@ Példa:
 | :--- | :--- |
 | signInAudience | Sztring |
 
-Itt adható meg, hogy milyen Microsoft-fiókoktámogatottak az aktuális alkalmazáshoz. A támogatott értékek a következők:
-- `AzureADMyOrg`- Microsoft-munkahelyi vagy iskolai fiókkal rendelkező felhasználók a szervezet Azure AD-bérlőjében (például egyetlen bérlő)
-- `AzureADMultipleOrgs`- Bármely szervezet Azure AD-bérlőjében Microsoft-munkahelyi vagy iskolai fiókkal rendelkező felhasználók (például több-bérlős)
-- `AzureADandPersonalMicrosoftAccount`- Személyes Microsoft-fiókkal, illetve munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőjében
-- `PersonalMicrosoftAccount`- Személyes fiókok, amelyek az Xbox és a Skype szolgáltatásokba való bejelentkezéshez használatosak.
+Megadja, hogy az aktuális alkalmazás milyen Microsoft-fiókokat támogat. A támogatott értékek a következők:
+- `AzureADMyOrg`– Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók a szervezeti Azure AD-bérlőben (például egyetlen bérlő)
+- `AzureADMultipleOrgs`-Microsoft munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben (például több-bérlős)
+- `AzureADandPersonalMicrosoftAccount`– Személyes Microsoft-fiók vagy munkahelyi vagy iskolai fiókkal rendelkező felhasználók bármely szervezet Azure AD-bérlőben
+- `PersonalMicrosoftAccount`– A szolgáltatásokhoz, például az Xboxhoz és a Skype-hoz való bejelentkezéshez használt személyes fiókok.
 
 Példa:
 
@@ -618,13 +618,13 @@ Példa:
     "signInAudience": "AzureADandPersonalMicrosoftAccount",
 ```
 
-### <a name="tags-attribute"></a>címkék attribútum
+### <a name="tags-attribute"></a>Címkék attribútum
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
 | címkét | Karakterlánc-tömb  |
 
-Egyéni karakterláncok, amelyek az alkalmazás kategorizálására és azonosítására használhatók.
+Egyéni karakterláncok, amelyek használatával kategorizálhatja és azonosíthatja az alkalmazást.
 
 Példa:
 
@@ -636,16 +636,16 @@ Példa:
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-### <a name="manifest-limits"></a>Manifesztani-korlátozások
+### <a name="manifest-limits"></a>Jegyzékfájlok korlátai
 
-Az alkalmazásjegyzék több attribútummal rendelkezik, amelyeket gyűjteménynek neveznek; például appRoles, keyCredentials, knownClientApplications, identifierUris, redirectUris, requiredResourceAccess és oauth2Permissions. A teljes alkalmazásjegyzéken belül a gyűjtemények összes bejegyzéseinek száma összesen 1200. Ha korábban 100 átirányítási URI-t adott meg az alkalmazásjegyzékben, akkor csak 1100 fennmaradó bejegyzés marad az összes többi gyűjteményben, amelyek együttesen alkotják a jegyzéket.
+Az alkalmazás-jegyzékfájl több attribútumot is tartalmaz, amelyeket gyűjteményekként nevezünk. például appRoles, a hitelesítő adatok, a knownClientApplications, a identifierUris, a redirectUris, a requiredResourceAccess és a oauth2Permissions. A teljes alkalmazás-jegyzékfájlban bármely alkalmazás esetében az összes gyűjtemény bejegyzéseinek teljes száma 1200. Ha korábban már megadta a 100 átirányítási URI-k használatát az alkalmazás jegyzékfájljában, akkor csak 1100 fennmaradó bejegyzések maradnak az összes többi, a jegyzékfájlt alkotó gyűjteményhez.
 
 > [!NOTE]
-> Abban az esetben, ha megpróbál hozzáadni több mint 1200 bejegyzést az alkalmazás jegyzékfájljában, akkor a következő hibaüzenet jelenhet **meg: "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: A jegyzékfájl mérete túllépte a korlátot. Csökkentse az értékek számát, és próbálkozzon újra a kéréssel."**
+> Ha több mint 1200 bejegyzést próbál felvenni az alkalmazás jegyzékfájljában, a következő hibaüzenet jelenhet meg: **"nem sikerült frissíteni az alkalmazást (xxxxxx). Hiba részletei: a jegyzékfájl mérete túllépte a korlátot. Csökkentse az értékek számát, majd próbálja megismételni a kérést. "**
 
 ### <a name="unsupported-attributes"></a>Nem támogatott attribútumok
 
-Az alkalmazásjegyzék az alapul szolgáló alkalmazásmodell sémáját jelöli az Azure AD-ben. Az alapul szolgáló séma fejlődésével a jegyzékszerkesztő időről időre frissül, hogy tükrözze az új sémát. Ennek eredményeképpen új attribútumok jelenhetnek meg az alkalmazásjegyzékben. Ritkán előfordulhat, hogy szintaktikai vagy szemantikai változás fordul elő a meglévő attribútumokban, vagy olyan attribútumot talál, amely korábban létezett, és már nem támogatott. Például új attribútumokat fog látni az [alkalmazásregisztrációkban,](https://go.microsoft.com/fwlink/?linkid=2083908)amelyek más néven ismertek az alkalmazásregisztrációk (Örökölt) élményben.
+Az alkalmazás jegyzékfájlja az alapul szolgáló alkalmazás modelljének sémáját jelöli az Azure AD-ben. Az alapul szolgáló séma fejlődése után a jegyzékfájl-szerkesztő frissülni fog, hogy az új sémát időről időre tükrözze. Ennek eredményeképpen előfordulhat, hogy az alkalmazás jegyzékfájljában látható új attribútumok is megjelenhetnek. Ritka esetekben előfordulhat, hogy szintaktikai vagy szemantikai változást észlel a meglévő attribútumokban, vagy előfordulhat, hogy a korábban létezett attribútumok már nem támogatottak. Láthatja például, hogy az új attribútumok megjelennek a [Alkalmazásregisztrációkban](https://go.microsoft.com/fwlink/?linkid=2083908), amelyek más néven szerepelnek a Alkalmazásregisztrációk (örökölt) élményben.
 
 | Alkalmazásregisztrációk (örökölt)| Alkalmazásregisztrációk           |
 |---------------------------|-----------------------------|
@@ -657,27 +657,27 @@ Az alkalmazásjegyzék az alapul szolgáló alkalmazásmodell sémáját jelöli
 | `publicClient`            | `allowPublicClient`         |
 | `replyUrls`               | `replyUrlsWithType`         |
 
-Ezeknek az attribútumoknak a leírását lásd a [jegyzékfájl hivatkozási](#manifest-reference) szakaszában.
+Ezeknek az attribútumoknak a leírását a [jegyzékfájl referenciája](#manifest-reference) című szakaszban találja.
 
-Egy korábban letöltött jegyzékfeltöltéskor az alábbi hibák egyike jelenhet meg. Ez a hiba valószínűleg azért, mert a jegyzékszerkesztő most már támogatja a séma újabb verzióját, amely nem egyezik meg a feltölteni kívánt verzióval.
+Amikor egy korábban letöltött jegyzékfájlt próbál feltölteni, az alábbi hibák valamelyikét láthatja. Ez a hiba valószínűleg azért van, mert a jegyzékfájl-szerkesztő mostantól támogatja a séma újabb verzióját, amely nem egyezik meg azzal, amelyet fel szeretne tölteni.
 
-* "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: Érvénytelen objektumazonosító "undefined". []."
-* "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: Egy vagy több megadott tulajdonságérték érvénytelen. []."
-* "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: Nem szabad beállítani availableToOtherTenants ebben az api verzió frissítésre. []."
-* "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: A "replyUrls" tulajdonság frissítése nem engedélyezett ehhez az alkalmazáshoz. Használja inkább a "replyUrlsWithType" tulajdonságot. []."
-* "Nem sikerült frissíteni az xxxxxx alkalmazást. Hiba részletei: Típusnév nélküli érték található, és nem áll rendelkezésre várt típus. A modell megadásakor a hasznos adat minden értékének olyan típussal kell rendelkeznie, amely a tartalomban megadható, a hívó kifejezetten, vagy implicit módon a szülőértékből következtethet. []"
+* "Nem sikerült frissíteni az xxxxxx-alkalmazást. Hiba részletei: érvénytelen objektumazonosító (nem definiált). []."
+* "Nem sikerült frissíteni az xxxxxx-alkalmazást. Hiba részletei: egy vagy több megadott tulajdonságérték érvénytelen. []."
+* "Nem sikerült frissíteni az xxxxxx-alkalmazást. Hiba részletei: a frissítéshez nem engedélyezett a availableToOtherTenants beállítása ebben az API-verzióban. []."
+* "Nem sikerült frissíteni az xxxxxx-alkalmazást. Hiba részletei: a "replyUrls" tulajdonság frissítései nem engedélyezettek ehhez az alkalmazáshoz. Ehelyett használja a "replyUrlsWithType" tulajdonságot. []."
+* "Nem sikerült frissíteni az xxxxxx-alkalmazást. Hiba részletei: nem található A típus neve nélküli érték, és a várt típus nem érhető el. Ha a modell meg van adva, a hasznos adattartalomban szereplő minden értéknek olyan típusúnak kell lennie, amely adható meg a hasznos adattartalomban, explicit módon a hívó által, vagy implicit módon következtetett a fölérendelt értéktől. []"
 
-Ha a következő hibák valamelyikét látja, a következő műveleteket javasoljuk:
+Ha az alábbi hibák valamelyikét látja, a következő műveleteket javasoljuk:
 
-1. Az attribútumokat egyenként szerkesztheti a jegyzékszerkesztőben egy korábban letöltött jegyzék feltöltése helyett. A [jegyzékfájl hivatkozási](#manifest-reference) táblája segítségével megismerheti a régi és az új attribútumok szintaxisát és szemantikáját, így sikeresen szerkesztheti az önt érdeklő attribútumokat. 
-1. Ha a munkafolyamat megköveteli, hogy mentse a jegyzékek a forrástárban későbbi használatra, javasoljuk, hogy a mentett jegyzékek a tárházban az egyik látható az **alkalmazás regisztrációs** élményt.
+1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat. 
+1. Ha a munkafolyamata megköveteli, hogy később is használhassa a jegyzékfájlokat a forrás-adattárban, javasoljuk, hogy az adattárban lévő mentett jegyzékfájlokat a **Alkalmazásregisztrációk** felhasználói felületén látható értékre alapozza.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az alkalmazás és az egyszerű szolgáltatásobjektum(ok) közötti kapcsolatról további információt az [Azure AD alkalmazás- és egyszerű szolgáltatásobjektumai című témakörben](app-objects-and-service-principals.md)talál.
-* Tekintse meg a [Microsoft identity platform fejlesztői szószedet](developer-glossary.md) definícióit néhány alapvető Microsoft identity platform fejlesztői koncepciók.
+* Az alkalmazások alkalmazás-és szolgáltatásnév-objektumai közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok az Azure ad-ben](app-objects-and-service-principals.md).
+* Tekintse meg a Microsoft [Identity platform fejlesztői szószedetét](developer-glossary.md) a Microsoft Identity platform néhány alapvető fejlesztői koncepciójának meghatározásához.
 
-A következő megjegyzések szakaszban visszajelzést adhat, amely segít a tartalom finomításában és alakításában.
+A következő megjegyzések szakasz a tartalom pontosítását és formázását segítő visszajelzést nyújt.
 
 <!--article references -->
 [AAD-APP-OBJECTS]:app-objects-and-service-principals.md

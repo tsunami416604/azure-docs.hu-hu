@@ -1,6 +1,6 @@
 ---
-title: Folyamatkérés & értesítések – Azure AD-jogosultságok kezelése
-description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, és hogy mikor küldi el az e-mail értesítéseket az Azure Active Directory jogosultságkezelésében.
+title: Kérelmek feldolgozása & értesítések – Azure AD-jogosultságok kezelése
+description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, valamint azt, hogy a rendszer mikor küldjön e-mail-értesítéseket Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -17,142 +17,142 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128524"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Folyamat- és e-mail-értesítések kérése az Azure AD-jogosultságok kezelésében
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
 
-Amikor egy felhasználó kérelmet küld egy hozzáférési csomaghoz, egy folyamat megkezdi a hozzáférési kérelem kézbesítését. Az Azure AD jogosultságkezelés e-mail értesítéseket küld a jóváhagyóknak és a kérelmezőknek, ha a folyamat során kulcsfontosságú események történnek. Ez a cikk ismerteti a kérelem folyamatát, és az e-mail értesítéseket, amelyek et küldött.
+Amikor egy felhasználó kérelmet küld egy hozzáférési csomagnak, a folyamat megkezdi a hozzáférési kérelem kézbesítését. Az Azure AD-jogosultságok kezelése e-mail-értesítéseket küld a jóváhagyóknak és a kérelmezőknek, ha a folyamat során fontos események történnek. Ez a cikk a kérelmek folyamatát és az elküldött e-mailes értesítéseket ismerteti.
 
-## <a name="request-process"></a>Folyamat kérése
+## <a name="request-process"></a>Kérelem folyamata
 
-Egy hozzáférési csomaghoz hozzáférést igénylő felhasználó hozzáférési kérelmet küldhet. A házirend konfigurációjától függően a kérelem jóváhagyásra szorulhat. A kérelem jóváhagyásakor egy folyamat megkezdi a felhasználói hozzáférés hozzárendelését a hozzáférési csomag minden egyes erőforrásához. Az alábbi ábra áttekintést nyújt a folyamatról és a különböző állapotokról:
+Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozzáférési kérelmet kell küldenie. A házirend konfigurációjától függően előfordulhat, hogy a kérelem jóváhagyást igényel. A kérések jóváhagyásakor a folyamat megkezdi a felhasználói hozzáférés hozzárendelését a hozzáférési csomagban lévő egyes erőforrásokhoz. Az alábbi ábrán a folyamat és a különböző állapotok áttekintése látható:
 
 ![Jóváhagyási folyamat diagramja](./media/entitlement-management-process/request-process.png)
 
 | Állapot | Leírás |
 | --- | --- |
 | Submitted (Elküldve) | A felhasználó kérelmet küld. |
-| Jóváhagyásra vár | Ha egy hozzáférési csomag házirendje jóváhagyást igényel, a kérelem függőben lévő jóváhagyásra kerül. |
-| Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérelmet a jóváhagyási kérelem időeltein belül, a kérelem lejár. Az ismételt próbálkozáshoz a felhasználónak újra el kell küldenie a kérelmet. |
-| Megtagadva | A jóváhagyó visszautasít ja a kérést. |
+| Jóváhagyás függőben | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
+| Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
+| Megtagadva | A jóváhagyó megtagadja a kérelmet. |
 | Approved | A jóváhagyó jóváhagyja a kérelmet. |
-| Szállít | A felhasználó **nem** kapott hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, a felhasználó még nem fért hozzá az erőforráskönyvtárhoz. Előfordulhat, hogy nem fogadták el a hozzájárulási kérést sem. |
-| Kézbesítve | A felhasználó nak hozzáférése van a hozzáférési csomag összes erőforrásához. |
-| Hozzáférés bővített | Ha a házirendben engedélyezett a bővítmény, a felhasználó meghosszabbította a hozzárendelést. |
-| A hozzáférés lejárt | A felhasználó hozzáférése a hozzáférési csomaghoz lejárt. Ahhoz, hogy újra hozzáférjen, a felhasználónak kérelmet kell benyújtania. |
+| Szállít | A felhasználó **nem** rendelt hozzá hozzáférést a hozzáférési csomag összes erőforrásához. Ha ez egy külső felhasználó, előfordulhat, hogy a felhasználó még nem fér hozzá az erőforrás-címtárhoz. Az is előfordulhat, hogy nem fogadták el a hozzájárulási kérést. |
+| Kézbesítve | A felhasználó hozzá lett rendelve a hozzáférési csomag összes erőforrásához. |
+| Hozzáférés kiterjesztve | Ha a házirendben engedélyezve vannak a bővítmények, a felhasználó kibővítette a hozzárendelést. |
+| A hozzáférés lejárt | A felhasználó hozzáférési csomaghoz való hozzáférése lejárt. Ha újra szeretné elérni a hozzáférést, a felhasználónak el kell küldenie egy kérést. |
 
 ## <a name="email-notifications"></a>E-mail-értesítések
 
-Ha Ön jóváhagyó, e-mail-értesítéseket kap, amikor jóvá kell hagynia egy hozzáférési kérelmet. A hozzáférési kérelem befejezésekor is kap értesítéseket. E-mailes értesítéseket is küldünk, amelyek jelzik a kérés állapotát, ha Ön kérelmező.
+Ha Ön jóváhagyó, akkor e-mail-értesítéseket küld, amikor egy hozzáférési kérelmet kell jóváhagynia. Értesítéseket is kap, amikor egy hozzáférési kérelem befejeződik. Ön is elküldte a kérelme állapotát jelző e-mail-értesítéseket, ha Ön a kérelmező.
 
-Az alábbi ábrák azt mutatják, hogy mikor küldi el ezeket az e-mail értesítéseket a jóváhagyóknak vagy a kérelmezőnek. Az [e-mail értesítések táblázatra](entitlement-management-process.md#email-notifications-table) hivatkozva keresse meg a megfelelő számot a diagramokban megjelenő e-mail értesítésekhez.
+A következő diagramok azt mutatják be, hogy az e-mail-értesítések küldése a jóváhagyóknak vagy a kérelmezőnek. A diagramokban megjelenő e-mail-értesítések megfelelő számának megkereséséhez hivatkozzon az [e-mail értesítések táblára](entitlement-management-process.md#email-notifications-table) .
 
 ### <a name="first-approvers-and-alternate-approvers"></a>Első jóváhagyók és alternatív jóváhagyók
-Az alábbi ábra az első jóváhagyók és alternatív jóváhagyók tapasztalatait, valamint a kérési folyamat során kapott e-mail értesítéseket mutatja be:
+Az alábbi ábrán az első jóváhagyók és a másodlagos jóváhagyók, valamint a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![Első és alternatív jóváhagyók folyamatfolyamata](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
+![Első és másodlagos jóváhagyók folyamata](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Kérelmezők
-Az alábbi ábra a kérelmezők tapasztalatait és a kérési folyamat során kapott e-mail értesítéseket mutatja be:
+Az alábbi ábrán a kérelmező és a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![A kérelmező folyamatfolyamata](./media/entitlement-management-process/requestor-approval-request-flow.png)
+![Kérelmező folyamatának folyamatábrája](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>Kétlépcsős jóváhagyás
-Az alábbi ábra az 1.
+### <a name="2-stage-approval"></a>2 – fázis jóváhagyása
+A következő ábrán az 1. fázis és a 2. fázis-jóváhagyók, valamint a kérési folyamat során kapott e-mail-értesítések láthatók:
 
-![Kétlépcsős jóváhagyási folyamat](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+![kétfázisú jóváhagyási folyamat](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
-### <a name="email-notifications-table"></a>E-mail értesítések táblázat
-Az alábbi táblázat részletesebben ismerteti az egyes e-mail értesítéseket. Az e-mailek kezeléséhez szabályokat használhat. Az Outlook programban például szabályokat hozhat létre az e-mailek mappába való áthelyezéséhez, ha a tárgy ebből a táblázatból származó szavakat tartalmaz:
+### <a name="email-notifications-table"></a>E-mail értesítések táblázata
+Az alábbi táblázat részletesebben ismerteti az e-mail-értesítéseket. Az e-mailek kezeléséhez használhatja a szabályokat. Az Outlookban például létrehozhat olyan szabályokat, amelyekkel áthelyezheti az e-maileket egy mappába, ha a tárgy szavakat tartalmaz a táblázatból:
 
-| # | E-mail tárgya | Amikor elküldték | Elküldve: |
+| # | E-mail tárgya | Küldésekor | Címzett |
 | --- | --- | --- | --- |
-| 1 | Szükséges művelet: A továbbított kérelem jóváhagyása vagy megtagadása *[dátum] szerint* | Ezt az e-mailt a rendszer elküldi az 1. | 1. szakasz alternatív jóváhagyói |
-| 2 | Szükséges művelet: Kérés jóváhagyása vagy megtagadása *[dátum] szerint* | Ez az e-mail lesz elküldve az első jóváhagyó, ha eszkaláció le van tiltva, hogy tegyen lépéseket. | Első jóváhagyó |
-| 3 | Emlékeztető: A kérelem jóváhagyása vagy elutasítása *[dátum]* szerint *a [kérelmező]* számára | Ez az emlékeztető e-mail az első jóváhagyónak lesz elküldve, ha az eszkaláció le van tiltva. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
-| 4 | A kérelem jóváhagyása vagy elutasítása *[időpont]* által *[dátum]* | Ezt az e-mailt a rendszer elküldi az első jóváhagyónak (ha az eszkaláció engedélyezve van) a művelet hez. | Első jóváhagyó |
-| 5 | A művelethez emlékeztetőt kell kérni: A kérelem jóváhagyása vagy megtagadása *[dátum]* szerint *a [kérelmező]* számára | Ez az emlékeztető e-mail az első jóváhagyónak lesz elküldve, ha az eszkaláció engedélyezve van. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
-| 6 | A kérelem *lejárt [access_package]* | Ezt az e-mailt a rendszer elküldi az első jóváhagyónak és az 1. | Első jóváhagyó, 1. |
-| 7 | A *[kérelmező]* által *a [access_package]* részére jóváhagyott kérelem | Ezt az e-mailt kérésre elküldjük az első jóváhagyónak és az 1. | Első jóváhagyó, 1. |
-| 8 | A *[kérelmező]* által *a [access_package]* részére jóváhagyott kérelem | Ezt az e-mailt a rendszer elküldi a 2 szakaszos kérelem első jóváhagyójának és 1. | Első jóváhagyó, 1. |
-| 9 | A kérelem megtagadva *a [access_package]* | Ezt az e-mailt a rendszer akkor küldi el a kérelmezőnek, amikor a kérésüket elutasítják. | Requestor (Kérelmező) |
-| 10 | A kérés *[access_package]* esetén lejárt. | Ezt az e-mailt egy vagy kétlépcsős kérés végén küldjük el a kérelmezőnek. Az e-mail értesíti a kérelmezőt, hogy a kérelem lejárt. | Requestor (Kérelmező) |
-| 11 | Szükséges művelet: Kérés jóváhagyása vagy megtagadása *[dátum] szerint* | Ez az e-mail a második jóváhagyónak lesz elküldve, ha az eszkaláció le van tiltva, hogy lépéseket tegyen. | Második jóváhagyó |
-| 12 | A művelethez emlékeztetőt kell kérni: A kérelem jóváhagyása vagy megtagadása *[dátum] szerint* | Ez az emlékeztető e-mail a második jóváhagyónak lesz elküldve, ha az eszkaláció le van tiltva. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
-| 13 | Szükséges művelet: A kérelem jóváhagyása vagy megtagadása *[dátum]* szerint *a [kérelmező]* számára | Ez az e-mail lesz elküldve a második jóváhagyó, ha eszkaláció engedélyezve van, hogy tegyen lépéseket. | Második jóváhagyó |
-| 14 | A művelethez emlékeztetőt kell kérni: A kérelem jóváhagyása vagy megtagadása *[dátum]* szerint *a [kérelmező]* számára | Ez az emlékeztető e-mail a második jóváhagyónak lesz elküldve, ha az eszkaláció engedélyezve van. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
-| 15 | Szükséges művelet: A továbbított kérelem jóváhagyása vagy megtagadása *[dátum] szerint* | Ezt az e-mailt a rendszer elküldi a 2. | 2. szakasz alternatív jóváhagyói |
-| 16 | A *[kérelmező]* által *a [access_package]* részére jóváhagyott kérelem | Ezt az e-mailt a rendszer elküldi a második jóváhagyónak és a 2. | Második jóváhagyó, 2. |
-| 17 | [access_package] esetén lejárt egy *kérelem.* | Ezt az e-mailt a kérés lejárta után küldjük el a második jóváhagyónak vagy alternatív jóváhagyónak. | Második jóváhagyó, 2. |
-| 18 | Most már hozzáférhet *a [access_package]* | Ezt az e-mailt a rendszer elküldi a végfelhasználóknak, hogy elkezdhessék használni a hozzáférésüket. | Requestor (Kérelmező) |
-| 19 | Hozzáférés kiterjesztése *[access_package]* számára *[dátum] szerint* | Ezt az e-mailt a rendszer a hozzáférés lejárta előtt elküldi a végfelhasználóknak. | Requestor (Kérelmező) |
-| 20 | A hozzáférés *[access_package]* esetén véget ért. | Ezt az e-mailt a rendszer a hozzáférés lejárta után küldi el a végfelhasználóknak. | Requestor (Kérelmező) |
+| 1 | Szükséges művelet: a továbbított kérelem jóváhagyása vagy megtagadása a *[date]* alapján | Ezt az e-mailt a rendszer elküldi az 1. szakaszhoz tartozó másodlagos jóváhagyóknak (miután a kérést megadták) a művelet elvégzéséhez. | 1. fázis – alternatív jóváhagyók |
+| 2 | Szükséges művelet: a (z *) [date]* jóváhagyása vagy elutasítása. | Ezt az e-mailt a rendszer az első jóváhagyónak küldi el, ha az eszkaláció le van tiltva, a művelet elvégzéséhez. | Első jóváhagyó |
+| 3 | Emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer az első jóváhagyónak küldi el, ha az eszkaláció le van tiltva. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
+| 4 | A kérelem jóváhagyása vagy elutasítása *[Time]* a következő *időpontban: [date]* | Ezt az e-mailt a rendszer az első jóváhagyónak küldi el (ha az eszkaláció engedélyezve van) a művelet elvégzéséhez. | Első jóváhagyó |
+| 5 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer az első jóváhagyónak küldi el, ha engedélyezve van az eszkaláció. Az e-mail arra kéri őket, hogy tegyenek lépéseket, ha nem. | Első jóváhagyó |
+| 6 | A kérelem lejárt a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a kérelem lejárta után az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak küldi el. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 7 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | A rendszer ezt az e-mailt küldi el az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak a kérelem befejezésekor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 8 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer a 2 fázisú kérelem első jóváhagyójának és 1. fázisának másodlagos jóváhagyójának küldi el az 1. szintű kérelem jóváhagyásakor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
+| 9 | Kérelem elutasítva *[access_package]* | A rendszer ezt az e-mailt küldi a kérelmezőnek a kérelem megtagadásakor | Requestor (Kérelmező) |
+| 10 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer egy vagy két fázisra vonatkozó kérelem végén küldi el a kérelmezőnek. Az e-mail értesíti a kérelmezőt arról, hogy a kérelem lejárt. | Requestor (Kérelmező) |
+| 11 | Szükséges művelet: a (z *) [date]* jóváhagyása vagy elutasítása. | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva, a művelet elvégzéséhez. | Második jóváhagyó |
+| 12 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* | Ezt az emlékeztető e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
+| 13 | Szükséges művelet: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha engedélyezve van az eszkaláció, hogy végrehajtsa a műveletet. | Második jóváhagyó |
+| 14 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az emlékeztető e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció engedélyezve van. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
+| 15 | Szükséges művelet: a továbbított kérelem jóváhagyása vagy megtagadása a *[date]* alapján | Ezt az e-mailt a rendszer elküldi a 2. fázisba, ha az eszkaláció engedélyezve van, a művelet elvégzéséhez. | 2. fázis – alternatív jóváhagyók |
+| 16 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer elküldi a második jóváhagyónak és 2. fázisban lévő alternatív jóváhagyónak a kérelem jóváhagyása után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
+| 17 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer a második jóváhagyónak vagy más jóváhagyóknak küldi el a kérelem lejárta után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
+| 18 | Most már hozzáférhet *[access_package]* | Ezt az e-mailt a rendszer elküldi a végfelhasználóknak a hozzáférésük használatának megkezdéséhez. | Requestor (Kérelmező) |
+| 19 | A *[access_package]* elérésének kiterjesztése a következőre: *[date]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta előtt küldi el a végfelhasználóknak. | Requestor (Kérelmező) |
+| 20 | A hozzáférés befejeződött a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta után küldi el a végfelhasználóknak. | Requestor (Kérelmező) |
 
-### <a name="access-request-emails"></a>Hozzáférési kérései e-mailek
+### <a name="access-request-emails"></a>Hozzáférési kérelem e-mail-címe
 
-Amikor egy kérelmező hozzáférési kérelmet küld egy jóváhagyási kérelemre konfigurált hozzáférési csomaghoz, a házirendhez hozzáadott összes jóváhagyó e-mailértesítést kap a kérelem részleteivel. Az e-mailben a következő részletek szerepelnek: a kérelmező neve szervezet, és az üzleti indoklás; és a kért hozzáférés kezdő és záró dátuma (ha rendelkezésre áll). A részletek között szerepel az is, hogy mikor nyújtották be a kérelmet, és mikor jár le a kérelem.
+Ha egy kérelmező hozzáférési kérelmet küld a jóváhagyás megkövetelésére konfigurált hozzáférési csomaghoz, a Szabályzathoz hozzáadott összes jóváhagyó e-mailben értesítést fog kapni a kérelem részleteiről. Az e-mailben szereplő adatok a következők: a kérelmező neve szervezete és az üzleti indoklás; és a kért hozzáférési kezdési és befejezési dátum (ha meg van adni). A részletek a kérelem elküldésekor és a kérés érvényességének lejárta után is szerepelni fognak.
 
-Az e-mail tartalmaz egy linket jóváhagyók kattintson, hogy menjen a My Access jóváhagyásához vagy megtagadásához a hozzáférési kérelmet. Itt van egy példa e-mail értesítést küldött az első jóváhagyó vagy a második jóváhagyó (ha a kétlépcsős jóváhagyás engedélyezve van) a hozzáférési kérelem teljesítéséhez:
+Az e-mail tartalmaz egy hivatkozás-jóváhagyót is, ha a hozzáférési kérelem jóváhagyásához vagy elutasításához szeretné elérni a hozzáférési kérelmet, kattintson a Tovább gombra. Az alábbi példa egy e-mailes értesítést küld az első jóváhagyónak vagy második jóváhagyónak (ha engedélyezve van a 2. szintű jóváhagyás) egy hozzáférési kérelem elvégzéséhez:
 
-![Csomaglevelezési kérelem jóváhagyása](./media/entitlement-management-shared/approver-request-email.png)
+![Hozzáférési kérelem jóváhagyása a csomag e-mail-címéhez](./media/entitlement-management-shared/approver-request-email.png)
 
-A jóváhagyók emlékeztető e-mailt is kaphatnak. Az e-mail megkéri a jóváhagyót, hogy hozzon döntést a kérésről. Itt van egy minta e-mail értesítést a jóváhagyó kap, hogy emlékeztesse őket, hogy tegyen lépéseket:
+A jóváhagyók emlékeztető e-mailt is kaphatnak. Az e-mail arra kéri a jóváhagyót, hogy hozzon döntést a kérelemről. Íme egy példa e-mail-értesítésre, amelyet a jóváhagyó kap, hogy emlékeztesse őket a művelet elvégzésére:
 
-![Emlékeztető hozzáférési kérelem e-mail](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![Emlékeztető hozzáférési kérelem e-mail címe](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approvers-request-emails"></a>Alternatív jóváhagyók e-maileket kérnek
+### <a name="alternate-approvers-request-emails"></a>Alternatív jóváhagyók kérése e-mailben
 
-Ha az alternatív jóváhagyók beállítás engedélyezve van, és a kérelem még függőben van, a lesz továbbítva. Az alternatív jóváhagyók e-mailt kapnak a kérelem jóváhagyására vagy elutasítására. Az 1- és 2-es és a 2-es fázisban engedélyezheti az alternatív jóváhagyókat. Itt van egy minta e-mailt az értesítést a másodlagos jóváhagyók kap:
+Ha a másodlagos jóváhagyók beállítás engedélyezve van, és a kérés még függőben van, a rendszer továbbítja. Az alternatív jóváhagyók e-mailt kapnak a kérelem jóváhagyásához vagy elutasításához. Engedélyezheti az alternatív jóváhagyókat az 1. és a 2. fázisban. Itt látható egy példa e-mailben a másodlagos jóváhagyók fogadására:
 
-![Alternatív jóváhagyók e-mailt kérnek](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Alternatív jóváhagyók e-mail kérése](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-A jóváhagyó és a helyettes jóváhagyók is jóváhagyhatják vagy elutasíthatják a kérelmet.
+A jóváhagyó és a másodlagos jóváhagyó is jóváhagyhatja vagy megtagadhatja a kérelmet.
 
-### <a name="approved-or-denied-emails"></a>Jóváhagyott vagy elutasított e-mailek
+### <a name="approved-or-denied-emails"></a>Jóváhagyott vagy megtagadott e-mailek
 
- Amikor egy jóváhagyó kap egy hozzáférési kérelmet a kérelmező által benyújtott, jóváhagyhatja vagy megtagadhatja a hozzáférési kérelmet. A jóváhagyónak üzleti indoklást kell hozzáadnia a döntéshez. Az alábbiakban egy mintae-mailt küldött a jóváhagyók és alternatív jóváhagyók után a kérelem jóváhagyása:
+ Ha egy jóváhagyó egy kérelmező által küldött hozzáférési kérelmet kap, akkor jóváhagyhatja vagy megtagadhatja a hozzáférési kérelmet. A jóváhagyónak üzleti indoklást kell adnia döntéséhez. Az alábbi példa egy, a jóváhagyóknak és az alternatív jóváhagyóknak küldött e-mailt a kérelem jóváhagyása után:
 
-![Jóváhagyott kérelem a csomag e-mailjeinek elérésére](./media/entitlement-management-process/approver-request-email-approved.png)
+![A csomag e-mail-címéhez való hozzáférésre jóváhagyott kérelem](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Amikor egy hozzáférési kérelmet jóváhagynak, és azok hozzáférése ki van építve, e-mail értesítést küld a kérelmezőnek, hogy most már hozzáférhetnek a hozzáférési csomaghoz. Az alábbiakban egy minta-e-mail értesítést kap a kérelmezőnek, amikor hozzáférést kap egy hozzáférési csomaghoz:
+Egy hozzáférési kérelem jóváhagyása és a hozzájuk való hozzáférés kiépítés esetén e-mailben értesítést küld a kérelmezőnek, hogy hozzáférjenek a hozzáférési csomaghoz. Íme egy példa e-mail-értesítésre, amelyet a rendszer a kérelmezőnek küld, amikor hozzáférést kap egy hozzáférési csomaghoz:
 
-![Jóváhagyott kérelmező hozzáférési kérelem e-mail címe](./media/entitlement-management-process/requestor-email-approved.png)
+![Jóváhagyott kérelmező hozzáférési kérelmének e-mail-címe](./media/entitlement-management-process/requestor-email-approved.png)
 
-Ha egy hozzáférési kérelmet megtagadnak, a rendszer e-mailértesítést küld a kérelmezőnek. Itt van egy minta e-mail értesítést küldött a kérelmező, ha a hozzáférési kérelmet megtagadják:
+Hozzáférési kérelem elutasítása esetén e-mailben értesítést küldünk a kérelmezőnek. Íme egy példa e-mail-értesítésre, amelyet a rendszer a hozzáférési kérelmének megtagadásakor küld a kérelmezőnek:
 
-![A kérelmező kérésére megtagadott e-mail](./media/entitlement-management-process/requestor-email-denied.png)
+![Kérelmező kérelmének megtagadott e-mail-címe](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>Kétlépcsős jóváhagyási hozzáférési kérelem e-mailek
+### <a name="2-stage-approval-access-request-emails"></a>2. szintű jóváhagyási hozzáférési kérelem e-mail-címe
 
-Ha a kétlépcsős jóváhagyás engedélyezve van, legalább két jóváhagyónak jóvá kell hagynia a kérelmet, minden szakaszból egyet, mielőtt a kérelmező hozzáférést kaphatna.
+Ha a kétfázisú jóváhagyás engedélyezve van, legalább két jóváhagyónak jóvá kell hagynia a kérést, egyet az egyes szakaszoktól, mielőtt a kérelmező hozzáférhet a hozzáféréshez.
 
-Az első jóváhagyó megkapja a hozzáférési kérelem e-mail címét, és döntést hoz. Ha jóváhagyják a kérelmet, az 1. Itt van egy példa e-mailt az értesítést, hogy az elküldött, ha stage-1 befejeződött:
+Az 1. fázisban az első jóváhagyó megkapja a hozzáférési kérelem e-mail-címét, és döntést hoz. Ha jóváhagyják a kérést, az 1. fázisban található minden első jóváhagyó és egy másik jóváhagyó (ha a eszkaláció engedélyezve van) értesítést kap az 1. fázis befejeződéséről. Az alábbi példa egy e-mailt küld az 1. lépésben elküldött értesítésről:
 
-![Kétlépcsős hozzáférési kérelem e-mail](./media/entitlement-management-process/approver-request-email-2stage.png)
+![2. szintű hozzáférési kérelem e-mail-címe](./media/entitlement-management-process/approver-request-email-2stage.png)
 
-Miután az első vagy a másik jóváhagyó jóváhagyja a kérelmet az 1. A második szakaszban a második jóváhagyó megkapja a hozzáférési kérelem értesítő e-mailt. Miután a második jóváhagyó vagy alternatív jóváhagyók a 2.
+Miután az első vagy másodlagos jóváhagyó jóváhagyja a kérelmet az 1. fázisban, a 2. fázis kezdődik. A 2. fázisban a második jóváhagyó megkapja a hozzáférési kérelemre vonatkozó értesítő e-mailt. A második jóváhagyó vagy a 2. fázisban található másodlagos jóváhagyók (ha az eszkaláció engedélyezve van) úgy dönt, hogy jóváhagyja vagy elutasítja a kérést, az értesítési e-maileket az első és második jóváhagyónak, valamint az 1. és a 2. fázisban lévő összes másodlagos jóváhagyónak, valamint a kérelmezőnek kell elküldeni.
 
-### <a name="expired-access-request-emails"></a>Lejárt hozzáférési kérelem e-mailek
+### <a name="expired-access-request-emails"></a>Lejárt hozzáférési kérelmekre vonatkozó e-mailek
 
-A hozzáférési kérelmek lejárhatnak, ha egyetlen jóváhagyó sem hagyta jóvá vagy nem tagadta meg a kérést. 
+A hozzáférési kérelmek lejárnak, ha egy jóváhagyó nem hagyta jóvá vagy nem utasította el a kérelmet. 
 
-Amikor a kérelem eléri a beállított lejárati dátumot, és lejár, a jóváhagyók már nem hagyhatják jóvá vagy tagadhatják meg. Itt van egy példa e-mailt az értesítést küldött az összes első, második (ha a kétlépcsős jóváhagyás engedélyezve van), és alternatív jóváhagyók:
+Ha a kérelem eléri a beállított lejárati dátumát, és lejár, akkor a jóváhagyók nem hagyják jóvá vagy nem tagadhatják meg a jóváhagyást. Itt láthatja az értesítésre vonatkozó e-mailt, amelyet a rendszer az összes első, második (ha 2 fázisú jóváhagyás engedélyezése esetén) és alternatív jóváhagyóként küldött el:
 
-![A jóváhagyók lejárt hozzáférési kérelem e-mailcíme](./media/entitlement-management-process/approver-request-email-expired.png)
+![A jóváhagyóak lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/approver-request-email-expired.png)
 
-A rendszer e-mailértesítést is küld a kérelmezőnek, amelyben értesíti őket arról, hogy a hozzáférési kérelem lejárt, és hogy újra el kell küldeniük a hozzáférési kérelmet. Az alábbi ábra a kérelmező élményét és a hozzáférés kiterjesztését kérő e-mail-értesítéseket mutatja be:
+E-mail-értesítést is küld a kérelmezőnek, értesíti arról, hogy a hozzáférési kérelmük lejárt, és újra el kell küldenie a hozzáférési kérést. Az alábbi ábrán a kérelmező és az e-mailes értesítések jelennek meg, amikor a hozzáférés kiterjesztését kérik:
 
-![A kérelmező kiterjeszti a hozzáférési folyamat folyamatát](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+![A kérelmező kiterjeszti a hozzáférési folyamatot](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 
-Itt van egy minta e-mail értesítést küldött a kérelmező, ha a hozzáférési kérelem lejárt:
+Itt látható egy példa e-mail-értesítésre, amelyet a kérelmező a hozzáférési kérelmének lejárta után küld el:
 
-![Lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/requestor-email-request-expired.png)
+![Kérelmező lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférés kérése hozzáférési csomaghoz](entitlement-management-request-access.md)
+- [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)

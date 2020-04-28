@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning eseményrács forrásaként
-description: A Machine Learning Workspace-események hez az Azure Event Grid del biztosított tulajdonságok ismertetése
+title: Azure Machine Learning Event Grid forrásként
+description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393279"
 ---
-# <a name="azure-machine-learning-as-an-event-grid-source"></a>Az Azure Machine Learning eseményrács-forrásként
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
-Ez a cikk a gépi tanulási munkaterületi események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
+Ez a cikk a Machine learning-munkaterület eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
 
-### <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető események típusai
 
-Az Azure Machine Learning a következő eseménytípusokat bocsátja ki:
+Azure Machine Learning a következő típusú eseményeket bocsátja ki:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.MachineLearningServices.ModelRegisztrált | Új modell vagy modell verzió sikeres regisztrálása esetén merült fel. |
-| Microsoft.MachineLearningServices.ModelDeployed | Ha a modell(ek) sikeresen telepítve van egy végpontra. |
-| Microsoft.MachineLearningServices.Run Befejeződött | A futtatás sikeres befejezésekor előállt. |
-| Microsoft.MachineLearningServices.DatasetDriftDetected | Ha az adatkészlet-eltolódásfigyelő elsodródást észlel. |
-| Microsoft.MachineLearningServices.RunStatusChanged | Ha a futtatási állapot "sikertelen" lesz. |
+| Microsoft. MachineLearningServices. ModelRegistered | Új modell vagy modell verziójának sikeres regisztrálásakor következik be. |
+| Microsoft. MachineLearningServices. ModelDeployed | Akkor következik be, amikor a modell (ek) sikeresen telepítve lett egy végpontra. |
+| Microsoft. MachineLearningServices. RunCompleted | A Futtatás sikeres befejeződése után következik be. |
+| Microsoft. MachineLearningServices. DatasetDriftDetected | Akkor következik be, amikor egy adatkészlet drift figyelője észleli a driftet. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Akkor következik be, amikor a futtatási állapot "Failed" értékre változik. |
 
-### <a name="the-contents-of-an-event-response"></a>Az eseményre adott válasz tartalma
+### <a name="the-contents-of-an-event-response"></a>Egy eseményre adott válasz tartalma
 
-Esemény aktiválásakor az Event Grid szolgáltatás adatokat küld az adott eseményről az előfizetési végpontnak.
+Egy esemény indításakor a Event Grid szolgáltatás adatokat küld az eseményről a végpontra való feliratkozáshoz.
 
-Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni az egyes eseményeknél.
+Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon néznek ki.
 
-### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft.MachineLearningServices.ModelRegisztrált esemény
+### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft. MachineLearningServices. ModelRegistered esemény
 
 ```json
 [{
@@ -63,7 +63,7 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft.MachineLearningServices.ModelDeployed esemény
+### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft. MachineLearningServices. ModelDeployed esemény
 
 ```json
 [{
@@ -89,7 +89,7 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft.MachineLearningServices.RunBefejezett esemény
+### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft. MachineLearningServices. RunCompleted esemény
 
 ```json
 [{
@@ -125,7 +125,7 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft.MachineLearningServices.DatasetDriftDetected esemény
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft. MachineLearningServices. DatasetDriftDetected esemény
 
 ```json
 [{
@@ -149,7 +149,7 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.MachineLearningServices.RunStatusChanged esemény
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft. MachineLearningServices. RunStatusChanged esemény
 
 ```json
 [{
@@ -188,84 +188,84 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény legfelső szintű adatokat rendelkezik:
+Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| id | sztring | Az esemény egyedi azonosítója |
-| data | objektum | Blob tárolási esemény adatai. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az adatobjektum az egyes eseménytípusokhoz a következő tulajdonságokkal rendelkezik:
+Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal rendelkezik:
 
-### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegisztrált
+### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Modellnév | sztring | A regisztrált modell neve. |
-| ModelVersion | sztring | A modell regisztrált verziója. |
-| Modellcímkék | objektum | A regisztrált modell címkéi. |
-| Modelltulajdonságai | objektum | A regisztrált modell tulajdonságai. |
+| ModelVersion | sztring | A regisztrált modell verziója. |
+| ModelTags | objektum | A regisztrált modell címkéi. |
+| ModelProperties | objektum | A regisztrált modell tulajdonságai. |
 
-### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
-
-| Tulajdonság | Típus | Leírás |
-| -------- | ---- | ----------- |
-| ServiceName | sztring | Az üzembe helyezett szolgáltatás neve. |
-| ServiceComputeType típus | sztring | Az üzembe helyezett szolgáltatás számítási típusa (pl. ACI, AKS). |
-  | Modellazonosítók | sztring | A modellazonosítók vesszővel elválasztott listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
-| ServiceTags | objektum | Az üzembe helyezett szolgáltatás címkéi. |
-| Szolgáltatástulajdonságai | objektum | Az üzembe helyezett szolgáltatás tulajdonságai. |
-
-### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.Run Befejeződött
+### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a futtatás tartozik. |
-| Kísérletneve | sztring | Annak a kísérletnek a neve, amelyhez a futtatás tartozik. |
-| Futtatásazonosító | sztring | A futtatás befejeződött azonosítója. |
-| RunType (Futtatástípusa) | sztring | A befejezett futtatás futtatási típusa. |
-| RunTagok | objektum | A befejezett futtatás címkéi. |
-| RunProperties (Futtatástulajdonságai) | objektum | A befejezett futtatás tulajdonságai. |
+| ServiceName | sztring | A telepített szolgáltatás neve. |
+| ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
+  | ModelIds | sztring | A modell-azonosítók vesszővel tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
+| ServiceTags | objektum | A telepített szolgáltatás címkéi. |
+| ServiceProperties | objektum | A telepített szolgáltatás tulajdonságai. |
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
-
-| Tulajdonság | Típus | Leírás |
-| -------- | ---- | ----------- |
-| DataDriftId között | sztring | Az eseményt kiváltó adateltolódásfigyelő azonosítója. |
-| DataDriftName (DataDriftName) | sztring | Az eseményt kiváltó adateltolódás-figyelő neve. |
-| Futtatásazonosító | sztring | A futtatás adateltolódást észlelő azonosítója. |
-| Alapadat-azonosító | sztring | A sodródás észlelésére használt alapadatkészlet azonosítója. |
-| TargetDatasetId azonosító | sztring | A cél adatkészlet eltérésének észlelésére használt azonosítója. |
-| DriftCoefficient | double | Az esemény kiváltó együtthatóeredménye. |
-| StartTime | dátum/idő | A céladatkészlet-idősorok indítási időpontja, amely driftészlelést eredményezett.  |
-| EndTime | dátum/idő | A céladatkészlet-idősorok befejezési időpontja, amely driftészlelést eredményezett. |
-
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
+### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a futtatás tartozik. |
-| Kísérletneve | sztring | Annak a kísérletnek a neve, amelyhez a futtatás tartozik. |
-| Futtatásazonosító | sztring | A futtatás befejeződött azonosítója. |
-| RunType (Futtatástípusa) | sztring | A befejezett futtatás futtatási típusa. |
-| RunTagok | objektum | A befejezett futtatás címkéi. |
-| RunProperties (Futtatástulajdonságai) | objektum | A befejezett futtatás tulajdonságai. |
-| RunStatus (Futtatásállapota) | sztring | A Futtatás állapota. |
+| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| RunId | sztring | A befejezett Futtatás azonosítója. |
+| RunType | sztring | A befejezett Futtatás típusa. |
+| RunTags | objektum | A befejezett futtatások címkéi. |
+| RunProperties | objektum | A befejezett Futtatás tulajdonságai. |
+
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| DataDriftId | sztring | Az eseményt kiváltó adatdrift-figyelő azonosítója. |
+| DataDriftName | sztring | Az eseményt kiváltó adatdrift-figyelő neve. |
+| RunId | sztring | Az adateltolódást észlelő Futtatás azonosítója. |
+| BaseDatasetId | sztring | A drift észleléséhez használt alapadatkészlet azonosítója. |
+| TargetDatasetId | sztring | A drift észleléséhez használt cél adatkészlet azonosítója. |
+| DriftCoefficient | double | Az eseményt kiváltó együtthatós eredmény. |
+| StartTime | dátum/idő | A cél adatkészlet idősorozatának kezdési időpontja, amely a drift észlelését eredményezte.  |
+| EndTime | dátum/idő | A cél adatkészlet idősorozatának befejezési időpontja, amely a drift észlelését eredményezte. |
+
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| RunId | sztring | A befejezett Futtatás azonosítója. |
+| RunType | sztring | A befejezett Futtatás típusa. |
+| RunTags | objektum | A befejezett futtatások címkéi. |
+| RunProperties | objektum | A befejezett Futtatás tulajdonságai. |
+| RunStatus | sztring | A Futtatás állapota. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 | Cím | Leírás |
 | ----- | ----- |
-| [Azure Machine Learning-események felhasználása](../machine-learning/concept-event-grid-integration.md) | Az Azure Machine Learning és az Event Grid integrálásának áttekintése. |
+| [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
-* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md) című témakörben talál további információt.
-* Az Azure Event Grid Azure Machine Learning használatával kapcsolatos bemutatásaz [Azure Machine Learning-események fogyasztása](/azure/machine-learning/service/concept-event-grid-integration) című témakörben
-* Az Azure Event Grid azure Machine Learning használatával kapcsolatos példa: [Eseményvezérelt gépi tanulási munkafolyamatok létrehozása](/azure/machine-learning/service/how-to-use-event-grid)
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)
+* A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](/azure/machine-learning/service/concept-event-grid-integration)
+* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/service/how-to-use-event-grid) című témakörben talál.

@@ -1,6 +1,6 @@
 ---
-title: Hibrid Azure Active Directory-csatlakozású eszközök hibáinak elhárítása
-description: A hibrid Azure Active Directory csatlakozása a Windows 10 és a Windows Server 2016 rendszerhez.
+title: Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása
+description: A hibrid Azure Active Directory csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök hibaelhárítása.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,35 +12,35 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331771"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory-csatlakozású eszközök hibáinak elhárítása 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása 
 
-A cikk tartalma windows 10 vagy Windows Server 2016 rendszert futtató eszközökre vonatkozik.
+A cikk tartalma a Windows 10 vagy Windows Server 2016 rendszerű eszközökre vonatkozik.
 
-Más Windows-ügyfelek esetében olvassa el a [hibrid Azure Active Directory csatlakoztatott lefelé csatlakoztatott eszközök hibaelhárítása című cikket.](troubleshoot-hybrid-join-windows-legacy.md)
+Más Windows-ügyfelek esetén tekintse meg a következő cikket: a [hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md).
 
-Ez a cikk feltételezi, hogy [a hibrid Azure Active Directory-csatlakozással csatlakozott eszközöket a](hybrid-azuread-join-plan.md) következő forgatókönyvek támogatására konfigurálta:
+Ez a cikk azt feltételezi, hogy a [hibrid Azure Active Directory csatlakoztatott eszközöket úgy konfigurálta](hybrid-azuread-join-plan.md) , hogy támogassa a következő forgatókönyveket:
 
-- Eszközalapú feltételes hozzáférés
+- Eszköz alapú feltételes hozzáférés
 - [A beállítások vállalati barangolása](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Vállalati Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
 
-Ez a dokumentum hibaelhárítási útmutatást nyújt a lehetséges problémák megoldásához. 
+Ez a dokumentum a lehetséges problémák megoldásához nyújt hibaelhárítási útmutatót. 
 
-Windows 10 és Windows Server 2016 esetén a hibrid Azure Active Directory-csatlakozás támogatja a Windows 10 2015.
+Windows 10 és Windows Server 2016 esetén a hibrid Azure Active Directory csatlakozás a 2015-es és újabb verziójú Windows 10-et támogatja.
 
 ## <a name="troubleshoot-join-failures"></a>Csatlakozási hibák elhárítása
 
-### <a name="step-1-retrieve-the-join-status"></a>1. lépés: Az illesztési állapot lekérése 
+### <a name="step-1-retrieve-the-join-status"></a>1. lépés: az illesztés állapotának beolvasása 
 
-**Az illesztési állapot beolvasása:**
+**Az illesztési állapot lekérése:**
 
-1. Parancssor megnyitása rendszergazdaként
+1. Nyisson meg egy parancssort rendszergazdaként
 2. Írja be a következőt: `dsregcmd /status`
 
 ```
@@ -88,31 +88,31 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>2. lépés: Az illesztési állapot kiértékelése 
+### <a name="step-2-evaluate-the-join-status"></a>2. lépés: a csatlakozás állapotának kiértékelése 
 
-Tekintse át a következő mezőket, és győződjön meg arról, hogy rendelkeznek a várt értékekkel:
+Tekintse át a következő mezőket, és ellenőrizze, hogy a várt értékek szerepelnek-e:
 
-#### <a name="domainjoined--yes"></a>DomainÖsszekapcsolt: IGEN  
+#### <a name="domainjoined--yes"></a>DomainJoined: igen  
 
-Ez a mező azt jelzi, hogy az eszköz csatlakoztatva van-e egy helyszíni Active Directoryhoz, vagy sem. Ha az érték **NEM,** az eszköz nem tud hibrid Azure AD-csatlakozást végrehajtani.  
+Ez a mező jelzi, hogy az eszköz egy helyszíni Active Directoryhoz csatlakozik-e, vagy sem. Ha az érték **nem**, az eszköz nem tud hibrid Azure ad-csatlakozást végezni.  
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined : NEM  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined: nem  
 
-Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-vel személyes eszközként *(munkahelyi csatlakozásként jelölve).* Ez az érték **nem** kell egy tartományhoz csatlakozó számítógép, amely szintén hibrid Azure AD-hez csatlakozott. Ha az érték **IGEN,** egy munkahelyi vagy iskolai fiók került hozzáadásra a hibrid Azure AD-csatlakozás befejezése előtt. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot a Windows 10 évfordulós frissítési verziójának (1607) használatakor.
+Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-ben személyes eszközként ( *munkahelyhez csatlakoztatottként*megjelölve). Ez az érték **nem** lehet olyan tartományhoz csatlakoztatott számítógép esetében, amely szintén hibrid Azure ad-hez csatlakozik. Ha az érték **Igen**, a hibrid Azure ad-csatlakozás befejezése előtt munkahelyi vagy iskolai fiók lett hozzáadva. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot, ha a Windows 10 évfordulós frissítési verzióját használja (1607).
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : IGEN  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined: igen  
 
-Ez a mező azt jelzi, hogy az eszköz csatlakoztatva van-e. Az érték **IGEN lesz,** ha az eszköz egy Azure AD-hez csatlakozott eszköz vagy egy hibrid Azure AD-hez csatlakozott eszköz.
-Ha az érték **NEM,** az Azure AD-hez való csatlakozás még nem fejeződött be. 
+Ez a mező jelzi, hogy az eszköz csatlakoztatva van-e. Az érték **Igen** , ha az eszköz vagy egy Azure ad-hez csatlakoztatott eszköz vagy egy hibrid Azure ad-hez csatlakoztatott eszköz.
+Ha az érték **nem**, az Azure ad-hez való csatlakozás még nem fejeződött be. 
 
-Folytassa a következő lépésekkel a további hibaelhárításhoz.
+További hibaelhárításhoz folytassa a következő lépésekkel.
 
-### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>3. lépés: Az illesztés sikertelen fázisának és a hibakódnak a megkeresése
+### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>3. lépés: a csatlakozás sikertelen és a errorcode fázisának megkeresése
 
-#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg az "Előző regisztráció" alszakaszt az illesztési állapot kimenetének "Diagnosztikai adatok" szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozás.
-A "Hibafázis" mező az illesztési hiba fázisát jelöli, míg az "Ügyfél hibakód" az illesztési művelet hibakódját jelöli.
+Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
+A "hiba fázis" mező azt jelzi, hogy az illesztési hiba fázisa az "ügyfél ErrorCode" alatt az illesztési művelet hibakódját jelöli.
 
 ```
 +----------------------------------------------------------------------+
@@ -129,60 +129,60 @@ A "Hibafázis" mező az illesztési hiba fázisát jelöli, míg az "Ügyfél hi
 
 #### <a name="older-windows-10-versions"></a>Régebbi Windows 10-es verziók
 
-Az Eseménynapló naplói segítségével keresse meg az illesztési hibák fázis- és hibakódját.
+A csatlakozási hibák fázisának és hibakódjának megkereséséhez használja a Eseménynapló naplókat.
 
-1. Nyissa meg a **Felhasználói eszköz regisztrálása** eseménynaplókat az eseménynaplóban. Az **Alkalmazások és szolgáltatások naplózása** > **Microsoft** > **Windows** > felhasználói**eszközregisztráció alatt** található
-2. Keresse meg az eseményeket a következő eseményazonosítók 304, 305, 307.
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+2. Keressen eseményeket a következő eventIDs 304, 305, 307.
 
-![Hibanapló-esemény](./media/troubleshoot-hybrid-join-windows-current/1.png)
+![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/1.png)
 
-![Hibanapló-esemény](./media/troubleshoot-hybrid-join-windows-current/2.png)
+![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/2.png)
 
-### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. lépés: Ellenőrizze a lehetséges okokat és megoldásokat az alábbi listákból
+### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. lépés: az alábbi listáról származó lehetséges okok és megoldások keresése
 
 #### <a name="pre-check-phase"></a>Előzetes ellenőrzési fázis
 
 A hiba lehetséges okai:
 
-- Az eszköz nem látja a tartományvezérlőt.
-   - Az eszköznek a szervezet belső hálózatán vagy VPN-en kell lennie, és hálózati rálátással kell rendelkeznie egy helyszíni Active Directory (AD) tartományvezérlőhöz.
+- Az eszköz nem rendelkezik a tartományvezérlő felé irányuló pillantással.
+   - Az eszköznek a szervezet belső hálózatán vagy VPN-en kell lennie a helyszíni Active Directory (AD) tartományvezérlőhöz való hálózati vonallal.
 
-#### <a name="discover-phase"></a>Fedezze fel a fázist
+#### <a name="discover-phase"></a>Felderítési fázis
 
 A hiba lehetséges okai:
 
-- A Szolgáltatás csatlakozási pont (SCP) objektum helytelenül konfigurált/nem olvasható az SCP-objektum dc-ből.
-   - Egy érvényes SCP-objektum szükséges az AD erdőben, amelyhez az eszköz tartozik, amely az Azure AD ellenőrzött tartománynévre mutat.
-   - A részletek a [Szolgáltatáscsatlakozási pont konfigurálása](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)című szakaszban találhatók.
-- Nem sikerült csatlakozni és lekérni a felderítési metaadatokat a felderítési végpontról.
-   - Az eszköznek képesnek `https://enterpriseregistration.windows.net`kell lennie a regisztrációs és engedélyezési végpontok felderítéséhez a SYSTEM környezetben. 
-   - Ha a helyszíni környezetben kimenő proxyszükséges, a rendszergazdának gondoskodnia kell arról, hogy az eszköz számítógépfiókja képes legyen felderíteni és csendben hitelesíteni a kimenő proxyt.
-- Nem sikerült csatlakozni a felhasználói birodalom végpontjához, és nem sikerült végrehajtani a birodalom felderítését. (Csak Windows 10-es és újabb verzió)
-   - Az eszköznek képesnek `https://login.microsoftonline.com`kell lennie a RENDSZER környezetben való hozzáférésre az ellenőrzött tartomány tartományfelderítésének elvégzéséhez és a tartomány típusának meghatározásához (felügyelt/összevont).
-   - Ha a helyszíni környezetben kimenő proxyszükséges, a rendszergazdának biztosítania kell, hogy az eszköz SYSTEM környezete képes legyen felderíteni és csendben hitelesíteni a kimenő proxyt.
+- A szolgáltatáskapcsolódási pont (SCP) objektum hibásan van konfigurálva/nem olvasható a SCP-objektum a TARTOMÁNYVEZÉRLŐről.
+   - Érvényes SCP-objektumra van szükség az AD-erdőben, amelyhez az eszköz tartozik, amely egy ellenőrzött tartománynévre mutat az Azure AD-ben.
+   - A részletek a [szolgáltatás kapcsolódási pontjának konfigurálása](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)című szakaszban találhatók.
+- Sikertelen volt a kapcsolódás és a felderítési metaadatok beolvasása a felderítési végpontról.
+   - A regisztrációs és engedélyezési végpontok felderítéséhez az eszköznek képesnek kell lennie a rendszerkörnyezethez való hozzáférésre `https://enterpriseregistration.windows.net`. 
+   - Ha a helyszíni környezet kimenő proxyt igényel, a rendszergazdának biztosítania kell, hogy az eszköz számítógépfiókja képes legyen felderíteni és csendes módon hitelesíteni a kimenő proxyt.
+- Nem sikerült csatlakozni a felhasználói tartomány végponthoz, és el kell végezni a tartomány felderítését. (Windows 10 1809-es és újabb verziók esetén)
+   - Az eszköznek hozzá kell férnie `https://login.microsoftonline.com`a rendszerkörnyezetben az ellenőrzött tartományhoz tartozó tartományi felderítés végrehajtásához és a tartomány típusának (felügyelt/összevont) meghatározásához.
+   - Ha a helyszíni környezet kimenő proxyt igényel, a RENDSZERGAZDÁnak biztosítania kell, hogy az eszközön lévő rendszerkörnyezet képes legyen felderíteni és csendes módon hitelesíteni a kimenő proxyt.
 
 **Gyakori hibakódok:**
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - Ok: Nem lehet olvasni az SCP-objektumot, és leolvasni az Azure AD-bérlői adatokat.
-   - Megoldás: Olvassa el a [Szolgáltatáscsatlakozási pont konfigurálása](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)című szakaszt.
+   - Ok: nem sikerült beolvasni az SCP-objektumot, és le kell kérni az Azure AD-bérlő adatait.
+   - Megoldás: Tekintse meg a [szolgáltatási kapcsolódási pont konfigurálása](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)című szakaszt.
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
-   - Indok: Általános felderítési hiba. Nem sikerült leválasztani a felderítés metaadatait a DRS-ből.
-   - Megoldás: Keresse meg az alábbi alhibát a további vizsgálathoz.
+   - Ok: általános felderítési hiba. Nem sikerült lekérni a felderítési metaadatokat a DRS-ből.
+   - Megoldás: keresse meg az alábbi alhibát a további vizsgálathoz.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
-   - Ok: A művelet időtúlodása a felderítés végrehajtása közben.
-   - Megoldás: Győződjön meg arról, hogy `https://enterpriseregistration.windows.net` a RENDSZER környezetben elérhető. További információt a [Hálózati kapcsolat követelményei](hybrid-azuread-join-managed-domains.md#prerequisites)című szakaszban talál.
+   - Ok: a művelet időtúllépést észlelt a felderítés végrehajtása során.
+   - Megoldás: Győződjön meg `https://enterpriseregistration.windows.net` arról, hogy a rendszer elérhető a rendszerkörnyezetben. További információt a [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites)című szakaszban talál.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Indok: Általános Realm Discovery hiba. Nem sikerült meghatározni a tartomány típusát (felügyelt/összevont) az STS-ből. 
-   - Megoldás: Keresse meg az alábbi alhibát a további vizsgálathoz.
+   - Ok: általános tartomány-felderítési hiba. Nem sikerült meghatározni a tartomány típusát (felügyelt/összevont) az STS-ből. 
+   - Megoldás: keresse meg az alábbi alhibát a további vizsgálathoz.
 
 **Gyakori alhibakódok:**
 
 A felderítési hibakód alhibakódjának megkereséséhez használja az alábbi módszerek egyikét.
 
-##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb
+##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg a "DRS discovery test" az illesztési állapot kimenetének "Diagnosztikai adatok" szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozás.
+Keresse meg a "DRS Discovery test" részt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
 
 ```
 +----------------------------------------------------------------------+
@@ -204,110 +204,110 @@ Keresse meg a "DRS discovery test" az illesztési állapot kimenetének "Diagnos
 
 ##### <a name="older-windows-10-versions"></a>Régebbi Windows 10-es verziók
 
-Az Eseménynapló naplói segítségével keresse meg az illesztési hibák fázisát és hibakódját.
+A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Eseménynapló naplókat.
 
-1. Nyissa meg a **Felhasználói eszköz regisztrálása** eseménynaplókat az eseménynaplóban. Az **Alkalmazások és szolgáltatások naplózása** > **Microsoft** > **Windows** > felhasználói**eszközregisztráció alatt** található
-2. A következő eseményazonosítókkal rendelkező események megkeresése 201-es
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+2. Keressen eseményeket a következő eventIDs 201
 
-![Hibanapló-esemény](./media/troubleshoot-hybrid-join-windows-current/5.png)
+![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/5.png)
 
 ###### <a name="network-errors"></a>Hálózati hibák
 
-- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867)
-   - Indok: Nem jött létre kapcsolat a kiszolgálóval
-   - Megoldás: Biztosítsa a hálózati kapcsolatot a szükséges Microsoft-erőforrásokkal. További információ: [Hálózati kapcsolati követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_CANNOT_CONNECT** (0x80072EFD/-2147012867)
+   - Ok: a kiszolgálóhoz való csatlakozás sikertelen volt.
+   - Megoldás: gondoskodjon a szükséges Microsoft-erőforrásokhoz való hálózati kapcsolatról. További információ: [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Indok: Általános hálózati időhosszabbítás.
-   - Megoldás: Biztosítsa a hálózati kapcsolatot a szükséges Microsoft-erőforrásokkal. További információ: [Hálózati kapcsolati követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Ok: általános hálózati időtúllépés.
+   - Megoldás: gondoskodjon a szükséges Microsoft-erőforrásokhoz való hálózati kapcsolatról. További információ: [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721)
-   - Ok: A hálózati verem nem tudta dekódolni a kiszolgáló válaszát.
+   - Ok: a hálózati verem nem tudta dekódolni a kiszolgáló válaszát.
    - Megoldás: Győződjön meg arról, hogy a hálózati proxy nem zavarja és nem módosítja a kiszolgáló válaszát.
 
 ###### <a name="http-errors"></a>HTTP-hibák
 
 - **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582)
-   - Ok: A nem megfelelő bérlőazonosítóval konfigurált SCP-objektum. Vagy nem található aktív előfizetés a bérlőben.
-   - Megoldás: Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlőazonosítóval és aktív előfizetésekkel van konfigurálva, vagy a bérlőben van jelen.
+   - Ok: az SCP-objektum nem megfelelő bérlői AZONOSÍTÓval van konfigurálva. Vagy nem találhatók aktív előfizetések a bérlőben.
+   - Megoldás: Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, vagy a bérlőben van.
 - **DSREG_SERVER_BUSY** (0x801c0025/-2145648603)
-   - Indok: HTTP 503 a DRS-kiszolgálóról.
-   - Megoldás: A kiszolgáló jelenleg nem érhető el. jövőbeli csatlakozási kísérletek valószínűleg sikeres, ha a szerver újra online.
+   - Ok: HTTP 503 a DRS-kiszolgálóról.
+   - Megoldás: a kiszolgáló jelenleg nem érhető el. a jövőbeli csatlakozási kísérletek valószínűleg sikeresek lesznek, ha a kiszolgáló ismét online állapotba kerül.
 
 ###### <a name="other-errors"></a>Egyéb hibák
 
 - **E_INVALIDDATA** (0x8007000d/-2147024883)
-   - Ok: A kiszolgálóválasz JSON-t nem lehet elemezni. Valószínűleg a HTTP 200-at html hitelesítési lappal visszaadott proxy miatt.
-   - Megoldás: Ha a helyszíni környezetben kimenő proxyszükséges, a rendszergazdának biztosítania kell, hogy az eszköz SYSTEM környezete képes legyen felderíteni és csendben hitelesíteni a kimenő proxyt.
+   - Ok: nem sikerült elemezni a kiszolgálói válasz JSON-t. Valószínű, hogy a proxy egy HTML-hitelesítéssel rendelkező HTTP 200-t ad vissza.
+   - Megoldás: Ha a helyszíni környezethez kimenő proxy szükséges, a RENDSZERGAZDÁnak biztosítania kell, hogy az eszköz rendszerkörnyezete képes legyen felderíteni és csendes módon hitelesíteni a kimenő proxyt.
 
 #### <a name="authentication-phase"></a>Hitelesítési fázis
 
-Csak összevont tartományi fiókokesetén alkalmazható.
+Csak összevont tartományi fiókok esetében alkalmazható.
 
-A hiba okai:
+Hiba okai:
 
-- Nem lehet csendben beszerezni egy Access-jogkivonatot a DRS-erőforráshoz.
-   - A Windows 10-es eszközök az összevonási szolgáltatástól az integrált Windows-hitelesítést egy aktív WS-Trust végponthoz szerzik be az hitelesítési tokent. Részletek: [Összevonási szolgáltatás konfigurációja](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+- Nem lehet csendes hozzáférési tokent beolvasni a DRS-erőforráshoz.
+   - A Windows 10-es eszközök hitelesítési jogkivonatot szerzik be az összevonási szolgáltatástól az integrált Windows-hitelesítéssel egy aktív WS-Trust végponton. Részletek: [összevonási szolgáltatás konfiguráció](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Gyakori hibakódok:**
 
-Az Eseménynapló naplói segítségével keresse meg a hibakódot, az alhibakódot, a kiszolgálói hibakódot és a kiszolgálói hibaüzenetet.
+Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot, a kiszolgálói hibakódot és a kiszolgálói hibaüzenetet.
 
-1. Nyissa meg a **Felhasználói eszköz regisztrálása** eseménynaplókat az eseménynaplóban. Az **Alkalmazások és szolgáltatások naplózása** > **Microsoft** > **Windows** > felhasználói**eszközregisztráció alatt** található
-2. Események megkeresése a következő 305-ös eseményazonosítóval
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+2. Keressen eseményeket a következő Napszállta 305
 
-![Hibanapló-esemény](./media/troubleshoot-hybrid-join-windows-current/3.png)
+![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
 ##### <a name="configuration-errors"></a>Konfigurálási hibák
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
-   - Ok: A hitelesítési protokoll nem WS-Trust.
-   - Megoldás: A helyszíni identitásszolgáltatónak támogatnia kell a WS-Trust-ot 
+   - Ok: a hitelesítési protokoll nem a WS-Trust.
+   - Megoldás: a helyszíni identitás-szolgáltatónak támogatnia kell a WS-Trust szolgáltatást 
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
-   - Ok: A helyszíni összevonási szolgáltatás nem adott vissza XML-választ.
-   - Megoldás: Győződjön meg arról, hogy a MEX-végpont érvényes XML-t ad vissza. Győződjön meg arról, hogy a proxy nem zavarja a nem xml válaszokat, és nem ad vissza nem xml válaszokat.
+   - Ok: a helyszíni összevonási szolgáltatás nem adott vissza XML-választ.
+   - Megoldás: Győződjön meg arról, hogy a MEX-végpont érvényes XML-t ad vissza. Győződjön meg arról, hogy a proxy nem zavarja és nem XML-válaszokat ad vissza.
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045)
-   - Ok: Nem sikerült felderíteni a felhasználónév/jelszó hitelesítésének végpontját.
-   - Megoldás: Ellenőrizze a helyszíni identitásszolgáltató beállításait. Győződjön meg arról, hogy a WS-Trust végpontok engedélyezve vannak, és győződjön meg arról, hogy a MEX válasz tartalmazza ezeket a helyes végpontokat.
+   - Ok: nem lehetett felderíteni a végpontot a Felhasználónév/jelszó hitelesítéshez.
+   - Megoldás: keresse meg a helyszíni identitás-szolgáltató beállításait. Győződjön meg arról, hogy a WS-Trust végpontok engedélyezve vannak, és ellenőrizze, hogy a MEX-válasz tartalmazza-e a megfelelő végpontokat.
 
 ##### <a name="network-errors"></a>Hálózati hibák
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
-   - Indok: Általános hálózati időhosszabbítás.
-   - Megoldás: Győződjön meg arról, hogy `https://login.microsoftonline.com` a RENDSZER környezetben elérhető. Győződjön meg arról, hogy a helyszíni identitásszolgáltató elérhető a RENDSZER környezetben. További információ: [Hálózati kapcsolati követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Ok: általános hálózati időtúllépés.
+   - Megoldás: Győződjön meg `https://login.microsoftonline.com` arról, hogy a rendszer elérhető a rendszerkörnyezetben. Győződjön meg arról, hogy a helyszíni identitás-szolgáltató elérhető a rendszerkörnyezetben. További információ: [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
-   - Ok: Az auth-végpontdal való kapcsolat megszakadt.
-   - Megoldás: Próbálkozzon újra valamikor, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
+   - Ok: az Auth-végponttal való csatlakozás megszakítva.
+   - Megoldás: próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - Ok: A Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), a kiszolgáló által küldött tanúsítvány nem érvényesíthető.
-   - Megoldás: Ellenőrizze az ügyfél időeltérését. Próbálkozzon újra valamikor, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről. 
+   - Ok: a Transport Layer Security (TLS), korábbi nevén SSL (SSL), a kiszolgáló által eljuttatott tanúsítvány nem érvényesíthető.
+   - Megoldás: az ügyfél időkorlátjának ellenõrzése. Próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről. 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Ok: A sikertelen `https://login.microsoftonline.com` kapcsolódási kísérlet.
-   - Megoldás: Ellenőrizze a `https://login.microsoftonline.com`hálózati kapcsolatot a rendszerhez.
+   - Ok: `https://login.microsoftonline.com` nem sikerült kapcsolódni a kísérlethez.
+   - Megoldás: keresse meg a `https://login.microsoftonline.com`hálózati kapcsolódást.
 
 ##### <a name="other-errors"></a>Egyéb hibák
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
-   - Ok: SAML-jogkivonat ot a helyszíni identitásszolgáltató nem fogadta el az Azure AD.
-   - Megoldás: Ellenőrizze az összevonási kiszolgáló beállításait. Keresse meg a kiszolgáló hibakódját a hitelesítési naplókban.
+   - Ok: az Azure AD nem fogadta el az SAML-jogkivonatot a helyszíni identitás-szolgáltatótól.
+   - Megoldás: keresse meg az összevonási kiszolgáló beállításait. Keresse meg a kiszolgálói hibakódot a hitelesítési naplókban.
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
-   - Ok: A kiszolgáló WS-Trust válasza hibakivételt jelentett, és nem tudta leadni a helyesállítást
-   - Megoldás: Ellenőrizze az összevonási kiszolgáló beállításait. Keresse meg a kiszolgáló hibakódját a hitelesítési naplókban.
+   - Ok: a kiszolgáló WS-Trust válasza hibát jelzett, és nem tudta lekérni az állítást
+   - Megoldás: keresse meg az összevonási kiszolgáló beállításait. Keresse meg a kiszolgálói hibakódot a hitelesítési naplókban.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
-   - Ok: Hibaüzenetet kapott, amikor hozzáférési jogkivonatot próbált beszerezni a jogkivonat végpontjáról.
-   - Megoldás: Keresse meg az alapul szolgáló hibát az ADAL-naplóban. 
+   - Ok: hiba történt a hozzáférési jogkivonat a jogkivonat-végpontból való beolvasására tett kísérlet során.
+   - Megoldás: keresse meg az alapul szolgáló hibát a ADAL naplóban. 
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
-   - Indok: Általános ADAL hiba
-   - Megoldás: Keresse meg az alhibakódot vagy a kiszolgáló hibakódját a hitelesítési naplókból.
+   - Ok: általános ADAL-hiba
+   - Megoldás: keresse meg az alhiba kódját vagy a kiszolgálói hibakódot a hitelesítési naplókból.
     
-#### <a name="join-phase"></a>Illesztési fázis
+#### <a name="join-phase"></a>Csatlakozás fázisa
 
-A hiba okai:
+Hiba okai:
 
 Keresse meg a regisztrációs típust, és keresse meg a hibakódot az alábbi listából.
 
-#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg az "Előző regisztráció" alszakaszt az illesztési állapot kimenetének "Diagnosztikai adatok" szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozás.
-A "Regisztrációs típus" mező az elvégzett illesztés típusát jelöli.
+Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
+A "regisztráció típusa" mező azt jelzi, hogy milyen típusú csatlakozást hajtottak végre.
 
 ```
 +----------------------------------------------------------------------+
@@ -324,92 +324,92 @@ A "Regisztrációs típus" mező az elvégzett illesztés típusát jelöli.
 
 #### <a name="older-windows-10-versions"></a>Régebbi Windows 10-es verziók
 
-Az Eseménynapló naplói segítségével keresse meg az illesztési hibák fázisát és hibakódját.
+A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Eseménynapló naplókat.
 
-1. Nyissa meg a **Felhasználói eszköz regisztrálása** eseménynaplókat az eseménynaplóban. Az **Alkalmazások és szolgáltatások naplózása** > **Microsoft** > **Windows** > felhasználói**eszközregisztráció alatt** található
-2. A következő eseményazonosítókkal rendelkező események megkeresése
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+2. Keressen eseményeket a következő eventIDs 204
 
-![Hibanapló-esemény](./media/troubleshoot-hybrid-join-windows-current/4.png)
+![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/4.png)
 
-##### <a name="http-errors-returned-from-drs-server"></a>A DRS-kiszolgálóról visszaadott HTTP-hibák
+##### <a name="http-errors-returned-from-drs-server"></a>A DRS-kiszolgáló által visszaadott HTTP-hibák
 
 - **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630)
-   - Ok: Hibaválaszt kapott a DRS-től a Következő hibakóddal: "DirectoryError"
-   - Megoldás: A lehetséges okok és megoldások érdekében olvassa el a kiszolgáló hibakódját.
+   - Ok: hibaüzenet érkezett a DRS-ből a következő ErrorCode: "Címtárhiba"
+   - Megoldás: Tekintse meg a kiszolgáló hibakódját a lehetséges okok és megoldások érdekében.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Ok: Hibakódot kapott a DRS-től a következő hibakóddal: "AuthenticationError" és ErrorSubCode is NOT "DeviceNotFound". 
-   - Megoldás: A lehetséges okok és megoldások érdekében olvassa el a kiszolgáló hibakódját.
+   - Ok: a DRS által a ErrorCode: "AuthenticationError" és a ErrorSubCode nem "DeviceNotFound" nevű hibaüzenet érkezett. 
+   - Megoldás: Tekintse meg a kiszolgáló hibakódját a lehetséges okok és megoldások érdekében.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
-   - Ok: Hibaválaszt kapott a DRS-től a Következő hibakóddal: "DirectoryError"
-   - Megoldás: A lehetséges okok és megoldások érdekében olvassa el a kiszolgáló hibakódját.
+   - Ok: hibaüzenet érkezett a DRS-ből a következő ErrorCode: "Címtárhiba"
+   - Megoldás: Tekintse meg a kiszolgáló hibakódját a lehetséges okok és megoldások érdekében.
 
 ##### <a name="tpm-errors"></a>TPM-hibák
 
 - **NTE_BAD_KEYSET** (0x80090016/-2146893802)
-   - Ok: A TPM-művelet nem sikerült vagy érvénytelen volt
-   - Felbontás: Valószínűleg rossz sysprep lemezkép miatt. Győződjön meg arról, hogy a gép, amelyről a sysprep-rendszerkészültel készült, nem az Azure AD-hez csatlakozott, hibrid Azure AD-hez csatlakozott, vagy az Azure AD regisztrált.
+   - Ok: a TPM-művelet meghiúsult vagy érvénytelen volt.
+   - Megoldás: valószínűleg rossz Sysprep-rendszerkép miatt. Győződjön meg arról, hogy a számítógép, amelyről a Sysprep-rendszerkép létrejött, nem csatlakozik az Azure AD-hez, a hibrid Azure AD-hez csatlakozott vagy az Azure AD regisztrálva van
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Indok: Általános TPM-hiba. 
-   - Megoldás: Tiltsa le a TPM-et az ezzel a hibával rendelkező eszközökön. A Windows 10 1809-es és újabb verziói automatikusan észlelik a TPM-hibákat, és a TPM használata nélkül befejezik a hibrid Azure AD-csatlakozást.
+   - Ok: általános TPM-hiba. 
+   - Megoldás: tiltsa le a TPM-eszközt a hibával rendelkező eszközökön. A Windows 10 1809-es és újabb verziója automatikusan észleli a TPM-hibákat, és a TPM használata nélkül befejezi a hibrid Azure AD-csatlakozást.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
-   - Ok: A TPM FIPS módban jelenleg nem támogatott.
-   - Megoldás: Tiltsa le a TPM-et az ezzel a hibával rendelkező eszközökön. A Windows 1809 automatikusan észleli a TPM-hibákat, és a TPM használata nélkül befejezi a hibrid Azure AD-csatlakozást.
+   - Ok: a TPM FIPS módban jelenleg nem támogatott.
+   - Megoldás: tiltsa le a TPM-eszközt a hibával rendelkező eszközökön. A Windows 1809 automatikusan észleli a TPM-hibákat, és a TPM használata nélkül befejezi a hibrid Azure AD-csatlakozást.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
-   - Indok: A TPM zárolva van.
-   - Megoldás: Átmeneti hiba. Várja meg a újratöltődési időszakot. A csatlakozási kísérletnek egy idő után sikeresnek kell lennie. További információ a [TPM alapjai](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) című cikkben található.
+   - Ok: a TPM ki van zárva.
+   - Megoldás: átmeneti hiba. Várjon a hűtési időszakra. Egy kis idő elteltével a csatlakozás sikertelen lesz. További információt a [TPM alapjai](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) című cikkben talál.
 
 ##### <a name="network-errors"></a>Hálózati hibák
 
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Indok: Általános hálózati időout próbál regisztrálni az eszközt DRS
-   - Megoldás: Ellenőrizze a `https://enterpriseregistration.windows.net`hálózati kapcsolatot a hoz.
+   - Ok: általános hálózati időtúllépés a (z) DRS-beli eszköz regisztrálására tett kísérlet során
+   - Megoldás: a `https://enterpriseregistration.windows.net`hálózati kapcsolat ellenőrzése.
 - **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
-   - Ok: A kiszolgáló nevét vagy címét nem lehetett feloldani.
-   - Megoldás: Ellenőrizze a `https://enterpriseregistration.windows.net`hálózati kapcsolatot a hoz. Győződjön meg arról, hogy az állomásnév DNS-feloldása pontos az n/w-ban és az eszközön.
+   - Ok: a kiszolgáló neve vagy címe nem oldható fel.
+   - Megoldás: a `https://enterpriseregistration.windows.net`hálózati kapcsolat ellenőrzése. Győződjön meg arról, hogy az állomásnév DNS-feloldása pontos az n/w-ben és az eszközön.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
-   - Ok: A kiszolgálóval való kapcsolat rendellenesen megszakadt.
-   - Megoldás: Próbálkozzon újra valamikor, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
+   - Ok: a kiszolgálóval való csatlakozás rendellenes módon megszakadt.
+   - Megoldás: próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
 
-##### <a name="federated-join-server-errors"></a>Összevont illesztési kiszolgáló hibái
+##### <a name="federated-join-server-errors"></a>Összevont kapcsolódási kiszolgáló hibái
 
-| Kiszolgálóhiba-kód | Kiszolgálói hibaüzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
 | --- | --- | --- | --- |
-| DirectoryError (Címtárhiba) | A kérés ideiglenesen van szabályozva. Próbálkozzon 300 másodperc után. | A várt hiba. Valószínűleg azért, mert több regisztrációs kérelmek gyors egymásutánban. | Újraillesztés a újratöltődési időszak után |
+| Címtárhiba | A kérést átmenetileg szabályozzák. Próbálkozzon 300 másodperc elteltével. | Várt hiba. Valószínűleg azért, mert a gyors öröklés több regisztrációs kérelmet tesz elérhetővé. | Csatlakozzon újra a hűtési időszak után |
 
-##### <a name="sync-join-server-errors"></a>Csatlakozási kiszolgáló szinkronizálási hibái
+##### <a name="sync-join-server-errors"></a>Csatlakozási kiszolgáló hibáinak szinkronizálása
 
-| Kiszolgálóhiba-kód | Kiszolgálói hibaüzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
 | --- | --- | --- | --- |
-| DirectoryError (Címtárhiba) | AADSTS90002: <UUID> A bérlő nem található. Ez a hiba akkor fordulhat elő, ha nincsenek aktív előfizetések a bérlőhöz. Kérdezze meg az előfizetés rendszergazdáját. | Az SCP-objektum bérlőazonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlőazonosítóval és aktív előfizetésekkel van konfigurálva, és a bérlőben van jelen. |
-| DirectoryError (Címtárhiba) | A megadott azonosítóval megadott eszközobjektum nem található. | A szinkronizálási illesztés várt hibája. Az eszközobjektum nem lett szinkronizálva az AD-ről az Azure AD-re | Várja meg, amíg az Azure AD Connect szinkronizálása befejeződik, és a szinkronizálás befejezése utáni következő csatlakozási kísérlet megoldja a problémát |
-| Hitelesítési hiba | A célszámítógép biztonsági azonosítójának ellenőrzése | Az Azure AD-eszközön lévő tanúsítvány nem egyezik meg a blob aláírásához használt tanúsítványsal a szinkronizálási illesztés során. Ez a hiba általában azt jelenti, hogy a szinkronizálás még nem fejeződött be. |  Várja meg, amíg az Azure AD Connect szinkronizálása befejeződik, és a szinkronizálás befejezése utáni következő csatlakozási kísérlet megoldja a problémát |
+| Címtárhiba | AADSTS90002: a <UUID> bérlő nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
+| Címtárhiba | Nem található az eszköz objektuma a megadott azonosító alapján. | A szinkronizáláshoz való csatlakozás várható hiba. Az eszköz objektuma nem lett szinkronizálva az AD-ből az Azure AD-be | Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
+| AuthenticationError | A célszámítógép SID-azonosítójának ellenőrzése | Az Azure AD-eszközön lévő tanúsítvány nem felel meg a blob aláírásához használt tanúsítványnak a szinkronizálási csatlakozás során. Ez a hiba általában azt jelenti, hogy a szinkronizálás még nem fejeződött be. |  Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
 
-### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. lépés: Naplók gyűjtése és kapcsolatfelvétel a Microsoft támogatási szolgálatával
+### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. lépés: naplók összegyűjtése és kapcsolatfelvétel Microsoft ügyfélszolgálata
 
-Get nyilvános szkriptek itt: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+Nyilvános parancsfájlok beszerzése itt: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
-1. Nyisson meg egy `start_ngc_tracing_public.cmd`rendszergazdai parancssort, és futtassa a parancsot.
-2. Hajtsa végre a probléma reprodukálásához szükséges lépéseket.
-3. A napló futtatásának `stop_ngc_tracing_public.cmd`leállítása a végrehajtással.
-4. Zip és küldje el `%SYSTEMDRIVE%\TraceDJPP\*` a naplók alatt elemzésre.
+1. Nyisson meg egy rendszergazdai parancssort, `start_ngc_tracing_public.cmd`és futtassa a parancsot.
+2. A probléma ismételt előállításához hajtsa végre a következő lépéseket:.
+3. Állítsa le a naplózási parancsfájl futtatását `stop_ngc_tracing_public.cmd`a végrehajtásával.
+4. Zip-ben, és küldje `%SYSTEMDRIVE%\TraceDJPP\*` el a naplókat az elemzéshez.
 
 ## <a name="troubleshoot-post-join-issues"></a>Csatlakozás utáni problémák elhárítása
 
-### <a name="retrieve-the-join-status"></a>Az illesztési állapot lekérése 
+### <a name="retrieve-the-join-status"></a>Az illesztés állapotának beolvasása 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: IGEN és AzureADPrt: IGEN
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: igen és AzureADPrt: igen
   
-Ezek a mezők azt jelzik, hogy a felhasználó sikeresen hitelesítette-e az Azure AD-t, amikor bejelentkezik az eszközre. Ha az értékek **NEM**, akkor ennek az lehet az oka:
+Ezek a mezők jelzik, hogy a felhasználó sikeresen hitelesített-e az Azure AD-be az eszközre való bejelentkezéskor. Ha az értékek **nem**, akkor a következők miatt lehet:
 
-- Hibás tárolási kulcs az eszközhöz társított TPM regisztrációkor (ellenőrizze a KeySignTest futtatása közben emelt szintű).
-- Alternatív bejelentkezési azonosító
+- A regisztráció során az eszközhöz társított TPM rossz tárolási kulcsa (a KeySignTest-t a emelt szintű futtatás közben kell ellenőriznie).
+- Másodlagos bejelentkezési azonosító
 - A HTTP-proxy nem található
 
 ## <a name="known-issues"></a>Ismert problémák
-- A Beállítások –>-fiókok –> Access Work vagy School csoportban a hibrid Azure AD-hez csatlakoztatott eszközök két különböző fiókot jeleníthetnek meg, egyet az Azure AD-hez, egyet pedig a helyszíni AD-hez, ha mobil hotspotokhoz vagy külső Wi-Fi-hálózatokhoz csatlakoznak. Ez csak a felhasználói felület problémája, és nincs hatással a funkcionalitásra. 
+- A beállítások – > fiókok – > hozzáférés munkahelyi vagy iskolai rendszerhez, a hibrid Azure AD-hez csatlakoztatott eszközök két különböző fiókot mutatnak be, amelyek közül az egyik az Azure AD, egy pedig a helyszíni AD-hez, a mobil hozzáférési pontokhoz vagy külső WiFi hálózatokhoz csatlakoztatva. Ez csak egy felhasználói felületi probléma, és nincs hatással a funkcióra. 
  
 ## <a name="next-steps"></a>További lépések
 
-Az [eszközök hibaelhárításának folytatása a Dsregcmd paranccsal](troubleshoot-device-dsregcmd.md)
+[Az eszközök hibaelhárításának folytatása a dsregcmd parancs használatával](troubleshoot-device-dsregcmd.md)
 
-További kérdések az [eszközkezelésről szóló gyakori kérdések ben](faq.md)
+További kérdések: eszközkezelés – [Gyakori kérdések](faq.md)
