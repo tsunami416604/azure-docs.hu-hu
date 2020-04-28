@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitások konfigurálása az Azure Virtuális gépen sablon használatával – Azure AD
-description: Részletes útmutató az Azure-erőforrások felügyelt identitások azure-erőforrásokhoz való konfigurálásához egy Azure-beli virtuális gépen egy Azure Resource Manager-sablon használatával.
+title: Felügyelt identitások konfigurálása Azure-beli virtuális gépen sablon használatával – Azure AD
+description: Részletes útmutató az Azure-beli virtuális gépeken futó Azure-erőforrások felügyelt identitásának konfigurálásához Azure Resource Manager sablon használatával.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,47 +16,47 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75972152"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Felügyelt identitások konfigurálása Azure-erőforrásokhoz egy Azure-beli virtuális gépen sablonok használatával
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépen lévő Azure-erőforrásokhoz sablonok használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásokszámára az Azure Active Directoryban. Ezzel az identitással hitelesítheti magát minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítést, anélkül, hogy hitelesítő adatokat a kódot.
+Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban.
 
-Ebben a cikkben az Azure Resource Manager központi telepítési sablon használatával megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat az Azure-erőforrások műveleteihez egy Azure virtuális gépen:
+Ebben a cikkben a Azure Resource Manager telepítési sablonjának használatával megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat az Azure-erőforrások műveleteihez egy Azure-beli virtuális gépen:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure Resource Manager telepítési sablonhasználatát, tekintse meg az [áttekintő szakaszt.](overview.md) **Mindenképpen tekintse át a [rendszerhez rendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget.](overview.md#how-does-the-managed-identities-for-azure-resources-work)**
+- Ha nem ismeri a Azure Resource Manager telepítési sablon használatát, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Az Azure [Portalhoz](../../azure-resource-manager/management/overview.md) és a parancsfájlok futtatásához is az Azure Resource Manager-sablonok lehetővé teszik az Azure-erőforráscsoport által meghatározott új vagy módosított erőforrások üzembe helyezését. Számos lehetőség áll rendelkezésre a sablon szerkesztéséhez és telepítéséhez, helyi és portálalapú, többek között:
+A Azure Portal és a parancsfájlok futtatásához hasonlóan [Azure Resource Manager](../../azure-resource-manager/management/overview.md) -sablonok lehetővé teszik az Azure-erőforráscsoport által definiált új vagy módosított erőforrások telepítését. A sablonok szerkesztéséhez és üzembe helyezéséhez több lehetőség is rendelkezésre áll, a helyi és a portálon is, beleértve a következőket:
 
-   - Az [Azure Marketplace-ről származó egyéni sablon](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)használatával, amely lehetővé teszi, hogy teljesen új sablont hozzon létre, vagy egy meglévő közös vagy [rövid útmutató sablonra alapozza.](https://azure.microsoft.com/documentation/templates/)
-   - Egy meglévő erőforráscsoportból származó, sablon exportálása [az eredeti központi telepítésből](../../azure-resource-manager/templates/export-template-portal.md)vagy a telepítés aktuális [állapotából.](../../azure-resource-manager/templates/export-template-portal.md)
-   - Egy helyi [JSON-szerkesztő (például a VS-kód)](../../azure-resource-manager/resource-manager-create-first-template.md)használatával, majd feltöltése és üzembe helyezése a PowerShell vagy a CLI használatával.
-   - A Visual Studio [Azure Resource Group projekt](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) használatával hozzon létre és telepítsen egy sablont.  
+   - [Egyéni sablon használata az Azure piactéren](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy teljesen új sablont hozzon létre, vagy egy meglévő gyakori vagy gyors üzembe helyezési [sablonon](https://azure.microsoft.com/documentation/templates/)alapuljon.
+   - Egy meglévő erőforráscsoporthoz származtatva, az [eredeti telepítésből](../../azure-resource-manager/templates/export-template-portal.md)vagy az üzemelő példány [aktuális állapotától](../../azure-resource-manager/templates/export-template-portal.md)származó sablon exportálásával.
+   - Helyi JSON- [szerkesztő (például vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)használata, majd a PowerShell vagy a parancssori felület használatával történő feltöltés és üzembe helyezés.
+   - A Visual Studio [Azure erőforráscsoport-projekt](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) használatával hozzon létre és helyezzen üzembe egy sablont.  
 
-A választott beállítástól függetlenül a sablon szintaxisa megegyezik a kezdeti üzembe helyezés és újratelepítés során. A rendszer vagy a felhasználó által kijelölt felügyelt identitás engedélyezése egy új vagy meglévő virtuális gépen ugyanúgy történik. Alapértelmezés szerint az Azure Resource Manager [növekményes frissítést](../../azure-resource-manager/templates/deployment-modes.md) végez a központi telepítésekhez.
+A választott lehetőségtől függetlenül a sablon szintaxisa megegyezik a kezdeti üzembe helyezés és az újratelepítés során. A rendszer vagy a felhasználó által hozzárendelt felügyelt identitás engedélyezése egy új vagy meglévő virtuális gépen ugyanúgy történik. Alapértelmezés szerint a Azure Resource Manager a központi telepítések [növekményes frissítését](../../azure-resource-manager/templates/deployment-modes.md) is.
 
-## <a name="system-assigned-managed-identity"></a>Rendszerhez rendelt felügyelt identitás
+## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban egy Azure Resource Manager-sablon használatával engedélyezi és letiltja a rendszer által kijelölt felügyelt identitást.
+Ebben a szakaszban egy Azure Resource Manager sablonnal engedélyezheti és tilthatja le a rendszerhez rendelt felügyelt identitást.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Rendszeráltal hozzárendelt felügyelt identitás engedélyezése Azure-beli virtuális gép létrehozása kor vagy meglévő virtuális gépen
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>A rendszer által hozzárendelt felügyelt identitás engedélyezése egy Azure-beli virtuális gép vagy egy meglévő virtuális gép létrehozása során
 
-A virtuális gép rendszer által hozzárendelt felügyelt identitásának engedélyezéséhez a fióknak szüksége van a [Virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárszerepkör-hozzárendelésre.
+Ha engedélyezni szeretné a rendszer által hozzárendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Akár helyileg, akár az Azure portálon keresztül jelentkezik be az Azure-ba, használjon olyan fiókot, amely a virtuális gép-alapú Azure-előfizetéshez van társítva.
+1. Akár helyileg, akár a Azure Portal keresztül jelentkezik be az Azure-ba, használjon egy olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
-2. A rendszer által hozzárendelt felügyelt identitás engedélyezéséhez töltse be `Microsoft.Compute/virtualMachines` a sablont `resources` egy szerkesztőbe, keresse meg az érdeklődésre számot tartó erőforrást a szakaszon belül, és adja hozzá a `"identity"` tulajdonságot a `"type": "Microsoft.Compute/virtualMachines"` tulajdonsággal azonos szinten. Használja a következő szintaxist:
+2. A rendszer által hozzárendelt felügyelt identitás engedélyezéséhez töltse be a sablont egy szerkesztőbe `Microsoft.Compute/virtualMachines` , keresse meg a ( `resources` z) szakaszban található `"identity"` kamatot, és adja hozzá a `"type": "Microsoft.Compute/virtualMachines"` tulajdonságot a tulajdonsággal megegyező szinten. Használja a következő szintaxist:
 
    ```JSON
    "identity": {
@@ -66,7 +66,7 @@ A virtuális gép rendszer által hozzárendelt felügyelt identitásának enged
 
 
 
-3. Ha elkészült, a következő szakaszokat kell `resource` hozzáadni a sablon szakaszához, és a következőhöz kell hasonlítania:
+3. Ha elkészült, a következő szakaszokat kell hozzáadnia a sablon `resource` szakaszához, és a következőhöz hasonlónak kell lennie:
 
    ```JSON
    "resources": [
@@ -103,17 +103,17 @@ A virtuális gép rendszer által hozzárendelt felügyelt identitásának enged
     ]
    ```
 
-### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Szerepkör hozzárendelése a virtuális gép rendszeráltal hozzárendelt felügyelt identitásához
+### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Szerepkör hozzárendelése a virtuális gép rendszer által hozzárendelt felügyelt identitásához
 
-Miután engedélyezte a rendszer által hozzárendelt felügyelt identitása a virtuális gép, érdemes lehet, hogy adjon neki egy szerepkört, például **olvasó** hozzáférést az erőforráscsoporthoz, amelyben létrehozták.
+Miután engedélyezte a rendszerhez rendelt felügyelt identitást a virtuális gépen, érdemes megadnia egy olyan szerepkört, mint az **olvasó** hozzáférése ahhoz az erőforráscsoporthoz, amelyben létrehozták.
 
-Ahhoz, hogy szerepkört rendeljen a virtuális gép rendszeráltal hozzárendelt identitásához, a fióknak szüksége van a [felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkör-hozzárendelésre.
+Ha szerepkört szeretne hozzárendelni a virtuális gép rendszerhez rendelt identitásához, a fióknak szüksége van a [felhasználói hozzáférés rendszergazdai](/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkör-hozzárendelésére.
 
-1. Akár helyileg, akár az Azure portálon keresztül jelentkezik be az Azure-ba, használjon olyan fiókot, amely a virtuális gép-alapú Azure-előfizetéshez van társítva.
+1. Akár helyileg, akár a Azure Portal keresztül jelentkezik be az Azure-ba, használjon egy olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
-2. Töltse be a sablont egy [szerkesztőbe,](#azure-resource-manager-templates) és adja hozzá a következő információkat, hogy a virtuális gép **olvasó** hozzáférést az erőforráscsoporthoz, amelyben létrehozták.  A sablon szerkezete a szerkesztőtől és a választott telepítési modelltől függően változhat.
+2. Töltse be a sablont egy [szerkesztőbe](#azure-resource-manager-templates) , és adja hozzá a következő információkat, hogy a virtuálisgép- **olvasó** hozzáférjen ahhoz az erőforráscsoporthoz, amelyben létrehozták.  A sablon szerkezete a szerkesztőtől és a választott telepítési modelltől függően változhat.
 
-   A `parameters` szakasz alatt adja hozzá a következő:
+   A `parameters` következő szakaszban adja hozzá a következőket:
 
     ```JSON
     "builtInRoleType": {
@@ -125,13 +125,13 @@ Ahhoz, hogy szerepkört rendeljen a virtuális gép rendszeráltal hozzárendelt
     }
     ```
 
-    A `variables` szakasz alatt adja hozzá a következő:
+    A `variables` következő szakaszban adja hozzá a következőket:
 
     ```JSON
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
-    A `resources` szakasz alatt adja hozzá a következő:
+    A `resources` következő szakaszban adja hozzá a következőket:
 
     ```JSON
     {
@@ -149,23 +149,23 @@ Ahhoz, hogy szerepkört rendeljen a virtuális gép rendszeráltal hozzárendelt
     }
     ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Rendszeráltal hozzárendelt felügyelt identitás letiltása Azure-beli virtuális gépről
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Rendszerhez rendelt felügyelt identitás letiltása egy Azure-beli virtuális gépről
 
-A rendszer által hozzárendelt felügyelt identitás eltávolítása a virtuális gépről, a fióknak szüksége van a [Virtuálisgép közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.  Nincs szükség további Azure AD-címtárszerepkör-hozzárendelésre.
+Ha a rendszer által hozzárendelt felügyelt identitást el szeretné távolítani egy virtuális gépről, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkörének hozzárendelésére.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Akár helyileg, akár az Azure portálon keresztül jelentkezik be az Azure-ba, használjon olyan fiókot, amely a virtuális gép-alapú Azure-előfizetéshez van társítva.
+1. Akár helyileg, akár a Azure Portal keresztül jelentkezik be az Azure-ba, használjon egy olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
-2. Töltse be a sablont `Microsoft.Compute/virtualMachines` egy [szerkesztőbe,](#azure-resource-manager-templates) és keresse meg az érdeklődésre számot tartó erőforrást a `resources` szakaszon belül. Ha olyan virtuális gépe van, amely csak a rendszer hez rendelt felügyelt identitással `None`rendelkezik, letilthatja azt az identitástípus módosításával.  
+2. Töltse be a sablont egy [szerkesztőbe](#azure-resource-manager-templates) , és `Microsoft.Compute/virtualMachines` keresse meg a keresett erőforrást a `resources` szakaszon belül. Ha olyan virtuális géppel rendelkezik, amely csak rendszerhez rendelt felügyelt identitással rendelkezik, letilthatja az identitás típusának `None`módosításával.  
 
-   **Microsoft.Compute/virtualMachines API 2018-06-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2018-06-01**
 
-   Ha a virtuális gép rendszer- és felhasználó által `SystemAssigned` hozzárendelt felügyelt identitásokkal `UserAssigned` is `userAssignedIdentities` rendelkezik, távolítsa el az identitástípusból, és tartsa meg a szótárértékeket.
+   Ha a virtuális gépen a rendszer és a felhasználó által hozzárendelt felügyelt identitás `SystemAssigned` is található, távolítsa el `UserAssigned` az identitás típusát `userAssignedIdentities` , és tartsa meg a szótár értékeit.
 
-   **Microsoft.Compute/virtualMachines API 2018-06-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2018-06-01**
 
-   Ha `apiVersion` az `2017-12-01` ön és a virtuális gép rendszer- és felhasználó `SystemAssigned` által hozzárendelt felügyelt `UserAssigned` identitásokkal `identityIds` is rendelkezik, távolítsa el az identitástípusból, és tartsa meg a felhasználó által hozzárendelt felügyelt identitások tömbjével együtt.  
+   Ha az `apiVersion` Ön `2017-12-01` és a virtuális gépe egyaránt rendelkezik rendszer-és felhasználó által hozzárendelt felügyelt `SystemAssigned` identitásokkal, távolítsa el `UserAssigned` az identitás típusát `identityIds` , és tartsa meg a felhasználó által hozzárendelt felügyelt identitások tömbjét.  
 
-A következő példa bemutatja, hogyan távolítson el egy rendszer által hozzárendelt felügyelt identitást egy felhasználó által hozzárendelt felügyelt identitások nélküli virtuális gépről:
+Az alábbi példa bemutatja, hogyan távolíthat el egy rendszerhez rendelt felügyelt identitást egy olyan virtuális gépről, amely nem rendelkezik felhasználó által hozzárendelt felügyelt identitásokkal:
 
  ```JSON
  {
@@ -181,20 +181,20 @@ A következő példa bemutatja, hogyan távolítson el egy rendszer által hozz�
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban egy felhasználó által hozzárendelt felügyelt identitást rendel egy Azure-beli virtuális géphez az Azure Resource Manager-sablon használatával.
+Ebben a szakaszban egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá egy Azure-beli virtuális géphez Azure Resource Manager sablon használatával.
 
 > [!Note]
-> Ha egy Azure Resource Manager-sablon használatával szeretne felhasználó által hozzárendelt felügyelt identitást létrehozni, olvassa el a Felhasználó által hozzárendelt felügyelt identitás létrehozása című [témakört.](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)
+> Felhasználó által hozzárendelt, Azure Resource Manager sablon használatával létrehozott felügyelt identitás létrehozásával kapcsolatban tekintse meg [a felhasználó által hozzárendelt felügyelt identitás létrehozása](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)című témakört.
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás hozzárendelése Azure-beli virtuális géphez
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése Azure-beli virtuális géphez
 
-Ha egy felhasználó által hozzárendelt identitást rendel egy virtuális géphez, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és a [felügyelt identitáskezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendelések. Nincs szükség további Azure AD-címtárszerepkör-hozzárendelésre.
+Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Az `resources` elem alatt adja hozzá a következő bejegyzést egy felhasználó által hozzárendelt felügyelt identitás hozzárendeléséhez a virtuális géphez.  Ügyeljen arra, `<USERASSIGNEDIDENTITY>` hogy cserélje le a felhasználó által kijelölt felügyelt identitás nevét.
+1. A `resources` elem alatt adja hozzá a következő bejegyzést egy felhasználóhoz rendelt felügyelt identitás a virtuális géphez való hozzárendeléséhez.  Ügyeljen arra, hogy `<USERASSIGNEDIDENTITY>` a helyére a létrehozott, felhasználó által hozzárendelt felügyelt identitás nevét adja meg.
 
-   **Microsoft.Compute/virtualMachines API 2018-06-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2018-06-01**
 
-   Ha `apiVersion` a, `2018-06-01`a felhasználó által hozzárendelt felügyelt identitások a `userAssignedIdentities` szótár `<USERASSIGNEDIDENTITYNAME>` formátumban tárolódnak, és az `variables` értéket a sablon szakaszában meghatározott változóban kell tárolni.
+   Ha Ön `apiVersion` az `2018-06-01`, a felhasználó által hozzárendelt felügyelt identitások a `userAssignedIdentities` szótár formátumában tárolódnak, `<USERASSIGNEDIDENTITYNAME>` és az értéket a sablon `variables` szakaszában meghatározott változóban kell tárolni.
 
    ```JSON
     {
@@ -211,9 +211,9 @@ Ha egy felhasználó által hozzárendelt identitást rendel egy virtuális gép
     }
    ```
 
-   **Microsoft.Compute/virtualMachines API 2017-12-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2017-12-01**
 
-   Ha `apiVersion` a, `2017-12-01`a felhasználó által hozzárendelt felügyelt identitások a `identityIds` tömbben tárolódnak, és az `<USERASSIGNEDIDENTITYNAME>` értéket a `variables` sablon szakaszában meghatározott változóban kell tárolni.
+   Ha Ön `apiVersion` az `2017-12-01`, a felhasználó által hozzárendelt felügyelt identitások a `identityIds` tömbben tárolódnak, `<USERASSIGNEDIDENTITYNAME>` és az értéket a sablon `variables` szakaszában meghatározott változóban kell tárolni.
 
    ```JSON
    {
@@ -230,9 +230,9 @@ Ha egy felhasználó által hozzárendelt identitást rendel egy virtuális gép
    }
    ```
 
-3. Ha elkészült, a következő szakaszokat kell `resource` hozzáadni a sablon szakaszához, és a következőhöz kell hasonlítania:
+3. Ha elkészült, a következő szakaszokat kell hozzáadnia a sablon `resource` szakaszához, és a következőhöz hasonlónak kell lennie:
 
-   **Microsoft.Compute/virtualMachines API 2018-06-01 verzió**    
+   **Microsoft. számítási/virtualMachines API-verzió 2018-06-01**    
 
    ```JSON
    "resources": [
@@ -270,7 +270,7 @@ Ha egy felhasználó által hozzárendelt identitást rendel egy virtuális gép
         }
     ]   
    ```
-   **Microsoft.Compute/virtualMachines API 2017-12-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2017-12-01**
 
    ```JSON
    "resources": [
@@ -310,15 +310,15 @@ Ha egy felhasználó által hozzárendelt identitást rendel egy virtuális gép
     ]
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása azure-beli virtuális gépből
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása Azure-beli virtuális gépről
 
-A felhasználó által hozzárendelt identitás eltávolítása a virtuális gép, a fióknak szüksége van a [Virtuálisgép közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés. Nincs szükség további Azure AD-címtárszerepkör-hozzárendelésre.
+A felhasználó által hozzárendelt identitás egy [virtuális gépről](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) való eltávolításához a fióknak szüksége van a virtuálisgép-közreműködő szerepkör-hozzárendelésre. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Akár helyileg, akár az Azure portálon keresztül jelentkezik be az Azure-ba, használjon olyan fiókot, amely a virtuális gép-alapú Azure-előfizetéshez van társítva.
+1. Akár helyileg, akár a Azure Portal keresztül jelentkezik be az Azure-ba, használjon egy olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
-2. Töltse be a sablont `Microsoft.Compute/virtualMachines` egy [szerkesztőbe,](#azure-resource-manager-templates) és keresse meg az érdeklődésre számot tartó erőforrást a `resources` szakaszon belül. Ha olyan virtuális gépe van, amely csak a felhasználó által hozzárendelt felügyelt identitással rendelkezik, letilthatja azt az identitástípus módosításával. `None`
+2. Töltse be a sablont egy [szerkesztőbe](#azure-resource-manager-templates) , és `Microsoft.Compute/virtualMachines` keresse meg a keresett erőforrást a `resources` szakaszon belül. Ha van olyan virtuális gépe, amely csak felhasználó által hozzárendelt felügyelt identitással rendelkezik, letilthatja az identitás típusának módosításával `None`.
 
-   A következő példa bemutatja, hogyan távolítja el az összes felhasználó által hozzárendelt felügyelt identitásokat egy rendszer által hozzárendelt felügyelt identitások nélkül:
+   Az alábbi példa bemutatja, hogyan távolíthatja el a felhasználó által hozzárendelt összes felügyelt identitást egy olyan virtuális gépről, amely nem rendelkezik rendszerhez rendelt felügyelt identitásokkal:
 
    ```json
     {
@@ -332,18 +332,18 @@ A felhasználó által hozzárendelt identitás eltávolítása a virtuális gé
     }
    ```
 
-   **Microsoft.Compute/virtualMachines API 2018-06-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2018-06-01**
 
-   Egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolítása a virtuális gépről, távolítsa el azt a `useraAssignedIdentities` szótárból.
+   Ha egyetlen felhasználó által hozzárendelt felügyelt identitást szeretne eltávolítani egy virtuális gépről, távolítsa el azt a `useraAssignedIdentities` szótárból.
 
-   Ha rendszerhez rendelt felügyelt identitással rendelkezik, tartsa `type` meg az `identity` értékben az érték alatt.
+   Ha a rendszerhez rendelt felügyelt identitással rendelkezik, tartsa azt az érték alatti `type` `identity` értékben.
 
-   **Microsoft.Compute/virtualMachines API 2017-12-01 verzió**
+   **Microsoft. számítási/virtualMachines API-verzió 2017-12-01**
 
-   Egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolítása a virtuális gépről, távolítsa el azt a `identityIds` tömbből.
+   Ha egyetlen felhasználó által hozzárendelt felügyelt identitást szeretne eltávolítani egy virtuális gépről, távolítsa el azt a `identityIds` tömbből.
 
-   Ha rendszerhez rendelt felügyelt identitással rendelkezik, tartsa `type` meg az `identity` értékben az érték alatt.
+   Ha a rendszerhez rendelt felügyelt identitással rendelkezik, tartsa azt az érték alatti `type` `identity` értékben.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felügyelt identitások az Azure-erőforrások áttekintése.](overview.md)
+- [Felügyelt identitások az Azure-erőforrások áttekintéséhez](overview.md).
