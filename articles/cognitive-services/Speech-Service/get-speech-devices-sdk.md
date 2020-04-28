@@ -1,7 +1,7 @@
 ---
 title: Beszédeszközök SDK letöltése
 titleSuffix: Azure Cognitive Services
-description: A beszédszolgáltatás számos eszközzel és hangforrással működik. Mostantól a beszédfelismerési alkalmazásokat a következő szintre lépheti az egyező hardverrel és szoftverrel. Ebből a cikkből megtudhatja, hogyan érheti el a beszédeszközök SDK-t, és hogyan kezdheti meg a fejlesztést.
+description: A beszédfelismerési szolgáltatás számos különböző eszközzel és hangforrással működik. Most a következő szintre állíthatja a beszédfelismerési alkalmazásokat a megfelelő hardverekkel és szoftverekkel. Ebből a cikkből megtudhatja, hogyan érheti el a Speech Devices SDK-t, és megkezdheti a fejlesztést.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 756ec976c4643c1cd80552b7fa552b70fd1f5d24
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: ed3400689272d262ff5c8cda3cc2bd451f2ced4d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391273"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184894"
 ---
-# <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédeszközeinek SDK beolvasása
+# <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services Speech Devices SDK beszerzése
 
-A Beszédeszközök SDK egy előre hangolt könyvtár, amelyet a célirányos fejlesztői készletekkel és a különböző mikrofontömb-konfigurációkkal való együttműködésre terveztek.
+A Speech Devices SDK egy előre összehangolt könyvtár, amelynek célja, hogy a célnak megfelelően kialakított fejlesztői készletekkel működjön, és a mikrofonos tömbök különböző konfigurációit használják.
 
-## <a name="choose-a-development-kit"></a>Fejlesztői készlet kiválasztása
+## <a name="choose-a-development-kit"></a>Fejlesztői csomag kiválasztása
 
 |Eszközök|Specifikáció|Leírás|Forgatókönyvek|
 |--|--|--|--|
-|[URbetter T11 Fejlesztési Tanács](https://www.alibaba.com/product-detail/URBETTER-Dev-Kits-for-Microsoft-Speech_62358746402.html)![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 Mikrofon tömb, ARM SOC, WIFI, Ethernet, HDMI, USB kamera. <br>Linux|Iparági szintű beszédeszközök SDK, amely alkalmazkodik a Microsoft Mic tömbhöz, és támogatja a kiterjesztett I/O-t, például a HDMI/Ethernet-et és több USB-perifériát|Beszélgetés átirat, oktatás, kórház, robotok, OTT Box, Voice Agent, Drive Thru|
-|[Roobo Intelligens Audio Dev Kit](https://ddk.roobo.com)<br>[Gyorsútmutató](speech-devices-sdk-roobo-v1.md) / [Quickstart](speech-devices-sdk-android-quickstart.md)![Roobo intelligens hangfejlesztői készlete](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mikrofon tömb, ARM SOC, WIFI, Audio Out, IO. <br>[Android](speech-devices-sdk-android-quickstart.md)|Az első beszédeszközök SDK-ja a Microsoft Mic Array és az sdk először történő feldolgozásához a kiváló minőségű átírási és beszédforgatókönyvek fejlesztéséhez|Beszélgetés átírása, okos hangszóró, hangügynök, hordható|
-|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[Gyorsindítás](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / az Azure Kinect DK-ban[Quickstart](speech-devices-sdk-windows-quickstart.md)![](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic Array RGB és Mélység kamerák. <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Fejlesztői készlet fejlett mesterséges intelligencia (AI) érzékelőkkel kifinomult számítógépes látás- és beszédmodellek készítéséhez. A kategóriájában legjobb térbeli mikrofontömböt és mélységmérő kamerát kombinálja a videokamerával és a tájolásérzékelővel – mindezt egyetlen kis eszközben, több móddal, opcióval és SDK-val, hogy számos számítási típust befogadjon.|Beszélgetés átirat, Robotika, Smart Building|
-|Roobo Intelligens Audio Dev Kit 2<br>[Telepítés](speech-devices-sdk-roobo-v2.md)<br>![Roobo Intelligens Audio Dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 Mikrofon tömb, ARM SOC, WIFI, Bluetooth, IO. <br>Linux|Generációs beszédeszközök SDK, amely alternatív operációs rendszert és több funkciót biztosít egy költséghatékony referencia-kialakításban.|Beszélgetés átírása, okos hangszóró, hangügynök, hordható|
+|[URbetter dev Kit](http://www.urbetter.com/products_56/278.html)![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 MIC-tömb, ARM SOC, WIFI, Ethernet, HDMI, USB kamera. <br>Linux|Iparági szintű Speech Devices SDK, amely alkalmazkodik a Microsoft MIC-tömbhöz, és támogatja a kiterjesztett I/O-t, például a HDMI/Ethernet és a több USB-perifériát|Beszélgetések átírása, oktatás, kórház, robotok, OTT Box, hangvezérelt ügynök, Drive Thru|
+|[Roobo Smart audio dev Kit](https://ddk.roobo.com)<br>[A telepítő](speech-devices-sdk-roobo-v1.md) / rövid útmutatója[Quickstart](speech-devices-sdk-android-quickstart.md)![Roobo Smart audio dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC-tömb, ARM SOC, WIFI, audiokimenet, IO. <br>[Android](speech-devices-sdk-android-quickstart.md)|Az első Speech Devices SDK a Microsoft MIC Array és az első feldolgozó SDK hozzáigazításához a kiváló minőségű átírási és beszédfelismerési forgatókönyvek fejlesztéséhez|Beszélgetés átirata, intelligens hangszóró, hangvezérelt ügynök, hordható|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[A telepítő](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / rövid útmutatója[Quickstart](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 MIC-tömb RGB és mélységmérő kamerák. <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Fejlett mesterséges intelligencia (AI) érzékelőkkel rendelkező fejlesztői készlet kifinomult számítógépes jövőkép és beszédfelismerési modellek létrehozásához. Kombinálja a legjobb minőségű térbeli mikrofon tömbjét és részletes kameráját egy videokamera és tájolás érzékelővel – mindezt egyetlen kis eszközön, több mód, lehetőség és SDK használatával, amelyek számos számítási típust biztosítanak.|Beszélgetés átirata, robotika, intelligens kialakítás|
+|Roobo Smart audio dev Kit 2<br>[Telepítés](speech-devices-sdk-roobo-v2.md)<br>![Roobo Smart audio dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 MIC-tömb, ARM SOC, WIFI, Bluetooth, IO. <br>Linux|A 2. generációs Speech Devices SDK, amely alternatív operációs rendszert és további funkciókat biztosít a költséghatékony hivatkozási tervben.|Beszélgetés átirata, intelligens hangszóró, hangvezérelt ügynök, hordható|
 
 
-## <a name="download-the-speech-devices-sdk"></a>A beszédfelismerési eszközök SDK letöltése
+## <a name="download-the-speech-devices-sdk"></a>A Speech Devices SDK letöltése
 
-Töltse le a [beszédeszközök SDK](https://aka.ms/sdsdk-download).
+Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)-t.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a beszédfelismerési eszközök SDK-val](https://aka.ms/sdsdk-quickstart)
+> [Ismerkedés a Speech Devices SDK-val](https://aka.ms/sdsdk-quickstart)

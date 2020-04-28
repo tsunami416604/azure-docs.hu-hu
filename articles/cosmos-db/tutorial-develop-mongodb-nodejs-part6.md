@@ -1,5 +1,5 @@
 ---
-title: CRUD-függvények hozzáadása egy Angular alkalmazáshoz az Azure Cosmos DB MongoDB-hoz szükséges API-jával
+title: A MongoDB-hez Azure Cosmos DB API-val rendelkező szögletes alkalmazáshoz hozzáadhat szifilisz-függvényeket
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 6. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441104"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184775"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Hozzon létre egy Szögletes alkalmazást az Azure Cosmos DB MongoDB-hoz szükséges API-jával – CRUD-függvények hozzáadása az alkalmazáshoz
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
 
-Ez a több részes oktatóanyag bemutatja, hogyan hozhat létre egy új alkalmazást a Node.js nyelven express és angular nyelven, majd csatlakoztassa a [Cosmos-fiókhoz, amely a Cosmos DB MongoDB API-jával van konfigurálva.](mongodb-introduction.md) Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md). Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * Post, Put és Delete függvények létrehozása a főképszolgáltatáshoz
@@ -86,7 +86,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
 5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, válassza a **Debug** (Hibakeresés) gombot ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombot ![Hibakeresés indítása ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
-6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Keresse [http://localhost:3000](http://localhost:3000) meg a hálózaton keresztül kezdeményezett hívások megtekintését.
+6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a `http://localhost:3000` helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
     ![Hálózat lap a Chrome böngészőben a hálózati tevékenységgel](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

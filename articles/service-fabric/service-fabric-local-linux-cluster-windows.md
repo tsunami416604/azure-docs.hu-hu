@@ -1,35 +1,35 @@
 ---
 title: Az Azure Service Fabric Linux-fürt beállítása Windows rendszeren
-description: Ez a cikk ismerteti, hogyan állíthatja be a Service Fabric Linux-fürtök windowsos fejlesztői gépeken futó. Ez különösen hasznos a platformok közötti fejlesztéshez.
+description: Ez a cikk bemutatja, hogyan állíthat be Service Fabric Linux rendszerű fürtöket Windows-fejlesztői gépeken. Ez különösen hasznos a platformok közötti fejlesztéshez.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 9f60b9d9b919a72250038ede2a2bd53278df79cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309003"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193326"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Linux Service Fabric-fürt beállítása a Windows fejlesztői gépen
 
-Ez a dokumentum ismerteti, hogyan lehet beállítani egy helyi Linux Service Fabric windowsos fejlesztői gépeken. A helyi Linux-fürt beállítása hasznos a Linux-fürtökre szánt alkalmazások gyors teszteléséhez, de Windows-gépen fejlesztették ki őket.
+Ez a dokumentum bemutatja, hogyan állíthat be helyi linuxos Service Fabric a Windows fejlesztői gépeken. A helyi Linux-fürtök beállítása hasznos lehet a Linux-fürtöket megcélzó alkalmazások gyors tesztelésére, de a Windows rendszerű gépeken való fejlesztésre.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Linux-alapú Service Fabric-fürtök nem futnak natívan a Windows rendszeren. Egy helyi Service Fabric-fürt futtatásához egy előre konfigurált Docker-tárolórendszerkép áll rendelkezésre. A kezdés előtt a következőkre lesz szüksége:
+A Linux-alapú Service Fabric fürtök nem futnak natív módon Windows rendszeren. Helyi Service Fabric-fürt futtatásához egy előre konfigurált Docker-tároló képe van megadva. A kezdés előtt a következőkre lesz szüksége:
 
 * Legalább 4 GB RAM
 * A [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows) legújabb verziója
-* A Dockernek Linux módban kell futnia
+* A Docker Linux-módban kell futnia
 
 >[!TIP]
-> * A Docker windowsos telepítéséhez kövesse a docker telepítéséhez a hivatalos [Docker-dokumentációban](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) említett lépéseket. 
+> * A Docker Windows rendszeren való telepítéséhez kövesse a hivatalos Docker [dokumentációjában](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) megemlített lépéseket. 
 > * Ha kész a telepítéssel, az [itt](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine) említett lépéseket követve ellenőrizheti, hogy sikeres volt-e a telepítés.
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Helyi tároló létrehozása és a Service Fabric beállítása
-Egy helyi Docker-tároló beállításához és egy szolgáltatásháló-fürt futtatásához hajtsa végre a következő lépéseket a PowerShellben:
+Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt futtatásához hajtsa végre a következő lépéseket a PowerShellben:
 
 
 1. Frissítse a Docker-démon konfigurációját a gazdagépen a következő értékekkel, és indítsa újra a Docker-démont: 
@@ -40,7 +40,7 @@ Egy helyi Docker-tároló beállításához és egy szolgáltatásháló-fürt f
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    A javasolt módja annak, hogy frissítse - menjen a Docker Icon > Beállítások > Daemon > Advanced és frissítse ott. Ezután indítsa újra a Docker démont a módosítások érvénybe léptetéséhez. 
+    A frissítés javasolt módja: ugrás a Docker ikonjára > beállítások > Daemon > Advanced, és frissítsen ott. Ezután indítsa újra a Docker-démont, hogy a módosítások életbe lépnek. 
 
 2. Hozzon létre egy `Dockerfile` nevű fájlt egy új könyvtárban a Service Fabric-rendszerkép létrehozásához:
 
@@ -64,7 +64,7 @@ Egy helyi Docker-tároló beállításához és egy szolgáltatásháló-fürt f
     >A `RUN apt-get install nodejs -y` részlet hozzáadása például lehetővé teszi a `nodejs`-alkalmazások vendég végrehajtható fájlokként való támogatását.
     
     >[!TIP]
-    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Bizonyos módosításokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalra
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
 
 3. Az újrafelhasználható rendszerképnek a `Dockerfile` fájlból történő létrehozásához nyissa meg a terminált, és használja a `cd` parancsot a `Dockerfile` fájlt tartalmazó könyvtáron, majd futtassa az alábbi parancsot:
 
@@ -89,18 +89,18 @@ Egy helyi Docker-tároló beállításához és egy szolgáltatásháló-fürt f
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. A fürt indítása rövid időt vesz igénybe, a naplókat a következő paranccsal tekintheti [http://localhost:19080](http://localhost:19080)meg, vagy az irányítópultra ugorhat a fürtök állapotának megtekintéséhez:
+5. A fürt elindulása eltart egy rövid ideig. A naplók megtekintéséhez vagy az irányítópultra való ugráshoz és a fürt állapotának megtekintéséhez használja az alábbi parancsot `http://localhost:19080`:
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. Az 5. ``http://localhost:19080`` Ezen a ponton csatlakozhat ehhez a fürthöz a Windows fejlesztői gép bármely eszközével, és linuxos Service Fabric-fürtökre irányuló alkalmazások at helyezhet üzembe. 
+6. Az 5. lépés sikeres befejezése után megtekintheti a ``http://localhost:19080`` Windowst, és láthatja a Service Fabric Explorert. Ezen a ponton a Windows fejlesztői gépről származó bármely eszközzel csatlakozhat ehhez a fürthöz, és telepítheti a Linux Service Fabric-fürtökre irányuló alkalmazást is. 
 
     > [!NOTE]
     > Az Eclipse beépülő modul jelenleg nem támogatott a Windows rendszeren. 
 
-7. Ha elkészült, állítsa le és tisztítsa meg a tárolót ezzel a paranccsal:
+7. Ha elkészült, állítsa le és törölje a tárolót a következő paranccsal:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -113,8 +113,8 @@ Egy helyi Docker-tároló beállításához és egy szolgáltatásháló-fürt f
  * A DNS-szolgáltatás nem fut, és nem támogatott – [132. probléma](https://github.com/Microsoft/service-fabric/issues/132).
 
 ## <a name="next-steps"></a>További lépések
-* Az [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) – ismerkedés
-* További [Java-minták kijelentkezése](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* Ismerkedés az [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) -szel
+* Tekintse meg a [Java-mintákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 
 <!-- Image references -->

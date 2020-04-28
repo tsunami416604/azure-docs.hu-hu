@@ -1,6 +1,6 @@
 ---
 title: Az Azure Application Gateway használata VMware virtuális gépekkel
-description: Ez a témakör azt ismerteti, hogy az Azure-alkalmazásátjáró használatával hogyan kezelheti a VMware virtuális gépeken futó webkiszolgálók bejövő webes forgalmát, hogy megnyerje a CloudSimple private cloud környezetet
+description: Leírja, hogyan használhatja az Azure Application Gatewayt a VMware virtuális gépeken futó webkiszolgálók bejövő webes forgalmának kezeléséhez, hogy megnyerje a CloudSimple privát felhőalapú környezetét
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,72 +8,72 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cbfdd358fdfd5403c677c067376142169cdc6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77015456"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185693"
 ---
-# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Az Azure Application Gateway használata VMware virtuális gépekkel a CloudSimple private cloud környezetben
+# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Az Azure Application Gateway használata VMware virtuális gépekkel a CloudSimple privát felhőalapú környezetében
 
-Az Azure Application Gateway segítségével kezelheti a bejövő webes forgalmat a Virtuálisgép-virtuális gépeken futó webkiszolgálók számára a CloudSimple private cloud környezetben.
+Az Azure Application Gateway használatával felügyelheti a VMware virtuális gépeken futó webkiszolgálók bejövő webes forgalmát a CloudSimple saját felhőalapú környezetében.
 
-Az Azure Application Gateway nyilvános és privát hibrid telepítésben való kihasználásával kezelheti az alkalmazások webes forgalmát, biztonságos előtér-feldolgozást biztosíthat, és a VMware-környezetben futó szolgáltatásaik ssl-feldolgozását is kiszervezheti. Az Azure Application Gateway a bejövő webes forgalmat a VMware-környezetekben található háttérkészlet-példányok felé irányítja a konfigurált szabályok és állapotmintak szerint.
+Az Azure-Application Gateway nyilvános hibrid környezetekben való kihasználása révén kezelheti az alkalmazásaira irányuló webes forgalmat, biztonságos kezelőfelületet biztosíthat, és kioszthatja a TLS-feldolgozást a VMware-környezetben futó szolgáltatásai számára. Az Azure Application Gateway a konfigurált szabályok és állapot-mintavételek alapján átirányítja a bejövő webes forgalmat a VMware-környezetekben található háttér-készlet példányaihoz.
 
-Ez az Azure Application Gateway megoldás a következőket igényli:
+Ehhez az Azure Application Gateway-megoldáshoz a következőket kell tennie:
 
 * Azure-előfizetés.
-* Hozzon létre és konfiguráljon egy Azure virtuális hálózatot, és egy alhálózatot a virtuális hálózaton belül.
-* Hozzon létre és konfiguráljon NSG-szabályokat, és társviszonyt létesítsen a virtuális hálózat használatával ExpressRoute a CloudSimple private cloud használatával.
-* Hozzon létre & konfigurálja a magánfelhőt.
-* Hozzon létre & konfigurálja az Azure Application Gateway.Create & Configure your Azure Application Gateway.
+* Hozzon létre és konfiguráljon egy Azure-beli virtuális hálózatot és egy alhálózatot a virtuális hálózaton belül.
+* Hozza létre és konfigurálja a NSG-szabályokat és a vNet a ExpressRoute használatával a CloudSimple saját felhője számára.
+* Hozzon létre & konfigurálja saját Felhőjét.
+* Hozzon létre & konfigurálja az Azure-Application Gateway.
 
-## <a name="azure-application-gateway-deployment-scenario"></a>Az Azure Application Gateway telepítési forgatókönyve
+## <a name="azure-application-gateway-deployment-scenario"></a>Azure Application Gateway üzembe helyezési forgatókönyv
 
-Ebben a forgatókönyvben az Azure Application Gateway fut az Azure virtuális hálózatban. A virtuális hálózat expressroute-kapcsolaton keresztül csatlakozik a magánfelhőhöz. A magánfelhő összes alhálózata elérhető a virtuális hálózati alhálózatokról.
+Ebben az esetben az Azure Application Gateway az Azure Virtual Networkben fut. A virtuális hálózat egy ExpressRoute áramkörön keresztül csatlakozik a saját felhőhöz. A privát felhőben lévő összes alhálózat IP-címe elérhető a virtuális hálózat alhálózatai között.
 
-![Azure terheléselosztó az Azure virtuális hálózatában](media/load-balancer-use-case.png)
+![Azure Load Balancer az Azure Virtual Networkben](media/load-balancer-use-case.png)
 
-## <a name="how-to-deploy-the-solution"></a>A megoldás telepítése
+## <a name="how-to-deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A telepítési folyamat a következő feladatokból áll:
+Az üzembe helyezési folyamat a következő feladatokből áll:
 
-1. [Az előfeltételek teljesülésének ellenőrzése](#1-verify-prerequisites)
-2. [Az Azure virtuális kapcsolatának csatlakoztatása a magánfelhőhöz](#2-connect-your-azure-virtual-network-to-your-private-cloud)
-3. [Azure-alkalmazásátjáró üzembe helyezése](#3-deploy-an-azure-application-gateway)
-4. [Webkiszolgálói virtuálisgép-készlet létrehozása és konfigurálása a magánfelhőben](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
+1. [Ellenőrizze, hogy teljesülnek-e az Előfeltételek](#1-verify-prerequisites)
+2. [Azure-beli virtuális kapcsolat csatlakoztatása a privát felhőhöz](#2-connect-your-azure-virtual-network-to-your-private-cloud)
+3. [Azure Application Gateway üzembe helyezése](#3-deploy-an-azure-application-gateway)
+4. [Webkiszolgáló virtuális gép készletének létrehozása és konfigurálása a saját felhőben](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
 ## <a name="1-verify-prerequisites"></a>1. Előfeltételek ellenőrzése
 
-Ellenőrizze, hogy ezek az előfeltételek teljesülnek-e:
+Ellenőrizze, hogy teljesülnek-e az előfeltételek:
 
-* Már létre van hozva egy Azure Resource Manager és egy virtuális hálózat.
-* Az Azure virtuális hálózatán belül már létre jön egy dedikált alhálózat (az Application Gateway számára).
-* A CloudSimple privát felhő már létre.
-* Nincs IP-ütközés a virtuális hálózat IP-alhálózatai és a magánfelhő alhálózatai között.
+* Egy Azure Resource Manager és egy virtuális hálózat már létre van hozva.
+* Az Azure-beli virtuális hálózaton belül egy dedikált alhálózat (Application Gateway) már létre van hozva.
+* Már létre lett hozva egy CloudSimple saját felhő.
+* A virtuális hálózat és a privát felhőben lévő alhálózatok IP-alhálózatai között nincs IP-ütközés.
 
-## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Csatlakoztassa az Azure virtuális hálózatát a magánfelhőhöz
+## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. az Azure-beli virtuális hálózat összekötése a saját felhővel
 
-Az Azure virtuális hálózatának a magánfelhőhöz való csatlakoztatásához kövesse ezt a folyamatot.
+Ha az Azure-beli virtuális hálózatot a privát felhőhöz szeretné kapcsolni, kövesse ezt a folyamatot.
 
-1. [A CloudSimple portálon másolja az ExpressRoute-társviszony-létesítési adatokat.](virtual-network-connection.md)
+1. A [CloudSimple-portálon másolja a ExpressRoute-peering-információkat](virtual-network-connection.md).
 
-2. [Konfiguráljon egy virtuális hálózati átjárót az Azure virtuális hálózatához.](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+2. [Konfiguráljon egy virtuális hálózati átjárót az Azure-beli virtuális hálózathoz](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
 
-3. [Kapcsolja össze a virtuális hálózatot a CloudSimple ExpressRoute-kapcsolattal.](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+3. A [virtuális hálózat összekapcsolása a CloudSimple ExpressRoute-áramkörrel](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription).
 
-4. [A másolt társviszony-létesítési adatok segítségével kapcsolja össze a virtuális hálózatot az ExpressRoute-kapcsolattal.](virtual-network-connection.md)
+4. [A virtuális hálózat ExpressRoute-áramkörhöz való kapcsolásához használja a vágólapra másolt egyenrangú adatokat](virtual-network-connection.md).
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure-alkalmazásátjáró üzembe helyezése
+## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure Application Gateway üzembe helyezése
 
-Az ehhez részletes utasítások az [Azure Portalon útvonalalapú útválasztási szabályokkal rendelkező alkalmazásátjáró létrehozása című részben](../application-gateway/create-url-route-portal.md)találhatók. Az alábbiakban összefoglaljuk a szükséges lépéseket:
+Az erre vonatkozó részletes utasítások az [Application Gateway létrehozása elérésiút-alapú útválasztási szabályokkal a Azure Portal használatával](../application-gateway/create-url-route-portal.md)érhetők el. Itt látható a szükséges lépések összegzése:
 
-1. Hozzon létre egy virtuális hálózatot az előfizetésben és az erőforráscsoportban.
-2. Hozzon létre egy alhálózatot (amelydedikált alhálózatként használható) a virtuális hálózaton belül.
-3. Hozzon létre egy szabványos alkalmazásátjárót (a WAF szükség esetén engedélyezése): Az Azure Portal kezdőlapján kattintson az > **Erőforrás-hálózati** > **alkalmazásátjáró** elemre a lap bal felső részén. **Resource** Válassza ki a szabványos termékváltozatot és méretet, és adja meg az Azure-előfizetés, erőforráscsoport és helyadatok. Ha szükséges, hozzon létre egy új nyilvános IP-címet ehhez az alkalmazásátjáróhoz, és adja meg a részleteket a virtuális hálózatról és az alkalmazásátjáró dedikált alhálózatáról.
-4. Adjon hozzá egy háttérkészletet virtuális gépekkel, és adja hozzá az alkalmazásátjáróhoz.
+1. Hozzon létre egy virtuális hálózatot az előfizetésben és az erőforráscsoporthoz.
+2. Hozzon létre egy alhálózatot (amelyet dedikált alhálózatként kíván használni) a virtuális hálózaton belül.
+3. Hozzon létre egy szabványos Application Gateway (opcionálisan engedélyezze a WAF): a Azure Portal kezdőlapon kattintson az **erőforrás** > **hálózatkezelés** > **Application Gateway** elemre a lap bal felső részén. Válassza ki a szabványos SKU-t és méretet, és adja meg az Azure-előfizetést, az erőforráscsoport és a hely adatait. Ha szükséges, hozzon létre egy új nyilvános IP-címet az Application Gateway számára, és adja meg a virtuális hálózat és az Application Gateway dedikált alhálózata adatait.
+4. Vegyen fel egy háttér-készletet a virtuális gépekkel, és adja hozzá az Application gatewayhez.
 
-## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. Webkiszolgáló virtuálisgép-készlet létrehozása és konfigurálása a magánfelhőben
+## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. webkiszolgálós virtuálisgép-készlet létrehozása és konfigurálása a saját felhőben
 
-A vCenterben hozzon létre virtuális gépeket az Ön által választott operációs rendszerrel és webkiszolgálóval (például Windows/IIS vagy Linux/Apache). Válasszon egy alhálózatot/VLAN-t, amely a webszinthez van kijelölve a privát felhőben. Ellenőrizze, hogy a webkiszolgáló virtuális gépeinek legalább egy virtuális hálózati adaptere a webes réteg alhálózatán van-e.
+A vCenter-ben hozzon létre virtuális gépeket az Ön által választott operációs rendszerrel és webkiszolgálóval (például Windows/IIS vagy Linux/Apache). Válasszon egy alhálózatot/VLAN-t, amely a saját felhőben a webes szinten van kijelölve. Ellenőrizze, hogy a webkiszolgáló virtuális gépei legalább egy vNIC szerepelnek-e a webes réteg alhálózatán.

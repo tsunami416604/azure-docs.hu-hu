@@ -1,76 +1,76 @@
 ---
-title: Az új Azure-szabályzat hatásának kiértékelése
-description: Ismerje meg a követendő folyamatot, amikor új szabályzatdefiníciót vezet be az Azure-környezetbe.
+title: Új Azure Policy definíció hatásának kiértékelése
+description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe való bevezetésének folyamatával.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74463526"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187749"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Az új Azure-szabályzat hatásának kiértékelése
+# <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Új Azure Policy definíció hatásának kiértékelése
 
-Az Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványoknak megfelelő és megfelelőségi igényeknek megfelelő kezeléséhez. Amikor emberek, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítnek, az Azure Policy áttekinti a kérést. Ha a házirend-definíciós hatás [hozzáfűzése](./effects.md#deny) vagy [DeployIfNotExists,](./effects.md#deployifnotexists)a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíciós hatás [Naplózás](./effects.md#audit) vagy [AuditIfNotExists,](./effects.md#auditifnotexists)a házirend tevékenységnapló-bejegyzés létrehozását eredményezi. És ha a házirend-definíciós hatás [Megtagadás](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
+A Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványokhoz való felügyeletéhez és a megfelelőségi igények kielégítéséhez. Ha a felhasználók, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítenek, Azure Policy áttekinti a kérést. Ha a házirend-definíció hatása [Hozzáfűzés](./effects.md#deny) vagy [DeployIfNotExists](./effects.md#deployifnotexists), a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíció hatása a [naplózás](./effects.md#audit) vagy a [AuditIfNotExists](./effects.md#auditifnotexists), a házirend létrehoz egy műveletnapló-bejegyzést. Ha a házirend-definíció hatása [megtagadva](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
 
-Ezek az eredmények pontosan a kívánt, ha tudja, hogy a házirend helyesen van definiálva. Azonban fontos, hogy érvényesítse az új szabályzat működik a szándéknak, mielőtt lehetővé teszi, hogy módosítsa vagy blokkolja a munkát. Az érvényesítésnek biztosítania kell, hogy csak a tervezett erőforrások legyenek megfelelőek, és az eredmények nem megfelelő erőforrásokat (más néven _hamis pozitív)_ tartalmaznak.
+Ezek az eredmények pontosan olyankor szükségesek, amikor tudja, hogy a szabályzat helyesen van definiálva. Fontos azonban, hogy egy új szabályzatot a kívánt módon érvényesítse, mielőtt engedélyezi, hogy megváltoztassa vagy letiltsa a munkát. Az ellenőrzésnek biztosítania kell, hogy csak a kívánt erőforrások legyenek nem megfelelőek, és a rendszer helytelenül tartalmazza a megfelelő erőforrásokat az eredményekben ( _hamis pozitív_néven).
 
-Az új házirend-definíció érvényesítésének ajánlott megközelítése az alábbi lépések végrehajtásával történik:
+Az új házirend-definíció érvényesítéséhez ajánlott módszer a következő lépések végrehajtása:
 
-- Szigorúan határozza meg a házirendet
-- A meglévő erőforrások naplózása
-- Új vagy frissített erőforráskérelmek naplózása
-- A házirend üzembe helyezése az erőforrásokban
+- A szabályzat szigorú meghatározása
+- Meglévő erőforrások naplózása
+- Új vagy frissített erőforrás-kérelmek naplózása
+- A szabályzat üzembe helyezése az erőforrásokon
 - Folyamatos monitorozás
 
-## <a name="tightly-define-your-policy"></a>Szigorúan határozza meg a házirendet
+## <a name="tightly-define-your-policy"></a>A szabályzat szigorú meghatározása
 
-Fontos megérteni, hogy az üzleti szabályzat hogyan valósítva meg szabályzatdefinícióként, és hogyan viszonyul az Azure-erőforrások más Azure-szolgáltatásokhoz. Ez a lépés [a követelmények azonosításával](../tutorials/create-custom-policy-definition.md#identify-requirements) és [az erőforrás tulajdonságainak meghatározásával](../tutorials/create-custom-policy-definition.md#determine-resource-properties)érhető el.
-De az is fontos, hogy túllásson az üzletpolitika szűk meghatározásán. A házirend például azt mondja: "Minden virtuális gépnek..."? Mi a helyzet más Azure-szolgáltatások, amelyek a virtuális gépek, például a HDInsight vagy az AKS? A házirend meghatározásakor figyelembe kell vennünk, hogy ez a házirend milyen hatással van a más szolgáltatások által használt erőforrásokra.
+Fontos tisztában lennie azzal, hogy az üzleti házirend hogyan lett implementálva házirend-definícióként, illetve az Azure-erőforrások más Azure-szolgáltatásokkal való kapcsolatával. Ez a lépés a [követelmények azonosításával](../tutorials/create-custom-policy-definition.md#identify-requirements) és [az erőforrás-tulajdonságok meghatározásával](../tutorials/create-custom-policy-definition.md#determine-resource-properties)valósítható meg.
+Azonban fontos, hogy az üzleti szabályzat szűk definícióján túl is látható legyen. A házirend állapota például az "összes Virtual Machines kell lennie..."? Mi a helyzet a virtuális gépeket használó egyéb Azure-szolgáltatásokkal, például a HDInsight vagy az AK-val? A szabályzatok meghatározásakor figyelembe kell venni, hogy ez a szabályzat milyen hatással van a más szolgáltatások által használt erőforrásokra.
 
-Ebből az okból a szabályzatdefiníciók kell a szorosan meghatározott és az erőforrásokés a tulajdonságok kikell értékelni a megfelelőségi lehetséges.
+Emiatt a házirend-definícióknak szigorúan meghatározottnak kell lenniük, és az erőforrásokra és a megfelelőség kiértékeléséhez szükséges tulajdonságokra kell összpontosítaniuk.
 
 ## <a name="audit-existing-resources"></a>Meglévő erőforrások naplózása
 
-Mielőtt új vagy frissített erőforrásokat szeretne kezelni az új házirend-definícióval, a legjobb, ha azt vizsgálja, hogyan értékeli ki a meglévő erőforrások egy korlátozott részhalmazát, például egy teszterőforrás-csoportot. A házirend-hozzárendelésen a_Letiltva_ [kényszerítési mód](./assignment-structure.md#enforcement-mode)
-(DoNotEnforce) használatával megakadályozhatja, hogy a [hatás](./effects.md) elindítsa vagy tevékenységnapló-bejegyzéseket hozlétre.
+Mielőtt új vagy frissített erőforrásokat szeretne felügyelni az új szabályzat-definícióval, érdemes megtekinteni, hogyan értékeli ki a meglévő erőforrások (például egy tesztelési erőforráscsoport) korlátozott részhalmazát. A szabályzat-hozzárendelésben_letiltott_ [kényszerítési mód](./assignment-structure.md#enforcement-mode)
+(DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenységi naplóbejegyzések létrehozását.
 
-Ez a lépés lehetőséget ad arra, hogy kiértékelje az új szabályzat megfelelőségi eredményeit a meglévő erőforrásokra anélkül, hogy befolyásolna a munkafolyamatot. Ellenőrizze, hogy a megfelelő erőforrások nem megfelelőként vannak-e megjelölve _(hamis pozitív_), és hogy az összes erőforrás, amely várhatóan nem megfelelő, megfelelően van-e megjelölve.
-Miután az erőforrások kezdeti részhalmaza a várt módon érvényesít, lassan bővítse ki a kiértékelést az összes meglévő erőforrásra.
+Ez a lépés lehetőséget ad arra, hogy kiértékelje a meglévő erőforrásokra vonatkozó új szabályzat megfelelőségi eredményeit anélkül, hogy ez hatással lenne a munkahelyi folyamatra. Győződjön meg arról, hogy a megfelelő erőforrások nem megfelelőként vannak megjelölve (_hamis pozitív_), és hogy az összes várhatóan meg nem felelő erőforrás helyesen van megjelölve.
+Miután az erőforrások kezdeti részhalmaza ellenőrzi a várt módon, lassan bontsa ki a kiértékelést az összes meglévő erőforrásra.
 
-A meglévő erőforrások ily módon történő értékelése lehetőséget nyújt a nem megfelelő erőforrások kiújítására az új házirend teljes körű végrehajtása előtt. Ez a törlés történhet manuálisan vagy [szervizelési feladaton](../how-to/remediate-resources.md) keresztül, ha a házirend-definíciós hatás _DeployIfNotExists_.
+A meglévő erőforrások ily módon történő kiértékelése lehetőséget biztosít a nem megfelelő erőforrások javítására az új szabályzat teljes megvalósítása előtt. Ez a tisztítás manuálisan vagy [szervizelési feladaton](../how-to/remediate-resources.md) végezhető el, ha a házirend-definíciós hatás _DeployIfNotExists_.
 
 ## <a name="audit-new-or-updated-resources"></a>Új vagy frissített erőforrások naplózása
 
-Miután érvényesítette az új szabályzatdefiníció megfelelően jelentést a meglévő erőforrások, itt az ideje, hogy vizsgálja meg a hatását a szabályzat, amikor az erőforrások létrehozása vagy frissítése. Ha a házirend-definíció támogatja a hatás paraméterezését, használja [a Naplózás](./effects.md#audit)t. Ez a konfiguráció lehetővé teszi az erőforrások létrehozásának és frissítésének figyelését, hogy lássa, az új szabályzatdefiníció elindít-e egy bejegyzést az Azure-tevékenységnaplóban egy olyan erőforráshoz, amely nem megfelelő, anélkül, hogy befolyásolna a meglévő munkát vagy kéréseket.
+Miután ellenőrizte, hogy az új házirend-definíció helyesen van-e bejelentve a meglévő erőforrásokon, ideje, hogy megtekintse a házirend hatását az erőforrások létrehozásakor vagy frissítésekor. Ha a házirend-definíció támogatja a Effect paraméterezés, használja a [naplózást](./effects.md#audit). Ez a konfiguráció lehetővé teszi az erőforrások létrehozásának és frissítésének figyelését annak ellenőrzéséhez, hogy az új házirend-definíció egy olyan erőforráshoz tartozó bejegyzést indít el az Azure-beli tevékenység naplójában, amely nem felel meg a meglévő munka vagy kérések befolyásolása nélkül.
 
-Javasoljuk, hogy egyszerre frissítse, és hozzon létre új erőforrásokat, amelyek megfelelnek a szabályzat definíciójának, hogy lássa, hogy a _naplózási_ hatás megfelelően aktiválódik, ha a várt. Keresse meg azokat az erőforrás-kérelmeket, amelyeket nem érinthet az új házirend-definíció, amely a _naplózási_ hatást váltja ki.
-Ezek az érintett erőforrások egy másik példa a _hamis pozitív,_ és rögzíteni kell a politika meghatározása, mielőtt a teljes végrehajtás.
+Azt javasoljuk, hogy frissítsen és hozzon létre olyan új erőforrásokat, amelyek megfelelnek a szabályzat definíciójának, hogy a _naplózási_ effektus a várt módon induljon el. Olyan erőforrás-kérelmeket kell kikeresni, amelyeket az új házirend-definíció nem befolyásolhat a _naplózás_ hatásának kiváltása esetén.
+Ezek az érintett erőforrások egy másik példa a _téves pozitív értékekre_ , és a házirend-definícióban kell rögzíteni a teljes megvalósítás előtt.
 
-Abban az esetben, ha a szabályzat definíciója megváltozik a tesztelés ezen szakaszában, javasoljuk, hogy kezdje meg az érvényesítési folyamatot a meglévő erőforrások naplózásával. A házirend-definíció módosítása az új vagy frissített erőforrások _hamis pozitív_ hatosa esetén valószínűleg hatással lesz a meglévő erőforrásokra is.
+Abban az esetben, ha a szabályzat definíciója módosul a tesztelési fázisban, ajánlott megkezdeni az ellenőrzési folyamatot a meglévő erőforrások naplózásával. Az új vagy frissített erőforrásokra vonatkozó _hamis pozitív_ házirend-definíció módosítása valószínűleg hatással lesz a meglévő erőforrásokra is.
 
-## <a name="deploy-your-policy-to-resources"></a>A házirend üzembe helyezése az erőforrásokban
+## <a name="deploy-your-policy-to-resources"></a>A szabályzat üzembe helyezése az erőforrásokon
 
-Miután befejezte az új házirend-definíció érvényesítését a meglévő erőforrásokkal és az új vagy frissített erőforráskérelmekkel, megkezdi a házirend megvalósításának folyamatát. Javasoljuk, hogy először hozza létre az új házirend-definíció házirend-hozzárendelését az összes erőforrás egy részhalmazához, például egy erőforráscsoporthoz. A kezdeti üzembe helyezés érvényesítése után terjessze ki a szabályzat hatókörét szélesebb és szélesebb szintekre, például előfizetésekre és felügyeleti csoportokra. Ez a bővítés úgy érhető el, hogy eltávolítja a hozzárendelést, és létrehoz egy újat a célhatóköröknél, amíg hozzá nem rendeli az új házirend-definíció által lefedett erőforrások teljes hatóköréhez.
+Miután befejezte az új házirend-definíció érvényesítését a meglévő erőforrásokkal és az új vagy frissített erőforrás-kérelmekkel, megkezdi a szabályzat megvalósításának folyamatát. Azt javasoljuk, hogy az új házirend-definícióhoz tartozó szabályzat-hozzárendelést először az összes erőforrás egy részhalmazára, például egy erőforráscsoporthoz hozza létre. A kezdeti telepítés ellenőrzése után kiterjesztheti a házirend hatókörét szélesebb és szélesebb szintekre, például az előfizetésekre és a felügyeleti csoportokra. Ezt a terjeszkedést úgy érheti el, ha eltávolítja a hozzárendelést, és létrehoz egy újat a cél hatókörökön, amíg az új házirend-definícióban szereplő erőforrások teljes köréhez hozzá nem rendeli azokat.
 
-A bevezetés során, ha olyan erőforrások találhatók, amelyekmentesek az új házirend-definíció alól, az alábbi módokon kell kezelni őket:
+A bevezetés során, ha olyan erőforrások találhatók, amelyek mentesülnek az új szabályzat-definíciótól, a következő módokon kezelheti őket:
 
-- A házirend-definíció frissítése egyértelműbbé a nem kívánt hatás csökkentése érdekében
-- A házirend-hozzárendelés hatókörének módosítása (új hozzárendelés eltávolításával és létrehozásával)
-- Erőforráscsoport hozzáadása a házirend-hozzárendelés kizárási listájához
+- A házirend-definíció frissítése, hogy világosabb legyen a nem kívánt hatás csökkentése érdekében
+- A szabályzat-hozzárendelés hatókörének módosítása (új hozzárendelés eltávolításával és létrehozásával)
+- Erőforrások csoportjának hozzáadása a kizárási listához a szabályzat-hozzárendeléshez
 
-A hatókör (szint vagy kizárások) bármilyen módosítását teljes mértékben ellenőrizni kell, és közölni kell a biztonsági és megfelelőségi szervezetekkel annak biztosítása érdekében, hogy a lefedettségben ne legyenek hiányosságok.
+A hatókör (szint vagy kizárás) módosításait teljes mértékben ellenőrizni kell, és a biztonsági és megfelelőségi szervezetekkel kell kommunikálni annak biztosítása érdekében, hogy ne legyenek lefedettségi különbségek.
 
 ## <a name="monitor-your-policy-and-compliance"></a>A szabályzat és a megfelelőség figyelése
 
-A házirend-definíció megvalósítása és hozzárendelése nem az utolsó lépés. Folyamatosan figyelje az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzatdefinícióhoz, és állítsa be a megfelelő [Azure Monitor-riasztásokat és értesítéseket,](../../../azure-monitor/platform/alerts-overview.md) ha nem megfelelő eszközöket azonosítanak. Azt is javasoljuk, hogy értékelje ki a szabályzat definícióját és a kapcsolódó hozzárendelések ütemezett alapon, hogy érvényesítse a szabályzat definíciója megfelel az üzleti szabályzat és a megfelelőségi igényeknek. A házirendeket el kell távolítani, ha már nincs rá szükség. A szabályzatok időről időre frissítésre szorulnak, ahogy az alapul szolgáló Azure-erőforrások fejlődnek, és új tulajdonságokat és képességeket adnak hozzá.
+A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/platform/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [házirend-definíciós struktúráról.](./definition-structure.md)
-- További információ a [házirend-hozzárendelési struktúráról.](./assignment-structure.md)
-- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](../how-to/programmatically-create.md)
-- További információ a [megfelelőségi adatok beszedéséről.](../how-to/get-compliance-data.md)
-- További információ a [nem megfelelő erőforrások kiújulásáról.](../how-to/remediate-resources.md)
-- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)
+- A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
+- A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/get-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

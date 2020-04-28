@@ -1,116 +1,116 @@
 ---
 title: Egyszerű lekérdezési szintaxis
 titleSuffix: Azure Cognitive Search
-description: Hivatkozás az Azure Cognitive Search teljes szöveges keresési lekérdezéseihez használt egyszerű lekérdezési szintaxishoz.
+description: Az Azure Cognitive Search teljes szöveges keresési lekérdezéséhez használt egyszerű lekérdezési szintaxis referenciája.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/12/2020
-ms.openlocfilehash: 066190ff6b735d30db351ff90c0b6e5173b7f583
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/24/2020
+ms.openlocfilehash: dfd75ad2c6ae246bfe6ee8b983744b3db07a841f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258864"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194941"
 ---
-# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Egyszerű lekérdezésszintaxis az Azure Cognitive Search szolgáltatásban
+# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search két Lucene-alapú lekérdezési nyelvet valósít meg: [az Egyszerű lekérdezéselemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene-lekérdezési elemzőt.](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 
+Az Azure Cognitive Search két Lucene-alapú lekérdezési nyelvet implementál: az [egyszerű lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-Az Azure Cognitive Search, az egyszerű lekérdezés szintaxisa kizárja az intelligens keresési műveletek. Ehelyett használja a teljes Lucene szintaxist az [intelligens kereséshez](search-query-fuzzy.md).
+Az egyszerű elemző rugalmasabb, és akkor is megkísérli értelmezni a kérést, ha nem tökéletesen áll. Ennek a rugalmasságnak köszönhetően ez az alapértelmezett megoldás az Azure Cognitive Search-beli lekérdezésekhez. 
 
-> [!NOTE]
-> Az egyszerű lekérdezésszintaxis a [Keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) API **keresési** paraméterében átadott lekérdezési kifejezésekhez használatos, nem tévesztendő össze az API [$filter](search-filters.md) paraméteréhez használt [OData szintaxissal.](query-odata-filter-orderby-syntax.md) Ezek a különböző szintaxisok saját szabályokat létrehozni lekérdezések, menekülési karakterláncok, és így tovább.
->
-> Az Azure Cognitive Search egy alternatív [teljes Lucene lekérdezésszintaxist](query-lucene-syntax.md) biztosít a **keresési** paraméter összetettebb lekérdezéseihez. Ha többet szeretne megtudni a lekérdezéselemzési architektúráról és az egyes szintaxisok előnyeiről, olvassa el [a Teljes szöveges keresés működése az Azure Cognitive Search alkalmazásban.](search-lucene-query-architecture.md)
+Az egyszerű szintaxis a `search` [keresési dokumentumok kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)paraméterében átadott lekérdezési kifejezésekhez használatos, nem tévesztendő össze az azonos keresési dokumentumok API-hoz tartozó [$Filter Expressions](search-filters.md) paraméterhez használt [OData szintaxissal](query-odata-filter-orderby-syntax.md) . A `search` és `$filter` a paraméterek eltérő szintaxissal rendelkeznek, és a saját szabályaikat használják a lekérdezések összeállításához, a karakterláncok kiszökéséhez stb.
+
+Bár az egyszerű elemző az [Apache Lucene egyszerű lekérdezés-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) osztályán alapul, az Azure-Cognitive Search megvalósítása kizárja a zavaros keresést. Ha [intelligens keresési](search-query-fuzzy.md) vagy egyéb speciális lekérdezési űrlapokra van szüksége, vegye figyelembe az alternatív [teljes Lucene lekérdezési szintaxist](query-lucene-syntax.md) .
 
 ## <a name="invoke-simple-parsing"></a>Egyszerű elemzés meghívása
 
-Az alapértelmezett egyszerű szintaxis. A meghívás csak akkor szükséges, ha a szintaxist teljesről egyszerűre állítja vissza. A szintaxis explicit beállításához `queryType` használja a keresési paramétert. Az érvényes `queryType=simple` `queryType=full`értékek `simple` közé tartozik a `full` vagy , ahol az alapértelmezett, és meghívja a [teljes Lucene lekérdezéselemzőt](query-lucene-syntax.md) a speciális lekérdezésekhez. 
+Az egyszerű szintaxis az alapértelmezett. A hívás csak akkor szükséges, ha a szintaxist teljesről egyszerűre állítja alaphelyzetbe. A szintaxis explicit beállításához használja a `queryType` keresési paramétert. Az érvényes értékek `queryType=simple` a `queryType=full`következők: `simple` vagy, ahol az alapértelmezett `full` , és meghívja a [teljes Lucene lekérdezés-elemzőt](query-lucene-syntax.md) a fejlettebb lekérdezésekhez. 
 
-## <a name="syntax-fundamentals"></a>Szintaktikai alapok
+## <a name="syntax-fundamentals"></a>Szintaxis alapjai
 
-Az egy vagy több kifejezéssel rendelkező szövegek a lekérdezés végrehajtásának érvényes kiindulópontjának minősülnek. Az Azure Cognitive Search a kifejezések bármelyikét vagy mindegyikét tartalmazó dokumentumokat egyezik meg, beleértve a szöveg elemzése során talált változatokat is.
+Egy vagy több kifejezéssel rendelkező szöveg érvényes kiindulási pontnak tekintendő a lekérdezés végrehajtásához. Az Azure Cognitive Search a feltételek bármelyikét vagy mindegyikét tartalmazó dokumentumokat egyezteti, beleértve a szöveg elemzése során talált módosításokat is.
 
-Bármilyen egyszerű is ez a hang, az Azure Cognitive Search lekérdezés-végrehajtásának van egy aspektusa, amely váratlan eredményeket *eredményezhet,* és a keresési eredmények csökkentése helyett növekszik, ahogy több kifejezés és operátor hozzáadódik a bemeneti karakterlánchoz. Az, hogy ez a bővítés ténylegesen megtörténik-e, a NOT operátor felvételétől függ, kombinálva egy **searchMode** paraméterbeállítással, amely meghatározza, hogy a NOT értelmezése az AND vagy az OR viselkedés szempontjából történik. További információ: [NOT operator](#not-operator).
+Ahogy ez hangzik, az Azure Cognitive Search lekérdezés-végrehajtásának egyik aspektusa *, amely váratlan eredményeket eredményezhet,* és a keresési eredmények csökkentése helyett egyre nagyobb mértékben bővül, és a rendszer hozzáadja a bemeneti karakterlánchoz az operátorokat. Az, hogy ez a bővítés ténylegesen bekövetkezik-e, a nem operátorok belefoglalásával, valamint a **searchMode** paraméter beállításával párosul, amely meghatározza, hogy a rendszer hogyan értelmezi a és vagy a viselkedést. További információ: [not operátor](#not-operator).
 
 ### <a name="precedence-operators-grouping"></a>Elsőbbségi operátorok (csoportosítás)
 
-Zárójelek segítségével allekérdezéseket hozhat létre, beleértve a parenthetical utasításon belüli operátorokat is. Például `motel+(wifi||luxury)` a "motel" kifejezést és a "wifi" vagy a "luxus" (vagy mindkettő) tartalmazó dokumentumokat keresi.
+A zárójelek használatával allekérdezéseket hozhat létre, beleértve az zárójeles utasításban található operátorokat is. Például `motel+(wifi|luxury)` megkeresi a "Motel" kifejezést és a "WiFi" vagy a "luxus" (vagy mindkettő) tartalmú dokumentumokat.
 
-A mezőcsoportosítás hasonló, de a csoportosítást egyetlen mezőre ható. Például `hotelAmenities:(gym+(wifi||pool))` a "hotelAmenities" mezőben az "edzőterem" és a "wifi", illetve az "edzőterem" és a "medence" kifejezésre keres.  
+A mező csoportosítása hasonló, de a csoportosítás egyetlen mezőre vonatkozik. Például `hotelAmenities:(gym+(wifi|pool))` megkeresi a "hotelAmenities" mezőt a "tornaterem" és a "WiFi", a "tornaterem" és a "pool" mezőnél.  
 
-### <a name="escaping-search-operators"></a>Menekülő keresési operátorok  
+### <a name="escaping-search-operators"></a>Keresési operátorok elől  
 
-Annak érdekében, hogy a keresési operátorok bármelyikét a keresési szöveg részeként használhassa,`\`a karakter elől egyetlen fordított perjellel ( ) kell előírni. Ha például helyettesítő karakteres `https://`keresést `://` végez a mezőben, ahol `search=https\:\/\/*`a lekérdezési karakterlánc része, adja meg a mezőt. Hasonlóképpen, egy szökött telefonszám minta `\+1 \(800\) 642\-7676`így néz ki .
+Az egyszerű szintaxisban a keresési operátorok a következő karaktereket tartalmazzák:`+ | " ( ) ' \`  
 
-A menekülést igénylő speciális karakterek a következők:`- * ? \ /`  
+Ha a karakterek bármelyike az indexben található token részét képezi, akkor a lekérdezésben lévő egy fordított perjel (`\`) előtaggal kell elmenekülnie. Tegyük fel például, hogy egy egyéni elemzőt használt a teljes kifejezés jogkivonatok létrehozása, és az index tartalmazza a "Luxury + Hotel" karakterláncot. Ha pontos egyezést szeretne kapni ehhez a jogkivonathoz, szúrjon `search=luxury\+hotel`be egy Escape-karaktert:. 
 
-Annak érdekében, hogy a dolgok egyszerűek legyenek a tipikusesetekben, két kivétel van ez alól a szabály alól, ahol nincs szükség szökésre:  
+Ahhoz, hogy a dolgok egyszerűbbek legyenek a tipikus esetekben, két kivétel vonatkozik erre a szabályra, ha nincs szükség a szökésre:  
 
-+ A NOT `-` operátort csak akkor kell megúszni, ha ez az első karakter a szóköz után, nem akkor, ha egy kifejezés közepén van. Például a következő GUID a escape `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`karakter nélkül érvényes: .
++ A nem operátort `-` csak akkor kell megszökni, ha az első karakter a szóköz után. Ha a `-` középen (például a `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`) jelenik meg, kihagyhatja a szökést.
 
-+ Az utótag `*` operátorát csak akkor kell megkerülni, ha ez az utolsó karakter a szóköz előtt, nem akkor, ha egy kifejezés közepén van. Például `4*4=16` nem igényel fordított perjelet.
++ Az utótag operátort `*` csak akkor kell megszökni, ha az utolsó karakter a szóköz előtt. Ha a `*` középen (például a-ben `4*4=16`) megjelenik, nincs szükség a szökésre.
 
 > [!NOTE]  
-> Bár a menekülés tartja tokenek együtt, [lexikális elemzés](search-lucene-query-architecture.md#stage-2-lexical-analysis) indexelés során is szalag őket. A szabványos Lucene-elemző például törli és megtöri a kötőjeleken, a szóközön és más karaktereken lévő szavakat. Ha speciális karakterekre van szüksége a lekérdezési karakterláncban, szükség lehet egy elemzőre, amely megőrzi azokat az indexben. Néhány választási lehetőség: Microsoft természetes [nyelvi elemzők](index-add-language-analyzers.md), amely megőrzi az elválasztott szavakat, vagy egy egyéni analizátor az összetettebb mintákhoz. További információt a Részleges kifejezések, minták és speciális karakterek című [témakörben talál.](search-query-partial-matching.md)
+> Alapértelmezés szerint a standard Analyzer törli és megszakítja a szavakat a kötőjelek, a szóközök, a jelek és más karakterek számára a [lexikális analízis](search-lucene-query-architecture.md#stage-2-lexical-analysis)során. Ha speciális karakterek szükségesek a lekérdezési karakterláncban, előfordulhat, hogy olyan elemzőre van szüksége, amely megőrzi őket az indexben. Bizonyos lehetőségek közé tartoznak a Microsoft természetes [nyelvi elemzők](index-add-language-analyzers.md), amelyek megőrzik az elválasztott szavakat, vagy egy egyéni elemzőt összetettebb mintákhoz. További információ: [részleges feltételek, mintázatok és speciális karakterek](search-query-partial-matching.md).
 
-### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Nem biztonságos és fenntartott karakterek kódolása URL-címekben
+### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Nem biztonságos és fenntartott karakterek kódolása az URL-címekben
 
-Győződjön meg arról, hogy minden nem biztonságos és fenntartott karakter url-címbe van kódolva. A "#" például nem biztonságos karakter, mert egy URL-cím töredék-/horgonyazonosítója. A karaktert `%23` az URL-címhez kell kódolni. A '&' és a '=' példák a fenntartott karakterekre, mivel elhatárolódnak a paraméterek, és értékeket adnak meg az Azure Cognitive Search-ben. További részletekért tekintse meg [az RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt) című témakört.
+Győződjön meg arról, hogy az összes nem biztonságos és fenntartott karakter egy URL-címben van kódolva. Például a "#" egy nem biztonságos karakter, mert egy URL-címben szereplő töredék/horgony azonosító. A karaktert kódolni kell, `%23` ha az URL-címben van használatban. A (z) "&" és a "=" például fenntartott karakterek, amelyek a paramétereket korlátozzák, és értékeket határoznak meg az Azure Cognitive Searchban. További részletekért tekintse meg a [RFC1738: egységes erőforrás-lokátorok (URL)](https://www.ietf.org/rfc/rfc1738.txt) című témakört.
 
-A nem ``" ` < > # % { } | \ ^ ~ [ ]``biztonságos karakterek . A fenntartott `; / ? : @ = + &`karakterek a következők.
+A nem biztonságos karakterek ``" ` < > # % { } | \ ^ ~ [ ]``a következők:. A fenntartott `; / ? : @ = + &`karakterek a következők:.
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Lekérdezésméret-korlátok
+###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Lekérdezési méret korlátai
 
- Az Azure Cognitive Search szolgáltatásba küldhető lekérdezések mérete korlátozva van. Pontosabban legbőlegelhető 1024 záradék (kifejezések egymástól és , VAGY és így tovább). A lekérdezésben megadott bármely kifejezés mérete körülbelül 32 KB-os korlátot jelent. Ha az alkalmazás programozott módon hoz létre keresési lekérdezéseket, azt javasoljuk, hogy úgy tervezze meg, hogy az ne hozzon létre nem kötött méretű lekérdezéseket.  
+ Korlátozva van az Azure Cognitive Searchba küldendő lekérdezések mérete. Pontosabban megadhatja a legfeljebb 1024 záradékot (a kifejezéseket és a, vagy a, és így tovább). A lekérdezésben szereplő egyes kifejezések méretének körülbelül 32 KB-os korlátja is van. Ha az alkalmazás programozott módon hozza létre a keresési lekérdezéseket, javasoljuk, hogy úgy tervezze meg úgy, hogy ne generáljon nem kötött méretű lekérdezéseket.  
 
 ## <a name="boolean-search"></a>Logikai keresés
 
-Logikai operátorokat (ÉS, VAGY, NEM) ágyazhat be egy lekérdezési karakterláncba, hogy olyan feltételek et hozzon létre, amelyek hez egyező dokumentumok találhatók. 
+A lekérdezési karakterláncban logikai operátorokat (és, vagy nem) ágyazhat be, hogy olyan részletes feltételeket hozzon létre, amelyekkel a megfelelő dokumentumok találhatók. 
 
 ### <a name="and-operator-"></a>ÉS operátor`+`
 
-Az ÉS operátor egy plusz jel. Megkeresi `wifi+luxury` például a és `wifi` a `luxury`dokumentumait tartalmazó dokumentumokat.
+A és az operátor egy plusz jel. Például megkeresi a `wifi + luxury` `wifi` és a- `luxury`t tartalmazó dokumentumokat.
 
-### <a name="or-operator-"></a>OR operátor`|`
+### <a name="or-operator-"></a>VAGY operátor`|`
 
-A VAGY operátor függőleges sáv vagy csőkarakter. Például `wifi | luxury` olyan dokumentumokat keres, `wifi` amelyek `luxury` vagy vagy mindkettőt tartalmazzák.
+A vagy operátor egy függőleges sáv vagy cső karakter. Például `wifi | luxury` megkeresi a `wifi` vagy `luxury` a vagy a mindkettőt tartalmazó dokumentumokat.
 
 <a name="not-operator"></a>
 
 ### <a name="not-operator--"></a>NEM operátor`-`
 
-A NOT operátor mínuszjel. Például `wifi –luxury` olyan dokumentumokat keres, `wifi` amelyek kifejezése és/vagy nincs kifejezése. `luxury`
+A NOT operátor egy mínusz jel. Például `wifi –luxury` megkeresi azokat a dokumentumokat, amelyek rendelkeznek `wifi` a kifejezéssel és/vagy nem `luxury`.
 
-A lekérdezési kérelem **searchMode** paramétere azt szabályozza, hogy a NOT operátorral rendelkező kifejezés ANDed vagy ORed a lekérdezés más kifejezéseivel (feltéve, hogy a többi kifejezésben nincs `+` vagy `|` operátor). Az érvényes `any` `all`értékek közé tartozik a vagy .
+A lekérdezési kérelem **searchMode** paramétere azt szabályozza, hogy a nem operátorral rendelkező kifejezés ANDed vagy ORed-e a lekérdezés más feltételeivel (feltéve, hogy `+` a `|` többi feltétel nem vagy operátor.) Az érvényes értékek `any` a `all`következők: vagy.
 
-`searchMode=any`növeli a lekérdezések visszahívását azáltal, hogy `-` több eredményt ad, és alapértelmezés szerint "VAGY NEM" lesz értelmezve. Például `wifi -luxury` egyezik azokkal a `wifi` dokumentumokkal, amelyek vagy `luxury`tartalmazzák a kifejezést, vagy azokat, amelyek nem tartalmazzák a kifejezést.
+`searchMode=any`a további eredményekkel együtt növeli a lekérdezések visszahívását, és `-` alapértelmezés szerint "vagy nem" lesz értelmezve. Például `wifi -luxury` megegyeznek azok a dokumentumok, amelyek tartalmazzák a kifejezést `wifi` , vagy amelyek nem tartalmazzák a kifejezést `luxury`.
 
-`searchMode=all`növeli a lekérdezések pontosságát azáltal, hogy kevesebb eredményt, és alapértelmezés szerint - kell értelmezni, mint "ÉS NEM". Például, `wifi -luxury` egyezik a `wifi` dokumentumokat, amelyek tartalmazzák a kifejezést, és nem tartalmazzák a "luxus". Ez vitathatatlanul egy intuitív viselkedés `-` az üzemeltető. Ezért érdemes használni `searchMode=all` a `searchMode=any` helyett, ha azt szeretné optimalizálni keres a pontosság helyett `-` visszahívás, *és* a felhasználók gyakran használják az üzemeltető a keresések.
+`searchMode=all`növeli a lekérdezések pontosságát azáltal, hogy kevesebb eredményt ad meg, és alapértelmezés szerint "és nem" lesz értelmezve. Például a a `wifi -luxury` kifejezést `wifi` tartalmazó dokumentumokat fogja egyeztetni, és nem tartalmazza a "luxus" kifejezést. Ez vitathatatlanul intuitív viselkedést biztosít a `-` kezelő számára. Ezért érdemes megfontolni, hogy `searchMode=all` ahelyett `searchMode=any` , hogy visszahívást szeretne használni a pontossághoz, *és* a felhasználók gyakran használják a keresésekben `-` a kezelőt.
 
-A **searchMode** beállítás meghatározásakor vegye figyelembe a különböző alkalmazások lekérdezéseinek felhasználói beavatkozási mintáit. Azok a felhasználók, akik információt keresnek, nagyobb valószínűséggel vesznek fel operátort egy lekérdezésbe, szemben az okkal a beépített navigációs struktúrákkal rendelkező e-kereskedelmi webhelyekkel.
+**SearchMode** -beállítás meghatározásakor vegye figyelembe a felhasználói interakciós mintákat a különböző alkalmazásokban található lekérdezésekhez. Azok a felhasználók, akik információt keresnek, nagyobb valószínűséggel tartalmaznak egy operátort egy lekérdezésben, szemben a több beépített navigációs szerkezettel rendelkező e-kereskedelmi webhelyekkel.
 
 <a name="prefix-search"></a>
 
-## <a name="prefix-search"></a>Előtag keresése
+## <a name="prefix-search"></a>Előtag-keresés
 
-Az utótag operátora csillag. `*` Például, `lingui*` megtalálja a "nyelvi" vagy "linguini", figyelmen kívül hagyva esetben. 
+Az utótag operátor egy csillag `*`. Például a " `lingui*` nyelvi" vagy "linguini" kifejezést fogja megkeresni, figyelmen kívül hagyva az esetet. 
 
-A szűrőkhöz hasonlóan az előtag-lekérdezés is pontos egyezést keres. Mint ilyen, nincs relevancia pontozás (minden eredmény kap egy keresési pontszám 1.0). Az előtag-lekérdezések lassúak lehetnek, különösen akkor, ha az index nagy, és az előtag kis számú karakterből áll. 
+A szűrőkhöz hasonlóan az előtag-lekérdezések pontos egyezést keresnek. Ezért nincs releváns pontozás (az összes találat 1,0-as keresési pontszámot kap). Az előtag-lekérdezések lassúak lehetnek, különösen akkor, ha az index nagy, és az előtag kis számú karakterből áll. 
 
-Ha a karakterlánc utolsó részében egyező utótag-lekérdezést szeretne végrehajtani, használjon [helyettesítő karakteres keresést](query-lucene-syntax.md#bkmk_wildcard) és a teljes Lucene szintaxist.
+Ha egy utótag-lekérdezést szeretne végrehajtani, akkor a karakterlánc utolsó részének megfelelő [karakteres keresést](query-lucene-syntax.md#bkmk_wildcard) és a teljes Lucene szintaxist kell használnia.
 
-## <a name="phrase-search-"></a>Kifejezés keresés`"`
+## <a name="phrase-search-"></a>Kifejezés keresése`"`
 
-A kifejezéskeresés egy vagy több kifejezés lekérdezése, ahol a kifejezések bármelyike egyezésnek minősül. A kifejezéskeresés egy idézőjelek közé `" "`zárt kifejezés. Például, `Roach Motel` míg (idézőjelek nélkül) keresne dokumentumokat tartalmazó `Roach` és / vagy `Motel` bárhol bármilyen sorrendben, `"Roach Motel"` (idézőjelrel) csak akkor egyezik dokumentumok, amelyek tartalmazzák, hogy a teljes mondat együtt, és ebben a sorrendben (szövegelemzés továbbra is érvényes).
+A kifejezéses keresés egy vagy több kifejezés lekérdezése, ahol a feltételek bármelyike egyezésnek minősül. A kifejezéses keresés az idézőjelek közé foglalt pontos kifejezés `" "`. Előfordulhat például, hogy `Roach Motel` a (idézőjelek nélkül) megkeresi `Roach` az összes olyan `Motel` dokumentumot, amely bármilyen sorrendben `"Roach Motel"` tartalmaz és/vagy bárhol, (idézőjelekkel) csak az egész kifejezést tartalmazó dokumentumokat fogja össze, és ebben a sorrendben (a szöveg elemzése továbbra is érvényes).
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [Példák lekérdezése egyszerű kereséshez](search-query-simple-examples.md)
-+ [Lekérdezési példák a teljes Lucene-kereséshez](search-query-lucene-examples.md)
-+ [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-+ [Lucene lekérdezés szintaxisa](query-lucene-syntax.md)
++ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
++ [Példák az egyszerű keresésre](search-query-simple-examples.md)
++ [Példák a teljes Lucene keresésre](search-query-lucene-examples.md)
++ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
 + [OData-kifejezések szintaxisa](query-odata-filter-orderby-syntax.md) 

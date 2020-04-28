@@ -1,31 +1,31 @@
 ---
-title: Apache Hadoop-fürtök létrehozása webböngészővel, Azure HDInsight
-description: Ismerje meg, hogyan hozhat létre Apache Hadoop, Apache HBase, Apache Storm vagy Apache Spark-fürtöket a HDInsighton. Használja a webböngészőt és az Azure Portalt.
+title: Apache Hadoop-fürtök létrehozása webböngésző használatával, Azure HDInsight
+description: Megtudhatja, hogyan hozhat létre Apache Hadoop-, Apache HBase-, Apache Storm-vagy Apache Spark-fürtöket a HDInsight. Használja a webböngészőt és a Azure Portal.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/13/2020
-ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770896"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192093"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux alapú fürtök létrehozása a HDInsightban az Azure Portal használatával
+# <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Az Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure-felhőben üzemeltetett szolgáltatások és erőforrások számára. Ebben a cikkben megtudhatja, hogyan hozhat létre Linux-alapú Azure HDInsight-fürtök et a portál használatával. További részletek a [HDInsight-fürtök létrehozása](./hdinsight-hadoop-provision-linux-clusters.md)szolgáltatásból származnak.
+A Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure felhőben üzemeltetett szolgáltatásokhoz és erőforrásokhoz. Ebből a cikkből megtudhatja, hogyan hozhat létre Linux-alapú Azure HDInsight-fürtöket a portál használatával. További részletek állnak rendelkezésre a [HDInsight-fürtök létrehozásával](./hdinsight-hadoop-provision-linux-clusters.md)kapcsolatban.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Az Azure Portal a fürt tulajdonságainak nagy részét elérhetővé teszi. Az Azure Resource Manager-sablonok használatával számos részletet elrejthet. További információ: [Apache Hadoop-fürtök létrehozása a HDInsightban erőforrás-kezelői sablonok használatával.](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resource Manager sablonok használatával számos részletet elolvashat. További információ: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
@@ -33,122 +33,117 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A felső menüben válassza a **+ Erőforrás létrehozása**lehetőséget.
+1. A felső menüben válassza az **+ erőforrás létrehozása**lehetőséget.
 
-    ![Új fürt létrehozása az Azure Portalon](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Új fürt létrehozása az Azure Portalon")
+    ![Új fürt létrehozása a Azure Portalban](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Új fürt létrehozása a Azure Portalban")
 
-1. Válassza az **Analytics** > **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megugrásához.
+1. Válassza az **Analytics** > **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
 ## <a name="basics"></a>Alapvető beállítások
 
-![A HDInsight fürtök alapjainak létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása az Azure Portalon")
+![HDInsight létrehozása a fürt alapjaival](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása a Azure Portalban")
 
-Az **Alapok** lapon adja meg a következő információkat:
+Az **alapok** lapon adja meg a következő információkat:
 
 |Tulajdonság |Leírás |
 |---|---|
-|Előfizetés|A legördülő listából válassza ki a fürthöz használt Azure-előfizetést.|
-|Erőforráscsoport|A legördülő listában jelölje ki a meglévő erőforráscsoportot, vagy válassza **az Új létrehozása lehetőséget.**|
+|Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
+|Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
 |Fürt neve|Adjon meg egy globálisan egyedi nevet.|
-|Régió|A legördülő listából válassza ki azt a régiót, ahol a fürt létrejön.|
-|Fürt típusa|Kattintson **a Fürttípus kiválasztása** gombra a lista megnyitásához. A listából válassza ki a kívánt fürttípust. A HDInsight-fürtök különböző típusúak. Ezek megfelelnek a számítási feladatok vagy a technológia, amely a fürt van hangolva. Nincs támogatott módszer több típust egyesítő fürt létrehozására.|
-|Verzió|A legördülő listából válasszon egy **verziót.** Használja az alapértelmezett verziót, ha nem tudja, mit válasszon. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
-|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett **admin**.|
+|Régió|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
+|Fürt típusa|A lista megnyitásához kattintson a **fürt típusának kiválasztása** elemre. Válassza ki a kívánt fürt típusát a listából. A HDInsight-fürtök különböző típusokból származnak. Azok a munkaterhelésnek vagy technológiának felelnek meg, amelyhez a fürt be van hangolva. Nincs támogatott módszer a több típust egyesítő fürt létrehozásához.|
+|Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
+|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
 |Fürt bejelentkezési jelszava|Adja meg a jelszót.|
-|Fürtbejelentkezési jelszó megerősítése|Írja be újra a jelszót|
-|Secure Shell- (SSH-) felhasználónév|Adja meg a felhasználónevet, az alapértelmezett **sshuser**|
-|Fürtbejelentkezési jelszó használata az SSH-hoz|Ha ugyanazt az SSH-jelszót szeretné használni, mint a korábban megadott rendszergazdai jelszó, jelölje be a **Fürt bejelentkezési jelszavának használata az SSH-hoz** jelölőnégyzetet. Ha nem, adjon meg **egy jelszót** vagy egy **nyilvános kulcsot** az SSH-felhasználó hitelesítéséhez. A nyilvános kulcs az általunk ajánlott megközelítés. A hitelesítő adatok konfigurációjának mentéséhez válassza az alul a **Kijelölés** lehetőséget.  További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](hdinsight-hadoop-linux-use-ssh-unix.md)|
+|Fürt bejelentkezési jelszavának megerősítése|Írja be újra a jelszót|
+|Secure Shell- (SSH-) felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a **sshuser** .|
+|Fürt bejelentkezési jelszavának használata SSH-hoz|Ha ugyanazt az SSH-jelszót szeretné használni, mint a korábban megadott rendszergazdai jelszó, jelölje be a **fürt bejelentkezési jelszavának használata SSH** -hoz jelölőnégyzetet. Ha nem, adjon meg egy **jelszót** vagy egy **nyilvános kulcsot** az ssh-felhasználó hitelesítéséhez. A javasolt módszer a nyilvános kulcs. A hitelesítő adatok konfigurációjának mentéséhez kattintson az alján található **kiválasztás** gombra.  További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).|
 
-Válassza a **Tovább: Storage >>** gombot a következő lapra való ugráshoz.
+Válassza a **Tovább: Storage >>** a következő lapra való továbblépés előtt.
 
 ## <a name="storage"></a>Storage
 
-![A HDInsight fürttárolót hoz létre](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Új fürt létrehozása az Azure Portalon – tárolás")
+![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Új fürt létrehozása a Azure Portal-Storage-ban")
 
-### <a name="primary-storage"></a>Elsődleges tárolás
+### <a name="primary-storage"></a>Elsődleges tárterület
 
-Az **Elsődleges tárolótípus**legördülő listájából válassza ki az alapértelmezett tárolási típust. A később kitölteni kitölteni a kivégezhető mezők a kijelöléstől függően változnak. **Azure Storage**esetén:
+Az **elsődleges tároló típusa**legördülő listából válassza ki az alapértelmezett tárolási típust. A később betöltendő mezők a kiválasztás alapján változnak. **Azure Storage**esetén:
 
-1. A **Kijelölés módszer listában**válassza a Kijelölés a **listából**vagy **a Hozzáférési kulcs használata lehetőséget.**
-    * A **Kijelölés a listából listában**válassza ki az elsődleges **tárfiókot** a legördülő listából, vagy válassza az Új létrehozása **lehetőséget.**
-    * A **Hozzáférési kulcs használata**esetén adja meg a **Tárfiók nevét.** Ezután adja meg az **Access kulcsot**.
+1. A **kiválasztási módszer**esetében válassza **a kiválasztás listából lehetőséget**, vagy **használja a hozzáférési kulcsot**.
+    * Válassza ki a **listából**az **elsődleges Storage-fiókot** a legördülő listából, vagy válassza az **új létrehozása**lehetőséget.
+    * A **hozzáférési kulcs használatához**adja meg a **Storage-fiók nevét**. Ezután adja meg a **hozzáférési kulcsot**.
 
-1. A **Tároló mezőben**fogadja el az alapértelmezett értéket, vagy adjon meg egy újat.
+1. A **tároló**mezőben fogadja el az alapértelmezett értéket, vagy adjon meg egy újat.
 
-### <a name="additional-azure-storage"></a>További Azure-tárhely
+### <a name="additional-azure-storage"></a>További Azure Storage
 
-Nem kötelező: Válassza **az Azure Storage hozzáadása** további fürttároláshoz lehetőséget. A HDInsight-fürttől eltérő régióban egy további tárfiók használata nem támogatott.
+Nem kötelező: válassza az **Azure Storage hozzáadása** lehetőséget a fürt további tárhelyéhez. A HDInsight-fürttől eltérő régióban található további Storage-fiók használata nem támogatott.
 
-### <a name="metastore-settings"></a>Metaáruház beállításai
+### <a name="metastore-settings"></a>Metaadattár-beállítások
 
-Nem kötelező: Adjon meg egy meglévő SQL-adatbázist az Apache Hive, az Apache Oozie és az Apache Ambari metaadatok fürtön kívüli mentéséhez. A metastore-hoz használt Azure SQL-adatbázisnak engedélyeznie kell a kapcsolatot más Azure-szolgáltatásokkal, például az Azure HDInsight-mal. Metatároló létrehozásakor ne nevezzen el kötőjellel vagy kötőjellel rendelkező adatbázist. Ezek a karakterek a fürt létrehozási folyamatának sikertelensedését okozhatják.
+Nem kötelező: megadhat egy meglévő SQL Database a fürtön kívüli Apache Hive, Apache Oozie és, vagy Apache Ambari-metaadatok mentéséhez. A metaadattár használt Azure SQL Databasenak engedélyeznie kell más Azure-szolgáltatásokhoz való kapcsolódást, beleértve az Azure HDInsight-t is. Metaadattár létrehozásakor ne adjon meg kötőjeleket vagy kötőjeleket tartalmazó adatbázist. Ezek a karakterek a fürt létrehozási folyamatának sikertelenségét okozhatják.
 
-Válassza a **Tovább: Biztonság + hálózati >>** lehetőséget a következő lapra való ugráshoz.
+Válassza a **Tovább: biztonság és hálózatkezelés >>** a következő lapra való továbblépés előtt.
 
-## <a name="security--networking"></a>Biztonság + hálózatépítés
+## <a name="security--networking"></a>Biztonság és hálózatkezelés
 
-![A HDInsight fürtbiztonsági hálózatok at hoz létre](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "A HDInsight fürtbiztonsági hálózatok at hoz létre")
+![HDInsight-fürt biztonsági hálózatkezelésének létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight-fürt biztonsági hálózatkezelésének létrehozása")
 
-A **Biztonság + hálózat** lapon adja meg a következő információkat:
-
-|Tulajdonság |Leírás |
-|---|---|
-|Vállalati biztonsági csomag|Nem kötelező: Jelölje be a jelölőnégyzetet a **Vállalati biztonsági csomag**használatához. További információt a [HDInsight-fürt konfigurálása vállalati biztonsági csomaggal az Azure Active Directory tartományi szolgáltatások használatával című témakörben talál.](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)|
-|TLS|Nem kötelező: Válasszon egy TLS-verziót a legördülő listából. További információ: [Transport Layer Security](./transport-layer-security.md).|
-|Virtuális hálózat|Nem kötelező: Válasszon ki egy meglévő virtuális hálózatot és alhálózatot a legördülő listából. További információt az [Azure HDInsight-fürtök virtuális hálózati üzembe helyezésének megtervezése című témakörben talál.](hdinsight-plan-virtual-network-deployment.md) A cikk a virtuális hálózat ra vonatkozó speciális konfigurációs követelményeket tartalmaz.|
-|Lemeztitkosítási beállítások|Nem kötelező: Jelölje be a jelölőnégyzetet a titkosítás használatához. További információt az [Ügyfél által kezelt kulcslemez-titkosítás](./disk-encryption.md)című témakörben talál.|
-|Kafka REST proxy|Ez a beállítás csak a Kafka fürttípusesetén érhető el. További információt a [REST-proxy használata](./kafka/rest-proxy.md)című témakörben talál.|
-|Identitás|Nem kötelező: Válasszon ki egy meglévő, felhasználó által hozzárendelt szolgáltatásidentitást a legördülő listából. További információ: [Felügyelt identitások az Azure HDInsightban.](./hdinsight-managed-identities.md)|
-
-Válassza a **Tovább: Konfiguráció + árképzés i >>** a következő lapra való továbbjutáshoz.
-
-## <a name="configuration--pricing"></a>Konfiguráció + árképzés
-
-![A HDInsight fürtkonfigurációt hoz létre](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Konfiguráció és árképzés lap")
-
-A **Konfiguráció + árképzés** lapon adja meg a következő információkat:
+A **Biztonság és hálózat** lapon adja meg a következő információkat:
 
 |Tulajdonság |Leírás |
 |---|---|
-|+ Alkalmazás hozzáadása|Nem kötelező: Válassza ki a kívánt alkalmazásokat. Microsoft, független szoftverszállítók (ISV-k), vagy fejlesztheti ezeket az alkalmazásokat. További információt az [Alkalmazások telepítése a fürt létrehozása során](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)című témakörben talál.|
-|Csomópont mérete|Nem kötelező: Válasszon másik méretű csomópontot.|
-|Csomópontok száma|Nem kötelező: Adja meg a megadott csomóponttípus csomópontjainak számát. Ha 32-nél több munkavégző csomópontot tervez, válasszon ki egy legalább nyolc maggal és 14 GB RAM-mal rendelkező főcsomópontméretet. Tervezze meg a csomópontokat a fürt létrehozásakor vagy a fürt létrehozása utáni méretezésével.|
-|Automatikus skálázás engedélyezése|Nem kötelező: A funkció engedélyezéséhez jelölje be a jelölőnégyzetet. További információt az [Azure HDInsight-fürtök automatikus méretezése című témakörben talál.](./hdinsight-autoscale-clusters.md)|
-|+ Add script művelet|Nem kötelező: Ez a beállítás akkor működik, ha egyéni parancsfájlt szeretne használni a fürt testreszabásához, miközben a fürt jön létre. A parancsfájlműveletekről a [Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek használatával című](hdinsight-hadoop-customize-cluster-linux.md)témakörben talál további információt.|
+|Vállalati biztonsági csomag|Nem kötelező: jelölje be a jelölőnégyzetet a **Enterprise Security Package**használatához. További információ: HDInsight- [fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services használatával](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
+|TLS|Nem kötelező: válasszon ki egy TLS-verziót a legördülő listából. További információ: [Transport Layer Security](./transport-layer-security.md).|
+|Virtuális hálózat|Nem kötelező: válasszon ki egy meglévő virtuális hálózatot és alhálózatot a legördülő listából. További információ: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](hdinsight-plan-virtual-network-deployment.md). A cikk a virtuális hálózat konkrét konfigurációs követelményeit tartalmazza.|
+|Lemez titkosítási beállításai|Nem kötelező: jelölje be a jelölőnégyzetet a titkosítás használatához. További információ: [ügyfél által felügyelt kulcs lemezének titkosítása](./disk-encryption.md).|
+|Kafka REST proxy|Ez a beállítás csak a Kafka típusú fürtök esetében érhető el. További információ: [Rest proxy használata](./kafka/rest-proxy.md).|
+|Identitás|Nem kötelező: válasszon ki egy meglévő felhasználó által hozzárendelt szolgáltatás-identitást a legördülő listából. További információ: [felügyelt identitások az Azure HDInsight-ben](./hdinsight-managed-identities.md).|
 
-Válassza **a Véleményezés + létrehozás >>** lehetőséget a fürtkonfiguráció érvényesítéséhez és a végső lapra való továbbjutáshoz.
+Válassza a **Tovább: Configuration + díjszabás >>** a következő lapra való továbblépés előtt.
 
-## <a name="review--create"></a>Véleményezés + létrehozás
+## <a name="configuration--pricing"></a>Konfiguráció és díjszabás
 
-![A HDInsight fürtösszegzést hoz létre](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Fürtcsomópontok számának megadása")
+![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Konfiguráció és díjszabás lap")
+
+A **konfiguráció + díjszabás** lapon adja meg a következő információkat:
+
+|Tulajdonság |Leírás |
+|---|---|
+|+ Alkalmazás hozzáadása|Nem kötelező: válassza ki a kívánt alkalmazásokat. A Microsoft, a független szoftvergyártók (ISV-ket), vagy fejlesztheti ezeket az alkalmazásokat. További információ: [alkalmazások telepítése a fürt létrehozása során](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).|
+|Csomópont mérete|Nem kötelező: válasszon másik méretű csomópontot.|
+|Csomópontok száma|Nem kötelező: adja meg a csomópontok számát a megadott csomópont-típushoz. Ha több mint 32 feldolgozó csomópontot tervez, válasszon ki egy fő csomópont-méretet legalább nyolc maggal és 14 GB RAM-mal. Tervezze meg a csomópontokat a fürt létrehozásakor vagy a fürt méretezésével a létrehozás után.|
+|Az autoskálázás engedélyezése|Nem kötelező: jelölje be a jelölőnégyzetet a funkció engedélyezéséhez. További információ: az [Azure HDInsight-fürtök automatikus méretezése](./hdinsight-autoscale-clusters.md).|
+|+ Parancsfájl hozzáadása művelet|Nem kötelező: Ez a beállítás akkor működik, ha egyéni parancsfájllal szeretné testre szabni a fürtöt, mivel a fürt létrehozása folyamatban van. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).|
+
+Válassza a **felülvizsgálat + >>létrehozása** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
+
+## <a name="review--create"></a>Felülvizsgálat + létrehozás
+
+![HDInsight-fürt összesítésének létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Fürtcsomópontok számának meghatározása")
 
 Tekintse át a beállításokat. A fürt létrehozásához kattintson a **Létrehozás** gombra.
 
-Némi időt vesz igénybe a fürt létrehozása, általában körülbelül 20 percet. **Értesítések** figyelése a kiépítési folyamat ellenőrzéséhez.
+Némi időt vesz igénybe a fürt létrehozása, általában körülbelül 20 percet. Figyelje az **értesítéseket** a kiépítési folyamat ellenőrzéséhez.
 
-## <a name="post-creation"></a>Közzététel létrehozása
+## <a name="post-creation"></a>Létrehozás utáni
 
-A létrehozási folyamat befejezése után válassza az Ugrás az **erőforrásra** lehetőséget a **telepítés sikeres értesítésében.** A fürtablak a következő információkat tartalmazza.
+A létrehozási folyamat befejeződése után válassza az **Ugrás az erőforráshoz** lehetőséget az **üzembe helyezés sikeres** értesítése elemnél. A fürt ablak a következő információkat tartalmazza.
 
-![HDI Azure Portal-fürt – áttekintés](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Fürt tulajdonságai")
+![A HDI Azure Portal-fürt áttekintése](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Fürt tulajdonságai")
 
-Az ablakban lévő ikonok némelyike a következőképpen magyarázható:
+Az ablakban az alábbi ikonokat kell megmagyarázni:
 
 |Tulajdonság | Leírás |
 |---|---|
-|Áttekintés|A fürttel kapcsolatos összes lényeges információt tartalmazza. Ilyen például a fürt irányítópultjának neve, erőforráscsoportja, a helye, az operációs rendszere és az URL-címe.|
-|Fürtirányítópultjai|A fürthöz társított Ambari portálra irányítja.|
-|SSH + Fürt bejelentkezés|A fürt SSH használatával történő eléréséhez szükséges információkat tartalmazza.|
+|Áttekintés|A fürttel kapcsolatos összes lényeges információt tartalmazza. Ilyenek például a név, az erőforráscsoport, a hely, az operációs rendszer és a fürt irányítópultjának URL-címe.|
+|Fürt irányítópultok|Irányítja a fürthöz társított Ambari-portálra.|
+|SSH + fürt bejelentkezés|A fürt SSH-kapcsolaton keresztüli eléréséhez szükséges információkat tartalmazza.|
 |Törlés|Törli a HDInsight-fürtöt.|
-
-## <a name="customize-clusters"></a>Fürtök testreszabása
-
-* [A HDInsight-fürtök testreszabása a Bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md)
-* [Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Lásd: [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával.](./hdinsight-delete-cluster.md)
+Lásd: [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával](./hdinsight-delete-cluster.md).
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -156,9 +151,8 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen létrehozott egy HDInsight-fürtöt. Most már megtanulják, hogyan kell dolgozni a fürt.
+Sikeresen létrehozott egy HDInsight-fürtöt. Most megtudhatja, hogyan dolgozhat a fürttel.
 
-* [Az Apache Hive használata a HDInsight segítségével](hadoop/hdinsight-use-hive.md)
-* [Ismerkedés az Apache HBase-lel a HDInsight-on](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Java topológiák fejlesztése apache stormhoz a HDInsighton](storm/apache-storm-develop-java-topology.md)
-* [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
+* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Ismerkedés az Apache HBase a HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)

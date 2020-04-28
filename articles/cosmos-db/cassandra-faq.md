@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148325"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192833"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Gyakori kérdések a Cassandra APIról Azure Cosmos DB
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Mi a különbség az Apache Cassandra és a Cassandra API között?
 
-- Az Apache Cassandra egy 100 MB-os korlátot javasol a partíciós kulcs méretétől függően. A Azure Cosmos DB Cassandra API legfeljebb 10 GB-nyi partíciót tesz lehetővé.
+- Az Apache Cassandra egy 100 MB-os korlátot javasol a partíciós kulcs méretétől függően. A Azure Cosmos DB Cassandra API legfeljebb 20 GB-nyi partíciót tesz lehetővé.
 - Az Apache Cassandra lehetővé teszi a tartós véglegesítés letiltását. Kihagyhatja az írást a véglegesítő naplóba, és közvetlenül a memtables ugorhat. Ez adatvesztéshez vezethet, ha a csomópont leáll, mielőtt memtables a lemezre SSTables. Azure Cosmos DB mindig tartós véglegesíti az adatvesztés megelőzése érdekében.
 - Az Apache Cassandra megtekintheti a csökkent teljesítményt, ha a munkaterhelés sok kihelyezést és törlést is magában foglal. Ennek az az oka, hogy az olvasási munkaterhelésnek át kell ugrania a legfrissebb adatok beolvasásához. A Cassandra API nem fog megjelenni a csökkent olvasási teljesítmény, ha a munkaterhelésnek sok kihelyezése vagy törlése van.
 - A nagy terhelésű számítási feladatokra vonatkozó forgatókönyvek során a tömörítésnek futnia kell a SSTables a lemezen való egyesítéséhez. (Egyesítésre van szükség, mert az Apache Cassandra írása csak hozzáfűzést igényel. A rendszer több frissítést tárol különálló SSTable-bejegyzésekként, amelyeket időnként egyesíteni kell). Ez a helyzet csökkentheti a tömörítés során felmerülő olvasási teljesítményt is. Ez a teljesítményre gyakorolt hatás nem történik meg a Cassandra APIban, mert az API nem implementálja a tömörítést.

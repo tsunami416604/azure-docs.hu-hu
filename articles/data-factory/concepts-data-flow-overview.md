@@ -1,6 +1,6 @@
 ---
 title: Adatfolyamok leképezése
-description: Az Azure Data Factory leképezési adatfolyamainak áttekintése
+description: Az adatfolyamatok Azure Data Factoryban való leképezésének áttekintése
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,148 +8,148 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
-ms.openlocfilehash: 8420cba043e7fc9285b473b877f0ff10212e9fda
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605330"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187851"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatfolyamok leképezése vizuálisan tervezett adatátalakítások az Azure Data Factoryban. Az adatfolyamok lehetővé teszik az adatmérnökök számára, hogy kód írása nélkül fejlesszenek ki grafikus adatátalakítási logikát. Az eredményül kapott adatfolyamok az Azure Data Factory-folyamatokon belüli tevékenységekként kerülnek végrehajtásra, amelyek kibővített Apache Spark-fürtöket használnak. Az adatfolyam-tevékenységek a data factory ütemezési, vezérlési, folyamat- és figyelési képességeivel is bekapcsolhatók.
+Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure Data Factoryban. Az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az eredményül kapott adatfolyamatok a kibővített Apache Spark-fürtöket használó Azure Data Factory folyamatokon belüli tevékenységekként lesznek végrehajtva. Az adatfolyam-tevékenységek a meglévő Data Factory ütemezési, vezérlési, folyamat-és figyelési képességein keresztül is elvégezhetők.
 
-Az adatfolyamok feltérképezése teljes mértékben vizuális élményt nyújt kódolás nélkül. Az adatfolyamok a végrehajtási fürtön futnak a kibővített adatfeldolgozáshoz. Az Azure Data Factory kezeli az összes kódfordítást, útvonaloptimalizálást és az adatfolyam-feladatok végrehajtását.
+Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nincs szükség kódolásra. Az adatfolyamatok a végrehajtási fürtön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
 
 ## <a name="getting-started"></a>Első lépések
 
-Adatfolyam létrehozásához jelölje ki a pluszjelet a **Gyári erőforrások csoportban,** majd válassza az **Adatfolyam**lehetőséget. 
+Az adatfolyamatok létrehozásához jelölje ki a **gyári erőforrások**területen a plusz jelre, majd válassza az **adatfolyam**lehetőséget. 
 
 ![Új adatfolyam](media/data-flow/newdataflow2.png "új adatfolyam")
 
-Ez a művelet az adatfolyam vászonra visz, ahol létrehozhatja az átalakítási logikát. Válassza **a Forrás hozzáadása lehetőséget** a forrásátalakítás konfigurálásának megkezdéséhez. További információ: [Source transformation](data-flow-source.md).
+Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az átalakítási logikát. A forrás-átalakítás konfigurálásának megkezdéséhez válassza a **forrás hozzáadása** lehetőséget. További információ: forrás- [átalakítás](data-flow-source.md).
 
 ## <a name="data-flow-canvas"></a>Adatfolyam-vászon
 
-Az adatfolyam vászon három részre oszlik: a felső sávra, a grafikonra és a konfigurációs panelre. 
+Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
 ![Vászon](media/data-flow/canvas1.png "Vászon")
 
 ### <a name="graph"></a>Graph
 
-A diagram megjeleníti az átalakítási adatfolyamot. A forrásadatok vonalát mutatja, ahogy egy vagy több fogadóba áramlanak. Új forrás hozzáadásához válassza a **Forrás hozzáadása**lehetőséget. Új átalakítás hozzáadásához jelölje ki a pluszjelet egy meglévő átalakítás jobb alsó részén.
+A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
 ![Vászon](media/data-flow/canvas2.png "Vászon")
 
-### <a name="azure-integration-runtime-data-flow-properties"></a>Az Azure-integráció staki adatfolyamának tulajdonságai
+### <a name="azure-integration-runtime-data-flow-properties"></a>Az Azure Integration Runtime adatforgalmának tulajdonságai
 
 ![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
 
-Amikor elkezdi az adatfolyamokkal való munkát az ADF-ben, be szeretné kapcsolni a "Debug" kapcsolót az adatfolyamokhoz a böngésző felhasználói felületének tetején. Ez megpörgeti a Spark-fürt öt es és a folyamat hibakeresési végrehajtása. Beállíthatja a használt fürt méretét egy egyéni [Azure-integrációs futásidő](concepts-integration-runtime.md)kiválasztásával. A hibakeresési munkamenet az utolsó adatelőnézet vagy az utolsó hibakeresési folyamat végrehajtása után akár 60 percig is életben marad.
+Amikor megkezdi az adatfolyamatok használatát az ADF-ben, be szeretné kapcsolni a "hibakeresés" kapcsolót a böngésző felhasználói felületének felső részén lévő adatfolyamatokhoz. Ez egy Spark-fürtöt hoz létre az interaktív hibakeresés, az adatelőzetesek és a folyamat-hibakeresés végrehajtásához. Az egyéni [Azure Integration Runtime](concepts-integration-runtime.md)kiválasztásával megadhatja a használni kívánt fürt méretét. A hibakeresési munkamenet a legutóbbi adatelőnézet vagy utolsó hibakeresési folyamat végrehajtása után akár 60 percig is életben marad.
 
-Amikor a folyamatok at adatfolyam-tevékenységekkel működőképessé teszi, az ADF a "Futtatás" tulajdonságban a [tevékenységhez](control-flow-execute-data-flow-activity.md) társított Azure-integrációs futásidőt használja.
+Ha adatáramlási tevékenységekkel működővé tenni a folyamatokat, az ADF a "Futtatás" tulajdonságban a [tevékenységhez](control-flow-execute-data-flow-activity.md) társított Azure Integration Runtime használja.
 
-Az alapértelmezett Azure-integrációs futásidejű egy kis négymagos egyfeldolgozós csomópont-fürt, amely lehetővé teszi az adatok előnézetének megtekintését és a hibakeresési folyamatok minimális költségek mellett történő gyors végrehajtását. Nagyobb Azure IR-konfiguráció beállítása, ha nagy adatkészleteken műveleteket hajt végre.
+Az alapértelmezett Azure Integration Runtime egy 4 magos, egyetlen feldolgozó csomópont-fürt, amely lehetővé teszi az adatmegtekintést és a hibakeresési folyamatok gyors végrehajtását minimális költségek mellett. Nagyobb Azure IR konfiguráció beállítása, ha nagyméretű adatkészleteken végez műveleteket.
 
-Utasíthatja az ADF-et, hogy fürterőforrások (VM-ek) készletét tartsa fenn az Azure infravörös adatfolyam-tulajdonságaiban egy TTL beállításával. Ez a művelet gyorsabb feladatvégrehajtást eredményez a későbbi tevékenységeknél.
+A fürt erőforrásainak (VM-EK) készletének fenntartásához az ADF-et kell megadnia a Azure IR adatfolyam tulajdonságai között. Ez a művelet gyorsabb feladatok végrehajtását eredményezi a későbbi tevékenységekben.
 
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Az Azure integrációs futásidejű és adatfolyam-stratégiák
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Az Azure Integration Runtime és az adatáramlási stratégiák
 
-##### <a name="execute-data-flows-in-parallel"></a>Adatfolyamok párhuzamos végrehajtása
+##### <a name="execute-data-flows-in-parallel"></a>Az adatfolyamatok párhuzamos végrehajtása
 
-Ha párhuzamosan hajtja végre az adatfolyamokat egy folyamatban, az ADF minden egyes tevékenység-végrehajtáshoz külön Spark-fürtöket hoz létre az egyes tevékenységekhez kapcsolódó Azure-integrációs futásidő beállításai alapján. Ha párhuzamos végrehajtásokat szeretne tervezni az ADF-folyamatokban, adja hozzá az adatfolyam-tevékenységeket a felhasználói felületelsőbbségi korlátozások nélkül.
+Ha párhuzamosan hajtja végre az adatfolyamatokat, az ADF külön Spark-fürtöket hoz létre minden tevékenység végrehajtásához a Azure Integration Runtime az egyes tevékenységekhez csatolt beállítások alapján. Az ADF-folyamatok párhuzamos végrehajtásának kialakításához adja hozzá az adatfolyam-tevékenységeket a felhasználói felület elsőbbségi korlátozásai nélkül.
 
-A három lehetőség közül ez a beállítás valószínűleg a legrövidebb idő alatt hajtható végre. Azonban minden párhuzamos adatfolyam végrehajtása egy időben külön fürtökön, így az események rendezése nem determinisztikus.
+Ebből a három lehetőségből ez a lehetőség valószínűleg a legrövidebb időn belül végrehajtódik. Az egyes párhuzamos adatfolyamok azonban egyidejűleg, külön fürtökön futnak, így az események rendezése nem determinisztikus.
 
-Ha az adatfolyam-tevékenységeket párhuzamosan hajtja végre a folyamatokon belül, ajánlott nem használni a TTL-t. Ez a művelet azért van, mert az adatfolyam párhuzamos végrehajtása imperében, ugyanazon Azure-integrációs futásidejű használatával több melegkészlet-példányt eredményez az adat-előállító számára.
+Ha a folyamatokban párhuzamosan hajtja végre az adatfolyam-tevékenységeket, azt javasoljuk, hogy ne használja az ÉLETTARTAMot. Ennek a műveletnek az az oka, hogy az adatfolyam párhuzamos végrehajtása egyidejűleg ugyanazt a Azure Integration Runtime eredményezi az adatelőállítóhoz tartozó több meleg készlet-példányt.
 
-##### <a name="overload-single-data-flow"></a>Egyetlen adatáramlás túlterhelése
+##### <a name="overload-single-data-flow"></a>Egyetlen adatfolyam túlterhelése
 
-Ha az összes logikát egyetlen adatfolyamba helyezi, az ADF ugyanazt a feladat-végrehajtási környezetet hajtja végre egyetlen Spark-fürtpéldányon.
+Ha egyetlen adatfolyamaton belül helyezi el az összes logikát, az ADF ugyanazt a feladatot végrehajtó környezetet hajtja végre egyetlen Spark-fürt példányon.
 
-Ez a beállítás nagyobb kihívást jelenthet a követés és a hibaelhárítás, mivel az üzleti szabályok és az üzleti logika összezagyhatók. Ez a lehetőség nem nyújt sok újrafelhasználhatóságot.
+Ez a lehetőség nagyobb kihívást jelenthet a követéshez és a hibakereséshez, mivel az üzleti szabályok és az üzleti logika összekeverhető. Ez a beállítás szintén nem nyújt sok újrahasználhatóságot.
 
-##### <a name="execute-data-flows-serially"></a>Adatfolyamok sorozatos végrehajtása
+##### <a name="execute-data-flows-sequentially"></a>Az adatfolyamatok végrehajtása szekvenciálisan
 
-Ha az adatfolyam-tevékenységeket sorosan hajtja végre a folyamatban, és beállított egy TTL-t az Azure infravörös konfigurációján, majd az ADF újrafelhasználja a számítási erőforrásokat (VM-ek), ami gyorsabb későbbi végrehajtási időt eredményez. Továbbra is kap egy új Spark-környezetminden végrehajtáshoz.
+Ha a folyamat során hajtja végre az adatfolyam-tevékenységeket, és a Azure IR konfigurációban beállította a TTL-t, akkor az ADF a számítási erőforrások (VM) újrafelhasználását eredményezi, ami gyorsabb a következő végrehajtási időpontokban. Minden egyes végrehajtáshoz továbbra is új Spark-kontextust fog kapni.
 
-A három lehetőség közül ez a művelet valószínűleg a leghosszabb időt veszi igénybe a végpontok utáni végrehajtáshoz. De ez biztosítja a logikai műveletek tiszta elkülönítése minden adatfolyam lépés.
+Ebből a három lehetőségből ez a művelet valószínűleg a leghosszabb időt vesz igénybe a végpontok végrehajtásához. Azonban a logikai műveletek tiszta elkülönítését teszi lehetővé az egyes adatfolyamok lépéseiben.
 
-### <a name="configuration-panel"></a>Konfiguráció panel
+### <a name="configuration-panel"></a>Konfigurációs panel
 
-A konfigurációpanelen az aktuálisan kiválasztott átalakításra vonatkozó beállítások láthatók. Ha nincs kijelölve átalakítás, akkor az adatfolyam ot jeleníti meg. A teljes adatfolyam-konfigurációban szerkesztheti a nevet és a leírást az **Általános** lapon, vagy paramétereket adhat hozzá a **Paraméterek** lapon. További információt az [Adatfolyam-paraméterek hozzárendelése](parameters-data-flow.md)című témakörben talál.
+A konfigurációs panel megjeleníti az aktuálisan kiválasztott átalakításhoz tartozó beállításokat. Ha nincs kiválasztva átalakítás, az adatfolyamatot jeleníti meg. A teljes adatfolyam-konfigurációban szerkesztheti a nevet és a leírást az **általános** lapon, vagy hozzáadhat paramétereket a parameters ( **Paraméterek** ) lapon. További információ: [az adatfolyam paramétereinek leképezése](parameters-data-flow.md).
 
 Minden átalakítás legalább négy konfigurációs lapot tartalmaz.
 
 #### <a name="transformation-settings"></a>Átalakítási beállítások
 
-Az egyes átalakítások konfigurációs ablaktáblájának első lapja az adott átalakításra vonatkozó beállításokat tartalmazza. További információkért tekintse meg az átalakítás dokumentációs oldalát.
+Az egyes átalakítások konfigurációs paneljének első lapja az adott átalakításra vonatkozó beállításokat tartalmazza. További információ: az átalakítás dokumentációs lapja.
 
-![Forrásbeállítások lap](media/data-flow/source1.png "Forrásbeállítások lap")
+![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
 
 #### <a name="optimize"></a>Optimalizálás
 
-Az **Optimalizálás** lap a particionálási sémák konfigurálásához megadott beállításokat tartalmazza.
+Az **optimalizálás** lap a particionálási sémák konfigurálásához szükséges beállításokat tartalmazza.
 
 ![Optimalizálás](media/data-flow/optimize1.png "Optimalizálás")
 
-Az alapértelmezett beállítás az **aktuális particionálás használata**, amely arra utasítja az Azure Data Factory-t, hogy a Sparkon futó adatfolyamok natív particionálási sémát használja. A legtöbb esetben ezt a beállítást javasoljuk.
+Az alapértelmezett beállítás az **aktuális particionálást használja**, amely arra utasítja a Azure Data Factoryot, hogy a Spark-on futó adatfolyamatok natív particionálási sémáját használják. A legtöbb esetben ezt a beállítást javasoljuk.
 
-Vannak olyan esetek, ahol érdemes lehet módosítani a particionálás. Ha például az átalakításokat a tó egyetlen fájljába szeretné kiadni, válassza az **Egyetlen partíció** t a fogadóátalakítása lehetőséget.
+Vannak olyan példányok, amelyekben érdemes lehet módosítani a particionálást. Ha például az átalakításokat egyetlen fájlba szeretné exportálni a-tóban, válassza ki a **különálló partíciót** egy fogadó átalakításban.
 
-Egy másik eset, ahol érdemes lehet a particionálási sémák szabályozása a teljesítmény optimalizálása. A particionálás beállításával szabályozhatja az adatok elosztását a számítási csomópontok és az adathely optimalizálása között, amely pozitív és negatív hatással lehet a teljes adatfolyam-teljesítményre. További információt az [Adatfolyam-teljesítményútmutatóban](concepts-data-flow-performance.md)talál.
+Egy másik eset, amikor a particionálási sémákat a teljesítmény optimalizálása érdekében érdemes szabályozni. A particionálás beállítása lehetővé teszi az adatok elosztását a számítási csomópontok és az adatkörnyezet-optimalizálások között, amelyek mind pozitív, mind negatív hatással lehetnek a teljes adatfolyam-teljesítményre. További információ: az [adatfolyam teljesítményének útmutatója](concepts-data-flow-performance.md).
 
-Ha módosítani szeretné a particionálást bármely átalakításon, válassza az **Optimalizálás** lapot, és válassza a **Particionálás beállítása** választógombot. A particionálási lehetőségek sorozata jelenik meg. A particionálás legjobb módja az adatkötetektől, a jelöltkulcsoktól, a null értékektől és a számosságtól függően változik. 
+Ha módosítani szeretné a particionálást bármely transzformáción, válassza az **optimalizálás** fület, és válassza a **particionálás beállítása** választógombot. A particionálási lehetőségek sorozatát mutatjuk be. A particionálás legjobb módja az adatmennyiségek, a jelölt kulcsok, a null értékek és a kardinális alapján változhat. 
 
-Ajánlott eljárás az alapértelmezett particionálás, majd próbálja meg a különböző particionálási beállításokat. Tesztelheti a folyamathiba-keresési futtatások használatával, és megtekintheti a végrehajtási időt és a partíció használatát az egyes átalakítási csoportosítások a figyelési nézetből. További információ: [Monitoring data flows](concepts-data-flow-monitoring.md).
+Az ajánlott eljárás az alapértelmezett particionálás, majd a különböző particionálási beállítások kipróbálása. Tesztelheti a folyamat hibakeresési futtatását, és megtekintheti az egyes átalakítási csoportok végrehajtási idejét és a partíciók használatát a figyelés nézetből. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
 
-A következő particionálási lehetőségek érhetők el.
+A következő particionálási beállítások érhetők el.
 
 ##### <a name="round-robin"></a>Ciklikus multiplexelés 
 
-Ciklikus multiplexelés egy egyszerű partíció, amely automatikusan elosztja az adatokat egyenlően partíciók között. Használja ciklikus multiplexelés, ha nem rendelkezik jó kulcsjelöltek egy szilárd, intelligens particionálási stratégia megvalósításához. Beállíthatja a fizikai partíciók számát.
+A ciklikus multiplexelés egy egyszerű partíció, amely automatikusan elosztja az adategységeket a partíciók között. Ciklikus multiplexelés használata, ha nem rendelkezik megfelelő kulcsfontosságú jelöltekkel a szilárd, intelligens particionálási stratégia megvalósításához. Megadhatja a fizikai partíciók számát.
 
 ##### <a name="hash"></a>Kivonat
 
-Az Azure Data Factory oszlopok kivonatát hozza létre egységes partíciók létrehozásához, így a hasonló értékű sorok ugyanabba a partícióba esnek. Ha a Kivonatoló beállítást használja, ellenőrizze a lehetséges partíciódöntéseket. Beállíthatja a fizikai partíciók számát.
+Azure Data Factory az oszlopok kivonatát állítja elő, hogy egységes partíciókat hozzon létre, például a hasonló értékekkel rendelkező sorok ugyanabba a partícióba esnek. Ha a kivonatoló kapcsolót használja, tesztelje a lehetséges partíciók döntését. Megadhatja a fizikai partíciók számát.
 
 ##### <a name="dynamic-range"></a>Dinamikus tartomány
 
-A dinamikus tartomány a Spark dinamikus tartományait használja a megadott oszlopok vagy kifejezések alapján. Beállíthatja a fizikai partíciók számát. 
+A dinamikus tartomány Spark dinamikus tartományokat használ az Ön által megadott oszlopok vagy kifejezések alapján. Megadhatja a fizikai partíciók számát. 
 
 ##### <a name="fixed-range"></a>Rögzített tartomány
 
-Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokon belüli értékekhez. A partíciók ferdítésének elkerülése érdekében a beállítás használata előtt jól meg kell értenie az adatokat. A kifejezéshez megadott értékek egy partíciófüggvény részeként használatosak. Beállíthatja a fizikai partíciók számát.
+Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokban lévő értékek számára. Ha el szeretné kerülni a partíciók eldöntését, érdemes megismernie az adatait, mielőtt ezt a beállítást használja. A kifejezéshez megadott értékek a Partition függvény részeként használatosak. Megadhatja a fizikai partíciók számát.
 
 ##### <a name="key"></a>Kulcs
 
-Ha jól ismeri az adatok számosságát, a kulcsparticionálás jó stratégia lehet. A kulcsparticionálás partíciókat hoz létre az oszlop minden egyes egyedi értékéhez. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
+Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégia lehet. A kulcs particionálásával az oszlop minden egyedi értékéhez partíciók jönnek létre. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
 
-#### <a name="inspect"></a>Ellenőrizni
+#### <a name="inspect"></a>Vizsgálata
 
-A **Vizsgálat** lapon az átalakuló adatfolyam metaadataiból láthatók. Megtekintheti az oszlopok számát, az oszlopok at, a hozzáadott oszlopokat, az adattípusokat, az oszlopsorrendet és az oszlophivatkozásokat. **A vizsgálat** a metaadatok írásvédett nézete. A Metaadatok **ellenőrzés** ablaktáblán való megtekintéséhez nincs szükség hibakeresési módra.
+Az **ellenőrzés** lapon megtekintheti az átalakítás alatt álló adatfolyam metaadatait. Megtekintheti az oszlopok számát, a megváltoztatott oszlopokat, a hozzáadott oszlopokat, az adattípusokat, az oszlopok sorrendjét és az oszlopok hivatkozásait. A **vizsgálat** a metaadatok csak olvasható nézete. Nem kell engedélyezni a hibakeresési módot a metaadatok megjelenítéséhez a **vizsgálat** ablaktáblán.
 
-![Ellenőrizni](media/data-flow/inspect1.png "Ellenőrizni")
+![Vizsgálata](media/data-flow/inspect1.png "Vizsgálata")
 
-Ahogy az átalakítások során módosítja az adatok alakját, a Metaadat-változások folyamata megjelenik a **Vizsgálat** ablaktáblán. Ha nincs definiált séma a forrásátalakításban, akkor a metaadatok nem lesznek **láthatók** a Vizsgálat ablaktáblán. A metaadatok hiánya gyakori a sémaeltolódási forgatókönyvekben.
+Amikor átalakításokon keresztül módosítja az adatok alakját, a metaadatok változásai a **vizsgálat** panelen jelennek meg. Ha nincs definiált séma a forrás-átalakításban, akkor a metaadatok nem lesznek láthatók a **vizsgálat** ablaktáblán. A metaadatok hiánya gyakori a séma-drift forgatókönyvekben.
 
 #### <a name="data-preview"></a>Adatelőnézet
 
-Ha a hibakeresési mód be van kapcsolva, az **Adatelőnézet** lap interaktív pillanatképet ad az egyes átalakítások adatairól. További információt az [Adatelőnézet hibakeresési módban című témakörben](concepts-data-flow-debug-mode.md#data-preview)talál.
+Ha a hibakeresési mód be van kapcsolva, az **adatelőnézet** lap interaktív pillanatképet biztosít az adatokról az egyes transzformációk során. További információ: az [adatelőnézet hibakeresési módban](concepts-data-flow-debug-mode.md#data-preview).
 
 ### <a name="top-bar"></a>Felső sáv
 
-A felső sáv olyan műveleteket tartalmaz, amelyek befolyásolják a teljes adatfolyamot, például a mentést és az ellenőrzést. A diagram és a konfigurációs módok között is válthat a **Diagram megjelenítése** és a **Diagram elrejtése** gombbal.
+A felső sáv olyan műveleteket tartalmaz, amelyek hatással vannak a teljes adatfolyamra, például a mentésre és az érvényesítésre. A Graph és a konfigurációs üzemmód közötti váltás a **Graph megjelenítése** és a Graph billentyűk **elrejtése** gomb használatával is lehetséges.
 
-![Diagram elrejtése](media/data-flow/hideg.png "Diagram elrejtése")
+![Gráf elrejtése](media/data-flow/hideg.png "Gráf elrejtése")
 
-Ha elrejti a grafikont, az átalakítási csomópontok között oldalirányban böngészhet az **Előző** és a **Következő** gombon keresztül.
+Ha elrejti a gráfot, az **előző** és a **következő** gombokon keresztül böngészhet az átalakítási csomópontokon.
 
-![Előző és következő gombok](media/data-flow/showhide.png "előző és következő gombok")
+![Előző és következő gomb](media/data-flow/showhide.png "előző és következő gomb")
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [forrásátalakítás létrehozásáról.](data-flow-source.md)
-* További információ az adatfolyamok [hibakeresési módban történő létrehozásáról.](concepts-data-flow-debug-mode.md)
+* Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
+* Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

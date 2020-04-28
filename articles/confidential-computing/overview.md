@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: b52af8f41f32c224fd7c4fa0f5c539b23d231f49
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149304"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192263"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
 
@@ -28,7 +28,8 @@ Az Azure bizalmas számítástechnikai szolgáltatása lehetővé teszi a bizalm
 ## <a name="overview"></a>Áttekintés
 <p><p>
 
-> [!VIDEO https://www.youtube.com/embed/Qu6sP0XDMU8]
+
+> [!VIDEO https://www.youtube.com/embed/rT6zMOoLEqI]
 
 Tudjuk, hogy fontos a Felhőbeli adatvédelme. Halljuk az Ön problémáit. Íme néhány kérdés, miszerint ügyfeleinknek lehet a felhőbe áthelyezniük a bizalmas számítási feladatokat: 
 
@@ -76,7 +77,7 @@ Az Azure bizalmas számítástechnikai virtuális gépeken a CPU hardverének eg
 
 ![VM-modell](media/overview/hardware-backed-enclave.png)
 
-Az Azure bizalmas számítástechnikai infrastruktúrája jelenleg a virtuális gépek (VM-EK) speciális SKU-jának részét alkotja. Ezek a virtuális gépek Intel processzorokon futnak a szoftverfrissítési Gárda (Intel SGX ENKLÁVÉHOZ) révén. Az [Intel SGX enklávéhoz](https://intel.com/sgx) az a komponens, amely lehetővé teszi a bizalmas számítástechnikai szolgáltatással való fokozott védelmet. 
+Az Azure bizalmas számítástechnikai infrastruktúrája jelenleg a virtuális gépek (VM-EK) speciális SKU-jának részét alkotja. Ezek a virtuális gépek az Intel-processzorokon futnak a szoftveres Guard bővítménnyel (Intel SGX ENKLÁVÉHOZ). Az [Intel SGX enklávéhoz](https://intel.com/sgx) az a komponens, amely lehetővé teszi a bizalmas számítástechnikai szolgáltatással való fokozott védelmet. 
 
 Napjainkban az Azure az Intel SGX ENKLÁVÉHOZ technológiára épülő [DCsv2-sorozatot](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) kínálja a hardveres enklávé létrehozásához. Létrehozhat biztonságos enklávé-alapú alkalmazásokat az DCsv2-sorozatú virtuális gépeken való futtatáshoz az alkalmazásadatok és a használatban lévő kódok védelme érdekében. 
 

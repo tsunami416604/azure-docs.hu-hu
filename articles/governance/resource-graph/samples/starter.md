@@ -1,38 +1,39 @@
 ---
 title: Kezdő lekérdezési példák
-description: Az Azure Resource Graph használatával néhány kezdő lekérdezést futtat, beleértve az erőforrások számlálását, az erőforrások rendelését vagy egy adott címkét.
-ms.date: 11/21/2019
+description: Az Azure Resource Graph használatával néhány kezdő lekérdezést futtathat, beleértve az erőforrások számlálását, az erőforrások megrendelését vagy egy adott címkét.
+ms.date: 04/27/2020
 ms.topic: sample
-ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fc499f466d61fb665cc31075a2c310372d993f2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238397"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185863"
 ---
-# <a name="starter-resource-graph-query-samples"></a>Starter Resource Graph lekérdezésminták
+# <a name="starter-resource-graph-query-samples"></a>A Starter Resource Graph lekérdezési mintái
 
-Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri a [Kusto query language (KQL)](/azure/kusto/query/index), javasoljuk, hogy tekintse át az [oktatóanyag kql](/azure/kusto/query/tutorial) megérteni, hogyan kell összeállítani a kérelmeket a keresett erőforrásokat.
+Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri a [Kusto lekérdezési nyelvét (KQL)](/azure/kusto/query/index), javasoljuk, hogy tekintse át a [KQL vonatkozó oktatóanyagot](/azure/kusto/query/tutorial) , és ismerkedjen meg a keresett erőforrásokra vonatkozó kérelmek összeállításával.
 
 A következő alapszintű lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
 > - [Az Azure-erőforrások száma](#count-resources)
-> - [Key vault-erőforrások megszámlálása](#count-keyvaults)
-> - [Név szerint rendezett erőforrások listázása](#list-resources)
+> - [Key Vault-erőforrások száma](#count-keyvaults)
+> - [Erőforrások listázása név szerint rendezve](#list-resources)
 > - [A név szerint rendezett összes virtuális gép megjelenítése csökkenő sorrendben](#show-vms)
-> - [Az első öt virtuális gép megjelenítése név és operációs rendszer típusa szerint](#show-sorted)
+> - [Első öt virtuális gép megjelenítése név és operációsrendszer-típus szerint](#show-sorted)
 > - [A virtuális gépek száma az operációs rendszer típusa szerint](#count-os)
 > - [Tárolót tartalmazó erőforrások megjelenítése](#show-storage)
 > - [Az összes nyilvános IP-cím listázása](#list-publicip)
-> - [Az előfizetés által konfigurált IP-címekkel rendelkező erőforrások megszámlálása](#count-resources-by-ip)
-> - [Adott címkeértékkel rendelkező erőforrások listázása](#list-tag)
-> - [Az összes adott címkeértékkel rendelkező tárfiók listázása](#list-specific-tag)
-> - [Virtuálisgép-erőforrás aliasának megjelenítése](#show-aliases)
-> - [Adott alias különböző értékeinek megjelenítése](#distinct-alias-values)
+> - [Az előfizetés által konfigurált IP-címmel rendelkező erőforrások száma](#count-resources-by-ip)
+> - [Adott címke értékkel rendelkező erőforrások listázása](#list-tag)
+> - [Az összes olyan Storage-fiók listázása, amely adott címke értékkel rendelkezik](#list-specific-tag)
+> - [Virtuális gép erőforrásaihoz tartozó aliasok megjelenítése](#show-aliases)
+> - [Egy adott alias különböző értékeinek megjelenítése](#distinct-alias-values)
 > - [Nem társított hálózati biztonsági csoportok megjelenítése](#unassociated-nsgs)
+> - [Költségmegtakarítás összegzése Azure Advisor](#advisor-savings)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -61,17 +62,17 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
-## <a name="count-key-vault-resources"></a><a name="count-keyvaults" />Key vault-erőforrások megszámlálása
+## <a name="count-key-vault-resources"></a><a name="count-keyvaults" />Key Vault-erőforrások száma
 
-Ez a `count` lekérdezés `summarize` a visszaadott rekordok számának megszámlálására használja. A számláló csak a kulcstartók at tartalmazza.
+Ez a lekérdezés `count` a visszaadott rekordok számának megszámlálása helyett `summarize` használja. Csak a Key vaultok szerepelnek a darabszámban.
 
 ```kusto
 Resources
@@ -93,11 +94,11 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -125,11 +126,11 @@ Search-AzGraph -Query "Resources | project name, type, location | order by name 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -158,11 +159,11 @@ Search-AzGraph -Query "Resources | project name, location, type| where type =~ '
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -191,11 +192,11 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -224,11 +225,11 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -255,16 +256,16 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
-> Vegye figyelembe, hogy míg az `=~` paraméter lehetővé teszi a kis- és nagybetűk megkülönböztetése nélküli lekérdezést, ha tulajdonságokat (például **properties.storageProfile.osDisk.osType**) használ a lekérdezésben, a kis- és nagybetűt helyesen kell megadni. Ha a tulajdonság nem megfelelő eset, a rendszer null vagy helytelen értéket ad vissza, és a csoportosítás vagy az összegzés helytelen lesz.
+> Vegye figyelembe, hogy míg az `=~` paraméter lehetővé teszi a kis- és nagybetűk megkülönböztetése nélküli lekérdezést, ha tulajdonságokat (például **properties.storageProfile.osDisk.osType**) használ a lekérdezésben, a kis- és nagybetűt helyesen kell megadni. Ha a tulajdonság értéke helytelen, a rendszer null vagy helytelen értéket ad vissza, és a csoportosítás vagy az összefoglalás helytelen lenne.
 
 ## <a name="show-resources-that-contain-storage"></a><a name="show-storage" />A storage szót tartalmazó erőforrások megjelenítése
 
@@ -289,19 +290,19 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
 ## <a name="list-all-public-ip-addresses"></a><a name="list-publicip" />Az összes nyilvános IP-cím listázása
 
 Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** sztringet.
-Ez a lekérdezés kibontja, hogy a minta csak azokat az eredményeket `limit` tartalmazza, ahol **properties.ipAddress**
-`isnotempty`, csak a **properties.ipAddress**, és az eredmények a felső
+Ez a lekérdezés csak olyan eredményeket tartalmaz, amelyekben a **Properties. IP**
+`isnotempty`-cím csak a Properties. **IP**-cím és `limit` a fent látható eredményekre tér vissza.
 100. A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
 
 ```kusto
@@ -325,11 +326,11 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -357,11 +358,11 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -389,11 +390,11 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -419,11 +420,11 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
@@ -451,20 +452,20 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
 > Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. Az `==` kis- és nagybetűket megkülönböztető találatot ad.
 
-## <a name="show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" />Virtuálisgép-erőforrás aliasának megjelenítése
+## <a name="show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" />Virtuális gép erőforrásaihoz tartozó aliasok megjelenítése
 
-[Az Azure Policy aliasok](../../policy/concepts/definition-structure.md#aliases) az Azure Policy által az erőforrások megfelelőségének kezelésére szolgál. Az Azure Resource Graph egy erőforrástípus _aliasait_ adja vissza. Ezek az értékek az aliasok aktuális értékének összehasonlításához hasznosak egyéni házirend-definíció létrehozásakor. Az _aliastömb_ alapértelmezés szerint nem szerepel a lekérdezés eredményében. Segítségével `project aliases` explicit módon adja hozzá az eredményekhez.
+A Azure Policy az [Azure Policy aliasokat](../../policy/concepts/definition-structure.md#aliases) használja az erőforrások megfelelőségének kezeléséhez. Az Azure Resource Graph egy erőforrástípus _aliasneveit_ is visszaállíthatja. Ezek az értékek hasznosak az aliasok aktuális értékének összehasonlításához az egyéni házirend-definíció létrehozásakor. Az _aliasok_ tömbje alapértelmezés szerint nincs megadva a lekérdezés eredményeiben. A `project aliases` használatával explicit módon adhatja hozzá az eredményekhez.
 
 ```kusto
 Resources
@@ -487,17 +488,17 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
-## <a name="show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />Adott alias különböző értékeinek megjelenítése
+## <a name="show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />Egy adott alias különböző értékeinek megjelenítése
 
-Az aliasok egyetlen erőforráson való megjelenítése hasznos, de nem jeleníti meg az Azure Resource Graph előfizetések közötti lekérdezésének valódi értékét. Ez a példa egy adott alias összes értékét megvizsgálja, és a különböző értékeket adja vissza.
+Az aliasok értékének egyetlen erőforráson való megjelenítése hasznos lehet, de nem jeleníti meg a valódi értéket az Azure Resource Graph használatával az előfizetések közötti lekérdezéshez. Ez a példa egy adott alias összes értékét áttekinti, és a különböző értékeket adja vissza.
 
 ```kusto
 Resources
@@ -520,17 +521,17 @@ Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachine
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
 ## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" />Nem társított hálózati biztonsági csoportok megjelenítése
 
-Ez a lekérdezés hálózati biztonsági csoportokat (NSG-ket) ad vissza, amelyek nincsenek hálózati adapterhez vagy alhálózathoz társítva.
+Ez a lekérdezés olyan hálózati biztonsági csoportokat (NSG) ad vissza, amelyek nincsenek hálózati adapterhez vagy alhálózathoz társítva.
 
 ```kusto
 Resources
@@ -553,16 +554,59 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![A Resource Graph kezelő ikonja](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure Government portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Hivatkozás megnyitása új ablakban ikon](../../media/new-window.png)
-- Azure China portál: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![Open hivatkozás új ablakban ikon](../../media/new-window.png)
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+
+---
+
+## <a name="get-cost-savings-summary-from-azure-advisor"></a><a name="advisor-savings" />Költségmegtakarítás összegzése Azure Advisor
+
+Ez a lekérdezés összegzi az egyes [Azure Advisor](../../../advisor/advisor-overview.md) javaslatok költségmegtakarítását.
+
+```kusto
+advisorresources
+| where type == 'microsoft.advisor/recommendations'
+| where properties.category == 'Cost'
+| extend
+    resources = tostring(properties.resourceMetadata.resourceId),
+    savings = todouble(properties.extendedProperties.savingsAmount),
+    solution = tostring(properties.shortDescription.solution),
+    currency = tostring(properties.extendedProperties.savingsCurrency)
+| summarize
+    dcount(resources), 
+    bin(sum(savings), 0.01)
+    by solution, currency
+| project solution, dcount_resources, sum_savings, currency
+| order by sum_savings desc
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "advisorresources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'Cost' | extend resources = tostring(properties.resourceMetadata.resourceId), savings = todouble(properties.extendedProperties.savingsAmount), solution = tostring(properties.shortDescription.solution), currency = tostring(properties.extendedProperties.savingsCurrency) | summarize dcount(resources), bin(sum(savings), 0.01) by solution, currency | project solution, dcount_resources, sum_savings, currency | order by sum_savings desc"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "advisorresources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'Cost' | extend resources = tostring(properties.resourceMetadata.resourceId), savings = todouble(properties.extendedProperties.savingsAmount), solution = tostring(properties.shortDescription.solution), currency = tostring(properties.extendedProperties.savingsCurrency) | summarize dcount(resources), bin(sum(savings), 0.01) by solution, currency | project solution, dcount_resources, sum_savings, currency | order by sum_savings desc"
+```
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
+
+- Azure Portal: a <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">Portal.Azure.com</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure Government-portál: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">Portal.Azure.us</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
+- Azure China Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">Portal.Azure.cn</a> ![megnyitása új ablakban ikon](../../media/new-window.png)
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [lekérdezés nyelvéről](../concepts/query-language.md).
-- További információ az [erőforrások felfedezéséről.](../concepts/explore-resources.md)
-- Tekintse meg a [speciális lekérdezések mintáit.](advanced.md)
+- További információ a [lekérdezési nyelvről](../concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).
+- Lásd a [speciális lekérdezések](advanced.md)mintáit.

@@ -1,6 +1,6 @@
 ---
-title: Beágyazott virtualizálás engedélyezése sablonvirtuális gépen az Azure Lab Servicesben | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre sablon virtuális gépet több virtuális gép belsejében.  Más szóval engedélyezze a beágyazott virtualizálást egy sablon virtuális gépen az Azure Lab Servicesben.
+title: Beágyazott virtualizáció engedélyezése sablonbeli virtuális gépen Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre több virtuális géppel rendelkező sablonos virtuális gépet a rendszeren belül.  Más szóval engedélyezze a beágyazott virtualizációt a sablonban lévő virtuális gépen Azure Lab Servicesban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502006"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184673"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Beágyazott virtualizálás engedélyezése sablonos virtuális gépen az Azure Lab Servicesben
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services
 
-Jelenleg az Azure Lab Services lehetővé teszi, hogy egy sablon virtuális gép egy laborban, és egy-egy példányt elérhetővé minden a felhasználók számára. Ha Ön hálózatépítő, biztonsági vagy informatikai órákat oktató professzor, előfordulhat, hogy minden egyes diákjának olyan környezetet kell biztosítania, amelyben több virtuális gép is beszélgethet egymással a hálózaton keresztül.
+Jelenleg a Azure Lab Services lehetővé teszi egy sablonban lévő virtuális gép beállítását egy laborban, és az egyes felhasználók számára egyetlen másolatot készíthet. Ha Ön olyan professzor, amely hálózatkezelési, biztonsági vagy informatikai osztályokat tanít, előfordulhat, hogy minden tanulót egy olyan környezettel kell megadnia, amelyben több virtuális gép kommunikálhat egymással egy hálózaton keresztül.
 
-A beágyazott virtualizáció lehetővé teszi, hogy több virtuális gép környezetet hozzon létre a tesztkörnyezet sablonvirtuális gépén belül. A sablon közzététele biztosítja a labor minden felhasználó számára egy virtuális gép beállítása több virtuális gép belül.  Ez a cikk ismerteti, hogyan állíthatja be a beágyazott virtualizálást egy sablongépen az Azure Lab Services-ben.
+A beágyazott virtualizálás lehetővé teszi, hogy több virtuális gépre kiterjedő környezetet hozzon létre a labor sablonjának virtuális gépén. A sablon közzétételével minden felhasználó számára elérhetővé válik a laborban egy virtuális gép, amelyben több virtuális gép van beállítva.  Ez a cikk bemutatja, hogyan állíthatja be a beágyazott virtualizálás szolgáltatást egy Azure Lab Services található sablonos gépen.
 
-## <a name="what-is-nested-virtualization"></a>Mi a beágyazott virtualizáció?
+## <a name="what-is-nested-virtualization"></a>Mi az a beágyazott virtualizálás?
 
-A beágyazott virtualizáció lehetővé teszi, hogy virtuális gépeket hozzon létre egy virtuális gépen belül. A beágyazott virtualizálás a Hyper-V-n keresztül történik, és csak Windows virtuális gépeken érhető el.
+A beágyazott virtualizálás lehetővé teszi, hogy virtuális gépeket hozzon létre egy virtuális gépen belül. A beágyazott virtualizálás a Hyper-V-n keresztül történik, és csak Windows rendszerű virtuális gépeken érhető el.
 
-A beágyazott virtualizációról az alábbi cikkekben talál további információt:
+A beágyazott virtualizálás szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Beágyazott virtualizálás az Azure-ban](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépben](../../virtual-machines/windows/nested-virtualization.md)
+- [Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépen](../../virtual-machines/windows/nested-virtualization.md)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-A beágyazott virtualizációval rendelkező tesztkörnyezet beállítása előtt az alábbiakat kell figyelembe venni.
+A tesztkörnyezet beágyazott virtualizálás előtti beállítása előtt néhány dolgot figyelembe kell venni.
 
-- Új tesztkörnyezet létrehozásakor válassza **a Közepes (beágyazott virtualizálás)** vagy a **Nagy (beágyazott virtualizáció)** méretek lehetőséget a virtuális gép méretéhez. Ezek a virtuális gépméretek támogatják a beágyazott virtualizációt.
-- Válasszon olyan méretet, amely jó teljesítményt nyújt mind a gazdagép, mind az ügyfél virtuális gépei számára.  Ne feledje, hogy a virtualizáció használatakor a választott méretnek nem csak egy gépnek, hanem a gazdagépnek, valamint az egyidejűleg futtatandó ügyfélgépeknek is megfelelőnek kell lennie.
-- Az ügyfél virtuális gépei nem férhetnek hozzá az Azure-erőforrásokhoz, például az Azure virtuális hálózat DNS-kiszolgálóihoz.
-- A gazdavirtuális gép telepítéséhez be kell állítani, hogy az ügyfélgép rendelkezhet-e internetkapcsolattal.
-- Az ügyfélvirtuális gépek független gépekként vannak licencelve. A Microsoft operációs rendszerek és -termékek licenceléséről a [Microsoft licenceléséről a Microsoft licencelése](https://www.microsoft.com/licensing/default) című témakörben talál információt. A sablongép beállítása előtt ellenőrizze a használt egyéb szoftverek licencszerződéseit.
+- Új Labor létrehozásakor válassza a **közepes (beágyazott virtualizálás)** vagy a **nagy (beágyazott virtualizációs)** méretek lehetőséget a virtuális gép méretének kiválasztásához. Ezek a virtuálisgép-méretek támogatják a beágyazott virtualizálás szolgáltatást.
+- Válasszon egy olyan méretet, amely a gazdagép és az ügyfél virtuális gépei számára is jó teljesítményt nyújt.  Ne feledje, hogy a virtualizálás használatakor a kiválasztott méretnek megfelelőnek kell lennie a nem csak egy gépen, hanem a gazdagépen, valamint a párhuzamosan futó Hyper-V-gépeken is.
+- Az ügyfél virtuális gépei nem férnek hozzá Azure-erőforrásokhoz, például DNS-kiszolgálókhoz az Azure-beli virtuális hálózaton.
+- A gazdagép virtuális gépén a telepítőnek engedélyeznie kell, hogy az ügyfélszámítógép internetkapcsolattal rendelkezzen.
+- Az ügyfél virtuális gépei független gépekként vannak engedélyezve. A Microsoft-üzemeltetési rendszerek és termékek licencelésével kapcsolatos információkért tekintse meg a [Microsoft licencelését](https://www.microsoft.com/licensing/default) ismertető témakört. A sablon számítógépének beállítása előtt a használatban lévő egyéb szoftverek licencelési szerződéseit is megvizsgálhatja.
 
 ## <a name="enable-nested-virtualization-on-a-template-vm"></a>Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
 
-Ez a cikk feltételezi, hogy létrehozott egy tesztkörnyezet-fiókot és egy tesztkörnyezet.  Az új tesztkörnyezet-fiók létrehozásáról további információt a [Lab-fiók beállításához szükséges oktatóanyagcímű témakörben talál.](tutorial-setup-lab-account.md) A labor létrehozásáról további információt az [osztálytermi laboroktatói bemutató beállítása című](tutorial-setup-classroom-lab.md)témakörben talál.
+Ez a cikk azt feltételezi, hogy létrehozott egy labor-fiókot és egy labort.  Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md). A labor létrehozásával kapcsolatos további információkért tekintse [meg a tanterem Lab-oktatóanyagának beállítása](tutorial-setup-classroom-lab.md)című témakört.
 
 >[!IMPORTANT]
->Válassza ki a **Nagy (beágyazott virtualizálás)** vagy **közepes (beágyazott virtualizálás)** a virtuális gép mérete a labor létrehozásakor.  A beágyazott virtualizáció egyébként nem fog működni.  
+>A tesztkörnyezet létrehozásakor válassza a **nagyméretű (beágyazott virtualizálás)** vagy **közepes (beágyazott virtualizálás** ) lehetőséget a virtuális gép méretének kiválasztásához.  A beágyazott virtualizálás más módon nem működik.  
 
-A sablongéphez való csatlakozásról olvassa el az [Osztálytermi sablon létrehozása és kezelése](how-to-create-manage-template.md)című témakört.
+A sablonhoz való kapcsolódáshoz lásd: [tantermi sablon létrehozása és kezelése](how-to-create-manage-template.md).
 
-### <a name="using-script-to-enable-nested-virtualization"></a>Beágyazott virtualizálás engedélyezése parancsfájlhasználatával
+A beágyazott virtualizálás engedélyezéséhez néhány feladat végrehajtása szükséges.  
 
-A Windows Server 2016 vagy a Windows Server 2019 beágyazott virtualizálására vonatkozó automatikus telepítés használatához olvassa el a [Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen](how-to-enable-nested-virtualization-template-vm-using-script.md)az Azure Lab Services ben parancsfájl használatával című témakört. A Hyper-V szerepkör telepítéséhez a [Lab Services Hyper-V parancsfájljainak parancsfájljait](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) fogja használni.  A parancsfájlok hálózati kapcsolatot is beállítanak, hogy a Hyper-V virtuális gépek internet-hozzáféréssel rendelkezhessenek.
+- **Engedélyezze a Hyper-V szerepkört**. A Hyper-V szerepkörnek engedélyezve kell lennie a Hyper-V virtuális gépek létrehozásához és futtatásához a labor Services virtuális gépen.
+- **Engedélyezze a DHCP-t**.  Ha a labor Services virtuális gépnek engedélyezve van a DHCP-szerepkör, a Hyper-V virtuális gépek automatikusan IP-címet rendelhetnek hozzá.
+- **NAT-hálózat létrehozása Hyper-V virtuális gépekhez**.  A NAT-hálózat úgy van beállítva, hogy engedélyezze a Hyper-V virtuális gépek számára az internet-hozzáférést.  A Hyper-V virtuális gépek kommunikálhatnak egymással.
 
-### <a name="using-windows-tools-to-enable-nested-virtualization"></a>Beágyazott virtualizáció engedélyezése windowsos eszközökkel
+>[!NOTE]
+>A labor Services virtuális gépen létrehozott NAT-hálózat lehetővé teszi, hogy egy Hyper-V virtuális gép hozzáférhessen az internethez és más Hyper-V virtuális gépekhez ugyanazon labor Services virtuális gépen.  A Hyper-V virtuális gép nem tud hozzáférni Azure-erőforrásokhoz, például DNS-kiszolgálókhoz az Azure Virtual Network szolgáltatásban.
 
-A Windows Server 2016 vagy a Windows Server 2019 windowsos szerepkörökkel és felügyeleti eszközökkel történő beállítási beágyazott [virtualizálása című témakörben olvashat: A beágyazott virtualizálás engedélyezése egy sablonos virtuális gépen az Azure Lab Services ben.](how-to-enable-nested-virtualization-template-vm-ui.md)  Az utasítások azt is ismertetik, hogyan kell beállítani a hálózatot, hogy a Hyper-V virtuális gépek internet-hozzáféréssel rendelkezhessenek.
+A fent felsorolt feladatok végrehajtása parancsfájl használatával vagy Windows-eszközök használatával végezhető el.  További részletekért olvassa el az alábbi szakaszt.
+
+### <a name="using-script-to-enable-nested-virtualization"></a>Beágyazott virtualizálás engedélyezése parancsfájl használatával
+
+Ha a Windows Server 2016 vagy a Windows Server 2019 rendszerű beágyazott virtualizálás automatikus beállítását szeretné használni, tekintse [meg a beágyazott virtualizálás engedélyezése Azure Lab Services sablon virtuális gépén parancsfájl használatával](how-to-enable-nested-virtualization-template-vm-using-script.md)című témakört. A Hyper-V szerepkör telepítéséhez parancsfájlokat kell használni a [labor Services Hyper-v parancsfájljaiból](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) .  A parancsfájlok emellett hálózatkezelést is biztosítanak, így a Hyper-V virtuális gépek hozzáférhetnek az internethez.
+
+### <a name="using-windows-tools-to-enable-nested-virtualization"></a>A Windows-eszközök használata a beágyazott virtualizálás engedélyezéséhez
+
+A Windows Server 2016 vagy Windows Server 2019 rendszerhez készült beágyazott virtualizáció beállítása Windows-szerepkörökkel és felügyeleti eszközökkel: a [beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services manuálisan](how-to-enable-nested-virtualization-template-vm-ui.md).  Az utasítások azt is ismertetik, hogyan állíthatja be a hálózatkezelést, hogy a Hyper-V virtuális gépek hozzáférhessenek az internethez.

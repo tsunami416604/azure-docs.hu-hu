@@ -1,30 +1,31 @@
 ---
-title: Átviteli réteg biztonsága az Azure HDInsightban
-description: Az átviteli réteg biztonsága (TLS) és a biztonságos szoftvercsatornák rétege (SSL) olyan kriptográfiai protokollok, amelyek számítógépes hálózaton keresztül biztosítják a kommunikáció biztonságát.
+title: Transport Layer Security az Azure HDInsight
+description: A Transport Layer Security (TLS) és a Secure Sockets Layer (SSL) olyan titkosítási protokollok, amelyek kommunikációs biztonságot biztosítanak a számítógép hálózatán.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fbe602581ebcea6385fb9cc9953d8e48272ce429
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771962"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183500"
 ---
-# <a name="transport-layer-security-in-azure-hdinsight"></a>Átviteli réteg biztonsága az Azure HDInsightban
+# <a name="transport-layer-security-in-azure-hdinsight"></a>Transport Layer Security az Azure HDInsight
 
-A HDInsight-fürthöz a nyilvános `https://CLUSTERNAME.azurehdinsight.net` fürtvégponton keresztül létesített kapcsolatok a fürtátjáró-csomópontokon keresztül vannak proxied. Ezek a kapcsolatok a TLS nevű protokoll segítségével vannak biztosítva. A TLS magasabb verzióinak az átjárókon történő érvényesítése növeli a kapcsolatok biztonságát. A TLS újabb verzióinak használatáról a [TLS 1.0 probléma megoldása című témakörben](https://docs.microsoft.com/security/solving-tls1-problem)talál további információt.
+A HDInsight-fürthöz a nyilvános fürt végpontján `https://CLUSTERNAME.azurehdinsight.net` keresztül létesített kapcsolatok a fürt átjárójának csomópontjain keresztüli proxyk. Ezek a kapcsolatok a TLS nevű protokoll használatával biztonságosak. A TLS magasabb verzióinak kényszerítése az átjárók esetében javítja a kapcsolatok biztonságát. További információ a TLS újabb verzióinak használatáról: [a tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1.2-es kapcsolatokat nyilvános HTTPS-végpontokon, és a régebbi verziókat a visszamenőleges kompatibilitás érdekében. Az Azure Portal vagy a Resource Manager-sablon használatával szabályozhatja az átjárócsomópontokon támogatott minimális TLS-verziót a fürt létrehozása során. A portálhoz válassza ki a TLS-verziót a **Biztonság + hálózat lapon** a fürt létrehozása során. A Resource Manager sablon üzembe helyezéskor használja a **minSupportedTlsVersion** tulajdonságot. Mintasablonról a [HDInsight minimális TLS 1.2 rövid útmutató sablonja olvashat.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls) Ez a tulajdonság három értéket támogat: "1.0", "1.1" és "1.2", amelyek a TLS 1.0+, a TLS 1.1+ és a TLS 1.2+ értékeknek felelnek meg.
+Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A fürt létrehozása során a Azure Portal vagy egy Resource Manager-sablon használatával szabályozhatja az átjáró csomópontjain támogatott minimális TLS-verziót. A portálon válassza ki a TLS-verziót a **Biztonság + hálózatkezelés** lapon a fürt létrehozása során. A Resource Manager-sablonok központi telepítésének ideje alatt használja a **minSupportedTlsVersion** tulajdonságot. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg.
 
 > [!IMPORTANT]
-> 2020. június 30-tól kezdődően az Azure HDInsight minden HTTPS-kapcsolatra kikényszeríti a TLS 1.2-es vagy újabb verziókat. Azt javasoljuk, hogy győződjön meg arról, hogy minden ügyfele készen áll a TLS 1.2-es vagy újabb verziók kezelésére. További információ: [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
+> Az Azure HDInsight az 2020. június 30-ig az összes HTTPS-kapcsolathoz a TLS 1,2-es vagy újabb verziókat fogja érvényesíteni. Javasoljuk, hogy minden ügyfél készen álljon a TLS 1,2-es vagy újabb verzióinak kezelésére. További információ: [Azure HDINSIGHT TLS 1,2 kényszerítés](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Virtuális hálózat tervezése az Azure HDInsight számára](./hdinsight-plan-virtual-network-deployment.md)
-* [Hozzon létre virtuális hálózatokat az Azure HDInsight-fürtökhöz.](hdinsight-create-virtual-network.md)
+* [Virtuális hálózat megtervezése az Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md)
+* [Hozzon létre virtuális hálózatokat az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md).

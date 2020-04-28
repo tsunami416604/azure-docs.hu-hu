@@ -1,94 +1,94 @@
 ---
-title: Azure HPC-gyorsítótár és Azure NetApp-fájlok használata
-description: Az Azure HPC-gyorsítótár használata az Azure NetApp-fájlokkal tárolt adatokhoz való hozzáférés javítása érdekében
+title: Az Azure HPC cache és a Azure NetApp Files használata
+description: Az Azure HPC cache használata a Azure NetApp Filessal tárolt adathozzáférések javítására
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 38f9d0338ce4c47024d670e6d3ee89a97faecc91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238679"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194958"
 ---
-# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC-gyorsítótár használata Az Azure NetApp-fájlokkal
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Az Azure HPC cache használata Azure NetApp Files
 
-Az [Azure NetApp-fájlokat](https://azure.microsoft.com/services/netapp/) az Azure HPC-gyorsítótár tárolási célként használhatja. Ez a cikk bemutatja, hogyan működhet együtt a két szolgáltatás, és tippeket ad a beállításukhoz.
+Az Azure HPC-gyorsítótárhoz [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) is használhat tárolási célként. Ez a cikk azt ismerteti, hogy a két szolgáltatás hogyan működhet együtt, és tippeket ad a beállításához.
 
-Az Azure NetApp Files egyesíti ONTAP operációs rendszerét a Microsoft Azure méretezhetőségével és sebességével. Ez a kombináció lehetővé teszi a felhasználók számára, hogy a létrehozott munkafolyamatokat átváltsák a felhőbe kód átírása nélkül.
+Azure NetApp Files a Microsoft Azure méretezhetőségével és sebességével ötvözi a ONTAP operációs rendszert. Ez a kombináció lehetővé teszi, hogy a felhasználók a kód újraírása nélkül váltsanak munkafolyamatokat a felhőbe.
 
-Az Azure HPC cache-összetevő hozzáadása javíthatja a fájlhozzáférést azáltal, hogy több Azure NetApp-fájlkötetet mutat be egy összesített névtérben. Egy másik szolgáltatási régióban található kötetek élhálózati gyorsítótárazását biztosíthatja. Emellett javíthatja az alacsonyabb szintű szolgáltatási szinteken létrehozott kötetek igény szerinti teljesítményét a költségek csökkentése érdekében.
+Egy Azure HPC cache-összetevő hozzáadásával javíthatja a fájlok elérését azáltal, hogy több Azure NetApp Files kötetet mutat be egy összesített névtérben. Megadhatja a peremhálózati gyorsítótárazást a különböző szolgáltatási régiókban található kötetek esetében. Emellett az alacsonyabb szintű szolgáltatási szinteken létrehozott kötetek igény szerinti teljesítményének növelésével növelheti a költségeket.
 
 ## <a name="overview"></a>Áttekintés
 
-Ha az Azure NetApp Files rendszert háttértárolóként szeretné használni az Azure HPC-gyorsítótárral, kövesse ezt a folyamatot.
+Ha egy Azure NetApp Files rendszer használatát háttérbeli tárolóként szeretné használni az Azure HPC cache használatával, kövesse ezt a folyamatot.
 
-1. Hozza létre az Azure NetApp Files rendszert és köteteket a rendszer megtervezése című útmutatónak [megfelelően az alábbi .](#plan-your-azure-netapp-files-system)
-1. Hozza létre az Azure HPC-gyorsítótárat abban a régióban, ahol fájlhozzáférésre van szüksége. (Kövesse az [Azure HPC-gyorsítótár létrehozása](hpc-cache-create.md)című útmutatót.)
-1. Definiálja az Azure NetApp-fájlok köteteire mutató [tárolócélokat](#create-storage-targets-in-the-cache) a gyorsítótárban. Hozzon létre egy gyorsítótár-tárolási célt minden egyes egyedi IP-címhez, amely a kötetek eléréséhez használatos.
-1. Az ügyfelek [csatlakoztassa az Azure HPC cache](#mount-storage-targets) helyett az Azure NetApp Files kötetek közvetlenül.
+1. Hozza létre a Azure NetApp Files-rendszerfolyamatot és-köteteket a [séma megtervezése című](#plan-your-azure-netapp-files-system)témakör útmutatása alapján.
+1. Hozza létre az Azure HPC-gyorsítótárat abban a régióban, ahol fájl-hozzáférésre van szüksége. (Használja az [Azure HPC cache létrehozása](hpc-cache-create.md)című témakör utasításait.)
+1. [Adja meg a tárolási célokat](#create-storage-targets-in-the-cache) a gyorsítótárban, amely a Azure NetApp Files kötetekre mutat. Hozzon létre egy gyorsítótár-tárolási célt a kötetek eléréséhez használt egyes egyedi IP-címekhez.
+1. A Azure NetApp Files kötetek közvetlen csatlakoztatása helyett [az ügyfelek csatlakoztatják az Azure HPC-gyorsítótárat](#mount-storage-targets) .
 
-## <a name="plan-your-azure-netapp-files-system"></a>Az Azure NetApp Files rendszer megtervezése
+## <a name="plan-your-azure-netapp-files-system"></a>A Azure NetApp Files-rendszerek megtervezése
 
-Az Azure NetApp Files rendszer tervezésekor figyeljen az ebben a szakaszban található elemekre, hogy zökkenőmentesen integrálhassa azt az Azure HPC cache-szel.
+A Azure NetApp Filesrendszer megtervezésekor ügyeljen arra, hogy az ebben a szakaszban szereplő elemekkel zökkenőmentesen integrálható legyen az Azure HPC cache használatával.
 
-Az Azure HPC-gyorsítótárral való használatra szánt kötetek létrehozása előtt olvassa el az [Azure NetApp Files dokumentációját](../azure-netapp-files/index.yml) is.
+A kötetek Azure HPC cache-vel való használatához való létrehozása előtt olvassa el a [Azure NetApp Files dokumentációját](../azure-netapp-files/index.yml) is.
 
-### <a name="nfs-client-access-only"></a>Csak Az NFS-ügyfél hozzáférése
+### <a name="nfs-client-access-only"></a>Csak NFS-ügyfél-hozzáférés
 
-Az Azure HPC-gyorsítótár jelenleg csak az NFS-hozzáférést támogatja. Nem használható SMB ACL vagy POSIX módú bitkötetekkel.
+Az Azure HPC cache jelenleg csak az NFS-hozzáférést támogatja. Nem használható SMB ACL-sel vagy POSIX módú bites kötetekkel.
 
-### <a name="exclusive-subnet-for-azure-netapp-files"></a>Exkluzív alhálózat az Azure NetApp-fájlokhoz
+### <a name="exclusive-subnet-for-azure-netapp-files"></a>Azure NetApp Files kizárólagos alhálózata
 
-Az Azure NetApp Files egyetlen delegált alhálózatot használ a köteteihez. Más erőforrás nem használható az alhálózatban. Emellett a virtuális hálózatban csak egy alhálózat használható az Azure NetApp-fájlokhoz. További információ az [Azure NetApp Files hálózattervezés irányelvei](../azure-netapp-files/azure-netapp-files-network-topologies.md)című részben található.
+Azure NetApp Files egyetlen delegált alhálózatot használ a köteteihez. Más erőforrások nem használhatják ezt az alhálózatot. Emellett a virtuális hálózatokban csak egy alhálózat használható Azure NetApp Fileshoz. További információ: [Azure NetApp Files hálózati tervezéssel kapcsolatos irányelvek](../azure-netapp-files/azure-netapp-files-network-topologies.md).
 
 ### <a name="delegated-subnet-size"></a>Delegált alhálózat mérete
 
-Használja a delegált alhálózat minimális méretét, amikor létrehoz egy Azure NetApp Files rendszert az Azure HPC-gyorsítótárral való használatra.
+Az Azure HPC cache-vel való használatra Azure NetApp Files rendszer létrehozásakor használja a delegált alhálózat minimális méretét.
 
-A netmask /28 paraméterrel megadott minimális méret 16 IP-címet ad meg. A gyakorlatban az Azure NetApp Files csak három ilyen rendelkezésre álló IP-címeket használ a kötet-hozzáféréshez. Ez azt jelenti, hogy csak három tárolási célt kell létrehoznia az Azure HPC-gyorsítótárban az összes kötet lefedéséhez.
+A hálózati maszk/28 értékkel megadott minimális méret 16 IP-címet biztosít. A gyakorlatban Azure NetApp Files a mennyiségi hozzáféréshez csak három elérhető IP-címet használ. Ez azt jelenti, hogy az Azure HPC-gyorsítótárban csak három tárolási célt kell létrehoznia, hogy az összes kötetre vonatkozzon.
 
-Ha a delegált alhálózat túl nagy, lehetséges, hogy az Azure NetApp Files kötetek több IP-címet használjon, mint egy Azure HPC cache-példány képes kezelni. Egyetlen gyorsítótár legbénult lehet legbőlegelhető tíz tárolási cél.
+Ha a delegált alhálózat túl nagy, lehetséges, hogy a Azure NetApp Files kötetek több IP-címet is használhatnak, mint amennyit egyetlen Azure HPC cache-példány képes kezelni. Egyetlen gyorsítótár legfeljebb 10 tárolási célt tartalmazhat.
 
-Az Azure NetApp Files dokumentációjában a rövid útmutató 10.7.0.0/16-ot használ a delegált alhálózathoz, amely túl nagy alhálózatot biztosít.
+Az Azure NetApp Files dokumentációjának rövid útmutatója a 10.7.0.0/16 protokollt használja a delegált alhálózathoz, ami túl nagy méretű alhálózatot biztosít.
 
-### <a name="capacity-pool-service-level"></a>Kapacitáskészlet szolgáltatási szintje
+### <a name="capacity-pool-service-level"></a>Kapacitási készlet szolgáltatási szintje
 
-A kapacitáskészlet szolgáltatási szintjének kiválasztásakor vegye figyelembe a munkafolyamatot. Ha gyakran ír adatokat az Azure NetApp Files kötetre, a gyorsítótár teljesítménye korlátozható, ha a visszaírási idő lassú. Válasszon magas szolgáltatási szintet a gyakran írással rendelkező kötetekhez.
+A kapacitási készlet szolgáltatási szintjének kiválasztásakor vegye figyelembe a munkafolyamatot. Ha gyakran ír vissza adatmennyiséget a Azure NetApp Files kötetre, akkor a gyorsítótár teljesítménye korlátozható, ha a visszaírási idő lassú. Válasszon magas szolgáltatási szintet a gyakori írási értékekkel rendelkező kötetek számára.
 
-Az alacsony szolgáltatási szinttel rendelkező kötetek is mutathatnak némi késést a feladat kezdetén, miközben a gyorsítótár előre kitölti a tartalmat. Miután a gyorsítótár működik, és fut egy jó működő fájlkészlettel, a késleltetésnek észrevehetetlenné kell válnia.
+Az alacsony szolgáltatási szinttel rendelkező kötetek a feladatok elején bizonyos késéseket is jelezhetnek, miközben a gyorsítótár előre kitölti a tartalmat. Ha a gyorsítótár megfelelően működik, és a fájlok megfelelő munkakészlete fut, a késésnek észrevehetetlen kell lennie.
 
-Fontos, hogy előre tervezze meg a kapacitáskészlet szolgáltatási szintjét, mert nem módosítható a létrehozás után. Egy másik kapacitáskészletben új kötetet kell létrehozni, és az adatokat át kell másolni.
+Fontos, hogy előre megtervezze a kapacitási készlet szolgáltatási szintjét, mert azt a létrehozás után nem lehet módosítani. Új kötetet kell létrehozni egy másik kapacitási készletben, és az átmásolt adat.
 
-Vegye figyelembe, hogy a kötet tárolási kvótáját és a kapacitáskészlet méretét a hozzáférés megszakítása nélkül módosíthatja.
+Vegye figyelembe, hogy a kötet tárolási kvótáját és a kapacitás-készlet méretét a hozzáférés megszakítása nélkül módosíthatja.
 
 ## <a name="create-storage-targets-in-the-cache"></a>Tárolási célok létrehozása a gyorsítótárban
 
-Miután az Azure NetApp Files rendszer be van állítva, és az Azure HPC-gyorsítótár létrehozása, határozza meg a tároló célokat a gyorsítótárban, amelyek a fájlrendszer kötetek.
+Miután beállította Azure NetApp Files rendszerét, és létrehozta az Azure HPC cache-t, adja meg a tárolási célokat a fájlrendszer köteteire mutató gyorsítótárban.
 
-Hozzon létre egy tárolási célt az Azure NetApp-fájlok kötetei által használt minden EGYES IP-címhez. Az IP-cím a kötet csatlakoztatási útmutatólapján jelenik meg.
+Hozzon létre egy tárolási célt a Azure NetApp Files kötetek által használt minden IP-címhez. Az IP-cím megjelenik a kötet csatlakoztatási utasításai oldalon.
 
-Ha több kötet ugyanazt az IP-címet használja, mindegyikhez használhat egy tárolási célt.  
+Ha több kötet is ugyanazzal az IP-címmel rendelkezik, használhatja az egyik tárolási célt.  
 
-Kövesse [az Azure NetApp Files dokumentációjában található csatlakoztatási utasításokat](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) a használandó IP-címek megkereséséhez.
+A használni kívánt IP-címek megkereséséhez kövesse a [Azure NetApp Files dokumentációjának csatlakoztatási utasításait](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .
 
-Az Azure CLI-vel is megtalálhatja az IP-címeket:
+Emellett az Azure CLI-vel is megtalálhatja az IP-címeket:
 
 ```azurecli
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-Az Azure NetApp Files rendszer neveinek exportálása egyetlen elérésiút-összetevővel rendelkezik. Ne próbáljon meg tárolási célt létrehozni ``/`` a gyökérexportáláshoz az Azure NetApp-fájlokban, mert ez az exportálás nem biztosít fájlhozzáférést.
+A Azure NetApp Files rendszerbeli nevek exportálása egyetlen elérésiút-összetevővel rendelkezik. Ne próbálkozzon olyan tárolási cél létrehozásával, amely a Azure NetApp Files, ``/`` mert az exportálás nem biztosít a fájlokhoz való hozzáférést.
 
-Ezekhez a tárolócélokhoz nincsenek speciális korlátozások a virtuális névtér elérési útjaira vonatkozóan.
+Nincsenek különleges korlátozások a virtuális névtér elérési útjaihoz a tárolási célokhoz.
 
 ## <a name="mount-storage-targets"></a>Tárolási célok csatlakoztatása
 
-Az ügyfélgépeknek az Azure NetApp-fájlok köteteinek közvetlen csatlakoztatása helyett csatlakoztatniuk kell a gyorsítótárat. Kövesse az [Azure HPC-gyorsítótár csatlakoztatása című útmutató utasításait.](hpc-cache-mount.md)
+Az ügyfélszámítógépeknek csatlakoztatnia kell a gyorsítótárat a Azure NetApp Files kötetek közvetlen csatlakoztatása helyett. Kövesse az [Azure HPC cache csatlakoztatása](hpc-cache-mount.md)című témakör utasításait.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Azure NetApp-fájlok](../azure-netapp-files/index.yml) beállításáról és használatáról
-* Ha segítségre van szüksége az Azure HPC cache-rendszer ének tervezéséhez és beállításához az Azure NetApp-fájlok használatához, [forduljon az ügyfélszolgálathoz.](hpc-cache-support-ticket.md)
+* További információ a [Azure NetApp Files](../azure-netapp-files/index.yml) beállításáról és használatáról
+* Az Azure HPC cache-rendszer Azure NetApp Files használatára való megtervezéséhez és beállításához [forduljon az ügyfélszolgálathoz](hpc-cache-support-ticket.md).

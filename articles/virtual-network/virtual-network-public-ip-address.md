@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: a03ace1553bd845d8a221e458fd47f3d8aa3d611
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: de680e7cb542e7606b80ad46934f4ad7256bfb92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146542"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186067"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Nyilvános IP-címek létrehozása, módosítása és törlése
 
@@ -118,4 +118,4 @@ A nyilvános IP-címekre vonatkozó feladatok végrehajtásához a fiókját hoz
 ## <a name="next-steps"></a>További lépések
 
 - Nyilvános IP-cím létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájl használatával vagy Azure [Resource Manager-sablonok](template-samples.md) használatával
-- [Azure](policy-samples.md) -szabályzat létrehozása és alkalmazása nyilvános IP-címekhez
+- Nyilvános IP-címekhez tartozó [Azure Policy-definíciók](policy-samples.md) létrehozása és kiosztása

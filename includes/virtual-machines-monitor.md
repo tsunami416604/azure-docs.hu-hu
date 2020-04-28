@@ -1,19 +1,21 @@
 ---
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75751631"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865629"
 ---
 Az Azure-ban üzemeltetett virtuális gépek jelentős növekedésével fontos, hogy azonosítsa azokat a teljesítmény- és állapotproblémákat, amelyek hatással vannak az általuk támogatott alkalmazásokra és infrastruktúra-szolgáltatásokra. Az alapvető figyelést alapértelmezés szerint a CPU-használat, a lemezkihasználtság, a memóriakihasználtság és a gazdahipervizor által gyűjtött hálózati forgalom biztosítja az Azure-ban. További metrika- és naplóadatok gyűjthetők [bővítmények](../articles/virtual-machines/windows/extensions-features.md) használatával a vendég operációs rendszer ből származó virtuális gépek diagnosztika konfigurálásához.
 
-A vendég operációs rendszer, a .NET alapú vagy a Virtuális gépen belül futó Java webalkalmazás-összetevők teljesítmény- és egészségügyi problémáinak észlelése és diagnosztizálása érdekében az Azure Monitor átfogó funkciókkal, például az Azure Monitor szolgáltatással rendelkező virtuális gépekhez biztosít központosított figyelést. és az Application Insights.
+A vendég operációs rendszer, a .NET alapú vagy a Virtuális gépen belül futó Java webalkalmazás-összetevők teljesítmény- és állapotproblémáinak észlelése és diagnosztizálása érdekében az Azure Monitor átfogó funkciókkal, például a virtuális gépek azure-figyelőjével és az Application Insights-mal biztosítja a központosított figyelést.
 
 ## <a name="diagnostics-and-metrics"></a>Diagnosztika és metrikák 
 
@@ -68,7 +70,7 @@ A diagnosztikai naplókkal többek között a következő műveleteket teheti me
 
 Az Azure virtuális gép és a virtuális gép méretezési csoportja által támogatott alkalmazás vagy szolgáltatás láthatóságához, a vendég operációs rendszerrel vagy a virtuális gépen futó számítási feladattal kapcsolatos problémák azonosításához, hogy megállapítsa, ha az hatással van az alkalmazás rendelkezésre állására vagy teljesítményére, vagy az alkalmazással kapcsolatos probléma, engedélyezze az [Azure-figyelő virtuális gépekés](../articles/azure-monitor/insights/vminsights-overview.md) [az Application Insights](../articles/azure-monitor/app/app-insights-overview.md)számára.
 
-Az Azure Monitor virtuális gépekhez az Azure virtuális gépek (VM) nagy méretekben figyeli a Windows és Linux virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatokat és az egyéb erőforrásoktól és külső folyamatoktól való összekapcsolt függőségeket. Felfedezi. Számos trendteljesítmény-diagramot tartalmaz, amelyek segítenek a problémák kivizsgálásában és a virtuális gépek kapacitásának felmérésében. A függőségi térkép a figyelt és nem figyelt gépeket, a folyamatok és a gépek közötti sikertelen és aktív hálózati kapcsolatokat jeleníti meg, és a szabványos hálózati kapcsolatmérőszámokkal rendelkező trenddiagramokat jeleníti meg. Az Application Insights segítségével figyelheti az alkalmazást, és rögzítheti a telemetriai adatokat, például a HTTP-kérelmeket, a kivételeket stb., így korrelálhatja a virtuális gépek és az alkalmazás közötti problémákat. Konfigurálja [az Azure Monitor riasztások riasztást](../articles/azure-monitor/platform/alerts-overview.md) a fontos körülmények észlelése az Azure Monitor virtuális gépekhez gyűjtött adatok figyelése.
+Az Azure Monitor virtuális gépek figyeli az Azure virtuális gépek (VM) a Windows és a Linux virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatok és az összekapcsolt függőségek más erőforrások és külső folyamatok általa felderített. Számos trendteljesítmény-diagramot tartalmaz, amelyek segítenek a problémák kivizsgálásában és a virtuális gépek kapacitásának felmérésében. A függőségi térkép a figyelt és nem figyelt gépeket, a folyamatok és a gépek közötti sikertelen és aktív hálózati kapcsolatokat jeleníti meg, és a szabványos hálózati kapcsolatmérőszámokkal rendelkező trenddiagramokat jeleníti meg. Az Application Insights segítségével figyelheti az alkalmazást, és rögzítheti a telemetriai adatokat, például a HTTP-kérelmeket, a kivételeket stb., így korrelálhatja a virtuális gépek és az alkalmazás közötti problémákat. Konfigurálja [az Azure Monitor riasztások riasztást](../articles/azure-monitor/platform/alerts-overview.md) a fontos körülmények észlelése az Azure Monitor virtuális gépekhez gyűjtött adatok figyelése.
 
 ## <a name="next-steps"></a>További lépések
 

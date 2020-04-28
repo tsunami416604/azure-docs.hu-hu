@@ -1,6 +1,6 @@
 ---
-title: Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással – Azure Active Directory
-description: Jelszó nélküli bejelentkezés engedélyezése az Azure AD-be a Microsoft Authenticator alkalmazással (előzetes verzió)
+title: Jelszó nélküli bejelentkezés a Microsoft Authenticator app-Azure Active Directory
+description: Jelszó nélküli bejelentkezés engedélyezése az Azure AD-be az Microsoft Authenticator alkalmazással (előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,99 +12,99 @@ manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450972"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
-A Microsoft Authenticator alkalmazás segítségével jelszó használata nélkül jelentkezhet be bármely Azure AD-fiókba. A [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)technológiájához hasonlóan a Microsoft Authenticator is kulcsalapú hitelesítést használ az eszközhöz kapcsolt és biometrikus vagy PIN-kódot használó felhasználói hitelesítő adatok engedélyezéséhez. Ez a hitelesítési módszer bármely eszközplatformon használható, beleértve a mobilt is, valamint minden olyan alkalmazásban vagy webhelyen, amely integrálható a Microsoft hitelesítési kódtáraival. 
+A Microsoft Authenticator alkalmazás jelszó használata nélkül is bejelentkezhet bármely Azure AD-fiókba. A [vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)technológiához hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus vagy PIN-kódot használ. Ez a hitelesítési módszer bármilyen eszköz platformon használható, beleértve a mobilt, valamint a Microsoft hitelesítési könyvtáraival integrált bármely alkalmazást vagy webhelyet. 
 
-![Példa böngészőbejelentkezésre, amely a felhasználót a bejelentkezés jóváhagyására kéri](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Böngészőbeli bejelentkezés – példa arra, hogy a felhasználó jóváhagyja a bejelentkezést](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Ahelyett, hogy a felhasználónév megadása után a jelszóra vonatkozó kérdést látná, a Microsoft Authenticator alkalmazásból telefonos bejelentkezést engedélyező személy egy üzenetet fog látni, amely arra kéri őket, hogy koppintson egy számra az alkalmazásban. Az alkalmazásban a felhasználónak meg kell egyeznie a számmal, válassza a Jóváhagyás lehetőséget, majd meg kell adnia a PIN-kódját vagy biometrikus adatait, majd a hitelesítés befejeződik.
+A felhasználónevek beírása után a jelszó megadását nem kell látnia, ha a Microsoft Authenticator alkalmazásban engedélyezte a telefonos bejelentkezést, egy üzenet jelenik meg, amely azt jelzi, hogy egy számra koppintanak az alkalmazásban. Az alkalmazásban a felhasználónak meg kell egyeznie a számmal, válassza a jóváhagyás lehetőséget, majd adja meg a PIN-kódját vagy biometrikus adatait, majd a hitelesítés befejeződik.
 
 > [!NOTE]
-> Ez a funkció 2017 márciusa óta a Microsoft Authenticator alkalmazásban található, így előfordulhat, hogy ha a szabályzat engedélyezve van egy címtárhoz, a felhasználók azonnal találkozhatnak ezzel a folyamattal, és hibaüzenetet láthatnak, ha a szabályzat nem engedélyezte őket. Vegye figyelembe és készítse fel a felhasználókat erre a változásra.
+> Ez a képesség a Microsoft Authenticator-alkalmazásban, a 2017-as márciusa óta, így előfordulhat, hogy ha a házirend engedélyezve van egy címtárban, a felhasználók azonnal találkozhatnak ezzel a folyamattal, és hibaüzenet jelenik meg, ha a szabályzat nem engedélyezte őket. Vegye figyelembe a módosításokat, és készítse elő a felhasználókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure többtényezős hitelesítés, leküldéses értesítésekkel, ellenőrzési módszerként 
-- A Microsoft Authenticator legújabb verziója iOS 8.0 vagy újabb vagy androidos 6.0 vagy újabb rendszerű eszközökön.
+- Azure Multi-Factor Authentication, ellenőrzési módszerként engedélyezett leküldéses értesítésekkel 
+- Az Microsoft Authenticator legújabb verziója iOS 8,0 vagy újabb, vagy Android 6,0 vagy újabb rendszert futtató eszközökön.
 
 > [!NOTE]
-> Ha engedélyezte az előző Microsoft Authenticator alkalmazás jelszó nélküli bejelentkezési előzetes verzióját az Azure AD PowerShell használatával, akkor a teljes címtárban engedélyezve volt. Ha engedélyezi ezzel az új módszerrel, akkor felülfogja a PowerShell-szabályzatot. Azt javasoljuk, hogy engedélyezve az összes felhasználó a bérlőben az új hitelesítési módszerek, különben a felhasználók nem az új házirendben már nem tud nak bejelentkezni passwordlessly. 
+> Ha az Azure AD PowerShell használatával engedélyezte az előző Microsoft Authenticator alkalmazás jelszavas nélküli bejelentkezési előnézetét, akkor az a teljes címtárhoz engedélyezve volt. Ha engedélyezi ezt az új metódust, a rendszer előzte meg a PowerShell-házirendet. Javasoljuk, hogy a bérlő összes felhasználója számára engedélyezze az új hitelesítési módszereket, ellenkező esetben az új szabályzatban nem szereplő felhasználók többé nem fognak tudni bejelentkezni a passwordlessly. 
 
-## <a name="enable-passwordless-authentication-methods"></a>Jelszó nélküli hitelesítési módszerek engedélyezése
+## <a name="enable-passwordless-authentication-methods"></a>Jelszóval nem rendelkező hitelesítési módszerek engedélyezése
 
-### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztrációs élmény engedélyezése
+### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztráció használatának engedélyezése
 
-A jelszó nélküli hitelesítési módszerek regisztrációs szolgáltatásai a kombinált regisztrációs szolgáltatáson alapulnak. Kövesse a cikkben a [Kombinált biztonsági adatok regisztrálásának engedélyezése](howto-registration-mfa-sspr-combined.md)című cikkben a kombinált regisztráció engedélyezéséhez.
+A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói a kombinált regisztráció funkcióra támaszkodnak. A kombinált regisztráció engedélyezéséhez kövesse a [kombinált biztonsági információk regisztrációjának engedélyezése](howto-registration-mfa-sspr-combined.md)című cikkben ismertetett lépéseket.
 
-### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Jelszó nélküli telefonbejelentkezési hitelesítési módszerek engedélyezése
+### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Jelszó nélküli telefonos bejelentkezési hitelesítési módszerek engedélyezése
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg és válassza ki az *Azure Active Directoryt*. **Válassza** > a Biztonsági**hitelesítés módszereinek** > **hitelesítési metódusházirend (előzetes verzió) lehetőséget.**
-1. A **Jelszó nélküli telefonbejelentkezés csoportban**adja meg az alábbi lehetőségeket:
-   1. **Engedélyezés** - Igen vagy Nem
-   1. **Cél** – Minden felhasználó vagy Felhasználók kiválasztása
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági** > **hitelesítési módszerek** > **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
+1. A **jelszó nélküli telefonos bejelentkezés**területen válassza a következő beállításokat
+   1. **Engedélyezés** – igen vagy nem
+   1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
 1. **Mentés** az új házirend beállításához
 
-## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
+## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
 
-1. Tallózás a[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
-1. Bejelentkezés, ha még nem tette meg
-1. Hitelesítő alkalmazás hozzáadása a **Módszer hozzáadása**gombra, a **Hitelesítő alkalmazás**kiválasztására, majd a **Hozzáadás** parancsra kattintva
-1. Kövesse az utasításokat a Microsoft Authenticator alkalmazás telepítéséhez és konfigurálásához az eszközön
-1. Kattintson **a Kész** gombra a Hitelesítő MFA-alkalmazás beállítási folyamatának befejezéséhez. 
-1. A **Microsoft Hitelesítő**ben válassza a Fiók legördülő **menüTelefonos bejelentkezés engedélyezése** parancsát.
-1. Kövesse az alkalmazás utasításait a jelszó nélküli telefonos bejelentkezés regisztrálásának befejezéséhez. 
+1. Tallózással keresse meg a[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Ha még nem tette meg, jelentkezzen be
+1. Adjon hozzá egy hitelesítő alkalmazást a **metódus hozzáadása**, a **hitelesítő alkalmazás**kiválasztása, majd a **Hozzáadás** elemre kattintva.
+1. Kövesse a Microsoft Authenticator alkalmazás telepítésére és konfigurálására vonatkozó utasításokat az eszközön
+1. Kattintson a **kész** gombra a hitelesítő MFA-alkalmazás telepítési folyamatának befejezéséhez. 
+1. A **Microsoft Authenticator**válassza a **telefonos bejelentkezés engedélyezése** lehetőséget a fiók legördülő menüből.
+1. A jelszó nélküli telefonos bejelentkezéshez való regisztráció befejezéséhez kövesse az alkalmazás utasításait. 
 
-A szervezetek a felhasználókat a [telefonnal való bejelentkezés, a Microsoft](../user-help/microsoft-authenticator-app-phone-signin-faq.md) Authenticator alkalmazásban való további beállításhoz és a telefonos bejelentkezés engedélyezéséhez való bejelentkezéshez a felhasználóikat irányíthatják. A beállítások alkalmazásához előfordulhat, hogy ki kell jelentkeznie, és újra ki kell jelentkeznie a bérlőbe. 
+A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava. A beállítások alkalmazásához ki kell jelentkeznie, majd újra be kell jelentkeznie a bérlőbe. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
-A nyilvános előzetes verzióban nincs mód arra, hogy a felhasználók létrehozzák vagy használják ezt az új hitelesítő adatokat. A felhasználó csak akkor találkozik jelszó nélküli bejelentkezéssel, ha a rendszergazda engedélyezte a **bérlőt, és** a felhasználó frissítette a Microsoft Authenticator alkalmazást a telefonos bejelentkezés engedélyezéséhez.
+A nyilvános előzetes verzióban nem lehet kényszeríteni a felhasználókat arra, hogy új hitelesítő adatokat hozzanak létre vagy használjanak. A felhasználók csak akkor jelentkeznek a jelszó nélküli bejelentkezéssel, ha a rendszergazda engedélyezte a bérlőt **, és** a felhasználó frissítette Microsoft Authenticator alkalmazást a telefonos bejelentkezés engedélyezéséhez.
 
-Miután beírta a felhasználónevét a weben, és a **Tovább**lehetőséget választotta, a felhasználók egy számot mutatnak be, és a Microsoft Authenticator alkalmazásban a rendszer felszólítja őket, hogy a jelszó használata helyett válasszák ki a hitelesítéshez szükséges számot. 
+Miután beírta a felhasználónevet a weben, és kiválasztja a **Next (tovább**) lehetőséget, a felhasználók számot kapnak, és a rendszer megkéri a Microsoft Authenticator alkalmazásban, hogy a jelszó használata helyett a hitelesítéshez megfelelő számot adja meg. 
 
-![Példa böngészőbejelentkezésre a Microsoft Authenticator alkalmazással](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
+![Böngészőbeli bejelentkezés – példa a Microsoft Authenticator alkalmazás használatával](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>A felhasználót nem engedélyezi a házirend, de még mindig rendelkezik jelszónélküli bejelentkezési módszerrel a Microsoft Hitelesítőben
+### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>A felhasználó nincs engedélyezve a házirendben, de még mindig rendelkezik jelszó nélküli telefonos bejelentkezési módszerrel Microsoft Authenticator
 
-Lehetséges, hogy a felhasználó egy bizonyos ponton létrehozott egy jelszó nélküli bejelentkezési hitelesítő adatokat a jelenlegi Microsoft Hitelesítő alkalmazásban vagy egy korábbi eszközön. Miután a rendszergazda engedélyezi a hitelesítési módszer házirend jelszó nélküli telefon bejelentkezés, minden felhasználó a hitelesítő regisztrációval, megkezdi az új bejelentkezési kérdés, függetlenül attól, hogy engedélyezték-e a házirend használatát, vagy sem. Ha a felhasználó nem használhatja a hitelesítő adatokat a házirend szerint, hibaüzenetjelenik meg a hitelesítési folyamat befejezése után. 
+Lehetséges, hogy a felhasználó egy bizonyos ponton létrehozott egy jelszó nélküli telefonos bejelentkezési hitelesítő adatot a jelenlegi Microsoft Authenticator alkalmazásában vagy egy korábbi eszközön. Miután a rendszergazda engedélyezte a hitelesítési módszer házirendjét a jelszó nélküli telefonos bejelentkezéshez, a hitelesítő adatokkal rendelkező felhasználók megkezdik az új bejelentkezési kérést, függetlenül attól, hogy engedélyezve vannak-e a szabályzat használatára. Ha a felhasználó nem engedélyezte a hitelesítő adatok használatát a házirend alapján, a hitelesítési folyamat befejezése után hibaüzenet jelenik meg. 
 
-A rendszergazda engedélyezheti, hogy a felhasználó jelszó nélküli bejelentkezést használjon, vagy a felhasználónak el kell távolítania a metódust. Ha a felhasználó már nem rendelkezik a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) regisztrált eszközzel, akkor megy, és távolítsa el azt. Ha még mindig a Hitelesítő t használja az MFA-hoz, a Microsoft Hitelesítőből választhatja a **Telefon-bejelentkezés letiltása** lehetőséget.  
+A rendszergazda dönthet úgy, hogy engedélyezi a felhasználó számára a jelszó nélküli telefonos bejelentkezés használatát, vagy a felhasználónak el kell távolítania a metódust. Ha a felhasználó már nem rendelkezik a regisztrált eszközzel, megnyithatja [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) és eltávolíthatja. Ha továbbra is az MFA hitelesítő adatait használják, akkor a Microsoft Authenticatoron is választhatják a **telefonos bejelentkezés letiltása** lehetőséget.  
 
 ### <a name="ad-fs-integration"></a>AD FS integráció
 
-Ha egy felhasználó engedélyezte a Microsoft Hitelesítő jelszó nélküli hitelesítő adatait, az adott felhasználó hitelesítése alapértelmezés szerint alapértelmezés szerint jóváhagyást kérő értesítést küld. Ez a logika megakadályozza, hogy a hibrid bérlő felhasználói az ADFS-hez irányítsák a bejelentkezési ellenőrzéshez anélkül, hogy a felhasználó további lépést tett volna a "Jelszó használata helyette" gombra kattintva. Ez a folyamat a helyszíni feltételes hozzáférési házirendeket is megkerüli, és átmenő hitelesítési folyamatok. 
+Ha egy felhasználó engedélyezte a Microsoft Authenticator jelszóval nem rendelkező hitelesítő adatokat, akkor a felhasználó hitelesítése mindig az alapértelmezett, ha értesítést szeretne küldeni jóváhagyásra. Ez a logika megakadályozza, hogy a hibrid bérlő felhasználói ne legyenek átirányítva az ADFS-be a bejelentkezési ellenőrzéshez anélkül, hogy a felhasználó további lépést kellene tennie a jelszó használata helyett. Ez a folyamat a helyszíni feltételes hozzáférési szabályzatokat és az átmenő hitelesítési folyamatokat is megkerüli. 
 
-Ha a felhasználó náluk van egy jelszó nélküli, jelszó nélküli bejelentkezési ellenőrzés, és megpróbál újra bejelentkezni, előfordulhat, hogy a felhasználó az ADFS-hez kerül, és jelszót ad meg.  
+Ha a felhasználó nem válaszol, és a rendszer megkísérli bejelentkezni a jelszó nélküli telefonos bejelentkezési ellenőrzésre, akkor előfordulhat, hogy a felhasználót a rendszer az ADFS-be fogja írni a jelszó megadására.  
 
 ### <a name="azure-mfa-server"></a>Azure MFA-kiszolgáló
 
-Azok a végfelhasználók, akik a szervezet helyszíni Azure MFA-kiszolgálóján keresztül engedélyezve vannak az MFA-hitelesítéshez, továbbra is létrehozhatnak és használhatnak egyetlen jelszó nélküli bejelentkezési hitelesítő adatot. Ha a felhasználó a Microsoft Authenticator több (5+) telepítését próbálja frissíteni a hitelesítő adatokkal, ez a módosítás hibát okozhat.  
+Azok a végfelhasználók, akik az MFA számára engedélyezve vannak a szervezet helyszíni Azure MFA-kiszolgálóján keresztül, továbbra is létrehozhatnak és használhatnak egyszeri, jelszó nélküli telefonos bejelentkezési hitelesítő adatokat. Ha a felhasználó a hitelesítő adatokkal rendelkező Microsoft Authenticator több telepítésének (5 +) frissítését kísérli meg, ez a változás hibát okozhat.  
 
 ### <a name="device-registration"></a>Eszközregisztráció
 
-Az új erős hitelesítő adatok létrehozásának egyik előfeltétele az, hogy az eszköz, ahol a Microsoft Authenticator alkalmazás telepítve van, szintén regisztrálva kell lennie az Azure AD-bérlőn belül egy adott felhasználó számára. Az aktuális eszközregisztrációs korlátozások miatt az eszköz csak egyetlen bérlőben regisztrálható. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
+Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy az eszközön, ahol a Microsoft Authenticator alkalmazást telepítették, az Azure AD-bérlőn belül is regisztrálni kell egy adott felhasználóra. Az eszközök aktuális regisztrációs korlátozásai miatt az eszközök csak egyetlen bérlőben regisztrálhatók. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
 
 ### <a name="intune-mobile-application-management"></a>Intune mobilalkalmazás-kezelés 
 
-Azok a végfelhasználók, akikre olyan házirend vonatkozik, amely mobilalkalmazás-kezelést (MAM) igényel, nem regisztrálhatják a jelszó nélküli hitelesítő adatokat a Microsoft Authenticator alkalmazásban. 
+A Mobile Application Management (MAM)-t igénylő szabályzat hatálya alá eső végfelhasználók nem tudják regisztrálni a jelszóval nem rendelkező hitelesítő adatokat a Microsoft Authenticator alkalmazásban. 
 
 > [!NOTE]
-> Az eszközregisztráció nem egyezik meg az eszközkezeléssel vagy az "MDM"-el. Csak egy eszközazonosítót és egy felhasználói azonosítót társít együtt az Azure AD-címtárban.  
+> Az eszköz regisztrálása nem ugyanaz, mint az Eszközkezelő vagy a "MDM". A szolgáltatás csak az eszköz AZONOSÍTÓját és egy felhasználói azonosítót társít az Azure AD-címtárban.  
 
 ## <a name="next-steps"></a>További lépések
 
 [Mi a jelszó nélküli hitelesítés?](concept-authentication-passwordless.md)
 
-[További információ az eszközregisztrációról](../devices/overview.md#getting-devices-in-azure-ad)
+[Tudnivalók az eszközök regisztrálásáról](../devices/overview.md#getting-devices-in-azure-ad)
 
-[További információ az Azure többtényezős hitelesítéséről](../authentication/howto-mfa-getstarted.md)
+[További tudnivalók az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

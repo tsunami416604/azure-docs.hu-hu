@@ -3,12 +3,12 @@ title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193411"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -92,7 +92,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Adja hozzá az Azul JDK kulcsot az APT kulcstartóhoz, és állítsa be a tárházat.
+7. Adja hozzá az Azul JDK-kulcsot az APT-kulcstartóhoz, és állítsa be az adattárát.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -179,7 +179,7 @@ Ha a telepítés befejeződött, indítson egy helyi fürtöt.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Nyisson meg egy webböngészőt,`http://localhost:19080/Explorer`és nyissa meg a Service Fabric [Explorer](http://localhost:19080/Explorer) ( ). A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
+2. Nyisson meg egy webböngészőt, **Service Fabric Explorer** és lépjen`http://localhost:19080/Explorer`a Service Fabric Explorer () webhelyre. A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
 
     ![Service Fabric Explorer Linuxon][sfx-linux]
 
@@ -228,7 +228,7 @@ Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.micr
 
 ## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
 
-Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítse a Gradle-t a buildelési feladatok futtatásához. A Gradle telepítéséhez futtassa az alábbi parancsot. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+Ha a Java-t használó Service Fabric-szolgáltatásokat szeretne létrehozni, telepítse a Gradle-t a Build-feladatok futtatásához. Futtassa az alábbi parancsot a Gradle telepítéséhez. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
 
 * Ubuntu
@@ -261,11 +261,11 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 > 
 > Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. Ellenőrizze a telepített összetevők verzióit az**Eclipse** > **telepítésének részletei**című **súgó** > kiválasztásával. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az**Eclipse** > -**telepítés részleteinek** **súgóját** > . A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
-2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó** > **telepítése az új szoftvert**lehetőséget.
+2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó** > **új szoftver telepítése**lehetőséget.
 
-3. A **Munka ezzel** mezőbe írja be a **https:\//dl.microsoft.com/eclipse**kapcsolót.
+3. A **Work with (munka** ) mezőben adja meg a **https\/:/dl.microsoft.com/Eclipse**értéket.
 
 4. Válassza a **Hozzáadás** lehetőséget.
 
@@ -275,7 +275,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 6. Hajtsa végre a telepítés lépéseit. Ezután fogadja el a végfelhasználói licencszerződést.
 
-Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Az**Eclipse** > telepítésének részletei című súgó kiválasztásával ellenőrizheti a**súgót.** **Help** >  Ezután keresse meg a Service Fabric a telepített **Update** beépülő modulok listájában.
+Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az**Eclipse** > -**telepítés részleteinek** **súgóját** > . Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 

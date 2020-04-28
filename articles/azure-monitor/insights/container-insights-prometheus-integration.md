@@ -1,114 +1,93 @@
 ---
-title: Az Azure Monitor konfigurálása a Prometheus-integráció tárolóihoz | Microsoft dokumentumok
-description: Ez a cikk ismerteti, hogyan konfigurálhatja az Azure Monitor tárolók ügynök kaparja metrikák prometheus a Kubernetes-fürt.
+title: Azure Monitor konfigurálása a tárolók Prometheus-integrációhoz | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor a containers Agent számára a Kubernetes-fürthöz tartozó, a Prometheus-ből származó mérőszámok leselejtezéséhez.
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.date: 04/22/2020
+ms.openlocfilehash: fcf1a2e5d2cf11cd9d612506e1ec56a392309121
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537372"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186492"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>A Prometheus-metrikák kaparásának konfigurálása az Azure Monitor tárolókkal
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>A Prometheus-metrikák Azure Monitor for containers szolgáltatással történő selejtezésének konfigurálása
 
-[A Prometheus](https://prometheus.io/) egy népszerű nyílt forráskódú metrikus monitorozási megoldás, és a [Cloud Native Compute Foundation](https://www.cncf.io/)része. Az Azure Monitor tárolók zökkenőmentes bevezetési élményt biztosít a Prometheus metrikák összegyűjtéséhez. A Prometheus használatához általában létre kell hoznia és kezelnie kell egy üzlettel rendelkező Prometheus kiszolgálót. Az Azure Monitorlal való integrációval nincs szükség prometheus kiszolgálóra. Csak meg kell adnia a Prometheus metrikák végpont az exportőrök vagy a podok (alkalmazás), és a tárolók az Azure Monitor tárolók számára a tárolók kaparja a metrikák at az Ön számára. 
+A [Prometheus](https://prometheus.io/) egy népszerű, nyílt forráskódú metrikus monitorozási megoldás, amely a [Felhőbeli natív számítási alaprendszer](https://www.cncf.io/)részét képezi. A tárolók Azure Monitor zökkenőmentes bevezetési élményt biztosít a Prometheus-metrikák gyűjtéséhez. A Prometheus használatához általában egy Prometheus-kiszolgálót kell beállítania és kezelnie egy tárolóval. A Azure Monitor integrálásával a Prometheus-kiszolgáló nem szükséges. Csak a Prometheus mérőszámok végpontját kell közzétennie az exportőrökön vagy a hüvelyeken (alkalmazáson) keresztül, és a tárolók Azure Monitor számára a tárolók számára a mérőszámokat fel lehet kaparni. 
 
-![A Prometheus konténerfigyelési architektúrája](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
+![A Container monitoring architektúra a Prometheus számára](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->A Prometheus metrikák kaparásolásához támogatott minimális ügynökverzió a ciprod07092019 vagy `KubeMonAgentEvents` újabb, és a táblában a konfiguráció és az ügynökhibák írásához támogatott ügynökverzió a ciprod10112019. Az ügyintézői verziókról és az egyes kiadásokban szereplő információkról az [ügynökkiadási megjegyzések című témakörben talál](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)további információt. Az ügynök verziójának ellenőrzéséhez a **Csomópont** lapon jelöljön ki egy csomópontot, és a Tulajdonságok ablaktáblán az **Agent Image Tag** tulajdonság tulajdonságai jegyzetértékében.
+>A (z) ciprod07092019-es vagy újabb, valamint a konfigurációs és az ügynöki hibáknak a `KubeMonAgentEvents` táblázatban való írásához támogatott ügynök-verzió a ciprod10112019. Az Azure Red Hat OpenShift és a Red Hat OpenShift v4 esetében az ügynök verziója ciprod04162020 vagy újabb. 
+>
+>További információ az ügynök verziójáról és az egyes kiadásokról: [ügynök kibocsátási megjegyzései](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod). 
+>Az ügynök verziójának ellenőrzéséhez a **csomópont** lapon válasszon ki egy csomópontot, majd a Tulajdonságok panelen jegyezze fel az **ügynök Képcímke** tulajdonságának értékét.
 
-A Prometheus metrikák kaparását a következő kubernetes-fürtök támogatják:
+A Prometheus-metrikák kaparása a következő rendszeren üzemeltetett Kubernetes-fürtökkel támogatott:
 
 - Azure Kubernetes Service (AKS)
 - Azure Stack vagy helyszíni
-- Azure Red Hat OpenShift
+- Azure Red Hat OpenShift-verzió 3. x
+- Azure Red Hat OpenShift és Red Hat OpenShift 4. x verzió
 
->[!NOTE]
->Az Azure Red Hat OpenShift esetében egy sablon ConfigMap fájl jön létre az *openshift-azure-logging* névtérben. Nincs konfigurálva, hogy aktívan kaparja metrikák vagy adatgyűjtés az ügynök.
->
+### <a name="prometheus-scraping-settings"></a>A Prometheus-karcolás beállításai
 
-## <a name="azure-red-hat-openshift-prerequisites"></a>Az Azure Red Hat OpenShift előfeltételei
+A Prometheus-metrikák aktív kaparása a következő két szempont egyikével végezhető el:
 
-Mielőtt elkezdené, ellenőrizze, hogy az Azure Red Hat OpenShift-fürt ügyfélfürt-felügyeleti szerepkörének tagja-e a tárolóügynök és a Prometheus kaparási beállítások konfigurálásához. Annak ellenőrzéséhez, hogy tagja-e az *osa-customer-admins csoportnak, futtassa* a következő parancsot:
-
-``` bash
-  oc get groups
-```
-
-A kimenet a következőhöz hasonlít:
-
-``` bash
-NAME                  USERS
-osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
-```
-
-Ha tagja az *OSA-customer-admins csoportnak,* a következő `container-azm-ms-agentconfig` paranccsal listázhatja a ConfigMap-et:
-
-``` bash
-oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
-```
-
-A kimenet a következőhöz hasonlít:
-
-``` bash
-NAME                           DATA      AGE
-container-azm-ms-agentconfig   4         56m
-```
-
-### <a name="prometheus-scraping-settings"></a>Prometheus kaparás beállításai
-
-A prometheus mérőszámainak aktív kaparása két nézőpont ból történik:
-
-* Fürtszintű – HTTP URL-cím, és a szolgáltatások felsorolt végpontjaiból származó célok felderítése. Például k8s szolgáltatások, például a kube-dns és a kube-state-metrikák, és pod-annotations egy alkalmazásra jellemző. Az ebben a környezetben gyűjtött mérőszámok a ConfigMap szakaszban *[Prometheus data_collection_settings.cluster]* lesznek definiálva.
-* Csomópont-szerte – HTTP URL-cím, és a szolgáltatások felsorolt végpontjaiból származó célok felderítése. Az ebben a környezetben gyűjtött mérőszámok a ConfigMap *szakaszban [Prometheus_data_collection_settings.node]* lesznek definiálva.
+* A fürtre kiterjedő HTTP URL-cím és a célok felderítése egy szolgáltatás listázott végpontjai alapján. Például a k8s-szolgáltatások, például a Kube-DNS és az Kube-State-metrika, valamint az alkalmazáshoz tartozó Pod-megjegyzések. Az ebben a kontextusban gyűjtött metrikák a *[Prometheus data_collection_settings. cluster]* ConfigMap szakaszban lesznek meghatározva.
+* A teljes körű HTTP URL-cím és a célok felderítése egy szolgáltatás listázott végpontjai alapján. Az ebben a kontextusban gyűjtött metrikák a *[Prometheus_data_collection_settings. node]* ConfigMap szakaszban lesznek meghatározva.
 
 | Végpont | Hatókör | Példa |
 |----------|-------|---------|
-| Pod jegyzet | Fürtszintű | Széljegyzetek: <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
-| Kubernetes szolgáltatás | Fürtszintű | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
-| url/végpont | Csomópontonként és/vagy fürtszintű | `http://myurl:9101/metrics` |
+| Pod-jegyzet | Fürtre kiterjedő | Széljegyzetek <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
+| Kubernetes szolgáltatás | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| URL/végpont | Csomópontok és/vagy fürtök széles skálája | `http://myurl:9101/metrics` |
 
-URL-cím megadása esetén az Azure-figyelő a tárolók csak kaparja a végpontot. Ha a Kubernetes szolgáltatás meg van adva, a szolgáltatás neve feloldódik a fürt DNS-kiszolgálójával az IP-cím leéséhez, majd a feloldott szolgáltatás kaparódik.
+URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
 
 |Hatókör | Kulcs | Adattípus | Érték | Leírás |
 |------|-----|-----------|-------|-------------|
-| Fürtszintű | | | | Adja meg az alábbi három módszer egyikét a metrikák végpontjainak kaparására. |
-| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (IP-cím vagy érvényes URL-elérési út megadva). Például: `urls=[$NODE_IP/metrics]`. ($NODE_IP egy adott Azure Monitor tárolók paraméter, és a csomópont IP-cím helyett használható. Az összes nagybetűsnek kell lennie.) |
-| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások egy tömbje a kube-state-metrikák metrikák kaparására. `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`Például.|
-| | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha a `true` fürtszintű beállításokat, az Azure Monitor tárolók ügynök kaparja Kubernetes podok a teljes fürtön a következő Prometheus-jegyzetek:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Logikai | true (igaz) vagy false (hamis) | Lehetővé teszi a hüvely kaparását. `monitor_kubernetes_pods`a beállítását `true`a beállításra kell állítani. |
-| | `prometheus.io/scheme` | Sztring | http vagy https | Alapértelmezés szerint a HTTP-n keresztüli selejtezés. Szükség esetén állítsa `https`a beállítását. | 
-| | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyről metrikákat szeretne lekérni. Ha a metrikák elérési útja nem, `/metrics`adja meg ezzel a jegyzeteléssel. |
-| | `prometheus.io/port` | Sztring | 9102 | Adja meg azt a portot, amelyből kaparni szeretne. Ha a port nincs beállítva, akkor az alapértelmezett érték 9102 lesz. |
-| | `monitor_kubernetes_pods_namespaces` | Sztring | Vesszővel tagolt tömb | A névterek listájának lehetővé teszi a metrikák kaparását a Kubernetes-podokból.<br> Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Csomópontszintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (IP-cím vagy érvényes URL-elérési út megadva). Például: `urls=[$NODE_IP/metrics]`. ($NODE_IP egy adott Azure Monitor tárolók paraméter, és a csomópont IP-cím helyett használható. Az összes nagybetűsnek kell lennie.) |
-| Csomópont-szintű vagy fürtszintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett beállítása egy perc (60 másodperc). A gyűjteményt a *[prometheus_data_collection_settings.node]* és/vagy *a [prometheus_data_collection_settings.cluster]* időegységekre módosíthatja, például s, m, h. |
-| Csomópont-szintű vagy fürtszintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Megadhatja, hogy bizonyos metrikákat kell gyűjteni, vagy`fieldpass`nem a végpont`fielddrop`beállításával az allow ( ) és letiltotta ( ) lista. Először be kell állítania az engedélyezési listát. |
+| Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
+| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például:`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha a a `true` fürtre kiterjedő beállításokban van beállítva, Azure monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön megkarcolja a következő Prometheus-megjegyzésekkel:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logikai | true (igaz) vagy false (hamis) | Engedélyezi a hüvely leselejtezését. `monitor_kubernetes_pods`értékre kell állítani `true`. |
+| | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a `https`következőre:. | 
+| | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja `/metrics`nem, adja meg ezt a jegyzetet. |
+| | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a kaparni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
+| | `monitor_kubernetes_pods_namespaces` | Sztring | Vesszővel tagolt tömb | A Kubernetes hüvelyek mérőszámait tartalmazó névterek engedélyezési listája.<br> Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| Csomópont-vagy fürt szintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett értéke egy perc (60 másodperc). A (z) *[prometheus_data_collection_settings. node]* és/vagy *[prometheus_data_collection_settings. cluster]* gyűjteményt a következő időegységekhez módosíthatja: s, m, h. |
+| Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés (`fieldpass`) és a tiltás (`fielddrop`) listaelem beállításával megadhat bizonyos mérőszámokat, amelyeket nem a végpontból lehet gyűjteni. Először be kell állítania az engedélyezési listát. |
 
-A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. Nem lehet másik ConfigMaps felülbírálja a gyűjtemények.
+A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 
 ## <a name="configure-and-deploy-configmaps"></a>A ConfigMaps konfigurálása és telepítése
 
-Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernetes-fürtökhöz való konfigurálásához.
+A ConfigMap konfigurációs fájljának a következő fürtökhöz való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablonconfigMap yaml fájlt, és mentse a container-azm-ms-agentconfig.yaml.
+* Azure Kubernetes Service (AKS)
+* Azure Stack vagy helyszíni
+* Azure Red Hat OpenShift 4-es verzió. x és Red Hat OpenShift 4. x verzió
+
+1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablon ConfigMap YAML fájlt, és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven.
 
    >[!NOTE]
-   >Ez a lépés nem szükséges az Azure Red Hat OpenShift használatakor, mivel a ConfigMap sablon már létezik a fürtön.
+   >Ez a lépés nem szükséges az Azure Red Hat OpenShift használata esetén, mivel a ConfigMap sablon már létezik a fürtön.
 
-2. A Prometheus mérőszámai kaparásításához szerkesztheti a ConfigMap yaml fájlt a testreszabásokkal. Ha az Azure Red Hat OpenShift ConfigMap yaml fájlját `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` szerkeszti, először futtassa a parancsot a fájl szövegszerkesztőben való megnyitásához.
+2. Szerkessze a ConfigMap YAML-fájlját a saját testreszabásával, hogy kaparja a Prometheus-metrikákat.
 
     >[!NOTE]
-    >Az egyeztetés megakadályozásának megakadályozása érdekében a következő jegyzetet `openshift.io/reconcile-protect: "true"` hozzá kell adni a *container-azm-ms-agentconfig* ConfigMap metaadatai hoz. 
+    >Ha a ConfigMap YAML-fájlt szerkeszti az Azure Red Hat OpenShift, először futtassa a parancsot `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a fájl megnyitásához egy szövegszerkesztőben.
+
+    >[!NOTE]
+    >A következő jegyzetet `openshift.io/reconcile-protect: "true"` hozzá kell adni a *Container-Keresztesné Gréczi Ágnes-MS-agentconfig* ConfigMap metaadataihoz a megbékélés megelőzése érdekében. 
     >```
     >metadata:
     >   annotations:
     >       openshift.io/reconcile-protect: "true"
     >```
 
-    - A Kubernetes-szolgáltatások fürtszintű gyűjtéséhez konfigurálja a ConfigMap fájlt az alábbi példával.
+    - A Kubernetes Services-fürt széles körű gyűjtéséhez konfigurálja a ConfigMap-fájlt a következő példa használatával.
 
         ```
         prometheus-data-collection-settings: |- 
@@ -120,7 +99,7 @@ Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernete
         kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
         ```
 
-    - A Prometheus metrikáinak a fürt ön által imázsából történő kaparásának konfigurálásához konfigurálja a ConfigMap-fájlt a következő példával.
+    - A Prometheus-metrikák a fürtben megadott URL-címekről történő leselejtezésének konfigurálásához konfigurálja a ConfigMap-fájlt a következő példán keresztül.
 
         ```
         prometheus-data-collection-settings: |- 
@@ -132,7 +111,7 @@ Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernete
         urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
         ```
 
-    - Ha a Prometheus metrikák kaparását szeretné konfigurálni egy ügynök DaemonSet-jéből a fürt minden egyes csomópontjára vonatkozóan, konfigurálja a következőket a ConfigMap-ben:
+    - A Prometheus-metrikák a fürt minden egyes csomópontja esetében történő Daemonset elemet konfigurálásához konfigurálja a következőt a ConfigMap:
     
         ```
         prometheus-data-collection-settings: |- 
@@ -145,11 +124,11 @@ Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernete
         ```
 
         >[!NOTE]
-        >$NODE_IP egy adott Azure-figyelő tárolók paraméter, és a csomópont IP-címe helyett használható. Az egésznek nagybetűsnek kell lennie. 
+        >$NODE _IP a tárolók paraméterének egy konkrét Azure Monitor, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
 
-    - A Prometheus metrikák kaparásának pod-jegyzet megadásával történő konfigurálásához hajtsa végre a következő lépéseket:
+    - A Prometheus-metrikák kaparása egy Pod-Megjegyzés megadásával konfigurálható a következő lépések végrehajtásával:
 
-       1. A ConfigMap alkalmazásban adja meg a következőket:
+       1. A ConfigMap a következőket kell megadnia:
 
             ```
             prometheus-data-collection-settings: |- 
@@ -159,7 +138,7 @@ Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernete
             monitor_kubernetes_pods = true 
             ```
 
-       2. Adja meg a pod-jegyzetek következő konfigurációját:
+       2. A következő konfiguráció megadása a pod-megjegyzésekhez:
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
@@ -168,75 +147,194 @@ Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl kubernete
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Ha a figyelést a jegyzeteket tartalmazó podok adott névtereire szeretné korlátozni, például `monitor_kubernetes_pod` csak `true` az éles számítási feladatokhoz dedikált `monitor_kubernetes_pods_namespaces` podokat szeretne, állítsa be a készletet a ConfigMap-ben, és adja hozzá a névtérszűrőt, amely megadja a kaparandó névtereket. Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Ha korlátozni szeretné a megjegyzésekkel rendelkező hüvelyek meghatározott névtereit, például csak az éles számítási feladatokhoz dedikált hüvelyeket, állítsa be a `monitor_kubernetes_pod` elemet a `true` ConfigMap értékre, és adja hozzá a `monitor_kubernetes_pods_namespaces` névtér-szűrőt a kaparni kívánt névterek meghatározásához. Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
-3. Az Azure Red Hat OpenShift-en kívüli fürtök esetén futtassa a következő kubectl parancsot: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Futtassa a következő kubectl-parancsot `kubectl apply -f <configmap_yaml_file.yaml>`:.
     
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-    Az Azure Red Hat OpenShift esetén mentse a módosításokat a szerkesztőben.
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
 
-A konfiguráció módosítása néhány percet is igénybe vehet, mielőtt életbe lépne, és a fürt összes omsagent podja újraindul. Az újraindítás egy folyamatos újraindítás az összes omsagent podok, nem minden újraindítás egy időben. Amikor az újraindítások befejeződtek, egy üzenet jelenik meg, amely `configmap "container-azm-ms-agentconfig" created`hasonló a következőhöz, és tartalmazza az eredményt: .
+## <a name="configure-and-deploy-configmaps---azure-red-hat-openshift-v3"></a>A ConfigMaps konfigurálása és telepítése – Azure Red Hat OpenShift v3
 
-A frissített ConfigMap for Azure Red Hat OpenShift `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`a parancs futtatásával tekinthető meg. 
+Ez a szakasz a ConfigMap konfigurációs fájljának az Azure Red Hat OpenShift v3. x fürthöz való sikeres konfigurálásának követelményeit és lépéseit tartalmazza.
+
+>[!NOTE]
+>Az Azure Red Hat OpenShift v3. x esetében a sablon ConfigMap-fájlját a *OpenShift-Azure-Logging* névtérben hozza létre a rendszer. Nem úgy van konfigurálva, hogy az ügynöktől aktívan lekaparja a mérőszámokat vagy az adatgyűjtést.
+
+### <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt elkezdené, ellenőrizze, hogy tagja-e az Azure Red Hat OpenShift-fürthöz tartozó ügyfél-fürt rendszergazdai szerepkörének, hogy konfigurálja a tároló ügynök és a Prometheus-adatkaparás beállításait. Annak ellenőrzéséhez, hogy az *OSA-Customer-rendszergazdák* csoport tagja-e, futtassa a következő parancsot:
+
+``` bash
+  oc get groups
+```
+
+A kimenet a következőhöz hasonló lesz:
+
+``` bash
+NAME                  USERS
+osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
+```
+
+Ha Ön az *OSA-Customer-rendszergazdák* csoport tagja, akkor a következő paranccsal tudja listázni a `container-azm-ms-agentconfig` ConfigMap:
+
+``` bash
+oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+A kimenet a következőhöz hasonló lesz:
+
+``` bash
+NAME                           DATA      AGE
+container-azm-ms-agentconfig   4         56m
+```
+
+### <a name="enable-monitoring"></a>Monitorozás engedélyezése
+
+A következő lépésekkel konfigurálhatja a ConfigMap konfigurációs fájlját az Azure Red Hat OpenShift v3. x fürthöz.
+
+1. Szerkessze a ConfigMap YAML-fájlját a saját testreszabásával, hogy kaparja a Prometheus-metrikákat. A ConfigMap sablon már létezik a Red Hat OpenShift v3-fürtön. A parancs `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` futtatásával nyissa meg a fájlt egy szövegszerkesztőben.
+
+    >[!NOTE]
+    >A következő jegyzetet `openshift.io/reconcile-protect: "true"` hozzá kell adni a *Container-Keresztesné Gréczi Ágnes-MS-agentconfig* ConfigMap metaadataihoz a megbékélés megelőzése érdekében. 
+    >```
+    >metadata:
+    >   annotations:
+    >       openshift.io/reconcile-protect: "true"
+    >```
+
+    - A Kubernetes Services-fürt széles körű gyűjtéséhez konfigurálja a ConfigMap-fájlt a következő példa használatával.
+
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings
+        [prometheus_data_collection_settings.cluster] 
+        interval = "1m"  ## Valid time units are s, m, h.
+        fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+        fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+        kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
+        ```
+
+    - A Prometheus-metrikák a fürtben megadott URL-címekről történő leselejtezésének konfigurálásához konfigurálja a ConfigMap-fájlt a következő példán keresztül.
+
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings
+        [prometheus_data_collection_settings.cluster] 
+        interval = "1m"  ## Valid time units are s, m, h.
+        fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+        fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+        urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+        ```
+
+    - A Prometheus-metrikák a fürt minden egyes csomópontja esetében történő Daemonset elemet konfigurálásához konfigurálja a következőt a ConfigMap:
+    
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings 
+        [prometheus_data_collection_settings.node] 
+        interval = "1m"  ## Valid time units are s, m, h. 
+        urls = ["http://$NODE_IP:9103/metrics"] 
+        fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
+        fielddrop = ["metric_to_drop"] 
+        ```
+
+        >[!NOTE]
+        >$NODE _IP a tárolók paraméterének egy konkrét Azure Monitor, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
+
+    - A Prometheus-metrikák kaparása egy Pod-Megjegyzés megadásával konfigurálható a következő lépések végrehajtásával:
+
+       1. A ConfigMap a következőket kell megadnia:
+
+            ```
+            prometheus-data-collection-settings: |- 
+            # Custom Prometheus metrics data collection settings
+            [prometheus_data_collection_settings.cluster] 
+            interval = "1m"  ## Valid time units are s, m, h
+            monitor_kubernetes_pods = true 
+            ```
+
+       2. A következő konfiguráció megadása a pod-megjegyzésekhez:
+
+           ```
+           - prometheus.io/scrape:"true" #Enable scraping for this pod 
+           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
+           - prometheus.io/port:"8000" #If port is not 9102 use this annotation
+           ```
+    
+          Ha korlátozni szeretné a megjegyzésekkel rendelkező hüvelyek meghatározott névtereit, például csak az éles számítási feladatokhoz dedikált hüvelyeket, állítsa be a `monitor_kubernetes_pod` elemet a `true` ConfigMap értékre, és adja hozzá a `monitor_kubernetes_pods_namespaces` névtér-szűrőt a kaparni kívánt névterek meghatározásához. Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+
+2. Mentse a módosításokat a szerkesztőben.
+
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
+
+A frissített ConfigMap a parancs futtatásával tekinthető meg `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`. 
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
-Ha már telepített egy ConfigMap-et a fürtre, és újabb konfigurációval szeretné frissíteni, szerkesztheti a korábban használt ConfigMap-fájlt, majd ugyanazokat a parancsokat használhatja, mint korábban.
+Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazokat a parancsokat, mint korábban.
 
-Az Azure Red Hat OpenShifttől eltérő Kubernetes-fürtök esetén futtassa a parancsot. `kubectl apply -f <configmap_yaml_file.yaml` 
+A következő Kubernetes környezetekhez:
 
-Az Azure Red Hat OpenShift fürt, futtassa a parancsot, `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` nyissa meg a fájlt az alapértelmezett szerkesztőben, hogy módosítsa, majd mentse azt.
+- Azure Kubernetes Service (AKS)
+- Azure Stack vagy helyszíni
+- Azure Red Hat OpenShift és Red Hat OpenShift 4. x verzió
 
-A konfiguráció módosítása néhány percet is igénybe vehet, mielőtt életbe lépne, és a fürt összes omsagent podja újraindul. Az újraindítás egy folyamatos újraindítás az összes omsagent podok, nem minden újraindítás egy időben. Amikor az újraindítások befejeződtek, egy üzenet jelenik meg, amely `configmap "container-azm-ms-agentconfig" updated`hasonló a következőhöz, és tartalmazza az eredményt: .
+Futtassa a parancsot `kubectl apply -f <configmap_yaml_file.yaml`. 
+
+Egy Azure Red Hat OpenShift v3. x fürt esetén futtassa a parancsot `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` az alapértelmezett szerkesztőben lévő fájl megnyitásához, majd mentse azt.
+
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
-A konfiguráció fürtre való sikeres alkalmazásának ellenőrzéséhez használja a következő parancsot `kubectl logs omsagent-fdf58 -n=kube-system`az ügynöki pod naplóinak áttekintéséhez: . 
+Annak ellenőrzéséhez, hogy a konfiguráció sikeresen alkalmazva lett-e egy fürtre, a következő paranccsal tekintheti át a `kubectl logs omsagent-fdf58 -n=kube-system`naplókat egy ügynök pod:. 
 
 >[!NOTE]
->Ez a parancs nem alkalmazható az Azure Red Hat OpenShift fürtre.
+>Ez a parancs nem alkalmazható az Azure Red Hat OpenShift v3. x fürtre.
 > 
 
-Ha az omsagent podok konfigurációs hibákat tartalmaznak, a kimenet a következőhöz hasonló hibákat jelenít meg:
+Ha konfigurációs hibák vannak a omsagent hüvelyből, a kimenet az alábbihoz hasonló hibákat jelenít meg:
 
 ``` 
 ***************Start Config Processing******************** 
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-A konfigurációs módosítások alkalmazásával kapcsolatos hibák is ellenőrizhetővé vehetők. A következő lehetőségek érhetők el a konfigurációs módosítások további hibaelhárításához és a Prometheus metrikák kaparásának elvégzéséhez:
+A konfigurációs módosítások alkalmazásával kapcsolatos hibák a felülvizsgálathoz is elérhetők. A következő lehetőségek állnak rendelkezésre a konfigurációs változások további hibaelhárításához és a Prometheus-metrikák leselejtezéséhez:
 
-- Ügynöki pod naplókból ugyanazzal `kubectl logs` a paranccsal 
+- Ügynök Pod-naplókból ugyanazzal `kubectl logs` a paranccsal 
     >[!NOTE]
-    >Ez a parancs nem alkalmazható az Azure Red Hat OpenShift fürtre.
+    >Ez a parancs nem alkalmazható az Azure Red Hat OpenShift-fürtre.
     > 
 
-- Élő adatokból (előzetes verzió). A Live Data (előzetes verzió) naplók az alábbihoz hasonló hibákat mutatnak:
+- Élő adatokból (előzetes verzió). Az élő adatszolgáltatások (előzetes verzió) naplói a következőhöz hasonló hibákat mutatnak:
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- A **KubeMonAgentEvents** táblából a Log Analytics-munkaterületen. Az adatok óránként küldik *a figyelmeztetés* súlyossága a kaparás hibák és *a hiba* súlyossága konfigurációs hibák. Ha nincsenek hibák, a táblában szereplő bejegyzés súlyossági *adatokat tartalmaz,* amelyek nem jelentenek hibákat. A **Címkék** tulajdonság további információkat tartalmaz a pod és a tároló azonosítóját, amelyen a hiba történt, valamint az első előfordulás, utolsó előfordulása és száma az elmúlt órában.
+- A Log Analytics munkaterület **KubeMonAgentEvents** táblájában. A rendszer óránként küldi el az adatmennyiséget, *Figyelmeztetési* súlyossággal a selejti hibák miatt *, és a* konfigurációs hibák súlyosságát. Ha nincsenek hibák, a táblázatban szereplő *bejegyzés súlyossági adatokkal*fog rendelkezni, ami nem jelent hibát. A **címkék** tulajdonság további információkat tartalmaz a pod és a Container azonosítóról, amelyen a hiba történt, valamint az első előfordulást, az utolsó előfordulást és az utolsó órában való számlálást is.
 
-- Az Azure Red Hat OpenShift, ellenőrizze az omsagent naplók a **ContainerLog-táblában,** hogy ellenőrizze, ha az openshift-azure-naplózás naplógyűjteménye engedélyezve van.
+- Az Azure Red Hat OpenShift v3. x és v4. x esetében ellenőrizze a omsagent-naplókat, ha a **ContainerLog** táblában ellenőrzi, hogy a OpenShift naplózási gyűjteménye engedélyezve van-e.
 
-A hibák megakadályozzák, hogy az omsagent elemezze a fájlt, ami újraindítást és az alapértelmezett konfiguráció használatát eredményezi. Miután kijavította a hibát(oka)t a ConfigMap-ben az Azure Red Hat OpenShift-től eltérő fürtökön, mentse a yaml fájlt, és alkalmazza a frissített ConfigMaps-ot a következő parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml`. 
+Hibák miatt a omsagent nem elemezheti a fájlt, ezért az újraindítást és az alapértelmezett konfigurációt használja. Miután kijavította a hibát (ka) t az Azure Red Hat OpenShift v3. x ConfigMap eltérő fürtökön, mentse a YAML-fájlt, és alkalmazza a frissített ConfigMaps a következő `kubectl apply -f <configmap_yaml_file.yaml`parancs futtatásával:. 
 
-Az Azure Red Hat OpenShift esetén a következő paranccsal `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`szerkesztheti és mentheti a frissített ConfigMaps-ot: .
+Az Azure Red Hat OpenShift v3. x esetében szerkessze és mentse a frissített ConfigMaps a következő parancs futtatásával: `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`.
 
-## <a name="query-prometheus-metrics-data"></a>Prometheus-mérőszámok adatainak lekérdezése
+## <a name="query-prometheus-metrics-data"></a>A Prometheus-metrikai adatok lekérdezése
 
-Az Azure Monitor által lekapart prometheus metrikák és az ügynök által jelentett konfigurációs/kaparási hibák megtekintéséhez tekintse át a [Query Prometheus metrikák adatait](container-insights-log-search.md#query-prometheus-metrics-data) és [a Query konfigurációs vagy kaparási hibáit.](container-insights-log-search.md#query-config-or-scraping-errors)
+A Azure Monitor és az ügynök által jelentett összes konfigurációs/leselejtezési hiba miatt lekapart Prometheus-metrikák megtekintéséhez tekintse át a [lekérdezési Prometheus mérőszámok adatait](container-insights-log-search.md#query-prometheus-metrics-data) és a [lekérdezési konfiguráció vagy a selejt hibáit](container-insights-log-search.md#query-config-or-scraping-errors).
 
-## <a name="view-prometheus-metrics-in-grafana"></a>Prometheus mérőszámok megtekintése a Grafanában
+## <a name="view-prometheus-metrics-in-grafana"></a>Prometheus-metrikák megtekintése a Grafana-ben
 
-Az Azure Monitor tárolók támogatja a Grafana irányítópultokon a Log Analytics-munkaterületen tárolt metrikák megtekintését. A kezdéshez egy sablont is betölthet a Grafana [irányítópult-tárházáról,](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) és hivatkozást nyújtunk be, amely segítséget nyújt a figyelt fürtök további adatainak lekérdezéséhez az egyéni Grafana-irányítópultokon való megjelenítéshez. 
+A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
 
-## <a name="review-prometheus-data-usage"></a>Prometheus adathasználat áttekintése
+## <a name="review-prometheus-data-usage"></a>A Prometheus-adatok használatának áttekintése
 
-Az egyes metrikák méretének töltési kötetének azonosításához GB-ban naponta, hogy megértse, magas-e, a következő lekérdezés érhető el.
+Ha meg szeretné állapítani, hogy az egyes mérőszámok mekkora mennyisége GB/nap, hogy magas legyen, a következő lekérdezés van megadva.
 
 ```
 InsightsMetrics 
@@ -246,11 +344,11 @@ InsightsMetrics
 | order by VolumeInGB desc
 | render barchart
 ```
-A kimenet a következőhöz hasonló eredményeket jelenít meg:
+A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
-![Adatbetöltési kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![Adatfeldolgozási kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
-Ha meg szeretné becsülni, hogy az egyes metrikák mérete GB-ben egy hónapig, hogy megértsük, ha a munkaterületen fogadott adatok mennyisége magas, a következő lekérdezés érhető el.
+Ha azt szeretné megbecsülni, hogy a GB-ban hány metrikai méret van egy hónapig, hogy megtudja, a munkaterületen fogadott adatok mennyisége magas-e, a következő lekérdezés van megadva.
 
 ```
 InsightsMetrics 
@@ -261,12 +359,12 @@ InsightsMetrics
 | render barchart
 ```
 
-A kimenet a következőhöz hasonló eredményeket jelenít meg:
+A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
-![Adatbetöltési kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
+![Adatfeldolgozási kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-Az adathasználat figyelésével és a költségek elemzésével kapcsolatos további információk az [Azure Monitor-naplók segítségével](../platform/manage-cost-storage.md)a Használat és a költségek kezelése című részben találnak további információt.
+Az adatfelhasználás és az elemzési költségek figyelésével kapcsolatos további információk a [használat és a költségek kezelése Azure monitor naplók használatával](../platform/manage-cost-storage.md)című témakörben találhatók.
 
 ## <a name="next-steps"></a>További lépések
 
-Az ügynökgyűjtemény beállításainak konfigurálásáról a tárolószámítási feladatokból az stdout, stderr és környezeti változók számára [itt olvashat bővebben.](container-insights-agent-config.md) 
+További információ az stdout, a stderr és a környezeti változók ügynök-gyűjtési beállításainak konfigurálásáról a tároló munkaterhelései [között.](container-insights-agent-config.md) 

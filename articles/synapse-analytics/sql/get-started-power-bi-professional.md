@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Power BI Professional programhoz
-description: Ebben az oktatóanyagban végighaladunk a Power BI-asztal igény szerinti SQL-hez való csatlakoztatásának lépésein (előzetes verzió).
+title: Kapcsolódás Power BI Professional rendszerhez
+description: Ebben az oktatóanyagban áttekintjük, hogyan csatlakoztatható Power BI asztal az SQL on-demand (előzetes verzió) szolgáltatáshoz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,60 +9,60 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a9db42bcd69d9a24a454c02c9bb0e2d339cb4860
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422563"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185778"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Csatlakozás a Synapse SQL-hez a Power BI Professional segítségével
+# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
 
 > [!div class="op_single_selector"]
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Ebben az oktatóanyagban végighaladunk a Power BI-asztal igény szerinti SQL-hez való csatlakoztatásának lépésein (előzetes verzió).
+Ebben az oktatóanyagban áttekintjük a Power BI Desktop és az SQL on-demand (előzetes verzió) összekapcsolásának lépéseit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lekérdezések kiadására eszköz:
+A lekérdezések kibocsátására szolgáló eszköz:
 
-- SQL kliens az Ön által választott:
+- Tetszőleges SQL-ügyfél:
 
   - Azure Data Studio
   - SQL Server Management Studio
 
-- Power BI desktop telepítve
+- Power BI asztali telepítés
 
 Paraméterek:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL igény szerinti szolgáltatás végpontcíme    | A rendszer kiszolgálónévként fogja használni                                   |
-| SQL igény szerinti szolgáltatásvégpont-régió     | A mintákban használt tároló meghatározására szolgálnak |
-| Felhasználónév és jelszó a végpontokhoz való hozzáféréshez | A végpont elérésére szolgál                               |
-| Nézetek létrehozásához használt adatbázis     | Ez az adatbázis lesz kiindulási pont ként a mintákban       |
+| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként lesz használva                                   |
+| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A rendszer annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
+| A végpontok hozzáférésének felhasználóneve és jelszava | A végpont eléréséhez lesz használva                               |
+| A nézetek létrehozásához használni kívánt adatbázis     | Ez az adatbázis a mintákban kezdőpontként lesz használva       |
 
 ## <a name="first-time-setup"></a>Első beállítás
 
-A minták használata előtt két lépéssel lehet elkezdeni:
+A minták használata előtt két lépésből áll:
 
 1. Adatbázis létrehozása a nézetekhez
-2. Az SQL igény szerinti hozzáférési adatainak létrehozása a tárolóban lévő fájlok eléréséhez
+2. A Storage-ban tárolt fájlok eléréséhez igény szerint használandó hitelesítő adatok létrehozása
 
 ### <a name="create-database"></a>Adatbázis létrehozása
 
-Mivel a demo környezetet fogja használni, saját adatbázist kell létrehoznia demo célokra. A nézetek létrehozásához adatbázisra van szükség. Ezt az adatbázist fogja használni a dokumentáció néhány mintalekérdezésében.
+Ebben az első lépéseket bemutató cikkben létre kell hoznia egy saját adatbázist, amelyet demóként kell használni. A nézetek létrehozásához szükség van egy adatbázisra. Ezt az adatbázist fogja használni a dokumentációban található példák némelyikében.
 
 > [!NOTE]
-> Ne feledje, hogy az adatbázisok csak a metaadatok megtekintésére szolgálnak, a tényleges adatokra nem.
+> Az adatbázisokat csak a metaadatok megtekintésére használják, nem a tényleges adatokhoz.
 >
-> Írja le a használt adatbázisnevet, később szüksége lesz rá.
+> Jegyezze fel a használni kívánt adatbázisnevet, majd később szükség lesz rá.
 
 ```sql
 DROP DATABASE IF EXISTS demo;
@@ -70,12 +70,12 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-Létre kell hoznunk a hitelesítő adatokat, mielőtt futtathat lekérdezéseket. Ezt a hitelesítő adatokat az SQL igény szerinti szolgáltatás fogja használni a tárolóban lévő fájlok eléréséhez.
+A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. A hitelesítő adatokat az SQL igény szerinti szolgáltatása fogja használni a tárolóban lévő fájlok eléréséhez.
 
 > [!NOTE]
-> Vegye figyelembe, hogy létre kell hoznia a tárfiókhoz való hozzáféréshez szükséges hitelesítő adatokat. Bár az SQL igény szerinti hozzáférés különböző régiókból származó tárolókhoz férhet hozzá, a storage és az Azure Synapse munkaterület ugyanabban a régióban jobb teljesítményélményt nyújt.
+> Létre kell hoznia egy hitelesítő adatot a Storage-fiókhoz való hozzáféréshez. Bár az SQL igény szerint a különböző régiókban is elérheti a tárolókat, a Storage és az Azure szinapszis munkaterület az adott régióban jobb teljesítményt nyújt.
 
-**Kódrészlet a népszámlálási adattárolók hitelesítő adatainak létrehozásához,** futtassa a következőt:
+Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához**:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -90,22 +90,22 @@ SECRET = '';
 GO
 ```
 
-## <a name="creating-power-bi-desktop-report"></a>A Power BI asztali jelentéslétrehozása
+## <a name="creating-power-bi-desktop-report"></a>Power BI asztali jelentés létrehozása
 
-Nyissa meg az asztali Power BI alkalmazást, és válassza az "Adatok beszerezni" lehetőséget.
-![Nyissa meg az asztali Power BI alkalmazást, és válassza az Adatok bekéselése lehetőséget.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
+Nyissa meg Power BI asztali alkalmazást, és válassza **az adatolvasás** lehetőséget.
+![Nyissa meg Power BI asztali alkalmazást, és válassza az adatlekérdezés lehetőséget.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
-### <a name="step-1---select-data-source"></a>1. lépés – Adatforrás kiválasztása
+### <a name="step-1---select-data-source"></a>1. lépés – adatforrás kiválasztása
 
-Válassza az "Azure" menüpontot, majd az "Azure SQL Database".Select "Azure" in the menu and then "Azure SQL Database".
-![Jelölje ki az adatforrást.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
+Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
+![Válassza ki az adatforrást.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
-### <a name="step-2---select-database"></a>2. lépés - Adatbázis kiválasztása
+### <a name="step-2---select-database"></a>2. lépés – adatbázis kiválasztása
 
-Írja az adatbázis URL-címét és annak az adatbázisnak a nevét, amelyben a nézet található.
+Írja be az adatbázis URL-címét és annak az adatbázisnak a nevét, ahol a nézet található.
 ![Válassza ki az adatbázist a végponton.](./media/get-started-power-bi-professional/step-2-db.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Lépjen a [Query storage-fájlokhoz,](get-started-azure-data-studio.md) és ismerje meg, hogyan csatlakozhat az SQL-hez igény szerint az Azure Data Studio használatával.
+A [Storage-fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan CSATLAKOZHAT az SQL on-demandhoz a Azure Data Studio használatával.
  

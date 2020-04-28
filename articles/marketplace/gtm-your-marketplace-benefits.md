@@ -5,20 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 2249dde8578dcd5cc3444aeef6b51c8afb2f31fa
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160596"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190333"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
 Ön közzétette a piactéren, most szeretné látni, hogy az ajánlata sikeres volt-e. Az előnyök – értékesítés, technikai és marketing – révén felgyorsíthatja az ajánlat növekedését.
 
-Ha az ajánlatával él, a Marketplace jutalmazási csapata felveszi Önnel a munkát, és megkezdheti Önt a jogosult előnyökkel. A Piactéri előnyök a kereskedelmi piactéren való részvétel és az értékesítések alapján keletkeznek. Minél többet vesznek fel, annál többet kap vissza.
+Ha az ajánlata az Azure Marketplace-en vagy a AppSource-on üzemel, lépjen a [partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) webhelyére, ahol elérheti és aktiválhatja a jogosult marketing-, értékesítési és technikai előnyeit. A Piactéri előnyök a kereskedelmi piactéren való részvétel és az értékesítések alapján keletkeznek. Minél többet vesznek fel, annál többet kap vissza.
 
 ## <a name="marketplace-rewards"></a>Marketplace-jutalmak
 
@@ -41,7 +41,19 @@ A program előnyeinek részletes leírása a [Marketplace jutalmazási program f
 A kezdéshez szükséges lépések egyszerűek:
 
 1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
-2. A csapat eléri a "tulajdonos" vagy az "elsődleges kapcsolat" Piactéri ajánlatot. Az ajánlott eljárás az, ha az Ön által rendszeresen ellenőrzött személyt vagy aliast adja meg: az aliasoknak küldött üzenetek info@company.com , például a gyakran elvesznek.
+2. Az előnyök listájának megtekintéséhez nyissa meg a partner Center [irányítópultját](https://partner.microsoft.com/dashboard/directory), és válassza az **értékesítés és marketing előnyei** lapot a Piactéri jutalmak lapon.
+3. Az értékesítés és a marketing juttatás aktiválásához először vállalati marketing-kapcsolattartót kell rendelnie. Ez a Kapcsolatfelvétel a Piactéri jutalmakkal kapcsolatos követő kommunikációkat fogadja.
+4. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás**lehetőséget.  Ezután tegye a következőket:
+
+    1. Válasszon egy felhasználót a listáról. Ha a hozzárendelni kívánt felhasználó nem szerepel a listában, hozzáadhat új felhasználókat a **Fiókbeállítások**közül.
+    1. Adjon meg egy e-mail-címet azon felhasználó számára, aki eltér a vállalata partner Center-fiókjához tartozó e-mail-címtől. E-mailben megtudhatja, hogyan használhatja a Marketplace-jutalmakat a kiválasztott marketing-partner e-mail-címére.
+    1. Adja meg a kapcsolattartó telefonszámát és az előnyben részesített nyelvet ehhez a marketing-kapcsolattartóhoz. Miután befejezte az információk megadását, válassza a **felhasználó kiosztása**elemet.
+    1. A marketing-kapcsolattartó frissítése után válassza az **aktiválás** lehetőséget a használni kívánt előnyhez. Ha bekapcsolta a kedvezményt, a marketing-kapcsolattartó egy héten belül a jutalmazási csapat tagjaival fog kapcsolatba lépni.
+
+**Műszaki előnyök**
+
+1. Technikai segítséget kérhet a Felhőbeli és a hibrid megoldások értékesítés előtti, tervezési, üzembe helyezési és alkalmazás-fejlesztési fázisaiban. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése**lehetőséget.
+2. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
 
 >[!Note]
 >Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy az adott ajánlat tulajdonosa a partner Center. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban.

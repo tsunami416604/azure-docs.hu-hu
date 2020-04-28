@@ -1,113 +1,113 @@
 ---
-title: Adattitkosítás - Azure CLI - Azure Database for MySQL
-description: Ismerje meg, hogyan állíthatja be és kezelheti az azure-i MySQL-adatbázis adattitkosítását az Azure CLI használatával.
+title: Adattitkosítás – Azure CLI – Azure Database for MySQL
+description: Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL adattitkosítását az Azure CLI használatával.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 37f6f0dc9c1221207273110252bff445d2e1245b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459100"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185829"
 ---
-# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Az Azure Database for MySQL adattitkosítása az Azure CLI használatával
+# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
 
-Ismerje meg, hogyan használhatja az Azure CLI-t az Azure Database for MySQL adattitkosításának beállításához és kezeléséhez.
+Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL adattitkosítását az Azure CLI használatával.
 
 ## <a name="prerequisites-for-azure-cli"></a>Az Azure CLI előfeltételei
 
-* Rendelkeznie kell egy Azure-előfizetéssel, és az adott előfizetés rendszergazdájának kell lennie.
-* Hozzon létre egy kulcstartót és egy kulcsot, amelyet egy ügyfél által felügyelt kulcshoz használhat. Is lehetővé teszi a kiürítési védelem és a kulcstartóban a törlés.
+* Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
+* Hozzon létre egy Key vaultot és egy, az ügyfél által felügyelt kulcshoz használandó kulcsot. A Key vaulton engedélyezze a kiürítést és a helyreállítható törlést is.
 
     ```azurecli-interactive
     az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
     ```
 
-* A létrehozott Azure Key Vault, hozza létre a kulcsot, amely az Azure Database for MySQL adattitkosításához lesz használva.
+* A létrehozott Azure Key Vault hozzon létre egy kulcsot, amelyet a rendszer a Azure Database for MySQL adattitkosításához fog használni.
 
     ```azurecli-interactive
     az keyvault key create --name <key_name> -p software --vault-name <vault_name>
     ```
 
-* Egy meglévő kulcstartó használatához a következő tulajdonságokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
+* Meglévő kulcstartó használatához a következő tulajdonságokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
   * [Helyreállítható törlés](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Tisztítás védett](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Védett kiürítés](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* A kulcsnak a következő attribútumokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
+* A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
   * Nincs lejárati dátum
   * Nincs letiltva
-  * Be- és **törlesztési** **műveletek** végrehajtása **get**
+  * **Get**, **wrap**, **dewrap** műveletek végrehajtása
 
-## <a name="set-the-right-permissions-for-key-operations"></a>A kulcsműveletekhez szükséges engedélyek beállítása
+## <a name="set-the-right-permissions-for-key-operations"></a>A megfelelő engedélyek beállítása a kulcsfontosságú műveletekhez
 
-1. Kétféleképpen lehet bekérni a felügyelt identitás az Azure Database for MySQL.
+1. A Azure Database for MySQL felügyelt identitását kétféleképpen lehet beszerezni.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Hozzon létre egy új Azure-adatbázist a MySQL-kiszolgálóhoz felügyelt identitással.
+    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Hozzon létre egy új Azure Database for MySQL-kiszolgálót egy felügyelt identitással.
 
     ```azurecli-interactive
     az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Frissítsen egy meglévő Azure Database for MySQL-kiszolgálót felügyelt identitás lekérni.
+    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Egy meglévő Azure Database for MySQL-kiszolgáló frissítése egy felügyelt identitás beszerzéséhez.
 
     ```azurecli-interactive
     az mysql server update --name  <server name>  -g <resource_group> --assign-identity
     ```
 
-2. Állítsa be a Kulcs **engedélyeket** **(Be:** **Befolyás,** **Befolyás, Kicsomagolás**) a **Fő**, amely a MySQL-kiszolgáló neve.
+2. Állítsa be a **rendszerbiztonsági tag**(**Get**, **wrap**, **dewrap**) **kulcsának engedélyeit** , amely a MySQL-kiszolgáló neve.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
     ```
 
-## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Adattitkosítás beállítása a MySQL-hez készült Azure Database számára
+## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Adattitkosítás beállítása Azure Database for MySQLhoz
 
-1. Engedélyezze az adatok titkosítását az Azure Database for MySQL az Azure Key Vaultban létrehozott kulcs használatával.
+1. Engedélyezze az adattitkosítást a Azure Database for MySQL az Azure Key Vaultban létrehozott kulcs használatával.
 
     ```azurecli-interactive
     az mysql server key create –name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    Kulcs url:https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>
+    Kulcs URL-címe:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
-## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Adattitkosítás használata visszaállítási vagy replikakiszolgálókhoz
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Adattitkosítás használata visszaállítási vagy replika kiszolgálók esetén
 
-Miután az Azure Database for MySQL titkosítva van az ügyfél által a Key Vaultban tárolt kezelt kulccsal, a kiszolgáló újonnan létrehozott példányais titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel, vagy egy replika (helyi/régióközi) művelettel is elkészítheti. Így egy titkosított MySQL szerver, akkor a következő lépéseket, hogy hozzon létre egy titkosított visszaállított szerver.
+Miután Azure Database for MySQL titkosítása megtörténik a Key Vault tárolt ügyfél felügyelt kulcsával, a kiszolgáló minden újonnan létrehozott példánya is titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel vagy replika (helyi/régió) művelettel teheti meg. A titkosított MySQL-kiszolgálók esetében a következő lépésekkel hozhat létre titkosított visszaállított kiszolgálót.
 
-### <a name="creating-a-restoredreplica-server"></a>Visszaállított/replikakiszolgáló létrehozása
+### <a name="creating-a-restoredreplica-server"></a>Visszaállított/replika kiszolgáló létrehozása
 
   *  [Visszaállítási kiszolgáló létrehozása](howto-restore-server-cli.md) 
-  *  [Olvasott replikakiszolgáló létrehozása](howto-read-replicas-cli.md) 
+  *  [Olvasási replika kiszolgáló létrehozása](howto-read-replicas-cli.md) 
 
-### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>A kiszolgáló visszaállítása után a visszaállított kiszolgáló újraérvényesíti az adattitkosítást
+### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>A kiszolgáló visszaállítása után ellenőrizze újra a visszaállított kiszolgáló adattitkosítását.
 
     ```azurecli-interactive
     az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
     ```
 
-## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>További képesség a MySQL Azure-adatbázisához használt kulcshoz
+## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>További képesség a Azure Database for MySQL használt kulcshoz
 
-### <a name="get-the-key-used"></a>A kulcs használatba hozása
+### <a name="get-the-key-used"></a>A használt kulcs lekérése
 
     ```azurecli-interactive
     az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    Key url:  https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>
+    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
-### <a name="list-the-key-used"></a>A használt kulcs felsorolása
+### <a name="list-the-key-used"></a>A használt kulcs listázása
 
     ```azurecli-interactive
     az mysql server key list --name  <server name>  -g <resource_group>
@@ -119,22 +119,22 @@ Miután az Azure Database for MySQL titkosítva van az ügyfél által a Key Vau
     az mysql server key delete -g <resource_group> --kid <key url> 
     ```
 
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Az Adatok titkosításának engedélyezéséhez Azure Resource Manager-sablon használata
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Adattitkosítás engedélyezése Azure Resource Manager sablon használatával
 
-Az Azure Portalon kívül engedélyezheti az adatok titkosítását az Azure Database for MySQL-kiszolgálón az Azure Resource Manager-sablonok használatával az új és a meglévő kiszolgálókhoz.
+A Azure Portalon kívül az új és a meglévő kiszolgálókhoz Azure Resource Manager sablonok használatával is engedélyezheti az adattitkosítást a Azure Database for MySQL-kiszolgálón.
 
 ### <a name="for-a-new-server"></a>Új kiszolgáló esetén
 
-Használja az előre létrehozott Azure Resource Manager-sablonok egyikét a kiszolgáló kiépítéséhez, amelyen engedélyezve van az adattitkosítás: [Példa adattitkosítással](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
+Az egyik előre létrehozott Azure Resource Manager-sablon használatával kiépítheti a kiszolgálót az adattitkosítás engedélyezésével: [példa adattitkosításra](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-Ez az Azure Resource Manager-sablon létrehoz egy Azure-adatbázist a MySQL-kiszolgálóhoz, és a **keyvault-ot** és a paraméterként átadott **kulcsot** használja az adattitkosítás engedélyezéséhez a kiszolgálón.
+Ez a Azure Resource Manager sablon létrehoz egy Azure Database for MySQL-kiszolgálót, és a **kulcstartót** **és a** kulcsot adja át paraméterként az adattitkosítás engedélyezéséhez a kiszolgálón.
 
 ### <a name="for-an-existing-server"></a>Meglévő kiszolgáló esetén
-Emellett az Azure Resource Manager-sablonok használatával engedélyezheti az adattitkosítást a meglévő Azure-adatbázisban a MySQL-kiszolgálók számára.
+Emellett Azure Resource Manager-sablonokkal is engedélyezheti az adattitkosítást a meglévő Azure Database for MySQL-kiszolgálókon.
 
-* Adja át az Azure Key Vault-kulcs erőforrás-azonosítóját, `Uri` amelyet korábban másolt a tulajdonság alatt a tulajdonság objektumban.
+* Adja meg a korábban a tulajdonságok objektum alatt `Uri` másolt Azure Key Vault kulcs erőforrás-azonosítóját.
 
-* Használja *a 2020-01-01-preview API-verzió.*
+* Használja az *2020-01-01-Preview API-* verziót.
 
 ```json
 {
@@ -246,4 +246,4 @@ Emellett az Azure Resource Manager-sablonok használatával engedélyezheti az a
 
 ## <a name="next-steps"></a>További lépések
 
- Az adattitkosításról az [Azure Database for MySQL adattitkosítás ügyféláltal kezelt kulccsal című](concepts-data-encryption-mysql.md)témakörben olvashat bővebben.
+ Az adattitkosítással kapcsolatos további tudnivalókért tekintse meg az [adattitkosítás Azure Database for MySQL az ügyfél által felügyelt kulccsal](concepts-data-encryption-mysql.md)című témakört.

@@ -1,6 +1,6 @@
 ---
-title: Adattárolás és be- és be- és be- és be- és be- és be- és be- és be- és bevitel előzetes verzióban – Azure Time Series Insights | Microsoft dokumentumok
-description: Ismerje meg az adatok tárolását és be- és be- és be- és bevitelét az Azure Time Series Insights előzetes verziójában.
+title: Adattárolás és bejövő forgalom előzetes verzióban – Azure Time Series Insights | Microsoft Docs
+description: Tudnivalók az adattárolásról és a bejövő forgalomról Azure Time Series Insights előzetes verzióban.
 author: lyrana
 ms.author: lyhughes
 manager: cshankar
@@ -8,235 +8,239 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673904"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189181"
 ---
-# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és be- és be- és be- és bevitel az Azure Time Series Insights előzetes verzióban
+# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
-Ez a cikk az Azure Time Series Insights előzetes verziójának adattárolásának és be- és be- és be- és be- és be- és be- és be- és be- ésbetöltésének frissítéseit ismerteti. Ismerteti az alapul szolgáló tárolási struktúra, fájlformátum és a Time Series ID tulajdonság. Az alapul szolgáló be- ésbefizetési folyamat, ajánlott eljárások és az aktuális előnézeti korlátozások is ismertetik.
+Ez a cikk az adattárolási és a bejövő Azure Time Series Insights előzetes verziójának frissítéseit ismerteti. Ismerteti a mögöttes tárolási struktúrát, a fájlformátumot és az idősorozat-azonosító tulajdonságot. A rendszer az alapul szolgáló beáramlási folyamatot, az ajánlott eljárásokat és az aktuális előzetes verzióra vonatkozó korlátozásokat is tárgyalja.
 
-## <a name="data-ingress"></a>Adatok be- és be- és adatai
+## <a name="data-ingress"></a>Bejövő adatforgalom
 
-Az Azure Time Series Insights-környezet egy *betöltési motort* tartalmaz az idősorozat-adatok gyűjtéséhez, feldolgozásához és tárolásához. 
+Az Azure Time Series Insights-környezet egy betöltési *motort* tartalmaz az idősoros adatok gyűjtéséhez, feldolgozásához és tárolásához.
 
-Vannak olyan szempontok, amelyeket figyelembe kell venni, hogy biztosítsa az összes bejövő adatok feldolgozása, a magas bejövő töltési skála, és minimálisra csökkenti a *betöltési késés* (az idő által a Time Series Insights olvasni és feldolgozni az adatokat az eseményforrásból) [a környezet tervezésekor.](time-series-insights-update-plan.md)
+Néhány szempontot figyelembe kell venni a beérkező adatok feldolgozásának biztosításához, a magas beáramlási skála eléréséhez és a betöltési *késés* minimalizálásához (az Time Series Insights által az esemény forrásával kapcsolatos adatok olvasására és feldolgozására szolgáló idő) a [környezet tervezésekor](time-series-insights-update-plan.md).
 
-A Time Series Insights előzetes adatbetöltési szabályzatai határozzák meg, hogy az adatok honnan és milyen formátumból származhatnak.
+Time Series Insights előnézeti adatok bejövő házirendjei határozzák meg, hogy az adatok honnan származnak, és milyen formátumban kell megadni az adatok formátumát.
 
-### <a name="ingress-policies"></a>A be- és énekre vonatkozó irányelvek
+### <a name="ingress-policies"></a>Bejövő házirendek
 
-*Az adatok betöltése* magában foglalja, hogyan küldi el az adatokat egy Azure Time Series Insights előzetes környezetbe. 
+A *bejövő adatforgalom* azt jelenti, hogyan történik az adatküldés Azure Time Series Insights előzetes verziójú környezetbe.
 
-A legfontosabb konfigurációkat, formázásokat és gyakorlati tanácsokat az alábbiakban foglaljuk össze.
+A legfontosabb konfiguráció, a formázás és az ajánlott eljárások összegzése alább látható.
 
 #### <a name="event-sources"></a>Eseményforrások
 
-Az Azure Time Series Insights előzetes verzió a következő eseményforrásokat támogatja:
+Azure Time Series Insights előzetes verzió a következő eseményforrás-forrásokat támogatja:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Az Azure Time Series Insights előzetes verzió példányonként legfeljebb két eseményforrást támogat. Amikor egy eseményforrást csatlakoztat, az egész et a TSI-környezet a legrégebbi eseménytől kezdve a Sok beli vagy az Event Hub ban tárolt összes eseményt felolvassa. 
+Azure Time Series Insights az előzetes verzió legfeljebb két eseményforrás használatát támogatja példányok esetében. Egy eseményforrás összekapcsolásakor az ÁME-környezet beolvassa az IOT vagy az Event hub-ban jelenleg tárolt összes eseményt a legrégebbi eseménytől kezdve.
 
-> [!IMPORTANT] 
-> * Nagy kezdeti késést tapasztalhat, amikor eseményforrást csatol az előzetes verziójú környezethez. 
-> Az eseményforrás késése az IoT Hubban vagy az Event Hubban jelenleg lévő események számától függ.
-> * A nagy késés alábbhagy az eseményforrás-adatok első betöltése után. Küldjön be egy támogatási jegyet az Azure Portalon keresztül, ha folyamatos nagy késést tapasztal.
+> [!IMPORTANT]
+>
+> * Előfordulhat, hogy magas kezdeti késleltetést tapasztal, amikor egy eseményforrás az előzetes verziójú környezethez van csatolva.
+> Az eseményforrás késése az IoT Hub vagy az Event hub aktuális eseményeinek számától függ.
+> * A magas késleltetés az eseményforrás-adat első betöltését követően fog megjelenni. Ha folyamatos, magas késést tapasztal, küldjön támogatási jegyet a Azure Portalon keresztül.
 
-#### <a name="supported-data-format-and-types"></a>Támogatott adatformátum és -típusok
+#### <a name="supported-data-format-and-types"></a>Támogatott adatformátumok és típusok
 
-Az Azure Time Series Insights támogatja az Azure IoT Hubról vagy az Azure Event Hubs-ból küldött UTF-8 kódolású JSON-t. 
+Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs által eljuttatott UTF-8 kódolású JSON-t. 
 
 A támogatott adattípusok a következők:
 
 | Adattípus | Leírás |
 |---|---|
-| **Bool** | Két állapot egyikével rendelkező `true` adattípus: vagy `false`. |
-| **Datetime** | Egy pillanatnyi időt jelöl, amelyet általában dátumként és napszakban fejeznek ki. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. |
-| **double** | Dupla pontosságú, 64 bites [IEEE 754](https://ieeexplore.ieee.org/document/8766229) lebegőpontos. |
-| **Karakterlánc** | Unicode karakterekből álló szöveges értékek.          |
+| **logikai** | Olyan adattípus, amely két állapot egyikét adja `true` meg `false`: vagy. |
+| **dateTime** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. |
+| **double** | Kétszeres pontosságú 64 bites [IEEE 754](https://ieeexplore.ieee.org/document/8766229) lebegőpontos pont. |
+| **sztring** | Szöveges értékek, amelyek Unicode-karakterből állnak.          |
 
 #### <a name="objects-and-arrays"></a>Objektumok és tömbök
 
-Az esemény hasznos adatának részeként összetett típusokat, például objektumokat és tömböket küldhet, de az adatok tároláskor összeolvasztási folyamaton mennek keresztül. 
+Az esemény hasznos adatainak részeként összetett típusokat (például objektumokat és tömböket) is elküldhet, de az adatok tárolása során a rendszer egy összeolvasztási folyamatot fog végezni.
 
-A JSON-események alakításáról, az összetett típusok küldéséről és a beágyazott objektumok összeolvasztásáról a [JSON be- és lekérdezési műveletek, valamint](./time-series-insights-update-how-to-shape-events.md) a tervezés és optimalizálás segítése című lekérdezés részletes ismertetése című részben található.
+Részletes információk arról, hogyan formázhatja a JSON-eseményeket, hogyan küldhet összetett típusokat és beágyazott objektumok összeolvasztását, hogy [Hogyan alakíthatja át a JSON-t a bejövő és a lekérdezési](./time-series-insights-update-how-to-shape-events.md) műveletekhez, hogy segítséget nyújtson a tervezéshez és optimalizáláshoz.
 
-### <a name="ingress-best-practices"></a>A be- és nagybe– ajánlott eljárások
+### <a name="ingress-best-practices"></a>Beáramló ajánlott eljárások
 
 Javasoljuk, hogy a következő ajánlott eljárásokat alkalmazza:
 
-* Konfigurálja az Azure Time Series Insights és az ugyanabban a régióban található Bármely IoT Hub vagy Event Hub konfigurálása a potenciális késés csökkentése érdekében.
+* A lehetséges késés csökkentése érdekében konfigurálja Azure Time Series Insights és bármely IoT Hub vagy Event hub-t ugyanabban a régióban.
 
-* [Tervezze meg a méretezési igényeket](time-series-insights-update-plan.md) a várható betöltési arány kiszámításával és annak ellenőrzésével, hogy az az alább felsorolt támogatott díjba esik-e.
+* [Tervezze meg a méretezési igényeket](time-series-insights-update-plan.md) a várható betöltési arány kiszámításával és annak ellenőrzésével, hogy az az alább felsorolt támogatott díjszabás alá esik-e.
 
-* Ismerje meg, hogyan optimalizálhatja és alakíthatja a JSON-adatokat, valamint az előnézet jelenlegi korlátait, ha elolvassa, [hogyan formálhatja a JSON-t a bejövő forgalom és a lekérdezés számára.](./time-series-insights-update-how-to-shape-events.md)
+* Megtudhatja, hogyan optimalizálhatja és formázhatja a JSON-adatait, valamint az előzetes verzió jelenlegi korlátozásait, ha beolvassa, [Hogyan formázhatja a JSON-t a bejövő és a lekérdezési](./time-series-insights-update-how-to-shape-events.md)művelethez.
 
-### <a name="ingress-scale-and-preview-limitations"></a>A be- ésforgalom méretezési és előnézeti korlátozásai 
+### <a name="ingress-scale-and-preview-limitations"></a>Beáramló méretezési és előzetes korlátozások
 
-Az Azure Time Series Insights előzetes be- és információinak korlátozásait az alábbiakban ismertetjük.
+Azure Time Series Insights előzetes bejövő korlátozások az alábbiakban olvashatók.
 
 > [!TIP]
-> Olvassa el [az előnézeti környezet megtervezése című részt](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) az összes előzetes verziós korlát átfogó listájáért.
+> Tekintse meg az előzetes verzióra vonatkozó összes korlát átfogó listáját az [előnézeti környezet megtervezése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) című cikkből.
 
-#### <a name="per-environment-limitations"></a>Környezetre vonatkozó korlátozások
+#### <a name="per-environment-limitations"></a>/Környezet korlátozásai
 
-A bejövő díjak általában a szervezetben található eszközök számának, az eseménykibocsátási gyakoriságnak és az egyes események méretének tényezőjeként tekinthetők:
+Általánosságban elmondható, hogy a bejövő forgalom díjszabása a szervezet eszközeinek száma, az esemény-emisszió gyakorisága, valamint az egyes események mérete:
 
-*  **Berendezések száma** × **Az esemény kibocsátási gyakorisága** × Az egyes események **mérete**.
+*  **Az eszközök száma** × **esemény kibocsátásának gyakorisága** × **az egyes események mérete**.
 
-Alapértelmezés szerint a Time Series Insights előzetes verzió a beérkező adatokat **a Time Series Insights-környezetben legfeljebb 1 megabájt (MBps)** sebességgel tudja beadni. További korlátozások vannak [hubpartíciónként.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)
+Alapértelmezés szerint a Time Series Insights-előnézet a bejövő adatmennyiséget **legfeljebb 1 megabájt/másodperc (Mbps)** sebességgel képes befogadni Time Series Insights környezetben. A [hub-partíciók esetében](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)további korlátozások vannak érvényben.
 
-> [!TIP] 
-> * Akár 16 Mb/s sebesség betöltési sebességéhez is környezetvédelmi támogatás biztosítható.
-> * Lépjen kapcsolatba velünk, ha nagyobb átviteli hangra van szüksége egy támogatási jegy azure portalon keresztül történő elküldésével.
+> [!TIP]
+>
+> * A sávszélesség-támogatás a 16 MBps-ig terjedő sebességek igény szerinti megadásával adható meg.
+> * Vegye fel velünk a kapcsolatot, ha a támogatási jegyet a Azure Portalon keresztül küldi el, ha nagyobb átviteli sebességre van szüksége.
  
 * **1. példa:**
 
-    A Contoso Shipping 100 000 olyan eszközzel rendelkezik, amelyek percenként háromszor bocsátanak ki eseményt. Egy esemény mérete 200 bájt. Egy Iot Hub négy partíciót használnak a Time Series Insights eseményforrásként.
+    A contoso szállítása 100 000 olyan eszközzel rendelkezik, amely percenként három alkalommal bocsát ki eseményt. Az események mérete 200 bájt. Egy IOT hub-t használnak négy partícióval Time Series Insights eseményforrásként.
 
-    * A Time Series Insights-környezetbe a betöltési arány a következő lenne: **100 000 eszköz * 200 bájt/esemény * (3/60 esemény/mp) = 1 Mb/s**.
-    * A partíciónkénti betöltési sebesség 0,25 Mb/s lenne.
-    * A Contoso Shipping betöltési díja az előzetes verzió méretarányának korlátozásán belül lenne.
+    * A Time Series Insights-környezet betöltési sebessége a következő: **100 000 eszköz * 200 bájt/esemény * (3/60 esemény/másodperc) = 1 MB/s**.
+    * A másodpercenkénti betöltési arány 0,25 MBps.
+    * A contoso szállításának betöltési sebessége az előzetes verzióra vonatkozó korlátozáson belül lenne.
 
 * **2. példa**
 
-    A Contoso Fleet Analytics 60 000 olyan eszközzel rendelkezik, amelyek másodpercenként bocsátanak ki egy eseményt. Egy 4-es partíciós számlálóval rendelkező Event Hubot használnak a Time Series Insights eseményforrásként. Egy esemény mérete 200 bájt.
+    A contoso Fleet Analytics 60 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 4, Time Series Insights eseményforrás. Az események mérete 200 bájt.
 
-    * A környezet betöltési sebessége a következő lenne: **60 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 12 Mb/s**.
-    * A partíciónkénti sebesség 3 MBps lenne.
-    * A Contoso Fleet Analytics betöltési sebessége túllépi a környezet és a partíciókorlátokat. A Time Series Insights az Azure Portalon keresztül kérelmet nyújthat be a környezetük betöltési arányának növeléséhez, és létrehozhat egy Event Hub-ot, amely több partíciót tartalmaz az előzetes verzió korlátain belül.
+    * A környezet betöltési sebessége a következő: **60 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 12 Mbps**.
+    * A/partíciók aránya 3 MBps.
+    * A contoso Fleet Analytics betöltési aránya a környezet és a partíciók korlátain alapul. Kérést küldhetnek Time Series Insightson keresztül Azure Portal a környezet betöltési arányának növeléséhez, és létrehozhat egy olyan Event hub-t, amely több partícióval rendelkezik az előzetes verzió korlátain belül.
 
-#### <a name="hub-partitions-and-per-partition-limits"></a>Hub-partíciók és partíciónkénti korlátok
+#### <a name="hub-partitions-and-per-partition-limits"></a>Hub-partíciók és partíciós korlátok
 
-A Time Series Insights-környezet tervezésekor fontos figyelembe venni a Time Series Insights-hoz kapcsolódó eseményforrás(ok) konfigurációját. Az Azure IoT Hub és az Event Hubs egyaránt használja a partíciókat a horizontális méretezés engedélyezése az eseményfeldolgozáshoz. 
+Time Series Insights környezet megtervezésekor fontos figyelembe venni azon eseményforrás (ok) konfigurációját, amelyekhez csatlakozni fog Time Series Insightshoz. Mind az Azure-IoT Hub, mind a Event Hubs partíciókat használ az események feldolgozásához szükséges horizontális méretezés lehetővé tételéhez. 
 
-A *partíció* a hubon tartott események rendezett sorozata. A partíciók száma a hub létrehozási fázisában van beállítva, és nem módosítható. 
+A *partíciók* a központban tárolt események rendezett sorrendje. A partíciók száma a központ létrehozási fázisában van beállítva, és nem módosítható.
 
-Az Event Hubs particionálási gyakorlati tanácsok, tekintse [át, hogy hány partícióra van szükségem?](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
+Event Hubs particionálással kapcsolatos ajánlott eljárások esetében ellenőrizze, [hogy hány partícióra van szükségem?](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
 
 > [!NOTE]
-> Az Azure Time Series Insights által használt legtöbb IoT Hubs csak négy partíciót kell használnia.
+> A Azure Time Series Insights leggyakrabban használt IoT huboknak négy partícióra van szükségük.
 
-Akár új központot hoz létre a Time Series Insights-környezethez, akár egy meglévőt használ, ki kell számítania a partíciónkénti betöltési arányt annak megállapításához, hogy az az előzetes verziókorlátain belül van-e. 
+Akár új központot hoz létre a Time Series Insights-környezethez, akár egy meglévőt használ, ki kell számítania a partíciók betöltési arányát annak megállapításához, hogy az előnézeti korlátokon belül van-e. 
 
-Az Azure Time Series Insights előzetes verziója jelenleg **0,5 Mb/s partíciónkénti általános korláttal rendelkezik.**
+A Azure Time Series Insights előzetes **verziójának jelenleg a 0,5 Mbps-ra vonatkozó általános korlátja**van.
 
-#### <a name="iot-hub-specific-considerations"></a>Az IoT Hub-specifikus szempontok
+#### <a name="iot-hub-specific-considerations"></a>IoT Hub-specifikus megfontolások
 
-Amikor egy eszközt az IoT Hubban hoz létre, véglegesen hozzá van rendelve egy partícióhoz. Ennek során az IoT Hub képes garantálni az eseményrendezést (mivel a hozzárendelés soha nem változik).
+Ha egy eszköz a IoT Hubban jön létre, akkor véglegesen hozzá van rendelve egy partícióhoz. Ennek során a IoT Hub képes biztosítani az események rendezését (mivel a hozzárendelés soha nem változik).
 
-A rögzített partíció-hozzárendelés is hatással van a Time Series Insights-példányok, amelyek az IoT Hub ról küldött adatok at. Ha több eszközről érkező üzeneteket továbbít a hubugyanazzal az átjáróeszköz-azonosítóval, előfordulhat, hogy ugyanabban a partíción érkeznek, ugyanakkor potenciálisan túllépi a partícióskálánkénti korlátokat. 
+A rögzített partíciós hozzárendelések olyan Time Series Insights példányokat is érintenek, amelyek IoT Hub alsóbb rétegből érkező adatok betöltését hajtják végre. Ha több eszközről származó üzeneteket továbbítanak a központba ugyanazzal az átjáró-eszköz azonosítójával, akkor előfordulhat, hogy ugyanazon a partíción érkeznek, amely a partíciós méretezési korlátokat is meghaladja.
 
 **Hatás**:
 
-* Ha egy partíció tartós betöltési sebességet tapasztal az előzetes verziós korláton, lehetséges, hogy a Time Series Insights nem szinkronizálja az összes eszköz telemetriai adatok at az IoT Hub adatmegőrzési időszak túllépése előtt. Ennek eredményeképpen az elküldött adatok elveszhetnek, ha a betöltési korlátokat következetesen túllépik.
+* Ha egy partíció az előzetes verzióra vonatkozó korláton belül tartósan teljesíti a betöltési sebességet, lehetséges, hogy a Time Series Insights nem fogja szinkronizálni az összes eszközt a IoT Hub adatmegőrzési időszak túllépése előtt telemetria. Ennek eredményeképpen a továbbított adatmennyiségek elvesznek, ha a betöltési korlátokat folyamatosan túllépik.
 
-A körülmények enyhítése érdekében a következő ajánlott eljárásokat javasoljuk:
+Ennek a körülménynek a mérséklése érdekében a következő ajánlott eljárásokat javasoljuk:
 
-* A megoldás üzembe helyezése előtt kiszámíthatja a környezetenkénti és a partíciónkénti betöltési díjakat.
-* Győződjön meg arról, hogy az IoT Hub-eszközök terheléselosztása a lehető legnagyobb mértékben.
+* A megoldás üzembe helyezése előtt számítsa ki a környezet és a partíciók betöltési díjait.
+* Győződjön meg arról, hogy a IoT Hub-eszközök terheléselosztása a lehető legtávolabbi mértékben történik.
 
 > [!IMPORTANT]
-> Az IoT Hubot eseményforrásként használó környezetekben számítsa ki a betöltési sebességet a használatban lévő központi eszközök számával, hogy megbizonyosodjon arról, hogy a sebesség az előzetes verzióban partíciónkénti 0,5 MBps alá esik.
-> * Még ha több esemény érkezik egyszerre, az előnézeti korlát ot nem lépi túl a program.
+> Az IoT Hub esemény forrásaként használó környezetek esetében a használatban lévő hub-eszközök számával Számítsuk ki a betöltési arányt, hogy az előzetes verzióban a feltöltési sebesség az 0,5 MBps-ra esik.
+>
+> * Még ha több esemény is érkezik egyszerre, az előzetes verzióra vonatkozó korlátot a rendszer nem fogja meghaladni.
 
-  ![IoT hub partíciódiagram](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+  ![IoT Hub partíciós diagram](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
 
-A hub átviteli és partícióinak optimalizálásáról az alábbi forrásokból tudhat meg többet:
+Az alábbi forrásokból tájékozódhat a hub átviteli sebességének és partícióinak optimalizálásáról:
 
-* [IoT hub méretezése](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
-* [Eseményközpont-méretezés](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
-* [Eseményközpont-partíciók](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
+* [IoT Hub skála](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Event hub-skála](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Event hub-partíciók](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Adattárolás
 
-Amikor létrehoz egy Time Series Insights előzetes *verziós készletkészlet-készletkörnyezetet,* két Azure-erőforrást hoz létre:
+Time Series Insights előzetes *utólagos* elszámolású (TB) SKU-környezet létrehozásakor két Azure-erőforrást hoz létre:
 
-* Egy Azure Time Series Insights előzetes környezet, amely konfigurálható a meleg adattároláshoz.
-* Az Azure Storage általános célú V1 blobfiók a hideg adattároláshoz.
+* Egy Azure Time Series Insights előnézeti környezet, amely a meleg adattároláshoz konfigurálható.
+* Egy Azure Storage általános célú v1 blob-fiók a hideg adattároláshoz.
 
-A meleg boltban lévő adatok csak a [Time Series Query](./time-series-insights-update-tsq.md) és az Azure Time Series Insights előzetes [kezelője](./time-series-insights-update-explorer.md)segítségével érhetők el. A melegtárban a Time Series Insights környezet létrehozásakor kiválasztott [megőrzési időszakon](./time-series-insights-update-plan.md#the-preview-environment) belül a legutóbbi adatokat fogja tartalmazni.
+A meleg tárolóban tárolt adatai csak a [Time Series lekérdezés](./time-series-insights-update-tsq.md) és a [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)használatával érhetők el. A meleg áruház a Time Series Insights környezet létrehozásakor kiválasztott [megőrzési időszakon](./time-series-insights-update-plan.md#the-preview-environment) belül friss adatokkal fog szerepelni.
 
-A Time Series Insights Preview a hűtőház adatait [a Parketta fájlformátumban](#parquet-file-format-and-folder-structure)menti az Azure Blob storage-ba. A Time Series Insights Preview kizárólag ezeket a hűtőház-adatokat kezeli, de közvetlenül normál parkettafájlként is elolvashatja.
+Time Series Insights az előnézet a hűtőházi tároló adatait az Azure Blob Storage-ba menti a [Parquet fájlformátumban](#parquet-file-format-and-folder-structure). Time Series Insights az előnézet kizárólag a hűtőházi adattárolási adattárakat kezeli, de közvetlenül a standard parketta-fájlként is elérhető.
 
 > [!WARNING]
-> Az Azure Blob storage-fiók tulajdonosaként, ahol a hűtőház adatai találhatók, teljes hozzáféréssel rendelkezik a fiók összes adatához. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkesztje vagy törölje a Time Series Insights preview által írt adatokat, mert ez adatvesztést okozhat.
+> Az Azure Blob Storage-fiók tulajdonosaként, ahol a hűtőházi adattárolási adat található, teljes hozzáférése van a fiókban lévő összes adathoz. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkessze vagy törölje az előnézeti írással Time Series Insights adatot, mert az adatvesztést eredményezhet.
 
 ### <a name="data-availability"></a>Adatok rendelkezésre állása
 
-Az Azure Time Series Insights előzetes partíciók és indexeli az adatokat az optimális lekérdezési teljesítmény érdekében. Az adatok az indexelés után mind a meleg (ha engedélyezve van) és a hűtőtárolóból lekérdezésre elérhetők. A betöltés alatt álló adatok mennyisége hatással lehet a rendelkezésre állásra.
+Az optimális lekérdezési teljesítmény érdekében Azure Time Series Insights előnézeti partíciókat és indexeli az adataikat. Az adatok elérhetővé válnak mind a meleg (ha engedélyezve), mind a hűtőházi tároló lekérdezéséhez az indexelés után. A betöltött adatmennyiség hatással lehet erre a rendelkezésre állásra.
 
 > [!IMPORTANT]
-> Az előzetes verzió során az adatok elérhetővé vájtának előtt legfeljebb 60 másodperces időszak jelenhet meg. Ha 60 másodpercen túl jelentős késést tapasztal, küldjön be egy támogatási jegyet az Azure Portalon keresztül.
+> Az előzetes verzió ideje alatt akár 60 másodperces időszakot is megtapasztalhat, mielőtt az adatmennyiség elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, küldjön egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Ez a szakasz ismerteti az Azure Storage-adatok az Azure Time Series Insights előzetes verziójával kapcsolatos részleteket.
+Ez a szakasz a Azure Time Series Insights előzetes verziójának megfelelő Azure Storage-adatokat ismerteti.
 
-Az Azure Blob storage alapos leírását olvassa el a [Storage-blobok bevezetés című részében.](../storage/blobs/storage-blobs-introduction.md)
+Az Azure Blob Storage részletes ismertetését olvassa el a [Storage Blobok bemutatása](../storage/blobs/storage-blobs-introduction.md)című cikkből.
 
-### <a name="your-storage-account"></a>A tárfiók
+### <a name="your-storage-account"></a>A Storage-fiók
 
-Amikor létrehoz egy Azure Time Series Insights preview PAYG-környezetet, egy Azure Storage általános célú V1 blobfiók jön létre a hosszú távú hűtőtárolóként.  
+Azure Time Series Insights előzetes verziójú TB-környezet létrehozásakor létrejön egy Azure Storage általános célú v1 blob-fiók, amely a hosszú távú hűtőházi tárolóként jön létre.  
 
-Az Azure Time Series Insights előzetes verzió az Azure Storage-fiókban az egyes eseményekről legfeljebb két példányt őriz meg. Egy példány tárolja a betöltési idő által rendezett eseményeket, mindig lehetővé téve az eseményekhez való hozzáférést egy idősorrendben. Idővel a Time Series Insights Preview is létrehoz egy újraparticionált másolatot az adatokról, hogy optimalizálja a performant Time Series Insights lekérdezés. 
+Azure Time Series Insights előzetes verzióban az Azure Storage-fiókban az egyes események két példánya is megmarad. Az egyik másolat a betöltési idő alapján rendezi az eseményeket, így mindig lehetővé teszi az események elérését egy időben rendezett sorrendben. Az idő múlásával Time Series Insights előzetes verzióban az adatok újraparticionált másolata is létrejön, így optimalizálható a végrehajtás Time Series Insights a lekérdezés.
 
-A nyilvános előzetes verzió során az adatok határozatlan ideig tárolhatók az Azure Storage-fiókban.
+A nyilvános előzetes verzióban az Azure Storage-fiókban az adatai határozatlan ideig tárolódnak.
 
-#### <a name="writing-and-editing-time-series-insights-blobs"></a>A Time Series Insights-blobok írása és szerkesztése
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights Blobok írása és szerkesztése
 
-A lekérdezési teljesítmény és az adatok rendelkezésre állásának biztosítása érdekében ne edzese vagy törölje a Time Series Insights előzetes verzióban létrehozott blobokat.
+A lekérdezés teljesítményének és az adatelérhetőségnek a biztosításához ne szerkessze vagy töröljön minden olyan blobot, amelyet Time Series Insights előnézet hoz létre.
 
-#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>A Time Series Insights előzetes verzióbeli hűtőház adatainak elérése 
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Hozzáférés az Time Series Insights előzetes verziójának hűtőházi tárolására
 
-A Mellett, hogy hozzáfér az adatokhoz a [Time Series Insights előzetes verziókezelőés](./time-series-insights-update-explorer.md) a Time Series [Query,](./time-series-insights-update-tsq.md)érdemes lehet az adatok at közvetlenül a Parketta tárolt fájlokat a hűtőházban. Például elolvashatja, átalakíthatja és megtisztíthatja az adatokat egy Jupyter-jegyzetfüzetben, majd használhatja azt az Azure Machine Learning-modell betanításához ugyanabban a Spark-munkafolyamatban.
+Az adatoknak a [Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) és a [Time Series lekérdezésből](./time-series-insights-update-tsq.md)való elérése mellett előfordulhat, hogy közvetlenül a hűtőházi tárolóban tárolt parketta-fájlokból is el szeretné érni az adatait. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
 
-Az adatok eléréséhez közvetlenül az Azure Storage-fiók, olvasási hozzáférést kell a Time Series Insights előzetes adatok tárolására használt fiókhoz. Ezután a kiválasztott adatokat a Parketta fájl létrehozási ideje alapján olvashatja el, amely a `PT=Time` [Parketta fájlformátum](#parquet-file-format-and-folder-structure) szakaszban az alábbiakban ismertetett mappában található.  Az olvasási hozzáférés engedélyezéséről a [tárfiók erőforrásaihoz való hozzáférés kezelése című](../storage/blobs/storage-manage-access-to-resources.md)témakörben olvashat bővebben.
+Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Time Series Insights előzetes verzió adatainak tárolásához használt fiókhoz. Ezután a Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget az `PT=Time` alább ismertetett mappában található parketta- [fájl formátuma](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
 
-#### <a name="data-deletion"></a>Adatok törlése
+#### <a name="data-deletion"></a>Adattörlés
 
-Ne törölje a Time Series Insights előzetes fájljait. A kapcsolódó adatokat csak a Time Series Insights előzetes verziójából kezelheti.
+Ne törölje a Time Series Insights előnézeti fájljait. A kapcsolódó adatok csak Time Series Insights előzetes verzióban kezelhetők.
 
-### <a name="parquet-file-format-and-folder-structure"></a>Parketta fájlformátum és mappastruktúra
+### <a name="parquet-file-format-and-folder-structure"></a>A parketta fájlformátuma és a mappa szerkezete
 
-Parketta egy nyílt forráskódú oszlopos fájlformátum célja a hatékony tárolás és a teljesítmény. A Time Series Insights előzetes verzió a Parquet segítségével engedélyezi a Time Series ID-alapú lekérdezési teljesítményt nagy méretekben.  
+A Parquet egy nyílt forráskódú, oszlopos fájlformátum, amely hatékony tárolást és teljesítményt nyújt. Time Series Insights az előzetes verzióban a parketta használatával engedélyezhető a Time Series ID-alapú lekérdezési teljesítmény a skálán.  
 
-A Parketta fájltípussal kapcsolatos további információkért olvassa el a [Parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
+A Parquet fájltípussal kapcsolatos további információkért olvassa el a [parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
 
-A Time Series Insights preview az adatok másolatait az alábbiak szerint tárolja:
+Time Series Insights az alábbi módon tárolja az adatai másolatait:
 
-* Az első, kezdeti példány tã¶rtÃgÃ¶sszejÃtOrZÃTããÃTãtãttttttt, a kajálta idoszaka nagyjából az érkezés sorrendjében történik. Ezek az adatok `PT=Time` a mappában találhatók:
+* Az első, a kezdeti másolat a betöltési idő alapján van particionálva, és nagyjából megérkezésük sorrendjében tárolja az adatot. Ez az adat a `PT=Time` mappában található:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* A második, újraparticionált példány tikulyasorozat-azonosítók szerint van csoportosítva, és a `PT=TsId` mappában található:
+* A második, újraparticionált másolat az idősorozat-azonosítók szerint van csoportosítva, és a `PT=TsId` mappában található:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-Mindkét esetben a Parketta fájl időtulajdonsága megfelel a blob létrehozási idejének. A mappában lévő `PT=Time` adatok a fájlba való írást követően nem változnak. A mappában lévő `PT=TsId` adatok idővel lekérdezésre lesznek optimalizálva, és nem statikusak.
+Mindkét esetben a Parquet fájl Time tulajdonsága a blob létrehozási idejére vonatkozik. A `PT=Time` mappában lévő adatértékek a fájlba való írás után nem módosulnak. A `PT=TsId` mappában lévő adatok a lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus.
 
 > [!NOTE]
-> * `<YYYY>`négyjegyű évszámmal.
-> * `<MM>`kétjegyű havi ábrázolásra.
-> * `<YYYYMMDDHHMMSSfff>`időbélyeg-ábrázolásra`YYYY`kerül, amely négyjegyű évszámmal`MM`( ), kétjegyű hónap ( ), kétjegyű nap (`DD`kétjegyű óra ( kétjegyű perc`HH`(`MM`), kétjegyű második (`SS`), és háromjegyű ezredmásodperc ( ).`fff`
+>
+> * `<YYYY>`leképezi a négy számjegyű év ábrázolását.
+> * `<MM>`leképezi a kétjegyű hónapok ábrázolását.
+> * `<YYYYMMDDHHMMSSfff>`leképezi a kétjegyű`YYYY`(), kétjegyű hónap`MM``DD``HH``MM`(), kétjegyű (), kétjegyű (), kétjegyű (), kétszámjegyű második (`SS`) és három számjegyű ezredmásodperc (`fff`) közötti időbélyegzőt ábrázoló ábrázolást.
 
-A Time Series Insights előzetes eseményei a következőképpen vannak leképezve a parkettafájl tartalmára:
+Time Series Insights előnézeti események a következő módon vannak leképezve a parketta-fájl tartalmára:
 
 * Minden esemény egyetlen sorra van leképezve.
-* Minden sor tartalmazza az **időbélyeg** oszlop egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null. Alapértelmezés szerint az **esemény várólistára helyezett idő,** ha az időbélyegző tulajdonság nincs megadva az esemény forrásában. A tárolt időbélyegző mindig UTC-ben van.
-* Minden sor tartalmazza a Time Series ID (TSID) oszlop(ok) meghatározásakor, amikor a Time Series Insights környezet ben jön létre. A TSID tulajdonság `_string` neve tartalmazza az utótagot.
-* A telemetriai adatokként küldött összes többi tulajdonság a `_string` tulajdonság `_bool` típusától függően oszlopnevekhez van rendelve, amelyek a tulajdonságtípustól függően végződnek (karakterlánc), (logikai), `_datetime` (datetime) vagy `_double` (dupla) végződésű.
-* Ez a leképezési séma a fájlformátum első, **V=1-ként** hivatkozott és az azonos nevű alapmappában tárolt fájlrendszerre vonatkozik. A szolgáltatás fejlődésével ez a leképezési séma változhat, és a hivatkozás neve is csökkenhet.
+* Minden sor tartalmazza az **időbélyegző** oszlopot egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null értékű. Alapértelmezés szerint az **Event várólistán lévő idő** , ha nincs megadva az időbélyeg tulajdonság az eseményforrás számára. A tárolt időbélyegző mindig UTC szerint van.
+* Minden sor tartalmazza a Time Series Insights-környezet létrehozásakor definiált idősoros azonosító (TSID) oszlop (oka) t. A TSID-tulajdonság neve tartalmazza `_string` az utótagot.
+* A telemetria-adatként elküldett egyéb tulajdonságok a tulajdonság típusától függően (string `_string` ), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) oszlopokra vannak leképezve.
+* Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa [el, hogyan alakíthatja a JSON-t a be- és lekérdezéshez.](./time-series-insights-update-how-to-shape-events.md)
+- Olvassa el [, hogyan formázhatja a JSON-t a bejövő és a lekérdezéshez](./time-series-insights-update-how-to-shape-events.md).
 
-- További információ az új [adatmodellezésről.](./time-series-insights-update-tsm.md)
+- További információ az új [adatmodellezésről](./time-series-insights-update-tsm.md).

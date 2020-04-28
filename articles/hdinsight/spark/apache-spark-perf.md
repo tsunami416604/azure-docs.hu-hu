@@ -1,144 +1,144 @@
 ---
-title: Spark-feladatok optimalizálása a teljesítmény érdekében – Azure HDInsight
-description: Az Azure HDInsightban az Apache Spark-fürtök legjobb teljesítményére vonatkozó közös stratégiák megjelenítése.
+title: A Spark-feladatok optimalizálása a teljesítmény érdekében – Azure HDInsight
+description: Az Azure HDInsight Apache Spark-fürtök legjobb teljesítményére vonatkozó általános stratégiák megjelenítése.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 5012b5abf12beadbcb18f21fe2fe6ebfb076598a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 736653e82f753341fbbdfb795f229145bba96162
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617975"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188191"
 ---
-# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Az Apache Spark-feladatok optimalizálása a HDInsightban
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark feladatok optimalizálása a HDInsight-ben
 
-Ismerje meg, hogyan optimalizálhatja az Apache Spark fürtkonfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memórianyomás, a nem megfelelő konfigurációk (például a nem megfelelő méretű végrehajtók) miatt. Emellett hosszú ideig futó műveletek és a descartes-i műveleteket eredményező feladatok. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és lehetővé teheti az [adatok elferdítését.](#optimize-joins-and-shuffles) A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és erőforrás-igényes Spark-feladat-végrehajtásokat. Az Apache Spark HDInsight-alapú használatának megkezdéséről az [Apache Spark-fürtök létrehozása az Azure Portalon című témakörben](apache-spark-jupyter-spark-sql-use-portal.md)talál.
+Megtudhatja, hogyan optimalizálhatja Apache Spark-fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória nyomása, mert nem megfelelő konfigurációk (például hibás méretű végrehajtók) miatt. Emellett a hosszan futó műveleteket és a Descartes-műveletet eredményező feladatokat is. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását. A HDInsight Apache Spark használatának első lépéseivel kapcsolatos információkért lásd: [Apache Spark-fürt létrehozása Azure Portal használatával](apache-spark-jupyter-spark-sql-use-portal.md).
 
-A következő szakaszok ismertetik a Spark-feladat-optimalizálásés -javaslatok közös leírását.
+A következő szakaszok ismertetik a Spark-feladatok gyakori optimalizálásait és javaslatait.
 
-## <a name="choose-the-data-abstraction"></a>Az adatasztrakció kiválasztása
+## <a name="choose-the-data-abstraction"></a>Válassza ki az adatabsztrakciót
 
-A korábbi Spark-verziók RDD-ket használnak az absztrakt adatokhoz, a Spark 1.3 és az 1.6 pedig a DataFrames-et és az Adathalmazokat. Tekintsük a következő relatív érdemeket:
+A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 1,6-es verzióját használták a DataFrames és adatkészletek használatára. Vegye figyelembe a következő relatív Érdemeiket:
 
 * **Adatkeretek**
-    * A legjobb választás a legtöbb helyzetben.
-    * A Catalyst-on keresztül biztosítja a lekérdezés optimalizálását.
-    * Teljes stádiumú kódgenerálás.
+    * Legjobb választás a legtöbb esetben.
+    * Lekérdezési optimalizálást biztosít a katalizátoron keresztül.
+    * Teljes fázisú programkódok létrehozása.
     * Közvetlen memória-hozzáférés.
-    * Alacsony szemétgyűjtés (GC) rezsi.
-    * Nem olyan fejlesztőbarát, mint a Adatkészletek, mivel nincsenek fordítási idejű ellenőrzések vagy tartományi objektumok programozása.
+    * Alacsony terhelésű gyűjtés (GC) terhelése.
+    * Nem fejlesztőként, mint adatkészletek, mivel nincsenek fordítási idejű ellenőrzések vagy tartományi objektumok programozása.
 * **Adatkészletek**
-    * Jó összetett ETL-folyamatokban, ahol a teljesítményhatás elfogadható.
-    * Nem jó az összesítésekben, ahol a teljesítményre gyakorolt hatás jelentős lehet.
-    * A Catalyst-on keresztül biztosítja a lekérdezés optimalizálását.
-    * Fejlesztőbarát tartományi objektumprogramozás és fordítási idejű ellenőrzések biztosításával.
-    * Szerializálási/deszerializálási többletterheléshozzáadása.
-    * Magas GC felső.
-    * Megtöri az egész szakaszban lévő kódgenerálást.
-* **RDD-k**
-    * Nem kell RDD-ket használnia, kivéve, ha új egyéni RDD-t kell készítenie.
-    * Nincs lekérdezésoptimalizálás a Catalyst-on keresztül.
-    * Nincs teljes stádiumú kódgenerálás.
-    * Magas GC felső.
-    * A Spark 1.x örökölt API-kat kell használnia.
+    * Olyan összetett ETL-folyamatokban jó, ahol a teljesítményre gyakorolt hatás elfogadható.
+    * Nem jó olyan összesítésekben, ahol a teljesítményre gyakorolt hatás jelentős lehet.
+    * Lekérdezési optimalizálást biztosít a katalizátoron keresztül.
+    * Fejlesztőknek – a tartományi objektumok programozása és a fordítási idő ellenőrzésének biztosításával.
+    * Szerializálási/deszerializálási terhelés hozzáadására szolgál.
+    * Magas GC-terhelés.
+    * A teljes fázisú programkódok létrehozásának megszakítása.
+* **RDD**
+    * Nem kell RDD használnia, hacsak nem kell új egyéni RDD létrehoznia.
+    * Nincs lekérdezés optimalizálása a katalizátoron keresztül.
+    * Nincs egész fázist generáló kód.
+    * Magas GC-terhelés.
+    * A Spark 1. x örökölt API-kat kell használnia.
 
 ## <a name="use-optimal-data-format"></a>Optimális adatformátum használata
 
-A Spark számos formátumot támogat, például a csv, a json, az xml, a parketta, az ork és az avro. A Spark kiterjeszthető a külső adatforrásokkal rendelkező formátumok támogatására - további információkért lásd: [Apache Spark-csomagok.](https://spark-packages.org)
+A Spark számos formátumot támogat, például a CSV-t, a JSON-t, az XML-t, a parketta, az ork és a Avro. A Spark bővíthető a külső adatforrásokkal rendelkező több formátum támogatásához – további információ: [Apache Spark csomagok](https://spark-packages.org).
 
-A legjobb teljesítményformátum a *lendületes tömörítéssel*ellátott parketta, amely a Spark 2.x alapértelmezett beállítása. A Parketta oszlopos formátumban tárolja az adatokat, és a Sparkban nagymértékben optimalizált.
+A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált.
 
 ## <a name="select-default-storage"></a>Alapértelmezett tároló kiválasztása
 
-Amikor új Spark-fürtöt hoz létre, kiválaszthatja az Azure Blob Storage-ot vagy az Azure Data Lake Storage-t a fürt alapértelmezett tárolójaként. Mindkét lehetőség lehetővé teszi a hosszú távú tárolás ta- Így az adatok nem törlődnek automatikusan a fürt törlésekor. Létrehozhat egy átmeneti fürtöt, és továbbra is hozzáférhet az adatokhoz.
+Új Spark-fürt létrehozásakor kiválaszthatja az Azure Blob Storage vagy Azure Data Lake Storaget a fürt alapértelmezett tárolója. Mindkét lehetőség biztosítja a hosszú távú tárolás előnyeit az átmeneti fürtök esetében. Így az adatai nem törlődnek automatikusan, amikor törli a fürtöt. Újra létrehozhat egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
 
 | Áruház típusa | Fájlrendszer | Sebesség | Átmeneti | Használati esetek |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Blob Storage (biztonságos) | **wasbs:**//url/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 2| **abfs:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 1| **adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Helyi nagy számítógép-beállítások | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
 
-A tárolási lehetőségek teljes leírását az [Azure HDInsight-fürtökkel való tárolási beállítások összehasonlítása témakörben található.](../hdinsight-hadoop-compare-storage-options.md)
+A tárolási lehetőségek teljes leírását lásd: [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
 
-A Spark saját natív gyorsítótárazási mechanizmusait biztosítja, `.cache()`amelyek `CACHE TABLE`különböző módszerekkel használhatók, például a `.persist()`, és a . Ez a natív gyorsítótárazás kis adatkészletek és ETL-folyamatok esetén hatékony, ahol a köztes eredmények gyorsítótárazására van szükség. Azonban a Spark natív gyorsítótárazása jelenleg nem működik jól a particionálás, mivel a gyorsítótárazott tábla nem tartja a particionálási adatokat. Egy általánosabb és megbízhatóbb gyorsítótárazási technika a *tárolóréteg-gyorsítótárazás.*
+A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, `.persist()`például `.cache()`:, `CACHE TABLE`és. Ez a natív gyorsítótárazás a kis adathalmazok és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget. Egy általánosabb és megbízható gyorsítótárazási módszer a *tárolási réteg gyorsítótárazása*.
 
-* Natív szikra-gyorsítótárazás (nem ajánlott)
-    * Jó kis adatkészletek számára.
-    * Nem működik a particionálás, amely a jövőbeli Spark-kiadások ban változhat.
+* Natív Spark-gyorsítótárazás (nem ajánlott)
+    * Jó kis adatkészletekhez.
+    * Nem működik a particionálással, ami megváltozhat a jövőbeli Spark-kiadásokban.
 
 * Tárolási szint gyorsítótárazása (ajánlott)
-    * A HDInsight az [IO-gyorsítótár](apache-spark-improve-performance-iocache.md) szolgáltatáshasználatával valósítható meg.
-    * A memórián belüli és az SSD-gyorsítótárazást használja.
+    * Az [i/o-gyorsítótár](apache-spark-improve-performance-iocache.md) funkciójának használatával valósítható meg a HDInsight.
+    * Memóriabeli és SSD-gyorsítótárazást használ.
 
 * Helyi HDFS (ajánlott)
-    * `hdfs://mycluster`Elérési út.
+    * `hdfs://mycluster`elérési útja.
     * SSD-gyorsítótárazást használ.
-    * A gyorsítótárazott adatok elvesznek a fürt törlésekor, és gyorsítótár-újraépítést igényelnek.
+    * A gyorsítótárazott adatvesztés a fürt törlésekor elveszik, a gyorsítótár újraépítését igényli.
 
-## <a name="use-memory-efficiently"></a>A memória hatékony használata
+## <a name="use-memory-efficiently"></a>Hatékony memória használata
 
-A Spark úgy működik, hogy adatokat helyez el a memóriában. Így a memória-erőforrások kezelése a Spark-feladatok végrehajtásának optimalizálása kulcsfontosságú szempont.  A fürt memóriájának hatékony használatához számos technikát alkalmazhat.
+A Spark úgy működik, hogy a memóriába helyezi az adatforgalmat. Így a memória erőforrásainak kezelése kulcsfontosságú szempont a Spark-feladatok végrehajtásának optimalizálásához.  Több módszer is alkalmazható a fürt memóriájának hatékony használatára.
 
-* Előnyben részesíti a kisebb adatpartíciókat, és vegye figyelembe az adatok méretét, típusait és eloszlását a particionálási stratégiában.
-* Tekintsük az újabb, hatékonyabb [`Kryo data serialization`](https://github.com/EsotericSoftware/kryo), nem pedig az alapértelmezett Java szerializálás.
-* Szívesebben használja a YARN-t, mivel kötegelt. `spark-submit`
+* A particionálási stratégiában a kisebb adatpartíciók és a fiókok mérete, típusai és eloszlása is előnyben részesített.
+* Vegye figyelembe az újabb, hatékonyabb [`Kryo data serialization`](https://github.com/EsotericSoftware/kryo), az alapértelmezett Java-szerializálás helyett.
+* A FONALat inkább a Batch `spark-submit` által elválasztva használja.
 * A Spark konfigurációs beállításainak figyelése és finomhangolása.
 
-A referencia, a Spark memória szerkezete és néhány kulcsfontosságú végrehajtó memória paraméterei jelennek meg a következő képen.
+A következő képen látható a Spark-memória szerkezete és néhány kulcsfontosságú végrehajtói memória paraméter.
 
-### <a name="spark-memory-considerations"></a>A Spark memóriával kapcsolatos szempontok
+### <a name="spark-memory-considerations"></a>A Spark memória szempontjai
 
-Ha Apache Hadoop YARN-t használ, majd a YARN szabályozza az egyes Spark-csomópontok összes tárolója által használt memóriát.  Az alábbi ábra a legfontosabb objektumokat és azok kapcsolatait mutatja be.
+Ha Apache Hadoop FONALat használ, akkor a FONALak az egyes Spark-csomópontokon lévő összes tároló által használt memóriát vezérlik.  A következő ábrán a legfontosabb objektumok és azok kapcsolatai láthatók.
 
-![YARN Spark memóriakezelés](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+![A fonal Spark memóriájának kezelése](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
-A "kevés memóriával" kapcsolatos üzenetek címzéséhez próbálkozzon a következőkkel:
+A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel:
 
-* Tekintse át a DAG Management Shuffles-t. Csökkentse a térképoldali reducting, pre-partition (vagy bucketize) forrásadatok, maximalizálja az egyes véletlen sorrendű, és csökkenti az elküldött adatok mennyiségét.
-* Inkább `ReduceByKey` a rögzített memóriakorláttal `GroupByKey`, amely összesítéseket, ablakolást és egyéb függvényeket biztosít, de nem kötött memóriakorláttal rendelkezik.
-* Inkább `TreeReduce`, amely nem több munkát a végrehajtók `Reduce`vagy partíciók, a , amely nem minden munkát az illesztőprogram.
-* Az alacsonyabb szintű RDD-objektumok helyett használjon DataFrame-eket.
-* Hozzon létre olyan ComplexTypes típusokat, amelyek olyan műveleteket foglalnak magukban, mint a "Top N", a különböző összesítések vagy az ablakolási műveletek.
+* Tekintse át a DAG felügyeletének véletlenszerű működését. Csökkentse a leképezési oldali újrabontást, a partíció előtti (vagy bucketize) adatforrásokat, maximalizálja az egyetlen véletlenszerű sorrendet, és csökkentse a továbbított adatmennyiséget.
+* Inkább `ReduceByKey` a rögzített memória korlátja, `GroupByKey`amely az összesítéseket, az ablakokat és más funkciókat tartalmaz, de Ann nem kötött memória korlátja van.
+* A `TreeReduce`rendszer inkább a végrehajtók vagy a partíciók több munkáját hajtja `Reduce`végre a (z) rendszeren, amely az illesztőprogramon végzett összes munkát végzi.
+* Az alsó szintű RDD-objektumok helyett használjon DataFrames.
+* Hozzon létre olyan ComplexTypes, amelyek műveleteket (például "Top N"), különböző összesítéseket vagy ablakkezelő műveleteket ágyaznak be.
 
-További hibaelhárítási lépéseket az [Azure HDInsight Ban az Apache Spark OutOfMemoryError kivételei című témakörben.](apache-spark-troubleshoot-outofmemory.md)
+További hibaelhárítási lépésekért lásd: [működése OutOfMemoryError-kivételek Apache Spark az Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
-## <a name="optimize-data-serialization"></a>Adatok szerializálásának optimalizálása
+## <a name="optimize-data-serialization"></a>Az adatszerializálás optimalizálása
 
-Spark-feladatok vannak elosztva, ezért a megfelelő adatszerializálás fontos a legjobb teljesítmény érdekében.  A Sparknak két szerializálási lehetősége van:
+A Spark-feladatok terjesztése megtörténik, ezért a megfelelő adatszerializálás fontos a legjobb teljesítmény érdekében.  A Spark két szerializálási lehetőséggel rendelkezik:
 
-* A Java szerializálás az alapértelmezett.
-* `Kryo`a szerializálás egy újabb formátum, és gyorsabb és kompaktabb szerializációt eredményezhet, mint a Java.  `Kryo`megköveteli, hogy regisztrálja az osztályokat a programban, és ez még nem támogatja az összes Szerializálható típusok.
+* A Java-szerializálás az alapértelmezett.
+* `Kryo`a szerializálás egy újabb formátum, amely gyorsabb és kompakt szerializálást eredményezhet a Javánál.  `Kryo`Ehhez regisztrálnia kell az osztályokat a programban, és még nem támogatja az összes szerializálható típust.
 
-## <a name="use-bucketing"></a>Gyűjtőhasználata
+## <a name="use-bucketing"></a>A gyűjtő használata
 
-A gyűjtőgyűjtés hasonló az adatparticionáláshoz. De minden gyűjtő képes tárolni egy sor oszlop értékek helyett csak egy. Ez a módszer jól működik nagy (több millió vagy több) értékszám, például termékazonosítók particionálásához. A gyűjtőt a sor gyűjtőkulcsának kivonatolásával határozzuk meg. A gyűjtőtáblák egyedi optimalizálást kínálnak, mivel metaadatokat tárolnak a rról, hogyan vannak bevésve és rendezve.
+A gyűjtő hasonló az adatparticionáláshoz. Az egyes gyűjtők azonban nem csupán egy oszlop értékeit tárolhatják. Ez a módszer jól működik, ha nagy (millió vagy több) értéket, például termékazonosítókat kíván particionálni. A gyűjtőt a sor gyűjtő kulcsának kivonatolásával határozzuk meg. A gyűjtő táblák egyedi optimalizációkat biztosítanak, mert metaadatokat tárolnak a gyűjtők és a rendezésük módjával kapcsolatban.
 
-Néhány speciális bucketing funkciók a következők:
+Bizonyos speciális gyűjtő funkciók a következők:
 
-* Lekérdezésoptimalizálás a metaadatok gyűjtőkörén alapuló módon.
+* Lekérdezés optimalizálása a meta-adatok gyűjtője alapján.
 * Optimalizált összesítések.
 * Optimalizált illesztések.
 
-Használhatja a particionálás és a bucketing egy időben.
+Egyszerre használhatja a particionálást és a gyűjtőt.
 
-## <a name="optimize-joins-and-shuffles"></a>Az illesztések és a véletlen sorrendű lejátszás optimalizálása
+## <a name="optimize-joins-and-shuffles"></a>Az illesztések és a shufflek optimalizálása
 
-Ha lassú feladatok vannak egy illesztésen vagy véletlen sorrendű en, az ok valószínűleg *adatdöntés*. Az adatdöntés aszimmetria a feladatadatokban. Egy térképfeladat például 20 másodpercet is igénybe vehet. Az adatok összeillesztésének vagy véletlen sorrendű lejátszásának futtatásához azonban órákba telik. Az adatok döntésének javításához sózni kell az egész kulcsot, vagy *elszigetelt sót* kell használnia a kulcsok nak csak egy részhalmazához. Ha elszigetelt sót használ, további szűrést kell használnia a sózott kulcsok részhalmazának elkülönítéséhez a térképillesztésekben. Egy másik lehetőség egy gyűjtőoszlop bevezetése és előösszesített a vödrökben.
+Ha lassú feladattal rendelkezik egy JOIN vagy shuffle utasításban, az OK valószínűleg *adattorzítást*eredményez. Az adatok eldöntése az aszimmetria a feladatok adataiban. A térképes feladatok például 20 másodpercet is igénybe vehetnek. Ha azonban egy olyan feladatot futtat, amelyben az adatok csatlakoztatva vannak, vagy az adatkeverő órákat vesz igénybe. Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára. Ha izolált sót használ, érdemes tovább szűrnie, hogy elkülönítse a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
 
-Egy másik tényező, amely lassú illesztéseket okoz, az illesztés típusa lehet. Alapértelmezés szerint a `SortMerge` Spark az illesztési típust használja. Az ilyen típusú illesztés nagy adatkészletek esetén a legalkalmasabb. De egyébként számításilag drága, mert először rendeznie kell az adatok bal és jobb oldalát, mielőtt összeolvasztana őket.
+A lassú illesztéseket okozó másik tényező lehet az illesztés típusa. Alapértelmezés szerint a Spark az `SortMerge` illesztés típusát használja. Ez a fajta JOIN a legmegfelelőbb a nagyméretű adathalmazokhoz. Ez azonban egyébként költséges, mert először a bal és a jobb oldalt kell rendeznie az Adategyesítés előtt.
 
-Az `Broadcast` illesztés kisebb adatkészletek esetén a legalkalmasabb, vagy ha az illesztés egyik oldala sokkal kisebb, mint a másik oldal. Ez a fajta illesztés az egyik oldalon az összes végrehajtónak sugároz, és így általában több memóriát igényel az adások számára.
+Az `Broadcast` illesztés a kisebb adatkészletekhez ideális, vagy ha az illesztés egyik oldala sokkal kisebb, mint a másik oldal. Az ilyen típusú illesztések az egyik oldalról az összes végrehajtóra mutatnak, ezért általában több memóriát igényelnek a szórások számára.
 
-Az illesztés típusát a konfigurációban `spark.sql.autoBroadcastJoinThreshold`módosíthatja a beállítással, vagy beállíthatja`dataframe.join(broadcast(df2))`az illesztési emlékeztetőt a DataFrame API-k ( használatával ).
+Az illesztési típust beállíthatja a konfigurációban `spark.sql.autoBroadcastJoinThreshold`, vagy beállíthatja az illesztési mutatót a DataFrame API-k`dataframe.join(broadcast(df2))`() használatával.
 
 ```scala
 // Option 1
@@ -153,70 +153,70 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Ha gyűjtőtáblákat használ, akkor van egy harmadik illesztési típusa, az `Merge` illesztés. A megfelelően előre particionált és előre rendezett adatkészlet kihagyja `SortMerge` a költséges rendezési fázist az illesztésből.
+Ha gyűjtő táblákat használ, akkor egy harmadik illesztési típussal rendelkezik, amelyhez `Merge` csatlakozik. Egy megfelelően előre particionált és előre rendezett adatkészlet kihagyja a költséges rendezési szakaszt egy `SortMerge` illesztésből.
 
-Az illesztések sorrendje számít, különösen az összetettebb lekérdezéseknél. Kezdje a legszelektívebb illesztésekkel. Az illesztések áthelyezése is, amelyek lehetőség szerint növelik a sorok számát az összesítések után.
+Az illesztések sorrendje, különösen az összetettebb lekérdezésekben. Kezdje a legszelektívebb illesztésekkel. Emellett olyan illesztéseket is helyezhet át, amelyek a sorok számát a lehetséges összesítések után növelhetik.
 
-A Descartes-illesztések párhuzamosságának kezeléséhez hozzáadhat egymásba ágyazott struktúrákat, ablakolást, és esetleg kihagyhat egy vagy több lépést a Spark-feladatban.
+A Descartes-féle illesztések párhuzamosságának kezeléséhez beágyazott struktúrákat, ablakokat adhat hozzá, és lehet, hogy kihagy egy vagy több lépést a Spark-feladatokban.
 
 ## <a name="customize-cluster-configuration"></a>Fürtkonfiguráció testreszabása
 
-A Spark-fürt számítási feladatától függően előfordulhat, hogy egy nem alapértelmezett Spark-konfiguráció tszeretne optimalizált Spark-feladat végrehajtása.  A nem alapértelmezett fürtkonfigurációk érvényesítéséhez végezze el a számítási feladatok mintaszámítási feladatokkal végzett teljesítményteszteket.
+A Spark-fürt számítási feladataitól függően előfordulhat, hogy egy nem alapértelmezett Spark-konfigurációt határoz meg, amely a Spark-feladatok fejlettebb végrehajtását eredményezi.  A nem alapértelmezett fürtkonfiguráció érvényesítéséhez végezzen teljesítményteszt-tesztelést a minta számítási feladatokkal.
 
-Íme néhány gyakori paraméter, amelyet módosíthat:
+Az alábbiakban néhány gyakori paramétert módosíthat:
 
 |Paraméter |Leírás |
 |---|---|
-|--num-végrehajtók|Beállítja a végrehajtók megfelelő számát.|
-|--végrehajtó-magok|Beállítja az egyes végrehajtók magjainak számát. Általában közepes méretű végrehajtókkal kell rendelkeznie, mivel más folyamatok a rendelkezésre álló memória egy részét használják fel.|
-|--végrehajtó-memória|Beállítja az egyes végrehajtók memóriaméretét, amely a YARN halommemória méretét szabályozza. Hagyjon némi memóriát a végrehajtáshoz.|
+|--NUM-végrehajtók|Beállítja a megfelelő számú végrehajtót.|
+|– végrehajtó – magok|Beállítja a magok számát az egyes végrehajtók számára. Általában közepes méretű végrehajtókkal kell rendelkeznie, mivel más folyamatok a rendelkezésre álló memóriát használják.|
+|--végrehajtó – memória|Beállítja az egyes végrehajtók számára a memória méretét, amely a FONALon megjelenő halom méretét vezérli. Hagyjon némi memóriát a végrehajtás terheléséhez.|
 
-### <a name="select-the-correct-executor-size"></a>A végrehajtó megfelelő méretének kiválasztása
+### <a name="select-the-correct-executor-size"></a>A megfelelő végrehajtó méretének kiválasztása
 
-A végrehajtó konfigurációjának meghatározásakor vegye figyelembe a Java szemétgyűjtés (GC) terhelését.
+A végrehajtó konfigurációjának meghatározásakor vegye figyelembe a Java Garbage Collection (GC) terhelését.
 
-* A végrehajtó méretének csökkentésére játszott tényezők:
-    1. Csökkentse a halommemória méretét 32 GB alá, hogy a GC felső < 10%.
-    2. Csökkentse a magok számát, hogy a GC < 10%.
+* A végrehajtó méretének csökkentésére szolgáló tényezők:
+    1. Csökkentse a 32 GB alatti halom méretét a GC terhelésének < 10%-os megtartásához.
+    2. Csökkentse a magok számát, hogy a GC terhelése < 10% legyen.
 
-* A végrehajtó méretének növelését tényezők:
-    1. Csökkentse a végrehajtók közötti kommunikációs terhelést.
-    2. Csökkentse a végrehajtók (N2) közötti nyitott kapcsolatok számát nagyobb fürtökön (>100 végrehajtó).
-    3. Növelje a halommemória méretét a memóriaigényes feladatok hoz.
-    4. Nem kötelező: Csökkentse a végrehajtónkénti memória terhelését.
-    5. Nem kötelező: Növelje a használatot és az egyidejűséget a processzor túlírásával.
+* A végrehajtó méretének növelésére szolgáló tényezők:
+    1. A végrehajtók közötti kommunikációs terhelés csökkentése.
+    2. Csökkentse a nyitott kapcsolatok számát a végrehajtók (N2) között nagyobb fürtökön (>100 végrehajtók).
+    3. Növelje a nagy mennyiségű memóriát, hogy megfeleljen a memória-igényes feladatok számára.
+    4. Nem kötelező: csökkentse a végrehajtó memória terhelését.
+    5. Nem kötelező: növelje a használatot és a párhuzamosságot a processzor túllépésével.
 
-Általános szabály, hogy a végrehajtó méretének kiválasztásakor:
+Általános szabály a végrehajtó méretének kiválasztásakor:
 
-1. Kezdje a végrehajtónkénti 30 GB-tal, és ossza el a rendelkezésre álló gépmagokat.
-2. Növelje a végrehajtó magok számát a nagyobb fürtök (> 100 végrehajtók).
-3. Módosítsa a méretet mind a próbafuttatások, mind az előző tényezők, például a globális katalógus terhelése alapján.
+1. Indítson el 30 GB-ot végrehajtóként, és terjesszen rendelkezésre álló gépi magokat.
+2. Növelje a végrehajtó magok számát a nagyobb fürtöknél (> 100 végrehajtók).
+3. A méretet a próbaverziós futtatások és az előző tényezők, például a GC terhelése alapján módosíthatja.
 
-Egyidejű lekérdezések futtatásakor vegye figyelembe a következőket:
+Az egyidejű lekérdezések futtatásakor vegye figyelembe a következőket:
 
-1. Kezdje a 30 GB/végrehajtóval és az összes gépmaggal.
-2. Hozzon létre több párhuzamos Spark-alkalmazást a PROCESSZOR túljelentkezésével (körülbelül 30%-os késés javítása).
-3. Lekérdezések elosztása párhuzamos alkalmazások között.
-4. Módosítsa a méretet mind a próbafuttatások, mind az előző tényezők, például a globális katalógus terhelése alapján.
+1. Indítson el 30 GB-ot végrehajtóként és minden gépi magot.
+2. Több párhuzamos Spark-alkalmazás létrehozása a processzor túllépésével (körülbelül 30%-os késéssel).
+3. Lekérdezések terjesztése párhuzamos alkalmazások között.
+4. A méretet a próbaverziós futtatások és az előző tényezők, például a GC terhelése alapján módosíthatja.
 
-Az Ambari végrehajtók konfigurálásával kapcsolatos további információkért lásd: [Apache Spark-beállítások - Spark-végrehajtók.](apache-spark-settings.md#configuring-spark-executors)
+További információ a végrehajtók konfigurálásáról a Ambari használatával: [Apache Spark Settings-Spark végrehajtók](apache-spark-settings.md#configuring-spark-executors).
 
-Az idővonal nézet megtekintésével figyelheti a lekérdezés teljesítményét a kiugró értékek vagy egyéb teljesítményproblémák miatt. Sql graph, állásstatisztikák és így tovább. A YARN és a Spark History server használatával végzett Spark-feladatok hibakereséséről az [Azure HDInsight-on futó Debug Apache Spark-feladatok](apache-spark-job-debugging.md)című témakörben talál további információt. A YARN Timeline Server használatával kapcsolatos tippek az [Access Apache Hadoop YARN alkalmazásnaplóiban olvashat.](../hdinsight-hadoop-access-yarn-app-logs-linux.md)
+A lekérdezési teljesítmény figyelése a kiugró vagy más teljesítménnyel kapcsolatos problémák esetében az Idősor nézet alapján. Emellett az SQL Graph, a feladatok statisztikái és így tovább. A (z) és a Spark-előzményeket használó Spark-feladatok hibakeresésével kapcsolatos információkért lásd: [Apache Spark Azure HDInsight futó feladatok hibakeresése](apache-spark-job-debugging.md). A fonal idővonal-kiszolgálójának használatáról a következő témakörben talál további információt: [Apache HADOOP fonalak alkalmazási naplói](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Néha az egyik vagy néhány végrehajtó lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb időt vesz igénybe. Ez a lassúság gyakran fordul elő nagyobb fürtökön (> 30 csomópont). Ebben az esetben ossza fel a munkát nagyobb számú tevékenységre, hogy az ütemező kompenzálhassa a lassú tevékenységeket. Például legalább kétszer annyi feladatot, mint a végrehajtó magok száma az alkalmazásban. A segítségével is engedélyezheti a `conf: spark.speculation = true`feladatok spekulatív végrehajtását.
+Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez a lassulás gyakran fordul elő nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A `conf: spark.speculation = true`feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti.
 
-## <a name="optimize-job-execution"></a>Feladat-végrehajtás optimalizálása
+## <a name="optimize-job-execution"></a>Feladatok végrehajtásának optimalizálása
 
-* Szükség szerint gyorsítótárazza, például ha kétszer használja az adatokat, majd gyorsítótárazza.
-* Változók közvetítése az összes végrehajtónak. A változók csak egyszer szerializálódnak, ami gyorsabb keresőket eredményez.
-* Használja a szálkészletet az illesztőprogramon, ami számos feladat gyorsabb működését eredményezi.
+* Szükség szerint gyorsítótárazza, például ha kétszer használja az adatkészletet, majd gyorsítótárazza.
+* Szórási változók az összes végrehajtóra. A változók csak egyszer szerializáltak, ami gyorsabb keresést eredményez.
+* Használja a szál készletét az illesztőprogramon, ami gyorsabb műveletet eredményez számos feladathoz.
 
-Rendszeresen figyelheti a futó feladatokat a teljesítményproblémákra. Ha további információkra van szüksége bizonyos problémákba, fontolja meg az alábbi teljesítményprofil-készítő eszközök egyikét:
+A futó feladatok rendszeres figyelése teljesítménnyel kapcsolatos problémák esetén. Ha további információkra van szüksége az egyes problémákkal kapcsolatban, vegye figyelembe az alábbi teljesítmény-profilkészítési eszközök egyikét:
 
-* [Az Intel PAL Tool](https://github.com/intel-hadoop/PAT) figyeli a CPU- és tárhelyhasználatot és a hálózati sávszélesség-használatot.
-* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilok Spark és végrehajtó kódot.
+* Az [Intel PAL eszköz](https://github.com/intel-hadoop/PAT) FIGYELI a CPU-t, a tárterületet és a hálózati sávszélesség-használatot.
+* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) -profilok Spark és végrehajtó kód.
 
-A Spark 2.x lekérdezési teljesítménykulcsa a Tungsten motor, amely a teljes fázisú kódgenerálástól függ. Bizonyos esetekben a teljes szakaszban lévő kódgenerálás letiltható. Ha például nem módosítható típust (`string`) használ az összesítési `SortAggregate` `HashAggregate`kifejezésben, akkor a helyett a érték jelenik meg. A jobb teljesítmény érdekében például próbálkozzon a következőkkel, majd engedélyezze újra a kódgenerálást:
+A Spark 2. x lekérdezési teljesítménye a Wolfram motor, amely a teljes fázisú programkódok generálásának függvénye. Bizonyos esetekben előfordulhat, hogy a teljes fázisú kód létrehozása le lesz tiltva. Ha például nem megváltoztathatatlan típust () használ az`string`összesítési kifejezésben, `SortAggregate` a () helyett a `HashAggregate`következő jelenik meg:. Például a jobb teljesítmény érdekében próbálkozzon a következőkkel, majd engedélyezze újra a kód generálását:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
@@ -225,8 +225,8 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsighton futó Apache Spark-feladatok hibakeresése](apache-spark-job-debugging.md)
-* [Apache Spark-fürt erőforrásainak kezelése a HDInsighton](apache-spark-resource-manager.md)
+* [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)
 * [Az Apache Spark beállításainak konfigurálása](apache-spark-settings.md)
-* [Az Apache Spark hangolása](https://spark.apache.org/docs/latest/tuning.html)
-* [Hogyan lehet ténylegesen tune Your Apache Spark Jobs Így működnek](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Hangolás Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [A Apache Spark-feladatok tényleges finomhangolása](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [`Kryo Serialization`](https://github.com/EsotericSoftware/kryo)

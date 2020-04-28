@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8db477f87f344b28e8941e185c70c81d9b860a72
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149475"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187885"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Megoldások az Azure Virtual Machines szolgáltatásban
 
-Ez a cikk [az Intel SGX enklávéhoz által támogatott](https://software.intel.com/sgx) Intel-processzorokat futtató Azure bizalmas számítástechnikai virtuális gépek (VM-EK) üzembe helyezésével kapcsolatos információkat ismerteti. 
+Ez a cikk az Intel [Software Guard Extension](https://software.intel.com/sgx) (Intel SGX enklávéhoz) által támogatott Intel-processzorokat futtató Azure bizalmas számítástechnikai virtuális gépek (VM-EK) üzembe helyezésével kapcsolatos információkat ismerteti. 
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>Azure bizalmas számítástechnikai VM-méretek
 
@@ -148,5 +148,5 @@ A **Tulajdonságok**területen a **storageProfile**alatt lévő képre is hivatk
 
 Ebben a cikkben a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges képesítésekről és konfigurációkról olvashat. Most már az Azure Marketplace-en is üzembe helyezhet egy DCsv2-sorozatú virtuális gépet.
 
-[!div class=”nextstepaction”]
-[DCsv2-sorozatú virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)
+> [!div class="nextstepaction"]
+> [DCsv2-sorozatú virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)

@@ -1,474 +1,474 @@
 ---
-title: Azure biztonsági alapkonfiguráció a Cosmos DB-hez
-description: Azure biztonsági alapkonfiguráció a Cosmos DB-hez
+title: Cosmos DB Azure biztonsági alapterve
+description: Cosmos DB Azure biztonsági alapterve
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7e927b398bd95160e02ee915eb98ea3cb78d68fe
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758687"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195247"
 ---
-# <a name="azure-security-baseline-for-cosmos-db"></a>Azure biztonsági alapkonfiguráció a Cosmos DB-hez
+# <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
 
-Az Azure Security Baseline for Cosmos DB javaslatokat tartalmaz, amelyek segítenek a központi telepítés biztonsági állapotának javításában.
+Az Cosmos DB Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapkonfigurációja az [Azure Security Benchmark 1.0-s verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tartalmaz arra vonatkozóan, hogy miként biztosíthatja felhőalapú megoldásait az Azure-ban az ajánlott eljárásokra vonatkozó útmutatónkkal.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security Baselines overview](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt a [Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Erőforrások védelme hálózati biztonsági csoportokkal vagy az Azure tűzfallal a virtuális hálózaton
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
 
-**Útmutató:** Az Azure Private Link használatával csatlakozhat egy Azure Cosmos-fiókhoz egy privát végponton keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Az adatok kiszivárgásának kockázatát is csökkentheti, ha egy hálózati biztonsági csoport (NSG) kimenő szabályainak szigorú készletét konfigurálja, és az NSG-t az alhálózathoz társítja.
+**Útmutató**: az Azure Private link használatával privát végponton keresztül csatlakozhat egy Azure Cosmos-fiókhoz. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Emellett csökkentheti az adatkiszűrése kockázatát azáltal, hogy a kimenő szabályok szigorú készletét konfigurálja egy hálózati biztonsági csoportra (NSG), és társítja az adott NSG az alhálózattal.
 
-A Szolgáltatásvégpontok is használhatja az Azure Cosmos-fiók biztonságossá tétele. Egy szolgáltatásvégpont engedélyezésével konfigurálhatja az Azure Cosmos-fiókokat úgy, hogy csak egy Azure virtuális hálózat egy adott alhálózatáról engedélyezze a hozzáférést. Miután az Azure Cosmos DB service endpoint engedélyezve van, korlátozhatja a hozzáférést egy Azure Cosmos-fiókhoz, amely egy virtuális hálózat alhálózatából származó kapcsolatokat biztosít.
+Az Azure Cosmos-fiók biztonságossá tételéhez szolgáltatási végpontokat is használhat. A szolgáltatás-végpont engedélyezésével úgy konfigurálhatja az Azure Cosmos-fiókokat, hogy csak az Azure-beli virtuális hálózatok egy adott alhálózatáról engedélyezze a hozzáférést. Miután a Azure Cosmos DB szolgáltatás végpontja engedélyezve lett, korlátozhatja az Azure Cosmos-fiókhoz való hozzáférést egy virtuális hálózatban lévő alhálózatról érkező kapcsolattal.
 
-Az Azure Cosmos-fiókban tárolt adatokat ip-tűzfalak használatával is biztonságossá teheti. Az Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlésa a bejövő tűzfal támogatása. Az Azure Cosmos-fiókban beállíthat egy IP-tűzfalat az Azure Portalon, az Azure Resource Manager-sablonokon, illetve az Azure CLI-n vagy az Azure PowerShellen keresztül.
+Az Azure Cosmos-fiókban tárolt adatait IP-tűzfalak használatával is biztonságossá teheti. A Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. Beállíthat egy IP-tűzfalat az Azure Cosmos-fiókban a Azure Portal, Azure Resource Manager sablonok vagy az Azure CLI vagy a Azure PowerShell használatával.
 
-Az Azure privát hivatkozás áttekintése:https://docs.microsoft.com/azure/private-link/private-link-overview
+Az Azure Private link áttekintése:https://docs.microsoft.com/azure/private-link/private-link-overview
 
-Az Azure Cosmos DB privát végpontjának konfigurálása:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
+Privát végpont konfigurálása Azure Cosmos DBhoz:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
 
 Hálózati biztonsági csoport létrehozása biztonsági konfigurációval:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-Az IP-tűzfal konfigurálása a Cosmos DB-ben:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
+Az IP-tűzfal konfigurálása a Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: A virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató:** Használja az Azure Security Centert, és kövesse a hálózatvédelmi javaslatokat az Azure Cosmos-fiókhoz kapcsolódó hálózati erőforrások biztonsága érdekében.
+**Útmutató**: a Azure Security Center használata és a hálózatvédelmi javaslatok követése az Azure Cosmos-fiókhoz kapcsolódó hálózati erőforrások biztonságossá tételéhez.
 
-Ha a virtuális gépek az Azure Cosmos-fiókkal azonos virtuális hálózatban vannak telepítve, egy hálózati biztonsági csoport (NSG) használatával csökkentheti az adatok kiszivárgásának kockázatát. Engedélyezze az NSG-folyamatnaplókat, és küldjön naplókat egy Azure Storage-fiókba a forgalomnaplózáshoz. NSG-folyamatnaplókat is küldhet a Log Analytics-munkaterületre, és a Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. A Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati helytelen konfigurációk azonosítása.
+Ha a virtuális gépeket az Azure Cosmos-fiókkal megegyező virtuális hálózatban telepítik, akkor a hálózati biztonsági csoport (NSG) segítségével csökkentheti az adatkiszűrése kockázatát. NSG-adatforgalmi naplók engedélyezése és naplók küldése Azure Storage-fiókba forgalmi auditok esetén. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-Az Azure Security Center által biztosított hálózati biztonság megismerése:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+A Azure Security Center által biztosított hálózati biztonság ismertetése:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-Az NSG-folyamatnaplók engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
-
-A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="13-protect-critical-web-applications"></a>1.3: Védje a kritikus webes alkalmazásokat
-
-**Útmutató:** Az originek közötti erőforrás-megosztás (CORS) szolgáltatás használatával engedélyezheti, hogy az egyik tartományban futó webalkalmazások hozzáférjenek egy másik tartomány erőforrásaihoz. A webböngészők azonos eredetű házirendként ismert biztonsági korlátozást alkalmaznak, amely megakadályozza, hogy egy weblap egy másik tartományban API-kat hívjon meg. A CORS azonban biztonságos módot biztosít arra, hogy az eredeti tartomány egy másik tartományAPI-kat hívjon meg. Miután engedélyezte a CORS-támogatást az Azure Cosmos-fiókhoz, csak a hitelesített kérelmek et értékeli ki a rendszer annak megállapítására, hogy azok a megadott szabályok szerint engedélyezettek-e.
-
-Több forrásból származó erőforrás-megosztás konfigurálása:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert rosszindulatú IP-címekkel folytatott kommunikáció megtagadása
-
-**Útmutató:** Az Azure Cosmos DB speciális veszélyforrások elleni védelem (ATP) használata. Az Azure Cosmos DB-hez az ATP egy további biztonsági intelligenciaréteget biztosít, amely észleli az Azure Cosmos-fiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését és integrálását a központi biztonsági felügyeleti rendszerekkel.
-
-Engedélyezze a DDoS Protection Standard az Azure Cosmos DB-példányokkal társított virtuális hálózatokon a DDoS-támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú vagy nem használt internetes IP-címekkel folytatott kommunikációt.
-
-Az Azure Cosmos DB komplex veszélyforrások elleni védelem beállítása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
-
-A DDoS-védelem konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
-Ismerje meg az Azure Security Center integrált fenyegetésekkel kapcsolatos intelligenciáját:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Hálózati csomagok és folyamatnaplók rögzítése
-
-**Útmutató:** Engedélyezze a hálózati biztonsági csoport (NSG) folyamatnaplóit, és küldjön naplókat egy tárfiókba a forgalom naplózása érdekében. NSG-folyamatnaplókat küldhet a Log Analytics-munkaterületre, és a Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. A Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati helytelen konfigurációk azonosítása.
-
-Az NSG-folyamatnaplók engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+A NSG folyamat naplófájljainak engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Hálózati behatolásészlelő/behatolás-megelőző rendszerek (IDS/IPS) telepítése
+### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-**Útmutató:** Az Azure Cosmos DB speciális veszélyforrások elleni védelem (ATP) használata. Az Azure Cosmos DB-hez az ATP egy további biztonsági intelligenciaréteget biztosít, amely észleli az Azure Cosmos-fiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését és integrálását a központi biztonsági felügyeleti rendszerekkel. 
+**Útmutató**: az eltérő eredetű erőforrás-megosztás (CORS) szolgáltatással engedélyezheti, hogy az egyik tartományon futó webalkalmazások hozzáférhessenek egy másik tartomány erőforrásaihoz. A böngészők olyan biztonsági korlátozást valósítanak meg, amelyik azonos eredetű házirend, amely megakadályozza, hogy egy weblap egy másik tartományban lévő API-kat hívjon fel. A CORS azonban biztonságos módot biztosít ahhoz, hogy a forrás tartomány egy másik tartományban lévő API-kat hívjon fel. Miután engedélyezte az Azure Cosmos-fiók CORS-támogatását, a rendszer csak a hitelesített kérelmeket értékeli ki, hogy azok a megadott szabályoknak megfelelően engedélyezettek-e.
 
-A Cosmos DB komplex veszélyforrások elleni védelem beállítása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Az adatforrások közötti megosztás konfigurálása:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: A webes alkalmazások forgalmának kezelése
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutatás**: Nem alkalmazható; a javaslat az Azure App Service szolgáltatáson vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+**Útmutató**: a Azure Cosmos db komplex veszélyforrások elleni védelem (ATP) használata. Az ATP for Azure Cosmos DB egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel az Azure Cosmos-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére és a központi biztonsági figyelő rendszerekkel való integrálását.
+
+A Azure Cosmos DB-példányokhoz társított virtuális hálózatokon DDoS Protection szabványt engedélyezheti a DDoS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
+
+Cosmos DB komplex veszélyforrások elleni védelem configureAzure:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+
+A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+
+Az Azure Security Center integrált veszélyforrások felderítésének ismertetése:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: hálózati csomagok és adatforgalmi naplók rögzítése
+
+**Útmutató**: engedélyezze a hálózati biztonsági csoport (NSG) folyamatának naplóit, és küldje el a naplókat a forgalom naplózásához a Storage-fiókba. NSG-naplókat küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
+
+A NSG folyamat naplófájljainak engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
+
+**Útmutató**: a Azure Cosmos db komplex veszélyforrások elleni védelem (ATP) használata. Az ATP for Azure Cosmos DB egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel az Azure Cosmos-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére és a központi biztonsági figyelő rendszerekkel való integrálását. 
+
+Cosmos DB komplex veszélyforrások elleni védelem konfigurálása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
+
+**Útmutató**: nem alkalmazható; a javaslat a Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
-**Útmutató:** Az Azure Cosmos-fiókhoz hozzáférést igénylő erőforrásokhoz használja a Virtuális hálózat szolgáltatáscímkéket a hálózati biztonságigcsoportok vagy az Azure Firewall hálózati hozzáférés-vezérlésének definiálására. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatáscímke nevének (pl. AzureCosmosDB) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
+**Útmutató**: az Azure Cosmos-fiókhoz hozzáféréssel rendelkező erőforrások esetében Virtual Network szolgáltatás-címkék használatával definiálja a hálózati securitygGroups vagy Azure Firewall a hálózati hozzáférés-vezérlést. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például AzureCosmosDB), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-A szolgáltatáscímkék használatáról további információ:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+További információ a szolgáltatási címkék használatáról:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációinak karbantartása
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató:** Az Azure Policy használatával szabványos biztonsági konfigurációkat határozhat meg és valósíthat meg a hálózati erőforrásokhoz. A "Microsoft.DocumentDB" és a "Microsoft.Network" névterekben az Azure Cosmos DB-példányok hálózati konfigurációjának naplózására vagy kényszerítésére egyéni szabályzatok létrehozásához használjon Azure Policy aliasokat. Az Azure Cosmos DB beépített szabályzatdefinícióit is használhatja, például:
+**Útmutató**: hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. DocumentDB" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Azure Cosmos DB példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
 
-- Komplex veszélyforrások elleni védelem telepítése cosmos DB-fiókokhoz
+- A Cosmos DB-fiókok komplex veszélyforrások elleni védelmének üzembe helyezése
 
-- A Cosmos DB-nek virtuális hálózati szolgáltatás végpontját kell használnia
+- Cosmos DB virtuális hálózati szolgáltatás végpontját kell használnia
 
-Azure Blueprints is használhatja a nagyméretű Azure-telepítések egyszerűsítésére a kulcsfontosságú környezeti összetevők, például az Azure Resource Manager-sablonok, szerepköralapú hozzáférés-vezérlés (RBAC) és a szabályzatok egyetlen tervezetdefinícióban csomagolásával. A tervrajzot egyszerűen alkalmazhatja új előfizetésekre, környezetekre, és a verziószámozással finomhangolhatja a vezérlést és a felügyeletet.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például a Azure Resource Manager sablonokat, a szerepköralapú hozzáférés-vezérlést (RBAC) és a szabályzatokat egyetlen terv definíciójában. A tervet egyszerűen alkalmazhatja új előfizetésekre, környezetekre, valamint a verziószámozáson keresztül történő finomhangolásra és felügyeletre.
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Blueprint létrehozása:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: A forgalom konfigurációs szabályainak dokumentálása
+### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
-**Útmutatás:** Az Azure Cosmos DB üzembe helyezéséhez társított hálózati erőforrások címkéinek használata annak érdekében, hogy logikusan rendszerezhesse őket egy taxonómiába.
+**Útmutató**: a Azure Cosmos db üzembe helyezéséhez társított hálózati erőforrásokhoz használjon címkéket, hogy logikailag szervezze őket a besorolásba.
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrás-konfigurációk figyelésére és a változások észlelésére
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
-**Útmutató:** Az Azure-tevékenységnapló segítségével figyelheti a hálózati erőforrás-konfigurációkat, és észlelheti az Azure Cosmos DB-példányaihoz kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat az Azure Monitoron belül, amelyek a kritikus hálózati erőforrások módosításakor aktiválódnak. 
+**Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Cosmos db-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják 
 
-Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Az Azure Activity log eseményeinek megtekintése és beolvasása:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Riasztások létrehozása az Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ: [Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Jóváhagyott időszinkronizációs források használata
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
-**Útmutató: A**Microsoft fenntartja az Azure-erőforrásokhoz, például az Azure Cosmos DB-hez használt időforrást a naplókban lévő időbélyegek hez.
+**Útmutató**: a Microsoft fenntartja az Azure-erőforrásokhoz használt időforrást, például az Azure Cosmos db a naplókban található időbélyegek esetében.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: A központi biztonsági napló kezelésének konfigurálása
+### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-**Útmutató:** Az Azure-figyelőn keresztüli naplók betöltése az Azure Cosmos DB által létrehozott biztonsági adatok összesítéséhez. Az Azure Monitoron belül a Log Analytics munkaterület(ek) használatával lekérdezheti és elvégezheti az elemzéseket, és tárfiókokat használhat a hosszú távú/archiválási tároláshoz. Másik lehetőségként engedélyezheti, és a fedélzeti adatokat az Azure Sentinel vagy egy külső biztonsági incidens és eseménykezelés (SIEM). 
+**Útmutató**: naplók beolvasása Azure monitor segítségével a Azure Cosmos db által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM). 
 
-Diagnosztikai naplók engedélyezése az Azure Cosmos DB számára:https://docs.microsoft.com/azure/cosmos-db/logging
+Diagnosztikai naplók engedélyezése Azure Cosmos DBhoz:https://docs.microsoft.com/azure/cosmos-db/logging
 
-Az Azure Sentinel fedélzeti szolgáltatása:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Az Azure-erőforrások naplózásának engedélyezése
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
-**Útmutató:** Engedélyezze az Azure Cosmos DB diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics-munkaterületre vagy tárfiókba. Az Azure Cosmos DB diagnosztikai beállításai az erőforrásnaplók gyűjtésére szolgálnak. Ezeket a naplókat kérésenként rögzíti, és "adatsík-naplóknak" is nevezik őket. Néhány példa az adatsík műveleteire: törlés, beszúrás és olvasás. Engedélyezheti az Azure-tevékenységnapló diagnosztikai beállításait is, és elküldheti őket ugyanarra a Log Analytics-munkaterületre.
+**Útmutató**: engedélyezze a Azure Cosmos db diagnosztikai beállításait, és küldje el a naplókat egy log Analytics munkaterületre vagy egy Storage-fiókba. A Azure Cosmos DB diagnosztikai beállításai az erőforrás-naplók összegyűjtésére szolgálnak. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és az úgynevezett "adatsíkok naplói" néven is ismert. Néhány példa az adatsík-műveletekre: törlés, Beszúrás és olvasás. Emellett engedélyezheti az Azure-műveletnapló diagnosztikai beállításait, és elküldheti azokat ugyanarra a Log Analytics munkaterületre.
 
-Az Azure Cosmos DB diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/cosmos-db/logging
+A Azure Cosmos DB diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/cosmos-db/logging
 
-Az Azure-tevékenységnapló diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Biztonsági naplók gyűjtése az operációs rendszerekről
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: A biztonsági napló tárolásának megőrzése
+### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
-**Útmutató:** Az Azure Monitorban állítsa be az Azure Cosmos DB-példányaihoz társított Log Analytics-munkaterületek naplómegőrzési időszakát a szervezet megfelelőségi előírásainak megfelelően.
+**Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján állítsa be a Azure Cosmos db-példányokhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
-A naplómegőrzési paraméterek beállítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Napló-megőrzési paraméterek beállítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Naplók figyelése és felülvizsgálata
+### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
-**Útmutató:** A Naplóanalytics egy munkaterületet a keresési kifejezések, trendek azonosítása, minták elemzése, és számos más betekintést az Azure Cosmos DB naplók, amelyek összegyűjtött.
+**Útmutató**: lekérdezéseket végezhet log Analytics egy munkaterületen a kifejezések kereséséhez, a trendek azonosításához, a minták elemzéséhez és számos más elemzéshez az összegyűjtött Azure Cosmos db naplók alapján.
 
-Az Azure Cosmos DB lekérdezéseinek végrehajtása a Log Analytics-munkaterületeken:https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
+Azure Cosmos DB lekérdezések végrehajtása Log Analytics-munkaterületeken:https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Riasztás engedélyezése rendellenes tevékenységre
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
-**Útmutató:** Az Azure Security Centerben engedélyezze az Azure Cosmos DB komplex veszélyforrások elleni védelmét a rendellenes tevékenységek biztonsági naplókban és eseményekben való figyeléséhez. Engedélyezze a diagnosztikai beállításokat az Azure Cosmos DB-ben, és küldjön naplókat egy Log Analytics-munkaterületre.
+**Útmutató**: a Azure Security Centerban engedélyezze a komplex veszélyforrások elleni védelmet Azure Cosmos db a rendellenes tevékenységek figyeléséhez a biztonsági naplókban és eseményekben. A Azure Cosmos DB diagnosztikai beállításainak engedélyezése és a naplók elküldése egy Log Analytics munkaterületre.
 
  
 
-A Log Analytics-munkaterületet is beszervezheti az Azure Sentinelbe, mivel biztonsági vezénylési automatikus válasz (SZÁRNYALÁS) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák elhárítását. Emellett egyéni naplóriasztásokat is létrehozhat a Log Analytics-munkaterületen az Azure Monitor használatával.
+A Log Analytics-munkaterületet az Azure Sentinelbe is felkészítheti, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását. Emellett Azure Monitor használatával is létrehozhat egyéni napló-riasztásokat a Log Analytics munkaterületen.
 
-Az Azure Cosmos DB fenyegetésvédelmi riasztásainak listája:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
+A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB esetén:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
 
-Az Azure Sentinel fedélzeti szolgáltatása:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Naplóriasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
+Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: A kártevőirtó naplózás központosítása
+### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
-**Útmutatás**: Nem alkalmazható; Az Azure Cosmos DB nem dolgozza fel és nem készít kártevők elleni kapcsolódó naplókat.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="29-enable-dns-query-logging"></a>2.9: Dns-lekérdezésnaplózás engedélyezése
-
-**Útmutatás**: Nem alkalmazható; Az Azure Cosmos DB nem dolgozza fel és nem készít DNS-sel kapcsolatos naplókat.
+**Útmutató**: nem alkalmazható; Azure Cosmos DB nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Parancssori naplózás engedélyezése
+### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; A Azure Cosmos DB nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt a [Biztonságvezérlés: Identitás- és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
+*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Az adminisztratív számlák leltárának fenntartása
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató:** Az Azure Portalon az Identitás- és hozzáférés-vezérlési (IAM) ablaktáblán konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC), és leltárt tarthat az Azure Cosmos DB-erőforrásokról. A szerepkörök az Active Directoryban lévő felhasználókra, csoportokra, egyszerű szolgáltatástagokra és felügyelt identitásokra vonatkoznak. A beépített szerepköröket vagy egyéni szerepköröket egyénekhez és csoportokhoz használhatja.
+**Útmutató**: a Azure Portal identitás-és hozzáférés-vezérlés (iam) paneljén konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC), és megtarthatja a leltárt Azure Cosmos db erőforrásokon. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
 
-Az Azure Cosmos DB beépített RBAC-ot biztosít az Azure Cosmos DB gyakori felügyeleti forgatókönyveihez. Az Azure Active Directoryban (AD) profillal rendelkező egyén hozzárendelheti ezeket az RBAC-szerepköröket a felhasználókhoz, csoportokhoz, szolgáltatásnévcsoportokhoz vagy felügyelt identitásokhoz az Azure Cosmos DB-erőforrások erőforrásaihoz és műveleteihez való hozzáférés biztosításához vagy megtagadásához.
+A Azure Cosmos DB beépített RBAC biztosít a gyakori felügyeleti forgatókönyvekhez Azure Cosmos DBban. A Azure Active Directory (AD) profillal rendelkező személy hozzárendelheti ezeket a RBAC-szerepköröket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon.
 
-Az Azure AD PowerShell-modul használatával adhoc lekérdezések felügyeleti csoportok tagjaiként is felderítheti a fiókokat. 
+Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a felügyeleti csoportok tagjait futtató fiókok felderítéséhez. 
 
-Emellett az Azure Cosmos DB egyes műveletek et az Azure Active Directory és a fiókspecifikus főkulcsok vezérelhetik.  Használja a "disableKeyBasedMetadataWriteAccess" fiók beállítást a kulcshozzáférés szabályozásához.
+Emellett a Azure Cosmos DB egyes műveletei Azure Active Directory és fiók-specifikus főkulcsokkal is vezérelhetők.  A "disableKeyBasedMetadataWriteAccess" fiók beállításával vezérelheti a kulcsokhoz való hozzáférést.
 
-A szerepköralapú hozzáférés-vezérlés ismertetése az Azure Cosmos DB-ben:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+A szerepköralapú hozzáférés-vezérlés ismertetése a Azure Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Saját egyéni szerepkörök létrehozása az Azure Cosmos DB-műveletek (Microsoft.DocumentDB névtér) használatával:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Saját egyéni szerepkörök létrehozása Azure Cosmos DB műveletek használatával (Microsoft. DocumentDB névtér):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
-Hozzon létre egy új szerepkört az Azure Active Directoryban:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
+Új szerepkör létrehozása a Azure Active Directoryban:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Címtárszerepkör beszereznie az Azure Active Directoryban a PowerShell használatával:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell használatával:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Címtárszerepkör tagjainak beszereznie az Azure Active Directoryban a PowerShell segítségével:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Címtárbeli szerepkör tagjainak beszerzése Azure Active Directory a PowerShell-lel:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-Csak a felhasználói hozzáférés korlátozása az adatműveletekhez:https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
+Csak az adatműveletek felhasználói hozzáférésének korlátozása:https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Adott esetben változtassa meg az alapértelmezett jelszavakat
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutatás**: Az alapértelmezett vagy üres jelszavak fogalma nem létezik az Azure AD vagy az Azure Cosmos DB kapcsolatban. Ehelyett az Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez, és hozzáférést biztosít az adatokhoz és az erőforrásokhoz; főkulcsok és erőforrás-tokenek. A kulcsok bármikor újragenerálhatók.
+**Útmutató**: az alapértelmezett vagy az üres jelszavak fogalma nem létezik az Azure ad-vel vagy a Azure Cosmos DBtel kapcsolatban. Ehelyett Azure Cosmos DB két típusú kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. főkulcsok és erőforrás-tokenek. A kulcsok bármikor újra létrehozhatók.
 
-Az azure Cosmos DB-ben az adatokhoz való biztonságos hozzáférés ismertetése:https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
+A Azure Cosmos DB lévő adathozzáférés ismertetése:https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
-Az Azure Cosmos DB-kulcsok újragenerálása:https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
+Azure Cosmos DB kulcsok újragenerálása:https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
 
-A kulcsok programozott elérése az Azure Active Directory használatával:https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
+Kulcsok programozott elérésének módja a Azure Active Directory használatával:https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Dedikált felügyeleti fiókok használata
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
-**Útmutatás**: Nem alkalmazható; Az Azure Cosmos DB nem támogatja a rendszergazdai fiókokat.  Minden hozzáférés integrálva van az Azure Active Directory és az Azure szerepköralapú hozzáférés-vezérlés (RBAC).
+**Útmutató**: nem alkalmazható; A Azure Cosmos DB nem támogatja a rendszergazdai fiókokat.  Minden hozzáférés Azure Active Directory és Azure szerepköralapú hozzáférés-vezérléssel (RBAC) van integrálva.
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) használata az Azure Active Directoryval
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutatás: Az**Azure Cosmos DB kétféle kulcsot használ a felhasználók engedélyezéséhez, és nem támogatja az egyszeri bejelentkezést (SSO) az adatsík szintjén. A Cosmos DB vezérlősíkjához való hozzáférés REST API-n keresztül érhető el, és támogatja az SSO-t. A hitelesítéshez állítsa be a kérelmek engedélyezési fejlécét egy JSON webtokenre, amelyet az Azure Active Directoryból szerez be.
+**Útmutató**: a Azure Cosmos db kétféle kulcsot használ a felhasználók engedélyezéséhez, és nem támogatja az egyszeri bejelentkezést (SSO) az adatsík szintjén. A Cosmos DB vezérlési síkja elérhető a REST APIon keresztül, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
 
-Ismerje meg az Azure Database for Cosmos DB REST API-t:https://docs.microsoft.com/rest/api/cosmos-db/
+Az Azure Database Cosmos DB REST API ismertetése:https://docs.microsoft.com/rest/api/cosmos-db/
 
-Az SSO megismerése az Azure Active Directoryval:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Az egyszeri bejelentkezés ismertetése Azure Active Directory:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Többtényezős hitelesítés használata az összes Azure Active Directory-alapú hozzáféréshez
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató:** Engedélyezze az Azure Active Directory többtényezős hitelesítését, és kövesse az Azure Security Center identitás- és hozzáférés-kezelési javaslatait.
-
-Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
-Az Azure Security Center identitásának és hozzáférésének figyelése:https://docs.microsoft.com/azure/security-center/security-center-identity-access
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Használjon dedikált gépeket (kiemelt hozzáférésű munkaállomásokat) minden adminisztratív feladathoz
-
-**Útmutató:** Használja a kiemelt hozzáférésű munkaállomások (PAW) a többtényezős hitelesítés konfigurálva, hogy jelentkezzen be, és konfigurálja az Azure-erőforrások.
-
-Tudnivalók a kiemelt hozzáférésű munkaállomásokról:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+**Útmutató**: a Azure Active Directory multi-Factor Authentication engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
 
 Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+Identitás és hozzáférés figyelése Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Felelősség**: Ügyfél
+**Azure Security Center figyelés**: igen
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: A gyanús tevékenységek naplózása és riasztása az adminisztratív fiókokból
+**Felelősség**: ügyfél
 
-**Útmutató:** Az Azure Cosmos DB speciális veszélyforrások elleni védelem (ATP) használata. Az Azure Cosmos DB-hez az ATP egy további biztonsági intelligenciaréteget biztosít, amely észleli az Azure Cosmos-fiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését és integrálását a központi biztonsági felügyeleti rendszerekkel. 
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
-Emellett használhatja az Azure Active Directory (AD) kiemelt identitáskezelés (PIM) a naplók és riasztások generálása, ha gyanús vagy nem biztonságos tevékenység történik a környezetben.
+**Útmutató**: az Azure-erőforrások bejelentkezéséhez és konfigurálásához multi-Factor Authentication konfigurált emelt szintű hozzáférésű munkaállomások (Paw) használata.
 
-Az Azure AD-kockázati észlelések használatával megtekintheti a riasztásokat és a kockázatos felhasználói viselkedésről szóló jelentéseket.
+További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Kiemelt identitáskezelés (PIM) telepítése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Ismerje meg az Azure AD-kockázatészleléseket:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Az Azure Security Center figyelése:** Igen
+**Felelősség**: ügyfél
 
-**Felelősség**: Ügyfél
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Az Azure-erőforrások kezelése csak jóváhagyott helyekről
+**Útmutató**: a Azure Cosmos db komplex veszélyforrások elleni védelem (ATP) használata. Az ATP for Azure Cosmos DB egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel az Azure Cosmos-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére és a központi biztonsági figyelő rendszerekkel való integrálását. 
 
-**Útmutató:** Konfigurálja a feltételes hozzáférési házirend helyfeltételét, és kezelje a megnevezett helyeket. Az elnevezett helyek segítségével logikai csoportosításokat hozhat létre AZ IP-címtartományokból vagy országokból és régiókból. Korlátozhatja a hozzáférést a bizalmas erőforrásokhoz, például az Azure Cosmos DB-példányokhoz a konfigurált elnevezett helyekre.
+Emellett Azure Active Directory (AD) Privileged Identity Management (PIM) is használható a naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
 
-Named-helyek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-**Felelősség**: Ügyfél
+Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-### <a name="39-use-azure-active-directory"></a>3.9: Az Azure Active Directory használata
+**Azure Security Center figyelés**: igen
 
-**Útmutató:** Használja az Azure Active Directory (AD) a központi hitelesítési és engedélyezési rendszer. Az Azure AD védi az adatokat azáltal, hogy erős titkosítást használ az inaktív és az átvitel során. Az Azure AD is sók, kihegedések, és biztonságosan tárolja a felhasználói hitelesítő adatokat.
+**Felelősség**: ügyfél
 
-Azure Active Directory-példány létrehozása és konfigurálása:https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
-Az Azure Active Directory-hitelesítés konfigurálása és kezelése az Azure SQL-rel:https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
+**Útmutató**: a feltételes hozzáférési szabályzat tárolási állapotának konfigurálása és az elnevezett helyek kezelése. Az elnevezett helyszínekkel logikai csoportosításokat hozhat létre az IP-címtartományok vagy országok és régiók számára. Az érzékeny erőforrásokhoz, például a Azure Cosmos DB példányokhoz való hozzáférést a konfigurált elnevezett helyekre korlátozhatja.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+Elnevezett helyszínek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Felelősség**: Ügyfél
+**Azure Security Center figyelés**: nem alkalmazható
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Rendszeresen vizsgálja felül és egyeztetje össze a felhasználói hozzáférést
+**Felelősség**: ügyfél
 
-**Útmutató:** Az Azure Active Directory naplókat biztosít az elavult fiókok felderítéséhez. Emellett az Azure Identity Access Reviews segítségével hatékonyan kezelheti a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználó hozzáférése rendszeresen ellenőrizhető, hogy csak a megfelelő Felhasználók rendelkezhessenek folyamatos hozzáféréssel.
+### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-Az Azure Identity Access-vélemények használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+**Útmutató**: a Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
-**Az Azure Security Center figyelése:** Igen
+Azure Active Directory példány létrehozása és konfigurálása:https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
-**Felelősség**: Ügyfél
+Azure Active Directory hitelesítés konfigurálása és kezelése az Azure SQL használatával:https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Az inaktivált fiókok elérésére tett kísérletek figyelése
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutató:** Diagnosztikai beállításokat hozhat létre az Azure Active Directory felhasználói fiókokhoz, elküldheti a naplónaplókat és a bejelentkezési naplókat egy Log Analytics-munkaterületre, ahol konfigurálhatja a kívánt riasztásokat.
+**Felelősség**: ügyfél
 
-Az Azure-tevékenységnaplók integrálása az Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Útmutató**: a Azure Active Directory naplókat biztosít az elavult fiókok felderítéséhez. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket is. A felhasználó hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-**Felelősség**: Ügyfél
+Az Azure Identity hozzáférési felülvizsgálatok használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Riasztás a fiók bejelentkezési viselkedésének eltéréséről
+**Azure Security Center figyelés**: igen
 
-**Útmutató:** Az Azure Cosmos DB speciális veszélyforrások elleni védelem (ATP) használata. Az Azure Cosmos DB-hez az ATP egy további biztonsági intelligenciaréteget biztosít, amely észleli az Azure Cosmos-fiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését és integrálását a központi biztonsági felügyeleti rendszerekkel. 
+**Felelősség**: ügyfél
 
-Az Azure AD Identity Protection és a kockázatészlelési funkció használatával is konfigurálhatja az automatikus válaszokat a felhasználói identitásokkal kapcsolatos gyanús gyanús műveletekre. Emellett további vizsgálat céljából beviheti a naplókat az Azure Sentinelbe.
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-Az Azure Active Directory kockázatos bejelentkezéseinek megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+**Útmutató**: diagnosztikai beállításokat hozhat létre Azure Active Directory felhasználói fiókokhoz, elküldheti a naplókat és bejelentkezési naplókat egy log Analytics munkaterületre, ahol konfigurálhatja a kívánt riasztásokat.
 
-Az identitásvédelem kockázati házirendjeinek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Azure-beli tevékenység-naplók integrálása a Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Az Azure Sentinel fedélzeti szolgáltatása:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Az Azure Security Center figyelése:** Igen
+**Felelősség**: ügyfél
 
-**Felelősség**: Ügyfél
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: A Microsoft hozzáférésének biztosítása a releváns ügyféladatokhoz támogatási forgatókönyvek során
+**Útmutató**: a Azure Cosmos db komplex veszélyforrások elleni védelem (ATP) használata. Az ATP for Azure Cosmos DB egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel az Azure Cosmos-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére és a központi biztonsági figyelő rendszerekkel való integrálását. 
 
-**Útmutató**: Jelenleg nem áll rendelkezésre; Az Ügyfélszéf még nem támogatott az Azure Database for Cosmos DB számára.
+Azure AD Identity Protection-és kockázati észlelési funkcióval is konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
-Az ügyfélszéfáltal támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Azure Active Directory kockázatos bejelentkezések megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-**Felelősség**: Nem alkalmazható
+Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
+
+**Útmutató**: jelenleg nem érhető el; Ügyfélszéf még nem támogatott az Azure Database for Cosmos DB esetében.
+
+Ügyfélszéf támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+**Azure Security Center figyelés**: jelenleg nem érhető el
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információ: [Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Az érzékeny információk leltárának karbantartása
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
-**Útmutató:** Címkék használatával segítséget nyújt az Azure Cosmos DB-példányok nyomon követéséhez, amelyek bizalmas adatokat tárolnak vagy dolgoznak fel.
+**Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure Cosmos db-példányok nyomon követését.
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Érzékeny információkat tároló vagy feldolgozó rendszerek elkülönítése
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató:** Külön előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztéshez, teszteléshez és éles séghez. Az Azure Cosmos DB-példányokat virtuális hálózat/alhálózat választja el egymástól, megfelelően címkézve és egy hálózati biztonsági csoporton (NSG) vagy az Azure Firewall-en belül biztosítva vannak. A bizalmas adatokat tároló Azure Cosmos DB-példányokat el kell különíteni. Az Azure Private Link használatával csatlakozhat egy Azure Cosmos DB-példányfiókhoz egy privát végponton keresztül. A privát végpont a virtuális hálózaton belüli alhálózatban lévő privát IP-címek készlete. Ezután korlátozhatja a hozzáférést a kiválasztott privát IP-címekhez. 
+**Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Azure Cosmos DB példányokat a virtuális hálózat/alhálózat választja el, megfelelően címkézve, és egy hálózati biztonsági csoporton (NSG) vagy Azure Firewalln belül biztonságossá tettük. A bizalmas adatokat tároló Azure Cosmos DB példányokat el kell különíteni. Az Azure Private link használatával privát végponton keresztül kapcsolódhat egy Azure Cosmos DB-példány fiókjához. A magánhálózati végpont a virtuális hálózaton belüli alhálózat magánhálózati IP-címeinek halmaza. Ezután korlátozhatja a hozzáférést a kiválasztott magánhálózati IP-címekhez. 
 
 További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
@@ -476,639 +476,639 @@ Felügyeleti csoportok létrehozása:https://docs.microsoft.com/azure/governance
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Az Azure Cosmos DB privát végpontjának konfigurálása:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
+Privát végpont konfigurálása Azure Cosmos DBhoz:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
 
 Hálózati biztonsági csoport létrehozása biztonsági konfigurációval:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: A bizalmas adatok jogosulatlan továbbításának figyelése és blokkolása
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
-**Útmutató:** Az Azure Cosmos DB speciális veszélyforrások elleni védelmét is üzembe helyezheti, amely észleli az adatbázisok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket jelző rendellenes tevékenységeket. Jelenleg a következő riasztásokat indíthatja el:
+**Útmutató**: a Azure Cosmos db komplex veszélyforrások elleni védelmét is felhasználhatja, amely észleli az adatbázisok eléréséhez vagy kiaknázásához szükséges szokatlan és vélhetően ártalmas tevékenységeket. Jelenleg a következő riasztásokat indítja el:
 
 - Hozzáférés szokatlan helyekről
 
-- Szokatlan adatkinyerés
+- Szokatlan adatbányászat
 
-Emellett ha virtuális gépek használatával éri el az Azure Cosmos DB-példányok eléréséhez, használja a Private Link, tűzfal, hálózati biztonsági csoportok és a szolgáltatás címkék et az adatok kiszivárgásának lehetőségének csökkentése érdekében. A Microsoft kezeli az Azure Cosmos DB alapjául szolgáló infrastruktúrát, és szigorú vezérlőket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megelőzése érdekében.
+Emellett, ha virtuális gépeket használ a Azure Cosmos DB példányaihoz való hozzáféréshez, használja a privát hivatkozásokat, a tűzfalat, a hálózati biztonsági csoportokat és a szolgáltatási címkéket az adatkiszűrése lehetőségének enyhítése érdekében. A Microsoft kezeli a Azure Cosmos DB alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-A Cosmos DB komplex veszélyforrások elleni védelem beállítása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Cosmos DB komplex veszélyforrások elleni védelem konfigurálása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az összes bizalmas információ titkosítása szállítás közben
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató:** Az Azure Cosmos DB összes kapcsolata támogatja a HTTPS-t. Az Azure Cosmos DB a TLS1.2-t is támogatja. Lehetőség van egy minimális TLS verziókiszolgálói oldal kényszerítésére. Ehhez vegye fel [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)a kapcsolatot.
+**Útmutató**: a Azure Cosmos db összes kapcsolata HTTPS-támogatással. A Azure Cosmos DB a TLS 1.2-es verzióját is támogatja. Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).
 
-A Cosmos DB Security áttekintése:https://docs.microsoft.com/azure/cosmos-db/database-security
+A Cosmos DB biztonság áttekintése:https://docs.microsoft.com/azure/cosmos-db/database-security
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosítására
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
-**Útmutató:** Az Azure Cosmos DB-hez még nem érhetők el automatikus adatazonosítási, besorolási és veszteségmegelőzési funkciók. Azonban használhatja az Azure Cognitive Search integráció osztályozási és adatelemzés. Egy külső gyártótól származó megoldást is megvalósíthat, ha az megfelelőségi célokból szükséges.
+**Útmutató**: az automatikus adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el Azure Cosmos db számára. A besorolási és adatelemzési szolgáltatáshoz azonban használhatja az Azure Cognitive Search integrációját. Egy külső gyártótól származó megoldást is megvalósíthat, ha az a megfelelőség szempontjából szükséges.
 
-A Microsoft által kezelt mögöttes platform esetében a Microsoft minden ügyféltartalmat érzékenynek tekint, és mindent megtesz azért, hogy megvédje az ügyfelek adatvesztését és expozícióját. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Index el- az Azure Cosmos https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&ampDB-adatait az Azure Cognitive Search szolgáltatással: ;bc=/azure/cosmos-db/breadcrumb/toc.json
+Azure Cosmos DB-adatindexek indexelése https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&ampaz Azure Cognitive Search:; BC =/Azure/Cosmos-db/breadcrumb/TOC.JSON
 
-Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Az Azure RBAC használatával szabályozhatja az erőforrásokhoz való hozzáférést
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutatás: Az**Azure Cosmos DB beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az Azure Cosmos DB gyakori felügyeleti forgatókönyveihez. Az Azure Active Directoryban profillal rendelkező egyén hozzárendelheti ezeket az RBAC-szerepköröket a felhasználókhoz, csoportokhoz, szolgáltatástagokhoz vagy felügyelt identitásokhoz az Azure Cosmos DB-erőforrások erőforrásaihoz és műveleteihez való hozzáférés biztosításához vagy megtagadásához. Szerepkör-hozzárendelések hatóköre csak a vezérlősík-hozzáférés, amely magában foglalja az Azure Cosmos-fiókok, adatbázisok, tárolók és ajánlatok (átviteli érték) eléréséhez való hozzáférést.
+**Útmutató**: a Azure Cosmos db beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos db gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a RBAC-szerepköröket hozzárendelheti a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 
-Az RBAC megvalósítása az Azure Cosmos DB-ben:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+A RBAC megvalósítása a Azure Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: A hozzáférés-vezérlés kényszerítése gazdagépalapú adatveszteség-megelőzéssel
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-A Microsoft kezeli a Cosmos DB mögöttes infrastruktúráját, és szigorú vezérlőket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megelőzése érdekében.
+A Microsoft kezeli a Cosmos DB alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Bizalmas információk titkosítása nyugalmi
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
-**Útmutató:** A Cosmos DB-ben tárolt összes felhasználói adat alapértelmezés szerint in-t titkosítva van. Nincsenek kikapcsolási vezérlők. Az Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut.
+**Útmutató**: a Cosmos DBban tárolt összes felhasználói adatok alapértelmezés szerint titkosítva maradnak. Nincsenek kikapcsolható vezérlők. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut.
 
-Alapértelmezés szerint a Microsoft kezeli az Azure Cosmos-fiókban lévő adatok titkosításához használt kulcsokat. Választhat, hogy saját kulcsaival második titkosítási réteget ad hozzá.
+Alapértelmezés szerint a Microsoft kezeli az Azure Cosmos-fiókban tárolt adattitkosításhoz használt kulcsokat. Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a saját kulcsaihoz.
 
-Az Azure Cosmos DB titkosításának ismertetése:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+A titkosítás inaktívként való megismerése Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Az Azure Cosmos DB titkosításának kulcskezelésének ismertetése:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
+A Azure Cosmos DB-ben való titkosítással kapcsolatos legfontosabb felügyelet ismertetése:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
 
-Ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos DB-fiókjához:https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
+Az ügyfél által felügyelt kulcsok konfigurálása a Azure Cosmos DB-fiókhoz:https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Naplózza és figyelmeztesse a kritikus Azure-erőforrások változásait
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató:** Az Azure Monitor az Azure-tevékenységnapló használatával riasztásokat hozhat létre az Azure Cosmos DB éles példányainak módosításaihoz.
+**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure Cosmos db éles példányain lépnek életbe.
 
-Értesítések létrehozása az Azure-tevékenységnapló eseményeihez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-Értesítések létrehozása az Azure-tevékenységnapló eseményeihez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információt a [Biztonsági ellenőrzés: Biztonsági rés kezelése című](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)témakörben talál.*
+*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Automatikus biztonsági rés-ellenőrző eszközök futtatása
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató:** Kövesse az Azure Security Center ajánlásait az Azure Cosmos DB-példányaihoz. 
+**Útmutató**: a Azure Cosmos db példányok Azure Security Center ajánlásainak követése. 
 
-A Microsoft rendszerjavítási és biztonsági réskezelést hajt végre az Azure Cosmos DB-példányait támogató mögöttes gazdagépeken. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+A Microsoft a Azure Cosmos DB példányokat támogató mögöttes gazdagépeken hajtja végre a rendszerjavítást és a biztonsági rések kezelését. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Az Azure Security Center ben elérhető támogatott funkciók:https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
+A Azure Security Centerban elérhető támogatott funkciók:https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Az operációs rendszer automatikus javításkezelési megoldásának telepítése
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Automatizált, harmadik féltől származó szoftverjavítás-kezelési megoldás telepítése
-
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Hasonlítsa össze a biztonsági rés vizsgálatait
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: a harmadik féltől származó szoftveres javításokat kezelő megoldás telepítése
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Kockázatminősítési eljárás használata a felfedezett biztonsági rések helyreállításának rangsorolására
-
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
+
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
+
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információ: [Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Az Azure Asset Discovery használata
+### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
 
-**Útmutatás:** Az Azure Portalon vagy az Azure Resource Graph segítségével az összes erőforrást (nem csak az Azure Cosmos DB-t, hanem az előfizetés(ek)en belül olyan erőforrásokat is felderíthet, mint a számítási, egyéb tároló, hálózati, portok és protokollok).  Győződjön meg arról, hogy rendelkezik a megfelelő engedélyekkel a bérlőben, és képes az összes Azure-előfizetések és az előfizetéseken belüli erőforrások számbavételét.
+**Útmutató**: az Azure Portal vagy az Azure Resource Graph használatával felderítheti az összes erőforrást (nem csak a Azure Cosmos DBra, hanem a számítási, egyéb tárolási, hálózati, portok és protokollok stb.) az előfizetése (ke) n belül.  Győződjön meg arról, hogy rendelkezik megfelelő engedélyekkel a bérlőben, és képes az összes Azure-előfizetés, valamint az előfizetésében lévő erőforrások számbavételére.
 
-Bár a klasszikus Azure-erőforrások fedezhetők fel a Resource Graph, erősen ajánlott az Azure Resource Manager erőforrásainak létrehozása és használata a jövőben.
+Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
 
-Lekérdezések létrehozása az Azure Resource Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Az Azure szerepköralapú hozzáférés-vezérlésismertetése:https://docs.microsoft.com/azure/role-based-access-control/overview
+Az Azure szerepköralapú hozzáférés-vezérlésének ismertetése:https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Az eszközök metaadatainak karbantartása
+### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
-**Útmutató:** Címkékalkalmazása az Azure Cosmos DB-példányokra és a metaadatokkal rendelkező kapcsolódó erőforrásokra, hogy logikusan rendszerezhesse őket egy taxonómiába.
+**Útmutató**: címkéket alkalmazhat a Azure Cosmos db példányaira és a kapcsolódó erőforrásokra metaadatokkal, hogy logikailag szervezze őket a besorolásba.
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Mely Azure Cosmos DB-erőforrások támogatják a címkéket:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
+Mely Azure Cosmos DB erőforrások támogatják a címkéket:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Jogosulatlan Azure-erőforrások törlése
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
-**Útmutatás:** Adott esetben tagging, felügyeleti csoportok és külön előfizetések használatával rendszerezheti és nyomon követheti az eszközöket, beleértve, de nem kizárólagosan az Azure Cosmos DB-erőforrásokat. A készlet rendszeres egyeztetése és a jogosulatlan erőforrások időben történő törlése az előfizetésből.
+**Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez, beleértve a Azure Cosmos db erőforrásokat is. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
 További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Felügyeleti csoportok létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: A jóváhagyott Azure-erőforrások és szoftvercímek leltárának karbantartása
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: a jóváhagyott Azure-erőforrások és-szoftverek leltárának fenntartása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra és az Azure egészére szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrásokhoz és az Azure egészéhez készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: A nem jóváhagyott Azure-erőforrások figyelése
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 - Nem engedélyezett erőforrástípusok
 
 - Engedélyezett erőforrástípusok
 
-Emellett az Azure Resource Graph használatával lekérdezheti/felderítheti az erőforrásokat az előfizetés(ek)en belül.
+Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: A nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-**Útmutatás**: Nem alkalmazható; ez az alapterv számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: A nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
-
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra és az Azure egészére szolgál.
+**Útmutató**: nem alkalmazható; Ez az alapterv számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazásokat használjon
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrásokhoz és az Azure egészéhez készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
+### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
-**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
+
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 - Nem engedélyezett erőforrástípusok 
 
 - Engedélyezett erőforrástípusok
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása az Azure-szabályzattal:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="610-implement-approved-application-list"></a>6.10: A jóváhagyott pályázati lista végrehajtása
+### <a name="610-implement-approved-application-list"></a>6,10: jóváhagyott alkalmazások listájának implementálása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: Korlátozza a felhasználók azon képességét, hogy parancsfájlokon keresztül kommunikáljanak az AzureResources Managerrel
-
-**Útmutató:** Az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók azon képességét, hogy az Azure Resource Manager rel való interakciót a "Blokk hozzáférés" konfigurálásával a "Microsoft Azure Management" alkalmazás konfigurálásával. Ez megakadályozhatja az erőforrások létrehozását és módosítását egy magas biztonsági szintű környezetben.
-
-A feltételes hozzáférés beállítása az Azure Resource Manager elérésének letiltásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre a számítási erőforrásokon belül
-
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizikailag vagy logikailag elkülönítve a magas kockázatú alkalmazásokat
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6,11: korlátozza a felhasználók képességét a AzureResources-kezelővel való interakcióra parancsfájlok használatával
 
-**Útmutatás**: Nem alkalmazható; Ez az iránymutatás az Azure App Service szolgáltatáson vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+**Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával. Ez megakadályozhatja az erőforrások létrehozását és módosítását a magas biztonsági környezeten belül.
+
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
+
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
+
+**Útmutató**: nem alkalmazható; Ez az útmutató Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt a [Biztonsági ellenőrzés: Biztonságos konfiguráció című](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)témakörben talál.*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató:** Definiálja és valósítsa meg a Cosmos DB-példányok szabványos biztonsági konfigurációit az Azure Policy használatával. A "Microsoft.DocumentDB" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a Cosmos DB-példányok naplózásához vagy kényszerítéséhez. Az Azure Cosmos DB beépített szabályzatdefinícióit is használhatja, például:
+**Útmutató**: a Cosmos db példányok szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a Cosmos DB példányok konfigurációjának naplózásához vagy érvényesítéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
 
-- Komplex veszélyforrások elleni védelem telepítése cosmos DB-fiókokhoz
+- A Cosmos DB-fiókok komplex veszélyforrások elleni védelmének üzembe helyezése
 
-- A Cosmos DB-nek virtuális hálózati szolgáltatás végpontját kell használnia
+- Cosmos DB virtuális hálózati szolgáltatás végpontját kell használnia
 
-Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Biztonságos operációsrendszer-konfigurációk létrehozása
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Biztonságos Azure-erőforrás-konfigurációk karbantartása
-
-**Útmutató:** Használja az Azure-szabályzat [megtagadás] és a [üzembe helyezés, ha nem létezik] biztonságos beállítások kényszerítése az Azure-erőforrások között.
-
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Az Azure-szabályzat hatásainak megismerése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Biztonságos operációsrendszer-konfigurációk karbantartása
-
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások biztonságos tárolása
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
-**Útmutató:** Ha egyéni Azure-szabályzat-definíciókat használ a Cosmos DB-höz vagy a kapcsolódó erőforrásokhoz, használja az Azure Repos-t a kód biztonságos tárolásához és kezeléséhez.
+**Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-Azure Repos https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops dokumentáció:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Felelősség**: Ügyfél
+**Azure Security Center figyelés**: nem alkalmazható
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Biztonságosan tárolhatja az operációs rendszer egyedi lemezképeit
+**Felelősség**: ügyfél
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Felelősség**: Nem alkalmazható
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Rendszerkonfiguráció-kezelő eszközök telepítése
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutató:** A "Microsoft.DocumentDB" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a rendszerkonfigurációk riasztására, naplózására és kényszerítésére. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirendkivételek kezeléséhez.
+**Felelősség**: nem alkalmazható
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Útmutató**: ha a Cosmos DBhoz vagy a kapcsolódó erőforrásokhoz egyéni Azure Policy definíciókat használ, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-**Felelősség**: Ügyfél
+Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Rendszerkonfiguráció-kezelő eszközök telepítése operációs rendszerekhez
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Felelősség**: ügyfél
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Felelősség**: Nem alkalmazható
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-szolgáltatásokhoz
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutató:** A "Microsoft.DocumentDB" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a rendszerkonfigurációk riasztására, naplózására és kényszerítésére. Azure-szabályzat [audit], [megtagadás], és [üzembe helyezés, ha nem létezik] automatikusan kényszeríti a konfigurációkat az Azure Cosmos DB-példányok és a kapcsolódó erőforrások. 
+**Felelősség**: nem alkalmazható
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-**Felelősség**: Ügyfél
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Az operációs rendszerek automatizált konfigurációs figyelésének megvalósítása
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Felelősség**: ügyfél
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: rendszerkonfiguráció-felügyeleti eszközök központi telepítése operációs rendszerekhez
 
-**Felelősség**: Nem alkalmazható
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Útmutató:** Az Azure Cosmos DB-példányok eléréséhez használt Azure-beli virtuális gépek hez vagy az Azure App Service-szolgáltatáson futó webalkalmazásokhoz használja a Felügyelt szolgáltatásidentitást az Azure Key Vaulttal együtt az Azure Cosmos DB titkos kezelésének egyszerűsítéséhez és védelméhez. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
+**Felelősség**: nem alkalmazható
 
-Integrálás az Azure felügyelt identitásaival:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
+
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Azure Cosmos DB-példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] lehetőséget. 
+
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
+
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
+
+**Útmutató**: az Azure Cosmos db-példányok elérésére használt Azure app Serviceon futó Azure-beli virtuális gépek vagy webalkalmazások esetén a Managed Service Identity a Azure Key Vault együtt használva egyszerűsítheti és biztonságossá teheti Azure Cosmos db titkos felügyeletét. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
+
+Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 Key Vault létrehozása:https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-A Kulcstartó hitelesítése felügyelt identitással:https://docs.microsoft.com/azure/key-vault/managed-identity
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: A személyazonosságok biztonságos és automatikus kezelése
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató:** Az Azure Cosmos DB-példányok eléréséhez használt Azure-beli virtuális gépek hez vagy az Azure App Service-szolgáltatáson futó webalkalmazásokhoz használja a Felügyelt szolgáltatásidentitást az Azure Key Vaulttal együtt az Azure Cosmos DB titkos kezelésének egyszerűsítéséhez és védelméhez.
+**Útmutató**: az Azure Cosmos db-példányok elérésére használt Azure app Serviceon futó Azure-beli virtuális gépek vagy webalkalmazások esetén a Managed Service Identity a Azure Key Vault együtt használva egyszerűsítheti és biztonságossá teheti Azure Cosmos db titkos felügyeletét.
 
-Felügyelt identitások használatával automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásoknak az Azure Active Directoryban (AD). Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot.
+Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
 Felügyelt identitások konfigurálása:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Integrálás az Azure felügyelt identitásaival:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A nem kívánt hitelesítő adatok expozíciójának kiküszöbölése
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató:** A hitelesítő adatok at a kódon belüli hitelesítő adatok azonosítására valósíthatja meg. A Hitelesítő adatok olvasója azt is ösztönzi a felderített hitelesítő adatok áthelyezése biztonságosabb helyekre, például az Azure Key Vault.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-A Hitelesítő adatok képolvasójának beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+Hitelesítőadat-képolvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információ: [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Központilag kezelt kártevőirtó szoftverek használata
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál. A Microsoft Antimalware engedélyezve van az alapul szolgáló gazdagépen, amely támogatja az Azure-szolgáltatásokat (például az Azure App Service), azonban nem fut az ügyfél tartalom.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: A nem számítási Azure-erőforrásokba feltöltendő fájlok előzetes beszkéselése
-
-**Útmutató: A**Microsoft Antimalware engedélyezve van az alapul szolgáló gazdagépen, amely támogatja az Azure-szolgáltatásokat (például az Azure App Service), azonban nem fut az ügyfél tartalom.
-
-Az Ön felelőssége, hogy előzetesen bevizsgálja a nem számítási Azure-erőforrásokba feltöltött fájlokat, beleértve az Azure Cosmos DB-t is. A Microsoft nem tud hozzáférni az ügyféladatokhoz, ezért nem végezhet kártevőirtó vizsgálatot az Ön nevében.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült. A Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat (például Azure App Service), azonban nem az ügyfél tartalmán fut.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: nem alkalmazható
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Gondoskodjon a kártevőirtó szoftverek és aláírások frissítéséről
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
 
-**Útmutatás**: Nem alkalmazható; számítási erőforrásokra vonatkozó teljesítményteszt. A Microsoft Antimalware engedélyezve van az alapul szolgáló gazdagépen, amely támogatja az Azure-szolgáltatásokat, de nem fut az ügyfél tartalom.
+**Útmutató**: a Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat (például Azure app Service), azonban nem az ügyfél tartalmán fut.
+
+Az Ön felelőssége a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata, beleértve a Azure Cosmos DBt is. A Microsoft nem fér hozzá az ügyféladatok eléréséhez, így az Ön nevében nem végezhet kártevő-ellenőrzéseket az ügyfél-tartalmakon.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: ügyfél
+
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
+
+**Útmutató**: nem alkalmazható; a teljesítményteszt a számítási erőforrások számára készült. A Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat, de nem fut az ügyfél tartalmán.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információ: [Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Rendszeres automatizált biztonsági másolatok biztosítása
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
-**Útmutató:** Az Azure Cosmos DB négyóránként pillanatképeket készít az adatokról. Az összes biztonsági mentés külön tárolja a tárolási szolgáltatásban, és ezek a biztonsági mentések globálisan replikálódik a regionális katasztrófák elleni rugalmasság érdekében. Adott időpontban csak az utolsó két pillanatkép marad meg. Tároló vagy adatbázis törlése esetén azonban az Azure Cosmos DB 30 napig megőrzi az adott tároló vagy adatbázis meglévő pillanatképeit. Lépjen kapcsolatba az Azure-támogatással a biztonsági mentésből történő visszaállításhoz.
+**Útmutató**: Azure Cosmos db négy óránként pillanatképeket küld az adatairól. Az összes biztonsági mentés külön tárolódik a tárolási szolgáltatásokban, és ezek a biztonsági másolatok globálisan replikálódnak a regionális katasztrófák elleni rugalmasságra. Egy adott időpontban csak az utolsó két pillanatképet őrzi meg a rendszer. Tároló vagy adatbázis törlése esetén azonban az Azure Cosmos DB 30 napig megőrzi az adott tároló vagy adatbázis meglévő pillanatképeit. A biztonsági másolatból való visszaállításhoz forduljon az Azure támogatási szolgálatához.
 
-Az Azure Cosmos DB automatikus biztonsági mentések ismertetése:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+Azure Cosmos DB automatikus biztonsági mentések ismertetése:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Teljes rendszerbiztonsági mentés végrehajtása és biztonsági mentés bármely ügyfél által kezelt kulcs ról
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
 
-**Útmutatás: Az**Azure Cosmos DB automatikusan rendszeres időközönként biztonsági mentést készít az adatokról. Ha az adatbázis vagy tároló törlődik, nyújthat be egy támogatási jegyet, vagy hívja az Azure-támogatást az automatikus online biztonsági mentések adatainak visszaállításához. Az Azure-támogatás csak a kiválasztott csomagokhoz érhető el, például a Standard, a Developer és a csomagok magasabbak náluk. A biztonsági mentés egy adott pillanatképének visszaállításához az Azure Cosmos DB megköveteli, hogy az adatok elérhetők a pillanatkép biztonsági mentési ciklusának időtartama alatt. 
+**Útmutató**: a Azure Cosmos db rendszeres időközönként automatikusan biztonsági másolatot készít az adatairól. Ha a rendszer törli az adatbázist vagy a tárolót, egy támogatási jegyet is betölthet, vagy meghívja az Azure-támogatást az adatok automatikus online biztonsági mentésből való visszaállításához. Az Azure-támogatás csak olyan kiválasztott csomagokhoz érhető el, mint a standard, a fejlesztői és a magasabb szintű csomagok. A biztonsági mentés egy adott pillanatképének visszaállításához a Azure Cosmos DB megköveteli, hogy az adatok elérhetők legyenek a pillanatkép biztonsági mentési ciklusának időtartamára. 
 
-Ha a Key Vault segítségével tárolja a Cosmos DB-példányok hitelesítő adatait, biztosítsa a kulcsok rendszeres automatikus biztonsági mentését.
+Ha a Cosmos DB-példányok hitelesítő adatainak tárolására Key Vault használ, ügyeljen arra, hogy a kulcsok rendszeres automatikus biztonsági mentéseit tárolja.
 
-Ismerje meg az Azure Cosmos DB automatikus biztonsági mentéseit:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+Azure Cosmos DB automatikus biztonsági mentések ismertetése:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-Adatok visszaállítása az Azure Cosmos DB-ben:https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
+Az Azure Cosmos DB-ban tárolt adatvisszaállítások:https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
-A kulcstároló kulcsainak biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által kezelt kulcsokat is
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
-**Útmutató:** Ha az adatbázis vagy a tároló törlődik, nyújthat be egy támogatási jegyet, vagy hívja az Azure-támogatást az automatikus online biztonsági mentések adatainak visszaállításához. Az Azure-támogatás csak a kiválasztott csomagokhoz érhető el, például a Standard, a Developer és a csomagok magasabbak náluk. A biztonsági mentés egy adott pillanatképének visszaállításához az Azure Cosmos DB megköveteli, hogy az adatok elérhetők a pillanatkép biztonsági mentési ciklusának időtartama alatt.
+**Útmutató**: Ha a rendszer törli az adatbázist vagy a tárolót, egy támogatási jegyet is megadhat, vagy az Azure támogatási szolgálatával visszaállíthatja az adatokat az automatikus online biztonsági mentésből. Az Azure-támogatás csak olyan kiválasztott csomagokhoz érhető el, mint a standard, a fejlesztői és a magasabb szintű csomagok. A biztonsági mentés egy adott pillanatképének visszaállításához a Azure Cosmos DB megköveteli, hogy az adatok elérhetők legyenek a pillanatkép biztonsági mentési ciklusának időtartamára.
 
-Tesztelje az Azure Key Vaultban tárolt titkos kulcsok visszaállítását a PowerShell használatával. Az AzureKeyVaultKey-parancsmag létrehoz egy kulcsot a megadott key vaultban. Ez a kulcs a bemeneti fájlban lévő biztonsági másolat kulcsának másolata, és ugyanaz a neve, mint az eredeti kulcsnak.
+A Azure Key Vaultban tárolt titkok visszaállításának tesztelése a PowerShell használatával. A Restore-AzureKeyVaultKey parancsmag egy kulcsot hoz létre a megadott kulcstartóban. Ez a kulcs a bemeneti fájlban lévő biztonsági másolati kulcs replikája, és az eredeti kulccsal megegyező névvel rendelkezik.
 
-Ismerje meg az Azure Cosmos DB automatikus biztonsági mentéseit:
+Azure Cosmos DB automatikus biztonsági mentések ismertetése:
 
 https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-Adatok visszaállítása az Azure Cosmos DB-ben:
+Az Azure Cosmos DB-ban tárolt adatvisszaállítások:
 
 https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
-Az Azure Key Vault-titkok visszaállítása:
+Azure Key Vault titkos kódok visszaállítása:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: A biztonsági mentések és az ügyfél által felügyelt kulcsok védelmének biztosítása
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató:** Mivel a Cosmos DB-ben tárolt összes felhasználói adat titkosítva van nyugalmi és átvitelkor, nem kell semmilyen műveletet végrehajtania. Egy másik módja annak, hogy ez az, hogy a titkosítás inaktív "on" alapértelmezés szerint. Nincsenek ki- és bekapcsolási vezérlők. Az Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut.
+**Útmutató**: mivel a Cosmos DBban tárolt összes felhasználói adatok titkosítva maradnak a nyugalmi és a szállítási forgalomban, nem kell semmilyen műveletet végrehajtania. A másik lehetőség az, hogy a titkosítás nyugalmi állapotban van, alapértelmezés szerint "on". Nincsenek olyan vezérlők, amelyekkel ki-vagy bekapcsolhatja. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut.
 
-Engedélyezze a soft-delete engedélyezést a Key Vaultban, hogy megvédje a kulcsokat a véletlen vagy rosszindulatú törléstől.
+A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
 
-Ismerje meg az adatok titkosítását az Azure Cosmos DB-ben:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+Az adattitkosítás ismertetése Azure Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-A soft-delete engedélyezése a Key Vaultban:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+A Soft delete engedélyezése a Key Vaultban:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ: [Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Incidenselhárítási útmutató létrehozása
+### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató:** Hozzon létre egy incidens-elhárítási útmutatót a szervezet számára. Győződjön meg arról, hogy vannak olyan írásos eseményreagálási tervek, amelyek meghatározzák a személyzet összes szerepkörét, valamint az incidenskezelés/-kezelés fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
 
-A NIST számítógépes biztonsági incidenskezelési útmutatóját is felhasználhatja saját eseményreagálási tervének létrehozásához:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+A NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-Munkafolyamat-automatizálások konfigurálása az Azure Security Centerben:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Útmutató a saját biztonsági incidensek reválaszolási folyamatának felépítéséhez:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-A Microsoft Security Response Center egy incidens anatómia:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+A Microsoft Security Response Center egy Incidensének anatómiája:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és rangsorolási eljárás létrehozása
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutatás:** A Biztonsági központ minden riasztáshoz súlyossági szintet rendel, hogy segítsen rangsorolni, mely riasztásokat kell először kivizsgálni. A súlyosság attól függ, hogy a Security Center mennyire bízik a riasztás keresésében, illetve a riasztás kiadásához használt elemzésben, valamint a riasztáshoz vezető tevékenység mögött rosszindulatú szándék megbízhatósági szintje.
+**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság attól függ, hogy a Security Center hol található, vagy a riasztás kibocsátásához használt elemzést, valamint azt a megbízhatósági szintet, amelyet a riasztáshoz vezető tevékenység mögött rosszindulatú szándék jelent.
 
-Ezenkívül egyértelműen jelölje meg az előfizetéseket (pl. termelés, nem prod), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosítására és kategorizálására.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben nem termelt), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="103-test-security-response-procedures"></a>10.3: A tesztelési biztonsági reagálási eljárások
+### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató:** Végezzen gyakorlatokat a rendszerek incidenselhárítási képességeinek rendszeres ütemben való teszteléséhez. Azonosítsa a gyenge pontokat és hiányosságokat, és szükség szerint vizsgálja felül a tervet.
+**Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-Tekintse meg a NIST kiadványát: Útmutató az informatikai tervekés képességek tesztelési, képzési és edzésprogramjaihoz:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Adja meg a biztonsági incidensek elérhetőségét, és állítsa be a biztonsági incidensek riasztási értesítéseit
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
-**Útmutató: A**Microsoft a biztonsági incidensek kapcsolattartási adatait arra használja fel, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy az ügyfél adataihoz jogellenes vagy jogosulatlan fél fért hozzá.  Tekintse át az incidenseket a problémák megoldásának biztosítása érdekében.
+**Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az ügyfél adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.  A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-Az Azure Security Center biztonsági kapcsolattartójának beállítása:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+A Azure Security Center biztonsági kapcsolattartó beállítása:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidenselhárítási rendszerbe
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
-**Útmutató:** Exportálja az Azure Security Center riasztások és javaslatok a folyamatos exportálás funkció használatával. A Folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális exportálását, vagy folyamatos, folyamatos módon. Használhatja az Azure Security Center adatösszekötő a Sentinel riasztások streameléséhez.
+**Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához.
 
-A folyamatos exportálás konfigurálása:https://docs.microsoft.com/azure/security-center/continuous-export
+Folyamatos exportálás konfigurálása:https://docs.microsoft.com/azure/security-center/continuous-export
 
-Értesítések streamelése az Azure Sentinelbe:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Riasztások továbbítása az Azure Sentinelbe:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztásokra adott válasz automatizálása
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
-**Útmutató:** Az Azure Security Center munkafolyamat-automatizálási szolgáltatásával automatikusan elindíthatja a "Logic Apps" biztonsági riasztásokra és javaslatokra vonatkozó válaszokat.
+**Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-A munkafolyamat-automatizálás és a logikai alkalmazások konfigurálása:https://docs.microsoft.com/azure/security-center/workflow-automation
+A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információ: [Security Control: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Rendszeres behatolási tesztelést végez az Azure-erőforrásokon, és 60 napon belül biztosítja az összes kritikus biztonsági megállapítás helyreállítását
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
 
-**Útmutató:** Kövesse a Microsoft kötelezettségvállalási szabályzatát annak érdekében, hogy a behatolási tesztek ne sértsék meg a Microsoft irányelveit:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-A Microsoft stratégiájáról és a Red Teaming és az élő webhely behatolási tesztelésének végrehajtásáról a Microsoft által felügyelt felhőalapú infrastruktúrák, szolgáltatások és alkalmazások terén itt olvashat bővebben:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az [Azure biztonsági referenciaértékét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alapkonfigurációiról](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

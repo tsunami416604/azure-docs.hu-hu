@@ -1,88 +1,88 @@
 ---
-title: Adatfolyamok – problémamegoldás
-description: Ismerje meg, hogyan háríthatja el az azure Data Factory adatáramlási problémáit.
+title: Az adatfolyamatok hibáinak megoldása
+description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory az adatfolyamokkal kapcsolatos problémákat.
 services: data-factory
 ms.author: makromer
 author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/02/2020
-ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/27/2020
+ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417810"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187279"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Adatfolyamok – problémamegoldás az Azure Data Factoryban
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez a cikk az Azure Data Factory adatfolyamainak gyakori hibaelhárítási módszereit ismerteti.
+Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módszereit vizsgálja.
 
 ## <a name="common-errors-and-messages"></a>Gyakori hibák és üzenetek
 
-### <a name="error-code-df-executor-sourceinvalidpayload"></a>Hibakód: DF-Executor-SourceInvalidPayload
-- **Üzenet**: Az adatelőnézet, a hibakeresés és a folyamatadatfolyam végrehajtása nem sikerült, mert a tároló nem létezik
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>Hibakód: DF-végrehajtó-SourceInvalidPayload
+- **Üzenet**: az adatelőnézet, a hibakeresés és a folyamat adatforgalmának végrehajtása nem sikerült, mert a tároló nem létezik
 - **Okok**: Ha az adatkészlet olyan tárolót tartalmaz, amely nem létezik a tárolóban
-- **Javaslat:** Győződjön meg arról, hogy az adatkészletben hivatkozott tároló létezik vagy elérhető.
+- **Javaslat**: Ellenőrizze, hogy az adatkészletben hivatkozott tároló létezik vagy elérhető-e.
 
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Hibakód: DF-Executor-SystemImplicitCartesian
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>Hibakód: DF-végrehajtó-SystemImplicitCartesian
 
-- **Üzenet:** Implicit descartes-i termék INNER illesztés nem támogatott, használja CROSS JOIN helyett. Az illesztésben használt oszlopoknak egyedi kulcsot kell létrehozniuk a sorokhoz.
-- **Okok**: Implicit descartes-i termék inner illesztés logikai tervek között nem támogatott. Ha az illesztésben használt oszlopok hozják létre az egyedi kulcsot, a kapcsolat mindkét oldaláról legalább egy oszlopra van szükség.
-- **Ajánlás**: A nem egyenlőség alapú illesztések esetén a CUSTOM CROSS JOIN-ot kell választania.
+- **Üzenet**: az implicit Descartes-termék belső illesztéshez nem támogatott, használja a Cross JOIN parancsot. Az illesztésben használt oszlopoknak egyedi kulcsot kell létrehozniuk a sorokhoz.
+- **OK**: a logikai csomagok közötti belső illesztéshez implicit Descartes termék nem támogatott. Ha az illesztésben használt oszlopok létrehozzák az egyedi kulcsot, a kapcsolat mindkét oldalán legalább egy oszlopot kötelező megadni.
+- **Javaslat**: a nem egyenlőségen alapuló összekapcsolásokhoz egyéni kereszt-illesztést kell választania.
 
-### <a name="error-code-df-executor-systeminvalidjson"></a>Hibakód: DF-Executor-SystemInvalidJson
+### <a name="error-code-df-executor-systeminvalidjson"></a>Hibakód: DF-végrehajtó-SystemInvalidJson
 
-- **Üzenet**: JSON elemzési hiba, nem támogatott kódolás vagy többsoros
-- **Okok**: Lehetséges problémák a JSON-fájllal kapcsolatban: nem támogatott kódolás, sérült bájtok, vagy JSON-forrás használata egyetlen dokumentumként számos beágyazott vonalon
-- **Javaslat**: Ellenőrizze, hogy a JSON-fájl kódolása támogatott-e. A JSON-adatkészletet használó Forrás-átalakításon bontsa ki a "JSON-beállítások" csomópontot, és kapcsolja be az "Egydokumentum" beállítást.
+- **Üzenet**: JSON-elemzési hiba, nem támogatott kódolás vagy többsoros
+- **OK**: a JSON-fájllal kapcsolatos lehetséges problémák: nem támogatott kódolás, sérült bájtok vagy JSON-forrás használata több beágyazott sorban lévő egyetlen dokumentumként
+- **Javaslat**: Ellenőrizze, hogy a JSON-fájl kódolása támogatott-e. A JSON-adatkészletet használó forrás-átalakításnál bontsa ki a "JSON-beállítások" elemet, és kapcsolja be az "egyetlen dokumentum" beállítást.
  
-### <a name="error-code-df-executor-broadcasttimeout"></a>Hibakód: DF-Executor-BroadcastTimeout
+### <a name="error-code-df-executor-broadcasttimeout"></a>Hibakód: DF-végrehajtó-BroadcastTimeout
 
-- **Üzenet**: Broadcast csatlakozás időtúllépési hiba, győződjön meg arról, hogy a szórásos adatfolyam 60 másodpercen belül adatokat hoz létre a hibakeresési futtatásokés és 300 mp feladatfuttatások esetén
-- **Okok**: A szórás alapértelmezett időtúllépése 60 másodperc a hibakeresési futtatásokés és 300 mp a feladatfuttatások esetén. A közvetítésre kiválasztott adatfolyam nagynak tűnik, hogy ezen a korláton belül adatokat állítson elő.
-- **Javaslat**: Kerülje a nagy adatfolyamok sugárzását, ahol a feldolgozás több mint 60 másodpercet vehet igénybe. Válasszon inkább egy kisebb adatfolyamot, amelyet közvetíteni szeretne. A nagy MÉRETŰ SQL/DW táblák és forrásfájlok általában rossz jelöltek.
+- **Üzenet**: szórásos csatlakozás időtúllépési hibája, győződjön meg arról, hogy a szórásos adatfolyam 60 másodpercen belül, hibakeresési futtatások és 300 a feladat futtatásakor
+- **OK**: a szórás a hibakeresési és a 300-es mp-es alapértelmezett időkorlátot (60 mp) tartalmaz a feladatok futtatásához. Úgy tűnik, hogy a szórásra kiválasztott stream nagy mennyiségű adatmennyiséget hoz létre ezen a korláton belül.
+- **Javaslat**: a csatlakozáshoz, a létezéshez és a kereséshez tekintse meg az optimalizálás lapot az adatfolyam-transzformációk lapon. A szórás alapértelmezett beállítása az "Auto". Ha ez be van állítva, vagy ha manuálisan állítja be a bal vagy a jobb oldali szórást a "rögzített" érték alatt, akkor beállíthat nagyobb Azure Integration Runtime konfigurációt, vagy kikapcsolhatja a szórást. Az Adatáramlások legjobb teljesítményének ajánlott megközelítése, hogy a Spark az "Auto" használatával közvetítse az "automatikus", és használja a memóriára optimalizált Azure IR.
 
-### <a name="error-code-df-executor-conversion"></a>Hibakód: DF-Executor-Conversion
+### <a name="error-code-df-executor-conversion"></a>Hibakód: DF-végrehajtó – konverzió
 
-- **Üzenet:** Érvénytelen karakter miatt nem sikerült dátummá vagy időpontra konvertálni
-- **Okok**: Az adatok formátuma nem a várt
-- **Ajánlás**: A megfelelő adattípus használata
+- **Üzenet**: egy érvénytelen karakter miatt nem sikerült a dátumra vagy időpontra konvertálása.
+- **Okok**: az adatértékek nem a várt formátumban vannak
+- **Javaslat**: használja a megfelelő adattípust
 
-### <a name="error-code-df-executor-invalidcolumn"></a>Hibakód: DF-Executor-InvalidColumn
+### <a name="error-code-df-executor-invalidcolumn"></a>Hibakód: DF-végrehajtó-InvalidColumn
 
-- **Üzenet**: Az oszlopnevet meg kell adni a lekérdezésben, állítson be aliast, ha SQL függvényt használ
-- **Okok**: Nincs megadva oszlopnév
-- **Javaslat**: Állítson be egy aliast, ha sql függvényt használ, például min()/max(), stb.
+- **Üzenet**: az oszlop nevét meg kell adni a lekérdezésben, egy aliast kell beállítania, ha SQL-függvényt használ
+- **Okok**: nincs megadva oszlopnév
+- **Javaslat**: alias beállítása, ha olyan SQL-függvényt használ, mint a min ()/Max (), stb.
 
-### <a name="error-code-getcommand-outputasync-failed"></a>Hibakód: A GetCommand OutputAsync nem sikerült
+### <a name="error-code-getcommand-outputasync-failed"></a>Hibakód: a GetCommand OutputAsync sikertelen
 
-- **Üzenet**: Az adatfolyam hibakeresése és az adatok előnézete során: A GetCommand OutputAsync nem sikerült ...
-- **Okok**: Ez egy háttérszolgáltatás-hiba. Újra próbálkozhat a művelettel, és újraindíthatja a hibakeresési munkamenetet.
-- **Javaslat**: Ha az újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfélszolgálathoz.
+- **Üzenet**: az adatfolyam hibakeresése és az adatelőnézet: a GetCommand OutputAsync sikertelen volt...
+- **Okok**: ez egy háttér-szolgáltatási hiba. Próbálja megismételni a műveletet, és indítsa újra a hibakeresési munkamenetet.
+- **Javaslat**: Ha az Újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfél-támogatási szolgálathoz.
 
-### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Hibakód: A nem várt kivétel leütése és végrehajtása nem sikerült
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Hibakód: váratlan kivétel történt, és a végrehajtás nem sikerült
 
-- **Üzenet**: Az adatfolyam-tevékenység végrehajtása során: Hit váratlan kivétel és a végrehajtás nem sikerült.
-- **Okok**: Ez egy háttérszolgáltatás-hiba. Újra próbálkozhat a művelettel, és újraindíthatja a hibakeresési munkamenetet.
-- **Javaslat**: Ha az újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfélszolgálathoz.
+- **Üzenet**: az adatfolyam tevékenységének végrehajtása során: váratlan kivétel történt, és a végrehajtás nem sikerült.
+- **Okok**: ez egy háttér-szolgáltatási hiba. Próbálja megismételni a műveletet, és indítsa újra a hibakeresési munkamenetet.
+- **Javaslat**: Ha az Újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfél-támogatási szolgálathoz.
 
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 
-1. Ellenőrizze az adatkészlet-kapcsolatok állapotát. Az egyes forrás- és fogadóátalakítások során keresse fel a csatolt szolgáltatást minden egyes használt adatkészlethez, és tesztelje a kapcsolatokat.
-1. Ellenőrizze a fájl- és táblakapcsolatok állapotát az adatfolyam-tervezőtől. Kapcsolja be a Debug ot, és kattintson az Adatelőnézet gombra a forrásátalakításokon, hogy biztosan hozzáférhessen az adatokhoz.
-1. Ha minden jól néz ki az adatok előnézetéből, lépjen be a Folyamattervezőbe, és helyezze az adatfolyamot egy folyamattevékenységbe. Hibakeresés a folyamat egy végpontok között teszt.
+1. Keresse meg az adatkészlet kapcsolatainak állapotát. Minden forrás-és fogadó-átalakításban keresse fel a társított szolgáltatást minden Ön által használt adatkészlet esetében, és tesztelje a kapcsolatokat.
+1. Győződjön meg róla, hogy a fájl és a tábla kapcsolatainak állapota az adatfolyam-tervezőben található. Kapcsolja be a hibakeresést, és kattintson az adatelőnézetre a forrás-átalakításokban, és győződjön meg arról, hogy képes hozzáférni az adataihoz.
+1. Ha minden jól látható az adatok előnézetében, ugorjon a folyamat-tervezőbe, és helyezze át az adatfolyamatot egy folyamat tevékenységbe. Egy végpontok közötti teszt folyamatának hibakeresése.
 
 ## <a name="next-steps"></a>További lépések
 
-További hibaelhárítási segítségért próbálkozzon az alábbi forrásokkal:
+További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory szolgáltatáskérések](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Stack túlcsordulás fórum Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter információk a Data Factory-ról](https://twitter.com/hashtag/DataFactory)
-*  [ADF-hozzárendelési adatfolyamok Teljesítményútmutató](concepts-data-flow-performance.md)
+*  [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Az ADF-leképezés adatforgalmának teljesítmény-útmutatója](concepts-data-flow-performance.md)

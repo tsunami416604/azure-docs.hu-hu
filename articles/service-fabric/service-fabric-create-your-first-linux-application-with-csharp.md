@@ -1,14 +1,14 @@
 ---
 title: 'Az első Azure Service Fabric-alkalmazás létrehozása Linuxon C használatával #'
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy Service Fabric-alkalmazást a C# és a .NET Core 2.0 használatával.
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Service Fabric alkalmazást a C# és a .NET Core 2,0 használatával.
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193649"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .N
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy [beállította a Linux-fejlesztőkörnyezetet](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy beépített Linux-környezetet egy virtuális gépen a Vagrant használatával](service-fabric-get-started-mac.md).
 
-A [Service Fabric CLI-t](service-fabric-cli.md) is telepíteni szeretné.
+A [Service FABRIC CLI](service-fabric-cli.md) -t is telepíteni kívánja
 
 ### <a name="install-and-set-up-the-generators-for-c"></a>A C# generátorainak telepítése és beállítása
 A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálból Yeoman-sablongenerátorok használatával. Hajtsa végre ezeket a lépéseket a Service Fabric Yeoman sablongenerátorok beállításához C#-hoz:
@@ -86,10 +86,10 @@ A kész alkalmazás a többi Service Fabric-alkalmazással azonos módon telepí
 
 Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a generált jegyzékfájlokban.
 
-Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
+Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a `http://localhost:19080/Explorer` URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Az alkalmazás üzembe helyezéséhez egy biztonságos Linux-fürt az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futásidejű. Ezzel lehetővé teszi, hogy a Reliable Services-szolgáltatások kommunikáljanak az alapul szolgáló Service Fabric futásidejű API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatáshoz.](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)  
+> Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Services szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
@@ -97,7 +97,7 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.
 
-   MAC OS X esetén a következő további parancsok futtatásával kell a myactorsvcTestClient mappát a tárolón belüli helyre másolnia.
+   MAC OS X esetén a myactorsvcTestClient mappát a tárolón belül ugyanarra a helyre kell másolnia a következő további parancsok futtatásával.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

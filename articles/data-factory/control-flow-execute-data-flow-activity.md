@@ -1,6 +1,6 @@
 ---
 title: Adatfolyam-tevékenység
-description: Adatfolyamatok végrehajtása adatfeldolgozó folyamatból.
+description: Az adatfolyamatok végrehajtása egy adatfeldolgozó-folyamaton belül.
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,19 +8,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 03/16/2020
-ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/25/2020
+ms.openlocfilehash: 78ef749f36e9ffd3aae510d201b0700e5e197065
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415337"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183296"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység az Azure Data Factoryban
+# <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatfolyam-tevékenység segítségével átalakíthatja és áthelyezi az adatokat az adatfolyamok leképezésével. Ha még nem ért hozzá az adatfolyamok, olvassa el [az Adatfolyam leképezése – áttekintés című témakört.](concepts-data-flow-overview.md)
+Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a leképezési adatfolyamatok használatával. Ha még nem ismeri az adatfolyamatokat, tekintse meg az [adatáramlás leképezése – áttekintés](concepts-data-flow-overview.md) című témakört.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -56,73 +56,73 @@ Az adatfolyam-tevékenység segítségével átalakíthatja és áthelyezi az ad
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-adatfolyam | A végrehajtás alatt lévő adatfolyamra mutató hivatkozás | DataFlowReference | Igen
-integrációRuntime | Az adatfolyam által futtatott számítási környezet. Ha nincs megadva, az automatikus feloldási Azure-integrációs runtime lesz használva | IntegrationRuntimeReference | Nem
-compute.coreCount | A spark-fürtben használt magok száma. Csak akkor adható meg, ha az automatikus feloldási Azure-integrációs runtime-ot használja | 8, 16, 32, 48, 80, 144, 272 | Nem
-compute.computeType típus | A spark-fürtben használt számítási típus. Csak akkor adható meg, ha az automatikus feloldási Azure-integrációs runtime-ot használja | "Általános", "ComputeOptimized", "MemoryOptimized" | Nem
-staging.linkedService | SQL DW-forrás vagy -fogadó használata esetén a PolyBase átmeneti | LinkedServiceReference | Csak akkor, ha az adatfolyam beolvassa vagy írja az SQL DW
-staging.folderPath | SQL DW-forrás vagy -fogadó használata esetén a Blob storage-fiókban lévő mappaelérési út a PolyBase átmeneti | Sztring | Csak akkor, ha az adatfolyam beolvassa vagy írja az SQL DW
+adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
+integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni | IntegrationRuntimeReference | Nem
+számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | Nem
+számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | Nem
+előkészítés. linkedService | Ha SQL DW-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
+előkészítés. folderPath | Ha SQL DW-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
 
 ![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
 
-### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Dinamikusan méretező adatfolyam-számítás futásidőben
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Adatáramlási számítások dinamikusan méretezése futásidőben
 
-A Core Count és a Compute Type tulajdonságok dinamikusan beállíthatók a bejövő forrásadatok méretéhez való igazításhoz futásidőben. A forrásadatkészlet-adatok méretének megkereséséhez használjon folyamattevékenységeket, például a Keresés vagy a Metaadatok bekésése. Ezután használja a Dinamikus tartalom hozzáadása az adatfolyam-tevékenység tulajdonságaiban.
+Az alapszám és a számítási típus tulajdonságainak beállítása dinamikusan beállítható úgy, hogy a bejövő forrásadatok mérete futásidőben is módosítható legyen. A forrás adatkészlet-adatok méretének megkereséséhez használjon olyan folyamat-tevékenységeket, mint a keresés vagy a metaadatok beolvasása. Ezután használja a dinamikus tartalom hozzáadása részt az adatfolyam tevékenység tulajdonságainál.
 
 ![Dinamikus adatfolyam](media/data-flow/dyna1.png "Dinamikus adatfolyam")
 
-[Itt van egy rövid videó bemutató elmagyarázza ezt a technikát](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[Íme egy rövid videós oktatóanyag, amely leírja ezt a technikát](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-### <a name="data-flow-integration-runtime"></a>Adatfolyam-integráció futásideje
+### <a name="data-flow-integration-runtime"></a>Adatfolyam-integrációs modul
 
-Válassza ki, hogy melyik integrációs futásidejűt használja az adatfolyam-tevékenység végrehajtásához. Alapértelmezés szerint a Data Factory fogja használni az automatikus feloldása Azure-integrációs futásidő négy feldolgozó magok és nincs ideje az élő (TTL). Ez az infravörös rendszer általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Létrehozhat saját Azure-integrációs runtimes, amelyek meghatározzák az adott régiók, számítási típus, alapvető száma, és a TTL az adatfolyam-tevékenység végrehajtása.
+Válassza ki, hogy melyik Integration Runtime szeretné használni az adatfolyam tevékenységének végrehajtásához. Alapértelmezés szerint a Data Factory az Azure Integration Runtime automatikus feloldását fogja használni négy munkavégző maggal, és nincs élettartam (TTL). Ez az IR általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Létrehozhat saját Azure-integrációs modulokat, amelyek meghatározott régiókat, számítási típusokat, alapszámokat és ÉLETTARTAMot határoznak meg az adatfolyam tevékenységének végrehajtásához.
 
-A folyamatvégrehajtások esetében a fürt egy feladatfürt, amely a végrehajtás megkezdése előtt néhány percet vesz igénybe. Ha nincs megadva TTL, akkor ez az indítási idő minden folyamat futtatásakor szükséges. Ha ttl-t ad meg, a meleg fürtkészlet az utolsó végrehajtás után megadott ideig aktív marad, ami rövidebb indítási időket eredményez. Ha például a TTL 60 perc, és óránként egyszer fut egy adatfolyamot, a fürtkészlet aktív marad. További információ: [Azure-integrációs runtime](concepts-integration-runtime.md).
+A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás megkezdése előtt több percet vesz igénybe. Ha nem ad meg TTL-értéket, a rendszer ezt az indítási időt igényli minden folyamat futtatásához. Ha a TTL értéket adja meg, a meleg fürt a legutóbbi végrehajtás után megadott időre aktív marad, ami rövidebb indítási időt eredményez. Ha például 60 perc ÉLETTARTAMa van, és óránként egyszer futtat egy adatfolyamot, a fürtön marad aktív. További információ: [Azure Integration Runtime](concepts-integration-runtime.md).
 
-![Azure-integrációs futásidejű](media/data-flow/ir-new.png "Azure-integrációs futásidejű")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> Az integrációs futásidejű kiválasztása az adatfolyam-tevékenység ben csak a folyamat *aktivált végrehajtásai* vonatkozik. A folyamat adatfolyamokkal történő hibakeresése a hibakeresési munkamenetben megadott fürtön fut.
+> Az adatfolyam-tevékenység Integration Runtime kiválasztása csak a folyamat *aktivált végrehajtására* vonatkozik. A folyamat hibakeresése az adatfolyamatokkal a hibakeresési munkamenetben megadott fürtön fut.
 
 ### <a name="polybase"></a>PolyBase
 
-Ha egy Azure SQL Data Warehouse-t használ fogadóként vagy forrásként, ki kell választania egy átmeneti helyet a PolyBase kötegelt terheléshez. A PolyBase lehetővé teszi a kötegelt betöltést ömlesztve az adatok soronkénti betöltése helyett. A PolyBase drasztikusan csökkenti a betöltési időt az SQL DW-be.
+Ha egy Azure SQL Data Warehouse fogadóként vagy forrásként használ, ki kell választania egy átmeneti helyet a Batch-köteg betöltéséhez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az SQL DW-ben.
 
-## <a name="parameterizing-data-flows"></a>Adatfolyamok paraméterezése
+## <a name="parameterizing-data-flows"></a>Parameterizing-adatfolyamok
 
-### <a name="parameterized-datasets"></a>Paraméterezett adatkészletek
+### <a name="parameterized-datasets"></a>Paraméteres adatkészletek
 
-Ha az adatfolyam paraméterezett adatkészleteket használ, állítsa be a paraméterértékeket a **Beállítások** lapon.
+Ha az adatfolyam paraméteres adatkészleteket használ, állítsa be a paraméterek értékét a **Beállítások** lapon.
 
-![Adatfolyam-paraméterek végrehajtása](media/data-flow/params.png "Paraméterek")
+![Adatfolyam paramétereinek végrehajtása](media/data-flow/params.png "Paraméterek")
 
-### <a name="parameterized-data-flows"></a>Paraméterezett adatfolyamok
+### <a name="parameterized-data-flows"></a>Paraméteres adatfolyamatok
 
-Ha az adatfolyam paraméterezett, állítsa be az adatfolyam paramétereinek dinamikus értékeit a **Paraméterek** lapon. Az ADF-folyamat kifejezés nyelvének (csak karakterlánctípusoknál) vagy az adatfolyam-kifejezés nyelvének használatával dinamikus vagy literális paraméterértékeket rendelhet hozzá. További információt az [Adatfolyam-paraméterek című témakörben talál.](parameters-data-flow.md)
+Ha az adatfolyam paraméteres, állítsa be az adatfolyam paramétereinek dinamikus értékeit a **Parameters (paraméterek** ) lapon. A dinamikus vagy literális paraméterérték kiosztásához használhatja az ADF-folyamat kifejezésének nyelvét vagy az adatfolyam kifejezésének nyelvét is. További információ: adatfolyam- [Paraméterek](parameters-data-flow.md). Ha a kifejezés részeként szeretné felvenni a folyamat tulajdonságait egy adatfolyam-paraméterbe való átadáshoz, válassza a folyamat kifejezéseket.
 
-![Példa az adatfolyam-paraméter végrehajtására](media/data-flow/parameter-example.png "Példa paraméterre")
+![Példa az adatforgalom paraméterének végrehajtására](media/data-flow/parameter-example.png "Példa paraméterre")
 
-### <a name="parameterized-compute-properties"></a>Paraméterezett számítási tulajdonságok.
+### <a name="parameterized-compute-properties"></a>Paraméteres számítási tulajdonságok.
 
-Paraméterezheti a magszámát vagy a számítási típusát, ha az Azure-integráció automatikus feloldását használja, és értékeket ad meg a compute.coreCount és compute.computeType számára.
+Ha az Azure Integration Runtime automatikus feloldása és a számítási. coreCount és számítások értékeit adja meg, parametrizálja az alapvető darabszámot vagy a számítási típust.
 
-![Példa az adatfolyam-paraméter végrehajtására](media/data-flow/parameterize-compute.png "Példa paraméterre")
+![Példa az adatforgalom paraméterének végrehajtására](media/data-flow/parameterize-compute.png "Példa paraméterre")
 
-## <a name="pipeline-debug-of-data-flow-activity"></a>Az adatfolyam-tevékenység folyamatának hibakeresése
+## <a name="pipeline-debug-of-data-flow-activity"></a>Adatáramlási tevékenység folyamatának hibakeresése
 
-Ha adatfolyam-tevékenységgel futtatott hibakeresési folyamatot szeretne végrehajtani, a felső **sávadatfolyam-hibakeresési** csúszkáján keresztül be kell kapcsolnia az adatfolyam-hibakeresési módot. A hibakeresési mód lehetővé teszi az adatfolyam futtatását egy aktív Spark-fürtön. További információt a [Hibakeresési mód című témakörben talál.](concepts-data-flow-debug-mode.md)
+Egy adatáramlási tevékenységgel futtatott hibakeresési folyamat végrehajtásához az adatfolyam-hibakeresési módot a felső sávon található **adatfolyam-hibakeresési** csúszka használatával kell bekapcsolni. A hibakeresési mód lehetővé teszi az adatfolyamok aktív Spark-fürtön való futtatását. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
 ![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
 
-A hibakeresési folyamat az aktív hibakeresési fürtön fut, nem az adatfolyam-tevékenység beállításaiban megadott integrációs futásidejű környezetben. A hibakeresési mód indításakor kiválaszthatja a hibakeresési számítási környezetet.
+A hibakeresési folyamat az aktív hibakeresési fürtön fut, nem az adatáramlási tevékenység beállításaiban megadott integrációs futtatókörnyezeti környezettel. A hibakeresési mód indításakor kiválaszthatja a hibakeresés számítási környezetét.
 
-## <a name="monitoring-the-data-flow-activity"></a>Az adatfolyam-tevékenység figyelése
+## <a name="monitoring-the-data-flow-activity"></a>Az adatfolyam tevékenységének figyelése
 
-Az adatfolyam-tevékenység egy speciális figyelési élményt, ahol megtekintheti a particionálás, a szakasz idő és az adatvonal-információk. Nyissa meg a figyelési ablaktáblát a szemüveg ikonon, a **Műveletek csoportban.** További információ: [Monitoring Data Flows](concepts-data-flow-monitoring.md).
+Az adatfolyam-tevékenység speciális figyelési felülettel rendelkezik, ahol megtekintheti a particionálást, a szakasz időpontját és az adatvonal-információkat. Nyissa meg a figyelés panelt a **műveletek**területen található szemüvegek ikon használatával. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
 
-### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Az adatfolyam-tevékenység eredményeinek használata egy későbbi tevékenységben
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Adatfolyam-tevékenységek eredményeinek használata egy későbbi tevékenységben
 
-Az adatfolyam-tevékenység az egyes fogadókba írt sorok számát és az egyes forrásból beolvasott sorok számát mutató metrikákat ad ki. Ezek az eredmények `output` a tevékenység futtatási eredményének szakaszában kerülnek visszaadásra. A visszaadott mutatók az alábbi json formátumúak.
+Az adatfolyam tevékenység az egyes fogadók számára írt sorok számát és az egyes forrásokból beolvasott sorokra vonatkozó mérőszámokat jeleníti meg. Ezek az eredmények a tevékenység futtatási eredményének `output` szakaszában lesznek visszaadva. A visszaadott metrikák az alábbi JSON formátumban jelennek meg.
 
 ``` json
 {
@@ -150,16 +150,16 @@ Az adatfolyam-tevékenység az egyes fogadókba írt sorok számát és az egyes
 }
 ```
 
-Ha például a "dataflowActivity" nevű tevékenység "sink1" nevű fogadóba írt `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`sorok számát szeretné megkapni, használja a használatát.
+Ha például a "sink1" nevű fogadóba írt sorok számát szeretné lekérni egy "dataflowActivity" nevű tevékenységben, használja `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`a következőt:.
 
-A fogadóban használt "source1" nevű forrásból beolvasott sorok számának leolvasásához használja a használatát. `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`
+A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez használja `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`a következőt:.
 
 > [!NOTE]
-> Ha egy fogadó nulla sorokat írt, nem jelenik meg a metrikákban. A létezés a `contains` funkció segítségével ellenőrizhető. Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` ellenőrzi, hogy a sorok at sink1.For example, will check whether any rows were written to sink1.
+> Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a `contains` függvény használatával. Például megvizsgálhatja, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` hogy a sorok sink1-e.
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: A Data Factory által támogatott vezérlési folyamat tevékenységek: 
+Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

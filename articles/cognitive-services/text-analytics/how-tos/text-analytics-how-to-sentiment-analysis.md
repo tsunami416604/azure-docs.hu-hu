@@ -1,136 +1,138 @@
 ---
-title: Hangulatelemzés végrehajtása a Text Analytics REST API-val
+title: Text Analytics REST APIekkel kapcsolatos érzelmek elemzése
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan észlelheti a szövegben lévő hangulatot az Azure Cognitive Services Text Analytics REST API-val.
+description: Ez a cikk bemutatja, hogyan derítheti fel a szövegbeli érzelmeket az Azure Cognitive Services Text Analytics REST API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 99a62daf6dced88efd9bda591a0ca44a8b259a75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203457"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195638"
 ---
-# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: Hangulatészlelése a Text Analytics API használatával
+# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
-A Text Analytics API Hangulatelemzés funkciója kiértékeli a szöveget, és minden mondathoz visszaküldi a hangulatpontszámokat és a címkéket. Ez akkor hasznos, kimutatására pozitív és negatív hangulat a szociális média, az ügyfelek véleménye, vitafórumok és így tovább. Az API által használt AI-modelleket a szolgáltatás biztosítja, csak a tartalmat elemzésre kell küldenie.
+A Text Analytics API Hangulatelemzés funkciója kiértékeli a szöveget, és az egyes mondatokhoz tartozó érzelmi pontszámokat és címkéket adja vissza. Ez hasznos lehet a közösségi média, az ügyfelek és a vitafórumok pozitív és negatív észlelésére. Az API által használt AI-modelleket a szolgáltatás nyújtja, csak tartalmat kell elküldeni az elemzéshez.
 
 > [!TIP]
-> A Text Analytics egy Linux-alapú Docker-tárolórendszerképet is biztosít a nyelvfelismeréshez, így [telepítheti és futtathatja a Text Analytics-tárolót az](text-analytics-how-to-install-containers.md) adatok közelében.
+> A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a nyelvfelismerés számára, így a Text Analytics tárolót az adatokhoz közelebb is [telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
 
-A Hangulatelemzés a nyelvek széles körét támogatja, és több előzetes verziót is tartalmaz. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
+A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
 ## <a name="concepts"></a>Alapelvek
 
-A Text Analytics API egy gépi tanulási besorolási algoritmust használ a 0 és 1 közötti hangulatpontszám létrehozásához. Az 1-hez közeli értékek pozitív, míg a 0-hoz közeliek negatív hangulatot jelölnek. A hangulatelemzés a teljes dokumentumon történik, a szövegben lévő egyes entitások helyett. Ez azt jelenti, hogy a hangulatpontszámok at dokumentum- vagy mondatszinten adják vissza. 
+A Text Analytics API egy Machine learning-besorolási algoritmust használ, amely egy 0 és 1 közötti hangulati pontszámot eredményez. Az 1-hez közeli értékek pozitív, míg a 0-hoz közeliek negatív hangulatot jelölnek. Az érzelmek elemzése a teljes dokumentumon történik, a szövegben szereplő egyes entitások helyett. Ez azt jelenti, hogy a hangulati pontszámok egy dokumentum vagy egy mondat szintjén lesznek visszaadva. 
 
-Az alkalmazott modell előre bevan képezve a szöveg- és hangulattársítások kiterjedt korpuszával. Az elemzési technikák kombinációját használja, beleértve a szövegfeldolgozást, a beszédrész-elemzést, a szóelhelyezést és a szótársításokat. Az algoritmussal kapcsolatos további információk: [A Text Analytics bemutatása](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Jelenleg nem lehet saját betanítási adatokat megadni. 
+A használt modell előre betanítva, a szöveg-és a hangulati társítások széles választékával. Az elemzési módszerek kombinációját használja, többek között a szöveg feldolgozását, a beszédek elemzését, a szavak elhelyezését és a Word-társításokat. Az algoritmussal kapcsolatos további információk: [A Text Analytics bemutatása](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Jelenleg nem lehet saját betanítási adatait megadnia. 
 
-A pontozási pontosság ot valószínűleg javítja, ha a dokumentumok kevesebb mondatot tartalmaznak, nem pedig nagy szövegblokkot. Az objektivitás megfelelőségvizsgálati fázis során a modell meghatározza, hogy a dokumentum egészében objektív-e vagy hangulatot tartalmaz. A dokumentum, amely többnyire objektív nem halad a hangulatészlelési fázis, ami 0,50 pontszámot, további feldolgozás nélkül. A folyamatban lévő dokumentumok esetében a következő fázis 0,50 feletti vagy alatti pontszámot hoz létre. A pontszám a dokumentumban észlelt vélemény mértékfokátó.
+A pontozás pontossága olyankor nő, amikor a dokumentumok kevesebb mondatot tartalmaznak, nem pedig egy nagy blokkot. Az objektivitás megfelelőségvizsgálati fázis során a modell meghatározza, hogy a dokumentum egészében objektív-e vagy hangulatot tartalmaz. Egy olyan dokumentum, amely többnyire objektív, nem halad az észlelési fázisra, ami egy 0,50 pontszámot eredményez, és nincs szükség további feldolgozásra. A folyamat során folytatott dokumentumok esetében a következő fázis a 0,50-es vagy újabb pontszámot generálja. A pontszám a dokumentumban észlelt érzelmek szintjétől függ.
 
-## <a name="sentiment-analysis-versions-and-features"></a>Hangulatelemzési verziók és -szolgáltatások
+## <a name="sentiment-analysis-versions-and-features"></a>Verziók és szolgáltatások Hangulatelemzés
 
-A Text Analytics API a hangulatelemzés két verzióját kínálja – a 2-es és a v3-as. Hangulatelemzés v3 (Nyilvános előzetes verzió) jelentős javulást biztosít az API szövegének kategorizálása és pontozása pontosságát és részleteit.
+A Text Analytics API a Hangulatelemzés-v2 és v3 két verzióját kínálja. A Hangulatelemzés v3 (nyilvános előzetes verzió) jelentős mértékben javítja az API szövegének kategorizálása és pontozása pontosságát és részletességét.
 
 > [!NOTE]
-> * A Hangulatelemzés v3 kérelemformátum és [az adatkorlátok](../overview.md#data-limits) megegyeznek az előző verzióval.
-> * A Hangulatelemzés v3 a következő `Australia East` `Central Canada`régiókban érhető `East US 2` `North Europe`el: , `West Europe`, `West US 2` `Central US` `East Asia`, `East US`, , `Southeast Asia`, `South Central US`, , `UK South`, , , , és .
+> * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
+> * A Hangulatelemzés v3 a következő régiókban érhető el `Australia East`: `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `Southeast Asia` `South Central US` `UK South` `West Europe`,,,,,,,,,, és `West US 2`.
 
 | Szolgáltatás                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
 |-------------------------------------------|-----------------------|-----------------------|
-| Az egyedi és kötegelt kérelmek módszerei    | X                     | X                     |
-| A teljes dokumentum hangulatpontszámai  | X                     | X                     |
-| Az egyes mondatok hangulatpontszámai |                       | X                     |
-| Hangulat címkézése                        |                       | X                     |
-| Modellverziószámozás                   |                       | X                     |
+| Egyszeri és batch-kérelmek módszerei    | X                     | X                     |
+| A teljes dokumentum hangulati pontszámai  | X                     | X                     |
+| Az egyéni mondatok hangulati pontszámai |                       | X                     |
+| Érzelmek címkézése                        |                       | X                     |
+| Modell verziószámozása                   |                       | X                     |
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-### <a name="sentiment-scoring"></a>Hangulatpontozás
+### <a name="sentiment-scoring"></a>Érzelmek pontozása
 
-A Hangulatelemzés v3 a szöveget hangulatfeliratokkal osztályolja (lásd alább). A visszaadott pontszámok a modell azon megbízhatóságát tükrözik, hogy a szöveg pozitív, negatív vagy semleges. A magasabb értékek nagyobb bizalmat jelentenek. 
+Hangulatelemzés v3 a szövegeket az érzelmekkel kapcsolatos címkékkel osztályozza (lásd alább). A visszaadott pontszámok a modell megbízhatóságát jelentik, hogy a szöveg pozitív, negatív vagy semleges. A magasabb értékek nagyobb megbízhatóságot jelentenek. 
 
-### <a name="sentiment-labeling"></a>Hangulat címkézése
+### <a name="sentiment-labeling"></a>Érzelmek címkézése
 
-Hangulatelemzés v3 adhat vissza pontszámok és címkék egy mondat és a dokumentum szintjén. A pontszámok és `positive`a `negative`címkék `neutral`a , és . A dokumentum szintjén `mixed` a hangulatcímke is visszaadható pontszám nélkül. A dokumentum hangulatát az alábbiakban határozzuk meg:
+Hangulatelemzés v3 egy mondaton és a dokumentum szintjén (`positive`, `negative`, és `neutral`) a megbízhatósági pontszámokkal együtt visszaadja a hangulati címkéket. A `mixed` hangulat címkéje a dokumentum szintjén is visszaadható. 
 
-| Mondat hangulat                                                                            | Visszaadott dokumentumcímke |
+A dokumentum hangulatát a következők határozzák meg:
+
+| Mondat hangulata                                                                            | Visszaadott dokumentum címkéje |
 |-----------------------------------------------------------------------------------------------|-------------------------|
-| Legalább egy `positive` mondat szerepel a dokumentumban. A többi mondat `neutral`... | `positive`              |
-| Legalább egy `negative` mondat szerepel a dokumentumban. A többi mondat `neutral`... | `negative`              |
-| Legalább egy `negative` mondat és `positive` legalább egy mondat szerepel a dokumentumban.    | `mixed`                 |
-| A dokumentumban lévő `neutral`összes mondat a .                                                  | `neutral`               |
+| Legalább egy `positive` mondat szerepel a dokumentumban. A mondatok további részei `neutral`. | `positive`              |
+| Legalább egy `negative` mondat szerepel a dokumentumban. A mondatok további részei `neutral`. | `negative`              |
+| Legalább egy `negative` mondat és legalább egy `positive` mondat szerepel a dokumentumban.    | `mixed`                 |
+| A dokumentumban szereplő összes mondat `neutral`.                                                  | `neutral`               |
 
-### <a name="model-versioning"></a>Modellverziószámozás
+### <a name="model-versioning"></a>Modell verziószámozása
 
 > [!NOTE]
-> A hangulatelemzéshez szükséges modellverziószámozás verziószámozása verziószámozással érhető el a verziószámtól `v3.0-preview.1`kezdve.
+> A modell-verziószámozás az érzelmek elemzéséhez a verziótól `v3.0-preview.1`kezdve érhető el.
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-### <a name="example-c-code"></a>Példa C# kód
+### <a name="example-c-code"></a>Példa C#-kódra
 
-A [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)található egy C# példa alkalmazás, amely meghívja a Hangulatelemzés ezen verzióját.
+Olyan C#-alkalmazást talál, amely meghívja a Hangulatelemzés ezen verzióját a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs).
 
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-### <a name="sentiment-scoring"></a>Hangulatpontozás
+### <a name="sentiment-scoring"></a>Érzelmek pontozása
 
-A hangulatelemző a szöveget túlnyomórészt pozitívnak vagy negatívnak minősíti. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy karakterlánc nem elemezhető hangulatra, vagy nincs hangulata, a pontszám mindig pontosan 0,5. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
+Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>REST API-kérelem küldése 
+## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése 
 
 ### <a name="preparation"></a>Előkészítés
 
-A hangulatelemzés jobb minőségű eredményt ad, ha kisebb mennyiségű szöveget ad meg neki, amelyen dolgozni szeretne. Ez a ellentétes a kulcsszókereséssel, amely nagyobb mennyiségű szöveg esetén teljesít jobban. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+Az érzelmek elemzése nagyobb minőségi eredményt eredményez, ha kisebb mennyiségű szöveget ad meg a munkához. Ez a ellentétes a kulcsszókereséssel, amely nagyobb mennyiségű szöveg esetén teljesít jobban. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
 
-JSON-dokumentumokkal ebben a formátumban kell lennie: azonosító, szöveg és nyelv.
+A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg és nyelv.
 
-A dokumentum méretének dokumentumonként 5120 karakternél nem lehet nagyobb. Gyűjteményenként legfeljebb 1000 elem (azonosítók) lehet. A kollekció elküldése a kérelem törzsében történik.
+A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentumban. Egy gyűjteményhez legfeljebb 1 000 elem (azonosító) tartozhat. A kollekció elküldése a kérelem törzsében történik.
 
-## <a name="structure-the-request"></a>A kérelem strukturálása
+## <a name="structure-the-request"></a>A kérelem szerkezete
 
-Hozzon létre egy POST kérést. A [Postman](text-analytics-how-to-call-api.md) vagy az **API-tesztkonzol** segítségével gyorsan strukturálhatja és elküldheti az API-t az alábbi hivatkozási hivatkozásokban. 
+Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) vagy az API- **tesztelési konzolt** a következő hivatkozásokra kattintva gyorsan strukturálhatja és küldheti el. 
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-[Hangulatelemzés v3-as hivatkozás](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+[Hangulatelemzés v3 – dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[Hangulatelemzés v2 referencia](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+[Hangulatelemzés v2 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
-Állítsa be a HTTPS-végpontot a hangulatelemzéshez egy Azure-beli Text Analytics-erőforrás sal vagy egy példányosított [text analytics-tárolóval.](text-analytics-how-to-install-containers.md) A használni kívánt verzióhoz a megfelelő URL-címet kell megadnia. Példa:
+Állítsa be a HTTPS-végpontot az érzelmek elemzéséhez az Azure-ban vagy egy példányban létrehozott [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell adnia a használni kívánt verzió helyes URL-címét. Például:
 
 > [!NOTE]
-> Az azure-portálon megtalálhatja a kulcs átési végpontját a Text Analytics-erőforráshoz. Ezek az erőforrás **gyorskezdőlapján,** az **erőforrás-kezelés**csoportban találhatók. 
+> Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
-Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics API-kulcsot. A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
+A Text Analytics API kulcsot tartalmazó kérelem fejlécének beállítása. A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
-### <a name="example-sentiment-analysis-request"></a>Példa hangulatelemzési kérelemre 
+### <a name="example-sentiment-analysis-request"></a>Példa Hangulatelemzés kérelemre 
 
-A következő egy példa hangulatelemzésre beküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójában.
+A következő egy példa hangulatelemzésre beküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójával.
     
 ```json
 {
@@ -149,24 +151,24 @@ A következő egy példa hangulatelemzésre beküldhető tartalomra. A kérelem 
 }
 ```
 
-### <a name="post-the-request"></a>A kérelem feladása
+### <a name="post-the-request"></a>A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. A percenként és másodpercenként küldhető kérelmek méretéről és számáról az [áttekintés adatkorlátok](../overview.md#data-limits) című részében olvashat.
+Az elemzés a kérelem megkapásakor történik meg. További információ a másodpercenként elküldhető kérelmek méretéről és számáról: az [adatkorlátozások](../overview.md#data-limits) szakasz az áttekintésben.
 
-A Text Analytics API állapot nélküli. A rendszer nem tárol adatokat a fiókjában, és az eredményeket azonnal visszaadja a válasznak.
+A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen adatmennyiséget, és az eredményeket azonnal visszaadja a válaszban.
 
 
 ### <a name="view-the-results"></a>Eredmények megtekintése
 
-A hangulatelemző a szöveget túlnyomórészt pozitívnak vagy negatívnak minősíti. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy karakterlánc nem elemezhető hangulatra, vagy nincs hangulata, a pontszám mindig pontosan 0,5. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
+Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
 
-A kimenetet visszaadása azonnali. Az eredményeket streamelheti egy olyan alkalmazásba, amely elfogadja a JSON-t, vagy mentheti a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy alkalmazásba, amellyel rendezheti, keresheti és kezelheti az adatokat. A többnyelvű és emoji támogatásnak köszönhetően a válasz szövegeltolásokat tartalmazhat. További [információ: Az ellentámadások feldolgozása](../concepts/text-offsets.md) további információkért.
+A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információkért lásd: [eltolások feldolgozása](../concepts/text-offsets.md) .
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-### <a name="sentiment-analysis-v3-example-response"></a>Hangulatelemzés v3 példa válasz
+### <a name="sentiment-analysis-v3-example-response"></a>Példa Hangulatelemzés v3-es válaszra
 
-A Hangulatelemzés v3 válaszai minden egyes elemzett mondat és dokumentum hangulatfeliratát és pontszámát tartalmazzák. `documentScores`nem ad vissza, ha `mixed`a dokumentum hangulatfelirata.
+Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vonatkozó véleményeket és pontszámokat tartalmaznak. `documentScores`nem adja vissza, ha a dokumentum hangulati `mixed`címkéje.
 
 ```json
 {
@@ -238,11 +240,11 @@ A Hangulatelemzés v3 válaszai minden egyes elemzett mondat és dokumentum hang
 }
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-### <a name="sentiment-analysis-v2-example-response"></a>Hangulatelemzés v2 példa válasz
+### <a name="sentiment-analysis-v2-example-response"></a>Példa Hangulatelemzés v2 válaszra
 
-A Hangulatelemzés v2 válaszai minden egyes elküldött dokumentumhoz tartalmaznak hangulatpontszámokat.
+A Hangulatelemzés v2 válaszai az egyes elküldött dokumentumokhoz tartozó hangulati pontszámokat tartalmaznak.
 
 ```json
 {
@@ -261,15 +263,15 @@ A Hangulatelemzés v2 válaszai minden egyes elküldött dokumentumhoz tartalmaz
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben a Szövegelemzés API használatával ismertetheti a szövegelemzési API használatával a hangulatelemzéshez használt fogalmakat és munkafolyamatokat. Összegezve:
+Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek elemzéséhez szükséges fogalmakat és munkafolyamatokat. Összegezve:
 
-+ A hangulatelemzés két változatban érhető el a kiválasztott nyelvekhez.
-+ A kérelem törzsében lévő JSON-dokumentumok azonosítót, szöveget és nyelvi kódot tartalmaznak.
-+ A POST-kérelem `/sentiment` egy végponthoz egy személyre szabott [hozzáférési kulcs és egy végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával, amely érvényes az előfizetéshez.
-+ Válasz kimenet, amely egy vélemény pontszám minden dokumentum-azonosító, streamelhető bármely alkalmazás, amely elfogadja a JSON.Response output, consistis of a sentiment score for each document ID, can be streamedtos to any app that accepts JSON. Például az Excel és a Power BI.
++ A Hangulatelemzés két verzióban érhető el a kiválasztott nyelvekhez.
++ A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
++ A POST kérelem a `/sentiment` végponthoz egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
++ A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak hangulati pontszámát tartalmazza, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t. Például: Excel és Power BI.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Szövegelemzés – áttekintés](../overview.md)
-* [A Text Analytics ügyféltár használata](../quickstarts/text-analytics-sdk.md)
+* [Text Analytics áttekintése](../overview.md)
+* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
 * [Újdonságok](../whats-new.md)

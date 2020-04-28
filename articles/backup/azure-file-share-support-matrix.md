@@ -3,12 +3,12 @@ title: Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási beállítások és korlátozások összegzését tartalmazza.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: e74d04cf8ae9010a860b8467d0de771524bd3f3a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103203"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195689"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -20,13 +20,13 @@ Az Azure-fájlmegosztás biztonsági mentése a következő térségek érhető 
 
 | GA-régiók | Támogatott régiók, de nem GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Kelet-Ausztrália (AE), Közép-Kanada (CNC), USA nyugati középső régiója (WCUS), Dél-India (INS), USA északi középső régiója (NCUS), Kelet-Japán (JPE), Dél-Brazília (BRS)                                                     |Kelet-Ausztrália, Délkelet-Kanada (CE), Közép-USA (ke), Kelet-Ázsia (EA), USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), Nyugat-Japán (JPW), Közép-India (INC), Dél-Korea (KRC), Dél-Korea (KRS), Észak-Európa (nem), az USA déli középső régiója (SCUS), South Kelet-Ázsia (Sea), Egyesült Királyság déli régiója (UKs), Egyesült Királyság nyugati régiója (Ukw), Nyugat-Európa (mi), USA nyugati régiója (WUS), US gov Arizona (UGA US gov Texas , US Gov Virginia (UGV), Ausztrália középső régiója (ACL), Nyugat-India (INW), Dél-Afrika északi régiója (SAN), Egyesült Arab Emírségek, Észak (karbamid), Közép-Franciaország (FRC), Észak-Németország (GN), Középnyugat-Németország (GWC), Dél-Afrika nyugati régiója (SAW), Egyesült Arab Emírségek középső régiója (UAC), Norvégia keleti régiója (NWW 2) Észak-Svájc             |
+| Délkelet-Ausztrália, Közép-Kanada (CNC), USA nyugati középső régiója (WCUS), USA 2. nyugati régiója (WUS 2), Dél-India (INS), USA északi középső régiója (NCUS), Kelet-Japán (JPE), Dél-Brazília (BRS), Dél-Kelet-Ázsia (tenger)                                                     |Kelet-Ausztrália (AE), Kelet-Kanada (CE), Kelet-Ázsia (EA), USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), Nyugat-Japán (JPW), India Central (INC), Korea középső régiója (KRC), Dél-Korea (KRS), Észak-Európa (NE), az USA déli középső régiója (SCUS), Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW), Nyugat-Európa (mi), USA nyugati régiója (WUS), US Gov Arizona (UGA), US Gov Texas (UGT), US Gov Virginia (UGV , India nyugati régiója (INW), Dél-Afrika északi régiója, Egyesült Arab Emírségek, Észak (karbamid), Közép-Franciaország (FRC), Észak-Németország (GN), Középnyugat-Németország (GWC), Dél-Afrika nyugati régiója (SAW), Egyesült Arab Emirátusok (UAC), Kelet-Norvégia (NAZT), Norvégia nyugati régiója (NWW), Észak-Svájc (SZN)           |
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
 | Storage-fiók adatai | Támogatás                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Fiók típusa            | Azure Backup támogatja az Azure-fájlmegosztást az általános célú v1-ben és az általános célú v2 Storage-fiókokban |
+| Fiók típusa            | A Azure Backup támogatja az általános célú v1, általános célú v2 és fájlmegosztás típusú Storage-fiókokban lévő Azure-fájlmegosztás használatát |
 | Teljesítmény              | A Azure Backup a standard és a Premium Storage fiókban egyaránt támogatja a fájlmegosztást |
 | Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure Files-megosztás támogatott |
 

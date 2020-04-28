@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: a1674f51d5b877a1296e9a457c6acf61a507c82e
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82131387"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189803"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -51,7 +51,7 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 - A naplók gyűjtése az Azure platformon keresztül történik, és semmilyen módon nincs hatással az ügyfelek erőforrásaira vagy a hálózati teljesítményre.
 - A naplók JSON formátumban vannak megírva, és a kimenő és a bejövő folyamatok megjelenítése NSG-szabály alapján történik.
 - Minden naplóbejegyzés tartalmazza a hálózati adaptert (NIC), amely 5 rekordos információra vonatkozik, a forgalmi döntés & (csak 2. verzió) átviteli sebességre vonatkozó információk. A részletekért tekintse meg az alábbi _naplózási formátumot_ .
-- A flow-naplók egy megőrzési funkcióval rendelkeznek, amely lehetővé teszi a naplók automatikus törlését a létrehozásuk után egy évig.
+- A flow-naplók egy megőrzési funkcióval rendelkeznek, amely lehetővé teszi a naplók automatikus törlését a létrehozásuk után egy évig. **Megjegyzés**: a megőrzés csak akkor érhető el, ha [általános célú v2 Storage-fiókokat (GPv2-ket)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)használ. 
 
 **Alapfogalmak**
 
@@ -365,13 +365,13 @@ Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépek
 
 ## <a name="troubleshooting-common-issues"></a>Gyakori problémák megoldása
 
-### <a name="i-could-not-enable-nsg-flow-logs"></a>**Nem tudtam engedélyezni az NSG-forgalom naplóit**
+**Nem tudtam engedélyezni az NSG-forgalom naplóit**
 
 - A **Microsoft. ininsights** erőforrás-szolgáltató nincs regisztrálva
 
 Ha _AuthorizationFailed_ vagy _GatewayAuthenticationFailed_ hibát kapott, lehet, hogy nem engedélyezte a Microsoft Insights erőforrás-szolgáltatóját az előfizetésében. Az [utasításokat követve](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider) engedélyezze a Microsoft bepillantást nyújtó szolgáltatót.
 
-### <a name="i-have-enabled-nsg-flow-logs-but-do-not-see-data-in-my-storage-account"></a>**Engedélyeztem az NSG-forgalom naplóit, de nem látok adatokat a tárfiókomban**
+**Engedélyeztem az NSG-forgalom naplóit, de nem látok adatokat a tárfiókomban**
 
 - **A telepítés időtartama**
 
@@ -381,21 +381,21 @@ Akár 5 percet is igénybe vehet, hogy az NSG-forgalom naplói megjelenjenek a t
 
 Néha nem fog naplókat látni, mert a virtuális gépek nem aktívak, vagy egy alkalmazásátjárón vagy más eszközön olyan felsőbb rétegbeli szűrők találhatók, amelyek blokkolják a forgalmat az NSG-k felé.
 
-### <a name="i-want-to-automate-nsg-flow-logs"></a>**Automatizálni szeretném az NSG-forgalom naplóit**
+**Automatizálni szeretném az NSG-forgalom naplóit**
 
 Az ARM-sablonokkal történő automatizálás jelenleg nem érhető el az NSG-forgalom naplói esetében. További információért olvassa el a [funkció bejelentését](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
 ## <a name="faq"></a>GYIK
 
-### <a name="what-does-nsg-flow-logs-do"></a>**Mit jelentenek a NSG flow-naplók?**
+**Mit jelentenek a NSG flow-naplók?**
 
 Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview)segítségével lehet egyesíteni és felügyelni. A NSG flow-naplók lehetővé teszik az 5 rekordos adatfolyamok naplózását a NSG keresztüli összes forgalomról. A nyers flow-naplók egy Azure Storage-fiókba íródnak, ahonnan szükség szerint további feldolgozásra, elemzésre, lekérdezésre vagy exportálásra kerülhet sor.
 
-### <a name="does-using-flow-logs-impact-my-network-latency-or-performance"></a>**A flow-naplók használata hatással van a hálózati késésre vagy a teljesítményre?**
+**A flow-naplók használata hatással van a hálózati késésre vagy a teljesítményre?**
 
 A rendszer a hálózati forgalom elérési útján kívül gyűjti az adatokat, így nem befolyásolja a hálózat átviteli sebességét vagy késését. A folyamat naplóit a hálózati teljesítményre gyakorolt hatás kockázata nélkül hozhatja létre vagy törölheti.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>**Hogyan használja a NSG a tűzfal mögötti Storage-fiókkal?**
+**Hogyan használja a NSG a tűzfal mögötti Storage-fiókkal?**
 
 Ha tűzfal mögötti Storage-fiókot szeretne használni, meg kell adnia egy kivételt a megbízható Microsoft-szolgáltatások számára a Storage-fiókhoz való hozzáféréshez:
 
@@ -407,11 +407,11 @@ Ha tűzfal mögötti Storage-fiókot szeretne használni, meg kell adnia egy kiv
 
 Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>**Hogyan használja a NSG a szolgáltatási végpont mögötti Storage-fiókkal?**
+**Hogyan használja a NSG a szolgáltatási végpont mögötti Storage-fiókkal?**
 
 A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltatási végpontokkal. Tekintse meg a szolgáltatás-végpontok virtuális hálózatban való [engedélyezésével foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) .
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>**Mi a különbség a flow-naplók között 1 & 2 verzió között?**
+**Mi a különbség a flow-naplók között 1 & 2 verzió között?**
 
 A flow-naplók 2. verziója bevezeti a _folyamat állapotának_ fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 
