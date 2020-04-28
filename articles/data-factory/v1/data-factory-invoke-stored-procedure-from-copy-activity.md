@@ -1,6 +1,6 @@
 ---
-title: Tárolt eljárás meghívása az Azure Data Factory Copy Activity-ból
-description: Megtudhatja, hogyan hívhatja meg a tárolt eljárást az Azure SQL Database-ben, vagy az SQL Server egy Azure Data Factory másolási tevékenység.
+title: Tárolt eljárás meghívása Azure Data Factory másolási tevékenységből
+description: Megtudhatja, hogyan hívhat meg egy tárolt eljárást Azure SQL Database vagy SQL Server egy Azure Data Factory másolási tevékenységből.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,23 +13,23 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74924096"
 ---
-# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Tárolt eljárás meghívása másolási tevékenységből az Azure Data Factoryban
+# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Tárolt eljárás meghívása másolási tevékenységből Azure Data Factory
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatok átalakítása tárolt eljárástevékenység használatával a Data Factory alkalmazásban című témakört.](../transform-data-using-stored-procedure.md)
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az adatátalakítás a Data Factory tárolt eljárással tevékenységgel](../transform-data-using-stored-procedure.md)című témakört.
 
 
-Adatok másolásakor [az SQL Server](data-factory-sqlserver-connector.md) vagy az Azure SQL [Database,](data-factory-azure-sql-connector.md)beállíthatja az **SqlSink** másolási tevékenység meghívására egy tárolt eljárást. Előfordulhat, hogy a tárolt eljárást bármilyen további feldolgozás végrehajtására használja (oszlopok egyesítése, értékek keresése, több táblába való beillesztés stb.) szükséges, mielőtt adatokat szúrna be a céltáblába. Ez a szolgáltatás kihasználja a [Tábla értékű paraméterek et.](https://msdn.microsoft.com/library/bb675163.aspx) 
+Az adatok [SQL Server](data-factory-sqlserver-connector.md) vagy [Azure SQL Databaseba](data-factory-azure-sql-connector.md)való másolása során beállíthatja, hogy a másolási tevékenység **SqlSink** egy tárolt eljárás meghívásához. A tárolt eljárással további feldolgozást (oszlopokat, értékeket keresve, több táblába történő beszúrást stb.) is el lehet végezni, mielőtt az adatok bekerülnek a céltábla táblájába. Ez a szolgáltatás a [tábla értékű paraméterek](https://msdn.microsoft.com/library/bb675163.aspx)előnyeit használja ki. 
 
-A következő minta bemutatja, hogyan lehet meghívni egy sql server-adatbázisban tárolt eljárást egy Data Factory-folyamatból (másolási tevékenység):  
+Az alábbi példa bemutatja, hogyan hívhat meg egy tárolt eljárást egy SQL Server-adatbázisban egy Data Factory folyamatból (másolási tevékenység):  
 
-## <a name="output-dataset-json"></a>Kimeneti adatkészlet JSON
-A JSON kimeneti **adatkészletben** állítsa a következő típust: **SqlServerTable**. Állítsa be **az AzureSqlTable** egy Azure SQL-adatbázissal való használatra. A **tableName** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
+## <a name="output-dataset-json"></a>Kimeneti adatkészlet JSON-je
+A kimeneti adatkészlet JSON-fájljában állítsa be a **következőt** : **SqlServerTable**. Beállíthatja, hogy a **tulajdonsága azuresqltable** Azure SQL Database-adatbázissal használhassa. A **Táblanév** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
 
 ```json
 {
@@ -48,8 +48,8 @@ A JSON kimeneti **adatkészletben** állítsa a következő típust: **SqlServer
 }
 ```
 
-## <a name="sqlsink-section-in-copy-activity-json"></a>SqlSink szakasz a JSON másolási tevékenységben
-Adja meg az **SqlSink** szakaszt a JSON másolási tevékenységben az alábbiak szerint. Ha tárolt eljárást szeretne meghívni, miközben adatokat szúr be a fogadó/cél adatbázisba, adja meg az **SqlWriterStoredProcedureName** és az **SqlWriterTableType** tulajdonságok értékeit. Ezeknek a tulajdonságoknak a leírását [az SQL Server összekötőről szóló cikk SqlSink című szakaszában olvashatja.](data-factory-sqlserver-connector.md#sqlsink)
+## <a name="sqlsink-section-in-copy-activity-json"></a>SqlSink szakasz a másolási tevékenység JSON-fájljában
+Adja meg az **SqlSink** szakaszt a másolási tevékenység JSON-fájljában az alábbiak szerint. Ha tárolt eljárást szeretne meghívni az adatok fogadó/céladatbázisbe való beszúrása közben, a **SqlWriterStoredProcedureName** és a **SqlWriterTableType** tulajdonság értékeit is meg kell adnia. A tulajdonságok leírását [a SQL Server-összekötő című cikk SqlSink szakasza](data-factory-sqlserver-connector.md#sqlsink)tartalmazza.
 
 ```json
 "sink":
@@ -68,7 +68,7 @@ Adja meg az **SqlSink** szakaszt a JSON másolási tevékenységben az alábbiak
 ```
 
 ## <a name="stored-procedure-definition"></a>Tárolt eljárás definíciója 
-Az adatbázisban definiálja a tárolt eljárást az **SqlWriterStoredProcedureName**nevű fájlnevével. A tárolt eljárás kezeli a forrásadattárból származó bemeneti adatokat, és adatokat szúr be a céladatbázis egy táblájába. A tárolt eljárás első paraméterének nevének meg kell egyeznie a JSON (Marketing) adatkészletben definiált táblanévvel.
+Az adatbázisban adja meg a tárolt eljárást ugyanazzal a névvel, mint a **SqlWriterStoredProcedureName**. A tárolt eljárás kezeli a bemeneti adatokat a forrás adattárból, és beszúrja az adatokat a céladatbázis egyik táblájába. A tárolt eljárás első paraméterének meg kell egyeznie a JSON (marketing) adatkészletben definiált táblanév.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -80,8 +80,8 @@ BEGIN
 END
 ```
 
-## <a name="table-type-definition"></a>Táblatípus-definíció
-Az adatbázisban adja meg az **SqlWriterTableType**nevű táblatípust. A táblatípus sémájának meg kell egyeznie a bemeneti adatkészlet sémájával.
+## <a name="table-type-definition"></a>Tábla típusának definíciója
+Az adatbázisában adja meg a tábla típusát a **SqlWriterTableType**megegyező névvel. A tábla típusának sémájának meg kell egyeznie a bemeneti adatkészlet sémájával.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -91,7 +91,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a következő összekötő cikkeket, amelyek a teljes JSON-példák: 
+Tekintse át a következő összekötő-cikkeket a teljes JSON-példákhoz: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

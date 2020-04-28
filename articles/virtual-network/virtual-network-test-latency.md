@@ -1,6 +1,6 @@
 ---
-title: Tesztelje az Azure virtuálisgép-hálózat késését egy Azure virtuális hálózatban | Microsoft dokumentumok
-description: Ismerje meg, hogyan tesztelhet hálózati késést az Azure virtuális gépei között egy virtuális hálózaton
+title: Azure-beli virtuális gépek hálózati késésének tesztelése Azure-beli virtuális hálózatokban | Microsoft Docs
+description: Megtudhatja, hogyan tesztelheti a hálózati késést egy virtuális hálózat Azure-beli virtuális gépei között
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,117 +15,117 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896360"
 ---
 # <a name="test-vm-network-latency"></a>Virtuális gép hálózati késleltetésének tesztelése
 
-A legpontosabb eredmények elérése érdekében mérje az Azure virtuális gép (VM) hálózati késését egy feladathoz tervezett eszközzel. A nyilvánosan elérhető eszközök, például a SockPerf (Linux) és a latte.exe (Windows esetén) elkülöníthetik és mérhetik a hálózati késést, miközben kizárják az egyéb késéstípusokat, például az alkalmazáskésést. Ezek az eszközök az alkalmazás teljesítményét befolyásoló hálózati forgalom típusára összpontosítanak (nevezetesen a Transmission Control Protocol [TCP] és a User Datagram Protocol [UDP] forgalom). 
+A legpontosabb eredmények eléréséhez mérje fel az Azure virtuális gép (VM) hálózati késését a feladathoz tervezett eszközzel. A nyilvánosan elérhető eszközök, például a SockPerf (Linux) és a latte. exe (Windows rendszeren) képes elkülöníteni és mérni a hálózati késést más típusú késések, például az alkalmazások késésének kizárásával. Ezek az eszközök olyan hálózati forgalomra összpontosítanak, amelyek hatással vannak az alkalmazások teljesítményére (azaz Transmission Control Protocol [TCP] és a User Datagram Protocol [UDP] forgalomra). 
 
-Más gyakori kapcsolódási eszközök, például a Ping, mérhetik a késést, de az eredmények nem feltétlenül tükrözik a valós munkaterhelésekben használt hálózati forgalmat. Ennek az az oka, hogy a legtöbb ilyen eszköz az Internet Control Message Protocol (ICMP) protokollt alkalmazza, amely az alkalmazásforgalomtól eltérően kezelhető, és amelynek eredményei nem feltétlenül vonatkoznak a TCP- és UDP-t használó számítási feladatokra. 
+Más gyakori kapcsolódási eszközök, például a pingelés, a késést okozhatják, de előfordulhat, hogy az eredmények nem a valós munkaterhelésekben használt hálózati forgalmat jelölik. Ennek oka, hogy a legtöbb ilyen eszköz a Internet Control Message Protocol (ICMP) alkalmazást alkalmazza, amely az alkalmazások forgalmával eltérően kezelhető, és amelynek eredményei nem vonatkoznak a TCP és UDP protokollt használó munkaterhelésekre. 
 
-A legtöbb alkalmazás által használt protokollok pontos hálózati késéstesztelése érdekében a SockPerf (Linux) és a latte.exe (Windows) a legrelevánsabb eredményeket hozza. Ez a cikk mindkét eszközt ismerteti.
+A legtöbb alkalmazás által használt protokollok pontos hálózati késésének teszteléséhez a SockPerf (Linux esetében) és a latte. exe (Windows rendszeren) a legfontosabb eredményeket hozza létre. Ez a cikk mindkét eszközt magában foglalja.
 
 ## <a name="overview"></a>Áttekintés
 
-Két virtuális gép használatával, az egyik küldőként, a másik fogadóként, kétirányú kommunikációs csatornát hoz létre. Ezzel a megközelítéssel mindkét irányban küldhet és fogadhat csomagokat, és mérheti az oda-vissza út idejét (RTT).
+Két virtuális gép, egy feladó és egy fogadó használata esetén hozzon létre egy kétirányú kommunikációs csatornát. Ezzel a módszerrel mindkét irányban elküldheti és fogadhatja a csomagokat, és megméri az oda-és visszaút idejét (RTT).
 
-Ezzel a módszersel mérheti a hálózati késést két virtuális gép vagy akár két fizikai számítógép között. A késésmérésai a következő esetekben lehetnek hasznosak:
+Ezzel a módszerrel mérhető a hálózati késés két virtuális gép között, vagy akár két fizikai számítógép között is. A késési mérések a következő esetekben lehetnek hasznosak:
 
-- Hozzon létre egy viszonyítási alap a hálózati késés az üzembe helyezett virtuális gépek között.
-- Hasonlítsa össze a hálózati késés változásainak hatásait a kapcsolódó módosítások után:
-  - Operációs rendszer (OPERÁCIÓS rendszer) vagy hálózati veremszoftver, beleértve a konfigurációs módosításokat is.
-  - Virtuális gép központi telepítési módszer, például egy rendelkezésre állási zóna vagy a közelség elhelyezési csoport (PPG) üzembe helyezése.
-  - Virtuális gép tulajdonságai, például a gyorsított hálózatkezelés vagy a méret módosítása.
-  - Virtuális hálózat, például útválasztás vagy szűrés módosítása.
+- Hozzon létre egy teljesítménytesztet a központilag telepített virtuális gépek közötti hálózati késéshez.
+- A hálózati késésben történt változások hatásainak összehasonlítása a kapcsolódó módosítások után:
+  - Operációs rendszer (OS) vagy hálózati verem szoftver, beleértve a konfigurációs módosításokat.
+  - Virtuálisgép-telepítési módszer, például üzembe helyezés egy rendelkezésre állási zónában vagy a közelségi elhelyezési csoport (PPG) számára.
+  - A virtuális gép tulajdonságai, például a gyorsított hálózatkezelés vagy a méret módosítása.
+  - Egy virtuális hálózat, például az Útválasztás vagy a szűrés módosítása.
 
 ### <a name="tools-for-testing"></a>Tesztelési eszközök
-A késés méréséhez két különböző eszközbeállítás közül választhat:
+A késés méréséhez két különböző eszköz-lehetőség közül választhat:
 
-* Windows alapú rendszerekesetén: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
-* Linux alapú rendszerekhez: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
+* Windows-alapú rendszerekhez: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Linux-alapú rendszerek esetén: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
-Ezekkel az eszközökkel biztosíthatja, hogy csak a TCP vagy UDP hasznos kézbesítési idejét mérjük, és ne az ICMP (Ping) vagy más olyan csomagtípusokat, amelyeket az alkalmazások nem használnak, és amelyek nem befolyásolják a teljesítményüket.
+Ezeknek az eszközöknek a használatával biztosíthatja, hogy csak a TCP-vagy UDP-adatátviteli időt mérjük, ne ICMP (ping) vagy más, az alkalmazások által nem használt csomagok, és ne befolyásolják a teljesítményüket.
 
-### <a name="tips-for-creating-an-optimal-vm-configuration"></a>Tippek az optimális virtuálisgép-konfiguráció létrehozásához
+### <a name="tips-for-creating-an-optimal-vm-configuration"></a>Tippek a virtuális gépek optimális konfigurációjának létrehozásához
 
-A virtuális gép konfigurációjának létrehozásakor tartsa szem előtt az alábbi javaslatokat:
-- Használja a Windows vagy a Linux legújabb verzióját.
-- A legjobb eredmény érdekében engedélyezze a gyorsított hálózatkezelést.
-- Virtuális gépek üzembe helyezése egy [Azure közelségi elhelyezési csoporttal.](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)
-- A nagyobb virtuális gépek általában jobban teljesítenek, mint a kisebb virtuális gépek.
+A virtuális gép konfigurációjának létrehozásakor vegye figyelembe az alábbi javaslatokat:
+- Használja a Windows vagy Linux legújabb verzióját.
+- A legjobb eredmények érdekében engedélyezze a gyorsított hálózatkezelést.
+- Virtuális gépek üzembe helyezése [Azure Proximity-elhelyezési csoporttal](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- A nagyobb méretű virtuális gépek általában jobb teljesítményt biztosítanak a kisebb virtuális gépeknél.
 
-### <a name="tips-for-analysis"></a>Tippek az elemzéshez
+### <a name="tips-for-analysis"></a>Elemzési tippek
 
-A teszteredmények elemzése során tartsa szem előtt az alábbi javaslatokat:
+A tesztek eredményeinek elemzésekor vegye figyelembe az alábbi javaslatokat:
 
-- Hozzon létre egy alapkonfigurációt korán, amint a központi telepítés, a konfiguráció és az optimalizálás befejeződött.
-- Mindig hasonlítsa össze az új eredményeket egy alapértékkel, vagy ellenkező esetben az egyik tesztről a másikra ellenőrzött változásokkal.
-- Ismételje meg a vizsgálatokat, ha változásokat észlelnek vagy terveznek.
+- Hozzon létre egy alapkonfigurációt, amint az üzembe helyezés, a konfigurálás és az optimalizálás elkészült.
+- Mindig hasonlítsa össze az új eredményeket egy alapértékkel, vagy ha nem, akkor az egyik tesztből a másikba az ellenőrzött módosításokat.
+- Ismételje meg a teszteket, amikor változások figyelhetők meg vagy tervezettek.
 
 
-## <a name="test-vms-that-are-running-windows"></a>Windows rendszert futtató virtuális gépek tesztelése
+## <a name="test-vms-that-are-running-windows"></a>Windows rendszerű virtuális gépek tesztelése
 
-### <a name="get-latteexe-onto-the-vms"></a>A latte.exe beszereznie a virtuális gépekre
+### <a name="get-latteexe-onto-the-vms"></a>A latte. exe beolvasása a virtuális gépekre
 
-Töltse le a [latte.exe legújabb verzióját.](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+Töltse le a [latte. exe legújabb verzióját](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Fontolja meg a latte.exe fájl külön mappába helyezését, például *a c:\tools mappába.*
+Fontolja meg a latte. exe külön mappába helyezését, például *c:\Tools*.
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>Latte.exe engedélyezése a Windows Defender tűzfalon keresztül
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>A latte. exe engedélyezése a Windows Defender-tűzfalon keresztül
 
-A *fogadóban*hozzon létre egy Engedélyezési szabályt a Windows Defender tűzfalon, hogy a latte.exe forgalom megérkezzen. Ez a legegyszerűbb, hogy a teljes latte.exe program név szerint, nem pedig, hogy bizonyos TCP portok bejövő.
+A *fogadón*hozzon létre egy engedélyezési szabályt a Windows Defender-tűzfalon, hogy engedélyezze a latte. exe-forgalom érkezését. A legkönnyebben lehetővé teszi a teljes latte. exe program nevét, és nem az adott TCP-portok bejövő engedélyezését.
 
-A latte.exe engedélyezésének engedélyezése a Windows Defender tűzfalon keresztül a következő parancs futtatásával:
+Engedélyezze a latte. exe fájlt a Windows Defender-tűzfalon a következő parancs futtatásával:
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-Ha például a latte.exe fájlt a *c:\tools* mappába másolta, ez lesz a következő parancs:
+Ha például a latte. exe fájlt a *c:\Tools* mappába másolta, a parancs a következő lesz:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Késési tesztek futtatása
 
-* A *vevőegységen*indítsa el a latte.exe parancsot (futtassa a CMD ablakból, ne a PowerShellből):
+* A *fogadón*indítsa el a latte. exe fájlt (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Körülbelül 65 000 iteráció elég hosszú ahhoz, hogy reprezentatív eredményeket ad vissza.
+    Körülbelül 65 000 iteráció elég hosszú a reprezentatív eredmények visszaküldéséhez.
 
-    Minden rendelkezésre álló port szám rendben van.
+    Minden elérhető portszám rendben van.
 
-    Ha a virtuális gép IP-címe 10.0.0.4, a parancs így néz ki:
+    Ha a virtuális gép IP-címe 10.0.0.4, a parancs a következőképpen fog kinézni:
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* A *feladón*indítsa el a latte.exe-t (futtassa a CMD ablakból, ne a PowerShellből):
+* A *küldőben*indítsa el a latte. exe fájlt (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a&nbsp;*-c* hozzáadásával, amely jelzi, hogy ez az *ügyfél*vagy *a feladó:*
+    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a&nbsp;*-c* hozzáadásával, amely azt jelzi, hogy ez az *ügyfél*vagy a *Feladó*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Várjuk meg az eredményeket. Attól függően, hogy milyen messze vannak egymástól a virtuális gépek, a teszt eltarthat néhány percig. Fontolja meg a kevesebb iterációval való indítást a sikeres teszteléshez, mielőtt hosszabb teszteket futtatna.
+Várjon az eredményekre. Attól függően, hogy a virtuális gépek milyen távol vannak, a teszt eltarthat néhány percig. A már elvégzett tesztek futtatása előtt érdemes lehet kevesebb iterációt kezdenie a sikeres teszteléshez.
 
-## <a name="test-vms-that-are-running-linux"></a>Linuxot futtató virtuális gépek tesztelése
+## <a name="test-vms-that-are-running-linux"></a>Linux rendszerű virtuális gépek tesztelése
 
-A Linuxot futtató virtuális gépek teszteléséhez használja a [SockPerf függvényt.](https://github.com/mellanox/sockperf)
+A Linux rendszerű virtuális gépek teszteléséhez használja a [SockPerf](https://github.com/mellanox/sockperf)-t.
 
-### <a name="install-sockperf-on-the-vms"></a>SockPerf telepítése a virtuális gépekre
+### <a name="install-sockperf-on-the-vms"></a>A SockPerf telepítése a virtuális gépeken
 
-A Linux virtuális gépeken a *küldő* és a *fogadó*is futtatja a következő parancsokat a SockPerf előkészítéséhez a virtuális gépeken. A főbb dististikhoz parancsokat adnak.
+A Linux rendszerű virtuális gépeken, a *küldőn* és a *fogadón*futtassa a következő parancsokat a SockPerf előkészítéséhez a virtuális gépeken. A fő disztribúciók parancsai vannak megadva.
 
-#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Red Hat Enterprise Linux (RHEL)/CentOS esetén
+#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Red Hat Enterprise Linux (RHEL)/CentOS
 
 Futtassa az alábbi parancsot:
 
@@ -152,9 +152,9 @@ Futtassa az alábbi parancsot:
     sudo apt-get install -y autoconf
 ```
 
-#### <a name="for-all-distros"></a>Minden distros
+#### <a name="for-all-distros"></a>Minden disztribúcióhoz
 
-Másolja, fordítsa le és telepítse a SockPerf-et a következő lépések nek megfelelően:
+Másolja, fordítsa le és telepítse a SockPerf az alábbi lépések szerint:
 
 ```bash
 #Bash - all distros
@@ -174,33 +174,33 @@ sudo make install
 
 ### <a name="run-sockperf-on-the-vms"></a>SockPerf futtatása a virtuális gépeken
 
-A SockPerf telepítése befejezése után a virtuális gépek készen állnak a késési tesztek futtatására. 
+A SockPerf telepítésének befejezése után a virtuális gépek készen állnak a késési tesztek futtatására. 
 
-Először indítsa el a SockPerf-et a *vevőn*.
+Először indítsa el a SockPerf a *fogadón*.
 
-Minden rendelkezésre álló port szám rendben van. Ebben a példában az 12345-ös portot használjuk:
+Minden elérhető portszám rendben van. Ebben a példában a 12345-es portot használjuk:
 
 ```bash
 #Server/Receiver - assumes server's IP is 10.0.0.4:
 sudo sockperf sr --tcp -i 10.0.0.4 -p 12345
 ```
 
-Most, hogy a kiszolgáló figyel, az ügyfél megkezdheti a csomagok küldését a kiszolgálóra azon a porton, amelyen figyel (ebben az esetben 12345).
+Most, hogy a kiszolgáló figyel, az ügyfél megkezdheti a csomagok küldését a kiszolgálónak azon a porton, amelyen a figyel (ebben az esetben 12345).
 
-Körülbelül 100 másodperc elég hosszú ahhoz, hogy reprezentatív eredményeket ad vissza, amint az a következő példában látható:
+Körülbelül 100 másodperc elég hosszú a reprezentatív eredmények visszaküldéséhez, ahogy az az alábbi példában is látható:
 
 ```bash
 #Client/Sender - assumes server's IP is 10.0.0.4:
 sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 ```
 
-Várjuk meg az eredményeket. Attól függően, hogy milyen messze vannak egymástól a virtuális gépek, az ismétlések száma változik. A hosszabb tesztek futtatása előtt a sikeres teszteléshez érdemes lehet körülbelül 5 másodperces rövidebb tesztekkel kezdeni.
+Várjon az eredményekre. Attól függően, hogy a virtuális gépek milyen távolságban vannak, az ismétlések száma eltérő lesz. Ha a hosszabb tesztek futtatása előtt szeretné tesztelni a sikerességet, érdemes lehet 5 másodpercnél rövidebb teszteket kezdeni.
 
-Ez a SockPerf-példa 350 bájtos üzenetméretet használ, amely egy átlagos csomagra jellemző. Módosíthatja a méretet magasabb vagy alacsonyabb eredmények elérése érdekében, amelyek pontosabban képviselik a virtuális gépeken futó számítási feladatokat.
+Ez a SockPerf példa egy átlagos csomagra jellemző 350 bájtos üzenet méretét használja. Nagyobb vagy alacsonyabb méretet is megadhat, hogy az eredmények pontosabban képviseljék a virtuális gépeken futó számítási feladatokat.
 
 
 ## <a name="next-steps"></a>További lépések
-* Az [Azure közelségi elhelyezési csoportjával](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)javíthatja a késést.
-* Ismerje meg, hogyan [optimalizálhatja a hálózati hálózatok at virtuális gépek](../virtual-network/virtual-network-optimize-network-bandwidth.md) a forgatókönyvhöz.
-* További információ [arról, hogy a sávszélesség hogyan van lefoglalva a virtuális gépek számára.](../virtual-network/virtual-machine-network-throughput.md)
-* További információ: [Azure Virtual Network GYAKORI KÉRDÉSEK](../virtual-network/virtual-networks-faq.md).
+* Növelje a késést egy [Azure közelségi elhelyezési csoporttal](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Útmutató a [virtuális gépek hálózatkezelésének optimalizálásához](../virtual-network/virtual-network-optimize-network-bandwidth.md) a forgatókönyvhöz.
+* Olvassa el [, hogy a sávszélesség hogyan legyen lefoglalva a virtuális gépekhez](../virtual-network/virtual-machine-network-throughput.md).
+* További információ: [Azure Virtual Network GYIK](../virtual-network/virtual-networks-faq.md).

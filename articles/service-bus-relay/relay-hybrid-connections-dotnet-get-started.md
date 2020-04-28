@@ -1,6 +1,6 @@
 ---
-title: Azure Relay hibrid kapcsolatok – WebSockets a .NET-ben
-description: C# konzolalkalmazást írhat az Azure Relay hybrid connections websockets.Write a C# console application for Azure Relay Hybrid Connections WebSockets.
+title: Azure Relay Hibrid kapcsolatok – WebSockets a .NET-ben
+description: Egy C# konzolos alkalmazás írása Azure Relay Hibrid kapcsolatok WebSockets szolgáltatáshoz.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75355191"
 ---
-# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Hibrid kapcsolatok továbbítása WebSockets a .NET-ben
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Ismerkedés a Relay Hibrid kapcsolatok WebSockets szolgáltatással a .NET-ben
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ebben a rövid útmutatóban létrehozhatja a .NET küldő és fogadó alkalmazásokat, amelyek üzeneteket küldenek és fogadnak az Azure Relay hibrid kapcsolatok websocketjei használatával. Az Azure Relay általános megismeréséről az [Azure Relay](relay-what-is-it.md). 
+Ebben a rövid útmutatóban olyan .NET-küldő és fogadó alkalmazásokat hoz létre, amelyek üzeneteket küldenek és fogadnak a Azure Relay Hibrid kapcsolatok WebSockets használatával. Az általános Azure Relayről a [Azure Relay](relay-what-is-it.md)című témakörben olvashat bővebben. 
 
-Ebben a rövid útmutatóban az alábbi lépéseket kell tennie:
+Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 
 1. Relay-névtér létrehozása az Azure Portal használatával.
 2. Hibrid kapcsolat létrehozása ezen a névtéren az Azure Portal használatával.
@@ -64,10 +64,10 @@ A Visual Studióban egy C# nyelven íródott konzolalkalmazást hozunk létre az
 
     ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Gratulálunk, létrehozott egy teljes hibrid kapcsolat alkalmazást!
+Gratulálunk, létrehozott egy teljes Hibrid kapcsolatok alkalmazást!
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban hozta létre a .NET ügyfél- és kiszolgálóalkalmazásokat, amelyek WebSockets üzenetek küldésére és fogadására használták. Az Azure Relay hibrid kapcsolatok szolgáltatása támogatja a HTTP használatát az üzenetek küldéséhez és fogadásához. A HTTP azure-továbbító hibrid kapcsolatokkal való használatáról a [HTTP-rövid útmutató című témakörben](relay-hybrid-connections-http-requests-dotnet-get-started.md)olvashat.
+Ebben a rövid útmutatóban olyan .NET-ügyfél-és kiszolgálói alkalmazásokat hozott létre, amelyek websocketeket használnak az üzenetek küldéséhez és fogadásához. A Azure Relay Hibrid kapcsolatok funkciója a HTTP használatával is támogatja az üzenetek küldését és fogadását. Ha szeretné megtudni, hogyan használhatja a HTTP-t a Azure Relay Hibrid kapcsolatok használatával, tekintse meg a [http](relay-hybrid-connections-http-requests-dotnet-get-started.md)rövid útmutatót.
 
-Ebben a rövid útmutatóban a . Az ügyfél- és kiszolgálóalkalmazások Node.js használatával történő írásáról a [Node.js WebSockets rövid útmutatóban](relay-hybrid-connections-node-get-started.md) vagy a [Node.js HTTP rövid útmutatóban](relay-hybrid-connections-http-requests-dotnet-get-started.md)olvashat.
+Ebben a rövid útmutatóban a .NET-keretrendszert használta az ügyfél-és kiszolgálói alkalmazások létrehozásához. Az ügyfél-és kiszolgálói alkalmazások Node. js használatával történő írásához a [Node. js WebSockets](relay-hybrid-connections-node-get-started.md) rövid útmutatójában vagy a [Node. js http](relay-hybrid-connections-http-requests-dotnet-get-started.md)-gyors útmutatóban olvashat.
 

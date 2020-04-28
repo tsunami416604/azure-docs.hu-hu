@@ -1,6 +1,6 @@
 ---
-title: IoT-megoldás létrehozása az Azure Stream Analytics használatával
-description: Első lépések a Stream Analytics IoT-megoldásához egy fizetős fizetési forgatókönyvhöz
+title: IoT-megoldás létrehozása Azure Stream Analytics használatával
+description: Első lépések oktatóanyag a Tollbooth-forgatókönyv Stream Analytics IoT megoldásához
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,88 +9,88 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426443"
 ---
-# <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása a Stream Analytics használatával
+# <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
 
-## <a name="introduction"></a>Bevezetés
-Ebben a megoldásban megtudhatja, hogyan használhatja az Azure Stream Analytics segítségével valós idejű elemzési adatokat az adatokból. A fejlesztők könnyedén kombinálhatják az adatfolyamokat, például a kattintási adatfolyamokat, a naplókat és az eszköz által létrehozott eseményeket az előzményrekordokkal vagy hivatkozási adatokkal az üzleti elemzések létrehozásához. A Microsoft Azure-ban üzemeltetett, teljes körűen felügyelt, valós idejű adatfolyam-számítási szolgáltatásként az Azure Stream Analytics beépített rugalmasságot, alacsony késést és méretezhetőséget biztosít, hogy percek alatt működésbe léphet.
+## <a name="introduction"></a>Introduction (Bevezetés)
+Ebben a megoldásban megtudhatja, hogyan használhatja a Azure Stream Analyticst az adatok valós idejű elemzéséhez. A fejlesztők könnyedén egyesítheti az adatstreameket, például a streameket, a naplókat és az eszköz által generált eseményeket, valamint a múltbeli rekordokat vagy a hivatkozási adatokat az üzleti elemzések elvégzéséhez. A Microsoft Azureban üzemeltetett, teljes mértékben felügyelt, valós idejű adatfolyam-számítási szolgáltatásként Azure Stream Analytics a rugalmasságot, a kis késést és a méretezhetőséget percek alatt üzembe helyezheti.
 
-A megoldás befejezése után a következőkre van képes:
+A megoldás befejezése után a következőkre nyílik lehetősége:
 
-* Ismerkedjen meg az Azure Stream Analytics portállal.
-* Streamelési feladat konfigurálása és üzembe helyezése.
-* A Valós problémákat a Stream Analytics lekérdezési nyelvével fejtheti ki és oldhatja meg.
-* Streamelési megoldásokat fejleszthet ügyfelei számára a Stream Analytics magabiztos használatával.
-* A figyelési és naplózási élmény segítségével elháríthatja a problémákat.
+* Ismerkedjen meg a Azure Stream Analytics-portálon.
+* Folyamatos átviteli feladatok konfigurálása és üzembe helyezése.
+* A valós problémák megfogalmazása és megoldása a Stream Analytics lekérdezési nyelv használatával.
+* A Stream Analytics magabiztos használatával fejlesztheti az ügyfeleinek folyamatos átviteli megoldásait.
+* A figyelési és a naplózási felülettel elháríthatja a problémákat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás végrehajtásához a következő előfeltételekre van szükség:
+A megoldás elvégzéséhez a következő előfeltételek szükségesek:
 * [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>Forgatókönyv bevezetése: "Hello, Toll!"
-A fizetős állomás gyakori jelenség. Találkozik velük sok gyorsforgalmi utak, hidak, és alagutak szerte a világon. Minden fizetőállomásnak több fizetős fülkéje van. A kézi fülkékben megáll, hogy kifizesse az útdíjat egy kísérőnek. Az automatizált fülkékben az egyes fülkék tetején lévő érzékelő beolvassa az RFID-kártyát, amely a jármű szélvédőjére van rögzítve, miközben elhalad a fizetős fülkén. Könnyű elképzelni a járművek áthaladását ezeken a fizetőállomásokon, mint egy eseményfolyamot, amelyen érdekes műveleteket lehet végrehajtani.
+## <a name="scenario-introduction-hello-toll"></a>Forgatókönyv bevezetése: "Hello, díjköteles!"
+A díjköteles állomás gyakori jelenség. Számos gyorsforgalmi, hidakon és alagúton találkozhat a világ különböző pontjain. Minden díjköteles állomáshoz több díjköteles fülke tartozik. A manuális fülkékben leállítja az útdíjat egy kísérőnek. Az automatizált fülkékben az egyes fülkék tetején lévő érzékelők egy RFID-kártyát vizsgálnak meg, amelyet a jármű szélvédőn helyeztek el az autópályadíj-fülke továbbítása során. A járművek ezen autópályadíj-állomásokon keresztüli áthaladását egyszerűen megjelenítheti, mint az érdekes műveleteket elvégező esemény-adatfolyamok.
 
-![Autók képe a fizetős fülkékben](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
+![A díjköteles fülkékben lévő autók képe](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
-## <a name="incoming-data"></a>Bejövő adatok
-Ez a megoldás két adatfolyammal működik. A fizetőállomások bejáratánál és kijáratánál telepített érzékelők termelik az első áramlást. A második adatfolyam egy statikus kikereshető adatkészlet, amely járműregisztrációs adatokat.
+## <a name="incoming-data"></a>Bejövő adatértékek
+Ez a megoldás két adatfolyammal működik. A díjköteles állomások beléptetéséhez és kilépéséhez telepített érzékelők az első streamet adják meg. A második stream egy statikus keresési adatkészlet, amely a jármű regisztrációs adatokat tartalmaz.
 
-### <a name="entry-data-stream"></a>Belépési adatfolyam
-A belépési adatfolyam információkat tartalmaz az autókról, amint belépnek a fizetőállomásokra. A kilépési adatok események élő ben streamelt egy Event Hub várólistába egy webalkalmazás a mintaalkalmazásban található.
+### <a name="entry-data-stream"></a>Bejegyzés adatfolyama
+A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amikor autópályadíj-állomásokat visznek be. A kilépési adatok eseményei a minta alkalmazásban található webalkalmazásból áramlanak egy Event hub-várólistába.
 
-| Tollazonosító | EntryTime (EntryTime) | Azonosító tábla | Állapot | Gyártmány | Modell | Járműtípus | Járműsúlya | Autópályadíj | Címke |
+| TollID | EntryTime | LicensePlate | Állapot | Gyártmány | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |Crv |1 |0 |7 | |
+| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
 | 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
 | 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
-| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |Crv |1 |0 |5 |789123456 |
+| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
 | 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
-Itt van egy rövid leírást az oszlopok:
+Itt látható az oszlopok rövid leírása:
 
 | Oszlop | Leírás |
 | --- | --- |
-| Tollazonosító |A fizetős fülke azonosítója, amely egyedileg azonosítja a díjszedő fülkét |
-| EntryTime (EntryTime) |A jármű utc-i díjszedő fülkébe való belépésének dátuma és időpontja |
-| Azonosító tábla |A jármű rendszáma |
-| Állapot |Egy állam az Egyesült Államokban |
-| Gyártmány |A gyártó az autó |
-| Modell |Az autó modellszáma |
-| Járműtípus |Vagy 1 személyszállító járművek, vagy 2 haszongépjárművek esetében |
-| Súlytípus |A jármű tömege tonnában; 0 személygépkocsik esetében |
-| Autópályadíj |Az útdíj értéke USD-ben |
-| Címke |Az e-Tag az autó, amely automatizálja a fizetés; üres, ahol a fizetés manuálisan történt |
+| TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
+| EntryTime |A járműnek az autópályadíj-kezelőbe való belépésének dátuma és időpontja (UTC) |
+| LicensePlate |A jármű rendszámtábla-száma |
+| Állapot |Egyesült Államok állapot |
+| Gyártmány |A személygépkocsi gyártója |
+| Modell |Az autó modelljének száma |
+| VehicleType |1 a személyszállító járművek vagy a 2 kereskedelmi járművek számára |
+| WeightType |A jármű súlya tonnában kifejezve; 0 személyszállító járművek esetében |
+| Autópályadíj |Az autópályadíj értéke USD-ben |
+| Címke |Az autóban található e-címke, amely automatizálja a fizetést; üres, ahol a fizetés manuálisan lett végrehajtva |
 
 ### <a name="exit-data-stream"></a>Kilépés az adatfolyamból
-A kilépési adatfolyam a fizetőállomást elhagyó autókról tartalmaz információkat. A kilépési adatok események élő ben streamelt egy Event Hub várólistába egy webalkalmazás a mintaalkalmazásban található.
+A kilépési adatfolyam az autópályadíj-állomást elhagyó autókkal kapcsolatos információkat tartalmaz. A kilépési adatok eseményei a minta alkalmazásban található webalkalmazásból áramlanak egy Event hub-várólistába.
 
-| **TollId között** | **ExitTime (Kilépési idő)** | **Azonosító tábla** |
+| **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
-| 1 |2014-09-10T12:03:00.00000000Z |JNB 7001 |
-| 1 |2014-09-10T12:03:00.00000000Z |YXZ 1001 |
-| 3 |2014-09-10T12:04:00.00000000Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.00000000Z |XYZ 1003 |
-| 1 |2014-09-10T12:08:00.00000000Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.00000000Z |CDE 1007 |
+| 1 |2014-09-10T12:03:00.0000000 Z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000 Z |YXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000 Z |ABC 1004 |
+| 2 |2014-09-10T12:07:00.0000000 Z |XYZ 1003 |
+| 1 |2014-09-10T12:08:00.0000000 Z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000 Z |CDE 1007 |
 
-Itt van egy rövid leírást az oszlopok:
+Itt látható az oszlopok rövid leírása:
 
 | Oszlop | Leírás |
 | --- | --- |
-| Tollazonosító |A fizetős fülke azonosítója, amely egyedileg azonosítja a díjszedő fülkét |
-| ExitTime (Kilépési idő) |A jármű kilépésének dátuma és időpontja az UTC-ben található fizetős fülkéből |
-| Azonosító tábla |A jármű rendszáma |
+| TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
+| ExitTime |A jármű kilépésének dátuma és időpontja az autópályadíj-kezelőből UTC szerint |
+| LicensePlate |A jármű rendszámtábla-száma |
 
-### <a name="commercial-vehicle-registration-data"></a>Haszongépjármű-nyilvántartási adatok
-A megoldás egy haszongépjármű-nyilvántartási adatbázis statikus pillanatképét használja. Ezeket az adatokat a rendszer JSON-fájlként menti az Azure blob storage-ba, amely a mintában szerepel.
+### <a name="commercial-vehicle-registration-data"></a>Kereskedelmi jármű regisztrációs adatvédelme
+A megoldás egy kereskedelmi jármű regisztrációs adatbázisának statikus pillanatképét használja. Ezeket az adatfájlokat a rendszer JSON-fájlként menti az Azure Blob Storage-ba, amely tartalmazza a mintát.
 
-| Azonosító tábla | Regisztrációs azonosító | Lejárt |
+| LicensePlate | Regisztrációban | Lejárt |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
@@ -99,60 +99,60 @@ A megoldás egy haszongépjármű-nyilvántartási adatbázis statikus pillanatk
 | SNY 7188 |592133890 |0 |
 | ELH 9896 |678427724 |1 |
 
-Itt van egy rövid leírást az oszlopok:
+Itt látható az oszlopok rövid leírása:
 
 | Oszlop | Leírás |
 | --- | --- |
-| Azonosító tábla |A jármű rendszáma |
-| Regisztrációs azonosító |A jármű nyilvántartási azonosítója |
-| Lejárt |A jármű nyilvántartási állapota: 0, ha a jármű nyilvántartásba vétele aktív, 1, ha a nyilvántartásba vétel lejárt |
+| LicensePlate |A jármű rendszámtábla-száma |
+| Regisztrációban |A jármű regisztrációs azonosítója |
+| Lejárt |A jármű regisztrációs állapota: 0, ha a jármű regisztrálása aktív, 1 Ha a regisztráció lejárt |
 
-## <a name="set-up-the-environment-for-azure-stream-analytics"></a>A környezet beállítása az Azure Stream Analytics számára
-A megoldás végrehajtásához Microsoft Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-fiókkal, [ingyenes próbaverziót kérhet.](https://azure.microsoft.com/pricing/free-trial/)
+## <a name="set-up-the-environment-for-azure-stream-analytics"></a>A környezet beállítása Azure Stream Analytics
+A megoldás végrehajtásához Microsoft Azure előfizetésre van szükség. Ha nem rendelkezik Azure-fiókkal, [kérhet egy ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/).
 
-Ügyeljen arra, hogy kövesse az Azure-fiók karbantartása című szakaszban a cikk végén található lépéseket, hogy a lehető legjobban kihasználhassa az Azure-kreditet.
+Ügyeljen arra, hogy a cikk végén található "az Azure-fiók tisztítása" című szakaszban ismertetett lépéseket követve az Azure-kreditek lehető legjobb használatát végezze el.
 
-## <a name="deploy-the-sample"></a>A minta telepítése
-Számos erőforrás, amely könnyen telepíthető egy erőforráscsoportban együtt néhány kattintással. A megoldásdefiníció a GitHub-tárházban [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)található.
+## <a name="deploy-the-sample"></a>A minta üzembe helyezése
+Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőforráscsoporthoz, néhány kattintással együtt. A megoldás definícióját a GitHub-adattár tárolja [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)a következő helyen:.
 
-### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>A TollApp-sablon üzembe helyezése az Azure Portalon
-1. A TollApp-környezet Azure-ba való üzembe helyezéséhez használja ezt a hivatkozást [a TollApp Azure-sablon üzembe helyezéséhez.](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)
+### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>A TollApp-sablon üzembe helyezése a Azure Portal
+1. A TollApp-környezet Azure-ba történő üzembe helyezéséhez használja ezt a hivatkozást az [TollApp Azure-sablon üzembe helyezéséhez](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
 
-2. Jelentkezzen be az Azure Portalon, ha a rendszer kéri.
+2. Ha a rendszer kéri, jelentkezzen be a Azure Portalba.
 
 3. Válassza ki azt az előfizetést, amelyben a különböző erőforrások számlázása történik.
 
-4. Adjon meg egy új erőforráscsoportot, például `MyTollBooth`egyedi névvel.
+4. Adjon meg egy új erőforráscsoportot, amely egy egyedi név, például `MyTollBooth`:.
 
 5. Válasszon egy Azure-beli helyet.
 
-6. Adja meg **az intervallumot** másodpercként. Ez az érték a minta webapp, milyen gyakran küldadatokat az Event Hub.
+6. **Időtartamot** másodpercben megadva. Ezt az értéket használja a minta-webalkalmazásban, hogy milyen gyakran kell elküldeni az adatküldést az Event hub szolgáltatásba.
 
-7. **Ellenőrizze,** hogy elfogadja a feltételeket.
+7. **Győződjön** meg arról, hogy elfogadja a feltételeket és a kikötéseket.
 
-8. Válassza **a Rögzítés az irányítópulton** lehetőséget, hogy később könnyen megtalálhassa az erőforrásokat.
+8. Válassza a **rögzítés az irányítópulton** lehetőséget, hogy a későbbiekben könnyen megtalálhatja az erőforrásokat.
 
-9. Válassza a **Vásárlás** lehetőséget a mintasablon üzembe helyezéséhez.
+9. Válassza a **vásárlás** lehetőséget a sablon telepítéséhez.
 
-10. Néhány pillanat múlva megjelenik egy értesítés, amely megerősíti, hogy a **telepítés sikeres volt.**
+10. Néhány pillanat múlva megjelenik egy értesítés, amely megerősíti, hogy az üzemelő **példány sikeresen**megtörtént.
 
-### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Tekintse át az Azure Stream Analytics TollApp-erőforrásait
+### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Tekintse át a Azure Stream Analytics TollApp-erőforrásait
 
 1. Jelentkezzen be az Azure Portalra
 
 2. Keresse meg az előző szakaszban megnevezett erőforráscsoportot.
 
-3. Ellenőrizze, hogy a következő erőforrások szerepelnek-e az erőforráscsoportban:
-   - Egy Cosmos DB-fiók
-   - Egy Azure Stream Analytics-feladat
+3. Ellenőrizze, hogy az erőforráscsoport tartalmazza-e az alábbi erőforrásokat:
+   - Egy Cosmos DB fiók
+   - Egy Azure Stream Analytics feladatot
    - Egy Azure Storage-fiók
-   - Egy Azure-eseményközpont
-   - Két webalkalmazás
+   - Egy Azure Event hub
+   - Két Web Apps
 
-## <a name="examine-the-sample-tollapp-job"></a>Vizsgálja meg a minta TollApp-feladat
-1. Az előző szakaszban az erőforráscsoportból kiindulva válassza ki a Stream Analytics streamelési feladatát a **tollapp** névvel kezdve (a név véletlenszerű karaktereket tartalmaz az egyediséghez).
+## <a name="examine-the-sample-tollapp-job"></a>A minta TollApp-feladatok vizsgálata
+1. Az előző szakaszban található erőforráscsoport után válassza ki a **tollapp** nevű stream Analytics folyamatos átviteli feladatot (a név véletlenszerű karaktereket tartalmaz az egyediség érdekében).
 
-2. A feladat **Áttekintés lapján** figyelje meg a **Lekérdezés** mezőt a lekérdezés szintaxisának megtekintéséhez.
+2. A feladatok **Áttekintés** lapján figyelje **meg a** lekérdezési szintaxist.
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -161,47 +161,47 @@ Számos erőforrás, amely könnyen telepíthető egy erőforráscsoportban egy�
    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
    ```
 
-   A lekérdezés szándékának parafrázisához tegyük fel, hogy meg kell számolnia a fizetőfülkébe belépő járművek számát. Mivel az autópálya fizetős fülkében van egy folyamatos patak járművek belépő, ezek a bejárati események hasonlóak a patak, hogy soha nem áll meg. Számszerűsíteni a patak, meg kell határoznia egy "időszak", hogy az intézkedés alatt. Nézzük finomítani a kérdést tovább, hogy "Hány jármű adja meg a fizetős stand három percenként?" Ez gyakran nevezik a bukdácsoló számít.
+   A lekérdezés szándékának parafrázisa érdekében tegyük fel, hogy meg kell számolni a díjköteles standot megadható járművek számát. Mivel az autópálya-autópályadíjat futtató fülke folyamatos streamtel rendelkezik, a beléptetési események olyan adatfolyamok, amelyek soha nem állnak le. A stream számszerűsítése érdekében meg kell határoznia egy "időszakot" a méréshez. Pontosítjuk a kérdést, hogy a "hány jármű adja meg a díjköteles standot három percenként?" Ezt általában a kiesések száma is említi.
 
-   Mint látható, az Azure Stream Analytics egy sql-hez hasonló lekérdezési nyelvet használ, és néhány bővítményt ad hozzá a lekérdezés időfüggéssel kapcsolatos szempontok meghatározásához.  További részletekért olvassa el a lekérdezésben használt [időgazdálkodás](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) és [ablakos](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) szerkezetek.
+   Amint láthatja, a Azure Stream Analytics egy olyan lekérdezési nyelvet használ, amely hasonló az SQL-hez, és néhány bővítmény hozzáadásával megadja a lekérdezés időszerű szempontjait.  További részletekért olvassa el a lekérdezésben használt [Időkezelési](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) és [ablak](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) -létrehozási konstrukciókat.
 
-3. Vizsgálja meg a tollapp mintafeladat bemeneteit. Az aktuális lekérdezésben csak az EntryStream-bemenet et használja a rendszer.
-   - **Az EntryStream-bemenet** egy Event Hub-kapcsolat, amely minden alkalommal várólistára helyezi az adatokat, amikor egy autó belép egy útdíjszedőfülkébe az autópályán. Egy webalkalmazás, amely része a minta létrehozza az eseményeket, és hogy az adatok várólistára ebben az Event Hub. Vegye figyelembe, hogy ezt a bemenetet a streamelési lekérdezés FROM záradéka kérdezi le.
-   - **ExitStream** bemenet egy Event Hub-kapcsolat, amely várólisták adatok at minden alkalommal, amikor egy autó kilép egy útdíjszedő az autópályán. Ezt a streamelési bemenetet a lekérdezés szintaxisának későbbi változatai használják.
-   - **A regisztrációs** bemenet egy Azure Blob storage-kapcsolat, amely egy statikus registration.json fájlra mutat, amely szükség szerint a támadásokhoz használatos. Ez a referencia-adatbevitel a lekérdezés szintaxisának későbbi változataiban használatos.
+3. Vizsgálja meg a TollApp-minta feladatának bemeneteit. A jelenlegi lekérdezésben csak a EntryStream-bevitelt használja a rendszer.
+   - A **EntryStream** -bemenet egy olyan Event hub-kapcsolat, amely minden alkalommal, amikor egy autó egy Tollbooth belép az autópályán. A minta részét képező webalkalmazás létrehozza az eseményeket, és ezek az események várólistára kerülnek ebben az Event hub-ban. Vegye figyelembe, hogy ezt a bemenetet a streaming lekérdezés FROM záradékában kérdezi le a rendszer.
+   - A **ExitStream** -bemenet egy olyan Event hub-kapcsolat, amely minden egyes alkalommal, amikor egy autó kilép egy Tollbooth az autópályán. Ez a folyamatos átviteli bemenet a lekérdezés szintaxisának későbbi változataiban használatos.
+   - A **regisztrációs** bemenet egy Azure Blob Storage-kapcsolódás, amely egy statikus regisztrációs. JSON-fájlra mutat, amelyet igény szerint keres. Ez a hivatkozási adat a lekérdezés szintaxisának későbbi változataiban használatos.
 
-4. Vizsgálja meg a kimenetek a TollApp minta feladat.
-   - **Cosmos DB** kimenet egy Cosmos adatbázis-tároló, amely megkapja a kimeneti fogadó eseményeket. Vegye figyelembe, hogy ez a kimenet a streamelési lekérdezés INTO záradékában használatos.
+4. Vizsgálja meg a TollApp-minta feladatainak kimeneteit.
+   - A **Cosmos db** output egy Cosmos adatbázis-tároló, amely megkapja a kimeneti fogadó eseményeit. Vegye figyelembe, hogy ezt a kimenetet a streaming lekérdezés INTO záradékában kell használni.
 
-## <a name="start-the-tollapp-streaming-job"></a>A TollApp-streamelési feladat indítása
-A streamelési feladat elindításához kövesse az alábbi lépéseket:
+## <a name="start-the-tollapp-streaming-job"></a>Az TollApp streaming-feladatok elindítása
+A folyamatos átviteli feladat elindításához kövesse az alábbi lépéseket:
 
-1. A **Feladat Áttekintés lapján** válassza a **Start**lehetőséget.
+1. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás**lehetőséget.
 
-2. A **Feladat indítása** ablaktáblán válassza **a Now (Most) lehetőséget.**
+2. A **kezdési feladatok** ablaktáblán válassza a **most**lehetőséget.
 
-3. Néhány pillanat múlva, miután a feladat fut, a **streamelési** feladat áttekintése lapon tekintse meg a **figyelési** grafikont. A diagramnak több ezer bemeneti eseményt és tíz kimeneti eseményt kell megjelenítenie.
+3. Néhány pillanat elteltével a feladatok futtatása után a folyamatos átviteli feladatok **Áttekintés** lapján tekintse meg a **figyelési** grafikont. A gráfnak több ezer bemeneti eseményt és több tízezer kimeneti eseményt kell megjelenítenie.
 
-## <a name="review-the-cosmosdb-output-data"></a>Tekintse át a CosmosDB kimeneti adatait
-1. Keresse meg a TollApp-erőforrásokat tartalmazó erőforráscsoportot.
+## <a name="review-the-cosmosdb-output-data"></a>A CosmosDB kimeneti adatai áttekintése
+1. Keresse meg a TollApp erőforrásokat tartalmazó erőforráscsoportot.
 
-2. Válassza ki az Azure Cosmos DB-fiókot a **tollapp-random\<\>-cosmos**névmintával.
+2. Válassza ki a **tollapp\<\>véletlenszerű-Cosmos**nevű Azure Cosmos db fiókot.
 
-3. Az **Adatkezelő** lap megnyitásához jelölje ki az Adatkezelő fejlécét.
+3. Válassza ki a **adatkezelő** fejlécet a adatkezelő lap megnyitásához.
 
-4. Bontsa ki a **tollAppDatabase** > **útdíjappcollection-dokumentumok** > **Documents**.
+4. Bontsa ki a **tollAppDatabase** > **tollAppCollection** > **dokumentumait**.
 
-5. Az azonosítók listájában több dokumentum jelenik meg, amint a kimenet elérhetővé válik.
+5. Az azonosítók listájában számos dokumentum jelenik meg, amint a kimenet elérhetővé válik.
 
-6. Válassza ki az egyes azonosítókat a JSON-dokumentum áttekintéséhez. Figyelje meg az egyes tollid, ablakvég idő, és a száma autók, hogy az ablakból.
+6. Válassza ki az egyes azonosítókat a JSON-dokumentum áttekintéséhez. Figyelje meg, hogy minden tollid, windowend és az adott ablakban lévő autók száma.
 
-7. További három perc elteltével egy másik négy dokumentumkészlet áll rendelkezésre, tollidonként egy dokumentum.
+7. További három perc elteltével a rendszer egy másik négy dokumentumból álló készletet is rendelkezésre bocsát, tollid egy dokumentumot.
 
 
-## <a name="report-total-time-for-each-car"></a>Az egyes kocsik teljes idejének jelentése
-Az átlagos idő, amely szükséges egy autó átaz autópályadíj segít felmérni a hatékonyságot a folyamat és az ügyfél élményt.
+## <a name="report-total-time-for-each-car"></a>Jelentés az egyes autók teljes ideje
+Ahhoz, hogy egy autó áthaladjon az útdíjon, az átlagos idő segít felmérni a folyamat hatékonyságát és a felhasználói élményt.
 
-A teljes idő megkereséséhez csatlakozzon az EntryTime-adatfolyamhoz az ExitTime-adatfolyammal. Csatlakozzon a két bemeneti adatfolyamhoz az egyenlő egyező TollId és LicensePlate oszlopokon. A **JOIN** operátor megköveteli, hogy adja meg az időbeli mozgástér, amely leírja az elfogadható időbeli különbség az illesztett események között. A **DATEDIFF** függvénnyel megadhatja, hogy az események ne legyenek 15 percnél tovább egymástól. Alkalmazza a **DATEDIFF** funkciót a kilépési és belépési időkhöz is, hogy kiszámítsa az autó által a fizetőállomáson töltött tényleges időt. Vegye figyelembe a **DATEDIFF** használatának különbségét, ha **a SELECT** utasításban **használja,** nem pedig JOIN feltételben.
+A teljes idő megkereséséhez csatlakoztassa a EntryTime streamet a ExitTime streamhez. Csatlakoztassa a két bemeneti streamet az EQUAL Matching TollId és a LicencePlate oszlopokhoz. A **JOIN** operátor megköveteli, hogy olyan időbeli eltérést határozzon meg, amely leírja az összekapcsolt események közötti elfogadható időtartamot. A **DATEDIFF** függvény használatával megadhatja, hogy az események ne legyenek több, mint 15 perc egymástól. A **DATEDIFF** függvényt is alkalmazza a kilépéshez és a belépési időpontokhoz, hogy kiszámítsa a tényleges időt, amikor egy autó az autópályadíj-állomáson költ. Vegye figyelembe, hogy a **DATEDIFF** használata nem **illesztési** feltétel helyett **Select** utasításban használatos.
 
 ```sql
 SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute, EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
@@ -212,26 +212,26 @@ ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStr
 AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 ```
 
-### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>A TollApp-streamelési feladat lekérdezési szintaxisának frissítése:
+### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>Az TollApp streaming Job lekérdezési szintaxisának frissítése:
 
-1. A **Feladat Áttekintés lapján** válassza a **Leállítás**lehetőséget.
+1. A feladatokhoz tartozó **Áttekintés** lapon válassza a **Leállítás**lehetőséget.
 
-2. Várjon néhány percet a feladat leállításáról szóló értesítésre.
+2. Várjon néhány percet, amíg megtörténik az értesítés, hogy a feladatot leállították.
 
-3. A FELADATTOPOLÓGIA fejléc alatt jelölje be **< > Lekérdezés lehetőséget.**
+3. A feladatok TOPOLÓGIÁjának fejléce alatt válassza ki **< > lekérdezést** .
 
-4. Illessze be a módosított streamelési SQL-lekérdezést.
+4. Illessze be a helyesbített streaming SQL-lekérdezést.
 
-5. A lekérdezés mentéséhez válassza a **Mentés** gombot. Erősítse meg **az Igen** gombot a módosítások mentéséhez.
+5. A lekérdezés mentéséhez válassza a **Mentés** lehetőséget. Erősítse meg az **Igen** gombot a módosítások mentéséhez.
 
-6. A **Feladat Áttekintés lapján** válassza a **Start**lehetőséget.
+6. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás**lehetőséget.
 
-7. A **Feladat indítása** ablaktáblán válassza **a Now (Most) lehetőséget.**
+7. A **kezdési feladatok** ablaktáblán válassza a **most**lehetőséget.
 
-### <a name="review-the-total-time-in-the-output"></a>A teljes idő áttekintése a kimenetben
-Ismételje meg az előző szakaszban a CosmosDB kimeneti adatok áttekintéséhez a streamelési feladat. Tekintse át a legújabb JSON dokumentumokat.
+### <a name="review-the-total-time-in-the-output"></a>A kimenetben lévő teljes idő áttekintése
+Az előző szakaszban leírt lépések megismétlésével tekintse át a CosmosDB kimeneti adatait a folyamatos átviteli feladatokból. Tekintse át a legújabb JSON-dokumentumokat.
 
-Ez a dokumentum például egy példaautót mutat be egy bizonyos rendszámtáblával, a belépési időt és a kilépési időt, és a DATEDIFF számított durationinminutes mezőt, amely az útdíjszedő asztal időtartamát két percként mutatja:
+Ez a dokumentum például egy bizonyos rendszámtábla, a entryTime és a kilépési idő, valamint a DATEDIFF számított DurationInMinutes mező alapján mutatja be az autópályadíj-fülke időtartamát két percen belül:
 ```JSON
 {
     "tollid": 4,
@@ -248,10 +248,10 @@ Ez a dokumentum például egy példaautót mutat be egy bizonyos rendszámtábl�
 }
 ```
 
-## <a name="report-vehicles-with-expired-registration"></a>Lejárt regisztrációval rendelkező járművek jelentése
-Az Azure Stream Analytics a referenciaadatok statikus pillanatképeit használhatja a historikus adatfolyamok összekapcsolására. Ennek a képességnek a bizonyításához használja a következő mintakérdést. A regisztrációs bemenet egy statikus blob json fájl, amely felsorolja a licenccímkék lejárati. A rendszámtábla összekapcsolásával a referenciaadatokat összehasonlítják az útdíjon áthaladó minden egyes járművel.
+## <a name="report-vehicles-with-expired-registration"></a>Járművek jelentése lejárt regisztrációval
+A Azure Stream Analytics statikus pillanatképeket használhat a hivatkozási adatstreamekkel való csatlakozáshoz. A funkció bemutatásához használja az alábbi kérdést. A regisztrációs bemenet egy statikus blob JSON-fájl, amely felsorolja a licencek felcímkézett érvényességi idejét. A rendszámtábla összekapcsolásával a rendszer összehasonlítja a hivatkozási adatforgalmat az autópályadíjon áthaladó összes járműre.
 
-Ha egy haszongépjármű regisztrálva van az útdíjszedő társaságnál, az ellenőrzés nélkül áthaladhat az útdíjszedő fülkén. A regisztrációs keresvénytáblázat segítségével azonosíthatja az összes lejárt regisztrációval rendelkező haszongépjárművet.
+Ha egy kereskedelmi jármű regisztrálva van a díjköteles vállalatnál, akkor az az autópályadíj-kezelőn keresztül az ellenőrzés leállítása nélkül továbbítható. A regisztrációs keresési táblázat segítségével azonosíthatja az összes olyan kereskedelmi járművet, amelyen lejárt a regisztráció.
 
 ```sql
 SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
@@ -262,9 +262,9 @@ ON EntryStream.LicensePlate = Registration.LicensePlate
 WHERE Registration.Expired = '1'
 ```
 
-1. Ismételje meg az előző szakaszban a TollApp-streamelési feladat lekérdezési szintaxisának frissítéséhez.
+1. Ismételje meg az előző szakaszban leírt lépéseket az TollApp streaming Job lekérdezési szintaxisának frissítéséhez.
 
-2. Ismételje meg az előző szakaszban a CosmosDB kimeneti adatok áttekintéséhez a streamelési feladat.
+2. Az előző szakaszban leírt lépések megismétlésével tekintse át a CosmosDB kimeneti adatait a folyamatos átviteli feladatokból.
 
 Példa a kimenetre:
 ```json
@@ -282,10 +282,10 @@ Példa a kimenetre:
     }
 ```
 
-## <a name="scale-out-the-job"></a>A feladat kicsinyítette
-Az Azure Stream Analytics úgy lett kialakítva, hogy rugalmasan méretezhető legyen, így nagy mennyiségű adatot képes kezelni. Az Azure Stream Analytics-lekérdezés egy **PARTITION BY-záradék** használatával közölheti a rendszerrel, hogy ez a lépés horizontális felskálázás. **PartitionId** egy speciális oszlop, amely a rendszer hozzáteszi, hogy megfeleljen a partíció azonosítója a bemeneti (event hub).
+## <a name="scale-out-the-job"></a>A feladatok vertikális felskálázása
+A Azure Stream Analytics rugalmasan méretezhető, így nagy mennyiségű adattal kezelhetők. Az Azure Stream Analytics-lekérdezés a **Partition by** záradék használatával közli, hogy ez a lépés milyen nagyságrendű. A **PartitionID** egy speciális oszlop, amelyet a rendszer a bemenet (Event hub) PARTÍCIÓs azonosítójának megfelelően feltesz.
 
-A lekérdezés partíciókra való kiosztásához a lekérdezés szintaxisát a következő kódra kell csökkenteni:
+A lekérdezésnek a partíciókhoz való kiskálázásához szerkessze a lekérdezési szintaxist a következő kódra:
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
@@ -295,33 +295,33 @@ PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
-A streamelési feladat további streamelési egységekre való felskálázása:
+A folyamatos átviteli feladatok vertikális felskálázása több folyamatos átviteli egységre:
 
 1. **Állítsa le** az aktuális feladatot.
 
-2. Frissítse a lekérdezés szintaxisát **a< > Lekérdezés** lapon, és mentse a módosításokat.
+2. Frissítse a lekérdezési szintaxist a **< > lekérdezés** lapon, és mentse a módosításokat.
 
-3. A streamelési feladat CONFIGURE fejléce alatt válassza a **Méretezés lehetőséget.**
+3. A folyamatos átviteli feladatban a CONFIGURE (Konfigurálás) fejléc alatt válassza a **skála**lehetőséget.
 
-4. Csúsztassa a **Streamelési egységek** csúszkáját 1-től 6-ig. A streamelési egységek határozzák meg, hogy a feladat milyen számítási teljesítményt kaphat. Kattintson a **Mentés** gombra.
+4. Csúsztassa a **folyamatos átviteli egységek** csúszkát 1-től 6-ra. A folyamatos átviteli egységek határozzák meg a feladatokhoz tartozó számítási teljesítmény mennyiségét. Kattintson a **Mentés** gombra.
 
-5. **Indítsa el** a streamelési feladatot a további skálázás bemutatásához. Az Azure Stream Analytics több számítási erőforrás között osztja el a munkát, és jobb átviteli teljesítményt érhet el, a munka erőforrások közötti particionálásával a PARTITION BY záradékban kijelölt oszlop használatával.
+5. **Indítsa el** a folyamatos átviteli feladatot a további skála bemutatásához. A Azure Stream Analytics több számítási erőforráson keresztül osztja el a munkát, és jobb teljesítményt érhet el, és az erőforrások közötti munkát a PARTITION BY záradékban kijelölt oszlop használatával particionálja.
 
 ## <a name="monitor-the-job"></a>A feladat figyelése
-A **MONITOR** terület a futó feladatstatisztikáit tartalmazza. Az első konfigurálás szükséges a tárfiók ugyanabban a régióban (név díjköteles, mint a többi a dokumentum).
+A **figyelő** terület a futó feladattal kapcsolatos statisztikát tartalmaz. A Storage-fióknak ugyanabban a régióban kell lennie (például a dokumentum többi részeként).
 
-![Az Azure Stream Analytics feladatfigyelése](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
+![Azure Stream Analytics feladatok figyelése](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-**A tevékenységnaplókat** a feladat **irányítópultjának Beállítások** területéről is elérheti.
+A tevékenység- **naplókat** a feladatok irányítópultjának **Beállítások** területéről is elérheti.
 
-## <a name="clean-up-the-tollapp-resources"></a>A TollApp-erőforrások karbantartása
-1. Állítsa le a Stream Analytics-feladatot az Azure Portalon.
+## <a name="clean-up-the-tollapp-resources"></a>A TollApp-erőforrások tisztítása
+1. Állítsa le a Stream Analytics feladatot a Azure Portalban.
 
-2. Keresse meg azt az erőforráscsoportot, amely a TollApp-sablonhoz kapcsolódó nyolc erőforrást tartalmaz.
+2. Keresse meg azt az erőforráscsoportot, amely a TollApp-sablonnal kapcsolatos nyolc erőforrást tartalmaz.
 
 3. Válassza az **Erőforráscsoport törlése** elemet. A törlés megerősítéséhez írja be az erőforráscsoport nevét.
 
 ## <a name="conclusion"></a>Összegzés
-Ez a megoldás bemutatta az Azure Stream Analytics szolgáltatásnak. Bemutatja, hogyan konfigurálhatja a bemeneteket és kimeneteket a Stream Analytics-feladathoz. A díjköteles adatok forgatókönyv használatával a megoldás ismerteti a mozgásban lévő adatok terében felmerülő gyakori problémákat, és azt, hogy ezek hogyan oldhatók meg egyszerű SQL-szerű lekérdezésekkel az Azure Stream Analytics-ben. A megoldás leírt SQL-bővítmény konstrukciók időbeli adatokkal való munka. Bemutatja, hogyan lehet az adatfolyamokat összecsatlakoztatni, hogyan gazdagíthatja az adatfolyamot statikus referenciaadatokkal, és hogyan kell kibővíteni egy lekérdezést a nagyobb átviteli érték elérése érdekében.
+Ez a megoldás a Azure Stream Analytics szolgáltatáshoz vezetett. Bemutatta, hogyan konfigurálhatja a Stream Analytics feladathoz tartozó bemeneteket és kimeneteket. Az autópályadíj-alapú adatforgatókönyvben a megoldás a mozgásban lévő adatterületen felmerülő gyakori problémák magyarázatát, valamint azt ismerteti, Hogyan oldhatók meg a Azure Stream Analytics egyszerű SQL-szerű lekérdezésekkel. A megoldás az SQL-bővítményt az időbeli adatkezeléshez használt szerkezetekben ismertette. Megmutatta, hogyan csatlakoztathatók az adatfolyamok, hogyan bővíthetők az adatfolyamok statikus hivatkozási adatokkal, és hogyan méretezhető le egy lekérdezés a nagyobb átviteli sebesség eléréséhez.
 
-Bár ez a megoldás jó bevezetést nyújt, semmilyen módon nem teljes. A SAQL-nyelv használatával további lekérdezési mintákat találhat a [Query példákban a Stream Analytics közös használati mintáihoz.](stream-analytics-stream-analytics-query-patterns.md)
+Bár ez a megoldás jó bevezetést biztosít, nem végezhető el semmilyen módon. Több lekérdezési mintát is megtalálhat a SAQL nyelv használatával a [gyakori stream Analytics használati mintákra vonatkozó lekérdezési példákban](stream-analytics-stream-analytics-query-patterns.md).

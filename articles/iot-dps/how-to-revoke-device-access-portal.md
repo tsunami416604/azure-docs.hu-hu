@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-eszközkiépítési szolgáltatásból való leiratkozási eszköz
-description: Eszköz leválasztása az Azure IoT Hub-eszközkiépítési szolgáltatáson (DPS) keresztültörténő kiépítés megakadályozására
+title: Eszköz regisztrációjának törlése az Azure IoT Hub Device Provisioning Service
+description: Eszköz regisztrációjának törlése az Azure IoT Hub Device Provisioning Service (DPS) használatával történő kiépítés megakadályozása érdekében
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -9,106 +9,106 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: af883da67f4e1bc819514e88ff480526e16124db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974921"
 ---
-# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz leválasztása az Azure IoT Hub-eszközkiépítési szolgáltatásból
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz regisztrálása az Azure-ból IoT Hub Device Provisioning Service
 
-Az eszközhitelesítő adatok megfelelő kezelése kulcsfontosságú a nagy horderejű rendszerek, például az IoT-megoldások számára. Az ilyen rendszerek ajánlott eljárása, hogy egyértelmű tervvel rendelkeznek az eszközök hozzáférésének visszavonására vonatkozóan, ha a hitelesítő adataik – akár egy megosztott hozzáférésű aláírási jogkivonat, akár egy X.509-es tanúsítvány – sérülhetnek. 
+Az eszköz hitelesítő adatainak megfelelő kezelése elengedhetetlen a nagy horderejű rendszerek, például a IoT-megoldások számára. Az ilyen rendszerekre vonatkozó ajánlott eljárás az, hogy az eszközök hozzáférésének visszavonása a hitelesítő adataik miatt visszavonható legyen, függetlenül attól, hogy a megosztott hozzáférési aláírások (SAS) tokenje vagy az X. 509 tanúsítványa sérült-e. 
 
-Az eszközkiépítési szolgáltatásba való regisztráció lehetővé teszi az eszköz [automatikus kiépítését.](concepts-auto-provisioning.md) A kiépített eszköz az IoT Hub, amely lehetővé teszi, hogy megkapja a kezdeti [eszköz ikerállapotát,](~/articles/iot-hub/iot-hub-devguide-device-twins.md) és kezdje meg a telemetriai adatok jelentését. Ez a cikk ismerteti, hogyan lehet leválasztani egy eszközt a létesítési szolgáltatás példánya, megakadályozva, hogy a jövőben újra kiépítésre kerüljön.
+Az eszközök kiépítési szolgáltatásának beléptetése lehetővé teszi, hogy az eszköz [automatikusan kiépíthető](concepts-auto-provisioning.md)legyen. A kiépített eszköz olyan, amely IoT Hub regisztrálva van, lehetővé téve, hogy megkapja a kezdeti [eszköz Twin](~/articles/iot-hub/iot-hub-devguide-device-twins.md) állapotát, és megkezdje a jelentéskészítési telemetria-adatgyűjtést. Ez a cikk azt ismerteti, hogyan lehet lemondani egy eszköz regisztrációját a kiépítési szolgáltatási példányról, ami megakadályozza, hogy a jövőben újra kiépíthető legyen.
 
 > [!NOTE] 
-> Vegye figyelembe az eszközök újrapróbálkozási házirendjeit, amelyekhez visszavonja a hozzáférést. Például egy eszköz, amely egy végtelen újrapróbálkozási szabályzat ot folyamatosan megpróbálhat regisztrálni a létesítési szolgáltatás. Ez a helyzet szolgáltatási erőforrásokat használ fel, és valószínűleg befolyásolja a teljesítményt.
+> Ügyeljen arra, hogy a hozzáférését visszavonó eszközök újrapróbálkozási szabályzata. Előfordulhat például, hogy egy végtelen újrapróbálkozási házirenddel rendelkező eszköz folyamatosan próbálkozik a kiépítési szolgáltatással való regisztrálással. Ez a helyzet felhasználja a szolgáltatási erőforrásokat, és valószínűleg hatással van a teljesítményre.
 
-## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Feketelista eszközök egyéni beléptetési bejegyzés használatával
+## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Eszközök feketelistára helyezése egyéni beléptetési bejegyzés használatával
 
-Az egyéni regisztrációk egyetlen eszközre vonatkoznak, és igazolási mechanizmusként x.509-es tanúsítványokat vagy SAS-jogkivonatokat (valós vagy virtuális TPM-ben) használhatnak. (A SAS-jogkivonatokat tanúsítványmechanizmusként használó eszközök csak egyéni regisztrációval építhetők ki.) Ha egy egyéni regisztrációval rendelkező eszközt szeretne feketelistára tenni, letilthatja vagy törölheti a regisztrációs bejegyzést. 
+Az egyes regisztrációk egyetlen eszközre vonatkoznak, és az igazolási mechanizmusként X. 509 tanúsítványokat vagy SAS-jogkivonatokat (valós vagy virtuális TPM-ben) is használhatnak. (Az SAS-tokeneket használó eszközök az igazolási mechanizmusként csak egy egyéni regisztráción keresztül helyezhetők üzembe.) Ha olyan eszközt szeretne feketelistára, amely egyéni regisztrációval rendelkezik, letilthatja vagy törölheti a beléptetési bejegyzését. 
 
-Az eszköz ideiglenes feketelistázása a regisztrációs bejegyzés letiltásával: 
+Az eszköz ideiglenes feketelistára állítása a beléptetési bejegyzés letiltásával: 
 
-1. Jelentkezzen be az Azure Portalra, és válassza a bal oldali menü **Minden erőforrás** lehetőséget.
-2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből feketelistára szeretné tenni az eszközt.
-3. A létesítési szolgáltatásban válassza a **Regisztrációk kezelése**lehetőséget, majd az **Egyéni beléptetések** lapot.
-4. Válassza ki a feketelistára tenni kívánt eszköz regisztrációs bejegyzését. 
+1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
+2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből ki szeretné listázni az eszközt.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+4. Válassza ki a beléptetési bejegyzést a feketelistára kívánt eszközhöz. 
 
-    ![Válassza ki az egyéni regisztrációt](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+    ![Egyéni regisztráció kiválasztása](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
 
-5. A beléptetési lapon görgessen le az aljára, és válassza a **Letiltás lehetőséget** a **Bejegyzés engedélyezése** kapcsolóhoz, majd kattintson a **Mentés gombra.**  
+5. A beléptetési lapon görgessen le az aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolóhoz, majd kattintson a **Mentés**gombra.  
 
    ![Egyéni beléptetési bejegyzés letiltása a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
-Az eszköz végleges feketelistázása a regisztrációs bejegyzés törlésével:
+Az eszköz végleges feketelistára állítása a beléptetési bejegyzés törlésével:
 
-1. Jelentkezzen be az Azure Portalra, és válassza a bal oldali menü **Minden erőforrás** lehetőséget.
-2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből feketelistára szeretné tenni az eszközt.
-3. A létesítési szolgáltatásban válassza a **Regisztrációk kezelése**lehetőséget, majd az **Egyéni beléptetések** lapot.
-4. Jelölje be a feketelistára tenni kívánt eszköz regisztrációs bejegyzése melletti jelölőnégyzetet. 
-5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombra a regisztráció eltávolításának megerősítéséhez. 
+1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
+2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből ki szeretné listázni az eszközt.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+4. Jelölje be a beléptetési bejegyzés melletti jelölőnégyzetet a feketelistára kívánt eszközhöz. 
+5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombot választva erősítse meg, hogy el kívánja távolítani a beléptetést. 
 
    ![Egyéni beléptetési bejegyzés törlése a portálon](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
 
 
-Az eljárás befejezése után látnia kell, hogy a bejegyzés törlődik az egyes regisztrációk listájáról.  
+Az eljárás befejezése után a bejegyzést a rendszer az egyéni regisztrációk listájáról távolítja el.  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>X.509 köztes vagy legfelső szintű hitelesítésszolgáltatói tanúsítvány feketelistára kerülése igénylési csoport használatával
+## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>X. 509 közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feketelistára helyezése egy regisztrációs csoport használatával
 
-Az X.509 tanúsítványok általában egy megbízhatósági tanúsítványláncba vannak rendezve. Ha egy tanúsítvány a lánc bármely szakaszában veszélybe kerül, a megbízhatóság megszakad. A tanúsítványnak feketelistára kell tenni, hogy megakadályozza, hogy az eszközkiépítési szolgáltatás az adott tanúsítványt tartalmazó lánc későbbi rétegében lévő eszközöket létesítse. Az X.509-tanúsítványokról és a kiépítési szolgáltatással való használatukról az [X.509 tanúsítványok című témakörben olvashat bővebben.](./concepts-security.md#x509-certificates) 
+Az X. 509 tanúsítványok általában megbízhatósági tanúsítványlánc szerint vannak rendezve. Ha egy lánc bármely fázisában egy tanúsítvány sérül, a megbízhatóság megszakad. A tanúsítványnak feketelistán kell lennie ahhoz, hogy az eszköz kiépítési szolgáltatása az adott tanúsítványt tartalmazó láncon kívülről kiépítse az eszközöket. Ha többet szeretne megtudni az X. 509 tanúsítványokról és azok használatáról a kiépítési szolgáltatással kapcsolatban, tekintse meg az [x. 509 tanúsítványokat](./concepts-security.md#x509-certificates). 
 
-A regisztrációs csoport olyan eszközök bejegyzése, amelyek azonos köztes vagy legfelső szintű hitelesítésszolgáltató által aláírt X.509 tanúsítványok közös tanúsítvány-mechanizmusával rendelkeznek. A regisztrációs csoport bejegyzése a köztes vagy legfelső szintű hitelesítésszolgáltatóhoz társított X.509 tanúsítvánnyal van konfigurálva. A bejegyzés konfigurálva van minden olyan konfigurációs értékkel, például a kétállamos és az IoT hub-kapcsolattal, amelyeket az adott tanúsítvánnyal rendelkező eszközök megosztanak a tanúsítványláncban. A tanúsítvány feketelistára kerüléséhez letilthatja vagy törölheti a tanúsítvány igénylési csoportját.
+A beléptetési csoport olyan eszközökre vonatkozó bejegyzés, amelyek közös igazolási mechanizmussal rendelkeznek az X. 509 tanúsítványokban, amelyek ugyanabban a közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓN vannak aláírva. A beléptetési csoport bejegyzése a közbenső vagy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓhoz társított X. 509 tanúsítvánnyal van konfigurálva. A bejegyzés is konfigurálható bármilyen konfigurációs értékkel (például Twin State és IoT hub-kapcsolatok), amelyeket az adott tanúsítvánnyal rendelkező eszközök közösen használnak a tanúsítványlánc számára. A tanúsítvány feketelistára helyezéséhez letilthatja vagy törölheti a regisztrációs csoportot.
 
-A tanúsítvány ideiglenes feketelistázása a beléptetési csoport letiltásával: 
+A tanúsítvány ideiglenes feketelistára állítása a beléptetési csoport letiltásával: 
 
-1. Jelentkezzen be az Azure Portalra, és válassza a bal oldali menü **Minden erőforrás** lehetőséget.
-2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből feketelistára szeretné tenni az aláíró tanúsítványt.
-3. A létesítési szolgáltatásban válassza a **Regisztrációk kezelése**lehetőséget, majd a **Regisztrációs csoportok** lapot.
-4. Jelölje ki a feketelistára kívánt tanúsítványt használó regisztrációs csoportot.
-5. A Belépési kapcsoló **engedélyezése,** majd a **Mentés**lehetőséget, a **Letiltás** lehetőséget.  
+1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
+2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből ki szeretné listázni az aláíró tanúsítványt.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
+4. Válassza ki a beléptetési csoportot a feketelistára kívánt tanúsítvány használatával.
+5. Válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés**gombra.  
 
-   ![A regisztrációs csoport bejegyzésének letiltása a portálon](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
+   ![Beléptetési csoport bejegyzésének letiltása a portálon](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-A tanúsítvány végleges feketelistázása a beléptetési csoport törlésével:
+A tanúsítvány végleges feketelistára állítása a beléptetési csoport törlésével:
 
-1. Jelentkezzen be az Azure Portalra, és válassza a bal oldali menü **Minden erőforrás** lehetőséget.
-2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből feketelistára szeretné tenni az eszközt.
-3. A létesítési szolgáltatásban válassza a **Regisztrációk kezelése**lehetőséget, majd a **Regisztrációs csoportok** lapot.
-4. Jelölje be a feketelistára tenni kívánt tanúsítvány igénylési csoportja melletti jelölőnégyzetet. 
-5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombra a beléptetési csoport eltávolításának megerősítéséhez. 
+1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
+2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből ki szeretné listázni az eszközt.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
+4. Jelölje be a beléptetési csoport melletti jelölőnégyzetet a feketelistára kívánt tanúsítványhoz. 
+5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombot választva erősítse meg, hogy el kívánja távolítani a beléptetési csoportot. 
 
    ![Regisztrációs csoport bejegyzésének törlése a portálon](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
 
-Az eljárás befejezése után a bejegyzésnek el kell távolítania a regisztrációs csoportok listájáról.  
+Az eljárás befejezése után a bejegyzés el lett távolítva a regisztrációs csoportok listájából.  
 
 > [!NOTE]
-> Ha töröl egy tanúsítvány igénylési csoportját, a tanúsítványláncban lévő tanúsítvánnyal rendelkező eszközök továbbra is regisztrálhatnak, ha a főtanúsítványhoz engedélyezett igénylési csoport vagy a tanúsítványban magasabban lévő másik köztes tanúsítvány regisztrálható. lánc létezik.
+> Ha töröl egy tanúsítványigénylési csoportot a tanúsítványhoz, előfordulhat, hogy azok az eszközök, amelyeken a tanúsítványa szerepel a tanúsítvány láncában, továbbra is regisztrálhatók, ha a főtanúsítványhoz vagy egy másik közbenső tanúsítványhoz tartozó engedélyezett beléptetési csoport létezik a tanúsítvány láncában.
 
-## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Adott eszközök feketelistája egy regisztrációs csoportban
+## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Egy regisztrációs csoportban lévő adott eszközök feketelistára helyezése
 
-Az X.509 tanúsítványmechanizmust megvalósító eszközök az eszköz tanúsítványláncát és személyes kulcsát használják a hitelesítéshez. Amikor egy eszköz csatlakozik, és hitelesíti az eszköz kiépítési szolgáltatás, a szolgáltatás először megkeresi az egyéni regisztráció, amely megfelel az eszköz hitelesítő adatait. A szolgáltatás ezután megkeresi a regisztrációs csoportokat, és megállapítja, hogy az eszköz kiépíthető-e. Ha a szolgáltatás letiltott egyéni regisztrációt talál az eszközhöz, megakadályozza az eszköz csatlakoztatását. A szolgáltatás akkor is megakadályozza a kapcsolatot, ha az eszköz tanúsítványláncában egy köztes vagy legfelső szintű hitelesítésszolgáltató hoz engedélyezett igénylési csoport létezik. 
+Az X. 509 igazolási mechanizmust megvalósító eszközök az eszköz tanúsítványláncot és titkos kulcsát használják a hitelesítéshez. Amikor egy eszköz csatlakoztatja és hitelesíti az eszközt az eszköz kiépítési szolgáltatásával, a szolgáltatás először egy egyéni regisztrációt keres, amely megfelel az eszköz hitelesítő adatainak. A szolgáltatás ezután megkeresi a regisztrációs csoportokat annak megállapítására, hogy az eszköz üzembe helyezhető-e. Ha a szolgáltatás letiltott egyéni regisztrációt talál az eszközhöz, azzal megakadályozza, hogy az eszköz csatlakozzon. A szolgáltatás megakadályozza a csatlakozást, még akkor is, ha az eszköz tanúsítványlánc egyik közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja számára engedélyezett beléptetési csoport van. 
 
-Ha egy regisztrációs csoportban lévő eszközt szeretne feketelistára tenni, kövesse az alábbi lépéseket:
+A beléptetési csoportban lévő egyes eszközök feketelistára helyezéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure Portalra, és válassza a bal oldali menü **Minden erőforrás** lehetőséget.
-2. Az erőforrások listájából válassza ki azt a létesítési szolgáltatást, amely a feketelistára tenni kívánt eszköz regisztrációs csoportját tartalmazza.
-3. A létesítési szolgáltatásban válassza a **Regisztrációk kezelése**lehetőséget, majd az **Egyéni beléptetések** lapot.
-4. A lista tetején válassza az **Egyéni beléptetés hozzáadása** gombot. 
-5. A **Beiktatás hozzáadása** lapon válassza az **X.509** lehetőséget az eszköz igazolási **mechanizmusaként.**
+1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
+2. Az erőforrások listájából válassza ki azt a kiépítési szolgáltatást, amely tartalmazza a feketelistára felvenni kívánt eszköz beléptetési csoportját.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+4. Válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
+5. A **regisztráció hozzáadása** lapon válassza az **X. 509** lehetőséget az eszköz igazolási **mechanizmusa** .
 
-    Töltse fel az eszköztanúsítványt, és adja meg a feketelistára kerülő eszköz eszközazonosítóját. A tanúsítványhoz használja az eszközre telepített aláírt végfelhasználói tanúsítványt. Az eszköz az aláírt végfelhasználói tanúsítványt használja a hitelesítéshez.
+    Töltse fel az eszköz tanúsítványát, és adja meg a feketelistán lévő eszköz AZONOSÍTÓját. A tanúsítvány esetében használja az eszközre telepített, aláírt végfelhasználói tanúsítványt. Az eszköz az aláírt végfelhasználói tanúsítványt használja a hitelesítéshez.
 
-    ![A feketelistára tett eszköz eszköztulajdonságainak beállítása](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+    ![Az eszköz tulajdonságainak beállítása a feketelistán lévő eszközhöz](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
 
-6. Görgessen a **Beiktatás hozzáadása** lap aljára, és válassza a **Letiltás lehetőséget** a **Bejegyzés engedélyezése** kapcsolón, majd kattintson a **Mentés gombra.** 
+6. Görgessen a **regisztráció hozzáadása** lap aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés**gombra. 
 
-    [![A letiltott egyéni beléptetési bejegyzés használata az eszköz csoportregisztrációból való letiltásához a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
+    [![Letiltott egyéni beléptetési bejegyzés használata az eszköz csoportos regisztrációjának letiltásához a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-Ha sikeresen létrehozta a regisztrációt, a letiltott eszközregisztrációk at az Egyéni regisztrációk lapon kell **látnia.** 
+A regisztráció sikeres létrehozásakor az **Egyéni regisztrációk** lapon megjelenik a letiltott eszközök regisztrációja. 
 
 ## <a name="next-steps"></a>További lépések
 
-A disenrollment szintén része a nagyobb megszüntetési folyamatnak. Az eszköz megszüntetése magában foglalja a kiépítési szolgáltatásból való kihelyezést és az IoT hubról való regisztráció törlését. A teljes folyamatról a [Korábban automatikusan kiépített eszközök kiirtása című témakörben olvashat.](how-to-unprovision-devices.md) 
+A regisztráció a nagyobb megszüntetési folyamat része is. Az eszközök megszüntetése magában foglalja a kiépítési szolgáltatásból való kivonást és a IoT hub-ból való regisztrációt is. A teljes folyamattal kapcsolatos további tudnivalókért lásd: a [korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) . 
 

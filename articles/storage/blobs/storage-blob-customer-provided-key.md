@@ -1,6 +1,6 @@
 ---
-title: Ügyfél által biztosított kulcs megadása a Blob Storage-nak a .NET - Azure Storage szolgáltatással történő kérésére
-description: Megtudhatja, hogyan adhat meg egy ügyfél által megadott kulcsot a Blob storage-nak a .NET használatával történő kérésre.
+title: Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-Azure Storage szolgáltatással
+description: Megtudhatja, hogyan határozhat meg egy ügyfél által megadott kulcsot a blob Storage-hoz a .NET használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,25 +10,25 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74807000"
 ---
-# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Ügyfél által biztosított kulcs megadása a Blob storage-nak a .NET-tel kapcsolatos kérésre
+# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-tel
 
-Az Azure Blob storage-ra vonatkozó kéréseket küldő ügyfelek egy titkosítási kulcsot adhatnak meg egy adott kéréshez. A titkosítási kulcs a kérelem részletes vezérlést biztosít a Blob storage-műveletek titkosítási beállításait. Az ügyfél által biztosított kulcsok (előzetes verzió) tárolhatók az Azure Key Vaultban vagy egy másik kulcstárolóban.
+Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek számára lehetősége van egy titkosítási kulcs megadására egy egyedi kérelemben. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között. A felhasználó által megadott kulcsok (előzetes verzió) Azure Key Vault vagy egy másik kulcstárolóban is tárolhatók.
 
-Ez a cikk bemutatja, hogyan adható meg egy ügyfél által megadott kulcs a .NET kéréssel.
+Ez a cikk bemutatja, hogyan határozhat meg egy ügyfél által megadott kulcsot a .NET-kérelemben.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Ha többet szeretne megtudni arról, hogyan hitelesítheti magát az Azure Identity ügyfélkódtáraz Azure Storage-ból, tekintse meg a **Hitelesítés az Azure Identity könyvtár az Azure** Active Directory és az Azure Resources felügyelt [identitások engedélyezése című](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)szakaszban.
+Ha többet szeretne megtudni arról, hogyan lehet hitelesíteni az Azure Identity ügyféloldali függvénytárát az Azure Storage-ból, tekintse meg a **hitelesítés az Azure Identity Library** használatával című szakaszt a [blobokhoz és várólistákhoz való hozzáférés engedélyezése a Azure Active Directory és felügyelt identitások Azure-erőforrásokhoz](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)című részben.
 
-## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Példa: Blob feltöltéséhez használjon ügyfél által biztosított kulcsot
+## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Példa: felhasználó által megadott kulcs használata blob feltöltéséhez
 
-A következő példa létrehoz egy ügyfél által biztosított kulcsot, és ezt a kulcsot használja egy blob feltöltéséhez. A kód feltölt egy blokkot, majd véglegesíti a blokklistát a blob azure storage-ba írásához.
+Az alábbi példa egy ügyfél által megadott kulcsot hoz létre, és ezt a kulcsot használja a Blobok feltöltéséhez. A kód feltölt egy blokkot, majd véglegesíti a blokkok listáját, hogy a blobot az Azure Storage-ba írja.
 
 ```csharp
 async static Task UploadBlobWithClientKey(string accountName, string containerName,
@@ -74,5 +74,5 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Storage titkosítása az inaktív adatokhoz](../common/storage-service-encryption.md)
-- [Blobok és várólisták elérésének engedélyezése az Azure Active Directoryval és az Azure Resources felügyelt identitásaival](../common/storage-auth-aad-msi.md)
+- [Azure Storage-titkosítás a REST-adatokhoz](../common/storage-service-encryption.md)
+- [Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](../common/storage-auth-aad-msi.md)

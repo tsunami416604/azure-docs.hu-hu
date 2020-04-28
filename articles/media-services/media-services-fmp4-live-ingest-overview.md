@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services töredezett MP4 élő betöltési specifikációja | Microsoft dokumentumok
-description: Ez a specifikáció ismerteti a protokoll és a formátum töredezett MP4-alapú élő streamelés az Azure Media Services. Ez a dokumentum a rendkívül redundáns és robusztus élő betöltési mechanizmusok létrehozásának ajánlott gyakorlatait is ismerteti.
+title: Azure Media Services töredezett MP4 Live betöltési specifikáció | Microsoft Docs
+description: Ez a specifikáció leírja a Azure Media Services-hoz tartozó töredezett MP4-alapú élő adatfolyamok betöltésének protokollját és formátumát. Ez a dokumentum a nagy mértékben redundáns és robusztus élő betöltési mechanizmusok létrehozásával kapcsolatos ajánlott eljárásokat is tárgyalja.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -15,180 +15,180 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74888053"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Az Azure Media Services töredezett MP4 élő betöltési specifikációja 
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services darabolt MP4 élő betöltési specifikáció 
 
-Ez a specifikáció ismerteti a protokoll és a formátum töredezett MP4-alapú élő streamelés az Azure Media Services. A Media Services olyan élő streamelési szolgáltatást biztosít, amelyet az ügyfelek az Azure felhőplatformként való használatával valós időben streamelhetnek élő eseményekés tartalmak közvetítésére. Ez a dokumentum a rendkívül redundáns és robusztus élő betöltési mechanizmusok létrehozásának ajánlott gyakorlatait is ismerteti.
+Ez a specifikáció leírja a Azure Media Services-hoz tartozó töredezett MP4-alapú élő adatfolyamok betöltésének protokollját és formátumát. A Media Services élő adatfolyam-szolgáltatást biztosít, amellyel az ügyfelek valós időben továbbítják az élő eseményeket és közvetítik a tartalmakat, ha az Azure-t felhő platformként használják. Ez a dokumentum a nagy mértékben redundáns és robusztus élő betöltési mechanizmusok létrehozásával kapcsolatos ajánlott eljárásokat is tárgyalja.
 
-## <a name="1-conformance-notation"></a>1. Konformáció jelölés
-A dokumentumban a "MUST", "MUST", "REQUIRED", "SHALL", "NOT", "NOT", "NOT", "RECOMMENDED", "May" és "OPTIONAL" kulcsszavakat a 2119.
+## <a name="1-conformance-notation"></a>1. megfelelőségi jelölés
+A (z) "MUST," "nem kötelező", "REQUIREd", "", "" nem "," "nem", "" ajánlott "," "lehet, hogy" és "nem kötelező" szövegeket kell értelmezni a dokumentumban, az RFC 2119-es dokumentumban leírtak szerint.
 
-## <a name="2-service-diagram"></a>2. Szolgáltatási diagram
-Az alábbi ábra a Media Services élő közvetítési szolgáltatásának magas szintű architektúráját mutatja be:
+## <a name="2-service-diagram"></a>2. szolgáltatási diagram
+Az alábbi ábrán a Media Services élő streaming szolgáltatásának magas szintű architektúrája látható:
 
-1. Az élő kódoló leküldéses élő hírcsatornák csatornák, amelyek az Azure Media Services SDK-n keresztül létrehozott és kiépített csatornákra.
-1. A Media Services csatornái, programjai és streamelési végpontjai kezelik az összes élő streamelési funkciót, beleértve a betöltést, a formázást, a felhőalapú dvr-t, a biztonságot, a méretezhetőséget és a redundanciát.
-1. Szükség esetén az ügyfelek választhatnak, hogy egy Azure Content Delivery Network réteget telepítenek a streamelési végpont és az ügyfélvégpontok között.
-1. Az ügyfélvégpontok http Adaptive Streaming protokollok használatával streamelnek a streamelési végpontról. Ilyenek például a Microsoft Smooth Streaming, a Dynamic Adaptive Streaming http-n (DASH vagy MPEG-DASH) és az Apple HTTP Live Streaming (HLS).
+1. Az élő kódoló élő hírcsatornákat küld a Azure Media Services SDK-val létrehozott és kiépített csatornákra.
+1. A Media Services csatornák, programok és folyamatos átviteli végpontok kezelik az élő közvetítés funkcióit, beleértve a betöltést, a formázást, a felhőalapú DVR-t, a biztonságot, a méretezhetőséget és a redundanciát.
+1. Igény szerint az ügyfelek dönthetnek úgy is, hogy egy Azure Content Delivery Network réteget helyeznek üzembe a folyamatos átviteli végpont és az ügyfél-végpontok között.
+1. Az ügyfél-végpontok adatfolyamot továbbítanak a streaming végpontról a HTTP Adaptív átviteli protokollok használatával. Ilyenek például a Microsoft Smooth Streaming, a dinamikus adaptív átvitel HTTP-n keresztül (DASH vagy MPEG-DASH) és az Apple HTTP Live Streaming (HLS).
 
-![betöltési folyamat][image1]
+![folyamat betöltése][image1]
 
-## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream formátum – ISO 14496-12 töredezett MP4
-Az ebben a dokumentumban tárgyalt élő közvetítésbetöltés vezetékes formátuma az [ISO-14496-12] alapul. A töredezett MP4 formátum és bővítmények részletes magyarázatát mind az igény szerinti videofájlok, mind az élő közvetítés ekor történő letöltése esetén lásd az [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream formátum – ISO 14496-12 darabolt MP4
+A jelen dokumentumban tárgyalt élő adatfolyamok átviteli formátuma az [ISO-14496-12] alapján történik. A töredezett MP4 formátum és bővítmények részletes ismertetése a videó igény szerinti fájlokhoz és az élő adatfolyamok betöltéséhez: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
-### <a name="live-ingest-format-definitions"></a>Élő betöltési formátumdefiníciók
-Az alábbi lista az Azure Media Services betöltésére vonatkozó speciális formátumdefiníciókat ismerteti:
+### <a name="live-ingest-format-definitions"></a>Élő betöltés formátumának definíciói
+Az alábbi lista a Azure Media Servicesba való élő betöltésre vonatkozó speciális formátum-definíciókat ismerteti:
 
-1. Az **ftyp**, **Live Server Manifest Box**és **moov** dobozokat minden kéréssel együtt el kell küldeni (HTTP POST). Ezeket a mezőket az adatfolyam elején kell elküldeni, és bármikor, amikor a kódolónak újra kell csatlakoznia az adatfolyam-betöltés folytatásához. További információ: [1] 6.
-1. A[1] 3.3.2 szakasza egy **StreamManifestBox** nevű, az élő betöltéshez kötelező mezőt határoz meg. Az Azure terheléselosztó útválasztási logikája miatt ezzel a mezővel elavult. A doboz nem lehet jelen a Media Services szolgáltatásba való betöltéskor. Ha ez a mező jelen van, a Media Services csendben figyelmen kívül hagyja azt.
-1. A [1] 3.2.3.2-ben definiált **TrackFragmentExtendedHeaderBox** mezőnek minden töredékhez jelen kell lennie.
-1. A **TrackFragmentExtendedHeaderBox** mező 2-es verziója olyan médiaszegmensek létrehozásához használható, amelyek több adatközpontban azonos URL-címekkel rendelkeznek. A töredékindex-mező szükséges az indexalapú streamelési formátumok, például az Apple HLS és az indexalapú MPEG-DASH adatkapcsolat-átvételéhez. A több adatközpont-feladatátvétel engedélyezéséhez a töredékindexet több kódolóközött kell szinkronizálni, és minden egyes egymást követő adathordozó-töredék esetében 1-vel növelni kell, még a kódoló újraindítása vagy meghibásodása esetén is.
-1. Szakasz 3.3.6 [1] határozza meg a doboz nevű **MovieFragmentRandomAccessBox** (**mfra**), hogy lehet küldeni a végén az élő betöltés, hogy jelezze end-of-stream (EOS) a csatornára. A Media Services betöltési logikája miatt az EOS használata elavult, és az élő betöltési **mfra** doboz nem kerül elküldésre. Ha elküldi, a Media Services csendben figyelmen kívül hagyja azt. A betöltési pont állapotának visszaállításához azt javasoljuk, hogy használja a [Csatorna alaphelyzetbe állítását.](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels) Azt is javasoljuk, hogy a [Program leállítása](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) programhasználatával fejezze be a bemutatót és streameljen.
-1. Az MP4-töredék időtartamának állandónak kell lennie, hogy csökkentse az ügyféljegyzékek méretét. Az állandó MP4 töredék időtartama is javítja az ügyfél letöltési heurisztika használatával ismételt címkéket. Az időtartam ingadozhat, hogy kompenzálja a nem egész képkockasebesség.
-1. Az MP4-töredék időtartamának körülbelül 2 és 6 másodperc között kell lennie.
-1. MP4 töredék időbélyegek és indexek `fragment_index`**(TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` és ) kell érkeznie növekvő sorrendben. Bár a Media Services rugalmas a duplikált töredékek, korlátozott képes átrendezni töredékek szerint a média idővonal.
+1. A **ftyp**, a **Live Server manifest Box**és a **Moov** MEZŐKET minden kérelemmel (http post) kell elküldeni. Ezeket a mezőket a stream elején kell elküldeni, és a kódolónak újra kell csatlakoznia a stream betöltésének folytatásához. További információ: 6. szakasz, [1].
+1. Az [1] 3.3.2. szakasza az élő betöltéshez egy **StreamManifestBox** nevű opcionális mezőt határoz meg. Az Azure Load Balancer útválasztási logikája miatt ez a mező elavult. A mező nem lehet jelen a Media Servicesba való betöltéskor. Ha ez a mező megtalálható, Media Services csendben hagyja figyelmen kívül.
+1. Az egyes töredékek esetében az [1] 3.2.3.2-ben definiált **TrackFragmentExtendedHeaderBox** -mezőnek jelen kell lennie.
+1. A **TrackFragmentExtendedHeaderBox** mező 2. verzióját kell használni a több adatközpontban azonos URL-címekkel rendelkező adathordozó-szegmensek létrehozásához. Az index-alapú folyamatos átviteli formátumok, például az Apple HLS és az index-alapú MPEG-kötőjel közötti adatközpont feladatátvételéhez a töredék index mező szükséges. Az adatközpontok feladatátvételének engedélyezéséhez a töredék-indexet több kódolón kell szinkronizálni, és minden egyes egymást követő adathordozó-töredék esetében 1 értékkel kell növelni, még a kódoló újraindítása vagy meghibásodása között is.
+1. A (z) [1] 3.3.6 szakasza a **MovieFragmentRandomAccessBox** (**mfra**) nevű mezőt definiálja, amelyet az élő betöltés végén lehet elküldeni, hogy az adatfolyamot (EOS) a csatornához adja. Media Services betöltési logikája miatt az EOS elavult, és nem lehet elküldeni az élő betöltéshez használt **mfra** mezőt. Ha elküldésre kerül, Media Services csendben hagyja figyelmen kívül. A betöltési pont állapotának alaphelyzetbe állításához a [csatorna alaphelyzetbe állítását](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)ajánlott használni. Azt is javasoljuk, hogy a [program leállítása](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) paranccsal fejezze be a bemutatót és a streamet.
+1. Az MP4-töredék időtartamának állandónak kell lennie az ügyfél-jegyzékfájlok méretének csökkentése érdekében. Az MP4-töredékek állandó időtartama Emellett javítja az ügyfél letöltési heurisztikus használatát az ismételt címkék használatával. Az időtartam VÁLTOZHAT, hogy kompenzálja a nem egész számok díjszabását.
+1. Az MP4-töredék időtartamának körülbelül 2 – 6 másodpercnek kell lennie.
+1. Az MP4-töredékek időbélyegei és indexei (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` és `fragment_index`) növekvő sorrendben érkeznek. Bár a Media Services az ismétlődő töredékek esetében is rugalmas, a töredékek átrendezése a média idővonalának megfelelően korlátozott.
 
-## <a name="4-protocol-format--http"></a>4. Protokoll formátum – HTTP
-Az ISO töredezett MP4-alapú élő betöltése a Media Services számára egy szabványos, hosszú ideig futó HTTP POST-kérést használ a töredezett MP4 formátumban csomagolt kódolt médiaadatok nak a szolgáltatásba történő továbbítására. Minden HTTP POST küld egy teljes töredezett MP4 bitstream ("stream"), kezdve a fejléc dobozok (**ftyp**, **Live Server Manifest Box**, és **moov** dobozok), és továbbra is egy sor töredékek (**moof** és **mdat** dobozok). A HTTP POST kérelem URL-szintaxisát lásd a[1] 9.2 szakaszában. Egy példa a POST URL-címre: 
+## <a name="4-protocol-format--http"></a>4. protokoll formátuma – HTTP
+A Media Services ISO-alapú, MP4-alapú élő betöltési szolgáltatása szabványos, hosszú ideig futó HTTP POST-kérést használ, amely a töredezett MP4 formátumba csomagolt kódolt adathordozó-adatokat továbbítja a szolgáltatásnak. Az egyes HTTP-bejegyzések teljes töredezett MP4-Bitstream ("Stream") küldenek, kezdve a fejléctől kezdve (**ftyp**, **Live Server manifest Box**és **Moov** box), és továbbra is a töredékek sorozatából (**moof** és **mdat** mezők). A HTTP POST kérelem URL-szintaxisát lásd: 9,2. szakasz, [1]. Példa a POST URL-címre: 
 
     http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
 
 ### <a name="requirements"></a>Követelmények
-Itt vannak a részletes követelmények:
+A részletes követelmények a következők:
 
-1. A kódolónak egy HTTP POST-kérelem elküldésével kell kezdenie az adást egy üres "törzs" (nulla tartalomhossz) használatával, ugyanazzal a betöltési URL-címmel. Ez segíthet a kódoló gyorsan észlelni, hogy az élő betöltési végpont érvényes,, és ha vannak olyan hitelesítési vagy egyéb feltételek szükségesek. HTTP protokollonként a kiszolgáló nem küldhet vissza HTTP-választ, amíg a teljes kérés, beleértve a POST törzset is, meg nem érkezik. Tekintettel egy élő esemény hosszú ideig futó jellegére, e lépés nélkül előfordulhat, hogy a kódoló nem észleli a hibát, amíg be nem fejezi az összes adat küldését.
-1. A kódolónak kezelnie kell az (1) miatt felmerülő hibákat vagy hitelesítési kihívásokat. Ha (1) sikerül a 200 válasz, folytassa.
-1. A kódolónak új HTTP POST-kérelmet kell indítania a töredezett MP4-adatfolyammal. A hasznos adatnak a fejlécmezőkkel kell kezdődnie, majd töredékekkel kell kezdenie. Ne feledje, hogy az **ftyp**, **Live Server Manifest Box**és **moov** dobozokat (ebben a sorrendben) minden kéréssel együtt el kell küldeni, még akkor is, ha a kódolónak újra kell csatlakoznia, mert az előző kérés az adatfolyam vége előtt megszakadt. 
-1. A kódoló nak darabolt átviteli kódolást kell használnia a feltöltéshez, mert lehetetlen megjósolni az élő esemény teljes tartalomhosszát.
-1. Amikor az esemény véget ér, az utolsó töredék elküldése után a kódolónak kecsesen véget kell vetnie a darabolt átviteli kódolási üzenetsorozatnak (a legtöbb HTTP-ügyfélhalom automatikusan kezeli). A kódolónak meg kell várnia, hogy a szolgáltatás visszaadja a végső válaszkódot, majd meg kell szakítania a kapcsolatot. 
-1. A kódoló nem `Events()` használhatja a főnév a 9.2 a [1] az élő betöltés a Media Services.
-1. Ha a HTTP POST kérés az adatfolyam vége előtt tcp-hibával szakít le vagy időtúllépés tcp-hibával jár le, a kódolónak új POST-kérelmet kell kiadnia egy új kapcsolat használatával, és követnie kell az előző követelményeket. Ezenkívül a kódolónak újra kell küldenie az előző két MP4-töredéket az adatfolyam minden egyes sávjára vonatkozóan, és folytatnia kell anélkül, hogy a médiaidővonalon folytonosságmegszakadságot vezetne be. Az utolsó két MP4-töredékek újraküldése minden sávhoz biztosítja, hogy ne legyen adatvesztés. Más szóval, ha egy adatfolyam hang- és videosávot is tartalmaz, és az aktuális POST-kérelem sikertelen, a kódolónak újra kell csatlakoznia, és újra el kell küldenie a hangsáv utolsó két töredékét, amelyeket korábban sikeresen elküldött, valamint a videó utolsó két töredékét. a korábban sikeresen elküldött nyomon követ, hogy ne legyen adatvesztés. A kódolónak fenn kell tartania az adathordozó-töredékek "továbbítási" pufferét, amelyet újraküld, amikor újra csatlakozik.
+1. A kódolónak el kell indítania a szórást egy olyan HTTP POST-kérelem küldésével, amely üres "szövegtörzs" (nulla tartalom hossza) használatával ugyanazzal a betöltési URL-lel rendelkezik. Ez segíthet a kódolónak gyorsan észlelni, hogy az élő betöltési végpont érvényes-e, és hogy van-e hitelesítés vagy egyéb szükséges feltétel. HTTP protokollon keresztül a kiszolgáló nem tud HTTP-választ küldeni, amíg a teljes kérelem nem érkezik, beleértve a POST törzset is. Az élő esemény hosszan futó természete miatt ebben a lépésben a kódoló nem képes észlelni a hibát, amíg az összes adat küldésének véget nem ér.
+1. A kódolónak az (1) miatti hibákat és hitelesítési kihívásokat kell kezelnie. Ha (1) a 200-es választal sikeres, folytassa a következővel:.
+1. A kódolónak egy új HTTP POST-kérelmet kell elindítania a töredezett MP4 streamtel. A hasznos adatnak a fejléc mezővel kell kezdődnie, amelyet töredékek követnek. Vegye figyelembe, hogy az **ftyp**, az **élő kiszolgáló jegyzékfájlja**és a **Moov** (ebben a sorrendben) mezőben szerepelnie kell minden kérelemnek, még akkor is, ha a kódolónak újra kell kapcsolódnia, mert az előző kérést a stream vége előtt megszakították. 
+1. A kódolónak a feltöltéshez darabolásos adatátviteli kódolást kell használnia, mivel nem lehet előre jelezni az élő esemény teljes tartalmának hosszát.
+1. Ha az esemény véget ért, az utolsó részlet elküldése után a kódolónak szabályosan le kell végződnie a darabolásos átvitel kódolási üzenetének sorozatát (a legtöbb HTTP-ügyfél automatikusan kezeli azt). A kódolónak várnia kell, hogy a szolgáltatás visszaadja a végső válasz kódját, majd megszakítsa a kapcsolódást. 
+1. A kódoló nem használhatja az `Events()` 9,2-ben leírtak szerint a következőt: [1], Media Servicesba való élő betöltéshez.
+1. Ha a HTTP POST kérelem leáll, vagy időtúllépést okoz a TCP-hibánál az adatfolyam vége előtt, akkor a kódolónak új bejegyzéssel kell kiállítania egy új bejegyzést, és követnie kell az előző követelményeket. Emellett a kódolónak újra el kell küldenie az előző két MP4-töredéket az adatfolyamban lévő egyes sávokhoz, és nem kell folytatnia a folytonosságot a média idővonalán. Az utolsó két MP4-töredék Újraküldés az egyes sávok esetében biztosítja, hogy nincs adatvesztés. Más szóval, ha egy stream egy hang-és egy videó-nyomkövetést is tartalmaz, és a jelenlegi POST kérelem meghiúsul, a kódolónak újra kell csatlakoznia, majd újra el kell küldenie a hangsáv utolsó két töredékét, amelyeket korábban sikeresen Elküldöttek, és a videó nyomon követésének utolsó két töredékét, amelyeket korábban sikeresen elküldtek, hogy ne legyen adatvesztés. A kódolónak meg kell őriznie egy "Forward" puffert, amely az újracsatlakozáskor újraküldi az adathordozó töredékeit.
 
-## <a name="5-timescale"></a>5. Időkeret
-[Az [MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) a **SmoothStreamingMedia** (2.2.2.1. szakasz), a **StreamElement** (2.2.2.3. szakasz), a **StreamFragmentElement** (2.2.2.6. szakasz) és a **LiveSMIL** (2.2.7.3.1 szakasz) időskálájának használatát írja le. Ha az időskála értéke nincs jelen, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikáció nem blokkolja a használatát más időskála értékek, a legtöbb kódoló megvalósítások használja ezt az alapértelmezett értéket (10 MHz) zökkenőmentes streamelési betöltési adatok létrehozásához. Az [Azure Media dinamikus csomagolási](media-services-dynamic-packaging-overview.md) funkciója miatt azt javasoljuk, hogy 90 KHz-es időskálát használjon a videostreamekhez, és 44,1 KHz-et vagy 48,1 KHz-et az audiostreamekhez. Ha különböző időskálaértékeket használ a különböző adatfolyamok, az adatfolyam-szintű időskála kell küldeni. További információ: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+## <a name="5-timescale"></a>5. időskála
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) a **SmoothStreamingMedia** (szakasz 2.2.2.1), a **StreamElement** (szakasz 2.2.2.3), a **StreamFragmentElement** (szakasz 2.2.2.6) és a **LiveSMIL** (szakasz: 2.2.7.3.1) időkeretének használatát ismerteti. Ha az időskála értéke nem létezik, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikációja nem blokkolja más időskála-értékek használatát, a legtöbb kódoló implementációja ezt az alapértelmezett értéket (10 MHz-et) használja a Smooth Streaming adatok betöltéséhez. Az [Azure Media Dynamic csomagolási](media-services-dynamic-packaging-overview.md) funkciója miatt javasoljuk, hogy a videó streamek és a 44,1 khz vagy 48,1 kHz esetében használjon 90-kHz-es időskálát a hangstreamek számára. Ha különböző időkeret-értékeket használ a különböző adatfolyamokhoz, az adatfolyam-szintű időkeretet el kell juttatni. További információ: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
-## <a name="6-definition-of-stream"></a>6. A "patak" meghatározása
-Az adatfolyam az élő bemutatók írásához, a folyamatos átvitelfeladat-továbbítás kezeléséhez és a redundanciaforgatókönyvekhez való élő betöltési művelet alapvető egysége. Az adatfolyam egy egyedi, töredezett MP4 bitfolyam, amely egyetlen vagy több sávot tartalmazhat. A teljes élő bemutató az élő kódolók konfigurációjától függően egy vagy több adatfolyamot tartalmazhat. Az alábbi példák bemutatják a streamek használatának különböző lehetőségeit a teljes élő bemutató összeállításához.
+## <a name="6-definition-of-stream"></a>6. a "Stream" definíciója
+A stream az élő bemutatók előkészítésének, a folyamatos átvitel feladatátvételének és a redundancia-forgatókönyveknek a működésének alapvető működési egysége. Az adatfolyam egy egyedi, töredékes MP4-Bitstream van definiálva, amely egyetlen vagy több zeneszámot tartalmazhat. A teljes élő bemutató egy vagy több streamet tartalmazhat, az élő kódolók konfigurációjától függően. Az alábbi példák a streamek egy teljes élő bemutató összeállításához való használatának különböző lehetőségeit szemléltetik.
 
-**Példa:** 
+**Például** 
 
-Az ügyfél élő közvetítési bemutatót szeretne létrehozni, amely a következő hang- és videobitrátákat tartalmazza:
+Az ügyfél egy élő adatfolyam-bemutatót szeretne létrehozni, amely a következő hang/videó bitrátát tartalmazza:
 
 Videó – 3000 kbps, 1500 kbps, 750 kbps
 
 Hang – 128 kbps
 
-### <a name="option-1-all-tracks-in-one-stream"></a>1. lehetőség: Az összes sáv egy adatfolyamban
-Ebben a beállításban egyetlen kódoló generálja az összes hang- és videosávot, majd egyetlen töredezett MP4 bitfolyamba csomagolja őket. A töredezett MP4 bitfolyamot a rendszer egyetlen HTTP POST-kapcsolaton keresztül küldi el. Ebben a példában csak egy adatfolyam van ehhez az élő bemutatóhoz.
+### <a name="option-1-all-tracks-in-one-stream"></a>1. lehetőség: egy adatfolyam összes nyomon követése
+Ebben a beállításban egyetlen kódoló hozza létre az összes hang/videó sávot, majd egy darabolt MP4-Bitstream csomagolja őket. Ezután a töredezett MP4-Bitstream egyetlen HTTP POST-kapcsolatban küldi el a rendszer. Ebben a példában csak egy stream érhető el ehhez az élő bemutatóhoz.
 
-![Streams-one sáv][image2]
+![Streamek – egy pálya][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>2. lehetőség: Minden szám külön adatfolyamban
-Ebben a beállításban a kódoló minden egyes MP4-bitfolyamba egy sávot helyez el, majd az összes adatfolyamot külön HTTP-kapcsolatokon keresztül teszi közzé. Ezt egy kódolóval vagy több kódolóval teheti meg. Az élő lenyelés úgy látja, hogy ez az élő bemutató négy streamből áll.
+### <a name="option-2-each-track-in-a-separate-stream"></a>2. lehetőség: az egyes sávok egy külön streamben
+Ebben a beállításban a kódoló az egyes töredékek MP4-Bitstream egy számot helyez el, majd külön HTTP-kapcsolatokon keresztül könyveli az összes adatfolyamot. Ez egy kódolóval vagy több kódolóval is elvégezhető. Az élő betöltés a négy streamből álló élő bemutatót látja.
 
-![Streamek-külön számok][image3]
+![Streamek – külön sávok][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3. lehetőség: A legkisebb bitrátaú videosávdal rendelkező hangsáv egyetlen adatfolyamba való kötegelése
-Ebben a beállításban az ügyfél úgy dönt, hogy a hangsávot az mp4 bitfolyam töredékében a legalacsonyabb bitrátaú videosávdal kötegeli, a másik két videosávot pedig külön adatfolyamként hagyja. 
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3. lehetőség: a legalacsonyabb sávszélességű videó követése egyetlen streambe
+Ebben a beállításban az ügyfél úgy dönt, hogy a legalacsonyabb sávszélességű videofelvételt használja az egyik töredék MP4-Bitstream, és a másik két videó nyomon követi a különböző adatfolyamokat. 
 
-![Hang- és videosávok streamelése][image4]
+![Streamek – hang-és video-zeneszámok][image4]
 
 ### <a name="summary"></a>Összefoglalás
-Ez nem egy teljes lista az összes lehetséges betöltési lehetőségek ebben a példában. Ami azt illeti, a sávok streamekbe történő csoportosítását élő lenyelés támogatja. Az ügyfelek és a kódoló-szállítók a mérnöki összetettség, a kódoló kapacitása, valamint a redundancia- és feladatátvételi szempontok alapján választhatják ki saját implementációikat. A legtöbb esetben azonban csak egy hangsáv tartozik a teljes élő bemutatóhoz. Ezért fontos, hogy a hangsávot tartalmazó betöltési adatfolyam egészséges legyen. Ez a megfontolás gyakran azt eredményezi, hogy a hangsávot a saját adatfolyamába helyezik (mint a 2. lehetőségben), vagy a legalacsonyabb bitrátású videosávhoz (mint a 3. lehetőségnél) kötegelik. Továbbá, a jobb redundancia és hibatűrés érdekében ugyanazt a hangsávot két különböző adatfolyamban kell elküldeni (2. lehetőség redundáns hangsávokkal), vagy a hangsávot legalább két legalacsonyabb bitrátású videosávgal kell elhangozni (3. lehetőség legalább két hanggal videostreamek) erősen ajánlott a Media Services-be való élő betöltéshez.
+Ez a példa nem tartalmazza az összes lehetséges betöltési beállítást. Valójában a zeneszámok adatfolyamként történő csoportosítását az élő betöltés támogatja. Az ügyfelek és a kódoló-szállítók a mérnöki komplexitás, a kódoló kapacitása, valamint a redundancia és a feladatátvételi megfontolások alapján választhatják ki a saját implementációkat. A legtöbb esetben azonban csak egyetlen hangsáv van a teljes élő bemutatóhoz. Ezért fontos, hogy gondoskodjon arról, hogy a zeneszámot tartalmazó betöltési stream egészséges legyen. Ez a megfontolás gyakran azt eredményezi, hogy a hangsávot a saját streamben helyezi üzembe (a 2. lehetőségnek megfelelően), vagy a legalacsonyabb sávszélességű videóval (a 3. lehetőséggel) közvetíti. Emellett a jobb redundancia és hibatűrés érdekében ugyanazt a hangsávot kell elküldeni két különböző streamben (2. lehetőség redundáns hangsávokkal), vagy a hangfelvételt legalább két, a legalacsonyabb sávszélességű videó (3. lehetőség, legalább két videó streamben található hang) esetében ajánlott a Media Servicesba való élő betöltéshez.
 
-## <a name="7-service-failover"></a>7. Szolgáltatás feladatátvétel
-Tekintettel az élő streamelés jellegére, a szolgáltatás rendelkezésre állásának biztosításához elengedhetetlen a jó feladatátvételi támogatás. A Media Services különböző típusú hibák kezelésére szolgál, beleértve a hálózati hibákat, a kiszolgálóhibákat és a tárolási problémákat. Ha az élő kódoló oldal megfelelő feladatátvételi logikájával együtt használja, az ügyfelek rendkívül megbízható élő streamelési szolgáltatást érhetnek el a felhőből.
+## <a name="7-service-failover"></a>7. szolgáltatás feladatátvétele
+Az élő közvetítés jellegéből adódóan a jó feladatátvételi támogatás elengedhetetlen a szolgáltatás rendelkezésre állásának biztosításához. Media Services a különböző típusú hibák kezelésére szolgál, beleértve a hálózati hibákat, a kiszolgálói hibákat és a tárolási problémákat. Ha a megfelelő feladatátvételi logikával együtt használja az élő kódoló oldalról, az ügyfelek egy nagyon megbízható élő adatfolyam-szolgáltatást érhetnek el a felhőből.
 
-Ebben a szakaszban a szolgáltatás feladatátvételi forgatókönyveit tárgyaljuk. Ebben az esetben a hiba történik valahol a szolgáltatáson belül, és hálózati hibaként nyilvánul meg. Íme néhány javaslat a kódoló megvalósításához a szolgáltatás feladatátvételének kezeléséhez:
+Ebben a szakaszban a szolgáltatás feladatátvételi forgatókönyveit tárgyaljuk. Ebben az esetben a hiba valahol a szolgáltatáson belül történik, és hálózati hibaként nyilvánul meg. Íme néhány javaslat a szolgáltatás feladatátvételének kezelésére szolgáló kódoló megvalósításához:
 
-1. A TCP-kapcsolat létrehozásához használjon 10 másodperces időtúllépést. Ha a kapcsolat létesítésére tett kísérlet 10 másodpercnél tovább tart, szakítsa meg a műveletet, és próbálkozzon újra. 
-1. Rövid időkérési időkéréssel küldheti el a HTTP-kérelemüzenet-adattömböket. Ha a cél MP4 töredék időtartama N másodperc, használjon küldési időoutot N és 2 N másodperc között; Ha például az MP4-töredék időtartama 6 másodperc, 6–12 másodperces időhosszabbítást használjon. Időtúllépés esetén állítsa alaphelyzetbe a kapcsolatot, nyisson meg egy új kapcsolatot, és folytassa az adatfolyam betöltését az új kapcsolaton. 
-1. Gördülési puffer karbantartása, amely rendelkezik az utolsó két töredéket minden olyan számhoz, amelyet sikeresen és teljesen elküldtek a szolgáltatásnak.  Ha a HTTP POST-adatfolyam-kérés megszakad, vagy az adatfolyam vége előtt túllép az időtúllépés, nyisson meg egy új kapcsolatot, és nyisson meg egy másik HTTP POST-kérelmet, küldje el újra az adatfolyam-fejléceket, küldje el újra az utolsó két töredéket az egyes számadatokhoz, és folytassa az adatfolyamot anélkül, hogy bevezetne egy a média idővonalának folytonosságának hiánya. Ez csökkenti az adatvesztés esélyét.
-1. Azt javasoljuk, hogy a kódoló NE korlátozza az újrapróbálkozások számát a kapcsolat létrehozásához vagy a tcp-hiba esetén a streamelés folytatásához.
+1. A TCP-kapcsolat létrehozásához használjon 10 másodperces időkorlátot. Ha a kapcsolat megállapítására tett kísérlet 10 másodpercnél hosszabb időt vesz igénybe, szakítsa meg a műveletet, és próbálkozzon újra. 
+1. Rövid időtúllépéssel küldje el a HTTP-kérelmek üzenetének adattömböket. Ha a cél MP4-töredék időtartama N másodperc, a küldési időkorlát N és 2 N másodperc között legyen. Ha például az MP4-töredék időtartama 6 másodperc, akkor a 6 és 12 másodperc közötti időkorlátot használja. Ha időtúllépés történik, állítsa alaphelyzetbe a kapcsolatokat, nyisson meg egy új kapcsolaton, és folytassa az adatfolyam betöltését az új kapcsolaton. 
+1. Tartson fenn egy olyan működés közbeni puffert, amely az utolsó két töredéktel rendelkezik minden olyan nyomon követéshez, amelyet sikeresen és teljes mértékben elküldtek a szolgáltatásnak.  Ha az adatfolyamhoz tartozó HTTP POST-kérelem leáll, vagy az adatfolyam végét megelőzően időtúllépés történik, nyisson meg egy új kapcsolódást, és kezdjen el egy másik HTTP POST-kérelmet, küldje el újra az adatfolyam-fejléceket, küldje el újra az utolsó két töredéket az egyes nyomon követésekhez, és folytassa az adatfolyamot anélkül, hogy az adathordozó idővonalán el kellene végezni Ez csökkenti az adatvesztés esélyét.
+1. Javasoljuk, hogy a kódoló ne korlátozza az újrapróbálkozások számát a kapcsolat létesítéséhez vagy a folyamatos átvitel folytatásához TCP-hiba esetén.
 1. TCP-hiba után:
   
-    a. Az aktuális kapcsolatot be kell zárni, és új kapcsolatot kell létrehozni egy új HTTP POST-kérelemhez.
+    a. A jelenlegi kapcsolatokat be kell zárni, és egy új HTTP POST-kérelemhez új kapcsolatokat kell létrehozni.
 
-    b. Az új HTTP POST URL-nek meg kell egyeznie a kezdeti POST URL-lel.
+    b. Az új HTTP POST URL-címnek meg kell egyeznie a kezdeti bejegyzés URL-címével.
   
-    c. Az új HTTP POST-nek tartalmaznia kell az adatfolyam fejléceit (**ftyp**, **Live Server Manifest Box**és **moov** dobozok), amelyek megegyeznek a kezdeti POST stream fejléceivel.
+    c. Az új HTTP-POSTnak tartalmaznia kell egy stream-fejlécet (**ftyp**, **Live Server manifest Box**és **Moov** ), amelyek megegyeznek a kezdeti bejegyzésben szereplő stream-fejlécekkel.
   
-    d. Az egyes vágányokra küldött utolsó két töredéket újra kell küldeni, és a streamelésnek a médiaidővonal folytonosságának megszakítása nélkül kell folytatódnia. Az MP4-töredékidőbélyegeknek folyamatosan növekedniük kell, még a HTTP POST-kérelmekben is.
-1. A kódolónak meg kell szakítania a HTTP POST-kérelmet, ha az adatok küldése nem az MP4-töredék időtartamának arányával arányos.  Egy olyan HTTP POST-kérelem, amely nem küld adatokat, megakadályozhatja, hogy a Media Services szolgáltatásfrissítés esetén gyorsan lekapcsolódjon a kódolóról. Emiatt a ritka (hirdetési jel) sávjainak HTTP POST-jának rövid életűnek kell lennie, és a ritka töredék elküldése után megszűnik.
+    d. Az egyes műsorszámok utolsó két töredékét újra kell elküldeni, és a folyamatos átvitelnek folytatnia kell a folytonosságot a média idővonalán. Az MP4-töredék időbélyegének folyamatosan kell növekedni, még a HTTP POST kérelmek között is.
+1. A kódolónak le kell fejeznie a HTTP POST kérelmet, ha az adatforgalom az MP4-töredék időtartamával arányos sebességgel történik.  Egy HTTP POST-kérelem, amely nem küldi el az adatküldést, megakadályozhatja, hogy az Media Services gyorsan lekapcsolódjanak a kódolóból egy szolgáltatás frissítése esetén. Emiatt a ritka (ad-jel) sávok HTTP-BEJEGYZÉSének rövid életűnek kell lennie, és azonnal le kell zárnia a ritka töredékek elküldésekor.
 
-## <a name="8-encoder-failover"></a>8. Kódoló feladatátvétel
-A kódoló feladatátvétela a feladatátvétel második típusa, amelyet a végpontok között élő közvetítés kézbesítése esetén meg kell oldani. Ebben az esetben a hibafeltétel a kódoló oldalán fordul elő. 
+## <a name="8-encoder-failover"></a>8. kódoló feladatátvétele
+A kódoló feladatátvétele a második típusú feladatátvételi forgatókönyv, amelyet a végpontok közötti élő adatfolyam-továbbításhoz kell kezelni. Ebben az esetben a hiba feltétele a kódoló oldalán történik. 
 
 ![kódoló feladatátvétele][image5]
 
-A következő elvárások az élő betöltési végponttól érvényesek, amikor kódoló feladatátvétel történik:
+A következő elvárások érvényesek az élő betöltési végpontról, amikor kódoló feladatátvétel történik:
 
-1. Egy új kódoló példányt kell létrehozni, hogy továbbra is streaming, amint azt az ábrán (Stream 3000k videó, szaggatott vonal).
-1. Az új kódolónak ugyanazt az URL-címet kell használnia a HTTP POST-kérelmekhez, mint a sikertelen példánynak.
-1. Az új kódoló POST-kérelmének ugyanazokat a töredezett MP4 fejlécmezőket kell tartalmaznia, mint a sikertelen példány.
-1. Az új kódolót megfelelően szinkronizálni kell az összes többi futó kódolóval ugyanahhoz az élő bemutatóhoz, hogy szinkronizált hang- és videomintákat hozzon létre a töredék határokhoz igazított kódokkal.
-1. Az új adatfolyamnak szemantikailag egyenértékűnek kell lennie az előző adatfolyammal, és felcserélhetőnek kell lennie a fejléc- és töredékszinteken.
-1. Az új kódolónak meg kell próbálnia minimalizálni az adatvesztést. A `fragment_absolute_time` `fragment_index` médiatöredékek és a médiatöredékek száma növekednie kell attól a ponttól kezdve, ahol a kódoló utoljára leállt. A `fragment_absolute_time` `fragment_index` és növekednie kell a folyamatos módon, de megengedett, hogy vezessenek be a folytonosság hiánya, ha szükséges. A Media Services figyelmen kívül hagyja a már fogadott és feldolgozott töredékeket, ezért jobb, ha a töredékek újraküldése oldalán erkedik, mint a média idővonalában a megszakítások bevezetése. 
+1. A folyamatos átvitel folytatásához új kódoló példányt kell létrehozni, ahogy az ábrán látható (a 3000k videó továbbítása szaggatott vonallal).
+1. Az új kódolónak ugyanazt az URL-címet kell használnia a HTTP POST kérelmek esetében, mint a sikertelen példány.
+1. Az új kódoló POST-kérelmének ugyanazokat a töredezett MP4-fejléceket kell tartalmaznia, mint a sikertelen példány.
+1. Az új kódolónak megfelelően szinkronizálva kell lennie az összes többi futó kódolóval ugyanahhoz az élő bemutatóhoz, hogy szinkronizált hang-/video-mintákat lehessen összehangolni az illesztett töredékek határaival.
+1. Az új adatfolyamnak szemantikailag egyenértékűnek kell lennie az előző adatfolyammal, és a fejléc és a töredék szintjén is felcserélhető lehet.
+1. Az új kódolónak meg kell próbálnia csökkenteni az adatvesztést. A `fragment_absolute_time` és `fragment_index` a média töredékeit abban a pontban kell megnövekedni, ahol a kódoló utoljára leállt. A `fragment_absolute_time` és `fragment_index` a folyamatosan növekszik, de szükség esetén a folytonosságot is lehetővé teszi. Media Services figyelmen kívül hagyja a már kapott és feldolgozott töredékeket, így jobb, ha a töredékek újraküldésének oldalára kerül sor, mint hogy bevezesse a folytonosságot a média idővonalán. 
 
-## <a name="9-encoder-redundancy"></a>9. Kódoló redundancia
-Bizonyos kritikus élő események, amelyek a kereslet még nagyobb rendelkezésre állás és a tapasztalat minősége, azt javasoljuk, hogy aktív-aktív redundáns kódolók zökkenőmentes feladatátvétel t adatvesztés nélkül.
+## <a name="9-encoder-redundancy"></a>9. kódoló redundancia
+Az olyan kritikus élő események esetében, amelyek még magasabb rendelkezésre állást és minőséget igényelnek, ajánlott aktív-aktív redundáns kódolókat használni az adatvesztés nélküli zökkenőmentes feladatátvétel érdekében.
 
 ![kódoló redundancia][image6]
 
-Amint azt az ábrán is szemlélteti, a kódolók két csoportja egyszerre két példányt továbbít az egyes adatfolyamokból az élő szolgáltatásba. Ez a beállítás azért támogatott, mert a Media Services kiszűrheti az ismétlődő töredékeket az adatfolyam-azonosító és a töredék időbélyege alapján. Az eredményül kapott élő közvetítés és archívum az összes adatfolyam egyetlen példánya, amely a lehető legjobb összesítés a két forrásból. Például egy hipotetikus szélsőséges esetben, amíg van egy kódoló (nem kell, hogy ugyanaz legyen) fut egy adott időpontban minden egyes adatfolyam, az eredményül kapott élő közvetítés a szolgáltatás folyamatos adatvesztés nélkül. 
+Ahogy az ábrán is látható, a kódolók két csoportja küld egyszerre két példányt az egyes streamekről az élő szolgáltatásba. Ez a beállítás akkor támogatott, ha a Media Services az adatfolyam-azonosító és a töredék timestamp alapján képes ismétlődő töredékek kiszűrésére. Az eredményül kapott élő adatfolyam és archiválás a két forrásból származó lehető legjobb összesítést biztosító streamek egyetlen másolata. Például egy feltételezett szélsőséges esetben, ha egy kódoló (nem feltétlenül azonos) fut az egyes adatfolyamok adott időpontjában, akkor a szolgáltatásból származó élő stream folyamatos adatvesztés nélkül történik. 
 
-A követelmények ebben a forgatókönyvben szinte ugyanazok, mint a követelmények a "Kódoló feladatátvétel" esetben, azzal a kivétellel, hogy a második kódolók futnak egy időben az elsődleges kódolók.
+A forgatókönyv követelményei szinte megegyeznek a "kódoló feladatátvétele" eset követelményeivel, azzal a kivétellel, hogy a második kódoló az elsődleges kódolóval megegyező időpontban fut.
 
-## <a name="10-service-redundancy"></a>10. Szolgáltatás redundancia
-A rendkívül redundáns globális elosztás, néha kell régióközi biztonsági mentés a regionális katasztrófák kezelésére. Az "Encoder redundancia" topológiára bontva az ügyfelek dönthetnek úgy, hogy egy redundáns szolgáltatás központi telepítését egy másik régióban, amely kapcsolódik a második kódolók. Az ügyfelek is együttműködhetnek a Content Delivery Network szolgáltató üzembe helyezése a globális traffic manager előtt a két szolgáltatás központi telepítések zökkenőmentesen irányítsa az ügyfélforgalmat. A kódolók követelményei megegyeznek a "Kódoló redundancia" esetkövetelményeivel. Az egyetlen kivétel az, hogy a kódolók második készletét egy másik élő betöltési végpontra kell mutatni. Az alábbi ábra ezt a beállítást mutatja be:
+## <a name="10-service-redundancy"></a>10. szolgáltatás-redundancia
+A nagymennyiségű globális terjesztéshez időnként a regionális katasztrófák kezeléséhez a régiók közötti biztonsági mentés szükséges. A "kódoló redundancia" topológiával bővülő ügyfelek kiválaszthatják, hogy a redundáns szolgáltatás központi telepítése egy másik régióban, amely a második kódolóhoz van csatlakoztatva. Az ügyfelek az Content Delivery Network-szolgáltatóval is dolgozhatnak, hogy a két szolgáltatás központi telepítése előtt üzembe helyezhetnek egy globális Traffic Manager, hogy zökkenőmentesen irányítsák az ügyfelek forgalmát. A kódolók követelményei megegyeznek a "kódoló redundancia" esetével. Az egyetlen kivétel, hogy a második kódolónak egy másik élő betöltési végpontra kell mutatnia. A következő ábra a telepítőt mutatja be:
 
-![szolgáltatás redundanciája][image7]
+![szolgáltatás-redundancia][image7]
 
-## <a name="11-special-types-of-ingestion-formats"></a>11. Különleges típusú lenyelési formátumok
-Ez a szakasz az egyes forgatókönyvek kezelésére tervezett élő betöltési formátumok speciális típusait ismerteti.
+## <a name="11-special-types-of-ingestion-formats"></a>11. a betöltési formátumok speciális típusai
+Ez a szakasz az élő betöltési formátumok speciális típusait ismerteti, amelyeket az adott forgatókönyvek kezelésére terveztek.
 
-### <a name="sparse-track"></a>Ritka pálya
-Ha gazdag ügyfélélményt tartalmazó élő streamelési bemutatót tart, gyakran időszinkronizált eseményeket vagy jeleket kell továbbítani a fő médiaadatokkal. Erre példa a dinamikus élő hirdetésbeillesztés. Ez a fajta esemény jelzés eltér a rendszeres audio / video streaming miatt ritka jellegű. Más szóval, a jelzőadatok általában nem történik meg folyamatosan, és az intervallum nehéz lehet megjósolni. A ritka sáv koncepcióját úgy tervezték, hogy benyelje és sugározza a sávon keresztüli jelzőadatokat.
+### <a name="sparse-track"></a>Ritka nyomon követés
+Ha élő adatfolyam-bemutatót ad meg, amely gazdag ügyfél-élményt nyújt, gyakran szükség van az időszinkronizált események vagy a sávon belüli jelek továbbítására a fő adathordozó-adatokat. Erre példa a dinamikus élő ad-Beszúrás. Az ilyen típusú események jelzése eltér a normál hang-és video-adatfolyamtól, a ritka természet miatt. Ez azt jelenti, hogy az adatjelzések általában nem folyamatosan történnek, és az intervallum nehéz előre jelezni. A ritka nyomon követés fogalma a sávon kívüli adatjelzések betöltésére és szórására lett tervezve.
 
-A következő lépések a ritka vágányok betöltésének ajánlott implementációját ajánlják:
+A következő lépések a ritka számok betöltését szolgáló ajánlott implementációk:
 
-1. Hozzon létre egy különálló töredezett MP4 bitfolyamot, amely csak ritka zeneszámokat tartalmaz, hang- és videosávok nélkül.
-1. A(z) [1] 6. **Live Server Manifest Box** *parentTrackName* További információ a [1] 4.2.1.2.1.2.
-1. A **Live Server manifest boxban**a **manifestOutput értéket** **igaz**értékre kell állítani.
-1. Tekintettel a jelzési esemény ritka jellegére, a következőket ajánlottuk:
+1. Hozzon létre egy különálló, töredékes MP4-Bitstream, amely csak ritka számokat tartalmaz, hang-és video-zeneszámok nélkül.
+1. A (z) [1] 6. szakaszában meghatározott **Live Server manifest (élő kiszolgáló jegyzékfájlja) mezőben** adja meg a *parentTrackName* paramétert a szülő sáv nevének megadásához. További információ: szakasz 4.2.1.2.1.2 [1].
+1. Az **élő kiszolgáló jegyzékfájlja mezőben**a **manifestOutput** **true**értékre kell állítani.
+1. A jelzési esemény ritka természete miatt a következőket javasoljuk:
    
-    a. Az élő esemény elején a kódoló elküldi a kezdeti fejlécdobozokat a szolgáltatásnak, amely lehetővé teszi a szolgáltatás számára a ritka pálya regisztrálását az ügyféljegyzékben.
+    a. Az élő esemény elején a kódoló elküldi a kezdeti fejléceket a szolgáltatásnak, amely lehetővé teszi, hogy a szolgáltatás regisztrálja a ritka nyomon követést az ügyfél jegyzékfájljában.
    
-    b. A kódolónak meg kell szakítania a HTTP POST-kérelmet, ha az adatok nem kerülnek elküldésre. Egy hosszú ideig futó HTTP-posta, amely nem küld adatokat, megakadályozhatja, hogy a Media Services gyorsan lekapcsolódjon a kódolóról szolgáltatásfrissítés vagy a kiszolgáló újraindítása esetén. Ezekben az esetekben a médiakiszolgáló ideiglenesen le van tiltva a szoftvercsatorna fogadási műveletében.
+    b. A kódolónak le kell fejeznie a HTTP POST kérelmet, ha nem küldi el az adatküldést. Egy hosszú ideig futó HTTP-bejegyzés, amely nem küldi az adatküldést, megakadályozhatja, hogy Media Services gyorsan lekapcsolódjon a kódolóból egy szolgáltatás frissítése vagy a kiszolgáló újraindítása esetén. Ezekben az esetekben a Media-kiszolgáló átmenetileg blokkolva van egy fogadási műveletben a szoftvercsatornán.
    
-    c. A jelzőadatok nem érhető el, a kódolónak be kell zárnia a HTTP POST-kérelmet. Amíg a POST kérés aktív, a kódolónak adatokat kell küldenie.
+    c. Amikor az adatjelzés nem érhető el, a kódolónak be kell zárulnia a HTTP POST kérelemben. Amíg a POST kérelem aktív, a kódolónak el kell küldenie az adatküldést.
 
-    d. Ritka töredékek küldésekor a kódoló explicit tartalomhosszúságú fejlécet állíthat be, ha az elérhető.
+    d. Ritka töredékek küldésekor a kódoló explicit Content-Length fejlécet állíthat be, ha az elérhető.
 
-    e. Amikor ritka töredékeket küld új kapcsolattal, a kódolónak meg kell kezdenie a fejlécmezőkből történő küldést, majd az új töredékeket. Ez olyan esetekben fordul elő, amikor a feladatátvétel köztes állapotban történik, és az új ritka kapcsolat egy olyan új kiszolgálóhoz jön létre, amely korábban nem látta a ritka sávot.
+    e. Ha ritka töredékeket küld egy új csatlakozással, a kódolónak el kell kezdenie a fejléceket, majd az új töredékeket kell elküldenie. Ez olyan esetekben fordul elő, amikor feladatátvétel történik a között, és az új ritka kapcsolat létrejön egy olyan új kiszolgáló számára, amely még nem látta a ritka nyomon követést.
 
-    f. A ritka sávtöredék akkor válik elérhetővé az ügyfél számára, ha az ügyfél számára elérhetővé válik a megfelelő szülő-sávtöredék, amely azonos vagy nagyobb időbélyeg-értékkel rendelkezik. Ha például a ritka töredék időbélyege t=1000, várható, hogy miután az ügyfél látja a "video" (feltéve, hogy a szülő pálya neve "videó") 1000-es vagy annál nagyobb időbélyeget lát, letöltheti a ritka töredéket t=1000. Vegye figyelembe, hogy a tényleges jel használható egy másik helyzetben a bemutató idővonal a kijelölt célra. Ebben a példában lehetséges, hogy a t=1000 ritka töredéke XML-tartalommal rendelkezik, amely néhány másodperccel később megjelenő hirdetés beszúrására alkalmas.
+    f. A ritka követési töredék akkor válik elérhetővé az ügyfél számára, amikor az ügyfél számára elérhetővé válnak az azonos vagy nagyobb időbélyeg-értékkel rendelkező megfelelő fölérendelt követési töredékek. Ha például a ritka töredék a t = 1000 időbélyeggel rendelkezik, akkor a várt érték azt eredményezi, hogy az ügyfél a "videó" kifejezést látja (feltéve, hogy a szülő követés neve "videó") az időbélyeg 1000-as vagy újabb töredékét, letöltheti a ritka töredék t = 1000-et. Vegye figyelembe, hogy a tényleges jel felhasználható egy másik pozícióra a bemutató idővonalán a kijelölt célra. Ebben a példában lehetséges, hogy a t = 1000 ritka töredéke XML-adattartalommal rendelkezik, amely egy ad egy olyan pozícióba való beszúrására szolgál, amely néhány másodperccel később van.
 
-    g. A ritka nyomtöredékek hasznos terhelése a forgatókönyvtől függően különböző formátumokban (például XML, szöveg vagy bináris) lehet.
+    g. A ritka nyomkövetési töredékek a forgatókönyvtől függően különböző formátumokban (például XML, szöveg vagy bináris) lehetnek.
 
-### <a name="redundant-audio-track"></a>Redundáns hangsáv
-Egy tipikus HTTP adaptív streamelési forgatókönyvben (például sima streamelés vagy DASH) gyakran csak egy hangsáv van a teljes bemutatóban. Ellentétben a videosávokkal, amelyek több minőségi szinttel rendelkeznek, amelyek közül az ügyfél hibakörülmények között választhat, a hangsáv egyetlen meghibásodási pont lehet, ha a hangsávot tartalmazó adatfolyam betöltése megszakad. 
+### <a name="redundant-audio-track"></a>Redundáns hangfelvétel
+Egy tipikus HTTP adaptív streaming-forgatókönyvben (például Smooth Streaming vagy DASH) gyakran csak egy hangsáv található a teljes bemutatóban. A video tracks szolgáltatástól eltérően, amelyek több minőségi szintet biztosítanak az ügyfél számára a hibák kiválasztásához, a hangsáv lehet egy meghibásodási pont, ha a hangsávokat tartalmazó adatfolyam betöltése megszakadt. 
 
-A probléma megoldásához a Media Services támogatja a redundáns hangsávok élő betöltését. Az ötlet az, hogy ugyanazt a hangsávot lehet küldeni többször különböző patakok. Bár a szolgáltatás csak egyszer regisztrálja a hangsávot az ügyféljegyzékben, használhat redundáns hangsávokat biztonsági másolatként a hangtöredékek beolvasásához, ha az elsődleges hangsáv problémákat okoz. A redundáns hangsávok betöltéséhez a kódolónak a következőket kell tennie:
+A probléma megoldásához Media Services támogatja a redundáns hangsávok élő betöltését. Az elképzelés az, hogy ugyanazt a hangsávot többször is el lehet juttatni különböző streamekben. Bár a szolgáltatás csak egyszer regisztrálja a hangfelvételt az ügyfél jegyzékfájljában, a redundáns hangsávokat használhat a hangtöredékek lekérésére, ha az elsődleges hangsávok problémái vannak. A redundáns hangsávok betöltéséhez a kódolónak a következőket kell tennie:
 
-1. Ugyanazt a hangsávot több töredék MP4 bitfolyamban hozza létre. A redundáns hangsávoknak szemantikailag egyenértékűnek kell lenniük, ugyanazzal a töredékidőbélyeggel, és felcserélhetőknek kell lenniük a fejléc és a töredék szintjén.
-1. Győződjön meg arról, hogy a Live Server Manifest "audio" bejegyzése (a[1]-ben 6. szakasz) megegyezik az összes redundáns hangsáv esetében.
+1. Hozza létre ugyanazt a hangsávot több töredék MP4-bitstreams. A redundáns hangsávoknak szemantikailag egyenértékűnek kell lenniük, ugyanazzal a töredék időbélyeggel, és a fejléc és a töredék szintjén is felcserélhetők.
+1. Győződjön meg arról, hogy az élő kiszolgáló jegyzékfájljában (6. szakasz, [1]) szereplő "hang" bejegyzés ugyanaz, mint az összes redundáns hangsávot.
 
-A redundáns hangsávok hoz a következő implementáció ajánlott:
+A redundáns hangsávok esetében a következő implementáció javasolt:
 
-1. Minden egyes egyedi hangsávot önmagában küldhet el egy adatfolyamba. Emellett küldjön egy redundáns adatfolyamot mindegyik hangsávfolyamhoz, ahol a második adatfolyam csak a HTTP POST URL-címazonosítója szerint tér el az elsőtől: {protocol}://{server address}/{publishing point path}/Streams({identifier}).
-1. A két legalacsonyabb videobitráta küldéséhez külön adatfolyamok használatával küldheti el a két legalacsonyabb átviteli sebességet. Minden ilyen patakok is tartalmaznia kell egy példányát minden egyedi hangsávot. Ha például több nyelv is támogatott, ezekaz adatfolyamok minden nyelvhez hangsávokat kell tartalmazniuk.
-1. Az (1) és (2) bekezdésben említett redundáns adatfolyamok kódolásához és elküldéséhez külön kiszolgálói (kódoló) példányokat használjon. 
+1. Az egyes egyedi hangsávokat saját maga is elküldheti egy adatfolyamban. Továbbá küldjön egy redundáns streamet az egyes hangsávokhoz, ahol a második adatfolyam csak a HTTP POST URL-cím ({Protocol}://{Server cím}/{Publishing pont elérési útja})/Streams ({Identifier}) esetében az elsővel eltér.
+1. A két legalacsonyabb videó-bitrátát külön streamek használatával küldheti el. Ezen adatfolyamok mindegyikének tartalmaznia kell az egyes egyedi hangsávok másolatát is. Ha például több nyelv is támogatott, a streameknek az egyes nyelvekhez tartozó hangsávokat kell tartalmazniuk.
+1. Használjon külön kiszolgáló-(kódoló-) példányokat a (1) és a (2) bekezdésben említett redundáns streamek kódolásához és elküldéséhez. 
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

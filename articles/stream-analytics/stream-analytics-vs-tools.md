@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics-feladatok megtekintése a Visual Studióban
-description: Ismerje meg, hogyan tekintheti meg, indíthatja el és állíthatja le, tesztelheti a kapcsolatokat, ellenőrizheti az eredményeket, és hogyan exportálhatja az Azure Stream Analytics-feladatokat a Visual Studio használatával.
+title: Azure Stream Analytics feladatok megtekintése a Visual Studióban
+description: Megtudhatja, hogyan tekintheti meg, indíthatja el és állíthatja le, tesztelheti a kapcsolatokat, ellenőrizheti az eredményeket, és exportálhatja a Azure Stream Analytics feladatokat a Visual Studióval.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,79 +8,79 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75369626"
 ---
-# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok megtekintése a Visual Studióval
+# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez
 
-A Visual Studio Azure Stream Analytics-eszközei megkönnyítik a fejlesztők számára, hogy közvetlenül az IDE-ből kezeljék streamanalytics-feladataikat. Az Azure Stream Analytics eszközeivel a következőket teheti:
-- [Új munkahelyek létrehozása](stream-analytics-quick-create-vs.md)
-- Feladatok indítása, leállítása és [figyelése](stream-analytics-monitor-jobs-use-vs.md)
-- Feladat eredmények ellenőrzése
+A Visual studióhoz készült Azure Stream Analytics Tools megkönnyíti a fejlesztők számára, hogy közvetlenül az IDE-ből kezelhesse Stream Analytics-feladatait. Azure Stream Analytics eszközökkel a következőket teheti:
+- [Új feladatok létrehozása](stream-analytics-quick-create-vs.md)
+- Feladatok elindítása, leállítása és [figyelése](stream-analytics-monitor-jobs-use-vs.md)
+- A feladatok eredményeinek megtekintése
 - Meglévő feladatok exportálása projektbe
 - A bemeneti és kimeneti kapcsolatok tesztelése
-- [Lekérdezések futtatása helyileg](stream-analytics-vs-tools-local-run.md)
+- [Lekérdezések helyi futtatása](stream-analytics-vs-tools-local-run.md)
 
-Ismerje meg, hogyan telepítheti az [Azure Stream Analytics-eszközöket a Visual Studio számára.](stream-analytics-tools-for-visual-studio-install.md)
+Ismerje meg, hogyan [telepítheti Azure stream Analytics Tools for Visual Studio alkalmazást](stream-analytics-tools-for-visual-studio-install.md).
 
-## <a name="explore-the-job-view"></a>A feladatnézet felfedezése
+## <a name="explore-the-job-view"></a>A feladatok nézet megismerése
 
-A feladatnézet segítségével a Visual Studio Azure Stream Analytics-feladataival kommunikálhat.
+A feladat nézettel a Visual studióból Azure Stream Analytics feladatokkal dolgozhat.
 
-### <a name="open-the-job-view"></a>A feladatnézet megnyitása
+### <a name="open-the-job-view"></a>A feladatok nézet megnyitása
 
-1. A **Kiszolgálókezelőben**válassza a **Stream Analytics-feladatok lehetőséget,** majd a **Frissítés**lehetőséget. A feladatnak meg kell jelennie a **Stream Analytics-feladatok alatt.**
+1. A **Server Explorerben**válassza **stream Analytics feladatok** elemet, majd válassza a **frissítés**lehetőséget. A feladatnak **stream Analytics feladatok**területen kell megjelennie.
 
-    ![A Stream Analytics kiszolgálókezelőinek listája](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
+    ![Stream Analytics Server Explorer-lista](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-2. Bontsa ki a feladatcsomópontot, és kattintson duplán a **Feladatnézet** csomópontra egy feladatnézet megnyitásához.
+2. Bontsa ki a feladatok csomópontot, majd kattintson duplán a feladatok **nézet** csomópontra a feladatok nézet megnyitásához.
     
-   ![Bővített feladatcsomópont](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
+   ![Kibontott feladatok csomópontja](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
-### <a name="start-and-stop-jobs"></a>Feladatok indítása és leállítása
+### <a name="start-and-stop-jobs"></a>Feladatok elindítása és leállítása
 
-Az Azure Stream Analytics-feladatok teljes mértékben kezelhetők a Visual Studio feladatnézetéből. A vezérlőkkel elindíthat, leállíthat vagy törölhet egy feladatot.
+Azure Stream Analytics feladatok teljes mértékben kezelhetők a Visual Studióban található feladatok nézetből. A vezérlők segítségével elindíthatja, leállíthatja vagy törölheti a feladatokat.
     
-   ![Stream Analytics-feladatvezérlők](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
+   ![Stream Analytics feladatok vezérlői](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-## <a name="check-job-results"></a>Feladat eredmények ellenőrzése
+## <a name="check-job-results"></a>A feladatok eredményeinek megtekintése
 
-A Visual Studio Stream Analytics-eszközei jelenleg támogatják az Azure Data Lake Storage és a blob storage kimeneti előnézetét. Az eredmény megtekintéséhez egyszerűen kattintson duplán a feladatdiagram kimeneti csomópontjára a **Feladat nézetben,** és adja meg a megfelelő hitelesítő adatokat.
+A Stream Analytics Tools for Visual Studio jelenleg támogatja a Azure Data Lake Storage és a blob Storage kimeneti előnézetét. Az eredmény megtekintéséhez egyszerűen kattintson duplán a feladatütemezés kimenet csomópontjára a feladatok **nézetben** , és adja meg a megfelelő hitelesítő adatokat.
 
-   ![Stream Analytics-feladatblob-kimenet](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
+   ![Stream Analytics feladatok blobjának kimenete](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
 ## <a name="export-jobs-to-a-project"></a>Feladatok exportálása projektbe
 
-Egy meglévő feladatot kétféleképpen exportálhat egy projektbe.
+A meglévő feladatok egy projektbe való exportálásának kétféleképpen lehetséges.
 
-1. A **Kiszolgálókezelőben**a Stream Analytics-feladatok csomópont alatt kattintson a jobb gombbal a feladatcsomópontra. Válassza **az Exportálás új streamelemzési projektbe lehetőséget.**
+1. A **Server Explorerben**a stream Analytics feladatok csomópontban kattintson a jobb gombbal a feladat csomópontra. Válassza **az Exportálás új stream Analytics projektbe**lehetőséget.
     
-   ![Feladat exportálása projektbe](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
+   ![Feladatok exportálása a projektbe](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    A létrehozott projekt megjelenik a **Megoldáskezelőben.**
+    A generált projekt megjelenik a **Megoldáskezelőban**.
     
    ![A megoldáskezelő](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. A feladatnézetben válassza a **Projekt létrehozása lehetőséget.**
+2. A feladatok nézetben válassza a **projekt előállítása**lehetőséget.
     
-   ![Projekt létrehozása feladatnézetből](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
+   ![Projekt előállítása a feladatokból nézetből](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
 ## <a name="test-connections"></a>Kapcsolatok tesztelése
 
-A bemeneti és kimeneti kapcsolatok a **Feladatnézetből** tesztelhetők, ha a **Kapcsolat tesztelése** legördülő menüben kiválasztegy beállítást.
+A bemeneti és kimeneti kapcsolatok a **feladatok nézetből** választhatók ki a **kapcsolat tesztelése** legördülő menüből.
 
-   ![Kapcsolat tesztelése legördülő menü](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
+   ![A kapcsolatok legördülő menüjének tesztelése](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-A **tesztkapcsolat** eredményei a **Kimenet** ablakban jelennek meg.
+A **tesztelési kapcsolatok** eredményei a **kimenet** ablakban jelennek meg.
 
-   ![A kapcsolat teszteredményei](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
+   ![A kapcsolatok eredményeinek tesztelése](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Stream Analytics-feladatok figyelése és kezelése a Visual Studio használatával](stream-analytics-monitor-jobs-use-vs.md)
-* [Rövid útmutató: Stream Analytics-feladat létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
+* [Azure Stream Analytics feladatok figyelése és kezelése a Visual Studióval](stream-analytics-monitor-jobs-use-vs.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

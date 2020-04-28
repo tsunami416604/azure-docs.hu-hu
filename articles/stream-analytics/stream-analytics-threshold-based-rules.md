@@ -1,48 +1,48 @@
 ---
-title: Konfigurálható küszöbérték-alapú szabályok az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti, hogyan használhatja a referenciaadatokat egy olyan riasztási megoldás eléréséhez, amely konfigurálható küszöbértékalapú szabályokkal rendelkezik az Azure Stream Analytics szolgáltatásban.
+title: A Azure Stream Analytics konfigurálható küszöbérték-alapú szabályai
+description: Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredmények olyan riasztási megoldás eléréséhez, amely Azure Stream Analyticsban konfigurálható küszöbérték-alapú szabályokat tartalmaz.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75369711"
 ---
-# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Konfigurálható küszöbérték-alapú szabályok feldolgozása az Azure Stream Analytics szolgáltatásban
-Ez a cikk ismerteti, hogyan használhatja a referenciaadatokat egy olyan riasztási megoldás eléréséhez, amely konfigurálható küszöbérték-alapú szabályokat használ az Azure Stream Analytics-ben.
+# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Konfigurálható küszöbérték-alapú szabályok feldolgozása Azure Stream Analytics
+Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredmények olyan riasztási megoldás eléréséhez, amely a Azure Stream Analytics konfigurálható küszöbértékeken alapuló szabályokat használ.
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Eset: Riasztás a módosítható szabályküszöbértékek alapján
-Előfordulhat, hogy riasztást kell létrehoznia kimenetként, ha a bejövő streamelt események elértek egy bizonyos értéket, vagy ha a bejövő streamelt eseményeken alapuló összesített érték túllép egy bizonyos küszöbértéket. Egyszerűen állíthat be egy Stream Analytics-lekérdezést, amely összehasonlította az értéket egy rögzített és előre meghatározott statikus küszöbértékkel. A rögzített küszöbértéket egyszerűen numerikus összehasonlításokkal lehet kódolni a streamelési lekérdezés szintaxisába (nagyobb, kisebb, mint és egyenlőség).
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Forgatókönyv: riasztás az állítható szabályok küszöbértékei alapján
+Előfordulhat, hogy a riasztást kimenetként kell létrehoznia, amikor a bejövő adatfolyam-események elértek egy bizonyos értéket, vagy ha egy összesített érték a bejövő adatfolyam-események alapján meghaladja a megadott küszöbértéket. Egyszerűen beállíthat egy Stream Analytics lekérdezést, amely összehasonlítja az értéket egy rögzített és előre meghatározott statikus küszöbértékkel. A rögzített küszöbértékek egyszerű numerikus összehasonlításokkal (nagyobb, mint, kevesebb mint, és egyenlőség) használhatók az adatfolyam-lekérdezési szintaxisban.
 
-Bizonyos esetekben a küszöbértékek könnyebben konfigurálhatóknak kell lenniük a lekérdezés szintaxisának módosítása nélkül minden alkalommal, amikor egy küszöbérték megváltozik. Más esetekben előfordulhat, hogy számos eszközt vagy felhasználót dolgoz fel ugyanaz a lekérdezés, és mindegyiknek különböző küszöbértékevan az egyes eszközökön. 
+Bizonyos esetekben a küszöbértékek módosítása nélkül kell egyszerűbben konfigurálni a küszöbértékeket a lekérdezési szintaxis szerkesztésével. Más esetekben előfordulhat, hogy az azonos lekérdezés által feldolgozott számos eszközre vagy felhasználóra szüksége van, és mindegyiknek különböző küszöbértékekkel kell rendelkeznie az egyes eszközökön. 
 
-Ez a minta segítségével dinamikusan konfigurálhatja a küszöbértékeket, szelektíven kiválaszthatja, hogy a küszöbérték milyen típusú eszközt alkalmaz a bemeneti adatok szűrésével, és szelektíven válassza ki, hogy mely mezőket szeretné felvenni a kimenetbe.
+Ez a minta használható a küszöbértékek dinamikus konfigurálására, szelektíven kiválaszthatja, hogy a küszöbérték milyen típusú eszközre vonatkozzon a bemeneti adatok szűrésével, valamint a kimenetben szerepeltetni kívánt mezők szelektív kiválasztásával.
 
-## <a name="recommended-design-pattern"></a>Ajánlott tervezési minta
-A riasztási küszöbértékek kereséséhez használjon adatbevitelt egy Stream Analytics-feladatba:
-- A küszöbértékeket kulcsonként egy értékkel tárolja a referenciaadatokban.
-- Csatlakoztassa a streamelési adatbeviteli eseményeket a kulcsoszlop referenciaadataihoz.
-- A referenciaadatok kulcsos értékét használja küszöbértékként.
+## <a name="recommended-design-pattern"></a>Ajánlott kialakítási minta
+A riasztási küszöbértékek keresésekor használjon egy Stream Analyticsi feladathoz tartozó hivatkozás-adatbevitelt:
+- Tárolja a küszöbértékeket a hivatkozási adatokban, kulcs szerint egy értéket.
+- Csatlakoztassa a streaming adatbeviteli eseményeket a kulcs oszlopban található hivatkozási adatokhoz.
+- A hivatkozási adatokból származó kulcsos értéket használja küszöbértékként.
 
-## <a name="example-data-and-query"></a>Példa adatok ra és lekérdezésre
-A példában riasztások jönnek létre, ha az eszközökről egy perc hosszú ablakban lévő adatok összesítése megegyezik a referenciaadatként megadott értékekkel.
+## <a name="example-data-and-query"></a>Példa az adatelemzésre és a lekérdezésre
+A példában a riasztások akkor jönnek létre, amikor egy percen belül az eszközökről származó adatátvitelek összesítése megegyezik a szabályban megadott szabályokban rögzített értékekkel.
 
-A lekérdezésben minden egyes deviceId, és minden metrikaNév az eszközazonosító alatt, 0-tól 5 dimenziók GROUP BY konfigurálható. Csak a megfelelő szűrőértékekkel rendelkező események vannak csoportosítva. A csoportosítás után a Min, Max, Avg ablakokkal körülvett összesítéseit egy 60 másodperces bukdácsoló ablakban számítja ki a rendszer. Az összesített értékek szűrőit a rendszer a hivatkozásban megadott küszöbérték nek megfelelően számítja ki a riasztási kimeneti esemény létrehozásához.
+A lekérdezésben minden egyes deviceId esetében, valamint a deviceId alatt található minden egyes metricName esetében 0 és 5 dimenzió közötti értékre állíthatja a CSOPORTOSÍTÁSt. Csak a megfelelő szűrő értékekkel rendelkező események vannak csoportosítva. A csoportosítást követően a min., a max., az átlag, az ablakos összesítések kiszámítása a 60 másodperces időszakra történik. A rendszer ezt követően kiszámítja az összesített értékek szűrőit a hivatkozáson beállított küszöbérték alapján a riasztás kimeneti eseményének létrehozásához.
 
-Tegyük fel például, hogy van egy Stream Analytics-feladat, amely rendelkezik egy hivatkozási adatbevitelnevű **szabályokkal**, és a streamelt adatbevitel nevű **metrikákkal rendelkezik.** 
+Tegyük fel például, hogy van egy olyan Stream Analytics-feladata, amely egy **szabályok**nevű, adatbevitelre szolgáló adatbevitelt tartalmaz, és elnevezte a **metrikákat**. 
 
-## <a name="reference-data"></a>Referenciaadatok
-Ez a példa referenciaadatok azt mutatják, hogy egy küszöbérték-alapú szabály hogyan jeleníthető meg. A JSON-fájl tartalmazza a referenciaadatokat, és menti az Azure blob storage, és hogy a blob storage-tároló ként használják a referencia-adatbevitel nevű **szabályok.** Felülírhatja ezt a JSON-fájlt, és lecserélheti a szabály konfigurációját az idő előrehaladtával, a streamelési feladat leállítása vagy elindítása nélkül.
+## <a name="reference-data"></a>Hivatkozási érték
+Ez a példás példa azt mutatja be, hogyan lehet egy küszöbérték-alapú szabályt megjeleníteni. Egy JSON-fájl tárolja a hivatkozási adatokat, és az Azure Blob Storage-ba menti, és a blob Storage-tárolót a **szabályok**nevű hivatkozásként használja. Felülírhatja ezt a JSON-fájlt, és lecserélheti a szabály konfigurációját az idő bekapcsolásával a folyamatos átviteli feladatok leállítása vagy elindítása nélkül.
 
-- A példaszabály egy állítható riasztás ábrázolására szolgál, ha a PROCESSZOR túllépi `90` (az átlag nagyobb vagy egyenlő) az érték százalékát. A `value` mező szükség szerint konfigurálható.
-- Figyelje meg, hogy a szabály **operátormezővel** rendelkezik, amelyet a lekérdezés szintaxisa később dinamikusan `AVGGREATEROREQUAL`értelmez. 
-- A szabály szűri az adatokat egy bizonyos dimenziókulcs `2` értékkel. `C1` Más mezők üres karakterláncok, amelyek azt jelzik, hogy a bemeneti adatfolyamot ne szűrje az eseménymezők szerint. További CPU-szabályokat is beállíthat, hogy szükség szerint szűrje a többi egyező mezőt.
-- Nem minden oszlop szerepel a kimeneti riasztási esemény. Ebben az `includedDim` esetben `2` a kulcsszám be van kapcsolva, `TRUE` hogy képviselje, hogy az adatfolyamban lévő eseményadatok 2-es számú mezője szerepelni fog a feljogosító kimeneti eseményekben. A többi mező nem szerepel a riasztás kimenetében, de a mezőlista módosítható.
+- A példában szereplő szabály egy állítható riasztást jelöl, ha a processzor mérete meghaladja az értéket (az átlag nagyobb vagy egyenlő) `90` a százalékos értéknél. A `value` mező igény szerint konfigurálható.
+- Figyelje meg `AVGGREATEROREQUAL`, hogy a szabály egy **operátor** mezővel rendelkezik, amelyet később a lekérdezési szintaxisban kell értelmezni. 
+- A szabály egy adott dimenzió kulcsának `2` értékét szűri az értékkel. `C1` A többi mező üres karakterlánc, amely azt jelzi, hogy az adott esemény mezői nem szűrik a bemeneti adatfolyamot. További CPU-szabályokat is beállíthat, hogy szükség szerint szűrje a többi egyező mezőt.
+- Nem minden oszlopnak szerepelnie kell a kimeneti riasztási eseményben. Ebben az esetben a `includedDim` kulcs száma `2` bekapcsolva `TRUE` értékre van kapcsolva, amely azt jelzi, hogy az adatfolyamban lévő Event-adatmező 2. száma szerepel a megfelelő kimeneti eseményekben. A többi mező nem szerepel a riasztás kimenetében, de a mezőlista módosítható.
 
 
 ```json
@@ -70,8 +70,8 @@ Ez a példa referenciaadatok azt mutatják, hogy egy küszöbérték-alapú szab
 }
 ```
 
-## <a name="example-streaming-query"></a>Példa streamelési lekérdezésre
-Ez a példa Stream Analytics lekérdezés egyesíti a **szabályok** referencia adatok a fenti példában, egy bemeneti adatnevű **metrikák**bemeneti adatfolyam.
+## <a name="example-streaming-query"></a>Példa adatfolyam-lekérdezésre
+Ez a példa Stream Analytics lekérdezés összekapcsolja a fenti példában szereplő **szabályokra** hivatkozó adatokat egy **mérőszámok**nevű bemeneti adatfolyamba.
 
 ```sql
 WITH transformedInput AS
@@ -131,14 +131,14 @@ HAVING
     )
 ```
 
-## <a name="example-streaming-input-event-data"></a>Példa streamelési bemeneti eseményadataira
-Ez a példa JSON-adatok a fenti streamelési lekérdezésben használt **metrikák bemeneti** adatait jelölik. 
+## <a name="example-streaming-input-event-data"></a>Példa adatfolyam-bevitelsel kapcsolatos esemény-adatokra
+Ez a példa JSON-adatok a fenti adatfolyam-lekérdezésben használt **mérőszámok** bemeneti adatait jelölik. 
 
-- Három példa esemény szerepel az 1 perces időtartamon belül, az érték `T14:50`. 
-- Mindhárom azonos `deviceId` értékű `978648`.
-- A CPU-metrikus értékek `98` `95`eseményenként változnak , illetőleg. `80` Csak az első két példa esemény meghaladja a szabályban létrehozott CPU-riasztási szabályt.
-- A riasztási szabály includeDim mezője a 2-es kulcsvolt. A példaesemények `NodeName`megfelelő 2. A három példaesemény `N024` `N024`értékei `N014` , illetve. A kimenetben csak a csomópont `N024` látható, mivel ez az egyetlen olyan adat, amely megfelel a magas PROCESSZOR riasztási feltételeinek. `N014`nem felel meg a magas CPU-küszöbértéknek.
-- A riasztási szabály `filter` csak a 2-es kulcson `cluster` van konfigurálva, amely megfelel a mintaesemények mezőjének. A három példa esemény `C1` mindegyike értékkel rendelkezik, és megfelel a szűrési feltételeknek.
+- Az 1 perces TimeSpan az érték `T14:50`három példát mutat be. 
+- Mindhárom érték `deviceId` `978648`megegyezik.
+- A CPU-metrika értékei különbözőek lehetnek az `98`egyes `95`eseményeken `80` (,). Csak az első két példa esemény haladja meg a szabályban megállapított CPU riasztási szabályt.
+- A riasztási szabály includeDim mezőjében a 2. kulcs szerepel. A Példaban szereplő események neve `NodeName`a megfelelő kulcs 2 mezőben található. A három példa eseményeinek értéke `N024`: `N024`, és `N014` . A kimenetben csak a csomópont `N024` jelenik meg, mint az egyetlen olyan adat, amely megfelel a magas CPU riasztási feltételeinek. `N014`nem felel meg a magas CPU-küszöbértéknek.
+- A riasztási szabály `filter` csak a 2. számú kulcson van konfigurálva, amely a `cluster` minta események mezőjének felel meg. A három példa eseményeinek mindegyike `C1` értékkel rendelkezik, és megfelel a szűrési feltételeknek.
 
 ```json
 {
@@ -282,7 +282,7 @@ Ez a példa JSON-adatok a fenti streamelési lekérdezésben használt **metrik�
 ```
 
 ## <a name="example-output"></a>Példa kimenetre
-Ez a példa kimeneti JSON-adatok azt mutatják, hogy egyetlen riasztási esemény készült a referenciaadatokban meghatározott CPU-küszöbérték szabály alapján. A kimeneti esemény tartalmazza a riasztás nevét, valamint a figyelembe vett mezők összesített (átlagos, min, max) összesítését. A kimeneti esemény adatai `NodeName` tartalmazzák a 2-es számú mezőkulcs értékét `N024` a szabály konfigurációja miatt. (A JSON-t úgy módosították, hogy az olvashatóság érdekében sortöréseket mutasson.)
+Ez a példa a kimeneti JSON-adatokat jeleníti meg egyetlen riasztási esemény a hivatkozási adatokat definiáló CPU-küszöbérték alapján. A kimeneti esemény tartalmazza a riasztás nevét, valamint a figyelembe vett mezők összesített (átlagos, minimális és maximális) értékét. A kimeneti esemény adatokat tartalmaz a szabály konfigurálása `NodeName` `N024` miatti 2. számú kulcsmező. (A JSON úgy lett módosítva, hogy megjelenjenek a sortörések az olvashatóság érdekében.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

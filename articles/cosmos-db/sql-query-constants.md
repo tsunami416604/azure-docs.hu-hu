@@ -1,33 +1,33 @@
 ---
-title: SQL-állandók az Azure Cosmos DB-ben
-description: Megtudhatja, hogy az Azure Cosmos DB SQL-lekérdezési állandói hogyan használhatók egy adott adatérték ábrázolására
+title: SQL-állandók a Azure Cosmos DBban
+description: Ismerje meg, hogyan használhatók az SQL-lekérdezési állandók a Azure Cosmos DBban egy adott adatérték ábrázolásához
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873420"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Az Azure Cosmos DB SQL-lekérdezési állandói  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
 
- Az állandó, más néven konstans vagy skaláris érték egy adott adatértéket jelölő szimbólum. Az állandó formátuma az általa képviselt érték adattípusától függ.  
+ Egy konstans, más néven literál vagy skaláris érték, egy adott adatértéket jelölő szimbólum. A konstans formátuma az általa reprezentált érték adattípusától függ.  
   
  **Támogatott skaláris adattípusok:**  
   
 |**Típus**|**Értékek sorrendje**|  
 |-|-|  
-|**Meghatározatlan**|Egyetlen érték: **nem definiált**|  
-|**Null**|Egyetlen érték: **null**|  
-|**Logikai**|Értékek: **hamis**, **igaz**.|  
-|**Szám**|Dupla pontosságú lebegőpontos szám, IEEE 754 szabvány.|  
-|**Sztring**|Nulla vagy több Unicode karakterből álló sorozat. A karakterláncokat egy- vagy idézőjelek közé kell tenni.|  
-|**Tömb**|Nulla vagy több elem sorozata. Minden elem bármilyen skaláris adattípus értéke lehet, kivéve **az Undefined értéket.**|  
-|**Objektum**|Nulla vagy több név/érték pár rendezetlen halmaza. A név Unicode karakterlánc, az érték bármilyen skaláris adattípus lehet, kivéve **az Undefined értéket.**|  
+|**Nem definiált**|Egyetlen érték: nem **definiált**|  
+|**Null**|Egyetlen érték: **Null**|  
+|**Logikai**|Értékek: **false**, **true**.|  
+|**Száma**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
+|**Sztring**|Nulla vagy több Unicode-karakterből álló sorozatot. A karakterláncokat szimpla vagy idézőjelek közé kell foglalni.|  
+|**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált**értéket.|  
+|**Objektum**|Nulla vagy több név/érték párok rendezetlen készlete. A név egy Unicode karakterlánc, az érték bármely skaláris adattípus lehet, kivéve a nem **definiált**értéket.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Szintaxis
   
@@ -59,27 +59,27 @@ ms.locfileid: "74873420"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Érvek
+##  <a name="arguments"></a><a name="bk_arguments"></a>Argumentumok
   
 * `<undefined_constant>; Undefined`  
   
-  Az Undefined típusú meg határozatlan értéket jelöli.  
+  Nem definiált típusú, nem definiált értéket képvisel.  
   
 * `<null_constant>; null`  
   
-  **Null**típusú **null** értéket jelöl.  
+  NULL típusú **Null** értéket jelöl **.**  
   
 * `<boolean_constant>`  
   
-  Logikai típusú állandót jelöl.  
+  Boolean típusú konstanst jelöl.  
   
 * `false`  
   
-  Logikai típusú **hamis** értéket jelöl.  
+  A logikai típusú **hamis** értéket jelöli.  
   
 * `true`  
   
-  A Logikai típus **valódi** értékét jelöli.  
+  Boolean típusú **igaz** értéket jelöl.  
   
 * `<number_constant>`  
   
@@ -87,36 +87,36 @@ ms.locfileid: "74873420"
   
 * `decimal_literal`  
   
-  A decimális konstansok decimális jelöléssel vagy tudományos jelöléssel ábrázolt számok.  
+  A decimális literál számok decimális jelöléssel vagy tudományos jelöléssel jelennek meg.  
   
 * `hexadecimal_literal`  
   
-  A hexadecimális konstansok a "0x" előtaggal, majd egy vagy több hexadecimális számjegyekkel ábrázolt számok.  
+  A hexadecimális literálok a "0x" előtaggal jelölt számok, amelyeket egy vagy több hexadecimális számjegy követ.  
   
 * `<string_constant>`  
   
-  String típusú állandót jelöl.  
+  Karakterlánc típusú konstanst jelöl.  
   
 * `string _literal`  
   
-  A karakterlánc-konstansok olyan Unicode karakterláncok, amelyeket nulla vagy több Unicode karakter vagy escape-sorozat jelöl. A karakterlánc-konstansok egyszeres idézőjelek (aposztróf: ' ) vagy dupla idézőjelek (idézőjelek: » közé vannak titeket mellékelve.  
+  A karakterlánc-literálok olyan Unicode-karakterláncok, amelyek nulla vagy több Unicode-karakter vagy Escape-kódrészletek sorozatából állnak. A karakterlánc-literálok aposztrófok (aposztróf: ") vagy idézőjelek (idézőjel:") közé vannak bejelölve.  
   
-  A következő escape-szekvenciák megengedettek:  
+  A következő Escape-kódrészletek engedélyezettek:  
   
-|**Escape-sorozat**|**Leírás**|**Unicode karakter**|  
+|**Escape-sorozatot**|**Leírás**|**Unicode-karakter**|  
 |-|-|-|  
-|\\'|aposztróf (')|U+0027|  
-|\\"|idézőjel (")|U+0022|  
-|\\\ |fordított solidus\\( )|U+005C|  
-|\\/|solidus (/)|U+002F|  
-|\b|Backspace|U+0008|  
-|\f|űrlap-hírcsatorna|U+000C|  
-|\n|vonali előtolás|U+000A|  
-|\r|kocsi vissza|U+000D|  
-|\t|Lapon|U+0009|  
-|\uXXXX|4 hexadecimális számjegy által definiált Unicode karakter.|U+XXXX|  
+|\\'|aposztróf (')|U + 0027|  
+|\\"|idézőjel (")|U + 0022|  
+|\\\ |fordított solidus (\\)|U + 005C|  
+|\\/|solidus (/)|U + 002F|  
+|\b|Backspace|U + 0008|  
+|\f|űrlap-hírcsatorna|U + 000C|  
+|\n|soremelés|U + 000A|  
+|\r|szállítás visszaküldése|U + 000D|  
+|\t|lapon|U + 0009|  
+|\uXXXX|4 hexadecimális számjegy által definiált Unicode-karakter.|U + XXXX|  
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

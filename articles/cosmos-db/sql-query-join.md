@@ -1,109 +1,109 @@
 ---
-title: SQL JOIN-lekérdezések az Azure Cosmos DB-hez
-description: Ismerje meg, hogyan csatlakozhat több táblát az Azure Cosmos DB-ben az adatok lekérdezéséhez
+title: SQL JOIN-lekérdezések Azure Cosmos DB
+description: Ismerje meg, hogyan CSATLAKOZHAT több táblázathoz a Azure Cosmos DBban az adatlekérdezéshez
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74871142"
 ---
-# <a name="joins-in-azure-cosmos-db"></a>Csatlakozásaz az Azure Cosmos DB-ben
+# <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
 
-A relációs adatbázisokban a táblák közötti illesztések a normalizált sémák tervezésének logikai következménye. Ezzel szemben az SQL API a sémamentes elemek denormalizált adatmodelljét használja, amely az *önillesztés*logikai megfelelője.
+Egy rokon adatbázisban a táblázatok közötti illesztések a normalizált sémák megtervezéséhez használható logikaik. Ezzel szemben az SQL API a séma nélküli elemek denormalizált adatmodelljét használja, amely egy *Önillesztés*logikai megfelelője.
 
-A belső illesztések az illesztésben részt vevő készletek teljes kereszttermékét eredményezik. Az N-utas illesztés eredménye N-elem-tuples készlet, ahol a tuple minden egyes értéke az illesztésben részt vevő aliaskészlethez van társítva, és az aliasmás záradékokban való hivatkozásával érhető el.
+A belső illesztések az illesztésben részt vevő készletek teljes termékét eredményezik. Az N-Way illesztés eredménye egy N-Element rekordok, ahol a rekordban lévő minden érték társítva van az összekapcsolásban részt vevő alias-készlettel, és a többi záradékban található aliasra hivatkozva elérhető.
 
 ## <a name="syntax"></a>Szintaxis
 
-A nyelv támogatja a `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`szintaxist. Ez a lekérdezés értékekkel rendelkező `N` tuples-készletet ad vissza. Minden rekordot az összes tárolóalias iterálásával készített értékek a megfelelő készletek felett. 
+A nyelv támogatja a szintaxist `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. Ez a lekérdezés egy rekordok-készletet `N` ad vissza értékekkel. Az egyes rekordhalmazok értékeit az összes tároló aliasnevének megismétlésével állítjuk be a megfelelő készleteken. 
 
 Nézzük meg a következő FROM záradékot:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Hagyja, hogy `input_alias1, input_alias2, …, input_aliasN`minden forrás határozza meg . Ez a FROM záradék N-tuples (n értékekkel való megbúni) halmazát adja vissza. Minden rekordot az összes tárolóalias iterálásával készített értékek a megfelelő készletek felett.  
+ Minden forrás definiálásának `input_alias1, input_alias2, …, input_aliasN`engedélyezése. Ez a FROM záradék N-rekordok-készletet ad vissza (N értékkel rendelkező rekord). Az egyes rekordhalmazok értékeit az összes tároló aliasnevének megismétlésével állítjuk be a megfelelő készleteken.  
   
 **1. példa** – 2 forrás  
   
-- Legyen `<from_source1>` tárolóhatókörrel, és képviselje a(z) {A, B, C} készletet.  
+- Legyen `<from_source1>` a tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Legyen `<from_source2>` dokumentum-hatókörű hivatkozva input_alias1, és képviseli készletek:  
+- `<from_source2>` A dokumentumokra szűkített viszonyítási input_alias1 és a készleteket jelölő csoportok:  
   
-    {1, 2}`input_alias1 = A,`  
+    {1, 2} a következőhöz:`input_alias1 = A,`  
   
     {3}a`input_alias1 = B,`  
   
-    {4, 5}`input_alias1 = C,`  
+    {4, 5} a következőhöz:`input_alias1 = C,`  
   
-- A FROM `<from_source1> JOIN <from_source2>` záradék a következő tuple-okat eredményezi:  
+- A FROM záradék `<from_source1> JOIN <from_source2>` a következő rekordok eredményezi:  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-**Példa 2** - 3 forrás  
+**2. példa** – 3 forrás  
   
-- Legyen `<from_source1>` tárolóhatókörrel, és képviselje a(z) {A, B, C} készletet.  
+- Legyen `<from_source1>` a tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Legyen `<from_source2>` dokumentum-hatókörű hivatkozás, `input_alias1` és képviseli készletek:  
+- `<from_source2>` A dokumentumokra szűkített referenciák `input_alias1` és az azokra vonatkozó készletek:  
   
-    {1, 2}`input_alias1 = A,`  
+    {1, 2} a következőhöz:`input_alias1 = A,`  
   
     {3}a`input_alias1 = B,`  
   
-    {4, 5}`input_alias1 = C,`  
+    {4, 5} a következőhöz:`input_alias1 = C,`  
   
-- Legyen `<from_source3>` dokumentum-hatókörű hivatkozás, `input_alias2` és képviseli készletek:  
+- `<from_source3>` A dokumentumokra szűkített referenciák `input_alias2` és az azokra vonatkozó készletek:  
   
-    {100, 200}`input_alias2 = 1,`  
+    {100, 200} a következőhöz:`input_alias2 = 1,`  
   
     {300}a`input_alias2 = 3,`  
   
-- A FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` záradék a következő tuple-okat eredményezi:  
+- A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordok eredményezi:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
-  > A esetén a tuples `input_alias1` `input_alias2`hiánya, amelynek értékei `<from_source3>` nem adnak vissza értékeket.  
+  > A () egyéb értékeinek `input_alias1` `input_alias2`rekordok hiánya, amelyekhez `<from_source3>` a nem adott vissza értéket.  
   
 **3. példa** – 3 forrás  
   
-- Hagyja, hogy <from_source1 tárolóhatókörrel és a(z) {A, B, C} készletre>.  
+- <from_source1> tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Legyen `<from_source1>` tárolóhatókörrel, és képviselje a(z) {A, B, C} készletet.  
+- Legyen `<from_source1>` a tároló hatókörű, és az {A, B, C} készletet jelöli.  
   
-- Hagyja,> hogy <from_source2 dokumentumhatókörrel hivatkozva input_alias1 és a készleteket képviselje:  
+- <from_source2> dokumentumokra szűkíthető viszonyítási input_alias1, és beállítja a készleteket:  
   
-    {1, 2}`input_alias1 = A,`  
+    {1, 2} a következőhöz:`input_alias1 = A,`  
   
     {3}a`input_alias1 = B,`  
   
-    {4, 5}`input_alias1 = C,`  
+    {4, 5} a következőhöz:`input_alias1 = C,`  
   
-- Legyen `<from_source3>` hatóköre, `input_alias1` és képviseli készletek:  
+- `<from_source3>` Legyen a hatóköre és `input_alias1` a halmazok jelölése:  
   
-    {100, 200}`input_alias2 = A,`  
+    {100, 200} a következőhöz:`input_alias2 = A,`  
   
     {300}a`input_alias2 = C,`  
   
-- A FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` záradék a következő tuple-okat eredményezi:  
+- A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordok eredményezi:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
   
   > [!NOTE]
-  > Ez azt eredményezte, `<from_source2>` hogy `<from_source3>` a termékek között, `<from_source1>`és mivel mindkettő hatálya azonos .  Ez azt eredményezte, hogy 4 (2x2) tuple, amelynek A értéke, 0 buples értéke B (1x0) és 2 (2x1) tuples, amelyek C értékkel rendelkeznek.  
+  > Ez a és a közti termékek `<from_source2>` közti különbségeket eredményezett, `<from_source3>` a kettő `<from_source1>`pedig ugyanarra a hatókörre vonatkozik.  Ez 4 (2x2) rekordok eredményezett, amelynek értéke A 0 rekordok, amelynek értéke B (1x0) és 2 (2x1) rekordok, amelynek értéke C.  
   
 ## <a name="examples"></a>Példák
 
-A következő példák bemutatják, hogyan működik a JOIN záradék. Mielőtt futtatja ezeket a példákat, töltse fel a minta [család adatait](sql-query-getting-started.md#upload-sample-data). A következő példában az eredmény üres, mivel a forrásból származó egyes cikkek keresztterméke és egy üres készlet üres:
+Az alábbi példák bemutatják, hogyan működik a JOIN záradék. A példák futtatása előtt töltse fel a minta [családi adatok](sql-query-getting-started.md#upload-sample-data)feltöltését. A következő példában az eredmény üres, mivel az egyes elemek forrásból és üres készletből származó szorzata üres:
 
 ```sql
     SELECT f.id
@@ -111,14 +111,14 @@ A következő példák bemutatják, hogyan működik a JOIN záradék. Mielőtt 
     JOIN f.NonExistent
 ```
 
-Az eredmény:
+Az eredmény a következőket eredményezi:
 
 ```json
     [{
     }]
 ```
 
-A következő példában az illesztés két JSON-objektum, `id` a `children` cikkgyökér és az algyökér közötti kereszttermék. Az a `children` tény, hogy egy tömb nem hatékony az illesztés, mert `children` foglalkozik egyetlen gyökér, amely a tömb. Az eredmény csak két eredményt tartalmaz, mivel a tömböt tartalmazó cikkek keresztterméke pontosan csak egy cikket eredményez.
+A következő példában az illesztés egy két JSON-objektum, az elem gyökerének `id` és az `children` algyökerének egy közti terméke. Az a tény `children` , hogy egy tömb nem hatékony a csatlakozásban, mert egyetlen, a `children` tömbhöz tartozó gyökérrel foglalkozik. Az eredmény csak két eredményt tartalmaz, mivel a tömbhöz tartozó egyes elemek több mint egyetlen elemét eredményezi.
 
 ```sql
     SELECT f.id
@@ -139,7 +139,7 @@ Az eredmény a következő:
     ]
 ```
 
-A következő példa egy hagyományosabb illesztést mutat be:
+Az alábbi példa egy hagyományosabb illesztést mutat be:
 
 ```sql
     SELECT f.id
@@ -163,15 +163,15 @@ Az eredmény a következő:
     ]
 ```
 
-A JOIN záradék FROM forrása egy iterátor. Tehát az előző példában az áramlás a következő:  
+Az JOIN záradék FROM forrása egy iteráció. Így az előző példában szereplő folyamat a következőket eredményezi:  
 
-1. Bontsa `c` ki a tömb minden gyermekelemét.
-2. Vigyen fel egy keresztterméket `f` az elem `c` gyökerével minden olyan gyermekelemmel, amelyet az első lépés összeolvasztott.
-3. Végül csak a `f` `id` gyökérobjektum tulajdonságot vetítse ki.
+1. Bontsa ki a `c` tömb minden gyermek elemét.
+2. Alkalmazzon egy több terméket az elem `f` gyökerével minden olyan alárendelt elemmel `c` , amelyet az első lépés összelapított.
+3. Végül pedig a root Object `f` `id` tulajdonságot csak a projektben kell megtervezni.
 
-Az első `AndersenFamily`elem , `children` a , csak egy elemet tartalmaz, így az eredményhalmaz csak egyetlen objektumot tartalmaz. A második `WakefieldFamily`elem , `children`a , két elemet tartalmaz, `children` így a kereszttermék két objektumot hoz létre, egyet-egyet minden elemhez. Mindkét elem gyökérmezői megegyeznek, ahogy azt egy kereszttermékben elvárná.
+Az első elem `AndersenFamily`csak egy `children` elemet tartalmaz, így az eredményhalmaz csak egyetlen objektumot tartalmaz. A második elem `WakefieldFamily`, amely két `children`elemet tartalmaz, így a termék két objektumot hoz létre, amelyek mindegyike `children` egy elem. Mindkét elem legfelső szintű mezői azonosak, ugyanúgy, mint a több termék esetében.
 
-A JOIN záradék valódi hasznossága az, hogy a kereszttermékből olyan formában, amelyet egyébként nehéz kivetíteni, a kereszttermékből származó tuple-kat képez. Az alábbi példa szűri a kombináció egy tuple, amely lehetővé teszi a felhasználó számára, hogy válasszon egy feltételt teljesüla a tuples összességében.
+Az JOIN záradék valódi segédprogramja egy olyan alakzat rekordok, amely egyébként nehéz a projektben. Az alábbi példa egy olyan rekord kombinációján szűri a szűrőket, amely lehetővé teszi a felhasználó számára, hogy a rekordok teljes körűen kiválassza a feltételt.
 
 ```sql
     SELECT 
@@ -206,7 +206,7 @@ Az eredmény a következő:
     ]
 ```
 
-Az előző példa következő kiterjesztése kettős illesztést hajt végre. A keresztterméket a következő pszeudokódként tekintheti meg:
+Az előző példa alábbi bővítménye dupla illesztést hajt végre. A terméket a következő pszeudo-kóddal tekintheti meg:
 
 ```
     for-each(Family f in Families)
@@ -224,9 +224,9 @@ Az előző példa következő kiterjesztése kettős illesztést hajt végre. A 
     }
 ```
 
-`AndersenFamily`van egy gyermeke, akinek egy háziállata van,\*\*így a kereszttermék egy sort (1 1 1) eredményez ebből a családból. `WakefieldFamily`két gyermeke van, akik közül csak az egyiknek van háziállata, de ennek a gyermeknek két háziállata van. Ennek a családnak a\*\*keresztterméke 1 1 2 = 2 sort eredményez.
+`AndersenFamily`van egy gyermeke, aki rendelkezik egy kisállattal, így a Cross termék egy sort (\*1\*1 1) eredményez ebből a családból. `WakefieldFamily`két gyermeke van, akik közül csak az egyik rendelkezik háziállattal, de a gyermeknek két háziállata van. A családhoz tartozó több termék 1\*–\*2 = 2 sort eredményez.
 
-A következő példában van egy `pet`további szűrő , amely kizárja az összes olyan `Shadow`rekord, ahol a kedvtelésből tartott állat neve nem . A tömbökből felveheti a tuple-okat, szűrheti a tuple bármely elemét, és kivetítheti az elemek bármilyen kombinációját.
+A következő példában egy további szűrő van `pet`, amely kizárja az összes olyan rekordok, ahol a PET neve nem. `Shadow` A tömbökből létrehozhat rekordok, szűrheti a rekord bármelyik elemét, és az elemek bármely kombinációját kialakíthatja.
 
 ```sql
     SELECT 
@@ -254,6 +254,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kezdetekhez](sql-query-getting-started.md)
-- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Segédlekérdezések](sql-query-subquery.md)
+- [Első lépések](sql-query-getting-started.md)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Allekérdezéseket](sql-query-subquery.md)

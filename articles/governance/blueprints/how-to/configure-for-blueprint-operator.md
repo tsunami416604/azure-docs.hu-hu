@@ -1,43 +1,43 @@
 ---
-title: A környezet beállítása a Blueprint Operator számára
-description: Ismerje meg, hogyan konfigurálhatja az Azure-környezetet a Blueprint Operator beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel való használatra.
+title: A környezet beállítása a tervrajzok kezelője számára
+description: Ismerje meg, hogyan konfigurálhatja Azure-környezetét a Blueprint Operator beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel való használatra.
 ms.date: 08/26/2019
 ms.topic: how-to
 ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873216"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 
-A tervezetdefiníciók és a tervezet-hozzárendelések kezelése különböző csoportokhoz rendelhető. Gyakori, hogy egy építész vagy cégirányítási csapat felelős a tervdefiníciók életciklus-kezeléséért, míg egy műveleti csapat felelős a központilag ellenőrzött tervdefiníciók hozzárendeléseinek kezeléséért.
+A terv-definíciók és a tervrajz-hozzárendelések kezelése különböző csapatokhoz rendelhető. Az építész vagy az irányítási csapat feladata az, hogy a terv definícióinak életciklus-felügyeletéhez felelősek legyenek, miközben egy operatív csapat felelős a központilag ellenőrzött tervrajz-definíciók hozzárendeléseinek kezeléséért.
 
-A **Blueprint Operator** beépített szerepköralapú hozzáférés-vezérlés (RBAC) kifejezetten az ilyen típusú forgatókönyv. A szerepkör lehetővé teszi, hogy a műveletek típusú csapatok a szervezetek tervezetdefinícióinak hozzárendelését kezeljék, de nem módosíthatja őket. Ehhez némi konfigurációt igényel az Azure-környezetben, és ez a cikk ismerteti a szükséges lépéseket.
+A **terv operátor** beépített szerepköralapú hozzáférés-vezérlés (RBAC) kifejezetten az ilyen típusú forgatókönyvekben való használatra készült. A szerepkör lehetővé teszi, hogy a műveleti típusok csoportja felügyelje a szervezeti terv definícióinak hozzárendelését, de ne módosítsa őket. Ehhez szükség van néhány konfigurációra az Azure-környezetben, és ez a cikk ismerteti a szükséges lépéseket.
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>Engedély megadása a Blueprint Operátornak
+## <a name="grant-permission-to-the-blueprint-operator"></a>Engedély megadása a Blueprint operátornak
 
-Az első lépés az, hogy megadja a **Blueprint Operator** szerepkört a fiók vagy biztonsági csoport (ajánlott), amely lesz hozzárendeli tervrajzok. Ezt a műveletet a felügyeleticsoport-hierarchia legmagasabb szintjén kell végrehajtani, amely magában foglalja az összes felügyeleti csoportot és előfizetést, amelyhez a műveleti csapatnak rendelkeznie kell a blueprint-hozzárendelési hozzáféréssel. Javasoljuk, hogy kövesse a minimális jogosultság elvét, amikor megadja ezeket az engedélyeket.
+Első lépésként adja meg a **terv operátori** szerepkört ahhoz a fiókhoz vagy biztonsági csoporthoz (ajánlott), amely a tervrajzok hozzárendelését fogja végrehajtani. Ezt a műveletet a felügyeleti csoport hierarchiájának legmagasabb szintjén kell végrehajtani, amely magában foglalja az összes felügyeleti csoportot és előfizetést, és az operatív csapatnak terv-hozzárendelési jogosultsággal kell rendelkeznie. Az engedélyek megadásakor ajánlott a legalacsonyabb jogosultsági szint elvének követése.
 
-1. (Ajánlott) [Biztonsági csoport létrehozása és tagok hozzáadása](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. Ajánlott [Biztonsági csoport létrehozása és Tagok hozzáadása](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. Blueprint **Operator** [szerepkör-hozzárendelésének hozzáadása](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a fiókhoz vagy a biztonsági csoporthoz
+1. A **terv operátor** [szerepkör-hozzárendelésének hozzáadása](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a fiókhoz vagy a biztonsági csoporthoz
 
-## <a name="user-assign-managed-identity"></a>Felhasználó-hozzárendelés felügyelt identitás
+## <a name="user-assign-managed-identity"></a>Felhasználó – felügyelt identitások kiosztása
 
-A tervezetdefiníció rendszer- vagy felhasználó által hozzárendelt felügyelt identitásokat használhat. Azonban a **Blueprint Operator** szerepkör használatakor a tervezet definícióját úgy kell konfigurálni, hogy egy felhasználó által hozzárendelt felügyelt identitást használjon. Emellett a **rendszerrajzoperátori** szerepkört kapó fióknak vagy biztonsági csoportnak meg kell adni a **felügyelt identitásoperátor szerepkört** a felhasználó által hozzárendelt felügyelt identitáson. Ezen engedély nélkül a tervezet-hozzárendelések az engedélyek hiánya miatt sikertelenek.
+A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitásokat használhat. A **terv operátori** szerepkör használatakor azonban a terv definícióját a felhasználó által hozzárendelt felügyelt identitás használatára kell beállítani. Emellett a **terv operátori** szerepkörrel rendelkező fiókot vagy biztonsági csoportot meg kell adni a **felügyelt identitás-kezelő** szerepkörnek a felhasználó által hozzárendelt felügyelt identitáson. Ezen engedély nélkül a terv-hozzárendelések sikertelenek az engedélyek hiánya miatt.
 
-1. [Felhasználó által hozzárendelt felügyelt identitás létrehozása](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) hozzárendelt terv szerint
+1. [Felhasználó által hozzárendelt felügyelt identitás létrehozása](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) egy hozzárendelt terv általi használatra
 
-1. A **Felügyelt identitáskezelő** [szerepkör-hozzárendelésének hozzáadása](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a fiókhoz vagy a biztonsági csoporthoz. A szerepkör-hozzárendelés hatóköre az új, felhasználó által hozzárendelt felügyelt identitáshoz.
+1. [Adja hozzá](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a **felügyelt identitás-kezelő** szerepkör-hozzárendelését a fiókhoz vagy a biztonsági csoporthoz. Hatókör a szerepkör-hozzárendelés az új, felhasználó által hozzárendelt felügyelt identitáshoz.
 
-1. A **Blueprint Operátor,** [rendeljen hozzá egy tervezetet,](../create-blueprint-portal.md#assign-a-blueprint) amely az új, felhasználó által hozzárendelt felügyelt identitást használja.
+1. A **terv operátorként** [rendeljen hozzá egy tervet](../create-blueprint-portal.md#assign-a-blueprint) , amely az új, felhasználó által hozzárendelt felügyelt identitást használja.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [tervterv életciklusáról.](../concepts/lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../concepts/parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../concepts/sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../concepts/resource-locking.md)
-- Az [általános hibaelhárítással](../troubleshoot/general.md)kapcsolatos tervtervezet ekhozzárendelése során fellépő problémák megoldása.
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

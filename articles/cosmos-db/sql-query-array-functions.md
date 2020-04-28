@@ -1,6 +1,6 @@
 ---
-title: Tömbfüggvények az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg, hogyan a tömbfüggvények segítségével műveleteket hajthat végre az Azure Cosmos DB tömbjein
+title: Tömb függvények Azure Cosmos DB lekérdezési nyelven
+description: Ismerje meg, hogy a Array függvények hogyan végezhetnek műveleteket a tömbökön Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74871805"
 ---
-# <a name="array-functions-azure-cosmos-db"></a>Tömbfüggvények (Azure Cosmos DB)
+# <a name="array-functions-azure-cosmos-db"></a>Array functions (Azure Cosmos DB)
 
-A tömbfüggvények lehetővé teszik, hogy műveleteket hajtson végre az Azure Cosmos DB tömbjein.
+A Array függvények lehetővé teszik a Azure Cosmos DB tömbökön végzett műveletek végrehajtását.
 
 ## <a name="functions"></a>Functions
 
-A következő skaláris függvények műveletet hajtanak végre tömbbemeneti értékén, és numerikus, logikai vagy tömbértéket adnak vissza:
+A következő skaláris függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy Array értéket adnak vissza:
   
 ||||  
 |-|-|-|  
@@ -30,7 +30,7 @@ A következő skaláris függvények műveletet hajtanak végre tömbbemeneti é
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
 - [Összesítések](sql-query-aggregates.md)

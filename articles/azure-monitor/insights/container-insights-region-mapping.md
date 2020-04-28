@@ -1,73 +1,73 @@
 ---
-title: Azure Monitor tárolók régióleképezéséhez
-description: Ez a cikk ismerteti a régió leképezések az Azure Monitor tárolók, Log Analytics-munkaterület és az egyéni metrikák támogatott.
+title: Azure Monitor a tárolók régiójának leképezéséhez
+description: Ez a cikk a Azure Monitor for containers, a Log Analytics munkaterület és az egyéni metrikák között támogatott régió-hozzárendeléseket ismerteti.
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75403425"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Az Azure Monitor által támogatott régióleképezések tárolókhoz
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>A tárolók Azure Monitor által támogatott régió-hozzárendelések
 
- Az Azure Monitor tárolók ra vonatkozó engedélyezésekor csak bizonyos régiók támogatják a Log Analytics-munkaterület és az AKS-fürt összekapcsolását, valamint az Azure Monitorba küldött egyéni metrikák gyűjtését.
+ A tárolók Azure Monitorának engedélyezésekor csak bizonyos régiók támogatottak egy Log Analytics-munkaterület és egy AK-fürt összekapcsolásához, valamint az Azure Monitor elküldött egyéni metrikák összegyűjtéséhez.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>A Log Analytics munkaterület által támogatott hozzárendelések
+## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics munkaterület által támogatott leképezések
 
-Az AKS-fürt erőforrásai vagy a Log Analytics-munkaterület más régiókban is elhelyezkedhetnek, és az alábbi táblázat a leképezéseinket mutatja be.
+Az AK-fürterőforrás vagy Log Analytics munkaterület más régiókban is lehet, és a következő táblázat a leképezéseket mutatja be.
 
-|**AKS-fürtrégió** | **Log Analytics-munkaterület régió** |
+|**AK-fürt régiója** | **Log Analytics munkaterület-régió** |
 |-----------------------|------------------------------------|
 |**Afrika** | |
-|Dél-AfrikaÉszak |WestEurope |
-|Dél-AfrikaNyugat |WestEurope |
+|SouthAfricaNorth |WestEurope |
+|SouthAfricaWest |WestEurope |
 |**Ausztrália** | |
-|AusztráliaKelet |AusztráliaKelet |
-|AusztráliaKözponti |AusztráliaKözponti |
-|AusztráliaCentral2 |AusztráliaKözponti |
-|AusztráliaKelet |AusztráliaKelet |
+|AustraliaEast |AustraliaEast |
+|AustraliaCentral |AustraliaCentral |
+|AustraliaCentral2 |AustraliaCentral |
+|AustraliaEast |AustraliaEast |
 |**Ázsia és a Csendes-óceáni térség** | |
-|Kelet-Ázsia |Kelet-Ázsia |
-|Délkelet-Ázsia |Délkelet-Ázsia |
+|EastAsia |EastAsia |
+|SoutheastAsia |SoutheastAsia |
 |**Brazília** | |
-|BrazíliaDél | SouthCentralUS (Dél-Közép- és Közép- |
+|BrazilSouth | SouthCentralUS |
 |**Kanada** ||
-|KanadaKözponti |KanadaKözponti |
-|KanadaKelet |KanadaKözponti |
+|CanadaCentral |CanadaCentral |
+|CanadaEast |CanadaCentral |
 |**Európa** | |
-|FranciaországKözponti |FranciaországKözponti |
-|FranciaországDél |FranciaországKözponti |
-|Észak-Európa |Észak-Európa |
+|FranceCentral |FranceCentral |
+|FranceSouth |FranceCentral |
+|NorthEurope |NorthEurope |
 |UKSouth |UKSouth |
-|UKWest között |UKSouth |
+|UKWest |UKSouth |
 |WestEurope |WestEurope |
 |**India** | |
-|Közép-India |Közép-India |
-|Dél-India |Közép-India |
-|Nyugat-India |Közép-India |
+|CentralIndia |CentralIndia |
+|SouthIndia |CentralIndia |
+|WestIndia |CentralIndia |
 |**Japán** | |
-|JapánKelet |JapánKelet |
-|JapánNyugat |JapánKelet |
+|JapanEast |JapanEast |
+|JapanWest |JapanEast |
 |**Dél-Korea** | |
-|KoreaKözponti |KoreaKözponti |
-|KoreaDél |KoreaKözponti |
+|KoreaCentral |KoreaCentral |
+|KoreaSouth |KoreaCentral |
 |**USA** | |
-|Közép-Amerikai Egyesült Államok |Közép-Amerikai Egyesült Államok|
-|KeletUSA |KeletUSA |
-|KeletUS2 |KeletUS2 |
-|Nyugat-Nyugat-Nyugat |Nyugat-Nyugat-Nyugat |
-|Nyugat-us2 |Nyugat-us2 |
-|WestCentralUS<sup>1</sup>|Kelet-US<sup>1</sup>|
+|CentralUS |CentralUS|
+|EastUS |EastUS |
+|EastUS2 |EastUS2 |
+|WestUS |WestUS |
+|WestUS2 |WestUS2 |
+|<sup>1</sup> . WestCentralUS|<sup>1</sup> . EastUS|
 |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Virginia |
 
-<sup>1</sup> A kapacitáskorlátok miatt a régió nem érhető el új erőforrások létrehozásakor. Ez magában foglalja a Log Analytics munkaterületet. A régióban már meglévő összekapcsolt erőforrásoknak azonban továbbra is működniük kell.
+<sup>1</sup> a kapacitás korlátozásai miatt a régió nem érhető el új erőforrások létrehozásakor. Ez Log Analytics munkaterületet tartalmaz. A régióban azonban a már meglévő társított erőforrások továbbra is működőképesek maradnak.
 
-## <a name="custom-metrics-supported-regions"></a>Egyéni metrikák támogatott régiók
+## <a name="custom-metrics-supported-regions"></a>Egyéni metrikák támogatott régiói
 
-Metrikák gyűjtése az Azure Kubernetes Services (AKS) fürtök csomópontok és podok számára támogatott a közzététel egyéni metrikák csak a következő [Azure-régiókban.](../platform/metrics-custom-overview.md#supported-regions)
+Az Azure Kubernetes Services (ak) fürtök csomópontjaiból és hüvelyből származó metrikák összegyűjtése csak az alábbi [Azure-régiókban](../platform/metrics-custom-overview.md#supported-regions)támogatott egyéni metrikák való közzétételre.
 
 ## <a name="next-steps"></a>További lépések
 
-Az AKS-fürt figyelésének megkezdéséhez tekintse át [a Hogyan engedélyezheti az Azure Monitor tárolók](container-insights-onboard.md) a követelmények és a rendelkezésre álló módszerek lehetővé teszi a figyelés.  
+Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók számára című témakört](container-insights-onboard.md) , és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit.  

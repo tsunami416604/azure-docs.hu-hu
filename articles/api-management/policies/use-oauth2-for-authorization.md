@@ -1,7 +1,7 @@
 ---
-title: Minta Azure API-felügyeleti házirend – Az OAuth2 használata az átjáró és a háttérrendszer közötti engedélyezéshez
+title: Példa Azure API Management-szabályzatra – a OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
 titleSuffix: Azure API Management
-description: Azure API-kezelési szabályzat minta – bemutatja, hogyan használhatja az OAuth2 az átjáró és a háttérrendszer közötti engedélyezés. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442352"
 ---
-# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 használata az átjáró és a háttérrendszer közötti engedélyezéshez
+# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
 
-Ez a cikk egy Azure API-felügyeleti szabályzat mintát mutat be, amely bemutatja, hogyan használhatja az OAuth2-t az átjáró és a háttérrendszer közötti engedélyezéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek. 
+Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek. 
 
-Házirendkód beállításához vagy szerkesztéséhez kövesse a [Házirend beállítása vagy szerkesztése](../set-edit-policies.md)című részben ismertetett lépéseket. További példák megtekintéséhez tekintse meg [a házirendmintákat.](../policy-samples.md)
+A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
-A következő parancsfájl a(z) {{property}} elemben megjelenő tulajdonságokat használja. A tulajdonságokról és azok API-kezelési házirendekben való használatáról [ebben a](../api-management-howto-properties.md) témakörben olvashat.
+A következő parancsfájl a {{Property}} alkalmazásban megjelenő tulajdonságokat használja. További információ a tulajdonságokról és azok használatáról API Management házirendekben: [ebben a](../api-management-howto-properties.md) témakörben.
  
 ## <a name="policy"></a>Szabályzat
 
@@ -36,8 +36,8 @@ Illessze be a kódot a **bejövő** blokkba.
   
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-házirendekről:
+További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirendminták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

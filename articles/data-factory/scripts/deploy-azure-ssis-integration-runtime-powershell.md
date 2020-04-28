@@ -1,6 +1,6 @@
 ---
-title: Az Azure SSIS-integrációs futásidő üzembe helyezése a PowerShell használatával
-description: Ez a PowerShell-parancsfájl létrehoz egy Azure-SSIS-integrációs futásidőt, amely ssis-csomagokat futtathat a felhőben.
+title: Az Azure SSIS Integration Runtime üzembe helyezése a PowerShell használatával
+description: Ez a PowerShell-szkript létrehoz egy Azure-SSIS integrációs modult, amely képes SSIS-csomagokat futtatni a felhőben.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,15 +11,15 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74929820"
 ---
-# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell-parancsfájl – az Azure-SSIS-integrációs futásidejű üzembe helyezése
+# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell-parancsfájl – Azure-SSIS integrációs modul üzembe helyezése
 
-Ez a minta PowerShell-parancsfájl létrehoz egy Azure-SSIS-integrációs futásidőt, amely futtathatja az SSIS-csomagokat az Azure-ban.  
+Ez a PowerShell-szkript létrehoz egy Azure-SSIS integrációs modult, amely képes futtatni a SSIS-csomagokat az Azure-ban.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,12 +31,12 @@ Ez a minta PowerShell-parancsfájl létrehoz egy Azure-SSIS-integrációs futás
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A mintaparancsfájl futtatása után a következő paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást:
+A minta parancsfájl futtatása után a következő paranccsal távolíthatja el az erőforráscsoportot és az ahhoz társított összes erőforrást:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Ha el szeretné távolítani az adat-előállítót az erőforráscsoportból, futtassa a következő parancsot: 
+A következő parancs futtatásával távolíthatja el az adatgyárat az erőforráscsoporthoz: 
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -50,9 +50,9 @@ Ez a szkript a következő parancsokat használja:
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Adat-előállító létrehozása |
-| [Set-AzDataFactoryV2Integrationruntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Létrehoz egy Azure-SSIS-integrációs futásidőt, amely képes SSIS-csomagokat futtatni a felhőben |
-| [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Elindítja az Azure-SSIS-integrációs futásidejű. |
-| [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Az Azure-SSIS-integrációs futásidejű adatokat kap. |
+| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Létrehoz egy Azure-SSIS integrációs modult, amely képes SSIS-csomagokat futtatni a felhőben |
+| [Start – AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Elindítja az Azure-SSIS integrációs modult. |
+| [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Információk beolvasása az Azure-SSIS Integration Runtime szolgáltatással kapcsolatban. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
@@ -60,4 +60,4 @@ Ez a szkript a következő parancsokat használja:
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Factory PowerShell-parancsfájlminták találhatók az [Azure Data Factory PowerShell-mintákban.](../samples-powershell.md)
+További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell-mintákban](../samples-powershell.md).

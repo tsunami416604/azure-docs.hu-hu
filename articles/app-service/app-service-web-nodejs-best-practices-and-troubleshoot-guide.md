@@ -1,6 +1,6 @@
 ---
-title: A Node.js gyakorlati tanácsok és hibaelhárítás
-description: Ismerje meg az Azure App Service-ben futó Node.js alkalmazások ajánlott eljárásokat és hibaelhárítási lépéseit.
+title: Node. js – ajánlott eljárások és hibaelhárítás
+description: Ismerje meg a Azure App Serviceon futó Node. js-alkalmazások ajánlott eljárásait és hibaelhárítási lépéseit.
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,58 +9,58 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430566"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Gyakorlati tanácsok és hibaelhárítási útmutató az Azure App Service Windows csomópontalkalmazásaihoz
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
-Ebben a cikkben az Azure App Service szolgáltatásban (iisnode-mal) futó [csomópontalkalmazások](app-service-web-get-started-nodejs.md) ajánlott eljárásokat és hibaelhárítási lépéseket ismerhet [isznoddal.](https://github.com/azure/iisnode)
+Ebben a cikkben a Azure App Serviceon futó [Node-alkalmazásokkal](app-service-web-get-started-nodejs.md) kapcsolatos ajánlott eljárásokat és hibaelhárítási lépéseket ismerheti meg ( [iisnode](https://github.com/azure/iisnode)).
 
 > [!WARNING]
-> Legyen óvatos, ha hibaelhárítási lépéseket használ az éles webhelyen. Javasoljuk, hogy az alkalmazás hibaelhárítása egy nem éles beállítás, például az átmeneti tárolóhely, és ha a probléma megoldódott, cserélje ki az átmeneti tárolóhelyet az éles tárolóhely.
+> Körültekintően járjon el, amikor hibaelhárítási lépéseket használ az üzemi webhelyén. Javasoljuk, hogy az alkalmazást nem éles környezetben, például az átmeneti tárolóhelyen és a probléma megoldásakor, az átmeneti tárolóhelyet cserélje le az éles tárolóhelyre.
 >
 
 ## <a name="iisnode-configuration"></a>IISNODE-konfiguráció
 
-Ez [a sémafájl](https://github.com/Azure/iisnode/blob/master/src/config/iisnode_schema_x64.xml) az iisnode-hoz konfigurálható összes beállítást megjeleníti. Az alkalmazás hoz hasznos beállítások közül néhány:
+Ez a [sémafájl](https://github.com/Azure/iisnode/blob/master/src/config/iisnode_schema_x64.xml) a iisnode konfigurálható beállításokat jeleníti meg. Az alkalmazáshoz hasznos beállítások némelyike:
 
-### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication alkalmazás
+### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Ez a beállítás szabályozza az IIS-alkalmazásonként elindított csomópontfolyamatok számát. Az alapértelmezett érték az 1. Az érték 0-ra való módosításával annyi node.exes- értéket indíthat el, ahány virtuális gép vCPU-száma. Az ajánlott érték 0 a legtöbb alkalmazás, így használhatja az összes vCPU-k a számítógépen. A Node.exe egyszálas, így egy node.exe legfeljebb 1 vCPU-t fogyaszt. A maximális teljesítmény a csomópontalkalmazáson kívül, szeretné használni az összes vCPU-k.
+Ezzel a beállítással szabályozható az IIS-alkalmazásokban elindított csomópont-folyamatok száma. Az alapértelmezett érték az 1. A virtuális gép vCPU számaként akár több Node. exes is elindíthat, ha az értéket 0-ra módosítja. A legtöbb alkalmazás esetében a javasolt érték a 0, így a gépen található összes vCPU használhatja. A Node. exe egyetlen szálból áll, így az egyik Node. exe legfeljebb 1 vCPU használ. A Node-alkalmazás maximális teljesítményének lekéréséhez az összes vCPU használni kívánja.
 
-### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine vonal
+### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
-Ez a beállítás szabályozza a node.exe elérési útját. Ezt az értéket beállíthatja úgy, hogy a node.exe verzióra mutasson.
+Ezzel a beállítással szabályozható a Node. exe elérési útja. Ezt az értéket beállíthatja úgy, hogy az a Node. exe verziójára mutasson.
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-Ez a beállítás szabályozza az iisnode által az egyes node.exe-nek küldött egyidejű kérelmek maximális számát. Az Azure App Service-ben az alapértelmezett érték az Infinite. Az értéket attól függően konfigurálhatja, hogy az alkalmazás hány kérelmet kap, és hogy az alkalmazás milyen gyorsan dolgozza fel az egyes kérelmeket.
+Ezzel a beállítással adható meg, hogy a iisnode által küldött egyidejű kérelmek maximális száma az egyes Node. exe-re vonatkozik-e. Azure App Service esetén az alapértelmezett érték a végtelen. Az értéket beállíthatja attól függően, hogy hány kérelem érkezik az alkalmazáshoz, és hogy az alkalmazás milyen gyorsan dolgozza fel az egyes kérelmeket.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-Ez a beállítás azt szabályozza, hogy az iisnode-újrapróbálkozások legfeljebb hányszor kíséreljék meg a kapcsolatot a névvel ellátott csőben, hogy a kérelmeket a node.exe fájlba küldjék. Ez a beállítás a nevű PipeConnectionRetryDelay-lel együtt határozza meg az isznode-on belüli egyes kérelmek teljes időtúllépését. Az alapértelmezett érték 200 az Azure App Service-en. Teljes időtúllépés másodpercben = (maxNamedPipeConnectionRetry \* nevűPipeConnectionRetryDelay) / 1000
+Ezzel a beállítással adható meg, hogy a iisnode hányszor próbálkozzon újra a megnevezett pipe-on keresztül a kérelmeknek a Node. exe programba való küldéséhez. Ez a beállítás a namedPipeConnectionRetryDelay együtt határozza meg a iisnode belüli kérelmek teljes időtúllépését. Az alapértelmezett érték 200 Azure App Service. Teljes időkorlát másodpercben = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
-Ez a beállítás határozza meg, hogy az egyes újrapróbálkozások között mennyi ideig (ms-ban) várjon az isznode, hogy a kérelmet a node.exe-nek küldje el a névvel ellátott cső fölé. Az alapértelmezett érték 250 ms.
-Teljes időtúllépés másodpercben = (maxNamedPipeConnectionRetry \* nevűPipeConnectionRetryDelay) / 1000
+Ezzel a beállítással szabályozható, hogy a iisnode mennyi időt várjon az egyes újrapróbálkozások között, hogy elküldje a kérelmet a Node. exe programnak a nevesített pipe-on keresztül. Az alapértelmezett érték 250 MS.
+Teljes időkorlát másodpercben = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
-Alapértelmezés szerint az Azure App Service iisnode teljes időjárata 200 \* 250 ms = 50 másodperc.
+Alapértelmezés szerint a Azure App Service iisnode teljes időtúllépése 200 \* 250 ms = 50 másodperc.
 
-### <a name="logdirectory"></a>logKönyvtár
+### <a name="logdirectory"></a>logDirectory
 
-Ez a beállítás vezérli azt a könyvtárat, ahol az iisnode naplók stdout/stderr. Az alapértelmezett érték az iisnode, amely a fő parancsfájlkönyvtárhoz képest van (könyvtár, ahol a fő server.js van jelen)
+Ez a beállítás szabályozza azt a könyvtárat, ahol a iisnode naplózza az stdout/stderr-t. Az alapértelmezett érték a iisnode, amely a fő parancsfájl könyvtárához van viszonyítva (könyvtár, ahol a Main Server. js megtalálható)
 
-### <a name="debuggerextensiondll"></a>hibakeresőKiterjesztés
+### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-Ez a beállítás határozza meg, hogy a csomópont-felügyelő isznode melyik verzióját használja a csomópontalkalmazás hibakereséséhez. Jelenleg az iisnode-inspector-0.7.3.dll és az iisnode-inspector.dll az egyetlen két érvényes érték ehhez a beállításhoz. Az alapértelmezett érték az iisnode-inspector-0.7.3.dll. Az iisnode-inspector-0.7.3.dll verzió csomópont-ellenőr-0.7.3-at használ, és webszoftver-szoftvercsatornákat használ. Engedélyezze a webszoftver-szoftvercsatornákat az Azure webappon ennek a verziónak a használatához. További <https://ranjithblogs.azurewebsites.net/?p=98> részletek az iisnode konfigurálásáról az új csomópont-felügyelő használatára.
+Ez a beállítás azt szabályozza, hogy a Node-Inspector iisnode milyen verzióját használja a Node-alkalmazás hibakeresése során. Jelenleg a iisnode-Inspector-0.7.3. dll és a iisnode-Inspector. dll a beállítás két érvényes értéke. Az alapértelmezett érték a iisnode-Inspector-0.7.3. dll. A iisnode-Inspector-0.7.3. dll verziója a Node-Inspector-0.7.3-t használja, és webes szoftvercsatornát használ. Engedélyezze a webes szoftvercsatornák használatát az Azure webappban, hogy ezt a verziót használja. <https://ranjithblogs.azurewebsites.net/?p=98> További információ a iisnode konfigurálásáról az új Node-Inspector használatára.
 
-### <a name="flushresponse"></a>flushResponse (flushResponse)
+### <a name="flushresponse"></a>flushResponse
 
-Az IIS alapértelmezett viselkedése az, hogy a kiürítés előtt legfeljebb 4 MB-ig puffereli a válaszadatokat, vagy a válasz végéig , attól függően, hogy melyik következik be előbb. Az iisnode konfigurációs beállítást kínál a viselkedés felülbírálásához: a válaszentitás törzsének egy töredékének kiürítéséhez, amint iisnode/@flushResponse az iisnode megkapja azt a node.exe fájltól, a web.config attribútumát "true" értékre kell állítania:
+Az IIS alapértelmezett viselkedése az, hogy a kiürítés előtt legfeljebb 4 MB-nyi válaszüzenetet, vagy a válasz végéig, attól függően, hogy melyik következik be először. a iisnode olyan konfigurációs beállítást biztosít, amely felülbírálja ezt a viselkedést: a válasz entitás törzsének töredékének kiürítéséhez, amint a iisnode megkapja a Node. exe fájlból iisnode/@flushResponse , be kell állítania az attribútumot a web. config fájlban az "igaz" értékre:
 
 ```xml
 <configuration>
@@ -71,9 +71,9 @@ Az IIS alapértelmezett viselkedése az, hogy a kiürítés előtt legfeljebb 4 
 </configuration>
 ```
 
-Engedélyezze a válaszentitás testének minden töredékének kiürítését, ami növeli a teljesítményterhelést, ami ~5%-kal csökkenti a rendszer átviteli teljesítményét (a 0.1.13-as értéktől). A legjobb, ha ezt a beállítást csak a válaszstreamelést igénylő végpontokra szeretné kiterjeszteni (például a `<location>` web.config elemének használatával)
+A válasz entitás törzsének minden töredékének kiürítése lehetővé teszi a teljesítmény terhelését, amely csökkenti a rendszer átviteli sebességét ~ 5%-kal (v 0.1.13). A legjobb, ha ezt a beállítást csak a válaszadási adatfolyamot igénylő végpontokra kívánja korlátozni `<location>` (például a web. config elem használatával)
 
-Ezenkívül a streamelési alkalmazások esetében az iisnode-kezelő válaszPufferLimit beállítását is 0-ra kell állítania.
+Emellett a folyamatos átviteli alkalmazások esetében a iisnode-kezelő responseBufferLimit is 0-ra kell állítania.
 
 ```xml
 <handlers>
@@ -83,47 +83,47 @@ Ezenkívül a streamelési alkalmazások esetében az iisnode-kezelő válaszPuf
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Pontosvesszővel elválasztott lista a módosításokat figyelő fájlokról. A fájl bármilyen módosítása az alkalmazás újrahasznosítását eredményezi. Minden bejegyzés egy választható könyvtárnévből és egy kötelező fájlnévből áll, amely ahhoz a könyvtárhoz viszonyítva található, ahol a fő alkalmazásbelépési pont található. A helyettesítő karakterek csak a fájlnév részben engedélyezettek. Az alapértelmezett érték `*.js;iisnode.yml`
+A változások számára figyelt fájlok pontosvesszővel tagolt listája. A fájl bármilyen módosítása az alkalmazás újrahasznosítását okozza. Mindegyik bejegyzés egy opcionális könyvtárnévből és egy szükséges fájlnévből áll, amely a fő alkalmazás belépési pontját tartalmazó könyvtárhoz viszonyítva található. A Wild kártyákat csak a fájlnév részen lehet engedélyezni. Az alapértelmezett érték `*.js;iisnode.yml`
 
-### <a name="recyclesignalenabled"></a>újrahasznosítottSignalEnabled
+### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Az alapértelmezett érték a hamis. Ha engedélyezve van, a csomópontalkalmazás csatlakozhat egy elnevezett\_csőhöz (IISNODE CONTROL\_PIPE környezeti változó), és "újrahasznosító" üzenetet küldhet. Ez okozza a w3wp újrahasznosítása kecsesen.
+Az alapértelmezett érték a hamis. Ha engedélyezve van, a Node-alkalmazás tud csatlakozni egy nevesített pipe-hoz (\_környezeti\_változó IISNODE-vezérlő cső), és "újrahasznosítási" üzenetet küld. Ennek hatására a W3wp szabályosan újrahasznosítható.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-Az alapértelmezett érték 0, ami azt jelenti, hogy ez a szolgáltatás le van tiltva. Ha 0-nál nagyobb értékre van beállítva, az iisnode minden "idlePageOutTimePeriod" gyermekfolyamatát ezredmásodpercben kilapozta. Tekintse meg a [dokumentációt,](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) hogy megtudja, mit jelent az oldalki. Ez a beállítás olyan alkalmazások esetében hasznos, amelyek nagy mennyiségű memóriát fogyasztanak, és időnként lemezre szeretnék lapozni a memóriát a RAM felszabadítása érdekében.
+Az alapértelmezett érték 0, ami azt jelenti, hogy ez a szolgáltatás le van tiltva. Ha a értéke 0-nál nagyobb értékre van állítva, a iisnode az összes alárendelt folyamatát (ezredmásodpercben) minden "idlePageOutTimePeriod" állapotba kerül. Tekintse meg a [dokumentációt](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) , amelyből megismerheti, hogy mit jelent az oldal. Ez a beállítás olyan alkalmazások esetében hasznos, amelyek nagy mennyiségű memóriát használnak, és a memóriában lévő memóriát időnként a RAM felszabadítása érdekében szeretnék kipróbálni.
 
 > [!WARNING]
-> Legyen óvatos, amikor engedélyezi a következő konfigurációs beállításokat az éles alkalmazásokon. A javaslat az, hogy ne engedélyezze őket az élő éles alkalmazások.
+> Körültekintően járjon el a következő konfigurációs beállításoknak az üzemi alkalmazásokban való engedélyezésekor. A javaslat célja, hogy ne engedélyezze őket éles üzemi alkalmazásokban.
 >
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Az alapértelmezett érték a hamis. Ha értéke igaz, az iisnode `iisnode-debug` egy HTTP-válaszfejlécet `iisnode-debug` ad hozzá minden http-válaszhoz, amelyet a fejlécérték url-nek küld. Az egyes diagnosztikai információk az URL-töredéket tekintve szerezhetők be, azonban a vizualizáció elérhető az URL-cím böngészőben való megnyitásával.
+Az alapértelmezett érték a hamis. Ha igaz értékre van állítva, a iisnode egy HTTP `iisnode-debug` -válasz fejlécét adja hozzá minden `iisnode-debug` HTTP-válaszhoz, amely a fejléc értékét URL-címként küldi el. Az URL-töredékek megkeresésével a rendszer az URL-cím megadásával megnyithatja az egyes diagnosztikai adatokat.
 
-### <a name="loggingenabled"></a>naplózás engedélyezve
+### <a name="loggingenabled"></a>loggingEnabled
 
-Ez a beállítás szabályozza az stdout és stderr iisnode általi naplózását. Az Iisnode rögzíti az stdout/stderr-t az általa indított és a "logDirectory" beállításban megadott könyvtárba írt csomópontfolyamatokból. Ha ez engedélyezve van, az alkalmazás naplót ír a fájlrendszerbe, és az alkalmazás által végzett naplózás mennyiségétől függően teljesítménybeli következményekkel járhat.
+Ez a beállítás szabályozza az stdout és a stderr naplózását a iisnode. A Iisnode rögzíti az stdout/stderr csomópontot az általa indított és a "logDirectory" beállításban megadott könyvtárba. Ha ez engedélyezve van, az alkalmazás a naplófájlokat a fájlrendszerbe írja, és az alkalmazás által végzett naplózás mennyiségétől függően lehetséges, hogy teljesítménybeli következményekkel jár.
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Az alapértelmezett érték a hamis. Ha értéke igaz, az iisnode megjeleníti a HTTP állapotkódot és a Win32 hibakódot a böngészőben. A win32-kód hasznos bizonyos típusú problémák hibakeresésében.
+Az alapértelmezett érték a hamis. Ha igaz értékre van állítva, a iisnode megjeleníti a HTTP-állapotkódot és a Win32-hibakódot a böngészőben. A Win32-kód bizonyos típusú problémák hibakereséséhez hasznos.
 
-### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>hibakeresésEngedélyezve (nem engedélyezi az élő éles környezetben)
+### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (ne engedélyezze az éles környezetben futó webhelyeken)
 
-Ez a beállítás vezérli a hibakeresési szolgáltatást. Az isznod integrálva van a csomópont-ellenőrrel. A beállítás engedélyezésével engedélyezheti a csomópontalkalmazás hibakeresését. A beállítás engedélyezésekor az iisnode csomópont-felügyelő fájlokat hoz létre a "debuggerVirtualDir" könyvtárban a csomópontalkalmazáselső hibakeresési kérésén. A csomópont-felügyelőt úgy töltheti be, hogy kérést küld a számára. `http://yoursite/server.js/debug` A hibakeresési URL-szegmenst a "debuggerPathSegment" beállítással szabályozhatja. Alapértelmezés szerint a debuggerPathSegment='debug'. Beállíthatja `debuggerPathSegment` például a GUID azonosítót, hogy mások nehezebben fedezhessék fel őket.
+Ez a beállítás vezérli a hibakeresési funkciót. A Iisnode integrálva van a Node-Inspector szolgáltatással. A beállítás engedélyezésével engedélyezheti a Node-alkalmazás hibakeresését. Ha engedélyezi ezt a beállítást, a iisnode létrehozza a Node-Inspector-fájlokat a Node-alkalmazás első hibakeresési kérelmének "debuggerVirtualDir" könyvtárába. A Node-Inspector betöltéséhez kérelem küldésére van lehetőség `http://yoursite/server.js/debug`. A hibakeresési URL-szegmenst a "debuggerPathSegment" beállítással szabályozhatja. Alapértelmezés szerint a debuggerPathSegment = "debug". Beállíthatja `debuggerPathSegment` egy GUID azonosítóra, például úgy, hogy a többiek nehezebben felderítsék.
 
-A hibakeresésről a Windows hibakereséséről további részletekért olvassa el [a Debug node.js alkalmazásokat](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) a Windows rendszeren.
+A hibakereséssel kapcsolatos további részletekért olvassa el [a Windows hibakeresés Node. js-alkalmazásait](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) .
 
 ## <a name="scenarios-and-recommendationstroubleshooting"></a>Forgatókönyvek és javaslatok/hibaelhárítás
 
-### <a name="my-node-application-is-making-excessive-outbound-calls"></a>A csomópontalkalmazás túlzott kimenő hívásokat hajt végre
+### <a name="my-node-application-is-making-excessive-outbound-calls"></a>A Node-alkalmazásom túlzott kimenő hívásokat tesz
 
-Sok alkalmazás azt szeretné, hogy a kimenő kapcsolatok részeként a rendszeres működés. Például, ha egy kérelem érkezik, a csomópont alkalmazás szeretné felvenni a kapcsolatot a REST API máshol, és szerezzen be néhány információt a kérelem feldolgozásához. Http vagy https hívások hozadékához érdemes életben tartani a ügynököt. Használhatja az agentkeepalive modult életben tartani ügynökként, amikor ezeket a kimenő hívásokat hajt végre.
+Számos alkalmazás szeretne kimenő kapcsolatokat végezni a normál működésük részeként. Ha például egy kérelem érkezik, a Node-alkalmazás szeretne kapcsolatba lépni egy REST API máshol, és néhány információt kap a kérelem feldolgozásához. Http-vagy https-hívások esetén a Keep Alive ügynököt érdemes használni. A agentkeepalive modult használhatja a Keep Alive-ügynökként a kimenő hívások elkészítésekor.
 
-Az agentkeepalive modul biztosítja, hogy a szoftvercsatornák újra felhasználhatók az Azure webapp virtuális gépén. Új szoftvercsatorna létrehozása minden kimenő kérelem többlettöbbletet jelent az alkalmazás számára. Miután az alkalmazás újrafelhasználja a szoftvercsatornák at kimenő kérelmek biztosítja, hogy az alkalmazás nem lépi túl a virtuális gépenként lefoglalt maxSockets. Az Azure App Service javaslata az, hogy az agentKeepAlive maxSockets értékét összesen \* (4 példány node.exe 40 maxSockets/instance) 160 sockets virtuális gépenként.
+A agentkeepalive modul biztosítja, hogy a szoftvercsatornák újra felhasználhatók legyenek az Azure WebApp virtuális gépén. Az új szoftvercsatorna létrehozása minden kimenő kérelemhez a terhelést az alkalmazáshoz adja. Ha az alkalmazás a kimenő kérelmekhez szoftvercsatornát használ, biztosítja, hogy az alkalmazás ne lépje túl a virtuális gép által lefoglalt maxsocket. A Azure App Service-re vonatkozó javaslat a agentKeepAlive maxsocket értékének beállítása a virtuális gépenként megadott összesen (4 csomópont. \* exe 40 maxsocket/példány) 160-es szoftvercsatorna esetében.
 
-Példa [ügynökKeepALive-konfigurációra:](https://www.npmjs.com/package/agentkeepalive)
+Példa [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) -konfigurációra:
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -135,17 +135,17 @@ let keepaliveAgent = new Agent({
 ```
 
 > [!IMPORTANT]
-> Ebben a példában feltételezi, hogy 4 node.exe fut a virtuális gépen. Ha a virtuális gépen más számú node.exe fut, ennek megfelelően módosítania kell a maxSockets beállítást.
+> Ez a példa feltételezi, hogy a virtuális gépen 4 Node. exe fut. Ha a virtuális gépen eltérő számú Node. exe fut, akkor ennek megfelelően kell módosítania a maxsocket beállítást.
 >
 
-#### <a name="my-node-application-is-consuming-too-much-cpu"></a>A csomópontalkalmazásom túl sok CPU-t fogyaszt
+#### <a name="my-node-application-is-consuming-too-much-cpu"></a>A saját Node alkalmazásom túl sok PROCESSZORt fogyaszt
 
-Előfordulhat, hogy az Azure App Service-től a portálon a magas cpu-fogyasztás javaslatot kap. Beállíthatja azt is, hogy a monitorok bizonyos [mutatókat figyeljék.](web-sites-monitor.md) Amikor az [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md)ellenőrzi a CPU-használatot, ellenőrizze a CPU MAX értékeit, hogy ne maradjon le a csúcsértékekről.
-Ha úgy gondolja, hogy az alkalmazás túl sok CPU-t használ, és nem tudja megmagyarázni, hogy miért, profillal láthatja a csomópontalkalmazást, hogy megtudja.
+Előfordulhat, hogy a portálon a nagy CPU-fogyasztással kapcsolatban Azure App Servicera vonatkozó javaslatot kap. Bizonyos [mérőszámok](web-sites-monitor.md)figyeléséhez beállíthatja a figyelőket is. Ha ellenőrzi a CPU-használatot az [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md), ellenőrizze a processzorok maximális értékeit, hogy ne hagyja ki a csúcsérték értékét.
+Ha úgy gondolja, hogy az alkalmazása túl sok CPU-t használ, és nem tudja megmagyarázni, hogy miért, a Node-alkalmazás megkereséséhez.
 
-#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A csomópontalkalmazás profilkészítése az Azure App Service-en a V8-Profiler segítségével
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A Node-alkalmazás profilkészítése Azure App Service a V8-Profilerrel
 
-Tegyük fel például, hogy van egy hello world alkalmazása, amelyet a következőképpen szeretne profilozni:
+Tegyük fel például, hogy van egy Hello World-alkalmazás, amelyet a következő módon szeretne profilt használni:
 
 ```nodejs
 const http = require('http');
@@ -166,16 +166,16 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Ugrás a Hibakeresési konzol webhelyére`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Ugrás a hibakeresési konzol webhelyére`https://yoursite.scm.azurewebsites.net/DebugConsole`
 
-Lépjen be a webhely/wwwroot könyvtárba. Megjelenik egy parancssor, ahogy az a következő példában látható:
+Lépjen be a site/wwwroot könyvtárba. Megjelenik egy parancssor, ahogy az az alábbi példában is látható:
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 Futtassa a következő parancsot: `npm install v8-profiler`.
 
-Ez a parancs telepíti a v8-profiler\_csomópontmodulok könyvtár és annak összes függősége.
-Most, szerkesztheti a server.js profilt az alkalmazás.
+Ez a parancs telepíti a V8-Profilert\_a Node modules címtárban és annak összes függőségében.
+Most szerkessze a Server. js fájlt az alkalmazás profiljához.
 
 ```nodejs
 const http = require('http');
@@ -201,77 +201,77 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Az előző kód profilok a WriteConsoleLog függvényt, majd írja a profil kimenetet a "profile.cpuprofile" fájlt a webhely wwwroot. Küldjön egy kérelmet a jelentkezési lapnak. Megjelenik egy "profile.cpuprofile" fájl létre a webhely wwwroot.
+Az előző kód a WriteConsoleLog függvényt, majd a profil kimenetét írja a "Profile. cpuprofile" fájlba a hely wwwroot. Kérelem küldése az alkalmazásnak. Megjelenik egy "Profile. cpuprofile" fájl, amely a hely wwwroot van létrehozva.
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Töltse le ezt a fájlt, és nyissa meg a Chrome F12 Eszközök. Nyomja le az F12 billentyűt a **Load** Chrome-on, majd válassza a **Profilok** lapot. Válassza ki a letöltött profile.cpuprofile fájlt. Kattintson az imént betöltött profilra.
+Töltse le ezt a fájlt, és nyissa meg a Chrome F12-eszközökkel. Nyomja meg az F12 billentyűt a Chrome-on, majd válassza a **profilok** fület. Válassza a **Betöltés** gombot. Válassza ki a letöltött Profile. cpuprofile fájlt. Kattintson az imént betöltött profilra.
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
-Láthatja, hogy az idő 95%-át a WriteConsoleLog függvény felhasználta. A kimenet a pontos sorszámokat és forrásfájlokat is megjeleníti, amelyek a problémát okozták.
+Láthatja, hogy az idő 95%-ában használták a WriteConsoleLog függvény. A kimenetben a probléma okozta pontos sorszámokat és forrásfájlokat is megjeleníti.
 
-### <a name="my-node-application-is-consuming-too-much-memory"></a>A csomópontalkalmazás túl sok memóriát fogyaszt
+### <a name="my-node-application-is-consuming-too-much-memory"></a>A saját Node alkalmazásom túl sok memóriát fogyaszt
 
-Ha az alkalmazás túl sok memóriát fogyaszt, megjelenik egy értesítés az Azure App Service-ből a portálon a magas memóriafelhasználásról. Beállíthatja, hogy a figyelők bizonyos [mutatókat figyeljék.](web-sites-monitor.md) Amikor az [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md)ellenőrzi a memóriahasználatot, ellenőrizze a MAX memóriaértékeket, hogy ne maradjon le a csúcsértékekről.
+Ha az alkalmazás túl sok memóriát vesz igénybe, akkor a portálon a nagy memória-használatról szóló értesítés jelenik meg Azure App Service. Beállíthat figyelőket bizonyos [mérőszámok](web-sites-monitor.md)megtekintéséhez. A memóriahasználat az [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md)való ellenőrzésekor ügyeljen arra, hogy ellenőrizze a memória maximális értékeit, hogy ne hagyja ki a csúcsérték értékét.
 
-#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Szivárgásészlelés és halomkülönbség a node.js fájlhoz
+#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Szivárgás észlelése és heap diff a Node. js-hez
 
-Használhatja [a node-memwatch-ot](https://github.com/lloyd/node-memwatch) a memóriavesztések azonosításához.
-Telepítheti, `memwatch` mint a v8-profiler, és szerkesztheti a kódot, hogy rögzítse és diff a halom, hogy azonosítsa a memóriaszivárgás az alkalmazásban.
+A memwatch segítségével azonosíthatja a memóriavesztés azonosítására szolgáló [csomópontot](https://github.com/lloyd/node-memwatch) .
+Ugyanúgy telepítheti `memwatch` , mint a V8-Profiler, és szerkesztheti a kódot a rögzítéshez és a diffekhez, hogy azonosítsa a memóriavesztés az alkalmazásban.
 
-### <a name="my-nodeexes-are-getting-killed-randomly"></a>A node.exe-met véletlenszerűen ölik meg.
+### <a name="my-nodeexes-are-getting-killed-randomly"></a>A Node. exe fájl véletlenszerűen lett letörölve
 
-Több oka is van annak, hogy a node.exe-t véletlenszerűen leállították:
+Néhány ok, amiért a Node. exe véletlenszerűen leáll:
 
-1. Az alkalmazás nem fogott kivételeket vet\\be\\–\\\\Ellenőrizze a d: home LogFiles Application logging-errors.txt fájlt a kidobott kivétel részleteiért. Ez a fájl a verem nyomkövetési segítségével debug és kijavítani az alkalmazást.
-2. Az alkalmazás túl sok memóriát fogyaszt, ami hatással van más folyamatokra az első lépésektől. Ha a virtuális gép teljes memóriája megközelíti a 100%-ot, a node.exe-t a folyamatkezelő leölheti. A folyamatkezelő megöl néhány folyamatot, hogy más folyamatok lehetőséget kapjanak a munkára. A probléma megoldásához profilozza az alkalmazást memóriavesztésre. Ha az alkalmazás nagy mennyiségű memóriát igényel, egy nagyobb virtuális gépre skálázható (ami növeli a virtuális gép számára elérhető RAM-ot).
+1. Az alkalmazás nem észlelt kivételeket dob – a d\\:\\Home\\LogFiles\\alkalmazás Logging-errors. txt fájljában adja meg az eldobott kivétel részleteit. Ennek a fájlnak a verem-nyomkövetése segíti az alkalmazás hibakeresését és javítását.
+2. Az alkalmazás túl sok memóriát vesz igénybe, ami az első lépések során más folyamatokat is érint. Ha a virtuális gép teljes memóriája 100%-kal közelebb van, a Process Manager a Node. exe fájlt is letiltotta. A Process Manager bizonyos folyamatokat tesz lehetővé, hogy más folyamatok is elvégezzenek némi munkát. A probléma megoldásához a memóriabeli szivárgáshoz adja meg az alkalmazás profilját. Ha az alkalmazás nagy mennyiségű memóriát igényel, a vertikális felskálázást egy nagyobb méretű virtuális gépre (ami növeli a virtuális gép számára elérhető RAM-ot).
 
-### <a name="my-node-application-does-not-start"></a>A csomópontalkalmazás nem indul el
+### <a name="my-node-application-does-not-start"></a>A saját Node-alkalmazás nem indul el
 
-Ha az alkalmazás 500 hibát ad vissza az indításkor, annak több oka is lehet:
+Ha az alkalmazás az indításakor 500 hibát ad vissza, lehetséges, hogy néhány oka lehet:
 
-1. A Node.exe nem a megfelelő helyen található. Ellenőrizze a nodeProcessCommandLine beállítást.
-2. A fő parancsfájl nem a megfelelő helyen található. Ellenőrizze a web.config fájlt, és győződjön meg arról, hogy a kezelők szakaszban lévő fő parancsfájl neve megegyezik a fő parancsfájlfájllal.
-3. A Web.config konfigurációja nem megfelelő – ellenőrizze a beállítások nevét/értékeit.
-4. Hidegindítás – Az alkalmazás indítása túl sokáig tart. Ha az alkalmazás hosszabb időt vesz igénybe, mint (maxNamedPipeConnectionRetry \* nevűPipeConnectionRetryDelay) / 1000 másodperc, iisnode ad vissza 500 hiba. Növelje ezeknek a beállításoknak az értékeit, hogy megfeleljen az alkalmazás kezdési időpontjának, hogy megakadályozza az iisnode időtúllépésének és az 500-as hiba visszaadását.
+1. A Node. exe nem szerepel a megfelelő helyen. NodeProcessCommandLine-beállítás keresése
+2. A fő parancsfájl nem szerepel a megfelelő helyen. Ellenőrizze a web. config fájlt, és győződjön meg arról, hogy a kezelők szakaszban található fő parancsfájl neve megegyezik a fő parancsfájl nevével.
+3. A web. config konfiguráció nem megfelelő – a beállítások neveinek és értékeinek a megadásával.
+4. Hideg indítás – az alkalmazása túl sokáig tart. Ha az alkalmazás a (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000 másodpercnél hosszabb időt vesz igénybe, a iisnode egy 500-es hibát ad vissza. Növelje ezen beállítások értékeit az alkalmazás kezdési idejének megfelelően, hogy megakadályozza a iisnode időtúllépését és a 500-es hiba visszaadását.
 
-### <a name="my-node-application-crashed"></a>Összeomlott a csomópontalkalmazásom
+### <a name="my-node-application-crashed"></a>A saját Node-alkalmazás összeomlott
 
-Az alkalmazás nem feledkező `d:\\home\\LogFiles\\Application\\logging-errors.txt` kivételeket vet be – Ellenőrizze a fájlt a kidobott kivétel részleteiért. Ez a fájl a verem nyomkövetési segítségével diagnosztizálni és kijavítani az alkalmazást.
+Az alkalmazás nem észlelt kivételeket dob – `d:\\home\\LogFiles\\Application\\logging-errors.txt` a fájl részleteit a kidobott kivétel részleteinek megtekintéséhez. Ennek a fájlnak a verem-nyomkövetése segíti az alkalmazás diagnosztizálását és javítását.
 
-### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>A csomópontalkalmazás indítása túl sok időt vesz igénybe (Hidegindítás)
+### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>A saját Node alkalmazásom túl sok időt vesz igénybe a kezdéshez (hidegindítás)
 
-A hosszú alkalmazásindítási idők gyakori oka a\_csomópontmodulokban lévő fájlok nagy száma. Az alkalmazás megpróbálja betölteni a legtöbb ilyen fájlokat indításkor. Alapértelmezés szerint, mivel a fájlok az Azure App Service hálózati megosztásán tárolódnak, sok fájl betöltése időbe telhet.
-Néhány megoldás, hogy ez a folyamat gyorsabb:
+A hosszú alkalmazások indítási idejének gyakori oka a csomópont\_-modulok nagy száma. Az alkalmazás az indításkor megpróbálja betölteni a fájlok nagy részét. Alapértelmezés szerint mivel a fájlok a Azure App Service hálózati megosztásán vannak tárolva, sok fájl betöltésével időt vehet igénybe.
+Néhány megoldás a folyamat gyorsabb elvégzésére:
 
-1. Győződjön meg arról, hogy egy lapos függőségi struktúra, és nem ismétlődő függőségek használatával npm3 a modulok telepítéséhez.
-2. Próbálja meg lusta\_betölteni a csomópont modulokat, és nem tölti be az összes modult az alkalmazás indításakor. A Lusta terhelésmodulokhoz a require('module') hívásakkor történik meg, amikor ténylegesen szüksége van a modulra a funkción belül a modulkód első végrehajtása előtt.
-3. Az Azure App Service egy helyi gyorsítótár nevű funkciót kínál. Ez a szolgáltatás másolja a tartalmat a hálózati megosztásról a helyi lemezre a virtuális gép. Mivel a fájlok helyiek, a csomópontmodulok\_betöltési ideje sokkal gyorsabb.
+1. Győződjön meg arról, hogy rendelkezik egy egyszerű függőségi struktúrával, és nem duplikált függőségekkel, ha a npm3 használatával telepíti a modulokat.
+2. Próbálja meg a Node\_-modulok betöltését, és ne töltse be az összes modult az alkalmazás indításakor. A lusta betöltési modulok esetében a kötelező ("modul") hívását kell végrehajtani, amikor ténylegesen szükség van a modulon belül a modul kódjának első végrehajtása előtt.
+3. Azure App Service a helyi gyorsítótár nevű szolgáltatást kínálja. A szolgáltatás a hálózati megosztásról másolja a tartalmat a virtuális gép helyi lemezére. Mivel a fájlok helyiek, a csomópont\_-modulok betöltési ideje sokkal gyorsabb.
 
-## <a name="iisnode-http-status-and-substatus"></a>IISNODE http állapota és alállapota
+## <a name="iisnode-http-status-and-substatus"></a>IISNODE http-állapota és alállapota
 
-A `cnodeconstants` [forrásfájl](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h) felsorolja az összes lehetséges állapot/alállapot kombinációt, amelyet az iisnode hiba miatt visszaadhat.
+A `cnodeconstants` [forrásfájl](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h) felsorolja az összes lehetséges állapot/részállapot kombinációt, amelyet a iisnode egy hiba miatt vissza tud adni.
 
-Engedélyezze a FREB-t az alkalmazáshoz, hogy lássa a win32 hibakódot (győződjön meg róla, hogy a FREB-t csak nem éles helyeken engedélyezi teljesítménybeli okokból).
+Az alkalmazás sikertelen kérelmek ESEMÉNYTÁROLÁSI engedélyezése a Win32-hibakód megjelenítéséhez (Ügyeljen arra, hogy a sikertelen kérelmek ESEMÉNYTÁROLÁSI csak a nem üzemi célú helyeken engedélyezze a teljesítmény szempontjából).
 
-| Http állapota | Http alállapot | Lehetséges ok? |
+| Http-állapot | Http-alállapot | Lehetséges ok? |
 | --- | --- | --- |
-| 500 |1000 |Probléma történt a kérelem iISNODE-nak történő elküldésével – Ellenőrizze, hogy a node.exe elindult-e. A Node.exe indításkor összeomlhatott. Ellenőrizze a web.config konfigurációját, hogy vannak-e hibák. |
-| 500 |1001 |- Win32Error 0x2 - Az alkalmazás nem válaszol az URL-re. Ellenőrizze az URL-újraírási szabályokat, vagy ellenőrizze, hogy az expressz alkalmazás a megfelelő útvonalakat definiált-e. - Win32Error 0x6d – a neves cső foglalt – a Node.exe nem fogad el kéréseket, mert a cső foglalt. Ellenőrizze a magas cpu-használat. - Egyéb hibák - ellenőrizze, node.exe összeomlott. |
-| 500 |1002 |Node.exe összeomlott - check\\\\d:\\home LogFiles logging-errors.txt a verem nyomkövetés. |
-| 500 |1003 |Csőkonfigurációs probléma – A megnevezett csőkonfiguráció helytelen. |
-| 500 |1004-1018 |Hiba történt a kérés elküldése vagy a válasz feldolgozása közben a node.exe-nek/ Ellenőrizze, hogy a node.exe összeomlott-e. check\\d:\\home\\LogFiles logging-errors.txt a veremnyomkövetéshez. |
-| 503 |1000 |Nincs elég memória több elnevezett csőkapcsolat lefoglalásához. Ellenőrizze, hogy az alkalmazás miért fogyaszt annyi memóriát. Ellenőrizze a maxConcurrentRequestsPerProcess beállításértékét. Ha nem végtelen, és sok kéréssel rendelkezik, növelje ezt az értéket a hiba megelőzése érdekében. |
-| 503 |1001 |A kérés nem küldhető el a node.exe programba, mert az alkalmazás újrahasznosítás. Az alkalmazás újrahasznosítása után a kérelmeket a szokásos módon kell kézbesíteni. |
-| 503 |1002 |Ellenőrizze a win32 hibakódot a tényleges ok miatt – A kérés nem küldhető el egy node.exe-nek. |
-| 503 |1003 |A névvel ellátott cső túl elfoglalt – Ellenőrizze, hogy a node.exe túlzott processzort fogyaszt-e |
+| 500 |1000 |Hiba történt a IISNODE vonatkozó kérelem elküldésekor – ellenőrizze, hogy elindult-e a Node. exe. A Node. exe összeomlott az indításkor. A hibákért keresse meg a web. config konfigurációját. |
+| 500 |1001 |-Win32Error 0x2 – az alkalmazás nem válaszol az URL-címre. Ellenőrizze az URL-cím átírási szabályait, vagy ellenőrizze, hogy a megfelelő útvonalak vannak-e megadva az expressz alkalmazáshoz. -Win32Error 0x6d – nevesített cső foglalt – a Node. exe nem fogadja el a kérelmeket, mert a cső foglalt. Magas CPU-használat keresése. – Egyéb hibák – ellenőrizze, hogy a Node. exe összeomlott-e. |
+| 500 |1002 |A Node. exe összeomlott – a d\\:\\Home LogFiles\\Logging-errors. txt fájl használata a verem nyomkövetéséhez. |
+| 500 |1003 |Pipe konfigurációs probléma – a nevesített cső konfigurációja helytelen. |
+| 500 |1004-1018 |Hiba történt a kérelem elküldésekor vagy a Node. exe fájlra való válasz feldolgozásakor. Ellenőrizze, hogy a Node. exe összeomlott-e. a d:\\Home\\LogFiles\\Logging-errors. txt fájljának bejelölése a verem nyomkövetéséhez. |
+| 503 |1000 |Nincs elég memória a nevesített pipe-kapcsolatok kiosztásához. Győződjön meg arról, hogy az alkalmazás mennyi memóriát fogyaszt. MaxConcurrentRequestsPerProcess-beállítási értékének megadása. Ha nem végtelen, és sok kérése van, növelje ezt az értéket a hiba elkerüléséhez. |
+| 503 |1001 |A kérelmet nem lehetett elküldeni a Node. exe fájlba, mert az alkalmazás újrahasznosításra kerül. Az alkalmazás újrahasznosítása után a kérelmeket szabályosan kell kézbesíteni. |
+| 503 |1002 |A Win32-hibakód tényleges okának ellenőrzése – a kérést nem sikerült a Node. exe fájlba elküldeni. |
+| 503 |1003 |A nevesített cső túl elfoglalt – ellenőrizze, hogy a Node. exe túl nagy mennyiségű PROCESSZORt használ-e. |
 
-A NODE.exe-nek `NODE_PENDING_PIPE_INSTANCES`van egy beállítása . Az Azure App Service-ben ez az érték 5000 értékre van állítva. Ami azt jelenti, hogy a node.exe egyszerre 5000 kérést fogadhat el a megnevezett csőben. Ez az érték elég jónak kell lennie az Azure App Service-en futó legtöbb csomópont-alkalmazás számára. Az 503.1003-as érték nem jelenik meg az Azure App Service szolgáltatásban, mert a`NODE_PENDING_PIPE_INSTANCES`
+A NODE. exe egy nevű `NODE_PENDING_PIPE_INSTANCES`beállítást tartalmaz. Azure App Service esetén ez az érték 5000-re van állítva. Azt jelenti, hogy a Node. exe egyszerre fogad 5000-kérelmeket a nevesített pipe-on. Az értéknek elég jónak lennie a Azure App Serviceon futó legtöbb Node-alkalmazáshoz. A 503,1003-as érték nem látható a Azure App Service a`NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>További erőforrások
 
-Kövesse ezeket a hivatkozásokat, ha többet szeretne megtudni a node.js alkalmazásokról az Azure App Service szolgáltatásban.
+Az alábbi hivatkozásokat követve további információkat tudhat meg a Node. js-alkalmazásokról Azure App Serviceon.
 
 * [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)

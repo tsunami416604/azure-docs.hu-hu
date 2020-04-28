@@ -1,5 +1,5 @@
 ---
-title: Nagyfrekvenciás kereskedés az Azure Stream Analytics használatával
+title: Nagy gyakoriságú kereskedelem a Azure Stream Analytics használatával
 description: Lineáris regressziós modellek tanítása és pontozása Azure Stream Analytics-feladatban.
 author: mamccrea
 ms.author: mamccrea
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426208"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
@@ -70,7 +70,7 @@ A kötetsorrend-egyenetlenség (VOI) az aktuális ajánlattételi/lekérdezési 
 
 A betanított modell ezt követően az ajánlatok árváltozásának előrejelzésére használható az aktuális kereskedési napon, valós időben. Ha a modell kellően nagy árváltozást jelez előre, akkor történik kereskedelmi ügylet végrehajtása. A küszöbérték-beállítástól függően egyetlen kereskedési napon kereskedelmi ügyletek ezreinek lebonyolítása várható egyetlen részvény esetében.
 
-![Mennyiségi megbízás egyensúlyának meghatározása](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Mennyiségi sorrendi egyensúlyhiány definíciója](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Most fejezzük ki a tanítási és előrejelzési műveleteket egy Azure Stream Analytics-feladatban.
 
@@ -450,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Kereskedik A Power BI-diagram vizualizációja](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Trades Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![PNL Power BI-diagram vizualizációja](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![PNL Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Összefoglalás

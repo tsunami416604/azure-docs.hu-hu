@@ -1,39 +1,39 @@
 ---
-title: Ismerje meg az Azure-szabályzatot az AKS-motorhoz
-description: Ismerje meg, hogy az Azure Policy hogyan használja a CustomResourceDefinitions és a Open Policy Agent from Gatekeeper v3-ból a fürtök aKS-motorral való kezeléséhez.
+title: Ismerkedjen meg Azure Policy az AK-motorral
+description: Megtudhatja, hogyan használja a Azure Policy a CustomResourceDefinitions-t és a házirend-ügynököt a forgalomirányító v3-mel a fürtök és az AK-motor
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436422"
 ---
-# <a name="understand-azure-policy-for-aks-engine"></a>Az Azure-szabályzat az AKS-motorhoz
+# <a name="understand-azure-policy-for-aks-engine"></a>Az AK-motor Azure Policy ismertetése
 
-Az Azure Policy integrálható [az AKS-motorral,](https://github.com/Azure/aks-engine/blob/master/docs/README.md)amely kényelmes eszközlehetővé teszi a saját felügyelt Kubernetes-fürt azure-beli gyors indítását. Ez az integráció lehetővé teszi az AKS Engine saját felügyeletű fürtjein a központi, következetes módon történő nagy léptékű kényszerítéseket és védelmet. Az [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (béta) használatával, amely a Kubernetes _belépési vezérlő webhookja,_ az Azure-szabályzat lehetővé teszi az Azure-erőforrások és az AKS Engine saját kezelésű fürtök megfelelőségi állapotának kezelését és jelentését egy helyről.
+A Azure Policy az [AK-motorral](https://github.com/Azure/aks-engine/blob/master/docs/README.md), egy olyan rendszerrel, amely kényelmes eszközöket biztosít az Azure-beli önálló felügyelt Kubernetes-fürtök gyors elindításához. Ez az integráció lehetővé teszi, hogy központosított, konzisztens módon kezelje a saját AK-beli motorja által felügyelt fürtöket. Azáltal, hogy kiterjeszti a [nyílt házirendügynök](https://www.openpolicyagent.org/) (OPA) [forgalomirányító](https://github.com/open-policy-agent/gatekeeper) v3 (bétaverzió), a Kubernetes-hez készült _belépésvezérlés webhookot_ , a Azure Policy lehetővé teszi az Azure-erőforrások és az egyhelyes motorral rendelkező önálló felügyelt fürtök megfelelőségi állapotának kezelését és jelentését.
 
 > [!NOTE]
-> Az Azure Policy for AKS Engine nyilvános előzetes verzióban érhető el, és nem rendelkezik SLA-val. Gatekeeper v3 béta verzióban érhető el, és a nyílt forráskódú közösség támogatja. A szolgáltatás csak a beépített házirend-definíciókat és egy AKS Engine-fürtöt támogatja minden egyszerű szolgáltatással konfigurált erőforráscsoporthoz.
+> Az AK-motor Azure Policy nyilvános előzetes verzióban érhető el, és nem rendelkezik SLA-val. A forgalomirányító v3 béta-verzióban érhető el, és a nyílt forráskódú Közösség támogatja. A szolgáltatás csak a beépített szabályzat-definíciókat és egyetlen AK-beli motor-fürtöt támogat minden egyszerű szolgáltatással konfigurált erőforráscsoport számára.
 
 > [!IMPORTANT]
-> Az AKS-motor, az AKS-motor vagy a Gatekeeper v3 Azure-szabályzatának támogatásához hozzon létre egy [új problémát](https://github.com/Azure/aks-engine/issues/new/choose) az AKS Engine GitHub-tárházban.
+> Ahhoz, hogy támogatást kapjon a Azure Policy az AK-motor, az AK-motor vagy a forgalomirányító v3 számára, hozzon létre egy [új problémát](https://github.com/Azure/aks-engine/issues/new/choose) az AK-motor GitHub-tárházában.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Policy for AKS Engine engedélyezéséhez és használatához az Azure-beli, saját felügyelt Kubernetes-fürtjével a következő műveleteket kell elkövetnie:
+Az alábbi műveletek végrehajtásával engedélyezheti és használhatja a Azure Policy a saját felügyelt Kubernetes-fürtökkel rendelkező, az AK-beli motorhoz:
 
 - [Előfeltételek](#prerequisites)
-- [Az Azure Policy bővítmény telepítése](#installing-the-add-on)
-- [Házirend-definíció hozzárendelése az AKS-motorhoz](#built-in-policies)
+- [A Azure Policy bővítmény telepítése](#installing-the-add-on)
+- [Házirend-definíció társítása az AK-motorhoz](#built-in-policies)
 - [Várakozás az ellenőrzésre](#validation-and-reporting-frequency)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Policy bővítmény telepítése vagy a szolgáltatásszolgáltatások bármelyikének engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft.PolicyInsights** erőforrás-szolgáltatót, és létre kell hoznia egy szerepkör-hozzárendelést a fürtszolgáltatás egyszerű szolgáltatásához. 
+A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, és létre kell hoznia egy szerepkör-hozzárendelést a fürtszolgáltatási rendszerbiztonsági tag számára. 
 
-1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az [Erőforrás-szolgáltatók és -típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) című lépéseket, vagy futtassa az Azure CLI vagy az Azure PowerShell parancsot:
+1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az erőforrás- [szolgáltatók és-típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lépéseit, vagy futtassa az Azure CLI vagy a Azure PowerShell parancsot:
 
    - Azure CLI
 
@@ -53,9 +53,9 @@ Az Azure Policy bővítmény telepítése vagy a szolgáltatásszolgáltatások 
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
 
-1. Szerepkör-hozzárendelés létrehozása az egyszerű fürtszolgáltatáshoz
+1. Szerepkör-hozzárendelés létrehozása a fürtszolgáltatási egyszerű szolgáltatáshoz
 
-   - Ha nem ismeri a fürtegyszerűs alkalmazásazonosítóját, keresse meg a következő paranccsal.
+   - Ha nem ismeri a fürtszolgáltatás egyszerű alkalmazásának AZONOSÍTÓját, keresse meg az alábbi parancsot.
 
      ```bash
      # Get the kube-apiserver pod name
@@ -65,28 +65,28 @@ Az Azure Policy bővítmény telepítése vagy a szolgáltatásszolgáltatások 
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
 
-   - A "Policy Insights Data Writer (Preview)" szerepkör-hozzárendelés hozzárendelése a fürt egyszerű alkalmazásazonosítóhoz (az előző lépésből származó _aadClientID_ érték) az Azure CLI-vel. Cserélje `<subscriptionId>` le az előfizetés-azonosítóját és `<aks engine cluster resource group>` az erőforráscsoportot, amelyben az AKS Engine saját felügyelt Kubernetes-fürt található.
+   - A "Policy betekintő adatíró (előzetes verzió)" szerepkör-hozzárendelés hozzárendelése a fürtszolgáltatás egyszerű _aadClientID_ (az előző lépésből származó érték) az Azure CLI-vel. A `<subscriptionId>` helyére írja be az előfizetés `<aks engine cluster resource group>` -azonosítóját és az ERŐFORRÁSCSOPORTOT, amelyben az AK-motor saját felügyeletű Kubernetes-fürtje található.
 
      ```azurecli-interactive
      az role assignment create --assignee <cluster service principal app ID> --scope "/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>" --role "Policy Insights Data Writer (Preview)"
      ```
 
-## <a name="azure-policy-add-on"></a>Azure-szabályzat bővítmény
+## <a name="azure-policy-add-on"></a>Azure Policy bővítmény
 
-A Kubernetes _Azure Policy bővítménye_ az Azure Policy szolgáltatást a Gatekeeper belépési vezérlőhöz kapcsolja. A _kube-system_ névtérbe telepített bővítmény a következő funkciókat adja meg:
+A Kubernetes _Azure Policy-bővítménye_ csatlakoztatja a Azure Policy szolgáltatást a forgalomirányító belépésvezérlés szolgáltatáshoz. A _Kube-System_ névtérbe telepített bővítmény a következő funkciókat hozza létre:
 
-- Az Azure-szabályzattal ellenőrzi az AKS Engine-fürthozzárendeléseit
-- A házirend részleteinek, a megkötési sablonoknak és a korlátozásoknak a leése és telepítése
-- Teljes vizsgálatmegfelelőség-ellenőrzést futtat az AKS Engine fürtön
-- A naplózási és megfelelőségi részletek jelentései visszaaz Azure-szabályzatba
+- Az AK-motor fürtjéhez való hozzárendelések Azure Policy ellenőrzése
+- Letölti és telepíti a szabályzat részleteit, a korlátozási sablonokat és a megkötéseket.
+- Teljes ellenőrzési megfelelőségi ellenőrzés futtatása az KABAi motor fürtjén
+- A naplózási és megfelelőségi adatok visszaállítása a Azure Policy
 
 ### <a name="installing-the-add-on"></a>A bővítmény telepítése
 
-Miután az előfeltételek befejeződtek, az Azure Policy bővítmény telepíthető. A telepítés lehet egy AKS-motor létrehozása vagy frissítési ciklusa során, vagy egy meglévő fürt független műveleteként.
+Az előfeltételek elvégzése után a Azure Policy bővítmény telepíthető. A telepítés lehet egy AK-motor létrehozási vagy frissítési ciklusa, vagy egy meglévő fürtön futó önálló művelet.
 
-- Telepítés létrehozási vagy frissítési ciklus ban
+- Telepítés a létrehozási vagy frissítési ciklus során
 
-  Az Azure Policy add-on engedélyezéséhez egy új, saját felügyelt fürt létrehozása vagy egy meglévő fürt frissítése során, adja meg az AKS-motor **addons** tulajdonságfürt-definícióját.
+  Ha engedélyezni szeretné a Azure Policy bővítményt egy új, önfelügyelt fürt létrehozásakor vagy egy meglévő fürt frissítéseként, adja meg a **bővítmények** tulajdonságának fürtjének definícióját az AK motorhoz.
 
   ```json
   "addons": [{
@@ -99,98 +99,98 @@ Miután az előfeltételek befejeződtek, az Azure Policy bővítmény telepíth
   }]
   ```
 
-  További információt az [AKS Engine fürtdefiníció](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)külső útmutatójában talál.
+  A szolgáltatással kapcsolatos további információkért tekintse meg a külső útmutató az [AK-motor-fürt definícióját](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
 
-- Telepítés meglévő fürtbe helm diagramokkal
+- Telepítés meglévő fürtben Helm-diagramokkal
 
-  A fürt előkészítéséhez és a bővítmény telepítéséhez kövesse az alábbi lépéseket:
+  A következő lépésekkel készítse elő a fürtöt, és telepítse a bővítményt:
 
-  1. Telepítse a Forgalomirányítót a _forgalomirányító-rendszer_ névterére.
+  1. Telepítse a forgalomirányítót a _forgalomirányító-System_ névtérbe.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
-  1. Adja hozzá _a vezérlősík_ címkéjét a _kube-rendszerhez._ Ez a címke kizárja a _kube-system_ podok és szolgáltatások gatekeeper és az Azure Policy bővítmény naplózását.
+  1. Adja hozzá a _vezérlő-sík_ címkét a _Kube-System elemhez_. Ez a címke kizárja a _Kube-_ rendszerhüvelyek és-szolgáltatások a forgalomirányító és a Azure Policy-bővítmény általi naplózását.
 
      ```bash
      kubectl label namespaces kube-system control-plane=controller-manager
      ```
 
-  1. Szinkronizálja a Kubernetes-adatokat (névtér, pod, be- és szolgáltatás) az OPA-val.
+  1. Kubernetes-adatszinkronizálás (névtér, Pod, bejövő forgalom, szolgáltatás) az OPA-szel.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/gatekeeper-opa-sync.yaml
      ```
 
-     További információ: [OPA - Replikálási adatok](https://github.com/open-policy-agent/gatekeeper#replicating-data).
+     További információ: [Opa – adatok replikálása](https://github.com/open-policy-agent/gatekeeper#replicating-data).
 
-  1. Adja hozzá az Azure-szabályzat repo a helm.
+  1. Adja hozzá a Azure Policy-tárházat a Helmhoz.
 
      ```bash
      helm repo add azure-policy https://raw.githubusercontent.com/Azure/azure-policy/master/extensions/policy-addon-kubernetes/helm-charts
      ```
 
-     További információ: [Helm Chart - Quickstart Guide](https://helm.sh/docs/using_helm/#quickstart-guide).
+     További információ: [Helm chart – rövid útmutató](https://helm.sh/docs/using_helm/#quickstart-guide).
 
-  1. Telepítse a bővítményt egy Helm Chart segítségével. Cserélje `<subscriptionId>` le az előfizetés-azonosítóját és `<aks engine cluster resource group>` az erőforráscsoportot, amelyben az AKS Engine saját felügyelt Kubernetes-fürt található.
+  1. Telepítse a bővítményt egy Helm diagrammal. A `<subscriptionId>` helyére írja be az előfizetés `<aks engine cluster resource group>` -azonosítóját és az ERŐFORRÁSCSOPORTOT, amelyben az AK-motor saját felügyeletű Kubernetes-fürtje található.
 
      ```bash
      helm install azure-policy/azure-policy-addon-aks-engine --name azure-policy-addon --set azurepolicy.env.resourceid="/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>"
      ```
 
-     A bővítmény helm-diagramjainak telepítéséről további információt az [Azure Policy bővítményhelmi diagram definíciója](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) a GitHubon talál.
+     További információ arról, hogy a Hogyan telepíti a kiegészítő Helm-diagramot: a [Azure Policy a Helm diagram definíciója](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) a githubon.
 
      > [!NOTE]
-     > Az Azure Policy Add-on és az erőforráscsoport-azonosító közötti kapcsolat miatt az Azure Policy minden erőforráscsoporthoz csak egy AKS Engine-fürtöt támogat.
+     > A Azure Policy-bővítmény és az erőforráscsoport-azonosító közötti kapcsolat miatt Azure Policy minden erőforráscsoport esetében csak egy AK-beli motor-fürtöt támogat.
 
-Annak ellenőrzéséhez, hogy a bővítmény telepítése sikeres volt-e, és hogy az _azure-policy_ pod fut-e, futtassa a következő parancsot:
+A következő parancs futtatásával ellenőrizheti, hogy a bővítmény telepítése sikeres volt-e, és hogy az _Azure-Policy_ Pod fut-e:
 
 ```bash
 kubectl get pods -n kube-system
 ```
 
-### <a name="validation-and-reporting-frequency"></a>Validálási és jelentéstételi gyakoriság
+### <a name="validation-and-reporting-frequency"></a>Ellenőrzési és jelentéskészítési gyakoriság
 
-A bővítmény az Azure Policy segítségével 5 percenként ellenőrzi a házirend-hozzárendelések változásait. Ebben a frissítési ciklusban a bővítmény ellenőrzi a módosításokat. Ezek a változások eseményindító hoz létre, frissítések, vagy törli a megkötés sablonok és korlátozások.
+A bővítmény 5 percenként ellenőrzi, hogy van-e Azure Policy a házirend-hozzárendelések változásaihoz. A frissítési ciklus során a bővítmény ellenőrzi a módosításokat. Ezek a változások a megkötési sablonok és megkötések létrehozásához, frissítéséhez vagy törléséhez jönnek létre.
 
 > [!NOTE]
-> Bár a _fürt rendszergazdája_ engedélyt kaphat a megkötési sablonok és korlátozások módosítására, nem ajánlott vagy nem támogatott az Azure Policy által létrehozott megszorítási sablonok vagy korlátozások módosítása. A frissítési ciklus során a manuális módosítások elvesznek.
+> Habár a _fürt rendszergazdája_ jogosult a korlátozási sablonok és a megkötések módosítására, nem ajánlott vagy nem támogatott a Azure Policy által létrehozott korlátozási sablonok vagy megkötések módosítására. Az elvégzett manuális módosítások elvesznek a frissítési ciklus során.
 
-5 percenként a bővítmény a fürt teljes vizsgálatát kéri. Miután összegyűjtötte a teljes vizsgálat részleteit, és a Gatekeeper által a fürt önmegkísérelt módosításainak valós idejű kiértékeléseit, a bővítmény visszajelenti az eredményeket az Azure Policy-nek, hogy tartalmazza a [megfelelőségi adatokat,](../how-to/get-compliance-data.md) például bármely Azure Policy-hozzárendelést. A rendszer csak az aktív házirend-hozzárendelések eredményeit adja vissza a naplózási ciklus során. A naplózási eredmények a sikertelen megkötés állapotmezőjében felsorolt szabálysértésekként is feltekinthetők.
+A bővítmény 5 percenként meghívja a fürt teljes vizsgálatát. Miután összegyűjtötte a teljes vizsgálat részleteit és minden valós idejű értékelést a fürtön történt megkísérelt módosításokat, a bővítmény jelentést készít az eredményről Azure Policy a [megfelelőségi adatokba](../how-to/get-compliance-data.md) , például bármely Azure Policy hozzárendelésbe való felvételhez. A naplózási ciklusban csak az aktív házirend-hozzárendelések eredményeit adja vissza a rendszer. A naplózási eredmények a sikertelen korlátozás állapota mezőjében megjelenő szabálysértésként is megtekinthetők.
 
-## <a name="policy-language"></a>A házirend nyelve
+## <a name="policy-language"></a>Házirend nyelve
 
-Az AKS-motor kezelésére szolgáló Azure Policy nyelvi struktúra a meglévő szabályzatok é. Az _EnforceOPAConstraint_ hatás az AKS-motor-fürtök kezelésére szolgál, és az [OPA-megszorítási keretrendszer](https://github.com/open-policy-agent/frameworks/tree/master/constraint) és a forgalomirányító v3-as kezelésére jellemző _részleteket_ veszi figyelembe. A részleteket és példákat az [EnforceOPAConstraint](effects.md#enforceopaconstraint) hatás tartalmazza.
+Az AK-motor kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzatokat követi. A _EnforceOPAConstraint_ hatására a rendszer az AK-motor fürtjének kezelésére szolgál, és _részletesen ismerteti_ az [Opa-korlátozási keretrendszer](https://github.com/open-policy-agent/frameworks/tree/master/constraint) és a forgalomirányító v3 használatára vonatkozó tulajdonságokat. További részletekért és példákért tekintse meg a [EnforceOPAConstraint](effects.md#enforceopaconstraint) hatást.
 
-A _details.constraintTemplate_ és a _details.constraint_ tulajdonságok részeként a szabályzatdefinícióban az Azure Policy átadja ezeknek a [CustomResourceDefinitionsnek](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) az URI-kat a bővítménynek. A Rego az a nyelv, amelyet az OPA és a Gatekeeper támogat a Kubernetes-fürtnek küldött kérelem érvényesítéséhez. A Kubernetes-felügyelet meglévő szabványának támogatásával az Azure Policy lehetővé teszi a meglévő szabályok újrafelhasználását és az Azure Policy-del való párosítást az egységes felhőmegfelelőségi jelentéskészítési élmény érdekében. További információ: [Mi az a Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)
+A _details. constraintTemplate_ és a _details. megkötés_ tulajdonságok részeként a házirend-definícióban Azure Policy átadja ezen [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) URI-azonosítóját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
 
 ## <a name="built-in-policies"></a>Beépített szabályzatok
 
-Az AKS Engine-fürt Azure Portalon történő kezelésére szolgáló beépített szabályzatok megkereséséhez kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve megkeresheti a beépített házirendeket az AK-motor fürtjének a Azure Portal használatával történő kezeléséhez:
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Válassza az **Összes szolgáltatás lehetőséget** a bal oldali ablaktáblában, majd keresse meg a Házirend elemet, és válassza a **Házirend**lehetőséget.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán, majd keresse meg és válassza ki a **házirend**elemet.
 
-1. Az Azure Policy lap bal oldali ablaktáblájában válassza a **Definíciók**lehetőséget.
+1. A Azure Policy lap bal oldali ablaktábláján válassza a **definíciók**lehetőséget.
 
-1. A Kategória legördülő listából törölje az **összes et** a szűrőből, majd válassza a **Kubernetes**lehetőséget.
+1. A kategória legördülő listából válassza az **összes kijelölése lehetőséget** a szűrő törléséhez, majd válassza a **Kubernetes**lehetőséget.
 
-1. Jelölje ki a házirend-definíciót, majd kattintson a **Hozzárendelés** gombra.
+1. Válassza ki a házirend-definíciót, majd kattintson a **hozzárendelés** gombra.
 
 > [!NOTE]
-> Az Azure-szabályzat AKS-motor definícióhoz hozzárendelések, a **hatókör** kell az AKS Engine-fürt erőforráscsoportja.
+> Az AK-motor definíciójának Azure Policy kiosztásakor a **hatókörnek** az AK-motor fürtjének erőforráscsoporthoz kell tartoznia.
 
-Másik lehetőségként használja a [házirend hozzárendelése - Portál](../assign-policy-portal.md) gyorsindítás az AKS-motor házirend megkereséséhez és hozzárendeléséhez. Keressen egy AKS Engine-házirend-definíciót a "naplózási virtuális gépek" minta helyett.
+Másik lehetőségként használja a [házirend társítása – portál](../assign-policy-portal.md) rövid útmutatóját egy AK-motor házirendjének megkereséséhez és hozzárendeléséhez. Keressen egy AK-motor házirend-definícióját a "naplózási virtuális gépek" minta helyett.
 
 > [!IMPORTANT]
-> A **Kubernetes** kategóriába tartozó beépített házirendek csak az AKS Engine-hez használhatók.
+> A **Kubernetes** kategóriába tartozó beépített szabályzatok csak az AK-motorral használhatók.
 
 ## <a name="logging"></a>Naplózás
 
-### <a name="azure-policy-add-on-logs"></a>Azure-szabályzat bővítménynaplói
+### <a name="azure-policy-add-on-logs"></a>Azure Policy kiegészítő naplók
 
-Kubernetes-vezérlőként/tárolóként az Azure Policy bővítmény naplókat tárol az AKS-motor fürtben.
+Kubernetes-vezérlőként/tárolóként a Azure Policy-bővítmény megtartja a naplókat az AK-motor fürtjében.
 
-Az Azure Policy bővítménynaplóinak megtekintéséhez használja a következőket: `kubectl`
+A Azure Policy bővítmények naplófájljainak megtekintéséhez használja `kubectl`a következőt:
 
 ```bash
 # Get the Azure Policy Add-on pod name
@@ -200,26 +200,26 @@ kubectl -n kube-system get pods -l app=azure-policy --output=name
 kubectl logs <Azure Policy Add-on pod name> -n kube-system
 ```
 
-### <a name="gatekeeper-logs"></a>Forgalomirányítói naplók
+### <a name="gatekeeper-logs"></a>Forgalomirányító-naplók
 
-A Gatekeeper pod, _gatekeeper-controller-manager-0_általában `gatekeeper-system` `kube-system` a vagy a névtérben, de lehet egy másik névtérben attól függően, hogy hogyan van telepítve.
+A forgalomirányító Pod, a _forgalomirányító-Controller-Manager-0_általában a (z `gatekeeper-system` ) `kube-system` vagy a névtérben van, de az üzembe helyezéstől függően más névtérben is lehet.
 
-A Forgalomirányító naplóinak `kubectl`megtekintéséhez használja a következőket:
+A forgalomirányító naplófájljainak megtekintéséhez használja `kubectl`a következőt:
 
 ```bash
 NAMESPACE=<namespace of gatekeeper>
 kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 ```
 
-További információ: [Debugging Gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging) az OPA dokumentációban.
+További információ: [forgalomirányító hibakeresése](https://github.com/open-policy-agent/gatekeeper#debugging) az OPA dokumentációjában.
 
 ## <a name="remove-the-add-on"></a>A bővítmény eltávolítása
 
-Az Azure Policy bővítmény és a Gatekeeper eltávolításához az AKS-motor-fürtből, használja a bővítmény telepítésének módjához igazodó módszert:
+Ha el szeretné távolítani a Azure Policy-bővítményt és a forgalomirányító-t az KABAi motor fürtjéből, használja a bővítmény telepítésének módját a következő módon:
 
-- Ha az AKS Engine fürtdefiníciójában az **addons** tulajdonság beállításával van telepítve:
+- Ha telepítve van, állítsa be az **addons** tulajdonságot az AK-motorhoz tartozó fürt definíciójában:
 
-  Telepítse újra a fürtdefiníciót az AKS-motorra, miután az _azure-szabályzat_ **addons** tulajdonságát hamisra cserélte:
+  Az _Azure-Policy_ **addons** tulajdonságának hamis értékre való módosítása után telepítse újra a fürt definícióját az AK-motorra:
 
 
   ```json
@@ -229,19 +229,19 @@ Az Azure Policy bővítmény és a Gatekeeper eltávolításához az AKS-motor-f
   }]
   ```
 
-- Ha helm diagramokkal van telepítve:
+- Ha Helm-diagramokkal van telepítve:
 
-  1. Régi megkötések eltávolítása
+  1. Régi korlátozások eltávolítása
 
-     Jelenleg az eltávolítási mechanizmus csak eltávolítja a Gatekeeper rendszert, nem távolítja el a felhasználó által létrehozott _MegkötésSablon_, _Megkötés_vagy _Config_ erőforrásokat, és nem távolítja el a hozzájuk tartozó _CRD-ket._
+     Jelenleg az eltávolítási mechanizmus csak a forgalomirányító rendszer eltávolítását végzi, nem távolítja el a felhasználó által létrehozott _ConstraintTemplate_, _korlátozásokat_vagy _konfigurációs_ erőforrásokat, és nem távolítja el a kapcsolódó _CRDs_.
 
-     A Forgalomirányító futása esetén a nem kívánt korlátozások a következőkszerint távolíthatók el:
+     Ha a forgalomirányító fut, lehetséges, hogy a következő módon távolíthatja el a nemkívánatos korlátozásokat:
 
-     - A megkötési erőforrás összes példányának törlése
-     - A _MegszorításSablon_ erőforrás törlése, amely automatikusan törli a _CRD-t_
-     - A _Config_ erőforrás törlése eltávolítja a véglegesítőket a szinkronizált erőforrásokon
+     - A megkötés erőforrás összes példányának törlése
+     - A _ConstraintTemplate_ -erőforrás törlése, amely automatikusan törli a _CRD_ -t
+     - A _konfigurációs_ erőforrás törlése a szinkronizált erőforrásokról eltávolítja a véglegesítéseket
 
-  1. Az Azure-szabályzat bővítmény eltávolítása
+  1. Azure Policy bővítmény eltávolítása
   
      ```bash
      helm del --purge azure-policy-addon
@@ -253,35 +253,35 @@ Az Azure Policy bővítmény és a Gatekeeper eltávolításához az AKS-motor-f
      kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Az Azure Policy bővítmény által gyűjtött diagnosztikai adatok
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Policy bővítmény által gyűjtött diagnosztikai adatok
 
-A Kubernetes Azure Policy bővítménye korlátozott fürtdiagnosztikai adatokat gyűjt. Ezek a diagnosztikai adatok a szoftverrel és a teljesítménnyel kapcsolatos létfontosságú műszaki adatok. A következő módokon használható:
+A Kubernetes Azure Policy-bővítménye korlátozott számú fürt diagnosztikai adatokat gyűjt. A diagnosztikai adat a szoftverrel és teljesítménnyel kapcsolatos létfontosságú technikai jellegű adat. A következő módokon használható:
 
-- Az Azure Policy Add-on naprakészen tartása
-- Az Azure Policy add-on biztonságos, megbízható, teljesítménybeli megtartása
-- Az Azure Policy add-on fejlesztése – a bővítmény használatának összesített elemzésével
+- Tartsa naprakészen Azure Policy bővítményt
+- Azure Policy-bővítmény biztonságos, megbízható, teljesítménybeli megőrzése
+- A bővítmény használatának összesített elemzésével Azure Policy kiegészítő bővítmények továbbfejlesztése
 
-A bővítmény által gyűjtött adatok nem személyes adatok. A következő adatokat jelenleg gyűjtik:
+A bővítmény által gyűjtött információk nem személyes adatok. A rendszer jelenleg a következő adatokat gyűjti össze:
 
-- Az Azure Policy bővítményügynök verziója
+- Azure Policy bővítmény ügynökének verziója
 - Fürt típusa
-- Fürtrégió
+- Fürt régiója
 - Fürterőforrás-csoport
 - Fürterőforrás-azonosító
-- Fürtelőfizetés azonosítója
+- Fürt-előfizetés azonosítója
 - Fürt operációs rendszer (példa: Linux)
-- Fürtváros (példa: Seattle)
-- Fürt állama vagy tartománya (példa: Washington)
+- Fürt városa (példa: Seattle)
+- Fürt állapota vagy tartománya (példa: Washington)
 - Fürt országa vagy régiója (példa: Egyesült Államok)
-- Az Azure Policy bővítmény által a házirend-kiértékelésügynök-telepítés során tapasztalt kivételek/hibák
-- Az Azure Policy bővítmény által nem telepített Gatekeeper házirendek száma
+- Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
+- Azure Policy bővítmény által nem telepített forgalomirányító-házirendek száma
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a példákat az [Azure Policy-mintákban.](../samples/index.md)
+- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](../how-to/programmatically-create.md)
-- További információ a [megfelelőségi adatok beszedéséről.](../how-to/get-compliance-data.md)
-- További információ a [nem megfelelő erőforrások kiújulásáról.](../how-to/remediate-resources.md)
-- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/get-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop-feladatok beküldése a HDInsightban
-description: Apache Hadoop-feladatok küldése az Azure HDInsightban a Microsoft .NET SDK, curl vagy PowerShell használatával
+title: Apache Hadoop feladatok elküldése a HDInsight-ben
+description: Apache Hadoop feladatok elküldése az Azure HDInsight Microsoft .NET SDK, Curl vagy PowerShell használatával
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435697"
 ---
-# <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Apache Hadoop-feladatok beküldése a HDInsightban
+# <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Apache Hadoop feladatok elküldése a HDInsight-ben
 
-Az Apache Hadoop-feladatokat az Azure HDInsightban küldheti el a Microsoft .NET SDK for HDInsight, curl vagy Azure PowerShell használatával.
+Apache Hadoop feladatokat az Azure HDInsight-ben is elküldheti a HDInsight, a curl vagy a Azure PowerShell Microsoft .NET SDK használatával.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
-- **.NET SDK**:
+- **.net SDK**:
 
-  - [Nem interaktív hitelesítési .NET-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
-  - [Apache Hive-lekérdezések futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md)
-  - [Apache Sqoop-feladatok futtatása a .NET SDK apache hadoop-tal a HDInsightban](apache-hadoop-use-sqoop-dotnet-sdk.md)
-  - [MapReduce feladatok futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-mapreduce-dotnet-sdk.md)
+  - [Nem interaktív hitelesítéssel rendelkező .NET-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
+  - [Apache Hive lekérdezések futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md)
+  - [Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával](apache-hadoop-use-sqoop-dotnet-sdk.md)
+  - [MapReduce-feladatok futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-mapreduce-dotnet-sdk.md)
 
-- **göndör**:
+- **curl**:
 
-  - [Apache Hive-lekérdezések futtatása az Apache Hadoop segítségével a HDInsightban a curl használatával](apache-hadoop-use-hive-curl.md)
-  - [Apache Sqoop-feladatok futtatása apache Hadoop segítségével a HDInsightban a curl használatával](apache-hadoop-use-sqoop-curl.md)
-  - [A MapReduce feladatok futtatása az Apache Hadoop segítségével a HDInsightban a curl használatával](apache-hadoop-use-mapreduce-curl.md)
+  - [Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a curl használatával](apache-hadoop-use-hive-curl.md)
+  - [Apache Sqoop-feladatok futtatása a HDInsight Apache Hadoop használatával a curl használatával](apache-hadoop-use-sqoop-curl.md)
+  - [MapReduce-feladatok futtatása a HDInsight Apache Hadoop használatával a curl használatával](apache-hadoop-use-mapreduce-curl.md)
 
 - **PowerShell**:
 
-  - [Apache Hive-lekérdezések futtatása a PowerShell használatával](apache-hadoop-use-hive-powershell.md)
-  - [Az Apache Sqoop használata az Apache Hadoop segítségével a HDInsightban](apache-hadoop-use-sqoop-powershell.md)
-  - [MapReduce feladatok futtatása az Apache Hadoop segítségével a HDInsightban a PowerShell használatával](apache-hadoop-use-mapreduce-powershell.md)
+  - [Apache Hive lekérdezések futtatása a PowerShell használatával](apache-hadoop-use-hive-powershell.md)
+  - [Az Apache Sqoop használata Apache Hadoop a HDInsight](apache-hadoop-use-sqoop-powershell.md)
+  - [MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával](apache-hadoop-use-mapreduce-powershell.md)
 
 ## <a name="see-also"></a>Lásd még
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics-eszközök beállítása a Visual Studio számára
-description: Ez a cikk ismerteti a telepítési követelményeket, és hogyan állíthatja be az Azure Stream Analytics-eszközöket a Visual Studio számára.
+title: A Visual studióhoz készült Azure Stream Analytics-eszközök beállítása
+description: Ez a cikk a telepítési követelményeket és a Visual studióhoz készült Azure Stream Analytics eszközök beállítását ismerteti.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,64 +8,64 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75354367"
 ---
-# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Az Azure Stream Analytics-eszközök telepítése a Visual Studio-hoz
+# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>A Visual studióhoz készült Azure Stream Analytics-eszközök telepítése
 
-A Visual Studio 2019 és a Visual Studio 2017 támogatja az Azure Data Lake és a Stream Analytics-eszközöket. Ez a cikk az eszközök telepítését és eltávolítását ismerteti.
+A Visual Studio 2019 és a Visual Studio 2017 támogatja a Azure Data Lake és Stream Analytics eszközöket. Ez a cikk az eszközök telepítését és eltávolítását ismerteti.
 
-Az eszközök használatáról további információt a [Rövid útmutató: Azure Stream Analytics-feladat létrehozása](stream-analytics-quick-create-vs.md)a Visual Studio használatával című témakörben talál.
+További információ az eszközök használatáról: gyors útmutató [: Azure stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).
 
 ## <a name="install"></a>Telepítés
 
-A Visual Studio Enterprise (Ultimate/Premium), professional és community kiadások támogatják az eszközöket. Az Express edition és a Visual Studio for Mac nem támogatja őket.
+A Visual Studio Enterprise (Ultimate/prémium), Professional és Community kiadások támogatják az eszközöket. Az Express Edition és a Visual Studio for Mac nem támogatja őket.
 
-A Visual Studio 2019-et ajánljuk.
+A Visual Studio 2019 használatát javasoljuk.
 
-### <a name="install-for-visual-studio-2019-and-2017"></a>Telepítés a Visual Studio 2019-hez és 2017-hez<a name="recommended-visual-studio-2019-and-2017"></a>
+### <a name="install-for-visual-studio-2019-and-2017"></a>A Visual Studio 2019-es és 2017-es telepítése<a name="recommended-visual-studio-2019-and-2017"></a>
 
-Az Azure Data Lake és a Stream Analytics Tools az **Azure fejlesztési** és **adattárolási és feldolgozási** számítási feladatainak részét képezi. Engedélyezze a két számítási feladat egyikét a telepítés során. Ha a Visual Studio már telepítve van, válassza **az Eszközök** > **be- és szolgáltatások** lehetőséget a munkaterhelések hozzáadásához.
+A Azure Data Lake és Stream Analytics eszközök az Azure- **fejlesztési** és az **adattárolási és-feldolgozási számítási** feladatok részét képezik. A telepítés során engedélyezze a két számítási feladat valamelyikét. Ha a Visual Studio már telepítve van, válassza az **eszközök** > eszközök**és szolgáltatások lekérése** lehetőséget a számítási feladatok hozzáadásához.
 
-Töltse le [a Visual Studio 2019 (Preview 2 vagy újabb) vagy a Visual Studio 2017 (15.3 vagy újabb)](https://www.visualstudio.com/) alkalmazást, és kövesse a telepítéshez szükséges utasításokat.
+Töltse le a [Visual studio 2019 (előzetes verzió 2 vagy újabb verzió) vagy a Visual studio 2017 (15,3 vagy újabb)](https://www.visualstudio.com/) verziót, és kövesse a telepítendő utasításokat.
 
-Válassza ki az **Adattárolási és feldolgozási** munkaterhelést az ábrán látható módon:
+Válassza ki az **adattárolási és-feldolgozási** munkaterhelést az alábbiak szerint:
 
-![Az adattárolási és feldolgozási munkaterhelés van kiválasztva](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-01.png)
+![Adattárolási és-feldolgozási munkaterhelés van kiválasztva](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-01.png)
 
-Válassza ki az **Azure fejlesztési** számítási feladatait az alábbi módon:
+Válassza ki az **Azure-fejlesztési** számítási feladatot az alábbiak szerint:
 
-![Az Azure fejlesztési munkaterhelése van kiválasztva](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-02.png)
+![Az Azure-fejlesztési munkaterhelés ki van választva](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-02.png)
 
 A munkaterhelés hozzáadása után frissítse az eszközöket. Ez az eljárás a Visual Studio 2019-re vonatkozik:
 
-1. Válassza **a Bővítmények** > **bővítmények kezelése lehetőséget.**
+1. Válassza a **bővítmények** > **kezelése bővítmények**lehetőséget.
 
-1. A **Bővítmények kezelése**csoportban válassza a **Frissítések** lehetőséget, és válassza az Azure Data Lake és a **Stream Analytics-eszközök lehetőséget.**
+1. A **Bővítmények kezelése**területen válassza a **frissítések** lehetőséget, és válassza ki **Azure Data Lake és stream Analytics eszközöket**.
 
-1. A legújabb bővítmény telepítéséhez válassza a **Frissítés** lehetőséget.
+1. A legújabb bővítmény telepítéséhez válassza a **frissítés** lehetőséget.
 
-![Visual Studio-bővítmények és -frissítések](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
+![Visual Studio-bővítmények és-frissítések](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
 
-### <a name="install-for-visual-studio-2015-and-2013"></a>Telepítés a Visual Studio 2015-höz és 2013-hoz<a name="visual-studio-2015-2013"></a>
+### <a name="install-for-visual-studio-2015-and-2013"></a>A Visual Studio 2015-es és 2013-es telepítése<a name="visual-studio-2015-2013"></a>
 
-A Visual Studio Enterprise (Ultimate/Premium), professional és community kiadások támogatják az eszközöket. Az expressz kiadás nem támogatja őket.
+A Visual Studio Enterprise (Ultimate/prémium), Professional és Community kiadások támogatják az eszközöket. Az Express kiadás nem támogatja őket.
 
-* Telepítse a Visual Studio 2015 vagy a Visual Studio 2013 4.
-* Telepítse a Microsoft Azure SDK-t a .NET 2.7.1-es vagy újabb verziójához a [webes platform telepítőjével.](https://www.microsoft.com/web/downloads/platform.aspx)
-* Telepítse a [Microsoft Azure Data Lake és a Stream Analytics Tools for Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504)alkalmazást.
+* Telepítse a Visual Studio 2015 vagy a Visual Studio 2013 4. frissítését.
+* Telepítse a .NET-es vagy újabb verziójú Microsoft Azure SDK-t a [webplatform-telepítő](https://www.microsoft.com/web/downloads/platform.aspx)használatával.
+* Telepítse [a Microsoft Azure Data Lake és a Visual studióhoz készült stream Analytics eszközöket](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
 
-## <a name="update"></a>Frissítés<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
+## <a name="update"></a>Frissítése<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
 
-A Visual Studio 2019 és a Visual Studio 2017 esetében egy új verzióemlékeztető jelenik meg Visual Studio értesítésként.
+A Visual Studio 2019 és a Visual Studio 2017 esetében az új verzió emlékeztetője Visual Studio-értesítésként jelenik meg.
 
-A Visual Studio 2015 és a Visual Studio 2013 esetében az eszközök automatikusan ellenőrzik az új verziókat. A legújabb verzió telepítéséhez kövesse az utasításokat.
+A Visual Studio 2015 és a Visual Studio 2013 esetében az eszközök automatikusan keresik az új verziókat. Kövesse az utasításokat a legújabb verzió telepítéséhez.
 
 ## <a name="uninstall"></a>Eltávolítás
 
-Eltávolíthatja az Azure Data Lake és a Stream Analytics-eszközöket. A Visual Studio 2019 vagy a Visual Studio 2017 esetén válassza **az Eszközök** > **beszerezni az eszközöket és a szolgáltatásokat**lehetőséget. A **Módosítás területen**törölje a jelet az Azure Data Lake és a Stream Analytics Tools **jelölőnégyzetből.** Úgy tűnik, vagy az **adatok tárolási és feldolgozási** számítási feladatok vagy az **Azure fejlesztési** számítási feladatok alatt jelenik meg.
+Azure Data Lake és Stream Analytics eszközöket is eltávolíthat. A Visual Studio 2019 vagy a Visual Studio 2017 esetében válassza az **eszközök** > **eszközök és szolgáltatások beolvasása**elemet. A **módosítás**területen törölje a jelölést **Azure Data Lake és stream Analytics eszközöket**. Az **adattárolási és-feldolgozási** munkaterhelés, illetve az **Azure-fejlesztési** számítási feladatok alatt jelenik meg.
 
-A Visual Studio 2015-ből vagy a Visual Studio 2013-ból való eltávolításhoz nyissa meg a **Vezérlőpult** > **programok és szolgáltatások című témakört.** Távolítsa el a **Microsoft Azure Data Lake és a Stream Analytics Tools for Visual Studio**alkalmazást.
+A Visual Studio 2015 vagy a Visual Studio 2013 alkalmazásból való eltávolításhoz nyissa meg a **Vezérlőpult** > **programok és szolgáltatások**elemét. Távolítsa el **Microsoft Azure Data Lake és a Visual studióhoz készült stream Analytics eszközöket**.

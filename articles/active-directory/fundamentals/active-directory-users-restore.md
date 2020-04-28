@@ -1,6 +1,6 @@
 ---
-title: A legutóbb törölt felhasználó visszaállítása vagy végleges eltávolítása – Azure AD
-description: Visszaállítható felhasználók megtekintése, törölt felhasználó visszaállítása vagy véglegesen törölheti a felhasználót az Azure Active Directory használatával.
+title: Nemrég törölt felhasználó visszaállítása vagy végleges eltávolítása – Azure AD
+description: A helyreállítható felhasználók megtekintése, törölt felhasználók visszaállítása vagy a felhasználó végleges törlése Azure Active Directory használatával.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,80 +14,80 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422866"
 ---
-# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása az Azure Active Directory használatával
-A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók az összes tulajdonságával együtt visszaállítható. A 30 napos időszak elteltével a felhasználó automatikusan és véglegesen törlődik.
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
+A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak után a rendszer automatikusan és véglegesen törli a felhasználót.
 
-Megtekintheti a helyreállítható felhasználókat, visszaállíthat egy törölt felhasználót, vagy véglegesen törölhet egy felhasználót az Azure Active Directory (Azure AD) használatával az Azure Portalon.
+Megtekintheti a visszaállítható felhasználókat, visszaállíthat egy törölt felhasználót, vagy véglegesen törölhet egy felhasználót Azure Active Directory (Azure AD) használatával a Azure Portal.
 
 >[!Important]
->Sem Ön, sem a Microsoft ügyfélszolgálata nem állíthatja vissza a véglegesen törölt felhasználót.
+>Sem Ön, sem a Microsoft ügyfélszolgálata nem állíthatja vissza véglegesen törölt felhasználókat.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
-A felhasználók visszaállításához és végleges törléséhez az alábbi szerepkörök valamelyikével kell rendelkeznie.
+A felhasználók visszaállításához és végleges törléséhez a következő szerepkörök egyikét kell használnia.
 
 - Globális rendszergazda
 
-- Partner tier1 támogatás
+- Partneri Tier1-támogatás
 
-- Partner tier2 támogatás
+- Partneri szint-támogatás
 
-- Rendszergazda
+- Felhasználói rendszergazda
 
-## <a name="view-your-restorable-users"></a>A helyreállítható felhasználók megtekintése
-Láthatja az összes olyan felhasználót, amelyet kevesebb mint 30 nappal ezelőtt töröltek. Ezek a felhasználók visszaállíthatók.
+## <a name="view-your-restorable-users"></a>Helyreállítható felhasználók megtekintése
+Megtekintheti az összes olyan felhasználót, amely 30 napnál régebben törölve lett. Ezeket a felhasználókat vissza lehet állítani.
 
 ### <a name="to-view-your-restorable-users"></a>A helyreállítható felhasználók megtekintése
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a szervezet globális rendszergazdai fiókjával.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdai fiókkal a szervezet számára.
 
-2. Válassza az **Azure Active Directory**( **Felhasználók**) lehetőséget, majd a **Törölt felhasználók**lehetőséget.
+2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **törölt felhasználók**elemet.
 
-    Tekintse át a visszaállítható felhasználók listáját.
+    Tekintse át a visszaállítani kívánt felhasználók listáját.
 
-    ![Felhasználók – Törölt felhasználók lap, visszaállítható felhasználókkal](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
+    ![Felhasználók – törölt felhasználók lap, amely továbbra is visszaállítható felhasználók számára](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
 
 ## <a name="restore-a-recently-deleted-user"></a>Nemrég törölt felhasználó visszaállítása
 
-Ha egy felhasználói fiókot törölnek a szervezetből, a fiók felfüggesztett állapotban van, és az összes kapcsolódó szervezeti információ megmarad. Amikor visszaállít egy felhasználót, a szervezet adatai is visszaállnak.
+Ha töröl egy felhasználói fiókot a szervezetből, a fiók felfüggesztett állapotba kerül, és az összes kapcsolódó szervezeti információ megőrződik. Egy felhasználó visszaállításakor a rendszer a szervezeti adatokat is visszaállítja.
 
 > [!Note]
-> A felhasználó visszaállítása után a törlés időpontjában a felhasználóhoz rendelt licencek is visszaállnak, még akkor is, ha a licencekhez nem áll rendelkezésre hely. Ha ezután több licencet fogyaszt, mint amennyit megvásárolt, előfordulhat, hogy a szervezet átmenetileg nem felel meg a licenchasználatnak.
+> A felhasználó visszaállítása után a rendszer a törléskor a felhasználóhoz rendelt licenceket is visszaállítja, még akkor is, ha nincsenek elérhető helyek a licencekhez. Ha ezt követően több licencet használ, mint amennyit megvásárolt, a szervezet átmenetileg nem felel meg a licencek használatának.
 
 ### <a name="to-restore-a-user"></a>Felhasználó visszaállítása
-1. A **Felhasználók – Törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. Például _Mary Parker_.
+1. A **felhasználók által törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. Például: _Mary Parker_.
 
-2. Válassza **a Felhasználó visszaállítása**lehetőséget.
+2. Válassza a **felhasználó visszaállítása**lehetőséget.
 
-    ![Felhasználók – Törölt felhasználók lap, kiemelt Felhasználói beállítások visszaállítása](media/active-directory-users-restore/users-deleted-users-restore-user.png)
+    ![Felhasználók – törölt felhasználók lap, a felhasználó visszaállítása lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
 ## <a name="permanently-delete-a-user"></a>Felhasználó végleges törlése
-A felhasználó véglegesen törölhető a szervezetből anélkül, hogy megvárna 30 napot az automatikus törlésre. A véglegesen törölt felhasználókat ön, egy másik rendszergazda és a Microsoft ügyfélszolgálata sem állíthatja vissza.
+Véglegesen törölheti a felhasználót a szervezetből anélkül, hogy az automatikus törlés 30 napját kellene várnia. Egy véglegesen törölt felhasználót nem állítható vissza Ön, egy másik rendszergazda vagy a Microsoft ügyfélszolgálata.
 
 >[!Note]
->Ha véletlenül véglegesen töröl egy felhasználót, új felhasználót kell létrehoznia, és manuálisan kell megadnia az összes korábbi információt. Az új felhasználók létrehozásáról a [Felhasználók hozzáadása és törlése](add-users-azure-active-directory.md)című témakörben talál további információt.
+>Ha véglegesen töröl egy felhasználót tévedésből, létre kell hoznia egy új felhasználót, és manuálisan kell megadnia az összes korábbi információt. Az új felhasználók létrehozásával kapcsolatos további információkért lásd: [felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md).
 
 ### <a name="to-permanently-delete-a-user"></a>Felhasználó végleges törlése
 
-1. A **Felhasználók – Törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. _Például, Rae Huff_.
+1. A **felhasználók által törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. Például: _Rae Huff_.
 
-2. Válassza **a Törlés véglegesen**lehetőséget.
+2. Válassza a **véglegesen törlés**lehetőséget.
 
-    ![Felhasználók – Törölt felhasználók lap, kiemelt Felhasználói beállítások visszaállítása](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Felhasználók – törölt felhasználók lap, a felhasználó visszaállítása lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>További lépések
-Miután visszaállította vagy törölte a felhasználókat, a következő alapvető folyamatokat hajthatja végre:
+Miután visszaállította vagy törölte a felhasználókat, a következő alapvető folyamatokat végezheti el:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)
 
 - [Szerepkörök hozzárendelése felhasználókhoz](active-directory-users-assign-role-azure-portal.md)
 
-- [Profiladatok hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
+- [Profil adatainak hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
 
-- [Vendégfelhasználók hozzáadása másik szervezetből](../b2b/what-is-b2b.md)
+- [Vendég felhasználók hozzáadása egy másik szervezethez](../b2b/what-is-b2b.md)
 
-Az egyéb elérhető felhasználókezelési feladatokról az [Azure AD felhasználói felügyeleti dokumentációja](../users-groups-roles/index.yml)tartalmaz további információt.
+További információ az [Azure ad](../users-groups-roles/index.yml)-beli felhasználói felügyeleti feladatokról.

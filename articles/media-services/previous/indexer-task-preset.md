@@ -1,6 +1,6 @@
 ---
-title: Feladatkészlet az Azure Media Indexelőhez
-description: Ez a témakör áttekintést nyújt az Azure Media Services Media Media Indexer feladatkészletéről.
+title: Azure Media Indexer feladatának beállítása
+description: Ez a témakör áttekintést nyújt a Azure Media Services Media Indexer feladatának beállításáról.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 29753759af341f82429f12b6710ae9c32dcb4103
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74896043"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Feladatkészlet az Azure Media Indexelőhez 
+# <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer feladatának beállítása 
 
-Az Azure Media Indexer egy médiaprocesszor, amelyet a következő feladatok elvégzésére használhat: a médiafájlok és a tartalom kereshetővé tehető, feliratozási sávokat és kulcsszavakat hozhat létre, indexelheti az eszköz részét tartalmazó eszközfájlokat.
+Azure Media Indexer a következő feladatok elvégzéséhez használt adathordozó-feldolgozó: médiafájlok és tartalmak kereshetővé tétele, lezárt feliratozási számok és kulcsszavak létrehozása, az eszköz részét képező indexfájl-fájlok.
 
-Ez a témakör az indexelési feladatnak átadandó feladatkészletet ismerteti. A teljes például lásd: [Médiafájlok indexelése az Azure Media Indexelővel.](media-services-index-content.md)
+Ez a témakör az indexelési feladatnak átadandó feladattípust ismerteti. A teljes példa: [médiafájlok indexelése Azure Media Indexersal](media-services-index-content.md).
 
-## <a name="azure-media-indexer-configuration-xml"></a>Az Azure Media Indexer konfigurációs XML-je
+## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer konfigurációs XML
 
 Az alábbi táblázat a konfigurációs XML elemeit és attribútumait ismerteti.
 
-|Név|Kötelező|Leírás|
+|Name (Név)|Kötelező|Leírás|
 |---|---|---|
-|Input (Bemenet)|igaz|Az indexozni kívánt eszközfájl(ok).<br/>Az Azure Media Indexer a következő médiafájlformátumokat támogatja: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>A bemeneti elem **nevében** vagy **listaattribútumában** megadhatja a fájlnevet (eke)t (lásd alább). **input** Ha nem adja meg, hogy melyik eszközfájlt indexelje, a rendszer kiveszi az elsődleges fájlt. Ha nincs beállítva elsődleges eszközfájl, a bemeneti eszköz első fájlja indexelésre kerül.<br/><br/>Az eszközfájl nevének explicit megadásához tegye a következőket:<br/>```<input name="TestFile.wmv" />```<br/><br/>Egyszerre több eszközfájlt is indexelhet (legfeljebb 10 fájl). Ehhez tegye a következőket:<br/>- Hozzon létre egy szöveges fájlt (jegyzékfájl), és adja meg a .lst kiterjesztést.<br/>- Adja hozzá a bemeneti eszközben szereplő összes eszközfájl nevét ehhez a jegyzékfájlhoz.<br/>- Adja hozzá (töltse fel) a jegyzékfájlt az eszközhöz.<br/>- Adja meg a jegyzékfájl nevét a bemeneti lista attribútumában.<br/>```<input list="input.lst">```<br/><br/>**Megjegyzés:** Ha 10-nél több fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz a 2006-os hibakóddal.|
-|metaadatok|hamis|A megadott eszközfájl(ok) metaadatai.<br/>```<metadata key="..." value="..." />```<br/><br/>Az előre definiált kulcsok értékeit megadhatja. <br/><br/>Jelenleg a következő kulcsok támogatottak:<br/><br/>**cím** és **leírás** - a nyelvi modell frissítésére szolgál a beszédfelismerés pontosságának javítása érdekében.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**felhasználónév** és **jelszó** - hitelesítésre használt, amikor internetfájlokat tölt le http vagy https-en keresztül.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>A felhasználónév és a jelszó értékek a bemeneti jegyzékben lévő összes médiaURL-re vonatkoznak.|
-|funkciók<br/><br/>Hozzáadva az 1.2-es verzióban. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR").|hamis|A Beszédfelismerés szolgáltatás a következő beállítási gombokkal rendelkezik:<br/><br/>Nyelv:<br/>- A természetes nyelv, hogy fel kell ismerni a multimédiás fájlt.<br/>- Angol, spanyol<br/><br/>Feliratformátumok:<br/>- a kívánt kimeneti feliratformátumok pontosvesszővel elválasztott listája (ha van ilyen)<br/>- ttml;webvtt<br/><br/><br/>Generálási kulcsszavak:<br/>- Logikai jelző, amely meghatározza, hogy szükség van-e kulcsszó XML-fájlra.<br/>- Igaz, de nem tudom, hogy mi a jó Hamis.|
+|Input (Bemenet)|igaz|Az indexelni kívánt adatfájl (ok).<br/>A Azure Media Indexer a következő médiafájl-formátumokat támogatja: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Megadhatja a fájl nevét (ke) t a **bemeneti** elem **Name** vagy **List** attribútumában (az alább látható módon). Ha nem határozza meg, hogy melyik adatfájlt szeretné indexelni, az elsődleges fájl lesz kiválasztva. Ha nincs beállítva elsődleges adatfájl, a bemeneti eszköz első fájlja indexelve lesz.<br/><br/>Ha explicit módon meg szeretné adni az eszköz fájljának nevét, tegye a következőket:<br/>```<input name="TestFile.wmv" />```<br/><br/>Egyszerre több adatfájlt is indexelheti (legfeljebb 10 fájlt). Ehhez tegye a következőket:<br/>– Hozzon létre egy szövegfájlt (manifest-fájlt), és adjon hozzá egy. lst kiterjesztést.<br/>-Adja meg a bemeneti objektumban található összes adatfájl nevét ebbe a jegyzékfájlba.<br/>-Adja hozzá (feltölti) a jegyzékfájlt az objektumhoz.<br/>-Adja meg a jegyzékfájl nevét a bemenet List attribútumában.<br/>```<input list="input.lst">```<br/><br/>**Megjegyzés:** Ha több mint 10 fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz az 2006-es hibakód miatt.|
+|metaadatok|hamis|A megadott adatfájl (ok) metaadatai.<br/>```<metadata key="..." value="..." />```<br/><br/>Megadhatja az előre definiált kulcsok értékeit. <br/><br/>Jelenleg a következő kulcsok támogatottak:<br/><br/>**cím** és **Leírás** – a nyelvi modell frissítésére szolgál a beszédfelismerés pontosságának javítása érdekében.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**Felhasználónév** és **jelszó** – az internetes fájlok http-vagy https-kapcsolaton keresztüli letöltéséhez használt hitelesítéshez.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>A Felhasználónév és a jelszó érték a bemeneti jegyzékfájlban lévő összes adathordozó URL-címére érvényes.|
+|funkciók<br/><br/>Az 1,2-es verzióban lett hozzáadva. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR").|hamis|A beszédfelismerési funkció a következő beállítások kulcsokkal rendelkezik:<br/><br/>Nyelv:<br/>– A multimédiás fájlban felismerhető természetes nyelv.<br/>-Angol, Spanyol<br/><br/>CaptionFormats:<br/>– a kívánt kimeneti felirat formátumának pontosvesszővel tagolt listája (ha van ilyen)<br/>-ttml; webvtt<br/><br/><br/>GenerateKeywords:<br/>– Logikai jelző, amely meghatározza, hogy szükség van-e egy kulcsszó XML-fájlra.<br/>Igaz Hamis.|
 
-## <a name="azure-media-indexer-configuration-xml-example"></a>Példa az Azure Media Indexer konfigurációs XML-használatára
+## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer konfigurációs XML-példa
 
 ``` 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -62,5 +62,5 @@ Az alábbi táblázat a konfigurációs XML elemeit és attribútumait ismerteti
   
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [Médiafájlok indexelése az Azure Media Indexelővel.](media-services-index-content.md)
+Lásd: [médiafájlok indexelése Azure Media Indexerokkal](media-services-index-content.md).
 

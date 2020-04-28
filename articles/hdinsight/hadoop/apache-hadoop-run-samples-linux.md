@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop MapReduce példák futtatása a HDInsighton – Azure
-description: A MapReduce minták használatának első lépései a HDInsight ban található jar-fájlokban. Az SSH használatával csatlakozzon a fürthöz, majd a Hadoop paranccsal futtassa a mintafeladatokat.
+title: Apache Hadoop MapReduce-példák futtatása a HDInsight-Azure-ban
+description: Ismerkedjen meg a MapReduce-minták használatával a HDInsight-ben található jar-fájlokban. Használja az SSH-t a fürthöz való kapcsolódáshoz, majd használja a Hadoop parancsot a mintavételi feladatok futtatásához.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,72 +9,72 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435748"
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>A MAPReduce példák futtatása a HDInsightban
+# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>A HDInsight-ben található MapReduce-példák futtatása
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-Ismerje meg, hogyan futtathat a MapReduce példák at Apache Hadoop a HDInsight.
+Megtudhatja, hogyan futtathatja a Apache Hadoop HDInsight-on található MapReduce-példákat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Apache Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
+* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="the-mapreduce-examples"></a>A MapReduce példák
+## <a name="the-mapreduce-examples"></a>Példák a MapReduce
 
-A minták a HDInsight-fürtön találhatók a helyen. `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` Ezeknek a mintáknak a forráskódja `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`megtalálható a HDInsight-fürtön a.-on.
+A minták a HDInsight-fürtön találhatók `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`. A minták forráskódját a HDInsight-fürt tartalmazza `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
-Az archívum a következő mintákat tartalmazza:
+Ebben az archívumban a következő minták szerepelnek:
 
 |Sample |Leírás |
 |---|---|
-|összesítésszószám|Megszámolja a beviteli fájlokban lévő szavakat.|
-|aggregátumszós|Kiszámítja a bemeneti fájlokban lévő szavak hisztogramját.|
-|bbp között|Bailey-Borwein-Plouffe segítségével számítja ki a Pi pontos számjegyeit.|
-|dbcount (adatbázis-szám|Megszámolja az adatbázisban tárolt oldalnézeti naplókat.|
-|distbbp között|A Pi pontos bitjének kiszámításához BBP típusú képletet használ.|
-|Grep|Megszámolja a regex egyezéseit a bemenetben.|
-|csatlakozás|Illesztést hajt végre rendezett, egyenlő particionált adatkészletek felett.|
-|multifilewc|Több fájlból származó szavakat számol meg.|
-|pentomino között|Csempe szóló program ot megoldást találni pentomino problémákat.|
-|Pi|A Pi-t kvázi Monte Carlo módszerrel becsüli meg.|
-|véletlen szövegíró|Csomópontonként 10 GB véletlenszerű szöveges adatot ír.|
-|véletleníró|Csomópontonként 10 GB véletlenszerű adatot ír.|
+|aggregatewordcount|Megszámolja a bemeneti fájlokban szereplő szavakat.|
+|aggregatewordhist|Kiszámítja a bemeneti fájlokban szereplő szavak hisztogramját.|
+|BBP|A Bailey-Borwein-Plouffe használatával számítja ki a PI pontos számjegyeit.|
+|dbcount|Megszámolja az adatbázisban tárolt oldalmegtekintési naplókat.|
+|distbbp|Egy BBP típusú képlettel számítja ki a PI pontos biteit.|
+|GREP|Megszámolja a bemenetben lévő regex egyezéseit.|
+|csatlakozás|Összeillesztést végez rendezett, egyformán particionált adatkészletekkel.|
+|multifilewc|Megszámolja a szavakat több fájlból.|
+|pentomino|A pentomino kapcsolatos problémák megoldására szolgáló program.|
+|PI|A PI becslése egy kvázi-Monte Carlo metódus használatával.|
+|randomtextwriter|10 GB véletlenszerű szöveges adatot ír egy csomóponton.|
+|randomwriter|10 GB véletlenszerű adatmennyiséget ír egy csomóponton.|
 |secondarysort|Másodlagos rendezést határoz meg a csökkentési fázishoz.|
-|Rendezés|A véletlenszerű író által írt adatokat rendezi.|
-|Sudoku|Egy sudoku megoldó.|
-|teragen|Adatok létrehozása a terasort számára.|
-|terasort között|Futtasd le a terasortot.|
-|teravalid|Ellenőrzöm a terasort eredményeit.|
-|szószám|Megszámolja a beviteli fájlokban lévő szavakat.|
-|wordmean (szó)|Megszámolja a bemeneti fájlokban lévő szavak átlagos hosszát.|
-|wordmedian (szómedián)|Megszámolja a bemeneti fájlokban lévő szavak medián hosszát.|
-|szószórás|Megszámolja a bemeneti fájlokban lévő szavak hosszának szórását.|
+|Rendezés|Rendezi a véletlenszerű író által írt adatmennyiséget.|
+|sudoku|Egy sudoku-Solver.|
+|teragen|A terasort vonatkozó adatértékek előállítása.|
+|terasort|Futtassa a terasort.|
+|teravalidate|A terasort eredményeinek ellenőrzése.|
+|WordCount|Megszámolja a bemeneti fájlokban szereplő szavakat.|
+|wordmean|Megszámolja a bemeneti fájlokban lévő szavak átlagos hosszát.|
+|wordmedian|Megszámolja a bemeneti fájlokban szereplő szavak medián hosszát.|
+|wordstandarddeviation|Megszámolja a bemeneti fájlokban található szavak hosszának szórását.|
 
-## <a name="run-the-wordcount-example"></a>Példa a wordcount
+## <a name="run-the-wordcount-example"></a>A WordCount-példa futtatása
 
-1. Csatlakozzon a HDInsighthoz az SSH használatával. Cserélje `CLUSTER` le a fürt nevére, majd írja be a következő parancsot:
+1. Kapcsolódás a HDInsight az SSH használatával. Cserélje `CLUSTER` le a nevet a fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Az SSH-munkamenetből a következő paranccsal sorolja fel a mintákat:
+2. Az SSH-munkamenetben használja a következő parancsot a minták listázásához:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Ez a parancs a dokumentum előző szakaszából származó mintalistát hozza létre.
+    Ez a parancs létrehozza a minta listáját a dokumentum előző szakaszából.
 
-3. A következő paranccsal segítséget kaphat egy adott mintához. Ebben az esetben a **wordcount** minta:
+3. Használja az alábbi parancsot egy adott minta súgójának lekéréséhez. Ebben az esetben a **WordCount** minta:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
@@ -86,43 +86,43 @@ Az archívum a következő mintákat tartalmazza:
     Usage: wordcount <in> [<in>...] <out>
     ```
 
-    Ez az üzenet azt jelzi, hogy a forrásdokumentumokhoz több bemeneti útvonal is megadható. A végső elérési út a kimenet (a forrásdokumentumokban lévő szavak száma) tárolása.
+    Ez az üzenet azt jelzi, hogy több bemeneti elérési utat is megadhat a forrás dokumentumaihoz. A végső elérési út az a hely, ahol a kimenet (a forrásbizonylatok szavainak száma) tárolódik.
 
-4. Az alábbi módon megszámlálhatja a Leonardo da Vinci notebookjaiban szereplő összes szót, amelyek mintaadatként vannak megadva a fürtben:
+4. A következő paranccsal számíthatja ki a Leonardo da Vinci jegyzetfüzetek összes olyan szavát, amely mintaadatokként van megadva a fürthöz:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    A feladat bemenete `/example/data/gutenberg/davinci.txt`a-ból olvasható. A példában szereplő kimenet `/example/data/davinciwordcount`a ban van tárolva. Mindkét elérési út a fürt alapértelmezett tárolóján található, nem a helyi fájlrendszerben.
+    A feladathoz tartozó bemenet beolvasva `/example/data/gutenberg/davinci.txt`. A példa kimenetét a következő tárolja `/example/data/davinciwordcount`:. Mindkét útvonal a fürt alapértelmezett tárolójában, nem pedig a helyi fájlrendszerben található.
 
    > [!NOTE]  
-   > Amint azt a szószámminta súgója is megjegyezte, több bemeneti fájlt is megadhat. Például `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` a davinci.txt és az ulysses.txt fájlban is megszámolná a szavakat.
+   > Ahogy az a WordCount-minta súgójában is látható, több bemeneti fájlt is megadhat. Például `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` a DaVinci. txt és az Ulysses. txt fájlban lévő szavakat is megszámolhatja.
 
-5. A feladat befejezése után a következő paranccsal tekintse meg a kimenetet:
+5. A művelet befejezése után a következő parancs használatával tekintheti meg a kimenetet:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Ez a parancs összefűzi a feladat által létrehozott összes kimeneti fájlt. Megjeleníti a kimenetet a konzolra. A kimenet az alábbi szöveghez hasonló:
+    Ez a parancs összefűzi a feladatokban létrehozott összes kimeneti fájlt. Megjeleníti a kimenetet a konzolon. A kimenet az alábbi szöveghez hasonló:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Minden sor egy szót jelöl, és azt, hogy hányszor fordult elő a bemeneti adatokban.
+    Minden sor egy szót jelöl, és a bemeneti adatokban hányszor fordult elő.
 
-## <a name="the-sudoku-example"></a>A Sudoku példa
+## <a name="the-sudoku-example"></a>A sudoku példája
 
-[Sudoku](https://en.wikipedia.org/wiki/Sudoku) egy logikai puzzle álló kilenc 3x3 rácsok. A rács egyes celláinak számai vannak, míg mások üresek, és a cél az üres cellák megoldása. Az előző link több információt a puzzle, de a célja ennek a mintának, hogy megoldja az üres sejteket. Tehát a mi bemenet kell egy fájlt, amely a következő formátumban:
+A [sudoku](https://en.wikipedia.org/wiki/Sudoku) olyan logikai puzzle, amely kilenc 3x3-as rácsból áll. A rács egyes celláiban számok vannak, míg mások üresek, és a cél az üres cellák feloldása. Az előző hivatkozás több információt tartalmaz a puzzle-ról, de ennek a mintának a célja, hogy megoldja az üres cellákat. Így a bemenetnek a következő formátumú fájlnak kell lennie:
 
-* Kilenc oszlop kilenc sora
-* Minden oszlop tartalmazhat egy `?` számot vagy (amely üres cellát jelöl)
-* A cellákat szóköz választja el egymástól
+* Kilenc sor kilenc oszlop
+* Minden oszlop tartalmazhat számot vagy `?` (amely üres cellát jelez)
+* A cellákat szóközzel elválasztva
 
-Van egy bizonyos módja annak, hogy építeni Sudoku rejtvények; oszlopban vagy sorban nem lehet számot megismételni. Van egy példa a HDInsight-fürtön, amely megfelelően van kialakítva. Ez található, `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` és tartalmazza a következő szöveget:
+A sudoku-rejtvényeket a következő módon hozhatja létre: oszlopokban vagy sorokban nem lehet megismételni a számot. Van egy példa a megfelelően kialakított HDInsight-fürtre. A (z) `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` helyen található, és a következő szöveget tartalmazza:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -134,13 +134,13 @@ Van egy bizonyos módja annak, hogy építeni Sudoku rejtvények; oszlopban vagy
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Ha a sudoku-példán keresztül szeretné futtatni ezt a példát, használja a következő parancsot:
+Ha ezt a példát a sudoku példán keresztül szeretné futtatni, használja a következő parancsot:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 ```
 
-Az eredmények a következő szöveghez hasonlóak:
+Az eredmények az alábbi szöveghez hasonlóan jelennek meg:
 
     8 5 1 3 9 2 6 4 7
     4 3 2 6 7 8 1 9 5
@@ -152,55 +152,55 @@ Az eredmények a következő szöveghez hasonlóak:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi--example"></a>Példa pi (π)
+## <a name="pi--example"></a>PI (π) példa
 
-A pi minta statisztikai (kvázi-Monte Carlo) módszert használ a pi értékének becslésére. A pontok véletlenszerűen kerülnek elhelyezésre egy egység négyzetben. A négyzet is tartalmaz egy kört. Annak valószínűsége, hogy a pontok a körbe esnek, megegyezik a kör pi/4 területével. A pi értéke a 4R értékből becsülhető meg. R a körön belüli pontok számának és a négyzeten belüli pontok teljes számának az aránya. Minél nagyobb a felhasznált pontok mintája, annál jobb a becslés.
+A PI-minta egy statisztikai (kvázi-Monte Carlo) metódust használ a PI értékének becsléséhez. A pontok véletlenszerűen vannak elhelyezve egy egység négyzetben. A négyzet egy kört is tartalmaz. Annak valószínűsége, hogy a pontok a kör alá esnek, egyenlő a kör területével (PI/4). A PI értéke a 4R értékének alapján becsülhető ki. Az R a körben belüli pontok számának és a négyzetben lévő pontok teljes számának aránya. Minél nagyobb a felhasznált pontok mintája, annál jobb a becslés.
 
-A minta futtatásához használja a következő parancsot. Ez a parancs 16 térképet használ 10 000 000 mintával a pi értékének becsléséhez:
+A minta futtatásához használja a következő parancsot. Ez a parancs 16 térképet használ 10 000 000-es mintákkal a PI értékének becsléséhez:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-A parancs által visszaadott érték hasonló a **3,1415915000000000000000000000000000000000000000000000000000000000000000000000000000000000** A referenciaként a pi első 10 tizedesjegye a 3,1415926535.
+A parancs által visszaadott érték a **3.14159155000000000000**hasonló. A hivatkozások esetében a PI első 10 decimális helye 3,1415926535.
 
-## <a name="10-gb-graysort-example"></a>10 GB GraySort példa
+## <a name="10-gb-graysort-example"></a>10 GB Mintarendezés példa
 
-A GraySort egy viszonyítási alap. A metrika a rendezési sebesség (TB/perc), amely nagy mennyiségű adat rendezése közben érhető el, általában legalább 100 TB.The metric is the sort rate (TB/minute) that is achieved while válogatás large amounts of data, usually a 100 TB minimum.
+A Mintarendezés egy teljesítményteszt-rendezés. A metrika a rendezési arány (TB/perc), amely a nagy mennyiségű adat rendezése során érhető el, általában 100 TB-nál kisebb.
 
-Ez a minta szerény 10 GB-os adatokat használ, hogy viszonylag gyorsan futtatható legyen. Ez használ a MapReduce alkalmazások által kifejlesztett Owen O'Malley és Arun Murthy. Ezek az alkalmazások 2009-ben nyerték meg az éves általános célú ("Daytona") terabájt rendezési referenciaértéket, 0,578 TB/perc (100 TB 173 perc alatt). Erről és más rendezési referenciaértékekről a [Rendezési teljesítménypont](https://sortbenchmark.org/) webhelyen talál további információt.
+Ez a minta egy szerény 10 GB-nyi adat használatát használja, hogy viszonylag gyorsan fusson. Az Owen O'Malley és Arun Marsal által fejlesztett MapReduce-alkalmazásokat használ. Ezek az alkalmazások az éves általános célú ("Daytona") terabájtos rendezési teljesítménytesztet nyerte el 2009-ben, 0,578 TB/perc sebességgel (100 TB, 173 perc). További információ erről és az egyéb rendezési teljesítménytesztekről: [rendezési teljesítményteszt](https://sortbenchmark.org/) -hely.
 
-Ez a minta a MapReduce programok három csoportját használja:
+Ez a példa három MapReduce programot használ:
 
-* **TeraGen**: A MapReduce program, amely generál sorok at adatok rendezésére
+* **TeraGen**: olyan MapReduce program, amely sorba állítja az adatsorokat
 
-* **TeraSort**: Mintát vesz a bemeneti adatokból, és a MapReduce segítségével rendezi az adatokat
+* **TeraSort**: a bemeneti adatok mintavételezése és a MapReduce használatával rendezi az adatokat egy teljes sorrendbe
 
-    TeraSort egy szabványos MapReduce rendezés, kivéve egy egyéni partitioner. A particionáló az N-1 mintavételezett kulcsok rendezett listáját használja, amelyek meghatározzák az egyes csökkentéskulcs-tartományt. Különösen az összes olyan kulcsot küldi el a minta[i-1] <= a < minta[i] kulcsa az i csökkentése érdekében. Ez a particionáló garantálja, hogy a csökkentés i kimenetei mind kisebbek, mint az i+1 csökkentés kimenete.
+    A TeraSort egy szabványos MapReduce-rendezés, amely az egyéni particionáló kivételével. A particionáló az N-1 mintázott kulcsok rendezett listáját használja, amelyek meghatározzák az egyes csökkentések kulcsának tartományát. Különösen az [i-1] <= Key < minta [i] mintát kell elküldeni, hogy csökkentse a következőt:. Ez a particionáló garantálja, hogy az i/o-mennyiség csökkentése minden kisebb, mint az i + 1 csökkentése.
 
-* **TeraValidate**: A MapReduce program, amely ellenőrzi, hogy a kimenet globálisan rendezve
+* **TeraValidate**: egy MapReduce program, amely ellenőrzi, hogy a kimenet globálisan rendezett-e
 
-    Fájlonként egy leképezést hoz létre a kimeneti könyvtárban, és minden egyes leképezés biztosítja, hogy minden kulcs kisebb vagy egyenlő legyen az előzővel. A térképfüggvény az egyes fájlok első és utolsó kulcsainak rekordjait hozza létre. A reduce funkció biztosítja, hogy az első kulcs a fájl i nagyobb, mint az utolsó kulcs a fájl i-1. Minden problémát a csökkentési fázis kimeneteként jelentenek, a kulcsok nem sorrendben.
+    Egy leképezést hoz létre fájlonként a kimeneti könyvtárban, és minden egyes Térkép biztosítja, hogy az egyes kulcsok kisebbek vagy egyenlőek legyenek az előzővel. A Map függvény az egyes fájlok első és utolsó kulcsaihoz tartozó rekordokat hozza létre. A csökkentés funkció biztosítja, hogy a fájl első kulcsa nagyobb legyen, mint az i-1. fájl utolsó kulcsa. Az esetleges problémák a csökkentési fázis kimenetében jelennek meg, a nem sorrendben lévő kulcsokkal.
 
-Az alábbi lépésekkel hozhat létre adatokat, rendezheti, majd érvényesítheti a kimenetet:
+A következő lépésekkel hozhatja végre az adatokat, rendezheti és ellenőrizheti a kimenetet:
 
-1. 10 GB adatot hozhat létre, amely a HDInsight-fürt `/example/data/10GB-sort-input`alapértelmezett tárolójában van tárolva:
+1. 10 GB adat előállítása, amely a HDInsight-fürt alapértelmezett tárolójában tárolódik a `/example/data/10GB-sort-input`következő helyen:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    A `-Dmapred.map.tasks` megmondja a Hadoopnak, hogy hány térképes feladatot kell használnia ehhez a feladathoz. Az utolsó két paraméter arra utasítja a feladatot, hogy `/example/data/10GB-sort-input`hozzon létre 10 GB adatot, és tárolja a rendszeren.
+    A `-Dmapred.map.tasks` Hadoop azt jelzi, hogy hány leképezési feladat használható ehhez a feladathoz. Az utolsó két paraméter arra utasítja a feladatot, hogy 10 GB adatmennyiséget hozzon létre `/example/data/10GB-sort-input`, és tárolja azt a következő helyen:.
 
-2. Az adatok rendezéséhez használja a következő parancsot:
+2. Az alábbi paranccsal rendezheti az adatsorokat:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    A `-Dmapred.reduce.tasks` megmondja a Hadoopnak, hogy hány olyan tevékenységet kell csökkentenie a feladathoz, amelyet használni szeretne. Az utolsó két paraméter csak az adatok bemeneti és kimeneti helye.
+    A `-Dmapred.reduce.tasks` Hadoop azt jelzi, hogy hány műveletet kell használni a feladathoz. Az utolsó két paraméter csak az adatok bemeneti és kimeneti helyei.
 
-3. A rendezés által létrehozott adatok érvényesítéséhez használja az alábbiakat:
+3. A következő paranccsal ellenőrizheti a rendezés által generált adatforrásokat:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -208,7 +208,7 @@ Az alábbi lépésekkel hozhat létre adatokat, rendezheti, majd érvényesíthe
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtanulta, hogyan futtathatja a Linux-alapú HDInsight-fürtökben található mintákat. A Pig, a Hive és a MapReduce HDInsight használatával kapcsolatos oktatóanyagokról az alábbi témakörökben olvashat:
+Ebből a cikkből megtudhatta, hogyan futtathatja a Linux-alapú HDInsight-fürtökben található mintákat. A Pig, a kaptár és a MapReduce HDInsight-vel való használatával kapcsolatos oktatóanyagokat a következő témakörökben találja:
 
-* [Az Apache Hive használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-hive.md)
-* [A MapReduce használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsight Apache Hadoop használatával](hdinsight-use-mapreduce.md)

@@ -1,6 +1,6 @@
 ---
-title: Felhasználói profiladatainak hozzáadása vagy frissítése – Azure AD
-description: Útmutató arról, hogyan adhat hozzá információkat a felhasználó profiljához az Azure Active Directoryban, beleértve a képet és a feladat részleteit.
+title: Felhasználói profil adatainak hozzáadása vagy frissítése – Azure AD
+description: Útmutatás arról, hogyan lehet adatokat felvenni egy felhasználó profiljába Azure Active Directoryban, beleértve a képet és a feladatot.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,52 +13,52 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422882"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Felhasználói profil adatainak hozzáadása vagy frissítése az Azure Active Directory használatával
-Adja meg a felhasználói profil adatait, beleértve a profilképet, a feladatspecifikus információkat és néhány beállítást az Azure Active Directory (Azure AD) használatával. Az új felhasználók hozzáadásáról további információt a Felhasználók hozzáadása és törlése az Azure Active Directoryban című [témakörben talál.](add-users-azure-active-directory.md)
+Adja hozzá a felhasználói profil adatait, beleértve a profil képét, a feladatra vonatkozó információkat, valamint néhány beállítást Azure Active Directory (Azure AD) használatával. További információ az új felhasználók hozzáadásáról: [felhasználók hozzáadása vagy törlése Azure Active Directoryban](add-users-azure-active-directory.md).
 
-## <a name="add-or-change-profile-information"></a>Profiladatok hozzáadása vagy módosítása
-Amint látni fogja, több információ áll rendelkezésre a felhasználó profiljában, mint amit a felhasználó létrehozása során fel tud adni. Mindezek a további információk nem kötelezőek, és szükség szerint hozzáadható a szervezet.
+## <a name="add-or-change-profile-information"></a>Profil adatainak hozzáadása vagy módosítása
+Ahogy látja, a felhasználó profiljában további információk érhetők el, mint amit a felhasználó létrehozásakor hozzá tud adni. Ez a további információ nem kötelező, és szükség szerint hozzáadható a szervezete számára.
 
-## <a name="to-add-or-change-profile-information"></a>Profiladatok hozzáadása vagy módosítása
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) a szervezet felhasználói rendszergazdájaként.
+## <a name="to-add-or-change-profile-information"></a>Profil adatainak hozzáadása vagy módosítása
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként a szervezet számára.
 
-2. Válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válasszon ki egy felhasználót. _Például, Alain Charon_.
+2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, majd válasszon ki egy felhasználót. Például _Alain Charon_.
 
-    Megjelenik **az Alain Charon - Profil** oldal.
+    Megjelenik az **Alain Charon-profil** lap.
 
-    ![A felhasználó profillapja, beleértve a szerkeszthető adatokat](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
+    ![A felhasználó profil lapja, beleértve a szerkeszthető adatokat is](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. Válassza a **Szerkesztés** lehetőséget, ha az egyes elérhető szakaszokban szereplő információkat is hozzáadhatja vagy frissítheti.
+3. Válassza a **Szerkesztés** lehetőséget a rendelkezésre álló részekben foglalt információk hozzáadásához vagy frissítéséhez.
 
-    ![A felhasználó profillapja, amely a szerkeszthető területeket jeleníti meg](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
+    ![A felhasználó profil lapja, amely a szerkeszthető területeket mutatja](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
-    - **Profilkép.** Jelöljön ki egy miniatűr képet a felhasználó fiókjához. Ez a kép az Azure Active Directoryban és a felhasználó személyes lapjain, például a myapps.microsoft.com lapon jelenik meg.
+    - **Profil képe** Válassza ki a felhasználói fiók miniatűr képét. Ez a kép a Azure Active Directory és a felhasználó személyes oldalain, például a myapps.microsoft.com oldalon jelenik meg.
 
-    - **Identitás.** Adjon hozzá vagy frissítsen egy további identitásértéket a felhasználó számára, például egy házas vezetéknevet. Ezt a nevet a vezetéknév és a vezetéknév értékétől függetlenül is beállíthatja. Használhatja például monogram, vállalatnév felvételére vagy a megjelenített nevek sorrendjének módosítására. Egy másik példában két olyan felhasználó esetében, akiknek a neve "Chris Green", az Identitás karakterláncsegítségével a nevüket "Chris B. Green" 'Chris R. Green (Contoso) értékre állíthatja.
+    - **Identitás.** Adjon hozzá vagy frissítsen egy további azonosító értéket a felhasználóhoz, például egy házas vezetéknevet. Ezt a nevet az utónév és a vezetéknév értékeitől függetlenül is megadhatja. Használhatja például a következőt: Monogram, cégnév vagy a megjelenített nevek sorrendjének módosítása. Egy másik példában két olyan felhasználó esetében, akiknek a neve "Chris Green", az Identity sztring használatával állíthatja be nevüket "Chris B. Green", "Chris R. Green (contoso)" néven.
 
-    - **Állásinformáció.** Adja meg a feladattal kapcsolatos információkat, például a felhasználó beosztását, részlegét vagy vezetőjét.
+    - **Feladatok adatai.** Vegyen fel minden olyan feladattal kapcsolatos információt, mint például a felhasználó beosztás, részleg vagy felettes.
 
-    - **Beállítások.** Döntse el, hogy a felhasználó bejelentkezhet-e az Azure Active Directory-bérlőbe. Megadhatja a felhasználó globális helyét is.
+    - **Beállítások.** Döntse el, hogy a felhasználó be tud-e jelentkezni Azure Active Directory bérlőbe. Megadhatja a felhasználó globális helyét is.
 
-    - **Elérhetőség.** Adja meg a felhasználó számára a megfelelő kapcsolattartási adatokat, kivéve néhány felhasználó telefon- vagy mobilkapcsolattartási adatait (csak globális rendszergazda frissítheti a rendszergazdai szerepkörökben lévő felhasználókat).
+    - **Kapcsolattartási adatok.** Adja meg a felhasználóhoz tartozó kapcsolattartási adatokat, kivéve egyes felhasználók telefon-vagy mobil kapcsolattartási adatait (csak a globális rendszergazda frissítheti a felhasználókat a rendszergazdai szerepkörökben).
 
-    - **Hitelesítési kapcsolattartási adatok.** Ellenőrizze ezeket az adatokat, és győződjön meg arról, hogy aktív telefonszám és e-mail-cím van a felhasználó számára. Ezt az információt az Azure Active Directory használja annak érdekében, hogy a felhasználó valóban a felhasználó bejelentkezés közben. A hitelesítési kapcsolattartási adatokat csak globális rendszergazda frissítheti.
+    - **Hitelesítési kapcsolattartási adatok.** Ellenőrizze ezeket az adatokat, és győződjön meg arról, hogy a felhasználó számára aktív telefonszám és e-mail-cím található. Ezeket az információkat a Azure Active Directory használja annak biztosítására, hogy a felhasználó valóban a felhasználó legyen a bejelentkezés során. A hitelesítési kapcsolattartási adatokat csak globális rendszergazda frissítheti.
 
 4. Kattintson a **Mentés** gombra.
 
-    A rendszer minden módosítást a felhasználó számára ment.
+    A rendszer minden módosítást elment a felhasználó számára.
 
     >[!Note]
-    >A Windows Server Active Directory használatával frissítenie kell az identitás-, kapcsolattartási adatokat vagy feladatadatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. A frissítés befejezése után meg kell várnia a következő szinkronizálási ciklus befejezését, mielőtt megjelennek a módosítások.
+    >A Windows Server Active Directory segítségével frissítse az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. A frissítés befejezése után meg kell várnia, hogy a következő szinkronizálási ciklus befejeződjön, mielőtt látni fogja a módosításokat.
 
 ## <a name="next-steps"></a>További lépések
-A felhasználói profilok frissítése után a következő alapvető folyamatokat hajthatja végre:
+A felhasználói profilok frissítése után a következő alapvető folyamatokat végezheti el:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)
 
@@ -66,4 +66,4 @@ A felhasználói profilok frissítése után a következő alapvető folyamatoka
 
 - [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-Más felhasználókezelési feladatokat is végrehajthat, például meghatalmazottakat, házirendek használatával és felhasználói fiókok megosztásával. Az egyéb elérhető műveletekről az [Azure Active Directory felhasználói felügyeleti dokumentációjában](../users-groups-roles/index.yml)olvashat bővebben.
+Más felhasználói felügyeleti feladatokat is elvégezhet, például a delegált hozzárendelését, a szabályzatok használatát és a felhasználói fiókok megosztását. További információ az egyéb elérhető műveletekről: [Azure Active Directory felhasználói kezelés dokumentációja](../users-groups-roles/index.yml).

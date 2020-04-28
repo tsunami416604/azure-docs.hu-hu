@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Virtuális hálózat összekapcsolása egy áramkörhöz: klasszikus'
-description: Ez a dokumentum áttekintést nyújt arról, hogyan kapcsolhatja össze a virtuális hálózatokat (virtuális hálózatokat) az ExpressRoute-áramkörökkel a klasszikus üzembe helyezési modell és a PowerShell használatával.
+title: 'Azure ExpressRoute: VNet összekapcsolása egy áramkörrel: klasszikus'
+description: Ez a dokumentum áttekintést nyújt a virtuális hálózatok (virtuális hálózatok) ExpressRoute-áramkörökhöz való összekapcsolásáról a klasszikus üzemi modell és a PowerShell használatával.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74930038"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat csatlakoztatása ExpressRoute-áramkörhöz a PowerShell használatával (klasszikus)
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a PowerShell (klasszikus) használatával
 > [!div class="op_single_selector"]
-> * [Azure-portál](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-linkvnet-arm.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Videó – Azure-portál](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-linkvnet-classic.md)
 >
 
-Ez a cikk segítséget nyújt a virtuális hálózatok (virtuális hálózatok) összekapcsolására a PowerShell használatával az Azure ExpressRoute-áramkörökkel. Egyetlen virtuális hálózat legfeljebb négy ExpressRoute-kapcsolatcsoporthoz kapcsolható. A cikkben ismertetett lépésekkel új hivatkozást hozhat létre minden olyan ExpressRoute-kapcsolatra, amelyhez csatlakozik. Az ExpressRoute-áramkörök lehetnek ugyanabban az előfizetésben, különböző előfizetések, vagy a kettő kombinációja. Ez a cikk a klasszikus telepítési modell használatával létrehozott virtuális hálózatokra vonatkozik.
+Ez a cikk segítséget nyújt a virtuális hálózatok (virtuális hálózatok) és az Azure ExpressRoute-áramkörök összekapcsolásához a PowerShell használatával. Egyetlen VNet legfeljebb négy ExpressRoute-áramkörhöz lehet kapcsolni. A cikkben ismertetett lépéseket követve létrehozhat egy új hivatkozást minden olyan ExpressRoute-áramkörhöz, amelyhez csatlakozik. A ExpressRoute-áramkörök lehetnek ugyanabban az előfizetésben, különböző előfizetésekben vagy a kettő kombinációjában is. Ez a cikk a klasszikus üzembe helyezési modellel létrehozott virtuális hálózatokra vonatkozik.
 
-Egy ExpressRoute-kapcsolathoz legfeljebb 10 virtuális hálózat kapcsolódhat. Minden virtuális hálózatnak ugyanabban a geopolitikai régióban kell lennie. Ha engedélyezi az ExpressRoute prémium szintű bővítmény engedélyezése, nagyobb számú virtuális hálózatot kapcsolhat össze az ExpressRoute-hálózattal, vagy összekapcsolhatja a más geopolitikai régiókban található virtuális hálózatokat. A prémium kiegészítővel kapcsolatos további részletekért tekintse meg a [GYIK-et.](expressroute-faqs.md)
+Akár 10 virtuális hálózatot is összekapcsolhat egy ExpressRoute-áramkörhöz. Minden virtuális hálózatnak ugyanabban a geopolitikai régióban kell lennie. Nagyobb számú virtuális hálózatot csatolhat a ExpressRoute-áramkörhöz, vagy más geopolitikai régiókban található virtuális hálózatokat is összekapcsolhat, ha engedélyezi a ExpressRoute prémium bővítményét. A prémium szintű bővítménysel kapcsolatos további információkért olvassa el a [Gyakori kérdések](expressroute-faqs.md) című részt.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -36,27 +36,27 @@ Egy ExpressRoute-kapcsolathoz legfeljebb 10 virtuális hálózat kapcsolódhat. 
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
-* A konfiguráció megkezdése előtt tekintse át az [előfeltételeket,](expressroute-prerequisites.md) [útválasztási követelményeket](expressroute-routing.md)és [munkafolyamatokat.](expressroute-workflows.md)
+* A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md), az [útválasztási követelményeket](expressroute-routing.md)és a [munkafolyamatokat](expressroute-workflows.md) .
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
-   * Kövesse az utasításokat [egy ExpressRoute-kapcsolat létrehozásához,](expressroute-howto-circuit-classic.md) és a kapcsolatszolgáltató engedélyezze az áramkört.
-   * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva van a kapcsolatcsoporthoz. Az útválasztási utasításokat az Útválasztási útmutató [konfigurálása](expressroute-howto-routing-classic.md) című cikkben találja.
-   * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva van, és a BGP-társviszony-létesítés a hálózat és a Microsoft között, így lehetővé teszi a végpontok közötti kapcsolatot.
-   * Virtuális hálózattal és virtuális hálózati átjáróval kell rendelkeznie, amelyet létrehozott és teljesen ki épített. Az Utasítások követéséhez [konfiguráljon egy virtuális hálózatot az ExpressRoute számára.](expressroute-howto-vnet-portal-classic.md)
+   * Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-classic.md) , és engedélyezze a kapcsolati szolgáltatónak az áramkört.
+   * Győződjön meg arról, hogy az Ön áramköréhez konfigurálva van az Azure-beli magánhálózati kapcsolat. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](expressroute-howto-routing-classic.md) című cikket.
+   * Győződjön meg arról, hogy az Azure Private peering konfigurálva van, és a hálózat és a Microsoft közötti BGP-társak is elérhetők, így a végpontok közötti kapcsolat engedélyezhető.
+   * Létre kell hoznia egy virtuális hálózatot és egy virtuális hálózati átjárót, és azt teljesen ki kell építeni. A [ExpressRoute virtuális hálózatának konfigurálásához](expressroute-howto-vnet-portal-classic.md)kövesse az utasításokat.
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>A legújabb PowerShell-parancsmagok letöltése
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Virtuális hálózat csatlakoztatása ugyanabban az előfizetésben egy áramkörhöz
-A virtuális hálózat ot expressroute-kapcsolathoz a következő parancsmag használatával kapcsolhatja össze. Győződjön meg arról, hogy a virtuális hálózati átjáró létrejött, és készen áll a csatolásra a parancsmag futtatása előtt.
+## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Ugyanahhoz az előfizetéshez tartozó virtuális hálózat összekapcsolása egy áramkörrel
+A virtuális hálózatot a következő parancsmag használatával kapcsolhatja össze egy ExpressRoute-áramkörhöz. Győződjön meg arról, hogy a virtuális hálózati átjáró létrejött, és készen áll a csatolásra a parancsmag futtatása előtt.
 
 ```powershell
 New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 Provisioned
 ```
     
-## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Virtuális hálózati kapcsolat eltávolítása áramkörhöz
-Az ExpressRoute-áramkörhöz való virtuális hálózati kapcsolatot a következő parancsmag használatával távolíthatja el. Győződjön meg arról, hogy az aktuális előfizetés ki van jelölve az adott virtuális hálózathoz. 
+## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Egy áramkörhöz tartozó virtuális hálózati kapcsolat eltávolítása
+A következő parancsmag használatával eltávolíthatja a virtuális hálózati kapcsolatot egy ExpressRoute-áramkörhöz. Győződjön meg arról, hogy az aktuális előfizetés van kiválasztva az adott virtuális hálózathoz. 
 
 ```powershell
 Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
@@ -64,27 +64,27 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Egy másik előfizetéshez tartozó virtuális hálózat bevonása egy kapcsolatcsoportba
-Az ExpressRoute-áramköröket több előfizetésen keresztül is megoszthatja. Az alábbi ábra egy egyszerű vázlatot mutat be, amely bemutatja, hogyan működik az ExpressRoute-áramkörök megosztása több előfizetésen keresztül.
+Megoszthat egy ExpressRoute-áramkört több előfizetésen keresztül is. Az alábbi ábrán egy egyszerű sematikus ábrán látható, hogy a megosztás hogyan működik a ExpressRoute-áramkörök több előfizetésen keresztül.
 
-A nagy felhőn belüli kisebb felhők mindegyike olyan előfizetéseket jelöl, amelyek a szervezet különböző részlegeihez tartoznak. A szervezet minden részlege használhatja a saját előfizetését a szolgáltatásaik üzembe helyezéséhez – de a részlegek egyetlen ExpressRoute-kapcsolaton osztozhatnak a helyszíni hálózathoz való csatlakozáshoz. Egyetlen részleg (ebben a példában: IT) birtokolhatja az ExpressRoute-áramkört. A szervezeten belüli egyéb előfizetések használhatják az ExpressRoute-áramkört.
+A nagyméretű felhőben lévő kisebb felhőket a szervezeten belüli különböző részlegekhez tartozó előfizetések ábrázolására használják. A szervezeten belüli részlegek saját előfizetést használhatnak a szolgáltatásaik üzembe helyezéséhez, de a részlegek egyetlen ExpressRoute áramkört is megoszthatnak a helyszíni hálózathoz való kapcsolódáshoz. Egyetlen részleg (ebben a példában: IT) a ExpressRoute áramkör tulajdonosa lehet. A szervezeten belüli egyéb előfizetések a ExpressRoute áramkört is használhatják.
 
 > [!NOTE]
-> A dedikált kapcsolati és sávszélesség-díjak az ExpressRoute-kapcsolat tulajdonosa lesz alkalmazva. Minden virtuális hálózat ugyanazt a sávszélességet használja.
+> A dedikált áramkör kapcsolati és sávszélesség-díjait a rendszer a ExpressRoute Circuit tulajdonosára alkalmazza. Minden virtuális hálózat ugyanazt a sávszélességet használja.
 > 
 > 
 
 ![Előfizetések közötti kapcsolat](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
-### <a name="administration"></a>Adminisztráció
-A *kapcsolatcsoport tulajdonosa* annak az előfizetésnek a rendszergazdája/társadminisztrátora, amelyben az ExpressRoute-kapcsolat létrejön. A kapcsolatcsoport tulajdonosa engedélyezheti más előfizetések rendszergazdáinak/társrendszergazdáinak, a továbbiakban: *a felhasználói körcsoport-felhasználók*számára, hogy a saját felhasználói dedikált áramkört használják. A szervezet ExpressRoute-áramkörének használatára jogosult áramköri felhasználók az előfizetésben lévő virtuális hálózatot az ExpressRoute-kapcsolattal kapcsolhatják össze az engedélyezésük után.
+### <a name="administration"></a>Felügyelet
+Az *áramkör tulajdonosa* annak az előfizetésnek a rendszergazdája/rendszergazdája, amelyben az ExpressRoute-áramkör létrejött. Az áramkör tulajdonosa engedélyezheti a más előfizetések rendszergazdái vagy rendszergazdái *számára, hogy*a saját dedikált áramkört használják. Azok a felhasználók, akik jogosultak a szervezet ExpressRoute-áramkör használatára, az előfizetésben lévő virtuális hálózatot a hitelesítésük után a ExpressRoute-áramkörhöz kapcsolhatják.
 
-Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedélyezés visszavonása azt eredményezi, hogy az összes hivatkozás törlődik az előfizetésből, amelynek hozzáférését visszavonták.
+Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedélyek visszavonása az összes olyan hivatkozás törlését eredményezi, amelynek a hozzáférését visszavonták.
 
-### <a name="circuit-owner-operations"></a>Áramkörtulajdonosi műveletek
+### <a name="circuit-owner-operations"></a>Áramköri tulajdonosi műveletek
 
-**Engedélyezés létrehozása**
+**Engedély létrehozása**
 
-A kapcsolatcsoport tulajdonosa felhatalmazza a rendszergazdák más előfizetések a megadott áramkör használatát. A következő példában a hálózatkapcsolati hálózat (Contoso IT) rendszergazdája lehetővé teszi, hogy egy másik előfizetés rendszergazdája (dev-test) legfeljebb két virtuális hálózatot kapcsoljon a hálózathoz. A Contoso-rendszergazda ezt a Microsoft-azonosító tesztelésének megadásával engedélyezi. A parancsmag nem küld e-mailt a megadott Microsoft-azonosítóra. A kör tulajdonosának explicit módon értesítenie kell a másik előfizetés tulajdonosát, hogy az engedélyezés befejeződött.
+Az áramkör tulajdonosa más előfizetések rendszergazdái számára engedélyezi a megadott áramkör használatát. A következő példában az áramkör rendszergazdája (contoso IT) lehetővé teszi egy másik előfizetés (dev-test) rendszergazdájának, hogy két virtuális hálózatot kapcsoljon az áramkörhöz. A contoso informatikai rendszergazdája ezt a fejlesztési-tesztelési Microsoft-azonosító megadásával teszi lehetővé. A parancsmag nem küld e-mailt a megadott Microsoft-AZONOSÍTÓnak. Az áramkör tulajdonosának explicit módon értesítenie kell a másik előfizetés tulajdonosát az engedélyezés befejezéséről.
 
 ```powershell
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
@@ -102,7 +102,7 @@ New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
 
 **Engedélyek áttekintése**
 
-A kör tulajdonosa a következő parancsmag futtatásával ellenőrizheti az adott áramkörre kiadott összes engedélyt:
+Az áramkör tulajdonosa a következő parancsmag futtatásával áttekintheti az adott áramkörön kiadott összes engedélyt:
 
 ```powershell
 Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
@@ -131,7 +131,7 @@ Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "***********************
 
 **Engedélyek frissítése**
 
-Az áramkör tulajdonosa a következő parancsmag használatával módosíthatja az engedélyeket:
+Az áramkör tulajdonosa a következő parancsmaggal módosíthatja az engedélyeket:
 
 ```powershell
 Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
@@ -149,17 +149,17 @@ Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "************************
 
 **Engedélyek törlése**
 
-A kapcsolatcsoport tulajdonosa visszavonhatja/törölheti a felhasználónak szóló engedélyeket a következő parancsmag futtatásával:
+Az áramkör tulajdonosa visszavonhatja vagy törölheti az engedélyeket a felhasználónak a következő parancsmag futtatásával:
 
 ```powershell
 Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 ```
 
-### <a name="circuit-user-operations"></a>Áramkörfelhasználói műveletek
+### <a name="circuit-user-operations"></a>Áramkör felhasználói műveletei
 
 **Engedélyek áttekintése**
 
-Az áramkör felhasználója a következő parancsmag használatával tekintheti át az engedélyeket:
+Az áramkör felhasználója a következő parancsmaggal ellenőrizheti az engedélyeket:
 
 ```powershell
 Get-AzureAuthorizedDedicatedCircuit
@@ -179,9 +179,9 @@ Get-AzureAuthorizedDedicatedCircuit
   UsedLinks                        : 0
   ```
 
-**Hivatkozási engedélyek beváltása**
+**Kapcsolati engedélyek beváltása**
 
-Az áramkör-felhasználó a következő parancsmast futtathatja a kapcsolatengedélyezés beváltásához:
+Az áramkör-felhasználó a következő parancsmagot futtathatja egy hivatkozás engedélyezésének beváltásához:
 
 ```powershell
 New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
@@ -203,4 +203,4 @@ New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetN
 
 ## <a name="next-steps"></a>További lépések
 
-Az ExpressRoute-ról további információt az [ExpressRoute gyakori kérdések című](expressroute-faqs.md)témakörben talál.
+A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.

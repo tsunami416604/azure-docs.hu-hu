@@ -1,6 +1,6 @@
 ---
-title: Azure Private Link szolgáltatás létrehozása az Azure CLI használatával
-description: Ismerje meg, hogyan hozhat létre Azure Private Link szolgáltatást az Azure CLI használatával
+title: Azure Private link szolgáltatás létrehozása az Azure CLI használatával
+description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t az Azure CLI használatával
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,40 +8,40 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75350243"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolatszolgáltatás létrehozása az Azure CLI használatával
-Ez a cikk bemutatja, hogyan hozhat létre egy privát kapcsolat szolgáltatás az Azure-ban az Azure CLI használatával.
+# <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy az Azure CLI telepítése és használata helyett, ez a rövid útmutató megköveteli, hogy a legújabb Azure CLI-verzió. A telepített verzió megkereséséhez futtassa a futtassa a futtassa a futtassa a futtassa a program `az --version` A telepítési vagy frissítési információkért tekintse meg az [Azure CLI telepítése](/cli/azure/install-azure-cli) című témakört.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Ez a példa létrehoz egy alapértelmezett virtuális hálózatnevű *myVirtualNetwork* egy alhálózat nevű *mySubnet:*
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Ez a példa egy *myVirtualNetwork* nevű alapértelmezett virtuális hálózatot hoz létre egy *mySubnet*nevű alhálózattal:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>Alhálózat létrehozása
-Hozzon létre egy alhálózatot a virtuális hálózathoz az [az hálózati virtuálishálózat alhálózatának létrehozása.](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myVirtualNetwork* virtuális hálózatban:
+Hozzon létre egy alhálózatot a virtuális hálózathoz az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myVirtualNetwork* virtuális hálózatban:
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
 ```
-### <a name="create-a-internal-load-balancer"></a>Belső terheléselosztó létrehozása 
-Hozzon létre egy belső terheléselosztót [az hálózati lb create](/cli/azure/network/lb#az-network-lb-create)segítségével. Ez a példa létrehoz egy *myILB* nevű belső terheléselosztót a *myResourceGroup*nevű erőforráscsoportban. 
+### <a name="create-a-internal-load-balancer"></a>Belső Load Balancer létrehozása 
+Hozzon létre egy belső Load balancert az [az Network LB Create](/cli/azure/network/lb#az-network-lb-create)paranccsal. Ez a példa egy *myILB* nevű belső terheléselosztó létrehozását hozza létre a *myResourceGroup*nevű erőforráscsoport-csoportban. 
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroup --name myILB --sku standard --vnet-name MyVirtualNetwork --subnet mySubnet --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool
@@ -78,11 +78,11 @@ A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfiguráci
 ```
 ### <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a példában nem terjed ki a virtuális gép létrehozása. A Belső terheléselosztó létrehozása a [terheléselosztási virtuális gépek Azure CLI használatával](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) két virtuális gép létrehozásához a terheléselosztó háttérkiszolgálóként használandó lépéseit hajthatja végre. 
+Ebben a példában nem fedi le a virtuális gépek létrehozását. Kövesse a [belső terheléselosztó létrehozása](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) a virtuális gépek az Azure CLI-vel való terheléselosztásához című szakasz lépéseit, és hozzon létre két virtuális gépet a terheléselosztó háttér-kiszolgálóiként való használatához. 
 
 
-### <a name="disable-private-link-service-network-policies-on-subnet"></a>A Private Link szolgáltatás hálózati házirendjeinek letiltása az alhálózaton 
-A Private Link szolgáltatás hoz létre egy IP-t bármely, a virtuális hálózaton belül kiválasztott alhálózatról. Jelenleg nem támogatjuk a hálózati házirendeket ezeken az IP-ken.  Ezért le kell tiltanunk az alhálózat hálózati házirendjeit. Frissítse az alhálózatot a Private Link szolgáltatás hálózati házirendjeinek letiltásához [az az hálózati virtuális hálózat alhálózati frissítésével.](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
+### <a name="disable-private-link-service-network-policies-on-subnet"></a>Magánhálózati kapcsolati szolgáltatás hálózati házirendjének letiltása az alhálózaton 
+A Private link Service-nek szüksége van egy virtuális hálózaton belüli bármely alhálózat IP-címére. Jelenleg nem támogatjuk a hálózati házirendeket ezeken az IP-címeken.  Ezért le kell tiltania a hálózati házirendeket az alhálózaton. Frissítse az alhálózatot a Private link Service hálózati házirendjeinek letiltásához az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update).
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása  
  
-Hozzon létre egy privát kapcsolat szolgáltatást a Standard Load Balancer előtér-IP-konfigurációhasználatával [az hálózati magánkapcsolat-szolgáltatás létrehozása segítségével.](/cli/azure/network/private-link-service#az-network-private-link-service-create) Ebben a példában létrehoz egy *myPLS* nevű privát kapcsolatszolgáltatást a *myResourceGroup*nevű erőforráscsoportban *a myLoadBalancer* nevű standard terheléselosztó használatával. 
+Hozzon létre egy privát hivatkozási szolgáltatást standard Load Balancer előtér-IP-konfiguráció használatával az [az Network Private-link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create)paranccsal. Ez a példa létrehoz egy standard Load Balancer *myPLS* nevű privát kapcsolati szolgáltatást a *myResourceGroup*nevű *myLoadBalancer* . 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -102,16 +102,16 @@ az network private-link-service create \
 --lb-frontend-ip-configs myFrontEnd \
 --location westcentralus 
 ```
-A létrehozás után vegye figyelembe a Privát kapcsolat szolgáltatás azonosítóját. Erre később szüksége lesz a szolgáltatáshoz való csatlakozás igényléséhez.  
+A létrehozást követően jegyezze fel a Private link Service AZONOSÍTÓját. Később szüksége lesz erre a szolgáltatásra való kapcsolódás igénylésére.  
  
-Ebben a szakaszban a Privát kapcsolat szolgáltatás sikeresen létrejön, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak az Azure CLI használatával létrehozott Private Link szolgáltatás bemutatása.  Még nem konfigurálta a terheléselosztó háttérkészletek vagy bármely alkalmazás a háttérkészletek a forgalom figyelésére. Ha azt szeretné, hogy a végpontok közötti forgalom folyamatok, javasoljuk, hogy konfigurálja az alkalmazást a standard terheléselosztó mögött.  
+Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a privát kapcsolati szolgáltatás Azure CLI-vel történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha szeretné megtekinteni a végpontok közötti adatforgalmat, javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja.  
  
-Ezután bemutatjuk, hogyan képezheti le ezt a szolgáltatást egy privát végponthoz különböző virtuális hálózatban az Azure CLI használatával. Ismét a példa a privát végpont létrehozására és a fent az Azure CLI használatával létrehozott Private Link szolgáltatáshoz való csatlakozásra korlátozódik. Emellett virtuális gépeket is létrehozhat a virtuális hálózatban a forgalom küldéséhez/fogadásához a privát végpontra.        
+Ezután bemutatjuk, hogyan képezheti le ezt a szolgáltatást egy másik virtuális hálózatban lévő privát végpontra az Azure CLI használatával. Ez a példa a privát végpont létrehozására és az Azure CLI használatával a fent létrehozott privát kapcsolati szolgáltatáshoz való csatlakozásra korlátozódik. Emellett a virtuális hálózatban virtuális gépeket is létrehozhat, hogy forgalmat küldjön/fogadjon a privát végpontnak.        
  
 ## <a name="private-endpoints"></a>Privát végpontok
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása 
-Hozzon létre egy virtuális [hálózatot az hálózati virtuális hálózat létrehozása .](/cli/azure/network/vnet#az-network-vnet-create) Ez a példa létrehoz egy *myPEVNet* nevű virtuális hálózatot a *myResourcegroup*nevű erőforráscsoportban: 
+Hozzon létre egy virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ez a példa létrehoz egy *myPEVNet* nevű virtuális hálózatot az erőforráscsoport nevű *myResourcegroup*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Az alhálózat létrehozása 
-Hozzon létre egy alhálózatot a virtuális hálózatban [az hálózati virtuális hálózat alhálózatának létrehozása.](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) Ez a példa létrehoz egy *mySubnet* nevű alhálózatot *a myPEVnet* nevű virtuális hálózatban a *myResourcegroup*nevű erőforráscsoportban: 
+Hozzon létre egy alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myPEVnet* nevű virtuális hálózatban az *myResourcegroup*nevű erőforráscsoport-csoportban: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -128,8 +128,8 @@ az network vnet subnet create \
 --name myPESubnet \
 --address-prefixes 10.0.0.0/24 
 ```   
-## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Magánvégpont hálózati házirendjeinek letiltása az alhálózaton 
-A privát végpont bármely tetszőleges alhálózatban létrehozható egy virtuális hálózaton belül. Jelenleg nem támogatjuk a hálózati házirendeket a privát végpontokon.  Ezért le kell tiltanunk az alhálózat hálózati házirendjeit. Frissítse az alhálózatot a magánvégpont hálózati házirendjeinek letiltásához [az az hálózati virtuális hálózat alhálózati frissítésével.](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 
+## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Privát végponti hálózati házirendek letiltása az alhálózaton 
+A magánhálózati végpontok bármely, a virtuális hálózaton belül tetszőleges alhálózatban létrehozhatók. Jelenleg nem támogatjuk a hálózati házirendeket a privát végpontokon.  Ezért le kell tiltania a hálózati házirendeket az alhálózaton. Frissítse az alhálózatot a privát végpontok hálózati házirendjeinek letiltásához az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update). 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -138,8 +138,8 @@ az network vnet subnet update \
 --name myPESubnet \
 --disable-private-endpoint-network-policies true 
 ```
-## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>Privát végpont létrehozása és csatlakozás privát kapcsolatszolgáltatáshoz 
-Hozzon létre egy privát végpontot a virtuális hálózatban a fent létrehozott Private Link szolgáltatás elhasználódásához:
+## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>Privát végpont létrehozása és csatlakozás a Private link Service-hez 
+Hozzon létre egy privát végpontot a virtuális hálózaton fent létrehozott privát kapcsolati szolgáltatás fogyasztásához:
   
 ```azurecli-interactive
 az network private-endpoint create \
@@ -151,15 +151,15 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-A *private-connection-resource-id* a `az network private-link-service show` Private Link szolgáltatás. Az azonosító így fog kinézni:   
-/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
+A privát *kapcsolat erőforrás-azonosítóját* a Private link Service szolgáltatásban szerezheti `az network private-link-service show` be. Az azonosító a következőképpen fog kinézni:   
+/subscriptions/subID/resourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
-## <a name="show-private-link-service-connections"></a>Privát kapcsolat szolgáltatáskapcsolatainak megjelenítése 
+## <a name="show-private-link-service-connections"></a>Magánhálózati kapcsolati szolgáltatás kapcsolatainak megjelenítése 
  
-Tekintse meg a kapcsolatkérelmeket a Private Link szolgáltatáson az [az network private-link-service show használatával.](/cli/azure/network/private-link-service#az-network-private-link-service-show)    
+Lásd: kapcsolódási kérelmek a Private link Service [-ben az az Network Private-link-Service show](/cli/azure/network/private-link-service#az-network-private-link-service-show)paranccsal.    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
 ## <a name="next-steps"></a>További lépések
-- További információ az [Azure Private Link szolgáltatásról](private-link-service-overview.md)
+- További információ az [Azure Private link Service](private-link-service-overview.md) -ről
  

@@ -1,6 +1,6 @@
 ---
-title: Mik azok az Azure Firewall Manager megbízható biztonsági partnerek (előzetes verzió)
-description: További információ az Azure Firewall Manager megbízható biztonsági partnereiről
+title: Mik azok a Azure Firewall Manager megbízható biztonsági partnerei (előzetes verzió)
+description: Ismerje meg Azure Firewall Manager megbízható biztonsági partnereit
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
 ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436768"
 ---
 # <a name="what-are-trusted-security-partners-preview"></a>Mik azok a megbízható biztonsági partnerek (előzetes verzió)?
@@ -19,65 +19,65 @@ ms.locfileid: "75436768"
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Firewall Manager *megbízható biztonsági partnerei (előzetes verzió)* lehetővé teszik, hogy az ismerős, legjobb fajtabeli, harmadik féltől származó biztonsági ajánlatokat szolgáltatásként (SECaaS) használja a felhasználók internet-hozzáférésének védelme érdekében.
+A Azure Firewall Manager *megbízható biztonsági partnerei (előzetes verzió)* lehetővé teszik az ismerős, legjobb, harmadik féltől származó biztonsági szolgáltatásként (SECaaS) kínált ajánlatok használatát a felhasználók internet-hozzáférésének védelme érdekében.
 
-A gyors konfiguráció, a támogatott biztonsági partnerrel rendelkező hub biztonságossá tétele, valamint a virtuális hálózatok (virtuális hálózatok) vagy a régión belüli elágazási helyekről történő útvonal- és szűrőforgalom. Ez automatizált útvonalkezeléssel történik, a felhasználó által definiált útvonalak (UDRs) beállítása és kezelése nélkül.
+A gyors konfigurálással biztonságossá teheti a hubot egy támogatott biztonsági partnerrel, és átirányíthatja és szűrheti az internetes forgalmat a virtuális hálózatok (virtuális hálózatok) vagy az adott régión belüli fiókirodák között. Ez az automatikus útválasztási felügyelettel végezhető el a felhasználó által megadott útvonalak (UDR-EK) beállítása és kezelése nélkül.
 
-Az Ön által kiválasztott biztonsági partnerrel konfigurált biztonságos elosztókat több Azure-régióban is üzembe helyezheti, hogy a felhasználók számára kapcsolatot és biztonságot kapjon a világ bármely pontján, ezekben a régiókban. A biztonsági partner ajánlatának az Internet/SaaS alkalmazásforgalomhoz való használatával és az Azure Firewall a biztonságos csomópontok privát forgalmához való használatával most már megkezdheti a globálisan elosztott felhasználók és alkalmazások közelében lévő Azure biztonsági élének kiépítését.
+Az Ön által választott biztonsági partnerrel konfigurált biztonságos hubokat több Azure-régióban is üzembe helyezheti, így a felhasználók bárhonnan és biztonságosan érhetik el a felhasználókat a különböző régiókban. A biztonsági partnernek az internetes/SaaS-alkalmazások forgalmára való használatának, valamint a biztonságos hubokon Azure Firewall a privát forgalomra való felépítése lehetővé teszi, hogy a globálisan elosztott felhasználókhoz és alkalmazásokhoz közeledő Azure-beli biztonsági szegélyt fejlesszen fel.
 
-Ehhez az előzetes verzióhoz a támogatott biztonsági partnerek a **ZScaler** és **a iboss.** A támogatott régiók a WestCentralUS, a NorthCentralUS, a WestUS, a WestUS2 és az EastUS.
+Ebben az előzetes verzióban a támogatott biztonsági partnerek a **ZScaler** és a **iboss**. A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
 
 ![Megbízható biztonsági partnerek](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Főbb forgatókönyvek
 
-A biztonsági partnerek segítségével szűrheti az internetes forgalmat a következő esetekben:
+A biztonsági partnerek az internetes forgalom szűrésére használhatók a következő helyzetekben:
 
-- Virtuális hálózat (VNet) az internethez
+- Virtual Network (VNet) az internetre
 
-   Használja ki a fejlett, felhasználóbarát internetvédelmet az Azure-ban futó felhőbeli számítási feladatokhoz.
+   Az Azure-on futó Felhőbeli számítási feladatokhoz speciális, felhasználó által kompatibilis internetes védelmet használhat.
 
-- Ág az internethez
+- Ág – Internet
 
-   Használja ki az Azure-kapcsolatot és a globális disztribúciót, és egyszerűen hozzáadhat külső NSaaS-szűrést az internetes forgatókönyvekhez. Az Azure Virtual WAN használatával globális tranzithálózatot és biztonsági éleket hozhat létre.
+   Használja ki az Azure-kapcsolatot és a globális disztribúciót, hogy könnyen hozzá lehessen adni a harmadik féltől származó NSaaS-szűrést a fiókirodában az internetes forgatókönyvekhez. Az Azure Virtual WAN használatával felépítheti a globális átviteli hálózatot és a biztonsági szegélyt.
 
 A következő forgatókönyvek támogatottak:
--   virtuális hálózattal az internethez egy külső partnerajánlaton keresztül.
--   Ág az interneten keresztül egy harmadik fél partner kínál.
--   Ág az internethez egy harmadik fél partner ajánlat, a többi a magánforgalom (küllős, küllős, ág-to-küllők) az Azure Tűzfalon keresztül.
+-   VNet egy harmadik féltől származó partneri ajánlaton keresztül.
+-   Harmadik féltől származó partneri ajánlattal az interneten keresztül.
+-   Egy harmadik féltől származó partneri ajánlaton keresztül, a privát forgalom (küllő – küllő, küllők, ágak és a küllők) között Azure Firewallon keresztül.
 
 A következő forgatókönyv nem támogatott:
 
-- Virtuális hálózat az internethez egy partner ajánlat nem kombinálható az Azure Firewall a privát forgalom. Tekintse meg az alábbi korlátozásokat.
+- A partneri ajánlaton keresztüli VNet nem kombinálható a privát forgalom Azure Firewallával. Tekintse meg a következő korlátozásokat.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- A virtuális hálózat az internethez, nem keverheti hozzá az Azure Firewall a privát forgalom és a partner kínál az internetes forgalom. Küldhet internetes forgalmat az Azure Tűzfalnak vagy egy külső biztonsági partnernek a biztonságos virtuális központban, de mindkettőt nem. 
-- Virtuális központonként legbőlegfelségre is telepíthet egy biztonsági partnert. Ha meg kell változtatnia a szolgáltatót, el kell távolítania a meglévő partnert, és újat kell hozzáadnia.
+- Az internetre való VNet nem keverheti össze a Azure Firewallt a privát forgalomhoz, és egy partneri ajánlatot az internetes forgalomhoz. Az internetes forgalmat Azure Firewall vagy harmadik féltől származó biztonsági partneri ajánlatként is elküldheti a biztonságos virtuális központban, de mindkettőt nem. 
+- Virtuális hubhoz legfeljebb egy biztonsági partner helyezhető üzembe. Ha módosítania kell a szolgáltatót, el kell távolítania a meglévő partnert, és hozzá kell adnia egy újat.
 
-## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Gyakorlati tanácsok az internetes forgalom biztonságos virtuális csomópontokban történő szűréséhez
+## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Ajánlott eljárások az internetes forgalom szűréséhez a biztonságos virtuális hubokban
 
-Az internetes forgalom általában webes forgalmat is magában foglal. De magában foglalja a SaaS-alkalmazások, például az Office 365 (O365) és az Azure nyilvános PaaS-szolgáltatások, például az Azure Storage, az Azure Sql és így tovább szánt forgalmat is. Az alábbi ajánlott eljárásokat ajánlott eljárások at a szolgáltatások forgalma kezelésével kapcsolatban:
+Az internetes forgalom jellemzően webes forgalmat tartalmaz. Emellett magában foglalja az olyan SaaS-alkalmazásokra irányuló forgalmat is, mint az Office 365 (O365) és az Azure nyilvános Pásti-szolgáltatások, mint például az Azure Storage, az Azure SQL stb. A következő ajánlott eljárásokat ajánljuk a szolgáltatások forgalmának kezelésére:
 
-### <a name="handling-azure-paas-traffic"></a>Azure PaaS-forgalom kezelése
+### <a name="handling-azure-paas-traffic"></a>Az Azure Pásti-forgalom feldolgozása
  
-- Az Azure Firewall védelmet nyújt, ha a forgalom többnyire Azure PaaS-ból áll, és az alkalmazások erőforrás-hozzáférése szűrhető IP-címek, teljes tartománynevek, szolgáltatáscímkék vagy teljes qdn-címkék használatával.
+- A védelem Azure Firewall használata, ha a forgalom főleg az Azure Pástiből áll, és az alkalmazások erőforrás-hozzáférése az IP-címek, a teljes tartománynevek, a szolgáltatási címkék vagy a FQDN-címkék használatával szűrhető.
 
-- Használjon egy külső partnermegoldást a hubokon, ha a forgalom SaaS-alkalmazás-hozzáféréssel rendelkezik, vagy felhasználóbarát szűrésre van szüksége (például a virtuális asztali infrastruktúra (VDI) számítási feladatához), vagy speciális internetszűrési funkciókra van szüksége.
+- Használjon harmadik féltől származó partneri megoldást a hubokban, ha a forgalom SaaS-alkalmazás-hozzáférésből áll, vagy ha a felhasználó által használható szűrésre van szüksége (például a virtuális asztali infrastruktúra (VDI) számítási feladataihoz), vagy speciális Internet-szűrési képességekre van szüksége.
 
-![Az Azure Firewall Manager összes forgatókönyve](media/trusted-security-partners/all-scenarios.png)
+![A Azure Firewall Manager összes forgatókönyve](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Az Office 365(O365) forgalmának kezelése
+## <a name="handling-office-365-o365-traffic"></a>Office 365-(O365-) forgalom kezelésére
 
-Globálisan elosztott ághely-forgatókönyvekben az Office 365-forgalmat közvetlenül az ágra kell átirányítania, mielőtt az Azure által védett hub fennmaradó internetes forgalmat küldene.
+Globálisan elosztott fiókirodai helyzetekben az Office 365 forgalmat közvetlenül a fiókirodában kell átirányítani, mielőtt elküldi az Azure-beli védett központ fennmaradó internetes forgalmát.
 
-Az Office 365-ben a hálózati késés és a teljesítmény kritikus fontosságú a sikeres felhasználói élmény érdekében. Az optimális teljesítmény és felhasználói élmény eléréséhez az ügyfeleknek közvetlen és helyi műveletet kell végrehajtaniuk az Office 365-ön, mielőtt fontolóra vennék az internetes forgalom fennmaradó részének az Azure-on keresztül történő útválasztását.
+Az Office 365 esetében a hálózati késés és a teljesítmény kritikus fontosságú a sikeres felhasználói élmény érdekében. Az optimális teljesítmény-és felhasználói élmény érdekében az ügyfeleknek az Azure-on keresztül az internetes forgalom további forgalmának megfontolása előtt be kell vezetniük az Office 365 Direct és a local Escape szolgáltatást.
 
-[Az Office 365 hálózati kapcsolattal kapcsolatos alapelvei](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) szerint a legfontosabb Office 365-hálózati kapcsolatokhelyileg irányíthatók a felhasználói ágból vagy mobileszközről, illetve közvetlenül az interneten keresztül a legközelebbi Microsoft-hálózati jelenléti pontra.
+Az [office 365 hálózati kapcsolati alapelveket](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) hívja a key Office 365 hálózati kapcsolatainak helyi továbbítására a felhasználói ágban vagy a mobileszközön, és közvetlenül az interneten keresztül a legközelebbi Microsoft hálózati pontra.
 
-Továbbá az Office 365-kapcsolatok erősen titkosítva vannak az adatvédelem és a hatékony, saját tulajdonú protokollok használata érdekében. Ez nem praktikussá és hatásossá teszi, ha ezeket a kapcsolatokat hagyományos hálózati szintű biztonsági megoldásoknak vetjük alá. Ezért javasoljuk, hogy az ügyfelek közvetlenül az ágakról küldjék el az Office 365-forgalmat, mielőtt az Azure-on keresztül küldenék a forgalom többi részét. A Microsoft számos SD-WAN megoldásszolgáltatóval működik együtt, akik integrálódnak az Azure-ral és az Office 365-tel, és megkönnyítik az ügyfelek számára az Office 365 közvetlen és helyi internetes kitörésének engedélyezését. További részletek: [Hogyan állíthatom be az O365-szabályzatokat a Virtual WAN-on keresztül?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
+Emellett az Office 365-kapcsolatok szigorúan titkosítva vannak az adatvédelem szempontjából, és hatékony, szabadalmaztatott protokollokat használnak a teljesítmény szempontjából. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezeknek az okoknak az az oka, hogy az ügyfelek közvetlenül az ágakból küldik el az Office 365 forgalmat, mielőtt elküldik a forgalmat az Azure-on keresztül. A Microsoft több, az Azure-ral és az Office 365-nal integrált SD-WAN-megoldási szolgáltatóval együttműködik, és megkönnyíti az ügyfelek számára, hogy az Office 365 Direct és a helyi internetes breakout szolgáltatást is engedélyezzék. További részletek: [Hogyan saját O365-szabályzatok beállítása virtuális WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) -kapcsolaton keresztül?
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Firewall Manager használatával megbízható biztonsági ajánlat telepítése biztonságos hubon.](deploy-trusted-security-partner.md)
+[Helyezzen üzembe egy megbízható biztonsági ajánlatot egy biztonságos központban a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).

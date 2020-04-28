@@ -1,6 +1,6 @@
 ---
-title: Szűrők létrehozása az Azure Media Services használatával a CLI használatával| Microsoft dokumentumok
-description: Ez a cikk bemutatja, hogyan cli használatával szűrőket hozhat létre az Azure Media Services v3 használatával.
+title: Szűrők létrehozása a parancssori felülettel Azure Media Services használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhatók létre szűrők a parancssori felülettel Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,35 +15,35 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896071"
 ---
-# <a name="creating-filters-with-cli"></a>Szűrők létrehozása CLI-vel 
+# <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel 
 
-Amikor a tartalmat az ügyfelek (élő események streamelése vagy az igény szerinti videó), az ügyfél szükség lehet nagyobb rugalmasságot, mint amit az alapértelmezett eszköz jegyzékfájljában leírt. Az Azure Media Services lehetővé teszi, hogy fiókszűrőket és eszközszűrőket határozzon meg a tartalomhoz. 
+Ha az ügyfelek számára továbbít tartalmat (élő vagy igény szerinti közvetítést), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
-A szolgáltatás részletes leírását és a használatának forgatókönyveit a Dinamikus jegyzékek és [szűrők című témakörben tetszésszerint.](filters-concept.md) [Dynamic Manifests](filters-dynamic-manifest-overview.md)
+A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ez a témakör bemutatja, hogyan konfigurálhat szűrőt egy igény szerinti videóeszközhöz, és hogyan használhatja a CLI-t a Media Services v3-hoz [fiókszűrők](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és [eszközszűrők](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához. 
+Ebből a témakörből megtudhatja, hogyan konfigurálhat egy szűrőt egy igény szerinti videóhoz, és hogyan használhatja a CLI-t a Media Services v3-hoz a [fiókok szűrőinek](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és az [eszközök szűrőinek](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához. 
 
 > [!NOTE]
-> Ügyeljen arra, hogy tekintse át [a presentationTimeRange](filters-concept.md#presentationtimerange).
+> Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Győződjön meg arról, hogy nem emlékszik az erőforráscsoport nevére és a Media Services-fiók nevére. 
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-filter"></a>Szűrő definiálása 
 
-A következő példa a végleges jegyzékhez hozzáadott pályakijelölési feltételeket határozza meg. Ez a szűrő tartalmazza az EC-3-as hangsávokat és a 0-1000000 tartományban lévő bitrátát.
+Az alábbi példa a végső jegyzékfájlhoz hozzáadott kiválasztási feltételeket határozza meg. Ez a szűrő minden olyan hangsávot magában foglal, amely EC-3, valamint az 0-1000000-es tartományon belüli bitrátával rendelkező videók.
 
 > [!TIP]
-> Ha **szűrőket** kíván definiálni a REST-ben, vegye figyelembe, hogy a "Tulajdonságok" burkoló JSON-objektumot kell megadnia.  
+> Ha meg szeretné határozni a **szűrőket** a REST-ben, figyelje meg, hogy meg kell adnia a "Properties" burkoló JSON-objektumot.  
 
 ```json
 [
@@ -78,33 +78,33 @@ A következő példa a végleges jegyzékhez hozzáadott pályakijelölési felt
 ]
 ```
 
-## <a name="create-account-filters"></a>Fiókszűrők létrehozása
+## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-A következő [az ams fiókszűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) parancs létrehoz egy fiókszűrőt a [korábban definiált](#define-a-filter)szűrősáv-kijelölésekkel. 
+A következő az [AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) parancs egy olyan fiók szűrőt hoz létre, amely a [korábban definiált](#define-a-filter)szűrési nyomon követési beállításokkal rendelkezik. 
 
-A parancs lehetővé teszi `--tracks` egy választható paraméter átadást, amely a jsont tartalmazza, amely a pályaválasztásokat jelöli.  A JSON fájlból való betöltéséhez használja a @{file} elemet. Ha az Azure CLI-t helyileg használja, adja meg a teljes fájlelérési utat:
+A parancs lehetővé teszi, hogy egy opcionális `--tracks` paramétert adjon át, amely a követési beállításokat jelképező JSON-t tartalmazza.  A JSON fájlból való betöltéséhez használja a @ {file} fájlt. Ha helyileg használja az Azure CLI-t, a fájl teljes elérési útját kell megadnia:
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Lásd még a [JSON-példákat a szűrőkhöz.](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)
+Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
-## <a name="create-asset-filters"></a>Eszközszűrők létrehozása
+## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása
 
-A következő [az ams eszközszűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy eszközszűrőt a [korábban definiált](#define-a-filter)szűrősáv-kijelölésekkel . 
+A következő az [AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy objektum szűrőt a [korábban definiált](#define-a-filter)szűrő követési beállításokkal. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Lásd még a [JSON-példákat a szűrőkhöz.](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)
+Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
-## <a name="associate-filters-with-streaming-locator"></a>Szűrők társítása a streamelési lokátorral
+## <a name="associate-filters-with-streaming-locator"></a>Szűrők hozzárendelése a folyamatos átviteli Lokátorhoz
 
-Megadhatja az eszköz- vagy fiókszűrők listáját, amely a streamelési lokátorra vonatkozna. A [dinamikus csomagzó (Streamelési végpont)](dynamic-packaging-overview.md) alkalmazza ezt a szűrőlistát az ügyfél által az URL-ben megadott szűrőkkel együtt. Ez a kombináció [dinamikus jegyzéket](filters-dynamic-manifest-overview.md)hoz létre, amely a Streamelési lokátoron megadott URL+ szűrők szűrőin alapul. Javasoljuk, hogy használja ezt a funkciót, ha szűrőket szeretne alkalmazni, de nem szeretné elérhetővé tenni az URL-címben szereplő szűrőneveket.
+Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
-A következő CLI-kód bemutatja, hogyan `filters`hozhat létre streamelési lokátort, és megadhatja a . Ez egy választható tulajdonság, amely az eszközszűrő nevek és/vagy számlaszűrőnevek szóközre tagolt listáját veszi fel.
+A következő CLI-kód bemutatja, hogyan hozhat létre adatfolyam-keresőt `filters`, és hogyan adható meg. Ez egy nem kötelezően megadandó tulajdonság, amely az eszközök és/vagy a fiókok szűrési neveinek szóközzel tagolt listáját veszi figyelembe.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -114,11 +114,11 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
                                 
 ```
 
-## <a name="stream-using-filters"></a>Adatfolyam szűrők használatával
+## <a name="stream-using-filters"></a>Stream szűrők használatával
 
-Miután definiálja a szűrőket, az ügyfelek használhatják őket a streamelési URL-címben. A szűrők adaptív sávszélességű streamelési protokollokra alkalmazhatók: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
+A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatják őket. A szűrők alkalmazhatók az adaptív sávszélességű adatfolyam-továbbítási protokollokra: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
 
-Az alábbi táblázat néhány példát mutat be a szűrőkkel ellátott URL-címekre:
+Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
 |Protocol (Protokoll)|Példa|
 |---|---|
@@ -128,7 +128,7 @@ Az alábbi táblázat néhány példát mutat be a szűrőkkel ellátott URL-cí
 
 ## <a name="next-step"></a>Következő lépés
 
-[Videók streamelése](stream-files-tutorial-with-api.md) 
+[Stream-videók](stream-files-tutorial-with-api.md) 
 
 ## <a name="see-also"></a>Lásd még
 

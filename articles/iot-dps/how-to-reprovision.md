@@ -1,6 +1,6 @@
 ---
-title: Eszközök újbóli kiépítése az Azure IoT Hub-eszközkiépítési szolgáltatásban
-description: Ismerje meg, hogyan építheti ki újra az eszközöket az eszközkiépítési szolgáltatás (DPS) példányával, és miért lehet, hogy ezt kell tennie.
+title: Eszközök újraépítése az Azure IoT Hub Device Provisioning Serviceban
+description: Megtudhatja, hogyan hozhatja létre az eszközöket az eszközök kiépítési szolgáltatásával (DPS), és miért kell ezt megtennie.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,92 +8,92 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974904"
 ---
-# <a name="how-to-reprovision-devices"></a>Eszközök újbóli kiépítése
+# <a name="how-to-reprovision-devices"></a>Eszközök újraépítése
 
-Az IoT-megoldás életciklusa során gyakori az eszközök áthelyezése az IoT-központok között. Ennek a lépésnek az okai a következő forgatókönyvek lehetnek:
+Egy IoT-megoldás életciklusa során gyakori az eszközök áthelyezése a IoT-hubok között. Az áthelyezés okai a következők lehetnek:
 
-* **Földrajzi hely:** Ahogy az eszköz a helyek között mozog, a hálózati késés javul azáltal, hogy az eszközt az egyes helyekhez közelebb iT-hubba telepíti át.
+* Földrajzi **hely: mivel**az eszköz a helyek között mozog, a hálózati késést úgy javítja ki, hogy az eszközt az egyes helyekhez közelebb helyezi át egy IoT hubhoz.
 
-* **Több-bérlős:** Egy eszköz használható ugyanazon az IoT-megoldáson belül, de átrendelhető vagy bérelt egy új ügyfél, vagy az ügyfél helyén. Ez az új ügyfél lehet kiszolgálni egy másik IoT hub használatával.
+* **Több-bérlő**: egy eszköz felhasználható ugyanabban a IoT-megoldásban, de új ügyfélhez vagy vásárlói helyhez rendelhető hozzá vagy bérletbe. Ezt az új ügyfelet egy másik IoT hub használatával lehet kiszolgálni.
 
-* **Megoldásmódosítása:** Egy eszköz áthelyezhető egy új vagy frissített IoT-megoldásba. Ez az újrahozzárendelés megkövetelheti, hogy az eszköz kommunikáljon egy új IoT hub, amely más háttér-összetevők höz csatlakozik. 
+* **Megoldás módosítása**: egy eszköz áthelyezhető egy új vagy frissített IoT-megoldásba. Ez az ismételt hozzárendelés megkövetelheti, hogy az eszköz kommunikáljon egy olyan új IoT hubhoz, amely más háttér-összetevőkhöz van csatlakoztatva. 
 
-* **Karantén**: A megoldásmódosításhoz hasonlóan. Egy eszköz, amely hibásan működik, feltört, vagy elavult lehet hozzárendelni egy IoT hub, ahol minden, amit tehet, hogy frissítse, és kap vissza a megfelelőségi. Miután az eszköz megfelelően működik, a rendszer visszatelepíti a fő elosztóba.
+* **Karanténba helyezés**: hasonló a megoldás módosításához. Olyan eszköz, amely hibásan működik, sérült vagy elavult, újra hozzárendelhető egy IoT hubhoz, ahol az összes művelet frissíthető, és visszatérhet a megfelelőséghez. Ha az eszköz megfelelően működik, a rendszer visszatelepíti a főhubhoz.
 
-Az újraépítés részletesebb áttekintését az [IoT Hub-eszköz újrakiépítése fogalmai című témakörben találja.](concepts-device-reprovision.md)
+Az újraépítéssel kapcsolatos részletesebb áttekintésért tekintse meg az eszközök újraépítésével kapcsolatos [fogalmakat IoT hub](concepts-device-reprovision.md).
 
 
-## <a name="configure-the-enrollment-allocation-policy"></a>A beléptetési hozzárendelési házirend konfigurálása
+## <a name="configure-the-enrollment-allocation-policy"></a>A regisztráció kiosztási szabályzatának konfigurálása
 
-A foglalási szabályzat határozza meg, hogy a regisztrációhoz társított eszközök hogyan lesznek lefoglalva vagy hozzárendelve egy IoT-központhoz, miután újra kiosztották.
+A foglalási házirend határozza meg, hogy a rendszer hogyan rendeli hozzá a beléptetéshez társított eszközöket a IoT hubhoz az újbóli kiépítése után.
 
-A következő lépések konfigurálják az eszköz regisztrációjának foglalási házirendjét:
+Az alábbi lépéseket követve konfigurálhatja egy eszköz regisztrálásának foglalási szabályzatát:
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az eszközkiépítési szolgáltatás példányát.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Device kiépítési szolgáltatás példányához.
 
-2. Kattintson **a Regisztrációk kezelése gombra,** majd kattintson a regisztrációhoz vagy az egyéni regisztrációhoz, amelyet újrakiépíteni szeretne. 
+2. Kattintson a **regisztrációk kezelése**lehetőségre, majd kattintson arra a beléptetési csoportra vagy egyéni regisztrációra, amelyet be szeretne állítani az újbóli kiépítéshez. 
 
-3. A **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a hubokhoz,** válasszon az alábbi foglalási házirendek közül:
+3. Válassza ki az alábbi kiosztási szabályzatok egyikét a **válassza ki, hogyan szeretné hozzárendelni az eszközöket**a központokhoz:
 
-    * **Legalacsonyabb késés:** Ez a szabályzat eszközöket rendel a csatolt IoT Hubhoz, amely az eszköz és az IoT Hub közötti legalacsonyabb késéses kommunikációt eredményez. Ez a beállítás lehetővé teszi, hogy az eszköz a hely alapján kommunikáljon a legközelebbi IoT hubbal. 
+    * **Legalacsonyabb késés**: Ez a szabályzat olyan eszközöket rendel hozzá a csatolt IoT hubhoz, amelyek az eszköz és a IoT hub közötti legalacsonyabb késésű kommunikációt eredményezik. Ez a beállítás lehetővé teszi, hogy az eszköz a legközelebbi IoT-hubhoz kommunikáljon a hely alapján. 
     
-    * **Egyenletesen súlyozott disztribúció:** Ez a szabályzat az egyes összekapcsolt IoT-központokhoz rendelt foglalási súly alapján osztja el az eszközöket a csatolt IoT-központok között. Ez a házirend lehetővé teszi az elosztóeszközök terhelését a csatolt hubok egy csoportjában az ezeken a csomópontokon beállított foglalási súlyok alapján. Ha csak egy IoT Hubra létesít erről a beállításról, azt javasoljuk, hogy ezt a beállítást. Ez az alapértelmezett beállítás. 
+    * **Egyenletesen súlyozott eloszlás**: Ez a szabályzat az egyes csatolt IoT-hubhoz rendelt foglalási súlyozás alapján osztja el az eszközöket a társított IoT-hubok között. Ez a szabályzat lehetővé teszi, hogy az adott hubokon beállított foglalási súlyok alapján terheléselosztást biztosítson az eszközök számára a társított hubok csoportján belül. Ha csak egy IoT Hub szeretné kiépíteni az eszközöket, ezt a beállítást javasoljuk. Ez az alapértelmezett beállítás. 
     
-    * **Statikus konfiguráció:** Ez a házirend megköveteli, hogy a kívánt IoT Hub szerepel a regisztrációs bejegyzés egy eszköz kiépítésre. Ez a házirend lehetővé teszi, hogy egyetlen adott IoT-hubot jelöljön ki, amelyhez eszközöket szeretne hozzárendelni.
+    * **Statikus konfiguráció**: ehhez a Szabályzathoz szükség van egy kívánt IoT hub a kiépíthető eszköz beléptetési bejegyzésében szereplő listára. Ez a szabályzat lehetővé teszi egy adott IoT hub kijelölését, amelyhez eszközöket szeretne hozzárendelni.
 
-4. A **Csoport által hozzárendelhető IoT-központok kiválasztása**csoportban válassza ki azokat a csatolt IoT-központokat, amelyeket a foglalási szabályzatba be szeretne vonni. Szükség esetén adjon hozzá egy új, összekapcsolt iot hubot az **Új IoT Hub-kapcsolat tal** gombbal.
+4. A **válassza ki a IoT hubok ezt a csoportot hozzá lehet rendelni**, majd válassza ki azokat a társított IoT hubokat, amelyeket a foglalási szabályzatba kíván foglalni. Opcionálisan hozzáadhat egy új csatolt IOT hubot az **új IoT hub csatolása** gomb használatával.
 
-    A **legalacsonyabb késés-hozzárendelési** házirend, a kiválasztott csomópontok szerepelni fognak a késés kiértékelése az eszköz-hozzárendelés legközelebbi hub meghatározásához.
+    A **legalacsonyabb késési** kiosztási szabályzattal a kiválasztott hubok a késés kiértékelésében lesznek felszámítva, hogy meghatározzák az eszköz hozzárendelésének legközelebbi elosztóját.
 
-    Az **egyenletesen súlyozott elosztási** foglalási szabályzattal az eszközök terheléselosztása a kiválasztott hubok között a beállított elosztási súlyuk és az aktuális eszközterhelés alapján lesznek kiegyensúlyozva.
+    Az **egyenletesen súlyozott terjesztési** kiosztási szabályzattal az eszközök terheléselosztása a konfigurált hubokon történik a kiválasztott kiosztási súlyok és a jelenlegi eszközök terhelése alapján.
 
-    A **statikus konfigurációs** foglalási házirend, válassza ki az IoT hub, amelyhez eszközöket szeretne rendelni.
+    A **statikus konfiguráció** kiosztási házirendjével válassza ki azt az IoT hub-t, amelyhez hozzá szeretné rendelni az eszközöket.
 
-4. Kattintson **a Mentés gombra,** vagy folytassa a következő szakaszsal az újrakiépítési házirend beállításához.
+4. Kattintson a **Save (Mentés**) gombra, vagy folytassa a következő szakasszal a kiépítési házirend beállításához.
 
-    ![Igénylési hozzárendelési házirend kiválasztása](./media/how-to-reprovision/enrollment-allocation-policy.png)
+    ![Regisztráció kiosztási szabályzatának kiválasztása](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
-## <a name="set-the-reprovisioning-policy"></a>Az újrakiépítési házirend beállítása
+## <a name="set-the-reprovisioning-policy"></a>Az újraépítési szabályzat beállítása
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az eszközkiépítési szolgáltatás példányát.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Device kiépítési szolgáltatás példányához.
 
-2. Kattintson **a Regisztrációk kezelése gombra,** majd kattintson a regisztrációhoz vagy az egyéni regisztrációhoz, amelyet újrakiépíteni szeretne.
+2. Kattintson a **regisztrációk kezelése**lehetőségre, majd kattintson arra a beléptetési csoportra vagy egyéni regisztrációra, amelyet be szeretne állítani az újbóli kiépítéshez.
 
-3. A **Válassza ki, hogyan szeretné kezelni az eszközadatokat egy másik IoT-központba való újbóli üzembe építéskor,** válasszon az alábbi újraépítési szabályzatok közül:
+3. Az **adja meg, hogyan kívánja kezelni az eszköz adatait egy másik IoT-hubhoz**, válassza az alábbi újraépítési házirendek egyikét:
 
-    * **Adatok újbóli kiépítése és áttelepítése**: Ez a házirend akkor lép működésbe, ha a regisztrációs bejegyzéshez társított eszközök új létesítési kérelmet nyújtanak be. Attól függően, hogy a regisztrációs bejegyzés konfigurációját, az eszköz lehet hozzárendelni egy másik IoT hub. Ha az eszköz módosítja az IoT-központok, az eszköz regisztrációja a kezdeti IoT hub lesz távolítva. A kezdeti IoT hubról származó összes eszközállapot-információ átkerül az új IoT-központba. Az áttelepítés során az eszköz állapota **a hozzárendelés**
+    * Az **adat ismételt kiépítése és áttelepítése**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új létesítési kérelmet küldenek be. A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A rendszer az adott kezdeti IoT hub összes Eszközállapot-adatát áttelepíti az új IoT hubhoz. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként** fogja jelenteni.
 
-    * **Újraüzembe helyezés és visszaállítás a kezdeti konfigurációra**: Ez a házirend akkor lép működésbe, amikor a regisztrációs bejegyzéshez társított eszközök új létesítési kérelmet nyújtanak be. Attól függően, hogy a regisztrációs bejegyzés konfigurációját, az eszköz lehet hozzárendelni egy másik IoT hub. Ha az eszköz módosítja az IoT-központok, az eszköz regisztrációja a kezdeti IoT hub lesz távolítva. A kezdeti konfigurációs adatokat, amelyek a létesítési szolgáltatáspéldány kapott, amikor az eszköz kiépítése az új IoT hub. Az áttelepítés során az eszköz állapota **hozzárendelésként lesz jelentve.**
+    * A **kezdeti konfiguráció újbóli létrehozása és alaphelyzetbe állítása**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új létesítési kérést küldenek. A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A kiépítési szolgáltatás példánya által az eszköz kiosztásakor fogadott kezdeti konfigurációs információk az új IoT hub számára. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
 
-4. Kattintson a **Mentés** gombra az eszköz módosítások alapján történő újbóli kiépítésének engedélyezéséhez.
+4. A **Mentés** gombra kattintva engedélyezheti az eszköz újraépítését a módosítások alapján.
 
-    ![Igénylési hozzárendelési házirend kiválasztása](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Regisztráció kiosztási szabályzatának kiválasztása](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
 ## <a name="send-a-provisioning-request-from-the-device"></a>Kiépítési kérelem küldése az eszközről
 
-Annak érdekében, hogy az eszközök az előző szakaszokban végrehajtott konfigurációs módosítások alapján újra kiépülhessenek, ezeknek az eszközöknek újraki kell építeniük. 
+Ahhoz, hogy az eszközök újra kiálljanak az előző szakaszban megadott konfigurációs változások alapján, ezeknek az eszközöknek újra kell telepíteniük a kiépítést. 
 
-Az, hogy egy eszköz milyen gyakran küld kiépítési kérelmet, a forgatókönyvtől függ. Azonban azt javasoljuk, hogy az eszközök úgy programozhatja be, hogy egy kiépítési kérelmet küldjenek egy kiépítési szolgáltatáspéldánynak újraindításkor, és támogassanak egy [módszert](../iot-hub/iot-hub-devguide-direct-methods.md) az igény szerinti kiépítés manuális aktiválásához. A kiépítés a [kívánt tulajdonság](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)beállításával is kiváltható. 
+Az, hogy az eszköz milyen gyakran küldjön üzembe helyezési kérést, a forgatókönyvtől függ. Javasoljuk azonban, hogy az eszközök kiépítési kérést küldjön a kiépítési szolgáltatási példánynak az újraindításkor, és [támogassa az igény](../iot-hub/iot-hub-devguide-direct-methods.md) szerinti kiépítés manuális indítását. A kiépítés a [kívánt tulajdonság](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)beállításával is elindítható. 
 
-A regisztrációs bejegyzés reprovisioning házirendje határozza meg, hogy az eszközkiépítési szolgáltatáspéldány hogyan kezeli ezeket a létesítési kérelmeket, és ha az eszköz állapotadatait át kell telepíteni az újraépítés során. Ugyanazok a házirendek érhetők el az egyes beléptetési csoportok és beléptetési csoportok esetében:
+A beléptetési bejegyzés újraépítési szabályzata határozza meg, hogy az eszköz kiépítési szolgáltatási példánya hogyan kezeli ezeket a kiépítési kérelmeket, és ha az eszköz állapotának áttelepítését át kell telepíteni az Újraépítés során. Ugyanazok a szabályzatok érhetők el az egyes regisztrációk és beléptetési csoportok esetében:
 
-Például a kiépítési kérelmek küldésének kódja egy eszközről egy rendszerindítási sorrendben, lásd: [Automatikus kiépítése egy szimulált eszköz.](quick-create-simulated-device.md)
+Például a kiépítési kérelmek egy eszközről történő küldésének kódja a rendszerindítási folyamat során: [szimulált eszköz automatikus kiépítés](quick-create-simulated-device.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-- További újraépítés, lásd: [IoT Hub-eszköz újrakiépítése fogalmak](concepts-device-reprovision.md) 
-- További kiépítés: A [korábban automatikusan kiépített eszközök kiirtása](how-to-unprovision-devices.md) 
+- További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
+- További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
 
 
 

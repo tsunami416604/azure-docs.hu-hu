@@ -1,65 +1,65 @@
 ---
-title: Kapcsolatok – Nagykapacitású (Citus) – Azure Database for PostgreSQL –
-description: Megtudhatja, hogy miként háríthatók el a kapcsolatokkal kapcsolatos problémák az Azure Database for PostgreSQL - Hyperscale (Citus) rendszerrel
-keywords: postgresql-kapcsolat,kapcsolati karakterlánc,kapcsolódási problémák,átmeneti hiba,csatlakozási hiba
+title: Kapcsolatok – nagy kapacitású (Citus) – Azure Database for PostgreSQL
+description: Ismerje meg, hogyan lehet elhárítani a Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáit (Citus)
+keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74977505"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Kapcsolati problémák elhárítása az Azure Database for PostgreSQL - Hyperscale (Citus) kapcsolatokkal kapcsolati problémák kal
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
 
-A csatlakozási problémákat több dolog is okozhatja, például:
+A kapcsolódási problémákat számos dolog okozhatja, például:
 
 * Tűzfalbeállítások
-* Csatlakozási időtúllépés
+* A kapcsolatok időtúllépése
 * Helytelen bejelentkezési adatok
-* A kiszolgálócsoporthoz elért kapcsolati korlát
-* A szolgáltatás infrastruktúrájával kapcsolatos problémák
-* Szerviz karbantartása
-* A koordinátor csomópontja átfelel az új hardvernek
+* A kiszolgálói csoport számára elérte a kapcsolatok korlátját
+* A szolgáltatás infrastruktúrájának problémái
+* Szolgáltatás karbantartása
+* A koordinátor csomópontja feladatátvételt hajt végre az új hardvereszközökön
 
-A nagy kapacitással kapcsolatos csatlakozási problémák általában a következőképpen sorolhatók be:
+A nagy kapacitású kapcsolatos kapcsolódási problémák általában a következőképpen sorolhatók be:
 
-* Átmeneti hibák (rövid életű vagy szakaszos)
-* Állandó vagy nem átmeneti hibák (rendszeresen visszatérő hibák)
+* Átmeneti hibák (rövid életű vagy időszakos)
+* Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)
 
 ## <a name="troubleshoot-transient-errors"></a>Átmeneti hibák elhárítása
 
-Több okból is átmeneti hibák fordulnak elő. A leggyakoribb a rendszer karbantartása, hiba a hardver vagy szoftver, és a koordinátor csomópont virtuálismag-frissítések.
+Az átmeneti hibák számos okból történnek. A leggyakoribb például a Rendszerkarbantartás, a hardveres vagy szoftveres hiba, valamint a koordinátori csomópontok virtuális mag frissítése.
 
-A nagy kapacitású kiszolgálócsoport-csomópontok magas rendelkezésre állásának engedélyezése automatikusan csökkentheti az ilyen típusú problémákat. Az alkalmazásnak azonban továbbra is készen kell állnia arra, hogy rövid időre megszakadjon a kapcsolata. Más események is hosszabb időt vehet igénybe, például ha egy nagy tranzakció hosszú ideig tartó helyreállítást okoz.
+Ha magas rendelkezésre állást tesz lehetővé a nagy kapacitású-kiszolgáló csoportházirend-csomópontjai számára, akkor az ilyen típusú problémák automatikusan csökkenthetők. Az alkalmazásnak azonban még fel kell készülnie, hogy röviden elveszítse a kapcsolatát. Más események is hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
-1. Ellenőrizze a [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) minden olyan ismert kimaradások, amelyek során az alkalmazás hibákat jelentett.
-2. Alkalmazások, amelyek egy felhőalapú szolgáltatáshoz, például a nagy kapacitású (Citus) kell várni a tranziens hibákat, és kecsesen reagálnak. Például az alkalmazások nak újrapróbálkozási logikát kell megvalósítaniuk a hibák kezeléséhez, ahelyett, hogy alkalmazáshibákként kezelnék őket a felhasználók számára.
-3. Ahogy a kiszolgálócsoport megközelíti az erőforráskorlátokat, a hibák átmeneti kapcsolódási problémáknak tűnhetnek. A csomópont RAM-jának növelése, illetve a munkavégző csomópontok hozzáadása és az adatok kiegyensúlyozása segíthet.
-4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy 60 másodpercnél tovább tartanak, vagy naponta többször történnek, az Azure-támogatási kérelem benyújtásához nyújtson be egy Azure-támogatási kérelmet az [Azure-támogatási](https://azure.microsoft.com/support/options) webhely **támogatásának bekérése** lehetőség kiválasztásával.
+1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által a hibák jelentésének ideje során bekövetkezett ismert kimaradások szerepelnek.
+2. A felhőalapú szolgáltatásokhoz, például a nagy kapacitású (Citus) csatlakozó alkalmazásoknak átmeneti hibákat kell elvárniuk, és szabályosan kell reagálnia. Az alkalmazásoknak például meg kell valósítaniuk az újrapróbálkozási logikát a hibák kezeléséhez, ahelyett, hogy az alkalmazási hibákat felhasználják a felhasználóknak.
+3. Mivel a kiszolgálócsoport megközelíti az erőforrás-korlátozásokat, a hibák az átmeneti kapcsolódási problémákhoz hasonlóak lehetnek. A csomópont RAM-számának növelése vagy a feldolgozó csomópontok hozzáadása és az adatkiegyensúlyozás is segíthet.
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy 60 másodpercnél tovább tartanak, vagy naponta többször történnek, akkor [Az Azure támogatási webhelyén válassza](https://azure.microsoft.com/support/options) a **támogatás beszerzése** lehetőséget.
 
 ## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 
-Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus) rendszerhez, a leggyakoribb okok a tűzfal helytelen beállítása vagy a felhasználói hiba.
+Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus), a leggyakoribb okok a tűzfal helytelen konfigurációja vagy felhasználói hiba.
 
-* A koordinátor csomópont tűzfalának konfigurációja: Győződjön meg arról, hogy a nagy kapacitású kiszolgáló tűzfala úgy van beállítva, hogy engedélyezze az ügyféltől érkező kapcsolatokat, beleértve a proxykiszolgálókat és az átjárókat is.
-* Ügyféltűzfal-konfiguráció: Az ügyfél tűzfalának engedélyeznie kell az adatbázis-kiszolgálóhoz való csatlakozást. Egyes tűzfalak megkövetelik, amely lehetővé teszi nem csak az alkalmazás név szerint, de lehetővé teszi az IP-címek és portok a szerver.
-* Felhasználói hiba: Ellenőrizze duplán a kapcsolati karakterláncot. Lehet, hogy elgépelt paraméterek, mint például a kiszolgáló neve. Különböző nyelvi keretrendszerek és a psql kapcsolati karakterláncait az Azure Portalon találhatja meg. Nyissa meg a **Kapcsolati karakterláncok** lapot a Nagykapacitású (Citus) kiszolgálócsoportban. Azt is vegye szem előtt, hogy a Nagykapacitású (Citus) fürtök csak egy adatbázissal rendelkeznek, és előre definiált neve **citus**.
+* Koordinátori csomópont tűzfala: Ellenőrizze, hogy a nagy kapacitású-kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
+* Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. Egyes tűzfalak esetében nem csak a név, hanem a kiszolgáló IP-címeinek és portjainak engedélyezése szükséges.
+* Felhasználói hiba: dupla – ellenőrizze a kapcsolatok karakterláncát. Lehet, hogy a kiszolgáló neve nem megfelelő típusú paraméterekkel rendelkezik. A Azure Portal különböző nyelvi keretrendszerek és psql esetében a kapcsolatok karakterláncai találhatók. Nyissa meg a nagy kapacitású (Citus) kiszolgálócsoport **kapcsolódási karakterláncok** lapját. Azt is vegye figyelembe, hogy a nagy kapacitású-(Citus-) fürtöknek csak egy adatbázisa van, az előre definiált neve pedig **Citus**.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó kapcsolódási problémák megoldásának lépései
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
-1. Állítsa be [a tűzfalszabályokat](howto-hyperscale-manage-firewall-using-portal.md) az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy 0.0.0.0-s tűzfalszabályt kezdő IP-címként, és a 255.255.255.255-ös t a záró IP-címet. Ez a szabály megnyitja a kiszolgálót az összes IP-címre. Ha a szabály megoldja a kapcsolódási problémát, távolítsa el, és hozzon létre egy tűzfalszabályt egy megfelelően korlátozott IP-címhez vagy címtartományhoz.
-2. Az ügyfél és az internet közötti összes tűzfalon győződjön meg arról, hogy az 5432-es port nyitva van a kimenő kapcsolatok számára.
-3. Ellenőrizze a kapcsolati karakterláncot és az egyéb csatlakozási beállításokat.
-4. Ellenőrizze a szolgáltatás állapotát az irányítópulton.
+1. [Tűzfalszabályok](howto-hyperscale-manage-firewall-using-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ez a szabály minden IP-címre megnyitja a kiszolgálót. Ha a szabály feloldja a kapcsolati problémát, távolítsa el, és hozzon létre egy tűzfalszabály megfelelő, korlátozott IP-címhez vagy címtartományból.
+2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 5432-es port nyitva van-e a kimenő kapcsolatok számára.
+3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
+4. Keresse meg a szolgáltatás állapotát az irányítópulton.
 
 ## <a name="next-steps"></a>További lépések
 
-* A tűzfalszabályok fogalmai az [Azure Database for PostgreSQL – Hyperscale (Citus) szolgáltatásban](concepts-hyperscale-firewall-rules.md)
-* Tekintse meg, hogyan [kezelheti az Azure Database for PostgreSQL tűzfalszabályait – Nagykapacitású (Citus)](howto-hyperscale-manage-firewall-using-portal.md)
+* Ismerje meg a tűzfalszabályok fogalmait [a Azure Database for PostgreSQL-nagy kapacitású (Citus)](concepts-hyperscale-firewall-rules.md) alkalmazásban
+* Lásd: [Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése](howto-hyperscale-manage-firewall-using-portal.md)

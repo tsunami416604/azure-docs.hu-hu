@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services kimeneti metaadatsémája | Microsoft dokumentumok
-description: Ez a cikk áttekintést nyújt az Azure Media Services kimeneti metaadat-sémáról.
+title: Azure Media Services kimeneti metaadatok sémája | Microsoft Docs
+description: Ez a cikk áttekintést nyújt Azure Media Services kimeneti metaadat-sémáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,152 +15,152 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74886812"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
-A kódolási feladat olyan bemeneti eszközhöz (vagy eszközökhöz) van társítva, amelyen bizonyos kódolási feladatokat el szeretne végezni. Például kódolhat egy MP4-fájlt H.264 MP4 adaptív sávszélességű bitráta-készletekbe; miniatűr létrehozása; átfedéseket hozhat létre. A feladat befejezésekor egy kimeneti eszköz keletkezik.  A kimeneti eszköz tartalmaz videót, hangot, miniatűröket stb. A kimeneti eszköz is tartalmaz egy fájlt a kimeneti eszköz metaadatait. A metaadat-XML-fájl neve a &lt;következő&gt;formátumú: source_file_name _manifest.xml (például BigBuckBunny_manifest.xml).  
+A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani. Például kódoljon egy MP4-fájlt H. 264 MP4 adaptív sávszélességű készletbe; miniatűr létrehozása; hozzon létre átfedéseket. Egy feladat befejezése után a rendszer kimeneti eszközt állít elő.  A kimeneti eszköz tartalmaz videót, hangot, miniatűrt stb. A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok XML-fájljának neve a következő formátumú: &lt;source_file_name&gt;_manifest. XML (például BigBuckBunny_manifest. xml).  
 
-A Media Services nem szokta elő, hogy metaadatokat generáljon a bemeneti eszközökből. A bemeneti metaadatok csak összetevőként jönnek létre, ha egy bemeneti eszközt egy feladatban dolgoznak fel. Ezért ez a összetevő a kimeneti eszközbe van írva. Különböző eszközök segítségével jönnek létre metaadatok a bemeneti eszközök és a kimeneti eszközök. Ezért a bemeneti metaadatok egy kicsit eltérnek a kimeneti metaadatok.
+A Media Services nem jelleggel a bemeneti eszközöket a metaadatok létrehozásához. A bemeneti metaadatok csak olyan összetevőként jönnek létre, amikor egy bemeneti objektumot dolgoz fel egy feladatban. Ezért ez az összetevő a kimeneti eszközre íródik. A bemeneti eszközök és a kimeneti eszközök metaadatainak létrehozásához különböző eszközök használhatók. Ezért a bemeneti metaadatok némileg eltérő sémával rendelkeznek, mint a kimeneti metaadatok.
 
-Ha meg szeretné vizsgálni a metaadatfájlt, **SAS** létrehozhat egy SAS-lokátort, és letöltheti a fájlt a helyi számítógépre.  
+Ha meg szeretné vizsgálni a metaadat-fájlt, létrehozhat egy **sas** -keresőt, és letöltheti a fájlt a helyi számítógépre.  
 
-Ez a cikk annak az XML-sémának az elemeit és&lt;típusait ismerteti, amelyeken a kimeneti metada ( source_file_name&gt;_manifest.xml) alapul. A bemeneti eszköz metaadatait tartalmazó fájlról a Bemeneti metaadatok című témakörben talál további információt.  
+Ez a cikk a kimeneti metada (&lt;source_file_name&gt;_manifest. XML) alapjául szolgáló XML-séma elemeit és típusait ismerteti. A bemeneti adategységre vonatkozó metaadatokat tartalmazó fájllal kapcsolatos információkért lásd a bemeneti metaadatokat.  
 
-A teljes sémakódot és az XML-példát a cikk végén találja.  
+A jelen cikk végén található teljes séma-kód és XML-példa megtalálható.  
 
 ## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a>AssetFiles gyökérelem
-AssetFile bejegyzések gyűjteménye a kódolási feladathoz.  
+A kódolási feladatokhoz tartozó AssetFile-bejegyzések gyűjteménye.  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **Eszközfájl**<br/><br/> minOccurs="0" maxOccurs="1" |Az AssetFiles gyűjtemény részét képezi AssetFile elem. |
+| **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Egy AssetFile elem, amely a AssetFiles gyűjtemény részét képezi. |
 
 ## <a name="assetfile-element"></a><a name="AssetFile"></a>AssetFile elem
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Név**<br/><br/> Kötelező |**xs:karakterlánc** |A médiaeszköz fájlneve. |
-| **Méret**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:hosszú** |Az eszközfájl mérete bájtban. |
-| **Időtartam**<br/><br/> Kötelező |**xs:időtartam** |A tartalom lejátszási időtartama. |
+| **Név**<br/><br/> Kötelező |**xs: karakterlánc** |A Media Asset fájljának neve. |
+| **Méret**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: hosszú** |Az adategység fájljának mérete bájtban megadva. |
+| **Időtartam**<br/><br/> Kötelező |**xs: időtartam** |Tartalom lejátszási ideje – időtartam. |
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **Források** |Az AssetFile létrehozásához feldolgozott bemeneti/forrásmédia-fájlok gyűjteménye. További információ: Source element. |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Minden fizikai AssetFile tartalmazhat benne nulla vagy több videó számok atleaved egy megfelelő tároló formátumban. További információ: VideoTracks element. |
-| **Hangsávok**<br/><br/> minOccurs="0" maxOccurs="1" |Minden fizikai AssetFile tartalmazhat benne nulla vagy több hangsávot egy megfelelő tárolóformátumba. Ez a gyűjtemény az összes hangsávot. További információ: AudioTracks element. |
+| **Források** |A AssetFile létrehozásához feldolgozott bemeneti/forrás médiafájlok gyűjteménye. További információ: forrásoldali elem. |
+| **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. További információ: VideoTracks elem. |
+| **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelelő tároló formátumba. Ezen hangsávok gyűjteménye. További információ: AudioTracks elem. |
 
 ## <a name="sources-element"></a><a name="Sources"></a>Források elem
-Az AssetFile létrehozásához feldolgozott bemeneti/forrásmédia-fájlok gyűjteménye.  
+A AssetFile létrehozásához feldolgozott bemeneti/forrás médiafájlok gyűjteménye.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **Forrás**<br/><br/> minOccurs="1" maxOccurs="nem kötött" |Az eszköz létrehozásához használt bemeneti/forrásfájl. További információ: Source element. |
+| **Forrás**<br/><br/> minOccurs = "1" maxOccurs = "nem kötött" |Az eszköz létrehozásakor használt bemeneti/forrásfájl. További információ: forrásoldali elem. |
 
-## <a name="source-element"></a><a name="Source"></a>Forráselem
-Az eszköz létrehozásához használt bemeneti/forrásfájl.  
+## <a name="source-element"></a><a name="Source"></a>Forrásoldali elem
+Az eszköz létrehozásakor használt bemeneti/forrásfájl.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Név**<br/><br/> Kötelező |**xs:karakterlánc** |Bemeneti forrásfájl neve. |
+| **Név**<br/><br/> Kötelező |**xs: karakterlánc** |Bemeneti forrásfájl neve. |
 
 ## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks elem
-Minden fizikai AssetFile tartalmazhat benne nulla vagy több videó számok atleaved egy megfelelő tároló formátumban. A **VideoTracks** elem az összes videosáv gyűjteményét jelöli.  
+Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. A **VideoTracks** elem az összes videó sáv gyűjteményét jelöli.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="nem kötött" |Egy adott videósáv a szülő AssetFile-ban. További információ: VideoTrack element. |
+| **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "nem kötött" |Egy adott videó nyomon követése a szülő AssetFile. További információ: VideoTrack elem. |
 
 ## <a name="videotrack-element"></a><a name="VideoTrack"></a>VideoTrack elem
-Egy adott videósáv a szülő AssetFile-ban.  
+Egy adott videó nyomon követése a szülő AssetFile.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A videósáv nulla alapú indexe. **Megjegyzés:**  Ez **az azonosító** nem feltétlenül az MP4-fájlban használt TrackID. |
-| **Fourcc**<br/><br/> Kötelező |**xs:karakterlánc** |Video codec FourCC kód. |
-| **Profil** |**xs:karakterlánc** |H264 profil (csak a H264 kodekre vonatkozik). |
-| **Szint** |**xs:karakterlánc** |H264 szint (csak a H264 kodeket alkalmazható). |
-| **Width**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Kódolt videószélesség képpontban. |
-| **Height**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Kódolt videómagasság képpontban. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:dupla** |Videomegjelenítési képarány számlálója. |
-| **DisplayAspectRatioDenevező**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:dupla** |A videó megjelenítési képarány-nevezője. |
-| **Képkockasebesség**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:decimális** |Mért videó képkockasebesség .3f formátumban. |
-| **Célkeretarány**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:decimális** |Előre beállított célvideoképkocka-sebesség .3f formátumban. |
-| **Bitráta**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Átlagos videó bitsebesség kilobit/másodpercben, az AssetFile-ból számítva. Csak az elemi adatfolyam hasznos terhelését számolja, és nem tartalmazza a csomagolási többletterhelést. |
-| **Célbitrátus**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Célátlag-bitráta ehhez a videosávhoz, a kódolási készleten keresztül kért módon, kilobit/másodpercben. |
-| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximális GOP átlagos bitráta ehhez a videó sávhoz, kilobit/másodpercben. |
+| **ID**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. |
+| **FourCC**<br/><br/> Kötelező |**xs: karakterlánc** |Videós kodek FourCC kódja |
+| **Profil** |**xs: karakterlánc** |H264-profil (csak H264-kodekre alkalmazható). |
+| **Szint** |**xs: karakterlánc** |H264-szint (csak H264-kodekre alkalmazható). |
+| **Width**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
+| **Height**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Kódolt videó magassága képpontban megadva. |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: dupla** |Videó megjelenítési oldalarányának számlálója |
+| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: dupla** |Videó megjelenítési méretarányának nevezője |
+| **Képkockasebesség**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: decimális** |A képkockák sebességét. 3F formátumban mérjük. |
+| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: decimális** |A célként megadott videó képkockájának sebessége. 3F formátumban. |
+| **Sávszélességű**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Az átlagos videó átviteli sebessége kilobit/másodpercben, a AssetFile számítva. Csak az elemes adatfolyam-adattartalmat számolja, és nem tartalmazza a csomagolási terhelést. |
+| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A videó nyomon követésére irányuló átlagos bitráta, a kódolási beállításkészlettől függően, kilobit/másodpercben. |
+| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs: int** |A videó nyomon követésére szolgáló maximális GOP-os átlagos sávszélesség (kilobit/mp). |
 
 ## <a name="audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks elem
-Minden fizikai AssetFile tartalmazhat benne nulla vagy több hangsávot egy megfelelő tárolóformátumba. A **Hangsáv** elem az összes hangsáv gyűjteményét képviseli.  
+Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelelő tároló formátumba. A **AudioTracks** elem az összes hangsávok gyűjteményét jelöli.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **Hangsáv**<br/><br/> minOccurs="1" maxOccurs="nem kötött" |Adott hangsáv a szülő Eszközfájlban. További információ: AudioTrack element. |
+| **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "nem kötött" |Egy adott hangsávot a szülő AssetFile. További információ: AudioTrack elem. |
 
-## <a name="audiotrack-element"></a><a name="AudioTrack"></a>Hangsáv elem
-Adott hangsáv a szülő Eszközfájlban.  
+## <a name="audiotrack-element"></a><a name="AudioTrack"></a>AudioTrack elem
+Egy adott hangsávot a szülő AssetFile.  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A hangsáv nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül a TrackID használt MP4 fájlt. |
-| **Codec** |**xs:karakterlánc** |Hangsáv kodek karakterlánc. |
-| **Kódolóverzió** |**xs:karakterlánc** |Opcionális kódoló verziókarakterlánc, az EAC3-hoz szükséges. |
-| **Csatornák**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Az audiocsatornák száma. |
-| **Mintavételi ráta**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Hangmintavételi sebesség minták/mp-ben vagy Hz-ben. |
-| **Bitráta**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Átlagos hangátviteli sebesség bit/másodpercben, az Eszközfájlból számítva. Csak az elemi adatfolyam hasznos terhelését számolja, és nem tartalmazza a csomagolási többletterhelést. |
-| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A wFormatTag formátum típusának mintánkénti bitjei. |
+| **ID**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID. |
+| **Codec** |**xs: karakterlánc** |Hangsávok kodekének karakterlánca |
+| **EncoderVersion** |**xs: karakterlánc** |Nem kötelező kódoló verziószáma, amely a EAC3 esetében szükséges. |
+| **Csatornák**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Hangcsatornák száma |
+| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Mintavételezési sebesség (minta/mp vagy Hz) |
+| **Sávszélességű**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A bitek másodpercenkénti átlagos átviteli sebessége a AssetFile számítva. Csak az elemes adatfolyam-adattartalmat számolja, és nem tartalmazza a csomagolási terhelést. |
+| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Bit/minta a wFormatTag formátum típushoz. |
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |A hangosság mérésének eredményparaméterei. További információ: LoudnessMeteringResultParameters element. |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Hangerő-mérési eredmények paramétereinek megadása További információ: LoudnessMeteringResultParameters elem. |
 
 ## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>LoudnessMeteringResultParameters elem
-A hangosság mérésének eredményparaméterei.  
+Hangerő-mérési eredmények paramétereinek megadása  
 
-Megkeresheti az [XML-példákat.](#xml)  
+Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **DPLMVersionInformáció** |**xs:karakterlánc** |**Dolby** professzionális hangosság mérés fejlesztési készlet verzió. |
-| **Párbeszédek normalizálása**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Kötelező |**xs:int** |A DPLM-en keresztül generált DialogNormalization, amely a LoudnessMetering beállításakor szükséges |
-| **Integrált hangosság**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Kötelező |**xs:lebegtetés** |Integrált hangosság |
-| **Integrált HangosságEgység**<br/><br/> Kötelező |**xs:karakterlánc** |Integrált hangosság egység. |
-| **IntegratedLoudnessGatingMódszer**<br/><br/> Kötelező |**xs:karakterlánc** |Gating azonosító |
-| **Integrált Hangosbeszédszázalék**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:lebegtetés** |Beszédtartalom a program felett százalékban. |
-| **Mintacsúcs**<br/><br/> Kötelező |**xs:lebegtetés** |Csúcs abszolút mintaérték, az alaphelyzetbe állítás vagy az utolsó törlés óta, csatornánként.  Az egységek dBFS. |
-| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Kötelező |**xs:anySimpleType** |Minta csúcsegysége. |
-| **TruePeak között**<br/><br/> Kötelező |**xs:lebegtetés** |Az ITU-R BS.1770-2 érték szerinti maximális valós csúcsérték az alaphelyzetbe állítás vagy az utolsó törlés óta, csatornánként. Az egységek dBTP-k. |
-| **TruePeakUnit egység**<br/><br/> fixed="dBTP"<br/><br/> Kötelező |**xs:anySimpleType** |Valódi csúcsegység. |
+| **DPLMVersionInformation** |**xs: karakterlánc** |A **Dolby** Professional hangmérési fejlesztési csomag verziószáma. |
+| **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Kötelező |**xs: int** |A DPLM-en keresztül generált DialogNormalization szükséges, ha a LoudnessMetering be van állítva |
+| **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Kötelező |**xs: float** |Integrált hangerő |
+| **IntegratedLoudnessUnit**<br/><br/> Kötelező |**xs: karakterlánc** |Integrált fiziológiai egység. |
+| **IntegratedLoudnessGatingMethod**<br/><br/> Kötelező |**xs: karakterlánc** |Kapuzás-azonosító |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs: float** |Beszéd tartalma a programban, százalékként. |
+| **SamplePeak**<br/><br/> Kötelező |**xs: float** |A csúcsérték abszolút értéke, mivel az Alaphelyzetbe állítás vagy a legutóbbi törlés óta, csatornánként.  Az egységek dBFS. |
+| **SamplePeakUnit**<br/><br/> rögzített = "dBFS"<br/><br/> Kötelező |**xs: anySimpleType** |Minta maximális egysége |
+| **TruePeak**<br/><br/> Kötelező |**xs: float** |A maximális igaz csúcsérték, mint az ITU-R BS. 1770-2, mivel az Alaphelyzetbe állítás óta, vagy a legutóbbi törlés óta, csatornánként. Az egységek dBTP. |
+| **TruePeakUnit**<br/><br/> rögzített = "dBTP"<br/><br/> Kötelező |**xs: anySimpleType** |Igaz csúcs egysége |
 
-## <a name="schema-code"></a>Sémakód
+## <a name="schema-code"></a>Séma kódja
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
@@ -509,9 +509,9 @@ Megkeresheti az [XML-példákat.](#xml)
 
 
 
-## <a name="xml-example"></a><a name="xml"></a>PÉLDA XML-re
+## <a name="xml-example"></a><a name="xml"></a>XML-példa
 
-A következő XML egy példa a Kimeneti metaadatfájlra.  
+A következő XML egy példa a kimeneti metaadat fájlra.  
 
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  

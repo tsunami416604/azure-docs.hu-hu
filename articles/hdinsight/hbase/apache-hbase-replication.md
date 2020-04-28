@@ -1,6 +1,6 @@
 ---
-title: HBase fürtreplikáció virtuális hálózatokban – Azure HDInsight
-description: Ismerje meg, hogyan állíthatja be a HBase replikációt egyik HDInsight-verzióról a másikra a terheléselosztáshoz, a magas rendelkezésre álláshoz, a nulla állásidejű áttelepítéshez és frissítésekhez, valamint a vészhelyreállításhoz.
+title: HBase-fürt replikálása virtuális hálózatokban – Azure HDInsight
+description: Megtudhatja, hogyan állíthatja be a HBase-replikációt az egyik HDInsight-verzióról a másikra a terheléselosztás, a magas rendelkezésre állás, a nulla leállás utáni áttelepítés és a frissítések, valamint a vész-helyreállítási folyamat
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,133 +9,133 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435669"
 ---
-# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase fürtreplikáció beállítása az Azure virtuális hálózataiban
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
 
-Ismerje meg, hogyan állíthatja be [az Apache HBase](https://hbase.apache.org/) replikációt egy virtuális hálózaton vagy két virtuális hálózat között az Azure-ban.
+Megtudhatja, hogyan állíthatja be az [Apache HBase](https://hbase.apache.org/) -replikációt egy virtuális hálózaton belül, illetve két virtuális hálózat között az Azure-ban.
 
-A fürtreplikáció forrás-leküldéses módszert használ. A HBase-fürt lehet forrás vagy cél, vagy egyszerre mindkét szerepkört teljesítheti. A replikáció aszinkron. A replikáció célja a végleges konzisztencia. Ha a forrás szerkesztést kap egy oszlopcsaládnak, amikor a replikáció engedélyezve van, a szerkesztés az összes célfürtre lesz propagálva. Amikor az adatokat egyik fürtről a másikra replikálja, a rendszer nyomon követi a forrásfürtöt és az összes olyan fürtöt, amely már felhasználta az adatokat, hogy megakadályozza a replikációs hurkokat.
+A fürt replikálása forrás-leküldéses módszertant használ. Egy HBase-fürt lehet forrás vagy cél, vagy egyszerre is teljesítheti mindkét szerepkört. A replikálás aszinkron módon történik. A replikáció célja végleges konzisztencia. Ha a forrás a replikáció engedélyezésekor egy oszlop családjának szerkeszti az oszlopot, a rendszer az összes célhelyre propagálja a szerkesztést. Ha az adatok replikálása az egyik fürtről a másikra történik, a rendszer a forrás-fürtöt és az összes olyan fürtöt nyomon követi, amely már felhasználta az adatok követését a replikálási hurok
 
-Ebben a cikkben egy forrás-cél replikációt állít be. Más fürttopológiákat az [Apache HBase referenciaútmutatójában](https://hbase.apache.org/book.html#_cluster_replication)talál.
+Ebben a cikkben egy forrás-cél replikálást állít be. Más fürtök topológiái esetén tekintse meg az [Apache HBase útmutatóját](https://hbase.apache.org/book.html#_cluster_replication).
 
-A hbase-replikációs használati esetek egyetlen virtuális hálózat esetében a következők:
+A következő HBase-replikációs használati esetek egyetlen virtuális hálózat esetén:
 
-* Terheléselosztás. Futtathatja például a célfürtön a beolvasott vagy mapreduce feladatokat, és adatokat vihet be a forrásfürtön.
+* Terheléselosztás. Futtathat például vizsgálatokat vagy MapReduce feladatokat a célszámítógépen, és betöltheti az adatokkal a forrás-fürtöt.
 * Magas rendelkezésre állás hozzáadása.
-* Adatok áttelepítése az egyik HBase-fürtről a másikra.
-* Az Azure HDInsight-fürt frissítése egyik verzióról a másikra.
+* Adatok áttelepítése egyik HBase-fürtről a másikra.
+* Azure HDInsight-fürt frissítése egyik verzióról a másikra.
 
-A hbase replikációs használati esetei két virtuális hálózat esetében:
+A következő két virtuális hálózat HBase-replikációs használati esetei:
 
-* Katasztrófa utáni helyreállítás beállítása.
+* Vész-helyreállítás beállítása.
 * Terheléselosztás és az alkalmazás particionálása.
 * Magas rendelkezésre állás hozzáadása.
 
-A [githubról](https://github.com/Azure/hbase-utils/tree/master/replication)származó [parancsfájl-műveletparancsfájlok](../hdinsight-hadoop-customize-cluster-linux.md) használatával replikálhatja a fürtöket.
+A fürtöket a [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication)parancsfájl- [művelet](../hdinsight-hadoop-customize-cluster-linux.md) parancsfájljai használatával replikálhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A cikk megkezdése előtt, rendelkeznie kell egy Azure-előfizetéssel. Lásd: [Ingyenes Azure-próbaverzió beszerezni.](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+A cikk elkezdése előtt Azure-előfizetéssel kell rendelkeznie. Lásd: [ingyenes Azure-próbaverzió beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## <a name="set-up-the-environments"></a>A környezet beállítása
+## <a name="set-up-the-environments"></a>A környezetek beállítása
 
-Három beállítási lehetőség közül választhat:
+Három konfigurációs lehetőség közül választhat:
 
-- Két Apache HBase-fürt egy Azure virtuális hálózatban.
+- Két Apache HBase-fürt egyetlen Azure-beli virtuális hálózatban.
 - Két Apache HBase-fürt két különböző virtuális hálózatban ugyanabban a régióban.
-- Két Apache HBase-fürt két különböző virtuális hálózatban, két különböző régióban (georeplikáció).
+- Két Apache HBase-fürt két különböző régióban (Geo-replikáció) két különböző virtuális hálózatban.
 
-Ez a cikk a georeplikációs forgatókönyvet ismerteti.
+Ez a cikk a földrajzi replikálási forgatókönyvet ismerteti.
 
-A környezetek beállításának elősegítése érdekében létrehoztunk néhány [Azure Resource Manager-sablont.](../../azure-resource-manager/management/overview.md) Ha a környezeteket más módszerekkel szeretné beállítani, olvassa el az:
+A környezetek beállításának elősegítése érdekében létrehoztunk néhány [Azure Resource Manager sablont](../../azure-resource-manager/management/overview.md). Ha más módszerekkel szeretné beállítani a környezeteket, tekintse meg a következőt:
 
-- [Apache Hadoop-fürtök létrehozása a HDInsightban](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Apache HBase-fürtök létrehozása az Azure Virtuális Hálózatban](apache-hbase-provision-vnet.md)
+- [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Apache HBase-fürtök létrehozása az Azure-ban Virtual Network](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Két virtuális hálózat beállítása két különböző régióban
 
-Ha olyan sablont szeretne használni, amely két virtuális hálózatot hoz létre két különböző régióban, és a virtuális hálózatok közötti VPN-kapcsolatot, válassza ki a következő üzembe helyezés az **Azure-ba** gombot. A sablondefiníció egy [nyilvános blobtárolóban van tárolva.](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)
+Ha olyan sablont szeretne használni, amely két virtuális hálózatot hoz létre két különböző régióban és a VPN-kapcsolatot a virtuális hálózatok között, válassza a következő **üzembe helyezés az Azure** -ban gombot. A sablon definícióját egy [nyilvános blob Storage](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)tárolja.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-A sablon ban lévő nehezen kódolt értékek egy része:
+A sablonban a rögzített értékek némelyike:
 
-**Virtuális hálózat 1**
+**1. VNet**
 
 | Tulajdonság | Érték |
 |----------|-------|
 | Hely | USA nyugati régiója |
-| Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet1 |
-| Címtér előtagja | 10.1.0.0/16 |
+| VNet neve | &lt;ClusterNamePrevix> – vnet1 |
+| Címterület előtagja | 10.1.0.0/16 |
 | Alhálózat neve | 1. alhálózat |
-| Alhálózati előtag | 10.1.0.0/24 |
+| Alhálózat előtagja | 10.1.0.0/24 |
 | Alhálózat (átjáró) neve | GatewaySubnet (nem módosítható) |
-| Alhálózati (átjáró) előtag | 10.1.255.0/27 |
+| Alhálózat (átjáró) előtagja | 10.1.255.0/27 |
 | Átjáró neve | vnet1gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típusa | Útvonalalapú |
-| Átjáró termékváltozat | Basic |
+| Átjáró SKU | Basic |
 | Átjáró IP-címe | vnet1gwip |
 
-**Virtuális hálózat 2**
+**2. VNet**
 
 | Tulajdonság | Érték |
 |----------|-------|
 | Hely | USA keleti régiója |
-| Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet2 |
-| Címtér előtagja | 10.2.0.0/16 |
+| VNet neve | &lt;ClusterNamePrevix> – vnet2 |
+| Címterület előtagja | 10.2.0.0/16 |
 | Alhálózat neve | 1. alhálózat |
-| Alhálózati előtag | 10.2.0.0/24 |
+| Alhálózat előtagja | 10.2.0.0/24 |
 | Alhálózat (átjáró) neve | GatewaySubnet (nem módosítható) |
-| Alhálózati (átjáró) előtag | 10.2.255.0/27 |
+| Alhálózat (átjáró) előtagja | 10.2.255.0/27 |
 | Átjáró neve | vnet2gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típusa | Útvonalalapú |
-| Átjáró termékváltozat | Basic |
+| Átjáró SKU | Basic |
 | Átjáró IP-címe | vnet1gwip |
 
-## <a name="setup-dns"></a>TELEPÍTŐ DNS
+## <a name="setup-dns"></a>DNS beállítása
 
-Az utolsó szakaszban a sablon létrehoz egy Ubuntu virtuális gépet a két virtuális hálózat mindegyikében.  Ebben a szakaszban telepíti a Bind programot a két VIRTUÁLIS DNS-gépre, majd konfigurálja a DNS-továbbítást a két virtuális gépen.
+Az utolsó szakaszban a sablon létrehoz egy Ubuntu-alapú virtuális gépet a két virtuális hálózat mindegyikében.  Ebben a szakaszban a kötést telepíti a két DNS virtuális gépre, majd konfigurálja a DNS-továbbítást a két virtuális gépen.
 
-A Bind telepítéséhez meg kell találnia a két DNS virtuális gép nyilvános IP-címét.
+A kötés telepítéséhez a Yon-nek meg kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Nyissa meg a DNS virtuális gépet az **Erőforrások csoportok > [erőforráscsoport neve] > [vnet1DNS]** lehetőséget választva.  Az erőforráscsoport neve az utolsó eljárásban létrehozott. Az alapértelmezett VIRTUÁLIS SZÁMÍTÓGÉP-nevek *a vnet1DNS* és *a vnet2NDS.*
-3. A **Tulajdonságok** lehetőséget választva nyissa meg a virtuális hálózat tulajdonságlapját.
-4. Írja le a **nyilvános IP-címet**, és ellenőrizze a **privát IP-címet**is .  A privát IP-cím a vnet1DNS esetében **10.1.0.4,** a vnet2DNS esetében **pedig 10.2.0.4.**  
-5. Módosítsa a DNS-kiszolgálók mindkét virtuális hálózatok alapértelmezett (Azure által biztosított) DNS-kiszolgálók, hogy a bejövő és kimenő hozzáférést a letöltési csomagok telepíteni Bind a következő lépésekben.
+2. A DNS virtuális gép megnyitásához válassza az **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]** elemet.  Az erőforráscsoport neve az utolsó eljárásban létrehozott csoport. Az alapértelmezett DNS-beli virtuális gépek nevei a következők: *vnet1DNS* és *vnet2NDS*.
+3. Válassza a **Tulajdonságok** lehetőséget a virtuális hálózat Tulajdonságok lapjának megnyitásához.
+4. Jegyezze fel a **nyilvános IP-címet**, és ellenőrizze a **magánhálózati IP-címet**is.  A magánhálózati IP-címet a vnet2DNS vnet1DNS és **10.2.0.4** **10.1.0.4** kell megadni.  
+5. Módosítsa a DNS-kiszolgálókat mindkét virtuális hálózatra úgy, hogy az alapértelmezett (Azure által biztosított) DNS-kiszolgálókat használják a bejövő és kimenő hozzáféréshez a csomagok letöltéséhez a következő lépésekben a kötés telepítéséhez.
 
-A Bind telepítéséhez kövesse az alábbi eljárást:
+A kötés telepítéséhez kövesse az alábbi eljárást:
 
-1. Az SSH segítségével csatlakozzon a DNS virtuális gép __nyilvános IP-címéhez.__ A következő példa 40.68.254.142-es sebességgel csatlakozik egy virtuális géphez:
+1. Használja az SSH-t a DNS virtuális gép __nyilvános IP-címéhez__ való kapcsolódáshoz. A következő példa egy virtuális géphez csatlakozik a 40.68.254.142-ben:
 
     ```bash
     ssh sshuser@40.68.254.142
     ```
 
-    Cserélje `sshuser` le a DNS virtuális gép létrehozásakor megadott SSH felhasználói fiókra.
+    Cserélje `sshuser` le a értéket a DNS virtuális gép létrehozásakor megadott SSH-felhasználói fiókra.
 
     > [!NOTE]  
-    > Vannak többféle ways -hoz `ssh` megkap a típus-. Linuxon, Unix-on és macOS rendszeren az operációs rendszer részeként érhető el. Windows használata esetén vegye figyelembe az alábbi lehetőségek egyikét:
+    > A `ssh` segédprogram beszerzésének számos módja van. Linux, UNIX és macOS rendszeren az operációs rendszer részeként van megadva. Ha Windows rendszert használ, vegye figyelembe a következő lehetőségek egyikét:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [Bash az Ubuntu-n a Windows 10-en](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git (https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Githttps://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSHhttps://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
-2. A Bind telepítéséhez használja az SSH-munkamenet következő parancsait:
+2. A kötés telepítéséhez használja az alábbi parancsokat az SSH-munkamenetből:
 
     ```bash
     sudo apt-get update -y
     sudo apt-get install bind9 -y
     ```
 
-3. Konfigurálja a Kötés beállítást úgy, hogy névfeloldási kérelmeket továbbítson a helyszíni DNS-kiszolgálónak. Ehhez használja a következő szöveget a `/etc/bind/named.conf.options` fájl tartalmaként:
+3. Konfigurálja a kötést a névfeloldási kérelmek továbbításához a helyszíni DNS-kiszolgálóra. Ehhez használja a következő szöveget a `/etc/bind/named.conf.options` fájl tartalmaként:
 
     ```
     acl goodclients {
@@ -162,7 +162,7 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     ```
     
     > [!IMPORTANT]  
-    > Cserélje le a `goodclients` szakasz értékeit a két virtuális hálózat IP-címtartományára. Ez a szakasz azokat a címeket határozza meg, amelyekről a DNS-kiszolgáló fogadja a kéréseket.
+    > Cserélje le a `goodclients` szakasz értékeit a két virtuális hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -170,23 +170,23 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     sudo nano /etc/bind/named.conf.options
     ```
 
-    A fájl mentéséhez használja a __Ctrl+X,__ __Y__, majd __az Enter billentyűkombinációt.__
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__a következőt:.
 
-4. Az SSH-munkamenetből használja a következő parancsot:
+4. Az SSH-munkamenetben használja a következő parancsot:
 
     ```bash
     hostname -f
     ```
 
-    Ez a parancs a következő höz hasonló értéket ad vissza:
+    Ez a parancs az alábbi szöveghez hasonló értéket ad vissza:
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja.__ Mentse ezt az értéket, mivel később még használni fogjuk.
+    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja__ . Mentse ezt az értéket, mivel később még használni fogjuk.
 
-    A DNS-utótagot a másik DNS-kiszolgálótól is meg kell találnia. Szükséged van rá a következő lépésben.
+    A DNS-utótagot is meg kell találnia a másik DNS-kiszolgálóról. A következő lépésben szüksége lesz rá.
 
-5. Ha a Kötés beállítást a virtuális hálózaton belüli erőforrások DNS-neveinek `/etc/bind/named.conf.local` feloldására szeretné konfigurálni, használja a következő szöveget a fájl tartalmaként:
+5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a `/etc/bind/named.conf.local` fájl tartalmának használatával:
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -197,7 +197,7 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     ```
 
     > [!IMPORTANT]  
-    > A másik `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` virtuális hálózat DNS-utótagjára kell cserélnie. És a továbbító IP a privát IP-címét a DNS-kiszolgáló a másik virtuális hálózat.
+    > A másik virtuális hálózat `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` DNS-utótagját le kell cserélnie. A továbbító IP pedig a másik virtuális hálózat DNS-kiszolgálójának magánhálózati IP-címe.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -205,15 +205,15 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     sudo nano /etc/bind/named.conf.local
     ```
 
-    A fájl mentéséhez használja a __Ctrl+X,__ __Y__, majd __az Enter billentyűkombinációt.__
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__a következőt:.
 
-6. A Bind elindításához használja a következő parancsot:
+6. A kötés elindításához használja a következő parancsot:
 
     ```bash
     sudo service bind9 restart
     ```
 
-7. Annak ellenőrzéséhez, hogy a kötés képes-e feloldani a másik virtuális hálózat erőforrásainak nevét, használja a következő parancsokat:
+7. A következő parancsokkal ellenőrizheti, hogy a kötés fel tudja-e oldani a másik virtuális hálózatban lévő erőforrások nevét:
 
     ```bash
     sudo apt install dnsutils
@@ -221,11 +221,11 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     ```
 
     > [!IMPORTANT]  
-    > Cserélje `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` le a másik hálózat BAN lévő DNS-virtuális gép teljesen minősített tartománynevére (FQDN).
+    > Cserélje `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` le a értéket a másik hálózatban található DNS virtuális gép teljes tartománynevére (FQDN).
     >
-    > Cserélje `10.2.0.4` le a másik virtuális hálózat egyéni __DNS-kiszolgálójának belső IP-címét.__
+    > Cserélje `10.2.0.4` le az értékét a másik virtuális hálózatban lévő egyéni DNS __-kiszolgáló belső IP-címére__ .
 
-    A válasz a következő szöveghez hasonló:
+    A válasz az alábbi szöveghez hasonlóan jelenik meg:
 
     ```
     Server:         10.2.0.4
@@ -236,20 +236,20 @@ A Bind telepítéséhez kövesse az alábbi eljárást:
     Address: 10.2.0.4
     ```
 
-    Eddig nem keresheti meg az IP-címet a másik hálózatról a megadott DNS-kiszolgáló IP-címe nélkül.
+    Eddig nem tekintheti meg az IP-címet a másik hálózatról a megadott DNS-kiszolgáló IP-címe nélkül.
 
 ### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>A virtuális hálózat konfigurálása az egyéni DNS-kiszolgáló használatára
 
-Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az Azure rekurzív feloldója helyett az egyéni DNS-kiszolgálót használja, kövesse az alábbi lépéseket:
+Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-kiszolgálót használja az Azure rekurzív feloldó helyett, kövesse az alábbi lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com)válassza ki a virtuális hálózatot, majd válassza a __DNS-kiszolgálók__lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a virtuális hálózatot, majd válassza a __DNS-kiszolgálók__lehetőséget.
 
-2. Válassza __az Egyéni__lehetőséget, és adja meg az egyéni DNS-kiszolgáló belső __IP-címét.__ Végül válassza a __Mentés__gombot.
+2. Válassza az __Egyéni__lehetőséget, majd adja meg az egyéni DNS __-kiszolgáló belső IP-címét__ . Végül válassza a __Mentés__lehetőséget.
 
-6. Nyissa meg a DNS-kiszolgáló virtuális gépét a virtuális hálózat1 szolgáltatásban, és kattintson **az Újraindítás gombra.**  A DNS-konfiguráció érvénybe léptetéséhez újra kell indítania a virtuális hálózat összes virtuális gépét.
-7. Ismételje meg a lépéseket konfigurálja az egyéni DNS-kiszolgáló t.
+6. Nyissa meg a DNS-kiszolgáló virtuális gépet a vnet1-ben, és kattintson az **Újraindítás**gombra.  A DNS-konfiguráció érvénybe léptetéséhez újra kell indítania a virtuális hálózatban lévő összes virtuális gépet.
+7. Ismételje meg a lépéseket az egyéni DNS-kiszolgáló vnet2 való konfigurálásához.
 
-A DNS-konfiguráció teszteléséhez csatlakozhat a két DNS virtuális géphez SSH használatával, és pingelheti a másik virtuális hálózat DNS-kiszolgálóját az állomásnevével. Ha nem működik, a DNS-állapot ellenőrzéséhez használja a következő parancsot:
+A DNS-konfiguráció teszteléséhez az SSH használatával csatlakozhat a két DNS virtuális géphez, és a másik virtuális hálózat DNS-kiszolgálóját az állomásnév használatával pingelheti. Ha nem működik, a következő parancs használatával ellenőrizze a DNS-állapotot:
 
 ```bash
 sudo service bind9 status
@@ -257,158 +257,158 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Apache HBase-fürtök létrehozása
 
-Hozzon létre egy [Apache HBase](https://hbase.apache.org/) fürtöt a következő konfigurációval a két virtuális hálózat mindegyikében:
+Hozzon létre egy [Apache HBase](https://hbase.apache.org/) -fürtöt mind a két virtuális hálózatban a következő konfigurációval:
 
-- **Erőforráscsoport neve**: használja ugyanazt az erőforráscsoport nevet, mint a virtuális hálózatok létrehozása.
+- **Erőforráscsoport neve**: használja ugyanazt az erőforráscsoport-nevet a virtuális hálózatok létrehozásakor.
 - **Fürt típusa**: HBase
-- **Verzió:** HBase 1.1.2 (HDI 3.6)
-- **Hely**: Használja ugyanazt a helyet, mint a virtuális hálózat.  Alapértelmezés szerint a vnet1 *usa-beli nyugat-amerikai,* a vnet2 pedig *USA keleti része.*
-- **Tárolás**: Hozzon létre egy új tárfiókot a fürthöz.
-- **Virtuális hálózat** (a portál speciális beállításaiból): Válassza ki az utolsó eljárásban létrehozott virtuális hálózat1 lehetőséget.
-- **Alhálózat**: A sablonban használt alapértelmezett név az **alhálózat1**.
+- **Verzió**: HBase 1.1.2 (HDI 3,6)
+- **Hely**: a virtuális hálózattal megegyező helyet használja.  Alapértelmezés szerint a vnet1 az *USA nyugati*régiója, a vnet2 pedig az *USA keleti*régiója.
+- **Storage**: hozzon létre egy új Storage-fiókot a fürthöz.
+- **Virtuális hálózat** (a portál speciális beállításaiból): válassza ki a legutóbbi eljárás során létrehozott vnet1.
+- **Alhálózat**: a sablonban használt alapértelmezett név a **subnet1**.
 
-A környezet megfelelő konfigurálása érdekében képesnek kell lennie a fejcsomópont teljes tartományna pingelésére a két fürt között.
+Annak biztosítása érdekében, hogy a környezet megfelelően legyen konfigurálva, meg kell tudnia pingelni a átjárócsomóponthoz teljes tartománynevét a két fürt között.
 
 ## <a name="load-test-data"></a>Tesztadatok betöltése
 
-Fürt replikálásakor meg kell adnia a replikálni kívánt táblákat. Ebben a szakaszban bizonyos adatokat tölt be a forrásfürtbe. A következő szakaszban engedélyezi a replikációt a két fürt között.
+Fürt replikálásakor meg kell adnia a replikálni kívánt táblákat. Ebben a szakaszban egy bizonyos adatforrást tölt be a fürtbe. A következő szakaszban engedélyeznie kell a két fürt közötti replikálást.
 
-**Névjegytábla** létrehozásához és néhány adat beszúrásához kövesse az [Apache HBase oktatóanyagának utasításait: Az Apache HBase használatának első lépései a HDInsightban](apache-hbase-tutorial-get-started-linux.md).
+Ha egy **Contacts** táblát szeretne létrehozni, és beszúr néhány információt a táblázatba, kövesse az [Apache HBase oktatóanyag: az Apache HBase használatának első lépései a HDInsight-ben](apache-hbase-tutorial-get-started-linux.md)című témakört.
 
 > [!NOTE]
-> Ha egyéni névtérből szeretne táblákat replikálni, gondoskodnia kell arról, hogy a célfürtön is meg legyenek adva a megfelelő egyéni névterek.
+> Ha egyéni névtérből kívánja replikálni a táblákat, győződjön meg arról, hogy a megfelelő egyéni névterek definiálva vannak a célkiszolgálón is.
 >
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-A következő lépések ismertetik, hogyan hívja meg a parancsfájl-művelet parancsfájlt az Azure Portalon. A parancsfájl-műveletek Azure PowerShell és az Azure Classic CLI használatával történő futtatásáról a [HDInsight-fürtök testreszabása parancsfájlművelettel című](../hdinsight-hadoop-customize-cluster-linux.md)témakörben talál további információt.
+A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műveleti szkriptje a Azure Portalból. A parancsfájl-műveletek Azure PowerShell és a klasszikus Azure CLI használatával történő futtatásával kapcsolatos információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-művelet használatával](../hdinsight-hadoop-customize-cluster-linux.md).
 
-**HBase-replikáció engedélyezése az Azure Portalról**
+**A HBase replikálásának engedélyezése a Azure Portal**
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Nyissa meg a forrás HBase fürtöt.
-3. A fürt menüben válassza a **Parancsfájlműveletek lehetőséget.**
-4. A lap tetején válassza az **Új küldése lehetőséget.**
-5. Válassza ki vagy írja be a következő adatokat:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Nyissa meg a forrás HBase-fürtöt.
+3. A fürt menüben válassza a **parancsfájlok műveletek**elemet.
+4. A lap tetején válassza az **új küldése**lehetőséget.
+5. Válassza ki vagy adja meg a következő adatokat:
 
-   1. **Név**: Írja be **a Replikáció engedélyezése**.
-   2. **Bash Script**URL **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**: Írja be a .
-   3. **Fej**: Győződjön meg róla, hogy ez ki van jelölve. Törölje a többi csomóponttípust.
-   4. **Paraméterek**: A következő mintaparaméterek engedélyezik az összes meglévő tábla replikációját, majd a forrásfürtből származó összes adatot átmásolják a célfürtbe:
+   1. **Név**: adja meg a **replikáció engedélyezése**értéket.
+   2. **Bash-parancsfájl URL-címe**: ENTER **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   3. **Head**: Győződjön meg róla, hogy ez be van jelölve. Törölje a többi csomópont típusát.
+   4. **Paraméterek**: a következő minta paraméterek lehetővé teszik az összes létező tábla replikálását, majd az összes adatforrás másolását a fürtbe:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
       > [!NOTE]
-      > A forrás- és a célfürt DNS-nevéhez is használjon állomásnevet a teljes tartománynév helyett.
+      > A forrás-és a célként megadott fürt DNS-neveként a teljes tartománynevet használja az állomásnév helyett.
       >
-      > Ez a forgatókönyv a hn1 aktív csomópontként való feltételezését feltételezi. Ellenőrizze a fürtben az aktív főcsomópont azonosításához.
+      > Ez az útmutató feltételezi, hogy az hn1 aktív átjárócsomóponthoz. Ellenőrizze, hogy a fürt azonosítsa-e az aktív fő csomópontot.
 
-6. Kattintson a **Létrehozás** gombra. A parancsfájl futtatása eltarthat egy ideig, különösen a **-copydata** argumentum használata esetén.
+6. Kattintson a **Létrehozás** gombra. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
 
-Kötelező argumentumok:
+Szükséges argumentumok:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |----|-----------|
-|-s, --src-cluster | Megadja a forrás HBase fürt DNS-nevét. Például: -s hbsrccluster, --src-cluster=hbsrccluster |
-|-d, --dst-cluster | Megadja a cél (replika) HBase fürt DNS-nevét. Például: -s dsthbcluster, --src-cluster=dsthbcluster |
-|-sp, --src-ambari-jelszó | Megadja az Ambari rendszergazdai jelszavát a Forrás HBase fürtön. |
-|-dp, --dst-ambari-jelszó | Megadja az Ambari rendszergazdai jelszavát a cél HBase-fürtön.|
+|-s,--src-cluster | Megadja a forrás HBase-fürt DNS-nevét. Például:-s hbsrccluster,--src-cluster = hbsrccluster |
+|-d,--DST-cluster | Megadja a cél (replika) HBase-fürt DNS-nevét. Például:-s dsthbcluster,--src-cluster = dsthbcluster |
+|-SP,--src-ambari-Password | Megadja a Ambari rendszergazdai jelszavát a forrás HBase-fürtön. |
+|-DP,--DST-ambari-Password | Megadja a Ambari rendszergazdai jelszavát a cél HBase-fürtön.|
 
-Választható argumentumok:
+Nem kötelező argumentumok:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |----|-----------|
-|-su, --src-ambari-user | Megadja az Ambari rendszergazdai felhasználónevét a Forrás HBase fürtön. Az alapértelmezett érték **admin**. |
-|-du, --dst-ambari-user | Megadja az Ambari rendszergazdai felhasználónevét a cél HBase-fürtön. Az alapértelmezett érték **admin**. |
-|-t, --táblázat-lista | Megadja a replikálandó táblákat. Például: --table-list="table1;table2;table3". Ha nem adja meg a táblákat, az összes meglévő HBase tábla replikálása.|
-|-m, --gép | Megadja azt a főcsomópontot, ahol a parancsfájlművelet fut. Az értéket az aktív főcsomópont alapján kell kiválasztani. Akkor használja ezt a beállítást, ha a $0 parancsfájlt parancsfájlműveletként futtatja a HDInsight-portálról vagy az Azure PowerShellből.|
-|-cp, -copydata | Engedélyezi a meglévő adatok áttelepítését azon táblákon, ahol a replikáció engedélyezve van. |
-|-rpm, -replicate-phoenix-meta | Engedélyezi a replikációt a Phoenix rendszertáblákon. <br><br>*Óvatosan használja ezt a beállítást.* Javasoljuk, hogy a parancsfájl használata előtt hozza létre újra a Phoenix-táblákat a replikafürtökön. |
-|-h, --segítség | Használati adatok megjelenítése. |
+|-Su,--src-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a forrás HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |
+|-du,--DST-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a cél HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |
+|-t,--Table-List | A replikálni kívánt táblákat határozza meg. Például:--table-List = "tábla1; table2; Tábl3". Ha nem ad meg táblákat, az összes meglévő HBase-tábla replikálódik.|
+|-m,--Machine | Meghatározza azt a fő csomópontot, ahol a parancsfájl-művelet fut. Az értéket az aktív fő csomópont alapján kell kiválasztani. Akkor használja ezt a beállítást, ha az $0 parancsfájlt parancsfájl-műveletként futtatja a HDInsight-portálról vagy Azure PowerShellról.|
+|-CP,-COPYDATA | Engedélyezi a meglévő adatáttelepítést azon táblákon, amelyeken engedélyezve van a replikáció. |
+|-RPM,-replikálás-Phoenix-meta | Engedélyezi a replikációt a Phoenix rendszertábláin. <br><br>*Ezt a beállítást körültekintően használhatja.* Javasoljuk, hogy a parancsfájl használata előtt hozza létre újra a Phoenix-táblákat a replika fürtökön. |
+|-h,-– Súgó | Megjeleníti a használati adatokat. |
 
-A `print_usage()` [parancsfájl](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) szakasza részletesen ismerteti a paramétereket.
+A `print_usage()` [szkript](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) szakasza részletesen ismerteti a paramétereket.
 
-A parancsfájlművelet sikeres üzembe helyezése után az SSH segítségével csatlakozhat a cél HBase-fürthöz, majd ellenőrizheti, hogy az adatok replikálása megtörtént-e.
+A parancsfájl sikeres üzembe helyezését követően az SSH használatával kapcsolódhat a cél HBase-fürthöz, majd ellenőrizheti, hogy az információk replikálva lettek-e.
 
 ### <a name="replication-scenarios"></a>Replikációs forgatókönyvek
 
-Az alábbi lista néhány általános használati esetet és azok paraméterbeállításait mutatja be:
+A következő lista az általános használati eseteket és azok paraméter-beállításait mutatja be:
 
-- **Engedélyezze a replikációt a két fürt közötti összes táblán.** Ebben az esetben nincs szükség a táblákban lévő adatok másolására vagy áttelepítésére, és nem használja a Phoenix táblákat. Használja a következő paramétereket:
+- **Engedélyezze a replikációt a két fürt közötti összes táblán**. Ehhez a forgatókönyvhöz nem szükséges a táblákban meglévő adatok másolása vagy áttelepítése, és nem használja a Phoenix-táblákat. Használja a következő paramétereket:
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
-- **Engedélyezze a replikációt adott táblákon.** A 1.
+- **Replikáció engedélyezése adott táblákon**. A Tábla1, a table2 és a Tábl3 replikációjának engedélyezéséhez használja a következő paramétereket:
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **Engedélyezze a replikációt adott táblákon, és másolja a meglévő adatokat.** A 1.
+- **Engedélyezze a replikációt bizonyos táblákon, és másolja a meglévőket**. A Tábla1, a table2 és a Tábl3 replikációjának engedélyezéséhez használja a következő paramétereket:
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
-- **Engedélyezze a replikációt az összes táblán, és replikálja a Phoenix metaadatait a forrástól a célig.** A Phoenix metaadat-replikációja nem tökéletes. Óvatosan használja. Használja a következő paramétereket:
+- **Engedélyezze a replikációt az összes táblán, és a Phoenix-metaadatokat replikálja a forrásról a célhelyre**. A Phoenix-metaadatok replikációja nem tökéletes. Körültekintően használja. Használja a következő paramétereket:
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
-## <a name="copy-and-migrate-data"></a>Adatok másolása és áttelepítése
+## <a name="copy-and-migrate-data"></a>Az Adatmásolás és-Migrálás
 
-A replikáció engedélyezése után két külön parancsfájlműveleti parancsfájl áll rendelkezésre az adatok másolásához vagy áttelepítéséhez:
+Az adatok másolásához és áttelepítéséhez két külön parancsfájl-műveletre van lehetőség a replikáció engedélyezése után:
 
-- [Parancsfájl kis táblákhoz](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (néhány gigabájt méretű táblákhoz, és a teljes másolat várhatóan kevesebb mint egy óra alatt befejeződik)
+- [Parancsfájl kis táblákhoz](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (a táblák, amelyek mérete néhány GB, és a teljes másolás várhatóan egy órán belül befejeződik)
 
-- [Parancsfájl nagy méretű táblákhoz](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (olyan táblákhoz, amelyek másolása várhatóan egy óránál tovább tart)
+- [Parancsfájl nagyméretű táblákhoz](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (a várhatóan egy óránál hosszabb időt vesz igénybe a másolás)
 
-A [parancsfájlművelet](#enable-replication) hívásához kövesse a replikáció engedélyezése című részben leírtakat. Használja a következő paramétereket:
+Ugyanezt az eljárást követve megtekintheti a [replikáció engedélyezése](#enable-replication) a parancsfájl-művelet meghívásához című szakaszt. Használja a következő paramétereket:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-A `print_usage()` [parancsfájl](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) szakasza részletes leírást tartalmaz a paraméterekről.
+A `print_usage()` [szkript](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) szakasza részletes leírást tartalmaz a paraméterekről.
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-- **Adott táblák másolása (test1, test2 és test3) az eddig szerkesztett összes sorhoz (aktuális időbélyegző):**
+- **Adott táblák (test1, teszt2 és test3) másolása a mai napig szerkesztett összes sorhoz (aktuális időbélyeg)**:
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  Vagy:
+  Vagy
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 
 
-- **Adott táblák másolása megadott időtartománysal:**
+- **Megadott időtartományba tartozó táblák másolása**:
 
         -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
 
 
 ## <a name="disable-replication"></a>A replikálás letiltása
 
-A replikáció letiltásához használjon egy másik parancsfájlművelet-parancsfájlt a [GitHubról.](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) A [parancsfájlművelet](#enable-replication) hívásához kövesse a replikáció engedélyezése című részben leírtakat. Használja a következő paramétereket:
+A replikáció letiltásához használjon egy másik parancsfájl-műveleti parancsfájlt a [githubról](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Ugyanezt az eljárást követve megtekintheti a [replikáció engedélyezése](#enable-replication) a parancsfájl-művelet meghívásához című szakaszt. Használja a következő paramétereket:
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-A `print_usage()` [parancsfájl](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) szakasza részletesen ismerteti a paramétereket.
+A `print_usage()` [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) szakasza részletesen ismerteti a paramétereket.
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-- **A replikáció letiltása az összes táblán:**
+- **Replikáció letiltása az összes táblában**:
 
         -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   vagy
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **A replikáció letiltása a megadott táblákon (table1, table2 és table3):**
+- **Replikáció letiltása a megadott táblákon (Tábla1, table2 és Tábl3)**:
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 > [!NOTE]
-> Ha törölni kívánja a célfürtöt, győződjön meg arról, hogy eltávolítja a forrásfürt társlistájáról. Ez az "1" remove_peer parancs futtatásával érhető el a forrásfürt hbase rendszerhéjánál. Ennek hiányában előfordulhat, hogy a forrásfürt nem működik megfelelően.
+> Ha törölni kívánja a fürtöt, győződjön meg róla, hogy eltávolítja a forrás-fürt társ-listájából. Ezt úgy teheti meg, hogy a (z) remove_peer "1" parancsot futtatja a hbase-rendszerhéjban. Ha ez nem sikerül, akkor előfordulhat, hogy a fürterőforrás nem működik megfelelően.
 >
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan állíthatja be az Apache HBase replikációt egy virtuális hálózaton vagy két virtuális hálózaton belül. Ha többet szeretne megtudni a HDInsightról és az Apache HBase-ről, olvassa el az alábbi cikkeket:
+Ebből a cikkből megtudhatta, hogyan állíthatja be az Apache HBase-replikációt egy virtuális hálózaton belül vagy két virtuális hálózat között. A HDInsight és az Apache HBase kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [Ismerkedés az Apache HBase-lel a HDInsightban](./apache-hbase-tutorial-get-started-linux.md)
-* [A HDInsight Apache HBase áttekintése](./apache-hbase-overview.md)
-* [Apache HBase-fürtök létrehozása az Azure Virtuális Hálózatban](./apache-hbase-provision-vnet.md)
+* [Ismerkedés az Apache HBase a HDInsight-ben](./apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight Apache HBase – áttekintés](./apache-hbase-overview.md)
+* [Apache HBase-fürtök létrehozása az Azure-ban Virtual Network](./apache-hbase-provision-vnet.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Media Services v3 API-hoz – Java
-description: Ez a cikk ismerteti, hogyan csatlakozhat az Azure Media Services v3 API-jához a Java.This article describes how to connect to Azure Media Services v3 API with Java.
+title: Kapcsolódás a Azure Media Services V3 API-hoz – Java
+description: Ez a cikk azt ismerteti, hogyan csatlakozhat a Javához Azure Media Services V3 API-hoz.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74888495"
 ---
-# <a name="connect-to-media-services-v3-api---java"></a>Csatlakozás a Media Services v3 API-hoz – Java
+# <a name="connect-to-media-services-v3-api---java"></a>Kapcsolódás a Media Services V3 API-hoz – Java
 
-Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3 Java SDK-hoz az egyszerű szolgáltatás bejelentkezési módszer használatával.
+Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Java SDK-hoz az egyszerű szolgáltatás bejelentkezési metódusának használatával.
 
-Ebben a cikkben a Visual Studio-kód a mintaalkalmazás fejlesztéséhez használatos.
+Ebben a cikkben a Visual Studio Code-ot használjuk a minta alkalmazás fejlesztéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A telepítéshez kövesse [a Java írása a Visual Studio-kóddal című témakört:](https://code.visualstudio.com/docs/java/java-tutorial)
+- A következő lépésekkel telepítheti a [Java-t a Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) használatával:
 
    - JDK
    - Apache Maven
-   - Java bővítménycsomag
-- Győződjön meg `JAVA_HOME` `PATH` róla, hogy állítsa be, és a környezeti változók.
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Ne felejtse el megjegyezni az erőforráscsoport nevét és a Media Services-fiók nevét.
-- Kövesse az [Access API-k témakörlépéseit.](access-api-cli-how-to.md) Rögzítse az előfizetés-azonosítót, az alkalmazásazonosítót (ügyfélazonosító), a hitelesítési kulcsot (titkos) és a bérlői azonosítót, amelyegy későbbi lépésben szükséges.
+   - Java kiterjesztési csomag
+- Ügyeljen rá, hogy `JAVA_HOME` a `PATH` és a környezeti változók legyenek beállítva.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- Kövesse az API-k [elérését](access-api-cli-how-to.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-azonosítót), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyre szüksége van egy későbbi lépésben.
 
-Szintén felülvizsgálat:
+Tekintse át a következőket is:
 
-- [Java a Visual Studio-kódban](https://code.visualstudio.com/docs/languages/java)
-- [Java projektmenedzsment vs kódban](https://code.visualstudio.com/docs/java/java-project)
+- [Java a Visual Studio Code-ban](https://code.visualstudio.com/docs/languages/java)
+- [Java projektmenedzsment a VS Code-ban](https://code.visualstudio.com/docs/java/java-project)
 
 > [!IMPORTANT]
-> Tekintse át [az elnevezési konvenciókat.](media-services-apis-overview.md#naming-conventions)
+> Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-Nyisson meg egy `cd` parancssori eszközt, és egy könyvtárba, ahová a projektet létre szeretné hozni.
+Nyisson meg egy parancssori eszközt és `cd` egy olyan könyvtárat, amelyben létre szeretné hozni a projektet.
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-A parancs futtatásakor `pom.xml` `App.java`létrejön a , a és más fájlok. 
+A parancs futtatásakor a, `pom.xml` `App.java`a és más fájlok jönnek létre. 
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-1. A Visual Studio-kódban nyissa meg azt a mappát, amelyben a projekt
+1. A Visual Studio Code-ban nyissa meg azt a mappát, ahol a projekt
 1. Keresse meg és nyissa meg a`pom.xml`
 1. A szükséges függőségek hozzáadása
 
@@ -79,14 +79,14 @@ A parancs futtatásakor `pom.xml` `App.java`létrejön a , a és más fájlok.
    </dependency>
     ```
 
-## <a name="connect-to-the-java-client"></a>Csatlakozás a Java-ügyfélhez
+## <a name="connect-to-the-java-client"></a>Kapcsolódás a Java-ügyfélhez
 
-1. Nyissa `App.java` meg `src\main\java\com\azure\ams` a fájl alatt, és győződjön meg arról, hogy a csomag szerepel a tetején:
+1. Nyissa `App.java` meg a `src\main\java\com\azure\ams` fájlt, és győződjön meg róla, hogy a csomag felül van:
 
     ```java
     package com.azure.ams;
     ```
-1. A csomagutasítás alatt adja hozzá a következő importálási nyilatkozatokat:
+1. A Package utasítás alatt adja hozzá a következő importálási utasításokat:
    
    ```java
    import com.microsoft.azure.AzureEnvironment;
@@ -94,7 +94,7 @@ A parancs futtatásakor `pom.xml` `App.java`létrejön a , a és más fájlok.
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. A kérelmekhez szükséges Active Directory-hitelesítő adatok létrehozásához adja hozzá a következő kódot az alkalmazásosztály fő metódusához, és állítsa be az [Access API-kból](access-api-cli-how-to.md)kapott értékeket:
+1. A kérésekhez szükséges Active Directory hitelesítő adatok létrehozásához adja hozzá a következő kódot az App osztály fő metódusához, és állítsa be a [hozzáférési API](access-api-cli-how-to.md)-k által kapott értékeket:
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -121,13 +121,13 @@ A parancs futtatásakor `pom.xml` `App.java`létrejön a , a és más fájlok.
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Media Services fogalmai](concepts-overview.md)
+- [Media Services fogalmak](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [Java-hivatkozás](https://aka.ms/ams-v3-java-ref)
-- [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
+- [Java-referenciák](https://aka.ms/ams-v3-java-ref)
+- [com. microsoft. Azure. Mediaservices. v2018_07_01: Azure-mgmt-Media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>További lépések
 
-Most már `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` felveheti és elkezdheti az entitások manipulálását.
+Mostantól belefoglalhatja `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` és megkezdheti az entitások módosítását.
 
-További kódpéldákért tekintse meg a [Java SDK-minták](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) tártárát.
+További példákat a [Java SDK-minták](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) tárházában talál.

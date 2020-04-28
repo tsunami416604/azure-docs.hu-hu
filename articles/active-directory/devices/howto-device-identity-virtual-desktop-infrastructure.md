@@ -1,6 +1,6 @@
 ---
-title: Eszközidentitás és asztali virtualizáció – Azure Active Directory
-description: Ismerje meg, hogyan használhatók együtt a VDI- és az Azure AD-eszközidentitások
+title: Eszköz-identitás és asztali virtualizáció – Azure Active Directory
+description: Ismerje meg, hogyan használhatók együtt a VDI és az Azure AD-eszköz identitásai
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,79 +12,79 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74900371"
 ---
-# <a name="device-identity-and-desktop-virtualization"></a>Eszközidentitás és asztali virtualizáció
+# <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
-A rendszergazdák általában virtuális asztali infrastruktúra (VDI) platformokat telepítenek, amelyek Windows operációs rendszereket üzemeltetnek a szervezetükben. A rendszergazdák a következő kit a következőkre telepítik a VDI-t:
+A rendszergazdák gyakran telepítik a Windows operációs rendszert üzemeltető virtuális asztali infrastruktúrát (VDI) használó platformokat a szervezetekben. A rendszergazdák a következőre telepítik a VDI-t:
 
 - Egyszerűsítse a felügyeletet.
-- Csökkentse költségeit az erőforrások konszolidációjával és központosításával.
-- A végfelhasználók mobilitását és a virtuális asztalokhoz való szabad hozzáférést bármikor, bárhonnan, bármilyen eszközön elérheti.
+- Az erőforrások összevonásával és központosításával csökkentheti a költségeket.
+- A végfelhasználók mobilitását és a virtuális asztalok elérésének szabadságát bármikor, bárhonnan, bármely eszközről elérheti.
 
-A virtuális asztaloknak két elsődleges típusa van:
+A virtuális asztalok két elsődleges típusa létezik:
 
 - Állandó
-- Nem perzisztens
+- Nem állandó
 
-Az állandó verziók minden felhasználóhoz vagy felhasználókészlethez egyedi asztali lemezképet használnak. Ezek az egyedi asztalok testre szabhatók és menthetők későbbi használatra. 
+Az állandó verziók minden felhasználóhoz vagy felhasználói készlethez egyedi asztali rendszerképet használnak. Ezek az egyedi asztalok testreszabhatók és későbbi használatra menthetők. 
 
-A nem állandó verziók olyan asztali számítógépek gyűjteményét használják, amelyeket a felhasználók szükség szerint érhetnek el. Ezek a nem állandó asztalok a felhasználó kijelentkezése után visszaállnak eredeti állapotukba.
+A nem állandó verziók olyan asztali számítógépek gyűjteményét használják, amelyekhez a felhasználók igény szerint hozzáférhetnek. Ezek a nem állandó asztalok a felhasználó kijelentkezése után visszaállnak eredeti állapotukba.
 
-Ez a cikk ismerteti a Microsoft útmutatást a rendszergazdák számára az eszköz identitásának és a VDI támogatásának. Az eszközidentitásról a Mi az eszközidentitás című témakörben olvashat [bővebben.](overview.md)
+Ez a cikk a Microsoft útmutatását ismerteti a rendszergazdáknak az eszköz identitásának és a VDI-nek a támogatásával kapcsolatban. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](overview.md)ismertető cikket.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Az azure-beli AD-ben eszközidentitások konfigurálása a VDI-környezetben, ismerkedjen meg a támogatott forgatókönyvekkel. Az alábbi táblázat bemutatja, hogy mely kiépítési forgatókönyvek támogatottak. Ebben a környezetben a kiépítés azt jelenti, hogy a rendszergazda konfigurálhatja az eszközidentitások nagy méretekben anélkül, hogy a végfelhasználói beavatkozás.
+Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezethez, ismerkedjen meg a támogatott forgatókönyvekkel. Az alábbi táblázat bemutatja, hogy mely kiépítési forgatókönyvek támogatottak. A kiépítés ebben a kontextusban azt jelenti, hogy a rendszergazdák a teljes felhasználói beavatkozás nélkül konfigurálhatják az eszköz identitásait.
 
-| Eszköz identitástípusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platformverzió | Támogatott |
+| Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont* | Windows jelenlegi*** és Windows down-level**** | Állandó | Igen |
-|   |   | Windows aktuális | Nem állandó | Nem |
+| csatlakozik a Hibrid Azure AD-hez | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen |
-|   | Felügyelt** | Windows jelenlegi és Windows down-level | Állandó | Igen |
-|   |   | Windows aktuális | Nem állandó | Nem |
+|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen |
-| Azure AD-hez csatlakoztatva | Összevont | Windows aktuális | Állandó | Nem |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
-|   | Kezelt | Windows aktuális | Állandó | Nem |
+|   | Kezelt | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
-| Az Azure AD-ban regisztrálva | Összevont | Windows aktuális | Állandó | Nem |
+| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
-|   | Kezelt | Windows aktuális | Állandó | Nem |
+|   | Kezelt | Windows jelenlegi | Állandó | Nem |
 |   |   |   | Nem állandó | Nem |
 
-\*Az **összevont** identitás-infrastruktúra környezet egy identitásszolgáltatóval, például az AD FS-sel vagy más külső IDP-vel rendelkező környezetet jelöl.
+\*Az **összevont** identitás-infrastruktúra környezete olyan identitás-szolgáltatói környezetet képvisel, mint például a AD FS vagy más harmadik féltől származó identitásszolgáltató.
 
-\*\*A **felügyelt** identitás-infrastruktúra környezet olyan környezetet jelöl, ahol az Azure AD a [jelszókivonat-szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy a [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md)rendelkező [átadó hitelesítéssel (PTA)](../hybrid/how-to-connect-pta.md) telepített identitásszolgáltató.
+\*\*A **felügyelt** identitás-infrastruktúra környezete az Azure ad-vel rendelkező környezetet jelöli, mivel a [jelszó-kivonatos szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy [átmenő hitelesítéssel (PTA ESP)](../hybrid/how-to-connect-pta.md) telepített identitás-szolgáltató, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md).
 
-\*\*\***A Windows aktuális** eszközei a Windows 10, a Windows Server 2016 és a Windows Server 2019 rendszert jelölik.
+\*\*\*A **Windows jelenlegi** eszközei a Windows 10, a windows Server 2016 és a windows Server 2019.
 
-\*\*\*\***A Windows nem vízszintes** eszközök a Windows 7, a Windows 8.1, a Windows Server 2008 R2, a Windows Server 2012 és a Windows Server 2012 R2 rendszert jelölik. A Windows 7 rendszerhez nyújtott támogatásról a Windows 7 támogatása véget ér című témakörben [talál.](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support) A Windows Server 2008 R2 rendszerrel kapcsolatos támogatási információkról a [Felkészülés a Windows Server 2008 támogatási rendszerének megszűnése című témakörben találhatók.](https://www.microsoft.com/cloud-platform/windows-server-2008)
+\*\*\*\*A **Windows Down-szintű** eszközök a Windows 7, a Windows 8,1, a windows Server 2008 R2, a windows Server 2012 és a windows Server 2012 R2 rendszernek felelnek meg. A Windows 7 támogatási információi: a [Windows 7 támogatása véget ér](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). A Windows Server 2008 R2-vel kapcsolatos támogatási információk: [felkészülés a Windows server 2008](https://www.microsoft.com/cloud-platform/windows-server-2008)-re a támogatás befejezése után.
 
 ## <a name="microsofts-guidance"></a>A Microsoft útmutatása
 
-A rendszergazdáknak az alábbi cikkekre kell hivatkozniuk az identitás-infrastruktúrájuk alapján, hogy megtanulják, hogyan konfigurálhatja a hibrid Azure AD-csatlakozást.
+A rendszergazdáknak az identitás-infrastruktúrájuk alapján kell megismerniük a következő cikkeket, hogy megtudja, hogyan konfigurálhatja a hibrid Azure AD Joint.
 
-- [Hibrid Azure Active Directory-csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
-- [Hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
+- [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
+- [Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
-Ha a Rendszerelőkészítő eszközre (sysprep.exe) támaszkodik, és a Telepítéshez windows 10 1809 előtti lemezképet használ, győződjön meg arról, hogy a lemezkép nem olyan eszközről származik, amely már regisztrálva van az Azure AD-vel hibrid Azure AD-hez.
+Ha a rendszer-előkészítő eszközön (Sysprep. exe) található, és ha a telepítés előtt Windows 10 1809 rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem egy olyan eszközről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-hez.
 
-Ha egy virtuális gép (VM) pillanatkép további virtuális gépek létrehozásához, győződjön meg arról, hogy a pillanatkép nem egy virtuális gép, amely már regisztrálva van az Azure AD hibrid Azure AD-csatlakozásként.
+Ha virtuális gép (VM) pillanatképét szeretné létrehozni további virtuális gépek létrehozásához, győződjön meg arról, hogy a pillanatkép nem olyan virtuális gépről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-csatlakozásként.
 
-Nem állandó VDI telepítésekor a rendszergazdáknak nagy figyelmet kell fordítaniuk az elavult eszközök kezelésére az Azure AD-ben. A Microsoft azt javasolja, hogy a rendszergazdák valósítsák meg az alábbi útmutatót. Ennek elmulasztása azt eredményezi, hogy a címtárban sok elavult hibrid Azure AD-hez csatlakozott eszközök, amelyek a nem állandó VDI-platformregisztrált.
+Nem állandó VDI telepítésekor a rendszergazdáknak Kiemelt figyelmet kell fordítaniuk az elavult eszközök Azure AD-ben való felügyeletére. A Microsoft javasolja, hogy a rendszergazdák implementálják az alábbi útmutatást. Ennek elmulasztása miatt a címtárban sok olyan elavult hibrid Azure AD-eszköz található, amely a nem állandó VDI-platformról lett regisztrálva.
 
-- Hozzon létre és használjon előtagot a számítógép megjelenítendő nevéhez, amely az asztalt VDI-alapúként jelzi.
-- A következő parancs végrehajtása a kijelentkezési parancsfájl részeként. Ez a parancs elindítja a legjobb erőfeszítés hívás az Azure AD az eszköz törléséhez.
-   - Windows-alapú, nem vízszintes eszközök esetén – autoworkplace.exe /leave
-- Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és megvalósítása.
-   - Miután rendelkezik egy stratégiával a nem állandó hibrid Azure AD-hez csatlakozott eszközök azonosítására, agresszívebb lehet ezen eszközök karbantartása során, hogy a címtár ne kerüljön igénybe sok elavult eszközzel.
+- Hozzon létre és használjon egy előtagot annak a számítógépnek a megjelenítendő neveként, amely VDI-alapúként jelöli meg az asztalt.
+- A következő parancs végrehajtása a kijelentkezési parancsfájl részeként. Ez a parancs elindítja az Azure AD-nek a legjobb erőfeszítést az eszköz törléséhez.
+   - Windows Down-szintű eszközökhöz – autoworkplace. exe/Leave
+- Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és implementálása.
+   - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosítására, akkor agresszívebb lehet ezen eszközök tisztítása, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
  
 ## <a name="next-steps"></a>További lépések
 
-[Hibrid Azure Active Directory-csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
+[Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

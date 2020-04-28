@@ -1,6 +1,6 @@
 ---
-title: MapReduce az Apache Hadoop segítségével a HDInsighton
-description: Ismerje meg, hogyan futtathat Apache MapReduce feladatokat az Apache Hadoop on HDInsight-fürtökben.
+title: MapReduce Apache Hadoop on HDInsight
+description: Ismerje meg, hogyan futtathat Apache MapReduce-feladatokat Apache Hadoop HDInsight-fürtökön.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435708"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>A MapReduce használata a HDInsight-alapú Apache Hadoopban
 
-Ismerje meg, hogyan futtatható mapreduce feladatok HDInsight-fürtökön.
+Ismerje meg, hogyan futtathat MapReduce-feladatokat HDInsight-fürtökön.
 
 ## <a name="example-data"></a>Példaadatok
 
-A HDInsight különböző példaadatkészleteket biztosít, `/example/data` amelyek `/HdiSamples` a és a címtárban tárolódnak. Ezek a könyvtárak a fürt alapértelmezett tárolójában vannak. Ebben a dokumentumban `/example/data/gutenberg/davinci.txt` használjuk a fájlt. Ez a fájl Leonardo da Vinci jegyzetfüzeteit tartalmazza.
+A HDInsight különböző, a és `/example/data` `/HdiSamples` a címtárban tárolt adatkészleteket biztosít. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Ebben a dokumentumban a `/example/data/gutenberg/davinci.txt` fájlt használjuk. Ez a fájl tartalmazza a Leonardo da Vinci jegyzetfüzeteit.
 
 ## <a name="example-mapreduce"></a>Példa MapReduce
 
-A HDInsight-fürt egy példa mapreduce szószámláló alkalmazás. Ez a példa `/example/jars/hadoop-mapreduce-examples.jar` a fürt alapértelmezett tárolóján található.
+A HDInsight-fürt tartalmazza például a MapReduce Word Count alkalmazást. Ez a példa a fürt `/example/jars/hadoop-mapreduce-examples.jar` alapértelmezett tárolójában található.
 
-A következő Java-kód a `hadoop-mapreduce-examples.jar` fájlban található MapReduce alkalmazás forrása:
+A következő Java-kód a `hadoop-mapreduce-examples.jar` fájlban található MapReduce-alkalmazás forrása:
 
 ```java
 package org.apache.hadoop.examples;
@@ -101,22 +101,22 @@ public class WordCount {
 }
 ```
 
-A saját MapReduce alkalmazások írására vonatkozó utasításokat a [Java MapReduce alkalmazások fejlesztése hdinsighthoz.](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+A saját MapReduce alkalmazások írására vonatkozó utasításokért lásd: [Java MapReduce-alkalmazások fejlesztése a HDInsight-hez](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
 ## <a name="run-the-mapreduce"></a>A MapReduce futtatása
 
-A HDInsight különböző módszerekkel futtathatja a HiveQL-feladatokat. Az alábbi táblázat segítségével eldöntheti, hogy melyik módszer felel meg Önnek, majd kövesse a forgatókönyvhivatkozást.
+A HDInsight különféle módszerekkel képes futtatni a HiveQL-feladatokat. A következő táblázat segítségével eldöntheti, hogy melyik módszer a legmegfelelőbb, majd kövesse a bemutató hivatkozását.
 
-| **Használja ezt a**... | **... hogy ezt** |  ... ebből az **ügyféloperációs rendszerből** |
+| **Használja**... | **... Ehhez** |  ... Ebből az **ügyféloldali operációs rendszerből** |
 |:--- |:--- |:--- |:--- |
-| [Ssh](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop parancs használata az **SSH-n** keresztül |Linux, Unix, Mac OS X vagy Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |A feladat távolról történő elküldése a **REST** használatával |Linux, Unix, Mac OS X vagy Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat távoli elküldése a **Windows PowerShell** használatával  |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop parancs használata **SSH** -n keresztül |Linux, UNIX, Mac OS X vagy Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |A feladatot távolról küldje el a **Rest** használatával |Linux, UNIX, Mac OS X vagy Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladatot távolról küldje el a **Windows PowerShell** használatával  |Windows |
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni a HDInsight adatainak munkálatairól, olvassa el az alábbi dokumentumokat:
+Ha többet szeretne megtudni az HDInsight-beli adatkezelésről, tekintse meg a következő dokumentumokat:
 
-* [Java MapReduce programok fejlesztése a HDInsight hoz](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Java MapReduce-programok fejlesztése a HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Az Apache Hive használata a HDInsight segítségével](./hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight](./hdinsight-use-hive.md)

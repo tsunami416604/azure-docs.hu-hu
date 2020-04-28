@@ -1,6 +1,6 @@
 ---
-title: Linuxos hibaelhárítási virtuális gép használata az Azure Portalon | Microsoft dokumentumok
-description: Ismerje meg, hogyan háríthatja el a Linux-virtuálisgéppel kapcsolatos problémákat az operációs rendszer lemezének az Azure Portal on-val történő helyreállítási virtuális géphez való csatlakoztatásával
+title: Linux hibaelhárítási virtuális gép használata a Azure Portalban | Microsoft Docs
+description: A Linux rendszerű virtuális gépekkel kapcsolatos hibák elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatlakoztatásával a Azure Portal használatával
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
@@ -13,54 +13,54 @@ ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
 ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75374641"
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linuxos virtuális gép hibaelhárítása az operációs rendszer lemezének az Azure Portalon keresztül idomuló helyreállítási virtuális géphez való csatlakoztatásával
-Ha a Linux virtuális gép (VM) rendszerindítási vagy lemezhibába ütközik, előfordulhat, hogy hibaelhárítási lépéseket kell végrehajtania magán a virtuális merevlemezen. Egy gyakori példa lenne egy `/etc/fstab` érvénytelen bejegyzés, amely megakadályozza, hogy a virtuális gép sikeresen eltudja indítani. Ez a cikk ismerteti, hogyan használhatja az Azure Portalon a virtuális merevlemez csatlakoztatása egy másik Linux virtuális gép a hibák kijavítása, majd újra létrehozza az eredeti virtuális gépet.
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez csatolásával a Azure Portal használatával
+Ha a linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatti hibát észlel, lehetséges, hogy a virtuális merevlemezen hibaelhárítási lépéseket kell végrehajtania. Egy gyakori példa lehet egy olyan bejegyzés, `/etc/fstab` amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan lehet a Azure Portal használatával összekapcsolni a virtuális merevlemezt egy másik linuxos virtuális géppel a hibák elhárítása érdekében, majd újból létre kell hoznia az eredeti virtuális gépet.
 
 ## <a name="recovery-process-overview"></a>Helyreállítási folyamat áttekintése
 A hibaelhárítási folyamat a következő:
 
-1. Állítsa le az érintett virtuális gép.
-1. Pillanatkép készítése a virtuális gép operációs rendszer lemezéről.
+1. Állítsa le az érintett virtuális gépet.
+1. Készítsen pillanatképet a virtuális gép operációsrendszer-lemezéről.
 1. Hozzon létre egy virtuális merevlemezt a pillanatképből.
-1. Hibaelhárítási célból csatolja és csatlakoztatja a virtuális merevlemezt egy másik Windows virtuális géphez.
-1. Kapcsolódjon a hibaelhárítást végző virtuális gépre. Fájlok szerkesztése vagy bármilyen eszköz futtatása az eredeti virtuális merevlemezen felmerülő problémák megoldásához.
+1. Hibaelhárítási célból csatlakoztassa és csatlakoztassa a virtuális merevlemezt egy másik Windows rendszerű virtuális géphez.
+1. Kapcsolódjon a hibaelhárítást végző virtuális gépre. Szerkessze a fájlokat, vagy futtasson eszközöket az eredeti virtuális merevlemezen található problémák megoldásához.
 1. Válassza le a virtuális merevlemezt a hibaelhárító virtuális gépről.
-1. Az operációs rendszer lemezének felcserélése a virtuális gépre.
+1. Cserélje le a virtuális gép operációsrendszer-lemezét.
 
 > [!NOTE]
 > Ez a cikk nem vonatkozik a nem felügyelt lemezzel rendelkező virtuális gépre.
 
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
-Vizsgálja meg a rendszerindítási diagnosztika és a virtuális gép képernyőkép, hogy miért a virtuális gép nem tudja megfelelően elindítani. Gyakori példa egy érvénytelen bejegyzés `/etc/fstab`a alkalmazásban, vagy egy mögöttes virtuális merevlemez törlése vagy áthelyezése.
+Vizsgálja meg a rendszerindítási diagnosztika és a virtuális gép képernyőképét annak meghatározásához, hogy a virtuális gép miért nem tud megfelelően elindulni. Gyakori például `/etc/fstab`, hogy a bejegyzés érvénytelen, vagy egy mögöttes virtuális merevlemez törölve vagy áthelyezve lett.
 
-Válassza ki a virtuális gép a portálon, majd görgessen le a **Támogatás + Hibaelhárítás** szakasz. Kattintson **a Rendszerindításdia gombra** a virtuális gépről streamelt konzolüzenetek megtekintéséhez. Tekintse át a konzol naplók, hogy ha meg tudja állapítani, hogy miért a virtuális gép hibát tapasztal. A következő példa egy karbantartási módban ragadt virtuális géplátható, amely manuális beavatkozást igényel:
+Válassza ki a virtuális gépet a portálon, majd görgessen le a **támogatás + hibaelhárítás** szakaszhoz. Kattintson a **rendszerindítási diagnosztika** elemre a virtuális gépről továbbított konzol üzeneteinek megtekintéséhez. Tekintse át a konzol naplóit, és ellenőrizze, hogy a virtuális gép miért nem fog problémát észlelni. Az alábbi példa egy olyan virtuális gépet mutat be, amely kézi interakciót igénylő karbantartási módban ragadt:
 
-![A virtuális gép rendszerindítási diagnosztikai konzolnaplóinak megtekintése](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
+![VIRTUÁLIS gépek rendszerindítási diagnosztikai konzoljának naplófájljainak megtekintése](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
-A rendszerindító diagnosztikai napló tetején lévő **Képernyőkép** elemre kattintva letöltheti a virtuális gép képernyőképének rögzítését.
+A rendszerindítási diagnosztikai napló tetején található **képernyőkép** lehetőségre kattintva letöltheti a virtuális gép képernyőképének rögzítését.
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációs rendszer lemezéről
-A pillanatkép egy virtuális merevlemez (VHD) teljes, csak olvasható másolata. Azt javasoljuk, hogy a pillanatkép készítése előtt állítsa le a virtuális gép, törölje a folyamatban lévő folyamatok törlése. Az operációs rendszer lemezének pillanatképének készítéséhez kövesse az alábbi lépéseket:
+## <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációsrendszer-lemezről
+A pillanatkép egy virtuális merevlemez (VHD) teljes, csak olvasható másolata. Javasoljuk, hogy a pillanatkép elkészítése előtt törölje a virtuális gépet a folyamatban lévő folyamatok törléséhez. Az operációsrendszer-lemez pillanatképének elvégzéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com) Válassza ki a **virtuális gépek** az oldalsávon, majd válassza ki a virtuális gépet, amely problémát okoz.
-1. A bal oldali ablaktáblában válassza a **Lemezek**lehetőséget, majd jelölje ki az operációs rendszer lemezének nevét.
-    ![Az operációs rendszer lemezének nevéről szóló kép](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Az operációs rendszer lemezének **Áttekintés lapján** válassza a **Pillanatkép létrehozása lehetőséget.**
-1. Hozzon létre egy pillanatképet ugyanazon a helyen, mint az operációs rendszer lemeze.
+1. Lépjen [Azure Portal](https://portal.azure.com). Válassza a **virtuális gépek** lehetőséget az oldalsávon, majd válassza ki a problémát okozó virtuális gépet.
+1. A bal oldali ablaktáblán válassza a **lemezek**lehetőséget, majd válassza ki az operációsrendszer-lemez nevét.
+    ![Az operációsrendszer-lemez nevével kapcsolatos rendszerkép](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. Az operációsrendszer-lemez **Áttekintés** lapján válassza a **pillanatkép létrehozása**lehetőséget.
+1. Hozzon létre egy pillanatképet az operációsrendszer-lemezzel megegyező helyen.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Lemez létrehozása a pillanatképből
-Ha lemezt szeretne létrehozni a pillanatképből, kövesse az alábbi lépéseket:
+A pillanatképből származó lemez létrehozásához kövesse az alábbi lépéseket:
 
-1. Válassza ki a **Cloud Shell** az Azure Portalon.
+1. Válassza ki **Cloud Shell** a Azure Portal.
 
-    ![Kép az Open Cloud Shell-ről](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
-1. Futtassa a következő PowerShell-parancsokat felügyelt lemez létrehozásához a pillanatképből. Ezeket a mintaneveket a megfelelő nevekre kell cserélni.
+    ![Az Open Cloud Shell képe](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+1. A következő PowerShell-parancsok futtatásával hozzon létre egy felügyelt lemezt a pillanatképből. Ezeket a neveket a megfelelő nevekkel kell helyettesíteni.
 
     ```powershell
     #Provide the name of your resource group
@@ -90,24 +90,24 @@ Ha lemezt szeretne létrehozni a pillanatképből, kövesse az alábbi lépések
      
     New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
     ```
-3. Ha a parancsok sikeresen futnak, az új lemez megjelenik a megadott erőforráscsoportban.
+3. Ha a parancsok futtatása sikeresen megtörtént, az új lemezt a megadott erőforráscsoporthoz fogja látni.
 
-## <a name="attach-disk-to-another-vm"></a>Lemez csatolása másik virtuális géphez
-A következő néhány lépésben egy másik virtuális gép hibaelhárítási célokra. Miután csatlakoztatta a lemezt a hibaelhárítási virtuális géphez, tallózhat és szerkesztheti a lemez tartalmát. Ez a folyamat lehetővé teszi a konfigurációs hibák kijavítását vagy további alkalmazás- vagy rendszernaplófájlok áttekintését. Ha a lemezt egy másik virtuális géphez szeretné csatolni, kövesse az alábbi lépéseket:
+## <a name="attach-disk-to-another-vm"></a>Lemez csatolása egy másik virtuális géphez
+A következő néhány lépésben hibaelhárítási célból egy másik virtuális gépet használ. Miután csatlakoztatta a lemezt a hibaelhárítási virtuális géphez, megkeresheti és szerkesztheti a lemez tartalmát. Ez a folyamat lehetővé teszi a konfigurációs hibák kijavítását, vagy a további alkalmazás-vagy rendszernapló-fájlok áttekintését. Ha a lemezt egy másik virtuális géphez szeretné csatolni, kövesse az alábbi lépéseket:
 
-1. Válassza ki az erőforráscsoportot a portálon, majd válassza ki a hibaelhárítási virtuális gép. Válassza a **Lemezek**lehetőséget, válassza **a Szerkesztés**lehetőséget, majd kattintson **az Adatlemez hozzáadása**gombra :
+1. Válassza ki az erőforráscsoportot a portálon, majd válassza ki a hibaelhárítási virtuális gépet. Válassza a **lemezek**lehetőséget, válassza a **Szerkesztés**lehetőséget, majd kattintson **az adatlemez hozzáadása**elemre:
 
     ![Meglévő lemez csatolása a portálon](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. Az **adatlemezek** listájában válassza ki az azonosított virtuális gép operációsrendszer-lemezét. Ha nem látja az operációs rendszer lemezét, győződjön meg arról, hogy a virtuális gép és az operációs rendszer lemezének hibaelhárítása ugyanabban a régióban (helyen) található. 
-3. A módosítások alkalmazásához válassza a **Mentés** gombot.
+2. Az **adatlemezek** listán válassza ki az Ön által azonosított virtuális gép operációsrendszer-lemezét. Ha nem látja az operációsrendszer-lemezt, ellenőrizze, hogy a virtuális gép és az operációs rendszer lemeze ugyanabban a régióban van-e (hely). 
+3. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a name="mount-the-attached-data-disk"></a>A csatolt adatlemez csatlakoztatása
+## <a name="mount-the-attached-data-disk"></a>A csatlakoztatott adatlemez csatlakoztatása
 
 > [!NOTE]
-> Az alábbi példák ismertetik az Ubuntu virtuális gép szükséges lépéseket. Ha egy másik Linux disztribúciót használ, például a Red Hat `mount` Enterprise Linuxot vagy a SUSE-t, a naplófájl helye és parancsai egy kicsit eltérőek lehetnek. A parancsok megfelelő módosításait az adott distro dokumentációjában találja.
+> Az alábbi példák egy Ubuntu virtuális gépen szükséges lépéseket részletezik. Ha más Linux-disztribúciót használ, például Red Hat Enterprise Linux vagy SUSE, a naplófájl helyei és `mount` parancsai némileg eltérőek lehetnek. Tekintse át az adott disztribúció dokumentációját a parancsok megfelelő módosításaihoz.
 
-1. SSH a hibaelhárítás iM a megfelelő hitelesítő adatokhasználatával. Ha ez a lemez az első adatlemez, amely a hibaelhárítási virtuális géphez van csatlakoztatva, akkor valószínűleg a hoz `/dev/sdc`csatlakozik. Csatolt `dmseg` lemezek listázására használható:
+1. A megfelelő hitelesítő adatok használatával SSH-t a hibaelhárítási virtuális géphez. Ha ez a lemez az első, a hibaelhárítási virtuális géphez csatolt adatlemez, valószínűleg csatlakozik a `/dev/sdc`szolgáltatáshoz. A `dmseg` következő paranccsal listázhatja a csatolt lemezeket:
 
     ```bash
     dmesg | grep SCSI
@@ -122,60 +122,60 @@ A következő néhány lépésben egy másik virtuális gép hibaelhárítási c
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    Az előző példában az operációs `/dev/sda` rendszer lemeze van, és `/dev/sdb`az ideiglenes lemez minden virtuális gép a. Ha több adatlemeze volt, akkor `/dev/sdd` `/dev/sde`azoknak a és a, és így tovább kell lenniük.
+    Az előző példában az operációsrendszer-lemez a (z `/dev/sda` ) helyen található, és az egyes virtuális gépekhez `/dev/sdb`megadott ideiglenes lemez a következő helyen található:. Ha több adatlemezzel is rendelkezett, akkor a következő `/dev/sdd`helyen `/dev/sde`kell lennie:, és így tovább.
 
-2. Hozzon létre egy könyvtárat a meglévő virtuális merevlemez csatlakoztatásához. A következő példa létrehoz `troubleshootingdisk`egy könyvtár at named :
+2. Hozzon létre egy könyvtárat a meglévő virtuális merevlemez csatlakoztatásához. A következő példa egy nevű `troubleshootingdisk`könyvtárat hoz létre:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Ha több partíció van a meglévő virtuális merevlemezen, csatlakoztassa a szükséges partíciót. A következő példa az első `/dev/sdc1`elsődleges partíciót csatlakoztatja:
+3. Ha több partícióval rendelkezik a meglévő virtuális merevlemezen, csatlakoztassa a szükséges partíciót. Az alábbi példa az első elsődleges partíciót csatlakoztatja a `/dev/sdc1`következő helyen:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Ajánlott eljárás ként érdemes adatlemezeket csatlakoztatni az Azure-beli virtuális gépekhez a virtuális merevlemez univerzálisan egyedi azonosítójának (UUID) használatával. Ebben a rövid hibaelhárítási forgatókönyvben nincs szükség a virtuális merevlemez UUID használatával történő csatlakoztatására. Normál használat esetén azonban `/etc/fstab` a virtuális merevlemezek uuid helyett az eszköz nevének használatával történő csatlakoztatása a virtuális gép indításának sikertelensítéséhez vezethet.
+    > Ajánlott eljárás az adatlemezek csatlakoztatása az Azure-beli virtuális gépekhez a virtuális merevlemez univerzálisan egyedi azonosítója (UUID) használatával. Ebben a rövid hibaelhárítási forgatókönyvben nem szükséges a virtuális merevlemezt az UUID használatával csatlakoztatni. A normál használat `/etc/fstab` alatt azonban az UUID helyett a virtuális merevlemezek az eszköz nevével való csatlakoztatásakor előfordulhat, hogy a virtuális gép nem tud elindulni.
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Az eredeti virtuális merevlemezekkel kapcsolatos problémák megoldása
-A meglévő virtuális merevlemez csatlakoztatásával mostantól szükség szerint elvégezheti a karbantartási és hibaelhárítási lépéseket. Miután végzett a hibák javításával, folytassa az alábbi lépésekkel.
+## <a name="fix-issues-on-original-virtual-hard-disk"></a>Hibák elhárítása az eredeti virtuális merevlemezen
+A meglévő virtuális merevlemez csatlakoztatása után a szükséges karbantartási és hibaelhárítási lépéseket is elvégezheti. Miután végzett a hibák javításával, folytassa az alábbi lépésekkel.
 
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Eredeti virtuális merevlemez leválasztása és leválasztása
-A hibák megoldása után válassza le a meglévő virtuális merevlemezt a hibaelhárítási virtuális gépről. A virtuális merevlemez nem használható más virtuális géptel, amíg a virtuális merevlemezt a hibaelhárítási virtuális géphez csatlakoztató bérlet fel nem szabadul.
+A hibák megoldása után válassza le a meglévő virtuális merevlemezt a hibaelhárítási virtuális gépről. A virtuális merevlemezt nem használhatja más virtuális géppel, amíg a virtuális merevlemezt a hibaelhárítási virtuális géphez csatlakoztató címbérlet megjelent.
 
-1. Az SSH-munkamenettől a hibaelhárítási virtuális gépig válassza le a meglévő virtuális merevlemezt. Először váltson ki a csatlakoztatási pont szülőkönyvtárából:
+1. Az SSH-munkamenetből a hibaelhárító virtuális GÉPHEZ válassza le a meglévő virtuális merevlemezt. Először a csatlakoztatási ponthoz tartozó szülő könyvtáron változtassa meg a következőt:
 
     ```bash
     cd /
     ```
 
-    Most leválasztani a meglévő virtuális merevlemezt. A következő példa leszereli `/dev/sdc1`az eszközt a következő helyen:
+    Most válassza le a meglévő virtuális merevlemezt. Az alábbi példa leválasztja az eszközt a `/dev/sdc1`következő helyen:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Most válassza le a virtuális merevlemezt a virtuális gépről. Válassza ki a virtuális gép a portálon, és kattintson **a Lemezek gombra**. Válassza ki a meglévő virtuális merevlemezt, majd kattintson **a Leválasztás gombra:**
+2. Most válassza le a virtuális merevlemezt a virtuális gépről. Válassza ki a virtuális gépet a portálon, és kattintson a **lemezek**elemre. Válassza ki a meglévő virtuális merevlemezt, majd kattintson a **Leválasztás**elemre:
 
     ![Meglévő virtuális merevlemez leválasztása](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    A folytatás előtt várja meg, amíg a virtuális gép sikeresen leválasztotta az adatlemezt.
+    Várjon, amíg a virtuális gép sikeresen leválasztott egy adatlemezt a folytatás előtt.
 
-## <a name="swap-the-os-disk-for-the-vm"></a>Az operációs rendszer lemezének felcserélése a virtuális gépre
+## <a name="swap-the-os-disk-for-the-vm"></a>A virtuális gép operációsrendszer-lemezének cseréje
 
-Az Azure Portal mostantól támogatja a virtuális gép operációsrendszer-lemezének módosítását. Ehhez kövesse az alábbi lépéseket:
+Azure Portal mostantól támogatja a virtuális gép operációsrendszer-lemezének módosítását. Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com) Válassza ki a **virtuális gépek** az oldalsávon, majd válassza ki a virtuális gépet, amely problémát okoz.
-1. A bal oldali ablaktáblában válassza a **Lemezek**lehetőséget, majd válassza **az Operációsrendszer-lemez cseréje**lehetőséget .
-        ![Az operációsrendszer-lemez cseréjéről az Azure Portalon](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. Lépjen [Azure Portal](https://portal.azure.com). Válassza a **virtuális gépek** lehetőséget az oldalsávon, majd válassza ki a problémát okozó virtuális gépet.
+1. A bal oldali ablaktáblán válassza a **lemezek**lehetőséget, majd válassza az **operációsrendszer-lemez cseréje**lehetőséget.
+        ![Az operációsrendszer-lemez lecserélése Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. Válassza ki a javított új lemezt, majd írja be a virtuális gép nevét a módosítás megerősítéséhez. Ha nem látja a lemezt a listában, várjon 10 ~ 15 percet, miután leválasztja a lemezt a hibaelhárítási virtuális gépről. Győződjön meg arról is, hogy a lemez ugyanazon a helyen található, mint a virtuális gép.
+1. Válassza ki a javított új lemezt, majd írja be a virtuális gép nevét, hogy erősítse meg a változást. Ha nem látja a lemezt a listában, várjon 10 ~ 15 percet a lemez leválasztása után a hibaelhárítási virtuális gépről. Győződjön meg arról is, hogy a lemez a virtuális géppel megegyező helyen található.
 1. Kattintson az OK gombra.
 
 ## <a name="next-steps"></a>További lépések
-Ha problémái vannak a virtuális géphez való csatlakozással, olvassa [el az SSH-kapcsolatok hibaelhárítása azure-beli virtuális géphez című témakört.](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) A virtuális számítógépen futó alkalmazások elérésével kapcsolatos problémákról a [Linux-alapú virtuális gépeken az alkalmazáscsatlakozási problémák elhárítása című](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)témakörben nyújt fel problémát.
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, olvassa el az [SSH-kapcsolatok Azure-beli virtuális géphez való hibaelhárítását](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ismertető témakört. A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Linux rendszerű virtuális gépen](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az Erőforrás-kezelő használatáról az Azure Resource Manager – áttekintés című témakörben olvashat [bővebben.](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)).

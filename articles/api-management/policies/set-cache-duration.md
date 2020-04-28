@@ -1,7 +1,7 @@
 ---
-title: Minta API-kezelési házirend – A válaszgyorsítótár időtartamának beállítása
+title: Példa API Management-szabályzat – válasz gyorsítótárazási időtartamának beállítása
 titleSuffix: Azure API Management
-description: Azure API-kezelési szabályzat minta – bemutatja, hogyan állíthatja be a válaszgyorsítótár időtartamát maxAge érték használatával a háttérrendszer által küldött Cache-Control fejlécben..
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan állíthatja be a válasz-gyorsítótár időtartamát a háttér által küldött Cache-Control fejléc maxAge értéke használatával.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442394"
 ---
 # <a name="set-response-cache-duration"></a>Válaszgyorsítótár időtartamának beállítása
 
-Ez a cikk egy Azure API-felügyeleti házirend-mintát mutat be, amely bemutatja, hogyan állíthatja be a válaszgyorsítótár időtartamát maxAge érték használatával a háttérrendszer által küldött Cache-Control fejlécben. Házirendkód beállításához vagy szerkesztéséhez kövesse a [Házirend beállítása vagy szerkesztése](../set-edit-policies.md)című részben ismertetett lépéseket. További példák megtekintéséhez tekintse meg [a házirendmintákat.](../policy-samples.md)
+Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan állíthatja be a válasz-gyorsítótár időtartamát a háttér által küldött Cache-Control fejléc maxAge értéke használatával. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -32,8 +32,8 @@ Illessze be a kódot a **bejövő** blokkba.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-házirendekről:
+További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirendminták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Kimeneti hibaházirendek az Azure Stream Analytics szolgáltatásban
-description: Ismerje meg az Azure Stream Analytics-ben elérhető kimeneti hibakezelési szabályzatokat.
+title: Kimeneti hibák házirendjei a Azure Stream Analyticsban
+description: További információ a Azure Stream Analyticsban elérhető kimeneti hibákkal kapcsolatos szabályzatokról.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431615"
 ---
-# <a name="azure-stream-analytics-output-error-policy"></a>Az Azure Stream Analytics kimeneti hibaházirendje
-Ez a cikk ismerteti a kimeneti adatok hibakezelési szabályzatok, amelyek konfigurálhatók az Azure Stream Analytics.
+# <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics kimeneti hiba házirendje
+Ez a cikk a Azure Stream Analytics konfigurálható kimeneti adathibákat ismerteti.
 
-A kimeneti adatok hibakezelési szabályzatai csak azokra az adatkonverziós hibákra vonatkoznak, amelyek akkor fordulnak elő, ha a Stream Analytics-feladat által létrehozott kimeneti esemény nem felel meg a célfogadó sémájának. Ezt a házirendet az Újra vagy **a** **Ledobás**lehetőséget választva állíthatja be. Az Azure Portalon, míg a Stream Analytics-feladat, **a Konfigurálás**csoportban válassza **a Hibaszabályzat** a kiválasztáshoz.
+A kimeneti adatok hibáinak kezelése házirend csak olyan Adatátalakítási hibákra vonatkozik, amelyek akkor jelentkeznek, amikor egy Stream Analytics feladatokból származó kimeneti esemény nem felel meg a cél fogadó sémájának. Ezt a házirendet az **Újrapróbálkozás** vagy az **eldobás**lehetőség kiválasztásával konfigurálhatja. A Azure Portal, míg a Stream Analytics feladatban a **Konfigurálás**területen válassza a **hiba házirend** lehetőséget a kijelöléshez.
 
-![Az Azure Stream Analytics kimeneti hibaházirendjének helye](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
+![Azure Stream Analytics kimeneti hiba házirend helye](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
 
 ## <a name="retry"></a>Retry
-Hiba esetén az Azure Stream Analytics újra megpróbálja az esemény határozatlan ideig történő írását, amíg az írás sikeres nem lesz. Az újrapróbálkozások nem időtúlodott. Végül az összes további esemény feldolgozása az újrapróbálkozó esemény blokkolja. Ez a beállítás az alapértelmezett kimeneti hibakezelési házirend.
+Ha hiba lép fel, Azure Stream Analytics újrapróbálkozik az esemény határozatlan idejű írásával, amíg az írási művelet nem sikerül. Az újrapróbálkozások esetében nincs időkorlát. Végül az összes további eseményt le kell tiltani az újrapróbálkozást követően. Ez a beállítás az alapértelmezett kimeneti hiba kezelési szabályzata.
 
-## <a name="drop"></a>Csepp
+## <a name="drop"></a>Legördülő
 Az Azure Stream Analytics elvet minden kimeneti eseményt, amely adatkonvertálási hibát eredményez. Az elvetett események később nem állíthatók helyre a feldolgozás újbóli megkísérléséhez.
 
 
-Az összes átmeneti hibát (például a hálózati hibákat) a kimeneti hibakezelési házirend konfigurációjától függetlenül újra próbálkozik.
+A rendszer az összes átmeneti hibát (például hálózati hibákat) újrapróbálkozik, függetlenül attól, hogy milyen kimeneti hiba történik a házirend-konfigurációban.
 
 
 ## <a name="next-steps"></a>További lépések
-[Hibaelhárítási útmutató az Azure Stream Analytics szolgáltatáshoz](stream-analytics-troubleshooting-guide.md)
+[A Azure Stream Analytics hibaelhárítási útmutatója](stream-analytics-troubleshooting-guide.md)

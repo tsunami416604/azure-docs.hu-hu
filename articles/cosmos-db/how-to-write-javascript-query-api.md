@@ -1,28 +1,28 @@
 ---
-title: Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API használatával az Azure Cosmos DB-ben
-description: Ismerje meg, hogyan írhat tárolt eljárásokat és eseményindítókat a JavaScript Query API használatával az Azure Cosmos DB-ben
+title: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API használatával Azure Cosmos DB
+description: Megtudhatja, hogyan írhat tárolt eljárásokat és triggereket a JavaScript lekérdezési API használatával Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441713"
 ---
-# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és eseményindítók írása az Azure Cosmos DB-ben a JavaScript lekérdezési API használatával
+# <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és triggerek írása a Azure Cosmos DBban a JavaScript lekérdezési API használatával
 
-Az Azure Cosmos DB lehetővé teszi, hogy optimalizált lekérdezéseket hajtson végre egy folyékony JavaScript-felület használatával, anélkül, hogy bármilyen sql nyelvet ismerne, amely használható a tárolt eljárások vagy eseményindítók írásához. Ha többet szeretne megtudni a JavaScript Query API-támogatás az Azure Cosmos DB-ben, olvassa el [a JavaScript-nyelv integrált lekérdezési API-val való együttműködése az Azure Cosmos DB cikkében című témakört.](javascript-query-api.md)
+A Azure Cosmos DB lehetővé teszi, hogy az optimalizált lekérdezéseket egy Fluent JavaScript-felület használatával hajtsa végre, az SQL nyelv ismerete nélkül, amely a tárolt eljárások vagy triggerek írására használható. Ha többet szeretne megtudni a Azure Cosmos DB JavaScript-lekérdezési API-támogatásáról, tekintse meg a következő témakört: [a JavaScript nyelv integrált lekérdezési API használata Azure Cosmos db](javascript-query-api.md) cikkben.
 
-## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Tárolt eljárás a JavaScript lekérdezési API-val
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Tárolt eljárás a JavaScript lekérdezési API használatával
 
-A következő kódminta egy példa arra, hogyan használja a JavaScript lekérdezési API-t egy tárolt eljárás környezetében. A tárolt eljárás beszúr egy Azure Cosmos-elemet, amelyet egy bemeneti paraméter határoz `__.filter()` meg, és frissíti a metaadat-dokumentumot a módszer használatával, a minSize, maxSize és totalSize a bemeneti elem mérettulajdonsága alapján.
+A következő mintakód azt szemlélteti, hogyan használható a JavaScript lekérdezési API egy tárolt eljárás kontextusában. A tárolt eljárás beszúr egy bemeneti paraméter által megadott Azure Cosmos-elemeket, és frissíti a metaadat-dokumentumot a `__.filter()` metódussal, a minSize, a maxSize és a totalSize használatával a bemeneti elem méret tulajdonsága alapján.
 
 > [!NOTE]
-> `__`(dupla aláhúzás) egy `getContext().getCollection()` alias, ha a JavaScript lekérdezési API használatakor.
+> `__`(dupla aláhúzás) a JavaScript lekérdezési API `getContext().getCollection()` használatakor használt alias.
 
 ```javascript
 /**
@@ -80,14 +80,14 @@ function insertDocumentAndUpdateMetadata(item) {
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi cikkekből megtudhatja, hogy miként tárolják a tárolt eljárásokat, az eseményindítókat és a felhasználó által definiált függvényeket az Azure Cosmos DB-ben:
+A következő cikkekből megtudhatja, hogyan használhatók a tárolt eljárások, eseményindítók és a felhasználó által definiált függvények a Azure Cosmos DBban:
 
-* [A tárolt eljárások, eseményindítók, felhasználó által definiált függvények működése az Azure Cosmos DB-ben](how-to-use-stored-procedures-triggers-udfs.md)
+* [Tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [A tárolt eljárások regisztrálása és használata az Azure Cosmos DB-ben](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
+* [Tárolt eljárások regisztrálása és használata Azure Cosmos DBban](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
 
-* Az elő- és [eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) regisztrálása és használata az Azure Cosmos [DB-ben](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)
+* Az [Eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és az [Eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) regisztrálása és használata a Azure Cosmos DBban
 
-* [A felhasználó által definiált függvények regisztrálása és használata az Azure Cosmos DB-ben](how-to-use-stored-procedures-triggers-udfs.md#udfs)
+* [Felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 
 * [Szintetikus partíciókulcsok az Azure Cosmos DB-ben](synthetic-partition-keys.md)

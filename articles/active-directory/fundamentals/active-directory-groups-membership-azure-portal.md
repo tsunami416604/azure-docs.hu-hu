@@ -1,6 +1,6 @@
 ---
 title: Csoport hozzáadása vagy eltávolítása egy másik csoportból – Azure AD
-description: Útmutató a csoport hozzáadásához vagy eltávolításához egy másik csoportból az Azure Active Directory használatával.
+description: Útmutatás a csoportok hozzáadásáról vagy eltávolításáról egy másik csoportból a Azure Active Directory használatával.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,58 +14,58 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75423042"
 ---
-# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Csoport hozzáadása vagy eltávolítása egy másik csoportból az Azure Active Directory használatával
-Ez a cikk segít egy csoport hozzáadásában és eltávolításában egy másik csoportból az Azure Active Directory használatával.
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory használatával
+Ebből a cikkből megtudhatja, hogyan adhat hozzá és távolíthat el egy csoportot egy másik csoportból Azure Active Directory használatával.
 
 >[!Note]
->Ha a szülőcsoportot szeretné törölni, olvassa el a Csoport és tagjai frissítése vagy törlése című [témakört.](active-directory-groups-delete-group.md)
+>Ha a szülőobjektum törlését kísérli meg, tekintse [meg a csoport és a tagok frissítése vagy törlése](active-directory-groups-delete-group.md)című témakört.
 
-## <a name="add-a-group-to-another-group"></a>Csoport hozzáadása másik csoporthoz
-Meglévő biztonsági csoportot hozzáadhat egy másik biztonsági csoporthoz (más néven beágyazott csoportokhoz), létrehozva egy tagcsoportot (alcsoportot) és egy szülőcsoportot. A tagcsoport örökli a szülőcsoport attribútumait és tulajdonságait, így a konfigurációs időt megtakarítja.
+## <a name="add-a-group-to-another-group"></a>Csoport hozzáadása egy másik csoporthoz
+Hozzáadhat egy meglévő biztonsági csoportot egy másik meglévő biztonsági csoporthoz (más néven beágyazott csoporthoz), egy csoporttag (alcsoport) és egy szülő csoport létrehozásához. A csoporttag örökli a szülő csoport attribútumait és tulajdonságait, és menti a konfigurációs időt.
 
 >[!Important]
->Jelenleg nem támogatjuk:<ul><li>Csoportok hozzáadása a helyszíni Active Directoryval szinkronizált csoporthoz.</li><li>Biztonsági csoportok hozzáadása Office 365-csoportokhoz.</li><li>Office 365-csoportok hozzáadása biztonsági csoportokhoz vagy más Office 365-csoportokhoz.</li><li>Alkalmazások hozzárendelése beágyazott csoportokhoz.</li><li>Licencek alkalmazása beágyazott csoportokra.</li><li>Terjesztési csoportok hozzáadása egymásba ágyazási forgatókönyvekben.</li></ul>
+>Jelenleg nem támogatjuk a következőket:<ul><li>Csoportok hozzáadása a helyszíni Active Directory szinkronizált csoportokhoz.</li><li>Biztonsági csoportok hozzáadása az Office 365-csoportokhoz.</li><li>Office 365-csoportok hozzáadása biztonsági csoportokhoz vagy más Office 365-csoportokhoz.</li><li>Alkalmazások kiosztása beágyazott csoportokhoz.</li><li>Licencek alkalmazása beágyazott csoportokra.</li><li>Terjesztési csoportok hozzáadása beágyazási forgatókönyvekben.</li></ul>
 
-### <a name="to-add-a-group-as-a-member-of-another-group"></a>Csoport hozzáadása másik csoport tagjaként
+### <a name="to-add-a-group-as-a-member-of-another-group"></a>Csoport hozzáadása egy másik csoport tagjaként
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza az **Azure Active Directory**lehetőséget, majd a **Csoportok**lehetőséget.
+2. Válassza a **Azure Active Directory**, majd a **csoportok**lehetőséget.
 
-3. A **Csoportok – Minden csoport** lapon keresse meg és jelölje ki azt a csoportot, amely egy másik csoport tagjává szeretne válni. Ehhez a gyakorlathoz az **MDM-házirendet** használjuk - Nyugati csoport.
+3. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelynek egy másik csoport tagjának kell lennie. Ebben a gyakorlatban a **Mdm Policy-West** csoportot használjuk.
 
     >[!Note]
-    >A csoportot egyszerre csak egy csoporthoz veheti fel tagként. Ezenkívül a **Csoport kiválasztása** mező szűri a megjelenítést a bejegyzés nek a felhasználó vagy az eszköz nevének bármely részéhez való igazítása alapján. A helyettesítő karakterek azonban nem támogatottak.
+    >A csoportot egyszerre csak egy csoportba lehet felvenni. Emellett a **csoport kiválasztása** mező kiszűri a megjelenítést a felhasználó vagy az eszköz neve bármely részének megfelelő bejegyzés alapján. A helyettesítő karakterek azonban nem támogatottak.
 
-    ![Csoportok – Minden csoport lap MDM-házirenddel – Nyugat csoport kiválasztva](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
+    ![Csoportok – minden csoport lap MDM házirenddel – West Group kiválasztva](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
 
-4. Az **MDM-házirend - Nyugat - Csoporttagságok** lapon válassza a **Csoporttagságok**lehetőséget, válassza a **Hozzáadás**lehetőséget, keresse meg azt a csoportot, amelynek a csoporttagja szeretne lenni, majd válassza a **Kijelölés lehetőséget.** Ehhez a gyakorlathoz az **MDM-szabályzatot** használjuk - Minden szervezet csoport.
+4. A **Mdm házirend-Nyugat-csoport tagsága** lapon válassza a **csoporttagságok lehetőséget, válassza a** **Hozzáadás**lehetőséget, keresse meg azt a csoportot, amelyben a csoport tagja lesz, majd válassza a **kiválasztás**lehetőséget. Ebben a gyakorlatban a **Mdm szabályzatot használjuk – az összes szervezeti** csoportot.
 
-    Az **MDM-házirend – West** csoport most már tagja az **MDM-házirendnek – Minden szervezeti** csoport, amely az MDM-házirend összes tulajdonságát és konfigurációját örökli - Minden szervezeti csoport.
+    A **Mdm Policy-West** csoport most már tagja az **Mdm házirendnek – az összes szervezeti** csoportnak, a Mdm házirend összes tulajdonságának és konfigurációjának öröklése – minden szervezeti csoport.
 
-    ![Csoporttagság létrehozása csoport másik csoporthoz való hozzáadásával](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
+    ![Csoporttagság létrehozása csoport hozzáadásával egy másik csoporthoz](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
-5. Tekintse át az **MDM-házirend – Nyugat – Csoporttagságok** lapot a csoport- és tagkapcsolat megtekintéséhez.
+5. A csoport és a tag kapcsolat megtekintéséhez tekintse át a **Mdm házirend-Nyugat-csoport tagságok** lapot.
 
-6. A csoport- és tagkapcsolat részletesebb megtekintéséhez válassza ki a csoport nevét (**MDM-házirend - Minden szervezet**), és tekintse meg az **MDM-házirend - Nyugati** oldal részleteit.
+6. A csoport és a tag kapcsolat részletesebb megjelenítéséhez válassza ki a csoport nevét (**Mdm Policy-all org**), és vessen egy pillantást a **Mdm Policy-West** oldal részleteire.
 
-## <a name="remove-a-group-from-another-group"></a>Csoport eltávolítása másik csoportból
-Meglévő biztonsági csoportot eltávolíthat egy másik biztonsági csoportból. A csoport eltávolítása azonban eltávolítja a tagok örökölt attribútumait és tulajdonságait is.
+## <a name="remove-a-group-from-another-group"></a>Csoport eltávolítása egy másik csoportból
+Egy meglévő biztonsági csoportot is eltávolíthat egy másik biztonsági csoportból. A csoport eltávolítása azonban eltávolítja a tagjainak örökölt attribútumait és tulajdonságait is.
 
-### <a name="to-remove-a-member-group-from-another-group"></a>Tagcsoport eltávolítása másik csoportból
-1. A **Csoportok – Minden csoport** lapon keresse meg és jelölje ki azt a csoportot, amelyet egy másik csoport tagjaként el szeretne távolítani. Ehhez a gyakorlathoz ismét az **MDM-házirendet** használjuk - Nyugat csoport.
+### <a name="to-remove-a-member-group-from-another-group"></a>Tag csoport eltávolítása egy másik csoportból
+1. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyet el szeretne távolítani egy másik csoport tagjaként. Ebben a gyakorlatban ismét a **Mdm Policy-West** csoportot használjuk.
 
-2. Az **MDM-házirend – Nyugat áttekintés** lapon válassza a **Csoporttagságok**lehetőséget.
+2. A **Mdm házirend – Nyugat áttekintése** **lapon válassza a csoporttagságok lehetőséget**.
 
-3. Válassza ki az **MDM-házirendet – Az Összes szervezeti** csoport az **MDM-házirendből – Nyugat – Csoporttagságok** lapon, majd válassza az **Eltávolítás** az **MDM-házirendből – Nyugat** oldal részletei lehetőséget.
+3. Válassza ki a **Mdm szabályzatot – az összes szervezeti** csoportot a **Mdm Policy-West-Group Memberships** lapon, majd válassza az **Eltávolítás** lehetőséget a **Mdm Policy-West** oldal részletei közül.
 
-    ![A csoporttagság lapja a tag és a csoport adatait is tartalmazza](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
+    ![Csoporttagság lap, amely a tag és a csoport részleteit is tartalmazza](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 
 ## <a name="additional-information"></a>További információ
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
@@ -80,4 +80,4 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 - [Csoport használata SaaS-alkalmazásokhoz való hozzáférés kezelésére](../users-groups-roles/groups-saasapps.md)
 
-- [Forgatókönyvek, korlátozások és ismert problémák, amelyek csoportok használatával kezelik a licencelést az Azure Active Directoryban](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)

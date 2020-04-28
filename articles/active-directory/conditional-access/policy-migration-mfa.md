@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférési házirendek áttelepítése – Azure Active Directory
-description: Ez a cikk bemutatja, hogyan telepítheti át a klasszikus szabályzatot, amely többtényezős hitelesítést igényel az Azure Portalon.
+title: Feltételes hozzáférési szabályzatok áttelepíteni – Azure Active Directory
+description: Ez a cikk bemutatja, hogyan telepítheti át a többtényezős hitelesítést igénylő klasszikus szabályzatot a Azure Portalban.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,64 +12,64 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74846026"
 ---
-# <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Klasszikus szabályzat áttelepítése az Azure Portalon
+# <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Klasszikus szabályzat migrálása a Azure Portal
 
-Ez a cikk bemutatja, hogyan lehet áttelepíteni egy klasszikus szabályzatot, amely **többtényezős hitelesítést** igényel egy felhőalapú alkalmazáshoz. Bár ez nem előfeltétel, azt javasoljuk, hogy olvassa el [a klasszikus szabályzatok áttelepítése az Azure Portalon,](policy-migration.md) mielőtt elkezdené a klasszikus szabályzatok áttelepítése.
+Ez a cikk bemutatja, hogyan telepíthet át egy klasszikus szabályzatot, amely megköveteli a **többtényezős hitelesítést** a felhőalapú alkalmazásokhoz. Bár ez nem előfeltétel, javasoljuk, hogy olvassa el a klasszikus szabályzatok áttelepítése [a Azure Portalt](policy-migration.md) , mielőtt megkezdené a klasszikus házirendek áttelepítését.
 
-![Klasszikus házirend-részletek, amelyek a Salesforce alkalmazáshoz többfa-t igényelnek](./media/policy-migration/33.png)
+![A Salesforce-alkalmazásra vonatkozó MFA-t igénylő klasszikus szabályzatok részletei](./media/policy-migration/33.png)
 
 Az áttelepítési folyamat a következő lépésekből áll:
 
-1. [Nyissa meg a klasszikus házirendet](#open-a-classic-policy) a konfigurációs beállítások leéséhez.
-1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzatot a klasszikus szabályzat lecseréléséhez. 
-1. Tiltsa le a klasszikus házirendet.
+1. A konfigurációs beállítások beszerzéséhez [nyissa meg a klasszikus szabályzatot](#open-a-classic-policy) .
+1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzatot a klasszikus szabályzat cseréjéhez. 
+1. Tiltsa le a klasszikus szabályzatot.
 
-## <a name="open-a-classic-policy"></a>Klasszikus házirend megnyitása
+## <a name="open-a-classic-policy"></a>Klasszikus szabályzat megnyitása
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Válassza a **Klasszikus házirendek**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Válassza a **klasszikus szabályzatok**lehetőséget.
 
-   ![Klasszikus házirendek nézet](./media/policy-migration-mfa/12.png)
+   ![Klasszikus szabályzatok nézet](./media/policy-migration-mfa/12.png)
 
-1. A klasszikus házirendek listájában válassza ki az áttelepíteni kívánt házirendet. Dokumentálja a konfigurációs beállításokat, hogy újra létrehozhassa az új feltételes hozzáférési házirendet.
+1. A klasszikus szabályzatok listájában válassza ki az áttelepíteni kívánt szabályzatot. Dokumentálja a konfigurációs beállításokat, hogy újból létre lehessen hozni egy új feltételes hozzáférési szabályzatot.
 
-## <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési házirend létrehozása
+## <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési szabályzat létrehozása
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Új feltételes hozzáférési házirend létrehozásához válassza az **Új házirend**lehetőséget.
-1. Az **Új** lap **Név** mezőjébe írja be a házirend nevét.
-1. A **Hozzárendelések csoportban** kattintson a **Felhasználók és csoportok**elemre.
-   1. Ha a klasszikus házirendben az összes felhasználó tikket, kattintson a **Minden felhasználó gombra.** 
-   1. Ha a klasszikus házirendben kijelölt csoportok vannak kijelölve, kattintson a **Felhasználók és csoportok kijelölése**gombra, majd válassza ki a szükséges felhasználókat és csoportokat.
-   1. Ha rendelkezik a kizárt csoportokkal, kattintson a **Kizárás** fülre, majd válassza ki a szükséges felhasználókat és csoportokat. 
-   1. Válassza a **Kész** lehetőséget
-1. A **Hozzárendelés** csoportban kattintson a **Felhőalapú alkalmazások vagy műveletek**elemre.
-1. A **Felhőalkalmazások vagy műveletek** lapon hajtsa végre az alábbi lépéseket:
-   1. Kattintson **az Alkalmazások kiválasztása gombra.**
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Új feltételes hozzáférési szabályzat létrehozásához válassza az **új szabályzat**lehetőséget.
+1. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét.
+1. A **hozzárendelések** szakaszban kattintson a **felhasználók és csoportok**elemre.
+   1. Ha a klasszikus szabályzatban minden felhasználó van kiválasztva, kattintson a **minden felhasználó**elemre. 
+   1. Ha a klasszikus szabályzatban csoportok vannak kiválasztva, kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza ki a szükséges felhasználókat és csoportokat.
+   1. Ha a kizárt csoportok vannak, kattintson a **kizárás** lapra, majd válassza ki a szükséges felhasználókat és csoportokat. 
+   1. Válassza a **kész** lehetőséget
+1. A **hozzárendelés** szakaszban kattintson a **felhőalapú alkalmazások vagy műveletek**elemre.
+1. A **Cloud apps vagy Actions** oldalon hajtsa végre a következő lépéseket:
+   1. Kattintson az **alkalmazások kiválasztása**elemre.
    1. Kattintson a **Kiválasztás** gombra.
-   1. A **Kijelölés** lapon jelölje ki a felhőalapú alkalmazást, majd kattintson a **Kijelölés gombra.**
-   1. A **Felhőalapú alkalmazások** lapon kattintson a **Kész**gombra.
-1. Ha a **Többtényezős hitelesítés megkövetelése** jelölőnégyzet be van jelölve:
-   1. A **Hozzáférés vezérlői** csoportban kattintson a **Támogatás**gombra.
-   1. A **Grant** lapon kattintson a **Hozzáférés megadása**gombra, majd a **Többtényezős hitelesítés megkövetelése**parancsra.
+   1. A **kiválasztás** lapon válassza ki a felhőalapú alkalmazást, majd kattintson a **kiválasztás**elemre.
+   1. A **Cloud apps** lapon kattintson a **kész**gombra.
+1. Ha a **többtényezős hitelesítés** van kiválasztva:
+   1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
+   1. A **támogatás** lapon kattintson a **hozzáférés engedélyezése**elemre, majd kattintson a **többtényezős hitelesítés megkövetelése**lehetőségre.
    1. Kattintson a **Kiválasztás** gombra.
-1. Kattintson **a Be gombra** a házirend engedélyezéséhez, majd válassza a **Mentés lehetőséget.**
+1. Kattintson **a** be gombra a szabályzat engedélyezéséhez, majd válassza a **Mentés**lehetőséget.
 
-   ![Feltételes hozzáférési házirend létrehozása](./media/policy-migration-mfa/conditional-access-policy-migration.png)
+   ![Feltételes hozzáférési szabályzat létrehozása](./media/policy-migration-mfa/conditional-access-policy-migration.png)
 
-## <a name="disable-the-classic-policy"></a>A klasszikus házirend letiltása
+## <a name="disable-the-classic-policy"></a>A klasszikus szabályzat letiltása
 
-A klasszikus házirend letiltásához kattintson a **Letiltás gombra** a **Részletek** nézetben.
+A klasszikus szabályzat letiltásához kattintson a **Letiltás** gombra a **részletek** nézetben.
 
-![Klasszikus házirendek letiltása](./media/policy-migration-mfa/14.png)
+![Klasszikus szabályzatok letiltása](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- A klasszikus szabályzatok áttelepítéséről a [Klasszikus szabályzatok áttelepítése az Azure Portalon](policy-migration.md)című témakörben talál további információt.
-- [Az új házirend-döntések hatásának meghatározásához használja a csak jelentésmódot a feltételes hozzáféréshez.](concept-conditional-access-report-only.md)
+- A klasszikus házirendek áttelepítésével kapcsolatos további információkért lásd: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
+- [A feltételes hozzáféréshez csak jelentési módot használhat az új házirend-döntések hatásának megállapításához.](concept-conditional-access-report-only.md)
