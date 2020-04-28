@@ -9,19 +9,19 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179552"
 ---
-## <a name="download-the-source-code"></a>A forráskód letöltése
+## <a name="download-the-source-code"></a>Forráskód letöltése
 
-A távoli figyelés forráskód tárházak tartalmazzák a forráskódot és a Docker konfigurációs fájlokat a Docker-rendszerképek futtatásához.
+A távfelügyelet forráskódja tartalmazza a forráskódot és a Docker konfigurációs fájljait, amelyekre szüksége van a Service Docker-rendszerképek futtatásához.
 
-Klónozni és a tárház helyi verziójának létrehozásához használja a parancssori környezetet a helyi számítógép megfelelő mappájához való navigáláshoz. Ezután futtassa az alábbi parancskészletek egyikét a .NET tárház klónozásához:
+A tárház helyi verziójának klónozásához és létrehozásához a parancssori környezet segítségével navigáljon a helyi gépen található megfelelő mappára. Ezután futtassa a következő parancsok egyikét a .NET-tárház klónozásához:
 
-A .NET mikroszolgáltatás-implementációk legújabb verziójának letöltéséhez futtassa a következőt:
+A .NET-es webszolgáltatás-implementációk legújabb verziójának letöltéséhez futtassa a következőt:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -33,47 +33,47 @@ git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Ezek a parancsok a mikroszolgáltatások helyi futtatásához használt parancsfájlok mellett az összes mikroszolgáltatás forráskódját is letöltik. Bár a Dockerben nincs szükség a forráskódra, a forráskód akkor hasznos, ha később a megoldásgyorsító módosítását és a módosítások helyi tesztelését tervezi.
+> Ezek a parancsok az összes szolgáltatás forráskódját letöltik a helyi webszolgáltatás futtatásához használt parancsfájlokon kívül. Bár a forráskód nem szükséges a Docker-ben való futtatásához, a forráskód akkor hasznos, ha később a megoldás-gyorsító módosítását tervezi, és helyileg teszteli a módosításokat.
 
 ## <a name="deploy-the-azure-services"></a>Az Azure-szolgáltatások üzembe helyezése
 
-Bár ez a cikk bemutatja, hogyan futtathatja a mikroszolgáltatások helyileg, ezek függenek a felhőben futó Azure-szolgáltatások. Használja a következő parancsfájlt az Azure-szolgáltatások üzembe helyezéséhez. A következő parancsfájlpéldák feltételezik, hogy a .NET tárházat használja egy Windows-gépen. Ha más környezetben dolgozik, megfelelően módosítsa a görbéket, a fájlkiterjesztéseket és az útvonalelválasztókat.
+Bár ez a cikk bemutatja, hogyan futtathatja helyileg a Service-t, a felhőben futó Azure-szolgáltatásoktól függenek. Az Azure-szolgáltatások üzembe helyezéséhez használja az alábbi szkriptet. A következő parancsfájl-példák feltételezik, hogy a .NET-tárházat használja egy Windows rendszerű gépen. Ha más környezetben dolgozik, állítsa be megfelelően az elérési utakat, a fájlkiterjesztések és az elérési út elválasztóit.
 
 ### <a name="create-new-azure-resources"></a>Új Azure-erőforrások létrehozása
 
 Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alábbi lépéseket:
 
-1. A parancssori környezetben keresse meg a tárház klónozott példányának **\services\scripts\local\launch** mappáját.
+1. A parancssori környezetben navigáljon a tárház klónozott példányának **\services\scripts\local\launch** mappájához.
 
-1. Futtassa a következő parancsokat a **PCCLI** eszköz telepítéséhez és az Azure-fiókba való bejelentkezéshez:
+1. Futtassa a következő parancsokat a **számítógépek** CLI-eszköz telepítéséhez, és jelentkezzen be az Azure-fiókjába:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Futtassa a **start.cmd** parancsfájlt. A parancsfájl a következő információkat kéri:
-   * A megoldás neve.
+1. Futtassa a **Start. cmd** parancsfájlt. A parancsfájl a következő információk megadását kéri:
+   * Egy megoldás neve.
    * A használandó előfizetés.
-   * A használandó Azure-adatközpont helye.
+   * A használni kívánt Azure-Adatközpont helye.
 
-     A parancsfájl erőforráscsoportot hoz létre az Azure-ban a megoldás nevével. Ez az erőforráscsoport tartalmazza a megoldásgyorsító által használt Azure-erőforrásokat. Törölheti ezt az erőforráscsoportot, ha már nincs szüksége a megfelelő erőforrásokra.
+     A szkript létrehoz egy erőforráscsoportot az Azure-ban a megoldás nevével. Ez az erőforráscsoport tartalmazza a megoldás-gyorsító által használt Azure-erőforrásokat. Akkor törölheti ezt az erőforráscsoportot, ha már nincs szüksége a megfelelő erőforrásokra.
 
-     A parancsfájl a **pcs** előtaggal rendelkező környezeti változók készletét is hozzáadja a helyi számítógéphez. Ezek a környezeti változók a távoli figyelés részleteit az Azure Key Vault-erőforrásból való olvasáshoz. Ez a Key Vault-erőforrás az a hely, ahonnan a távoli figyelés beolvassa a konfigurációs értékeket.
+     A parancsfájl környezeti változókat is hozzáad a helyi számítógéphez előtaggal rendelkező **számítógépekhez** . Ezek a környezeti változók adják meg a távoli Figyelés részleteit, hogy el tudják olvasni egy Azure Key Vault erőforrásból. Ez a Key Vault erőforrás, ahol a távoli figyelés beolvassa a konfigurációs értékeit a rendszerből.
 
      > [!TIP]
-     > Amikor a parancsfájl befejeződik, a környezeti változókat a ** \<kezdőmappa\>\\.pcs\\\<megoldásneve\>.env**fájlba is menti. Használhatja őket a jövőbeli megoldásgyorsító központi telepítések. Vegye figyelembe, hogy a helyi számítógépen beállított környezeti változók felülírják a **szolgáltatási\\parancsfájlok helyi\\\\.env** fájljának értékeit a **docker-compose futtatásakor.**
+     > A parancsfájl befejeződése után a környezeti változókat egy saját kezdőmappa nevű ** \<\>\\fájlba menti. a számítógépek\\\<megoldás\>neve. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **\\\\szolgáltatások helyi\\. env** fájljának értékeit.
 
-1. Lépjen ki a parancssori környezetből.
+1. Kilépés a parancssori környezetből.
 
 ### <a name="use-existing-azure-resources"></a>Meglévő Azure-erőforrások használata
 
 Ha már létrehozta a szükséges Azure-erőforrásokat, hozza létre a megfelelő környezeti változókat a helyi gépen.
-Állítsa be a környezeti változókat a következő:
-* **PCS_KEYVAULT_NAME** – az Azure Key Vault-erőforrás neve
-* **PCS_AAD_APPID** - Az AAD alkalmazás azonosítója
-* **PCS_AAD_APPSECRET** - Az AAD alkalmazás titkos
+Állítsa be a környezeti változókat a következőkhöz:
+* **PCS_KEYVAULT_NAME** – a Azure Key Vault erőforrás neve
+* **PCS_AAD_APPID** – a HRE alkalmazás azonosítója
+* **PCS_AAD_APPSECRET** – a HRE alkalmazás titka
 
-A konfigurációs értékek et ebből az Azure Key Vault-erőforrásból olvassa be a rendszer. Előfordulhat, hogy ezek a környezeti változók a ** \<saját mappába\>\\kerülnek .pcs\\\<megoldás név .env\>** fájlba a központi telepítésből. Vegye figyelembe, hogy a helyi számítógépen beállított környezeti változók felülbírálják a **szolgáltatási\\parancsfájlok helyi\\\\.env** fájljának értékeit a **docker-compose futtatásakor.**
+A konfigurációs értékek beolvasása ebből a Azure Key Vault erőforrásból történik. Ezeket a környezeti változókat a rendszer a ** \<saját Kezdőlap mappájába\>\\menti\\\<. a\>számítógépek megoldás neve. env** fájl a központi telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **\\\\szolgáltatások helyi\\. env** fájljának értékeit.
 
-A mikroszolgáltatás által szükséges konfiguráció egy része a **Key Vault** egy példányában van tárolva, amely a kezdeti üzembe helyezéskor jött létre. A megfelelő változók at keyvault szükség szerint módosítani kell.
+A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott **Key Vault** egy példányában van tárolva. A kulcstartó megfelelő változóit szükség szerint módosítani kell.

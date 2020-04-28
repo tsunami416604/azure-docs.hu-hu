@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70166724"
 ---
 ## <a name="specifying-formats"></a>Formátumok meghatározása
 Az Azure Data Factory a következő formátumtípusokat támogatja:
 
 * [Szöveges formátum](#specifying-textformat)
-* [JSON formátum](#specifying-jsonformat)
-* [Avro formátum](#specifying-avroformat)
-* [ORC formátum](#specifying-orcformat)
-* [Parquet formátum](#specifying-parquetformat)
+* [JSON-formátum](#specifying-jsonformat)
+* [Avro formátuma](#specifying-avroformat)
+* [ORK formátum](#specifying-orcformat)
+* [Parketta formátuma](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>TextFormat megadása
 Ha elemezni szeretné a szöveges fájlokat, vagy szöveges formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **TextFormat** értékre. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A TextFormat használatát bemutató példa](#textformat-example) című szakaszt.
@@ -69,7 +69,7 @@ A következő minta bemutatja a TextFormat néhány formázási tulajdonságát.
 * Egy szöveges fájlból másol, és szeretne kihagyni néhány sort az elejéről, amelyek nem tartalmaznak adatokat vagy fejléc-információkat. Adja meg a `skipLineCount` értékét a kihagyni kívánt sorok számának jelzéséhez. Ha a fájl hátralévő része fejlécsort tartalmaz, a `firstRowAsHeader` is megadható. Ha a `skipLineCount` és a `firstRowAsHeader` is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból
 
 ### <a name="specifying-jsonformat"></a>JsonFormat megadása
-**JSON-fájlok importálása/exportálása az Azure Cosmos DB-be/az Azure Cosmos DB-ből,** [lásd: JSON-dokumentumok importálása/exportálása](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) az Azure Cosmos DB összekötő json-dokumentumainak importálása/exportálása a részletekkel.
+A **JSON-fájlok Azure Cosmos DBba történő importálásához/exportálásához**tekintse meg a Azure Cosmos db-összekötő [JSON-dokumentumok importálása/exportálása](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) című szakaszát.
 
 Ha elemezni szeretné a JSON-fájlokat, vagy JSON formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **JsonFormat** értékre. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
 
@@ -214,7 +214,7 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
 - A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. A további részletekkel kapcsolatban lásd a Struktúrameghatározások négyszögletes adatkészletek esetén című szakaszt.
-- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. A tömbből származó adatok másolásához a **tömb[x].tulajdonsággal** kinyerheti az adott tulajdonság értékét az x.-objektumból, vagy a **tömb[*].tulajdonsággal** megkeresheti az ilyen tulajdonságot tartalmazó objektumok értékét.
+- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Az adatok tömbből való másolásához használhatja a **Array [x]. tulajdonságot** a megadott tulajdonság értékének kinyeréséhez a x objektumból, vagy használhatja a **Array [*]. Property tulajdonságot** az adott tulajdonságot tartalmazó bármely objektum értékének megkereséséhez.
 
 ```json
 "properties": {

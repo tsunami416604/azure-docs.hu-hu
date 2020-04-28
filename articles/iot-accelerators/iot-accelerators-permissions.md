@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Solutions webhely használata - Azure | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy a AzureIoTSolutions.com webhely használatával hogyan telepítheti a megoldásgyorsítót.
+title: Az Azure IoT Solutions webhelyének használata – Azure | Microsoft Docs
+description: Ismerteti, hogyan használható a AzureIoTSolutions.com webhely a megoldás-gyorsító üzembe helyezéséhez.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447454"
 ---
-# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldásgyorsító üzembe helyezéséhez használja a azureiotsolutions.com helyet
+# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése a azureiotsolutions.com webhely használatával
 
-Az Azure IoT-megoldásgyorsítók üzembe helyezhetők az Azure-előfizetésben [a AzureIoTSolutions.com.](https://www.azureiotsolutions.com/Accelerators) AzureIoTSolutions.com a Microsoft nyílt forráskódú és partnermegoldás-gyorsítóit is üzemelteti. Ezek a megoldásgyorsítók igazodnak az [Azure IoT referenciaarchitektúrához.](https://aka.ms/iotrefarchitecture) A hely segítségével gyorsan üzembe helyezhet egy megoldásgyorsítót demóként vagy éles környezetben.
+Az Azure IoT megoldás-gyorsítók üzembe helyezhetők az Azure-előfizetésben a [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)-ből. A AzureIoTSolutions.com a Microsoft nyílt forráskódú és partneri megoldásának gyorssegédeit is üzemelteti. Ezek a megoldás-gyorsítók az [Azure IoT hivatkozási architektúrával](https://aka.ms/iotrefarchitecture)vannak összehangolva. A hely használatával gyorsan üzembe helyezhet egy megoldás-gyorssegédet bemutatóként vagy éles környezetben.
 
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Ha több szabályszükséges a telepítési folyamat felett, a CLI segítségével [telepíthet egy megoldásgyorsítót.](iot-accelerators-remote-monitoring-deploy-cli.md)
+> Ha nagyobb mértékű vezérlésre van szüksége a telepítési folyamat felett, a parancssori felület használatával [üzembe helyezhet egy megoldás-gyorsító](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-A megoldásgyorsítók a következő konfigurációkban telepíthetők:
+A megoldás-gyorsítók a következő konfigurációkon helyezhetők üzembe:
 
-* **Standard**: Bővített infrastruktúra-telepítés éles környezet fejlesztéséhez. Az Azure Container Service több Azure virtuális gépre telepíti a mikroszolgáltatásokat. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
-* **Alapszintű**: Egy bemutató vagy egy központi telepítés teszteléséhez csökkentett költségű verzió. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
-* **Helyi**: A helyi számítógép üzembe helyezése teszteléshez és fejlesztéshez. Ez a megközelítés telepíti a mikroszolgáltatásokat egy helyi Docker-tárolóba, és csatlakozik az IoT Hubhoz, az Azure Cosmos DB-hez és az Azure storage-szolgáltatásokhoz a felhőben.
+* **Standard**: kibővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. A Azure Container Service üzembe helyezi a szolgáltatásait több Azure-beli virtuális gépen. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
+* **Alapszintű**: csökkentett Cost-verzió egy bemutatóhoz vagy egy üzemelő példány teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
+* **Helyi**: helyi számítógép-telepítés teszteléshez és fejlesztéshez. Ez a megközelítés telepíti a-szolgáltatásokat egy helyi Docker-tárolóba, és a felhőben csatlakozik a IoT Hubhoz, Azure Cosmos DBhoz és az Azure Storage szolgáltatásokhoz.
 
-A megoldásgyorsítók mindegyike az Azure-szolgáltatások, például az IoT Hub, az Azure Stream Analytics és a Cosmos DB különböző kombinációját használja. További információkért látogasson el [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) és válasszon egy megoldásgyorsítót.
+A megoldás-gyorsítók mindegyike különböző Azure-szolgáltatások (például IoT Hub, Azure Stream Analytics és Cosmos DB kombinációját használja. További információért látogasson el a [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) webhelyre, és válassza ki a megoldás-gyorsító elemet.
 
-## <a name="sign-in-at-azureiotsolutionscom"></a>Bejelentkezés a azureiotsolutions.com
+## <a name="sign-in-at-azureiotsolutionscom"></a>Bejelentkezés a azureiotsolutions.com-on
 
-Megoldásgyorsító üzembe helyezése előtt be kell jelentkeznie AzureIoTSolutions.com egy Azure-előfizetéshez társított hitelesítő adatok használatával. Ha a fiók egynél több Microsoft Azure Active Directory (AD) bérlőhöz van társítva, a **Fiók kiválasztása legördülő menüsegítségével** kiválaszthatja a használni kívánt könyvtárat.
+A megoldás-gyorsító üzembe helyezése előtt be kell jelentkeznie a AzureIoTSolutions.com-be az Azure-előfizetéshez társított hitelesítő adatok használatával. Ha a fiókja több Microsoft Azure Active Directory (AD) bérlőhöz van társítva, a **fiók kiválasztása legördülő menüből** kiválaszthatja a használni kívánt könyvtárat.
 
-A megoldásgyorsítók üzembe helyezésére, a felhasználók kezelésére és az Azure-szolgáltatások kezelésére vonatkozó engedélyei a kiválasztott címtárban betöltött szerepétől függenek. A megoldásgyorsítókhoz társított gyakori Azure AD-szerepkörök a következők:
+A megoldás-gyorsítók üzembe helyezéséhez, a felhasználók kezeléséhez és az Azure-szolgáltatások kezeléséhez szükséges engedélyek a kiválasztott könyvtár szerepköreitől függenek. A megoldás-gyorssegédekhez társított általános Azure AD-szerepkörök a következők:
 
-* **Globális rendszergazda:** Azure AD-bérlőnként több [globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md) is lehet:
+* **Globális rendszergazda**: az Azure ad-bérlőn számos [globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md) lehet:
 
-  * Amikor létrehoz egy Azure AD-bérlőt, alapértelmezés szerint az adott bérlő globális rendszergazdája.
-  * A globális rendszergazda alapszintű és szabványos megoldásgyorsítókat telepíthet.
+  * Amikor létrehoz egy Azure AD-bérlőt, alapértelmezés szerint a bérlő globális rendszergazdája lesz.
+  * A globális rendszergazda telepítheti az alapszintű és a standard megoldás-gyorssegédeket.
 
-* **Tartományi felhasználó:** Azure AD-bérlőnként több tartományi felhasználó is lehet. A tartományi felhasználók üzembe helyezhetnek egy alapszintű megoldásgyorsítót.
+* **Tartományi felhasználó**: az Azure ad-bérlőn számos tartományi felhasználó lehet. Egy tartományi felhasználó üzembe helyezhet egy alapszintű megoldás-gyorsító szolgáltatást.
 
-* **Vendégfelhasználó:** Azure AD-bérlőnként több vendégfelhasználó is lehet. A vendégfelhasználók nem helyezhetnek üzembe megoldásgyorsítót az Azure AD-bérlőben.
+* **Vendég felhasználó**: az Azure ad-bérlő számos vendég felhasználója lehet. A vendég felhasználók nem telepíthetnek megoldás-gyorssegédet az Azure AD-bérlőben.
 
-Az Azure AD felhasználóiról és szerepköreiről az alábbi forrásokban talál további információt:
+Az Azure AD-beli felhasználókról és szerepkörökről az alábbi forrásokban talál további információt:
 
-* [Felhasználók létrehozása az Azure Active Directoryban](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-* [Felhasználók hozzárendelése alkalmazásokhoz](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználók létrehozása Azure Active Directory](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [Felhasználók kiosztása alkalmazásokhoz](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="choose-your-device"></a>Válassza ki a készüléket
+## <a name="choose-your-device"></a>Eszköz kiválasztása
 
-A AzureIoTSolutions.com helyaz [Azure Certified for IoT eszközkatalógusra](https://catalog.azureiotsolutions.com/)mutató hivatkozásokat tartalmaz.
+A AzureIoTSolutions.com-hely a [IoT-eszközök katalógusához tartozó Azure Certified minősítésre](https://catalog.azureiotsolutions.com/)hivatkozik.
 
-A katalógus több száz hitelesített IoT-hardvereszközt sorol fel, amelyekhez csatlakozhat a megoldásgyorsítókhoz az IoT-megoldás létrehozásához.
+A katalógus felsorolja a több száz tanúsított IoT hardvereszközöket, amelyekkel csatlakozhat a megoldás-gyorssegédekhez, és megkezdheti a IoT-megoldás felkészítését.
 
-![Eszközkatalógus](media/iot-accelerators-permissions/devicecatalog.png)
+![Eszköz katalógusa](media/iot-accelerators-permissions/devicecatalog.png)
 
-Ha Ön hardvergyártó, kattintson a **Partnerré válás** lehetőségre, ha megszeretné tudni, hogy miként lehet partneri kapcsolatban dolgozni a Microsofttal a Certified for IoT programban.
+Ha Ön hardver gyártója, kattintson a partnerré **válás** lehetőségre a Microsofttal való partneri együttműködés megismeréséhez a Certified for IoT programban.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
 title: Hálózati biztonság az 1. generációs Azure Data Lake Storage-ben | Microsoft Docs
-description: A virtuális hálózatok integrációjának ismertetése az Azure Data Lake Storage Gen1 szolgáltatásban
+description: Ismerje meg, hogyan működik a Virtual Network Integration Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60612541"
 ---
-# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózati integráció az Azure Data Lake Storage Gen1 számára
+# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtual Network Integration for Azure Data Lake Storage Gen1
 
-Ez a cikk bemutatja az Azure Data Lake Storage Gen1 virtuális hálózati integrációját. A virtuális hálózat integrációjával mostantól úgy állíthatja be fiókjait, hogy azok csak az adott virtuális hálózatokról és alhálózatokról érkező forgalmat fogadják. 
+Ez a cikk a Azure Data Lake Storage Gen1 virtuális hálózati integrációját mutatja be. A virtuális hálózat integrációjával mostantól úgy állíthatja be fiókjait, hogy azok csak az adott virtuális hálózatokról és alhálózatokról érkező forgalmat fogadják. 
 
 Ezzel a funkcióval megvédheti Data Lake Storage-fiókját a külső fenyegetésektől.
 
@@ -73,15 +73,15 @@ Néhány elérhető lehetőség:
 
 ## <a name="limitations"></a>Korlátozások
 
-- Az új szolgáltatás támogatásához újra létre kell hozni a Data Lake Storage Gen1 virtuális hálózati integrációs támogatás előtt létrehozott HDInsight-fürtöket.
+- Az új szolgáltatás támogatásához újra létre kell hozni azokat a HDInsight-fürtöket, amelyeket a virtuális hálózat integrációs támogatásának Data Lake Storage Gen1a előtt hoztak létre.
  
-- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozza létre a HDInsight-fürtöt, mielőtt véglegesen újra engedélyezne a virtuális hálózati szabályt, vagy kihagyná **a Hozzáférés engedélyezése az összes hálózatról és szolgáltatásból.** További információt a [Kivételek](#exceptions) szakaszban talál.
+- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozza létre a HDInsight-fürtöt, mielőtt ismét engedélyezi a virtuális hálózati szabályt, vagy **letiltja a hozzáférést az összes hálózatról és szolgáltatásról**. További információt a [Kivételek](#exceptions) szakaszban talál.
 
-- A Data Lake Storage Gen1 virtuális hálózati integrációja nem működik [az Azure-erőforrások felügyelt identitásaival.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- Data Lake Storage Gen1 virtuális hálózati integráció nem működik az [Azure-erőforrások felügyelt identitásával](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
 - A virtuális hálózattal integrált 1. generációs Data Lake Storage-fiókokban található fájl- és mappaadatok nem érhetők el a portálról. Ez a korlátozás magában foglalja a virtuális hálózathoz tartozó virtuális gépekről való hozzáférést és az olyan tevékenységeket is, mint az Adatkezelő használata. A fiókfelügyeleti tevékenységek továbbra is működni fognak. A virtuális hálózattal integrált Data Lake Storage-fiókokban található fájl- és mappaadatok minden nem portálalapú erőforrás által elérhetők. Ebbe beletartozik az SDK-hozzáférés, a PowerShell-szkriptek és az egyéb (nem a portálról indított) Azure-szolgáltatások. 
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1. lépés: Konfigurálja a virtuális hálózatot az Azure AD-szolgáltatásvégpont használatára
 

@@ -9,11 +9,11 @@ ms.date: 06/27/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 1c790d2d0086b929daf3bdf5afe72917fd89dede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67608211"
 ---
 >[!IMPORTANT]  
-> Ne keverje a helyi fejlesztést a portálfejlesztéssel ugyanabban a függvényalkalmazásban. Ha helyi projektből hoz létre és tesz közzé függvényeket, ne próbálja meg karbantartani vagy módosítani a projektkódot a portálon.
+> Ne keverje össze a helyi fejlesztést a portál fejlesztésével ugyanazon a Function alkalmazásban. Ha egy helyi projektből hoz létre és tesz közzé függvényeket, a projekt kódját ne próbálja meg a portálon fenntartani vagy módosítani.

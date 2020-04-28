@@ -1,6 +1,6 @@
 ---
-title: Az Azure CDN valós idejű riasztásai | Microsoft dokumentumok
-description: Valós idejű riasztások a Microsoft Azure CDN-ben. A valós idejű riasztások értesítéseket nyújtanak a CDN-profil végpontjainak teljesítményéről.
+title: Azure CDN valós idejű riasztások | Microsoft Docs
+description: Valós idejű riasztások Microsoft Azure CDN-ben. A valós idejű riasztások a CDN-profilban található végpontok teljesítményével kapcsolatos értesítéseket biztosítanak.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593480"
 ---
-# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Valós idejű riasztások a Microsoft Azure CDN-ben
+# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Valós idejű riasztások Microsoft Azure CDN-ben
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum ismerteti a valós idejű riasztásokat a Microsoft Azure CDN-ben. Ez a funkció valós idejű értesítéseket biztosít a CDN-profil végpontjainak teljesítményéről.  A levelezési vagy HTTP-riasztásokat a következők alapján állíthatja be:
+Ez a dokumentum a Microsoft Azure CDN-ben való valós idejű riasztásokat ismerteti. Ez a funkció valós idejű értesítéseket biztosít a CDN-profilban található végpontok teljesítményéről.  Az e-mailek és a HTTP-riasztások az alábbiak alapján állíthatók be:
 
 * Sávszélesség
 * Állapotkódok
-* Gyorsítótár állapotai
+* Gyorsítótár állapota
 * Kapcsolatok
 
 ## <a name="creating-a-real-time-alert"></a>Valós idejű riasztás létrehozása
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg a CDN-profilját.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a CDN-profilhoz.
    
     ![CDN-profil](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-1. A CDN-profilpanelen kattintson a **Kezelés** gombra.
+1. A CDN-profil panelen kattintson a **kezelés** gombra.
    
-    ![CDN-profilkezelés gomb](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![CDN-profil kezelése gomb](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-3. Mutasson az **Analytics** fülre, majd mutasson a **Valós idejű statisztika** úszó panelre.  Kattintson a **Valós idejű riasztások gombra.**
+3. Vigye az egérmutatót az **elemzés** lapra, majd vigye a kurzort a **valós idejű statisztika** menü fölé.  Kattintson a **valós idejű riasztások**elemre.
    
     ![CDN felügyeleti portál](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
-    Megjelenik a meglévő riasztási konfigurációk listája (ha van ilyen).
-4. Kattintson a **Riasztás hozzáadása** gombra.
+    Megjelenik a meglévő riasztási konfigurációk (ha vannak) listája.
+4. Kattintson a **riasztás hozzáadása** gombra.
    
     ![Riasztás hozzáadása gomb](./media/cdn-real-time-alerts/cdn-add-alert.png)
    
-    Megjelenik egy új riasztás létrehozására szolgáló űrlap.
+    Megjelenik egy űrlap az új riasztás létrehozásához.
    
     ![Új riasztási űrlap](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Ha azt szeretné, hogy ez a riasztás aktív legyen, amikor a **Mentés gombra**kattint, jelölje be az **Engedélyezett riasztás** jelölőnégyzetet.
-6. A **Név** mezőben adja meg a riasztás leíró nevét.
-7. Az **Adathordozó típusa** legördülő menüben válassza a **HTTP Large Object (Nagy méretű objektum) lehetőséget.**
+5. Ha azt szeretné, hogy a riasztás aktív legyen, amikor a **Mentés**gombra kattint, jelölje be a **riasztás engedélyezve** jelölőnégyzetet.
+6. Adjon meg egy leíró nevet a riasztáshoz a **név** mezőben.
+7. Az **adathordozó típusa** legördülő menüben válassza a **http nagyméretű objektum**lehetőséget.
    
-    ![Médiatípus a kijelölt HTTP Nagy objektummal](./media/cdn-real-time-alerts/cdn-http-large.png)
+    ![Adathordozó típusa kiválasztva HTTP nagyméretű objektummal](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > A **HTTP Large Object elemet** **adathordozó-típusként kell kijelölnie.**  A többi választási lehetőséget az Azure CDN nem használja **a Verizontól.**  Ha nem sikerül kiválasztani a **HTTP Large Object objektumot,** a riasztás soha nem aktiválódik.
+   > Az **adathordozó típusaként**a **nagyméretű http-objektumot** kell kiválasztania.  A **Azure CDN a Verizon**nem használja a többi lehetőséget.  A **http nagyméretű objektum** kiválasztásának sikertelensége miatt a riasztás soha nem aktiválódik.
    > 
    > 
-8. Hozzon létre egy figyelendő **kifejezést** **egy Metrika**, **Operátor**és **Eseményindító érték kiválasztásával.**
+8. Egy **metrika**, **operátor**és **trigger érték**kiválasztásával hozzon létre egy figyelni kívánt **kifejezést** .
    
-   * A **Metrika**mezőben válassza ki a figyelni kívánt feltétel típusát.  **Sávszélesség Mbps** az összeg a sávszélesség-használat megabit másodpercenként.  **Az összes kapcsolat** a peremhálózati kiszolgálóinkkal létesített egyidejű HTTP-kapcsolatok száma.  A gyorsítótár különböző állapotainak és állapotkódjainak definícióit az [Azure CDN gyorsítótárállapot-kódjai](/previous-versions/azure/mt759237(v=azure.100)) és az [Azure CDN HTTP-állapotkódok című témakörben található.](/previous-versions/azure/mt759238(v=azure.100))
-   * **Operátor** az a matematikai operátor, amely létrehozza a metrika és az eseményindító értéke közötti kapcsolatot.
-   * **Az eseményindító értéke** az a küszöbérték, amelyet az értesítés elküldése előtt teljesíteni kell.
+   * A **metrika**mezőben válassza ki a figyelni kívánt feltétel típusát.  A **sávszélesség Mbps** értéke a megabit/másodpercben megadott sávszélesség-használat mennyisége.  Az **összes kapcsolat** a peremhálózati kiszolgálókkal létesített párhuzamos http-kapcsolatok száma.  A különböző gyorsítótár-állapotok és állapotkódok definícióit lásd: [Azure CDN gyorsítótár-állapotkódok](/previous-versions/azure/mt759237(v=azure.100)) és [Azure CDN HTTP-állapotkódok](/previous-versions/azure/mt759238(v=azure.100))
+   * Az **operátor** a matematikai operátor, amely a metrika és az trigger érték közötti kapcsolatot hozza létre.
+   * Az **trigger értéke** a küszöbérték, amelynek teljesülnie kell az értesítés elküldése előtt.
      
-     A következő példában a létrehozott kifejezés azt jelzi, hogy értesítést küld a rendszer, ha a 404-es állapotkódok száma 25-nél nagyobb.
+     A következő példában a létrehozott kifejezés azt jelzi, hogy a rendszer értesítést küld, ha a 404-es állapotkódok száma meghaladja a 25-ös értéket.
      
-     ![Valós idejű riasztási mintakifejezés](./media/cdn-real-time-alerts/cdn-expression.png)
-9. Az **Intervallum mezőbe**írja be, hogy milyen gyakran szeretné kiértékelni a kifejezést.
-10. A **Beírás legördülő** menüben válassza ki, hogy mikor szeretne értesítést kapni, ha a kifejezés igaz.
+     ![Valós idejű riasztási minta kifejezés](./media/cdn-real-time-alerts/cdn-expression.png)
+9. Az **intervallum**mezőben adja meg, hogy milyen gyakran szeretné kiértékelni a kifejezést.
+10. Az **értesítés** legördülő menüben válassza ki, hogy Mikor szeretne értesítést kapni, ha a kifejezés igaz.
     
-    * **A Feltétel indítása** azt jelzi, hogy a rendszer értesítést küld a megadott feltétel első észlelésekor.
-    * **A Feltétel vége** azt jelzi, hogy a rendszer értesítést küld, ha a megadott feltétel már nem észlelhető. Ez az értesítés csak akkor indítható el, ha a hálózatfigyelő rendszerünk észlelte a megadott feltétel előfordulását.
-    * **A Folyamatos** azt jelzi, hogy a rendszer minden alkalommal értesítést küld, amikor a hálózatfigyelő rendszer észleli a megadott feltételt. Ne feledje, hogy a hálózatfigyelő rendszer csak egyszer ellenőrzi a megadott feltételt.
-    * **A Feltétel kezdete és vége** azt jelzi, hogy a rendszer értesítést küld a megadott feltétel első észlelésekor, majd akkor is, ha a rendszer a feltételt már nem észleli.
-1. Ha e-mailben szeretne értesítéseket kapni, jelölje be az **Értesítés e-mailben** jelölőnégyzetet.  
+    * A **feltétel kezdete** azt jelzi, hogy a rendszer értesítést küld a megadott feltétel első észlelése esetén.
+    * A **feltétel vége** azt jelzi, hogy a rendszer értesítést küld, ha a megadott feltétel már nem észlelhető. Ez az értesítés csak akkor indítható el, ha a hálózati figyelő rendszer azt észlelte, hogy a megadott feltétel történt.
+    * A **folyamatos** érték azt jelzi, hogy a rendszer minden alkalommal küld értesítést, amikor a hálózati figyelőrendszer észleli a megadott feltételt. Ne feledje, hogy a hálózati figyelő rendszer csak egyszer ellenőrzi a megadott feltételt.
+    * A **feltétel kezdete és vége** azt jelzi, hogy a rendszer értesítést küld a megadott feltételnek az első alkalommal, amikor a feltétel már nem észlelhető.
+1. Ha e-mailben szeretne értesítéseket kapni, jelölje be az **értesítés e-** mailben jelölőnégyzetet.  
     
-    ![Értesítés e-mailben űrlapon](./media/cdn-real-time-alerts/cdn-notify-email.png)
+    ![Értesítés e-mail-űrlap alapján](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    A **Címzett** mezőbe írja be azt az e-mail címet, amelyet az értesítések elküldésére szeretne küldeni. A **Tárgy** és **a Törzs**mezőben az alapértelmezettet hagyhatja, vagy testreszabhatja az üzenetet az Elérhető **kulcsszavak** lista segítségével, hogy az üzenet küldésekor dinamikusan szúrjon be riasztási adatokat.
+    A **címzett** mezőben adja meg azt az e-mail-címet, ahová el szeretné juttatni az értesítéseket. A **tulajdonos** és a **törzs**esetében meghagyhatja az alapértelmezett értéket, vagy testreszabhatja az üzenetet az **elérhető kulcsszavak** listával, hogy a riasztási adatai dinamikusan legyenek beszúrva az üzenet elküldésekor.
     
     > [!NOTE]
-    > Az e-mail értesítést a **Test Notification** gombra kattintva tesztelheti, de csak a riasztáskonfiguráció mentése után.
+    > Az e-mail-értesítés teszteléséhez kattintson az **értesítés tesztelése** gombra, de csak a riasztás konfigurációjának mentése után.
     > 
     > 
-12. Ha azt szeretné, hogy értesítések et küldjön egy webkiszolgálóra, jelölje be az **Értesítés HTTP-közzétételkor** jelölőnégyzetet.
+12. Ha azt szeretné, hogy az értesítések webkiszolgálón legyenek közzétéve, jelölje be az **értesítés http-post** jelölőnégyzetet.
     
-    ![Értesítés HTTP-bejegyzéssel űrlap](./media/cdn-real-time-alerts/cdn-notify-http.png)
+    ![Értesítés HTTP Post űrlap alapján](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    Az **URL-cím** mezőbe írja be azt az URL-címet, amelyben a HTTP-üzenetet közzé szeretné tenni. A **Fejlécek** mezőbe írja be a kérelemben elküldendő HTTP-fejléceket.  A **Törzs**csoport ban az üzenetet az **Elérhető kulcsszavak** lista segítségével testreszabhatja, hogy az üzenet küldésekor dinamikusan szúrjon be riasztási adatokat.  **A fejlécek** és a **törzs** alapértelmezett használata az alábbi példához hasonló XML-hasznos adathoz:
+    Az **URL** mezőbe írja be azt az URL-címet, AHOVÁ a http-üzenetet közzé kívánja adni. A **fejlécek** szövegmezőbe írja be a kérelemben küldendő HTTP-fejléceket.  A **törzs**esetében az üzenet elküldésekor az **elérhető kulcsszavak** listával testreszabhatja az üzenetet.  A **fejlécek** és a **szövegtörzs** alapértelmezett értéke az alábbi példához hasonló XML-tartalom:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -102,13 +102,13 @@ Ez a dokumentum ismerteti a valós idejű riasztásokat a Microsoft Azure CDN-be
     ```
     
     > [!NOTE]
-    > A HTTP-bejegyzési értesítést a **Tesztértesítés** gombra kattintva, de csak a riasztáskonfiguráció mentése után tesztelheti.
+    > A HTTP Post értesítés teszteléséhez kattintson az **értesítés tesztelése** gombra, de csak a riasztás konfigurációjának mentése után.
     > 
     > 
-13. A **mentés** gombra kattintva mentse a riasztási konfigurációt.  Ha **az** 5.
+13. A riasztási konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.  Ha az 5. lépésben beállította a **riasztást** , a riasztás most aktív.
 
 ## <a name="next-steps"></a>Következő lépések
-* Valós idejű statisztikák elemzése [az Azure CDN-ben](cdn-real-time-stats.md)
-* Mélyebbre áshat a [speciális HTTP-jelentésekkel](cdn-advanced-http-reports.md)
+* [Valós idejű statisztikák elemzése Azure CDN](cdn-real-time-stats.md)
+* Mélyebb kiásás a [speciális http-jelentésekkel](cdn-advanced-http-reports.md)
 * [Használati minták](cdn-analyze-usage-patterns.md) elemzése
 

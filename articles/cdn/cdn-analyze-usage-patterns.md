@@ -1,6 +1,6 @@
 ---
-title: A Verizon alapjelentései | Microsoft dokumentumok
-description: 'A CDN használati mintáit a következő jelentések segítségével tekintheti meg: Sávszélesség, Átvitt adatátvitel, találatok, gyorsítótár-állapotok, Gyorsítótár találati aránya, IPV4/IPV6 átvitt adatok.'
+title: Alapvető jelentések a Verizontól | Microsoft Docs
+description: 'A CDN használati mintáit a következő jelentések segítségével tekintheti meg: sávszélesség, átvitt adatok, találatok, gyorsítótár állapota, gyorsítótár találati aránya, IPV4/IPV6-adatok átvitele.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,123 +15,123 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594161"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-A Verizon Core Reports használatával a Verizon-profilok kezelése portálon keresztül a CDN használati mintáit a következő jelentésekkel tekintheti meg:
+A Verizon Core-jelentések a Verizon felügyeleti portálon keresztül történő használatával megtekintheti a CDN használati mintáit a következő jelentésekkel:
 
 * Sávszélesség
-* Átvitt adatok
+* Továbbított adatátvitel
 * Találatok
-* Gyorsítótár állapotai
+* Gyorsítótár állapota
 * Gyorsítótár találati aránya
-* IPV4/IPV6 átvitt adatok
+* IPV4/IPV6-adatátvitel
 
-## <a name="accessing-verizon-core-reports"></a>A Verizon Core jelentések elérése
-1. A CDN-profilpanelen kattintson a **Kezelés** gombra.
+## <a name="accessing-verizon-core-reports"></a>A Verizon Core-jelentések elérése
+1. A CDN-profil panelen kattintson a **kezelés** gombra.
    
-    ![CDN-profil kezelés gombja](./media/cdn-reports/cdn-manage-btn.png)
+    ![CDN-profil kezelése gomb](./media/cdn-reports/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Mutasson az **Analytics** fülre, majd mutasson a **Core Reports** úszó panelre. Kattintson egy jelentésre a menüben.
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **alapszintű jelentések** menü fölé. Kattintson egy jelentésre a menüben.
    
-    ![CDN felügyeleti portál - Core Reports menü](./media/cdn-reports/cdn-core-reports.png)
+    ![CDN felügyeleti portál – alapvető jelentések menü](./media/cdn-reports/cdn-core-reports.png)
 
-3. Minden jelentéshez válasszon egy dátumtartományt a **Dátumtartomány** listából. Választhat egy előre definiált dátumtartományt, például **a Ma** vagy **a Hét**, vagy az **Egyéni** lehetőséget, és manuálisan megadhat egy dátumtartományt a naptár ikonokra kattintva. 
+3. Minden jelentés esetében válasszon ki egy dátumtartományt a **dátumtartomány** listából. Kiválaszthat egy előre meghatározott dátumtartományt, például a **mai** vagy **az ezen a héten**, vagy kijelölhet **Egyéni** értéket, és manuálisan is megadhat egy dátumtartományt a naptár ikonjaira kattintva. 
 
-4. Miután kijelölt egy dátumtartományt, kattintson az **Ugrás** gombra a jelentés létrehozásához. 
+4. Miután kiválasztott egy dátumtartományt, kattintson az **Ugrás** gombra a jelentés létrehozásához. 
 
-4. Ha Excel formátumban szeretné exportálni az adatokat, kattintson az **Ugrás** gomb feletti Excel ikonra.
+4. Ha Excel-formátumban szeretné exportálni az adatformátumot, kattintson az **Ugrás** gomb fölötti Excel ikonra.
 
 ## <a name="bandwidth"></a>Sávszélesség
-A sávszélesség-jelentés egy grafikonból és egy adattáblából áll, amely a HTTP és HTTPS CDN sávszélesség-használatát jelzi egy adott időszakban, Mbps-ben. Megtekintheti a sávszélesség-használatot az összes POP-ban vagy egy adott POP-ban. Ez a jelentés lehetővé teszi a pop-ok forgalmi csúcsok és elosztásmegtekintését.
+A sávszélesség jelentés egy gráfból és adattáblából áll, amely a CDN sávszélesség használatát jelzi a HTTP és a HTTPS számára egy adott időtartamon belül (MB/s). Megtekintheti a sávszélesség-használatot az összes pop-ban vagy egy adott POP-ban. Ez a jelentés lehetővé teszi, hogy megtekintse a pop-forgalomra vonatkozó tüskéket és eloszlást.
 
-Az **Edge csomópontok** listájában válassza az **Összes peremcsomópont lehetőséget** az összes csomópontból érkező forgalom megtekintéséhez, vagy válasszon ki egy adott területet.
+Az **Edge-csomópontok** listából válassza ki az összes **peremhálózati csomópontot** az összes csomópont forgalmának megtekintéséhez, vagy válasszon ki egy adott régiót.
 
-A jelentést ötpercenként frissítik.
+A jelentés öt percenként frissül.
 
 ![Sávszélesség-jelentés](./media/cdn-reports/cdn-bandwidth.png)
 
-## <a name="data-transferred"></a>Továbbított adatok
-Ez a jelentés egy grafikonból és egy adattáblából áll, amely a HTTP és https CDN-forgalom használatát jelzi egy adott időszakban, GB-ban. Megtekintheti a forgalom használatát az összes POP-ban vagy egy adott POP-ban. Ez a jelentés lehetővé teszi a forgalmi csúcsok és a POP-ok közötti eloszlás megtekintését.
+## <a name="data-transferred"></a>Továbbított adatátvitel
+Ez a jelentés egy gráf-és adattáblaből áll, amely a CDN-forgalom HTTP-és HTTPS-alapú használatát jelzi egy adott időszakon belül, GB-ban. Megtekintheti a forgalmi használatot az összes pop-ban vagy egy adott POP-on. Ez a jelentés lehetővé teszi, hogy megtekintse a forgalmi csúcsokat és a terjesztést a pop-on keresztül.
 
-Az **Edge csomópontok** listájában válassza az **Összes peremcsomópont lehetőséget** az összes csomópontból érkező forgalom megtekintéséhez, vagy válasszon ki egy adott területet.
+Az **Edge-csomópontok** listából válassza ki az összes **peremhálózati csomópontot** az összes csomópont forgalmának megtekintéséhez, vagy válasszon ki egy adott régiót.
 
-A jelentést ötpercenként frissítik.
+A jelentés öt percenként frissül.
 
-![Továbbított adatokról szóló jelentés](./media/cdn-reports/cdn-data-transferred.png)
+![Adattovábbítási jelentés](./media/cdn-reports/cdn-data-transferred.png)
 
 ## <a name="hits-status-codes"></a>Találatok (állapotkódok)
-Ez a jelentés a tartalom kérésállapot-kódjainak terjesztését ismerteti. Minden tartalomkérés HTTP-állapotkódot hoz létre. Az állapotkód azt írja le, hogy a szélelévő POP-ok hogyan kezelték a kérelmet. A 2xx állapotkód például azt jelzi, hogy a kérés sikeresen kézbesítve lett egy ügyfélnek, míg a 4xx állapotkód azt jelzi, hogy hiba történt. A HTTP-állapotkódokról a [HTTP-állapotkódok listája](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)című témakörben talál további információt.
+Ez a jelentés a tartalomhoz tartozó kérelmek állapot-kódjainak eloszlását ismerteti. Minden tartalomra vonatkozó kérelem HTTP-állapotkódot generál. Az állapotkód azt írja le, hogyan kezeli a peremhálózati pop a kérést. Egy 2xx például azt jelzi, hogy a kérést sikerült kézbesíteni egy ügyfélnek, míg a 4xx állapotkód azt jelzi, hogy hiba történt. A HTTP-állapotkódok részletes ismertetését lásd: [http](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)-állapotkódok listája.
 
-![Találati jelentés](./media/cdn-reports/cdn-hits.png)
+![Jelentés a találatokról](./media/cdn-reports/cdn-hits.png)
 
-## <a name="cache-statuses"></a>Gyorsítótár állapotai
-Ez a jelentés ismerteti a gyorsítótár-lekérések és az ügyfélkérelmek gyorsítótár-tévesztéseinek eloszlását. Mivel a gyorsítótár-találatok a leggyorsabb teljesítményt eredményezik, optimalizálhatja az adatkézbesítési sebességet a gyorsítótár-tévesztések és a lejárt gyorsítótár-találatok minimalizálásával. 
+## <a name="cache-statuses"></a>Gyorsítótár állapota
+Ez a jelentés a gyorsítótár-találatok és a gyorsítótár-kihagyott ügyfelek kéréseinek eloszlását ismerteti. Mivel a gyorsítótárbeli találatok közül a leggyorsabb a teljesítmény, a gyorsítótár-lemaradás és a gyorsítótár-találatok minimalizálása érdekében optimalizálhatja az adatátviteli sebességet. 
 
-A gyorsítótár-tévesztések csökkentése érdekében konfigurálja úgy az eredeti kiszolgálót, hogy a lehető legkisebb rekedjen: 
- * `no-cache`válaszfejlécek
- * Lekérdezés-karakterlánc gyorsítótárazás, kivéve, ha feltétlenül szükséges  
- * Nem gyorsítótárazható válaszkódok
+A gyorsítótár-kihagyás csökkentése érdekében konfigurálja a forrás-kiszolgálót a következők használatának minimalizálása érdekében: 
+ * `no-cache`Válasz fejlécei
+ * Lekérdezés-karakterlánc gyorsítótárazása, kivéve, ha szigorúan szükséges  
+ * Nem gyorsítótárazható válaszok kódjai
 
-A lejárt gyorsítótár-lekérések csökkentéséhez `max-age` állítsa be az eszköz hosszú időszakra, hogy minimálisra csökkentse a származási kiszolgálóra irányuló kérelmek számát.
+A gyorsítótár-találatok számának csökkentéséhez állítson be egy `max-age` adategységet hosszú időtartamra, hogy minimálisra csökkentse a kérelmek számát a forráskiszolgálón.
 
-![Gyorsítótár állapotjelentése](./media/cdn-reports/cdn-cache-statuses.png)
+![Gyorsítótár-állapotok jelentés](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>A gyorsítótár fő állapotai a következők:
-* TCP_HIT: Peremhálózati kiszolgálóról szolgálják ki. Az objektum a gyorsítótárban volt, és nem lépte túl a maximális életkorát.
-* TCP_MISS: Az eredeti kiszolgálóról szolgálják ki. Az objektum nem volt a gyorsítótárban, és a válasz vissza állt az eredeti.
-* TCP_EXPIRED _MISS: Az eredeti kiszolgálóról kiszolgálva, miután újraérvényesítést kapott az originnel. Az objektum a gyorsítótárban volt, de túllépte a maximális életkorát. Az eredeti vel rendelkező újraérvényesítés eredményeképpen a gyorsítótár-objektumot egy új, kezdő válasz váltotta fel.
-* TCP_EXPIRED _HIT: Az edge-ből kiszolgálva, miután újraérvényesítést ért el az eredetivel. Az objektum a gyorsítótárban volt, de túllépte a maximális életkorát. Az eredeti kiszolgálóval való újraérvényesítés a gyorsítótár-objektum módosítását eredményezte.
+* TCP_HIT: a peremhálózati kiszolgálóról kézbesítve. Az objektum a gyorsítótárban volt, és nem lépte túl a maximális kort.
+* TCP_MISS: a forrás-kiszolgálóról szolgált. Az objektum nem volt a gyorsítótárban, és a válasz visszatért a forráshoz.
+* TCP_EXPIRED _MISS: a forrás kiszolgálóról kiszolgált, a forrással való újraérvényesítés után. Az objektum a gyorsítótárban volt, de túllépte a maximális kort. A forrással való újbóli érvényesítés eredményeként a gyorsítótár objektum helyére új válasz származik.
+* TCP_EXPIRED _HIT: a rendszer szélétől kiszolgálja a forrással való újraérvényesítés után. Az objektum a gyorsítótárban volt, de túllépte a maximális kort. A forrás-kiszolgálóval való újraérvényesítés eredményeként a gyorsítótár objektum nem módosult.
 
-### <a name="full-list-of-cache-statuses"></a>Gyorsítótár-állapotok teljes listája
-* TCP_HIT – Ez az állapot akkor jelenik meg, ha a kérelmet közvetlenül a POP-ból kézbesítik az ügyfélnek. Egy eszköz azonnal kiszolgálják a POP, ha a gyorsítótárazott a POP legközelebb az ügyfélhez, és egy érvényes idő-to-live (TTL). A TTL-t a következő válaszfejlécek határozzák meg:
+### <a name="full-list-of-cache-statuses"></a>A gyorsítótár állapotának teljes listája
+* TCP_HIT – ez az állapot akkor jelenik meg, ha egy kérést közvetlenül a POP-ból az ügyfélnek kézbesítenek. A rendszer azonnal kiszolgálja az eszközt egy POP-ról, ha az az ügyfélhez legközelebb lévő POP-gyorsítótárban van, és érvényes élettartammal (TTL) rendelkezik. Az ÉLETTARTAMot a következő válasz fejlécek határozzák meg:
   
-  * Gyorsítótár-vezérlés: s-maxage
-  * Gyorsítótár-vezérlés: max-kor
+  * Gyorsítótár-vezérlő: s-maxage
+  * Cache-Control: Max-Age
   * Lejárat
-* TCP_MISS: Ez az állapot azt jelzi, hogy a kért eszköz gyorsítótárazott verziója nem található az ügyfélhez legközelebb eső POP-on. Az eszközt az eredeti kiszolgálótól vagy az eredeti pajzskiszolgálótól kérik. Ha az eredeti kiszolgáló vagy az eredeti pajzskiszolgáló egy eszközt ad vissza, a rendszer az ügyfélnek kézbesíti, és az ügyfélen és a peremhálózati kiszolgálón is gyorsítótárba helyezi. Ellenkező esetben egy nem 200-as állapotkódot (például 403 Tiltott vagy 404 nem található) ad vissza.
-* TCP_EXPIRED_HIT: Ez az állapot akkor jelenik meg, ha egy lejárt TTL-lel rendelkező eszközt megcélző kérést közvetlenül a POP-ból kézbesített az ügyfélnek. Például, ha az eszköz maximális életkora lejárt. 
+* TCP_MISS: ez az állapot azt jelzi, hogy a kért eszköz gyorsítótárazott verziója nem található az ügyfélhez legközelebb lévő POP-ban. Az eszközt egy forrás-vagy egy Origin Shield-kiszolgálótól kéri a rendszer. Ha a forrás-vagy a forrás-védelmi kiszolgáló egy adategységet ad vissza, a rendszer az ügyfél és a peremhálózati kiszolgálón is gyorsítótárazza. Ellenkező esetben a rendszer nem 200-as állapotkódot (például 403 Tiltott vagy 404 nem található) ad vissza.
+* TCP_EXPIRED_HIT: ez az állapot akkor jelenik meg, ha egy olyan kérést, amely egy lejárt TTL-értékkel rendelkező eszközt céloz meg közvetlenül a POP-ból az ügyfélnek. Például, ha az eszköz maximális életkora lejárt. 
   
-   A lejárt kérelem általában újraérvényesítési kérelmet eredményez a forráskiszolgálón. Ahhoz, hogy egy TCP_EXPIRED_HIT állapot bekövetkezzen, az eredeti kiszolgálónak jeleznie kell, hogy az eszköz újabb verziója nem létezik. Ez a helyzet általában az eszköz gyorsítótár-vezérlési és lejárati fejléceinek frissítését eredményezi.
-* TCP_EXPIRED_MISS: Ez az állapot akkor jelenik meg, ha egy lejárt gyorsítótárazott eszköz újabb verzióját szolgálják ki a POP-ból az ügyfélnek. Ez az állapot akkor fordul elő, ha egy gyorsítótárazott eszköz TTL-je lejárt (például lejárt a maximális életkor), és az eredeti kiszolgáló az eszköz újabb verzióját adja vissza. Az eszköz ezen új verziója a gyorsítótárazott verzió helyett az ügyfélnek kerül kiszolgálásra. Emellett a peremhálózati kiszolgálón és az ügyfélen is gyorsítótárazva van.
-* CONFIG_NOCACHE: Ez az állapot azt jelzi, hogy egy ügyfél-specifikus konfiguráció a peremhálózati POP megakadályozta az eszköz gyorsítótárazását.
-* NONE – Ez az állapot azt jelzi, hogy a gyorsítótár tartalmának frissesség-ellenőrzése nem történt meg.
-* TCP_CLIENT_REFRESH_MISS: Ez az állapot akkor jelenik meg, ha egy HTTP-ügyfél, például egy böngésző, kényszeríti a peremhálózati POP-ot, hogy lekérje az elavult eszköz új verzióját az eredeti kiszolgálóról. Alapértelmezés szerint a kiszolgálók megakadályozzák, hogy egy HTTP-ügyfél arra kényszerítse a peremhálózati kiszolgálókat, hogy az eszköz új verzióját kérjék le az eredeti kiszolgálóról.
-* TCP_PARTIAL_HIT: Ez az állapot akkor jelenik meg, ha egy bájttartomány-kérelem egy részlegesen gyorsítótárazott eszköz lekérését eredményezi. A kért bájttartomány tüstént kiszolgálja a POP az ügyfélnek.
-* Nem gyorsítótárazható: Ez az állapot `Cache-Control` akkor `Expires` jelenik meg, ha egy eszköz és a fejlécek azt jelzik, hogy nem kell gyorsítótárazza a POP vagy a HTTP-ügyfél. Az ilyen típusú kérelmek et az eredeti kiszolgálóról szolgálják ki.
+   Egy lejárt kérelem általában a forráskiszolgáló újraérvényesítési kérelmét eredményezi. TCP_EXPIRED_HIT állapot esetén a forrás-kiszolgálónak jeleznie kell, hogy az eszköz újabb verziója nem létezik. Ez általában azt eredményezi, hogy az eszköz gyorsítótár-vezérlője frissül, és a fejlécek lejárnak.
+* TCP_EXPIRED_MISS: ez az állapot akkor jelenik meg, ha egy lejárt gyorsítótárazott eszköz újabb verzióját kézbesíti a rendszer a POP-ból az ügyfélnek. Ez az állapot akkor fordul elő, ha egy gyorsítótárazott eszköz ÉLETTARTAMa lejárt (például lejárt a maximális korhatár), és a forráskiszolgáló az adott eszköz újabb verzióját adja vissza. Az eszköz ezt az új verzióját a gyorsítótárazott verzió helyett az ügyfél szolgáltatja. Emellett a rendszer gyorsítótárazza a peremhálózati kiszolgálón és az ügyfélen.
+* CONFIG_NOCACHE: ez az állapot azt jelzi, hogy egy ügyfél-specifikus konfiguráció a peremhálózati POP megakadályozta az eszköz gyorsítótárazását.
+* NINCS – ez az állapot azt jelzi, hogy a gyorsítótár tartalmának frissességi ellenőrzését nem hajtották végre.
+* TCP_CLIENT_REFRESH_MISS: ez az állapot akkor jelenik meg, ha egy HTTP-ügyfél (például egy böngésző) a peremhálózati POP-ra kényszeríti egy elavult eszköz új verziójának lekérését a forrás-kiszolgálóról. Alapértelmezés szerint a kiszolgálók megakadályozzák, hogy egy HTTP-ügyfél kényszerítse a peremhálózati kiszolgálókat az eszköz új verziójának a forrás-kiszolgálóról való lekérésére.
+* TCP_PARTIAL_HIT: ez az állapot akkor kerül jelentésre, ha egy bájtos tartományra vonatkozó kérelem egy részlegesen gyorsítótárazott objektum találatot eredményez. A kért bájt-tartomány azonnal kiszolgálható a POP-ból az ügyfélnek.
+* Nem GYORSÍTÓTÁRAZható: ez az állapot akkor jelenik meg, ha `Cache-Control` egy `Expires` adott eszköz és fejléc azt jelzi, hogy nem szabad gyorsítótárazni a pop-on vagy a http-ügyfélen. Az ilyen típusú kérelmeket a rendszer a forráskiszolgálón kézbesíti.
 
 ## <a name="cache-hit-ratio"></a>Gyorsítótár találati aránya
-Ez a jelentés a gyorsítótárazott kérelmek százalékos arányát jelzi, amelyeket közvetlenül a gyorsítótárból kézbesített.
+Ez a jelentés a gyorsítótárból közvetlenül kiszolgált gyorsítótárazott kérelmek százalékos arányát jelzi.
 
-A jelentés a következő részleteket tartalmazza:
+A jelentés a következő adatokat tartalmazza:
 
-* A kért tartalom gyorsítótárazva lett a kérelmezőhöz legközelebb eső POP-on.
-* A kérést közvetlenül a hálózatunk széléről kézbesítettük.
-* A kérelem nem igényelt újraérvényesítést az eredeti kiszolgálóval.
+* A kért tartalom gyorsítótárazva lett a kérelmezőhöz legközelebb lévő POP-on.
+* A kérést közvetlenül a hálózat szélétől kézbesítették.
+* A kérelem nem igényelt újraérvényesítést a forrás-kiszolgálóval.
 
 A jelentés nem tartalmazza a következőket:
 
-* Az ország-/régiószűrési beállítások miatt elutasított kérelmek.
-* Olyan eszközökre vonatkozó kérelmek, amelyek fejlécei azt jelzik, hogy azokat nem szabad gyorsítótárba tanuk. Például `Cache-Control: private`, `Cache-Control: no-cache`vagy `Pragma: no-cache` a fejlécek megakadályozzák egy eszköz gyorsítótárazását.
-* A részben gyorsítótárazott tartalom bájttartomány-kérelmei.
+* Ország/régió szűrési lehetőségei miatt megtagadott kérelmek.
+* Olyan eszközökre vonatkozó kérelmek, amelyek fejlécei azt jelzik, hogy nem szabad gyorsítótárazni őket. A, a `Cache-Control: private` `Cache-Control: no-cache`, a vagy `Pragma: no-cache` a fejléc például megakadályozza egy eszköz gyorsítótárazását.
+* A részlegesen gyorsítótárazott tartalomhoz tartozó bájtos tartományra vonatkozó kérelmek.
 
-A képlet: (TCP_ HIT/(TCP_ HIT+TCP_MISS)*100
+A képlet a következő: (TCP_ találat/(TCP_ HIT + TCP_MISS)) * 100
 
-![Gyorsítótár találati arányának jelentése](./media/cdn-reports/cdn-cache-hit-ratio.png)
+![Gyorsítótár-találatok aránya jelentés](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>IPV4/IPV6 átvitt adatok
-Ez a jelentés az IPV4 és az IPV6 forgalomhasználati eloszlását jeleníti meg.
+## <a name="ipv4ipv6-data-transferred"></a>IPV4/IPV6-adatátvitel
+Ez a jelentés a forgalom használatának eloszlását mutatja az IPV4-ben és az IPV6-ban.
 
-![IPV4/IPV6 átvitt adatok](./media/cdn-reports/cdn-ipv4-ipv6.png)
+![IPV4/IPV6-adatátvitel](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-Jelentések csak az elmúlt 18 hónapban készíthetők.
+A jelentéseket csak az elmúlt 18 hónap során lehet létrehozni.
 

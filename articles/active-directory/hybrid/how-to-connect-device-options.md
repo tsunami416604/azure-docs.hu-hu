@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Eszközbeállítások | Microsoft dokumentumok'
-description: Ez a dokumentum részletezi az Azure AD Connectben elérhető eszközbeállításokat
+title: 'Azure AD Connect: eszközbeállítások | Microsoft Docs'
+description: Ez a dokumentum részletesen ismerteti a Azure AD Connectben elérhető eszközök beállításait
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,34 +17,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109527"
 ---
-# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Eszközbeállítások
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: eszközbeállítások
 
-Az alábbi dokumentáció az Azure AD Connect ben elérhető különböző eszközbeállításokkal kapcsolatos információkat tartalmazza. Az Azure AD Connect segítségével konfigurálhatja a következő két műveletet: 
-* **Hibrid Azure AD-csatlakozás:** Ha a környezet rendelkezik egy helyszíni AD lábnyom, és szeretné az Azure AD előnyeit, hibrid Azure AD-hez csatlakozott eszközök valósíthatja meg. Ezek az eszközök a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
-* **Eszközvisszaírás:** Az eszközvisszaírás az AD FS (2012 R2 vagy újabb) védett eszközök (2012 R2 vagy újabb) eszközökön alapuló feltételes hozzáférés engedélyezésére szolgál
+Az alábbi dokumentáció a Azure AD Connectban elérhető különböző eszközökre vonatkozó információkat tartalmazza. A Azure AD Connect a következő két művelet konfigurálására használható: 
+* **Hibrid Azure ad-csatlakozás**: Ha a környezet helyszíni ad-lábnyomot használ, és az Azure ad előnyeit szeretné használni, hibrid Azure ad-hez csatlakoztatott eszközöket is alkalmazhat. Ezek az eszközök a helyszíni Active Directoryhoz és a Azure Active Directoryhoz is csatlakoznak.
+* **Eszköz visszaírási**: az eszköz visszaírási lehetővé teszi a feltételes hozzáférés engedélyezését az eszközökön alapuló AD FS (2012 R2 vagy újabb) védett eszközökre
 
-## <a name="configure-device-options-in-azure-ad-connect"></a>Eszközbeállítások konfigurálása az Azure AD Connectben
+## <a name="configure-device-options-in-azure-ad-connect"></a>Eszközbeállítások konfigurálása a Azure AD Connectban
 
-1.  Futtassa az Azure AD Connect et. A **További feladatok** lapon válassza az **Eszközbeállítások konfigurálása**lehetőséget.  Kattintson a **Tovább** gombra.
+1.  Azure AD Connect futtatása. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása**lehetőséget.  Kattintson a **Tovább** gombra.
     ![Eszközbeállítások konfigurálása](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    Az **Áttekintés** lap megjeleníti a részleteket.
+    Az **Áttekintés** oldalon megjelennek a részletek.
     ![Áttekintés](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
-    > Az új Eszközkonfigurálás idáig csak az 1.1.819.0-s és újabb verzióban érhető el.
+    > Az eszköz új konfigurálása lehetőség csak a 1.1.819.0 és újabb verziókban érhető el.
 
-2.  Miután megadta az Azure AD hitelesítő adatait, az Eszközbeállítások lapon végrehajtandó műveletet választhatja ki.
-    ![Eszközműveletek](./media/how-to-connect-device-options/deviceoptionsselection.png)
+2.  Az Azure AD hitelesítő adatainak megadása után kiválaszthatja az eszköz beállításai lapon végrehajtandó műveletet.
+    ![Eszköz műveletei](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Hibrid Azure AD-csatlakozás konfigurálása](../device-management-hybrid-azuread-joined-devices-setup.md)
-* [Eszközvisszaírás konfigurálása / letiltása](how-to-connect-device-writeback.md)
+* [Eszköz visszaírási konfigurálása/letiltása](how-to-connect-device-writeback.md)
 

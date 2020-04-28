@@ -1,35 +1,35 @@
 ---
-title: A lekérdezési idő optimalizálása a TOAST táblatárolási stratégia használatával az Azure Database for PostgreSQL - Single Server rendszerben
-description: Ez a cikk ismerteti, hogyan optimalizálhatja a lekérdezési idő a TOAST tábla tárolási stratégia egy Azure Database for PostgreSQL - Single Server.
+title: A lekérdezési idő optimalizálása a pirítós táblázat tárolási stratégiájának használatával Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan optimalizálható a lekérdezési idő a pirítós táblázat tárolási stratégiájával egy Azure Database for PostgreSQL – egyetlen kiszolgálón.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65066975"
 ---
-# <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>A lekérdezési idő optimalizálása a TOAST tábla tárolási stratégiájával 
-Ez a cikk azt ismerteti, hogyan optimalizálhatja a lekérdezési időket a túlméretes attribútumtárolási módszerrel (TOAST) táblatárolási stratégiával.
+# <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>A lekérdezési idő optimalizálása a pirítós táblázat tárolási stratégiájával 
+Ez a cikk azt ismerteti, hogyan optimalizálható a lekérdezési idő a nagyméretű attribútumú tárolási technikák (TOAST) tábla tárolási stratégiájával.
 
-## <a name="toast-table-storage-strategies"></a>TOAST asztal tárolási stratégiák
-Négy különböző stratégiák tárolására használt oszlopok lemezen, amely képes használni TOAST. A tömörítés és a soron kívüli tárolás különböző kombinációit képviselik. A stratégia az adattípus szintjén és az oszlop szintjén állítható be.
-- **Az Egyszerű** megakadályozza a tömörítést vagy a soron kívüli tárolást. Letiltja az egybájtos fejlécek használatát a varlena típusokhoz. Az egyszerű az egyetlen lehetséges stratégia olyan adattípusok oszlopai számára, amelyek nem tudják használni a TOAST-ot.
-- **A kiterjesztett** lehetővé teszi mind a tömörítést, mind a soron kívüli tárolást. A KITERJESZTETT az alapértelmezett a legtöbb olyan adattípusnál, amely használhatja a TOAST-ot. Először a tömörítést kísérli meg. A rendszer kísérlettel kísérli meg a soron kívüli tárolást, ha a sor még mindig túl nagy.
-- **A Külső** lehetővé teszi a soron kívüli tárolást, de a tömörítést nem. A Külső használata gyorsabbá teszi a karakterlánc-alatti műveleteket a széles szöveg- és byteaoszlopokon. Ez a sebesség a megnövekedett tárhely büntetésével jár. Ezek a műveletek úgy vannak optimalizálva, hogy csak a soron kívüli érték szükséges részeit érjék le, ha nincstömörítve.
-- **A Fő** lehetővé teszi a tömörítést, de nem a soron kívüli tárolást. Az ilyen oszlopok esetében továbbra is soron kívüli tárolás történik, de csak végső megoldásként. Ez akkor fordul elő, ha nincs más módja annak, hogy a sor elég kicsi ahhoz, hogy elférjen egy oldalon.
+## <a name="toast-table-storage-strategies"></a>A pirítós táblázat tárolási stratégiái
+Négy különböző stratégia van használatban a PIRÍTÓSt használó lemezeken található oszlopok tárolására. A tömörítés és a beépített tárolók különböző kombinációit jelentik. A stratégia az adattípus és az oszlop szintjén állítható be.
+- Az **egyszerűség** megakadályozza a tömörítést vagy a beépített tárolást. Letiltja az egybájtos fejlécek használatát a varlena-típusokhoz. A sima az egyetlen lehetséges stratégia a PIRÍTÓSt nem használó adattípusok oszlopaihoz.
+- A **kibővített** funkció lehetővé teszi mind a tömörítést, mind a soron kívüli tárolást. A kibővített érték az alapértelmezett a legtöbb adattípushoz, amely a PIRÍTÓSt használhatja. Először a tömörítést próbálja meg. Ha a sor még túl nagy, akkor a rendszer nem tudja elvégezni a tárolást.
+- A **külső** lehetővé teszi a beépített tárolást, de nem tömöríti a tömörítést. A külső lehetővé teszi az alkarakterlánc-műveletek használatát a széles szöveges és bytea oszlopokon. Ez a sebesség a megnövekedett tárolóhelyek büntetésével jár. Ezek a műveletek úgy vannak optimalizálva, hogy csak az elfogyott érték kötelező részeit lehessen beolvasni, ha nem tömörítik.
+- A **Main** lehetővé teszi a tömörítést, de nem beépített tárterületet. Az ilyen oszlopokhoz továbbra is végre van hajtva a beépített tárterület, de csak utolsó megoldásként. Akkor következik be, amikor nincs más mód arra, hogy a sor elég kicsi legyen ahhoz, hogy illeszkedjen az oldalhoz.
 
-## <a name="use-toast-table-storage-strategies"></a>Toast asztaltárolási stratégiák használata
-Ha a lekérdezések olyan adattípusokhoz férnek hozzá, amelyek a TOAST-t használhatják, fontolja meg a Fő stratégia használatát az alapértelmezett Kiterjesztett beállítás helyett a lekérdezési idők csökkentéséhez. A fő nem zárja ki a vezetéken kívüli tárolást. Ha a lekérdezések nem férnek hozzá a TOAST használatára jogosult adattípusokhoz, hasznos lehet a Kiterjesztett beállítás megtartása. A főtábla sorainak nagyobb része elfér a megosztott puffergyorsítótárban, ami segíti a teljesítményt.
+## <a name="use-toast-table-storage-strategies"></a>A TOAST Table Storage-stratégiák használata
+Ha a lekérdezések a PIRÍTÓSt használó adattípusokhoz férnek hozzá, érdemes lehet a fő stratégiát használni a lekérdezési idők csökkentése érdekében az alapértelmezett kiterjesztett beállítás helyett. A fő nem zárja ki a beépített tárolást. Ha a lekérdezések nem férnek hozzá a PIRÍTÓSt használó adattípusokhoz, hasznos lehet a kiterjesztett lehetőség megőrzése. A fő tábla sorainak nagyobb része illeszkedik a megosztott puffer gyorsítótárába, ami segít a teljesítményben.
 
-Ha olyan számítási feladattal rendelkezik, amely széles táblákkal és magas karakterszámmal rendelkező sémát használ, fontolja meg a PostgreSQL TOAST táblák használatát. Egy példa vevőtáblája 350-nél nagyobb oszlopot tartalmazott, több oszlop255 karaktert ölelt fel. Miután átlett alakítva a TOAST tábla Fő stratégiájára, a benchmark lekérdezési idő 4203 másodpercről 467 másodpercre csökkent. Ez 89 százalékos javulás.
+Ha olyan számítási feladattal rendelkezik, amely széles táblázatokkal és nagy méretű karakterekkel rendelkező sémát használ, érdemes lehet PostgreSQL TOAST-táblákat használni. Egy példaként szolgáló Customer tábla több mint 350 oszlopot tartalmaz, amelyek több, 255 karakterből álló oszloppal rendelkeznek. Miután áttért a TOAST Table fő stratégiájára, a teljesítményteszt lekérdezési ideje 4203 másodperctől 467 másodpercre csökkent. Ez 89 százalékos javulást jelent.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a számítási feladatok at a korábbi jellemzők. 
+Tekintse át az előző jellemzőkre vonatkozó számítási feladatokat. 
 
-Tekintse át a PostgreSQL alábbi dokumentációját: 
-- [68. fejezet, Adatbázis fizikai tárolása](https://www.postgresql.org/docs/current/storage-toast.html) 
+Tekintse át a következő PostgreSQL-dokumentációt: 
+- [68. fejezet, adatbázis fizikai tárolása](https://www.postgresql.org/docs/current/storage-toast.html) 

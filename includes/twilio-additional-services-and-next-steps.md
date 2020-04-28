@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179145"
 ---
-## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Útmutató: További Twilio-szolgáltatások használata
-Az itt bemutatott példák mellett a Twilio webalapú API-kat is kínál, amelyek segítségével további Twilio-funkciókat használhat az Azure-alkalmazásból. A részletekért tekintse meg a [Twilio API dokumentációját.][twilio_api_documentation]
+## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Útmutató: további Twilio-szolgáltatások használata
+Az itt bemutatott példákon kívül a Twilio webalapú API-kat kínál, amelyek segítségével további Twilio funkciókat alkalmazhat az Azure-alkalmazásból. További részletekért tekintse meg a [TWILIO API dokumentációját][twilio_api_documentation].
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>További lépések
-Most, hogy megtanulta a Twilio szolgáltatás alapjait, kövesse az alábbi linkeket, hogy többet megtudjon:
+Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál:
 
-* [A Twilio biztonsági irányelvei][twilio_security_guidelines]
-* [Twilio HowTos és példakód][twilio_howtos]
-* [Twilio rövid útmutatók][twilio_quickstarts] 
+* [Twilio biztonsági irányelvek][twilio_security_guidelines]
+* [Twilio-útmutatók és-példa kódja][twilio_howtos]
+* [Twilio gyors útmutatók][twilio_quickstarts] 
 * [Twilio a GitHubon][twilio_on_github]
-* [Beszéljen a Twilio ügyfélszolgálatával][twilio_support]
+* [Beszéljen a Twilio-támogatásról][twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security

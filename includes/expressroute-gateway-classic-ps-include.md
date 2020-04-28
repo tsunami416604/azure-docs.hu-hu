@@ -9,24 +9,24 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178853"
 ---
 > [!NOTE]
-> Ezek a példák nem vonatkoznak az S2S/ExpressRoute egymás mellett létező konfigurációkra.
-> Az átjárók egymás mellett létező konfigurációban való munkáról a [Egymás mellett létező kapcsolatok konfigurálása című](../articles/expressroute/expressroute-howto-coexist-classic.md#gw) témakörben talál további információt.
+> Ezek a példák nem vonatkoznak a S2S/ExpressRoute egyazon konfigurációkra.
+> Az átjárók egyidejű konfigurálásával kapcsolatos további információkért lásd: egyidejű [Kapcsolatok konfigurálása.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>Átjáró hozzáadása
 
-Ha átjárót ad hozzá egy virtuális hálózathoz a klasszikus erőforrásmodell használatával, az átjáró létrehozása előtt közvetlenül módosítja a hálózati konfigurációs fájlt. Az alábbi példákban lévő értékeknek meg kell jelenniük a fájlban az átjáró létrehozásához. Ha a virtuális hálózathoz korábban átjáró volt társítva, ezen értékek némelyike már jelen lesz. Módosítsa a fájlt az alábbi értékeknek megfelelően.
+Ha a klasszikus erőforrás-modell használatával ad hozzá átjárót egy virtuális hálózathoz, a hálózati konfigurációs fájlt közvetlenül az átjáró létrehozása előtt kell módosítania. Az alábbi példákban szereplő értékeknek jelen kell lenniük a fájlban az átjáró létrehozásához. Ha a virtuális hálózata korábban egy átjáróhoz volt társítva, akkor ezen értékek némelyike már jelen van. Módosítsa a fájlt úgy, hogy az az alábbi értékeket tükrözze.
 
 ### <a name="download-the-network-configuration-file"></a>A hálózati konfigurációs fájl letöltése
 
-1. Töltse le a hálózati konfigurációs fájlt a [hálózati konfigurációs fájl](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) cikkében leírt lépésekkel. Nyissa meg a fájlt egy szövegszerkesztő vel.
-2. Helyi hálózati hely hozzáadása a fájlhoz. Bármilyen érvényes címelőtagot használhat. A VPN-átjáróhoz bármilyen érvényes IP-címet hozzáadhat. Az ebben a szakaszban szereplő címértékek nem expressroute-műveletekhez használatosak, de szükségesek a fájlérvényesítéshez. A példában a "branch1" a hely neve. Használhat másik nevet, de ne felejtse el ugyanazt az értéket használni a fájl Átjáró szakaszában.
+1. Töltse le a hálózati konfigurációs fájlt a [hálózati konfigurációs fájl](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) lépései című cikkben ismertetett lépések segítségével. Nyissa meg a fájlt egy szövegszerkesztő használatával.
+2. Adjon hozzá egy helyi hálózati helyet a fájlhoz. Bármilyen érvényes címzési előtagot használhat. A VPN-átjáróhoz bármilyen érvényes IP-címet adhat hozzá. Az ebben a szakaszban szereplő ExpressRoute-műveletekhez nem használhatók, de a fájl érvényesítéséhez szükségesek. A példában a "fiók1" a hely neve. Használhat más nevet is, de ügyeljen arra, hogy ugyanazt az értéket használja a fájl átjáró szakaszában.
 
    ```
    <VirtualNetworkConfiguration>
@@ -39,11 +39,11 @@ Ha átjárót ad hozzá egy virtuális hálózathoz a klasszikus erőforrásmode
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
    ```
-3. Keresse meg a VirtualNetworkSites és módosítsa a mezőket.
+3. Navigáljon a VirtualNetworkSites, és módosítsa a mezőket.
 
-   * Ellenőrizze, hogy létezik-e átjáróalhálózat a virtuális hálózathoz. Ha nem, akkor adjunk hozzá egy ebben az időben. A névnek "GatewaySubnet" névnek kell lennie.
-   * Ellenőrizze, hogy a fájl átjáró szakasza létezik-e. Ha nem, add hozzá. Erre azért van szükség, hogy a virtuális hálózatot a helyi hálózati helyhez társítsa (amely azt a hálózatot jelöli, amelyhez csatlakozik).
-   * Ellenőrizze, hogy a kapcsolat típusa = Dedikált. Ez az ExpressRoute-kapcsolatok esetén szükséges.
+   * Ellenőrizze, hogy az átjáró-alhálózat létezik-e a virtuális hálózathoz. Ha nem, akkor egyszerre adhat hozzá egyet. A névnek "GatewaySubnet" értéknek kell lennie.
+   * Ellenőrizze, hogy létezik-e a fájl átjáró szakasza. Ha nem, adja hozzá. Erre azért van szükség, hogy a virtuális hálózatot a helyi hálózati hellyel társítsa (amely azt a hálózatot jelöli, amelyhez csatlakozik).
+   * Ellenőrizze, hogy a kapcsolattípus = dedikált-e. Ez a ExpressRoute-kapcsolatokhoz szükséges.
 
    ```
    </LocalNetworkSites>
@@ -76,7 +76,7 @@ Ha átjárót ad hozzá egy virtuális hálózathoz a klasszikus erőforrásmode
 
 ### <a name="create-the-gateway"></a>Az átjáró létrehozása
 
-Az alábbi paranccsal hozzon létre átjárót. Helyettesítsen bármilyen értéket a sajátjának.
+Átjáró létrehozásához használja az alábbi parancsot. Helyettesítse be a saját értékeit.
 
 ```powershell
 New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
@@ -84,7 +84,7 @@ New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -Gatewa
 
 ## <a name="verify-the-gateway-was-created"></a>Az átjáró létrehozásának ellenőrzése
 
-Az alábbi paranccsal ellenőrizze, hogy az átjáró létrejött-e. Ez a parancs az átjáróazonosítót is lekéri, amelyre más műveletekhez is szüksége van.
+Az alábbi parancs használatával ellenőrizheti, hogy létrejött-e az átjáró. Ez a parancs lekéri az átjáró AZONOSÍTÓját is, amelyhez más műveletekhez szüksége van.
 
 ```powershell
 Get-AzureVNetGateway
@@ -92,10 +92,10 @@ Get-AzureVNetGateway
 
 ## <a name="resize-a-gateway"></a>Átjáró átméretezése
 
-Számos [átjáró-ska létezik.](../articles/expressroute/expressroute-about-virtual-network-gateways.md) A következő paranccsal bármikor módosíthatja az átjáró termékváltozatát.
+Számos [átjáró-SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md)van. A következő parancs használatával bármikor módosíthatja az átjáró SKU-jának változását.
 
 > [!IMPORTANT]
-> Ez a parancs nem működik az UltraPerformance átjárónál. Az átjáró UltraPerformance-átjáróvá való módosításához először távolítsa el a meglévő ExpressRoute-átjárót, majd hozzon létre egy új UltraPerformance-átjárót. Az átjáró UltraPerformance-átjáróról való visszaminősítéséhez először távolítsa el az UltraPerformance átjárót, majd hozzon létre egy új átjárót.
+> Ez a parancs nem működik a UltraPerformance-átjáró esetében. Ha módosítani szeretné az átjárót egy UltraPerformance-átjáróra, először távolítsa el a meglévő ExpressRoute-átjárót, majd hozzon létre egy új UltraPerformance-átjárót. Ha vissza szeretné állítani az átjárót egy UltraPerformance-átjáróról, először távolítsa el az UltraPerformance-átjárót, majd hozzon létre egy új átjárót.
 >
 >
 
@@ -105,7 +105,7 @@ Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
 ## <a name="remove-a-gateway"></a>Átjáró eltávolítása
 
-Átjáró eltávolítása az alábbi paranccsal
+Átjáró eltávolításához használja az alábbi parancsot.
 
 ```powershell
 Remove-AzureVnetGateway -GatewayId <Gateway ID>

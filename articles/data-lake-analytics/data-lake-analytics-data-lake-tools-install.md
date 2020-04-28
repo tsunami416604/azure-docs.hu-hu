@@ -1,6 +1,6 @@
 ---
 title: Az Azure Data Lake Tools for Visual Studio telepítése
-description: Ez a cikk az Azure Data Lake Tools for Visual Studio telepítését ismerteti.
+description: Ez a cikk a Visual studióhoz készült Azure Data Lake-eszközök telepítését ismerteti.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,15 +10,15 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70914094"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Analytics-fiókokat a Visual Studio használatával. Az [U-SQL-ben](data-lake-analytics-u-sql-get-started.md) megadhatja a feladatokat, és elküldheti a feladatokat a Data Lake Analytics szolgáltatásnak. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
+Megtudhatja, hogyan hozhat létre Azure Data Lake Analytics-fiókokat a Visual Studióval. A [U-SQL-](data-lake-analytics-u-sql-get-started.md) ben megadhatja a feladatokat, és elküldheti a feladatokat a Data Lake Analytics szolgáltatásnak. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,29 +30,29 @@ Ismerje meg, hogyan hozhat létre Azure Data Lake Analytics-fiókokat a Visual S
   * Visual Studio 2013
 
 * **Microsoft Azure SDK for .NET** 2.7.1-es vagy újabb verzió. Telepítse a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/platform.aspx).
-* **Egy Data Lake Analytics-fiók.** Fiók létrehozásához lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md).
+* Egy **Data Lake Analytics** -fiók. Fiók létrehozásához lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md).
 
-## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>Az Azure Data Lake-eszközök telepítése a Visual Studio 2017-hez vagy a Visual Studio 2019-hez
+## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>A Visual Studio 2017 vagy a Visual Studio 2019 Azure Data Lake eszközeinek telepítése
 
-Az Azure Data Lake Tools for Visual Studio a Visual Studio 2017 15.3-as vagy újabb verzióinak támogatását támogatja. Az eszköz az **adattárolási és -feldolgozási** és **azure-fejlesztési** számítási feladatok része. A Visual Studio telepítésének részeként engedélyezze a két számítási feladat egyikét.
+A Visual studióhoz készült Azure Data Lake-eszközök a Visual Studio 2017 15,3-es vagy újabb verzióiban támogatottak. Az eszköz az **adattárolási és-feldolgozási** és az **Azure-fejlesztési** számítási feladatok része. A Visual Studio telepítésének részeként engedélyezze a két számítási feladat egyikét.
 
-Engedélyezze az **Adattárolási és -feldolgozási** munkaterhelést az alábbi módon:
+Engedélyezze az **adattárolási és-feldolgozási** feladatokat az alábbiak szerint:
 
-![Adattárolási és feldolgozási munkaterhelés engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-01.png)
+![Adattárolási és-feldolgozási munkaterhelés engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-01.png)
 
-Engedélyezze az **Azure fejlesztési** számítási feladatát az alábbi módon:
+Engedélyezze az **Azure-fejlesztési** számítási feladatot az alábbiak szerint:
 
-![Válassza ki az Azure fejlesztési munkaterhelését](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-02.png)
+![Azure-beli fejlesztési munkaterhelés kiválasztása](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Az Azure Data Lake Tools for Visual Studio 2013 és 2015 telepítése
 
-Töltse le és telepítse [a Microsoft Azure Data Lake és a Stream Analytics Tools for Visual Studio ](https://aka.ms/adltoolsvs)alkalmazást. A telepítés után a Visual Studio a következő módosításokat hajtvégre:
+Töltse le és telepítse [a Visual studióhoz készült Microsoft Azure Data Lake és stream Analytics eszközöket ](https://aka.ms/adltoolsvs). A telepítés után a Visual Studio a következő módosításokat hajtja végre:
 
-* A **Server Explorer** > **Azure-csomópont** egy Data Lake **Analytics-csomópontot** tartalmaz.
+* A **Server Explorer** > **Azure** -csomópontja **Data Lake Analytics** csomópontot tartalmaz.
 * Az **Eszközök** menü tartalmaz egy **Data Lake** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-* A diagnosztikai adatok naplózásához olvassa el az [Azure Data Lake Analytics diagnosztikai naplóinak elérése című témakört.](data-lake-analytics-diagnostic-logs.md)
+* A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).
-* A csúcspont végrehajtási nézetének használatához olvassa [el A Csúcspont végrehajtási nézet használata a Visual Studio Data Lake Tools alkalmazásban című témakört.](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* A csúcspont-végrehajtási nézet használatához lásd: [a Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

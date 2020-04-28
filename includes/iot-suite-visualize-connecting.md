@@ -9,49 +9,49 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179553"
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
-Megtekintheti az eszközről küldött telemetriai adatokat a megoldás **Eszközkezelő** lapján.
+A megoldás **Device Explorer** lapján megtekintheti az eszközről eljuttatott telemetria.
 
-1. Válassza ki a kiépített eszközt az **Eszközkezelő** lapon található eszközök listájában. A panel megjeleníti az eszközadatait, beleértve az eszköz telemetriai adatait is:
+1. Válassza ki az eszközök listájában kiépített eszközt a **Device Explorer** oldalon. A panel az eszközre vonatkozó információkat jeleníti meg, beleértve az eszköz telemetria:
 
-    ![Az eszköz részleteinek megtekintése](media/iot-suite-visualize-connecting/devicesdetail.png)
+    ![Az eszköz részleteinek megjelenítése](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-1. Válassza a **Nyomás** lehetőséget a telemetriai megjelenítés módosításához:
+1. Válassza a **nyomást** a telemetria megjelenítésének módosításához:
 
-    ![Nyomástelemetria megtekintése](media/iot-suite-visualize-connecting/devicespressure.png)
+    ![Nyomás telemetria megtekintése](media/iot-suite-visualize-connecting/devicespressure.png)
 
-1. Az eszközdiagnosztikai információk megtekintéséhez görgessen le a **Diagnosztika lapra:**
+1. Az eszközre vonatkozó diagnosztikai információk megtekintéséhez görgessen le a **diagnosztika**:
 
     ![Eszközdiagnosztika megtekintése](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
 
-## <a name="act-on-your-device"></a>Cselekedj a készüléken
+## <a name="act-on-your-device"></a>Az eszközön való műveletek
 
-Metódusok meghívásához használja az **Eszközkezelő** lapot a Távoli figyelési megoldásban. Például a távoli figyelési megoldás **hűtő eszközök** végre egy **újraindítási** módszer.
+Ha metódusokat szeretne meghívni az eszközökön, használja a távoli figyelési megoldás **Device Explorer** lapját. A távoli figyelési megoldásban például a **Chiller** -eszközök **Újraindítási** módszert alkalmaznak.
 
-1. Válassza **az Eszközök** lehetőséget a megoldás **Eszközkezelő** lapjára való navigáláshoz.
+1. Válassza az **eszközök** lehetőséget, hogy a megoldás **Device Explorer** lapjára navigáljon.
 
-1. Válassza ki a kiépített eszközt az **Eszközkezelő** lapon található eszközök listájában:
+1. Válassza ki az eszközök listájában kiépített eszközt a **Device Explorer** oldalon:
 
     ![Válassza ki a valódi eszközét](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Az eszközön hívható módszerek listájának megjelenítéséhez válassza a **Feladatok**, majd **a Metódusok lehetőséget.** Ha egy feladatot több eszközön szeretne futtatni, több eszközt is kijelölhet a listában. A **Feladatok** panel en látható, hogy milyen típusú módszerek közösek az összes kiválasztott eszközön.
+1. Az eszközön hívható metódusok listájának megjelenítéséhez válassza a **feladatok**, majd a **metódusok**lehetőséget. Ha több eszközön szeretne futtatni egy feladatot, több eszközt is kijelölhet a listában. A **feladatok** panel megjeleníti az összes kiválasztott eszköz közös metódusának típusait.
 
-1. Válassza **az Újraindítás**lehetőséget, állítsa a feladat nevét **RebootPhysicalChiller-re,** majd válassza **az Alkalmaz**lehetőséget:
+1. Válassza az **Újraindítás**lehetőséget, állítsa be a **RebootPhysicalChiller** nevet, majd válassza az **alkalmaz**lehetőséget:
 
-    ![A belső vezérlőprogram frissítésének ütemezése](media/iot-suite-visualize-connecting/deviceschedule.png)
+    ![A belső vezérlőprogram frissítésének ütemezett időpontja](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. Az eszközkódot futtató konzolon üzenetsorozat jelenik meg, miközben a szimulált eszköz kezeli a metódust.
+1. Az üzenetek egy sora az eszköz kódját futtató konzolon jelenik meg, miközben a szimulált eszköz kezeli a metódust.
 
 > [!NOTE]
-> A feladat állapotának nyomon követéséhez a megoldásban válassza a **Feladat állapotának megtekintése**lehetőséget.
+> A megoldásban a feladatok állapotának nyomon követéséhez válassza a **feladatok állapotának megtekintése**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-A [Távoli figyelési megoldás gyorsítójának testreszabása](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) című cikk a megoldásgyorsító testreszabásának néhány módját ismerteti.
+A [távoli figyelési megoldáshoz tartozó gyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) cikk a megoldás-gyorsító testreszabásának néhány módját ismerteti.

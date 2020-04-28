@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
 ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68639135"
 ---
-A kötési bővítmények telepítésének legegyszerűbb módja a [bővítménykötegek](../articles/azure-functions/functions-bindings-register.md#extension-bundles)engedélyezése. Ha engedélyezi a kötegeket, a bővítménycsomagok előre meghatározott készlete automatikusan települ.
+A kötési bővítmények telepítésének legegyszerűbb módja a [bővítmény-csomagok](../articles/azure-functions/functions-bindings-register.md#extension-bundles)engedélyezése. Ha engedélyezi a csomagokat, a rendszer automatikusan telepíti a bővítmények előre meghatározott készletét.
 
-A bővítménykötegek engedélyezéséhez nyissa meg a host.json fájlt, és frissítse annak tartalmát a következő kódnak megfelelően:
+A bővítmények engedélyezéséhez nyissa meg a Host. JSON fájlt, és frissítse annak tartalmát, hogy az megfeleljen a következő kódnak:
 
 ```json
 {

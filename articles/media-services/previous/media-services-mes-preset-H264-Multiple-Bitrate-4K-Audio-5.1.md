@@ -1,6 +1,6 @@
 ---
-title: 264 Többszörös bitráta 4K Audio 5.1 | Microsoft dokumentumok
-description: A témakör áttekintést ad a **264 Többszörös bitráta 4K Audio 5.1** feladatkészletről.
+title: 264 többszörös bitráta 4K-os audió 5,1 | Microsoft Docs
+description: A témakör áttekintést nyújt a **264 többszörös bitráta 4K Audio 5,1** -feladatról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463684"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
- Ez a `H264 Multiple Bitrate 4K Audio 5.1` témakör az előre beállított xml és JSON formátumban jelenik meg.  
+ Ez a témakör az `H264 Multiple Bitrate 4K Audio 5.1` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
- Ez az előre beállított készlet 12 GOP-hoz igazított MP4-fájlt hoz létre, 20000 kbps-től 1000 kbps-ig és AAC 5.1-es hangfájlokig. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. Az egyes elemek jelentéseiről és az egyes elemek érvényes értékeinek magyarázatáról a [Media Encoder Standard sémában](media-services-mes-schema.md)lehet eltekinteni.  
-  
-> [!NOTE]
->  A Premium lefoglalt egység típusát 4K kódolással kell lefoglalnia. További információt a [Kódolás méretezése](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)című témakörben talál.  
+ Ez a készlet 12 GOP-ra igazított MP4-fájlt hoz létre, amely 20000 kbps és 1000 kbps között, valamint az AAC 5,1 hangon. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az egyes elemek leírását és az egyes elemek érvényes értékeit a [Media Encoder standard sémában](media-services-mes-schema.md)találja.  
   
 > [!NOTE]
->  A rétegek `Width` közötti `Height` értékek és értékek módosításakor győződjön meg arról, hogy a méretarány konzisztens marad. Például: 1920x1080, 1280x720, 1080x576, 640x360. Ne használjon képarányok keverékét, például: 1280x720, 720x480, 640x360.  
+>  Szerezze be a prémium szintű fenntartott egységet 4K-kódolással. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  A `Width` rétegek közötti és `Height` értékek módosításakor ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
   
  XML  
   

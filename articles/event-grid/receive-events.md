@@ -1,6 +1,6 @@
 ---
-title: Események fogadása az Azure Event Gridből HTTP-végpontra
-description: Http-végpont érvényesítésének, majd események fogadásának és deszerializálásának ismertetése az Azure Event Gridből
+title: Események fogadása Azure Event Gridról egy HTTP-végpontra
+description: Útmutató HTTP-végpontok érvényesítéséhez, majd az események fogadásához és deszerializálásához Azure Event Grid
 services: event-grid
 author: banisadr
 manager: darosa
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60803806"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
-Ez a cikk azt ismerteti, hogyan [érvényesítheti a HTTP-végpontesemények](security-authentication.md#webhook-event-delivery) et egy esemény-előfizetésből, majd fogadhat eseményeket, majd deszerializálhatja az eseményeket. Ez a cikk egy Azure-függvényt használ demonstrációs célokra, azonban ugyanazok a fogalmak vonatkoznak, függetlenül attól, hogy az alkalmazás hová van tárolva.
+Ez a cikk azt ismerteti, hogyan lehet [érvényesíteni egy http-végpontot](security-authentication.md#webhook-event-delivery) egy esemény-előfizetés eseményeinek fogadására, majd az események fogadására és deszerializálására. Ez a cikk egy Azure-függvényt használ demonstrációs célokra, azonban ugyanazokat a fogalmakat alkalmazza, függetlenül attól, hogy az alkalmazás hol található.
 
 > [!NOTE]
-> **Erősen** ajánlott, hogy egy [Eseményrács-eseményindító,amikor](../azure-functions/functions-bindings-event-grid.md) egy Azure-függvény eseményrács váltja ki. Az általános WebHook-eseményindító használata itt demonstráló.
+> **Erősen** ajánlott [Event Grid triggert](../azure-functions/functions-bindings-event-grid.md) használni, amikor egy Azure-függvényt indít el Event Grid használatával. Itt látható az általános webhook-trigger használata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége van egy függvényalkalmazásra EGY HTTP-aktivált funkcióval.
+HTTP által aktivált függvényt igénylő Function alkalmazásra van szükség.
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-Ha a .NET-ben fejleszt, [adjon hozzá függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a `Microsoft.Azure.EventGrid` [Nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)funkciójához. A cikkben szereplő példák hoz 1.4.0-s vagy újabb verziót igényelnek.
+Ha a .net-ben fejleszt fejlesztést, [vegyen fel egy függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a `Microsoft.Azure.EventGrid` függvényhez a [Nuget-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). A cikkben szereplő példák 1.4.0 vagy újabb verziót igényelnek.
 
-Más nyelveks sdk-k érhetők el a [Közzététel SDK-k](./sdk-overview.md#data-plane-sdks) referencia. Ezek a csomagok a natív eseménytípusok modelljeivel rendelkeznek, például `EventGridEvent`a , `StorageBlobCreatedEventData`és `EventHubCaptureFileCreatedEventData`a.
+A más nyelvekhez készült SDK-k az SDK-k [közzététele](./sdk-overview.md#data-plane-sdks) hivatkozáson keresztül érhetők el. Ezek a csomagok a natív eseménytípus modelljeit (például `EventGridEvent`, `StorageBlobCreatedEventData`, és `EventHubCaptureFileCreatedEventData`) rendelkeznek.
 
-Kattintson a "Fájlok megtekintése" hivatkozásra az Azure-függvényben (az Azure-függvények portálának jobb oldali ablaktáblájában), és hozzon létre egy project.json nevű fájlt. Adja hozzá a `project.json` következő tartalmat a fájlhoz, és mentse azt:
+Kattintson a fájlok megtekintése hivatkozásra az Azure-függvényben (a jobb oldali ablaktábla az Azure functions portálon), és hozzon létre egy Project. JSON nevű fájlt. Adja hozzá a következő tartalmat a `project.json` fájlhoz, és mentse azt:
 
  ```json
 {
@@ -46,15 +46,15 @@ Kattintson a "Fájlok megtekintése" hivatkozásra az Azure-függvényben (az Az
 }
 ```
 
-![Hozzáadott NuGet csomag](./media/receive-events/add-dependencies.png)
+![NuGet-csomag hozzáadva](./media/receive-events/add-dependencies.png)
 
-## <a name="endpoint-validation"></a>Végpont érvényesítése
+## <a name="endpoint-validation"></a>Végpont ellenőrzése
 
-Az első dolog, amit `Microsoft.EventGrid.SubscriptionValidationEvent` meg akarsz tenni, hogy kezeld az eseményeket. Minden alkalommal, amikor valaki előfizet egy eseményre, az Event `validationCode` Grid egy érvényesítési eseményt küld a végpontnak egy adathasznos adattal. A végpontnak ezt a választörzsben kell [visszhangoznia annak bizonyításához, hogy a végpont érvényes és az Ön tulajdonában van.](security-authentication.md#webhook-event-delivery) Ha egy [Eseményrács-eseményindítót](../azure-functions/functions-bindings-event-grid.md) használ a WebHook aktivált függvény helyett, a végpontérvényesítés tetszése az Ön feladata. Ha külső API-szolgáltatást (például [Zapier](https://zapier.com) vagy [IFTTT)](https://ifttt.com/)használ, előfordulhat, hogy nem tudja programozott módon visszhangozni az érvényesítési kódot. Ezeka szolgáltatások esetében manuálisan érvényesítheti az előfizetést az előfizetés-érvényesítési eseményben küldött érvényesítési URL-cím használatával. Másolja az URL-címet a `validationUrl` tulajdonságba, és küldje el a GET-kérelmet egy REST-ügyfélen vagy a webböngészőn keresztül.
+Az első dolog, amit végre szeretne hajtani, `Microsoft.EventGrid.SubscriptionValidationEvent` az eseményeket kezeli. Minden alkalommal, amikor valaki előfizet egy eseményre, Event Grid egy érvényesítési eseményt küld a végpontnak `validationCode` az adattartalomban. A végpontnak a válasz törzsében újra kell visszhangja ahhoz, hogy [a végpont érvényes legyen, és az Ön tulajdonában](security-authentication.md#webhook-event-delivery)legyen. Ha a webhook által aktivált függvény helyett [Event Grid triggert](../azure-functions/functions-bindings-event-grid.md) használ, a rendszer a végpont-ellenőrzést kezeli. Ha külső gyártótól származó API-szolgáltatást (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)) használ, előfordulhat, hogy nem tudja programozott módon visszhangba állítani az érvényesítési kódot. Ezen szolgáltatások esetében manuálisan érvényesítheti az előfizetést egy érvényesítési URL-cím használatával, amely az előfizetés-ellenőrzési eseményben lett elküldve. Másolja az URL-címet `validationUrl` a tulajdonságba, és küldje el a Get kérelmet egy Rest-ügyfél vagy a webböngésző használatával.
 
-A C#-ban a `DeserializeEventGridEvents()` függvény deszerializálja az Event Grid eseményeket. Deszerializálja az eseményadatokat a megfelelő típusba, például StorageBlobCreatedEventData. Az `Microsoft.Azure.EventGrid.EventTypes` osztály segítségével támogatott eseménytípusokat és neveket kaphat.
+A C# nyelvben `DeserializeEventGridEvents()` a függvény deszerializálja a Event Grid eseményeket. Deszerializálja az eseményeket a megfelelő típusba, például StorageBlobCreatedEventData. Használja a `Microsoft.Azure.EventGrid.EventTypes` osztályt a támogatott eseménytípus és nevek lekéréséhez.
 
-Az érvényesítési kód programozott visszhangjának használatához használja a következő kódot. A kapcsolódó mintákat az [Event Grid Consumer example](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)című helyen találja.
+Az érvényesítési kód programozott visszhangjának ellenőrzéséhez használja a következő kódot. A kapcsolódó mintákat [Event Grid fogyasztói példában](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)találhatja meg.
 
 ```csharp
 using System.Net;
@@ -115,9 +115,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-validation-response"></a>Tesztérvényesítési válasz
+### <a name="test-validation-response"></a>Teszt-ellenőrzési válasz
 
-Tesztelje a validációs válasz funkciót úgy, hogy a mintaeseményt beilleszti a függvény tesztmezőjébe:
+Tesztelje az érvényesítési válasz függvényt úgy, hogy beillesztette a minta eseményt a függvény teszt mezőjébe:
 
 ```json
 [{
@@ -134,13 +134,13 @@ Tesztelje a validációs válasz funkciót úgy, hogy a mintaeseményt beilleszt
 }]
 ```
 
-Ha a Futtatás gombra kattint, a `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` kimenetnek 200 OK-nak kell lennie, és a törzsben:
+Ha a Futtatás gombra kattint, a kimenetnek 200 OK és `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` a törzsnek kell lennie:
 
 ![érvényesítési válasz](./media/receive-events/validation-response.png)
 
-## <a name="handle-blob-storage-events"></a>Blob-tárolási események kezelése
+## <a name="handle-blob-storage-events"></a>BLOB Storage-események kezelése
 
-Most, nézzük ki terjeszteni `Microsoft.Storage.BlobCreated`a funkciót kezelni:
+Most pedig adjuk ki a függvényt a következő `Microsoft.Storage.BlobCreated`kezeléshez:
 
 ```cs
 using System.Net;
@@ -213,9 +213,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-blob-created-event-handling"></a>Tesztblob létrehozva eseménykezelés
+### <a name="test-blob-created-event-handling"></a>BLOB-létrehozási események kezelésére szolgáló teszt
 
-Tesztelje a funkció új funkcióit egy [Blob-tárolási esemény](./event-schema-blob-storage.md#example-event) tesztmezőbe helyezésével és futtatásával:
+A függvény új funkcióinak teszteléséhez egy [blob Storage-eseményt](./event-schema-blob-storage.md#example-event) helyez el a test (teszt) mezőbe, és futtassa a következőt:
 
 ```json
 [{
@@ -243,21 +243,21 @@ Tesztelje a funkció új funkcióit egy [Blob-tárolási esemény](./event-schem
 }]
 ```
 
-A blob URL-kimenetének a függvénynaplóban kell lennie:
+Ekkor meg kell jelennie a blob URL-kimenetének a függvény naplójában:
 
 ![Kimeneti napló](./media/receive-events/blob-event-response.png)
 
-Tesztelheti a Blob storage-fiók vagy az Általános célú V2 (GPv2) tárfiók létrehozásával, [az esemény-előfizetés hozzáadásával és az esemény-előfizetéssel,](../storage/blobs/storage-blob-event-quickstart.md)valamint a végpont nak a függvény URL-címére állításával:
+A teszteléshez blob Storage-fiókot vagy általános célú v2 (GPv2) Storage-fiókot, [hozzáadási és esemény-előfizetést](../storage/blobs/storage-blob-event-quickstart.md)kell létrehoznia, és a végpontot a függvény URL-címére állíthatja:
 
 ![Függvény URL-címe](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>Egyéni események kezelése
 
-Végül lehetővé teszi, hogy még egyszer kiterjesszük a függvényt, hogy egyéni eseményeket is kezelhessen. 
+Végül a függvényt még egyszer is kiterjesztheti, hogy az egyéni eseményeket is képes legyen kezelni. 
 
-A C#-ban az SDK támogatja az eseménytípus nevének hozzárendelését az esemény adattípusához. A `AddOrUpdateCustomEventMapping()` függvény segítségével képezze le az egyéni eseményt.
+A C# nyelvben az SDK támogatja az esemény típusú nevek leképezését az esemény adattípusára. A `AddOrUpdateCustomEventMapping()` függvény használatával képezhető le az egyéni esemény.
 
-Adj hozzá egy `Contoso.Items.ItemReceived`csekket az eseményedhez. A végső kódnak így kell kinéznie:
+Adja meg az esemény `Contoso.Items.ItemReceived`ellenőrzését. A végleges kódnak így kell kinéznie:
 
 ```cs
 using System.Net;
@@ -346,9 +346,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-custom-event-handling"></a>Egyéni eseménykezelés tesztelése
+### <a name="test-custom-event-handling"></a>Egyéni események felügyeletének tesztelése
 
-Végül ellenőrizze, hogy a függvény képes-e kezelni az egyéni eseménytípust:
+Végezetül ellenőrizze, hogy a függvény mostantól képes-e kezelni az egyéni eseménytípus típusát:
 
 ```json
 [{
@@ -364,10 +364,10 @@ Végül ellenőrizze, hogy a függvény képes-e kezelni az egyéni eseménytíp
 }]
 ```
 
-Ezt a funkciót élőben is tesztelheti, ha [egyéni eseményt küld a CURL-nel a portálról,](./custom-event-quickstart-portal.md) vagy egy egyéni [témakörbe küld egy olyan](./post-to-custom-topic.md) szolgáltatást vagy alkalmazást, amely postázhat egy végpontra, például [postásra.](https://www.getpostman.com/) Hozzon létre egy egyéni témakört és egy esemény-előfizetést a végpont beállítása a függvény URL-címeként.
+Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md) helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az [Azure Event Grid-kezelés és az SDK-k közzététele](./sdk-overview.md)
-* Tudnivalók egyéni [témakörök közzétételéről](./post-to-custom-topic.md)
-* Próbálja ki az eseményrács és a funkciók egyik oktatóanyagát, például a [Blob storage-ba feltöltött képek átméretezését](resize-images-on-storage-blob-upload-event.md)
+* Az [SDK-k Azure Event Grid felügyeletének és közzétételének](./sdk-overview.md) megismerése
+* Útmutató [Egyéni témakörhöz való közzétételhez](./post-to-custom-topic.md)
+* Próbálja ki a részletes Event Grid és függvények oktatóanyagokat, például a [blob Storage-ba feltöltött rendszerképek átméretezését](resize-images-on-storage-blob-upload-event.md)

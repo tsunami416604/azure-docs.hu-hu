@@ -9,73 +9,73 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179555"
 ---
 > [!div class="op_single_selector"]
-> * [C a Windows rendszeren](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
+> * [C Windows rendszeren](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
 > * [C Linuxon](../articles/iot-accelerators/iot-accelerators-connecting-devices-linux.md)
 > * [C Raspberry Pi-on](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (általános)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Node.js Raspberry Pi-on](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-Ebben az oktatóanyagban egy **hűtőeszközt** valósít meg, amely a következő telemetriát küldi a távoli figyelési [megoldás gyorsítójának:](../articles/iot-accelerators/about-iot-accelerators.md)
+Ebben az oktatóanyagban egy olyan **hűtő** eszközt fog megvalósítani, amely a következő telemetria küldi el a távoli figyelési [megoldás-gyorsító](../articles/iot-accelerators/about-iot-accelerators.md)számára:
 
 * Hőmérséklet
 * Nyomás
 * Páratartalom
 
-Az egyszerűség kedvéért a kód minta telemetriai értékeket hoz létre a **hűtőhez.** Kiterjesztheti a mintát, ha valódi érzékelőket csatlakoztat az eszközhöz, és valódi telemetriát küld.
+Az egyszerűség kedvéért a kód minta telemetria értékeket hoz létre a **hűtőhöz**. Kiterjesztheti a mintát úgy, hogy valódi érzékelőkkel csatlakozik az eszközhöz, és valós telemetria küld.
 
-A mintaeszköz:
+A minta eszköz is:
 
-* Metaadatokat küld a megoldásnak a képességeinek leírására.
-* Válaszol a megoldás **Eszközök** lapjáról indított műveletekre.
-* Válaszol a megoldás **Eszközök** lapjáról küldött konfigurációs módosításokra.
+* Metaadatokat küld a megoldásnak a képességeinek leírásához.
+* Válaszol a megoldás **eszközök** lapjáról indított műveletekre.
+* Válaszol a megoldás **eszközök** lapjáról küldött konfigurációs változásokra.
 
 Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt bármilyen kódot írna az eszközhöz, telepítse a távoli figyelési megoldásgyorsítót, és adjon hozzá egy új valódi eszközt a megoldáshoz.
+Mielőtt bármilyen kódot írsz az eszközhöz, telepítse a távoli figyelési megoldás gyorsító eszközét, és adjon hozzá egy új valódi eszközt a megoldáshoz.
 
-### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>A távfigyelési megoldás gyorsítójának üzembe helyezése
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldás-gyorsító üzembe helyezése
 
-Az oktatóanyagban létrehozott **Hűtő** eszköz adatokat küld a [távoli figyelési](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) megoldás gyorsító egy példányának. Ha még nem kiépítette a távfigyelési megoldásgyorsítót az Azure-fiókjában, [olvassa el a Távfigyelési megoldásgyorsító üzembe helyezése című témakört.](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
+Az oktatóanyagban létrehozott **Chiller** -eszköz adatokat küld a [távoli figyelési](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) megoldás-gyorsító egy példányára. Ha még nem telepítette a távoli figyelési megoldás gyorsító az Azure-fiókjában, tekintse meg [a távoli figyelési megoldás központi telepítése](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) című témakört.
 
-Amikor a távoli figyelési megoldás telepítési folyamata befejeződik, az **Indítás** gombra kattintva nyissa meg a megoldás irányítópultját a böngészőben.
+Ha a távoli figyelési megoldás üzembe helyezési folyamata befejeződik, kattintson a **Launch (indítás** ) gombra a megoldás irányítópultjának a böngészőben való megnyitásához.
 
 ![A megoldás irányítópultja](media/iot-suite-selector-connecting/dashboard.png)
 
-### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Eszköz hozzáadása a távfigyelési megoldáshoz
+### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Eszköz hozzáadása a távoli figyelési megoldáshoz
 
 > [!NOTE]
-> Ha már hozzáadott egy eszközt a megoldásban, kihagyhatja ezt a lépést. A következő lépéshez azonban szükség van az eszköz kapcsolati karakterláncára. Lekérheti az eszköz kapcsolati karakterláncát az [Azure Portalon](https://portal.azure.com) vagy az [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI eszközzel.
+> Ha már hozzáadott egy eszközt a megoldásban, kihagyhatja ezt a lépést. A következő lépésben azonban szükség van az eszköz kapcsolati karakterláncára. Lekérheti az eszközhöz tartozó kapcsolatok karakterláncát a [Azure Portal](https://portal.azure.com) vagy az az [IOT](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI eszköz használatával.
 
-Ahhoz, hogy egy eszköz csatlakozzon a megoldásgyorsítóhoz, érvényes hitelesítő adatokkal azonosítania kell magát az IoT Hubhoz. Lehetősége van arra, hogy mentse az eszköz kapcsolati karakterláncot, amely tartalmazza ezeket a hitelesítő adatokat, amikor hozzáadja az eszközt a megoldáshoz. Az oktatóanyag későbbi részében az eszközkapcsolati karakterláncot is beilleszti az ügyfélalkalmazásba.
+Ahhoz, hogy egy eszköz csatlakozni tudjanak a megoldás-gyorsító szolgáltatáshoz, meg kell határoznia magát, hogy érvényes hitelesítő adatokkal IoT Hub. Lehetősége van arra, hogy mentse a hitelesítő adatokat tartalmazó eszköz-kapcsolódási karakterláncot, amikor hozzáadja az eszközt a megoldáshoz. Az oktatóanyag későbbi részében az alkalmazáshoz tartozó eszköz-csatlakoztatási karakterláncot kell megadnia az ügyfélalkalmazás számára.
 
-Ha eszközt szeretne hozzáadni a távoli figyelési megoldáshoz, hajtsa végre az alábbi lépéseket a megoldás **Eszközkezelő** lapján:
+Ha eszközt szeretne hozzáadni a távoli figyelési megoldáshoz, hajtsa végre a következő lépéseket a megoldás **Device Explorer** oldalán:
 
-1. Válassza **a + Új eszköz**lehetőséget , majd a **Real** lehetőséget **eszköztípusként:**
+1. Válassza az **+ új eszköz**lehetőséget, majd válassza az **igazi** lehetőséget az **eszköz típusaként**:
 
     ![Valós eszköz hozzáadása](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. Adja meg **a fizikai-hűtőt** eszközazonosítóként. Válassza a **Szimmetrikus billentyű** és az **Automatikus létrehozás i akta** beállításokat:
+1. Adja meg a **fizikai-hűtőt** az eszköz azonosítójaként. Válassza a **szimmetrikus kulcs** és az **automatikus kulcs generálása** lehetőséget:
 
-    ![Eszközbeállítások megadása](media/iot-suite-selector-connecting/devicesoptions.png)
+    ![Eszközbeállítások kiválasztása](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. Válassza az **Alkalmaz** lehetőséget. Ezután jegyezze fel az **eszközazonosítót,** az **elsődleges kulcsot**és a **Kapcsolati karakterlánc elsődleges** kulcsértékeit:
+1. Válassza az **Alkalmaz** lehetőséget. Ezután jegyezze fel az **eszköz azonosítóját**, az **elsődleges kulcsot**és a **kapcsolatok karakterláncának elsődleges kulcsának** értékét:
 
     ![Hitelesítő adatok beolvasása](media/iot-suite-selector-connecting/credentials.png)
 
-Most már hozzáadott egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz, és megjegyezte az eszköz kapcsolati karakterláncát. A következő szakaszokban valósítja meg az ügyfélalkalmazást, amely az eszköz kapcsolati karakterláncot használja a megoldáshoz való csatlakozáshoz.
+Mostantól hozzáadta a távoli figyelési megoldáshoz tartozó gyorsított eszközt, és feljegyezte az eszköz kapcsolati karakterláncát. A következő részekben azt az ügyfélalkalmazás implementálja, amely az eszköz kapcsolati karakterláncát használja a megoldáshoz való kapcsolódáshoz.
 
-Az ügyfélalkalmazás megvalósítja a **Chiller** beépített hűtőeszköz-modellt. A megoldásgyorsító eszközmodellje a következőket határozza meg az eszközről:
+Az ügyfélalkalmazás implementálja a beépített **hűtő** eszköz modelljét. A megoldás-gyorsító eszköz modellje a következőket határozza meg az eszközről:
 
-* Az eszköz által a megoldásnak jelentendő tulajdonságok. A **Hűtőeszköz** például a belső vezérlőprogramjával és helyével kapcsolatos információkat jelent.
-* Az eszköz által a megoldásnak küldött telemetriai adatok típusai. A **Hűtőeszköz** például hőmérsékleti, páratartalom- és nyomásértékeket küld.
-* A megoldásból az eszközön való futtatásra ütemezhető módszerek. Például egy **hűtőeszköznek** végre kell hajtania **az Újraindítás**, A **FirmwareUpdate**, a **EmergencyValveRelease**és **a IncreasePressure** metódusokat.
+* Az eszköz által a megoldásnak jelentett tulajdonságok. A **Chiller** -eszköz például a belső vezérlőprogram és a hely adatait jelenti.
+* Az eszköz által a megoldásnak küldött telemetria típusai. A **hűtő** eszköz például hőmérséklet-, páratartalom-és nyomáskülönbség-értékeket küld.
+* A megoldásról az eszközön való futtatásra ütemezett metódusok. A **hűtő** eszköznek például a **reboot**, a **FirmwareUpdate**, a **EmergencyValveRelease**és az **IncreasePressure** metódust kell végrehajtania.

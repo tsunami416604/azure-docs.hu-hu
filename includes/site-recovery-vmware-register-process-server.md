@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67534639"
 ---
-1. Távoli asztali kapcsolat létrehozása a folyamatkiszolgálót futtató géppel. 
-2. Az Azure Site Recovery Process Server konfigurációs eszközének elindításához futtassa a cspsconfigtool.exe segédprogramot.
-    - Az eszköz automatikusan elindul, amikor először jelentkezik be a folyamatkiszolgálóra.
+1. Hozzon létre egy Távoli asztali kapcsolat a Process Servert futtató gépről. 
+2. Futtassa a cspsconfigtool. exe fájlt a Azure Site Recovery Process Server konfigurációs eszköz elindításához.
+    - Az eszköz automatikusan elindul, amikor először jelentkezik be a Process Serverbe.
     - Ha nem nyílik meg automatikusan, kattintson a parancsikonra az asztalon.
 
-3. A **Konfigurációs kiszolgáló teljes tartományneve vagy IP-címe csoportban**adja meg annak a konfigurációs kiszolgálónak a nevét vagy IP-címét, amelyhez a folyamatkiszolgálót regisztrálni szeretné.
-4. A **Konfigurációs kiszolgáló portjában**győződjön meg arról, hogy a 443-as meg van adva. Ez az a port, amelyen a konfigurációs kiszolgáló figyeli a kéréseket.
-5. A **Kapcsolati jelszó csoportban**adja meg a konfigurációs kiszolgáló beállításakor megadott jelszót. A jelszó megkeresése:
-    -  A konfigurációs kiszolgálón keresse meg a Site Recovery telepítési mappát **\home\svssystems\bin\**:
+3. A **konfigurációs kiszolgáló teljes tartományneve vagy IP**-címe mezőben adja meg annak a konfigurációs kiszolgálónak a nevét vagy IP-címét, amellyel regisztrálni szeretné a folyamat-kiszolgálót.
+4. A **konfigurációs kiszolgáló portján**ellenőrizze, hogy a 443 meg van-e adva. Ez az a port, amelyen a konfigurációs kiszolgáló figyeli a kérelmeket.
+5. A **kapcsolódási jelszó**mezőben adja meg a konfigurációs kiszolgáló beállításakor megadott jelszót. A jelszó megkeresése:
+    -  A konfigurációs kiszolgálón navigáljon a Site Recovery telepítési mappájához **\home\svssystems\bin\**:
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```
-    - Az alábbi parancs futtatásával nyomtassa ki az aktuális jelszót:
+    - Futtassa az alábbi parancsot az aktuális hozzáférési kód kinyomtatásához:
     ```
     genpassphrase.exe -n
     ```
 
-6. Az **Adatátviteli portban**hagyja meg az alapértelmezett értéket, hacsak nem adott meg egyéni portot.
+6. **Adatátvitel porton**hagyja meg az alapértelmezett értéket, hacsak nem adott meg egyéni portot.
 
-7. Kattintson a **Beállítások** mentése gombra, és regisztrálja a folyamatkiszolgálót.
+7. Kattintson a **Mentés** gombra a beállítások mentése elemre, és regisztrálja a Process Servert.
 
     
-    ![A folyamatkiszolgáló regisztrálása](./media/site-recovery-vmware-register-process-server/register-ps.png)
+    ![A folyamat-kiszolgáló regisztrálása](./media/site-recovery-vmware-register-process-server/register-ps.png)

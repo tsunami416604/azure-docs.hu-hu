@@ -1,6 +1,6 @@
 ---
-title: Azure éles hálózat
-description: Ez a cikk az Azure éles hálózat általános leírását tartalmazza.
+title: Azure-beli üzemi hálózat
+description: Ez a cikk az Azure éles hálózatának általános leírását tartalmazza.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,77 +16,77 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68726692"
 ---
 # <a name="the-azure-production-network"></a>Az Azure éles hálózata
-Az Azure éles hálózat felhasználói közé tartoznak a külső ügyfelek, akik hozzáférnek a saját Azure-alkalmazások és a belső Azure-támogatási személyzet, aki kezeli az éles hálózat. Ez a cikk ismerteti a biztonsági hozzáférési módszerek és védelmi mechanizmusok az Azure éles hálózathoz való kapcsolatok létrehozásához.
+Az Azure éles hálózat felhasználói a saját Azure-alkalmazásaikat és az üzemi hálózatot kezelő belső Azure-támogatási személyzetet is magukban foglalják. Ez a cikk az Azure üzemi hálózattal létesített kapcsolatok létrehozásához szükséges biztonsági hozzáférési módszereket és védelmi mechanizmusokat ismerteti.
 
-## <a name="internet-routing-and-fault-tolerance"></a>Internetes útválasztás és hibatűrés
-A globálisan redundáns belső és külső Azure domainnév-szolgáltatás (DNS) infrastruktúra, több elsődleges és másodlagos DNS-kiszolgálófürttel kombinálva hibatűrést biztosít. Ezzel egy időben további Azure hálózati biztonsági vezérlők, például a NetScaler, az elosztott szolgáltatásmegtagadási (DDoS) támadások megelőzésére és az Azure DNS-szolgáltatások integritásának védelmére szolgálnak.
+## <a name="internet-routing-and-fault-tolerance"></a>Internetes Útválasztás és hibatűrés
+A globálisan redundáns belső és külső Azure Domain Name Service (DNS) infrastruktúra, amely több elsődleges és másodlagos DNS-kiszolgáló fürttel is rendelkezik, hibatűrést biztosít. Ugyanakkor a további Azure-alapú hálózati biztonsági vezérlők, például a NetScaler, az elosztott szolgáltatásmegtagadási (DDoS) támadások megelőzése és Azure DNS szolgáltatások integritásának védelme érdekében használatosak.
 
-Az Azure DNS-kiszolgálók több adatközpont-létesítményben találhatók. Az Azure DNS-implementáció másodlagos és elsődleges DNS-kiszolgálók hierarchiáját tartalmazza az Azure ügyféltartomány-nevek nyilvános feloldásához. A tartománynevek általában egy CloudApp.net-címre oldódnak fel, amely az ügyfél szolgáltatásának virtuális IP-címét (VIP) tördeli. Az Azure-ban egyedülálló, a bérlői fordítás belső dedikált IP-címének (DIP) megfelelő VIRTUÁLIS IP-címet a Microsoft az adott VIRTUÁLIS IP-címért felelős Microsoft terheléselosztók végzik.
+A Azure DNS-kiszolgálók több adatközpont-létesítményben találhatók. A Azure DNS implementációja tartalmazza a másodlagos és elsődleges DNS-kiszolgálók hierarchiáját az Azure-beli ügyfél-tartománynevek nyilvánosan való feloldásához. A tartománynevek általában egy CloudApp.net-címhez vannak feloldva, amely az ügyfél szolgáltatásához tartozó virtuális IP-címet (VIP) csomagolja. Az Azure-ban egyedi, a bérlői fordítás belső dedikált IP-címéhez (DIP) tartozó VIP-cím a virtuális IP-címekért felelős Microsoft-terheléselosztó.
 
-Az Azure az Egyesült Államokon belül földrajzilag elosztott Azure-adatközpontokban található, és a legkorszerűbb útválasztási platformokra épül, amelyek robusztus, méretezhető architekturális szabványokat valósítanak meg. Között a figyelemre méltó jellemzői a következők:
+Az Azure a földrajzilag elosztott Azure-adatközpontokban üzemel az USA-ban, és olyan legkorszerűbb útválasztási platformokra épül, amelyek robusztus, méretezhető építészeti szabványokat implementálnak. A jelentős funkciók közé tartoznak a következők:
 
-- Többprotokollos címkeváltás (MPLS)-alapú forgalomtervezés, amely hatékony kapcsolatkihasználtságot és a szolgáltatás kecses romlását biztosítja, ha kimaradás van.
-- Hálózatok vannak megvalósítva a "need plus one" (N +1) redundancia architektúrák vagy jobb.
-- Külsőleg az adatközpontokat dedikált, nagy sávszélességű hálózati áramkörök szolgálják ki, amelyek redundánsan több mint 1200 internetszolgáltatóval kötnek össze tulajdonságokat több társviszony-létesítési ponton. Ez a kapcsolat több mint 2000 gigabájt/másodperc (GBps) per másodperces per gbps kapacitást biztosít.
+- A többprotokollos feliratok váltásának (MPLS)-alapú adatforgalmának megtervezése, amely hatékony kapcsolat-kihasználtságot és a szolgáltatás biztonságos romlását biztosítja, ha leállás van.
+- A hálózatok megvalósítása a "szükséges plusz egy" (N + 1) redundancia-architektúrával vagy annál jobb.
+- Külsőleg az adatközpontokat dedikált, nagy sávszélességű hálózati áramkörök biztosítják, amelyekkel a több mint 1 200 internetszolgáltatóval redundánsan csatlakoztathatók a tulajdonságok több, mint a több ponttal ellátott internetes szolgáltatónál. Ez a szolgáltatás legfeljebb 2 000 gigabájt/másodperc (GB/s) kapacitást biztosít.
 
-Mivel a Microsoft saját hálózati kapcsolatokkal rendelkezik az adatközpontok között, ezek az attribútumok segítik az Azure-ajánlatot a hálózat 99,9+ %-os rendelkezésre állásának elérésében anélkül, hogy hagyományos külső internetszolgáltatókra lenne szükség.
+Mivel a Microsoft saját hálózati áramköröket üzemeltet az adatközpontok között, ezek az attribútumok segítik az Azure-ajánlat 99,9 +%-os rendelkezésre állását a hagyományos külső internetszolgáltatók igénye nélkül.
 
-## <a name="connection-to-production-network-and-associated-firewalls"></a>Csatlakozás az éles hálózathoz és a kapcsolódó tűzfalakhoz
-Az Azure hálózati internetes forgalomáramlási szabályzat irányítja a forgalmat az Azure éles hálózat, amely az Egyesült Államok legközelebbi regionális adatközpontjában található. Mivel az Azure éles adatközpontok konzisztens hálózati architektúrát és hardvert tartanak fenn, az alábbi forgalmi folyamat leírása következetesen vonatkozik az összes adatközpontra.
+## <a name="connection-to-production-network-and-associated-firewalls"></a>Kapcsolódás a termelési hálózathoz és a kapcsolódó tűzfalakhoz
+Az Azure hálózati internetes forgalomra vonatkozó szabályzata az USA-beli legközelebbi regionális adatközpontban található Azure-beli éles hálózatra irányítja a forgalmat. Mivel az Azure éles adatközpontok konzisztens hálózati architektúrát és hardvereket tartanak fenn, a forgalom folyamatának leírását a következőképpen alkalmazza az összes adatközpontra.
 
-Miután az Azure internetes forgalmat a legközelebbi adatközpontba irányítja, létrejön a kapcsolat a hozzáférési útválasztókkal. Ezek a hozzáférési útválasztók az Azure-csomópontok és az ügyfél által példányosított virtuális gépek közötti forgalom elkülönítésére szolgálnak. A hálózati infrastruktúra-eszközök a hozzáférési és peremhelyeken azok a határpontok, ahol a be- és kilépési szűrőket alkalmazzák. Ezek az útválasztók egy rétegzett hozzáférés-vezérlési listán (ACL) keresztül vannak konfigurálva a nem kívánt hálózati forgalom szűrésére és szükség esetén forgalmi díjkorlátok alkalmazására. Az ACL által engedélyezett forgalmat a terheléselosztók irányítják. A terjesztési útválasztók célja, hogy csak a Microsoft által jóváhagyott IP-címeket engedélyezzenek, hamisítás elleni védelmet biztosítsanak, és ACP-kapcsolatokat hozzanak létre, amelyek ACP-ket használnak.
+Ha az Azure-ra irányuló internetes forgalmat a legközelebbi adatközponthoz irányítják, a kapcsolat létrejön a hozzáférési útválasztók között. Ezek a hozzáférési útválasztók az Azure-csomópontok és az ügyfél által létrehozott virtuális gépek közötti adatforgalom elkülönítésére szolgálnak. A hálózati infrastruktúra eszközei a hozzáférési és a peremhálózati helyeken azok a határi pontok, ahol a bejövő és a kimenő adatforgalomra vonatkozó szűrők vannak alkalmazva. Ezek az útválasztók egy többrétegű hozzáférés-vezérlési lista (ACL) használatával konfigurálhatók a nemkívánatos hálózati forgalom szűréséhez, és szükség esetén a forgalmi díjszabási korlátok alkalmazásához. Az ACL által engedélyezett forgalmat a terheléselosztó irányítja át. A terjesztési útválasztók úgy vannak kialakítva, hogy csak a Microsoft által jóváhagyott IP-címeket engedélyezzék, a hamisítást, valamint az ACL-eket használó TCP-kapcsolatok létesítését.
 
-A külső terheléselosztási eszközök a hozzáférési útválasztók mögött találhatók, hogy az internetes irányítható IP-kről az Azure belső IP-címére hálózati címfordítást (NAT) hajthassanak végre. Az eszközök a csomagokat érvényes éles belső IP-khez és portokhoz is továbbítják, és védelmi mechanizmusként működnek a belső éles hálózati címterület kiteszik.
+A külső terheléselosztási eszközök a hozzáférési útválasztók mögött helyezkednek el, hogy hálózati címfordítást (NAT) végezzenek az internetről irányítható IP-címekről az Azure belső IP-címeire. Az eszközök a csomagokat az érvényes üzemi belső IP-címekre és portokra irányítják, és védelmi mechanizmusként működnek a belső éles hálózati címtartomány kihelyezésének korlátozására.
 
-Alapértelmezés szerint a Microsoft kényszeríti a Hypertext Transfer Protocol Secure (HTTPS) protokollt az ügyfelek webböngészőinek továbbított összes forgalomra vonatkozóan, beleértve a bejelentkezést és az azt követő összes forgalmat. A TLS 1.2-es használata biztonságos alagutat tesz lehetővé a forgalom átáramlásához. A hozzáférés-hozzáférés-hozzáférés-vissza, valamint az alapvető útválasztók biztosítják, hogy a forgalom forrása összhangban legyen a várttal.
+Alapértelmezés szerint a Microsoft az ügyfelek webböngészőjébe továbbított összes forgalom Hypertext Transfer Protocol védelmét (HTTPS) alkalmazza, beleértve a bejelentkezést és az összes forgalmat. A TLS v 1.2 használata lehetővé teszi, hogy egy biztonságos alagúton keresztül átáramlson a forgalom. A hozzáférés-vezérlési listák és az alapszintű útválasztók biztosítják, hogy a forgalom forrása konzisztens legyen a várt értékkel.
 
-Fontos különbség ebben az architektúrában, ha összehasonlítjuk a hagyományos biztonsági architektúrával, az, hogy nincsenek dedikált hardveres tűzfalak, speciális behatolásészlelő vagy -megelőző eszközök vagy egyéb biztonsági eszközök, amelyek általában az Azure éles környezetéhez való csatlakozások előtt várható. Az ügyfelek általában elvárják ezeket a hardveres tűzfaleszközöket az Azure-hálózatban; azonban egyik sem az Azure-ban. Ezek a biztonsági funkciók szinte kizárólag az Azure-környezetet futtató szoftverbe vannak beépítve, hogy robusztus, többrétegű biztonsági mechanizmusokat biztosítsanak, beleértve a tűzfalfunkciókat is. Emellett a határ hatóköre és a kritikus biztonsági eszközök kapcsolódó terjeszkedése könnyebben kezelhető és leltározható, ahogy az az előző ábrán is látható, mivel az Azure-t futtató szoftver kezeli.
+Ebben az architektúrában fontos különbséget tenni a hagyományos biztonsági architektúrához képest, hogy nincsenek dedikált hardveres tűzfalak, speciális behatolás-észlelési vagy megelőzési eszközök, illetve más biztonsági berendezések, amelyek általában az Azure éles környezetbe való csatlakozás előtt várhatók. Az ügyfelek általában az Azure-hálózaton lévő hardveres tűzfalakat várnak. Az Azure-ban azonban nincs alkalmazás. Szinte kizárólag azokat a biztonsági funkciókat építették be a szoftverbe, amelyek az Azure-környezetet futtatva robusztus, többrétegű biztonsági mechanizmusokat biztosítanak, beleértve a tűzfalak képességeit is. Emellett a kritikus biztonsági eszközök határának és a kapcsolódó terjeszkedésnek a hatóköre könnyebben kezelhető és leltárba kerül, ahogyan az az előző ábrán is látható, mert az Azure-t futtató szoftver kezeli.
 
-## <a name="core-security-and-firewall-features"></a>Alapvető biztonsági és tűzfalfunkciók
-Az Azure robusztus szoftverbiztonsági és tűzfalfunkciókat valósít meg különböző szinteken, hogy kikényszerítse azokat a biztonsági funkciókat, amelyek általában egy hagyományos környezetben várhatók az alapvető biztonsági engedélyezési határ védelme érdekében.
+## <a name="core-security-and-firewall-features"></a>Alapvető biztonsági és tűzfal-funkciók
+Az Azure számos különböző szinten implementálja a szoftveres biztonsági és tűzfal-funkciókat, hogy kikényszerítse azokat a biztonsági funkciókat, amelyeket általában egy hagyományos környezetben kell elvárni az alapvető biztonsági engedélyezési határ védelme érdekében.
 
-### <a name="azure-security-features"></a>Az Azure biztonsági szolgáltatásai
-Az Azure gazdagépalapú szoftveres tűzfalakat valósít meg az éles hálózaton belül. Számos alapvető biztonsági és tűzfal-szolgáltatás található az alapvető Azure-környezetben. Ezek a biztonsági funkciók az Azure-környezetben egy mélyreható védelmi stratégiát tükröznek. Az Azure-ban az ügyféladatokat a következő tűzfalak védik:
+### <a name="azure-security-features"></a>Azure biztonsági funkciók
+Az Azure a gazdagép-alapú szoftveres tűzfalakat implementálja az üzemi hálózaton belül. Az Azure-környezet számos alapvető biztonsági és tűzfal-funkciója található. Ezek a biztonsági funkciók az Azure-környezetben található részletes védelmi stratégiát tükrözik. Az Azure-beli ügyféladatokat a következő tűzfalak védik:
 
-**Hypervisor tűzfal (csomagszűrő)**: Ez a tűzfal a hipervizorban van megvalósítva, és a hálóvezérlő (FC) ügynöke konfigurálja. Ez a tűzfal védi a virtuális gépen belül futó bérlőt az illetéktelen hozzáféréstől. Alapértelmezés szerint a virtuális gép létrehozásakor az összes forgalom le van tiltva, majd az FC-ügynök szabályokat és kivételeket ad hozzá a szűrőben az engedélyezett forgalom engedélyezéséhez.
+**Hypervisor tűzfal (csomagszűrő)**: Ez a tűzfal a hypervisorban van megvalósítva, és a Fabric Controller (FC) ügynök konfigurálja. Ez a tűzfal védi a virtuális gépen belül futó bérlőt a jogosulatlan hozzáféréstől. Alapértelmezés szerint a virtuális gépek létrehozásakor minden forgalom le lesz tiltva, majd az FC-ügynök szabályokat és kivételeket ad hozzá a szűrőben az engedélyezett forgalom engedélyezéséhez.
 
-Itt két szabálykategória van programozva:
+A szabályok két kategóriája van programozva:
 
-- **Gépkonfigurációs vagy infrastruktúra-szabályok**: Alapértelmezés szerint minden kommunikáció blokkolva van. Vannak kivételek, amelyek lehetővé teszik a virtuális gép számára, hogy DHCP-kommunikációt és DNS-adatokat küldjön és fogadjon, és forgalmat küldjön a "nyilvános" internetes kimenő szolgáltatásoknak az FC-fürt és az operációsrendszer-aktiválási kiszolgáló más virtuális gépei számára. Mivel a virtuális gépek engedélyezett listája a kimenő célok nem tartalmazza az Azure-útválasztó alhálózatok és más Microsoft-tulajdonságok, a szabályok védelmi rétegként működnek számukra.
-- **Szerepkör-konfigurációs fájlszabályok**: A bérlői szolgáltatásmodell alapján határozza meg a bejövő ACL-eket. Ha például egy bérlő egy web előtér-ablaka a 80-as porton egy bizonyos virtuális gépen, a 80-as port minden IP-címre meg nyílik. Ha a virtuális gép egy feldolgozói szerepkör fut, a feldolgozói szerepkör csak a virtuális gép ugyanazon a bérlőn belül nyílik meg.
+- A **Számítógép konfigurációja vagy az infrastruktúra szabályai**: alapértelmezés szerint minden kommunikáció le van tiltva. Kivételek vannak, amelyek lehetővé teszik a virtuális gépek számára Dynamic Host Configuration Protocol (DHCP) kommunikáció és DNS-információk küldését és fogadását, valamint a "nyilvános" internetes forgalom továbbítását az FC-fürtön és az operációs rendszer aktiválási kiszolgálóján található többi virtuális gépre. Mivel a kimenő célhelyek engedélyezett listája nem tartalmazza az Azure útválasztó alhálózatait és más Microsoft-tulajdonságokat, a szabályok védelmi rétegként működnek.
+- **Szerepkör-konfigurációs fájl szabályai**: a bérlők szolgáltatási modellje alapján határozza meg a bejövő ACL-eket. Ha például egy bérlő webes kezelőfelülettel rendelkezik a 80-as porton egy adott virtuális gépen, a 80-es port minden IP-címhez meg van nyitva. Ha a virtuális gépnek van futó feldolgozói szerepköre, a feldolgozói szerepkört csak a virtuális gép nyitja meg ugyanazon a bérlőn belül.
 
-**Natív gazdagép tűzfal:** Az Azure Service Fabric és az Azure Storage egy natív operációs rendszeren fut, amely nem rendelkezik hipervizor, és ezért a Windows tűzfal az előző két szabálykészlettel van konfigurálva.
+**Natív gazdagép tűzfala**: az Azure Service Fabric és az Azure Storage olyan natív operációs rendszeren fut, amelynek nincs hypervisora, ezért a Windows tűzfal az előző két szabályhoz van konfigurálva.
 
-**Gazdatűzfal**: A gazdatűzfal védi a gazdapartíciót, amely a hipervizort futtatja. A szabályok úgy vannak programozva, hogy csak az FC és a jump boxok beszéljenek a gazdapartícióval egy adott porton. A másik kivétel a DHCP-válaszok és a DNS-válaszok engedélyezése. Az Azure egy gépkonfigurációs fájlt használ, amely tűzfalszabályok sablonját tartalmazza a gazdapartícióhoz. A gazdatűzfal-kivétel is létezik, amely lehetővé teszi a virtuális gépek számára, hogy adott protokollon/portokon keresztül kommunikáljanak az állomásösszetevőkkel, a vezetékes kiszolgálóval és a metaadat-kiszolgálóval.
+**Gazdagép tűzfala**: a gazdagép tűzfala védi a Hypervisort futtató gazdagép-partíciót. A szabályok úgy vannak programozva, hogy csak az FC és a Jump mezők használatával beszéljenek a gazdagép partícióján egy adott porton. A többi kivétel a DHCP-válasz és a DNS-válaszok engedélyezése. Az Azure egy számítógép-konfigurációs fájlt használ, amely a gazdagép-partícióhoz tartozó tűzfalszabályok sablonját tartalmazza. A gazda-tűzfal kivételt is tartalmaz, amely lehetővé teszi, hogy a virtuális gépek egy adott protokollon/porton keresztül kommunikáljanak a gazdagép összetevőivel, a hálózati kiszolgálóval és a metaadat-kiszolgálóval
 
-**Vendég tűzfal**: A vendég operációs rendszer Windows tűzfal-darabja, amelyet az ügyfelek az ügyfelek virtuális gépeken és tárolón konfigurálhatók.
+**Vendég tűzfal**: a vendég operációs rendszer Windows tűzfalának része, amely az ügyfelek által az ügyfél virtuális gépeken és a tárolón konfigurálható.
 
-Az Azure-funkciókba beépített további biztonsági funkciók a következők:
+Az Azure-képességekbe beépített további biztonsági funkciók a következők:
 
-- A DIPs-ből származó IP-címekhez rendelt infrastruktúra-összetevők. Az interneten tartózkodó támadók nem tudják kezelni az ilyen címekre irányuló forgalmat, mert nem érik el a Microsoftot. Az internetes átjáróútválasztók szűrik a kizárólag belső címeknek címzett csomagokat, így nem lépnek be az éles hálózatba. A VIP-kre irányuló forgalmat csak a terheléselosztók fogadják el.
-- Az összes belső csomóponton megvalósított tűzfalak három elsődleges biztonsági architektúra-szempontot fejtenek ki egy adott forgatókönyvhöz:
+- A DIPsból származó IP-címeket hozzárendelő infrastruktúra-összetevők. Az interneten lévő támadók nem tudják kezelni az ilyen címekre irányuló forgalmat, mert nem érik el a Microsoftot. Az Internet Gateway-útválasztók kizárólag belső címekre irányuló csomagokat szűrnek, így nem lépnek be az éles hálózatba. Az egyetlen olyan összetevő, amely a virtuális IP-címekre irányuló forgalmat fogadja el, terheléselosztó.
+- Az összes belső csomóponton megvalósított tűzfalak három elsődleges biztonsági architektúrával kapcsolatos szempontot biztosítanak az adott forgatókönyvhöz:
 
-   - A tűzfalak a terheléselosztó mögé kerülnek, és bárhonnan elfogadják a csomagokat. Ezek a csomagok külső legkülső expozícióra szolgálnak, és a hagyományos külső tűzfal nyitott portjainak felelnek meg.
-   - A tűzfalak csak korlátozott címkészletről fogadnak el csomagokat. Ez a megfontolás része a DDoS-támadások elleni védelmi mélyreható stratégiának. Az ilyen kapcsolatok kriptográfiailag hitelesítve vannak.
-   - A tűzfalak csak bizonyos belső csomópontokból érhetők el. Csak a forrás IP-címek számba sorolt listájáról fogadnak el csomagokat, amelyek mindegyike Az Azure-hálózaton belüli DIPs. Például egy támadás a vállalati hálózat közvetlen kérelmeket ezekre a címekre, de a támadások blokkolva lesznek, kivéve, ha a forráscíme a csomag volt az egyik a felsorolt lista az Azure-hálózaton belül.
-     - A hozzáférési útválasztó a kerületblokkolja a kimenő csomagokat, amelyek címzettje egy címet, amely az Azure-hálózaton belül a konfigurált statikus útvonalak miatt.
+   - A tűzfalak a terheléselosztó mögé kerülnek, és bárhonnan fogadnak csomagokat. Ezek a csomagok külsőleg elérhetővé válnak, és a hagyományos peremhálózati tűzfalon lévő nyitott portoknak is megfelelnek.
+   - A tűzfalak csak korlátozott számú címről fogadnak csomagokat. Ez a megfontolás a DDoS-támadások elleni védelmi mélyreható stratégia részét képezi. Ezek a kapcsolatok titkosítási szempontból hitelesítve vannak.
+   - A tűzfalak csak a belső csomópontok kiválasztása esetén érhetők el. A csomagokat csak a forrás IP-címeinek enumerált listájából fogadják el, amelyek mindegyike az Azure-hálózatban található. Előfordulhat például, hogy a vállalati hálózat támadása ezekre a címekre irányuló kéréseket tartalmaz, de a támadások le lesznek tiltva, kivéve, ha a csomag címének egyike volt az Azure-hálózaton belüli enumerálási listán.
+     - A peremhálózati hozzáférési útválasztó blokkolja a kimenő csomagokat, amelyek az Azure-hálózaton belüli címekre vannak konfigurálva a beállított statikus útvonalak miatt.
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni arról, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme érdekében, olvassa el a következő témakört:
+Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
-- [Az Azure létesítményei, helyiségei és fizikai biztonsága](physical-security.md)
-- [Az Azure-infrastruktúra rendelkezésre állása](infrastructure-availability.md)
-- [Az Azure információs rendszer összetevői és határai](infrastructure-components.md)
+- [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)
+- [Azure-infrastruktúra rendelkezésre állása](infrastructure-availability.md)
+- [Azure Information System-összetevők és-határok](infrastructure-components.md)
 - [Azure hálózati architektúra](infrastructure-network.md)
-- [Az Azure SQL Database biztonsági szolgáltatásai](infrastructure-sql.md)
-- [Az Azure éles üzemei és kezelése](infrastructure-operations.md)
-- [Az Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
-- [Az Azure infrastruktúra integritása](infrastructure-integrity.md)
-- [Az Azure-beli ügyfelek adatainak védelme](protection-customer-data.md)
+- [Azure SQL Database biztonsági funkciók](infrastructure-sql.md)
+- [Azure-beli üzemi műveletek és felügyelet](infrastructure-operations.md)
+- [Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
+- [Azure-infrastruktúra integritása](infrastructure-integrity.md)
+- [Azure Customer-adatvédelem](protection-customer-data.md)

@@ -1,63 +1,63 @@
 ---
-title: Adatforrásokhoz való csatlakozás az Azure Data Catalogban
-description: Útmutató cikk, amely kiemeli, hogyan lehet csatlakozni az Azure Data Catalog által felderített adatforrásokhoz.
+title: Kapcsolódás adatforrásokhoz a Azure Data Catalogban
+description: 'Útmutató: a Azure Data Catalog használatával felderített adatforrásokhoz való kapcsolódási útmutató.'
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68976773"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
-## <a name="introduction"></a>Bevezetés
-**A Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely a vállalati adatforrások regisztrációs és felderítési rendszereként szolgál. Más szóval az **Azure Data Catalog** arról szól, hogy segítsen az embereknek az adatforrások felderítésében, megértésében és használatában, és segítse a szervezeteket abban, hogy nagyobb értéket kapjanak a meglévő adataikból. Ennek a forgatókönyvnek az egyik fő szempontja az adatok használata – amint a felhasználó felderíti az adatforrást, és megérti annak célját, a következő lépés az adatforráshoz való csatlakozás az adatok felhasználásához.
+## <a name="introduction"></a>Introduction (Bevezetés)
+A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, megérteni és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak. Ennek a forgatókönyvnek a fő aspektusa az adatforrások használata – Ha a felhasználó felvesz egy adatforrást, és megértette a célját, a következő lépés az adatforráshoz való kapcsolódás, hogy az adatai használhatók legyenek.
 
-## <a name="data-source-locations"></a>Adatforrás-helyek
-Az adatforrás-regisztráció során **az Azure Data Catalog** metaadatokat kap az adatforrásról. Ez a metaadat tartalmazza az adatforrás helyének részleteit. A hely részletei adatforrásról adatforrásra változnak, de mindig a csatlakozáshoz szükséges információkat tartalmazzák. Egy SQL Server tábla helye például tartalmazza a kiszolgáló nevét, az adatbázis nevét, a sémanevét és a táblanevét, míg az SQL Server Reporting Services jelentés helye tartalmazza a kiszolgáló nevét és a jelentés elérési útját. Más adatforrástípusok olyan helyekkel rendelkeznek, amelyek tükrözik a forrásrendszer szerkezetét és képességeit.
+## <a name="data-source-locations"></a>Adatforrás helyei
+Az adatforrás-regisztráció során **Azure Data Catalog** fogadja az adatforrásra vonatkozó metaadatokat. Ez a metaadatok az adatforrás helyének részleteit tartalmazzák. A hely részletei az adatforrás és az adatforrás között változnak, de mindig a kapcsolódáshoz szükséges adatokat tartalmazzák. Például egy SQL Server tábla helye tartalmazza a kiszolgáló nevét, az adatbázis nevét, a séma nevét és a tábla nevét, míg a SQL Server Reporting Services jelentés helye tartalmazza a kiszolgáló nevét és a jelentés elérési útját. Más adatforrás-típusok olyan helyekkel rendelkeznek, amelyek tükrözik a forrásrendszer szerkezetét és képességeit.
 
 ## <a name="integrated-client-tools"></a>Integrált ügyféleszközök
-Az adatforráshoz való csatlakozás legegyszerűbb módja a "Megnyitás..." az **Azure Data Catalog** portálon. Ez a menü a kijelölt adateszközhöz való csatlakozás lehetőségeinek listáját jeleníti meg.
-Az alapértelmezett csempenézet használatakor ez a menü minden csempén elérhető.
+Az adatforrásokhoz való kapcsolódás legegyszerűbb módja a "Megnyitás a következőben:..." menü a **Azure Data Catalog** portálon. Ez a menü a kiválasztott adategységhez való csatlakozás lehetőségeinek listáját jeleníti meg.
+A csempe alapértelmezett nézetének használatakor ez a menü az egyes csempén érhető el.
 
- ![SQL Server-tábla megnyitása az Excelben az adategység csempéjéről](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
+ ![SQL Server-táblázat megnyitása az Excelben az adategység csempén](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
-A listanézet használatakor a menü a portálablak tetején lévő keresősávban érhető el.
+A listanézet használatakor a menü a portál ablakának tetején található keresési sávban érhető el.
 
- ![SQL Server Reporting Services jelentés megnyitása a Jelentéskezelőben](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![SQL Server Reporting Services jelentés megnyitása Jelentéskezelő](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>Támogatott ügyfélalkalmazások
-A "Megnyitás a..." az Azure Data Catalog portálon található adatforrások menüjében a megfelelő ügyfélalkalmazást kell telepíteni az ügyfélszámítógépre.
+A Megnyitás a következőben:... a Azure Data Catalog-portálon lévő adatforrások menüjében a megfelelő ügyfélalkalmazás telepítése szükséges az ügyfélszámítógépen.
 
-| Megnyitás az alkalmazásban | Fájlkiterjesztés / protokoll | Támogatott alkalmazásverziók |
+| Megnyitás az alkalmazásban | Fájlkiterjesztés/protokoll | Támogatott alkalmazások verziói |
 | --- | --- | --- |
-| Excel |.odc |Excel 2010 vagy újabb verzió |
-| Excel (1000 legnépszerűbb) |.odc |Excel 2010 vagy újabb verzió |
-| Power Query |.xlsx |Excel 2016, Excel 2010 vagy Excel 2013 az Excel Hez Power Query bővítmény telepítésével |
-| Power BI Desktop |.pbix |2016 júliusában vagy később a Power BI Desktop |
-| SQL Server Data Tools |vsweb:// |Visual Studio 2013 4- es vagy újabb frissítése az SQL Server eszköztelepítésével |
-| Jelentéskezelő |http:// |Lásd: [az SQL Server Reporting Services böngészőkövetelményei](https://technet.microsoft.com/library/ms156511.aspx) |
+| Excel |. odc |Excel 2010 vagy újabb verzió |
+| Excel (Top 1000) |. odc |Excel 2010 vagy újabb verzió |
+| Power Query |.xlsx |Excel 2016 vagy Excel 2010 vagy Excel 2013 az Excel-bővítményhez telepített Power Query |
+| Power BI Desktop |. pbix |Power BI Desktop július 2016 vagy újabb |
+| SQL Server Data Tools |vsweb:// |A Visual Studio 2013 4. vagy újabb frissítése a telepített SQL Server eszközzel |
+| Jelentéskezelő |http:// |Lásd [a SQL Server Reporting Services böngészőre vonatkozó követelményeit](https://technet.microsoft.com/library/ms156511.aspx) |
 
-## <a name="your-data-your-tools"></a>Az ön adatai, eszközei
-A menüben elérhető beállítások az aktuálisan kiválasztott adateszköz típusától függenek. Természetesen nem minden lehetséges eszköz kerül be a "Megnyitás..." menüben, de még mindig könnyen csatlakozhat az adatforráshoz bármilyen ügyféleszközzel. Ha egy adategység van kiválasztva az **Azure Data Catalog** portálon, a teljes hely jelenik meg a tulajdonságok ablaktáblán.
+## <a name="your-data-your-tools"></a>Az Ön adatai, eszközei
+A menüben elérhető lehetőségek a jelenleg kiválasztott adategység típusától függenek. Természetesen nem minden lehetséges eszköz fog szerepelni a "Megnyitás a következőben:..." menü, de még mindig egyszerűen csatlakozhat az adatforráshoz bármely ügyfél eszköz használatával. Ha egy adategység van kiválasztva a **Azure Data Catalog** -portálon, a Tulajdonságok ablaktáblán megjelenik a teljes hely.
 
- ![SQL Server tábla kapcsolatadatai](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
+ ![SQL Server tábla csatlakoztatási adatai](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-A kapcsolatadatainak részletei adatforrástípustól adatforrástípusonként eltérőek lesznek, de a portálon található információk mindent megadnak, amire az adatforráshoz való csatlakozáshoz bármely ügyféleszközben szükség lehet. A felhasználók átmásolhatják az **általuk**felderített adatforrások kapcsolatrészleteit az Azure Data Catalog használatával, lehetővé téve számukra, hogy a választott eszközükben működjenek az adatokkal.
+A kapcsolati adatok részletei eltérnek az adatforrás típusától és az adatforrás típusától, de a portálon található információk minden ügyfél-eszközben elérhetővé teszik az adatforráshoz való kapcsolódáshoz szükséges adatokat. A felhasználók átmásolhatják a **Azure Data Catalog**használatával felderített adatforrások kapcsolati adatait, lehetővé téve számukra, hogy a választott eszközön lévő adatokkal működjenek.
 
-## <a name="connecting-and-data-source-permissions"></a>Csatlakozási és adatforrás-engedélyek
-Bár **az Azure Data Catalog** felderíthetővé teszi az adatforrásokat, az adatokhoz való hozzáférés továbbra is az adatforrás tulajdonosa vagy rendszergazdája ellenőrzése alatt marad. Az **Azure Data Catalog** adatforrásának felderítése nem ad engedélyt a felhasználónak az adatforrás hoz való hozzáféréshez.
+## <a name="connecting-and-data-source-permissions"></a>Kapcsolódási és adatforrás-engedélyek
+Habár a **Azure Data Catalog** az adatforrások felderíthetővé tételével, maga az adathoz való hozzáférés az adatforrás tulajdonosának vagy rendszergazdájának a felügyelete alatt marad. **Azure Data Catalog** adatforrásának felfedése nem biztosít semmilyen engedélyt a felhasználónak az adatforrás eléréséhez.
 
-Annak érdekében, hogy azok a felhasználók könnyebben felismerjenek egy adatforrást, akik nem rendelkeznek hozzáféréssel az adataihoz, az adatforrás jegyzetelésekor a hozzáférés kérése tulajdonságban adhatnak meg információkat. Az itt megadott információk – beleértve az adatforrás-hozzáféréshez szükséges folyamatra vagy kapcsolattartó pontra mutató hivatkozásokat – a portálon található adatforrás helyadatai mellett jelennek meg.
+Annak érdekében, hogy könnyebb legyen az adatforrást felderítő felhasználók számára, de nincs engedélye az adatok elérésére, a felhasználók adatokat adhatnak meg a kérés hozzáférése tulajdonságban az adatforrás megjegyzése során. Az itt található információk – beleértve az adatforráshoz való hozzáférés megszerzésére irányuló folyamatra vagy kapcsolattartási pontra mutató hivatkozásokat is – a portálon az adatforrás helye információi mellett jelennek meg.
 
- ![Csatlakozási információk a kéréshez való hozzáférésre vonatkozó utasításokkal](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
+ ![Kapcsolódási információk a kérelemhez megadott hozzáférési utasításokkal](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>Összefoglalás
-Adatforrás regisztrálása az **Azure Data Catalog** teszi, hogy az adatok felderíthető másolásával szerkezeti és leíró metaadatok az adatforrásból a katalógus szolgáltatásba. Az adatforrás regisztrálása és felderítése után a felhasználók csatlakozhatnak az adatforráshoz az **"Open** in..." azure data catalog portálról. menüben, vagy a választott adateszközeikkel.
+Az adatforrások **Azure Data Catalogsal** való regisztrálása lehetővé teszi, hogy az adatforrásból a katalógus szolgáltatásba másolja a strukturális és leíró metaadatokat az adatokból. Miután regisztrálta az adatforrást, és felderített, a felhasználók csatlakozhatnak az adatforráshoz a **Azure Data Catalog** -portál Megnyitás a következőben:... Válassza a menü vagy a saját adateszközeinek használatát.
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Catalog oktatóanyagának első lépései](data-catalog-get-started.md) az adatforrásokhoz való csatlakozás részletes részleteivel.
+* [Ismerkedjen meg Azure Data Catalog](data-catalog-get-started.md) oktatóanyaggal, amely részletesen ismerteti az adatforrásokhoz való kapcsolódás lépéseit.

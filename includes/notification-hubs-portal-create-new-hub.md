@@ -9,44 +9,44 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67509074"
 ---
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza a bal oldali menü **Minden szolgáltatás lehetőséget,** majd válassza az **Értesítési központok lehetőséget** a **Mobil** szakaszban. A szolgáltatás neve melletti csillagikont választva adja hozzá a szolgáltatást a bal oldali menü **KEDVENCEK** szakaszához. Miután hozzáadja **az értesítési központokat** a **KEDVENCEKhez,** jelölje ki azt a bal oldali menüben.
+1. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd a **mobil** szakaszban válassza a **Notification Hubs** lehetőséget. A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek** szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs** a **kedvencekhez**, válassza ki a bal oldali menüben.
 
-      ![Azure Portal – válassza az Értesítési központok lehetőséget](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+      ![Azure Portal – Notification Hubs kiválasztása](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. Az **Értesítési központok** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron.
+1. A **Notification Hubs** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron.
 
-      ![Értesítési központok – Eszköztár hozzáadása gomb](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![Notification Hubs – eszköztár hozzáadása gomb](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
 
-1. Az **Értesítési központ** lapon tegye a következő lépéseket:
+1. Az **értesítési központ** oldalon hajtsa végre a következő lépéseket:
 
-    1. Írjon be egy nevet az **Értesítési központban**.  
+    1. Adjon meg egy nevet az **értesítési központban**.  
 
-    1. Írjon be egy nevet az **Új névtér létrehozása mezőbe.** A névtér egy vagy több elosztót tartalmaz.
+    1. Adjon meg egy nevet az **új névtér létrehozása**mezőben. Egy névtér legalább egy hubokat tartalmaz.
 
-    1. Válasszon egy értéket a **Hely** legördülő listából. Ez az érték határozza meg azt a helyet, ahol a hubot létre kívánja hozni.
+    1. Válasszon ki egy értéket a **hely** legördülő listából. Ez az érték határozza meg azt a helyet, amelyben létre kívánja hozni a hubot.
 
-    1. Jelöljön ki egy meglévő erőforráscsoportot az **Erőforráscsoport**ban, vagy hozzon létre nevet egy új erőforráscsoportnak.
+    1. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoport nevét.
 
     1. Kattintson a **Létrehozás** gombra.
 
         ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-1. Válassza **az Értesítések** (a csengő ikon) lehetőséget, majd az Ugrás az **erőforrásra**lehetőséget. A listát az **Értesítési központok** lapon is frissítheti, és kiválaszthatja a központot.
+1. Válassza az **értesítések** (harang ikon) lehetőséget, majd válassza **az Ugrás az erőforráshoz**lehetőséget. A listát a **Notification Hubs** oldalon is frissítheti, és kiválaszthatja a hubot.
 
       ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
-1. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Ne feledje, hogy a két kapcsolati karakterlánc elérhető az Ön számára. A leküldéses értesítések kezeléséhez később szüksége lesz rájuk.
+1. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Vegye figyelembe, hogy a két kapcsolódási karakterlánc elérhető az Ön számára. A leküldéses értesítések kezeléséhez később szüksége lesz rájuk.
 
       >[!IMPORTANT]
-      >*Ne* használja a **DefaultFullSharedAccessSignature** házirendet az alkalmazásban. Ezt csak a hátsó dinatoban kell használni.
+      >Ne *használja az* **DefaultFullSharedAccessSignature** szabályzatot az alkalmazásban. Ezt csak a háttérben való használatra szántuk.
       >
 
       ![Azure Portal – értesítési központ kapcsolati sztringjei](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

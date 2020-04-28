@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelési megoldás importálása Edge-csomag - Azure | Microsoft dokumentumok
-description: Ez a cikk bemutatja, hogyan importálhat egy IoT Edge-csomagot a távoli figyelési megoldásgyorsítóba
+title: Távoli figyelési megoldás importálás Edge-csomagja – Azure | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan importálhat egy IoT Edge csomagot a távoli figyelési megoldás-gyorsító
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,48 +9,48 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61442939"
 ---
-# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>IoT Edge-csomag importálása a távoli figyelési megoldás gyorsítójába
+# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>IoT Edge csomag importálása a távoli figyelési megoldás-gyorsító eszközbe
 
-A központi telepítési jegyzékfájl határozza meg az IoT Edge-eszköz üzembe helyezhető modulokat. Ez a cikk feltételezi, hogy a szervezet egyik fejlesztője már létrehozott egy központi telepítési jegyzékfájlt. Ha többet szeretne megtudni arról, hogy egy fejlesztő hogyan hoz létre jegyzékfájlt, tekintse meg az alábbi IoT Edge útmutató cikkek egyikét:
+Az üzembe helyezési jegyzék meghatározza a IoT Edge eszközre telepítendő modulokat. Ez a cikk azt feltételezi, hogy a szervezet fejlesztője már létrehozott egy üzembe helyezési jegyzéket. Ha szeretné megtudni, hogyan hozza létre a fejlesztő a jegyzékfájlt, tekintse meg a következő IoT Edge útmutatók egyikét:
 
-- [Azure IoT Edge-modulok üzembe helyezése az Azure Portalról](../iot-edge/how-to-deploy-modules-portal.md)
+- [Azure IoT Edge modulok üzembe helyezése a Azure Portal](../iot-edge/how-to-deploy-modules-portal.md)
 - [Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel](../iot-edge/how-to-deploy-modules-cli.md)
-- [Azure IoT Edge-modulok üzembe helyezése a Visual Studio-kódból](../iot-edge/how-to-deploy-modules-vscode.md)
+- [Azure IoT Edge-modulok üzembe helyezése a Visual Studio Code-ból](../iot-edge/how-to-deploy-modules-vscode.md)
 
-A fejlesztő létrehoz és tesztel egy központi telepítési jegyzékfájlt egy fejlesztői környezetben. Ha készen áll, importálhatja a jegyzékfájlt a távoli figyelési megoldás gyorsítójába.
+A fejlesztő egy fejlesztési környezetben hozza létre és teszteli az üzembe helyezési jegyzéket. Ha elkészült, importálhatja a jegyzékfájlt a távoli figyelési megoldás-gyorsító szolgáltatásba.
 
-## <a name="export-a-manifest"></a>Jegyzékfájl exportálása
+## <a name="export-a-manifest"></a>Jegyzék exportálása
 
-Az Azure Portal használatával exportálhatja a telepítési jegyzékfájlt a fejlesztői környezetből:
+A Azure Portal használatával exportálja az üzembe helyezési jegyzéket a fejlesztői környezetből:
 
-1. Az Azure Portalon keresse meg az IoT hubot, amelyet az IoT Edge-eszközök fejlesztéséhez és teszteléséhez használ. Kattintson **az IoT Edge,** majd ![az **IoT Edge-telepítések:** IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
+1. A Azure Portal Navigáljon arra a IoT hub-ra, amelyet a IoT Edge-eszközök fejlesztéséhez és teszteléséhez használ. Kattintson **IoT Edge** majd **IoT Edge központi telepítések**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Kattintson a használni kívánt központi telepítési konfigurációval rendelkező központi telepítésre. A **Telepítés részletei** ![lap a következőket jeleníti meg: IoT Edge-telepítés részletei](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Kattintson arra a központi telepítésre, amely a használni kívánt központi telepítési konfigurációval rendelkezik. A **központi telepítés részletei** lap a ![következőket jeleníti meg: IoT Edge központi telepítés részletei](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. Kattintson **az IoT Edge-jegyzékfájl letöltése**elemre: ![Telepítési jegyzékfájl letöltése](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. Kattintson a **Letöltés IoT Edge manifest**: telepítési jegyzék letöltése elemre. ![](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
-1. Mentse a JSON-fájlt **a deploymentmanifest.json**nevű helyi fájlként.
+1. Mentse a JSON-fájlt egy **deploymentmanifest. JSON**nevű helyi fájlként.
 
-Most már rendelkezik egy fájllal, amely tartalmazza a központi telepítési jegyzék. A következő szakaszban importálja ezt a jegyzékfájlt csomagként a távoli figyelési megoldásba.
+Most már rendelkezik egy olyan fájllal, amely tartalmazza az üzembe helyezési jegyzéket. A következő szakaszban importálja ezt a jegyzékfájlt csomagként a távoli figyelési megoldásba.
 
 ## <a name="import-a-package"></a>Csomag importálása
 
-Az alábbi lépéseket követve importálja az Edge központi telepítési jegyzékfájlcsomagként a megoldásba:
+Kövesse az alábbi lépéseket az Edge központi telepítési jegyzék csomagként történő importálásához a megoldásban:
 
-1. Keresse meg a Távoli figyelés webes felhasználói ![ **felületének Csomagok** lapját](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Navigáljon a távoli figyelés webes felhasználói felületének **csomagok** lapjára ![: csomagok lap](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Kattintson **a + Új csomag**gombra , válassza az Edge **Manifest** lehetőséget a csomagtípusként, majd a **Tallózás gombra** kattintva jelölje ki az előző szakaszban mentett **telepítésimanifest.json** fájlt: Jelölje ki a jegyzékfájlt. ![](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Kattintson az **+ új csomag**elemre, válassza az **Edge manifest** lehetőséget csomag típusaként, majd a **Tallózás** gombra kattintva válassza ki az előző szakaszban mentett **deploymentmanifest. JSON** fájlt: ![válassza a jegyzékfájlt.](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. A **Feltöltés gombra** kattintva adja ![hozzá a csomagot a távoli figyelési megoldáshoz: Feltöltött csomag](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Kattintson a **feltöltés** gombra, és adja hozzá a csomagot a távoli ![figyelési megoldáshoz: feltöltött csomag](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
-Most feltöltött egy IoT Edge-telepítési jegyzékfájl csomagot. A **Központi telepítések** lapon telepítheti ezt a csomagot a csatlakoztatott IoT Edge-eszközökre.
+Most feltöltött egy IoT Edge üzembe helyezési jegyzéket csomagként. A **központi telepítések** lapon telepítheti ezt a csomagot a csatlakoztatott IoT Edge-eszközökre.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan telepítheti a modulokat egy IoT Edge-eszközre a távoli figyelési megoldásból, a következő lépés az IoT Edge további [megismerése.](../iot-edge/about-iot-edge.md)
+Most, hogy megtanulta, hogyan telepíthet modulokat egy IoT Edge eszközre a távoli figyelési megoldásból, a következő lépés a [IoT Edge](../iot-edge/about-iot-edge.md)megismerése.

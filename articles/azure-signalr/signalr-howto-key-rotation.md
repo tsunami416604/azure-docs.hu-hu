@@ -1,62 +1,62 @@
 ---
 title: Hozzáférési kulcs rotálása az Azure SignalR Service esetében
-description: Áttekintés arról, hogy az ügyfélnek miért kell rendszeresen elforgatnia a hozzáférési kulcsokat, és hogyan kell ezt megtenni az Azure Portal gui és az Azure CLI használatával.
+description: Annak áttekintése, hogy az ügyfélnek miért kell rendszeresen elforgatnia a hozzáférési kulcsokat, és hogyan kell ezt megtennie a Azure Portal grafikus felhasználói felülettel és az Azure CLI-vel.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67565730"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Hozzáférési kulcs rotálása az Azure SignalR Service esetében
 
-Minden Egyes Azure SignalR-szolgáltatáspéldány rendelkezik egy elsődleges és másodlagos kulcsok nevű hozzáférési kulcsokkal. A dirti ügyfelek hitelesítésére szolgálnak, amikor a szolgáltatásnak kéréseket tesznek. A kulcsok a példányvégpont URL-címéhez vannak társítva. Tartsa biztonságban a billentyűit, és rendszeresen forgassa őket. Két hozzáférési kulcsot kap, így az egyik kulcs használatával karbantarthatja a kapcsolatokat, miközben újragenerálja a másikat.
+Minden Azure Signaler szolgáltatás-példányhoz tartozik egy elsődleges és egy másodlagos kulcs nevű hozzáférési kulcs. A rendszer a Signaler-ügyfelek hitelesítésére használja a szolgáltatásra irányuló kérelmek esetén. A kulcsok a példány végpontjának URL-címével vannak társítva. Tartsa biztonságban a kulcsait, és rendszeresen forgassa őket. Két hozzáférési kulccsal van ellátva, így a kapcsolatok egy kulcs használatával kezelhetők, miközben újragenerálja a másikat.
 
-## <a name="why-rotate-access-keys"></a>Miért érdemes elforgatni a hozzáférési kulcsokat?
+## <a name="why-rotate-access-keys"></a>Miért érdemes a hozzáférési kulcsokat elforgatni?
 
-Biztonsági okokból és megfelelőségi követelmények miatt rendszeresen forgassa el a hozzáférési kulcsokat.
+Biztonsági okokból és megfelelőségi követelmények esetén a hozzáférési kulcsok rendszeres elforgatása.
 
 ## <a name="regenerate-access-keys"></a>Hozzáférési kulcsok újragenerálása
 
-1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/)és jelentkezzen be a hitelesítő adataival.
+1. Lépjen a [Azure Portalra](https://portal.azure.com/), és jelentkezzen be a hitelesítő adataival.
 
-1. Keresse meg a **kulcsok** szakaszt az Azure SignalR service-példányban a újralétrehozni kívánt kulcsokkal.
+1. Keresse meg a **kulcsok** szakaszt az Azure signaler szolgáltatás példányában az újragenerálni kívánt kulcsokkal.
 
-1. Válassza a navigációs menü **Billentyűparancs-parancsát.**
+1. A navigációs menüben válassza a **kulcsok** lehetőséget.
 
-1. Válassza **az elsődleges kulcs újragenerálása** vagy a másodlagos kulcs **újragenerálása**lehetőséget.
+1. Válassza az **elsődleges kulcs újragenerálása** vagy a **másodlagos kulcs újragenerálása**elemet.
 
-   Egy új kulcs és a megfelelő kapcsolati karakterlánc jön létre és jelenik meg.
+   A rendszer létrehoz és megjelenít egy új kulcsot és a hozzá tartozó kapcsolódó karakterláncot.
 
    ![Kulcsok újragenerálása](media/signalr-howto-key-rotation/regenerate-keys.png)
 
-A kulcsokat az Azure [CLI](/cli/azure/signalr/key?view=azure-cli-latest#az-signalr-key-renew)használatával is újragenerálhatja.
+A kulcsokat az [Azure CLI](/cli/azure/signalr/key?view=azure-cli-latest#az-signalr-key-renew)használatával is újragenerálhatja.
 
-## <a name="update-configurations-with-new-connection-strings"></a>Konfigurációk frissítése új kapcsolati karakterláncokkal
+## <a name="update-configurations-with-new-connection-strings"></a>Konfigurációk frissítése új kapcsolatok sztringekkel
 
-1. Másolja az újonnan létrehozott kapcsolati karakterláncot.
+1. Másolja az újonnan létrehozott kapcsolatok sztringjét.
 
-1. Frissítse az összes konfigurációt az új kapcsolati karakterlánc használatához.
+1. Frissítse az összes konfigurációt az új kapcsolódási karakterlánc használatára.
 
 1. Szükség szerint indítsa újra az alkalmazást.
 
-## <a name="forced-access-key-regeneration"></a>Kényszerített hozzáférésű kulcs regenerálása
+## <a name="forced-access-key-regeneration"></a>Kényszerített hozzáférési kulcs újragenerálása
 
-Az Azure SignalR-szolgáltatás bizonyos helyzetekben kényszerítheti a kötelező hozzáférési kulcs regenerálását. A szolgáltatás e-mailben és portálértesítéssel értesíti az ügyfeleket. Ha ezt a kommunikációt kapja, vagy egy hozzáférési kulcs miatt szolgáltatáshibát tapasztal, forgassa el a kulcsokat az útmutató utasításainak megfelelően.
+Az Azure Signaler szolgáltatás bizonyos helyzetekben kikényszerítheti a kötelező hozzáférési kulcs újragenerálását. A szolgáltatás értesítést küld az ügyfeleknek e-mailben és a portálon keresztül. Ha egy hozzáférési kulcs miatt ezt a kommunikációt vagy a szolgáltatás meghibásodását tapasztalja, forgassa el a kulcsokat az útmutató utasításait követve.
 
 ## <a name="next-steps"></a>További lépések
 
-A hozzáférési kulcsokat rendszeresen forgassa el, mint jó biztonsági gyakorlatot.
+A hozzáférési kulcsok rendszeres elforgatása jó biztonsági gyakorlatként.
 
-Ebben az útmutatóban megtanulta a hozzáférési kulcsok újragenerálását. Folytassa a következő oktatóanyagokat az OAuth vagy az Azure Functions hitelesítésével kapcsolatban.
+Ebben az útmutatóban megtanulta, hogyan lehet újragenerálni a hozzáférési kulcsokat. Folytassa a következő oktatóanyagokkal a OAuth vagy a Azure Functions használatával történő hitelesítéssel kapcsolatban.
 
 > [!div class="nextstepaction"]
-> [Integrálható ASP.NET alapvető identitással](./signalr-concept-authenticate-oauth.md)
+> [Integrálás a ASP.NET Core Identity szolgáltatással](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
 > [Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása](./signalr-tutorial-authenticate-azure-functions.md)

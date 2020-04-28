@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178956"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
@@ -33,7 +33,7 @@ További címelőtagok felvétele:
 
 Címelőtagok eltávolítása:
 
-  Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában már nincs szükségünk a 10.101.2.0/24 előtagra (az előző példából), ezért frissítjük a helyi hálózati átjárót, az előtag kivételével.
+  Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában már nincs szükségünk a 10.101.2.0/24 előtagra (az előző példából), ezért a helyi hálózati átjárót úgy frissítjük, hogy az előtagot kizárja.
 
 1. Állítsa be a LocalNetworkGateway változóját.
 
@@ -56,7 +56,7 @@ Ha már rendelkezik átjárókapcsolattal, és szeretné felvenni vagy eltávol�
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. Állítsa be a helyi hálózati átjárót a módosított címelőtagokkal.
+2. Állítsa be a helyi hálózati átjárót a módosított címek előtagjaival.
    
    Állítsa be a LocalNetworkGateway változóját.
 

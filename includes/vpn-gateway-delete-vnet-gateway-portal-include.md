@@ -9,26 +9,26 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d36d2be59010c47348a8e196b28d87e5b967868e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178990"
 ---
-### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>1. lépés: Navigálás a virtuális hálózati átjáróra
+### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>1. lépés: navigáljon a virtuális hálózati átjáróhoz
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg a **Minden erőforrás t.** 
-2. A virtuális hálózati átjáró lap megnyitásához keresse meg a törölni kívánt virtuális hálózati átjárót, és kattintson rá.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az **összes erőforráshoz**. 
+2. A virtuális hálózati átjáró megnyitásához nyissa meg a törölni kívánt virtuális hálózati átjárót, és kattintson rá.
 
-### <a name="step-2-delete-connections"></a>2. lépés: Kapcsolatok törlése
+### <a name="step-2-delete-connections"></a>2. lépés: kapcsolatok törlése
 
-1. A virtuális hálózati átjáró lapján kattintson a **Kapcsolatok** elemre az átjáróhoz való összes kapcsolat megtekintéséhez.
-2. Kattintson a kapcsolat nevének sorában a **"..."** gombra, majd válassza a **törlés** lehetőséget a legördülő menüből.
-3. Kattintson az **Igen** gombra a kapcsolat törlésének megerősítéséhez. Ha több kapcsolattal rendelkezik, törölje az egyes kapcsolatokat.
+1. A virtuális hálózati átjáró lapján kattintson a **kapcsolatok** elemre az átjáró összes kapcsolatának megtekintéséhez.
+2. Kattintson a **"..."** elemre a kapcsolatok nevének sorában, majd válassza a **Törlés** lehetőséget a legördülő menüből.
+3. Kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni kívánja a kapcsolódást. Ha több kapcsolattal rendelkezik, törölje az összes kapcsolatot.
 
-### <a name="step-3-delete-the-virtual-network-gateway"></a>3. lépés: A virtuális hálózati átjáró törlése
+### <a name="step-3-delete-the-virtual-network-gateway"></a>3. lépés: a virtuális hálózati átjáró törlése
 
-Ne feledje, hogy ha az S2S-konfiguráció mellett p2S-konfigurációval rendelkezik ehhez a virtuális hálózathoz, a virtuális hálózati átjáró törlése figyelmeztetés nélkül automatikusan leválasztja az összes P2S-ügyfelet.
+Ügyeljen arra, hogy ha a S2S-konfiguráción kívül P2S-konfigurációval rendelkezik ehhez a VNet, a virtuális hálózati átjáró törlésével a rendszer figyelmeztetés nélkül automatikusan leválasztja az összes P2S-ügyfelet.
 
-1. A virtuális hálózati átjáró lapon kattintson az **Áttekintés gombra.**
-2. Az **Áttekintő** lapon kattintson a **Törlés** gombra az átjáró törléséhez.
+1. A virtuális hálózati átjáró lapon kattintson az **Áttekintés**elemre.
+2. Az átjáró törléséhez az **Áttekintés** lapon kattintson a **Törlés** elemre.

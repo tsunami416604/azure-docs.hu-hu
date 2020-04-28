@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179323"
 ---
-A tároló-emulátor egyetlen rögzített fiókot és egy jól ismert hitelesítési kulcsot támogat a megosztott kulcs hitelesítéséhez. Ez a fiók és kulcs az egyetlen megosztott kulcs hitelesítő adatok használata engedélyezett a tároló emulátor. Ezek a következők:
+A Storage Emulator egyetlen rögzített fiókot és egy jól ismert hitelesítési kulcsot támogat a megosztott kulcsos hitelesítéshez. Ez a fiók és a kulcs az egyetlen megosztott kulcs hitelesítő adatai, amelyek használata engedélyezett a Storage Emulator használatával. Ezek a következők:
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> A tárolóemulátor által támogatott hitelesítési kulcs csak az ügyfélhitelesítési kód működésének tesztelésére szolgál. Nem szolgál semmilyen biztonsági célt. Az éles tárfiók és a kulcs nem használható a storage emulátor. Ne használja a fejlesztési fiókot éles adatokkal.
+> A Storage Emulator által támogatott hitelesítési kulcs kizárólag az ügyfél-hitelesítési kód működésének tesztelésére szolgál. Nem szolgál biztonsági céllal. Az üzemi Storage-fiók és a kulcs nem használható a Storage Emulator használatával. A fejlesztési fiókot ne használja éles adatszolgáltatással.
 > 
-> A tárolóemulátor csak HTTP-n keresztül támogatja a kapcsolatot. A HTTPS azonban az ajánlott protokoll az éles Azure-tárfiók ban lévő erőforrások eléréséhez.
+> A Storage Emulator csak a HTTP protokollon keresztül támogatja a kapcsolatokat. Azonban a HTTPS az a javasolt protokoll, amellyel a termelési Azure Storage-fiók erőforrásaihoz férhet hozzá.
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Csatlakozás az emulátorfiókhoz egy parancsikon használatával
-Az alkalmazásból a tárolóemulátorhoz való csatlakozás legegyszerűbb módja, ha az alkalmazás konfigurációs fájljában `UseDevelopmentStorage=true`beállít egy kapcsolati karakterláncot, amely a parancsikonra hivatkozik. Íme egy példa egy *alkalmazás.config* fájltároló-emulátorához való kapcsolati karakterláncra: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Kapcsolódás az Emulator-fiókhoz parancsikon használatával
+Az alkalmazásból a Storage emulatorhoz való kapcsolódás legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely hivatkozik a parancsikonra `UseDevelopmentStorage=true`. Az alábbi példa egy *app. config* fájlban lévő Storage emulatorhoz tartozó kapcsolódási sztringet mutat be: 
 
 ```xml
 <appSettings>
@@ -33,8 +33,8 @@ Az alkalmazásból a tárolóemulátorhoz való csatlakozás legegyszerűbb mód
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Csatlakozás az emulátorfiókhoz a jól ismert fióknév és kulcs használatával
-Ha olyan kapcsolati karakterláncot szeretne létrehozni, amely az emulátorfiók nevére és kulcsára hivatkozik, meg kell adnia a végpontokat az emulátortól a kapcsolati karakterláncban használni kívánt szolgáltatások mindegyikéhez. Erre azért van szükség, hogy a kapcsolati karakterlánc az emulátor végpontjaira hivatkozzon, amelyek eltérnek az éles tárfiókhoz tartozóktól. A kapcsolati karakterlánc értéke például a következőkkel fog kinézni:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Kapcsolódjon az Emulator-fiókhoz a jól ismert fiók neve és kulcsa alapján
+Az Emulator-fiók nevére és kulcsára hivatkozó kapcsolódási karakterlánc létrehozásához meg kell adnia a végpontokat minden olyan szolgáltatáshoz, amelyet az emulátorban szeretne használni a kapcsolódási karakterláncban. Erre azért van szükség, hogy a kapcsolatok karakterlánca hivatkozzon az emulátor végpontokra, amelyek nem azonosak egy éles tárolóeszköz-fiókkal. Például a következőhöz hasonló módon fog kinézni a kapcsolatok karakterláncának értéke:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -44,10 +44,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Ez az érték megegyezik a `UseDevelopmentStorage=true`fenti parancsikonnel.
+Ez az érték megegyezik a fent látható parancsikonnal `UseDevelopmentStorage=true`.
 
-#### <a name="specify-an-http-proxy"></a>HTTP-proxy megadása
-Megadhat egy HTTP-proxyt is, amelyet akkor használ, amikor a szolgáltatást a tároló emulátorával teszteli. Ez hasznos lehet a HTTP-kérések és válaszok megfigyelése közben a tárolási szolgáltatások kal kapcsolatos műveletek hibakeresése közben. Proxy megadásához adja `DevelopmentStorageProxyUri` hozzá a beállítást a kapcsolati karakterlánchoz, és állítsa annak értékét a proxy URI-jára. Itt van például egy kapcsolati karakterlánc, amely a tárolóemulátorra mutat, és http-proxyt állít be:
+#### <a name="specify-an-http-proxy"></a>HTTP-proxy meghatározása
+Megadhat egy HTTP-proxyt is, amelyet akkor használhat, ha a szolgáltatást a Storage Emulator használatával teszteli. Ez hasznos lehet a HTTP-kérések és a válaszok megfigyelésére a tárolási szolgáltatásokkal kapcsolatos műveletek hibakeresése során. Proxy megadásához adja hozzá a `DevelopmentStorageProxyUri` kapcsolót a kapcsolati karakterlánchoz, és állítsa az értékét a proxy URI-ra. Itt látható például egy olyan kapcsolódási sztring, amely a Storage emulatorra mutat, és egy HTTP-proxyt konfigurál:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

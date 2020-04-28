@@ -1,64 +1,64 @@
 ---
-title: Adatforrások jegyzetelése az Azure Data Catalogban
-description: Útmutató cikk, amely kiemeli, hogyan lehet az adatelemeket az Azure Data Catalogban jegyzetekkel látni, beleértve a rövid neveket, címkéket, leírásokat és szakértőket.
+title: Adatforrások megjegyzése Azure Data Catalogban
+description: Útmutató az adategységek Azure Data Catalogban való megjegyzésének kiemeléséhez, beleértve a felhasználóbarát neveket, címkéket, leírásokat és szakértőket.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950266"
 ---
-# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Adatforrások jegyzetelése az Azure Data Catalogban
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Adatforrások megjegyzése Azure Data Catalogban
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-**A Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely a vállalati adatforrások regisztrációs és felderítési rendszereként szolgál. Más szóval a Data Catalog arról szól, hogy segítsen az embereknek az adatforrások felfedezésében, megértésében és használatában, és segítse a szervezeteket abban, hogy nagyobb értéket kapjanak meglévő adataikból. Ha egy adatforrás regisztrálva van a Data Catalog szolgáltatásban, a szolgáltatás másolja és indexeli a metaadatait, de a szövegegység nem ér véget. A Data Catalog lehetővé teszi a felhasználók számára, hogy saját leíró metaadataikat – például leírásokat és címkéket – adjanak meg az adatforrásból kinyert metaadatok kiegészítésére, valamint az adatforrás érthetőbbé teszik több ember számára.
+A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy Data Catalog az a célja, hogy segítsen az embereknek felderíteni, megérteni és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak. Ha egy adatforrás regisztrálva van Data Catalog, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be. Data Catalog lehetővé teszi a felhasználók számára, hogy saját leíró metaadatokat – például leírásokat és címkéket – adjanak hozzá az adatforrásból kinyert metaadatokhoz, és hogy az adatforrás jobban érthető legyen több személy számára.
 
-## <a name="annotation-and-crowdsourcing"></a>Jegyzet és crowdsourcing
+## <a name="annotation-and-crowdsourcing"></a>Jegyzet és közösségi
 Mindenkinek van véleménye. És ez egy jó dolog.
-A Data Catalog felismeri, hogy a különböző felhasználók eltérő perspektívával rendelkeznek a vállalati adatforrásokkal kapcsolatban, és hogy ezek a perspektívák értékesek lehetnek. Vegyük példaként a következő esetet:
+Data Catalog felismeri, hogy a különböző felhasználók különböző perspektívákkal rendelkeznek a vállalati adatforrások esetében, és ezek a perspektívák hasznosak lehetnek. Vegyük példaként a következő esetet:
 
-* A rendszergazda ismeri az adatforrást üzemeltető kiszolgálók vagy szolgáltatások szolgáltatásiszint-szerződését.
-* Az adatbázis rendszergazdája ismeri az egyes adatbázisok biztonsági mentési ütemezését és az engedélyezett ETL feldolgozási ablakokat.
-* A rendszer tulajdonosa ismeri azt a folyamatot, amelyen a felhasználók hozzáférést kérhetnek az adatforráshoz.
-* Az adatfelelős tudja, hogy az adatforrásban lévő eszközök és attribútumok hogyan felelnek meg a vállalati adatmodellnek.
-* Az elemző tudja, hogyan használják fel az adatokat az általuk támogatott üzleti folyamatok összefüggésében.
+* A rendszergazda ismeri az adatforrást üzemeltető kiszolgálók vagy szolgáltatások szolgáltatási szintjének egyezményét.
+* Az adatbázis rendszergazdája ismeri a biztonsági mentési ütemtervet az egyes adatbázisokhoz, valamint az engedélyezett ETL-feldolgozási időszakokat.
+* A rendszer tulajdonosa tudja, hogy a felhasználók milyen eljárást igényelhetnek az adatforráshoz való hozzáféréshez.
+* Az adatkezelő tudja, hogyan képezi le az adatforrásban lévő eszközöket és attribútumokat a vállalati adatmodellre.
+* Az elemző tudja, hogyan használják az adatmennyiséget az általuk támogatott üzleti folyamatok kontextusában.
 
-Ezek a perspektívák mindegyike értékes, és a Data Catalog a crowdsourcing megközelítést használja a metaadatokhoz, amely lehetővé teszi, hogy mindegyiket rögzítsék és használják a regisztrált adatforrások teljes képének biztosításához. A Data Catalog portál használatával minden felhasználó hozzáadhatja és szerkesztheti saját jegyzeteit, miközben megtekintheti a más felhasználók által biztosított jegyzeteket.
+Ezen perspektívák mindegyike értékes, és Data Catalog egy közösségi megközelítést használ a metaadatokhoz, amelyek lehetővé teszik, hogy mindegyik rögzíthető legyen, és hogy teljes képet nyújtson a regisztrált adatforrásokról. A Data Catalog portál használatával minden felhasználó hozzáadhat és szerkesztheti a saját megjegyzéseit, miközben megtekintheti a más felhasználók által biztosított megjegyzéseket.
 
 ## <a name="different-types-of-annotations"></a>Különböző típusú jegyzetek
-A Data Catalog a következő típusú feliratokat támogatja:
+Data Catalog a következő típusú megjegyzéseket támogatja:
 
 | Jegyzet | Megjegyzések |
 | --- | --- |
-| Felhasználóbarát név |A rövid nevek az adateszköz szintjén adhatók meg, hogy az adateszközök könnyebben érthetőek legyenek. A rövid nevek akkor a leghasznosabbak, ha az alapul szolgáló objektumnév rejtélyes, rövidített vagy más módon nem értelmezhető a felhasználók számára. |
-| Leírás |Leírások adhatók meg az adategység és az attribútum / oszlop szinten. A leírások szabad formátumú rövid szöveges jegyzetek, amelyek leírják a felhasználó nak az adateszközre vagy annak használatára vonatkozó perspektíváját. |
-| Címkék (felhasználói címkék) |Címkéket lehet adni az adategység és attribútum / oszlop szinten. A felhasználói címkék olyan felhasználó által definiált címkék, amelyek az adatelemek vagy attribútumok kategorizálására használhatók. |
-| Címkék (szószedetcímkék) |Címkéket lehet adni az adategység és attribútum / oszlop szinten. A szószedetcímkék központilag definiált szószedeti kifejezések, amelyek az adatelemek vagy attribútumok közös üzleti besorolással történő kategorizálására használhatók. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
-| Szakértők |A szakértők az adateszköz szintjén is rendelkezésre állnak. A szakértők azonosítják az adatokkal kapcsolatos szakértői perspektívákkal rendelkező felhasználókat vagy csoportokat, és kapcsolattartási pontként szolgálhatnak azon felhasználók számára, akik felfedezik a regisztrált adatforrásokat, és olyan kérdéseik vannak, amelyekre a meglévő jegyzetek nem válaszolnak. |
-| Hozzáférés kérése |A kérelem-hozzáférési információk az adateszköz szintjén adhatók meg. Ez az információ azoknak a felhasználóknak szól, akik olyan adatforrást fedeznek fel, amelyhez még nem rendelkeznek hozzáférési engedéllyel. A felhasználók megadhatják annak a felhasználónak vagy csoportnak az e-mail címét, aki hozzáférést biztosít, annak a folyamatnak vagy eszköznek az URL-címét, amelyhez a felhasználóknak szükségük van a hozzáféréshez, vagy magát a folyamatot szövegként adhatják meg. |
-| Dokumentáció |A dokumentáció az adateszköz szintjén is rendelkezésre áll. Az eszközdokumentáció olyan rich text információ, amely hivatkozásokat és képeket tartalmazhat, és amely a leírásokon és címkéken keresztül nem továbbított információkat nyújthat. |
+| Felhasználóbarát név |A felhasználóbarát nevek az adategység szintjén adhatók meg, hogy az adategységek könnyebben érthetőek legyenek. A felhasználóbarát nevek akkor hasznosak, ha az alapul szolgáló objektumnév Crypter, rövidített vagy más módon nem értelmezhető a felhasználók számára. |
+| Leírás |A leírásokat az adategységek és az attribútumok/oszlopok szintjein lehet megadni. A leírások olyan rövid szöveges megjegyzések, amelyek leírják a felhasználó perspektíváját az adategységen vagy annak használatával. |
+| Címkék (felhasználói címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A felhasználói címkék felhasználó által definiált címkék, amelyek az adategységek vagy attribútumok kategorizálására használhatók. |
+| Címkék (Szószedet-címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A Szószedet címkék központilag definiált szószedeti kifejezések, amelyek segítségével kategorizálhatja az adategységeket és az attribútumokat egy közös üzleti besorolással. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
+| Szakértők |Szakértőket az adategység szintjén lehet megadni. A szakértők olyan felhasználókat vagy csoportokat azonosítanak az adathoz, amelyek szakértői perspektívával rendelkeznek, és a regisztrált adatforrásokat felderítő felhasználók és a meglévő megjegyzések által nem válaszoló kérdésekre is kiszolgálják. |
+| Hozzáférés kérése |Hozzáférési adatok kérése az adategység szintjén biztosítható. Ezek az információk azokra a felhasználókra vonatkoznak, akik olyan adatforrást észlelnek, amelyhez még nem rendelkeznek hozzáférési engedéllyel. A felhasználók megadhatják annak a felhasználónak vagy csoportnak az e-mail-címét, aki hozzáférést biztosít a felhasználóknak, vagy megadhatja, hogy a felhasználó milyen folyamathoz vagy eszközhöz férhet hozzá, vagy akár szövegként is megadhatja a folyamatot. |
+| Dokumentáció |A dokumentációt az adategység szintjén lehet megadni. Az eszköz dokumentációja olyan gazdag szöveges adatokat tartalmaz, amelyek hivatkozásokat és képeket tartalmazhatnak, és amelyek a leírások és címkék használatával nem továbbított információkat is megadhatnak. |
 
-## <a name="annotating-multiple-assets"></a>Több eszköz jegyzetelése
-Ha több adateszközt jelöl ki a Data Catalog portálon, a felhasználók egyetlen műveletben jegyzetelhetik az összes kijelölt eszközt. A jegyzetek az összes kiválasztott eszközre vonatkoznak, így könnyen kiválaszthatja és egységes leírást és címkéket és szakértőket biztosít a kapcsolódó adateszközökhöz.
+## <a name="annotating-multiple-assets"></a>Több eszköz megjegyzése
+Ha több adategységet választ ki a Data Catalog-portálon, a felhasználók egyetlen művelettel láthatják az összes kijelölt eszközt. A jegyzetek minden kiválasztott eszközre érvényesek lesznek, így egyszerűen kiválaszthatók és megadhatók a kapcsolódó adategységekhez tartozó címkék és szakértők.
 
 > [!NOTE]
-> Címkék és szakértők is megadhatók az adatelemek regisztrálásakor a Data Catalog adatforrás-regisztrációs eszközzel.
+> Címkék és szakértők is megadhatók az adategységek Data Catalog adatforrás-regisztrációs eszköz használatával történő regisztrálása során.
 >
 >
 
-Több tábla és nézet kijelölésétekesetén csak az összes kijelölt adateszköz közös oszlopai jelennek meg az adatkatalógus-portálon. Ez lehetővé teszi a felhasználók számára, hogy címkéket és leírásokat adjanak meg az összes kiválasztott eszköz azonos nevű oszlopához.
+Több tábla és nézet kiválasztásakor a Data Catalog-portálon csak azok az oszlopok jelennek meg, amelyekben az összes kijelölt adategység közösen fog szerepelni. Ez lehetővé teszi, hogy a felhasználók címkéket és leírásokat adjanak meg az összes kijelölt eszközhöz azonos nevű oszlopokhoz.
 
-## <a name="annotations-and-discovery"></a>Jegyzetek és felfedezés
-Csakúgy, mint a metaadatok kinyert adatforrás a regisztráció során hozzáadódik a Data Catalog keresési index, a felhasználó által megadott metaadatok is indexelt. Ez azt jelenti, hogy nem csak a jegyzetek megkönnyítik a felhasználók számára, hogy megértsék az általuk felfedezett adatokat, a jegyzetek is megkönnyítik a felhasználók számára, hogy felfedezzék a jegyzetekkel nem eshető adatokat a számukra ésszerű kifejezések használatával.
+## <a name="annotations-and-discovery"></a>Jegyzetek és felderítés
+Ahogy a regisztráció során az adatforrásból kinyert metaadatok a Data Catalog keresési indexbe kerülnek, a felhasználó által megadott metaadatok is indexelve vannak. Ez azt jelenti, hogy a jegyzetek nem csupán megkönnyítik a felhasználók számára az észlelt adatok megértését, a jegyzetek azt is megkönnyítik a felhasználók számára, hogy a megjegyzések alapján megkeressék a jegyzett adategységeket.
 
 ## <a name="summary"></a>Összefoglalás
-Adatforrás regisztrálása a Data Catalog szolgáltatással lebonthatóvá teszi az adatokat azáltal, hogy szerkezeti és leíró metaadatokat másol az adatforrásból a Katalógus szolgáltatásba. Az adatforrás regisztrálása után a felhasználók olyan jegyzeteket adhatnak meg, amelyek megkönnyítik a felderítést és a megértést a Data Catalog portálon belül.
+Az adatforrások Data Catalogsal való regisztrálása lehetővé teszi, hogy az adatforrásból a katalógus szolgáltatásba másolja a strukturális és leíró metaadatokat az adatokból. Az adatforrások regisztrálását követően a felhasználók a Data Catalog-portálon belül könnyebben felfedezhetik és megismerhetik a megjegyzéseket.
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Catalog oktatóanyagának első lépései](data-catalog-get-started.md) az adatforrások jegyzetelésével kapcsolatos részletes részletekért.
+* [Ismerkedjen meg Azure Data Catalog](data-catalog-get-started.md) oktatóanyaggal, amely részletesen ismerteti az adatforrások feliratozásának lépéseit.

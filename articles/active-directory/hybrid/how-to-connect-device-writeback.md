@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Eszközvisszaírás engedélyezése | Microsoft dokumentumok'
-description: Ez a dokumentum részletezi, hogyan engedélyezheti az eszköz-visszaírást az Azure AD Connect használatával
+title: 'Azure AD Connect: az eszköz visszaírási engedélyezése | Microsoft Docs'
+description: Ez a dokumentum részletesen ismerteti, hogyan engedélyezhető az eszközök visszaírási az Azure AD Connect használatával
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,117 +17,117 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109507"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Eszköz-visszaírás engedélyezése
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: az eszköz visszaírási engedélyezése
 > [!NOTE]
-> Az Azure AD Premium előfizetése szükséges az eszköz visszaírásához.
+> Az eszköz visszaírási prémium szintű Azure AD előfizetésre van szükség.
 > 
 > 
 
-Az alábbi dokumentáció az azure AD Connect eszköz-visszaírási szolgáltatásának engedélyezéséről tartalmaz tájékoztatást. Az eszközvisszaírás a következő esetekben használatos:
+Az alábbi dokumentáció a Azure AD Connect eszköz visszaírási funkciójának engedélyezését ismerteti. Az eszköz visszaírási a következő esetekben használja:
 
-* A Windows Hello vállalati verzió engedélyezése [hibrid tanúsítványmegbízhatósági telepítéssel](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-* Feltételes hozzáférés engedélyezése az ADFS (2012 R2 vagy újabb) védett alkalmazások (függő entitás megbízhatóságai) eszközök alapján.
+* [A vállalati Windows Hello engedélyezése hibrid tanúsítvány-megbízhatósági telepítés használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* Az eszközökön alapuló feltételes hozzáférés engedélyezése az ADFS (2012 R2 vagy újabb) által védett alkalmazások (függő entitások megbízhatóságai) alapján.
 
-Ez további biztonságot és biztosítékot nyújt arra nézve, hogy az alkalmazásokhoz való hozzáférés csak megbízható eszközök számára biztosított. A feltételes hozzáférésről a [Kockázat kezelése feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) és a helyszíni feltételes hozzáférés beállítása az Azure Active [Directory-eszközregisztrációval című](../../active-directory/active-directory-device-registration-on-premises-setup.md)témakörben talál.
+Ez további biztonságot és garanciát nyújt, hogy az alkalmazásokhoz való hozzáférés csak a megbízható eszközök számára legyen elérhető. A feltételes hozzáféréssel kapcsolatos további információkért tekintse meg a [kockázatkezelés feltételes hozzáféréssel való kezelésével](../active-directory-conditional-access-azure-portal.md) és [a helyszíni feltételes hozzáférés beállítása a Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)című témakört.
 
 > [!IMPORTANT]
-> <li>Az eszközöknek ugyanabban az erdőben kell lenniük, mint a felhasználóknak. Mivel az eszközöket egyetlen erdőbe kell visszaírni, ez a szolgáltatás jelenleg nem támogatja a több felhasználói erdővel rendelkező központi telepítést.</li>
-> <li>A helyszíni Active Directory erdőhöz csak egy eszközregisztrációs konfigurációs objektum adható hozzá. Ez a szolgáltatás nem kompatibilis egy olyan topológiával, ahol a helyszíni Active Directory több Azure AD-könyvtárral van szinkronizálva.</li>
+> <li>Az eszközöknek a felhasználókkal megegyező erdőben kell lenniük. Mivel az eszközöket egyetlen erdőhöz kell visszaírni, ez a funkció jelenleg nem támogatja a több felhasználói erdővel rendelkező telepítést.</li>
+> <li>Csak egy eszköz-regisztrációs konfigurációs objektum adható hozzá a helyszíni Active Directory erdőhöz. Ez a funkció nem kompatibilis olyan topológiával, amelyben a helyszíni Active Directory több Azure AD-címtárhoz van szinkronizálva.</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>1. rész: Az Azure AD Connect telepítése
-Telepítse az Azure AD Connectet egyéni vagy expressz beállításokkal. A Microsoft azt javasolja, hogy az eszközvisszaírás engedélyezése előtt az összes sikeresen szinkronizált felhasználóval és csoporttal kezdje.
+## <a name="part-1-install-azure-ad-connect"></a>1. rész: a Azure AD Connect telepítése
+Azure AD Connect telepítése egyéni vagy expressz beállítások használatával. A Microsoft azt javasolja, hogy az eszköz visszaírási engedélyezése előtt az összes felhasználó és csoport szinkronizálása sikeresen megtörténjen.
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: Eszköz-visszaírás engedélyezése az Azure AD Connectben
-1. Futtassa újra a telepítővarázslót. Válassza az **Eszközbeállítások konfigurálása** lehetőséget a További feladatok lapon, majd kattintson a **Tovább**gombra. 
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: az eszköz visszaírási engedélyezése Azure AD Connect
+1. Futtassa újra a telepítővarázsló utasításait. Válassza az **eszközbeállítások konfigurálása lehetőséget** a további feladatok lapon, és kattintson a **tovább**gombra. 
 
     ![Eszközbeállítások konfigurálása](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
-    > Az új Eszközkonfigurálás idáig csak az 1.1.819.0-s és újabb verzióban érhető el.
+    > Az eszköz új konfigurálása lehetőség csak a 1.1.819.0 és újabb verziókban érhető el.
 
-2. Az eszközbeállítások lapon válassza az **Eszközvisszaírás konfigurálása**lehetőséget. Az **eszközvisszaírás letiltása** nem lesz elérhető, amíg az eszköz visszaírása nincs engedélyezve. Kattintson a **Tovább** gombra a varázsló következő oldalára lépéshez.
-    ![Eszközművelet beállítása](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
+2. Az eszközbeállítások lapon válassza az **eszköz visszaírási konfigurálása**lehetőséget. Az **eszköz visszaírási letiltására** szolgáló lehetőség nem lesz elérhető, amíg az eszköz visszaírási be nem kapcsol. A **tovább** gombra kattintva lépjen a varázsló következő lapjára.
+    ![Eszköz műveletének választása](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
-3. A visszaíró lapon a megadott tartomány lesz az alapértelmezett Device writeback erdő.
-   ![Egyéni telepítés eszköz visszaírási célerdő](./media/how-to-connect-device-writeback/writebackforest.png)
+3. A visszaírási lapon a megadott tartományt fogja látni az alapértelmezett visszaírási erdőként.
+   ![Egyéni telepítési eszköz visszaírási-cél erdője](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. **Az eszköztárolólap** a következő két lehetőség valamelyikével készülheti elő az active directoryt:
+4. Az **eszköz tárolója** lapon az Active Directory előkészítése a két elérhető lehetőség egyikének használatával lehetséges:
 
-    a. **Vállalati rendszergazdai hitelesítő adatok megadása:** Ha a vállalati rendszergazdai hitelesítő adatok vannak megadva az erdő, ahol eszközöket kell visszaírni, az Azure AD Connect automatikusan előkészíti az erdőt az eszköz-visszaírás konfigurálása során.
+    a. **Vállalati rendszergazdai hitelesítő adatok megadása**: Ha a vállalati rendszergazda hitelesítő adatai megtalálhatók az erdőben, ahol az eszközöket vissza kell írni, Azure ad Connect automatikusan előkészíti az erdőt az eszköz visszaírási konfigurálása során.
 
-    b. **PowerShell-parancsfájl letöltése:** Az Azure AD Connect automatikusan létrehoz egy PowerShell-parancsfájlt, amely előkészíti az active directoryt az eszköz visszaírására. Abban az esetben, ha a vállalati rendszergazdai hitelesítő adatok nem adhatók meg az Azure AD Connect, javasoljuk, hogy töltse le a PowerShell-parancsfájlt. Adja meg a letöltött PowerShell-parancsfájl **CreateDeviceContainer.psq** az erdő vállalati rendszergazdájának, ahová az eszközöket visszaírják.
-    ![Active directory erdő előkészítése](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    b. **Töltse le a PowerShell-szkriptet**: Azure ad Connect automatikusan létrehoz egy PowerShell-parancsfájlt, amely előkészíti az Active Directoryt az eszközök visszaírási. Ha a vállalati rendszergazda hitelesítő adatai nem adhatók meg Azure AD Connectban, a rendszer azt javasolja, hogy töltse le a PowerShell-szkriptet. Adja meg a letöltött PowerShell-parancsfájlt a **CreateDeviceContainer. PSQ** azon erdő vállalati rendszergazdájához, ahol az eszközök vissza lesznek írva.
+    ![Az Active Directory-erdő előkészítése](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
-    Az active directory erdő előkészítéséhez a következő műveleteket hajtja végre:
-    * Ha még nem léteznek, új tárolókat és objektumokat hoz létre és konfigurál a CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] csoportban.
-    * Ha még nem léteznek, új tárolókat és objektumokat hoz létre és konfigurál a CN=RegisteredDevices,[domain-dn] alatt. Ebben a tárolóban eszközobjektumok jönnek létre.
-    * Beállítja a szükséges engedélyeket az Azure AD Connector-fiók, az Active Directory eszközeinek kezeléséhez.
-    * Csak akkor kell futtatni egy erdőben, akkor is, ha az Azure AD Connect több erdőre van telepítve.
+    Az Active Directory-erdő előkészítéséhez a következő műveletek végezhetők el:
+    * Ha még nem léteznek, a létrehozza és konfigurálja az új tárolókat és objektumokat a CN = Device Registration Configuration, CN = Services, CN = Configuration, [Forest-DN] elem alatt.
+    * Ha még nem léteznek, a létrehozza és konfigurálja az új tárolókat és objektumokat a CN = RegisteredDevices, [tartomány-DN] alatt. A tárolóban létrejönnek az eszközök objektumai.
+    * Beállítja a szükséges engedélyeket az Azure AD Connector-fiókhoz a Active Directory lévő eszközök kezeléséhez.
+    * Csak egy erdőben kell futnia, még akkor is, ha Azure AD Connect több erdőre van telepítve.
 
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Eszközök szinkronizálásának ellenőrzése az Active Directoryval
-Az eszköz visszaírásának most már megfelelően kell működnie. Ne feledje, hogy akár 3 órát is igénybe vehet, amíg az eszközobjektumokat visszaírják az AD-be.  Az eszközök megfelelő szinkronizálásának ellenőrzéséhez tegye a következőket a szinkronizálási szabályok befejezése után:
+## <a name="verify-devices-are-synchronized-to-active-directory"></a>Ellenőrizze, hogy az eszközök szinkronizálva vannak-e Active Directory
+Az eszköz visszaírási megfelelően működnie kell. Vegye figyelembe, hogy az eszközök objektumainak beírása akár 3 óráig is eltarthat.  Annak ellenőrzéséhez, hogy az eszközök megfelelően vannak-e szinkronizálva, tegye a következőket a szinkronizálási szabályok befejezése után:
 
 1. Indítsa el az Active Directory felügyeleti központot.
-2. Expand RegisteredDevices, a domain, amely összevont.
+2. Bontsa ki a RegisteredDevices csomópontot az összevont tartományon belül.
 
-   ![Az Active Directory Felügyeleti központ regisztrált eszközei](./media/how-to-connect-device-writeback/devicewriteback5.png)
+   ![Active Directory felügyeleti központ regisztrált eszközei](./media/how-to-connect-device-writeback/devicewriteback5.png)
 
-3. Az aktuálisan regisztrált eszközök ott jelennek meg.
+3. Az aktuálisan regisztrált eszközök itt lesznek felsorolva.
 
-   ![Az Active Directory Felügyeleti központ regisztrált eszközök listája](./media/how-to-connect-device-writeback/devicewriteback6.png)
+   ![Active Directory felügyeleti központ regisztrált eszközök listája](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
-A forgatókönyv engedélyezéséhez részletes utasítások érhetők el [a helyszíni feltételes hozzáférés beállítása az Azure Active Directory-eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)című dokumentumban.
+A forgatókönyv végrehajtásához szükséges részletes utasítások a helyszíni [feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)érhetők el.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-### <a name="the-writeback-checkbox-is-still-disabled"></a>A visszaírás jelölőnégyzet továbbra is le van tiltva
-Ha az eszközvisszaírás jelölőnégyzete nincs engedélyezve annak ellenére, hogy követte a fenti lépéseket, a következő lépések végigvezetik a rról, hogy a telepítővarázsló mit ellenőriz a jelölőnégyzet engedélyezése előtt.
+### <a name="the-writeback-checkbox-is-still-disabled"></a>A visszaírási jelölőnégyzet továbbra is le van tiltva
+Ha az eszköz visszaírási jelölőnégyzete nincs engedélyezve, akkor is, ha követte a fenti lépéseket, a következő lépések végigvezetik a telepítési varázsló ellenőrzésének lépésein, mielőtt a jelölőnégyzet engedélyezve lesz.
 
-Először is:
+Első lépések:
 
-* Annak az erdőnek, ahol az eszközök találhatók, az erdősémát Windows 2012 R2 szintre kell frissíteni, hogy az eszközobjektum és a kapcsolódó attribútumok jelen legyenek.
-* Ha a telepítővarázsló már fut, a rendszer nem észleli a módosításokat. Ebben az esetben fejezze be a telepítővarázslót, és futtassa újra.
-* Győződjön meg arról, hogy az inicializálási parancsfájlban megadott fiók valóban a megfelelő felhasználó, amelyet az Active Directory-összekötő használ. Ennek ellenőrzéséhez kövesse az alábbi lépéseket:
-  * A start menüben nyissa meg a **Szinkronizálási szolgáltatás megnyitását.**
+* Ahhoz az erdőhöz, ahol az eszközök találhatók, a Windows 2012 R2 szintre kell frissíteni az erdő sémáját, hogy az eszköz-objektum és a társított attribútumok jelen legyenek.
+* Ha a telepítővarázsló már fut, akkor a rendszer nem észleli a módosításokat. Ebben az esetben végezze el a telepítővarázsló befejezését, majd futtassa újra.
+* Győződjön meg arról, hogy az inicializálási parancsfájlban megadott fiók valójában a Active Directory-összekötő által használt helyes felhasználó. Ennek ellenőrzéséhez kövesse az alábbi lépéseket:
+  * A Start menüben nyissa meg a **szinkronizálási szolgáltatást**.
   * Nyissa meg az **Összekötők** lapot.
-  * Keresse meg az Active Directory tartományi szolgáltatások típusú összekötőt, és jelölje ki.
-  * A **Műveletek csoportban**válassza a **Tulajdonságok lehetőséget.**
-  * Nyissa meg **a Csatlakozás az Active Directory erdőhöz (Csatlakozás az Active Directory erdőhöz ) (Csatlakozás az Active Directory erdőhöz ) elemre** Ellenőrizze, hogy a képernyőn megadott tartomány és felhasználónév megegyezik-e a parancsfájlhoz megadott fiókkal.
-    ![Összekötő fiók a Szinkronizálási szolgáltatáskezelőben](./media/how-to-connect-device-writeback/connectoraccount.png)
+  * Keresse meg a Active Directory tartományi szolgáltatások típusú összekötőt, és jelölje ki.
+  * A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.
+  * Lépjen a **kapcsolódás Active Directory erdőhöz**. Ellenőrizze, hogy az ezen a képernyőn megadott tartomány-és Felhasználónév megegyezik-e a parancsfájlhoz megadott fiókkal.
+    ![Összekötő fiók szinkronizált Service Manager](./media/how-to-connect-device-writeback/connectoraccount.png)
 
-Konfiguráció ellenőrzése az Active Directoryban:
+Konfiguráció ellenőrzése Active Directoryban:
 
-* Ellenőrizze, hogy az eszközregisztrációs szolgáltatás az alábbi helyen található-e (CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration) konfigurációs névhasználati környezetben.
+* Ellenőrizze, hogy az eszköz regisztrációs szolgáltatása az alábbi helyen található-e (CN = Deviceregistrationservice objektuma, CN = eszköz regisztrációs szolgáltatások, CN = eszköz regisztrációjának konfigurációja, CN = Services, CN = Configuration) a konfiguráció névhasználati környezetében.
 
-![DeviceRegistrationService hibaelhárítás a konfigurációs névtérben](./media/how-to-connect-device-writeback/troubleshoot1.png)
+![Hibakeresés, Deviceregistrationservice objektuma a konfigurációs névtérben](./media/how-to-connect-device-writeback/troubleshoot1.png)
 
-* Ellenőrizze, hogy csak egy konfigurációs objektum van-e a konfigurációs névtérben való kereséssel. Ha egynél több van, törölje a másolatot.
+* Ellenőrizze, hogy van-e csak egy konfigurációs objektum a konfigurációs névtérben való kereséssel. Ha egynél több van, törölje a duplikált elemeket.
 
-![Hibaelhárítás, a duplikált objektumok keresése](./media/how-to-connect-device-writeback/troubleshoot2.png)
+![Hibakeresés, ismétlődő objektumok keresése](./media/how-to-connect-device-writeback/troubleshoot2.png)
 
-* Az Eszközregisztrációs szolgáltatás objektumon győződjön meg arról, hogy az msDS-DeviceLocation attribútum jelen van, és rendelkezik értékkel. Keresse meg ezt a helyet, és győződjön meg arról, hogy az msDS-DeviceContainer objectType azonosítóval van el.
+* Győződjön meg arról, hogy az eszköz regisztrációs szolgáltatásának objektumában szerepel az msDS-DeviceLocation attribútum, és rendelkezik értékkel. Ellenőrizze ezt a helyet, és győződjön meg róla, hogy az Objektumtípus msDS-DeviceContainer van-e.
 
-![Hibaelhárítás, msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
+![Hibakeresés, msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
 
-![Hibaelhárítás, RegisteredDevices objektumosztály](./media/how-to-connect-device-writeback/troubleshoot4.png)
+![Problémamegoldás, RegisteredDevices objektumosztály](./media/how-to-connect-device-writeback/troubleshoot4.png)
 
-* Ellenőrizze, hogy az Active Directory-összekötő által használt fiók rendelkezik-e az előző lépésben talált Regisztrált eszközök tárolóval kapcsolatos szükséges engedélyekkel. Ez a tároló várt engedélyei:
+* Ellenőrizze, hogy az Active Directory-összekötő által használt fiók rendelkezik-e a szükséges engedélyekkel az előző lépésben megtalált regisztrált eszközök tárolóban. Ez a tárolóhoz szükséges engedélyek:
 
-![Hibaelhárítás, a tárolóra vonatkozó engedélyek ellenőrzése](./media/how-to-connect-device-writeback/troubleshoot5.png)
+![Hibakeresés, engedélyek ellenőrzése a tárolón](./media/how-to-connect-device-writeback/troubleshoot5.png)
 
-* Ellenőrizze, hogy az Active Directory-fiók rendelkezik-e a CN=Device Registration Configuration,CN=Services,CN=Configuration objektummal kapcsolatos engedélyekkel.
+* Ellenőrizze, hogy a Active Directory fiók rendelkezik-e engedélyekkel a CN = eszköz regisztrációjának konfigurációja, CN = szolgáltatások, CN = konfigurációs objektum számára.
 
-![Hibaelhárítás, engedélyek ellenőrzése az eszközregisztrációs konfigurációhoz](./media/how-to-connect-device-writeback/troubleshoot6.png)
+![Hibaelhárítás, engedélyek ellenőrzése az eszköz regisztrációs konfigurációjában](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>További információ
-* [Kockázatok kezelése feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
-* [Helyszíni feltételes hozzáférés beállítása az Azure Active Directory-eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Kockázatkezelés feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
+* [Helyszíni feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

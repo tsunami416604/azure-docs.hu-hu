@@ -1,6 +1,6 @@
 ---
-title: Csoporttagok hozzáadása vagy eltávolítása – Azure Active Directory | Microsoft dokumentumok
-description: Útmutató a tagok hozzáadásához vagy eltávolításához egy csoportból az Azure Active Directory használatával.
+title: Csoporttagok hozzáadása vagy eltávolítása – Azure Active Directory | Microsoft Docs
+description: Útmutatás arról, hogyan lehet tagokat felvenni vagy eltávolítani egy csoportból a Azure Active Directory használatával.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,44 +14,44 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c83c57be63ae9e2a4d4113accaefe8a2c2b525
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561958"
 ---
-# <a name="add-or-remove-group-members-using-azure-active-directory"></a>Csoporttagok hozzáadása vagy eltávolítása az Azure Active Directory használatával
-Az Azure Active Directory használatával továbbra is hozzáadhat és eltávolíthat csoporttagokat.
+# <a name="add-or-remove-group-members-using-azure-active-directory"></a>Csoporttagok hozzáadása vagy eltávolítása Azure Active Directory használatával
+A Azure Active Directory használatával továbbra is hozzáadhat és eltávolíthat csoporttagokat.
 
 ## <a name="to-add-group-members"></a>Csoporttagok hozzáadása
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza az **Azure Active Directory**lehetőséget, majd a **Csoportok**lehetőséget.
+2. Válassza a **Azure Active Directory**, majd a **csoportok**lehetőséget.
 
-3. A **Csoportok – Minden csoport** lapon keresse meg és jelölje ki azt a csoportot, amelyhez a tagot hozzá kívánja adni. Ebben az esetben használja a korábban létrehozott csoport, **MDM-házirend - Nyugat**.
+3. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagot. Ebben az esetben használja a korábban létrehozott csoportot, a **Mdm Policy-West-** t.
 
-    ![Csoportok - Minden csoport lap, a csoport neve kiemelve](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![Csoportok – minden csoport lap, csoport neve kiemelve](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
 4. Az **MDM policy – West áttekintési** lapján válassza a **Tagok** lehetőséget a **Kezelés** területen.
 
-    ![MDM-szabályzat – Nyugat-áttekintés oldal, kiemelt tagopcióval](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
+    ![MDM házirend – Nyugat-Áttekintés lap, a tagok lehetőség kiemelve](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. Válassza **a Tagok hozzáadása**lehetőséget, majd keresse meg és jelölje ki a csoporthoz hozzáadni kívánt tagokat, majd válassza a Kijelölés **lehetőséget.**
+5. Válassza a **Tagok hozzáadása**lehetőséget, majd keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd válassza a **kiválasztás**lehetőséget.
 
-    Egy üzenet jelenik meg, amely szerint a tagok hozzáadása sikeresen megtörtént.
+    Megjelenik egy üzenet, amely szerint a tagok felvétele sikeresen megtörtént.
 
-    ![Tagok hozzáadása lap, a keresett tag jelenik meg](media/active-directory-groups-members-azure-portal/update-members.png)
+    ![Tagok hozzáadása lap, amelyben a keresett tag látható](media/active-directory-groups-members-azure-portal/update-members.png)
 
-6. Frissítse a képernyőt a csoporthoz hozzáadott összes tagnév megtekintéséhez.
+6. Frissítse a képernyőt, és tekintse meg a csoportba felvett összes tag nevét.
 
 ## <a name="to-remove-group-members"></a>Csoporttagok eltávolítása
 
-1. A **Csoportok – Minden csoport** lapon keresse meg és jelölje ki azt a csoportot, amelyből el szeretné távolítani a tagot. Ismét fogjuk használni, **MDM politika - Nyugat**.
+1. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyből el szeretné távolítani a tagot. Ismét a **Mdm Policy-West-** t fogjuk használni.
 
-2. Válassza a **Tagok** lehetőséget a **Kezelés** területen, keresse meg és jelölje ki az eltávolítani kívánt tag nevét, majd válassza az **Eltávolítás lehetőséget.**
+2. Válassza ki a **tagok** elemet a **kezelés** területen, keresse meg és válassza ki az eltávolítandó tag nevét, majd válassza az **Eltávolítás**lehetőséget.
 
-    ![Tag adatai lap, eltávolítás i.](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
+    ![Tag adatai lap eltávolítási lehetőséggel](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 
 ## <a name="next-steps"></a>További lépések
 

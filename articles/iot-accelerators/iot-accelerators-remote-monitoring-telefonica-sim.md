@@ -1,6 +1,6 @@
 ---
-title: SIM-adatok integrálása a távoli figyelési megoldásba – Azure| Microsoft dokumentumok
-description: Ez a cikk azt ismerteti, hogyan integrálható a Telefónica SIM-adatai a távfigyelési megoldásba.
+title: SIM-alkalmazások integrálása a távoli figyelési megoldásba – Azure | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan integrálhatja a Telefónica SIM-információkat a távoli figyelési megoldásba.
 author: hegate
 manager: ''
 ms.author: hegate
@@ -9,65 +9,65 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61442239"
 ---
-# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-adatok integrálása a távfelügyeleti megoldásba
+# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-alkalmazások integrálása a távoli figyelési megoldásba
 
-Az IoT-eszközök gyakran egy SIM-kártyával csatlakoznak a felhőhöz, amely lehetővé teszi számukra, hogy bárhonnan adatfolyamokat küldjenek. Az Azure IoT remote monitoring megoldás lehetővé teszi az IoT felügyelt kapcsolati adatok integrálását, így az operátorok az IoT-SIM által biztosított adatokon keresztül is nyomon követhetik az eszköz állapotát.
+A IoT-eszközök gyakran csatlakoznak a felhőhöz egy SIM-kártyával, amely lehetővé teszi az adatstreamek bárhonnan történő küldését. Az Azure IoT-alapú távoli figyelési megoldás lehetővé teszi a IoT által felügyelt kapcsolati információk integrálását, így az operátorok a IoT SIM által biztosított információkon keresztül is nyomon követhetik az eszköz állapotát.
 
-A távfigyelés a Telefónica IoT-kapcsolattal való automatikus integrációt biztosít, lehetővé téve az IoT connectivity platformot használó ügyfelek számára, hogy szinkronizálják az eszköz SIMs-kapcsolati adatait a megoldásaikkal. Ez a megoldás kiterjeszthető más IoT-kapcsolatszolgáltatók támogatására a [GitHub-tárházon](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)keresztül.
+A távoli figyelés lehetővé teszi a Telefónica IoT-kapcsolattal való integrációt, lehetővé téve az ügyfelek számára, hogy a IoT-kapcsolati platformját szinkronizálják az eszközük SIMs-kapcsolati adatait a megoldásaikkal. Ez a megoldás bővíthető a GitHub- [tárházon](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)keresztül más IoT-kapcsolati szolgáltatók támogatásához.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-* A Telefónica IoT SIM-adatok integrálása a távfelügyeleti megoldásba
+* A Telefónica IoT SIM-adatbázisának integrálása a távoli figyelési megoldásba
 * Valós idejű telemetriai adatok megtekintése
-* SIM-adatok megtekintése
+* SIM-adattárolás megtekintése
 
-## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT integráció beállítása
+## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT-integráció beállítása
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ez a további távoli figyelési funkció jelenleg előzetes verzióban érhető el. A kapcsolódási adatok Azure Remote Monitoring Solution szolgáltatásba való szinkronizálásához kövesse az alábbi lépéseket:
+Ez a további távoli figyelési funkció jelenleg előzetes verzióban érhető el. Az alábbi lépéseket követve szinkronizálhatja a kapcsolati adatait az Azure távoli figyelési megoldásával:
 
-1. Töltse ki a kérelmet a [Telefónica webhelyén,](https://iot.telefonica.com/contact)válassza ki az **Azure Remote Monitoring**lehetőséget, beleértve a kapcsolattartási adatait is.
+1. Töltsön ki egy kérelmet a [Telefónica's webhelyen](https://iot.telefonica.com/contact), és válassza az **Azure távoli figyelés**lehetőséget, beleértve a kapcsolattartási adatait is.
 2. A Telefónica aktiválja a fiókját.
-3. Ha Ön még nem Telefónica ügyfél, és szeretné élvezni ezt vagy más IoT Connectivity Cloud Ready szolgáltatásokat, látogasson el a [Telefónica webhelyére,](https://iot.telefonica.com/) és válassza a **Connectivity**lehetőséget.
+3. Ha még nem Telefónica-ügyfél, és szeretné használni ezt vagy más IoT-kapcsolati Felhőbeli használatra kész szolgáltatásokat, látogasson el a [Telefónica's webhelyére](https://iot.telefonica.com/) , és válassza a **kapcsolat**lehetőséget.
 
-### <a name="telefnica-sim-setup"></a>Telefónica SIM beállítás
-A Telefónica SIM & Az Azure Twin eszközazonosító-társítás a Telefónica IoT SIM "alias" tulajdonságon alapul. 
+### <a name="telefnica-sim-setup"></a>Telefónica SIM-telepítő
+A Telefónica SIM & Azure Twin Device ID társítás a Telefónica IoT SIM "alias" tulajdonságán alapul. 
 
-Keresse meg a [Telefónica IoT Connectivity Platform Portal](https://m2m-movistar-es.telefonica.com/) > SIM-leltárt, > válassza ki a SIM-kártyát, és frissítse az egyes SIM-kártyákat a kívánt Twin deviceID azonosítóval. Ez a feladat tömeges módban is elvégezhető (lásd a Telefónica IoT Connectivity Platform felhasználói kézikönyveit).
+Navigáljon a [Telefónica IoT connectivity platform portál](https://m2m-movistar-es.telefonica.com/) > sim Inventory > válassza ki a SIM-t, és frissítse az egyes SIM-aliasokat a kívánt Twin deviceID használatával. Ez a feladat tömeges módban is elvégezhető (lásd: Telefónica IoT connectivity platform felhasználói kézikönyvek).
 
-Ez a feladat tömeges módban is elvégezhető (lásd a Telefónica IoT Connectivity Platform felhasználói kézikönyveit)
+Ez a feladat tömeges módban is elvégezhető (lásd: Telefónica IoT connectivity platform felhasználói kézikönyvek)
 
-![Telefónica frissítés](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Telefónica frissítése](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
-Ha az eszközt a távoli figyeléshez szeretné csatlakoztatni, kövesse ezeket az útmutatókat a [C](iot-accelerators-connecting-devices-linux.md) vagy [a Node](iot-accelerators-connecting-devices-node.md)használatával. 
+Ha az eszközt a távoli figyeléshez szeretné kapcsolni, a [C](iot-accelerators-connecting-devices-linux.md) vagy a [csomópont](iot-accelerators-connecting-devices-node.md)használatával követheti ezeket az oktatóanyagokat. 
 
-## <a name="view-device-telemetry-and-sim-properties"></a>Eszköztelemetria és SIM-tulajdonságok megtekintése
+## <a name="view-device-telemetry-and-sim-properties"></a>Az eszköz telemetria és SIM-tulajdonságainak megtekintése
 
-Miután a Telefónica-fiók megfelelően van konfigurálva, és a készülék csatlakoztatva van, megtekintheti az eszköz adatait és a SIM-adatokat.
+Ha a Telefónica-fiókja megfelelően van konfigurálva, és az eszköz csatlakoztatva van, megtekintheti az eszköz adatait és a SIM-adatokat.
 
-A következő kapcsolódási paraméterek kerülnek közzétételre:
+A következő kapcsolódási paraméterek vannak közzétéve:
 
 * ICCID
 * IP
 * Hálózati jelenlét
-* SIM-kártya állapota
-* Hálózatalapú hely
-* Felhasznált adatforgalom
+* SIM-állapot
+* Hálózat alapú hely
+* Adatforgalom felhasználva
 
 ![Irányítópult](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintést kap aSIM-adatok Azure IoT Remote Monitoring szolgáltatásba való integrálásáról, az alábbiakban a következő lépéseket ismerteti a megoldásgyorsítók számára:
+Most, hogy áttekinti, hogyan integrálhatja a SIM-információkat az Azure IoT távoli monitorozási szolgáltatásba, a következő lépéseket javasoljuk a megoldás-gyorsítók:
 
-* [Az Azure IoT távfigyelési megoldás működtetése](quickstart-remote-monitoring-deploy.md)
+* [Az Azure IoT távoli figyelési megoldásának üzemeltetése](quickstart-remote-monitoring-deploy.md)
 * [Speciális monitorozás végrehajtása](iot-accelerators-remote-monitoring-monitor.md)
 * [Eszközök kezelése](iot-accelerators-remote-monitoring-manage.md)
 * [Eszközökkel kapcsolatos problémák elhárítása](iot-accelerators-remote-monitoring-maintain.md)

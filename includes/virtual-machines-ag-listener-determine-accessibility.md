@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179072"
 ---
-Fontos felismerni, hogy két módon konfigurálhatja a rendelkezésre állási csoport figyelő az Azure-ban. A figyelő létrehozásakor használt Azure-terheléselosztó típusában különböznek. Az alábbi táblázat a különbségeket ismerteti:
+Fontos tisztában lenni azzal, hogy a rendelkezésre állási csoport figyelője kétféleképpen konfigurálható az Azure-ban. A módszer különbözik a figyelő létrehozásakor használt Azure Load Balancer típusával. Az alábbi táblázat a különbségeket ismerteti:
 
 | Terheléselosztó típusa | Megvalósítás | A következő esetekben használja: |
 | --- | --- | --- |
-| **Külső** |A virtuális gépeket (Virtuális gépeket) kiszolgáló felhőszolgáltatás *nyilvános virtuális IP-címét* használja. |A figyelőt a virtuális hálózaton kívülről kell elérnie, többek között az internetről is. |
-| **Belső** |Belső *terheléselosztót* használ a figyelő privát címmel. |A figyelő csak ugyanabból a virtuális hálózatból érhető el. Ez a hozzáférés hibrid forgatókönyvekben tartalmazza a helyek közötti VPN-t. |
+| **Külső** |A a virtuális gépeket üzemeltető felhőalapú szolgáltatás *nyilvános virtuális IP-címét* használja. |A figyelőt a virtuális hálózaton kívülről kell elérnie, beleértve az internetről is. |
+| **Belső** |*Belső Load balancert* használ a figyelő magánhálózati címeivel. |A figyelőt csak ugyanazon a virtuális hálózaton belül érheti el. Ez a hozzáférés helyek közötti VPN-t tartalmaz hibrid forgatókönyvekben. |
 
 > [!IMPORTANT]
-> A figyelő, amely a felhőszolgáltatás nyilvános VIP (külső terheléselosztó), mindaddig, amíg az ügyfél, a figyelő és az adatbázisok ugyanabban az Azure-régióban, nem merülnek fel kiterhelési díjakat. Ellenkező esetben a figyelőn keresztül visszaadott adatok kifelé, és normál adatátviteli díjakat számítunk fel. 
+> A Cloud Service nyilvános virtuális IP-címén (külső terheléselosztó) használó figyelő esetén, ha az ügyfél, a figyelő és az adatbázis ugyanabban az Azure-régióban található, nem számítunk fel kimenő forgalmi díjat. Ellenkező esetben a figyelő által visszaadott adatok a kimenő forgalomnak számítanak, és a normál adatátviteli díjszabás szerint számítjuk fel. 
 > 
 > 
 
-Az ILB csak regionális hatókörű virtuális hálózatokon konfigurálható. Az affinitáscsoporthoz konfigurált meglévő virtuális hálózatok nem használhatnak ILB-t. További információt a [Belső terheléselosztó áttekintéscímű témakörben](../articles/load-balancer/load-balancer-internal-overview.md)talál.
+Egy ILB csak regionális hatókörű virtuális hálózatokon lehet konfigurálni. Az affinitási csoporthoz konfigurált meglévő virtuális hálózatok nem használhatnak ILB. További információ: [belső Load Balancer – áttekintés](../articles/load-balancer/load-balancer-internal-overview.md).
 

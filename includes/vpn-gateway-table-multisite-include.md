@@ -9,13 +9,13 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 7ff633b33a800e1dfe28c63b6ba880233e2b4a1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178957"
 ---
-| **Telepítési modell/metódus** | **Azure-portál** | **Powershell** |
+| **Üzembe helyezési modell/metódus** | **Azure Portal** | **PowerShell** |
 | --- | --- | --- |
-| Resource Manager |[Bemutató](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Támogatott |
-| Klasszikus | Nem támogatott | [Bemutató](../articles/vpn-gateway/vpn-gateway-multi-site.md) |
+| Resource Manager |[Oktatóanyag](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Támogatott |
+| Klasszikus | Nem támogatott | [Oktatóanyag](../articles/vpn-gateway/vpn-gateway-multi-site.md) |

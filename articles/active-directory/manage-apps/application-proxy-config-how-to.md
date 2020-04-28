@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásproxy-alkalmazás konfigurálása | Microsoft dokumentumok
-description: Az APplication Proxy alkalmazások néhány egyszerű lépésben történő létrehozásáról és konfigurálásáról
+title: Alkalmazásproxy-alkalmazás konfigurálása | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és konfigurálhat alkalmazásproxy-alkalmazásokat néhány egyszerű lépésben
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,55 +17,55 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67807851"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Alkalmazásproxy-alkalmazás konfigurálása
 
-Ez a cikk segít megérteni, hogyan konfigurálhat egy alkalmazásproxy-alkalmazást az Azure AD-n belül a helyszíni alkalmazások felhőben való elérhetővé tételéhez.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy alkalmazásproxy-alkalmazást az Azure AD-ben, hogy a helyszíni alkalmazásokat a felhőbe tegye elérhetővé.
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-Ha többet szeretne megtudni a kezdeti konfigurációkról és egy alkalmazásproxy-alkalmazás létrehozásáról a felügyeleti portálon keresztül, kövesse az Alkalmazások közzététele az [Azure AD alkalmazásproxy használatával](application-proxy-add-on-premises-application.md)című területet.
+Ha szeretne többet megtudni az alkalmazásproxy-alkalmazások kezdeti konfigurációjáról és létrehozásáról a felügyeleti portálon, kövesse az [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)című témakört.
 
-Az összekötők konfigurálásával kapcsolatos további részletekért olvassa [el az Alkalmazásproxy engedélyezése az Azure Portalon című témakört.](application-proxy-add-on-premises-application.md)
+További információ az összekötők konfigurálásáról: [alkalmazásproxy engedélyezése a Azure Portalban](application-proxy-add-on-premises-application.md).
 
-A tanúsítványok feltöltésével és az egyéni tartományok használatával kapcsolatos további tudnivalókért olvassa el [az Egyéni tartományok használata az Azure AD alkalmazásproxyban című témakört.](application-proxy-configure-custom-domain.md)
+További információ a tanúsítványok feltöltéséről és az egyéni tartományokról: [Egyéni tartományok használata az Azure ad Application proxyban](application-proxy-configure-custom-domain.md).
 
-## <a name="create-the-applicationsetting-the-urls"></a>Az alkalmazás létrehozása/AZ URL-címek beállítása
+## <a name="create-the-applicationsetting-the-urls"></a>Az alkalmazás létrehozása/az URL-címek beállítása
 
-Ha az [Azure AD alkalmazásproxy dokumentációval az alkalmazások közzététele](application-proxy-add-on-premises-application.md) című témakör lépéseit követi, és hibaüzenetet kap az alkalmazás létrehozásáról, tekintse meg a hiba részleteit és javaslatokat az alkalmazás javításához. A legtöbb hibaüzenet tartalmaz egy javasolt javítást. A gyakori hibák elkerülése érdekében ellenőrizze a következőket:
+Ha követi az [alkalmazások közzététele az Azure ad Application proxy](application-proxy-add-on-premises-application.md) dokumentációban leírt lépéseket, és az alkalmazás létrehozása során hiba lép fel, tekintse meg a hiba részleteit, és javaslatokat az alkalmazás kijavításához. A legtöbb hibaüzenet tartalmaz egy javasolt javítást. A gyakori hibák elkerüléséhez ellenőrizze az alábbiakat:
 
-- Alkalmazásproxy-alkalmazás létrehozására jogosult rendszergazda
-- A belső URL egyedi
-- A külső URL egyedi
-- Az URL-címek http-vel vagy https-lel kezdődnek, és "/"
-- Az URL-címnek tartománynévnek, nem IP-címnek kell lennie.
+- Rendszergazdai jogosultsággal rendelkezik alkalmazásproxy-alkalmazás létrehozásához
+- A belső URL-cím egyedi
+- A külső URL-cím egyedi
+- Az URL-címek http vagy HTTPS protokollal kezdődnek, és a végén egy "/"
+- Az URL-címnek tartománynévnek, nem pedig IP-címnek kell lennie
 
-A hibaüzenetnek a jobb felső sarokban kell megjelennie az alkalmazás létrehozásakor. Az értesítésikont is kiválaszthatja a hibaüzenetek megtekintéséhez.
+A hibaüzenetnek az alkalmazás létrehozásakor a jobb felső sarokban kell megjelennie. Az értesítés ikont is kiválaszthatja a hibaüzenetek megtekintéséhez.
 
-![Megmutatja, hogy hol található az értesítési parancs az Azure Portalon](./media/application-proxy-config-how-to/error-message.png)
+![Itt látható, hogy hol található az értesítési kérdés a Azure Portal](./media/application-proxy-config-how-to/error-message.png)
 
-## <a name="configure-connectorsconnector-groups"></a>Összekötők/összekötőcsoportok konfigurálása
+## <a name="configure-connectorsconnector-groups"></a>Összekötők/összekötő csoportok konfigurálása
 
-Ha az összekötők és az összekötőcsoportok ra vonatkozó figyelmeztetés miatt nehézségekbe ütközik az alkalmazás konfigurálása, az összekötők letöltésével kapcsolatos részleteket az Alkalmazásproxy engedélyezésére vonatkozó utasításokban találja. Ha többet szeretne megtudni az összekötőkről, olvassa el az [összekötők dokumentációját.](application-proxy-connectors.md)
+Ha az összekötők és összekötő-csoportok figyelmeztetése miatt nem sikerül konfigurálni az alkalmazást, az összekötők letöltésével kapcsolatos részletekért lásd: az alkalmazásproxy engedélyezésének lépései. Ha többet szeretne megtudni az összekötők szolgáltatásról, tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md).
 
-Ha az összekötők inaktívak, ez azt jelenti, hogy nem tudják elérni a szolgáltatást. Ennek gyakran az az oka, hogy az összes szükséges port nincs megnyitva. A szükséges portok listáját az alkalmazásproxy-engedélyezés dokumentációjának előfeltételei szakaszában találja.
+Ha az összekötők inaktívak, ez azt jelenti, hogy nem tudják elérni a szolgáltatást. Ez gyakran azért van, mert az összes szükséges port nincs megnyitva. A szükséges portok listájának megtekintéséhez tekintse meg az alkalmazásproxy dokumentációjának engedélyezése című témakör előfeltételek című szakaszát.
 
 ## <a name="upload-certificates-for-custom-domains"></a>Tanúsítványok feltöltése egyéni tartományokhoz
 
-Az egyéni tartományok lehetővé teszik a külső URL-címek tartományának megadását. Az egyéni tartományok használatához fel kell töltenie az adott tartomány tanúsítványát. Az egyéni tartományok és tanúsítványok használatáról az [Egyéni tartományok használata az Azure AD alkalmazásproxyban című témakörben](application-proxy-configure-custom-domain.md)talál.
+Az egyéni tartományok lehetővé teszik a külső URL-címek tartományának megadását. Egyéni tartományok használatához fel kell töltenie az adott tartományhoz tartozó tanúsítványt. További információ az egyéni tartományok és tanúsítványok használatáról: [Egyéni tartományok használata az Azure ad Application proxyban](application-proxy-configure-custom-domain.md).
 
-Ha problémákat tapasztal a tanúsítvány feltöltésével kapcsolatban, keresse meg a hibaüzeneteket a portálon, ahol további információt talál a tanúsítvánnyal kapcsolatos problémáról. A tanúsítványokkal kapcsolatos gyakori problémák a következők:
+Ha problémákat tapasztal a tanúsítvány feltöltésekor, keresse meg a hibaüzeneteket a portálon, ahol további információkat talál a tanúsítvánnyal kapcsolatos problémáról. Gyakori tanúsítvány-problémák a következők:
 
 - Lejárt tanúsítvány
 - A tanúsítvány önaláírt
-- A tanúsítványból hiányzik a személyes kulcs
+- A tanúsítványból hiányzik a titkos kulcs
 
-A hibaüzenet a jobb felső sarokban jelenik meg, amikor megpróbálja feltölteni a tanúsítványt. Az értesítésikont is kiválaszthatja a hibaüzenetek megtekintéséhez.
+A tanúsítvány feltöltésekor a jobb felső sarokban látható hibaüzenet jelenik meg. Az értesítés ikont is kiválaszthatja a hibaüzenetek megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

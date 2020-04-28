@@ -1,6 +1,6 @@
 ---
-title: Médiaprocesszor létrehozása az Azure Media Services SDK használatával . Microsoft dokumentumok
-description: Megtudhatja, hogyan hozhat létre médiaprocesszor-összetevőt az Azure Media Services médiatartalmának kódolásához, konvertálásához, titkosításához vagy visszafejtéséhez. A kódminták C# nyelven íródnak, és a Media Services SDK-t használják a .NET-hez.
+title: Adathordozó-feldolgozó létrehozása a .NET-hez készült Azure Media Services SDK-val | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre a médiafájlok kódolására, konvertálására, titkosítására és visszafejtésére szolgáló adathordozó-feldolgozó összetevőt Azure Media Services számára. A kód minták C# nyelven íródtak, és a .NET-hez készült Media Services SDK-t használják.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463839"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Útmutató: Médiaprocesszor-példány beszereznie
+# <a name="how-to-get-a-media-processor-instance"></a>Útmutató: adathordozó-feldolgozó példány beszerzése
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [Többi](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
 ## <a name="overview"></a>Áttekintés
-A Media Services szolgáltatásban a médiaprocesszor egy olyan összetevő, amely egy adott feldolgozási feladatot kezel, például kódolást, formátumátalakítást, titkosítást vagy visszafejtést. Általában akkor hoz létre médiaprocesszort, amikor médiatartalom-formátumkódolásra, titkosításra vagy konvertálására irányuló feladatot hoz létre.
+Media Services a Media Processor olyan összetevő, amely egy adott feldolgozási feladatot kezel, például a kódolást, a konvertálást, a titkosítást vagy a médiatartalom visszafejtését. Általában akkor hozhat létre adathordozó-processzort, ha a tartalom kódolására, titkosítására vagy konvertálására szolgáló feladatot hoz létre.
 
-## <a name="azure-media-processors"></a>Azure médiaprocesszorok 
+## <a name="azure-media-processors"></a>Azure Media processors 
 
-Az alábbi témakör a médiaprocesszorok listáját tartalmazza:
+A következő témakör az adathordozó-processzorok listáját tartalmazza:
 
 * [Médiafeldolgozók kódolása](scenarios-and-availability.md#encoding-media-processors)
 * [Elemzési médiafeldolgozók](scenarios-and-availability.md#analytics-media-processors)
 
-## <a name="get-media-processor"></a>Médiaprocesszor bekéselése
+## <a name="get-media-processor"></a>Adathordozó-feldolgozó letöltése
 
-Az alábbi módszer bemutatja, hogyan szerezhet be egy médiaprocesszor-példányt. A példaerre vonatkozó példa egy **_context** nevű modulszintű változó használatát feltételezi, amely a kiszolgáló környezetére hivatkozik a Hogyan csatlakozzon a [Media Services programhoz programozott módon](media-services-use-aad-auth-to-access-ams-api.md)című szakaszban leírtak szerint.
+A következő módszer azt mutatja be, hogyan szerezhet be egy Media Processor-példányt. A kód példa feltételezi, hogy egy **_context** nevű modul szintű változót használ a kiszolgálói környezetre való hivatkozáshoz a következő témakörben ismertetett módon [: a Kapcsolódás a Media Services programhoz](media-services-use-aad-auth-to-access-ams-api.md)című részben leírtak szerint.
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -61,5 +61,5 @@ Az alábbi módszer bemutatja, hogyan szerezhet be egy médiaprocesszor-példán
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy már tudja, hogyan szerezhet be egy médiaprocesszor-példányt, nyissa meg a [Hogyan kódoljon egy eszköz](media-services-dotnet-encode-with-media-encoder-standard.md) témakört, amely megmutatja, hogyan használhatja a Media Encoder Standard-ot egy eszköz kódolásához.
+Most, hogy már tudja, hogyan szerezhet be egy Media Processor-példányt, ugorjon az adategységek [kódolása](media-services-dotnet-encode-with-media-encoder-standard.md) témakörre, amely bemutatja, hogyan kódolhat egy adategységet a Media Encoder standard használatával.
 

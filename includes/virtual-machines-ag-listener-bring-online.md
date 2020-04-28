@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179070"
 ---
-1. A Feladatátvevőfürt-kezelőben bontsa ki a **Szerepkörök**csomópontot, majd jelölje ki az elérhetőségi csoportot.  
+1. A Feladatátvevőfürt-kezelő bontsa ki a **szerepkörök**elemet, majd jelölje ki a rendelkezésre állási csoportot.  
 
-2. Az **Erőforrások** lapon kattintson a jobb gombbal a figyelő nevére, majd kattintson a **Tulajdonságok parancsra.**
+2. Az **erőforrások** lapon kattintson a jobb gombbal a figyelő nevére, majd kattintson a **Tulajdonságok**elemre.
 
-3. Kattintson a **Függőségek** fülre. Ha több erőforrás szerepel a listában, ellenőrizze, hogy az IP-címek OR, nem ÉS, függőségekkel rendelkeznek-e.  
+3. Kattintson a **függőségek** fülre. Ha több erőforrás van felsorolva, ellenőrizze, hogy az IP-címek rendelkeznek-e vagy, sem és, függőségekkel.  
 
 4. Kattintson az **OK** gombra.
 
-5. Kattintson a jobb gombbal a figyelő nevére, majd kattintson **az Online állapot ra.**
+5. Kattintson a jobb gombbal a figyelő nevére, majd kattintson az **online állapotba hozás**lehetőségre.
 
-6. Miután a figyelő online állapotba került, az **Erőforrások** lapon kattintson a jobb gombbal az elérhetőségi csoportra, majd kattintson a **Tulajdonságok parancsra.**
+6. Miután a figyelő online állapotú, az **erőforrások** lapon kattintson a jobb gombbal a rendelkezésre állási csoportra, majd kattintson a **Tulajdonságok**elemre.
    
-    ![Az elérhetőségi csoport erőforrásának konfigurálása](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
+    ![A rendelkezésre állási csoport erőforrásának konfigurálása](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
-7. Hozzon létre egy függőséget a figyelő néverőforrását (nem az IP-cím erőforrások nevét), majd kattintson az **OK**gombra.
+7. Hozzon létre egy függőséget a figyelő neve erőforrásban (ne az IP-cím erőforrásainak nevével), majd kattintson **az OK**gombra.
    
-    ![Függőség hozzáadása a figyelő nevétől](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
+    ![Függőség hozzáadása a figyelő nevéhez](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
-8. Indítsa el az SQL Server Management Studio alkalmazást, majd csatlakozzon az elsődleges kópiához.
+8. Indítsa el SQL Server Management Studio, majd kapcsolódjon az elsődleges replikához.
 
-9. Nyissa meg **az AlwaysOn magas rendelkezésre állási rendelkezésre állási** > **csoportok** > **\<elérhetőségi csoportfigyelőit.\>****Availability Group Listeners** >   
-    Meg kell jelenjenie a feladatátvevői fürtkezelőben létrehozott figyelőnévnek.
+9. Nyissa meg a **AlwaysOn magas rendelkezésre** > állási**csoportok** > **\<alAvailabilityGroupNameon\>** > **rendelkezésre állási csoport figyelőit**.  
+    A Feladatátvevőfürt-kezelőban létrehozott figyelő nevét meg kell jeleníteni.
 
-10. Kattintson a jobb gombbal a figyelő nevére, majd kattintson **a Tulajdonságok parancsra.**
+10. Kattintson a jobb gombbal a figyelő nevére, majd kattintson a **Tulajdonságok**elemre.
 
-11. A **Port** mezőben adja meg a rendelkezésre állási csoportfigyelő portszámát a korábban használt $EndpointPort használatával (ebben az oktatóanyagban az 1433 volt az alapértelmezett), majd kattintson az **OK**gombra.
+11. A **port** mezőben adja meg a rendelkezésre állási csoport figyelő portszámát a korábban használt $EndpointPort használatával (ebben az oktatóanyagban az 1433 volt az alapértelmezett), majd kattintson az **OK**gombra.
 

@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179160"
 ---
-#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>A SharePoint-alapú StorSimple adapter telepítése
-1. Másolja a telepítőt a SharePoint központi felügyeleti webalkalmazás futtatására is konfigurált webes előtér-kiszolgálóra. 
+#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>A SharePoint rendszerhez készült StorSimple-adapter telepítése
+1. Másolja a telepítőt a webes előtér-(WFE-) kiszolgálóra, amely a Központi SharePoint-felügyelet webalkalmazás futtatására is konfigurálva van. 
 2. Rendszergazdai jogosultságokkal rendelkező fiókkal jelentkezzen be a WFE-kiszolgálóra.
-3. Kattintson duplán a telepítőre. Elindul a SharePoint telepítővarázslójához használható StorSimple adapter. A telepítés megkezdéséhez kattintson a **Tovább** gombra.
+3. Kattintson duplán a telepítőre. Elindul a StorSimple-adapter a SharePoint rendszerhez telepítővarázslója. A telepítés megkezdéséhez kattintson a **tovább** gombra.
    
-    ![StorSimple adapter beállításának kezdőlapja](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. A SharePoint beállítási konfigurációs lapján válasszon ki egy telepítési helyet, írja be a StorSimple-eszköz DATA 0 hálózati illesztőjének IP-címét, majd kattintson a **Tovább**gombra. 
+    ![StorSimple-adapter telepítésének kezdőlapja](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
+4. A SharePoint telepítő konfigurációjának StorSimple-adaptere lapon válassza ki a telepítési helyet, írja be a StorSimple-eszközön található adat0 hálózati adapter IP-címét, majd kattintson a **tovább**gombra. 
    
-    ![StorSimple adapter beállításának konfigurációs lapja](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. A beállítás visszaigazolása lapon kattintson a **Telepítés gombra.**
+    ![StorSimple-adapter beállításának beállítása lap](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
+5. A telepítés megerősítése lapon kattintson a **telepítés**elemre.
    
-    ![StorSimple adapter beállításának visszaigazolási lapja](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
-6. A Telepítő varázsló bezárásához kattintson a **Befejezés** gombra.
+    ![StorSimple-adapter beállításának megerősítése lap](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
+6. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.
    
-    ![A StorSimple adapter beállításának beállítása befejeződött](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
-7. Nyissa meg a SharePoint központi felügyelet lapját. Meg kell jelennie egy StorSimple konfigurációs csoport, amely tartalmazza a StorSimple adapter SharePoint-kapcsolatok.
-8. Folytassa a következő lépéssel: [Az RBS konfigurálása](#configure-rbs).
+    ![StorSimple-adapter telepítésének befejezése lap](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
+7. Nyissa meg a Központi SharePoint-felügyelet lapot. Meg kell jelennie egy olyan StorSimple-konfigurációs csoportnak, amely tartalmazza a SharePoint-hivatkozások StorSimple-adapterét.
+8. Lépjen a következő lépésre: az [RBS konfigurálása](#configure-rbs).
 

@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179162"
 ---
-### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Frissítse a SharePoint 2010-et SharePoint 2013-ra, majd telepítse a StorSomple adaptert a SharePointhoz
+### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Frissítse a SharePoint 2010-et a SharePoint 2013-re, majd telepítse a SharePointhoz készült StorSomple-adaptert
 > [!IMPORTANT]
-> Az RBS-en keresztül külső tárolóba korábban áthelyezett fájlok csak a frissítés befejeződése és az RBS-szolgáltatás ismételt engedélyezése után lesznek elérhetők. A felhasználói hatás csökkentése érdekében hajtsa végre a frissítést vagy az újratelepítést a tervezett karbantartási időszakban.
+> A korábban az RBS használatával külső tárolóba áthelyezett fájlok addig nem lesznek elérhetők, amíg a frissítés be nem fejeződik, és az RBS szolgáltatás ismét engedélyezve lesz. A felhasználói hatás korlátozásához hajtson végre minden frissítést vagy újratelepítést egy tervezett karbantartási időszak alatt.
 > 
 > 
 
-#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>A SharePoint 2010 frissítése SharePoint 2013-ra, majd az adapter telepítése
-1. A SharePoint 2010-farmban vegye figyelembe a kikülső blob-k BLOB-tároló elérési útját és azokat a tartalom-adatbázisokat, amelyekhez engedélyezve van az RBS. 
+#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>A SharePoint 2010 frissítése a SharePoint 2013-re, majd az adapter telepítése
+1. A SharePoint 2010-farmban jegyezze fel a külső Blobok BLOB-tárolójának elérési útját, valamint azokat a tartalmi adatbázisokat, amelyeken az RBS engedélyezve van. 
 2. Telepítse és konfigurálja az új SharePoint 2013-farmot. 
-3. Adatbázisok, alkalmazások és webhelycsoportok áthelyezése a SharePoint 2010-farmról az új SharePoint 2013-farmra. További információt [a SharePoint 2013 frissítési folyamatának áttekintése című témakörben talál.](https://technet.microsoft.com/library/cc262483.aspx)
-4. Telepítse a SharePoint StorSimple adapterét az új farmra. Az [eljárásokhoz nyissa meg a StorSimple adapter telepítése a SharePointhoz](#install-the-storsimple-adapter-for-sharepoint) című témakört.
-5. Az 1. Az [ELJÁRÁSOK konfigurálása című útmutató](#configure-rbs) az RBS konfigurálása című. A lépés elvégzése után a korábban kikülsővé vált fájloknak elérhetőnek kell lenniük az új farmról. 
+3. Adatbázisok, alkalmazások és webhelycsoportok áthelyezése a SharePoint 2010-farmról az új SharePoint 2013-farmba. Útmutatásért [tekintse meg a frissítési folyamat áttekintése a SharePoint 2013-re](https://technet.microsoft.com/library/cc262483.aspx)című témakört.
+4. Telepítse a SharePointhoz készült StorSimple-adaptert az új farmon. Nyissa meg [a StorSimple-adapter sharepointhoz való telepítését](#install-the-storsimple-adapter-for-sharepoint) ismertető eljárást.
+5. Az 1. lépésben feljegyzett információk alapján engedélyezze az RBS-t ugyanahhoz a tartalom-adatbázishoz, és adja meg ugyanazt a BLOB-tároló elérési útját, amelyet a SharePoint 2010-telepítésben használt. Nyissa meg az [RBS konfigurálása](#configure-rbs) eljárásokhoz című témakört. A lépés elvégzése után a korábban kihelyezett fájlokat elérhetővé kell tenni az új farmról. 
 
-### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>A SharePoint-alapú StorSimple adapter frissítése
+### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter frissítése
 > [!IMPORTANT]
-> A frissítés tervezett karbantartási időszakban történő ütemezése a következő okok miatt történik:
+> Ezt a frissítést úgy kell ütemezni, hogy a tervezett karbantartási időszak során a következő okok miatt történjen:
 > 
-> * A korábban kihelyezett tartalom csak az adapter újratelepítése után lesz elérhető.
-> * A StorSimple Adapter sharepoint-hoz való eltávolítása után, de az új verzió telepítése előtt a webhelyre feltöltött tartalmak a tartalom-adatbázisban tárolódnak. Az új adapter telepítése után át kell helyeznie a tartalmat a StorSimple eszközre. A SharePoint `RBS Migrate()` részét képező Microsoft PowerShell-parancsmag segítségével áttelepítheti a tartalmat. További információt a [Tartalom áttelepítése az RBS-be vagy az RBS-ből című](https://technet.microsoft.com/library/ff628255.aspx)témakörben talál. 
+> * A korábban külsőleg elvégezhető tartalom addig nem lesz elérhető, amíg újra nem telepítik az adaptert.
+> * A webhelyre feltöltött bármely tartalom, miután eltávolította a SharePointhoz készült StorSimple-adapter előző verzióját, de az új verzió telepítése előtt a rendszer a tartalom-adatbázisban tárolja. Az új adapter telepítése után át kell helyeznie a tartalmat a StorSimple-eszközre. A SharePointhoz mellékelt Microsoft `RBS Migrate()` PowerShell-parancsmag használatával áttelepítheti a tartalmat. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból. 
 > 
 > 
 
-#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>A SharePoint-alapú StorSimple adapter frissítése
-1. Távolítsa el a SharePoint-hoz szükséges StorSimple adapter korábbi verzióját.
+#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter frissítése
+1. Távolítsa el a SharePointhoz készült StorSimple-adapter előző verzióját.
    
    > [!NOTE]
-   > Ez automatikusan letiltja az RBS-t a tartalom-adatbázisokban. Azonban a meglévő BLOB-k maradnak a StorSimple eszközön. Mivel az RBS le van tiltva, és a BLOB-k nem lettek visszatelepítve a tartalom-adatbázisokba, a BLOB-kra vonatkozó kérelmek sikertelenek lesznek. 
+   > Ez automatikusan letiltja az RBS-t a tartalom-adatbázisokban. A meglévő Blobok azonban továbbra is a StorSimple-eszközön maradnak. Mivel az RBS le van tiltva, és a Blobok nem lettek áttelepítve a tartalom-adatbázisba, a Blobokra vonatkozó kérelmek sikertelenek lesznek. 
    > 
    > 
-2. Telepítse az új StorSimple adaptert a SharePointhoz. Az új adapter automatikusan felismeri azokat a tartalom-adatbázisokat, amelyek korábban engedélyezve voltak vagy le voltak tiltva az RBS számára, és a korábbi beállításokat fogják használni.
+2. Telepítse az új StorSimple-adaptert a SharePointhoz. Az új adapter automatikusan felismeri az RBS-ben korábban engedélyezett vagy letiltott tartalmi adatbázisokat, és az előző beállításokat fogja használni.
 

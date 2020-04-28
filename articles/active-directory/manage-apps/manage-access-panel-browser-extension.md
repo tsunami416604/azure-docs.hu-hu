@@ -1,6 +1,6 @@
 ---
-title: Az Azure Access Panel IE bővítményének hibaelhárítása | Microsoft dokumentumok
-description: A csoportházirend használata az Internet Explorer bővítmény telepítéséhez a Saját alkalmazások portálhoz.
+title: Az IE-hez készült Azure Access panel-bővítmény hibáinak megoldása | Microsoft Docs
+description: Az Internet Explorer bővítmény telepítése a csoportházirend használatával a saját alkalmazások portálon.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,71 +17,71 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67723919"
 ---
-# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Az Internet Explorer Access Panel bővítményének – problémamegoldás
+# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Az Internet Explorerhez készült hozzáférési panel bővítmény hibáinak megoldása
 
-Ez a cikk a következő problémák elhárítását segíti:
+Ez a cikk a következő problémák megoldásában nyújt segítséget:
 
-* Az Internet Explorer használata közben nem tudja elérni alkalmazásait a Saját alkalmazások portálon keresztül.
-* A "Szoftver telepítése" üzenet akkor is megjelenik, ha már telepítette a szoftvert.
+* Az Internet Explorer használata közben nem férhet hozzá az alkalmazásaihoz a saját alkalmazások portálon.
+* A szoftver telepítése üzenet jelenik meg, annak ellenére, hogy már telepítette a szoftvert.
 
-Ha Ön rendszergazda, olvassa [el Az Internet Explorer Hozzáférési panelbővítményének központi telepítése csoportházirenddel című témakört.](deploy-access-panel-browser-extension.md)
+Ha Ön rendszergazda, tekintse meg a következő témakört: [a hozzáférési panel bővítményének központi telepítése az Internet explorerhez csoportházirend használatával](deploy-access-panel-browser-extension.md).
 
 ## <a name="run-the-diagnostic-tool"></a>A diagnosztikai eszköz futtatása
 
-A hozzáférési panel bővítménysel a telepítési problémákat a Hozzáférési panel diagnosztikai eszköz letöltésével és futtatásával diagnosztizálhatja. 
+A hozzáférési panel bővítménnyel diagnosztizálhatja a telepítési problémákat, ha letölti és futtatja a hozzáférési panel diagnosztikai eszközét. 
 
 A diagnosztikai eszköz letöltése és telepítése:
 
-1. [A diagnosztikai eszköz letöltéséhez válassza ezt a hivatkozást.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
-1. Nyissa meg a fájlt, és bontsa ki a tartalmát a számítógépre.
-1. Az eszköz futtatásához kattintson a jobb gombbal az *AccessPanelExtensionDiagnosticTool.js* nevű fájlra, és válassza a **Megnyitás** > **Microsoft Windows Based Script Host parancsot.**
+1. [Válassza ezt a hivatkozást a diagnosztikai eszköz letöltéséhez.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+1. Nyissa meg a fájlt, és bontsa ki a tartalmat a számítógépére.
+1. Az eszköz futtatásához kattintson a jobb gombbal a *AccessPanelExtensionDiagnosticTool. js* nevű fájlra, és válassza a **Megnyitás a** > **Microsoft Windows-alapú parancsfájl-gazdagép**használatával lehetőséget.
 
-    ![Megnyitás > Microsoft Windows-alapú parancsfájlállomással](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
+    ![Megnyitás > Microsoft Windows-alapú parancsfájl-gazdagép](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 
-1. Tekintse át a megjelenő diagnosztikai eredményeket, és válassza az **Igen** lehetőséget a problémák megoldásához. **Megjelenik az Eredmények ellenőrzése** párbeszédpanelen, amely en arról van szó, hogy mi a teendő, ha a bővítmény nem működik.  
-1. Olvassa el az üzenetet, és válassza **az OK gombot.**
+1. Tekintse át a megjelenő diagnosztikai eredményeket, és válassza az **Igen** lehetőséget a problémák megoldásához. Megjelenik az eredmények megtekintése párbeszédpanel, ahol **megtekintheti** , hogy mi a teendő, ha a bővítmény nem működik.  
+1. Olvassa el az üzenetet, és kattintson **az OK gombra**.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Annak ellenőrzése, hogy a Hozzáférési panel bővítmény engedélyezve van-e
+## <a name="check-that-the-access-panel-extension-is-enabled"></a>Győződjön meg arról, hogy a hozzáférési panel bővítmény engedélyezve van
 
-Annak ellenőrzése, hogy engedélyezte-e az Internet Explorer hozzáférési panelbővítményét, a következők:
+Annak ellenőrzése, hogy engedélyezte-e a hozzáférési panel bővítményét az Internet Explorerben:
 
-1. Az Internet Explorerben válassza a **Gear ikont** az ablak jobb felső sarkában, és válassza az **Internet beállítások lehetőséget**.
-1. Nyissa meg a **Programok** lapot, és válassza **a Bővítmények kezelése**lehetőséget.
-1. Válassza a Microsoft Corporation szakasz **Hozzáférési panelbővítmény** e-részében az **Microsoft Corporation** **Engedélyezés**lehetőséget.
-1. A módosítások mentéséhez zárja be az Internet Explorer összes megnyitott böngészőablakát. A módosítás az Internet Explorer következő megnyitásakor lép érvénybe.
+1. Az Internet Explorerben válassza a **fogaskerék ikont** az ablak jobb felső sarkában, és válassza az **Internetbeállítások**lehetőséget.
+1. Lépjen a **programok** lapra, és válassza a **Bővítmények kezelése**lehetőséget.
+1. Válassza a **hozzáférési panel bővítmény** elemet a **Microsoft Corporation** szakaszban, és válassza az **Engedélyezés**lehetőséget.
+1. A módosítások mentéséhez zárjunk be minden megnyitott Internet Explorer böngészőablakot. A módosítás a következő alkalommal lép életbe, amikor megnyitja az Internet Explorert.
 
-## <a name="enable-extensions-for-inprivate-browsing"></a>Bővítmények engedélyezése az InPrivate-böngészéshez
+## <a name="enable-extensions-for-inprivate-browsing"></a>Bővítmények engedélyezése InPrivate-böngészéshez
 
-Bővítmények engedélyezése az InPrivate-böngészéshez:
+Bővítmények engedélyezése InPrivate-böngészéshez:
 
-1. Az Internet Explorerben válassza a **Gear ikont** az ablak jobb felső sarkában, és válassza az **Internet beállítások lehetőséget**.
-1. Nyissa meg az **Adatvédelem** lapot, és ellenőrizze, hogy az **Eszköztárak és bővítmények letiltása az InPrivate-böngészés indításakor** jelölőnégyzet nincs-e bejelölve.
-1. A módosítások mentéséhez zárja be az Internet Explorer összes megnyitott böngészőablakát. A módosítás az Internet Explorer következő megnyitásakor lép érvénybe.
+1. Az Internet Explorerben válassza a **fogaskerék ikont** az ablak jobb felső sarkában, és válassza az **Internetbeállítások**lehetőséget.
+1. Lépjen az **Adatvédelem** lapra, és győződjön meg arról, hogy az **eszköztárak és a bővítmények letiltása az InPrivate-böngészés indításakor** jelölőnégyzet üres.
+1. A módosítások mentéséhez zárjunk be minden megnyitott Internet Explorer böngészőablakot. A módosítás a következő alkalommal lép életbe, amikor megnyitja az Internet Explorert.
 
-## <a name="uninstall-the-access-panel-extension"></a>Az Access Panel bővítmény eltávolítása
+## <a name="uninstall-the-access-panel-extension"></a>A hozzáférési panel kiterjesztésének eltávolítása
 
-Az Access Panel bővítmény eltávolítása a számítógépről:
+A hozzáférési panel bővítmény eltávolítása a számítógépről:
 
-1. A Vezérlőpulton keresse meg az *eltávolítást.*
-1. A keresési eredmények között válassza a **Program eltávolítása**lehetőséget.
+1. A Vezérlőpulton keressen az *Eltávolítás*elemre.
+1. A keresési eredmények között válassza **a program eltávolítása**lehetőséget.
 
-    ![A Program eltávolítása beállítás kiválasztása a Vezérlőpultról](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
+    ![Válassza a program eltávolítása lehetőséget a Vezérlőpultról.](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
 
-1. A listában válassza a **Hozzáférési panel bővítmény** lehetőséget, majd az **Eltávolítás**lehetőséget.
+1. A listából válassza a **hozzáférési panel bővítmény** elemet, majd válassza az **Eltávolítás**lehetőséget.
 
-    ![Az Access Panel bővítmény eltávolítása](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
+    ![A hozzáférési panel kiterjesztésének eltávolítása](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
 
-1. Ezután próbálja meg újra telepíteni a bővítményt, hogy lássa, megoldódott-e a probléma.
+1. Ezután próbálja meg újból telepíteni a bővítményt, hogy megtudja, a probléma megoldódott-e.
 
-Ha problémákba ütközik a bővítmény eltávolításával, a [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) eszközzel is eltávolíthatja azt.
+Ha a bővítmény eltávolításával kapcsolatos problémákba ütközik, a [Microsoft Fix it](https://go.microsoft.com/?linkid=9779673) eszköz használatával is eltávolíthatja.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](what-is-single-sign-on.md)
-* [Az Internet Explorer Access Panel extensionjének telepítése csoportházirenddel](deploy-access-panel-browser-extension.md)
+* [Alkalmazás-hozzáférés és egyszeri bejelentkezés Azure Active Directory](what-is-single-sign-on.md)
+* [Az Internet Explorer hozzáférési panel-bővítményének üzembe helyezése Csoportházirend használatával](deploy-access-panel-browser-extension.md)

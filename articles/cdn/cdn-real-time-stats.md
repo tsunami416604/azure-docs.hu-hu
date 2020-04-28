@@ -1,6 +1,6 @@
 ---
-title: Valós idejű statisztikák az Azure CDN-ben | Microsoft dokumentumok
-description: A valós idejű statisztikák valós idejű adatokat szolgáltatnak az Azure CDN teljesítményéről, amikor tartalmat szállítanak ügyfeleinek.
+title: Valós idejű statisztikák a Azure CDNban | Microsoft Docs
+description: A valós idejű statisztikák valós idejű adatokat biztosítanak a Azure CDN teljesítményéről, amikor tartalmat továbbítanak az ügyfeleknek.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593490"
 ---
-# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Valós idejű statisztikák a Microsoft Azure CDN-ben
+# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN valós idejű statisztikái
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum ismerteti a valós idejű statisztikákat a Microsoft Azure CDN-ben.  Ez a funkció valós idejű adatokat biztosít, például sávszélességet, gyorsítótár-állapotokat és egyidejű kapcsolatokat a CDN-profillal, amikor tartalmat szállít az ügyfeleknek. Ez lehetővé teszi a szolgáltatás állapotának folyamatos figyelését bármikor, beleértve az élő eseményeket is.
+Ez a dokumentum a Microsoft Azure CDN valós idejű statisztikáit mutatja be.  Ez a funkció valós idejű adatokat biztosít, például a sávszélességet, a gyorsítótár állapotát és a CDN-profilhoz való egyidejű kapcsolatokat, amikor tartalmat továbbít az ügyfeleknek. Ez bármikor lehetővé teszi a szolgáltatás állapotának folyamatos figyelését, beleértve a Go-Live eseményeket is.
 
-A következő grafikonok állnak rendelkezésre:
+A következő diagramok érhetők el:
 
 * [Sávszélesség](#bandwidth)
 * [Állapotkódok](#status-codes)
-* [Gyorsítótár állapotai](#cache-statuses)
+* [Gyorsítótár állapota](#cache-statuses)
 * [Kapcsolatok](#connections)
 
-## <a name="accessing-real-time-stats"></a>Hozzáférés valós idejű statisztikák
+## <a name="accessing-real-time-stats"></a>Valós idejű statisztika elérése
 1. Az [Azure Portalon](https://portal.azure.com)keresse meg a CDN-profilját.
    
-    ![CDN profilpanel](./media/cdn-real-time-stats/cdn-profile-blade.png)
-2. A CDN-profilpanelen kattintson a **Kezelés** gombra.
+    ![CDN-profil panel](./media/cdn-real-time-stats/cdn-profile-blade.png)
+2. A CDN-profil panelen kattintson a **kezelés** gombra.
    
-    ![CDN profilpanel kezelőgombja](./media/cdn-real-time-stats/cdn-manage-btn.png)
+    ![CDN-profil panel kezelése gomb](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-3. Mutasson az **Analytics** fülre, majd mutasson a **Valós idejű statisztika** úszó panelre.  Kattintson a **HTTP Large Object elemre.**
+3. Vigye az egérmutatót az **elemzés** lapra, majd vigye a kurzort a **valós idejű statisztika** menü fölé.  Kattintson a **nagyméretű http-objektumra**.
    
     ![CDN felügyeleti portál](./media/cdn-real-time-stats/cdn-premium-portal.png)
    
-    A valós idejű statisztika grafikonok jelennek meg.
+    Megjelenik a valós idejű statisztika-diagramok.
 
-Mindegyik grafikon valós idejű statisztikát jelenít meg a kiválasztott időtartamról, az oldal betöltésétől kezdve.  A grafikonok néhány másodpercenként automatikusan frissülnek.  A **Diagram frissítése** gomb ( ha van) törli a grafikont, majd csak a kijelölt adatokat jeleníti meg.
+A diagramok mindegyike valós idejű statisztikát jelenít meg a kiválasztott időtartományra vonatkozóan, az oldal betöltésekor.  A gráfok néhány másodpercenként automatikusan frissülnek.  A **gráf frissítése** gomb, ha van, törli a diagramot, amely után csak a kijelölt adatelemeket fogja megjeleníteni.
 
 ## <a name="bandwidth"></a>Sávszélesség
-![Sávszélesség grafikon](./media/cdn-real-time-stats/cdn-bandwidth.png)
+![Sávszélesség gráf](./media/cdn-real-time-stats/cdn-bandwidth.png)
 
-A **Sávszélesség** grafikon az aktuális platformhoz a kiválasztott időtartam alatt felhasznált sávszélesség mennyiségét jeleníti meg. A diagram árnyékolt része a sávszélesség-használatot jelzi. A jelenleg használt sávszélesség pontos mennyisége közvetlenül a vonaldiagram alatt jelenik meg.
+A **sávszélesség** grafikonon az aktuális platformhoz használt sávszélesség mennyisége látható a kiválasztott időtartományon. A gráf árnyékolt része a sávszélesség-használatot jelzi. A jelenleg használatban lévő sávszélesség pontos mennyisége közvetlenül a vonalas diagram alatt jelenik meg.
 
 ## <a name="status-codes"></a>Állapotkódok
-![Állapotkód-grafikon](./media/cdn-real-time-stats/cdn-status-codes.png)
+![Állapotkód gráf](./media/cdn-real-time-stats/cdn-status-codes.png)
 
-Az **Állapotkódok** grafikon azt jelzi, hogy bizonyos HTTP-válaszkódok milyen gyakran fordulnak elő a kiválasztott időtartam alatt.
-
-> [!TIP]
-> Az egyes HTTP-állapotkódok leírását az [Azure CDN HTTP-állapotkódok ban](/previous-versions/azure/mt759238(v=azure.100))található.
-> 
-> 
-
-A HTTP-állapotkódok listája közvetlenül a grafikon felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a sordiagramban, és az adott állapotkód hoz másodpercenkénti előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkódhoz megjelenik egy sor. Azonban dönthet úgy, hogy csak a CDN-konfiguráció szempontjából különleges jelentőséggel bíró állapotkódokat figyeli. Ehhez ellenőrizze a kívánt állapotkódokat, törölje az összes többi beállítást, majd kattintson **a Diagram frissítése**gombra. 
-
-Egy adott állapotkód naplózott adatait ideiglenesen elrejtheti.  A közvetlenül a diagram alatti jelmagyarázatból kattintson az elrejteni kívánt állapotkódra. Az állapotkód azonnal el lesz rejtve a grafikonról. Ha ismét az állapotkódra kattint, az a beállítás ismét megjelenik.
-
-## <a name="cache-statuses"></a>Gyorsítótár állapotai
-![Gyorsítótár-állapotok grafikonja](./media/cdn-real-time-stats/cdn-cache-status.png)
-
-A **gyorsítótár állapotai** grafikon azt jelzi, hogy bizonyos típusú gyorsítótár-állapotok milyen gyakran fordulnak elő a kiválasztott időtartam alatt. 
+Az **állapotkódok** gráf azt jelzi, hogy milyen gyakran fordul elő bizonyos http-válaszok a kiválasztott időtartományon.
 
 > [!TIP]
-> Az egyes gyorsítótár-állapotkódok leírását az [Azure CDN-gyorsítótár állapotkódjai ban](/previous-versions/azure/mt759237(v=azure.100))található.
+> Az egyes HTTP-állapotkódok beállítás leírását lásd: [Azure CDN HTTP-állapotkódok](/previous-versions/azure/mt759238(v=azure.100)).
 > 
 > 
 
-A gyorsítótár állapotkódjainak listája közvetlenül a grafikon felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a sordiagramban, és az adott állapotkód hoz másodpercenkénti előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkódhoz megjelenik egy sor. Azonban dönthet úgy, hogy csak a CDN-konfiguráció szempontjából különleges jelentőséggel bíró állapotkódokat figyeli. Ehhez ellenőrizze a kívánt állapotkódokat, törölje az összes többi beállítást, majd kattintson **a Diagram frissítése**gombra. 
+A HTTP-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése**elemre. 
 
-Egy adott állapotkód naplózott adatait ideiglenesen elrejtheti.  A közvetlenül a diagram alatti jelmagyarázatból kattintson az elrejteni kívánt állapotkódra. Az állapotkód azonnal el lesz rejtve a grafikonról. Ha ismét az állapotkódra kattint, az a beállítás ismét megjelenik.
+Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat.  A jelmagyarázat alatt közvetlenül a gráf alatt kattintson az elrejteni kívánt állapotkódot. Az állapotkód azonnal el lesz rejtve a gráfból. Ha ismét rákattint erre az állapotkódre, akkor a beállítás újból megjelenik.
+
+## <a name="cache-statuses"></a>Gyorsítótár állapota
+![Gyorsítótár-állapotok gráf](./media/cdn-real-time-stats/cdn-cache-status.png)
+
+A **cache statuss (gyorsítótár állapota** ) gráf azt jelzi, hogy milyen gyakran fordul elő bizonyos típusú gyorsítótár-állapot a kiválasztott időtartományon. 
+
+> [!TIP]
+> Az egyes gyorsítótár-állapotkódok beállítás leírását lásd: gyorsítótár-állapotkódok [Azure CDN](/previous-versions/azure/mt759237(v=azure.100)).
+> 
+> 
+
+A gyorsítótár-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése**elemre. 
+
+Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat.  A jelmagyarázat alatt közvetlenül a gráf alatt kattintson az elrejteni kívánt állapotkódot. Az állapotkód azonnal el lesz rejtve a gráfból. Ha ismét rákattint erre az állapotkódre, akkor a beállítás újból megjelenik.
 
 ## <a name="connections"></a>Kapcsolatok
-![Kapcsolatok grafikon](./media/cdn-real-time-stats/cdn-connections.png)
+![Kapcsolatok gráf](./media/cdn-real-time-stats/cdn-connections.png)
 
-Ez a grafikon azt jelzi, hogy hány kapcsolat jött létre a peremhálózati kiszolgálókhoz. A CDN-n áthaladó eszközre vonatkozó minden egyes kérelem kapcsolathoz vezet.
+Ez a gráf azt jelzi, hogy hány kapcsolat lett létrehozva a peremhálózati kiszolgálókhoz. Egy adategységre vonatkozó minden kérelem, amely a CDN-eredményeken keresztül halad a kapcsolatok között.
 
 ## <a name="next-steps"></a>Következő lépések
-* Értesítést kaphat [valós idejű riasztásokról az Azure CDN-ben](cdn-real-time-alerts.md)
-* Mélyebbre áshat a [speciális HTTP-jelentésekkel](cdn-advanced-http-reports.md)
+* [Valós idejű riasztások](cdn-real-time-alerts.md) beszerzése Azure CDN
+* Mélyebb kiásás a [speciális http-jelentésekkel](cdn-advanced-http-reports.md)
 * [Használati minták](cdn-analyze-usage-patterns.md) elemzése
 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan készítsünk egy telefonhívást Twilio (PHP) | Microsoft dokumentumok
-description: Ismerje meg, hogyan kezdeményezhetsz telefonhívást, és hogyan küldhet SMS-üzenetet az Azure-beli Twilio API-szolgáltatással. A minták PHP alkalmazáshoz valók.
+title: Telefonhívás kezdeményezése a Twilio-ből (PHP) | Microsoft Docs
+description: Megtudhatja, hogyan készíthet telefonhívást, és hogyan küldhet SMS-üzenetet a Twilio API szolgáltatással az Azure-ban. A minták PHP-alkalmazásokhoz használhatók.
 documentationcenter: php
 services: ''
 author: georgewallace
@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69637323"
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Telefonhívás lehívása a Twilio használatával egy PHP-alkalmazásban az Azure-ban
-A következő példa bemutatja, hogyan használhatja a Twilio-t az Azure-ban üzemeltetett PHP-weblapról történő híváshoz. Az eredményül kapott alkalmazás kéri a felhasználót a telefonhívás értékeit, ahogy az a következő képernyőképen látható.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával az Azure-ban PHP-alkalmazásokban
+Az alábbi példa bemutatja, hogyan használhatja a Twilio-t az Azure-ban üzemeltetett PHP-weblapokról. Az eredményül kapott alkalmazás felszólítja a felhasználót a telefonhívások értékeire, ahogy az alábbi képernyőképen is látható.
 
-![Azure call form twilio és PHP használatával][twilio_php]
+![Azure Call űrlap a Twilio és a PHP használatával][twilio_php]
 
-A jelen témakörben szereplő kód használatához az alábbiakat kell tennie:
+A jelen témakörben található kód használatához a következőket kell tennie:
 
-1. Twilio-fiók és hitelesítési jogkivonat beszerzése a [Twilio konzolról.][twilio_console] A Twilio első lépéseihez [https://www.twilio.com/pricing][twilio_pricing]értékelje ki az árakat a(z) szinten. A próbafiókot a sorban [https://www.twilio.com/try-twilio][try_twilio]regisztrálhatja.
-2. Szerezze be a [Php Twilio könyvtárát,](https://github.com/twilio/twilio-php) vagy telepítse PEAR csomagként. További információt a [readme fájlban talál.](https://github.com/twilio/twilio-php/blob/master/README.md)
-3. Telepítse az Azure SDK PHP.Install the Azure SDK for PHP. 
+1. Twilio-fiók és hitelesítési jogkivonat beszerzése a [Twilio-konzolról][twilio_console]. A Twilio megkezdéséhez értékelje a díjszabást a következő címen: [https://www.twilio.com/pricing][twilio_pricing]. A próbaverziós fiókra a címen [https://www.twilio.com/try-twilio][try_twilio]regisztrálhat.
+2. Szerezze be a [Twilio könyvtárat a PHP-hez](https://github.com/twilio/twilio-php) , vagy telepítse PEAR-csomagként. További információkért tekintse meg a [Readme fájlt](https://github.com/twilio/twilio-php/blob/master/README.md).
+3. Telepítse a PHP-hez készült Azure SDK-t. 
 <!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
 
-## <a name="create-a-web-form-for-making-a-call"></a>Webes űrlap létrehozása híváshoz
-A következő HTML-kód bemutatja, hogyan lehet olyan weblapot létrehozni (**callform.html**), amely lekéri a felhasználói adatokat a híváshoz:
+## <a name="create-a-web-form-for-making-a-call"></a>Webes űrlap létrehozása hívás kezdeményezéséhez
+A következő HTML-kód bemutatja, hogyan hozhat létre egy olyan weboldalt (**callform. html**), amely a híváshoz felhasználói adatlekérdezéseket kér le:
 
 ```html
 <!DOCTYPE html>
@@ -66,8 +66,8 @@ A következő HTML-kód bemutatja, hogyan lehet olyan weblapot létrehozni (**ca
 </html>
 ```
 
-## <a name="create-the-code-to-make-the-call"></a>A hívás hozása a kódhoz
-A következő kód bemutatja, hogyan kell építeni **makecall.php**, amely a neve, amikor a felhasználó elküldi az űrlapot jelenik meg **callform.html**. Az alábbi kód létrehozza a hívási üzenetet, és létrehozza a hívást. Is győződjön meg róla, hogy a Twilio-fiók és a [Twilio-konzolhitelesítési][twilio_console] jogkivonat használata helyett a helyőrző értékek $sid **és** **$token** az alábbi kódban.
+## <a name="create-the-code-to-make-the-call"></a>A kód létrehozása a hívás elvégzéséhez
+A következő kód bemutatja, hogyan hozhat létre **MakeCall. php**fájlt, amely akkor lesz meghívva, amikor a felhasználó elküldi az **callform. html**által megjelenített űrlapot. Az alább látható kód létrehozza a hívási üzenetet, és létrehozza a hívást. Ne felejtse el használni a Twilio-fiókot és a hitelesítési jogkivonatot a [Twilio-konzolról][twilio_console] az alábbi kódban **$token** **$sidhoz** rendelt helyőrző értékek helyett.
 
 ```html
 <html>
@@ -100,24 +100,24 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-Amellett, hogy a hívás, **makecall.php** megjeleníti néhány hívás metaadatok, amint az az alábbi képen látható. A hívási metaadatokról [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties]a témakörben talál további információt.
+A hívás elvégzése mellett a **MakeCall. php** a hívási metaadatokat is megjeleníti, ahogy az alábbi képen is látható. További információ a hívási metaadatokról: [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
 
-![Azure-hívásválasz Twilio és PHP használatával][twilio_php_response]
+![Azure-hívási válasz a Twilio és a PHP használatával][twilio_php_response]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
-A következő lépés az, hogy [az alkalmazás üzembe helyezése az Azure Web Apps git](app-service/app-service-web-get-started-php.md) (bár nem minden információ van releváns). 
+A következő lépés az [alkalmazás üzembe helyezése az Azure Web Apps](app-service/app-service-web-get-started-php.md) -ben a git használatával (bár nem minden fontos információ). 
 
 ## <a name="next-steps"></a>További lépések
-Ez a kód a Twilio használatával az Azure-ban a Twilio használatával való alapvető funkciók megjelenítéséhez lett biztosítva. Mielőtt éles környezetben üzembe helyezne az Azure-ba, érdemes lehet további hibakezelést vagy egyéb funkciókat hozzáadnia. Példa:
+Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban a Twilio-t használják a PHP-ben. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például:
 
-* Webes űrlap használata helyett azure storage blobok vagy az SQL Database segítségével tárolja a telefonszámokat, és hívja a szöveget. Az Azure storage blobjainak PHP-ben való használatáról az [Azure Storage használata PHP alkalmazásokkal][howto_blob_storage_php]című témakörben talál további információt. Az SQL Database PHP-ben való használatáról az [SQL Database használata PHP alkalmazásokkal][howto_sql_azure_php]című témakörben talál további információt.
-* A **makecall.php** kód twilio által[https://twimlets.com/message][twimlet_message_url]megadott URL-címet ( ) használ, hogy twilio markup nyelv (TwiML) választ adjon, amely tájékoztatja a Twilio-t a hívás folytatásáról. A visszaadott TwiML például tartalmazhat `<Say>` olyan igét, amelynek eredményeként a rendszer szöveget szólít a hívás címzettjével. A Twilio által biztosított URL-cím használata helyett saját szolgáltatást hozhat létre a Twilio kérésének válaszolására; További információ: [A Twilio használata a PHP hang- és SMS-képességeihez című témakörben.][howto_twilio_voice_sms_php] További információ a TwiML-ről a [https://www.twilio.com/docs/api/twiml][twiml]itt `<Say>` található, és további információ a [https://www.twilio.com/docs/api/twiml/say][twilio_say]twilio-műveletekről a.
-* Olvassa el a Twilio biztonsági irányelveit a. [https://www.twilio.com/docs/security][twilio_docs_security]
+* Webes űrlap helyett az Azure Storage-Blobok vagy a SQL Database használatával tárolhatók a telefonszámok és a hívás szövege. További információ az Azure Storage-Blobok PHP-ben való használatáról: [Azure Storage használata php-alkalmazásokkal][howto_blob_storage_php]. További információ a PHP-SQL Database használatáról: [SQL Database használata php-alkalmazásokkal][howto_sql_azure_php].
+* A **MakeCall. php** kód a Twilio által megadott URL-[https://twimlets.com/message][twimlet_message_url]címet () használja egy Twilio Markup Language (TwiML) válasz megadására, amely arról tájékoztatja a Twilio, hogy hogyan folytathatja a hívást. A visszaadott TwiML például tartalmazhat egy olyan `<Say>` műveletet, amely a hívás címzettjének küldött szöveget eredményezi. A Twilio által biztosított URL-cím használata helyett saját szolgáltatást építhet ki a Twilio kérelmére való reagáláshoz. További információkért lásd: a [Twilio használata a hang-és SMS-funkciókhoz a PHP-ben][howto_twilio_voice_sms_php]. További információ a TwiML-ról: [https://www.twilio.com/docs/api/twiml][twiml], és további információ a `<Say>` és más Twilio műveletekről:. [https://www.twilio.com/docs/api/twiml/say][twilio_say]
+* Olvassa el a Twilio biztonsági irányelveit a következő címen: [https://www.twilio.com/docs/security][twilio_docs_security].
 
-A Twilio-ról további [https://www.twilio.com/docs][twilio_docs]információt a.
+További információ a Twilio-ről: [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a>Lásd még:
-* [Hogyan használjuk a Twilio-t hang- és SMS-képességekhez a PHP-ben](partner-twilio-php-how-to-use-voice-sms.md)
+* [A Twilio használata a hang-és SMS-funkciókhoz a PHP-ben](partner-twilio-php-how-to-use-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: https://www.twilio.com/pricing

@@ -1,6 +1,6 @@
 ---
-title: H264 Többszörös bitráta 16x9 iOS-hez | Microsoft dokumentumok
-description: A témakör áttekintést nyújt a **H264 többszörös bitráta 16x9 iOS** feladatkészletről.
+title: H264 több bitráta 16x9 iOS-hez | Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 Multiple bitráta 16x9 for iOS** -feladathoz.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 358a44c59112aa4d2a235adcae1d34313afe6859
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129644"
 ---
 # <a name="h264-multiple-bitrate-16x9-for-ios"></a>H264 Multiple Bitrate 16x9 for iOS
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
- Ez a `H264 Multiple Bitrate 16x9 for iOS` témakör az előre beállított xml és JSON formátumban jelenik meg.  
+ Ez a témakör az `H264 Multiple Bitrate 16x9 for iOS` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
- Ez az előre beállított készlet 8 GOP-hoz igazított MP4-fájlt eredményez, 8500 kbit/s-tól 200 kbps-ig terjedő sebességgel, és sztereó AAC hangot. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. A készletek egyes elemeinek és az egyes elemek érvényes értékeinek magyarázatát a [Media Encoder Standard séma](media-services-mes-schema.md) témakörében talál.  
+ Ez a beállításkészlet 8 GOP-ra igazított MP4-fájlt hoz létre, amely 8500 kbps és 200 kbps között, valamint sztereó AAC hangon érhető el. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  A rétegek `Width` közötti `Height` értékek és értékek módosításakor győződjön meg arról, hogy a méretarány konzisztens marad. Például: 1920x1080, 1280x720, 1080x576, 640x360. Ne használjon képarányok keverékét, például: 1280x720, 720x480, 640x360.  
+>  A `Width` rétegek közötti és `Height` értékek módosításakor ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
   
  XML  
   

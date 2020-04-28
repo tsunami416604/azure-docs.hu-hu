@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178981"
 ---
-Minden olyan ügyfélszámítógépen, amelyet egy pont-hely kapcsolattal rendelkező virtuális hálózathoz csatlakozik, telepítve kell lennie egy ügyféltanúsítvánnyal. A főtanúsítványból hozza létre, és minden ügyfélszámítógépre telepíti. Ha nem telepít érvényes ügyféltanúsítványt, a hitelesítés sikertelen lesz, amikor az ügyfél megpróbál csatlakozni a virtuális hálózathoz.
+Minden olyan ügyfélszámítógépnek, amelyhez pont – hely kapcsolattal rendelkező VNet kapcsolódik, telepítenie kell egy ügyféltanúsítványt. A rendszer létrehozza a főtanúsítványból, és telepíti az egyes ügyfélszámítógépekre. Ha nem telepít érvényes ügyféltanúsítványt, a hitelesítés sikertelen lesz, ha az ügyfél megpróbál csatlakozni a VNet.
 
-Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfélhez is. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ellenkező esetben, ha több ügyfél ugyanazt az ügyféltanúsítványt használja a hitelesítéshez, és ön visszavonja azt, akkor új tanúsítványokat kell létrehoznia és telepítenie minden olyan ügyfélhez, amely ezt a tanúsítványt használja.
+Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfélhez is. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ellenkező esetben, ha több ügyfél ugyanazt az ügyféltanúsítványt használja a hitelesítéshez és a visszavonásához, új tanúsítványokat kell létrehoznia és telepítenie minden olyan ügyfélnél, amely ezt a tanúsítványt használja.
 
-Az ügyféltanúsítványokat a következő módszerekkel hozhatja létre:
+Az ügyféltanúsítványok a következő módszerekkel hozhatók elő:
 
 - **Vállalati tanúsítvány:**
 
-  - Vállalati tanúsítványmegoldás használata esetén hozzon létre egy ügyféltanúsítványt a köznapi névérték-formátum *\@névvel yourdomain.com.* Ezt a formátumot használja a *tartománynév\felhasználónév* formátum helyett.
-  - Győződjön meg arról, hogy az ügyféltanúsítvány olyan felhasználói tanúsítványsablonon alapul, *amelynek ügyfélhitelesítése* szerepel a felhasználói lista első elemeként. Ellenőrizze a tanúsítványt úgy, hogy duplán kattint rá, és a **Részletek** lapon megtekinti a **bővített kulcshasználatot.**
+  - Ha vállalati Tanúsítványos megoldást használ, állítson elő egy ügyféltanúsítványt a köznapi név érték formátuma *\@yourdomain.com*. Ezt a formátumot a *tartomány \ Felhasználónév* formátuma helyett használja.
+  - Győződjön meg arról, hogy az ügyféltanúsítvány olyan felhasználói tanúsítványsablon alapján van megadva, amely a felhasználók listájának első elemeként szerepel az *ügyfél-hitelesítésben* . Ellenőrizze a tanúsítványt úgy, hogy duplán kattint rá, és megtekinti a **Kibővített kulcshasználat** lehetőséget a **részletek** lapon.
 
-- **Önaláírt főtanúsítvány:** Kövesse az alábbi P2S-tanúsítványcikkek egyikének lépéseit, hogy a létrehozott ügyféltanúsítványok kompatibilisek legyenek a P2S-kapcsolatokkal. Az ezekben a cikkekben ismertetett lépések kompatibilis ügyféltanúsítványt hoznak létre: 
+- **Önaláírt főtanúsítvány:** Kövesse az alábbi P2S-tanúsítványok egyikének lépéseit, hogy a létrehozott Ügyféltanúsítványok kompatibilisek legyenek a P2S-kapcsolatokkal. A cikkben ismertetett lépések egy kompatibilis ügyféltanúsítványt hoznak: 
 
-  * [A Windows 10 PowerShellre vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Ezekhez az utasításokhoz Windows 10 és PowerShell szükséges a tanúsítványok létrehozásához. A létrehozott tanúsítványok bármely támogatott P2S-ügyfélre telepíthetők.
-  * [MakeCert utasítások:](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)Használja a MakeCert-et, ha nem rendelkezik hozzáféréssel a Windows 10-es számítógéphez a tanúsítványok létrehozásához. Bár a MakeCert elavult, továbbra is használhatja tanúsítványok létrehozásához. A létrehozott tanúsítványok bármely támogatott P2S-ügyfélre telepíthetők.
+  * [A Windows 10 PowerShellre vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Ezekhez az utasításokhoz Windows 10 és PowerShell szükséges a tanúsítványok létrehozásához. A generált tanúsítványok telepíthetők bármely támogatott P2S-ügyfélre.
+  * [MakeCert utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): a MakeCert használata, ha nem rendelkezik hozzáféréssel a Windows 10 rendszerű számítógépekhez a tanúsítványok létrehozásához. Bár a MakeCert elavult, továbbra is használhatja tanúsítvány létrehozásához. A generált tanúsítványokat bármely támogatott P2S-ügyfélre telepítheti.
   * [Linuxra vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Ha önaláírt főtanúsítványból hoz létre ügyféltanúsítványt, az automatikusan települ azon a számítógépen, amelyen létrehozta azt. Ha egy ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne telepíteni, exportálja .pfx fájlként, a teljes tanúsítványlánccal együtt. Ezzel létrehoz egy .pfx fájlt, amely tartalmazza az ügyfél hitelesítéséhez szükséges főtanúsítvány-adatokat. 
+  Ha önaláírt főtanúsítványból állít elő ügyféltanúsítványt, azt a rendszer automatikusan telepíti a létrehozásához használt számítógépre. Ha egy másik ügyfélszámítógépen szeretné telepíteni az ügyféltanúsítványt, exportálja. pfx-fájlként, valamint a teljes tanúsítványláncot. Ekkor létrejön egy. pfx-fájl, amely tartalmazza az ügyfél hitelesítéséhez szükséges főtanúsítvány-információkat. 
 
 **A tanúsítvány exportálása**
 
-A tanúsítványok exportálásának lépéseit a [PowerShell használatával a Pont–webhely tanúsítványok létrehozása és exportálása témakörben található.](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)
+A tanúsítványok exportálásának lépéseiért lásd: [tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz a PowerShell használatával](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

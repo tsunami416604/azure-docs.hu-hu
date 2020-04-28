@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179171"
 ---
 ### <a name="to-take-a-backup"></a>Biztonsági mentés végrehajtása
@@ -29,7 +29,7 @@ ms.locfileid: "67179171"
 
 5. Az **Első ütemezés hozzáadása** panelen:
 
-    1. Válassza ki a biztonsági mentés típusát. A gyorsabb visszaállításhoz válassza a **Helyi** pillanatkép lehetőséget. Az adatok rugalmasságához válassza **a Felhőbeli** pillanatkép lehetőséget.
+    1. Válassza ki a biztonsági mentés típusát. A gyorsabb visszaállításhoz válassza a **helyi** pillanatkép lehetőséget. Az adatok rugalmassága beállításnál válassza a **Felhőbeli** pillanatkép lehetőséget.
     2. Adja meg a biztonsági mentés gyakoriságát percben, órában, napban vagy hétben kifejezve.
     3. Adjon meg egy megőrzési időtartamot. A megőrzési lehetőségek a biztonsági mentés gyakoriságától függenek. Napi házirend esetén például a megtartás hetekben adható meg, míg havi házirend esetén hónapokban.
     4. Válassza ki a biztonsági házirend indítási időpontját és dátumát.
