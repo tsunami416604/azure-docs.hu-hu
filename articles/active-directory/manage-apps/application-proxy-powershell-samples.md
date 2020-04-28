@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minták az Azure AD alkalmazásproxyhoz
-description: Ezekkel a PowerShell-minták az Azure AD alkalmazásproxyhoz segítségével információkat kaphat a címtárban lévő alkalmazásproxy-alkalmazásokról és -összekötőkről, felhasználókat és csoportokat rendelhet hozzá az alkalmazásokhoz, és tanúsítványinformációkat kaphat.
+title: PowerShell-minták az Azure AD Application Proxy
+description: Ezekkel a PowerShell-mintákkal az Azure AD Application Proxy segítségével információkat kaphat a címtárban található alkalmazásproxy-alkalmazásokról és-összekötőről, felhasználókat és csoportokat rendelhet az alkalmazásokhoz, valamint tanúsítvány-információkat kérhet le.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,38 +13,38 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481262"
 ---
-# <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Példák az Azure AD PowerShell-alkalmazások proxyjának azure AD-alkalmazásproxyjával
+# <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-példák az Azure AD Application Proxy
 
-Az alábbi táblázat az Azure AD-alkalmazásproxy powershell-parancsfájl-példákra mutató hivatkozásokat tartalmazza. Ezek a minták az [AzureAD V2 PowerShell graph modulvagy](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) az [AzureAD V2 PowerShell graph modul előzetes verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)igényel, ha nincs másképp.
+Az alábbi táblázat az Azure AD Application Proxy PowerShell-parancsfájlokra mutató hivatkozásokat tartalmaz. A mintákhoz a Graph modul [AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) -je vagy a [Graph modul előzetes verziójának AzureAD v2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)PowerShell-verziója szükséges, hacsak másként nincs jelezve.
 
 
-A mintákban használt parancsmagokról további információt az [Alkalmazásproxy-alkalmazáskezelés](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) és [az alkalmazásproxy-összekötő kezelése című](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)témakörben talál.
+A példákban használt parancsmagokkal kapcsolatos további információkért lásd: alkalmazásproxy- [alkalmazás kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) és alkalmazásproxy- [összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
 | | |
 |---|---|
 |**Alkalmazásproxy-alkalmazások**||
-| [Az összes alkalmazásproxy-alkalmazás alapvető adatainak listázása](scripts/powershell-get-all-app-proxy-apps-basic.md) | A címtárban található összes alkalmazásproxy-alkalmazással kapcsolatos alapvető információkat (AppId, DisplayName, ObjId) sorolja fel. |
-| [Az összes alkalmazásproxy-alkalmazásra vonatkozó bővített információk listázása](scripts/powershell-get-all-app-proxy-apps-extended.md) | Felsorolja a könyvtárban lévő összes alkalmazásproxy-alkalmazásra vonatkozó bővített információkat (AppId, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType).  |
-| [Az összes alkalmazásproxy-alkalmazás listája összekötőcsoport szerint](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | A címtárban lévő összes alkalmazásproxy-alkalmazással kapcsolatos információkat, valamint azt, hogy az alkalmazások mely összekötőcsoportokhoz vannak hozzárendelve. |
-| [Az összes alkalmazásproxy-alkalmazás beszereznie egy jogkivonat-élettartam-szabályzattal](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Felsorolja az összes alkalmazásproxy-alkalmazást a címtárban egy jogkivonat élettartamra vonatkozó házirenddel és annak részleteivel. Ehhez a mintához az [AzureAD V2 PowerShell a Graph modul előzetes verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)szükséges. |
+| [Az összes alkalmazásproxy-alkalmazás alapszintű információinak listázása](scripts/powershell-get-all-app-proxy-apps-basic.md) | A címtárban lévő összes alkalmazásproxy-alkalmazás alapvető információit (AppId, DisplayName, ObjId) listázza. |
+| [Az összes alkalmazásproxy-alkalmazás részletes adatainak listázása](scripts/powershell-get-all-app-proxy-apps-extended.md) | Felsorolja a címtárban található alkalmazásproxy-alkalmazásokkal kapcsolatos kiterjesztett információkat (AppId, DisplayName, Alkalmazásazonosítójának, InternalUrl, ExternalAuthenticationType).  |
+| [Az összes alkalmazásproxy-alkalmazás listázása összekötő csoport szerint](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Felsorolja a címtárban található alkalmazásproxy-alkalmazásokkal kapcsolatos információkat, valamint azt, hogy az alkalmazások melyik összekötő csoportokba vannak rendelve. |
+| [Az összes alkalmazásproxy-alkalmazás beolvasása jogkivonat-élettartam-házirenddel](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Felsorolja a címtárban található összes alkalmazásproxy-alkalmazást a token élettartama szabályzattal és annak részleteivel. Ehhez a mintához a [Graph modul előzetes verziójának AzureAD v2 PowerShell-verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)szükséges. |
 |**Összekötőcsoportok**||
-| [Az összes összekötőcsoport és -összekötő beszereznie a címtárban](scripts/powershell-get-all-connectors.md) | A címtárban lévő összes összekötőcsoport és-összekötő felsorakozó. |
-| [Az összekötőcsoporthoz rendelt összes alkalmazás áthelyezése egy másik összekötőcsoportba](scripts/powershell-move-all-apps-to-connector-group.md) | Áthelyezi az összekötőcsoporthoz jelenleg hozzárendelt összes alkalmazást egy másik összekötőcsoportba. |
+| [Az összes összekötő-csoport és összekötő beolvasása a címtárban](scripts/powershell-get-all-connectors.md) | A címtárban lévő összes összekötő-csoportot és összekötőt listázza. |
+| [Összekötő csoporthoz rendelt összes alkalmazás áthelyezése egy másik összekötő csoportba](scripts/powershell-move-all-apps-to-connector-group.md) | Áthelyezi az összes olyan alkalmazást, amely jelenleg hozzá van rendelve egy összekötő-csoporthoz egy másik összekötő csoportba. |
 |**Hozzárendelt felhasználók és csoportok**||
-| [Alkalmazásproxy-alkalmazáshoz rendelt felhasználók és csoportok megjelenítése](scripts/powershell-display-users-group-of-app.md) | Egy adott alkalmazásproxy-alkalmazáshoz rendelt felhasználók és csoportok listája. |
-| [Felhasználó hozzárendelése alkalmazáshoz](scripts/powershell-assign-user-to-app.md) | Egy adott felhasználóhozzárendelése egy alkalmazáshoz. |
-| [Csoport hozzárendelése alkalmazáshoz](scripts/powershell-assign-group-to-app.md) | Egy adott csoportot rendel egy alkalmazáshoz. |
+| [Alkalmazásproxy-alkalmazáshoz rendelt felhasználók és csoportok megjelenítése](scripts/powershell-display-users-group-of-app.md) | Egy adott alkalmazásproxy-alkalmazáshoz rendelt felhasználókat és csoportokat sorolja fel. |
+| [Felhasználó társítása egy alkalmazáshoz](scripts/powershell-assign-user-to-app.md) | Egy adott felhasználót rendel hozzá egy alkalmazáshoz. |
+| [Csoport társítása egy alkalmazáshoz](scripts/powershell-assign-group-to-app.md) | Egy adott csoportot rendel hozzá egy alkalmazáshoz. |
 |**Külső URL-konfiguráció**||
-| [Az összes alkalmazásproxy-alkalmazás beszereznie az alapértelmezett tartományokhasználatával (.msappproxy.net)](scripts/powershell-get-all-default-domain-apps.md)  | Az alapértelmezett tartományokat használó alkalmazásproxy-alkalmazások (.msappproxy.net) listája. |
-| [Az összes alkalmazásproxy-alkalmazás beszereznihelyettesítő közzététellel](scripts/powershell-get-all-wildcard-apps.md) | A helyettesítő házirend-közzétételt használó alkalmazásproxy-alkalmazások listája. |
-|**Egyéni tartomány konfigurációja**||
-| [Az összes alkalmazásproxy-alkalmazás beszerezniegyéni tartományok és tanúsítványadatok használatával](scripts/powershell-get-all-custom-domains-and-certs.md) | Megjeleníti az egyéni tartományokat használó alkalmazásproxy-alkalmazásokat és az egyéni tartományokhoz társított tanúsítványadatokat. |
-| [Az összes Azure AD Proxy alkalmazásalkalmazás közzététele tanúsítvány feltöltés nélkül](scripts/powershell-get-all-custom-domain-no-cert.md) | Felsorolja az összes olyan alkalmazásproxy-alkalmazást, amely egyéni tartományokat használ, de nem rendelkezik érvényes Feltöltött TLS/SSL tanúsítvánnyal. |
-| [Az azonos tanúsítvánnyal közzétett összes Azure AD Proxy alkalmazásalkalmazás beszerezni](scripts/powershell-get-custom-domain-identical-cert.md) | Az azonos tanúsítvánnyal közzétett összes Azure AD Proxy alkalmazásalkalmazás-alkalmazás listázása. |
-| [Az összes Azure AD Proxy alkalmazásalkalmazás közzététele az azonos tanúsítvánnyal, és cserélje le](scripts/powershell-get-custom-domain-replace-cert.md) | Az Azure AD proxy alkalmazás alkalmazások, amelyek közzé egy azonos tanúsítvánnyal, lehetővé teszi, hogy cserélje ki a tanúsítványt ömlesztve. |
+| [Az összes alkalmazásproxy-alkalmazás beolvasása az alapértelmezett tartományokkal (. msappproxy.net)](scripts/powershell-get-all-default-domain-apps.md)  | Az alapértelmezett tartományokat (. msappproxy.net) használó alkalmazásproxy-alkalmazásokat sorolja fel. |
+| [Az összes alkalmazásproxy-alkalmazás beolvasása a helyettesítő karakteres közzététel használatával](scripts/powershell-get-all-wildcard-apps.md) | A helyettesítő karakteres közzétételt használó összes alkalmazásproxy-alkalmazás felsorolása. |
+|**Egyéni tartományi konfiguráció**||
+| [Az összes alkalmazásproxy-alkalmazás beolvasása egyéni tartományokkal és tanúsítványokkal kapcsolatos információk használatával](scripts/powershell-get-all-custom-domains-and-certs.md) | Felsorolja az összes olyan alkalmazásproxy-alkalmazást, amely egyéni tartományokat használ, valamint az egyéni tartományokhoz társított tanúsítvány-információkat. |
+| [A tanúsítvány feltöltése nélkül közzétett összes Azure AD-alkalmazásproxy letöltése](scripts/powershell-get-all-custom-domain-no-cert.md) | Felsorolja az összes olyan alkalmazásproxy-alkalmazást, amely egyéni tartományokat használ, de nincs feltöltve érvényes TLS/SSL-tanúsítvány. |
+| [Az azonos tanúsítvánnyal közzétett összes Azure AD-alkalmazásproxy alkalmazásának beolvasása](scripts/powershell-get-custom-domain-identical-cert.md) | Felsorolja az azonos tanúsítvánnyal közzétett összes Azure AD-alkalmazásproxy alkalmazást. |
+| [Az azonos tanúsítvánnyal közzétett összes Azure AD-alkalmazásproxy beolvasása és cseréje](scripts/powershell-get-custom-domain-replace-cert.md) | Az azonos tanúsítvánnyal közzétett Azure AD proxy alkalmazások esetében lehetővé teszi a tanúsítvány tömeges cseréjét. |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
-ms.translationtype: HT
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079887"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79473676"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C
 
@@ -24,9 +24,12 @@ ms.locfileid: "79079887"
 
 Ebben a cikkben egy új attribútumot gyűjt a regisztráció során Azure Active Directory B2C (Azure AD B2C). Megszerezheti a felhasználók városát, legördülőként konfigurálhatja, és meghatározhatja, hogy meg kell-e adni.
 
+> [!NOTE]
+> Ez a példa a beépített "City" jogcímet használja. Ehelyett kiválaszthatja az egyik támogatott [Azure ad B2C beépített attribútumot](user-profile-attributes.md) vagy egy egyéni attribútumot is. Ha egyéni attribútumot szeretne használni, [engedélyezze az egyéni attribútumokat a házirendben](custom-policy-custom-attributes.md). Ha más beépített vagy egyéni attribútumot szeretne használni, cserélje le a "City" kulcsszót az Ön által választott attribútumra, például a beépített attribútum *beosztás* vagy egy olyan egyéni attribútumra, mint a *extension_loyaltyId*.  
+
 A felhasználóktól származó kezdeti adatokat a regisztrációs vagy bejelentkezési felhasználói úton gyűjtheti be. A további jogcímek később is összegyűjthetők, ha a felhasználói úton szerkeszti a profilt. A bármikor Azure AD B2C az adatokat közvetlenül a felhasználótól gyűjti össze interaktív módon, az Identity Experience Framework saját [maga által megadott műszaki profilt](self-asserted-technical-profile.md)használja. Ebben a példában a következőket látja:
 
-1. Adja meg a "város" jogcímet.
+1. Adja meg a "város" jogcímet. 
 1. Kérje meg a felhasználót a városra.
 1. A Azure AD B2C könyvtárban maradjon a város a felhasználói profilhoz.
 1. Olvassa el a városi jogcímet az Azure AD B2C könyvtárából minden bejelentkezéskor.
@@ -45,7 +48,7 @@ A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárol
 - **UserHelpText** – segít a felhasználónak megérteni, hogy mi szükséges.
 - [UserInputType](claimsschema.md#userinputtype) – a beviteli vezérlőelem típusa, például a szövegmező, a választógomb, a legördülő lista vagy több lehetőség.
 
-Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
+Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
@@ -72,7 +75,7 @@ A következő műszaki profilok [önmagukban vannak érvényesítve](self-assert
 - **SelfAsserted – közösségi** összevont fiók – az első alkalommal bejelentkezett felhasználói bejelentkezés.
 - **SelfAsserted-ProfileUpdate** – a profil folyamatának szerkesztése.
 
-Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, kimeneti jogcímként hozzá kell adni a `LocalAccountSignUpWithLogonEmail` technikai profilhoz. Bírálja felül ezt a technikai profilt a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
+Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, kimeneti jogcímként hozzá kell adni `LocalAccountSignUpWithLogonEmail` a technikai profilhoz. Bírálja felül ezt a technikai profilt a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
 
 ```xml
 <ClaimsProvider>
@@ -95,7 +98,7 @@ Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, 
 <ClaimsProvider>
 ```
 
-A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a `SelfAsserted-Social` technikai profil kimeneti jogcímeként. Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a kimeneti jogcímet a `SelfAsserted-ProfileUpdate` technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
+A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a `SelfAsserted-Social` technikai profil kimeneti jogcímeként. Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a kimeneti `SelfAsserted-ProfileUpdate` jogcímet a technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -125,7 +128,7 @@ A városi jogcímek összevont fiókkal való első bejelentkezés után törté
 ## <a name="read-and-write-a-claim"></a>Jogcím olvasása és írása
 
 A következő műszaki profilok [Active Directory műszaki profilok](active-directory-technical-profile.md), amelyek az Azure Active Directoryba való adatolvasást és-írást írják le.  
-A `PersistedClaims` használatával írhat adatbevitelt a felhasználói profilba, és `OutputClaims` a megfelelő Active Directory technikai profilokban lévő felhasználói profilból beolvasott adatok beolvasásához.
+A `PersistedClaims` használatával adatok írhatók a felhasználói profilba `OutputClaims` , valamint az adatok beolvasása a felhasználói profilból a megfelelő Active Directory technikai profilokban.
 
 Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Keresse meg a **ClaimsProviders** elemet.  Vegyen fel egy új ClaimsProviders a következőképpen:
 
@@ -169,7 +172,7 @@ Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Keress
 
 ## <a name="include-a-claim-in-the-token"></a>Jogcím belefoglalása a jogkivonatba 
 
-Ha vissza szeretné állítani a város jogcímet a függő entitás alkalmazásba, adjon hozzá egy kimeneti jogcímet a <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> fájlhoz. A kimeneti jogcím a sikeres felhasználói út után lesz hozzáadva a jogkivonathoz, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a város kimeneti jogcímként való hozzáadásához.
+Ha vissza szeretné állítani a város jogcímet a függő entitás alkalmazásba, adjon hozzá egy kimeneti <em> `SocialAndLocalAccounts/` </em> jogcímet a fájlhoz. A kimeneti jogcím a sikeres felhasználói út után lesz hozzáadva a jogkivonathoz, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a város kimeneti jogcímként való hozzáadásához.
  
 ```xml
 <RelyingParty>
@@ -194,7 +197,7 @@ Ha vissza szeretné állítani a város jogcímet a függő entitás alkalmazás
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 4. Válassza az **identitási élmény keretrendszert**.
