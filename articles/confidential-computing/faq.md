@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149501"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189445"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakran ismételt kérdések az Azure bizalmas számítástechnikai szolgáltatásáról
 
@@ -47,7 +47,7 @@ Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN
 
 1. **Mi a különbség a DCsv2 és a DC sorozatú virtuális gépek között?**
 
-   A DC sorozatú virtuális gépek régebbi 6 Magos Intel processzorokon futnak a SGX ENKLÁVÉHOZ. Ezek kevesebb teljes memóriával rendelkeznek, kevesebb EPC (enklávé lap ketrec) memóriával rendelkeznek, és kevesebb régióban érhetők el. Ezek a virtuális gépek csak az USA keleti és európai nyugati régiójában érhetők el, két méretben: Standard_DC2s és Standard_DC4s. Nem fognak megjelenni a GA-ban, és csak a [bizalmas számítási DC sorozatú VM [előzetes verzió] Marketplace-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) példányban helyezhetők üzembe.
+   A DC sorozatú virtuális gépek régebbi 6 Magos Intel processzorokon futnak Intel SGX ENKLÁVÉHOZ. Ezek kevesebb teljes memóriával rendelkeznek, kevesebb EPC (enklávé lap ketrec) memóriával rendelkeznek, és kevesebb régióban érhetők el. Ezek a virtuális gépek csak az USA keleti és európai nyugati régiójában érhetők el, két méretben: Standard_DC2s és Standard_DC4s. Nem fognak megjelenni a GA-ban, és csak a [bizalmas számítási DC sorozatú VM [előzetes verzió] Marketplace-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) példányban helyezhetők üzembe.
 
 1. **Globálisan elérhetők a DCsv2 virtuális gépek?**
 

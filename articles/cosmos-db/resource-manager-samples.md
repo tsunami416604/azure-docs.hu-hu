@@ -1,55 +1,56 @@
 ---
 title: Azure Resource Manager-sablonok az Azure Cosmos DB-hez
-description: Azure Resource Manager-sablonok használatával hozhatja létre és konfigurálhatja az Azure Cosmos DB-t.
+description: Azure Cosmos DB létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/27/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 14c3438c5d6e7bed110f9e0dbfcd04655c3e9121
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390882"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193258"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sablonok az Azure Cosmos DB-hez
 
-Az alábbi táblázatok az Azure Cosmos DB Azure Resource Manager-sablonjaira mutató hivatkozásokat tartalmaznak:
+Az alábbi táblázatok a Azure Cosmos DB Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaznak:
 
 ## <a name="sql-core-api"></a>SQL (Core) API
 
 |**Sablon**|**Leírás**|
 |---|---|
-|[Hozzon létre egy Azure Cosmos-fiókot, adatbázist, tárolót](manage-sql-with-resource-manager.md#create-resource) | Ez a sablon két régióban hoz létre egy SQL (Core) API-fiókot két tárolóval, megosztott adatbázis-átviteli fokkal és egy dedikált átviteli fokkal rendelkező tárolóval. Átviteli átviteli lehet frissíteni a sablon újbóli elküldésével frissített átviteli tulajdonság értéke. |
-|[Hozzon létre egy Azure Cosmos-fiókot, adatbázist és tárolót tárolt eljárással, eseményindítóval és UDF-fel](manage-sql-with-resource-manager.md#create-sproc) | Ez a sablon egy SQL (Core) API-fiókot hoz létre két régióban egy tárolt eljárás, eseményindító és UDF egy tárolóhoz. |
-|[Privát végpont létrehozása egy meglévő Azure Cosmos-fiókhoz](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Ez a sablon létrehoz egy privát végpontot egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózatban. |
+|[Azure Cosmos-fiók, adatbázis, tároló létrehozása](manage-sql-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy SQL-(Core-) API-fiókot két régióban két tárolóval, amelyek közös adatbázis-átviteli sebességgel és egy dedikált átviteli sebességgel rendelkező tárolóval rendelkeznek. Az átviteli sebesség frissítéséhez küldje el újra a sablont a frissített átviteli érték tulajdonságával. |
+|[Azure Cosmos-fiók, adatbázis és tároló létrehozása tárolt eljárással, triggerrel és UDF-vel](manage-sql-with-resource-manager.md#create-sproc) | Ez a sablon egy SQL-(Core-) API-fiókot hoz létre két régióban egy tárolóhoz tárolt eljárással, triggerrel és UDF-vel. |
+|[Privát végpont létrehozása meglévő Azure Cosmos-fiókhoz](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Ez a sablon egy meglévő virtuális hálózat meglévő Azure Cosmos SQL API-fiókjához hoz létre privát végpontot. |
+|[Ingyenes szintű Azure Cosmos-fiók létrehozása](manage-sql-with-resource-manager.md#free-tier) |  Ez a sablon egy Azure Cosmos DB fiókot hoz létre az ingyenes szinten. |
 
 ## <a name="mongodb-api"></a>MongoDB API
 
 |**Sablon**|**Leírás**|
 |---| ---|
-|[Hozzon létre egy Azure Cosmos-fiókot, adatbázist, gyűjteményt](manage-mongodb-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy fiókot az Azure Cosmos DB API-t a MongoDB két régióban több főkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két tárolóval rendelkezik, amelyek megosztják az adatbázis-szintű átviteli. |
+|[Azure Cosmos-fiók, adatbázis, gyűjtemény létrehozása](manage-mongodb-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy fiókot Azure Cosmos DB API-val a MongoDB két régióban, ahol engedélyezve van a több főkiszolgálós szolgáltatás. Az Azure Cosmos-fióknak két tárolója lesz, amelyek osztoznak az adatbázis-szintű átviteli sebességgel. |
 
 ## <a name="cassandra-api"></a>Cassandra API
 
 |**Sablon**|**Leírás**|
 |---| ---|
-|[Hozzon létre egy Azure Cosmos-fiókot, kulcsterületet, táblát](manage-cassandra-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Cassandra API-fiókot két régióban, ahol a többfőkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két táblával fog rendelkezni, amelyek kulcstérszintű átviteli sebességű megosztást. |
+|[Azure Cosmos-fiók, szóköz, tábla létrehozása](manage-cassandra-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Cassandra API fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két olyan táblát fog tartalmazni, amelyek a tárterület-szintű átviteli sebességet használják. |
 
 ## <a name="gremlin-api"></a>Gremlin API
 
 |**Sablon**|**Leírás**|
 |---| ---|
-|[Hozzon létre egy Azure Cosmos-fiókot, adatbázist, grafikont](manage-gremlin-with-resource-manager.md#create-resource) | Ez a sablon egy Gremlin API-fiókot hoz létre két régióban, ahol a többfőkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két gráfok, amelyek megosztják az adatbázis-szintű átviteli. |
+|[Azure Cosmos-fiók, adatbázis, gráf létrehozása](manage-gremlin-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Gremlin API-fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fióknak két gráfja lesz, amelyek osztoznak az adatbázis-szintű átviteli sebességgel. |
 
 ## <a name="table-api"></a>Table API
 
 |**Sablon**|**Leírás**|
 |---| ---|
-|[Hozzon létre egy Azure Cosmos-fiókot, tábla](manage-table-with-resource-manager.md#create-resource) | Ez a sablon egy table API-fiókot hoz létre két régióban, ahol a többfőkiszolgálós kapcsolat engedélyezve van. Az Azure Cosmos-fiók egyetlen táblával fog rendelkezni. |
+|[Azure Cosmos-fiók létrehozása, tábla](manage-table-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Table API fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fiók egyetlen táblával fog rendelkezni. |
 
 > [!TIP]
-> A table API használatakor a megosztott átviteli rendszer engedélyezéséhez engedélyezze a fiókszintű átviteli szintet az Azure Portalon.
+> Ha Table API használatával szeretné engedélyezni a megosztott átviteli sebességet, engedélyezze az Azure Portalon a fiókok szintjének átviteli sebességét.
 
-Tekintse meg az [Azure Resource Manager referencia az Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) lapon a referencia dokumentációt.
+Tekintse meg a dokumentációhoz [Azure Resource Manager referenciát Azure Cosmos db](/azure/templates/microsoft.documentdb/allversions) oldalon.

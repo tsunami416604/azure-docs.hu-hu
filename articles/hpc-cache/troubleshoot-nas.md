@@ -1,128 +1,128 @@
 ---
-title: Az Azure HPC-gyorsítótár NFS-tárolócéljainak – problémamegoldás
-description: Tippek a konfigurációs hibák és egyéb problémák elkerüléséhez és javításához, amelyek hibát okozhatnak az NFS-tárolócéljának létrehozásakor
+title: Az Azure HPC cache NFS tárolási céljaival kapcsolatos hibák megoldása
+description: Tippek a konfigurációs hibák és egyéb olyan problémák elkerüléséhez és javításához, amelyek meghibásodást okozhatnak az NFS-tárolási cél létrehozásakor
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536369"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186617"
 ---
-# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS-konfigurációval és NFS-tárterületcéllal kapcsolatos problémák elhárítása
+# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>A NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása
 
-Ez a cikk megoldásokat kínál néhány gyakori konfigurációs hibák és egyéb problémák, amelyek megakadályozhatják, hogy az Azure HPC cache hozzáadása NFS-tárolórendszer tárolócélként.
+Ez a cikk néhány gyakori konfigurációs hibát és más olyan problémát tartalmaz, amelyek megakadályozhatják, hogy az Azure HPC-gyorsítótár egy NFS Storage-tárolót adjon hozzá tárolási célként.
 
-Ez a cikk a portok ellenőrzésének és a NAS-rendszerhez való gyökérhozzáférés engedélyezésének részleteit tartalmazza. Emellett részletes információkat tartalmaz a kevésbé gyakori problémákról, amelyek az NFS-tárolócél létrehozásának sikertelenssé tévődhetnek.
+Ez a cikk részletesen ismerteti a portok ellenőrzését, valamint azt, hogyan engedélyezhető a hozzáférés a NAS rendszerhez. Részletes információkat is tartalmaz a kevésbé gyakori problémákról, amelyek miatt előfordulhat, hogy az NFS-tárolási cél létrehozása sikertelen lesz.
 
 > [!TIP]
-> Az útmutató használata előtt olvassa el [az NFS-tárolócélok előfeltételeit.](hpc-cache-prereqs.md#nfs-storage-requirements)
+> Az útmutató használata előtt olvassa el [az NFS-tárolási célokra vonatkozó előfeltételek](hpc-cache-prereqs.md#nfs-storage-requirements)című részt.
 
-Ha a probléma megoldása itt nem szerepel, [nyisson meg egy támogatási jegyet,](hpc-cache-support-ticket.md) hogy a Microsoft Szolgáltatás és Támogatás együttműködhessen Önnel a probléma kivizsgálásában és megoldásában.
+Ha a probléma megoldására nem kerül sor, [Nyisson meg egy támogatási jegyet](hpc-cache-support-ticket.md) , hogy a Microsoft szolgáltatás és támogatás a probléma kivizsgálásához és megoldásához is működjön.
 
-## <a name="check-port-settings"></a>Portbeállítások ellenőrzése
+## <a name="check-port-settings"></a>Portbeállítások keresése
 
-Az Azure HPC-gyorsítótárnak olvasási/írási hozzáférésre van szüksége a háttér-NAS tárolórendszeren lévő több UDP/TCP-porthoz. Győződjön meg arról, hogy ezek a portok elérhetők a NAS-rendszeren, és hogy a tárolórendszer és a gyorsítótár alhálózata közötti tűzfalakon keresztül engedélyezett-e a portok közötti forgalom. Előfordulhat, hogy az adatközpont tűzfalakkal és hálózati rendszergazdáival kell együttműködnie a konfiguráció ellenőrzéséhez.
+Az Azure HPC-gyorsítótárnak olvasási/írási hozzáférésre van szüksége a háttérbeli NAS-tárolási rendszeren található több UDP/TCP-porthoz. Győződjön meg arról, hogy ezek a portok elérhetők a NAS rendszeren, valamint azt is, hogy a portok a tárolási rendszer és a gyorsítótár-alhálózat közötti tűzfalakon keresztül engedélyezettek-e. Előfordulhat, hogy az adatközponthoz tartozó tűzfal-és hálózati rendszergazdákkal kell dolgoznia a konfiguráció ellenőrzéséhez.
 
-A portok különbözőtároló rendszerek különböző szállítóktól, ezért ellenőrizze a rendszer követelményeit, amikor a tárolási cél beállítása.
+A portok eltérőek a különböző gyártóktól származó tárolási rendszerek esetében, ezért a tárolási cél beállításakor ellenőriznie kell a rendszer követelményeit.
 
-A gyorsítótárnak általában hozzá kell férnie ezekhez a portokhoz:
+Általánosságban elmondható, hogy a gyorsítótárnak hozzá kell férnie a következő portokhoz:
 
 | Protocol (Protokoll) | Port  | Szolgáltatás  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
-| TCP/UDP  | 4045  | nlockmgr között |
-| TCP/UDP  | 4046  | csatlakoztatva   |
+| TCP/UDP  | 4045  | nlockmgr |
+| TCP/UDP  | 4046  | mountd   |
 | TCP/UDP  | 4047  | status   |
 
-A rendszerhez szükséges portok megismeréséhez ``rpcinfo`` használja a következő parancsot. Ez az alábbi parancs felsorolja a portokat, és formázza a táblázatban szereplő releváns eredményeket. (A *<storage_IP>storage_IP* kifejezés helyett használja a rendszer IP-címét.)
+A rendszerhez szükséges adott portok megismeréséhez használja az alábbi ``rpcinfo`` parancsot. Az alábbi parancs felsorolja a portokat, és formázza a kapcsolódó eredményeket egy táblában. (A *<storage_IP>* kifejezés helyett használja a számítógép IP-címét.)
 
-Ezt a parancsot bármely Olyan Linux-ügyfélről kiadhatja, amelyen telepítve van az NFS-infrastruktúra. Ha a fürt alhálózatán belül használ egy ügyfelet, az segíthet az alhálózat és a tárolórendszer közötti kapcsolat ellenőrzésében is.
+Ezt a parancsot bármely olyan Linux-ügyfélről kiállíthatja, amelyen telepítve van az NFS-infrastruktúra. Ha a fürt alhálózatán belül használ ügyfelet, az az alhálózat és a tárolási rendszer közötti kapcsolat ellenőrzéséhez is segítséget nyújt.
 
 ```bash
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-Győződjön meg arról, hogy ``rpcinfo`` a lekérdezés által visszaadott összes port engedélyezi az Azure HPC-gyorsítótár alhálózatának korlátlan forgalmát.
+Győződjön meg arról, hogy a ``rpcinfo`` lekérdezés által visszaadott összes port engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
 
-Ellenőrizze ezeket a beállításokat mind a NAS-on, mind a tárolórendszer és a gyorsítótár alhálózata közötti tűzfalakon.
+Ezeket a beállításokat a hálózati házirend-kiszolgáló és a tárolási rendszer és a gyorsítótár-alhálózat közötti összes tűzfalon is megtekintheti.
 
-## <a name="check-root-access"></a>Gyökérhozzáférés ellenőrzése
+## <a name="check-root-access"></a>Rendszergazdai hozzáférés bejelölése
 
-Az Azure HPC cache-nek hozzá kell férnie a tárolórendszer exportálásához a tárolási cél létrehozásához. Pontosabban az exportálást 0-s felhasználóazonosítóként csatlakoztatja.
+Az Azure HPC cache-nek hozzá kell férnie a tárolási rendszerek exportálásához a tárolási cél létrehozásához. Pontosabban a 0. felhasználói AZONOSÍTÓként csatlakoztatja az exportálást.
 
-A különböző tárolórendszerek különböző módszereket használnak a hozzáférés engedélyezéséhez:
+A különböző tárolási rendszerek különböző módszereket használnak a hozzáférés engedélyezéséhez:
 
-* A Linux-kiszolgálók általában hozzáadnak ``no_root_squash`` az exportált elérési úthoz a alkalmazásban. ``/etc/exports``
-* A NetApp és az EMC rendszerek általában meghatározott IP-címekhez vagy hálózatokhoz kötött exportálási szabályokkal szabályozzák a hozzáférést.
+* A Linux- ``/etc/exports``kiszolgálók ``no_root_squash`` általában az exportált elérési útra lesznek hozzáadva.
+* A NetApp és az EMC rendszerek jellemzően a megadott IP-címekhez vagy hálózatokhoz kötött exportálási szabályokhoz való hozzáférést vezérlik.
 
-Exportálási szabályok használata esetén ne feledje, hogy a gyorsítótár több különböző IP-címet is használhat a gyorsítótár alhálózatából. Hozzáférés engedélyezése a lehetséges alhálózati IP-címek teljes tartományából.
+Exportálási szabályok használata esetén ne feledje, hogy a gyorsítótár több különböző IP-címet is használhat a gyorsítótár alhálózatáról. Engedélyezi a hozzáférést a lehetséges alhálózati IP-címek teljes tartományából.
 
 > [!NOTE]
-> Alapértelmezés szerint az Azure HPC-gyorsítótár összenyomja a root hozzáférést. Olvassa [el A további gyorsítótár-beállítások konfigurálása](configuration.md#configure-root-squash) a részletekhez című szöveget.
+> Alapértelmezés szerint az Azure HPC cache a gyökér-hozzáférést. További részletek a [gyorsítótár további beállításainak konfigurálása című cikkből](configuration.md#configure-root-squash) olvashatók.
 
-A NAS-tároló szállítójával együttműködve engedélyezze a gyorsítótár megfelelő szintű hozzáférését.
+A NAS-tároló gyártójával együttműködve engedélyezze a megfelelő szintű hozzáférést a gyorsítótárhoz.
 
-### <a name="allow-root-access-on-directory-paths"></a>Gyökérhozzáférés engedélyezése a címtárelérési utakon
+### <a name="allow-root-access-on-directory-paths"></a>Elérés engedélyezése a gyökérkönyvtár elérési útjain
 <!-- linked in prereqs article -->
 
-A hierarchikus könyvtárakat exportáló NAS-rendszerek esetében az Azure HPC-gyorsítótárnak minden exportálási szinthez gyökérszintű hozzáférésre van szüksége.
+A hierarchikus könyvtárakat exportáló NAS-rendszerek esetében az Azure HPC cache-nek rendszergazdai hozzáférésre van szüksége az egyes exportálási szintekhez.
 
-Egy rendszer például három ilyen exportálást mutathat:
+Előfordulhat például, hogy egy rendszer három olyan exportálást mutat be, mint a következő:
 
 * ``/ifs``
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-Az ``/ifs/accounting/payroll`` export a ``/ifs/accounting``gyermeke ``/ifs/accounting`` , és maga ``/ifs``is a gyermeke.
+Az Exportálás ``/ifs/accounting/payroll`` a gyermeke ``/ifs/accounting``, és ``/ifs/accounting`` maga a gyermeke. ``/ifs``
 
-Ha az ``payroll`` exportálást HPC-gyorsítótár-tárolócélként adja ``/ifs/`` hozzá, a gyorsítótár ténylegesen csatlakoztatja és hozzáfér a bérlistakönyvtárhoz. Így az Azure HPC ``/ifs`` cache root hozzáférést ``/ifs/accounting/payroll`` kell biztosítani az exportálás eléréséhez.
+Ha az ``payroll`` exportálást HPC cache Storage-tárolóként adja hozzá, a gyorsítótár ténylegesen csatlakoztatja ``/ifs/`` és hozzáfér a bérszámfejtési címtárhoz. Így az Azure HPC ``/ifs`` -gyorsítótárnak rendszergazdai hozzáférésre van szüksége ahhoz ``/ifs/accounting/payroll`` , hogy hozzáférhessen az exportáláshoz.
 
-Ez a követelmény azzal függ össze, hogy a gyorsítótár hogyan indexeli a fájlokat, és hogyan kerüli el a fájlütközéseket a tárolórendszer által biztosított fájlleírók használatával.
+Ez a követelmény ahhoz kapcsolódik, ahogy a gyorsítótár indexeli a fájlokat, és elkerüli a fájlok ütközéseit a tárolási rendszer által biztosított fájlleíró használatával.
 
-A hierarchikus exportálással rendelkező NAS-rendszerek különböző fájlleírókat adhatnak ugyanahhoz a fájlhoz, ha a fájlt különböző exportálásokból olvassa be. Egy ügyfél például ``/ifs/accounting`` csatlakoztathatja és ``payroll/2011.txt``elérheti a fájlt. Egy másik ``/ifs/accounting/payroll`` ügyfél csatlakoztatja ``2011.txt``és hozzáfér a fájlhoz. Attól függően, hogy a tárolórendszer hogyan rendeli hozzá a fájlleírókat, ``<mount2>/payroll/2011.txt`` ez a ``<mount3>/2011.txt``két ügyfél ugyanazt a fájlt különböző fájlleírókkal (egy a) és egy).
+A hierarchikus exportálást biztosító NAS-rendszer különböző fájlkezelőket biztosíthat ugyanahhoz a fájlhoz, ha a fájl különböző exportálásokból származik. Például egy ügyfél csatlakoztathatja ``/ifs/accounting`` és elérheti a fájlt. ``payroll/2011.txt`` Egy másik ügyfél csatlakoztatja ``/ifs/accounting/payroll`` és hozzáfér a fájlhoz. ``2011.txt`` Attól függően, hogy a tárolási rendszer hogyan rendeli hozzá a fájlkezelőket, ez a két ügyfél ugyanazt a fájlt kapja, amely különböző fájlkezelőket tartalmaz ``<mount2>/payroll/2011.txt`` ( ``<mount3>/2011.txt``egyet és egyet).
 
-A háttértároló rendszer megtartja a fájlleírók belső aliasait, de az Azure HPC cache nem tudja megmondani, hogy az indexben melyik fájlleíró hivatkozik ugyanarra az elemre. Így lehetséges, hogy a gyorsítótár különböző írási adatokat gyorsítótárazott ugyanahhoz a fájlhoz, és alkalmazza a módosításokat helytelenül, mert nem tudja, hogy ugyanaz a fájl.
+A háttérbeli tárolórendszer belső aliasokat tart fenn a Fájlkezelőben, de az Azure HPC-gyorsítótár nem tudja megállapítani, hogy az indexében melyik fájlkezelő hivatkozik ugyanarra az elemre. Így előfordulhat, hogy a gyorsítótár különböző írási műveleteket hajt végre ugyanazon a fájlon, és helytelenül alkalmazza a módosításokat, mert nem tudja, hogy ugyanaz a fájl.
 
-A több exportálásban lévő fájlok esetleges fájlütközésének elkerülése érdekében az Azure HPC-gyorsítótár automatikusan csatlakoztatja a legsekélyebb elérhető exportálást az elérési úthoz (a``/ifs`` példában), és az adott exportálásból kapott fájlleírót használja. Ha több exportálás ugyanazt az alapelérési utat használja, az Azure HPC-gyorsítótárnak root hozzáférésre van szüksége az adott elérési úthoz.
+Ha el szeretné kerülni a fájlok ütközését több exportálási fájl esetében, az Azure HPC cache automatikusan csatlakoztatja a legsekélyebb elérhető exportálást az elérési útban (``/ifs`` a példában), és az adott exportálásból származó fájlleíró-t használja. Ha több exportálás ugyanazt az alapútvonalat használja, az Azure HPC-gyorsítótárnak rendszergazdai hozzáférésre van szüksége ehhez az elérési úthoz.
 
 ## <a name="enable-export-listing"></a>Exportálási lista engedélyezése
 <!-- link in prereqs article -->
 
-A NAS-nak fel kell sorolnia az exportálását, amikor az Azure HPC-gyorsítótár lekérdezi.
+A NAS-nak le kell listáznia az exportálást, amikor az Azure HPC cache lekérdezi azt.
 
-A legtöbb NFS tárolórendszeren ezt a következő lekérdezés elküldésével teheti meg egy Linux-ügyféltől:``showmount -e <storage IP address>``
+A legtöbb NFS-tárolási rendszeren tesztelheti ezt úgy, hogy a következő lekérdezést küldi el egy Linux-ügyféltől:``showmount -e <storage IP address>``
 
-Ha lehetséges, használjon linuxos klienst ugyanabból a virtuális hálózatból, mint a gyorsítótár.
+Ha lehetséges, használja a Linux-ügyfelet a gyorsítótárral azonos virtuális hálózatból.
 
-Ha ez a parancs nem sorolja fel az exportálást, a gyorsítótár nem tud csatlakozni a tárolórendszerhez. Az exportálási lista engedélyezéséhez működjön együtt a NAS-szállítóval.
+Ha a parancs nem sorolja fel az exportálásokat, a gyorsítótár nem fog tudni csatlakozni a tárolási rendszerhez. A NAS-gyártóval együttműködve engedélyezheti az exportálási listákat.
 
-## <a name="adjust-vpn-packet-size-restrictions"></a>A VPN-csomagméretre vonatkozó korlátozások módosítása
+## <a name="adjust-vpn-packet-size-restrictions"></a>A VPN-csomagok méretére vonatkozó korlátozások módosítása
 <!-- link in prereqs article and configuration article -->
 
-Ha a gyorsítótár és a NAS-eszköz között VAN VPN, előfordulhat, hogy a VPN blokkolja a teljes méretű 1500 bájtos Ethernet csomagokat. Ez a probléma akkor fordulhat elő, ha a NAS és az Azure HPC-gyorsítótár-példány közötti nagy cserék nem fejeződnek be, de a kisebb frissítések a várt módon működnek.
+Ha VPN-kapcsolattal rendelkezik a gyorsítótár és a NAS-eszköz között, akkor a VPN blokkolhatja a teljes méretű, 1500 bájtos Ethernet-csomagokat. Lehet, hogy ez a probléma akkor fordulhat elő, ha a NAS és az Azure HPC cache-példány közötti nagy adatcsere nem fejeződik be, de a kisebb frissítések a várt módon működnek.
 
-Nincs egyszerű módja annak, hogy megmondja, hogy a rendszer rendelkezik-e ezzel a problémával, hacsak nem ismeri a VPN-konfiguráció részleteit. Íme néhány módszer, amely segíthet a probléma ellenőrzésében.
+Nincs egyszerű módszer annak megadására, hogy a rendszer rendelkezik-e ezzel a problémával, kivéve, ha ismeri a VPN-konfiguráció részleteit. Íme néhány módszer, amelyek segíthetnek a probléma vizsgálatában.
 
-* A VPN mindkét oldalán használja a csomagkeresőket annak észleléséhez, hogy mely csomagok átvitele sikeresen.
-* Ha a VPN lehetővé teszi a ping parancsokat, tesztelheti a teljes méretű csomag küldését.
+* A VPN mindkét oldalán található Packet-szippantás segítségével azonosíthatja, hogy mely csomagok átvitele sikerült.
+* Ha a VPN lehetővé teszi a ping parancsok használatát, tesztelheti a teljes méretű csomag küldését.
 
-  Ezekkel a beállításokkal futtasson ping parancsot a VPN-en keresztül a NAS-ba. (A *<storage_IP>storage_IP érték* helyett használja a tárolórendszer IP-címét.)
+  Futtassa a ping parancsot a VPN-en keresztül a hálózati hozzáférés-vezérlési lehetőségekkel. (A tárolásirendszer IP-címét a *<storage_IP>* érték helyett használja.)
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
    ```
 
-  Ezek a lehetőségek a parancsban:
+  A parancsban a következő lehetőségek érhetők el:
 
-  * ``-M do``- Nem töredezik
-  * ``-c 1``- Küldjön csak egy csomag
-  * ``-s 1472``- Állítsa a hasznos teher méretét 1472 bájtra. Ez az 1500 bájtos csomagok maximális mérete az Ethernet-terhelés elszámolása után.
+  * ``-M do``-Ne legyen töredék
+  * ``-c 1``– Csak egy csomagot küldjön
+  * ``-s 1472``-A hasznos adatok méretének beállítása 1472 bájtra. Ez a maximális méret a 1500 bájtos csomag esetében az Ethernet-terhelés elszámolása után.
 
   A sikeres válasz így néz ki:
 
@@ -131,20 +131,20 @@ Nincs egyszerű módja annak, hogy megmondja, hogy a rendszer rendelkezik-e ezze
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Ha a ping 1472 bájttal sikertelen, valószínűleg csomagméret-probléma merül fel.
+  Ha a pingelés 1472 bájttal meghiúsul, valószínűleg egy csomagméret okoz problémát.
 
-A probléma megoldásához szükség lehet az MSS befogásának konfigurálására a VPN-en, hogy a távoli rendszer megfelelően észlelje a maximális keretméretet. További információért olvassa el a [VPN-átjáró IPsec/IKE paramétereinek dokumentációját.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+A probléma megoldásához konfigurálnia kell a MSS-befogást a VPN-en, hogy a távoli rendszer megfelelően észlelje a keret maximális méretét. További információért olvassa el az [VPN Gateway IPSec/IKE-paraméterek dokumentációját](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) .
 
-Bizonyos esetekben az Azure HPC-gyorsítótár MTU-beállításának 1400-ra való módosítása segíthet. Ha azonban korlátozza az MTU a gyorsítótárban is korlátoznia kell az MTU-beállításokat az ügyfelek és a háttér-tároló rendszerek, amelyek a gyorsítótárakat. Olvassa [el A további Azure HPC-gyorsítótár beállításainak konfigurálása](configuration.md#adjust-mtu-value) a részletekért.
+Bizonyos esetekben az Azure HPC-gyorsítótár 1400-es értékének módosítása segíthet. Ha azonban korlátozza az MTU-t a gyorsítótárban, akkor a gyorsítótárral kommunikáló ügyfelek és háttérbeli tárolási rendszerek MTU-beállításait is korlátoznia kell. További részletekért olvassa el az [Azure HPC gyorsítótár további beállításainak konfigurálása](configuration.md#adjust-mtu-value) című leírást.
 
-## <a name="check-for-acl-security-style"></a>Az ACL biztonsági stílusának ellenőrzése
+## <a name="check-for-acl-security-style"></a>ACL biztonsági stílusának keresése
 
-Egyes NAS-rendszerek hibrid biztonsági stílust használnak, amely egyesíti a hozzáférés-vezérlési listákat (ACL-k) a hagyományos POSIX vagy UNIX-biztonsággal.
+Egyes NAS-rendszerek hibrid biztonsági stílust használnak, amely a hozzáférés-vezérlési listákat (ACL-eket) ötvözi a hagyományos POSIX-vagy UNIX-alapú biztonsággal.
 
-Ha a rendszer a biztonsági stílusát UNIX vagy POSIX néven jelenti az "ACL" betűszó nélkül, ez a probléma nincs hatással Önre.
+Ha a rendszer az "ACL" betűszó nélkül jelenti a biztonsági stílusát UNIX vagy POSIX-ként, akkor ez a probléma nem érinti Önt.
 
-Az ACL-eket használó rendszerek esetében az Azure HPC-gyorsítótárnak további felhasználóspecifikus értékeket kell nyomon követnie a fájlhozzáférés szabályozásához. Ez a hozzáférési gyorsítótár engedélyezésével történik. Nincs felhasználó felé néző vezérlő a hozzáférési gyorsítótár bekapcsolására, de megnyithat egy támogatási jegyet, amely azt kéri, hogy engedélyezve legyen az érintett tárolási célokhoz a gyorsítótár-rendszeren.
+Az ACL-eket használó rendszerek esetében az Azure HPC cache-nek további felhasználóspecifikus értékeket kell követnie a fájlokhoz való hozzáférés szabályozása érdekében. Ezt a hozzáférési gyorsítótár engedélyezésével teheti meg. Nincs egy felhasználó felé irányuló vezérlőelem a hozzáférési gyorsítótár bekapcsolásához, de egy támogatási jegyet is megnyitva kérheti, hogy engedélyezze az érintett tárolási célokat a gyorsítótár-rendszeren.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha olyan problémája van, amellyel ebben a cikkben nem foglalkozott, [nyisson meg egy támogatási jegyet,](hpc-cache-support-ticket.md) hogy szakértői segítséget kapjon.
+Ha problémája van, amely nem szerepel ebben a cikkben, [Nyisson meg egy támogatási jegyet](hpc-cache-support-ticket.md) a szakértői segítség kéréséhez.

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 50752dfefae1aab28e0b7e51d8c94cf5f04a5099
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 90e8aa4da88542648bec612553282ffe11b09eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192280"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rövid útmutató: Azure bizalmas számítástechnikai virtuális gép üzembe helyezése a piactéren
 
@@ -21,7 +21,7 @@ Ismerkedjen meg az Azure bizalmas számítástechnikai szolgáltatásával az Az
 
 Ez az oktatóanyag akkor ajánlott, ha gyorsan el szeretné kezdeni a bizalmas számítástechnikai virtuális gépek üzembe helyezését. A virtuális gépek speciális hardveren futnak, és a kívánt konfigurációs bemenetek megkövetelésével kell futniuk. Az ebben a rövid útmutatóban ismertetett Marketplace-ajánlat megkönnyíti az üzembe helyezést a felhasználói bevitel korlátozásával.
 
-Ha további egyéni konfigurációval szeretne egy bizalmas számítási virtuális gépet üzembe helyezni, kövesse a [Azure Portal bizalmas számítási virtuális gép üzembe helyezésének lépéseit.](quick-create-portal.md)
+Ha további egyéni konfigurációval szeretne egy bizalmas számítási virtuális gépet üzembe helyezni, kövesse a [Azure Portal bizalmas számítási virtuális gép üzembe helyezésének lépéseit](quick-create-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

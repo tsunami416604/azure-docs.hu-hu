@@ -1,87 +1,88 @@
 ---
-title: Az Azure Data Lake Storage Gen1 áttekintése a HDInsightban
-description: A Data Lake Storage Gen1 áttekintése a HDInsightban.
+title: A HDInsight Azure Data Lake Storage Gen1 áttekintése
+description: A HDInsight Data Lake Storage Gen1 áttekintése.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 15d7f0621ffbf883d267d389fb634a13aa927430
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873354"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187245"
 ---
-# <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>Az Azure Data Lake Storage Gen1 áttekintése a HDInsightban
+# <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>A HDInsight Azure Data Lake Storage Gen1 áttekintése
 
-Az Azure Data Lake Storage Gen1 egy nagyvállalati szintű, nagyméretű tárház big data-elemzési számítási feladatokhoz. Az Azure Data Lake használatával bármilyen méretű, típusú és betöltési sebességű adatokat rögzíthet. És egy helyen a működési és feltáró elemzés.
+A Azure Data Lake Storage Gen1 egy nagyvállalati szintű nagy kapacitású adattár big data analitikus számítási feladatokhoz. A Azure Data Lake használatával bármilyen méretű, típusú és betöltési sebességet rögzíthet. És egy helyen az operatív és a felderítő elemzéshez.
 
-A Data Lake Storage Gen1 elérése a Hadoopból (hdinsight-fürtesetén érhető el) a WebHDFS-kompatibilis REST API-k használatával. A Data Lake Storage Gen1 a tárolt adatok elemzésének engedélyezésére szolgál, és az adatelemzési forgatókönyvek ben a teljesítményre van hangolva. A Gen1 tartalmazza a valós vállalati használati esetekhez elengedhetetlen képességeket. Ezek közé tartozik a biztonság, a kezelhetőség, az alkalmazkodóképesség, a megbízhatóság és a rendelkezésre állás.
+A WebHDFS-kompatibilis REST API-k használatával férhet hozzá Data Lake Storage Gen1 a Hadoop (HDInsight-fürthöz elérhető). Data Lake Storage Gen1 úgy lett kialakítva, hogy lehetővé tegye az elemzést a tárolt adatokon, és az adatelemzési forgatókönyvekben teljesítményre hangolva. A Gen1 magában foglalja a valós nagyvállalati használati esetekben elengedhetetlen képességeket. Ezen képességek közé tartozik a biztonság, a kezelhetőség, az alkalmazkodóképesség, a megbízhatóság és a rendelkezésre állás.
 
-Az Azure Data Lake Storage Gen1 szolgáltatásról az [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)részletes áttekintése című témakörben olvashat bővebben.
+További információ a Azure Data Lake Storage Gen1ről: [Azure Data Lake Storage Gen1 részletes áttekintése](../data-lake-store/data-lake-store-overview.md).
 
-A Data Lake Storage Gen1 legfontosabb képességei a következők.
+A Data Lake Storage Gen1 főbb képességei a következők:
 
-## <a name="compatibility-with-hadoop"></a>Kompatibilitás a Hadoop-mal
+## <a name="compatibility-with-hadoop"></a>Kompatibilitás a Hadoop
 
-A Data Lake Storage Gen1 egy Apache Hadoop fájlrendszer, amely kompatibilis a HDFS és a Hadoop környezettel.  A WebHDFS API-t használó HDInsight-alkalmazások vagy -szolgáltatások könnyen integrálhatók a Data Lake Storage Gen1 szolgáltatással. A Data Lake Storage Gen1 egy WebHDFS-kompatibilis REST-felületet is elérhetővé teszi az alkalmazások számára.
+A Data Lake Storage Gen1 a HDFS és a Hadoop környezettel kompatibilis Apache Hadoop-fájlrendszer.  A WebHDFS API-t használó alkalmazások és szolgáltatások könnyen integrálhatók a Data Lake Storage Gen1okkal. A Data Lake Storage Gen1 a WebHDFS-kompatibilis REST-felületet is elérhetővé teszi az alkalmazásokhoz.
 
-A Data Lake Storage Gen1-ben tárolt adatok könnyen elemezhetők a Hadoop analitikus keretrendszerek használatával. Keretrendszerek, például MapReduce vagy Hive. Az Azure HDInsight-fürtök kiépíthetők és konfigurálhatók úgy, hogy közvetlenül hozzáférjenek a Data Lake Storage Gen1-ben tárolt adatokhoz.
+A Data Lake Storage Gen1ban tárolt adatai könnyen elemezhetők a Hadoop analitikai keretrendszerek használatával. Keretrendszerek, például MapReduce vagy struktúra. Az Azure HDInsight-fürtök üzembe helyezhetők és konfigurálhatók úgy, hogy közvetlenül hozzáférhessenek Data Lake Storage Gen1ban tárolt adatszolgáltatásokhoz.
 
 ## <a name="unlimited-storage-petabyte-files"></a>Korlátlan tárterület, petabájtnyi fájlok
 
-A Data Lake Storage Gen1 korlátlan tárhelyet biztosít, és különböző típusú adatok elemzésre való tárolására alkalmas. Nem korlátozza a fiókméreteket és a fájlméreteket. Vagy az adattótóban tárolható adatok mennyisége. Az egyes fájlok mérete a kilobájttól a petabájtig terjed, így a Data Lake Storage Gen1 nagyszerű választás bármilyen típusú adat tárolására. Az adatok tárolása tartósan történik több példány készítésével. És nincs korlátozva, hogy mennyi ideig tárolhatók az adatok a Data Lake-ben.
+Data Lake Storage Gen1 korlátlan tárhelyet biztosít, és alkalmas a különböző típusú adatelemzések tárolására. Nem korlátozza a fiók méreteit vagy a fájlméretet. Vagy egy adattóban tárolható adatmennyiség. Az egyes fájlok mérete kilobájtból petabájt, így a Data Lake Storage Gen1 kiváló választás bármilyen típusú adatok tárolására. A rendszer több másolat készítésével tárolja az tartósan. Az adattárban azonban nem lehet korlátozni az adattárolást.
 
-## <a name="performance-tuning-for-big-data-analytics"></a>Teljesítményhangolás big data-elemzéshez
+## <a name="performance-tuning-for-big-data-analytics"></a>Teljesítmény-Finomhangolás a big data elemzésekhez
 
-A Data Lake Storage Gen1 analitikus rendszerekhez készült. Nagy mennyiségű adat lekérdezéséhez és elemzéséhez nagy átviteli forgalmat igénylő rendszerek. A data lake a fájl egyes részeit több egyedi tárolókiszolgálóra is elosztja. Adatok elemzésekor ez a beállítás javítja az olvasási átviteli szintet, ha a fájlt párhuzamosan olvassa be.
+Data Lake Storage Gen1 analitikai rendszerekhez készült. A nagy mennyiségű adatok lekérdezéséhez és elemzéséhez szükséges nagy átviteli sebességet igénylő rendszerek. A adat-tó több különálló Storage-kiszolgálón is elterjed egy fájl részein. Az adatok elemzésekor ez a telepítő javítja az olvasási sebességet, ha a fájl párhuzamosan van beolvasva.
 
-## <a name="readiness-for-enterprise-highly-available-and-secure"></a>Vállalati használatra való felkészültség: Magas rendelkezésre állás és biztonság
+## <a name="readiness-for-enterprise-highly-available-and-secure"></a>Nagyvállalati készültség: kiválóan elérhető és biztonságos
 
-A Data Lake Storage Gen1 iparági szabványoknak megfelelő elérhetőséget és megbízhatóságot biztosít. Az adatelemek tárolása tartósan: a redundáns másolatok nem várt hibák ellen. A vállalatok a Data Lake Storage Gen1-et a meglévő adatplatformjuk fontos részeként használhatják a megoldásaikban.
+A Data Lake Storage Gen1 iparági szintű rendelkezésre állást és megbízhatóságot biztosít. Az adategységek tárolása tartósan történik: a redundáns másolatok megvédik a váratlan hibákat. A vállalatok a meglévő adatplatformjuk fontos részeként használhatják a Data Lake Storage Gen1 a megoldásokban.
 
-A Data Lake Storage Gen1 nagyvállalati szintű biztonságot is nyújt a tárolt adatok számára. További információ: [Adatok védelme az Azure Data Lake Storage Gen1](#data-security-in-data-lake-storage-gen1)alkalmazásban.
+A Data Lake Storage Gen1 nagyvállalati szintű biztonságot is biztosít a tárolt adattároláshoz. További információ: az [adatok biztonságossá tétele a Azure Data Lake Storage Gen1ban](#data-security-in-data-lake-storage-gen1).
 
 ## <a name="flexible-data-structures"></a>Rugalmas adatstruktúrák
 
-A Data Lake Storage Gen1 bármilyen adatot tárolhat natív formátumban, ahogy van, előzetes átalakítások nélkül. A Data Lake Storage Gen1 nem igényel sémát az adatok betöltése előtt. Az egyes analitikus keretrendszer értelmezi az adatokat, és meghatározza a sémát az elemzés időpontjában. A Data Lake Storage Gen1 képes kezelni a strukturált adatokat. És félszerkezetelt és strukturálatlan adatok.
+A Data Lake Storage Gen1 a natív formátumban tárolhatja az összes olyan adatforrást, amely korábbi átalakítások nélkül is használható. Data Lake Storage Gen1 nem szükséges sémát meghatározni az betöltés előtt. Az egyéni elemzési keretrendszer értelmezi az adatelemzést, és definiál egy sémát az elemzés időpontjában. A Data Lake Storage Gen1 képes kezelni a strukturált adatmennyiséget. És félig strukturált és strukturálatlan adat.
 
-Data Lake Storage Gen1 tárolók adatok lényegében mappák és fájlok. A tárolt adatok on sdks, az Azure Portal és az Azure PowerShell használatával működik. Az ilyen felületekkel és tárolókkal a tárolóba helyezett adatok bármilyen adattípust tárolhatnak. A Data Lake Storage Gen1 nem végez speciális adatkezelést az adatok típusa alapján.
+Data Lake Storage Gen1 tárolók alapvetően mappák és fájlok. A tárolt adatai SDK-k, a Azure Portal és a Azure PowerShell használatával működnek. Ezekkel a csatolókkal és tárolókkal az áruházba helyezett adattípusok tárolhatók. Data Lake Storage Gen1 nem végez semmilyen speciális adatkezelést az adattípusok alapján.
 
-## <a name="data-security-in-data-lake-storage-gen1"></a>Adatbiztonság a Data Lake Storage Gen1 szolgáltatásban
+## <a name="data-security-in-data-lake-storage-gen1"></a>Adatbiztonság a Data Lake Storage Gen1ban
 
-A Data Lake Storage Gen1 az Azure Active Directoryt használja a hitelesítéshez, és hozzáférés-vezérlési listákat (ACL-eket) használ az adatokhoz való hozzáférés kezeléséhez.
+A Data Lake Storage Gen1 a hitelesítéshez Azure Active Directory használ, és hozzáférés-vezérlési listákat (ACL-eket) használ az adataihoz való hozzáférés kezelésére.
 
 | **Szolgáltatás** | **Leírás** |
 | --- | --- |
-| Hitelesítés |A Data Lake Storage Gen1 integrálható az Azure Active Directoryval (Azure AD) a Data Lake Storage Gen1-ben tárolt összes adat identitás- és hozzáférés-kezeléséhez. Az integráció miatt a Data Lake Storage Gen1 az Azure AD összes funkciójának előnyeit élvezi. Ezek a szolgáltatások a következők: többtényezős hitelesítés, feltételes hozzáférés és szerepköralapú hozzáférés-vezérlés. Emellett az alkalmazások használatának figyelése, a biztonsági figyelés és riasztás, és így tovább. A Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-csatolón belüli hitelesítéshez. Lásd: [Hitelesítés az Azure Data Lake Storage Gen1 szolgáltatásban az Azure Active Directory használatával](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
-| Hozzáférés-vezérlés |A Data Lake Storage Gen1 a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával biztosít hozzáférés-vezérlést. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. Az ACL-ek működéséről a Data Lake Storage Gen1 környezetében további információt a [Hozzáférés-vezérlés a Data Lake Storage Gen1 programban című témakörben talál.](../data-lake-store/data-lake-store-access-control.md) |
-| Titkosítás |A Data Lake Storage Gen1 titkosítást is biztosít a fiókban tárolt adatokhoz. A titkosítási beállításokat a Data Lake Storage Gen1 fiók létrehozásakor adja meg. Választhatja az adatok titkosítását, vagy választhatja a nem titkosítást. További információ: [Encryption in Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfigurációk biztosításáról az [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával című témakörben](../data-lake-store/data-lake-store-get-started-portal.md)talál. |
+| Hitelesítés |A Data Lake Storage Gen1 az Azure Active Directory (Azure AD) szolgáltatással integrálható az identitás-és hozzáférés-kezeléshez a Data Lake Storage Gen1 tárolt összes adattal. Az integráció miatt Data Lake Storage Gen1 az Azure AD összes funkciójának előnyeit. Ezek a szolgáltatások többek között a következők: többtényezős hitelesítés, feltételes hozzáférés és szerepköralapú hozzáférés-vezérlés. Emellett az alkalmazások használatának figyelése, a biztonsági monitorozás és a riasztások stb. A Data Lake Storage Gen1 támogatja a OAuth 2,0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [Azure Data Lake Storage Gen1on belüli hitelesítés Azure Active Directory használatával](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által közzétett POSIX stílusú engedélyek támogatásával. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. Az ACL-ek Data Lake Storage Gen1 környezetében való működésével kapcsolatos további információkért lásd: [Data Lake Storage Gen1 hozzáférés-vezérlése](../data-lake-store/data-lake-store-access-control.md). |
+| Titkosítás |A Data Lake Storage Gen1 a fiókban tárolt adathalmazok titkosítását is biztosítja. Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Megadhatja, hogy az adatai titkosítva legyenek, vagy a titkosítás nélkül is legyenek kiválasztva. További információ: [titkosítás Data Lake Storage Gen1ban](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfiguráció megadására vonatkozó utasításokért lásd: [a Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](../data-lake-store/data-lake-store-get-started-portal.md). |
 
-Ha többet szeretne tudni az adatok védelméről a Data Lake Storage Gen1 szolgáltatásban, olvassa el [az Azure Data Lake Storage Gen1 szolgáltatásban tárolt adatok védelme.](../data-lake-store/data-lake-store-secure-data.md)
+Ha többet szeretne megtudni az Data Lake Storage Gen1-beli adatvédelmet illetően, tekintse meg [a Azure Data Lake Storage Gen1 tárolt adatainak biztonságossá](../data-lake-store/data-lake-store-secure-data.md)tételét ismertető témakört.
 
-## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>A Data Lake Storage Gen1-tel kompatibilis alkalmazások
+## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1-kompatibilis alkalmazások
 
-A Data Lake Storage Gen1 kompatibilis a Hadoop környezetben lévő legtöbb nyílt forráskódú összetevővel. Emellett egyéb Azure-szolgáltatásokkal is jól integrálható.  Az alábbi hivatkozásokra kattintva többet is megtudhat arról, hogyan használható a Data Lake Storage Gen1 a nyílt forráskódú összetevőkkel és más Azure-szolgáltatásokkal.
+A Data Lake Storage Gen1 kompatibilis a Hadoop-környezet legtöbb nyílt forráskódú összetevőjével. Emellett egyéb Azure-szolgáltatásokkal is jól integrálható.  Az alábbi hivatkozásokat követve további információkat tudhat meg arról, hogyan használhatók a Data Lake Storage Gen1 a nyílt forráskódú összetevőkkel és más Azure-szolgáltatásokkal is.
 
-* Lásd: [Nyílt forráskódú big data-alkalmazások, amelyek együttműködnek az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-compatible-oss-other-applications.md)használatával.
-* Az [Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal](../data-lake-store/data-lake-store-integrate-with-other-services.md) a Data Lake Storage Gen1 más Azure-szolgáltatásokkal való használatának megértéséhez a forgatókönyvek szélesebb körének engedélyezéséhez.
-* Az [Azure Data Lake Storage Gen1 használata big data-követelményekért olvassa](../data-lake-store/data-lake-store-data-scenarios.md)el.
+* Tekintse [meg a Azure Data Lake Storage Gen1val működő nyílt forráskódú Big Data alkalmazásokat](../data-lake-store/data-lake-store-compatible-oss-other-applications.md).
+* Tekintse meg a [Azure Data Lake Storage Gen1 integrációja más Azure-szolgáltatásokkal](../data-lake-store/data-lake-store-integrate-with-other-services.md) című témakört, amelyből megtudhatja, hogyan Data Lake Storage Gen1 használhatja más Azure-szolgáltatásokkal a különböző forgatókönyvek széles skáláját.
+* Lásd: [a Azure Data Lake Storage Gen1 használata Big Data követelményekhez](../data-lake-store/data-lake-store-data-scenarios.md).
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage Gen1 fájlrendszer (adl://)
 
-Hadoop környezetekben az új fájlrendszeren, az AzureDataLakeFilesystemrendszeren (adl://) keresztül érheti el a Data Lake Storage Gen1-et. A használt `adl://` alkalmazások és szolgáltatások teljesítménye olyan módon optimalizálható, amely jelenleg nem érhető el a WebHDFS fájlrendszerben. Ennek eredményeképpen az ajánlott adl:// használatával rugalmasan élhet a legjobb teljesítménnyel. Vagy a meglévő kód karbantartásával továbbra is használja a WebHDFS API-t közvetlenül. Az Azure HDInsight teljes mértékben kihasználja az AzureDataLakeFilesystem előnyeit, hogy a legjobb teljesítményt nyújtsa a Data Lake Storage Gen1 szolgáltatáson.
+A Hadoop-környezetekben az új fájlrendszer, a Azuredatalakefilesystemet (adl://) használatával férhet hozzá a Data Lake Storage Gen1hoz. A által használt `adl://` alkalmazások és szolgáltatások teljesítménye olyan módon optimalizálható, amely jelenleg nem érhető el a WebHDFS-ben. Ennek eredményeképpen a rugalmasságot úgy érheti el, hogy a javasolt adl://használatával kihasználja a legjobb teljesítményt. Vagy a meglévő kód fenntartása úgy, hogy továbbra is a WebHDFS API-t használja közvetlenül. Az Azure HDInsight teljes mértékben kihasználja a Azuredatalakefilesystemet, hogy a lehető legjobb teljesítményt nyújtsa Data Lake Storage Gen1on.
 
-A Data Lake Storage Gen1 szolgáltatásban tárolt adatok elérése a következő URI-adatok használatával:
+A következő URI használatával férhet hozzá az adataihoz Data Lake Storage Gen1ban:
 
 `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`
 
-A Data Lake Storage Gen1 szolgáltatásban található adatok eléréséről [a Tárolt adatokon elérhető műveletek című](../data-lake-store/data-lake-store-get-started-portal.md#properties)témakörben talál további információt.
+A Data Lake Storage Gen1 lévő adatok elérésével kapcsolatos további információkért lásd: [a tárolt adatokon elérhető műveletek](../data-lake-store/data-lake-store-get-started-portal.md#properties).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bevezetés az Azure Data Lake Storage Gen2 szolgáltatásba](../storage/blobs/data-lake-storage-introduction.md)
+* [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)
 * [Az Azure Data Lake Storage Gen2 áttekintése](./overview-data-lake-storage-gen2.md)

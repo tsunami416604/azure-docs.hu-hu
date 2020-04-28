@@ -1,78 +1,79 @@
 ---
-title: Parancsfájlműveletek – hiba elhárítása az Azure HDInsightban
-description: Az Azure HDInsight parancsfájl-műveletekáltalános hibaelhárítási lépései.
+title: Parancsfájl-műveletek hibakeresése az Azure HDInsight
+description: Általános hibaelhárítási lépések az Azure HDInsight parancsfájl-műveleteihez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b1e6b674edc155e0aa6c88ad360eb59864eebee4
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771975"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188446"
 ---
-# <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájlműveletek – hiba elhárítása az Azure HDInsightban
+# <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájl-műveletek hibakeresése az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="viewing-logs"></a>Naplók megjelenítése
 
-Az Apache Ambari webes felhasználói felületével megtekintheti a parancsfájlműveletek által naplózott információkat. Ha a parancsfájl a fürt létrehozása során sikertelen, a naplók az alapértelmezett fürttárfiókban találhatók. Ez a szakasz a naplók mindkét beállítás használatával történő beolvasásával kapcsolatos információkat tartalmazza.
+Az Apache Ambari webes FELÜLETén megtekintheti a parancsfájlok műveletei által naplózott információkat. Ha a parancsfájl meghibásodik a fürt létrehozásakor, a naplók az alapértelmezett fürt Storage-fiókban találhatók. Ez a szakasz azt ismerteti, hogyan lehet lekérdezni a naplókat mindkét lehetőség használatával.
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari webes felhasználói felület
 
-1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net`meg `CLUSTERNAME` a , ahol a fürt neve.
+1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
 
-1. A lap tetején lévő sávból válassza ki a **műveleti** bejegyzést. A lista az Ambari-n keresztül a fürtön végzett aktuális és korábbi műveleteket jeleníti meg.
+1. Az oldal tetején található sávban válassza az **Ops** bejegyzést. A lista a fürtön a Ambari használatával végzett aktuális és korábbi műveleteket jeleníti meg.
 
-    ![Ambari webes felhasználói felület sáv jattot kijelölt műveleti](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Keresse meg azokat a bejegyzéseket, amelyek az Operations oszlopban **futtatták\_** az egyéni **parancsfájlt.** Ezek a bejegyzések a parancsfájlműveletek futtatásakor jönnek létre.
+1. Keresse meg azokat a bejegyzéseket, amelyek a **customscriptaction futtatták\_** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
-    ![Apache Ambari parancsfájlműveleti műveletek](./media/troubleshoot-script-action/ambari-script-action.png)
+    ![Apache Ambari parancsfájl műveleti műveletei](./media/troubleshoot-script-action/ambari-script-action.png)
 
-    Az **STDOUT** és az **STDERR** kimenet megtekintéséhez jelölje ki a **run\customscriptaction** bejegyzést, és ásson le a hivatkozásokközött. Ez a kimenet akkor jön létre, amikor a parancsfájl fut, és hasznos információkat tartalmazhat.
+    Az **StdOut** és a **stderr** kimenetének megtekintéséhez válassza ki a **run\customscriptaction** bejegyzést, és részletezse a hivatkozásokat. Ezt a kimenetet a szkript futtatásakor generálja a rendszer, és hasznos információkhoz vezethet.
 
-### <a name="default-storage-account"></a>Alapértelmezett tárfiók
+### <a name="default-storage-account"></a>Alapértelmezett Storage-fiók
 
-Ha a fürt létrehozása parancsfájlhiba miatt sikertelen, a naplók a fürttárfiókban maradnak.
+Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a naplókat a fürt Storage-fiókjában tárolja.
 
-* A tárolónaplók a `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`helyen érhetők el.
+* A tárolási naplók a következő címen `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`érhetők el:.
 
-    ![Parancsfájl-műveletnaplók](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    ![Parancsfájl műveleti naplói](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    Ebben a könyvtárban a naplók külön vannak rendezve a **headnode**, **a feldolgozócsomópont**és **az állattartó csomópont**számára. Lásd az alábbi példákat:
+    Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz**, a **munkavégző csomópont**és a **Zookeeper csomópont**számára. Lásd az alábbi példákat:
 
-    * **Csomópont**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Átjárócsomóponthoz**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Feldolgozó csomópont:**`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Munkavégző csomópont**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper csomópont:**`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper csomópont**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* A megfelelő gazdagép összes **stdout** és **stderr** feltöltésre kerül a tárfiókba. Minden parancsfájlművelethez egy **kimenet\*van- .txt** és **errors-\*.txt.** A **output-*.txt** fájl az állomáson futtatott parancsfájl URI-járól tartalmaz információkat. A következő szöveg egy példa erre az információra:
+* A rendszer feltölti a megfelelő gazdagép összes **StdOut** -és **stderr** a Storage-fiókba. Minden parancsfájl-művelethez létezik egy **output-\*. txt** és **errors-\*. txt fájl** . A **output-*. txt** fájl a gazdagépen futó parancsfájl URI azonosítóját tartalmazza. A következő szöveg egy példa erre az információra:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
-* Lehetséges, hogy ismételten létrehoz egy parancsfájl-műveletfürtet ugyanazzal a névvel. Ebben az esetben a **DÁTUM** mappa neve alapján megkülönböztetheti a megfelelő naplókat. Például egy fürt mappaszerkezete, a különböző időpontokban létrehozott **mycluster**a következő naplóbejegyzésekhez hasonlóan jelenik meg:
+* Lehetséges, hogy ismételten létrehoz egy azonos nevű parancsfájl-műveleti fürtöt. Ebben **az esetben a mappa neve** alapján megkülönböztetni a megfelelő naplókat. Például a fürt **mycluster**, amely különböző dátumokban lett létrehozva, a következő naplóbejegyzések szerint jelenik meg:
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
-* Ha ugyanazon a napon azonos nevű parancsfájl-műveletfürtöt hoz létre, az egyedi előtaggal azonosíthatja a megfelelő naplófájlokat.
+* Ha azonos nevű parancsfájl-műveleti fürtöt hoz létre ugyanazon a napon, akkor a megfelelő naplófájlok azonosításához használhatja az egyedi előtagot.
 
-* Ha 12:00 óra, éjfél közelében hoz létre fürtöt, lehetséges, hogy a naplófájlok két napig terjednek. Ebben az esetben két különböző dátummappa jelenik meg ugyanahhoz a fürthöz.
+* Ha olyan fürtöt hoz létre, amely a 12:00-es számú, éjfélt, akkor lehetséges, hogy a naplófájlok két nap alatt kiterjedhetnek. Ebben az esetben két különböző dátumú mappát láthat ugyanahhoz a fürthöz.
 
-* A naplófájlok feltöltése az alapértelmezett tárolóba akár öt percet is igénybe vehet, különösen nagy fürtök esetén. Tehát ha szeretné elérni a naplókat, ne azonnal törölje a fürtöt, ha egy parancsfájl művelet sikertelen.
+* A naplófájlok alapértelmezett tárolóba való feltöltése akár öt percet is igénybe vehet, különösen a nagyméretű fürtök esetében. Tehát ha el szeretné érni a naplókat, ne törölje azonnal a fürtöt, ha a parancsfájl művelete meghiúsul.
 
-## <a name="ambari-watchdog"></a>Ambari házőrző
+## <a name="ambari-watchdog"></a>Ambari watchdog
 
-Ne módosítsa az Ambari figyelő, hdinsightwatchdog jelszavát a Linux-alapú HDInsight-fürtön. A jelszómódosítása megszakítja az új parancsfájlműveletek futtatásának lehetőségét a HDInsight-fürtön.
+Ne módosítsa a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú HDInsight-fürtön. A jelszó módosítása megszakítja az új parancsfájl-műveletek futtatásának lehetőségét a HDInsight-fürtön.
 
-## <a name="cant-import-name-blobservice"></a>A BlobService név nem importálható
+## <a name="cant-import-name-blobservice"></a>Nem lehet importálni a BlobService nevet
 
-__Tünetek__. A parancsfájlművelet sikertelen. Az Ambari művelet megtekintésekor a következőhöz hasonló szöveg jelenik meg:
+__Tüneteket__. A parancsfájl művelete sikertelen. A következő hibához hasonló szöveg jelenik meg, amikor megtekinti a műveletet a Ambari:
 
 ```
 Traceback (most recent call list):
@@ -81,25 +82,25 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__Oka__. Ez a hiba akkor fordul elő, ha frissíti a Python Azure Storage-ügyfél, amely a HDInsight-fürt részét képezi. A HDInsight 0.20.0-s Azure Storage-ügyfélre számít.
+__OK__. Ez a hiba akkor fordul elő, ha a HDInsight-fürthöz tartozó Python Azure Storage-ügyfelet frissíti. A HDInsight az Azure Storage ügyféloldali 0.20.0 várja.
 
-__felbontás .__ A hiba elhárításához manuálisan csatlakozzon az `ssh`egyes fürtcsomópontokhoz a használatával. A megfelelő tárolóügyfél-verzió újratelepítéséhez futtassa a következő parancsot:
+__Megoldás__. A hiba megoldásához manuálisan kapcsolódjon az egyes fürtcsomópontokon a használatával `ssh`. Futtassa a következő parancsot a megfelelő tárolási ügyfél verziójának újratelepítéséhez:
 
 ```bash
 sudo pip install azure-storage==0.20.0
 ```
 
-A fürthöz az SSH-val való csatlakozásról a [Csatlakozás hdinsighthoz (Apache Hadoop) ssh használatával](hdinsight-hadoop-linux-use-ssh-unix.md)című témakörben talál további információt.
+További információ a fürt SSH-val történő csatlakoztatásáról: [Csatlakozás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="history-doesnt-show-the-scripts-used-during-cluster-creation"></a>Az előzmények nem jelenítik meg a fürt létrehozása során használt parancsfájlokat
+## <a name="history-doesnt-show-the-scripts-used-during-cluster-creation"></a>A előzmények nem jelenítik meg a fürt létrehozása során használt parancsfájlokat
 
-Ha a fürt 2016. A fürt átméretezése azt eredményezi, hogy a parancsfájlok megjelennek a parancsfájlok műveletelőzményeiben.
+Ha a fürt a 2016. március 15. előtt lett létrehozva, előfordulhat, hogy nem jelenik meg bejegyzés a parancsfájl-műveleti előzményekben. A fürt átméretezése hatására a parancsfájlok megjelennek a parancsfájl-műveletek előzményeiben.
 
 Két kivétel van:
 
-* A fürt 2015. Ez a dátum az, amikor parancsfájlműveleteket vezettek be. Az ezt a dátum előtt létrehozott fürt nem használhatott parancsfájlműveleteket a fürt létrehozásához.
+* A fürt a 2015. szeptember 1. előtt jött létre. Ez a dátum az, amikor parancsfájl-műveletek lettek bevezetve. Az ezen dátum előtt létrehozott összes fürthöz nem használható parancsfájl-művelet a fürt létrehozásához.
 
-* A fürt létrehozása során több parancsfájlműveletet használt. Vagy ugyanazt a nevet használta több parancsfájlhoz, vagy ugyanazt a nevet, ugyanazt az URI-t, de több parancsfájl különböző paramétereit. Ezekben az esetekben a következő hibaüzenet jelenik meg:
+* A fürt létrehozása során több parancsfájl-műveletet is használt. Vagy ugyanazt a nevet használta több parancsfájlhoz, vagy ugyanazzal a névvel, azonos URI-val, de különböző paraméterekkel több parancsfájlhoz. Ezekben az esetekben a következő hibaüzenetet kapja:
 
     ```
     No new script actions can be run on this cluster because of conflicting script names in existing scripts. Script names provided at cluster creation must be all unique. Existing scripts are run on resize.
@@ -107,10 +108,10 @@ Két kivétel van:
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

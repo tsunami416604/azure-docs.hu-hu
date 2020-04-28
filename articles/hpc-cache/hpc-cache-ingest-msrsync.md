@@ -1,40 +1,40 @@
 ---
-title: Az Azure HPC cache-adatok betöltése - msrsync
-description: Az msrsync használata adatok áthelyezése blobtároló-tárolóba az Azure HPC-gyorsítótárban
+title: Azure HPC cache-adatfeldolgozás – msrsync
+description: Az msrsync használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e0442b6aa1404ae5f57445179979496faa09863
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168420"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194975"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Az Azure HPC cache-adatok betöltése – msrsync metódus
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache-adatfeldolgozás – msrsync metódus
 
-Ez a cikk részletes ``msrsync`` utasításokat ad a segédprogram használatával adatok másolása egy Azure Blob storage-tároló azure HPC-gyorsítótár használata.
+Ez a cikk részletes útmutatást nyújt a ``msrsync`` segédprogram használatával az Azure-beli blob Storage-tárolóba való adatmásoláshoz az Azure HPC cache szolgáltatással való használathoz.
 
-Ha többet szeretne megtudni az adatok Blob storage-ba való áthelyezéséről az Azure HPC-gyorsítótárszámára, olvassa el [az Adatok áthelyezése az Azure Blob storage-ba .](hpc-cache-ingest.md)
+Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan helyezi át az adatátvitelt a blob Storage-ba, olvassa el az [Azure Blob Storage](hpc-cache-ingest.md)-ba
 
-Az ``msrsync`` eszköz segítségével áthelyezheti az adatokat az Azure HPC-gyorsítótár háttértárolási céljába. Ez az eszköz több párhuzamos ``rsync`` folyamat futtatásával optimalizálja a sávszélesség-használatot. A GitHubról érhető https://github.com/jbd/msrsyncel a.
+Az ``msrsync`` eszköz használatával az Azure HPC cache-re helyezheti át az adatátvitelt a háttérbeli tárolási célra. Ez az eszköz úgy lett kialakítva, hogy több párhuzamos ``rsync`` folyamat futtatásával optimalizálja a sávszélesség-használatot. A GitHubon érhető el https://github.com/jbd/msrsync.
 
-``msrsync``a forráskönyvtárat külön "gyűjtőkre" bontja, majd minden egyes gyűjtőben futtatja az egyes ``rsync`` folyamatokat.
+``msrsync``elkülöníti a forrás könyvtárat külön "gyűjtő" értékre, majd minden ``rsync`` gyűjtőn futtatja az egyes folyamatokat.
 
-A négymagos virtuális gép használatával végzett előzetes tesztelés 64 folyamat használata esetén mutatta a legjobb hatékonyságot. Ezzel ``msrsync`` a ``-p`` beállítással 64-re állíthatja a folyamatok számát.
+A négy Magos virtuális géppel végzett előzetes tesztelés az 64-es folyamatok használatakor a legjobb hatékonyságot mutatja. A következő ``msrsync`` beállítással ``-p`` állíthatja be a folyamatok számát 64-re.
 
-Ne ``msrsync`` feledje, hogy csak írni, és a helyi kötetek. A forrásnak és a célnak elérhetőnek kell lennie a parancs kiadásához használt munkaállomás helyi csatlakoztatásaként.
+Vegye figyelembe ``msrsync`` , hogy csak a helyi kötetek és a-ból tud írni. A forrásnak és a célhelynek a parancs kiadásához használt munkaállomáson helyi csatlakoztatásként kell elérhetőnek lennie.
 
-Kövesse az alábbi ``msrsync`` utasításokat az Azure Blob storage Azure HPC-gyorsítótárral való feltöltéséhez:
+Kövesse ezeket az utasításokat az ``msrsync`` Azure Blob Storage Azure HPC cache használatával történő feltöltéséhez:
 
-1. Telepítés ``msrsync`` és előfeltételei``rsync`` ( és Python 2.6 vagy újabb)
-1. Határozza meg a másolandó fájlok és könyvtárak teljes számát.
+1. Telepítés ``msrsync`` és előfeltételei (``rsync`` és Python 2,6 vagy újabb)
+1. A másolandó fájlok és könyvtárak teljes számának meghatározása.
 
-   Használja például a ``prime.py`` segédprogramot ```prime.py --directory /path/to/some/directory``` argumentumokkal <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>(letölthető).
+   Használja például a segédprogramot ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (a letöltéssel <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>érhető el).
 
-   Ha nem ``prime.py``használja a programot, a GNU ``find`` eszközzel az alábbiak szerint számíthatja ki az elemek számát:
+   Ha nem használja ``prime.py``, a következő módon számíthatja ki az elemek számát a ``find`` GNU eszközzel:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -42,14 +42,14 @@ Kövesse az alábbi ``msrsync`` utasításokat az Azure Blob storage Azure HPC-g
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Az elemek számának felosztása 64-re az elemek folyamatonkénti számának meghatározásához. Ezzel a ``-f`` számmal állíthatja be a gyűjtők méretét a parancs futtatásakor.
+1. Az elemek számának felosztása a 64 alapján az elemek számának megállapítása folyamatban. Ezt a számot ``-f`` használhatja a gyűjtők méretének beállításához a parancs futtatásakor.
 
-1. Fájlok ``msrsync`` másolására a parancs kiadása:
+1. Adja ki ``msrsync`` a parancsot a fájlok másolásához:
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Ez a parancs például 11 000 fájlt helyezhet át 64 folyamatban a /test/source-repository könyvtárból a /mnt/hpccache/repository-ba:
+   Ez a parancs például úgy lett kialakítva, hogy 11 000-es fájlokat helyezzen át a 64 folyamatokban a/test/Source-repository-ről a/mnt/hpccache/repository-re:
 
    ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository``

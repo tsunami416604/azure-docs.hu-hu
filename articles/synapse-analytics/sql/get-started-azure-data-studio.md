@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Studio (előzetes verzió): A Synapse SQL csatlakoztatása és lekérdezése'
-description: Az Azure Data Stu-val (előzetes verzió) csatlakozhat a Synapse SQL-hez, és lekérdezheti az Azure Synapse Analytics szolgáltatásban.
+title: 'Azure Data Studio (előzetes verzió): a kapcsolat és a lekérdezés szinapszis SQL'
+description: A Azure Data Studio (előzetes verzió) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-t az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,75 +9,75 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: edf5a6a6a0f17c21abb818a0d41d0d0b1c39949c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423802"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187545"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Csatlakozás a Synapse SQL-hez az Azure Data Studio segítségével (előzetes verzió)
+# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
 
 > [!div class="op_single_selector"]
 >
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](get-started-connect-sqlcmd.md)
+> * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Az [Azure Data Studio (előzetes verzió)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével csatlakozhat és lekérdezheti a Synapse SQL-t az Azure Synapse Analytics szolgáltatásban. 
+[Azure Data Studio (előzetes verzió)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat. 
 
 ## <a name="connect"></a>Kapcsolódás
 
-A Synapse SQL-hez való csatlakozáshoz nyissa meg az Azure Data Studio alkalmazást, és válassza az **Új kapcsolat**lehetőséget.
+A szinapszis SQLhoz való kapcsolódáshoz nyissa meg Azure Data Studio és válassza az **új kapcsolat**lehetőséget.
 
-![Az Azure Data Studio megnyitása](./media/get-started-azure-data-studio/1-start.png)
+![Azure Data Studio megnyitása](./media/get-started-azure-data-studio/1-start.png)
 
-Válassza a **Microsoft SQL Server lehetőséget** **kapcsolattípusként**.
+Válassza a **Microsoft SQL Server** lehetőséget a **kapcsolattípus mezőben**.
 
 A kapcsolathoz a következő paraméterek szükségesek:
 
-* **Kiszolgáló:** Kiszolgáló a `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net
+* **Kiszolgáló:** Kiszolgáló az űrlapon `<Azure Synapse workspace name>`– OnDemand.SQL.azuresynapse.net
 * **Adatbázis:** Adatbázis neve
 
 > [!NOTE]
-> Ha igény szerinti **SQL-t** szeretne használni (előzetes verzió), az URL-címnek így kell kinéznie:
+> Ha az **SQL on-demand (előzetes verzió)** használatát szeretné használni, az URL-címnek a következőképpen kell kinéznie:
 >
-> - `<Azure Synapse workspace name>`- ondemand.sql.azuresynapse.net.
+> - `<Azure Synapse workspace name>`– ondemand.sql.azuresynapse.net.
 >
-> Ha **SQL-készletet** szeretne használni, az URL-címnek így kell kinéznie:
+> Ha az **SQL-készletet** szeretné használni, az URL-címnek a következőhöz hasonlóan kell kinéznie:
 >
-> - `<Azure Synapse workspace name>`sql.azuresynapse.net
+> - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-A Hitelesítés típusa a **Windows-hitelesítés**, **az Azure Active Directory**vagy az SQL **Login (SQL Login)** **lehetőséget választja.**
+**Hitelesítési típusként**válassza a **Windows-hitelesítés**, a **Azure Active Directory**vagy az **SQL-bejelentkezés** lehetőséget.
 
-Ha **az SQL Login-t** szeretné hitelesítési típusként használni, adja hozzá a felhasználónév/jelszó paramétereit:
+Ha az **SQL-bejelentkezést** hitelesítési típusként szeretné használni, adja hozzá a username/Password paramétert:
 
 * **Felhasználó:** Kiszolgáló felhasználója az űrlapon`<User>`
-* **Jelszó:** A felhasználóhoz társított jelszó
+* **Jelszó:** A felhasználóhoz tartozó jelszó
 
-Az Azure Active Directory használatához ki kell választania a szükséges hitelesítési típust.
+Azure Active Directory használatához ki kell választania a szükséges hitelesítési típust.
 
 ![AAD-hitelesítés](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Ez a képernyőkép a **Windows-hitelesítés** **kapcsolatrészleteiről** látható:
+A következő képernyőképen a **Windows-hitelesítés** **kapcsolati adatai** láthatók:
 
 ![Windows-hitelesítés](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Ez a képernyőkép a **Kapcsolat részleteiről** az **SQL Login**használatával látható:
+Az alábbi képernyőképen az **SQL-bejelentkezés**használatával láthatók a **kapcsolat részletei** :
 
 ![SQL-bejelentkezés](./media/get-started-azure-data-studio/2-database-details.png)
 
-A sikeres bejelentkezés után egy ilyen irányítópultot kell látnia: ![Irányítópult](./media/get-started-azure-data-studio/4-dashboard.png)
+A sikeres bejelentkezés után az alábbihoz hasonló irányítópultot kell látnia: ![irányítópult](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Lekérdezés
 
-A csatlakozás után lekérdezheti a Synapse SQL-t a támogatott [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítások használatával a példányellen. A kezdéshez válassza az **Új lekérdezés** lehetőséget az irányítópult nézetből.
+A csatlakozást követően lekérdezheti a szinapszis SQLot a példányon támogatott [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítások használatával. Első lépésként válassza az irányítópult nézet **Új lekérdezés** elemét.
 
 ![Új lekérdezés](./media/get-started-azure-data-studio/5-new-query.png)
 
-A következő Transact-SQL utasítással például igény szerint [lekérdezheti a Parquet fájlokat](query-parquet-files.md) az SQL használatával:
+Például a következő Transact-SQL-utasítás használatával [lekérdezheti a Parquet-fájlokat](query-parquet-files.md) az SQL igény szerinti használatával:
 
 ```sql
 SELECT COUNT(*)
@@ -88,10 +88,10 @@ OPENROWSET(
 )
 ```
 ## <a name="next-steps"></a>További lépések 
-További lehetőségek a Synapse SQL-hez való csatlakozásra: 
+Ismerkedjen meg a szinapszis SQL-hez való kapcsolódás egyéb módjaival: 
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [sqlcmd](get-started-connect-sqlcmd.md)
+- [Sqlcmd](get-started-connect-sqlcmd.md)
  

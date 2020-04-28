@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: terrylan
-ms.openlocfilehash: 4fe612db65d985be2f1f1c81d03c3ee735c03889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ab3697824ff4a47e7b8f281b531cae610ffdc3b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69992613"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187579"
 ---
 # <a name="develop-a-secure-infrastructure-for-a-pci-app"></a>Biztonságos infrastruktúra fejlesztése egy PCI-alkalmazáshoz
 
@@ -48,10 +48,10 @@ Az alkalmazás fejlesztése és üzembe helyezése során a következőket sajá
 
 - Hozzon létre egy Azure Key Vault példányt, és tárolja és kérje le a titkokat.
 - Telepítse az Azure Database-t az Azure SQL-hez, állítsa be a biztonságos adatvédelmet, és engedélyezze a hozzáférést.
-- Üzembe helyezheti az Azure-webalkalmazást App Service környezettel, amely dedikált elszigetelt az előtér-tűzfal aEcess.
+- Üzembe helyezheti az Azure-webalkalmazást App Service-környezettel, amely dedikált, előtér-tűzfal-hozzáféréssel ellátott.
 - Hozzon létre és konfiguráljon egy Azure Application Gateway példányt egy olyan tűzfallal, amely az [OWASP Top 10 szabályrendszert](https://coreruleset.org/)használja.
 - Az Azure-szolgáltatások használatával engedélyezheti az átvitelben és a nyugalmában lévő adatok titkosítását.
-- Az Azure-szabályzat és a kék nyomatok beállítása a megfelelőség kiértékeléséhez
+- Azure Policy és Azure-tervezetek beállítása a megfelelőség kiértékeléséhez.
 
 Az alkalmazás fejlesztése és üzembe helyezése után be kell állítania az alábbi minta-webalkalmazást, valamint a konfigurációs és biztonsági mértékeket.
 

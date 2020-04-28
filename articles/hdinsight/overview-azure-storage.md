@@ -1,81 +1,82 @@
 ---
-title: Az Azure Storage áttekintése a HDInsightban
-description: Az Azure Storage áttekintése a HDInsightban.
+title: Az Azure Storage áttekintése a HDInsight-ben
+description: Az Azure Storage áttekintése a HDInsight-ben.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 43d948a2a98407bacc212ddc6e065c67a105f332
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: fc0af331dc6cb604847be9173c836e0b46ca40ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873380"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195179"
 ---
-# <a name="azure-storage-overview-in-hdinsight"></a>Az Azure Storage áttekintése a HDInsightban
+# <a name="azure-storage-overview-in-hdinsight"></a>Az Azure Storage áttekintése a HDInsight-ben
 
-Az Azure Storage egy robusztus általános célú tárolási megoldás, amely zökkenőmentesen integrálható a HDInsightdal. A HDInsight egy blobtárolót használhat az Azure Storage-ben a fürt alapértelmezett fájlrendszereként. Egy HDFS-felületen keresztül a HDInsight összetevőinek teljes készlete közvetlenül működhet a blobként tárolt strukturált vagy strukturálatlan adatokon.
+Az Azure Storage egy robusztus általános célú tárolási megoldás, amely zökkenőmentesen integrálható a HDInsight. A HDInsight egy blobtárolót használhat az Azure Storage-ben a fürt alapértelmezett fájlrendszereként. A HDFS felületen keresztül a HDInsight-összetevők teljes készlete működhet közvetlenül a strukturált vagy strukturálatlan, blobként tárolt adaton.
 
-Azt javasoljuk, hogy külön tárolótárolókat használjon az alapértelmezett fürttároláshoz és az üzleti adatokhoz. A szétválasztás célja a HDInsight-naplók és az ideiglenes fájlok elkülönítése a saját üzleti adataitól. Azt is javasoljuk, hogy minden használat után a tárolási költségek csökkentése után az alapértelmezett blob tároló, amely tartalmazza az alkalmazás és a rendszer naplók. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
+Javasoljuk, hogy az alapértelmezett fürtöt tárolóhoz és az üzleti adataihoz külön tároló-tárolókat használjon. A szétválasztás az, hogy elkülönítse a HDInsight-naplókat és az ideiglenes fájlokat a saját üzleti adataiból. Javasoljuk továbbá, hogy törölje az alapértelmezett BLOB-tárolót, amely az alkalmazás-és rendszernaplókat tartalmazza, miután mindegyik használattal csökkenti a tárolási költségeket. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
-Ha úgy dönt, hogy a tárfiókot a **tűzfalak és** a virtuális hálózatok korlátozásával biztosítja a **kiválasztott hálózatokon,** győződjön meg róla, hogy engedélyezi a **kivételt Megbízható Microsoft-szolgáltatások engedélyezése...**. A kivétel az, hogy a HDInsight hozzáférhessen a tárfiókhoz.
+Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára**... A kivétel az, hogy a HDInsight hozzáférhessen a Storage-fiókhoz.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 
-Az alábbi ábra az Azure Storage HDInsight-architektúrájának absztrakt nézetét tartalmazza:
+Az alábbi ábra az Azure Storage HDInsight architektúrájának absztrakt nézetét tartalmazza:
 
-!["HDInsight tárolási architektúra"](./media/overview-azure-storage/storage-architecture.png "HDInsight tárolási architektúra")
+!["HDInsight-tár architektúra"](./media/overview-azure-storage/storage-architecture.png "HDInsight-tár architektúra")
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer a teljes URI használatával érhető el, például:
 
     hdfs://<namenodehost>/<path>
 
-A HDInsight segítségével az Azure Storage-ban is hozzáférhet az adatokhoz. A szintaxis a következő:
+A HDInsight-on keresztül az Azure Storage-ban is elérhetők az adattárolók. A szintaxis a következő:
 
     wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Az Azure Storage-fiók HDInsight-fürtökkel való használatakor vegye figyelembe az alábbi alapelveket:
+HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye figyelembe a következő alapelveket:
 
 * **Fürthöz csatlakozó tárolók a tárfiókokban:** Mivel a fiók neve és kulcsa társítva van a fürttel a létrehozás során, teljes hozzáféréssel rendelkezik a tárolókban lévő összes blobhoz.
 
-* **Nyilvános tárolók vagy nyilvános blobok a fürthöz nem kapcsolódó tárfiókokban:** Csak olvasási engedéllyel rendelkezik a tárolókban lévő blobokhoz.
+* **Nyilvános tárolók vagy nyilvános Blobok olyan Storage-fiókokban, amelyek nem csatlakoznak a fürthöz:** Csak olvasási jogosultsággal rendelkezik a tárolóban lévő blobokhoz.
   
   > [!NOTE]  
-  > Nyilvános tárolók lehetővé teszi, hogy egy listát az összes blobok, amelyek a tárolóban elérhető, és a tároló metaadatok beszerzése. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információt a [Névtelen olvasási hozzáférés kezelése a tárolókhoz és blobokhoz című témakörben talál.](../storage/blobs/storage-manage-access-to-resources.md)
+  > A nyilvános tárolók lehetővé teszik az adott tárolóban elérhető Blobok listájának lekérését és a tároló metaadatainak beolvasását. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/storage-manage-access-to-resources.md).
 
-* **Fürthöz nem kapcsolódó tárolók ban:** A tárolókban lévő blobok csak akkor férhetnek hozzá a tárolókban, ha a WebHCat-feladatok elküldésekor definiálja a tárfiókot.
+* A **fürthöz nem kapcsolódó Storage-fiókokban lévő privát tárolók:** A tárolóban lévő Blobok csak akkor érhetők el, ha a Webhcaten-feladatok elküldésekor a Storage-fiókot definiálja.
 
-A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. Alapértelmezés szerint a HDInsight a core-site.xml fájlban definiált tárfiókokat használja. Ezt a beállítást az [Apache Ambari segítségével módosíthatja.](./hdinsight-hadoop-manage-ambari.md)
+A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. Alapértelmezés szerint a HDInsight a Core-site. xml fájlban meghatározott tárolási fiókokat használja. Ezt a beállítást az [Apache Ambari](./hdinsight-hadoop-manage-ambari.md)használatával lehet módosítani.
 
-Több WebHCat-feladat, beleértve az Apache Hive-t is. A MapReduce, az Apache Hadoop streaming és az Apache Pig pedig a tárfiókok és a metaadatok leírását hordozza. (Ez a szempont jelenleg a storage-fiókkal rendelkező Pig esetében igaz, metaadatokesetében azonban nem.) További információ: [HDInsight-fürt használata alternatív tárfiókokkal és metaáruházakkal.](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)
+Több Webhcaten-feladat, beleértve a Apache Hive. A MapReduce, a Apache Hadoop streaming és az Apache Pig szolgáltatásban a Storage-fiókok és-metaadatok leírását is elvégezheti. (Ez a szempont jelenleg a Storage-fiókkal rendelkező Pig esetében igaz, a metaadatok esetében azonban nem.) További információ: [HDInsight-fürt használata másodlagos Storage-fiókokkal és-metaadattárak](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-A blobok a strukturált és strukturálatlan adatokhoz használhatók. A Blob-tárolók kulcs-/értékpárokként tárolják az adatokat, és nem rendelkeznek címtárhierarchiával. A kulcsnév azonban tartalmazhat perjel karaktert ( / ), hogy úgy tűnjön, mintha egy fájl egy könyvtárstruktúrában lenne tárolva. Például egy blob kulcsa `input/log1.txt`lehet. Nincs `input` tényleges könyvtár, de a kulcsnevében lévő perjel miatt a kulcs fájlelérési útnak tűnik.
+A blobok a strukturált és strukturálatlan adatokhoz használhatók. A blob-tárolók az értékeket kulcs/érték párokként tárolják, és nem rendelkeznek címtár-hierarchiával. A kulcs neve azonban tartalmazhat perjel karaktert (/) úgy, hogy úgy jelenjen meg, mintha egy fájl egy könyvtár struktúráján belül tárolódik. A blob kulcsa például lehet `input/log1.txt`. Nem létezik `input` tényleges könyvtár, de a kulcs neve perjel karaktere miatt a kulcs egy fájl elérési útjára hasonlít.
 
 ## <a name="benefits-of-azure-storage"></a>Az Azure Storage előnyei
 
-A nem közös helyen található számítási fürtök és tárolási erőforrások implicit teljesítményköltségekkel járnak. Ezeket a költségeket mérséklődik a számítási fürtök az Azure-régión belüli tárfiók-erőforrások közelében történő létrehozásának módja. Ebben a régióban a számítási csomópontok hatékonyan hozzáférhetnek az adatokhoz az Azure Storage-on belüli nagy sebességű hálózaton keresztül.
+A nem közösen elhelyezett számítási fürtök és tárolási erőforrások implicit teljesítménnyel kapcsolatos költségekkel rendelkeznek. Ezeket a költségeket a számítási fürtök az Azure-régióban található Storage-fiók erőforrásaihoz közeledő módon történő létrehozásával csökkentik. Ebben a régióban a számítási csomópontok hatékonyan férhetnek hozzá az adatokhoz az Azure Storage-on belüli nagy sebességű hálózaton keresztül.
 
-Ha az adatokat az Azure Storage-ban tárolja a HDFS helyett, számos előnnyel jár:
+Ha a HDFS helyett az Azure Storage-ban tárolja az adattárolást, számos előnnyel jár:
 
-* **Adatok újbóli használata és megosztása:** A HDFS-ben az adatok a számítási fürtön belül találhatóak. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Ezzel szemben az Azure Storage-ban tárolt adatok a HDFS API-kon vagy a Blob storage REST API-kon keresztül érhetők el. Ezen elrendezés miatt az alkalmazások (beleértve más HDInsight-fürtöket is) és eszközök nagyobb készlete használható az adatok előállításához és felhasználásához.
+* **Adatok újbóli használata és megosztása:** A HDFS-ben az adatok a számítási fürtön belül találhatóak. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Az Azure Storage-ban tárolt adatok ezzel szemben a HDFS API-kon vagy a blob Storage REST API-kon keresztül érhetők el. Ennek a megoldásnak a miatt a nagyobb alkalmazások (beleértve az egyéb HDInsight-fürtöket) és az eszközök is használhatók az adatfeldolgozásra és-felhasználásra.
 
-* **Adatarchiválás:** Ha az adatokat az Azure Storage tárolja, a hdinsight-fürtök számítási biztonságosan törölhetők felhasználói adatok elvesztése nélkül.
+* **Adatarchiválás:** Ha az Azure Storage-ban tárolják az adattárolást, a számításhoz használt HDInsight-fürtöket a felhasználói adatvesztés nélkül lehet biztonságosan törölni.
 
-* **Adattárolási költség:** Az adatok dfs-ben való hosszú távú tárolása költségesebb, mint az adatok tárolása az Azure Storage-ban. Mivel a számítási fürt költsége magasabb, mint az Azure Storage költsége. Emellett mivel az adatokat nem kell újratölteni minden számítási fürt létrehozásakor, az adatbetöltési költségeket is megtakaríthatja.
+* **Adattárolási díj:** Az adatelosztott fájlrendszerbeli adattárolás költségesebb, mint az Azure Storage-ban tárolt adattárolási szolgáltatás. Mivel a számítási fürt díja meghaladja az Azure Storage költségeit. Továbbá, mivel az adatoknak nem kell újratölteniük minden számítási fürt létrehozásakor, az adattöltés költségeit is menteni kell.
 
-* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a léptéket a fürthöz létrehozott csomópontok száma határozza meg. A méretezés módosítása bonyolultabb lehet, mint az Azure Storage-ban automatikusan megkapandó rugalmas skálázási képességek.
+* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a léptéket a fürthöz létrehozott csomópontok száma határozza meg. A skála módosítása bonyolultabb lehet, mint az Azure Storage-ban automatikusan elérhető rugalmas skálázási képességek.
 
-* **Georeplikáció:** Az Azure Storage georeplikált lehet. Bár a georeplikáció földrajzi helyreállítást és adatredundanciát biztosít, a georeplikált helyre történő feladatátvétel súlyosan befolyásolja a teljesítményt, és további költségekkel járhat. Ezért körültekintően válassza a georeplikációt, és csak akkor, ha az adatok értéke indokolja a többletköltséget.
+* **Geo-replikáció:** Az Azure Storage-t földrajzilag lehet replikálni. Bár a Geo-replikáció földrajzi helyreállítást és adatredundanciát biztosít, a földrajzilag replikált helyre történő feladatátvétel jelentősen befolyásolja a teljesítményt, és további költségeket eredményezhet. Ezért válassza a Geo-replikációt óvatosan, és csak akkor, ha az adatmennyiség indokolja a további költségeket.
 
-Bizonyos MapReduce feladatok és csomagok köztes eredményeket hozhatnak létre, amelyeket nem szeretne tárolni az Azure Storage-ban. Ebben az esetben választhatja az adatokat a helyi HDFS-ben tárolhatja. A HDInsight a DFS-t használja a Hive-feladatokban és más folyamatokban elért több köztes eredményhez.
+Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak létre, amelyeket nem szeretne az Azure Storage-ban tárolni. Ebben az esetben dönthet úgy, hogy az adattárolást a helyi HDFS tárolja. A HDInsight az elosztott fájlrendszert használja több ilyen köztes eredményhez a kaptár-feladatokban és más folyamatokban.
 
 > [!NOTE]  
-> A legtöbb HDFS-parancs `ls` `copyFromLocal`(például , és `mkdir`) a várt módon működik az Azure Storage-ban. Csak a natív HDFS-implementációra jellemző parancsok (amelyet DFS-nek neveznek), például `fschk` és `dfsadmin`a , különböző viselkedést mutatnak az Azure Storage-ban.
+> A legtöbb HDFS-parancs (például `ls` `copyFromLocal`,, és `mkdir`) a várt módon működik az Azure Storage-ban. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) `fschk` `dfsadmin`vonatkozó parancsok láthatók.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bevezetés az Azure Data Lake Storage Gen2 szolgáltatásba](../storage/blobs/data-lake-storage-introduction.md)
+* [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)
 * [Az Azure Data Lake Storage Gen1 áttekintése](./overview-data-lake-storage-gen1.md)

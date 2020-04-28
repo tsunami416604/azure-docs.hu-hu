@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159898"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188327"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Biztonságos alkalmazás fejlesztése Azure AD-alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -35,7 +35,7 @@ Az alkalmazás fejlesztése és üzembe helyezése során megismerheti, hogyan
 - Üzembe helyezheti az Azure-webalkalmazást, amely dedikáltan elkülönített az előtér-tűzfalhoz való hozzáféréssel. 
 - Hozzon létre és konfiguráljon egy Azure Application Gateway példányt egy olyan tűzfallal, amely az OWASP Top 10 szabályrendszert használja. 
 - Az Azure-szolgáltatások használatával engedélyezheti az átvitelben és a nyugalmában lévő adatok titkosítását. 
-- Állítsa be az Azure Policy és a Security centert a compliancies kiértékeléséhez. 
+- A megfelelőség kiértékeléséhez állítsa be a Azure Policy és a Security centert. 
 
 Az alkalmazás fejlesztése és üzembe helyezése után be kell állítania az alábbi minta-webalkalmazást, valamint a konfigurációs és biztonsági mértékeket.
 

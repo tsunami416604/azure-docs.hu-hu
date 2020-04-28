@@ -1,7 +1,7 @@
 ---
-title: Hálózati forgalmi minták megjelenítése nyílt forráskódú eszközökkel
+title: A hálózati forgalom mintáinak megjelenítése nyílt forráskódú eszközökkel
 titleSuffix: Azure Network Watcher
-description: Ez a lap azt ismerteti, hogyan használhatja a Network Watcher csomagrögzítést a Capanalysis segítségével a virtuális gépekre és a virtuális gépekről érkező forgalmi minták megjelenítéséhez.
+description: Ez az oldal azt ismerteti, hogyan használható a Capanalysis és a virtuális gépek közötti adatforgalmi minták megjelenítése a Network Watcher-csomagok rögzítésével.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,89 +12,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840655"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189062"
 ---
-# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>A virtuális gépekre érkező és onnan induló hálózati forgalmi minták megjelenítése nyílt forráskódú eszközökkel
+# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>A hálózati forgalom mintáinak megjelenítése a virtuális gépekről és a nyílt forráskódú eszközök használatával
 
-A csomagrögzítések olyan hálózati adatokat tartalmaznak, amelyek lehetővé teszik a hálózati kriminalisztika és a mély csomagvizsgálat elvégzését. Számos megnyitható forráseszköz van, amelyekkel elemezheti a csomagrögzítéseket, hogy betekintést nyerjen a hálózatba. Az egyik ilyen eszköz a CapAnalysis, egy nyílt forráskódú csomagrögzítő vizualizációs eszköz. A csomagrögzítési adatok megjelenítése értékes módja annak, hogy gyorsan betekintést nyerjen a hálózaton belüli mintákba és anomáliákba. A vizualizációk az ilyen elemzések egyszerű elfogyasztható módon történő megosztására is szolgálnak.
+A csomagok rögzítése olyan hálózati adatokkal rendelkezik, amelyek lehetővé teszik a hálózati kriminalisztika és a mélyreható csomagok vizsgálatát. Számos nyílt forráskódú eszközt használhat a csomagok rögzítésének elemzésére a hálózattal kapcsolatos információk megszerzéséhez. Az egyik ilyen eszköz a CapAnalysis, egy nyílt forráskódú csomagkapcsolt vizualizációs eszköz. A csomagok rögzítésével kapcsolatos adatmegjelenítés értékes módszert nyújt a hálózatán belüli minták és anomáliák gyors elemzésére. A vizualizációk az ilyen megállapítások egyszerű és könnyen megosztható módon történő megosztását is lehetővé teszik.
 
-Az Azure Network Watcher lehetővé teszi az adatok rögzítését azáltal, hogy lehetővé teszi a csomagrögzítések elvégzését a hálózaton. Ez a cikk bemutatja, hogyan vizualizálhatja és nyerhet betekintést a csomagrögzítésekből a CapAnalysis és a Network Watcher használatával.
+Az Azure Network Watcher lehetővé teszi az adatok rögzítését azáltal, hogy elvégzi a csomagok rögzítését a hálózaton. Ez a cikk bemutatja, hogyan jelenítheti meg és elemezheti a CapAnalysis és a Network Watcher használatával betekintést a csomagokba.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Van egy egyszerű webalkalmazás üzembe helyezett egy virtuális gép az Azure-ban szeretné használni a nyílt forráskódú eszközöket a hálózati forgalom megjelenítéséhez a folyamatminták és az esetleges anomáliák gyors azonosításához. A Network Watcher segítségével beszerezheti a hálózati környezet csomagrögzítését, és közvetlenül tárolhatja azt a tárfiókban. A CapAnalysis ezután közvetlenül a tárolóblobból tudja beadni a csomagrögzítést, és megjeleníti annak tartalmát.
+Az Azure-beli virtuális gépen üzembe helyezett egyszerű webalkalmazások nyílt forráskódú eszközöket szeretnének használni a hálózati forgalom megjelenítéséhez, hogy gyorsan azonosítsák a folyamatok mintáit és az esetleges rendellenességeket. A Network Watcher segítségével beszerezheti a hálózati környezet csomagjainak rögzítését, és közvetlenül tárolhatja azt a Storage-fiókjában. A CapAnalysis ezután közvetlenül a Storage-blobból betöltheti a csomagokat, és megjelenítheti annak tartalmát.
 
 ![forgatókönyv][1]
 
 ## <a name="steps"></a>Lépések
 
-### <a name="install-capanalysis"></a>CapAnalysis telepítése
+### <a name="install-capanalysis"></a>A CapAnalysis telepítése
 
-A CapAnalysis virtuális gépre való telepítéséhez itt https://www.capanalysis.net/ca/how-to-install-capanalysisolvashat a hivatalos utasításokról.
-A CapAnalysis távoli eléréséhez meg kell nyitnia a 9877-es portot a virtuális számítógépen egy új bejövő biztonsági szabály hozzáadásával. A szabályok hálózatbiztonsági csoportokban való létrehozásáról a [Szabályok létrehozása meglévő NSG-ben](../virtual-network/manage-network-security-group.md#create-a-security-rule)című részben tájékforalamizhat. A szabály sikeres hozzáadása után a CapAnalysis-et el kell tudnia tudni érni a`http://<PublicIP>:9877`
+A CapAnalysis virtuális gépen való telepítéséhez a hivatalos utasításokat itt https://www.capanalysis.net/ca/how-to-install-capanalysistekintheti meg.
+Ha távolról szeretné elérni a CapAnalysis, nyissa meg a 9877-es portot a virtuális gépen egy új bejövő biztonsági szabály hozzáadásával. A hálózati biztonsági csoportokban található szabályok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [szabályok létrehozása meglévő NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule)című témakört. A szabály sikeres hozzáadása után hozzáférhet a CapAnalysis-hez`http://<PublicIP>:9877`
 
-### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Csomagrögzítési munkamenet indítása az Azure Network Watcher használatával
+### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>A csomagok rögzítési munkamenetének elindítása az Azure Network Watcher használatával
 
-A Network Watcher lehetővé teszi a csomagok rögzítését a virtuális gépeken lévő és azon kívüli forgalom nyomon követéséhez. A [Csomagrögzítések kezelése a Hálózatfigyelővel](network-watcher-packet-capture-manage-portal.md) című útmutatóban a csomagrögzítési munkamenet elindításához olvassa el a figyelési munkamenetet. A csomagrögzítés tárolható egy tárolási blob ban, hogy a CapAnalysis elérhesse.
+Network Watcher lehetővé teszi a csomagok rögzítését a virtuális gépek és a forgalom nyomon követésére. A csomagok rögzítéseinak [kezelése a Network Watcher](network-watcher-packet-capture-manage-portal.md) használatával című témakör útmutatását követve elindíthatja a csomag rögzítési munkamenetét. A csomagok rögzítése a CapAnalysis által elérhető tárolási blobokban tárolható.
 
-### <a name="upload-a-packet-capture-to-capanalysis"></a>Csomagrögzítés feltöltése a CapAnalysis alkalmazásba
-Közvetlenül feltöltheti a hálózati figyelő által készített csomagrögzítést az "Importálás URL-ről" lapon, és megadhat egy hivatkozást a csomagrögzítést tárolóblobra.
+### <a name="upload-a-packet-capture-to-capanalysis"></a>Csomagok rögzítésének feltöltése a CapAnalysis-be
+A Network Watcher által készített csomagok rögzítését közvetlenül is feltöltheti az "Importálás URL-címről" lapról, és megadhat egy hivatkozást arra a tárolási blobra, ahol a csomag rögzítését tárolja.
 
-CapAnalysis hivatkozás ának megadásakor győződjön meg arról, hogy hozzáfűzi a SAS-jogkivonatot a storage blob URL-címéhez.  Ehhez keresse meg a megosztott hozzáférésű aláírást a tárfiókból, jelölje ki az engedélyezett engedélyeket, és nyomja meg a SAS létrehozása gombot egy jogkivonat létrehozásához. Ezután hozzáfűzheti a SAS-jogkivonatot a csomaglefoglalási storage blob URL-címéhez.
+A CapAnalysis mutató hivatkozás megadásakor ügyeljen arra, hogy egy SAS-tokent Fűzzön hozzá a Storage-blob URL-címéhez.  Ehhez navigáljon a megosztott hozzáférési aláíráshoz a Storage-fiókból, jelölje ki az engedélyezett engedélyeket, majd nyomja le az SAS létrehozása gombot a jogkivonat létrehozásához. Ezután hozzáfűzheti az SAS-tokent a csomag rögzítési tárolójának blob URL-címéhez.
 
-Az eredményül kapott URL a következő URL-hez hasonlóan fog kinézni:http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Az eredményül kapott URL-cím a következő URL-címhez hasonlóan fog kinézni:`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
-### <a name="analyzing-packet-captures"></a>Csomagrögzítések elemzése
+### <a name="analyzing-packet-captures"></a>A csomagok rögzítésének elemzése
 
-A CapAnalysis különböző lehetőségeket kínál a csomagrögzítés megjelenítésére, amelyek mindegyike más szemszögből biztosítja az elemzést. Ezekkel a vizuális összefoglalókkal megismerheti a hálózati forgalmi trendeket, és gyorsan észlelhet bármilyen szokatlan tevékenységet. Néhány ilyen funkció az alábbi listában látható:
+A CapAnalysis számos lehetőséget kínál a csomagok rögzítésének megjelenítésére, amelyek mindegyike különböző perspektívából származó elemzéseket biztosít. Ezekkel a vizualizációs összefoglalókkal megismerheti a hálózati forgalom tendenciáit, és gyorsan megtalálhatja a szokatlan tevékenységeket. Néhány ilyen funkció az alábbi listában látható:
 
-1. Folyamattáblázatok
+1. Folyamatok táblái
 
-    Ez a táblázat a csomagadatok folyamatainak listáját, a folyamatokhoz társított időbélyegzőt és a folyamathoz társított különböző protokollokat, valamint a forrás- és cél IP-címet tartalmazza.
+    Ez a táblázat a csomagok adatait, a folyamatokhoz társított időbélyegzőt, valamint a folyamathoz társított különböző protokollokat, valamint a forrás és a cél IP-címét tartalmazza.
 
-    ![capanalysis folyamatoldal][5]
+    ![capanalysis folyamat lapja][5]
 
-1. Protokoll – áttekintés
+1. Protokollok áttekintése
 
-    Ez az ablaktábla lehetővé teszi a hálózati forgalom elosztásának gyors megtekintését a különböző protokollokon és földrajzi területeken.
+    Ezen ablaktábla segítségével gyorsan megtekintheti a hálózati forgalom eloszlását a különböző protokollokon és földrajzi területeken.
 
     ![capanalysis protokoll – áttekintés][6]
 
 1. Statisztika
 
-    Ez az ablaktábla lehetővé teszi a hálózati forgalmi statisztikák megtekintését – a forrás- és cél IP-ktől küldött és fogadott bájtok, a forrás- és célIP-ek folyamatai, a különböző folyamatokhoz használt protokoll, valamint a folyamatok időtartama.
+    Ezen a panelen megtekintheti a hálózati forgalom statisztikáit – a forrás-és cél IP-címekről küldött és fogadott bájtokat, a forrás-és cél IP-címeinek folyamatait, a különböző folyamatokhoz használt protokollokat, valamint a folyamatok időtartamát.
 
-    ![capanalysis statisztika][7]
+    ![capanalysis statisztikája][7]
 
-1. Földrajzi térkép
+1. Földrajzi térképet
 
-    Ez az ablaktábla térképnézetet biztosít a hálózati forgalomról, a színek pedig az egyes országokból/régiókból érkező forgalom mennyiségére vannak skálázva. A kiemelt országok/régiók kiválasztásával további folyamatstatisztikákat tekinthet meg, például az adott országban/régióban az IP-ktől küldött és fogadott adatok arányát.
+    Ez a panel a hálózati forgalom térképes nézetét jeleníti meg, és az egyes országokból/régiókból érkező forgalom mennyiségére vonatkozó színeket tartalmaz. A Kiemelt országok/régiók lehetőség kiválasztásával megtekintheti a folyamat további statisztikáit, például az adott országban vagy régióban az IP-címekről küldött és fogadott adatok arányát.
 
-    ![geotérkép][8]
+    ![földrajzi térképet][8]
 
 1. Szűrők
 
-    A CapAnalysis szűrők készletét biztosítja az egyes csomagok gyors elemzéséhez. Például választhatja az adatok protokoll szerinti szűrését, hogy a forgalom adott részhalmazáról konkrét információkhoz jusson.
+    A CapAnalysis szűrőket biztosít az adott csomagok gyors elemzéséhez. Például úgy is dönthet, hogy a protokoll alapján szűri az adatokat, hogy bizonyos információkhoz jussanak a forgalom adott részhalmazán.
 
     ![szűrők][11]
 
-    Látogasson [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) el, ha többet szeretne megtudni a CapAnalysis összes képességéről.
+    [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) További információ az összes CapAnalysis képességről.
 
 ## <a name="conclusion"></a>Összegzés
 
-A Network Watcher csomagrögzítési funkciója lehetővé teszi a hálózati kriminalisztika elvégzéséhez szükséges adatok rögzítését és a hálózati forgalom jobb megértését. Ebben a forgatókönyvben megmutattuk, hogyan lehet a Network Watcher csomagrögzítéseit könnyen integrálni a nyílt forráskódú vizualizációs eszközökkel. A csomagok rögzítésének megjelenítéséhez nyílt forráskódú eszközök, például a CapAnalysis használatával mély csomagvizsgálatot végezhet, és gyorsan azonosíthatja a hálózati forgalom trendjeit.
+Network Watcher a csomag rögzítési funkciója lehetővé teszi a hálózati kriminalisztikai műveletek elvégzéséhez szükséges adatok rögzítését és a hálózati forgalom jobb megismerését. Ebben az esetben megmutatjuk, hogyan lehet a csomagok rögzítését Network Watcher egyszerűen integrálható a nyílt forráskódú vizualizációs eszközökkel. A nyílt forráskódú eszközökkel, például a CapAnalysis a csomagok rögzítésének megjelenítéséhez a részletes csomagok vizsgálatát és a hálózati forgalomon belüli trendek gyors felismerését teszi lehetővé.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az NSG-folyamatnaplókról, látogasson el az [NSG Flow naplókba](network-watcher-nsg-flow-logging-overview.md)
+Ha többet szeretne megtudni a NSG folyamatokról, látogasson el a [NSG flow naplóiba](network-watcher-nsg-flow-logging-overview.md)
 
-Megtudhatja, hogy miként jelenítheti meg az NSG-folyamatnaplókat a Power BI-val a [Visualize NSG-folyamatok naplóinak megjelenítéséhez a Power BI-val](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Ismerje meg, hogyan jelenítheti meg a NSG-flow-naplókat a Power BI a [NSG flow-naplók megjelenítése a Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 <!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png

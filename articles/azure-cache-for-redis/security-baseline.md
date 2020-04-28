@@ -1,54 +1,54 @@
 ---
-title: Azure biztonsági alapkonfiguráció a Redis azure-gyorsítótárához
-description: Azure biztonsági alapkonfiguráció a Redis azure-gyorsítótárához
+title: Azure-beli biztonsági alaptervek az Azure cache-hez a Redis
+description: Azure-beli biztonsági alaptervek az Azure cache-hez a Redis
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 172ac4e13201457f62d722236dff130a312cfdeb
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81755516"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195986"
 ---
-# <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure biztonsági alapkonfiguráció a Redis azure-gyorsítótárához
+# <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-beli biztonsági alaptervek az Azure cache-hez a Redis
 
-Az Azure Security Baseline for Azure Cache for Redis olyan javaslatokat tartalmaz, amelyek segítenek az üzembe helyezés biztonsági állapotának javításában.
+A Redis készült Azure-gyorsítótár Azure-beli biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javítható az üzemelő példány biztonsági helyzete.
 
-A szolgáltatás alapkonfigurációja az [Azure Security Benchmark 1.0-s verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tartalmaz arra vonatkozóan, hogy miként biztosíthatja felhőalapú megoldásait az Azure-ban az ajánlott eljárásokra vonatkozó útmutatónkkal.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security Baselines overview](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt a [Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Erőforrások védelme hálózati biztonsági csoportokkal vagy az Azure tűzfallal a virtuális hálózaton
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
 
-**Útmutató:** Telepítse az Azure Cache redis példány egy virtuális hálózaton (VNet). A virtuális hálózat egy magánhálózat a felhőben. Ha egy Azure-gyorsítótár redis-példány van konfigurálva egy virtuális hálózat, nem nyilvánosan címezhető, és csak a virtuális gépek és alkalmazások a virtuális hálózaton belül érhető el.
+**Útmutató**: az Azure cache üzembe helyezése a Redis-példányon egy virtuális hálózaton (VNet) belül. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el.
 
-Az IP-cím kezdő és záró tartományával rendelkező tűzfalszabályokat is megadhat. Ha a tűzfalszabályok konfigurálva vannak, csak a megadott IP-címtartományokból származó ügyfélkapcsolatok kapcsolódhatnak a gyorsítótárhoz.
+A tűzfalszabályok a kezdő és a záró IP-címtartomány is megadhatók. A tűzfalszabályok konfigurálásakor csak a megadott IP-címtartományok kapcsolatai kapcsolódhatnak a gyorsítótárhoz.
 
-A virtuális hálózati támogatás beállítása prémium szintű Azure-gyorsítótárhoz a Redis számára:
+A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
-Az Azure Cache beállítása redis-i tűzfalszabályokhoz:
+Az Azure cache konfigurálása Redis tűzfalszabályok esetén:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: A virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató:** Ha a virtuális gépek üzembe helyezése ugyanabban a virtuális hálózatban, mint az Azure Cache for Redis példány, használhatja a hálózati biztonsági csoportok (NSG) az adatok kiszivárgásának kockázatának csökkentése érdekében. Engedélyezze az NSG-folyamatnaplókat, és küldjön naplókat egy Azure Storage-fiókba a forgalom naplózása érdekében. NSG-folyamatnaplókat is küldhet a Log Analytics-munkaterületre, és a Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. A Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati helytelen konfigurációk azonosítása.
+**Útmutatás**: ha a Virtual Machines a Redis-példányhoz tartozó Azure cache-vel azonos virtuális hálózaton vannak telepítve, akkor a hálózati biztonsági csoportok (NSG-EK) segítségével csökkentheti az adatkiszűrése kockázatát. NSG-adatforgalmi naplók engedélyezése és naplók küldése Azure Storage-fiókba forgalom-ellenőrzés céljából. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-Az NSG-folyamatnaplók engedélyezése:
+A NSG folyamat naplófájljainak engedélyezése:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -56,41 +56,41 @@ A Traffic Analytics engedélyezése és használata:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Védje a kritikus webes alkalmazásokat
+### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert rosszindulatú IP-címekkel folytatott kommunikáció megtagadása
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutató:** Az Azure Virtual Network (VNet) központi telepítése fokozott biztonságot és elkülönítést biztosít az Azure Cache for Redis számára, valamint az alhálózatok, a hozzáférés-vezérlési szabályzatok és egyéb funkciók a hozzáférés további korlátozása érdekében. Virtuális hálózatban üzembe helyezve az Azure Cache for Redis nem nyilvánosan címezhető, és csak a virtuális gépek és a virtuális hálózaton belüli alkalmazások érhetők el.
+**Útmutató**: az Azure Virtual Network (VNet) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure cache Redis, valamint az alhálózatok, hozzáférés-vezérlési házirendek és egyéb funkciók számára a hozzáférés további korlátozásához. A VNet-ben üzembe helyezett Azure cache nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el.
 
-Engedélyezze a DDoS Protection Standard ot az Azure-gyorsítótárhoz a Redis-példányokhoz társított virtuális hálózatokon, hogy megvédje az elosztott szolgáltatásmegtagadási (DDoS) támadásokat. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú vagy nem használt internetes IP-címekkel folytatott kommunikációt.
+A Redis-példányok esetében az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem érdekében engedélyezze az Azure cache-hez társított virtuális hálózatok DDoS Protection szabványt. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-A virtuális hálózati támogatás beállítása prémium szintű Azure-gyorsítótárhoz a Redis számára:
+A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
-Az Azure DDoS Protection Standard kezelése az Azure Portalhasználatával:
+Azure DDoS Protection standard kezelése a Azure Portal használatával:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Hálózati csomagok és folyamatnaplók rögzítése
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: hálózati csomagok és adatforgalmi naplók rögzítése
 
-**Útmutató:** Ha a virtuális gépek üzembe helyezése ugyanabban a virtuális hálózatban, mint az Azure Cache for Redis példány, használhatja a hálózati biztonsági csoportok (NSG) az adatok kiszivárgásának kockázatának csökkentése érdekében. Engedélyezze az NSG-folyamatnaplókat, és küldjön naplókat egy Azure Storage-fiókba a forgalom naplózása érdekében. NSG-folyamatnaplókat is küldhet a Log Analytics-munkaterületre, és a Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. A Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati helytelen konfigurációk azonosítása.
+**Útmutató**: Ha a virtuális gépeket ugyanabban a virtuális hálózatban telepítik, mint a Redis-példány Azure-gyorsítótárát, akkor a hálózati biztonsági csoportok (NSG-EK) használatával csökkentheti az adatkiszűrése kockázatát. NSG-adatforgalmi naplók engedélyezése és naplók küldése Azure Storage-fiókba forgalom-ellenőrzés céljából. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-Az NSG-folyamatnaplók engedélyezése:
+A NSG folyamat naplófájljainak engedélyezése:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -98,69 +98,69 @@ A Traffic Analytics engedélyezése és használata:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Hálózati behatolásészlelő/behatolás-megelőző rendszerek (IDS/IPS) telepítése
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-**Útmutató:** Ha az Azure Cache for Redis az Azure App Service-en futó webalkalmazásokkal vagy számítási példányokkal használja, telepítse az összes erőforrást egy Azure virtuális hálózaton (VNet) belül, és biztonságos legyen egy Azure webalkalmazás-tűzfallal (WAF) a webalkalmazás-átjárón. Állítsa be úgy a WAF-ot, hogy "Megelőzési módban" fusson. A megelőzési mód blokkolja a szabályok által észlelt behatolásokat és támadásokat. A támadó "403-as jogosulatlan hozzáférés" kivételt kap, és a kapcsolat megszakad. A megelőzési mód rögzíti az ilyen támadásokat a WAF-naplókban.
+**Útmutató**: Ha az Azure cache-t az Azure app Service-vagy számítási példányokon futó webalkalmazások Redis használja, helyezzen üzembe minden erőforrást egy azure-Virtual Network (VNet) belül, és gondoskodjon az Azure webalkalmazási TŰZFALLAL (WAF) a webes Application Gateway. Konfigurálja úgy a WAF, hogy "prevenciós módban" fusson. A megelőzési mód blokkolja a behatolásokat és a szabályok által észlelhető támadásokat. A támadó "403 jogosulatlan hozzáférés" kivételt kap, és a kapcsolat bezárult. A megelőzési mód rögzíti az ilyen támadásokat a WAF-naplókban.
 
-Másik lehetőségként választhat egy ajánlatot az Azure Marketplace-en, amely támogatja az IDS/IPS funkciók hasznos terhelés ellenőrzése és/vagy anomáliaészlelési képességek.
+Azt is megteheti, hogy az Azure piactéren olyan ajánlatot választ, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok ellenőrzése és/vagy anomália észlelési képességei alapján.
 
-Ismerje meg az Azure WAF képességeit:
+Az Azure WAF képességeinek megismerése:
 
 https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview
 
-Az Azure WAF telepítése:
+Az Azure WAF üzembe helyezése:
 
 https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag
 
-Azure Piactér:
+Azure Marketplace:
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: A webes alkalmazások forgalmának kezelése
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
-**Útmutató:** A virtuális hálózati szolgáltatás címkék segítségével határozza meg a hálózati hozzáférés-vezérlés a hálózati biztonsági csoportok (NSG) vagy az Azure Firewall. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatáscímke nevének (pl. ApiManagement) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
+**Útmutató**: hálózati biztonsági csoportok (NSG-EK) vagy Azure Firewall hálózati hozzáférés-vezérlésének definiálásához használja a Virtual Network szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-Az összetett biztonsági konfiguráció egyszerűsítéséhez alkalmazásbiztonsági csoportokat (ASG) is használhat. Az ASG-k lehetővé teszik a hálózati biztonság konfigurálását az alkalmazás szerkezetének természetes kiterjesztéseként, lehetővé téve a virtuális gépek csoportosítását és a hálózati biztonsági házirendek definiálását az adott csoportok alapján.
+Az alkalmazás biztonsági csoportjai (ASG-EK) is használhatók az összetett biztonsági konfiguráció egyszerűsítéséhez. A ASG lehetővé teszi a hálózati biztonság konfigurálását az alkalmazások struktúrájának természetes kiterjesztéseként, lehetővé téve a virtuális gépek csoportosítását és a hálózati biztonsági házirendek definiálását ezen csoportok alapján.
 
-Virtuális hálózati szolgáltatás címkék:
+Virtuális hálózati szolgáltatás címkéi:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-Alkalmazásbiztonsági csoportok:
+Alkalmazás biztonsági csoportjai:
 
 https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációinak karbantartása
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató:** Az Azure-gyorsítótárhoz a Redis-példányok hoz az Azure-szabályzattal szabványos biztonsági konfigurációk at definiálhat és valósíthat meg. Azure Policy aliasok a "Microsoft.Cache" és a "Microsoft.Network" névterek egyéni szabályzatok naplózására vagy érvényesítésére az Azure Cache redis példányok. A beépített házirend-definíciókat is használhatja, például:
+**Útmutató**: az Azure cache-hez kapcsolódó hálózati erőforrásokra vonatkozó szabványos biztonsági konfigurációk definiálása és implementálása Azure Policy Redis-példányokhoz. Használjon Azure Policy aliasokat a "Microsoft. cache" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre az Azure cache Redis-példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Olyan beépített szabályzat-definíciókat is használhat, mint például a következők:
 
-Csak a Redis cache-hez való biztonságos kapcsolatokat kell engedélyezni
+Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 
-A DDoS Protection Standard-ot engedélyezni kell
+DDoS Protection a standardot engedélyezni kell
 
-Azure Blueprints is használhatja a nagyméretű Azure-telepítések egyszerűsítésére a csomagolás kulcsfontosságú környezeti összetevők, például az Azure Resource Manager (ARM) sablonok, szerepköralapú hozzáférés-vezérlés (RBAC) és a szabályzatok, egyetlen tervezet definíciójában. Egyszerűen alkalmazhatja a tervezetet az új előfizetésekre és környezetekre, és finomíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például a Azure Resource Manager-(ARM-) sablonokat, a szerepköralapú hozzáférés-vezérlést (RBAC) és a szabályzatokat egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
-Az Azure-szabályzat konfigurálása és kezelése:
+Azure Policy konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -168,225 +168,225 @@ Azure Blueprint létrehozása:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: A forgalom konfigurációs szabályainak dokumentálása
+### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
-**Útmutató:** Az Azure-gyorsítótárhoz társított hálózati erőforrások hoz használatával a Redis üzembe helyezéséhez logikusan rendszerezheti őket egy taxonómia.
+**Útmutató**: a Redis üzembe helyezéséhez az Azure cache-hez társított hálózati erőforrásokhoz használjon címkéket, hogy logikailag szervezze őket a besorolásba.
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrás-konfigurációk figyelésére és a változások észlelésére
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
-**Útmutató:** Az Azure-tevékenységnapló segítségével figyelheti a hálózati erőforrás-konfigurációkat, és észlelheti az Azure-gyorsítótárhoz a Redis-példányok hoz kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat az Azure Monitoron belül, amelyek a kritikus hálózati erőforrások módosításakor aktiválódnak.
+**Útmutató**: az Azure-tevékenység naplójának használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a Redis-példányok Azure cache-hez kapcsolódó hálózati erőforrásainak változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása:
+Az Azure Activity log eseményeinek megtekintése és beolvasása:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Riasztások létrehozása az Azure Monitorban:
+Riasztások létrehozása a Azure Monitorban:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ: [Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Jóváhagyott időszinkronizációs források használata
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
-**Útmutató: A**Microsoft fenntartja az Azure-erőforrásokhoz, például a Redis-hez az időbélyegek hez használt időforrást a naplókban.
+**Útmutató**: a Microsoft fenntartja az Azure-erőforrásokhoz, például az Azure cache-hez használt időforrást a naplókban található időbélyegek Redis.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: A központi biztonsági napló kezelésének konfigurálása
+### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-**Útmutató:** Engedélyezze az Azure-tevékenységnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics-munkaterületre, az Azure-eseményközpontba vagy az Azure storage-fiókba archiválási célokra. A tevékenységnaplók betekintést nyújtanak az Azure-gyorsítótárban a Redis-példányok a vezérlősík szintjén végrehajtott műveletekbe. Az Azure-tevékenységnapló adatai alapján meghatározhatja a "mit, ki és mikor" bármely írási műveletek (PUT, POST, DELETE) végzett a vezérlősík szintjén az Azure Cache redis példányok.
+**Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak az Azure-gyorsítótárban végrehajtott műveletekre a Redis-példányok szintjén. Az Azure-tevékenység naplójának adatai segítségével meghatározhatja a "mi, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az Azure cache Redis-példányok esetében végzett vezérlési sík szintjén.
 
-Az Azure-tevékenységnapló diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Az Azure-erőforrások naplózásának engedélyezése
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
-**Útmutató:** Engedélyezze az Azure-tevékenységnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics-munkaterületre, az Azure-eseményközpontba vagy az Azure storage-fiókba archiválási célokra. A tevékenységnaplók betekintést nyújtanak az Azure-gyorsítótárban a Redis-példányok a vezérlősík szintjén végrehajtott műveletekbe. Az Azure-tevékenységnapló adatai alapján meghatározhatja a "mit, ki és mikor" bármely írási műveletek (PUT, POST, DELETE) végzett a vezérlősík szintjén az Azure Cache redis példányok.
+**Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak az Azure-gyorsítótárban végrehajtott műveletekre a Redis-példányok szintjén. Az Azure-tevékenység naplójának adatai segítségével meghatározhatja a "mi, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az Azure cache Redis-példányok esetében végzett vezérlési sík szintjén.
 
-Míg a metrikák érhetők el a diagnosztikai beállítások engedélyezésével, az adatsíknaplózás még nem érhető el az Azure Cache for Redis.
+Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésével, a naplózás az adatsíkon még nem érhető el az Azure cache for Redis számára.
 
-Az Azure-tevékenységnapló diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Biztonsági naplók gyűjtése az operációs rendszerekről
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: A biztonsági napló tárolásának megőrzése
+### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
-**Útmutató:** Az Azure Monitorban állítsa be a log-megőrzési időszakot az Azure-gyorsítótárhoz társított Log Analytics-munkaterületekhez a Redis-példányok hoz a szervezet megfelelőségi előírásainak megfelelően.
+**Útmutató**: a Azure monitor az Azure cache-hez társított log Analytics-munkaterületek naplózási megőrzési időszakának beállítása a szervezet megfelelőségi előírásai szerint Redis-példányokhoz.
 
-Vegye figyelembe, hogy az adatsíkon a naplózás még nem érhető el az Azure Cache for Redis.
+Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az Azure cache for Redis számára.
 
-A naplómegőrzési paraméterek beállítása:
+Napló-megőrzési paraméterek beállítása:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Naplók figyelése és felülvizsgálata
+### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
-**Útmutató:** Engedélyezze az Azure-tevékenységnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics-munkaterületre. Lekérdezéseket végezhet a Log Analytics szolgáltatásban a kifejezések kereséséhez, trendek azonosításához, minták elemzéséhez, és számos más elemzési adatot biztosíthat a Redis Azure-gyorsítótárához gyűjtött tevékenységnapló-adatok alapján.
+**Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez, valamint számos más elemzéshez a Redis-hez készült Azure cache-hez gyűjtött tevékenység-naplózási adatok alapján.
 
-Vegye figyelembe, hogy az adatsíkon a naplózás még nem érhető el az Azure Cache for Redis.
+Vegye figyelembe, hogy az adatsíkon végzett naplózás még nem érhető el az Azure cache for Redis számára.
 
-Az Azure-tevékenységnapló diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak engedélyezése:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Azure-tevékenységnaplók gyűjtése és elemzése az Azure-figyelő Naplóelemzési munkaterületén:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
+Azure-beli Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Riasztás engedélyezése rendellenes tevékenységre
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
-**Útmutató:** Konfigurálhatja a redis-példányok azure-gyorsítótárához kapcsolódó metrikák és tevékenységnaplók alapján riasztások fogadására. Az Azure Monitor lehetővé teszi, hogy konfigurálja a riasztást, hogy küldjön egy e-mail értesítést, hívja meg a webhook, vagy egy Azure Logic-alkalmazás meghívása.
+**Útmutató**: beállíthatja, hogy a riasztásokat a Redis-példányokhoz tartozó Azure cache-hez kapcsolódó mérőszámok és tevékenységi naplók alapján fogadja. Azure Monitor lehetővé teszi a riasztások e-mail-értesítések küldését, egy webhook meghívását vagy egy Azure logikai alkalmazás meghívását.
 
-Míg a metrikák érhetők el a diagnosztikai beállítások engedélyezésével, az adatsíknaplózás még nem érhető el az Azure Cache for Redis.
+Bár a mérőszámok elérhetők a diagnosztikai beállítások engedélyezésével, a naplózás az adatsíkon még nem érhető el az Azure cache for Redis számára.
 
-Az Azure Cache for Redis riasztásainak konfigurálása:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
+Riasztások konfigurálása az Azure cache Redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: A kártevőirtó naplózás központosítása
+### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
-**Útmutatás**: Nem alkalmazható; Az Azure Cache for Redis nem dolgozza fel és nem készít kártevők elleni kapcsolódó naplókat.
+**Útmutató**: nem alkalmazható; A Redis-hez készült Azure cache nem dolgoz fel és nem hoz létre kártevő-ellenes kapcsolódó naplókat.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="29-enable-dns-query-logging"></a>2.9: Dns-lekérdezésnaplózás engedélyezése
+### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
-**Útmutatás**: Nem alkalmazható; Az Azure Cache for Redis nem dolgozza fel és nem hoz létre DNS-sel kapcsolatos naplókat.
+**Útmutató**: nem alkalmazható; A Redis-hez készült Azure cache nem dolgozza fel vagy hozza létre a DNS-sel kapcsolatos naplókat.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Parancssori naplózás engedélyezése
+### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt a [Biztonságvezérlés: Identitás- és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
+*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Az adminisztratív számlák leltárának fenntartása
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutatás:** Az Azure Active Directory (AD) beépített szerepköröket, amelyeket explicit módon hozzá kell rendelni, és lekérdezhető. Az Azure AD PowerShell modul használatával ad hoc lekérdezések végrehajtásával felügyeleti csoportok tagjaiként rendelkező fiókok felderítéséhez.
+**Útmutató**: a Azure Active Directory (ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-Címtárszerepkör beszereznie az Azure AD-ben a PowerShell használatával:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Címtárszerepkör tagjainak beszereznie az Azure AD-ben a PowerShell segítségével:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Adott esetben változtassa meg az alapértelmezett jelszavakat
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató:** A redis-i Azure Cache-hez való síkhozzáférés vezérlése az Azure Active Directory (AD) szolgáltatáson keresztül történik. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával. 
+**Útmutató**: a Redis Azure cache-hez való hozzáférésének szabályozása Azure Active Directory (ad) segítségével történik. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával. 
 
-Adatsík-hozzáférés az Azure Cache for Redis hozzáférés-kulcsok segítségével vezérelhető. Ezeket a kulcsokat a gyorsítótárhoz csatlakozó ügyfelek használják, és bármikor újragenerálhatók.
+Az Azure cache Redis-hez való hozzáférését hozzáférési kulcsok vezérlik. Ezeket a kulcsokat a gyorsítótárhoz csatlakozó ügyfelek használják, és bármikor újra létrehozhatók.
 
-Nem ajánlott alapértelmezett jelszavakat építeni az alkalmazásba. Ehelyett tárolhatja a jelszavakat az Azure Key Vaultban, majd az Azure Active Directory segítségével lekérheti őket.
+Nem ajánlott alapértelmezett jelszavakat létrehozni az alkalmazásba. Ehelyett a jelszavakat Azure Key Vaultban tárolhatja, majd a Azure Active Directory használatával lekérheti azokat.
 
-Az Azure Cache redis-hozzáférési kulcsok újragenerálása:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
+Az Azure cache újragenerálása a Redis hozzáférési kulcsaihoz:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Dedikált felügyeleti fiókok használata
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
-**Útmutató**: Szabványos működési eljárások létrehozása a kijelölt adminisztratív számlák használata körül. Az Azure Security Center identitás- és hozzáférés-kezelése segítségével figyelheti a felügyeleti fiókok számát.
+**Útmutató**: szabványos üzemeltetési eljárások létrehozása a dedikált rendszergazdai fiókok használata körül. A rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelés lehetőséget.
 
-Emellett a dedikált felügyeleti fiókok nyomon követéséhez az Azure Security Center vagy a beépített Azure-szabályzatok ajánlásait is használhatja, például a következőket:
+Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése érdekében Azure Security Center vagy beépített Azure-szabályzatokból származó javaslatokat is használhat, például:
 
-- Az előfizetéshez egynél több tulajdonosnak kell hozzárendelnie
+- Az előfizetéshez egynél több tulajdonos rendelhető hozzá
 
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
 
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-Az Azure Security Center használata az identitás és a hozzáférés figyelésére (előzetes verzió):https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Az identitás és hozzáférés figyelésének Azure Security Center használata (előzetes verzió):https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Az Azure-szabályzat használata:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) használata az Azure Active Directoryval
-
-**Útmutató:** Az Azure Cache for Redis hozzáférési kulcsokat használ a felhasználók hitelesítéséhez, és nem támogatja az egyszeri bejelentkezést (SSO) az adatsík szintjén. Az Azure Cache for Redis vezérlősíkjához való hozzáférés rest API-n keresztül érhető el, és támogatja az SSO-t. A hitelesítéshez állítsa be a kérelmek engedélyezési fejlécét egy JSON webtokenre, amelyet az Azure Active Directoryból szerez be.
-
-Ismerje meg az Azure Cache for Redis REST API-t:https://docs.microsoft.com/rest/api/redis/
-
-Az SSO ismertetése az Azure AD-vel:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+A Azure Policy használata:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Többtényezős hitelesítés használata az összes Azure Active Directory-alapú hozzáféréshez
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató:** Engedélyezze az Azure Active Directory (AD) többtényezős hitelesítést (MFA), és kövesse az Azure Security Center identitás- és hozzáférés-kezelési javaslatait.
+**Útmutató**: a Redis készült Azure cache hozzáférési kulcsokat használ a felhasználók hitelesítéséhez, és nem támogatja az egyszeri bejelentkezést (SSO) az adatsík szintjén. Az Azure cache Redis-hez való hozzáférése REST APIon keresztül érhető el, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
+
+Az Azure cache ismertetése a Redis REST API:https://docs.microsoft.com/rest/api/redis/
+
+Az SSO megismerése az Azure AD-vel:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
+
+**Útmutató**: a Azure Active Directory (AD) multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatainak követése.
 
 Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Az Azure Security Center identitásának és hozzáférésének figyelése:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identitás és hozzáférés figyelése Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Használjon dedikált gépeket (kiemelt hozzáférésű munkaállomásokat) minden adminisztratív feladathoz
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
-**Útmutató:** Használja a kiemelt hozzáférésű munkaállomások (PAW) a többtényezős hitelesítés (MFA) konfigurálva, hogy jelentkezzen be, és konfigurálja az Azure-erőforrásokat.
+**Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált, multi-Factor Authentication (MFA) rendszerjogosultságú hozzáférési munkaállomások használata.
 
-Tudnivalók a kiemelt hozzáférésű munkaállomásokról:
+További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
@@ -394,130 +394,130 @@ Az MFA engedélyezése az Azure-ban:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: A gyanús tevékenységek naplózása és riasztása az adminisztratív fiókokból
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-**Útmutató:** Használja az Azure Active Directory (AD) kiemelt identitáskezelés (PIM) a naplók és riasztások létrehozásához, ha gyanús vagy nem biztonságos tevékenység történik a környezetben.
+**Útmutatás**: Azure Active Directory (AD) PRIVILEGED Identity Management (PIM) használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
 
-Emellett az Azure AD-kockázatészlelések használatával megtekintheti a riasztásokat és a kockázatos felhasználói viselkedésről szóló jelentéseket.
+Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos felhasználói viselkedéssel kapcsolatos riasztások és jelentések megtekintéséhez.
 
-Kiemelt identitáskezelés (PIM) telepítése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Ismerje meg az Azure AD-kockázatészleléseket:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Az Azure-erőforrások kezelése csak jóváhagyott helyekről
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
-**Útmutató:** Konfigurálja az elnevezett helyeket az Azure Active Directory (AD) feltételes hozzáférésben, hogy csak az IP-címtartományok vagy országok/régiók meghatározott logikai csoportjaiból engedélyezze a hozzáférést.
+**Útmutatás**: Azure Active Directory (ad) feltételes hozzáférés elnevezett helyeinek konfigurálása, hogy csak az IP-címtartományok vagy országok/régiók egyedi logikai csoportjaihoz férhessenek hozzá.
 
-Named-helyek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Elnevezett helyszínek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="39-use-azure-active-directory"></a>3.9: Az Azure Active Directory használata
+### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató:** Használja az Azure Active Directory (AD) a központi hitelesítési és engedélyezési rendszer. Az Azure AD védi az adatokat azáltal, hogy erős titkosítást használ az inaktív és az átvitel során. Az Azure AD is sók, kihegedések, és biztonságosan tárolja a felhasználói hitelesítő adatokat.
+**Útmutató**: a Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
-Az Azure AD-hitelesítés nem használható az Azure Cache-hez való közvetlen hozzáféréshez a Redis adatsíkjához, azonban az Azure AD hitelesítő adatait a vezérlősík szintjén (azaz az Azure Portalon) lehet használni az Azure Cache for Redis hozzáférési kulcsok vezérléséhez.
+Az Azure AD-hitelesítés nem használható az Azure cache Redis adatsíkon való közvetlen elérésére, azonban az Azure AD hitelesítő adatai a vezérlési sík szintjén (például a Azure Portal) az Azure cache vezérléséhez használhatók az Redis hozzáférési kulcsaihoz.
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Rendszeresen vizsgálja felül és egyeztetje össze a felhasználói hozzáférést
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató:** Az Azure Active Directory (AD) naplókat biztosít az elavult fiókok felderítéséhez. Emellett az Azure Identity Access-vélemények használatával hatékonyan kezelheti a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen ellenőrizhető, hogy csak a megfelelő Felhasználók rendelkezhessenek folyamatos hozzáféréssel. 
+**Útmutató**: a Azure Active Directory (ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá. 
 
-Ismerje meg az Azure AD-jelentéseket:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Az Azure AD jelentéskészítés ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Az Azure Identity Access-vélemények használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Az Azure Identity hozzáférési felülvizsgálatok használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Az inaktivált fiókok elérésére tett kísérletek figyelése
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-**Útmutató:** Hozzáféréssel rendelkezik az Azure Active Directory (AD) bejelentkezési tevékenységhez, a naplózási és kockázati eseménynapló-forrásokhoz, amelyek lehetővé teszik az Azure Sentinel vagy egy külső SIEM integrálását.
+**Útmutató**: hozzáférhet Azure Active Directory (ad) bejelentkezési tevékenységhez, a naplózási és a kockázati Eseménynapló-forrásokhoz, amelyek lehetővé teszik az Azure Sentinel vagy egy harmadik féltől származó Siem integrálását.
 
-Ezt a folyamatot egyszerűsítheti az Azure AD felhasználói fiókok diagnosztikai beállításainak létrehozásával, valamint a naplónaplók és a bejelentkezési naplók elküldésével a Log Analytics-munkaterületre. A Log Analytics szolgáltatáson belül konfigurálhatja a kívánt naplóriasztásokat.
+Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-Az Azure-tevékenységnaplók integrálása az Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-beli tevékenység-naplók integrálása a Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 A fedélzeti Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Riasztás a fiók bejelentkezési viselkedésének eltéréséről
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-**Útmutató:** A fiók bejelentkezési viselkedéseltérésa a vezérlősíkon, az Azure Active Directory (AD) identitásvédelem és a kockázatészlelési funkciók konfigurálásához automatikus válaszok észlelt gyanús műveletek felhasználói identitások kapcsolatos. További vizsgálat céljából adatokat is bevihet az Azure Sentinelbe.
+**Útmutató**: a fiók bejelentkezési viselkedése a vezérlési síkon a Azure Active Directory (ad) Identity Protection és a kockázati észlelési funkciók használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-Az Azure AD kockázatos bejelentkezései megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Az Azure AD kockázatos bejelentkezések megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Az identitásvédelem kockázati házirendjeinek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Az Azure Sentinel fedélzeti szolgáltatása:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: A Microsoft hozzáférésének biztosítása a releváns ügyféladatokhoz támogatási forgatókönyvek során
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
-**Útmutató**: Még nem áll rendelkezésre; Az ügyfélszéf még nem támogatott a Redis-gyorsítótárban.
+**Útmutató**: még nem érhető el; A Ügyfélszéf még nem támogatott az Azure cache for Redis esetében.
 
-Az ügyfélszéfáltal támogatott szolgáltatások listája:
+Ügyfélszéf által támogatott szolgáltatások listája:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információ: [Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Az érzékeny információk leltárának karbantartása
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
-**Útmutató:** Címkék használatával segítséget nyújt a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követéséhez.
+**Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Érzékeny információkat tároló vagy feldolgozó rendszerek elkülönítése
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató:** Külön előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztéshez, teszteléshez és éles séghez. A Redis-példányok Azure-gyorsítótárát virtuális hálózatnak/alhálózatnak kell elválasztani, és megfelelően címkézni kell. Szükség esetén használja az Azure Cache for Redis tűzfal szabályok at, hogy csak a megadott IP-címtartományokból származó ügyfélkapcsolatok kapcsolódhassanak a gyorsítótárhoz.
+**Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. A Redis példányok Azure cache-t virtuális hálózat/alhálózat szerint kell elválasztani. Igény szerint a Redis tűzfal Azure cache szolgáltatásával definiálhat szabályokat úgy, hogy csak a megadott IP-címtartományok kapcsolatai kapcsolódhatnak a gyorsítótárhoz.
 
 További Azure-előfizetések létrehozása:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Felügyeleti csoportok létrehozása:
+Management Groups létrehozása:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-Az Azure Cache for Redis telepítése virtuális hálózatba:
+Az Azure cache üzembe helyezése a Redis egy vnet:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
-Az Azure Cache beállítása redis-i tűzfalszabályokhoz:
+Az Azure cache konfigurálása Redis tűzfalszabályok esetén:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
@@ -525,191 +525,191 @@ Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: A bizalmas adatok jogosulatlan továbbításának figyelése és blokkolása
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
-**Útmutató**: Még nem áll rendelkezésre; adatazonosítási, besorolási és veszteségmegelőzési funkciók még nem érhetők el az Azure Cache for Redis számára.
+**Útmutató**: még nem érhető el; az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure cache for Redis esetében.
 
-A Microsoft kezeli az Azure Cache for Redis alapjául szolgáló infrastruktúrát, és szigorú vezérlőket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megelőzése érdekében.
+A Microsoft kezeli az Azure cache mögöttes infrastruktúráját a Redis számára, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megakadályozására.
 
-Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az összes bizalmas információ titkosítása szállítás közben
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató:** Az Azure Cache for Redis alapértelmezés szerint TLS-titkosítással titkosított kommunikációt igényel. A TLS 1.0-s, 1.1-es és 1.2-es verziója jelenleg támogatott. A TLS 1.0 és az 1.1 azonban az egész iparágra kiterjedő eprecáció felé halad, ezért használja a TLS 1.2-t, ha egyáltalán lehetséges. Ha az ügyfélkönyvtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése az Azure Portalon vagy a felügyeleti API-kon keresztül végezhető el. Ilyen esetekben, amikor a titkosított kapcsolatok nem lehetséges, a gyorsítótár és az ügyfélalkalmazás virtuális hálózatba helyezése ajánlott lenne.
+**Útmutató**: a Redis-hez készült Azure cache ALAPÉRTELMEZÉS szerint TLS-titkosítású kommunikációt igényel. A TLS 1,0, 1,1 és 1,2 verziók jelenleg támogatottak. Azonban a TLS 1,0 és a 1,1 egy olyan útvonalon van, amely az iparágra kiterjedő elavult, ezért a TLS 1,2-et használja, ha ez egyáltalán lehetséges. Ha az ügyféloldali kódtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése a Azure Portal vagy a felügyeleti API-kon keresztül végezhető el. Olyan esetekben, ahol a titkosított kapcsolatok nem lehetségesek, ajánlott a gyorsítótár és az ügyfélalkalmazás virtuális hálózatra helyezése.
 
-A Redis Azure-gyorsítótárának átvitele során a titkosítás megismerése:
+Az Azure cache Redis való átvitelének ismertetése:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices
 
-A virtuális hálózatok gyorsítótár-forgatókönyveiben használt szükséges portok ismertetése:
+A vnet cache-forgatókönyvekben használt szükséges portok ismertetése:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosítására
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
-**Útmutató:** Az adatok azonosításával, besorolással és veszteségmegelőzési funkciókkal még nem érhetők el az Azure Cache for Redis számára. A bizalmas adatokat tartalmazó példányokat, és harmadik féltől származó megoldást valósíthat meg, ha megfelelőségi célokból szükséges.
+**Útmutató**: az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure cache for Redis esetében. A bizalmas adatokat tartalmazó példányok címkézése, valamint a harmadik féltől származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
 
-A Microsoft által kezelt mögöttes platform esetében a Microsoft minden ügyféltartalmat érzékenynek tekint, és mindent megtesz azért, hogy megvédje az ügyfelek adatvesztését és expozícióját. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Az Azure RBAC használatával szabályozhatja az erőforrásokhoz való hozzáférést
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató:** Az Azure Active Directory (AAD) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure Cache for Redis vezérlősíkhoz (azaz az Azure Portalhoz) való hozzáférést. 
+**Útmutató**: a Azure Active Directory (HRE) szerepköralapú hozzáférés-vezérlés (RBAC) segítségével szabályozhatja a Redis-vezérlési sík Azure cache-hez való hozzáférését (például Azure Portal). 
 
-Az RBAC konfigurálása az Azure-ban:
+A RBAC konfigurálása az Azure-ban:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: A hozzáférés-vezérlés kényszerítése gazdagépalapú adatveszteség-megelőzéssel
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-A Microsoft kezeli az Azure Cache for Redis alapjául szolgáló infrastruktúrát, és szigorú vezérlőket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megelőzése érdekében.
+A Microsoft kezeli az Azure cache mögöttes infrastruktúráját a Redis számára, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megakadályozására.
 
-Az ügyfelek adatainak védelme az Azure-ban:
+Az ügyfelek adatvédelem az Azure-ban:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Bizalmas információk titkosítása nyugalmi
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
-**Útmutató: Az**Azure Cache for Redis tárolja az ügyféladatokat a memóriában, és bár erősen védett számos, a Microsoft által végrehajtott vezérlők, a memória alapértelmezés szerint nem titkosított. Ha a szervezet megköveteli, titkosítsa a tartalmat, mielőtt az Azure Cache for Redis tárolja.
+**Útmutató**: az Azure cache for Redis tárolja az ügyféladatokat a memóriában, és a Microsoft által megvalósított számos vezérlő erősen védi a memóriát, alapértelmezés szerint nincs titkosítva. Ha a szervezete megköveteli, a tartalom titkosítása az Azure cache-ben a Redis-hez való tárolás előtt.
 
-Ha az Azure Cache for Redis "Redis data persistence" funkciót használja, az adatokat egy Azure Storage-fiókba küldi el, amely az Ön tulajdonában van és kezeli. A gyorsítótár létrehozása során az "Új Azure-gyorsítótár redishez" panelről konfigurálhatja az adatmegőrzést, és a meglévő prémium szintű gyorsítótárak Erőforrás menüjében.
+Ha az Azure cache-t használja a "Redis adatmegőrzés" Redis-szolgáltatáshoz, a rendszer az Ön tulajdonában lévő és kezelt Azure Storage-fiókba küldi az adatgyűjtést. Az "új Azure cache for Redis" panel megőrzése a gyorsítótár létrehozásakor és a meglévő prémium gyorsítótárak erőforrás menüjében állítható be.
 
-Az Azure Storage-ban tárolt adatok titkosítása és visszafejtése transzparens módon történik 256 bites AES titkosítással, amely az egyik legerősebb elérhető blokktitkosítás, és fips 140-2-kompatibilis. Az Azure Storage titkosítása nem tiltható le. A tárfiók titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy saját kulcsokkal kezelheti a titkosítást.
+Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás nem tiltható le. A Microsoft által felügyelt kulcsokat használhatja a Storage-fiók titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti.
 
-Az adatmegőrzés konfigurálása az Azure Cache for Redis-ben:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+Az adatmegőrzés konfigurálása az Azure cache-ben a Redis esetében:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-Az Azure Storage-fiókok titkosításának ismertetése:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Az Azure Storage-fiókok titkosításának megismerése:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-Az Azure-ügyfelek adatainak védelme:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az Azure Customer adatvédelem ismertetése:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Naplózza és figyelmeztesse a kritikus Azure-erőforrások változásait
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató:** Az Azure Monitor az Azure-tevékenységnapló használatával riasztásokat hozhat létre, amikor az Azure Cache for Redis és más kritikus vagy kapcsolódó erőforrások éles példányai módosulnak.
+**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a Redis és egyéb kritikus vagy kapcsolódó erőforrások esetében az Azure cache éles példányain végezheti el a módosításokat.
 
-Értesítések létrehozása az Azure-tevékenységnapló eseményeihez:
+Riasztások létrehozása az Azure Activity log-eseményekhez:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információt a [Biztonsági ellenőrzés: Biztonsági rés kezelése című](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)témakörben talál.*
+*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Automatikus biztonsági rés-ellenőrző eszközök futtatása
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutatás:** Kövesse az Azure Security Center ajánlásait az Azure-gyorsítótár redis-példányok és a kapcsolódó erőforrások védelmével kapcsolatban.
+**Útmutató**: Azure Security Center ajánlásainak követése az Azure cache Redis-példányokhoz és kapcsolódó erőforrásokhoz való biztonságossá tételéhez.
 
-A Microsoft biztonsági réskezelést hajt végre az Azure Cache for Redis szolgáltatást támogató mögöttes rendszereken.
+A Microsoft a Redis-hez készült Azure cache-t támogató mögöttes rendszereken a biztonsági rések felügyeletét végzi.
 
-Ismerje meg az Azure Security Center rekedéseit:https://docs.microsoft.com/azure/security-center/recommendations-reference
+Azure Security Center javaslatok ismertetése:https://docs.microsoft.com/azure/security-center/recommendations-reference
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Az operációs rendszer automatikus javításkezelési megoldásának telepítése
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Automatizált, harmadik féltől származó szoftverjavítás-kezelési megoldás telepítése
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: a harmadik féltől származó szoftveres javításokat kezelő megoldás telepítése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Hasonlítsa össze a biztonsági rés vizsgálatait
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Kockázatminősítési eljárás használata a felfedezett biztonsági rések helyreállításának rangsorolására
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
 
-**Útmutató: A**Microsoft biztonsági réskezelést hajt végre az Azure Cache for Redis szolgáltatást támogató mögöttes rendszereken.
+**Útmutató**: a Microsoft a Redis-hez készült Azure cache-t támogató mögöttes rendszereken a biztonsági rések felügyeletét hajtja végre.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információ: [Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Az Azure Asset Discovery használata
+### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
 
-**Útmutatás:** Az Azure Resource Graph használatával lekérdezheti/felderítheti az összes erőforrást (például a számítási, tárolási, hálózati, portok és protokollok stb.) az előfizetés(ek)en belül).  Biztosítsa a megfelelő (olvasási) engedélyeket a bérlőben, és számba vesse az összes Azure-előfizetést, valamint az előfizetéseken belüli erőforrásokat.
+**Útmutató**: az Azure Resource Graph használatával lekérdezheti vagy felderítheti az összes erőforrást (például számítási, tárolási, hálózati, portok és protokollok stb.) az előfizetés (ok) n belül.  Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek szerepelnek, valamint az összes Azure-előfizetés, valamint az előfizetésekben lévő erőforrások számbavétele.
 
-Bár a klasszikus Azure-erőforrások fedezhetők fel a Resource Graph, erősen ajánlott az Azure Resource Manager erőforrásainak létrehozása és használata a jövőben.
+Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
 
-Lekérdezések létrehozása az Azure Resource Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Az Azure RBAC megismerése:https://docs.microsoft.com/azure/role-based-access-control/overview
+Az Azure RBAC ismertetése:https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Az eszközök metaadatainak karbantartása
+### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
-**Útmutató:** Címkék alkalmazása az Azure-erőforrásokra, amelyek metaadatokat adnak, hogy logikusan rendszerezzék őket egy taxonómiába.
+**Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Jogosulatlan Azure-erőforrások törlése
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
-**Útmutató:** Szükség esetén tagging, felügyeleti csoportok és külön előfizetések használatával rendszerezheti és nyomon követheti az Azure Cache-t a Redis-példányok és a kapcsolódó erőforrások számára. A készlet rendszeres egyeztetése és a jogosulatlan erőforrások időben történő törlése az előfizetésből.
+**Útmutató**: címkézés, felügyeleti csoportok és külön előfizetések használata, ahol szükséges, az Azure cache rendszerezése és nyomon követése Redis-példányokhoz és kapcsolódó erőforrásokhoz. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-Emellett az Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 - Nem engedélyezett erőforrástípusok
 
@@ -717,231 +717,231 @@ Emellett az Azure-szabályzat használatával korlátozásokat helyezhet el az �
 
 További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Felügyeleti csoportok létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
 
 Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: A jóváhagyott Azure-erőforrások és szoftvercímek leltárának karbantartása
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: a jóváhagyott Azure-erőforrások és-szoftverek leltárának fenntartása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra és az Azure egészére szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat a számítási erőforrások és az Azure egészének fedezésére szolgál.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: A nem jóváhagyott Azure-erőforrások figyelése
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 Nem engedélyezett erőforrástípusok
 
 Engedélyezett erőforrástípusok
 
-Emellett az Azure Resource Graph használatával lekérdezheti/felderítheti az előfizetés(ek)en belüli erőforrásokat.
+Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Az Azure-szabályzat konfigurálása és kezelése:
+Azure Policy konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph segítségével:
+Lekérdezések létrehozása az Azure Graph használatával:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: A nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: A nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra és az Azure egészére szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat a számítási erőforrások és az Azure egészének fedezésére szolgál.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazásokat használjon
+### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
+### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
-**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 Nem engedélyezett erőforrástípusok
 
 Engedélyezett erőforrástípusok
 
-Az Azure-szabályzat konfigurálása és kezelése:
+Azure Policy konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása az Azure-szabályzattal:
+Adott erőforrástípus megtagadása a következővel: Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="610-implement-approved-application-list"></a>6.10: A jóváhagyott pályázati lista végrehajtása
+### <a name="610-implement-approved-application-list"></a>6,10: jóváhagyott alkalmazások listájának implementálása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: Korlátozza a felhasználók azon képességét, hogy parancsfájlokon keresztül kommunikáljanak az Azure Resources Managerrel
+### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: a felhasználók az Azure Resources Managerrel való interakcióra való képességének korlátozása parancsfájlok használatával
 
-**Útmutató: Konfigurálja**az Azure feltételes hozzáférést, hogy korlátozza a felhasználók azon képességét, hogy az Azure Resource Manager (ARM) konfigurálásával "Blokk hozzáférés" a "Microsoft Azure Management" app.
+**Útmutató**: az Azure feltételes hozzáférésének konfigurálása a felhasználók a Azure Resource Manager (ARM) szolgáltatással való interakciójának korlátozásához a "Microsoft Azure Management" alkalmazás "hozzáférés letiltása" beállításával.
 
-A feltételes hozzáférés beállítása az ARM-hoz való hozzáférés letiltására:
+Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához:
 
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre a számítási erőforrásokon belül
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizikailag vagy logikailag elkülönítve a magas kockázatú alkalmazásokat
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt a [Biztonsági ellenőrzés: Biztonságos konfiguráció című](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)témakörben talál.*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató:** Definiálja és valósítsa meg az Azure Cache for Redis-példányok szabványos biztonsági konfigurációit az Azure Policy használatával. Azure Policy-aliasok a "Microsoft.Cache" névtérben egyéni szabályzatok létrehozásához az Azure-gyorsítótár Redis-példányok naplózásához vagy kényszerítéséhez. Az Azure-gyorsítótárhoz a Redis-példányokhoz kapcsolódó beépített szabályzatdefiníciókat is használhatja, például:
+**Útmutató**: az Azure cache szabványos biztonsági konfigurációinak definiálása és implementálása a Redis-példányok Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. cache" névtérben egyéni szabályzatok létrehozásához az Azure cache Redis-példányok konfigurációjának naplózásához vagy érvényesítéséhez. Az Azure cache Redis-példányokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet, például:
 
-Csak a Redis cache-hez való biztonságos kapcsolatokat kell engedélyezni
+Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 
-Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Biztonságos operációsrendszer-konfigurációk létrehozása
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Biztonságos Azure-erőforrás-konfigurációk karbantartása
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
-**Útmutató:** Használja az Azure-szabályzat [megtagadás] és a [üzembe helyezés, ha nem létezik] biztonságos beállítások kényszerítése az Azure-erőforrások között.
+**Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Az Azure-szabályzat hatásainak megismerése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Biztonságos operációsrendszer-konfigurációk karbantartása
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
 
-**Útmutatás**: Nem alkalmazható; ez az iránymutatás számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások biztonságos tárolása
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
-**Útmutató:** Ha egyéni Azure-szabályzat-definíciókat vagy Azure Resource Manager-sablonokat használ az Azure-gyorsítótárhoz a Redis-példányok és a kapcsolódó erőforrások számára, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
+**Útmutató**: Ha a Redis-példányok és a kapcsolódó erőforrások esetében egyéni Azure Policy definíciókat vagy Azure Resource Manager sablonokat használ az Azure cache-hez, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-Kód tárolása az Azure DevOps-ban:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Kód tárolása az Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos dokumentáció:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Az Azure Repos dokumentációja:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Biztonságosan tárolhatja az operációs rendszer egyedi lemezképeit
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Rendszerkonfiguráció-kezelő eszközök telepítése
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 
-**Útmutató:** Azure-szabályzat aliasok a "Microsoft.Cache" névtérben egyéni szabályzatok riasztására, naplózására és kényszerítésére rendszerkonfigurációk létrehozásához. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirendkivételek kezeléséhez.
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. cache" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Rendszerkonfiguráció-kezelő eszközök telepítése operációs rendszerekhez
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: rendszerkonfiguráció-felügyeleti eszközök központi telepítése operációs rendszerekhez
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-szolgáltatásokhoz
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
 
-**Útmutató:** Azure-szabályzat aliasok a "Microsoft.Cache" névtérben egyéni szabályzatok riasztására, naplózására és kényszerítésére rendszerkonfigurációk létrehozásához. Azure-szabályzat [naplózás], [megtagadás], és [üzembe helyezés, ha nem létezik] automatikusan kényszeríti a redis-példányok és a kapcsolódó erőforrások Azure-gyorsítótárkonfigurációit.
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. cache" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Redis-példányok és a kapcsolódó erőforrások esetében az Azure cache konfigurációinak automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [telepítés ha nem létezik] beállítást.
 
-Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Az operációs rendszerek automatizált konfigurációs figyelésének megvalósítása
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése
+### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
-**Útmutató:** Az Azure virtuális gépek vagy az Azure App Service-en futó webalkalmazások, amelyek a Redis-példányok Azure-gyorsítótárának elérésére szolgálnak, az Azure Key Vaultszolgáltatással együtt használja a felügyelt szolgáltatásidentitást a Redis titkos kezelésének egyszerűsítéséhez és biztonságossá tétele érdekében. Győződjön meg arról, hogy a Key Vault helyreállítható annektív törlése engedélyezve van.
+**Útmutató**: az Azure-beli virtuális gépek vagy a Azure app Serviceon futó webalkalmazások számára a Redis-példányok Azure cache-hez való hozzáféréséhez használja a Managed Service Identityt a Azure Key Vault-mel, hogy egyszerűbbé és biztonságossá tegye az Azure cache-t a Redis titkos felügyeletéhez. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Integrálás az Azure felügyelt identitásaival:
+Integráció az Azure felügyelt identitásokkal:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -949,259 +949,259 @@ Key Vault létrehozása:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-A Kulcstartó hitelesítése felügyelt identitással:
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: A személyazonosságok biztonságos és automatikus kezelése
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató:** Az Azure virtuális gépek vagy az Azure App Service-en futó webalkalmazások, amelyek a Redis-példányok Azure-gyorsítótárának elérésére szolgálnak, az Azure Key Vaultszolgáltatással együtt használja a felügyelt szolgáltatásidentitást a Redis titkos kezelésének egyszerűsítéséhez és biztonságossá tétele érdekében. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
+**Útmutató**: az Azure-beli virtuális gépek vagy a Azure app Serviceon futó webalkalmazások számára a Redis-példányok Azure cache-hez való hozzáféréséhez használja a Managed Service Identityt a Azure Key Vault-mel, hogy egyszerűbbé és biztonságossá tegye az Azure cache-t a Redis titkos felügyeletéhez. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Felügyelt identitások használatával biztosíthassa az Azure-szolgáltatásokat automatikusan felügyelt identitással az Azure Active Directoryban. Felügyelt identitások lehetővé teszi, hogy hitelesítse minden olyan szolgáltatás, amely támogatja az AAD-hitelesítés, beleértve az Azure Key Vault, anélkül, hogy a kód hitelesítő adatokat.
+Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja a HRE hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
 Felügyelt identitások konfigurálása:
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Integrálás az Azure felügyelt identitásaival:
+Integráció az Azure felügyelt identitásokkal:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A nem kívánt hitelesítő adatok expozíciójának kiküszöbölése
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató:** A hitelesítő adatok at a kódon belüli hitelesítő adatok azonosítására valósíthatja meg. A Hitelesítő adatok olvasója azt is ösztönzi a felderített hitelesítő adatok áthelyezése biztonságosabb helyekre, például az Azure Key Vault.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-A Hitelesítő adatok képolvasójának beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információ: [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Központilag kezelt kártevőirtó szoftverek használata
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-A Microsoft kártevőirtó eszköz e-alapú gazdagépen (például az Azure App Service- szolgáltatást) támogató gazdagépen engedélyezve van, azonban nem fut az ügyféltartalomon.
+A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például Azure App Service), azonban az nem az ügyfél tartalmán fut.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: A nem számítási Azure-erőforrásokba feltöltendő fájlok előzetes beszkéselése
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
 
-**Útmutató: A**Microsoft kártevőirtó eszköz e-alapú gazdagépen engedélyezve van az Azure-szolgáltatásokat támogató gazdagépen (például a Redis-hez az Azure Cache), azonban nem fut az ügyféltartalomon.
+**Útmutató**: a Microsoft kártevő szoftverrel való ellátása engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például az Azure cache for Redis esetében), de nem fut az ügyfél tartalmán.
 
-A nem számítási Azure-erőforrásokba feltöltött tartalmak, például az App Service, a Data Lake Storage, a Blob Storage, az Azure Database for PostgreSQL stb. A Microsoft ezekben az esetekben nem fér hozzá az Ön adataihoz.
+A nem számítási Azure-erőforrásokra feltöltött tartalom előzetes vizsgálata, például App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL stb. A Microsoft nem fér hozzá az adataihoz ezekben a példányokban.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Gondoskodjon a kártevőirtó szoftverek és aláírások frissítéséről
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-A Microsoft kártevőirtó eszköz e-alapú gazdagépen engedélyezve van az Azure-szolgáltatásokat támogató gazdagépen (például a Redis-hez az Azure Cache), azonban nem fut az ügyféltartalomon.
+A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például az Azure cache for Redis esetében), de nem az ügyfél tartalmán fut.
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információ: [Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Rendszeres automatizált biztonsági másolatok biztosítása
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
-**Útmutató**: Redis perzisztenciájának engedélyezése. A Redis perzisztenciája lehetővé teszi a Redis-ben tárolt adatok megőrzését. Pillanatképeket is készíthet, és biztonsági másolatot készíthet az adatokról, amelyeket hardverhiba esetén betölthet. Ez óriási előnye az alapszintű vagy standard szintű, ahol az összes adatot tárolja a memóriában, és nem lehet lehetséges adatvesztés hiba esetén, ahol a gyorsítótár csomópontok nem.
+**Útmutató**: a Redis megőrzésének engedélyezése. A Redis megőrzése lehetővé teszi a Redis-ben tárolt adatmegőrzést. Pillanatképeket és biztonsági mentést is készíthet, amelyeket hardverhiba esetén betölthet. Ez óriási előnyt jelent az alapszintű és a standard szint esetében, ahol az összes adat a memóriában tárolódik, és előfordulhat, hogy a gyorsítótár-csomópontok leállításakor hiba történt.
 
-Használhatja az Azure Cache for Redis export. Exportálás lehetővé teszi, hogy exportálja a tárolt adatokat az Azure Cache for Redis a Redis kompatibilis RDB fájl(ok). Ezzel a funkcióval áthelyezheti az adatokat az egyik Azure-gyorsítótárból a Redis-példányegy másik vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során egy ideiglenes fájl jön létre a virtuális gépen, amely az Azure Cache for Redis kiszolgálópéldány, és a fájl feltöltése a kijelölt tárfiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződik be, az ideiglenes fájl törlődik.
+A Redis exportálásához használhatja az Azure cache-t is. Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a Redis-Redis kompatibilis RDB-fájl (ok) hoz. Ezzel a szolgáltatással áthelyezheti az adatok egyik Azure-gyorsítótárból a Redis-példányról egy másikra vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során létrejön egy ideiglenes fájl az Azure cache-t futtató virtuális gépen a Redis Server-példányhoz, és a fájl fel lesz töltve a kijelölt Storage-fiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződött be, a rendszer törli az ideiglenes fájlt.
 
-A Redis perzisztenciájának engedélyezése:
-
-https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
-
-Az Azure Cache használata a Redis exportálásához:
-
-https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-import-export-data
-
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
-
-**Felelősség**: Ügyfél
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Teljes rendszerbiztonsági mentés végrehajtása és biztonsági mentés bármely ügyfél által kezelt kulcs ról
-
-**Útmutató**: Redis perzisztenciájának engedélyezése. A Redis perzisztenciája lehetővé teszi a Redis-ben tárolt adatok megőrzését. Pillanatképeket is készíthet, és biztonsági másolatot készíthet az adatokról, amelyeket hardverhiba esetén betölthet. Ez óriási előnye az alapszintű vagy standard szintű, ahol az összes adatot tárolja a memóriában, és nem lehet lehetséges adatvesztés hiba esetén, ahol a gyorsítótár csomópontok nem.
-
-Használhatja az Azure Cache for Redis export. Exportálás lehetővé teszi, hogy exportálja a tárolt adatokat az Azure Cache for Redis a Redis kompatibilis RDB fájl(ok). Ezzel a funkcióval áthelyezheti az adatokat az egyik Azure-gyorsítótárból a Redis-példányegy másik vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során egy ideiglenes fájl jön létre a virtuális gépen, amely az Azure Cache for Redis kiszolgálópéldány, és a fájl feltöltése a kijelölt tárfiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződik be, az ideiglenes fájl törlődik.
-
-Ha az Azure Key Vault használatával tárolja az Azure Cache redis-példányok hitelesítő adatait, biztosítsa a kulcsok rendszeres automatikus biztonsági mentését.
-
-A Redis perzisztenciájának engedélyezése:
+A Redis megőrzésének engedélyezése:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-Az Azure Cache használata a Redis exportálásához:
+Az Azure cache használata a Redis exportálásához:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-import-export-data
 
-A kulcstároló kulcsainak biztonsági mentése:
+**Azure Security Center figyelés**: jelenleg nem érhető el
+
+**Felelősség**: ügyfél
+
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
+
+**Útmutató**: a Redis megőrzésének engedélyezése. A Redis megőrzése lehetővé teszi a Redis-ben tárolt adatmegőrzést. Pillanatképeket és biztonsági mentést is készíthet, amelyeket hardverhiba esetén betölthet. Ez óriási előnyt jelent az alapszintű és a standard szint esetében, ahol az összes adat a memóriában tárolódik, és előfordulhat, hogy a gyorsítótár-csomópontok leállításakor hiba történt.
+
+A Redis exportálásához használhatja az Azure cache-t is. Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a Redis-Redis kompatibilis RDB-fájl (ok) hoz. Ezzel a szolgáltatással áthelyezheti az adatok egyik Azure-gyorsítótárból a Redis-példányról egy másikra vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során létrejön egy ideiglenes fájl az Azure cache-t futtató virtuális gépen a Redis Server-példányhoz, és a fájl fel lesz töltve a kijelölt Storage-fiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződött be, a rendszer törli az ideiglenes fájlt.
+
+Ha a Redis-példányokhoz tartozó Azure gyorsítótárhoz tartozó hitelesítő adatok tárolására Azure Key Vault használ, ügyeljen arra, hogy a kulcsok rendszeres automatizált biztonsági mentéseit tárolja.
+
+A Redis megőrzésének engedélyezése:
+
+https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+
+Az Azure cache használata a Redis exportálásához:
+
+https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-import-export-data
+
+Key Vault kulcsok biztonsági mentése:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által kezelt kulcsokat is
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
-**Útmutató:** Azure-gyorsítótár használata a Redis importálásához. Az importálás segítségével Redis-kompatibilis RDB fájlokat hozhat létre bármely Redis szerverről, amely bármilyen felhőben vagy környezetben fut, beleértve a Linuxon, Windowsrendszeren vagy bármely felhőszolgáltatón, például az Amazon Web Services-en és másokon futó Redis-t is. Az adatok importálásával egyszerűen hozhat létre gyorsítótárat előre kitöltött adatokkal. Az importálási folyamat során az Azure Cache for Redis betölti az RDB-fájlokat az Azure storage-ból a memóriába, majd beszúrja a kulcsokat a gyorsítótárba.
+**Útmutató**: az Azure cache használata a Redis importálásához. Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgálóról készíthet Redis-kompatibilis RDB-fájlokat, beleértve a Linuxon, a Windowson vagy bármely olyan felhőalapú szolgáltatón futó Redis, mint például a Amazon Web Services és mások. Az adatok importálása egyszerű módszer a gyorsítótár előre feltöltött adatokkal való létrehozására. Az importálási folyamat során az Azure cache for Redis betölti a RDB-fájlokat az Azure Storage-ból a memóriába, majd beszúrja a kulcsokat a gyorsítótárba.
 
-Rendszeresen tesztelje az Azure Key Vault-titkos kulcsok adat-visszaállítása.
+Rendszeresen tesztelje a Azure Key Vault titkos kódok adatvisszaállítását.
 
-Az Azure Cache használata a Redis importálásához:
+Az Azure cache használata a Redis importálásához:
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-import-export-data
 
-A Key Vault titkos kulcsainak visszaállítása:
+Key Vault titkos kódok visszaállítása:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: A biztonsági mentések és az ügyfél által felügyelt kulcsok védelmének biztosítása
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutatás: Az**Azure Cache redis-exportálási és Redis-adatmegőrzési mentéseket a kiválasztott Azure Storage-fiókban tárolja. Az Azure Storage-ban tárolt adatok titkosítása és visszafejtése transzparens módon történik 256 bites AES titkosítással, amely az egyik legerősebb elérhető blokktitkosítás, és fips 140-2-kompatibilis. Az Azure Storage titkosítása nem tiltható le. A tárfiók titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy saját kulcsokkal kezelheti a titkosítást.
+**Útmutató**: az Azure cache a Redis exportálásának és a Redis megőrzésének Redis biztonsági mentéseit a kiválasztott Azure Storage-fiókban tárolja. Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás nem tiltható le. A Microsoft által felügyelt kulcsokat használhatja a Storage-fiók titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti.
 
-Az Azure Storage-fiókok titkosításának ismertetése:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Az Azure Storage-fiókok titkosításának megismerése:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: Microsoft
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ: [Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Incidenselhárítási útmutató létrehozása
+### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató:** Hozzon létre egy incidens-elhárítási útmutatót a szervezet számára. Győződjön meg arról, hogy vannak olyan írásos eseményreagálási tervek, amelyek meghatározzák a személyzet összes szerepkörét, valamint az incidenskezelés/-kezelés fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
 
-Munkafolyamat-automatizálások konfigurálása az Azure Security Centerben:
+Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Útmutató a saját biztonsági incidensek reválaszolási folyamatának felépítéséhez:
+Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához:
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-A Microsoft Security Response Center egy incidens anatómia:
+A Microsoft Security Response Center egy Incidensének anatómiája:
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Az Ügyfél a NIST számítógépes biztonsági incidenskezelési útmutatóját is felhasználhatja, hogy segítse saját eseményreagálási tervének létrehozását:
+Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához:
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és rangsorolási eljárás létrehozása
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutatás:** A Biztonsági központ minden riasztáshoz súlyossági szintet rendel, hogy segítsen rangsorolni, mely riasztásokat kell először kivizsgálni. A súlyosság attól függ, hogy a Security Center mennyire magabiztos a keresésben, vagy a riasztás kiadásához használt analitikus, valamint a riasztáshoz vezető tevékenység mögött rosszindulatú szándék megbízhatósági szintje.
+**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
-Ezenkívül egyértelműen jelölje meg az előfizetéseket (pl. termelés, nem prod), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosítására és kategorizálására.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben nem termelt), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához.
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="103-test-security-response-procedures"></a>10.3: A tesztelési biztonsági reagálási eljárások
+### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató:** Végezzen gyakorlatokat a rendszerek incidenselhárítási képességeinek rendszeres ütemben való teszteléséhez. Azonosítsa a gyenge pontokat és hiányosságokat, és szükség szerint vizsgálja felül a tervet.
+**Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-Tekintse meg a NIST kiadványát: Útmutató az informatikai tervekés képességek tesztelési, képzési és edzésprogramjaihoz:
+Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez:
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Adja meg a biztonsági incidensek elérhetőségét, és állítsa be a biztonsági incidensek riasztási értesítéseit
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
-**Útmutató: A**Microsoft a biztonsági incidensek kapcsolattartási adatait arra használja fel, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy az ügyfél adataihoz jogellenes vagy jogosulatlan fél fért hozzá.  Tekintse át az incidenseket a problémák megoldásának biztosítása érdekében.
+**Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az ügyfél adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.  A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-Az Azure Security Center biztonsági kapcsolattartójának beállítása:
+A Azure Security Center biztonsági kapcsolattartó beállítása:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidenselhárítási rendszerbe
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
-**Útmutató:** Exportálja az Azure Security Center riasztások és javaslatok a folyamatos exportálás funkció használatával. A Folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális exportálását, vagy folyamatos, folyamatos módon. Használhatja az Azure Security Center adatösszekötő a Sentinel riasztások streameléséhez.
+**Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához.
 
-A folyamatos exportálás konfigurálása:
+Folyamatos exportálás konfigurálása:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
 
-Értesítések streamelése az Azure Sentinelbe:
+Riasztások továbbítása az Azure Sentinelbe:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztásokra adott válasz automatizálása
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
-**Útmutató:** Az Azure Security Center munkafolyamat-automatizálási szolgáltatásával automatikusan elindíthatja a "Logic Apps" biztonsági riasztásokra és javaslatokra vonatkozó válaszokat.
+**Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-A munkafolyamat-automatizálás és a logikai alkalmazások konfigurálása:
+A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információ: [Security Control: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Rendszeres behatolási tesztelést végez az Azure-erőforrásokon, és 60 napon belül biztosítja az összes kritikus biztonsági megállapítás helyreállítását
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
 
-**Útmutató:** Kövesse a Microsoft kötelezettségvállalási szabályzatát annak érdekében, hogy a behatolási tesztek ne sértsék meg a Microsoft irányelveit:
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-A Microsoft stratégiájáról és a Red Teaming és az élő webhely behatolási tesztelésének végrehajtásáról a Microsoft által felügyelt felhőalapú infrastruktúrák, szolgáltatások és alkalmazások terén itt olvashat bővebben: 
+A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az [Azure biztonsági referenciaértékét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alapkonfigurációiról](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

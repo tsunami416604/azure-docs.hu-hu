@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: fbb6f4633ef6e984746a4fb4516380f4b2e3a9da
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116774"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195281"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Gyors útmutató: Java-tárolók rendszerképének létrehozása és leküldése Azure Container Registry
 
@@ -108,13 +108,13 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
 
 1. Lépjen a Spring Boot-alkalmazás befejezett projektkönyvtárába (például „*C:\SpringBoot\gs-spring-boot-docker\complete*” vagy „*/users/robert/SpringBoot/gs-spring-boot-docker/complete*”), és nyissa meg a *pom.xml* fájlt egy szövegszerkesztővel.
 
-1. Frissítse a `<properties>` gyűjteményt a *Pom. XML* fájlban a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon `<jib-maven-plugin.version>` hozzá egy tulajdonságot értékkel `2.1.0`, vagy a [gém-Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)újabb verzióját.
+1. Frissítse a `<properties>` gyűjteményt a *Pom. XML* fájlban a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon `<jib-maven-plugin.version>` hozzá egy tulajdonságot értékkel `2.2.0`, vagy a [gém-Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)újabb verzióját.
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
       <java.version>1.8</java.version>
-      <jib-maven-plugin.version>2.1.0</jib-maven-plugin.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -139,7 +139,7 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
 1. Lépjen a Spring Boot-alkalmazás befejezett projektkönyvtárába, és futtassa a következő parancsot a lemezkép elkészítéséhez, majd a könyvtárba való leküldéséhez:
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]

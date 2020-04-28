@@ -1,61 +1,61 @@
 ---
 title: Konzisztenciaszintek és Azure Cosmos DB API-k
-description: A különböző API-k közötti konzisztenciaszintű leképezés ismertetése az Azure Cosmos DB és az Apache Cassandra, MongoDB
+description: A Azure Cosmos DB és az Apache Cassandra, a MongoDB különböző API-jai közötti konzisztencia-megfeleltetés ismertetése
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ef7d032d37105549ff7b05f85b953cd420954602
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2851968b102bdcbae95a81352439f39f5837020b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131458"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191787"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
-Az Azure Cosmos DB natív támogatást nyújt a népszerű adatbázisok vezetékes protokollkompatibilis API-khoz. Ezek közé tartozik a MongoDB, az Apache Cassandra, a Gremlin és az Azure Table storage. Ezek az adatbázisok nem nyújtanak pontosan meghatározott konzisztenciamodelleket vagy SLA-alapú garanciákat a konzisztenciaszintekhez. Általában csak az Azure Cosmos DB által kínált öt konzisztenciamodell egy részét biztosítják. 
+A Azure Cosmos DB natív támogatást biztosít a huzal protokollal kompatibilis API-k számára a népszerű adatbázisokhoz. Ilyenek például a MongoDB, az Apache Cassandra, a Gremlin és az Azure Table Storage. Ezek az adatbázisok nem biztosítanak pontosan meghatározott konzisztencia-modelleket vagy SLA-alapú garanciákat a konzisztencia szintjéhez. Általában csak a Azure Cosmos DB által kínált öt konzisztencia-modell részhalmazát biztosítják. 
 
-SQL API, Gremlin API és Table API használata esetén az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztenciaszint használatos. 
+Az SQL API, a Gremlin API és a Table API használatakor a rendszer az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintet használja. 
 
-Cassandra API vagy az Azure Cosmos DB MongoDB-hoz készült API-jának használatakor az alkalmazások az Apache Cassandra és a MongoDB által kínált konzisztenciaszintek teljes készletét kapják, még erősebb konzisztencia- és tartóssági garanciákkal. Ez a dokumentum az Apache Cassandra és a MongoDB konzisztenciaszintek megfelelő Azure Cosmos DB konzisztenciaszintjeit mutatja be.
+Ha Cassandra API vagy Azure Cosmos DB API-ját használja a MongoDB, az alkalmazások az Apache Cassandra és a MongoDB által kínált összes konzisztencia-készletet megkapják, ami még erősebb következetességet és tartósságot garantál. Ez a dokumentum az Apache Cassandra és a MongoDB konzisztencia-szintjeinek megfelelő Azure Cosmos DB következetességi szinteket mutatja.
 
-## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Az Apache Cassandra és az Azure Cosmos DB konzisztenciaszintjei közötti leképezés
+## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Az Apache Cassandra és a Azure Cosmos DB konzisztencia-szintjei közötti leképezés
 
-Az Azure Cosmos DB-vel ellentétben az Apache Cassandra natív módon nem nyújt pontosan meghatározott konzisztenciagaranciákat.  Ehelyett az Apache Cassandra írási konzisztenciaszintet és olvasási konzisztenciaszintet biztosít a magas rendelkezésre állás, a konzisztencia és a késés kompromisszumok engedélyezéséhez. Az Azure Cosmos DB Cassandra API-jának használatakor: 
+A Azure Cosmos DBtól eltérően az Apache Cassandra nem biztosít natív módon pontosan meghatározott konzisztencia-garanciákat.  Az Apache Cassandra Ehelyett írási konzisztencia-szintet és olvasási konzisztencia-szintet biztosít a magas rendelkezésre állás, a konzisztencia és a késési kompromisszumok engedélyezéséhez. Azure Cosmos DB Cassandra API használatakor: 
 
-* Az Apache Cassandra írási konzisztenciaszintje az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztenciaszintre van leképezve. Az írási művelet (CL) konzisztenciája kérésenként nem módosítható.
+* Az Apache Cassandra írási konzisztencia-szintje az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintre van leképezve. Az írási művelet (CL) konzisztenciája nem módosítható kérelmek alapján.
 
-* Az Azure Cosmos DB dinamikusan leképezi a Cassandra ügyfél-illesztőprogram által megadott olvasási konzisztenciaszintet az egyik az Azure Cosmos DB konzisztenciaszintek dinamikusan konfigurálva egy olvasási kérelem. 
+* Azure Cosmos DB dinamikusan leképezi a Cassandra-ügyfél illesztőprogramjában megadott olvasási konzisztencia-szintet az olvasási kérelemben dinamikusan konfigurált Azure Cosmos DB konzisztencia-szintek egyikére. 
 
-Az alábbi táblázat bemutatja, hogy a natív Cassandra konzisztenciaszintek hogyan vannak leképezve az Azure Cosmos DB konzisztenciaszintjeihez a Cassandra API használatakor:  
+Az alábbi táblázat azt mutatja be, hogy a natív Cassandra konzisztencia-szintjei hogyan vannak leképezve a Azure Cosmos DB konzisztencia-szintjére Cassandra API használatakor:  
 
-[![Cassandra konzisztenciamodell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![Cassandra konzisztencia-modell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
-## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>Leképezés a MongoDB és az Azure Cosmos DB konzisztenciaszintjei között
+## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>A MongoDB és a Azure Cosmos DB konzisztencia-szintjei közötti megfeleltetés
 
-Az Azure Cosmos DB-vel ellentétben a natív MongoDB nem nyújt pontosan meghatározott konzisztenciagaranciákat. Ehelyett a natív MongoDB lehetővé teszi a felhasználók számára, hogy konfigurálja a következő konzisztencia-garanciák: egy írási probléma, egy olvasási probléma, és a master direktíva -, hogy az olvasási műveletek et elsődleges vagy másodlagos replikákra irányítsa a kívánt konzisztenciaszint elérése érdekében. 
+A Azure Cosmos DBtól eltérően a natív MongoDB nem biztosít pontosan meghatározott konzisztencia-garanciát. Ehelyett a natív MongoDB lehetővé teszi a felhasználók számára a következő konzisztencia-garanciák konfigurálását: egy írási aggály, egy olvasási probléma és a isMaster direktíva, hogy az olvasási műveleteket elsődleges vagy másodlagos replikára irányítsa a kívánt konzisztencia-szint elérése érdekében. 
 
-Az Azure Cosmos DB MongoDB API-jának használatakor a MongoDB-illesztőprogram az írási régiót elsődleges replikaként kezeli, és az összes többi régió olvasási replikája. Kiválaszthatja, hogy az Azure Cosmos-fiókmelyik régiót elsődleges replikaként társítja. 
+Ha Azure Cosmos DB API-ját használja a MongoDB, a MongoDB-illesztőprogram az írási régiót elsődleges replikaként kezeli, és minden más régió olvasási replika. Kiválaszthatja, hogy melyik régiót rendeli hozzá az Azure Cosmos-fiókjához elsődleges replikaként. 
 
-Az Azure Cosmos DB MongoDB-hoz való API-jának használata közben:
+A MongoDB Azure Cosmos DB API-ját használja:
 
-* Az írási probléma az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztenciaszintre van leképezve.
+* Az írási aggály az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintre van leképezve.
  
-* Az Azure Cosmos DB dinamikusan leképezi a MongoDB ügyfél-illesztőprogram által megadott olvasási problémát az Egyik az Azure Cosmos DB konzisztenciaszintek egyikéhez, amely dinamikusan van konfigurálva egy olvasási kérelemhez.  
+* Azure Cosmos DB dinamikusan leképezi a MongoDB-ügyfél illesztőprogramja által megadott olvasási aggályt az olvasási kérelemben dinamikusan konfigurált Azure Cosmos DB konzisztencia-szintek egyikére.  
 
-* Az Azure Cosmos-fiókhoz társított adott régiót "Master" néven is elláthatja, ha a régiót az első írható régióvá teszi. 
+* Az Azure Cosmos-fiókjához tartozó adott régiót a "Master" kifejezéssel jegyzetekkel láthatja el, ha az első írható régióként teszi a régiót. 
 
-Az alábbi táblázat bemutatja, hogy a natív MongoDB írási/olvasási aggodalmak hogyan vannak leképezve az Azure Cosmos konzisztenciaszintjeihez az Azure Cosmos DB MongoDB API-jának használatakor:
+Az alábbi táblázat bemutatja, hogyan vannak leképezve a natív MongoDB írási/olvasási problémái az Azure Cosmos konzisztencia-szintjére, ha Azure Cosmos DB API-ját használja a MongoDB számára:
 
-[![MongoDB konzisztenciamodell-leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MongoDB konzisztencia-modell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a konzisztenciaszintekről és az Azure Cosmos DB API-k és a nyílt forráskódú API-k közötti kompatibilitásról. Lásd az alábbi cikkeket:
+További információ a konzisztencia szintjeiről és a Azure Cosmos DB API-k és a nyílt forráskódú API-k közötti kompatibilitásról. Lásd az alábbi cikkeket:
 
-* [Rendelkezésre állási és teljesítménykompromisszumok a különböző konzisztenciaszintekhez](consistency-levels-tradeoffs.md)
-* [Az Azure Cosmos DB MongoDB-hoz való API-ja által támogatott MongoDB-funkciók](mongodb-feature-support.md)
-* [Az Azure Cosmos DB Cassandra API által támogatott Apache Cassandra funkciók](cassandra-support.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
+* [A Azure Cosmos DB API-MongoDB által támogatott MongoDB-funkciók](mongodb-feature-support.md)
+* [Az Azure Cosmos DB által támogatott Apache Cassandra-funkciók Cassandra API](cassandra-support.md)

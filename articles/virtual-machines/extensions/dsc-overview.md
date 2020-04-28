@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115312"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188535"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration-bővítménykezelő bemutatása
 
@@ -188,7 +188,7 @@ A portál a következő adatokat gyűjti össze:
 
 - **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentumokat fogad, adja meg őket a következő formátumban: **argumentName1 = érték1, argumentName2 = érték2**. Ez a formátum a PowerShell-parancsmagok vagy a Resource Manager-sablonok által elfogadott konfigurációs argumentumok eltérő formátuma.
 
-- **Konfigurációs adatfájl PSD1**: Ez a mező nem kötelező. Ha a konfigurációban konfigurációs adatfájlra van szükség a. psd1 fájlban, használja ezt a mezőt az adatmező kiválasztásához és a felhasználói blob Storage-tárolóba való feltöltéséhez. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
+- **Konfigurációs adatok PSD1 fájlja**: a konfigurációban konfigurációs adatfájlra van szükség a. PSD1 fájlban, ezzel a mezővel kiválaszthatja az adatfájlt, és feltöltheti a felhasználói blob Storage-ba. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
 
 - **WMF-verzió**: a Windows Management FRAMEWORK (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a legújabbra állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke 4,0, 5,0, 5,1 és Latest. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**.
 

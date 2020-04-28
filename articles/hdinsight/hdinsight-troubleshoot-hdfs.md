@@ -1,33 +1,33 @@
 ---
-title: HdFS – problémamegoldás az Azure HDInsightban
-description: Válaszok a HDFS és az Azure HDInsight használatával kapcsolatos gyakori kérdésekre.
+title: Az Azure HDInsight HDFS hibáinak megoldása
+description: Választ kaphat a HDFS és az Azure HDInsight való használattal kapcsolatos gyakori kérdésekre.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895247"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190680"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Apache Hadoop HDFS hibaelhárítása az Azure HDInsighttal
 
-Ismerje meg a legfontosabb problémákat és azok megoldásait, amikor a Hadoop Distributed File System (HDFS) hasznos teherrel dolgozik az Apache Ambari-ban. A parancsok teljes listáját a [HDFS parancsok útmutatójában](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) és a [Fájlrendszer rendszerhéj-útmutatójában talál.](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+A Hadoop elosztott fájlrendszer (HDFS) használata során a legfontosabb problémák és megoldások megismerése. A parancsok teljes listáját a [HDFS parancsok útmutatójában](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) és a [fájlrendszer rendszerhéj-útmutatójában](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)találja.
 
-## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan érhetem el a helyi HDFS-t egy fürtön belülről?
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan hozzáférni a helyi HDFS egy fürtön belülről?
 
 ### <a name="issue"></a>Probléma
 
-A helyi HDFS-t a parancssorból és az alkalmazáskódból érheti el az Azure Blob storage vagy az Azure Data Lake Storage használatával a HDInsight-fürtből.
+A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtön belüli Azure Blob Storage vagy Azure Data Lake Storage használatával érheti el.
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A parancssorban szó `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` szerint használja a következő parancsot:
+1. A parancssorban a szó szerint `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` használja a következő parancsot:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ A helyi HDFS-t a parancssorból és az alkalmazáskódból érheti el az Azure B
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. A forráskódból szó `hdfs://mycluster/` szerint használja az URI-t, mint a következő mintaalkalmazásban:
+2. A forráskódból használja az URI `hdfs://mycluster/` -t a szó szoros értelmében, ahogy az alábbi példában is látható:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ A helyi HDFS-t a parancssorból és az alkalmazáskódból érheti el az Azure B
     }
     ```
 
-3. Futtassa a lefordított .jar fájlt `java-unit-tests-1.0.jar`(például egy nevű fájlt) a HDInsight-fürtön a következő paranccsal:
+3. Futtassa a lefordított. jar-fájlt (például egy nevű `java-unit-tests-1.0.jar`fájlt) a HDInsight-fürtön a következő paranccsal:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -72,12 +72,63 @@ A helyi HDFS-t a parancssorból és az alkalmazáskódból érheti el az Azure B
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
-## <a name="du"></a>Du
+## <a name="storage-exception-for-write-on-blob"></a>Tárolási kivétel a blobon való íráshoz
 
-A [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) parancs megjeleníti az adott könyvtárban található fájlok és könyvtárak méretét, illetve a fájl hosszát arra az esetre, ha csak egy fájlról lenne szó.
+### <a name="issue"></a>Probléma
 
-A `-s` beállítás a megjelenített fájlhosszok összesített összegzését eredményezi.  
-A `-h` beállítás formázza a fájlméreteket.
+Ha a ( `hadoop` z `hdfs dfs` ) vagy a (z) parancsot a HBase-fürtön lévő ~ 12 GB vagy nagyobb méretű fájlok írására használja, a következő hibaüzenet jelenhet meg:
+
+```error
+ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
+copyFromLocal: java.io.IOException
+        at com.microsoft.azure.storage.core.Utility.initIOException(Utility.java:661)
+        at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:366)
+        at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:350)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: com.microsoft.azure.storage.StorageException: The request body is too large and exceeds the maximum permissible limit.
+        at com.microsoft.azure.storage.StorageException.translateException(StorageException.java:89)
+        at com.microsoft.azure.storage.core.StorageRequest.materializeException(StorageRequest.java:307)
+        at com.microsoft.azure.storage.core.ExecutionEngine.executeWithRetry(ExecutionEngine.java:182)
+        at com.microsoft.azure.storage.blob.CloudBlockBlob.uploadBlockInternal(CloudBlockBlob.java:816)
+        at com.microsoft.azure.storage.blob.CloudBlockBlob.uploadBlock(CloudBlockBlob.java:788)
+        at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
+        ... 7 more
+```
+
+### <a name="cause"></a>Ok
+
+Az Azure Storage-ba való íráskor a HDInsight-fürtök HBase alapértelmezett értéke 256 KB. Habár HBase API-k vagy REST API-k esetében is működik, hibaüzenetet eredményez a `hadoop` vagy `hdfs dfs` a parancssori segédeszközök használatakor.
+
+### <a name="resolution"></a>Megoldás:
+
+Nagyobb `fs.azure.write.request.size` blokk méretének megadásához használja a következőt:. Ezt a módosítást használhatja használati alapon a `-D` (z) paraméter használatával. A következő parancs egy példa erre a paraméterre a `hadoop` parancs használatával:
+
+```bash
+hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
+```
+
+Az Apache Ambari használatával `fs.azure.write.request.size` globálisan is növelheti az értékét. Az alábbi lépéseket követve módosíthatja a Ambari webes felhasználói felületének értékét:
+
+1. A böngészőben nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL- `https://CLUSTERNAME.azurehdinsight.net`cím a `CLUSTERNAME` (z), ahol a a fürt neve. Ha a rendszer kéri, adja meg a fürthöz tartozó rendszergazdai nevet és jelszót.
+2. A képernyő bal oldalán válassza a **HDFS**lehetőséget, majd válassza a **konfigurációk** fület.
+3. A **szűrő...** mezőbe írja be a `fs.azure.write.request.size`értéket.
+4. Módosítsa a 262144 (256 KB) értéket az új értékre. Például 4194304 (4 MB).
+
+    ![Az érték Ambari webes felhasználói felületén keresztüli módosításának képe](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+
+A Ambari használatával kapcsolatos további információkért lásd: [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md).
+
+## <a name="du"></a>du
+
+A [`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) parancs megjeleníti az adott könyvtárban található fájlok és könyvtárak méretét, vagy egy fájl hosszát, ha ez csak egy fájl.
+
+A `-s` beállítás megjeleníti a fájlokban megjelenített hosszok összesített összegzését.  
+A `-h` beállítás formázza a fájlméretet.
 
 Példa:
 
@@ -86,9 +137,9 @@ hdfs dfs -du -s -h hdfs://mycluster/
 hdfs dfs -du -s -h hdfs://mycluster/tmp
 ```
 
-## <a name="rm"></a>Rm
+## <a name="rm"></a>RM
 
-Az [-rm](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) parancs törli az argumentumként megadott fájlokat.
+Az [-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) parancs az argumentumként megadott fájlokat törli.
 
 Példa:
 
@@ -98,10 +149,10 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

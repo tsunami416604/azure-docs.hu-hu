@@ -1,6 +1,6 @@
 ---
-title: Úszó panel hozzáadása a távoli figyelési megoldás felhasználói felületéhez - Azure | Microsoft dokumentumok
-description: Ez a cikk bemutatja, hogyan vehet fel új úszó panelt egy lapra a távoli figyelési megoldásgyorsító webes felhasználói felületén.
+title: A távoli figyelési megoldás felhasználói felületének hozzáadása az Azure-hoz | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy új, a távoli figyelési megoldás gyorsítása webes felhasználói felületén lévő képernyőt egy oldalon.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,60 +8,60 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447114"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193173"
 ---
-# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni úszó panel hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni menü hozzáadása a távoli figyelési megoldás webes felhasználói felületéhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új úszó panelt egy lapra a távoli figyelési megoldásgyorsító webes felhasználói felületén. A cikk a következőket írja le:
+Ebből a cikkből megtudhatja, hogyan adhat hozzá egy új, a távoli figyelési megoldás gyorsítása webes felhasználói felületének egyik lapjához tartozó ikont. A cikk a következőket ismerteti:
 
-- Hogyan készítsünk egy helyi fejlesztési környezetben.
-- Új úszó panel hozzáadása a webes felhasználói felület egyik lapjához?
+- Helyi fejlesztési környezet előkészítése.
+- Új képernyő hozzáadása egy laphoz a webes felhasználói felületen.
 
-A cikkben található példa úszó panel a lapon jelenik meg, amelyen az [egyéni rács hozzáadása a Távoli figyelési megoldás gyorsító webfelhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md) bemutatja, hogyan kell hozzáadni.
+Az ebben a cikkben található példa menü azon a rácson jelenik meg, amelyben az [Egyéni rács hozzáadása a távoli figyelési megoldáshoz webes felhasználói felület](iot-accelerators-remote-monitoring-customize-grid.md) útmutatója című cikk bemutatja, hogyan adhat hozzá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató lépéseinek végrehajtásához a következő szoftverre van szükség a helyi fejlesztői gépen:
+A jelen útmutató lépéseinek végrehajtásához a következő szoftverekre van szükség a helyi fejlesztői gépen:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A folytatás előtt hajtsa végre a következő cikkekben ismertetett lépéseket:
+A folytatás előtt végezze el a következő cikkekben ismertetett lépéseket:
 
-- [Egyéni lap hozzáadása a Távfigyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-page.md).
-- [Egyéni szolgáltatás hozzáadása a távfigyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md)
-- [Egyéni rács hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md)
+- [Adjon hozzá egy egyéni lapot a távoli figyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-page.md).
+- [Egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md)
+- [Egyéni rács hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md)
 
 ## <a name="add-a-flyout"></a>Úszó panel hozzáadása
 
-Ha úszó panelt szeretne hozzáadni a webes felhasználói felülethez, hozzá kell adnia az úszó panelt meghatározó forrásfájlokat, és módosítania kell néhány meglévő fájlt, hogy a webes felhasználói felület tisztában legyen az új összetevővel.
+Ha a webes felhasználói felülethez hozzá szeretne adni egy kijelzőt, hozzá kell adnia a kinézetet definiáló forrásfájlokat, és módosítania kell néhány meglévő fájlt, hogy a webes KEZELŐFELÜLET tisztában legyen az új összetevővel.
 
-### <a name="add-the-new-files-that-define-the-flyout"></a>Az úszó panelt meghatározó új fájlok hozzáadása
+### <a name="add-the-new-files-that-define-the-flyout"></a>Adja hozzá a kitűzést definiáló új fájlokat
 
-A kezdéshez az **src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout** mappa tartalmazza az úszó panelt meghatározó fájlokat:
+Az első lépésekhez az **src/walkthrough/Components/Pages/pageWithFlyout/menüs/exampleFlyout** mappa tartalmazza azokat a fájlokat, amelyek a következőt határozzák meg:
 
-**exampleFlyout.container.js**
+**exampleFlyout. Container. js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**példaFlyout.js**
+**exampleFlyout. js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
-Másolja az **src/walkthrough/components/pages/pageWithFlyout/flyouts mappát** az **src/components/pages/example** mappába.
+Másolja a **src/walkthrough/Components/Pages/pageWithFlyout/a menüket** tartalmazó mappát a **src/Components/Pages/example** mappába.
 
-### <a name="add-the-flyout-to-the-page"></a>Az úszó panel hozzáadása a laphoz
+### <a name="add-the-flyout-to-the-page"></a>A képernyő hozzáadása az oldalhoz
 
-Az úszó panel hozzáadásához módosítsa az **src/components/pages/example/basicPage.js kapcsolót.**
+Módosítsa az **src/Components/Pages/example/basicPage. js fájlt** a következő érték hozzáadásához:.
 
-Adja hozzá a **Btn-t** az **összetevőkből/megosztott termékekből** származó behozatalhoz, és adja hozzá az **svg-k** és az **ExampleFlyoutContainer**importját:
+Adja hozzá a **BTN** az **összetevők/megosztott** importálások és a **svgs** és a **ExampleFlyoutContainer**importálásához:
 
 ```js
 import {
@@ -76,7 +76,7 @@ import { svgs } from 'utilities';
 import { ExampleFlyoutContainer } from './flyouts/exampleFlyout';
 ```
 
-Adjon hozzá egy **konstans definíciót** a **closedFlyoutState-hez,** és adja hozzá a konstruktor állapotához:
+Adjon hozzá egy **CONST** -definíciót a **closedFlyoutState** , és adja hozzá az állapothoz a konstruktorban:
 
 ```js
 const closedFlyoutState = { openFlyoutName: undefined };
@@ -96,7 +96,7 @@ Adja hozzá a következő függvényeket a **BasicPage** osztályhoz:
   openFlyout = (name) => () => this.setState({ openFlyoutName: name });
 ```
 
-Adja hozzá a következő **kont** definíciókat a **renderelési** függvényhez:
+Adja hozzá a következő **CONST** -definíciókat a **Render** függvényhez:
 
 ```js
     const { openFlyoutName } = this.state;
@@ -104,7 +104,7 @@ Adja hozzá a következő **kont** definíciókat a **renderelési** függvényh
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Az úszó panel megnyitásához adjon hozzá egy gombot a helyi menühöz:
+Adjon hozzá egy gombot a menü megnyitásához a helyi menüben:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Az úszó panel megnyitásához adjon hozzá egy gombot a helyi menühöz:
       </ContextMenu>,
 ```
 
-Adjon hozzá szöveget és az úszó paneltárolót az oldal tartalmához:
+Adjon hozzá egy szöveget és a kiképernyőt a lap tartalmához:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,20 +125,20 @@ Adjon hozzá szöveget és az úszó paneltárolót az oldal tartalmához:
       </PageContent>
 ```
 
-## <a name="test-the-flyout"></a>Az úszó panel tesztelése
+## <a name="test-the-flyout"></a>A menü tesztelése
 
-Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő parancsot a tárház helyi példányának gyökerében:
+Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő parancsot az adattár helyi példányának gyökerében:
 
 ```cmd/sh
 npm start
 ```
 
-Az előző parancs helyileg futtatja a felhasználói felületet a ban. [http://localhost:3000/dashboard](http://localhost:3000/dashboard) Nyissa meg a **Példa** lapot, és kattintson **az Úszó panel megnyitása gombra.**
+Az előző parancs helyileg futtatja a felhasználói `http://localhost:3000/dashboard`felületet. Navigáljon a **példa** lapra, és kattintson a **nyílra**.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a távoli figyelési megoldás gyorsítójában a webes felhasználói felület lapjainak hozzáadásához vagy testreszabásához rendelkezésre álló erőforrásokról szerzett tudomást.
+Ebből a cikkből megtudhatta, hogyan adhat hozzá vagy szabhat testre lapokat a webes felhasználói felületen a távoli figyelési megoldás-gyorsító segítségével.
 
-Most, hogy egy úszó panelt definiált egy oldalon, a következő lépés az, hogy [panelt ad hozzá az irányítópulthoz a Távoli figyelési megoldásgyorsító webes felhasználói felületén.](iot-accelerators-remote-monitoring-customize-panel.md)
+Most, hogy már meghatározta a kinyíló elemet egy oldalon, a következő lépés [egy panel hozzáadása az irányítópulthoz a távoli figyelési megoldás webes felhasználói felületén](iot-accelerators-remote-monitoring-customize-panel.md).
 
-A távfigyelési megoldásgyorsítóról a [Távoli figyelési architektúra című témakörben](iot-accelerators-remote-monitoring-sample-walkthrough.md)talál további általános tudnivalókat.
+A távoli figyelési megoldás-gyorsító részletes ismertetését lásd: [távoli figyelési architektúra](iot-accelerators-remote-monitoring-sample-walkthrough.md).

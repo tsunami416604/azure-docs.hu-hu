@@ -1,26 +1,26 @@
 ---
-title: Adatok gyűjtése az Azure Monitorban gyűjtött adatokról | Microsoft dokumentumok
-description: A CollectD egy nyílt forráskódú Linux démon, amely rendszeresidőközönként adatokat gyűjt az alkalmazásokból és a rendszerszintű információkból.  Ez a cikk az Azure Monitorban gyűjtött adatok gyűjtéséről nyújt tájékoztatást.
+title: Adatgyűjtés a Azure Monitor gyűjtött adatokból | Microsoft Docs
+description: A Collected egy nyílt forráskódú linuxos démon, amely rendszeres időközönként adatokat gyűjt az alkalmazásokból és a rendszerszintű adatokból.  Ez a cikk a Azure Monitor gyűjtött adatok gyűjtésével kapcsolatos információkat tartalmazza.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670610"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186424"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatok gyűjtése linuxos ügynökökről az Azure Monitorban
-[A CollectD](https://collectd.org/) egy nyílt forráskódú Linux démon, amely rendszeres időközönként teljesítménymutatókat gyűjt az alkalmazásoktól és a rendszerszintű információktól. Példa alkalmazások közé tartozik a Java Virtual Machine (JVM), MySQL Server és Nginx. Ez a cikk az Azure Monitorban gyűjtött teljesítményadatok gyűjtéséről nyújt tájékoztatást.
+# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
+A [Collected](https://collectd.org/) egy nyílt forráskódú linuxos démon, amely rendszeresen gyűjti a teljesítmény-mérőszámokat az alkalmazásokból és a rendszerszintű információkból. Például az alkalmazások közé tartozik a Java virtuális gép (JVM), a MySQL-kiszolgáló és az Nginx. Ez a cikk a Azure Monitor gyűjtött teljesítményadatok gyűjtésével kapcsolatos információkat tartalmazza.
 
-A teljes listát a rendelkezésre álló dugó megtalálható [táblázat plugins](https://collectd.org/wiki/index.php/Table_of_Plugins).
+Az elérhető beépülő modulok teljes listája megtalálható a [plugins táblázatában](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
-![CollectD – áttekintés](media/data-sources-collectd/overview.png)
+![Adatgyűjtés – áttekintés](media/data-sources-collectd/overview.png)
 
-A következő Összegyűjtött konfiguráció tartalmazza a Log Analytics ügynök Linux továbbítja az összegyűjtött adatokat a Log Analytics ügynök Linuxra.
+A Linux rendszerhez készült Log Analytics-ügynök a következő összegyűjtési konfigurációt tartalmazza, hogy átirányítsa a gyűjtött adatokat a linuxos Log Analytics-ügynöknek.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -34,7 +34,7 @@ A következő Összegyűjtött konfiguráció tartalmazza a Log Analytics ügyn�
          </Node>
     </Plugin>
 
-Továbbá, ha a collectD 5.5 előtti verzióit használja, használja a következő konfigurációt.
+Emellett, ha a 5,5 előtt összegyűjtött verziót használ, a következő konfigurációt használja helyette.
 
     LoadPlugin write_http
 
@@ -45,12 +45,12 @@ Továbbá, ha a collectD 5.5 előtti verzióit használja, használja a követke
        </URL>
     </Plugin>
 
-A CollectD konfiguráció`write_http` az alapértelmezett beépülő modult használja a 26000-es porton keresztüli teljesítménymérő-mérőszámok küldéséhez a Linux-log analytics-ügynöknek. 
+A gyűjtött konfiguráció az alapértelmezett`write_http` beépülő modullal küldi el a teljesítmény-metrikai adatokat az 26000-as porton keresztül a Linux-ügynök log Analytics. 
 
 > [!NOTE]
-> Ez a port szükség esetén egyénileg definiált portra konfigurálható.
+> Ha szükséges, a port egy egyéni által megadott portra is konfigurálható.
 
-A Log Analytics-ügynök Linux is figyeli a 26000-es porton a gyűjtött metrikák, majd átalakítja azokat az Azure Monitor séma metrikák. A következő a Log Analytics `collectd.conf`ügynök Linux konfiguráció .
+A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figyeli a begyűjtött metrikák esetében, majd átalakítja őket Azure Monitor séma-metrikára. A Linux-konfiguráció `collectd.conf`log Analytics ügynöke a következő:
 
     <source>
       type http
@@ -63,59 +63,60 @@ A Log Analytics-ügynök Linux is figyeli a 26000-es porton a gyűjtött metrik�
     </filter>
 
 > [!NOTE]
-> A CollectD alapértelmezés szerint 10 másodperces [időközzel](https://collectd.org/wiki/index.php/Interval)olvassa be az értékeket. Mivel ez közvetlenül befolyásolja az Azure Monitor naplóknak küldött adatok mennyiségét, előfordulhat, hogy ezt az intervallumot a CollectD konfiguráción belül kell hangolnia, hogy megfelelő egyensúlyt teremtsen a figyelési követelmények és a kapcsolódó költségek és az Azure Monitor naplók használati költségei között.
+> Alapértelmezés szerint a rendszer 10 másodperces [időközönként](https://collectd.org/wiki/index.php/Interval)olvasási értékre állítja az adatokat. Mivel ez közvetlenül befolyásolja a Azure Monitor naplókba elküldett adatok mennyiségét, előfordulhat, hogy a begyűjtött konfiguráción belül kell megadnia ezt az intervallumot, hogy jó egyensúlyt lehessen teremteni a figyelési követelmények és a kapcsolódó költségek és a Azure Monitor naplók használata között.
 
 ## <a name="versions-supported"></a>Támogatott verziók
-- Az Azure Monitor jelenleg támogatja a CollectD 4.8-as és újabb verzióját.
-- A DataData-ügynök Linux-v1.1.0-217 vagy újabb rendszeren szükséges a CollectD metrikagyűjteményhez.
+- A Azure Monitor jelenleg a 4,8-es és újabb verziójú gyűjtést támogatja.
+- Log Analytics ügynök a Linux v 1.1.0-217-es vagy újabb verzióhoz szükséges a begyűjtött metrika-gyűjteményhez.
 
 
-## <a name="configuration"></a>Konfiguráció
-Az alábbiakban az Azure Monitorban az összegyűjtött adatok gyűjtésének konfigurálása alapvető lépésekkel konfigurálható.
+## <a name="configuration"></a>Configuration
+Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurálására szolgálnak Azure Monitorban.
 
-1. Állítsa be az Összegyűjtött adatokat a Log Analytics ügynök Linux a write_http plugin használatával.  
-2. Állítsa be a Log Analytics-ügynök Linux figyelni a gyűjtött adatokat a megfelelő porton.
-3. Indítsa újra a CollectD és a Log Analytics ügynököt Linuxra.
+1. Konfigurálja a begyűjtött adatokat a Linux Log Analytics-ügynöknek a write_http beépülő modullal való adatküldéshez.  
+2. Konfigurálja a Linux Log Analytics-ügynökét, hogy figyelje a gyűjtött adatokat a megfelelő porton.
+3. A Linux-ügynök összegyűjtése és Log Analytics-ügynök újraindítása.
 
-### <a name="configure-collectd-to-forward-data"></a>Az Adatok továbbítása gyűjtött beállítás 
+### <a name="configure-collectd-to-forward-data"></a>A begyűjtött adatok továbbításának beállítása 
 
-1. Az összegyűjtött adatok linuxos Log Analytics-ügynöknek való átirányításához hozzá `oms.conf` kell adni a CollectD konfigurációs könyvtárához. A fájl célja a gép Linux disztribúciójáttól függ.
+1. A gyűjtött adatoknak a Linux `oms.conf` rendszerhez készült log Analytics-ügynökbe való átirányításához hozzá kell adni a gyűjtött konfigurációs könyvtárhoz. A fájl célja a számítógép linuxos disztribúciója.
 
-    Ha a CollectD konfigurációs könyvtár az /etc/collectd.d/fájlban található:
+    Ha a gyűjtött konfigurációs könyvtár a/etc/collectd.d/-ben található:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
 
-    Ha a CollectD konfigurációs könyvtár az /etc/collectd/collectd.conf.d/:If your CollectD config directory located in /etc/collectd/collectd.conf.d/:
+    Ha a gyűjtött konfigurációs könyvtár a/etc/collectd/collectd.conf.d/-ben található:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >Az 5.5 előtti collectd verziók esetében `oms.conf` módosítania kell a címkéket a fentiek szerint.
+    >A 5,5 előtti összegyűjtött verziók esetében módosítania kell a címkéket a fent látható `oms.conf` módon.
     >
 
-2. Másolja a collectd.conf fájlt a kívánt munkaterület omsagent konfigurációs könyvtárába.
+2. Másolja a Collected. conf fájlt a kívánt munkaterület omsagent-konfigurációs könyvtárába.
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Indítsa újra a CollectD és a Log Analytics ügynököt Linuxra a következő parancsokkal.
+3. A következő parancsokkal indítsa újra a gyűjtést és Log Analytics a Linux-ügynököt.
 
-    sudo szolgáltatás gyűjtött újraindítás sudo /opt/microsoft/omsagent/bin/service_control újraindítás
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
-## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Összegyűjtött mérőszámok az Azure Monitor séma-konvertálásához
-A Log Analytics-ügynök linuxos ügynöke által már összegyűjtött infrastruktúra-metrikák és a CollectD által gyűjtött új metrikák között ismerős modell fenntartása érdekében a következő sémaleképezést használjuk:
+## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Azure Monitor a séma átalakítására vonatkozó mérőszámok gyűjtése
+A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák közötti ismerős modell fenntartásához, valamint a következő séma-hozzárendeléssel gyűjtött új metrikák használata:
 
-| Összegyűjtött metrikus mező | Az Azure Monitor mező |
+| Begyűjtött metrika mező | Azure Monitor mező |
 |:--|:--|
 | `host` | Computer |
 | `plugin` | None |
-| `plugin_instance` | Példány neve<br>Ha **plugin_instance** *null,* akkor a InstanceName="*_Total*" |
+| `plugin_instance` | Példány neve<br>Ha **plugin_instance** értéke *Null* , akkor példánynév = "*_Total*" |
 | `type` | ObjectName |
-| `type_instance` | Ellennév<br>Ha **type_instance** *null,* akkor a CounterName=**üres** |
-| `dsnames[]` | Ellennév |
+| `type_instance` | CounterName<br>Ha **type_instance** értéke *Null* , akkor a CounterName =**blank** |
+| `dsnames[]` | CounterName |
 | `dstypes` | None |
-| `values[]` | Ellenérték |
+| `values[]` | Kártyabirtokos számlájának megterhelését |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a [naplólekérdezéseket](../log-query/log-query-overview.md) az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez. 
-* [Az Egyéni mezők](custom-fields.md) segítségével a syslog rekordok adatait egyes mezőkké elemezheti.
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
+* [Egyéni mezők](custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.

@@ -1,60 +1,61 @@
 ---
-title: Nyílt forráskódú szoftvertámogatás az Azure HDInsightban
-description: A Microsoft Azure általános szintű támogatást nyújt a nyílt forráskódú technológiákhoz.
+title: Nyílt forráskódú szoftverek támogatása az Azure HDInsight
+description: A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f93be73af4bbbd159ffc01804617892251d96347
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772170"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195162"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftvertámogatás az Azure HDInsightban
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftverek támogatása az Azure HDInsight
 
-A Microsoft Azure HDInsight szolgáltatás az Apache Hadoop körül kialakított nyílt forráskódú technológiák környezetét használja. A Microsoft Azure általános szintű támogatást nyújt a nyílt forráskódú technológiákhoz. További információt az Azure-támogatás – gyakori kérdések **– Támogatási hatókör** című [szakaszában talál.](https://azure.microsoft.com/support/faq/) A HDInsight szolgáltatás további támogatási szintet biztosít a beépített összetevők számára.
+A Microsoft Azure HDInsight szolgáltatás olyan nyílt forráskódú technológiák környezetét használja, amelyeket a rendszer Apache Hadoop. A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja. További információkért lásd az [Azure-támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/) **támogatásának hatókörét** ismertető szakaszt. A HDInsight szolgáltatás további szintű támogatást biztosít a beépített összetevőkhöz.
 
 ## <a name="components"></a>Összetevők
 
-A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
+A HDInsight szolgáltatás két különböző típusú nyílt forráskódú összetevőből áll:
 
-### <a name="built-in-components"></a>Beépített alkatrészek
+### <a name="built-in-components"></a>Beépített összetevők
 
-Ezek az összetevők előtelepítettHDInsight-fürtökön vannak telepítve, és a fürt alapvető funkcióit biztosítják. A következő összetevők tartoznak ebbe a kategóriába:
+Ezek az összetevők előre telepítve vannak a HDInsight-fürtökön, és biztosítják a fürt alapvető funkcióit. A következő összetevők tartoznak ehhez a kategóriához:
 
-* [Apache Hadoop FONAL](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Erőforrás-kezelő.
-* A Hive lekérdezési nyelv [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+* [Apache HADOOP fonal](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Resource Manager.
+* A kaptár lekérdezési nyelvének [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 * [Apache Mahout](https://mahout.apache.org/).
 
-A fürtösszetevők teljes listája a [Mik azok az Apache Hadoop-összetevők és -verziók, amelyek a HDInsight segítségével érhetők el?](hdinsight-component-versioning.md)
+A fürt összetevőinek teljes listája elérhető a HDInsight-ben [elérhető Apache Hadoop-összetevők és-verziók közül?](hdinsight-component-versioning.md)
 
 ### <a name="custom-components"></a>Egyéni összetevők
 
-A fürt felhasználójaként telepítheti vagy használhatja a munkaterhelésben a közösségben elérhető vagy Ön által létrehozott bármely összetevőt.
+A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhető vagy Ön által létrehozott összetevőt telepíthet vagy használhat.
 
 > [!WARNING]  
-> A HDInsight-fürthöz mellékelt összetevők teljes mértékben támogatottak. A Microsoft támogatási szolgálata segít az összetevőkkel kapcsolatos problémák elkülönítéséhez és megoldásához.
+> A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további elhárításához. Előfordulhat, hogy a Microsoft támogatási szolgálata meg tudja oldani a problémát. Vagy megkérhetik Önt, hogy vegyen részt a nyílt forráskódú technológiák rendelkezésre álló csatornáiban, ahol mély szakértelem rejlehet az adott technológiával kapcsolatosan. Számos közösségi oldal használható. Ilyenek például a HDInsight és a Stack Overflow [MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) [fóruma.](https://stackoverflow.com)
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) .
 >
-> Apache projektek is projekt oldalak az [Apache honlapján](https://apache.org). Erre példa a [Hadoop](https://hadoop.apache.org/).
+> Az Apache-projektek az [Apache webhelyén](https://apache.org)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/).
 
-## <a name="component-usage"></a>Összetevő használata
+## <a name="component-usage"></a>Összetevő-használat
 
-A HDInsight szolgáltatás számos lehetőséget kínál az egyéni összetevők használatára. Az összetevők fürtre való alkalmazásának vagy telepítésétől függetlenül ugyanaz a támogatási szint érvényes. Az alábbi táblázat az egyéni összetevők HDInsight-fürtökön való használatának leggyakoribb módjait ismerteti:
+A HDInsight szolgáltatás számos módszert kínál az egyéni összetevők használatára. Ugyanez a támogatási szint érvényes, függetlenül attól, hogy az összetevő hogyan használható vagy van telepítve a fürtön. Az alábbi táblázat az egyéni összetevők HDInsight-fürtökön használt leggyakoribb módszereit ismerteti:
 
 |Használat |Leírás |
 |---|---|
-|Állásbeküldése|A Hadoop vagy más típusú feladatok, amelyek egyéni összetevőket hajtanak végre vagy használnak, elküldhetők a fürtnek.|
-|Fürt testreszabása|A fürt létrehozása során további beállításokat és egyéni összetevőket adhat meg, amelyek a fürtcsomópontokon vannak telepítve.|
-|Példák|A népszerű egyéni összetevők esetében a Microsoft és mások mintákat nyújthatnak arról, hogyan használhatók ezek az összetevők a HDInsight-fürtökön. Ezek a minták támogatás nélkül állnak rendelkezésre.|
+|Feladatok beküldése|Az egyéni összetevőket végrehajtó vagy használó Hadoop vagy más típusú feladatok elküldhető a fürtbe.|
+|Fürt testreszabása|A fürt létrehozása során megadhat további beállításokat és a fürtcsomópontokon telepített egyéni összetevőket.|
+|Példák|A népszerű egyéni összetevők esetében a Microsoft és mások példákat is biztosítanak az összetevők HDInsight-fürtökön való használatára. Ezeket a mintákat támogatás nélkül biztosítjuk.|
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure HDInsight-fürtök testreszabása parancsfájlműveletek használatával](./hdinsight-hadoop-customize-cluster-linux.md)
-* [Parancsfájl-műveletparancsfájlok fejlesztése a HDInsighthoz](hdinsight-hadoop-script-actions-linux.md)
+* [Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](./hdinsight-hadoop-customize-cluster-linux.md)
+* [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel](./spark/apache-spark-python-package-installation.md)

@@ -1,58 +1,58 @@
 ---
-title: Központi telepítési parancsfájlok használata sablonokban | Microsoft dokumentumok
-description: központi telepítési parancsfájlok használata az Azure Resource Manager-sablonokban.
+title: Telepítési parancsfájlok használata a sablonokban | Microsoft Docs
+description: az üzembe helyezési parancsfájlok használata Azure Resource Manager-sablonokban.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984793"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188909"
 ---
-# <a name="use-deployment-scripts-in-templates-preview"></a>Központi telepítési parancsfájlok használata sablonokban (előzetes verzió)
+# <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
-Ismerje meg, hogyan használhatja a központi telepítési parancsfájlok az Azure Resource-sablonokban. A felhasználó a `Microsoft.Resources/deploymentScripts`sablontelepítések ben futtathatja a központi telepítési parancsfájlokat, és áttekintheti a végrehajtási eredményeket egy új erőforrástípussal. Ezek a parancsfájlok egyéni lépések végrehajtásához használhatók, például:
+Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban. A nevű `Microsoft.Resources/deploymentScripts`új erőforrástípus használatával a felhasználók üzembe helyezhetik a telepítési parancsfájlokat a sablonok központi telepítései során, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
 
-- felhasználók hozzáadása könyvtárhoz
-- alkalmazásregisztráció létrehozása
-- adatsík-műveleteket hajt végre, például blobok másolása vagy magadatbázis
-- licenckulcs felkelő és érvényesítése
+- felhasználók hozzáadása egy címtárhoz
+- alkalmazás-regisztráció létrehozása
+- adatsík műveletek végrehajtása, például a Blobok vagy a vetőmag-adatbázisok másolása
+- licenckulcs megkeresése és érvényesítése
 - önaláírt tanúsítvány létrehozása
 - objektum létrehozása az Azure AD-ben
-- IP-címblokkok felnézése egyéni rendszerből
+- IP-címterület kikeresése egyéni rendszerből
 
-A központi telepítési parancsfájl előnyei:
+Az üzembe helyezési parancsfájl előnyei:
 
-- Könnyen kódolható, használható és hibakeresés. Központi telepítési parancsfájlok a kedvenc fejlesztői környezetekben. A parancsfájlok beágyazhatók sablonokba vagy külső parancsfájlokba.
-- Megadhatja a parancsfájl nyelvét és platformját. Jelenleg az Azure PowerShell és az Azure CLI központi telepítési parancsfájlok a Linux-környezetben támogatottak.
-- A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak [az Azure-felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
-- A parancssori argumentumok átadásának engedélyezése a parancsfájlba.
-- Megadhatja a parancsfájl kimenetek, és adja vissza őket a központi telepítéshez.
+- Egyszerű kód, használat és hibakeresés. Az üzembe helyezési parancsfájlokat kedvenc fejlesztői környezetekben is kifejlesztheti. A szkriptek sablonokba vagy külső parancsfájlokban is beágyazva lehetnek.
+- Megadhatja a parancsfájl nyelvét és platformját. Jelenleg a Linux-környezetben a Azure PowerShell és az Azure CLI üzembe helyezési parancsfájljai támogatottak.
+- A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak az [Azure-felhasználóhoz rendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
+- A parancssori argumentumok parancsfájlba való átadásának engedélyezése.
+- Megadhatja a parancsfájlok kimeneteit, és visszaküldheti azokat az üzembe helyezéshez.
 
-A központi telepítési parancsfájl-erőforrás csak azokban a régiókban érhető el, ahol az Azure Container Instance érhető el.  Lásd: [Az Azure Container-példányok erőforrás-elérhetősége az Azure-régiókban.](../../container-instances/container-instances-region-availability.md)
+Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhető el, ahol elérhető az Azure Container instance.  Tekintse [meg az Azure-régiók Azure Container instances erőforrás-elérhetőségét](../../container-instances/container-instances-region-availability.md)ismertető témakört.
 
 > [!IMPORTANT]
-> Két központi telepítési parancsfájl-erőforrás, egy tárfiók és egy tárolópéldány jön létre ugyanabban az erőforráscsoportban a parancsfájlok végrehajtásához és hibaelhárításához. Ezeket az erőforrásokat általában törli a parancsfájlszolgáltatás, amikor a központi telepítési parancsfájl végrehajtása terminálállapotba kerül. Az erőforrásokért az erőforrások törléséig számlázunk. További információ: [Karbantartás központi telepítési parancsfájl-erőforrások](#clean-up-deployment-script-resources).
+> A parancsfájlok végrehajtásához és a hibaelhárításhoz két üzembe helyezési parancsfájl-erőforrás, egy Storage-fiók és egy tároló-példány jön létre ugyanabban az erőforráscsoporthoz. Ezeket az erőforrásokat általában a parancsfájl-szolgáltatás törli, amikor a telepítési parancsfájl végrehajtása egy terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információért lásd: [telepítési parancsfájl-erőforrások tisztítása](#clean-up-deployment-script-resources).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkörét a cél erőforráscsoport.** Ez az identitás központi telepítési parancsfájlok végrehajtásához használatos. Az erőforráscsoporton kívüli műveletek végrehajtásához további engedélyeket kell megadnia. Ha például új erőforráscsoportot szeretne létrehozni, rendelje hozzá az identitást az előfizetési szinthez.
+- **Felhasználó által hozzárendelt felügyelt identitás a közreműködői szerepkörrel a célként megadott erőforrás-csoport számára**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. Az erőforráscsoporton kívüli műveletek elvégzéséhez további engedélyeket kell megadnia. Rendelje hozzá például az identitást az előfizetés szintjéhez, ha új erőforráscsoportot szeretne létrehozni.
 
   > [!NOTE]
-  > A központi telepítési parancsfájl motor létrehoz egy tárfiókot, és egy tárolópéldányt a háttérben.  A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkör előfizetési szinten van szükség, ha az előfizetés nem regisztráltaz Azure storage-fiók (Microsoft.Storage) és az Azure-tárolópéldány (Microsoft.ContainerInstance) erőforrás-szolgáltatók.
+  > Az üzembe helyezési parancsfájl motorja létrehoz egy Storage-fiókot és egy tároló példányt a háttérben.  Az előfizetési szinten a közreműködő szerepkörrel rendelkező felhasználóhoz rendelt felügyelt identitás megadása kötelező, ha az előfizetés nem regisztrálta az Azure Storage-fiókot (Microsoft. Storage) és az Azure Container instance (Microsoft. ContainerInstance) erőforrás-szolgáltatót.
 
-  Identitás létrehozásához [lásd: Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure Portalon](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)keresztül , vagy az [Azure CLI használatával,](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)vagy [az Azure PowerShell használatával.](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) A sablon telepítésekor szüksége van az identitásazonosítóra. Az identitás formátuma:
+  Identitás létrehozásához tekintse meg a [felhasználó által hozzárendelt felügyelt identitás létrehozása a Azure Portal használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)vagy az [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)használatával vagy a [Azure PowerShell használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)című témakört. A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Használja a következő CLI- vagy PowerShell-parancsfájlt az azonosító leküzdéséhez az erőforráscsoport nevének és az identitás nevének megadásával.
+  Az alábbi CLI-vagy PowerShell-parancsfájl használatával szerezze be az azonosítót az erőforráscsoport nevének és az identitás nevének megadásával.
 
   # <a name="cli"></a>[parancssori felület](#tab/CLI)
 
@@ -75,16 +75,16 @@ A központi telepítési parancsfájl-erőforrás csak azokban a régiókban ér
 
   ---
 
-- **Azure PowerShell** vagy **Azure CLI**. A támogatott Azure PowerShell-verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)olvashatja; a támogatott Azure CLI-verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)olvashatja.
+- **Azure PowerShell** vagy az **Azure CLI**. A támogatott Azure PowerShell verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)találja: a támogatott Azure CLI-verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)találja.
 
     >[!IMPORTANT]
-    > A központi telepítési parancsfájl a Microsoft Container Registry(MCR) rendszerből származó elérhető CLI-lemezképeket használja. Körülbelül egy hónapig tart a CLI-lemezkép központi telepítési parancsfájlhoz való hitelesítése. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek megjelenési dátumának megkereséséhez olvassa el az [Azure CLI kiadási megjegyzések című témakört.](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest) Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
+    > A telepítési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe, hogy az üzembe helyezési parancsfájlhoz tartozó CLI-rendszerképet hitelesítse. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
 
-    A sablonok üzembe helyezéséhez nincs szükség ezekre a verziókra. De ezek a verziók szükségesek a központi telepítési parancsfájlok helyi teszteléséhez. Lásd: [Az Azure PowerShell-modul telepítése.](/powershell/azure/install-az-ps) Használhat egy előre konfigurált Docker-lemezképet.  Lásd: [Fejlesztői környezet konfigurálása](#configure-development-environment).
+    A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
 ## <a name="sample-templates"></a>Példasablonok
 
-A következő json egy példa.  A legújabb sablonséma [itt](/azure/templates/microsoft.resources/deploymentscripts)található.
+A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templates/microsoft.resources/deploymentscripts)található.
 
 ```json
 {
@@ -125,44 +125,44 @@ A következő json egy példa.  A legújabb sablonséma [itt](/azure/templates/m
 ```
 
 > [!NOTE]
-> A példa demonstrációs céllal szolgál.  **scriptContent** és **primaryScriptUris** nem létezhet egymás mellett egy sablonban.
+> A példa demonstrációs célra szolgál.  a **scriptContent** és a **primaryScriptUris** nem létezhet egyetlen sablonban sem.
 
-Az ingatlan értékének részletei:
+Tulajdonság értékének részletei:
 
-- **Identitás**: A központi telepítési parancsfájlszolgáltatás egy felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
-- **kind**: Adja meg a parancsfájl típusát. Jelenleg az Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek **az AzurePowerShell** és az **AzureCLI.**
-- **forceUpdateTag**: A sablontelepítések közötti érték módosítása a központi telepítési parancsfájl újbóli végrehajtását kényszeríti. Használja a newGuid() vagy utcNow() függvényt, amelyet egy paraméter alapértelmezettértékeként kell beállítani. További információért olvassa el a [Parancsfájl többszöri futtatása témakört.](#run-script-more-than-once)
-- **azPowerShellVersion**/**azCliVersion**: Adja meg a használni kívánt modulverziót. A támogatott PowerShell- és CLI-verziók listáját az Előfeltételek című témakörben [tetszetős ekkel egészül ki.](#prerequisites)
-- **argumentumok**: Adja meg a paraméterértékeket. Az értékeket szóközök választják el egymástól.
-- **environmentVariables**: Adja meg a környezeti változók átad a parancsfájlnak. További információt a Telepítési parancsfájlok fejlesztése című [témakörben talál.](#develop-deployment-scripts)
-- **scriptContent**: Adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához `primaryScriptUri` használja helyette. Példák: [Szövegközi parancsfájl használata](#use-inline-scripts) és [Külső parancsfájl használata.](#use-external-scripts)
-- **primaryScriptUri**: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges központi telepítési parancsfájl támogatott fájlkiterjesztésekkel.
-- **supportingScriptUris**: Adjon meg egy tömbnyi nyilvánosan elérhető URL-t a vagy `ScriptContent` a programban `PrimaryScriptUri`megnevezett támogató fájlokhoz.
-- **időtúltöltés**: Adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett **érték: P1D**.
-- **tisztításI pszt.** Adja meg a központi telepítési erőforrások tisztításának preferenciáját, amikor a parancsfájl végrehajtása terminálállapotba kerül. Az alapértelmezett beállítás **mindig**, ami azt jelenti, hogy a terminálállapot ellenére törli az erőforrásokat (sikeres, sikertelen, megszakítva). További információ: [Karbantartás központi telepítési parancsfájl-erőforrások](#clean-up-deployment-script-resources).
-- **retentionInterval**: Adja meg azt az időközt, amelyalatt a szolgáltatás megtartja a központi telepítési parancsfájl erőforrásait, miután a központi telepítési parancsfájl végrehajtása elérte a terminálállapotot. A központi telepítési parancsfájl erőforrásai törlődnek, amikor ez az időtartam lejár. Az időtartam az [ISO 8601 mintán](https://en.wikipedia.org/wiki/ISO_8601)alapul. Az alapértelmezett érték **a P1D**, ami hét napot jelent. Ez a tulajdonság akkor használatos, ha a cleanupPreference beállítása *OnExpiration*. Az *OnExpiration* tulajdonság jelenleg nincs engedélyezve. További információ: [Karbantartás központi telepítési parancsfájl-erőforrások](#clean-up-deployment-script-resources).
+- **Identitás**: az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
+- **Típus: adja**meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
+- **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Használja a newGuid () vagy a utcNow () függvényt, amelyet a paraméter defaultValue értékeként kell beállítani. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
+- **azPowerShellVersion**/**azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
+- **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
+- **environmentVariables**: adja meg azokat a környezeti változókat, amelyeket át kell adni a parancsfájlnak. További információ: [telepítési parancsfájlok fejlesztése](#develop-deployment-scripts).
+- **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja `primaryScriptUri` helyette a parancsot. Példák: [beágyazott parancsfájl használata](#use-inline-scripts) és [külső parancsfájl használata](#use-external-scripts).
+- **primaryScriptUri**: adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával.
+- **supportingScriptUris**: adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a `ScriptContent` vagy `PrimaryScriptUri`a által meghívott fájlokat.
+- **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
+- **cleanupPreference**. Adja meg a telepítési erőforrások törlésének előnyét, ha a parancsfájl végrehajtása terminál állapotba kerül. Az alapértelmezett beállítás **mindig**, ami azt jelenti, hogy a rendszer a terminál állapota (sikeres, sikertelen, megszakított) ellenére törli az erőforrásokat. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
+- **retentionInterval**: adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az alapértelmezett érték a **P1D**, ami hét napot jelent. Ezt a tulajdonságot akkor használja a rendszer, ha a cleanupPreference értéke *OnExpiration*. A *OnExpiration* tulajdonság jelenleg nincs engedélyezve. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>További minták
 
-- [tanúsítvány létrehozása és hozzárendelése a kulcstartóhoz](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
+- [tanúsítvány létrehozása és kiosztása kulcstartóhoz](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
 
-- [hozzon létre és rendeljen hozzá egy felhasználó által hozzárendelt felügyelt identitást egy erőforráscsoporthoz, és futtasson egy központi telepítési parancsfájlt.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)
+- [hozzon létre és rendeljen hozzá egy felhasználóhoz rendelt felügyelt identitást egy erőforráscsoporthoz, és futtasson egy üzembe helyezési parancsfájlt](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
 
 > [!NOTE]
-> Javasoljuk, hogy hozzon létre egy felhasználó által hozzárendelt identitást, és adja meg az engedélyeket előre. Előfordulhat, hogy bejelentkezési és engedélyekkel kapcsolatos hibákat kap, ha az identitást és a engedélyeket ugyanabban a sablonban hozza létre, ahol a központi telepítési parancsfájlokat futtatja. Beletelik egy kis időbe, amíg az engedélyek hatályba lépnek.
+> Javasoljuk, hogy hozzon létre egy felhasználó által hozzárendelt identitást, és adja meg előre az engedélyeket. Ha az identitást hozza létre, és engedélyeket ad a telepítési parancsfájlok futtatásához, akkor előfordulhat, hogy be kell jelentkeznie a bejelentkezési és az engedélyekkel kapcsolatos hibákba. Időbe telik, amíg az engedélyek érvénybe lépnek.
 
-## <a name="use-inline-scripts"></a>Szövegközi parancsfájlok használata
+## <a name="use-inline-scripts"></a>Beágyazott parancsfájlok használata
 
-A következő sablon hoz egy `Microsoft.Resources/deploymentScripts` erőforrást a típussal. A kiemelt rész a szövegközi parancsfájl.
+A következő sablon egyetlen erőforrással van definiálva `Microsoft.Resources/deploymentScripts` a típussal. A kiemelt rész a beágyazott parancsfájl.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> Mivel a szövegközi központi telepítési parancsfájlok idézőjelek közé vannak zárva, a központi telepítési parancsfájlokban lévő karakterláncokat inkább idézőjelek közé kell tenni. A PowerShell escape karaktere **&#92;. ** A karakterlánc-helyettesítést is érdemes használnia, ahogy az az előző JSON-mintában látható. Tekintse meg a névparaméter alapértelmezett értékét.
+> Mivel a beágyazott telepítési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő karakterláncokat csak egyszeres idézőjelek közé kell foglalni. A PowerShell escape-karaktere **&#92;**. Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon. Tekintse meg a name paraméter alapértelmezett értékét.
 
-A parancsfájl egy paramétert vesz igénybe, és adja ki a paraméter értékét. **A DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **értéksor** bemutatja, hogyan lehet elérni a tárolt értékeket. `Write-Output`hibakeresésre szolgál. A kimeneti fájl eléréséről a [Debug telepítési parancsfájlok](#debug-deployment-scripts)című témakörben olvashat.  A tulajdonságleírások a [Mintasablonok című témakörben találhatók.](#sample-templates)
+A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. `Write-Output`hibakeresési célra szolgál. A kimeneti fájl elérésének megismeréséhez tekintse meg az [üzembe helyezési parancsfájlok hibakeresését](#debug-deployment-scripts)ismertető témakört.  A tulajdonságok leírását lásd: [példák a sablonokra](#sample-templates).
 
-A parancsfájl futtatásához válassza a **Próbálja ki** a Cloud Shell megnyitásához lehetőséget, majd illessze be a következő kódot a rendszerhéj ablaktáblájába.
+A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj ablaktáblába.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -178,25 +178,25 @@ Write-Host "Press [ENTER] to continue ..."
 
 A kimenet a következőképpen fog kinézni:
 
-![Erőforrás-kezelő sablon telepítési parancsfájlhello világ kimenete](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
+![Resource Manager-sablon üzembe helyezési parancsfájl Hello World output](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A szövegközi parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. Cli-parancsfájlok esetén az elsődleges parancsfájlok bármilyen kiterjesztéssel rendelkezhetnek (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash parancsfájlok. A külső parancsfájlok `scriptContent` használatához `primaryScriptUri`cserélje le a programra. Például:
+A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. A külső parancsfájlok használatához cserélje le `scriptContent` a parancsot `primaryScriptUri`a következőre:. Például:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-Egy példa megtekintéséhez válassza [az itt](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)lehetőséget.
+Ha példát szeretne látni, válassza az [itt](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)lehetőséget.
 
-A külső parancsfájloknak elérhetőnek kell lenniük.  Az Azure storage-fiókokban tárolt parancsfájlok védelméről az [Oktatóanyag: Biztonságos összetevők az Azure Resource Manager-sablontelepítésekben.](./template-tutorial-secure-artifacts.md)
+A külső parancsfájloknak elérhetőnek kell lenniük.  Az Azure Storage-fiókokban tárolt parancsfájlok biztonságossá tételéhez lásd: [Private ARM-sablon üzembe helyezése sas-token](./secure-template-with-sas-token.md)használatával.
 
-Ön felelős a központi telepítési parancsfájl által hivatkozott parancsfájlok integritásának biztosításáért, akár **PrimaryScriptUri,** akár **SupportingScriptUris.**  Csak olyan parancsfájlokra hivatkozzon, amelyekben megbízik.
+Ön felelős az üzembe helyezési parancsfájl által hivatkozott parancsfájlok integritásának biztosításáért, vagy **PrimaryScriptUri** vagy **SupportingScriptUris**.  Csak a megbízható parancsfájlokra hivatkozzon.
 
 ## <a name="use-supporting-scripts"></a>Támogató parancsfájlok használata
 
-A bonyolult logika egy vagy több segédparancsfájlra bontható. A `supportingScriptURI` tulajdonság lehetővé teszi, hogy szükség esetén uri-k tömbjét biztosítsa a támogató parancsfájlok számára:
+A bonyolult logikai műveleteket egy vagy több támogató parancsfájlba is elkülönítheti. A `supportingScriptURI` tulajdonság lehetővé teszi, hogy szükség esetén az URI-k tömbjét adja meg a támogató parancsfájl-fájlokhoz:
 
 ```json
 "scriptContent": "
@@ -210,54 +210,54 @@ A bonyolult logika egy vagy több segédparancsfájlra bontható. A `supportingS
 ],
 ```
 
-A támogató parancsfájlok szövegközi és elsődleges parancsfájlokból is meghívhatók. A támogató parancsfájlok nem korlátozzák a fájlkiterjesztést.
+A támogató parancsfájlok a beágyazott parancsfájlokból és az elsődleges parancsfájlokból is meghívhatók. A támogató parancsfájlok nem rendelkeznek korlátozásokkal a fájlkiterjesztés esetében.
 
-A segédfájlok at a hogyscripts/azscriptinput futásidőben. Relatív elérési úttal hivatkozhat a szövegközi parancsfájlokból és az elsődleges parancsfájlokból származó segédfájlokra.
+A rendszer a támogató fájlokat a futtatókörnyezet azscripts/azscriptinput másolja. Relatív elérési út használatával hivatkozhat a beágyazott parancsfájlokból és az elsődleges parancsfájlokból származó támogató fájlokra.
 
-## <a name="work-with-outputs-from-powershell-script"></a>PowerShell-parancsfájl kimeneteinek munkája
+## <a name="work-with-outputs-from-powershell-script"></a>Kimenetek használata PowerShell-parancsfájlból
 
-A következő sablon bemutatja, hogyan lehet értékeket átadni két deploymentScripts-erőforrás között:
+A következő sablon bemutatja, hogyan adhat át értékeket két deploymentScripts-erőforrás között:
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
 
-Az első erőforrásban definiáljon egy **$DeploymentScriptOutputs**nevű változót, és a kimeneti értékek tárolására használja. A sablonon belüli másik erőforrás kimeneti értékének eléréséhez használja a következőket:
+Az első erőforrásban definiál egy **$DeploymentScriptOutputs**nevű változót, és a kimeneti értékek tárolására használja azt. A sablonban lévő másik erőforrás kimeneti értékének eléréséhez használja a következőt:
 
 ```json
 reference('<ResourceName>').output.text
 ```
 
-## <a name="work-with-outputs-from-cli-script"></a>Cli-parancsfájl kimeneteivel dolgozhat
+## <a name="work-with-outputs-from-cli-script"></a>Kimenetek használata a CLI-szkriptből
 
-A PowerShell központi telepítési parancsfájljától eltérően a CLI/bash támogatás nem tesz elérhetővé egy közös változót a parancsfájlkimenetek tárolásához, hanem van egy **AZ_SCRIPTS_OUTPUT_PATH** nevű környezeti változó, amely tárolja a helyet, ahol a parancsfájl kimenetek fájl található. Ha egy központi telepítési parancsfájl t egy Resource Manager-sablonból futtat, ezt a környezeti változót a Bash rendszerhéj automatikusan beállítja.
+Eltér a PowerShell telepítési parancsfájltól, a CLI/bash-támogatás nem tesz elérhetővé egy közös változót a parancsfájlok kimenetének tárolásához, hanem egy **AZ_SCRIPTS_OUTPUT_PATH** nevű környezeti változót, amely a parancsfájl kimeneti fájljának helyét tárolja. Ha egy üzembe helyezési parancsfájl egy Resource Manager-sablonból fut, akkor a bash rendszerhéj automatikusan beállítja ezt a környezeti változót.
 
-A központi telepítési parancsfájlkimeneteket a AZ_SCRIPTS_OUTPUT_PATH helyre kell menteni, és a kimeneteknek érvényes JSON-karakterlánc-objektumnak kell lenniük. A fájl tartalmát kulcs-érték párként kell menteni. A karakterláncok tömbje például { "MyResult" néven van tárolva: [ "foo", "bar"] }.  Csak a tömberedmények tárolása , például [ "foo", "bar" ], érvénytelen.
+Az üzembe helyezési parancsfájl kimeneteit a AZ_SCRIPTS_OUTPUT_PATH helyre kell menteni, és a kimeneteknek érvényes JSON karakterlánc-objektumnak kell lenniük. A fájl tartalmát kulcs-érték párokként kell menteni. A karakterláncok tömbjét például {"MyResult": ["foo", "Bar"]} tárolja.  A csak a tömb eredményeinek tárolása (például ["foo", "Bar"]) érvénytelen.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
-[jq-t](https://stedolan.github.io/jq/) használnak az előző mintában. Jön a konténer képeket. Lásd: [Fejlesztői környezet konfigurálása](#configure-development-environment).
+a [jQ](https://stedolan.github.io/jq/) az előző mintában van használatban. A tároló lemezképeit tartalmazza. Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
-## <a name="develop-deployment-scripts"></a>Központi telepítési parancsfájlok fejlesztése
+## <a name="develop-deployment-scripts"></a>Üzembe helyezési parancsfájlok fejlesztése
 
-### <a name="handle-non-terminating-errors"></a>A nem megszüntetési hibák kezelése
+### <a name="handle-non-terminating-errors"></a>Nem megszakítást okozó hibák kezelése
 
-Szabályozhatja, hogy a PowerShell hogyan reagáljon a nem végződő hibákra a [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) változó használatával a központi telepítési parancsfájlban. A központi telepítési parancsfájl motor javunkra nem állítja be/módosítja az értéket.  Annak ellenére, hogy a $ErrorActionPreference beállított érték, a központi telepítési parancsfájl az erőforrás-kiépítési állapotsikertelenre *állítja,* ha a parancsfájl hibát észlel.
+Az üzembe helyezési parancsfájl [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+) változójának használatával szabályozhatja, hogyan válaszol a PowerShell a nem megszakítást okozó hibákra. Az üzembe helyezési parancsfájl motorja nem állítja be és nem módosítja az értéket.  A $ErrorActionPreferencehoz beállított érték ellenére a telepítési parancsfájl az erőforrás-kiépítési állapotot úgy állítja be, hogy a hiba esetén *meghiúsuljon* , ha a parancsfájl hibát észlel.
 
-### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok áthelyezése a központi telepítési parancsfájlnak
+### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok továbbítása a telepítési parancsfájlba
 
-Környezeti változók (EnvironmentVariable) beállítása a tárolópéldányokban lehetővé teszi, hogy a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját biztosítsa. A központi telepítési parancsfájl ugyanúgy kezeli a nem biztonságos és biztonságos környezeti változókat, mint az Azure Container Instance. További információ: [Környezeti változók beállítása tárolópéldányokban.](../../container-instances/container-instances-environment-variables.md#secure-values)
+A környezeti változók (EnvironmentVariable) beállítása a Container instances szolgáltatásban lehetővé teszi a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját. Az üzembe helyezési parancsfájl ugyanúgy kezeli a nem védett és a biztonságos környezeti változókat, mint az Azure Container instance. További információ: [környezeti változók beállítása a Container instances](../../container-instances/container-instances-environment-variables.md#secure-values)szolgáltatásban.
 
-## <a name="debug-deployment-scripts"></a>Telepítési parancsfájlok hibakeresése
+## <a name="debug-deployment-scripts"></a>Üzembe helyezési parancsfájlok hibakeresése
 
-A parancsfájlszolgáltatás létrehoz egy [tárfiókot](../../storage/common/storage-account-overview.md) és egy [tárolópéldányt](../../container-instances/container-instances-overview.md) a parancsfájl-végrehajtáshoz. Mindkét erőforrás rendelkezik az **azscriptek** utótag az erőforrás nevét.
+A parancsfájl-szolgáltatás létrehoz egy [Storage-fiókot](../../storage/common/storage-account-overview.md) és egy tároló- [példányt](../../container-instances/container-instances-overview.md) a parancsfájlok futtatásához. Mindkét erőforrás rendelkezik az **azscripts** utótaggal.
 
-![Az Erőforrás-kezelő sablon telepítési parancsfájljának erőforrásnevei](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
+![Resource Manager-sablon telepítési parancsfájljának erőforrásainak nevei](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
-A felhasználói parancsfájl, a végrehajtási eredmények és a stdout fájl a tárfiók fájlmegosztásaiban tárolódnak. Van egy **azscripts**nevű mappa. A mappában még két mappa található a bemeneti és a kimeneti fájlokhoz: **azscriptinput** és **azscriptoutput**.
+A felhasználói parancsfájl, a végrehajtás eredményei és az stdout-fájl a Storage-fiók Files megosztásában tárolódik. Van egy **azscripts**nevű mappa. A mappában két további mappa található a bemeneti és a kimeneti fájlokhoz: **azscriptinput** és **azscriptoutput**.
 
-A kimeneti mappa **egy executionresult.json** fájlt és a parancsfájl kimeneti fájlját tartalmazza. Láthatjuk a parancsfájl végrehajtási hibaüzenet **et executionresult.json**. A kimeneti fájl csak akkor jön létre, ha a parancsfájl végrehajtása sikeres. A bemeneti mappa egy rendszer PowerShell-parancsfájlt és a felhasználói központi telepítési parancsfájlokat tartalmazza. Lecserélheti a felhasználói központi telepítési parancsfájlt egy módosítottra, és újrafuttathatja a központi telepítési parancsfájlt az Azure-tárolópéldányból.
+A kimeneti mappa egy **executionresult. JSON** fájlt és a parancsfájl kimeneti fájlját tartalmazza. A parancsfájl-végrehajtási hibaüzenetet a **executionresult. JSON**fájlban tekintheti meg. A kimeneti fájl csak akkor jön létre, ha a parancsfájl végrehajtása sikeresen megtörtént. A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A felhasználói telepítési parancsfájlt lecserélheti egy módosítottra, majd újra futtathatja az üzembe helyezési parancsfájlt az Azure Container instanceból.
 
-A központi telepítési parancsfájl erőforrás-telepítési információit az erőforráscsoport és az előfizetés szintjén szerezheti be a REST API használatával:
+Az üzembe helyezési parancsfájl erőforrás-telepítési információit az erőforráscsoport szintjén és az előfizetés szintjén szerezheti be REST API használatával:
 
 ```rest
 /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
@@ -267,7 +267,7 @@ A központi telepítési parancsfájl erőforrás-telepítési információit az
 /subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
 ```
 
-A következő példa [az ARMClient programot](https://github.com/projectkudu/ARMClient)használja:
+A következő példa a [ARMClient](https://github.com/projectkudu/ARMClient)használja:
 
 ```azurepowershell
 armclient login
@@ -278,7 +278,7 @@ Az eredmény az alábbihoz hasonlóan fog kinézni:
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
 
-A kimenet a központi telepítési állapotot és a központi telepítési parancsfájl erőforrás-azonosítóit jeleníti meg.
+A kimenet megjeleníti a központi telepítési állapotot, valamint az üzembe helyezési parancsfájl erőforrás-azonosítóit.
 
 A következő REST API a naplót adja vissza:
 
@@ -286,102 +286,102 @@ A következő REST API a naplót adja vissza:
 /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
 ```
 
-Csak a központi telepítési parancsfájl-erőforrások törlése előtt működik.
+Ez csak az üzembe helyezési parancsfájl erőforrásainak törlése előtt működik.
 
-A deploymentScripts erőforrás t a portálon való megtekintéséhez válassza a **Rejtett típusok megjelenítése**lehetőséget:
+Ha meg szeretné tekinteni a deploymentScripts-erőforrást a portálon, válassza a **rejtett típusok megjelenítése**lehetőséget:
 
-![Erőforrás-kezelő sablon telepítési parancsfájlja, rejtett típusok megjelenítése, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
+![Resource Manager-sablon telepítési parancsfájlja, rejtett típusok megjelenítése, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
-## <a name="clean-up-deployment-script-resources"></a>Központi telepítési parancsfájl-erőforrások karbantartása
+## <a name="clean-up-deployment-script-resources"></a>Üzembe helyezési parancsfájl erőforrásainak karbantartása
 
-A központi telepítési parancsfájl létrehoz egy tárfiókot és egy tárolópéldányt, amely központi telepítési parancsfájlok végrehajtásához és a hibakeresési adatok tárolásához használatos. Ez a két erőforrás ugyanabban az erőforráscsoportban jön létre, mint a kiépített erőforrások, és a parancsfájl lejáratakor a parancsfájl törli őket. Ezeknek az erőforrásoknak az életciklusát szabályozhatja.  Amíg nem törli őket, mindkét erőforrásért díjat kell fizetnie. Az árra vonatkozó információkért lásd: [Tárolópéldányok díjszabása](https://azure.microsoft.com/pricing/details/container-instances/) és [az Azure Storage díjszabása.](https://azure.microsoft.com/pricing/details/storage/)
+Az üzembe helyezési parancsfájl létrehoz egy Storage-fiókot és egy tároló-példányt, amely a telepítési parancsfájlok végrehajtásához és a hibakeresési adatok tárolásához használatos. Ez a két erőforrás ugyanabban az erőforráscsoportban jön létre, mint a kiépített erőforrások, és a parancsfájl a szkript lejárta után törli. Szabályozhatja ezeknek az erőforrásoknak a életciklusát.  Amíg nem törli őket, mindkét erőforrásért díjat kell fizetnie. Az árakra vonatkozó információkért lásd: [Container instances díjszabás](https://azure.microsoft.com/pricing/details/container-instances/) és az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Ezeknek az erőforrásoknak az életciklusát a sablonban a következő tulajdonságok szabályozzák:
+Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai vezérlik:
 
-- **cleanupPreference**: Törlési preferencia, amikor a parancsfájl végrehajtása terminálállapotba kerül.  A támogatott értékek a következők:
+- **cleanupPreference**: Ha a parancsfájl végrehajtása egy terminál állapotba kerül, a rendszer törli a beállítást.  A támogatott értékek a következők:
 
-  - **Mindig**: Törölje az erőforrásokat, ha a parancsfájl végrehajtása terminálállapotba kerül. Mivel a deploymentScripts erőforrás továbbra is jelen lehet az erőforrások törlése után, a rendszerparancsfájl másolni fogja a parancsfájl végrehajtási eredményeit, például stdout, outputok, visszatérési érték, stb.
-  - **OnSuccess**: Az erőforrások törlése csak akkor, ha a parancsfájl végrehajtása sikeres. Továbbra is elérheti az erőforrásokat, hogy megtalálja a hibakeresési információkat.
-  - **OnExpiration**: Csak akkor törölje az erőforrásokat, ha a **megőrzési intervallum** beállítás lejárt. Ez a tulajdonság jelenleg le van tiltva.
+  - **Mindig**: törölje az erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a rendszerparancsfájl a parancsfájlok végrehajtásának eredményeit, például az stdout-t, a kimeneteket, a visszatérési értéket, az erőforrások törlését pedig az ADATBÁZISba másolja.
+  - **OnSuccess**: csak akkor törölje az erőforrásokat, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
+  - **OnExpiration**: csak akkor törölje az erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ez a tulajdonság jelenleg le van tiltva.
 
-- **retentionInterval**: Adja meg azt az időtartamot, amely alatt egy parancsfájl-erőforrás megmarad, majd ezután lejár és törlődik.
+- **retentionInterval**: adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
 
 > [!NOTE]
-> Nem ajánlott a központi telepítési parancsfájl erőforrásait más célokra használni.
+> Az üzembe helyezési parancsfájl erőforrásai más célra való használata nem ajánlott.
 
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 
-A központi telepítési parancsfájl végrehajtása idempotens művelet. Ha a deploymentScripts erőforrás-tulajdonságai közül egyik sem módosul (beleértve a szövegközi parancsfájlt is), a parancsfájl nem lesz végrehajtva a sablon újratelepítésekor. A központi telepítési parancsfájlszolgáltatás összehasonlítja a sablonban lévő erőforrásneveket az ugyanabban az erőforráscsoportban lévő meglévő erőforrásokkal. Két lehetőség van, ha ugyanazt a központi telepítési parancsfájlt többször szeretné végrehajtani:
+A telepítési parancsfájl végrehajtása egy idempotens művelet. Ha a deploymentScripts erőforrás-tulajdonságok egyike sincs (beleértve a beágyazott parancsfájlt is), a parancsfájl nem lesz végrehajtva a sablon újbóli telepítésekor. Az üzembe helyezési parancsfájl szolgáltatás összehasonlítja a sablonban lévő erőforrás-neveket az ugyanabban az erőforráscsoport meglévő erőforrásaival. Két lehetőség közül választhat, ha ugyanazt az üzembe helyezési parancsfájlt többször szeretné végrehajtani:
 
-- Módosítsa a deploymentScripts erőforrás nevét. Például használja az [utcNow](./template-functions-date.md#utcnow) sablon függvényt erőforrásnévként vagy az erőforrás nevének részeként. Az erőforrásnév módosítása új deploymentScripts erőforrást hoz létre. Ez jó vezetése története script végrehajtás.
+- Módosítsa a deploymentScripts-erőforrás nevét. Használja például az [utcNow](./template-functions-date.md#utcnow) -sablon függvényt az erőforrás neve vagy az erőforrás neve részeként. Az erőforrás nevének módosítása új deploymentScripts-erőforrást hoz létre. A parancsfájl-végrehajtás előzményeinek megőrzése jó.
 
     > [!NOTE]
-    > Az utcNow függvény csak egy paraméter alapértelmezett értékében használható.
+    > A utcNow függvény csak a paraméter alapértelmezett értékében használható.
 
-- Adjon meg egy `forceUpdateTag` másik értéket a sablon tulajdonságban.  Például használja utcNow értékként.
+- Egy másik értéket kell megadnia a `forceUpdateTag` sablon tulajdonságban.  Használja például a utcNow értéket.
 
 > [!NOTE]
-> Írja meg az idempotens központi telepítési parancsfájlokat. Ez biztosítja, hogy ha véletlenül újra futnak, az ne okozzon rendszerváltozásokat. Ha például a központi telepítési parancsfájlt egy Azure-erőforrás létrehozásához használják, ellenőrizze, hogy az erőforrás nem létezik-e a létrehozása előtt, így a parancsfájl sikeres lesz, vagy nem hozza létre újra az erőforrást.
+> Írja be a idempotens telepítési parancsfájlokat. Ez biztosítja, hogy ha véletlenül újra futnak, a rendszer nem fog változásokat okozni. Ha például az üzembe helyezési parancsfájl egy Azure-erőforrás létrehozásához használatos, ellenőrizze, hogy az erőforrás nem létezik-e a létrehozása előtt, így a parancsfájl sikeres lesz, vagy nem hozza létre újra az erőforrást.
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-A központi telepítési parancsfájl-fejlesztési környezetben egy előre konfigurált docker-tárolórendszerképet használhat. Az alábbi eljárás bemutatja, hogyan konfigurálhatja a docker-lemezképet Windows rendszeren. A Linux és a Mac, megtalálja az információkat az interneten.
+Egy előre konfigurált Docker-tároló rendszerképet is használhat a telepítési parancsfájl fejlesztési környezete számára. Az alábbi eljárás bemutatja, hogyan konfigurálhatja a Docker-rendszerképet Windows rendszeren. Linux és Mac rendszereken az interneten talál információt.
 
-1. Telepítse a [Docker Desktop-ot](https://www.docker.com/products/docker-desktop) a fejlesztői számítógépre.
-1. Nyissa meg a Docker Desktop alkalmazást.
-1. Válassza a Feladatsorok Docker Desktop ikonját, majd a **Beállítások**lehetőséget.
-1. Válassza **a Megosztott meghajtók**lehetőséget, jelölje ki azt a helyi meghajtót, amelyet elérhetővé szeretne tenni a tárolók számára, majd válassza **az Alkalmaz lehetőséget.**
+1. Telepítse a [Docker Desktopot](https://www.docker.com/products/docker-desktop) a fejlesztői számítógépen.
+1. Nyissa meg a Docker Desktopot.
+1. Válassza ki a Docker Desktop ikont a tálcáról, majd válassza a **Beállítások**lehetőséget.
+1. Válassza a **megosztott meghajtók**lehetőséget, válassza ki a tárolók számára elérhető helyi meghajtót, majd kattintson az **alkalmaz** gombra.
 
-    ![Az Erőforrás-kezelő sablon telepítési parancsfájljának docker-meghajtója](./media/deployment-script-template/resource-manager-deployment-script-docker-setting-drive.png)
+    ![Resource Manager-sablon telepítési parancsfájl Docker-meghajtója](./media/deployment-script-template/resource-manager-deployment-script-docker-setting-drive.png)
 
-1. Adja meg a Windows hitelesítő adatait a parancssorba.
-1. Nyisson meg egy terminálablakot, vagy parancssort vagy Windows PowerShell (Ne használja a PowerShell ISE-t).
-1. A központi telepítési parancsfájl tárolórendszerképének lekérése a helyi számítógépre:
+1. Adja meg a Windows rendszerbeli hitelesítő adatait a parancssorban.
+1. Nyisson meg egy terminál ablakot, vagy a parancssort vagy a Windows PowerShellt (ne használja a PowerShell ISE-t).
+1. Kérje le a telepítési parancsfájl tárolójának rendszerképét a helyi számítógépre:
 
     ```command
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    A példa a PowerShell 2.7.0-s verzióját használja.
+    A példa a PowerShell-2.7.0 verzióját használja.
 
-    CLI-lemezkép lekérése Microsoft Container Registry (MCR) rendszerből:
+    CLI-rendszerkép lekérése Microsoft Container Registryról (MCR):
 
     ```command
     docker pull mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-    Ez a példa a CLI 2.0.80 verziót használja. A központi telepítési parancsfájl az [itt](https://hub.docker.com/_/microsoft-azure-cli)található alapértelmezett CLI-tárolórendszerképeket használja.
+    Ez a példa a CLI-2.0.80 verzióját használja. Az üzembe helyezési parancsfájl az [itt](https://hub.docker.com/_/microsoft-azure-cli)található alapértelmezett CLI-tárolók rendszerképeit használja.
 
-1. Futtassa a docker-lemezképet helyileg.
+1. Futtassa helyileg a Docker-rendszerképet.
 
     ```command
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    Cserélje le ** &lt;az állomásillesztőprogram>** és ** &lt;a gazdakönyvtár nevét>** egy meglévő mappára a megosztott meghajtón.  A mappát a tárolóban lévő **/data** mappához rendeli hozzá. Példák: D:\docker:
+    Cserélje ** &lt;le a gazdagép illesztőprogramjának betűjelét>** és ** &lt;az állomásnév nevét>** egy meglévő mappát a megosztott meghajtón.  Leképezi a mappát a tároló **/Data** mappájába. Példák a D:\docker leképezésére:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    **- ez azt jelenti, hogy** életben kell tartani a konténer képét.
+    **– Ez azt jelenti, hogy** a tároló rendszerképét életben tartja.
 
-    Példa a CLI-re:
+    Egy CLI-példa:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. A kérdés kérésekor válassza **a Megosztás lehetőséget.**
-1. A következő képernyőkép bemutatja, hogyan futtatható a PowerShell-parancsfájl, mivel van egy helloworld.ps1 fájl d:\docker mappában.
+1. Válassza a **megosztás** lehetőséget, amikor megjelenik a kérdés.
+1. Az alábbi képernyőfelvételen egy PowerShell-szkript futtatását láthatja, mivel a d:\docker mappában található egy HelloWorld. ps1 fájl.
 
-    ![Az Erőforrás-kezelő sablon központi telepítési parancsfájljának docker-cmd-je](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+    ![Resource Manager-sablon üzembe helyezési parancsfájl Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-A parancsfájl sikeres tesztelése után használhatja központi telepítési parancsfájlként.
+A parancsfájl sikeres tesztelése után üzembe helyezési parancsfájlként is használható.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja a központi telepítési parancsfájlokat. Útmutató egy központi telepítési parancsfájl oktatóanyagát:
+Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Központi telepítési parancsfájlok használata az Azure Resource Manager-sablonokban](./template-tutorial-deployment-script.md)
+> [Oktatóanyag: telepítési parancsfájlok használata Azure Resource Manager-sablonokban](./template-tutorial-deployment-script.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63148b99e65a5ccc49d54d4ae6c58adebc72c6d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718514"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189283"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az adatelemzés áttekintése az Azure HDInsight Spark használatával
 
@@ -145,7 +145,7 @@ A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt a
 
 ![Fürt irányítópultok](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Tallózással is megkeresheti a Jupyter ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** -jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
+Tallózással is megkeresheti a Jupyter ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** -jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
 
 ![Jupyter-jegyzetfüzetek tallózása](./media/spark-overview/spark-jupyter-notebook.png)
 
