@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899986"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867450"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -50,9 +50,7 @@ A Kiemelt identitáskezelés beállítása után a bal oldali navigációs menü
 
 ## <a name="who-can-do-what"></a>Ki mire képes?
 
-Ha ön az első, aki a Kiemelt identitáskezelés szolgáltatását használja, automatikusan a címtárban a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és a [kiemelt szerepkör-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepköröket rendeli hozzá.
-
-Az Azure AD-szerepkörök a kiemelt identitáskezelés, csak a kiemelt szerepkör-rendszergazdai szerepkörben lévő felhasználó kezelheti a hozzárendelések más rendszergazdák számára. A [kiemelt identitáskezelés kezeléséhez más rendszergazdák](pim-how-to-give-access-to-pim.md)is hozzáférhetnek. A globális rendszergazdák, a biztonsági rendszergazdák, a globális olvasók és a biztonsági olvasók is megtekinthetik az Azure AD-szerepkörök hozzárendeléseit a kiemelt identitáskezelésben.
+Az Azure AD-szerepkörök privilegizált identitáskezelés, csak a kiemelt szerepkör-rendszergazdai vagy globális rendszergazdai szerepkörben lévő felhasználó kezelheti a hozzárendelések más rendszergazdák számára. A [kiemelt identitáskezelés kezeléséhez más rendszergazdák](pim-how-to-give-access-to-pim.md)is hozzáférhetnek. A globális rendszergazdák, a biztonsági rendszergazdák, a globális olvasók és a biztonsági olvasók is megtekinthetik az Azure AD-szerepkörök hozzárendeléseit a kiemelt identitáskezelésben.
 
 A kiemelt identitáskezelés ben az Azure-erőforrás-szerepkörök esetében csak egy előfizetés-rendszergazda, egy erőforrás-tulajdonos vagy egy erőforrás-felhasználói hozzáférés-rendszergazda kezelheti a más rendszergazdák hozzárendeléseit. A kiemelt szerepkör-rendszergazdák, biztonsági rendszergazdák vagy biztonsági olvasók alapértelmezés szerint nem rendelkeznek hozzáféréssel az Azure-erőforrás-szerepkörök hozzárendeléseinek megtekintéséhez a kiemelt identitáskezelésben.
 
