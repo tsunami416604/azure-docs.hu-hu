@@ -1,64 +1,64 @@
 ---
 title: Azure Migrate-projekt eltávolítása
-description: Bemutatja, hogyan hozhat létre egy Azure Migrate projektet, és hogyan adhat hozzá értékelési/áttelepítési eszközt.
+description: Útmutató Azure Migrate projekt létrehozásához és egy Assessment/Migration eszköz hozzáadásához.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73512729"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate-projekt eltávolítása
 
-Ez a cikk ismerteti, hogyan törölheti az [Azure Migrate](migrate-overview.md) projekt.
+Ez a cikk egy [Azure Migrate](migrate-overview.md) -projekt törlését ismerteti.
 
 
 ## <a name="before-you-start"></a>Előkészületek
 
 Projekt törlése előtt:
 
-- Amikor töröl egy projektet, a projekt és a felderített számítógép-metaadatok törlődnek.
-- Ha csatolt egy Log Analytics-munkaterületet a Kiszolgálóértékelési eszközhöz függőségelemzésre, döntse el, hogy törölni kívánja-e a munkaterületet. 
+- Ha töröl egy projektet, a projekt és a felderített gép metaadatai törlődnek.
+- Ha csatolt egy Log Analytics munkaterületet a kiszolgáló-értékelési eszközhöz a függőségek elemzéséhez, döntse el, hogy törölni kívánja-e a munkaterületet. 
     - A munkaterület nem törlődik automatikusan. Törölje manuálisan.
-    - A törlés előtt ellenőrizze, hogy milyen munkaterületet használ. Ugyanaz a Log Analytics-munkaterület több forgatókönyvhöz is használható.
-    - A projekt törlése előtt az **OMS-munkaterület**csoportban található egy hivatkozás az **Azure Migrate – Servers** > **Azure Migrate – Server Assessment**területén.
-    - Ha a projekt törlése után törölni szeretne egy munkaterületet, keresse meg a munkaterületet a megfelelő erőforráscsoportban, és kövesse [az alábbi utasításokat.](../azure-monitor/platform/delete-workspace.md)
+    - Győződjön meg arról, hogy a törlés előtt milyen munkaterület van használatban. Ugyanaz a Log Analytics munkaterület több forgatókönyv esetén is használható.
+    - A projekt törlése előtt megtalálhatja a munkaterületre mutató hivatkozást **Azure Migrate-** > Servers**Azure Migrate-Server Assessment**( **OMS munkaterület**) területen.
+    - Ha törölni szeretne egy munkaterületet a projekt törlése után, keresse meg a munkaterületet a megfelelő erőforráscsoporthoz, és kövesse az [alábbi utasításokat](../azure-monitor/platform/delete-workspace.md).
 
 
 ## <a name="delete-a-project"></a>Projekt törlése
 
 
-1. Az Azure Portalon nyissa meg azt az erőforráscsoportot, amelyben a projekt et létrehozták.
-2. Az erőforráscsoport lapon válassza a **Rejtett típusok megjelenítése**lehetőséget.
-3. Jelölje ki a törölni kívánt projektet és a kapcsolódó erőforrásokat.
-    - Az Azure Migrate projektek erőforrástípusa a **Microsoft.Migrate/migrateprojects**.
-    - A következő szakaszban tekintse át a felderítés, értékelés és áttelepítés egy Azure Migrate projektben létrehozott erőforrásokat.
-    - Ha az erőforráscsoport csak az Azure Migrate projektet tartalmazza, törölheti a teljes erőforráscsoportot.
-    - Ha törölni szeretne egy projektet az Azure Migrate korábbi verziójából, a lépések megegyeznek. Ezeknek a projekteknek az erőforrástípusa az **Áttelepítési projekt.**
+1. A Azure Portal nyissa meg azt az erőforráscsoportot, amelyben a projekt létrejött.
+2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése**elemet.
+3. Válassza ki a projektet és a törölni kívánt erőforrásokat.
+    - Azure Migrate projektek erőforrástípus a **Microsoft. migrálása/migrateprojects**.
+    - A következő szakaszban tekintse át a felderítéshez, az értékeléshez és az áttelepítéshez létrehozott erőforrásokat egy Azure Migrate projektben.
+    - Ha az erőforráscsoport csak a Azure Migrate projektet tartalmazza, akkor törölheti a teljes erőforráscsoportot.
+    - Ha törölni szeretne egy projektet a Azure Migrate előző verziójáról, a lépések ugyanazok. Ezeknek a projekteknek az erőforrás-típusa **áttelepítési projekt**.
 
 
 ## <a name="created-resources"></a>Létrehozott erőforrások
 
-Ezek a táblák összegezik a felderítéshez, értékeléshez és áttelepítéshez létrehozott erőforrásokat egy Azure Migrate projektben.
+Ezek a táblázatok összefoglalják a felderítéshez, értékeléshez és áttelepítéshez létrehozott erőforrásokat egy Azure Migrate projektben.
 
 > [!NOTE]
-> Törölje a key vault óvatosan, mert tartalmazhat biztonsági kulcsokat.
+> Törölje a Key vaultot körültekintően, mert biztonsági kulcsokat tartalmazhat.
 
 ### <a name="vmwarephysical-server"></a>VMware/fizikai kiszolgáló
 
 **Erőforrás** | **Típus**
 --- | ---
-"Készüléknév"kv | Key Vault
-"Appliancename"oldal | Microsoft.OffAzure/VMware Webhelyek
-"Projektnév" | Microsoft.Áttelepítése/áttelepítéseprojektek
-"ProjectName" projekt | Microsoft.Migrate/assessmentProjektek
-"ProjectName"rsvault | Recovery Services-tároló
-"ProjectName"-MigrateVault-* | Recovery Services-tároló
+"Appliancename" kV | Key Vault
+"Appliancename" webhely | Microsoft. OffAzure/VMwareSites
+Projektnév | Microsoft. Migrálás/migrateprojects
+"Projektnév" projekt | Microsoft. Migrálás/assessmentProjects
+"Projektnév" rsvault | Recovery Services-tároló
+"Projektnév"-MigrateVault-* | Recovery Services-tároló
 migrateappligwsa* | Tárfiók
 migrateapplilsa* | Tárfiók
 migrateapplicsa* | Tárfiók
@@ -69,13 +69,13 @@ migrateapplisbns16041 | Service Bus-névtér
 
 **Erőforrás** | **Típus**
 --- | ---
-"Projektnév" | Microsoft.Áttelepítése/áttelepítéseprojektek
-"ProjectName" projekt | Microsoft.Migrate/assessmentProjektek
-HiperV*kv | Key Vault
-HyperV*Webhely | Microsoft.OffAzure/HyperVSites
-"ProjectName"-MigrateVault-* | Recovery Services-tároló
+Projektnév | Microsoft. Migrálás/migrateprojects
+"Projektnév" projekt | Microsoft. Migrálás/assessmentProjects
+HyperV * kV | Key Vault
+HyperV * hely | Microsoft. OffAzure/HyperVSites
+"Projektnév"-MigrateVault-* | Recovery Services-tároló
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközök hozzáadásáról. 
+Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

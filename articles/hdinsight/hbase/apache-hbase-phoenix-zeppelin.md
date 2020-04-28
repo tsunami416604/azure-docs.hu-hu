@@ -1,6 +1,6 @@
 ---
-title: Apache Base-lekérdezések futtatása az Azure HDInsightban az Apache Phoenix segítségével
-description: Ismerje meg, hogyan futtathat Apache Zeppelin használatával Apache Base-lekérdezéseket a Phoenix segítségével.
+title: Apache Base-lekérdezések futtatása az Azure HDInsight Apache Phoenix
+description: Ismerje meg, hogy az Apache Zeppelin használatával hogyan futtathat Apache Base-lekérdezéseket a Phoenixben.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,44 +9,44 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72392240"
 ---
-# <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Apache Zeppelin használatával apache phoenix-lekérdezések futtatása apache HBase-en keresztül az Azure HDInsightban
+# <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight
 
-Az Apache Phoenix egy nyílt forráskódú, masszívan párhuzamos relációs adatbázis-réteg, amely a HBase-re épül. A Phoenix lehetővé teszi az SQL-mint lekérdezések használatát a HBase-en keresztül. A Phoenix az alatta lévő JDBC-illesztőprogramokat használja az SQL-táblák, indexek, nézetek és sorozatok létrehozásához, törléséhez, módosításához.  A Phoenix segítségével külön-külön és ömlesztve is frissítheti a sorokat. A Phoenix a MapReduce használata helyett NOSQL natív összeállítást használ a lekérdezések fordításához, lehetővé téve az alacsony késleltetésű alkalmazások létrehozását a HBase tetején.
+A Apache Phoenix egy nyílt forráskódú, nagymértékben párhuzamos, HBase-ra épülő, többszintű, összehasonlítható adatbázis-réteg. A Phoenix lehetővé teszi, hogy az SQL-lekérdezéseket, például a HBase-t használja. A Phoenix JDBC-illesztőprogramokat használ, amelyek lehetővé teszik az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését, módosítását.  A Phoenix használatával a sorokat egyenként és tömegesen is frissítheti. A Phoenix NOSQL natív fordítást használ ahelyett, hogy a MapReduce használatával lefordítsa a lekérdezéseket, és lehetővé teszi a kis késleltetésű alkalmazások létrehozását a HBase-on.
 
-Az Apache Zeppelin egy nyílt forráskódú webalapú noteszgép, amely lehetővé teszi, hogy interaktív adatelemzéssel és olyan nyelvekkel, mint az SQL és a Scala segítségével adatvezérelt, együttműködésen alapuló dokumentumokat hozzon létre. Segíti az adatfejlesztőket & adatszakértőknek az adatkezeléshez szükséges kód kidolgozásában, rendszerezésén, végrehajtásában és megosztásában. Lehetővé teszi az eredmények megjelenítését anélkül, hogy a parancssorra hivatkozna, vagy a fürt részleteire lenne szüksége.
+Az Apache Zeppelin egy nyílt forráskódú webes jegyzetfüzet, amely lehetővé teszi, hogy adatvezérelt, együttműködési dokumentumokat hozzon létre interaktív adatelemzéssel és-nyelvekkel, például az SQL és a Scala használatával. Segít az adatfejlesztőknek & adatszakértőknek az adatkezeléshez szükséges programkódok fejlesztésében, rendszerezésében, végrehajtásában és megosztásában. Lehetővé teszi az eredmények megjelenítését anélkül, hogy a parancssorra kellene hivatkozni, vagy a fürt részleteit kellene megadnia.
 
-A HDInsight-felhasználók az Apache Zeppelin segítségével lekérdezhetik a Phoenix-táblákat. Az Apache Zeppelin integrálva van a HDInsight-fürttel, és nincs további lépés a használatához. Egyszerűen hozzon létre egy Zeppelin notebook JDBC értelmező vel, és kezdje el írni a Phoenix SQL lekérdezéseket
+A HDInsight-felhasználók az Apache Zeppelin használatával kérdezik le a Phoenix-táblákat. Az Apache Zeppelin integrálva van a HDInsight-fürttel, és nincs szükség további lépésekre. Egyszerűen hozzon létre egy Zeppelin notebookot a JDBC-tolmácsmal, és kezdje meg a Phoenix SQL-lekérdezések írását
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Apache HBase-fürt a HDInsighton. Lásd: [Első lépések az Apache HBase-lel.](./apache-hbase-tutorial-get-started-linux.md)
+Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](./apache-hbase-tutorial-get-started-linux.md).
 
-## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin note létrehozása
+## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin-Megjegyzés létrehozása
 
-1. Cserélje `CLUSTERNAME` le a fürt nevét a `https://CLUSTERNAME.azurehdinsight.net/zeppelin`következő URL-címen . Ezután írja be az URL-címet egy webböngészőben. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát.
+1. Cserélje `CLUSTERNAME` le a nevet a fürt nevére a következő URL- `https://CLUSTERNAME.azurehdinsight.net/zeppelin`címben. Ezután írja be az URL-címet egy böngészőben. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát.
 
-1. A Zeppelin lapon válassza **az Új jegyzet létrehozása**lehetőséget.
+1. A Zeppelin lapon válassza az **új Megjegyzés létrehozása**lehetőséget.
 
-    ![HDInsight interaktív lekérdezés zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+    ![HDInsight interaktív lekérdezés Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
-1. Az **Új jegyzet létrehozása** párbeszédpanelen írja be vagy jelölje ki a következő értékeket:
+1. Az **új Megjegyzés létrehozása** párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    - Megjegyzés neve: Adja meg a jegyzet nevét.
-    - Alapértelmezett értelmező: Válassza ki a **jdbc** elemet a legördülő listából.
+    - Megjegyzés neve: adja meg a jegyzet nevét.
+    - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
 
-    Ezután válassza **a Jegyzet létrehozása**lehetőséget.
+    Ezután válassza a **Megjegyzés létrehozása**lehetőséget.
 
-1. Győződjön meg arról, hogy a jegyzetfüzet fejlécében látható a csatlakoztatott állapot. Egy zöld pont jelöli a jobb felső sarokban.
+1. Győződjön meg arról, hogy a jegyzetfüzet fejléce csatlakoztatott állapotot mutat. Ezt a jobb felső sarokban található zöld pont jelöli.
 
     ![Zeppelin notebook állapota](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin notebook állapota")
 
-1. Hozzon létre egy HBase táblát. Írja be a következő parancsot, majd nyomja **le a Shift + Enter billentyűkombinációt:**
+1. Hozzon létre egy HBase táblát. Adja meg a következő parancsot, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt:
 
     ```sql
     %jdbc(phoenix)
@@ -56,9 +56,9 @@ Apache HBase-fürt a HDInsighton. Lásd: [Első lépések az Apache HBase-lel.](
     );
     ```
 
-    Az első sorban lévő **%jdbc(phoenix)** utasítás arra utasítja a jegyzetfüzetet, hogy használja a Phoenix JDBC értelmezőt.
+    Az első sorban található **% JDBC (Phoenix)** utasítás azt jelzi, hogy a jegyzetfüzet a Phoenix JDBC tolmácsot használja.
 
-1. Létrehozott táblák megtekintése.
+1. Létrehozott táblák megtekintése
 
     ```sql
     %jdbc(phoenix)
@@ -67,7 +67,7 @@ Apache HBase-fürt a HDInsighton. Lásd: [Első lépések az Apache HBase-lel.](
     WHERE table_schem is null or table_schem <> 'SYSTEM';
     ```
 
-1. Értékek beszúrása a táblázatba.
+1. Értékek beszúrása a táblába.
 
     ```sql
     %jdbc(phoenix)
@@ -89,7 +89,7 @@ Apache HBase-fürt a HDInsighton. Lásd: [Első lépések az Apache HBase-lel.](
     DELETE FROM dbo.Company WHERE COMPANY_ID=1;
     ```
 
-1. Dobd el az asztalt.
+1. A tábla eldobása.
 
     ```sql
     %jdbc(phoenix)
@@ -98,5 +98,5 @@ Apache HBase-fürt a HDInsighton. Lásd: [Első lépések az Apache HBase-lel.](
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Apache Phoenix mostantól támogatja a Zeppelint az Azure HDInsightban](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
+- [A Apache Phoenix mostantól támogatja a Zeppelin használatát az Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
 - [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html)

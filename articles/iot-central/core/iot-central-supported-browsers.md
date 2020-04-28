@@ -1,6 +1,6 @@
 ---
-title: Támogatott böngészők az Azure IoT Central hoz | Microsoft dokumentumok
-description: Az Azure IoT Central modern asztali számítógépeken, táblagépeken és böngészőkben érhető el. Ez a cikk a támogatott böngészők listáját ismerteti.
+title: Az Azure IoT Central által támogatott böngészők | Microsoft Docs
+description: Az Azure IoT Central a modern asztali számítógépeken, tablettákon és böngészőkön keresztül érhető el. Ez a cikk a támogatott böngészők listáját ismerteti.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 04/24/2019
@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72949507"
 ---
-# <a name="supported-browsers-for-azure-iot-central"></a>Támogatott böngészők az Azure IoT Central hoz
+# <a name="supported-browsers-for-azure-iot-central"></a>Az Azure IoT Central támogatott böngészők
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Az Azure IoT Central a legtöbb modern asztali számítógépen, táblagépen és böngészőben érhető el. A következő cikk ismerteti a támogatott böngészők listáját és a szükséges kapcsolatot.  
+Az Azure IoT Central a legmodernebb asztali gépeken, tablettákon és böngészőkön keresztül érhető el. A következő cikk a támogatott böngészők és a szükséges kapcsolatok listáját ismerteti.  
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 Javasoljuk, hogy használja az operációs rendszerével kompatibilis böngésző legújabb verzióját. A következő böngészők támogatottak:
@@ -28,5 +28,5 @@ Javasoljuk, hogy használja az operációs rendszerével kompatibilis böngész�
 - Chrome (legújabb verzió)
 - Firefox (legújabb verzió)
 
-## <a name="required-protocols"></a>Kötelező protokollok
-Az Azure IoT Central megköveteli, hogy a hálózat támogatja a HTTPS és a WebSocket protokollok kimenő kapcsolat.
+## <a name="required-protocols"></a>Szükséges protokollok
+Az Azure IoT Central megköveteli, hogy a hálózat támogassa a HTTPS és a WebSocket protokollt is a kimenő kapcsolatokhoz.

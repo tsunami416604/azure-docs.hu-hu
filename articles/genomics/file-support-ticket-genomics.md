@@ -1,7 +1,7 @@
 ---
-title: Támogatási kérelem benyújtása
+title: Támogatási kérelem beszerzése
 titleSuffix: Microsoft Genomics
-description: Ez a cikk azt ismerteti, hogy miként nyújthat be támogatási kérelmet a Microsoft Genomics kapcsolatfelvételre, ha nem tudja megoldani a problémát a hibaelhárítási útmutatóval vagy a gyakori kérdésekkel.
+description: Ez a cikk azt ismerteti, hogyan lehet támogatási kérelmet benyújtani a kapcsolatfelvételi Microsoft Genomics, ha nem tudja megoldani a problémát a hibaelhárítási útmutatóval vagy a GYIK-mel.
 keywords: hibaelhárítás, hiba, hibakeresés, támogatás
 services: genomics
 author: grhuynh
@@ -11,39 +11,39 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248595"
 ---
-# <a name="how-to-contact-microsoft-genomics-for-support"></a>Támogatás a Microsoft Genomics-tól
-Ez az áttekintés azt ismerteti, hogy miként nyújthat be támogatási kérelmet a Microsoft Genomics-hoz való kapcsolatfelvételhez. Ez akkor lehet hasznos, ha a [hibaelhárítási útmutató](troubleshooting-guide-genomics.md) vagy a [GYIK](frequently-asked-questions-genomics.md)segítségével nem tudja elhárítani a problémát. 
+# <a name="how-to-contact-microsoft-genomics-for-support"></a>Kapcsolatfelvétel a támogatási szolgálattal Microsoft Genomics
+Ez az Áttekintés azt ismerteti, hogyan lehet támogatási kérelmet benyújtani a kapcsolatfelvételi Microsoft Genomics. Ez akkor lehet hasznos, ha a [hibaelhárítási útmutatóval](troubleshooting-guide-genomics.md) vagy a [Gyakori kérdések](frequently-asked-questions-genomics.md)között nem sikerül elhárítani a problémát. 
 
 
-## <a name="file-a-support-ticket-through-the-azure-portal"></a>Támogatási jegy fájlja az Azure Portalon keresztül
-Először jelentkezzen be az Azure-fiókjába az Azure Portalon. Kattintson a kérdőjelre a jobb `Help + support`felső sarokban, és válassza a lehetőséget.
+## <a name="file-a-support-ticket-through-the-azure-portal"></a>Támogatási jegy küldése a Azure Portalon keresztül
+Először jelentkezzen be az Azure-fiókjába a Azure Portal. Kattintson a jobb felső sarokban található kérdőjelre, és válassza a `Help + support`elemet.
 
-![Kapcsolatfelvétel az Azure Portalon](./media/file-support-ticket/genomics-contact-support.png "Kapcsolatfelvétel az Azure Portalon") 
+![Kapcsolatfelvétel a támogatási szolgálattal Azure Portal](./media/file-support-ticket/genomics-contact-support.png "Kapcsolatfelvétel a támogatási szolgálattal Azure Portal") 
 
 
 
-Ezután `New support request`válassza a lehetőséget. 
+Ezután válassza a `New support request`elemet. 
 
 ![Új támogatási kérelem](./media/file-support-ticket/new-support-request.png "Új támogatási kérelem") 
 
-Töltse ki `Basics`a, `Issue type` `Subscription`beleértve a. Válassza ki `Issue type` a probléma szempontjából legrelevánsabb elemet; az alábbi `Technical` képen, kiválasztott. Ügyeljen arra, `Microsoft Genomics` hogy válassza ki a megfelelő szolgáltatást.  `Microsoft Genomics`kategóriában. `Intelligence and Analytics`   A `Microsoft Genomics`kiválasztás után a rendszer arra `Support plan` is kéri, hogy adja meg típusát.
+Töltse ki a `Basics`, beleértve `Issue type` a és `Subscription`a. Válassza ki a `Issue type` probléma legjelentősebb kérdését; az alábbi képen egy példa `Technical` van kiválasztva. Ügyeljen arra, hogy `Microsoft Genomics` a megfelelő szolgáltatásként legyen kiválasztva.  `Microsoft Genomics`a `Intelligence and Analytics` kategória alatt jelenik meg.   A kiválasztás `Microsoft Genomics`után a rendszer megkéri, hogy adja meg `Support plan` a típusát is.
 
-![A támogatási kérelem alapjai](./media/file-support-ticket/support-request-basics.png "A támogatási kérelem alapjai")
+![Support request alapjai](./media/file-support-ticket/support-request-basics.png "Support request alapjai")
 
 
-Ezután adja meg a probléma részleteit. A kéréseszköz olyan meglévő dokumentációra is hivatkozik, amely segíthet. Ebben a példában a `Genomics keys`probléma a kapcsolatban áll a , de számos más lehetőség is rendelkezésre áll.
+Ezután adja meg a probléma részleteit. A kérelem eszköz olyan meglévő dokumentációra is hivatkozik, amelyek hasznosak lehetnek a segítségére. Ebben a példában a probléma a következőhöz kapcsolódik `Genomics keys`, de számos más lehetőség is elérhető.
 
-![Támogatási kérelem probléma](./media/file-support-ticket/support-request-problem.png "Támogatási kérelem probléma")
+![Support request probléma](./media/file-support-ticket/support-request-problem.png "Support request probléma")
 
-Végül adja meg kapcsolattartási `Create` adatait, és válassza ki a képernyő alján, hogy benyújtsa támogatási kérelmét.
+Végül adja meg a kapcsolattartási adatait, `Create` és válassza a képernyő alján a támogatási kérés elküldéséhez.
 
-![Támogatási kérelem kapcsolattartója](./media/file-support-ticket/support-request-contact.png "Támogatási kérelem kapcsolattartója")
+![Support request kapcsolat](./media/file-support-ticket/support-request-contact.png "Support request kapcsolat")
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan küldhet támogatási kérelmet. A gyakori problémákat a [GYIK](frequently-asked-questions-genomics.md) és [a hibaelhárítási útmutató](troubleshooting-guide-genomics.md)segítségével is megoldhatja. 
+Ebben a cikkben megtanulta, hogyan küldhet be támogatási kérést. A gyakori problémákat [a gyakori kérdések és a](frequently-asked-questions-genomics.md) [hibaelhárítási útmutató](troubleshooting-guide-genomics.md)segítségével is megoldhatja. 

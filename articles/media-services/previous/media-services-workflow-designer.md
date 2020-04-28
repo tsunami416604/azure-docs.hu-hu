@@ -1,6 +1,6 @@
 ---
-title: Speciális kódolási munkafolyamatok létrehozása a Munkafolyamat-tervezővel | Microsoft dokumentumok
-description: További információ arról, hogyan hozhat létre speciális kódolási munkafolyamatokat a Munkafolyamat-tervezővel.
+title: Speciális kódolási munkafolyamatok létrehozása a Munkafolyamat-tervezővel | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre speciális kódolási munkafolyamatokat a Munkafolyamat-tervezővel.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -16,63 +16,63 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72801955"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
 ## <a name="overview"></a>Áttekintés
-A **Workflow Designer** egy asztali Windows-eszköz, amely a Media **Encoder Premium Workflow**segítségével történő kódoláshoz egyéni munkafolyamatok tervezésére és létrehozására szolgál.
-A munkafolyamat-tervező eszköz segítségével összetett munkafolyamatokat tervezhet és hozhat létre, amelyek a **Media Encoder Premium**programban futnak.  
+A **munkafolyamat-tervező** egy olyan Windows asztali eszköz, amellyel egyéni munkafolyamatokat tervezhet és hozhat létre **Media Encoder Premium workflow**használatával történő kódoláshoz.
+A Munkafolyamat-tervező eszköz erejével megtervezheti és létrehozhatja azokat a komplex munkafolyamatokat, amelyek a **Media Encoder Premium**szolgáltatásban futnak.  
 
-A munkafolyamatok magukban foglalhatják az ügyféldöntési logikát és a bemeneti forrásfájl tulajdonságai alapján történő elágazást. A túlságosan megalható tulajdonságokkal és dinamikus értékekkel rendelkező munkafolyamatokat hozhat létre, hogy még a legösszetettebb kódolási feladatok is könnyen megismételhetők és testreszabhatók legyenek a felhőben.
+A munkafolyamatok magukban foglalhatják az ügyfelek döntési logikáját és az elágazást a bemeneti forrásfájl tulajdonságai alapján. Overridable-tulajdonságokkal és dinamikus értékekkel rendelkező munkafolyamatokat hozhat létre, hogy a legbonyolultabb kódolási feladatok könnyen ismételhetők és testreszabhatók legyenek a felhőben.
 
-Példaként létrehozható munkafolyamatokra:
+A létrehozhatók például a következők:
 
-* Döntésalapú munkafolyamatok, amelyek a forrástartalmat ellenőrzik megoldásért, és csak a kívánt kimeneti sávokat kódolják.  Ez akkor hasznos, ha kiküszöböli azokat az elpazarolt számokat, amelyeket a forrástartalom véletlen felskálázása generálna.
-* Több bemeneti fájl használható a feliratok, átfedések és a tartalom összefűzésének támogatására. 
+* Döntési alapú munkafolyamatok, amelyek megvizsgálják a forrás tartalmát a feloldáshoz, és csak a kívánt kimeneti számokat kódolják.  Ez hasznos lehet a forrás tartalmának véletlen skálázásával előállított, hulladékká vált számok eltávolításával.
+* Több bemeneti fájl is használható a feliratok, átfedések és a tartalom összefűzéséhez. 
 
-Ez az eszköz bármely [közzétett munkafolyamatunk módosítására](media-services-workflow-designer.md#existing_workflows)is használható. 
+Ez az eszköz a [közzétett munkafolyamatok](media-services-workflow-designer.md#existing_workflows)bármelyikének módosítására is használható. 
 
 > [!NOTE]
-> A Munkafolyamat-tervező eszköz másolatának bemásolásához lépjen kapcsolatba a programmal. mepd@microsoft.com
+> A Munkafolyamat-tervező eszköz másolatának beszerzéséhez vegye fel mepd@microsoft.coma kapcsolatot a következővel:.
 
-A munkafolyamat-fájl létrehozása után eszközként tölthető fel, majd médiafájlok kódolására használható. A **Media Encoder Premium Workflow** használatával a **.NET**használatával történő kódolásról a [Speciális kódolás a Media Encoder Premium Workflow használatával című](media-services-encode-with-premium-workflow.md)témakörben talál.
+A munkafolyamat-fájl létrehozása után feltölthetők egy eszközként, majd a médiafájlok kódolására használhatók. A **Media Encoder Premium workflow** **.net**-tel való kódolásával kapcsolatos információkért lásd: [speciális kódolás a Media Encoder Premium workflow](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Meglévő munkafolyamatok módosítása
-Az alapértelmezett közzétett munkafolyamatok a tervezőeszközzel [módosíthatók.](media-services-workflow-designer.md#existing_workflows) Az alapértelmezett munkafolyamat-fájlokat [itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)kaphatja meg. A mappa tartalmazza a fájlok leírását is.
+Az alapértelmezett [közzétett munkafolyamatokat](media-services-workflow-designer.md#existing_workflows) a Designer eszközzel lehet módosítani. Az alapértelmezett munkafolyamat-fájlok [itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)olvashatók be. A mappa a fájlok leírását is tartalmazza.
 
-Az alábbi videók bemutatják, hogyan kell használni a tervezőt.
+A következő videók bemutatják, hogyan használhatja a tervezőt.
 
 ### <a name="day-1--getting-started"></a>1. nap – Első lépések
-1. nap videó borítók:
+1. nap videó:
 
-* Tervező – áttekintés
-* Alapvető munkafolyamatok – "Hello World"
-* Több kimeneti MP4-fájl létrehozása az Azure Media Services adatfolyam-továbbításához
+* A Designer áttekintése
+* Alapszintű munkafolyamatok – ""Helló világ!"alkalmazás"
+* Több kimeneti MP4-fájl létrehozása Azure Media Services streamingtel való használatra
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
 ### <a name="day-2"></a>2. nap
-2. nap videó borítók:
+A 2. nap videó a következőket tartalmazza:
 
-* Különböző forrásfájl-forgatókönyvek – hangkezelés
+* Különböző forrásfájl-forgatókönyvek – hang-kezelő
 * Speciális logikával rendelkező munkafolyamatok
-* Diagram szakaszai
+* Gráf szakaszai
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
 ### <a name="day-3"></a>3. nap
-3. nap videó borítók:
+A 3. nap videó a következőket tartalmazza:
 
-* Parancsfájlok írása a munkafolyamatokban/tervrajzokon belül
-* Korlátozások az aktuális kódolóval
+* A munkafolyamatokban/tervrajzokon belüli parancsfájlok
+* Az aktuális kódolóval kapcsolatos korlátozások
 * Kérdések és válaszok
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
@@ -81,7 +81,7 @@ Az alábbi videók bemutatják, hogyan kell használni a tervezőt.
 
 ## <a name="need-help"></a>Segítségre van szüksége?
 
-Támogatási jegyet úgy nyithat meg, hogy az [Új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigál.
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
@@ -92,5 +92,5 @@ Tekintse át a Media Services képzési terveket.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Azure Premium Kódoló munkafolyamat-tervezői oktatóvideói](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
+[Azure Premium Encoder – munkafolyamat-tervezői képzés – videók](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

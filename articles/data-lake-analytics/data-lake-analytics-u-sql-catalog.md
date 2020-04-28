@@ -1,6 +1,6 @@
 ---
-title: Az U-SQL katalógus használata az Azure Data Lake Analytics ben
-description: Ismerje meg, hogyan használhatja az U-SQL katalógust a kód és az adatok megosztására. Táblaértékű függvényeket hozhat létre, nézeteket hozhat létre, táblákat hozhat létre és kérdezheti le őket.
+title: A U-SQL-katalógus használata Azure Data Lake Analytics
+description: Megtudhatja, hogyan oszthatja meg a kódot és az információkat a U-SQL-katalógus használatával. Táblázat értékű függvények létrehozása, nézetek létrehozása, táblák létrehozása és lekérdezése.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,19 +10,19 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
 ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672846"
 ---
-# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL katalógussal az Azure Data Lake Analytics szolgáltatásban
+# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL-katalógussal Azure Data Lake Analytics
 
 ## <a name="create-a-tvf"></a>TVF létrehozása
 
-Az előző U-SQL parancsfájlban megismételte az EXTRACT használatát, hogy ugyanabból a forrásfájlból olvashassa. Az U-SQL tábla értékű funkcióval (TVF) beágyazhatja az adatokat a későbbi újrafelhasználáshoz.  
+Az előző U-SQL-parancsfájlban megismétli, hogy a kinyerés ugyanazzal a forrásfájl használatával olvasson. Ha a U-SQL tábla értékű függvényt (TVF) használja, akkor a későbbiekben újra beágyazhatja az adategységeket.  
 
-A következő parancsfájl létrehoz `Searchlog()` egy TVF-et, amelyet az alapértelmezett adatbázisban és sémában hívnak meg:
+A következő szkript létrehoz egy nevű `Searchlog()` TVF az alapértelmezett adatbázisban és sémában:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -53,7 +53,7 @@ RETURN;
 END;
 ```
 
-A következő parancsfájl bemutatja, hogyan használhatja az előző parancsfájlban definiált TVF-et:
+Az alábbi szkript bemutatja, hogyan használhatja az előző parancsfájlban definiált TVF:
 
 ```
 @res =
@@ -72,9 +72,9 @@ OUTPUT @res
 
 ## <a name="create-views"></a>Nézetek létrehozása
 
-Ha egyetlen lekérdezési kifejezéssel rendelkezik, tvf helyett u-SQL NÉZETet használhat a kifejezés beágyazására.
+Ha egyetlen lekérdezési kifejezéssel rendelkezik, a TVF helyett egy U-SQL-nézetet használhat a kifejezés beágyazásához.
 
-A következő parancsfájl létrehoz `SearchlogView` egy nézetet az alapértelmezett adatbázisban és sémában:
+A következő szkript létrehoz egy nevű `SearchlogView` nézetet az alapértelmezett adatbázisban és sémában:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -109,9 +109,9 @@ OUTPUT @res
 ```
 
 ## <a name="create-tables"></a>Táblázatok létrehozása
-A relációs adatbázistáblákhoz ugyanúgy létrehozhat egy előre definiált sémát tartalmazó táblát, vagy létrehozhat egy olyan táblát, amely a táblát feltöltő lekérdezésből (más néven CREATE TABLE AS SELECT vagy CTAS) következtet.
+Csakúgy, mint a kapcsolódó adatbázistáblák esetében, az U-SQL használatával létrehozhat egy előre definiált sémával rendelkező táblázatot, vagy létrehozhat egy táblázatot, amely kikövetkezteti a sémát a táblát feltöltő lekérdezésből (más néven a SELECT vagy a CTAS CREATE TABLE).
 
-Hozzon létre egy adatbázist és két táblát a következő parancsfájl használatával:
+Hozzon létre egy adatbázist és két táblázatot a következő parancsfájl használatával:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -143,9 +143,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Táblák lekérdezése
-A táblákat ugyanúgy lekérdezheti, például az előző parancsfájlban létrehozottakat, mint az adatfájlokat. Ahelyett, hogy a KIVONÁS használatával hozna létre sorhalmazt, most már hivatkozhat a tábla nevére.
+Az adatfájlok lekérdezéséhez hasonló módon, például az előző szkriptben létrehozott táblákat is lekérdezheti. A sorhalmaz a kinyerés használatával történő létrehozása helyett a tábla nevére is hivatkozhat.
 
-Ha a táblákból szeretne olvasni, módosítsa a korábban használt átalakító parancsfájlt:
+A táblákból való olvasáshoz módosítsa a korábban használt átalakítási parancsfájlt:
 
 ```
 @rs1 =
@@ -168,7 +168,7 @@ OUTPUT @res
 ```
 
  >[!NOTE]
- >Jelenleg nem futtathat SELECT-et ugyanabban a parancsfájlban, amelyben a táblát létrehozta.
+ >Jelenleg nem futtathat olyan táblát, amely ugyanabban a parancsfájlban van, mint ahol a táblázatot létrehozta.
 
 ## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management fejlesztői portálsablonok | Microsoft dokumentumok
-description: Ismerje meg, hogyan szabhatja testre a fejlesztői portál lapok tartalmát az Azure API Management sablonkészletével.
+title: Azure API Management fejlesztői portál sablonjai | Microsoft Docs
+description: Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalain található tartalmakat az Azure API Management sablonjainak használatával.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176789"
 ---
 # <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai
 
-Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő , például a [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a megadott honosított [karakterlánc-erőforrások,](api-management-template-resources.md#strings) [a karakterjel-erőforrások](api-management-template-resources.md#glyphs)és az [oldalvezérlők](api-management-page-controls.md)használatával nagy rugalmasságot biztosít az oldalak tartalmának beállításához, ahogy azt megfelelőnek látja ezekkel a sablonokkal.  
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
   
-A sablonok használatáról további információt [az API Management fejlesztői portál testreszabása sablonok használatával című](api-management-developer-portal-templates.md)témakörben talál.  
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -39,19 +39,19 @@ A sablonok használatáról további információt [az API Management fejlesztő
         -   [Curl](api-management-api-templates.md#Curl)  
         -   [C #](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
-        -   [Javascript](api-management-api-templates.md#JavaScript)  
-        -   [C. célkitűzés](api-management-api-templates.md#ObjectiveC)  
-        -   [Php](api-management-api-templates.md#PHP)  
+        -   [JavaScript](api-management-api-templates.md#JavaScript)  
+        -   [C célkitűzés](api-management-api-templates.md#ObjectiveC)  
+        -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Termékek](api-management-product-templates.md)  
     -   [Terméklista](api-management-product-templates.md#ProductList)  
     -   [Termék](api-management-product-templates.md#Product)  
 -   [Alkalmazások](api-management-application-templates.md)  
-    -   [Alkalmazáslista](api-management-application-templates.md#ProductList)  
+    -   [Alkalmazások listája](api-management-application-templates.md#ProductList)  
     -   [Alkalmazás](api-management-application-templates.md#Application)  
 -   [Problémák](api-management-issue-templates.md)  
-    -   [Problémalista](api-management-issue-templates.md#IssueList)  
+    -   [Problémák listája](api-management-issue-templates.md#IssueList)  
 -   [Felhasználói profil](api-management-user-profile-templates.md)  
     -   [Profil](api-management-user-profile-templates.md#Profile)  
     -   [Előfizetések](api-management-user-profile-templates.md#Subscriptions)  
@@ -60,7 +60,7 @@ A sablonok használatáról további információt [az API Management fejlesztő
 -   [Oldalak](api-management-page-templates.md)  
     -   [Bejelentkezés](api-management-page-templates.md#SignIn)  
     -   [feliratkozni](api-management-page-templates.md#SignUp)  
-    -   [Az oldal nem található](api-management-page-templates.md#PageNotFound)
+    -   [A lap nem található](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>További lépések  
 

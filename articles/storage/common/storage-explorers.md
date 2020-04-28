@@ -1,6 +1,6 @@
 ---
-title: Microsoft-ügyféleszközök az Azure Storage szolgáltatással való együttműködéshez
-description: A Microsoft által biztosított ügyféleszközök listája, amelyek lehetővé teszik az Azure Storage-adatok megtekintését és használatát.
+title: Microsoft-eszközök az Azure Storage használatához
+description: A Microsoft által biztosított ügyféleszközök listája, amelyek segítségével megtekintheti és kezelheti az Azure Storage-adatait.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,20 +10,20 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71670946"
 ---
-# <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Microsoft-ügyféleszközök az Azure Storage szolgáltatással való együttműködéshez
+# <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Microsoft-eszközök az Azure Storage használatához
 
-A Microsoft számos grafikus felhasználói felület (GUI) eszközt biztosít az Azure Storage-fiókban lévő adatok kezeléséhez. Az alábbi táblázatban ismertetett összes eszköz ingyenes.
+A Microsoft több grafikus felhasználói felületi eszközt is biztosít az Azure Storage-fiókban lévő adatfeldolgozáshoz. Az alábbi táblázatban ismertetett összes eszköz ingyenes.
 
-| Azure Storage-ügyféleszköz                 | Támogatott platformok | Blob blokkolása | Lapblob | Blob hozzáfűzése | Táblák | Üzenetsorok | Fájlok |
+| Azure Storage-ügyfél eszköz                 | Támogatott platformok | BLOB letiltása | Oldal Blobja | BLOB hozzáfűzése | Táblák | Üzenetsorok | Fájlok |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
-| [Azure-portál](https://portal.azure.com)                    | Web                 | Igen          | Igen         | Igen           | Igen      | Igen      | Igen     |
+| [Azure Portal](https://portal.azure.com)                    | Web                 | Igen          | Igen         | Igen           | Igen      | Igen      | Igen     |
 | [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Igen          | Igen         | Igen           | Igen      | Igen      | Igen     |
-| [Microsoft Visual Studio Felhőkezelő](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Igen          | Igen         | Igen           | Igen      | Igen      | Nem      |
+| [Microsoft Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Igen          | Igen         | Igen           | Igen      | Igen      | Nem      |
 
-Az Azure Storage-adatokkal való munkához számos külső gyártótól származó eszköz is rendelkezésre áll.
+Számos harmadik féltől származó eszköz is rendelkezésre áll az Azure Storage-beli adattároláshoz.

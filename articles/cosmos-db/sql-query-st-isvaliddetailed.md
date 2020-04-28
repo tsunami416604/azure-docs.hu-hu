@@ -1,6 +1,6 @@
 ---
-title: ST_ISVALIDDETAILED az Azure Cosmos DB lekérdezési nyelvében
-description: Az Azure Cosmos DB ST_ISVALIDDETAILED SQL-rendszerfunkcióiról.
+title: Azure Cosmos DB lekérdezési nyelv ST_ISVALIDDETAILED
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function ST_ISVALIDDETAILEDával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349354"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
- Logikai értéket tartalmazó JSON-értéket ad eredményül, ha a megadott GeoJSON point, Polygon vagy LineString kifejezés érvényes, és ha érvénytelen, akkor az ok karakterláncértékként is.  
+ Egy logikai értéket tartalmazó JSON-értéket ad vissza, ha a megadott GeoJSON pont, sokszög vagy LineString kifejezés érvényes, és ha az érték érvénytelen, akkor a karakterlánc értékét is adja meg.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,15 +26,15 @@ ST_ISVALIDDETAILED(<spatial_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *spatial_expr*  
-   GeoJSON-pont vagy sokszögkifejezés.  
+   Egy GeoJSON pont vagy sokszög kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Logikai értéket tartalmazó JSON-értéket ad eredményül, ha a megadott GeoJSON-pont vagy sokszögkifejezés érvényes, és ha érvénytelen, akkor az ok karakterlánc-értékként is.  
+  Egy logikai értéket tartalmazó JSON-értéket ad vissza, ha a megadott GeoJSON pont-vagy sokszög-kifejezés érvényes, és ha az érték érvénytelen, akkor a karakterlánc értékét is adja meg.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa arra, hogyan ellenőrizheti az érvényességet (részletekkel) a használatával. `ST_ISVALIDDETAILED`  
+  Az alábbi példa bemutatja, hogyan ellenőrizhető az érvényesség (részletekkel `ST_ISVALIDDETAILED`) a használatával.  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   
@@ -43,7 +43,7 @@ SELECT ST_ISVALIDDETAILED({
 }) AS b 
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{  
@@ -56,6 +56,6 @@ SELECT ST_ISVALIDDETAILED({
 
 ## <a name="next-steps"></a>További lépések
 
-- [Térbeli függvények Az Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

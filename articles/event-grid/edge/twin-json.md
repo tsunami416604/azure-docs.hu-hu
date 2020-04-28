@@ -1,6 +1,6 @@
 ---
-title: Ikermodul – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Konfiguráció a modul ikermodulon keresztül.
+title: Modul Twin – Azure Event Grid IoT Edge | Microsoft Docs
+description: Konfigurálás külön modulon keresztül.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,25 +10,25 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992144"
 ---
-# <a name="module-twin-json-schema"></a>Iker modul JSON-séma
+# <a name="module-twin-json-schema"></a>Modul Twin JSON-sémája
 
-Event Grid az IoT Edge-ben integrálható az IoT Edge-ökoszisztémával, és támogatja a témakörök és előfizetések létrehozását a Module Twin-en keresztül. Azt is jelenti az aktuális állapotát az összes témakörés esemény-előfizetések a jelentett tulajdonságok a modul iker.
+A Event Grid on IoT Edge integrálódik a IoT Edge ökoszisztémával, és támogatja a témakörök és előfizetések létrehozását a Twin modulon keresztül. Azt is jelenti, hogy az összes témakör és esemény-előfizetés aktuális állapota a (z) Twin modul jelentett tulajdonságaira mutat.
 
 > [!WARNING]
-> Az IoT Edge-ökoszisztéma korlátai miatt a következő json-példában lévő összes tömbelem json karakterláncként lett kódolva. Lásd `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` és kulcsok az alábbi példában.
+> A IoT Edge ökoszisztémájának korlátai miatt a következő JSON-példa összes tömb eleme JSON-karakterláncként lett kódolva. A `EventSubscription.Filter.EventTypes` következő `EventSubscription.Filter.AdvancedFilters` példában a és a kulcsok láthatók.
 
 ## <a name="desired-properties-json"></a>Kívánt tulajdonságok JSON
 
-* A témakörök szakaszban lévő egyes kulcs-érték párok értéke pontosan ugyanazt a `Topic.Properties` JSON-sémát használja, amelyet az API-n a témakörök létrehozásakor használ.
-* Az **EventSubscriptions** szakaszban lévő egyes kulcs-érték párok értéke pontosan ugyanazt a `EventSubscription.Properties` jsonsémát, amely az API-n a témakörök létrehozásakor használt.
-* Témakör törléséhez állítsa az `null` értékét a kívánt tulajdonságokban.
-* Az esemény-előfizetések törlése a kívánt tulajdonságokon keresztül nem támogatott.
+* A témakörök szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API `Topic.Properties` -hoz használ a témakörök létrehozásakor.
+* A **EventSubscriptions** szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API `EventSubscription.Properties` -hoz használ a témakörök létrehozásakor.
+* Egy témakör törléséhez állítsa az értékét `null` a kívánt tulajdonságokra.
+* Az esemény-előfizetések a kívánt tulajdonságok használatával történő törlése nem támogatott.
 
 ```json
 {
@@ -81,11 +81,11 @@ Event Grid az IoT Edge-ben integrálható az IoT Edge-ökoszisztémával, és t�
 
 ## <a name="reported-properties-json"></a>Jelentett tulajdonságok JSON
 
-Az ikermodul jelentett tulajdonságai szakasza a következő információkat tartalmazza:
+A modul következő részében található jelentett tulajdonságok szakasz az alábbi információkat tartalmazza:
 
-* A modul áruházában található témakörök és előfizetések készlete
+* A modul tárolójában található témakörök és előfizetések készlete
 * A kívánt témakörök/esemény-előfizetések létrehozásakor előforduló hibák
-* A rendszerindítási hibák (például a kívánt tulajdonságok, a JSON-elemzés sikertelen)
+* Minden rendszerindítási hiba (például a kívánt tulajdonságok JSON-elemzése sikertelen volt)
 
 ```json
 {

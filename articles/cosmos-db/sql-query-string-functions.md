@@ -1,6 +1,6 @@
 ---
-title: Karakterlánc-függvények az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg a karakterlánc SQL-rendszer függvények az Azure Cosmos DB.
+title: Karakterlánc-függvények Azure Cosmos DB lekérdezési nyelven
+description: Ismerkedjen meg a karakterláncok SQL rendszerfunkcióival Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,25 +8,25 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 84d1ca9f8a0a67a4e0459bc78e71d9118451e75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349297"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Karakterlánc-függvények (Azure Cosmos DB)
 
-A karakterlánc-függvények lehetővé teszik, hogy műveleteket hajtson végre az Azure Cosmos DB karakterláncokon.
+A karakterlánc-függvények lehetővé teszik a Azure Cosmos DB sztringeken végzett műveletek végrehajtását.
 
 ## <a name="functions"></a>Functions
 
-A következő skaláris függvények műveletet hajtanak végre egy karakterlánc bemeneti értékén, és karakterláncot, numerikus vagy logikai értéket adnak vissza:
+A következő skaláris függvények egy sztring típusú bemeneti értéken hajtanak végre műveletet, és karakterláncot, numerikus vagy logikai értéket adnak vissza:
   
 ||||  
 |-|-|-|  
 |[CONCAT](sql-query-concat.md)|[CONTAINS](sql-query-contains.md)|[ENDSWITH](sql-query-endswith.md)|  
-|[INDEX_OF](sql-query-index-of.md)|[LEFT](sql-query-left.md)|[Hossza](sql-query-length.md)|  
-|[LOWER](sql-query-lower.md)|[LTRIM](sql-query-ltrim.md)|[Helyettesít](sql-query-replace.md)|  
+|[INDEX_OF](sql-query-index-of.md)|[LEFT](sql-query-left.md)|[LENGTH](sql-query-length.md)|  
+|[LOWER](sql-query-lower.md)|[LTRIM](sql-query-ltrim.md)|[REPLACE](sql-query-replace.md)|  
 |[REPLIKÁLÁS](sql-query-replicate.md)|[REVERSE](sql-query-reverse.md)|[RIGHT](sql-query-right.md)|  
 |[RTRIM](sql-query-rtrim.md)|[STARTSWITH](sql-query-startswith.md)|[StringToArray](sql-query-stringtoarray.md)|
 |[StringToBoolean](sql-query-stringtoboolean.md)|[StringToNull](sql-query-stringtonull.md)|[StringToNumber](sql-query-stringtonumber.md)|
@@ -36,7 +36,7 @@ A következő skaláris függvények műveletet hajtanak végre egy karakterlán
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
 - [Összesítések](sql-query-aggregates.md)

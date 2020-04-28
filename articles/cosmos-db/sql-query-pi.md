@@ -1,6 +1,6 @@
 ---
-title: PI az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az SQL rendszer funkció PI az Azure Cosmos DB.
+title: PI Azure Cosmos DB lekérdezési nyelv
+description: Ismerkedjen meg az SQL System Function PI Azure Cosmos DBával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349648"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
- A PI állandó értékét adja eredményül.  
+ A PI konstans értékét adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -25,17 +25,17 @@ PI ()
    
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Numerikus kifejezést ad eredményül.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `PI`értékét adja eredményül.  
+  A következő példa a értékét adja vissza `PI`.  
   
 ```sql
 SELECT PI() AS pi 
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"pi": 3.1415926535897931}]  
@@ -43,6 +43,6 @@ SELECT PI() AS pi
 
 ## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

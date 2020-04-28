@@ -1,6 +1,6 @@
 ---
-title: Speciális szűrés – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Speciális szűrés az IoT Edge Eseményrácsban.
+title: Speciális szűrés – Azure Event Grid IoT Edge | Microsoft Docs
+description: Speciális szűrés a IoT Edge Event Gridban.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992560"
 ---
 # <a name="advanced-filtering"></a>Speciális szűrés
-Az Event Grid lehetővé teszi a szűrők megadását a json hasznos adat bármely tulajdonságán. Ezek a szűrők feltételek `AND` halmazaként vannak modellezve, és minden külső feltétel opcionális belső `OR` feltételekkel rendelkezik. Minden `AND` feltételhez a következő értékeket kell megadni:
+Event Grid lehetővé teszi a JSON-adattartalomban lévő bármely tulajdonsághoz tartozó szűrők megadását. Ezeket a szűrőket `AND` feltételként modellezik, és minden külső feltétel opcionális belső `OR` feltételekkel rendelkezik. Minden `AND` feltétel esetében a következő értékeket kell megadnia:
 
-* `OperatorType`- Az összehasonlítás típusa.
-* `Key`- A json elérési útja ahhoz a tulajdonsághoz, amelyre a szűrőt alkalmazni szeretné.
-* `Value`- Az a referenciaérték, amelyhez a `Values` szűrő fut (vagy) - Az a referenciaértékkészlet, amelyhez a szűrő fut.
+* `OperatorType`– Az összehasonlítás típusa.
+* `Key`– A szűrő alkalmazásához használt tulajdonság JSON-elérési útja.
+* `Value`– A szűrő futtatására szolgáló hivatkozási érték (vagy) `Values` – azon hivatkozási értékek összessége, amelyeken a szűrő fut.
 
-## <a name="json-syntax"></a>JSON szintaxis
+## <a name="json-syntax"></a>JSON-szintaxis
 
-A speciális szűrő JSON szintaxisa a következő:
+A speciális szűrő JSON-szintaxisa a következő:
 
 ```json
 {
@@ -44,57 +44,57 @@ A speciális szűrő JSON szintaxisa a következő:
 }
 ```
 
-## <a name="filtering-on-array-values"></a>Szűrés tömbértékeken
+## <a name="filtering-on-array-values"></a>Tömb értékeinek szűrése
 
-Az Event Grid ma nem támogatja az értékek tömbjének szűrését. Ha egy bejövő esemény tömbértéke a speciális szűrő kulcsának, az egyeztetési művelet sikertelen lesz. A bejövő esemény végül nem felel meg az esemény-előfizetésnek.
+A Event Grid jelenleg nem támogatja a szűrést az értékek tömbje számára. Ha egy bejövő esemény tömb értéke a speciális szűrő kulcsa, a megfeleltetési művelet meghiúsul. A bejövő esemény nem egyezik az esemény-előfizetéssel.
 
-## <a name="and-or-not-semantics"></a>ÉS-VAGY-NEM szemantika
+## <a name="and-or-not-semantics"></a>ÉS-vagy-nem szemantika
 
-Figyelje meg, hogy a json példa korábban megadott, `AdvancedFilters` egy tömb. Gondoljon `AdvancedFilter` az egyes `AND` tömbelemekre, mint egy feltételre.
+Figyelje meg, hogy a korábban `AdvancedFilters` megadott JSON-példában egy tömb. Minden `AdvancedFilter` tömb elemet `AND` feltételként gondoljon.
 
-A több értéket támogató operátorok `NumberIn`(például `NumberNotIn`, , `StringIn`, stb.) esetében minden egyes értéket `OR` feltételként kezel a rendszer. Tehát a `StringBeginsWith("a", "b", "c")` akarat megegyezik minden olyan `a` `b` karakterláncértékkel, amely vagy vagy `c`.
+A több értéket támogató `NumberIn`operátorok (például `NumberNotIn` `StringIn`,, stb.) esetében minden érték `OR` feltételként lesz kezelve. Tehát a `StringBeginsWith("a", "b", "c")` minden olyan karakterlánc-értéknek megfelel, amely a `a` vagy `b` a `c`vagy a karakterrel kezdődik.
 
 > [!CAUTION]
-> A NOT operátorok - `NumberNotIn` és `StringNotIn` viselkednek, mint `Values` és feltételek et minden értéket adott a területen.
+> A nem operátorok `NumberNotIn` , `StringNotIn` és a `Values` mezőben megadott értékeken a és a feltételek szerint viselkednek.
 >
-> Ha ezt nem teszi meg, a szűrő tetsző szűrővé válik, és meghiúsítja a szűrés célját.
+> Ezzel a művelettel a szűrő fogadja az összes szűrőt, és legyőzze a szűrés célját.
 
 ## <a name="floating-point-rounding-behavior"></a>Lebegőpontos kerekítési viselkedés
 
-Az Event `decimal` Grid a .NET típust használja az összes numerikus érték kezelésére. A JSON esemény-előfizetésben megadott számértékekre nem vonatkozik a lebegőpontos kerekítési viselkedés.
+Event Grid a `decimal` .net-típust használja az összes numerikus érték kezelésére. Az esemény-előfizetési JSON-ban megadott számértékek nem vonatkoznak a lebegőpontos kerekítési viselkedésre.
 
-## <a name="case-sensitivity-of-string-filters"></a>Karakterlánc-szűrők kis- és nagybetűk megkülönböztetése
+## <a name="case-sensitivity-of-string-filters"></a>Karakterlánc-szűrők kis-és nagybetűk megkülönböztetése
 
-Minden karakterlánc-összehasonlítás nem imitot. Ma már nem lehet változtatni ezen a viselkedésen.
+Az összes karakterlánc-összehasonlítás a kis-és nagybetűk megkülönböztetése nélkül történik. Ez a viselkedés jelenleg nem módosítható.
 
-## <a name="allowed-advanced-filter-keys"></a>Engedélyezett speciális szűrőbillentyűk
+## <a name="allowed-advanced-filter-keys"></a>Engedélyezett speciális szűrő kulcsok
 
-A `Key` tulajdonság lehet egy jól ismert legfelső szintű tulajdonság, vagy több pontból álló json elérési út, ahol minden pont egy beágyazott json objektumba lép.
+A `Key` tulajdonság lehet egy jól ismert legfelső szintű tulajdonság, vagy lehet egy több pontot tartalmazó JSON-útvonal, ahol minden egyes pont egy beágyazott JSON-objektumra mutat.
 
-Az Event Grid nek nincs különleges `$` jelentése a kulcsban lévő karakterszámára, ellentétben a JSONPath specifikációval.
+Event Grid nem rendelkezik speciális jelentéssel a kulcsban szereplő `$` karakterhez, a JSONPath-specifikációtól eltérően.
 
-### <a name="event-grid-schema"></a>Eseményrács sémája
+### <a name="event-grid-schema"></a>Event Grid-séma
 
-Az Eseményrács sémájában lévő események esetén:
+A Event Grid sémában lévő eseményekhez:
 
 * ID (Azonosító)
 * Témakör
 * Tárgy
-* EventType (Eseménytípus)
+* EventType
 * DataVersion
-* Data.Prop1
-* Data.Prop*Prop2.Prop3.Prop4.Prop5
+* Az Prop1.
+* Az adat. prop * Prop2. Prop3. Prop4. Prop5
 
-### <a name="custom-event-schema"></a>Egyéni eseményséma
+### <a name="custom-event-schema"></a>Egyéni esemény sémája
 
-Nincs korlátozás az `Key` egyéni eseményséma, mivel event grid nem kényszerít i borítékséma a hasznos adat.
+Az `Key` egyéni esemény sémájában nincs korlátozás, mivel Event Grid nem kényszeríti ki a hasznos adatokhoz tartozó összes Burkológörbe sémáját.
 
-## <a name="numeric-single-value-filter-examples"></a>Példa numerikus egyértékű szűrőre
+## <a name="numeric-single-value-filter-examples"></a>Példák numerikus egyértékű szűrőre
 
-* SzámGreaterThan
+* NumberGreaterThan
 * NumberGreaterThanOrEquals
-* NumberlessThan (Számtalan)
-* NumberLessThanOrEquals (Szám nélküli thanOrEquals)
+* NumberLessThan
+* NumberLessThanOrEquals
 
 ```json
 {
@@ -125,10 +125,10 @@ Nincs korlátozás az `Key` egyéni eseményséma, mivel event grid nem kénysze
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>Példák numerikus tartomány-érték szűrőre
+## <a name="numeric-range-value-filter-examples"></a>Numerikus tartomány – érték szűrő – példák
 
-* Számszám
-* Számnotin
+* NumberIn
+* NumberNotIn
 
 ```json
 {
@@ -149,13 +149,13 @@ Nincs korlátozás az `Key` egyéni eseményséma, mivel event grid nem kénysze
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>Példák karakterlánc-tartomány-érték szűrőre
+## <a name="string-range-value-filter-examples"></a>Karakterlánc-tartomány – példák az értékek szűrésére
 
-* Karakterlánctartalmazza
-* StringBeginswith
-* Karakterláncvégek
-* Stringin között
-* StringNotIn között
+* StringContains
+* StringBeginsWith
+* StringEndsWith
+* StringIn
+* StringNotIn
 
 ```json
 {
@@ -191,9 +191,9 @@ Nincs korlátozás az `Key` egyéni eseményséma, mivel event grid nem kénysze
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>Példák logikai egyértékű szűrőre
+## <a name="boolean-single-value-filter-examples"></a>Logikai egyértékű szűrési példák
 
-* BoolEgyenlő
+* BoolEquals
 
 ```json
 {

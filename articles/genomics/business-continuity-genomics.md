@@ -1,8 +1,8 @@
 ---
 title: Az üzletmenet folytonosságának áttekintése
 titleSuffix: Microsoft Genomics
-description: Ez az áttekintés ismerteti a Microsoft Genomics által az üzletmenet folytonosságát és a vészhelyreállítást.
-keywords: üzletmenet folytonossága, katasztrófa utáni helyreállítás
+description: Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a Microsoft Genomics az üzletmenet folytonosságát és a vész-helyreállítást biztosítja.
+keywords: Üzletmenet-folytonosság, vész-helyreállítás
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -11,39 +11,39 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72249178"
 ---
-# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Az üzletmenet folytonosságának áttekintése a Microsoft Genomics-szal
-Ez az áttekintés ismerteti a Microsoft Genomics által az üzletmenet folytonosságát és a vészhelyreállítást. Ismerje meg a zavaró események, például egy Azure-régió kimaradás, amely adatvesztést okozhat lehetőségek helyreállítása lehetőségeket. 
+# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Az üzletmenet folytonosságának áttekintése Microsoft Genomics
+Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a Microsoft Genomics az üzletmenet folytonosságát és a vész-helyreállítást biztosítja. Ismerje meg, hogy milyen lehetőségek állnak rendelkezésre a zavaró események, például az Azure-régiók meghibásodása esetén, ami adatvesztést okozhat. 
 
 
-## <a name="microsoft-genomics-features-that-support-business-continuity"></a>A Microsoft Genomics szolgáltatásai, amelyek támogatják az üzletmenet folytonosságát 
-Bár ritka, egy Azure-adatközpontban előfordulhat, hogy kimaradás, ami üzleti zavarokat okozhat, amelyek néhány percig vagy néhány óráig tarthatnak. Kimaradás esetén az adatközpontban jelenleg futó összes feladat sikertelen lesz, és a Microsoft Genomics szolgáltatás nem küldi el automatikusan újra a feladatokat egy másodlagos régióba. 
+## <a name="microsoft-genomics-features-that-support-business-continuity"></a>Az üzletmenet folytonosságát támogató szolgáltatások Microsoft Genomics 
+Bár ritkán fordul elő, az Azure-adatközpontok meghibásodást okozhatnak, ami akár néhány percet is igénybe vehet, ami néhány percen belül megszakadhat. Leállás esetén az adatközpontban jelenleg futó összes feladat sikertelen lesz, és a Microsoft Genomics szolgáltatás nem küldi el automatikusan a feladatokat egy másodlagos régióba. 
 
-* Az egyik lehetőség az, hogy megvárja, amíg az adatközpont újra online állapotba kerül, amikor az adatközpont kimaradása véget ért. Ha a szolgáltatáskimaradás rövid, a Microsoft Genomics szolgáltatás automatikusan észleli a sikertelen feladatokat, és a munkafolyamat automatikusan újraindul.
+* Az egyik lehetőség az, hogy megvárja, amíg az adatközpont ismét online állapotba kerül, amikor az adatközpont-kimaradás meghalad. Ha a leállás rövid, akkor a Microsoft Genomics szolgáltatás automatikusan felismeri a sikertelen feladatokat, és a munkafolyamat automatikusan újraindul.
 
-* Egy másik lehetőség a munkafolyamat proaktív elküldése egy másik adatrégióban. A Microsoft Genomics több [Azure-régióban](https://azure.microsoft.com/regions/services/)telepíti a példányokat, és minden régióspecifikus példány független. Ha a Microsoft Genomics egyik példánya helyi hibát tapasztal, a Microsoft Genomics más példányait futtató régiók továbbra is feldolgozzák a feladatokat. Ez az alternatív régióba való átvitel a felhasználó ellenőrzése alatt áll, és bármikor elérhető.
+* Egy másik lehetőség, hogy proaktív módon küldje el a munkafolyamatot egy másik adatterületen. Microsoft Genomics különböző [Azure-régiókban](https://azure.microsoft.com/regions/services/)helyez üzembe példányokat, és mindegyik régióra jellemző példány független. Ha az Microsoft Genomics-példányok egyike a régió helyi meghibásodását tapasztalja, akkor a Microsoft Genomics példányait futtató más régiók továbbra is feldolgozzák a feladatokat. A másik régióba való átvitel a felhasználó felügyelete alá esik, és bármikor elérhető.
 
 
-### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Microsoft Genomics-munkafolyamatok manuális átvétele egy másik régióba
-Ha egy regionális adatközpont-kimaradás történik, dönthet úgy, hogy a Microsoft Genomics munkafolyamatokat egy másodlagos régióban küldi el, az egyéni adatok szuverenitása és az üzletmenet-folytonossági követelmények alapján. Manuálisfeladat-átvételmicrosoft genomics munkafolyamatok, egy másik régió-specifikus. Genomika fiók és küldje el a munkát a megfelelő régió-specifikus Genomics és tárfiók hitelesítő adatokat.
+### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Microsoft Genomics munkafolyamatok manuális feladatátvétele egy másik régióba
+Ha regionális adatközpont-kimaradás történik, dönthet úgy, hogy az egyes adatszuverenitási és üzletmenet-folytonossági követelmények alapján elküld Microsoft Genomics munkafolyamatokat egy másodlagos régióban. A Microsoft Genomics-munkafolyamatok manuális feladatátvételéhez más régió-specifikust kellene használnia. A genomikai fiók és a megfelelő régió-specifikus genomikai és Storage-fiók hitelesítő adataival küldje el a feladatot.
 
-Pontosabban, meg kell:
-* Hozzon létre egy genomikai fiókot a másodlagos régióban az Azure Portal használatával. 
-* A bemeneti adatok áttelepítése egy tárfiókba a másodlagos régióban, és hozzon létre egy kimeneti mappát a másodlagos régióban.
-* Küldje el a munkafolyamatot a másodlagos régióban.
+A következőkre lesz szüksége:
+* Hozzon létre egy genomikai fiókot a másodlagos régióban a Azure Portal használatával. 
+* A bemeneti adatokat áttelepítheti egy Storage-fiókba a másodlagos régióban, és beállíthat egy kimeneti mappát a másodlagos régióban.
+* A munkafolyamat elküldése a másodlagos régióban.
 
-Az eredeti régió visszaállításakor a Microsoft Genomics szolgáltatás nem telepíti vissza az adatokat a másodlagos régióból az eredeti régióba. Dönthet úgy, hogy a bemeneti és kimeneti fájlokat a másodlagos régióból visszaaz eredeti régióba.  Ha úgy dönt, hogy áthelyezi az adataikat, az kívül esik a Genomics szolgáltatáson, és az adatmozgással kapcsolatos összes díj az Ön felelőssége lenne. 
+Az eredeti régió visszaállításakor a Microsoft Genomics szolgáltatás nem telepíti át az adatait a másodlagos régióból az eredeti régióba. Dönthet úgy, hogy áthelyezi a bemeneti és kimeneti fájlokat a másodlagos régióból az eredeti régióba.  Ha úgy dönt, hogy áthelyezi az adatait, ez a genomikai szolgáltatáson kívül esik, és az adatáthelyezéssel kapcsolatos összes díj az Ön felelőssége. 
 
-### <a name="preparing-for-a-possible-region-specific-outage"></a>Felkészülés egy lehetséges régióspecifikus kimaradásra
-Ha az adatközpontok kimaradása esetén a gyorsabb helyreállítás miatt aggódik, néhány lépéssel csökkentheti a Microsoft Genomics-munkafolyamatok másodlagos régióba való manuális újraelküldéséhez szükséges időt:
+### <a name="preparing-for-a-possible-region-specific-outage"></a>Felkészülés egy lehetséges régió-specifikus kimaradásra
+Ha egy adatközpont-kimaradás esetén a gyorsabb helyreállításról van szó, néhány lépésből megtudhatja, hogy milyen időt vesz igénybe a Microsoft Genomics munkafolyamatainak manuális újraküldése egy másodlagos régióba:
 
-* Azonosítsa a megfelelő másodlagos régiót, és hozzon létre pro-aktívan genomikai fiókot az adott régióban
-* Az adatok duplikálása az elsődleges és másodlagos régióban, hogy az adatok azonnal elérhetők a másodlagos régióban. Ez történhet manuálisan vagy az Azure [storage-ban elérhető georedundáns tárolási](https://docs.microsoft.com/azure/storage/common/storage-redundancy) funkció használatával. 
+* Azonosítsa a megfelelő másodlagos régiót, és proaktív módon hozzon létre egy genomikai fiókot az adott régióban
+* Duplikálja az adatait az elsődleges és a másodlagos régióban, hogy az adatai azonnal elérhetők legyenek a másodlagos régióban. Ezt manuálisan is megteheti, vagy az Azure Storage-ban elérhető [geo-redundáns tárolási](https://docs.microsoft.com/azure/storage/common/storage-redundancy) funkciót használhatja. 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben a Microsoft Genomics szolgáltatás használatakor megismerkedett az üzletmenet folytonosságának és a vészhelyreállításlehetőségeinek. Az Azure-on belüli üzletmenet-folytonosságról és a vészhelyreállításról az [Azure rugalmassági technikai útmutatójában](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) talál további információt. 
+Ebből a cikkből megtudhatta, hogyan használhatja az üzletmenet folytonosságát és a vész-helyreállítási lehetőségeket a Microsoft Genomics szolgáltatás használatakor. Az üzletmenet folytonosságával és az Azure-beli vész-helyreállítással kapcsolatos további információkért lásd: az [Azure rugalmasságának technikai útmutatója.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 

@@ -1,6 +1,6 @@
 ---
-title: A Windows Azure virtuálisgép-architektúra munkafolyamata | Microsoft dokumentumok
-description: Ez a cikk áttekintést nyújt a munkafolyamat-folyamatokról egy szolgáltatás üzembe helyezésekor.
+title: A Windows Azure virtuális gépek architektúrájának munkafolyamata | Microsoft Docs
+description: Ez a cikk a szolgáltatás központi telepítésekor a munkafolyamat folyamatainak áttekintését tartalmazza.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -15,17 +15,17 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71162146"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>A Klasszikus Windows Azure virtuálisgépek architektúrájának munkafolyamata 
-Ez a cikk áttekintést nyújt a munkafolyamat-folyamatok, amelyek akkor jelentkeznek, amikor egy Azure-erőforrás, például egy virtuális gép telepítése vagy frissítése. 
+#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>A klasszikus Windows Azure VM-architektúra munkafolyamata 
+Ez a cikk áttekintést nyújt az Azure-erőforrások, például virtuális gépek üzembe helyezése vagy frissítése során felmerülő munkafolyamat-folyamatokról. 
 
 > [!NOTE]
->Az Azure két különböző üzembe helyezési modellt hoz létre és dolgozik az erőforrásokkal: Erőforrás-kezelő és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
+>Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
 
 Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
@@ -33,86 +33,86 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
 ## <a name="workflow-basics"></a>A munkafolyamat alapjai
    
-**A.** RDFE / FFE a kommunikációs útvonal a felhasználó tól a hálóhoz. RDFE (RedDog Front End) a nyilvánosan elérhető API, amely a felügyeleti portál és a Service Management API előtér-, például a Visual Studio, az Azure MMC és így tovább.  A felhasználó tól érkező összes kérés az RDFE-n keresztül megy. FFE (Fabric Front End) az a réteg, amely lefordítja az RDFE-ből származó kérelmeket hálóparancsokká. Az RDFE minden kérése az FFE-n keresztül érhető el, hogy elérje a hálóvezérlőket.
+**A**. A RDFE/FFE a felhasználó és a háló közötti kommunikációs útvonal. A RDFE (RedDog Front End) a nyilvánosan elérhető API, amely a felügyeleti portál és a Service Management API, például a Visual Studio, az Azure MMC stb.  A felhasználótól érkező összes kérelem áthalad a RDFE. A FFE (Fabric előtér) az a réteg, amely lefordítja a RDFE érkező kéréseket a Fabric-parancsokra. A RDFE érkező kérések a FFE keresztül jutnak el a háló-vezérlőkhöz.
 
-**B.** A hálóvezérlő felelős az adatközpont összes erőforrásának karbantartásáért és figyeléséért. Kommunikál a hálógazdagép-ügynökökkel a háló operációs rendszer ének küldése, például a vendég operációsrendszer-verzió, a szolgáltatáscsomag, a szolgáltatás konfigurációja és a szolgáltatás állapota.
+**B**. A háló vezérlő felelős az adatközpontban lévő összes erőforrás karbantartásához és figyeléséhez. A Fabric Host-ügynökökkel kommunikál a háló operációs rendszeren, például a vendég operációs rendszer verziója, a szervizcsomag, a szolgáltatás konfigurációja és a szolgáltatás állapota.
 
-**C.** A gazdaügynök él a gazdaoperációs rendszer, és felelős a vendég operációs rendszer beállítása és a vendégügynök (WindowsAzureGuestAgent) annak érdekében, hogy frissítse a szerepkör felé a tervezett cél állapot, és nem szívverés ellenőrzéseket a vendégügynök. Ha az állomásügynök 10 percig nem kap szívverési választ, az állomásügynök újraindítja a vendég operációs rendszert.
+**C**. A gazdagép ügynöke a gazdagép operációs rendszerében él, és felelős a vendég operációs rendszer beállításához és a vendég ügynökkel (WindowsAzureGuestAgent) való kommunikációhoz, hogy a szerepkört a kívánt cél állapot irányába frissítse, és a szívverés-ellenőrzéseket a vendég ügynökkel. Ha a gazda ügynök 10 percig nem kap szívverési választ, a gazdagép ügynöke újraindítja a vendég operációs rendszert.
 
-**C2**. A WaAppAgent felelős a WindowsAzureGuestAgent.exe telepítéséért, konfigurálásáért és frissítéséért.
+**C2**. A WaAppAgent felelős a WindowsAzureGuestAgent. exe telepítéséhez, konfigurálásához és frissítéséhez.
 
-**Sz .**  A WindowsAzureGuestAgent felelős a következőkért:
+**D**.  A WindowsAzureGuestAgent felelős a következőkért:
 
-1. A vendég operációs rendszer konfigurálása, beleértve a tűzfalat, az ACL-eket, a LocalStorage erőforrásokat, a szolgáltatáscsomagot és -konfigurációt, valamint a tanúsítványokat.
-2. Annak a felhasználói fióknak a biztonsági azonosítójának beállítása, amely alatt a szerepkör futni fog.
+1. A vendég operációs rendszer konfigurálása, beleértve a tűzfalat, az ACL-eket, a LocalStorage erőforrásokat, a szervizcsomagot, a konfigurációt és a tanúsítványokat
+2. Annak a felhasználói fióknak a biztonsági azonosítójának beállítása, amelyet a szerepkör fog futni.
 3. A szerepkör állapotának kommunikálása a hálóval.
-4. WaHostBootstrapper indítása és figyelése annak érdekében, hogy a szerepkör a cél állapotban van.
+4. A WaHostBootstrapper elindítása és figyelése annak biztosításához, hogy a szerepkör a cél állapotban legyen.
 
-**E.** WaHostBootstrapper felelős:
+**E**. A WaHostBootstrapper felelős a következőkért:
 
-1. A szerepkör-konfiguráció olvasása, valamint a szerepkör konfigurálásához és futtatásához szükséges összes feladat és folyamat elindítása.
-2. Az összes gyermekfolyamat figyelése.
-3. A StatusCheck esemény felemelése a szerepkörgazda folyamatán.
+1. A szerepkör konfigurációjának beolvasása, valamint az összes megfelelő feladat és folyamat elindítása a szerepkör konfigurálásához és futtatásához.
+2. Az összes alárendelt folyamat figyelése.
+3. A StatusCheck esemény előléptetése a szerepkör-gazdagép folyamatán.
 
-**F.** Az IISConfigurator akkor fut, ha a szerepkör teljes IIS webes szerepkörként van konfigurálva (nem fog futni az SDK 1.2 HWC szerepkörökhöz). Felelős a következőkért:
+**F**. A IISConfigurator akkor fut, ha a szerepkör teljes IIS webes szerepkörként van konfigurálva (az SDK 1,2 ÜZEMELTETHETŐ WEBMAG szerepköreihez nem fog futni). A következőkért felelős:
 
-1. A szabványos IIS-szolgáltatások elindítása
-2. Az újraíró modul konfigurálása a webes konfigurációban
-3. Az AppPool beállítása a szolgáltatásmodellben beállított szerepkörhöz
-4. Az IIS-naplózás beállítása a DiagnosticStore LocalStorage mappára mutat
-5. Engedélyek és Hozzáférés-engedélyek konfigurálása
-6. A webhely a %roleroot%:\sitesroot\0 mappában található, és az AppPool erre a helyre mutat az IIS futtatásához. 
+1. A szabványos IIS-szolgáltatások indítása
+2. Az Újraírási modul konfigurálása a webes konfigurációban
+3. A konfigurált szerepkör alkalmazáskészlet beállítása a szolgáltatási modellben
+4. Az IIS-naplózás beállítása a DiagnosticStore LocalStorage mappára való Rámutatás céljából
+5. Engedélyek és ACL-ek konfigurálása
+6. A webhely a (z)% roleroot%: \sitesroot\0 helyen található, a alkalmazáskészlet pedig erre a helyre mutat az IIS futtatásához. 
 
-**G.** Az indítási feladatokat a szerepkörmodell határozza meg, és a WaHostBootstrapper indítja el. Az indítási feladatok beállíthatók úgy, hogy a háttérben aszinkron módon fussanak, és a gazdagép bootstrapper elindítja az indítási feladatot, majd folytatja a többi indítási feladatot. Az indítási feladatok egyszerűen (alapértelmezett) módban is konfigurálhatók, amelyben a gazdagép bootstrapper megvárja, amíg az indítási feladat befejeződik, és sikeres (0) kilépési kódot ad vissza, mielőtt folytatná a következő indítási feladatot.
+**G**. Az indítási feladatokat a szerepkör-modell határozza meg, és a WaHostBootstrapper indítja el. Az indítási feladatok aszinkron módon futtathatók a háttérben, és a gazdagép bootstrapper elindítják az indítási feladatot, majd folytatják a többi indítási feladatra. Az indítási feladatok beállítható úgy is, hogy egyszerű (alapértelmezett) módban fussanak, amelyben a gazdagép bootstrapper megvárja az indítási feladat futását, és sikeres (0) kilépési kódot ad vissza a következő indítási feladat folytatása előtt.
 
-**H**. Ezek a feladatok az SDK részét képezik, és a szerepkör szolgáltatásdefiníciójában (.csdef) bővítményként vannak definiálva. Indítási feladatokká bontva a **DiagnosticsAgent** és a **RemoteAccessAgent** egyedi, mivel mindegyik két indítási feladatot határoz meg, egy normál és egy **/blockStartup** paramétert. A normál indítási feladat háttérindítási feladatként van definiálva, így a háttérben is futtatható, miközben maga a szerepkör fut. A **/blockStartup** indítási feladat egyszerű indítási feladatként van definiálva, így a WaHostBootstrapper a folytatás előtt megvárja, amíg kilép. A **/blockStartup** feladat megvárja, amíg a normál feladat inicializálása befejeződik, majd kilép, és engedélyezi a gazdagép bootstrapper folytatását. Ez úgy történik, hogy a diagnosztika és az RDP-hozzáférés konfigurálható a szerepkör-folyamatok megkezdése előtt (ez a /blockStartup feladaton keresztül történik). Ez azt is lehetővé teszi, hogy a diagnosztika és az RDP-hozzáférés továbbra is fut, miután a gazdagép bootstrapper befejezte az indítási feladatokat (ez a Normál feladaton keresztül történik).
+**H**. Ezek a feladatok az SDK részét képezik, és a szerepkör szolgáltatás-definíciójában (. csdef) beépülő modulként vannak meghatározva. Az indítási feladatokra kiterjesztve a **DiagnosticsAgent** és a **RemoteAccessAgent** egyediek abban, hogy mindegyik két indítási feladatot definiál, egy normál és egy **/blockStartup** paraméterrel rendelkezőt. A normál indítási feladat háttérbeli indítási feladatként van definiálva, hogy az a háttérben is futtatható legyen, miközben maga a szerepkör fut. A **/blockStartup** indítási feladata egyszerű indítási feladatként van definiálva, így a WaHostBootstrapper megvárja, amíg a folytatás előtt kilép. A **/blockStartup** feladat megvárja a normál feladat inicializálásának befejezését, majd kilép, és lehetővé teszi a gazdagép bootstrapper folytatását. Ez azért történik, hogy a diagnosztika és az RDP-hozzáférés a szerepkör-folyamatok elindítása előtt is konfigurálható legyen (ez a/blockStartup feladat használatával történik). Ez azt is lehetővé teszi, hogy a diagnosztika és az RDP-hozzáférés továbbra is futni fog, miután a gazdagép bootstrapper befejezte az indítási feladatokat (ez a normál feladaton keresztül történik).
 
-**Én... nem tudom, mit mondjak** WaWorkerHost a normál feldolgozói szerepkörök szabványos gazdagépfolyamata. Ez a gazdafolyamat a szerepkör összes DEL-kódját és belépési pontkódját,például az OnStart és a Run-t üzemelteti.
+**I**. A WaWorkerHost a normál feldolgozói szerepkörök szabványos gazdagép-folyamata. Ez a gazdagép a szerepkör összes dll-fájlját és belépési pontjának kódját tárolja, például a OnStart és a Run műveletet.
 
-**J.** WaWebHost a szabványos gazdagép folyamat webes szerepkörök, ha úgy vannak beállítva, hogy az SDK 1.2-kompatibilis Hostable Web Core (HWC). A szerepkörök úgy engedélyezhetik a HWC módot, hogy eltávolítja az elemet a szolgáltatásdefinícióból (.csdef). Ebben a módban a szolgáltatás összes kódja és DL-je a WaWebHost folyamatból fut. Az IIS (w3wp) nincs használatban, és nincsenek konfigurált AppPool-ok az IIS-kezelőben, mert az IIS a WaWebHost.exe webhelyen található.
+**J**. A WaWebHost a webes szerepkörök szabványos gazdagép-folyamata, ha az SDK 1,2-kompatibilis üzemeltethető WebCore (ÜZEMELTETHETŐ WEBMAG) használatára vannak konfigurálva. A szerepkörök a ÜZEMELTETHETŐ WEBMAG módot is engedélyezhetik, ha eltávolítják az elemet a szolgáltatás definíciójában (. csdef). Ebben a módban az összes szolgáltatás kódja és dll-jei a WaWebHost folyamatból futnak. Az IIS (w3wp) nincs használatban, és nincsenek AppPools konfigurálva az IIS-kezelőben, mert az IIS a WaWebHost. exe fájlon belül található.
 
-**K.** A WaIISHost a teljes IIS-t használó webes szerepkörök szerepkör-belépési pontkódjának gazdafolyamata. Ez a folyamat betölti az első DLL-t, amely a **RoleEntryPoint** osztályt használja, és végrehajtja a kódot ebből az osztályból (OnStart, Run, OnStop). A **RoleEntryPoint** osztályban létrehozott RoleEnvironment események (például StatusCheck és Changed) ebben a folyamatban jelennek meg.
+**K**. A WaIISHost a teljes IIS-t használó webes szerepkörökhöz tartozó szerepkör-belépési pont kódjához tartozó gazdagép folyamata. Ez a folyamat betölti az első DLL-t, amely a **RoleEntryPoint** osztályt használja, és a kódot a következő osztályból hajtja végre (OnStart, Run, OnStop). A folyamat a RoleEntryPoint osztályban létrehozott összes **RoleEnvironment** eseményt (például a StatusCheck és a módosult) is megemeli.
 
-**L.** A W3WP az a szabványos IIS munkavégző folyamat, amelyakkor használatos, ha a szerepkör a Teljes IIS használatára van konfigurálva. Ez az IISConfigurator-ból konfigurált AppPool-t futtatja. Az itt létrehozott RoleEnvironment események (például statuscheck és módosított) ebben a folyamatban jelennek meg. Vegye figyelembe, hogy a RoleEnvironment események mindkét helyen (WaIISHost és w3wp.exe) indulnak el, ha mindkét folyamat eseményeire előfizet.
+**L**. A W3WP a szabványos IIS-munkavégző folyamat, amelyet akkor használ a rendszer, ha a szerepkör teljes IIS használatára van konfigurálva. Ezzel futtatja a IISConfigurator-ból konfigurált alkalmazáskészlet. Ebben a folyamatban az itt létrehozott RoleEnvironment-események (például a StatusCheck és a megváltozott) jelennek meg. Vegye figyelembe, hogy a RoleEnvironment-események mindkét helyen (WaIISHost és W3wp. exe) fognak tüzet, ha mindkét folyamat eseményeire előfizetnek.
 
 ## <a name="workflow-processes"></a>Munkafolyamat-folyamatok
 
-1. A felhasználó kérést küld, például ".cspkg" és ".cscfg" fájlokat tölt fel, és azt mondja egy erőforrásnak, hogy álljon le, vagy változtasson a konfiguráción, és így tovább. Ez az Azure Portalon vagy a Service Management API-t használó eszköz, például a Visual Studio közzétételi szolgáltatássegítségével végezhető el. Ez a kérés az RDFE-hez kerül az előfizetéssel kapcsolatos összes munka teljesítéséhez, majd a kérés nek az FFE-nek való közléséhez. A munkafolyamat további lépései egy új csomag üzembe helyezése és indítása.
-2. Az FFE megkeresi a megfelelő gépkészletet (az ügyfél-bevitel alapján, például affinitáscsoport vagy földrajzi hely, valamint a hálóbemenet, például a gép rendelkezésre állása), és kommunikál a fő hálóvezérlővel a gépkészletben.
-3. A hálóvezérlő megkeresi a rendelkezésre álló CPU-magokkal (vagy egy új állomást) tartalmazó állomást. A szolgáltatáscsomag és a konfiguráció másolva az állomásra, és a háló vezérlő kommunikál a gazdaügynök a gazdaoperációs rendszer a csomag központi telepítéséhez (konfigurálása DIPs, portok, vendég operációs rendszer, és így tovább).
-4. A gazdaügynök elindítja a vendég operációs rendszert, és kommunikál a vendégügynökkel (WindowsAzureGuestAgent). Az állomás szívveréseket küld a vendégnek, hogy megbizonyosodjon arról, hogy a szerepkör a célállapot felé halad.
-5. A WindowsAzureGuestAgent beállítja a vendég operációs rendszert (tűzfal, ACLs, LocalStorage és így tovább), átmásol egy új XML-konfigurációs fájlt a c:\Config mappába, majd elindítja a WaHostBootstrapper folyamatot.
-6. A teljes IIS webes szerepkörök esetében a WaHostBootstrapper elindítja az IISConfiguratort, és közli vele, hogy törölje a webes szerepkörhöz már meglévő AppPoolokat az IIS-ből.
-7. A WaHostBootstrapper beolvassa az **Indítási** feladatokat az E:\RoleModel.xml fájlból, és megkezdi az indítási feladatok végrehajtását. WaHostBootstrapper megvárja, amíg az összes egyszerű indítási feladatok befejeződtek, és visszatért a "siker" üzenetet.
-8. A teljes IIS webes szerepkörök esetében a WaHostBootstrapper megmondja az IISConfiguratornak, hogy konfigurálja az IIS AppPoolt, és a webhelyet a , a `E:\Sitesroot\<index>` `<index>` pontjára pedig a 0 alapú indexet a szolgáltatáshoz definiált `<Sites>` elemek számába.
-9. A WaHostBootstrapper a szerepkör típusától függően elindítja a gazdafolyamatot:
-    1. **Feldolgozói szerepkör**: A WaWorkerHost.exe elindult. A WaHostBootstrapper végrehajtja az OnStart() metódust. Miután visszatér, WaHostBootstrapper elindítja a Run() metódus végrehajtását, majd egyidejűleg megjelöli a szerepkört Ready, és behelyezi a terheléselosztó rotációjába (ha az InputEndpoints definiálva van). WaHostBootsrapper majd bemegy egy hurok ellenőrzése a szerep állapotát.
-    1. **SDK 1.2 HWC webes szerepkör**: WaWebHost elindul. A WaHostBootstrapper végrehajtja az OnStart() metódust. Miután visszatér, WaHostBootstrapper elindítja a Run() metódus végrehajtását, majd egyidejűleg megjelöli a szerepkört Ready, és behelyezi a terheléselosztó rotációba. A WaWebHost bemelegedési kérelmet ad ki (GET /do.rd_runtime_init). Minden webes kérést a WaWebHost.exe küld. WaHostBootsrapper majd bemegy egy hurok ellenőrzése a szerep állapotát.
-    1. **Teljes IIS webes szerepkör:** az aIISHost elindult. A WaHostBootstrapper végrehajtja az OnStart() metódust. Miután visszatér, megkezdi a Run() metódus végrehajtását, majd ezzel egyidejűleg készen jelöli meg a szerepkört, és behelyezi a terheléselosztó elforgatásába. WaHostBootsrapper majd bemegy egy hurok ellenőrzése a szerep állapotát.
-10. A Teljes IIS webes szerepkörbe érkező webes kérelmek elindítják az IIS-t a W3WP-folyamat elindításához és a kérés kiszolgálásához, ugyanúgy, mint egy helyszíni IIS-környezetben.
+1. A felhasználók egy kérést tesznek lehetővé, például ". cspkg" és ". cscfg" fájlokat töltenek fel, egy erőforrást a konfiguráció leállítására vagy a konfigurációs változások elvégzésére, és így tovább. Ezt a Azure Portalon vagy a Service Management APIt használó eszközön, például a Visual Studio közzétételi funkcióján keresztül teheti meg. Ez a kérelem a RDFE, hogy elvégezze az összes előfizetéshez kapcsolódó munkát, majd továbbítja a kérést a FFE. A munkafolyamat további lépései egy új csomag üzembe helyezése és elindítása.
+2. A FFE megkeresi a megfelelő számítógép-készletet (az ügyfél bemenete, például az affinitási csoport vagy a földrajzi hely, valamint a hálóból való bevitel, például a gép rendelkezésre állása), és kommunikál az adott gépcsoport Master Fabric-vezérlőjével.
+3. A Fabric-vezérlő olyan gazdagépet talál, amely rendelkezik elérhető CPU-magokkal (vagy új gazdagépet indít el). A rendszer átmásolja a szervizcsomagot és a konfigurációt a gazdagépre, és a háló vezérlő kommunikál a gazdagép operációs rendszerének gazdagép-ügynökével a csomag üzembe helyezéséhez (a DIPs, a ports, a vendég operációs rendszer stb. beállítása).
+4. A gazdagép ügynöke elindítja a vendég operációs rendszert, és kommunikál a vendég ügynökkel (WindowsAzureGuestAgent). A gazdagép szívveréseket küld a vendégnek, hogy megbizonyosodjon róla, hogy a szerepkör a cél állapotára törekszik.
+5. A WindowsAzureGuestAgent beállítja a vendég operációs rendszert (tűzfal, ACL, LocalStorage stb.), átmásol egy új XML-konfigurációs fájlt a c:\Config-be, majd elindítja a WaHostBootstrapper folyamatot.
+6. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper elindítja a IISConfigurator-t, és azt jelzi, hogy az IIS-ből törli a webes szerepkör meglévő AppPools.
+7. A WaHostBootstrapper beolvassa az **indítási** feladatokat a E:\RoleModel.XML, és megkezdi az indítási feladatok végrehajtását. A WaHostBootstrapper megvárja, amíg az összes egyszerű indítási feladat befejeződött, és "sikeres" üzenetet adott vissza.
+8. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper közli a IISConfigurator, hogy konfigurálja az IIS- `E:\Sitesroot\<index>`alkalmazáskészlet, `<index>` és a helyet a következőre mutasson, `<Sites>` ahol a 0 alapú index a szolgáltatáshoz definiált elemek számával.
+9. A WaHostBootstrapper a szerepkör típusától függően elindítja a gazdagép folyamatát:
+    1. **Feldolgozói szerepkör**: a WaWorkerHost. exe elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérést követően a WaHostBootstrapper elindítja a Run () metódust, és egyszerre készként jelöli meg a szerepkört, és a terheléselosztó rotációjában (ha InputEndpoints van meghatározva). A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
+    1. **SDK 1,2 üzemeltethető webmag webes szerepkör**: a WaWebHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérést követően a WaHostBootstrapper elkezdi végrehajtani a Run () metódust, majd egyidejűleg megjelöli a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaWebHost kiadja a bemelegedési kérelmet (/do. rd_runtime_init). Az összes webes kérelem elküldése a WaWebHost. exe fájlba történik. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
+    1. **Teljes IIS webes szerepkör**: a aIISHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérése után elindul a Run () metódus végrehajtása, majd egyidejűleg készként jelöli meg a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
+10. A teljes IIS webes szerepkörbe beérkező webes kérelmek elindítják az IIS-t a W3WP-folyamat elindításához és a kérelem kiszolgálásához, ugyanúgy, mint egy helyszíni IIS-környezetben.
 
 ## <a name="log-file-locations"></a>Naplófájl helyei
 
 **WindowsAzureGuestAgent**
 
 - C:\Logs\AppAgentRuntime.Log.  
-Ez a napló a szolgáltatás módosításait tartalmazza, beleértve az indításokat, a leállásokat és az új konfigurációkat. Ha a szolgáltatás nem változik, akkor nagy időbeli szünetek rejlehetnek ebben a naplófájlban.
+Ez a napló a szolgáltatás módosításait tartalmazza, beleértve az indítást, a leállásokat és az új konfigurációkat. Ha a szolgáltatás nem változik, a naplófájlban várhatóan nagy mennyiségű idő jelenik meg.
 - C:\Logs\WaAppAgent.Log.  
-Ez a napló állapotfrissítéseket és szívverési értesítéseket tartalmaz, és 2-3 másodpercenként frissül.  Ez a napló a példány állapotának egy korábbi nézetét tartalmazza, és megmondja, hogy a példány mikor nem volt Kész állapotban.
+Ez a napló az állapot frissítéseit és a szívverési értesítéseket tartalmazza, és 2-3 másodpercenként frissül.  Ez a napló a példány állapotának egy korábbi nézetét tartalmazza, és azt jelzi, hogy a példány nem üzemkész állapotban van-e.
  
-**WaHostBootstrapper között**
+**WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
  
-**WaWebHost (WaWebHost)**
+**WaWebHost**
 
 `C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
-**WaIISHost között**
+**WaIISHost**
 
 `C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log`
  
-**IISKonátor**
+**IISConfigurator**
 
 `C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log`
  
@@ -120,7 +120,7 @@ Ez a napló állapotfrissítéseket és szívverési értesítéseket tartalmaz,
 
 `C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
-**Windows eseménynaplók**
+**Windows-eseménynaplók**
 
 `D:\Windows\System32\Winevt\Logs`
  

@@ -1,6 +1,6 @@
 ---
-title: A felhőszolgáltatások telepítésével kapcsolatos problémák elhárítása | Microsoft dokumentumok
-description: Néhány gyakori probléma merülhet fel, amikor egy felhőszolgáltatás azure-ba üzembe helyezésekor. Ez a cikk néhány ra is megoldást kínál.
+title: A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása | Microsoft Docs
+description: A felhőalapú szolgáltatások Azure-ba történő telepítésekor néhány gyakori probléma merülhet fel. Ez a cikk néhány megoldáshoz nyújt megoldást.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,73 +15,73 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71122753"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Felhőszolgáltatás-telepítési problémák elhárítása
-Amikor üzembe helyez egy felhőszolgáltatási alkalmazáscsomagot az Azure-ba, az Azure Portal **Tulajdonságok** ablaktábláján kaphat információkat a központi telepítésről. Ezen az ablaktáblán található részletek segítségével elháríthatja a felhőszolgáltatással kapcsolatos problémákat, és ezeket az információkat az Azure-támogatás rendelkezésére bocsáthatja egy új támogatási kérelem megnyitásakor.
+# <a name="troubleshoot-cloud-service-deployment-problems"></a>A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása
+Ha felhőalapú szolgáltatásalkalmazás-csomagot telepít az Azure-ba, a Azure Portal **Tulajdonságok** paneljén szerezheti be az üzembe helyezésre vonatkozó információkat. Az ezen a panelen található részletek segítségével elháríthatja a felhőalapú szolgáltatással kapcsolatos problémákat, és az új támogatási kérelem megnyitásakor megadhatja ezeket az információkat az Azure-támogatáshoz.
 
-A **Tulajdonságok** ablaktábla a következőképpen található:
+A **Tulajdonságok** panel a következőképpen jelenik meg:
 
-* Az Azure Portalon kattintson a felhőszolgáltatás üzembe helyezésére, kattintson a **Minden beállítás**elemre, majd a **Tulajdonságok**parancsra.
+* A Azure Portal kattintson a felhőalapú szolgáltatás központi telepítésére, kattintson a **minden beállítás**elemre, majd a **Tulajdonságok**elemre.
 
 > [!NOTE]
-> A **Tulajdonságok** ablaktábla tartalmát a vágólapra másolhatja az ablaktábla jobb felső sarkában lévő ikonra kattintva.
+> A **Tulajdonságok** ablaktábla tartalmát a panel jobb felső sarkában látható ikonra kattintva másolhatja a vágólapra.
 >
 >
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>Probléma: Nem tudom elérni a webhelyet, de a telepítés elindult, és minden szerepkörpéldány készen áll
-A portálon megjelenő webhely URL-hivatkozása nem tartalmazza a portot. A webhelyek alapértelmezett portja 80. Ha az alkalmazás úgy van beállítva, hogy egy másik porton fusson, a webhely elérésekor hozzá kell adnia a megfelelő portszámot az URL-címhez.
+## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>Probléma: nem tudok hozzáférni a webhelyhez, de az üzembe helyezés elindult, és az összes szerepkör-példány elkészült
+A portálon látható URL-hivatkozás nem tartalmazza a portot. A webhelyek alapértelmezett portja a 80. Ha az alkalmazás úgy van konfigurálva, hogy egy másik porton fusson, a webhelyhez való hozzáféréskor hozzá kell adnia a megfelelő portszámot az URL-címhez.
 
-1. Az Azure Portalon kattintson a felhőszolgáltatás üzembe helyezésére.
-2. Az Azure Portal **Tulajdonságok** ablaktábláján ellenőrizze a szerepkörpéldányok portjait (a **bemeneti végpontok**területen).
-3. Ha a port nem 80, adja hozzá a megfelelő port értéket az URL-címet, amikor az alkalmazás eléréséhez. Nem alapértelmezett port megadásához írja be az URL-címet, majd egy kettőspontot (:), majd a portszámot szóközök nélkül.
+1. A Azure Portal kattintson a Cloud Service üzembe helyezésére.
+2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse meg a szerepkör-példányok portját (a **bemeneti végpontok**alatt).
+3. Ha a port nem 80, adja hozzá a megfelelő portszámot az URL-címhez az alkalmazáshoz való hozzáféréskor. Nem alapértelmezett port megadásához írja be az URL-címet, majd egy kettőspontot (:), majd a portszámot, és ne legyen szóköz.
 
-## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Probléma: A szerepkörpéldányak at újrahasznosított nélkülem csinál semmit
-A szolgáltatás javítása automatikusan történik, amikor az Azure észleli a problémás csomópontokat, és ezért a szerepkörpéldányokat új csomópontokba helyezi át. Ebben az esetben előfordulhat, hogy a szerepkörpéldányok újrahasznosítása automatikusan megtörténik. Annak kiderítése, hogy a szolgáltatás meggyógyítása megtörtént-e:
+## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Probléma: a saját szerepkörű példányok nem csinálok semmit
+A szolgáltatás-gyógyulás automatikusan megtörténik, amikor az Azure észleli a probléma csomópontjait, ezért a szerepkör-példányokat új csomópontokra helyezi. Ebben az esetben előfordulhat, hogy a rendszer automatikusan újrahasznosítja a szerepkör példányait. Annak megállapítása, hogy a szolgáltatás gyógyulása történt-e:
 
-1. Az Azure Portalon kattintson a felhőszolgáltatás üzembe helyezésére.
-2. Az Azure Portal **Tulajdonságok** ablaktábláján tekintse át az információkat, és állapítsa meg, hogy a szolgáltatás gyógyulása történt-e a szerepkörök újrahasznosításának megfigyelése során.
+1. A Azure Portal kattintson a Cloud Service üzembe helyezésére.
+2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse át az információkat, és állapítsa meg, hogy a szolgáltatás-gyógyulás a szerepkörök újrahasznosításának ideje alatt történt-e.
 
-Szerepkörök is újra nagyjából havonta egyszer során host-OS és a vendég-OS frissítések.  
-További információt a [blogbejegyzésben található szerepkörpéldány újraindítása az operációs rendszer frissítése miatt](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
+A szerepkörök a gazdagép-operációs rendszer és a vendég-operációsrendszer-frissítések során körülbelül havonta egyszer újra újraindulnak.  
+További információkért lásd a blogbejegyzések az [operációs rendszer frissítései miatti újraindítását](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) ismertető témakört.
 
-## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Probléma: Nem tudok vip cserét végezni, és hibaüzenetet kapok
-A VIP-csere nem engedélyezett, ha egy központi telepítési frissítés folyamatban van. A központi telepítési frissítések automatikusan előfordulhatnak, ha:
+## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Probléma: nem tudok VIP-swap-cserét végezni, és hibaüzenetet kapok
+A virtuális IP-címek cseréje nem engedélyezett, ha a központi telepítés frissítése folyamatban van. A központi telepítés frissítései automatikusan megjelenhetnek a következő esetekben:
 
-* Új vendég operációs rendszer érhető el, és ön automatikus frissítésre van konfigurálva.
-* Szolgáltatás gyógyulástörténik.
+* Új vendég operációs rendszer érhető el, és az automatikus frissítésekhez van konfigurálva.
+* A szolgáltatás gyógyulása zajlik.
 
-Annak kiderítése, hogy egy automatikus frissítés megakadályozza-e a VIP-csere letiltását:
+Annak megállapítása, hogy az automatikus frissítés megakadályozza-e a VIP-swap-cserét:
 
-1. Az Azure Portalon kattintson a felhőszolgáltatás üzembe helyezésére.
-2. Az Azure Portal **Tulajdonságok** ablaktáblájában tekintse meg az **Állapot**értékét. Ha **készen**áll, majd ellenőrizze **az Utolsó művelet,** hogy ha egy közelmúltban történt, amely megakadályozhatja a VIP swap.
-3. Ismételje meg az 1.
-4. Ha egy automatikus frissítés folyamatban van, várja meg, amíg befejeződik, mielőtt megpróbálna a VIP-csere.
+1. A Azure Portal kattintson a Cloud Service üzembe helyezésére.
+2. A Azure Portal **Tulajdonságok** ablaktábláján tekintse meg az **állapot**értéket. Ha **elkészült**, tekintse meg az **utolsó művelet** lehetőséget, és ellenőrizze, hogy az egyik nemrég történt-e, ami megakadályozhatja a VIP-csere megváltoztatását.
+3. Ismételje meg az 1. és a 2. lépést az éles üzembe helyezéshez.
+4. Ha folyamatban van egy automatikus frissítés, várja meg, amíg befejeződik a VIP-swap-művelet végrehajtása előtt.
 
-## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Probléma: Egy szerepkörpéldány hurkolazolás az Indítás, inicializálás, foglaltság és leállított között
-Ez az állapot problémára mutathat vissza az alkalmazás kódjában, csomagjában, vagy konfigurációs fájljában. Ebben az esetben látnia kell, hogy az állapot néhány percenként változik, és az Azure Portalon például **újrahasznosítás,** **foglalt**ság vagy **inicializálás jelenik meg.** Ez azt jelzi, hogy valami baj van az alkalmazással, amely megakadályozza a szerepkörpéldány futását.
+## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Probléma: A szerepkör-példány a megkezdett, az inicializálás, a foglalt és a leállított művelet között hurkos
+Ez az állapot problémára mutathat vissza az alkalmazás kódjában, csomagjában, vagy konfigurációs fájljában. Ebben az esetben a néhány percenként változó állapotot kell látnia, és a Azure Portal az **újrahasznosítást**, a **foglalt**vagy az **inicializálást**is elmondhatja. Ez azt jelzi, hogy hiba történt azzal az alkalmazással, amely a szerepkör-példány futtatását tartja.
 
-A probléma elhárításáról az [Azure PaaS számítási diagnosztikai adatok](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) és a [szerepkörök újrahasznosítását okozó gyakori problémák](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)című blogbejegyzésben talál további információt.
+A probléma elhárításával kapcsolatos további információkért tekintse meg az [Azure Pásti számítási diagnosztikai adatokkal](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) és a [szerepkörök újrahasznosítását okozó gyakori problémákkal](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)foglalkozó blogbejegyzést.
 
-## <a name="problem-my-application-stopped-working"></a>Probléma: Leállt az alkalmazásom
-1. Az Azure Portalon kattintson a szerepkörpéldány.
-2. Az Azure Portal **Tulajdonságok** ablaktáblájában vegye figyelembe a probléma megoldásához az alábbi feltételeket:
-   * Ha a szerepkörpéldány nemrég leállt (ellenőrizheti a **megszakítások száma**értékét), a központi telepítés frissíthető lehet. Várja meg, hogy a szerepkörpéldány magától is működjön-e.
-   * Ha a szerepkörpéldány **foglalt,** ellenőrizze az alkalmazás kódját, hogy a [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) esemény kezelve van-e. Előfordulhat, hogy hozzá kell adnia vagy ki kell javítania néhány kódot, amely kezeli ezt az eseményt.
-   * Az Azure PaaS számítási diagnosztikai adatok című blogbejegyzésben a diagnosztikai adatok és a hibaelhárítási [forgatókönyvek végighaladnak.](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)
+## <a name="problem-my-application-stopped-working"></a>Probléma: az alkalmazás működése leállt
+1. A Azure Portal kattintson a szerepkör-példányra.
+2. A Azure Portal **Tulajdonságok** ablaktábláján vegye figyelembe a következő feltételeket a probléma megoldásához:
+   * Ha a szerepkör-példány nemrég leállt (megtekintheti a **megszakítások számát**), a központi telepítés frissíthető. Várjon, és ellenőrizze, hogy a szerepkör-példány folytatja-e a működést saját maga.
+   * Ha a szerepkör-példány **foglalt**, ellenőrizze az alkalmazás kódját, hogy a [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -eseményt kezeli-e a rendszer. Előfordulhat, hogy az eseményt kezelő kódot kell felvennie vagy kijavítania.
+   * Tekintse át a diagnosztikai adatok és hibaelhárítási forgatókönyveket a blogbejegyzésben, az [Azure Pásti számítási diagnosztikai adatok](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 > [!WARNING]
-> Ha újrahasznosítja a felhőszolgáltatást, alaphelyzetbe állítja a telepítés tulajdonságait, és hatékonyan leteszi az eredeti probléma adatait.
+> Ha újrahasznosítja a felhőalapú szolgáltatást, alaphelyzetbe állítja a központi telepítés tulajdonságait, és ténylegesen törli az eredeti problémával kapcsolatos információkat.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-További [hibaelhárítási cikkek](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) a felhőszolgáltatásokhoz.
+További [hibaelhárítási cikkek](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) a Cloud Services szolgáltatáshoz.
 
-Ha meg szeretné tudni, hogyan háríthatja el a felhőalapú szolgáltatási szerepkörrel kapcsolatos problémákat az Azure PaaS-számítógép diagnosztikai adatainak használatával, olvassa el [Kevin Williamson blogsorozatát.](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)
+Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

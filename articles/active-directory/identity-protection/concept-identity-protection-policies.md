@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD identitásvédelem szabályzatai
-description: Az identitásvédelemmel engedélyezett három házirend azonosítása
+title: Azure AD Identity Protection házirendek
+description: Az Identity Protection által engedélyezett három szabályzat azonosítása
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,47 +12,47 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72887415"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection-szabályzatok
 
-Az Azure Active Directory identity protection három alapértelmezett szabályzatot tartalmaz, amelyeket a rendszergazdák engedélyezhetnek. Ezek a házirendek korlátozott testreszabást tartalmaznak, de a legtöbb szervezetre vonatkoznak. Minden házirend lehetővé teszi a felhasználók kizárását, például a [segélyhívó vagy a törésüveg-rendszergazdai fiókokat.](../users-groups-roles/directory-emergency-access.md)
+A Azure Active Directory Identity Protection három alapértelmezett szabályzatot tartalmaz, amelyeket a rendszergazdák engedélyeznek. Ezek a szabályzatok korlátozott testreszabást tartalmaznak, de a legtöbb szervezetre alkalmazhatók. Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../users-groups-roles/directory-emergency-access.md).
 
 ![Identity Protection-szabályzatok](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Az Azure MFA regisztrációs szabályzata
+## <a name="azure-mfa-registration-policy"></a>Azure MFA regisztrációs szabályzat
 
-Az Identity Protection segítségével a szervezetek bevezethetik az Azure többtényezős hitelesítést (MFA) egy feltételes hozzáférési szabályzat használatával, amely regisztrációt igényel a bejelentkezéskor. A házirend engedélyezése nagyszerű módja annak, hogy a szervezet új felhasználói az első napon regisztráltak az MFA-ra. A többtényezős hitelesítés az identitásvédelemen belüli kockázati események önszervizelési módszereinek egyike. Az önszervizelés lehetővé teszi a felhasználók számára, hogy saját maguk is tegyenek lépéseket az ügyfélszolgálati hívásmennyiség csökkentése érdekében.
+Az Identity Protection lehetővé teszi a szervezetek számára, hogy az Azure-Multi-Factor Authentication (MFA) a bejelentkezéskor regisztrációt igénylő feltételes hozzáférési szabályzattal nyújtsanak be. Ennek a szabályzatnak a engedélyezése nagyszerű módja annak, hogy a szervezet új felhasználói az első napon regisztrálták az MFA-t. A többtényezős hitelesítés a kockázati események egyik önszervizelési módszere az Identity Protectionben. Az önszervizelés lehetővé teszi, hogy a felhasználók saját maguk végezzék el az ügyfélszolgálati hívások mennyiségének csökkentését.
 
-Az Azure többtényezős hitelesítéséről további információ a Következő cikkben [található: Hogyan működik: Azure többtényezős hitelesítés.](../authentication/concept-mfa-howitworks.md)
+Az Azure Multi-Factor Authentication-ról további információt talál a következő cikkben, [Hogyan működik: azure multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
-## <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati szabályzat
+## <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
 
-Az Identity Protection elemzi az egyes bejelentkezések jeleit, valós idejű és offline egyaránt, és kiszámítja a kockázati pontszámot annak valószínűsége alapján, hogy a bejelentkezést nem a felhasználó hajtotta végre. A rendszergazdák a kockázati pontszám jelzés alapján hozhatnak döntést a szervezeti követelmények kényszerítése érdekében. A rendszergazdák letilthatják a hozzáférést, engedélyezik a hozzáférést, vagy engedélyezik a hozzáférést, de többtényezős hitelesítést igényelnek.
+Az Identity Protection elemzi az egyes bejelentkezések, valós idejű és offline állapotú jeleket, és kiszámítja a kockázati pontszámot azon valószínűség alapján, hogy a felhasználó nem végezte el a bejelentkezést. A rendszergazdák a kockázati pontszám alapján hozhatnak döntéseket a szervezeti követelmények betartatása érdekében. A rendszergazdák dönthetnek úgy, hogy letilthatják a hozzáférést, engedélyezik a hozzáférést, vagy engedélyezik a hozzáférést, de többtényezős hitelesítést igényelnek.
 
-Ha kockázatot észlel, a felhasználók többtényezős hitelesítést végezhetnek az önjavításhoz, és bezárhatják a kockázatos bejelentkezési eseményt, hogy megakadályozzák a rendszergazdák szükségtelen zaját.
+Ha a rendszer veszélyezteti a kockázatot, a felhasználók a többtényezős hitelesítést a saját kiszolgálására, valamint a kockázatos bejelentkezési esemény bezárására is használhatják a rendszergazdák számára szükségtelen zaj megelőzése érdekében.
 
 > [!NOTE] 
-> A felhasználóknak korábban regisztrálniuk kell az Azure többtényezős hitelesítéshez a bejelentkezési kockázati szabályzat aktiválása előtt.
+> A bejelentkezési kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell az Azure Multi-Factor Authentication-ban.
 
-### <a name="custom-conditional-access-policy"></a>Egyéni feltételes hozzáférési házirend
+### <a name="custom-conditional-access-policy"></a>Egyéni feltételes hozzáférési szabályzat
 
-A rendszergazdák egyéni feltételes hozzáférési házirendet is létrehozhatnak, beleértve a bejelentkezési kockázatot hozzárendelési feltételként. További információ a feltételes hozzáférésről a [Mi a feltételes hozzáférés?](../conditional-access/overview.md)
+A rendszergazdák dönthetnek úgy is, hogy egyéni feltételes hozzáférési szabályzatot hoznak létre, beleértve a bejelentkezési kockázatokat hozzárendelési feltételként. A feltételes hozzáféréssel kapcsolatos további információkért tekintse meg a [feltételes hozzáférésről](../conditional-access/overview.md) szóló cikket.
 
-![Egyéni feltételes hozzáférés bejelentkezési kockázati szabályzat](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
+![Egyéni feltételes hozzáférés bejelentkezési kockázati szabályzata](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 
 ## <a name="user-risk-policy"></a>Felhasználói kockázati házirend
 
-Az Identitásvédelem kiszámíthatja, hogy szerinte mi a normális a felhasználó viselkedése esetén, és ezt a kockázatra alapozhatja. A felhasználói kockázat az identitás feltörésének valószínűségének kiszámítása. A rendszergazdák a kockázati pontszám jelzés alapján hozhatnak döntést a szervezeti követelmények kényszerítése érdekében. A rendszergazdák letilthatják a hozzáférést, engedélyezhetik a hozzáférést, vagy engedélyezhetik a hozzáférést, de jelszómódosítást kérhetnek az [Azure AD önkiszolgáló jelszó-visszaállításával.](../authentication/howto-sspr-deployment.md)
+Az Identity Protection kiszámíthatja, hogy mit gondol a felhasználó viselkedése, és hogyan használhatja azt a kockázatokra alapozva. A felhasználói kockázat a valószínűsége annak, hogy az identitást feltörték. A rendszergazdák a kockázati pontszám alapján hozhatnak döntéseket a szervezeti követelmények betartatása érdekében. A rendszergazdák dönthetnek úgy, hogy letiltják a hozzáférést, engedélyezik vagy engedélyezik a hozzáférést, de jelszó-módosítást igényelnek az [Azure ad önkiszolgáló jelszó-visszaállítás](../authentication/howto-sspr-deployment.md)használatával.
 
-Ha kockázatot észlel, a felhasználók önkiszolgáló jelszó-visszaállítást hajthatnak végre önjavítóra, és bezárhatják a felhasználói kockázati eseményt, hogy megakadályozzák a szükségtelen zajt a rendszergazdák számára.
+Ha a rendszer veszélyezteti a kockázatot, a felhasználók önkiszolgáló jelszó-visszaállítást végezhetnek, és lezárhatók a felhasználói kockázati esemény a rendszergazdák számára szükségtelen zaj megelőzése érdekében.
 
 > [!NOTE] 
-> A felhasználói kockázati házirend aktiválása előtt a felhasználóknak korábban regisztrálniuk kell az önkiszolgáló jelszó-alaphelyzetbe állításra.
+> A felhasználói kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell magukat az önkiszolgáló jelszó-visszaállításhoz.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -60,6 +60,6 @@ Ha kockázatot észlel, a felhasználók önkiszolgáló jelszó-visszaállítá
 
 - [Az Azure Multi-Factor Authentication engedélyezése](../authentication/howto-mfa-getstarted.md)
 
-- [Az Azure többtényezős hitelesítésregisztrációs házirendjének engedélyezése](howto-identity-protection-configure-mfa-policy.md)
+- [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 
 - [Bejelentkezési és felhasználói kockázati házirendek engedélyezése](howto-identity-protection-configure-risk-policies.md)

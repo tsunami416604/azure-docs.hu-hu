@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Hibaelhárítás az IOt Edge Eseményrácsban.
+title: Hibakeresés – Azure Event Grid IoT Edge | Microsoft Docs
+description: Hibaelhárítás a IoT Edge Event Gridban.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73100160"
 ---
 # <a name="common-issues"></a>Gyakori problémák
 
-Ha problémákat tapasztal az Azure Event Grid használatával az IoT Edge-en a környezetében, használja ezt a cikket útmutatóként a hibaelhárításhoz és a megoldáshoz.
+Ha a környezetében IoT Edge Azure Event Grid használatával kapcsolatos problémákat tapasztal, a hibaelhárításhoz és a megoldáshoz tekintse meg ezt a cikket.
 
-## <a name="view-event-grid-module-logs"></a>Eseményrács modulnaplóinak megtekintése
+## <a name="view-event-grid-module-logs"></a>Event Grid modul naplófájljainak megtekintése
 
-A hibaelhárításhoz szükség lehet az Event Grid modul naplóinak elérésére. Ehhez a virtuális gép, ahol a modul telepítve van, futtassa a következő parancsot:
+A hibakereséshez lehetséges, hogy hozzá kell férnie Event Grid modul naplóihoz. Ehhez a modult telepítő virtuális gépen futtassa a következő parancsot:
 
-Windows rendszerben a
+Windows rendszeren
 
 ```sh
 docker -H npipe:////./pipe/iotedge_moby_engine container logs eventgridmodule
 ```
 
-Linux alatt,
+Linux rendszeren
 
 ```sh
 sudo docker logs eventgridmodule
 ```
 
-## <a name="unable-to-make-https-requests"></a>Nem lehet HTTPS-kérelmeket betartani
+## <a name="unable-to-make-https-requests"></a>Nem lehet HTTPS-kéréseket készíteni
 
-* Először győződjön meg arról, hogy az Event Grid modul **bejövő:serverAuth:tlsPolicy** **beállítása szigorú** vagy **engedélyezve van.**
+* Először győződjön meg arról, Event Grid modul **bejövő: serverAuth: tlsPolicy** beállítása **szigorú** vagy **engedélyezett**.
 
-* Ha a modul-modul kommunikáció, győződjön meg arról, hogy a hívás a **4438-as** porton, és a modul neve megegyezik a telepített. 
+* Ha a modul – modul kommunikációja, győződjön meg arról, hogy az **4438** -es porton hívja meg a hívást, és a modul neve megegyezik a telepített szolgáltatással. 
 
-  Például ha az Event Grid modul neve **eventgridmodule** néven lett **https://eventgridmodule:4438**telepítve, akkor az URL-címet kell . Ellenőrizze, hogy a ház és a port száma helyes-e.
+  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie **https://eventgridmodule:4438**:. Győződjön meg arról, hogy a burkolat és a portszám helyes.
     
-* Ha nem IoT-modulból származik, győződjön meg arról, hogy az Event Grid port le van képezve a gazdagépre az üzembe helyezés során, például
+* Ha nem IoT modulról van szó, győződjön meg róla, hogy Event Grid port a gazdagépre van leképezve az üzembe helyezés során, például:
 
     ```json
     "HostConfig": {
@@ -58,15 +58,15 @@ sudo docker logs eventgridmodule
      }
     ```
 
-## <a name="unable-to-make-http-requests"></a>Nem lehet HTTP-kérelmeket letenni
+## <a name="unable-to-make-http-requests"></a>A HTTP-kérések nem hajthatók végre
 
-* Először győződjön meg arról, hogy az Event Grid modul **bejövő:serverAuth:tlsPolicy** beállítása **engedélyezve** vagy **letiltva.**
+* Először győződjön meg arról, Event Grid modul **bejövő: serverAuth: tlsPolicy** **engedélyezve** vagy **Letiltva**értékre van állítva.
 
-* Ha a modul-modul kommunikáció, győződjön meg arról, hogy a hívás a port **5888** és a modul neve megegyezik a telepített. 
+* Ha a modul – modul kommunikációja, győződjön meg arról, hogy az **5888** -es porton hívja meg a hívást, és a modul neve megegyezik a telepített szolgáltatással. 
 
-  Például ha az Event Grid modul neve **eventgridmodule** néven lett **http://eventgridmodule:5888**telepítve, akkor az URL-címet kell . Ellenőrizze, hogy a ház és a port száma helyes-e.
+  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie **http://eventgridmodule:5888**:. Győződjön meg arról, hogy a burkolat és a portszám helyes.
     
-* Ha nem IoT-modulból származik, győződjön meg arról, hogy az Event Grid port le van képezve a gazdagépre az üzembe helyezés során, például
+* Ha nem IoT modulról van szó, győződjön meg róla, hogy Event Grid port a gazdagépre van leképezve az üzembe helyezés során, például:
 
     ```json
     "HostConfig": {
@@ -80,32 +80,32 @@ sudo docker logs eventgridmodule
     }
     ```
 
-## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>A tanúsítványláncot nem megbízható hatóság bocsátotta ki
+## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>A tanúsítványláncot olyan szolgáltató adta ki, amely nem megbízható
 
-Alapértelmezés szerint az Event Grid modul úgy van konfigurálva, hogy hitelesítse az ügyfeleket az IoT Edge biztonsági démon által kiadott tanúsítvánnyal. Győződjön meg arról, hogy az ügyfél olyan tanúsítványt mutat be, amely ehhez a lánchoz gyökerezik.
+Alapértelmezés szerint Event Grid modul úgy van konfigurálva, hogy hitelesítse az ügyfeleket a IoT Edge biztonsági démon által kiadott tanúsítvánnyal. Győződjön meg arról, hogy az ügyfél olyan tanúsítványt mutat be, amely a lánc gyökerében van.
 
-**IoTSecurity** osztály [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) bemutatja, hogyan lehet lekérni a tanúsítványokat az IoT Edge biztonsági démon, és ezzel konfigurálja a kimenő hívásokat.
+**IoTSecurity** A [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) IoTSecurity osztály azt mutatja be, hogyan kérhet le tanúsítványokat IoT Edge biztonsági démonból, és hogyan konfigurálhatja a kimenő hívásokat.
 
-Ha nem éles környezetben, akkor lehetősége van kikapcsolni az ügyfélhitelesítést. Ennek módjáról a [Biztonság és hitelesítés](security-authentication.md) című dokumentumban tájékodhat.
+Ha nem éles környezetben van, lehetősége van az ügyfél-hitelesítés kikapcsolására. Ennek elvégzéséhez tekintse meg a [biztonsági és hitelesítési](security-authentication.md) tudnivalókat.
 
 ## <a name="debug-events-not-received-by-subscriber"></a>Az előfizető által nem fogadott hibakeresési események
 
-Ennek tipikus okai a következők:
+Ennek jellemző okai a következők:
 
-* Az esemény soha nem volt sikeresen közzé. 200-as HTTP-statuscode(OK) protokollt kell kapni, amikor eseményt tesz közzé az Event Grid modulba.
+* Az eseményt nem sikerült elküldeni. Egy eseménynek a Event Grid modulba való feladásához 200 (OK) HTTP-StatusCode kell érkeznie.
 
-* Ellenőrizze az esemény-előfizetést a következők ellenőrzéséhez:
+* Ellenőrizze az esemény-előfizetést az ellenőrzéshez:
     * A végpont URL-címe érvényes
-    * Az előfizetés ben lévő szűrők nem okozzák az esemény "eldobását".
+    * Az előfizetésben lévő szűrők nem okozzák az esemény eldobását.
 
 * Annak ellenőrzése, hogy fut-e az előfizetői modul
 
-* Jelentkezzen be a virtuális gépre, ahol az Event Grid modul telepítve van, és tekintse meg a naplókat.
+* Jelentkezzen be arra a virtuális gépre, amelyen a Event Grid modul telepítve van, és tekintse meg a naplóit.
 
-* Kapcsolja be a kézbesítési naplózást a **broker:logDeliverySuccess=true** beállításával és az Event Grid modul újratelepítésével és a kérelem újbóli megkísérlésével. A kézbesítésenkénti naplózás bekapcsolása hatással lehet az átviteli és a késésre, így a hibakeresés befejezése után azt javasoljuk, hogy ezt visszakell állítani **a broker:logDeliverySuccess=false-ra,** és újraüzembe helyezzük az Event Grid modult.
+* A közvetítés naplózásának bekapcsolásához állítsa be a következőt **: logDeliverySuccess = True** , és telepítse újra Event Grid modult, és próbálkozzon újra a kéréssel. A naplózás bekapcsolásával az átviteli sebesség és a késés hatással lehet, így a hibakeresés befejezésekor a Javaslatunk visszakapcsolható a **közvetítőhöz: logDeliverySuccess = false** (Event Grid modul újbóli üzembe helyezése).
 
-* Kapcsolja be a metrikákat **a metrikák:reportertype=console** beállításával és az Event Grid modul újratelepítésével. Az ezt követő műveletek eredményeképpen metrikák vannak bejelentkezve az Event Grid modul konzolján, amely további hibakeresésre használható. Javasoljuk, hogy kapcsolja be a metrikák csak a hibakeresés, és miután befejezte, hogy kapcsolja ki a **metrikák:reportertype=none** és az Event Grid modul újratelepítése.
+* A metrikák bekapcsolásához állítsa be a **metrikákat: reportertype = Console** , és telepítse újra Event Grid modult. Az azt követő műveletek a Event Grid modul konzolján naplózzák a metrikákat, amelyek a további hibakereséshez használhatók. Javasoljuk, hogy a mérőszámok bekapcsolásához csak a hibakereséshez és a befejezéshez a metrikák beállításával kapcsolja ki a metrikákat **: reportertype = none** és Event Grid modul újbóli üzembe helyezése.
 
 ## <a name="next-steps"></a>További lépések
 
-Jelentse az Event Grid ioT Edge-en [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)való használatával kapcsolatos problémákat, javaslatokat a alkalmazásban.
+Bármilyen problémát jelenthet, a Event Grid használatával kapcsolatos javaslatok a IoT Edge [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)címen.
