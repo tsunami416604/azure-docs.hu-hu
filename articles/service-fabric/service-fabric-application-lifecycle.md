@@ -4,10 +4,10 @@ description: Ismerteti Service Fabric alkalmazások fejlesztését, üzembe hely
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378004"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Az alkalmazások életciklusának Service Fabric

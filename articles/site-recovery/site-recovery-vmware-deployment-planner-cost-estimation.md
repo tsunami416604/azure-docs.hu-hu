@@ -1,6 +1,6 @@
 ---
-title: Költségbecslések áttekintése az Azure Site Recovery Deployment Plannerban
-description: Ez a cikk ismerteti, hogyan tekintse át a költségbecsléseket az Azure Site Recovery Planner a VMware vész-helyreállítási.
+title: Költségbecslés áttekintése a Azure Site Recovery Deployment Plannerban
+description: Ez a cikk azt ismerteti, hogyan tekintheti át a Azure Site Recovery Deployment Planner a VMware vész-helyreállítási feladataival kapcsolatos költségeket.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953345"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Költségbecslések áttekintése a VMware-telepítéstervezőben 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Becsült költségbecslés a VMware Deployment Planner 
 
 A Deployment Planner jelentése a [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) táblázatokban költségbecslési összefoglalást, a Költségbecslés táblázatban pedig részletes költségelemzést biztosít. Részletes költségelemzést tartalmaz virtuális gépenként. 
 
 >[!Note]
->A Deployment planner eszköz 2.5-ös verziójának aktuális verziója költségbecslést biztosít a felügyelt lemezekre replikáló virtuális gépekhez.
+>A Deployment Planner Tool 1.0-s verziójának aktuális verziója a Managed Disks-ba replikált virtuális gépek költséghatékonyságát tartalmazza.
 
 ### <a name="cost-estimation-summary"></a>Költségbecslés összefoglalása 
 Az ábra a választott célrégió és a jelentéskészítéshez megadott pénznem vészhelyreállításának (DR) becsült, teljes költségeinek összesített nézetét mutatja be az Azure-hoz.
@@ -77,7 +77,7 @@ Válassza ki az igényeinek megfelelő beállítást.
 
 **VPN Gateway**: Akkor válassza a VPN Gatewayt, ha rendelkezik ilyennel a környezetében. Alapértelmezés szerint NA értékű.
 
-**Célrégió**: Meghatározott Azure-régió a DR számára. A jelentésben a számításhoz, tároláshoz, hálózathoz és licenchez használt árak a régió Azure-díjszabásán alapulnak. 
+**Célcsoport**: a Dr-hez megadott Azure-régió. A jelentésben a számításhoz, tároláshoz, hálózathoz és licenchez használt árak a régió Azure-díjszabásán alapulnak. 
 
 ### <a name="vm-running-on-azure"></a>Az Azure-ban futó virtuális gép
 Ha az Azure-ban bármilyen tartományvezérlő, DNS virtuális gép vagy Always On rendelkezésre állási csoportokkal rendelkező, SQL Server rendszerű virtuális gép fut vészhelyreállítási céllal, megadhatja a virtuális gépek számát és méretét, hogy azok számítási költségei is figyelembe legyenek véve a vészhelyreállítás teljes költségében. 
@@ -101,7 +101,7 @@ Virtuális gépek manuális hozzáadása:
 
 * Virtuális gépek száma, IaaS-méret (felhasználó választása)
 * Tárolás típusa (Standard/Prémium)
-* A forrásgép virtuális gép teljes tárhelymérete (GB)
+* A virtuális gép teljes tárolási mérete (GB) a forrásszámítógép számára
 * DR működéseinek száma évente 
 * Az egyes DR működések időtartama (nap) 
 * Operációs rendszer típusa
@@ -122,7 +122,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Tárolás típusa**: A virtuális gép által használt tároló típusa. Lehet standard vagy prémium szintű tároló.
 
-**Virtuális gép teljes tárhelymérete (GB)**: A forrás virtuális gép teljes tárhelye.
+**Virtuális gép tárterületének teljes mérete (GB)**: a forrásként szolgáló virtuális gép teljes tárterülete.
 
 **DR működéseinek száma évente**: A DR működéseinek száma egy évben. Alapértelmezés szerint az értéke évente 4. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működéseinek száma évente és a DR egyes működéseinek időtartama alapján a rendszer kiszámítja a DR működésének teljes költségét.  
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Currency (Pénznem)|Név||Currency (Pénznem)|Név||Currency (Pénznem)|Név|
+|Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (chf)||DKK|Dán korona (kr)|

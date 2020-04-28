@@ -1,6 +1,6 @@
 ---
-title: A VMware virtuálisgép-replikációs cél előkészítése az Azure Site Recovery szolgáltatásban
-description: Ez a cikk ismerteti, hogyan készítse elő a cél Azure-környezet vmware vm replikáció az Azure-ba.
+title: A VMware virtuális gép replikálási céljának előkészítése Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan készítse elő a cél Azure-környezetet a VMware virtuális gépek Azure-ba történő replikálásához.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73693168"
 ---
-# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>A célkörnyezet előkészítése a VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba való vészhelyreállítására
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>A cél környezet előkészítése VMware virtuális gépek vagy fizikai kiszolgálók Azure-beli vész-helyreállítására
 
-Ez a cikk ismerteti, hogyan készítse elő a cél Azure-környezetben a VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba replikálásának megkezdéséhez.
+Ez a cikk azt ismerteti, hogyan készítse elő a cél Azure-környezetet a VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba történő replikálásának megkezdéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi:
-- Létrehozott egy Recovery Services Vault-ot az [Azure Portalon](https://portal.azure.com "Azure portál") a forrásgépek védelme érdekében
-- A helyszíni környezetet úgy állítsa be, hogy replikálja a [vmware-i virtuális gépeket](vmware-azure-set-up-source.md) vagy [fizikai kiszolgálókat](physical-azure-set-up-source.md) az Azure-ba.
+A cikk a következőket feltételezi:
+- Létrehozott egy Recovery Services-tárolót a [Azure Portalon](https://portal.azure.com "Azure Portal") a forrásként szolgáló gépek
+- A helyszíni környezetet úgy állította be, hogy az Azure-ba replikálja a forrás [VMWare virtuális gépeket](vmware-azure-set-up-source.md) vagy [fizikai kiszolgálókat](physical-azure-set-up-source.md) .
 
 ## <a name="prepare-target"></a>Cél előkészítése
 
-**Az 1.** **Step 2: Prepare Source** **Step 3: Target**
+Miután befejezte az **1. lépést: válassza a védelmi cél** és a **2. lépés: forrás előkészítése**lehetőséget, a **3. lépés: cél**
 
 ![Cél előkészítése](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **Előfizetés:** A legördülő menüben válassza ki azt az előfizetést, amelybe a virtuális gépeket vagy a fizikai kiszolgálókat replikálni szeretné.
-2. **Telepítési modell:** Válassza ki a telepítési modellt (Klasszikus vagy Erőforrás-kezelő)
+1. **Előfizetés:** A legördülő menüben válassza ki azt az előfizetést, amelybe a virtuális gépeket vagy fizikai kiszolgálókat replikálni szeretné.
+2. **Üzembe helyezési modell:** Válassza ki a telepítési modellt (klasszikus vagy Resource Manager)
 
-A kiválasztott központi telepítési modell alapján egy érvényesítési fut annak biztosítására, hogy a cél-előfizetésben legalább egy virtuális hálózat replikálható és feladatátvétela a virtuális gép vagy a fizikai kiszolgáló.
+A kiválasztott üzemi modell alapján a rendszer ellenőrzi, hogy van-e legalább egy virtuális hálózat a cél előfizetésben a virtuális gép vagy a fizikai kiszolgáló replikálásához és feladatátvételéhez.
 
-Miután az ellenőrzések sikeresen befejeződtek, kattintson az OK gombra a következő lépés lépéshez.
+Az érvényesítés sikeres befejezése után kattintson az OK gombra a következő lépéshez való ugráshoz.
 
-Ha nem rendelkezik virtuális hálózattal, a lap tetején található **+ Hálózat** gombra kattintva hozhat létre egyet.
+Ha nem rendelkezik virtuális hálózattal, a lap tetején található **+ hálózat** gombra kattintva létrehozhat egyet.
 
 ## <a name="next-steps"></a>További lépések
-[A replikációs beállítások konfigurálása](vmware-azure-set-up-replication.md).
+[Konfigurálja a replikációs beállításokat](vmware-azure-set-up-replication.md).

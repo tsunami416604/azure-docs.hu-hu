@@ -1,6 +1,6 @@
 ---
-title: Probléma a helyszíni alkalmazásba való bejelentkezés az Azure AD alkalmazásproxyhasználatával | Microsoft dokumentumok
-description: Az Azure AD-vel integrált helyszíni alkalmazásba való bejelentkezés során felmerülő gyakori problémák elhárítása az Azure AD alkalmazásproxy használatával
+title: Hiba történt a helyszíni alkalmazásba való bejelentkezéskor az Azure AD App proxy használatával | Microsoft Docs
+description: Gyakori hibák elhárítása, amikor nem tud bejelentkezni az Azure AD-vel integrált helyszíni alkalmazásba az Azure AD Application Proxy használatával
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74232327"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémák a helyszíni alkalmazásba való bejelentkezéssel kapcsolatban az Azure AD-alkalmazásproxy használatával
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémák a helyszíni alkalmazásba való bejelentkezéskor az Azure AD alkalmazásproxy használatával
 
-Ha problémái vannak egy helyszíni alkalmazásban való bejelentkezéssel, próbálkozzon az alábbi lépésekkel a probléma megoldásához.
+Ha problémába ütközik egy helyszíni alkalmazásba való bejelentkezés során, a probléma megoldásához kövesse az alábbi lépéseket.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Az alkalmazásom betöltődik, de az oldal hibásnak tűnik
 
@@ -56,7 +56,7 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjével
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Problémák at látok az alkalmazásproxy-ügynök-összekötő telepítésével kapcsolatban](application-proxy-connector-installation-problem.md)
+  * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötője telepítésekor](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>További lépések
 [Helyszíni alkalmazások biztonságos távoli elérése](application-proxy.md)

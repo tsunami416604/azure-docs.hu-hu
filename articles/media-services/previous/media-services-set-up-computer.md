@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services fejlesztési környezet beállítása | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan állíthatja be a környezetet az Azure Media Services használatával való fejlesztéshez.
+description: Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet a Azure Media Serviceshez való fejlesztéshez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74895805"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Az Azure Media Services fejlesztési környezet beállítása  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A következő lépésekben az Azure Media Services szolgáltatással történő fejlesztés előfeltételeit ismertetjük.
 

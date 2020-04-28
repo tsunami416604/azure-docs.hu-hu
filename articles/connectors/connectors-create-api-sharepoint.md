@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a SharePointhoz az Azure Logic Apps alkalmazásból
-description: Az Azure Logic Apps használatával a helyszíni SharePoint Online-ban vagy a SharePoint Serverben erőforrásokat figyelő és kezelő feladatok és munkafolyamatok automatizálása
+title: Kapcsolódás a SharePointhoz Azure Logic Apps
+description: Automatizálja a SharePoint Online-ban vagy a helyszíni SharePoint-kiszolgálón lévő erőforrásokat figyelő és kezelő feladatokat és munkafolyamatokat Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,73 +8,73 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789256"
 ---
-# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>SharePoint-erőforrások figyelése és kezelése az Azure Logic Apps alkalmazásokkal
+# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>SharePoint-erőforrások figyelése és kezelése Azure Logic Apps
 
-Az Azure Logic Apps és a SharePoint-összekötő segítségével automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelik az erőforrásokat, például fájlokat, mappákat, listákat, elemeket, személyeket és így tovább, például a helyszíni SharePoint Online-ban vagy a SharePoint Serverben:
+A Azure Logic Apps és a SharePoint-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a SharePoint Online-ban vagy a helyszíni SharePoint-kiszolgálón lévő erőforrásokat (például fájlokat, mappákat, listát, elemeket, személyeket stb.) figyelik és kezelhetik, például:
 
-* Figyelje, hogy mikor hoznak létre, módosítanak vagy törölnek fájlokat vagy elemeket.
-* Elemek létrehozása, bekése, frissítése és törlése.
-* Mellékletek hozzáadása, bekéselése vagy törlése. A tartalom beszerezése a mellékletekből.
-* Fájlok létrehozása, másolása, frissítése és törlése. 
-* Fájltulajdonságok frissítése. Fájl tartalmának, metaadatainak vagy tulajdonságainak beszerezése.
+* A fájlok vagy elemek létrehozásának, módosításának vagy törlésének figyelése.
+* Elemek létrehozása, beolvasása, frissítése vagy törlése.
+* Mellékletek hozzáadása, beolvasása vagy törlése. A tartalom lekérése a mellékletekből.
+* Fájlok létrehozása, másolása, frissítése vagy törlése. 
+* Fájl tulajdonságainak frissítése Egy fájl tartalmának, metaadatainak vagy tulajdonságainak beolvasása.
 * Mappák listázása vagy kibontása.
-* Listák vagy listanézetek beszerezhetése.
-* Tartalom-jóváhagyási állapot beállítása.
-* Személyek et megoldani.
-* HTTP-kérések küldése a SharePointba.
-* Entitásértékek beszereznie.
+* Listák vagy listanézet beolvasása.
+* Tartalom-jóváhagyási állapot beállítása
+* Személyek feloldása.
+* HTTP-kérelmek küldése a SharePointnak.
+* Entitás értékének beolvasása.
 
-Használhatja az olyan eseményindítókat, amelyek válaszokat kapnak a SharePointból, és a kimenetet más műveletek számára is elérhetővé teszik. A logikai alkalmazásokban végrehajtott műveletek segítségével feladatokat hajthat végre a SharePointban. Más műveletek is használhatják a SharePoint-műveletek kimenetét. Ha például rendszeresen letölt fájlokat a SharePointból, a Tartalékidő-összekötő használatával üzeneteket küldhet a csapatnak.
-Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Használhat olyan eseményindítókat, amelyek válaszokat kapnak a SharePointból, és más műveletek számára elérhetővé teszik a kimenetet. A logikai alkalmazásokban a feladatok a SharePointban való végrehajtásához használhatók. Más műveletek is használhatók a SharePoint-műveletek kimenetének használatával. Ha például rendszeresen letölti a fájlokat a SharePointból, a Slack-összekötő használatával üzeneteket küldhet a csapatának.
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A SharePoint-webhely címe és felhasználói hitelesítő adatai
+* A SharePoint-webhely címe és a felhasználói hitelesítő adatok
 
-  A hitelesítő adatok felhatalmazzák a logikai alkalmazást, hogy kapcsolatot hozzon létre, és hozzáférjen a SharePoint-fiókjához. 
+  A hitelesítő adatai engedélyezik a logikai alkalmazásnak a kapcsolat létrehozását és a SharePoint-fiók elérését. 
 
-* Mielőtt logikai alkalmazásokat csatlakoztathatna a helyszíni rendszerekhez, például a SharePoint Serverhez, telepítenie kell és be kell [állítania egy helyszíni adatátjárót.](../logic-apps/logic-apps-gateway-install.md) Így megadhatja, hogy az átjáró telepítése a logikai alkalmazás SharePoint Server-kapcsolatának létrehozásakor használható.
+* Ahhoz, hogy a logikai alkalmazásokat a helyszíni rendszerekhez, például a SharePoint Serverhez lehessen kapcsolni, [telepítenie és be kell állítania egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Ily módon megadhatja, hogy az átjáró telepítését a logikai alkalmazáshoz tartozó SharePoint Server-kapcsolatok létrehozásakor használja.
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez hozzá szeretne férni a SharePoint-fiókjához. Ha SharePoint-eseményindítóval szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást.](../logic-apps/quickstart-create-first-logic-app-workflow.md) SharePoint-művelet használatához indítsa el a logikai alkalmazást egy eseményindítóval, például egy Salesforce-eseményindítóval, ha Van Salesforce-fiókja.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a SharePoint-fiókját. Ha SharePoint-triggerrel szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SharePoint-műveletet szeretne használni, indítsa el a logikai alkalmazást egy triggerrel, például egy Salesforce triggerrel, ha rendelkezik Salesforce-fiókkal.
 
-  Például elindíthatja a logikai alkalmazást a **Rekord létrehozásakor** a Salesforce eseményindítóval. 
-  Ez az eseményindító minden alkalommal aktiválódik, amikor új rekord, például érdeklődő jön létre a Salesforce-ban. 
-  Ezt az eseményindítót a SharePoint **Fájllétrehozása** művelettel követheti. Így az új rekord létrehozásakor a logikai alkalmazás létrehoz egy fájlt a SharePointban, amely az új rekordra vonatkozó információkat tartalmazza.
+  Elindíthatja például a logikai alkalmazást a **rekord létrehozásakor** Salesforce trigger használatával. 
+  Ez az eseményindító minden alkalommal aktiválódik, amikor egy új rekord, például egy érdeklődő jön létre a Salesforce-ben. 
+  Ezt követően ezt az triggert a SharePoint- **fájl létrehozása** művelettel követheti el. Így az új rekord létrehozásakor a logikai alkalmazás létrehoz egy fájlt a SharePointban az új rekorddal kapcsolatos információkkal.
 
 ## <a name="connect-to-sharepoint"></a>Kapcsolódás a SharePointhoz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "sharepoint" kifejezést. Az eseményindítók listában válassza ki a kívánt eseményindítót. 
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "SharePoint" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
    – vagy –
 
-   Meglévő logikai alkalmazások esetén az utolsó lépésnél, ahol SharePoint-műveletet szeretne hozzáadni, válassza az **Új lépés lehetőséget.** 
-   A keresőmezőbe írja be szűrőként a "sharepoint" kifejezést. 
-   A műveletek listájában jelölje ki a kívánt műveletet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez SharePoint-műveletet kíván hozzáadni, válassza az **új lépés**lehetőséget. 
+   A keresőmezőbe írja be a "SharePoint" kifejezést a szűrőként. 
+   A műveletek listában válassza ki a kívánt műveletet.
 
-   Ha lépéseket szeretne hozzáadni a lépések közé, vigye az egérmutatót a lépések közötti nyíl fölé. 
-   Válassza ki a**+** megjelenő pluszjelet ( ), majd válassza **a Művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. Amikor a rendszer kéri a bejelentkezést, adja meg a szükséges csatlakozási adatokat. Ha SharePoint Servert használ, győződjön meg arról, hogy a **Csatlakozás a helyszíni adatátjárón keresztül lehetőséget választja.** Ha elkészült, kattintson a **Létrehozás** gombra.
+1. Amikor a rendszer kéri, hogy jelentkezzen be, adja meg a szükséges kapcsolódási adatokat. Ha a SharePoint Servert használja, ügyeljen arra, hogy **a helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget. Ha elkészült, kattintson a **Létrehozás** gombra.
 
-1. Adja meg a kiválasztott eseményindító vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/sharepoint/)
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/sharepoint/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -83,4 +83,4 @@ Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindí
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

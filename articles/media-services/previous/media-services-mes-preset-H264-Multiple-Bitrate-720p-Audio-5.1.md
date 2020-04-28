@@ -1,6 +1,6 @@
 ---
-title: H264 Többszörös bitráta 720p Audio 5.1 | Microsoft dokumentumok
-description: A témakör a **H264 Többszörös bitráta 720p Audio 5.1** feladatkészlet andverview nézetét adja.
+title: H264 több bitráta 720p hang 5,1 | Microsoft Docs
+description: A témakör a **H264 több bitráta 720P hang 5,1** feladatsor andverview adja meg.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ac21558b1480f43b398f44949e18416284c3f606
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129511"
 ---
 # <a name="h264-multiple-bitrate-720p-audio-51"></a>H264 Multiple Bitrate 720p Audio 5.1
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
- Ez a `H264 Multiple Bitrate 720p Audio 5.1` témakör az előre beállított xml és JSON formátumban jelenik meg.  
+ Ez a témakör az `H264 Multiple Bitrate 720p Audio 5.1` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
- Ez az előre beállított készlet 6 GOP-hoz igazított MP4-fájlt hoz létre, 3400 kbit/s-tól 400 kbps-ig terjedő sebességgel, valamint AAC 5.1-es hangfájlokat. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. Az egyes elemek jelentéseiről és az egyes elemek érvényes értékeinek magyarázatáról a [Media Encoder Standard sémában](media-services-mes-schema.md)lehet eltekinteni.  
+ Ez a beállításkészlet 6 GOP-ra igazított MP4-fájlt állít elő, 3400 kbps és 400 kbps között, valamint az AAC 5,1 hang. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az egyes elemek leírását és az egyes elemek érvényes értékeit a [Media Encoder standard sémában](media-services-mes-schema.md)találja.  
   
 > [!NOTE]
->  A rétegek `Width` közötti `Height` értékek és értékek módosításakor győződjön meg arról, hogy a méretarány konzisztens marad. Például: 1920x1080, 1280x720, 1080x576, 640x360. Ne használjon képarányok keverékét, például: 1280x720, 720x480, 640x360.  
+>  A `Width` rétegek közötti és `Height` értékek módosításakor ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
   
  XML  
   

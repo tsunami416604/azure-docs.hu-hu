@@ -1,6 +1,6 @@
 ---
-title: Egy és több fiókos nyilvános ügyfélalkalmazások | Azure
-description: Egy és több fiókos nyilvános ügyfélalkalmazások áttekintése.
+title: Egy-és több fiók nyilvános ügyfélszoftvere | Azure
+description: Egy és több fiókból álló nyilvános ügyfélalkalmazások áttekintése.
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -13,42 +13,42 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881350"
 ---
-# <a name="single-and-multiple-account-public-client-apps"></a>Egy és több fiókos nyilvános ügyfélalkalmazások
+# <a name="single-and-multiple-account-public-client-apps"></a>Egy-és több fiók nyilvános ügyfélalkalmazások
 
-Ez a cikk segít megérteni az egy és több fiókos nyilvános ügyfélalkalmazásokban használt típusokat, amelyek az egyfiókos nyilvános ügyfélalkalmazásokra összpontosítanak. 
+Ez a cikk segítséget nyújt az egy-és többfiókos nyilvános ügyfélprogramokban használt típusok megismerésében, és az egyfiókos nyilvános ügyfélalkalmazások használatára koncentrál. 
 
-Az Azure Active Directory hitelesítési könyvtár (ADAL) modellezi a kiszolgálót.  A Microsoft authentication library (MSAL) ehelyett az ügyfélalkalmazást modellezi.  Az Android-alkalmazások többsége nyilvános ügyfélnek minősül. A nyilvános ügyfél olyan alkalmazás, amely nem tud biztonságosan titkot tartani.  
+A Azure Active Directory Authentication Library (ADAL) a kiszolgálót modellezi.  A Microsoft Authentication Library (MSAL) Ehelyett az ügyfélalkalmazás modelljét használja.  Az Android-alkalmazások többsége nyilvános ügyfélnek számít. A nyilvános ügyfél olyan alkalmazás, amely nem tudja biztonságosan megőrizni a titkos kulcsot.  
 
-Az MSAL az API `PublicClientApplication` felületét úgy specializálja, hogy egyszerűsítse és tisztázza az olyan alkalmazások fejlesztési élményét, amelyek egyszerre csak egy fiókot engedélyeznek. `PublicClientApplication`alosztályba sorolta a és `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication`a alosztályt.  Az alábbi ábra az osztályok közötti kapcsolatot mutatja be.
+A MSAL az API felületét `PublicClientApplication` arra specializálódja, hogy leegyszerűsítse és tisztázza az alkalmazások fejlesztési élményét, amely egyszerre csak egy fiókot használhat. `PublicClientApplication`a `SingleAccountPublicClientApplication` és `MultipleAccountPublicClientApplication`a alosztálya.  Az alábbi ábrán az osztályok közötti kapcsolat látható.
 
-![SingleAccountPublicClientApplication UML osztálydiagram](./media/single-multi-account/single-and-multiple-account.png)
+![SingleAccountPublicClientApplication UML-osztály diagramja](./media/single-multi-account/single-and-multiple-account.png)
 
-## <a name="single-account-public-client-application"></a>Egyfiókos nyilvános ügyfélalkalmazás
+## <a name="single-account-public-client-application"></a>Egy fiókhoz tartozó nyilvános ügyfélalkalmazás
 
-Az `SingleAccountPublicClientApplication` osztály lehetővé teszi, hogy hozzon létre egy MSAL-alapú alkalmazás, amely csak lehetővé teszi, hogy egy fiókot kell bejelentkezett egy időben. `SingleAccountPublicClientApplication`eltér a `PublicClientApplication` következő módoktól:
+A `SingleAccountPublicClientApplication` osztály lehetővé teszi, hogy olyan MSAL-alapú alkalmazást hozzon létre, amely egyszerre csak egyetlen fiók bejelentkezni. `SingleAccountPublicClientApplication``PublicClientApplication` a következő módokon különbözik:
 
-- Az MSAL nyomon követi az aktuálisan bejelentkezett fiókot.
-  - Ha az alkalmazás egy közvetítőt használ (az alapértelmezett az Azure Portal alkalmazás regisztrációja során), és telepítve van egy olyan eszközön, ahol egy közvetítő van jelen, az MSAL ellenőrzi, hogy a fiók továbbra is elérhető-e az eszközön.
-- `signIn`Lehetővé teszi, hogy a fiókba explicit módon és a gyűjtőkörök kérésétől elkülönítve jelentkezzen be.
-- `acquireTokenSilent`nem igényel fiókparamétert.  Ha megad egy fiókot, és a megadott fiók nem egyezik `MsalClientException` meg az MSAL által nyomon követett folyószámlával, az an eldobásra kerül.
-- `acquireToken`nem teszi lehetővé a felhasználó számára a fiókok közötti váltást. Ha a felhasználó megpróbál másik fiókra váltani, kivétel történik.
-- `getCurrentAccount`eredményobjektumot ad vissza, amely a következőket biztosítja:
-  - Logikai érték, amely jelzi, hogy a fiók megváltozott-e. Egy fiók megváltozhat például az eszközről való eltávolítás következtében.
-  - Az előző számla. Ez akkor hasznos, ha helyi adatok karbantartását kell végeznie, amikor a fiókot eltávolítják az eszközről, vagy amikor új fiók van bejelentkezve.
+- A MSAL nyomon követi a jelenleg bejelentkezett fiókot.
+  - Ha az alkalmazás egy közvetítőt használ (az alapértelmezett Azure Portal az alkalmazás regisztrációja során), és olyan eszközre van telepítve, amelyen a közvetítő található, akkor a MSAL ellenőrzi, hogy a fiók továbbra is elérhető-e az eszközön.
+- `signIn`lehetővé teszi a fiók explicit módon történő beadását, és a kérelmektől függetlenül.
+- `acquireTokenSilent`nincs szükség fiók paraméterre.  Ha megadta a fiókot, és az Ön által megadott fiók nem egyezik meg a MSAL által követett aktuális fiókkal, `MsalClientException` a rendszer kidobja.
+- `acquireToken`nem engedélyezi a felhasználó számára a fiókok váltását. Ha a felhasználó egy másik fiókra próbál váltani, kivétel keletkezik.
+- `getCurrentAccount`egy eredmény objektumot ad vissza, amely a következőket biztosítja:
+  - Logikai érték, amely azt jelzi, hogy a fiók módosult-e. Előfordulhat például, hogy egy fiók az eszközről való eltávolításának eredményeképpen módosul.
+  - A korábbi fiók. Ez akkor lehet hasznos, ha a fiókot eltávolítja az eszközről, vagy amikor új fiók van bejelentkezve.
   - A currentAccount.
-- `signOut`eltávolítja az ügyfélhez társított tokeneket az eszközről.  
+- `signOut`eltávolítja az ügyfélhez társított jogkivonatokat az eszközről.  
 
-Ha egy Android-hitelesítési bróker, például a Microsoft Authenticator vagy az Intune Company `signOut` Portal telepítve van az eszközön, és az alkalmazás a közvetítő használatára van konfigurálva, nem távolítja el a fiókot az eszközről.
+Ha egy androidos hitelesítési közvetítő, például Microsoft Authenticator vagy Intune Céges portál telepítve van az eszközön, és az alkalmazás a közvetítő használatára van konfigurálva `signOut` , akkor nem távolítja el a fiókot az eszközről.
 
-## <a name="single-account-scenario"></a>Egyfiókos forgatókönyv
+## <a name="single-account-scenario"></a>Egyetlen fiókra vonatkozó forgatókönyv
 
-A következő pszeudokód a használatát mutatja be. `SingleAccountPublicClientApplication`
+A következő pszeudo-kód a használatát `SingleAccountPublicClientApplication`mutatja be.
 
 ```java
 // Construct Single Account Public Client Application
@@ -105,30 +105,30 @@ if (app.signOut())
 }
 ```
 
-## <a name="multiple-account-public-client-application"></a>Többfiókos nyilvános ügyfélalkalmazás
+## <a name="multiple-account-public-client-application"></a>Több fiók nyilvános ügyfélalkalmazás
 
-Az `MultipleAccountPublicClientApplication` osztály msal-alapú alkalmazások létrehozására szolgál, amelyek lehetővé teszik több fiók egyidejű bejelentkezését. Ez lehetővé teszi, hogy a fiókokat az alábbiak szerint kapja hozzá, adja hozzá és távolítsa el:
+A `MultipleAccountPublicClientApplication` osztály olyan MSAL-alapú alkalmazások létrehozására szolgál, amelyek lehetővé teszik, hogy egyszerre több fiók legyen bejelentkezve. Lehetővé teszi a fiókok beszerzését, hozzáadását és eltávolítását a következőképpen:
 
 ### <a name="add-an-account"></a>Fiók hozzáadása
 
-Használjon egy vagy több fiókot az alkalmazásban `acquireToken` egy vagy több alkalommal.  
+Használjon egy vagy több fiókot az alkalmazásban egy vagy `acquireToken` több alkalommal történő meghívásával.  
 
-### <a name="get-accounts"></a>Fiókok beszereznie
+### <a name="get-accounts"></a>Fiókok beolvasása
 
-- Hívjon, `getAccount` hogy egy adott fiókot.
-- Hívás `getAccounts`az alkalmazás által jelenleg ismert fiókok listájának lehívásához.
+- Egy `getAccount` adott fiók beszerzésének meghívása.
+- Hívja `getAccounts`meg az alkalmazást aktuálisan ismert fiókok listájának lekérését.
 
-Az alkalmazás nem lesz képes számba venni az összes Microsoft-identitás platform fiók az eszközön ismert a közvetítő alkalmazás. Csak az alkalmazás által használt fiókokat tudja számba venni.  Az eszközről eltávolított fiókokat ezek a függvények nem adják vissza.
+Az alkalmazás nem tudja felsorolni az összes Microsoft Identity platform-fiókot az eszközön, amely a közvetítő alkalmazás számára ismert. Csak azokat a fiókokat sorolja fel, amelyeket az alkalmazás használ.  Az eszközről eltávolított fiókokat ezek a függvények nem adják vissza.
 
 ### <a name="remove-an-account"></a>Fiók eltávolítása
 
-Fiók eltávolítása `removeAccount` fiókazonosítóval.
+Fiók azonosítójának meghívásával `removeAccount` távolítsa el a fiókot.
 
-Ha az alkalmazás úgy van beállítva, hogy egy bróker, és egy bróker telepítve van az `removeAccount`eszközön, a számla nem törlődik a bróker, amikor hívja .  Csak az ügyfélhez társított tokenek törlődnek.
+Ha az alkalmazás egy közvetítő használatára van konfigurálva, és egy közvetítő van telepítve az eszközön, akkor a rendszer nem távolítja el a fiókot a közvetítőtől `removeAccount`a hívásakor.  A rendszer csak az ügyfélhez társított jogkivonatokat távolítja el.
 
-## <a name="multiple-account-scenario"></a>Többfiókos forgatókönyv
+## <a name="multiple-account-scenario"></a>Több fiók esetén
 
-A következő pszeudokód bemutatja, hogyan hozhat létre többfiókos alkalmazást, hogyan listázza a fiókokat az eszközön, és hogyan szerezhet be jogkivonatokat.
+A következő pszeudo-kód bemutatja, hogyan hozhat létre több fiókból álló alkalmazást, hogyan listázhatja a fiókokat az eszközön, és hogyan vásárolhat jogkivonatokat.
 
 ```java
 // Construct Multiple Account Public Client Application

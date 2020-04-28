@@ -1,23 +1,23 @@
 ---
-title: Egyéni összekötő témakörhivatkozásai
-description: Egyéni összekötők létrehozásáról, használatáról, megosztásáról és hitelesítéséről szóló témakörökre mutató hivatkozások
+title: Egyéni összekötői témakör hivatkozásai
+description: Az egyéni összekötők létrehozásával, használatával, megosztásával és hitelesítésével kapcsolatos témakörökre mutató hivatkozások
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
 ms.openlocfilehash: d91d46e0119c22f4f2538ab5ea982ca4418256cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792654"
 ---
-# <a name="custom-connectors-in-logic-apps"></a>Egyéni összekötők a Logic Apps alkalmazásban
+# <a name="custom-connectors-in-logic-apps"></a>Egyéni összekötők a Logic Appsban
 
-Az [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), a [Power Automate](https://flow.microsoft.com) és a [Power Apps](https://powerapps.microsoft.com) használatával kód írása nélkül hozhat létre munkafolyamatokat és alkalmazásokat. Az alkalmazások, adatok és üzleti folyamatok integrálása érdekében ezek a szolgáltatások [~200 összekötőt](https://docs.microsoft.com/connectors/) kínálnak a Microsoft szolgáltatásaihoz és termékeihez, valamint más szolgáltatásokhoz, például a GitHubhoz, a Salesforce-hoz, a Twitterhez és egyebekhez.
+Az [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), a [Power Automate](https://flow.microsoft.com) és a [Power Apps](https://powerapps.microsoft.com) használatával kód írása nélkül hozhat létre munkafolyamatokat és alkalmazásokat. Az alkalmazások, az adatkezelési és az üzleti folyamatok integrálásának elősegítése érdekében ezek a szolgáltatások [~ 200-es összekötőket](https://docs.microsoft.com/connectors/) biztosítanak a Microsoft-szolgáltatásokhoz és-termékekhez, valamint más szolgáltatásokhoz, például a githubhoz, a Salesforce, a Twitterhez és egyebekhez.
 
-Azonban néha előfordulhat, hogy az előre elkészített összekötők között nem elérhető API-kat, szolgáltatásokat és rendszereket szeretne meghívni. A testreszabottabb forgatókönyvek támogatása érdekében *egyéni összekötőket* is létrehozhat saját eseményindítókkal és műveletekkel. Az Összekötők dokumentációs webhely teljes alapszintű és speciális oktatóanyagokat az egyéni összekötők. Kezdheti az [egyéni összekötő áttekintésével,](https://docs.microsoft.com/connectors/custom-connectors/)de közvetlenül az alábbi témakörökre is ráléphet egy adott terület részleteire:
+Azonban néha előfordulhat, hogy az előre elkészített összekötők között nem elérhető API-kat, szolgáltatásokat és rendszereket szeretne meghívni. A testreszabottabb forgatókönyvek támogatása érdekében *egyéni összekötőket* is létrehozhat saját eseményindítókkal és műveletekkel. Az összekötők dokumentációs webhelyén az egyéni összekötők alapszintű és speciális oktatóanyagai találhatók. Az [Egyéni összekötők áttekintését](https://docs.microsoft.com/connectors/custom-connectors/)elindíthatja, de az adott terület részletes ismertetését közvetlenül a következő témakörökben is elvégezheti:
 
 * [Logic Apps-összekötő létrehozása](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
 

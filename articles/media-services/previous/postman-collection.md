@@ -1,6 +1,6 @@
 ---
-title: A Postman-gyűjtemény importálása az Igény szerinti Azure streamelési műveletekkel
-description: Ez a cikk az Azure Media Services REST-hívások postás gyűjteményének definícióját tartalmazza.
+title: A Poster-gyűjtemény importálása az Azure igény szerinti átviteli műveleteivel
+description: Ez a cikk a Poster-gyűjtemény Azure Media Services REST-hívásokra vonatkozó definícióját tartalmazza.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60637535"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Postásgyűjtemény importálása igény szerinti streamelési műveletekkel 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Poster-gyűjtemény importálása igény szerinti folyamatos átviteli műveletekkel 
 
-Ez a cikk tartalmazza a **Postman** gyűjtemény, amely tartalmazza a csoportosított HTTP-kérelmek, amelyek az Azure Media Services REST API-k. A Rról, hogy miként konfigurálhatja a **Postmant** a Media Services REST API-k hívásához, olvassa el a [Postman konfigurálása a Media Services REST API-hívásokhoz című](media-rest-apis-with-postman.md) oktatóanyagcímű témakört.
+Ez a cikk a **Poster** gyűjtemény olyan definícióját tartalmazza, amely a Azure Media Services REST API-kat meghívó CSOPORTOSÍTott http-kérelmeket tartalmaz. További információ a **Poster** konfigurálásáról a Media Services REST API-k meghívásához: [poster beállítása Media Services REST API hívásokhoz](media-rest-apis-with-postman.md) oktatóanyag.
 
 ```json
 {

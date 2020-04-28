@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásonkénti méretezés a nagy sűrűségű tárhelyért
-description: Az App Service-csomagoktól függetlenül méretezheti az alkalmazásokat, és optimalizálhatja a csomagban lévő kibővített példányokat.
+title: Alkalmazáson belüli méretezés nagy sűrűségű üzemeltetéshez
+description: Az alkalmazásokat a App Service terveitől függetlenül méretezheti, és optimalizálhatja a csomagban lévő kibővített példányokat.
 author: btardif
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.topic: article
@@ -8,31 +8,31 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672350"
 ---
-# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetési szolgáltatás az Azure App Service-ben alkalmazásonkénti méretezéssel
+# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés Azure App Service alkalmazáson belüli skálázással
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az App Service használatakor az appok méretezése az [App Service-csomag](overview-hosting-plans.md) azok futtatásához. Ha több alkalmazás fut ugyanabban az App Service-csomagban, minden egyes kibővített példány futtatja a csomag összes alkalmazását.
+App Service használatakor az alkalmazások méretezése a [app Service terv](overview-hosting-plans.md) méretezésével végezhető el. Ha több alkalmazás is fut ugyanabban a App Service-csomagban, minden egyes kibővített példány futtatja a csomag összes alkalmazását.
 
-*Az alkalmazásonkénti skálázás* az App Service-csomag szintjén engedélyezhető, hogy lehetővé tegye az alkalmazás méretezését az azt tartalmazó App Service-csomagtól függetlenül. Ily módon egy App Service-csomag 10 példányra méretezhető, de egy alkalmazás csak öt használatára állítható be.
+Az *alkalmazáson belüli méretezés* engedélyezhető a app Servicei csomag szintjén, hogy az alkalmazás az általa üzemeltetett app Service-csomagtól függetlenül is méretezhető legyen. Így egy App Service-csomag 10 példányra méretezhető, de egy alkalmazás csak öt használatára állítható be.
 
 > [!NOTE]
-> Az alkalmazásonkénti skálázás csak **standard,** **prémium,** **prémium v2** és **elkülönített** tarifacsomagok esetén érhető el.
+> Az alkalmazáson belüli skálázás csak a **standard**, **Premium**, **Premium v2** és **elszigetelt** díjszabási szinteken érhető el.
 >
 
-Az alkalmazások az elérhető App Service-csomaghoz vannak rendelve, a legjobb erőfeszítéssel történő hozzáhatással a példányok közötti egyenletes elosztáshoz. Bár az egyenletes elosztás nem garantált, a platform gondoskodik arról, hogy ugyanazon alkalmazás két példánya ne legyen ugyanazon az App Service-csomagpéldányon.
+Az alkalmazások az elérhető App Service-csomaghoz vannak lefoglalva, és a lehető legjobb megközelítéssel rendelkeznek a példányok közötti egyenletes elosztáshoz. Bár az egyenletes eloszlás nem garantált, a platform gondoskodik arról, hogy ugyanazon alkalmazás két példánya ne legyen ugyanazon a App Servicei csomag példányán üzemeltetve.
 
-A platform nem támaszkodik metrikák dönt a dolgozói elosztás. Az alkalmazások csak akkor kerülnek kiegyensúlyozásra, ha példányokat adhozzá, vagy eltávolítják az App Service-csomagból.
+A platform nem támaszkodik mérőszámokra a munkavégzők kiosztásának eldöntéséhez. Az alkalmazások csak akkor lesznek kiegyensúlyozva, ha a példányok fel vannak véve vagy el lettek távolítva a App Service tervből.
 
-## <a name="per-app-scaling-using-powershell"></a>Alkalmazásonkénti méretezés a PowerShell használatával
+## <a name="per-app-scaling-using-powershell"></a>Alkalmazások skálázása a PowerShell használatával
 
-Hozzon létre egy tervet az alkalmazásonkénti skálázás a paraméter a ```-PerSiteScaling $true``` ```New-AzAppServicePlan``` parancsmagba.
+Hozzon létre egy csomagot az alkalmazáson belüli skálázással, és ```-PerSiteScaling $true``` adja át a ```New-AzAppServicePlan``` paramétert a parancsmagnak.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Engedélyezze az alkalmazásonkénti skálázást egy `-PerSiteScaling $true` meglévő ```Set-AzAppServicePlan``` App Service-csomaggal a paraméter nek a parancsmagba való átadva.
+Az alkalmazáson belüli méretezés engedélyezése meglévő App Servicei csomaggal a `-PerSiteScaling $true` paraméternek a ```Set-AzAppServicePlan``` parancsmagba való átadásával.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -49,9 +49,9 @@ Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
-Az alkalmazás szintjén konfigurálja az alkalmazás által az App Service-csomagban használható példányok számát.
+Az alkalmazás szintjén állítsa be, hogy az alkalmazás hány példányban használhatja a App Service-csomagot.
 
-Az alábbi példában az alkalmazás két példányra korlátozódik, függetlenül attól, hogy az alapul szolgáló alkalmazásszolgáltatás-terv hány példányra skálázódik.
+Az alábbi példában az alkalmazás legfeljebb két példányra korlátozódik, függetlenül attól, hogy az alapul szolgáló app Service-csomag hány példányra méretezhető.
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
@@ -65,16 +65,16 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`eltér a `$newapp.MaxNumberOfWorkers`tól. Az alkalmazásonkénti skálázás az alkalmazás méretezési jellemzőinek meghatározására használja. `$newapp.SiteConfig.NumberOfWorkers`
+> `$newapp.SiteConfig.NumberOfWorkers`eltér a következőtől `$newapp.MaxNumberOfWorkers`:. Az alkalmazáson belüli méretezés az `$newapp.SiteConfig.NumberOfWorkers` alkalmazás méretezési jellemzőinek meghatározására használja.
 
-## <a name="per-app-scaling-using-azure-resource-manager"></a>Alkalmazásonkénti méretezés az Azure Resource Manager használatával
+## <a name="per-app-scaling-using-azure-resource-manager"></a>Alkalmazáson belüli méretezés Azure Resource Manager használatával
 
-A következő Azure Resource Manager-sablon tágan:
+A következő Azure Resource Manager sablon jön létre:
 
-- 10 példányra kiskálázott App Service-csomag
-- egy alkalmazás, amely úgy van beállítva, hogy legfeljebb öt példányra méretezhető.
+- Egy 10 példányra méretezett App Service-csomag
+- egy alkalmazás, amely legfeljebb öt példányra méretezhető.
 
-Az App Service-csomag a **PerSiteScaling** tulajdonságot true `"perSiteScaling": true`értékre állítja. Az alkalmazás a használni hozandó dolgozók `"properties": { "numberOfWorkers": "5" }` **számát** 5-re állítja.
+Az App Service terv a **PerSiteScaling** tulajdonságot igaz `"perSiteScaling": true`értékre állítja. Az alkalmazás az 5 `"properties": { "numberOfWorkers": "5" }`értékre állítja a **feldolgozók számát** .
 
 ```json
 {
@@ -123,21 +123,21 @@ Az App Service-csomag a **PerSiteScaling** tulajdonságot true `"perSiteScaling"
 }
 ```
 
-## <a name="recommended-configuration-for-high-density-hosting"></a>Ajánlott konfiguráció a nagy sűrűségű tárhelyhez
+## <a name="recommended-configuration-for-high-density-hosting"></a>Ajánlott konfiguráció a nagy sűrűségű üzemeltetéshez
 
-Alkalmazásonkénti skálázás olyan funkció, amely mind a globális Azure-régiókban, mind az [App Service-környezetekben engedélyezve](environment/app-service-app-service-environment-intro.md)van. Az ajánlott stratégia azonban az App Service-környezetek használata a speciális funkciók és a nagyobb App Service-csomag kapacitásának kihasználásához.  
+Az alkalmazások skálázása egy olyan szolgáltatás, amely globális Azure-régiókban és [app Service környezetekben](environment/app-service-app-service-environment-intro.md)egyaránt engedélyezve van. Az ajánlott stratégia azonban a App Service környezetek használata a fejlett funkciók és a nagyobb App Service kapacitás kihasználása érdekében.  
 
-Az alábbi lépésekkel konfigurálhatja alkalmazásai nagy sűrűségű üzemeltetését:
+Az alkalmazások nagy sűrűségű üzemeltetésének konfigurálásához kövesse az alábbi lépéseket:
 
-1. Jelöljön ki egy App Service-csomagot nagy sűrűségű csomagként, és méretezzük ki a kívánt kapacitásra.
-1. Állítsa `PerSiteScaling` a jelzőt true értékre az App Service-csomagon.
-1. Új alkalmazások jönnek létre és vannak hozzárendelve az adott App Service-csomaghoz, amelynek **numberOfWorkers** tulajdonsága **1.**
-   - Ezzel a konfigurációval a lehető legnagyobb sűrűséget eredményezi.
-1. A dolgozók száma alkalmazásonként egymástól függetlenül konfigurálható további erőforrások biztosításához, ha szükséges. Példa:
-   - A nagy használatú alkalmazások beállíthatja **numberOfWorkers** **3** több feldolgozási kapacitást az adott alkalmazáshoz.
-   - Az alacsony használatú alkalmazások **a numberOfWorkers-et** **1-re**állítanák.
+1. Jelöljön ki egy App Service tervet nagy sűrűségű tervként, és a kívánt kapacitásra méretezheti.
+1. Állítsa a `PerSiteScaling` jelzőt True értékre a app Service tervben.
+1. A rendszer létrehoz egy új alkalmazást, és hozzárendeli azt a App Service tervhez a **numberOfWorkers** tulajdonsággal **1**értékre állítva.
+   - Ennek a konfigurációnak a használata a lehető legnagyobb sűrűséget eredményezi.
+1. A feldolgozók száma az alkalmazásoktól függetlenül konfigurálható további erőforrások igény szerinti megadásához. Például:
+   - Egy magas rendelkezésre állású alkalmazás beállíthatja a **numberOfWorkers** **, hogy** az alkalmazásnak több feldolgozási kapacitása legyen.
+   - Az alacsony használatú alkalmazások **numberOfWorkers** értéke **1**.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure App Service-csomagok részletes áttekintése](overview-hosting-plans.md)
+- [Azure App Service tervek részletes áttekintése](overview-hosting-plans.md)
 - [Az App Service Environment bemutatása](environment/app-service-app-service-environment-intro.md)

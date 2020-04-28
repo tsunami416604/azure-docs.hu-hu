@@ -1,6 +1,6 @@
 ---
-title: A VMware vész-helyreállítási telepítésének futtatása az Azure Site Recovery szolgáltatással
-description: Ez a cikk ismerteti, hogyan futtatja az Azure Site Recovery Deployment Planner a VMware vész-helyreállítási azure-ba.
+title: Futtassa a VMware vész-helyreállítás Deployment Planner a Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan futtatható Azure Site Recovery Deployment Planner a VMware vész-helyreállítás az Azure-ba.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953285"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítási telepítésének futtatása
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>A Deployment Planner futtatásának módjai
 A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
 
-1.  [Profil](#profile-vmware-vms)
+1.  [Profilkészítés](#profile-vmware-vms)
 2.  [Jelentés létrehozása](#generate-report)
 3.  [Átviteli sebesség lekérdezése](#get-throughput)
 
@@ -42,7 +42,7 @@ Először létre kell hoznia a profillal ellátni kívánt virtuális gépek lis
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Szükség esetén szükség lehet a következő parancs futtatására, ha a Connect-VIServer nem ismeri fel a parancsmag nevét.
+4. Előfordulhat, hogy a következő parancsot kell futtatnia, ha a VIServer nem ismeri fel a parancsmag nevét.
 
             Add-PSSnapin VMware.VimAutomation.Core
 
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (Nem kötelező) „http” vagy „https” protokollt ad meg a vCenterhez való csatlakozáshoz. Az alapértelmezett protokoll a https.|
 | -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie. |
 | -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
-| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha a cél Az Azure-régió vagy az Azure US Government vagy az Azure China 21Vianet. |
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 
 
 Javasoljuk, hogy legalább 7 napig végezze a virtuális gépek profiljának készítését. Ha az adatváltozási minta egy hónapon belül változik, javasoljuk, hogy a héten akkor készítsen profilt, amikor a maximális változás tapasztalható. A legjobb megoldás, ha 31 nap alatt készít profilt, így jobb javaslatokat kaphat. A profilkészítés időtartama alatt az ASRDeploymentPlanner.exe alkalmazás folyamatosan fut. A profilkészítés időtartama napokban adható meg az eszközben. Az eszköz gyors teszteléséhez vagy megvalósíthatósági próbához néhány óra vagy perc alatt is készíthet profilt. A minimális profilkészítési idő 30 perc.
@@ -90,12 +90,12 @@ A profilkészítés során lehetősége van átadni egy tárfióknevet és -kulc
 
 Az eszköz több példánya is futtatható egyszerre különböző virtuálisgép-csoportokon. Győződjön meg arról, hogy a virtuális gépek neve nem ismétlődik egyik profilkészítési csoportban sem. Ha például profilt készített tíz virtuális gépről (VM1–VM10), és néhány nap elteltével további öt virtuális gépről szeretne profilt készíteni (VM11–VM15), akkor a második csoporton (VM11–VM15) egy másik parancssori konzolról futtathatja az eszközt. Győződjön meg arról, hogy a második virtuálisgép-csoport nem tartalmaz olyan virtuálisgép-nevet, amely szerepel az első profilkészítési példányban, vagy a második futtatás esetében használjon eltérő kimeneti könyvtárat. Ha az eszköz két példánya ugyanazokról a virtuális gépekről készít profilt, és ugyanazt a kimeneti könyvtárat is használják, a létrehozott jelentés helytelen lesz.
 
-Alapértelmezés szerint az eszköz úgy van beállítva, hogy profilt, és jelentést készít akár 1000 virtuális gépek. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
+Alapértelmezés szerint az eszköz a profilhoz van konfigurálva, és a jelentést akár 1000 virtuális gépre is létrehozhatja. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa az Azure Site Recovery Deployment Planner két példányát, az egyik a VMList1.txt és a vmlist2.txt. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
+Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa a Azure Site Recovery Deployment Planner két példányát, egyet a VMList1. txt fájllal és a VMList2. txt fájllal. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
 
 Tapasztalatunk szerint a hardverkonfigurációtól, és különösen a jelentést generáló eszközt futtató kiszolgáló RAM-méretétől függően a művelet elegendő memória hiányában megszakadhat. Megfelelő hardveres feltételek mellett a MaxVMsSupported esetében bármilyen nagyobb értéket meg lehet adni.  
 
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Jelentés létrehozása
-Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés `DeploymentPlannerReport_<unique numeric identifier>.xlsm` neve és elhelyezése a megadott könyvtárba kerül.
+Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve `DeploymentPlannerReport_<unique numeric identifier>.xlsm` és elhelyezése a megadott könyvtárban történik.
 
 >[!NOTE]
->A jelentés generálásához Windows PC-re vagy Excel 2013-as vagy újabb verzióval rendelkező Windows Server rendszerre van szükség. A számítógépen lévő tizedesjelet "." értékkel kell konfigurálni a költségbecslések előállításához. Abban az esetben, ha a "" beállítást tizedesszimbólumként állítsa be, kérjük, lépjen a Vezérlőpult "Dátum-, idő- vagy számformátumának módosítása" elemére, és lépjen a "További beállítások" gombra a tizedesjel "" beállításához.
+>A jelentéskészítéshez szükség van egy Windows rendszerű számítógépre vagy Windows Serverre, amely Excel 2013 vagy újabb verziójú. A számítógép decimális szimbólumát "." értékre kell állítani a becsült költségbecslés létrehozásához. Ha a (z) "," decimális szimbólumként van beállítva, lépjen a "dátum, idő vagy számformátum módosítása" elemre a Vezérlőpulton, és lépjen a "További beállítások" lehetőségre a decimális szimbólum "." értékre való módosításához.
 
 A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. A következő táblázat a jelentéskészítési módban futtatandó kötelező és nem kötelező eszközparaméterek listáját tartalmazza.
 
@@ -163,12 +163,12 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 | -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az *EndDate* és a *StartDate* paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
 | -UseManagedDisks | (Nem kötelező) UseManagedDisks – Igen/Nem. Az alapértelmezett érték az Igen. Az egy tárfiókban elhelyezhető virtuális gépek számának meghatározáskor a rendszer figyelembe veszi, hogy a virtuális gépek feladatátvétele, illetve feladatátvételi tesztje nem felügyelt lemez helyett felügyelt lemezen történik. |
-|-SubscriptionId |(Nem kötelező) Az előfizetés GUID azonosítója. Vegye figyelembe, hogy erre a paraméterre akkor van szükség, ha a költségbecslési jelentést az előfizetés, az előfizetéshez társított ajánlat és az adott cél Azure-régió a **megadott pénznemben**alapuló legújabb árral kell létrehoznia.|
+|-SubscriptionId |(Nem kötelező) Az előfizetés GUID azonosítója. Vegye figyelembe, hogy ezt a paramétert akkor kell megadni, ha az előfizetése és az előfizetése és a **megadott pénznemben**meghatározott Azure-régiója esetében a díjszabási jelentést a legújabb árral kell létrehoznia.|
 |-TargetRegion|(Nem kötelező) A replikáció által megcélzott Azure-régió. Mivel az Azure költségei régiónként eltérőek, adott cél Azure-régióra vonatkozó jelentés létrehozásához használja ezt a paramétert.<br>Az alapértelmezett régió az USA 2. nyugati régiója vagy a legutoljára használt célrégió.<br>Tekintse át a [támogatott célrégiók](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) listáját.|
 |-OfferId|(Nem kötelező) Az adott előfizetéshez társított ajánlat. Az alapértelmezett az MS-AZR-0003P (használatalapú fizetés).|
 |-Currency|(Nem kötelező) A pénznem, amelyben a költségek megjelennek a létrehozott jelentésben. Az alapértelmezett az amerikai dollár ($), vagy a legutoljára használt pénznem.<br>Tekintse át a [támogatott pénznemek](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) listáját.|
 
-Alapértelmezés szerint az eszköz úgy van beállítva, hogy profilt, és jelentést készít akár 1000 virtuális gépek. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
+Alapértelmezés szerint az eszköz a profilhoz van konfigurálva, és a jelentést akár 1000 virtuális gépre is létrehozhatja. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
 ```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -208,7 +208,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 
 #### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>7. példa: Jelentés létrehozása a Dél-India Azure-régióhoz indiai rúpia pénznemmel és adott ajánlatazonosítóval
 
-Vegye figyelembe, hogy az előfizetés-azonosító szükséges a költségjelentés létrehozásához egy adott pénznemben.
+Vegye figyelembe, hogy az előfizetés-azonosító szükséges a Cost-jelentés adott pénznemben történő létrehozásához.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -240,9 +240,9 @@ Erősen ajánlott, hogy az üzembe helyezés tervezése során számoljon a növ
 
 Az elkészített Microsoft Excel-jelentés a következő információkat tartalmazza:
 
-* [Helyszíni összefoglaló](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [Helyszíni összefoglalás](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [Virtuális gép< >tárolási elhelyezése](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM< – >tárolási hely](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilis virtuális gépek)
 * [Nem kompatibilis virtuális gépek](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
 * [Költségbecslés](site-recovery-vmware-deployment-planner-cost-estimation.md)
@@ -265,7 +265,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha a cél Az Azure-régió vagy az Azure US Government vagy az Azure China 21Vianet. |
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 
 Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a „#” a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárolóból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
 
@@ -291,4 +291,4 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >  4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
 ## <a name="next-steps"></a>További lépések
-* [Elemezze a létrehozott jelentést.](site-recovery-vmware-deployment-planner-analyze-report.md)
+* [A generált jelentés elemzése](site-recovery-vmware-deployment-planner-analyze-report.md).

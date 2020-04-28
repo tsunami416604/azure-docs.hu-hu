@@ -1,6 +1,6 @@
 ---
-title: A VMware vész-helyreállítási szolgáltatásának beállítása az Azure-ba több-bérlős környezetben a Site Recovery és a Cloud Solution Provider (CSP) program használatával | Microsoft dokumentumok
-description: Bemutatja, hogyan állíthatja be a VMware vész-helyreállítási egy több-bérlős környezetben az Azure Site Recovery.
+title: A VMware vész-helyreállítás beállítása az Azure-ba egy több-bérlős környezetben a Site Recovery és a Cloud Solution Provider (CSP) program használatával | Microsoft Docs
+description: Leírja, hogyan állítható be a VMware vész-helyreállítás egy több-bérlős környezetben, Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60460978"
 ---
-# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A VMware vész-helyreállítási szolgáltatásának beállítása többbérlős környezetben a Felhőszolgáltató (CSP) programmal
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A VMware vész-helyreállítás beállítása több-bérlős környezetben a Cloud Solution Provider (CSP) program keretében
 
-A [CSP-program](https://partner.microsoft.com/en-US/cloud-solution-provider) elősegíti a Microsoft felhőszolgáltatásainak – többek között az Office 365, az Enterprise Mobility Suite és a Microsoft Azure – számára készült történeteit. A csp-vel a partnerek teljes körű kapcsolatot birtokolnak az ügyfelekkel, és az elsődleges kapcsolati kapcsolattartó ponttá válnak. A partnerek üzembe helyezhetik az Azure-előfizetéseket az ügyfelek számára, és kombinálhatják az előfizetéseket a saját értéknövelt, személyre szabott ajánlataikkal.
+A [CSP program](https://partner.microsoft.com/en-US/cloud-solution-provider) a Microsoft Cloud Services – többek között az Office 365, a nagyvállalati mobilitási csomag és a Microsoft Azure – együttműködését segíti elő. A CSP-vel a partnerek a végpontok közötti kapcsolatot az ügyfelekkel, és az elsődleges kapcsolati kapcsolattartási pontként válnak. A partnerek telepíthetnek Azure-előfizetéseket az ügyfelek számára, és kombinálják az előfizetéseket saját hozzáadott értékekkel, testreszabott ajánlatokkal.
 
-Az [Azure Site Recovery](site-recovery-overview.md)segítségével partnerként közvetlenül a kripta-szolgáltatáson keresztül kezelheti az ügyfelek vészutáni helyreállítását. A kripta-szolgáltatás sal site recovery környezeteket állíthat be, és lehetővé teheti az ügyfelek számára, hogy önkiszolgáló módon kezeljék saját vész-helyreállítási igényeiket. Mindkét esetben a partnerek a Site Recovery és ügyfeleik közötti összekötői. A partnerek kiszolgálják az ügyfélkapcsolatot, és kiszámlázják az ügyfeleket a Site Recovery használatáért.
+A [Azure site Recovery](site-recovery-overview.md)segítségével a partnerek közvetlenül a CSP-n keresztül kezelhetik a vész-helyreállítási felhasználókat. A CSP használatával Site Recovery környezeteket állíthat be, és lehetővé teheti, hogy az ügyfelek önkiszolgáló módon kezeljék saját vész-helyreállítási igényeiket. Mindkét esetben a partnerek a Site Recovery és az ügyfeleik közötti összekötők. A partnerek felhasználják az ügyfélkapcsolatot, és számlázzák ügyfeleit Site Recovery használatra.
 
-Ez a cikk ismerteti, hogyan hozhat létre és kezelhet bérlői előfizetéseket a kripta-szolgáltatáson keresztül, egy több-bérlős VMware replikációs forgatókönyv.
+Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet bérlői előfizetéseket a CSP-n keresztül egy több-bérlős VMware replikálási forgatókönyvhöz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A VMware replikációjának beállításához a következőket kell tennie:
+A VMware-replikáció beállításához a következőket kell tennie:
 
-- [Felkészülés](tutorial-prepare-azure.md) Azure-erőforrások, beleértve az Azure-előfizetést, egy Azure virtuális hálózatot és egy tárfiókot.
-- Helyszíni VMware-kiszolgálók és virtuális gépek [előkészítése.](vmware-azure-tutorial-prepare-on-premises.md)
-- Minden bérlő höz hozzon létre egy külön felügyeleti kiszolgálót, amely képes kommunikálni a bérlői virtuális gépekkel és a vCenter-kiszolgálókkal. Ehhez a felügyeleti kiszolgálóhoz csak Ön, mint partner férhet hozzá hozzáférési jogokkal. További információ a [több-bérlős környezetekről.](vmware-azure-multi-tenant-overview.md)
+- [Felkészülés](tutorial-prepare-azure.md) Azure-erőforrások, beleértve az Azure-előfizetést, az Azure-beli virtuális hálózatot és a Storage-fiókot.
+- [Készítse elő](vmware-azure-tutorial-prepare-on-premises.md) a helyszíni VMware-kiszolgálókat és virtuális gépeket.
+- Mindegyik bérlőhöz hozzon létre egy különálló felügyeleti kiszolgálót, amely képes kommunikálni a bérlői virtuális gépekkel és a vCenter-kiszolgálókkal. Csak Ön, mint partnernek van hozzáférési jogosultsága ehhez a felügyeleti kiszolgálóhoz. További információ a [több-bérlős környezetekről](vmware-azure-multi-tenant-overview.md).
 
 ## <a name="create-a-tenant-account"></a>Bérlői fiók létrehozása
 
-1. A [Microsoft Partner Center en](https://partnercenter.microsoft.com/)keresztül jelentkezzen be a kriptába.
-2. Az **Irányítópult menüben** válassza a **Vevők**lehetőséget.
-3. A megnyíló lapon kattintson a **Vevő hozzáadása** gombra.
-4. Az **Új ügyfél** lapon adja meg a bérlő fiókadatainak adatait.
+1. A [Microsoft partner centeren](https://partnercenter.microsoft.com/)keresztül jelentkezzen be a CSP-fiókjába.
+2. Az **irányítópult** menüben válassza az **ügyfelek**lehetőséget.
+3. A megnyíló lapon kattintson az **ügyfél hozzáadása** gombra.
+4. Az **új ügyfél** lapon adja meg a bérlői fiókadatok adatait.
 
-    ![A Fiókadatai lap](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
+    ![A fiók adatai lap](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Ezután kattintson a **Tovább: Előfizetések gombra.**
-6. Az előfizetések kiválasztása lapon jelölje be a **Microsoft Azure** jelölőnégyzetet. Hozzáadhat más előfizetéseket most vagy bármikor.
-7. A **Véleményezés** lapon erősítse meg a bérlő adatait, majd kattintson a **Küldés gombra.**
-8. Miután létrehozta a bérlői fiókot, megjelenik egy megerősítő lap, amely megjeleníti az alapértelmezett fiók részleteit és az adott előfizetés jelszavát. Mentse az adatokat, és szükség szerint módosítsa a jelszót az Azure Portal bejelentkezési oldalán keresztül.
+5. Ezután kattintson a **Tovább: előfizetések**elemre.
+6. Az előfizetések kiválasztása lapon jelölje be a **Microsoft Azure** jelölőnégyzetet. Más előfizetéseket most vagy bármikor hozzáadhat.
+7. Az **Áttekintés** lapon erősítse meg a bérlő adatait, majd kattintson a **Submit (Küldés**) gombra.
+8. Miután létrehozta a bérlői fiókot, megjelenik egy megerősítő lap, amely megjeleníti az alapértelmezett fiók és az előfizetés jelszavának részleteit. Mentse az adatokat, és szükség szerint módosítsa a jelszót a Azure Portal bejelentkezési oldalán.
 
-Ezt az információt megoszthatja a bérlővel, vagy szükség esetén létrehozhat és megoszthat egy külön fiókot.
+Ezt az információt megoszthatja a Bérlővel, vagy létrehozhat és megoszthat egy külön fiókot, ha szükséges.
 
-## <a name="access-the-tenant-account"></a>A bérlői fiók elérése
+## <a name="access-the-tenant-account"></a>Hozzáférés a bérlői fiókhoz
 
-A bérlői előfizetést a Microsoft Partner Center irányítópultján keresztül érheti el.
+A bérlő előfizetését a Microsoft partner Center irányítópultján érheti el.
 
-1. Az **Ügyfelek** lapon kattintson a bérlői fiók nevére.
-2. A **bérlői** fiók Előfizetések lapján figyelheti a meglévő fiók-előfizetéseket, és szükség szerint további előfizetéseket adhat hozzá.
-3. A bérlő vész-helyreállítási műveleteinek kezeléséhez válassza az **Összes erőforrás (Azure Portal)** lehetőséget. Ez hozzáférést biztosít a bérlő Azure-előfizetéseihez.
+1. Az **ügyfelek** lapon kattintson a bérlői fiók nevére.
+2. A bérlői fiók **előfizetések** lapján figyelheti a meglévő fiók-előfizetéseket, és szükség szerint további előfizetéseket is hozzáadhat.
+3. A bérlő vész-helyreállítási műveleteinek kezeléséhez válassza a **minden erőforrás (Azure Portal)** lehetőséget. Ez hozzáférést biztosít a bérlő Azure-előfizetéséhez.
 
-    ![A Minden erőforrás hivatkozás](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
+    ![A minden erőforrás hivatkozás](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
-4. A hozzáférés ellenőrzéséhez kattintson az Azure Active Directory-hivatkozásra az Azure Portal jobb felső részén.
+4. A hozzáférést a Azure Portal jobb felső sarkában található Azure Active Directory hivatkozásra kattintva ellenőrizheti.
 
-    ![Az Azure Active Directory hivatkozása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
+    ![Azure Active Directory hivatkozás](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
 
-Most már végrehajthatja és kezelheti az összes site recovery műveletek a bérlő az Azure Portalon. A bérlői előfizetés elérése a felügyelt vész-helyreállítási kripta keresztül, kövesse a korábban leírt folyamat.
+Most már elvégezheti és kezelheti a bérlő összes Site Recovery műveletét a Azure Portalban. A bérlői előfizetés a felügyelt vész-helyreállításhoz a CSP-n keresztüli eléréséhez kövesse az előzőekben ismertetett folyamatot.
 
-## <a name="assign-tenant-access-to-the-subscription"></a>Bérlői hozzáférés hozzárendelése az előfizetéshez
+## <a name="assign-tenant-access-to-the-subscription"></a>Bérlői hozzáférés kiosztása az előfizetéshez
 
-1. Győződjön meg arról, hogy a vész-helyreállítási infrastruktúra be van állítva. A partnerek a kriptaportálon keresztül érik el a bérlői előfizetéseket, függetlenül attól, hogy a vész-helyreállítási szolgáltatás felügyelt vagy önkiszolgáló. Állítsa be a tárolót, és regisztrálja az infrastruktúrát a bérlői előfizetésekhez.
-2. Adja meg a bérlőnek a [létrehozott fiókot.](#create-a-tenant-account)
-3. A kriptaportálon keresztül új felhasználót adhat hozzá a bérlői előfizetéshez az alábbiak szerint:
+1. Győződjön meg arról, hogy a vész-helyreállítási infrastruktúra be van állítva. A partnerek a CSP-portálon keresztül érik el a bérlői előfizetéseket, függetlenül attól, hogy a vész-helyreállítási felügyelet vagy az önkiszolgáló szolgáltatás. Állítsa be a tárolót, és regisztrálja az infrastruktúrát a bérlői előfizetésekben.
+2. Adja meg a bérlőt a [létrehozott fiókkal](#create-a-tenant-account).
+3. A következő módon adhat hozzá új felhasználót a bérlői előfizetéshez a CSP-portálon keresztül:
 
-    a) Lépjen a bérlő kripta-előfizetési oldalára, majd válassza a **Felhasználók és licencek** lehetőséget.
+    a) lépjen a bérlő CSP-előfizetése oldalra, majd válassza a **felhasználók és licencek** lehetőséget.
 
-      ![A bérlő kripta-előfizetési lapja](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+      ![A bérlő CSP-előfizetési lapja](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) Most hozzon létre egy új felhasználót a megfelelő adatok megadásával és az engedélyek kiválasztásával, vagy a felhasználók listájának feltöltésével egy CSV fájlba.
+    b) most hozzon létre egy új felhasználót a megfelelő részletek beírásával és az engedélyek kiválasztásával, vagy egy CSV-fájlban lévő felhasználók listájának feltöltésével.
     
-    c) Miután létrehozott egy új felhasználót, lépjen vissza az Azure Portalra. Az **Előfizetés** lapon válassza ki a megfelelő előfizetést.
+    c) Miután létrehozott egy új felhasználót, térjen vissza a Azure Portal. Az **előfizetés** lapon válassza ki a megfelelő előfizetést.
 
-    d) Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd kattintson **a Szerepkör-hozzárendelések gombra.**
+    d) válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd kattintson a **szerepkör-hozzárendelések**elemre.
 
-    e) Kattintson **a Szerepkör-hozzárendelés hozzáadása** gombra, ha a megfelelő hozzáférési szinttel rendelkező felhasználót szeretne hozzáadni. A kriptaportálon keresztül létrehozott felhasználók megjelennek a Szerepkör-hozzárendelések lapon.
+    e) kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre egy olyan felhasználó hozzáadásához, amely a megfelelő hozzáférési szinttel rendelkezik. A CSP-portálon létrehozott felhasználók a szerepkör-hozzárendelések lapon jelennek meg.
 
       ![Felhasználó hozzáadása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
-- A legtöbb felügyeleti művelet esetében a *közreműködői* szerepkör elegendő. Az ilyen hozzáférési szinttel rendelkező felhasználók mindent megtehetnek egy előfizetésen, kivéve a hozzáférési szintek módosítását (amelyekhez *tulajdonosi*szintű hozzáférés szükséges).
-- A Site Recovery három [előre definiált felhasználói szerepkörrel](site-recovery-role-based-linked-access-control.md)is rendelkezik, amelyek szükség szerint tovább korlátozhatják a hozzáférési szinteket.
+- A legtöbb felügyeleti művelethez elegendő a *közreműködő* szerepkör. Az ezzel a hozzáférési szinttel rendelkező felhasználók mindent elvégezhetnek egy előfizetésen, kivéve a hozzáférési szintek módosítását (amelyekhez *tulajdonosi*szintű hozzáférés szükséges).
+- A Site Recovery három [előre definiált felhasználói szerepkörrel](site-recovery-role-based-linked-access-control.md)is rendelkezik, amelyekkel igény szerint tovább korlátozhatja a hozzáférési szinteket.
 
 ## <a name="multi-tenant-environments"></a>Több-bérlős környezetek
 
 Három fő több-bérlős modell létezik:
 
-* **Megosztott tárhelyszolgáltató (HSP)**: A partner birtokolja a fizikai infrastruktúrát, és megosztott erőforrásokat (vCenter, adatközpontok, fizikai tárolás és így tovább) használ több bérlővirtuális gép ugyanazon az infrastruktúrán. A partner vész-helyreállítási felügyeletet biztosíthat felügyelt szolgáltatásként, vagy a bérlő önkiszolgáló megoldásként rendelkezhet vész-helyreállítási szolgáltatással.
+* **Megosztott üzemeltetési szolgáltatások szolgáltatója (HSP)**: a partner tulajdonosa a fizikai infrastruktúra, és megosztott erőforrásokat (vCenter, adatközpontokat, fizikai tárhelyet stb.) használ a több bérlős virtuális gép ugyanazon az infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is saját vész-helyreállítási megoldást kínál.
 
-* **Dedikált tárhelyszolgáltató:** A partner birtokolja a fizikai infrastruktúrát, de dedikált erőforrásokat (több vCenter, fizikai adattárak és így tovább) használ az egyes bérlők virtuális gépei külön infrastruktúrán való üzemeltetéséhez. A partner vész-helyreállítási felügyeletet biztosíthat felügyelt szolgáltatásként, vagy a bérlő önkiszolgáló megoldásként birtokolhatja.
+* **Dedikált üzemeltetési szolgáltató**: a partner a fizikai infrastruktúrát használja, de dedikált erőforrásokat (több vCenter, fizikai adattárolót stb.) használ az egyes bérlők virtuális gépei külön infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is rendelkezhet.
 
-* **Felügyelt szolgáltatások szolgáltatója (MSP)**: Az ügyfél birtokolja a virtuális gépeket kiszolgáló fizikai infrastruktúrát, és a partner biztosítja a vész-helyreállítási engedélyezést és -kezelést.
+* **Felügyelt szolgáltató (msp)**: az ügyfél tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúra, a partner pedig vész-helyreállítási engedélyezést és felügyeletet biztosít.
 
-Bérlői előfizetések beállítása a cikkben leírtak szerint, gyorsan elkezdheti az ügyfelek engedélyezése a megfelelő több-bérlős modellek. A különböző több-bérlős modellekről és a helyszíni hozzáférés-vezérlés engedélyezéséről [itt](vmware-azure-multi-tenant-overview.md)olvashat bővebben.
+Az ebben a cikkben leírtak szerint a bérlői előfizetések beállításával gyorsan megkezdheti az ügyfelek engedélyezését a kapcsolódó több-bérlős modellekben. További információt a különböző több-bérlős modellekről és a helyszíni hozzáférés-vezérlések engedélyezéséről [itt](vmware-azure-multi-tenant-overview.md)talál.
 
 ## <a name="next-steps"></a>További lépések
-- További információ az Azure Site Recovery-telepítések kezeléséhez szükséges [szerepköralapú hozzáférés-vezérlésről.](site-recovery-role-based-linked-access-control.md)
-- További információ a VMware és az Azure [replikációs architektúrájának megismeréséről.](vmware-azure-architecture.md)
-- Tekintse át a VMware virtuális gépek Azure-ba replikálásának [oktatóanyagát.](vmware-azure-tutorial.md)
-További információ a vmware virtuális gépek Azure-ba replikálására szolgáló [több-bérlős környezetekről.](vmware-azure-multi-tenant-overview.md)
+- További információ a [szerepköralapú hozzáférés-vezérlésről](site-recovery-role-based-linked-access-control.md) Azure site Recovery központi telepítések kezeléséhez.
+- További információ a VMware – Azure [replikálási architektúráról](vmware-azure-architecture.md).
+- [Tekintse át a](vmware-azure-tutorial.md) VMWare virtuális gépek Azure-ba történő replikálására vonatkozó oktatóanyagot.
+További információ a VMware virtuális gépek Azure-ba történő replikálásához használható [több-bérlős környezetekről](vmware-azure-multi-tenant-overview.md) .

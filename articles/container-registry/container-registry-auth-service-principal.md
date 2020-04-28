@@ -1,105 +1,105 @@
 ---
 title: Hitelesítés szolgáltatásnévvel
-description: Hozzáférést biztosít a rendszerképek a privát tároló beállításjegyzékben egy Azure Active Directory egyszerű szolgáltatás használatával.
+description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455410"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
 
-Az Azure Active Directory (Azure AD) egyszerű szolgáltatás `docker push` `pull` használatával biztosíthatja a tárolórendszerképet és a tároló beállításjegyzékhez való hozzáférést. Egyszerű szolgáltatás használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
+Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával biztosíthatja a tárolók `docker push` rendszerképét `pull` , és hozzáférhet a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
 
 ## <a name="what-is-a-service-principal"></a>Mi az a szolgáltatásnév?
 
-Az Azure AD szolgáltatástagok hozzáférést *biztosítanak* az Azure-erőforrásokhoz az előfizetésen belül. Az egyszerű szolgáltatásegy szolgáltatásegy szolgáltatás identitása ként is felfogható, ahol a "szolgáltatás" minden olyan alkalmazás, szolgáltatás vagy platform, amelynek szüksége van az erőforrások eléréséhez. Az egyszerű szolgáltatás csak a megadott erőforrásokhoz tartozó hozzáférési jogokkal konfigurálható. Ezután konfigurálja az alkalmazást vagy szolgáltatást, hogy az egyszerű szolgáltatás hitelesítő adatait használja az erőforrások eléréséhez.
+Az Azure AD- *szolgáltatások* hozzáférést biztosítanak az előfizetésében található Azure-erőforrásokhoz. Azt is megteheti, hogy egy egyszerű szolgáltatás felhasználói identitása egy szolgáltatáshoz, ahol a "szolgáltatás" bármely olyan alkalmazás, szolgáltatás vagy platform, amelynek hozzá kell férnie az erőforrásokhoz. Az egyszerű szolgáltatásnevet csak a megadott erőforrásokra vonatkozó hozzáférési jogosultságokkal konfigurálhatja. Ezután konfigurálja az alkalmazást vagy szolgáltatást úgy, hogy az egyszerű szolgáltatásnév hitelesítő adatait használja az erőforrásokhoz való hozzáféréshez.
 
-Az Azure Container Registry környezetben létrehozhat egy Azure AD szolgáltatásnév lekéréses, leküldéses és lekéréses, vagy más engedélyeket a privát beállításjegyzék az Azure-ban. A teljes listát az [Azure Container Registry szerepkörei és engedélyei című témakörben található.](container-registry-roles.md)
+Azure Container Registry kontextusában létrehozhat egy Azure AD-szolgáltatást, amely lekéréses, leküldéses és lekéréses, illetve egyéb engedélyekkel rendelkezik az Azure-beli privát beállításjegyzékhez. A teljes listát itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md).
 
 ## <a name="why-use-a-service-principal"></a>Miért érdemes egyszerű szolgáltatást használni?
 
-Egy Azure AD szolgáltatás névszerint, a hatókörrel rendelkező hozzáférést biztosíthat a privát tároló beállításjegyzék. Hozzon létre különböző szolgáltatásnéveket az egyes alkalmazásokhoz vagy szolgáltatásokhoz, amelyek mindegyike személyre szabott hozzáférési jogokkal rendelkezik a beállításjegyzékhez. És mivel elkerülheti a hitelesítő adatok megosztását a szolgáltatások és az alkalmazások között, elforgathatja a hitelesítő adatokat, vagy visszavonhatja a hozzáférést csak a választott egyszerű szolgáltatás (és így az alkalmazás) számára.
+Az Azure AD egyszerű szolgáltatásnév használatával hatókörön belüli hozzáférést biztosíthat a saját tároló-beállításjegyzékhez. Hozzon létre különböző egyszerű szolgáltatásokat az egyes alkalmazásokhoz vagy szolgáltatásokhoz, amelyek mindegyike testreszabott hozzáférési jogokkal rendelkezik a beállításjegyzékhez. Továbbá, mivel elkerülheti a hitelesítő adatok megosztását a szolgáltatások és az alkalmazások között, elforgathatja a hitelesítő adatokat, vagy visszavonhatja a hozzáférést csak az egyszerű szolgáltatásnév (és így az alkalmazás) közül.
 
-Konfigurálja például úgy a webalkalmazást, hogy egy `pull` egyszerű szolgáltatást használjon, amely csak lemezkép-hozzáférést biztosít számára, míg a buildrendszer egy egyszerű szolgáltatást használ, amely mindkettőt `push` és `pull` a hozzáférést biztosítja. Ha az alkalmazás fejlesztése gazdát cserél, elforgathatja a szolgáltatásegyszerű hitelesítő adatait anélkül, hogy ez befolyásolná a buildrendszert.
+Például úgy konfigurálhatja a webalkalmazást, hogy olyan egyszerű szolgáltatásnevet használjon, amely csak `pull` képhozzáférést biztosít, míg a Build rendszer olyan szolgáltatásnevet használ, amely egyaránt `push` és `pull` hozzáféréssel rendelkezik. Ha megváltoztatja az alkalmazás fejlesztését, elforgathatja a szolgáltatás egyszerű hitelesítő adatait anélkül, hogy ez hatással lenne a Build rendszerre.
 
-## <a name="when-to-use-a-service-principal"></a>Mikor kell egyszerű szolgáltatást használni?
+## <a name="when-to-use-a-service-principal"></a>Mikor kell szolgáltatásnevet használni
 
-Az egyszerű szolgáltatás használatát kell használnia a beállításjegyzék-hozzáférés biztosításához **fej nélküli esetekben.** Ez minden olyan alkalmazás, szolgáltatás vagy parancsfájl, amelynek automatikus vagy más módon felügyelet nélkül kell leküldéses vagy lekéréses tárolórendszerképeket kell leküldéses vagy lekérése. Példa:
+Egy egyszerű szolgáltatásnév használatával kell megadni a beállításjegyzék-hozzáférést a **fej nélküli forgatókönyvekben**. Ez azt jelenti, hogy minden olyan alkalmazás, szolgáltatás vagy parancsfájl, amely automatizált vagy más módon felügyelet nélkül leküld vagy lehívhatja a tárolók lemezképeit. Például:
 
-  * *Pull*: Tárolók üzembe helyezése a rendszerleíró adatbázisból vezénylési rendszerek, beleértve a Kubernetes, DC/OS és a Docker Swarm. A tároló-beállításjegyzékek ből is lehívhat kapcsolódó Azure-szolgáltatások, például [az Azure Kubernetes-szolgáltatás (AKS),](../aks/cluster-container-registry-integration.md) [az Azure Container Instances,](container-registry-auth-aci.md) [az App Service,](../app-service/index.yml) [a Batch,](../batch/index.yml)a [Service Fabric](/azure/service-fabric/)és mások.
+  * *Pull*: tárolók üzembe helyezése a beállításjegyzékből a Kubernetes, a DC/os és a Docker Swarm rendszerbe. Lekérheti a tároló-beállításjegyzékből a kapcsolódó Azure-szolgáltatásokat, például az [Azure Kubernetes Service (ak)](../aks/cluster-container-registry-integration.md), a [Azure Container Instances](container-registry-auth-aci.md), a [app Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/)és más szolgáltatásait is.
 
-  * *Leküldéses:* Tárolórendszerképek létrehozása és leküldéses őket egy beállításjegyzék folyamatos integrációs és üzembe helyezési megoldások, például az Azure Pipelines vagy a Jenkins használatával.
+  * *Leküldés*: tároló-lemezképek létrehozása és továbbítása egy beállításjegyzékbe folyamatos integrációs és üzembe helyezési megoldások, például az Azure-folyamatok vagy a Jenkins használatával.
 
-A rendszerleíró adatbázishoz való egyéni hozzáférés, például amikor manuálisan lekéri a tárolórendszerképet a fejlesztési munkaállomásra, azt javasoljuk, hogy a rendszerleíró adatbázis-hozzáféréshez (például [az acr bejelentkezéssel)][az-acr-login]saját [Azure AD-identitását](container-registry-authentication.md#individual-login-with-azure-ad) használja.
+A beállításjegyzékhez való egyéni hozzáféréshez, például amikor manuálisan húz le egy tároló-rendszerképet a fejlesztői munkaállomásra, javasoljuk, hogy a beállításjegyzék-hozzáférés helyett saját [Azure ad-identitást](container-registry-authentication.md#individual-login-with-azure-ad) használjon (például az [az ACR login][az-acr-login]használatával).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-### <a name="sample-scripts"></a>Mintaszkriptek
+### <a name="sample-scripts"></a>Mintaparancsfájlok
 
-Az Azure CLI előző mintaparancsfájljait a GitHubon, valamint az Azure PowerShell verzióit is megtalálhatja:
+Az előző minta parancsfájlokat az Azure CLI-hez, a GitHubon, valamint a Azure PowerShell verzióihoz is megtalálja:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="authenticate-with-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatással
 
-Miután rendelkezik egy egyszerű szolgáltatással, amely hozzáférést biztosított a tároló beállításjegyzékéhez, konfigurálhatja a hitelesítő adatait a `docker login` "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz való hozzáféréshez, vagy megadhatja őket a paranccsal. Használja a következő értékeket:
+Ha már rendelkezik egy olyan egyszerű szolgáltatással, amely hozzáférést kapott a tároló-beállításjegyzékhez, a hitelesítő adatait megadhatja a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, vagy `docker login` megadhatja azokat a paranccsal. Használja a következő értékeket:
 
-* **Felhasználónév** - egyszerű szolgáltatásalkalmazás-azonosító (más néven *ügyfélazonosító)*
-* **Jelszó** - egyszerű szolgáltatásjelszó (más néven *ügyféltitok)*
+* **Felhasználónév** – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
+* **Jelszó** – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
 
-Minden érték az űrlap `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`GUID azonosítója. 
+Minden érték az űrlap `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`GUID-azonosítója. 
 
 > [!TIP]
-> Egy egyszerű szolgáltatás jelszavát az az [ad sp alapadat-hitelesítő adatok](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancs futtatásával újragenerálhatja.
+> Egy egyszerű szolgáltatásnév jelszavát az az [ad SP reset-hitelesítőadats](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancs futtatásával lehet újból előállítani.
 >
 
 ### <a name="use-credentials-with-azure-services"></a>Hitelesítő adatok használata az Azure-szolgáltatásokkal
 
-Bármely Azure-szolgáltatás egyszerű szolgáltatása, amely egy Azure-tároló beállításjegyzékkel hitelesíti a szolgáltatás egyszerű hitelesítő adatait.  A beállításjegyzék rendszergazdai hitelesítő adatai helyett a szolgáltatásnév hitelesítő adatait használja a különböző esetekben.
+A szolgáltatás egyszerű hitelesítő adatait bármely olyan Azure-szolgáltatáshoz használhatja, amely egy Azure Container registryben van hitelesítve.  A beállításjegyzék rendszergazdai hitelesítő adatai helyett használja a szolgáltatás egyszerű hitelesítő adatait a különböző forgatókönyvek esetében.
 
-A hitelesítő adatok használatával például lekéri a lemezképet egy Azure container registry az [Azure Container Instances](container-registry-auth-aci.md)rendszerbe.
+A hitelesítő adatok használatával például lekérheti a rendszerképet egy Azure Container Registry-ből a [Azure Container Instancesba](container-registry-auth-aci.md).
 
-### <a name="use-with-docker-login"></a>Használat a docker bejelentkezéssel
+### <a name="use-with-docker-login"></a>Használat a Docker-bejelentkezéssel
 
-Futtatható `docker login` egy egyszerű szolgáltatás használatával. A következő példában az egyszerű szolgáltatásalkalmazás-azonosító a `$SP_APP_ID`környezeti változóban, `$SP_PASSWD`a jelszó pedig a változóban lesz átadható. A Docker-hitelesítő adatok kezeléséhez ajánlott eljárásokat a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) parancs hivatkozási.
+Az egyszerű szolgáltatásnév `docker login` használatával is futtatható. A következő példában a szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID`, a változóban `$SP_PASSWD`pedig a jelszót adja át. A Docker hitelesítő adatainak kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
 ```bash
 # Log in to Docker with service principal credentials
 docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Miután bejelentkezett, a Docker gyorsítótárazza a hitelesítő adatokat.
+A bejelentkezést követően a Docker gyorsítótárazza a hitelesítő adatokat.
 
 ### <a name="use-with-certificate"></a>Használat tanúsítvánnyal
 
-Ha hozzáadott egy tanúsítványt a szolgáltatásnévhez, tanúsítványalapú hitelesítéssel bejelentkezhet az Azure CLI-be, majd az [az acr bejelentkezési][az-acr-login] paranccsal hozzáférhet a beállításjegyzékhez. A cli használata további biztonságot jelent a tanúsítvány titkos kulcsként használata jelszó helyett. 
+Ha hozzáadta a tanúsítványt az egyszerű szolgáltatáshoz, bejelentkezhet az Azure CLI-be tanúsítványalapú hitelesítéssel, majd az az [ACR login][az-acr-login] paranccsal elérheti a beállításjegyzéket. Ha a tanúsítványokat jelszó helyett titkosként használja, a parancssori felület használata további biztonságot nyújt. 
 
-Önaláírt tanúsítvány hozható létre [egyszerű szolgáltatás létrehozásakor.](/cli/azure/create-an-azure-service-principal-azure-cli) Vagy adjon hozzá egy vagy több tanúsítványt egy meglévő egyszerű szolgáltatáshoz. Ha például a cikkben szereplő parancsfájlok egyikével hoz létre vagy frissít egy olyan szolgáltatásnévet, amely jogosult a lemezképek lekérése vagy leküldése a rendszerleíró adatbázisból, adjon hozzá egy tanúsítványt az [az ad sp hitelesítő adatok visszaállítása][az-ad-sp-credential-reset] parancshasználatával.
+Egy önaláírt tanúsítvány hozható létre [egy egyszerű szolgáltatásnév létrehozásakor](/cli/azure/create-an-azure-service-principal-azure-cli). Vagy adjon hozzá egy vagy több tanúsítványt egy meglévő egyszerű szolgáltatáshoz. Ha például a cikkben szereplő parancsfájlok egyikét használja egy olyan egyszerű szolgáltatásnév létrehozásához vagy frissítéséhez, amely jogosult a rendszerképek beállításjegyzékből való lekérésére vagy leküldésére, adjon hozzá egy tanúsítványt az az [ad SP hitelesítőadat-visszaállítási][az-ad-sp-credential-reset] parancs használatával.
 
-Az Azure CLI-be való bejelentkezéshez a szolgáltatásnév használatával [jelentkezzen be az Azure CLI-be,](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)a tanúsítványnak PEM formátumúnak kell lennie, és tartalmaznia kell a személyes kulcsot. Ha a tanúsítvány nem a kívánt formátumban van, használjon egy eszközt, például `openssl` konvertálja azt. Amikor az [az bejelentkezési][az-login] futtatni a CLI-be való bejelentkezéshez a szolgáltatásnév használatával, adja meg a szolgáltatásnév alkalmazásazonosítóját és az Active Directory-bérlői azonosítót is. A következő példa ezeket az értékeket környezeti változóként mutatja be:
+Ahhoz, hogy az egyszerű szolgáltatásnév használatával [bejelentkezzen az Azure CLI-be](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), a tanúsítványnak PEM formátumban kell lennie, és tartalmaznia kell a titkos kulcsot. Ha a tanúsítvány nem a szükséges formátumban van, használjon egy eszközt, például `openssl` a konvertáláshoz. Amikor az az [login][az-login] paranccsal jelentkezik be a CLI-be az egyszerű szolgáltatásnév használatával, adja meg a szolgáltatásnév alkalmazás-azonosítóját és a Active Directory bérlő azonosítóját is. A következő példa környezeti változókként jeleníti meg ezeket az értékeket:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
 ```
 
-Ezután futtassa [az acr bejelentkezést][az-acr-login] a rendszerleíró adatbázissal való hitelesítéshez:
+Ezután futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékben való hitelesítéshez:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-A CLI a rendszer a `az login` rankor létrehozott jogkivonatot használja a munkamenet hitelesítéséhez a beállításjegyzékkel.
+A CLI `az login` azt a tokent használja, amely akkor jön létre, amikor a-munkamenetet a beállításjegyzékkel hitelesíti.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [hitelesítési áttekintést](container-registry-authentication.md) az Azure-tároló beállításjegyzékkel való hitelesítéshez.
+* Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos egyéb forgatókönyvek [hitelesítésének áttekintését](container-registry-authentication.md) itt tekintheti meg.
 
-* Egy példa egy Azure-kulcstartó használatával tárolja és lekéri a kiszolgálói hitelesítő adatokat egy tároló beállításjegyzék, tekintse meg az [oktatóanyag-hoz létrehoz egy tárolórendszerkép az ACR-feladatok használatával.](container-registry-tutorial-quick-task.md)
+* Az Azure Key Vault egy tároló-beállításjegyzékhez tartozó egyszerű hitelesítő adatok tárolására és lekérésére példaként tekintse meg az oktatóanyagot, amely [egy tároló lemezképének összeépítésére és üzembe helyezésére használható az ACR-feladatokkal](container-registry-tutorial-quick-task.md).
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry

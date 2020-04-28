@@ -1,6 +1,6 @@
 ---
 title: Új több-bérlős alkalmazás konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy alkalmazást több-bérlősként, és hogyan működnek a több-bérlős alkalmazások
+description: Megtudhatja, hogyan konfigurálhat egy alkalmazást több-bérlős eszközként, és hogyan működhet a több-bérlős alkalmazások?
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: a27524f860f17642dcd0640bcb740fc04c187407
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881383"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Új több-bérlős alkalmazás konfigurálása
 
-Az alábbiakban a több-bérlős alkalmazásokról további tudnivalókat tartalmazó ajánlott témakörök listája látható:
+A több-bérlős alkalmazásokkal kapcsolatos további információkért tekintse meg a javasolt témakörök listáját:
 
-- Általános ismereteket kaphat [arról, hogy mit jelent több-bérlős alkalmazásnak lenni](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
-- Általános ismeretek et kaphat [arról, hogyan konfigurálhat egy alkalmazást több-bérlősre](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
-- Részletes áttekintést kaphat [arról, hogyan használja az Azure AD-hozzájárulási keretrendszert a jóváhagyás megvalósításához,](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)amely több-bérlős alkalmazásokhoz szükséges
-- További mélység, ismerje meg, hogyan van konfigurálva és kódolt egy [több-bérlős alkalmazás végpontok](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)között, beleértve a regisztráció, a "közös" végpont használata, a "felhasználó" és az "admin" hozzájárulás megvalósítása, hogyan valósítható meg a fejlettebb többrétegű forgatókönyvek
+- Ismerje [meg, hogy mit jelent a több-bérlős alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
+- Általános ismeretek a [több-bérlős alkalmazások konfigurálásáról](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
+- Részletes áttekintés [arról, hogyan használható az Azure ad-beli engedélyezési keretrendszer a](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)több-bérlős alkalmazásokhoz szükséges engedély megvalósításához
+- További részletekért tekintse meg [a több-bérlős alkalmazások konfigurálását és a teljes körű](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)használatát, beleértve a regisztrációt, a "közös" végpontot, a "felhasználó" és a "rendszergazda" belefoglalását, a fejlettebb többrétegű forgatókönyvek megvalósítását.
 
 ## <a name="next-steps"></a>További lépések
-[AzureAD-veremtúlcsordulás](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

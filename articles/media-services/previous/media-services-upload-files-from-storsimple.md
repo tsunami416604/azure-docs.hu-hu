@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64868310"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Fájlok feltöltése Azure Media Services-fiókba az Azure StorSimple-ből  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >
 > 
 > Az Azure StorSimple Data Manager jelenleg privát előzetes verzióban érhető el. 
@@ -32,7 +32,7 @@ ms.locfileid: "64868310"
 
 ## <a name="overview"></a>Áttekintés
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az eszköz tartalmazhat video-, hang-, kép-, miniatűr gyűjtemények, szöveges pályák és felirat fájlokat (és a metaadatokat ezekről a fájlokról.) A fájlok feltöltése után a tartalom biztonságosan tárolódik a felhőben további feldolgozás és streamelés céljából.
+A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az eszköz tartalmazhatja a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a lezárt feliratok fájljait (valamint a fájlokra vonatkozó metaadatokat is). A fájlok feltöltése után a rendszer biztonságosan tárolja a tartalmat a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
 Az [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) a felhőalapú tárolót a helyszíni tároló kiterjesztéseként használja, és automatikusan rétegzi az adatokat a helyszíni és a felhőalapú tárolók közt. A StorSimple-eszköz deduplikálja és tömöríti az adatokat, mielőtt a felhőbe küldené azokat, így nagyon hatékony eszköz a nagyméretű fájlok a felhőbe továbbításához. A [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) szolgáltatás nyújtotta API-k segítségével az adatok kinyerhetők a StorSimple-ből, és megjeleníthetők AMS-objektumokként.
 
@@ -47,7 +47,7 @@ Az [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) a felhőalap
 
 ## <a name="see-also"></a>Lásd még
 
-[A .NET SDK használatával indítsa el a feladatokat az Adatkezelőben](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[A .NET SDK használata a feladatok elindításához a Data Manager](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD első lépései a .NET MVC projektekben | Azure
-description: Az Azure Active Directory használatának első lépései a .NET MVC-projektekben, miután csatlakozott az Azure AD-hez, vagy létrehozta a Visual Studio csatlakoztatott szolgáltatásait
+title: Ismerkedés az Azure AD-vel a .NET MVC-projektekben | Azure
+description: A .NET MVC-projektek Azure Active Directory használatának első lépései az Azure AD-vel való csatlakozás vagy a Visual Studio Connected Services használatával való létrehozás után
 author: ghogen
 manager: jillfra
 ms.prod: visual-studio-windows
@@ -11,29 +11,29 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886126"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Az Azure Active Directory –ASP.NET MVC-projektek – első lépések
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Első lépések Azure Active Directory (ASP.NET MVC-projektekkel)
 
 > [!div class="op_single_selector"]
 > - [Bevezetés](vs-active-directory-dotnet-getting-started.md)
 > - [mi történt](vs-active-directory-dotnet-what-happened.md)
 
-Ez a cikk további útmutatást nyújt, miután hozzáadta az Active Directoryt egy ASP.NET MVC-projekthez a Visual Studio **Project > Connected Services** parancsán keresztül. Ha még nem adta hozzá a szolgáltatást a projekthez, ezt bármikor megteheti.
+Ez a cikk további útmutatást nyújt, miután hozzáadta Active Directory egy ASP.NET MVC-projekthez a Visual Studio **project > Connected Services** parancsával. Ha még nem adta hozzá a szolgáltatást a projekthez, bármikor megteheti.
 
-Lásd: [Mi történt az MVC-projekttel a](vs-active-directory-dotnet-what-happened.md) csatlakoztatott szolgáltatás hozzáadásakor végrehajtott módosításokért.
+Megtudhatja [, mi történt az MVC-projekttel?](vs-active-directory-dotnet-what-happened.md) a projektben a csatlakoztatott szolgáltatás hozzáadásakor végrehajtott módosítások.
 
-## <a name="requiring-authentication-to-access-controllers"></a>Hitelesítés megkövetelése a vezérlők eléréséhez
+## <a name="requiring-authentication-to-access-controllers"></a>Hitelesítés megkövetelése a hozzáférés-vezérléshez
 
-A projekt összes vezérlőjét az `[Authorize]` attribútum díszítette. Ehhez az attribútumhoz a felhasználó hitelesítésére van szükség, mielőtt elérne ezekhez a vezérlőkhöz. A vezérlő névtelen elérésének engedélyezéséhez távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebb szinten szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely hez engedélyezés szükséges, ahelyett, hogy a vezérlőosztályra alkalmazna.
+A projekt összes vezérlőjét az `[Authorize]` attribútummal díszítették. Ez az attribútum megköveteli a felhasználó hitelesítését a vezérlők elérése előtt. Annak engedélyezéséhez, hogy a vezérlő névtelenül legyen elérhető, távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebben szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely az engedélyezést igényli a vezérlő osztályra való alkalmazása helyett.
 
-## <a name="adding-signin--signout-controls"></a>Bejelentkezési/ kijelentkezési vezérlők hozzáadása
+## <a name="adding-signin--signout-controls"></a>Bejelentkezési-/kijelentkezés-vezérlők hozzáadása
 
-A SignIn/SignOut vezérlők megtekintéséhez a `_LoginPartial.cshtml` részleges nézetben adhat hozzá funkciót az egyik nézethez. Íme egy példa a szabványos `_Layout.cshtml` nézethez hozzáadott funkciókra. (Megjegyzés: az utolsó elem a div osztály navbar-összeomlás):
+A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadásához a `_LoginPartial.cshtml` részleges nézetet használhatja a funkciók egyik nézethez való hozzáadásához. Íme egy példa a standard `_Layout.cshtml` nézethez hozzáadott funkciókra. (Jegyezze fel az utolsó elemet a div-összecsukási osztályhoz:
 
 ```html
 <!DOCTYPE html>
@@ -82,5 +82,5 @@ A SignIn/SignOut vezérlők megtekintéséhez a `_LoginPartial.cshtml` részlege
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Active Directory hitelesítési forgatókönyvei](authentication-scenarios.md)
-- [Bejelentkezés hozzáadása a Microsofttal egy ASP.NET webalkalmazáshoz](quickstart-v2-aspnet-webapp.md)
+- [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
+- [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

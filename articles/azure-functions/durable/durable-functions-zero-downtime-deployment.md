@@ -1,72 +1,72 @@
 ---
-title: Nulla állásidő-telepítés a tartós függvényekhez
-description: Ismerje meg, hogyan engedélyezheti a durable functions vezénylési nulla állásidő-üzemelő példányok.
+title: Nulla – állásidő üzembe helyezése Durable Functions
+description: Megtudhatja, hogyan engedélyezheti a Durable Functions-előkészítést a nulla állásidőű központi telepítések esetében.
 author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74231256"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla állásidő-telepítés a tartós függvényekhez
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
-A tartós függvények [megbízható végrehajtási modellje](durable-functions-checkpointing-and-replay.md) megköveteli, hogy a vezénylések determinisztikusak legyenek, ami további kihívást jelent a frissítések telepítésekor. Ha egy központi telepítés a tevékenységfüggvény-aláírások vagy az orchestrator logika módosításait tartalmazza, a repülés közbeni vezénylési példányok sikertelenek. Ez a helyzet különösen a hosszú ideig futó vezénylések esetében jelent problémát, amelyek órákat vagy munkanapokat jelenthetnek.
+A Durable Functions [megbízható végrehajtási modellje](durable-functions-checkpointing-and-replay.md) megköveteli, hogy a determinisztikus legyenek, ami egy további, a frissítések központi telepítésekor megfontolandó kihívást hoz létre. Ha egy központi telepítés a tevékenységi függvények aláírásait vagy a Orchestrator logikát tartalmazza, a fedélzeti előkészítési példányok meghiúsulnak. Ez a helyzet különösen a hosszan futó munkafolyamatok példányai esetében jelent problémát, amely órákat vagy munkanapokat is jelenthet.
 
-A hibák előfordulásának megakadályozásához két lehetősége van: 
-- Az üzembe helyezés késleltetése, amíg az összes futó vezénylési példány befejeződik.
-- Győződjön meg arról, hogy minden futó vezénylési példányok a függvények meglévő verzióit használja. 
+A hibák megelőzése érdekében két lehetőség közül választhat: 
+- Késleltetheti az üzembe helyezést, amíg az összes futó előkészítési példány be nem fejeződik.
+- Győződjön meg arról, hogy a futó előkészítési példányok a függvények meglévő verzióit használják. 
 
 > [!NOTE]
-> Ez a cikk útmutatást nyújt a tartós függvényeket 1.x-et célzó függvényalkalmazásokhoz. Nem lett frissítve, hogy figyelembe vegye a Durable Functions 2.x-ben bevezetett módosításokat. A bővítményverziók közötti különbségekről a [Durable Functions verziók című](durable-functions-versions.md)témakörben talál további információt.
+> Ez a cikk útmutatást nyújt a functions-alkalmazásokhoz, amelyek célja az 1. x Durable Functions. Nem frissült a Durable Functions 2. x-ben bevezetett változások miatt. További információ a bővítmény-verziók közötti különbségekről: [Durable functions verziók](durable-functions-versions.md).
 
-Az alábbi táblázat a három fő stratégiát hasonlítja össze a tartós függvények nulla állásidejű telepítésének eléréséhez: 
+Az alábbi táblázat összehasonlítja a három fő stratégiát a Durable Functions nulla állásidős telepítésének megvalósításához: 
 
 | Stratégia |  A következő esetekben használja | Előnyök | Hátrányok |
 | -------- | ------------ | ---- | ---- |
-| [Verziókezelés](#versioning) |  Olyan alkalmazások, amelyek nem tapasztalnak gyakori [törési módosításokat.](durable-functions-versioning.md) | Egyszerűen megvalósítható. |  Megnövekedett függvényalkalmazás-méret a memóriában és a függvények számában.<br/>Kódmásolás. |
-| [Állapot-ellenőrzés bővítőhellyel](#status-check-with-slot) | Olyan rendszer, amely nem rendelkezik 24 óránál hosszabb ideig tartó vagy gyakran egymást átfedő vezénylési rendszerekkel. | Egyszerű kódbázis.<br/>Nem igényel további függvényalkalmazás-kezelést. | További tárfiók- vagy feladatközpont-kezelést igényel.<br/>Olyan időszakokat igényel, amikor nem futvezés. |
-| [Alkalmazás-útválasztás](#application-routing) | Olyan rendszer, amely nem rendelkezik olyan időszakokkal, amikor a vezénylések nem futnak, például azok az időszakok, amelyek 24 óránál tovább tartanak, vagy amelyek gyakran egymást átfedő vezénylési műveleteket. | Kezeli a rendszerek új verzióit folyamatosan futó vezénylések, amelyek törés változásokat. | Intelligens alkalmazás-útválasztót igényel.<br/>Az előfizetés által engedélyezett függvényalkalmazások számát maxolhatja ki. Az alapértelmezett érték 100. |
+| [Verziókezelés](#versioning) |  Olyan alkalmazások, amelyek nem tapasztalnak gyakori [feltörési változásokat.](durable-functions-versioning.md) | Egyszerűen implementálható. |  A Function app-méret növelése a memóriában és a függvények száma.<br/>A kód duplikálása. |
+| [Állapot-ellenőrzési tárolóhelytel](#status-check-with-slot) | Olyan rendszer, amely nem rendelkezik 24 óránál hosszabb ideig futó, illetve gyakran átfedésben lévő előkészítési folyamatokkal. | Egyszerű kód alapja.<br/>Nincs szükség további Function app-felügyeletre. | További Storage-fiókot vagy a Task hub felügyeletét igényli.<br/>Olyan időszakot igényel, amikor a rendszer nem fut. |
+| [Alkalmazás-Útválasztás](#application-routing) | Olyan rendszer, amely nem rendelkezik olyan időtartammal, amely nem fut, például azok az időszakok, amelyek 24 óránál rövidebbek, vagy gyakran átfedésben vannak. | Kezeli a rendszerek új verzióit, és folyamatosan futó, a változásokat megsértő munkafolyamatokat. | Intelligens alkalmazás-útválasztót igényel.<br/>Az előfizetés által engedélyezett Function Apps-alkalmazások maximális száma. Az alapértelmezett érték 100. |
 
 ## <a name="versioning"></a>Verziókezelés
 
-A függvények új verzióinak definiálása és a régi verziók a függvényalkalmazásban. Amint az a diagramon is látható, a függvény verziója a nevének részévé válik. Mivel a függvények korábbi verziói megőrződnek, a fedélzeti vezénylési példányok továbbra is hivatkozhatnak rájuk. Eközben az új vezénylési példányok a legújabb verziót, amely a vezénylési ügyfél függvény hivatkozhat egy alkalmazásbeállítás.
+Adja meg a függvények új verzióit, és hagyja meg a régi verziókat a Function alkalmazásban. Ahogy az ábrán látható, a függvény verziója a neve részévé válik. Mivel a függvények korábbi verziói megmaradnak, a fedélzeti előkészítési példányok továbbra is hivatkozhatnak rájuk. Eközben az új előkészítési példányokra vonatkozó kérések a legújabb verziót kérik, amelyet a rendszerelőkészítési ügyfél függvénye hivatkozhat az alkalmazás beállításától függően.
 
 ![Verziószámozási stratégia](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-Ebben a stratégiában minden funkciót le kell másolni, és frissíteni kell a más függvényekre való hivatkozásait. A parancsfájl írásával megkönnyítheti a dolgát. Íme egy [mintaprojekt](https://github.com/TsuyoshiUshio/DurableVersioning) áttelepítési parancsfájllal.
+Ebben a stratégiában minden függvényt át kell másolni, és a többi függvényre mutató hivatkozásokat frissíteni kell. Egyszerűbbé teheti a parancsfájlok írását. Példa egy áttelepítési parancsfájlt tartalmazó [projektre](https://github.com/TsuyoshiUshio/DurableVersioning) .
 
 >[!NOTE]
->Ez a stratégia telepítési helyeket használ az üzembe helyezés során az állásidő elkerülése érdekében. Az új központi telepítési helyek létrehozásáról és használatáról az [Azure Functions központi telepítési bővítőhely-bővítőhely-bővítőhely-tárolóhelyeket](../functions-deployment-slots.md)talál.
+>Ez a stratégia üzembe helyezési résidőket használ az üzembe helyezés során felmerülő állásidő elkerüléséhez. További információ az új üzembe helyezési pontok létrehozásáról és használatáról: [Azure functions üzembe helyezési](../functions-deployment-slots.md)pontok.
 
-## <a name="status-check-with-slot"></a>Állapot-ellenőrzés bővítőhellyel
+## <a name="status-check-with-slot"></a>Állapot-ellenőrzési tárolóhelytel
 
-Amíg a függvényalkalmazás aktuális verziója fut az éles környezetben, telepítse a függvényalkalmazás új verzióját az átmeneti tárolóhelyre. Az éles és átmeneti tárolóhelyek cseréje előtt ellenőrizze, hogy vannak-e futó vezénylési példányok. Miután az összes vezénylési példány befejeződött, meg tudod csinálni a swap. Ez a stratégia akkor működik, ha kiszámítható időszakok, amikor nincs vezénylési példányok repülés közben. Ez a legjobb megközelítés, ha a vezénylési nem régóta futó, és ha a vezénylési végrehajtások nem gyakran fedik át egymást.
+Amíg a Function alkalmazás aktuális verziója fut az üzemi tárolóhelyen, a Function app új verzióját üzembe helyezheti az átmeneti tárolóhelyen. Az éles üzemi és átmeneti tárolóhelyek cseréje előtt ellenőrizze, hogy vannak-e futó előkészítési példányok. Az összes előkészítési példány befejezése után elvégezheti a cserét. Ez a stratégia akkor működik, ha előre jelezhető időszakok állnak rendelkezésre, ha nincsenek előkészítési példányok a repülésben. Ez az a legjobb megoldás, ha a rendszer nem működik, és ha az előkészítési műveletek nem gyakran átfedésben vannak.
 
-### <a name="function-app-configuration"></a>A függvényalkalmazás konfigurációja
+### <a name="function-app-configuration"></a>Function app-konfiguráció
 
 A forgatókönyv beállításához kövesse az alábbi eljárást.
 
-1. [Üzembe helyezési helyek hozzáadása](../functions-deployment-slots.md#add-a-slot) a függvényalkalmazáshoz az előkészítéshez és az éles környezethez.
+1. [Üzembe helyezési pontok hozzáadása](../functions-deployment-slots.md#add-a-slot) a Function alkalmazáshoz átmeneti és éles környezetben.
 
-1. Minden egyes tárolóhelyhez állítsa be az [AzureWebJobsStorage alkalmazásbeállítást](../functions-app-settings.md#azurewebjobsstorage) egy megosztott tárfiók kapcsolati karakterláncára. Ezt a tárfiók-kapcsolati karakterláncot az Azure Functions futásidejű használja. Ezt a fiókot az Azure Functions futásidejű használja, és kezeli a függvény kulcsait.
+1. Az egyes tárolóhelyek esetében állítsa be a [AzureWebJobsStorage alkalmazás beállítását](../functions-app-settings.md#azurewebjobsstorage) egy megosztott Storage-fiók kapcsolódási karakterláncára. Ezt a Storage-fiókhoz tartozó kapcsolási karakterláncot a Azure Functions futtatókörnyezet használja. Ezt a fiókot a Azure Functions futtatókörnyezet használja, és kezeli a függvény kulcsait.
 
-1. Hozzon létre egy új alkalmazásbeállítást minden `DurableManagementStorage`egyes foglalathoz, például . Állítsa be az értékét a különböző tárfiókok kapcsolati karakterláncára. Ezeket a tárfiókokat a Durable Functions bővítmény használja a [megbízható végrehajtás érdekében.](durable-functions-checkpointing-and-replay.md) Minden tárolóhelyhez használjon külön tárfiókot. Ne jelölje meg ezt a beállítást telepítési helymeghatározási helyként.
+1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például `DurableManagementStorage`:. Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](durable-functions-checkpointing-and-replay.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
 
-1. A függvényalkalmazás [host.json fájljában a durableTask szakaszban](durable-functions-bindings.md#hostjson-settings)adja meg `azureStorageConnectionStringName` a 3.
+1. A Function app [Host. JSON fájljának durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg `azureStorageConnectionStringName` a 3. lépésben létrehozott Alkalmazásbeállítás nevét.
 
-Az alábbi ábrán a központi telepítési tárolóhelyek és a tárfiókok leírt konfigurációja látható. Ebben a lehetséges üzembe helyezés előtti forgatókönyvben egy függvényalkalmazás 2-es verziója fut az éles tárolóhelyen, míg az 1-es verzió az átmeneti tárolóhelyen marad.
+A következő ábra az üzembe helyezési pontok és a Storage-fiókok leírt konfigurációját mutatja be. Ebben a lehetséges előtelepítési forgatókönyvben a Function app 2. verziója az üzemi tárolóhelyen fut, míg az 1. verzió az átmeneti tárolóhelyen marad.
 
-![Telepítési tárolóhelyek és tárfiókok](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Üzembe helyezési pontok és Storage-fiókok](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>példák host.json
+### <a name="hostjson-examples"></a>Host. JSON példák
 
-A következő JSON-töredékek példák a *host.json* fájlban lévő kapcsolati karakterlánc-beállításra.
+A következő JSON-töredékek a *Host. JSON* fájlban található kapcsolatok karakterlánc-beállításra mutatnak példákat.
 
-#### <a name="functions-20"></a>Funkciók 2.0
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -91,7 +91,7 @@ A következő JSON-töredékek példák a *host.json* fájlban lévő kapcsolati
 
 ### <a name="cicd-pipeline-configuration"></a>CI/CD-folyamat konfigurációja
 
-Konfigurálja a CI/CD-folyamatot csak akkor telepítse, ha a függvényalkalmazás nem rendelkezik függőben lévő vagy futó vezénylési példányokkal. Az Azure Pipelines használata során létrehozhat egy függvényt, amely ellenőrzi ezeket a feltételeket, akövetkező példához képest:
+Konfigurálja a CI/CD-folyamatot úgy, hogy csak akkor telepítsen, ha a Function alkalmazás nem rendelkezik függőben lévő vagy nem futó munkafolyamati példányokkal. Az Azure-folyamatok használatakor létrehozhat egy függvényt, amely ezeket a feltételeket ellenőrzi, ahogy az alábbi példában is látható:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -110,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Ezután konfigurálja az átmeneti kaput, hogy várjon, amíg nem futnak vezénylések. További információ: [A központi telepítés vezérlésének feloldása kapukkal](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Ezután konfigurálja az átmeneti kaput, és várjon, amíg a rendszer nem fut. További információ: üzembehelyezési [üzembe helyezési vezérlő kiadása Gates használatával](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
 ![Üzembe helyezési kapu](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Az Azure Pipelines ellenőrzi a függvényalkalmazást vezénylési példányok futtatásához a központi telepítés megkezdése előtt.
+Az Azure-folyamatok az üzembe helyezés megkezdése előtt ellenőrzik a Function alkalmazást a rendszer-előkészítési példányok futtatásához.
 
-![Telepítési kapu (futás)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Üzembe helyezési kapu (fut)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-Most a függvényalkalmazás új verzióját kell telepíteni az átmeneti tárolóhelyre.
+Most a Function alkalmazás új verzióját kell telepíteni az átmeneti tárolóhelyre.
 
-![Átmeneti hely](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Átmeneti tárolóhely](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Végül cserélje ki a bővítőhelyeket. 
+Végül cserélje le a tárolóhelyeket. 
 
-A központi telepítési hely beállításaiként nem megjelölt alkalmazásbeállítások is fel vannak cserélve, így a 2-es verziójú alkalmazás megtartja az A tárfiókra való hivatkozását. Mivel a vezénylési állapot nyomon követhető a tárfiókban, a 2-es verziójú alkalmazáson futó vezénylési műveletek megszakítás nélkül futnak az új tárolóhelyen.
+Az üzembe helyezési pont beállításainak meg nem jelölt Alkalmazásbeállítások is felcserélve lesznek, így a 2-es verziójú alkalmazás az A Storage-fiókra hivatkozik. Mivel a rendszer a hangfelvételi állapotot a Storage-fiókban követi nyomon, a 2. verziójú alkalmazáson futó összes előkészítési művelet megszakítás nélkül fut az új tárolóhelyen.
 
 ![Üzembehelyezési pont](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Ha mindkét bővítőhelyhez ugyanazt a tárfiókot szeretné használni, módosíthatja a feladatközpontok nevét. Ebben az esetben a tárolóhelyek állapotát és az alkalmazás HubName beállításait kell kezelnie. További információ: [Feladatközpontok a Tartós függvények alkalmazásban.](durable-functions-task-hubs.md)
+Ha ugyanazt a Storage-fiókot szeretné használni mindkét tárolóhelyhez, módosíthatja a feladatok hubok nevét. Ebben az esetben a tárolóhelyek állapotát és az alkalmazás HubName beállításait kell kezelnie. További információ: [Durable Functionsban található feladatok hubok](durable-functions-task-hubs.md).
 
-## <a name="application-routing"></a>Alkalmazás-útválasztás
+## <a name="application-routing"></a>Alkalmazás-Útválasztás
 
-Ez a stratégia a legösszetettebb. Azonban használható függvényalkalmazások, amelyek nem rendelkeznek idő közötti futó vezénylések.
+Ez a stratégia a legbonyolultabb. Azonban olyan Function-alkalmazásokhoz is használható, amelyek nem rendelkeznek időponttal a futók között.
 
-Ehhez a stratégiához létre kell hoznia egy *alkalmazás-útválasztót* a tartós funkciók előtt. Ez az útválasztó tartós funkciókkal valósítható meg. A router felelőssége:
+Ehhez a stratégiához létre kell hoznia egy *alkalmazás-útválasztót* a Durable functions előtt. Ez az útválasztó Durable Functions használatával valósítható meg. Az útválasztó feladata a következő:
 
-* Telepítse a függvényalkalmazást.
-* A Tartós függvények verziójának kezelése. 
-* Vezénylési kérelmek függvényalkalmazások.
+* Telepítse a Function alkalmazást.
+* Durable Functions verziójának kezelése. 
+* Átirányítja az alkalmazások működéséhez szükséges előkészítési kérelmeket.
 
-Amikor első alkalommal érkezik vezénylési kérelem, az útválasztó a következő feladatokat végzi el:
+Az útválasztó a következő feladatokat fogadja el az első alkalommal, amikor egy előkészítési kérelem érkezik:
 
-1. Új függvényalkalmazást hoz létre az Azure-ban.
-2. A függvényalkalmazás kódját az Azure-beli új függvényalkalmazásba telepíti.
-3. Továbbítja a vezénylési kérelmet az új alkalmazásnak.
+1. Létrehoz egy új Function alkalmazást az Azure-ban.
+2. Üzembe helyezi a Function alkalmazás kódját az új Function alkalmazásban az Azure-ban.
+3. Továbbítja a előkészítési kérelmet az új alkalmazásnak.
 
-Az útválasztó azt az állapotot kezeli, hogy az alkalmazás kódjának melyik verziójára van telepítve, melyik függvényalkalmazáshoz az Azure-ban.
+Az útválasztó felügyeli, hogy az alkalmazás kódjának melyik verziója van telepítve az Azure-beli Function alkalmazáshoz.
 
 ![Alkalmazás-útválasztás (első alkalommal)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Az útválasztó a kérelemmel küldött verzió alapján irányítja az üzembe helyezési és vezénylési kérelmeket a megfelelő függvényalkalmazásba. Ez nem vesz tudomásul a folt változat.
+Az útválasztó az üzembe helyezési és-előkészítési kérelmeket a kérelemmel elküldött verzió alapján irányítja a megfelelő Function alkalmazásba. Figyelmen kívül hagyja a javítási verziót.
 
-Ha az alkalmazás új verzióját törésnélkül telepíti, a javítási verziót is megvetheti. Az útválasztó telepíti a meglévő függvényalkalmazást, és a kód régi és új verzióira vonatkozó kéréseket küld, amelyek ugyanahhoz a függvényalkalmazáshoz vannak irányítva.
+Ha új verziót helyez üzembe az alkalmazásban, és ez nem módosul, megnövelheti a javítási verziót. Az útválasztó üzembe helyezi a meglévő Function alkalmazást, és kéréseket küld a kód régi és új verzióira, amelyek ugyanahhoz a Function alkalmazáshoz vannak irányítva.
 
-![Alkalmazás-útválasztás (nincs törésváltozás)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Alkalmazás-útválasztás (nincs megszakítási változás)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Ha az alkalmazás új verzióját egy törésmódosítással telepíti, a fő- vagy alverzió növekménye is megnagyobbodhat. Ezután az alkalmazás-útválasztó létrehoz egy új függvényalkalmazást az Azure-ban, telepíti azt, és továbbítja az alkalmazás új verziójára vonatkozó kérelmeket. A következő ábrán az alkalmazás 1.0.1-es verzióján futó vezénylések folyamatosan futnak, de az 1.1.0-s verzióra vonatkozó kérelmek az új függvényalkalmazásba kerülnek.
+Ha új verziót helyez üzembe az alkalmazásban, akkor megnövelheti a fő-vagy alverziót. Ezután az alkalmazás-útválasztó létrehoz egy új Function alkalmazást az Azure-ban, üzembe helyezi azt, és átirányítja az alkalmazás új verziójára irányuló kérelmeket. A következő ábrán az alkalmazás 1.0.1-es verziójában futó munkafolyamatok futnak, de a 1.1.0-verzióra vonatkozó kérések az új Function alkalmazásba lesznek irányítva.
 
-![Alkalmazás-útválasztás (megszakító módosítás)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Alkalmazás-útválasztás (megszakítási változás)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-Az útválasztó figyeli az 1.0.1-es verzió vezénylési állapotát, és eltávolítja az alkalmazásokat az összes vezénylés befejezése után. 
+Az útválasztó figyeli a (z) 1.0.1 verziójának összehangolása állapotát, és eltávolítja az alkalmazásokat az összes előkészítés befejeződése után. 
 
-### <a name="tracking-store-settings"></a>Az üzlet beállításainak nyomon követése
+### <a name="tracking-store-settings"></a>Nyomkövetési tároló beállításai
 
-Minden függvényalkalmazásnak külön ütemezési várólistákat kell használnia, esetleg külön tárfiókokban. Ha azt szeretné, hogy az alkalmazás összes verziójában az összes vezénylési példánylekérdezést, megoszthatja a példány- és előzménytáblákat a függvényalkalmazások között. A táblákat úgy oszthatja meg, hogy a `trackingStoreConnectionStringName` `trackingStoreNamePrefix` [host.json beállításfájlban](durable-functions-bindings.md#host-json) lévő és beállításokat úgy konfigurálja, hogy mindegyik ugyanazokat az értékeket használja.
+Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblákat megoszthatja úgy `trackingStoreConnectionStringName` , `trackingStoreNamePrefix` hogy a és a beállításokat a [gazdagép. JSON beállítási](durable-functions-bindings.md#host-json) fájljában konfigurálja, hogy mindegyik ugyanazt az értéket használja.
 
-További információt a [Példányok kezelése az Azure-ban a tartós függvényekben című témakörben talál.](durable-functions-instance-management.md)
+További információ: a [példányok kezelése az Azure](durable-functions-instance-management.md)-ban Durable functions.
 
-![Az üzlet beállításainak nyomon követése](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![Nyomkövetési tároló beállításai](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tartós függvények verziószámozása](durable-functions-versioning.md)
+> [Verziószámozás Durable Functions](durable-functions-versioning.md)
 

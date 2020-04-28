@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Edge hibáinak elhárításához használja az Azure Portalon | Microsoft dokumentumok
-description: Az Azure Data Box Edge-problémák elhárításának ismertetése.
+title: A Azure Portal használata a Azure Data Box Edge megoldásához | Microsoft Docs
+description: Útmutatás Azure Data Box Edge problémák elhárításához.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60756207"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Az Azure Data Box Edge hibaelhárítása 
 
-Ez a cikk ismerteti, hogyan hárítsa el az Azure Data Box Edge-en felmerülő problémákat. 
+Ez a cikk ismerteti, hogyan lehet elhárítani a Azure Data Box Edge kapcsolatos problémákat. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -37,11 +37,11 @@ Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le 
  
 2. A tesztek lefutása után megjelennek az eredmények. 
 
-    ![A vizsgálati eredmények áttekintése](media/data-box-edge-troubleshoot/run-diag-2.png)
+    ![Tesztek eredményeinek áttekintése](media/data-box-edge-troubleshoot/run-diag-2.png)
 
     Ha egy teszt sikertelen, megjelenik a javasolt művelet URL-címe. Az URL-címre kattintva tekintse meg a javasolt műveletet.
  
-    ![Sikertelen tesztekre vonatkozó figyelmeztetések áttekintése](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![A sikertelen tesztek figyelmeztetések áttekintése](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Támogatási csomag összeállítása
@@ -64,7 +64,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 1. A hibafájlok megtekintéséhez nyissa meg saját megosztását, majd megosztásra kattintva tekintse meg tartalmát. 
 
-      ![Csatlakozás tartalomhoz és megosztásmegtekintése](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Kapcsolódás a megosztáshoz és a tartalom megtekintése](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
 2. Kattintson a _Microsoft Data Box Edge mappára_. Ebben a mappában két almappát talál:
 

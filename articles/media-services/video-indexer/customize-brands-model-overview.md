@@ -1,7 +1,7 @@
 ---
-title: Márkák modell testreszabása a Video Indexerben – Azure
+title: Brands-modell testreszabása Video Indexer-Azure-ban
 titleSuffix: Azure Media Services
-description: Ez a cikk áttekintést nyújt arról, hogy mi a Márkák modell a Video Indexerben, és hogyan szabhatja testre.
+description: Ez a cikk áttekintést nyújt arról, hogy mi a Brands modell a Video Indexerban, és hogyan szabhatja testre.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,30 +11,30 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838361"
 ---
-# <a name="customize-a-brands-model-in-video-indexer"></a>Márkák modell testreszabása a Video Indexerben
+# <a name="customize-a-brands-model-in-video-indexer"></a>Márkák modell testreszabása Video Indexer
 
-A Video Indexer támogatja a beszéd- és vizuális szövegből származó márkaészlelést a video- és hangtartalmak indexelése és újraindexelése során. A márkaészlelési funkció azonosítja a Bing márkaadatbázisa által javasolt termékek, szolgáltatások és vállalatok említését. Ha például a Microsoft ot megemlítik egy video- vagy hangtartalomban, vagy ha vizuális szövegben jelenik meg egy videóban, a Video Indexer márkaként észleli azt a tartalomban. A márkák at a kontextust használó más kifejezésektől eltérő kifejezéseket használnak.
+A Video Indexer támogatja a beszédfelismerés és a vizualizáció szövegének felderítését a videó-és hangtartalom indexelése és újraindexelése során. A márka észlelési funkciója a Bing márkák adatbázisa által javasolt termékek, szolgáltatások és vállalatok megemlítését azonosítja. Ha például a Microsoft a videóban vagy a hangtartalomban szerepel, vagy ha a videó vizualizációs szövegben jelenik meg, akkor Video Indexer a tartalmat a tartalomban márkaként észleli. A márkák más feltételek alapján disambiguated a kontextus használatával.
 
-A márkafelismerés számos üzleti forgatókönyvben hasznos, például a tartalomarchívumban és a felfedezésben, a kontextuális hirdetésekben, a közösségi média elemzésben, a kiskereskedelmi versenyelemzésben és még sok másban. A Video Indexer márkaészlelés lehetővé teszi a márkanevek indexelését beszéd- és vizuális szövegben, a Bing márkaadatbázisának használatával, valamint a testreszabással, ha minden egyes Video Indexer-fiókhoz egyéni Brands modellt hoz létre. Az egyéni Márkák modell funkció lehetővé teszi annak kiválasztását, hogy a Video Indexer észleli-e a márkákat a Bing márkák adatbázisából, kizárjon-e bizonyos márkákat az észlelésből (lényegében a márkák feketelistájának létrehozása), és olyan márkákat is tartalmazzon, amelyeknek a modell, amely nem lehet a Bing márkák adatbázisában (lényegében a márkák fehér listájának létrehozása). A létrehozott egyéni Márkák modell csak abban a fiókban lesz elérhető, amelyben létrehozta a modellt.
+A márka észlelése számos különböző üzleti forgatókönyvben hasznos lehet, például a tartalmak archiválása és felderítése, a kontextusbeli reklámozás, a közösségi média elemzése, a kiskereskedelmi verseny elemzése és sok más. A Video Indexer márka észlelése lehetővé teszi a beszéd-és vizualizációs szövegek, a Bing márkák adatbázisának, valamint a testreszabási funkcióinak indexelését az egyes Video Indexer-fiókokhoz tartozó egyéni márkák modell kiépítése révén. A Custom Brands Model szolgáltatással kiválaszthatja, hogy Video Indexer észleli-e a Bing Brands-adatbázisból származó márkákat, kizár bizonyos márkákat a rendszerből (lényegében a márkák fekete listáját hozza létre), és olyan márkákat tartalmazzon, amelyek nem a Bing Brands-adatbázisában találhatók (lényegében a márkák fehér listáját hozza létre). A létrehozott egyéni Brands modell csak abban a fiókban lesz elérhető, amelyben létrehozta a modellt.
 
-## <a name="out-of-the-box-detection-example"></a>Dobozon kívüli észlelési példa
+## <a name="out-of-the-box-detection-example"></a>A Box észlelési példája
 
-A [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) bemutatóban a "Microsoft Windows" márka többször jelenik meg. Néha az átiratban, néha vizuális szövegként, és soha nem szó szerint. Video Indexer érzékeli nagy pontossággal, hogy a kifejezés valóban márka alapján a kontextus, amely több mint 90k márkák ki a dobozból, és folyamatosan frissíti. 02:25-kor a Video Indexer észleli a márkát a beszédből, majd ismét 02:40-kor a vizuális szövegből, amely az ablakok emblémájának része.
+A [Microsoft Build 2017 nap 2](https://www.videoindexer.ai/media/ed6ede78ad/) bemutatójában a "Microsoft Windows" márka többször is megjelenik. Néha az átiratban, néha vizuális szövegként, és soha nem a szó szerint. A Video Indexer nagy pontossággal észleli, hogy egy kifejezés valójában a kontextuson alapul, amely a 90k márkákra terjed ki a dobozból, és folyamatosan frissül. A 02:25-es számú Video Indexer észleli a márka beszédből való használatát, majd a 02:40-es verziótól kezdve a Windows embléma részét képező vizuális szövegből.
 
-![Márkák – áttekintés](./media/content-model-customization/brands-overview.png)
+![Márkák áttekintése](./media/content-model-customization/brands-overview.png)
 
-Beszél ablakok keretében az építőipar nem ismeri fel a "Windows", mint a márka, és ugyanaz a Box, Apple, Fox, stb, alapuló fejlett Machine Learning algoritmusok, amelyek tudják, hogyan kell félrefogalmazni összefüggésben. A márkaészlelés minden támogatott nyelvünkön működik. Kattintson ide a [teljes Microsoft Build 2017 Day 2 vitaindító videó ért és indexhez.](https://www.videoindexer.ai/media/ed6ede78ad/)
+Ha az építőipar kontextusában a Windowsról beszél, a "Windows" szót nem ismeri fel márkaként, és ugyanaz a Box, az Apple, a Fox stb., a speciális Machine Learning algoritmusok alapján, amelyekkel egyértelműsítse a környezetből. A márka észlelése minden támogatott nyelv esetében működik. Kattintson ide a [teljes Microsoft Build 2017 Day 2 előadási videó és index](https://www.videoindexer.ai/media/ed6ede78ad/)számára.
 
-Ahhoz, hogy a saját márkák, nézd meg A következő lépéseket.
+A saját márkák létrehozásához tekintse meg a következő lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-[Márkák modell testreszabása API-k használatával](customize-brands-model-with-api.md)
+[A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)
 
-[Márkák modell testreszabása a webhely használatával](customize-brands-model-with-website.md)
+[A Brands modell testreszabása a webhely használatával](customize-brands-model-with-website.md)

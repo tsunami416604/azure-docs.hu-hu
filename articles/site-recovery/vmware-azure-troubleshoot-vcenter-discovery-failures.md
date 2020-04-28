@@ -1,6 +1,6 @@
 ---
-title: VMware vCenter felderítési hibák elhárításának elhárítása az Azure Site Recovery szolgáltatásban
-description: Ez a cikk ismerteti, hogyan háríthatja el a VMware vCenter felderítési hibák az Azure Site Recovery hibaelhárítása.
+title: A VMware vCenter felderítési hibáinak elhárítása Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a VMware vCenter-felderítési hibákat a Azure Site Recoveryban.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74091243"
 ---
-# <a name="troubleshoot-vcenter-server-discovery-failures"></a>A vCenter Server felderítési hibáinak elhárítása
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
 
-Ez a cikk segít a VMware vCenter felderítési hibák miatt felmerülő problémák elhárításában.
+Ez a cikk segítséget nyújt a VMware vCenter-felderítési hibák miatt előforduló problémák elhárításában.
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Nem numerikus értékek a maxSnapShots tulajdonságban
 
-A 9.20 előtti verziókon a vCenter bontja a kapcsolatot, `snapshot.maxSnapShots` amikor nem numerikus értéket kér le a tulajdonság tulajdonságára egy virtuális gépen.
+A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtuális gép tulajdonság `snapshot.maxSnapShots` tulajdonságához nem numerikus értéket kér le.
 
-Ezt a problémát a 95126-os azonosítóval azonosított hiba azonosítja.
+Ezt a problémát a 95126-es AZONOSÍTÓJÚ hiba azonosítja.
 
     ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
     System.FormatException: Input string was not in a correct format.
@@ -30,53 +30,53 @@ Ezt a problémát a 95126-os azonosítóval azonosított hiba azonosítja.
        at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
        at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
     
-A probléma megoldása:
+A probléma megoldásához:
 
-- Azonosítsa a virtuális gép, és állítsa be az értéket egy numerikus érték (VM szerkesztési beállítások vCenter).
+- Azonosítsa a virtuális gépet, és állítsa be az értéket egy numerikus értékre (a virtuális gép szerkesztési beállításai a vCenter-ben).
 
 Vagy
 
-- Frissítse a konfigurációs kiszolgálót a 9.20-as vagy újabb verzióra.
+- Frissítse a konfigurációs kiszolgálót a 9,20-es vagy újabb verzióra.
 
-## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Proxykonfigurációs problémák a vCenter-kapcsolathoz
+## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>VCenter-kapcsolat proxy-konfigurációs problémái
 
-A vCenter Discovery tiszteletben tartja a rendszer felhasználó által konfigurált rendszer alapértelmezett proxybeállításait. A DRA szolgáltatás tiszteletben tartja a felhasználó által a konfigurációs kiszolgáló telepítése során az egyesített telepítőtelepítő telepítő vagy ova sablon használatával biztosított proxybeállításokat. 
+a vCenter-felderítés tiszteletben tartja a rendszerfelhasználó által konfigurált alapértelmezett proxybeállításokat. A DRA szolgáltatás a konfigurációs kiszolgáló az egyesített telepítő vagy a petesejtek sablonnal történő telepítésekor a felhasználó által megadott proxybeállításokat értékeli. 
 
-A proxy általában a nyilvános hálózatokkal való kommunikációra szolgál; például az Azure-ral való kommunikáció. Ha a proxy konfigurálva van, és a vCenter helyi környezetben van, nem fog tudni kommunikálni a DRA-val.
+Általánosságban elmondható, hogy a proxy a nyilvános hálózatokkal való kommunikációra szolgál. például az Azure-hoz való kommunikációhoz. Ha a proxy konfigurálva van, és a vCenter helyi környezetben van, akkor nem fog tudni kommunikálni a DRA-val.
 
-A probléma előfordulásakor a következő esetek fordulnak elő:
+A probléma előfordulásakor a következő helyzetek történnek:
 
-- A vCenter-kiszolgáló \<> a hiba miatt nem érhető el: A távoli kiszolgáló hibát adott vissza: (503) A kiszolgáló nem érhető el
-- A vCenter-kiszolgáló \<vCenter> a hiba miatt nem érhető el: A távoli kiszolgáló hibát adott vissza: Nem lehet csatlakozni a távoli kiszolgálóhoz.
-- Nem lehet csatlakozni a vCenter/ESXi kiszolgálóhoz.
+- A vCenter- \<kiszolgáló vCenter> nem érhető el a hiba miatt: a távoli kiszolgáló a következő hibát adta vissza: (503) a kiszolgáló nem érhető el
+- A vCenter- \<kiszolgáló vCenter> nem érhető el a hiba miatt: a távoli kiszolgáló hibát adott vissza: nem lehet csatlakozni a távoli kiszolgálóhoz.
+- Nem lehet csatlakozni a vCenter/ESXi-kiszolgálóhoz.
 
-A probléma megoldása:
+A probléma megoldásához:
 
 Töltse le a [PsExec eszközt](https://aka.ms/PsExec). 
 
-A PsExec eszközzel érheti el a rendszer felhasználói környezetét, és állapítsa meg, hogy a proxycím konfigurálva van-e. Ezután a következő eljárások használatával hozzáadhatja a vCentert a megkerülési listához.
+A PsExec eszköz használatával férhet hozzá a rendszer felhasználói környezetéhez, és meghatározhatja, hogy a proxy címe konfigurálva van-e. Ezután a következő eljárásokkal adhat hozzá vCenter a megkerülési listához.
 
-Felderítési proxy konfigurációesetén:
+Felderítési proxy konfigurálásához:
 
 1. Nyissa meg az IE-t a rendszer felhasználói környezetében a PsExec eszközzel.
     
-    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+    PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 
-2. Módosítsa az Internet Explorer proxybeállításait a vCenter IP-cím ének megkerüléséhez.
+2. Módosítsa a proxybeállításokat az Internet Explorerben a vCenter IP-cím megkerüléséhez.
 3. Indítsa újra a tmanssvc szolgáltatást.
 
-Dra proxykonfiguráció esetén:
+DRA-proxy konfigurálásához:
 
 1. Nyisson meg egy parancssort, és nyissa meg a Microsoft Azure Site Recovery Provider mappát.
  
-    **cd C:\Program Files\Microsoft Azure webhely-helyreállítási szolgáltató**
+    **CD C:\Program Files\Microsoft Azure Site Recovery Provider**
 
-3. A parancssorból futtassa a következő parancsot.
+3. Futtassa a következő parancsot a parancssorból.
    
-   **DRCONFIGURATOR. EXE /configure /AddBypassUrls [A vCenter-kiszolgáló IP-címe/FQDN azonosítója a vCenter hozzáadásakor]**
+   **DRCONFIGURATOR. EXE/configure/AddBypassUrls [a vCenter hozzáadásakor megadott vCenter Server IP-címe/teljes tartományneve]**
 
-4. Indítsa újra a DRA-szolgáltatót.
+4. Indítsa újra a DRA Provider szolgáltatást.
 
 ## <a name="next-steps"></a>További lépések
 
-[A VMware VM vész-helyreállítási konfigurációs kiszolgálójának kezelése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

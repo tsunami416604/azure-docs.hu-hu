@@ -1,6 +1,6 @@
 ---
-title: Feladatátvétel/feladat-visszavétel beállítása egy másodlagos Hyper-V-helyre az Azure Site Recovery szolgáltatással
-description: Ismerje meg, hogyan lehet feladatátvételi hyper-V virtuális gépek a másodlagos helyszíni helyen, és a feladat-vissza az elsődleges hely, az Azure Site Recovery vész-helyreállítási során.
+title: Feladatátvétel/feladat-visszavétel beállítása másodlagos Hyper-V-helyhez Azure Site Recovery
+description: Megtudhatja, hogyan hajthat végre feladatátvételt a Hyper-V virtuális gépeken a másodlagos helyszíni helyre, és hogyan térhet vissza az elsődleges helyhez a vész-helyreállítás Azure Site Recoveryával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,68 +9,68 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74082602"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Feladatátvétel és feladat-visszavétel a másodlagos helyszíni helyre replikált Hyper-V virtuális gépek
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A másodlagos helyszíni helyre replikált Hyper-V virtuális gépek feladatátvétele és feladatátvétele
 
-Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás kezeli és vezényli a replikációt, a feladatátvételt és a feladat-visszavételt a helyszíni gépek, valamint az Azure virtuális gépek (VM-ek) számára.
+A [Azure site Recovery](site-recovery-overview.md) szolgáltatás felügyeli és koordinálja a helyszíni gépek és az Azure Virtual Machines (VM) replikációját, feladatátvételét és feladat-visszavételét.
 
-Ez a cikk azt ismerteti, hogy miként lehet feladatátvételt egy System Center Virtuálisgép-kezelő (VMM) felhőben egy másodlagos VMM-helyen kezelt Hyper-V VM-szolgáltatás felett. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez a cikk egy System Center Virtual Machine Manager (VMM) felhőben felügyelt Hyper-V virtuális gép feladatátvételét ismerteti egy másodlagos VMM-helyre. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Hyper-V virtuális gép elsődleges VMM-felhőből másodlagos VMM-felhőbe történő átvétele
-> * A másodlagos helyről az elsődleges helyre való újbóli védelem és a feladat-visszavétel
-> * Igény szerint kezdje el újra replikálni az elsődlegesről a másodlagosra
+> * Hyper-V virtuális gép feladatátvétele elsődleges VMM-felhőből másodlagos VMM-felhőbe
+> * Ismételt védelem a másodlagos helyről az elsődlegesre, és feladat-visszavétel
+> * Szükség esetén megkezdheti az elsődlegesről másodlagosra történő replikálást.
 
 ## <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
 
 A feladatátvétel és a feladat-visszavétel három szakaszból áll:
 
-1. **Feladatátvétel a másodlagos helyre:** A gépek átadása az elsődleges helyről a másodlagosra.
-2. **Feladat-visszavétel a másodlagos helyről:** Replikálja a virtuális gépeket a másodlagosról az elsődlegesre, és futtasson egy tervezett feladatátvételt feladat-visszavételre.
-3. A tervezett feladatátvétel után, opcionálisan kezdje el a replikálás az elsődleges helyről a másodlagos újra.
+1. **Feladatátvétel másodlagos helyre**: az elsődleges helyről a másodlagosra történő feladatátvételt okozó gépek.
+2. Feladat **-visszavétel a másodlagos helyről**: virtuális gépek replikálása másodlagosról elsődlegesre, és egy tervezett feladatátvétel végrehajtása a feladat-visszavétel érdekében.
+3. A tervezett feladatátvétel után megkezdheti a replikálást az elsődleges helyről a másodlagosra.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy befejezte a [vész-helyreállítási gyakorlatot,](hyper-v-vmm-test-failover.md) hogy ellenőrizze, hogy minden a várt módon működik-e.
-- A feladat-visszavétel befejezéséhez győződjön meg arról, hogy az elsődleges és másodlagos VMM-kiszolgálók a Site Recovery-hez csatlakoznak.
+- Győződjön meg arról, hogy elvégezte a vész- [helyreállítási részletezést](hyper-v-vmm-test-failover.md) annak ellenőrzéséhez, hogy minden a vártnak megfelelően működik-e.
+- A feladat-visszavétel befejezéséhez győződjön meg arról, hogy az elsődleges és a másodlagos VMM-kiszolgáló csatlakozik Site Recoveryhoz.
 
 
 
-## <a name="run-a-failover-from-primary-to-secondary"></a>Feladatátvétel futtatása az elsődlegesről a másodlagosra
+## <a name="run-a-failover-from-primary-to-secondary"></a>Feladatátvétel futtatása elsődlegesről másodlagosra
 
-Futtathat egy rendszeres vagy tervezett feladatátvételt a Hyper-V virtuális gépekhez.
+A Hyper-V virtuális gépekhez rendszeres vagy tervezett feladatátvételt is futtathat.
 
-- A nem várt leállások rendszeres feladatátvételt használjon. A feladatátvétel futtatásakor a Site Recovery létrehoz egy virtuális gép a másodlagos helyen, és bekapcsolja azt. Adatvesztés a nem szinkronizált függőadatoktól függően fordulhat elő.
-- A tervezett feladatátvétel karbantartásra vagy a várható kimaradás során használható. Ez a beállítás nulla adatvesztést biztosít. Ha egy tervezett feladatátvétel aktiválódik, a forrás virtuális gépek leáll. A nem szinkronizált adatok szinkronizálva vannak, és a feladatátvétel aktiválódik. 
+- Használjon rendszeres feladatátvételt váratlan kimaradások esetén. A feladatátvétel futtatásakor Site Recovery létrehoz egy virtuális gépet a másodlagos helyen, és felruházza azt. Az adatvesztés a még nem szinkronizált, függőben lévő adataitól függően történhet.
+- Tervezett feladatátvételt lehet használni karbantartáshoz vagy a várt leállás során. Ez a beállítás nulla adatvesztést biztosít. Tervezett feladatátvétel indításakor a forrásként szolgáló virtuális gépek leállnak. A nem szinkronizált adatokat szinkronizálja a rendszer, és a feladatátvétel aktiválódik. 
 - 
   Ez az eljárás a rendszeres feladatátvétel futtatását ismerteti.
 
 
-1. A**Replikált elemek** **beállításai** > ban kattintson a virtuális gép > **feladatátvétel**.
-1. Válassza **a Számítógép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery a feladatátvétel elírása előtt megkísérli a forrásvirtuális gépek leállítását. A Site Recovery megpróbálja szinkronizálni azokat a helyszíni adatokat is, amelyekmég nem lettek elküldve a másodlagos helyre, mielőtt a feladatátvételt kezdeményezte volna. Vegye figyelembe, hogy a feladatátvétel akkor is folytatódik, ha a leállítás sikertelen. A feladatátvételi folyamatot a Feladatok lapon **követheti.**
-2. Most már látnia kell a virtuális gép a másodlagos VMM-felhőben.
-3. Miután ellenőrizte a virtuális gép, **véglegesítse** a feladatátvételt. Ez törli az összes rendelkezésre álló helyreállítási pontot.
+1. A **Beállítások** > **replikált elemek** elemnél kattintson a virtuális gépre > **feladatátvételre**.
+1. Válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget, ha azt szeretné, hogy a feladatátvétel elindítása előtt a site Recovery megkísérelje leállítani a forrás virtuális gépek leállítását. A Site Recovery a feladatátvétel elindítása előtt a másodlagos helyre még nem elküldett helyszíni adatokat is megpróbálja szinkronizálni. Vegye figyelembe, hogy a feladatátvétel akkor is folytatódik, ha a Leállítás sikertelen. A feladatátvételi folyamat a **feladatok** lapon követhető.
+2. Ekkor látnia kell a virtuális gépet a másodlagos VMM-felhőben.
+3. A virtuális gép ellenőrzése után **véglegesítse** a feladatátvételt. Ez törli az összes rendelkezésre álló helyreállítási pontot.
 
 > [!WARNING]
 > **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.  
 
 
-## <a name="reverse-replicate-and-failover"></a>Fordított replikálás és feladatátvétel
+## <a name="reverse-replicate-and-failover"></a>Visszirányú replikálás és feladatátvétel
 
-Kezdje el a replikálást a másodlagos helyről az elsődleges helyre, és feladatvissza az elsődleges helyre. Miután a virtuális gépek ismét futnak az elsődleges helyen, replikálhatja őket a másodlagos helyre.  
+Indítsa el a replikálást a másodlagos helyről az elsődlegesre, és hajtsa végre a feladat-visszavételt az elsődleges helyre. Miután a virtuális gépek újra futnak az elsődleges helyen, replikálhatja őket a másodlagos helyre.  
 
  
-1. Kattintson a virtuális gépre> kattintson a **Reverse Replicate gombra.**
-2. Miután a feladat befejeződött, kattintson a virtuális gép >**a feladatátvétel,** ellenőrizze a feladatátvételi irányt (a másodlagos VMM-felhőből), és válassza ki a forrás- és célhelyeket. 
+1. Kattintson a virtuális gépre > kattintson a **visszirányú replikálás**elemre.
+2. Miután a feladatok befejeződik, kattintson a virtuális gép >a **feladatátvétel**elemre, ellenőrizze a feladatátvétel irányát (másodlagos VMM felhőből), majd válassza ki a forrás-és a célhelyeket. 
 4. Indítsa el a feladatátvételt. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
-5. Az elsődleges VMM-felhőben ellenőrizze, hogy a virtuális gép elérhető-e.
-6. Ha ismét vissza szeretné replikálni az elsődleges virtuális gépreplikálását a másodlagos helyre, kattintson a **Fordított replikálás gombra.**
+5. Az elsődleges VMM felhőben győződjön meg arról, hogy a virtuális gép elérhető.
+6. Ha újra meg szeretné kezdeni az elsődleges virtuális gép replikálását a másodlagos helyre, kattintson a **visszirányú replikálás**elemre.
 
 ## <a name="next-steps"></a>További lépések
-[Tekintse át a hyper-v](hyper-v-vmm-disaster-recovery.md) virtuális gépek replikálásának lépése egy másodlagos helyre.
+[Tekintse át a](hyper-v-vmm-disaster-recovery.md) Hyper-V virtuális gépek másodlagos helyre történő replikálásának lépéseit.

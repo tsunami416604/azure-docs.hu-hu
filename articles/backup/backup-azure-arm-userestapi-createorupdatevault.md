@@ -1,21 +1,21 @@
 ---
-title: Helyreállítási szolgáltatások tárolóinak létrehozása rest API-val
-description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure VM biztonsági mentés biztonsági mentési műveleteit a REST API használatával.
+title: Recovery Services-tárolók létrehozása REST API használatával
+description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági mentési és visszaállítási műveleteit REST API használatával.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173419"
 ---
-# <a name="create-azure-recovery-services-vault-using-rest-api"></a>Az Azure Recovery Services Vault létrehozása rest API használatával
+# <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
-Az Azure Recovery Services Vault REST API használatával történő létrehozásának lépéseit a [Vault REST API-dokumentáció létrehozása](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) ismerteti. Használjuk ezt a dokumentumot hivatkozásként a "testVault" nevű trezor létrehozásához az USA nyugati részén.
+Az Azure Recovery Services-tárolók REST API használatával történő létrehozásának lépései a tár [létrehozása REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) dokumentációjában találhatók. Ezt a dokumentumot hivatkozásként használjuk a "testVault" nevű tár létrehozásához az "USA nyugati régiójában".
 
-Az Azure Recovery Services-tároló létrehozásához *PUT* vagy frissítéséhez használja a következő PUT-műveletet.
+Azure Recovery Services-tároló létrehozásához vagy frissítéséhez használja a következő *put* műveletet.
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}?api-version=2016-06-01
@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Kérelem létrehozása
 
-A *PUT-kérelem* létrehozásához a `{subscription-id}` paraméter szükséges. Ha több előfizetéssel rendelkezik, olvassa el [a Több előfizetés sel végzett témakört.](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) Ön határozza `{resourceGroupName}` `{vaultName}` meg a és az `api-version` erőforrások, valamint a paraméter. Ez a `api-version=2016-06-01`cikk a .
+A *put* kérelem létrehozásához a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. Megadhatja `{resourceGroupName}` a `{vaultName}` és a erőforrásait, valamint a `api-version` paramétert. Ez a cikk `api-version=2016-06-01`a következőt használja:.
 
 A következő fejlécek megadása kötelező:
 
@@ -32,25 +32,25 @@ A következő fejlécek megadása kötelező:
 | *Content-Type* (Tartalomtípus):  | Kötelező. Állítsa `application/json` értékre. |
 | *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-A kérelem létrehozásáról további információt a [REST API-kérelem/válasz összetevői című témakörben talál.](/rest/api/azure/#components-of-a-rest-api-requestresponse)
+További információ a kérelem létrehozásáról: [REST API kérelem/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## <a name="create-the-request-body"></a>A kérelemtörzs létrehozása
+## <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
-A következő közös definíciók segítségével hozzon létre egy kérelem törzs:
+A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-|Név  |Kötelező  |Típus  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
-|Etag     |         |   Sztring      |  Opcionális eTag       |
+|eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  igaz       |Sztring         |   Erőforrás helye      |
-|properties     |         | [Vaulttulajdonságai](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tároló tulajdonságai       |
-|Sku     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítóját azonosítja     |
+|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
+|SKU     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
 |címkét     |         | Objektum        |     Erőforráscímkék    |
 
-Vegye figyelembe, hogy a tároló neve és az erőforráscsoport neve a PUT URI-ban található. A kérelem törzse határozza meg a helyet.
+Vegye figyelembe, hogy a tár neve és az erőforráscsoport neve a PUT URI-ban van megadva. A kérelem törzse határozza meg a helyet.
 
-## <a name="example-request-body"></a>Példa kérelem törzse
+## <a name="example-request-body"></a>Példa kérelem törzsére
 
-A következő példa törzs segítségével hozzon létre egy boltozat "USA nyugati részén". Adja meg a helyet. A termékváltozat mindig "Standard".
+A következő példában egy tárolót hoz létre a "West US"-ben. Itt adhatja meg a helyet. Az SKU mindig "standard".
 
 ```json
 {
@@ -64,18 +64,18 @@ A következő példa törzs segítségével hozzon létre egy boltozat "USA nyug
 
 ## <a name="responses"></a>Válaszok
 
-A helyreállítási szolgáltatások tárolójának létrehozására vagy frissítésére a műveletre két sikeres válasz érkezett:
+Két sikeres válasz van a művelethez egy Recovery Services-tároló létrehozásához vagy frissítéséhez:
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 Létrehozva     | [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
+|201 létrehozva     | [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
 
-A REST API-válaszokról a [Válaszüzenet feldolgozása](/rest/api/azure/#process-the-response-message)című témakörben talál további információt.
+További információ a REST API válaszokról: [a válaszüzenet feldolgozása](/rest/api/azure/#process-the-response-message).
 
 ### <a name="example-response"></a>Példaválasz
 
-Egy tömörített *201 Létrehozott* válasz az előző példa kérelem törzsazt *mutatja, hogy* egy azonosító van rendelve, és a *provisioningState* *sikerült:*
+Az előző példában szereplő kérelem törzsében létrehozott, sűrített *201* -válasz egy *azonosítót* rendelt hozzá, és a *provisioningState* *sikeres*:
 
 ```json
 {
@@ -94,9 +94,9 @@ Egy tömörített *201 Létrehozott* válasz az előző példa kérelem törzsaz
 
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy biztonsági mentési szabályzatot egy Azure virtuális gép biztonsági mentéséhez ebben a tárolóban.](backup-azure-arm-userestapi-createorupdatepolicy.md)
+[Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 
-Az Azure REST API-król az alábbi dokumentumokban talál további információt:
+Az Azure REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
-- [Az Azure Recovery Services szolgáltatóREST API-ja](/rest/api/recoveryservices/)
+- [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
 - [Bevezetés az Azure REST API használatába](/rest/api/azure/)

@@ -1,6 +1,6 @@
 ---
-title: Tekintse át az Azure Site Recovery Deployment Planner költségbecslési jelentését a Hyper-V virtuális gépek Azure-ba történő vész-helyreállításához| Microsoft dokumentumok
-description: Ez a cikk ismerteti, hogyan tekintse át a költségbecslési jelentés az Azure Site Recovery Deployment Planner for Hyper-V vész-helyreállítási Azure-ba.
+title: Tekintse át a Hyper-V virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery Deployment Planner költségbecslés jelentését | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan tekintheti át az Azure-ba irányuló Hyper-V vész-helyreállítási Azure Site Recovery Deployment Planner a költségbecslés jelentésében.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60947226"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
@@ -56,7 +56,7 @@ Az első szakaszban a teljes vészhelyreállítási költség látható összete
 
 **Hálózat**: A vészhelyreállítási igényekhez szükséges ExpressRoute- és helyek közötti VPN költségei. 
 
-**Azure Site Recovery licenc:** A Site Recovery licenc költsége az összes kompatibilis virtuális gépek. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, akkor a tábla a virtuális gép Site Recovery-licencköltségeit is tartalmazza.
+**Azure site Recovery licenc**: az összes kompatibilis virtuális gép site Recovery licencének díja. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, akkor a tábla a virtuális gép Site Recovery-licencköltségeit is tartalmazza.
 
 ### <a name="overall-dr-costs-by-states"></a>A vészhelyreállítás teljes költsége állapotonként
 A vészhelyreállítás (DR) teljes költségének kategóriái két különböző állapoton alapulnak – replikáció és a DR működése.
@@ -90,7 +90,7 @@ Ha Ön Azure-partner vagy -ügyfél, és a teljes Azure-díjszabásból bármily
 Ez a táblázat a Windows és nem Windows rendszerű virtuális gépek számát és a hozzájuk tartozó DR működés számítási költségeit tartalmazza.
 
 ### <a name="settings"></a>Beállítások 
-**Felügyelt lemez használata**: Ez a beállítás megadja, hogy vannak-e használatban felügyelt lemezek a DR működése alatt. Az alapértelmezett **érték**igen . Ha a **-UseManagedDisks** lehetőséget **Nem** értékre állította, a rendszer a nem felügyelt lemezek díjszabását használja a költségek kiszámításához.
+**Felügyelt lemez használata**: Ez a beállítás megadja, hogy vannak-e használatban felügyelt lemezek a DR működése alatt. Az alapértelmezett érték az **Igen**. Ha a **-UseManagedDisks** lehetőséget **Nem** értékre állította, a rendszer a nem felügyelt lemezek díjszabását használja a költségek kiszámításához.
 
 **Pénznem**: A pénznem, amelyben a jelentést létrehozták.
 
@@ -149,7 +149,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Adatredundancia**: Lehet helyileg redundáns tárolás, georedundáns tárolás vagy írásvédett georedundáns tárolás. Az alapértelmezett érték a helyileg redundáns tárolás. Módosíthatja a típust adott virtuális gépek tárfiókja alapján, vagy alkalmazhatja az új típust minden virtuális gépre. Ehhez módosítsa a felső sor típusát, és kattintson az **Alkalmazás az összesre** gombra. A replikáció tárolási költsége a kiválasztott adatredundancia ára alapján lesz kiszámítva. 
 
-**Azure Hybrid Use Benefit**: Az Azure Hybrid Use Benefit Windows rendszerű virtuális gépekre alkalmazható, ha van. Az alapértelmezett **érték**igen . Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet. Kattintson az **Alkalmazás az összesre** gombra.
+**Azure Hybrid Use Benefit**: Az Azure Hybrid Use Benefit Windows rendszerű virtuális gépekre alkalmazható, ha van. Az alapértelmezett érték az **Igen**. Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet. Kattintson az **Alkalmazás az összesre** gombra.
 
 **Teljes Azure-használat**: A vészhelyreállítás számítási, tárolási és Site Recovery-licencköltsége. A választott beállítás alapján a költségeket havi vagy éves bontásban jeleníti meg.
 
@@ -157,7 +157,7 @@ Virtuális gépek manuális hozzáadása:
 
 **DR működésének teljes költsége (átlag)**: A DR működésének számítási és tárolási költsége.
 
-**Az Azure Site Recovery licencköltsége:** A Site Recovery licenc költsége.
+**Azure site Recovery a licencek díja**: a site Recovery licenc díja.
 
 ## <a name="supported-target-regions"></a>Támogatott célrégiók
 A Site Recovery Deployment Planner a következő Azure-régiókhoz biztosít költségbecslést. Ha a régiója nem található meg ebben a listában, a következő régiók közül használhatja azt, amelynek díjszabása a legközelebb áll az Ön régiójához:
@@ -167,13 +167,13 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Currency (Pénznem)|Név||Currency (Pénznem)|Név||Currency (Pénznem)|Név|
+|Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (CHF)||DKK|Dán korona (kr)|
 |EUR|Euró (€)||GBP|Angol font (£)||HKD|Hongkongi dollár (HK$)|
-|IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (啦)||JPY|Japán jen (¥)|
-|KRW|Koreai nyert (?)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
+|IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (₹)||JPY|Japán jen (¥)|
+|KRW|Koreai won (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
 |NOK|Norvég korona (kr)||NZD|Új-zélandi dollár ($)||RUB|Orosz rubel (руб)|
 |SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|

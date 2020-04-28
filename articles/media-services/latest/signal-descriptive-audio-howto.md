@@ -1,6 +1,6 @@
 ---
-title: Jelleíró hangsávok az Azure Media Services v3-as számával | Microsoft dokumentumok
-description: Az oktatóanyag lépéseit követve töltsön fel egy fájlt, kódolja a videót, adjon hozzá leíró hangsávokat, és streamelje a tartalmat a Media Services v3-mal.
+title: Jel leíró hangsávok a Azure Media Services v3-vel | Microsoft Docs
+description: Kövesse az oktatóanyag lépéseit egy fájl feltöltéséhez, a videó kódolásához, a leíró hangsávok hozzáadásához és a tartalom továbbításához a Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,76 +13,76 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72392188"
 ---
-# <a name="signal-descriptive-audio-tracks"></a>Jelleíró hangsávok
+# <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
 
-Kísérőszöveg-sávot adhat a videóhoz, hogy a látássérült ügyfelek a kísérőszöveg meghallgatásával kövessék a videofelvételt. A Media Services v3-as számban a leíró hangsávokat a jegyzékfájlban lévő hangsáv feliratozásával jelezheti.
+Kísérőszöveget adhat hozzá a videóhoz, hogy a kísérőszöveggel Hallgassa meg a vizuálisan korlátozott ügyfeleket a videó rögzítésének követéséhez. A Media Services v3-as verzióban a leíró hangsávokat a manifest-fájlban szereplő hangfelvételi jelekkel jelezheti.
 
-Ez a cikk bemutatja, hogyan kódolhatja a videót, hogyan tölthet fel csak hanggal csak MP4-fájlt (AAC kodek), amely leíró hangot tartalmaz a kimeneti eszközbe, és hogyan szerkesztheti az .ism fájlt, hogy tartalmazza a leíró hangot.
+Ebből a cikkből megtudhatja, hogyan kódolhat egy videót, töltsön fel egy, a kimeneti eszközre mutató hangalapú MP4-fájlt (AAC kodeket), és szerkessze az. ISM fájlt, hogy tartalmazza a leíró hangot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
-- Kövesse az [Access Azure Media Services API-t az Azure CLI-vel,](access-api-cli-how-to.md) és mentse a hitelesítő adatokat. Az API eléréséhez használnia kell őket.
-- Tekintse át [a dinamikus csomagolást.](dynamic-packaging-overview.md)
-- Tekintse át a [Videók feltöltését, kódolását és streamelését](stream-files-tutorial-with-api.md) bemutatóból.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- Tekintse át a [dinamikus csomagolást](dynamic-packaging-overview.md).
+- Tekintse át a [videók feltöltése, kódolása és továbbítása](stream-files-tutorial-with-api.md) című oktatóanyagot.
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bemeneti objektum létrehozása és helyi fájl feltöltés az objektumba 
 
-A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](https://docs.microsoft.com/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Ez **az eszköz** a kódolási feladat bemeneti bemeneteként szolgál. A Media Services v3-as verzióban a **feladat** bemenete lehet **eszköz,** vagy lehet olyan tartalom, amelyet https-URL-címeken keresztül tesz elérhetővé a Media Services-fiók számára. 
+A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](https://docs.microsoft.com/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Ez az **eszköz** a kódolási feladatnak való bemenetként szolgál. A Media Services v3-as verziójában a **feladatba** való bevitel lehet egy **eszköz**, vagy olyan tartalom is lehet, amelyet a Media Services-fiókja HTTPS URL-címeken keresztül elérhetővé tesz. 
 
-Ha meg szeretné tudni, hogyan kódolhat HTTPS-URL-címről, olvassa el [ezt a cikket.](job-input-from-http-how-to.md)  
+Ha szeretné megismerni a HTTPS URL-címekről történő kódolást, tekintse meg [ezt a cikket](job-input-from-http-how-to.md) .  
 
 A Media Services 3-as verziójában Azure Storage API-k használatával tölthet fel fájlokat. Ennek módját a következő .NET-kódrészlet mutatja be.
 
 A következő függvény ezeket a műveleteket hajtja végre:
 
-* **Eszköz** létrehozása 
-* Írható [SAS-URL-címet](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) kap az eszköz [tárolójának tárolójára](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
+* Létrehoz egy **eszközt** 
+* Egy írható [sas URL-cím](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) beolvasása az eszköz tárolójában a [tárolóban](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
 * Feltölti a fájlt a tárolóba a SAS URL-cím használatával.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Ha a létrehozott bemeneti eszköz nevét más metódusok számára is `Name` át kell adnia, győződjön meg arról, hogy a tulajdonságot az eszközobjektumon például inputAsset.Name visszaadott. `CreateInputAssetAsync` 
+Ha a létrehozott bemeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott `CreateInputAssetAsync`objektumhoz, például inputAsset.name. 
 
-## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kimeneti eszköz létrehozása a kódolási feladat eredményének tárolásához
+## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kimeneti eszköz létrehozása a kódolási feladatok eredményének tárolásához
 
-A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a kódolási feladat eredményeit. A következő függvény bemutatja, hogyan hozhat létre egy kimeneti eszközt.
+A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a kódolási feladat eredményeit. A következő függvény azt mutatja be, hogyan hozható létre kimeneti eszköz.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Ha a létrehozott kimeneti eszköz nevét más metódusok számára is `Name` át kell adnia, győződjön meg arról, hogy a tulajdonságot az eszközobjektumon például outputAsset.Name visszaadott. `CreateIOutputAssetAsync` 
+Ha a létrehozott kimeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott `CreateIOutputAssetAsync`objektumhoz, például outputAsset.name. 
 
-Ebben a cikkben adja `outputAsset.Name` át az `SubmitJobAsync` `UploadAudioIntoOutputAsset` értéket a és a függvényeknek.
+A jelen cikk esetében adja át az `outputAsset.Name` értéket a és `SubmitJobAsync` `UploadAudioIntoOutputAsset` a függvénynek.
 
-## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>A feltöltött fájlt kódoló átalakítás és feladat létrehozása
+## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Hozzon létre egy átalakítót és egy olyan feladatot, amely kódolja a feltöltött fájlt
 
-A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha minden új videóhoz új állásokat küldesz be, akkor ezt a receptet a könyvtárad összes videójára alkalmazod. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
+A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha új feladatokat küld minden új videóhoz, akkor ezt a receptet a könyvtárában lévő összes videóra alkalmazza. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
 
-A következő példa létrehoz egy átalakítót (ha nem létezik).
+A következő példa létrehoz egy átalakítót (ha az egyik nem létezik).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
-A következő függvény beküld egy feladatot.
+A következő függvény elküld egy feladatot.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 
 ## <a name="wait-for-the-job-to-complete"></a>Várakozás a feladat befejeződésére
 
-A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Azt javasoljuk, hogy az Event Grid használatával várja meg a feladat befejezését.
+A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Javasoljuk, hogy a Event Grid használatával várjon, amíg a feladatok befejeződik.
 
-A feladat általában a következő állapotokon megy keresztül: **Ütemezett**, **Várólistán,** **Feldolgozás**, **Befejezett** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
+A feladatok általában a következő állapotokon haladnak át: **ütemezett**, **várólistán**lévő, **feldolgozás**, **befejezett** (végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
-További információt az [Eseményrács eseményeinek kezelése című témakörben talál.](reacting-to-media-services-events.md)
+További információ: [Event Grid események feldolgozása](reacting-to-media-services-events.md).
 
-## <a name="upload-the-audio-only-mp4-file"></a>A csak hanggal audio-MP4 fájl feltöltése
+## <a name="upload-the-audio-only-mp4-file"></a>A csak hang MP4-fájl feltöltése
 
-Töltse fel a további csak audio-MP4 fájlt (AAC codec), amely leíró hangot tartalmaz a kimeneti eszközbe.  
+Töltse fel a hangvezérelt hanganyagot tartalmazó további, hang-csak MP4-fájlt (AAC-kodeket) a kimeneti eszközbe.  
 
 ```csharp
 private static async Task UpoadAudioIntoOutputAsset(
@@ -133,16 +133,16 @@ private static async Task UpoadAudioIntoOutputAsset(
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
 ```
 
-## <a name="edit-the-ism-file"></a>Az .ism fájl szerkesztése
+## <a name="edit-the-ism-file"></a>Az. ISM fájl szerkesztése
 
-Amikor a kódolási feladat befejeződött, a kimeneti eszköz tartalmazza a kódolási feladat által létrehozott fájlokat. 
+Ha elkészült a kódolási feladatokkal, a kimeneti eszköz fogja tartalmazni a kódolási feladatokból generált fájlokat. 
 
-1. Az Azure Portalon keresse meg a Media Services-fiókhoz társított tárfiókot. 
+1. A Azure Portal navigáljon a Media Services-fiókjához társított Storage-fiókhoz. 
 1. Keresse meg a tárolót a kimeneti eszköz nevével. 
-1. A tárolóban keresse meg az .ism fájlt, és kattintson a **Blob szerkesztése** elemre (a jobb oldali ablakban). 
-1. Az .ism fájlt szerkesztheti a csak hanggal feltöltött MP4-fájl (AAC kodek) használatával, amely leíró hangot tartalmaz, majd ha végzett, nyomja le a **Mentés** gombot.
+1. A tárolóban keresse meg az. ISM fájlt, és kattintson a jobb oldali ablakban található **blob szerkesztése** elemre. 
+1. Szerkessze az. ISM-fájlt úgy, hogy felveszi a deformatív hanganyagot tartalmazó feltöltött, csak hangalapú MP4-fájl (AAC kodek) adatait, és a **Mentés** gombra kattint.
 
-    A leíró hangsávok jelzéséhez hozzá kell adnia a "kisegítő lehetőségek" és a "szerep" paramétereket az .ism fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen állítsa be, hogy a hangsávot hangleírásként jelezze. Például adja `<param name="accessibility" value="description" />` `<param name="role" value="alternate" />` hozzá és adja hozzá az .ism fájlt egy adott hangsávhoz, ahogy az a következő példában látható.
+    A leíró hangsávok megjelenítéséhez hozzá kell adnia a "kisegítő adatok" és a "szerepkör" paramétereket az. ISM-fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen adja meg, hogy hangvételt jelezzen a hanganyagok leírásaként. Például az alábbi példában `<param name="accessibility" value="description" />` látható `<param name="role" value="alternate" />` módon vegyen fel egy adott hangsávhoz tartozó. ISM-fájlt, és adjon hozzá egy adott hangsávot.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -200,29 +200,29 @@ Amikor a kódolási feladat befejeződött, a kimeneti eszköz tartalmazza a kó
 </smil>
 ```
 
-## <a name="get-a-streaming-locator"></a>Streamelési lokátor beszereznie
+## <a name="get-a-streaming-locator"></a>Folyamatos átviteli lokátor beszerzése
 
-A kódolás befejezése után a következő lépés a kimeneti objektumban található videó elérhetővé tétele az ügyfelek számára lejátszásra. Ezt két lépésben teheti meg: először hozzon létre egy [streamelési lokátort,](https://docs.microsoft.com/rest/api/media/streaminglocators)másodszor pedig hozza létre az ügyfelek által használható streamelési URL-címeket. 
+A kódolás befejezése után a következő lépés a kimeneti objektumban található videó elérhetővé tétele az ügyfelek számára lejátszásra. Ezt két lépésben hajthatja végre: először hozzon létre egy [adatfolyam-keresőt](https://docs.microsoft.com/rest/api/media/streaminglocators), és Másodszor hozza létre az ügyfelek által használható Streaming URL-címeket. 
 
-A **streamelési lokátor** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint a **streamelési lokátor** az API-hívások kezdeményezése után azonnal érvényes, és a törlésig tart, kivéve, ha konfigurálja a választható kezdési és befejezési időpontokat. 
+Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
 
-A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában a rendszer a tiszta (vagy nem titkosított tartalmat) streamelést fogja használni, így az előre definiált titkos adatfolyam-továbbítási házirend (**PredefinedStreamingPolicy.ClearStreamingOnly**) lesz használva.
+A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában a folyamatos átvitelt (vagy nem titkosított tartalmat) fogja használni, így az előre definiált tiszta adatfolyam-szabályzatot (**PredefinedStreamingPolicy. ClearStreamingOnly**) használja a rendszer.
 
 > [!IMPORTANT]
-> Egyéni [streamelési szabályzat](https://docs.microsoft.com/rest/api/media/streamingpolicies)használataesetén a Media Service-fiókhoz korlátozott számú ilyen házirendet kell megterveznie, és újra fel kell használnia őket a StreamingLocatorok számára, ha ugyanazokra a titkosítási beállításokra és protokollokra van szükség. A Media Service-fiók rendelkezik kvótával a streamelési szabályzat-bejegyzések számára. Nem hozhat létre új streamelési szabályzatot az egyes streamelési lokátorokhoz.
+> Ha egyéni [folyamatos átviteli szabályzatot](https://docs.microsoft.com/rest/api/media/streamingpolicies)használ, meg kell terveznie az ilyen szabályzatok korlátozott készletét a Media Service-fiókjához, és újra fel kell használni azokat a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. A Media Service-fiókhoz tartozik egy kvóta a folyamatos átviteli szabályzat bejegyzéseinek számára. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.
 
 Az alábbi kód azt feltételezi, hogy a függvényt egy egyedi locatorName objektummal hívja meg.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-Míg a témakörben szereplő minta a streamelést tárgyalja, ugyanazzal a hívással létrehozhat egy streamelési lokátort a videó progresszív letöltéssel történő kézbesítéséhez.
+Míg a témakörben szereplő minta a streaminget tárgyalja, ugyanazt a hívást használhatja a videó továbbításához a progresszív letöltés használatával.
 
 ### <a name="get-streaming-urls"></a>Streamelési URL-címek lekérdezése
 
-Most, hogy létrejött a [streamelési lokátor,](https://docs.microsoft.com/rest/api/media/streaminglocators) lekaphatja a streamelési URL-eket, ahogy az a **GetStreamingURLs-ban**látható. URL-cím létrehozásához össze kell fűznie a [streamelési végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints) gazdagép nevét és a **streamelési lokátor** elérési útját. Ebben a példában az *alapértelmezett* **streamelési végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **streamelési végpont** leállított állapotban lesz, ezért meg kell hívnia a Start **programot.**
+Most, hogy létrejött a [folyamatos átviteli lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) , beolvashatja a streaming URL-címeket, ahogy az a **GetStreamingURLs**-ban is látható. URL-cím létrehozásához összefűzni kell a [streaming Endpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
 
 > [!NOTE]
-> Ebben a módszerben a kimeneti eszköz **streamelési lokátorának** létrehozásakor használt lokátornév szükséges.
+> Ebben a metódusban szüksége lesz a kimeneti eszköz **folyamatos átviteli lokátorának** létrehozásakor használt locatorName.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 
@@ -233,10 +233,10 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 > [!NOTE]
 > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-1. Nyisson meg egy [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)webböngészőt, és keresse meg a ját.
-2. Az **URL-cím:** mezőbe illessze be az alkalmazásból kapott streamelési URL-értékek egyikét. 
+1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és navigáljon a következőhöz:.
+2. Az **URL:** mezőben illessze be az alkalmazásból kapott streaming URL-értékeket. 
  
-     Az URL-címet HLS, Dash vagy Smooth formátumba illesztheti be, és az Azure Media Player automatikusan átvált a megfelelő streamelési protokollra az eszközön való lejátszáshoz.
+     Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti, és a Azure Media Player a megfelelő folyamatos átviteli protokollra vált az eszközön való automatikus lejátszás érdekében.
 3. Kattintson az **Update Player** (Lejátszó frissítése) elemre.
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 

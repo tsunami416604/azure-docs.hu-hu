@@ -1,14 +1,14 @@
 ---
 title: Az Azure Blockchain Workbench adatbázis-tűzfalának konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja az Azure Blockchain Workbench Preview adatbázis-tűzfalat, hogy a külső ügyfelek és alkalmazások csatlakozni.
+description: Ismerje meg, hogyan konfigurálhatja az Azure Blockchain Workbench előzetes verziójú adatbázis-tűzfalát a külső ügyfelek és alkalmazások kapcsolódásának engedélyezéséhez.
 ms.date: 09/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74326004"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Az Azure Blockchain Workbench-adatbázis tűzfalának konfigurálása
@@ -19,7 +19,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat tűzfalszabályokat az Azure Portal s
 
 A következőképpen csatlakozhat ahhoz az adatbázishoz, amelyben szabályt szeretne konfigurálni:
 
-1. Jelentkezzen be az Azure Portalra egy olyan fiókkal, amely **tulajdonosi** engedélyekkel rendelkezik az Azure Blockchain Workbench-erőforrásokhoz.
+1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely rendelkezik **tulajdonosi** engedélyekkel az Azure Blockchain Workbench erőforrásaihoz.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza a Blockchain Workbench-környezete erőforráscsoportjának nevét.
 4. Válassza a **Típus** lehetőséget az erőforrások rendezéséhez, majd válassza az **SQL server** lehetőséget.

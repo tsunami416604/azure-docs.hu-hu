@@ -1,6 +1,6 @@
 ---
-title: Séma frissítések június-1-2016
-description: Frissített séma 2016-06-01-es verziója az Azure Logic Apps logikai alkalmazásdefinícióihoz
+title: Schema Updates június-1-2016
+description: A 2016-06-01-es verzió a Logic app-definíciók esetében Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,27 +9,27 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792877"
 ---
-# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Sémafrissítések az Azure Logic Apps alkalmazáshoz – 2016.
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
 
-Az Azure Logic Apps [frissített séma-](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) és API-verziója olyan kulcsfontosságú fejlesztéseket tartalmaz, amelyek megbízhatóbbá és könnyebben használhatóvá teszik a logikai alkalmazásokat:
+A Azure Logic Apps [frissített sémája](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) és API-verziója olyan kulcsfontosságú funkciókat tartalmaz, amelyek megbízhatóbb és könnyebben használhatóvá teszik a logikai alkalmazásokat:
 
-* [A hatókörök](#scopes) lehetővé teszik a műveletek csoportosítását vagy beágyazását műveletek gyűjteményeként.
-* [A feltételek és hurkok](#conditions-loops) mostantól első osztályú műveletek.
-* Pontosabb rendelés a futó `runAfter` műveletek hez az ingatlannal,`dependsOn`
+* A [hatókörök](#scopes) lehetővé teszik műveletek gyűjteményként történő csoportosítását vagy beágyazását.
+* A [feltételek és a hurkok](#conditions-loops) mostantól az első osztályú műveletek.
+* Pontosabb sorrend a műveletek futtatásához a `runAfter` tulajdonsággal, lecserélve`dependsOn`
 
-A 2015. [check out the upgrade section](#upgrade-your-schema)
+A logikai alkalmazások 2015-as augusztus 1-től a 2016-es verzióra való frissítéséhez tekintse [meg a frissítés szakaszt](#upgrade-your-schema).
 
 <a name="scopes"></a>
 
 ## <a name="scopes"></a>Hatókörök
 
-Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek csoportosítását, illetve a műveletek egymásba ágyazását. Egy feltétel például tartalmazhat egy másik feltételt. További információ [a hatókör szintaxisáról](../logic-apps/logic-apps-loops-and-scopes.md), vagy tekintse át ezt az alapvető hatókört:
+Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek együttes csoportosítását, vagy egymáson belüli műveletek beágyazását. Egy feltétel például tartalmazhat egy másik feltételt is. További tudnivalók a [hatókör szintaxisáról](../logic-apps/logic-apps-loops-and-scopes.md), vagy az alapvető hatókör áttekintése:
 
 ```json
 {
@@ -55,7 +55,7 @@ Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek csop
 
 ## <a name="conditions-and-loops-changes"></a>Feltételek és hurkok változásai
 
-A korábbi sémaverziókban a feltételek és a hurkok egyetlen művelethez társított paraméterek voltak. Ez a séma megszünteti ezt a korlátozást, így a feltételek és hurkok már elérhetők művelettípusként. További információ [a hurkokról és a hatókörökről](../logic-apps/logic-apps-loops-and-scopes.md), [feltételekről,](../logic-apps/logic-apps-control-flow-conditional-statement.md)vagy tekintse át ezt az alapvető példát, amely feltételműveletet mutat be:
+A korábbi sémák verzióiban a feltételek és a hurkok egyetlen művelethez társított paraméterek voltak. Ez a séma feloldja ezt a korlátozást, így a feltételek és a hurkok mostantól művelettípusként érhetők el. További információ a [hurkok és hatókörökről](../logic-apps/logic-apps-loops-and-scopes.md), a [feltételekről](../logic-apps/logic-apps-control-flow-conditional-statement.md), illetve az alapvető példa, amely egy feltétel műveletét mutatja be:
 
 ```json
 {
@@ -83,9 +83,9 @@ A korábbi sémaverziókban a feltételek és a hurkok egyetlen művelethez tár
 
 <a name="run-after"></a>
 
-## <a name="runafter-property"></a>'runAfter' tulajdonság
+## <a name="runafter-property"></a>"runAfter" tulajdonság
 
-A `runAfter` tulajdonság `dependsOn`lecseréli a tulajdonságot, így nagyobb pontosságot biztosít, amikor a műveletek futtatási sorrendjét a korábbi műveletek állapota alapján adja meg. A `dependsOn` tulajdonság azt jelezte, hogy "a művelet futott és sikeres volt", attól függően, hogy az előző művelet sikeres volt, sikertelen vagy kimarad-e – nem pedig azt, hogy hányszor kívánta futtatni a műveletet. A `runAfter` tulajdonság rugalmasságot biztosít objektumként, amely megadja az összes olyan műveletnevet, amely után az objektum fut. Ez a tulajdonság olyan állapotok tömbjét is definiálja, amelyek eseményindítókként elfogadhatók. Ha például azt szeretné, hogy egy művelet az A művelet sikeres legyen, és `runAfter` a B művelet sikeres vagy sikertelen is legyen, állítsa be ezt a tulajdonságot:
+A `runAfter` tulajdonság lecserélésekor `dependsOn`nagyobb pontosságot biztosít, ha az előző műveletek állapota alapján adja meg a műveletek futtatási sorrendjét. A `dependsOn` tulajdonság azt jelzi, hogy "a művelet futott és sikeres volt-e", attól függően, hogy az előző művelet sikeres volt-e, sikertelen vagy kihagyott-e, nem a művelet futtatásához szükséges idő. A `runAfter` tulajdonság rugalmasságot biztosít olyan objektumként, amely az összes művelet nevét adja meg, amely után az objektum fut. Ez a tulajdonság határozza meg az eseményindítóként elfogadható állapotok tömbjét is. Ha például azt szeretné, hogy egy művelet sikeres művelet után fusson, és a B művelet sikeres vagy sikertelen volt-e, állítsa be a `runAfter` következő tulajdonságot:
 
 ```json
 {
@@ -99,61 +99,61 @@ A `runAfter` tulajdonság `dependsOn`lecseréli a tulajdonságot, így nagyobb p
 
 ## <a name="upgrade-your-schema"></a>A séma frissítése
 
-A legújabb [sémára](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)való frissítéshez csak néhány lépést kell tennie. A frissítési folyamat magában foglalja a frissítési parancsfájl futtatását, mentésúj logikai alkalmazásként, és ha szeretné, esetleg felülírja az előző logikai alkalmazást.
+A [legújabb sémára](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)való frissítéshez csak néhány lépést kell elvégeznie. A frissítési folyamat magában foglalja a Frissítési parancsfájl futtatását, az új logikai alkalmazásként való mentést, és ha szeretné, az előző logikai alkalmazás felülírását.
 
-1. Nyissa meg a logikai alkalmazást az Azure Portalon.
+1. A Azure Portal nyissa meg a logikai alkalmazást.
 
-2. Nyissa meg az **Áttekintés című témakört.** A logikai alkalmazás eszköztárán válassza a **Séma frissítése**lehetőséget.
+2. Ugrás az **áttekintéshez**. A logikai alkalmazás eszköztárán válassza a **séma frissítése**lehetőséget.
    
-   ![Séma frissítésének kiválasztása][1]
+   ![Válasszon frissítési sémát][1]
    
-   A frissített definíciót adja vissza, amelyet szükség esetén átmásolhat és beilleszthet egy erőforrás-definícióba. 
+   A rendszer a frissített definíciót adja vissza, amely szükség esetén átmásolható és beilleszthető egy erőforrás-definícióba. 
 
    > [!IMPORTANT]
-   > *Győződjön meg arról, hogy* a **Mentés másként** lehetőséget választotta, hogy az összes kapcsolathivatkozás érvényes maradjon a frissített logikai alkalmazásban.
+   > *Győződjön meg arról, hogy* a **Mentés másként** lehetőséget választja, így a kapcsolatok összes hivatkozása érvényes marad a frissített logikai alkalmazásban.
 
-3. A frissítési panel eszköztárán válassza a **Mentés másként**lehetőséget.
+3. A frissítés panel eszköztárán válassza a **Mentés másként**lehetőséget.
 
-4. Adja meg a logika nevét és állapotát. A frissített logikai alkalmazás telepítéséhez válassza a **Létrehozás lehetőséget.**
+4. Adja meg a logikai nevet és az állapotot. A frissített logikai alkalmazás üzembe helyezéséhez válassza a **Létrehozás**lehetőséget.
 
-5. Győződjön meg arról, hogy a frissített logikai alkalmazás a várt módon működik.
+5. Ellenőrizze, hogy a frissített logikai alkalmazás a várt módon működik-e.
    
    > [!NOTE]
-   > Ha kézi vagy kérelem eseményindítót használ, a visszahívási URL-cím megváltozik az új logikai alkalmazásban. Tesztelje az új URL-címet, és győződjön meg arról, hogy a végpontok között a felhasználói élmény működik. A korábbi URL-címek megőrzése érdekében klónozhatja a meglévő logikai alkalmazást.
+   > Ha kézi vagy kérelem típusú triggert használ, a visszahívási URL-cím módosul az új logikai alkalmazásban. Tesztelje az új URL-címet, és győződjön meg arról, hogy a végpontok közötti élmény működik. Az előző URL-címek megőrzése érdekében a meglévő logikai alkalmazás klónozása is megtörténik.
 
-6. *Nem kötelező* Ha felül szeretné írni az előző logikai alkalmazást az új sémaverzióval, az eszköztáron válassza a **Klónozás**lehetőséget a **Séma frissítése**gomb mellett. Ez a lépés csak akkor szükséges, ha meg szeretné tartani ugyanazt az erőforrás-azonosítót, vagy a logikai alkalmazás aktiválási URL-címét szeretné megtartani.
+6. Nem *kötelező* Ha felül szeretné írni az előző logikai alkalmazást az új séma verziójával, akkor az eszköztáron válassza a **klónozás**lehetőséget a **séma frissítése**elem mellett. Ez a lépés csak akkor szükséges, ha meg szeretné tartani ugyanazt az erőforrás-azonosítót vagy a logikai alkalmazás trigger URL-címét.
 
-## <a name="upgrade-tool-notes"></a>A frissítési eszköz jegyzetei
+## <a name="upgrade-tool-notes"></a>Frissítési eszközök megjegyzései
 
 ### <a name="mapping-conditions"></a>Leképezési feltételek
 
-A frissített definícióban az eszköz a lehető legjobban igyekszik a valós és hamis elágazási műveleteket hatókörként csoportosítani. Pontosabban, a tervező `@equals(actions('a').status, 'Skipped')` minta `else` jelenik meg, mint egy művelet. Ha azonban az eszköz felismerhetetlen mintákat észlel, az eszköz külön feltételeket teremthet mind az igaz, mind a hamis ághoz. Szükség esetén a frissítés után újra leképezheti a műveleteket.
+A frissített definícióban az eszköz a legjobb erőfeszítést teszi az igaz és a hamis ág-műveletek hatókörként való csoportosításához. Pontosabban, a tervező mintázata `@equals(actions('a').status, 'Skipped')` `else` műveletként jelenik meg. Ha azonban az eszköz nem felismerhető mintákat észlel, az eszköz külön feltételeket hozhat létre az igaz és a hamis ág esetében is. Ha szükséges, újra felveheti a műveleteket a frissítés után.
 
-#### <a name="foreach-loop-with-condition"></a>"foreach" hurok állapotban
+#### <a name="foreach-loop-with-condition"></a>"foreach" hurok feltétellel
 
-Az új séma, használhatja a szűrő művelet replikálni a mintát, amely egy **minden** ciklushoz egy feltételt elemenként. A módosítás azonban automatikusan megtörténik a frissítés kor. A feltétel egy szűrőműveletté válik, amely az **egyes ciklusok** előtt jelenik meg, és csak egy tömbnyi elemet ad vissza, amelyek megfelelnek a feltételnek, és átadja a tömböt **az egyes** műveletekhez. Például lásd: [Hurkok és hatókörök](../logic-apps/logic-apps-loops-and-scopes.md).
+Az új sémában a szűrés művelettel replikálhatja azt a mintát, amely **minden** hurokhoz egy feltétellel rendelkező hurkot használ. A módosítás azonban automatikusan megtörténik a frissítéskor. A feltétel egy szűrési művelet lesz, amely az **egyes** ciklusok előtt jelenik meg, és csak a feltételnek megfelelő elemek tömbjét adja vissza, és a tömböt az **egyes** műveletekhez adja át. Példa: [hurkok és hatókörök](../logic-apps/logic-apps-loops-and-scopes.md).
 
 ### <a name="resource-tags"></a>Erőforráscímkék
 
-A frissítés után az erőforráscímkék törlődnek, ezért alaphelyzetbe kell állítania őket a frissített munkafolyamathoz.
+A frissítés után a rendszer eltávolítja az erőforrás-címkéket, ezért alaphelyzetbe kell állítania a frissített munkafolyamatot.
 
 ## <a name="other-changes"></a>További változások
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Átnevezett "manuális" eseményindító "kérés" eseményindítóra
+### <a name="renamed-manual-trigger-to-request-trigger"></a>A "Manual" trigger átnevezve a "Request" triggerre
 
-Az `manual` eseményindító típuselavult, és átnevezték a `request` típusra. `http` Ez a módosítás több konzisztenciát hoz létre az eseményindító létrehozásához használt minta létrehozásához.
+Az `manual` trigger típusa elavult, és a típusra `request` `http`lett átnevezve. Ez a változás nagyobb konzisztenciát eredményez a trigger által felépített minta típusához képest.
 
 ### <a name="new-filter-action"></a>Új "szűrő" művelet
 
-Ha egy nagy tömböt kisebb elemcsoportokra szeretne `filter` szűrni, az új típus elfogad egy tömböt és egy feltételt, kiértékeli az egyes elemek feltételét, és egy olyan tömböt ad vissza, amelynek elemei megfelelnek a feltételnek.
+Ha egy nagyméretű tömböt kisebb készletekre szeretne szűrni, az új `filter` típus fogad egy tömböt és egy feltételt, kiértékeli az egyes elemek feltételeit, és egy tömböt ad vissza, amelyben a feltételnek megfelelő elemek szerepelnek.
 
-### <a name="restrictions-for-foreach-and-until-actions"></a>Korlátozások a "foreach" és a "until" intézkedésekre
+### <a name="restrictions-for-foreach-and-until-actions"></a>A "foreach" és a "ig" műveletre vonatkozó korlátozások
 
-A `foreach` `until` és a ciklus egyetlen műveletre korlátozódik.
+A `foreach` és `until` a hurok egyetlen műveletre korlátozódik.
 
-### <a name="new-trackedproperties-for-actions"></a>Új "nyomon követett tulajdonságok" a műveletekhez
+### <a name="new-trackedproperties-for-actions"></a>Új "trackedProperties" a műveletekhez
 
-A műveletek most már `trackedProperties`rendelkezhetnek egy további `runAfter` `type` tulajdonsággal, amely a és a tulajdonságok testvére. Ez az objektum bizonyos műveletbemeneteket vagy kimeneteket határoz meg, amelyeket az Azure diagnosztikai telemetriába szeretne felvenni, és amelyet egy munkafolyamat részeként ad ki. Példa:
+A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperties`, amely a testvér a `runAfter` és `type` a tulajdonságok. Ez az objektum a munkafolyamat részeként kibocsátott Azure diagnosztikai telemetria felvenni kívánt műveletek bemeneteit és kimeneteit határozza meg. Például:
 
 ``` json
 {

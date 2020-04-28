@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás RSS-hírcsatornákhoz az Azure Logic Apps alkalmazásból
-description: Automatizálhatja az RSS-hírcsatornákat figyelő és kezelő feladatokat és munkafolyamatokat az Azure Logic Apps használatával
+title: Kapcsolódás RSS-hírcsatornához Azure Logic Apps
+description: Automatizálja az RSS-hírcsatornákat Azure Logic Apps használatával figyelő és kezelő feladatokat és munkafolyamatokat
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,50 +8,50 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789341"
 ---
-# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-hírcsatornák kezelése az Azure Logic Apps használatával
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-hírcsatornák kezelése Azure Logic Apps használatával
 
-Az Azure Logic Apps és az RSS-összekötő segítségével automatizált feladatokat és munkafolyamatokat hozhat létre bármely RSS-hírcsatornához, például:
+A Azure Logic Apps és az RSS-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre az RSS-hírcsatornák számára, például:
 
-* Figyelje, hogy mikor teszik közzé az RSS-hírcsatorna-elemeket.
-* Az összes RSS-hírcsatorna-elem listázása.
+* Figyelje az RSS-hírcsatornák közzétételekor.
+* Az RSS-hírcsatornák összes elemének listázása.
 
-RSS (Rich Site Summary), más néven Really Simple Syndication, egy népszerű formátum a webes szindikálás és a gyakran frissített tartalmak, például blogbejegyzések és hírek címoldalára. Számos tartalomközzétevő biztosít RSS-hírcsatornát, hogy a felhasználók előfizethethessenek az adott tartalomra. 
+Az RSS (Rich site Summary), más néven a Really Simple Syndication, népszerű formátum a webes hírszolgáltatáshoz, és gyakran frissített tartalmak, például blogbejegyzések és hírek közzétételére szolgál. Számos tartalomszolgáltató biztosít RSS-hírcsatornát, így a felhasználók előfizethetnek erre a tartalomra. 
 
-Használhat egy RSS-eseményindítót, amely válaszokat kap egy RSS-hírcsatornából, és elérhetővé teszi a kimenetet más műveletek számára. A logikai alkalmazásokban egy RSS-művelet segítségével végrehajthat egy feladatot az RSS-hírcsatornával. Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Olyan RSS-triggert használhat, amely az RSS-hírcsatornából választ kap, és a kimenetet más műveletek számára is elérhetővé teszi. A logikai alkalmazásokban RSS-művelettel feladatokat végezhet el az RSS-hírcsatornával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* RsS-hírcsatorna URL-címe
+* Az RSS-hírcsatorna URL-címe
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol rss-hírcsatornát szeretne elérni. Az RSS-eseményindítóval való kezdéshez [hozzon létre egy üres logikai alkalmazást.](../logic-apps/quickstart-create-first-logic-app-workflow.md) RSS-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **Ismétlődés** eseményindítóval.
+* Az a logikai alkalmazás, amelyhez el szeretné érni az RSS-hírcsatornát. Ha RSS-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). RSS-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="connect-to-an-rss-feed"></a>Csatlakozás RSS-hírcsatornához
+## <a name="connect-to-an-rss-feed"></a>Kapcsolódás RSS-hírcsatornához
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válasszon elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként az "rss" szót. Az eseményindítók listában válassza ki a kívánt eseményindítót. 
+   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként az "RSS" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
      – vagy –
 
-   * Meglévő logikai alkalmazások esetén a művelet hozzáadásának lépésalatt válassza az **Új lépés lehetőséget.** A keresőmezőbe írja be szűrőként az „rss” kifejezést. A műveletek listájában jelölje ki a kívánt műveletet.
+   * A meglévő Logic apps esetében azon a lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be szűrőként az „rss” kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
-1. Adja meg a kiválasztott eseményindító vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/rss/)
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/rss/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -60,4 +60,4 @@ Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindí
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

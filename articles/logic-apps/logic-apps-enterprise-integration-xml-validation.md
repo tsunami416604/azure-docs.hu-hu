@@ -1,6 +1,6 @@
 ---
-title: XML ellenőrzése a B2B vállalati integrációhoz
-description: XML ellenőrzése sémák használatával az Azure Logic Apps vállalati integrációs csomaggal
+title: A B2B vállalati integráció XML-kódjának érvényesítése
+description: Az XML érvényesítése a Azure Logic Apps sémái segítségével Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,60 +9,60 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792164"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Xml ellenőrzése a B2B vállalati integrációhoz az Azure Logic Apps alkalmazásban a vállalati integrációs csomaggal
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>A B2B vállalati integráció XML-kódjának érvényesítése Azure Logic Appsban Enterprise Integration Pack
 
-A B2B-forgatókönyvekben gyakran a megállapodásban részt vehető kereskedelmi partnereknek meg kell győződniük arról, hogy az általuk kicserélt üzenetek érvényesek, mielőtt bármilyen adatkezelés megkezdődhetne. A dokumentumokat egy előre definiált séma alapján érvényesítheti az XML-érvényesítési művelettel, amely a vállalati integrációs csomaggal érhető el.
+Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnereknek biztosítaniuk kell, hogy az általuk továbbított üzenetek érvényesek legyenek az adatfeldolgozás megkezdése előtt. A dokumentumok egy előre definiált sémán keresztül ellenőrizhetők az XML-érvényesítési művelettel, amely a Enterprise Integration Pack érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
+* Azure-előfizetés. Ha még nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Üres vagy meglévő logikai alkalmazás, ahol az XML-érvényesítési műveletet szeretné használni. Ha most kezdi meg a logikai alkalmazásokat, tekintse át [az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Rövid útmutató: Az első logikai alkalmazás létrehozása című ismertetése című ismertetése című ismertetése. [Quickstart: Create your first logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Olyan üres vagy meglévő logikai alkalmazás, amelyben használni szeretné az XML-érvényesítési műveletet. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget.
 
-* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kapcsolódik ahhoz a logikai alkalmazáshoz, amelyen az XML-érvényesítési műveletet használni kívánja, és tartalmazza az XML-tartalom érvényesítéséhez használni kívánt sémát. Mind a logikai alkalmazás és az integrációs fiók léteznie kell ugyanazon a helyen vagy az Azure-régióban.
+* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ahhoz a logikai alkalmazáshoz van társítva, ahol az XML-érvényesítési műveletet tervezi használni, és az XML-tartalom érvényesítéséhez használni kívánt sémát tartalmazza. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
 ## <a name="add-xml-validation-action"></a>XML-érvényesítési művelet hozzáadása
 
-1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designerben.
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha egy üres logikai alkalmazás, a Logic App Designer, `HTTP request` a keresőmezőbe, írja be a szűrőt, és válassza a **HTTP-kérelem fogadása** kor. Ellenkező esetben folytassa a következő lépéssel.
+1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be `HTTP request` szűrőként a kifejezést, majd válassza ki a http- **kérelem fogadásának időpontját** . Ellenkező esetben folytassa a következő lépéssel.
 
-1. A munkafolyamat utolsó lépése alatt válassza az **Új lépés lehetőséget.**
+1. A munkafolyamat utolsó lépése alatt válassza az **új lépés**lehetőséget.
 
-   Ha meglévő lépések közé szeretne műveletet hozzáadni, vigye az egérmutatót a**+** lépéseket összekötő nyíl fölé, hogy a pluszjel ( ) megjelenjen. Jelölje ki a pluszjelet, majd válassza **a Művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé úgy, hogy a plusz jel (**+**) megjelenjen. Válassza ki ezt a plusz jelet, majd válassza **a művelet hozzáadása**lehetőséget.
 
-1. A **Művelet kiválasztása** **csoportban**válassza a Beépített lehetőséget. A keresőmezőbe írja `xml validation` be szűrőként. A műveletek listájában válassza az **XML-érvényesítés**lehetőséget.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `xml validation` szűrőként a kifejezést. A műveletek listából válassza az **XML-érvényesítés**lehetőséget.
 
-   ![Az "XML-érvényesítés" művelet megkeresése és kijelölése](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
+   ![Az "XML-Érvényesítés" művelet megkeresése és kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 
-1. Az ellenőrizni kívánt XML-tartalom megadásához kattintson a **Tartalom** mezőben, hogy megjelenjen a dinamikus tartalomlista.
+1. Az érvényesíteni kívánt XML-tartalom megadásához kattintson a szövegmezőbe, hogy **megjelenjen a dinamikus** tartalmak listája.
 
-   ![Dinamikus tartalomlista megnyitása](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
+   ![Dinamikus tartalom listájának megnyitása](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
 
-   A dinamikus tartalomlista olyan tulajdonságtokeneket jelenít meg, amelyek a munkafolyamat előző lépéseinek kimeneteit jelölik. Ha a listában nem látható a várt tulajdonság, ellenőrizze az eseményindító vagy a műveletcímsort, hogy választhat-e **a Tovább**lehetőséget.
+   A dinamikus tartalom lista a munkafolyamat előző lépéseinek kimeneteit képviselő tulajdonság-jogkivonatokat jeleníti meg. Ha a lista nem jeleníti meg a várt tulajdonságot, ellenőrizze az trigger vagy a művelet fejlécét, hogy kiválaszthatja-e a **továbbiak**lehetőséget.
 
-1. A dinamikus tartalomlistában válassza ki azt a tulajdonságot, amely az ellenőrizni kívánt tartalmat tartalmazza.
+1. A dinamikus tartalom listából válassza ki azt a tulajdonságot, amely az érvényesíteni kívánt tartalommal rendelkezik.
 
-   Ebben a példában kiválasztja a **Törzs** kimenetet az eseményindítóból.
+   Ez a példa kiválasztja a **törzs** kimenetét az triggerből.
 
-   ![Az ellenőrizve kívánt tartalom kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-content-to-validate.png)
+   ![Érvényesíteni kívánt tartalom kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-content-to-validate.png)
 
-1. Az ellenőrzéshez használni kívánt séma megadásához nyissa meg a **Sémanév** listát, és válassza ki a csatolt integrációs fiókhoz hozzáadott érvényesítési sémát.
+1. Az érvényesítéshez használni kívánt séma megadásához nyissa meg a **séma neve** listát, és válassza ki a csatolt integrációs fiókhoz hozzáadott érvényesítési sémát.
 
-   ![Az ellenőrzéshez használandó séma kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
+   ![Az érvényesítéshez használandó séma kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
 
 1. Mentse a logikai alkalmazást.
 
-   Most már befejezte az érvényesítés beállítását. Egy valós alkalmazásban előfordulhat, hogy az érvényesített adatokat egy üzletági (LOB) alkalmazásban, például a SalesForce-ban szeretné tárolni. Ha el szeretné küldeni az érvényesített kimenetet a Salesforce-nak, adjon hozzá egy műveletet.
+   Ezzel elkészült az érvényesítés beállításával. Egy valós alkalmazásban érdemes lehet egy üzletági (LOB) alkalmazásban (például SalesForce) tárolni az érvényesített adatmennyiséget. Az érvényesített kimenet Salesforce való elküldéséhez adjon hozzá egy műveletet.
 
-1. Az érvényesítési művelet teszteléséhez küldjön egy kérelmet a logikai alkalmazás munkafolyamatának elindításához.
+1. Az érvényesítési művelet teszteléséhez elküldheti a logikai alkalmazás munkafolyamatának elindítására vonatkozó kérést.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Enterprise Integration Pack csomagról](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* További információ a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)

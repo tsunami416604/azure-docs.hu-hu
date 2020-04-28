@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag - Egy Azure Service Fabric Mesh alkalmazás frissítése
-description: Ez az oktatóanyag egy sorozat negyedik része, és bemutatja, hogyan frissítheti az Azure Service Fabric Mesh alkalmazást közvetlenül a Visual Studióból.
+title: Oktatóanyag – Azure Service Fabric Mesh-alkalmazás frissítése
+description: Ez az oktatóanyag egy sorozat negyedik része, amely bemutatja, hogyan frissíthet egy Azure Service Fabric Mesh-alkalmazást közvetlenül a Visual studióból.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351721"
 ---
-# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Ismerje meg, hogyan frissíthet egy Service Fabric-alkalmazást a Visual Studio használatával
+# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Service Fabric alkalmazások frissítése a Visual Studióval
 
-Ez az oktatóanyag egy sorozat negyedik része, és bemutatja, hogyan frissítheti az Azure Service Fabric Mesh alkalmazást közvetlenül a Visual Studióból. A frissítés kódfrissítést és konfigurációs frissítést is tartalmaz. Látni fogja, hogy a Visual Studio-n belüli frissítés és közzététel lépései megegyeznek.
+Ez az oktatóanyag egy sorozat negyedik része, amely bemutatja, hogyan frissíthet egy Azure Service Fabric Mesh-alkalmazást közvetlenül a Visual studióból. A frissítés tartalmazza a kód frissítését és a konfiguráció frissítését is. Láthatja, hogy a Visual studión belüli verziófrissítés és közzététel lépései megegyeznek.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
@@ -39,33 +39,33 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Service Fabric Mesh szolgáltatás frissítése a Visual Studio használatával
 
-Ez a cikk bemutatja, hogyan frissítheti a mikroszolgáltatás egy alkalmazáson belül. Ebben a példában módosítjuk `WebFrontEnd` a szolgáltatást egy feladatkategória megjelenítéséhez, és növeljük a megadott PROCESSZOR mennyiségét. Akkor frissítjük a telepített szolgáltatást.
+Ez a cikk bemutatja, hogyan frissíthet egy alkalmazást egy alkalmazáson belül. Ebben a példában a `WebFrontEnd` szolgáltatást módosítjuk a feladat kategóriájának megjelenítéséhez, és növeljük a megadott CPU mennyiségét. Ezután frissítjük a telepített szolgáltatást.
 
 ## <a name="modify-the-config"></a>A konfiguráció módosítása
 
-Service Fabric Mesh alkalmazás létrehozásakor a Visual Studio minden telepítési környezethez (felhőhöz és helyihez) egy **parameters.yaml** fájlt ad hozzá. Ezekben a fájlokban megadhatja azokat a paramétereket és azok értékeit, amelyekre a Mesh *.yaml fájlokból ( például service.yaml vagy network.yaml) hivatkozhat.  A Visual Studio néhány változót biztosít, például azt, hogy a szolgáltatás mennyi processzort használhat.
+Service Fabric Mesh-alkalmazás létrehozásakor a Visual Studio minden központi telepítési környezet (felhő és helyi) esetében hozzáadja a **Parameters. YAML** fájlt. Ezekben a fájlokban megadhat paramétereket és azok értékeit, amelyek a rácsvonal *. YAML, például a Service. YAML vagy a Network. YAML fájlokra hivatkozhatnak.  A Visual Studio bizonyos változókat biztosít Önnek, például a szolgáltatás által használható CPU mennyiségét.
 
-Frissítjük a `WebFrontEnd_cpu` paramétert, hogy frissítsük a cpu-erőforrásokat, `1.5` előre, hogy a **WebFrontEnd** szolgáltatás nagyobb mértékben lesz használva.
+Frissítjük a `WebFrontEnd_cpu` paramétert a CPU `1.5` -erőforrások frissítéséhez, hogy a rendszer a **webfrontend** szolgáltatást nagyobb mértékben fogja használni.
 
-1. A **todolistapp** projekt **környezetek** > **felhő,** nyissa meg a **parameters.yaml** fájlt. Módosítsa `WebFrontEnd_cpu`a, `1.5`az értékét. A paraméter neve a szolgáltatás `WebFrontEnd_` nevével van előzve ajánlott eljárásként megkülönböztetni a különböző szolgáltatásokra vonatkozó azonos nevű paraméterektől.
+1. A **todolistapp** projektben a **környezetek** > **felhő**alatt nyissa meg a **Parameters. YAML** fájlt. Módosítsa a `WebFrontEnd_cpu`értéket a értékre `1.5`. A paraméter neve a szolgáltatás nevével `WebFrontEnd_` van ellátva ajánlott eljárásként, hogy megkülönböztesse azt a különböző szolgáltatásokra érvényes azonos nevű paraméterektől.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Nyissa meg a **WebFrontEnd** projekt **service.yaml** fájlját a **WebFrontEnd** > **szolgáltatás erőforrásai csoportban.**
+2. Nyissa **meg a webfrontend-** projekt **Service. YAML** fájlját a **webfrontend** > **szolgáltatás-erőforrások**területen.
 
-    Ne feledje, `cpu:` hogy a `"[parameters('WebFrontEnd_cpu')]"`szakasz, `resources:` van beállítva, hogy . Ha a projekt a felhőhöz készül, `'WebFrontEnd_cpu` akkor a program a**Cloud** >  **Környezetfelhő** > **parameters.yaml** `1.5`fájlból veszi az értéket, és a . Ha a projekt helyi futtatásra készül, az érték a **Környezetek** > **helyi** > **paraméterei.yaml** fájlból származik, és "0.5" lesz.
+    Vegye figyelembe, hogy `resources:` a szakasz `cpu:` a következőre `"[parameters('WebFrontEnd_cpu')]"`van beállítva:. Ha a projekt a felhőhöz készült, a rendszer a **környezetek** > **felhő** > **Parameters. YAML** -fájlból veszi át a értéket, és a következő `1.5`lesz: `'WebFrontEnd_cpu` . Ha a projekt helyben történő futtatásra készült, az érték a **környezetek** > **helyi** > **Parameters. YAML** -fájlból fog származni, és a következő lesz: "0,5".
 
 > [!Tip]
-> Alapértelmezés szerint a profile.yaml fájl társának paraméterfájlja lesz használva a profile.yaml fájl értékeinek megadására.
-> Például a környezetek > felhő> parameters.yaml adja meg a paraméterek értékeit környezetek > cloud > profile.yaml.
+> Alapértelmezés szerint a profil. YAML fájlhoz tartozó, a profil. YAML fájl értékeinek megadására szolgáló fájl.
+> Például a környezetek > a Cloud > Parameters. YAML megadja a környezeti paraméterek értékét > a Cloud > Profile. YAML.
 >
-> Ezt felülírhatja, ha a profil.yaml fájlhoz a következőket adja hozzá:`parametersFilePath=”relative or full path to the parameters file”` Például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy`parametersFilePath=”..\CommonParameters.yaml”`
+> Ezt felülbírálhatja úgy, hogy hozzáadja a következőt a profil. YAML fájlhoz:`parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>A modell módosítása
 
-Kódmódosítás bevezetéséhez vegyen `Category` fel egy `ToDoItem` tulajdonságot `ToDoItem.cs` a fájlosztályba.
+A kód módosításának bevezetéséhez adjon `Category` hozzá egy tulajdonságot a `ToDoItem` `ToDoItem.cs` fájlban található osztályhoz.
 
 ```csharp
 public class ToDoItem
@@ -75,7 +75,7 @@ public class ToDoItem
 }
 ```
 
-Ezután `Load()` frissítse a metódust ugyanabban a fájlban, hogy a kategóriát alapértelmezett karakterláncra állítsa:
+Ezután frissítse a `Load()` metódust ugyanabban a fájlban a kategória alapértelmezett karakterlánccá való beállításához:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -93,7 +93,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>A szolgáltatás módosítása
 
-A `WebFrontEnd` projekt egy ASP.NET Core alkalmazás egy weboldalt, amely megmutatja a teendőlista elemeket. A `WebFrontEnd` projektben `Index.cshtml` nyissa meg és adja hozzá a következő két sort, az alábbiakban, hogy megjelenítse a tevékenység kategóriáját:
+A `WebFrontEnd` projekt egy ASP.net Core-alkalmazás, amely a feladatlistákat megjelenítő weblapokat jeleníti meg. A `WebFrontEnd` projektben nyissa `Index.cshtml` meg az alábbi két sort, és adja hozzá a feladat kategóriájának megjelenítéséhez:
 
 ```HTML
 <div>
@@ -119,43 +119,43 @@ A `WebFrontEnd` projekt egy ASP.NET Core alkalmazás egy weboldalt, amely megmut
 </div>
 ```
 
-Az alkalmazás létrehozása és futtatása annak ellenőrzéséhez, hogy megjelenik-e egy új kategóriaoszlop a weblapon, amely felsorolja a feladatokat.
+Hozza létre és futtassa az alkalmazást annak ellenőrzéséhez, hogy megjelenik-e egy új kategória oszlop a weblapon, amely felsorolja a feladatokat.
 
-## <a name="upgrade-the-app-from-visual-studio"></a>Az alkalmazás frissítése a Visual Studio-ból
+## <a name="upgrade-the-app-from-visual-studio"></a>Az alkalmazás frissítése a Visual studióból
 
-Akár kódfrissítést hajt, akár konfigurációs frissítést hajt elő (ebben az esetben mindkettőt tesszük), frissítse service Fabric Mesh alkalmazását az Azure-ban úgy, hogy a jobb gombbal a **todolistappra** kattint a Visual Studióban, majd válassza **a Közzététel parancsot...**
+Legyen szó akár a kód verziófrissítéséről, akár a konfiguráció frissítéséről (ebben az esetben mindkettőt teszünk), frissítse a Service Fabric Mesh alkalmazást az Azure-ban, és kattintson a jobb gombbal a Visual Studióban a **todolistapp** elemre, majd válassza a **Közzététel** lehetőséget.
 
 Ekkor megjelenik a **Service Fabric-alkalmazás közzététele** párbeszédpanel.
 
-A **Célprofil** legördülő menüsegítségével válassza ki a telepítéshez használni kívánt profile.yaml fájlt. Frissítjük az alkalmazást a felhőben, ezért kiválasztjuk a **cloud.yaml-t** a legördülő menüben, amely az abban a `WebFrontEnd_cpu` fájlban meghatározott 1.0 értéket fogja használni.
+Válassza ki a telepítéshez használni kívánt profil. YAML fájlt a **cél profil** legördülő listából. Az alkalmazást a felhőben frissítjük, ezért a legördülő menüben kiválasztjuk a **Cloud. YAML** , amely a `WebFrontEnd_cpu` fájlban definiált 1,0 értéket fogja használni.
 
 ![Service Fabric Mesh párbeszédpanel a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Válassza ki az Azure-fiókját és -előfizetését. Állítsa be a **helyet** arra a helyre, amelyet a tennivaló alkalmazás Azure-ba való eredeti közzétételekor használt. Ez a cikk használt **Kelet-USA**.
+Válassza ki az Azure-fiókját és -előfizetését. Állítsa be azt a **helyet, amelyet** az Azure-ban eredetileg közzétett a tennivaló alkalmazáshoz. Ez a cikk az **USA keleti**régiójában használatos.
 
-Állítsa **erőforráscsoportot** arra az erőforráscsoportra, amelyet a tennivaló alkalmazás Azure-ba való eredeti közzétételekor használt.
+Állítsa be az **erőforráscsoportot** arra az erőforráscsoporthoz, amelyet a tennivalók Azure-ba történő eredeti közzétételekor használt.
 
-Állítsa be az **Azure Container Registry-t** az Azure Container registry névre, amelyet akkor hozott létre, amikor a teendőalkalmazást eredetileg közzétette az Azure-ban.
+Állítsa be **Azure Container registryt** arra az Azure Container Registry-névre, amelyet akkor hozott létre, amikor eredetileg közzétette a tennivaló alkalmazást az Azure-ban.
 
-A közzétételi párbeszédpanelen nyomja meg a **Közzététel** gombot az Azure-beli teendőalkalmazás frissítéséhez.
+A közzététel párbeszédpanelen a **Közzététel** gombra kattintva frissítse a tennivaló alkalmazást az Azure-ban.
 
-A frissítés előrehaladásának figyelése a Visual Studio kimeneti ablakban a **Service Fabric Tools** ablaktáblájának kiválasztásával. **Output** 
+A frissítés előrehaladásának figyeléséhez válassza a Visual Studio **kimeneti** ablakának **Service Fabric eszközök** paneljét. 
 
-Miután a rendszerkép létrehozása és az Azure Container Registry, egy **a kimenetben,** amely az Azure Portalon a központi telepítés figyeléséhez jelenik meg a for status link jelenik meg.
+Miután a rendszerképet létrehozta, és leküldte a Azure Container Registryre, a kimenetben megjelenik az **állapot** hivatkozása, amelyre kattintva figyelheti a központi telepítést a Azure Portal.
 
-A frissítés befejezése után a **Service Fabric Tools** kimeneti megjeleníti az IP-címet és a port az alkalmazás url-cím formájában.
+Ha a frissítés befejeződött, a **Service Fabric-eszközök** kimenete URL-cím formájában megjeleníti az alkalmazás IP-címét és portját.
 
 ```json
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 
-Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet. Ekkor megjelenik egy kategóriaoszlopot tartalmazó weblap.
+Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet. Ekkor egy olyan weboldalt kell látnia, amely tartalmaz egy category (kategória) oszlopot.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag a következőket ismertette:
 > [!div class="checklist"]
-> * Service Fabric Mesh alkalmazás frissítése a Visual Studio használatával
+> * Service Fabric Mesh-alkalmazás frissítése a Visual Studio használatával
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]

@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric-események
-description: Ismerje meg a Service Fabric-események a dobozból, hogy segítsen az Azure Service Fabric-fürt figyelése.
+title: Azure-Service Fabric események
+description: Ismerje meg, hogy az Azure Service Fabric-fürt figyeléséhez milyen Service Fabrici események vannak megadva a mezőben.
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451731"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-események 
 
-A Service Fabric platform több strukturált eseményt ír a fürtön belül zajló kulcsfontosságú operatív tevékenységekhez. Ezek a fürtfrissítésektől a replikaelhelyezési döntésekig terjednek. Minden esemény, amelyet a Service Fabric elérhetővé tesz, leképezi a fürt alábbi entitásainak egyikét:
+A Service Fabric platform számos strukturált eseményt ír elő a fő operatív tevékenységekhez a fürtön belül. Ez a tartomány a fürt frissítéseiről a replika elhelyezési döntéseire vonatkozik. Minden olyan esemény, amely Service Fabric a leképezéseket az alábbi entitások egyikére teszi elérhetővé a fürtben:
 * Fürt
 * Alkalmazás
 * Szolgáltatás
@@ -22,23 +22,23 @@ A Service Fabric platform több strukturált eseményt ír a fürtön belül zaj
 * Replika 
 * Tároló
 
-A platform által elérhetővé tett események teljes listájának megtekintéséhez – [A Service Fabric-események listája](service-fabric-diagnostics-event-generation-operational.md).
+A platform által megjelenített események teljes listájának megtekintéséhez [Service Fabric események listája](service-fabric-diagnostics-event-generation-operational.md).
 
-Íme néhány példa olyan forgatókönyvek, amelyek a fürtben eseményeket kell látnia. 
-* Csomópont életciklus-események: a csomópontok jönnek fel, menj le, skála be / ki, újraindítás, és aktivált/inaktivált, ezek az események lesznek kitéve, amely megmutatja, mi történt, és segít azonosítani, ha valami baj van a gép maga, vagy ha volt egy API-t, amely az SF-en keresztül, hogy módosítsa a csomópont állapotát.
-* Fürtfrissítés: a fürt frissítésekor (SF-verzió vagy konfigurációváltozás) megjelenik a frissítés kezdeményezése, az egyes frissítési tartományok végiggörgetése és a teljes (vagy visszaállítás). 
-* Alkalmazásfrissítések: csakúgy, mint a fürt frissítések, van egy átfogó események, mint a frissítés gördül át. Ezek az események hasznosak lehetnek a frissítés ütemezésének, a frissítés aktuális állapotának és az események teljes sorrendjének megértéséhez. Ez akkor hasznos, ha visszatekint, hogy milyen frissítéseket vezettek be sikeresen, vagy hogy a visszaállítás elindult-e.
-* Alkalmazás/szolgáltatás telepítése/törlése: minden egyes alkalmazáshoz, szolgáltatáshoz és tárolóhoz vannak események, létrehozva vagy törölve, és hasznos a replikák be- és kiméretezésekor, pl. a replikák számának növelése
-* Partíció áthelyezése (újrakonfigurálás): amikor egy állapotalapú partíció átmegy egy újrakonfiguráláson (a replikakészlet módosítása), egy eseményt naplóz a rendszer. Ez akkor hasznos, ha megpróbálja megérteni, hogy a partíció replikakészlete milyen gyakran változik vagy nem adja fel a feladatát, vagy nyomon követi, hogy melyik csomópont futtatta az elsődleges replikát bármikor.
-* Káosz események: a Service Fabric [Chaos](service-fabric-controlled-chaos.md) szolgáltatás használatakor események jelennek meg minden alkalommal, amikor a szolgáltatás elindul, vagy leáll, vagy ha befecskendezegy hibát a rendszerben.
-* Állapotesemények: A Service Fabric állapoteseményeket tesz elérhetővé minden alkalommal, amikor egy figyelmeztetés vagy egy hibaállapot-jelentés jön létre, vagy egy entitás egy OK állapotba kerül, vagy egy állapotjelentés lejár. Ezek az események nagyon hasznos a korábbi állapotstatisztikák nyomon követéséhez egy entitás. 
+Íme néhány példa olyan forgatókönyvekre, amelyeknek meg kell jelennie a fürtben lévő eseményeknek. 
+* Csomópont-Életciklus eseményei: a csomópontok létrehozása, leállása, méretezése/kibontása, újraindítása és aktiválása/inaktiválása után ezek az események elérhetővé válnak, és segít azonosítani, hogy van-e valami probléma a géppel, vagy ha egy olyan API volt, amely az SF-n keresztül lett meghívva egy csomópont állapotának módosításához.
+* Fürt frissítése: a fürt frissítésekor (SF-verzió vagy-konfiguráció módosítása) megtekintheti a frissítés kezdeményezését, átválthatja az egyes frissítési tartományokat, és befejezheti (vagy visszaállíthatja a visszaállítást). 
+* Alkalmazás-frissítések: a fürt frissítéseihez hasonlóan az események széles körét is megtekintheti a frissítés során. Ezek az események hasznosak lehetnek a frissítés ütemezésének, a frissítés aktuális állapotának, valamint az események teljes sorrendjének a megismeréséhez. Ez akkor hasznos, ha szeretné megtekinteni, hogy a rendszer hogyan hajtotta végre a frissítéseket, vagy hogy a visszaállítást aktiválták-e.
+* Alkalmazás/szolgáltatás központi telepítése/törlése: az egyes alkalmazásokhoz, szolgáltatásokhoz és tárolók létrehozásához és törléséhez, illetve a (z) vagy a rendszerbe való méretezéshez hasznos, például a replikák számának növelésére szolgáló esemény.
+* Partíció áthelyezése (újrakonfigurálás): Ha egy állapot-nyilvántartó partíció egy újrakonfiguráláson (a replikakészlet változásán) keresztül halad át, egy eseményt naplóz a rendszer. Ez akkor hasznos, ha meg szeretné ismerni, hogy a partíciós replikák milyen gyakran változnak vagy feladatátvételt hajtanak végre, vagy nyomon követheti, hogy melyik csomópont futtatta az elsődleges replikát bármelyik időpontban.
+* Chaos-események: Ha a Service Fabric [Chaos](service-fabric-controlled-chaos.md) szolgáltatását használja, akkor a szolgáltatás minden indításakor vagy leállításakor megjelennek az események, vagy ha hiba történik a rendszeren.
+* Állapotadatok: Service Fabric állapotot tesz elérhetővé a figyelmeztetés vagy a hiba állapota jelentés létrehozásakor, vagy ha egy entitás vissza fog térni egy OK állapotba, vagy egy állapotjelentés lejár. Ezek az események nagyon hasznosak az entitások korábbi állapot-statisztikáinak nyomon követéséhez. 
 
-## <a name="how-to-access-events"></a>Az események elérése
+## <a name="how-to-access-events"></a>Események elérése
 
-A Service Fabric-események néhány különböző módon érhetők el:
-* Az eseményeket a szabványos csatornákon keresztül, például etw/Windows eseménynaplók, és láthatóvá bármely figyelési eszköz, amely támogatja ezeket, például az Azure Monitor naplók. Alapértelmezés szerint a portálon létrehozott fürtök diagnosztika be van kapcsolva, és a Windows Azure diagnosztikai ügynök elküldi az eseményeket az Azure table storage, de továbbra is integrálni kell ezt a log analytics erőforrás. További információ az [Azure Diagnostics ügynök](service-fabric-diagnostics-event-aggregation-wad.md) konfigurálásáról a fürt diagnosztikai konfigurációjának módosítására további naplók vagy teljesítményszámlálók felvételéhez, valamint az [Azure Monitor naplók integrációjának](service-fabric-diagnostics-event-analysis-oms.md)
-* EventStore szolgáltatás Rest API-k, amelyek lehetővé teszik a fürt közvetlen lekérdezése, vagy a Service Fabric ügyfélkönyvtáron keresztül. A [fürtesemények lekérdezési eventstore API-i.](service-fabric-diagnostics-eventstore-query.md)
+A Service Fabric-események elérésének számos különböző módja van:
+* Az események naplózása szabványos csatornákon keresztül történik (például ETW/Windows-eseménynaplók), és bármely olyan figyelési eszközzel megjeleníthető, amely támogatja ezeket, például a Azure Monitor naplókat. Alapértelmezés szerint a portálon létrehozott fürtökön be van kapcsolva a diagnosztika, és a Windows Azure Diagnostics ügynöke elküldi az eseményeket az Azure Table Storage szolgáltatásnak, de továbbra is integrálnia kell ezt a log Analytics-erőforrással. További információ a Azure Diagnostics- [ügynök](service-fabric-diagnostics-event-aggregation-wad.md) konfigurálásáról a fürt diagnosztikai konfigurációjának módosításához további naplók vagy teljesítményszámlálók és a [Azure monitor naplók integrációjának](service-fabric-diagnostics-event-analysis-oms.md) kiválasztásához
+* A EventStore szolgáltatás REST API-jai, amelyek lehetővé teszik a fürt közvetlen lekérdezését vagy a Service Fabric ügyféloldali függvénytáron keresztül. Lásd: [EventStore API-k lekérdezése a fürt eseményeihez](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>További lépések
-* További információ a fürt figyelése - [A fürt és a platform figyelése](service-fabric-diagnostics-event-generation-infra.md).
-* További információ az EventStore szolgáltatásról – [Az EventStore szolgáltatás áttekintése](service-fabric-diagnostics-eventstore.md)
+* További információ a fürt figyeléséről – [a fürt és a platform figyelése](service-fabric-diagnostics-event-generation-infra.md).
+* További információ a EventStore Service- [EventStore szolgáltatásról – áttekintés](service-fabric-diagnostics-eventstore.md)

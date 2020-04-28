@@ -1,82 +1,82 @@
 ---
-title: Az Azure Service Fabric hálójának terminológiája
-description: Ez a cikk részletezi az Azure Service Fabric Mesh által használt terminológiát, hogy jobban megértse a dokumentációban használt kifejezéseket.
+title: Az Azure Service Fabric Mesh terminológiája
+description: Ez a cikk részletesen ismerteti az Azure Service Fabric Mesh által használt terminológiát, amely segít jobban megérteni a dokumentációban használt feltételeket.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351973"
 ---
-# <a name="service-fabric-mesh-terminology"></a>Szolgáltatás hálóhálójának terminológiája
+# <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-terminológia
 
-Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk részletezi az Azure Service Fabric Mesh által használt terminológiát, hogy jobban megértse a dokumentációban használt kifejezéseket.
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk részletesen ismerteti az Azure Service Fabric Mesh által használt terminológiát, amely segít jobban megérteni a dokumentációban használt feltételeket.
 
 ## <a name="service-fabric"></a>Service Fabric
 
-[A Service Fabric](/azure/service-fabric/) egy nyílt forráskódú elosztott rendszerplatform, amely megkönnyíti a méretezhető és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését. A Service Fabric az orchestrator, amely a Service Fabric Mesh. A Service Fabric lehetőséget biztosít a mikroszolgáltatások alkalmazásai létrehozásához és futtatásához. Bármely keretrendszer segítségével a szolgáltatások írása, és válassza ki, hogy hol futtassa az alkalmazást több környezeti lehetőségek.
+A [Service Fabric](/azure/service-fabric/) egy nyílt forráskódú, elosztott rendszerplatform, amely megkönnyíti a méretezhető és megbízható szolgáltatások csomagolását, üzembe helyezését és felügyeletét. Service Fabric az a Orchestrator, amely a Service Fabric rácsvonalat is felruházza. Service Fabric lehetőségeket biztosít a Service-alkalmazások felépítéséhez és futtatásához. Bármilyen keretrendszert felhasználhat a szolgáltatások írásához, és kiválaszthatja, hogy az alkalmazás hol fusson több környezeti lehetőség közül.
 
-## <a name="application-and-service-concepts"></a>Alkalmazási és szolgáltatási koncepciók
+## <a name="application-and-service-concepts"></a>Alkalmazások és szolgáltatások – fogalmak
 
-**Service Fabric Mesh Application**: A Service Fabric mesh alkalmazások leírása az [erőforrásmodell](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (YAML és JSON erőforrásfájlok) és telepíthető bármely környezetben, ahol a Service Fabric fut.
+**Service Fabric Mesh-alkalmazás**: a Service Fabric Mesh-alkalmazásokat az [erőforrás-modell](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (YAML és JSON-erőforrások fájljai) írják le, és bármely olyan környezetben üzembe helyezhetők, ahol Service Fabric fut.
 
-**Service Fabric natív alkalmazás:** Service Fabric natív alkalmazások a [natív alkalmazásmodell](/azure/service-fabric/service-fabric-application-model) (XML-alapú alkalmazás és szolgáltatásjegyzékek) írja le.  A Service Fabric natív alkalmazásai nem futtathatók a Service Fabric Mesh alkalmazásban.
+**Natív alkalmazás Service Fabric**: Service Fabric natív alkalmazások a [natív alkalmazás modelljében](/azure/service-fabric/service-fabric-application-model) (XML-alapú alkalmazás-és szolgáltatás-jegyzékfájlok) vannak leírva.  Service Fabric natív alkalmazások nem futtathatók Service Fabric hálóban.
 
-**Alkalmazás**: A Service Fabric Mesh alkalmazás egy hálóalkalmazás központi telepítésének, verziószámozásának és élettartamának egysége. Az egyes alkalmazáspéldányok életciklusa egymástól függetlenül kezelhető.  Az alkalmazások egy vagy több szolgáltatáskódcsomagból és -beállításból állnak. Egy alkalmazás az Azure Resource Model (RM) séma használatával van definiálva.  A szolgáltatások az erőforrás-védelmi sablonban az alkalmazáserőforrás tulajdonságaiként vannak leírva.  Az alkalmazás által használt hálózatokra és kötetekre az alkalmazás hivatkozik.  Egy alkalmazás létrehozásakor az alkalmazás, a szolgáltatás(ok), a hálózat és a kötet(ek) a Service Fabric erőforrásmodell használatával modelleződnek.
+**Alkalmazás**: a Service Fabric Mesh-alkalmazás egy Mesh-alkalmazás üzembe helyezésének, verziószámozásának és élettartamának egysége. Az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető.  Az alkalmazások egy vagy több szolgáltatási kódú csomagból és beállításból állnak. Az alkalmazás az Azure Resource Model (RM) séma használatával van definiálva.  A szolgáltatások az alkalmazás-erőforrás tulajdonságaiként szerepelnek egy RM-sablonban.  Az alkalmazás által használt hálózatokat és köteteket az alkalmazás hivatkozik.  Egy alkalmazás létrehozásakor az alkalmazás, a szolgáltatás, a hálózat és a kötet (ek) modellezése a Service Fabric Resource Model használatával történik.
 
-**Szolgáltatás**: Egy alkalmazás szolgáltatása mikroszolgáltatást jelöl, és teljes és önálló függvényt hajt végre. Minden szolgáltatás egy vagy több kódcsomagból áll, amelyek leírják a kódcsomaghoz társított tárolórendszerkép futtatásához szükséges mindent.  Az alkalmazás szolgáltatásreplikáinak száma skálázható be és ki.
+**Szolgáltatás**: az alkalmazás egyik szolgáltatása a szolgáltatást jelöli, és teljes és önálló funkciót hajt végre. Minden szolgáltatás egy vagy több olyan kódból áll, amely leírja mindazt, ami a programkódhoz tartozó tároló rendszerképének futtatásához szükséges.  Az alkalmazásban található szolgáltatás-replikák száma és kiskálázása is lehetséges.
 
-**Kódcsomag**: A kódcsomagok leírnak mindent, ami a kódcsomaghoz társított tárolórendszerkép futtatásához szükséges, beleértve a következőket:
+**Kód csomag**: a kód csomagjai leírják a csomaghoz társított tároló rendszerképének futtatásához szükséges összes műveletet, beleértve a következőket:
 
-* Tároló neve, verziója és rendszerleíró adatbázisa
-* Az egyes tárolókhoz szükséges PROCESSZOR- és memóriaerőforrások
+* Tároló neve, verziója és beállításjegyzéke
+* Az egyes tárolók számára szükséges CPU-és memória-erőforrások
 * Hálózati végpontok
-* A tárolóba csatlakoztatandó kötetek, amelyek egy külön köteterőforrásra hivatkoznak.
+* A tárolóban csatlakoztatni kívánt kötetek, amelyek egy különálló kötet erőforrására hivatkoznak.
 
-## <a name="deployment-and-application-models"></a>Központi telepítési és alkalmazásmodellek 
+## <a name="deployment-and-application-models"></a>Üzembe helyezési és alkalmazási modellek 
 
-A szolgáltatások üzembe helyezéséhez le kell írnia, hogyan kell futtatni. A Service Fabric három különböző üzembe helyezési modellt támogat:
+A szolgáltatások üzembe helyezéséhez le kell írnia a futtatásuk módját. A Service Fabric három különböző üzembe helyezési modellt támogat:
 
 ### <a name="resource-model"></a>Erőforrásmodell
-A Service Fabric-erőforrások olyan ok, amely külön-külön telepíthető a Service Fabric számára; beleértve az alkalmazásokat, szolgáltatásokat, hálózatokat és köteteket. Az erőforrások meghatározása JSON-fájl lal van definiálva, amely fürtvégpontra telepíthető.  A Service Fabric Mesh, az Azure Resource Model séma használatos. A YAML-fájlséma a definíciós fájlok könnyebb megszerzőségére is használható. Az erőforrások bárhol üzembe helyezhetők, ahol a Service Fabric fut. Az erőforrás-modell a legegyszerűbb módja a Service Fabric-alkalmazások leírásának. Fő hangsúly az egyszerű üzembe helyezés és a konténeres szolgáltatások kezelése. További információ: [Bevezetés a Service Fabric erőforrásmodellbe](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)című olvasni.
+Service Fabric az erőforrások bármilyen módon üzembe helyezhetők, és a Service Fabric; beleértve az alkalmazásokat, a szolgáltatásokat, a hálózatokat és a köteteket. Az erőforrások egy JSON-fájllal vannak definiálva, amely a fürt végpontján helyezhető üzembe.  Service Fabric Mesh esetében az Azure Resource Model-séma használatos. A YAML-sémák a definíciós fájlok egyszerűbb létrehozásához is használhatók. Az erőforrások bármikor üzembe helyezhetők, Service Fabric futtatva. Az erőforrás-modell az Service Fabric-alkalmazások leírásának legegyszerűbb módja. Fő témája a tárolós szolgáltatások egyszerű üzembe helyezése és kezelése. További információért olvassa el [a Service Fabric Resource Model bemutatása](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)című témakört.
 
 ### <a name="native-model"></a>Natív modell
-A natív alkalmazásmodell teljes alacsony szintű hozzáférést biztosít az alkalmazások számára a Service Fabric-hez. Az alkalmazások és szolgáltatások az XML-jegyzékfájlokban regisztrált típusokként vannak definiálva.
+A natív alkalmazás modellje lehetővé teszi, hogy az alkalmazások teljes, alacsony szintű hozzáférést biztosítson Service Fabrichoz. Az alkalmazások és szolgáltatások regisztrált típusokként vannak definiálva az XML-jegyzékfájlokban.
 
-A natív modell támogatja a Reliable Services keretrendszer, amely hozzáférést biztosít a Service Fabric futásidejű API-k és a fürtfelügyeleti API-k C# és Java. A natív modell is támogatja az tetszőleges tárolók és végrehajtható fájlokat.
+A natív modell támogatja a Reliable Services keretrendszert, amely hozzáférést biztosít a Service Fabric Runtime API-khoz és a fürt felügyeleti API-khoz a C#-ban és a Java-ban. A natív modell szintén támogatja a tetszőleges tárolókat és végrehajtható fájlokat.
 
-A natív modell nem támogatott a Service Fabric Mesh környezetben.  További információt a [programozási modell áttekintése című témakörben talál.](/azure/service-fabric/service-fabric-choose-framework)
+A natív modell nem támogatott a Service Fabric Mesh környezetben.  További információ: [programozási modell áttekintése](/azure/service-fabric/service-fabric-choose-framework).
 
-### <a name="docker-compose"></a>Docker-írás 
-[A Docker Compose](https://docs.docker.com/compose/) a Docker-projekt része. A Service Fabric korlátozott támogatást nyújt a Docker Compose modellt használó alkalmazások üzembe helyezéséhez.
+### <a name="docker-compose"></a>Docker-összeállítás 
+A [Docker-összeállítás](https://docs.docker.com/compose/) a Docker-projekt részét képezi. A Service Fabric korlátozott támogatást biztosít az alkalmazások Docker-összeállítási modellel történő üzembe helyezéséhez.
 
 ## <a name="environments"></a>Környezetek
 
-A Service Fabric egy nyílt forráskódú platformtechnológia, amelyen számos különböző szolgáltatás és termék alapul. A Microsoft a következő lehetőségeket biztosítja:
+A Service Fabric egy nyílt forráskódú platform technológia, amelyet számos különböző szolgáltatás és termék alapul. A Microsoft a következő lehetőségeket biztosítja:
 
- - **Service Fabric Mesh**: A Microsoft Azure-beli Service Fabric-alkalmazások futtatásához teljes körűen felügyelt szolgáltatás.
- - **Azure Service Fabric:** Az Azure üzemeltetett Service Fabric-fürtajánlat. Integrációt biztosít a Service Fabric és az Azure-infrastruktúra között, valamint a Service Fabric-fürtök frissítése és konfigurációs kezelése között.
- - **Service Fabric önálló:** A telepítési és konfigurációs eszközök telepítése [Service Fabric-fürtök bárhol](/azure/service-fabric/service-fabric-deploy-anywhere) (a helyszínen vagy bármely felhőszolgáltató) üzembe helyezéséhez. Nem az Azure kezeli.
- - **Service Fabric fejlesztői fürt:** Helyi fejlesztési élményt nyújt Windows, Linux vagy Mac a Service Fabric-alkalmazások fejlesztéséhez.
+ - **Service Fabric Mesh**: egy teljes körűen felügyelt szolgáltatás, amellyel Service Fabric alkalmazások futnak Microsoft Azure.
+ - **Azure Service Fabric**: az Azure által üzemeltetett Service Fabric-fürt ajánlata. Integrációt biztosít Service Fabric és az Azure-infrastruktúra között, valamint a Service Fabric-fürtök frissítésével és konfigurálásával.
+ - **Önálló Service Fabric**: telepítési és konfigurációs eszközök készlete, amelyekkel a [Service Fabric-fürtök bárhol üzembe helyezhetők](/azure/service-fabric/service-fabric-deploy-anywhere) (helyszíni vagy bármely felhőalapú szolgáltatón). Az Azure nem kezeli.
+ - **Service Fabric fejlesztési fürt**: a Service Fabric alkalmazások fejlesztéséhez Windows, Linux vagy Mac helyi fejlesztési élményt nyújt.
 
-## <a name="environment-framework-and-deployment-model-support-matrix"></a>Környezet, keretrendszer és telepítési modell támogatási mátrixa
-A különböző környezetek különböző szintű támogatást nyújtanak a keretrendszerekhez és a telepítési modellekhez. Az alábbi táblázat ismerteti a támogatott keretrendszer és üzembe helyezési modell kombinációit.
+## <a name="environment-framework-and-deployment-model-support-matrix"></a>A környezet, a keretrendszer és az üzembe helyezési modell támogatási mátrixa
+A különböző környezetek különböző szintű támogatást biztosítanak a keretrendszerek és a telepítési modellek számára. A következő táblázat a támogatott keretrendszer-és telepítési modell-kombinációkat ismerteti.
 
-| Az alkalmazás típusa | Leírta: | Azure service fabric háló | Azure Service Fabric-fürtök (bármely operációs rendszer)| Helyi fürt | Önálló fürt |
+| Alkalmazás típusa | Ismertette | Azure Service Fabric Mesh | Azure Service Fabric-fürtök (bármely operációs rendszer)| Helyi fürt | Önálló fürt |
 |---|---|---|---|---|---|
-| Szolgáltatásháló-alkalmazások | Erőforrásmodell (YAML & JSON) | Támogatott |Nem támogatott | Windows- támogatott, Linux és Mac- nem támogatott | Windows- nem támogatott |
-|Szolgáltatásháló natív alkalmazásai | Natív alkalmazásmodell (XML) | Nem támogatott| Támogatott|Támogatott|Windows- támogatott|
+| Service Fabric Mesh-alkalmazások | Erőforrás-modell (YAML & JSON) | Támogatott |Nem támogatott | Windows – támogatott, Linux és Mac – nem támogatott | Windows – nem támogatott |
+|Natív alkalmazások Service Fabric | Natív alkalmazás modellje (XML) | Nem támogatott| Támogatott|Támogatott|Windows – támogatott|
 
-Az alábbi táblázat ismerteti a különböző alkalmazásmodellek és a Service Fabric számára létező eszközök.
+A következő táblázat ismerteti a különböző alkalmazás-modelleket, valamint a Service Fabrichoz tartozó eszközöket.
 
-| Az alkalmazás típusa | Leírta: | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
+| Alkalmazás típusa | Ismertette | Visual Studio | Eclipse | SFCTL | AZ PARANCSSORI FELÜLET | PowerShell|
 |---|---|---|---|---|---|---|
-| Szolgáltatásháló-alkalmazások | Erőforrásmodell (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott - csak hálós környezet | Nem támogatott|
-|Szolgáltatásháló natív alkalmazásai | Natív alkalmazásmodell (XML) | VS 2017 és VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
+| Service Fabric Mesh-alkalmazások | Erőforrás-modell (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott – csak Mesh környezet | Nem támogatott|
+|Natív alkalmazások Service Fabric | Natív alkalmazás modellje (XML) | VS 2017 és VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
 
 ## <a name="next-steps"></a>További lépések
 

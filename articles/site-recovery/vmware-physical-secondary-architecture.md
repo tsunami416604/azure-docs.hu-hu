@@ -1,6 +1,6 @@
 ---
-title: Architektúra-VMware/fizikai vészhelyreállítás egy másodlagos helyre az Azure Site Recovery szolgáltatással
-description: Ez a cikk áttekintést nyújt a helyszíni VMware virtuális gépek vagy fizikai Windows/Linux-kiszolgálók vész-helyreállítási során használt összetevőkről és architektúráról egy másodlagos VMware-webhelyre az Azure Site Recovery szolgáltatással.
+title: Architektúra – VMware/fizikai vész-helyreállítás egy másodlagos helyre Azure Site Recovery
+description: Ez a cikk áttekintést nyújt a helyszíni VMware virtuális gépek vagy fizikai Windows-/Linux-kiszolgálók vész-helyreállítási folyamata során használt összetevőkről és architektúráról egy másodlagos VMware-helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954577"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>VMware/fizikai kiszolgáló replikációjának architektúrája egy másodlagos helyszíni helyre
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektúra a VMware/fizikai kiszolgálók replikálásához egy másodlagos helyszíni helyre
 
-Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helyszíni VM-virtuális gépek (VM-ek) vagy fizikai Windows/Linux-kiszolgálók azure [Site Recovery](site-recovery-overview.md)használatával egy másodlagos VMware-helyre történő beállításakor használt architektúrát és folyamatokat ismerteti.
+Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helyszíni VMware virtuális gépek (VM-EK) vagy fizikai Windows-/Linux-kiszolgálók másodlagos VMware-helyre történő helyreállításának beállításakor használt architektúrát és folyamatokat ismerteti [Azure site Recovery](site-recovery-overview.md)használatával.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
@@ -45,4 +45,4 @@ Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helys
 
 ## <a name="next-steps"></a>További lépések
 
-[Állítsa be](vmware-physical-secondary-disaster-recovery.md) a Virtuálisgép-virtuális gépek és a fizikai kiszolgálók vész-helyreállítását egy másodlagos helyre.
+A VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának [beállítása](vmware-physical-secondary-disaster-recovery.md) másodlagos helyre.

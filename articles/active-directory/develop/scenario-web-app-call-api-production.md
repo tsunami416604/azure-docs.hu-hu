@@ -1,6 +1,6 @@
 ---
-title: Ugrás webes API-kat meghívja a éles környezetbe – Microsoft identity platform | Azure
-description: Megtudhatja, hogyan helyezhetát át éles környezetbe egy webes API-t meghívja webalkalmazást.
+title: Áthelyezés az éles környezetbe webes API-kat meghívó webalkalmazások számára – Microsoft Identity platform | Azure
+description: Útmutató a webes API-kat meghívó webalkalmazások éles környezetbe való áthelyezéséhez.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,30 +12,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881661"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívjaó webalkalmazás: Ugrás éles környezetbe
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó webalkalmazás: áthelyezés éles környezetbe
 
-Most, hogy már tudja, hogyan szerezhet be egy jogkivonatot webes API-k hívásához, ismerje meg, hogyan helyezheti át éles környezetbe.
+Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k hívásához, Ismerje meg, hogyan helyezheti át az éles környezetbe.
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a teljes, progresszív bemutató ASP.NET Core webes alkalmazások. A bemutató:
+További információt a ASP.NET Core Web Apps teljes körű, progresszív oktatóanyagának kipróbálásával foglalkozó témakörben talál. Az oktatóanyag:
 
-- Bemutatja, hogyan jelentkeztetik be a felhasználókat több közönségbe vagy nemzeti felhőkbe, illetve hogyan jelentkeztetnek be a közösségi identitások használatával.
-- Felhívja a Microsoft Graph.Calls Microsoft Graph.
+- Bemutatja, hogyan lehet a felhasználókat több célközönségbe vagy nemzeti felhőbe, vagy közösségi identitások használatával aláírni.
+- Meghívja a Microsoft Graph.
 - Több Microsoft API-t hív meg.
-- Kezeli a növekményes hozzájárulást.
+- Kezeli a növekményes beleegyezett.
 - Meghívja saját webes API-ját.
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core webalkalmazás oktatóanyaga](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET Core webalkalmazás-oktatóanyag](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

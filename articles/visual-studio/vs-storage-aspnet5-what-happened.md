@@ -1,6 +1,6 @@
 ---
 title: Mi történt a ASP.NET 5 projekttel (Visual Studio csatlakoztatott szolgáltatások)
-description: A cikk azt ismerteti, hogy mi történik, miután egy Visual Studio ASP.NET 5-projektben lévő Azure-tárfiókhoz csatlakozott a Visual Studio csatlakoztatott szolgáltatásainak használatával
+description: Leírja, hogy mi történik az Azure Storage-fiókhoz való csatlakozás után a Visual Studio ASP.NET 5 projektben a Visual Studio csatlakoztatott szolgáltatásainak használatával
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72300012"
 ---
-# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Mi történt a ASP.NET 5 projekttel (Visual Studio Azure Storage-hoz kapcsolódó szolgáltatások)?
-## <a name="references-added"></a>Hozzáadott hivatkozások
-Az Azure Storage NuGet csomag hozzá lett adva a Visual Studio-projekthez.  
-Ez a csomag a következő .NET-hivatkozásokat adja hozzá:
+# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Mi történt a ASP.NET 5 projekttel (Visual Studio Azure Storage Connected Services)?
+## <a name="references-added"></a>Hivatkozások hozzáadva
+Az Azure Storage NuGet csomagja hozzá lett adva a Visual Studio-projekthez.  
+Ez a csomag a következő .NET-referenciákat veszi fel:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Ügyfél**
-* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft. EDM**
+* **Microsoft. OData**
+* **Microsoft. Services. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **System. reaz**
+* **System. térbeli**
 
-A **NuGet csomag, a Microsoft.Framework.Configuration.Json** is hozzá lett adva.
+Emellett felvette a **Microsoft. Framework. Configuration. JSON** NuGet-csomagot.
 
-## <a name="connection-string-for-azure-storage-added"></a>Az Azure Storage csatlakozási karakterlánca hozzáadva
-A projekt config.json fájljában egy elem jött létre a kijelölt tárfiók kapcsolati karakterláncával és kulcsával.
+## <a name="connection-string-for-azure-storage-added"></a>Az Azure Storage-hoz hozzáadott kapcsolatok karakterlánca
+A projekt config. JSON fájljában egy elem lett létrehozva a kiválasztott Storage-fiókhoz tartozó összekapcsolási karakterlánccal és kulccsal.
 
-További információ: [ASP.NET 5](https://www.asp.net/vnext).
+További információ: [ASP.net 5](https://www.asp.net/vnext).
 

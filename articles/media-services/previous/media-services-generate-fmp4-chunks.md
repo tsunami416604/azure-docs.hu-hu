@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure Media Services kódolási feladatot, amely fMP4 adattömböket hoz létre | Microsoft dokumentumok
-description: Ez a témakör azt mutatja be, hogyan hozhat létre fMP4-adattömböket létrehozó kódolási feladatot. Ha ezt a feladatot a Media Encoder Standard vagy a Media Encoder Premium Workflow kódolóval használja, a kimeneti eszköz az ISO MP4-fájlok helyett fMP4 adattömböket fog tartalmazni.
+title: FMP4-adattömböket generáló Azure Media Services kódolási feladat létrehozása | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hozhat létre fMP4-adattömböket generáló kódolási feladatot. Ha ezt a feladatot a Media Encoder Standard vagy Media Encoder Premium Workflow kódolóval együtt használja, a kimeneti eszköz az ISO MP4-fájlok helyett fMP4-adattömböket fog tartalmazni.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463846"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>FMP4 adattömböket létrehozó kódolási feladat létrehozása
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>FMP4-adattömböket generáló kódolási feladat létrehozása
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja, hogyan hozhat létre olyan kódolási feladatot, amely iSO MP4-fájlok helyett töredezett MP4 (fMP4) adattömböket hoz létre. FMP4-adattömbök létrehozásához használja a **Media Encoder Standard** vagy a **Media Encoder Premium Workflow** kódolót egy kódolási feladat létrehozásához, és adja meg az **AssetFormatOption.AdaptiveStreaming** beállítást is, ahogy az a kódrészletben látható:  
+Ez a cikk bemutatja, hogyan hozhat létre olyan kódolási feladatot, amely az ISO MP4-fájlok helyett töredezett MP4-(fMP4-) adattömböket generál. FMP4-adattömbök létrehozásához használja a **Media Encoder standard** vagy **Media Encoder Premium workflow** kódolót egy kódolási feladat létrehozásához, valamint a **AssetFormatOption. AdaptiveStreaming** beállítás megadásához, ahogy az a kódrészletben is látható:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,20 +32,20 @@ Ez a cikk bemutatja, hogyan hozhat létre olyan kódolási feladatot, amely iSO 
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódolás a Media Services .NET SDK szolgáltatással
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódolás Media Services .NET SDK-val
 
-A következő kódpélda a Media Services .NET SDK segítségével hajtja végre a következő feladatokat:
+A következő kódrészlet a Media Services .NET SDK-t használja a következő feladatok elvégzéséhez:
 
 - Hozzon létre egy kódolási feladatot.
-- Hivatkozás a **Media Encoder Standard** kódolóra.
-- Adjon hozzá egy kódolási feladatot a feladathoz, és adja meg az **Adaptív streamelési** készlet használatát. 
-- Hozzon létre egy kimeneti eszközt, amely fMP4 adattömböket és .ism fájlt tartalmaz.
-- Adjon hozzá egy eseménykezelőt a feladat előrehaladásának ellenőrzéséhez.
+- A **Media Encoder standard** kódolóra mutató hivatkozás beszerzése.
+- Adjon hozzá egy kódolási feladatot a feladathoz, és adja meg, hogy az **adaptív streaming** -készletet használja. 
+- Hozzon létre egy kimeneti adategységet, amely fMP4 és. ISM fájlt fog tartalmazni.
+- Adjon hozzá egy eseménykezelőt a feladatok előrehaladásának ellenőrzéséhez.
 - Küldje el a feladatot.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
+Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Media Services kódolás – áttekintés](media-services-encode-asset.md)
+[Media Services kódolás áttekintése](media-services-encode-asset.md)
 

@@ -1,27 +1,27 @@
 ---
-title: Polimorfizmus a Megbízható szereplők keretrendszerben
-description: A Reliable Actors keretrendszerben .NET-csatolók és -típusok hierarchiáit hozhat létre a funkciók és az API-definíciók újrafelhasználásához.
+title: Polimorfizmus a Reliable Actors-keretrendszerben
+description: A Reliable Actors-keretrendszerben lévő .NET-felületek és-típusok hierarchiáit felépítve újrahasznosíthatja a funkcionalitást és az API-definíciókat.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75348926"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Megbízható szereplők keretrendszerben
-A Reliable Actors keretrendszer lehetővé teszi, hogy a szereplők segítségével számos ugyanazokat a technikákat, amelyeket használni objektum-orientált tervezés. Az egyik ilyen technika a polimorfizmus, amely lehetővé teszi, hogy a típusok és a felületek örököljenek az általánosabb szülőktől. Öröklődés a Reliable Actors keretrendszer általában követi a .NET modell néhány további megkötések. Java/Linux esetén a Java modellt követi.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Reliable Actors-keretrendszerben
+A Reliable Actors-keretrendszer lehetővé teszi, hogy többek között olyan technikákat hozzon létre, amelyeket az objektum-orientált kialakításban is használ. Az egyik ilyen módszer a polimorfizmus, amely lehetővé teszi, hogy a típusok és a felületek több általánosított szülőtől örökölnek. A Reliable Actors-keretrendszer öröklése általában a .NET-modellt követi, néhány további korlátozással. Java/Linux esetén a Java-modellt követi.
 
 ## <a name="interfaces"></a>Interfészek
-A Reliable Actors keretrendszer megköveteli, hogy legalább egy felületet kell végrehajtani az aktor típus. Ez a felület egy proxyosztály létrehozására szolgál, amelyet az ügyfelek a szereplőkkel való kommunikációra használhatnak. A felületek örökölhetnek más felületekről, amennyiben minden olyan felület, amelyet egy aktor típus valósít meg, és az összes szülő végül az IActor(C#) vagy az Actor(Java) fájlból származik. Az IActor(C#) és az Actor(Java) a platform által definiált alapfelületek a .NET, illetve java keretrendszerek szereplői számára. Így a klasszikus polimorfizmus példa segítségével formák tűnhet valahogy így:
+A Reliable Actors-keretrendszerhez meg kell határoznia legalább egy olyan felületet, amelyet a színész típusa szerint kell megvalósítani. Ez az interfész olyan proxy osztály létrehozásához használható, amelyet az ügyfelek használhatnak a szereplőkkel való kommunikációhoz. A felületek más felületektől örökölnek, ha a színész típusa és az összes szülője a IActor (C#) vagy a színész (Java) által megvalósított összes felülettel rendelkezik. A IActor (C#) és a Actor (Java) a platform által definiált alapinterfészek, amelyek a .NET és a Java keretrendszerbeli szereplőkkel foglalkoznak. Így az alakzatokat használó klasszikus polimorfizmus például a következőhöz hasonló lehet:
 
-![Illesztőfelület-hierarchia alakzatszereplőkszámára][shapes-interface-hierarchy]
+![Alakzat szereplőinek illesztőfelület-hierarchiája][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Típusok
-Aktortípusok hierarchiáját is létrehozhatja, amelyek a platform által biztosított alap aktor osztályból származnak. Alakzatok esetében lehet egy alap `Shape`(C#) `ShapeImpl`vagy (Java) típusa:
+Létrehozhatja a Actor típusú hierarchiát is, amely a platform által biztosított alapszintű Actor osztályból származik. Az alakzatok esetében előfordulhat, hogy egy alap `Shape`(C#) vagy `ShapeImpl`(Java) típusú típust tartalmaz:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-A (C#) `Shape`vagy `ShapeImpl`(Java) altípusai felülbírálhatják a metódusok az alapból.
+A `Shape`(C#) vagy `ShapeImpl`(Java) altípusok felülbírálják a metódusokat az alapból.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -83,11 +83,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Figyelje `ActorService` meg az attribútumot az aktor típuson. Ez az attribútum azt mondja a Reliable Actor keretrendszer, amely automatikusan hozzon létre egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag az altípusokkal való funkciók megosztására szolgál, és soha nem használható konkrét szereplők létrehozására. Ezekben az esetekben `abstract` a kulcsszó segítségével jelezheti, hogy az adott típus alapján soha nem hoz létre aktort.
+Jegyezze fel `ActorService` az attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse [meg, hogy a Reliable Actors keretrendszer hogyan használja ki a Service Fabric platform](service-fabric-reliable-actors-platform.md) megbízhatóságot, méretezhetőséget és konzisztens állapotot.
-* További információ a [szereplő életciklusáról.](service-fabric-reliable-actors-lifecycle.md)
+* Ismerje meg, [hogyan használja ki a Reliable Actors Framework a Service Fabric platformot](service-fabric-reliable-actors-platform.md) a megbízhatóság, a méretezhetőség és a konzisztens állapot biztosításához.
+* Ismerkedjen meg a [színészi életciklussal](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 

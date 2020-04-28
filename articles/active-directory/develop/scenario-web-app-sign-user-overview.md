@@ -1,6 +1,6 @@
 ---
-title: Felhasználók bejelentkezése webalkalmazásból – Microsoft identity platform | Azure
-description: További információ a felhasználókban bejelentkező webalkalmazás létrehozásáról (áttekintés)
+title: Bejelentkezés a felhasználók webalkalmazásból – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely aláírja a felhasználókat (áttekintés)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881485"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Eset: A felhasználókban bejelentkező webalkalmazás
+# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
 
-Ismerje meg, hogy miként hozhat létre egy olyan webalkalmazást, amely a Microsoft identitásplatformot használja a felhasználók bejelentkezéséhez.
+Mindent megtudhat a Microsoft Identity platformot használó webalkalmazások létrehozásához a felhasználói bejelentkezéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,52 +30,52 @@ Ismerje meg, hogy miként hozhat létre egy olyan webalkalmazást, amely a Micro
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ha az első hordozható (ASP.NET Core) webalkalmazást szeretné létrehozni, amely bejelentkezik a felhasználókba, kövesse az alábbi rövid útmutatót:
+Ha az első olyan hordozható (ASP.NET Core) webalkalmazást szeretné létrehozni, amely a felhasználók számára jelentkezik be, kövesse az alábbi rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET Core webalkalmazás, amely bejelentkezik a felhasználók](quickstart-v2-aspnet-core-webapp.md)
+> [Gyors útmutató: ASP.NET Core webalkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Ha szeretné megtudni, hogyan adhat hozzá bejelentkezést egy meglévő ASP.NET webalkalmazáshoz, próbálkozzon az alábbi rövid útmutatóval:
+Ha szeretné megismerni, hogyan adhat hozzá bejelentkezést egy meglévő ASP.NET-webalkalmazáshoz, próbálja meg a következő rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET webalkalmazás, amely bejelentkezik a felhasználók](quickstart-v2-aspnet-webapp.md)
+> [Rövid útmutató: ASP.NET-webalkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ha Ön Java-fejlesztő, próbálkozzon az alábbi rövid útmutatóval:
+Ha Ön Java-fejlesztő, próbálja ki a következő rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Java webalkalmazáshoz](quickstart-v2-java-webapp.md)
+> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ha a Pythonnal dolgozik, próbálkozzon az alábbi rövid útmutatóval:
+Ha Python-fejlesztést végez, próbálja ki a következő rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Python-webalkalmazáshoz](quickstart-v2-python-webapp.md)
+> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Áttekintés
 
-Hitelesítést ad hozzá a webalkalmazáshoz, hogy bejelentkezhessen a felhasználókhoz. A hitelesítés hozzáadása lehetővé teszi, hogy a webalkalmazás korlátozott profiladatokhoz férjen hozzá a felhasználók felhasználói élményének testreszabása érdekében. 
+A webalkalmazáshoz olyan hitelesítést adhat hozzá, amellyel bejelentkezhet a felhasználókba. A hitelesítés hozzáadásával a webalkalmazás elérheti a korlátozott profilokra vonatkozó információkat, így testre szabhatja a felhasználói élményt. 
 
-A webalkalmazások hitelesítik a felhasználót egy webböngészőben. Ebben a forgatókönyvben a webalkalmazás irányítja a felhasználó böngészőjét, hogy jelentkezzen be az Azure Active Directoryba (Azure AD). Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjében keresztül, amely egy biztonsági jogkivonatban tartalmazza a felhasználóra vonatkozó jogcímeket. A felhasználók bejelentkezése kihasználja az [Open ID Connect](./v2-protocols-oidc.md) szabványprotokollt, amelyet a köztes [szoftverkönyvtárak](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)egyszerűsítettek.
+A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen a Azure Active Directoryba (Azure AD). Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. A felhasználók bejelentkezésekor a rendszer kihasználja a [nyílt ID-kapcsolat](./v2-protocols-oidc.md) szabványos protokolljának előnyeit, amelyet a middleware- [kódtárak](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)használatával egyszerűsített.
 
-![Webalkalmazás-bejelentkezések a felhasználókban](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Webalkalmazás-jelek a felhasználókban](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-Második fázisként engedélyezheti, hogy az alkalmazás webes API-kat hívjon meg a bejelentkezett felhasználó nevében. A következő fázis egy másik forgatókönyv, amely a [webes API-kat meghívja webappokban](scenario-web-app-call-api-overview.md)található.
+Második fázisként engedélyezheti, hogy az alkalmazás a bejelentkezett felhasználó nevében hívja meg a webes API-kat. Ez a következő fázis egy másik forgatókönyv, amelyet a [webes API-kat meghívó webalkalmazásban](scenario-web-app-call-api-overview.md)talál.
 
 > [!NOTE]
-> A webalkalmazásba való bejelentkezés a webalkalmazás védelméről és a felhasználói jogkivonat érvényesítéséről szól, amit a **köztes szoftvertárak** csinálnak. A .NET esetében ez a forgatókönyv még nem igényli a Microsoft authentication library (MSAL) könyvtárat, amely a védett API-k hívásához szükséges jogkivonat beszerzéséről szól. A hitelesítési kódtárak a nyomon követési forgatókönyvben kerülnek bevezetésre, amikor a webalkalmazásnak webes API-kat kell hívnia.
+> Ha bejelentkezik a webalkalmazásba, a webalkalmazás védelme és a felhasználói jogkivonat érvényesítése is megtörténik. **middleware** .NET esetén ehhez a forgatókönyvhöz még nincs szükség a Microsoft Authentication Library (MSAL) szolgáltatásra, amely a védett API-k meghívására szolgáló jogkivonat beszerzésére vonatkozik. A hitelesítési kódtárak a követési forgatókönyvben lesznek bevezetve, amikor a webalkalmazásnak webes API-kat kell meghívnia.
 
 ## <a name="specifics"></a>Sajátosságai
 
-- Az alkalmazás regisztrációja során meg kell adnia egy vagy több (ha az alkalmazást több helyen telepíti) választ kell adnia az URI-knak. Bizonyos esetekben (ASP.NET és ASP.NET Core), engedélyeznie kell az azonosító jogkivonatot. Végül érdemes beállítani egy kijelentkezési URI-t, hogy az alkalmazás reagáljon a kijelentkező felhasználókra.
-- Az alkalmazás kódjában meg kell adnia azt a jogosultságot, amelyhez a webalkalmazás delegálja a bejelentkezést. Előfordulhat, hogy testre szeretné szabni a jogkivonat-érvényesítést (különösen a partneri forgatókönyvekben).
-- A webalkalmazások bármilyen fióktípust támogatnak. További információt a [Támogatott fióktípusok](v2-supported-account-types.md)című témakörben talál.
+- Az alkalmazás regisztrációja során meg kell adnia egy vagy több (ha több helyen helyezi üzembe az alkalmazást) válasz URI-k. Bizonyos esetekben (ASP.NET és ASP.NET Core) engedélyeznie kell az azonosító tokent. Végezetül egy kijelentkezési URI-t kell beállítania, hogy az alkalmazás feliratkozik a felhasználókra.
+- Az alkalmazás kódjában meg kell adnia azt a szolgáltatót, amelyhez a webalkalmazás bejelentkezett. Előfordulhat, hogy testre szeretné szabni a jogkivonat-ellenőrzést (különösen a partneri forgatókönyvekben).
+- A webalkalmazások bármilyen fióktípus használatát támogatják. További információ: [támogatott fióktípus](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>További lépések
 
