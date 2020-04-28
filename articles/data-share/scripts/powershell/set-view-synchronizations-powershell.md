@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsfájl: Az Azure Data Share sychronization beállításainak beállítása és megtekintése| Microsoft dokumentumok'
-description: Ez a PowerShell-parancsfájl beállítja és leteszi a megosztási szinkronizálási beállításokat.
+title: 'PowerShell-parancsfájl: az Azure-beli adatmegosztás szinkronizálási beállításainak megadása és megtekintése | Microsoft Docs'
+description: Ez a PowerShell-szkript beállítja és megosztja a szinkronizálási beállításokat.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307183"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldött adatmegosztás használatának figyelése a PowerShell használatával
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése a PowerShell használatával
 
-Ez a PowerShell-parancsfájl beállítja és leteszi a megosztási szinkronizálási beállításokat.
+Ez a PowerShell-szkript beállítja és megosztja a szinkronizálási beállításokat.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -48,12 +48,12 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Megosztási szinkronizálás létrehozása. |
-| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Megosztás-szinkronizálás szinkronizálási beállításainak beszerzése. |
+| [Új – AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Hozzon létre egy megosztási szinkronizálást. |
+| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Beolvassa a megosztás szinkronizálásának beállításait. |
 |||
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Share PowerShell-parancsfájlminták találhatók az [Azure Data Share PowerShell-mintákban.](../../samples-powershell.md)
+További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

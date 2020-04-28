@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTools PowerShell-hivatkozás | Microsoft dokumentumok'
-description: Ez a dokumentum az ADConnectivityTools.psm1 PowerShell modul referenciainformációit tartalmazza.
+title: 'Azure AD Connect: ADConnectivityTools PowerShell-hivatkozás | Microsoft Docs'
+description: Ez a dokumentum a ADConnectivityTools. psm1 PowerShell-modulra vonatkozó információkat tartalmaz.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,17 +11,17 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66473782"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: AdconnectivityTools PowerShell-referencia
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell-hivatkozás
 
-A következő dokumentáció az Azure AD Connect részét képező ADConnectivityTools.psm1 PowerShell-modul referenciainformációit tartalmazza.
+Az alábbi dokumentáció a Azure AD Connect ADConnectivityTools. psm1 PowerShell-moduljának hivatkozásait tartalmazza.
 
-## <a name="confirm-dnsconnectivity"></a>Megerősítés-Dnsconnectivity
+## <a name="confirm-dnsconnectivity"></a>Megerősítés – DnsConnectivity
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
@@ -36,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>LEÍRÁS
 
 Helyi DNS-kapcsolati teszteket futtat.
-Az Active Directory-összekötő konfigurálásához a felhasználónak mindkét névfeloldással rendelkeznie kell ahhoz az erdőhöz, amelyhez csatlakozni próbál, valamint az erdőhöz társított tartományvezérlőkön.
+Az Active Directory-összekötő konfigurálásához a felhasználónak mindkét nevet resolutionthe kell adnia ahhoz az erdőhöz, amelyhez csatlakozni próbál, valamint az ehhez az erdőhöz társított tartományvezérlőkön is.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -56,7 +56,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Erdő
 
-Megadja annak az erdőnek a nevét, amelyen tesztelni kell.
+Meghatározza a vizsgálandó erdő nevét.
 
 ```yml
 Type: String
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 
 #### <a name="-dcs"></a>-DCs
 
-Adja meg a tesztelni kívánt tartományvezérlőket.
+A teszteléshez használandó tartományvezérlőket kell megadnia.
 
 ```yml
 Type: Array
@@ -86,10 +86,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSobject objektum
+#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Ennek a diagnózisnak az eredményét adja eredményül PSObject formájában.
-Nem szükséges az eszközzel való kézi beavatkozás során.
+A diagnózis eredményét adja vissza PSObject formájában.
+Nem szükséges az eszközzel végzett manuális interakció során.
 
 ```yml
 Type: SwitchParameter
@@ -106,13 +106,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-forestexists"></a>Confirm-ForestLétez
+## <a name="confirm-forestexists"></a>Megerősítés – ForestExists
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-Azt határozza meg, hogy létezik-e adott erdő.
+Meghatározza, hogy létezik-e egy adott erdő.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -122,7 +122,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 
 ### <a name="description"></a>LEÍRÁS
 
-Lekérdezi a DNS-kiszolgálót az erdőhöz társított IP-címekről.
+Egy erdőhöz társított IP-címek DNS-kiszolgálójának lekérdezése.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -136,7 +136,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Erdő
 
-Megadja annak az erdőnek a nevét, amelyen tesztelni kell.
+Meghatározza a vizsgálandó erdő nevét.
 
 ```yml
 Type: String
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-functionallevel"></a>Megerősítés-FunctionalLevel
+## <a name="confirm-functionallevel"></a>Megerősítés – FunctionalLevel
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
@@ -169,7 +169,7 @@ Az AD-erdő működési szintjének ellenőrzése.
 Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-#### <a name="forestfqdn"></a>Erdőfqdn
+#### <a name="forestfqdn"></a>ForestFQDN
 
 ```
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -177,8 +177,8 @@ Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCrede
 
 ### <a name="description"></a>LEÍRÁS
 
-Ellenőrzi, hogy az AD erdő működési szintje egyenlő vagy nagyobb-e, mint egy adott MinAdForestVersion (WindowsServer2003).
-Fiók (Tartomány\Felhasználónév) és jelszó kérhető.
+Ellenőrzi, hogy az AD-erdő működési szintje egyenlő vagy nagyobb-e, mint egy adott MinAdForestVersion (WindowsServer2003).
+A fiók (tartomány \ Felhasználónév) és a jelszó kérhető.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -204,7 +204,7 @@ Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCre
 
 #### <a name="-forest"></a>-Erdő
 
-Célerdő.
+Cél erdő.
 Az alapértelmezett érték az aktuálisan bejelentkezett felhasználó erdője.
 
 ```yml
@@ -219,7 +219,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-forestfqdn"></a>-ForestFQDN
+#### <a name="-forestfqdn"></a>– ForestFQDN
 
 Cél ForestFQDN objektum.
 
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-A függvény a számítógépbe jelenleg bejelentkezett felhasználó hitelesítő adatait fogja használni, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
+A függvény azon felhasználó hitelesítő adatait fogja használni, amely jelenleg be van jelentkezve a számítógépen, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
 
 ```yml
 Type: SwitchParameter
@@ -254,13 +254,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-networkconnectivity"></a>Megerősítés-hálózati kapcsolat
+## <a name="confirm-networkconnectivity"></a>Megerősítés – NetworkConnectivity
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-A helyi hálózati kapcsolattal kapcsolatos problémák észlelése.
+Észleli a helyi hálózati kapcsolati problémákat.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -272,8 +272,8 @@ Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObje
 
 Helyi hálózati kapcsolati teszteket futtat.
 
-A helyi hálózati tesztekhez az AAD Connectnek képesnek kell lennie kommunikálni az 53 (DNS), 88 (Kerberos) és 389 (LDAP) portok on megnevezett tartományvezérlőivel, ezért van jelenleg integrálva ez a teszt.
-Ha egy másik DNS-kiszolgáló t adott meg, az 53-as portot ki kell hagyni.
+A helyi hálózati tesztek esetében a HRE-csatlakozásnak képesnek kell lennie kommunikálni a nevesített tartományvezérlőkkel az 53 (DNS), a 88 (Kerberos) és a 389 (LDAP) használatával, amely a legtöbb szervezet DNS-t futtat a tartományvezérlőn, ezért a teszt jelenleg integrálva van.
+Ha egy másik DNS-kiszolgáló van megadva, a 53-es portot ki kell hagyni.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -293,7 +293,7 @@ Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbos
 
 #### <a name="-dcs"></a>-DCs
 
-Adja meg a tesztelni kívánt tartományvezérlőket.
+A teszteléshez használandó tartományvezérlőket kell megadnia.
 
 ```yml
 Type: Array
@@ -307,10 +307,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipdnsport"></a>-Skipdnsport
+#### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Ha a felhasználó nem használja az AD Site / Logon DC által biztosított DNS-szolgáltatásokat, akkor érdemes lehet kihagynia az 53-as port ellenőrzését.
-A felhasználónak továbbra is képesnek kell lennie a _.ldap._tcp feloldására. \<forestfqdn-t\> az Active Directory-összekötő konfigurációjának sikeressítéséhez.
+Ha a felhasználó nem az AD-hely/bejelentkezési tartományvezérlő által biztosított DNS-szolgáltatásokat használja, érdemes lehet kihagyni a 53-es portot.
+A felhasználónak továbbra is képesnek kell lennie az _. LDAP. _tcp feloldására. \<a\> forestfqdn ahhoz, hogy a Active Directory-összekötő konfigurációja sikeres legyen.
 
 ```yml
 Type: SwitchParameter
@@ -324,10 +324,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSobject objektum
+#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Ennek a diagnózisnak az eredményét adja eredményül PSObject formájában.
-Nem szükséges az eszközzel való kézi beavatkozás során.
+A diagnózis eredményét adja vissza PSObject formájában.
+Nem szükséges az eszközzel végzett manuális interakció során.
 
 ```yml
 Type: SwitchParameter
@@ -344,13 +344,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-targetsarereachable"></a>Confirm-TargetsÉrhető el
+## <a name="confirm-targetsarereachable"></a>Megerősítés – TargetsAreReachable
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-Azt határozza meg, hogy egy adott erdő és a hozzá tartozó tartományvezérlők elérhetők-e.
+Meghatározza, hogy a megadott erdő és a hozzá tartozó tartományvezérlők elérhetők-e.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -360,7 +360,7 @@ Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters
 
 ### <a name="description"></a>LEÍRÁS
 
-"Ping" teszteket futtat (függetlenül attól, hogy a számítógép el tudja-e érni a célszámítógépet a hálózaton és/vagy az interneten keresztül)
+Futtatja a "ping" teszteket (azt, hogy a számítógép elérheti-e a célszámítógépet a hálózaton és/vagy az interneten keresztül)
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -380,7 +380,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Erdő
 
-Megadja annak az erdőnek a nevét, amelyen tesztelni kell.
+Meghatározza a vizsgálandó erdő nevét.
 
 ```yml
 Type: String
@@ -396,7 +396,7 @@ Accept wildcard characters: False
 
 #### <a name="-dcs"></a>-DCs
 
-Adja meg a tesztelni kívánt tartományvezérlőket.
+A teszteléshez használandó tartományvezérlőket kell megadnia.
 
 ```yml
 Type: Array
@@ -413,13 +413,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validdomains"></a>Megerősítés-validdomains
+## <a name="confirm-validdomains"></a>Megerősítés – ValidDomains
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-Annak ellenőrzése, hogy a beszerzett erdő teljes tartományában lévő tartományok elérhetők-e
+Annak ellenőrzése, hogy a beszerzett erdő teljes tartománynevében lévő tartományok elérhetők-e
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -429,7 +429,7 @@ Annak ellenőrzése, hogy a beszerzett erdő teljes tartományában lévő tarto
 Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-#### <a name="forestfqdn"></a>Erdőfqdn
+#### <a name="forestfqdn"></a>ForestFQDN
 
 ```
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -437,8 +437,8 @@ Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredenti
 
 ### <a name="description"></a>LEÍRÁS
 
-Ellenőrizze, hogy a beszerzett erdő teljes tartományai elérhetők-e a DomainGuid és a DomainDN lekérésének megkísérlésével.
-Fiók (Tartomány\Felhasználónév) és jelszó kérhető.
+Ellenőrizze, hogy a beszerzett erdő teljes TARTOMÁNYNEVÉben lévő összes tartomány elérhető-e a DomainGuid és a DomainDN beolvasására tett kísérlet során.
+A fiók (tartomány \ Felhasználónév) és a jelszó kérhető.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -464,7 +464,7 @@ Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCreden
 
 #### <a name="-forest"></a>-Erdő
 
-Célerdő.
+Cél erdő.
 
 ```yml
 Type: String
@@ -478,7 +478,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-forestfqdn"></a>-ForestFQDN
+#### <a name="-forestfqdn"></a>– ForestFQDN
 
 Cél ForestFQDN objektum.
 
@@ -496,7 +496,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-A függvény a számítógépbe jelenleg bejelentkezett felhasználó hitelesítő adatait fogja használni, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
+A függvény azon felhasználó hitelesítő adatait fogja használni, amely jelenleg be van jelentkezve a számítógépen, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
 
 ```yml
 Type: SwitchParameter
@@ -513,9 +513,9 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Valid-ValidEnterpriseAdminCredentials megerősítése
+## <a name="confirm-validenterpriseadmincredentials"></a>Megerősítés – ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
@@ -529,8 +529,8 @@ Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredential
 
 ### <a name="description"></a>LEÍRÁS
 
-Keresés, ha a megadott felhasználó rendelkezik vállalati rendszergazdai hitelesítő adatokkal.
-Fiók (Tartomány\Felhasználónév) és jelszó kérhető.
+Megkeresi, hogy a megadott felhasználó rendelkezik-e vállalati rendszergazdai hitelesítő adatokkal.
+A fiók (tartomány \ Felhasználónév) és a jelszó kérhető.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -550,7 +550,7 @@ Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-A függvény a számítógépbe jelenleg bejelentkezett felhasználó hitelesítő adatait fogja használni, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
+A függvény azon felhasználó hitelesítő adatait fogja használni, amely jelenleg be van jelentkezve a számítógépen, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
 
 ```yml
 Type: SwitchParameter
@@ -567,13 +567,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-A DomainFQDN lekérése fiók- és jelszókombinációból.
+Lekéri egy DomainFQDN a fiók és a jelszó kombinációjával.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -584,9 +584,9 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
 
 ### <a name="description"></a>LEÍRÁS
 
-Kísérlet egy domainFQDN objektum beszerzésére a megadott hitelesítő adatokból.
-Ha a domainFQDN érvényes, a felhasználó választásától függően a rendszer domainfqnname vagy rootdomainname értéket ad vissza.
-Fiók (Tartomány\Felhasználónév) és jelszó kérhető.
+Megpróbál beolvasni egy domainFQDN-objektumot a megadott hitelesítő adatokból.
+Ha a domainFQDN érvényes, akkor a rendszer a felhasználó által választott DomainFQDNName vagy RootDomainName ad vissza.
+A fiók (tartomány \ Felhasználónév) és a jelszó kérhető.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -606,8 +606,8 @@ Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInU
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
-A beolvasni kívánt típusú adatok.
-Jelenleg a "DomainFQDNName" vagy a "RootDomainName" volt a következő.
+A lekérdezni kívánt adattípusok.
+Jelenleg csak "DomainFQDNName" vagy "RootDomainName" lehet.
 
 ```yml
 Type: String
@@ -623,7 +623,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-A függvény a számítógépbe jelenleg bejelentkezett felhasználó hitelesítő adatait fogja használni, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
+A függvény azon felhasználó hitelesítő adatait fogja használni, amely jelenleg be van jelentkezve a számítógépen, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
 
 ```yml
 Type: SwitchParameter
@@ -656,13 +656,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-ForestFQDN-t kér le egy fiók- és jelszókombinációból.
+Lekéri egy ForestFQDN a fiók és a jelszó kombinációjával.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -672,8 +672,8 @@ Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<C
 
 ### <a name="description"></a>LEÍRÁS
 
-Megkísérli a ForestFQDN beszerzését a megadott hitelesítő adatokból.
-Fiók (Tartomány\Felhasználónév) és jelszó kérhető.
+Megpróbál beolvasni egy ForestFQDN a megadott hitelesítő adatokból.
+A fiók (tartomány \ Felhasználónév) és a jelszó kérhető.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -693,7 +693,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCreden
 
 #### <a name="-forest"></a>-Erdő
 
-Célerdő. Az alapértelmezett érték az aktuálisan bejelentkezett felhasználó tartománya.
+Cél erdő. Az alapértelmezett érték az aktuálisan bejelentkezett felhasználó tartománya.
 
 ```yml
 Type: String
@@ -709,7 +709,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-A függvény a számítógépbe jelenleg bejelentkezett felhasználó hitelesítő adatait fogja használni, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
+A függvény azon felhasználó hitelesítő adatait fogja használni, amely jelenleg be van jelentkezve a számítógépen, nem pedig egyéni hitelesítő adatokat kér a felhasználótól.
 
 ```yml
 Type: SwitchParameter
@@ -726,13 +726,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
+## <a name="start-connectivityvalidation"></a>Start – ConnectivityValidation
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
-Fő funkció.
+Fő függvény.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -743,7 +743,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 
 ### <a name="description"></a>LEÍRÁS
 
-Futtatja az összes rendelkezésre álló mechanizmust, amely ellenőrzi, hogy az AD-hitelesítő adatok érvényesek-e.
+Futtatja az összes rendelkezésre álló mechanizmust, amely ellenőrzi az AD-hitelesítő adatok érvényességét.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -757,7 +757,7 @@ Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAcco
 
 #### <a name="-forest"></a>-Erdő
 
-Célerdő.
+Cél erdő.
 
 ```yml
 Type: String
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Egyéni telepítés esetén: A $True jelző, ha a felhasználó az AADConnect varázslójának AD erdőfiók ablakában az "Új AD-fiók létrehozása" lehetőséget választotta.
-$False, ha a felhasználó a "Meglévő AD-fiók használata" lehetőséget választotta.
-Expressz-telepítések esetén: Ennek a változónak az értékét $True kell lennie az Express-telepítések esetében.
+Egyéni telepítések esetén: jelző, amely akkor $True, ha a felhasználó az "új AD-fiók létrehozása" lehetőséget választotta a AADConnect varázsló AD Forest-fiók ablakában.
+$False, ha a felhasználó a "meglévő AD-fiók használata" lehetőséget választotta.
+Expressz telepítések esetén: a változó értékének $True kell lennie az expressz telepítések esetében.
 
 ```yml
 Type: Boolean
@@ -791,7 +791,7 @@ Accept wildcard characters: False
 
 #### <a name="-username"></a>-UserName
 
-Az a paraméter, amely a felhasználó hitelesítő adatainak kérésekor előre feltölti a Felhasználónév mezőt.
+A paraméter, amely előzetesen kitölti a Felhasználónév mezőt, amikor a felhasználó hitelesítő adatait kéri.
 
 ```yml
 Type: String
@@ -808,9 +808,9 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
+## <a name="start-networkconnectivitydiagnosistools"></a>Start – NetworkConnectivityDiagnosisTools
 
 ### <a name="synopsis"></a>SZINOPSZIS
 
@@ -846,7 +846,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TES
 
 #### <a name="-forest"></a>-Erdő
 
-Megadja a tesztelni a tesztet.
+Megadja az erdő nevét a teszteléshez.
 
 ```yml
 Type: String
@@ -860,10 +860,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-credentials"></a>-Hitelesítő adatok
+#### <a name="-credentials"></a>– Hitelesítő adatok
 
 A tesztet futtató felhasználó felhasználóneve és jelszava.
-Az Azure AD Connect varázsló futtatásához ugyanolyan szintű engedélyekre van szükség.
+A Azure AD Connect varázsló futtatásához azonos szintű engedélyekre van szükség.
 
 ```yml
 Type: PSCredential
@@ -879,7 +879,7 @@ Accept wildcard characters: False
 
 #### <a name="-logfilelocation"></a>-LogFileLocation
 
-Megadja a függvény kimenetét tartalmazó naplófájl helyét.
+Megadja egy naplófájl helyét, amely a függvény kimenetét fogja tartalmazni.
 
 ```yml
 Type: String
@@ -895,7 +895,7 @@ Accept wildcard characters: False
 
 #### <a name="-dcs"></a>-DCs
 
-Adja meg a tesztelni kívánt tartományvezérlőket.
+A teszteléshez használandó tartományvezérlőket kell megadnia.
 
 ```yml
 Type: Array
@@ -911,7 +911,7 @@ Accept wildcard characters: False
 
 #### <a name="-displayinformativemessage"></a>-DisplayInformativeMessage
 
-A függvény céljáról szóló üzenet megjelenítését lehetővé tévő megjelölés.
+Az a jelző, amely lehetővé teszi a függvény céljával kapcsolatos üzenet megjelenítését.
 
 ```yml
 Type: SwitchParameter
@@ -925,10 +925,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSobject objektum
+#### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Ennek a diagnózisnak az eredményét adja eredményül PSObject formájában.
-Nem szükséges megadni az eszközzel való kézi interakció során.
+A diagnózis eredményét adja vissza PSObject formájában.
+Az eszközzel történő manuális interakció során nem szükséges megadni.
 
 ```yml
 Type: SwitchParameter
@@ -944,8 +944,8 @@ Accept wildcard characters: False
 
 #### <a name="-validcredentials"></a>-ValidCredentials
 
-Azt jelzi, hogy a felhasználó által megadott hitelesítő adatok érvényesek-e.
-Nem szükséges megadni az eszközzel való kézi interakció során.
+Azt jelzi, hogy a felhasználó által beírt hitelesítő adatok érvényesek-e.
+Az eszközzel történő manuális interakció során nem szükséges megadni.
 
 ```yml
 Type: SwitchParameter
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).

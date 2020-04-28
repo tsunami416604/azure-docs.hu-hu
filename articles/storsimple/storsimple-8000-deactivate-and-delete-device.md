@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozatú eszköz kikapcsolása és törlése | Microsoft dokumentumok
-description: A StorSimple-eszköz eltávolítását ismerteti, ha először inaktiválja, majd törli azt.
+title: StorSimple 8000 Series-eszköz inaktiválása és törlése | Microsoft Docs
+description: Leírja, hogyan távolíthatja el a StorSimple eszközt a szolgáltatásból, ha először inaktiválja, majd törli azt.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,110 +15,110 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61481939"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple-eszköz inaktiválása és törlése
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk ismerteti, hogyan inaktiválhatja és törölheti a StorSimple-eszköz, amely csatlakozik egy StorSimple Eszközkezelő szolgáltatás. Az ebben a cikkben szereplő útmutatás csak a StorSimple 8000 sorozatú eszközökre vonatkozik, beleértve a StorSimple felhőalapú készülékeket is. Ha StorSimple virtuális tömböt használ, akkor lépjen [az Inaktiválás és a StorSimple virtuális tömb törlése](storsimple-virtual-array-deactivate-and-delete-device.md)elemre.
+Ez a cikk azt ismerteti, hogyan lehet inaktiválni és törölni egy StorSimple Eszközkezelő szolgáltatáshoz csatlakozó StorSimple-eszközt. A jelen cikkben található útmutatás csak a StorSimple 8000 sorozatú eszközökre vonatkozik, beleértve a StorSimple Cloud Appliances eszközöket is. Ha StorSimple virtuális tömböt használ, ugorjon az Inaktiválás elemre, [és törölje a StorSimple virtuális tömböt](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Az inaktiválás megszakítja az eszköz és a megfelelő StorSimple Eszközkezelő szolgáltatás közötti kapcsolatot. Előfordulhat, hogy egy StorSimple eszközt ki szeretne használni (például ha kicseréli vagy frissíti az eszközt, vagy ha már nem használja a StorSimple-t). Ha igen, a törlés előtt inaktiválnia kell az eszközt.
+Az Inaktiválás megszakítja az eszköz és a hozzá tartozó StorSimple Eszközkezelő szolgáltatás közötti kapcsolatot. Előfordulhat, hogy a StorSimple eszközt (például ha az eszközt lecseréli vagy frissíti, vagy ha már nem használja a StorSimple). Ha igen, a törlés előtt inaktiválnia kell az eszközt.
 
-Az eszköz inaktiválásakor az eszközön helyileg tárolt adatok már nem érhetők el. Csak a felhőben tárolt eszközhöz társított adatok helyrehozhatók.
+Ha inaktiválja az eszközt, az eszközön helyileg tárolt összes adatbázis már nem érhető el. Csak a felhőben tárolt eszközhöz társított adatmennyiség állítható helyre.
 
 > [!WARNING]
-> Az inaktiválás állandó művelet, és nem lehet visszavonni. Az inaktivált eszköz csak akkor regisztrálható a StorSimple Eszközkezelő szolgáltatásban, ha visszaáll a gyári alapértékekre.
+> Az Inaktiválás állandó művelet, ezért nem vonható vissza. Inaktivált eszköz nem regisztrálható a StorSimple Eszközkezelő szolgáltatásban, kivéve, ha vissza van állítva a gyári alapértékekre.
 >
-> A gyári beállítások visszaállítási folyamata törli az eszközön helyileg tárolt összes adatot. Ezért az eszköz inaktiválása előtt el kell készítenie az összes adat felhőbeli pillanatképét. Ez a felhőbeli pillanatkép lehetővé teszi az összes adat helyreállítását egy későbbi szakaszban.
+> A gyári beállítások visszaállítása folyamat törli az eszközön helyileg tárolt összes adathalmazt. Ezért az eszköz inaktiválása előtt el kell végeznie az összes adattal kapcsolatos Felhőbeli pillanatképet. Ez a Felhőbeli pillanatkép lehetővé teszi, hogy egy későbbi időpontban helyreállítsa az összes adatokat.
 
-Elolvasása után ez a bemutató, akkor képes lesz arra, hogy:
+Az oktatóanyag elolvasása után a következőket teheti:
 
-* Inaktiváljon egy eszközt, és törölje az adatokat.
-* Inaktiváljon egy eszközt, és őrizze meg az adatokat.
+* Inaktiválhat egy eszközt, és törölheti az adategységeket.
+* Az eszköz inaktiválása és az adat megőrzése.
 
 > [!NOTE]
-> A StorSimple fizikai eszköz vagy felhőalapú eszköz inaktiválása előtt állítsa le vagy törölje az adott eszköztől függő ügyfeleket és gazdagépeket.
+> A StorSimple fizikai eszköz vagy a felhőalapú berendezés inaktiválása előtt állítsa le vagy törölje az adott eszköztől függő ügyfeleket és gazdagépeket.
 
 
-## <a name="deactivate-and-delete-data"></a>Adatok inaktiválása és törlése
+## <a name="deactivate-and-delete-data"></a>Inaktiválás és az adattörlés
 
-Ha teljesen szeretné leplezni az eszközt, és nem szeretné megőrizni az adatokat az eszközön, akkor hajtsa végre a következő lépéseket.
+Ha szeretné teljesen törölni az eszközt, és nem szeretné megőrizni az eszközön tárolt összes adatát, hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Az eszköz inaktiválásához és az adatok
+#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Az eszköz inaktiválása és az adattörlés
 
-1. Az eszköz inaktiválása előtt törölnie kell az eszközhöz társított összes kötettárolót (és kötetet). Kötettárolók csak a társított biztonsági mentések törlése után törölhető.
+1. Az eszköz inaktiválása előtt törölnie kell az eszközhöz társított összes kötet-tárolót (és a köteteket). A kötetek tárolóit csak akkor törölheti, ha törölte a társított biztonsági másolatokat.
 
     > [!NOTE]
-    > A StorSimple fizikai eszköz vagy felhőalapú eszköz inaktiválása előtt győződjön meg arról, hogy a törölt kötettárolóból származó adatok ténylegesen törlődnek az eszközről. Figyelemmel kísérheti a felhőfelhasználási diagramokat, és amikor a törölt biztonsági mentések miatt a felhőhasználat csökken, folytathatja az eszköz inaktiválását. Ha inaktiválja az eszközt, mielőtt ez a csökkenés bekövetkezne, az adatok a tárfiókban vesztegelnek, és terheléseket halmoznak fel.
+    > A StorSimple fizikai eszköz vagy a felhőalapú berendezés inaktiválása előtt győződjön meg arról, hogy a törölt kötet tárolóból származó adatok ténylegesen törlődnek az eszközről. Figyelemmel kísérheti a Felhőbeli felhasználási diagramokat, és amikor a törölt biztonsági másolatok miatt megjelenik a felhő használatának csökkenése, folytathatja az eszköz inaktiválását. Ha az eszköz inaktiválása előtt inaktiválja az eszközt, az adatok a Storage-fiókban maradnak, és felmerülnek a díjak.
 
-2. Kapcsolja ki az eszközt az alábbiak szerint:
+2. Inaktiválja az eszközt az alábbiak szerint:
    
-   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **Eszközök** panelen jelölje ki az inaktiválni kívánt eszközt, kattintson a jobb gombbal, majd kattintson **az Inaktiválás parancsra.**
+   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **eszközök** panelen jelölje ki az inaktiválni kívánt eszközt, kattintson a jobb gombbal, majd kattintson az **inaktiválás**elemre.
 
-        ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. Az **Inaktiválás** panelen írja be a megerősítendő eszköznevét, majd kattintson **az Inaktiválás gombra.** A folyamat inaktiválása és néhány percet vesz igénybe.
+        ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+   2. Az **inaktiválás** panelen írja be az eszköz nevét a megerősítéshez, majd kattintson az **inaktiválás**elemre. A inaktiválási folyamat elindul, és néhány percet vesz igénybe.
 
-        ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
-3. Az inaktiválás után teljesen törölheti az eszközt. Az eszköz törlésével eltávolítja azt a szolgáltatáshoz csatlakoztatott eszközök listájáról. A szolgáltatás ezután már nem tudja kezelni a törölt eszközt. Az eszköz törléséhez kövesse az alábbi lépéseket:
+3. Az inaktiválást követően teljesen törölheti az eszközt. Egy eszköz törlésével a szolgáltatáshoz csatlakoztatott eszközök listájáról törlődik. A szolgáltatás ezután már nem tudja kezelni a törölt eszközt. Az eszköz törléséhez kövesse az alábbi lépéseket:
    
-   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **Eszközök** panelen jelölje ki a törölni kívánt inaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés parancsra.**
+   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **eszközök** panelen jelölje ki a törölni kívánt inaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés**parancsra.
 
-        ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. A **Törlés** panelen írja be a megerősítendő eszköznevét, majd kattintson a **Törlés gombra.** A törlés néhány percet vesz igénybe.
+        ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+   2. A **Törlés** panelen írja be az eszköz nevét a megerősítéshez, majd kattintson a **Törlés**gombra. A törlés eltarthat néhány percig.
 
-        ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. A törlés sikeres befejezése után értesítést kap. Az eszközlista is frissül, hogy tükrözze a törlést.
+        ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+   3. A törlés sikeres befejezését követően értesítést kap. Az eszközök listája is frissül, hogy tükrözze a törlést.
 
-## <a name="deactivate-and-retain-data"></a>Adatok inaktiválása és megőrzése
+## <a name="deactivate-and-retain-data"></a>Az adat inaktiválása és megőrzése
 
-Ha szeretné kitölteni az eszközt, de meg szeretné őrizni az adatokat, hajtsa végre az alábbi lépéseket:
+Ha szeretne törölni az eszközt, de szeretné megőrizni az adattárolást, hajtsa végre a következő lépéseket:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Eszköz inaktiválása és az adatok megőrzése
-1. Kapcsolja ki az eszközt. Az eszköz összes kötettárolója és pillanatképe megmarad.
+#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Eszköz inaktiválása és az adat megőrzése
+1. Inaktiválja az eszközt. A kötet tárolói és az eszköz pillanatképei továbbra is megmaradnak.
    
-   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **Eszközök** panelen jelölje ki az inaktiválni kívánt eszközt, kattintson a jobb gombbal, majd kattintson **az Inaktiválás parancsra.**
+   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **eszközök** panelen jelölje ki az inaktiválni kívánt eszközt, kattintson a jobb gombbal, majd kattintson az **inaktiválás**elemre.
 
-         ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. Az **Inaktiválás** panelen írja be a megerősítendő eszköznevét, majd kattintson **az Inaktiválás gombra.** A folyamat inaktiválása és néhány percet vesz igénybe.
+         ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+   2. Az **inaktiválás** panelen írja be az eszköz nevét a megerősítéshez, majd kattintson az **inaktiválás**elemre. A inaktiválási folyamat elindul, és néhány percet vesz igénybe.
 
-         ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
-2. Most már feladatátvételt a kötettárolók és a kapcsolódó pillanatképek. Az eljárások, megy [feladatátvételi és vész-helyreállítási a StorSimple-eszköz.](storsimple-8000-device-failover-disaster-recovery.md)
-3. Az inaktiválás és a feladatátvétel után teljesen törölheti az eszközt. Az eszköz törlésével eltávolítja azt a szolgáltatáshoz csatlakoztatott eszközök listájáról. A szolgáltatás ezután már nem tudja kezelni a törölt eszközt. Az eszköz törléséhez hajtsa végre az alábbi lépéseket:
+         ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+2. Most már elvégezheti a mennyiségi tárolók és a hozzájuk tartozó Pillanatképek feladatátvételét. Az eljárásokért keresse fel a [StorSimple-eszköz feladatátvételi és vész-helyreállítási szolgáltatását](storsimple-8000-device-failover-disaster-recovery.md).
+3. Az Inaktiválás és a feladatátvétel után teljesen törölheti az eszközt. Egy eszköz törlésével a szolgáltatáshoz csatlakoztatott eszközök listájáról törlődik. A szolgáltatás ezután már nem tudja kezelni a törölt eszközt. Az eszköz törléséhez hajtsa végre a következő lépéseket:
    
-   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **Eszközök** panelen jelölje ki a törölni kívánt inaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés parancsra.**
+   1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **eszközök** panelen jelölje ki a törölni kívánt inaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés**parancsra.
 
-       ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. A **Törlés** panelen írja be a megerősítendő eszköznevét, majd kattintson a **Törlés gombra.** A törlés néhány percet vesz igénybe.
+       ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+   2. A **Törlés** panelen írja be az eszköz nevét a megerősítéshez, majd kattintson a **Törlés**gombra. A törlés eltarthat néhány percig.
 
-       ![StorSimple eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
-   3. A törlés sikeres befejezése után értesítést kap. Az eszközlista is frissül, hogy tükrözze a törlést.
+       ![StorSimple-eszköz inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+   3. A törlés sikeres befejezését követően értesítést kap. Az eszközök listája is frissül, hogy tükrözze a törlést.
 
      
-## <a name="deactivate-and-delete-a-cloud-appliance"></a>Felhőalapú készülék inaktiválása és törlése
+## <a name="deactivate-and-delete-a-cloud-appliance"></a>Felhőalapú berendezés inaktiválása és törlése
 
-A StorSimple felhőalapú berendezés, a portálin való inaktiválása felszabadítja és törli a virtuális gépet, és az erőforrások at a kiépítéskor létrehozott. A felhőalapú berendezést az inaktiválás után már nem lehet a korábbi állapotára visszaállítani.
+StorSimple Cloud Appliance esetében a portál inaktiválása megszünteti a virtuális gépet, és törli a kiépítés során létrehozott erőforrásokat. A felhőalapú berendezést az inaktiválás után már nem lehet a korábbi állapotára visszaállítani.
 
-![StorSimple felhőalapú berendezés inaktiválása](./media/storsimple-8000-deactivate-and-delete-device/deactivate7.png)
+![Inaktiválás StorSimple Cloud Appliance](./media/storsimple-8000-deactivate-and-delete-device/deactivate7.png)
 
-Az inaktiválás a következő műveleteket eredményezi:
+Az Inaktiválás a következő műveleteket eredményezi:
 
-* A StorSimple felhőberendezés törlődik a szolgáltatásból.
-* A StorSimple felhőalapú berendezés virtuális gépe törlődik.
-* A StorSimple cloud Appliance számára létrehozott operációsrendszer-lemez és adatlemezek megmaradnak. Ha nem használja ezeket az entitásokat, törölje őket manuálisan.
-* A kiépítés során létrehozott üzemeltetett szolgáltatás és virtuális hálózat megmarad. Ha nem használja ezeket az entitásokat, törölje őket manuálisan.
-* A StorSimple cloud Appliance által létrehozott felhőbeli pillanatképek megmaradnak.
+* A StorSimple Cloud Appliance el lett távolítva a szolgáltatásból.
+* A StorSimple Cloud Appliance virtuális gépe törölve.
+* A rendszer megőrzi a StorSimple Cloud Appliancehez létrehozott operációsrendszer-lemezt és adatlemezeket. Ha nem használja ezeket az entitásokat, manuálisan törölje őket.
+* A rendszer megőrzi a kiépítés során létrehozott üzemeltetett szolgáltatást és Virtual Network. Ha nem használja ezeket az entitásokat, manuálisan törölje őket.
+* A StorSimple Cloud Appliance által létrehozott Felhőbeli Pillanatképek megmaradnak.
 
-A felhőalapú készülék inaktiválása után törölheti azt az eszközök listájából. Jelölje ki az inaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés parancsra.** A StorSimple értesíti, ha az eszköz törlődik, és az eszközök frissítései.
+A felhőalapú berendezés inaktiválása után törölheti az eszközök listájából. Válassza ki a deaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés**parancsra. A StorSimple értesítést küld az eszköz törléséről és az eszközök listájának frissítéséről.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az inaktivált eszköz gyári alapértékekre való visszaállításához nyissa [meg az Eszköz visszaállítása gyári alapértelmezett beállításokra című lehetőséget.](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)
-* Technikai segítségért [forduljon a Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md)
-* Ha többet szeretne megtudni a StorSimple Eszközkezelő szolgáltatás használatáról, olvassa el [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez című webhelyet.](storsimple-8000-manager-service-administration.md)
+* A deaktivált eszköz gyári beállításokra történő visszaállításához lépjen [az eszköz visszaállítása a gyári alapértelmezésekre](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)elemre.
+* Technikai segítségért [forduljon Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
+* Ha többet szeretne megtudni a StorSimple Eszközkezelő szolgáltatás használatáról, látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
 

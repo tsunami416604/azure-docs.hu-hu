@@ -1,6 +1,6 @@
 ---
-title: RdP-problémák elhárítása windowsos virtuális gépekhez az Azure-ban | Microsoft dokumentumok
-description: RdP-problémák elhárítása a Windows Azure-beli virtuális gépeken.
+title: Windows rendszerű virtuális gépek RDP-problémáinak elhárítása az Azure-ban | Microsoft Docs
+description: Az Azure-beli RDP-problémák hibaelhárítása Windows rendszerű virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,15 +15,15 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057274"
 ---
-# <a name="troubleshoot-rdp-issues"></a>RdP-problémák elhárítása
+# <a name="troubleshoot-rdp-issues"></a>RDP-problémák elhárítása
 
-A virtuális géphez való csatlakozáshoz való csatlakozással kapcsolatos alábbi problémákat ez a szakasz ismerteti:
+A virtuális géphez való kapcsolódáshoz szükséges RDP létrehozásával kapcsolatos alábbi problémák a jelen szakaszban találhatók:
 
 - [RDP alaphelyzetbe állítása](reset-rdp.md)
 - [RDP hibaelhárítása](troubleshoot-rdp-connection.md)

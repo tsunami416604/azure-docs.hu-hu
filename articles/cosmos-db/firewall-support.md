@@ -1,37 +1,37 @@
 ---
-title: IP-tűzfal Az Azure Cosmos-fiókokhoz
-description: Megtudhatja, hogyan védje meg az Azure Cosmos DB-adatokat az IP-hozzáférés-vezérlési szabályzatok használatával a tűzfal támogatásához.
+title: IP-tűzfal Azure Cosmos-fiókokhoz
+description: Megtudhatja, hogyan védheti meg Azure Cosmos DB-adatvédelmet az IP-hozzáférés-vezérlési házirendek használatával a tűzfal támogatásához.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66241079"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>IP-tűzfal az Azure Cosmos DB-ben
 
-A fiókjában tárolt adatok biztonságossá tétele érdekében az Azure Cosmos DB egy titkos alapú engedélyezési modellt támogat, amely erős kivonatalapú üzenethitelesítési kódot (HMAC) használ. Emellett az Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlésa a bejövő tűzfal támogatása. Ez a modell hasonló a hagyományos adatbázis-rendszer tűzfalszabályaihoz, és további biztonsági szintet biztosít a fiókjának. A tűzfalak konfigurálhatja az Azure Cosmos-fiók csak egy jóváhagyott gépkészletről és/vagy felhőszolgáltatásokból érhető el. Az Azure Cosmos-adatbázisban tárolt adatokhoz való hozzáférés a jóváhagyott gép- és szolgáltatáskészletektovábbra is megköveteli, hogy a hívó érvényes engedélyezési jogkivonatot mutasson be.
+A fiókjában tárolt adatokat a Azure Cosmos DB támogatja egy olyan titkos alapú engedélyezési modellt, amely erős kivonatoló alapú üzenethitelesítő kód (HMAC) használ. Emellett a Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlést a bejövő tűzfalak támogatásához. Ez a modell hasonló a hagyományos adatbázisrendszer tűzfalszabályok esetében, és további biztonsági szintet biztosít a fiókja számára. A tűzfalakkal beállíthatja, hogy az Azure Cosmos-fiók csak jóváhagyott gépekből és/vagy felhőalapú szolgáltatásokból legyen elérhető. Az Azure Cosmos-adatbázisban tárolt adatoknak ezen jóváhagyott készletekből és szolgáltatásokból való elérése továbbra is megköveteli, hogy a hívó érvényes engedélyezési jogkivonatot jelentsen.
 
-## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>IP-hozzáférés-vezérlés – áttekintés
+## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>Az IP-hozzáférés-vezérlés áttekintése
 
-Alapértelmezés szerint az Azure Cosmos-fiók elérhető az internetről, mindaddig, amíg a kérelemhez egy érvényes engedélyezési jogkivonat tartozik. Az IP-házirend-alapú hozzáférés-vezérlés konfigurálásához a felhasználónak meg kell adnia a CIDR (Osztály nélküli tartományok közötti útválasztás) képernyőn található IP-címek vagy IP-címtartományok készletét, hogy az ügyfél IP-címek engedélyezett listájaként szerepelhessen egy adott Azure Cosmos-fiók eléréséhez. A konfiguráció alkalmazása után az engedélyezett listán kívüli gépekről származó kérelmek 403 -as (Tiltott) választ kapnak. IP-tűzfal használata esetén ajánlott engedélyezni, hogy az Azure Portal hozzáférjen a fiókjához. Hozzáférés szükséges az adatkezelő használatához, valamint az Azure Portalon megjelenő fiók metrikáinak lekéréséhez. Adatkezelő használatakor, amellett, hogy az Azure Portal hozzáférhet a fiókjához, a tűzfal beállításait is frissítenie kell, hogy hozzáadja az aktuális IP-címét a tűzfalszabályokhoz. Vegye figyelembe, hogy a tűzfal módosításai propagálása akár 15 min is eltarthat. 
+Alapértelmezés szerint az Azure Cosmos-fiók elérhető az internetről, feltéve, hogy a kérést érvényes engedélyezési jogkivonat kíséri. Az IP-házirend alapú hozzáférés-vezérlés konfigurálásához a felhasználónak meg kell adnia az IP-címek vagy IP-címtartományok készletét a CIDR (osztály nélküli tartományok közötti útválasztás) képernyőn, hogy az ügyfél IP-címeinek engedélyezett listája szerepeljen egy adott Azure Cosmos-fiók eléréséhez. A konfiguráció alkalmazása után az ezen engedélyezett listán kívüli gépekről származó kérelmek 403 (tiltott) választ kapnak. Ha IP-tűzfalat használ, javasoljuk, hogy engedélyezze a Azure Portal számára a fiók elérését. Hozzáférés szükséges az adatkezelő használatának engedélyezéséhez, valamint a Azure Portalban megjelenített fiók metrikáinak lekéréséhez. Az adatkezelő használatakor a Azure Portal hozzáférésének engedélyezése mellett a tűzfal beállításait is frissítenie kell, hogy az aktuális IP-címet hozzáadja a tűzfalszabályok számára. Vegye figyelembe, hogy a tűzfal módosításai akár 15min is eltarthat. 
 
-Az IP-alapú tűzfal at alhálózati és virtuális hálózati hozzáférés-vezérléssel kombinálhatja. Kombinálásával, korlátozhatja a hozzáférést bármely forrás, amely egy nyilvános IP-cím és/vagy egy adott alhálózat a virtuális hálózaton belül. Ha többet szeretne tudni az alhálózat és a virtuális hálózat alapú hozzáférés-vezérlés használatáról, olvassa el az [Access Azure Cosmos DB-erőforrások virtuális hálózatokból történő használatát.](vnet-service-endpoint.md)
+Az IP-alapú tűzfalat az alhálózat és a VNET hozzáférés-vezérlés használatával kombinálhatja. Ezek kombinálásával korlátozhatja a hozzáférést bármely olyan forráshoz, amely nyilvános IP-címmel és/vagy a VNET-n belül egy adott alhálózattal rendelkezik. Az alhálózati és a VNET hozzáférés-vezérlés használatáról további információt a [virtuális hálózatok Azure Cosmos db erőforrásainak elérését](vnet-service-endpoint.md)ismertető témakörben talál.
 
-Összefoglalva, engedélyezési jogkivonat mindig szükség van egy Azure Cosmos-fiók eléréséhez. Ha az IP-tűzfal és a vnet-hozzáférés-vezérlési lista (ACLs) nincs beállítva, az Azure Cosmos-fiók elérhető az engedélyezési jogkivonattal. Miután az IP-tűzfal vagy a VNET ACLs vagy mindkettő be van állítva az Azure Cosmos-fiókban, csak a megadott forrásokból (és az engedélyezési jogkivonattal) származó kérelmek kapnak érvényes válaszokat. 
+Összefoglalva, az engedélyezési jogkivonat mindig szükséges az Azure Cosmos-fiók eléréséhez. Ha nincs beállítva az IP-tűzfal és a VNET Access Control listája (ACL), az Azure Cosmos-fiók az engedélyezési jogkivonattal érhető el. Miután az IP-tűzfal vagy a VNET ACL-je vagy mindkettő be van állítva az Azure Cosmos-fiókon, csak a megadott forrásokból (és az engedélyezési jogkivonattal) származó kérelmek érvényes válaszokat kapnak. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután az IP-tűzfalat vagy a VNET-szolgáltatás végpontját a következő dokumentumok használatával konfigurálhatja a fiókjához:
+A következő docs használatával konfigurálhatja a fiókjához tartozó IP-tűzfalat vagy VNET szolgáltatási végpontot:
 
-* [Az IP-tűzfal beállítása az Azure Cosmos-fiókhoz](how-to-configure-firewall.md)
-* [Az Azure Cosmos DB erőforrásainak elérése virtuális hálózatokból](vnet-service-endpoint.md)
-* [A virtuális hálózati szolgáltatás végpontjának konfigurálása az Azure Cosmos-fiókhoz](how-to-configure-vnet-service-endpoint.md)
+* [Az IP-tűzfal konfigurálása az Azure Cosmos-fiókhoz](how-to-configure-firewall.md)
+* [Virtuális hálózatok Azure Cosmos DB erőforrásainak elérése](vnet-service-endpoint.md)
+* [Virtuális hálózati szolgáltatás végpontjának konfigurálása az Azure Cosmos-fiókhoz](how-to-configure-vnet-service-endpoint.md)
 
 
 

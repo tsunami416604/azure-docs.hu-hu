@@ -1,6 +1,6 @@
 ---
-title: Probléma az Azure AD Gallery alkalmazás hozzáadásakor | Microsoft dokumentumok
-description: Ismerje meg, milyen gyakori problémákkal szembesülnek az emberek az Azure AD Gallery-alkalmazások hozzáadásakor, és mit tehet azok megoldása érdekében
+title: Probléma az Azure AD Gallery-alkalmazás hozzáadásakor | Microsoft Docs
+description: Ismerje meg az Azure AD Gallery-alkalmazások hozzáadásakor felmerülő gyakori problémákat, valamint azt, hogy mit tehet a megoldásban?
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,119 +16,119 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784428"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Probléma az Azure AD Gallery-alkalmazás hozzáadásakor
 
-Ez a cikk segít megérteni, hogy az emberek milyen gyakori problémákkal szembesülnek az Azure AD Gallery-alkalmazások hozzáadásakor, és hogy mit tehet azok megoldásához.
+Ez a cikk segítséget nyújt az Azure AD Gallery-alkalmazások hozzáadásakor felmerülő gyakori problémák megismerésében, valamint a megoldásához.
 
-## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Rákattintottam a "hozzáadás" gombra, és az alkalmazásom hosszú időt vett igénybe, hogy megjelenjen
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Rákattintottam a "Hozzáadás" gombra, és az alkalmazásom hosszú ideig tartott
 
-Bizonyos körülmények között 1-2 percet (és néha hosszabb időt) is igénybe vehet, amíg egy alkalmazás megjelenik, miután hozzáadja a könyvtárhoz. Bár ez nem a szokásos várható teljesítmény, láthatja, hogy az alkalmazás hozzáadása folyamatban van, kattintson az **Értesítések** ikonra (a harang) az [Azure Portal](https://portal.azure.com/) jobb felső részén, és keres egy **folyamatban lévő** vagy **befejezett** értesítés **i. hozzáadása alkalmazás.**
+Bizonyos körülmények között akár 1-2 percet is igénybe vehet, hogy egy alkalmazás megjelenjen a címtárhoz való hozzáadás után. Habár ez nem a szokásosan várt teljesítmény, az alkalmazás hozzáadása folyamatban van. ehhez kattintson az **értesítések** ikonra (a harangra) a [Azure Portal](https://portal.azure.com/) jobb felső sarkában, és keressen az **alkalmazás hozzáadása** feliratú **folyamatban** vagy **befejezett** értesítésben.
 
-Ha az alkalmazás soha nem kerül hozzáadásra, vagy ha hibát észlel, amikor a **Hozzáadás** gombra kattint, **hibaüzenet** **jelenik** meg. Ha további részleteket szeretne megtudni a hibáról, hogy többet tudjon meg egy támogatási szakemberről, vagy megoszthatja a hibát, a [portálértesítés részleteinek megtekintéséhez](#how-to-see-the-details-of-a-portal-notification) című szakasz lépéseit követve további információkat kaphat.
+Ha az alkalmazása soha nem lett hozzáadva, vagy ha a **Hozzáadás** gombra kattint **, hibaüzenet** **jelenik meg.** Ha további információra van szüksége a hibáról, és többet szeretne megtudni a támogatási szakemberrel kapcsolatban, további információt a következő témakörben talál: a [portál értesítési adatainak megtekintése](#how-to-see-the-details-of-a-portal-notification) című szakasz lépéseit követve.
 
-## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Rákattintottam az "összeadás" gombra, és az alkalmazásom nem jelent meg
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Rákattintok a "Hozzáadás" gombra, és az alkalmazásom nem jelenik meg
 
-Néha átmeneti problémák, hálózati problémák vagy hiba miatt az alkalmazás hozzáadása sikertelen. Ez akkor történik meg, ha az Azure Portal jobb felső részén lévő **Értesítések** ikonra (a csengőre) kattint, és egy piros (!) ikon jelenik meg az **alkalmazás hozzáadása** értesítés mellett. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
+Időnként átmeneti problémák, hálózati problémák vagy hiba miatt az alkalmazások hozzáadása meghiúsul. Ez akkor fordulhat elő, ha a Azure Portal jobb felső sarkában található **értesítések** ikonra (a harangra) kattint, és az **alkalmazás hozzáadása** értesítés mellett vörös (!) ikon jelenik meg. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
 
-Ha hibát észlel, amikor a **Hozzáadás** gombra **Notification** kattint, **hibaüzenet** jelenik meg. Ha további részleteket szeretne megtudni a hibáról, hogy többet tudjon meg egy támogatási szakemberről, vagy megoszthatja a hibát, a [portálértesítés részleteinek megtekintéséhez](#how-to-see-the-details-of-a-portal-notification) című szakasz lépéseit követve további információkat kaphat.
+Ha **a** **Hozzáadás** gombra kattintva hibát tapasztal, **hibaüzenet** jelenik meg. Ha további információra van szüksége a hibáról, és többet szeretne megtudni a támogatási szakemberrel kapcsolatban, további információt a következő témakörben talál: a [portál értesítési adatainak megtekintése](#how-to-see-the-details-of-a-portal-notification) című szakasz lépéseit követve.
 
-## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan kell beállítani a kérelmet, ha már hozzá adta
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan kell beállítani az alkalmazást a hozzáadásom után
 
-Ha segítségre van szüksége az alkalmazások megismeréséhez, az [SaaS-alkalmazások Azure Active Directory-val való integrálásáról szóló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) jó kiindulópont.
+Ha segítségre van szüksége az alkalmazások megismeréséhez, tekintse át az SaaS-alkalmazások Azure Active Directory cikkekkel való [integrálására szolgáló oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) .
 
-Ezen kívül az [Azure AD Applications dokumentumtár](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítségével többet az Azure AD-vel való egyszeri bejelentkezésről és annak működéséről is megismerheti.
+Ezen kívül az [Azure ad Applications dokumentumtára](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújt az Azure ad-vel való egyszeri bejelentkezésről és annak működéséről.
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>A portálértesítés részleteinek megtekintése
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portál értesítés részleteinek megtekintése
 
-Az alábbi lépések végrehajtásával megtekintheti a portálértesítések részleteit:
+Az alábbi lépéseket követve megtekintheti a portál összes értesítésének részleteit:
 
-1.  Válassza az **Értesítések** ikont (a csengőt) az Azure Portal jobb felső részén
+1.  Válassza ki az **értesítések** ikont (a harangot) a Azure Portal jobb felső sarkában.
 
-2.  Jelöljön ki egy **hibaállapotban** lévő értesítést (azokat, amelyek mellett piros (!) van).
+2.  Válassza ki a **hibás** állapotú értesítéseket (ezek a következők: piros (!)).
 
     >[!NOTE]
-    >Az értesítésekre nem kattinthat **sikeres** vagy folyamatban **lévő állapotban.**
+    >Az értesítések **sikeres** vagy **folyamatban** lévő állapotában nem kattinthat.
     >
     >
 
-4.  Az Értesítés **részletei** csoportban található információk segítségével további részleteket tudmeg a problémáról.
+4.  A probléma részletes ismertetését a **Notification Details (értesítési adatok** ) szakaszban tekintheti meg.
 
-5.  Ha továbbra is segítségre van szüksége, megoszthatja ezeket az információkat egy támogatási szakemberrel vagy a termékcsoporttal, hogy segítséget kapjon a problémával kapcsolatban.
+5.  Ha továbbra is segítségre van szüksége, megoszthatja ezeket az információkat egy támogatási szakemberrel vagy a termék csoporttal, hogy segítséget kapjon a problémával kapcsolatban.
 
-6.  Kattintson a Másolás hiba szövegdoboztól **jobbra** található **másolási** **ikonra** az értesítés részleteinek másolásához, hogy megossza őket egy támogatási vagy termékcsoport-mérnökkel.
+6.  A **másolási hiba** szövegmező jobb oldalán kattintson a **Másolás** **ikonra** , és másolja az összes értesítési részletet egy támogatási vagy termékcsoport-szakmérnöknek való megosztásra.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség beszerezése az értesítés részleteinek elküldésével egy támogatási szakembernek
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség kérése támogatási szakembernek értesítési adatok küldésével
 
-Nagyon fontos, hogy az **alább felsorolt részleteket** megossza egy támogatási szakemberrel, ha segítségre van szüksége, hogy gyorsan segíthessenek. Ezt egyszerűen megteheti **egy képernyőkép készítésével,** vagy a **Másolási hiba ikonra**kattintva, amely a Másolás hiba szövegdoboztól **jobbra** található.
+Nagyon fontos, hogy **az alább felsorolt részleteket** egy támogatási szakemberrel ossza meg, ha segítségre van szüksége, így gyorsan elvégezheti a segítségét. Ezt egyszerűen elvégezheti **egy képernyőkép** készítésével vagy a másolási **hiba ikonra**kattintva, amely a **másolási hiba** szövegmezőtől jobbra található.
 
-## <a name="notification-details-explained"></a>Az értesítés részleteinek magyarázata
+## <a name="notification-details-explained"></a>Értesítés részletei – magyarázat
 
-Az értesítésekről az alábbi leírásokban talál további részleteket.
+Az értesítésekkel kapcsolatos további információkért tekintse meg az alábbi leírásokat.
 
 ### <a name="essential-notification-items"></a>Alapvető értesítési elemek
 
-- **Cím** – az értesítés leíró címe
+- **Title (cím** ) – az értesítés leíró címe
 
-  * Példa – **Alkalmazásproxy-beállítások**
+  * Példa – **alkalmazásproxy-beállítások**
 
-- **Leírás** – a művelet eredményeként történt esemény leírása
+- **Leírás** – a művelet eredményeképpen történtek leírása
 
-  -   Példa – **A beírt belső URL-t már egy másik alkalmazás használja**
+  -   Példa – **a megadott belső URL-címet már egy másik alkalmazás használja**
 
 - **Értesítési azonosító** – az értesítés egyedi azonosítója
 
   -   Példa – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
-- **Ügyfélkérelem-azonosító** – a böngésző által megadott kérésazonosító
+- **Ügyfél-kérelem azonosítója** – a böngésző által megadott kérelem-azonosító
 
   -   Példa – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
-- **Időbélyegző UTC** – az az időbélyeg, amely alatt az értesítés történt, UTC-ben
+- **Időbélyeg UTC** – az az időbélyegző, amely alatt az értesítés bekövetkezett, UTC szerint
 
-  -   Példa – **2017-03-23T19:50:43.7583681Z**
+  -   Példa – **2017-03-23T19:50:43.7583681 z**
 
-- **Belső tranzakcióazonosító** – a belső azonosító, amelyet a rendszereink ben található hiba kivizsgálására használhatunk
+- **Belső tranzakció azonosítója** – az a belső azonosító, amellyel megkeresheti a hibákat a rendszerekben
 
   -   Példa – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **UPN** – a műveletet végző felhasználó
+- **UPN** – a műveletet végrehajtó felhasználó
 
   -   Példa – **tperkins\@f128.info**
 
-- **Bérlőazonosító** – annak a bérlőnek az egyedi azonosítója, amelynek a műveletet végző felhasználó tagja volt
+- **Bérlő azonosítója** – annak a bérlőnek az egyedi azonosítója, aki a műveletet végrehajtó felhasználó tagja volt
 
-  -   Példa – **7918d4b5-0442-4a97-be2d-36f9962ece**
+  -   Példa – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
-- **Felhasználói objektum azonosítója** – a műveletet végző felhasználó egyedi azonosítója
+- **Felhasználói objektum azonosítója** – a műveletet végrehajtó felhasználó egyedi azonosítója
 
   -   Példa – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>Részletes értesítési tételek
+### <a name="detailed-notification-items"></a>Részletes értesítési elemek
 
--   **Megjelenítendő név** – **(lehet üres)** a hiba részletesebb megjelenítendő neve
+-   **Megjelenítendő név** – **(üres is lehet)** a hiba részletesebb megjelenítendő neve
 
-    -   Példa – **Alkalmazásproxy-beállítások**
+    -   Példa – **alkalmazásproxy-beállítások**
 
--   **Állapot** – az értesítés konkrét állapota
+-   **Status (állapot** ) – az értesítés konkrét állapota
 
-    -   Példa – **Sikertelen**
+    -   Példa – **sikertelen**
 
--   **Objektumazonosító** – **(lehet üres)** az objektumazonosító, amelyen a műveletet végrehajtották
+-   **Objektumazonosító** – **(üres is lehet)** a művelet végrehajtásának alapjául szolgáló objektumazonosító
 
     -   Példa – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Részletek** – a művelet eredményeként történt adatok részletes leírása
+-   **Részletek** – a művelet eredményének részletes leírása
 
-    -   Példa – **A belső URL `https://bing.com/` érvénytelen, mivel már használatban van**
+    -   Példa – a **belső `https://bing.com/` URL-cím érvénytelen, mert már használatban van**
 
--   **Másolási hiba** – Kattintson a Másolás hiba szövegdoboztól **jobbra** található **másolási ikonra** a támogatási vagy termékcsoporttal megosztani tetsző értesítési részletek másolásához 
+-   **Másolási hiba** – a **másolási hiba** szövegmezőtől jobbra lévő **másolási ikonra** kattintva másolhatja az összes értesítési részletet, hogy a megosztás egy támogatási vagy termékcsoport használatával történjen 
 -   mérnök
 
-    -   Példa```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Például```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

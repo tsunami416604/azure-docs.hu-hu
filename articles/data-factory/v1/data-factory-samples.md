@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory - Minták
-description: Az Azure Data Factory szolgáltatással szállított minták részletei.
+title: Azure Data Factory – minták
+description: A Azure Data Factory szolgáltatással szállított minták adatait tartalmazza.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,65 +12,65 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70139265"
 ---
-# <a name="azure-data-factory---samples"></a>Azure Data Factory - Minták
+# <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [PowerShell-mintákat a Data Factoryban,](../samples-powershell.md) és [kódmintákat az Azure Code Samples gyűjteményben.](https://azure.microsoft.com/resources/samples/?service=data-factory)
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg [Az Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=data-factory)katalógusában található [PowerShell-példákat a Data Factory](../samples-powershell.md) és a kód példákban.
 
 
 ## <a name="samples-on-github"></a>Példák a GitHubon
-A [GitHub Azure-DataFactory tárház](https://github.com/azure/azure-datafactory) számos mintát tartalmaz, amelyek segítségével gyorsan felgyorsíthatja az Azure Data Factory szolgáltatás (vagy) módosíthatja a parancsfájlokat, és saját alkalmazásban használja. A Samples\JSON mappa json-kódrészleteket tartalmaz a gyakori esetekhez.
+A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory) számos olyan mintát tartalmaz, amelyek segítségével gyorsan felgyorsítható a Azure Data Factory szolgáltatás (vagy) a parancsfájlok módosítása és használata a saját alkalmazásokban. A Samples\JSON mappa a gyakori forgatókönyvek JSON-kódrészleteit tartalmazza.
 
 | Sample | Leírás |
 |:--- |:--- |
-| [ADF-forgatókönyv](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ez a minta egy teljes körű forgatókönyvet biztosít a naplófájlok Azure Data Factory használatával történő feldolgozásához, hogy a naplófájlokból származó adatokat elemzési adatokká alakítsa. <br/><br/>Ebben a forgatókönyvben a Data Factory folyamat gyűjti a mintanaplókat, feldolgozza és gazdagítja az adatokat a naplók referenciaadatokkal, és átalakítja az adatokat, hogy kiértékelje a nemrégiben elindított marketingkampány hatékonyságát. |
-| [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ez a minta json példákat a gyakori forgatókönyvek. |
-| [Http Adatletöltő minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ez a minta bemutatja az adatok letöltését egy HTTP-végpontról az Azure Blob Storage egyéni .NET tevékenység használatával. |
-| [Alkalmazástartomány-tartományon belüli tevékenység– minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy egyéni .NET-tevékenység létrehozására, amely nem korlátozza az ADF-indító által használt összeállítási verziókat (például WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x stb.). |
-| [R parancsfájl futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a Data Factory egyéni tevékenységet, amely az RScript.exe meghívására használható. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van r. |
-| [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a minta bemutatja, hogyan használhatja a MapReduce tevékenységet egy Spark-program meghívásához. A spark-program csak másolja az adatokat az egyik Azure Blob-tárolóból a másikba. |
-| [Twitter-elemzés az Azure Machine Learning batch scoring tevékenységhasználatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta bemutatja, hogyan azureMLBatchScoringActivity egy Azure Machine Learning-modell, amely végrehajtja a Twitter hangulatelemzés, pontozás, előrejelzés stb. |
-| [Twitter elemzés egyéni tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a minta bemutatja, hogyan lehet egy egyéni .NET tevékenység használatával meghívni egy Azure Machine Learning-modellt, amely végrehajtja a Twitter hangulatelemzését, pontozását, előrejelzését stb. |
-| [Paraméterezett folyamatok az Azure Machine Learninghez](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok között C# kódot biztosít az N-folyamatok központi telepítéséhez a pontozáshoz és az újraképzéshez, amelyek mindegyike egy másik régióparaméterrel rendelkezik, ahol a régiók listája egy parameters.txt fájlból származik, amely ebben a mintában szerepel. |
-| [Referenciaadat-frissítés az Azure Stream Analytics-feladatokhoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ez a minta bemutatja, hogyan használhatja az Azure Data Factory és az Azure Stream Analytics együtt a lekérdezések futtatásához a referenciaadatokat, és állítsa be a frissítés referenciaadatok ütemezés szerint. |
-| [Hibrid csővezeték a Hortonworks Hadoop helyszíni](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |A minta egy helyszíni Hadoop-fürtöt használ számítási célként a Data Factory-ban futó feladatokhoz, ahogy más számítási célokat is hozzáadna, például egy HDInsight-alapú Hadoop-fürtet a felhőben. |
-| [JSON konverziós eszköz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Ez az eszköz lehetővé teszi, hogy konvertálni JSONs verzió előtt 2015-07-01-preview a legújabb vagy 2015-07-01-preview (alapértelmezett). |
-| [U-SQL mintabemeneti fájl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Ez a fájl egy U-SQL tevékenység által használt mintafájl. |
-| [Blobfájl törlése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Ez a minta egy C# fájlt mutat be, amely az ADF egyéni .net tevékenység részeként használható fájlok törléséhez a forrásbeli Azure Blob helyéről a fájlok másolása után.|
+| [ADF-útmutató](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ez a példa egy teljes körű útmutatót biztosít a naplófájlok feldolgozásához a Azure Data Factory használatával az adatoknak a naplófájlokban való bekapcsolásához. <br/><br/>Ebben az útmutatóban a Data Factory folyamat adatnaplókat gyűjt, feldolgozza és gazdagítja a naplókból származó adatokat, és átalakítja az adatokat, hogy kiértékelje a közelmúltban elindított marketingkampány hatékonyságát. |
+| [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ez a példa JSON-példákat biztosít a gyakori forgatókönyvekhez. |
+| [Http-adatletöltő minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ez a példa az adatok HTTP-végpontról Blob Storage Azure-ba történő letöltését mutatja be az egyéni .NET-tevékenységek használatával. |
+| [Több mint alkalmazástartomány dot Net-tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy olyan egyéni .NET-tevékenység létrehozását, amely nem korlátozza az ADF-indító által használt szerelvény-verziókat (például WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.). |
+| [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a RScript. exe meghívásához használható Data Factory egyéni tevékenységet. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van az R. |
+| [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a minta bemutatja, hogyan hívhat meg egy Spark-programot a MapReduce tevékenység használatával. A Spark program csak az egyik Azure Blob-tárolóból másol át egy másikba. |
+| [Twitter-elemzés Azure Machine Learning batch pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta azt mutatja be, hogyan használható a AzureMLBatchScoringActivity egy olyan Azure Machine Learning modell meghívására, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. |
+| [Twitter-elemzés egyéni tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a minta azt mutatja be, hogyan használható egy egyéni .NET-tevékenység egy olyan Azure Machine Learning modell meghívásához, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. végzi. |
+| [Paraméteres folyamatok Azure Machine Learninghoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok közötti C#-kódot biztosít, amellyel N folyamatokat helyezhet üzembe a pontozáshoz és az átképzéshez egy másik régió paraméterrel, amelyben a régiók listája egy, a mintában szereplő Parameters. txt fájlból származik. |
+| [A Azure Stream Analytics-feladatokra vonatkozó referenciák frissítése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ez a minta azt mutatja be, hogyan használhatók a Azure Data Factory és a Azure Stream Analytics együtt a lekérdezések és a hivatkozási adataik futtatására, valamint az ütemtervek frissítésének beállítására. |
+| [Hibrid folyamat helyszíni Hortonworks-Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |A minta egy helyszíni Hadoop-fürtöt használ számítási célként a feladatok Data Factory való futtatásához, ugyanúgy, mint a Felhőbeli HDInsight-alapú Hadoop-fürtökhöz. |
+| [JSON-átalakító eszköz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Ez az eszköz lehetővé teszi a JSON-verziók konvertálását a 2015-07-01 előtti verzióról a legújabbra vagy a 2015-07-01-Preview-ra (alapértelmezett). |
+| [U-SQL minta bemeneti fájl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Ez a fájl egy U-SQL-tevékenység által használt minta fájl. |
+| [BLOB-fájl törlése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Ez a példa egy C#-fájlt mutat be, amely az egyéni .net-tevékenység ADF részeként használható a fájlok másolását követően a forrás Azure-Blob helyéről való törléséhez.|
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
-A következő Azure Resource Manager-sablonok at Data Factory a GitHubon.
+A Data Factory a GitHubon a következő Azure Resource Manager sablonokat találhatja meg.
 
 | Sablon | Leírás |
 | --- | --- |
-| [Másolás az Azure Blob Storage-ból az Azure SQL-adatbázisba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése létrehoz egy Azure-adatfeldolgozó üzemet egy folyamattal, amely adatokat másol a megadott Azure blobstorage-ból az Azure SQL-adatbázisba |
-| [Másolás a Salesforce-ról az Azure Blob Storage-ba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |A sablon üzembe helyezése létrehoz egy Azure-adatfeldolgozó egy folyamat, amely átmásolja az adatokat a megadott Salesforce-fiókból az Azure blob storage. |
-| [Adatok átalakítása A Hive-parancsfájl Azure HDInsight-fürtön való futtatásával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |A sablon üzembe helyezése létrehoz egy Azure-adatfeldolgozó egy folyamat, amely átalakítja az adatokat egy Azure HDInsight Hadoop-fürtön futtatva a minta Hive-parancsfájl futtatásával. |
+| [Másolás az Azure Blob Storageból a Azure SQL Databaseba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az adott Azure Blob Storage-ból másolja az Azure SQL Database-be. |
+| [Másolás a Salesforce-ből az Azure-ba Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Salesforce-fiókból az Azure Blob Storage-ba. |
+| [Adatátalakítás a kaptár-parancsfájl futtatásával egy Azure HDInsight-fürtön](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átalakítja az adatszerkezetet egy Azure HDInsight Hadoop-fürtön a minta struktúra-parancsfájl futtatásával. |
 
-## <a name="samples-in-azure-portal"></a>Minták az Azure Portalon
-A **mintafolyamatok** csempéje az adat-előállító kezdőlapján mintafolyamatokat és a hozzájuk tartozó entitásokat (adatkészleteket és csatolt szolgáltatásokat) telepíthet az adat-előállítóba.
+## <a name="samples-in-azure-portal"></a>Minták Azure Portal
+Az adat-előállító kezdőlapján a **mintavételezési folyamatok** csempe használatával üzembe helyezheti a mintavételezési folyamatokat és a hozzájuk tartozó entitásokat (adatkészleteket és társított szolgáltatásokat) az adat-előállítóba.
 
-1. Hozzon létre egy adat-előállító, vagy nyisson meg egy meglévő adatgyárat. Az adat-előállító létrehozásához lásd: [Adatok másolása a Blob Storage-ból sql-adatbázisba a Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben.
-2. Az adat-előállító **DATA FACTORY** panelen kattintson a **Mintafolyamatok** csempére.
+1. Hozzon létre egy adatelőállítót, vagy nyisson meg egy meglévő adatgyárat. Az adatok-előállító létrehozásához szükséges lépésekért lásd: [adatok másolása blob Storageról SQL Databasera Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+2. Az adatelőállító **adatelőállító** paneljén kattintson a **mintavételezési folyamatok** csempére.
 
-    ![Mintafolyamatok csempéje](./media/data-factory-samples/SamplePipelinesTile.png)
-3. A **Mintafolyamatok** panelen kattintson az üzembe helyezni kívánt **mintára.**
+    ![Mintavételezési folyamatok csempe](./media/data-factory-samples/SamplePipelinesTile.png)
+3. A **mintavételezési folyamatok** panelen kattintson arra a **mintára** , amelyet központilag telepíteni szeretne.
 
-    ![Mintafolyamatok panelje](./media/data-factory-samples/SampleTile.png)
-4. Adja meg a minta konfigurációs beállításait. Például az Azure storage-fiók neve és a fiókkulcs, az Azure SQL-kiszolgáló neve, adatbázis, felhasználói azonosító és jelszó stb.
+    ![Mintavételezési folyamatok panel](./media/data-factory-samples/SampleTile.png)
+4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók neve és a fiók kulcsa, az Azure SQL Server-név, az adatbázis, a felhasználói azonosító és a jelszó stb.
 
-    ![Mintapen](./media/data-factory-samples/SampleBlade.png)
-5. Miután végzett a konfigurációs beállítások megadásával, kattintson a **Létrehozás** gombra a mintafolyamatok és a folyamatok által használt csatolt szolgáltatások/táblák létrehozásához/üzembe helyezéséhez.
-6. A **mintafolyamatok** panelen korábban kattintott mintacsempén látható a központi telepítés állapota.
+    ![Minta panel](./media/data-factory-samples/SampleBlade.png)
+5. Miután végzett a konfigurációs beállítások megadásával, a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a folyamatok által használt mintavételi folyamatokat és társított szolgáltatásokat/táblákat.
+6. A telepítési állapotot a minta csempén láthatja, amelyet korábban a **mintavételezési folyamatok** panelen kattintott.
 
     ![Üzembe helyezés állapota](./media/data-factory-samples/DeploymentStatus.png)
-7. Amikor megjelenik a **központi telepítés sikeres** üzenetet a csempe a minta, zárja be a **minta folyamatok** panel.  
-8. A **DATA FACTORY** panelen láthatja, hogy a csatolt szolgáltatások, adatkészletek és folyamatok hozzáadódnak az adat-előállítóhoz.  
+7. Amikor megjelenik az **üzembe helyezés sikeres** üzenete a minta csempén, akkor zárjuk be a **mintavételezési folyamatok** panelt.  
+8. A **adat-előállító** panelen láthatja, hogy a társított szolgáltatások, adatkészletek és folyamatok hozzáadódnak az adat-előállítóhoz.  
 
     ![A Data Factory panel](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
@@ -80,34 +80,34 @@ A számítógépre a következőket kell telepíteni:
 
 * Visual Studio 2013 vagy Visual Studio 2015
 * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 használata esetén a bővítményt az alábbi lépésekkel is frissítheti: A menüben kattintson az **Eszközök** -> **bővítmények és frissítések** -> **online** -> visual studio**galériára** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update parancsra.**
+* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson **az eszközök** -> **bővítmények** -> elemre, és frissítse az**online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update szolgáltatást**.
 
-### <a name="use-data-factory-templates"></a>Adatgyári sablonok használata
-1. Kattintson a menü **Fájl parancsára,** mutasson az **Új**pontra, és kattintson a **Project**parancsra.
+### <a name="use-data-factory-templates"></a>Data Factory-sablonok használata
+1. Kattintson a menüben a **fájl** elemre, mutasson az **új**elemre, majd kattintson a **projekt**elemre.
 2. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket:
 
-   1. Válassza a **DataFactory** elemet a **Sablonok csoportban.**
-   2. Válassza a jobb oldali ablaktáblában a **Data Factory Templates** lehetőséget.
+   1. A **sablonok**területen válassza a **DataFactory** lehetőséget.
+   2. Válassza ki **Data Factory sablonokat** a jobb oldali ablaktáblán.
    3. Adjon meg a projekt **nevét**.
-   4. Válassza ki a projekt **helyét.**
+   4. Válassza ki a projekt **helyét** .
    5. Kattintson az **OK** gombra.
 
       ![A New project (Új projekt) párbeszédpanel](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. A **Data Factory Templates (Mezőtelepi sablonok)** párbeszédpanelen jelölje ki a mintasablont a **Használati eset sablonok** csoportban, majd kattintson a **Tovább**gombra. A következő lépések végigvezetik az **Ügyfélprofilkészítés sablon használatán.** A többi minta esetében hasonlóak a lépések.
+3. A **Data Factory sablonok** párbeszédpanelen válassza ki a minta sablont a **használati eset sablonok** szakaszban, majd kattintson a **tovább**gombra. Az alábbi lépések végigvezetik az **ügyfél profilkészítési** sablonjának használatával. A lépések hasonlóak a többi mintához.
 
-    ![Adatfeldolgozó sablonok párbeszédpanel](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
-4. A **Data Factory Configuration** párbeszédpanelen kattintson a **Tovább** gombra a Data **Factory Alapjai** lapon.
-5. Az **Adatgyár konfigurálása** lapon tegye a következő lépéseket:
-   1. Válassza **az Új adatgyár létrehozása**lehetőséget. A Meglévő **adat-előállító használata**lehetőséget is választhatja.
-   2. Adja meg az adat-előállító **nevét.**
-   3. Válassza ki azt az **Azure-előfizetést,** amelyben létre szeretné hozni az adatgyárat.
-   4. Válassza ki az adat-előállító **erőforráscsoportját.**
-   5. Válassza ki az **USA nyugati**régióját , az USA **keleti régióját**vagy **Észak-Európát** a **régióhoz.**
+    ![Data Factory Sablonok párbeszédpanel](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+4. A **Data Factory konfiguráció** párbeszédpanelen kattintson a **tovább** gombra az **Data Factory alapjai** lapon.
+5. Az **adatgyár konfigurálása** oldalon hajtsa végre a következő lépéseket:
+   1. Válassza az **új Data Factory létrehozása**lehetőséget. Kiválaszthatja a **meglévő adatelőállító használata**lehetőséget is.
+   2. Adja meg az adatelőállító **nevét** .
+   3. Válassza ki azt az **Azure-előfizetést** , amelyben létre kívánja hozni az adatbázis-előállítót.
+   4. Válassza ki az adatelőállítóhoz tartozó **erőforráscsoportot** .
+   5. Válassza ki az **USA nyugati**régiójában, az **USA keleti** **régiójában**vagy **Észak-Európában** .
    6. Kattintson a **Tovább** gombra.
-6. Az **Adatmegőrzések konfigurálása** lapon adjon meg egy meglévő **Azure SQL-adatbázist** és **Az Azure storage-fiókot** (vagy) hozzon létre adatbázist/tárhelyet, majd kattintson a Tovább gombra.
-7. A **Számítás konfigurálása** lapon válassza az alapértelmezett beállításokat, majd kattintson a **Tovább**gombra.
-8. Az **Összegzés** lapon tekintse át az összes beállítást, majd kattintson a **Tovább**gombra.
-9. A **Telepítés állapota** lapon várja meg, amíg a telepítés befejeződik, majd kattintson a **Befejezés gombra.**
+6. Az **adattárak konfigurálása** lapon adja meg a meglévő **Azure SQL Database-adatbázist** és az **Azure Storage-fiókot** (vagy) hozzon létre egy adatbázist/tárolót, és kattintson a Tovább gombra.
+7. A **számítás konfigurálása** lapon válassza az Alapértelmezések lehetőséget, majd kattintson a **tovább**gombra.
+8. Az **Összefoglalás** lapon tekintse át az összes beállítást, majd kattintson a **tovább**gombra.
+9. A **telepítés állapota** lapon várja meg a telepítés befejeződését, majd kattintson a **Befejezés**gombra.
 10. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a projektre, majd kattintson a **Publish** (Közzététel) parancsra.
 11. Ha megjelenik a **Sign in to your Microsoft account** (Bejelentkezés a Microsoft-fiókba) párbeszédpanel, adja meg az Azure-előfizetéssel rendelkező fiókja hitelesítő adatait, és kattintson a **sign in** (bejelentkezés) elemre.
 12. A következő párbeszédpanelnek kell megjelennie:
@@ -115,11 +115,11 @@ A számítógépre a következőket kell telepíteni:
     ![Publish (Közzététel) párbeszédpanel](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
 13. A **Data Factory konfigurálási** lapján hajtsa végre a következő lépéseket:
 
-    1. Erősítse meg, hogy **a meglévő adatgyárhasználata** beállítás használata.
-    2. Válassza ki azt az **adatgyárat,** amelyet a sablon használatakor kijelölt.
+    1. Győződjön meg arról, hogy a **meglévő adatgyár használata** lehetőség van.
+    2. Válassza ki a sablon használatakor kiválasztott **adatelőállítót** .
     3. Kattintson a **Tovább** gombra a **Publish Items** (Elemek közzététele) oldalra való váltáshoz. (Ha a **Tovább** gomb le van tiltva, nyomja le a **TAB** billentyűt a Name (Név) mezőből való kilépéshez.)
 14. A **Publish Items** (Elemek közzététele) oldalon győződjön meg arról, hogy az összes Data Factory-entitás ki van jelölve, és kattintson a **Tovább** gombra a **Summary** (Összegzés) oldalra való váltáshoz.     
 15. Tekintse át az összefoglalót, és kattintson a **Tovább** gombra az üzembehelyezési folyamat elindításához, és a **Deployment Status** (Üzembehelyezési állapot) megtekintéséhez.
 16. A **Deployment Status** (Üzembehelyezési állapot) oldalon meg kell jelennie az üzembehelyezési folyamat állapotának. Miután befejeződött az üzembe helyezés, kattintson a Finish (Befejezés) gombra.
 
-[Az első adatgyár (Visual Studio) létrehozása](data-factory-build-your-first-pipeline-using-vs.md) című témakörben további információt talál arról, hogy a Visual Studio segítségével segítségével készíthet-e Data Factory-entitásokat, és közzéteszi őket az Azure-ban.          
+Lásd: [az első adat-előállító létrehozása (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) a Visual studio használatával Data Factory entitások létrehozásához és az Azure-ba való közzétételéhez.          

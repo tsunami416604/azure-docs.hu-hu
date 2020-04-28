@@ -1,6 +1,6 @@
 ---
-title: Az Azure Access Panel extension for IE telepítése gpo használatával | Microsoft dokumentumok
-description: A csoportházirend használata az Internet Explorer bővítmény telepítéséhez a Saját alkalmazások portálhoz.
+title: Az Azure Access panel bővítményének üzembe helyezése az IE-ben csoportházirend-objektum használatával | Microsoft Docs
+description: Az Internet Explorer bővítmény telepítése a csoportházirend használatával a saját alkalmazások portálon.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,157 +16,157 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67807686"
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: Az Internet Explorer Access Panel bővítményének telepítése csoportházirend használatával
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: a hozzáférési panel bővítményének üzembe helyezése az Internet Explorer csoportházirend használatával
 
-Ez az oktatóanyag bemutatja, hogyan telepítheti távolról az Internet Explorer Access Panel bővítményét a felhasználók gépein a csoportházirend del. Ez a bővítmény szükséges az Internet Explorer azon felhasználói számára, akiknek be kell jelentkezniük a [jelszóalapú egyszeri bejelentkezéssel](what-is-single-sign-on.md#password-based-sso)konfigurált alkalmazásokba.
+Ez az oktatóanyag bemutatja, hogyan használható a csoportházirend az Internet Explorerhez készült hozzáférési panel távoli telepítésére a felhasználói gépeken. Ez a bővítmény olyan Internet Explorer-felhasználók számára szükséges, akiknek a [jelszó-alapú egyszeri bejelentkezéssel](what-is-single-sign-on.md#password-based-sso)konfigurált alkalmazásokba kell bejelentkezniük.
 
-Javasoljuk, hogy a rendszergazdák automatizálják a bővítmény üzembe helyezését. Ellenkező esetben a felhasználóknak maguknak kell letölteniük és telepíteniük a bővítményt, amely hajlamos a felhasználói hibákra, és rendszergazdai engedélyeket igényel. Ez az oktatóanyag a szoftvertelepítések csoportházirend használatával történő automatizálásának egyik módszerét ismerteti. [További információ a csoportházirendről.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+Javasoljuk, hogy a rendszergazdák automatizálják ennek a bővítménynek a telepítését. Ellenkező esetben a felhasználóknak le kell tölteniük és telepíteniük kell a bővítményt, ami a felhasználói hibákra van kitéve, és rendszergazdai engedélyekkel kell rendelkeznie. Ez az oktatóanyag a szoftverek központi telepítésének a csoportházirend használatával történő automatizálásának egyik módszerét ismerteti. [További információ a csoportházirendről.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-Az Access Panel bővítmény a [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) és a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998)számára is elérhető, amelyek közül egyik sem igényel rendszergazdai engedélyeket a telepítéshez.
+A hozzáférési panel kiterjesztése a [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) és a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998)számára is elérhető, és egyik sem igényli a telepítéshez szükséges rendszergazdai jogosultságokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Beállította az [Active Directory tartományi szolgáltatásokat,](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)és csatlakozott a felhasználók gépeihez a tartományhoz.
-* A csoportházirend-objektum szerkesztéséhez "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: Tartományi rendszergazdák, Vállalati rendszergazdák és Csoportházirend-létrehozó tulajdonosok. [További információ.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* Beállította [Active Directory tartományi szolgáltatások](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és csatlakoztatta a felhasználói gépeket a tartományhoz.
+* A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [További információ.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>1. lépés: Az elosztási pont létrehozása
+## <a name="step-1-create-the-distribution-point"></a>1. lépés: a terjesztési pont létrehozása
 
-Először a telepítőcsomagot olyan hálózati helyre kell helyeznie, amelyhez a bővítményt távolról telepíteni kívánt gépek hozzáférhetnek. Ehhez kövesse az alábbi lépéseket:
+Először el kell helyeznie a telepítőcsomagot egy olyan hálózati helyre, amelyet azok a gépek érhetik el, amelyekhez távolról telepíteni kívánja a bővítményt. Ehhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a kiszolgálóra rendszergazdaként.
-1. A **Kiszolgálókezelő** ablakban nyissa meg a **Fájlok és tárolószolgáltatások lehetőséget.**
+1. A **Kiszolgálókezelő** ablakban válassza a **fájlok és tárolási szolgáltatások**lehetőséget.
 
     ![Fájlok és tárolási szolgáltatások megnyitása](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Nyissa meg a **Megosztások** lapot. Ezután kattintson **a Feladatok** > **új megosztása...**
+1. Lépjen a **megosztások** lapra. Ezután kattintson a **feladatok** > **új megosztás...** elemre.
 
-    ![A Képernyőképen látható, hogy hol található az Új megosztás a Feladatok képernyőn](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Képernyőfelvétel: a feladatok képernyőn megjelenő új megosztás helye](./media/deploy-access-panel-browser-extension/shares.png)
 
-1. Töltse ki az **Új megosztás varázslót,** és állítson be engedélyeket annak biztosítására, hogy a felhasználók gépeiről elérhető legyen. [További információ a megosztásokról.](https://technet.microsoft.com/library/cc753175.aspx)
-1. A következő Microsoft Windows Installer csomag letöltése (.msi fájl): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Fejezze be az **új megosztás varázslót** , és állítson be engedélyeket annak biztosítására, hogy elérhető legyen a felhasználói gépekről. [További információ a megosztásokról.](https://technet.microsoft.com/library/cc753175.aspx)
+1. Töltse le a következő Microsoft Windows Installer csomagot (. msi fájl): [Access panel Extension. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Másolja a telepítőcsomagot a megosztás kívánt helyére.
 
-    ![Az .msi fájl másolása a megosztásra](./media/deploy-access-panel-browser-extension/copy-package.png)
+    ![Másolja az. msi fájlt a megosztásba.](./media/deploy-access-panel-browser-extension/copy-package.png)
 
-1. Ellenőrizze, hogy az ügyfélgépek el tudják-e érni a telepítőcsomagot a megosztásból.
+1. Ellenőrizze, hogy az ügyfélszámítógépek képesek-e hozzáférni a telepítési csomaghoz a megosztásból.
 
-## <a name="step-2-create-the-group-policy-object"></a>2. lépés: A csoportházirend-objektum létrehozása
+## <a name="step-2-create-the-group-policy-object"></a>2. lépés: a csoportházirend-objektum létrehozása
 
-1. Jelentkezzen be az Active Directory tartományi szolgáltatások (AD DS) telepítését tartalmazó kiszolgálóra.
-1. A Kiszolgálókezelőben nyissa meg az **Eszközök** > **csoportházirend-kezelés című**részt.
+1. Jelentkezzen be a Active Directory tartományi szolgáltatások (AD DS) telepítést futtató kiszolgálóra.
+1. A Kiszolgálókezelőben lépjen az **eszközök** > **csoportházirend felügyelet**elemre.
 
-    ![Nyissa meg az Eszközök > csoportházirend-kezelés](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Válassza az eszközök > Csoportházirend felügyelet](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
-1. A **Csoportházirend kezelése** ablak bal oldali ablaktáblájában tekintse meg a szervezeti egység (OU) hierarchiáját, és határozza meg, hogy melyik hatókörnél szeretné alkalmazni a csoportházirendet. Dönthet például úgy, hogy kiválaszt egy kis szervezeti egységet, amelyet néhány felhasználónak telepít tesztelésre, vagy választhat egy legfelső szintű szervezeti egységet a teljes szervezetre való telepítéshez.
+1. A **csoportházirend felügyeleti** ablak bal oldali ablaktábláján tekintse meg a szervezeti egység (OU) hierarchiáját, és határozza meg, hogy melyik hatókörben szeretné alkalmazni a csoportházirendet. Dönthet például úgy, hogy egy kis szervezeti egységet szeretne üzembe helyezni néhány felhasználónak a teszteléshez, vagy ha egy legfelső szintű szervezeti egységet szeretne üzembe helyezni a teljes szervezet számára.
 
    > [!NOTE]
-   > Ha szervezeti egységeket szeretne létrehozni vagy szerkeszteni, váltson vissza a Kiszolgálókezelőre, és nyissa meg az Eszközök Active Directory – felhasználók és számítógépek > **eszközeit.** **Tools**
+   > Ha szeretné létrehozni vagy szerkeszteni a szervezeti egységeket (OU-ket), váltson vissza a Kiszolgálókezelő elemre, és válassza az **eszközök** > **Active Directory felhasználók és számítógépek**lehetőséget.
 
-1. Miután kiválasztott egy szervezeti egységet, kattintson rá a jobb gombbal, és válassza **a Csoportházirend-kiszolgáló létrehozása parancsot ebben a tartományban, és itt kapcsolja össze...**
+1. Miután kiválasztott egy szervezeti egységet, kattintson rá a jobb gombbal, és válassza a **csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás itt..** . lehetőséget.
 
-    ![A képernyőképen az Új csoportházirend-csoportházirend-szervezet létrehozása beállítás látható](./media/deploy-access-panel-browser-extension/create-gpo.png)
+    ![Képernyőfelvétel az új csoportházirend-objektum létrehozása lehetőségről](./media/deploy-access-panel-browser-extension/create-gpo.png)
 
-1. Az **Új csoportházirend-objektum** parancssorába írja be az új csoportházirend-objektum nevét.
-1. Kattintson a jobb gombbal a létrehozott csoportházirend-objektumra, és válassza a **Szerkesztés parancsot.**
+1. Az **új csoportházirend** -objektum parancssorában adja meg az új csoportházirend objektum nevét.
+1. Kattintson a jobb gombbal a létrehozott Csoportházirend objektumra, majd válassza a **Szerkesztés**lehetőséget.
 
-## <a name="step-3-assign-the-installation-package"></a>3. lépés: A telepítőcsomag hozzárendelése
+## <a name="step-3-assign-the-installation-package"></a>3. lépés: a telepítési csomag kiosztása
 
-1. Határozza meg, hogy a bővítményt a **Számítógép konfigurációja** vagy a **Felhasználó konfigurációja**alapján szeretné-e telepíteni. A [számítógép konfigurációjának](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)használatakor a bővítmény attól függetlenül telepítve van a számítógépen, hogy melyik felhasználó jelentkezik be. A [felhasználói konfigurációval](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)a felhasználók a bővítményt telepítették, függetlenül attól, hogy melyik számítógépre jelentkeznek be.
-1. A **Csoportházirend kezelése szerkesztő** ablak bal oldali ablaktáblájában a választott konfiguráció típusától függően lépjen az alábbi mappaelérési utak valamelyikére:
+1. Döntse el, hogy a bővítményt a **Számítógép konfigurációja** vagy a **Felhasználó konfigurációja**alapján szeretné-e telepíteni. Számítógép- [konfiguráció](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)használatakor a bővítmény telepítve van a számítógépen, függetlenül attól, hogy mely felhasználók jelentkeznek be. A [Felhasználó konfigurációja](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)esetében a felhasználóknak telepítve kell lennie a bővítménynek, függetlenül attól, hogy mely számítógépeken jelentkeznek be.
+1. A **csoportházirend-felügyeleti szerkesztő** ablak bal oldali ablaktábláján válassza a következő elérési utak egyikét, attól függően, hogy milyen típusú konfigurációt választott:
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Kattintson a jobb gombbal **a Szoftvertelepítés**elemre, majd válassza az **Új** > **csomag...**
-1. Ugrás a telepítőcsomagot tartalmazó megosztott mappára az [1.](#step-1-create-the-distribution-point) **Open**
+1. Kattintson a jobb gombbal a **Szoftvertelepítés**elemre, majd válassza az **új** > **csomag lehetőséget...**
+1. Nyissa meg a telepítőcsomagot tartalmazó megosztott mappát az 1. [lépés: hozza létre a terjesztési pontot](#step-1-create-the-distribution-point), válassza ki az. msi fájlt, és kattintson a **Megnyitás**gombra.
 
    > [!IMPORTANT]
-   > Ha a megosztás ugyanazon a kiszolgálón található, ellenőrizze, hogy az .msi fájlt a helyi fájl elérési útja helyett a hálózati fájl elérési útján keresztül éri-e el.
+   > Ha a megosztás ugyanazon a kiszolgálón található, győződjön meg arról, hogy a hálózati fájl elérési útján keresztül éri el az. msi fájlt a helyi fájl elérési útja helyett.
 
-    ![A telepítőcsomag kiválasztása a megosztott mappából](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![Válassza ki a telepítőcsomagot a megosztott mappából.](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. A **Szoftver telepítése** parancsban válassza a **Deployment metódushoz rendelt** lehetőséget. Ezt követően kattintson az **OK** gombra.
+1. A **szoftver központi telepítése** parancssorban válassza a **hozzárendelve** lehetőséget a telepítési módszerhez. Ezt követően kattintson az **OK** gombra.
 
-A bővítmény most már telepítve van a kiválasztott szervezeti egységben. [További információ a csoportházirend szoftvertelepítéséről.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+A bővítmény mostantól a kiválasztott szervezeti egységre van telepítve. [További információ a Csoportházirend-alapú szoftvertelepítésról.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4. lépés: A bővítmény automatikus engedélyezése az Internet Explorer programban
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4. lépés: az Internet Explorer bővítményének automatikus engedélyezése
 
-A telepítő futtatása mellett az Internet Explorer minden bővítményét explicit módon engedélyezni kell a használat előtt. Az alábbi lépéseket követve engedélyezze a Hozzáférési panel bővítményt csoportházirendhasználatával:
+A telepítő futtatása mellett az Internet Explorer minden bővítményét explicit módon engedélyezni kell, hogy használni lehessen. Az alábbi lépéseket követve engedélyezheti a hozzáférési panel bővítményt a csoportházirend használatával:
 
-1. A **Csoportházirend kezelése szerkesztő** ablakban lépjen az alábbi elérési utak valamelyikére, attól függően, hogy milyen típusú konfigurációt választott a [3.](#step-3-assign-the-installation-package)
+1. A **csoportházirend-felügyeleti szerkesztő** ablakban válassza a következő elérési utak egyikét, attól függően, hogy milyen típusú konfigurációt választott a [3. lépés: a telepítési csomag hozzárendeléséhez](#step-3-assign-the-installation-package):
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 
-1. Kattintson a jobb gombbal **a Bővítménylista elemre,** és válassza **a Szerkesztés parancsot.**
+1. Kattintson a jobb gombbal **a bővítmény listára**, és válassza a **Szerkesztés**lehetőséget.
 
-    ![Kattintson a jobb gombbal a "Bővítménylista" lehetőségre, és válassza a "Szerkesztés" lehetőséget](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
+    ![Kattintson a jobb gombbal a "bővítmények" listára, és válassza a "szerkesztés" lehetőséget.](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
 
-1. A **Bővítménylista ablakban** válassza az **Engedélyezve**lehetőséget. Ezután a **Beállítások** csoportban kattintson a **Megjelenítés gombra.**
+1. A **bővítmény lista** ablakban válassza az **engedélyezve**lehetőséget. Ezután a **Beállítások** szakaszban kattintson a **Megjelenítés...** elemre.
 
-    ![Kattintson az Engedélyezés, majd a Megjelenítés gombra.](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
+    ![Kattintson az engedélyezés, majd a megjelenítés... elemre.](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
 
-1. A **Tartalom megjelenítése ablakban** hajtsa végre az alábbi lépéseket:
+1. A **tartalom megjelenítése** ablakban hajtsa végre a következő lépéseket:
 
-   1. Az első oszlophoz (az **Érték neve** mezőhöz) másolja és illessze be a következő osztályazonosítót:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   1. A második oszlophoz (az **Érték** mezőhöz) írja be a következő értéket:`1`
-   1. A Tartalom megjelenítése ablak bezárásához kattintson az **OK** **gombra.**
+   1. Az első oszlophoz (az **érték neve** mezőhöz) másolja és illessze be a következő OSZTÁLYAZONOSÍTÓ-azonosítót:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   1. A második oszlophoz (az **érték** mezőhöz) írja be a következő értéket:`1`
+   1. A **tartalom megjelenítése** ablak bezárásához kattintson **az OK** gombra.
 
-      ![Az előző lépésben megadott értékek kitöltése](./media/deploy-access-panel-browser-extension/show-contents.png)
+      ![Adja meg az előző lépésben megadott értékeket](./media/deploy-access-panel-browser-extension/show-contents.png)
 
-1. A módosítások alkalmazásához és a **Bővítménylista** ablak bezárásához kattintson az **OK** gombra.
+1. Kattintson **az OK** gombra a módosítások alkalmazásához és a **kiegészítő lista** ablak bezárásához.
 
-A bővítményt most engedélyezni kell a kiválasztott szervezeti egységben lévő gépekhez. [További információ az Internet Explorer-bővítmények engedélyezéséhez vagy letiltásához a csoportházirend használatáról.](https://technet.microsoft.com/library/dn454941.aspx)
+A bővítményt most engedélyezni kell a kiválasztott szervezeti egységben lévő gépekhez. [További információ a csoportházirend használatáról az Internet Explorer bővítményeinek engedélyezéséhez vagy letiltásához.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): A jelszó visszamegjegyzése parancs
+## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): "jelszó megjegyzése" kérés letiltása
 
-Amikor a felhasználók az Access Panel Extension használatával jelentkeznek be a webhelyekre, az Internet Explorer a következő kérdést jelenítheti meg: "Szeretné tárolni a jelszavát?"
+Amikor a felhasználók a hozzáférési panel bővítmény használatával jelentkeznek be a webhelyekre, az Internet Explorer a következő promptot jeleníti meg: "szeretné tárolni a jelszavát?"
 
-![A "Szeretné tárolni a jelszavát..." Gyors](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
+![A következőt jeleníti meg: "szeretné tárolni a jelszavát..." gyors](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
 
-Ha meg szeretné akadályozni, hogy a felhasználók lássák ezt a kérdést, kövesse az alábbi lépéseket, hogy az automatikus kiegészítés ne emlékezzen a jelszavakra:
+Ha meg szeretné akadályozni, hogy a felhasználók lássák ezt a kérdést, kövesse az alábbi lépéseket, hogy megakadályozza a jelszavak megjegyzésének automatikus befejeződését:
 
-1. A **Csoportházirend kezelése szerkesztő** ablakban nyissa meg az alábbi elérési utat. Ez a konfigurációs beállítás csak a **Felhasználó konfigurációja csoportban**érhető el.
+1. Az **csoportházirend-felügyeleti szerkesztő** ablakban lépjen az alább látható elérési útra. Ez a konfigurációs beállítás csak a **felhasználói konfiguráció**területen érhető el.
 
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-1. Keresse meg a **Felhasználónevek és jelszavak automatikus kiegészítési szolgáltatásának bekapcsolása az űrlapokon.**
+1. Keresse meg az **űrlapon a felhasználónevek és jelszavak automatikus kiegészítése funkció bekapcsolása**beállítást.
 
    > [!NOTE]
-   > Az Active Directory korábbi verziói felsorolhatják ezt a beállítást a **Jelszavak automatikus kiegészítésének engedélyezésével.** A beállítás konfigurációja eltér az oktatóanyagban ismertetett beállítástól.
+   > A Active Directory korábbi verzióiban előfordulhat, hogy ez a beállítás **nem teszi lehetővé az automatikus kiegészítést a jelszavak mentéséhez**. Az adott beállítás konfigurációja eltér az oktatóanyagban ismertetett beállításoktól.
 
-    ![Ne felejtse el megkeresni ezt a Felhasználói beállítások alatt](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
+    ![Ne felejtse el megkeresni ezt a felhasználói beállítások alatt](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
 
-1. Kattintson a jobb gombbal a fenti beállításra, és válassza a **Szerkesztés parancsot.**
-1. Az Űrlapokon a **felhasználónevek és jelszavak automatikus kiegészítési funkciójának bekapcsolása ablakban**válassza a **Letiltva**lehetőséget.
+1. Kattintson a jobb gombbal a fenti beállításra, majd válassza a **Szerkesztés**lehetőséget.
+1. Az **űrlapon lévő felhasználónevek és jelszavak automatikus kiegészítése funkció bekapcsolása**ablakban válassza a **Letiltva**lehetőséget.
 
-    ![Válassza a "Letiltva" lehetőséget az automatikus kiegészítés bekapcsolása funkcióhoz](./media/deploy-access-panel-browser-extension/disable-passwords.png)
+    ![Válassza ki a "Letiltva" lehetőséget az automatikus kiegészítés bekapcsolása funkcióhoz](./media/deploy-access-panel-browser-extension/disable-passwords.png)
 
-1. A módosítások alkalmazásához és az ablak bezárásához kattintson az **OK** gombra.
+1. A módosítások alkalmazásához és az ablak bezárásához kattintson **az OK** gombra.
 
-A felhasználók a továbbiakban nem tárolhatják hitelesítő adataikat, és nem használhatják az automatikus kiegészítést a korábban tárolt hitelesítő adatok eléréséhez. Ez a házirend azonban lehetővé teszi a felhasználók számára, hogy továbbra is automatikus kiegészítést használjanak más típusú űrlapmezőkhöz, például a keresési mezőkhöz.
+A felhasználók többé nem tudják tárolni a hitelesítő adataikat, vagy az automatikus kiegészítés használatával érhetik el a korábban tárolt hitelesítő adatokat. Ez a szabályzat azonban lehetővé teszi, hogy a felhasználók továbbra is használják az automatikus kiegészítést más típusú űrlapmezők, például a keresési mezők esetében.
 
 > [!WARNING]
-> Ha ez a házirend engedélyezve van, miután a felhasználók úgy döntöttek, hogy bizonyos hitelesítő adatokat tárolnak, ez a házirend *nem* törli a már tárolt hitelesítő adatokat.
+> Ha a házirend engedélyezve van, miután a felhasználók bizonyos hitelesítő adatokat tárolnak, akkor ez a szabályzat *nem* törli a már tárolt hitelesítő adatokat.
 
-## <a name="step-6-testing-the-deployment"></a>6. lépés: A telepítés tesztelése
+## <a name="step-6-testing-the-deployment"></a>6. lépés: a központi telepítés tesztelése
 
-Az alábbi lépéseket követve ellenőrizze, hogy a bővítmény telepítése sikeres volt-e:
+Az alábbi lépéseket követve ellenőrizheti, hogy a bővítmény központi telepítése sikeres volt-e:
 
-1. Ha a **Számítógép-konfiguráció**használatával telepítette a rendszert, jelentkezzen be egy olyan ügyfélgépre, amely a [2.](#step-2-create-the-group-policy-object) Ha a **Felhasználó konfigurációja**használatával telepítette a telepítést, győződjön meg arról, hogy az adott szervezeti egységhez tartozó felhasználóként jelentkezik be.
-1. Előfordulhat, hogy néhány bejelentkezést a csoportházirend-módosítások teljes frissítés ezzel a géppel. A frissítés kényszerítéséhez nyisson meg egy **parancssori** ablakot, és futtassa a következő parancsot:`gpupdate /force`
-1. A telepítéshez újra kell indítani a gépet. A rendszerindítás a szokásosnál lényegesen több időt vehet igénybe, amíg a bővítmény telepítése megtörténik.
-1. Az újraindítás után nyissa meg **az Internet Explorer t.** Az ablak jobb felső sarkában kattintson az **Eszközök** (a fogaskerék ikon) elemre, majd válassza **a Bővítmények kezelése**lehetőséget.
-1. A Bővítmények kezelése ablakban ellenőrizze, hogy a **Hozzáférési panel bővítmény** telepítve **van-e,** és hogy **az állapota** Engedélyezve értékre **van-e állítva.**
+1. Ha **számítógép-konfiguráció**használatával telepítette a rendszert, jelentkezzen be egy olyan ügyfélszámítógépre, amely a 2. lépésben kiválasztott szervezeti egységhez tartozik, és [hozza létre a csoportházirend objektumot](#step-2-create-the-group-policy-object). Ha a **felhasználói konfiguráció**használatával telepítette, ügyeljen arra, hogy az adott szervezeti egységhez tartozó felhasználóként jelentkezzen be.
+1. Előfordulhat, hogy a csoportházirend módosításainak egy pár bejelentkezést is igénybe vehet a gép teljes frissítéséhez. A frissítés kényszerítéséhez nyisson meg egy **parancssori** ablakot, és futtassa a következő parancsot:`gpupdate /force`
+1. A telepítés megkezdéséhez újra kell indítania a számítógépet. A rendszerindítási szolgáltatás a szokásosnál jóval több időt vehet igénybe a bővítmény telepítésekor.
+1. Az újraindítás után nyissa meg az **Internet Explorert**. Az ablak jobb felső sarkában kattintson az **eszközök** elemre (a fogaskerék ikonra), majd válassza a **Bővítmények kezelése**lehetőséget.
+1. A **Bővítmények kezelése** ablakban ellenőrizze, hogy a **hozzáférési panel bővítmény** telepítve van-e, és hogy az **állapota** **engedélyezve**értékre van-e állítva.
 
-   ![Annak ellenőrzése, hogy a Hozzáférési panel bővítmény telepítve van-e és engedélyezve van-e](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Annak ellenőrzése, hogy a hozzáférési panel bővítmény telepítve és engedélyezve van-e](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Részletek
 
-* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](what-is-single-sign-on.md)
-* [Az Internet Explorer Hozzáférési panelbővítményének hibaelhárítása](manage-access-panel-browser-extension.md)
+* [Alkalmazás-hozzáférés és egyszeri bejelentkezés Azure Active Directory](what-is-single-sign-on.md)
+* [Az Internet Explorerhez készült hozzáférési panel bővítmény hibaelhárítása](manage-access-panel-browser-extension.md)

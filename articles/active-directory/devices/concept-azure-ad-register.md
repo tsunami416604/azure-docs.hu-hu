@@ -1,6 +1,6 @@
 ---
-title: Mik azok az Azure AD regisztrált eszközök?
-description: Ismerje meg, hogyan segíthet az eszközidentitás-kezelés a környezeterőforrásait elérő eszközök kezelésében.
+title: Mi az Azure AD-ban regisztrált eszközök?
+description: Megtudhatja, hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,54 +12,54 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67462758"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
-Az Azure AD-ben regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a Saját eszköz (BYOD) vagy a mobileszköz-forgatókönyvek. Ezekben a forgatókönyvekben a felhasználó hozzáférhet a szervezet Azure Active Directory által vezérelt erőforrások személyes eszköz használatával.
+Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a saját eszközök használata (BYOD) vagy a mobileszköz-forgatókönyvek számára. Ezekben a forgatókönyvekben a felhasználók személyes eszköz használatával férhetnek hozzá a szervezet Azure Active Directory felügyelt erőforrásaihoz.
 
-|   | Azure AD regisztrálva |
+|   | Azure AD-regisztráció |
 | --- | --- |
-| **Meghatározás** | Az Azure AD-re regisztrálva anélkül, hogy szervezeti fiókra lenne szükség az eszközre való bejelentkezéshez |
-| **Elsődleges célközönség** | Minden felhasználóra érvényes, a következő kritériumokkal: |
+| **Meghatározás** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
+| **Elsődleges célközönség** | Az összes felhasználóra érvényes a következő feltételekkel: |
 |   | Saját eszközök használata (BYOD) |
 |   | Mobileszközök |
 | **Az eszközök tulajdonjoga** | Felhasználó vagy szervezet |
 | **Operációs rendszerek** | Windows 10, iOS, Android és MacOS |
-| **Telepítés** | Windows 10 – Beállítások |
-|   | iOS/Android – Céges portál vagy Microsoft Hitelesítő alkalmazás |
-|   | MacOS – Vállalati portál |
-| **Eszközbejelentkezési beállítások** | Végfelhasználó helyi hitelesítő adatai |
+| **Telepítés** | Windows 10 – beállítások |
+|   | iOS/Android – Céges portál vagy Microsoft Authenticator alkalmazás |
+|   | MacOS – Céges portál |
+| **Eszköz bejelentkezési beállításai** | Végfelhasználói helyi hitelesítő adatok |
 |   | Jelszó |
 |   | Windows Hello |
 |   | PIN kód |
 |   | Biometria vagy minta más eszközökhöz |
-| **Eszközfelügyelet** | Mobileszköz-kezelés (például Microsoft Intune) |
+| **Eszközfelügyelet** | Mobileszköz-kezelés (példa: Microsoft Intune) |
 |   | Mobilalkalmazás-kezelés |
-| **Főbb képességek** | SSO a felhőalapú erőforrásokhoz |
-|   | Feltételes hozzáférés az Intune-ba való belépéskor |
-|   | Feltételes hozzáférés az alkalmazásvédelmi szabályzaton keresztül |
-|   | Telefonos bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással |
+| **Főbb képességek** | Egyszeri bejelentkezés a Felhőbeli erőforrásokhoz |
+|   | Feltételes hozzáférés az Intune-ban való regisztráláskor |
+|   | Feltételes hozzáférés az App Protection-szabályzaton keresztül |
+|   | Telefonos bejelentkezés engedélyezése Microsoft Authenticator alkalmazással |
 
 ![Azure AD-ben regisztrált eszközök](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Az Azure AD regisztrált eszközei egy helyi fiókkal, például egy Windows 10-es eszközön lévő Microsoft-fiókkal vannak bejelentkezve, de emellett rendelkeznek egy Azure AD-fiókkal a szervezeti erőforrásokhoz való hozzáféréshez. A szervezet erőforrásaihoz való hozzáférés tovább korlátozható az adott Azure AD-fiók és az eszközidentitásra alkalmazott feltételes hozzáférési szabályzatok alapján.
+Az Azure AD-ban regisztrált eszközök bejelentkeznek helyi fiókkal, például egy Windows 10-es eszközön lévő Microsoft-fiókre, de a szervezeti erőforrásokhoz való hozzáféréshez hozzá kell férniük egy Azure AD-fiókhoz is. A szervezet erőforrásaihoz való hozzáférés az Azure AD-fiók és az eszköz identitására alkalmazott feltételes hozzáférési szabályzatok alapján tovább korlátozható.
 
-A rendszergazdák biztonságossá tehetik és tovább szabályozhatják ezeket az Azure AD-regisztrált eszközöket a Mobileszköz-kezelés (MDM) eszközeivel, például a Microsoft Intune-nal. Az MDM lehetővé teszi a szervezet által igényelt konfigurációk érvényesítését, például a tárolás titkosítását, a jelszó összetettségét és a biztonsági szoftverek naprakészen tartását. 
+A rendszergazdák a mobileszköz-kezelési (MDM) eszközök, például a Microsoft Intune használatával védhetik és vezérelhetik ezeket az Azure AD-beli regisztrált eszközöket. A MDM lehetővé teszi olyan szervezeti konfigurációk betartatását, mint például a tárolás titkosítása, a jelszó bonyolultsága és a biztonsági szoftverek naprakészen tartása. 
 
-Az Azure AD-regisztráció akkor hajtható végre, amikor először fér hozzá egy munkaalkalmazáshoz, vagy manuálisan a Windows 10 Beállítások menüjében. 
+Az Azure AD-regisztráció akkor végezhető el, amikor első alkalommal fér hozzá egy munkahelyi alkalmazáshoz, vagy manuálisan használja a Windows 10 beállítások menüt. 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A szervezet egyik felhasználója szeretné elérni az e-mailhez szükséges eszközöket, a munkaidő-jelentési időt és az otthoni számítógépről való regisztráció előnyeit. A szervezet rendelkezik ezekkel az eszközökkel egy feltételes hozzáférési szabályzat mögött, amely hozzáférést igényel egy Intune-kompatibilis eszközről. A felhasználó hozzáadja a szervezeti fiókot, és regisztrálja az otthoni pc az Azure AD-vel, és a szükséges Intune-szabályzatok kényszerítve, amely a felhasználó számára hozzáférést biztosít az erőforrásokhoz.
+A szervezet egyik felhasználója szeretné elérni az e-mailek, a jelentéskészítési időkorlát és az otthoni SZÁMÍTÓGÉPRŐL való regisztráció előnyeit. A szervezete ezeket az eszközöket egy olyan feltételes hozzáférési szabályzat mögé írja, amely egy Intune-kompatibilis eszköz hozzáférését igényli. A felhasználó hozzáadja a szervezeti fiókját, és regisztrálja az otthoni SZÁMÍTÓGÉPét az Azure AD-ben, és a szükséges Intune-szabályzatok érvénybe lép, hogy a felhasználók hozzáférhessenek az erőforrásaihoz.
 
-Egy másik felhasználó szeretné elérni a szervezeti e-mail a személyes Android telefon, amely gyökerezik. A vállalatnak szüksége van egy megfelelő eszközre, és létrehozott egy Intune megfelelőségi szabályzatot a gyökeres eszközök blokkolásához. Az alkalmazott nem férhet hozzá az eszköz szervezeti erőforrásaihoz.
+Egy másik felhasználó szeretné elérni a szervezeti e-mail-címét a személyes androidos telefonján, amely fel van gyökerezve. A vállalatának megfelelő eszközre van szüksége, és létrehozott egy Intune-megfelelőségi szabályzatot a feltört eszközök blokkolásához. Az alkalmazott nem fér hozzá a szervezeti erőforrásokhoz az eszközön.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Eszközidentitások kezelése az Azure Portal használatával](device-management-azure-portal.md)
+- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
 - [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

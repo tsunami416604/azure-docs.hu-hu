@@ -1,6 +1,6 @@
 ---
-title: Az SAP HANA elérhetősége az Azure-régiók között | Microsoft dokumentumok
-description: Az SAP HANA azure-beli virtuális gépeken való futtatásakor rendelkezésre állási szempontok áttekintése több Azure-régióban.
+title: SAP HANA rendelkezésre állás Azure-régiók között | Microsoft Docs
+description: A rendelkezésre állási megfontolások áttekintése, ha több Azure-régióban található Azure-beli virtuális gépeken SAP HANA futtat.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,78 +16,78 @@ ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70078851"
 ---
-# <a name="sap-hana-availability-across-azure-regions"></a>Az SAP HANA elérhetősége az Azure-régiók között
+# <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA rendelkezésre állás Azure-régiók között
 
-Ez a cikk az SAP HANA különböző Azure-régiók közötti rendelkezésre állásával kapcsolatos forgatókönyveket ismerteti. Az Azure-régiók közötti távolság miatt az SAP HANA több Azure-régióban való rendelkezésre állásának beállítása speciális szempontokat is magában foglal.
+Ez a cikk a különböző Azure-régiók SAP HANA rendelkezésre állásával kapcsolatos forgatókönyveket ismerteti. Az Azure-régiók közötti távolság miatt a SAP HANA rendelkezésre állása több Azure-régióban is különleges szempontokat foglal magában.
 
-## <a name="why-deploy-across-multiple-azure-regions"></a>Miért érdemes több Azure-régióban telepíteni?
+## <a name="why-deploy-across-multiple-azure-regions"></a>Miért érdemes több Azure-régiót üzembe helyezni
 
-Az Azure-régiókat gyakran nagy távolságok választják el egymástól. A geopolitikai régiótól függően az Azure-régiók közötti távolság több száz mérföld, vagy akár több ezer mérföld is lehet, például az Egyesült Államokban. A távolság miatt a két különböző Azure-régióban üzembe helyezett eszközök közötti hálózati forgalom jelentős hálózati oda-vissza késést tapasztal. A késés elég jelentős ahhoz, hogy kizárja a szinkron adatcsere két SAP HANA-példányok tipikus SAP számítási feladatok alatt. 
+Az Azure-régiókat gyakran nagy távolságok választják el egymástól. A geopolitikai régiótól függően az Azure-régiók közötti távolság több száz mérfölddel vagy akár több ezer mérföld is lehet, például a Egyesült Államok. A távolság miatt a két különböző Azure-régióban üzembe helyezett eszközök közötti hálózati forgalom jelentős hálózati továbbítási késést tapasztal. A késés elég jelentős ahhoz, hogy kizárja a szinkron adatcserét két SAP HANA példány között a tipikus SAP-munkaterhelések alatt. 
 
-Másrészt a szervezetek gyakran rendelkeznek az elsődleges adatközpont és a másodlagos adatközpont helye közötti távolsági követelménnyel. A távolságkövetelmény segít a rendelkezésre állás biztosításában, ha egy természeti katasztrófa egy szélesebb földrajzi helyen következik be. Ilyenek például a 2017 szeptemberében és októberében a Karib-térséget és Floridát sújtó hurrikánok. Előfordulhat, hogy a szervezetnek legalább egy minimális távolsági követelménye van. A legtöbb Azure-ügyfél számára a minimális távolságdefiníció megköveteli, hogy tervezzen az [Azure-régiók](https://azure.microsoft.com/regions/)ban való rendelkezésre álláshoz. Mivel a két Azure-régió közötti távolság túl nagy a HANA szinkron replikációs mód használatához, az RTO és az RPO-követelmények arra kényszeríthetik, hogy egy régióban telepítse a rendelkezésre állási konfigurációkat, majd egy másodperc alatt további telepítésekkel egészítse ki Régió.
+Másfelől a szervezeteknek gyakran van távolsági követelményük az elsődleges adatközpont és a másodlagos Adatközpont helye között. A távolsági követelmények segítenek biztosítani a rendelkezésre állást, ha a természeti katasztrófák szélesebb földrajzi helyen történnek. Ilyenek például a Karib-szigetek és a Florida a 2017-es szeptemberben és októberben sújtott hurrikánok. Előfordulhat, hogy a szervezete legalább minimális távolságra vonatkozó követelményt tartalmaz. A legtöbb Azure-ügyfél esetében a minimális távolság meghatározása megköveteli az [Azure-régiók](https://azure.microsoft.com/regions/)közötti rendelkezésre állás kialakítását. Mivel a két Azure-régió közötti távolság túl nagy a HANA szinkron replikációs mód használatához, a RTO és a RPO követelmények arra kényszerítheti, hogy a rendelkezésre állási konfigurációkat egy adott régióban telepítse, majd kiegészítse a további üzemelő példányokkal egy második régióban.
 
-Egy másik szempont, hogy fontolja meg ebben a forgatókönyvben a feladatátvétel és az ügyfél átirányítása. A feltételezés az, hogy az SAP HANA-példányok két különböző Azure-régióban feladatátvétel mindig egy manuális feladatátvétel. Mivel az SAP HANA rendszer replikációs módja aszinkron, fennáll annak a lehetősége, hogy az elsődleges HANA-példányban véglegesített adatok még nem tették meg a másodlagos HANA-példányra. Ezért az automatikus feladatátvétel nem választható olyan konfigurációkhoz, ahol a replikáció aszinkron. Még manuálisan vezérelt feladatátvétel, mint egy feladatátvételi feladatátvételi feladat, meg kell tennie a szükséges intézkedéseket annak biztosítására, hogy az elsődleges oldalon lévő összes véglegesített adatok a másodlagos példány, mielőtt manuálisan áttérne a másik Azure-régióba.
+Az ebben a forgatókönyvben megfontolandó másik szempont a feladatátvétel és az ügyfél-átirányítás. Feltételezi, hogy a két különböző Azure-régióban található SAP HANA-példányok közötti feladatátvétel mindig kézi feladatátvétel. Mivel SAP HANA rendszer-replikálás replikációs módja aszinkron értékre van beállítva, lehetséges, hogy az elsődleges HANA-példányon véglegesített adatmennyiség még nem tette meg a másodlagos HANA-példányra. Az automatikus feladatátvétel ezért nem olyan konfigurációknál használható, ahol a replikálás aszinkron. A manuálisan vezérelt feladatátvételsel, ahogy a feladatátvételi gyakorlat esetében is, intézkedéseket kell meghoznia annak érdekében, hogy az elsődleges oldalon lévő összes véglegesített adat a másodlagos példányra kerüljön, mielőtt manuálisan áthelyezi a másik Azure-régióba.
  
-Az Azure virtuális hálózat egy másik IP-címtartományt használ. Az IP-címek a második Azure-régióban vannak telepítve. Így vagy módosítania kell az SAP HANA ügyfélkonfigurációját, vagy lehetőleg létre kell hoznia a névfeloldás módosításához szükséges lépéseket. Így az ügyfelek átlesznek irányítva az új másodlagos hely kiszolgálójának IP-címére. További információ: AZ SAP cikk [Ügyfélkapcsolat helyreállítása az átvétel után](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html).   
+Az Azure Virtual Network eltérő IP-címtartományt használ. Az IP-címek üzembe helyezése a második Azure-régióban történik. Ezért vagy módosítania kell a SAP HANA-ügyfél konfigurációját, vagy lehetőleg a névfeloldás módosításához lépéseket kell létrehoznia. Így a rendszer átirányítja az ügyfeleket az új másodlagos hely kiszolgálói IP-címére. További információ: az SAP-cikk [ügyfélkapcsolatának helyreállítása az átvétel után](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html).   
 
-## <a name="simple-availability-between-two-azure-regions"></a>Egyszerű elérhetőség két Azure-régió között
+## <a name="simple-availability-between-two-azure-regions"></a>Egyszerű rendelkezésre állás két Azure-régió között
 
-Előfordulhat, hogy nem hoz létre egyetlen régión belül egyetlen rendelkezésre állási konfigurációt, de továbbra is szükség van arra, hogy a számítási feladatok kiszolgálják, ha egy katasztrófa bekövetkezik. Az ilyen esetek tipikus esetei a nem termelési rendszerek. Bár miután a rendszer le fél napra, vagy akár egy nap fenntartható, nem engedheti meg, hogy a rendszer nem érhető el 48 óra vagy annál több. Ahhoz, hogy a telepítő kevésbé költséges, futtasson egy másik rendszert, amely még kevésbé fontos a virtuális gép. A másik rendszer célként működik. A másodlagos régióban is méretezheti a virtuális gép méretét, hogy kisebb legyen, és úgy dönt, hogy nem tölti be előre az adatokat. Mivel a feladatátvétel manuális, és sokkal több lépést jár a teljes alkalmazásverem feladatátvételéhez, a virtuális gép leállításához, átméretezéséhez, majd a virtuális gép újraindításához szükséges további idő elfogadható.
+Dönthet úgy, hogy egyetlen régión belül nem helyezi el a rendelkezésre állási konfigurációt, de az is szükséges, hogy a számítási feladatok elvégzése vészhelyzet esetén is megtörténjen. Ilyen forgatókönyvek esetében a nem termékrendszer-rendszerek jellemzőek. Bár a rendszer leállt a fél napra, vagy akár egy napig is fenntartható, nem engedélyezheti, hogy a rendszer 48 órán keresztül elérhetetlenné váljon. Ahhoz, hogy a telepítőt olcsóbban lehessen elkészíteni, futtasson egy másik olyan rendszer, amely még kevésbé fontos a virtuális gépen. A másik rendszer rendeltetési helyként működik. A virtuális gépet a másodlagos régióban is kisebbre lehet méretezni, és nem kell betöltést választania. Mivel a feladatátvétel manuális, és számos további lépést tesz szükségessé a teljes alkalmazás-verem feladatátvételéhez, a virtuális gép leállításához szükséges további időt, az átméretezést, majd a virtuális gép újraindítását is elfogadható.
 
-Ha a vész-ellenőrzési cél megosztásának forgatókönyvét egy virtuális gép minőségbiztosítási rendszerével osztja meg, figyelembe kell vennie ezeket a szempontokat:
+Ha a DR célját egy virtuális gépen található QA-rendszerrel közösen használja, a következő szempontokat kell figyelembe vennie:
 
-- Két [üzemmód van](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) delta_datashipping és logreplay-rel, amelyek ilyen forgatókönyvhöz állnak rendelkezésre.
-- Mindkét üzemmód eltérő memóriakövetelményekkel rendelkezik az adatok előzetes betöltése nélkül
-- Delta_datashipping szükség lehet drasztikusan kevesebb memóriát anélkül, hogy az előtöltési lehetőség, mint a logreplay is szükség lehet. Lásd az [SAP-dokumentum](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf) 4.3.
-- A logreplay működési mód memóriaigénye előtöltés nélkül nem determinisztikus, és az oszlopcentrikus struktúrák betöltésétől függ. Szélsőséges esetekben előfordulhat, hogy az elsődleges példány memóriájának 50%-ára van szükség. A logreplay üzemmód memóriája független attól, hogy az adatok előre betöltött beállítását választotta-e.
+- Két [működési mód](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) van delta_datashipping-és logreplay, amelyek egy ilyen forgatókönyvhöz érhetők el
+- Mindkét működési mód esetében eltérő memória-követelmények vannak az előzetes betöltés nélkül
+- Előfordulhat, hogy a Delta_datashipping a logreplay megkövetelése nélkül drasztikusan kevesebb memóriát igényel. A [SAP HANA rendszer-replikálásának végrehajtásához](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf) tekintse meg az SAP-dokumentum 4,3. fejezetét.
+- A logreplay-üzemeltetési üzemmód nem tölthető be a determinisztikus, és a betöltött oszlopcentrikus-struktúráktól függ. Szélsőséges esetekben az elsődleges példány memóriájának 50%-át is megkövetelheti. A logreplay működési mód memóriája független, függetlenül attól, hogy beállította-e az előre betöltött adatmennyiséget.
 
 
 ![Két virtuális gép diagramja két régióban](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
 
 > [!NOTE]
-> Ebben a konfigurációban nem adhat meg RPO=0-t, mert a HANA rendszer replikációs módja aszinkron. Ha meg kell adnia egy RPO=0, ez a konfiguráció nem a konfiguráció a választás.
+> Ebben a konfigurációban nem adhat meg RPO = 0 értéket, mert a HANA rendszer replikációs módja aszinkron. Ha RPO = 0 értéket kell megadnia, ez a konfiguráció nem a választott konfiguráció.
 
-A konfigurációban egy kis módosítás lehet az adatok előtöltésként való konfigurálása. Azonban a feladatátvétel manuális jellege és az a tény, hogy az alkalmazásrétegek is kell mozgatni a második régióba, lehet, hogy nincs értelme az adatok előzetes betöltése. 
+Előfordulhat, hogy a konfigurációban elvégezhető kis módosítás az, ha előre betöltésként konfigurálja az adathalmazt. Azonban a feladatátvétel manuális jellege és az, hogy az alkalmazás rétegeinek is át kell térniük a második régióra, előfordulhat, hogy az adatátvitelt nem érdemes megfontolni. 
 
-## <a name="combine-availability-within-one-region-and-across-regions"></a>Az egy régión belüli és a régiók közötti elérhetőség kombinálása 
+## <a name="combine-availability-within-one-region-and-across-regions"></a>A rendelkezésre állás egyesítése egy régión belül és régiók között 
 
-A régiókon belüli és régiók közötti rendelkezésre állás kombinációját a következő tényezők vezérelhetik:
+A régión belüli és közötti rendelkezésre állási kombinációt a következő tényezők okozhatják:
 
-- RPO=0 követelmény egy Azure-régióban.
-- A szervezet nem hajlandó vagy képes a globális műveletek által érintett jelentős természeti katasztrófa, amely hatással van egy nagyobb régióban. Ez volt a helyzet néhány hurrikánok, hogy elérje a Karib-térségben az elmúlt néhány évben.
-- Olyan szabályozások, amelyek az elsődleges és másodlagos helyek közötti távolságokat igényelnek, amelyek egyértelműen meghaladják az Azure rendelkezésre állási zónái által nyújtott lehetőségeket.
+- Az Azure-régión belüli RPO = 0 követelmény.
+- A szervezet nem hajlandó vagy nem tud olyan globális műveleteket gyakorolni, amely egy nagyobb régiót érintő jelentős természeti katasztrófát érint. Az elmúlt néhány évben a Karib-szigetet elérő hurrikánok esetében ez volt a helyzet.
+- Az elsődleges és másodlagos helyek közötti távolságot igénylő rendeletek, amelyek egyértelműen az Azure rendelkezésre állási zónái által biztosítottak.
 
-Ezekben az esetekben beállíthatja, amit az SAP [sap HANA többrétegű rendszerreplikációs konfigurációnak](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) nevez hana rendszerreplikáció használatával. Az architektúra így nézne ki:
+Ezekben az esetekben beállíthatja, hogy milyen SAP-hívások [SAP HANA többszintű rendszerreplikálási konfigurációt](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) a HANA rendszerreplikáció használatával. Az architektúra így néz ki:
 
 ![Három virtuális gép diagramja két régióban](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-Az SAP [többcélos rendszerreplikációt](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) vezetett be a HANA 2.0 SPS3-mal. A többcélzott rendszerreplikáció bizonyos előnyökkel jár a frissítési forgatókönyvekben. Például a VÉSZ-hely (2. régió) nem érinti, ha a másodlagos HA hely karbantartás vagy frissítések miatt nem működik. A HANA többcélzottrendszer-replikációról itt [here](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)olvashat bővebben.
-A többcélos replikációval rendelkező lehetséges architektúra a következőkre néz ki:
+Az SAP bevezette a többhelyes [rendszer replikálását](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) a HANA 2,0 SPS3. A többhelyes rendszerreplikáció bizonyos előnyökkel jár a frissítési forgatókönyvekben. Például a DR helyet (2. régió) nem érinti a rendszer, ha a másodlagos, HA a hely karbantartás vagy frissítés miatt nem érhető el. További információ a HANA többhelyes rendszerek replikálásáról [itt](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)található.
+A több cél replikálással rendelkező lehetséges architektúra a következőképpen néz ki:
 
-![Három virtuális gép diagramja két régióban milti-target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+![Három virtuális gép ábrázolása két régióban Milti – cél](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
 
-Ha a szervezet a második(DR) Azure-régióban a magas rendelkezésre állásra való alkalmasságra vonatkozó követelményekkel rendelkezik, akkor az architektúra így fog kinézni:
+Ha a szervezet a második (DR) Azure-régióban magas rendelkezésre állási készültségi követelményekkel rendelkezik, akkor az architektúra a következőképpen fog kinézni:
 
-![Három virtuális gép diagramja két régióban milti-target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Három virtuális gép ábrázolása két régióban Milti – cél](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
-A logreplay-t működési módként használva ez a konfiguráció egy RPO=0-t biztosít, alacsony RTO-val, az elsődleges régión belül. A konfiguráció is biztosít tisztességes RPO, ha a lépés a második régióban is részt vesz. Az RTO-idők a második régióban attól függ, hogy az adatok előre be van-e töltve. Sok ügyfél használja a virtuális gép a másodlagos régióban egy tesztrendszer futtatásához. Ebben a felhasználási esetben az adatok nem tölthetők be előre.
+A logreplay as Operations mód használata esetén ez a konfiguráció egy alacsony RTO rendelkező RPO = 0 értéket biztosít az elsődleges régión belül. A konfiguráció emellett a tisztességes RPO is biztosítja, ha a második régióba való áttérés is részt vesz. A második régió RTO időpontja attól függ, hogy az adatkészlet előre be van-e töltve. Számos ügyfél használja a másodlagos régióban található virtuális gépet egy tesztelési rendszer futtatásához. Ebben az esetben az adathalmaz nem tölthető be előre.
 
 > [!IMPORTANT]
-> A különböző szintek közötti üzemmódoknak homogénnek kell lenniük. A logreply **nem** használható az delta_datashipping 1. Csak az egyik vagy a másik üzemmódot választhatja ki, amelynek minden rétegre egységesnek kell lennie. Mivel delta_datashipping nem alkalmas RPO=0-ra, az ilyen többrétegű konfigurációk egyetlen ésszerű működési módja a logreplay marad. A működési módokról és bizonyos korlátozásokról az [SAP-beli SAP HANA rendszerreplikáció működési módjai](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)című témakörben olvashat részletesen. 
+> A különböző rétegek közötti műveleti módoknak homogénnek kell lenniük. Az 1. és a 2. szinten **nem** használhatja a logreply, és a 3. szintű delta_datashipping. Az összes réteghez konzisztensnek kell lennie, vagy más működési módot kell választania. Mivel a delta_datashipping nem alkalmas a RPO = 0 érték megadására, a többrétegű konfigurációk esetében az egyetlen ésszerű működési mód marad a logreplay. A működési módokkal és bizonyos korlátozásokkal kapcsolatos részletekért tekintse meg az SAP-cikkek [működési módjait SAP HANA rendszer-replikáláshoz](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)című témakört. 
 
 ## <a name="next-steps"></a>További lépések
 
-A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatást a következő témakörökben talál:
+A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatásért lásd:
 
-- [SAP HANA-rendszerreplikáció beállítása az Azure virtuális gépein](sap-hana-high-availability.md)
-- [Az SAP HANA magas rendelkezésre állása a rendszer replikációjával](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
+- [Rendszerreplikáció beállítása SAP HANA Azure-beli virtuális gépeken](sap-hana-high-availability.md)
+- [SAP HANA magas rendelkezésre állása rendszerreplikáció használatával](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
 
  
 

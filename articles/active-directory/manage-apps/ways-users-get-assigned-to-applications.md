@@ -1,6 +1,6 @@
 ---
-title: Felhasználók hozzárendelése alkalmazásokhoz | Microsoft dokumentumok
-description: Ismerje meg, hogyan kapják meg a felhasználók a bérlőben lévő alkalmazásokhoz való hozzárendelést
+title: Felhasználók társítása alkalmazásokhoz | Microsoft Docs
+description: Ismerje meg, hogy a felhasználók hogyan rendelhetők hozzá egy alkalmazáshoz a bérlőben
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,25 +16,25 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65825980"
 ---
-# <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazásokhoz
+# <a name="how-to-assign-users-to-applications"></a>Felhasználók társítása alkalmazásokhoz
 
-Ez a cikk segít megérteni, hogyan felhasználók kap egy alkalmazás a bérlőben.
+Ebből a cikkből megtudhatja, hogyan rendelhető hozzá a felhasználók egy alkalmazáshoz a bérlőben.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Hogyan kaphatfelhasználók egy alkalmazáshoz az Azure AD-ben?
+## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Hogyan rendelhetők hozzá a felhasználók az Azure AD-alkalmazásokhoz?
 
-Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, először hozzá kell rendelni őket valamilyen módon. A hozzárendelést elvégezheti a rendszergazda, az üzleti meghatalmazott vagy néha maga a felhasználó is. Az alábbiakban bemutatjuk, hogy a felhasználók hogyan rendelhetők hozzá az alkalmazásokhoz:
+Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, előbb hozzá kell rendelnie azt valamilyen módon. A hozzárendelést egy rendszergazda, egy üzleti meghatalmazott vagy esetenként a felhasználó hajthatja végre. Az alábbiakban a felhasználók az alkalmazásokhoz való hozzárendelésének módjait ismertetjük:
 
-1.  A rendszergazda közvetlenül az alkalmazáshoz [rendel egy felhasználót](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+1.  A rendszergazda közvetlenül [rendel hozzá egy felhasználót](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) az alkalmazáshoz
 
-2.  A rendszergazda [hozzárendel egy csoportot,](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) amelynek a felhasználó tagja az alkalmazáshoz, beleértve a következőket:
+2.  A rendszergazda [olyan csoportot rendel hozzá](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , amelynek a felhasználó tagja az alkalmazásnak, beleértve a következőket:
 
-    * A helyszíni szinkronizálásra kijelölt csoport
+    * A helyszíni környezetből szinkronizált csoport
 
     * A felhőben létrehozott statikus biztonsági csoport
 
@@ -42,23 +42,23 @@ Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, először hozzá
 
     * A felhőben létrehozott Office 365-csoport
 
-    * A [Minden felhasználó](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) csoport
+    * A [minden felhasználó](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) csoport
 
-3.  A rendszergazda lehetővé teszi, hogy [az Önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) lehetővé tegye a felhasználók számára, hogy az [Alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) alkalmazás hozzáadása **szolgáltatásával** **üzleti jóváhagyás nélkül** vegyenek fel egy alkalmazást
+3.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára az **alkalmazás hozzáadását** az [alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) használatával **üzleti jóváhagyás nélkül**
 
-4.  A rendszergazda lehetővé teszi [az Önkiszolgáló alkalmazáshozzáférés engedélyezését,](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) hogy a felhasználó hozzáadjon egy alkalmazást az [Alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **alkalmazás hozzáadása szolgáltatásával,** de csak a kiválasztott**üzleti jóváhagyók korábbi jóváhagyásához**
+4.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára, hogy az [alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **használatával vegyen** fel alkalmazást, de csak az**előzetes jóváhagyást a kiválasztott üzleti jóváhagyó**
 
-5.  A rendszergazda lehetővé teszi, hogy [az Önkiszolgáló csoportkezelés](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) lehetővé tegye a felhasználó számára, hogy **üzleti jóváhagyás nélkül** csatlakozzon egy olyan csoporthoz, amelyhez egy alkalmazás hozzá van rendelve
+5.  A rendszergazda lehetővé teszi az [önkiszolgáló csoportok felügyeletét](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) , hogy a felhasználók az **üzleti jóváhagyás nélkül** legyenek hozzárendelve egy olyan csoporthoz, amelyhez az alkalmazás hozzá van rendelve.
 
-6.  A rendszergazda lehetővé teszi [az Önkiszolgáló csoportkezelés](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) számára, hogy a felhasználó csatlakozhasson egy olyan csoporthoz, amelyhez egy alkalmazás hozzá van rendelve, de csak **a kiválasztott üzleti jóváhagyók csoport előzetes jóváhagyásával**
+6.  A rendszergazda lehetővé teszi az [önkiszolgáló csoportok felügyeletét](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) , hogy egy felhasználó olyan csoporthoz csatlakozzon, amelyhez az alkalmazás hozzá van rendelve, de csak a **kiválasztott üzleti jóváhagyók előzetes jóváhagyásával**
 
-7.  A rendszergazda közvetlenül egy felhasználóhoz rendel licencet egy külső alkalmazáshoz, például a [Microsoft Office 365-höz](https://products.office.com/)
+7.  A rendszergazda közvetlenül az első féltől származó alkalmazáshoz rendel licencet a felhasználóhoz, például [Microsoft Office 365](https://products.office.com/)
 
-8.  A rendszergazda licencet rendel egy olyan csoporthoz, amelynek a felhasználó tagja egy külső alkalmazáshoz, például a [Microsoft Office 365-höz](https://products.office.com/)
+8.  A rendszergazda olyan csoporthoz rendeli a licencet, amelyhez a felhasználó egy első féltől származó alkalmazás tagja, például [Microsoft Office 365](https://products.office.com/)
 
-9.  A [rendszergazda beleegyezik abba, hogy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) minden felhasználó használja, majd egy felhasználó bejelentkezik az alkalmazásba
+9.  Egy [rendszergazda beleegyezett egy alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) , hogy az összes felhasználó használja, majd a felhasználó bejelentkezik az alkalmazásba
 
-10. A felhasználó saját maga [is hozzájárul az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) az alkalmazásba való bejelentkezéssel
+10. A felhasználó az alkalmazásba való bejelentkezéssel saját maga [is beleegyezik az alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)
+[Alkalmazások kezelése Azure Active Directory](what-is-application-management.md)

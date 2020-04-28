@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Gateway erőforrás állapotának áttekintése
-description: Ez a cikk az Azure Application Gateway erőforrás-állapotszolgáltatásának áttekintése
+title: Az Azure Application Gateway Resource Health áttekintése
+description: Ez a cikk az Azure Resource Health szolgáltatásának áttekintését Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67659501"
 ---
-# <a name="azure-application-gateway-resource-health-overview"></a>Az Azure Application Gateway erőforrás állapotának áttekintése
+# <a name="azure-application-gateway-resource-health-overview"></a>Az Azure Application Gateway Resource Health áttekintése
 
-[Az Azure Resource Health](../service-health/resource-health-overview.md) segítséget nyújt a diagnosztizálásban és a támogatás igénylésében, ha egy Azure-szolgáltatással kapcsolatos probléma hatással van az erőforrásaira. Ez tájékoztatja Önt a jelenlegi és a múltbeli egészségügyi erőforrásait. Technikai támogatást nyújt a problémák enyhítéséhez.
+[Az Azure Resource Health](../service-health/resource-health-overview.md) segítséget nyújt a diagnosztizálásban és a támogatás igénylésében, ha egy Azure-szolgáltatással kapcsolatos probléma hatással van az erőforrásaira. Tájékoztatja az erőforrások aktuális és korábbi állapotáról. Emellett technikai támogatást nyújt a problémák enyhítéséhez.
 
-Az Application Gateway esetében a Resource Health az átjáró által kibocsátott jelekre támaszkodik, hogy felmérje, hogy kifogástalan állapotú-e vagy sem. Ha az átjáró nem megfelelő állapotú, a Resource Health további információkat elemez a probléma forrásának meghatározásához. Azt is azonosítja, hogy a Microsoft milyen műveleteket végez, illetve hogy mit tehet a probléma megoldásához.
+Application Gateway esetén a Resource Health az átjáró által kibocsátott jelekre támaszkodik annak felmérésére, hogy kifogástalan-e vagy sem. Ha az átjáró nem kifogástalan állapotú, Resource Health elemzi a probléma forrásának megállapításához szükséges további információkat. Emellett azonosítja a Microsoft által végzett műveleteket, vagy a probléma megoldásához szükséges lépéseket.
 
-Az állapot felmérésének módjáról az Azure Resource Health szolgáltatásban található erőforrástípusok és állapotellenőrzések teljes listáját további részletekért [tekintheti](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways)meg.
+Az állapot értékelésével kapcsolatos további részletekért tekintse át a [Azure Resource Healthban](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways)található erőforrástípusok és állapot-ellenőrzések teljes listáját.
 
 
-Az Application Gateway állapotállapota a következő állapotok egyikeként jelenik meg:
+A Application Gateway állapota a következő állapotok egyike jelenik meg:
 
 ## <a name="available"></a>Elérhető
 
-A **Rendelkezésre álló** állapot azt jelenti, hogy a szolgáltatás nem észlelt olyan eseményeket, amelyek befolyásolják az erőforrás állapotát. A **Nemrég feloldott** értesítés jelenik meg azokban az esetekben, amikor az átjáró az elmúlt 24 órában helyreállt a nem tervezett állásidőből.
+A **rendelkezésre álló** állapot azt jelenti, hogy a szolgáltatás nem észlelt olyan eseményt, amely hatással van az erőforrás állapotára. Ekkor megjelenik a **nemrég megoldott** értesítés azokban az esetekben, amikor az átjáró a nem tervezett állásidőből lett helyreállítva az elmúlt 24 órában.
 
-![Elérhető állapot](media/resource-health-overview/available-full.png)
+![Rendelkezésre álló állapot](media/resource-health-overview/available-full.png)
 
 ## <a name="unavailable"></a>Nem érhető el
 
-A **Nem érhető el** állapot azt jelenti, hogy a szolgáltatás olyan folyamatos platform- vagy nem platformeseményt észlelt, amely hatással van az átjáró állapotára.
+A nem **elérhető** állapot azt jelenti, hogy a szolgáltatás egy folyamatos platformot észlelt, vagy nem platformos eseményt észlelt az átjáró állapotának hatására.
 
-### <a name="platform-events"></a>Platform események
+### <a name="platform-events"></a>Platform eseményei
 
-A platformeseményeket az Azure-infrastruktúra több összetevője váltja ki. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan események (például egy nem tervezett állomás újraindítása).
+A platform eseményeire az Azure-infrastruktúra több összetevője is aktiválódik. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan incidensek (például egy nem tervezett gazdagép újraindítása).
 
-A Resource Health további részleteket tartalmaz az eseményről és a helyreállítási folyamatról. Azt is lehetővé teszi, hogy lépjen kapcsolatba az ügyfélszolgálattal akkor is, ha nem rendelkezik aktív Microsoft támogatási szerződéssel.
+Resource Health további részleteket tartalmaz az eseményről és a helyreállítási folyamatról. Azt is lehetővé teszi, hogy forduljon az ügyfélszolgálathoz, még akkor is, ha nincs aktív Microsoft-támogatási szerződése.
 
-![Nem érhető el állapot](media/resource-health-overview/unavailable.png)
+![Nem elérhető állapot](media/resource-health-overview/unavailable.png)
 
 ## <a name="unknown"></a>Ismeretlen
 
-Az **Ismeretlen** állapot azt jelzi, hogy az erőforrás állapota több mint 10 percig nem kapott információt az átjáróról. Ez az állapot nem jelzi az átjáró állapotát. De ez egy fontos adatpont a hibaelhárítási folyamatban.
+Az **ismeretlen** állapot azt jelzi, Resource Health több mint 10 percen belül nem érkezett információ az átjáróról. Ez az állapot nem az átjáró állapotának végleges jelzése. A hibaelhárítási folyamat azonban fontos adatpont.
 
-Ha az átjáró a várt módon fut, az állapot néhány perc múlva **Elérhető** re változik.
+Ha az átjáró a várt módon fut, az állapot pár perc elteltével **elérhetővé** vált.
 
-Ha problémákat tapasztal, az **Ismeretlen** állapot azt sugallhatja, hogy a platformon lévő esemény hatással van az átjáróra.
+Ha problémákat tapasztal, az **ismeretlen** állapot arra utalhat, hogy a platformon egy esemény hatással van az átjáróra.
 
 ![Ismeretlen állapot](media/resource-health-overview/unknown.png)
 
 ## <a name="degraded"></a>Csökkentett teljesítményű
 
-A **degradált** állapot azt jelzi, hogy az átjáró teljesítménycsökkenést észlelt, bár továbbra is használható.
+A **csökkentett** állapotú állapot azt jelzi, hogy az átjáró a teljesítmény csökkenését észlelte, bár még mindig elérhető a használathoz.
 
-![Degrated állapot](media/resource-health-overview/degraded.png)
+![Degratis állapot](media/resource-health-overview/degraded.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az Application Gateway webalkalmazás-tűzfal (WAF) hibaelhárításáról az [Azure Application Gateway webalkalmazás-tűzfalhiba -elhárítása](web-application-firewall-troubleshoot.md)című témakörben olvashat.
+A webalkalmazási tűzfal (WAF) Application Gateway hibaelhárításával kapcsolatos további információkért lásd: [webalkalmazási tűzfal (WAF) hibaelhárítása Az Azure Application Gatewayhoz](web-application-firewall-troubleshoot.md).

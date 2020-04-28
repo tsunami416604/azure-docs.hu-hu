@@ -1,6 +1,6 @@
 ---
-title: Hálózati forgalom szűrése - Azure PowerShell | Microsoft dokumentumok
-description: Ebben a cikkben megtudhatja, hogyan szűrheti a hálózati forgalmat egy alhálózat, egy hálózati biztonsági csoport segítségével powershell.
+title: Hálózati forgalom szűrése – Azure PowerShell | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan szűrheti a hálózati forgalmat egy alhálózatra hálózati biztonsági csoporttal a PowerShell használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66730033"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Hálózati forgalom szűrése hálózati biztonsági csoporttal a PowerShell használatával
@@ -35,11 +35,11 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 * Virtuális gépek üzembe helyezése egy alhálózaton
 * Forgalomszűrők tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk az Azure PowerShell-modul 1.0.0-s vagy újabb verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
@@ -47,13 +47,13 @@ A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak. A bizt
 
 ### <a name="create-application-security-groups"></a>Alkalmazásbiztonsági csoportok létrehozása
 
-Először hozzon létre egy erőforráscsoportot a cikkben létrehozott összes erőforráshoz a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)segítségével. A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen:
+Először hozzon létre egy erőforráscsoportot az ebben a cikkben létrehozott összes erőforráshoz a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Hozzon létre egy alkalmazásbiztonsági csoportot a [New-AzApplicationSecurityGroup csoporttal.](/powershell/module/az.network/new-azapplicationsecuritygroup) Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
+Hozzon létre egy alkalmazás biztonsági csoportot a [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup). Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
 
 ```azurepowershell-interactive
 $webAsg = New-AzApplicationSecurityGroup `
@@ -69,7 +69,7 @@ $mgmtAsg = New-AzApplicationSecurityGroup `
 
 ### <a name="create-security-rules"></a>Biztonsági szabályok létrehozása
 
-Hozzon létre egy biztonsági szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)segítségével. Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
+Hozzon létre egy biztonsági szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
 
 ```azurepowershell-interactive
 $webRule = New-AzNetworkSecurityRuleConfig `
@@ -97,11 +97,11 @@ $mgmtRule = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 3389
 ```
 
-Ebben a cikkben rdp (port 3389) ki van téve az interneten a *myAsgMgmtServers* vm. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [privát](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
+Ebben a cikkben az RDP (3389-es port) elérhető az interneten a *myAsgMgmtServers* virtuális géphez. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [privát](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup csoporttal.](/powershell/module/az.network/new-aznetworksecuritygroup) Az alábbi példa egy *myNsg* nevű hálózati biztonsági csoportot hoz létre:
+Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Az alábbi példa egy *myNsg* nevű hálózati biztonsági csoportot hoz létre:
 
 ```powershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -113,7 +113,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -123,7 +123,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)segítségével, majd írja be az alhálózati konfigurációt a virtuális hálózatba a [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)segítségével. Az alábbi példa egy *mySubnet* nevű alhálózatot ad hozzá a virtuális hálózathoz, és hozzárendeli a *myNsg* hálózati biztonsági csoportot.
+Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)paranccsal, majd írja az alhálózat konfigurációját a virtuális hálózatra a [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)használatával. Az alábbi példa egy *mySubnet* nevű alhálózatot ad hozzá a virtuális hálózathoz, és hozzárendeli a *myNsg* hálózati biztonsági csoportot.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig `
@@ -136,7 +136,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-A virtuális gépek létrehozása előtt olvassa be a virtuális hálózati objektumot az alhálózattal a [Get-AzVirtualNetwork segítségével:](/powershell/module/az.network/get-azvirtualnetwork)
+A virtuális gépek létrehozása előtt kérje le a Virtual Network objektumot a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)alhálózattal:
 
 ```powershell-interactive
 $virtualNetwork = Get-AzVirtualNetwork `
@@ -144,7 +144,7 @@ $virtualNetwork = Get-AzVirtualNetwork `
  -Resourcegroupname myResourceGroup
 ```
 
-Hozzon létre egy nyilvános IP-címet minden [új-AzPublicIpAddress címel](/powershell/module/az.network/new-azpublicipaddress)rendelkező virtuális géphez:
+Hozzon létre egy nyilvános IP-címet az egyes virtuális gépekhez a [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress):
 
 ```powershell-interactive
 $publicIpWeb = New-AzPublicIpAddress `
@@ -160,7 +160,7 @@ $publicIpMgmt = New-AzPublicIpAddress `
   -Name myVmMgmt
 ```
 
-Hozzon létre két hálózati adaptert a [New-AzNetworkInterface segítségével,](/powershell/module/az.network/new-aznetworkinterface)és rendeljen hozzá egy nyilvános IP-címet a hálózati adapterhez. Az alábbi példa létrehoz egy hálózati adaptert, hozzárendeli a *myVmWeb* nyilvános IP-címet, és felveszi azt a *myAsgWebServers* alkalmazásbiztonsági csoport tagjai közé:
+Hozzon létre két hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface), és rendeljen hozzá egy nyilvános IP-címet a hálózati adapterhez. Az alábbi példa létrehoz egy hálózati adaptert, hozzárendeli a *myVmWeb* nyilvános IP-címet, és felveszi azt a *myAsgWebServers* alkalmazásbiztonsági csoport tagjai közé:
 
 ```powershell-interactive
 $webNic = New-AzNetworkInterface `
@@ -186,7 +186,7 @@ $mgmtNic = New-AzNetworkInterface `
 
 Hozzon létre két virtuális gépet a virtuális hálózatban, hogy érvényesíthesse majd a fogalom szűrését egy később lépésben.
 
-Hozzon létre egy virtuális gép konfigurációját a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)segítségével, majd hozza létre a virtuális gép [új-AzVM-mel.](/powershell/module/az.compute/new-azvm) Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. Az `-AsJob` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel.
+Hozzon létre egy új VM-konfigurációt a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig), majd hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. Az `-AsJob` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel.
 
 ```azurepowershell-interactive
 # Create user object
@@ -242,7 +242,7 @@ A virtuális gép létrehozása néhány percet vesz igénybe. Ne ugorjon a köv
 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
-A [Get-AzPublicIpAddress használatával](/powershell/module/az.network/get-azpublicipaddress) adja vissza a virtuális gép nyilvános IP-címét. Az alábbi példa a *myVmMgmt* virtuális gép nyilvános IP-címét adja vissza:
+A [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) használatával visszaállíthatja egy virtuális gép nyilvános IP-címét. Az alábbi példa a *myVmMgmt* virtuális gép nyilvános IP-címét adja vissza:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -277,7 +277,7 @@ Az alábbi parancs PowerShellben történő használatával telepítse a Microso
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad. Az IIS üdvözlőképernyőjének megtekintéséhez nyisson meg\/egy internetböngészőt, és keresse meg a http: /myVmWeb nézetet.
+Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad. Az IIS-üdvözlőképernyő megtekintéséhez nyisson meg egy webböngészőt, és keresse meg a\/http:/myVmWeb.
 
 Csatlakozzon le a *myVmMgmt* virtuális gépről.
 
@@ -294,7 +294,7 @@ Annak megerősítéséhez, hogy eléri a *myVmWeb* webkiszolgálót az Azure-on 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) segítségével eltávolíthatja az erőforráscsoportot és az összes benne lévő erőforrást:
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -302,6 +302,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és egy virtuális hálózati alhálózathoz társította. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózati alhálózathoz. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
-Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. Ebből megtudhatja, hogyan, [lásd: Útvonaltábla létrehozása](tutorial-create-route-table-powershell.md).
+Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. További információt az [útválasztási táblázat létrehozása](tutorial-create-route-table-powershell.md)című témakörben talál.

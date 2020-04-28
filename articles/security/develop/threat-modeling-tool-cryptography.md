@@ -1,6 +1,6 @@
 ---
-title: Kriptográfia - Microsoft Threat Modeling Tool - Azure | Microsoft dokumentumok
-description: a fenyegetésmodellezési eszközben elérhető fenyegetések enyhítése
+title: Titkosítás – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: a Threat Modeling Toolban elérhető fenyegetések enyhítése
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68728189"
 ---
-# <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Kriptográfia | Enyhítése 
+# <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: titkosítás | Enyhítését 
 
 | Termék/szolgáltatás | Cikk |
 | --------------- | ------- |
-| **Webalkalmazás** | <ul><li>[Csak jóváhagyott szimmetrikus blokktitkosításokat és kulcshosszokat használjon](#cipher-length)</li><li>[Jóváhagyott blokktitkosítási módok és inicializálási vektorok használata szimmetrikus rejtjelekhez](#vector-ciphers)</li><li>[Jóváhagyott aszimmetrikus algoritmusok, kulcshosszok és párnázás használata](#padding)</li><li>[Jóváhagyott véletlenszám-generátorok használata](#numgen)</li><li>[Ne használjon szimmetrikus adatfolyam-rejtjeleket](#stream-ciphers)</li><li>[Jóváhagyott MAC/HMAC/keyed kivonatoló algoritmusok használata](#mac-hash)</li><li>[Csak jóváhagyott kriptográfiai kivonatoló függvények használata](#hash-functions)</li></ul> |
-| **Adatbázis** | <ul><li>[Erős titkosítási algoritmusok használata az adatbázisban lévő adatok titkosításához](#strong-db)</li><li>[Az SSIS-csomagokat titkosítani kell, és digitálisan alá kell írni](#ssis-signed)</li><li>[Digitális aláírás hozzáadása a kritikus adatbázis biztonságos sápjaihoz](#securables-db)</li><li>[Titkosítási kulcsok védelme az SQL-kiszolgáló EKM szolgáltatásával](#ekm-keys)</li><li>[AlwaysEncrypted szolgáltatás használata, ha a titkosítási kulcsokat nem szabad felfedni az adatbázis-kezelő motorban](#keys-engine)</li></ul> |
-| **IoT-eszköz** | <ul><li>[Titkosítási kulcsok biztonságos tárolása IoT-eszközön](#keys-iot)</li></ul> | 
-| **IoT felhőátjáró** | <ul><li>[Az IoT Hub hitelesítéséhez megfelelő hosszúságú véletlenszerű szimmetrikus kulcs létrehozása](#random-hub)</li></ul> | 
-| **Dynamics CRM mobilügyfél** | <ul><li>[Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amelyhez pin-kód szükséges, és amely lehetővé teszi a távoli törlést](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook ügyfél** | <ul><li>[Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amely pin-kódot/jelszót/automatikus zárolást igényel, és titkosítja az összes adatot (pl. BitLocker)](#bitlocker)</li></ul> | 
-| **Identitás-kiszolgáló** | <ul><li>[Az aláíró kulcsok görgetése az Identitáskiszolgáló használatakor](#rolled-server)</li><li>[Győződjön meg arról, hogy a kriptográfiailag erős ügyfélazonosító, ügyféltitok az Identitáskiszolgálóban használatos](#client-server)</li></ul> | 
+| **Webalkalmazás** | <ul><li>[Csak a jóváhagyott szimmetrikus blokk titkosítási algoritmusok és a kulcsok hosszának használata](#cipher-length)</li><li>[Jóváhagyott blokk titkosítási módok és inicializálási vektorok használata szimmetrikus titkosításhoz](#vector-ciphers)</li><li>[Jóváhagyott aszimmetrikus algoritmusok, kulcsok hosszának és kitöltésének használata](#padding)</li><li>[Jóváhagyott véletlenszerű számú generátorok használata](#numgen)</li><li>[Ne használjon szimmetrikus adatfolyam-titkosítást](#stream-ciphers)</li><li>[Jóváhagyott MAC/HMAC/kulcsos kivonatoló algoritmusok használata](#mac-hash)</li><li>[Csak jóváhagyott titkosítási kivonatoló függvények használata](#hash-functions)</li></ul> |
+| **Adatbázis** | <ul><li>[Erős titkosítási algoritmusok használata az adatbázisban tárolt adattitkosításhoz](#strong-db)</li><li>[A SSIS-csomagokat titkosítani és digitálisan alá kell írni](#ssis-signed)</li><li>[Digitális aláírás hozzáadása a kritikus adatbázis-biztonságos elemek migrálására](#securables-db)</li><li>[Az SQL Server EKM használata a titkosítási kulcsok védeleméhez](#ekm-keys)</li><li>[AlwaysEncrypted szolgáltatás használata, ha a titkosítási kulcsokat nem szabad felmutatni az adatbázismotor számára](#keys-engine)</li></ul> |
+| **IoT-eszköz** | <ul><li>[Titkosítási kulcsok biztonságos tárolása a IoT-eszközön](#keys-iot)</li></ul> | 
+| **IoT Cloud Gateway** | <ul><li>[A IoT Hub hitelesítéshez elegendő hosszúságú véletlenszerű szimmetrikus kulcs létrehozása](#random-hub)</li></ul> | 
+| **Dynamics CRM Mobile-ügyfél** | <ul><li>[Győződjön meg arról, hogy van olyan eszköz-felügyeleti szabályzat, amely használatához PIN-kód szükséges, és lehetővé teszi a távoli törlést](#pin-remote)</li></ul> | 
+| **Dynamics CRM Outlook-ügyfél** | <ul><li>[Győződjön meg arról, hogy van olyan eszköz-felügyeleti házirend, amely PIN-kód/jelszó/automatikus zárolást igényel, és titkosítja az összes adathalmazt (például BitLocker).](#bitlocker)</li></ul> | 
+| **Identity Server** | <ul><li>[Ellenőrizze, hogy az aláíró kulcsok át lesznek-e tekerve az Identity Server használatakor](#rolled-server)</li><li>[Győződjön meg arról, hogy a kriptográfiailag erős ügyfél-azonosító, az ügyfél titkos kulcsa az Identity Serverben van használatban](#client-server)</li></ul> | 
 
-## <a name="use-only-approved-symmetric-block-ciphers-and-key-lengths"></a><a id="cipher-length"></a>Csak jóváhagyott szimmetrikus blokktitkosításokat és kulcshosszokat használjon
-
-| Cím                   | Részletek      |
-| ----------------------- | ------------ |
-| **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
-| **Lépéseket** | <p>A termékek csak azokat a szimmetrikus blokktitkosításokat és a kapcsolódó kulcshosszokat használhatják, amelyeket a szervezet kriptográfiai tanácsadója kifejezetten jóváhagyott. A Microsoft jóváhagyott szimmetrikus algoritmusai a következő blokktitkosításokat tartalmazzák:</p><ul><li>Az új Kód AES-128, AES-192 és AES-256 elfogadható</li><li>A meglévő kóddal való visszamenőleges kompatibilitás érdekében a háromgombos 3DES elfogadható</li><li>Szimmetrikus blokktitkosításokat használó termékek esetében:<ul><li>Az új kódhoz speciális titkosítási szabvány (AES) szükséges</li><li>A háromgombos hármas adattitkosítási szabvány (3DES) a meglévő kódban megengedett a visszamenőleges kompatibilitás érdekében</li><li>Minden más blokkrejtjel, beleértve az RC2, DES, 2 Key 3DES, DESX és Skipjack, csak a régi adatok visszafejtésére használható, és ki kell cserélni, ha titkosításra használják</li></ul></li><li>A szimmetrikus blokktitkosítási algoritmusok esetében legalább 128 bites kulcshossz szükséges. Az új kódhoz ajánlott egyetlen blokktitkosítási algoritmus az AES (AES-128, AES-192 és AES-256 egyáltalán elfogadható)</li><li>A háromgombos 3DES jelenleg elfogadható, ha már használatban van a meglévő kódban; javasolt az AES-re való áttérés. A DES, DESX, RC2 és Skipjack már nem tekinthető biztonságosnak. Ezek az algoritmusok csak a visszamenőleges kompatibilitás érdekében használhatók a meglévő adatok visszafejtésére, és az adatokat újra kell titkosítani egy ajánlott blokktitkosítással.</li></ul><p>Kérjük, vegye figyelembe, hogy minden szimmetrikus blokkrejtjelet jóváhagyott rejtjelmódban kell használni, amely megfelelő inicializációs vektor (IV) használatát igényli. A megfelelő IV, általában egy véletlen szám, és soha nem állandó érték</p><p>A szervezet Crypto Board-felülvizsgálata után engedélyezhető az örökölt vagy más módon jóvá nem hagyott titkosítási algoritmusok és a kisebb kulcshosszok használata a meglévő adatok olvasásához (szemben az új adatok írásával). Ehhez a követelményhez azonban kivételt kell benyújtania. Emellett a vállalati telepítéseknél a termékeknek figyelembe kell venniük a figyelmeztető rendszergazdákat, ha gyenge titkosítást használnak az adatok olvasásához. Az ilyen figyelmeztetéseknek magyarázónak és megvalósíthatónak kell lenniük. Bizonyos esetekben helyénvaló lehet, hogy a csoportházirend szabályozza a gyenge titkosítási</p><p>Engedélyezett .NET algoritmusok a felügyelt titkosítási agilitáshoz (preferencia sorrendben)</p><ul><li>AesCng (FIPS-kompatibilis)</li><li>AuthenticatedAesCng (FIPS-kompatibilis)</li><li>AESCryptoServiceProvider (FIPS-kompatibilis)</li><li>AESManaged (nem FIPS-kompatibilis)</li></ul><p>Kérjük, vegye figyelembe, hogy ezen algoritmusok `SymmetricAlgorithm.Create` `CryptoConfig.CreateFromName` egyike sem adható meg a vagy metódusokkal anélkül, hogy módosítaná a machine.config fájlt. Vegye figyelembe azt is, hogy a .NET 3.5 `RijndaelManaged`előtti `AesCng` .NET 3.5 verziókban az AES nevet kapta, és `AuthenticatedAesCng` >érhető el a CodePlex-en keresztül, és cng-t igényel az alapul szolgáló operációs rendszerben.</p>
-
-## <a name="use-approved-block-cipher-modes-and-initialization-vectors-for-symmetric-ciphers"></a><a id="vector-ciphers"></a>Jóváhagyott blokktitkosítási módok és inicializálási vektorok használata szimmetrikus rejtjelekhez
+## <a name="use-only-approved-symmetric-block-ciphers-and-key-lengths"></a><a id="cipher-length"></a>Csak a jóváhagyott szimmetrikus blokk titkosítási algoritmusok és a kulcsok hosszának használata
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Minden szimmetrikus blokkrejtjelet jóváhagyott szimmetrikus rejtjelmódban kell használni. Az egyetlen jóváhagyott mód a CBC és a CTS. Különösen el kell kerülni az elektronikus kódkönyv (EKB) működési módját; az EKB használatához a szervezet Crypto Board felülvizsgálata szükséges. Az OFB, CFB, CTR, CCM és GCM minden használatát, illetve bármely más titkosítási módot a szervezet kriptográfiai tanácsának felül kell vizsgálnia. Ugyanazaz inicializálási vektor (IV) újrafelhasználása blokktitkosításokkal a "streamelési titkosítási módokban", például a CTR-ben, titkosított adatok felfedését okozhatja. Minden szimmetrikus blokkrejtjelet megfelelő inicializációs vektorral (IV) is kell használni. A megfelelő IV egy kriptográfiailag erős, véletlen szám, és soha nem állandó érték. |
+| **Lépéseket** | <p>A termékeknek csak azokat a szimmetrikus blokkos titkosítási algoritmusokat és a hozzájuk tartozó kulcs hosszait kell használniuk, amelyeket kifejezetten jóváhagytak a szervezet kriptográfiai tanácsadója. A Microsoft által jóváhagyott szimmetrikus algoritmusok a következő blokk-rejtjeleket tartalmazzák:</p><ul><li>Az AES-128, AES-192 és AES-256 új kód esetén elfogadható</li><li>A meglévő kóddal való visszamenőleges kompatibilitás érdekében a három kulcsos 3DES elfogadható</li><li>Szimmetrikus blokk titkosítási algoritmust használó termékek esetén:<ul><li>Az új kód Advanced Encryption Standard (AES) szükséges</li><li>A három kulcsos Triple adattitkosítási szabvány (3DES) a meglévő kódban megengedett a visszamenőleges kompatibilitás érdekében.</li><li>Az összes többi blokk-titkosítás, például az RC2, a DES, a 2. kulcs, a DESX és a csíkoshasú csak a régi adattitkosítás visszafejtésére használható, és ha titkosításhoz használják, le kell cserélni.</li></ul></li><li>A szimmetrikus blokk titkosítási algoritmusok esetében az 128 bitek minimális hosszának megadása kötelező. A csak az új kódokhoz ajánlott blokk titkosítási algoritmus az AES (AES-128, AES-192 és AES-256) esetén elfogadható.</li><li>A három kulcsos 3DES jelenleg elfogadható, ha már használatban van meglévő kódban; az AES-re való áttérés ajánlott. A DES, a DESX, az RC2 és a csíkoshasú már nem tekinthető biztonságosnak. Ezek az algoritmusok csak a meglévő adatvisszafejtéshez használhatók a visszamenőleges kompatibilitás érdekében, és az adatmennyiséget ajánlott blokk-rejtjel használatával újra titkosítani kell.</li></ul><p>Vegye figyelembe, hogy az összes szimmetrikus blokkos titkosítást jóváhagyott titkosítási móddal kell használni, amely a megfelelő inicializálási vektor (IV) használatát igényli. A megfelelő IV, általában egy véletlenszerű szám, és soha nem állandó érték</p><p>Az örökölt vagy más módon nem jóváhagyott kriptográfiai algoritmusok és kisebb kulcsok használata a meglévő információk olvasásához (az új adatmennyiségek megírása helyett) a szervezet titkosítási Tanácsa általi felülvizsgálata után is engedélyezhető. Ebben az esetben azonban kivételt kell megadnia ehhez a követelményhöz. Emellett a vállalati telepítésekben a termékeknek figyelembe kell venniük a figyelmeztetési rendszergazdákat, ha gyenge titkosítást használnak az adatolvasáshoz. Az ilyen figyelmeztetéseknek magyarázó és végrehajthatónak kell lenniük. Bizonyos esetekben célszerű lehet a gyenge titkosítás használatát Csoportházirend vezérelni</p><p>Engedélyezett .NET-algoritmusok a felügyelt titkosítási rugalmasság érdekében (preferencia sorrendben)</p><ul><li>AesCng (FIPS-kompatibilis)</li><li>AuthenticatedAesCng (FIPS-kompatibilis)</li><li>AESCryptoServiceProvider (FIPS-kompatibilis)</li><li>AESManaged (nem FIPS-kompatibilis)</li></ul><p>Vegye figyelembe, hogy ezek az algoritmusok egyike sem adható `SymmetricAlgorithm.Create` meg `CryptoConfig.CreateFromName` a vagy metóduson keresztül anélkül, hogy módosítani kellene a Machine. config fájlt. Azt is vegye figyelembe, hogy a .net 3,5-es verzió előtti AES a `RijndaelManaged`named `AesCng` , `AuthenticatedAesCng` és >érhető el a Codeplex-en keresztül, és az alapul szolgáló operációs rendszerhez a CNG szükséges.</p>
 
-## <a name="use-approved-asymmetric-algorithms-key-lengths-and-padding"></a><a id="padding"></a>Jóváhagyott aszimmetrikus algoritmusok, kulcshosszok és párnázás használata
+## <a name="use-approved-block-cipher-modes-and-initialization-vectors-for-symmetric-ciphers"></a><a id="vector-ciphers"></a>Jóváhagyott blokk titkosítási módok és inicializálási vektorok használata szimmetrikus titkosításhoz
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A tiltott kriptográfiai algoritmusok használata jelentős kockázatot jelent a termékbiztonságra nézve, ezért el kell kerülni. A termékek csak azokat a kriptográfiai algoritmusokat és a hozzájuk tartozó kulcshosszokat és kitöltéseket használhatják, amelyeket a szervezet kriptográfiai táblája kifejezetten jóváhagyott.</p><ul><li>**RSA-** lehet használni a titkosítás, kulcscsere és aláírás. Az RSA-titkosítás csak az OAEP vagy az RSA-KEM kitöltési módot használhatja. A meglévő kód csak kompatibilitási módban használhatja a PKCS #1 1.5-ös jelű kitöltési módot. A null kitöltés használata kifejezetten tiltott. Az új kódhoz >= 2048 bites kulcsok szükségesek. A meglévő kód csak a szervezet titkosítási tanácsának felülvizsgálatát követően támogathatja a 2048 bites < kulcsokat a visszamenőleges kompatibilitás érdekében. A kulcsok < 1024 bites kulcsok csak a régi adatok visszafejtésére/ellenőrzésére használhatók, és akkor cserélhetők ki, ha titkosítási vagy aláírási műveletekhez használják őket.</li><li>**ECDSA-** csak aláírásra használható. Az új kódhoz >=256 bites kulcsokkal rendelkező ECDSA szükséges. Az ECDSA-alapú aláírásoknak a három NIST által jóváhagyott görbe (P-256, P-384 vagy P521) egyikét kell használniuk. Az alaposan elemzett görbék csak a szervezet kriptográfiai tanácsával való felülvizsgálat után használhatók.</li><li>**ECDH-** csak kulcscserére használható. Az új kódhoz >=256 bites kulcsokkal rendelkező ECDH szükséges. Az ECDH-alapú kulcscserének a három NIST által jóváhagyott görbe (P-256, P-384 vagy P521) egyikét kell használnia. Az alaposan elemzett görbék csak a szervezet kriptográfiai tanácsával való felülvizsgálat után használhatók.</li><li>**DSA-** elfogadható lehet a szervezet Crypto Board felülvizsgálata és jóváhagyása után. Lépjen kapcsolatba a biztonsági tanácsadóval a szervezet kriptográfiai tanácsának felülvizsgálatának ütemezéséhez. Ha a DSA használatát jóváhagyták, vegye figyelembe, hogy meg kell tiltania a 2048 bitnél rövidebb kulcsok használatát. A CNG támogatja a 2048 bites és a nagyobb billentyűhosszokat a Windows 8-tól.</li><li>**A Diffie-Hellman csak** munkamenetkulcs-kezeléshez használható. Az új kódhoz kulcshossz >= 2048 bit szükséges. A meglévő kód csak a 2048 bites kulcshosszokat < támogathatja a visszamenőleges kompatibilitás érdekében, miután a szervezet kriptográfiai táblája áttekintette. Az 1024 bites < billentyűk nem használhatók.</li><ul>
+| **Lépéseket** | Az összes szimmetrikus blokkos titkosítást jóváhagyott szimmetrikus titkosítási móddal kell használni. Az egyetlen jóváhagyott mód a CBC és a CTS. Az elektronikus kódú (EKB) üzemmódot nem szabad elkerülni; az EKB használatához a szervezete kriptográfiai Tanácsának felülvizsgálata szükséges. Az OFB, a CFB, a CTR, a CCM és a GCM, illetve bármely más titkosítási mód használatát a szervezet kriptográfiai testületének kell áttekintenie. Ha ugyanazt az inicializálási vektort (IV) szeretné újból használni a "streaming titkosítási módokban", például a CTR-ben, akkor a titkosított adatmegjelenítést okozó blokkos titkosítási algoritmusokat. Az összes szimmetrikus blokkos titkosítást a megfelelő inicializálási vektor (IV) használatával is fel kell használni. A megfelelő IV titkosítási szempontból erős, véletlenszerű szám, és soha nem állandó érték. |
 
-## <a name="use-approved-random-number-generators"></a><a id="numgen"></a>Jóváhagyott véletlenszám-generátorok használata
+## <a name="use-approved-asymmetric-algorithms-key-lengths-and-padding"></a><a id="padding"></a>Jóváhagyott aszimmetrikus algoritmusok, kulcsok hosszának és kitöltésének használata
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A termékeknek jóváhagyott véletlenszám-generátorokat kell használniuk. A pseudorandom függvényeket, például a C futásidejű függvényrandát, a .NET Framework class System.Random vagy a rendszerfüggvényeket, például a GetTickCount függvényeket ezért soha nem szabad ilyen kódban használni. A kettős elliptikus görbe véletlenszám-generátor (DUAL_EC_DRBG) algoritmus használata tilos</p><ul><li>**CNG-** BCryptGenRandom(használata a BCRYPT_USE_SYSTEM_PREFERRED_RNG jelző ajánlott, kivéve, ha a hívó futhat bármely IRQL nagyobb, mint 0 [azaz PASSIVE_LEVEL])</li><li>**CAPI-** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (új megvalósítások kellhasználni BCryptGenRandom vagy CryptGenRandom) * rand_s * SystemPrng (a kernel módban)</li><li>**. NET-** RNGCryptoServiceProvider vagy RNGCng</li><li>**Windows Áruházbeli alkalmazások-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom vagy . GenerateRandomNumber (Létrehozási véletlenszerű szám)</li><li>**Apple OS X (10.7+)/iOS(2.0+)-** int SecRandomCopyBytes (SecRandomRef \*random, size_t count, uint8_t byte )</li><li>**Apple OS X (<10.7)-** A /dev/random kapcsoló val a véletlen számok beolvasásához</li><li>**Java (beleértve a Google Android Java kód) -** java.security.SecureRandom osztály. Ne feledje, hogy az Android 4.3 (Jelly Bean) esetében a fejlesztőknek követniük kell az Android által ajánlott kerülő megoldásokat, és frissíteniük kell alkalmazásaikat, hogy kifejezetten inicializálni a PRNG-t entrópiával a / dev / urandom vagy / dev / random</li></ul>|
+| **Lépéseket** | <p>A tiltott titkosítási algoritmusok használata jelentős kockázatot jelent a termékbiztonság számára, és el kell kerülni. A termékeknek kizárólag azokat a titkosítási algoritmusokat és a hozzájuk tartozó kulcs hosszait és kitöltését kell használniuk, amelyeket a szervezet kriptográfiai Tanácsa explicit módon jóváhagyott.</p><ul><li>**RSA –** titkosításhoz, kulcscserehez és aláíráshoz is használható. Az RSA-titkosítás csak a OAEP vagy az RSA-KEM kitöltési módokat kell használnia. A meglévő kód a PKCS #1 v 1.5 kitöltési módot is használhatja a kompatibilitáshoz. A null kitöltés használata explicit módon tiltott. A kulcsok >= 2048 BITS szükségesek az új kódhoz. A meglévő kód a szervezet kriptográfiai Tanácsa általi felülvizsgálat után csak a visszamenőleges kompatibilitás érdekében támogatja a kulcsok < 2048 bitet. A kulcsok < 1024 bitek csak a régi adatok visszafejtéséhez vagy ellenőrzéséhez használhatók, és ha titkosítási vagy aláírási műveletekhez használják őket, le kell cserélni.</li><li>**ECDSA –** csak aláírás esetén használható. A ECDSA >= 256 bites kulcsokkal kell rendelkeznie az új kódokhoz. A ECDSA-alapú aláírásoknak a három NIST által jóváhagyott görbe egyikét kell használniuk (P-256, P-384 vagy P521). A alaposan elemzett görbék csak a szervezet titkosítási táblájának áttekintése után használhatók.</li><li>**ECDH –** csak kulcscsere esetén használható. A ECDH >= 256 bites kulcsokkal kell rendelkeznie az új kódokhoz. A ECDH-alapú kulcscserenek a három NIST által jóváhagyott görbe egyikét kell használnia (P-256, P-384 vagy P521). A alaposan elemzett görbék csak a szervezet titkosítási táblájának áttekintése után használhatók.</li><li>A **DSA –** a szervezete kriptográfiai táblájának felülvizsgálata és jóváhagyása után is elfogadható lehet. Forduljon a biztonsági tanácsadóhoz, és ütemezze a szervezet titkosítási Tanácsának felülvizsgálatát. Ha jóváhagyja a DSA használatát, vegye figyelembe, hogy a 2048-nál kisebb hosszúságú kulcsok használatát meg kell tiltania. A CNG a 2048 bites és nagyobb hosszúságú kulcsokat támogatja a Windows 8 rendszertől kezdve.</li><li>**Diffie-Hellman –** csak a munkamenet-kulcsok kezeléséhez használható. A kulcs hosszának >= 2048 bit szükséges az új kódhoz. A meglévő kód a szervezet kriptográfiai Tanácsa általi felülvizsgálat után csak a visszamenőleges kompatibilitás érdekében < 2048 biteket támogatja. A kulcsok < 1024 bitek nem használhatók.</li><ul>
 
-## <a name="do-not-use-symmetric-stream-ciphers"></a><a id="stream-ciphers"></a>Ne használjon szimmetrikus adatfolyam-rejtjeleket
+## <a name="use-approved-random-number-generators"></a><a id="numgen"></a>Jóváhagyott véletlenszerű számú generátorok használata
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Szimmetrikus adatfolyam-rejtjeleket, például rc4-et nem szabad használni. A szimmetrikus adatfolyam-rejtjelek helyett a termékeknek blokktitkosítást kell használniuk, különösen a legalább 128 bites kulcshosszúságú AES-t. |
+| **Lépéseket** | <p>A termékeknek jóváhagyott véletlenszerű számú generátort kell használniuk. A bájtján elvégeznek függvények, például a Rand C futásidejű függvény, a .NET-keretrendszer System. Random vagy a rendszerfüggvények, például a GetTickCount, soha nem használhatók ilyen kódban. A kettős elliptikus görbe Random Number Generator (DUAL_EC_DRBG) algoritmus használata tiltott</p><ul><li>**CNG –** BCryptGenRandom (csak akkor használja a BCRYPT_USE_SYSTEM_PREFERRED_RNG jelzőt, ha a hívó a 0 értéknél nagyobb mennyiségű IRQL fut, PASSIVE_LEVEL])</li><li>**CAPI –** cryptGenRandom</li><li>**Win32/64 –** RtlGenRandom (az új implementációknak a BCryptGenRandom vagy a CryptGenRandom) * rand_s * SystemPrng (kernel módban) kell használniuk</li><li>**. NET-** RNGCryptoServiceProvider vagy RNGCng</li><li>**Windows áruházbeli alkalmazások –** Windows. Security. kriptográfia. CryptographicBuffer. GenerateRandom vagy. GenerateRandomNumber</li><li>**Apple OS X (10.7 +)/iOS (2.0 +) –** int SecRandomCopyBytes (SecRandomRef véletlenszerű, size_t darabszám, uint8_t \*bájt)</li><li>**Apple OS X (<10,7) –** Véletlenszerű számok beolvasása a/dev/Random használatával</li><li>**Java (például Google Android Java Code) –** Java. Security. SecureRandom osztály. Vegye figyelembe, hogy az Android 4,3 (zselés Bean) esetében a fejlesztőknek követniük kell az Android ajánlott megkerülő megoldását, és frissíteniük kell alkalmazásaikat, hogy explicit módon inicializálják az PRNG-t a/dev/urandom vagy a/dev/Random</li></ul>|
 
-## <a name="use-approved-machmackeyed-hash-algorithms"></a><a id="mac-hash"></a>Jóváhagyott MAC/HMAC/keyed kivonatoló algoritmusok használata
+## <a name="do-not-use-symmetric-stream-ciphers"></a><a id="stream-ciphers"></a>Ne használjon szimmetrikus adatfolyam-titkosítást
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A termékek csak jóváhagyott üzenethitelesítési kódot (MAC) vagy kivonat-alapú üzenethitelesítési kód (HMAC) algoritmusokat használhatnak.</p><p>Az üzenethitelesítési kód (MAC) egy üzenethez csatolt információ, amely lehetővé teszi a címzett számára, hogy titkos kulccsal ellenőrizze a feladó hitelességét és az üzenet integritását. A kivonatoló mac[(HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) vagy [a blokk-titkosítás-alapú MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) használata megengedett, amennyiben az összes mögöttes kivonatoló vagy szimmetrikus titkosítási algoritmus támpontként szolgál; ez magában foglalja a HMAC-SHA2 funkciókat (HMAC-SHA256, HMAC-SHA384 és HMAC-SHA512), valamint a CMAC/OMAC1 és OMAC2 blokktitkosításon alapuló KB-okat (ezek az AES-en alapulnak).</p><p>A HMAC-SHA1 használata megengedett lehet a platform kompatibilitása érdekében, de kivételt kell benyújtania ez alól az eljárás alól, és át kell esnie a szervezet Crypto felülvizsgálatán. A HMC-k 128 bitnél kisebb értékre történő csonkolása nem megengedett. Az ügyfélmetódusok használata a kulcs kivonatolásához, és az adatok nem engedélyezettek, és használat előtt alá kell vetni a szervezet kriptográfiai tanácsának felülvizsgálatát.</p>|
+| **Lépéseket** | A szimmetrikus adatfolyam-titkosítások (például az RC4) nem használhatók. A szimmetrikus adatfolyamok titkosítása helyett a termékeknek egy blokkos titkosítást, azaz legalább 128 bitet tartalmazó kulcs hosszúságú AES-t kell használniuk. |
 
-## <a name="use-only-approved-cryptographic-hash-functions"></a><a id="hash-functions"></a>Csak jóváhagyott kriptográfiai kivonatoló függvények használata
+## <a name="use-approved-machmackeyed-hash-algorithms"></a><a id="mac-hash"></a>Jóváhagyott MAC/HMAC/kulcsos kivonatoló algoritmusok használata
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A termékeknek az SHA-2 kivonatoló algoritmusok (SHA256, SHA384 és SHA512) családot kell használniuk. Ha rövidebb kivonatra van szükség, például egy 128 bites kimeneti hosszra, hogy elférjen egy olyan adatstruktúra, amelyet a rövidebb MD5 kivonatszem előtt terveznek, a termékcsapatok csonkolhatják az SHA2 kivonatok egyikét (általában az SHA256-ot). Ne feledje, hogy az SHA384 az SHA512 csonkolt verziója. A kriptográfiai kiképek biztonsági célú csonkolása 128 bitnél kisebb re nem engedélyezett. Az új kód nem használhatja az MD2, MD4, MD5, SHA-0, SHA-1 vagy RIPEMD kivonatoló algoritmusokat. A kivonatoló ütközések ezekaz algoritmusok esetében számításilag megvalósíthatók, ami hatékonyan megtöri őket.</p><p>Engedélyezett .NET kivonatoló algoritmusok a felügyelt titkosítási agilitáshoz (preferencia sorrendben):</p><ul><li>SHA512Cng (FIPS-kompatibilis)</li><li>SHA384Cng (FIPS-kompatibilis)</li><li>SHA256Cng (FIPS-kompatibilis)</li><li>SHA512Felügyelt (nem FIPS-kompatibilis) (az SHA512 használata algoritmusnévként a HashAlgorithm.Create vagy cryptoconfig.CreateFromName hívásokban)</li><li>SHA384Felügyelt (nem FIPS-kompatibilis) (az SHA384-et használja algoritmusnévként a HashAlgorithm.Create vagy cryptoconfig.CreateFromName hívásokban)</li><li>SHA256Felügyelt (nem FIPS-kompatibilis) (az SHA256-ot használja algoritmusnévként a HashAlgorithm.Create vagy cryptoconfig.CreateFromName hívásokban)</li><li>SHA512CryptoServiceProvider (FIPS-kompatibilis)</li><li>SHA256CryptoServiceProvider (FIPS-kompatibilis)</li><li>SHA384CryptoServiceProvider (FIPS-kompatibilis)</li></ul>| 
+| **Lépéseket** | <p>A termékek csak a jóváhagyott üzenet-hitelesítési kód (MAC) vagy a hash-alapú üzenethitelesítő kód (HMAC) algoritmusokat használják.</p><p>Az üzenet-hitelesítési kód (MAC) egy üzenethez csatolt információ, amely lehetővé teszi a címzett számára, hogy ellenőrizze a küldő hitelességét és az üzenet integritását titkos kulccsal. A kivonatoló MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) vagy a [Block-Cipher-alapú Mac](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) használata engedélyezett, ha az összes alapul szolgáló kivonatoló vagy szimmetrikus titkosítási algoritmus is jóvá van hagyva; Ez jelenleg magában foglalja a HMAC-SHA2 függvényeket (HMAC-SHA256, HMAC-SHA384 és HMAC-SHA512), valamint a CMAC/OMAC1 és a OMAC2 blokk rejtjel-alapú Mac gépeket (ezek az AES-alapúak).</p><p>A HMAC-SHA1 használata engedélyezhető a platformok kompatibilitása szempontjából, de kivételt kell beírnia az eljárásba, és a szervezete titkosítási felülvizsgálatán át kell esnie. A HMACs kevesebb mint 128 bit-re való csonkítása nem engedélyezett. Ha az ügyfél módszereit használja a kulcsok és az Adatkivonatok kivonatolására, a használat előtt el kell végeznie a szervezet titkosítási Tanácsának felülvizsgálatát.</p>|
 
-## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>Erős titkosítási algoritmusok használata az adatbázisban lévő adatok titkosításához
+## <a name="use-only-approved-cryptographic-hash-functions"></a><a id="hash-functions"></a>Csak jóváhagyott titkosítási kivonatoló függvények használata
+
+| Cím                   | Részletek      |
+| ----------------------- | ------------ |
+| **Összetevő**               | Webalkalmazás | 
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | Általános |
+| **Attribútumok**              | N/A  |
+| **Referencia**              | N/A  |
+| **Lépéseket** | <p>A termékeknek az SHA-2 kivonatoló algoritmust (SHA256, SHA384 és SHA512) kell használniuk. Ha rövidebb kivonatra van szükség, például egy 128 bites kimeneti hosszt ahhoz, hogy illeszkedjen egy rövidebb MD5-kivonattal kialakított adatszerkezethez, a termékcsoportok a SHA2-kivonatok egyikét (általában SHA256) is lerövidítik. Vegye figyelembe, hogy a SHA384 a SHA512 csonkolt verziója. A titkosítási kivonatok 128-nál kevesebb biten való csonkítása nem engedélyezett. Az új kód nem használhatja a MD2, a MD4, az MD5, az SHA-0, az SHA-1 vagy az RIPEMD kivonatoló algoritmust. Ezekhez az algoritmusokhoz a kivonatoló ütközések számítási feloldhatók, ami gyakorlatilag megszakítja azokat.</p><p>Engedélyezett .NET-kivonatoló algoritmusok a felügyelt titkosítási rugalmassághoz (preferencia sorrendben):</p><ul><li>SHA512Cng (FIPS-kompatibilis)</li><li>SHA384Cng (FIPS-kompatibilis)</li><li>SHA256Cng (FIPS-kompatibilis)</li><li>SHA512Managed (nem FIPS-kompatibilis) (használja a SHA512 as algoritmus nevét a HashAlgorithm. Create vagy CryptoConfig. CreateFromName) hívásokban.</li><li>SHA384Managed (nem FIPS-kompatibilis) (használja a SHA384 as algoritmus nevét a HashAlgorithm. Create vagy CryptoConfig. CreateFromName) hívásokban.</li><li>SHA256Managed (nem FIPS-kompatibilis) (használja a SHA256 as algoritmus nevét a HashAlgorithm. Create vagy CryptoConfig. CreateFromName) hívásokban.</li><li>SHA512CryptoServiceProvider (FIPS-kompatibilis)</li><li>SHA256CryptoServiceProvider (FIPS-kompatibilis)</li><li>SHA384CryptoServiceProvider (FIPS-kompatibilis)</li></ul>| 
+
+## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>Erős titkosítási algoritmusok használata az adatbázisban tárolt adattitkosításhoz
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [Titkosítási algoritmus kiválasztása](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
-| **Lépéseket** | A titkosítási algoritmusok olyan adatátalakításokat határoznak meg, amelyeket illetéktelen felhasználók nem tudnak könnyen visszafordítani. Az SQL Server lehetővé teszi a rendszergazdák és a fejlesztők számára, hogy számos algoritmus közül válasszanak, beleértve a DES, Triple DES, TRIPLE_DES_3KEY, RC2, RC4, 128 bites RC4, DESX, 128 bites AES, 192 bites AES és 256 bites AES |
+| **Lépéseket** | A titkosítási algoritmusok olyan adatátalakításokat határoznak meg, amelyeket jogosulatlan felhasználók nem könnyen visszafordítanak. SQL Server lehetővé teszi, hogy a rendszergazdák és a fejlesztők több algoritmus közül választhatnak, többek között a DES, a Triple DES, az TRIPLE_DES_3KEY, az RC2, az RC4, a 128 bites RC4, a DESX, a 128 bites AES, a 192 bites AES és a 256 bites AES |
 
-## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>Az SSIS-csomagokat titkosítani kell, és digitálisan alá kell írni
+## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>A SSIS-csomagokat titkosítani és digitálisan alá kell írni
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [A digitális aláírással ellátott csomagok forrásának azonosítása](https://msdn.microsoft.com/library/ms141174.aspx), [a fenyegetés és a biztonsági rés ek enyhítése (integrációs szolgáltatások)](https://msdn.microsoft.com/library/bb522559.aspx) |
-| **Lépéseket** | A csomag forrása az a személy vagy szervezet, amely létrehozta a csomagot. Ismeretlen vagy nem megbízható forrásból származó csomag futtatása kockázatos lehet. Az SSIS-csomagok jogosulatlan illetéktelen illetéktelen illetéktelen illetéktelen illetéktelen módosítása érdekében digitális aláírásokat kell használni. A csomagok tárolás/továbbítás során történő titkosságának biztosítása érdekében az SSIS-csomagokat |
+| **Referencia**              | [A digitális aláírásokkal, a](https://msdn.microsoft.com/library/ms141174.aspx) [fenyegetésekkel és a sebezhetőségek enyhítésével (Integration Services)](https://msdn.microsoft.com/library/bb522559.aspx) rendelkező csomagok forrásainak azonosítása |
+| **Lépéseket** | A csomag forrása a csomagot létrehozó személy vagy szervezet. A csomagok ismeretlen vagy nem megbízható forrásból való futtatása kockázatos lehet. A SSIS-csomagok jogosulatlan illetéktelen módosításának megakadályozása érdekében a digitális aláírásokat kell használni. Emellett a csomagok titkosságának biztosításához a tárolás/átvitel során a SSIS-csomagokat titkosítani kell |
 
-## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>Digitális aláírás hozzáadása a kritikus adatbázis biztonságos sápjaihoz
+## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>Digitális aláírás hozzáadása a kritikus adatbázis-biztonságos elemek migrálására
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [ALÁÍRÁS HOZZÁADÁSA (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Lépéseket** | Azokban az esetekben, amikor egy kritikus adatbázis integritását ellenőrizni kell, digitális aláírásokat kell használni. Az adatbázis biztonságos tápellátása, például a tárolt eljárás, a funkció, az összeállítás vagy az eseményindító digitálisan aláírható. Az alábbiakban egy példa, ha ez hasznos lehet: Tegyük fel, hogy egy FÜGGETLEN SZOFTVER (Independent Software Vendor) támogatást nyújtott egy szoftver szállított egyik ügyfeleik. A támogatás nyújtása előtt a független szoftverhozzászóló azt szeretné, ha a szoftverben biztonságos adatbázist nem véletlenül vagy rosszindulatú kísérlettel módosították volna. Ha a biztonságos értékpapír digitálisaláírással van elrendelve, a isv ellenőrizheti digitális aláírását, és ellenőrizheti annak integritását.| 
+| **Referencia**              | [ALÁÍRÁS hozzáadása (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Lépéseket** | Azokban az esetekben, amikor a biztonságos adatbázis integritását ellenőrizni kell, a digitális aláírásokat kell használni. Az adatbázis biztonságos elemek migrálására, például tárolt eljárás, függvény, szerelvény vagy trigger lehet digitálisan aláírva. Alább látható egy példa arra, ha ez hasznos lehet: tegyük fel, hogy egy ISV (független szoftvergyártó) támogatta az egyik ügyfele számára elérhető szoftvert. A támogatás megkezdése előtt az ISV-nak biztosítania kell, hogy a szoftverben biztonságos adatbázis nem módosult véletlenül vagy rosszindulatú kísérlet útján. Ha a biztonságos digitális aláírással rendelkezik, az ISV ellenőrizheti a digitális aláírását, és ellenőrizheti annak integritását.| 
 
-## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>Titkosítási kulcsok védelme az SQL-kiszolgáló EKM szolgáltatásával
+## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>Az SQL Server EKM használata a titkosítási kulcsok védeleméhez
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [SQL Server extensible key management (EKM)](https://msdn.microsoft.com/library/bb895340), [bővíthető kulcskezelés az Azure Key Vault (SQL Server) használatával](https://msdn.microsoft.com/library/dn198405) |
-| **Lépéseket** | Az SQL Server Extensible Key Management lehetővé teszi az adatbázisfájlokat védő titkosítási kulcsok tárolását egy külső eszközben, például intelligens kártyán, USB-eszközön vagy EKM/HSM modulban. Ez lehetővé teszi az adatbázis-rendszergazdák (kivéve a rendszergazdai csoport tagjait) adatvédelmét is. Az adatok titkosíthatók olyan titkosítási kulcsokkal, amelyekhez csak az adatbázis-felhasználó férhet hozzá a külső EKM/HSM modulon. |
+| **Referencia**              | [SQL Server bővíthető kulcskezelő (EKM)](https://msdn.microsoft.com/library/bb895340), [bővíthető kulcskezelő Azure Key Vault használatával (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **Lépéseket** | SQL Server bővíthető kulcskezelő szolgáltatás lehetővé teszi, hogy az adatbázisfájlok tárolására szolgáló titkosítási kulcsok egy off-Box eszközön, például egy intelligens kártyán, USB-eszközön vagy EKM/HSM-modulban legyenek tárolva. Ez az adatvédelmet is lehetővé teszi az adatbázis-rendszergazdáktól (a sysadmin csoport tagjai kivételével). Az adattitkosítás olyan titkosítási kulcsok használatával végezhető el, amelyekhez csak az adatbázis-felhasználó fér hozzá a külső EKM/HSM-modulhoz. |
 
-## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>AlwaysEncrypted szolgáltatás használata, ha a titkosítási kulcsokat nem szabad felfedni az adatbázis-kezelő motorban
+## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>AlwaysEncrypted szolgáltatás használata, ha a titkosítási kulcsokat nem szabad felmutatni az adatbázismotor számára
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | SQL Azure, OnPrem |
-| **Attribútumok**              | SQL verzió - V12, MsSQL2016 |
-| **Referencia**              | [Mindig titkosított (adatbázis-motor)](https://msdn.microsoft.com/library/mt163865) |
-| **Lépéseket** | A Mindig titkosítva olyan szolgáltatás, amely az Azure SQL Database vagy az SQL Server adatbázisokban tárolt bizalmas adatok, például hitelkártyaszámok vagy nemzeti azonosítószámok (pl. amerikai társadalombiztosítási számok) védelmét szolgálja. A Mindig titkosított lehetővé teszi az ügyfelek számára, hogy titkosítsák a bizalmas adatokat az ügyfélalkalmazásokon belül, és soha ne fedjék fel a titkosítási kulcsokat az adatbázis-motor (SQL Database vagy SQL Server) számára. Ennek eredményeképpen az Always Encrypted elkülöníti azokat, akik az adatokat birtokolják (és megtekinthetik) és azok között, akik kezelik az adatokat (de nem férhetnek hozzá) |
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | SQL Azure, helyszíni |
+| **Attribútumok**              | SQL-verzió – V12, MsSQL2016 |
+| **Referencia**              | [Always Encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865) |
+| **Lépéseket** | A Always Encrypted a bizalmas adatok, például a hitelkártya-számok vagy a nemzeti azonosító számok (például az Egyesült államokbeli társadalombiztosítási számok) védelmére szolgáló szolgáltatás, amely Azure SQL Database vagy SQL Server adatbázisokban van tárolva. Always Encrypted lehetővé teszi az ügyfelek számára a bizalmas adatok titkosítását az ügyfélalkalmazások belsejében, és soha ne fedje fel a titkosítási kulcsokat az adatbázismotor számára (SQL Database vagy SQL Server). Ennek eredményeképpen a Always Encrypted elkülöníti az adattulajdonost (és megtekintheti) és az adatkezelést végzőket (de nem rendelkezik hozzáféréssel) |
 
-## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>Titkosítási kulcsok biztonságos tárolása IoT-eszközön
+## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>Titkosítási kulcsok biztonságos tárolása a IoT-eszközön
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | Eszköz operációs rendszer – Windows IoT Core, eszközkapcsolat – Azure IoT-eszköz SDK-k |
-| **Referencia**              | [TPM windowsos IoT Core rendszeren](https://developer.microsoft.com/windows/iot/docs/tpm), [TPM beállítása Windows IoT Core rendszeren](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), Azure [IoT-eszköz SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **Lépéseket** | Szimmetrikus vagy tanúsítvány titkos kulcsok biztonságosan egy hardveres védett tároló, mint a TPM vagy smart card chipek. A Windows 10 IoT Core támogatja a TPM felhasználóját, és számos https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpmkompatibilis TPM használható: . Javasoljuk, hogy firmware-t vagy különálló TPM-et használjon. A szoftveres TPM-et csak fejlesztési és tesztelési célokra szabad használni. Miután a TPM elérhetővé válik, és a kulcsok ki vannak építve benne, a jogkivonatot generáló kódot a bizalmas adatok szigorú kódolása nélkül kell írni. | 
+| **Attribútumok**              | Eszköz operációs rendszer – Windows IoT Core, Device connectivity – Azure IoT Device SDK-k |
+| **Referencia**              | [TPM a Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm)-ban, [TPM beállítása a Windows IoT Core-on](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Azure IoT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Lépéseket** | A szimmetrikus vagy a tanúsítvány titkos kulcsa biztonságos a hardveres védett tárolóban, például a TPM-vagy intelligenskártya-chipek esetében. A Windows 10 IoT Core támogatja a TPM felhasználóját, és több kompatibilis TPM is használható: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. A belső vezérlőprogram vagy a különálló TPM használata javasolt. A szoftveres TPM csak fejlesztési és tesztelési célokra használható. Ha a TPM elérhetővé válik, és a kulcsok be vannak építve, a jogkivonatot létrehozó kódot írás nélkül kell megírni. | 
 
 ### <a name="example"></a>Példa
 ```
@@ -187,59 +187,59 @@ string sasToken = myDevice.GetSASToken();
 
 var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. CreateAuthenticationWithToken(deviceId, sasToken), TransportType.Amqp); 
 ```
-Mint látható, az eszköz elsődleges kulcsa nem szerepel a kódban. Ehelyett a TPM a 0 tárolóhelyen tárolódik. A TPM-eszköz egy rövid ideig tartalmazó SAS-jogkivonatot hoz létre, amely ezután az IoT Hubhoz való csatlakozáshoz használatos. 
+Ahogy látható, az eszköz elsődleges kulcsa nem szerepel a kódban. Ehelyett a rendszer a 0. tárolóhelyen tárolja a TPM-ben. A TPM-eszköz egy rövid élettartamú SAS-tokent hoz létre, amelyet aztán a IoT Hubhoz való kapcsolódáshoz használ. 
 
-## <a name="generate-a-random-symmetric-key-of-sufficient-length-for-authentication-to-iot-hub"></a><a id="random-hub"></a>Az IoT Hub hitelesítéséhez megfelelő hosszúságú véletlenszerű szimmetrikus kulcs létrehozása
+## <a name="generate-a-random-symmetric-key-of-sufficient-length-for-authentication-to-iot-hub"></a><a id="random-hub"></a>A IoT Hub hitelesítéshez elegendő hosszúságú véletlenszerű szimmetrikus kulcs létrehozása
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT felhőátjáró | 
-| **SDL fázis**               | Felépítés |  
+| **Összetevő**               | IoT Cloud Gateway | 
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | Átjáró választás - Azure IoT Hub |
+| **Attribútumok**              | Átjáró választása – Azure IoT Hub |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Az IoT Hub tartalmaz egy eszköz identitás-beállításjegyzéket, és az eszköz kiépítése közben automatikusan létrehoz egy véletlenszerű szimmetrikus kulcsot. Javasoljuk, hogy az Azure IoT Hub identity Registry ezen szolgáltatásának használatával hozza létre a hitelesítéshez használt kulcsot. Az IoT Hub azt is lehetővé teszi, hogy az eszköz létrehozása közben meg kell adni egy kulcsot. Ha egy kulcs az IOt Hubon kívül jön létre az eszköz kiépítése során, ajánlott létrehozni egy véletlenszerű szimmetrikus kulcsot vagy legalább 256 bitet. |
+| **Lépéseket** | IoT Hub tartalmaz egy eszköz-identitási beállításjegyzéket, és egy eszköz kiépítés közben automatikusan létrehoz egy véletlenszerű szimmetrikus kulcsot. Javasoljuk, hogy az Azure IoT Hub Identity Registry ezen funkcióját használja a hitelesítéshez használt kulcs létrehozásához. A IoT Hub az eszköz létrehozásakor is lehetővé teszi az adott kulcs megadását. Ha a rendszer a IoT Hubon kívül hozza létre a kulcsot az eszköz kiépítés során, akkor azt javasoljuk, hogy hozzon létre egy véletlenszerű szimmetrikus kulcsot vagy legalább 256 bitet. |
 
-## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-use-pin-and-allows-remote-wiping"></a><a id="pin-remote"></a>Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amelyhez pin-kód szükséges, és amely lehetővé teszi a távoli törlést
+## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-use-pin-and-allows-remote-wiping"></a><a id="pin-remote"></a>Győződjön meg arról, hogy van olyan eszköz-felügyeleti szabályzat, amely használatához PIN-kód szükséges, és lehetővé teszi a távoli törlést
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Dynamics CRM mobilügyfél | 
-| **SDL fázis**               | Környezet |  
+| **Összetevő**               | Dynamics CRM Mobile-ügyfél | 
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amelyhez pin-kód szükséges, és amely lehetővé teszi a távoli törlést |
+| **Lépéseket** | Győződjön meg arról, hogy van olyan eszköz-felügyeleti szabályzat, amely használatához PIN-kód szükséges, és lehetővé teszi a távoli törlést |
 
-## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amely pin-kódot/jelszót/automatikus zárolást igényel, és titkosítja az összes adatot (pl. BitLocker)
+## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>Győződjön meg arról, hogy van olyan eszköz-felügyeleti házirend, amely PIN-kód/jelszó/automatikus zárolást igényel, és titkosítja az összes adathalmazt (például BitLocker).
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Dynamics CRM Outlook ügyfél | 
-| **SDL fázis**               | Felépítés |  
+| **Összetevő**               | Dynamics CRM Outlook-ügyfél | 
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Győződjön meg arról, hogy olyan eszközkezelési házirend van érvényben, amely pin-kódot/jelszót/automatikus zárolást igényel, és titkosítja az összes adatot (pl. BitLocker) |
+| **Lépéseket** | Győződjön meg arról, hogy van olyan eszköz-felügyeleti házirend, amely PIN-kód/jelszó/automatikus zárolást igényel, és titkosítja az összes adathalmazt (például BitLocker). |
 
-## <a name="ensure-that-signing-keys-are-rolled-over-when-using-identity-server"></a><a id="rolled-server"></a>Az aláíró kulcsok görgetése az Identitáskiszolgáló használatakor
+## <a name="ensure-that-signing-keys-are-rolled-over-when-using-identity-server"></a><a id="rolled-server"></a>Ellenőrizze, hogy az aláíró kulcsok át lesznek-e tekerve az Identity Server használatakor
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identitás-kiszolgáló | 
-| **SDL fázis**               | Környezet |  
+| **Összetevő**               | Identity Server | 
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Identitáskiszolgáló – kulcsok, aláírások és kriptográfia](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
-| **Lépéseket** | Győződjön meg arról, hogy az aláíró kulcsok átgördülnek az Identity Server használatakor. A hivatkozások szakaszban található hivatkozás ismerteti, hogyan kell ezt megtervezni anélkül, hogy az Identitáskiszolgálóra támaszkodó alkalmazások kimaradásokat okoznának. |
+| **Referencia**              | [Identity Server – kulcsok, aláírások és titkosítás](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
+| **Lépéseket** | Ellenőrizze, hogy az aláíró kulcsok át lesznek-e tekerve az Identity Server használatakor. A hivatkozások szakaszban található hivatkozás azt mutatja be, hogy ezt hogyan kell megtervezni anélkül, hogy a rendszer kiesést okozna az Identity Serveren alapuló alkalmazásokhoz. |
 
-## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>Győződjön meg arról, hogy a kriptográfiailag erős ügyfélazonosító, ügyféltitok az Identitáskiszolgálóban használatos
+## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>Győződjön meg arról, hogy a kriptográfiailag erős ügyfél-azonosító, az ügyfél titkos kulcsa az Identity Serverben van használatban
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identitás-kiszolgáló | 
-| **SDL fázis**               | Felépítés |  
+| **Összetevő**               | Identity Server | 
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>Győződjön meg arról, hogy a kriptográfiailag erős ügyfélazonosító, ügyféltitok az Identitáskiszolgálóban használatos. Az ügyfélazonosító és a titkos titok létrehozásakor a következő irányelveket kell használni:</p><ul><li>Véletlenszerű GUID létrehozása ügyfélazonosítóként</li><li>Hozzon létre egy kriptográfiailag véletlenszerű 256 bites kulcsot, mint a titkos</li></ul>|
+| **Lépéseket** | <p>Győződjön meg arról, hogy a kriptográfiai szempontból erős ügyfél-azonosító, az ügyfél titkos kulcsa használatban van az Identity Serverben. A következő irányelveket kell használni az ügyfél-azonosító és a titkos kulcs létrehozásakor:</p><ul><li>Véletlenszerű GUID létrehozása ügyfél-AZONOSÍTÓként</li><li>Titkosítási szempontból véletlenszerű 256 bites kulcs létrehozása titokként</li></ul>|

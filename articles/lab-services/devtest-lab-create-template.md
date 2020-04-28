@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure DevTest Labs egyéni lemezképet egy virtuális merevlemez-fájlból | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre egyéni lemezképet az Azure DevTest Labs-ben egy virtuális merevlemez-fájlból az Azure Portalon keresztül
+title: Azure DevTest Labs egyéni rendszerkép létrehozása VHD-fájlból | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre egyéni rendszerképeket Azure DevTest Labs egy VHD-fájlból a Azure Portal használatával
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61296055"
 ---
-# <a name="create-a-custom-image-from-a-vhd-file"></a>Egyéni kép létrehozása VHD-fájlból
+# <a name="create-a-custom-image-from-a-vhd-file"></a>Egyéni rendszerkép létrehozása VHD-fájlból
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -31,57 +31,57 @@ ms.locfileid: "61296055"
 
 ## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
 
-A következő lépések végigvezetik egy egyéni lemezkép létrehozásán egy Virtuális merevlemez-fájlból az Azure Portalon keresztül:
+A következő lépések végigvezetik egy egyéni rendszerkép létrehozásán egy VHD-fájlból a Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **Minden szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
+1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 1. A laborok listájából válassza ki a kívánt labort.  
 
-1. A tesztkörnyezet fő ablaktábláján válassza a **Konfiguráció és házirendek**lehetőséget. 
+1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok**lehetőséget. 
 
-1. A **Konfiguráció és házirendek** ablaktáblán válassza az **Egyéni képek**lehetőséget.
+1. A **konfiguráció és házirendek** panelen válassza az **Egyéni lemezképek**lehetőséget.
 
-1. Az **Egyéni képek** ablaktáblán válassza a **+Hozzáadás**lehetőséget.
+1. Az **Egyéni lemezképek** panelen válassza a **+ Hozzáadás**lehetőséget.
 
-    ![Egyéni kép hozzáadása](./media/devtest-lab-create-template/add-custom-image.png)
+    ![Egyéni rendszerkép hozzáadása](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Adja meg az egyéni kép nevét. Ez a név jelenik meg az alaplemezképek listájában virtuális gép létrehozásakor.
+1. Adja meg az egyéni rendszerkép nevét. Ez a név jelenik meg az alaplemezképek listájában a virtuális gép létrehozásakor.
 
-1. Adja meg az egyéni kép leírását. Ez a leírás az alaplemezképek listájában jelenik meg virtuális gép létrehozásakor.
+1. Adja meg az egyéni rendszerkép leírását. Ez a leírás az alaplemezképek listájában jelenik meg a virtuális gép létrehozásakor.
 
-1. Az **operációs rendszer típusához**válassza a **Windows** vagy **a Linux**lehetőséget.
+1. Az **operációs rendszer típusa**beállításnál válassza a **Windows** vagy a **Linux**lehetőséget.
 
-    - Ha a **Windows**lehetőséget választja, adja meg a jelölőnégyzetben, hogy a *sysprep* futtatva van-e a számítógépen. 
-    - Ha **a Linux**lehetőséget választja, adja meg a jelölőnégyzetben, hogy a *megszüntetés* futtatása a számítógépen történt-e. 
+    - Ha a **Windows**lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *Sysprep* a számítógépen fut-e. 
+    - Ha a **Linux**lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *kiépítés* le lett-e futtatva a gépen. 
 
-1. Válasszon **egy virtuális merevlemezt** a legördülő menüből. Ez a virtuális merevlemez, amely az új egyéni lemezkép létrehozásához használható. Szükség esetén válassza **a Virtuális merevlemez feltöltése a PowerShell használatával**lehetőséget.
+1. Válassza ki a **virtuális merevlemezt** a legördülő menüből. Ez az új egyéni rendszerkép létrehozásához használt VHD. Ha szükséges, válassza a **virtuális merevlemez feltöltését a PowerShell használatával**.
 
-1. Megadhat tervnevet, csomagajánlatot és tervközzétevőt is, ha az egyéni lemezkép létrehozásához használt lemezkép nem licencelt lemezkép (amelyet a Microsoft tett közzé).
+1. Megadhatja a csomag nevét, a csomag ajánlatát, és megtervezheti a közzétevőt, ha az egyéni rendszerkép létrehozásához használt rendszerkép nem a Microsoft által közzétett, licencelt rendszerkép.
 
-   - **Terv neve:** Adja meg annak a Piactér-lemezképnek (SKU) a nevét, amelyből ez az egyéni lemezkép létrejön. 
-   - **Terv ajánlat:** Adja meg annak a Piactér-képnek a termékét (ajánlatát), amelyből ez az egyéni lemezkép készült. 
-   - **A terv kiadója:** Adja meg annak a Piactér-lemezképnek a közzétevőit, amelyből ez az egyéni lemezkép készült.
+   - **Csomag neve:** Adja meg annak a piactér-rendszerképnek (SKU) a nevét, amelyből ez az egyéni rendszerkép létrejött 
+   - **Csomag ajánlata:** Adja meg annak a piactér-rendszerképnek a termékét (ajánlatát), amelyről az egyéni rendszerkép létrejött 
+   - **Közzétevő megtervezése:** Adja meg annak a piactér-rendszerképnek a közzétevőjét, amelyről az egyéni rendszerkép létrejött
 
    > [!NOTE]
-   > Ha az egyéni lemezkép létrehozásához használt kép **nem** licencelt kép, akkor ezek a mezők üresek, és ha úgy dönt, kitölthetők. Ha a **lemezkép** licencelt lemezkép, akkor a mezők automatikusan fel lesznek töltve a terv adataival. Ha ebben az esetben megpróbálja módosítani őket, figyelmeztető üzenet jelenik meg.
+   > Ha az egyéni rendszerkép létrehozásához használt rendszerkép **nem** egy licenccel rendelkező rendszerkép, akkor ezek a mezők üresek, és a választása esetén kitölthetők. Ha a rendszerkép **egy licencelt** rendszerkép, akkor a rendszer automatikusan kitölti a mezőket a csomag adataival. Ha ebben az esetben megpróbálja módosítani őket, figyelmeztető üzenet jelenik meg.
    >
    >
 
-1. Az egyéni lemezkép létrehozásához válassza az **OK gombot.**
+1. Az egyéni rendszerkép létrehozásához kattintson **az OK gombra** .
 
-Néhány perc múlva létrejön az egyéni lemezkép, és a labor tárfiókban tárolja. Ha egy tesztkörnyezet-felhasználó új virtuális gép létrehozásához szeretne létrehozni, a lemezkép elérhető az alaplemezképek listájában.
+Néhány perc elteltével létrejön az egyéni rendszerkép, amely a labor Storage-fiókjában tárolódik. Ha egy tesztkörnyezet egy új virtuális gépet szeretne létrehozni, a lemezkép az alaplemezképek listájában érhető el.
 
-![Az alapképek listájában elérhető egyéni kép](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+![Az alapképek listájában elérhető egyéni rendszerkép](./media/devtest-lab-create-template/custom-image-available-as-base.png)
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
-- [Egyéni képek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Egyéni lemezképek másolása az Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,38 +1,38 @@
 ---
-title: Az Azure Cosmos DB PDF lekérdezési csaló lapok
-description: Nyomtatható PDF-csalólapok, amelyek segítségével az Azure Cosmos DB SQL, MongoDB, Graph és Table API-kat használhat az adatok lekérdezéséhez
+title: Azure Cosmos DB PDF-lekérdezések – Cheat Sheets
+description: Nyomtatható PDF-Cheat lapok, amelyek segítségével a Azure Cosmos DB SQL, MongoDB, Graph és Table API-k használatával kérdezheti le az adatait
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66256981"
 ---
-# <a name="azure-cosmos-db-query-cheat-sheets"></a>Az Azure Cosmos DB lekérdezési csaló lapjai
+# <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB lekérdezési Cheat Sheets
 
-Az **Azure Cosmos DB lekérdezési cheat lapok** segítségével gyorsan írhat lekérdezéseket az adatokhoz a gyakori adatbázis-lekérdezések, műveletek, függvények és operátorok könnyen nyomtatható PDF referencialapok megjelenítésével. A csalólapok referenciainformációkat tartalmaznak az SQL, a MongoDB, a Table és a Gremlin API-k számára. 
+A **Azure Cosmos db Query Cheat Sheets** segítségével gyorsan írhat lekérdezéseket az adatokhoz, ha általános adatbázis-lekérdezéseket, műveleteket, függvényeket és operátorokat jelenít meg a könnyen nyomtatható PDF-hivatkozásokban. A Cheat Sheets az SQL, a MongoDB, a Table és a Gremlin API-k hivatkozási információit tartalmazza. 
 
-Válasszon a levél méretű vagy A3-as méretű letöltések közül. 
+Válasszon egy Letter méretű vagy a3 méretű letöltést. 
 
-## <a name="letter-sized-cheat-sheets"></a>Levél méretű csalólapok
+## <a name="letter-sized-cheat-sheets"></a>Letter méretű Cheat Sheets
 
-Töltse le az [Azure Cosmos DB levélméretű lekérdezési csaló lapokat,](https://go.microsoft.com/fwlink/?LinkId=623215) ha levélméretű papírra (8,5" x 11" - nyomtat).
+Töltse le a [Azure Cosmos db Letter méretű lekérdezési Cheat-lapokat](https://go.microsoft.com/fwlink/?LinkId=623215) , ha Letter méretű papírra szeretne nyomtatni (8,5 x 11).
 
-![Azure Cosmos DB lekérdezéscheat lapok - levél méretű, SQL API, JavaScript, MongoDB, Gremlin és table API lekérdezések és függvények](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+![Azure Cosmos DB lekérdezési Cheat Sheets – Letter méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 
-## <a name="oversized-cheat-sheets"></a>Túlméretezett csalólapok
-Töltse le az [Azure Cosmos DB A3 méretű lekérdezési csalólapokat,](https://go.microsoft.com/fwlink/?linkid=870413) ha rajzgépvagy nagyméretű nyomtató használatával szeretne nyomtatni A3-as méretű papíron (11,7" x 16,5").
+## <a name="oversized-cheat-sheets"></a>Túlméretezett Cheat lapok
+Töltse le az [Azure Cosmos db a3 méretű lekérdezési Cheat-lapokat](https://go.microsoft.com/fwlink/?linkid=870413) , ha plotter vagy nagyméretű nyomtató használatával szeretne nyomtatni az a3 méretű papíron (11,7 "x 16,5").
 
-![Azure Cosmos DB lekérdezési cheat lapok – A3-as méretű, SQL API-val, JavaScriptdel, MongoDB-val, Gremlin-nel és Table API-lekérdezésekkel és -függvényekkel](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+![Azure Cosmos DB lekérdezési Cheat Sheets – a3 méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
 
 ## <a name="next-steps"></a>További lépések
-A lekérdezések írásával kapcsolatos további segítségért tekintse meg az alábbi cikkeket:
-* SQL API-lekérdezések, lásd: [Lekérdezés az SQL API használatával,](tutorial-query-sql-api.md) [SQL-lekérdezések az Azure Cosmos DB](how-to-sql-query.md)és sql [szintaxis referencia](sql-api-query-reference.md)
-* A MongoDB-lekérdezések ről az [Azure Cosmos DB Api-ját használó Lekérdezés a MongoDB-hoz](tutorial-query-mongodb.md) és az [Azure Cosmos DB API-ját a MongoDB szolgáltatás támogatásához és szintaxisához című témakörben találja.](mongodb-feature-support.md)
-* A Gremlin API-lekérdezések, [lásd: Lekérdezés a Gremlin API és az](tutorial-query-graph.md) [Azure Cosmos DB Gremlin graph támogatás](gremlin-support.md)
-* Table API-lekérdezések esetén olvassa el [a Lekérdezés a tábla API-t használó lekérdezéscímű témakört.](tutorial-query-table.md)
+További segítséget a lekérdezések írásához a következő cikkekben talál:
+* SQL API-lekérdezések esetén lásd: [lekérdezés az SQL API](tutorial-query-sql-api.md)-val, a [Azure Cosmos db SQL-lekérdezésekkel](how-to-sql-query.md)és az [SQL-szintaxissal kapcsolatos hivatkozás](sql-api-query-reference.md)
+* A MongoDB lekérdezések esetében lásd: [lekérdezés Azure Cosmos db API-val a MongoDB](tutorial-query-mongodb.md) és a [Azure Cosmos db API-val a MongoDB szolgáltatás támogatása és szintaxisa](mongodb-feature-support.md) alapján
+* A Gremlin API-lekérdezések esetében lásd: [lekérdezés a GREMLIN API használatával és a](tutorial-query-graph.md) [Azure Cosmos db Gremlin Graph támogatása](gremlin-support.md)
+* Table API lekérdezések esetében lásd: [lekérdezés a Table API használatával](tutorial-query-table.md)

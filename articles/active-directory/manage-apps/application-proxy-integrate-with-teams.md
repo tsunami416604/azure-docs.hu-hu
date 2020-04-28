@@ -1,6 +1,6 @@
 ---
-title: Access Azure AD App Proxy alkalmazások teams | Microsoft dokumentumok
-description: Az Azure AD alkalmazásproxy használatával a Microsoft Teamsen keresztül érheti el a helyszíni alkalmazást.
+title: Hozzáférés Azure AD alkalmazás alkalmazásproxy-alkalmazásokhoz a Teams szolgáltatásban | Microsoft Docs
+description: Az Azure AD Application Proxy használatával elérheti a helyszíni alkalmazást a Microsoft Teams szolgáltatáson keresztül.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,43 +17,43 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67807761"
 ---
-# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>A helyszíni alkalmazások elérése a Microsoft Teamsen keresztül
+# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>A helyszíni alkalmazások elérése a Microsoft Teams használatával
 
-Az Azure Active Directory alkalmazásproxy egyszeri bejelentkezést biztosít a helyszíni alkalmazásokba, függetlenül attól, hogy hol tartózkodik. A Microsoft Teams egy helyen egyszerűsíti az együttműködésen alapuló erőfeszítéseket. A kettő együttes integrálása azt jelenti, hogy a felhasználók bármilyen helyzetben hatékonyan dolgozhatnak csapattársaikkal.
+Azure Active Directory Application Proxy egyszeri bejelentkezést biztosít a helyszíni alkalmazásokhoz, függetlenül attól, hogy hol vannak. A Microsoft csapata egy helyen egyszerűsíti együttműködési erőfeszítéseit. A két együttes integrációja azt jelenti, hogy a felhasználók bármilyen helyzetben dolgozhatnak a csapattársakkal.
 
-A felhasználók [lapok segítségével](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)adhatnak hozzá felhőalapú alkalmazásokat a Teams-csatornáikhoz, de mi a helyzet a helyszínen üzemeltetett SharePoint-webhelyekkel vagy tervezési eszközzel? Az alkalmazásproxy a megoldás. Az alkalmazásproxyn keresztül közzétett alkalmazásokat hozzáadhatják csatornáikhoz ugyanazokat a külső URL-címeket használva, amelyeket mindig az alkalmazásaik távoli eléréséhez használnak. És mivel az alkalmazásproxy az Azure Active Directoryn keresztül hitelesíti magát, a felhasználók egyszeri bejelentkezési élményt kapnak.
+A felhasználók hozzáadhatnak felhőalapú alkalmazásokat a csapatok csatornái számára a [lapok használatával](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US), de mi a helyzet a SharePoint-webhelyekkel vagy a helyszínen üzemeltetett tervezési eszközzel? A megoldás az alkalmazásproxy. Az Application proxyn keresztül közzétett alkalmazásokat ugyanazok a külső URL-címek használatával vehetik igénybe, mint az alkalmazások távoli eléréséhez. Mivel az alkalmazásproxy hitelesítése Azure Active Directoryon keresztül történik, a felhasználók egyszeri bejelentkezési élményt kapnak.
 
-## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Az Alkalmazásproxy-összekötő telepítése és az alkalmazás közzététele
+## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Telepítse az alkalmazásproxy-összekötőt, és tegye közzé az alkalmazást
 
-Ha még nem tette meg, [konfigurálja az alkalmazásproxyt a bérlőhöz, és telepítse az összekötőt.](application-proxy-add-on-premises-application.md) Ezután [tegye közzé a helyszíni alkalmazást](application-proxy-add-on-premises-application.md) a táveléréshez. Amikor közzéteszi az alkalmazást, jegyezze fel a külső URL-címet, mert az alkalmazás teamshez való hozzáadására szolgál.
+Ha még nem tette meg, [konfigurálja a bérlőhöz tartozó alkalmazásproxy-t, és telepítse az összekötőt](application-proxy-add-on-premises-application.md). Ezt követően [közzéteheti](application-proxy-add-on-premises-application.md) a helyszíni alkalmazást a táveléréshez. Az alkalmazás közzétételekor jegyezze fel a külső URL-címet, mert az alkalmazás a Teams szolgáltatáshoz való hozzáadására szolgál.
 
-Ha már közzétette az alkalmazásokat, de nem emlékszik a külső URL-címekre, keresse meg őket az [Azure Portalon.](https://portal.azure.com) Jelentkezzen be, majd keresse meg az **Azure Active Directory** > Enterprise**alkalmazásokat:** **Enterprise applications** > Minden alkalmazás > válassza ki az alkalmazás > **alkalmazásproxyját.**
+Ha már közzétette az alkalmazásokat, de nem emlékszik a külső URL-címekre, tekintse meg őket a [Azure Portalban](https://portal.azure.com). Jelentkezzen be, majd navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** > válassza ki az alkalmazást > **alkalmazásproxy**.
 
-## <a name="add-your-app-to-teams"></a>Alkalmazás hozzáadása a Teamshez
+## <a name="add-your-app-to-teams"></a>Alkalmazás hozzáadása a csapatokhoz
 
-Miután közzétette az alkalmazást az alkalmazásproxyn keresztül, tudassa a felhasználókkal, hogy közvetlenül a Teams-csatornáikban adhatják hozzá lapként, és az alkalmazás a csapat minden tagja számára elérhető. Az alábbi három lépést kell követniük:
+Miután közzétette az alkalmazást az Application proxyn keresztül, tájékoztassa a felhasználókat arról, hogy közvetlenül a csapatuk csatornáján is felvehetik a lapot, majd az alkalmazás a csapatban mindenki számára elérhető lesz. A következő három lépést kell követnie:
 
-1. Nyissa meg azt a Teams-csatornát, **+** amelyhez hozzá szeretné adni az alkalmazást, és válassza ki a lap hozzáadását.
+1. Navigáljon ahhoz a Teams-csatornához, amelyhez hozzá szeretné adni **+** az alkalmazást, és válassza a lapot a lap hozzáadásához.
 
-   ![Válassza a + lehetőséget, ha tabulátort szeretne hozzáadni a Teamsben](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![Válassza a + elemet egy lap felvételéhez a csapatokban](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-1. Válassza a **Webhely** lehetőséget a lap beállításai között.
+1. A lapon válassza a **webhely** lehetőséget.
 
-   ![Válassza ki a Webhely lehetőséget a Lap hozzáadása képernyőről](./media/application-proxy-integrate-with-teams/website.png)
+   ![Válassza ki a webhelyet a lap hozzáadása képernyőn](./media/application-proxy-integrate-with-teams/website.png)
 
-1. Adjon nevet a lapnak, és állítsa be az URL-címet az alkalmazásproxy külső URL-címére.
+1. Adja meg a lap nevét, és állítsa be az alkalmazásproxy külső URL-címére mutató URL-címet.
 
-   ![A lap elnevezése és a külső URL hozzáadása](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![Nevezze el a lapot, és adja hozzá a külső URL-címet](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-Amint egy csapat egyik tagja hozzáadja a lapot, az megjelenik a csatorna minden tagja számára. Az alkalmazáshoz hozzáféréssel rendelkező felhasználók egyszeri bejelentkezési hozzáférést kapnak a Microsoft Teamshez használt hitelesítő adatokkal. Azok a felhasználók, akik nem férnek hozzá az alkalmazáshoz, láthatják a Teams lapot, de le vannak tiltva, amíg nem ad nekik engedélyt a helyszíni alkalmazáshoz és az alkalmazás közzétett Azure Portal-verziójához.
+Ha egy csapat tagja felveszi a fület, az megjelenik a csatornán mindenki számára. Az alkalmazáshoz hozzáféréssel rendelkező felhasználók egyszeri bejelentkezéses hozzáférést kapnak a Microsoft Teams szolgáltatáshoz használt hitelesítő adatokhoz. Azok a felhasználók, akik nem rendelkeznek hozzáféréssel az alkalmazáshoz, megtekinthetik a csapat lapjait, de csak akkor vannak letiltva, ha nem ad nekik engedélyeket a helyszíni alkalmazáshoz és az alkalmazás Azure Portal közzétett verziójához.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogy [miként tehet közzé helyszíni SharePoint-webhelyeket](application-proxy-integrate-with-sharepoint-server.md) alkalmazásproxyval.
-- Állítsa be az alkalmazásokat úgy, hogy [egyéni tartományokat](application-proxy-configure-custom-domain.md) használjanak a külső URL-címükhöz.
+- Ismerje meg, hogyan [tehet közzé helyszíni SharePoint-webhelyeket](application-proxy-integrate-with-sharepoint-server.md) alkalmazásproxy használatával.
+- Konfigurálja az alkalmazásokat úgy, hogy az [Egyéni tartományokat](application-proxy-configure-custom-domain.md) használják külső URL-címként.

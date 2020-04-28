@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70081967"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
@@ -29,7 +29,7 @@ Az Azure virtuális gépeken futó SQL Serverrel teljes SQL Server-verziókat ha
 
 Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket.
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Az SQL virtuális gépek – első lépések
+## <a name="get-started-with-sql-vms"></a><a id="create"></a>Ismerkedés az SQL-alapú virtuális gépekkel
 
 Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
@@ -57,7 +57,7 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
 
-### <a name="linux-virtual-machines"></a>Linux virtuális gépek
+### <a name="linux-virtual-machines"></a>Linux rendszerű virtuális gépek
 
 * [Virtual Machines – áttekintés](../overview.md)
 
@@ -67,13 +67,13 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 
 ### <a name="networking"></a>Hálózat
 
-* [Virtuális hálózat – áttekintés](../../../virtual-network/virtual-networks-overview.md)
+* [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 
-* [SQL Server Linux on dokumentáció](https://docs.microsoft.com/sql/linux)
+* [SQL Server on Linux dokumentáció](https://docs.microsoft.com/sql/linux)
 * [Az Azure SQL Database összehasonlítása](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
 ## <a name="next-steps"></a>További lépések

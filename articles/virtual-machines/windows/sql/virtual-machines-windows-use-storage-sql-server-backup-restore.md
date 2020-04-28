@@ -1,6 +1,6 @@
 ---
-title: Az Azure storage használata az SQL Server biztonsági mentéséhez és visszaállításához | Microsoft dokumentumok
-description: Ismerje meg, hogyan biztonsági másolatot az SQL Server ről az Azure Storage-ba. Az SQL-adatbázisok Azure Storage-ba történő biztonsági mentésének előnyeit ismerteti.
+title: Az Azure Storage használata SQL Server biztonsági mentéshez és visszaállításhoz | Microsoft Docs
+description: Ismerje meg, hogyan készíthet biztonsági mentést SQL Server az Azure Storage-ba. Ismerteti az SQL-adatbázisok Azure Storage-ba történő biztonsági mentésének előnyeit.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MikeRayMSFT
@@ -14,66 +14,66 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: cb19dc7262721e672bd3f54b32db9188dad7fee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70101894"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Az Azure Storage használata az SQL Server biztonsági mentéséhez és helyreállításához
 ## <a name="overview"></a>Áttekintés
-Az SQL Server 2012 SP1 CU2 szervizcsomaggal kezdve az SQL Server biztonsági mentéseit közvetlenül az Azure Blob storage szolgáltatásba is írhat. Ezzel a funkcióval biztonsági másolatot kaphat az Azure Blob szolgáltatásról egy helyszíni SQL Server-adatbázissal vagy egy Azure virtuális gépen lévő SQL Server-adatbázissal. A felhőbe való biztonsági mentés a rendelkezésre állás előnyeit, a korlátlan georeplikált külső tárhelyet, valamint az adatok felhőbe és a felhőből történő egyszerű áttelepítését kínálja. A BIZTONSÁGI mentési vagy visszaállítási utasításokat a Transact-SQL vagy az SMO használatával állíthatja ki.
+A SQL Server 2012 SP1 CU2 kezdve a SQL Server biztonsági mentések közvetlenül az Azure Blob Storage szolgáltatásba is írhatók. Ezzel a funkcióval biztonsági mentést készíthet az Azure Blob service egy helyszíni SQL Server-adatbázissal vagy egy Azure-beli virtuális gép SQL Server adatbázisával. A felhőbe történő biztonsági mentés a rendelkezésre állás előnyeit, a korlátlan, földrajzilag replikált helyszíni tárterületet, valamint az adatok felhőbe történő áttelepítését is biztosítja. A biztonsági mentési vagy VISSZAÁLLÍTÁSi utasítások a Transact-SQL vagy a SMO használatával adhatók ki.
 
-Az SQL Server 2016 új képességeket vezet be; a [fájlpillanatkép biztonsági mentésének](https://msdn.microsoft.com/library/mt169363.aspx) segítségével szinte azonnali biztonsági mentéseket és hihetetlenül gyors visszaállításokat végezhet.
+A SQL Server 2016 új képességeket vezet be; a [fájl-pillanatkép biztonsági mentés](https://msdn.microsoft.com/library/mt169363.aspx) használatával szinte azonnali biztonsági mentéseket és hihetetlenül gyors visszaállításokat végezhet.
 
-Ez a témakör ismerteti, hogy miért érdemes az Azure storage-t használni az SQL biztonsági mentések, majd ismerteti az érintett összetevőket. A cikk végén található erőforrások segítségével hozzáférhet a forgatókönyvekhez, és további információkat is elindíthat ja a szolgáltatás SQL Server biztonsági másolatokkal való használatához.
+Ez a témakör azt ismerteti, hogy miért dönthet úgy, hogy az Azure Storage-t használja az SQL-alapú biztonsági mentésekhez, majd leírja az érintett összetevőket. A cikk végén található források segítségével elérheti a bemutatókat és a további információkat, amelyekkel megkezdheti a szolgáltatás használatát a SQL Server biztonsági másolatokkal.
 
-## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Az Azure Blob Service sql server biztonsági mentések esetén való használatának előnyei
-Az SQL Server biztonsági mentésekor számos kihívással kell szembenéznie. Ezek a kihívások közé tartozik a tárolás kezelése, a tárolási hiba kockázata, a külső tárhelyhez való hozzáférés és a hardverkonfiguráció. A kihívások közül sokat az Azure Blob store szolgáltatás SQL Server biztonsági mentések használatával oldanak meg. Vegye figyelembe a következő előnyöket:
+## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Az Azure Blob Service használatának előnyei SQL Server biztonsági mentésekhez
+A SQL Server biztonsági mentésekor több kihívás is van. Ezek a kihívások közé tartoznak a tárolók kezelése, a tárolási hibák kockázata, a helyszíni tároláshoz való hozzáférés és a hardverkonfiguráció. A kihívások nagy része a SQL Server biztonsági mentések esetén az Azure Blob Store szolgáltatással foglalkozik. Vegye figyelembe a következő előnyöket:
 
-* **Egyszerű használat:** A biztonsági mentések Azure blobokban való tárolása kényelmes, rugalmas és könnyen elérhető külső beállítás lehet. Az SQL Server biztonsági mentései számára külső tárhely létrehozása olyan egyszerű lehet, mint a meglévő parancsfájlok/feladatok módosítása a **BIZTONSÁGI másolat URL-szintaxisának** használatához. A telephelyen kívüli tárolásnak általában elég messze kell lennie az éles adatbázis helyétől ahhoz, hogy megakadályozza az egyetlen katasztrófát, amely hatással lehet mind a telephelyen kívüli, mind az éles adatbázis helyeire. Az [Azure-blobok földrajzi replikálására](../../../storage/common/storage-redundancy.md)választva rendelkezik egy további védelmi réteggel katasztrófa esetén, amely az egész régiót érintheti.
-* **Biztonsági mentés archiválása:** Az Azure Blob Storage szolgáltatás jobb alternatívát kínál a gyakran használt szalagos beállítással a biztonsági mentések archiválására. A szalagos tárolás hoz szükség lehet fizikai szállításra egy külső létesítménybe, és intézkedéseket az adathordozó védelmére. A biztonsági mentések azure Blob Storage-ban való tárolása azonnali, magas rendelkezésre állású és tartós archiválási lehetőséget biztosít.
-* **Felügyelt hardver**: Az Azure-szolgáltatások kal nem áll fenn hardverkezelés többletterhelése. Az Azure-szolgáltatások kezelik a hardvert, és georeplikációt biztosítanak a redundancia és a hardverhibák elleni védelem érdekében.
-* **Korlátlan tárhely:** Az Azure-blobok közvetlen biztonsági mentésének engedélyezésével gyakorlatilag korlátlan tárhelyhez férhet hozzá. Azt is megteheti, hogy egy Azure virtuálisgép-lemez biztonsági mentése a gép mérete alapján korlátozza a biztonsági mentést. Az Azure virtuális gépekhez biztonsági mentéshez csatolható lemezek száma korlátozva van. Ez a korlát 16 lemez egy extra nagy példány, és kevesebb a kisebb példányok.
-* **Biztonsági mentés elérhetősége:** Az Azure-blobokban tárolt biztonsági mentések bárhonnan és bármikor elérhetők, és könnyen elérhetők a helyszíni SQL Server vagy egy Azure virtuális gépen futó másik SQL Server-kiszolgálóra való visszaállításhoz anélkül, hogy adatbázis-csatolásra/leválasztásra, illetve a virtuális merevlemez letöltésére és csatolására lenne szükség.
-* **Költség**: Csak a használt szolgáltatásért kell fizetni. Lehet költséghatékony, mint egy off-site és biztonsági archívum lehetőséget. További információkért tekintse meg az [Azure díjkalkulátorát](https://go.microsoft.com/fwlink/?LinkId=277060 "Díjkalkulátor")és az [Azure díjszabási cikkét.](https://go.microsoft.com/fwlink/?LinkId=277059 "Árképzési cikk")
-* **Tárolási pillanatképek:** Ha az adatbázisfájlok egy Azure blobban vannak tárolva, és az SQL Server 2016-ot használja, [a fájlpillanatkép biztonsági mentésével](https://msdn.microsoft.com/library/mt169363.aspx) szinte azonnali biztonsági mentést és hihetetlenül gyors visszaállításokat végezhet.
+* **Egyszerű használat**: a biztonsági mentések Azure-blobokban való tárolása kényelmes, rugalmas és könnyen elérhető a helyszínen kívüli lehetőségekkel. Ha a SQL Server biztonsági mentések számára a helyszíni tárterületet szeretné létrehozni, egyszerűen módosíthatja a meglévő parancsfájlokat/feladatokat, hogy a **biztonsági mentés URL-** szintaxisát használja. A telephelyen kívüli tárterületnek általában elég messzinek kell lennie az éles adatbázis helyétől, így elkerülhető egyetlen olyan katasztrófa, amely hatással lehet a helyszínen kívüli és az üzemi adatbázis helyeire is. Az [Azure-Blobok földrajzi replikálásának](../../../storage/common/storage-redundancy.md)kiválasztásával extra védelmi réteggel rendelkezik, amely hatással lehet az egész régióra.
+* **Biztonsági mentési Archívum**: az Azure Blob Storage szolgáltatás jobb alternatíva a gyakran használt szalagos lehetőség a biztonsági másolatok archiválásához. A szalagos tároláshoz fizikai szállításra lehet szükség a telephelyen kívüli létesítményre, valamint az adathordozók elleni védelemre vonatkozó mértékeket. A biztonsági mentések tárolása az Azure-ban Blob Storage egy azonnali, magasan elérhető és tartós archiválási lehetőséget biztosít.
+* **Felügyelt hardver**: az Azure-szolgáltatásokkal nem áll rendelkezésre a hardveres felügyelet. Az Azure-szolgáltatások kezelik a hardvert, és földrajzi replikálást biztosítanak a redundancia és a hardveres hibák elleni védelem érdekében.
+* **Korlátlan tárterület**: az Azure-Blobok közvetlen biztonsági mentésének engedélyezésével gyakorlatilag korlátlan tárhelyet érhet el. Azt is megteheti, hogy egy Azure-beli virtuálisgép-lemezre való biztonsági mentés a számítógép méretétől függően korlátozott. A biztonsági mentések esetében korlátozva van egy Azure-beli virtuális géphez csatolható lemezek száma. Ez a korlát 16 lemez egy extra nagy példányhoz, és kevesebb a kisebb példányok esetében.
+* **Biztonsági mentés rendelkezésre állása**: az Azure-blobokban tárolt biztonsági másolatok bárhonnan és bármikor elérhetők, és könnyen elérhetők az Azure-beli virtuális gépeken futó helyszíni SQL Server vagy egy másik SQL Server számára, anélkül, hogy az adatbázis csatolása/leválasztása vagy letöltése és a virtuális merevlemez csatolása szükséges.
+* **Cost**: csak a használt szolgáltatásért kell fizetnie. Költséghatékony lehet a helyszíni és a biztonsági mentési archiválási lehetőséggel. További információkért tekintse meg az [Azure díjszabási számológépét](https://go.microsoft.com/fwlink/?LinkId=277060 "Díjkalkulátor")és az [Azure díjszabását ismertető cikket](https://go.microsoft.com/fwlink/?LinkId=277059 "Díjszabási cikk") .
+* **Tárolási Pillanatképek**: Ha az adatbázisfájlok egy Azure-blobban tárolódnak, és SQL Server 2016-et használ, a [fájl-pillanatkép biztonsági mentés](https://msdn.microsoft.com/library/mt169363.aspx) használatával szinte azonnali biztonsági mentéseket és hihetetlenül gyors visszaállításokat végezhet.
 
-További információt az [SQL Server biztonsági másolat és visszaállítás az Azure Blob Storage Szolgáltatással című témakörben talál.](https://go.microsoft.com/fwlink/?LinkId=271617)
+További részletek: [SQL Server biztonsági mentés és visszaállítás az Azure Blob Storage szolgáltatással](https://go.microsoft.com/fwlink/?LinkId=271617).
 
-A következő két szakasz bemutatja az Azure Blob storage szolgáltatást, beleértve a szükséges SQL Server-összetevőket. Fontos megérteni az összetevők és azok kölcsönhatását a biztonsági mentés és visszaállítás sikeres használatához az Azure Blob storage szolgáltatásból.
+Az alábbi két szakaszban bemutatjuk az Azure Blob Storage szolgáltatást, beleértve a szükséges SQL Server összetevőket is. Fontos megérteni az összetevőket és azok interakcióját, hogy sikeresen használják a biztonsági mentést és a visszaállítást az Azure Blob Storage szolgáltatásból.
 
-## <a name="azure-blob-storage-service-components"></a>Az Azure Blob Storage szolgáltatás összetevői
-A következő Azure-összetevők az Azure Blob storage-szolgáltatásbiztonsági mentésekor használatosak.
-
-| Összetevő | Leírás |
-| --- | --- |
-| **Tárfiók** |A tárfiók az összes tárolási szolgáltatás kiindulópontja. Az Azure Blob Storage-szolgáltatás eléréséhez először hozzon létre egy Azure Storage-fiókot. Az Azure Blob storage szolgáltatásról az Azure Blob Storage Szolgáltatás használata című témakörben talál további [információt.](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
-| **Konténer** |Egy tároló blobok készletének csoportosítását biztosítja, és korlátlan számú blobot tárolhat. SQL Server biztonsági mentés írásához egy Azure Blob szolgáltatás, legalább a gyökértároló létre kell hoznia. |
-| **Blob** |Bármilyen típusú és méretű fájl. A blobok címezhetőek a következő URL-formátumban: **https://[storage account].blob.core.windows.net/[container]/[blob]**. A lapblobokról a [Blokk- és lapblobok ismertetése](https://msdn.microsoft.com/library/azure/ee691964.aspx) című témakörben talál további információt. |
-
-## <a name="sql-server-components"></a>SQL Server-összetevők
-A következő SQL Server-összetevők az Azure Blob storage szolgáltatásbiztonsági mentésekor használatosak.
+## <a name="azure-blob-storage-service-components"></a>Azure Blob Storage Service-összetevők
+A következő Azure-összetevők az Azure Blob Storage szolgáltatásba történő biztonsági mentéskor használatosak.
 
 | Összetevő | Leírás |
 | --- | --- |
-| **Url** |Az URL-cím egy egyedi biztonságimásolat-fájl hoz megadott egységes erőforrás-azonosítót (URI). Az URL-cím az SQL Server biztonságimásolat-fájl helyének és nevének megadására szolgál. Az URL-címnek egy tényleges blobra kell mutatnia, nem csak egy tárolóra. Ha a blob nem létezik, jön létre. Ha egy meglévő blob van megadva, backup sikertelen lesz, kivéve, ha a > FORMAT beállítás meg van adva. Az alábbi példa a BACKUP parancsban megadott URL-címet mutat be: **http[s]://[storageaccount]blob.core.windows.net/[container]/[FILENAME.bak]**. Https ajánlott, de nem szükséges. |
-| **Megbízólevél** |Az Azure Blob storage-szolgáltatáshoz való csatlakozáshoz és hitelesítéshez szükséges adatok hitelesítő adatként tárolódnak.  Annak érdekében, hogy az SQL Server biztonsági mentéseket írjon egy Azure Blobba, vagy visszaállíthassa azt, létre kell hozni a SQL Server hitelesítő adatait. További információt az SQL Server hitelesítő adatai című [témakörben talál.](https://msdn.microsoft.com/library/ms189522.aspx) |
+| **Storage-fiók** |A Storage-fiók az összes tárolási szolgáltatás kiindulási pontja. Azure Blob Storage szolgáltatás eléréséhez először hozzon létre egy Azure Storage-fiókot. Az Azure Blob Storage szolgáltatással kapcsolatos további információkért lásd: [az azure blob Storage szolgáltatás használata](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
+| **Tároló** |A tároló Blobok egy csoportját biztosítja, és korlátlan számú blob tárolására képes. Ha SQL Server biztonsági másolatot szeretne készíteni egy Azure-Blob servicera, legalább a legfelső szintű tárolót kell létrehoznia. |
+| **BLOB** |Bármilyen típusú és méretű fájl. A Blobok a következő URL-formátummal érhetők el: **https://[Storage account]. blob. Core. Windows. net/[Container]/[blob]**. További információ a lapok Blobokról: a [blokk-és Blobok ismertetése](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
+
+## <a name="sql-server-components"></a>Összetevők SQL Server
+Az alábbi SQL Server összetevőket használja a rendszer az Azure Blob Storage szolgáltatásba történő biztonsági mentéshez.
+
+| Összetevő | Leírás |
+| --- | --- |
+| **URL** |Az URL-cím egy Uniform Resource Identifier (URI) értéket ad meg egy egyedi biztonságimásolat-fájlhoz. Az URL-cím a SQL Server biztonságimásolat-fájl helyének és nevének megadására szolgál. Az URL-címnek tényleges blobra kell mutatnia, nem csak egy tárolóra. Ha a blob nem létezik, a rendszer létrehozza. Ha meg van adva egy meglévő blob, a biztonsági mentés sikertelen lesz, kivéve, ha meg van adva a > formátum beállítással. A következő példa a biztonsági mentési parancsban megadott URL-címre mutat be: **http [s]://[storageaccount]. blob. Core. Windows. net/[Container]/[filename. bak]**. A HTTPS használata ajánlott, de nem kötelező. |
+| **Hitelesítőadat** |Az Azure Blob Storage szolgáltatáshoz való kapcsolódáshoz és hitelesítéshez szükséges információk tárolása hitelesítő adatként történik.  Ahhoz, hogy a SQL Server a biztonsági mentéseket egy Azure-Blobba vagy annak visszaállítására lehessen írni, létre kell hoznia egy SQL Server hitelesítő adatot. További információ: [SQL Server hitelesítő adat](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]
-> Az Sql Server 2016 frissítve lett a blokkblobok támogatásához. További részletekért olvassa el [az oktatóanyag: A Microsoft Azure Blob storage szolgáltatás használata SQL Server 2016-os adatbázisokkal.](https://msdn.microsoft.com/library/dn466438.aspx)
+> Az SQL Server 2016 frissítve lett a blokkos Blobok támogatásához. További részletekért tekintse meg [a következő oktatóanyagot: a Microsoft Azure Blob Storage szolgáltatás használata SQL Server 2016-adatbázisokkal](https://msdn.microsoft.com/library/dn466438.aspx) .
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-1. Hozzon létre egy Azure-fiókot, ha még nem rendelkezik ilyen. Ha az Azure-t értékeli, fontolja meg az [ingyenes próbaverziót.](https://azure.microsoft.com/free/)
-2. Ezután menjen végig az alábbi oktatóanyagok egyikén, amelyek végigvezetik a tárfiók létrehozásán és a visszaállítás végrehajtásán.
+1. Ha még nem rendelkezik Azure-fiókkal, hozzon létre egyet. Ha kiértékeli az Azure-t, vegye figyelembe az [ingyenes próbaverziót](https://azure.microsoft.com/free/).
+2. Ezután folytassa a következő oktatóanyagok egyikét, amely végigvezeti a Storage-fiók létrehozásán és a visszaállításon.
    
-   * **SQL Server 2014**: [Oktatóanyag: SQL Server 2014 Biztonsági másolat készítésés visszaállítása a Microsoft Azure Blob Storage Service szolgáltatásba](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
-   * **SQL Server 2016**: [Oktatóanyag: A Microsoft Azure Blob storage szolgáltatás használata SQL Server 2016-adatbázisokkal](https://msdn.microsoft.com/library/dn466438.aspx)
-3. Tekintse át az SQL Server biztonsági másolat és visszaállítás segédprogrammal kezdődő további dokumentációt [a Microsoft Azure Blob Storage Service szolgáltatással.](https://msdn.microsoft.com/library/jj919148.aspx)
+   * **SQL Server 2014**: [oktatóanyag: SQL Server 2014 biztonsági mentés és visszaállítás Microsoft Azure Blob Storage szolgáltatáshoz](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
+   * **SQL Server 2016**: [oktatóanyag: a Microsoft Azure Blob storage szolgáltatás használata SQL Server 2016-adatbázisokkal](https://msdn.microsoft.com/library/dn466438.aspx)
+3. Tekintse át a [SQL Server Backup és Restore Microsoft Azure Blob Storage Service szolgáltatással](https://msdn.microsoft.com/library/jj919148.aspx)kezdődő további dokumentációt.
 
-Ha bármilyen problémája van, olvassa el az SQL Server biztonsági másolat című témakört az [URL-lel kapcsolatos gyakorlati tanácsok és hibaelhárítás című témakörben.](https://msdn.microsoft.com/library/jj919149.aspx)
+Ha bármilyen problémája van, tekintse át a [SQL Server biztonsági mentés az URL-címekkel kapcsolatos ajánlott eljárásokat és hibaelhárítást](https://msdn.microsoft.com/library/jj919149.aspx)ismertető témakört.
 
-Az SQL Server további biztonsági mentési és visszaállítási beállításairól az [SQL Server biztonsági mentése és visszaállítása az Azure virtuális gépeken című témakörben található.](virtual-machines-windows-sql-backup-recovery.md)
+Más SQL Server biztonsági mentési és visszaállítási lehetőségekért lásd: [SQL Server Azure-beli biztonsági mentése és visszaállítása Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
 

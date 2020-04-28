@@ -1,7 +1,7 @@
 ---
-title: Felhőszolgáltatás profilalkotása helyileg a számítási emulátorban | Microsoft dokumentumok
+title: Felhőalapú szolgáltatás profilkészítése helyileg a számítási emulátorban | Microsoft Docs
 services: cloud-services
-description: A felhőszolgáltatások teljesítményproblémáinak vizsgálata a Visual Studio profilkészítővel
+description: A Cloud Services teljesítménnyel kapcsolatos problémáinak vizsgálata a Visual Studio Profilerrel
 documentationcenter: ''
 author: mikejo
 manager: jillfra
@@ -15,34 +15,34 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70094098"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Egy felhőszolgáltatás teljesítményének tesztelése helyileg az Azure Compute Emulátorban a Visual Studio Profiler használatával
-A felhőszolgáltatások teljesítményének teszteléséhez számos eszköz és technika áll rendelkezésre.
-Amikor közzétesz egy felhőszolgáltatást az Azure-ban, beállíthatja, hogy a Visual Studio összegyűjtse a profilkészítési adatokat, majd helyileg elemezze [azokat, az Azure-alkalmazások profilkészítése című][1]részben leírtak szerint.
-A diagnosztika segítségével számos teljesítményszámlálót is nyomon követhet, az [Azure teljesítményszámlálóinak használata című részében leírtak szerint.][2]
-Előfordulhat, hogy szeretné az alkalmazást helyileg profilozni a számítási emulátor üzembe helyezése előtt a felhőben.
+# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőalapú szolgáltatás teljesítményének tesztelése helyileg az Azure számítási emulátorban a Visual Studio Profiler használatával
+A Cloud Services teljesítményének teszteléséhez különféle eszközök és technikák állnak rendelkezésre.
+Ha felhőalapú szolgáltatást tesz közzé az Azure-ban, akkor a Visual Studio begyűjtheti a profilkészítési adatokat, majd helyileg elemezheti azt az [Azure-alkalmazás profilkészítése][1]című részben leírtak szerint.
+A diagnosztika használatával számos teljesítményszámláló nyomon követhető a [teljesítményszámlálók az Azure][2]-ban című témakörben leírtak szerint.
+A felhőbe való üzembe helyezés előtt érdemes lehet az alkalmazás helyi profilját is felvenni a Compute Emulatorba.
 
-Ez a cikk a CPU-mintavételezési módszer profilkészítés, amely helyileg elvégezhető az emulátor. Cpu mintavételezés egy módszer a profilalkotás, hogy nem túl tolakodó. Egy kijelölt mintavételi időközzel a profiler pillanatképet készít a hívásveremről. Az adatokat egy adott időszakban gyűjtik, és egy jelentésben mutatják be. Ez a profilkészítési módszer általában azt jelzi, hogy egy számításigényes alkalmazásban a CPU-munka nagy része hol történik.  Ez lehetőséget ad arra, hogy összpontosítson a "forró elérési út", ahol az alkalmazás kiadások a legtöbb időt.
+Ez a cikk a profilkészítés CPU-mintavételezési módszerét ismerteti, amely helyileg is elvégezhető az emulátorban. A CPU-mintavételezés olyan profilkészítési módszer, amely nem zavaró. Egy kijelölt mintavételi időszakban a Profiler pillanatképet készít a hívási veremről. Az adatok gyűjtése egy adott időszakon belül történik, és egy jelentésben jelenik meg. Ez a profilkészítési módszer általában azt jelzi, hogy hol történik a CPU-munka nagy részét képező számítási igényű alkalmazás.  Ez lehetőséget nyújt arra, hogy a "gyors elérésű útvonalra" koncentráljon, ahol az alkalmazás a legtöbb időt tölti.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: A Visual Studio konfigurálása profilkészítéshez
-Először is van néhány Visual Studio-beállítási lehetőség, amelyek hasznosak lehetnek a profilkészítéssorán. A profilkészítési jelentések értelmének érdekében az alkalmazáshoz szimbólumokra (.pdb fájlokra), valamint a rendszertárak szimbólumaira van szükség. Győződjön meg arról, hogy a rendelkezésre álló szimbólumkiszolgálókra hivatkozik. Ehhez válassza a Visual Studio **Eszközök** menüjének **Beállítások**parancsát, majd a **Hibakeresés**menü **Szimbólumok parancsot.** Győződjön meg arról, hogy a Microsoft szimbólumkiszolgálói a **Szimbólumfájl (.pdb) helyek**csoportban találhatók.  Hivatkozhat arra https://referencesource.microsoft.com/symbolsis , hogy további szimbólumfájlokkal is rendelkezhet.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: a Visual Studio konfigurálása profilkészítéshez
+Először is van néhány Visual Studio konfigurációs lehetőség, amely a profilkészítés során hasznos lehet. A profilkészítési jelentések értelmezéséhez szüksége lesz az alkalmazáshoz tartozó szimbólumokra (. pdb fájlokra), valamint a rendszerkönyvtárakhoz tartozó szimbólumokra is. Érdemes meggyőződnie arról, hogy az elérhető szimbólum-kiszolgálókra hivatkozik. Ehhez a Visual Studióban a **Tools (eszközök** ) menüben válassza a **Beállítások**, majd a **hibakeresés**, majd a **szimbólumok**elemet. Győződjön meg arról, hogy a Microsoft Symbol kiszolgálók szerepelnek a **Symbol file (. PDB) helyein**.  Hivatkozhat https://referencesource.microsoft.com/symbolsarra is, hogy további szimbólumokat tartalmazó fájlok is szerepelhetnek.
 
 ![Szimbólum beállításai][4]
 
-Ha szükséges, egyszerűsítheti a profiler által létrehozott jelentéseket a Just My Code beállításával. Ha a Just My Code engedélyezve van, a függvényhívási halmok leegyszerűsödnek, így a függvénytárak teljes egészében belső hívásai és a .NET keretrendszer rejtve maradnak a jelentésekből. Az **Eszközök menüben** válassza a **Beállítások parancsot.** Ezután bontsa ki a **Teljesítményeszközök** csomópontot, és válassza az **Általános**lehetőséget. Jelölje be a Csak a **saját kód engedélyezése jelölőnégyzetet profilozó jelentésekhez.**
+Ha kívánja, egyszerűbbé teheti a Profiler által generált jelentéseket a Saját kód beállításával. Ha a Saját kód engedélyezve van, a függvény hívási veremei egyszerűsítettek, így a teljes mértékben belső hívások a tárakban, a .NET-keretrendszer pedig rejtve marad a jelentésekben. Az **eszközök** menüben válassza a **Beállítások lehetőséget**. Ezután bontsa ki a **Teljesítményfigyelő eszközök** csomópontot, és válassza az **általános**lehetőséget. Jelölje be a **saját kód engedélyezése a Profiler-jelentésekhez**jelölőnégyzetet.
 
-![Csak a Saját kód beállításai][17]
+![Saját kód beállítások][17]
 
-Ezeket az utasításokat használhatja egy meglévő projekttel vagy egy új projekttel.  Ha új projektet hoz létre az alább leírt technikák kipróbálásához, válasszon egy C# Azure Cloud Service-projektet, és válasszon egy **webes szerepkört** és egy **Azure Cloud Service** **feldolgozói szerepkört.**
+Ezeket az utasításokat meglévő projekttel vagy új projekttel is használhatja.  Ha új projektet hoz létre az alább ismertetett módszerek kipróbálásához, válasszon egy C# **Azure Cloud Service** -projektet, és válasszon ki egy **webes szerepkört** és egy **feldolgozói szerepkört**.
 
-![Az Azure Cloud Service projektszerepkörei][5]
+![Azure Cloud Service-projekt szerepkörei][5]
 
-Például adjon hozzá néhány kódot a projekthez, amely sok időt vesz igénybe, és nyilvánvaló teljesítményproblémát mutat be. Adja hozzá például a következő kódot egy feldolgozói szerepkör-projekthez:
+Például vegyen fel egy kódot a projektbe, amely sok időt vesz igénybe, és nyilvánvaló teljesítménnyel kapcsolatos problémát mutat. Adja hozzá például a következő kódot egy feldolgozói szerepkör projekthez:
 
 ```csharp
 public class Concatenator
@@ -60,7 +60,7 @@ public class Concatenator
 }
 ```
 
-Hívja meg ezt a kódot a munkavégző szerepkör RoleEntryPoint-származtatott osztályának RunAsync metódusából. (Hagyja figyelmen kívül a szinkron módon futó metódusra vonatkozó figyelmeztetést.)
+Ezt a kódot a feldolgozói szerepkör RoleEntryPoint származtatott osztályának RunAsync metódusával hívja meg. (Hagyja figyelmen kívül a szinkron módon futó metódus figyelmeztetését.)
 
 ```csharp
 private async Task RunAsync(CancellationToken cancellationToken)
@@ -74,23 +74,23 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-A felhőszolgáltatás helyi legtávolabbi létrehozása és futtatása hibakeresés nélkül (Ctrl+F5) a megoldás konfigurációjának **felszabadítása**beállításával. Ez biztosítja, hogy az összes fájl és mappa létre jön az alkalmazás helyi futtatásához, és biztosítja az összes emulátor elindítását. Indítsa el a számítási emulátor felhasználói felületét a tálcáról, és ellenőrizze, hogy fut-e a feldolgozói szerepkör.
+A Cloud Service-t hibakeresés nélkül (CTRL + F5) is kiépítheti és futtathatja a megoldás-konfiguráció **kiadásával**. Ez biztosítja, hogy minden fájl és mappa az alkalmazás helyi futtatásához legyen létrehozva, és gondoskodik arról, hogy az összes emulátor el legyen indítva. Indítsa el a számítási emulátor felhasználói felületét a tálcáról annak ellenőrzéséhez, hogy a feldolgozói szerepkör fut-e.
 
-## <a name="2-attach-to-a-process"></a>2: Csatolás egy folyamathoz
-Ahelyett, hogy az alkalmazást a Visual Studio 2010 IDE-ből indítané el, a profilozót egy futó folyamathoz kell csatolnia. 
+## <a name="2-attach-to-a-process"></a>2: csatolás egy folyamathoz
+Az alkalmazásnak a Visual Studio 2010 IDE-ből való elindításával való profilkészítése helyett a Profilert egy futó folyamathoz kell csatlakoztatnia. 
 
-Ha a profilozót egy folyamathoz szeretné **csatolni,** válassza az Elemzés menü **Profilozó** és **Csatolás/Leválasztás**parancsot.
+Ha a Profilert egy folyamathoz szeretné csatolni, az **elemzés** menüben válassza a **Profiler** és a **csatolás/leválasztás**lehetőséget.
 
-![Profil csatolása beállítás][6]
+![Profil csatolása lehetőség][6]
 
-Feldolgozói szerepkör esetén keresse meg a WaWorkerHost.exe folyamatot.
+Feldolgozói szerepkör esetén keresse meg a WaWorkerHost. exe folyamatot.
 
 ![WaWorkerHost folyamat][7]
 
-Ha a projektmappa hálózati meghajtón van, a profilozó megfogja kérni, hogy adjon meg egy másik helyet a profilkészítési jelentések mentéséhez.
+Ha a projekt mappája egy hálózati meghajtón található, a Profiler megkéri, hogy adjon meg egy másik helyet a profilkészítési jelentések mentéséhez.
 
- A Web szerepkörhöz a WaIISHost.exe fájlhoz csatolva is csatolhat.
-Ha az alkalmazásban több feldolgozói szerepkör-folyamat van, a processID segítségével kell megkülönböztetni őket. A processID programozott módon lekérdezhető a Folyamat objektum elérésével. Ha például hozzáadja ezt a kódot a Szerepkör-bevitelipont-eredetű osztály Futtatás metódusához egy szerepkörben, megnézheti a naplót a Számítási emulátor felhasználói felületen, hogy megtudja, milyen folyamathoz csatlakozzon.
+ A WaIISHost. exe fájlhoz csatolva is csatolhat webes szerepkörhöz.
+Ha az alkalmazásban több feldolgozói szerepkör is található, akkor a folyamatazonosító kell használnia, hogy megkülönböztesse őket. A folyamatazonosító programozott módon kérdezheti le a Process objektum elérésével. Ha például hozzáadja ezt a kódot a RoleEntryPoint származtatott osztályának futtatási metódusához egy szerepkörben, a számítási emulátor felhasználói felületén megtekintheti a naplót, amelyből megtudhatja, hogy milyen folyamathoz csatlakozhat.
 
 ```csharp
 var process = System.Diagnostics.Process.GetCurrentProcess();
@@ -100,37 +100,37 @@ Trace.WriteLine(message, "Information");
 
 A napló megtekintéséhez indítsa el a számítási emulátor felhasználói felületét.
 
-![A számítási emulátor felhasználói felületének indítása][8]
+![A számítási emulátor felhasználói felületének elindítása][8]
 
-Nyissa meg a feldolgozói szerepkör naplókonzolablakát a Számítási emulátor felhasználói felületén a konzolablak címsorára kattintva. A folyamatazonosító a naplóban látható.
+A konzol ablakának címsorára kattintva nyissa meg a feldolgozói szerepkör naplózása konzol ablakát a számítási emulátor felhasználói felületén. A naplóban láthatja a folyamat AZONOSÍTÓját.
 
-![Folyamatazonosító megtekintése][9]
+![Folyamat AZONOSÍTÓjának megtekintése][9]
 
-Az egyik már csatolt, hajtsa végre a lépéseket az alkalmazás felhasználói felületén (ha szükséges), hogy reprodukálja a forgatókönyvet.
+Az egyiket, amelyet csatolt, hajtsa végre az alkalmazás felhasználói felületének (ha szükséges) lépéseit a forgatókönyv újbóli létrehozásához.
 
-Ha le szeretné állítani a profilkészítést, válassza a **Profilkészítés leállítása hivatkozást.**
+Ha le szeretné állítani a profilkészítést, válassza a **profilkészítés leállítása** hivatkozást.
 
 ![Profilkészítés leállítása beállítás][10]
 
-## <a name="3-view-performance-reports"></a>3: Teljesítményjelentések megtekintése
-Megjelenik az alkalmazás teljesítményjelentése.
+## <a name="3-view-performance-reports"></a>3: a teljesítményadatokat tartalmazó jelentések megtekintése
+Megjelenik az alkalmazáshoz tartozó teljesítmény jelentés.
 
-Ezen a ponton a profilozó leállítja a végrehajtást, adatokat ment egy .vsp fájlba, és megjelenít egy jelentést, amely az adatok elemzését mutatja.
+Ezen a ponton a Profiler leállítja a végrehajtást, egy. VSP fájlba menti az adatait, és megjelenít egy jelentést, amely megjeleníti az adatelemzést.
 
-![Profiler jelentés][11]
+![Profiler-jelentés][11]
 
-Ha a String.wstrcpy a Hot Path-ban jelenik meg, kattintson a Just My Code gombra a nézet módosításához, hogy csak a felhasználói kódot jelenítse meg.  Ha a String.Concat, próbálja meg az Összes kód megjelenítése gombot.
+Ha a "string. wstrcpy" szöveget látja a gyors elérési úton, kattintson a Saját kód elemre a nézet módosításához a csak felhasználói kód megjelenítéséhez.  Ha a string. concat látja, próbálkozzon a minden kód megjelenítése gomb megnyomásával.
 
-Látnia kell a Concatenate metódust, és a String.Concat a végrehajtási idő nagy részét veszi fel.
+Ekkor meg kell jelennie az ÖSSZEFŰZ metódusnak és a string. összefűzésnek, amely a végrehajtási idő nagy részét veszi figyelembe.
 
-![A jelentés elemzése][12]
+![Jelentés elemzése][12]
 
-Ha a cikkben hozzáadta a karakterlánc-összefűzési kódot, akkor a feladatlistában figyelmeztetésnek kell lennie. Azt is láthatja, hogy a szemétgyűjtés túl nagy mennyiségű, ami a létrehozott és ártalmatlanított karakterláncok száma miatt jelenik meg.
+Ha ebben a cikkben a karakterlánc-összefűzési kódot adta hozzá, akkor a Feladatlista figyelmeztetés jelenik meg. Azt is láthatja, hogy a rendszer túl nagy mennyiségű szemetet gyűjt, ami a létrehozott és ártalmatlanított karakterláncok száma miatt.
 
-![Teljesítményre vonatkozó figyelmeztetések][14]
+![Teljesítménnyel kapcsolatos figyelmeztetések][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: Módosítások végrehajtása és teljesítmény összehasonlítása
-A teljesítmény a kódmódosítás előtt és után is összehasonlítható.  Állítsa le a futó folyamatot, és szerkesztse a kódot, hogy a karakterlánc-összefűzési műveletet a StringBuilder használatával cserélje le:
+## <a name="4-make-changes-and-compare-performance"></a>4: módosítások végrehajtása és a teljesítmény összehasonlítása
+A teljesítményt a kód módosítása előtt és után is összehasonlíthatja.  Állítsa le a futó folyamatot, és szerkessze a kódot, és cserélje le a karakterlánc-összefűzési műveletet a StringBuilder használatával:
 
 ```csharp
 public static string Concatenate(int number)
@@ -145,26 +145,26 @@ public static string Concatenate(int number)
 }
 ```
 
-Végezze el a teljesítmény futtatását, majd hasonlítsa össze a teljesítményt. A Teljesítménykezelőben, ha a futtatások ugyanabban a munkamenetben vannak, csak jelölje ki mindkét jelentést, nyissa meg a helyi menüt, és válassza a **Teljesítményjelentések összehasonlítása parancsot.** Ha egy másik teljesítménymunkamenetben futtatni kívánt, nyissa meg az **Elemzés menüt,** és válassza **a Teljesítményjelentések összehasonlítása parancsot.** Adja meg mindkét fájlt a megjelenő párbeszédpanelen.
+Végezzen el egy másik teljesítményt, majd hasonlítsa össze a teljesítményt. Ha a teljesítmény-kezelőben a futtatások ugyanabban a munkamenetben találhatók, egyszerűen kiválaszthatja mindkét jelentést, megnyithatja a helyi menüt, és választhatja a **teljesítmény-jelentések összehasonlítása**lehetőséget is. Ha egy másik teljesítmény-munkamenetben lévő futtatással szeretne összehasonlítani, nyissa meg az **elemzés** menüt, és válassza a **teljesítmény-jelentések összehasonlítása**lehetőséget. A megjelenő párbeszédpanelen mindkét fájlt meg kell adni.
 
-![Teljesítményjelentések összehasonlítása beállítás][15]
+![Teljesítmény-jelentések összehasonlítása lehetőség][15]
 
 A jelentések kiemelik a két futtatás közötti különbségeket.
 
 ![Összehasonlító jelentés][16]
 
-Gratulálunk! A profilozóval kezdted.
+Gratulálunk! A Profiler elindult.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-* Győződjön meg arról, hogy egy kiadási buildet profiloz, és hibakeresés nélkül kezdi el.
-* Ha a Profilozó menüben nincs engedélyezve az Csatolás/leválasztás lehetőség, futtassa a Teljesítmény varázslót.
-* A számítási emulátor felhasználói felület használatával megtekintheti az alkalmazás állapotát. 
-* Ha problémái vannak az alkalmazások indításával az emulátorban, vagy csatlakoztatják a profilozót, állítsa le a számítási emulátort, és indítsa újra. Ha ez nem oldja meg a problémát, próbálkozzon az újraindításlehetőséggel. Ez a probléma akkor fordulhat elő, ha a számítási emulátor használatával függeszti fel és távolítja el a futó központi telepítéseket.
-* Ha a parancssorból, különösen a globális beállításokból származó profilkészítési parancsokbármelyikét használta, győződjön meg arról, hogy a VSPerfClrEnv /globaloff hívása meg van,és hogy a VsPerfMon.exe le van állítva.
-* Ha mintavételkor a "PRF0025: Nincs adat gyűjtés" üzenet jelenik meg, ellenőrizze, hogy a hozzácsatolt folyamat rendelkezik-e processzortevékenységgel. Előfordulhat, hogy azok az alkalmazások, amelyek nem végeznek számítási munkát, előfordulhat, hogy nem hoznak létre mintavételi adatokat.  Az is lehetséges, hogy a folyamat kilépett, mielőtt bármilyen mintavételi került sor. Ellenőrizze, hogy a profilkészítésáltal futtatott metódus nem szűnik-e meg.
+* Győződjön meg arról, hogy a kiadás létrehozásához profilkészítést készít, és hibakeresés nélkül indítja el.
+* Ha a Profiler menüben nincs engedélyezve a csatolás/leválasztás lehetőség, futtassa a teljesítmény varázslót.
+* Az alkalmazás állapotának megtekintéséhez használja a számítási emulátor felhasználói felületét. 
+* Ha problémák merülnek fel az emulátorban, vagy csatolja a Profilert, állítsa le a Compute Emulator, majd indítsa újra. Ha ez nem oldja meg a problémát, próbálja meg újraindítani. Ez a probléma akkor fordulhat elő, ha a számítási emulátor használatával felfüggeszti és eltávolítja a futó központi telepítéseket.
+* Ha a parancssorból bármelyik profilkészítési parancsot használta, különösen a globális beállításokat, győződjön meg arról, hogy a VSPerfClrEnv/globaloff meghívása megtörtént, és hogy a VsPerfMon. exe le lett állítva.
+* Ha mintavételezéskor a "PRF0025: nem gyűjtött adatokat" üzenet jelenik meg, ellenőrizze, hogy a csatlakoztatott folyamat rendelkezik-e CPU-tevékenységgel. Előfordulhat, hogy a számítási munkát nem végző alkalmazások nem hoznak létre mintavételi adatmennyiséget.  Az is lehetséges, hogy a folyamat kilépett a mintavételezés befejezése előtt. Ellenőrizze, hogy egy profilkészítési szerepkör futtatási metódusa nem áll-e le.
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure bináris fájlok emulátorban történő instrumentálása nem támogatott a Visual Studio profilkezelőben, de ha tesztelni szeretné a memóriafoglalást, ezt a beállítást választhatja profilkészítéskor. Kiválaszthatja az egyidejűségprofilozást is, amely segít meghatározni, hogy a szálak a zárolások ért versengő időt vagy a réteginterakciós profilalkotást használják-e, ami segít a teljesítményproblémák nyomon követésében az alkalmazás szintjei között, a legtöbb gyakran az adatszint és a feldolgozói szerepkör között.  Megtekintheti az alkalmazás által létrehozott adatbázis-lekérdezéseket, és a profilkészítési adatok segítségével javíthatja az adatbázis használatát. A réteginterakciós profilalkotásról a következő blogbejegyzésben talál: [A Réteginterakciós profilkészítő használata a Visual Studio Team System 2010-ben.][3]
+A Visual Studio Profiler nem támogatja az Azure bináris fájljainak az emulátorban való kiosztását, de ha a memóriát le szeretné tesztelni, kiválaszthatja ezt a lehetőséget a profilkészítés során. A párhuzamossági profilkészítést is választhatja, amely segítségével meghatározhatja, hogy a szálak a zárolások vagy a rétegbeli interakciók profilkészítését használják-e, ami segít nyomon követni a teljesítménnyel kapcsolatos problémákat, amikor interakciót végez az alkalmazás szintjei között, ami leggyakrabban az adatréteg és a feldolgozói szerepkör között van.  Megtekintheti az alkalmazás által generált adatbázis-lekérdezéseket, és a profilkészítési adatait használva javíthatja az adatbázis használatát. További információ a szinttel kapcsolatos interakciós profilkészítésről: a [platformon elérhető interakciós Profiler használata a Visual Studio Team System 2010-ben][3]című blogbejegyzésben.
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: https://msdn.microsoft.com/library/azure/hh411542.aspx

@@ -1,7 +1,7 @@
 ---
-title: Az Azure virtuális gép hálózati átviteli csatornájának tesztelése
+title: Azure-beli virtuálisgép-hálózat teljesítményének tesztelése
 titlesuffix: Azure Virtual Network
-description: Ismerje meg, hogyan tesztelhet azure-beli virtuálisgép-hálózati átviteli.
+description: Ismerje meg, hogyan tesztelheti az Azure-beli virtuális gépek hálózati átviteli sebességét.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -13,152 +13,152 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60743077"
 ---
-# <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli adatvizsgálat (NTTTCP)
+# <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
-Amikor teszteli a hálózati átviteli teljesítmény az Azure-ban, a legjobb, ha egy olyan eszközt, amely a hálózattesztelésre célozza a hálózatot, és minimálisra csökkenti a teljesítményt befolyásoló egyéb erőforrások használatát. NTTTCP használata ajánlott.
+Az Azure-ban a hálózati teljesítmény teljesítményének tesztelésekor érdemes olyan eszközt használni, amely a hálózat tesztelésére és a teljesítményre gyakorolt hatásának minimalizálására használható. A NTTTCP használata ajánlott.
 
-Másolja az eszközt két azonos méretű Azure-gépre. Az egyik virtuális gép SENDER, a másik pedig VEVŐKÉNT működik.
+Másolja az eszközt két azonos méretű Azure-beli virtuális gépre. Egy virtuális gép KÜLDŐként és a másikat FOGADÓként működik.
 
-#### <a name="deploying-vms-for-testing"></a>Virtuális gépek telepítése tesztelésre
-Ennek a tesztnek a céljaira a két virtuális gépnek ugyanabban a felhőszolgáltatásban vagy ugyanabban a rendelkezésre állási csoportban kell lennie, hogy használhassuk a belső IP-jüket, és kizárhassuk a terheléselosztókat a tesztből. Lehetőség van a VIP-vel való tesztelésre, de ez a fajta tesztelés kívül esik a jelen dokumentum hatókörén.
+#### <a name="deploying-vms-for-testing"></a>Virtuális gépek üzembe helyezése teszteléshez
+Ebben a tesztben a két virtuális gépnek ugyanabban a felhőalapú szolgáltatásban vagy ugyanazon rendelkezésre állási csoportban kell lennie, hogy a belső IP-címeket használják, és kizárja a terheléselosztó a tesztből való kizárását. A virtuális IP-címen tesztelhető, de az ilyen típusú tesztelés kívül esik a jelen dokumentum hatókörén.
 
-Jegyezze fel a VEVŐ EGYSÉG IP-címét. Nevezzük ezt az IP-t "a.b.c.r"-nek.
+Jegyezze fel a fogadó IP-címét. Nevezzük ezt az IP-címet: "a. b. c. r"
 
-Jegyezze fel a virtuális gép magok számát. Nevezzük ezt\#"num\_core"-nak.
+Jegyezze fel a virtuális gép magok számát. Hívjuk ezt a "\#NUM\_mag" kifejezést
 
-Futtassa az NTTTCP-tesztet 300 másodpercig (vagy 5 percig) a küldő virtuális gépen és fogadó virtuális gépen.
+Futtassa a NTTTCP tesztet 300 másodpercig (vagy 5 percben) a küldő virtuális gépen és a fogadó virtuális gépen.
 
-Tipp: A teszt első beállításakor megpróbálhat egy rövidebb tesztidőszakot, hogy hamarabb visszajelzést kapjon. Ha a szerszám a várt módon működik, a legpontosabb eredmények érdekében hosszabbítsa meg a vizsgálati időszakot 300 másodpercre.
-
-> [!NOTE]
-> A feladónak **és** a fogadónak **ugyanazt a** vizsgálati időtartam paramétert (-t) kell megadnia.
-
-Egyetlen TCP-adat 10 másodpercig való tesztelése:
-
-Vevő paraméterek: ntttcp -r -t 10 -P 1
-
-Feladó paraméterei: ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
+Tipp: Ha első alkalommal állítja be ezt a tesztet, próbálkozzon rövidebb próbaidőszaktal, hogy hamarabb visszajelzést kapjon. Ha az eszköz a várt módon működik, a legpontosabb eredmények érdekében a tesztelési időszakot 300 másodpercre kell kiterjeszteni.
 
 > [!NOTE]
-> Az előző minta csak a konfiguráció megerősítésére használható. A vizsgálat érvényes példáit a dokumentum későbbi részében mutatjuk be.
+> A küldőnek **és** a fogadónak **ugyanazt a** tesztelési időtartam paramétert (-t) kell megadnia.
 
-## <a name="testing-vms-running-windows"></a>Windows rendszerű virtuális gépek tesztelése:
+Egy TCP-adatfolyam tesztelése 10 másodpercig:
 
-#### <a name="get-ntttcp-onto-the-vms"></a>Az NTTTCP beolvasása a virtuális gépekre.
+Fogadó paraméterei: ntttcp-r-t 10-P 1
+
+Feladó paraméterei: ntttcp-s 10.27.33.7-t 10-n 1-P 1
+
+> [!NOTE]
+> Az előző mintát csak a konfiguráció megerősítésére kell használni. A dokumentum későbbi részében érvényes tesztelési példákat talál.
+
+## <a name="testing-vms-running-windows"></a>WINDOWS rendszerű virtuális gépek tesztelése:
+
+#### <a name="get-ntttcp-onto-the-vms"></a>NTTTCP beolvasása a virtuális gépekre.
 
 Töltse le a legújabb verziót:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Vagy keresse meg, <https://www.bing.com/search?q=ntttcp+download> \< ha költözött: -- kell az első találatot
+Vagy keressen rá, ha áthelyezte: <https://www.bing.com/search?q=ntttcp+download> \< --először meg kell nyomnia
 
-Fontolja meg az NTTTCP külön\\mappába helyezését, például c: eszközök
+Fontolja meg a NTTTCP különálló mappába helyezését, például\\a c: Tools
 
 #### <a name="allow-ntttcp-through-the-windows-firewall"></a>NTTTCP engedélyezése a Windows tűzfalon keresztül
-A RECEIVER-en hozzon létre egy Engedélyezési szabályt a Windows tűzfalon, amely lehetővé teszi az NTTTCP-forgalom megérkezését. A legegyszerűbb, ha a teljes NTTTCP-programot név szerint engedélyezi, nem pedig bizonyos TCP-portok bejövő hívását.
+A FOGADÓn hozzon létre egy engedélyezési szabályt a Windows tűzfalon, hogy a NTTTCP-forgalom megérkezik. A legegyszerűbben úgy engedélyezheti a teljes NTTTCP program nevét, hogy nem engedélyezi a bejövő TCP-portok használatát.
 
-Az ntttcp engedélyezése a Windows tűzfalon keresztül a következőknek megfelelően:
+A ntttcp engedélyezése a Windows tűzfalon keresztül:
 
-netsh advfirewall firewall add\<\>\\rule program= PATH ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall Firewall Add Rule program =\<elérési út\>\\ntttcp. exe Name = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
 
-Ha például az ntttcp.exe fájlt a\\"c: tools" mappába másolta, ez a következő parancs lesz: 
+Ha például a ntttcp. exe fájlt a "c:\\Tools" mappába másolta, a parancs a következő lesz: 
 
-netsh advfirewall firewall add rule\\\\program=c: tools ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall Firewall Add Rule program = c:\\eszközök\\ntttcp. exe Name = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
 
 #### <a name="running-ntttcp-tests"></a>NTTTCP-tesztek futtatása
 
-NTTTCP indítása a RECEIVER-en **(cmd-ből,** nem PowerShellből futva):
+NTTTCP elindítása a FOGADÓn (**Futtatás a cmd-ből**, nem a powershellből):
 
-ntttcp -r –m\*\#\_[2 num\*cores], ,a.b.c.r -t 300
+ntttcp-r – m [2\*\#NUM\_mag],\*, a. b. c. r-t 300
 
-Ha a virtuális gép négy maggal és 10.0.0.4-es IP-címmel rendelkezik, az a következőkre néz ki:
+Ha a virtuális gépnek négy magja van, és a 10.0.0.4 IP-címe van, a következőképpen fog kinézni:
 
-ntttcp -r –m\*8, ,10.0.0.4 -t 300
-
-
-NTTTCP indítása a SENDER-en (**cmd-ből futva,** nem PowerShellből):
-
-ntttcp -s -m\*8, ,10.0.0.4 -t 300 
-
-Várjuk meg az eredményeket.
+ntttcp-r – m 8,\*, 10.0.0.4-t 300
 
 
-## <a name="testing-vms-running-linux"></a>Linuxot futtató virtuális gépek tesztelése:
+NTTTCP elindítása a KÜLDŐn (**Futtatás a cmd-ből**, nem a powershellből):
 
-Használja az nttcp-for-linux. Elérhető a<https://github.com/Microsoft/ntttcp-for-linux>
+ntttcp-s – m 8,\*, 10.0.0.4-t 300 
 
-A Linux virtuális gépeken (mind a SENDER, mind a RECEIVER) futtassa ezeket a parancsokat az ntttcp-for-linux előkészítéséhez a virtuális gépeken:
+Várjon az eredményekre.
 
-CentOS - Git telepítése:
+
+## <a name="testing-vms-running-linux"></a>LINUX rendszerű virtuális gépek tesztelése:
+
+A nttcp-for-Linux használata. Elérhető innen:<https://github.com/Microsoft/ntttcp-for-linux>
+
+A Linux rendszerű virtuális gépeken (a küldő és a FOGADÓn is) futtassa ezeket a parancsokat a ntttcp-for-Linux rendszerre való előkészítéséhez a virtuális gépeken:
+
+CentOS – a git telepítése:
 ``` bash
   yum install gcc -y  
   yum install git -y
 ```
-Ubuntu - Git telepítése:
+Ubuntu – a git telepítése:
 ``` bash
  apt-get -y install build-essential  
  apt-get -y install git
 ```
-Gyártmány és telepítés mindkét esetben:
+Mindkettőn végezze el és telepítse a következőt:
 ``` bash
  git clone https://github.com/Microsoft/ntttcp-for-linux
  cd ntttcp-for-linux/src
  make && make install
 ```
 
-Mint a Windows példában, feltételezzük, hogy a Linux RECEIVER IP-címe 10.0.0.4
+A Windows példához hasonlóan feltételezzük, hogy a linuxos fogadó IP-címe 10.0.0.4
 
-Indítsa el az NTTTCP-for-Linux-ot a RECEIVER-en:
+Indítsa el a NTTTCP-for-Linux szolgáltatást a FOGADÓn:
 
 ``` bash
 ntttcp -r -t 300
 ```
 
-És a SENDER, fuss:
+És a KÜLDŐn futtassa a következőt:
 
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
  
-A teszt hossza alapértelmezés szerint 60 másodperc, ha nincs megadva időparaméter
+A teszt hossza alapértelmezett értéke 60 másodperc, ha nincs megadva a Time paraméter
 
-## <a name="testing-between-vms-running-windows-and-linux"></a>Tesztelés Windows és LINUX rendszerű virtuális gépek között:
+## <a name="testing-between-vms-running-windows-and-linux"></a>Windows és LINUX rendszerű virtuális gépek közötti tesztelés:
 
-Ebben a forgatókönyvben engedélyezni kell a no-sync módban, így a teszt futtatható. Ez a **-N jelző** linuxos és **-ns-jelzővel** történik a Windows rendszerhez.
+Ebben a forgatókönyvben engedélyeznie kell a nem szinkronizált módot, hogy a teszt fusson. Ez a Linux **-N** , a **-NS jelölővel** pedig a Windows esetében történik.
 
 #### <a name="from-linux-to-windows"></a>Linuxról Windowsra:
 
-Windows \<> fogadója:
+Fogadó \<Windows>:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Feladó \<Linux>:
+Feladó \<linuxos>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 ```
 
-#### <a name="from-windows-to-linux"></a>Windows-ról Linuxra:
+#### <a name="from-windows-to-linux"></a>Windowsról Linuxra:
 
-Linux \<> fogadó:
+Fogadó \<linuxos>:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Feladó \<Windows>:
+Küldő \<Windows>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ```
-## <a name="testing-cloud-service-instances"></a>Felhőszolgáltatás-példányok tesztelése:
-A következő szakaszt hozzá kell adnia a ServiceDefinition.csdef
+## <a name="testing-cloud-service-instances"></a>Cloud Service-példányok tesztelése:
+A következő szakaszt hozzá kell adnia a ServiceDefinition. csdef
 ```xml
 <Endpoints>
   <InternalEndpoint name="Endpoint3" protocol="any" />
@@ -166,6 +166,6 @@ A következő szakaszt hozzá kell adnia a ServiceDefinition.csdef
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Az eredményektől függően előfordulhat, hogy van hely [a hálózati átviteli gépek optimalizálása](virtual-network-optimize-network-bandwidth.md) a forgatókönyvhöz.
-* További információ [arról, hogy a virtuális gépek mennyi sávszélességet osztanak ki](virtual-machine-network-throughput.md)
-* További információ az [Azure Virtual Network gyakori kérdéseivel (GYIK)](virtual-networks-faq.md)
+* Az eredményektől függően előfordulhat, hogy a forgatókönyvhöz a [hálózati átviteli sebességű gépeket optimalizálni](virtual-network-optimize-network-bandwidth.md) kell.
+* További információ arról [, hogyan vannak lefoglalva a sávszélesség a virtuális gépekhez](virtual-machine-network-throughput.md)
+* További információ az [Azure Virtual Network gyakori kérdéseiről (GYIK)](virtual-networks-faq.md)

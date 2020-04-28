@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69015053"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portalon egy Azure Media Services alkalmazással.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzésének feltételei a következők:
 
-* Egy Azure-fiók. További részletek az [Azure ingyenes próbaverziója.](https://azure.microsoft.com/pricing/free-trial/) 
-* Egy Media Services-fiók. Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása című témakörben.](media-services-portal-create-account.md)
+* Egy Azure-fiók. Részletekért lásd: az [Azure ingyenes próbaverziója](https://azure.microsoft.com/pricing/free-trial/). 
+* Egy Media Services-fiók. Media Services fiók létrehozásával kapcsolatban lásd: [Media Services-fiók létrehozása](media-services-portal-create-account.md).
 
 Az oktatóanyag a következő feladatokat tartalmazza:
 
@@ -51,8 +51,8 @@ Az Azure Media Services egyik leggyakrabban használt funkciója a videók tová
 
 A streamvégpont elindítása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. Válassza a **Beállítások** > **streamelési végpontok lehetőséget.** 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza a **Beállítások** > **streaming végpontok**lehetőséget. 
 3. Válassza ki az alapértelmezett streamvégpontot. Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
 4. Válassza ki a **Start** ikont.
 5. Válassza ki a **Mentés** gombot.
@@ -61,7 +61,7 @@ A streamvégpont elindítása:
 Ha a Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Beállítások** > **eszközök lehetőséget.** Ezután válassza ki a **Feltöltés** gombot.
+2. Válassza a **Beállítások** > **eszközök**elemet. Ezután válassza ki a **Feltöltés** gombot.
    
     ![Fájlok feltöltése](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,7 +84,7 @@ Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja több
 Kódolás a Media Encoder Standard használatával az Azure Portalon:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Beállítások** > **eszközök lehetőséget.** Válassza ki a kódolni kívánt objektumot.
+2. Válassza a **Beállítások** > **eszközök**elemet. Válassza ki a kódolni kívánt objektumot.
 3. Válassza ki a **Kódolás** gombot.
 4. Az **Objektum kódolása** ablakban válassza a **Media Encoder Standard** feldolgozóeszközt, és egy beállításkészletet. A beállításkészletekkel kapcsolatos információkért lásd a [sávszélességi skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) és a [Media Encoder Standard előre beállított feladatait](media-services-mes-presets-overview.md) ismertető részeket. Fontos, hogy a bemeneti videóhoz legmegfelelőbb beállításkészlet legyen kiválasztva. Ha például tudja, hogy a bemeneti videó felbontása 1920 &#215; 1080 képpont, akkor választhatja a **H264 Multiple Bitrate 1080p** beállításkészletet. Ha a videó alacsony (640 &#215; 360) felbontású, ne használja a **H264 Multiple Bitrate 1080p** beállításkészletet.
    
@@ -104,7 +104,7 @@ Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használh
 * **Streamelési (OnDemandOrigin) lokátorok**. A streamelési lokátorok adaptív streameléshez használhatók. Példák adaptív streamelésre: HLS, Smooth Streaming és MPEG DASH. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism fájlt. 
 * **Progresszív (SAS-) lokátorok**. A progresszív lokátorok a videók progresszív letöltésen keresztül történő továbbítására használatosak.
 
-HLS streamelési URL-cím ének létrehozásához fűzz *hozzá (format=m3u8-aapl)* az URL-címhez:
+HLS streaming URL-cím létrehozásához fűzze hozzá a *(Format = m3u8-AAPL)* címet az URL-címhez:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -132,7 +132,7 @@ A lokátor lejárati idejének módosításához használjon [REST API](https://
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Beállítások** > **eszközök lehetőséget.** Válassza ki a közzétenni kívánt objektumot.
+2. Válassza a **Beállítások** > **eszközök**elemet. Válassza ki a közzétenni kívánt objektumot.
 3. Válassza ki a **Közzététel** gombot.
 4. Válassza ki a lokátor típusát.
 5. Válassza a **Hozzáadás** lehetőséget.

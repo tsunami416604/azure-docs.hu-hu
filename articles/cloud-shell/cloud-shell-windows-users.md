@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell Windows-felhasználóknak | Microsoft dokumentumok
+title: Azure Cloud Shell a Windows-felhasználók számára | Microsoft Docs
 description: Útmutató a Linux rendszereket nem ismerő felhasználók számára
 services: azure
 documentationcenter: ''
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67204139"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell a Cloud Shellben Windows-felhasználóknak
 
-2018 májusában [módosításokat jelentettek be](https://azure.microsoft.com/blog/pscloudshellrefresh/) a PowerShellre az Azure Cloud Shellben.
-Az Azure Cloud Shell PowerShell-élménye mostantól linuxos környezetben futtatja a [PowerShell Core](https://github.com/powershell/powershell) 6-ot.
-Ezzel a módosítással előfordulhat, hogy a PowerShell-élmény a Cloud Shellben a Windows PowerShell-környezetben várhatóhoz képest némi különbséget mutat.
+Május 2018-én a módosítások a PowerShellben Azure Cloud Shell-ben [jelent](https://azure.microsoft.com/blog/pscloudshellrefresh/) meg.
+A Azure Cloud Shell PowerShell-felülete mostantól a [PowerShell Core 6](https://github.com/powershell/powershell) rendszert futtatja egy Linux-környezetben.
+Ennek a változásnak az a része, hogy az Cloud Shell PowerShell-felülete némileg eltér a várt Windows PowerShell-környezethez képest.
 
-## <a name="file-system-case-sensitivity"></a>Fájlrendszer kis- és nagybetűk megkülönböztetése
+## <a name="file-system-case-sensitivity"></a>Fájlrendszerbeli kis-és nagybetűk megkülönböztetése
 
-A fájlrendszer nem érzékeny a kis- és nagybetűkre a Windows rendszerben, míg Linux on a fájlrendszer a kis- és nagybetűket.
-Korábban, `file.txt` és `FILE.txt` úgy ítélték meg, hogy ugyanazt a fájlt, de most már úgy kell tekinteni, hogy a különböző fájlokat.
-A fájlrendszerben megfelelő `tab-completing` burkolatot kell használni.
-A PowerShell-specifikus `tab-completing` tapasztalatok, például a parancsmag nevei, paraméterei és értékei nem tartalmaznak kis- és nagybetűket.
+A fájlrendszer megkülönbözteti a kis-és nagybetűket a Windowsban, míg a Linux rendszeren a kis-és nagybetűk megkülönböztetésére is.
+Korábban `file.txt` és `FILE.txt` ugyanezt a fájlt tekintették, de mostantól különböző fájloknak számítanak.
+A fájlrendszerben a megfelelő burkolatot kell használni `tab-completing` .
+A PowerShell-specifikus élmények `tab-completing` , például a parancsmagok neve, paramétere és értéke nem megkülönbözteti a kis-és nagybetűket.
 
-## <a name="windows-powershell-aliases-vs-linux-utilities"></a>A Windows PowerShell aliasok és Linux-segédprogramok
+## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell-aliasok vs Linux-segédprogramok
 
-Egyes meglévő PowerShell-aliasok neve megegyezik a beépített `cat`Linux-parancsokkal, például ,`ls`, `sort`, `sleep`, stb. A PowerShell Core 6-ban a beépített Linux-parancsokkal ütköző aliasokat eltávolították.
-Az alábbiakban az eltávolított általános aliasokat, valamint azok megfelelő parancsait találjuk meg:  
+Egyes meglévő PowerShell-aliasok nevei megegyeznek a beépített Linux- `cat`parancsokkal, például`ls` `sort` `sleep`:,, stb. A PowerShell Core 6-ban a beépített Linux-parancsokkal ütköző aliasok el lettek távolítva.
+Alább láthatók azok a közös aliasok, amelyek el lettek távolítva, valamint egyenértékű parancsaik:  
 
-|Eltávolított alias   |Egyenértékű parancs   |
+|Alias eltávolítva   |Egyenértékű parancs   |
 |---|---|
 |`cat`    | `Get-Content` |
 |`curl`   | `Invoke-WebRequest` |
@@ -51,22 +51,22 @@ Az alábbiakban az eltávolított általános aliasokat, valamint azok megfelel�
 |`sort`   | `Sort-Object` |
 |`wget`   | `Invoke-WebRequest` |
 
-## <a name="persisting-home"></a>A $HOME továbbra is fennáll
+## <a name="persisting-home"></a>$HOME fenntartása
 
-A korábbi felhasználók csak parancsfájlokat és más fájlokat tudtak megtartani a Cloud Drive-on.
+A korábbi felhasználók csak parancsfájlokat és egyéb fájlokat maradhatnak a felhőalapú meghajtóban.
 Most a felhasználó $HOME könyvtára is megmarad a munkamenetek között.
 
 ## <a name="powershell-profile"></a>PowerShell-profil
 
-Alapértelmezés szerint a felhasználó PowerShell-profilja nem jön létre.
-A profil létrehozásához `PowerShell` hozzon `$HOME/.config`létre egy könyvtárat a területen.
+Alapértelmezés szerint a rendszer nem hozza létre a felhasználó PowerShell-profilját.
+A profil létrehozásához hozzon létre `PowerShell` egy könyvtárat `$HOME/.config`a alatt.
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-A `$HOME/.config/PowerShell`területen létrehozhatja profilfájljait `profile.ps1` `Microsoft.PowerShell_profile.ps1`- és/vagy .
+`$HOME/.config/PowerShell`A alkalmazásban a profil fájljait ( `profile.ps1` és/vagy `Microsoft.PowerShell_profile.ps1`) hozhatja létre.
 
 ## <a name="whats-new-in-powershell-core-6"></a>A PowerShell Core 6 újdonságai
 
-A PowerShell Core 6 újdonságairól a [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) és a [PowerShell Core](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) első lépései blogbejegyzést.
+A PowerShell Core 6 újdonságával kapcsolatos további információkért tekintse át a [PowerShell-docs](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) és a [első lépések a PowerShell Core](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) blogbejegyzésben.

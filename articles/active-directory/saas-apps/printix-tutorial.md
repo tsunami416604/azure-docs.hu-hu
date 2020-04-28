@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Printix-szel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Printix között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Printix-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Printix között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,27 +16,27 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "62111463"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Oktatóanyag: Az Azure Active Directory integrációja a Printix-szel
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Oktatóanyag: Azure Active Directory integráció a Printix
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Printixet az Azure Active Directoryval (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Printix a Azure Active Directory (Azure AD) szolgáltatással.
 
-A Printix integrálása az Azure AD-vel a következő előnyöket nyújtja:
+A Printix és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-- Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Printix-hez
-- Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve a Printix (Single Sign-On) az Azure AD-fiókok
-- Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon
+- Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Printix
+- Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkeznek a Printix (egyszeri bejelentkezés) az Azure AD-fiókkal
+- A fiókokat egyetlen központi helyen kezelheti – a Azure Portal
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, tekintse meg, [hogy mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval.](../manage-apps/what-is-single-sign-on.md)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció nyomtatásához a következő elemekre van szükség:
+Az Azure AD-integráció Printix való konfigurálásához a következő elemek szükségesek:
 
 - Azure AD-előfizetés
 - Printix egyszeri bejelentkezésre engedélyezett előfizetés
@@ -44,197 +44,197 @@ Az Azure AD-integráció nyomtatásához a következő elemekre van szükség:
 > [!NOTE]
 > Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát.
 
-Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi ajánlásokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
-- Ne használja az éles környezetet, kivéve, ha ez szükséges.
-- Ha nem rendelkezik Azure AD próbakörnyezettel, [itt](https://azure.microsoft.com/pricing/free-trial/)egy hónapos próbaverziót kaphat.
+- Ne használja éles környezetét, ha szükséges.
+- Ha még nem rendelkezik Azure AD-próbaverzióval, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben. Az oktatóanyagban ismertetett forgatókönyv két fő építőelemből áll:
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését teszteli a tesztelési környezetben. Az oktatóanyagban ismertetett forgatókönyv két fő építőelemet tartalmaz:
 
-1. Printix hozzáadása a galériából
-1. Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+1. Printix hozzáadása a gyűjteményből
+1. Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-## <a name="adding-printix-from-the-gallery"></a>Printix hozzáadása a galériából
-A Printix Azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Printix-et a katalógusból a felügyelt SaaS-alkalmazások listájához.
+## <a name="adding-printix-from-the-gallery"></a>Printix hozzáadása a gyűjteményből
+A Printix Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Printix a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a Printixet a katalógusból szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
+**Ha Printix szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára. 
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-1. Nyissa meg a **Vállalati alkalmazások at.** Akkor megy **Minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazásokhoz**. Ezután nyissa meg az **összes alkalmazást**.
 
     ![Alkalmazások][2]
     
-1. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+1. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
     ![Alkalmazások][3]
 
-1. A keresőmezőbe írja be a **Printix**parancsot.
+1. A keresőmezőbe írja be a **Printix**kifejezést.
 
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/tutorial_printix_search.png)
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. Az eredménypanelen válassza a **Printix**lehetőséget, majd az alkalmazás hozzáadásához kattintson a **Hozzáadás** gombra.
+1. Az eredmények panelen válassza a **Printix**lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
-Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést a Printix-szel a "Britta Simon" nevű tesztfelhasználó alapján.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Printix-mel konfigurálja és teszteli a "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Egyszeri bejelentkezés a munka, az Azure AD tudnia kell, hogy mi a megfelelő felhasználó Printix az Azure AD felhasználó számára. Más szóval létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Printix-ben.
+Az egyszeri bejelentkezés működéséhez az Azure AD-nek tudnia kell, hogy mi a Printix felhasználója az Azure AD-ben. Más szóval az Azure AD-felhasználó és a Printix kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítésére van szükség.
 
-A Printix ben rendelje hozzá a **felhasználónév** értékét az Azure AD-ben a **felhasználónév** értékeként a kapcsolat létrehozásához.
+A Printix-ben rendelje hozzá a **Felhasználónév értékét** az Azure ad-ben a kapcsolati kapcsolat létrehozásához használt **Felhasználónév** értékeként.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Printix-szel a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés Printix való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálása az Azure AD egyszeri bejelentkezés](#configuring-azure-ad-single-sign-on)** – a felhasználók számára, hogy ezt a funkciót.
-1. **[Azure AD-tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-1. **[Printix-tesztfelhasználó létrehozása](#creating-a-printix-test-user)** – britta Simon megfelelője a Printix ben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-1. **[Az Azure AD-tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)** – annak érdekében, hogy Britta Simon az Azure AD egyszeri bejelentkezést használhasson.
-1. **[Az egyszeri bejelentkezés tesztelése](#testing-single-sign-on)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+1. **[Azure ad-felhasználó létrehozása](#creating-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+1. **[Printix-teszt felhasználó létrehozása](#creating-a-printix-test-user)** – ahhoz, hogy a Printix Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+1. **[Az Azure ad-teszt felhasználójának kiosztása](#assigning-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon, és konfigurálja az egyszeri bejelentkezést a Printix-alkalmazásban.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfigurálhatja az egyszeri bejelentkezést a Printix alkalmazásban.
 
-**Az Azure AD egyszeri bejelentkezésének nyomtatással történő konfigurálásához hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés Printix való konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Az Azure Portalon a **Printix** alkalmazásintegrációs lapon kattintson az **Egyszeri bejelentkezés gombra.**
+1. A Azure Portal **Printix** alkalmazás-integráció lapján kattintson az **egyszeri bejelentkezés**elemre.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-1. Az **egyszeri bejelentkezés** párbeszédpanelen válassza a **Mód** **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+1. Az **egyszeri** Bejelentkezés párbeszédpanelen válassza a **mód** **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
-1. A **Printix tartomány és URL-címek szakaszban hajtsa** végre az alábbi lépéseket:
+1. A **Printix tartomány és URL-címek** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_url.png)
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.printix.net`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Az érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a Printix ügyféltámogatási csapatával](mailto:support@printix.net) az érték lefelvételéhez. 
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Printix ügyfélszolgálati [csapatához](mailto:support@printix.net) . 
  
-1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Metaadat-XML** elemre, majd mentse a metaadatfájlt a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **metaadatok XML** elemre, majd mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save (Mentés** ) gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_general_400.png)
 
-1. Jelentkezzen be a Printix-bérlőhöz rendszergazdaként.
+1. Jelentkezzen be rendszergazdaként a Printix-bérlőbe.
 
-1. A felső menüben kattintson a jobb felső sarokban lévő ikonra, és válassza a "**Hitelesítés**" lehetőséget.
+1. A felső menüben kattintson a jobb felső sarokban lévő ikonra, és válassza a "**hitelesítés**" lehetőséget.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_06.png)
 
-1. A **Telepítés** lapon válassza az **Azure/Office 365-hitelesítés engedélyezése** lehetőséget.
+1. A **telepítés** lapon válassza az **Azure/Office 365-hitelesítés engedélyezése** lehetőséget.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. Az **Azure** lapon a bemeneti összevonásmetaadat-URL-cím az "**összevonási metaadat-dokumentum**" szövegmezőjébe. 
+1. Az **Azure** lapon adja meg a "**összevonás metaadatainak dokumentum**" szövegmezőbe az összevonási metaadatok URL-címét. 
 
-    Csatolja az Azure AD-ből letöltött metaadat-XML-fájlt a [Printix támogatási csapatához.](mailto:support@printix.net) Ezután feltöltik az XML-fájlt, és megadják az összevonási metaadat-URL-címet.
+    Csatolja a metaadatokat tartalmazó XML-fájlt, amelyet az Azure AD-ből töltött le az [Printix támogatási csapatának](mailto:support@printix.net). Ezután feltöltik az XML-fájlt, és megadják az összevonási metaadatok URL-címét.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Kattintson a **"Teszt**" gombra, majd az **"OK"** gombra, ha a teszt sikeres volt.
+1. Kattintson a "**teszt**" gombra, és kattintson az "**OK**" gombra, ha a teszt sikeres volt.
    
-     Az Azure active directory lapja a **tesztgombra** való kattintás után jelenik meg. "A teszt sikeres volt" itt azt jelenti, hogy az Azure-tesztfiók hitelesítő adatainak megadása után megjelenik egy üzenet " Beállítások tesztelt OK". Ezután kattintson az **OK** gombra.
+     Az Azure Active Directory oldal a **tesztelés** gombra kattintva jelenik meg. "A teszt sikeres volt": az Azure-beli tesztelési fiók hitelesítő adatainak megadása után megjelenik egy üzenet, amely "a beállítások tesztelték az OK" üzenetet. Ezután kattintson az **OK** gombra.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. Kattintson a **Mentés** gombra a **"Hitelesítés"** lapon.
+1. Kattintson a **Mentés** gombra a "**hitelesítés**" lapon.
 
 
 > [!TIP]
-> Az alkalmazás beállítása közben az [Azure Portalon](https://portal.azure.com)belül elolvashatja ezen utasítások tömör verzióját!  Miután hozzáadta ezt az alkalmazást az **Active Directory > Enterprise Applications** szakaszból, egyszerűen kattintson az Egyszeri **bejelentkezés** fülre, és az alsó **konfigurációs** szakaszon keresztül érheti el a beágyazott dokumentációt. A beágyazott dokumentációs funkcióról itt olvashat bővebben: [Az Azure AD beágyazott dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Most már beolvashatja ezeket az utasításokat a [Azure Portalon](https://portal.azure.com)belül, miközben beállíthatja az alkalmazást!  Miután hozzáadta az alkalmazást a **Active Directory > Enterprise Applications** szakaszban, egyszerűen kattintson az **egyszeri bejelentkezés** lapra, és az alján található **konfigurációs** szakaszon keresztül férhet hozzá a beágyazott dokumentációhoz. A beágyazott dokumentációs szolgáltatásról további információt itt talál: az [Azure ad Embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
 ![Azure AD-felhasználó létrehozása][100]
 
-**Ha tesztfelhasználót szeretne létrehozni az Azure AD-ben, hajtsa végre a következő lépéseket:**
+**Tesztelési felhasználó Azure AD-beli létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Az **Azure Portalon**a bal oldali navigációs ablakban kattintson az **Azure Active Directory** ikonjára.
+1. A **Azure Portal**bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
 
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/create_aaduser_01.png) 
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. A felhasználók listájának megjelenítéséhez nyissa meg a **Felhasználók és csoportok** lapot, és kattintson a Minden felhasználó **elemre.**
+1. A felhasználók listájának megjelenítéséhez lépjen a **felhasználók és csoportok** elemre, és kattintson a **minden felhasználó**lehetőségre.
     
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/create_aaduser_02.png) 
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. A **Felhasználó** párbeszédpanel megnyitásához kattintson a párbeszédpanel tetején a **Hozzáadás** gombra.
+1. A **felhasználó** párbeszédpanel megnyitásához kattintson a párbeszédpanel tetején található **Hozzáadás** gombra.
  
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/create_aaduser_03.png) 
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/create_aaduser_03.png) 
 
-1. A **Felhasználó** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. A **felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket:
  
-    ![Azure AD-tesztfelhasználó létrehozása](./media/printix-tutorial/create_aaduser_04.png) 
+    ![Azure AD-tesztkörnyezet létrehozása](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. A **Név** mezőbe írja be **a BrittaSimon (BrittaSimon)** mezőbe.
+    a. A **név** szövegmezőbe írja be a következőt: **BrittaSimon**.
 
-    b. A **Felhasználónév** mezőbe írja be BrittaSimon **e-mail címét.**
+    b. A **Felhasználónév** szövegmezőbe írja be a BrittaSimon **e-mail-címét** .
 
-    c. Válassza **a Jelszó megjelenítése** lehetőséget, és írja le a **Jelszó**értékét.
+    c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó**értékét.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
  
-### <a name="creating-a-printix-test-user"></a>Printix-tesztfelhasználó létrehozása
+### <a name="creating-a-printix-test-user"></a>Printix-tesztelési felhasználó létrehozása
 
-A cél ebben a szakaszban, hogy hozzon létre egy felhasználó nevű Britta Simon a Printix. A Printix támogatja a just-in-time kiépítést, amely alapértelmezés szerint engedélyezve van.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Printix-ben. A Printix támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van.
 
-Ebben a szakaszban nincs műveletelem. Új felhasználó jön létre a Printix elérésére tett kísérlet során, ha még nem létezik. 
+Ez a szakasz nem tartalmaz műveleti elemeket. Új felhasználó jön létre a Printix elérésére tett kísérlet során, ha még nem létezik. 
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, kapcsolatba kell lépnie a [Printix támogatási csapatával.](mailto:support@printix.net)
+> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [Printix támogatási csapatával](mailto:support@printix.net).
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezheti Britta Simon számára az Azure egyszeri bejelentkezést a Printix-hozzáférés biztosításával.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Printix hozzáférésének biztosításával.
 
-![Felhasználó hozzárendelése][200] 
+![Felhasználó kiosztása][200] 
 
-**Ha Britta Simont szeretné hozzárendelni a Printixhez, hajtsa végre az alábbi lépéseket:**
+**A Britta Simon Printix való hozzárendeléséhez hajtsa végre a következő lépéseket:**
 
-1. Az Azure Portalon nyissa meg az alkalmazások nézetét, majd keresse meg a címtárnézetet, és nyissa meg a **Vállalati alkalmazások,** majd kattintson a **Minden alkalmazás**elemre .
+1. A Azure Portal nyissa meg az alkalmazások nézetet, majd lépjen a könyvtár nézetre, és nyissa meg a **vállalati alkalmazások** lehetőséget, majd kattintson a **minden alkalmazás**elemre.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó kiosztása][201] 
 
-1. Az alkalmazások listájában válassza a **Printix**lehetőséget.
+1. Az alkalmazások listában válassza a **Printix**lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_app.png) 
 
-1. A bal oldali menüben kattintson a **Felhasználók és csoportok**parancsra.
+1. A bal oldali menüben kattintson a **felhasználók és csoportok**elemre.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó kiosztása][202] 
 
-1. Kattintson **a Hozzáadás** gombra. Ezután válassza a **Felhasználók és csoportok** lehetőséget a Hozzárendelés **hozzáadása** párbeszédpanelen.
+1. Kattintson a **Hozzáadás** gombra. Ezután válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![Felhasználó hozzárendelése][203]
+    ![Felhasználó kiosztása][203]
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a Felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán.
 
-1. Kattintson a **Kijelölés** gombra a **Felhasználók és csoportok** párbeszédpanelen.
+1. Kattintson a **felhasználók és csoportok** párbeszédpanel **kijelölés** gombjára.
 
-1. Kattintson a **Hozzárendelés** **gombra** a Hozzárendelés hozzáadása párbeszédpanelen.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Printix csempére kattint, automatikusan bejelentkezik a Printix alkalmazásba.
+Ha a hozzáférési panelen a Printix csempére kattint, a rendszer automatikusan bejelentkezett a Printix alkalmazásba.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](tutorial-list.md)
+* [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 

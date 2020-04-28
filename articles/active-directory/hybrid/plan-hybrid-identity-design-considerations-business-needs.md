@@ -1,6 +1,6 @@
 ---
-title: A hibrid felhőalapú identitástervezés identitáskövetelményei Azure | Microsoft dokumentumok
-description: Azonosítsa a vállalat üzleti igényeit, amelyek alapján meghatározhatja a hibrid identitástervezés követelményeit.
+title: Az Azure hibrid felhőalapú identitásának kialakításához szükséges identitási követelmények | Microsoft Docs
+description: Azonosítsa a vállalat üzleti igényeit, amely a hibrid identitás kialakítására vonatkozó követelmények meghatározását fogja eredményezni.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,92 +18,92 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65950899"
 ---
-# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás identitáskövetelményeinek meghatározása
-A hibrid identitáskezelési megoldás tervezésének első lépése a megoldás thasználó üzleti szervezet követelményeinek meghatározása.  A hibrid identitás támogató szerepkörként indul (hitelesítéssel támogatja az összes többi felhőalapú megoldást), és új és érdekes képességeket biztosít, amelyek új számítási feladatokat oldanak fel a felhasználók számára.  Ezek a számítási feladatok vagy szolgáltatások, amelyeket a felhasználók számára szeretne alkalmazni, diktálja a hibrid identitástervezés követelményeit.  Ezek a szolgáltatások és számítási feladatok kell kihasználni a hibrid identitás, mind a helyszíni és a felhőben.  
+# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitási megoldás identitási követelményeinek meghatározása
+A hibrid identitás megoldásának első lépéseként meg kell határozni a megoldást használó üzleti szervezet követelményeit.  A hibrid identitás támogató szerepkörként indul (az összes többi felhőalapú megoldást támogatja a hitelesítés biztosításával), és új és érdekes képességeket biztosít a felhasználók új munkaterhelésének feloldásához.  Ezek a munkaterhelések vagy szolgáltatások, amelyeket a felhasználók számára kíván alkalmazni, a hibrid identitás kialakítására vonatkozó követelményeket határozzák meg.  Ezeknek a szolgáltatásoknak és munkaterheléseknek a hibrid identitást kell használniuk a helyszíni és a felhőben egyaránt.  
 
-Meg kell, hogy menjen át ezeket a kulcsfontosságú szempontokat az üzleti megérteni, mi ez a követelmény most, és mi a cég tervei a jövőre nézve. Ha nem rendelkezik a láthatósága a hosszú távú stratégia hibrid identitás tervezés, valószínű, hogy a megoldás nem lesz skálázható, mint az üzleti igények növekedését és változását. Az alábbi ábrán egy hibrid identitásarchitektúra és a felhasználók számára feloldott számítási feladatok egy példa látható. Ez csak egy példa az összes új lehetőségeket, hogy lehet feloldani, és szállított egy szilárd hibrid identitás stratégia. 
+Ezeket a kulcsfontosságú szempontokat kell megismernie, hogy megértse, mi a követelmény most, és mi a vállalat tervei a jövőben. Ha nem látja el a hibrid identitások kialakítására vonatkozó hosszú távú stratégiát, akkor előfordulhat, hogy a megoldás nem lesz skálázható, mivel az üzleti igények növekedésének és változásának megléte. Az alábbi ábra egy hibrid identitás-architektúra és a felhasználók számára kinyitott munkaterhelések példáját mutatja be. Ez csak egy példa az összes olyan új lehetőségre, amely egy szilárd hibrid identitási stratégia használatával feloldható és elérhető. 
 
-Egyes összetevők, amelyek a hibrid identitásarchitektúra ![hibrid identitásarchitektúra hibrid identitásarchitektúra](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+A hibrid identitás-architektúra ![hibrid identitás-architektúrájának részét képező összetevők](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
-## <a name="determine-business-needs"></a>Határozza meg az üzleti igényeket
-Minden vállalatnak különböző követelményei lesznek, még akkor is, ha ezek a vállalatok ugyanannak az iparágnak a részét képezik, a valós üzleti követelmények változhatnak. Továbbra is kihasználhatja az iparág bevált gyakorlatait, de végső soron a vállalat üzleti igényei vezetnek a hibrid identitástervezés követelményeinek meghatározásához. 
+## <a name="determine-business-needs"></a>Üzleti igények meghatározása
+Minden vállalat különböző követelményekkel fog rendelkezni, még akkor is, ha ezek a vállalatok ugyanahhoz az iparághoz tartoznak, a valós üzleti követelmények eltérőek lehetnek. Továbbra is kihasználhatja az iparág ajánlott eljárásait, de végső soron a vállalat üzleti igényei alapján határozhatja meg a hibrid identitás kialakításának követelményeit. 
 
-Ügyeljen arra, hogy válaszoljon a következő kérdésekre, hogy azonosítsa az üzleti igényeket:
+Győződjön meg arról, hogy az alábbi kérdésekre válaszol az üzleti igények azonosításához:
 
-* Vállalata csökkenteni szeretné az informatikai működési költségeket?
-* Vállalata felhőalapú kellékek (SaaS-alkalmazások, infrastruktúra)biztosítását keresi?
-* A vállalat modernizálni szeretné az informatikai informatikai webhelyet?
-  * A felhasználók mobilabb és igényesinformatikai informatikai létrehozni kivételek a DMZ, hogy a különböző típusú forgalom eléréséhez különböző erőforrásokat?
-  * Rendelkezik-e a vállalat a modern felhasználók számára közzétenni kívánt örökölt alkalmazásokkal, de nem könnyű átírni?
-  * A vállalatnak el kell végeznie ezeket a feladatokat, és egyszerre kell ellenőrzés alá vonnia?
-* Vállalata a felhasználók identitásának védelmére és a kockázat csökkentésére törekszik azáltal, hogy olyan új eszközöket hoz létre, amelyek kihasználják a Microsoft Azure-beli biztonsági szakértelmének szakértelmét a helyszínen?
-* A vállalat megpróbál megszabadulni a rettegett "külső" fiókoktól a helyszínen, és áthelyezni őket a felhőbe, ahol már nem alvó fenyegetést jelentenek a helyszíni környezetben?
+* A vállalata az informatikai működési költségeket szeretné kivágni?
+* Vállalatának szeretné biztosítani a Felhőbeli eszközök (SaaS-alkalmazások, infrastruktúra) védelmét?
+* Vállalatának szeretné modernizálni?
+  * A felhasználók számára nagyobb a mobil, és megköveteli, hogy kivételeket hozzon létre a DMZ-ben, hogy a különböző típusú forgalom hozzáférjen a különböző erőforrásokhoz?
+  * A vállalata rendelkezik olyan örökölt alkalmazásokkal, amelyeket közzé kell tenni a modern felhasználók számára, de nem könnyű újraírni?
+  * A vállalatának el kell végeznie ezeket a feladatokat, és az irányítás alatt kell lennie egy időben?
+* A vállalata szeretné a felhasználók identitásának védelmét és a kockázatok csökkentését azáltal, hogy olyan új eszközöket biztosít, amelyek a Microsoft Azure biztonsági szakértelmét használják a helyszínen?
+* A vállalata megpróbálta megszabadulni a felkapott "külső" fiókokkal a helyszínen, és áthelyezi őket a felhőbe, ahol már nem áll fenn az alvó fenyegetés a helyszíni környezetben?
 
 ## <a name="analyze-on-premises-identity-infrastructure"></a>Helyszíni identitás-infrastruktúra elemzése
-Most, hogy van egy ötlete a vállalati üzleti követelményekkel kapcsolatban, ki kell értékelnie a helyszíni identitás-infrastruktúrát. Ez a kiértékelés fontos a technikai követelmények meghatározásához a jelenlegi identitáskezelési megoldás integrálásához a felhőalapú identitáskezelő rendszerbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Most, hogy ötlete van a vállalati üzleti igényekkel kapcsolatban, értékelnie kell a helyszíni identitás-infrastruktúrát. Ez az értékelés fontos azon technikai követelmények meghatározásához, amelyekkel integrálható a jelenlegi személyazonossági megoldás a felhőalapú Identity Management rendszerbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
 * Milyen hitelesítési és engedélyezési megoldást használ a vállalat a helyszínen? 
-* A vállalat a jelenleg rendelkezik helyszíni szinkronizálási szolgáltatásokkal?
-* Használ a vállalata külső identitásszolgáltatókat??
+* A vállalata jelenleg rendelkezik helyszíni szinkronizációs szolgáltatásokkal?
+* A vállalata harmadik féltől származó identitásszolgáltató-szolgáltatót használ?
 
-Azt is tisztában kell lennie a felhőszolgáltatások, amelyek a vállalat esetleg. A környezetében a SaaS, IaaS vagy PaaS-modellekkel való jelenlegi integráció megértéséhez végzett értékelés nagyon fontos. Ügyeljen arra, hogy válaszoljon a következő kérdésekre az értékelés során:
+Emellett tisztában kell lennie azzal, hogy a vállalata milyen felhőalapú szolgáltatásokat tartalmaz. Nagyon fontos, hogy elvégezze az SaaS-, IaaS-vagy Pásti-modellekkel való aktuális integráció megismerését. Ebben az értékelésben a következő kérdésekre kell válaszolnia:
 
-* Van-e a vállalata integrációval egy felhőszolgáltatóval?
+* Rendelkezik a vállalata egy felhőalapú szolgáltatóval való integrációval?
 * Ha igen, milyen szolgáltatásokat használnak?
-* Ez az integráció jelenleg a termelés, vagy ez egy kísérleti?
+* Ez az integráció jelenleg éles környezetben van, vagy pilóta?
 
 > [!NOTE]
-> A Cloud Discovery elemzi a forgalmi naplókat a Microsoft Cloud App Security több mint 16 000 felhőalapú alkalmazáskatalógusával, amely több mint 70 kockázati tényező alapján rangsorolja és pontozta a forgalmat, hogy folyamatos betekintést nyújtson a felhőhasználatba, a Shadow IT-be és a felhőinformatikai kockázatra, amelyet a szervezetben jelent. Első lépésekért olvassa el A [felhőfelderítés beállítása](/cloud-app-security/set-up-cloud-discovery)című témakört.
+> Cloud Discovery elemzi a forgalmi naplókat a Microsoft Cloud App Security Cloud app 16 000 catalogján, amely több mint 70 kockázati tényező alapján rangsorolva és pontozással van kialakítva, így folyamatos láthatóságot biztosít a Felhőbeli használatban, az árnyékban és a szervezete által jelentett kockázati árnyékban. Első lépésként tekintse [meg a Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery)című témakört.
 > 
 > 
 
-## <a name="evaluate-identity-integration-requirements"></a>Identitásintegrációs követelmények kiértékelése
-Ezután ki kell értékelnie az identitásintegrációs követelményeket. Ez a kiértékelés fontos a felhasználók hitelesítésének technikai követelményeinek meghatározásához, a szervezet felhőbeli jelenlétének, a szervezet engedélyezésének módjához és a felhasználói élmény hez. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+## <a name="evaluate-identity-integration-requirements"></a>Identitás-integrációs követelmények kiértékelése
+Ezután ki kell értékelnie az identitás-integráció követelményeit. Ez az értékelés fontos, hogy meghatározza a felhasználók hitelesítésének technikai követelményeit, hogyan fog megjelenni a szervezet jelenléte a felhőben, hogyan teszi lehetővé a szervezet az engedélyezést, és hogy milyen felhasználói élményre lesz szükség. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* A szervezet összevonást, szabványos hitelesítést vagy mindkettőt fogja használni?
+* A szervezete összevonást, normál hitelesítést vagy mindkettőt fog használni?
 * Az összevonás követelmény?  A következők miatt:
   * Kerberos-alapú egyszeri bejelentkezés
-  * A vállalat rendelkezik egy helyszíni alkalmazásokkal (beépített házon belül vagy harmadik fél), amely SAML vagy hasonló összevonási képességeket használ.
-  * MFA intelligens kártyákon keresztül. RSA SecurID stb.
-  * Az alábbi kérdéseket megválaszoló ügyfélhozzáférési szabályok:
-    1. Letilthatom az Office 365-höz való összes külső hozzáférést az ügyfél IP-címe alapján?
+  * A vállalata olyan helyszíni alkalmazásokkal rendelkezik (beépített vagy harmadik féltől származó), amely SAML-vagy hasonló összevonási képességeket használ.
+  * MFA intelligens kártyákon keresztül. RSA-SecurID stb.
+  * Az alábbi kérdésekkel foglalkozó ügyfél-hozzáférési szabályok:
+    1. Letilthatom az Office 365-hez való összes külső hozzáférést az ügyfél IP-címe alapján?
     2. Letilthatom az Office 365 összes külső hozzáférését az Exchange ActiveSync kivételével?
-    3. Letilthatom az Office 365 összes külső hozzáférését, kivéve a böngészőalapú alkalmazásokat (OWA, SPO)
-    4. Letilthatok minden külső hozzáférést az Office 365-höz a kijelölt AD-csoportok tagjai számára
-* Biztonsági/naplózási aggályok
-* Már meglévő befektetés az összevont hitelesítésbe
-* Milyen nevet fog használni a szervezet a felhőben lévő tartományunkhoz?
+    3. Letilthatom az Office 365 összes külső hozzáférését, kivéve a böngészőalapú alkalmazásokat (OWA, Spongya)
+    4. Letilthatom az Office 365 összes külső hozzáférését a kijelölt AD-csoportok tagjai számára
+* Biztonsági/naplózási vonatkozások
+* Már meglévő befektetés összevont hitelesítéssel
+* Milyen nevet fog használni a szervezetünk a Felhőbeli tartományhoz?
 * Rendelkezik a szervezet egyéni tartománnyal?
-  1. Ez a domain nyilvános és könnyen ellenőrizhető DNS-en keresztül?
-  2. Ha nem, akkor van egy nyilvános, amely használható regisztrálni egy alternatív UPN AD?
-* Konzisztensek a felhasználói azonosítók a felhőábrázoláshoz? 
-* A szervezet rendelkezik olyan alkalmazásokkal, amelyek a felhőszolgáltatásokkal való integrációt igénylik?
-* A szervezet több tartománnyal rendelkezik, és mindegyik szabványos vagy összevont hitelesítést fog használni?
+  1. A tartomány nyilvános és könnyen ellenőrizhető DNS-en keresztül?
+  2. Ha nem, akkor van olyan nyilvános tartománya, amely használható egy alternatív UPN-t az AD-ben?
+* Konzisztensek a felhasználói azonosítók a Felhőbeli ábrázoláshoz? 
+* A szervezet rendelkezik olyan alkalmazásokkal, amelyek a Cloud Services szolgáltatással való integrációt igényelnek?
+* A szervezetnek több tartománya van, és mindegyik szabványos vagy összevont hitelesítést használ?
 
 ## <a name="evaluate-applications-that-run-in-your-environment"></a>A környezetben futó alkalmazások kiértékelése
-Most, hogy van egy ötlete a helyszíni és a felhőalapú infrastruktúrával kapcsolatban, ki kell értékelnie az ilyen környezetekben futó alkalmazásokat. Ez a kiértékelés fontos, hogy meghatározza a technikai követelményeket integrálni ezeket az alkalmazásokat a felhőalapú identitáskezelő rendszerbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Most, hogy ötlete van a helyszíni és a felhőalapú infrastruktúrával kapcsolatban, ki kell értékelnie az ezekben a környezetekben futó alkalmazásokat. Ez az értékelés azért fontos, hogy meghatározza azokat a technikai követelményeket, amelyek integrálják ezeket az alkalmazásokat a felhőalapú Identity Management rendszerbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Hol fognak élni a jelentkezéseink?
+* Hol fognak élni az alkalmazásaink?
 * A felhasználók hozzáférhetnek a helyszíni alkalmazásokhoz?  A felhőben? Vagy mindkettő?
-* Vannak-e tervek, hogy a meglévő alkalmazás számítási feladatok, és helyezze át őket a felhőbe?
-* Vannak-e olyan új alkalmazások kifejlesztése, amelyek a helyszínen vagy a felhőben találhatók, és felhőalapú hitelesítést fognak használni?
+* Tervezik a meglévő alkalmazások számítási feladatait és a felhőbe való áthelyezését?
+* Tervezik olyan új alkalmazások fejlesztését, amelyek a Felhőbeli hitelesítést használó, helyszíni vagy Felhőbeli környezetekben lesznek elérhetők?
 
 ## <a name="evaluate-user-requirements"></a>Felhasználói követelmények kiértékelése
-Azt is ki kell értékelnie a felhasználói követelményeket. Ez az értékelés fontos, hogy meghatározza a lépéseket, amelyek szükségesek lesznek a beszállás, és segíti a felhasználókat, ahogy áttérnek a felhőbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Meg kell vizsgálnia a felhasználói követelményeket is. Ez az értékelés fontos azoknak a lépéseknek a meghatározásához, amelyeket a felhasználók a felhőbe való áttéréskor szükségesnek tartanak a beültetéshez és a felhasználóknak való segítségnyújtáshoz. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* A felhasználók a helyszínen fognak hozzáférni az alkalmazásokhoz?
-* A felhasználók hozzáférhetnek az alkalmazásokhoz a felhőben?
-* Hogyan felhasználók általában jelentkezzen be a helyszíni környezetben?
+* A felhasználók hozzáférhetnek a helyszíni alkalmazásokhoz?
+* A felhasználók hozzáférhetnek a Felhőbeli alkalmazásokhoz?
+* A felhasználók általában hogyan jelentkeznek be a helyszíni környezetbe?
 * Hogyan jelentkeznek be a felhasználók a felhőbe?
 
 > [!NOTE]
-> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. [Határozza meg az incidensválasz követelményeit,](plan-hybrid-identity-design-considerations-incident-response-requirements.md) és adja át a rendelkezésre álló lehetőségeket, és az egyes lehetőségek előnyeit/hátrányait.  A kérdések megválaszolásával kiválaszthatja, hogy melyik lehetőség felel meg legjobban üzleti igényeinek.
+> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. Az [incidensekre adott válaszokra vonatkozó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) a rendelkezésre álló lehetőségeket, illetve az egyes lehetőségek előnyeit és hátrányait veszi igénybe.  A kérdések megválaszolása után kiválaszthatja, hogy melyik lehetőség felel meg legjobban az üzleti igényeinek.
 > 
 > 
 
@@ -111,5 +111,5 @@ Azt is ki kell értékelnie a felhasználói követelményeket. Ez az értékel�
 [Címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>Lásd még
-[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

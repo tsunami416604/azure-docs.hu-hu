@@ -1,6 +1,6 @@
 ---
-title: Szinkronizálási szabály testreszabása az Azure AD Connectben | Microsoft Dokumentumok"
-description: Ez a témakör az Azure AD Connect telepítésével kapcsolatos problémák elhárításának lépéseit ismerteti.
+title: Szinkronizálási szabály testreszabása Azure AD Connectban | Microsoft Docs "
+description: Ez a témakör a Azure AD Connect telepítésével kapcsolatos hibák elhárításának lépéseit ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,41 +16,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60351068"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Szinkronizálási szabály testre szabása
 
 ## <a name="recommended-steps"></a>**Ajánlott lépések**
 
-A szinkronizálási szabály szerkesztőjével szerkesztheti vagy létrehozhat egy új szinkronizálási szabályt. A szinkronizálási szabályok módosításához tapasztalt felhasználónak kell lennie. Bármilyen helytelen módosítás az objektumok törlését eredményezheti a célkönyvtárból. Kérjük, olvassa el [az Ajánlott dokumentumok elolvasását,](#recommended-documents) hogy szakértelmet szerezzen a szinkronizálási szabályokterén. A szinkronizálási szabályok módosításához hajtsa végre a következő lépéseket:
+A szinkronizálási szabály szerkesztőjével szerkesztheti vagy létrehozhatja az új szinkronizálási szabályt. A szinkronizálási szabályok módosításához speciális felhasználónak kell lennie. Előfordulhat, hogy a helytelen módosítások miatt törölheti az objektumokat a cél könyvtárából. Kérjük, olvassa el az [ajánlott dokumentumokat](#recommended-documents) a szinkronizálási szabályokkal kapcsolatos szakértelem beszerzéséhez. A szinkronizálási szabály módosításához kövesse az alábbi lépéseket:
 
-* Indítsa el a szinkronizálási szerkesztőt az asztali alkalmazás menüből az alábbi módon:
+* Indítsa el a szinkronizációs szerkesztőt az asztal alkalmazás menüjében az alábbi ábrán látható módon:
 
-    ![Szinkronizálási szabályszerkesztő menü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
+    ![Szinkronizációs szabály szerkesztője menü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
 
-* Az alapértelmezett szinkronizálási szabály testreszabásához klónozza a meglévő szabályt a Szinkronizálási szabályok szerkesztőjének "Szerkesztés" gombjára kattintva, amely létrehozza a szabványos alapértelmezett szabály másolatát, és letiltja azt. Mentse a klónozott szabályt 100-nál kisebb prioritással.  A prioritás határozza meg, hogy melyik szabály nyer (alacsonyabb numerikus érték) ütközésfeloldást, ha attribútumfolyamat-ütközés van.
+* Az alapértelmezett szinkronizálási szabály testreszabásához a szinkronizálási szabályok szerkesztőjének Szerkesztés gombjára kattintva hozza létre a meglévő szabályt, amely létrehozza a szabványos alapértelmezett szabály másolatát, és letiltja azt. Mentse a klónozott szabályt a 100-nál kisebb prioritással.  A prioritás határozza meg, hogy milyen szabály nyeri a WINS (alacsonyabb numerikus érték) ütközéses feloldást, ha az attribútum folyamata ütközik.
 
-    ![Szinkronizálási szabály szerkesztője](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
+    ![Szinkronizációs szabály szerkesztője](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
 
-* Egy adott attribútum módosításakor ideális esetben csak a klónozott szabályban tartsa meg a módosító attribútumot.  Ezután engedélyezze az alapértelmezett szabályt, hogy a módosított attribútum klónozott szabályból származzon, és más attribútumokat az alapértelmezett normál szabályból vegye ki. 
+* Egy adott attribútum módosításakor ideális esetben csak a módosított attribútumot kell megőrizni a klónozott szabályban.  Ezután engedélyezze az alapértelmezett szabályt, hogy a módosított attribútum klónozott szabályból származik, és a többi attribútumot az alapértelmezett standard szabályból válassza ki. 
 
-* Kérjük, vegye figyelembe, hogy abban az esetben, ha a módosított attribútum számított értéke NULL a klónozott szabályban, és nem NULL az alapértelmezett általános szabályban, akkor a nem NULL érték nyer, és felülírja a NULL értéket. Ha nem szeretné, hogy a NULL értéket nem NULL értékkel helyettesítse, akkor rendelje hozzá a MérvativeNull értéket a klónozott szabályban.
+* Vegye figyelembe, hogy abban az esetben, ha a módosított attribútum számított értéke NULL értékű a klónozott szabályban, és nem NULL az alapértelmezett standard szabályban, akkor a nem NULL érték fog megjelenni, és a NULL értéket fogja cserélni. Ha nem szeretné, hogy NULL értékű helyett null értéket adjon meg, akkor a AuthoritativeNull a klónozott szabályban kell kiosztania.
 
-* **Kimenő** szabály módosításához módosítsa a szűrőt a szinkronizálási szabály szerkesztőjéből.
+* Egy **kimenő** szabály módosításához módosítsa a szűrést a szinkronizálási szabály szerkesztőjéből.
 
 ## <a name="recommended-documents"></a>**Ajánlott dokumentumok**
-* [Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect szinkronizálás: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect szinkronizálás: A deklaratív kiépítés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect szinkronizálás: A deklaratív létesítési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Azure AD Connect Sync: technikai fogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect Sync: az architektúra megismerése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
 * [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect szinkronizálás: A felhasználók, csoportok és kapcsolattartók ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect szinkronizálás: Árnyékattribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect Sync: Shadow attributes](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>Következő lépések
-- [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md).
-- [Mi a hibrid identitás?](whatis-hybrid-identity.md)
+- [Azure ad Connect szinkronizálás](how-to-connect-sync-whatis.md).
+- [Mi az a hibrid identitás?](whatis-hybrid-identity.md).

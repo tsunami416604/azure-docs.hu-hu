@@ -1,6 +1,6 @@
 ---
-title: Kockázatcsökkentés - Microsoft Threat Modeling Tool - Azure | Microsoft dokumentumok
-description: A Microsoft Fenyegetésmodellezési eszköz kockázatcsökkentési lapja, amely a leginkább elérhetőnek kitett fenyegetések lehetséges megoldásait emeli ki.
+title: Enyhítések – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: A lehetséges megoldások kiemelésének Microsoft Threat Modeling Tool a leginkább kitett fenyegetésekre.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,42 +16,42 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68728036"
 ---
-# <a name="microsoft-threat-modeling-tool-mitigations"></a>A Microsoft fenyegetésmodellezési eszközének kockázatlevantálása
+# <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool enyhítések
 
-A fenyegetésmodellezési eszköz a Microsoft biztonsági fejlesztési életciklusának (SDL) központi eleme. Lehetővé teszi a szoftvertervezők számára a potenciális biztonsági problémák korai azonosítását és enyhítését, amikor azok viszonylag egyszerűek és költséghatékonyak. Ennek eredményeképpen jelentősen csökkenti a teljes fejlesztési költséget. Az eszközt nem biztonsági szakértőkszem előtt tartva terveztük, így a fenyegetésmodellezés tetszővé válik minden fejlesztő számára azáltal, hogy egyértelmű útmutatást nyújt a fenyegetésmodellek létrehozásához és elemzéséhez.
+A Threat Modeling Tool a Microsoft biztonsági fejlesztési életciklus (SDL) alapvető eleme. Lehetővé teszi a szoftverfejlesztők számára, hogy korán azonosítsák és csökkentsék a potenciális biztonsági problémákat, amikor viszonylag könnyen és költséghatékonyan oldják meg a megoldást. Ennek eredményeképpen jelentős mértékben csökkenti a teljes fejlesztési költségeket. Azt is megtervezték, hogy az eszközt nem biztonsági szakértők is megalakították, így a fenyegetések modellezése minden fejlesztő számára egyszerűbb, mivel egyértelmű útmutatást nyújt a veszélyforrások létrehozásához és elemzéséhez.
 
-Látogasson el a **[Threat Modeling Tool](threat-modeling-tool.md)** az induláshoz még ma!
+Látogasson el a **[Threat Modeling toolra](threat-modeling-tool.md)** , és kezdje el még ma!
 
-## <a name="mitigation-categories"></a>Kockázatcsökkentési kategóriák
+## <a name="mitigation-categories"></a>Kockázatcsökkentő kategóriák
 
-A fenyegetésmodellezési eszköz kockázatcsökkentő megoldásai a webalkalmazás biztonsági kerete szerint vannak kategorizálva, amely a következőkből áll:
+A Threat Modeling Tool enyhítése a webalkalmazás biztonsági keretének megfelelően van kategorizálva, amely a következőkből áll:
 
 | Kategória | Leírás |
 | -------- | ----------- |
-| **[Naplózás és naplózás](threat-modeling-tool-auditing-and-logging.md)** | Ki mit és mikor csinált? Naplózás és naplózás azt szeretné, hogy az alkalmazás hogyan rögzíti a biztonsággal kapcsolatos eseményeket |
-| **[Hitelesítés](threat-modeling-tool-authentication.md)** | hogy vagy? A hitelesítés az a folyamat, amelynek során egy entitás egy másik entitás identitását bizonyítja, általában hitelesítő adatokkal, például felhasználónévvel és jelszóval. |
-| **[Engedélyezési](threat-modeling-tool-authorization.md)** | Mit lehet tenni? Az engedélyezés az, ahogyan az alkalmazás hozzáférést biztosít az erőforrásokhoz és műveletekhez |
-| **[Kommunikáció biztonsága](threat-modeling-tool-communication-security.md)** | Kihez beszélsz? Kommunikációs biztonság biztosítja, hogy minden kommunikáció a lehető legbiztonságosabb legyen |
-| **[Konfigurációkezelés](threat-modeling-tool-configuration-management.md)** | Kiként fut az alkalmazás? Mely adatbázisokhoz kapcsolódik? Hogyan történik az ön alkalmazása? Hogyan biztosítják ezeket a beállításokat? A konfigurációkezelés azt a módját olvassa el, hogy az alkalmazás hogyan kezeli ezeket a működési problémákat |
-| **[Titkosítás](threat-modeling-tool-cryptography.md)** | Hogy tudsz titkot tartani? Hogyan hamisítod az adatokat vagy a könyvtárakat (sértetlenség)? Hogyan biztosít magokat véletlenszerű értékekhez, amelyeknek kriptográfiailag erősnek kell lenniük? A kriptográfia arra utal, hogy az alkalmazás hogyan érvényesíti a titkosságot és az integritást |
-| **[Kivételkezelés](threat-modeling-tool-exception-management.md)** | Ha egy metódus hívása az alkalmazásban sikertelen, mit csinál az alkalmazás? Mennyit árulsz el? Rövid hibaadatokat ad vissza a végfelhasználóknak? Értékes kivételadatokat ad át a hívónak? Az alkalmazás nem kecsesen? |
-| **[Bemeneti érvényesítés](threat-modeling-tool-input-validation.md)** | Honnan tudja, hogy az alkalmazás által kapott bemenet érvényes és biztonságos? A bemeneti ellenőrzés azt vizsgálja, hogy az alkalmazás hogyan szűri, cserálja vagy utasítja el a bemenetet a további feldolgozás előtt. Fontolja meg a bemeneti bevitelkorlátozást a belépési pontokon keresztül, és a kimeneti kimenetet a kilépési pontokon keresztül. Megbízik az olyan forrásokból származó adatokban, mint például adatbázisok és fájlmegosztások? |
-| **[Érzékeny adatok](threat-modeling-tool-sensitive-data.md)** | Hogyan kezeli az alkalmazás a bizalmas adatokat? A bizalmas adatok azt eredményezik, hogy az alkalmazás hogyan kezeli azokat az adatokat, amelyeket a memóriában, a hálózaton keresztül vagy az állandó tárolókban kell védeni. |
-| **[Munkamenet-kezelés](threat-modeling-tool-session-management.md)** | Hogyan kezeli és védi az alkalmazás a felhasználói munkameneteket? A munkamenet a felhasználó és a webalkalmazás közötti kapcsolódó interakciók sorozatára utal |
+| **[Naplózás és naplózás](threat-modeling-tool-auditing-and-logging.md)** | Kinek és Mikor? A naplózás és a naplózás arra utal, hogy az alkalmazás hogyan rögzíti a biztonsággal kapcsolatos eseményeket |
+| **[Hitelesítés](threat-modeling-tool-authentication.md)** | hogy vagy? A hitelesítés az a folyamat, amelyben egy entitás igazolja egy másik entitás identitását, jellemzően hitelesítő adatokkal, például felhasználónévvel és jelszóval. |
+| **[Engedélyezés](threat-modeling-tool-authorization.md)** | Mit tehet? Az engedélyezés az, hogy az alkalmazás hogyan biztosít hozzáférés-vezérlést az erőforrásokhoz és a műveletekhez |
+| **[Kommunikáció biztonsága](threat-modeling-tool-communication-security.md)** | Kik beszélnek? A kommunikáció biztonsága biztosítja, hogy minden kommunikáció a lehető legbiztonságosabb legyen |
+| **[Konfigurációkezelés](threat-modeling-tool-configuration-management.md)** | Ki futtatja az alkalmazást? Mely adatbázisokhoz csatlakozik? Hogyan történik az alkalmazás felügyelete? Hogyan biztosítják ezeket a beállításokat? A konfiguráció kezelése arra utal, hogy az alkalmazás hogyan kezeli ezeket az üzemeltetési problémákat |
+| **[Titkosítás](threat-modeling-tool-cryptography.md)** | Hogyan tartja titokban a titkokat? Hogyan módosítható az adatok vagy a kódtárak (integritás) ellenőrzése? Hogyan biztosítanak olyan magokat a véletlenszerű értékekhez, amelyeknek titkosítási szempontból erősnek kell lenniük? A kriptográfia arra utal, hogy az alkalmazás hogyan alkalmazza a titkosságot és az integritást |
+| **[Kivételek kezelése](threat-modeling-tool-exception-management.md)** | Ha egy metódus hívása meghiúsul az alkalmazásban, mit tesz az alkalmazása? Mennyit tárt fel? A végfelhasználók rövid hibaüzeneteket adnak vissza? Értékes kivételi adatokat ad vissza a hívónak? Az alkalmazása szabályosan leáll? |
+| **[Bemeneti ellenőrzés](threat-modeling-tool-input-validation.md)** | Honnan tudhatja, hogy az alkalmazás által fogadott adatok érvényesek és biztonságosak? A bemeneti ellenőrzés arra utal, hogy az alkalmazás hogyan szűri vagy elutasítja a bemenetet további feldolgozás előtt. A belépési pontokon keresztüli bevitel korlátozásával és a kilépési pontokon keresztüli kódolással érdemes megfontolni. Megbízhatónak minősíti az adatforrásokat, például az adatbázisokat és a fájlmegosztást? |
+| **[Bizalmas adatok](threat-modeling-tool-sensitive-data.md)** | Hogyan kezeli az alkalmazása a bizalmas adatokat? A bizalmas adatok arra utalnak, hogy az alkalmazás hogyan kezeli a memóriában, a hálózaton vagy az állandó tárolókban védeni kívánt adatokat. |
+| **[Munkamenet-kezelés](threat-modeling-tool-session-management.md)** | Hogyan kezeli az alkalmazás a felhasználói munkameneteket? A munkamenet egy adott felhasználó és a webalkalmazás közötti kapcsolódó interakciók sorozatára utal. |
 
-Ez segít azonosítani:
+Ez segít a következők azonosításában:
 
-* Hol vannak a leggyakoribb hibák?
-* Hol vannak a leginkább végrehajtható fejlesztések?
+* Hol találhatók a leggyakoribb hibák
+* Hol találhatók a leghatékonyabb fejlesztési műveletek
 
-Ennek eredményeképpen ezeket a kategóriákat használja a biztonsági munka összpontosítására és rangsorolására, így ha ismeri a legelterjedtebb biztonsági problémákat a bemeneti érvényesítési, hitelesítési és engedélyezési kategóriákban, akkor ott kezdheti meg. További információkért látogasson el ** [a szabadalmi linkre](https://www.google.com/patents/US7818788)**
+Ennek eredményeképpen ezeket a kategóriákat felhasználva koncentrálhatja és rangsorolhatja a biztonsági munkát, így ha ismeri a bemeneti ellenőrzés, a hitelesítés és az engedélyezési kategóriák legelterjedtebb biztonsági problémáit, elindíthatja. További információért látogasson el a ** [szabadalmi hivatkozásra](https://www.google.com/patents/US7818788)**
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el **[a fenyegetésmodellezési eszköz fenyegetések,](threat-modeling-tool-threats.md)** hogy többet tudjon meg a fenyegetés kategóriák az eszköz segítségével a lehetséges tervezési fenyegetések.
+Látogasson el **[Threat Modeling Tool fenyegetésekre](threat-modeling-tool-threats.md)** , ha többet szeretne megtudni az eszköz által a lehetséges tervezési fenyegetések létrehozásához használt veszélyforrás-kategóriákról.

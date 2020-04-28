@@ -1,6 +1,6 @@
 ---
 title: Új Windows 10-es eszköz csatlakoztatása az Azure AD-hez első futtatáskor | Microsoft Docs
-description: Hogyan állíthatja be a felhasználók az Azure AD Join szolgáltatást a "kiakassz" élmény során?
+description: Hogyan állíthatók be a felhasználók az Azure AD JOIN szolgáltatásba a beépített felhasználói élményben.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67482094"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Oktatóanyag: Új Windows 10-es eszköz csatlakoztatása az Azure AD-hez első futtatáskor
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban megismerheti, hogyan csatlakoztathat egy eszközt az Az
 
 Egy Windows 10-es eszköz csatlakoztatásához úgy kell konfigurálni az eszközregisztrációs szolgáltatást, hogy engedélyezze az eszközök regisztrálását. Az eszközök csatlakoztatásának engedélyezése mellett az is feltétel, hogy az engedélyezett maximumnál kevesebb eszköz legyen regisztrálva az Azure AD-bérlőn. További információt az [eszközbeállítások konfigurálásáról szóló részben](device-management-azure-portal.md#configure-device-settings) talál.
 
-Ezenfelül ha a bérlő egy összevont bérlő, akkor az identitásszolgáltatónak támogatnia KELL a WS-Fed és a WS-Trust felhasználónév/jelszó végpontokat. Ez 1.3-as vagy 2005-ös verziójú lehet. Ez a protokoll támogatás szükséges mind az eszköz höz való csatlakozáshoz az Azure AD-hez, és jelentkezzen be az eszközre egy jelszóval.
+Ezenfelül ha a bérlő egy összevont bérlő, akkor az identitásszolgáltatónak támogatnia KELL a WS-Fed és a WS-Trust felhasználónév/jelszó végpontokat. Ez 1.3-as vagy 2005-ös verziójú lehet. Ez a protokoll-támogatás szükséges ahhoz, hogy az eszközt csatlakoztatni lehessen az Azure AD-hez, és be kell jelentkeznie az eszközre jelszóval.
 
 ## <a name="joining-a-device"></a>Eszköz csatlakoztatása
 
@@ -59,7 +59,7 @@ Ezenfelül ha a bérlő egy összevont bérlő, akkor az identitásszolgáltató
 
     ![Bejelentkezés képernyő](./media/azuread-joined-devices-frx/03.png)
 
-1. Az eszköz megkeresi a megfelelő bérlő az Azure AD-ben. Ha az eszköz egy összevont tartományhoz tartozik, akkor a rendszer átirányítja a helyszíni biztonsági jegykiadó szolgáltatás (STS) kiszolgálójához, például az Active Directory összevonási szolgáltatásokhoz (AD FS).
+1. Az eszköz megkeres egy megfelelő bérlőt az Azure AD-ben. Ha az eszköz egy összevont tartományhoz tartozik, akkor a rendszer átirányítja a helyszíni biztonsági jegykiadó szolgáltatás (STS) kiszolgálójához, például az Active Directory összevonási szolgáltatásokhoz (AD FS).
 1. Ha egy nem összevont tartományhoz tartozik, akkor a hitelesítő adatokat közvetlenül az Azure AD-oldalon lehet megadni. 
 1. A rendszer többtényezős hitelesítést kér. 
 1. Az Azure AD ellenőrzi, hogy szükséges-e regisztráció a mobileszköz-felügyeleti megoldásban.

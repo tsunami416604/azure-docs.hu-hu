@@ -1,6 +1,6 @@
 ---
-title: Kódolási feladat előrehaladásának figyelése az Azure Portalon
-description: Ez az oktatóanyag végigvezeti a feladat előrehaladásának az Azure Portalon keresztül történő figyelésének lépéseit.
+title: A kódolási feladatok előrehaladásának figyelése a Azure Portal
+description: Ez az oktatóanyag végigvezeti a feladatok előrehaladásának a Azure Portal használatával történő figyelésének lépésein.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64867218"
 ---
-# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Kódolási feladat előrehaladásának figyelése az Azure Portalon
+# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>A kódolási feladatok előrehaladásának figyelése a Azure Portal
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Feladatok futtatásakor gyakran van szükség a feladat előrehaladásának nyomon követésére. 
+A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. 
 
 A kódolási feladat előrehaladásának figyeléséhez kattintson az oldal tetején található **Settings** (Beállítások), majd a **Jobs** (Feladatok) elemre.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-A további részletek megtekintéséhez kattintson a feladatra.
+A feladatra kattintva további részleteket tekinthet meg.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
 ## <a name="next-steps"></a>További lépések
-Miután a kódolási feladat az egyik, akkor tegye közzé, és játszani a kellékek, az [itt](media-services-portal-publish.md)leírtak szerint .
+A kódolási feladatainak elvégzése után az [itt](media-services-portal-publish.md)leírtak szerint teheti közzé és játssza le az eszközöket.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

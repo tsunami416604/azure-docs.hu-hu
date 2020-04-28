@@ -1,67 +1,67 @@
 ---
-title: Adateszközök kezelése az Azure Data Catalogban
-description: A cikk bemutatja, hogyan szabályozhatja az Azure Data Catalogban regisztrált adateszközök láthatóságát és tulajdonjogát.
+title: Adategységek kezelése Azure Data Catalogban
+description: A cikk kiemeli, Hogyan szabályozható a Azure Data Catalogban regisztrált adategységek láthatósága és tulajdonosa.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68736347"
 ---
-# <a name="manage-data-assets-in-azure-data-catalog"></a>Adateszközök kezelése az Azure Data Catalogban
-## <a name="introduction"></a>Bevezetés
-Az Azure Data Catalog adatforrás-felderítésre lett tervezve, így könnyen felfedezheti és megismerheti az elemzés elvégzéséhez és a döntések meghozatalához szükséges adatforrásokat. Ezek a felderítési képességek akkor gyakorolják a legnagyobb hatást, ha Ön és más felhasználók megtalálják és megértik a rendelkezésre álló adatforrások legszélesebb körét. Ezeket az elemeket szem előtt tartva a Data Catalog alapértelmezett viselkedése az, hogy az összes regisztrált adatforrás látható legyen és az összes katalógusfelhasználó számára észlelhető legyen.
+# <a name="manage-data-assets-in-azure-data-catalog"></a>Adategységek kezelése Azure Data Catalogban
+## <a name="introduction"></a>Introduction (Bevezetés)
+A Azure Data Catalog adatforrások felderítésére szolgál, így könnyen felderítheti és értelmezheti az elemzéshez és a döntések végrehajtásához szükséges adatforrásokat. Ezek a felderítési képességek a legnagyobb hatással lehetnek arra, hogy Ön és más felhasználók megtalálják és megértsék az elérhető adatforrások legszélesebb körét. Ezeket az elemeket szem előtt tartva az Data Catalog alapértelmezett viselkedése minden regisztrált adatforráshoz az összes katalógus-felhasználó számára láthatóvá és felderíthetővé válik.
 
-A Data Catalog nem ad hozzáférést magához az adathoz. Az adathozzáférést az adatforrás tulajdonosa szabályozza. A Data Catalog segítségével felderítheti az adatforrásokat, és megtekintheti a katalógusban regisztrált forrásokhoz kapcsolódó metaadatokat.
+Data Catalog nem biztosít hozzáférést magához az adatelérési ponthoz. Az adathozzáférést az adatforrás tulajdonosa vezérli. A Data Catalog használatával felderítheti az adatforrásokat, és megtekintheti a katalógusban regisztrált forrásokhoz kapcsolódó metaadatokat.
 
-Előfordulhatnak azonban olyan helyzetek, amikor az adatforrások csak bizonyos felhasználók vagy meghatározott csoportok tagjai számára legyenek láthatók. Ilyen esetekben a felhasználók a katalóguson belül átvehetik a regisztrált adateszközök tulajdonjogát, majd szabályozhatják a tulajdonukban lévő eszközök láthatóságát.
+Előfordulhat azonban, hogy az adatforrásokat csak bizonyos felhasználók, illetve adott csoportok tagjai láthatják. Ilyen esetekben a felhasználók a katalógusban lévő regisztrált adategységek tulajdonjogát vehetik igénybe, majd szabályozhatják a saját eszközök láthatóságát.
 
 > [!NOTE]
-> A jelen cikkben ismertetett funkciók csak az Azure Data Catalog standard kiadásában érhetők el. Az ingyenes kiadás nem biztosít képességeket a tulajdonjog és az adateszközök láthatóságának korlátozása.
+> A cikkben ismertetett funkciók csak a Azure Data Catalog standard kiadásában érhetők el. Az ingyenes kiadás nem biztosít lehetőséget az adategység láthatóságának tulajdonlására és korlátozására.
 >
 >
 
-## <a name="manage-ownership-of-data-assets"></a>Adateszközök tulajdonjogának kezelése
-Alapértelmezés szerint a Data Catalogban regisztrált adateszközök nem tulajdonoltak. A katalógushoz hozzáféréssel rendelkező bármely felhasználó felfedezheti és jegyzetekkel láthatja el ezeket az eszközöket. A felhasználók saját tulajdonba vehetik a nem birtokolt adateszközöket, majd korlátozhatják a tulajdonukban lévő eszközök láthatóságát.
+## <a name="manage-ownership-of-data-assets"></a>Adategységek tulajdonjogának kezelése
+Alapértelmezés szerint a Data Catalogban regisztrált adategységek nem tulajdonosai. Minden olyan felhasználó, aki jogosult a katalógus elérésére, felderítheti és jegyzetekkel láthatja el ezeket az eszközöket. A felhasználók tulajdonba vehetik a nem tulajdonban lévő adategységeket, majd korlátozhatják a saját eszközök láthatóságát.
 
-Ha a Data Catalog ban egy adateszköz a tulajdonban van, csak a tulajdonosok által engedélyezett felhasználók fedezhetik fel az eszközt, és tekinthetik meg a metaadatait, és csak a tulajdonosok törölhetik az eszközt a katalógusból.
+Ha Data Catalogban lévő adategység tulajdonosa, csak a tulajdonosok által jogosult felhasználók felfedezhetik az eszközt, és megtekinthetik a metaadatokat, és csak a tulajdonosok törölhetik az eszközt a katalógusból.
 
 > [!NOTE]
-> Az adatkatalógusban való tulajdonjog csak a katalógusban tárolt metaadatokat érinti. A tulajdonjog nem biztosít semmilyen engedélyt az alapul szolgáló adatforrásra.
+> A Data Catalog tulajdonjoga csak a katalógusban tárolt metaadatokat érinti. A tulajdonjog nem biztosít semmilyen engedélyt az alapul szolgáló adatforráshoz.
 >
 >
 
 ### <a name="take-ownership"></a>Saját tulajdonba vétel
-A felhasználók az adatkatalógus-portál Tulajdonjogát a **Tulajdonosba vétel** lehetőség kiválasztásával vehetik át. A nem birtokolt adateszköz tulajdonjogának átvételéhez nincs szükség különleges engedélyekre. Bármely felhasználó saját tulajdonba vehet egy nem birtokolt adateszköz.
+A felhasználók az adategységek tulajdonjogát úgy vehetik igénybe, hogy a Data Catalog portálon a **tulajdonosi** hozzáférés lehetőségre kattintanak. A nem birtokolt adategységek tulajdonjogának átvételéhez nincs szükség különleges engedélyekre. Bármely felhasználó tulajdonba veheti egy nem birtokolt adategységet.
 
-### <a name="add-owners-and-co-owners"></a>Tulajdonosok és társtulajdonosok hozzáadása
-Ha egy adateszköz már a tulajdonában van, más felhasználók nem vehetik át egyszerűen a tulajdonjogot. Ezeket egy meglévő tulajdonosnak társtulajdonosként kell hozzáadnia. Bármely tulajdonos további felhasználókat vagy biztonsági csoportokat adhat hozzá társtulajdonosként.
+### <a name="add-owners-and-co-owners"></a>Tulajdonosok és közös tulajdonosok hozzáadása
+Ha egy adategység már tulajdonosa, a többi felhasználó nem veheti igénybe egyszerűen a tulajdonjogot. Egy meglévő tulajdonosnak közös tulajdonosként kell felvennie őket. Bármely tulajdonos további felhasználókat vagy biztonsági csoportokat adhat hozzá közös tulajdonosként.
 
 > [!NOTE]
-> Ajánlott eljárás, hogy legalább két személy tulajdonosaként bármely tulajdonában lévő adateszköz.
+> Az ajánlott eljárás az, hogy legalább két személy tulajdonosként rendelkezzen bármely tulajdonban lévő adategység tulajdonosaként.
 >
 >
 
 ### <a name="remove-owners"></a>Tulajdonosok eltávolítása
-Csakúgy, mint bármely eszköz tulajdonosadhat társtulajdonosok, minden eszköz tulajdonosa eltávolíthatja a társtulajdonos.
+Ugyanúgy, ahogy bármely eszköz tulajdonosa hozzáadhat közös tulajdonosokat, bármely objektum tulajdonosa eltávolíthat bármely társtulajdonosa.
 
-Az eszköz tulajdonosa, aki eltávolítja magát, mint a tulajdonos már nem kezelheti az eszközt. Ha az eszköz tulajdonosa eltávolítja magát, mint tulajdonost, és nincsenek más társtulajdonosok, az eszköz visszaáll egy nem birtokolt államba.
+Az adategység tulajdonosa, aki nem távolítja el magukat tulajdonosként, már nem tudja kezelni az eszközt. Ha az eszköz tulajdonosa eltávolítja magukat tulajdonosként, és nincsenek más közös tulajdonosok, az eszköz visszavált egy nem birtokolt állapotra.
 
-## <a name="control-visibility"></a>Láthatóság szabályozása
-Az adateszközök tulajdonosai szabályozhatják a tulajdonukban lévő adateszközök láthatóságát. A láthatóság alapértelmezettként való korlátozása érdekében, ahol az összes data catalog-felhasználó felfedezheti és megtekintheti az adateszközt, az eszköz tulajdonosa átválthat a **Mindenki** beállításról a **Tulajdonosok & Ezek** a felhasználók elemre az eszköz tulajdonságaiban. A tulajdonosok ezután hozzáadhatnak bizonyos felhasználókat és biztonsági csoportokat.
+## <a name="control-visibility"></a>Vezérlő láthatósága
+Az Adateszközök tulajdonosai vezérelhetik a saját adategységek láthatóságát. Ha korlátozni szeretné a láthatóságot az alapértelmezett értékre, ahol az összes Data Catalog felhasználó képes felderíteni és megtekinteni az adategységet, az eszköz tulajdonosa a **mindenki** számára elérhető láthatósági beállítást válthat a felhasználók számára az objektum tulajdonságainál **&** . A tulajdonosok hozzáadhatnak bizonyos felhasználókat és biztonsági csoportokat.
 
 > [!NOTE]
-> Amikor csak lehetséges, az eszköz tulajdonjogára és láthatóságára vonatkozó engedélyeket a biztonsági csoportokhoz kell rendelni, nem pedig az egyes felhasználókhoz.
+> Ha lehetséges, az eszköz tulajdonosi és láthatósági engedélyeit biztonsági csoportokhoz kell rendelni, nem pedig az egyes felhasználókhoz.
 >
 >
 
-## <a name="catalog-administrators"></a>Katalógusrendszergazdák
-A Data Catalog-rendszergazdák implicit módon társtulajdonosai a katalógusban lévő összes eszköznek. Az eszköztulajdonosok nem távolíthatják el a rendszergazdák láthatóságát, és a rendszergazdák kezelhetik a katalógusban lévő összes adateszköz tulajdonjogát és láthatóságát.
+## <a name="catalog-administrators"></a>Katalógus-rendszergazdák
+Data Catalog a rendszergazdák a katalógusban lévő összes eszköz tulajdonosát implicit módon közösen használják. Az eszközök tulajdonosai nem tudják eltávolítani a rendszergazdák láthatóságát, a rendszergazdák pedig kezelhetik a katalógusban lévő összes adategység tulajdonosát és láthatóságát.
 
 ## <a name="summary"></a>Összefoglalás
-A Data Catalog crowdsourcing modell metaadatok és az adateszközök felderítése lehetővé teszi, hogy minden katalógus felhasználók hozzájárulnak, és fedezze fel. A Data Catalog standard kiadása tulajdonjogi és felügyeleti célokra készült, hogy korlátozza az egyes adateszközök láthatóságát és használatát.
+A Data Catalog közösségi modell metaadatok és adategységek felderítése lehetővé teszi a katalógus összes felhasználója számára, hogy hozzájáruljanak és felfedezzék. A Data Catalog standard kiadása úgy van kialakítva, hogy az adott adategységek láthatóságának és felhasználásának korlátozásával a tulajdonjogot és a felügyeletet.

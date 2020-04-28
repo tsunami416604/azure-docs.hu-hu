@@ -1,6 +1,6 @@
 ---
-title: Adatok áttelepítése a StorSimple 5000-7000 sorozatból az Azure File Sync-be| Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként telepíthetők át az adatok a StorSimple 5000/7000 sorozatból az Azure File Sync (AFS) szolgáltatásba.
+title: Adatok migrálása a StorSimple 5000-7000 sorozatból a Azure File Syncba | Microsoft Docs
+description: Ismerteti, hogyan lehet adatok áttelepítését a StorSimple 5000/7000 sorozatból a Azure File Syncba (AFS).
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,93 +14,93 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65150739"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Adatok áttelepítése a StorSimple 5000-7000 sorozatból az Azure File Sync szolgáltatásba
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból a Azure File Syncba
 
 > [!IMPORTANT]
-> 2019. július 9-én a StorSimple 5000/7000 sorozat a támogatási (EOS) státusz megszűnése felé tart. Azt javasoljuk, hogy a StorSimple 5000/7000 sorozatú ügyfelek a dokumentumban ismertetett alternatívák egyikére térjenek át.
+> 2019. július 9-én a StorSimple 5000/7000-sorozat eléri a támogatási (EOS) állapot végét. Javasoljuk, hogy a StorSimple 5000/7000 Series-ügyfelek a dokumentumban ismertetett alternatívák egyikére váltsanak át.
 
-Az adatáttelepítés az adatok egyik tárolóhelyről a másikra történő áthelyezésének folyamata. Ez azt jelenti, hogy a szervezet aktuális adatait pontosan le kell másolni az egyik eszközről egy másik eszközre – lehetőleg az aktív alkalmazások megszakítása vagy letiltása nélkül –, majd át kell irányítani az összes bemeneti/kimeneti (I/O) tevékenységet az új eszközre. 
+Az adatok áttelepítése az egyik tárolóhelyről a másikra történő áthelyezés folyamata. Ez azt eredményezi, hogy a szervezet aktuális adatainak pontos másolatát az egyik eszközről egy másik eszközre kell másolni – lehetőleg az aktív alkalmazások megszakítása vagy letiltása nélkül –, majd az összes bemeneti/kimeneti (I/O) tevékenység átirányítása az új eszközre. 
 
-A StorSimple 5000 és 7000 sorozatú tárolóeszközök 2019 júliusában érik el a szolgáltatás végét. Ez azt jelenti, hogy a Microsoft 2019 júliusa után már nem fogja tudni támogatni a StorSimple 5000/7000 sorozat hardverét és szoftverét. Az ilyen eszközöket használó ügyfeleknek át kell telepíteniük StorSimple-adataikat más hibrid tárolási megoldásokra az Azure-ban. Ez a cikk a StorSimple 5000/7000 sorozatú eszközökről az Azure File Sync (AFS) szolgáltatásba történő áttelepítését ismerteti.
+A StorSimple 5000 és az 7000 sorozatú tárolóeszközök a szolgáltatás végén lesznek elérhetők. július 2019. Ez azt jelenti, hogy a Microsoft már nem fogja tudni támogatni a StorSimple 5000/7000 sorozathoz tartozó hardvereket és szoftvereket július 2019. után. Az ezeket az eszközöket használó ügyfeleknek át kell telepíteniük a StorSimple-adataikat más, az Azure-beli hibrid tárolási megoldásokra. Ez a cikk az adatok áttelepítését ismerteti egy StorSimple 5000/7000 sorozatú eszközről Azure File Sync (AFS) rendszerre.
 
 ## <a name="intended-audience"></a>Célközönség
 
-Ez a cikk a StorSimple 5000/7000 sorozatú eszközök adatközpontban történő üzembe helyezéséért és kezeléséért felelős informatikai szakemberek és tudásmunkások számára készült. A StorSimple-eszközeiket fájlkiszolgálói munkaterheléshez használó ügyfelek (Windows Server rendszerrel) különösen vonzónak találhatják ezt az áttelepítési útvonalat. Ha úgy gondolja, hogy az Azure File Sync funkciói jól működnek a szervezet számára, akkor ez a cikk segít megérteni, hogyan helyezheti át ezeket a megoldásokat a StorSimple-ből.
+Ez a cikk olyan informatikai (IT) szakemberek és szakemberek számára készült, akik a StorSimple 5000/7000 Series-eszközök üzembe helyezéséhez és kezeléséhez felelősek a adatközpontot. A Fájlkiszolgálói számítási feladatokhoz (Windows Server) használó ügyfelek a StorSimple-eszközöket különösen vonzónak találják. Ha úgy véli, hogy a Azure File Sync szolgáltatásai jól működnek a szervezete számára, akkor ez a cikk segít megérteni, hogyan helyezhet át ezekre a megoldásokra a StorSimple.
 
-## <a name="migration-considerations"></a>Migrálási szempontok
+## <a name="migration-considerations"></a>A migrálás szempontjai
 
-Ez a folyamat azoknak az ügyfeleknek működik, akik StorSimple-kötethasználatával konfiguráltak Windows-fájlmegosztást a tároláshoz. Adatok áttelepítése a StorSimple 5000/7000-ről az Azure File Sync-be azt jelenti, hogy a fájlmegosztáshelyét [kiszolgálói végpontra konvertálja,](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) majd a helyileg csatlakoztatott meghajtókat használja egy másik végpontként, amely ezután az új hely lesz. 
+Ez a folyamat azon ügyfelek esetében működik, akik a Windows fájlmegosztást egy StorSimple-kötet használatával konfigurálták a tároláshoz. Az adatok áttelepítése a StorSimple 5000/7000-ből Azure File Sync a fájlmegosztás helyének konvertálása egy [kiszolgálói végpontra](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) , majd helyileg csatlakoztatott meghajtók használata egy másik végpontként, amely ezután az új hely lesz. 
 
-Az AFS-re való áttérés során a következő pontokat kell figyelembe venni:
+Az AFS-re való áttérés során a következő szempontokat kell figyelembe venni:
 
-1. Az Azure Files jelenleg 5 TB/megosztási korlátozással rendelkezik. Ez a korlátozás az Azure File Sync használatával több Azure-fájlmegosztáson keresztül elosztva érhető el. További információkért tekintse át az [Azure Files üzembe helyezésének adatnövekedési mintáját.](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
-2. Ez az áttelepítés letölti a teljes elsődleges adatkészletet egy helyszíni eszközre, ahogy az adatmásolás a helyszíni eszközről történik. Győződjön meg arról, hogy elegendő sávszélességgel rendelkezik az átvitel hez.
-3. Ez a folyamat nem őrzi meg a már létrehozott pillanatképeket. Csak az elsődleges adatokat telepíti át. A folyamat nem őrzi meg a kapcsolódó sávszélesség-sablonokat vagy biztonsági mentési házirendeket sem. [Az Azure Backup segítségével](https://docs.microsoft.com/azure/backup/backup-azure-files) állítsa be a biztonsági mentési szabályzatok után az adatok áttelepítése az Azure-fájlmegosztáson.
-4. A StorSimple első féltől származó hardvert biztosít. Az Azure Files/Azure File Sync szolgáltatással azonban a saját helyi Windows Server-hardvert használja helyi gyorsítótárként. Győződjön meg arról, hogy elegendő tárolókapacitással rendelkezik ahhoz, hogy a választott adatkészlet helyi szinten maradjon. A rétegezésről és a szükséges szabad terület céljának beállításáról az Azure File Sync telepítésekor tekintse [át a kiszolgálóvégpont létrehozásának](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)módját. 
-5. Tekintse át az [Azure File Sync díjszabását,](https://azure.microsoft.com/pricing/details/storage/files/) mivel az a StorSimple-től függően változik. Az AFS nem rendelkezik deduplikációval és tömörítéssel, mint a StorSimple.
+1. Azure Files jelenleg 5 TB/megosztás korlátozást tartalmaz. Ez a korlátozás a több Azure-fájlmegosztás között elosztott adatAzure File Sync használatával oldható fel. További információkért tekintse át az [adatmennyiség növekedési mintáját Azure Files központi telepítéshez](https://docs.microsoft.com/azure/storage/files/storage-files-planning).
+2. Az áttelepítés során a rendszer letölti a teljes elsődleges adatkészletet egy helyszíni eszközre, mivel az adatok másolása a helyszíni eszközről történik. Gondoskodjon arról, hogy elegendő sávszélesség legyen az átvitelhez.
+3. Ez a folyamat nem őrzi meg a már létrehozott pillanatképeket. Csak az elsődleges adatátvitelt telepíti át. A folyamat emellett nem őrzi meg a társított sávszélesség-sablonokat vagy a biztonsági mentési házirendeket. A [Azure Backup használatával](https://docs.microsoft.com/azure/backup/backup-azure-files) állíthatja be a biztonsági mentési házirendeket az Azure-fájlmegosztás során az adatáttelepítés után.
+4. A StorSimple első féltől származó hardvert biztosít. Azure Files/Azure File Sync azonban a saját helyi Windows Server-hardverét használja helyi gyorsítótárként. Gondoskodnia kell arról, hogy elegendő tárolókapacitással rendelkezzen az Ön által választott helyi adathalmaz megőrzése érdekében. Ha további információt szeretne a rétegek és a szükséges szabad lemezterület beállításáról, tekintse át a [kiszolgálói végpont létrehozását a Azure file Sync telepítésekor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)című témakört. 
+5. Tekintse át a [Azure file Sync díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) , mivel az a StorSimple-től eltér. Az AFS nem rendelkezik a deduplikálás és a tömörítés, például a StorSimple.
 
-## <a name="migration-prerequisites"></a>Áttelepítési előfeltételek
+## <a name="migration-prerequisites"></a>Migrálás előfeltételei
 
-Itt megtalálja a régi 5000-es vagy 7000-es sorozatú eszköz áttelepítési előfeltételeit az Azure File Sync szolgáltatásba. Mielőtt elkezdené, győződjön meg róla, hogy:
+Itt megtalálhatja az örökölt 5000-vagy 7000-es adatsorozat-eszköz áttelepítésének előfeltételeit Azure File Sync. Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
-- Hozzáférés a StorSimple 5000/7000 sorozatú eszközhöz, amely a 2.1.1.518-as vagy újabb verziót futtatja. A korábbi verziók nem támogatottak. A StorSimple-eszköz webes felhasználói felületének jobb felső sarkában meg kell jelenítenie a futó szoftververziót.  
-    Ha a készüléken nem fut a 2.1.1.518-as verzió, frissítse a rendszert a szükséges minimális verzióra. A részletes útmutatásért olvassa el [A rendszer frissítése a 2.1.1.518-as vagy 2.1.518-as fájlra](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)című információt.
-- Ellenőrizze, hogy vannak-e aktív biztonsági mentési feladatok, amelyek a forráseszközön futnak. Ez magában foglalja a storsimple adatvédelmi konzol gazdagép en a feladatokat. Várja meg, amíg az aktuális feladatok befejeződnek. 
-- Hozzáférés a StorSimple 5000-7000 sorozatú eszközhöz csatlakoztatott Windows Server-állomáshoz. Az állomásnak az Azure File Sync együttműködési verziójában leírtak szerint támogatott Windows Server-verziót kell [futtatnia.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)
-- A StorSimple kötetek csatlakoztatva vannak az állomásra, és fájlmegosztásokat tartalmaznak.
-- Az állomás elegendő helyi tárolóval rendelkezik a helyileg gyorsítótárazott adatok tárolásához.
-- Tulajdonosszintű hozzáférés az Azure-előfizetéshez, amelyet az Azure File Sync üzembe helyezéséhez fog használni. Problémák léphetnek fel, amikor felhővégpontot hoz létre a szinkronizálási csoport számára, ha nem rendelkezik tulajdonosi vagy rendszergazdai szintű engedélyekkel.
-- Hozzáférés egy [általános célú v2-es tárfiókhoz](https://docs.microsoft.com/azure/storage/common/storage-account-overview) egy Azure-fájlmegosztással, amelyhez szinkronizálni szeretne. További információ: [Tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
-  - [Azure-fájlmegosztás létrehozása.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
+- Hozzáférés egy StorSimple 5000/7000 sorozatú eszközhöz, amely a v 2.1.1.518 vagy újabb verzióját futtatja. A korábbi verziók nem támogatottak. A StorSimple-eszköz webes FELÜLETének jobb felső sarkában meg kell jelennie a szoftvert futtató verziónak.  
+    Ha az eszköz nem a v 2.1.1.518 fut, frissítse a rendszert a szükséges minimális verzióra. Részletes útmutatást a [rendszer frissítése a v 2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)című témakörben talál.
+- Keresse meg a forrásoldali eszközön futó aktív biztonsági mentési feladatokat. Ez magában foglalja a StorSimple-adatvédelmi konzol gazdagépének feladatait. Várjon, amíg az aktuális feladatok befejeződik. 
+- Hozzáférés egy, a StorSimple 5000-7000 Series eszközhöz csatlakoztatott Windows Server-gazdagéphez. A gazdagépnek egy támogatott Windows Server-verziót kell futtatnia [Azure file Sync együttműködési képesség](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)című cikkben leírtak szerint.
+- A StorSimple-kötetek a gazdagépre vannak csatlakoztatva, és fájlmegosztást tartalmaznak.
+- A gazdagép elegendő helyi tárterülettel rendelkezik a helyileg gyorsítótárazott adatai tárolásához.
+- Tulajdonosi szintű hozzáférés a Azure File Sync telepítéséhez használni kívánt Azure-előfizetéshez. Ha nem rendelkezik tulajdonosi vagy rendszergazdai jogosultsággal, akkor problémák léphetnek fel, amikor Felhőbeli végpontot hoz létre a szinkronizálási csoport számára.
+- Hozzáférés egy [általános célú v2 Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-account-overview) egy Azure-fájlmegosztás használatával, amelyhez szinkronizálni kíván. További információ: [Tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+  - Azure- [fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Migrálási folyamat
 
-Az adatok áttelepítése a StorSimple 5000-7000 rendszerről az AFS szolgáltatásba két lépésből áll:
-1.  Replikálja az adatokat a helyszíni fájlkiszolgálóról, ahol a StorSimple kötetek vannak csatlakoztatva egy Azure Files megosztásra.  A replikáció a telepített AFS-ügynökön keresztül történik.
+Az adatok migrálása az StorSimple 5000-7000-ből az AFS-be kétlépéses folyamat:
+1.  Az adatok replikálása a helyszíni fájlkiszolgálón, ahol a StorSimple-kötetek egy Azure Files-megosztáshoz vannak csatlakoztatva.  A replikáció egy telepített AFS-ügynökön keresztül történik.
 2.  Válassza le a StorSimple eszközt. A helyi lemezek ezután helyi gyorsítótárként működnek.
 
 ### <a name="migration-steps"></a>A migrálás lépései
 
-Hajtsa végre a következő lépéseket a StorSimple-köteteken konfigurált Windows-fájlmegosztás azure-fájlszinkronizálási megosztásra való áttelepítéséhez. 
-1.  Hajtsa végre ezeket a lépéseket ugyanazon a Windows Server-állomáson, ahol a StorSimple kötetek csatlakoztatva vannak, vagy használjon egy másik rendszert. 
-    - [Készítse elő a Windows Server t az Azure File Sync szolgáltatással való használatra.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)
-    - [Telepítse az Azure File Sync ügynököt.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent)
-    - [Telepítse a Storage Sync szolgáltatást.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service) 
-    - [Regisztrálja a Windows Server t tárolási szinkronizálási szolgáltatással.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service) 
-    - [Hozzon létre egy szinkronizálási csoportot és egy felhővégpontot.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint) Szinkronizálási csoportokat kell kidolgozni minden olyan Windows-fájlmegosztáshoz, amelyet át kell telepíteni az állomásról.
-    - [Kiszolgálóvégpont létrehozása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Adja meg az elérési utat a fájlmegosztási adatokat tartalmazó StorSimple kötet elérési útjaként. Ha például a StorSimple `J`kötet meghajtó, és `J:/<myafsshare>`az adatok a rendszerben találhatók, akkor adja hozzá ezt az elérési utat kiszolgálóvégpontként. Hagyja a **rétegezést** **letiltva.**
-2.  Várjon, amíg a fájlkiszolgáló szinkronizálása befejeződik. Egy adott szinkronizálási csoport minden kiszolgálója esetében győződjön meg akövetkezőkről:
-    - Az utoljára megkísérelt szinkronizálás időbélyegei mind a feltöltés, mind a letöltés esetében frissek.
-    - Az állapot zöld mind a feltöltés, mind a letöltés hez.
-    - A **Szinkronizálási tevékenység** nagyon kevés vagy egyáltalán nem tartalmaz szinkronizálandó fájlt.
-    - A **fájlok nem szinkronizálja** a 0 mind a feltöltési és letöltési.
-    Ha többet szeretne tudni arról, hogy mikor fejeződött be a kiszolgáló szinkronizálása, látogasson el az [Azure File Sync hibaelhárítása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)című témakörbe. A szinkronizálás az adatok méretétől és sávszélességétől függően több órát vagy napot is igénybe vehet. Miután a szinkronizálás befejeződött, az összes adat biztonságosan az Azure-fájlmegosztás. 
-3.  Nyissa meg a StorSimple kötetek megosztásait. Jelöljön ki egy megosztást, kattintson a jobb gombbal, és válassza **a Tulajdonságok parancsot.** Jegyezze fel a megosztási engedélyeket a **Biztonság csoportban.** Ezeket az engedélyeket manuálisan kell alkalmazni az új megosztásra a későbbi lépésben.
-4.  Attól függően, hogy ugyanazt a Windows Server-állomást vagy egy másik atahost használja- e, a következő lépések eltérőek lesznek.
+A következő lépések végrehajtásával telepítse át a StorSimple-köteteken konfigurált Windows-fájlmegosztást egy Azure File Sync-megosztásra. 
+1.  Hajtsa végre ezeket a lépéseket ugyanarra a Windows Server-gazdagépre, ahol a StorSimple-kötetek csatlakoztatva vannak, vagy egy másik rendszert használnak. 
+    - [Készítse elő a Windows Servert a Azure file Sync használatával való használatra](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Telepítse a Azure file Sync ügynököt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [Telepítse a Storage Sync szolgáltatást](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Regisztrálja a Windows Servert a Storage Sync szolgáltatással](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Hozzon létre egy szinkronizálási csoportot és egy Felhőbeli végpontot](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). A szinkronizálási csoportokat minden olyan Windows-fájlmegosztás esetében el kell végezni, amelyet át kell telepíteni a gazdagépről.
+    - [Hozzon létre egy kiszolgálói végpontot](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Adja meg az elérési utat a fájlmegosztás adatait tartalmazó StorSimple kötet elérési útjával. Ha például a StorSimple kötet meghajtó `J`, és az adatai a ben találhatók `J:/<myafsshare>`, akkor adja hozzá ezt az elérési utat kiszolgálói végpontként. Hagyja **Letiltva a rétegek letiltását**. **Tiering**
+2.  Várjon, amíg a fájlkiszolgáló szinkronizálása befejeződik. Az adott szinkronizálási csoport minden egyes kiszolgálójára vonatkozóan ügyeljen a következőre:
+    - A legutóbbi szinkronizálásra és letöltésre irányuló legutóbbi szinkronizálás időbélyege nemrég történt.
+    - Az állapot a feltöltéshez és a letöltéshez egyaránt zöld.
+    - A **szinkronizálási tevékenység** nagyon keveset mutat, vagy a szinkronizálandó fájlok közül nem marad.
+    - A **nem szinkronizált fájlok** a feltöltéshez és a letöltéshez egyaránt 0.
+    A kiszolgáló-szinkronizálás befejezéséről a következő témakörben olvashat bővebben: [Azure file Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other). A szinkronizálás több órát is igénybe vehet, az adatmérettől és a sávszélességtől függően. A szinkronizálás befejeződése után az összes adatai biztonságosan az Azure-fájlmegosztás részét jelentik. 
+3.  Nyissa meg a StorSimple-kötetek megosztásait. Válasszon ki egy megosztást, kattintson a jobb gombbal, és válassza a **Tulajdonságok**lehetőséget. Jegyezze fel a megosztási engedélyeket a **Biztonság**területen. Ezeket az engedélyeket manuálisan kell alkalmazni az új megosztásra a későbbi lépésben.
+4.  Attól függően, hogy ugyanazt a Windows Server-gazdagépet vagy más szolgáltatást használja, a következő lépések eltérőek lesznek.
 
-    Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha másik Windows Server-állomást használ. Ha ugyanazt a Windows File Server for AFS-t használja, akkor néhány perc leállást fog tapasztalni. 
-    - **Állásidő indítása** - Törölje az *1F lépésben*létrehozott kiszolgálóvégpontot. 
-    - Hozzon létre egy új kiszolgálóvégpontot azzal az elérési úttal, ahol az adatokat a jövőben is el szeretné végezni.
-    - Miután a kiszolgáló végpontja kifogástalan állapotúként jelenik meg (ez néhány percet is igénybe vehet), az adatok az új helyen jelennek meg. Most már beállíthatja, hogy a Windows Server állomás az új helyről származó fájlokat szolgáljon ki. - **Az állásidő véget ér.**
-5.  Ha egy másik Windows File Server for Azure File Sync, akkor nem fog tapasztalni semmilyen leállás. 
-    - Adjon hozzá egy másik kiszolgálóvégpontot a helyi tároló elérési útját, amelyet a StorSimple-eszköz helyett gyorsítótárként szeretne használni. 
-    - Néhány perc alatt láthatja a fájlokat az új kiszolgálón. Bármikor átválthat a StorSimple eszközről erre az új helyre a gazdagépen.
+    Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha másik Windows Server-gazdagépet használ. Ha ugyanezt a Windows-fájlkiszolgáló-t használja az AFS-hez, néhány perc leállást tapasztalhat. 
+    - A **leállás elindul** – törölje a *1f lépésben*létrehozott kiszolgálói végpontot. 
+    - Hozzon létre egy új kiszolgáló-végpontot azzal az elérési úttal, ahová az adatnak szüksége lesz.
+    - Ha a kiszolgálói végpont Kifogástalan állapotba kerül (ez eltarthat néhány percig), akkor ebben az új helyen fogja látni az információt. Mostantól konfigurálhatja a Windows Server-gazdagépet, hogy az új helyről szolgálja ki a fájlokat. - A **leállás véget ér**.
+5.  Ha egy másik Windows-fájlkiszolgálón használ Azure File Sync, akkor nem fog semmilyen állásidőt tapasztalni. 
+    - Adjon hozzá egy másik kiszolgálói végpontot annak a helyi tárterületnek az elérési útjával, amelyet a StorSimple-eszköz helyett gyorsítótárként kíván használni. 
+    - A fájlokat néhány perc alatt megtekintheti az új kiszolgálón. Bármikor elvégezheti a váltást a StorSimple-eszközről erre az új helyre a gazdagépen.
 
     > [!TIP] 
-    > Fontolja meg az új fájlmegosztás konfigurálását ugyanazzal a névvel és elérési úttal, mint amelyet helyettesít, hogy minimalizálja a fennakadást. DfS-N használata esetén előfordulhat, hogy módosítania kell a konfigurációt.
-6.  A *3.*
+    > Ügyeljen arra, hogy az új fájlmegosztást ugyanazzal a névvel és azonos elérési úttal konfigurálja, mint amelyet a rendszer a megszakítás csökkentése érdekében. Ha a DFS-N-t használja, előfordulhat, hogy módosítania kell a konfigurációt.
+6.  Konfigurálja újra a megosztási engedélyeket a *3. lépésben*feljegyzett módon.
 
-Ha bármilyen problémát tapasztal az adatáttelepítés során, forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) 
+Ha problémákat tapasztal az adatáttelepítés során, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md). 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az AFS nem a megfelelő megoldás az Ön számára, olvassa el, hogyan telepítheti át az [adatokat egy StorSimple 5000-7000 sorozatból egy 8000-es sorozatú eszközre.](storsimple-8000-migrate-from-5000-7000.md)
+Ha az AFS nem az Ön számára megfelelő megoldás, megismerheti, hogyan [telepíthet át egy StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre az adatok áttelepítését](storsimple-8000-migrate-from-5000-7000.md).
 

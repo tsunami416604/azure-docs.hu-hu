@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services kódolási hibakódjai | Microsoft dokumentumok
-description: Ez a témakör azokat a hibakódokat sorolja fel, amelyek akkor adhatók vissza, ha hiba történt a kódolási feladat végrehajtása során..
+title: Azure Media Services kódolási hibakódok | Microsoft Docs
+description: Ez a témakör azokat a hibakódokat sorolja fel, amelyek akkor adhatók vissza, ha hiba történt a kódolási feladat végrehajtása során.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64709522"
 ---
 # <a name="encoding-error-codes"></a>Kódolási hibakódok
 
-Az alábbi táblázat azokat a hibakódokat sorolja fel, amelyek a kódolási feladat végrehajtása során hiba esetén visszaadhatók.  A .NET-kódban a hiba részleteinek beírásához használja az [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) osztályt. A REST-kód hibarészleteinek beírásához használja az [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API-t.
+A következő táblázat felsorolja azokat a hibakódokat, amelyeket a rendszer a kódolási feladat végrehajtása során felmerülő hiba esetén visszaadhat.  Ha a .NET-kódban hibát szeretne kapni, használja a [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) osztályt. Ha részletes adatokat szeretne kapni a REST-kódban, használja a [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
 
-| ErrorDetail.Kód | A hiba lehetséges okai |
+| ErrorDetail. code | Hiba lehetséges okai |
 | --- | --- |
-| Ismeretlen |Ismeretlen hiba a feladat végrehajtása közben |
-| HibaABemenetI-eszközHibásformátképezőtartalom letöltése |Kategória hibák, amely magában foglalja a hibák letöltését bemeneti eszköz, mint a rossz fájlnevek, nulla hosszúságú fájlokat, helytelen formátumokat és így tovább. |
-| Hibaaz InputAssetServiceFailure letöltése |A szolgáltatási oldalon felmerülő problémákat lefedő hibák kategóriája – például a letöltés során a hálózati vagy tárolási hibák. |
-| ErrorParsingConfiguration |A hibák azon kategóriája, ahol a feladat \<lásd cref="MediaTask.PrivateData"/> (konfiguráció) érvénytelen, például a konfiguráció nem érvényes rendszerkészlet, vagy érvénytelen XML-t tartalmaz. |
-| ErrorExecutingTaskMformáltContent |A feladat végrehajtása során a hibák kategóriája, ahol a bemeneti médiafájlokon belüli problémák hibát okoznak. |
-| ErrorExecutingTaskNem támogatottformátum |Olyan hibakategória, amelyben a médiaprocesszor nem tudja feldolgozni a megadott fájlokat - a médiaformátum nem támogatott, vagy nem felel meg a Konfigurációnak. Ha például csak hangkimenetet próbál létrehozni egy olyan eszközről, amely |
-| HibaprocessingTask |Egyéb hibák kategóriája, amelyekkel a médiafeldolgozó a feladat feldolgozása során szembesül, és amely nem kapcsolódik a tartalomhoz. |
-| HibaUploadingOutputAsset |A hibák kategóriája a kimeneti eszköz feltöltésekén |
-| Hiba a Feladat törlésekor |A feladat megszakítására tett hibákat fedező hibák kategóriája |
-| Átmeneti hiba |Kategória hibák fedezésére átmeneti kérdések (pl. ideiglenes hálózati problémák az Azure Storage szolgáltatással) |
+| Ismeretlen |Ismeretlen hiba történt a feladat végrehajtása közben |
+| ErrorDownloadingInputAssetMalformedContent |Olyan hibák kategóriája, amelyek a bemeneti eszköz (például hibás fájlnevek, nulla hosszúságú fájlok, helytelen formátumok stb.) letöltésével kapcsolatos hibákat fedik le. |
+| ErrorDownloadingInputAssetServiceFailure |A szolgáltatással kapcsolatos problémákat fedező hibák kategóriája – például hálózati vagy tárolási hibák a letöltés során. |
+| ErrorParsingConfiguration |A hibák kategóriája, \<ahol a feladat a cref = "MediaTask. PrivateData"/> (konfiguráció) nem érvényes, például a konfiguráció nem érvényes rendszer-beállításkészlet, vagy érvénytelen XML-t tartalmaz. |
+| ErrorExecutingTaskMalformedContent |A hibák kategóriája annak a feladatnak a végrehajtása során, hogy a bemeneti médiafájlokon belüli problémák hibát okoznak. |
+| ErrorExecutingTaskUnsupportedFormat |Azon hibák kategóriája, amelyekben a média processzora nem tudja feldolgozni a megadott fájlokat – a média formátuma nem támogatott, vagy nem felel meg a konfigurációnak. Például egy csak hang kimenetet szeretne létrehozni egy olyan eszközről, amely csak videóval rendelkezik |
+| ErrorProcessingTask |Az adathordozó-feldolgozó által a tartalomhoz nem kapcsolódó feladatok feldolgozásakor észlelt egyéb hibák kategóriája. |
+| ErrorUploadingOutputAsset |A kimeneti eszköz feltöltésekor előforduló hibák kategóriája |
+| ErrorCancelingTask |A feladat megszakítását megkísérlő hibák kategóriája |
+| TransientError |Az átmeneti problémákra vonatkozó hibák kategóriája (például átmeneti Hálózatkezelési problémák az Azure Storage-ban |
 
-Ha segítségre van szüksége a **Media Services** csapatától, nyisson meg egy [támogatási jegyet.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Ha segítséget szeretne kérni a **Media Services** csapattól, nyisson meg egy [támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -47,7 +47,7 @@ Ha segítségre van szüksége a **Media Services** csapatától, nyisson meg eg
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Speciális kódolási feladatok végrehajtása a Media Encoder Standard készletek testreszabásával](media-services-custom-mes-presets-with-dotnet.md)
+* [Speciális kódolási feladatok végrehajtása a Media Encoder Standard-készletek testreszabásával](media-services-custom-mes-presets-with-dotnet.md)
 * [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

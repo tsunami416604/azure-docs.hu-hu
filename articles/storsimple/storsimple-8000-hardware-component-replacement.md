@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozatú hardverkomponens cseréje | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként cserélhetők le biztonságosan a PCM-ek, az akkumulátor, a vezérlőmodulok, az EBOD-vezérlők, a lemezmeghajtók és a StorSimple-eszközök háza.
+title: StorSimple 8000 sorozatú hardver-összetevők cseréje | Microsoft Docs
+description: Ismerteti, hogyan lehet biztonságosan lecserélni egy StorSimple-eszköz PCMs, akkumulátorát, vezérlő moduljait, EBOD, lemezmeghajtóit és alvázát.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,91 +16,91 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60321732"
 ---
-# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Hardverösszetevő cseréje a StorSimple 8000 sorozatú eszközön
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Hardver-összetevő cseréje a StorSimple 8000 Series eszközön
 
 ## <a name="overview"></a>Áttekintés
-A hardverösszetevő-csere oktatóanyag a Microsoft Azure StorSimple 8000 sorozatú eszköz hardverösszetevőit és az eltávolításukhoz és cseréjéhez szükséges lépéseket ismerteti. Ez a cikk ismerteti a biztonsági ikonokat, a részletes oktatóanyagokra mutató mutatókat, valamint felsorolja a cserélhető összetevőket.
+A hardveres összetevők cseréjének oktatóanyagai ismertetik az Microsoft Azure StorSimple 8000 sorozatú eszköz hardveres összetevőit, valamint az eltávolításához és lecseréléséhez szükséges lépéseket. Ez a cikk a biztonsági ikonokat ismerteti, és megjeleníti a részletes oktatóanyagokat, és felsorolja a cserélhető összetevőket.
 
 > [!IMPORTANT]
-> Mielőtt megpróbálna eltávolítani vagy kicserélni a StorSimple bármely összetevőjét, ellenőrizze, hogy áttekinti-e a [biztonsági ikonra vonatkozó konvenciókat](#safety-icon-conventions) és egyéb [biztonsági óvintézkedéseket.](storsimple-safety.md)
+> A StorSimple-összetevők eltávolításának vagy cseréjének megkísérlése előtt ellenőrizze, hogy megtekinti-e a [biztonsági ikon konvencióit](#safety-icon-conventions) és az egyéb [biztonsági óvintézkedéseket](storsimple-safety.md).
 
 
-### <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciók
-Az alábbi táblázat az alábbi útmutatókban használt biztonsági ikonokat ismerteti. Ügyeljen ezekre a biztonsági ikonokra, miközben végigmegy az eszköz összetevőinek eltávolításához és cseréjéhez szükséges lépéseken.
+### <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
+Az alábbi táblázat az oktatóanyagokban használt biztonsági ikonokat ismerteti. Ügyeljen rá, hogy az eszközök összetevőinek eltávolításához és lecseréléséhez szükséges lépéseket követve vegye figyelembe ezeket a biztonsági ikonokat.
 
 | Ikon | Szöveg | További információ |
 |:--- |:--- |:--- |
-| ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**Veszély!** |Olyan veszélyes helyzetet jelöl, amely, ha nem kerülik el, halálhoz vagy súlyos sérüléshez vezet. Ez a jelszó a legszélsőségesebb helyzetekre korlátozódik. |
-| ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**Figyelmeztetés!** |Olyan veszélyes helyzetet jelöl, amely, ha nem kerülik el, halálhoz vagy súlyos sérüléshez vezethet. |
-| ![Vigyázat ikon](./media/storsimple-hardware-component-replacement/Caution.png) |**Figyelem!** |Olyan veszélyes helyzetet jelöl, amely, ha nem kerülik el, kisebb vagy közepes sérülést okozhat. |
-| ![Értesítés ikon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**Észrevesz:** |Fontosnak tekintett, de a veszélyhez kapcsolódó információkat jelöl. |
-| ![Az áramütés ikonja](./media/storsimple-hardware-component-replacement/Electric.png) |**Áramütés veszélye** |Magas feszültséget jelez. |
-| ![A Nehéz súly ikonja](./media/storsimple-hardware-component-replacement/Weight.png) |**Nehéz súly** | |
-| ![Nincs felhasználó által javítható alkatrészikon](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Nincs enek javítható alkatrész a felhasználó számára** |Ne férjen hozzá, kivéve, ha megfelelően van betanítva. |
-| ![Utasítások olvasása ikon](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Először olvassa el az összes utasítást** | |
-| ![Tippveszély ikon](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tipp veszély** | |
+| ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**VESZÉLY!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ez a jelzési szó a legszélsőségesebb helyzetekre korlátozódik. |
+| ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
+| ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Caution.png) |**Vigyázat!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
+| ![Értesítés ikon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**MEGJEGYZČS** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
+| ![Áramütés ikon](./media/storsimple-hardware-component-replacement/Electric.png) |**Áramütés veszélye** |Nagy feszültséget jelez. |
+| ![Nagy súly ikon](./media/storsimple-hardware-component-replacement/Weight.png) |**Nagy súly** | |
+| ![Nincs felhasználó által szervizelhető rész ikon](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Nincsenek felhasználó által szervizelhető részek** |A megfelelő képzés hiányában ne legyen hozzáférés. |
+| ![Olvasási utasítások ikonja](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Először olvassa el az összes utasítást** | |
+| ![Tipp veszélyességének ikonja](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tipp kockázati tényező** | |
 
 ### <a name="before-you-begin"></a>Előkészületek
-Ismerkedjen meg az oktatóeszközbiztonsági információkkal és az oktatóanyagban használt biztonsági ikonokkal. A teljes körű információkért [keresse fel és működtesse biztonságosan a StorSimple-eszközt.](storsimple-safety.md) A StorSimple-eszköz kezelése előtt mindenképpen tekintse át a [biztonsági óvintézkedéseket.](storsimple-safety.md#handling-precautions)
+Ismerkedjen meg a jelen oktatóanyagban használt eszközével és biztonsági ikonjaival kapcsolatos biztonsági információkkal. A teljes körű információkért lépjen a [biztonságos telepítés és a StorSimple-eszköz üzemeltetéséhez](storsimple-safety.md) . Ügyeljen arra, hogy a StorSimple-eszköz kezelése előtt tekintse át a [biztonsági óvintézkedéseket](storsimple-safety.md#handling-precautions) .
 
-Mielőtt megpróbálna lecserélni egy összetevőt, vegye figyelembe az alábbi információkat.
+Az összetevők cseréjének megkísérlése előtt vegye figyelembe a következő információkat.
 
-![Figyelmeztetés](./media/storsimple-hardware-component-replacement/Warning.png) ![Icon Elektromos](./media/storsimple-hardware-component-replacement/Electric.png) Sokk Icon **FIGYELMEZTETÉS!**
+![Figyelmeztető ikon](./media/storsimple-hardware-component-replacement/Warning.png) ![áramütés ikonja](./media/storsimple-hardware-component-replacement/Electric.png) **Figyelmeztetés!**
 
-* A StorSimple készülék moduljainak és alkatrészeinek kezelésekor elektrosztatikus kisülés vagy antisztatikus mat segítségével megfelelően földelje magát.
-* Ne érintsen meg semmilyen áramkört. Használja a mellékelt fogantyúkat és vezetőket, miközben olyan alkatrészeket kezel, amelyek ki vannak téve az áramköröknek.
+* A StorSimple-eszköz moduljainak és összetevőinek kezelésekor az elektrosztatikus kisülés vagy a antisztatikus matrac használatával megfelelően kihasználhatja magát.
+* Ne érintsen semmilyen áramkört. A megadott fogópontok és útmutatók használata az áramkört esetlegesen fellépő összetevők kezelése során.
 
-![Figyelmeztetési](./media/storsimple-hardware-component-replacement/Warning.png) ![ikon értesítési](./media/storsimple-hardware-component-replacement/NoticeIcon.png) ikonja **ÉRTESÍTÉS:**
+![Figyelmeztető ikon](./media/storsimple-hardware-component-replacement/Warning.png) ![](./media/storsimple-hardware-component-replacement/NoticeIcon.png) figyelmeztetési ikonjának megjegyzése **:**
 
-Amikor kicserél egy modult, **SOHA ne hagyjon üres rekeszt a ház hátsó részén**. A problémás rész eltávolítása előtt szerezzen be egy csere- vagy üres modult.
+Egy modul cseréjekor **Soha ne hagyjon üres öbölben a ház hátsó részén**. Egy helyettesítő vagy üres modul beszerzése a probléma részének eltávolítása előtt.
 
-## <a name="hardware-component-replacement-procedures"></a>Hardverösszetevők cseréjére vonatkozó eljárások
-A StorSimple 8000 sorozatú eszköz több beépülő modulból áll az elsődleges és/vagy EBOD házakban. A 8100 egyetlen elsődleges házzal rendelkezik, míg a 8600 egy kettős ház eszköz elsődleges házzal és EBOD házzal.
+## <a name="hardware-component-replacement-procedures"></a>Hardver-összetevők helyettesítési eljárásai
+Az StorSimple 8000 sorozatú eszköz több beépülőmodul-modulból áll az elsődleges és/vagy EBOD-házakban. Az 8100 egyetlen elsődleges bekerítéssel rendelkezik, míg a 8600 egy olyan kettős bekerítésű eszköz, amely elsődleges bekerítéssel és egy EBOD ház.
 
-Az eszköz fő hardverösszetevőit az alábbi táblázatok foglalják össze. Kattintson a **csereeljárás** oszlopban lévő hivatkozásra a társított oktatóanyag hoz.
+Az eszköz fő hardveres összetevői az alábbi táblázatokban vannak összefoglalva. Kattintson a **helyettesítő eljárás** oszlopban található hivatkozásra a kapcsolódó oktatóanyaghoz való ugráshoz.
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |Nem |[Cserélje ki a storSimple eszköz házát](storsimple-8000-chassis-replacement.md) |
-| Elsődleges vezérlők |2 |Igen |[Vezérlőmodul cseréje a StorSimple eszközön](storsimple-8000-controller-replacement.md) |
-| 764 W-os táp- és hűtőmodulok (PCM-ek) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| Elsődleges vezérlők |2 |Igen |[Vezérlő modul cseréje a StorSimple-eszközön](storsimple-8000-controller-replacement.md) |
+| 764W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
 | Tartalék akkumulátor |2 |Igen |[A tartalék akkumulátor modul cseréje a StorSimple-eszközön](storsimple-8000-battery-replacement.md) |
-| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
-**1.** Hardverösszetevők az elsődleges burkolatban
+**1. táblázat** Az elsődleges házban található hardver-összetevők
 
-Az elsődleges ház és az EBOD ház különböznek az I/O-modulokban. Továbbá, a PCMs különböző teljesítmény. Az elsődleges ház PCM-jei 764 W, míg az EBOD ház580 W- os. Az elsődleges házpcm-jei egy tartalék akkumulátormodult is tartalmaznak.
+Az elsődleges bekerítés és a EBOD ház különbözik az I/O-modulokban. Emellett a PCMs eltérő teljesítményű. Az elsődleges ház PCMs a 764 W, míg a EBOD-ház a 580 W. Az elsődleges ház PCMs is tartalmaz egy tartalék akkumulátor-modult.
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |Nem |[Cserélje ki a storSimple eszköz házát](storsimple-8000-chassis-replacement.md) |
-| EBOD-vezérlők |2 |Igen |[EBOD-vezérlő cseréje a StorSimple eszközön](storsimple-8000-ebod-controller-replacement.md) |
-| 580 W-os táp- és hűtőmodulok (PCM-ek) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
-| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| EBOD-vezérlők |2 |Igen |[EBOD-vezérlő cseréje a StorSimple-eszközön](storsimple-8000-ebod-controller-replacement.md) |
+| 580W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
-**2.** Hardverösszetevők az EBOD házban
+**2. táblázat** A EBOD ház hardveres összetevői
 
-A készülék beépülő moduljai az alábbi első és hátsó ábrákon jelennek meg. Ezekkel a diagramokkal meghatározhatja a különböző beépülő modulok helyét, ha cserére van szükség. Az elülső ábra a lemezmeghajtókat, az EBOD ház és az elsődleges ház hátsó diagramjait mutatja a beépülő modulokat.
+Az eszközön található beépülőmodul-modulok a következő első és hátsó diagramokon vannak kiemelve. Ezen diagramok segítségével meghatározhatja a különböző beépülő modulok helyét, ha cserére van szükség. Az első ábrán a lemezmeghajtók láthatók, a EBOD-ház hátsó diagramjai és az elsődleges ház a beépülő modul moduljait jeleníti meg.
 
-![Az eszköz előlapján, lemezmeghajtókkal](./media/storsimple-hardware-component-replacement/IC741028.png)
+![Lemezmeghajtóval rendelkező eszköz előlapja](./media/storsimple-hardware-component-replacement/IC741028.png)
 
-**1. ábra** A készülék eleje
+**1. ábra** Az eszköz előtt
 
 | Címke | Leírás |
 |:--- |:--- |
 | 0 - 11 |Lemezmeghajtók (összesen 12) |
 
-Mind az elsődleges ház, mind az EBOD ház meghajtóvivő modulokkal rendelkezik. A ház 12 3,5"-os lemezmeghajtónak ad otthont, 3:4 formátumban elrendezve.
+Mind az elsődleges, mind a EBOD-ház rendelkezik meghajtó-szolgáltatói modulokkal. A váz tizenkét 3,5 "lemezmeghajtót helyez el 3 – 4 formátumban rendezve.
 
-![Az eszköz elsődleges házmoduljainak hátlapja](./media/storsimple-hardware-component-replacement/IC740994.png)
+![Az eszköz elsődleges bekerítési moduljainak hátlapja](./media/storsimple-hardware-component-replacement/IC740994.png)
 
-**2. ábra** Az elsődleges ház háttekon
+**2. ábra** Az elsődleges ház hátoldala
 
 | Címke | Leírás |
 |:--- |:--- |
@@ -109,31 +109,31 @@ Mind az elsődleges ház, mind az EBOD ház meghajtóvivő modulokkal rendelkezi
 | 3 |Vezérlő 0 |
 | 4 |Vezérlő 1 |
 
-![Az EBOD ház beépített moduljainak hátsíkja](./media/storsimple-hardware-component-replacement/IC769599.png)
+![Az eszköz EBOD bekerítéséhez tartozó beépülőmodul-modulok hátlapja](./media/storsimple-hardware-component-replacement/IC769599.png)
 
-**3. ábra** Az EBOD ház hátulja
+**3. ábra** A EBOD ház hátoldala
 
 | Címke | Leírás |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
 | 3 |EBOD vezérlő 0 |
-| 4 |EBOD vezérlő 1 |
+| 4 |1. EBOD-vezérlő |
 
-## <a name="field-replaceable-units"></a>Mezőcserélhető egységek
-A StorSimple eszközhöz a következő cserélhető egységek (FRUs- k) érhetők el:
+## <a name="field-replaceable-units"></a>Mezőre cserélhető egységek
+A StorSimple-eszközhöz a következő mezők cserélhető egységei (FRUs) érhetők el:
 
-* Alváz (beleértve az integrált műveleti panelt is)
+* Váz (az integrált operatív panelt is beleértve)
 * 764 W AC PCM
 * 580 W AC PCM
-* Merevlemez-meghajtó meghajtóvivő modullal
+* Merevlemez-meghajtó szolgáltatói modullal
 * Vezérlő modul
-* EBOD vezérlőmodul
+* EBOD vezérlő modul
 * Tartalék akkumulátor modul
-* Rack szerelő sínkészlet
+* Rack-csatlakoztatási vasúti készlet
 
-A csereegységek megrendeléséhez [forduljon](storsimple-8000-contact-microsoft-support.md) a Microsoft támogatási szolgálatához.
+A helyettesítő egységek bármelyikének rendeléséhez [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 
 ## <a name="next-steps"></a>További lépések
-A StorSimple hardverösszetevő cseréjének megkísérlése előtt tekintse át az összes [biztonsági információt.](storsimple-safety.md)
+Tekintse át az összes [biztonsági információt](storsimple-safety.md) , mielőtt megpróbálja cserélni a StorSimple hardver-összetevőt.
 

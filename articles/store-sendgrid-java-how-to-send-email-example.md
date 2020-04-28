@@ -1,6 +1,6 @@
 ---
-title: store-sendgrid-java-how-to-send-email-példa
-description: E-mailek küldése a SendGrid segítségével Java-ból egy Azure-telepítésben
+title: Store-sendgrid-Java-How-to-Send-e-mail – példa
+description: E-mailek küldése a SendGrid a Java használatával Azure-beli üzemelő példányban
 services: ''
 documentationcenter: java
 author: thinkingserious
@@ -16,14 +16,14 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67876481"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>E-mail küldése a SendGrid használatával Java-ról egy Azure-telepítésben
-A következő példa bemutatja, hogyan használhatja a SendGrid segítségével e-maileket az Azure-ban üzemeltetett weboldalról. Az eredményül kapott alkalmazás kéri a felhasználót az e-mail értékek, ahogy az a következő képernyőképen látható.
+# <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>E-mailek küldése a SendGrid a Java használatával Azure-beli üzemelő példányban
+Az alábbi példa bemutatja, hogyan küldhet e-maileket az Azure-ban üzemeltetett weblapokról a SendGrid használatával. Az eredményül kapott alkalmazás felszólítja a felhasználót az e-mail-értékekre, ahogy az alábbi képernyőképen is látható.
 
 ![E-mail űrlap][emailform]
 
@@ -31,18 +31,18 @@ Az eredményül kapott e-mail a következő képernyőképhez hasonlóan fog kin
 
 ![E-mail üzenet][emailsent]
 
-A jelen témakörben szereplő kód használatához az alábbiakat kell tennie:
+A jelen témakörben található kód használatához a következőket kell tennie:
 
-1. Szerezze be a javax.mail JARs-t, például a-ból. <https://www.oracle.com/technetwork/java/javamail/index.html>
-2. Adja hozzá a JARs-t a Java build elérési úthoz.
-3. Ha az Eclipse segítségével hozza létre ezt a Java alkalmazást, az Eclipse telepítési összeállítási szolgáltatásával felveheti a SendGrid-tárakat az alkalmazástelepítési fájlba (WAR). Ha nem használja az Eclipse-t a Java-alkalmazás létrehozásához, győződjön meg arról, hogy a könyvtárak ugyanabban az Azure-szerepkörben vannak, mint a Java-alkalmazás, és hozzáadódnak az alkalmazás osztályelérési úthoz.
+1. Szerezze be a javax. mail tégelyeket, például <https://www.oracle.com/technetwork/java/javamail/index.html>:.
+2. Adja hozzá a tégelyeket a Java Build elérési útjához.
+3. Ha az Eclipse-t használja a Java-alkalmazás létrehozásához, a SendGrid-kódtárakat felveheti az alkalmazás telepítési fájljába (WAR) az Eclipse üzembe helyezési funkciójának használatával. Ha nem az Eclipse-t használja a Java-alkalmazás létrehozásához, győződjön meg arról, hogy a kódtárak a Java-alkalmazáshoz tartozó Azure-szerepkörbe tartoznak, és az alkalmazás osztályának elérési útjába kerülnek.
 
-Az e-mail elküldéséhez saját SendGrid felhasználónévvel és jelszóval is rendelkeznie kell. A SendGrid használatának megkezdéséhez olvassa el [Az e-mailek küldése a SendGrid használatával Java-ból](store-sendgrid-java-how-to-send-email.md).
+Az e-mail elküldéséhez saját SendGrid-felhasználónevét és jelszavát is meg kell adnia. A SendGrid használatának megkezdéséhez tekintse meg az [e-mailek küldése a SendGrid használatával Java-ból](store-sendgrid-java-how-to-send-email.md)című témakört.
 
-Emellett erősen ajánlott a [Hello World Application for Azure eclipse-ben való létrehozása,](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)illetve az Eclipse használata esetén az Azure-ban a Java-alkalmazások Azure-ban való üzemeltetésére szolgáló egyéb technikák ismerete.
+Ezen kívül az [Azure-hoz készült "Helló világ!" alkalmazás alkalmazás létrehozása az Eclipse-ben](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable), illetve a Java-alkalmazások Azure-ban való üzemeltetésének egyéb módszereivel, ha nem az Eclipse-t használja, kifejezetten ajánlott.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Webes űrlap létrehozása e-mailek küldéséhez
-A következő kód bemutatja, hogyan hozhat létre webes űrlapot az e-mailek küldéséhez a felhasználói adatok lekéréséhez. Ennek a tartalomnak az alkalmazásában a JSP-fájl neve **emailform.jsp**.
+A következő kód bemutatja, hogyan hozhat létre webes űrlapot az e-mailek küldéséhez szükséges felhasználói adatok lekéréséhez. A tartalom szempontjából a JSP-fájl neve **emailform. jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -97,8 +97,8 @@ A következő kód bemutatja, hogyan hozhat létre webes űrlapot az e-mailek k�
     </body>
     </html>
 
-## <a name="create-the-code-to-send-the-email"></a>Az e-mail elküldéséhez hozzon létre egy kódot
-A következő kód, amelyet az e-mailform.jsp formátumban az űrlap kitöltésekor hívnak meg, létrehozza az e-mailt, és elküldi azt. Ennek a tartalomnak az alkalmazásában a JSP fájl neve **sendemail.jsp**.
+## <a name="create-the-code-to-send-the-email"></a>A kód létrehozása az e-mail elküldéséhez
+A következő kódot, amely akkor lesz meghívva, amikor befejezi az űrlapot a emailform. jsp-ben, létrehozza az e-mail-üzenetet, és elküldi azt. A tartalom szempontjából a JSP-fájl neve **sendEmail. jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
@@ -205,17 +205,17 @@ A következő kód, amelyet az e-mailform.jsp formátumban az űrlap kitöltése
     </body>
     </html>
 
-Az e-mail elküldése mellett az emailform.jsp is eredményt ad a felhasználónak; egy példa a következő screenshot:
+Az e-mailek elküldése mellett a emailform. jsp a felhasználó eredményét is megadja; ilyen például a következő képernyőkép:
 
-![E-mail eredményküldése][emailresult]
+![E-mail eredményének küldése][emailresult]
 
 ## <a name="next-steps"></a>További lépések
-Telepítse az alkalmazást a számítási emulátorés egy böngészőben futtassa emailform.jsp, írja be az értékeket az űrlapon, kattintson **az e-mail küldése**gombra , majd tekintse meg az eredményeket sendemail.jsp.
+Telepítse az alkalmazást a Compute Emulatorre, és egy böngészőben futtassa a emailform. jsp parancsot, írja be az értékeket az űrlapba, kattintson az **E-mail küldése**elemre, majd tekintse meg az sendEmail. JSP fájl eredményeit.
 
-Ez a kód a SendGrid Java-ban azure-beli használatát mutatja be. Mielőtt éles környezetben üzembe helyezne az Azure-ba, érdemes lehet további hibakezelést vagy egyéb funkciókat hozzáadnia. Példa: 
+Ez a kód azt mutatja be, hogy miként használható a SendGrid az Azure-ban Java-ban. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például: 
 
-* Az Azure storage blobok vagy az SQL Database segítségével tárolhatja az e-mail címeket és az e-mail üzeneteket, webes űrlap használata helyett. Az Azure storage blobok Java-ban való használatáról [a Blob Storage Service Java-ból történő használata](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)című témakörben talál további információt. Az SQL Database Java-ban való használatáról az [SQL Database használata Java-ban](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)című témakörben talál további információt.
-* A SendGrid Java-ban való használatáról további információt A [SendGrid használatával Java-ból című témakörben](store-sendgrid-java-how-to-send-email.md)talál.
+* Az Azure Storage-Blobok vagy a SQL Database használatával e-mail-címeket és e-mail-üzeneteket tárolhat webes űrlap helyett. További információ az Azure Storage-Blobok javában való használatáról: [a blob Storage szolgáltatás használata Java-ból](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). További információ a Java-SQL Database használatáról: [SQL Database használata a javában](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
+* További információ a Java-SendGrid használatáról: [az e-mailek küldése a SendGrid a Java használatával](store-sendgrid-java-how-to-send-email.md).
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg
 [emailsent]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailSent.jpg

@@ -1,6 +1,6 @@
 ---
-title: Node.js modulok kal való együttműködés
-description: Ismerje meg, hogyan dolgozhat a Node.js modulokkal az Azure App Service vagy a Cloud Services használata esetén.
+title: Node. js-modulok használata
+description: Megtudhatja, hogyan dolgozhat a Node. js-modulokkal Azure App Service vagy Cloud Services használatakor.
 services: ''
 documentationcenter: nodejs
 author: rloutlaw
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70309273"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
-Ez a dokumentum útmutatást nyújt a Node.js modulok azure-beli üzemeltetett alkalmazásokkal való használatával kapcsolatban. Útmutatást nyújt annak biztosításához, hogy az alkalmazás egy modul egy adott verzióját használja, valamint natív modulokat használjon az Azure-ral.
+Ez a dokumentum útmutatást nyújt a Node. js-modulok használatáról az Azure-ban üzemeltetett alkalmazásokkal. Útmutatást nyújt annak biztosításához, hogy az alkalmazás a modul egy adott verzióját használja, valamint natív modulokat használjon az Azure-ban.
 
-Ha már ismeri a Node.js modulok, **a package.json** és **az npm-shrinkwrap.json** fájlok használatát, az alábbi információk röviden összefoglalják a cikkben tárgyalt információkat:
+Ha már ismeri a Node. js-modulok, a **Package. JSON** és a **NPM-Shrinkwrap. JSON** fájlok használatát, a következő információk gyors összefoglalást biztosítanak a cikkben tárgyalt témakörökből:
 
-* Az Azure App Service megérti **a package.json** és **az npm-shrinkwrap.json** fájlokat, és modulokat telepíthet a fájlok bejegyzései alapján.
+* A Azure App Service a **Package. JSON** és a **NPM-Shrinkwrap. JSON** fájlokat értelmezi, és a fájlok bejegyzései alapján is telepíthet modulokat.
 
-* Az Azure Cloud Services elvárja, hogy az összes modul telepítve legyen a fejlesztői környezetben, és a **\_csomópontmodulok könyvtára** szerepelni fog a központi telepítési csomag részeként. Lehetőség van a modulok telepítésének engedélyezésére **a package.json** vagy **az npm-shrinkwrap.json** fájlok használatával a Cloud Services szolgáltatásban; ez a konfiguráció azonban a Cloud Service-projektek által használt alapértelmezett parancsfájlok testreszabását igényli. A környezet konfigurálásának például az [Npm-telepítés futtatásával az Azure Indítási feladatcímű témakörben található a csomópontmodulok telepítésének elkerülése érdekében.](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)
+* Az Azure Cloud Services a fejlesztői környezetre telepítendő összes modult, valamint a központi telepítési csomag részét képező **csomópont\_-modulok** könyvtárat várja. Lehetővé teheti a modulok telepítésének támogatását a Cloud Services **Package. JSON** vagy **NPM-Shrinkwrap. JSON** fájlok használatával. Ehhez a konfigurációhoz azonban a Cloud Service-projektek által használt alapértelmezett parancsfájlok testreszabására van szükség. A környezet konfigurálásának példáját lásd: az [Azure indítási feladata a NPM-telepítés futtatásához a Node-modulok üzembe helyezésének elkerülése](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) érdekében
 
 > [!NOTE]
-> Az Azure virtuális gépek nem ismertetik ebben a cikkben, mivel a virtuális gép üzembe helyezési élménye a virtuális gép által üzemeltetett operációs rendszer függ.
+> Az Azure Virtual Machines ebben a cikkben nem tárgyaljuk, mivel a virtuális gépek üzembe helyezési élménye függ a virtuális gép által üzemeltetett operációs rendszertől.
 > 
 > 
 
-## <a name="nodejs-modules"></a>Node.js modulok
-A modulok betölthető JavaScript-csomagok, amelyek az alkalmazás speciális funkcióit biztosítják. A modulok általában az **npm** parancssori eszközzel vannak telepítve, azonban néhány modul (például a http modul) a Node.js alapcsomag részeként szolgál.
+## <a name="nodejs-modules"></a>Node. js-modulok
+A modulok olyan betölthető JavaScript-csomagok, amelyek konkrét funkciókat biztosítanak az alkalmazás számára. A modulokat általában a **NPM** parancssori eszközzel kell telepíteni, azonban egyes modulok (például a HTTP-modul) a Core Node. js-csomag részeként vannak megadva.
 
-A modulok telepítésekor **a\_** rendszer az alkalmazáskönyvtár szerkezetének gyökérkönyvtárában tárolja őket. A **csomópontmodulok\_** könyvtárában lévő minden modul saját könyvtárat tart fenn, amely minden olyan modult tartalmaz, amelytől függ, és ez a viselkedés minden modulesetében ismétlődik a függőségi láncban. Ez a környezet lehetővé teszi, hogy minden telepített modul saját verziókövetelményekkel rendelkezik a modulokhoz, amelyektől függ, azonban meglehetősen nagy könyvtárstruktúrát eredményezhet.
+A modulok telepítésekor a rendszer a Node modules ( **csomópont\_-modulok** ) könyvtárban tárolja azokat az alkalmazási könyvtár struktúrájának gyökerében. A **\_csomópont moduljainak** könyvtára minden modulja saját könyvtárat tart fenn, amely az általa függő modulokat tartalmazza, és ez a viselkedés minden modul esetében ismétlődik, egészen a függőségi láncig. Ez a környezet lehetővé teszi, hogy a telepített modulok saját verzióra vonatkozó követelményekkel rendelkezzenek a modulokra vonatkozóan, amelyektől függnek, azonban nagy méretű címtár-struktúrát eredményezhet.
 
-A **\_csomópontmodulok** könyvtárának az alkalmazás részeként történő üzembe helyezése növeli a központi telepítés méretét a **package.json** vagy **az npm-shrinkwrap.json** fájl használatával összehasonlítva; ugyanakkor garantálja, hogy a gyártássorán használt modulok verziói megegyeznek a fejlesztéssorán használt modulokkal.
+Ha az alkalmazás részeként telepíti a **Node\_** modules könyvtárat, az egy **Package. JSON** vagy **NPM-Shrinkwrap. JSON** fájl használatával összehasonlítva növeli az üzemelő példány méretét. azonban garantálja, hogy az éles környezetben használt modulok verziói ugyanazok, mint a fejlesztés során használt modulok.
 
 ### <a name="native-modules"></a>Natív modulok
-Míg a legtöbb modul egyszerűen egyszerű szöveges JavaScript fájlokat, egyes modulok platform-specifikus bináris képeket. Ezek a modulok fordítása telepítéskor történik, általában python és csomópont-gyp használatával. Mivel az Azure Cloud Services az alkalmazás részeként üzembe helyezett **csomópontmodulok\_** mappájára támaszkodik, a telepített modulok részét képező bármely natív modulnak felhőszolgáltatásban kell működnie, amennyiben az telepítve van és le van fordítva egy Windows fejlesztői rendszeren.
+Habár a legtöbb modul egyszerűen egyszerű szöveges JavaScript-fájlok, egyes modulok platform-specifikus bináris lemezképek. Ezek a modulok a telepítéskor, általában a Python és a Node-GYP használatával vannak lefordítva. Mivel az Azure Cloud Services az alkalmazás részeként üzembe helyezett **Node\_** modules mappa használatára támaszkodik, a telepített modulok részét képező natív moduloknak működniük kell egy felhőalapú szolgáltatásban, feltéve, hogy a telepítése és lefordítása egy Windows-fejlesztési rendszeren történt.
 
-Az Azure App Service nem támogatja az összes natív modult, és előfordulhat, hogy sikertelen, ha modulokat állít össze speciális előfeltételekkel. Míg néhány népszerű modulok, mint a MongoDB opcionális natív függőségek és a munka finom nélkülük, két kerülő megoldás sikeresnek bizonyult szinte minden natív modulok ma elérhető:
+A Azure App Service nem támogatja az összes natív modult, és a modulok adott előfeltételekkel való fordításakor sikertelen lehet. Míg egyes népszerű modulok, például a MongoDB opcionális natív függőségekkel rendelkeznek, és ezek nélkül is működnek, két megkerülő megoldás sikeresnek bizonyult szinte minden jelenleg elérhető natív modul esetében:
 
-* **Futtassa az npm telepítést** olyan Windows-gépen, amelyen telepítve van a natív modul összes előfeltétele. Ezután telepítse a létrehozott **\_csomópontmodulok mappát** az alkalmazás részeként az Azure App Service-be.
+* Futtassa a **NPM-telepítést** olyan Windows rendszerű gépen, amelyen telepítve van az összes natív modul előfeltétele. Ezután telepítse az alkalmazás részeként a létrehozott **Node\_** modules mappát Azure app Service.
 
-  * A fordítás előtt ellenőrizze, hogy a helyi Node.js telepítés megfelelő architektúrával rendelkezik-e, és a verzió a lehető legközelebb van-e az Azure-ban használt verzióhoz (az aktuális értékek ellenőrizhetők futásidőben a **properties process.arch** és **process.version címen).**
+  * A fordítás előtt győződjön meg róla, hogy a helyi Node. js-telepítésnek megfelelő architektúrával rendelkezik, és a verzió a lehető leghamarabb elérhető az Azure-ban (az aktuális értékek a tulajdonságok **folyamat. Arch** és **Process. Version**).
 
-* Az Azure App Service beállítható egyéni bash- vagy rendszerhéj-parancsfájlok végrehajtására az üzembe helyezés során, így lehetősége van egyéni parancsok végrehajtására és az **npm-telepítés** futtatásának pontos konfigurálására. Az adott környezet konfigurálását bemutató videót az [Egyéni webhelytelepítési parancsfájlok kuduval című](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/)témakörben találja.
+* A Azure App Service konfigurálható egyéni bash-vagy rendszerhéj-parancsfájlok futtatására az üzembe helyezés során, így egyéni parancsok hajthatók végre, és pontosan konfigurálhatók a **NPM telepítésének** módja. A környezet konfigurálását bemutató videó: [Egyéni webhely-telepítési parancsfájlok a kudu](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/).
 
-### <a name="using-a-packagejson-file"></a>Package.json fájl használata
+### <a name="using-a-packagejson-file"></a>Package. JSON fájl használata
 
-A **package.json** fájl segítségével megadhatja az alkalmazás által igényelt legfelső szintű függőségeket, hogy a gazdaplatform telepíthesse a függőségeket, és nem kellene a **\_csomópontmodulok mappáját** a központi telepítés részeként megadnia. Az alkalmazás telepítése után az **npm telepítési** parancs a **package.json** fájl elemzésére és az összes felsorolt függőség telepítésére szolgál.
+A **Package. JSON** fájl segítségével megadhatja az alkalmazás által igényelt legfelső szintű függőségeket, hogy az üzemeltetési platform telepítse a függőségeket, ahelyett, hogy a telepítés részeként fel kellene vennie a **Node\_** modules mappát. Az alkalmazás telepítése után a **NPM install** paranccsal elemezheti a **Package. JSON** fájlt, és telepítheti a felsorolt függőségeket.
 
-A fejlesztés során a **--save**, **--save-dev**vagy **--save-optional** paramétereket használhatja a modulok telepítésekor, hogy automatikusan hozzáadjon egy bejegyzést a modulhoz a **package.json** fájlhoz. További információ: [npm-install](https://docs.npmjs.com/cli/install).
+A fejlesztés során a **--Save**, a **--Save-dev**vagy a **--Save-optional** paramétereket használhatja a modulok telepítésekor, ha a modulhoz bejegyzést szeretne hozzáadni a **Package. JSON** fájlhoz. További információ: [NPM-install](https://docs.npmjs.com/cli/install).
 
-A **package.json** fájl egyik lehetséges problémája, hogy csak a legfelső szintű függőségek verzióját adja meg. Minden telepített modul megadhatja a modulok verzióját, amelytől függ, és így lehetséges, hogy a fejlesztéshez használttól eltérő függőségi lánccal végződhet.
-
-> [!NOTE]
-> Az Azure App Service-be való üzembe helyezéskor, ha a <b>package.json</b> fájl natív modulra hivatkozik, előfordulhat, hogy az alkalmazás Git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenik meg:
-> 
-> npm ERR! module-name@0.6.0telepítés: "node-gyp konfigurálja a buildet"
-> 
-> npm ERR! 'cmd "/c" "csomópont-gyp konfigurálás build"" nem sikerült 1-gyp
-> 
-> 
-
-### <a name="using-a-npm-shrinkwrapjson-file"></a>Npm-shrinkwrap.json fájl használata
-Az **npm-shrinkwrap.json** fájl a **package.json** fájl modulverziós korlátozásainak kezelésére tett kísérlet. Míg a **package.json** fájl csak a legfelső szintű modulok verzióit tartalmazza, az **npm-shrinkwrap.json** fájl tartalmazza a teljes modulfüggőségi lánc verziókövetelményeit.
-
-Ha az alkalmazás készen áll az éles környezetre, zárolhatja a verziókövetelményeket, és létrehozhat egy **npm-shrinkwrap.json** fájlt az **npm shrinkwrap** parancs használatával. Ez a parancs a **\_csomópontmodulok** mappájában jelenleg telepített verziókat fogja használni, és ezeket a verziókat az **npm-shrinkwrap.json** fájlba rögzíti. Miután az alkalmazást telepítette az üzemeltetési környezetbe, az **npm telepítési** parancs az **npm-shrinkwrap.json** fájl elemzésére és az összes felsorolt függőség telepítésére szolgál. További információ: [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+A **Package. JSON** fájl egyik lehetséges problémája, hogy csak a legfelső szintű függőségek verzióját adja meg. Az egyes telepített modulok esetleg nem határozzák meg, hogy milyen verziójú modulokra van szükség, és így lehetséges, hogy a fejlesztés során használttól eltérő függőségi láncot használ.
 
 > [!NOTE]
-> Az Azure App Service-be való üzembe helyezéskor, ha az <b>npm-shrinkwrap.json</b> fájl natív modulra hivatkozik, az alkalmazás Git használatával történő közzétételekor a következő példához hasonló hibaüzenet jelenhet meg:
+> Ha a Azure App Service telepítésekor a <b>Package. JSON</b> fájl egy natív modulra hivatkozik, az alkalmazás a git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenhet meg:
 > 
-> npm ERR! module-name@0.6.0telepítés: "node-gyp konfigurálja a buildet"
+> NPM ERR! module-name@0.6.0telepítés: "Node-GYP configure build"
 > 
-> npm ERR! 'cmd "/c" "csomópont-gyp konfigurálás build"" nem sikerült 1-gyp
+> NPM ERR! a "CMD"/c "" Node-GYP configure build "" nem sikerült 1
+> 
+> 
+
+### <a name="using-a-npm-shrinkwrapjson-file"></a>NPM-Shrinkwrap. JSON fájl használata
+A **NPM-Shrinkwrap. JSON** fájl megkísérli a **Package. JSON** fájl modul-verziószámozási korlátainak megoldását. Míg a **Package. JSON** fájl csak a legfelső szintű modulok verzióit tartalmazza, a **NPM-Shrinkwrap. JSON** fájl tartalmazza a teljes modul függőségi láncának verziószámát.
+
+Ha az alkalmazás készen áll az éles környezetben való használatra, zárolhatja a verzióra vonatkozó követelményeket, és létrehozhat egy **NPM-Shrinkwrap. JSON** fájlt a **NPM Shrinkwrap** parancs használatával. Ez a parancs a **Node\_** modules mappában jelenleg telepített verziókat fogja használni, és ezeket a verziókat a **NPM-Shrinkwrap. JSON** fájlba rögzíti. Miután az alkalmazást telepítette az üzemeltetési környezetbe, a **NPM install** parancs használatával elemezheti a **NPM-Shrinkwrap. JSON** fájlt, és telepítheti a felsorolt függőségeket. További információ: [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+
+> [!NOTE]
+> Ha a Azure App Service telepítésekor a <b>NPM-Shrinkwrap. JSON</b> fájl egy natív modulra hivatkozik, az alkalmazás a git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenhet meg:
+> 
+> NPM ERR! module-name@0.6.0telepítés: "Node-GYP configure build"
+> 
+> NPM ERR! a "CMD"/c "" Node-GYP configure build "" nem sikerült 1
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy már tisztában van azzal, hogyan használhatja a Node.js modulokat az Azure-ral, ismerje meg, hogyan [adhatja meg a Node.js verziót,](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md) [hogyan hozhat létre és helyezhet üzembe egy Node.js webalkalmazást,](app-service/app-service-web-get-started-nodejs.md)valamint hogyan [használhatja a Mac és Linux Azure parancssori felületét.](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)
+Most, hogy megértette, hogyan használhatja a Node. js-modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md)Node. js-verziót, hogyan [építhet ki és helyezhet üzembe egy Node. js-webalkalmazást](app-service/app-service-web-get-started-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 További információk: [Node.js fejlesztői központ](/azure/javascript/).
 

@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsfájl: A fogyasztónak küldött Azure-adatmegosztási meghívók listázása | Microsoft dokumentumok'
-description: Ez a PowerShell-parancsfájl egy meglévő adatmegosztásból származó felkéréseket fogad el.
+title: 'PowerShell-parancsfájl: a fogyasztóknak küldött Azure-beli adatmegosztási meghívások listázása | Microsoft Docs'
+description: Ez a PowerShell-parancsfájl egy meglévő adatmegosztásból fogadja a meghívókat.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 157b844afd9d59b6c03c7ae8585bc2182370d3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307151"
 ---
-# <a name="use-powershell-to-get-a-data-share-invitation"></a>Adatmegosztási meghívó bekérése a PowerShell használatával
+# <a name="use-powershell-to-get-a-data-share-invitation"></a>Adatmegosztási meghívás beszerzése a PowerShell használatával
 
-Ez a PowerShell-parancsfájl meghívókat kap egy fogyasztónak.
+Ez a PowerShell-parancsfájl lekéri a fogyasztóknak küldött meghívókat.
 
 ## <a name="sample-script"></a>Példaszkript
 ```powershell
@@ -40,11 +40,11 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Az elküldött adatmegosztási meghívók bekérése és listázása. |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Az elküldött adatmegosztási meghívások beolvasása és listázása |
 |||
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Share PowerShell-parancsfájlminták találhatók az [Azure Data Share PowerShell-mintákban.](../../samples-powershell.md)
+További Azure-adatmegosztási PowerShell-szkriptek az Azure-beli [adatmegosztás PowerShell-mintáinak](../../samples-powershell.md)használatával találhatók.

@@ -1,6 +1,6 @@
 ---
 title: Az SSO engedélyezése több-bérlős alkalmazások esetében
-description: Útmutató független szoftverszállítóknak az Azure Active Directoryval való integrációhoz
+description: Útmutató független szoftvergyártók számára az Azure Active Directoryval való integráláshoz
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67795181"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Egyszeri bejelentkezés engedélyezése a több-bérlős alkalmazáshoz  
 
-Amikor az alkalmazást más vállalatok számára kínálja egy vásárlás vagy előfizetés révén, elérhetővé teszi az alkalmazást a saját Azure-bérlőiken belüli ügyfelek számára. Ezt úgy nevezzük, hogy több-bérlős alkalmazás létrehozása. A koncepció áttekintése: [Több-bérlős alkalmazások az Azure-ban](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) és [a Tenancy az Azure Active Directoryban.](../develop/single-and-multi-tenant-apps.md)
+Ha a vásárlás vagy előfizetés keretében más vállalatok is használhatják az alkalmazást, az alkalmazás elérhetővé válik az ügyfelek számára a saját Azure-bérlőn belül. Ezt nevezzük több-bérlős alkalmazás létrehozásakor. A koncepció áttekintését lásd: több [-bérlős alkalmazások az Azure-ban](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) és [Az Azure Active Directory-ban való bérlet](../develop/single-and-multi-tenant-apps.md).
 
 ## <a name="what-is-single-sign-on"></a>Mi az egyszeri bejelentkezés?
 
-Egyszeri bejelentkezés (SSO) növeli a biztonságot és a kényelmet, amikor a felhasználók az Azure Active Directory és más identitások használatával jelentkeznek be az alkalmazásokba. Ha egy alkalmazás sso engedélyezve van, a felhasználóknak nem kell megadniuk külön hitelesítő adatokat az alkalmazás eléréséhez. Az egyszeri bejelentkezés teljes magyarázata. [Lásd: Egyszeri bejelentkezés az alkalmazásokba az Azure Active Directoryban.](what-is-single-sign-on.md)
+Az egyszeri bejelentkezés (SSO) biztonsági és kényelmi funkciókat biztosít, amikor a felhasználók Azure Active Directory és más identitások használatával jelentkeznek be az alkalmazásokba. Ha egy alkalmazás egyszeri bejelentkezésre van engedélyezve, a felhasználóknak nem kell külön hitelesítő adatokat megadniuk az alkalmazás eléréséhez. Az egyszeri bejelentkezés teljes körű magyarázata. [Lásd: egyszeri bejelentkezés a Azure Active Directory lévő alkalmazásokba](what-is-single-sign-on.md).
 
 ## <a name="why-enable-single-sign-on-in-your-application"></a>Miért érdemes engedélyezni az egyszeri bejelentkezést az alkalmazásban?
 
-A több-bérlős alkalmazásban az egyszeri bejelentkezés engedélyezése számos előnye van. Ha engedélyezi az SSO-t az alkalmazáshoz:
+Számos előnnyel jár az egyszeri bejelentkezés engedélyezése a több-bérlős alkalmazásokban. Ha engedélyezi az egyszeri bejelentkezést az alkalmazáshoz:
 
-* Az alkalmazás felsorolható az Azure Marketplace-en, ahol az alkalmazás felderíthető több millió szervezet az Azure Active Directory használatával.
-  * Lehetővé teszi az ügyfelek számára, hogy gyorsan konfigurálják az alkalmazást az Azure AD-vel.
+* Az alkalmazás az Azure Marketplace-en is megtekinthető, ahol az alkalmazást Azure Active Directory több millió Szervezete is felhasználhatja.
+  * Lehetővé teszi, hogy az ügyfelek gyorsan konfigurálhatják az alkalmazást az Azure AD-vel.
 
-* Az alkalmazás felderíthető az Office 365 App Gallery, az Office 365 alkalmazásindítójában és a Microsoft Search on Office.com
+* Az alkalmazás az Office 365 App Gallery, az Office 365 app Launcher és a Microsoft Search on Office.com
 
-* Az alkalmazás használhatja a Microsoft Graph REST API-t a Microsoft Graph-ból elérhető felhasználói hatékonyságot növelő adatok eléréséhez.
+* Az alkalmazás az Microsoft Graph REST API használatával férhet hozzá a Microsoft Graph által elérhetővé vált felhasználói hatékonyságot eredményező adatokhoz.
 
-* A támogatási költségeket az ügyfelek számára megkönnyítve csökkentheti.
-  * Az Azure AD-csapattal közösen készített alkalmazásspecifikus dokumentáció megkönnyíti a bevezetést.
-  * Ha egy kattintással egyszeri bejelentkezés engedélyezve van, az ügyfelek informatikai rendszergazdáinak nem kell megtanulniuk, hogyan konfigurálhatják az alkalmazást a szervezetben való használatra.
+* A támogatási költségeket csökkentheti ügyfelei számára.
+  * A kölcsönös ügyfeleinknek szóló, az Azure AD-csapattal együtt készített, alkalmazásspecifikus dokumentáció megkönnyíti a bevezetést.
+  * Ha az egyszeri bejelentkezés engedélyezve van, az ügyfelek informatikai rendszergazdái nem kell megismerniük, hogyan kell konfigurálni az alkalmazást a szervezetében való használatra.
 
-* Lehetővé teszi az ügyfelek számára, hogy teljes mértékben kezeljék az alkalmazottés a vendégidentitások hitelesítését és engedélyezését.
+* Lehetővé teszi ügyfelei számára, hogy teljes körűen kezeljék az alkalmazottak és a vendég identitások hitelesítését és engedélyezését.
 
-  * Az identitások ügyféltulajdonosával kapcsolatos összes fiókkezelés és megfelelőségi felelősség.
+  * Az összes Fiókkezelés és megfelelőségi feladat elhelyezése az ügyfelek tulajdonosával.
 
-  * Lehetővé teszi az sso engedélyezését vagy letiltását bizonyos identitásszolgáltatók, csoportok vagy felhasználók számára az üzleti igényeiknek megfelelően.
+  * Lehetővé teszi az egyszeri bejelentkezés engedélyezését vagy letiltását bizonyos identitás-szolgáltatók, csoportok vagy felhasználók számára az üzleti igények kielégítése érdekében.
 
-* Ön növeli a piacképes és elfogadható. Sok nagy szervezet megköveteli, hogy (vagy törekedjen) az alkalmazottak zökkenőmentes Egyszeri bejelentkezés élmény minden alkalmazás. Az SSO egyszerűvé tétele fontos.
+* Növelheti a piacot és a bevezetést. Számos nagy szervezet megköveteli, hogy az alkalmazottaik zökkenőmentes egyszeri bejelentkezéses felhasználói élményt nyújtsanak az összes alkalmazásban. Az egyszeri bejelentkezés egyszerűvé tétele fontos.
 
-* Csökkentheti a végfelhasználói súrlódást, ami növelheti a végfelhasználói használatot és növelheti a bevételt.
+* Csökkentheti a végfelhasználói súrlódást, ami növelheti a végfelhasználói használatot, és növelheti a bevételt.
 
-## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Az egyszeri bejelentkezés engedélyezése a közzétett alkalmazásban
+## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Egyszeri bejelentkezés engedélyezése a közzétett alkalmazásban
 
-1. [Válassza ki a megfelelő összevonási protokollt a több-bérlős alkalmazáshoz.](isv-choose-multi-tenant-federation.md)
-1. Az SSO implementálja az alkalmazásban
-   - Lásd [a hitelesítési mintákra vonatkozó útmutatást](../develop/v2-app-types.md)
-   - Lásd: [Azure Active Directory-kódminták](../develop/sample-v2-code.md) OIDC és OAuth protokollokhoz
-1. [Hozza létre az Azure Tenantt,](isv-tenant-multi-tenant-app.md) és tesztelje az alkalmazást
-1. [Hozzon létre és tegyen közzé SSO dokumentációt a webhelyén.](isv-create-sso-documentation.md)
-1. [Küldje el alkalmazáslistáját,](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) és lépjen kapcsolatba a Microsofttal, hogy dokumentációt hozzon létre a Microsoft webhelyén.
-1. [Csatlakozzon a Microsoft Partner Networkhöz (ingyenes), és készítse el a piacra jutási tervet.](https://partner.microsoft.com/en-us/explore/commercial#gtm)
+1. [Válassza ki a megfelelő összevonási protokollt a több-bérlős alkalmazáshoz](isv-choose-multi-tenant-federation.md).
+1. Egyszeri bejelentkezés implementálása az alkalmazásban
+   - Lásd: [útmutató a hitelesítési mintákhoz](../develop/v2-app-types.md)
+   - Lásd: [Azure Active Directory-mintakód](../develop/sample-v2-code.md) a OIDC és a OAuth protokollokhoz
+1. [Az Azure-bérlő létrehozása](isv-tenant-multi-tenant-app.md) és az alkalmazás tesztelése
+1. [SSO-dokumentáció létrehozása és közzététele a webhelyen](isv-create-sso-documentation.md).
+1. [Küldje el alkalmazásait](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a Microsoft webhelyéről, és ossza meg a Microsofttal.
+1. [Csatlakozzon a Microsoft partner Networkhoz (ingyenes), és hozzon létre egy piacra lépési tervet](https://partner.microsoft.com/en-us/explore/commercial#gtm).

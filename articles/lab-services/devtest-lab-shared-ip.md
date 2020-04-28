@@ -1,6 +1,6 @@
 ---
-title: Megosztott IP-címek ismertetése az Azure DevTest Labs ben | Microsoft dokumentumok
-description: Ismerje meg, hogy az Azure DevTest Labs hogyan használja a megosztott IP-címeket a tesztkörnyezet virtuális gépeinek eléréséhez szükséges nyilvános IP-címek minimalizálása érdekében.
+title: A Azure DevTest Labs megosztott IP-címeinek ismertetése | Microsoft Docs
+description: Megtudhatja, hogyan használja a Azure DevTest Labs megosztott IP-címeket a tesztkörnyezet virtuális gépei eléréséhez szükséges nyilvános IP-címek minimalizálására.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,46 +14,46 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65236866"
 ---
-# <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>A megosztott IP-címek ismertetése az Azure DevTest Labs ben
+# <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>A Azure DevTest Labs megosztott IP-címeinek megismerése
 
-Az Azure DevTest Labs lehetővé teszi, hogy a tesztkörnyezetvirtuális gépek ugyanazt a nyilvános IP-címet, hogy minimálisra csökkentsék az egyes tesztkörnyezet virtuális gépek eléréséhez szükséges nyilvános IP-címek száma.  Ez a cikk ismerteti, hogyan működnek a megosztott IP-k és a kapcsolódó konfigurációs beállítások.
+Azure DevTest Labs lehetővé teszi, hogy a labor virtuális gépek ugyanazt a nyilvános IP-címet használják, hogy minimálisra csökkentsék az egyes laboratóriumi virtuális gépekhez való hozzáféréshez szükséges nyilvános IP-címek számát.  Ez a cikk a megosztott IP-címek működését és a hozzájuk kapcsolódó konfigurációs lehetőségeket ismerteti.
 
 ## <a name="shared-ip-setting"></a>Megosztott IP-beállítás
 
-Amikor létrehoz egy tesztkörnyezetet, az egy virtuális hálózat alhálózatában jön létre.  Alapértelmezés szerint ez az alhálózat úgy jön létre, hogy a **Megosztott nyilvános IP engedélyezése** érték *igen*.  Ez a konfiguráció egy nyilvános IP-címet hoz létre a teljes alhálózathoz.  A virtuális hálózatok és alhálózatok konfigurálásáról a [Virtuális hálózat konfigurálása az Azure DevTest Labs ben](devtest-lab-configure-vnet.md)című témakörben talál további információt.
+Labor létrehozásakor a rendszer egy virtuális hálózat alhálózatán hozza létre.  Alapértelmezés szerint ez az alhálózat a **megosztott nyilvános IP-cím engedélyezése** *Igen*értékre állításával jön létre.  Ez a konfiguráció létrehoz egy nyilvános IP-címet a teljes alhálózathoz.  A virtuális hálózatok és alhálózatok konfigurálásával kapcsolatos további információkért lásd: [virtuális hálózat konfigurálása Azure DevTest Labsban](devtest-lab-configure-vnet.md).
 
-![Új tesztkörnyezet-alhálózat](media/devtest-lab-shared-ip/lab-subnet.png)
+![Új Lab-alhálózat](media/devtest-lab-shared-ip/lab-subnet.png)
 
-Meglévő laborok esetén ezt a beállítást a **Konfiguráció és házirendek > virtuális hálózatok**lehetőséget választva engedélyezheti. Ezután válasszon ki egy virtuális hálózatot a listából, és válassza **a MEGOSZTOTT NYILVÁNOS IP engedélyezése lehetőséget** a kiválasztott alhálózathoz. Ezt a beállítást bármely tesztkörnyezetben is letilthatja, ha nem szeretne megosztani egy nyilvános IP-címet a tesztkörnyezet virtuális gépei között.
+A meglévő Labs esetében engedélyezheti ezt a beállítást a **konfiguráció és a házirendek > a virtuális hálózatok**lehetőség kiválasztásával. Ezután válasszon ki egy virtuális hálózatot a listából, és válassza a **megosztott nyilvános IP-cím engedélyezése** egy kiválasztott alhálózathoz lehetőséget. Ezt a beállítást bármely tesztkörnyezetben letilthatja, ha nem szeretne nyilvános IP-címet megosztani a tesztkörnyezet virtuális gépei között.
 
-Az ebben a tesztkörnyezetben létrehozott virtuális gépek alapértelmezés szerint egy megosztott IP használatával.  A virtuális gép létrehozásakor ez a beállítás az **IP-cím konfigurációja**csoport **Speciális beállítások** lapján figyelhető meg.
+A laborban létrehozott összes virtuális gép megosztott IP-címet használ.  A virtuális gép létrehozásakor ez a beállítás a **Speciális beállítások** lapon, az **IP-cím konfigurálása**területen figyelhető meg.
 
 ![Új virtuális gép](media/devtest-lab-shared-ip/new-vm.png)
 
-- **Megosztva:** A **megosztottként** létrehozott összes virtuális gép egy erőforráscsoportba (RG) kerül. Egyetlen IP-cím van rendelve az adott RG-hez, és az RG-ben lévő összes virtuális gép ezt az IP-címet fogja használni.
-- **Nyilvános:** Minden létrehozott virtuális gép saját IP-címmel rendelkezik, és a saját erőforráscsoportban jön létre.
-- **Privát:** Minden létrehozott virtuális gép privát IP-címet használ. Ehhez a virtuális géphez nem tud csatlakozni közvetlenül az internetről a Távoli asztal lal.
+- **Megosztott:** Minden **megosztottként** létrehozott virtuális gép egyetlen ERŐFORRÁSCSOPORT (RG) alá kerül. A RG számára egyetlen IP-cím van hozzárendelve, és a RG összes virtuális gépe ezt az IP-címet fogja használni.
+- **Nyilvános:** Minden létrehozott virtuális gép saját IP-címmel rendelkezik, és a saját erőforráscsoporthoz jön létre.
+- **Magánjellegű:** Minden létrehozott virtuális gép magánhálózati IP-címet használ. Nem lehet közvetlenül az internetről Távoli asztal használatával csatlakozni a virtuális géphez.
 
-Amikor egy virtuális gép megosztott IP-engedélyezve van az alhálózathoz, DevTest Labs automatikusan hozzáadja a virtuális gép egy terheléselosztó, és hozzárendelegy TCP-port számát a nyilvános IP-cím, továbbítja az RDP-port a virtuális gép.  
+Ha egy megosztott IP-címmel rendelkező virtuális gép hozzá van adva az alhálózathoz, a DevTest Labs automatikusan hozzáadja a virtuális gépet egy terheléselosztó szolgáltatáshoz, és hozzárendeli a TCP-portszámot a nyilvános IP-címhez, amely a virtuális gép RDP-portjára lesz továbbítva.  
 
-## <a name="using-the-shared-ip"></a>A megosztott IP használata
+## <a name="using-the-shared-ip"></a>A megosztott IP-cím használata
 
-- **Linux felhasználók:** SSH a virtuális gép az IP-cím vagy a teljesen minősített tartománynév, majd egy kettőspont, majd a port. Például az alábbi képen a virtuális géphez való csatlakozáshoz szükséges RDP-cím . `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`
+- **Linux-felhasználók:** SSH-t a virtuális géphez az IP-cím vagy teljes tartománynév használatával, majd egy kettősponttal, majd a porttal. Az alábbi képen például a virtuális géphez való kapcsolódáshoz használt RDP-címnek kell lennie `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`.
 
-  ![Példa virtuális gépre](media/devtest-lab-shared-ip/vm-info.png)
+  ![VM-példa](media/devtest-lab-shared-ip/vm-info.png)
 
-- **Windows-felhasználók:** Válassza ki a **Csatlakozás** gombot az Azure Portalon egy előre konfigurált RDP-fájl letöltéséhez és a virtuális gép eléréséhez.
+- **Windows-felhasználók:** A Azure Portal a **Csatlakozás** gombra kattintva letöltheti az előre konfigurált RDP-fájlt, és elérheti a virtuális gépet.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Laborszabályzatok definiálása az Azure DevTest Labsben](devtest-lab-set-lab-policy.md)
-* [Virtuális hálózat konfigurálása az Azure DevTest Labs ben](devtest-lab-configure-vnet.md)
+* [Tesztkörnyezet-házirendek meghatározása a Azure DevTest Labs](devtest-lab-set-lab-policy.md)
+* [Virtuális hálózat konfigurálása Azure DevTest Labsban](devtest-lab-configure-vnet.md)
 
 
 

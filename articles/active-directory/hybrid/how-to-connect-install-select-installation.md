@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Válassza ki a telepítés típusát | Microsoft dokumentumok'
-description: Ez a témakör bemutatja, hogyan választhatja ki az Azure AD Connect hez használandó telepítési típust
+title: 'Azure AD Connect: válassza ki a telepítési típust | Microsoft Docs'
+description: Ez a témakör végigvezeti a Azure AD Connecthez használandó telepítési típus kiválasztásának módján.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60348280"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Az Azure AD Connect telepítési típusának kiválasztása
-Az Azure AD Connect két telepítési típussal rendelkezik az új telepítéshez: expressz és testreszabott. Ez a témakör segít eldönteni, hogy melyik lehetőséget használja a telepítés során.
+A Azure AD Connect két telepítési típust tartalmaz az új telepítéshez: expressz és testre szabott. Ez a témakör segít eldönteni, hogy melyik beállítást kell használni a telepítés során.
 
 ## <a name="express"></a>Express
-Az expressz a leggyakoribb lehetőség, és az összes új telepítés mintegy 90%-a használja. Úgy tervezték, hogy a konfiguráció, amely működik a leggyakoribb ügyfél forgatókönyvek.
+Az Express a leggyakoribb lehetőség, amelyet az összes új telepítés körülbelül 90%-ában használ. A szolgáltatás úgy lett kialakítva, hogy olyan konfigurációt biztosítson, amely a leggyakoribb felhasználói forgatókönyvekhez használható.
 
-Azt feltételezi:
+A következőket feltételezi:
 
-- Egyetlen Active Directory erdővel rendelkezik a helyszínen.
+- A helyszínen egyetlen Active Directory erdő található.
 - Rendelkezik egy vállalati rendszergazdai fiókkal, amelyet a telepítéshez használhat.
-- A helyszíni Active Directoryban kevesebb mint 100 000 objektum található.
+- A helyszíni Active Directory kevesebb mint 100 000 objektummal rendelkezik.
 
-Kapsz:
+A következőket kapja:
 
-- [Jelszó-kivonat szinkronizálás](how-to-connect-password-hash-synchronization.md) a helyszíni Azure AD egyszeri bejelentkezéshez.
-- [Felhasználók, csoportok, névjegyek és Windows 10-es számítógépek](concept-azure-ad-connect-sync-default-configuration.md)szinkronizálására használható konfiguráció.
-- Az összes jogosult objektum szinkronizálása az összes tartományban és az összes ou-ban.
-- [Az automatikus frissítés](how-to-connect-install-automatic-upgrade.md) engedélyezve van, hogy mindig a legújabb elérhető verziót használja.
+- [Jelszó-kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md) a helyszínről az Azure ad-be az egyszeri bejelentkezéshez.
+- Egy olyan konfiguráció, amely szinkronizálja a [felhasználókat, a csoportokat, a névjegyeket és a Windows 10 rendszerű számítógépeket](concept-azure-ad-connect-sync-default-configuration.md).
+- Minden jogosult objektum szinkronizálása az összes tartományban és az összes szervezeti egységben.
+- Az [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) lehetővé teszi, hogy mindig a legújabb elérhető verziót használja.
 
-Az Expressz használatára vonatkozó beállítások:
+Lehetőségek, ahol továbbra is használhatja az Expresst:
 
-- Ha nem szeretné szinkronizálni az összes ou-t, továbbra is használhatja az Expressz et, és az utolsó oldalon törölje a jelet a **A szinkronizálási folyamat indítása...***. Ezután futtassa újra a telepítővarázslót, és módosítsa a felhasználói példányok [konfigurációs beállításaiban,](how-to-connect-installation-wizard.md#customize-synchronization-options) és engedélyezze az ütemezett szinkronizálást.
-- Engedélyezni szeretné az Azure AD Premium egyik szolgáltatását, például a jelszó-visszaírást. Először menjen át expressz, hogy a kezdeti telepítés befejeződött. Ezután futtassa újra a telepítővarázslót, és módosítsa a [konfigurációs beállításokat](how-to-connect-installation-wizard.md#customize-synchronization-options).
+- Ha nem kívánja szinkronizálni az összes szervezeti egységet, továbbra is használhatja az Express-et, és az utolsó oldalon a kijelölés megszüntetése * * elindíthatja a szinkronizálási folyamatot... * * *. Ezután futtassa újra a telepítővarázslót, és módosítsa a szervezeti egységeket a [konfigurációs beállításokban](how-to-connect-installation-wizard.md#customize-synchronization-options) , és engedélyezze az ütemezett szinkronizálást.
+- Engedélyezni szeretné a prémium szintű Azure AD egyik funkcióját, például a jelszó visszaírási. Első lépésként fejezze be az Expresst a kezdeti telepítés befejezéséhez. Ezután futtassa újra a telepítővarázslót, és módosítsa a [konfigurációs beállításokat](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Egyéni
-A testreszabott elérési út sokkal több lehetőséget tesz lehetővé, mint az expressz. Minden olyan esetben használni kell, amikor az expressz előző szakaszában ismertetett konfiguráció nem reprezentatív a szervezet számára.
+A testreszabott elérési út több lehetőséget is lehetővé tesz, mint az Express. Ezt minden olyan esetben fel kell használni, ahol az Express esetében az előző szakaszban leírt konfiguráció nem jellemző a szervezet számára.
 
 A következő esetekben használja:
 
-- Nincs hozzáférése vállalati rendszergazdai fiókhoz az Active Directoryban.
-- Több erdővel is rendelkezik, vagy a jövőben egynél több erdőszinkronizálását tervezi.
-- Az erdőben olyan tartományok vannak, amelyek nem érhetőek el a Connect kiszolgálóról.
-- Azt tervezi, hogy a felhasználói bejelentkezéshez összevonási vagy átmenő hitelesítést használ.
+- Nincs hozzáférése Active Directory vállalati rendszergazdai fiókhoz.
+- Több erdővel rendelkezik, vagy a későbbiekben több erdő szinkronizálását tervezi.
+- Az erdőben lévő tartományok nem érhetők el a csatlakozási kiszolgálóról.
+- Az összevonás vagy átmenő hitelesítés használatát tervezi a felhasználói bejelentkezéshez.
 - Több mint 100 000 objektummal rendelkezik, és teljes SQL Servert kell használnia.
-- Azt tervezi, hogy csoportalapú szűrést használ, és nem csak tartomány- vagy szervezetiegység-alapú szűrést.
+- A Group-alapú szűrést érdemes használni, nem csak a tartomány-vagy OU-alapú szűrést.
 
 ## <a name="upgrade-from-dirsync"></a>Frissítés a DirSync szolgáltatásról
-Ha jelenleg dirsync- et használ, a meglévő konfiguráció frissítéséhez kövesse a [Frissítés a DirSync szolgáltatásból](how-to-dirsync-upgrade-get-started.md) című részben leírt lépéseket. Két különböző frissítési lehetőség van:
+Ha jelenleg használja az rSync-et, kövesse a [frissítés az rsync](how-to-dirsync-upgrade-get-started.md) használatával a meglévő konfiguráció frissítéséhez című szakasz lépéseit. Két különböző frissítési lehetőség létezik:
 
-- Helybeni frissítés a Connect ugyanazon a kiszolgálón történő telepítéséhez.
-- Párhuzamos telepítéssel a Connect új kiszolgálóra történő telepítéséhez, miközben a meglévő DirSync-kiszolgáló még működik.
+- Helyben történő frissítéssel telepítse a kapcsolódást ugyanarra a kiszolgálóra.
+- Párhuzamos üzembe helyezés a kapcsolódás új kiszolgálón való telepítéséhez, miközben a meglévő rSync-kiszolgáló továbbra is működőképes.
 
-## <a name="upgrade-from-azure-ad-sync"></a>Frissítés az Azure AD Sync-ről
-Ha jelenleg az Azure AD Sync, majd [kövesse ugyanazokat](how-to-upgrade-previous-version.md) a lépéseket, mint amikor egy Connect verzióról egy újabb frissítésre. Két különböző frissítési lehetőség van:
+## <a name="upgrade-from-azure-ad-sync"></a>Frissítés Azure AD-szinkronizálóról
+Ha jelenleg Azure AD-szinkronizáló használ, akkor [ugyanazokat a lépéseket](how-to-upgrade-previous-version.md) követheti, mint amikor az egyik összekapcsolási verzióról egy újabbra frissít. Két különböző frissítési lehetőség létezik:
 
-- Helybeni frissítés a Connect ugyanazon a kiszolgálón történő telepítéséhez.
-- Swing-áttelepítés telepíteni Connect egy új kiszolgálón, miközben a meglévő Azure AD Sync-kiszolgáló még mindig működik.
+- Helyben történő frissítéssel telepítse a kapcsolódást ugyanarra a kiszolgálóra.
+- Swing – Migrálás az új kiszolgálón való kapcsolódásra, miközben a meglévő Azure AD-szinkronizáló-kiszolgáló továbbra is működőképes.
 
 ## <a name="migrate-from-fim2010-or-mim2016"></a>Áttelepítés FIM2010 vagy MIM2016
-Ha jelenleg a Forefront Identity Manager 2010 vagy a Microsoft Identity Manager 2016 az Azure AD-összekötő, majd az egyetlen lehetőség az áttelepítés. Kövesse a [swing-migration](how-to-upgrade-previous-version.md#swing-migration)című részben leírt lépéseket. A lépésekben cserélje le az Azure AD Sync fim2010/MIM2016-mal való említését.
+Ha jelenleg a Forefront Identity Manager 2010-es vagy Microsoft Identity Manager 2016-es verzióját használja az Azure AD-összekötővel, az egyetlen lehetőség az áttelepítés. Kövesse a [swing-Migration](how-to-upgrade-previous-version.md#swing-migration)című témakörben leírt lépéseket. A lépéseket követve cserélje le a Azure AD-szinkronizálót a FIM2010/MIM2016.
 
 ## <a name="next-steps"></a>További lépések
-Attól függően, hogy a kiválasztott beállítást használni, használja a táblázatot a tartalom balra, hogy megtalálja a cikket a részletes lépéseket.
+Attól függően, hogy melyik beállítást választotta, a bal oldali tartalomjegyzék használatával megtalálhatja a részletes lépéseket tartalmazó cikket.

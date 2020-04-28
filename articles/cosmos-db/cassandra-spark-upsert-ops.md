@@ -1,6 +1,6 @@
 ---
-title: Upsert-adatok az Azure Cosmos DB Cassandra API-ba a Sparktól
-description: Ez a cikk bemutatja, hogyan upsert a táblák az Azure Cosmos DB Cassandra API spark
+title: Adatok Upsert a Spark Azure Cosmos DB Cassandra APIba
+description: Ez a cikk részletesen ismerteti, hogyan upsert a Azure Cosmos DB Cassandra API a Sparkból
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60893414"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-adatok az Azure Cosmos DB Cassandra API-ba a Sparktól
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok Upsert a Spark Azure Cosmos DB Cassandra APIba
 
-Ez a cikk ismerteti, hogyan upsert adatokat az Azure Cosmos DB Cassandra API-t a Spark.
+Ez a cikk azt ismerteti, hogyan upsert az adatok a Spark Azure Cosmos DB Cassandra APIba.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API-konfiguráció
+## <a name="cassandra-api-configuration"></a>Cassandra API konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,7 +48,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 
 ## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="create-a-dataframe"></a>Adatkeret létrehozása 
+### <a name="create-a-dataframe"></a>Dataframe létrehozása 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -85,12 +85,12 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 
 ## <a name="rdd-api"></a>RDD API
 > [!NOTE]
-> Upsert az RDD API ugyanaz, mint a create művelet 
+> A RDD API Upsert megegyeznek a létrehozási művelettel 
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa az alábbi cikkekkel az Azure Cosmos DB Cassandra API-táblákban tárolt adatokon további műveletek végrehajtásához:
+Folytassa a következő cikkekkel a Azure Cosmos DB Cassandra API táblákban tárolt adatokra vonatkozó egyéb műveletek végrehajtásához:
  
 * [Műveletek törlése](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
-* [Táblamásolási műveletek](cassandra-spark-table-copy-ops.md)
+* [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)

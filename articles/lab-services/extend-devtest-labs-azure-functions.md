@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs bővítése az Azure Functions használatával | Microsoft dokumentumok
-description: Ismerje meg, hogyan bővítheti az Azure DevTest Labs-t az Azure Functions használatával.
+title: Azure DevTest Labs kiterjesztése a Azure Functions használatával | Microsoft Docs
+description: Ismerje meg, hogyan bővíthető Azure DevTest Labs a Azure Functions használatával.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,110 +12,110 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: dd1fc4c1076d89c12b25837db9fa6a0ac3e1f3a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70014359"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>A DevTest Labs kiterjesztése az Azure Functions használatával
-Az Azure Functions használatával a DevTest Labs által már támogatott a már támogatottforgatókönyveken kívül további forgatókönyveket is támogathat. Az Azure Functions segítségével kiterjesztheti a szolgáltatás beépített funkcióit az üzleti igényeknek megfelelően. Az alábbi lista néhány lehetséges forgatókönyvet tartalmaz. Ez a cikk bemutatja, hogyan valósítható meg az egyik ilyen minta forgatókönyvek.
+A DevTest Labs által már támogatott további forgatókönyvek támogatásához Azure Functions is használhatja. A Azure Functions használatával kiterjesztheti a szolgáltatás beépített funkcióit az üzleti igények kielégítése érdekében. Az alábbi lista néhány lehetséges forgatókönyvet tartalmaz. Ez a cikk bemutatja, hogyan hajthatja végre az alábbi példák egyikét.
 
-- A virtuális gépek (VM-ek) legfelső szintű összegzésének biztosítása a laborban
+- A laborban található virtuális gépek (VM-EK) legfelső szintű összefoglalásának megadása
 - [Tesztkörnyezet konfigurálása távoli asztali átjáró használatához](configure-lab-remote-desktop-gateway.md)
-- Megfelelőségi jelentés a belső támogatási oldalon
-- A felhasználók számára a megnövekedett engedélyeket igénylő műveletek végrehajtásának engedélyezése az előfizetésben
+- Megfelelőségi jelentéskészítés a belső támogatási oldalon
+- Annak engedélyezése, hogy a felhasználók elvégezzék a megnövelt engedélyeket igénylő műveleteket az előfizetésben
 - [Munkafolyamatok indítása DevTest Labs-események alapján](https://github.com/RogerBestMsft/DTL-SecureArtifactData)
 
 ## <a name="overview"></a>Áttekintés
-[Az Azure Functions](../azure-functions/functions-overview.md) egy kiszolgáló nélküli számítástechnikai platform az Azure-ban. Az Azure Functions használatával a DevTest Labs megoldáslehetővé teszi számunkra, hogy bővítse a meglévő funkciók saját egyéni kódot. Az Azure Functions szolgáltatásról az [Azure Functions dokumentációjában](../azure-functions/functions-overview.md)olvashat bővebben. Annak bemutatására, hogy az Azure Functions hogyan segíthet idomításában a követelmények teljesítésében vagy a DevTest Labs teljes forgatókönyveinek teljesítésében, ez a cikk egy példa segítségével a labbeli virtuális gépek legfelső szintű összegzését mutatja be az alábbiak szerint:
+[Azure functions](../azure-functions/functions-overview.md) egy kiszolgáló nélküli számítástechnikai platform az Azure-ban. A DevTest Labs szolgáltatással való Azure Functions használata lehetővé teszi, hogy a meglévő funkciókat a saját egyéni kódjával egészítse ki. További információ a Azure Functionsről: [Azure functions dokumentáció](../azure-functions/functions-overview.md). Ennek a cikknek a segítségével bemutathatja, hogyan segíthetnek a Azure Functions a követelmények teljesítésében vagy a DevTest Labs-beli forgatókönyvekben, ez a cikk egy példát mutat be a virtuális gépek legfelső szintű összegzésének biztosítására a laborban az alábbiak szerint:
 
-**Példa követelmény/forgatókönyv:** A felhasználók láthatják a tesztkörnyezetben lévő összes virtuális gép részleteit, beleértve az operációs rendszert, a tulajdonost és az alkalmazott összetevőket.  Ezenkívül ha a **Windows-frissítések alkalmazása** összetevőt nem alkalmazták a közelmúltban, egyszerűen alkalmazhatja azt.
+**Példa a követelményre/forgatókönyvre**: a felhasználók megtekinthetik a laborban lévő összes virtuális gép részleteit, beleértve az operációs rendszert, a tulajdonost és az összes alkalmazott összetevőt.  Emellett, ha a **Windows Updates** összetevőt nem nemrég alkalmazták, egyszerűen alkalmazható.
 
-A forgatókönyv végrehajtásához két függvényt kell használnia az alábbi ábrán leírtak szerint:  
+A forgatókönyv végrehajtásához két függvényt fog használni az alábbi ábrán leírtak szerint:  
 
-![Teljes áramlás](./media/extend-devtest-labs-azure-functions/flow.png)
+![Teljes folyamat](./media/extend-devtest-labs-azure-functions/flow.png)
 
-Ezek a mintafüggvények forráskódja a [DevTest Labs GitHub-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions) található (mind a C# és a PowerShell-implementációk érhetők el).
+A minta függvények forráskódja a [DevTest Labs GitHub-adattárában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions) található (a C# és a PowerShell implementáció is elérhető).
 
-- **UpdateInternalSupportPage**: Ez a függvény lekérdezi a DevTest Labs-t, és közvetlenül frissíti a belső támogatási lapot a virtuális gépek részleteivel.
-- **ApplyWindowsUpdateArtifact**: Egy tesztkörnyezetben lévő virtuális gép esetén ez a funkció a **Windows frissítési** összetevőt alkalmazza.
+- **UpdateInternalSupportPage**: Ez a függvény lekérdezi a DevTest Labs szolgáltatást, és közvetlenül a virtuális gépek részleteivel frissíti a belső támogatási lapot.
+- **ApplyWindowsUpdateArtifact**: a laborban található virtuális gépek esetében ez a függvény a **Windows Update** összetevőt alkalmazza.
 
 ## <a name="how-it-works"></a>Működés
-Amikor a felhasználók a DevTest Labs **belső támogatási** lapját választják, egy előre kitöltött laplal rendelkeznek, amely a virtuális gépekre, a tesztkörnyezet-tulajdonosokra és a támogatási kapcsolattartókra vonatkozó információkat tartalmazza.  
+Ha a felhasználók a DevTest Labs **belső támogatási** lapját választja, a virtuális gépekkel, a labor-tulajdonosokkal és a támogatási partnerekkel kapcsolatos információkat tartalmazó előre feltöltött oldalról van szó.  
 
-Ha a **Frissítés hez itt lehetőséget választja,** a lap meghívja az első Azure-függvényt: **UpdateInternalSupportPage**. A függvény lekérdezi a DevTest Labs-t az információkért, majd átírja a **belső támogatási** lapot az új információkkal.
+Amikor bejelöli a **kattintson ide a frissítéshez** gombra, az oldal meghívja az első Azure-függvényt: **UpdateInternalSupportPage**. A függvény lekérdezi az DevTest Labs szolgáltatás adatait, majd újraírja a **belső támogatási** lapot az új információkkal.
 
-Van egy további művelet, amely lehet tenni, minden olyan virtuális gépek, amelyeken a Windows Update-összetevők nem alkalmazták a közelmúltban, lesz egy gomb, hogy alkalmazza a Windows-frissítéseket a virtuális gépre. Ha a * Windows update gomb**futtatása** lehetőséget választja egy virtuális géphez, a lap meghívja a második Azure-függvényt: **ApplyWindowsUpdateArtifact**. Ez a függvény ellenőrzi, hogy a virtuális gép fut-e, és ha igen, közvetlenül alkalmazza a [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) összetevőt.
+Van egy további művelet is, amely minden olyan virtuális gép esetében, amelyen a Windows Update-összetevők nem lettek alkalmazva a közelmúltban, a Windows-frissítések a virtuális gépre való alkalmazására szolgáló gomb jelenik meg. Ha a virtuális géphez a**Windows Update futtatása** gombot választja, a lap a második Azure-függvényt hívja meg: **ApplyWindowsUpdateArtifact**. Ez a függvény ellenőrzi, hogy a virtuális gép fut-e, és ha igen, alkalmazza-e közvetlenül a [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) -összetevőt.
 
-## <a name="step-by-step-walkthrough"></a>Részletes forgatókönyv
-Ez a szakasz lépésenként ismerteti a **belső támogatási** lap frissítéséhez szükséges Azure-erőforrások beállítását. Ez a forgatókönyv egy példa a DevTest Labs kiterjesztésére. Ezt a mintát más esetekben is használhatja.
+## <a name="step-by-step-walkthrough"></a>Részletes útmutató
+Ez a szakasz részletesen ismerteti a **belső támogatási** oldal frissítéséhez szükséges Azure-erőforrások beállításának lépéseit. Ez az útmutató egy példát mutat be a DevTest Labs kiterjesztésére. Ezt a mintát használhatja más forgatókönyvek esetében is.
 
-### <a name="step-1-create-a-service-principal"></a>1. lépés: Egyszerű szolgáltatás létrehozása 
-Az első lépés az, hogy egy szolgáltatásnév engedélyével az előfizetés, amely tartalmazza a labor. A szolgáltatásnévnek a jelszóalapú hitelesítést kell használnia. Ezt az [Azure CLI,](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) [az Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)vagy az [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)segítségével teheti meg. Ha már rendelkezik egy egyszerű szolgáltatás használata, kihagyhatja ezt a lépést.
+### <a name="step-1-create-a-service-principal"></a>1. lépés: egyszerű szolgáltatásnév létrehozása 
+Az első lépés egy egyszerű szolgáltatásnév beszerzése, amely engedéllyel rendelkezik a labort tartalmazó előfizetéshez. Az egyszerű szolgáltatásnak a jelszó-alapú hitelesítést kell használnia. Az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)vagy a [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)használatával végezhető el. Ha már rendelkezik egy egyszerű szolgáltatással, akkor kihagyhatja ezt a lépést.
 
-Vegye figyelembe az **alkalmazásazonosítót**, **a kulcsot**és a **bérlői azonosítót** a szolgáltatásnévhez. A forgatókönyv későbbi részében szüksége lesz rájuk. 
+Jegyezze fel az **alkalmazás azonosítóját**, **kulcsát**és **bérlői azonosítóját** az egyszerű szolgáltatáshoz. Az útmutató későbbi részében szüksége lesz rájuk. 
 
-### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>2. lépés: Töltse le a mintát, és nyissa meg a Visual Studio 2019
-Töltse le a [C# Azure Functions minta egy](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) példányát helyileg (akár a tárház klónozásával, akár a tárház innen való letöltésével). [here](https://github.com/Azure/azure-devtestlab/archive/master.zip)  
+### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>2. lépés: a minta letöltése és Megnyitás a Visual Studio 2019-ben
+Töltse le helyileg a [C# Azure functions minta](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) másolatát (akár a tárház klónozásával, akár a tárház letöltésével [).](https://github.com/Azure/azure-devtestlab/archive/master.zip)  
 
-1. Nyissa meg a mintamegoldást a Visual Studio 2019-es alkalmazással.  
-1. Telepítse az **Azure fejlesztési** számítási feladatait a Visual Studio számára, ha még nincs telepítve. Ez lehet telepíteni keresztül **Tools** -> **Get Eszközök és funkciók** menüpont).
+1. Nyissa meg a minta megoldást a Visual Studio 2019-mel.  
+1. Ha még nincs telepítve, telepítse az **Azure-fejlesztési** számítási feladatot a Visual studióba. Az eszközök**beolvasása eszközök és szolgáltatások** **menüpont használatával telepíthető** -> .
 
-    ![Az Azure fejlesztési munkaterhelése](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
-1. Hozza létre a megoldást. Válassza **a Build,** majd **a Build Solution** menüelemet.
+    ![Azure-fejlesztési munkaterhelés](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
+1. Hozza létre a megoldást. Válassza a **Létrehozás** , majd a **megoldás létrehozása** menüpontot.
 
-### <a name="step-3-deploy-the-sample-to-azure"></a>3. lépés: A minta üzembe helyezése az Azure-ban
-A Visual Studio ban a **Megoldáskezelő** ablakban kattintson a jobb gombbal az **AzureFunctions** projektre, majd válassza a **Közzététel parancsot.** Kövesse a varázslót egy új vagy meglévő Azure-függvényalkalmazás közzétételének befejezéséhez. Az Azure-függvények Visual Studio használatával történő fejlesztéséről és üzembe helyezéséről az [Azure-függvények fejlesztése a Visual Studio használatával](../azure-functions/functions-develop-vs.md)című témakörben talál részletes információt.
+### <a name="step-3-deploy-the-sample-to-azure"></a>3. lépés: a minta üzembe helyezése az Azure-ban
+A Visual Studióban, a **megoldáskezelő** ablakban kattintson a jobb gombbal a **AzureFunctions** projektre, majd válassza a **Közzététel**lehetőséget. Kövesse a varázslót egy új vagy egy meglévő Azure-függvényalkalmazás közzétételének befejezéséhez. Az Azure functions Visual Studióval történő fejlesztésével és üzembe helyezésével kapcsolatos részletes információkért lásd: [Azure functions fejlesztése a Visual Studio használatával](../azure-functions/functions-develop-vs.md).
 
 ![Közzététel párbeszédpanel](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
 
 
 ### <a name="step-4--gather-application-settings"></a>4. lépés: Alkalmazásbeállítások összegyűjtése
-A függvények közzététele után be kell szereznie ezeket a függvényeket az Azure Portalról. 
+A függvények közzétételekor le kell kérnie a függvények URL-címeit a Azure Portalból. 
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com) 
-1. Keresse meg a függvényalkalmazást.
-1. A **Függvényalkalmazások** lapon válassza ki a funkciót. 
-1. Válassza **a Függvény URL-címének bekerülése** lehetőséget az alábbi képen látható módon. 
+1. Navigáljon a [Azure Portal](https://portal.azure.com). 
+1. Keresse meg a Function alkalmazást.
+1. A **Function apps** lapon válassza ki a függvényt. 
+1. Válassza a **függvény URL-címének beolvasása** lehetőséget az alábbi ábrán látható módon. 
 
-    ![Az Azure függvények URL-címei](./media/extend-devtest-labs-azure-functions/function-url.png)
-4. Másolja és mentse az URL-címet. Ismételje meg ezeket a lépéseket a másik Azure-függvényben. 
+    ![Azure functions URL-címek](./media/extend-devtest-labs-azure-functions/function-url.png)
+4. Másolja és mentse az URL-címet. Ismételje meg ezeket a lépéseket a másik Azure-függvényhez. 
 
-További információkra is szüksége lesz a szolgáltatásnévről, például az alkalmazásazonosítóról, a kulcsról és a bérlői azonosítóról.
+Emellett további információra van szüksége az egyszerű szolgáltatásról, például az alkalmazás-AZONOSÍTÓról, a kulcsról és a bérlői AZONOSÍTÓról.
 
 
-### <a name="step-5--update-application-settings"></a>5. lépés: Alkalmazásbeállítások frissítése
-A Visual Studio az Azure-függvény közzététele után válassza ki az **Azure App Service beállításainak szerkesztése** **a Műveletek**csoportban. Frissítse a következő alkalmazásbeállításokat (távoli):
+### <a name="step-5--update-application-settings"></a>5. lépés: az alkalmazás beállításainak frissítése
+Az Azure-függvény közzétételét követően a Visual Studióban válassza a **Azure app Service beállítások szerkesztése** lehetőséget a **műveletek**területen. A következő Alkalmazásbeállítások frissítése (távoli):
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage
-- WindowsUpdateAllowedDays (alapértelmezés szerint 7)
+- WindowsUpdateAllowedDays (alapértelmezett érték 7)
 - ServicePrincipal_AppId
 - ServicePrincipal_Key
 - ServicePrincipal_Tenant
 
     ![Alkalmazásbeállítások](./media/extend-devtest-labs-azure-functions/application-settings.png)
 
-### <a name="step-6-test-the-azure-function"></a>6. lépés: Az Azure-függvény tesztelése
-A forgatókönyv utolsó lépése az Azure-függvény tesztelése.  
+### <a name="step-6-test-the-azure-function"></a>6. lépés: az Azure-függvény tesztelése
+Az útmutató utolsó lépése az Azure-függvény tesztelése.  
 
-1. Keresse meg az **UpdateInternalSupportPage** függvényt a 3. 
-1. Válassza a lap jobb oldalán a **Teszt** lehetőséget. 
-1. Írja be az útvonal tulajdonságait (LABNAME, RESOURCEGROUPNAME és SUBSCRIPTIONID).
+1. Navigáljon a **UpdateInternalSupportPage** függvényhez a 3. lépésben létrehozott Function alkalmazásban. 
+1. Válassza a **teszt** elemet az oldal jobb oldalán. 
+1. Adja meg az útvonal tulajdonságait (LABNAME, RESOURCEGROUPNAME és SUBSCRIPTIONID).
 1. A függvény végrehajtásához válassza a **Futtatás** lehetőséget.  
 
-    Ez a funkció frissíti a megadott tesztkörnyezet belső támogatási lapját. Ez is tartalmaz egy gombot a felhasználók számára, hogy közvetlenül hívja a funkciót legközelebb
+    Ez a függvény frissíti a megadott labor belső támogatási lapját. Emellett azt is megteheti, hogy a felhasználók közvetlenül a következő alkalommal hívhatják meg a függvényt
 
-    ![Teszt funkció](./media/extend-devtest-labs-azure-functions/test-function.png)
+    ![Teszt függvény](./media/extend-devtest-labs-azure-functions/test-function.png)
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Functions segítségével a DevTest Labs funkciói a már beépített lehetőségeken túlra is kiterjeszthetők, és segíthetnek az ügyfeleknek a csapataikra vonatkozó egyedi igényeik teljesítésében. Ez a minta kiterjeszthető & tovább bővíthető, hogy még jobban lefedje.  Ha többet szeretne megtudni a DevTest Labs-ről, olvassa el az alábbi cikkeket: 
+A Azure Functions segítségével kiterjesztheti a DevTest Labs funkcióit a már beépített funkciókon túl, és segítheti az ügyfeleket abban, hogy megfeleljenek a csapatuk egyedi követelményeinek. Ezt a mintát kiterjesztheti & tovább bővítheti, hogy még nagyobb legyen.  A DevTest Labs szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket: 
 
-- [DevTest Labs vállalati referenciaarchitektúra](devtest-lab-reference-architecture.md)
+- [DevTest Labs nagyvállalati hivatkozási architektúrája](devtest-lab-reference-architecture.md)
 - [Gyakori kérdések](devtest-lab-faq.md)
-- [A DevTest labs felskálázása](devtest-lab-guidance-scale.md)
-- [A DevTest labs automatizálása a PowerShell segítségével](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
+- [A DevTest Labs vertikális felskálázása](devtest-lab-guidance-scale.md)
+- [DevTest Labs automatizálása a PowerShell-lel](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
 
 
 

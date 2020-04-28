@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64869025"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű videotartalom-továbbítási szolgáltatást hozhat létre a Java ügyfél-SDK segítségével, az Azure Media Services alkalmazással.
 
@@ -53,7 +53,7 @@ Ha például a buildelőeszköze a `gradle`, adja a következő függőséget a 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Útmutató: Az Azure Media Services használata Javával
 
 >[!NOTE]
->Amikor a Media Services-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
+>A Media Services fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
 
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
 

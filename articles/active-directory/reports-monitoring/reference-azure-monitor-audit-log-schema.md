@@ -1,6 +1,6 @@
 ---
-title: Értelmezze az Azure Active Directory naplósémáját az Azure Monitorban | Microsoft dokumentumok
-description: Az Azure AD naplózási naplósémájának ismertetése az Azure Monitorban való használatra
+title: A Azure Active Directory naplózási napló sémájának értelmezése Azure Monitorban | Microsoft Docs
+description: Az Azure AD napló sémájának leírása a Azure Monitor való használatra
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68987953"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Értelmezze az Azure AD naplózási naplóinak sémáját az Azure Monitorban (előzetes verzió)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure AD napló sémájának értelmezése Azure Monitor (előzetes verzió)
 
-Ez a cikk ismerteti az Azure Active Directory (Azure AD) naplózási naplóséma az Azure Monitorban. Minden egyes naplóbejegyzés szövegként van tárolva, és JSON-blobként van formázva, ahogy az a következő két példában látható: 
+Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját ismerteti. Minden egyes naplóbejegyzés szövegként tárolódik, és JSON-blobként van formázva, ahogy az alábbi két példa is mutatja: 
 
 ```json
 { 
@@ -145,39 +145,39 @@ Ez a cikk ismerteti az Azure Active Directory (Azure AD) naplózási naplóséma
 
 ```
 
-## <a name="field-and-property-descriptions"></a>Mező- és tulajdonságleírások
+## <a name="field-and-property-descriptions"></a>Mező és tulajdonság leírása
 
 | Mező neve | Leírás |
 |------------|-------------|
-| time       | A dátum és az idő (UTC). |
+| time       | A dátum és idő (UTC). |
 | operationName | A művelet neve. |
 | operationVersion | Az ügyfél által kért REST API-verzió. |
 | category | Jelenleg a *naplózás* az egyetlen támogatott érték. |
-| tenantId | A bérlő i.GUID, amely a naplók társított. |
-| resultType | A művelet eredménye. Az eredmény lehet *Sikeres* vagy *Sikertelen*. |
+| tenantId | A naplókhoz társított bérlői GUID. |
+| resultType | A művelet eredménye. Az eredmény lehet *sikeres* vagy *sikertelen*. |
 | resultSignature |  Ez a mező nincs leképezve, és nyugodtan figyelmen kívül hagyhatja. | 
-| resultDescription | Az eredmény további leírása, amennyiben rendelkezésre áll. | 
+| resultDescription | Az eredmény további leírása, ahol elérhető. | 
 | durationMs |  Ez a mező nincs leképezve, és nyugodtan figyelmen kívül hagyhatja. |
-| callerIpAddress | A kérést küldő ügyfél IP-címe. | 
-| correlationId | Az ügyfél által átadott opcionális GUID. Segíthet az ügyféloldali műveletek és a kiszolgálóoldali műveletek korrelációjában, és akkor hasznos, ha a szolgáltatásokat átszelő naplókat követi nyomon. |
-| identity | A kérelem benyújtásakor bemutatott jogkivonat identitása. Az identitás lehet felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatás. |
-| szint | Az üzenet típusa. A naplók esetében a szint mindig *tájékoztató .* |
+| callerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
+| correlationId | Az ügyfél által átadott opcionális GUID. Segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és hasznos lehet a szolgáltatásokra kiterjedő naplók nyomon követése során. |
+| identity | A kérelem elküldésekor bemutatott jogkivonat identitása. Az identitás lehet felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév. |
+| szint | Az üzenet típusa. A naplózási naplók esetében a szint mindig *tájékoztató jellegű*. |
 | location | Az adatközpont helye. |
-| properties | A naplóhoz kapcsolódó támogatott tulajdonságok listája. További információt a következő táblázatban talál. | 
+| properties | A naplóhoz kapcsolódó támogatott tulajdonságok felsorolása. További információt a következő táblázatban talál. | 
 
 <br>
 
 | Tulajdonság neve | Leírás |
 |---------------|-------------|
-| AuditEventKategória | A naplózási esemény típusa. Ez lehet *Felhasználókezelés*, *Alkalmazáskezelés*, vagy más típusú.|
-| Identitás típusa | A típus lehet *Alkalmazás* vagy *Felhasználó*. |
-| Művelettípus | A típus lehet *Hozzáadás,* *Frissítés*, *Törlés*. vagy *Más*. |
-| Cél erőforrás típusa | Megadja azt a célerőforrás-típust, amelyen a műveletet végrehajtották. A típus lehet *Alkalmazás*, *Felhasználó*, *Szerep*, *Házirend* | 
-| Célerőforrás neve | A célerőforrás neve. Ez lehet egy alkalmazás neve, egy szerepkör neve, egy egyszerű felhasználó neve vagy egy egyszerű szolgáltatás neve. |
-| további célok | Az adott műveletekhez tartozó további tulajdonságok listája. Egy frissítési művelet esetén például a régi és az új értékek a *targetUpdatedProperties ( targetUpdatedProperties )* alatt jelennek meg. | 
+| AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése*vagy más típusú.|
+| Identitás típusa | A típus lehet *alkalmazás* vagy *felhasználó*. |
+| Művelettípus | A típus lehet *Hozzáadás*, *frissítés*, *Törlés*. vagy *más*. |
+| Cél erőforrástípus | Meghatározza azt a célként megadott erőforrás-típust, amelyen a művelet végre lett hajtva. A típus lehet *alkalmazás*, *felhasználó*, *szerepkör*, *házirend* | 
+| Cél erőforrás neve | A célként megadott erőforrás neve. Ez lehet egy alkalmazás neve, egy szerepkör neve, egy egyszerű felhasználónév vagy egy egyszerű szolgáltatásnév. |
+| additionalTargets | Az adott műveletekhez tartozó további tulajdonságok felsorolása. Egy frissítési művelet esetében például a régi értékek és az új értékek a *targetUpdatedProperties*területen jelennek meg. | 
 
 ## <a name="next-steps"></a>További lépések
 
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
-* [Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure Diagnostics-naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Gyakori kérdések és ismert hibák](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

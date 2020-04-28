@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Átmenő hitelesítés - Hogyan működik | Microsoft dokumentumok'
-description: Ez a cikk az Azure Active Directory áteredési hitelesítésének működését ismerteti
+title: 'Azure AD Connect: átmenő hitelesítés – hogyan működik | Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan működik Azure Active Directory átmenő hitelesítés
 services: active-directory
-keywords: Azure AD Connect áthaladási hitelesítés, active directory telepítése, szükséges összetevők az Azure AD, Egyszeri bejelentkezés, Egyszeri bejelentkezés hez
+keywords: Azure AD Connect átmenő hitelesítés, telepítési Active Directory, szükséges összetevők az Azure AD-hez, egyszeri bejelentkezéshez, egyszeri bejelentkezéshez
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,47 +17,47 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60347778"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory átadó hitelesítés: Technikai mélymerülés
-Ez a cikk áttekintést nyújt az Azure Active Directory (Azure AD) átmenő hitelesítés működéséről. A részletes technikai és biztonsági információkért tekintse meg a [Biztonsági mélymerülésről](how-to-connect-pta-security-deep-dive.md) szóló cikket.
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory átmenő hitelesítés: technikai mély merülés
+Ez a cikk áttekintést nyújt az Azure Active Directory (Azure AD) átmenő hitelesítésének működéséről. A részletes technikai és biztonsági tudnivalókat lásd a [biztonsági Deep Dive](how-to-connect-pta-security-deep-dive.md) -cikkben.
 
-## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Hogyan működik az Azure Active Directory átadó hitelesítése?
+## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Hogyan működik Azure Active Directory átmenő hitelesítés?
 
 >[!NOTE]
->Az átadó hitelesítés működéséhez szükséges előfeltételeként a felhasználókat az Azure AD-be kell kiépíteni a helyszíni Active Directoryból az Azure AD Connect használatával. Az átmenő hitelesítés nem vonatkozik a csak felhőalapú felhasználókra.
+>Az átmenő hitelesítés használatának előfeltétele, hogy a felhasználóknak Azure AD Connect használatával kell kiépíteni az Azure AD-t a helyszíni Active Directory. Az áteresztő hitelesítés nem vonatkozik a csak felhőalapú felhasználókra.
 
-Amikor egy felhasználó megpróbál bejelentkezni egy Azure AD által védett alkalmazásba, és ha a bérlőn engedélyezve van az átmenő hitelesítés, a következő lépések lépnek be:
+Amikor egy felhasználó megpróbál bejelentkezni egy Azure AD által védett alkalmazásba, és ha engedélyezve van az átmenő hitelesítés a bérlőn, a következő lépések történnek:
 
-1. A felhasználó megpróbál hozzáférni egy alkalmazáshoz, például az [Outlook Web Apphoz.](https://outlook.office365.com/owa/)
-2. Ha a felhasználó még nincs bejelentkezve, a felhasználó átirányítja az Azure AD **felhasználói bejelentkezési** lapra.
-3. A felhasználó beírja a felhasználónevét az Azure AD bejelentkezési lapon, majd kiválasztja a **Tovább** gombot.
-4. A felhasználó beírja a jelszavát az Azure AD bejelentkezési lapon, majd kiválasztja a **Bejelentkezés** gombot.
-5. Az Azure AD a bejelentkezési kérelem fogadásakor várólistába helyezi a felhasználónevet és a jelszót (a hitelesítési ügynökök nyilvános kulcsával titkosítva).
-6. A helyszíni hitelesítési ügynök lekéri a felhasználónevet és a titkosított jelszót a várólistából. Vegye figyelembe, hogy az ügynök nem gyakran lekérdezése a kérelmek a várólistából, de lekéri a kérelmeket egy előre létrehozott állandó kapcsolaton keresztül.
-7. Az ügynök a személyes kulcsával visszafejti a jelszót.
-8. Az ügynök a felhasználónevet és a jelszót az Active Directoryhoz képest ellenőrzi szabványos Windows API-k használatával, ami hasonló mechanizmus, mint amit az Active Directory összevonási szolgáltatások (AD FS) használ. A felhasználónév lehet a helyszíni alapértelmezett felhasználónév, `userPrincipalName`általában, vagy egy másik attribútum konfigurálva `Alternate ID`az Azure AD Connect (más néven).
-9. A helyszíni Active Directory-tartományvezérlő (DC) kiértékeli a kérelmet, és visszaadja a megfelelő választ (sikeres, sikertelen, jelszó lejárt, vagy a felhasználó zárolt) az ügynöknek.
-10. A hitelesítési ügynök, viszont, visszaküldi ezt a választ vissza az Azure AD.
-11. Az Azure AD kiértékeli a választ, és szükség szerint válaszol a felhasználónak. Például az Azure AD vagy azonnal bejelentkezik a felhasználó, vagy az Azure többtényezős hitelesítésre vonatkozó kérelmeket.
-12. Ha a felhasználó bejelentkezése sikeres, a felhasználó hozzáférhet az alkalmazáshoz.
+1. A felhasználó megpróbál elérni egy alkalmazást, például az [Outlook Web App](https://outlook.office365.com/owa/)alkalmazást.
+2. Ha a felhasználó még nincs bejelentkezve, a rendszer átirányítja a felhasználót az Azure AD **felhasználói bejelentkezési** oldalára.
+3. A felhasználó beírja a felhasználónevét az Azure AD bejelentkezési oldalára, majd kiválasztja a **tovább** gombot.
+4. A felhasználó beírja a jelszavát az Azure AD bejelentkezési oldalára, majd kiválasztja a **Bejelentkezés** gombot.
+5. Az Azure AD a bejelentkezésre irányuló kérés fogadásakor elhelyezi a felhasználónevet és a jelszót (a hitelesítési ügynökök nyilvános kulcsával titkosítva) egy várólistában.
+6. A helyszíni hitelesítési ügynök lekéri a felhasználónevet és a titkosított jelszót a várólistából. Vegye figyelembe, hogy az ügynök nem kérdezi le gyakran a várólistáról érkező kérelmeket, de a kérelmeket egy előre kiállított állandó kapcsolaton keresztül kéri le.
+7. Az ügynök a titkos kulcs használatával visszafejti a jelszót.
+8. Az ügynök a normál Windows API-k használatával ellenőrzi a felhasználónevet és a jelszót Active Directoryon, ami hasonló módszer a Active Directory összevonási szolgáltatások (AD FS) (AD FS) által használt rendszerekhez. A Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév, általában `userPrincipalName`vagy más, Azure ad Connect (más néven `Alternate ID`) konfigurált attribútum.
+9. A helyszíni Active Directory tartományvezérlő (DC) kiértékeli a kérést, és visszaadja a megfelelő választ (sikeres, sikertelen, jelszó lejárt vagy felhasználó által zárolt) az ügynöknek.
+10. A hitelesítési ügynök viszont visszaadja ezt a választ az Azure AD-nek.
+11. Az Azure AD kiértékeli a választ, és szükség szerint válaszol a felhasználónak. Például az Azure AD vagy azonnal aláírja a felhasználót, vagy az Azure Multi-Factor Authenticationra vonatkozó kéréseket.
+12. Ha a felhasználói bejelentkezés sikeres, a felhasználó elérheti az alkalmazást.
 
-Az alábbi ábra az összes összetevőt és a leírt lépéseket mutatja be:
+A következő ábra az összes összetevőt és a benne foglalt lépéseket szemlélteti:
 
 ![Átmenő hitelesítés](./media/how-to-connect-pta-how-it-works/pta2.png)
 
 ## <a name="next-steps"></a>További lépések
-- [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): Ismerje meg, hogy mely forgatókönyvek támogatottak, és melyek nem.
-- [Rövid útmutató:](how-to-connect-pta-quick-start.md)Az Azure AD áthaladási hitelesítése.
-- [Az AD FS-ről átmenő hitelesítésre való áttelepítés](https://aka.ms/adfstoPTADP) részletes útmutató az AD FS-ről (vagy más összevonási technológiákról) az átmenő hitelesítésre való áttelepítéshez.
-- [Intelligens zárolás:](../authentication/howto-password-smart-lockout.md)Konfigurálja a bérlő intelligens zárolási képességét a felhasználói fiókok védelme érdekében.
-- [Gyakori kérdések](how-to-connect-pta-faq.md): Válaszok a gyakori kérdésekre.
-- [Hibaelhárítás:](tshoot-connect-pass-through-authentication.md)Ismerje meg, hogyan oldhatja meg az átmenő hitelesítés szolgáltatással kapcsolatos gyakori problémákat.
-- [Biztonsági mélymerülés:](how-to-connect-pta-security-deep-dive.md)Részletes technikai információk beszerezhető az átmenő hitelesítési funkcióról.
-- [Azure AD seamless egyszeri bejelentkezés:](how-to-connect-sso.md)További információ erről a kiegészítő funkcióról.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Az Azure Active Directory fórum használatával új szolgáltatáskérelmek et nyújthat be.
+- [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
+- [Gyorskonfigurálás](how-to-connect-pta-quick-start.md): az Azure ad átmenő hitelesítésének megkezdése és futtatása.
+- [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoPTADP) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
+- [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): konfigurálja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
+- [Gyakori](how-to-connect-pta-faq.md)kérdések: válaszok keresése a gyakori kérdésekre.
+- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): megtudhatja, Hogyan oldhatók fel az áteresztő hitelesítési szolgáltatással kapcsolatos gyakori problémák.
+- [Biztonsági](how-to-connect-pta-security-deep-dive.md)részletes információk: részletes technikai információkat kaphat az átmenő hitelesítés funkcióról.
+- [Azure ad – zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso.md): További információ erről a kiegészítő funkcióról.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): használja a Azure Active Directory fórumot az új szolgáltatásokra vonatkozó kérelmek fájljának megjelenítéséhez.
 

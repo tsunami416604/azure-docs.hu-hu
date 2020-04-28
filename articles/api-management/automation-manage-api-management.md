@@ -1,6 +1,6 @@
 ---
-title: Az Azure API-kezelés kezelése az Azure Automation használatával
-description: Ismerje meg, hogyan használható az Azure Automation szolgáltatás az Azure API Management kezeléséhez.
+title: Azure-API Management kezelése Azure Automation használatával
+description: Ismerje meg, hogyan használható az Azure Automation szolgáltatás az Azure-API Management felügyeletéhez.
 services: api-management, automation
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: a472e00f9ecab8a5ffa6b19e4fe9a5f8b5ee5b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70072059"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Az Azure API Management felügyelete az Azure Automationnel
-Ez az útmutató bemutatja az Azure Automation szolgáltatást, és hogyan használható az Azure API-kezelés felügyeletének egyszerűsítésére.
+Ez az útmutató bemutatja a Azure Automation szolgáltatást, valamint azt, hogy miként használható az Azure-API Management felügyeletének egyszerűsítésére.
 
 ## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
-Az [Azure Automation](https://azure.microsoft.com/services/automation/) egy Azure-szolgáltatás, amely leegyszerűsíti a felhőkezelést a folyamatautomatizálás révén. Az Azure Automation használatával manuális, ismétlődő, hosszan futó és hibalehetőségeket rejtő feladatok automatizálhatók a megbízhatóság, a hatékonyság és a szervezet értékének növelése érdekében.
+[Azure Automation](https://azure.microsoft.com/services/automation/) egy Azure-szolgáltatás, amely egyszerűbbé teszi a felhőalapú felügyeletet a folyamatok automatizálásával. A Azure Automation, a manuális, az ismétlődő, a hosszan futó és a hibákra hajlamos feladatok automatizálásával növelheti a szervezet számára a megbízhatóságot, a hatékonyságot és az időt.
 
-Az Azure Automation rendkívül megbízható, magas rendelkezésre állású munkafolyamat-végrehajtási motort biztosít, amely az igényeinek megfelelően méretezhető. Az Azure Automationben a folyamatok manuálisan, harmadik féltől származó rendszerekkel vagy ütemezett időközönként is elrúghatók, így a feladatok szükség esetén pontosan megtörténnek.
+A Azure Automation egy nagyon megbízható, jól elérhető munkafolyamat-végrehajtó motort biztosít, amely az igényeinek megfelelően méretezhető. Azure Automation a folyamatokat manuálisan, harmadik féltől származó rendszerek vagy ütemezett időközök alapján lehet kiváltani, hogy a feladatok a szükségesnél pontosan megtörténjenek.
 
-Csökkentse a működési többletterhelést, és szabadítsa fel az informatikai és devops-munkatársakat, hogy olyan munkára összpontosíthassanak, amely üzleti értéket ad az üzleti értéket növelő munkához azáltal, hogy a felhőkezelési feladatokat automatikusan futtatja az Azure Automation által.
+Csökkentse az üzemeltetési terhelést, és szabadítson fel informatikai részleget, és DevOps a munkatársakat úgy, hogy az üzleti értéket a Felhőbeli felügyeleti feladatok automatikus futtatásához Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Hogyan segíthet az Azure Automation az Azure API Management kezelésében?
-Az API Management az [Azure API Management API Windows PowerShell-parancsmagjainak](https://docs.microsoft.com/powershell/module/az.apimanagement)használatával kezelhető az Azure Automationben. Az Azure Automation en belül PowerShell-munkafolyamat-parancsfájlok írása számos API-felügyeleti feladat végrehajtásához a parancsmagok használatával. Ezeket a parancsmagokat az Azure Automationben más Azure-szolgáltatások parancsmagjaival is párosíthatja, így automatizálhatja az összetett feladatokat az Azure-szolgáltatásokban és a külső rendszerekben.
+## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Hogyan segíthet Azure Automation az Azure API Management kezelése?
+A API Management Azure Automation az [Azure API Management API Windows PowerShell-parancsmagjai](https://docs.microsoft.com/powershell/module/az.apimanagement)használatával kezelhetők. Azure Automationon belül a parancsmagok használatával számos API Management feladat elvégzéséhez PowerShell-munkafolyamat-parancsfájlok is írhatók. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső gyártók rendszerei között.
 
-Íme néhány példa az API Management powershell használatával:
+Íme néhány példa a API Management használatára a PowerShell használatával:
 
 * [Azure PowerShell-minták az API Managementhez](https://docs.microsoft.com/azure/api-management/powershell-samples)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy megtanulta az Azure Automation alapjait, és hogy hogyan használható az Azure API Management kezeléséhez, kövesse ezeket a hivatkozásokat, hogy többet tudjon meg.
+Most, hogy megismerte a Azure Automation alapjait, és hogy miként használható az Azure-API Management kezelésére, kövesse az alábbi hivatkozásokat, ahol további információkat talál.
 
-* Tekintse meg az Azure Automation [első lépéseit bemutató.](../automation/automation-first-runbook-graphical.md)
+* Tekintse meg a Azure Automation [első lépéseket ismertető oktatóanyagot](../automation/automation-first-runbook-graphical.md).
 

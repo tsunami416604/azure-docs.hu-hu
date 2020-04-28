@@ -1,6 +1,6 @@
 ---
-title: 'Végfelhasználói hitelesítés: REST API az Azure Data Lake Storage Gen1 szolgáltatással az Azure Active Directory használatával | Microsoft dokumentumok'
-description: Megtudhatja, hogyan valósítható meg a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 használatával az Azure Active Directory használatával rest API használatával
+title: 'Végfelhasználói hitelesítés: REST API Azure Data Lake Storage Gen1 használatával Azure Active Directory | Microsoft Docs'
+description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést Azure Data Lake Storage Gen1 használatával Azure Active Directory használatával REST API
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877822"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 használatával REST API használatával
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával REST API
 > [!div class="op_single_selector"]
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,20 +27,20 @@ ms.locfileid: "60877822"
 > 
 >  
 
-Ebben a cikkben megtudhatja, hogyan használhatja a REST API-t az Azure Data Lake Storage Gen1 végfelhasználói hitelesítéséhez. A SERVICE-To-service hitelesítés a Data Lake Storage Gen1 rest API használatával, lásd: [Szolgáltatás-szolgáltatás hitelesítés a Data Lake Storage Gen1 rest API használatával.](data-lake-store-service-to-service-authenticate-rest-api.md)
+Ebből a cikkből megtudhatja, hogyan használható a REST API a végfelhasználói hitelesítés végrehajtásához Azure Data Lake Storage Gen1 használatával. A szolgáltatás és a szolgáltatás közötti hitelesítéshez REST API használatával Data Lake Storage Gen1 lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 használatával REST API](data-lake-store-service-to-service-authenticate-rest-api.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Hozzon létre egy Azure Active Directory "natív" alkalmazást.** Az Azure Active Directory használatával el kell végeznie a végfelhasználói hitelesítés lépéseit a [Data Lake Storage Gen1 szolgáltatással.](data-lake-store-end-user-authenticate-using-active-directory.md)
+* **Hozzon létre egy Azure Active Directory "natív" alkalmazást**. A Data Lake Storage Gen1 a Azure Active Directory használatával végre kell hajtania a [végfelhasználói hitelesítéshez](data-lake-store-end-user-authenticate-using-active-directory.md)szükséges lépéseket.
 
-* **[cURL .](https://curl.haxx.se/)** Ez a cikk cURL-t használ, hogy bemutassa, hogyan lehet REST API-hívásokat egy Data Lake Storage Gen1 fiók ellen.
+* **[curl](https://curl.haxx.se/)**. Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API hívásokat kezdeményezni egy Data Lake Storage Gen1-fiókkal.
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
-Végfelhasználói hitelesítés az ajánlott megközelítés, ha azt szeretné, hogy egy felhasználó jelentkezzen be az alkalmazásba az Azure AD használatával. Az alkalmazás ugyanolyan szintű hozzáféréssel érheti el az Azure-erőforrásokat, mint a bejelentkezett felhasználó. A felhasználónak rendszeresen meg kell adnia a hitelesítő adatait ahhoz, hogy az alkalmazás fenntarthassa a hozzáférést.
+A végfelhasználói hitelesítés az ajánlott módszer, ha azt szeretné, hogy egy felhasználó az Azure AD használatával jelentkezzen be az alkalmazásba. Az alkalmazás képes hozzáférni az Azure-erőforrásokhoz a bejelentkezett felhasználóval megegyező hozzáférési szinttel. A felhasználónak rendszeresen meg kell adnia hitelesítő adatait ahhoz, hogy az alkalmazás fenntartsa a hozzáférést.
 
-A végfelhasználói bejelentkezés eredménye, hogy az alkalmazás kap egy hozzáférési jogkivonatot és egy frissítési jogkivonatot. A hozzáférési jogkivonat a Data Lake Storage Gen1 vagy a Data Lake Analytics minden egyes kérelemhez kapcsolódik, és alapértelmezés szerint egy óráig érvényes. A frissítési jogkivonat egy új hozzáférési jogkivonat beszerzésére használható, és alapértelmezés szerint legfeljebb két hétig érvényes, ha rendszeresen használják. A végfelhasználói bejelentkezéshez két különböző megközelítést használhat.
+A végfelhasználói bejelentkezés eredménye az, hogy az alkalmazás hozzáférési jogkivonatot és frissítési jogkivonatot kap. A hozzáférési jogkivonat minden Data Lake Storage Gen1 vagy Data Lake Analyticshoz kapcsolódó kérelemhez csatolva lesz, és alapértelmezés szerint egy órára érvényes. A frissítési token új hozzáférési jogkivonat beszerzésére használható, és alapértelmezés szerint legfeljebb két hétig érvényes, ha rendszeresen használják. A végfelhasználói bejelentkezéshez két különböző megközelítés használható.
 
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Hajtsa végre a következő lépéseket:
 
@@ -49,13 +49,13 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát, https://localhosta `https%3A%2F%2Flocalhost`, használatra )
+   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát a esetében https://localhosthasználja `https%3A%2F%2Flocalhost`a következőt:)
 
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
 
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
-2. Rögzítse a válaszban szereplő engedélyezési kódot. Ebben az oktatóanyagban az engedélyezési kódot a webböngésző címsorából másolhatja, és a POST-kérelemben átadhatja a token végpontnak, ahogy az a következő kódrészletben látható:
+2. Rögzítse a válaszban szereplő engedélyezési kódot. Ebben az oktatóanyagban átmásolhatja az engedélyezési kódot a webböngésző címsorába, és átadhatja a POST kérelemben a jogkivonat-végpontnak, ahogy az a következő kódrészletben látható:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -69,11 +69,11 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
    > 
    > 
 
-3. A válasz egy JSON-objektum, amely egy `"access_token": "<ACCESS_TOKEN>"`hozzáférési jogkivonatot (például `"refresh_token": "<REFRESH_TOKEN>"`) és egy frissítési jogkivonatot (például) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja az Azure Data Lake Storage Gen1 elérésekor, és a frissítési jogkivonatot egy másik hozzáférési jogkivonat betöltéséhez, amikor egy hozzáférési jogkivonat lejár.
+3. A válasz egy JSON-objektum, amely egy hozzáférési jogkivonatot (például `"access_token": "<ACCESS_TOKEN>"`) és egy frissítési tokent (például `"refresh_token": "<REFRESH_TOKEN>"`) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja a Azure Data Lake Storage Gen1hoz való hozzáféréshez és a frissítési tokenhez egy másik hozzáférési jogkivonat beszerzéséhez, amikor egy hozzáférési jogkivonat lejár.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
-4. Amikor a hozzáférési jogkivonat lejár, a frissítési jogkivonat használatával kérhet új hozzáférési jogkivonatot, ahogy az a következő kódrészletben látható:
+4. Ha a hozzáférési jogkivonat lejár, új hozzáférési jogkivonatot kérhet a frissítési jogkivonat használatával, ahogy az alábbi kódrészletben is látható:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -84,8 +84,8 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan használhatja a szolgáltatás-szolgáltatás hitelesítést az Azure Data Lake Storage Gen1 rest API használatával. Most már tekintse meg az alábbi cikkeket, amelyek arest API használatával az Azure Data Lake Storage Gen1 használatával kapcsolatosak.
+Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 REST API használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a REST API a Azure Data Lake Storage Gen1 használatához.
 
-* [Fiókkezelési műveletek a Data Lake Storage Gen1 szolgáltatáson rest API használatával](data-lake-store-get-started-rest-api.md)
-* [Adatműveletek a Data Lake Storage Gen1 szolgáltatáson rest API használatával](data-lake-store-data-operations-rest-api.md)
+* [Fiókkezelés Data Lake Storage Gen1 a REST API használatával](data-lake-store-get-started-rest-api.md)
+* [Az adatműveletek Data Lake Storage Gen1 a REST API használatával](data-lake-store-data-operations-rest-api.md)
 

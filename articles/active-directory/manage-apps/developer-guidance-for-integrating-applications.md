@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazás regisztrálása az Azure Active Directory használatához | Microsoft dokumentumok
-description: Az IT Pro számára írt cikk az Azure-alkalmazások Active Directoryval való integrálásának irányelveit ismerteti.
+title: Az alkalmazás regisztrálása a Azure Active Directory használatára | Microsoft Docs
+description: Ez a cikk az informatikai szakembereknek készült, az Azure-alkalmazások Active Directory segítségével történő integrálásához nyújt útmutatást.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,66 +14,66 @@ ms.author: mimart
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67108285"
 ---
-# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Üzletági alkalmazások fejlesztése az Azure Active Directoryhoz
-Ez az útmutató áttekintést nyújt az Azure Active Directory (AD) üzletági (LoB) alkalmazások fejlesztéséről. A célközönség az Active Directory/Office 365 globális rendszergazdái.
+# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Üzletági alkalmazások fejlesztése a Azure Active Directory
+Ez az útmutató áttekintést nyújt az üzletági (LoB) alkalmazások Azure Active Directory (AD) való fejlesztéséről. A célközönség a Active Directory/Office 365 globális rendszergazdák számára készült.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure AD-vel integrált alkalmazások létrehozása lehetővé teszi a szervezet felhasználóiszámára az Office 365-tel való egyszeri bejelentkezést. Miután az alkalmazás az Azure AD-ben lehetővé teszi az alkalmazás hitelesítési szabályzatának vezérlését. A feltételes hozzáférésről és az alkalmazások többtényezős hitelesítéssel (MFA) való védelméről a [Hozzáférési szabályok konfigurálása](../conditional-access/app-based-mfa.md)című témakörben olvashat bővebben.
+Az Azure AD-vel integrált alkalmazások fejlesztése lehetővé teszi a felhasználók számára, hogy az Office 365-ben egyszeri bejelentkezéssel jelentkezzenek be. Az alkalmazás az Azure AD-ben való használata lehetővé teszi az alkalmazás hitelesítési házirendjének szabályozását. További információ a feltételes hozzáférésről és az alkalmazások a többtényezős hitelesítéssel (MFA) való védelemmel kapcsolatban: [hozzáférési szabályok konfigurálása](../conditional-access/app-based-mfa.md).
 
-Regisztrálja az alkalmazást az Azure Active Directory használatához. Az alkalmazás regisztrálása azt jelenti, hogy a fejlesztők az Azure AD segítségével hitelesítheti konkretita felhasználók és hozzáférést kérhet a felhasználói erőforrások, például e-mail, naptár és dokumentumok.
+Regisztrálja az alkalmazást Azure Active Directory használatához. Az alkalmazás regisztrálása azt jelenti, hogy a fejlesztők az Azure AD használatával hitelesítik a felhasználókat, és felhasználói erőforrásokhoz, például e-mailekhez, naptárhoz és dokumentumokhoz férhetnek hozzá.
 
-A címtár bármely tagja (nem vendégek) regisztrálhat egy alkalmazást, más néven *alkalmazásobjektum létrehozását.*
+A címtár bármely tagja (nem pedig a vendégek) regisztrálhat egy alkalmazást, más néven *az alkalmazás-objektum létrehozását*.
 
-Az alkalmazás regisztrálása lehetővé teszi, hogy bármely felhasználó a következőket tegye:
+Az alkalmazások regisztrálása lehetővé teszi, hogy a felhasználók a következőket tegye:
 
-* Az Azure AD által felismert alkalmazás identitásának beszereznie
-* Szerezzen be egy vagy több titkos kulcsot/kulcsot, amelyet az alkalmazás az AD-hez való hitelesítéshez használhat
-* Az alkalmazást az Azure Portalon egyéni névvel, emblémával stb.
-* Az Azure AD engedélyezési funkcióinak alkalmazása az alkalmazásukra, többek között a következőkre:
+* Identitás beszerzése az Azure AD által felismert alkalmazásokhoz
+* Szerezzen be egy vagy több titkot/kulcsot, amelyeket az alkalmazás használhat az AD-ben való hitelesítéshez
+* Az alkalmazás a Azure Portalban egyéni névvel, emblémával stb.
+* Az Azure AD-engedélyezési funkciók alkalmazása az alkalmazásra, beleértve a következőket:
 
   * Szerepköralapú hozzáférés-vezérlés (RBAC)
-  * Az Azure Active Directory oAuth engedélyezési kiszolgálóként (az alkalmazás által elérhetővé tett API biztonságossá tétele)
-* Az alkalmazás várt működéséhez szükséges engedélyek deklarálása, beleértve a következőket:
+  * Azure Active Directory oAuth-engedélyezési kiszolgálóként (az alkalmazás által elérhetővé tett API biztonságossá tétele)
+* Állapítsa meg a szükséges engedélyeket, amelyek szükségesek ahhoz, hogy az alkalmazás a várt módon működjön, beleértve a következőket:
 
-     - Alkalmazásengedélyek (csak globális rendszergazdákszámára). Például: Szerepkör-tagság egy másik Azure AD-alkalmazásban vagy szerepkör-tagságegy Azure-erőforráshoz, erőforráscsoporthoz vagy előfizetéshez képest
-     - Delegált engedélyek (bármely felhasználó). Például: Azure AD, Bejelentkezés és Olvasási profil
+     - Alkalmazás-engedélyek (csak globális rendszergazdák). Például: szerepkör-tagság egy másik Azure AD-alkalmazásban vagy szerepkör-tagság egy Azure-erőforráshoz, erőforráscsoporthoz vagy előfizetéshez képest
+     - Delegált engedélyek (bármely felhasználó). Például: Azure AD, bejelentkezés és olvasási profil
 
 > [!NOTE]
-> Alapértelmezés szerint bármely tag regisztrálhat egy alkalmazást. Ha tudni szeretné, hogyan korlátozhatja az alkalmazások regisztrálására vonatkozó engedélyeket az adott tagokra, olvassa el az [Alkalmazások hozzáadása az Azure AD-hez című témakört.](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+> Alapértelmezés szerint bármelyik tag regisztrálhat egy alkalmazást. Ha szeretné megtudni, hogyan korlátozhatja az alkalmazások adott tagokra való regisztrálásának engedélyeit, tekintse meg az [alkalmazások az Azure ad-be való hozzáadásának módját](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 >
 >
 
-A globális rendszergazdának a következőket kell tennie annak érdekében, hogy a fejlesztők készen álljanak az éles környezetre:
+A globális rendszergazdának a következőket kell tennie, hogy segítse a fejlesztőket az alkalmazások éles környezetben való használatra való előkészítésében:
 
-* Hozzáférési szabályok konfigurálása (hozzáférési házirend/MFA)
-* Az alkalmazás konfigurálása a felhasználói hozzárendelés megkövetelésére és a felhasználók hozzárendelésére
-* Az alapértelmezett felhasználói hozzájárulási élmény letiltása
+* Hozzáférési szabályok konfigurálása (hozzáférési szabályzat/MFA)
+* Az alkalmazás konfigurálása felhasználói hozzárendelés megköveteléséhez és felhasználók hozzárendeléséhez
+* Az alapértelmezett felhasználói beleegyezett élmény mellőzése
 
 ## <a name="configure-access-rules"></a>Hozzáférési szabályok konfigurálása
-Alkalmazásonkénti hozzáférési szabályok konfigurálása a SaaS-alkalmazásokhoz. Megkövetelheti például az MFA-t, vagy csak a megbízható hálózatokon lévő felhasználók számára engedélyezhet hozzáférést. Ennek részletei a [hozzáférési szabályok konfigurálása](../conditional-access/app-based-mfa.md)című dokumentumban találhatók.
+Alkalmazáson belüli hozzáférési szabályok konfigurálása az SaaS-alkalmazásokhoz. Megkövetelheti például az MFA-t, vagy csak megbízható hálózatokon lévő felhasználók számára engedélyezze a hozzáférést. Ennek részletei a [hozzáférési szabályok konfigurálása című](../conditional-access/app-based-mfa.md)dokumentumban találhatók.
 
-## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Az alkalmazás konfigurálása a felhasználói hozzárendelés megkövetelésére és a felhasználók hozzárendelésére
-Alapértelmezés szerint a felhasználók hozzárendelés nélkül is hozzáférhetnek az alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó hozzáférési paneljén, felhasználói hozzárendelést kell igényelnie.
+## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Az alkalmazás konfigurálása felhasználói hozzárendelés megköveteléséhez és felhasználók hozzárendeléséhez
+Alapértelmezés szerint a felhasználók hozzárendelése nélkül férhetnek hozzá az alkalmazásokhoz. Ha azonban az alkalmazás elérhetővé teszi a szerepköröket, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó hozzáférési paneljén, felhasználói hozzárendelés szükséges.
 
-Ha Ön Azure AD Premium vagy Enterprise Mobility Suite (EMS) előfizető, javasoljuk a csoportok használatát. Csoportok hozzárendelése az alkalmazáshoz lehetővé teszi a folyamatos hozzáférés-kezelés delegálását a csoport tulajdonosának. Létrehozhatja a csoportot, vagy megkérheti a szervezet felelős ét, hogy hozza létre a csoportot a csoportkezelési szolgáltatás használatával.
+Ha Ön prémium szintű Azure AD vagy nagyvállalati mobilitási csomag (EMS) előfizető, javasoljuk, hogy használjon csoportokat. A csoportok az alkalmazáshoz való hozzárendelésével a folyamatos hozzáférés-kezelést delegálhatja a csoport tulajdonosának. Létrehozhatja a csoportot, vagy megkérheti a szervezet felelős személyét, hogy hozza létre a csoportot a csoport-felügyeleti létesítmény használatával.
 
-[Felhasználók és csoportok hozzárendelése alkalmazáshoz](methods-for-assigning-users-and-groups.md)  
+[Felhasználók és csoportok társítása egy alkalmazáshoz](methods-for-assigning-users-and-groups.md)  
 
 
-## <a name="suppress-user-consent"></a>A felhasználói hozzájárulás letiltása
-Alapértelmezés szerint minden felhasználó egy hozzájárulási élményen megy keresztül a bejelentkezéshez. A hozzájárulási élmény, amely arra kéri a felhasználókat, hogy engedélyeket adjanak egy alkalmazásnak, nyugtalanító lehet az ilyen döntések meghozatalában ismeretlen felhasználók számára.
+## <a name="suppress-user-consent"></a>Felhasználói engedély mellőzése
+Alapértelmezés szerint minden felhasználó beleegyezik a bejelentkezéshez szükséges engedélyekkel. A belefoglalási élmény, amely arra kéri a felhasználókat, hogy engedélyeket adjanak egy alkalmazásnak, olyan felhasználók számára is megoldhatók, akik nem ismerik az ilyen döntéseket.
 
-A megbízható alkalmazások esetében egyszerűsítheti a felhasználói élményt, ha a szervezet nevében hozzájárul az alkalmazáshoz.
+A megbízható alkalmazások esetében egyszerűbbé teheti a felhasználói élményt azáltal, hogy a szervezet nevében hozzájárul az alkalmazáshoz.
 
-A felhasználói hozzájárulásról és az Azure-beli hozzájárulási élményről az [Alkalmazások integrálása](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)az Azure Active Directoryval című témakörben talál további információt.
+További információ a felhasználói belefoglalásról és az Azure-beli belefoglalási feladatokról: [alkalmazások integrálása a Azure Active Directorysal](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Biztonságos távelérés engedélyezése a helyszíni alkalmazásokhoz az Azure AD alkalmazásproxyval](application-proxy.md)
-* [Alkalmazásokhoz való hozzáférés kezelése az Azure AD-vel](what-is-access-management.md)
+* [Helyszíni alkalmazások biztonságos távoli elérésének engedélyezése az Azure AD Application Proxy](application-proxy.md)
+* [Az alkalmazásokhoz való hozzáférés kezelése az Azure AD-vel](what-is-access-management.md)
 

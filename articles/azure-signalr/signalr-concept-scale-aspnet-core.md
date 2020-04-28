@@ -1,5 +1,5 @@
 ---
-title: A ASP.NET Core SignalR méretezése az Azure SignalR-rel
+title: ASP.NET Core jelző méretezése az Azure-jelzővel
 description: Az ASP.NET Core SignalR-alkalmazások az Azure SignalR szolgáltatással történő skálázásának áttekintése.
 author: sffamily
 ms.service: signalr
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60640225"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>ASP.NET Core SignalR-alkalmazások skálázása az Azure SignalR szolgáltatással
 
 ## <a name="developing-signalr-apps"></a>SignalR-alkalmazások fejlesztése
 
-Jelenleg a SignalR [két verziója](https://docs.microsoft.com/aspnet/core/signalr/version-differences) használható a webes alkalmazásokkal: a SignalR for ASP.NET és ASP.NET Core SignalR, amely a legújabb verzió. Az Azure SignalR szolgáltatás az ASP.NET Core SignalR-re épülő, az Azure által kezelt szolgáltatás.
+Jelenleg a Signaler [két verziója](https://docs.microsoft.com/aspnet/core/signalr/version-differences) használható a webes alkalmazásaihoz: a ASP.net jelzőt és a ASP.net Core jelzőt, amely a legújabb verzió. Az Azure SignalR szolgáltatás az ASP.NET Core SignalR-re épülő, az Azure által kezelt szolgáltatás.
 
 Az ASP.NET Core SignalR az előző verzió átdolgozása. Ezért az ASP.NET Core SignalR visszamenőlegesen nem kompatibilis a SignalR korábbi verzióival. Az API-k és a szolgáltatás működése eltérő. Az ASP.NET Core SignalR SDK a .NET Standard verziójához készült, ezért továbbra is használható a .NET-keretrendszerrel. Azonban az új API-kat kell használnia a régiek helyett. Ha a SignalRt használja és szeretne ASP.NET Core SignalRre vagy Azure SignalR szolgáltatásra váltani, úgy kell módosítania a kódot, hogy kezelje az API-k közötti különbségeket.
 
@@ -37,7 +37,7 @@ A másik ok, hogy nem kell ténylegesen üzemeltetnie egy webalkalmazást. Előf
 
 ## <a name="how-does-it-scale"></a>Hogyan skálázható?
 
-Gyakori, hogy a SignalR az SQL Server, az Azure Service Bus vagy az Azure Cache for Redis. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden egység legfeljebb 1000 ügyfélkapcsolatot támogat.
+Gyakori, hogy a jelzőt a Redis SQL Server, Azure Service Bus vagy Azure cache használatával méretezheti. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden egység legfeljebb 1000 ügyfélkapcsolatot támogat.
 
 ## <a name="next-steps"></a>További lépések
 

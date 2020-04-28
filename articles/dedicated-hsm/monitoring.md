@@ -1,6 +1,6 @@
 ---
-title: Figyelési lehetőségek - Azure dedikált HSM | Microsoft dokumentumok
-description: Az Azure dedikált HSM-figyelési lehetőségeinek áttekintése és a felügyeleti feladatok
+title: Figyelési lehetőségek – Azure dedikált HSM | Microsoft Docs
+description: Az Azure dedikált HSM figyelési lehetőségeinek és figyelési feladatainak áttekintése
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,32 +13,32 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881425"
 ---
-# <a name="azure-dedicated-hsm-monitoring"></a>Az Azure dedikált HSM-figyelése
+# <a name="azure-dedicated-hsm-monitoring"></a>Azure dedikált HSM-figyelés
 
-Az Azure dedikált HSM-szolgáltatás egy fizikai eszköz egyetlen ügyfél általi használatra, teljes körű felügyeleti felügyelet és felügyeleti felelősség. A rendelkezésre bocsátott eszköz egy [Gemalto SafeNet Luna 7 HSM modell A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).  A Microsoft nem rendelkezik rendszergazdai hozzáféréssel, ha egy ügyfél kiépíti, a fizikai soros portmellékleten kívül, mint figyelési szerepkört. Ennek eredményeképpen az ügyfelek felelősek a tipikus működési tevékenységekért, beleértve az átfogó figyelést és a naplóelemzést.
-Az ügyfelek teljes mértékben felelősek a HSM-eket használó alkalmazásokért, és a Gemalto-val együttműködve támogatást vagy tanácsadást nyújtanak. Az üzemeltetési higiénia identikai ügyféláltali tulajdonának mértéke miatt a Microsoft nem tud semmilyen magas rendelkezésre állási garanciát nyújtani erre a szolgáltatásra. Az ügyfél felelőssége annak biztosítása, hogy alkalmazásaik megfelelően legyenek konfigurálva a magas rendelkezésre állás elérése érdekében. A Microsoft figyeli és fenntartja az eszköz állapotát és a hálózati kapcsolatot.
+Az Azure dedikált HSM szolgáltatás egy fizikai eszközt biztosít az ügyfelek kizárólagos használatára a teljes körű rendszergazdai ellenőrzés és felügyelet felelőssége mellett. Az elérhetővé tett eszköz egy [Gemalto SafeNet Luna 7 HSM Model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).  A Microsoft nem rendelkezik rendszergazdai hozzáféréssel, ha az ügyfél nem veszi igénybe a fizikai soros portok mellékletét figyelési szerepkörként. Ennek eredményeképpen az ügyfelek felelősek az általános működési tevékenységekért, beleértve az átfogó monitorozási és naplózási elemzéseket.
+Az ügyfelek teljes mértékben felelősek a HSM használó alkalmazásokért, és a Gemalto támogatással vagy tanácsadással kapcsolatos segítségért kell működniük. Az üzemeltetési higiéniai ügyfelek tulajdonlása miatt nem lehetséges, hogy a Microsoft bármilyen magas rendelkezésre állású garanciát nyújtson ehhez a szolgáltatáshoz. Az ügyfél feladata annak biztosítása, hogy alkalmazásaikat megfelelően konfigurálja a magas rendelkezésre állás érdekében. A Microsoft figyeli és karbantartja az eszköz állapotát és a hálózati kapcsolatot.
 
-## <a name="microsoft-monitoring"></a>A Microsoft figyelése
+## <a name="microsoft-monitoring"></a>Microsoft monitoring
 
-A használatban lévő Gemalto SafeNet eszköz alapértelmezés szerint SNMP és soros porttal rendelkezik az eszköz figyelésének lehetőségeként. A Microsoft a soros portkapcsolatot fizikai eszközként használta az eszközhöz való csatlakozáshoz az eszköz állapotának alapvető telemetriája lekéréséhez. Ez magában foglalja az olyan elemeket, mint a hőmérséklet és az alkatrész állapota, mint például a tápegységek és a ventilátorok.
-Ennek elérése érdekében a Microsoft a Gemalto eszközön beállított nem felügyeleti "figyelő" szerepkört használja. Ez a szerepkör lehetővé teszi a telemetriai adatok lekérését, de nem biztosít hozzáférést az eszközhöz a felügyeleti feladat vagy bármilyen módon a kriptográfiai adatok megtekintése szempontjából. Ügyfeleink biztosak lehetnek abban, hogy az eszközük valóban a sajátjuk a bizalmas titkosítási kulcstárolás kezelésére, felügyeletére és használatára. Abban az esetben, ha bármely ügyfél nem elégedett ezzel a minimális hozzáféréssel az alapvető állapotfigyeléshez, lehetősége van letiltani a figyelési fiókot. Ennek nyilvánvaló következménye, hogy a Microsoft nak nem lesz információja, és így nem lesz képes proaktív értesítést adni az eszköz állapotáról. Ebben a helyzetben az ügyfél felelős az eszköz állapotáért.
-Maga a figyelőfunkció úgy van beállítva, hogy 10 percenként leállítsa az eszközt az állapotadatok leéséhez. A soros kommunikáció hibaveszélyes jellege miatt csak egy órán keresztül több negatív állapotjelző tanod riasztást. Ez a riasztás végső soron egy proaktív ügyfél-kommunikációhoz vezetne, amely értesíti a problémát.
-A probléma jellegétől függően megfelelő lépéseket tennének a hatás csökkentése és az alacsony kockázatú felszámolás biztosítása érdekében. Például az áramellátás meghibásodása egy üzem közbeni csereügylet, amelynek nincs eredő szabotázseseménye, így alacsony ütéssel és minimális működési kockázattal hajtható végre. Más eljárások szükségessé tehetik az eszköz nullázását és megszüntetését, hogy minimálisra csökkentsék az ügyfélre jelentett biztonsági kockázatot. Ebben az esetben az ügyfél egy másik eszközt létesítene, újra csatlakozik egy magas rendelkezésre állású párosításhoz, így elindítja az eszköz szinkronizálását. A normál működés minimális idő alatt folytatódna, minimális megszakítással és a legkisebb biztonsági kockázattal.  
+A használatban lévő Gemalto SafeNet-eszköz alapértelmezett SNMP-és soros portja az eszköz figyelésének lehetőségei. A Microsoft a soros port kapcsolatát fizikai eszközként használta az eszközhöz való csatlakozáshoz az eszköz állapotának alapszintű telemetria lekéréséhez. Ide tartoznak az olyan elemek, mint például a hőmérséklet és az összetevők állapota, például az energiaellátási készletek és a ventilátorok.
+Ennek eléréséhez a Microsoft a Gemalto-eszközön beállított, nem rendszergazdai "figyelő" szerepkört használ. Ez a szerepkör lehetővé teszi a telemetria beolvasását, de nem biztosít hozzáférést az eszközhöz rendszergazdai feladat vagy semmilyen módon a titkosítási adatok megtekintése során. Ügyfeleink biztosak lehetnek abban, hogy az eszközük valóban a bizalmas titkosítási kulcs tárolására, kezelésére és használatára szolgál. Abban az esetben, ha az ügyfelek nem elégedettek az alapszintű állapot-figyeléshez szükséges minimális hozzáféréssel, letilthatja a figyelési fiókot. Ennek nyilvánvaló következménye, hogy a Microsoft nem rendelkezik információval, így nem nyújt semmilyen proaktív értesítést az eszköz állapotával kapcsolatban. Ebben az esetben az ügyfél felelős az eszköz állapotáról.
+A figyelő függvény úgy van beállítva, hogy 10 percenként lekérdezze az eszközt az állapotadatok beszerzéséhez. A soros kommunikáció jellegéből adódó hiba miatt a riasztást csak az egy órás időszakra vonatkozó több negatív állapotú állapotjelző után lehet kiemelni. Ez a riasztás végül egy proaktív ügyfél-kommunikációt eredményez, amely értesíti a problémát.
+A probléma jellegétől függően a megfelelő lépéseket kell végrehajtani a hatás csökkentése és az alacsony kockázatú szervizelés biztosítása érdekében. A tápegység meghibásodása például egy olyan gyors swap-eljárás, amely nem eredményez eredő módosítási eseményt, ezért az alacsony hatású és a minimális kockázatot jelentő művelettel lehet elvégezni. Más eljárásoknál előfordulhat, hogy az eszköz nullázása és megszüntetése szükséges az ügyfélre vonatkozó biztonsági kockázat minimálisra csökkentése érdekében. Ebben az esetben az ügyfél kiépít egy másik eszközt, és újracsatlakoztatja a magas rendelkezésre állású párosítást, így az eszköz szinkronizálása is aktiválódik. A normál művelet minimális idő alatt folytatódni fog, minimális megszakítással és legalacsonyabb biztonsági kockázattal.  
 
-## <a name="customer-monitoring"></a>Ügyfélfigyelés
+## <a name="customer-monitoring"></a>Ügyfelek figyelése
 
-A dedikált HSM szolgáltatás értékajánlata az a vezérlő, amelyet az ügyfél kap az eszközről, különösen, ha figyelembe vesszük, hogy felhőalapú eszközről van szó. Ennek a vezérlőnek a következménye az eszköz állapotának figyelése és kezelése. A Gemalto SafeNet eszköz útmutatást nyújt az SNMP és a Syslog implementációhoz. A dedikált HSM-szolgáltatás ügyfeleinek akkor is ajánlott ezt használni, ha a Microsoft-figyelőfiók aktív marad, és kötelezőnek kell tekinteniük, ha letiltják a Microsoft figyelőfiókját.
-Mindkét rendelkezésre álló technika lehetővé tenné az ügyfél számára, hogy azonosítsa a problémákat, és hívja a Microsoft ügyfélszolgálatát a megfelelő javítási munka kezdeményezéséhez.
+A dedikált HSM szolgáltatás értékének kiosztása az eszköz ügyfél általi lekérésének vezérlése, különös tekintettel arra, hogy a felhőben szállított eszköz. Ennek a vezérlőnek a következménye az eszköz állapotának monitorozása és felügyelete. Az Gemalto SafeNet-eszköz az SNMP és a syslog implementációhoz nyújt útmutatást. A dedikált HSM szolgáltatás ügyfelei akkor is ajánlott ezt a szolgáltatást használni, ha a Microsoft monitor-fiók aktív marad, és kötelezőnek tartja, ha letiltja a Microsoft monitor-fiókot.
+Az elérhető technikák lehetővé teszik az ügyfél számára a problémák azonosítását és a Microsoft támogatási szolgálatának meghívását a megfelelő szervizelési munka elindításához.
 
 ## <a name="next-steps"></a>További lépések
 
-Javasoljuk, hogy a szolgáltatás minden kulcsfontosságú fogalma, például a magas rendelkezésre állás és a biztonság, például, jól érthető, mielőtt bármilyen eszköz kiépítése és az alkalmazás tervezése vagy üzembe helyezése. További koncepciószintű témák:
+Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot, az eszközök üzembe helyezése és az alkalmazások tervezése és telepítése előtt jól megértse. További fogalmi szintű témakörök:
 
 * [Magas rendelkezésre állás](high-availability.md)
 * [Fizikai biztonság](physical-security.md)

@@ -1,6 +1,6 @@
 ---
-title: A távoli figyelési megoldás felhasználói felületének testreszabása – Azure | Microsoft dokumentumok
-description: Ez a cikk arról nyújt tájékoztatást, hogy miként érheti el a távfigyelési megoldás gyorsító felhasználói felületének forráskódját, és hogyan érhet el néhány testreszabást.
+title: A távoli figyelési megoldás felhasználói felületének testreszabása – Azure | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan érheti el a távoli figyelési megoldás felhasználói felületének forráskódját, és hogyan teheti lehetővé a testreszabást.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,80 +9,80 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68608004"
 ---
-# <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távfigyelési megoldás gyorsítójának testreszabása
+# <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldáshoz tartozó gyorssegéd testreszabása
 
-Ez a cikk aforráskód eléréséről és a távfigyelési megoldásgyorsító felhasználói felületének testreszabásáról nyújt tájékoztatást.
+Ez a cikk tájékoztatást nyújt arról, hogyan érheti el a forráskódot, és hogyan szabhatja testre a távoli figyelési megoldás gyorsító FELÜLETét.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-a-local-development-environment-for-the-ui"></a>Helyi fejlesztési környezet előkészítése a felhasználói felületszámára
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>Helyi fejlesztési környezet előkészítése a felhasználói felületen
 
-A Távoli figyelési megoldásgyorsító felhasználói felületi kódja a React.js keretrendszer használatával valósul meg. A forráskódot az [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub tárházban találja.
+A távoli figyelési megoldás gyorsított felhasználói felületének kódja a Resolution. js keretrendszer használatával valósítható meg. A forráskódot az [Azure-IOT-PCs-Remote-Monitoring-WebUI](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub-tárházban találja.
 
-A felhasználói felület módosításához helyileg futtathatja annak másolatát. A műveletek, például a telemetriai adatok beolvasása, a helyi példány csatlakozik a megoldás üzembe helyezett példányához.
+Ha módosítani szeretné a felhasználói felületet, helyileg is futtathatja a példányt. Az olyan műveletek végrehajtásához, mint például a telemetria beolvasása, a helyi másolat a megoldás egy telepített példányához csatlakozik.
 
-A következő lépések ismertetik a felhasználói felület fejlesztéséhez szükséges helyi környezet beállításának folyamatát:
+Az alábbi lépések ismertetik a helyi környezet beállításának folyamatát a felhasználói felület fejlesztéséhez:
 
-1. Telepítse a megoldásgyorsító **alappéldányát** a **CLI pc-k** használatával. Jegyezze fel a központi telepítés nevét és a virtuális géphez megadott hitelesítő adatokat. További információ: [Deploy using the CLI](iot-accelerators-remote-monitoring-deploy-cli.md).
+1. Telepítse a megoldás-gyorsító **alapszintű** példányát a **számítógépek** CLI használatával. Jegyezze fel az üzemelő példány nevét és a virtuális géphez megadott hitelesítő adatokat. További információ: [üzembe helyezés a parancssori felület használatával](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. SSH-hozzáférés engedélyezéséhez a virtuális gép, amely a megoldásban a mikroszolgáltatásokat üzemelteti, használja az Azure Portalon vagy az Azure Cloud Shell. Példa:
+1. Ha engedélyezni szeretné az SSH-hozzáférést ahhoz a virtuális géphez, amely a megoldásban lévő szolgáltatásokat üzemelteti, használja a Azure Portal vagy a Azure Cloud Shell. Például:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    Csak a tesztelés és fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az [SSH-t, tiltsa le, amint befejezte a használatát.](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)
+    Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, akkor azonnal le kell tiltania, amint befejezte a használatát](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Az Azure Portalon vagy az Azure Cloud Shell ben megkeresheti a virtuális gép nevét és nyilvános IP-címét. Példa:
+1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy a Azure Cloud Shell. Például:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. Az SSH segítségével csatlakozzon a virtuális géphez. Használja az előző lépés IP-címét, és a megadott hitelesítő adatokat, amikor a **rendszer futtatta** a megoldást. A `ssh` parancs elérhető az Azure Cloud Shellben.
+1. Használja az SSH-t a virtuális géphez való kapcsolódáshoz. Használja az előző lépés IP-címét és a **számítógépeken** a megoldás üzembe helyezéséhez megadott hitelesítő adatokat. A `ssh` parancs a Azure Cloud Shellban érhető el.
 
-1. A helyi felhasználói élmény csatlakoztatásához futtassa a következő parancsokat a virtuális gép bash rendszerhéjában:
+1. Ha engedélyezni szeretné a helyi UX-t a kapcsolódáshoz, futtassa a következő parancsokat a virtuális gép bash rendszerhéjában:
 
     ```sh
     cd /app
     sudo ./start.sh --unsafe
     ```
 
-1. Miután látta, hogy a parancs befejeződik, és a webhely elindul, leválaszthatja a virtuális gépet.
+1. Miután a parancs befejeződik, és elindul a webhely, leválaszthatja a virtuális gépet.
 
-1. Az [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) tárház helyi példányában az **.env** fájl szerkesztésével adja hozzá a telepített megoldás URL-címét:
+1. Az [Azure-IOT-PC-Remote-Monitoring-WebUI](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) adattár helyi példányában szerkessze a **. env** fájlt, és adja hozzá az üzembe helyezett megoldás URL-címét:
 
     ```config
     NODE_PATH = src/
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. A parancssorban keresse meg a `azure-iot-pcs-remote-monitoring-webui` mappa helyi példányát.
+1. A parancssorban navigáljon a `azure-iot-pcs-remote-monitoring-webui` mappa helyi példányára.
 
-1. A szükséges könyvtárak telepítéséhez és a felhasználói felület helyi futtatásához futtassa a következő parancsokat:
+1. A szükséges kódtárak telepítéséhez és a felhasználói felület helyi futtatásához futtassa a következő parancsokat:
 
     ```cmd/sh
     npm install
     npm start
     ```
 
-1. Az előző parancs helyileg futtatja\/a felhasználói felületet a következő címen: /localhost:3000/dashboard. A webhely futása közben szerkesztheti a kódot, és dinamikusan láthatja a frissítést.
+1. Az előző parancs helyileg futtatja a felhasználói felületet a\/http:/localhost: 3000/irányítópulton. A kód szerkeszthető a hely futása közben, és a frissítés dinamikusan megtekinthető.
 
 ## <a name="customize-the-layout"></a>Az elrendezés testreszabása
 
-A távoli figyelési megoldás minden lapja egy vezérlőkészletből áll, amelyet a forráskódban *paneleknek* neveznek. Az **Irányítópult** lap öt panelből áll: Áttekintés, Térkép, Riasztások, Telemetria és Analytics. A [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub repository-ban megtalálhatja az egyes lapokat és paneljeit meghatározó forráskódot. Az **Irányítópult** lapot, annak elrendezését és a lapon lévő paneleket meghatározó kód például az [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappában található.
+A távoli figyelési megoldás minden lapja olyan vezérlőkből áll, amelyeket a forráskód *panelnek* nevezünk. Az **irányítópult** -oldal öt panelből áll: áttekintés, Térkép, riasztások, telemetria és elemzések. Megtalálhatja az egyes lapokat és a hozzá tartozó paneleket meghatározó forráskódot a [számítógépek – távoli figyelés – WebUI GitHub-](https://github.com/Azure/pcs-remote-monitoring-webui) tárházban. Például az **irányítópult** oldalát, elrendezését és a lapon lévő paneleket definiáló kód a [src/Components/Pages/Dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappában található.
 
-Mivel a panelek saját elrendezést és méretezést kezelnek, egyszerűen módosíthatja az oldal elrendezését. A fájl **PageContent** elemének következő `src/components/pages/dashboard/dashboard.js` módosításai:
+Mivel a panelek a saját elrendezését és méretezését kezelik, egyszerűen módosíthatók a lapok elrendezése. Végezze el a következő módosításokat **PageContent** a `src/components/pages/dashboard/dashboard.js` fájl PageContent eleme számára:
 
-* Cseréld ki a térkép és a telemetriai panelek pozícióit.
-* Módosítsa a térkép és az elemzési panelek relatív szélességét.
+* Cserélje le a Térkép és a telemetria panelek pozícióit.
+* Módosítsa a Térkép és az elemzési panel relatív szélességét.
 
 ```javascript
 <PageContent className="dashboard-container">
@@ -152,9 +152,9 @@ Mivel a panelek saját elrendezést és méretezést kezelnek, egyszerűen módo
 </PageContent>
 ```
 
-![Panelelrendezés módosítása](./media/iot-accelerators-remote-monitoring-customize/layout.png)
+![Panel elrendezésének módosítása](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-Ugyanannak a panelnek több példányát is hozzáadhatja, vagy több verziót is hozzáadhat, ha [másol és testreszab egy panelt.](#duplicate-and-customize-an-existing-control) A következő példa bemutatja, hogyan adhat hozzá két példányt a telemetriai panel. A módosítások végrehajtása korszerkeszti a `src/components/pages/dashboard/dashboard.js` fájlt:
+Hozzáadhat egy panel több példányát is, vagy akár több verziót is, ha [duplikálja és testreszabja a panelt](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá két példányt a telemetria panelhez. A módosítások elvégzéséhez szerkessze `src/components/pages/dashboard/dashboard.js` a következő fájlt:
 
 ```javascript
 <PageContent className="dashboard-container">
@@ -235,29 +235,29 @@ Ugyanannak a panelnek több példányát is hozzáadhatja, vagy több verziót i
 </PageContent>
 ```
 
-Ezután megtekintheti a különböző telemetriai adatokat az egyes paneleken:
+Ezután különböző telemetria tekinthet meg az egyes paneleken:
 
-![Több telemetriai panel](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
+![Több telemetria panel](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
 
-## <a name="duplicate-and-customize-an-existing-control"></a>Meglévő vezérlő másolása és testreszabása
+## <a name="duplicate-and-customize-an-existing-control"></a>Meglévő vezérlő duplikálása és testreszabása
 
-A következő lépések bemutatják, hogyan lehet egy meglévő panelt megkettőzni, módosítani, majd használni a módosított verziót. A lépések példaként a **riasztások** panelt használják:
+A következő lépések azt ismertetik, hogyan lehet duplikálni egy meglévő panelt, módosítani, majd használni a módosított verziót. A lépések a **riasztások** panelt használják példaként:
 
-1. A tárház helyi példányában készítsen másolatot **alerts** a mappában `src/components/pages/dashboard/panels` lévő riasztások mappáról. Nevezze el az új másolatot **cust_alerts**.
+1. A tárház helyi példányán készítsen másolatot a **riasztások** mappáról a `src/components/pages/dashboard/panels` mappában. Nevezze el az új másolási **cust_alerts**.
 
-1. A **cust_alerts** mappában található **alertsPanel.js** fájlban szerkesztsd a **CustAlertsPanel**osztály nevét:
+1. A **cust_alerts** mappában található **alertsPanel. js** fájlban szerkessze a **CustAlertsPanel**osztály nevét:
 
     ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
-1. Adja hozzá a `src/components/pages/dashboard/panels/index.js` következő sort a fájlhoz:
+1. Adja hozzá a következő sort a `src/components/pages/dashboard/panels/index.js` fájlhoz:
 
     ```javascript
     export * from './cust_alerts';
     ```
 
-1. Csere `alertsPanel` `CustAlertsPanel` a `src/components/pages/dashboard/dashboard.js` fájlban:
+1. `CustAlertsPanel` Cserélje `alertsPanel` le a `src/components/pages/dashboard/dashboard.js` fájlt a fájlba:
 
     ```javascript
     import {
@@ -281,11 +281,11 @@ A következő lépések bemutatják, hogyan lehet egy meglévő panelt megkettő
     </Cell>
     ```
 
-Most lecserélte az eredeti **riasztások** panelt egy **CustAlerts nevű példányra.** Ez a másolat megegyezik az eredetivel. Most már módosíthatja a másolatot. Ha például módosítani szeretné az oszlop sorrendjét a **riasztások** panelen:
+Most lecserélte az eredeti **riasztások** panelt egy **CustAlerts**nevű másolatra. Ez a másolat megegyezik az eredetivel. Most már módosíthatja a másolatot. Például az oszlopok rendezésének módosításához a **riasztások** panelen:
 
 1. Nyissa meg az `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js` fájlt.
 
-1. Módosítsa az oszlopdefiníciókat a következő kódrészletben látható módon:
+1. Módosítsa az oszlopok definícióit az alábbi kódrészletben látható módon:
 
     ```javascript
     this.columnDefs = [
@@ -302,15 +302,15 @@ Most lecserélte az eredeti **riasztások** panelt egy **CustAlerts nevű péld�
     ];
     ```
 
-Az alábbi képernyőképen a **riasztások** panel új verziója látható:
+Az alábbi képernyőfelvételen a **riasztások** panel új verziója látható:
 
 ![riasztások panel frissítve](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
-## <a name="customize-the-telemetry-chart"></a>A telemetriai diagram testreszabása
+## <a name="customize-the-telemetry-chart"></a>A telemetria diagram testreszabása
 
-A mappában `src/components/pages/dashboard/panels/telemtry` lévő fájlok határozzák meg a telemetriai diagramot az **Irányítópult** lapon. A felhasználói felület lekéri a telemetriai `src/services/telemetryService.js` adatokat a megoldás háttérrendszeréből a fájlban. A következő lépések bemutatják, hogyan módosíthatja a telemetriai diagramon megjelenő időszakot 15 percről 5 percre:
+A `src/components/pages/dashboard/panels/telemtry` mappában lévő fájlok a telemetria diagramot az **irányítópult** lapon határozzák meg. A felhasználói felület lekéri a telemetria a `src/services/telemetryService.js` fájlból a megoldás hátterének végéről. A következő lépések bemutatják, hogyan módosíthatja a telemetria diagramon megjelenő időszakot 15 és 5 perc között:
 
-1. A `src/services/telemetryService.js` fájlban keresse meg a **getTelemetryByDeviceIdP15M**nevű függvényt. Készítsen másolatot erről a funkcióról, és módosítsa a másolatot az alábbiak szerint:
+1. A `src/services/telemetryService.js` fájlban keresse meg a **getTelemetryByDeviceIdP15M**nevű függvényt. Készítsen másolatot a függvényről, és módosítsa a másolást a következőképpen:
 
     ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
@@ -323,21 +323,21 @@ A mappában `src/components/pages/dashboard/panels/telemtry` lévő fájlok hat�
     }
     ```
 
-1. Ha ezzel az új függvénnyel szeretné feldolgozni `src/components/pages/dashboard/dashboard.js` a telemetriai diagramot, nyissa meg a fájlt. Keresse meg a telemetriai adatfolyamot inicializáló sort, és módosítsa az alábbiak szerint:
+1. Ha ezt az új függvényt szeretné használni az telemetria diagram feltöltéséhez, `src/components/pages/dashboard/dashboard.js` nyissa meg a fájlt. Keresse meg azt a sort, amely inicializálja a telemetria-streamet, és módosítsa a következőképpen:
 
     ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
-A telemetriai diagram most a telemetriai adatok öt percét jeleníti meg:
+A telemetria diagramon most már a telemetria-adatmennyiség öt perce látható:
 
-![Telemetriai diagram, amely egy nap](./media/iot-accelerators-remote-monitoring-customize/telemetry-period.png)
+![Egy napot ábrázoló telemetria diagram](./media/iot-accelerators-remote-monitoring-customize/telemetry-period.png)
 
-## <a name="add-a-new-kpi"></a>Új Fő teljesítménymutató hozzáadása
+## <a name="add-a-new-kpi"></a>Új KPI hozzáadása
 
-Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen jelenik meg. Ezeket a kpi-ket a fájl ban számítja ki a `src/components/pages/dashboard/dashboard.js` rendszer. A kpi-k megjelenítését `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` a fájl teszi meg. Az alábbi lépések bemutatják, hogyan számíthatki és jeleníthet meg egy új Fő teljesítménymutató-értéket az **Irányítópult** lapon. A bemutatott példa az, hogy egy új százalékos változás a figyelmeztető riasztások KPI:
+Az **irányítópult** lap a KPI-ket jeleníti meg az **elemzési** panelen. Ezeket a KPI-ket a `src/components/pages/dashboard/dashboard.js` fájl számítja ki. A KPI-k a `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fájl alapján jelennek meg. A következő lépések azt ismertetik, hogyan számítható ki és jeleníthető meg egy új KPI-érték az **irányítópult** lapon. A következő példa egy új százalékos változás hozzáadása a figyelmeztetési riasztások KPI-ben:
 
-1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa a **initialState** objektumot úgy, hogy az a következő **figyelmeztetést tartalmazza:**
+1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa úgy a **initialState** objektumot, hogy az a következőképpen tartalmazzon **warningAlertsChange** tulajdonságot:
 
     ```javascript
     const initialState = {
@@ -357,7 +357,7 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
     };
     ```
 
-1. Módosítsa a **currentAlertsStats** objektumot úgy, hogy **az totalWarningCount** tulajdonságként szerepeljen:
+1. Módosítsa a **currentAlertsStats** objektumot úgy, hogy az **totalWarningCount** tulajdonságként szerepeljen:
 
     ```javascript
     return {
@@ -369,7 +369,7 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
     };
     ```
 
-1. Számítsa ki az új KPI-t. Keresse meg a kritikus riasztások száma számítását. Kettőzze meg a kódot, és módosítsa a másolatot az alábbiak szerint:
+1. Az új KPI kiszámítása. Keresse meg a kritikus riasztások számának számítását. A kód duplikálása és a másolás módosítása a következőképpen történik:
 
     ```javascript
     // ================== Warning Alerts Count - START
@@ -382,7 +382,7 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
     // ================== Warning Alerts Count - END
     ```
 
-1. Az új **figyelmeztetés felvételeRiasztásokVáltozási** kpi-t tartalmaz a KPI-adatfolyamban:
+1. Adja meg az új **warningAlertsChange** KPI-t a KPI-adatfolyamban:
 
     ```javascript
     return ({
@@ -400,7 +400,7 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
     });
     ```
 
-1. Az új **figyelmeztetés tartalmazzaA riasztásmódosítási** kpi-t a felhasználói felület megjelenítéséhez használt állapotadatokban:
+1. Adja meg az új **warningAlertsChange** KPI-t a felhasználói felület megjelenítéséhez használt állapot-adatközpontban:
 
     ```javascript
     const {
@@ -419,7 +419,7 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
     } = this.state;
     ```
 
-1. Frissítse a Fő ip-felpanelnek átadott adatokat:
+1. Frissítse a KPI-k panelnek átadott adatfájlokat:
 
     ```javascript
     <AnalyticsPanel
@@ -435,15 +435,15 @@ Az **Irányítópult** lapon a Fő alkalmazási szint az **Analytics** panelen j
       t={t} />
     ```
 
-Ezzel befejezte a `src/components/pages/dashboard/dashboard.js` fájl módosításait. A következő lépések az új `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fő teljesítménymutató megjelenítéséhez a fájlban elvégzett módosításokat ismertetik:
+Ezzel befejezte a `src/components/pages/dashboard/dashboard.js` fájl módosításait. A következő lépések azt írják le, hogy milyen módosításokat `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` kell végezni a fájlban az új KPI megjelenítéséhez:
 
-1. Módosítsa a következő kódsort az új KPI-érték beolvasásához az alábbiak szerint:
+1. Módosítsa a következő kódrészletet az új KPI-érték lekéréséhez a következő módon:
 
     ```javascript
     const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
-1. Módosítsa a jelölést úgy, hogy az új KPI-érték a következőképpen jelenjen meg:
+1. Módosítsa a korrektúrát úgy, hogy az az új KPI-értéket a következőképpen jelenítse meg:
 
     ```javascript
     <div className="analytics-cell">
@@ -469,13 +469,13 @@ Ezzel befejezte a `src/components/pages/dashboard/dashboard.js` fájl módosít�
     </div>
     ```
 
-Az **Irányítópult** lap mostantól az új KPI-értéket jeleníti meg:
+Az **irányítópult** lap most megjeleníti az új KPI értékét:
 
-![Figyelmeztetés KPI](./media/iot-accelerators-remote-monitoring-customize/new-kpi.png)
+![Figyelmeztetési KPI](./media/iot-accelerators-remote-monitoring-customize/new-kpi.png)
 
-## <a name="customize-the-map"></a>A térkép testreszabása
+## <a name="customize-the-map"></a>A Térkép testreszabása
 
-A megoldás térképösszetevőinek részleteit a GitHub térképösszetevőinek [testreszabása](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) című lapon találja.
+A megoldásban található Térkép-összetevők részleteiért tekintse meg a [Térkép testreszabása](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) lapot a githubon.
 
 <!--
 ### Connect an external visualization tool
@@ -484,25 +484,25 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 -->
 
-## <a name="other-customization-options"></a>Egyéb testreszabási lehetőségek
+## <a name="other-customization-options"></a>Egyéb testreszabási beállítások
 
-A távoli figyelési megoldás bemutató- és vizualizációs rétegének további módosításához szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
+A távoli figyelési megoldásban a bemutató és a vizualizációk réteg további módosításához szerkesztheti a kódot. A vonatkozó GitHub-adattárak a következők:
 
-* [Az Azure IoT Solutions (.NET) konfigurációs mikroszolgáltatása](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
-* [Az Azure IoT-megoldások (Java) konfigurációs mikroszolgáltatása](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
-* [Azure IoT PC-k távoli figyelési webes felhasználói felülete](https://github.com/Azure/pcs-remote-monitoring-webui)
+* [Az Azure IoT-megoldások (.NET) konfigurációs szolgáltatása](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [Az Azure IoT-megoldások (Java) konfigurációs szolgáltatása](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
+* [Azure IoT számítógépek távoli monitorozása webes felhasználói felület](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a távoli figyelési megoldás gyorsítójában a webes felhasználói felület testreszabásához rendelkezésre álló erőforrásokról szerzett tudomást. Ha többet szeretne tudni a felhasználói felület testreszabásáról, olvassa el az alábbi cikkeket:
+Ebből a cikkből megtudhatta, hogyan szabhatja testre a webes felhasználói felületet a távoli figyelési megoldás-gyorsító segítségével. A felhasználói felület testreszabásával kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [Egyéni lap hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-page.md)
-* [Egyéni szolgáltatás hozzáadása a távfigyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md)
-* [Egyéni rács hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md)
-* [Egyéni úszó panel hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-flyout.md)
-* [Egyéni panel hozzáadása az irányítópulthoz a távfigyelési megoldásgyorsító webes felhasználói felületén](iot-accelerators-remote-monitoring-customize-panel.md)
+* [Egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-page.md)
+* [Egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md)
+* [Egyéni rács hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md)
+* [Egyéni menü hozzáadása a távoli figyelési megoldás webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-flyout.md)
+* [Egyéni panel hozzáadása az irányítópulthoz a távoli figyelési megoldás gyorsító webes FELÜLETén](iot-accelerators-remote-monitoring-customize-panel.md)
 
-A távfigyelési megoldásgyorsítóval kapcsolatos további információkért lásd: [Távoli figyelési architektúra](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+A távoli figyelési megoldás-gyorsító részletes ismertetését lásd: [távoli figyelési architektúra](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-A távfigyelési megoldás mikroszolgáltatásainak testreszabásáról a [Mikroszolgáltatás testreszabása és újratelepítése](iot-accelerators-microservices-example.md)című témakörben talál további információt.
+További információ a távoli figyelési megoldással kapcsolatos szolgáltatások testreszabásáról: [webszolgáltatás testreszabása és újbóli üzembe helyezése](iot-accelerators-microservices-example.md).
 <!-- Next tutorials in the sequence -->

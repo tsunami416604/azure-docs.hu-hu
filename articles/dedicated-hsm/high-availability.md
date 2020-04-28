@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állás - Azure dedikált HSM | Microsoft dokumentumok
-description: Az Azure dedikált HSM magas rendelkezésre állású példája és alapvető szempontok
+title: Magas rendelkezésre állás – Azure dedikált HSM | Microsoft Docs
+description: Azure dedikált HSM – magas rendelkezésre állás – példa és alapvető szempontok
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70882247"
 ---
-# <a name="azure-dedicated-hsm-high-availability"></a>Az Azure dedikált HSM magas rendelkezésre állása
+# <a name="azure-dedicated-hsm-high-availability"></a>Azure dedikált HSM – magas rendelkezésre állás
 
-Az Azure dedikált HSM-et a Microsoft magas rendelkezésre állású adatközpontjai támasztják alá. Azonban minden magas rendelkezésre állású adatközpont ki van téve a honosított hibáknak, és szélsőséges körülmények között, regionális szintű hibák. A Microsoft hsm-eszközöket telepít egy régiókülönböző adatközpontjaiban annak biztosítása érdekében, hogy több eszköz kiépítése ne eredményezze, hogy ezek az eszközök egyetlen állványt osztanak meg. A Gemalto HA-csoport szolgáltatás használatával további magas rendelkezésre állás érhető el a HSM-ek egy régió adatközpontjai közötti párosításával. Az eszközök régiók közötti párosítása is lehetséges a regionális feladatátvétel kezelése érdekében vész-helyreállítási helyzetben. Ezzel a többrétegű, magas rendelkezésre állású konfigurációval minden eszközhiba automatikusan megszűnik az alkalmazások működésének fenntartásához. Minden adatközpont rendelkezik a helyszínen található tartalék eszközökkel és összetevőkkel is, így minden meghibásodott eszköz időben cserélhető.
+Az Azure dedikált HSM-et a Microsoft által biztosított, magasan elérhető adatközpontok támasztják alá. Azonban a magas rendelkezésre állású adatközpontok sebezhetők a honosított hibák és szélsőséges körülmények között, regionális szintű hibák esetén. A Microsoft különböző adatközpontokban helyez üzembe HSM-eszközöket egy adott régióban, így biztosítva, hogy több eszköz kiépítése ne vezessen egyetlen Racket megosztó eszközökhöz sem. A magas rendelkezésre állás további szintje úgy érhető el, hogy a HSM a Gemalto HA csoport használatával a régió adatközpontjai között párosítja. Az eszközök a régiók között is összeállíthatók a vész-helyreállítási helyzetek regionális feladatátvételének megoldásához. Ezzel a többrétegű magas rendelkezésre állási konfigurációval minden eszköz meghibásodása automatikusan megtartja az alkalmazások működését. Az összes adatközponthoz is vannak tartalék eszközök és összetevők a helyszínen, így minden hibás eszköz lecserélhető egy időben.
 
-## <a name="high-availability-example"></a>Magas rendelkezésre állás példa
+## <a name="high-availability-example"></a>Magas rendelkezésre állási példa
 
-A HSM-eszközök szoftverszintű magas rendelkezésre állásra való beállításával kapcsolatos információk a "Gemalto Luna Network HSM Administration Guide" (Gemalto Luna Network HSM felügyeleti útmutató) című részben találhatóak. Ez a dokumentum a [Gemalto HSM oldalon](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)érhető el.
+A HSM-eszközök magas rendelkezésre álláshoz való konfigurálásáról a szoftver szintjén a "Gemalto Luna Network HSM felügyeleti útmutató" című cikk nyújt tájékoztatást. Ez a dokumentum a [GEMALTO HSM lapon](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)érhető el.
 
-Az alábbi ábrán egy magas rendelkezésre állású architektúra látható. Több eszközt használ a régióban, és több eszközt párosít egy külön régióban. Ez az architektúra legalább négy HSM-eszközt és virtuális hálózati összetevőt használ.
+A következő ábra egy magasan elérhető architektúrát mutat be. Több eszközt használ a régióban, és több eszköz is párosítva van egy külön régióban. Ez az architektúra legalább négy HSM-eszközt és virtuális hálózatkezelési összetevőt használ.
 
-![Magas rendelkezésre állásdiagram](media/high-availability/high-availability.png)
+![Magas rendelkezésre állási diagram](media/high-availability/high-availability.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Javasoljuk, hogy a szolgáltatás minden kulcsfontosságú fogalma, például a magas rendelkezésre állás és a biztonság, jól érthető az eszköz kiépítése és az alkalmazás tervezése vagy üzembe helyezése előtt.
-További koncepciószintű témák:
+Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot is jól megértse az eszköz kiépítése és az alkalmazások tervezése vagy üzembe helyezése előtt.
+További fogalmi szintű témakörök:
 
-* [Telepítési architektúra](deployment-architecture.md)
+* [Üzembe helyezési architektúra](deployment-architecture.md)
 * [Fizikai biztonság](physical-security.md)
 * [Hálózat](networking.md)
 * [Támogatási lehetőségek](supportability.md)
-* [Megfigyelő](monitoring.md)
+* [Figyelés](monitoring.md)
 
-A HSM-eszközök magas rendelkezésre állásra való konfigurálásával kapcsolatos további részletekért tekintse meg a Gemalto ügyfélszolgálati portálját a rendszergazdai útmutatókért, és lásd a 6.
+A HSM-eszközök magas rendelkezésre állásra való konfigurálásával kapcsolatos részletes információkért tekintse meg a Gemalto ügyfélszolgálati portálját a rendszergazdai útmutatókhoz, és tekintse meg a 6. szakaszt.

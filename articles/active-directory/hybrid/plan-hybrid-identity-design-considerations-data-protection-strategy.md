@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitástervezés – adatvédelmi stratégia Azure | Microsoft dokumentumok
-description: Ön határozza meg az adatvédelmi stratégia a hibrid identitásmegoldás, hogy megfeleljen az üzleti követelményeknek, hogy a megadott.
+title: Hibrid identitások tervezése – adatvédelmi stratégia az Azure-ban | Microsoft Docs
+description: Megadhatja a hibrid identitási megoldás adatvédelmi stratégiáját, hogy megfeleljen az Ön által meghatározott üzleti követelményeknek.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,158 +18,158 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109369"
 ---
-# <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Határozza meg az adatvédelmi stratégiát a hibrid identitáskezelési megoldáshoz
-Ebben a feladatban a hibrid identitáskezelési megoldás adatvédelmi stratégiáját határozza meg, hogy megfeleljen a következőkben meghatározott üzleti követelményeknek:
+# <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adatvédelmi stratégia definiálása a hibrid személyazonossági megoldáshoz
+Ebben a feladatban megadhatja a hibrid identitási megoldás adatvédelmi stratégiáját, hogy megfeleljen az Ön által meghatározott üzleti követelményeknek:
 
-* [Az adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+* [Adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 * [A tartalomkezeléshez kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
 * [A hozzáférés-vezérlésre vonatkozó követelmények meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 * [Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="define-data-protection-options"></a>Adatvédelmi beállítások megadása
-A [címtárszinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)című részben leírtak szerint a Microsoft Azure AD szinkronizálhat a helyszíni Active Directory tartományi szolgáltatásokkal (AD DS). Ez az integráció lehetővé teszi, hogy a szervezetek az Azure AD segítségével ellenőrizzék a felhasználók hitelesítő adatait, amikor vállalati erőforrásokelérésére próbálnak hozzáférni. Ezt mindkét esetben megteheti: a helyszíni és a felhőben lévő adatok. Az Azure AD-ben az adatokhoz való hozzáférés hez felhasználói hitelesítés szükséges egy biztonsági jogkivonat-szolgáltatáson (STS) keresztül.
+Ahogy azt a [címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)című részben leírtak szerint, Microsoft Azure ad szinkronizálhatók a helyszíni Active Directory tartományi szolgáltatások (AD DS) használatával. Ez az integráció lehetővé teszi, hogy a szervezetek az Azure AD használatával ellenőrizzék a felhasználók hitelesítő adatait, amikor a vállalati erőforrásokhoz próbálnak hozzáférni. Ezt mindkét esetben használhatja: a helyszíni és a felhőben tárolt adatok. Az Azure AD-beli adathozzáféréshez felhasználói hitelesítésre van szükség a biztonsági jogkivonat-szolgáltatás (STS) használatával.
 
-A hitelesítés után a rendszer beolvassa az egyszerű felhasználónevet (UPN) a hitelesítési jogkivonatból. Ezután az engedélyezési rendszer határozza meg a felhasználó tartományának megfelelő replikált partíciót és tárolót. A felhasználó létezésére, engedélyezett állapotára és szerepkörére vonatkozó információk segítségével az engedélyezési rendszer meghatározhatja, hogy a célbérlőhöz való hozzáférés jogosult-e a felhasználó számára az adott munkamenetben. Bizonyos engedélyezett műveletek (konkrétan felhasználói és jelszó-visszaállítás létrehozása) létrehoznak egy naplózási nyomvonalat, amelyet a bérlői rendszergazda a megfelelőségi erőfeszítések vagy vizsgálatok kezeléséhez használ.
+A hitelesítés után az egyszerű felhasználónevet (UPN) a rendszer beolvassa a hitelesítési jogkivonatból. Ezt követően az engedélyezési rendszer meghatározza a felhasználó tartományának megfelelő replikált partíciót és tárolót. A felhasználó létezésére, engedélyezett állapotára és szerepkörére vonatkozó információk alapján az engedélyezési rendszer eldönti, hogy jogosult-e a cél bérlőhöz való hozzáférés a felhasználó számára az adott munkamenetben. Bizonyos felhatalmazott műveletek (konkrétan a felhasználói és a jelszó-visszaállítás létrehozása) létrehozhatnak egy olyan naplózási nyomvonalat, amelyet a bérlői rendszergazda a megfelelőségi erőfeszítések vagy nyomozások kezeléséhez használ.
 
-Előfordulhat, hogy az adatok áthelyezése a helyszíni adatközpontból az Azure Storage-ba internetkapcsolaton keresztül nem mindig valósítható meg az adatmennyiség, a sávszélesség rendelkezésre állása vagy egyéb szempontok miatt. Az [Azure Storage Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) hardveralapú lehetőséget biztosít nagy mennyiségű adat blob storage elhelyezéséhez/beolvasásához. Lehetővé teszi, hogy [a BitLocker-titkosítású merevlemez-meghajtókat](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) közvetlenül egy Azure-adatközpontba küldje el, ahol a felhőszolgáltatók feltöltik a tartalmat a tárfiókba, vagy letölthetik az Azure-adatokat a meghajtókra, hogy visszatérjenek Önhöz. Ehhez a folyamathoz csak titkosított lemezeket fogadunk el (a feladat beállítása során maga a szolgáltatás által létrehozott BitLocker-kulcs használatával). A BitLocker kulcs külön-külön érhető el az Azure számára, így a sávon kívüli kulcsmegosztást biztosít.
+Az adatok a helyszíni adatközpontból az Azure Storage-ba való áthelyezése az adatmennyiség, a sávszélesség rendelkezésre állása vagy egyéb megfontolások miatt nem mindig valósítható meg. Az [Azure Storage import/export szolgáltatás](../../storage/common/storage-import-export-service.md) hardveres lehetőséget kínál a nagy mennyiségű adatok blob Storage-tárolóban történő elhelyezésére és lekérésére. Lehetővé teszi a [BitLocker által titkosított merevlemez-](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) meghajtók közvetlen küldését egy Azure-adatközpontba, ahol a Felhőbeli kezelők feltöltik a tartalmat a Storage-fiókjába, vagy letölthetik az Azure-adatait a meghajtóra, hogy visszatérjenek Önnek. Ehhez a folyamathoz csak titkosított lemezek lesznek elfogadva (a feladatok telepítése során a szolgáltatás által létrehozott BitLocker-kulcs használatával). A BitLocker-kulcsot külön nyújtják az Azure-hoz, így biztosítva a sávon kívüli kulcsok megosztását.
 
-Mivel az átvitel közbeni adatok különböző forgatókönyvekben is történhetnek, fontos tudni, hogy a Microsoft Azure [virtuális hálózatot](https://azure.microsoft.com/documentation/services/virtual-network/) használ a bérlők egymástól való elkülönítésére, olyan intézkedéseket alkalmazva, mint a gazda- és vendégszintű tűzfalak, az IP-csomagszűrés, a portblokkolás és a HTTPS-végpontok. Azonban az Azure belső kommunikációjának nagy része, beleértve az infrastruktúra és az infrastruktúra közötti (helyszíni) infrastruktúrát is, szintén titkosítva van. Egy másik fontos forgatókönyv az Azure-adatközpontokon belüli kommunikáció; A Microsoft kezeli a hálózatokat annak biztosítása érdekében, hogy egyetlen virtuális gép sem tud megszemélyesíteni vagy lehallgatni egy másik IP-címét. A TLS/SSL az Azure Storage vagy az SQL-adatbázisok elérésekor, illetve a Felhőszolgáltatásokhoz való csatlakozáskor használatos. Ebben az esetben az ügyfél-rendszergazda felelős a TLS/SSL-tanúsítvány beszerzéséért és a bérlői infrastruktúrájukra való üzembe helyezéséért. A virtuális gépek között ugyanabban a központi telepítésben vagy a bérlők között a Microsoft Azure virtuális hálózaton keresztül történő adatforgalom titkosított kommunikációs protokollokon, például HTTPS-en, SSL/TLS-en vagy más módon védhető.
+Mivel a tranzitban lévő adatok különböző forgatókönyvekben is megkerülhetnek, fontos tudni, hogy Microsoft Azure [virtuális hálózatkezelést](https://azure.microsoft.com/documentation/services/virtual-network/) használ a bérlők forgalmának elkülönítésére, olyan mértékeket alkalmazva, mint a gazdagép-és a vendég szintű tűzfalak, az IP-csomagszűrés, a portok blokkolása és a https-végpontok. Azonban a legtöbb Azure belső kommunikációja, beleértve az infrastruktúra-infrastruktúra és az infrastruktúra-ügyfél (helyszíni) is, titkosítva van. Egy másik fontos forgatókönyv az Azure-adatközpontokon belüli kommunikáció; A Microsoft felügyeli a hálózatokat annak biztosítására, hogy egyetlen virtuális gép sem megszemélyesítheti vagy hallgatózik egy másik IP-címen. A TLS/SSL használata az Azure Storage-hoz vagy SQL-adatbázisokhoz való hozzáféréskor, illetve Cloud Serviceshoz való csatlakozáskor használatos. Ebben az esetben az ügyfél rendszergazdája a TLS/SSL-tanúsítvány beszerzéséhez és a bérlői infrastruktúrához való üzembe helyezéséhez felelős. A Virtual Machines közötti adatforgalom ugyanabban az üzemelő példányban, illetve a bérlők között, az Microsoft Azure Virtual Network használatával a titkosított kommunikációs protokollok, például a HTTPS, az SSL/TLS vagy más rendszerek is védhetők.
 
-Attól függően, hogy hogyan válaszolt a kérdésekre az [adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)című részben, meg kell tudnia határozni, hogyan szeretné megvédeni az adatait, és hogy a hibrid identitáskezelési megoldás hogyan segíthet ebben a folyamatban. Az alábbi táblázat az Azure által támogatott, az egyes adatvédelmi forgatókönyvekhez elérhető lehetőségeket mutatja be.
+Attól függően, hogy hogyan válaszolt a kérdésekre az adatvédelmi [követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)során, meg kell tudnia határozni, hogyan kívánja biztosítani az adatok védelmét, és hogy a hibrid identitási megoldás hogyan segíthet Önnek az adott folyamaton. A következő táblázat az Azure által támogatott, az egyes adatvédelmi forgatókönyvekhez elérhető lehetőségeket mutatja be.
 
-| Adatvédelmi lehetőségek | Nyugalomban a felhőben | Nyugalmi helyen a helyszínen | Szállítás közben |
+| Adatvédelmi beállítások | Nyugalmi állapotban a felhőben | Helyszíni pihenés | Átvitel közben |
 | --- | --- | --- | --- |
 | BitLocker meghajtótitkosítás |X |X | |
-| SQL Server adatbázisok titkosításához |X |X | |
-| Virtuálisgép-vm titkosítás | | |X |
+| Adatbázisok titkosítása SQL Server |X |X | |
+| Virtuális gép – virtuális gép titkosítása | | |X |
 | SSL/TLS | | |X |
 | VPN | | |X |
 
 > [!NOTE]
-> Olvassa el [a Megfelelőségi szolgáltatás a](https://azure.microsoft.com/support/trust-center/services/) Microsoft Azure [Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/) ban, hogy többet tudjon meg a tanúsítványokról, amelyeknek az egyes Azure-szolgáltatások megfelelnek.
-> Mivel az adatvédelmi lehetőségek többrétegű megközelítést alkalmaznak, e lehetőségek összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az adatok egyes állapotához rendelkezésre álló összes lehetőséget kihasználja.
+> Az egyes Azure-szolgáltatásoknak megfelelő minősítésekkel kapcsolatos további információkért tekintse meg a [megfelelőségi funkciót](https://azure.microsoft.com/support/trust-center/services/) [Microsoft Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/) .
+> Mivel az adatvédelem lehetőségei többrétegű megközelítést használnak, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az összes rendelkezésre álló beállítást kihasználja az egyes állapotokhoz.
 >
 >
 
 ## <a name="define-content-management-options"></a>Tartalomkezelési beállítások megadása
 
-Az Azure AD-nek a hibrid identitáskezelési infrastruktúra kezeléséhez való használatának egyik előnye, hogy a folyamat a végfelhasználó szempontjából teljesen átlátható. A felhasználó megpróbál hozzáférni egy megosztott erőforráshoz, az erőforrás hitelesítést igényel, a felhasználónak hitelesítési kérelmet kell küldenie az Azure AD-nek a jogkivonat beszerzése és az erőforrás elérése érdekében. Ez az egész folyamat történik a háttérben, anélkül, hogy a felhasználói beavatkozás. 
+Az Azure AD egy hibrid identitás-infrastruktúra kezelésére való használatának egyik előnye, hogy a folyamat teljes mértékben átlátható a végfelhasználó szemszögéből. A felhasználó megpróbál hozzáférni egy megosztott erőforráshoz, az erőforrásnak hitelesítésre van szüksége, a felhasználónak hitelesítési kérelmet kell küldenie az Azure AD-nek a jogkivonat beszerzéséhez és az erőforráshoz való hozzáféréshez. Ez a teljes folyamat a háttérben, felhasználói beavatkozás nélkül történik. 
 
-Az adatvédelmi szempontot kezelő szervezeteknek általában adatbesorolásra van szükségük a megoldásukhoz. Ha a jelenlegi helyszíni infrastruktúra már használja az adatbesorolást, az Azure AD a felhasználó identitásának fő tárháza. Az adatbesoroláshoz a helyszínen használt általános eszköz a Windows Server 2012 R2 [adatbesorolási eszközkészlete.](https://msdn.microsoft.com/library/Hh204743.aspx) Ez az eszköz segíthet a magánfelhőfájl-kiszolgálókon lévő adatok azonosításában, besorolásában és védelmében. A feladat végrehajtásához a Windows Server 2012 [automatikus fájlbesorolása](https://technet.microsoft.com/library/hh831672.aspx) is használható.
+Az adatvédelemmel kapcsolatos fontos szervezetek általában az adatok besorolását igénylik a megoldáshoz. Ha a jelenlegi helyszíni infrastruktúra már használja az adatok besorolását, akkor az Azure AD-t használhatja a felhasználó identitásának fő tárházához. A helyszíni adatbesoroláshoz használt általános eszközt a Windows Server 2012 R2 [adatbesorolási eszközkészletének](https://msdn.microsoft.com/library/Hh204743.aspx) nevezzük. Ez az eszköz segíthet a privát felhőben lévő fájlkiszolgálók adatainak azonosításában, besorolásában és védelmében. A feladat végrehajtásához a Windows Server 2012 [automatikus fájl besorolása](https://technet.microsoft.com/library/hh831672.aspx) is használható.
 
-Ha a szervezet nem rendelkezik az adatok besorolása a helyén, de meg kell védenie a bizalmas fájlokat anélkül, hogy új kiszolgálók at helyszíni, használhatják a Microsoft [Azure Rights Management Service.](https://technet.microsoft.com/library/JJ585026.aspx)  Az Azure RMS titkosítási, identitás- és engedélyezési szabályzatokat használ a fájlok és az e-mailek védelméhez, és több eszközön – telefonokon, táblagépeken és számítógépeken – is működik. Mivel az Azure RMS egy felhőalapú szolgáltatás, nem kell explicit módon konfigurálni a bizalmi kapcsolatokat más szervezetekkel, mielőtt megosztana velük védett tartalmat. Ha már rendelkeznek Office 365- vagy Azure AD-címtárral, a szervezetek közötti együttműködés automatikusan támogatott. Szinkronizálhatja is csak a címtár attribútumok, amelyek az Azure RMS kell, hogy támogassa a közös identitás a helyszíni Active Directory-fiókok, az Azure Active Directory szinkronizálási szolgáltatások (AAD Sync) vagy az Azure AD Connect használatával.
+Ha a szervezet nem rendelkezik adatbesorolással, de az érzékeny fájlokat a helyszíni új kiszolgálók hozzáadása nélkül kell védelemmel ellátnia, a Microsoft [Azure Rights Management szolgáltatást](https://technet.microsoft.com/library/JJ585026.aspx)használhatja.  A Azure RMS titkosítási, identitási és engedélyezési házirendeket használ a fájlok és az e-mailek biztonságossá tételéhez, és több eszközön, például telefonokon, tablettákon és számítógépeken is működik. Mivel a Azure RMS egy felhőalapú szolgáltatás, nem kell explicit módon konfigurálnia a megbízhatóságokat más szervezetekkel, mielőtt megoszthatja velük a védett tartalmakat. Ha már rendelkeznek Office 365- vagy Azure AD-címtárral, a szervezetek közötti együttműködés automatikusan támogatott. Azt is megteheti, hogy csak azokat a címtár-attribútumokat szinkronizálja, amelyeknek Azure RMSnia kell a helyszíni Active Directory-fiókok közös identitásának támogatásához Azure Active Directory Synchronization Services (AAD-szinkronizáló) vagy Azure AD Connect használatával.
 
-A tartalomkezelés fontos része annak megértése, hogy ki melyik erőforráshoz fér hozzá, ezért a bővített naplózási képesség fontos az identitáskezelési megoldás számára. Az Azure AD 30 napon keresztül biztosít naplót, többek között a következőket:
+A tartalomkezelés létfontosságú része annak megértése, hogy ki fér hozzá az erőforráshoz, ezért az Identitáskezelés szempontjából fontos a részletes naplózási funkció. Az Azure AD több mint 30 napot biztosít, többek között a következőket:
 
-* A szerepkör-tagság változásai (pl. a globális rendszergazdai szerepkörhöz hozzáadott felhasználó)
-* Hitelesítő adatok frissítése (pl. jelszómódosítás)
-* Tartománykezelés (pl. egyéni tartomány ellenőrzése, tartomány eltávolítása)
-* Alkalmazások hozzáadása és eltávolítása
-* Felhasználókezelés (pl. felhasználó hozzáadása, eltávolítása, frissítése)
-* Licencek hozzáadása és eltávolítása
+* A szerepkör-tagság változásai (például: felhasználó hozzáadva a globális rendszergazdai szerepkörhöz)
+* Hitelesítő adatok frissítése (pl. jelszó módosítása)
+* Tartományi felügyelet (pl.: egyéni tartomány ellenőrzése, tartomány eltávolítása)
+* Alkalmazások hozzáadása vagy eltávolítása
+* Felhasználói felügyelet (pl.: Hozzáadás, eltávolítás, felhasználó frissítése)
+* Licencek hozzáadása vagy eltávolítása
 
 > [!NOTE]
-> Olvassa el [a Microsoft Azure biztonsági és naplózási naplókezelés című,](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) további információit az Azure naplózási lehetőségeiről.
-> Attól függően, hogy hogyan válaszolt a kérdésekre a [tartalomkezelési követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)című részben, meg kell tudnia határozni, hogyan szeretné kezelni a tartalmat a hibrid identitáskezelési megoldásban. Bár a 6.
+> További információ az Azure-beli naplózási képességekről: [Microsoft Azure Security and Audit log Management](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) .
+> Attól függően, hogy hogyan válaszolt a [tartalomkezelési követelmények meghatározására](plan-hybrid-identity-design-considerations-contentmgt-requirements.md), meg kell tudni határoznia, hogyan kívánja felügyelni a tartalmat a hibrid identitási megoldásban. Habár a 6. táblázatban szereplő összes beállítás képes az Azure AD integrálására, fontos meghatározni, hogy melyik az üzleti igényeknek megfelelő.
 >
 >
 
 | Tartalomkezelési beállítások | Előnyök | Hátrányok |
 | --- | --- | --- |
-| Központosított helyszíni szolgáltatások (Active Directory tartalomvédelmi kiszolgáló) |Az adatok besorolásáért felelős kiszolgálói infrastruktúra teljes körű ellenőrzése <br> Beépített funkció a Windows Server rendszerben, nincs szükség további licencre vagy előfizetésre <br> Integrálható az Azure AD-vel hibrid forgatókönyvben <br> Támogatja a Microsoft Online-szolgáltatások, például az Exchange Online és a SharePoint Online, valamint az Office 365 tartalomvédelmi szolgáltatásait <br> Támogatja a helyszíni Microsoft server termékeket, például az Exchange Server, a SharePoint Server és a Windows Server és a File Classification Infrastructure (FCI) rendszert futó fájlkiszolgálókat. |Nagyobb karbantartás (lépést tartani a frissítésekkel, a konfigurációval és a potenciális frissítésekkel), mivel az it a kiszolgáló tulajdonosa <br> Kiszolgálói infrastruktúra megkövetelése a helyszínen<br> Nem használja ki az Azure képességeit natív módon |
-| Központosított a felhőben (Azure RMS) |Könnyebben kezelhető a helyszíni megoldáshoz képest <br> Hibrid forgatókönyv esetén integrálható az AD DS-sel <br>  Teljes mértékben integrálva az Azure AD-vel <br> Nincs szükség a kiszolgáló helyszíni telepítéséhez a szolgáltatás <br> Támogatja a helyszíni Microsoft server termékeket, például az Exchange Server, a SharePoint, a Server és a Windows Server és fájlbesorolás, infrastruktúra (FCI) rendszert. <br> It, a BYOK képességgel teljes mértékben szabályozhatja a bérlő kulcsát. |A szervezetnek rendelkeznie kell egy felhőalapú előfizetéssel, amely támogatja az RMS-t <br> A szervezetnek rendelkeznie kell egy Azure AD könyvtárral az RMS felhasználói hitelesítésének támogatásához |
-| Hibrid (az Azure RMS integrálva, helyszíni Active Directory tartalomvédelmi kiszolgáló) |Ez a forgatókönyv a központi lagúnák és a felhő előnyeit is összegyűjti. |A szervezetnek rendelkeznie kell egy felhőalapú előfizetéssel, amely támogatja az RMS-t <br> A szervezetnek rendelkeznie kell egy Azure AD könyvtárral az RMS felhasználói hitelesítésének támogatásához, <br> Kapcsolatot igényel az Azure felhőszolgáltatása és a helyszíni infrastruktúra között |
+| Központi helyszíni (Active Directory Rights Management-kiszolgáló) |Az adatbesorolásért felelős kiszolgálói infrastruktúra teljes körű ellenőrzése <br> Beépített képesség a Windows Server rendszerben, nincs szükség további licencre vagy előfizetésre <br> Integrálható az Azure AD-vel hibrid forgatókönyvekben <br> A tartalomvédelmi szolgáltatások (IRM) funkcióinak támogatása a Microsoft Online szolgáltatásaiban, például az Exchange Online-ban és a SharePoint Online-ban, valamint az Office 365 <br> A támogatja a helyszíni Microsoft Server-termékeket, például az Exchange Servert, a SharePoint Servert, valamint a Windows Servert és a fájl-besorolási infrastruktúrát (-t) futtató fájlkiszolgálók használatát. |Nagyobb karbantartás (naprakészen tarthatja a frissítéseket, a konfigurációt és a lehetséges frissítéseket), mivel a kiszolgáló tulajdonosa <br> Kiszolgálói infrastruktúra megkövetelése a helyszínen<br> Az Azure-funkciók natív módon való kihasználása |
+| A felhőben központosított (Azure RMS) |Könnyebben kezelhető a helyszíni megoldáshoz képest <br> Integrálható AD DS hibrid forgatókönyv esetén <br>  Teljes mértékben integrált az Azure AD-vel <br> A szolgáltatás üzembe helyezéséhez nincs szükség helyszíni kiszolgálóra <br> Támogatja a helyszíni Microsoft-termékek, például az Exchange Server, a SharePoint, a Server és a Windows Servert futtató fájlkiszolgálók használatát, valamint a fájlok besorolását, az infrastruktúrát <br> A BYOK képességgel teljes mértékben vezérelheti a bérlői kulcsát. |A szervezetnek rendelkeznie kell egy, az RMS-t támogató felhőalapú előfizetéssel. <br> A szervezetnek rendelkeznie kell egy Azure AD-címtárral az RMS felhasználói hitelesítésének támogatásához |
+| Hibrid (Azure RMS integrált, helyszíni Active Directory Rights Management-kiszolgálóval) |Ez a forgatókönyv a helyszíni és a Felhőbeli központi környezet előnyeit is összegzi. |A szervezetnek rendelkeznie kell egy, az RMS-t támogató felhőalapú előfizetéssel. <br> A szervezetnek rendelkeznie kell egy Azure AD-címtárral az RMS felhasználói hitelesítésének támogatásához. <br> Kapcsolatot igényel az Azure Cloud Service és a helyszíni infrastruktúra között |
 
 ## <a name="define-access-control-options"></a>Hozzáférés-vezérlési beállítások megadása
-Az Azure AD-ben elérhető hitelesítési, engedélyezési és hozzáférés-vezérlési képességek kihasználásával engedélyezheti a vállalat számára a központi identitástár használatát, miközben lehetővé teszi a felhasználók és a partnerek számára az egyszeri bejelentkezés (SSO) használatát az alábbi ábrán látható módon:
+Az Azure AD-ben elérhető hitelesítési, engedélyezési és hozzáférés-vezérlési képességek kihasználásával lehetővé teheti, hogy a vállalat egy központi identitás-tárházat használjon, miközben lehetővé teszi a felhasználók és a partnerek számára az egyszeri bejelentkezés (SSO) használatát az alábbi ábrán látható módon:
 
-![központosított irányítás](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![központosított felügyelet](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
-Központosított irányítás és teljes integráció más könyvtárakkal
+Központosított felügyelet és teljes körű integráció más címtárakkal
 
-Az Azure Active Directory egyszeri bejelentkezést biztosít több ezer SaaS-alkalmazásés helyszíni webalkalmazás számára. Tekintse meg az [Azure Active Directory összevonási kompatibilitási lista: külső identitásszolgáltatók, amelyek segítségével valósítható meg egyszeri bejelentkezési](how-to-connect-fed-compatibility.md) cikk további részleteket az egyszeri bejelentkezés harmadik fél, amely a Microsoft által tesztelt. Ez a funkció lehetővé teszi a szervezet számára, hogy különböző B2B-forgatókönyveket valósítson meg, miközben az identitás- és hozzáférés-kezelést is kézben tartja. Azonban a B2B tervezési folyamat során fontos, hogy megértsék a hitelesítési módszert, amely et a partner, és ellenőrizze, ha ez a módszer támogatja az Azure-ban. Jelenleg az Azure AD a következő módszereket támogatja:
+Azure Active Directory egyszeri bejelentkezést biztosít több ezer SaaS-alkalmazáshoz és helyszíni webalkalmazásokhoz. Tekintse meg az [Azure Active Directory összevonás-kompatibilitási listát: külső gyártótól származó identitás-szolgáltatók, amelyek segítségével az egyszeri bejelentkezést](how-to-connect-fed-compatibility.md) a Microsoft által tesztelt SSO harmadik féltől származó további részletekre lehet alkalmazni. Ez a funkció lehetővé teszi, hogy a szervezet különböző B2B-forgatókönyveket vezessen be az identitás-és hozzáférés-kezelés irányításával. A B2B tervezési folyamat során azonban fontos megérteni a partner által használt hitelesítési módszert, és ellenőrizni, hogy az Azure támogatja-e ezt a módszert. Az Azure AD jelenleg a következő módszereket támogatja:
 
-* Biztonsági helyességifeltétel-jelölőnyelv (SAML)
-* Oauth
+* Security Assertion Markup Language (SAML)
+* OAuth
 * Kerberos
 * Tokenek
 * Tanúsítványok
 
 > [!NOTE]
-> olvassa el [az Azure Active Directory hitelesítési protokolljait,](https://msdn.microsoft.com/library/azure/dn151124.aspx) hogy további részleteket tudjon meg az egyes protokollokról és az Azure-beli képességeiről.
+> az egyes protokollokkal és az Azure képességeivel kapcsolatos további részletekért olvassa el [Azure Active Directory hitelesítési protokollok](https://msdn.microsoft.com/library/azure/dn151124.aspx) című részt.
 >
 >
 
-Az Azure AD-támogatás használatával a mobilüzleti alkalmazások ugyanazt az egyszerű mobilszolgáltatások hitelesítési élményét is használhatják, hogy az alkalmazottak vállalati Active Directory-hitelesítő adataikkal bejelentkezhessenek a mobilalkalmazásaikba. Ezzel a funkcióval az Azure AD támogatja, mint egy identitásszolgáltató a mobilszolgáltatások mellett a többi identitásszolgáltatók már támogatott (amelyek magukban foglalják a Microsoft-fiókok, Facebook-azonosító, Google-azonosító és A Twitter-azonosító). Ha a helyszíni alkalmazások a felhasználó hitelesítő adatait használják a vállalat AD DS-ben, a felhőből érkező partnerek és felhasználók hozzáférésének átláthatónak kell lennie. A felhasználók feltételes hozzáférés-vezérlését (felhőalapú) webalkalmazásokra, webes API-ra, Microsoft felhőszolgáltatásokra, külső SaaS-alkalmazásokra és natív (mobil) ügyfélalkalmazásokra kezelheti, és a biztonság, a naplózás, a jelentéskészítés előnyeit egyben élvezheti Hely. Azonban ajánlott a megvalósítás ellenőrzése nem éles környezetben vagy korlátozott számú felhasználóval.
+Az Azure AD-támogatással a mobil üzleti alkalmazások ugyanazt az egyszerű Mobile Services hitelesítési funkciót használhatják, amely lehetővé teszi, hogy az alkalmazottak a vállalati Active Directory hitelesítő adataikkal jelentkezzenek be a mobil alkalmazásaiba. Ezzel a szolgáltatással az Azure AD-t identitás-szolgáltatóként támogatja Mobile Services a már támogatott más identitás-szolgáltatók mellett (amelyek közé tartozik a Microsoft-fiókok, a Facebook-azonosító, a Google-azonosító és a Twitter-azonosító). Ha a helyszíni alkalmazások a vállalat AD DS található felhasználó hitelesítő adatait használják, a partnerek és a felhőből érkező felhasználók hozzáférésének transzparensnek kell lennie. Kezelheti a felhasználó feltételes hozzáférés-vezérlését (felhőalapú) webalkalmazásokhoz, webes API-hoz, a Microsoft Cloud Serviceshez, a harmadik féltől származó SaaS-alkalmazásokhoz és a natív (mobil) ügyfélalkalmazások számára, valamint a biztonság, a naplózás és a jelentéskészítés előnyeit egy helyen. Javasoljuk azonban, hogy a megvalósítást nem éles környezetben vagy korlátozott számú felhasználóval ellenőrizze.
 
 > [!TIP]
-> fontos megemlíteni, hogy az Azure AD nem rendelkezik csoportházirenddel, mint az AD DS rendelkezik. Az eszközökházirendek érvényesítéséhez mobileszköz-felügyeleti megoldásra, például [a Microsoft Intune-ra](https://technet.microsoft.com/library/jj676587.aspx)van szükség.
+> fontos megjegyezni, hogy az Azure AD-nek nincs Csoportházirenda, mivel AD DS rendelkezik. Az eszközökre vonatkozó szabályzat érvénybe léptetéséhez mobileszköz-kezelési megoldásra van szükség, például [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx).
 >
 >
 
-Miután a felhasználó hitelesítése az Azure AD használatával, fontos, hogy értékelje ki a hozzáférési szintet, amely a felhasználó rendelkezik. A felhasználó által egy erőforráson keresztül birtokolt hozzáférési szint eltérő lehet. Bár az Azure AD adhat hozzá egy további biztonsági réteget bizonyos erőforrásokhoz való hozzáférés szabályozásával, ne feledje, hogy az erőforrás maga is rendelkezik a saját hozzáférés-vezérlési lista külön-külön, például a hozzáférés-vezérlés a fájlkiszolgálón található fájlok. Az alábbi ábra összefoglalja a hibrid forgatókönyvben használható hozzáférés-vezérlési szinteket:
+Ha a felhasználó az Azure AD-vel lett hitelesítve, fontos, hogy kiértékelje a felhasználó által birtokolt hozzáférési szintet. A felhasználó által az erőforráson átadott hozzáférés szintje eltérő lehet. Míg az Azure AD további biztonsági réteget is hozzáadhat az egyes erőforrásokhoz való hozzáférés szabályozásával, vegye figyelembe, hogy maga az erőforrás is rendelkezhet külön hozzáférés-vezérlési listával, például a fájlkiszolgálón található fájlok hozzáférés-vezérlésével. A következő ábra összefoglalja a hibrid forgatókönyvekben használható hozzáférés-vezérlési szinteket:
 
 ![hozzáférés-vezérlés](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
-Az x. ábrán látható minden egyes interakció egy hozzáférés-vezérlési forgatókönyvet jelent, amelyet az Azure AD lefedhet. Az alábbiakban az egyes forgatókönyvek leírása látható:
+Az ábrán látható összes interakció az X. ábrán egy, az Azure AD által lefedett hozzáférés-vezérlési forgatókönyvet jelöl. Az alábbiakban az egyes forgatókönyvek leírását olvashatja:
 
-1. Feltételes hozzáférés a helyszíni üzemeltetett alkalmazásokhoz: A Regisztrált eszközöket hozzáférési házirendekkel használhatja az AD FS és a Windows Server 2012 R2 használatára konfigurált alkalmazásokhoz.
+1. A helyszínen üzemeltetett alkalmazásokhoz való feltételes hozzáférés: a Windows Server 2012 R2-vel való AD FS használatára konfigurált alkalmazásokhoz hozzáférési házirendekkel rendelkező regisztrált eszközöket használhat.
 
-2. Hozzáférés-vezérlés az Azure Portal: Az Azure is lehetővé teszi a portálhoz való hozzáférés vezérlését a szerepköralapú hozzáférés-vezérlés (RBAC)). Ez a módszer lehetővé teszi a vállalat számára, hogy korlátozza az Azure Portalon egy adott személy által elvégzett műveletek számát. Az RBAC használatával a portálhoz való hozzáférés szabályozása, az informatikai rendszergazdák delegálhathozzáférést a következő hozzáférés-kezelési megközelítések:
+2. Access Control a Azure Portal: az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) is lehetővé teszi a portálhoz való hozzáférés szabályozását. Ez a módszer lehetővé teszi a vállalat számára, hogy korlátozza azon műveletek számát, amelyeket egy adott személy elvégezhet a Azure Portalban. Ha a RBAC használatával szabályozza a portálhoz való hozzáférést, a rendszergazdák a következő hozzáférés-kezelési megközelítések segítségével delegálják a hozzáférést:
 
-   - Csoportalapú szerepkör-hozzárendelés: Hozzáférést rendelhet az Azure AD-csoportokhoz, amelyek szinkronizálhatók a helyi Active Directoryból. Ez lehetővé teszi, hogy kihasználja a szervezet által eszközként és csoportok kezelésére szolgáló folyamatokban végrehajtott meglévő befektetéseket. Használhatja az Azure AD Premium delegált csoportfelügyeleti funkcióját is.
-   - Beépített szerepkörök használata az Azure-ban: Három szerepkört használhat – tulajdonos, közreműködő és olvasó, így biztosíthatja, hogy a felhasználók és csoportok csak a feladataik elvégzéséhez szükséges feladatok elvégzéséhez szükséges feladatok elvégzéséhez jogosultak legyenek.
-   -  Részletes erőforrásokhoz való hozzáférés: Szerepkörökhozzárendelést rendelhet a felhasználókhoz és csoportokhoz egy adott előfizetéshez, erőforráscsoporthoz vagy egy adott Azure-erőforráshoz, például egy webhelyhez vagy adatbázishoz. Ily módon biztosíthatja, hogy a felhasználók hozzáférjenek az összes szükséges erőforráshoz, és ne férjenek hozzá azokhoz az erőforrásokhoz, amelyeket nem kell kezelniük.
+   - Csoport alapú szerepkör-hozzárendelés: a helyi Active Directoryról szinkronizálható Azure AD-csoportokhoz is hozzárendelhet hozzáférést. Így kihasználhatja a szervezete által a csoportok kezelésére szolgáló eszközök és folyamatok által létrehozott meglévő befektetéseket. Használhatja a prémium szintű Azure AD meghatalmazott csoportjának felügyeleti szolgáltatását is.
+   - Beépített szerepkörök használata az Azure-ban: három szerepkör – tulajdonos, közreműködő és olvasó – használatával biztosíthatja, hogy a felhasználók és a csoportok csak a feladataik elvégzéséhez szükséges feladatokat tudják elvégezni.
+   -  Az erőforrásokhoz való részletes hozzáférés: szerepköröket rendelhet hozzá felhasználókhoz és csoportokhoz egy adott előfizetéshez, erőforráscsoporthoz vagy egyéni Azure-erőforráshoz, például webhelyhez vagy adatbázishoz. Így biztosíthatja, hogy a felhasználók hozzáférhessenek az összes szükséges erőforráshoz, és ne férhessenek hozzájuk a nem szükséges erőforrásokhoz.
 
    > [!NOTE]
-   > Ha alkalmazásokat hoz létre, és testre szeretné szabni a hozzáférés-vezérlést, az Azure AD alkalmazásszerepkörök is használhatók az engedélyezéshez. Tekintse át ezt a [WebApp-RoleClaims-DotNet példát,](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) hogyan hozhat létre az alkalmazást a funkció használatához.
+   > Ha alkalmazásait fejleszti, és testre szeretné szabni a hozzáférés-vezérlést, akkor az Azure AD-alkalmazás szerepkörei is használhatók az engedélyezéshez. Tekintse át ezt a [WebApp-RoleClaims-DotNet példát](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) arról, hogyan hozhatja létre az alkalmazást ennek a funkciónak a használatára.
 
 
-3. Feltételes hozzáférés az Office 365-alkalmazásokhoz a Microsoft Intune-nal: A rendszergazdák feltételes hozzáférésű eszközházirendeket hozhatnak létre a vállalati erőforrások védelmére, ugyanakkor lehetővé teszik a megfelelő eszközökön dolgozó informatikai dolgozók számára a szolgáltatások elérését. 
+3. Az Office 365-alkalmazások feltételes hozzáférése Microsoft Intune használatával: az IT-rendszergazdák feltételes hozzáférési eszközöket hozhatnak létre a vállalati erőforrások biztonságossá tételéhez, ugyanakkor ugyanakkor lehetővé teszik, hogy a megfelelő eszközökön lévő információs szakemberek hozzáférjenek a szolgáltatásokhoz. 
   
-4. Feltételes hozzáférés Saas-alkalmazásokhoz: [Ez a funkció](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi az alkalmazásonkénti többtényezős hitelesítési hozzáférési szabályok konfigurálását és a hozzáférés letiltását a nem megbízható hálózaton lévő felhasználók számára. A többtényezős hitelesítési szabályokat alkalmazhatja az alkalmazáshoz rendelt összes felhasználóra, vagy csak a megadott biztonsági csoportokon belüli felhasználókra. A felhasználók kizárhatók a többtényezős hitelesítési követelmény alól, ha az alkalmazást a szervezet hálózatán belüli IP-címről férnek hozzá.
+4. Feltételes hozzáférés SaaS-alkalmazásokhoz: [Ez a funkció](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi az alkalmazáson belüli multi-Factor Authentication hozzáférési szabályok konfigurálását, valamint a nem megbízható hálózaton lévő felhasználók hozzáférésének letiltását. A multi-Factor Authentication szabályokat alkalmazhatja az alkalmazáshoz rendelt összes felhasználóra, vagy csak a megadott biztonsági csoportokban lévő felhasználókra. A felhasználók kizárják a multi-Factor Authentication követelményét, ha a szervezet hálózatán belüli IP-címről érik el az alkalmazást.
 
-Mivel a hozzáférés-vezérlési lehetőségek többrétegű megközelítést alkalmaznak, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy minden olyan forgatókönyvhöz elérhető lehetőséget kihasznál, amely az erőforrásokhoz való hozzáférés szabályozását igényli.
+Mivel a hozzáférés-vezérlés lehetőségei többrétegű megközelítést használnak, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az egyes forgatókönyvekhez elérhető összes lehetőség kihasználható az erőforrásokhoz való hozzáférés szabályozásához.
 
-## <a name="define-incident-response-options"></a>Incidensválasz-beállítások megadása
-Az Azure AD segíthet az informatikai identitás potenciális biztonsági kockázatok a környezetben a felhasználói tevékenység figyelése. Az it-szolgáltatások az Azure AD Access és a Usage jelentések segítségével betekintést nyerhetnek a szervezet címtárának integritásába és biztonságába. Ezekkel az információkkal az informatikai rendszergazda jobban meg tudja határozni, hogy hol lehet nekik lehetséges biztonsági kockázatok, hogy megfelelően tervezhessék meg ezeket a kockázatokat.  [Az Azure AD Premium-előfizetés](../fundamentals/active-directory-get-started-premium.md) biztonsági jelentésekkel rendelkezik, amelyek lehetővé teszik az informatikai szolgáltatások számára ezen információk beszerzését. [Az Azure AD-jelentések](../reports-monitoring/overview-reports.md) a következőképpen vannak kategorizálva:
+## <a name="define-incident-response-options"></a>Incidens-válasz beállításainak megadása
+Az Azure AD a felhasználó tevékenységének figyelésével segítséget nyújt a környezet számára a lehetséges biztonsági kockázatok azonosítása érdekében. Az Azure AD-hozzáférési és-használati jelentések segítségével megtekintheti a szervezete címtárának integritását és biztonságát. Ezekkel az információkkal a rendszergazdák jobban meghatározhatják, hogy az esetleges biztonsági kockázatok milyen hatással lehetnek a kockázatok enyhítésére.  [Prémium szintű Azure ad-előfizetés](../fundamentals/active-directory-get-started-premium.md) olyan biztonsági jelentéseket tartalmaz, amelyek lehetővé teszik az adatok beszerzését. Az [Azure ad-jelentések](../reports-monitoring/overview-reports.md) a következőképpen vannak kategorizálva:
 
-* **Anomáliajelentések**: A rendellenesnek talált bejelentkezési eseményeket tartalmaznak. A cél az, hogy felvilágosítsa Önt az ilyen tevékenységekről, és lehetővé tegye annak megállapítását, hogy egy esemény gyanús-e.
-* **Integrált alkalmazásjelentés:** Betekintést nyújt a felhőalapú alkalmazások szervezetben történő használatba lépésének beépülő adataiba. Az Azure Active Directory több ezer felhőalkalmazással kínál integrációt.
-* **Hibajelentések**: Jelezze a külső alkalmazások fiókokra való kiépítési során előforduló hibákat.
-* **Felhasználóspecifikus jelentések:** Egy adott felhasználó eszköz/bejelentkezési tevékenységadatainak megjelenítése.
-* **Tevékenységnaplók:** Az elmúlt 24 órában, az elmúlt 7 napban vagy az elmúlt 30 napban naplózott összes ellenőrzött esemény, valamint a csoporttevékenység-módosítások, valamint a jelszó-visszaállítási és regisztrációs tevékenység rekordját tartalmazza.
+* **Anomália-jelentések**: olyan bejelentkezési eseményeket tartalmaz, amelyek rendellenesnek bizonyultak. A cél az, hogy tisztában legyen az ilyen tevékenységekkel, és lehetővé teszi annak meghatározását, hogy az esemény gyanús-e.
+* **Integrált alkalmazási jelentés**: betekintést nyújt a Felhőbeli alkalmazások használatára a szervezetében. A Azure Active Directory több ezer Felhőbeli alkalmazással is rendelkezik integrációval.
+* **Hibajelentések**: azok a hibák, amelyek a fiókok külső alkalmazásokba való kiépítés során fordulhatnak elő.
+* **Felhasználó-specifikus jelentések**: egy adott felhasználó eszközének vagy bejelentkezési tevékenységének megjelenítése.
+* **Tevékenységnaplók**: az elmúlt 24 órában, az elmúlt 7 napban vagy az elmúlt 30 napban, valamint a csoportos tevékenységek változásaira, valamint a jelszó-visszaállításra és a regisztrációs tevékenységre vonatkozó összes naplózott esemény rekordját tartalmazza.
 
 > [!TIP]
-> Egy másik jelentés, amely szintén segíthet az incidensválasz-csapat dolgozik egy eseta a [felhasználó kiszivárgott hitelesítő adatok](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) jelentést. Ez a jelentés a kiszivárgott hitelesítő adatok listája és a bérlő közötti egyezéseket jelenik meg.
+> Egy másik jelentés, amely segíthet az incidensek megválaszolásában dolgozó csapatnál is, ha a [felhasználó kiszivárgott hitelesítő adatokat tartalmazó](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) jelentést készít. Ez a jelentés felfedi a kiszivárgott hitelesítő adatok listája és a bérlője közötti egyezéseket.
 >
 
 
-Az Azure AD egyéb fontos beépített jelentései, amelyek az incidensválaszok kivizsgálása során használhatók, és a következők:
+Az Azure AD-ben az incidensek megválaszolásának vizsgálatakor felhasználható egyéb fontos beépített jelentések a következők:
 
-* **Jelszó-visszaállítási tevékenység:** adjon betekintést a rendszergazdának arról, hogy a szervezetben hogyan használják a jelszó-visszaállítást.
-* **Jelszó-visszaállítási regisztrációs tevékenység:** betekintést nyújt abba, hogy mely felhasználók regisztrálták a jelszó-visszaállítási módszereiket, és milyen módszereket választottak ki.
-* **Csoportos tevékenység:** a Hozzáférési panelen kezdeményezett csoport (pl. felhasználók) változásainak előzményeit tartalmazza.
+* **Jelszó-visszaállítási tevékenység**: adja meg a rendszergazdát, hogy betekintést nyújtson arról, hogyan használják aktívan a jelszó-visszaállítást a szervezeten belül.
+* A **jelszó-visszaállítás regisztrációs tevékenysége**: betekintést biztosít a felhasználók számára a jelszó-visszaállítási módszerekhez, valamint a kiválasztott módszerekhez.
+* **Csoportos tevékenység**: a hozzáférési panelen kezdeményezett csoport (például a hozzáadott vagy eltávolított felhasználók) változásainak előzményeit jeleníti meg.
 
-Az Azure AD Premium alapvető jelentéskészítési képessége mellett, amelyet az incidensválaszok kivizsgálása során használhat, az informatikai részlegek a naplózási jelentés előnyeit is kihasználhatják az olyan információk megszerzéséhez, mint például:
+A prémium szintű Azure AD alapvető jelentési képességein kívül az incidensekre adott válasz vizsgálati folyamata során is kihasználhatja a naplózási jelentés előnyeit, például a következő információk beszerzéséhez:
 
-* A szerepkörtagság változásai (például a globális rendszergazdai szerepkörhöz hozzáadott felhasználó)
-* Hitelesítő adatok frissítése (például jelszómódosítás)
-* Tartománykezelés (például egyéni tartomány ellenőrzése, tartomány eltávolítása)
-* Alkalmazások hozzáadása és eltávolítása
-* Felhasználókezelés (például felhasználó hozzáadása, eltávolítása, frissítése)
-* Licencek hozzáadása és eltávolítása
+* A szerepkör-tagság változásai (például a globális rendszergazdai szerepkörhöz hozzáadott felhasználó)
+* Hitelesítő adatok frissítései (például a jelszó módosítása)
+* Tartományi felügyelet (például egyéni tartomány ellenőrzése, tartomány eltávolítása)
+* Alkalmazások hozzáadása vagy eltávolítása
+* Felhasználói felügyelet (például felhasználók hozzáadása, eltávolítása, frissítése)
+* Licencek hozzáadása vagy eltávolítása
 
-Mivel az incidensválasz beállításai többrétegű megközelítést alkalmaznak, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy kihasználja az összes rendelkezésre álló lehetőségeket minden forgatókönyv, amely megköveteli, hogy az Azure AD jelentéskészítési képesség részeként a vállalat incidens-válasz folyamat.
+Mivel az incidensek válasza többrétegű megközelítést használ, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az egyes forgatókönyvekhez rendelkezésre álló összes lehetőséget kihasználva az Azure AD jelentéskészítési funkciójának használatát igényli a vállalat incidens-válaszának részeként.
 
 ## <a name="next-steps"></a>További lépések
-[Hibrid identitáskezelési feladatok meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+[Hibrid Identitáskezelés kezelési feladatainak meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>Lásd még:
-[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)

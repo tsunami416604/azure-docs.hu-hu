@@ -1,6 +1,6 @@
 ---
-title: Eszközkezelés áttekintése az Azure IoT Hubbal | Microsoft dokumentumok
-description: Az Azure IoT Hu eszközfelügyeletének áttekintése – vállalati eszközéletciklus és eszközkezelési minták, például újraindítás, gyári alaphelyzetbe állítás, belső vezérlőprogram-frissítés, konfiguráció, ikereszközök, lekérdezések, feladatok.
+title: Az Azure IoT Hub-vel való eszközkezelés áttekintése | Microsoft Docs
+description: Az Azure IoT hu – a nagyvállalati eszközök életciklusának és az eszközkezelés mintázatának áttekintése (például, újraindítás, gyári beállítások visszaállítása, belső vezérlőprogram frissítése, konfigurálás, eszköz ikrek, lekérdezések, feladatok).
 author: bzurcher
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60400918"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
@@ -46,7 +46,7 @@ Az IoT alkalmazása egyedi eszközfelügyeleti kihívásokat hoz magával, a kö
 
 * **Sok szerepkör kiszolgálása**: az IoT-műveletekhez tartozó szerepkörök egyedi munkafolyamatainak és folyamatainak támogatása rendkívül fontos. Az üzemeltetést végző stábnak zökkenőmentesen kell együttműködnie a belső informatikai részlegek által meghatározott korlátozásokkal.  Fenntartható módot kell találniuk továbbá a valós idejű eszközművelet-információk beillesztésére a felettesi és üzletfelügyeleti szerepkörökbe.
 
-## <a name="device-lifecycle"></a>Az eszközök életciklusa
+## <a name="device-lifecycle"></a>Eszközök életciklusa
 Egyes általános eszközfelügyeleti szakaszok minden vállalati IoT-projektben megjelennek. Az Azure IoT-ben az eszközök életciklusának öt szakaszát különböztetjük meg:
 
 ![Az Azure IoT-eszközök életciklusának öt fázisa: tervezés, üzembe helyezés, konfigurálás, figyelés, kivonás](./media/iot-hub-device-management-overview/image5.png)
@@ -58,60 +58,60 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
     *További olvasnivalók*: 
     * [Ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md)
     * [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
-    * [Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
-    * [Az IoT-megoldáson belüli eszközkonfigurációval kapcsolatos gyakorlati tanácsok](iot-hub-configuration-best-practices.md)
+    * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+    * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
 * **Üzembe helyezés**: Lehetővé teszi az új IoT Hub-eszközök biztonságos üzembe helyezését, valamint a kezelők számára az eszközök képességeinek azonnali elsajátítását.  Az IoT Hub-identitásjegyzék alkalmazásával rugalmas eszközidentitások és -hitelesítő adatok hozhatók létre, illetve egy feladat használatával ez a művelet tömegesen is végrehajtható. Az eszközök felépítését úgy végezze el, hogy azok képességei és állapotai az ikereszköz tulajdonságaiban nyomon követhetőek legyenek.
   
     *További olvasnivalók*: 
     * [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
-    * [Az eszközidentitások tömeges kezelése](iot-hub-bulk-identity-mgmt.md)
-    * [Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
-    * [Az IoT-megoldáson belüli eszközkonfigurációval kapcsolatos gyakorlati tanácsok](iot-hub-configuration-best-practices.md)
+    * [Az eszközök identitásának tömeges kezelése](iot-hub-bulk-identity-mgmt.md)
+    * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+    * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
     * [Azure IoT Hub Device Provisioning Service](https://azure.microsoft.com/documentation/services/iot-dps)
 
 * **Konfigurálás**: az eszközök kötegelt konfigurációmódosításainak és belső vezérlőprogramjuk frissítéseinek megkönnyítése üzemi állapotuk és biztonságuk megőrzésével. A kívánt tulajdonságok, illetve közvetlen módszerek és szórásos feladatok használatával ezek az eszközfelügyeleti műveletek tömegesen is végrehajthatók.
   
     *További olvasnivalók*:
-    * [Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
+    * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
     * [IoT-eszközök konfigurálása és figyelése nagy méretekben](iot-hub-auto-device-config.md)
-    * [Az IoT-megoldáson belüli eszközkonfigurációval kapcsolatos gyakorlati tanácsok](iot-hub-configuration-best-practices.md)
+    * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
 * **Figyelés**: A teljes eszközgyűjtemény és a folyamatban lévő műveletek állapotának figyelése, valamint a kezelők riasztása az esetlegesen figyelmet érdemlő problémák kapcsán.  Az ikereszközök alkalmazásával az eszközök képesek a valós idejű működési feltételek és a frissítési műveletek állapotának jelentésére. Nagyteljesítményű irányítópulti jelentések hozhatók létre, amelyek az ikereszköz-lekérdezések használatával felszínre hozzák az azonnali intézkedést igénylő problémákat.
   
     *További olvasnivalók*: 
-    * [Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
-    * [Az IoT Hub lekérdezési nyelve az ikereszközök, feladatok és az üzenetek útválasztása](iot-hub-devguide-query-language.md)
+    * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+    * [Az ikrek, a feladatok és az üzenet-útválasztás IoT Hub lekérdezési nyelve](iot-hub-devguide-query-language.md)
     * [IoT-eszközök konfigurálása és figyelése nagy méretekben](iot-hub-auto-device-config.md)
-    * [Az IoT-megoldáson belüli eszközkonfigurációval kapcsolatos gyakorlati tanácsok](iot-hub-configuration-best-practices.md)
+    * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
-* **Kivonás:** Cserélje le vagy szerelje le az eszközöket hiba, frissítési ciklus vagy a szolgáltatás élettartamának végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
+* **Kivonás: az**eszközök lecserélése vagy leszerelése meghibásodás után, frissítési ciklus vagy a szolgáltatás élettartama végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
   
     *További olvasnivalók*: 
-    * [Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
+    * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
     * [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 
 ## <a name="device-management-patterns"></a>Eszközfelügyeleti minták
 
 Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi. Az [eszközfelügyeleti oktatóanyagok](iot-hub-node-node-device-management-get-started.md) részletesebben is bemutatják e minták kiterjesztését valós helyzetekre, illetve új minták létrehozását az alapminták alapján.
 
-* **Újraindítás**: A háttéralkalmazás közvetlen módszerrel tájékoztatja az eszközt arról, hogy újraindítást kezdeményezett.  Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz újraindítási állapotát.
+* **Újraindítás**: a háttérbeli alkalmazás egy közvetlen módszerrel értesíti az eszközt arról, hogy újraindítást kezdeményezett.  Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz újraindítási állapotát.
   
     ![Az eszközfelügyelet újraindítási mintájának ábrája](./media/iot-hub-device-management-overview/reboot-pattern.png)
 
-* **Gyári beállítások visszaállítása**: A háttéralkalmazás közvetlen módszerrel tájékoztatja az eszközt arról, hogy gyári alaphelyzetbe állítást kezdeményezett. Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz gyári visszaállítási állapotát.
+* **Gyári beállítások visszaállítása**: a háttérbeli alkalmazás közvetlen módszerrel értesíti az eszközt arról, hogy a gyári beállítások visszaállítását kezdeményezte. Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz gyári visszaállítási állapotát.
   
     ![Az eszközfelügyelet eszköz gyári alaphelyzetbe állítási mintájának ábrája](./media/iot-hub-device-management-overview/facreset-pattern.png)
 
-* **Konfiguráció**: A háttéralkalmazás a kívánt tulajdonságok alapján konfigurálja az eszközön futó szoftvert. Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz konfigurálási állapotát.
+* **Konfiguráció**: a háttérbeli alkalmazás a kívánt tulajdonságokat használja az eszközön futó szoftverek konfigurálásához. Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz konfigurálási állapotát.
   
     ![Az eszközfelügyelet konfigurációs mintájának ábrája](./media/iot-hub-device-management-overview/configuration-pattern.png)
 
-* **Belső vezérlőprogram frissítése**: A háttéralkalmazás automatikus eszközkezelési konfigurációt használ a frissítés fogadásához használt eszközök kiválasztásához, az eszközök helyének megmondja, hogy hol találja a frissítést, és figyelje a frissítési folyamatot. Az eszköz többlépéses folyamatot indít a belső vezérlőprogram-lemezkép letöltéséhez, ellenőrzéséhez és alkalmazásához, majd újraindítja az eszközt, mielőtt újra csatlakozna az IoT Hub szolgáltatáshoz. A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
+* **Belső vezérlőprogram frissítése**: a háttér-alkalmazás automatikus Eszközkezelő-konfigurációt használ a frissítés fogadására szolgáló eszközök kiválasztásához, hogy tájékoztassa azokat az eszközöket, amelyeken a frissítés megtalálhatók, valamint figyelje a frissítési folyamatot. Az eszköz többlépéses folyamatot kezdeményez a belső vezérlőprogram rendszerképének letöltéséhez, ellenőrzéséhez és alkalmazásához, majd újraindítja az eszközt, mielőtt újracsatlakozik a IoT Hub szolgáltatáshoz. A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
   
     ![Az eszközfelügyelet belsővezérlőprogram-frissítési mintájának ábrája](media/iot-hub-device-management-overview/fwupdate-pattern.png)
 
-* **Az előrehaladás és az állapot jelentése:** A megoldás háttérrendszerén keresztül ikereszköz-lekérdezések futnak az eszközökön futó műveletek állapotáról és előrehaladásáról.
+* **Jelentéskészítési folyamat és állapot**: a megoldás háttérbe állítása eszköz kettős lekérdezéseket futtat az eszközökön keresztül, hogy jelentést készítsen az eszközökön futó műveletek állapotáról és előrehaladásáról.
   
     ![Az eszközfelügyelet előrehaladási és állapotmeghatározási jelentéskészítési mintájának ábrája](./media/iot-hub-device-management-overview/report-progress-pattern.png)
 

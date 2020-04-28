@@ -1,6 +1,6 @@
 ---
-title: Raspberry Pi kiépítése a távoli figyeléshez C használatával - Azure | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként csatlakoztatható a Raspberry Pi-eszköz a távfigyelési megoldás gyorsítóhoz a C-ben írt alkalmazás használatával.
+title: Málna PI kiépítése a távoli Monitorozásba a C-Azure használatával | Microsoft Docs
+description: Leírja, hogyan csatlakoztatható egy málna PI-eszköz a távoli figyelési megoldáshoz a C-ben írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61454499"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Raspberry Pi eszköz csatlakoztatása a távfigyelési megoldás gyorsítóhoz (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A málna PI-eszköz csatlakoztatása a távoli figyelési megoldáshoz (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan csatlakoztathat egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz. A legtöbb beágyazott alkalmazáshoz, amelyek korlátozott eszközökön futnak, a Raspberry Pi eszközalkalmazás ügyfélkódja C-ben van megírva. Ebben az oktatóanyagban az alkalmazást a Raspbian operációs rendszert futtató Raspberry Pi-re építi fel.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Csakúgy, mint a korlátozott eszközökön futó legtöbb beágyazott alkalmazás esetében, a málna PI-eszközhöz tartozó ügyfél kódja C-ben van megírva. Ebben az oktatóanyagban az alkalmazást egy Raspbian operációs rendszert futtató málna PI-ben hozza létre.
 
-Ha egy eszközt szeretne szimulálni, olvassa el az [Új szimulált eszköz létrehozása és tesztelése című témakört.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Ha inkább egy eszközt szeretne szimulálni, tekintse meg [az új szimulált eszköz létrehozását és tesztelését](iot-accelerators-remote-monitoring-create-simulated-device.md)ismertető témakört.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
-Asztali számítógép, amely lehetővé teszi, hogy távolról csatlakozzon a Raspberry Pi parancssorához.
+Egy asztali számítógép, amely lehetővé teszi, hogy távolról kapcsolódjon a málna PI parancssorához.
 
-[Microsoft IoT Starter Kit Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy azzal egyenértékű összetevőkhöz. Ez az oktatóanyag a következő elemeket használja a készletből:
+[Microsoft IoT Starter Kit málna PI 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy azzal egyenértékű összetevőkhöz. Ez az oktatóanyag a készlet következő elemeit használja:
 
-- Raspberry Pi, 3.
-- MicroSD-kártya (NOOBS-szal)
-- USB Mini kábel
-- Ethernet kábel
+- Málna PI 3
+- MicroSD-kártya (NOOBs)
+- Egy USB-s mini-kábel
+- Egy Ethernet-kábel
 
-### <a name="required-desktop-software"></a>Szükséges asztali szoftver
+### <a name="required-desktop-software"></a>Szükséges asztali szoftverek
 
-SSH-ügyfélre van szüksége az asztali gépen, hogy távolról elérhesse a Raspberry Pi parancssorát.
+Az asztali gépen szükség van az SSH-ügyfélre, hogy távolról hozzáférhessen a parancssorhoz a málna PI-on.
 
-- A Windows nem tartalmaz SSH-ügyfelet. A [PuTTY](https://www.putty.org/)használatát javasoljuk.
-- A legtöbb Linux disztribúció és a Mac OS tartalmazza a parancssori SSH segédprogramot. További információ: [SSH Linux vagy Mac OS használatával.](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
+- A Windows nem tartalmaz SSH-ügyfelet. A [Putty](https://www.putty.org/)használatát javasoljuk.
+- A legtöbb Linux-disztribúció és Mac OS tartalmazza a parancssori SSH-segédprogramot. További információ: [SSH Linux vagy Mac os használatával](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Szükséges Raspberry Pi szoftver
+### <a name="required-raspberry-pi-software"></a>Szükséges málna PI szoftver
 
-Ez a cikk feltételezi, hogy telepítette a Raspbian operációs rendszer legújabb verzióját [a Raspberry Pi készülékre.](https://www.raspberrypi.org/learning/software-guide/quickstart/)
+Ez a cikk azt feltételezi, hogy telepítette a [Raspbian operációs rendszer](https://www.raspberrypi.org/learning/software-guide/quickstart/)legújabb verzióját a málna PI-ra.
 
-A következő lépések bemutatják, hogyan készítheti elő a Raspberry Pi-t a megoldásgyorsítóhoz csatlakozó C-alkalmazás létrehozásához:
+A következő lépések bemutatják, hogyan készítheti elő a málna PI-t egy olyan C-alkalmazás létrehozásához, amely a megoldás-gyorsító csatlakozik:
 
-1. Csatlakozzon a Raspberry Pi segítségével **ssh**. További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [Raspberry Pi webhelyén.](https://www.raspberrypi.org/)
+1. Kapcsolódjon a málna PI-hez az **SSH**használatával. További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [málna PI webhelyén](https://www.raspberrypi.org/).
 
-1. A Raspberry Pi frissítéséhez használja a következő parancsot:
+1. A következő parancs használatával frissítheti a málna PI-t:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Az útmutató ban leírt lépések végrehajtásához kövesse a [Linux-fejlesztői környezet beállításának](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) lépéseit a szükséges fejlesztői eszközök és kódtárak hozzáadásához a Raspberry Pi-hez.
+1. A útmutató lépéseinek végrehajtásához kövesse a [Linux fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) című témakör lépéseit a szükséges fejlesztői eszközök és kódtárak a málna PI-hez való hozzáadásához.
 
 ## <a name="view-the-code"></a>A kód megtekintése
 
-Az ebben az útmutatóban használt [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) az Azure IoT C SDKs GitHub-tárházban érhető el.
+Az útmutatóban használt [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) az Azure IoT C SDK GitHub-tárházban érhető el.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>A forráskód letöltése és a projekt előkészítése
+### <a name="download-the-source-code-and-prepare-the-project"></a>Töltse le a forráskódot, és készítse elő a projektet
 
-A projekt előkészítése, klónozza vagy töltse le az [Azure IoT C SDKs tárház](https://github.com/Azure/azure-iot-sdk-c) a GitHubról.
+A projekt előkészítéséhez klónozott vagy töltse le az [Azure IoT C SDK-tárházat](https://github.com/Azure/azure-iot-sdk-c) a githubról.
 
-A minta a **minták/megoldások/remote_monitoring_client** mappában található.
+A minta a Samples **/Solutions/remote_monitoring_client** mappában található.
 
-Nyissa meg a **remote_monitoring.c** fájlt a **minta/megoldások/remote_monitoring_client** mappában egy szövegszerkesztőben.
+Nyissa meg a **remote_monitoring. c** fájlt a **Samples/Solutions/remote_monitoring_client** mappában egy szövegszerkesztőben.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Az alábbi lépések azt ismertetik, hogyan használható a *CMake* az ügyfélalkalmazás létrehozásához. A távoli figyelési ügyfélalkalmazás az SDK létrehozási folyamatának részeként épül fel.
+A következő lépések azt ismertetik, hogyan lehet a *CMAK* használatával felépíteni az ügyfélalkalmazás alkalmazást. A távoli figyelési ügyfélalkalmazás az SDK létrehozási folyamatának részeként készült.
 
-1. Az útmutató elején észlelt eszközkapcsolati karakterláncra cserélheti `<connectionstring>` a **remote_monitoring.c** fájlt, amikor eszközt adott a megoldásgyorsítóhoz.
+1. Szerkessze a **remote_monitoring. c** fájlt úgy `<connectionstring>` , hogy a lecserélje a útmutató elején megjegyzett eszköz-kapcsolódási karakterláncot, amikor hozzáad egy eszközt a megoldás-gyorsító eszközhöz.
 
-1. Keresse meg az [Azure IoT C SDKs tárház](https://github.com/Azure/azure-iot-sdk-c) klónozott példányának gyökerét, és futtassa a következő parancsokat az ügyfélalkalmazás létrehozásához:
+1. Navigáljon az [Azure IoT C SDK adattár](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozott példányának gyökeréhez, és futtassa a következő parancsokat az ügyfélalkalmazás létrehozásához:
 
     ```sh
     mkdir cmake
@@ -86,15 +86,15 @@ Az alábbi lépések azt ismertetik, hogyan használható a *CMake* az ügyféla
     make
     ```
 
-1. Futtassa az ügyfélalkalmazást, és küldje el a telemetriai adatokat az IoT Hubnak:
+1. Futtassa az ügyfélalkalmazás alkalmazást, és küldjön telemetria a IoT Hubba:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    A konzol az üzeneteket a következőképpen jeleníti meg:
+    A konzol az alábbiak szerint jeleníti meg az üzeneteket:
 
-    - Az alkalmazás minta telemetriát küld a megoldásgyorsító.
-    - A megoldás irányítópultjáról meghívott metódusokra válaszol.
+    - Az alkalmazás minta-telemetria küld a megoldás-gyorsító számára.
+    - Válaszol a megoldás irányítópultján meghívott metódusokra.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
