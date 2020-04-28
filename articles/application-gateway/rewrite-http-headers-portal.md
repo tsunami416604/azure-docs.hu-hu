@@ -1,6 +1,6 @@
 ---
-title: HTTP-kérelem- és válaszfejlécek újraírása a portálon – Azure Application Gateway
-description: Megtudhatja, hogy az Azure Portal használatával hogyan konfigurálhat egy Azure Application Gateway-t az átjárón áthaladó kérelmekben és válaszokban lévő HTTP-fejlécek újraírásához
+title: HTTP-kérelem és válasz-fejlécek újraírása a portálon – Azure Application Gateway
+description: Megtudhatja, hogyan konfigurálhat egy Azure-Application Gateway az Azure Portal használatával úgy, hogy újraírja a HTTP-fejléceket az átjárón áthaladó kérelmekben és válaszokban.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -9,126 +9,126 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74012861"
 ---
-# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-kérelem- és válaszfejlécek újraírása az Azure Application Gateway alkalmazással – Azure portal
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-kérelem és válasz-fejlécek újraírása az Azure Application Gateway-Azure Portal
 
-Ez a cikk ismerteti, hogyan használhatja az Azure Portalon egy [Application Gateway v2 Termékváltozat-példány](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) konfigurálásához a HTTP-fejlécek a kérelmek és válaszok.
+Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) -példány konfigurálásához a HTTP-fejlécek újraírásához a kérelmekben és a válaszokban.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben ismertetett lépések végrehajtásához rendelkeznie kell egy Application Gateway v2 termékváltozatnak. A fejlécek újraírása nem támogatott a v1 termékváltozatban. Ha nem rendelkezik a v2 termékváltozat, hozzon létre egy [Application Gateway v2 termékváltozat,](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) mielőtt elkezdené.
+A cikkben szereplő lépések végrehajtásához rendelkeznie kell egy Application Gateway v2 SKU-példánnyal. Az Újraírási fejlécek nem támogatottak a v1 SKU-ban. Ha nem rendelkezik a v2 SKU-val, hozzon létre egy [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) -példányt a Kezdés előtt.
 
 ## <a name="create-required-objects"></a>Szükséges objektumok létrehozása
 
-A HTTP-fejléc újraírásának konfigurálásához végre kell hajtsa végre ezeket a lépéseket.
+A HTTP-fejléc újraírásának konfigurálásához el kell végeznie ezeket a lépéseket.
 
 1. Hozza létre a HTTP-fejléc újraírásához szükséges objektumokat:
 
-   - **Újraírási művelet:** Az újraírni kívánt kérés- és kérésfejléc-mezők és a fejlécek új értékének megadására szolgál. Egy vagy több újraírási feltételt újraírási művelethez társíthat.
+   - **Újraírási művelet**: a kérelem és a kérelem fejlécének azon mezőinek megadására szolgál, amelyeket át szeretne írni, valamint a fejlécek új értékét. Egy vagy több Újraírási feltétel is társítható egy Újraírási művelettel.
 
-   - **Újraírási feltétel**: Választható konfiguráció. Az újraírási feltételek kiértékelik a HTTP(S) kérések és válaszok tartalmát. Az újraírási művelet akkor történik meg, ha a HTTP(S) kérés vagy válasz megfelel az újraírási feltételnek.
+   - **Újraírási feltétel**: opcionális konfiguráció. Az Újraírási feltételek kiértékelik a HTTP (S) kérelmek és válaszok tartalmát. Az újraírás művelet akkor fordul elő, ha a HTTP (S) kérelem vagy válasz megfelel az Újraírási feltételnek.
 
-     Ha egynél több feltételt társít egy művelethez, a művelet csak akkor történik meg, ha az összes feltétel teljesül. Más szóval a művelet logikai ÉS művelet.
+     Ha egynél több feltételt társít egy művelethez, a művelet csak akkor lép fel, ha az összes feltétel teljesül. Más szóval a művelet logikai és művelet.
 
-   - **Újraírási szabály**: Több újraírási műveletet /újraírásfeltétel-kombinációt tartalmaz.
+   - **Újraírási szabály**: több Újraírási művelet/Újraírási feltétel kombinációt tartalmaz.
 
-   - **Szabálysorozat**: Segít meghatározni az újraírási szabályok végrehajtásának sorrendjét. Ez a konfiguráció akkor hasznos, ha egy újraírási készletben több újraírási szabály is szerepel. Először egy alacsonyabb szabálysorozat-értékkel rendelkező újraírási szabály fut. Ha ugyanazt a szabálysorozat-értéket két újraírási szabályhoz rendeli, a végrehajtási sorrend nem determinisztikus.
+   - **Szabály sorrendje**: segít meghatározni, hogy az Újraírási szabályok hogyan legyenek végrehajtva. Ez a konfiguráció akkor hasznos, ha több Újraírási szabály található egy Újraírási készletben. Az alacsonyabb szabálykészlet-értékkel rendelkező Újraírási szabály először fut. Ha ugyanazokat a szabálygyűjtemény-értékeket rendeli hozzá két Újraírási szabályhoz, a végrehajtás sorrendje nem determinisztikus.
 
-   - **Újraírási készlet**: Több újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabályhoz lesznek társítva.
+   - **Újraírási készlet**: több Újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabályhoz lesznek társítva.
 
-2. Csatolja az újraírási készletet egy útválasztási szabályhoz. Az újraírási konfiguráció az útválasztási szabályon keresztül csatlakozik a forrásfigyelőhöz. Ha alapútválasztási szabályt használ, a fejléc újraírási konfigurációja egy forrásfigyelőhöz van társítva, és globális fejléc-újraírás. Útalapú útválasztási szabály használata esetén a fejléc újraírási konfigurációja az URL-elérési út térképén lesz definiálva. Ebben az esetben csak a webhely adott elérési útterületén érvényes.
+2. Csatolja az Újraírási készletet egy útválasztási szabályhoz. Az Újraírási konfiguráció a forrás figyelőhöz van csatolva az útválasztási szabály segítségével. Alapszintű útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció egy forrás-figyelőhöz van társítva, és a globális fejléc újraírása. Elérésiút-alapú útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció az URL-cím elérési útja alapján van definiálva. Ebben az esetben csak a hely adott elérési útja területére vonatkozik.
 
-Több HTTP-fejléc újraírási készletet hozhat létre, és minden újraírási készletet több figyelőre alkalmazhat. De csak egy újraírási készletet alkalmazhat egy adott figyelőhöz.
+Több, a HTTP-fejléc Újraírási készletét is létrehozhatja, és az egyes újraírásokat több figyelőre alkalmazhatja. De csak egy Újraírási készletet alkalmazhat egy adott figyelőre.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
 
 ## <a name="configure-header-rewrite"></a>Fejléc újraírásának konfigurálása
 
-Ebben a példában módosítjuk az átirányítási URL-címet a helyfejléc újraírásával a háttéralkalmazás által küldött HTTP-válaszban.
+Ebben a példában egy átirányítási URL-címet módosítunk a háttérbeli alkalmazás által küldött HTTP-válasz Location (hely) fejlécének átírásával.
 
-1. Válassza **az Összes erőforrás**lehetőséget, majd válassza ki az alkalmazásátjárót.
+1. Válassza az **összes erőforrás**lehetőséget, majd válassza ki az Application Gateway-t.
 
-2. Válassza az **Átírások** lehetőséget a bal oldali ablaktáblában.
+2. Válassza az **újraírások** lehetőséget a bal oldali ablaktáblán.
 
-3. Válassza **az Újraírás készlet lehetőséget:**
+3. Válassza az **Újraírási készlet**elemet:
 
-   ![Újraírókészlet hozzáadása](media/rewrite-http-headers-portal/add-rewrite-set.png)
+   ![Újraírási készlet hozzáadása](media/rewrite-http-headers-portal/add-rewrite-set.png)
 
-4. Adja meg az újraíró készlet nevét, és társítsa azt egy útválasztási szabályhoz:
+4. Adja meg az Újraírási készlet nevét, és társítsa azt egy útválasztási szabállyal:
 
-   - Írja be az újraíró készlet nevét a **Név** mezőbe.
-   - Jelöljön ki egy vagy több szabályt a **Társított útválasztási szabályok** listában. Csak olyan szabályokat választhat ki, amelyek nincsenek társítva más újraíró készletekkel. A más újraíró készletekkel már társított szabályok halványan jelennek meg.
-   - Válassza a **Tovább lehetőséget.**
+   - Adja meg az Újraírási készlet nevét a **név** mezőben.
+   - Válasszon ki egyet vagy többet a **társított útválasztási szabályok** listában felsorolt szabályok közül. Csak olyan szabályokat választhat ki, amelyek nincsenek társítva más Újraírási készletekhez. A más Újraírási készletekhez már társított szabályok szürkén jelennek meg.
+   - Kattintson a **Tovább** gombra.
    
      ![Név és társítás hozzáadása](media/rewrite-http-headers-portal/name-and-association.png)
 
 5. Újraírási szabály létrehozása:
 
-   - Válassza **az Átírási szabály hozzáadása lehetőséget.**
+   - Válassza az **Újraírási szabály hozzáadása**lehetőséget.
 
      ![Újraírási szabály hozzáadása](media/rewrite-http-headers-portal/add-rewrite-rule.png)
 
-   - Írja be az újraírási szabály nevét az **Újraírási szabály neve** mezőbe. Írjon be egy számot a **Szabálysorozat** mezőbe.
+   - Adja meg az Újraírási szabály nevét az **Újraírási szabály neve** mezőben. Adjon meg egy számot a **szabály sorszáma** mezőben.
 
      ![Újraírási szabály nevének hozzáadása](media/rewrite-http-headers-portal/rule-name.png)
 
-6. Ebben a példában csak akkor írjuk át a helyfejlécet, ha azurewebsites.net tartalmaz. Ehhez adjon hozzá egy feltételt annak kiértékeléséhez, hogy a válaszban szereplő helyfejléc tartalmaz-e azurewebsites.net:
+6. Ebben a példában a Location fejlécet csak akkor írjuk át, ha a azurewebsites.net mutató hivatkozást tartalmaz. Ehhez adjon hozzá egy feltételt annak kiértékeléséhez, hogy a válaszban a azurewebsites.net tartalmazza-e a következőt:
 
-   - Válassza a **Feltétel hozzáadása lehetőséget,** majd jelölje be az **If** utasításokat tartalmazó jelölőnégyzetet a kibontásához.
+   - Válassza a **feltétel hozzáadása** lehetőséget, majd jelölje be az **IF** utasítást tartalmazó jelölőnégyzetet a kibontásához.
 
      ![Feltétel felvétele](media/rewrite-http-headers-portal/add-condition.png)
 
-   - A **ellenőrizandó változó típusa** listában válassza a **HTTP fejléc lehetőséget.**
+   - A megjelenő **változó típusa** mezőben válassza a **http-fejléc**lehetőséget.
 
-   - A **Fejléctípus** listában válassza a **Válasz**lehetőséget.
+   - A **fejléc típusa** listában válassza a **Válasz**lehetőséget.
 
-   - Mivel ebben a példában a helyfejlécet értékeljük, amely egy gyakori fejléc, válassza a **Közös fejléc** lehetőséget a **Fejléc neve**csoportban.
+   - Mivel ebben a példában kiértékeljük a Location fejlécet, amely egy közös fejléc, a **fejléc neve**alatt válassza a **Common header (közös fejléc** ) elemet.
 
-   - A **Közös fejléclistában** válassza a **Hely**lehetőséget.
+   - A **Common header (közös fejléc** ) listában válassza a **hely**lehetőséget.
 
-   - A **Kis- és nagybetűk megkülönböztetése**csoportban válassza a **Nem**lehetőséget.
+   - A **kis-és nagybetűk**megkülönböztetése területen válassza a **nem**lehetőséget.
 
-   - Az **Operátor** listában válassza az **Egyenlő (=)** lehetőséget.
+   - Az **operátor** listában válassza az **EQUAL (=)** elemet.
 
-   - Adjon meg egy reguláris kifejezésmintát. Ebben a példában a mintát `(https?):\/\/.*azurewebsites\.net(.*)$`fogjuk használni.
+   - Adjon meg egy reguláris kifejezési mintát. Ebben a példában a mintázatot `(https?):\/\/.*azurewebsites\.net(.*)$`fogjuk használni.
 
-   - Válassza **az OK gombot.**
+   - Kattintson az **OK** gombra.
 
-     ![Ha feltétel konfigurálása](media/rewrite-http-headers-portal/condition.png)
+     ![If feltétel konfigurálása](media/rewrite-http-headers-portal/condition.png)
 
-7. A helyfejléc újraírásához adjon hozzá egy műveletet:
+7. Művelet hozzáadása a hely fejlécének újraírásához:
 
-   - A **Művelettípus** listában válassza a **Set (Beállítás) lehetőséget.**
+   - A **Művelettípus** listán válassza a **beállítás**lehetőséget.
 
-   - A **Fejléctípus** listában válassza a **Válasz**lehetőséget.
+   - A **fejléc típusa** listában válassza a **Válasz**lehetőséget.
 
-   - A **Fejléc neve csoportban**válassza a **Common header (Közös fejléc) lehetőséget.**
+   - A **fejléc neve**területen válassza a **Common header (közös fejléc**) lehetőséget.
 
-   - A **Közös fejléclistában** válassza a **Hely**lehetőséget.
+   - A **Common header (közös fejléc** ) listában válassza a **hely**lehetőséget.
 
-   - Adja meg a fejléc értékét. Ebben a példában fejlécértékként használjuk. `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` Ez az érték lecseréli *azurewebsites.net* a helyfejlécben *lévő contoso.com.*
+   - Adja meg a fejléc értékét. Ebben a példában a fejléc értékét fogjuk használni `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` . Ez az érték a *azurewebsites.net* és a *contoso.com* értéket fogja lecserélni a Location fejlécben.
 
-   - Válassza **az OK gombot.**
+   - Kattintson az **OK** gombra.
 
      ![Művelet hozzáadása](media/rewrite-http-headers-portal/action.png)
 
-8. Az újraíró készlet létrehozásához válassza a **Létrehozás** gombot:
+8. Az Újraírási készlet létrehozásához válassza a **Létrehozás** elemet:
 
-   ![Válassza a Létrehozás lehetőséget](media/rewrite-http-headers-portal/create.png)
+   ![Létrehozás kiválasztása](media/rewrite-http-headers-portal/create.png)
 
-9. Megnyílik az Újraírás készlet nézet. Ellenőrizze, hogy a létrehozott újraírási készlet szerepel-e az újraírókészletek listájában:
+9. Ekkor megnyílik az Újraírási készlet nézet. Ellenőrizze, hogy a létrehozott Újraírási készlet szerepel-e az Újraírási készletek listáján:
 
-   ![Halmaz nézet újraírása](media/rewrite-http-headers-portal/rewrite-set-list.png)
+   ![Set nézet újraírása](media/rewrite-http-headers-portal/rewrite-set-list.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni agyakori használati esetek beállításáról, olvassa el a [gyakori fejléc-újraírási forgatókönyvek .](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
+A gyakori használati esetek beállításával kapcsolatos további tudnivalókért tekintse meg a [gyakori fejléc-Újraírási forgatókönyvek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)című témakört.

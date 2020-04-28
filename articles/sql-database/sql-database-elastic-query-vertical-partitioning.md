@@ -1,6 +1,6 @@
 ---
-title: Lekérdezés különböző sémával rendelkező felhőalapú adatbázisok ban
-description: adatbázisközi lekérdezések beállítása függőleges partíciókon
+title: Több felhőalapú adatbázis lekérdezése különböző sémákkal
+description: több adatbázison alapuló lekérdezések beállítása függőleges partíciókon
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,37 +12,37 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823733"
 ---
-# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Lekérdezés különböző sémákkal rendelkező felhőalapú adatbázisok között (előzetes verzió)
+# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Különböző sémákkal rendelkező felhőalapú adatbázisok lekérdezése (előzetes verzió)
 
-![Lekérdezés táblák között különböző adatbázisokban][1]
+![Lekérdezés különböző adatbázisok táblái között][1]
 
-A vertikálisan particionált adatbázisok különböző táblákat használnak a különböző adatbázisokban. Ez azt jelenti, hogy a séma különböző adatbázisokban eltérő. Például a készlet minden táblája egy adatbázisban van, míg az összes könyveléssel kapcsolatos tábla egy második adatbázisban van. 
+A függőlegesen particionált adatbázisok különböző táblákat használnak különböző adatbázisokon. Ez azt jelenti, hogy a séma eltér a különböző adatbázisokon. Például a leltárhoz tartozó összes tábla egy adatbázison található, míg az összes nyilvántartással kapcsolatos tábla egy második adatbázisban található. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A felhasználónak rendelkeznie kell alter minden külső adatforrás engedéllyel. Ez az engedély az ALTER DATABASE engedély része.
-* Alter Bármely külső adatforrás-engedély szükséges az alapul szolgáló adatforrásra való hivatkozáshoz.
+* A felhasználónak rendelkeznie kell a külső adatforrásra vonatkozó engedély megváltoztatásával. Ez az engedély az ALTER DATABASE engedély részét képezi.
+* Az alapul szolgáló adatforrásra való hivatkozáshoz minden külső ADATFORRÁS engedélyére van szükség.
 
 ## <a name="overview"></a>Áttekintés
 
 > [!NOTE]
-> A horizontális particionálással ellentétben ezek a DDL-utasítások nem függnek attól, hogy egy adatréteget definiálnak egy shard leképezéssel a rugalmas adatbázis-ügyfélkódtáron keresztül.
+> A horizontális particionálástól eltérően ezek a DDL-utasítások nem függenek az adatrétegnek a rugalmas adatbázis-ügyfél-függvénytáron keresztüli szegmenses leképezéssel való definiálásával.
 >
 
 1. [FŐKULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [ADATBÁZIS HATÓKÖRE HITELESÍTŐ ADATOK LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935021.aspx) 
 
-## <a name="create-database-scoped-master-key-and-credentials"></a>Adatbázishatókörrel és -hitelesítő adatokkal létrehozott főkulcs és hitelesítő adatok létrehozása
+## <a name="create-database-scoped-master-key-and-credentials"></a>Adatbázis-hatókörű főkulcs és hitelesítő adatok létrehozása
 
-A hitelesítő adatokat a rugalmas lekérdezés használja a távoli adatbázisokhoz való csatlakozáshoz.  
+A rugalmas lekérdezés a hitelesítő adatokat használja a távoli adatbázisokhoz való kapcsolódáshoz.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -50,7 +50,7 @@ A hitelesítő adatokat a rugalmas lekérdezés használja a távoli adatbáziso
     [;]
 
 > [!NOTE]
-> Győződjön `<username>` meg arról, hogy a nem tartalmaz **semmilyen "kiszolgálónév"\@** utótagot. 
+> Győződjön meg arról `<username>` , hogy a nem tartalmazza a **\@"servername"** utótagot. 
 >
 
 ## <a name="create-external-data-sources"></a>Külső adatforrások létrehozása
@@ -66,12 +66,12 @@ Szintaxis:
                 ) [;] 
 
 > [!IMPORTANT]
-> A TYPE paramétert **RDBMS**-re kell állítani. 
+> A TYPE paramétert **RDBMS**értékre kell beállítani. 
 >
 
 ### <a name="example"></a>Példa
 
-A következő példa a CREATE utasítás külső adatforrásokhoz való használatát mutatja be. 
+Az alábbi példa a CREATE utasítás külső adatforrásokra való használatát szemlélteti. 
 
     CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
     WITH 
@@ -118,36 +118,36 @@ Szintaxis:
     ); 
 ```
 
-A következő példa bemutatja, hogyan lehet lekérni a külső táblák listáját az aktuális adatbázisból: 
+Az alábbi példa bemutatja, hogyan kérhető le a külső táblák listája az aktuális adatbázisból: 
 
     select * from sys.external_tables; 
 
 ### <a name="remarks"></a>Megjegyzések
 
-A rugalmas lekérdezés kiterjeszti a meglévő külső tábla szintaxisát az RDBMS típusú külső adatforrásokat használó külső táblák meghatározásához. A függőleges particionálás külső tábladefiníciója a következő szempontokat fedi le: 
+A rugalmas lekérdezés kiterjeszti a meglévő külső tábla szintaxisát, hogy meghatározza a RDBMS típusú külső adatforrásokat használó külső táblákat. A vertikális particionáláshoz tartozó külső tábla definíciója a következő szempontokat tartalmazza: 
 
-* **Séma**: A külső tábla DDL határozza meg a sémát, amely a lekérdezések használhatják. A külső tábladefinícióban megadott sémának meg kell egyeznie a tényleges adatokat tároló távoli adatbázis tábláinak sémájával. 
-* **Távoli adatbázis-hivatkozás**: A külső DDL tábla külső adatforrásra hivatkozik. A külső adatforrás annak a távoli adatbázisnak az SQL Database-kiszolgáló nevét és adatbázisnevét adja meg, amelyben a tényleges táblaadatok at tárolják. 
+* **Séma**: a külső tábla DDL definiál egy sémát, amelyet a lekérdezések használhatnak. A külső tábla definíciójában megadott sémának meg kell egyeznie a távoli adatbázisban a tényleges adatokat tároló táblák sémájával. 
+* **Távoli adatbázis-hivatkozás**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás megadja a távoli adatbázis SQL Database kiszolgálójának nevét és az adatbázis nevét, ahol a rendszer a tényleges tábla adatokat tárolja. 
 
-Az előző szakaszban ismertetett külső adatforrás használatával a külső táblák létrehozásának szintaxisa a következő: 
+Az előző szakaszban ismertetett külső adatforrás használatával a külső táblák létrehozására szolgáló szintaxis a következő: 
 
-A DATA_SOURCE záradék határozza meg a külső táblához használt külső adatforrást (azaz függőleges particionálás esetén a távoli adatbázist).  
+A DATA_SOURCE záradék azt a külső adatforrást határozza meg, amely a külső táblához használatos (vertikális particionálás esetén a távoli adatbázis).  
 
-A SCHEMA_NAME és OBJECT_NAME záradékok lehetővé teszik a külső tábladefiníció hozzárendelését a távoli adatbázis egy másik sémájában lévő táblához, illetve egy másik nevű táblához. Ez akkor hasznos, ha egy katalógusnézethez vagy a távoli adatbázis DMV-jéhez szeretne külső táblát definiálni , vagy bármely más olyan helyzetben, amikor a távoli tábla neve már helyileg elvan tántorítva.  
+A SCHEMA_NAME és OBJECT_NAME záradékok lehetővé teszik a külső tábla definíciójának leképezését a távoli adatbázis egy másik sémájában lévő táblára, vagy egy másik nevű táblára. Ez akkor lehet hasznos, ha külső táblát kíván definiálni a katalógus vagy a DMV számára a távoli adatbázison – vagy bármilyen más olyan helyzetben, ahol a távoli tábla neve már helyileg is megtörtént.  
 
-A következő DDL-utasítás egy meglévő külső tábladefiníciót távoltesz a helyi katalógusból. Nincs hatással a távoli adatbázisra. 
+A következő DDL-utasítás elveszít egy meglévő külső tábla definícióját a helyi katalógusból. Ez nem befolyásolja a távoli adatbázist. 
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**A CREATE/DROP EXTERNAL TABLE engedélyei:** A külső DDL tábla hoz szükséges külső adatforrás-engedélyek módosítása, amely szintén az alapul szolgáló adatforrásra való hivatkozáshoz szükséges.  
+A **külső tábla létrehozásának/ELdobásának engedélyei**: a külső adatforrásokra vonatkozó engedélyek megváltoztatására van szükség a külső tábla DDL esetében, amelyre az alapul szolgáló adatforrásra is szükség van.  
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A külső táblához hozzáféréssel rendelkező felhasználók automatikusan hozzáférnek az alapul szolgáló távoli táblákhoz a külső adatforrás-definícióban megadott hitelesítő adatok alatt. A külső adatforrás hitelesítő adataival gondosan kezelje a külső táblához való hozzáférést, hogy elkerülje a jogosultságok nem kívánt kiterjesztését. A rendszeres SQL-engedélyek egy külső táblához való hozzáférés megadására vagy visszavonására használhatók, mintha egy normál tábla lenne.  
+A külső táblához hozzáféréssel rendelkező felhasználók automatikusan hozzáférhetnek a mögöttes távoli táblákhoz a külső adatforrás definíciójában megadott hitelesítő adatok alatt. Ügyeljen arra, hogy a külső táblához való hozzáférést körültekintően kezelje, hogy a külső adatforrás hitelesítő adataival ne a kívánt jogosultságszint-emelési jogosultságot lehessen használni. A normál SQL-engedélyek használatával a külső táblákhoz való hozzáférés adható meg vagy vonható vissza ugyanúgy, mintha egy normál tábla lenne.  
 
-## <a name="example-querying-vertically-partitioned-databases"></a>Példa: vertikálisan particionált adatbázisok lekérdezése
+## <a name="example-querying-vertically-partitioned-databases"></a>Példa: függőlegesen particionált adatbázisok lekérdezése
 
-A következő lekérdezés háromirányú illesztést hajt végre a rendelések és rendeléssorok két helyi táblája, valamint a távoli tábla között az ügyfelek számára. Ez egy példa a rugalmas lekérdezés referenciaadat-használati esetére: 
+A következő lekérdezés egyirányú összekapcsolást végez a két helyi tábla között a megrendelések és a rendeléssorok, valamint a távoli tábla ügyfelek számára. Ez egy példa a rugalmas lekérdezésre vonatkozó hivatkozási adatfelhasználási esetre: 
 
 ```sql
     SELECT      
@@ -165,16 +165,16 @@ A következő lekérdezés háromirányú illesztést hajt végre a rendelések 
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Tárolt eljárás távoli T-SQL végrehajtáshoz: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása\_: SP execute_remote
 
-A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás [neve\_ \_SP execute remote](https://msdn.microsoft.com/library/mt703714) és használható távoli tárolt eljárások vagy T-SQL kódot a távoli adatbázisban. A következő paramétereket veszi igénybe: 
+A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás neve [SP\_ \_Execute Remote](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisban. A következő paramétereket veszi figyelembe: 
 
-* Adatforrás neve (nvarchar): Az RDBMS típusú külső adatforrás neve. 
-* Lekérdezés (nvarchar): A távoli adatbázisban végrehajtandó T-SQL-lekérdezés. 
-* Paraméterdeklaráció (nvarchar) - nem kötelező: A Query paraméterben használt paraméterek (például sp_executesql) adattípus-definícióival rendelkező karakterlánc. 
-* Paraméterérték-lista - nem kötelező: a paraméterértékek vesszővel tagolt listája (például sp_executesql).
+* Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve. 
+* Query (nvarchar): a távoli adatbázison végrehajtandó T-SQL-lekérdezés. 
+* Paraméter deklarációja (nvarchar) – nem kötelező: karakterlánc a lekérdezési paraméterben használt paraméterekhez (például sp_executesql) tartozó adattípus-definíciókkal. 
+* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például sp_executesql).
 
-Az\_sp\_execute remote a meghívási paraméterekben megadott külső adatforrást használja a megadott T-SQL utasítás végrehajtásához a távoli adatbázisban. A külső adatforrás hitelesítő adatait használja a távoli adatbázishoz való csatlakozáshoz.  
+Az SP\_Execute\_Remote a Meghívási paraméterekben megadott külső adatforrást használja a távoli adatbázis megadott T-SQL-utasításának végrehajtásához. A távoli adatbázishoz való kapcsolódáshoz a külső adatforrás hitelesítő adatait használja.  
 
 Példa: 
 
@@ -184,22 +184,22 @@ Példa:
         N'select count(w_id) as foo from warehouse' 
 ```
 
-## <a name="connectivity-for-tools"></a>Eszközök csatlakoztatása
+## <a name="connectivity-for-tools"></a>Eszközökhöz való kapcsolódás
 
-A normál SQL Server kapcsolati karakterláncok segítségével összekapcsolhatja az üzletiintelligencia- és adatintegrációs eszközöket az SQL DB-kiszolgálón található adatbázisokkal, amelyeken rugalmas lekérdezés engedélyezve van, és külső táblákat definiálva. Győződjön meg arról, hogy az SQL Server támogatja az eszköz adatforrásaként. Ezután tekintse meg a rugalmas lekérdezési adatbázis és a külső táblák, mint bármely más SQL Server-adatbázis, amely az eszközhöz csatlakozik. 
+A hagyományos SQL Server kapcsolati karakterláncokkal összekapcsolhatja a BI-és adatintegrációs eszközöket az SQL DB-kiszolgálón lévő adatbázisokhoz, amelyeken engedélyezve van a rugalmas lekérdezés, és meghatározható a külső táblák. Győződjön meg arról, hogy a SQL Server támogatott adatforrásként az eszköz számára. Ezután tekintse meg a rugalmas lekérdezési adatbázist és a külső táblázatokat ugyanúgy, mint bármely más SQL Server adatbázishoz, amelyhez csatlakozni szeretne az eszközéhez. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-* Győződjön meg arról, hogy a rugalmas lekérdezési végpont-adatbázis hozzáférést kapott a távoli adatbázishoz, ha engedélyezi a hozzáférést az Azure Services számára az SQL DB tűzfal konfigurációjában. Győződjön meg arról is, hogy a külső adatforrás-definícióban megadott hitelesítő adatok sikeresen betudnak jelentkezni a távoli adatbázisba, és rendelkeznek a távoli tábla eléréséhez szükséges engedélyekkel.  
-* A rugalmas lekérdezés olyan lekérdezések esetén működik a legjobban, ahol a számítás nagy része a távoli adatbázisokon végezhető el. Általában a legjobb lekérdezési teljesítményt szelektív szűrőpredikátumokkal kapja meg, amelyek kiértékelhetők a távoli adatbázisokon vagy a távoli adatbázison teljes mértékben elvégezhető illesztéseken. Előfordulhat, hogy más lekérdezési mintáknak nagy mennyiségű adatot kell betölteniük a távoli adatbázisból, és előfordulhat, hogy rosszul teljesítenek. 
+* Győződjön meg arról, hogy a rugalmas lekérdezési végpont adatbázisa hozzáférést kapott a távoli adatbázishoz azáltal, hogy engedélyezi az Azure-szolgáltatások elérését az SQL adatbázis tűzfala konfigurációjában. Győződjön meg arról is, hogy a külső adatforrás-definícióban megadott hitelesítő adat sikeresen bejelentkezhet a távoli adatbázisba, és rendelkezik a távoli tábla eléréséhez szükséges engedélyekkel.  
+* A rugalmas lekérdezés a legmegfelelőbb a lekérdezésekhez, ahol a számítások többsége a távoli adatbázisokon végezhető el. A lehető legjobb lekérdezési teljesítményt a szelektív szűrési predikátumokkal érheti el, amelyek kiértékelése a távoli adatbázisokon, illetve az olyan illesztéseken végezhető el, amelyek teljes mértékben a távoli adatbázisban végezhetők el. Előfordulhat, hogy más lekérdezési minták nagy mennyiségű adat betöltését végzik a távoli adatbázisból, és nem is gyengék. 
 
 ## <a name="next-steps"></a>További lépések
 
-* A rugalmas lekérdezés áttekintését a [Rugalmas lekérdezés áttekintése című témakörben találja.](sql-database-elastic-query-overview.md)
-* Függőleges particionálási oktatóanyag: [Első lépések adatbázisközi lekérdezéssel (függőleges particionálás)](sql-database-elastic-query-getting-started-vertical.md).
-* Horizontális particionálási (horizontális) oktatóanyag: [A rugalmas lekérdezés horizontális particionálás (horizontális sáfálás) című témakörben található.](sql-database-elastic-query-getting-started.md)
-* A vízszintesen particionált adatok szintaxisát és mintalekérdezéseit [lásd: Horizontálisan particionált adatok lekérdezése)](sql-database-elastic-query-horizontal-partitioning.md)
-* [Lásd:\_ \_sp távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljárás, amely végrehajtja a Transact-SQL utasításegyetlen távoli Azure SQL-adatbázis vagy egy horizontális particionálási séma szegmensként szolgáló adatbázisok készlete.
+* A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
+* A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](sql-database-elastic-query-getting-started-vertical.md).
+* A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md).
+* A horizontálisan particionált információk szintaxisát és mintáit lásd: [vízszintesen particionált adatlekérdezés](sql-database-elastic-query-horizontal-partitioning.md)
+* Lásd [:\_az \_SP távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt ELJÁRÁShoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 
 <!--Image references-->

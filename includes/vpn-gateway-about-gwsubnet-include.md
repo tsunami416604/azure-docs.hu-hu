@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5a734963ced9daefda2b7b6f4a52fd9ef437eddc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71269278"
 ---
 A virtuális hálózati átjáró az átjáróalhálózat elnevezésű alhálózatot használja. Az átjáróalhálózat a virtuális hálózat azon IP-címtartományának része, amelyet a virtuális hálózat konfigurálásakor ad meg. Tartalmazza a virtuális hálózati átjáró-erőforrások és -szolgáltatások által használt IP-címeket. Az alhálózatnak a GatewaySubnet névvel kell rendelkeznie ahhoz, hogy az Azure üzembe helyezze az átjáró-erőforrásokat. Nem helyezheti üzembe az átjáró-erőforrásokat másik alhálózatban. Ha nem rendelkezik „GatewaySubnet” nevű alhálózattal, a létrehozott VPN-átjáró nem fog működni.

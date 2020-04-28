@@ -1,6 +1,6 @@
 ---
-title: Távfigyelési megoldásgyorsító – gyakori kérdések – Azure | Microsoft dokumentumok
-description: Ez a cikk választ ad a távoli figyelési megoldásgyorsítókkal kapcsolatos gyakori kérdésekre.
+title: Távoli figyelési megoldás – gyorssegéd – GYIK – Azure | Microsoft Docs
+description: Ez a cikk a távoli figyelési megoldási gyorssegédekkel kapcsolatos gyakori kérdésekre ad választ.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73826238"
 ---
-# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Gyakori kérdések a távfigyelési megoldásgyorsítóhoz
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Gyakori kérdések a távoli monitorozási megoldás gyorsítása terén
 
-Lásd még, az általános [GYIK](iot-accelerators-faq.md).
+Lásd még az általános [gyakori kérdéseket](iot-accelerators-faq.md)is.
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Mennyibe kerül az új távoli figyelési megoldás kiépítése?
 
-Az új megoldásgyorsító két telepítési lehetőséget kínál:
+Az új megoldás-gyorsító két telepítési lehetőséget kínál:
 
-* Egy *alapvető* lehetőség, amelyet az alacsonyabb fejlesztési költségeket kereső fejlesztők vagy olyan ügyfelek számára terveztek, akik demót vagy koncepcióigazolást szeretnének készíteni.
-* Egy *szabványos* beállítás, amelyet olyan vállalatok számára terveztek, amelyek termelésre kész infrastruktúrát kívánnak telepíteni.
+* Egy olyan *alapszintű* megoldás, amely a fejlesztők számára tervezett alacsonyabb fejlesztési költségeket, illetve a bemutatót vagy a koncepciót igazoló ügyfeleket keres.
+* Egy *szabványos* beállítás, amely olyan vállalatok számára készült, akik termelésre kész infrastruktúrát kívánnak üzembe helyezni.
 
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Hogyan biztosíthatom, hogy a megoldás kidolgozása közben is lent tartsam a költségeimet?
+### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Hogyan biztosíthatom a költségeket a megoldásom fejlesztése során?
 
-Amellett, hogy két differenciált központi telepítést biztosít, az új távoli figyelési megoldás rendelkezik egy beállítással az összes szimulált eszköz igény szerinti engedélyezéséhez vagy letiltásához. A szimuláció letiltása csökkenti a megoldásban bevitt adatokat, és így a teljes költséget.
+Amellett, hogy két különböző központi telepítést biztosít, az új távoli figyelési megoldásnak van egy olyan beállítása, amellyel engedélyezheti vagy letilthatja az összes szimulált eszközt igény szerint. A szimuláció letiltása csökkenti a megoldásban betöltött adatmennyiséget, így a teljes díjat.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Mi a különbség az alapszintű és a szabványos üzembe helyezési lehetőségek között? Hogyan dönthetek a két telepítési lehetőség között?
+### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Mi a különbség az alapszintű és a standard telepítési lehetőségek között? Hogyan dönteni a két telepítési lehetőség közül?
 
-Minden egyes telepítési lehetőség különböző igényekre válaszol. Az alapvető telepítés célja, hogy az induláshoz és fejlesztése PoC és a kis pilóták. Ez biztosítja az áramvonalas architektúra a minimálisan szükséges erőforrások és alacsonyabb költségek. A szabványos központi telepítés célja, hogy egy éles használatra kész megoldást hozzon létre és szabjon testre, és biztosítja a telepítést a szükséges elemekkel ennek megvalósításához. A megbízhatóság és a méretezés érdekében az alkalmazás mikroszolgáltatások Docker-tárolókként épülnek fel, és egy orchestrator (alapértelmezés szerint Kubernetes) használatával vannak telepítve. Az orchestrator felelős az alkalmazás üzembe helyezéséért, méretezéséért és felügyeletéért. A jelenlegi igényei alapján válasszon egy lehetőséget. Használhatja az egyiket, a másikat vagy a kettő kombinációját a projektszakasztól függően.
+Az egyes központi telepítési lehetőségek különböző igényekre reagálnak. Az alapszintű üzembe helyezés a PoC és a kis pilóták megkezdéséhez és fejlesztéséhez készült. A minimálisan szükséges erőforrásokkal és alacsonyabb díjszabással könnyített architektúrát biztosít. A normál üzembe helyezést úgy terveztük, hogy éles használatra kész megoldást hozzon létre és szabja testre, és a szükséges elemek használatával üzembe helyezést biztosítson. A megbízhatóság és a méretezés érdekében az Application Service-szolgáltatások a Docker-tárolóként vannak felépítve, és a Orchestrator (Kubernetes by default) használatával telepíthetők. A Orchestrator feladata az alkalmazás üzembe helyezése, skálázása és felügyelete. Az aktuális igények alapján válasszon egy lehetőséget. A projekt szintjétől függően használhatja az egyiket, a másikat vagy a kettő kombinációját is.
 
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Hogyan konfigurálhatok dinamikus térképet az irányítópulton?
+### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Hogyan konfiguráljon egy dinamikus térképet az irányítópulton?
 
-További információ: [Frissítési térképkulcs az eszközök dinamikus térképen való megtekintéséhez.](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)
+További információ: a [Térkép kulcsának frissítése az eszközök dinamikus térképen való megjelenítéséhez](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távfigyelési megoldás előző verziójáról?
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távoli figyelési megoldás előző verziójáról?
 
-A távoli figyelési megoldásgyorsító korábbi verziója az IoT Suite távoli figyelési előre konfigurált megoldásnéven volt ismert. Az archivált dokumentációt [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)a következő helyen találja: a.
+A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távfigyelési megoldásgyorsító képességeinek megismerése](quickstart-remote-monitoring-deploy.md)
+* [A távoli figyelési megoldás gyorsító képességeinek megismerése](quickstart-remote-monitoring-deploy.md)
 * [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
-* [Csatlakoztatott gyári megoldásgyorsító telepítése](quickstart-connected-factory-deploy.md)
+* [Csatlakoztatott gyári megoldás-gyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
 * [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)

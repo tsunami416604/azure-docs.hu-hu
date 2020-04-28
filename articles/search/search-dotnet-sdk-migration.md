@@ -1,7 +1,7 @@
 ---
-title: Frissítés az Azure Search .NET SDK 3-as verziójára
+title: Frissítés a Azure Search .NET SDK 3-as verziójára
 titleSuffix: Azure Cognitive Search
-description: A kódot az Azure Search .NET SDK 3-as verziójába telepítheti át a régebbi verziókból. További információ az újdonságokról és a kódmódosításokról.
+description: Telepítse át a kódot a Azure Search .NET SDK 3-as verziójára régebbi verzióról. Ismerje meg az újdonságokat és a szükséges programkód-módosításokat.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792986"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Frissítés az Azure Search .NET SDK 3-as verziójára
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Frissítés a Azure Search .NET SDK 3-as verziójára
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -25,53 +25,53 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Ha az [Azure Search .NET SDK](https://aka.ms/search-sdk)2.0-s vagy régebbi verzióját használja, ez a cikk segít az alkalmazás 3-as verzióhasználatára való frissítésében.
+Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)-hoz készült 2,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 3. verzióra való frissítéséhez.
 
-Az SDK általánosabb forgatókönyvét példákkal együtt az [Azure Search használata .NET alkalmazásból](search-howto-dotnet-sdk.md)című témakörben talál.
+Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
-Az Azure Search .NET SDK 3-as verziója tartalmaz néhány módosítást a korábbi verziókhoz. Ezek többnyire kisebb, így a kód módosítása csak minimális erőfeszítést igényel. Az új SDK-verzió használatához a [frissítés lépései](#UpgradeSteps) című témakörben talál útmutatást a kód módosításához.
+A Azure Search .NET SDK 3. verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire kisebbek, ezért a kód módosítása csak minimális erőfeszítést igényelhet. Az új SDK-verzió használatára vonatkozó utasításokért lásd: a [verziófrissítés lépései](#UpgradeSteps) .
 
 > [!NOTE]
-> Ha az 1.0.2-es vagy régebbi verziót használja, először frissítsen az 1.1-es verzióra, majd frissítsen a 3-as verzióra. További információt [az Azure Search .NET SDK 1.1-es verziójára való frissítés](search-dotnet-sdk-migration-version-1.md) című témakörben talál.
+> Ha a 1.0.2-Preview vagy régebbi verziót használja, először frissítsen az 1,1-es verzióra, majd frissítsen a 3-as verzióra. Útmutatásért lásd: [a Azure Search .net SDK 1,1-es verziójának frissítése](search-dotnet-sdk-migration-version-1.md) .
 >
-> Az Azure Search szolgáltatáspéldány a REST API számos verzióját támogatja, beleértve a legújabbat is. Továbbra is használhatja a verziót, ha már nem a legújabb, de azt javasoljuk, hogy telepítse át a kódot a legújabb verzió használatára. A REST API használatakor meg kell adnia az API-verziót minden kérelemben az api-version paraméteren keresztül. A .NET SDK használatakor a használt SDK-verzió határozza meg a REST API megfelelő verzióját. Ha egy régebbi SDK-t használ, továbbra is futtathatja a kódot módosítások nélkül, még akkor is, ha a szolgáltatás egy újabb API-verzió támogatásához lett frissítve.
+> Az Azure Search Service-példány számos REST API verziót támogat, beleértve a legújabbat is. Továbbra is használhatja a verziót, ha már nem a legújabb, de javasoljuk, hogy a legújabb verzió használatára telepítse át a kódot. A REST API használatakor az API-verziót minden kérelemben meg kell adnia az API-Version paraméter használatával. A .NET SDK használatakor a használt SDK verziója meghatározza a REST API megfelelő verzióját. Ha régebbi SDK-t használ, továbbra is futtathatja ezt a kódot, még akkor sem, ha a szolgáltatás frissítve van egy újabb API-verzió támogatására.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-3"></a>A 3-as verzió újdonságai
-Az Azure Search .NET SDK 3-as verziója az Azure Search REST API legújabb, általánosan elérhető verzióját célozza meg, különösen a 2016-09-01-es verziót. Ez lehetővé teszi az Azure Search számos új funkciójának használatát egy .NET alkalmazásból, többek között a következőket:
+## <a name="whats-new-in-version-3"></a>A 3. verzió újdonságai
+A Azure Search .NET SDK 3. verziója a Azure Search REST API legújabb általánosan elérhető verzióját célozza meg, pontosabban 2016-09-01. Ez lehetővé teszi a Azure Search számos új funkciójának használatát egy .NET-alkalmazásból, beleértve a következőket:
 
 * [Egyéni elemzők](https://aka.ms/customanalyzers)
-* [Az Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) és [az Azure Table Storage](search-howto-indexing-azure-tables.md) indexelőjnek támogatása
-* Indexelő [testreszabása mezőleképezéseken](search-indexer-field-mappings.md) keresztül
-* ETags támogatás lehetővé teszi az indexdefiníciók, indexelők és adatforrások biztonságos egyidejű frissítését
-* Támogatja az épület index mező definíciók deklaratív an `FieldBuilder` díszítő modell osztály és az új osztály használatával.
-* A .NET Core és a .NET Portable Profile 111 támogatása
+* [Azure blob Storage](search-howto-indexing-azure-blob-storage.md) és [Azure Table Storage](search-howto-indexing-azure-tables.md) indexelő támogatása
+* Indexelő testreszabása [mező-hozzárendelések](search-indexer-field-mappings.md) használatával
+* Etagek-támogatás az index-definíciók, az indexelő és az adatforrások biztonságos párhuzamos frissítésének engedélyezéséhez
+* Az index mező-definíciók deklaratív kialakításának támogatása a modell osztályának díszítésével és `FieldBuilder` az új osztály használatával.
+* A .NET Core és a .NET hordozható profil 111 támogatása
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse NuGet-referenciáját a NuGet Csomagkezelő konzol `Microsoft.Azure.Search` használatával, vagy kattintson a jobb gombbal a projektreferenciáira, és válassza a "NuGet csomagok kezelése..." parancsot. a Visual Studio alkalmazásban.
+Először frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
-Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. Attól függően, hogy a kód épül, előfordulhat, hogy sikeresen újraépül. Ha igen, akkor készen áll az indulásra!
+Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
 
-Ha a build sikertelen, a következőhez hasonló buildhibát kell látnia:
+Ha a Build sikertelen, a következőhöz hasonló fordítási hibaüzenetnek kell megjelennie:
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-A következő lépés a buildhiba kijavítása. A [3-as verzió módosításai című témakörben](#ListOfChanges) részletesen tudni szeretné, hogy mi okozza a hibát, és hogyan javíthatja ki.
+A következő lépés a Build-hiba kijavítása. A hiba okaival és megoldásával kapcsolatos részletekért tekintse meg a [3. verzióban](#ListOfChanges) megjelenő változásokat.
 
-Az elavult metódusokkal vagy tulajdonságokkal kapcsolatos további buildfigyelmeztetések jelenhetnek meg. A figyelmeztetések utasításokat tartalmaznak arra vonatkozóan, hogy mit használjanak az elavult szolgáltatás helyett. Ha például az alkalmazás `IndexingParameters.Base64EncodeKeys` használja a tulajdonságot, figyelmeztetést kell kapnia, amely szerint a`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Előfordulhat, hogy az elavult metódusokkal vagy tulajdonságokkal kapcsolatos további felépítési figyelmeztetések jelennek meg. A figyelmeztetések tartalmazzák az elavult funkció helyett a használatra vonatkozó utasításokat is. Ha például az alkalmazás a `IndexingParameters.Base64EncodeKeys` tulajdonságot használja, a következő figyelmeztetést kell kérnie:`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Miután kijavította a buildelési hibákat, módosíthatja az alkalmazást, hogy kihasználhassa az új funkciók előnyeit, ha szeretné. Az SDK új funkcióit a [3-as verzió újdonságai](#WhatsNew)részletezik.
+A felépítési hibák kijavítása után módosíthatja az alkalmazást, és igény szerint kihasználhatja az új funkciókat. Az SDK új funkciói részletesen ismertetik a [3. verzió újdonságait](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-3"></a>A változások megtörése a 3-as verzióban
-Van egy kis számú törés változások 3-as verzió, amely szükség lehet a kód módosítása mellett az alkalmazás újjáépítése.
+## <a name="breaking-changes-in-version-3"></a>A 3. verzióban feltört változások
+A 3. verzióban kevés a feltörési változás, amely az alkalmazás újraépítése mellett kód módosítását is szükségessé teheti.
 
-### <a name="indexesgetclient-return-type"></a>Indexek.GetClient visszatérési típusa
-A `Indexes.GetClient` metódus nak új visszatérési típusa van. Korábban visszatért `SearchIndexClient`, de ez `ISearchIndexClient` a 2.0-s verziójú előzetes verzióban megváltozott, és ez a változás a 3-as verzióra változik. Ez azokat az ügyfeleket `GetClient` támogatja, akik az egységtesztek `ISearchIndexClient`módszerét szeretnék kigúnyolni a modell implementációjának visszaküldésével.
+### <a name="indexesgetclient-return-type"></a>Indexek. GetClient visszatérési típusa
+A `Indexes.GetClient` metódus új visszatérési típussal rendelkezik. Korábban visszatért `SearchIndexClient`, de ez a 2,0- `ISearchIndexClient` es verzióra módosult, és ez a változás a 3. verziót veszi át. Ez az olyan ügyfelek támogatása, akik az `GetClient` egységbeli tesztek módszerét szeretnék kipróbálni, ha `ISearchIndexClient`a modelljét a következő módon implementálják:.
 
 #### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -80,14 +80,14 @@ Ha a kód így néz ki:
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-A buildelési hibák kijavításához módosíthatja:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, DataType és mások már nem implicit módon átválthatók karakterláncokra
-Az Azure Search .NET SDK számos típusa `ExtensibleEnum`származik. Korábban ezek a típusok mind `string`implicit módon átválthatók a típusra . Azonban egy hibát fedeztek `Object.Equals` fel a végrehajtás ezen osztályok, és a hiba javítása szükséges letiltása implicit átalakítás. Az explicit `string` átalakítás továbbra is engedélyezett.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>A AnalyzerName, az adattípus és mások már nincsenek implicit módon konvertálva karakterlánccá
+A-ból `ExtensibleEnum`származó Azure Search .net SDK számos típussal rendelkezik. Korábban ezek a típusok implicit módon lettek konvertálva `string`a típusra. Azonban a rendszer hibát észlelt ezen osztályok `Object.Equals` megvalósításában, és az implicit konverzió letiltásához szükséges hibát rögzíti. A `string` explicit átalakítás továbbra is engedélyezett.
 
 #### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -108,7 +108,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-A buildelési hibák kijavításához módosíthatja:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -126,27 +126,27 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-### <a name="removed-obsolete-members"></a>Elavult tagok eltávolítása
+### <a name="removed-obsolete-members"></a>Elavult tagok eltávolítva
 
-A 2.0-s verziójú előzetes verzióban elavultként megjelölt, majd a 3-as verzióban eltávolított metódusokkal vagy tulajdonságokkal kapcsolatos buildhibák jelenhetnek meg. Ha ilyen hibákkal találkozik, a következőképpen oldhatja meg őket:
+Előfordulhat, hogy az 2,0-es verzióban elavultként megjelölt metódusokkal vagy tulajdonságokkal kapcsolatos fordítási hibák jelennek meg, amelyek a 3. verzióban már el lettek távolítva. Ha ilyen hibák merülnek fel, az alábbi módon oldható meg:
 
-- Ha ezt a konstruktotort használta: `ScoringParameter(string name, string value)`, használja inkább ezt:`ScoringParameter(string name, IEnumerable<string> values)`
-- Ha a `ScoringParameter.Value` tulajdonságot használta, `ScoringParameter.Values` használja `ToString` inkább a tulajdonságot vagy a metódust.
-- Ha a `SearchRequestOptions.RequestId` tulajdonságot használta, `ClientRequestId` használja inkább a tulajdonságot.
+- Ha ezt a konstruktort használta: `ScoringParameter(string name, string value)`, használja ezt helyette:`ScoringParameter(string name, IEnumerable<string> values)`
+- Ha a `ScoringParameter.Value` tulajdonságot használta, használja helyette `ScoringParameter.Values` a tulajdonságot `ToString` vagy a metódust.
+- Ha a `SearchRequestOptions.RequestId` tulajdonságot használta, használja helyette `ClientRequestId` a tulajdonságot.
 
-### <a name="removed-preview-features"></a>Az előzetes verzió funkcióinak eltávolítása
+### <a name="removed-preview-features"></a>Előzetes verziójú funkciók eltávolítva
 
-Ha a 2.0-s verziójú előzetes verzióról 3-as verzióra frissít, vegye figyelembe, hogy a JSON és a CSV-elemzési támogatást a Blob Indexerek eltávolították, mivel ezek a funkciók még előzetes verzióban vannak. Pontosabban, az `IndexingParametersExtensions` osztály következő módszereit eltávolították:
+Ha a 2,0-es verzióról frissít a 3. verzióra, vegye figyelembe, hogy a JSON-és CSV-elemzési támogatás a blob indexekhez szolgáltatás el lett távolítva, mivel ezek a funkciók még előzetes verziójúak. Az `IndexingParametersExtensions` osztály következő módszerei el lettek távolítva:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Ha az alkalmazás szigorú függőséget gyakorol ezektől a funkcióktól, nem fog tudni frissíteni az Azure Search .NET SDK 3-as verziójára. Továbbra is használhatja a 2.0-s verziójú előzetes verziót. Kérjük azonban, vegye figyelembe, hogy **nem javasoljuk az előzetes SDK-k használatát az éles alkalmazásokban.** Az előnézeti funkciók csak kiértékelésre szolgálnak, és változhatnak.
+Ha az alkalmazás ezen funkcióktól függ, nem fog tudni frissíteni a Azure Search .NET SDK 3. verziójára. Továbbra is használhatja a 2,0-es verziót – előzetes verzió. Ne feledje azonban, hogy az **előnézeti SDK-k éles alkalmazásokban való használatát nem javasoljuk**. Az előzetes verziójú funkciók csak értékelésre használhatók, és változhatnak.
 
 ## <a name="conclusion"></a>Összegzés
-Ha további részletekre van szüksége az Azure Search .NET SDK használatával kapcsolatos részletekről, olvassa el a [.NET útmutatóját.](search-howto-dotnet-sdk.md)
+Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.
 
-Örömmel fogadjuk az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, nyugodtan kérjen tőlünk segítséget [stack túlcsordulás](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, az [Azure .NET SDK GitHub tárházban](https://github.com/Azure/azure-sdk-for-net/issues)nyújthat be problémát. Győződjön meg arról, hogy előtag a probléma címe a "[Azure Search]".
+Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.
 
-Köszönjük, hogy az Azure Search-et használja!
+Köszönjük Azure Search használatát!

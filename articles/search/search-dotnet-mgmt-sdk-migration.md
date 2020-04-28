@@ -1,7 +1,7 @@
 ---
-title: Frissítés az Azure Search .NET Management SDK 2-es verziójára
+title: Frissítés a Azure Search .NET Management SDK 2-es verziójára
 titleSuffix: Azure Cognitive Search
-description: Frissítsen az Azure Search .NET Management SDK 2-es verziójára a korábbi verziókból. További információ az újdonságokról és a kódmódosításról.
+description: Frissítsen a Azure Search .NET Management SDK 2-es verziójára a korábbi verziókról. Ismerje meg az újdonságokat és a szükséges kód változásait.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,41 +10,41 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73847539"
 ---
-# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Az Azure Search .NET Management SDK verzióinak frissítése
+# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
 
 > [!Important]
-> Ez a tartalom még fejlesztés alatt áll. Az Azure Search Management .NET SDK 3.0-s verziója elérhető a NuGet-en. Dolgozunk az áttelepítési útmutató frissítésén, hogy elmagyarázzuk, hogyan frissíthet az új verzióra. 
+> Ez a tartalom még fejlesztés alatt áll. A Azure Search Management .NET SDK 3,0-es verziója a NuGet címen érhető el. Dolgozunk az áttelepítési útmutató frissítésén, hogy elmagyarázza, hogyan frissíthet az új verzióra. 
 >
 
-Ha az [Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk)1.0.2-es vagy újabb verzióját használja, ez a cikk segít az alkalmazás 2-es verziójú frissítésében.
+Ha a [Azure Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-hoz tartozó 1.0.2 vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás 2. verzióra való frissítéséhez.
 
-Az Azure Search .NET Management SDK 2-es verziója tartalmaz néhány módosítást a korábbi verziókhoz. Ezek többnyire kisebb, így a kód módosítása csak minimális erőfeszítést igényel. Az új SDK-verzió használatához a [frissítés lépései](#UpgradeSteps) című témakörben talál útmutatást a kód módosításához.
+A Azure Search .NET Management SDK 2. verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire kisebbek, ezért a kód módosítása csak minimális erőfeszítést igényelhet. Az új SDK-verzió használatára vonatkozó utasításokért lásd: a [verziófrissítés lépései](#UpgradeSteps) .
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-2"></a>A 2-es verzió újdonságai
-Az Azure Search .NET Management SDK 2-es verziója az Azure Search Management REST API általánosan elérhető verzióját célozza meg, mint a korábbi SDK-verziók, különösen a 2015-08-19. Az SDK módosításai szigorúan ügyféloldali módosítások, amelyek javítják magának az SDK-nak a használhatóságát. Ezek a változások a következők:
+## <a name="whats-new-in-version-2"></a>A 2. verzió újdonságai
+A Azure Search .NET Management SDK 2. verziója az előző SDK-verziónak megfelelően a Azure Search felügyeleti REST API általánosan elérhető verzióját célozza meg, amely kifejezetten 2015-08-19. Az SDK módosításai szigorúan ügyféloldali változások az SDK használhatóságának javítása érdekében. Ezek a változások a következők:
 
-* `Services.CreateOrUpdate`és az aszinkron verziók mostantól automatikusan lepollálják a kiépítést, `SearchService` és nem térvissza, amíg a szolgáltatás kiépítése befejeződött. Ez megment ön -ból birtoklás -hoz ír ilyen közvélemény-kutatás kód önmaga.
-* Ha továbbra is manuálisan szeretné lehallgatni a `Services.BeginCreateOrUpdate` szolgáltatáskiépítést, használhatja az új módszert vagy annak egyik aszinkron verzióját.
-* Új `Services.Update` módszerek és aszinkron verziók lettek hozzáadva az SDK-hoz. Ezek a módszerek a HTTP PATCH protokollt használják egy szolgáltatás növekményes frissítésének támogatásához. Például most már skálázhat egy `SearchService` szolgáltatást úgy, hogy egy `partitionCount` `replicaCount` példányt átad ezeknek a metódusoknak, amelyek csak a kívánt és tulajdonságokat tartalmazzák. A visszaküldött `Services.Get`hívás, a `SearchService`visszaküldött állapot `Services.CreateOrUpdate` módosítása és átadása továbbra is támogatott, de már nincs szükség rá. 
+* `Services.CreateOrUpdate`a és az aszinkron verziói mostantól automatikusan lekérdezik `SearchService` a kiépítési és a nem visszaadott állapotot, amíg a szolgáltatás kiépítés be nem fejeződik. Ezzel elmentheti, hogy az ilyen lekérdezési kódot saját kezűleg írja.
+* Ha továbbra is manuálisan szeretné lekérdezni a szolgáltatás üzembe helyezését, használhatja az `Services.BeginCreateOrUpdate` új metódust vagy annak egy aszinkron verzióját.
+* Új metódusok `Services.Update` és aszinkron verziók lettek hozzáadva az SDK-hoz. Ezek a módszerek a HTTP-javítás használatával támogatják a szolgáltatások növekményes frissítését. Mostantól például méretezheti a szolgáltatást úgy, hogy átadja egy `SearchService` példányát ezekhez a metódusokhoz, amelyek `partitionCount` csak `replicaCount` a kívánt és a tulajdonságokat tartalmazzák. A régi módon hívható `Services.Get`meg `Services.CreateOrUpdate` , módosítható `SearchService`a visszaadott érték, és a továbbítása továbbra is támogatott, de már nem szükséges. 
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse NuGet-referenciáját a NuGet Csomagkezelő konzol `Microsoft.Azure.Management.Search` használatával, vagy kattintson a jobb gombbal a projektreferenciáira, és válassza a "NuGet csomagok kezelése..." parancsot. a Visual Studio alkalmazásban.
+Először frissítse a NuGet-referenciát `Microsoft.Azure.Management.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
-Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. Attól függően, hogy a kód épül, előfordulhat, hogy sikeresen újraépül. Ha igen, akkor készen áll az indulásra!
+Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
 
-Ha a build sikertelen, annak az lehet az oka, hogy megvalósított néhány SDK-felületet (például az egység tesztelése céljából), amelyek megváltoztak. A probléma megoldásához végre kell hajtania az `BeginCreateOrUpdateWithHttpMessagesAsync`új módszereket, például a .
+Ha a létrehozás sikertelen, annak oka az lehet, hogy néhány SDK-felületet implementált (például az egység tesztelése céljából), amelyek megváltoztak. Ennek megoldásához végre kell hajtania az új metódusokat, például: `BeginCreateOrUpdateWithHttpMessagesAsync`.
 
-Miután kijavította a buildelési hibákat, módosíthatja az alkalmazást, hogy kihasználhassa az új funkciók előnyeit, ha szeretné. Az SDK új funkcióit a [2-es verzió újdonságai](#WhatsNew)részletezik.
+A felépítési hibák kijavítása után módosíthatja az alkalmazást, és igény szerint kihasználhatja az új funkciókat. Az SDK új funkciói részletesen ismertetik a [2. verzió újdonságait](#WhatsNew).
 
 ## <a name="next-steps"></a>További lépések
-Örömmel fogadjuk az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjük, tegye a kérdéseket [Stack túlcsordulás](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Ha hibát talál, az [Azure .NET SDK GitHub tárházban](https://github.com/Azure/azure-sdk-for-net/issues)nyújthat be problémát. Győződjön meg róla, hogy a probléma címét a "[keresés]"-re címkézi.
+Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, tegye fel a kérdéseit [stack Overflowba](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a "[Search]" címkével címkézze fel a probléma címét.

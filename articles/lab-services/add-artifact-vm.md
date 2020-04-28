@@ -1,6 +1,6 @@
 ---
-title: Műtermék hozzáadása virtuális géphez az Azure DevTest Labsben | Microsoft dokumentumok
-description: Megtudhatja, hogyan adhat hozzá egy összetevőt egy virtuális géphez egy tesztkörnyezetben az Azure DevTest Labs-ben
+title: Összetevő hozzáadása egy virtuális géphez a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan adhat hozzá egy összetevőt egy virtuális géphez egy tesztkörnyezetben Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73901316"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Műtermék hozzáadása virtuális géphez
-Virtuális gép létrehozása közben meglévő összetevőket adhat hozzá. Ezek a összetevők lehetnek a [nyilvános DevTest Labs Git tárház](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy a saját Git-tárház. Ez a cikk bemutatja, hogyan adhat hozzá összetevőket az Azure Portalon, és az Azure PowerShell használatával. 
+A virtuális gépek létrehozása során meglévő összetevőket is hozzáadhat. Ezek az összetevők lehetnek a [nyilvános DevTest Labs git-tárházból](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy a saját git-tárházból is. Ebből a cikkből megtudhatja, hogyan adhat hozzá összetevőket a Azure Portal és a Azure PowerShell használatával. 
 
-Az Azure DevTest Labs összetevői lehetővé *teszik* a virtuális gép kiépítésekor végrehajtott *műveletek,* például a Windows PowerShell-parancsfájlok futtatása, a Bash-parancsok futtatása és a szoftverek telepítése. A *műtermék-paraméterek* lehetővé teszik a műtermék testreszabását az adott forgatókönyvhöz.
+Azure DevTest Labs *az* összetevők lehetővé teszik a virtuális gép üzembe helyezésekor végrehajtandó *műveletek* megadását, például a Windows PowerShell-parancsfájlok futtatását, a bash-parancsok futtatását és a szoftverek telepítését. Az összetevő- *Paraméterek* lehetővé teszik az adott forgatókönyvhöz tartozó összetevők testreszabását.
 
-Az egyéni összetevők létrehozásáról a következő cikkben olvashat: [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
+Az egyéni összetevők létrehozásával kapcsolatos további tudnivalókért tekintse meg a következő cikket: [egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata 
-1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
-1. Válassza az **Összes szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
-1. A laborok listájából válassza ki azt a tesztkörnyezetet, amely a kívánt virtuális gép kívánt dolgozni.  
-1. Válassza **a Saját virtuális gépek**lehetőséget .
-1. Válassza ki a kívánt virtuális gép.
-1. Válassza **az Összetevők kezelése**lehetőséget. 
-1. Válassza **az Összetevők alkalmazása**lehetőséget.
-1. Az **Összetevők alkalmazása** ablaktáblán jelölje ki a virtuális géphez hozzáadni kívánt összetevőt.
-1. A **Műtermék hozzáadása** ablaktáblán adja meg a szükséges paraméterértékeket és a szükséges választható paramétereket.  
-1. Válassza a **Hozzáadás** lehetőséget a műtermék hozzáadásához és a **Műtermékek alkalmazása** ablaktáblához való visszatéréshez.
-1. Folytassa az összetevők hozzáadását a virtuális géphez szükség szerint.
-1. Miután hozzáadta az összetevőket, [módosíthatja az összetevők futtatásának sorrendjét.](#change-the-order-in-which-artifacts-are-run) Visszatérhet az összetevő [megtekintéséhez vagy módosításához](#view-or-modify-an-artifact)is.
-1. Ha végzett az összetevők hozzáadásával, válassza **az Alkalmaz lehetőséget.**
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. A laborok listájából válassza ki azt a labort, amely a használni kívánt virtuális gépet tartalmazza.  
+1. Válassza **a saját virtuális gépek**lehetőséget.
+1. Válassza ki a kívánt virtuális gépet.
+1. Válassza az összetevők **kezelése**lehetőséget. 
+1. Válassza az összetevők **alkalmazása**lehetőséget.
+1. Az összetevők **alkalmazása** ablaktáblán válassza ki azt az összetevőt, amelyet hozzá szeretne adni a virtuális géphez.
+1. Az összetevő **hozzáadása** panelen adja meg a szükséges paramétereket, valamint az esetlegesen szükséges paramétereket.  
+1. A **Hozzáadás** gombra kattintva vegye fel az összetevőt, és térjen vissza az összetevők **alkalmazása** ablaktáblára.
+1. Folytassa az összetevők hozzáadását a virtuális géphez szükséges módon.
+1. Az összetevők hozzáadása után [megváltoztathatja az összetevők futtatásának sorrendjét](#change-the-order-in-which-artifacts-are-run). Visszatérhet az összetevők [megtekintéséhez vagy módosításához](#view-or-modify-an-artifact)is.
+1. Ha elkészült az összetevők hozzáadásával, kattintson az **alkalmaz** gombra.
 
-### <a name="change-the-order-in-which-artifacts-are-run"></a>Az összetevők futtatásának sorrendjének módosítása
-Alapértelmezés szerint az összetevők műveletek végrehajtása abban a sorrendben, amelyben hozzáadódnak a virtuális géphez. A következő lépések bemutatják, hogyan módosíthatja az összetevők futtatásának sorrendjét.
+### <a name="change-the-order-in-which-artifacts-are-run"></a>Az összetevők futtatási sorrendjének módosítása
+Alapértelmezés szerint az összetevők műveletei a virtuális géphez való hozzáadásuk sorrendjében hajthatók végre. Az alábbi lépések bemutatják, hogyan módosíthatja az összetevők futtatásának sorrendjét.
 
-1. Az **Összetevők alkalmazása** ablaktábla tetején jelölje ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
+1. Az összetevők **alkalmazása** ablaktábla felső részén válassza ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
    
     ![A virtuális géphez hozzáadott összetevők száma](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. A **Kijelölt összetevők** ablaktáblán húzza az összetevőket a kívánt sorrendbe. Ha nem tudja áthúzni a műtárgyat, győződjön meg arról, hogy a műtermék bal oldaláról húzza. 
+1. A **kiválasztott** összetevők panelen húzza az összetevőket a kívánt sorrendbe. Ha nem sikerül áthúzni az összetevőt, győződjön meg róla, hogy az összetevő bal oldaláról húzza az elemet. 
 1. Kattintson az **OK** gombra, amikor végzett.  
 
-### <a name="view-or-modify-an-artifact"></a>Műtermék megtekintése vagy módosítása
-A következő lépések bemutatják, hogyan tekintheti meg vagy módosíthatja egy műtermék paramétereit:
+### <a name="view-or-modify-an-artifact"></a>Összetevő megtekintése és módosítása
+Az alábbi lépések bemutatják, hogyan lehet megtekinteni vagy módosítani egy összetevő paramétereit:
 
-1. Az **Összetevők alkalmazása** ablaktábla tetején jelölje ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
+1. Az összetevők **alkalmazása** ablaktábla felső részén válassza ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
    
     ![A virtuális géphez hozzáadott összetevők száma](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. A **Kijelölt összetevők** ablaktáblán jelölje ki a megtekinteni vagy szerkesztni kívánt műterméket.  
-1. A **Műtermék hozzáadása** ablaktáblán hajtsa végre a szükséges módosításokat, és az **OK** gombra a **Műtermék hozzáadása** ablaktábla bezárásához.
-1. A Kijelölt összetevők ablaktábla bezárásához válassza az **OK** **gombot.**
+1. A **kiválasztott** összetevők ablaktáblán válassza ki a megtekinteni vagy szerkeszteni kívánt összetevőt.  
+1. Az összetevő **hozzáadása** panelen végezze el a szükséges módosításokat, majd kattintson az **OK** gombra az összetevők **hozzáadása** ablaktábla bezárásához.
+1. A **kijelölt** összetevők ablaktábla bezárásához kattintson **az OK gombra** .
 
 ## <a name="use-powershell"></a>A PowerShell használata
-A következő parancsfájl a megadott műtermék a megadott virtuális gépre alkalmazza. Az [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) parancs hajtja végre a műveletet.  
+A következő parancsfájl a megadott összetevőt alkalmazza a megadott virtuális gépre. A [Meghívási-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) parancs az a művelet, amely végrehajtja a műveletet.  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -164,7 +164,7 @@ if ($virtualMachine -ne $null) {
 ```
 
 ## <a name="next-steps"></a>További lépések
-Lásd a műtermékekről szóló alábbi cikkeket:
+Tekintse meg a következő cikkeket az összetevőkről:
 
 - [Kötelező összetevők megadása a laborhoz](devtest-lab-mandatory-artifacts.md)
 - [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)

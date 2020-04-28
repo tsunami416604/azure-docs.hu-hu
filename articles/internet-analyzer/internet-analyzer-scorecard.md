@@ -1,6 +1,6 @@
 ---
-title: A scorecard értelmezése | Microsoft dokumentumok
-description: Az Azure Internet Analyzer gyakran feltett kérdések.
+title: A scorecard értelmezése | Microsoft Docs
+description: Az Azure Internet Analyzer szolgáltatással kapcsolatos gyakori kérdések.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
@@ -8,53 +8,53 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73512885"
 ---
 # <a name="interpreting-your-scorecard"></a>A stratégiai mutatószámrendszer értelmezése
 
-A scorecard fül tartalmazza a tesztek összesített és elemzett eredményeit. Minden tesztnek saját scorecardja van. A scorecardok gyors és tartalmas összegzést nyújtanak a mérési eredményekről, hogy adatvezérelt eredményeket nyújtsanak a hálózati követelményeknek. Internet Analyzer gondoskodik az elemzés, amely lehetővé teszi, hogy összpontosítson a döntést.
+A scorecard lapon a tesztek összesített és elemzett eredményei láthatók. Minden teszt saját scorecardokkal rendelkezik. A scorecardok gyors és hasznos összefoglalókat biztosítanak a mérési eredményekről, amelyek adatvezérelt eredményeket biztosítanak a hálózati követelményekhez. Az Internet Analyzer gondoskodik az elemzésről, így a döntésre koncentrálhat.
 
 A scorecard lap az Internet Analyzer erőforrás menüjében található. 
 
 
 ## <a name="filters"></a>Szűrők
 
-* ***Vizsgálat:*** Válassza ki azt a tesztet, amelynek eredményeit meg szeretné tekinteni – minden tesztnek saját scorecardja van. A vizsgálati adatok akkor jelennek meg, ha elegendő adat áll az elemzés befejezéséhez – a legtöbb esetben ennek 24 órán belül kell lennie. 
-* ***Időszak & befejezési dátum:*** Naponta három scorecard jön létre – minden scorecard más összesítési időszakot tükröz – az azt megelőző 24 órát (napot), az azt megelőző hét napot (hét), és az azt megelőző 30 napot (hónap). A "Záró dátum" szűrővel válassza ki a megtekinteni kívánt időszak utolsó napját. 
-* ***Ország:*** Minden olyan országhoz, ahol végfelhasználók vannak, a rendszer scorecardot hoz létre. A globális szűrő az összes végfelhasználót tartalmazza.
+* ***Teszt:*** Válassza ki azt a tesztet, amelynek eredményeit meg szeretné tekinteni – az egyes tesztekhez saját scorecard tartozik. Az elemzések elvégzéséhez elegendő mennyiségű információ jelenik meg, a legtöbb esetben pedig 24 órán belül kell lennie. 
+* Időtartam ***& befejezési dátum:*** Naponta három scorecard jön létre – az egyes scorecardok eltérő összesítési időszakot (nap), a megelőző 24 órában, a hét napja (hét) és a 30 nappal korábbi (hónap) időpontot tükrözik. A "befejezési dátum" szűrő használatával válassza ki a megtekinteni kívánt időszak utolsó napját. 
+* ***Ország:*** Minden olyan ország esetében, amelynek végfelhasználói, scorecard jön létre. A globális szűrő minden végfelhasználót tartalmaz.
 
-## <a name="measurement-count"></a>Mérési szám
+## <a name="measurement-count"></a>Mérések száma
 
-A mérések száma befolyásolja az elemzés megbízhatóságát. Minél magasabb a szám, annál pontosabb az eredmény. A vizsgálatoknak legalább napi 100 mérésre kell irányulniuk. Ha a mérési számok túl alacsonyak, konfigurálja a JavaScript-ügyfelet úgy, hogy gyakrabban hajtsa végre az alkalmazásban. Az A és B végpontok mérési számának nagyon hasonlónak kell lennie, bár kis különbségek várhatók és rendben vannak. Nagy különbségek esetén az eredményeket nem szabad megbízni.
+A mérések száma az elemzés megbízhatóságát befolyásolja. Minél nagyobb a szám, annál pontosabb az eredmény. Legalább a teszteknek legalább 100 mérést kell végezniük napi szinten. Ha a mérési számok túl alacsonyak, konfigurálja úgy a JavaScript-ügyfelet, hogy gyakrabban fusson az alkalmazásában. Az A és B végpontok mérési számának nagyon hasonlónak kell lennie, bár a vártnál kisebb eltérések várhatók és rendben vannak. Nagy különbségek esetén az eredményeket nem szabad megbízhatóként megadni.
 
-## <a name="percentiles"></a>Percentiles
+## <a name="percentiles"></a>Időtartamának százalékos értéke
 
-A késés ezredmásodpercben mérve népszerű mérőszám a forrás és a cél közötti sebesség mérésére az interneten. A késési adatok általában nem oszlanak el (azaz nem követik a "Bell-görbét"), mert nagy látenciaértékek "hosszú farkú" vannak, amelyek a statisztikák, például a számtani középhasználata során eredményeznek ferde eredményeket. Alternatívmegoldásként a percentilisek "disztribúciómentes" módot biztosítanak az adatok elemzésére. Például a medián, vagy50. A 75 százalékos érték azt jelenti, hogy nagyobb, mint az eloszlás ban lévő összes érték 75%-a. Az Internet Analyzer p50, P75 és P95 rövidítésben lévő percentiliseket nevezi.
+A késés (ezredmásodpercben mérve) egy népszerű metrika a forrás és a cél közötti sebesség méréséhez az interneten. A késési adatok általában nem oszlanak el (azaz nem követi a "harang-görbét"), mert a nagy késési értékek "hosszú farok" értékkel vannak elferdítve, amikor olyan statisztikai adatokat használnak, mint például a számtani középérték. Egy másik lehetőségként a percentilis "terjesztés – ingyenes" módszert biztosít az adatelemzéshez. Például a medián vagy 50 százalékos érték összegzi az eloszlás közepét, az értékek fele pedig az alatta lévő értékeket, a fele pedig alatta van. A 75th percentilis érték azt jelenti, hogy a terjesztésben az összes érték 75%-a nagyobb. Az Internet Analyzer a gyorsírásban a P50, a P75 és a P95 értékre hivatkozik.
 
-Az Internet Analyzer percentilisek _mintamérők._ Ez ellentétben áll a valós _népesség metrikus_. Például a napi valós népesség idoszakának medián késleltetése a University of Southern California és a Microsoft hallgatói között az adott nap összes kérésének középértéke. A gyakorlatban az összes kérelem értékének mérése nem praktikus, ezért feltételezzük, hogy egy ésszerűen nagy minta reprezentatív a valódi populációra nézve.
+Az Internet Analyzer percentilis a _minta mérőszáma_. Ez ellentétben áll a valódi _populációs metrikával_. Például a Dél-Kalifornia Egyetem és a Microsoft között a tanulók közötti napi átlagos késési arány az adott nap során az összes kérelem középértékes késése. A gyakorlatban a kérelmek értékének mérése nem praktikus, ezért feltételezzük, hogy egy ésszerűen nagy minta a valódi populációra jellemző.
 
-Elemzési célokra a P50 (medián) hasznos a késés eloszlásának várható értékeként. A magasabb százalékos, például a P95-ös, hasznos annak megállapítására, hogy a legrosszabb esetben milyen magas a késés. Ha általánosságban szeretné megérteni az ügyfelek késését, a P50 a megfelelő mérőszám, amelyre összpontosítani szeretne. Ha ön érintett -val megértés előadás részére a a legrosszabbul teljesítő vásárlók, akkor P95 legyen a összpontosít. A P75 a kettő közötti egyensúly.
+Elemzési célokra a P50 (medián) a késési eloszlás várt értékeként hasznos. A magasabb százalékos érték, például a P95, hasznos lehet annak azonosítására, hogy milyen magas a késés a legrosszabb esetekben. Ha szeretné, hogy az ügyfelek késése általánosságban megértse, a P50 a megfelelő metrika. Ha aggódik a legrosszabb teljesítményt nyújtó ügyfelek teljesítményének megismerése érdekében, akkor a P95 a fókusznak kell lennie. A P75 a kettő közötti egyensúly.
 
 
-## <a name="deltas"></a>Delták
+## <a name="deltas"></a>Eltérések
 
-A delta az A és B végpontok metrikaértékeinek különbsége. A delta lehet abszolút (pl. 10 ezredmásodperc) vagy relatív (5%).
+A delta érték az A és B végpontok metrikai értékeinek különbsége. a különbözetek kiszámítása úgy történik, hogy a "B" előnyeit jeleníti meg. a pozitív értékek azt jelzik, hogy a B teljesítménye nagyobb, míg A negatív értékek a B teljesítményét jelzik. A különbözet abszolút lehet (például 10 ezredmásodperc) vagy relatív (5%).
 
 ## <a name="confidence-interval"></a>Megbízhatósági intervallum 
 
-A konfidenciaintervallumok (CI) olyan értékek tartományai, amelyek valószínűsége, hogy tartalmazzák a sokasági metriát, például medián, P75 vagy átlag. A 95%-os CI használatának általános statisztikai konvencióját követjük.
+A megbízhatósági intervallumok (CI) olyan értékek, amelyek valószínűsége a populációs metrika, például a medián, a P75 vagy az átlag. Követjük a 95% CI használatával kapcsolatos közös statisztikai konvenciót.
 
-Az Internet Analyzer esetében egy szűk megbízhatósági intervallum jó, mert azt mutatja, hogy a mintametria valószínűleg nagyon közel van a tényleges népességmetriához. A széles megbízhatósági intervallum azt jelenti, hogy kevésbé biztos, hogy a minta metrika tükrözi a valós népesség metrika. A CI javításának legjobb módja a mérési szám növelése.
+Az Internet Analyzer esetében a szűk megbízhatósági intervallum jó, mert a minta metrikája valószínűleg nagyon közel van a tényleges populációs mérőszámhoz. A széles körű megbízhatósági intervallum kevésbé biztos, hogy a minta mérőszáma az igazi populációs mérőszámot tükrözi. A CI javításának legjobb módja a mérések számának növelése.
 
-## <a name="time-series"></a>Idősorok 
+## <a name="time-series"></a>Idősorozat 
 
-Az idősorozat oka, hogy egy metrika hogyan változik az idő múlásával. Az interneten számos időbeli tényező befolyásolja a teljesítményt, például a csúcsforgalmi időszakokat, a hétköznapok on-hétvégés népességkülönbségeit és az ünnepeket.
+Az idősorozatok azt mutatják be, hogyan változik a metrika az idő múlásával. Az interneten számos olyan időbeli tényező van, amely hatással van a teljesítményre, például a maximális forgalmú időszakokra, a hétköznapok populációbeli különbségekre és a nyaralásokra.
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információért tekintse meg [az Internet Analyzer áttekintését.](internet-analyzer-overview.md)
+További információkért tekintse meg az [Internet Analyzer áttekintése](internet-analyzer-overview.md)című témakört.

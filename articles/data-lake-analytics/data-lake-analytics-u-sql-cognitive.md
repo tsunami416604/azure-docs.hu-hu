@@ -1,6 +1,6 @@
 ---
-title: Az U-SQL Cognitive képességei az Azure Data Lake Analytics ben
-description: Ismerje meg, hogyan használhatja a kognitív képességek intelligenciáját az U-SQL-ben. Ez a kódminták segítenek a kezdésben.
+title: Az U-SQL kognitív képességei Azure Data Lake Analytics
+description: Ismerje meg, hogyan használhatja az U-SQL kognitív képességeinek intelligenciát. Ez a kódrészlet segítséget nyújt az első lépésekhez.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,28 +10,28 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672714"
 ---
-# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Első lépések az U-SQL kognitív képességeivel
+# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Ismerkedés az U-SQL kognitív képességeivel
 
 ## <a name="overview"></a>Áttekintés
-Az U-SQL kognitív képességei lehetővé teszik a fejlesztők számára, hogy intelligenciát használjanak a big data-programjaikban. 
+A U-SQL kognitív képességei lehetővé teszik a fejlesztők számára, hogy az intelligenciát használják big data programjaikban. 
 
-A következő minták kognitív képességek használatával érhetők el:
-* Képalkotás: [Arcok észlelése](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Képalkotás: [Érzelem észlelése](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* Képalkotás: [Objektumok észlelése (címkézés)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* Képalkotás: [Optikai karakterfelismerés (optikai karakterfelismerés)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Szöveg: [A kifejezés kivonása & hangulatelemzéshez](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
+A következő minták állnak rendelkezésre kognitív képességek használatával:
+* Képalkotás: [arcok észlelése](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Képalkotás: [érzelem észlelése](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Képalkotás: [objektumok észlelése (címkézés)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Képalkotás: [OCR (optikai karakterfelismerés)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Text: [Kulcsszókeresés & Hangulatelemzés](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
-## <a name="registering-cognitive-extensions-in-u-sql"></a>Kognitív bővítmények regisztrálása az U-SQL-ben
-Mielőtt elkezdené, kövesse a jelen cikkben leírt lépéseket a Cognitive Extensions regisztrálásához az U-SQL: [Kognitív bővítmények regisztrálásához az U-SQL-ben.](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)
+## <a name="registering-cognitive-extensions-in-u-sql"></a>Kognitív bővítmények regisztrálása U-SQL-ben
+Mielőtt elkezdené, kövesse az ebben a cikkben ismertetett lépéseket a kognitív bővítmények az U-SQL-ben való regisztrálásához: az [u-SQL kognitív bővítményeinek regisztrálása](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
 
 ## <a name="next-steps"></a>További lépések
 * [U-SQL/kognitív minták](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
-* [U-SQL ablakfüggvények használata az Azure Data Lake Analytics-feladatokhoz](data-lake-analytics-use-window-functions.md)
+* [A U-SQL Window functions használata Azure Data Lake Analytics feladatokhoz](data-lake-analytics-use-window-functions.md)

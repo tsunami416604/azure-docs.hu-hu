@@ -1,6 +1,6 @@
 ---
-title: Hitelesítő adatok kezelése a rugalmas adatbázis-ügyféltárban
-description: A megfelelő szintű hitelesítő adatok beállítása, rendszergazda írásvédettre, rugalmas adatbázis-alkalmazásokhoz
+title: Hitelesítő adatok kezelése a rugalmas adatbázis ügyféloldali könyvtárában
+description: A hitelesítő adatok megfelelő szintjének beállítása, a rendszergazda csak olvasható, rugalmas adatbázis-alkalmazások esetén
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,65 +12,65 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91689a32a128584aade8081905e3d1aa3ecb0a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823581"
 ---
-# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>A rugalmas adatbázis-ügyféltár eléréséhez használt hitelesítő adatok
+# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyféloldali kódtár eléréséhez használt hitelesítő adatok
 
-A [rugalmas adatbázis-ügyfélkódtár](sql-database-elastic-database-client-library.md) három különböző típusú hitelesítő adatokat használ a [szegmenstérkép-kezelő](sql-database-elastic-scale-shard-map-management.md)eléréséhez. Attól függően, hogy szükség van,használja a hitelesítő adatokat a lehető legalacsonyabb szintű hozzáférést.
+Az [Elastic Database ügyféloldali függvénytár](sql-database-elastic-database-client-library.md) három különböző típusú hitelesítő adatot használ a szegmenses [Térkép kezelőjének](sql-database-elastic-scale-shard-map-management.md)eléréséhez. A szükségestől függően használja a hitelesítő adatokat a lehető legalacsonyabb szintű hozzáférési jogosultsággal.
 
-* **Felügyeleti hitelesítő adatok:** shard térképkezelő létrehozásához vagy kezeléséhez. (Lásd a [szószedetet.)](sql-database-elastic-scale-glossary.md)
-* **Hozzáférési hitelesítő adatok:** egy meglévő shard térképkezelő eléréséhez a szegmensek információszerzéséhez.
-* **Kapcsolat hitelesítő adatok:** a szilánkok hoz csatlakozni.
+* **Felügyeleti hitelesítő adatok**: a szegmenses Térkép kezelőjének létrehozásához vagy módosításához. (Lásd a [szószedetet](sql-database-elastic-scale-glossary.md).)
+* **Hozzáférés a hitelesítő adatokhoz**: egy meglévő, a szegmensekkel kapcsolatos információk beszerzéséhez.
+* **Kapcsolati hitelesítő adatok**: a szegmensekhez való kapcsolódáshoz.
 
-Lásd [még: Adatbázisok és bejelentkezések kezelése az Azure SQL Database-ben.](sql-database-manage-logins.md)
+Lásd még: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](sql-database-manage-logins.md).
 
-## <a name="about-management-credentials"></a>Felügyeleti hitelesítő adatok –
+## <a name="about-management-credentials"></a>A felügyeleti hitelesítő adatok ismertetése
 
-A felügyeleti hitelesítő adatok **segítségével shardmapmanager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) objektumot hozhat létre a szegmensleképezéseket kezelő alkalmazások számára. (Például lásd: [Szegmens hozzáadása rugalmas adatbázis-eszközök és](sql-database-elastic-scale-add-a-shard.md) [adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md)használatával). A rugalmas méretezési ügyfélkódtár felhasználója létrehozza az SQL-felhasználókat és az SQL bejelentkezéseket, és gondoskodik arról, hogy mindegyik megkapja az olvasási/írási engedélyeket a globális shard térkép-adatbázishoz és az összes szegmens-adatbázishoz is. Ezek a hitelesítő adatok a globális shard térkép és a helyi shard térképek karbantartásához használatosak, amikor a shard térkép módosításai végrehajtása. Például használja a felügyeleti hitelesítő adatokat a shard map manager objektum létrehozásához **(A GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)használatával:
+A felügyeleti hitelesítő adatok használatával **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) objektumot hozhat létre a szegmens térképeket kezelő alkalmazásokhoz. (Lásd például: szegmens [hozzáadása Elastic Database eszközökkel](sql-database-elastic-scale-add-a-shard.md) és [Adatfüggő útválasztással](sql-database-elastic-scale-data-dependent-routing.md)). A rugalmasan méretezhető ügyféloldali kódtár felhasználója létrehozza az SQL-felhasználókat és az SQL-bejelentkezéseket, és gondoskodik arról, hogy mindegyik megkapja az olvasási/írási engedélyeket a globális szegmenses Térkép-adatbázison és az összes szegmens adatbázison is. A rendszer ezeket a hitelesítő adatokat használja a globális szegmensek közötti Térkép és a helyi szegmens térképek megtartására, amikor a szegmenses Térkép módosításait hajtja végre. Például a felügyeleti hitelesítő adatokkal hozza létre a szegmens Map Manager-objektumot ( **GetSqlShardMapManager** használatával ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
 ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(smmAdminConnectionString,ShardMapManagerLoadPolicy.Lazy);
 ```
 
-Az **smmAdminConnectionString** változó egy kapcsolati karakterlánc, amely a felügyeleti hitelesítő adatokat tartalmazza. A felhasználói azonosító és a jelszó olvasási/írási hozzáférést biztosít a szegmenstérkép-adatbázishoz és az egyes szegmensekhez. A felügyeleti kapcsolati karakterlánc tartalmazza a kiszolgáló nevét és az adatbázis nevét is a globális shard térképadatbázis azonosításához. Itt van egy tipikus kapcsolat string erre a célra:
+A **smmAdminConnectionString** változó egy olyan, a felügyeleti hitelesítő adatokat tartalmazó kapcsolatok karakterlánca. A felhasználói azonosító és jelszó írási/olvasási hozzáférést biztosít mind a szegmenses Térkép adatbázisához, mind pedig az egyes szegmensekhez. A felügyeleti kapcsolatok karakterlánca tartalmazza a kiszolgáló nevét és az adatbázis nevét is, hogy azonosítsa a globális szegmenses Térkép-adatbázist. Az alábbi egy tipikus, a következőhöz tartozó kapcsolatok karakterlánca:
 
 ```java
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-Ne használjon értékeket "username@server"– helyett csak használja a "felhasználónév" értéket.  Ennek az az oka, hogy a hitelesítő adatoknak a szegmenstérkép-kezelő adatbázisával és az egyes szegmensekkel szemben is működniük kell, amelyek különböző kiszolgálókon lehetnek.
+Ne használja az értékeket "username@server" formában – helyette csak a "username" értéket használja.  Ennek az az oka, hogy a hitelesítő adatoknak működniük kell a szegmenses Térkép-kezelő adatbázisán és az egyes szegmenseken, amelyek különböző kiszolgálókon lehetnek.
 
-## <a name="access-credentials"></a>Hitelesítő adatok elérése
+## <a name="access-credentials"></a>Hozzáférési hitelesítő adatok
 
-Amikor egy shard map manager egy olyan alkalmazásban, amely nem felügyeli a szegmens leképezések, használja a hitelesítő adatokat, amelyek csak olvasható engedélyekkel rendelkeznek a globális shard térkép. A globális shard térképről ezek a hitelesítő adatok alatt beolvasott adatok [adatfüggő útválasztáshoz](sql-database-elastic-scale-data-dependent-routing.md) és az ügyfél shard térképgyorsítótárának feltöltéséhez használatos. A hitelesítő adatok a **GetSqlShardMapManager**számára ugyanazon a hívásmintán keresztül érhetők el:
+Ha olyan alkalmazásban hoz létre egy szegmenses Térkép-kezelőt, amely nem felügyeli a szegmenses térképeket, olyan hitelesítő adatokat használjon, amelyek csak olvasási engedéllyel rendelkeznek a globális szegmenses térképen. A rendszer a globális szegmens-hozzárendelésből beolvasott adatokat a hitelesítő adatok alapján, az [adatkezelési útvonalhoz](sql-database-elastic-scale-data-dependent-routing.md) , valamint az ügyfélen található szegmenses térképi gyorsítótár feltöltéséhez használja. A hitelesítő adatok a **GetSqlShardMapManager**azonos hívási mintán keresztül érhetők el:
 
 ```java
 // Obtain shard map manager.
 ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(smmReadOnlyConnectionString, ShardMapManagerLoadPolicy.Lazy);  
 ```
 
-Vegye figyelembe, hogy az **smmReadOnlyConnectionString** használata a hozzáféréshez a **nem rendszergazda** felhasználók nevében különböző hitelesítő adatok használatát tükrözi: ezek a hitelesítő adatok nem adhatnak írási engedélyeket a globális shard térképhez.
+Vegye figyelembe, hogy a **smmReadOnlyConnectionString** használata a **nem rendszergazda** felhasználók nevében történő hozzáféréshez szükséges különböző hitelesítő adatok használatát tükrözi: ezek a hitelesítő adatok nem adhatnak írási engedélyeket a globális szegmenses térképhez.
 
 ## <a name="connection-credentials"></a>Kapcsolat hitelesítő adatai
 
-További hitelesítő adatokra van szükség, ha az **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) metódus használatával egy szilánkos kulcshoz társított shard eléréséhez. Ezek a hitelesítő adatok a shardon található helyi shard térképtáblák írásvédett eléréséhez szükséges engedélyeket kell biztosítaniuk. Ez szükséges a shard adatfüggő útválasztásának kapcsolat-ellenőrzéséhez. Ez a kódrészlet adatfüggő útválasztás környezetében teszi lehetővé az adatok elérését:
+További hitelesítő adatokra akkor van szükség, ha a **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) módszert használja a horizontális Felskálázási kulcshoz társított szegmens eléréséhez. Ezeknek a hitelesítő adatoknak meg kell adniuk a csak olvasási hozzáféréshez szükséges engedélyeket a szegmensen lévő helyi szegmensek leképezési tábláihoz. Erre azért van szükség, hogy a szegmensben az Adatfüggő útválasztáshoz a kapcsolatok érvényesítését végezze. Ez a kódrészlet lehetővé teszi az adathozzáférést az Adatfüggő útválasztás kontextusában:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))
 ```
 
-Ebben a példában **az smmUserConnectionString** megtartja a felhasználói hitelesítő adatok kapcsolati karakterláncát. Az Azure SQL DB esetében az alábbiakban a felhasználói hitelesítő adatok tipikus kapcsolati karakterlánca látható:
+Ebben a példában a **smmUserConnectionString** a felhasználói hitelesítő adatokhoz tartozó kapcsolatok karakterláncát tárolja. Az Azure SQL DB-hez itt a felhasználói hitelesítő adatokhoz tartozó jellemző a következő:
 
 ```java
 "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 ```
 
-A rendszergazdai hitelesítő adatokhoz ugyanúgy ne használjon értékeket "username@server" formában. Ehelyett csak használja a "felhasználónevet".  Azt is vegye figyelembe, hogy a kapcsolati karakterlánc nem tartalmaz kiszolgálónevet és adatbázisnevet. Ennek az az oka, hogy az **OpenConnectionForKey** hívás automatikusan irányítja a kapcsolatot a megfelelő shard a kulcs alapján. Ezért az adatbázis neve és a kiszolgáló neve nincs megadva.
+A rendszergazdai hitelesítő adatokhoz hasonlóan a "username@server" formában ne használja az értékeket. Ehelyett egyszerűen használja a "username" kifejezést.  Azt is vegye figyelembe, hogy a kapcsolatok karakterlánca nem tartalmazza a kiszolgáló nevét és az adatbázis nevét. Ennek az az oka, hogy a **OpenConnectionForKey** -hívás automatikusan irányítja a kapcsolódást a megfelelő szegmensre a kulcs alapján. Ezért az adatbázis neve és a kiszolgáló neve nincs megadva.
 
 ## <a name="see-also"></a>Lásd még
 
@@ -78,6 +78,6 @@ A rendszergazdai hitelesítő adatokhoz ugyanúgy ne használjon értékeket "us
 
 [Az SQL Database-adatbázis védelme](sql-database-security-overview.md)
 
-[Rugalmas adatbázis-feladatok](elastic-jobs-overview.md)
+[rugalmas adatbázis-feladatok](elastic-jobs-overview.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

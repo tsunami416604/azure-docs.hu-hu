@@ -1,6 +1,6 @@
 ---
-title: Alhálózati bővítmény az Azure-ban | Microsoft dokumentumok
-description: További információ az Azure-beli alhálózati bővítményről.
+title: Alhálózat-bővítmény az Azure-ban | Microsoft Docs
+description: Az alhálózati bővítmény ismertetése az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: anupam-p
@@ -16,41 +16,41 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
 ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73587510"
 ---
 # <a name="subnet-extension"></a>Alhálózati bővítmény
-A nyilvános felhőbe való számítási feladatok áttelepítése gondos tervezést és koordinációt igényel. Az egyik legfontosabb szempont lehet az IP-címek megőrzésének lehetősége. Ami különösen akkor lehet fontos, ha az alkalmazások IP-címfüggőséget tartalmaznak, vagy ha megfelelőségi követelményekkel rendelkezik adott IP-címek használatához. Az Azure Virtual Network megoldja ezt a problémát azáltal, hogy lehetővé teszi a virtuális hálózatok és alhálózatok létrehozását az Ön által választott IP-címtartomány használatával.
+A munkaterhelések áttelepítése a nyilvános felhőbe gondos tervezést és koordinációt igényel. Az egyik kulcsfontosságú szempont az IP-címek megőrzése is. Ez különösen akkor fontos, ha az alkalmazások IP-címektől függenek, vagy ha megfelelőségi követelmények vonatkoznak a megadott IP-címek használatára. Az Azure Virtual Network megoldja ezt a problémát, mivel lehetővé teszi, hogy az Ön által választott IP-címtartomány használatával VNet és alhálózatokat hozzon létre.
 
-Az áttelepítések egy kicsit kihívást jelenthetnek, ha a fenti követelmény hez egy további követelmény tartozik, hogy egyes alkalmazások a helyszínen maradjanak. Például egy adott helyzetben, az alkalmazások at az Azure és a helyszíni, anélkül, hogy az IP-címek mindkét oldalon újraszámozása. Ezenkívül engedélyeznie kell, hogy az alkalmazások úgy kommunikáljanak, mintha ugyanabban a hálózatban lennének.
+A Migrálás egy kis kihívást jelenthet, ha a fenti követelményt egy további, a helyszínen lévő alkalmazások fenntartására vonatkozó követelménysel párosítják. Ilyen esetben az alkalmazásokat az Azure és a helyszíni között kell megosztania, az IP-címek mindkét oldalon való újraszámozása nélkül. Emellett engedélyeznie kell, hogy az alkalmazások ugyanúgy kommunikáljanak, mintha ugyanabban a hálózaton vannak.
 
-A fenti probléma egyik megoldása az alhálózati kiterjesztés. A hálózat bővítése lehetővé teszi az alkalmazások számára, hogy ugyanazon a szórásos tartományon keresztül beszéljenek, ha különböző fizikai helyeken léteznek, így nincs szükség a hálózati topológia újramegtervezésére. 
+A fenti probléma egyik megoldása az alhálózati bővítmény. A hálózat kibővítése lehetővé teszi, hogy az alkalmazások ugyanazon szórási tartományon keresztül beszéljenek, amikor különböző fizikai helyeken találhatók, így nincs szükség a hálózati topológia újratervezésére. 
 
-Bár a hálózat bővítése általában nem jó gyakorlat, az alábbi használati esetek szükségessé tehetik.
+A hálózat kibővítése során általában nem jó gyakorlat, hogy az alábbi használati esetek is szükségesek.
 
-- **Szakaszos áttelepítés:** A leggyakoribb forgatókönyv az, hogy az áttelepítést szeretné fázisba lépni. Azt szeretné, hogy néhány alkalmazás először és idővel migrálja a többi alkalmazás az Azure-ba.
-- **Késés:** Alacsony késési követelmények lehet egy másik ok, amiért bizonyos alkalmazások a helyszínen, annak érdekében, hogy azok a lehető legközelebb az adatközponthoz.
-- **Megfelelőség:** Egy másik használati eset, hogy előfordulhat, hogy megfelelőségi követelmények et tartani néhány alkalmazás a helyszínen.
+- **Többfázisú áttelepítés**: a leggyakoribb forgatókönyv az áttelepítés fázisa. Először is be szeretne állítani néhány alkalmazást az Azure-ba, és az idő múlásával áttelepíti a többi alkalmazást.
+- **Késés**: az alacsony késési követelmények miatt előfordulhat, hogy bizonyos alkalmazások a helyszínen maradnak, így biztosítva, hogy a lehető legközelebb legyenek az adatközponthoz.
+- **Megfelelőség**: egy másik felhasználási eset az, hogy megfelelőségi követelményekkel rendelkezhet, hogy egyes alkalmazásai a helyszínen maradjanak.
  
 > [!NOTE] 
-> Az alhálózatokat csak akkor hosszabbítsa meg, ha erre szükség van. Azokban az esetekben, ahol nem hosszabbítja meg az alhálózatok, meg kell próbálnia, hogy ez egy köztes lépés. Idővel próbálja meg újraszámozni az alkalmazásokat a helyszíni hálózatban, és migrálni őket az Azure-ba.
+> Ha szükséges, ne terjessze ki az alhálózatokat. Azokban az esetekben, amikor kiterjeszti az alhálózatokat, meg kell tennie egy közbenső lépést. Idővel próbálkozzon újra a helyszíni hálózatban található alkalmazások újraszámozásával és az Azure-ba való áttelepítésével.
 
-A következő szakaszban bemutatjuk, hogyan bővítheti alhálózatait az Azure-ra.
+A következő szakaszban megbeszéljük, hogyan bővíthetők az alhálózatok az Azure-ban.
 
 
 ## <a name="extend-your-subnet-to-azure"></a>Az alhálózat kiterjesztése az Azure-ra
- A helyszíni alhálózatokat kiterjesztheti az Azure-ra egy 3- as réteges átfedéses hálózati alapú megoldás használatával. A legtöbb megoldás egy átfedési technológiát használ, például a VXLAN-t a réteg-2 hálózat 3-as rétegű átfedési hálózat használatával történő kiterjesztéséhez. Az alábbi ábra egy általános megoldás. Ebben a megoldásban ugyanaz az alhálózat mindkét oldalon létezik, az Az Azure és a helyszíni. 
+ A helyszíni alhálózatokat kiterjesztheti az Azure-ra egy 3. rétegbeli hálózati megoldás használatával. A legtöbb megoldás olyan átfedési technológiát használ, mint például a VXLAN a 2. rétegbeli hálózat kibővítéséhez. Az alábbi ábrán egy általánosított megoldás látható. Ebben a megoldásban ugyanaz az alhálózat létezik mindkét oldalon, az Azure-ban és a helyszínen is. 
 
-![Példa alhálózati bővítményre](./media/subnet-extension/subnet-extension.png)
+![Alhálózati bővítmény – példa](./media/subnet-extension/subnet-extension.png)
 
-Az alhálózat IP-címei az Azure-ban és a helyszíni virtuális gépekhez vannak rendelve. Mind az Azure, mind a helyszíni telepek egy NVA-t illesztbe a hálózataikba. Amikor egy virtuális gép az Azure-ban megpróbál beszélni egy virtuális gép a helyszíni hálózaton, az Azure NVA rögzíti a csomagot, beágyazi azt, és elküldi azt a VPN/Express route a helyszíni hálózatra. A helyszíni NVA megkapja a csomagot, decapsulates, és továbbítja azt a tervezett címzett a hálózaton. A visszáruforgalom hasonló elérési utat és logikát használ.
+Az alhálózat IP-címei az Azure-beli és a helyszíni virtuális gépekhez vannak rendelve. Mind az Azure-, mind a helyszíni NVA be van helyezve a hálózatba. Ha egy Azure-beli virtuális gép megpróbál kommunikálni egy virtuális géppel a helyszíni hálózaton, az Azure-NVA rögzíti a csomagot, beágyazza azt, és a VPN/Express útvonalon továbbítja a helyszíni hálózatra. A helyszíni NVA fogadja a csomagot, decapsulates azt, és továbbítja azt a hálózatában lévő kívánt címzettnek. A visszaküldött forgalom hasonló elérési utat és logikát használ.
 
-A fenti példában az Azure NVA és a helyszíni NVA kommunikálnak, és megismerik az EGYMÁS MÖGÖTT i-címeket. Összetettebb hálózatok is rendelkezhetnek egy leképezési szolgáltatás, amely fenntartja a leképezés között nva-k és az IP-címek mögött. Amikor egy NVA csomagot kap, lekérdezi a leképezési szolgáltatást, hogy megtudja, a címe az NVA, amelynek a cél IP-cím mögött.
+A fenti példában az Azure NVA és a helyszíni NVA kommunikál, és megismerheti az egymás mögötti IP-címeket. Az összetettebb hálózatok egy leképezési szolgáltatással is rendelkezhetnek, amely fenntartja a NVA és a mögöttes IP-címek közötti leképezést. Amikor egy NVA fogad egy csomagot, lekérdezi a leképezési szolgáltatást, hogy megkeresse annak a NVA a címét, amely a cél IP-címmel rendelkezik.
 
-A következő szakaszban az Azure-ban tesztelt alhálózati bővítménymegoldások részleteit találja.
+A következő szakaszban megtalálhatja az Azure-ban tesztelt alhálózati bővítményi megoldások részleteit.
 
 ## <a name="next-steps"></a>További lépések 
-[Bővítse ki az alhálózatot az Azure-ra a szállítói megoldások használatával.](https://github.com/microsoft/Azure-LISP)
+[Terjessze ki az alhálózatot az Azure-ba gyártói megoldások használatával.](https://github.com/microsoft/Azure-LISP)

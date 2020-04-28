@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics U-SQL-feladatok ütemezése SSIS használatával
-description: Megtudhatja, hogy az SQL Server Integration Services használatával hogyan ütemezheti az U-SQL-feladatokat szövegközi parancsfájllal vagy U-SQL lekérdezési fájlokkal.
+title: U-SQL-feladatok ütemezett Azure Data Lake Analytics a SSIS használatával
+description: Ismerje meg, hogy a SQL Server Integration Services használatával hogyan ütemezhet U-SQL-feladatokat beágyazott parancsfájllal vagy U-SQL-lekérdezési fájlokkal.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,163 +11,163 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672891"
 ---
-# <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL feladatok ütemezése az SQL Server Integration Services (SSIS) használatával
+# <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-feladatok ütemezett SQL Server Integration Services (SSIS) használatával
 
-Ebben a dokumentumban megtudhatja, hogyan vezényelheti és hozhat létre U-SQL feladatokat az SQL Server Integration Service (SSIS) használatával. 
+Ebből a dokumentumból megtudhatja, hogyan hangolhat össze és hozhat létre U-SQL-feladatokat SQL Server Integration Service (SSIS) használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Az Azure Feature Pack for Integration Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) az Azure Data Lake Analytics [feladatot](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) és az Azure Data Lake [Analytics kapcsolatkezelőt](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) biztosítja, amely segít csatlakozni az Azure Data Lake Analytics szolgáltatáshoz. A feladat használatához telepítse a következőket:
+Az [integrációs szolgáltatásokhoz készült Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) biztosítja a [Azure Data Lake Analytics feladatot](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) és a [Azure Data Lake Analytics csatlakozáskezelőt](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) , amely segít a Azure Data Lake Analytics szolgáltatáshoz való kapcsolódásban. A feladat használatához telepítse a következőt:
 
-- [Sql Server Data Tools (SSDT) for Visual Studio letöltése és telepítése](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
-- [Az Azure Feature Pack integrációs szolgáltatásokhoz (SSIS) telepítése](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
+- [A Visual studióhoz készült SQL Server Data Tools (SSDT) letöltése és telepítése](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
+- [Az Azure Feature Pack telepítése integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
 
-## <a name="azure-data-lake-analytics-task"></a>Az Azure Data Lake Analytics feladata
+## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics feladat
 
-Az Azure Data Lake Analytics feladat lehetővé teszi a felhasználók számára, hogy U-SQL-feladatokat küldjenek az Azure Data Lake Analytics-fiókba. 
+A Azure Data Lake Analytics feladat lehetővé teszi a felhasználóknak U-SQL-feladatok küldését a Azure Data Lake Analytics-fiókba. 
 
-[Ismerje meg, hogyan konfigurálható az Azure Data Lake Analytics-feladat.](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
+[Útmutató Azure Data Lake Analytics feladat konfigurálásához](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
 
-![Azure Data Lake Analytics-feladat az SSIS-ben](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
+![Azure Data Lake Analytics feladat a SSIS](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
 
-Az U-SQL parancsfájlt különböző helyekről is beszerezheti az SSIS beépített függvényei és feladatai használatával, az alábbi forgatókönyvek pedig bemutatják, hogyan konfigurálhatja az U-SQL-parancsfájlokat a különböző felhasználói esetekhez.
+A U-SQL-szkriptet különböző helyekről SSIS beépített függvények és feladatok használatával érheti el, az alábbi forgatókönyvek azt mutatják be, hogyan konfigurálhatja a U-SQL-parancsfájlokat a különböző felhasználói esetekhez.
 
-## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>1. forgatókönyv-Inline script hívás tvfs és tárolt procs
+## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>1. eset – beágyazott parancsfájl-hívási tvfs és tárolt proc-parancsok használata
 
-Az Azure Data Lake Analytics Feladatszerkesztőben konfigurálja a **SourceType programot** **DirectInput ként,** és helyezze az U-SQL utasításokat az **USQLStatement alkalmazásba.**
+Azure Data Lake Analytics Feladatütemezőben konfigurálja a **forrás típusa** -t **DirectInput**, és helyezze a U-SQL-utasításokat a **USQLStatement**-be.
 
-Az egyszerű karbantartás és a kódkezelés érdekében csak rövid U-SQL parancsfájlokat helyezhet el inline parancsfájlként, például meghívhat meglévő táblaértékű függvényeket és tárolt eljárásokat az U-SQL-adatbázisokban. 
+Az egyszerű karbantartás és a kód kezelése érdekében a rendszer csak a rövid U-SQL-parancsfájlokat beágyazott parancsfájlokként helyezi üzembe, például meghívhatja a meglévő táblázat értékű függvényeket és tárolt eljárásokat a U-SQL-adatbázisokban. 
 
-![Szövegközi U-SQL parancsfájl szerkesztése az SSIS-feladatban](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
+![Beágyazott U-SQL-parancsfájl szerkesztése a SSIS-feladatban](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Kapcsolódó cikk: [Hogyan lehet átadni a paramétert a tárolt eljárásoknak](#scenario-6-pass-parameters-to-u-sql-script)
+Kapcsolódó cikk: paraméter átadása [tárolt eljárásokhoz](#scenario-6-pass-parameters-to-u-sql-script)
 
-## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>2. forgatókönyv U-SQL-fájlok használata az Azure Data Lake Store-ban
+## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>2. forgatókönyv – U-SQL-fájlok használata Azure Data Lake Store
 
-Az Azure Data Lake Store-ban is használhatja az U-SQL-fájlokat az **Azure Data Lake Store fájlrendszerfeladat** használatával az Azure Feature Pack szolgáltatáscsomagban. Ez a megközelítés lehetővé teszi a felhőben tárolt parancsfájlok használatát.
+A Azure Data Lake Store a U-SQL-fájlokat is használhatja az Azure Feature Pack **Azure Data Lake Store fájlrendszer feladatának** használatával. Ez a megközelítés lehetővé teszi a felhőben tárolt szkriptek használatát.
 
-Az alábbi lépéseket követve állítsa be a kapcsolatot az Azure Data Lake Store fájlrendszer-feladat és az Azure Data Lake Analytics-feladat között.
+Kövesse az alábbi lépéseket a Azure Data Lake Store fájlrendszer feladatának és Azure Data Lake Analytics feladat közötti kapcsolat beállításához.
 
-### <a name="set-task-control-flow"></a>Feladatvezérlési folyamat beállítása
+### <a name="set-task-control-flow"></a>Feladat-vezérlési folyamat beállítása
 
-Az SSIS-csomag tervezési nézetében adjon hozzá egy **Azure Data Lake Store fájlrendszer-feladatot,** egy **Foreach Loop Container-t** és egy **Azure Data Lake Analytics-feladatot** a Foreach Loop Container-ben. Az Azure Data Lake Store fájlrendszer-feladat segít az U-SQL-fájlok letöltésében az ADLS-fiókban egy ideiglenes mappába. A Foreach Loop Container és az Azure Data Lake Analytics feladat segítségével az ideiglenes mappában lévő összes U-SQL-fájlt U-SQL-feladatként elküldheti az Azure Data Lake Analytics-fiókba.
+A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fájlrendszerbeli feladatot**, egy **foreach loop-tárolót** és egy **Azure Data Lake Analytics feladatot** a foreach loop-tárolóban. A Azure Data Lake Store fájlrendszer feladat segít az U-SQL-fájlok letöltésében a ADLS-fiókban egy ideiglenes mappába. Az foreach loop tároló és a Azure Data Lake Analytics feladat segítséget nyújt az ideiglenes mappában lévő összes U-SQL-fájl küldéséhez U-SQL-feladatként az Azure Data Lake Analytics-fiókhoz.
 
-![U-SQL-fájlok használata az Azure Data Lake Store-ban](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![U-SQL-fájlok használata a Azure Data Lake Storeban](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
-### <a name="configure-azure-data-lake-store-file-system-task"></a>Az Azure Data Lake Store fájlrendszer-feladatának konfigurálása
+### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store fájlrendszer feladat konfigurálása
 
-1. Állítsa **a Művelet et** **CopyFromADLS -re.**
-2. Az **AzureDataLakeConnection**beállítása , további információ az [Azure Data Lake Store Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)ről.
-3. Az **AzureDataLakeDirectory beállítása.** Mutasson az U-SQL parancsfájlokat tároló mappára. Az Azure Data Lake Store-fiók gyökérmappájához viszonyított relatív elérési utat használja.
-4. Állítsa **a Cél** parancsot egy olyan mappába, amely gyorsítótárazza a letöltött U-SQL parancsfájlokat. Ez a mappaelérési út lesz használva foreach loop tároló U-SQL feladat beküldése. 
+1. Állítsa be a **műveletet** a **CopyFromADLS**értékre.
+2. **AzureDataLakeConnection**beállítása, további információ a [Azure Data Lake Store-Csatlakozáskezelőről](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
+3. **AzureDataLakeDirectory**beállítása. Mutasson arra a mappára, amely a U-SQL-parancsfájlokat tárolja. Relatív elérési út használata a Azure Data Lake Store fiók gyökérkönyvtárához képest.
+4. Állítsa a **célhelyet** olyan mappára, amely gyorsítótárazza a letöltött U-SQL-parancsfájlokat. Ez a mappa elérési útja a U-SQL-feladatok beküldéséhez használt foreach loop-tárolóban lesz használatban. 
 
-![Az Azure Data Lake Store fájlrendszer-feladatának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
+![Azure Data Lake Store fájlrendszer feladat konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
-[További információ az Azure Data Lake Store fájlrendszer-feladatról.](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017)
+[További információ a Azure Data Lake Store fájlrendszer feladatáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017).
 
-### <a name="configure-foreach-loop-container"></a>Foreach loop tároló konfigurálása
+### <a name="configure-foreach-loop-container"></a>Foreach hurok tárolójának konfigurálása
 
-1. A **Gyűjtemény** lapon állítsa **az Enumerátort** **Foreach File Enumerátor (Foreach File Ennumerator ) beállításra.**
+1. A **gyűjtemény** lapon állítsa az **enumerálást** a **foreach fájl enumerálására**.
 
-2. Állítsa **a Mappa** az **Enumtor konfigurációs** csoportban a letöltött U-SQL parancsfájlokat tartalmazó ideiglenes mappára.
+2. A **mappa** beállítása a **számbavételi konfigurációs** csoportba a letöltött U-SQL-parancsfájlokat tartalmazó ideiglenes mappába.
 
-3. Állítsa be a **Fájlok** at `*.usql` **Ennumerator konfiguráció** úgy, `.usql`hogy a hurok tároló csak a fogások a fájlok végződő .
+3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** területen `*.usql` úgy, hogy a hurok tárolója csak a- `.usql`val végződő fájlokat kapja meg.
 
-    ![Foreach loop tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. A **Változó leképezések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekérése érdekében. A fájlnév leéséhez állítsa az **Indexet** 0-ra. Ebben a példában definiáljon egy változót, amelynek neve `User::FileName`. Ez a változó az U-SQL parancsfájl-kapcsolat dinamikus lehívására és az U-SQL feladat nevének beállítására szolgál az Azure Data Lake Analytics-feladatban.
+4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a nevű `User::FileName`változót definiáljuk. Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
 
-    ![A Foreach Loop Container konfigurálása a fájlnév leéséhez](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
+    ![A foreach hurok tárolójának konfigurálása a fájl nevének beolvasásához](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
-### <a name="configure-azure-data-lake-analytics-task"></a>Az Azure Data Lake Analytics feladat konfigurálása 
+### <a name="configure-azure-data-lake-analytics-task"></a>Azure Data Lake Analytics feladat konfigurálása 
 
-1. Állítsa **a SourceType programot** **FileConnection**beállításra.
+1. Állítsa **SourceType** a forrás típusa **FileConnection**értékre.
 
-2. Állítsa be a **Fájlkapcsolat** beállítását a Foreach Loop Container fájlobjektumból visszaadott fájlobjektumokra.
+2. Állítsa be a **FileConnection** a foreach loop-tárolóból visszaadott fájl objektumra mutató kapcsolódási pontra.
     
-    A fájlkapcsolat létrehozása:
+    A kapcsolatfájl létrehozása:
 
-   1. Válassza az ** \<Új kapcsolat...>** lehetőséget a Fájlkapcsolat beállításban.
-   2. Állítsa **a Használati típust** **meglévő fájlra**, és állítsa a **fájlt** bármely meglévő fájl elérési útjára.
+   1. Válassza az ** \<új kapcsolatok... >** lehetőséget a FileConnection beállításban.
+   2. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
 
-       ![Foreach loop tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-   3. A **Kapcsolatkezelők** nézetben kattintson a jobb gombbal az imént létrehozott fájlkapcsolatra, és válassza a **Tulajdonságok parancsot.**
+   3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 
-   4. A **Tulajdonságok** ablakban bontsa ki a **Kifejezések csomópontot,** és állítsa a `@[User::FileName]` **ConnectionString** karakterláncot a Foreach Loop Container-ben definiált változóra, például .
+   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált `@[User::FileName]`változóra, például:.
 
-       ![Foreach loop tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. Állítsa be az **AzureDataLakeAnalyticsConnection-t** az Azure Data Lake Analytics-fiókhoz, amelybe feladatokat szeretne küldeni. További információ az [Azure Data Lake Analytics csatlakozáskezelőjéről.](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)
+3. Állítsa be a **AzureDataLakeAnalyticsConnection** arra a Azure Data Lake Analytics-fiókra, amelyhez feladatokat kíván küldeni. További információ a [Azure Data Lake Analytics Csatlakozáskezelőről](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 
-4. Más feladatkonfigurációk beállítása. [További információ.](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
+4. Más feladatok konfigurációjának beállítása. [További információ](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
 
-5. **Kifejezések** használatával dinamikusan állíthatja be az U-SQL feladat nevét:
+5. **Kifejezések** használata a U-SQL-feladatok nevének dinamikus beállításához:
 
-    1. A **Kifejezések** lapon adjon hozzá egy új kifejezéskulcs-érték párt a **Feladatnév hez.**
-    2. Állítsa be a Feladatnév értékét a Foreach Loop Container-ben definiált változóra, `@[User::FileName]`például.
+    1. A **kifejezések** lapon adjon hozzá egy új Expression kulcs-érték párokat a **JobName**.
+    2. Állítsa be a JobName értékét a foreach loop-tárolóban definiált változóra, például `@[User::FileName]`:.
     
-        ![SSIS-kifejezés konfigurálása az U-SQL feladat nevéhez](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
+        ![SSIS kifejezés konfigurálása U-SQL-feladatokhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 
-## <a name="scenario-3-use-u-sql-files-in-azure-blob-storage"></a>3. forgatókönyv: U-SQL-fájlok használata az Azure Blob Storage-ban
+## <a name="scenario-3-use-u-sql-files-in-azure-blob-storage"></a>3. forgatókönyv – U-SQL-fájlok használata az Azure-ban Blob Storage
 
-Az Azure Blob Storage-ban az **Azure Blob Download Task** az Azure Feature Pack szolgáltatásban található U-SQL-fájlokat használhatja. Ez a megközelítés lehetővé teszi a parancsfájlok felhőben való használatát.
+A U-SQL-fájlokat az Azure Blob Storage Azure **blob letöltési feladatával** használhatja az Azure Feature packben. Ez a megközelítés lehetővé teszi a parancsfájlok használatát a felhőben.
 
-A lépések hasonlóak [a 2.](#scenario-2-use-u-sql-files-in-azure-data-lake-store) Módosítsa az Azure Data Lake Store fájlrendszer-feladatot az Azure Blob letöltési feladatra. [További információ az Azure Blob letöltési feladatáról.](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)
+A lépések a 2. [forgatókönyvhöz hasonlóak: a U-SQL-fájlok használata a Azure Data Lake Storeban](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Módosítsa a Azure Data Lake Store fájlrendszer feladatot az Azure Blob letöltési feladatra. [További információ az Azure Blob letöltési feladatáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
-A vezérlési folyamat olyan, mint alatta.
+A vezérlési folyamat az alábbihoz hasonló.
 
-![U-SQL-fájlok használata az Azure Data Lake Store-ban](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-blob-storage.png)
+![U-SQL-fájlok használata a Azure Data Lake Storeban](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-blob-storage.png)
 
-## <a name="scenario-4-use-u-sql-files-on-the-local-machine"></a>4. forgatókönyv U-SQL-fájlok használata a helyi számítógépen
+## <a name="scenario-4-use-u-sql-files-on-the-local-machine"></a>4. forgatókönyv – U-SQL-fájlok használata a helyi gépen
 
-A felhőben tárolt U-SQL fájlok használata mellett a helyi számítógépen lévő fájlokat vagy az SSIS-csomagokkal telepített fájlokat is használhatja.
+A felhőben tárolt U-SQL-fájlok használata mellett a helyi gépen vagy a SSIS-csomagokban üzembe helyezett fájlokon is használhat fájlokat.
 
-1. Kattintson a jobb gombbal **a Kapcsolatkezelők** elemre az SSIS-projektben, és válassza az **Új kapcsolatkezelő parancsot.**
+1. Kattintson a jobb gombbal a SSIS projektben található **kapcsolatkezelő** elemre, és válassza az **új Csatlakozáskezelő**elemet.
 
-2. Válassza a **Fájltípus** lehetőséget, és kattintson **a Hozzáadás...** gombra.
+2. Válassza a **Fájltípus** lehetőséget, majd kattintson a **Hozzáadás...** elemre.
 
-3. Állítsa **a Használati típust** **a Létező fájlra**, és állítsa be a **fájlt** a helyi számítógépen lévő fájlra.
+3. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa be a **fájlt** a helyi gépen lévő fájlra.
 
-    ![Fájlkapcsolat hozzáadása a helyi fájlhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+    ![Kapcsolatfájl hozzáadása a helyi fájlhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-4. Azure **Data Lake Analytics-feladat** hozzáadása és:
-    1. Állítsa **a SourceType programot** **FileConnection**beállításra.
-    2. Állítsa be a **Fájlkapcsolat** beállítása az imént létrehozott fájlkapcsolatra.
+4. **Azure Data Lake Analytics** feladat hozzáadása és:
+    1. Állítsa **SourceType** a forrás típusa **FileConnection**értékre.
+    2. Állítsa be a **FileConnection** a most létrehozott kapcsolatfájl számára.
 
-5. Fejezze be az Azure Data Lake Analytics-feladat egyéb konfigurációit.
+5. Azure Data Lake Analytics feladat egyéb konfigurációinak befejezése.
 
-## <a name="scenario-5-use-u-sql-statement-in-ssis-variable"></a>5. forgatókönyv U-SQL utasítás használata az SSIS változóban
+## <a name="scenario-5-use-u-sql-statement-in-ssis-variable"></a>5. forgatókönyv – U-SQL-utasítás használata a SSIS változóban
 
-Bizonyos esetekben előfordulhat, hogy dinamikusan kell létrehoznia az U-SQL utasításokat. Az **SSIS-változó** **ssis-kifejezéssel** és más SSIS-feladatokkal, például a Script Task-tel is használható az U-SQL utasítás dinamikus létrehozásához.
+Bizonyos esetekben előfordulhat, hogy dinamikusan kell létrehoznia a U-SQL-utasításokat. Az U-SQL-utasítás dinamikus létrehozásához használhatja a **SSIS változót** a **SSIS kifejezéssel** és más SSIS-feladatokkal, például a parancsfájl-feladattal.
 
-1. Nyissa meg a Változók eszközablakot **az SSIS > változók** felső szintű menüjén keresztül.
+1. A változók eszköz ablakának megnyitása a **SSIS > változók** felső szintű menüjében.
 
-2. Adjon hozzá egy SSIS-változót, és állítsa be közvetlenül az értéket, vagy használja a **kifejezést** az érték létrehozásához.
+2. Adjon hozzá egy SSIS változót, és állítsa be közvetlenül az értéket, vagy használja a **kifejezést** az érték létrehozásához.
 
-3. Azure **Data Lake Analytics-feladat** hozzáadása és:
-    1. Állítsa **a SourceType-ot** **változóra.**
-    2. Állítsa **a SourceVariable** változót az imént létrehozott SSIS változóhoz.
+3. **Azure Data Lake Analytics feladat** hozzáadása és:
+    1. Állítsa **SourceType** a forrás típusa **változóra**.
+    2. Állítsa be a **SourceVariable** a most létrehozott SSIS-változóra.
 
-4. Fejezze be az Azure Data Lake Analytics-feladat egyéb konfigurációit.
+4. Azure Data Lake Analytics feladat egyéb konfigurációinak befejezése.
 
-## <a name="scenario-6-pass-parameters-to-u-sql-script"></a>6. forgatókönyv-Pass paraméterek u-SQL parancsfájl
+## <a name="scenario-6-pass-parameters-to-u-sql-script"></a>6. forgatókönyv – paraméterek átadása U-SQL-parancsfájlba
 
-Bizonyos esetekben előfordulhat, hogy dinamikusan szeretné beállítani az U-SQL változó értékét az U-SQL parancsfájlban. **Paraméter-leképezési** funkció az Azure Data Lake Analytics-feladat segít ebben a forgatókönyvben. Általában két tipikus felhasználói eset van:
+Bizonyos esetekben érdemes lehet dinamikusan beállítani az U-SQL változó értékét a U-SQL-parancsfájlban. Az Azure Data Lake Analytics feladat **paraméter-hozzárendelési** funkciója segít ebben a forgatókönyvben. Általában két tipikus felhasználói eset létezik:
 
-- A bemeneti és kimeneti fájl elérési útváltozóinak dinamikus beállítása az aktuális dátum és idő alapján.
-- Állítsa be a tárolt eljárások paraméterét.
+- A bemeneti és kimeneti fájl elérési útjának változóit az aktuális dátum és idő alapján dinamikusan állítsa be.
+- Állítsa be a paramétert a tárolt eljárásokhoz.
 
-[További információ az U-SQL parancsfájl paramétereinek beállításáról.](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration)
+[További információ a U-SQL-szkript paramétereinek megadásáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>További lépések
 
 - [SSIS-csomagok futtatása az Azure-ban](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [Azure feature pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [U-SQL-feladatok ütemezése az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Azure Feature Pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
+- [U-SQL-feladatok ütemezett Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)

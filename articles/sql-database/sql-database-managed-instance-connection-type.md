@@ -1,6 +1,6 @@
 ---
-title: Felügyelt példány kapcsolattípusai
-description: További információ a felügyelt példánykapcsolat-típusokról
+title: Felügyelt példányok kapcsolatainak típusai
+description: Tudnivalók a felügyelt példányok kapcsolatainak típusairól
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,43 +10,43 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73819458"
 ---
-# <a name="azure-sql-database-managed-instance-connection-types"></a>Az Azure SQL Database felügyelt példányának kapcsolattípusai
+# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database felügyelt példányok kapcsolatainak típusai
 
-Ez a cikk bemutatja, hogyan ügyfelek csatlakoznak az Azure SQL Database felügyelt példány a kapcsolat típusától függően. A kapcsolattípusok módosításához a parancsfájlmintákat az alábbiakban találjuk, valamint az alapértelmezett kapcsolódási beállítások módosításával kapcsolatos szempontokat.
+Ez a cikk azt ismerteti, hogyan csatlakozhatnak az ügyfelek Azure SQL Database felügyelt példányhoz a kapcsolat típusától függően. A kapcsolati típusok módosítására szolgáló parancsfájl-mintákat alább találja, valamint az alapértelmezett kapcsolati beállítások módosításával kapcsolatos szempontokat.
 
 ## <a name="connection-types"></a>Kapcsolattípusok
 
-Az Azure SQL Database felügyelt példánya a következő két kapcsolattípust támogatja:
+Azure SQL Database felügyelt példány a következő két kapcsolattípus használatát támogatja:
 
-- **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz létesítenek kapcsolatot. Ha engedélyezni szeretné a kapcsolatot az átirányításhasználatával, meg kell nyitnia a tűzfalakat és a hálózati biztonsági csoportokat (NSG), hogy az 1433-as és az 11000-11999-es portokon is engedélyezze a hozzáférést. A csomagok közvetlenül az adatbázisba kerülnek, ezért a proxyn keresztüli átirányítás használatával a késés és az átviteli teljesítmény javul.
-- **Proxy (alapértelmezett):** Ebben a módban minden kapcsolat proxyátjáró-összetevőt használ. A kapcsolat engedélyezéséhez csak a magánhálózatok 1433-as és a nyilvános kapcsolathoz szükséges 3342-es portot kell megnyitni. Ennek a módnak a kiválasztása nagyobb késést és alacsonyabb átviteli terhelést eredményezhet a munkaterhelés jellegétől függően. A legalacsonyabb késés és a legmagasabb átviteli képesség esetén erősen javasoljuk az átirányítási kapcsolatházirendet a proxykapcsolat-házirenden keresztül.
+- **Átirányítás (ajánlott):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. Az átirányítás használatával történő csatlakozás engedélyezéséhez meg kell nyitnia a tűzfalakat és a hálózati biztonsági csoportokat (NSG), hogy engedélyezze a hozzáférést a 1433-es és 11000-11999-es portokon. A csomagok közvetlenül az adatbázisba kerülnek, ezért a proxyn keresztüli átirányítás a késés és az átviteli teljesítmény terén is javul.
+- **Proxy (alapértelmezett):** Ebben a módban minden kapcsolat egy proxy átjáró összetevőt használ. A kapcsolat engedélyezéséhez csak a 1433-es portot kell megnyitni a magánhálózati és a 3342-es porthoz a nyilvános kapcsolathoz. Ha ezt a módot választja, a számítási feladatok természetétől függően nagyobb késést és alacsonyabb átviteli sebességet eredményezhet. A legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk, hogy a proxy kapcsolati házirendjét átirányítsa az átirányítás kapcsolati házirendre.
 
-## <a name="redirect-connection-type"></a>Kapcsolattípus átirányítása
+## <a name="redirect-connection-type"></a>A kapcsolattípus átirányítása
 
-Az átirányítási kapcsolat típusa azt jelenti, hogy a TCP-munkamenet SQL-motorhoz való létrehozása után az ügyfélmunkamenet a terheléselosztótól szerzi be a virtuális fürtcsomópont célvirtuális IP-címét. Az ezt követő csomagok közvetlenül a virtuális fürtcsomópontra áramlanak, megkerülve az átjárót. Az alábbi ábra ezt a forgalmat mutatja be.
+A kapcsolat átirányítása azt jelenti, hogy a TCP-munkamenet az SQL-motorhoz való létrehozása után az ügyfél-munkamenet a terheléselosztó virtuális fürtjének célként megadott virtuális IP-címét szerzi be. A következő csomagok közvetlenül a virtuális fürt csomópontjára áramlanak, és megkerülik az átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
-![átirányítás.png](media/sql-database-managed-instance-connection-types/redirect.png)
+![átirányítás. png](media/sql-database-managed-instance-connection-types/redirect.png)
 
 > [!IMPORTANT]
-> Az átirányítási kapcsolat típusa jelenleg csak a magánvégpontokesetében működik. A kapcsolattípus beállításától függetlenül a nyilvános végponton keresztül érkező kapcsolatok proxyn keresztül érkeznek.
+> Az átirányítási kapcsolattípus jelenleg csak privát végponton működik. A kapcsolat típusának beállításától függetlenül a nyilvános végponton keresztül érkező kapcsolatok egy proxyn keresztül történnek.
 
-## <a name="proxy-connection-type"></a>Proxykapcsolat típusa
+## <a name="proxy-connection-type"></a>Proxy kapcsolattípus
 
-A proxykapcsolat típusa azt jelenti, hogy a TCP-munkamenet az átjáró használatával jön létre, és az összes további csomag átáramlik rajta. Az alábbi ábra ezt a forgalmat mutatja be.
+A proxy kapcsolat típusa azt jelenti, hogy a TCP-munkamenet az átjáróval és az azt követő összes további csomaggal lesz létrehozva. A következő ábra szemlélteti ezt a forgalmat.
 
-![proxy.png](media/sql-database-managed-instance-connection-types/proxy.png)
+![proxy. png](media/sql-database-managed-instance-connection-types/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>Parancsfájl a kapcsolattípus-beállítások módosításához a PowerShell használatával
+## <a name="script-to-change-connection-type-settings-using-powershell"></a>A kapcsolattípus beállításainak a PowerShell használatával történő módosítására szolgáló parancsfájl
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A következő PowerShell-parancsfájl bemutatja, hogyan módosíthatja a felügyelt példány kapcsolattípusát átirányításra.
+A következő PowerShell-szkript bemutatja, hogyan módosíthatja a felügyelt példányok kapcsolódási típusát az átirányításhoz.
 
 ```powershell
 Install-Module -Name Az
@@ -66,5 +66,5 @@ $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ## <a name="next-steps"></a>További lépések
 
 - [Adatbázis visszaállítása egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md)
-- További információ a [nyilvános végpont okainak konfigurálásáról felügyelt példányon](sql-database-managed-instance-public-endpoint-configure.md)
-- További információ a [felügyelt példányok kapcsolódási architektúrájáról](sql-database-managed-instance-connectivity-architecture.md)
+- Megtudhatja, hogyan [konfigurálhat nyilvános végpontot a felügyelt példányon](sql-database-managed-instance-public-endpoint-configure.md)
+- A [felügyelt példány kapcsolati architektúrájának](sql-database-managed-instance-connectivity-architecture.md) megismerése

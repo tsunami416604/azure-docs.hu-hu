@@ -1,9 +1,9 @@
 ---
-title: Raspberry Pi webszimulátor csatlakoztatása az Azure IoT Hubhoz (Node.js)
-description: A Raspberry Pi webszimulátort a Raspberry Pi-hez való Azure IoT Hubhoz csatlakoztatva adatokat küldhet az Azure-felhőbe.
+title: A málna PI webszimulátor összekötése az Azure IoT Hub (node. js)
+description: A málna PI webszimulátor összekapcsolásával Azure-IoT Hub a málna PI-hoz az Azure-felhőbe való adatküldéshez.
 author: wesmc7777
 manager: philmea
-keywords: raspberry pi szimulátor, azúrkék iot raspberry pi, raspberry pi iot hub, raspberry pi adatokat küld felhőbe, raspberry pi felhőbe
+keywords: málna PI szimulátor, Azure IOT málna PI, málna PI IOT hub, málna PI az adatküldés a felhőbe, málna PI a felhőbe
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954533"
 ---
-# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi online szimulátor csatlakoztatása az Azure IoT Hubhoz (Node.js)
+# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>A málna PI online szimulátor összekötése az Azure IoT Hub (node. js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ebben az oktatóanyagban a Raspberry Pi online szimulátorral való munka alapjainak megismerésével kezdheti. Ezután megtudhatja, hogyan csatlakoztathatja zökkenőmentesen a Pi-szimulátort a felhőhöz az [Azure IoT Hub](about-iot-hub.md)használatával.
+Ebben az oktatóanyagban elkezdi megtanulni a málna PI online szimulátor használatának alapjait. Ezután megtudhatja, hogyan csatlakoztatható zökkenőmentesen a PI-szimulátor a felhőhöz az [Azure IoT hub](about-iot-hub.md)használatával.
 
-Ha fizikai eszközökkel rendelkezik, az első lépésekhez keresse fel a [Raspberry Pi csatlakoztatását az Azure IoT Hubhoz.](iot-hub-raspberry-pi-kit-node-get-started.md)
+Ha fizikai eszközökkel rendelkezik, a kezdéshez látogasson el a [málna PI csatlakoztatása az Azure IoT hubhoz](iot-hub-raspberry-pi-kit-node-get-started.md) című oldalon.
 
 <p>
 <div id="diag" style="width:100%; text-align:center">
@@ -36,32 +36,32 @@ Ha fizikai eszközökkel rendelkezik, az első lépésekhez keresse fel a [Raspb
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
 </div>
 
-## <a name="what-you-do"></a>Mit csinálsz
+## <a name="what-you-do"></a>Teendők
 
-* Ismerje meg az alapokat a Raspberry Pi online szimulátor.
+* Ismerkedjen meg a málna PI online szimulátor alapjaival.
 
 * Hozzon létre egy IoT hubot.
 
-* Regisztráljon egy eszközt a Pi számára az IoT hubban.
+* Regisztráljon egy eszközt a PI-hez az IoT hub-ban.
 
-* Futtasson egy mintaalkalmazást a Pi-n szimulált érzékelőadatok ioT hubra küldéséhez.
+* Futtasson egy minta alkalmazást a PI-ben, hogy szimulált érzékelői adatait küldjön az IoT hub-nak.
 
-A szimulált Raspberry Pi csatlakoztatása egy létrehozott IoT-központhoz. Ezután futtasson egy mintaalkalmazást a szimulátorral az érzékelőadatok létrehozásához. Végül elküldi az érzékelő adatait az IoT hubra.
+Szimulált málna PI összekötése egy Ön által létrehozott IoT hubhoz. Ezután futtasson egy minta alkalmazást a szimulátor használatával az érzékelők létrehozásához. Végül elküldi az érzékelő adatait az IoT hubhoz.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-* Azure IoT-központ létrehozása és az új eszközkapcsolati karakterlánc beszerezni. Ha nem rendelkezik Azure-fiókkal, néhány perc alatt [hozzon létre egy ingyenes Azure-próbafiókot.](https://azure.microsoft.com/free/)
+* Azure IoT hub létrehozása és az új eszköz-kapcsolódási karakterlánc beszerzése. Ha nem rendelkezik Azure-fiókkal, mindössze néhány perc alatt [hozzon létre egy ingyenes Azure próbaverziós fiókot](https://azure.microsoft.com/free/) .
 
-* Hogyan működik a Raspberry Pi online szimulátor.
+* A málna PI online szimulátor használata.
 
-* Az érzékelőadatok küldése az IoT hubra.
+* Szenzorok adatainak küldése az IoT hubhoz.
 
-## <a name="overview-of-raspberry-pi-web-simulator"></a>A Raspberry Pi webes szimulátor áttekintése
+## <a name="overview-of-raspberry-pi-web-simulator"></a>A málna PI web Simulator áttekintése
 
-Kattintson a gombra, hogy indítson Raspberry Pi online szimulátor.
+A gombra kattintva elindíthatja a málna PI online szimulátort.
 
 > [!div class="button"]
-> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi szimulátor indítása</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">A málna PI szimulátor elindítása</a>
 
 A webes szimulátorban három terület található.
 
@@ -78,15 +78,15 @@ A webes szimulátorban három terület található.
    * **Összecsukás/Kibontás** – A jobb szélső gombbal a konzolablak kicsinyíthető le és bontható ki.
 
 > [!NOTE]
-> A Raspberry Pi webes szimulátor már elérhető előzetes verzióban. Szeretnénk hallani a hangját a [Gitter Chatroomban.](https://gitter.im/Microsoft/raspberry-pi-web-simulator) A forráskód nyilvános a [GitHubon.](https://github.com/Azure-Samples/raspberry-pi-web-simulator)
+> A málna PI webes szimulátor már előzetes verzióban érhető el. Szeretnénk hallani a hangját a [Gitter chaten](https://gitter.im/Microsoft/raspberry-pi-web-simulator). A forráskód nyilvános a [githubon](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
-![Pi online szimulátor áttekintése](media/iot-hub-raspberry-pi-web-simulator/0-overview.png)
+![A PI online Simulator áttekintése](media/iot-hub-raspberry-pi-web-simulator/0-overview.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
@@ -96,18 +96,18 @@ A webes szimulátorban három terület található.
 1. 
    ![Az eszköz kapcsolati sztringjének cseréje](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. Válassza **Run** a `npm start` Futtatás vagy a típus gombot az alkalmazás futtatásához.
+2. Válassza a **Futtatás** vagy `npm start` a típus lehetőséget az alkalmazás futtatásához.
 
-A következő kimenetnek kell látnia, amely az érzékelő adatait és ![az IoT hub kimenetére küldött üzeneteket jeleníti meg - a Raspberry Pi-ből az IoT hubra küldött érzékelőadatokat](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
+A következő kimenetnek kell megjelennie, amely megjeleníti az érzékelő adatait és az IoT hub ![kimeneti-érzékelő adatait a málna PI-ből a IoT hub-ba küldött üzenetekben](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>A központ által fogadott üzenetek elolvasása
+## <a name="read-the-messages-received-by-your-hub"></a>A hub által fogadott üzenetek olvasása
 
-Az IoT hub által a szimulált eszközről fogadott üzenetek figyelésének egyik módja az Azure IoT-eszközök a Visual Studio-kódhoz használata. További információ: [Az Azure IoT-eszközök használata a Visual Studio-kódhoz az eszköz és az IoT Hub közötti üzenetek küldéséhez és fogadásához.](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+Az IoT hub által a szimulált eszközről fogadott üzenetek figyelésének egyik módja a Visual Studio Code-hoz készült Azure IoT Tools használata. További információ: az [Azure IoT Tools for Visual Studio Code használata üzenetek küldéséhez és fogadásához az eszköz és a IoT hub között](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-Az eszköz által küldött adatok feldolgozásának további módjaiért folytassa a következő szakaszsal.
+Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy mintaalkalmazást futtatott az érzékelőadatok gyűjtésére és az IoT-központba való elküldésre.
+Egy minta alkalmazást futtatott az érzékelő adatainak összegyűjtéséhez és az IoT hubhoz való elküldéséhez.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,6 +1,6 @@
 ---
-title: Szimulált telemetriai adatok megjelenítése a Time Series Insights segítségével – Azure | Microsoft dokumentumok
-description: Ismerje meg, hogyan konfigurálhatja a Time Series Insights-környezetet az Eszközszimulációs megoldásgyorsító által létrehozott telemetriai adatok feltárására és elemzésére.
+title: Szimulált telemetria megjelenítése Time Series Insights-Azure-val | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja Time Series Insights környezetét az eszköz-szimulációs megoldás-gyorsító által generált telemetria megismeréséhez és elemzéséhez.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,168 +9,168 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889347"
 ---
-# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>A Time Series Insights használatával vizualizálja az Eszközszimulációi megoldásgyorsítótól küldött telemetriai adatokat
+# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights használata az eszköz-szimulációs megoldás-gyorsító által eljuttatott telemetria megjelenítéséhez
 
-Az eszközszimulációs megoldásgyorsító lehetővé teszi, hogy telemetriát hozzon létre szimulált eszközökről az IoT-megoldások teszteléséhez. Ez az útmutató bemutatja, hogyan vizualizálhatja és elemezheti a szimulált telemetriai adatokat egy Time Series Insights-környezet használatával.
+Az eszköz-szimulációs megoldás gyorsítása lehetővé teszi a szimulált eszközökről származó telemetria létrehozását a IoT-megoldások teszteléséhez. Ez a útmutató bemutatja, hogyan jelenítheti meg és elemezheti a szimulált telemetria Time Series Insights-környezet használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató ban leírt lépések végrehajtásához aktív Azure-előfizetésre van szüksége. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-Az útmutató lépései feltételezik, hogy üzembe helyezte az Eszközszimulációs megoldásgyorsítót az Azure-előfizetésében. Ha még nem telepítette a megoldásgyorsítót, kövesse a telepítés és a [felhőalapú eszközszimulációs megoldás](quickstart-device-simulation-deploy.md) rövid útmutatójának lépéseit.
+A útmutató lépései azt feltételezik, hogy telepítette az eszköz szimulációs megoldásának gyorssegédét az Azure-előfizetéséhez. Ha még nem telepítette a megoldás-gyorsító eszközt, kövesse a [felhőalapú eszköz-szimulációs megoldás üzembe helyezése és futtatása](quickstart-device-simulation-deploy.md) című rövid útmutatót.
 
-Ez a cikk feltételezi, hogy a megoldásgyorsító neve **contoso-szimuláció.** Cserélje le a **contoso-szimulációt** a megoldásgyorsító nevére a következő lépések végrehajtásával.
+Ez a cikk azt feltételezi, hogy a megoldás-gyorsító neve **contoso-szimulációs**. A következő lépések elvégzése után cserélje le a **contoso-szimulációs** nevet a megoldás-gyorsító nevére.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-consumer-group"></a>Fogyasztói csoport létrehozása
 
-Létre kell hoznia egy dedikált fogyasztói csoportot az IoT-központban a Telemetriát a Time Series Insights streameléséhez. A Time Series Insights eseményforrásának kizárólagos, az IoT Hub-fogyasztói csoport használatával kell rendelkeznie.
+Létre kell hoznia egy dedikált fogyasztói csoportot az IoT hub-ban, hogy Time Series Insights stream-telemetria. Az Time Series Insights egy IoT Hub fogyasztói csoport kizárólagos használatával kell rendelkezniük.
 
-A következő lépések az Azure CLI használatával az Azure Cloud Shell a fogyasztói csoport létrehozásához:
+A következő lépések a Azure Cloud Shell Azure parancssori felületét használják a fogyasztói csoport létrehozásához:
 
-1. Az IoT hub az eszközszimulációs megoldásgyorsító üzembe helyezésekor létrehozott számos erőforrás egyike. Hajtsa végre a következő parancsot az IoT hub nevének megkeresésére – ne felejtse el használni a megoldásgyorsító nevét:
+1. Az IoT hub az eszköz-szimulációs megoldás-gyorsító üzembe helyezése során létrehozott számos erőforrás egyike. Futtassa a következő parancsot a IoT hub nevének megkereséséhez – ne felejtse el használni a megoldás-gyorsító nevét:
 
     ```azurecli-interactive
     az resource list --resource-group contoso-simulation -o table
     ```
 
-    Az IoT hub a **Microsoft.Devices/IotHubs**típusú erőforrás.
+    Az IoT hub a **Microsoft. Devices/IotHubs**típusú erőforrás.
 
-1. Adjon hozzá egy **devicesimulationtsi** nevű fogyasztói csoportot a hubhoz. A következő parancs használja a hub és a megoldásgyorsító nevét:
+1. Vegyen fel egy **devicesimulationtsi** nevű fogyasztói csoportot a hubhoz. A következő parancsban használja a hub és a megoldás-gyorsító nevét:
 
     ```azurecli-interactive
     az iot hub consumer-group create --hub-name contoso-simulation7d894 --name devicesimulationtsi --resource-group contoso-simulation
     ```
 
-    Most már bezárhatja az Azure Cloud Shell.
+    Most már bezárhatja a Azure Cloud Shell.
 
 ## <a name="create-a-new-time-series-insights-environment"></a>Új Time Series Insights-környezet létrehozása
 
-[Az Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás az IoT-léptékű idősorozat-adatok felhőben történő kezeléséhez. Új Time Series Insights-környezet létrehozása:
+A [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel kezelheti a Felhőbeli IoT. Új Time Series Insights környezet létrehozása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza **az Erőforrás internetes** > **dolgok** > **internete, az idősorozatok elemzése lehetőséget:**
+1. Válassza **az erőforrás** > **létrehozása eszközök internetes hálózata** > **Time Series Insights**:
 
-    ![Új idősorozat-elemzések](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
+    ![Új Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
-1. Ha a Time Series Insights-környezetet ugyanabban az erőforráscsoportban szeretné létrehozni, mint a megoldásgyorsítót, használja az alábbi táblázatértékeit:
+1. Ha a Time Series Insights környezetet a megoldás-gyorssegédtel azonos erőforráscsoporthoz szeretné létrehozni, használja az alábbi táblázatban szereplő értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Környezet neve | A következő képernyőkép a **Contoso-TSI**nevet használja. A lépés során válassza ki saját egyedi nevét. |
+    | Környezet neve | A következő képernyőkép a **contoso-ÁME**nevet használja. A lépés elvégzése után válassza ki a saját egyedi nevét. |
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Erőforráscsoport | **contoso-szimuláció**. Használja a megoldásgyorsító nevét. |
-    | Hely | Ez a példa **az USA keleti részét**használja. Hozza létre a környezetet ugyanabban a régióban, mint az eszköz szimulációs gyorsító. |
+    | Erőforráscsoport | **contoso – szimuláció**. Használja a megoldás-gyorsító nevét. |
+    | Hely | Ez a példa az **USA keleti**régióját használja. Hozza létre a környezetet ugyanabban a régióban, mint az eszköz szimulációs gyorsítása. |
     | SKU |**S1** |
     | Kapacitás | **1** |
 
-    ![Idősorozat-elemzési adatok létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![Time Series Insights létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
-    > A Time Series Insights-környezet hozzáadása ugyanahhoz az erőforráscsoporthoz, mint a megoldásgyorsító azt jelenti, hogy a megoldásgyorsító törlésekor törlődik.
+    > Ha hozzáadja a Time Series Insights környezetet ugyanahhoz az erőforráscsoporthoz, mint a megoldás-gyorsító, azt jelenti, hogy törli a megoldás-gyorsító törlését.
 
-1. Kattintson **a Létrehozás gombra.** A környezet létrehozása eltarthat néhány percig.
+1. Kattintson a **Létrehozás**gombra. A környezet létrehozása több percet is igénybe vehet.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
-Hozzon létre egy új eseményforrást az IoT hubhoz való csatlakozáshoz. Használja az előző lépésekben létrehozott fogyasztói csoportot. A Time Series Insights eseményforráshoz egy másik szolgáltatás által nem használt dedikált fogyasztói csoport ra van szükség.
+Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Használja az előző lépésekben létrehozott fogyasztói csoportot. A Time Series Insights eseményforrás olyan dedikált fogyasztói csoportot igényel, amelyet más szolgáltatás nem használ.
 
-1. Az Azure Portalon keresse meg az új Time Series-környezetet.
+1. A Azure Portal navigáljon az új idősorozat-környezethez.
 
-1. A bal oldalon kattintson az **Eseményforrások elemre:**
+1. A bal oldalon kattintson az **események forrása**elemre:
 
-    ![Eseményforrások megtekintése](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
+    ![Eseményforrás megtekintése](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. Kattintson a **Hozzáadás gombra:**
+1. Kattintson a **Hozzáadás**gombra:
 
     ![Eseményforrás hozzáadása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Az IoT-központ új eseményforrásként való konfigurálásához használja az alábbi táblázatban szereplő értékeket:
+1. Az IoT hub új eseményforrásként való konfigurálásához használja az alábbi táblázatban szereplő értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Esemény forrásának neve | A következő képernyőkép a **contoso-iot-hub**nevet használja. A lépés végrehajtásával saját egyedi nevet használjon. |
+    | Eseményforrás neve | A következő képernyőkép a **contoso-IOT-hub**nevet használja. A lépés elvégzéséhez használja a saját egyedi nevét. |
     | Forrás | **IoT Hub** |
-    | Importálási beállítás | **Az IoT Hub használata elérhető előfizetésekből** |
+    | Importálási beállítás | **IoT Hub használata az elérhető előfizetések közül** |
     | Előfizetés azonosítója | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | IoT Hub neve | **contoso-simulation7d894**. Használja az IoT hub nevét az eszközszimulációs megoldásgyorsítóból. |
+    | IoT Hub neve | **contoso – simulation7d894**. Használja az IoT hub nevét az eszköz szimulációs megoldásának gyorssegédje alapján. |
     | Iot Hub szabályzatneve | **iothubowner** |
-    | A központ iot-kulcsa | Ez a mező automatikusan ki töltődik. |
-    | IoT Hub fogyasztói csoport | **eszközszimulációs** |
+    | IOT hub-házirend kulcsa | Ez a mező automatikusan fel van töltve. |
+    | IoT Hub fogyasztói csoport | **devicesimulationtsi** |
     | Eseményszerializációs formátum | **JSON** |
     | Időbélyeg-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson **a Létrehozás gombra.**
+1. Kattintson a **Létrehozás**gombra.
 
 > [!NOTE]
-> További [felhasználóknak](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) is hozzáférést adhat a Time Series Insights-kezelőhöz.
+> [További felhasználóknak is hozzáférést biztosíthat](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) a Time Series Insights Explorerrel.
 
 ## <a name="start-a-simulation"></a>Szimuláció indítása
 
-A Time Series Insights-kezelő használata előtt konfigurálja az eszközszimulációs megoldásgyorsítót, hogy telemetriát hozzon létre. A következő képernyőkép 10 hűtőeszközzel futó szimulációt mutat be:
+A Time Series Insights Explorer használata előtt konfigurálja az eszköz-szimulációs megoldás-gyorsító eszközt a telemetria létrehozásához. A következő képernyőképen egy futó szimuláció látható 10 Chiller eszközzel:
 
-![Eszközszimuláció futtatása](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
+![Eszköz szimulációjának futtatása](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights Explorer
 
-A Time Series Insights explorer egy webalkalmazás, amely segítségével vizualizálhatja a telemetriai adatokat.
+A Time Series Insights Explorer egy webalkalmazás, amelyet a telemetria megjelenítésére használhat.
 
-1. Az Azure Portalon válassza a Time Series Insights **Áttekintés lapját.**
+1. A Azure Portal válassza a Time Series Insights **Áttekintés** lapot.
 
-1. A Time Series Insights explorer webalkalmazás megnyitásához kattintson az **Ugrás a környezetbe**gombra:
+1. A Time Series Insights Explorer webalkalmazás megnyitásához kattintson az **Ugrás a**következőhöz: környezet:
 
     ![Time Series Insights Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-environment.png)
 
-1. Az időválasztó panelen válassza az **Utolsó 30 percet** a gyorsidők menüből, és kattintson a **Keresés**gombra:
+1. Az idő kiválasztása panelen válassza a gyors időpontok menüből az **elmúlt 30 perc** lehetőséget, majd kattintson a **Keresés**gombra:
 
-    ![Time Series Insights-kereső keresése](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
+    ![Time Series Insights Explorer-keresés](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
 
-1. A bal oldali kifejezéspanelen válassza ki a **hőmérsékletet** **mértékként** és **iothub-connection-device-id-t** **felosztási** értékként:
+1. A bal oldali feltételek panelen válassza a **hőmérséklet** lehetőséget a **mérték** és a **iothub-Device-ID** értékként a **felosztás** értékeként:
 
-    ![Time Series Insights-kezelő lekérdezése](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Time Series Insights Explorer-lekérdezés](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. Kattintson a jobb gombbal a diagramra, és válassza **az Események felfedezése parancsot:**
+1. Kattintson a jobb gombbal a diagramra, és válassza az **események feltárása**lehetőséget:
 
-    ![Time Series Insights-felfedezőesemények](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
+    ![Time Series Insights Explorer eseményei](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
-1. Az eseményadatok egy rácsban jelennek meg:
+1. Az esemény egy rácsban jelenik meg:
 
-    ![Time Series Insights explorer tábla](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
+    ![Time Series Insights Explorer-táblázat](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
 
-1. Kattintson a perspektívanézet gombra:
+1. Kattintson a perspektíva nézet gombra:
 
-    ![A Time Series Insights-kezelő perspektívája](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
+    ![Time Series Insights Explorer perspektívája](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Ide **+** kattintva új lekérdezést adhat a perspektívához:
+1. Kattintson **+** ide egy új lekérdezés perspektívához való hozzáadásához:
 
-    ![A Time Series Insights-kezelő lekérdezés hozzáadása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
+    ![Time Series Insights Explorer lekérdezés hozzáadása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. Válassza az **Utolsó 30 percet** az időtartamként, a **Páratartalom** **mértékként**és az **iothub-connection-device-id** lehetőséget a **Felosztás i.** értékként:
+1. Adja meg az **utolsó 30 percet** az időtartomány, a **páratartalom** , a **mérték**, valamint a **iothub-Device-ID** értékeként a **felosztás** érték szerint:
 
-    ![Time Series Insights-kezelő lekérdezése](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
+    ![Time Series Insights Explorer-lekérdezés](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 
-1. Kattintson a perspektivikus nézet gombra az eszköz telemetriai irányítópultjának megtekintéséhez:
+1. A perspektíva nézet gombra kattintva megtekintheti az eszköz telemetria irányítópultját:
 
-    ![A Time Series Insights-kezelő irányítópultja](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
+    ![Time Series Insights Explorer irányítópult](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy vizsgálja meg a további, hagyja a megoldásgyorsító telepítve.
+Ha azt tervezi, hogy további felfedezést szeretne, hagyja üzembe a megoldás-gyorsító telepítését.
 
-Ha már nincs szüksége a megoldásgyorsítóra, törölje azt a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról, jelölje ki, majd kattintson a **Megoldás törlése**gombra.
+Ha már nincs szüksége a megoldás-gyorssegédre, törölje azt a [kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról, jelölje ki, majd kattintson a **megoldás törlése**elemre.
 
-Ha hozzáadta a Time Series Insights környezetet a megoldásgyorsító erőforráscsoportjához, az automatikusan törlődik a megoldásgyorsító törlésekor. Ellenkező esetben manuálisan el kell távolítania a Time Series Insights környezetet az Azure Portalról.
+Ha a Time Series Insights környezetet a megoldás-gyorsító erőforráscsoporthoz adta hozzá, akkor a rendszer automatikusan törli a megoldás-gyorsító törlésekor. Ellenkező esetben manuálisan el kell távolítania a Time Series Insights környezetet a Azure Portalról.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne tudni arról, hogyan fedezhet fel és kérdezhet le adatokat a Time Series Insights-kezelőben, olvassa el az [Azure Time Series Insights-kezelő című témakört.](../time-series-insights/time-series-insights-explorer.md)
+Ha többet szeretne megtudni a Time Series Insights Explorer adatainak megismeréséről és lekérdezéséről, tekintse meg a [Azure Time Series Insights Explorert](../time-series-insights/time-series-insights-explorer.md).

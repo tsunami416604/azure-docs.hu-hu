@@ -1,6 +1,6 @@
 ---
-title: Eseményrács összehasonlítása, útválasztás az IoT Hub számára | Microsoft dokumentumok
-description: Az IoT Hub saját üzenet-útválasztási szolgáltatást kínál, de integrálható az Event Griddel az eseményközzétételhez. Hasonlítsa össze a két funkciót.
+title: Event Grid összehasonlítása, IoT Hub útválasztása | Microsoft Docs
+description: A IoT Hub a saját üzenet-útválasztási szolgáltatást nyújtja, de a Event Grid is integrálható az események közzétételéhez. Hasonlítsa össze a két funkciót.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,72 +9,72 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73906786"
 ---
-# <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Üzenetútválasztás és Eseményrács összehasonlítása az IoT Hubban
+# <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Az üzenetek útválasztásának és Event Gridének összehasonlítása IoT Hub
 
-Az Azure IoT Hub lehetővé teszi az adatok streamelését a csatlakoztatott eszközökről, és integrálhatja ezeket az adatokat az üzleti alkalmazásokba. Az IoT Hub két módszert kínál az IoT-események más Azure-szolgáltatásokba vagy üzleti alkalmazásokba való integrálására. Ez a cikk ismerteti a két funkció, amely ezt a funkciót, így kiválaszthatja, hogy melyik lehetőség a legjobb a forgatókönyv.
+Az Azure IoT Hub lehetőséget biztosít a csatlakoztatott eszközökről érkező adatok továbbítására és az adatok üzleti alkalmazásokba való integrálására. IoT Hub két módszert kínál a IoT események más Azure-szolgáltatásokba vagy üzleti alkalmazásokba való integrálására. Ez a cikk az ezt a képességet biztosító két szolgáltatást ismerteti, így kiválaszthatja, hogy melyik lehetőség a legmegfelelőbb a forgatókönyvhöz.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-**[IoT Hub-üzenet-útválasztás:](iot-hub-devguide-messages-d2c.md)** Ez az IoT Hub-szolgáltatás lehetővé teszi a felhasználók számára, hogy az eszköz-felhő üzeneteket olyan szolgáltatásvégpontok, például az Azure Storage-tárolók, az Event Hubs, a Service Bus-várólisták és a Service Bus-témakörök. Az Útválasztás lekérdezési lehetőséget is biztosít az adatok szűrésére, mielőtt a végpontokhoz irányítanák. Az eszköz telemetriai adatok mellett [nem telemetriai eseményeket](iot-hub-devguide-messages-d2c.md#non-telemetry-events) is küldhet, amelyek műveletek et aktiválhatnak. 
+**[IoT hub üzenet-útválasztás](iot-hub-devguide-messages-d2c.md)**: ez a IoT hub funkció lehetővé teszi, hogy a felhasználók az eszközről a felhőbe irányuló üzeneteket az Azure Storage-tárolók, a Event Hubs, a Service Bus várólisták és a Service Bus témakörök számára irányítsák. Az Útválasztás egy lekérdezési képességet is biztosít az adatszűréshez, mielőtt átirányítja azt a végpontokhoz. Az eszközök telemetria kívül a műveletek elindításához használható [nem telemetria eseményeket](iot-hub-devguide-messages-d2c.md#non-telemetry-events) is küldhet. 
 
-**IoT Hub-integráció az Event Griddel:** Az Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi-előfizetési modellt használ. Az IoT Hub és az Event Grid együttműködve [integrálja az IoT Hub-eseményeket az Azure-ba és a nem Azure-szolgáltatásokba](iot-hub-event-grid.md)közel valós időben. Az IoT Hub [eszközeseményeket](iot-hub-event-grid.md#event-types) és telemetriai eseményeket is közzétesz.
+**IoT hub Integration with Event Grid**: Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi-előfizetési modellt használ. IoT Hub és Event Grid együttműködve [IoT hub eseményeket integrálhat az Azure-ba és a nem Azure-szolgáltatásokba](iot-hub-event-grid.md), közel valós időben. A IoT Hub az [eszköz eseményeit](iot-hub-event-grid.md#event-types) és a telemetria eseményeket is közzéteszi.
 
 ## <a name="differences"></a>Eltérések
 
-Bár mind az üzenet-útválasztás, mind az Eseményrács engedélyezi a riasztási konfigurációt, a kettő között van néhány kulcsfontosságú különbség. A részleteket lásd az alábbi táblázatban:
+Noha az üzenet-útválasztás és a Event Grid is lehetővé teszi a riasztások konfigurálását, a két fő különbség van. A részletekért tekintse meg az alábbi táblázatot:
 
-| Szolgáltatás | IoT Hub-üzenettovábbítás | Az IoT Hub integrációja az Event Griddel |
+| Szolgáltatás | IoT Hub üzenet-útválasztás | IoT Hub integráció a Event Grid |
 | ------- | --------------- | ---------- |
-| **Eszközüzenetek és események** | Igen, az üzenet-útválasztás telemetriai adatokhoz, az eszköz ikerváltozásainak jelentéséhez, az eszköz életciklus-eseményeihez és a digitális ikermódosítási eseményekhez használható (az [IoT Plug and Play nyilvános előzetes verzió](../iot-pnp/overview-iot-plug-and-play.md)része). | Igen, az Event Grid telemetriai adatokhoz használható, de jelentheti az eszközöket, amikor az iot hubról létrehoznak, törölnek, csatlakoztatnak és levannak választva |
+| **Eszközök üzenetei és eseményei** | Igen, az üzenet-útválasztás telemetria, az eszköz kettős változásainak, az eszköz életciklusának eseményeinek és a digitális kettős változási eseményeknek (a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként) is használható. | Igen, Event Grid használható a telemetria-adatokhoz, de az eszközök létrehozása, törlése, csatlakoztatása és leválasztása esetén is jelenthet jelentést IoT Hub |
 | **Rendezés** | Igen, az események rendezése megmarad.  | Nem, az események sorrendje nem garantált. | 
-| **Szűrés** | Az üzenetalkalmazás tulajdonságainak, az üzenetrendszer tulajdonságainak, az üzenettörzsnek, az ikereszköz-címkéknek és az ikereszköz-tulajdonságoknak a bővített szűrése. A szűrés nem vonatkozik a digitális ikermódosítási eseményekre. Példák: [Üzenetátirányítás lekérdezés szintaxisa](iot-hub-devguide-routing-query-syntax.md). | Szűrés az egyes események eseménytípusa, tématípusa és attribútumai alapján. Példák: [Az Események szűrésének ismertetése az Eseményrács-előfizetések alkalmazásban.](../event-grid/event-filtering.md) Telemetriai eseményekre való feliratkozáskor további szűrőket alkalmazhat az adatokra az üzenetek tulajdonságainak, az üzenettörzsnek és az ikereszköznek az IoT Hubban történő szűréséhez, mielőtt közzétenné az Event Gridben. Tekintse [meg, hogyan szűrheti az eseményeket.](../iot-hub/iot-hub-event-grid.md#filter-events) |
-| **Végpontok** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus-üzenetsor</li> <li>A Service Bus témakörei</li></ul><br>Fizetős IoT Hub-skus (S1, S2 és S3) 10 egyéni végpontok. 100 útvonal hozható létre Az IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Egyéni témakörök</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Külső szolgáltatások webhookokon keresztül</li></ul><br>Az IoT Hubonként 500 végpont támogatott. A végpontok legfrissebb listáját az [Eseményrács eseménykezelői című témakörben tarol.](../event-grid/overview.md#event-handlers) |
-| **Költségek** | Az üzenetek útválasztása nem számít fel külön díjat. Csak a telemetriai adatok be- és az IoT Hub ba kerül felszámolásra. Ha például egy üzenetet három különböző végpontra irányítanak, akkor csak egy üzenetért kell fizetnie. | Az IoT Hub nem számít fel díjat. Az Event Grid az első 100 000 műveletet kínálja havonta ingyen, majd 0,60 $ /millió műveletet. |
+| **Szűrés** | Részletes szűrés az üzenetsor-tulajdonságok, az üzenetsor-tulajdonságok, az üzenetek szövegtörzse, az eszköz Twin-címkék és az eszközök Twin tulajdonságai között. A szűrés nincs alkalmazva a digitális kettős változási eseményekre. Példák: üzenet- [útválasztási lekérdezés szintaxisa](iot-hub-devguide-routing-query-syntax.md). | Szűrés az esemény típusa, a tulajdonos típusa és az egyes események attribútumai alapján. Példák: [Event Grid-előfizetések szűrési eseményeinek megismerése](../event-grid/event-filtering.md). A telemetria eseményekre való feliratkozáskor további szűrőket is alkalmazhat az adatain az üzenet tulajdonságaira, az üzenetek szövegtörzsére és az eszköz IoT Hubre való kiszűrésére, mielőtt közzéteszi a Event Grid. Lásd: [Események szűrése](../iot-hub/iot-hub-event-grid.md#filter-events). |
+| **Végpontok** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus-üzenetsor</li> <li>Service Bus témakörök</li></ul><br>A fizetős IoT Hub SKU-i (S1, S2 és S3) 10 egyéni végpontra korlátozódnak. 100 útvonal hozható létre IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Egyéni témakörök</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Harmadik féltől származó szolgáltatások webhookokon keresztül</li></ul><br>500 végpontok száma IoT Hub támogatott. A végpontok legnaprakészebb listáját lásd: [Event Grid eseménykezelők](../event-grid/overview.md#event-handlers). |
+| **Költségek** | Az üzenet-útválasztásnak nincs külön díja. A rendszer csak a telemetria beérkező IoT Hub számítja fel. Ha például egy üzenet három különböző végpontra van irányítva, akkor csak egy üzenetért kell fizetnie. | IoT Hub nem számítunk fel díjat. A Event Grid havonta ingyenes, majd $0,60/millió művelet után kínálja az első 100 000 műveletet. |
 
 ## <a name="similarities"></a>Hasonlóságok
 
-Az IoT Hub-üzenet-útválasztás és az Event Grid is hasonlóságokkal rendelkezik, amelyek közül néhány az alábbi táblázatban található:
+IoT Hub üzenet-útválasztás és Event Grid hasonlóságokkal is rendelkezik, amelyek némelyike az alábbi táblázatban látható:
 
-| Szolgáltatás | IoT Hub-üzenettovábbítás | Az IoT Hub integrációja az Event Griddel |
+| Szolgáltatás | IoT Hub üzenet-útválasztás | IoT Hub integráció a Event Grid |
 | ------- | --------------- | ---------- |
-| **Az üzenetek maximális mérete** | 256 KB, eszközről felhőre | 256 KB, eszközről felhőre |
-| **Megbízhatóság** | Magas: Minden üzenetet legalább egyszer továbbít a végpontnak minden útvonalhoz. Egy órán belül lejár minden olyan üzenet, amely et nem kézbesítenek. | Magas: Minden üzenetet a webhook legalább egyszer minden előfizetéshez kézbesíti. Lejáratminden olyan eseményt, amely 24 órán belül nem lesz kézbesítve. | 
-| **Méretezhetőség** | Magas: Úgy optimalizálva, hogy támogassa az egyszerre csatlakoztatott eszközök millióit, amelyek több milliárd üzenetet küldenek. | Magas: Régiónként másodpercenként 10 000 000 esemény továbbítására képes. |
-| **Késés** | Alacsony: Közel valós időben. | Alacsony: Közel valós időben. |
-| **Küldés több végpontra** | Igen, egyetlen üzenetet küldhet több végpontnak. | Igen, egyetlen üzenetet küldhet több végpontnak.  
-| **Biztonság** | Az Iot Hub eszközönkénti identitás- és visszavonható hozzáférés-vezérlést biztosít. További információt az [IoT Hub hozzáférés-vezérlése című témakörben talál.](iot-hub-devguide-security.md) | Event Grid ellenőrzést biztosít három ponton: esemény-előfizetések, esemény közzététele és webhook esemény kézbesítése. További információt az [Event Grid biztonsága és hitelesítése](../event-grid/security-authentication.md)című témakörben talál. |
+| **Üzenetek maximális mérete** | 256 KB, eszközről a felhőbe | 256 KB, eszközről a felhőbe |
+| **Megbízhatóság** | Magas: minden egyes útvonal esetében legalább egyszer kézbesíti az egyes üzeneteket a végpontnak. Minden olyan üzenetet lejár, amely egy órán belül nem érkezik meg. | Magas: minden egyes előfizetés esetében legalább egyszer kézbesít minden üzenetet a webhooknak. Az összes olyan eseményt lejár, amely 24 órán belül nem érkezik meg. | 
+| **Méretezhetőség** | Magas: optimalizált több millió egyidejűleg csatlakoztatott eszköz támogatásához, több milliárd üzenet küldéséhez. | Magas: az 10 000 000 események másodpercenkénti útválasztása régiónként. |
+| **Késés** | Alacsony: majdnem valós időben. | Alacsony: majdnem valós időben. |
+| **Küldés több végpontra** | Igen, küldjön egyetlen üzenetet több végpontnak. | Igen, küldjön egyetlen üzenetet több végpontnak.  
+| **Biztonság** | Az IOT hub eszközönkénti identitást és visszavont hozzáférés-vezérlést biztosít. További információ: [IoT hub hozzáférés-vezérlés](iot-hub-devguide-security.md). | A Event Grid három ponton biztosít ellenőrzést: esemény-előfizetések, esemény-közzététel és webhook-esemény kézbesítése. További információ: [Event Grid biztonság és hitelesítés](../event-grid/security-authentication.md). |
 
 ## <a name="how-to-choose"></a>Mi alapján válasszon?
 
-Az IoT Hub üzenet-útválasztása és az IoT Hub-integráció az Event Griddel különböző műveleteket hajt végre a hasonló eredmények elérése érdekében. Mindketten adatokat az IoT Hub-megoldásból, és továbbítja azt, hogy más szolgáltatások reagálhassanak. Szóval hogyan dönti el, melyiket használja? Gondold át a következő kérdéseket, amelyek segítenek a döntésed irányításában: 
+IoT Hub üzenet-útválasztás és a IoT Hub integrációja Event Grid különböző műveleteket hajthat végre a hasonló eredmények eléréséhez. A IoT Hub-megoldástól származó adatokat is továbbítanak, így más szolgáltatások is reagálni tudnak. Tehát hogyan döntheti el, hogy melyiket használja? A döntés meghozatala érdekében vegye figyelembe a következő kérdéseket: 
 
-* **Milyen típusú adatokat küld a végpontok?**
+* **Milyen típusú adatokat küld a rendszer a végpontoknak?**
 
-   Az IoT Hub-üzenet-útválasztás használata, ha telemetriai adatokat kell küldenie más szolgáltatásoknak. Az üzenet-útválasztás lehetővé teszi az üzenetalkalmazás és a rendszer tulajdonságainak, az üzenettörzsnek, az ikercímkéknek és az ikereszköz-tulajdonságoknak a lekérdezését is.
+   Ha telemetria-adatküldést szeretne küldeni más szolgáltatásoknak, használja IoT Hub üzenet-útválasztást. Az üzenet-útválasztás lehetővé teszi az üzenet-alkalmazás és a Rendszertulajdonságok, az üzenetek szövegtörzse, az eszköz Twin-címkék és az eszközök Twin tulajdonságainak lekérdezését is.
 
-   Az IoT Hub-integráció az Event Griddel az IoT Hub szolgáltatásban előforduló eseményekkel működik. Ezek az IoT Hub-események közé tartozik a telemetriai adatok, létrehozott, törölt, csatlakoztatott és leválasztott eszköz. Telemetriai eseményekre való feliratkozáskor további szűrőket alkalmazhat az adatokra az üzenetek tulajdonságainak, az üzenettörzsnek és az ikereszköznek az IoT Hubban történő szűréséhez, mielőtt közzétenné az Event Gridben. Tekintse [meg, hogyan szűrheti az eseményeket.](../iot-hub/iot-hub-event-grid.md#filter-events)
+   A IoT Hub integrációja Event Grid a IoT Hub szolgáltatásban előforduló eseményekkel működik. Ezek a IoT Hub események közé tartoznak a telemetria-, a létrehozott, a törölt, a csatlakoztatott és a leválasztott eszközök. A telemetria eseményekre való feliratkozáskor további szűrőket is alkalmazhat az adatain az üzenet tulajdonságaira, az üzenetek szövegtörzsére és az eszköz IoT Hubre való kiszűrésére, mielőtt közzéteszi a Event Grid. Lásd: [Események szűrése](../iot-hub/iot-hub-event-grid.md#filter-events).
 
-* **Milyen végpontok kell kapniezt az információt?**
+* **Milyen végpontoknak kell megkapniuk ezeket az információkat?**
 
-   Az IoT Hub üzenet-útválasztás a korlátozott számú egyedi végpontot és végponttípust támogatja, de összekötőket hozhat létre az adatok és események további végpontokra való átirányításához. A támogatott végpontok teljes listáját az előző szakasz táblázatában található. 
+   IoT Hub üzenet-útválasztás csak korlátozott számú egyedi végpontot és végpontot támogat, de összekötők segítségével átirányíthatja az adatelemeket és az eseményeket további végpontokra. A támogatott végpontok teljes listájáért tekintse meg az előző szakaszban található táblázatot. 
 
-   Az IoT Hub-integráció az Event Griddel 500 végpontot támogat Az IoT Hub és a végponttípusok szélesebb választéka. Natív módon integrálható az Azure Functions, a Logic Apps, a Storage és a Service Bus várólistáival, és webhookokkal együttműködve kiterjeszti az adatok küldését az Azure szolgáltatási ökoszisztémán kívülre és harmadik fél üzleti alkalmazásaiba.
+   A IoT Hub integrációja Event Grid támogatja az 500-es végpontokat IoT Hub és számos végponti típust. Natív módon integrálódik Azure Functions-, Logic Apps-, Storage-és Service Bus-várólistákkal, és webhookokkal is együttműködik, hogy az Azure-szolgáltatás ökoszisztémáján és külső üzleti alkalmazásain kívül is kiterjessze az adatokat.
 
-* **Számít, ha adatai sorrendben érkeznek?**
+* **Számít, ha az adatai sorrendben érkeznek?**
 
-   Az IoT Hub-üzenet-útválasztás az üzenetek küldésének sorrendjét tartja fenn, így azok ugyanúgy érkeznek.
+   IoT Hub üzenet-útválasztás megtartja az üzenetek küldésének sorrendjét, így azok ugyanúgy érkeznek.
 
-   Az Event Grid nem garantálja, hogy a végpontok ugyanabban a sorrendben kapják meg az eseményeket, mint amilyen sorrendben történtek. Azokban az esetekben, amikor az üzenetek abszolút sorrendje jelentős, és/vagy amikor a fogyasztónak megbízható egyedi azonosítóra van szüksége az üzenetekhez, javasoljuk az üzenet-útválasztás használatát. 
+   A Event Grid nem garantálja, hogy a végpontok ugyanabban a sorrendben kapják meg az eseményeket. Azokban az esetekben, amelyekben az üzenetek abszolút sorrendje jelentős és/vagy amelyben a fogyasztónak megbízható egyedi azonosítóval kell rendelkeznie az üzenetekhez, javasoljuk, hogy az üzenet-útválasztást használják. 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [IoT Hub üzenet-útválasztásáról](iot-hub-devguide-messages-d2c.md) és az [IoT Hub végpontjairól.](iot-hub-devguide-endpoints.md)
+* További információ az [IoT hub üzenet-útválasztásról](iot-hub-devguide-messages-d2c.md) és a [IoT hub végpontokról](iot-hub-devguide-endpoints.md).
 * További tudnivalók az [Azure Event Grid](../event-grid/overview.md) szolgáltatásról.
-* Az Üzenetútvonalak létrehozásáról az [IoT Hub-eszközről a felhőbe irányuló üzenetek feldolgozása az útvonalakkal](../iot-hub/tutorial-routing.md) oktatóanyag című témakörben olvashat.
-* Próbálja ki az Event Grid-integrációt az [Azure IoT Hub-eseményekről szóló e-mail-értesítések logic apps használatával történő küldésével.](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+* Az üzenetsor-útvonalak létrehozásával kapcsolatos további információkért tekintse meg a [IoT hub eszközről a felhőbe irányuló üzenetek feldolgozását az útvonalak oktatóanyag használatával](../iot-hub/tutorial-routing.md) .
+* Próbálja ki a Event Grid integrációt az [Azure IoT hub-eseményekkel kapcsolatos e-mail-értesítések küldésével Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).

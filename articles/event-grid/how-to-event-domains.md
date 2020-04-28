@@ -1,6 +1,6 @@
 ---
-title: Események közzététele eseménytartománnyal az Azure Event Griddel
-description: Bemutatja, hogyan kezelheti a témakörök nagy készleteit az Azure Event Gridben, és hogyan tehet közzé eseményeket az eseménytartományok használatával.
+title: Események közzététele esemény-tartományokkal Azure Event Grid
+description: Bemutatja, hogyan kezelheti a témakörök nagy csoportjait a Azure Event Gridban, és hogyan teheti közzé az eseményeket az esemény-tartományok használatával.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,32 +8,32 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72786553"
 ---
-# <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele eseménytartományok használatával
+# <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele az Event Domain használatával
 
-Ez a cikk bemutatja, hogyan:
+Ez a cikk a következőket mutatja be:
 
-* Eseményrács tartomány létrehozása
-* Feliratkozás az eseményrács témaköreire
-* Billentyűk listázása
-* Események közzététele tartományban
+* Event Grid tartomány létrehozása
+* Előfizetés az Event Grid-témakörökre
+* Kulcsok listázása
+* Események közzététele tartományba
 
-Az eseménytartományokról az [Eseményrács témakörök kezelésének ismertetése](event-domains.md)című témakörben olvashat.
+Az események tartományával kapcsolatos további tudnivalókért lásd: [az események tartományának megismerése Event Grid témakörök kezeléséhez](event-domains.md).
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Az előzetes verzió telepítése szolgáltatás
+## <a name="install-preview-feature"></a>Az előzetes verzió funkciójának telepítése
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-an-event-domain"></a>Eseménytartomány létrehozása
+## <a name="create-an-event-domain"></a>Esemény tartományának létrehozása
 
-Nagy témakörök kezeléséhez hozzon létre egy eseménytartományt.
+A nagyméretű témakörök kezeléséhez hozzon létre egy Event tartományt.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -78,16 +78,16 @@ A sikeres létrehozás a következő értékeket adja vissza:
 }
 ```
 
-Vegye `endpoint` figyelembe `id` a és a tartomány kezeléséhez és az események közzétételéhez szükséges.
+Vegye figyelembe `endpoint` , `id` hogy a és a szükséges a tartomány kezeléséhez és az események közzétételéhez.
 
 ## <a name="manage-access-to-topics"></a>Témakörökhöz való hozzáférés kezelése
 
-A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendeléssel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)történik. Szerepkör-hozzárendelés szerepköralapú hozzáférés-vezérlés segítségével korlátozza az Azure-erőforrások on-k on-t egy adott hatókörben jogosult felhasználók számára.
+A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendelés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)használatával történik. A szerepkör-hozzárendelés szerepköralapú hozzáférés-vezérléssel korlátozza az Azure-erőforrások műveleteit egy bizonyos hatókörön belüli jogosult felhasználók számára.
 
-Az Event Grid két beépített szerepkörrel rendelkezik, amelyek segítségével adott felhasználók hoznak hozzáférést a tartomány különböző témaköreihez. Ezek a `EventGrid EventSubscription Contributor (Preview)`szerepkörök a , amely lehetővé teszi `EventGrid EventSubscription Reader (Preview)`az előfizetések létrehozását és törlését, és amelyek csak az esemény-előfizetések listázását teszik lehetővé.
+A Event Grid két beépített szerepkörrel rendelkezik, amelyek segítségével adott felhasználókhoz rendelhet hozzá különböző témaköröket a tartományon belül. Ezek a szerepkörök `EventGrid EventSubscription Contributor (Preview)`, amelyek lehetővé teszik az előfizetések létrehozását és törlését, és `EventGrid EventSubscription Reader (Preview)`amelyek csak az esemény-előfizetések listázását teszik lehetővé.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-A következő Azure CLI parancs csak `alice@contoso.com` a témában korlátozza `demotopic1`az esemény-előfizetések létrehozását és törlését:
+Az alábbi Azure CLI-parancs `alice@contoso.com` csak a következő témakörben `demotopic1`korlátozza az esemény-előfizetések létrehozását és törlését:
 
 ```azurecli-interactive
 az role assignment create \
@@ -96,8 +96,8 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
-A következő PowerShell-parancs `alice@contoso.com` csak a témában korlátozza `demotopic1`az esemény-előfizetések létrehozását és törlését:
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+Az alábbi PowerShell-parancs `alice@contoso.com` korlátozza az esemény-előfizetések létrehozását és `demotopic1`törlését csak a következő témakörben:
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -107,15 +107,15 @@ New-AzureRmRoleAssignment `
 ```
 ---
 
-Az Event Grid-műveletek hez való hozzáférés kezeléséről az [Event Grid biztonsága és hitelesítése](./security-authentication.md)című témakörben talál további információt.
+A Event Grid műveletekhez való hozzáférés kezelésével kapcsolatos további információkért lásd: [Event Grid biztonság és hitelesítés](./security-authentication.md).
 
 ## <a name="create-topics-and-subscriptions"></a>Témakörök és előfizetések létrehozása
 
-Az Event Grid szolgáltatás automatikusan létrehozza és kezeli a megfelelő témakört egy tartományban a tartománytémakör esemény-előfizetésének létrehozásához szükséges hívás alapján. Nincs külön lépés a tartományban lévő témakör létrehozásához. Hasonlóképpen, ha egy témakör utolsó esemény-előfizetése törlődik, a témakör is törlődik.
+A Event Grid szolgáltatás automatikusan hozza létre és kezeli a megfelelő témakört egy tartományban a tartományhoz tartozó esemény-előfizetés létrehozási hívása alapján. Nincs külön lépés egy témakör létrehozásához egy tartományban. Hasonlóképpen, amikor egy témakör utolsó esemény-előfizetését törlik, a témakör is törlődik.
 
-A tartomány ban lévő témakörre való feliratkozás megegyezik egy másik Azure-erőforrásra való feliratkozással. A forráserőforrás-azonosítóhoz adja meg a tartomány korábbi létrehozásakor visszaadott eseménytartomány-azonosítót. Az előfizetni kívánt témakör megadásához `/topics/<my-topic>` adja hozzá a forráserőforrás-azonosító végéhez. Ha olyan tartományhatókör-esemény-előfizetést szeretne létrehozni, amely a tartomány összes eseményét fogadja, adja meg az eseménytartomány-azonosítót anélkül, hogy bármilyen témakört megadna.
+Egy tartományban lévő témakörre való feliratkozás megegyeznek a többi Azure-erőforrásra való feliratkozással. A forrás erőforrás-AZONOSÍTÓnál adja meg a tartomány korábbi létrehozásakor visszaadott esemény-tartományi azonosítót. Az előfizetni kívánt témakör megadásához a forrás erőforrás `/topics/<my-topic>` -azonosító végéhez adja hozzá a következőt:. Ha olyan tartományi hatókörbeli esemény-előfizetést szeretne létrehozni, amely a tartományban lévő összes eseményt fogadja, a témakörök meghatározása nélkül adhatja meg az esemény tartomány-AZONOSÍTÓját.
 
-Általában az előző szakaszban megadott felhasználó hozza létre az előfizetést. A cikk egyszerűsítése érdekében hozza létre az előfizetést. 
+Az előző szakaszban megadott hozzáférési jogosultsággal rendelkező felhasználó általában létrehozza az előfizetést. A cikk egyszerűsítése érdekében hozza létre az előfizetést. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -137,16 +137,16 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Ha szüksége van egy tesztvégpontra az események előjegyzéséhez, bármikor üzembe helyezhet egy [előre elkészített webalkalmazást,](https://github.com/Azure-Samples/azure-event-grid-viewer) amely megjeleníti a bejövő eseményeket. Az eseményeket elküldheti a `https://<your-site-name>.azurewebsites.net/api/updates`tesztwebhelyére a .
+Ha tesztelési végpontra van szüksége az események előfizetéséhez, bármikor üzembe helyezhet egy [előre elkészített webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) , amely megjeleníti a bejövő eseményeket. Az eseményeket elküldheti a teszt webhelyére `https://<your-site-name>.azurewebsites.net/api/updates`a következő címen:.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-A témakörhöz beállított engedélyek et az Azure Active Directory tárolja, és explicit módon törölni kell. Az esemény-előfizetés törlése nem vonja vissza a felhasználók hozzáférését az esemény-előfizetések létrehozásához, ha írási hozzáféréssel rendelkeznek egy témához.
+A témakörhöz beállított engedélyek Azure Active Directory tárolódnak, és explicit módon törölni kell őket. Egy esemény-előfizetés törlése nem vonja vissza a felhasználók hozzáférését az esemény-előfizetések létrehozásához, ha a témakörben írási hozzáféréssel rendelkeznek.
 
 
-## <a name="publish-events-to-an-event-grid-domain"></a>Események közzététele eseményrács-tartományban
+## <a name="publish-events-to-an-event-grid-domain"></a>Események közzététele egy Event Grid tartományban
 
-Az események tartományban való közzététele megegyezik az [egyéni témakörben való közzététellel.](./post-to-custom-topic.md) Az egyéni témakörben való közzététel helyett azonban az összes eseményt közzéteszi a tartomány végpontjára. A JSON-eseményadatokban megadhatja azt a témakört, amelyhez az eseményeket meg szeretné adni. A következő tömb az események `"id": "1111"` azt `demotopic1` eredményezné, `"id": "2222"` hogy az `demotopic2`esemény a téma, míg az esemény lenne küldeni a téma:
+Az események tartományba való közzététele ugyanaz, mint a [Közzététel egy egyéni témakörben](./post-to-custom-topic.md). Az egyéni témakörre való közzététel helyett azonban az összes eseményt közzé kell tenni a tartományi végponton. A JSON-események adatkészletében meg kell adnia azt a témakört, amelyre az eseményeket el szeretné jutni. A következő események `"id": "1111"` a témakört eredményezik `demotopic1` , ha az eseményt a témakörbe `"id": "2222"` `demotopic2`szeretné elküldeni:
 
 ```json
 [{
@@ -176,7 +176,7 @@ Az események tartományban való közzététele megegyezik az [egyéni témakö
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-A tartományvégpont azure CLI-vel való beszerezéséhez használja a
+A tartomány végpontjának Azure CLI-vel való beszerzéséhez használja a következőt
 
 ```azurecli-interactive
 az eventgrid domain show \
@@ -184,7 +184,7 @@ az eventgrid domain show \
   -n <my-domain>
 ```
 
-Tartomány kulcsainak lekérnie, használja a következőket:
+Egy tartomány kulcsainak beszerzéséhez használja a következőt:
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -192,8 +192,8 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
-A tartományvégpont powershell-lel való lefelvételéhez használja a
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+A tartomány végpontjának PowerShell-lel való beszerzéséhez használja a következőt
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomain `
@@ -201,7 +201,7 @@ Get-AzureRmEventGridDomain `
   -Name <my-domain>
 ```
 
-Tartomány kulcsainak lekérnie, használja a következőket:
+Egy tartomány kulcsainak beszerzéséhez használja a következőt:
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `
@@ -210,8 +210,8 @@ Get-AzureRmEventGridDomainKey `
 ```
 ---
 
-Ezután a http-posta rendszer készítésének kedvenc módszerével tegye közzé az eseményeket az Event Grid tartományban.
+Ezt követően pedig kedvenc metódusával teheti közzé az eseményeket a Event Grid tartományában.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Eseménytartományok magas szintű fogalmairól és azok hasznosságáról az [Eseménytartományok fogalmi áttekintésében olvashat bővebben.](event-domains.md)
+* További információ az Event-tartományok magas szintű fogalmakról és azok hasznos okairól: az esemény- [tartományok fogalmi áttekintése](event-domains.md).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics U-SQL futásidejű hibáinak hibaelhárítása
-description: Ismerje meg, hogyan háríthatja el az U-SQL futásidejű hibák at.
+title: A Azure Data Lake Analytics U-SQL futásidejű hibáinak elhárítása
+description: Ismerje meg, hogy miként lehet elhárítani az U-SQL futásidejű hibáit.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -10,60 +10,60 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
 ms.openlocfilehash: 1e3fb218e6cda5619bfa1a0936e07d6731a9cc93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73648453"
 ---
-# <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>További információ az U-SQL futásidejű hibák futásidejű módosítások miatti hibáinak elhárításáról
+# <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Ismerje meg, hogy miként lehet elhárítani a futásidejű változások miatti U-SQL futásidejű hibákat
 
-Az Azure Data Lake U-SQL futásidejű, beleértve a fordító, optimalizáló és a feladatkezelő, az, amit feldolgozza az U-SQL-kódot.
+A Azure Data Lake u-SQL-futtatókörnyezet, beleértve a fordítót, az optimalizáló és a Feladatkezelőt, a u-SQL-kódot dolgozza fel.
 
-## <a name="choosing-your-u-sql-runtime-version"></a>Az U-SQL futásidejű verzió kiválasztása
+## <a name="choosing-your-u-sql-runtime-version"></a>A U-SQL futtatókörnyezet-verziójának kiválasztása
 
-Amikor u-SQL-feladatokat küld a Visual Studio, az ADL SDK vagy az Azure Data Lake Analytics portálról, a feladat a jelenleg elérhető alapértelmezett futásidőt fogja használni. Az U-SQL futásidejű új verziói rendszeresen megjelennek, és kisebb frissítéseket és biztonsági javításokat is tartalmaznak.
+Ha a Visual studióból, az ADL SDK-ból vagy a Azure Data Lake Analytics-portálról küld el U-SQL-feladatokat, a feladat az aktuálisan elérhető alapértelmezett futtatókörnyezetet fogja használni. Az U-SQL Runtime új verziói rendszeresen jelennek meg, és a másodlagos frissítéseket és a biztonsági javításokat is tartalmazzák.
 
-Egyéni futásidejű verziót is választhat; vagy azért, mert ki szeretne próbálni egy új frissítést, a futásidejű ek régebbi verzióján kell maradnia, vagy egy olyan jelentett probléma gyorsjavítását kapta, ahol nem várhat a szokásos új frissítésre.
+Választhat egyéni futtatókörnyezet-verziót is; vagy azért, mert egy új frissítést szeretne kipróbálni, a futtatókörnyezet egy régebbi verziójában kell maradnia, vagy a jelentett probléma gyorsjavításával lett ellátva, amely nem várja meg a rendszeres új frissítést.
 
 > [!CAUTION]
-> Az alapértelmezetttől eltérő futásidejű kiválasztása megszakíthatja az U-SQL-feladatokat. Ezeket a többi verziót csak tesztelésre használja.
+> Az alapértelmezetttől eltérő futtatókörnyezet kiválasztásával megszakíthatja a U-SQL-feladatokat. Ezeket a más verziókat csak tesztelésre használhatja.
 
-Ritkán előfordulhat, hogy a Microsoft támogatási szolgálata a futásidejű ek egy másik verzióját tűzi ki alapértelmezettként a fiókjához. Ügyeljen arra, hogy a lehető leghamarabb visszaadja ezt a gombostűt. Ha továbbra is rögzítve marad az adott verzióhoz, az egy későbbi időpontban lejár.
+Ritka esetekben a Microsoft ügyfélszolgálata a futtatókörnyezet egy másik verzióját is rögzítheti alapértelmezettként a fiókjához. Győződjön meg róla, hogy a PIN-kódot a lehető leghamarabb visszavonja. Ha továbbra is az adott verzióra van rögzítve, akkor később lejár.
 
-### <a name="monitoring-your-jobs-u-sql-runtime-version"></a>A feladatok figyelése U-SQL futásidejű verzió
+### <a name="monitoring-your-jobs-u-sql-runtime-version"></a>Feladatok figyelése U-SQL futtatókörnyezet-verzió
 
-A Visual Studio feladatböngészőjében vagy az Azure Portal feladatelőzményein keresztül megtekintheti, hogy a korábbi feladatok mely futásidejű verziót használták a fiók feladatelőzményeiközött.
+Megtekintheti, hogy a korábbi feladatok melyik futásidejű verzióját használták a fiókjában a Visual Studio böngésző vagy a Azure Portal feladat előzményein keresztül.
 
-1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
-2. Válassza **az Összes feladat megtekintése**lehetőséget. Megjelenik a fiókban lévő összes aktív és legutóbb befejezett feladat listája.
-3. Szükség esetén a **Szűrő** gombra kattintva megkeresheti a feladatokat **az Időtartomány,** **a Feladat neve**és a **Szerző** értéke szerint.
-4. Láthatja a befejezett feladatokban használt futásidejű.
+1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
+2. Válassza **az összes feladat megtekintése**lehetőséget. Megjelenik a fiók összes aktív és legutóbb befejezett feladatának listája.
+3. A **szűrő** lehetőségre kattintva megkeresheti a feladatokat az **időtartomány**, a **feladat neve**és a **Szerző** értékei alapján.
+4. Láthatja a befejezett feladatokban használt futtatókörnyezetet.
 
-![Korábbi feladat futásidejű verziójának megjelenítése](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
+![A korábbi feladatok futtatókörnyezet-verziójának megjelenítése](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
 
-A rendelkezésre álló futásidejű verziók idővel változnak. Az alapértelmezett futásidejű mindig az úgynevezett "alapértelmezett", és tartjuk legalább az előző futásidejű elérhető egy ideig, valamint a speciális futásidejű elérhetőak a különböző okok miatt. A nyíltan elnevezett futásidők általában a következő formátumot követik (dőlt betűs számok at használnak változó alkatrészekhez, és a [] a választható részeket jelöli):
+Az elérhető futásidejű verziók változnak az idő múlásával. Az alapértelmezett futtatókörnyezetet mindig "default"-nek nevezzük, és legalább az előző futtatókörnyezetet megtartjuk egy ideig, és a speciális futtatókörnyezeteket számos okból elérhetővé tesszük. A explicit módon megnevezett futtatókörnyezetek általában a következő formátumot követik (a dőltek a változó részekhez használatosak, a [] pedig opcionális részeket jelez):
 
-release_YYYYMMDD_adl_buildno[_modifier]
+release_YYYYMMDD_adl_buildno [_modifier]
 
-Például release_20190318_adl_3394512_2 a 2019. március 18-i futásidejű kiadás 3394512-es verziójának második verzióját jelenti, release_20190318_adl_3394512_private pedig ugyanannak a kiadásnak a privát buildje. Megjegyzés: A dátum arra vonatkozik, hogy az utolsó bejelentkezés mikor történt az adott kiadáshoz, és nem feltétlenül a hivatalos megjelenési dátum.
+Például release_20190318_adl_3394512_2 azt jelenti, hogy a Build 3394512-es verziójának második, 18 2019-es és release_20190318_adl_3394512_private-es verzióját jelenti, és az ugyanazon kiadás privát buildje. Megjegyzés: a dátum ahhoz kapcsolódik, hogy mikor került sor az adott kiadás utolsó beadására, és nem feltétlenül a hivatalos kiadási dátumra.
 
-A jelenleg elérhető futásidejű verziók az alábbiakban láthatók.
+A jelenleg elérhető futásidejű verziók a következők.
 
 - release_20190318_adl_3394512
-- release_20190318_adl_5832669 az aktuális alapértelmezett
+- a jelenlegi alapértelmezett release_20190318_adl_5832669
 - release_20190703_adl_4713356
 
-## <a name="troubleshooting-u-sql-runtime-version-issues"></a>Az U-SQL futásidejű verzióval kapcsolatos problémák elhárítása
+## <a name="troubleshooting-u-sql-runtime-version-issues"></a>Az U-SQL futásidejű verziójának hibáinak elhárítása
 
-Két lehetséges futásidejű verzióproblémák léphetnek fel:
+A futásidejű verziók két lehetséges problémája merülhet fel:
 
-1. Egy parancsfájl vagy valamilyen felhasználói kód megváltoztatja a viselkedést egyik kiadásról a másikra. Az ilyen törési változásokat általában előre közlik a kibocsátási megjegyzések közzétételével. Ha ilyen törési változással találkozik, lépjen kapcsolatba a Microsoft támogatási szolgálatával, és jelentse ezt a törési viselkedést (ha még nem dokumentálták), és küldje el a feladatokat a régebbi futásidejű verzióval szemben.
+1. Egy parancsfájl vagy valamilyen felhasználói kód megváltoztatja az egyik kiadás viselkedését a következőre. Az ilyen jellegű feltörési változások általában a kibocsátási megjegyzések közzétételével kapcsolatos idő előtt kerülnek közlésre. Ha ilyen jellegű változást tapasztal, forduljon a Microsoft ügyfélszolgálatahoz, és jelentse ezt a feltörési viselkedést (ha még nincs dokumentálva), és küldje el a feladatokat a régebbi futtatókörnyezet-verzióra.
 
-2. Nem alapértelmezett futásidejűt használt explicit vagy implicit módon, ha a fiókjához rögzítették, és a futásidejűt egy idő után eltávolították. Ha hiányzó futási idővel találkozik, frissítse a parancsfájlokat az aktuális alapértelmezett futásidővel való futtatáshoz. Ha további időre van szüksége, forduljon a Microsoft támogatási szolgálatához
+2. Nem alapértelmezett futtatókörnyezetet használ explicit módon vagy implicit módon, amikor a fiókjában rögzítette, és a futtatókörnyezetet némi idő múlva eltávolították. Ha hiányzó futtatókörnyezetekkel találkozik, frissítse a parancsfájlokat az aktuális alapértelmezett futtatókörnyezettel való futtatáshoz. Ha további időre van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-- [Az Azure Data Lake Analytics kezelése az Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
-- [Feladatok figyelése az Azure Data Lake Analytics szolgáltatásban az Azure Portalhasználatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
+- [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
+- [Feladatok figyelése Azure Data Lake Analytics a Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

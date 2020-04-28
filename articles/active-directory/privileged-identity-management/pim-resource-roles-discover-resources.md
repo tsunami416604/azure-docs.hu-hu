@@ -1,6 +1,6 @@
 ---
-title: Fedezze fel a PIM-ben kezelendő Azure-erőforrásokat – Azure AD | Microsoft dokumentumok
-description: Ismerje meg, hogyan fedezheti fel az Azure-erőforrásokat az Azure AD kiemelt identitáskezelés (PIM) kezelésében.
+title: Azure-erőforrások felderítése a PIM-beli kezeléshez – Azure AD | Microsoft Docs
+description: Ismerje meg, hogyan derítheti fel az Azure-erőforrásokat Azure AD Privileged Identity Management (PIM) kezeléséhez.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,56 +15,56 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87da43100c7494937ddc842e0f903ba3a360959e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022894"
 ---
-# <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Fedezze fel az Azure-erőforrásokat a kiemelt identitáskezelés ben kezelhető
+# <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>A Privileged Identity Management felügyelni kívánt Azure-erőforrások felderítése
 
-Az Azure Active Directory (Azure AD) privilegizált identitáskezelés (PIM) használatával javíthatja az Azure-erőforrások védelmét. Ez olyan szervezetek számára hasznos, amelyek már használják a Kiemelt identitáskezelés az Azure AD-szerepkörök védelmét, valamint a felügyeleti csoport és az előfizetés-tulajdonosok számára, akik az éles erőforrások at szeretnének biztosítani.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával javíthatja az Azure-erőforrások védelmét. Ez olyan szervezetek számára hasznos, amelyek már használják a Privileged Identity Management az Azure AD-szerepkörök védelmére, valamint a felügyeleti csoport és az előfizetések tulajdonosai számára, akik az éles erőforrásokat szeretnék biztosítani.
 
-Amikor először állítja be a kiemelt identitáskezelés azure-erőforrások, fel kell derítenie, és válassza ki a kiemelt identitáskezelés védeni kívánt erőforrásokat. Nincs korlátozva, hogy hány erőforrást, amely kezelhető a kiemelt identitáskezelés. Azonban azt javasoljuk, hogy a legkritikusabb (éles) erőforrásokkal kezdje.
+Amikor először állít be Privileged Identity Management az Azure-erőforrásokhoz, fel kell derítenie és ki kell választania az Privileged Identity Management védelemmel ellátni kívánt erőforrásokat. A Privileged Identity Management használatával felügyelhető erőforrások száma nincs korlátozva. Javasoljuk azonban, hogy a legjelentősebb (éles) erőforrásokkal kezdjen.
 
 ## <a name="discover-resources"></a>Erőforrások felfedezése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza az **Azure-erőforrások lehetőséget.**
+1. Válassza ki az **Azure-erőforrásokat**.
 
-    Ha ez az első alkalom, hogy az Azure-erőforrások privilegizált identitáskezelése, megjelenik a **Discover resources** lap.
+    Ha első alkalommal használja az Azure-erőforrások Privileged Identity Managementét, megjelenik a **Discover Resources (erőforrások felderítése** ) oldal.
 
-    ![Erőforrások felderítése ablaktábla az első élményhez nem felsorolt erőforrások nélkül](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Erőforrások ablaktábla észlelése az első alkalommal felmerülő erőforrások nélkül](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
-    Ha a szervezet egy másik rendszergazdája már kezeli az Azure-erőforrásokat a kiemelt identitáskezelés ben, megjelenik a jelenleg felügyelt erőforrások listája.
+    Ha a szervezet egy másik rendszergazdája már felügyeli az Azure-erőforrásokat Privileged Identity Managementban, megjelenik a jelenleg kezelt erőforrások listája.
 
-    ![Az erőforrások felfedezése ablaktábla, amely felsorolja a jelenleg kezelt erőforrásokat](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![A jelenleg felügyelt erőforrások listázása ablaktábla](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. Válassza **az Erőforrások felderítése** lehetőséget a felderítési élmény elindításához.
+1. A felderítési élmény elindításához válassza az **erőforrások felderítése** lehetőséget.
 
-    ![Felderítési ablaktábla, amely felsorolja a kezelhető erőforrásokat, például az előfizetéseket és a felügyeleti csoportokat](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![A felderítés ablaktábla a felügyelhető erőforrások, például az előfizetések és a felügyeleti csoportok listázására szolgál.](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. A **Felderítés** lapon használja az **Erőforrás állapotszűrőt** és **az Erőforrástípus kiválasztása parancsot** az írási engedéllyel bíró felügyeleti csoportok vagy előfizetések szűréséhez. Ez talán a legegyszerűbb kezdeni **minden** kezdetben.
+1. A **felderítés** lapon használja az **Erőforrás-állapot szűrőt** , és **válassza az erőforrástípus lehetőséget** azon felügyeleti csoportok vagy előfizetések szűréséhez, amelyekhez írási engedéllyel rendelkezik. Valószínűleg **a legegyszerűbb, ha először** kezdi el.
 
-    Csak a felügyeleti csoport vagy az előfizetési erőforrások at keresheti meg és választhatja ki a Kiemelt identitáskezelés használatával kezelhető felügyeleti csoport hoz. Ha egy felügyeleti csoportot vagy egy előfizetést kezel a Kiemelt identitáskezelés szolgáltatásban, kezelheti a gyermekerőforrásait is.
+    Csak a Privileged Identity Management használatával felügyelhető felügyeleti csoport vagy előfizetési erőforrások kereshetők és választhatók ki. Ha Privileged Identity Managementban felügyel egy felügyeleti csoportot vagy előfizetést, akkor a gyermek erőforrásai is kezelhetők.
 
-1. Jelölje be a kezelni kívánt nem felügyelt erőforrások melletti jelölőnégyzetet.
+1. Jelölje be a felügyelni kívánt nem felügyelt erőforrások melletti jelölőnégyzetet.
 
-1. Válassza **az Erőforrás kezelése lehetőséget** a kijelölt erőforrások kezelésének megkezdéséhez.
+1. Válassza az **erőforrás kezelése** lehetőséget a kiválasztott erőforrások kezelésének megkezdéséhez.
 
     > [!NOTE]
-    > Egy felügyeleti csoport vagy előfizetés kezelése után nem lehet nem felügyelt. Ez megakadályozza, hogy egy másik erőforrás-rendszergazda távolítsa el a kiemelt identitáskezelési beállításokat.
+    > A felügyeleti csoport vagy előfizetés kezelése után nem lehet felügyelni. Ez megakadályozza, hogy egy másik erőforrás-rendszergazda eltávolítsa Privileged Identity Management beállításait.
 
-    ![Felderítési ablaktábla kijelölt erőforrással és kiemelt Erőforrás kezelése beállítással](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Felderítés ablaktábla kiválasztott erőforrással és az erőforrás kezelése lehetőség kiemelve](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Ha megjelenik egy üzenet a kijelölt erőforrás felügyeletre való bevezetésének megerősítéséről, válassza az **Igen**lehetőséget.
+1. Ha megjelenik egy üzenet, amely megerősíti a kiválasztott erőforrás bevezetését a felügyelethez, válassza az **Igen**lehetőséget.
 
-    ![A kiválasztott erőforrások felügyeletre vonatkozó üzenet](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![A kiválasztott erőforrások felügyeletre való bevezetését igazoló üzenet](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure-erőforrásszerepkör-beállítások konfigurálása a Kiemelt identitáskezelés ben](pim-resource-roles-configure-role-settings.md)
-- [Azure-erőforrás-szerepkörök hozzárendelése a kiemelt identitáskezelésben](pim-resource-roles-assign-roles.md)
+- [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
+- [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)

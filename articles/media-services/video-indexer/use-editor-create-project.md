@@ -1,7 +1,7 @@
 ---
-title: Projektek létrehozása a Video Indexer szerkesztővel
+title: Projektek létrehozása a Video Indexer Editor használatával
 titleSuffix: Azure Media Services
-description: Ez a témakör bemutatja, hogyan lehet a Videó indexelő szerkesztővel projekteket létrehozni.
+description: Ez a témakör bemutatja, hogyan hozhat létre projekteket a Video Indexer Editor használatával.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,124 +11,124 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73839170"
 ---
-# <a name="use-the-video-indexer-editor-to-create-projects"></a>Projektek létrehozása a Video Indexer szerkesztővel
+# <a name="use-the-video-indexer-editor-to-create-projects"></a>Projektek létrehozása a Video Indexer Editor használatával
 
-Video Indexer honlapján, lehetővé teszi, hogy használja a videók mély betekintést: megtalálni a megfelelő médiatartalmat, keresse meg a részeket, hogy érdekli, és használja az eredményeket, hogy hozzon létre egy teljesen új projektet. A létrehozást követően a projekt megjeleníthető és letölthető a Video Indexerből, és használható a saját szerkesztőalkalmazásokban vagy az alsóbb rétegbeli munkafolyamatokban.
+Video Indexer webhely lehetővé teszi, hogy a videók mélyreható megállapításait használja: keresse meg a megfelelő médiatartalom tartalmát, keresse meg a kívánt részeket, és használja az eredményeket egy teljesen új projekt létrehozásához. A létrehozást követően a projekt megjeleníthető és letölthető Video Indexer, és használható a saját szerkesztési alkalmazásaiban vagy az alárendelt munkafolyamatokban.
 
-Néhány forgatókönyv, ahol hasznosnak találhatja ezt a funkciót: 
+Bizonyos esetekben hasznos lehet a funkció: 
 
-* Filmkiemelések készítése előzetesekhez.
-* A régi klipek videók hírek vet.
-* Rövidebb tartalom létrehozása a közösségi médiában.
+* Movie Highlights for Trailers létrehozása
+* A videók régi videoklipek használata a hírekben.
+* Rövidebb tartalom létrehozása a közösségi médiához.
 
-Ez a cikk bemutatja, hogyan hozhat létre teljesen új projektet, és hogyan hozhat létre projektet a fiókjában lévő videóból.
+Ez a cikk bemutatja, hogyan hozhat létre egy projektet a semmiből, és hogyan hozhat létre egy projektet a fiókjában.
 
 ## <a name="create-new-project-and-manage-videos"></a>Új projekt létrehozása és videók kezelése
 
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
-1. Válassza a **Projektek** lapot. Ha korábban már létrehozott projekteket, az összes többi projektet itt láthatja.
-1. Kattintson **az Új projekt létrehozása gombra.**  
+1. Válassza a **projektek** fület. Ha korábban már létrehozott projekteket, az összes többi projektet itt fogja látni.
+1. Kattintson az **új projekt létrehozása**lehetőségre.  
 
     ![Új projekt](./media/video-indexer-view-edit/new-project.png)
-1. Adjon nevet a projektnek a ceruza ikonra kattintva. Cserélje le a "Névtelen projekt" szöveget a projekt nevére, és kattintson az ellenőrzésre.
+1. A ceruza ikonra kattintva adjon nevet a projektnek. Cserélje le a "névtelen projekt" nevű szöveget a projekt nevére, és kattintson az ellenőrzési lehetőségre.
 
     ![Új projekt](./media/video-indexer-view-edit/new-project3.png)
     
 ### <a name="add-videos-to-the-project"></a>Videók hozzáadása a projekthez
 
 > [!NOTE]
-> Jelenleg a projektek csak ugyanazon a nyelven indexelt videókat tartalmazhatnak. Ha egy nyelven kiválasztasz egy videót, nem adhatod hozzá a fiókodban más nyelvű videókat.
+> A projektek jelenleg csak ugyanabban a nyelven indexelt videókat tartalmazhatnak. Miután kiválasztott egy videót egy adott nyelven, nem adhat hozzá olyan videókat a fiókjában, amelyek más nyelven vannak.
 
-1. A Videók hozzáadása lehetőséget választva adja hozzá azebben a projektben dolgozni kívánt **videókat.**
+1. A **videók hozzáadása**lehetőség kiválasztásával adhat hozzá a projektben használni kívánt videókat.
 
-    Látni fogja az összes videót a fiókjában, és egy keresőmezőt, amely azt mondja: "Szöveg, kulcsszavak vagy vizuális tartalom keresése". Olyan videók keresése, amelyeknek meghatározott személye, címkéje, márkája, kulcsszava vagy előfordulása szerepel az átiratban és az OCR-ben.
+    Ekkor megjelenik a fiókjában található összes videó, valamint egy keresőmező, amely a "szöveg keresése, kulcsszavak vagy vizuális tartalom keresése" kifejezést tartalmazza. Olyan videók kereséséhez, amelyekben megadott személy, címke, márka, kulcsszó vagy előfordulás szerepel az átiratban és az OCR-ben.
     
-    Például az alábbi képen olyan videókat keresünk, amelyek a "GitHub"-ot említik.
+    Az alábbi képen például a "GitHub" kifejezést tartalmazó videókat keresünk.
     
     ![GitHub](./media/video-indexer-view-edit/github.png)
 
-    Az eredmények további szűréséhez válassza **az Eredmények szűrése**lehetőséget. Szűrhetsz, ha olyan videókat jelenítesz meg, amelyekben egy bizonyos személy van, vagy megadhatja, hogy csak olyan videóeredményeket szeretnél látni, amelyek egy adott nyelven vannak, vagy egy adott tulajdonossal rendelkeznek. <br/> Megadhatja a lekérdezés hatókörét is. Ha például az OCR-ben a "GitHub" kifejezésre szeretne keresni, válassza a **Vizuális szöveg lehetőséget.**
+    Az eredmények **szűrésével**további szűrést végezhet. Szűrheti, hogy megjelenjenek-e bizonyos személyekkel rendelkező videók, vagy megadhatja, hogy csak az adott nyelven vagy egy adott tulajdonossal rendelkező videó-eredményeket szeretné megjeleníteni. <br/> Megadhatja a lekérdezés hatókörét is. Ha például a "GitHub" kifejezést szeretné használni az OCR-ben, válassza a **vizuális szöveg**lehetőséget.
 
     ![Szűrés](./media/video-indexer-view-edit/visual-text.png)
 
-    A lekérdezéshez több szűrőt is rétegezhet. / **-** A gombok segítségével szűrőket adhat hozzá/távolíthat **+** el. Az összes szűrő eltávolításához használja a **Szűrő szűrőket.**
-1. Videók hozzáadásához jelölje ki őket, majd válassza **a Hozzáadás**lehetőséget.
-1. Most látni fogja az összes kiválasztott videót. Ezek azok a videók, amelyekből klipeket fog kiválasztani a projekthez.
+    Több szűrőt is megadhat a lekérdezéshez. Szűrők hozzáadásához és eltávolításához használja a **+** / **-** gombokat. Az összes szűrő eltávolításához használja a **Szűrők törlése** lehetőséget.
+1. Videók hozzáadásához jelölje ki őket, majd válassza a **Hozzáadás**lehetőséget.
+1. Most megjelenik az összes kiválasztott videó. Ezek a videók, amelyekről a projekthez tartozó klipeket fogja kiválasztani.
 
-    A videók sorrendjét átrendezheti húzással, vagy a lista menü gombjának kiválasztásával, a **Le** vagy **a Fel**gombra kattintva. A lista menüből a videót is eltávolíthatja a projektből. 
+    Átrendezheti a videók sorrendjét húzással vagy eldobással, vagy kiválaszthatja a lista menü gombot, majd a lejjebb vagy a **mozgatás** **lehetőséget választva.** A lista menüből a projektből is el tudja távolítani a videót. 
 
-    ![Átrendezése](./media/video-indexer-view-edit/rearrange.png)
+    ![Átrendezheti](./media/video-indexer-view-edit/rearrange.png)
     
-    A **Videók hozzáadása**lehetőség kiválasztásával bármikor hozzáadhat további videókat a projekthez. Ugyanannak a videónak több előfordulását is hozzáadhatja a projekthez. Ezt akkor érdemes megtennie, ha az egyik videóklipet, majd egy másik klipet szeretne megjeleníteni, majd egy másik klipet az első videóból. 
+    Bármikor hozzáadhat további videókat a projekthez a **videók hozzáadása**lehetőség kiválasztásával. A projekthez ugyanazt a videót több előfordulás is hozzáadhatja. Erre akkor lehet szükség, ha egy videóból egy klipet szeretne megjeleníteni, majd egy másikat, majd egy másikat az első videóból. 
 
-### <a name="select-clips-to-use-in-your-project"></a>A projektben használni kívánt klipek kijelölése
+### <a name="select-clips-to-use-in-your-project"></a>Válassza ki a projektben használni kívánt klipeket
 
-Ha az egyes videók jobb oldalán lévő lefelé mutató nyílra kattintasz, időbélyegek (a videó klipjei) alapján megnyitod a videóban szereplő elemzéseket. 
+Ha az egyes videók jobb oldalán lévő lefelé mutató nyílra kattint, akkor a videóban az időbélyegek (a videó klipei) alapján megnyithatja a bepillantást. 
 
-1. Válassza **az Elemzési adatok megtekintése** lehetőséget, ha testre szabhatja, hogy mely elemzéseket szeretné látni, és melyeket nem szeretné látni. 
+1. Az információk **megtekintése** elemre kattintva testreszabhatja, hogy mely információt szeretné megtekinteni, és melyeket nem szeretne látni. 
 
     ![Elemzések megtekintése](./media/video-indexer-view-edit/insights.png)
-1. Adott klipeklekérdezések létrehozásához használja a "Keresés az átiratban, a vizuális szövegben, a személyekben és a címkékben" feliratú keresőmezőt.
-1. Szűrők hozzáadásával további részleteket adhat meg a keresett jelenetekről a **Szűrő beállítások**kiválasztásával.
+1. Adott klipekhez tartozó lekérdezések létrehozásához használja a "keresés átiratban, vizuális szöveg, emberek és címkék" kifejezést.
+1. Szűrők hozzáadásával további részleteket adhat meg a keresett jelenetek közül a **szűrési beállítások lehetőség**kiválasztásával.
 
     ![Szűrési lehetőségek](./media/video-indexer-view-edit/filter-options.png)
 
-    Előfordulhat például, hogy olyan klipeket szeretne látni, amelyekben a GitHub szerepel, miközben Donovan Brown a képernyőn van. Ehhez hozzá kell adnia egy "include" szűrőt, amelynek típusa "Emberek", mint típusú betekintést. Ezután be kell írnia a "Donovan Brown" kifejezést a szűrő keresőmezőjébe.
+    Előfordulhat például, hogy meg szeretné jeleníteni a GitHubon lévő klipeket, míg a Donovan Brown a képernyőn látható. Ehhez hozzá kell adnia egy "include" szűrőt, amelynek a típusa "People". Ezután be kell írnia a "Donovan Brown" kifejezést a szűrő keresőmezőbe.
     
     ![Belefoglalás](./media/video-indexer-view-edit/include.png)
     
-    Ha olyan klipeket szeretne, ahol a GitHub szerepel, miközben Donovan Brown _nincs_ a képernyőn, egyszerűen módosítsa a "include" szűrőt egy "kizárás" szűrővé a legördülő menü használatával. 
+    Ha azt szeretné, hogy a GitHubon megjelenő, a Donovan Brown _nem_ a képernyőn lévő klipeket használja, egyszerűen módosítsa a "Belefoglalás" szűrőt egy "kizárás" szűrőre a legördülő listából. 
 
-1. Clip-et adhat a projekthez a hozzáadni kívánt szegmens kiválasztásával. A klip kijelölésének megszüntetéséhez kattintson ismét a szegmensre.
+1. A hozzáadni kívánt szegmens kiválasztásával hozzáadhat egy klipet a projekthez. A klip kijelölését a szegmensre kattintva törölheti.
     
-    A videó összes szegmensének hozzáadásához kattintson a videó melletti lista menüre, és válassza **az Összes szegmens kijelölése**lehetőséget. 
+    A videó összes szegmensének hozzáadásához kattintson a videó melletti lista menüre, és válassza a **minden szegmens kijelölése**lehetőséget. 
 
     ![Az összes hozzáadása](./media/video-indexer-view-edit/add-all.png)
 
-    A kijelölés törlése a Kijelölés törlése lehetőség kiválasztásával törölheti az összes kijelölést.
+    A kijelölés törlése lehetőség kiválasztásával törölheti az összes kijelölést.
 
 > [!TIP]
-> A klipek kiválasztásakor és rendelése közben megtekintheti a videót az oldal jobb oldalán lévő lejátszóban. 
+> A klipek kiválasztása és sorrendbe állítása közben megtekintheti a videót az oldal jobb oldalán lévő lejátszóban. 
 
 ![Előzetes verzió](./media/video-indexer-view-edit/preview.png)
 
-Ne felejtse el menteni a projektet, amikor módosításokat hajt végre a **Projekt mentése**lehetőség kiválasztásával. 
+Ne felejtse el menteni a projektet, amikor módosításokat végez a **projekt mentése**gombra kattintva. 
 
 ### <a name="render-and-download-the-project"></a>A projekt renderelése és letöltése
 
 > [!NOTE]
-> A Video Indexer fizetős fiókok esetében a projekt kódolási költségeinek megjelenítése. A Video Indexer próbafiókjai legfeljebb 5 órányi renderelésre jogosultak.
+> Video Indexer fizetős fiókok esetében a projekt kódolásának költségei. Video Indexer próbaverziós fiókok esetében 5 órányi renderelésre van korlátozva.
 
-1. Miután elkészült, győződjön meg arról, hogy a projekt mentve lett. Most már renderelheti ezt a projektet. Válassza a **Render and Download**lehetőséget. 
+1. Ha elkészült, győződjön meg arról, hogy a projekt el lett mentve. Most már elvégezheti a projekt megjelenítését. Válassza **a renderelés és letöltés**lehetőséget. 
 
     ![Mentés](./media/video-indexer-view-edit/save.png)
 
-    Lesz egy felugró ablak, amely azt mondja, hogy a Videó indexelő egy fájlt jelenít meg, majd a letöltési linket elküldi az e-mailbe. Válassza a Folytatás lehetőséget. 
+    Megjelenik egy előugró ablak, amely arról tájékoztatja, hogy a video Indexer egy fájlt fog megjeleníteni, majd a letöltési hivatkozást elküldi az e-mail-címre. Válassza a Folytatás lehetőséget. 
     
-    Az oldal tetején értesítést is kap arról, hogy a projekt megjelenik. Miután megtörtént a renderelés, megjelenik egy új értesítés arról, hogy a projekt sikeresen megtörtént. Kattintson az értesítésre a projekt letöltéséhez. Ez akarat letölt a tervez -ban mp4 formátum.
+    Megjelenik egy értesítés is arról, hogy a projekt az oldal tetején jelenik meg. Miután megtörtént a megjelenítés, egy új értesítés jelenik meg, amely szerint a projekt sikeresen meg lett jelenítve. A projekt letöltéséhez kattintson az értesítésre. MP4 formátumban tölti le a projektet.
 
-    ![Renderelés kész](./media/video-indexer-view-edit/rendering-done.png)
+    ![Megjelenítés kész](./media/video-indexer-view-edit/rendering-done.png)
 
-1. A mentett projekteket a **Projektek** lapon érheti el. 
+1. A mentett projektek a **projektek** lapról érhetők el. 
 
-    Ha ezt a projektet választja, láthatja a projekt összes elemzési és ütemtervét. Ha a **Videószerkesztő**lehetőséget választja, folytathatja a projekt szerkesztését. A szerkesztések közé tartozik a videók és klipek hozzáadása vagy eltávolítása, illetve a projekt átnevezése.
+    Ha ezt a projektet választja, megjelenik a projekt összes bepillantást és idővonala. Ha a **videó szerkesztőt**választja, akkor folytathatja a projekt szerkesztését. A szerkesztések közé tartoznak a videók és a klipek hozzáadása vagy eltávolítása, illetve a projekt átnevezése.
 
-    ![Videószerkesztő](./media/video-indexer-view-edit/video-editor.png)
+    ![Videó szerkesztő](./media/video-indexer-view-edit/video-editor.png)
      
 ## <a name="create-a-project-from-your-video"></a>Projekt létrehozása a videóból
 
-Új projektet közvetlenül a fiókjában lévő videóból hozhat létre. 
+Létrehozhat egy új projektet közvetlenül a fiókjában található videóból. 
 
-1. Nyissa meg a Video Indexer webhely **Könyvtár** lapját.
-1. Nyissa meg a projekt létrehozásához használni kívánt videót. Az elemzési és idővonal lapon válassza a **Videószerkesztő** gombot.
+1. Nyissa meg a Video Indexer webhely **könyvtár** lapját.
+1. Nyissa meg a projekt létrehozásához használni kívánt videót. Az áttekintések és az idővonal lapon válassza a **videó szerkesztő** gombot.
 
-    Ezzel ugyanarra az oldalra kerül, amelyen egy új projekt et hoztál létre. Az új projekttől eltérően a videó időbélyeggel ellátott elemzési szegmenseit láthatja, amelyeket korábban már elkezdtél szerkeszteni.
+    Ezzel az oldalra kerül, amelyet egy új projekt létrehozásához használt. Az új projekttől eltérően a videó időbélyegzővel ellátott bepillantást nyerhet, amelyet korábban már elkezdett szerkeszteni.
 
 ## <a name="see-also"></a>Lásd még
 

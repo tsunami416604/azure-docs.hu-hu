@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services kezelése | Microsoft dokumentumok
-description: Ez a cikk az Azure Analysis Services-kiszolgáló felügyeleti és felügyeleti feladatainak kezeléséhez használt eszközöket ismerteti.
+title: Azure Analysis Services kezelése | Microsoft Docs
+description: Ez a cikk a Azure Analysis Services-kiszolgálók adminisztrációs és felügyeleti feladatainak kezeléséhez használt eszközöket ismerteti.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,62 +8,62 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572794"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
-Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, előfordulhat, hogy néhány felügyeleti és felügyeleti feladatot azonnal el kell végeznie, vagy valamikor az úton lefelé. Futtassa például a feldolgozást a frissítési adatokra, szabályozhatja, hogy ki férhet hozzá a kiszolgálón lévő modellekhez, vagy figyelheti a kiszolgáló állapotát. Egyes felügyeleti feladatok csak az Azure Portalon, mások az SQL Server Management Studio (SSMS), és bizonyos feladatok at lehet végezni bármelyik.
+Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, hogy bizonyos adminisztrációs és felügyeleti feladatok elvégzéséhez azonnal el kell végeznie az utat. Például futtasson feldolgozást az adatfrissítésre, szabályozhatja, hogy ki férhet hozzá a modellekhez a kiszolgálón, vagy figyelje a kiszolgáló állapotát. Egyes felügyeleti feladatok csak Azure Portalban hajthatók végre, másokat SQL Server Management Studio (SSMS), és néhány feladatot bármelyikben elvégezhet.
 
-## <a name="azure-portal"></a>Azure portál
-[Az Azure Portal](https://portal.azure.com/) az a hely, ahol kiszolgálókat hozhat létre és törölhet, figyelheti a kiszolgálók erőforrásait, módosíthatja a méretet, és kezelheti, hogy ki férhet hozzá a kiszolgálókhoz.  Ha valamilyen problémája van, támogatási kérelmet is benyújthat.
+## <a name="azure-portal"></a>Azure Portal
+[Azure Portal](https://portal.azure.com/) a kiszolgálók létrehozásához és törléséhez, a kiszolgáló erőforrásainak figyeléséhez, a méret módosításához és a kiszolgálókhoz való hozzáféréssel rendelkezők kezeléséhez.  Ha problémák merülnek fel, támogatási kérelmet is küldhet.
 
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Az Azure-beli kiszolgálóhoz való csatlakozás olyan, mintha a saját szervezetében lévő kiszolgálópéldányhoz csatlakozna. Az SSMS-ből számos ugyanazokat a feladatokat hajthathatja végre, például az adatok feldolgozását, vagy létrehozhat egy feldolgozási parancsfájlt, kezelheti a szerepköröket, és használhatja a PowerShellt.
+Az Azure-kiszolgálóhoz való csatlakozás ugyanúgy történik, mint a saját szervezetében lévő kiszolgálói példányokhoz való csatlakozáshoz. A SSMS számos olyan feladatot hajthat végre, mint például az adatok feldolgozása vagy a feldolgozási parancsfájl létrehozása, a Szerepkörök kezelése és a PowerShell használata.
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
 ### <a name="download-and-install-ssms"></a>Az SSMS letöltése és telepítése
-A legújabb funkciók és a legsimább élmény az Azure Analysis Services-kiszolgálóhoz való csatlakozáskor, győződjön meg arról, hogy az SSMS legújabb verzióját használja. 
+Győződjön meg arról, hogy a legújabb funkciókat és a legsimább felhasználói élményt használja a Azure Analysis Services-kiszolgálóhoz való kapcsolódáskor. a SSMS legújabb verzióját kell használnia. 
 
-[Töltse le az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)alkalmazást.
+[SQL Server Management Studio letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-### <a name="to-connect-with-ssms"></a>Csatlakozás az SSMS-hez
- Az SSMS használatakor, mielőtt első alkalommal csatlakozna a kiszolgálóhoz, győződjön meg arról, hogy a felhasználóneve szerepel az Analysis Services Rendszergazdák csoportjában. További információ: A cikk későbbi részében a [Kiszolgáló rendszergazdái és az adatbázis-felhasználók című](#server-administrators-and-database-users) témakörben olvashat.
+### <a name="to-connect-with-ssms"></a>Kapcsolódás a SSMS
+ A SSMS használatakor a kiszolgálóhoz való első csatlakozás előtt győződjön meg róla, hogy a felhasználóneve szerepel a Analysis Services rendszergazdák csoportban. További információ: a [kiszolgáló-rendszergazdák és az adatbázis-felhasználók](#server-administrators-and-database-users) a cikk későbbi részében.
 
-1. A csatlakozás előtt be kell szereznie a kiszolgáló nevét. Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
+1. A kapcsolódás előtt le kell kérnie a kiszolgáló nevét. Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
    
     ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. Az SSMS > **Object Explorerben** kattintson a **Csatlakozás** > **Analysis Services** lehetőségre.
-3. A **Csatlakozás kiszolgálóhoz** párbeszédpanelen illessze be a kiszolgáló nevét, majd a **Hitelesítés**mezőbe válassza az alábbi hitelesítési típusok egyikét:   
+3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen illessze be a kiszolgáló nevét, majd a **hitelesítés**területen válasszon a következő hitelesítési típusok közül:   
     > [!NOTE]
-    > Hitelesítési típus, **Active Directory - Univerzális MFA-támogatással**ajánlott.
+    > A hitelesítés típusa, **Active Directory az MFA-támogatással rendelkező univerzális**, ajánlott.
 
     > [!NOTE]
-    > Ha Microsoft-fiókkal, Live ID azonosítóval, Yahoo-val, Gmail-lel stb. A Csatlakozás gombra való kattintás után a rendszer jelszót kér.
+    > Ha Microsoft-fiókkal, élő AZONOSÍTÓval, a Yahoo-val, a Gmailben vagy a bejelentkezéssel jelentkezik be, hagyja üresen a jelszó mezőt. A Csatlakozás gombra kattintás után a rendszer jelszót kér.
 
-    **Windows-hitelesítés** a Windows-tartomány\felhasználónév és jelszó hitelesítő adatainak használatához.
+    **Windows-hitelesítés** a Windows tartomány \ Felhasználónév és a jelszó hitelesítő adatainak használatához.
 
-    **Active Directory jelszó-hitelesítés** szervezeti fiók használatához. Ha például nem tartományhoz csatlakozó számítógépről csatlakozik.
+    **Active Directory a jelszó-hitelesítés** szervezeti fiók használatára. Például egy tartományhoz nem csatlakoztatott számítógépről való csatlakozáskor.
 
-    **Active Directory – Univerzális, többtényezős hitelesítéssel támogatott MFA-támogatással** a [nem interaktív vagy többtényezős hitelesítés használatához.](../sql-database/sql-database-ssms-mfa-authentication.md) 
+    **Active Directory-Universal, MFA-támogatással** , [nem interaktív vagy többtényezős hitelesítés](../sql-database/sql-database-ssms-mfa-authentication.md)használatára. 
    
     ![Csatlakozás az SSMS-ben](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
-## <a name="server-administrators-and-database-users"></a>Kiszolgálórendszergazdák és adatbázis-felhasználók
-Az Azure Analysis Services ben kétféle felhasználó, kiszolgáló-rendszergazdák és adatbázis-felhasználók vannak. Mindkét típusú felhasználónak az Azure Active Directoryban kell lennie, és szervezeti e-mail-cím vagy upn által kell megadni. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
+## <a name="server-administrators-and-database-users"></a>Kiszolgáló-rendszergazdák és adatbázis-felhasználók
+Azure Analysis Services a felhasználók két típusa van, a kiszolgálói rendszergazdák és az adatbázis-felhasználók. Mindkét típusú felhasználónak a Azure Active Directory kell lennie, és a szervezeti e-mail-címmel vagy egyszerű felhasználónévvel kell megadnia. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
 
-## <a name="troubleshooting-connection-problems"></a>Csatlakozási problémák elhárítása
-Ha az SSMS használatával csatlakozik, ha problémákba ütközik, előfordulhat, hogy törölnie kell a bejelentkezési gyorsítótárat. Semmi sincs elrejtve a lemezre. A gyorsítótár törléséhez zárja be és indítsa újra a kapcsolódási folyamatot. 
+## <a name="troubleshooting-connection-problems"></a>Kapcsolódási problémák elhárítása
+Ha a SSMS használatával csatlakozik, akkor előfordulhat, hogy törölnie kell a bejelentkezési gyorsítótárat. Nincs a lemezre gyorsítótárazva. A gyorsítótár kiürítéséhez zárjuk be, majd indítsa újra a kapcsolódási folyamatot. 
 
 ## <a name="next-steps"></a>További lépések
-Ha még nem telepített táblázatos modellt az új kiszolgálóra, most van itt az ideje. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](analysis-services-deploy.md) ismertető cikket.
+Ha még nem telepített táblázatos modellt az új kiszolgálóra, most már jó ideje van. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](analysis-services-deploy.md) ismertető cikket.
 
-Ha telepített egy modellt a kiszolgálóra, készen áll arra, hogy ügyfélvagy böngésző használatával csatlakozzon hozzá. További információ: [Adatok beszedése az Azure Analysis Services-kiszolgálóról](analysis-services-connect.md).
+Ha már telepített egy modellt a-kiszolgálóra, az ügyfél vagy a böngésző használatával csatlakozhat hozzá. További információért lásd: [adatok Beolvasása Azure Analysis Services kiszolgálóról](analysis-services-connect.md).
 

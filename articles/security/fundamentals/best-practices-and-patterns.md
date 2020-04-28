@@ -1,6 +1,6 @@
 ---
-title: Biztonsági gyakorlati tanácsok és minták – Microsoft Azure | Microsoft dokumentumok
-description: Ez a cikk a különböző Azure-erőforrások biztonsági gyakorlati és mintáira hivatkozik.
+title: Ajánlott biztonsági eljárások és minták – Microsoft Azure | Microsoft Docs
+description: Ez a cikk a különböző Azure-erőforrásokkal kapcsolatos ajánlott biztonsági eljárásokat és mintákat ismerteti.
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889857"
 ---
-# <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági bevált módszerei és mintái
+# <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági bevált eljárásai és mintái
 
-Az alábbi cikkek biztonsági gyakorlati tanácsokat tartalmaznak, amelyeket a felhőbeli megoldások tervezésekor, üzembe helyezésekor és kezelésekor az Azure használatával használhat. Ezek az ajánlott eljárások az Azure-biztonsággal és az Önhöz hasonló ügyfelek tapasztalataival kapcsolatos tapasztalatainkból származnak.
+Az alábbi cikkek a felhőalapú megoldások Azure használatával történő tervezésekor, üzembe helyezéséhez és kezeléséhez szükséges biztonsági eljárásokat tartalmaznak. Ezek az ajánlott eljárások az Azure Security szolgáltatással és az ügyfelek hasonló tapasztalataival kapcsolatos tapasztalatokból származnak.
 
-Az ajánlott eljárások célja, hogy az informatikai szakemberek erőforrása legyen. Ez magában foglalhatja a tervezők, építészek, fejlesztők és tesztelők, akik biztonságos Azure-megoldásokat hoznak létre és telepítenek.
+Az ajánlott eljárások az informatikai szakemberek számára készült erőforrások. Ilyenek lehetnek a biztonságos Azure-megoldások készítésére és üzembe helyezésére szolgáló tervezők, építészek, fejlesztők és tesztelők.
 
 * [Azure-beli határbiztonság – ajánlott eljárások](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure-beli adatbázis-biztonság – ajánlott eljárások](database-best-practices.md)
-* [Az Azure-adatok biztonságának és titkosításának gyakorlati tanácsai](data-encryption-best-practices.md)
-* [Az Azure-identitáskezelés és a hozzáférés-vezérlés biztonságának gyakorlati tanácsai](identity-management-best-practices.md)
-* [Az Azure hálózati biztonsággal kapcsolatos gyakorlati tanácsai](network-best-practices.md)
+* [Az Azure-Adatbiztonság és-titkosítás ajánlott eljárásai](data-encryption-best-practices.md)
+* [Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások](identity-management-best-practices.md)
+* [Ajánlott Azure-hálózati biztonsági eljárások](network-best-practices.md)
 * [Azure-beli üzemeltetési biztonság – ajánlott eljárások](operational-best-practices.md)
 * [Azure PaaS – ajánlott eljárások](paas-deployments.md)
 * [Az Azure Service Fabric ajánlott biztonsági eljárásai](service-fabric-best-practices.md)
@@ -44,6 +44,6 @@ Az ajánlott eljárások célja, hogy az informatikai szakemberek erőforrása l
 * [PaaS web- és mobilalkalmazások védelme az Azure Storage használatával](paas-applications-using-storage.md)
 * [Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban](iaas.md)
 
-Az [Azure-megoldások biztonsági gyakorlati tanácsai](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) a fent felsorolt cikkekben található biztonsági gyakorlati tanácsok gyűjteménye.
+Az Azure- [megoldásokra vonatkozó, a tanulmányokkal kapcsolatos ajánlott biztonsági eljárások](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) a fent felsorolt cikkekben található ajánlott biztonsági eljárások gyűjteményei.
 
 [A tanulmány letöltése](https://azure.microsoft.com/mediahandler/files/resourcefiles/security-best-practices-for-azure-solutions/Azure%20Security%20Best%20Practices.pdf)

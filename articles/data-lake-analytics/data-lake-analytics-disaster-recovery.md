@@ -1,6 +1,6 @@
 ---
-title: Vész-helyreállítási útmutató az Azure Data Lake Analytics-hez
-description: Ismerje meg, hogyan tervezheti meg a vészhelyreállítást az Azure Data Lake Analytics-fiókokhoz.
+title: Vész-helyreállítási útmutató a Azure Data Lake Analytics
+description: Megtudhatja, hogyan tervezheti meg a Azure Data Lake Analytics-fiókok vész-helyreállítását.
 services: data-lake-analytics
 author: MikeRys
 ms.author: mrys
@@ -9,40 +9,40 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889768"
 ---
-# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Vész-helyreállítási útmutató az Azure Data Lake Analytics-hez
+# <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Vész-helyreállítási útmutató a Azure Data Lake Analytics
 
-Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás, amely leegyszerűsíti a big data-elemzéseket. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. Ez a cikk útmutatást nyújt a feladatok ritka régiószintű kimaradások vagy véletlen törlések elleni védelméhez.
+Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás, amely leegyszerűsíti a big data-elemzéseket. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. Ez a cikk útmutatást nyújt arról, hogyan lehet felvenni a feladatokat a ritka régiókban vagy véletlen törlésekben.
 
 ## <a name="disaster-recovery-guidance"></a>Vészhelyreállítási útmutató
 
-Az Azure Data Lake Analytics használatakor fontos, hogy saját vész-helyreállítási tervet készítsen. Ez a cikk segítséget nyújt a vész-helyreállítási terv létrehozásához. További források segíthetnek saját terv létrehozásában:
+Azure Data Lake Analytics használatakor fontos, hogy előkészítse a saját vész-helyreállítási tervét. Ez a cikk segítséget nyújt a vész-helyreállítási terv létrehozásához. További források is létrehozhatók a saját csomag létrehozásához:
 - [Azure-alkalmazások hibaelhárítása és vészhelyreállítása](/azure/architecture/reliability/disaster-recovery)
 - [Műszaki útmutató az Azure rugalmasságáról](/azure/architecture/checklist/resiliency-per-service)
 
-## <a name="best-practices-and-scenario-guidance"></a>Bevált gyakorlatok és forgatókönyv-útmutató
+## <a name="best-practices-and-scenario-guidance"></a>Ajánlott eljárások és forgatókönyvek – útmutató
 
-Futtathat egy ismétlődő U-SQL-feladatot egy ADLA-fiókban egy olyan régióban, amely u-SQL táblákat, valamint strukturálatlan adatokat olvas és ír.  Készüljön fel a katasztrófa az alábbi lépéseket:
+Egy ismétlődő U-SQL-feladatot futtathat egy ADLA-fiókban egy olyan régióban, amely U-SQL-táblákat, valamint strukturálatlan adatokat olvas és ír.  Készítse elő a katasztrófát a következő lépések elvégzésével:
 
-1. Hozzon létre ADLA- és ADLS-fiókokat a másodlagos régióban, amelyeket egy kimaradás során fog használni.
-
-   > [!NOTE]
-   > Mivel a fióknevek globálisan egyediek, használjon konzisztens elnevezési sémát, amely jelzi, hogy melyik fiók másodlagos.
-
-2. Strukturálatlan adatok esetén az [Azure Data Lake Storage Gen1-ben található adatokhoz hivatkozzon a vész-helyreállítási útmutatóra1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
-
-3. Az ADLA-táblákban és adatbázisokban tárolt strukturált adatokhoz hozzon létre másolatot a metaadat-összetevőkről, például adatbázisokról, táblákról, táblaértékű függvényekről és szerelvényekről. Ezeket az összetevőket rendszeresen újra kell szinkronizálnia, amikor a változások éles környezetben történnek. Az újonnan beszúrt adatokat például replikálni kell a másodlagos régióba az adatok másolásával és a másodlagos táblába való beszúrással.
+1. Hozzon létre ADLA-és ADLS-fiókokat a másodlagos régióban, amelyet egy leállás során fog használni.
 
    > [!NOTE]
-   > Ezek az objektumnevek hatóköre a másodlagos fiókba terjed ki, és globálisan nem egyediek, így ugyanazokkal a nevekkel rendelkezhetnek, mint az elsődleges termelési fiókban.
+   > Mivel a fiókok nevei globálisan egyediek, egységes elnevezési sémát használunk, amely azt jelzi, hogy melyik fiók másodlagos.
 
-Egy kimaradás során frissítenie kell a parancsfájlokat, hogy a bemeneti útvonalak a másodlagos végpontra mutassanak. Ezután a felhasználók elküldik a feladataikat az ADLA-fióknak a másodlagos régióban. A feladat kimenete ezután a másodlagos régió ADLA- és ADLS-fiókjába lesz írva.
+2. Strukturálatlan adat esetén a vész [-helyreállítási útmutatás a Azure Data Lake Storage Gen1ban található adathoz](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+
+3. A ADLA-táblákban és-adatbázisokban tárolt strukturált adatok esetében hozzon létre másolatokat a metaadatokból, például adatbázisokból, táblákból, táblázat értékű függvényekből és szerelvényekről. Rendszeres időközönként újra kell szinkronizálnia ezeket az összetevőket, amikor a változások az éles környezetben történnek. Például az újonnan beszúrt adatoknak a másodlagos régióba való replikálásához az adatok másolásával és a másodlagos táblába való beillesztéssel kell replikálni.
+
+   > [!NOTE]
+   > Ezek az objektumok nevei a másodlagos fiókra vannak korlátozva, és nem globálisan egyediek, így ugyanazokat a neveket használhatják, mint az elsődleges éles fiókban.
+
+Leállás közben frissítenie kell a parancsfájlokat, hogy a bemeneti elérési utak a másodlagos végpontra mutassanak. Ezután a felhasználók elküldik a feladatait a ADLA-fióknak a másodlagos régióban. A rendszer ezután a ADLA és a ADLS-fiókba írja a feladatot a másodlagos régióban.
 
 ## <a name="next-steps"></a>További lépések
 
-[Vész-helyreállítási útmutató az azure Data Lake Storage Gen1-ben tárolt adatokhoz](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+[Vész-helyreállítási útmutató a Azure Data Lake Storage Gen1 lévő adatkezeléshez](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

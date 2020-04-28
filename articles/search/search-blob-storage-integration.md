@@ -1,7 +1,7 @@
 ---
-title: Teljes szöveges keresés hozzáadása az Azure Blob Storage-hoz
+title: Teljes szöveges keresés hozzáadása az Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive earch teljes szöveges keresési indexének létrehozásakor kinyerheti a tartalmat, és struktúrát adhat hozzá az Azure-blobokhoz.
+description: Kinyerheti a tartalmat, és hozzáadhat struktúrát az Azure-blobokhoz, amikor teljes szöveges keresési indexet hoz létre az Azure kognitív keresése.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,66 +9,66 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73496493"
 ---
-# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Teljes szöveges keresés hozzáadása az Azure blobadataihoz az Azure Cognitive Search használatával
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Teljes szöveges keresés hozzáadása az Azure Blob-adataihoz az Azure Cognitive Search
 
-Az Azure Blob storage-ban tárolt tartalomtípusok között való keresés nehéz probléma lehet. Az [Azure Cognitive Search](search-what-is-azure-search.md)használatával azonban néhány kattintással indexelheti és keresheti a blobok tartalmát. Az Azure Cognitive Search beépített integrációval rendelkezik a Blob storage-ból való indexeléshez egy [*Blob indexelőn*](search-howto-indexing-azure-blob-storage.md) keresztül, amely adatforrás-figyelő képességekkel növeli az indexelést.
+Az Azure Blob Storage-ban tárolt különböző tartalomtípusok közötti keresés nehéz megoldás lehet. Az [Azure Cognitive Search](search-what-is-azure-search.md)használatával azonban néhány kattintással elvégezheti a Blobok tartalmának indexelését és keresését. Az Azure Cognitive Search beépített integrációval rendelkezik a blob Storage-hoz való indexeléshez [*, amely*](search-howto-indexing-azure-blob-storage.md) adatforrással kompatibilis funkciókat biztosít az indexeléshez.
 
-## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>Mit jelent a teljes szöveges keresés hozzáadása a blobadatokhoz?
+## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>Mit jelent a teljes szöveges keresés hozzáadása a blob-adathoz
 
-Az Azure Cognitive Search egy felhőalapú keresési szolgáltatás, amely indexelési és lekérdezési motorok, amelyek a keresési szolgáltatásban üzemeltetett felhasználó által definiált indexek felett működnek. A kereshető tartalom és a felhőlekérdezési motor közös elhelyezése szükséges a teljesítményhez, és olyan sebességgel tér vissza az eredményekhez, amelyeket a felhasználók a keresési lekérdezésektől elvárnak.
+Az Azure Cognitive Search egy felhőalapú keresési szolgáltatás, amely indexelési és lekérdezési motorokat biztosít, amelyek a keresési szolgáltatásban üzemeltetett felhasználó által definiált indexeken működnek. A kereshető tartalmat a felhőben a lekérdezési motorral közösen keresheti meg a teljesítmény, a sebességű felhasználók pedig a keresési lekérdezésekből várt eredményekkel térnek vissza.
 
-Az Azure Cognitive Search integrálható az Azure Blob storage az indexelő rétegen, importálja a blob tartalmát keresési dokumentumok, amelyek indexelt *fordított indexek* és más lekérdezési struktúrák, amelyek támogatják a szabad formátumú szöveges lekérdezések és a szűrő kifejezések. Mivel a blob tartalom indexelve van egy keresési index, a blob tartalomhoz való hozzáférés az Azure Cognitive Search lekérdezési funkciók teljes körét használhatja ki.
+Az Azure Cognitive Search az indexelési rétegben integrálva van az Azure Blob Storage szolgáltatással, így a blob tartalmát olyan keresési dokumentumokként importálhatja, amelyek az ingyenes szöveges lekérdezéseket *és a* szűrési kifejezéseket támogató lekérdezési struktúrákba vannak indexelve. Mivel a blob tartalma egy keresési indexbe van indexelve, a blob-tartalmakhoz való hozzáférés az Azure Cognitive Search összes lekérdezési funkcióját kihasználhatja.
 
-Az index létrehozása és feltöltése után a blobtárolótól függetlenül létezik, de újrafuttathatja az indexet az index az alapul szolgáló tároló módosításaival. Az egyes blobok időbélyeg-adatait a rendszer a változásészleléshez használja. Választhat az ütemezett végrehajtás vagy az igény szerinti indexelés, mint a frissítési mechanizmus.
+Miután létrehozta és feltölti az indexet, a blob-tárolótól függetlenül létezik, de az indexelési műveletek újrafuttatásával frissítheti az indexet az alapul szolgáló tároló módosításaival. Az egyes Blobok időbélyeg-információi a változás észlelésére szolgálnak. Az ütemezett végrehajtást vagy igény szerinti indexelést a frissítési mechanizmusként is választhatja.
 
-Bemenetek a blobok, egyetlen tárolóban, az Azure Blob storage-ban. A blobok szinte bármilyen szöveges adat lehetnek. Ha a blobok képeket tartalmaznak, hozzáadhat [jat-bővítés blob indexelés](search-blob-ai-integration.md) létrehozásához és kibontásához szöveget képekből.
+A bemenetek a Blobok egyetlen tárolóban, az Azure Blob Storage-ban. A Blobok szinte bármilyen típusú szöveges adattal rendelkezhetnek. Ha a Blobok képeket tartalmaznak, hozzáadhat AI-bővítést [a blob indexeléshez](search-blob-ai-integration.md) a képekből származó szövegek létrehozásához és kinyeréséhez.
 
-A kimenet mindig egy Azure Cognitive Search index, amelyet gyors szöveges kereséshez, visszakereséshez és ügyfélalkalmazások feltárásához használnak. A kettő között maga az indexelő folyamatarchitektúra. A folyamat az *indexelő* szolgáltatáson alapul, amelyet a cikkben tovább tárgyalunk.
+A kimenet mindig egy Azure Cognitive Search index, amely a gyors szöveges kereséshez, a lekérésekhez és a feltáráshoz használható az ügyfélalkalmazások számára. A között az indexelő folyamat architektúrája. A folyamat az *Indexelő* szolgáltatáson alapul, amelyet a cikk további részében ismertetett.
 
-## <a name="start-with-services"></a>Kezdje a szolgáltatásokkal
+## <a name="start-with-services"></a>Kezdés a szolgáltatásokkal
 
-Az Azure Cognitive Search és az Azure Blob storage szükséges. A Blob storage-on belül olyan tárolóra van szüksége, amely forrástartalmat biztosít.
+Az Azure Cognitive Search és az Azure Blob Storage szükséges. A blob Storage-ban olyan tárolóra van szükség, amely a forrás tartalmát biztosítja.
 
-Közvetlenül a tárfiók portálján indítható el. A bal oldali navigációs lapon a **Blob szolgáltatás** csoportban kattintson az Azure Cognitive **Search hozzáadása** elemre egy új szolgáltatás létrehozásához, vagy válasszon ki egy meglévőt. 
+A Storage-fiók portálján közvetlenül is elindíthatja a lapot. A bal oldali navigációs oldal **blob Service** területén kattintson az **Azure Cognitive Search hozzáadása** elemre egy új szolgáltatás létrehozásához, vagy válasszon ki egy meglévőt. 
 
-Miután hozzáadja az Azure Cognitive Search-et a tárfiókhoz, a szabványos folyamatot követheti a blobadatok indexeléséhez. Azt javasoljuk, hogy az **Adatok importálása** varázsló az Azure Cognitive Search egy egyszerű kezdeti bevezetés, vagy hívja meg a REST API-k segítségével egy eszköz, mint a Postman. Ez az oktatóanyag végigvezeti a REST API hívásának lépésein a Postman: [Index és a keresés félig strukturált adatok (JSON-blobok) az Azure Cognitive Search.](search-semi-structured-data.md) 
+Miután hozzáadta az Azure-Cognitive Search a Storage-fiókjához, a szabványos folyamat használatával indexelheti a Blobok adatait. Javasoljuk, hogy az **adatok importálása** varázslót az Azure Cognitive Search egyszerű kezdeti bevezetésre használja, vagy hívja meg a REST API-kat egy olyan eszközzel, mint például a Poster. Ez az oktatóanyag végigvezeti azon lépéseken, amelyekkel meghívja a REST API a Poster [szolgáltatásban: index és keresés részben strukturált adatfájlok (JSON-Blobok) az Azure Cognitive Searchban](search-semi-structured-data.md). 
 
-## <a name="use-a-blob-indexer"></a>Blob indexelő használata
+## <a name="use-a-blob-indexer"></a>BLOB-indexelő használata
 
-Az *indexelő* egy adatforrás-érzékeny alszolgáltatás, amely belső logikával rendelkezik az adatok mintavételezéséhez, a metaadatok olvasásához, az adatok beolvasásához és a natív formátumokból származó adatok JSON-dokumentumokba történő szerializálásához későbbi importáláshoz. 
+Az *Indexelő* egy adatforrást támogató alszolgáltatás, amely belső logikával rendelkezik a mintavételi adatokhoz, a metaadatok beolvasásához, az adatok lekéréséhez és az adatok natív formátumokból való szerializálásához a további importáláshoz. 
 
-Az Azure Storage-ban lévő blobok indexelése az [Azure Cognitive Search Blob storage indexelővel lesz indexelve.](search-howto-indexing-azure-blob-storage.md) Ezt az indexelőt az **Adatok importálása** varázslóval, egy REST API-val vagy a .NET SDK-val hívhatja meg. A kódban ezt az indexelőt a típus beállításával és az Azure Storage-fiókot és egy blobtárolóval együtt tartalmazó kapcsolati adatok megadásával használja. A blobok részhalmaza egy virtuális könyvtár létrehozásával, amelyet paraméterként továbbíthat, vagy szűrhet egy fájltípus-kiterjesztésre.
+Az Azure Storage-beli Blobok indexelése az [azure Cognitive Search blob Storage indexelő](search-howto-indexing-azure-blob-storage.md)használatával történik. Az indexelő az **adatimportálás** varázsló, a REST API vagy a .net SDK használatával hívható meg. A kódban ezt az indexelő kell használnia a típus megadásával, valamint az Azure Storage-fiókkal és a blob-tárolóval együtt tartalmazó kapcsolatok adatainak biztosításával. A blobokat egy virtuális könyvtár létrehozásával, amelyet aztán paraméterként adhat át, vagy szűrheti a fájltípusok kiterjesztését.
 
-Az indexelő nem a "dokumentum repedés", megnyitva egy blobot, hogy vizsgálja meg a tartalmat. Az adatforráshoz való csatlakozás után ez az első lépés a folyamatban. Blob-adatok esetén itt található a PDF-dokumentum, az irodai dokumentumok és más tartalomtípusok észlelése. Dokumentum csinos szöveg kinyerése nem számít. Ha a blobok képtartalmat tartalmaznak, a rendszer figyelmen kívül hagyja a képeket, hacsak nem [ad hozzá AI-bővítést.](search-blob-ai-integration.md) A szabványos indexelés csak a szöveges tartalomra vonatkozik.
+Az indexelő a "dokumentum repedése", a Blobok megnyitása a tartalom vizsgálatához. Az adatforráshoz való csatlakozás után ez a folyamat első lépése. A Blobok esetében ez az a hely, ahol a rendszer PDF-fájlokat, Office-dokumentumokat és más típusú tartalmakat észlel. A szöveg kibontásával nem számítunk fel díjat. Ha a Blobok képtartalmat tartalmaznak, a rendszer figyelmen kívül hagyja a képeket, hacsak nem [ad hozzá mesterséges intelligenciát](search-blob-ai-integration.md). A normál indexelés csak szöveges tartalomra vonatkozik.
 
-A Blob indexelő jön a konfigurációs paramétereket, és támogatja a változás követés, ha az alapul szolgáló adatok elegendő információt szolgáltatnak. Az Azure Cognitive Search Blob [storage indexelőjének](search-howto-indexing-azure-blob-storage.md)alapvető funkcióiról többet is megtudhat.
+A blob indexelő konfigurációs paramétereket tartalmaz, és támogatja a változások követését, ha az alapul szolgáló adatok elegendő információt biztosítanak. További információ az [Azure Cognitive Search blob Storage indexelő](search-howto-indexing-azure-blob-storage.md)alapfunkcióival kapcsolatban.
 
 ### <a name="supported-content-types"></a>Támogatott tartalomtípusok
 
-Ha egy Blob-indexelőt futtat egy tárolón, egyetlen lekérdezéssel kinyerheti a szöveget és a metaadatokat a következő tartalomtípusokból:
+A blob Indexer tárolón való futtatásával a következő tartalomtípusokból származó szövegeket és metaadatokat lehet kinyerni egyetlen lekérdezéssel:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-### <a name="indexing-blob-metadata"></a>Blob metaadatainak indexelése
+### <a name="indexing-blob-metadata"></a>BLOB metaadatainak indexelése
 
-Egy gyakori forgatókönyv, amely megkönnyíti a blobok bármilyen tartalomtípussal történő rendezését, az egyéni metaadatok és a rendszertulajdonságok indexelése az egyes blobokhoz. Ily módon az összes blob adatait a dokumentum típusától függetlenül indexeli a keresési szolgáltatás ban tárolt index. Az új index használatával ezután folytathatja a rendezést, a szűrést és a facet-t az összes Blob storage-tartalomban.
+Egy gyakori forgatókönyv, amely megkönnyíti a tetszőleges tartalomtípusú Blobok rendezését, az egyéni metaadatok és a Rendszertulajdonságok indexelése az egyes blobokhoz. Így az összes blobra vonatkozó információ indexelve van, tekintet nélkül a keresési szolgáltatásban tárolt indexbe. Az új index használatával folytathatja az összes blob Storage-tartalom rendezését, szűrését és aspektusát.
 
-### <a name="indexing-json-blobs"></a>JSON-blobok indexelése
-Indexelők konfigurálható a JSON-t tartalmazó blobokban található strukturált tartalom kinyerése. Az indexelő olvashatja a JSON-blobokat, és elemezheti a strukturált tartalmat a keresési dokumentum megfelelő mezőibe. Indexelők is hozhat blobok, amelyek egy tömb JSON-objektumok és leképezheti az egyes elemek egy külön keresési dokumentum. Az elemzési módot beállíthatja úgy, hogy befolyásolja az indexelő által létrehozott JSON-objektum típusát.
+### <a name="indexing-json-blobs"></a>JSON-Blobok indexelése
+Az indexelő úgy konfigurálható, hogy kinyerje a JSON-t tartalmazó blobokban található strukturált tartalmat. Az indexelő képes beolvasni a JSON-blobokat, és elemezni a strukturált tartalmat egy keresési dokumentum megfelelő mezőiben. Az indexelő olyan blobokat is tartalmazhat, amelyek JSON-objektumok tömbjét tartalmazzák, és az egyes elemeket egy külön keresési dokumentumra képezik le. Az elemzési mód beállítható úgy, hogy az az indexelő által létrehozott JSON-objektum típusát is befolyásolja.
 
-## <a name="search-blob-content-in-a-search-index"></a>Keresési blobtartalom keresési indexben 
+## <a name="search-blob-content-in-a-search-index"></a>A blob tartalmának keresése keresési indexben 
 
-Az indexelés kimenete egy keresési index, amelyet szabad szöveg és az ügyfélalkalmazásban lévő szűrt lekérdezések használatával interaktív feltárásra használnak. A tartalom kezdeti feltárásához és ellenőrzéséhez javasoljuk, hogy kezdje a [Keresési intézővel](search-explorer.md) a portálon a dokumentumszerkezet vizsgálatához. A Keresés kezelőjében [használhatja az egyszerű lekérdezésszintaxist](query-simple-syntax.md), [a teljes lekérdezés szintaxisát](query-lucene-syntax.md)és a [kifejezés szintaxisát.](query-odata-filter-orderby-syntax.md)
+Az indexelés kimenete egy keresési index, amely az interaktív feltáráshoz használatos az ügyfélalkalmazás ingyenes szöveges és szűrt lekérdezéseit használva. A tartalom kezdeti feltárásához és ellenőrzéséhez javasoljuk, hogy a portálon kezdjen a [keresési tallózóval](search-explorer.md) a dokumentum-struktúra vizsgálatához. Használhatja az [egyszerű lekérdezési szintaxist](query-simple-syntax.md), a [teljes lekérdezési szintaxist](query-lucene-syntax.md)és a [szűrési kifejezés szintaxisát](query-odata-filter-orderby-syntax.md) a keresési Explorerben.
 
-Egy állandó megoldás a lekérdezési bemenetek összegyűjtése és a válasz megjelenítése keresési eredményekként egy ügyfélalkalmazásban. A következő C# oktatóanyag bemutatja, hogyan hozhat létre egy keresési alkalmazást: [Az első alkalmazás létrehozása az Azure Cognitive Search alkalmazásban.](tutorial-csharp-create-first-app.md)
+A több állandó megoldás a lekérdezési bemenetek összegyűjtése és a válasz megjelenítése keresési eredményekként egy ügyfélalkalmazás számára. A következő C#-oktatóanyag azt ismerteti, hogyan lehet keresési alkalmazást [létrehozni: hozza létre első alkalmazását az Azure Cognitive Searchban](tutorial-csharp-create-first-app.md).
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Blobok feltöltése, letöltése és listázása az Azure Portalon (Azure Blob storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [Blob indexelő beállítása (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [BLOB-indexelő beállítása (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 

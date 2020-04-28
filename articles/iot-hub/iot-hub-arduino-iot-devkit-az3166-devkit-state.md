@@ -1,6 +1,6 @@
 ---
-title: Az MXChip IoT DevKit felhasználói LED vezérléséhez használja az Azure-eszközök ikreitjét | Microsoft dokumentumok
-description: Ebben az oktatóanyagban megtudhatja, hogyan figyelheti a DevKit-állapotokat, és szabályozhatja a felhasználói LED-et az Azure IoT Hub-eszköz twins-i használatával.
+title: Az Azure-eszközök ikrek használata a MXChip IoT fejlesztői készlet felhasználói LED vezérléséhez | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti a fejlesztői készlet-állapotokat, és hogyan vezérelheti a felhasználókat az Azure IoT Hub-eszközökhöz tartozó ikrek használatával.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,27 +10,27 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73483945"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
-Ebben a példában figyelheti az MXChip IoT DevKit WiFi-információkat és -érzékelő állapotokat, és szabályozhatja a felhasználói LED színét az Azure IoT Hub-eszköz twins használatával.
+Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-információit és az érzékelő állapotát, és szabályozhatja a felhasználó LED-t az Azure IoT Hub-eszközökhöz tartozó ikrek használatával.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-- Az MXChip IoT DevKit érzékelő állapotok figyelése.
+- A MXChip IoT fejlesztői készlet-érzékelő állapotának figyelése.
 
-- Az Azure-eszközök twins használata a DevKit RGB LED-jének színének szabályozásához.
+- Az Azure-eszközök ikrek használata a fejlesztői készlet RGB LED-ének színének szabályozására.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-- Állítsa be a fejlesztői környezetet az [Első lépések útmutató ban.](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)
+- Állítsa be a fejlesztési környezetet az [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)követve.
 
-- A GitBash terminálablakából (vagy más Git parancssori felületről) írja be a következő parancsokat:
+- A GitBash-terminál ablakban (vagy más git parancssori felületen) írja be a következő parancsokat:
 
    ```bash
    git clone https://github.com/DevKitExamples/DevKitState.git
@@ -40,81 +40,81 @@ Ebben a példában figyelheti az MXChip IoT DevKit WiFi-információkat és -ér
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
-1. Kattintson a Visual Studio-kód **Feladatok** legördülő menüparancsára, és válassza a **Feladat futtatása...**  -  **felhő-ellátás**.
+1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **felhő – kiépítés**.
 
-2. A folyamat az Üdvözlőpanel **TERMINÁL** lapján jelenik **meg.**
+2. A folyamat megjelenik az **üdvözlő** panel **terminál** lapján.
 
-3. Amikor a rendszer a Következő előfizetést szeretné választani, válasszon ki egy előfizetést, amikor a rendszer a *Következő üzenetet szeretné kijelölni.*
+3. Ha a rendszer rákérdez az üzenetre, *hogy milyen előfizetést szeretne kiválasztani*, válasszon ki egy előfizetést.
 
-4. Jelöljön ki vagy válasszon ki egy erőforráscsoportot. 
+4. Válasszon ki vagy válasszon ki egy erőforráscsoportot. 
  
    > [!NOTE]
-   > Ha már rendelkezik egy ingyenes IoT Hub, kihagyhatja ezt a lépést.
+   > Ha már rendelkezik ingyenes IoT Hub, kihagyhatja ezt a lépést.
 
-5. Amikor a rendszer megkérdezi, *hogy milyen IoT-központot szeretne választani,* válassza ki vagy hozzon létre egy IoT Hubot.
+5. Ha a rendszer arra kéri, hogy az *IoT hub melyik*üzenetet szeretné kiválasztani, válasszon ki vagy hozzon létre egy IoT hub.
 
-6. Valami hasonló a *függvény alkalmazáshoz: függvényalkalmazás neve: xxx*, jelenik meg. Írja le a függvényalkalmazás nevét; egy későbbi lépésben fogják használni.
+6. A következőhöz hasonló *: Function app Name: xxx*, üzenet jelenik meg. Jegyezze fel a Function alkalmazás nevét; ezt egy későbbi lépésben fogjuk használni.
 
-7. Várja meg, amíg az Azure Resource Manager-sablon üzembe helyezése befejeződik, amely akkor jelenik meg, amikor az üzenet *Resource Manager sablon központi telepítése: Kész* jelenik meg.
+7. Várjon, amíg befejeződik a Azure Resource Manager-sablon üzembe helyezése, amely akkor jelenik meg, ha az üzenet *Resource Manager-sablon telepítése: kész* felirat látható.
 
-## <a name="deploy-function-app"></a>Függvényalkalmazás telepítése
+## <a name="deploy-function-app"></a>függvényalkalmazás üzembe helyezése
 
-1. Kattintson a Visual Studio-kód **Feladatok** legördülő menüparancsára, és válassza a **Feladat futtatása...**  -  **felhőalapú telepítése**.
+1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **Felhőbeli üzembe helyezés**.
 
-2. Várja meg, amíg a függvényalkalmazáskód feltöltési folyamata befejeződik; az *üzenetfüggvény-alkalmazás telepítése: Kész* jelenik meg.
+2. Várjon, amíg befejeződik a Function app Code feltöltési folyamata. megjelenik az üzenetküldési *funkció alkalmazás telepítése: kész* üzenet.
 
-## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>IoT Hub-eszköz kapcsolati karakterláncának konfigurálása a DevKit ben
+## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>IoT Hub eszköz-kapcsolatok karakterláncának konfigurálása a fejlesztői készlet-ben
 
-1. Csatlakoztassa az MXChip IoT DevKit-et a számítógépéhez.
+1. Kapcsolódjon a MXChip IoT fejlesztői készlet a számítógéphez.
 
-2. Kattintson a Visual Studio-kód **Feladatok** legördülő menüparancsára, és válassza a **Feladat futtatása...**  -  **konfigurációs eszköz-kapcsolat**
+2. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **konfiguráció – eszköz – kapcsolatok**
 
-3. Az MXChip IoT DevKit en nyomja meg és tartsa lenyomva az **A**gombot, nyomja meg a **Reset** gombot, majd engedje el az **A** gombot, hogy a DekKit konfigurációs módba lépjen.
+3. A MXChip IoT fejlesztői készlet kattintson **a gombra,** és tartsa lenyomva a gombot, nyomja le az **Alaphelyzetbe állítás** gombot, majd az **a** gombra kattintva állítsa be a DekKit a konfigurációs módba.
 
-4. Várja meg, amíg a kapcsolati karakterlánc konfigurációs folyamata befejeződik.
+4. Várjon, amíg a rendszer végrehajtja a kapcsolódási karakterlánc konfigurálási folyamatát.
 
-## <a name="upload-arduino-code-to-devkit"></a>Arduino kód feltöltése a DevKit-hez
+## <a name="upload-arduino-code-to-devkit"></a>Arduino-kód feltöltése a fejlesztői készlet
 
-Az MXChip IoT DevKit számítógéphez csatlakoztatva:
+A MXChip IoT fejlesztői készlet csatlakozik a számítógéphez:
 
-1. Kattintson a Visual Studio-kód **Feladatok** legördülő menüparancsára, és válassza a **Build Task futtatása...** Az Arduino vázlatot összeállítják és feltöltik a DevKitbe.
+1. Kattintson a Visual Studio Code **feladatok** legördülő menüjére, majd válassza a **Build feladat futtatása...** lehetőséget. Az Arduino-vázlat le van fordítva, és fel van töltve a fejlesztői készlet.
 
-2. Ha a vázlat feltöltése sikeres, megjelenik egy *Build & Upload Sketch: success* üzenet.
+2. A vázlat feltöltése sikeres volt, a *Build & feltöltési vázlat: a sikeres* üzenet jelenik meg.
 
-## <a name="monitor-devkit-state-in-browser"></a>DevKit állapotának figyelése a böngészőben
+## <a name="monitor-devkit-state-in-browser"></a>Fejlesztői készlet állapotának figyelése a böngészőben
 
-1. Webböngészőben nyissa meg `DevKitState\web\index.html` a fájlt , amely a Mire van szüksége lépés során jött létre.
+1. A böngészőben nyissa meg a `DevKitState\web\index.html` fájlt, amelyet a szükséges lépésben hozott létre.
 
-2. A következő weblap jelenik meg:![Adja meg a függvényalkalmazás nevét.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
+2. A következő weblap jelenik meg:![Adja meg a Function alkalmazás nevét.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
-3. Adja meg a korábban leírt függvényalkalmazás nevét.
+3. Adja meg a korábban írt Function app-nevet.
 
-4. Kattintson a **Csatlakozás** gombra
+4. Kattintson a **kapcsolat** gombra
 
-5. Néhány másodpercen belül a lap frissíti és megjeleníti a DevKit Wi-Fi-kapcsolat állapotát és az egyes alaplapi érzékelők állapotát.
+5. Néhány másodpercen belül az oldal frissül, és megjeleníti a fejlesztői készlet WiFi-kapcsolatok állapotát és az egyes bevezetési érzékelők állapotát.
 
-## <a name="control-the-devkits-user-led"></a>A DevKit felhasználói LED-jének vezérlése
+## <a name="control-the-devkits-user-led"></a>A fejlesztői készlet felhasználó által vezetett vezérlésének szabályozása
 
-1. Kattintson a weblap illusztrációján a felhasználó LED-es képére.
+1. Kattintson a felhasználó által vezetett grafikára a weblap illusztrációján.
 
-2. Néhány másodpercen belül a képernyő frissül, és megjeleníti a felhasználó LED-jének aktuális színállapotát.
+2. Néhány másodpercen belül a képernyő frissül, és megjeleníti a felhasználó által vezetett aktuális szín állapotát.
 
-3. Próbálja meg módosítani az RGB LED színértékét az RGB csúszka vezérlőinek különböző pontjaira kattintva.
+3. Az RGB-csúszka vezérlők különböző helyeire kattintva próbálja meg módosítani az RGB LED színértékét.
 
-## <a name="example-operation"></a>Példa művelet
+## <a name="example-operation"></a>Példa a műveletre
 
-![Példa vizsgálati eljárás](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
+![Példa tesztelési eljárásra](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Az ikereszköz nyers adatait láthatja az Azure\> Portalon: IoT Hub - IoT-eszközök –\> * \<az eszköz\> *  - \> Device Twin.
+> Megtekintheti a Azure Portal: IoT hub-\> IoT eszközök –\> * \<az\> *  - \> eszköz két példányának nyers adatait.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanultad, hogyan:
-- Csatlakoztasson egy MXChip IoT DevKit-eszközt az Azure IoT Remote Monitoring megoldásgyorsítóhoz.
-- Az Azure IoT-eszköz twins funkcióval érzékelheti és szabályozhatja a DevKit RGB LED-je színét.
+Megtanulta a következőket:
+- Csatlakoztasson egy MXChip-IoT fejlesztői készlet-eszközt az Azure IoT távoli figyelési megoldásának gyorsító eszközéhez.
+- Használja az Azure IoT-eszköz Twins függvényét az fejlesztői készlet RGB LED-ének színének értelmezésére és szabályozására.
 
-A következő javasolt lépések a következők:
+Íme a javasolt következő lépések:
 
-* [Az Azure IoT remote monitoring megoldásgyorsító – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)
+* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+* [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)

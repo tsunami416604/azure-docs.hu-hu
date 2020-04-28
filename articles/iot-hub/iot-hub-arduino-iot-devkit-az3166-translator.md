@@ -1,6 +1,6 @@
 ---
-title: Fordító idonylá, Kognitív szolgáltatások, IoT DevKit
-description: Az IoT DevKit mikrofonjával hangüzenetet kaphat, majd az Azure Cognitive Services segítségével feldolgozhatja azt lefordított szöveggé angol nyelven
+title: Translator Azure Functions, Cognitive Services, IoT fejlesztői készlet
+description: A IoT-fejlesztői készlet található mikrofon használatával hangüzenetet kaphat, majd az Azure Cognitive Services használatával feldolgozhatja azt a lefordított szövegbe angol nyelven
 author: liydu
 ms.service: iot-hub
 services: iot-hub
@@ -9,51 +9,51 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953358"
 ---
-# <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Az IoT DevKit AZ3166 használata az Azure Functions és a Cognitive Services szolgáltatással nyelvfordítóvé
+# <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT fejlesztői készlet-AZ3166 használata Azure Functions és Cognitive Services a nyelvi fordítók elvégzéséhez
 
-Ebben a cikkben megtudhatja, hogyan teheti az IoT DevKit-et nyelvi fordítóként az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)használatával. Rögzíti a hangját, és lefordítja a DevKit képernyőn megjelenő angol szövegre.
+Ebből a cikkből megtudhatja, hogyan teheti IoT fejlesztői készlet az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)használatával. Rögzíti a hangját, és lefordítja a fejlesztői készlet képernyőn megjelenő angol nyelvű szövegre.
 
-Az [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy all-in-one Arduino kompatibilis alaplap gazdag perifériákkal és érzékelőkkel. Az [Azure IoT Device Workbench](https://aka.ms/iot-workbench) vagy [az Azure IoT Tools](https://aka.ms/azure-iot-tools) bővítménycsomag gal fejleszthet a Visual Studio-kódban. A [projektkatalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) mintaalkalmazásokat tartalmaz az IoT-megoldások prototípusának prototípusához.
+A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Arduino-kompatibilis tábla, amely gazdag perifériákkal és érzékelőkkel rendelkezik. A Visual Studio Code-ban az [Azure IoT Device Workbench](https://aka.ms/iot-workbench) vagy az [Azure IoT Tools](https://aka.ms/azure-iot-tools) Extension Pack használatával fejlesztheti azt. A [projects Catalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) a IoT-megoldások prototípusát segítő példákat tartalmaz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag lépéseinek végrehajtásához először hajtsa végre a következő feladatokat:
+Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
-* Készítse elő a DevKit-et az [IoT DevKit AZ3166 csatlakoztatása az Azure IoT Hubhoz a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)című lépések végrehajtásával.
+* Készítse elő a fejlesztői készlet a [IoT fejlesztői készlet AZ3166 és a felhőben lévő Azure IoT hub összekapcsolásához](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)szükséges lépéseket követve.
 
-## <a name="create-azure-cognitive-service"></a>Azure Cognitive Service létrehozása
+## <a name="create-azure-cognitive-service"></a>Az Azure kognitív szolgáltatás létrehozása
 
-1. Az Azure Portalon kattintson az **Erőforrás létrehozása** elemre, és keressen **beszédfelismerést.** Töltse ki az űrlapot a beszédszolgáltatás létrehozásához.
-  ![Speech szolgáltatás](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
+1. A Azure Portal kattintson az **erőforrás létrehozása** és a **beszéd**keresése elemre. Töltse ki az űrlapot a beszédfelismerési szolgáltatás létrehozásához.
+  ![Beszédfelismerési szolgáltatás](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
-1. Nyissa meg az imént létrehozott beszédfelismerési szolgáltatást, kattintson a **Kulcsok** szakaszra a DevKit hozzáféréséhez tartozó **Key1** billentyűlemásolásához.
-  ![Billentyűk másolása](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
+1. Nyissa meg az imént létrehozott beszédfelismerési szolgáltatást, kattintson a **kulcsok** szakaszra a másoláshoz, és jegyezze fel a **Key1** a fejlesztői készlet eléréséhez.
+  ![Kulcsok másolása](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
 
-## <a name="open-sample-project"></a>Mintaprojekt megnyitása
+## <a name="open-sample-project"></a>Minta projekt megnyitása
 
-1. Győződjön meg arról, hogy az IoT DevKit **nincs csatlakoztatva** a számítógéphez. Először indítsa el a VS-kódot, majd csatlakoztassa a DevKit-et a számítógéphez.
+1. Győződjön meg arról, hogy a IoT fejlesztői készlet nincs **csatlakoztatva** a számítógéphez. Először indítsa el a VS Code-ot, majd kapcsolja össze a fejlesztői készlet a számítógéppel.
 
-1. Kattintson ide `F1` a parancspaletta megnyitásához, írja be és válassza az **Azure IoT Device Workbench: Open Examples...** lehetőséget. Ezután válassza **az IoT DevKit** fórumon.
+1. Kattintson `F1` a parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
 
-1. Az IoT Workbench-példák lapon keresse meg a **DevKit-fordítót,** és kattintson a **Minta megnyitása gombra.** Ezután kiválasztja a mintakód letöltéséhez vezető alapértelmezett elérési utat.
-  ![Nyitott minta](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
+1. A IoT Workbench-példák oldalon keresse meg a **fejlesztői készlet translatort** , és kattintson a **minta megnyitása**lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
+  ![Minta megnyitása](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
 
-## <a name="use-speech-service-with-azure-functions"></a>Beszédfelismerési szolgáltatás használata az Azure-függvényekkel
+## <a name="use-speech-service-with-azure-functions"></a>A Speech Service használata Azure Functions
 
-1. A VS-kód `F1`ban kattintson a gombra, és válassza az **Azure IoT-eszköz munkapadját: Azure-szolgáltatások kiépítése...**. ![Azure-szolgáltatások kiépítése](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. A VS Code-ban `F1`kattintson a elemre, írja be és válassza az **Azure IoT Device Workbench: Azure-szolgáltatások kiépítése...** lehetőséget. ![Azure-szolgáltatások kiépítése](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
-1. Kövesse az Azure IoT Hub és az Azure Functions kiépítésének befejezéséhez szükséges lépéseket.
-   ![A rendelkezésre bocsátás lépései](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
+1. Az Azure IoT Hub és Azure Functions üzembe helyezésének befejezéséhez kövesse az alábbi lépéseket.
+   ![Kiépítési lépések](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   Jegyezze fel az Azure IoT Hub-eszköz név létrehozott.
+   Jegyezze fel az Azure IoT Hub-eszköz létrehozott nevét.
 
-1. Nyissa `Functions\DevKitTranslatorFunction.cs` meg és frissítse a következő kódsorokat a feljegyzett eszköznévvel és beszédszolgáltatás-kulccsal.
+1. Nyissa meg `Functions\DevKitTranslatorFunction.cs` és frissítse a kód következő sorát a megjegyzett eszköz neve és a beszédfelismerési szolgáltatás kulcsaként.
    ```csharp
    // Subscription Key of Speech Service
    const string speechSubscriptionKey = "";
@@ -65,90 +65,90 @@ Az oktatóanyag lépéseinek végrehajtásához először hajtsa végre a követ
    const string deviceName = "";
    ```
 
-1. Kattintson a gombra, `F1`írja be, és válassza az Azure **IoT-eszköz munkapadját: Üzembe helyezés az Azure-ban...**. Ha a VS Code megerősítést kér az átcsoportosításról, kattintson az **Igen**gombra.
-   ![Figyelmeztetés telepítése](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
+1. Kattintson `F1`, írja be és válassza **Az Azure IoT Device Workbench: üzembe helyezés az Azure**-ban... lehetőséget. Ha a VS Code megerősítést kér az újratelepítéshez, kattintson az **Igen**gombra.
+   ![Figyelmeztetés üzembe helyezése](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
-1. Győződjön meg arról, hogy a központi telepítés sikeres.
+1. Győződjön meg arról, hogy az üzemelő példány sikeres.
    ![Sikeres üzembe helyezés](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
-1. Az Azure Portalon nyissa meg a **Functions Apps szakaszt,** keresse meg az éppen létrehozott Azure Function alkalmazást. Kattintson `devkit_translator`a gombra, majd az URL másolásához kattintson **</> Függvény URL-címének bemásolása.**
+1. Azure Portal, lépjen a **functions-alkalmazások** szakaszra, keresse meg az imént létrehozott Azure Function alkalmazást. Kattintson `devkit_translator`a elemre, majd kattintson **</> a függvény URL-címének lekérése** elemre az URL másolásához
    ![Függvény URL-címének másolása](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
 
-1. Illessze be `azure_config.h` az URL-címet a fájlba.
+1. Illessze be az URL `azure_config.h` -címet a fájlba.
    ![Azure-konfiguráció](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-config.png)
 
    > [!NOTE]
-   > Ha a Függvény alkalmazás nem működik megfelelően, ellenőrizze ezt [a gyIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) szakaszt a probléma megoldásához.
+   > Ha a Function alkalmazás nem működik megfelelően, a megoldáshoz olvassa el ezt a [GYIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) szakaszt.
 
-## <a name="build-and-upload-device-code"></a>Eszközkód összeállítása és feltöltése
+## <a name="build-and-upload-device-code"></a>Eszköz kódjának létrehozása és feltöltése
 
-1. A DevKit **konfigurációs üzemmódba** kapcsolása:
-   * Tartsa lenyomva az **A**gombot.
-   * Nyomja meg és engedje el **a Reset** gombot.
+1. Állítsa be a fejlesztői készlet **konfigurációs módba** a következő módon:
+   * Tartsa lenyomva **A**gombot.
+   * Nyomja le és szabadítsa fel az **Alaphelyzetbe állítás** gombot.
 
-   Látni fogja, hogy a képernyőn megjelenik a DevKit-azonosító és **a Konfiguráció**.
+   Ekkor megjelenik a fejlesztői készlet-azonosító és- **konfiguráció**.
 
-   ![DevKit konfigurációs mód](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
+   ![Fejlesztői készlet-konfigurációs mód](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. Kattintson a gombra, `F1`és válassza az Azure **IoT-eszköz munkapadját: Eszközbeállítások konfigurálása... > a konfigurációs eszköz kapcsolati karakterláncát.** Válassza **az IoT hub eszköz kapcsolati karakterláncának kiválasztása** a DevKit konfigurálásához.
-   ![Kapcsolati karakterlánc konfigurálása](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
+1. Kattintson `F1`, írja be és válassza ki az **Azure IoT Device Workbench: eszközbeállítások konfigurálása... > a konfigurációs eszköz csatlakoztatási karakterláncát**. Válassza a **IoT hub eszköz kapcsolódási karakterlánc kiválasztása** lehetőséget a fejlesztői készlet való konfigurálásához.
+   ![A kapcsolatok karakterláncának konfigurálása](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
-1. Az értesítés a sikeres sikeres elvégzését követően jelenik meg.
-   ![A kapcsolati karakterlánc sikeressének konfigurálása](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
+1. Az értesítést a sikeres végrehajtás után fogja látni.
+   ![A kapcsolatok karakterláncának konfigurálása sikeres](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
 
-1. Kattintson ismét, írja be, és válassza **az Azure IoT-eszköz munkapad: Eszközkód feltöltése**. `F1` Elindítja a fordítást, és feltölti a kódot a DevKit-be.
+1. Kattintson `F1` újra, írja be és válassza az **Azure IoT Device Workbench: eszköz kódjának feltöltése**lehetőséget. Elindul a kód fordítása és feltöltése a fejlesztői készlet.
    ![Eszköz feltöltése](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
-Az alkalmazás inicializálása után kövesse a DevKit képernyőn megjelenő utasításokat. Az alapértelmezett forrásnyelv a kínai.
+Az alkalmazás inicializálását követően kövesse a fejlesztői készlet képernyőn megjelenő utasításokat. Az alapértelmezett nyelv a kínai.
 
-Másik fordítási nyelv kiválasztása:
+Másik nyelv kiválasztása fordításhoz:
 
-1. A beállítási módba való belépéshez nyomja meg az A gombot.
+1. Nyomja le az A gombot a telepítési mód megadásához.
 
-2. Az Összes támogatott forrásnyelv görgetéséhez nyomja meg a B gombot.
+2. A B gomb megnyomásával görgetheti az összes támogatott forrás nyelvét.
 
-3. Nyomja meg az A gombot a választott forrásnyelv megerősítéséhez.
+3. Az A gomb megnyomásával erősítse meg a választott forrás nyelvét.
 
-4. Beszéd közben nyomja meg és tartsa lenyomva a B gombot, majd engedje el a B gombot a fordítás elindításához.
+4. A fordítás elindításához nyomja le a "B" gombot, és tartsa nyomva a "b" gombot.
 
-5. A lefordított szöveg angolul jelenik meg a képernyőn.
+5. A lefordított szöveg angol nyelven jelenik meg a képernyőn.
 
 ![Görgetés a nyelv kiválasztásához](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
 ![Fordítás eredménye](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-A fordítás eredményképernyőjén a következőket teheti:
+A fordítási eredmények képernyőn a következőket teheti:
 
-- Az A és a B gombnyomással görgetheti és kiválaszthatja a forrásnyelvet.
+- Az A és a B gomb megnyomásával görgetheti és kiválaszthatja a forrás nyelvét.
 
-- A b gombot megnyomva beszél. A hang elküldéséhez és a fordítás szövegének beküldéséhez engedje fel a B gombot.
+- A beszélgetéshez kattintson a B gombra. A hang elküldéséhez és a fordítási szöveg beolvasásához szabadítsa fel a B gombot.
 
 ## <a name="how-it-works"></a>Működés
 
-![mini-megoldás-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
+![mini-Solution-hang – Tweet – diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
-Az IoT DevKit rögzíti a hangját, majd egy HTTP-kérést tesz közzé az Azure Functions aktiválásához. Az Azure Functions meghívja a kognitív szolgáltatás beszédfordító API-t a fordításhoz. Miután az Azure Functions leeredményes a fordítási szöveget, c2D-üzenetet küld az eszköznek. Ezután a fordítás megjelenik a képernyőn.
+A IoT fejlesztői készlet rögzíti a hangot, majd HTTP-kérést küld a Azure Functions indítására. Azure Functions meghívja a kognitív szolgáltatás Speech Translator API-ját a fordítás végrehajtásához. Miután Azure Functions lekéri a fordítási szöveget, C2D üzenetet küld az eszköznek. Ekkor megjelenik a fordítás a képernyőn.
 
-## <a name="problems-and-feedback"></a>Problémák és visszajelzések
+## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
-Ha problémákat tapasztal, olvassa el az [IoT DevKit GYIK-et,](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy vegye fel velünk a felvelünk a következő csatornákat:
+Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet GYIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) -t, vagy forduljon hozzánk a következő csatornákon keresztül:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulta, hogyan használhatja az IoT DevKit-et fordítóként az Azure Functions és a Cognitive Services használatával. Ebben a how-to, megtanulta, hogyan kell:
+Megtanulta, hogyan használhatja a IoT-fejlesztői készlet fordítóként Azure Functions és Cognitive Services használatával. Ebben a útmutatóban megtanulta, hogyan teheti meg a következőket:
 
 > [!div class="checklist"]
-> * Felhőalapú rendelkezések automatizálása a Visual Studio Code feladattal
-> * Az Azure IoT-eszköz kapcsolati karakterláncának konfigurálása
+> * A Felhőbeli céltartalékok automatizálása a Visual Studio Code használatával
+> * Azure IoT-eszköz kapcsolási karakterláncának konfigurálása
 > * Az Azure-függvény üzembe helyezése
 > * A hangüzenet fordításának tesztelése
 
-Előre a többi oktató, hogy megtanulják:
+Folytassa a további oktatóanyagokkal:
 
 > [!div class="nextstepaction"]
-> [Csatlakoztassa az IoT DevKit AZ3166-ot az Azure IoT remote monitoring megoldásgyorsítóhoz](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [A IoT fejlesztői készlet AZ3166 és az Azure IoT távoli monitorozási megoldásának gyorsítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

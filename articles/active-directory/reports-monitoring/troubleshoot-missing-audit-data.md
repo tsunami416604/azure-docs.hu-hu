@@ -1,5 +1,5 @@
 ---
-title: Hiányzó adatok hibáinak elhárítása a tevékenységnaplókban | Microsoft dokumentumok
+title: A tevékenység naplóinak hiányzó adathibáinak megoldása | Microsoft Docs
 description: Az Azure Active Directory-tevékenységnaplókból hiányzó adatok problémájára nyújt megoldást.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74014290"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Hibaelhárítás: Hiányzó adatok az Azure Active Directory-tevékenységnaplókban 
@@ -94,6 +94,6 @@ Az adatokat kétféleképpen őrizheti meg 30 napnál hosszabban. Az [Azure AD R
 ## <a name="next-steps"></a>További lépések
 
 * [Azure AD-jelentésmegőrzés](reference-reports-data-retention.md).
-* [Az Azure Active Directory jelentéskészítési késései.](reference-reports-latencies.md)
+* [Azure Active Directory jelentési késések](reference-reports-latencies.md).
 * [Jelentéskészítés az Azure Active Directoryban – gyakori kérdések](reports-faq.md).
 

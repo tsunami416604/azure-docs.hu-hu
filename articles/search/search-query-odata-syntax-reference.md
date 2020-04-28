@@ -1,7 +1,7 @@
 ---
-title: OData kifejezés szintaxisának hivatkozása
+title: OData-kifejezés szintaxisának referenciája
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-lekérdezésekben az OData-kifejezések hivatalos nyelvtani és szintaxisspecifikációja.
+description: Formális nyelvtani és szintaxis-specifikáció az Azure Cognitive Search lekérdezésekben található OData-kifejezésekhez.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793232"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Az Azure Cognitive Search OData-kifejezés szintaxisának hivatkozása
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája
 
-Az Azure Cognitive Search [odata-kifejezéseket](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) használ paraméterekként az API-ban. Leggyakrabban az OData kifejezéseket használják `$orderby` a `$filter` és a paraméterekhez. Ezek a kifejezések összetettek lehetnek, több záradékot, függvényt és operátort tartalmaznak. Azonban még az egyszerű OData-kifejezések, például a tulajdonságelérési utak is használatosak az Azure Cognitive Search REST API számos részén. Az elérési út kifejezései például az összetett mezők almezőire vonatkoznak az API-ban, például amikor almezőket sorolnak fel egy [javaslatajánlóban,](index-add-suggesters.md)egy [pontozási függvényt](index-add-scoring-profiles.md), a `$select` paramétert, vagy akár a [Lucene-lekérdezésekben mezőre helyezett keresést.](query-lucene-syntax.md)
+Az Azure Cognitive Search [OData-kifejezéseket](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) használ paraméterekként az API-ban. A és `$orderby` `$filter` a paraméterek leggyakrabban a OData kifejezéseket használják. Ezek a kifejezések bonyolultak lehetnek, amelyek több záradékot, funkciót és operátort tartalmaznak. Az Azure Cognitive Search REST API számos részében azonban még az egyszerű OData kifejezések is használatosak, például a tulajdonságok elérési útjai. Az elérésiút-kifejezések például az összetett mezők almezőire hivatkoznak az API-ban mindenhol, például ha az almezőket egy [javaslatban](index-add-suggesters.md), egy [pontozási függvényben](index-add-scoring-profiles.md), a `$select` paraméterben, vagy akár a [Lucene-lekérdezésekben található mezőkben keresik](query-lucene-syntax.md).
 
-Ez a cikk az OData-kifejezések összes ilyen formáját ismerteti formális nyelvtan használatával. Van is egy [interaktív diagram,](#syntax-diagram) hogy segítsen vizuálisan felfedezni a nyelvtan.
+Ez a cikk a OData kifejezések ezen formáit mutatja be formális nyelvtan használatával. Létezik egy [interaktív diagram](#syntax-diagram) is, amely a nyelvtan vizuális megismerését segíti.
 
 ## <a name="formal-grammar"></a>Formális nyelvtan
 
-Az Azure Cognitive Search által támogatott OData nyelv részhalmazát eBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legösszetettebb kifejezésekkel, majd primitívebb kifejezésekre bontva azokat. A tetején vannak a nyelvtani szabályok, amelyek megfelelnek az Azure Cognitive Search REST API adott paramétereinek:
+Az Azure Cognitive Search által támogatott OData-nyelv részhalmazát az EBNF ([bővített Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A tetején az Azure Cognitive Search REST API adott paramétereinek megfelelő nyelvtani szabályok szerepelnek:
 
-- [`$filter`](search-query-odata-filter.md), amelyet `filter_expression` a szabály határoz meg.
-- [`$orderby`](search-query-odata-orderby.md), amelyet `order_by_expression` a szabály határoz meg.
-- [`$select`](search-query-odata-select.md), amelyet `select_expression` a szabály határoz meg.
-- A `field_path` szabály által meghatározott mezőútvonalak. A mezőútvonalak az API-ban használatosak. Hivatkozhatnak egy index legfelső szintű mezőire, vagy egy vagy több összetett mezőelődessel rendelkező almezőkre. [complex field](search-howto-complex-data-types.md)
+- [`$filter`](search-query-odata-filter.md), amelyet a `filter_expression` szabály határoz meg.
+- [`$orderby`](search-query-odata-orderby.md), amelyet a `order_by_expression` szabály határoz meg.
+- [`$select`](search-query-odata-select.md), amelyet a `select_expression` szabály határoz meg.
+- A `field_path` szabály által definiált mezők elérési útjai. A mező elérési útjai a teljes API-ban használatosak. Az indexek legfelső szintű mezőire, illetve egy vagy több [összetett mező](search-howto-complex-data-types.md) őseire hivatkozó almezőket is hivatkozhatnak.
 
-Miután az EBNF egy böngészhető [szintaktikai diagram,](https://en.wikipedia.org/wiki/Syntax_diagram) amely lehetővé teszi, hogy interaktívan vizsgálja meg a nyelvtan és a kapcsolatok között a szabályokat.
+Miután a EBNF egy böngészhető [szintaxisú diagram](https://en.wikipedia.org/wiki/Syntax_diagram) , amely lehetővé teszi, hogy interaktív módon vizsgálja meg a nyelvtant és a szabályok közötti kapcsolatokat.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>Szintaxis diagram
 
-Az Azure Cognitive Search által támogatott OData-nyelvnyelv-nyelvtan vizuális feltárásához próbálja ki az interaktív szintaxisdiagramot:
+Az Azure Cognitive Search által támogatott nyelvi OData vizuális megismeréséhez próbálja ki az interaktív szintaxis diagramot:
 
 > [!div class="nextstepaction"]
-> [OData-szintaktikai diagram az Azure Cognitive Search szolgáltatáshoz](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Lásd még  
 
-- [Szűrők az Azure Cognitive Search szolgáltatásban](search-filters.md)
-- [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-- [Lucene lekérdezés szintaxisa](query-lucene-syntax.md)
-- [Egyszerű lekérdezésszintaxis az Azure Cognitive Search szolgáltatásban](query-simple-syntax.md)
+- [Szűrők az Azure Cognitive Search](search-filters.md)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
+- [Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search](query-simple-syntax.md)

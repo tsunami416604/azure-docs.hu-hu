@@ -1,6 +1,6 @@
 ---
-title: Azure CLI script minta - Több webhely terheléselosztása az Azure CLI-vel | Microsoft dokumentumok
-description: Azure CLI-parancsfájlminta – Több webhely terheléselosztása ugyanarra a virtuális gépre
+title: Azure CLI parancsfájl-minta – több webhely terheléselosztása az Azure CLI-vel | Microsoft Docs
+description: Azure CLI parancsfájl-minta – több webhely terheléselosztása ugyanarra a virtuális gépre
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: allensu
 ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889458"
 ---
 # <a name="load-balance-multiple-websites"></a>Több webhely terheléselosztása
 
-Ez a parancsfájlminta egy virtuális hálózatot hoz létre két virtuális géppel (VM), amelyek egy rendelkezésre állási csoport tagjai. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
+Ez a szkript létrehoz egy virtuális hálózatot két virtuális géppel (VM), amely egy rendelkezésre állási csoport tagjai. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, virtuáli
 | [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) | Hátércímkészletet hoz létre. |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | Létrehoz egy virtuális hálózati kártyát, és csatlakoztatja a virtuális hálózathoz és alhálózathoz. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Létrehoz egy rendelkezésre állási csoportot. A rendelkezésre állási csoportok az alkalmazások rendelkezésre állását biztosítják a virtuális gépek fizikai erőforrások közötti elosztásával, hogy az esetlegesen fellépő hibák ne érintsék a teljes készletet. |
-| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config) | IP-konfigurációt hoz létre. Az előfizetésében engedélyezve kell lennie a Microsoft.Network/AllowMultipleIpConfigurationsPerNic funkciónak. A --make-primary jelzővel hálózati adapterenként csak egy konfigurációt lehet elsődleges IP-konfigurációként kijelölni. |
+| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config) | Létrehoz egy IP-konfigurációt. Az előfizetésében engedélyezve kell lennie a Microsoft.Network/AllowMultipleIpConfigurationsPerNic funkciónak. A --make-primary jelzővel hálózati adapterenként csak egy konfigurációt lehet elsődleges IP-konfigurációként kijelölni. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 

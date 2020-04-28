@@ -1,6 +1,6 @@
 ---
-title: Egészségügyi szondák hozzáadása az AKS-podokhoz
-description: Ez a cikk az állapotmintak (készenlét és/vagy liveness) hozzáadása az Alkalmazásátjáróval rendelkező AKS-podokhoz való hozzáadásáról.
+title: Állapot-mintavétel hozzáadása az AK-hüvelyekhez
+description: Ez a cikk azt ismerteti, hogyan adhatók hozzá az egészségügyi vizsgálatok (készültség és/vagy élettartam) az AK-hüvelyekhez egy Application Gateway.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795601"
 ---
-# <a name="add-health-probes-to-your-service"></a>Állapotminta hozzáadása a szolgáltatáshoz
-Alapértelmezés szerint a bejövő üzenetek vezérlő egy HTTP GET-mintavételt hoz üzembe a kitett podok számára.
-A mintavételi tulajdonságok testreszabható egy [készenléti vagy liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) hozzáadásával a `deployment` / `pod` specifikációhoz.
+# <a name="add-health-probes-to-your-service"></a>Állapot-mintavétel hozzáadása a szolgáltatáshoz
+Alapértelmezés szerint a bejövő forgalomhoz tartozó vezérlő kiépít egy HTTP GET mintavételt a kitett hüvelyek számára.
+A mintavételi tulajdonságok testreszabhatók úgy, hogy [készültségi vagy élettartam](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) -vizsgálatot adnak a `deployment` / `pod` specifikációhoz.
 
-## <a name="with-readinessprobe-or-livenessprobe"></a>Vagy `readinessProbe``livenessProbe`
+## <a name="with-readinessprobe-or-livenessprobe"></a>`readinessProbe` Vagy`livenessProbe`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -45,22 +45,22 @@ spec:
           timeoutSeconds: 1
 ```
 
-Kubernetes API – referencia:
-* [Konténerszondák](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
+Kubernetes API-referenciája:
+* [Tároló-mintavételek](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
 * [HttpGet művelet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`és `livenessProbe` támogatottak, `httpGet`ha a alkalmazással konfigurálva vannak.
-> * A podon lévőtől eltérő porton jelenleg nem támogatott a vizsgálat.
-> * `HttpHeaders`, `InitialDelaySeconds` `SuccessThreshold` , nem támogatottak.
+> * `readinessProbe`és `livenessProbe` támogatottak, ha a `httpGet`-vel van konfigurálva.
+> * A nem a pod-on keresztül kitett porton lévő szondázás jelenleg nem támogatott.
+> * `HttpHeaders``SuccessThreshold` , `InitialDelaySeconds`nem támogatottak.
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>Nélkül `readinessProbe` vagy`livenessProbe`
-Ha a fenti szondák nincsenek megadva, akkor a Bejövő adatkezelő `Path` feltételezi, `backend-path-prefix` hogy a szolgáltatás `path` elérhető a `ingress` jegyzetre megadott vagy a szolgáltatás definíciójában megadott módon.
+Ha a fenti mintavételek nincsenek megadva, akkor a bejövő vezérlő feltételezi, hogy a `Path` szolgáltatás elérhető a `backend-path-prefix` jegyzethez vagy a szolgáltatás `path` `ingress` definíciójában megadott módon.
 
-## <a name="default-values-for-health-probe"></a>Az állapotminta alapértelmezett értékei
-Minden olyan tulajdonság, amely nem lehet következtetni a készenléti / liveness mintavétel, alapértelmezett értékek vannak beállítva.
+## <a name="default-values-for-health-probe"></a>Az állapot mintavételének alapértelmezett értékei
+Minden olyan tulajdonság esetében, amely nem következtethető ki a készültség/élő mintavétel alapján, az alapértelmezett értékek vannak megadva.
 
-| Alkalmazásátjáró-mintavételtulajdonság | Alapértelmezett érték |
+| Application Gateway mintavételi tulajdonság | Alapértelmezett érték |
 |-|-|
 | `Path` | / |
 | `Host` | localhost |

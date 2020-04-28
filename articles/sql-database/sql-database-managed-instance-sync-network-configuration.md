@@ -1,6 +1,6 @@
 ---
 title: Azure App Service – hálózati konfiguráció szinkronizálása
-description: Ez a cikk bemutatja, hogyan szinkronizálhatja a hálózati konfigurációt az Azure App Service üzemeltetési csomag.
+description: Ez a cikk azt ismerteti, hogyan lehet szinkronizálni a hálózati konfigurációt Azure App Service üzemeltetési tervhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,38 +12,38 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
 ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73687898"
 ---
-# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Hálózati konfiguráció szinkronizálása az Azure App Service üzemeltetési csomagjához
+# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása
 
-Előfordulhat, hogy bár [integrálta az alkalmazást egy Azure virtuális hálózattal,](../app-service/web-sites-integrate-with-vnet.md)nem hozhat létre kapcsolatot a felügyelt példány. Az egyik dolog, amit megpróbálhat, hogy frissítse a hálózati konfigurációt a szolgáltatási csomaghoz.
+Előfordulhat, hogy bár az [alkalmazást Azure-Virtual Networkrel integrálta](../app-service/web-sites-integrate-with-vnet.md), nem tud kapcsolatot létesíteni a felügyelt példányokkal. Az egyik lehetőség, hogy megpróbáljuk frissíteni a szolgáltatási csomag hálózati konfigurációját.
 
-## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Hálózati konfiguráció szinkronizálása az App Service üzemeltetési csomagjához
+## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása
 
 Ehhez kövesse az alábbi lépéseket:  
 
-1. Nyissa meg a webalkalmazások App Service-csomagját.
+1. Nyissa meg a Web Apps App Service csomagot.
 
-   ![alkalmazásszolgáltatási csomag](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
+   ![App Service-csomag](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. Kattintson a Hálózat, majd **a Kattintásidea kezelés** **gombra.**
+2. Kattintson a **hálózatkezelés** elemre, majd **a kezeléshez kattintson ide**.
 
    ![szolgáltatási csomag kezelése](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. Jelölje ki a **virtuális hálózatot,** és kattintson **a Hálózat szinkronizálása gombra.**
+3. Válassza ki a **VNet** , és kattintson a **hálózat szinkronizálása**elemre.
 
    ![hálózat szinkronizálása](./media/sql-database-managed-instance-sync-networking/sync.png)
 
-4. Várjon, amíg a szinkronizálás befejeződik.
+4. Várjon, amíg a szinkronizálás elkészült.
   
    ![szinkronizálás kész](./media/sql-database-managed-instance-sync-networking/sync-done.png)
 
-Most már készen áll arra, hogy megpróbálja helyreállítani a kapcsolatot a felügyelt példánysal.
+Most már készen áll arra, hogy megpróbálja újra létrehozni a kapcsolatot a felügyelt példánnyal.
 
 ## <a name="next-steps"></a>További lépések
 
-- A virtuális hálózat felügyelt példányhoz való konfigurálásáról a [Felügyelt példány virtuális hálózat architektúrája](sql-database-managed-instance-connectivity-architecture.md) és a meglévő virtuális hálózat [konfigurálása című](sql-database-managed-instance-configure-vnet-subnet.md)témakörben talál további információt.
+- A felügyelt példányok VNet konfigurálásával kapcsolatos információkért lásd: a [felügyelt példány VNet architektúrája](sql-database-managed-instance-connectivity-architecture.md) és [a meglévő VNet konfigurálása](sql-database-managed-instance-configure-vnet-subnet.md).

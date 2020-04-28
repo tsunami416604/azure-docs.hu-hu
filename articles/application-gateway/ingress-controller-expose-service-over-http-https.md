@@ -1,6 +1,6 @@
 ---
-title: AKS-szolgáltatás felfedése HTTP-n vagy HTTPS-en keresztül az Application Gateway használatával
-description: Ez a cikk arról nyújt tájékoztatást, hogyan teheti elérhetővé az AKS-szolgáltatást HTTP-n vagy HTTPS-en keresztül az Application Gateway használatával.
+title: AK-szolgáltatás közzététele HTTP-n vagy HTTPS-en keresztül Application Gateway
+description: Ez a cikk azt ismerteti, hogyan tehet elérhetővé egy AK-szolgáltatást HTTP-n vagy HTTPS-en keresztül a Application Gateway használatával.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,41 +8,41 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795568"
 ---
-# <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>AKS-szolgáltatás felfedése HTTP-n vagy HTTPS-en keresztül az Application Gateway használatával 
+# <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>AK-szolgáltatás közzététele HTTP-n vagy HTTPS-en keresztül Application Gateway 
 
-Ezek az oktatóanyagok segítenek szemléltetni a [Kubernetes ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) használatát egy példa Kubernetes szolgáltatás elérhetővé az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) HTTP-n vagy HTTPS-en keresztül.
+Ezek az oktatóanyagok segítenek megmutatni a Kubernetes beáramlási [erőforrásainak](https://kubernetes.io/docs/concepts/services-networking/ingress/) használatát, hogy egy példaként elérhető Kubernetes szolgáltatást tegyenek elérhetővé az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) keresztül http vagy https használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Telepített `ingress-azure` kormányrúd diagram.
-  - [**Zöldmezős telepítés:**](ingress-controller-install-new.md)Ha teljesen újonnan indul, olvassa el ezeket a telepítési utasításokat, amelyek ismertetik az AKS-fürt alkalmazásátjáróval történő központi telepítésének lépéseit, és telepítik az alkalmazásátjáró-vezérlőt az AKS-fürtön.
-  - [**Brownfield Deployment**](ingress-controller-install-existing.md): Ha egy meglévő AKS-fürt és alkalmazásátjáró, olvassa el ezeket az utasításokat telepíteni alkalmazásátjáró be- ésbevezető vezérlő az AKS-fürt.
-- Ha https-t szeretne használni ezen az alkalmazáson, szüksége lesz egy x509-es tanúsítványra és annak titkos kulcsára.
+- Telepített `ingress-azure` Helm-diagram.
+  - [**Zöldmezős üzembe helyezés**](ingress-controller-install-new.md): Ha nem teljesen új forrásból származik, tekintse meg a következő telepítési útmutatót, amely az AK-fürt üzembe helyezésének lépéseit ismerteti Application Gateway és telepítse az Application Gateway beléptetési vezérlőt az AK-fürtön.
+  - [**Rozsdaövezetek rehabilitálása üzembe helyezése**](ingress-controller-install-existing.md): Ha rendelkezik meglévő AK-fürttel és Application Gatewaytel, tekintse meg ezeket az utasításokat az Application Gateway beáramlási vezérlőjének az AK-fürtön való telepítéséhez.
+- Ha az alkalmazásban HTTPS-t szeretne használni, szüksége lesz egy x509 tanúsítványra és annak titkos kulcsára.
 
-## <a name="deploy-guestbook-application"></a>Alkalmazás `guestbook` telepítése
+## <a name="deploy-guestbook-application"></a>Alkalmazás `guestbook` üzembe helyezése
 
-A vendégkönyv-alkalmazás egy kanonikus Kubernetes alkalmazás, amely egy webes felhasználói felület, egy háttér- és egy Redis-adatbázis ból áll. Alapértelmezés szerint `guestbook` az alkalmazást egy porton `frontend` `80`lévő nevű szolgáltatáson keresztül teszi elérhetővé. Kubernetes ingress erőforrás nélkül a szolgáltatás nem érhető el az AKS-fürtön kívülről. Az alkalmazást és a be- és telepítési erőforrásokat http-n és HTTPS-en keresztül fogjuk használni az alkalmazás eléréséhez.
+A Vendégkönyv alkalmazás egy webes felhasználói felület, egy háttérrendszer és egy Redis-adatbázis összeállítására szolgáló kanonikus Kubernetes-alkalmazás. Alapértelmezés szerint a `guestbook` porton `frontend` `80`a névvel ellátott szolgáltatáson keresztül teszi elérhetővé az alkalmazást. A Kubernetes bejövő erőforrás nélkül a szolgáltatás nem érhető el az AK-fürtön kívülről. Az alkalmazást és a telepítőt a bejövő erőforrásokkal fogjuk használni az alkalmazás HTTP és HTTPS protokollon keresztüli eléréséhez.
 
-Kövesse az alábbi utasításokat a vendégkönyv-alkalmazás üzembe helyezéséhez.
+A Vendégkönyv alkalmazás üzembe helyezéséhez kövesse az alábbi utasításokat.
 
-1. Letöltés `guestbook-all-in-one.yaml` [innen](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
-1. Üzembe `guestbook-all-in-one.yaml` helyezés az AKS-fürtben a futással
+1. Letöltés `guestbook-all-in-one.yaml` innen [here](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
+1. Üzembe `guestbook-all-in-one.yaml` helyezés az AK-fürtön a futtatásával
 
   ```bash
   kubectl apply -f guestbook-all-in-one.yaml
   ```
 
-Most az `guestbook` alkalmazás telepítve van.
+Az `guestbook` alkalmazás már telepítve van.
 
-## <a name="expose-services-over-http"></a>Szolgáltatások felfedése HTTP-n keresztül
+## <a name="expose-services-over-http"></a>Szolgáltatások közzététele HTTP-n keresztül
 
-A vendégkönyv-alkalmazás felfedéséhez a következő bejövő adatokat használjuk:
+A Vendégkönyv-alkalmazás elérhetővé tétele érdekében a következő bejövő erőforrást fogjuk használni:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -60,33 +60,33 @@ spec:
           servicePort: 80
 ```
 
-Ez a be-ésbejuttatás `frontend` az `guestbook-all-in-one` alkalmazásátjáró alapértelmezett háttérrendszerként elérhetővé teszi a központi telepítés szolgáltatását.
+Ez a bejövő `frontend` forgalom a Application Gateway alapértelmezett háttereként `guestbook-all-in-one` teszi elérhetővé az üzemelő példány szolgáltatását.
 
-Mentse a fenti be- `ing-guestbook.yaml`ésres erőforrást a módon.
+Mentse a fenti bejövő erőforrást a `ing-guestbook.yaml`-ként.
 
-1. Üzembe `ing-guestbook.yaml` helyezés a következő futtatásával:
+1. Üzembe `ing-guestbook.yaml` helyezés a futtatásával:
 
     ```bash
     kubectl apply -f ing-guestbook.yaml
     ```
 
-1. Ellenőrizze a be- és écses telepítés vezérlőnaplójában a központi telepítési állapotot.
+1. Keresse meg a bejövő adatkezelő vezérlő naplóját a telepítési állapothoz.
 
-Most `guestbook` az alkalmazásnak elérhetőnek kell lennie. Ezt az Application Gateway nyilvános címének felkeresésével ellenőrizheti.
+Most az `guestbook` alkalmazásnak elérhetőnek kell lennie. Ezt úgy is megtekintheti, ha felkeresi a Application Gateway nyilvános címe.
 
-## <a name="expose-services-over-https"></a>Szolgáltatások https-en keresztüli felfedése
+## <a name="expose-services-over-https"></a>Szolgáltatások közzététele HTTPS-kapcsolaton keresztül
 
 ### <a name="without-specified-hostname"></a>Megadott állomásnév nélkül
 
-Hostname megadása nélkül a vendégkönyv szolgáltatás elérhető lesz az összes állomás-nevek mutatva az alkalmazás átjáró.
+Az állomásnév meghatározása nélkül a Vendégkönyv szolgáltatás az Application gatewayre mutató összes gazdagépen elérhető lesz.
 
-1. A be- és visszaküldés telepítése előtt létre kell hoznia egy kubernetes titkos kulcsot a tanúsítvány és a személyes kulcs üzemeltetéséhez. Kubernetes titkos kulcsot hozhat létre a
+1. A bejövő forgalom üzembe helyezése előtt létre kell hoznia egy titkos kubernetes a tanúsítvány és a titkos kulcs üzemeltetéséhez. Kubernetes-titkos kulcsot a futtatásával hozhat létre
 
     ```bash
     kubectl create secret tls <guestbook-secret-name> --key <path-to-key> --cert <path-to-cert>
     ```
 
-1. Adja meg a következő be-és be- és énekkövetést. A bejövő kapcsolatban adja meg a titkos `secretName` kulcsot a szakaszban.
+1. Adja meg a következő bejövő forgalmat. A bejövő forgalom mezőben adja meg a titok nevét a `secretName` (z) szakaszban.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -107,25 +107,25 @@ Hostname megadása nélkül a vendégkönyv szolgáltatás elérhető lesz az ö
     ```
 
     > [!NOTE] 
-    > Cserélje `<guestbook-secret-name>` le a fenti bejövő erőforrás a neve a titkos. A fenti bejövő adatokat fájlnévben `ing-guestbook-tls.yaml`tárolja.
+    > Cserélje `<guestbook-secret-name>` le a fenti bejövő erőforrást a titkos kulcs nevére. A fenti bejövő erőforrások tárolása a fájlnévben `ing-guestbook-tls.yaml`.
 
-1. Az ing-guestbook-tls.yaml telepítése a
+1. Üzembe helyezés – Vendégkönyv-TLS. YAML futtatásával
 
     ```bash
     kubectl apply -f ing-guestbook-tls.yaml
     ```
 
-1. Ellenőrizze a be- és écses telepítés vezérlőnaplójában a központi telepítési állapotot.
+1. Keresse meg a bejövő adatkezelő vezérlő naplóját a telepítési állapothoz.
 
-Most `guestbook` az alkalmazás http-n és HTTPS-en is elérhető lesz.
+Az `guestbook` alkalmazás mostantól a http és a HTTPS protokollon is elérhető lesz.
 
 ### <a name="with-specified-hostname"></a>Megadott állomásnévvel
 
-Megadhatja a állomásnevet a bejövő kapcsolaton is a TLS-konfigurációk és -szolgáltatások multiplexeléséhez.
-A hostname megadásával a vendégkönyv-szolgáltatás csak a megadott állomáson lesz elérhető.
+Az állomásnév a bejövő forgalomban is megadható a multiplex TLS-konfigurációk és-szolgáltatások számára.
+Az állomásnév megadásával a Vendégkönyv szolgáltatás csak a megadott gazdagépen lesz elérhető.
 
-1. Adja meg a következő be-és be- és énekkövetést.
-    A bejövő kapcsolatban adja meg a titkos `secretName` kulcsot a szakaszban, `hosts` és ennek megfelelően cserélje le a gazdanevet a szakaszban.
+1. Adja meg a következő bejövő forgalmat.
+    A bejövő forgalom mezőben adja meg a titok nevét a `secretName` szakaszban, és cserélje le az állomásnévt a `hosts` szakaszba.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -148,19 +148,19 @@ A hostname megadásával a vendégkönyv-szolgáltatás csak a megadott állomá
               servicePort: 80
     ```
 
-1. Üzembe `ing-guestbook-tls-sni.yaml` helyezés futással
+1. Üzembe `ing-guestbook-tls-sni.yaml` helyezés futtatásával
 
     ```bash
     kubectl apply -f ing-guestbook-tls-sni.yaml
     ```
 
-1. Ellenőrizze a be- és écses telepítés vezérlőnaplójában a központi telepítési állapotot.
+1. Keresse meg a bejövő adatkezelő vezérlő naplóját a telepítési állapothoz.
 
-Most `guestbook` az alkalmazás csak a megadott állomáson lesz elérhető`<guestbook.contoso.com>` HTTP és HTTPS protokollon (ebben a példában).
+Mostantól `guestbook` az alkalmazás csak a megadott gazdagépen, a HTTP-n és a https`<guestbook.contoso.com>` -en lesz elérhető (ebben a példában).
 
 ## <a name="integrate-with-other-services"></a>Integráció más szolgáltatásokkal
 
-A következő be- és ress lehetővé teszi, hogy további elérési utakat adjon hozzá a be- és ébasatóba, és ezeket az elérési utakat más szolgáltatásokba irányítsa át:
+A következő bejövő forgalom lehetővé teszi további elérési utak hozzáadását ebbe a bejövő forgalomba, és átirányítani ezeket az útvonalakat más szolgáltatásokra:
 
     ```yaml
     apiVersion: extensions/v1beta1

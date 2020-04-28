@@ -1,6 +1,6 @@
 ---
-title: Jelentés készítés kibővített felhőalapú adatbázisok között
-description: rugalmas lekérdezések beállítása vízszintes partíciókon
+title: Kibővített felhőalapú adatbázisok közötti jelentéskészítés
+description: rugalmas lekérdezések beállítása horizontális partíciókon
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,41 +12,41 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823761"
 ---
-# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Jelentéskészítés kibővített felhőalapú adatbázisok között (előzetes verzió)
+# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
 
-![Lekérdezés szilánkok között][1]
+![Lekérdezés több szegmens között][1]
 
-Szilánkos adatbázisok sorokat osztanak el egy kibővített adatrétegen. A séma megegyezik az összes részt vevő adatbázis, más néven horizontális particionálás. Rugalmas lekérdezés használatával jelentéseket hozhat létre, amelyek egy szilánkos adatbázis összes adatbázisára kiterjedő.
+A többszintű adatbázisok egy horizontálisan elosztott adatszinten osztják el a sorokat. A séma minden résztvevő adatbázison azonos, más néven horizontális particionálás. A rugalmas lekérdezés használatával olyan jelentéseket hozhat létre, amelyek egy többszegmensű adatbázisban lévő összes adatbázisra kiterjednek.
 
-Rövid kezdés: [Jelentés kicsinyített felhőalapú adatbázisokban.](sql-database-elastic-query-getting-started.md)
+Első lépésként tekintse meg a kibővített [felhőalapú adatbázisok jelentéskészítését](sql-database-elastic-query-getting-started.md)ismertető témakört.
 
-A nem szilánkos adatbázisok, [lásd: Lekérdezés felhőalapú adatbázisok különböző sémákkal.](sql-database-elastic-query-vertical-partitioning.md)
+A nem többrétegű adatbázisok esetében lásd: [lekérdezés a Felhőbeli adatbázisok között különböző sémákkal](sql-database-elastic-query-vertical-partitioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy shard térkép et a rugalmas adatbázis-ügyfélkódtár használatával. lásd: [Shard térképkezelés](sql-database-elastic-scale-shard-map-management.md). Vagy használja a mintaalkalmazást az [Első lépések a rugalmas adatbázis-eszközökkel](sql-database-elastic-scale-get-started.md)című részben.
-* Másik lehetőségként olvassa el [A meglévő adatbázisok áttelepítése kibővített adatbázisokba (Migrate-out database) (A meglévő adatbázisok áttelepítése kicsinyített adatbázisokba) (Kicsinyített adatbázisokba) témakört.](sql-database-elastic-convert-to-use-elastic-tools.md)
-* A felhasználónak rendelkeznie kell alter minden külső adatforrás engedéllyel. Ez az engedély az ALTER DATABASE engedély része.
-* Alter Bármely külső adatforrás-engedély szükséges az alapul szolgáló adatforrásra való hivatkozáshoz.
+* Hozzon létre egy szegmenses térképet a rugalmas adatbázis-ügyféloldali kódtár használatával. Lásd: a szegmenses [Térkép kezelése](sql-database-elastic-scale-shard-map-management.md). Vagy használja a minta alkalmazást a [rugalmas adatbázis-eszközök használatának első lépéseiben](sql-database-elastic-scale-get-started.md).
+* Másik megoldásként tekintse [meg a meglévő adatbázisok áttelepítését a felskálázásra szolgáló adatbázisokra](sql-database-elastic-convert-to-use-elastic-tools.md)című témakört.
+* A felhasználónak rendelkeznie kell a külső adatforrásra vonatkozó engedély megváltoztatásával. Ez az engedély az ALTER DATABASE engedély részét képezi.
+* Az alapul szolgáló adatforrásra való hivatkozáshoz minden külső ADATFORRÁS engedélyére van szükség.
 
 ## <a name="overview"></a>Áttekintés
 
-Ezek az utasítások a rugalmas lekérdezési adatbázisban a szilánkos adatréteg metaadat-ábrázolását hozzák létre.
+Ezek az utasítások a rugalmas lekérdezési adatbázisban létrehozzák a szilánkokra bontott adatcsomag metaadat-ábrázolását.
 
 1. [FŐKULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [ADATBÁZIS HATÓKÖRE HITELESÍTŐ ADATOK LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935021.aspx)
 
-## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 Adatbázis hatókörrel létrehozott főkulcsának és hitelesítő adatainak létrehozása
+## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 adatbázis-hatókörű főkulcs és hitelesítő adatok létrehozása
 
-A hitelesítő adatokat a rugalmas lekérdezés használja a távoli adatbázisokhoz való csatlakozáshoz.  
+A rugalmas lekérdezés a hitelesítő adatokat használja a távoli adatbázisokhoz való kapcsolódáshoz.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -54,9 +54,9 @@ A hitelesítő adatokat a rugalmas lekérdezés használja a távoli adatbáziso
     [;]
 
 > [!NOTE]
-> Győződjön meg arról, hogy a *"\<felhasználónév\>"* nem tartalmaz *"kiszolgálónév"\@* utótagot.
+> Győződjön meg arról, *hogy\<a\>"username"* nem tartalmaz *"\@servername"* utótagot.
 
-## <a name="12-create-external-data-sources"></a>1.2 Külső adatforrások létrehozása
+## <a name="12-create-external-data-sources"></a>1,2 külső adatforrások létrehozása
 
 Szintaxis:
 
@@ -85,10 +85,10 @@ Az aktuális külső adatforrások listájának beolvasása:
 
     select * from sys.external_data_sources;
 
-A külső adatforrás a shard térképre hivatkozik. Ezután egy rugalmas lekérdezés a külső adatforrás t és az alapul szolgáló shard leképezést használja az adatrétegben részt vevő adatbázisok számbavételéhez.
-Ugyanazokat a hitelesítő adatokat használják a shard térkép olvasásához és a szegmenseken lévő adatok eléréséhez egy rugalmas lekérdezés feldolgozása során.
+A külső adatforrás a szegmens térképre hivatkozik. A rugalmas lekérdezés ezután a külső adatforrást és a mögöttes szegmenses térképet használja az adatrétegben részt vevő adatbázisok enumerálásához.
+Ugyanazokat a hitelesítő adatokat használja a rendszer, hogy beolvassa a szegmensek térképét, és egy rugalmas lekérdezés feldolgozása során hozzáférjen a szegmensekhez tartozó adatokhoz.
 
-## <a name="13-create-external-tables"></a>1.3 Külső táblázatok létrehozása
+## <a name="13-create-external-tables"></a>1,3 külső táblák létrehozása
 
 Szintaxis:  
 
@@ -103,7 +103,7 @@ Szintaxis:
       [ OBJECT_NAME = N'nonescaped_object_name',]
       DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
 
-**Példa**
+**Például**
 
     CREATE EXTERNAL TABLE [dbo].[order_line](
          [ol_o_id] int NOT NULL,
@@ -136,27 +136,27 @@ Külső táblák eldobása:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Az\_ADATFORRÁS záradék a külső táblához használt külső adatforrást (shard-leképezést) határozza meg.  
+Az ADATFORRÁS\_-záradék meghatározza a külső táblához használt külső adatforrást (egy szegmenses leképezést).  
 
-A SCHEMA\_NAME\_és AZ OBJECT NAME záradékok a külső tábladefiníciót egy másik séma táblájához kell leképezni. Ha nincs megadva, a távoli objektum sémája "dbo"-nak lesz, és a neve megegyezik a definiált külső táblanévvel. Ez akkor hasznos, ha a távoli tábla neve már elvan készítve abban az adatbázisban, amelyen létre szeretné hozni a külső táblát. Például meg szeretne határozni egy külső táblát, hogy összesített nézetet kapjon a katalógusnézetekről vagy a kibővített adatréteg DRV-jeiről. Mivel a katalógusnézetek és a DMV-k már léteznek helyileg, nem használhatja a nevüket a külső tábladefinícióhoz. Ehelyett használjon másik nevet, és használja a katalógusnézet vagy a DMV\_nevét a\_SCHEMA NAME és/vagy OBJECT NAME záradékokban. (Lásd az alábbi példát.)
+A séma\_neve és objektumnév\_záradéka a külső tábla definícióját egy másik sémában lévő táblára képezi le. Ha nincs megadva, a rendszer feltételezi, hogy a távoli objektum sémája "dbo" lesz, és a neve megegyezik a definiált külső táblanév nevével. Ez akkor hasznos, ha a távoli tábla neve már szerepel az adatbázisban, amelyben létre kívánja hozni a külső táblát. Tegyük fel például, hogy egy külső táblázatot szeretne meghatározni, amely összesített nézetet jelenít meg a katalógus nézeteiből vagy a DMV a kibővíthető adatszinten. Mivel a katalógus-nézetek és a DMV már helyileg léteznek, a külső tábla definíciójának neve nem használható. Ehelyett használjon másik nevet, és használja a katalógus nézet vagy a DMV nevét a séma\_neve és/vagy objektumnév\_záradékban. (Lásd az alábbi példát.)
 
-A DISTRIBUTION záradék a táblához használt adateloszlást határozza meg. A lekérdezésfeldolgozó a DISTRIBUTION záradékban megadott információkat használja a leghatékonyabb lekérdezési tervek létrehozásához.
+A DISTRIBUTion záradék meghatározza az ehhez a táblához használt adateloszlást. A lekérdezési processzor a terjesztési záradékban található információkat használja a leghatékonyabb lekérdezési csomagok létrehozásához.
 
-1. **A SHARDED** azt jelenti, hogy az adatok horizontálisan particionáltak az adatbázisok között. Az adatelosztás particionálási kulcsa a **<sharding_column_name>** paraméter.
-2. **A REPLIKÁLt** azt jelenti, hogy a tábla azonos példányai minden adatbázisban szerepelnek. Az Ön felelőssége annak biztosítása, hogy a replikák azonosak legyenek az adatbázisokban.
-3. **A\_ROUND ROBIN** azt jelenti, hogy a tábla horizontálisan particionált egy alkalmazásfüggő terjesztési módszerrel.
+1. A **szilánkos** érték azt jelenti, hogy az adategységek horizontálisan vannak particionálva az adatbázisok között. Az Adatterjesztés particionálási kulcsa a **<sharding_column_name>** paraméter.
+2. A **replikált** érték azt jelenti, hogy a tábla azonos példányszámban szerepel az egyes adatbázisokon. Az Ön felelőssége, hogy a replikák azonosak legyenek az adatbázisok között.
+3. **A\_ciklikus multiplexelés** azt jelenti, hogy a tábla vízszintesen particionálva van egy alkalmazás-függő terjesztési módszer használatával.
 
-**Adatréteg-hivatkozás**: A külső DDL tábla külső adatforrásra hivatkozik. A külső adatforrás egy shard-leképezést határoz meg, amely a külső tábla számára biztosítja az adatrétegben lévő összes adatbázis megkereséséhez szükséges információkat.
+**Adatcsomag-referenciák**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát tartalmazza az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 
-A külső táblához hozzáféréssel rendelkező felhasználók automatikusan hozzáférnek az alapul szolgáló távoli táblákhoz a külső adatforrás-definícióban megadott hitelesítő adatok alatt. Kerülje a jogosultságok nem kívánt kiterjesztését a külső adatforrás hitelesítő adataival. Használja a GRANT vagy revoke egy külső tábla, mintha egy normál tábla.  
+A külső táblához hozzáféréssel rendelkező felhasználók automatikusan hozzáférhetnek a mögöttes távoli táblákhoz a külső adatforrás definíciójában megadott hitelesítő adatok alatt. A külső adatforrás hitelesítő adataival Kerülje a jogosultságok nem kívánt kiterjesztését. Egy külső tábla esetében adja meg az engedélyezés vagy a visszavonás lehetőséget, ugyanúgy, mintha egy normál tábla lenne.  
 
-Miután definiálta a külső adatforrást és a külső táblákat, most már használhatja a teljes T-SQL-t a külső táblákon.
+A külső adatforrás és a külső táblák meghatározása után mostantól teljes T-SQL-T használhat a külső táblákon.
 
-## <a name="example-querying-horizontal-partitioned-databases"></a>Példa: horizontális particionált adatbázisok lekérdezése
+## <a name="example-querying-horizontal-partitioned-databases"></a>Példa: vízszintes particionált adatbázisok lekérdezése
 
-A következő lekérdezés háromirányú illesztést hajt végre a raktárak, a rendelések és a rendelési sorok között, és több aggregátumot és egy szelektív szűrőt használ. Azt feltételezi, hogy (1) horizontális particionálás (horizontális) és (2) a raktárak, rendelések és rendelési sorok horizontálisan a raktári azonosító oszlop, és hogy a rugalmas lekérdezés együtt keresse meg az illesztések a szilánkok és a feldolgozás a lekérdezés drága része a szilánkok Párhuzamos.
+A következő lekérdezés háromféleképpen csatlakozik a raktárak, a megrendelések és a rendelési sorok között, és több összesítést és egy szelektív szűrőt használ. Feltételezi, hogy (1) horizontális particionálási (skálázási) és (2), hogy a raktárak, a megrendelések és a rendelési sorok a Warehouse ID oszlopba vannak felosztva, és hogy a rugalmas lekérdezés közösen keresse meg a szegmensek összekapcsolását, és a lekérdezés költséges részét párhuzamosan dolgozza fel.
 
 ```sql
     select  
@@ -175,16 +175,16 @@ A következő lekérdezés háromirányú illesztést hajt végre a raktárak, a
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Tárolt eljárás távoli T-SQL végrehajtáshoz: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása\_: SP execute_remote
 
-Rugalmas lekérdezés is bevezet egy tárolt eljárást, amely közvetlen hozzáférést biztosít a szegmensek. A tárolt eljárás [neve\_ \_SP execute remote](https://msdn.microsoft.com/library/mt703714) és használható távoli tárolt eljárások vagy T-SQL kódot a távoli adatbázisok. A következő paramétereket veszi igénybe:
+A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [SP\_ \_Execute Remote](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
 
-* Adatforrás neve (nvarchar): Az RDBMS típusú külső adatforrás neve.
-* Lekérdezés (nvarchar): Az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
-* Paraméterdeklaráció (nvarchar) - nem kötelező: A Query paraméterben használt paraméterek (például sp_executesql) adattípus-definícióival rendelkező karakterlánc.
-* Paraméterérték-lista - nem kötelező: a paraméterértékek vesszővel tagolt listája (például sp_executesql).
+* Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve.
+* Query (nvarchar): az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
+* Paraméter deklarációja (nvarchar) – nem kötelező: karakterlánc a lekérdezési paraméterben használt paraméterekhez (például sp_executesql) tartozó adattípus-definíciókkal.
+* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például sp_executesql).
 
-Az\_sp\_execute remote a meghívási paraméterekben megadott külső adatforrást használja a megadott T-SQL utasítás távoli adatbázisokon történő végrehajtásához. A külső adatforrás hitelesítő adatait használja a shardmap-kezelő adatbázishoz és a távoli adatbázisokhoz való csatlakozáshoz.  
+Az SP\_Execute\_Remote a Meghívási paraméterekben megadott külső adatforrást használja az adott T-SQL-utasítás távoli adatbázisokon való végrehajtásához. A külső adatforrás hitelesítő adatait használja a shardmap-kezelő adatbázisához és a távoli adatbázisokhoz való kapcsolódáshoz.  
 
 Példa:
 
@@ -194,24 +194,24 @@ Példa:
         N'select count(w_id) as foo from warehouse'
 ```
 
-## <a name="connectivity-for-tools"></a>Eszközök csatlakoztatása
+## <a name="connectivity-for-tools"></a>Eszközökhöz való kapcsolódás
 
-Az alkalmazás, az üzletiintelligencia- és adatintegrációs eszközök a külső tábladefiníciókkal való csatlakoztatásához használjon rendszeres SQL Server-kapcsolati karakterláncokat. Győződjön meg arról, hogy az SQL Server támogatja az eszköz adatforrásaként. Ezután hivatkozzon a rugalmas lekérdezési adatbázisra, mint bármely más SQL Server-adatbázis, amely az eszközhöz csatlakozik, és használja az eszköz vagy alkalmazás külső tábláit, mintha azok helyi táblák lennének.
+Az alkalmazáshoz, a BI-és az adatintegrációs eszközökhöz a külső táblázatos definíciókkal összekapcsolva rendszeres SQL Server kapcsolati karakterláncokat használhat. Győződjön meg arról, hogy a SQL Server támogatott adatforrásként az eszköz számára. Ezután hivatkozzon a rugalmas lekérdezési adatbázisra, mint az eszközhöz csatlakoztatott bármely más SQL Server adatbázisra, és használjon külső táblákat az eszközről vagy alkalmazásból, mintha helyi táblák lennének.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-* Győződjön meg arról, hogy a rugalmas lekérdezésvégpont-adatbázis hozzáférést kapott a shardmap adatbázishoz és az ÖSSZES szegmenshez az SQL DB tűzfalakon keresztül.  
-* A külső tábla által meghatározott adatelosztás ellenőrzése vagy érvényesítése. Ha a tényleges adatelosztás eltér a tábladefinícióban megadott eloszlástól, a lekérdezések nem várt eredményeket eredményezhetnek.
-* Rugalmas lekérdezés jelenleg nem hajt végre shard megszüntetése, ha a szilánkok a szilánkok kulcs on-ra, lehetővé tenné, hogy biztonságosan kizárja bizonyos szegmensek feldolgozása.
-* Rugalmas lekérdezés működik a legjobban a lekérdezések, ahol a legtöbb számítás végezhető el a szegmensek. Általában a legjobb lekérdezési teljesítményt szelektív szűrő predikátumok, amelyek kiértékelhetők a szilánkok, vagy csatlakozik a particionálási kulcsok, amelyek egy partíció-igazított módon az összes szegmensek. Más lekérdezési minták előfordulhat, hogy nagy mennyiségű adatot kell betöltenie a szegmensekből a főcsomópontra, és gyengén teljesíthetnek
+* Győződjön meg arról, hogy a rugalmas lekérdezési végpont adatbázisa hozzáférést kapott a shardmap adatbázishoz és az összes szegmenshez az SQL DB-tűzfalakon keresztül.  
+* Érvényesítse vagy kényszerítse a külső tábla által definiált adatterjesztést. Ha a tényleges adateloszlás eltér a tábla definíciójában megadott eloszlástól, előfordulhat, hogy a lekérdezések nem várt eredményeket eredményeznek.
+* A rugalmas lekérdezés jelenleg nem hajtja végre a szegmensek eltávolítását, ha az predikátumok a horizontális Felskálázási kulcs során lehetővé teszik, hogy biztonságosan kizárjon bizonyos szegmenseket a feldolgozásból.
+* A rugalmas lekérdezés a legjobb megoldás, ha a számítások többsége a szegmenseken végezhető el. A legjobb lekérdezési teljesítményt általában a szelektív szűrési predikátumokkal lehet kiértékelni, amelyek kiértékelése a szegmenseken vagy az összekapcsolások a particionálási kulcsokon keresztül történik, amelyek az összes szegmensen elvégezhető partícióra igazított módon hajthatók végre. Előfordulhat, hogy más lekérdezési minták nagy mennyiségű adat betöltését végzik a szegmensek és a fő csomópont között, és nem megfelelően
 
 ## <a name="next-steps"></a>További lépések
 
-* A rugalmas lekérdezés áttekintését a [Rugalmas lekérdezés áttekintése című témakörben találja.](sql-database-elastic-query-overview.md)
-* Függőleges particionálási oktatóanyag: [Első lépések adatbázisközi lekérdezéssel (függőleges particionálás)](sql-database-elastic-query-getting-started-vertical.md).
-* A vertikálisan particionált adatok szintaxisát és mintalekérdezéseit a [Vertikálisan particionált adatok lekérdezése) témakörben találja.](sql-database-elastic-query-vertical-partitioning.md)
-* Horizontális particionálási (horizontális) oktatóanyag: [A rugalmas lekérdezés horizontális particionálás (horizontális sáfálás) című témakörben található.](sql-database-elastic-query-getting-started.md)
-* [Lásd:\_ \_sp távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljárás, amely végrehajtja a Transact-SQL utasításegyetlen távoli Azure SQL-adatbázis vagy egy horizontális particionálási séma szegmensként szolgáló adatbázisok készlete.
+* A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
+* A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](sql-database-elastic-query-getting-started-vertical.md).
+* A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](sql-database-elastic-query-vertical-partitioning.md)
+* A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md).
+* Lásd [:\_az \_SP távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt ELJÁRÁShoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

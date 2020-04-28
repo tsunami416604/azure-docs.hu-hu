@@ -1,6 +1,6 @@
 ---
-title: Sémamódosítások replikációjának automatizálása az SQL Data Sync programban
-description: Ismerje meg, hogyan automatizálhatja a sémaváltozások replikációját az Azure SQL Data Sync szolgáltatásban.
+title: A séma változásainak SQL-adatszinkronizálásban való replikálásának automatizálása
+description: Ismerje meg, hogyan automatizálható a séma módosításainak replikálása az Azure SQL-adatszinkronizálásban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,34 +12,34 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822435"
 ---
-# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Sémamódosítások replikációjának automatizálása az Azure SQL Data Sync szolgáltatásban
+# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 
-Az SQL Data Sync lehetővé teszi a felhasználók számára az adatok szinkronizálását az Azure SQL-adatbázisok és a helyszíni SQL Server között egy irányba vagy mindkét irányban. Az SQL Data Sync egyik jelenlegi korlátozása a sémamódosítások replikációjának támogatásának hiánya. Minden alkalommal, amikor módosítja a táblasémát, a módosításokat manuálisan kell alkalmaznia az összes végponton, beleértve a hubot és az összes tagot, majd frissítenie kell a szinkronizálási sémát.
+SQL-adatszinkronizálás lehetővé teszi, hogy a felhasználók az Azure SQL Database-adatbázisok és a helyszíni SQL Server között egy irányba vagy mindkét irányban szinkronizálják az adatokat. SQL-adatszinkronizálás jelenlegi korlátozásai közül az egyik jelenleg nem támogatott a séma módosításainak replikálásához. Minden alkalommal, amikor módosítja a táblázat sémáját, manuálisan kell alkalmaznia a módosításokat az összes végponton, beleértve a hubot és az összes tagot, majd frissítenie kell a szinkronizálási sémát.
 
-Ez a cikk egy olyan megoldást vezet be, amely automatikusan replikálja a sémamódosításokat az összes SQL Data Sync végpontra.
-1. Ez a megoldás DDL-eseményindítót használ a sémaváltozások nyomon követéséhez.
-1. Az eseményindító beszúrja a sémamódosítási parancsokat egy követési táblába.
-1. Ez a követési tábla az Adatszinkronizálás szolgáltatás használatával minden végponthoz szinkronizálva van.
-1. A DML-eseményindítók a beszúrás után a sémamódosítások alkalmazására szolgálnak a többi végponton.
+Ez a cikk egy olyan megoldást mutat be, amely automatikusan replikálja a séma módosításait az összes SQL-adatszinkronizálás-végpontra.
+1. Ez a megoldás DDL-triggert használ a séma változásainak nyomon követéséhez.
+1. Az trigger beszúrja a séma módosítása parancsokat egy követési táblába.
+1. Ezt a nyomkövetési táblázatot a rendszer az adatszinkronizálási szolgáltatással szinkronizálja az összes végpontra.
+1. A DML-triggerek a beillesztés után lesznek alkalmazva a séma módosítására a többi végponton.
 
-Ez a cikk az ALTER TABLE-t használja a sémamódosítás példájaként, de ez a megoldás más típusú sémamódosításokesetén is működik.
+Ez a cikk a MÓDOSÍTÁSi táblázatot használja példaként a séma módosítására, de ez a megoldás más típusú sémákban is működik.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy figyelmesen olvassa el ezt a cikket, különösen a [hibaelhárításról](#troubleshoot) és [egyéb szempontokról](#other)szóló szakaszokat, mielőtt elkezdené végrehajtani az automatikus sémamódosítás-replikációt a szinkronizálási környezetben. Azt is javasoljuk, hogy olvassa el [az Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az SQL Data Sync segítségével.](sql-database-sync-data.md) Egyes adatbázis-műveletek megszakíthatják a jelen cikkben ismertetett megoldást. A problémák megoldásához szükség lehet az SQL Server és a Transact-SQL további tartományi ismeretekre.
+> Javasoljuk, hogy figyelmesen olvassa el ezt a cikket, különösen a [hibaelhárítási](#troubleshoot) és [egyéb szempontokat](#other)ismertető szakaszt, mielőtt megkezdené az automatikus séma-módosítási replikáció megvalósítását a szinkronizálási környezetben. Azt is javasoljuk, hogy a [szinkronizálási információk több Felhőbeli és helyszíni adatbázison](sql-database-sync-data.md)is beolvashatók legyenek SQL-adatszinkronizálás. Egyes adatbázis-műveletek megszüntetik a jelen cikkben ismertetett megoldást. A problémák elhárításához szükség lehet a SQL Server és a Transact-SQL további tartományi ismeretére.
 
-![Sémamódosítások replikációjának automatizálása](media/sql-database-update-sync-schema/automate-schema-changes.png)
+![A séma módosításainak replikálásának automatizálása](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
-## <a name="set-up-automated-schema-change-replication"></a>Automatikus sémamódosítás-replikáció beállítása
+## <a name="set-up-automated-schema-change-replication"></a>Automatikus séma-módosítás replikálásának beállítása
 
-### <a name="create-a-table-to-track-schema-changes"></a>Táblázat létrehozása a séma változásainak nyomon követésére
+### <a name="create-a-table-to-track-schema-changes"></a>Táblázat létrehozása a séma változásainak nyomon követéséhez
 
-Hozzon létre egy táblát a sémaváltozások nyomon követésére a szinkronizálási csoport összes adatbázisában:
+Táblázat létrehozása a séma változásainak nyomon követéséhez a szinkronizálási csoportban lévő összes adatbázisban:
 
 ```sql
 CREATE TABLE SchemaChanges (
@@ -49,11 +49,11 @@ SqlStmt nvarchar(max),
 )
 ```
 
-Ez a tábla rendelkezik egy identitásoszloplal a sémamódosítások sorrendjének nyomon követésére. Szükség esetén további mezőket is hozzáadhat a további információk naplózásához.
+Ennek a táblának van egy azonosító oszlopa, amely nyomon követheti a séma változásainak sorrendjét. Ha szükséges, további mezőket adhat hozzá a további információk naplózásához.
 
-### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Táblázat létrehozása a sémamódosítások előzményeinek nyomon követésére
+### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Táblázat létrehozása a séma változásainak előzményeinek nyomon követéséhez
 
-Hozzon létre egy táblázatot a legutóbb alkalmazott sémamódosítási parancs azonosítójának nyomon követésére.
+Az összes végponton hozzon létre egy táblázatot a legutóbb alkalmazott séma-módosítási parancs AZONOSÍTÓjának nyomon követéséhez.
 
 ```sql
 CREATE TABLE SchemaChangeHistory (
@@ -64,9 +64,9 @@ GO
 INSERT INTO SchemaChangeHistory VALUES (0)
 ```
 
-### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>ALTER TABLE DDL eseményindító létrehozása abban az adatbázisban, ahol sémamódosítások történnek
+### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Hozzon létre egy ALTER TABLE DDL-triggert abban az adatbázisban, amelyben a séma módosítása történik
 
-Hozzon létre egy DDL-eseményindítót az ALTER TABLE műveletekhez. Ezt az eseményindítót csak abban az adatbázisban kell létrehoznia, ahol a séma módosítások at hajtják végre. Az ütközések elkerülése érdekében csak a szinkronizálási csoport egyik adatbázisában engedélyezze a sémamódosításokat.
+DDL-trigger létrehozása az ALTER TABLE műveletekhez. Ezt az triggert csak abban az adatbázisban kell létrehoznia, ahol a séma megváltozik. Az ütközések elkerülése érdekében csak a séma módosításait engedélyezze egy szinkronizálási csoportban lévő adatbázison.
 
 ```sql
 CREATE TRIGGER AlterTableDDLTrigger
@@ -82,13 +82,13 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Az eseményindító minden ALTERTABLE parancshoz beszúr egy rekordot a sémaváltozás-követési táblába. Ez a példa hozzáad egy szűrőt, hogy elkerülje a séma **DataSync**alatt végzett sémamódosítások replikálását, mivel ezeket valószínűleg az Adatszinkronizálás szolgáltatás hajtotta végre. Adjon hozzá további szűrőket, ha csak bizonyos típusú sémamódosításokat szeretne replikálni.
+Az trigger beszúr egy rekordot a séma módosítása követési táblába az egyes ALTER TABLE parancsokhoz. Ez a példa egy szűrőt hoz létre, amellyel elkerülhető a séma- **DataSync**alatt végzett séma-módosítások replikálása, mivel ezeket az adatszinkronizálási szolgáltatás legvalószínűbben végzi. Ha csak bizonyos típusú sémákat szeretne replikálni, vegyen fel további szűrőket.
 
-További eseményindítók at is hozzáadhat más típusú sémamódosítások replikálásához. Hozzon létre például CREATE_PROCEDURE, ALTER_PROCEDURE és DROP_PROCEDURE eseményindítókat a tárolt eljárások módosítási változásainak replikálásához.
+További eseményindítókat is hozzáadhat a séma más típusú változásainak replikálásához. Hozzon létre például CREATE_PROCEDURE, ALTER_PROCEDURE és DROP_PROCEDURE eseményindítókat a tárolt eljárások módosításainak replikálásához.
 
-### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Eseményindító létrehozása más végpontokon a sémamódosítások alkalmazásához a beszúrás során
+### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Trigger létrehozása más végpontokon a séma módosításának a Beszúrás során történő alkalmazásához
 
-Ez az eseményindító végrehajtja a sémamódosítási parancsot, ha más végpontokkal van szinkronizálva. Létre kell hoznia ezt az eseményindítót az összes végponton, kivéve azt, ahol a séma módosítások at hajtják végre (azaz abban az adatbázisban, ahol a DDL eseményindító `AlterTableDDLTrigger` jön létre az előző lépésben).
+Ez az indító a séma módosítása parancsot hajtja végre, ha más végpontokhoz van szinkronizálva. Ezt az triggert az összes végponton létre kell hoznia, kivéve a séma módosításának helyét (azaz abban az adatbázisban, amelyben az előző lépésben létrehozta `AlterTableDDLTrigger` a DDL-triggert).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -119,117 +119,117 @@ BEGIN
 END
 ```
 
-Ez az eseményindító a beszúrás után fut, és ellenőrzi, hogy az aktuális parancs fusson-e legközelebb. A kódlogika biztosítja, hogy a rendszer ne hagyja ki a sémamódosítási utasítást, és akkor is alkalmazza a módosításokat, ha a beszúrás nem megfelelő.
+Ez az aktiválás a Beszúrás után fut, és ellenőrzi, hogy az aktuális parancsnak a következőnek kell futnia. A kód logikája biztosítja, hogy a rendszer ne ugorja át a séma módosításait, és a rendszer az összes módosítást alkalmazza, még akkor is, ha a Beszúrás nem sorrendben történik.
 
-### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>A sémaváltozás-követési tábla szinkronizálása az összes végponttal
+### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>A séma változás-követési táblázatának szinkronizálása az összes végponttal
 
-A sémaváltozás-követési táblát szinkronizálhatja az összes végpontra a meglévő szinkronizálási csoport vagy egy új szinkronizálási csoport használatával. Győződjön meg arról, hogy a követési tábla módosításai szinkronizálhatók az összes végponttal, különösen akkor, ha egyirányú szinkronizálást használ.
+A séma módosítása nyomon követése táblát az összes végpontra szinkronizálhatja a meglévő szinkronizálási csoport vagy egy új szinkronizálási csoport használatával. Győződjön meg arról, hogy a követési tábla változásai szinkronizálva vannak az összes végponttal, különösen akkor, ha egyirányú szinkronizálást használ.
 
-Ne szinkronizálja a sémamódosítási előzménytáblát, mivel az a tábla különböző végpontokon eltérő állapotot tart fenn.
+Ne szinkronizálja a séma változási előzményei táblát, mert a tábla különböző állapotokat tart fenn különböző végpontokon.
 
-### <a name="apply-the-schema-changes-in-a-sync-group"></a>A sémamódosítás alkalmazása szinkronizálási csoportban
+### <a name="apply-the-schema-changes-in-a-sync-group"></a>A séma módosításainak alkalmazása szinkronizálási csoportban
 
-A rendszer csak a DDL-eseményindítót létrehozó adatbázisban végrehajtott sémamódosításokat replikálja. A más adatbázisokban végrehajtott sémamódosítások nem replikálódnak.
+A rendszer csak a DDL-triggert létrehozó adatbázisban lévő séma-módosításokat replikálja. A más adatbázisokban végrehajtott sémák módosítása nem replikálódik.
 
-Miután a séma módosításait replikálja az összes végpontra, további lépéseket kell tennie a szinkronizálási séma frissítéséhez az új oszlopok szinkronizálásának elindításához vagy leállításához.
+Miután a séma módosítása replikálódik az összes végpontra, további lépéseket kell tennie a szinkronizálási séma frissítéséhez az új oszlopok szinkronizálásának elindításához vagy leállításához.
 
 #### <a name="add-new-columns"></a>Új oszlopok hozzáadása
 
-1.  Módosítsa a sémát.
+1.  Állítsa be a séma módosítását.
 
-1.  Kerülje az adatmódosításokat, ahol az új oszlopok érintettek, amíg el nem végezte az eseményindítót létrehozó lépést.
+1.  Kerülje az adatváltozások helyét, ahol az új oszlopok bekerülnek, amíg el nem végezte az triggert létrehozó lépést.
 
-1.  Várjon, amíg a séma módosításai minden végpontra vonatkoznak.
+1.  Várjon, amíg a séma módosításai az összes végpontra érvénybe lépnek.
 
-1.  Frissítse az adatbázissémát, és adja hozzá az új oszlopot a szinkronizálási sémához.
+1.  Frissítse az adatbázis-sémát, és adja hozzá az új oszlopot a szinkronizálási sémához.
 
-1.  Az új oszlopban lévő adatok szinkronizálása a következő szinkronizálási művelet során történik.
+1.  A következő szinkronizálási művelet során a rendszer szinkronizálja az új oszlopba tartozó adatfájlokat.
 
 #### <a name="remove-columns"></a>Oszlopok eltávolítása
 
-1.  Távolítsa el az oszlopokat a szinkronizálási sémából. Az Adatszinkronizálás leállítja az adatok szinkronizálását ezekben az oszlopokban.
+1.  Távolítsa el az oszlopokat a szinkronizálási sémából. Az adatszinkronizálás leállítja az adatszinkronizálást ezekben az oszlopokban.
 
-1.  Módosítsa a sémát.
+1.  Állítsa be a séma módosítását.
 
-1.  Frissítse az adatbázissémát.
+1.  Frissítse az adatbázis-sémát.
 
 #### <a name="update-data-types"></a>Adattípusok frissítése
 
-1.  Módosítsa a sémát.
+1.  Állítsa be a séma módosítását.
 
-1.  Várjon, amíg a séma módosításai minden végpontra vonatkoznak.
+1.  Várjon, amíg a séma módosításai az összes végpontra érvénybe lépnek.
 
-1.  Frissítse az adatbázissémát.
+1.  Frissítse az adatbázis-sémát.
 
-1.  Ha az új és a régi adattípusok nem teljesen `int` kompatibilisek – például ha átvált `bigint` róluk – a szinkronizálás sikertelen lehet, mielőtt az eseményindítókat létrehozó lépések befejeződnek. A szinkronizálás az újrapróbálkozás után sikeres.
+1.  Ha az új és a régi adattípusok nem teljes mértékben kompatibilisek – például akkor, ha `int` a `bigint` verzióról szinkronizálásra vált, a triggerek létrehozásához szükséges lépések végrehajtása előtt sikertelen lehet. A szinkronizálás az újrapróbálkozást követően sikeres lesz.
 
-#### <a name="rename-columns-or-tables"></a>Oszlopok vagy táblázatok átnevezése
+#### <a name="rename-columns-or-tables"></a>Oszlopok vagy táblák átnevezése
 
-Az oszlopok vagy táblák átnevezése leállítja az adatszinkronizálást. Hozzon létre egy új táblát vagy oszlopot, töltse ki az adatokat, majd törölje a régi táblát vagy oszlopot átnevezés helyett.
+Az oszlopok vagy táblázatok átnevezése lehetővé teszi az adatszinkronizálás leállását. Hozzon létre egy új táblázatot vagy oszlopot, backfill az adattípust, majd törölje a régi táblát vagy oszlopot az Átnevezés helyett.
 
-#### <a name="other-types-of-schema-changes"></a>A sémamódosítások egyéb típusai
+#### <a name="other-types-of-schema-changes"></a>Egyéb típusú séma-változások
 
-Más típusú sémamódosítások – például tárolt eljárások létrehozása vagy egy index elvetése esetén nem szükséges a szinkronizálási séma frissítése.
+Más típusú sémák változásaihoz – például tárolt eljárások létrehozása vagy index eldobása – a szinkronizálási séma frissítése nem szükséges.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Automatikus sémamódosítás-replikáció – problémamegoldás
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Automatikus séma-módosítási replikáció hibáinak megoldása
 
-A jelen cikkben leírt replikációs logika bizonyos helyzetekben leáll, például ha sémamódosítást hajtott végre egy helyszíni adatbázisban, amelyet az Azure SQL Database nem támogat. Ebben az esetben a sémaváltozás-követési tábla szinkronizálása sikertelen. Manuálisan kell megoldania a problémát:
+A cikkben ismertetett replikációs logika bizonyos helyzetekben leáll – például ha olyan helyszíni adatbázisban hajtott végre sémát, amely Azure SQL Database nem támogatott. Ebben az esetben a séma módosításának követése tábla szinkronizálása sikertelen. A problémát manuálisan kell kijavítani:
 
-1.  Tiltsa le a DDL eseményindítót, és kerülje a további sémamódosításokat, amíg a probléma meg nem oldható.
+1.  Tiltsa le a DDL-triggert, és kerülje a további sémák módosításait a probléma javítása előtt.
 
-1.  Abban a végpont-adatbázisban, ahol a probléma történik, tiltsa le az AFTER INSERT eseményindítót azon a végponton, ahol a sémamódosítása nem végezhető el. Ez a művelet lehetővé teszi a sémamódosítási parancs szinkronizálását.
+1.  Az Endpoint adatbázisban, ahol a probléma történik, tiltsa le a Beszúrás utáni triggert azon a végponton, ahol a séma módosítása nem végezhető el. Ez a művelet lehetővé teszi a séma módosítási parancsának szinkronizálását.
 
-1.  A sémaváltozás-követési tábla szinkronizálásához aktiválja a szinkronizálást.
+1.  Indítsa el a szinkronizálást a séma módosításának követése tábla szinkronizálásához.
 
-1.  A végponti adatbázisban, ahol a probléma történik, a sémamódosítási előzmények táblájának lekérdezésével lekellkérdezni az utolsó alkalmazott sémamódosítási parancs azonosítóját.
+1.  A probléma eseményének végpont-adatbázisában kérdezze le a séma változási előzményei táblát a legutóbbi alkalmazott séma-módosítási parancs AZONOSÍTÓjának lekéréséhez.
 
-1.  A sémaváltozás-követési tábla lekérdezésével az előző lépésben beolvasott azonosítónál nagyobb azonosítóval rendelkező összes parancsot listázhatja.
+1.  Az előző lépésben lekért azonosító értéknél nagyobb AZONOSÍTÓval rendelkező összes parancs listázása a séma módosításának nyomon követése táblában.
 
-    a.  Figyelmen kívül hagyja azokat a parancsokat, amelyek nem hajthatók végre a végpont-adatbázisban. A séma inkonzisztenciával kell foglalkoznia. Az eredeti séma módosításai visszaállítása, ha az inkonzisztencia hatással van az alkalmazásra.
+    a.  Hagyja figyelmen kívül azokat a parancsokat, amelyek nem hajthatók végre az Endpoint adatbázisban. A séma inkonzisztenciát kell kezelnie. Visszaállíthatja az eredeti séma módosításait, ha az inkonzisztencia hatással van az alkalmazásra.
 
-    b.  Manuálisan alkalmazza azokat a parancsokat, amelyeket alkalmazni kell.
+    b.  Alkalmazza manuálisan ezeket a parancsokat.
 
-1.  Frissítse a sémamódosítási előzmények tábláját, és állítsa az utolsó alkalmazott azonosítót a megfelelő értékre.
+1.  Frissítse a séma változási előzményei táblát, és állítsa be a legutolsó alkalmazott azonosítót a megfelelő értékre.
 
-1.  Ellenőrizze, hogy a séma naprakész-e.
+1.  Duplán ellenőrizze, hogy a séma naprakész-e.
 
-1.  A második lépésben engedélyezze újra az AFTER INSERT eseményindítót.
+1.  Engedélyezze újra a következő BESZÚRÁSi triggert a második lépésben.
 
-1.  Az első lépésben újra engedélyezze a DDL-eseményindítót.
+1.  Engedélyezze újra az első lépésben letiltott DDL-triggert.
 
-Ha törölni szeretné a sémaváltozás-követési tábla rekordjait, a Csonkolás helyett használja a DELETE parancsot. Soha ne magozza újra az identitásoszlopot a sémaváltozás-követési táblában a DBCC CHECKIDENT használatával. Új sémaváltozás-követési táblákat hozhat létre, és frissítheti a tábla nevét a DDL eseményindítóban, ha újravetésre van szükség.
+Ha meg szeretné tisztítani a rekordokat a séma módosításainak nyomon követése táblában, a CSONKÍTás helyett a TÖRLÉSt kell használnia. DBCC CHECKIDENT használatával soha ne használja újra a séma-módosítás követése tábla Identity oszlopát. Új séma-módosítási nyomon követési táblákat hozhat létre, és frissítheti a táblázat nevét a DDL-triggerben, ha újravetés szükséges.
 
-## <a name="other-considerations"></a><a name="other"></a>Egyéb szempontok
+## <a name="other-considerations"></a><a name="other"></a>Egyéb megfontolások
 
--   A központi és tagadatbázisokat konfiguráló adatbázis-felhasználóknak elegendő engedéllyel kell rendelkezniük a sémamódosítási parancsok végrehajtásához.
+-   Az olyan adatbázis-felhasználóknak, akik a központi és a tagok adatbázisait konfigurálták, elegendő engedélyekkel kell rendelkezniük a séma-módosítási parancsok végrehajtásához.
 
--   A DDL-eseményindítóban további szűrőket adhat hozzá, hogy csak a kijelölt táblák vagy műveletek sémájának változását replikálja.
+-   A DDL-triggerben további szűrőket adhat hozzá, hogy csak a kiválasztott táblákban vagy műveletekben replikálja a séma módosításait.
 
--   A séma módosításacsak abban az adatbázisban hajtható végre, ahol a DDL eseményindító létrejön.
+-   A séma módosításait csak abban az adatbázisban végezheti el, amelyben a DDL-trigger létrejött.
 
--   Ha egy helyszíni SQL Server-adatbázisban végez módosítást, győződjön meg arról, hogy a sémamódosítása támogatott az Azure SQL Database-ben.
+-   Ha egy helyszíni SQL Server-adatbázist módosít, győződjön meg arról, hogy a séma módosítása támogatott a Azure SQL Databaseban.
 
--   Ha a séma módosítások nem abban az adatbázisban történnek, ahol a DDL-eseményindító t létrehozták, a módosítások nem replikálódnak. A probléma elkerülése érdekében DDL-eseményindítókat hozhat létre a többi végpont módosításának blokkolására.
+-   Ha a séma módosítása a DDL-triggert létrehozó adatbázison kívül más adatbázisokon történik, a módosítások nem replikálódnak. A probléma elkerüléséhez DDL-eseményindítókat hozhat létre a többi végpont változásainak blokkolásához.
 
--   Ha módosítania kell a sémaváltozás-követési tábla sémáját, tiltsa le a DDL eseményindítót a módosítás előtt, majd manuálisan alkalmazza a módosítást az összes végpontra. Az AFTER INSERT eseményindító ban lévő séma frissítése ugyanazon a táblán nem működik.
+-   Ha módosítania kell a séma módosítása követése tábla sémáját, tiltsa le a DDL-triggert a módosítás előtt, majd manuálisan alkalmazza a módosítást az összes végpontra. Ha a sémát egy, az adott táblába való BESZÚRÁSi trigger után frissíti, nem működik.
 
--   Ne magozzon újra az identitásoszlop segítségével DBCC CHECKIDENT.
+-   Ne használja az Identity oszlopot DBCC CHECKIDENT használatával.
 
--   Ne használja a Csonkolás parancsot a sémaváltozás-követési táblában lévő adatok karbantartásához.
+-   Ne használja a CSONKÍTás lehetőséget a séma-változások követése táblában lévő adattörléshez.
 
 ## <a name="next-steps"></a>További lépések
 
 További információ az SQL Data Syncről:
 
--   Áttekintés – [Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az Azure SQL Data Sync segítségével](sql-database-sync-data.md)
+-   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [Oktatóanyag: Az SQL Data Sync beállítása az Adatok szinkronizálásához az Azure SQL Database és a helyszíni SQL Server között](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatszinkronizálási ügynök – [Adatszinkronizálási ügynök az Azure SQL Data Sync szolgáltatáshoz](sql-database-data-sync-agent.md)
--   Gyakorlati tanácsok – [Gyakorlati tanácsok az Azure SQL Data Sync szolgáltatáshoz](sql-database-best-practices-data-sync.md)
--   Figyelő – [SQL-adatszinkronizálás figyelése az Azure Figyelő naplóival](sql-database-sync-monitor-oms.md)
--   Hibaelhárítás – [Az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](sql-database-troubleshoot-data-sync.md)
+-   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
+-   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
+-   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
+-   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
-    -   A PowerShell használatával – [A PowerShell használatával frissítse a szinkronizálási sémát egy meglévő szinkronizálási csoportban](scripts/sql-database-sync-update-schema.md)
+    -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .

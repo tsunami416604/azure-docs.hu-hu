@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute privát társviszony-létesítés: Az IPsec átviteli módjának konfigurálása – Windows-állomások'
-description: Az IPsec átviteli mód engedélyezése az Azure Windows virtuális gépek és a helyszíni Windows-állomások között az ExpressRoute-alapú magántársviszony-létesítésen keresztül, csoportházirend-azonosítók és operációs rendszerekkel.
+title: 'Azure ExpressRoute Private-társítás: IPsec átviteli mód konfigurálása – Windows-gazdagépek'
+description: Az IPsec-átviteli mód engedélyezése az Azure Windows-alapú virtuális gépek és a helyszíni Windows-gazdagépek között, a csoportházirend-objektumok és a szervezeti egységek használatával történő ExpressRoute keresztül.
 services: expressroute
 author: fabferri
 ms.service: expressroute
@@ -9,52 +9,52 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022008"
 ---
-# <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec átviteli mód konfigurálása az ExpressRoute privát társviszony-létesítéshez
+# <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-átviteli mód konfigurálása a ExpressRoute privát társításához
 
-Ez a cikk segít az IPsec-alagutak létrehozásában átviteli módban expressRoute-alapú privát társviszony-létesítés en a Windows-t futtató Azure virtuális gépek és a helyszíni Windows-állomások között. A cikkben ismertetett lépések csoportházirend-objektumok használatával hozzák létre ezt a konfigurációt. Bár ez a konfiguráció szervezeti egységek és csoportházirend-objektumok (GRo-k) használata nélkül is létrehozható, az ousok és a csoportházirend-objektumok kombinációja megkönnyíti a biztonsági házirendek vezérlését, és lehetővé teszi a gyors skálázást. A cikkben ismertetett lépések feltételezik, hogy már rendelkezik Active Directory-konfigurációval, és ismeri a számítógép-üzemeltetők és a csoportházirend-üzemeltetők használatát.
+Ebből a cikkből megtudhatja, hogyan hozhat létre IPsec-alagutakat átviteli módban a Windows rendszerű Azure-beli virtuális gépek és a helyszíni Windows-gazdagépek közötti ExpressRoute. A jelen cikkben ismertetett lépések csoportházirend-objektumok használatával hoznak létre ezt a konfigurációt. Habár a konfigurációt szervezeti egységek (OU-k) és csoportházirend-objektumok (GPO-k) használata nélkül is létrehozhatja, a szervezeti egységek és a csoportházirend-objektumok kombinációja megkönnyíti a biztonsági házirendek szabályozását, és lehetővé teszi a gyors vertikális felskálázást. A cikkben ismertetett lépések azt feltételezik, hogy már rendelkezik egy Active Directory konfigurációval, és ismeri a szervezeti egységek és a csoportházirend-objektumok használatát.
 
 ## <a name="about-this-configuration"></a>A konfiguráció bemutatása
 
-A konfiguráció a következő lépésekben egyetlen Azure virtuális hálózat (VNet) ExpressRoute privát társviszony-létesítéssel használja. Ez a konfiguráció azonban több Azure virtuális hálózaton és helyszíni hálózatokon is átívelhet. Ez a cikk segít az IPsec-titkosítási szabályzat meghatározásában, és alkalmazza azt az Azure virtuális gépek egy csoportjára, és a helyszíni, ugyanazon szervezeti egység részét képezik. Az Azure virtuális gépek (vm1 és vm2) és a helyszíni host1 csak a 8080-as célporttal rendelkező HTTP-forgalom titkosítását konfigurálja. Az IPsec-házirendek különböző típusai hozhatók létre a követelmények alapján.
+A következő lépésekben szereplő konfiguráció egyetlen Azure-beli virtuális hálózatot (VNet) használ a ExpressRoute privát társításával. Ez a konfiguráció azonban több Azure-virtuális hálózatok és helyszíni hálózatot is kiterjedhet. Ebből a cikkből megtudhatja, hogyan határozhat meg IPsec titkosítási házirendet, és hogyan alkalmazhatja azt egy Azure-beli virtuális gépek egy csoportjára, és a helyszíni gazdagépekre, amelyek ugyanahhoz a szervezeti egységhez tartoznak. Az Azure-beli virtuális gépek (VM1 és VM2) és a helyszíni host1 között csak a 8080-as porttal rendelkező HTTP-forgalomhoz konfigurálhatja a titkosítást. A követelmények alapján különböző típusú IPsec-házirendeket hozhat létre.
 
-### <a name="working-with-ous"></a>A korgyártók kal való együttműködés 
+### <a name="working-with-ous"></a>Szervezeti egységek használata 
 
-A szervezeti egységhez társított biztonsági házirend a rendszerházirend-házirenden keresztül kerül a számítógépekre. A számítógépgyártók használatának néhány előnye, ahelyett, hogy házirendeket alkalmazna egyetlen állomásra, a következő:
+A szervezeti egységhez társított biztonsági házirendet a rendszer a csoportházirend-objektumon keresztül küldi el a számítógépeknek. A szervezeti egységek használatának néhány előnye, a házirendek egyetlen gazdagépre való alkalmazása helyett a következők:
 
-* A házirend szervezeti egységhez való társítása garantálja, hogy az azonos szervezeti egységhez tartozó számítógépek ugyanazokat a házirendeket kapják.
-* A szervezeti egységhez társított biztonsági házirend módosítása a módosításokat a szervezeti egység összes állomására alkalmazza.
+* Ha egy házirendet egy szervezeti egységhez társít, azzal garantálja, hogy az ugyanahhoz a szervezeti egységhez tartozó számítógépek ugyanazt a szabályzatot kapják meg.
+* A szervezeti egységhez társított biztonsági házirend módosítása a szervezeti egység összes gazdagépén alkalmazza a módosításokat.
 
 ### <a name="diagrams"></a>Diagramok
 
-Az alábbi ábra az összekapcsolást és a hozzárendelt IP-címterületet mutatja be. Az Azure virtuális gépek és a helyszíni gazdagép Windows 2016-ot futtat. Az Azure virtuális gépek és a helyszíni host1 ugyanannak a tartománynak a része. Az Azure virtuális gépek és a helyszíni állomások a DNS használatával megfelelően feloldhatják a neveket.
+Az alábbi ábrán az összekapcsolási és a hozzárendelt IP-címtartomány látható. Az Azure-beli virtuális gépek és a helyszíni gazdagép Windows 2016 rendszert futtat. Az Azure-beli virtuális gépek és a helyszíni host1 ugyanahhoz a tartományhoz tartoznak. Az Azure-beli virtuális gépek és a helyszíni gazdagépek a DNS használatával megfelelően tudják feloldani a neveket.
 
-[![1]][1.]
+[![1]][1]
 
-Ez az ábra az ExpressRoute privát társviszony-létesítésben áthaladó IPsec-alagutakat mutatja be.
+Ez az ábra a ExpressRoute-alapú privát kapcsolaton belüli átviteli IPsec-alagutakat mutatja be.
 
-[![4]][4.]
+[![4]][4]
 
-### <a name="working-with-ipsec-policy"></a>Az IPsec-házirend kezelése
+### <a name="working-with-ipsec-policy"></a>Az IPsec-házirend használata
 
-A Windows rendszerben a titkosítás az IPsec-házirendhez van társítva. Az IPsec-házirend határozza meg, hogy mely IP-forgalom van biztosítva, és hogy melyik biztonsági mechanizmus vonatkozik az IP-csomagokra.
-**Az IPSec-házirendek** a következő elemekből állnak: **Szűrőlisták**, **Szűrőműveletek**és **Biztonsági szabályok**.
+A Windows rendszerben a titkosítás az IPsec-házirenddel van társítva. Az IPsec-házirend határozza meg, hogy mely IP-forgalom van védve, és milyen biztonsági mechanizmust alkalmaz az IP-csomagokra.
+Az **IPSec-házirendek** a következő elemekből **állnak: szűrőlisták**, **szűrési műveletek**és **biztonsági szabályok**.
 
-Az IPsec-házirend konfigurálásakor fontos a következő IPsec-házirend-terminológiát ismerni:
+Az IPsec-házirend konfigurálásakor fontos megérteni a következő IPsec-házirend-terminológiát:
 
-* **IPsec-házirend:** Szabályok gyűjteménye. Egy adott időpontban csak egy házirend lehet aktív ("hozzárendelve"),. Minden házirendnek lehet egy vagy több szabálya, amelyek mindegyike egyszerre is aktív lehet. Egy számítógéphez adott időpontban csak egy aktív IPsec-házirend rendelhető hozzá. Az IPsec-házirenden belül azonban több olyan műveletet is definiálhat, amelyek különböző helyzetekben is elvégezhetők. Az IPsec-szabályok minden egyes készlete egy szűrőlistához van társítva, amely befolyásolja a szabály hatálya szerinti hálózati forgalom típusát.
+* **IPSec-házirend:** Szabályok gyűjteménye. Egy adott időpontban csak egy házirend lehet aktív ("hozzárendelt"). Az egyes szabályzatok egy vagy több szabályt tartalmazhatnak, amelyek mindegyike egyszerre aktív lehet. A számítógépeknek adott időben csak egy aktív IPsec-házirendet lehet hozzárendelni. Az IPsec-házirenden belül azonban több, különböző helyzetekben elvégezhető műveletet is meghatározhat. Az IPsec-szabályok minden készlete egy olyan szűrő-listához van társítva, amely hatással van a szabály által érintett hálózati forgalom típusára.
 
-* **Szűrőlisták:** A szűrőlisták egy vagy több szűrőből álló kötegek. Egy lista több szűrőt is tartalmazhat. A szűrő határozza meg, hogy a kommunikáció engedélyezett, biztonságos vagy levan-e tiltva az IP-címtartományok, protokollok vagy akár adott protokollportok szerint. Minden szűrő egy adott feltételkészletnek felel meg; például egy adott alhálózatról egy adott célporton lévő számítógépre küldött csomagok. Ha a hálózati feltételek egy vagy több ilyen szűrőnek felelnek meg, a szűrőlista aktiválódik. Minden szűrő egy adott szűrőlistán belül van definiálva. A szűrők nem oszthatók meg a szűrőlisták között. Egy adott szűrőlista azonban több IPsec-házirendbe is beépíthető. 
+* **Szűrőlisták:** A szűrőlisták egy vagy több szűrőből álló kötegek. Egy lista több szűrőt is tartalmazhat. A szűrő határozza meg, hogy a kommunikáció engedélyezett, biztonságos vagy letiltott állapotú-e az IP-címtartományok, protokollok vagy akár adott protokoll portjai alapján. Mindegyik szűrő megfelel bizonyos feltételeknek; például egy adott alhálózatról küldött csomagok egy adott célport adott számítógépére érkeznek. Ha a hálózati feltételek egy vagy több szűrőnek felelnek meg, a szűrők listája aktiválva lesz. Minden szűrő definiálva van egy adott szűrő listáján belül. A szűrők nem oszthatók meg a szűrőlisták között. Egy adott szűrőlista azonban több IPsec-házirendbe is beépíthető. 
 
-* **Szűrőműveletek:** A biztonsági módszer határozza meg a biztonsági algoritmusok, protokollok és kulcsak készletét, amelyet a számítógép az ike-egyeztetések során kínál. A szűrőműveletek a biztonsági módszerek listái, preferencia szerint rangsorolva.  Amikor egy számítógép egyeztet egy IPsec-munkamenetet, a szűrőműveletek listájában tárolt biztonsági beállítás alapján fogadja el vagy küldi a javaslatokat.
+* **Szűrési műveletek:** A biztonsági módszer a számítógépek által az IKE-egyeztetések során kínált biztonsági algoritmusok, protokollok és kulcsok körét határozza meg. A szűrési műveletek a biztonsági módszerek listája, elsőbbségi sorrendben rangsorolva.  Amikor egy számítógép egy IPsec-munkamenetet egyeztet, a szűrőműveletek listájában tárolt biztonsági beállítások alapján elfogadja vagy elküldi a javaslatokat.
 
-* **Biztonsági szabályok:** Az IPsec-házirend kommunikációt védő és hogyan szabályozza a szabályokat. **Szűrőlista** és **szűrőműveletek segítségével** hoz létre egy IPsec-szabályt az IPsec-kapcsolat létrehozásához. Minden házirendnek lehet egy vagy több szabálya, amelyek mindegyike egyszerre is aktív lehet. Minden szabály tartalmazza az IP-szűrők listáját és az adott szűrőlistával való egyezéskor végrehajtott biztonsági műveletek gyűjteményét:
-  * IP-szűrőműveletek
+* **Biztonsági szabályok:** A szabályok szabályozzák, hogy az IPsec-házirendek hogyan és mikor védik a kommunikációt. A **szűrő-lista** és a **szűrési műveletek** használatával hozza létre az IPsec-szabályt az IPSec-kapcsolatok létrehozásához. Az egyes szabályzatok egy vagy több szabályt tartalmazhatnak, amelyek mindegyike egyszerre aktív lehet. Minden szabály tartalmazza az IP-szűrők listáját, valamint egy olyan biztonsági műveletet, amely az adott szűrőlista egyezésével történik:
+  * IP-szűrési műveletek
   * Hitelesítési módszerek
   * IP-alagút beállításai
   * Kapcsolattípusok
@@ -63,219 +63,219 @@ Az IPsec-házirend konfigurálásakor fontos a következő IPsec-házirend-termi
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:
+Győződjön meg arról, hogy megfelel a következő előfeltételeknek:
 
-* Az Active Directory-beállítások megvalósításához használható active Directory-konfigurációval kell rendelkeznie. A csoportházirend-objektumokról a Csoportházirend objektumok című [témakörben](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx)talál további információt.
+* Rendelkeznie kell egy működő Active Directory-konfigurációval, amelyet Csoportházirend beállítások megvalósítására használhat. További információ a csoportházirend-objektumokról: [csoportházirend objektumok](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx).
 
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
-  * Az ExpressRoute-kapcsolat létrehozásáról az [ExpressRoute-kapcsolat létrehozása](expressroute-howto-circuit-arm.md)című témakörben talál további információt. 
-  * Ellenőrizze, hogy a kapcsolatszolgáltató engedélyezte-e a kapcsolatot. 
-  * Ellenőrizze, hogy van-e azure-beli privát társviszony-létesítés konfigurálva a kapcsolatcsoporthoz. Az útválasztási utasításokat az útválasztási útmutató [konfigurálása](expressroute-howto-routing-arm.md) című cikkben találja. 
-  * Ellenőrizze, hogy rendelkezik-e virtuális hálózattal és virtuális hálózati átjáróval, amelyet létrehozott és teljesen kiépített. Az utasításokat követve [hozzon létre egy virtuális hálózati átjárót az ExpressRoute számára.](expressroute-howto-add-gateway-resource-manager.md) Az ExpressRoute virtuális hálózati átjárója a GatewayType "ExpressRoute" típust használja, nem a VPN-t.
+  * A ExpressRoute áramkör létrehozásával kapcsolatos információkért lásd: [ExpressRoute-áramkör létrehozása](expressroute-howto-circuit-arm.md). 
+  * Ellenőrizze, hogy az áramkört engedélyezte-e a kapcsolat szolgáltatója. 
+  * Ellenőrizze, hogy rendelkezik-e az Ön áramköréhez konfigurált Azure-beli magánhálózati kapcsolattal. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](expressroute-howto-routing-arm.md) című cikket. 
+  * Ellenőrizze, hogy rendelkezik-e egy VNet és egy virtuális hálózati átjáróval, és hogy létrejött-e teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának létrehozásához](expressroute-howto-add-gateway-resource-manager.md)kövesse az utasításokat. A ExpressRoute virtuális hálózati átjárója a "ExpressRoute" GatewayType használja, nem pedig a VPN-t.
 
-* Az ExpressRoute virtuális hálózati átjárót az ExpressRoute-kapcsolathoz kell csatlakoztatni. További információ: [Virtuális hálózat csatlakoztatása ExpressRoute-kapcsolathoz.](expressroute-howto-linkvnet-arm.md)
+* A ExpressRoute virtuális hálózati átjárónak csatlakoznia kell a ExpressRoute-áramkörhöz. További információ: [VNet összekapcsolása egy ExpressRoute-áramkörrel](expressroute-howto-linkvnet-arm.md).
 
-* Ellenőrizze, hogy az Azure Windows virtuális gépek telepítve vannak-e a virtuális hálózatra.
+* Ellenőrizze, hogy az Azure Windows rendszerű virtuális gépek telepítve vannak-e a VNet.
 
-* Ellenőrizze, hogy van-e kapcsolat a helyszíni gazdagépek és az Azure virtuális gépek között.
+* Ellenőrizze, hogy van-e kapcsolat a helyszíni gazdagépek és az Azure-beli virtuális gépek között.
 
-* Ellenőrizze, hogy az Azure Windows virtuális gépek és a helyszíni állomások képesek-e a DNS használatával megfelelően feloldani a neveket.
+* Győződjön meg arról, hogy az Azure Windows rendszerű virtuális gépek és a helyszíni gazdagépek képesek a DNS használatával a nevek megfelelő feloldására.
 
 ### <a name="workflow"></a>Munkafolyamat
 
-1. Hozzon létre egy csoportházirend-ormányt, és társítsa azt a szervezeti egységhez.
-2. **IPsec-szűrőművelet**megadása .
-3. **IPsec-szűrőlista definiálása**.
-4. Hozzon létre egy Biztonsági **szabályokkal**rendelkező IPsec-házirendet.
-5. Rendelje hozzá az IPsec-gpo-t a szervezeti egységhez.
+1. Hozzon létre egy csoportházirend-objektumot, és rendelje hozzá a szervezeti egységhez.
+2. IPsec- **szűrési művelet**definiálása.
+3. Határozza meg az IPsec- **szűrőlisták listáját**.
+4. Hozzon létre egy IPsec-házirendet **biztonsági szabályokkal**.
+5. Rendelje hozzá az IPsec GPO-t a szervezeti egységhez.
 
 ### <a name="example-values"></a>Példaértékek
 
-* **Domain név:** ipsectest.com
+* **Tartománynév:** ipsectest.com
 
-* **Ou:** IPSecOU
+* **Szervezeti egység:** IPSecOU
 
-* **Helyszíni Windows-számítógép:** állomás1
+* Helyszíni **Windows-számítógép:** host1
 
-* **Azure Windows virtuális gépek:** vm1, vm2
+* **Azure Windows rendszerű virtuális gépek:** VM1, VM2
 
-## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. Csoportházirend-csoport házirend-csoport létrehozásához
+## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. csoportházirend-objektum létrehozása
 
-1. Szervezeti egységhez kapcsolódó új csoportházirend-kezelő létrehozásához nyissa meg a Csoportházirend kezelése beépülő modult, és keresse meg azt a szervezeti egységet, amelyhez a csoportházirend-kezelő kapcsolódik. A példában a szervezeti egység neve **IPSecOU**. 
+1. A szervezeti egységhez csatolt új csoportházirend-objektum létrehozásához nyissa meg a Csoportházirend felügyeleti beépülő modult, és keresse meg azt a szervezeti egységet, amelyhez a csoportházirend-objektumot csatolni kívánja. A példában a szervezeti egység neve **IPSecOU**. 
 
-   [![9]][9.]
-2. A Csoportházirend kezelése beépülő modulban jelölje ki a szervezeti egységet, és kattintson a jobb gombbal. A legördülő menüben kattintson a **"Csoportházirend-csoportházirend-csoport házirendjének létrehozása ebben a tartományban, és itt...**
+   [![9]][9]
+2. A Csoportházirend felügyeleti beépülő modulban válassza ki a szervezeti egységet, majd kattintson a jobb gombbal. A legördülő menüben kattintson a "**csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás ide...**" elemre.
 
    [![10]][10]
-3. Nevezze el a gpo-t egy intuitív névnek, így később könnyen megtalálhatja. A csoportházirend-csoport létrehozásához és csatolásához kattintson az **OK** gombra.
+3. Adjon nevet a csoportházirend-objektumnak egy intuitív névvel, hogy később könnyen megkereshető legyen. Kattintson az **OK** gombra a csoportházirend-objektum létrehozásához és csatolásához.
 
-   [![11]][11.]
+   [![11]][11]
 
-## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2. A felhasználói házirend-kiszolgáló hivatkozásának engedélyezése
+## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2. a csoportházirend-objektum hivatkozásának engedélyezése
 
-A szervezeti egységre való alkalmazáshoz a gpo-t nem csak a szervezeti egységhez kell kapcsolni, hanem a kapcsolatot is engedélyezni kell.
+Ha a csoportházirend-objektumot a szervezeti egységre szeretné alkalmazni, a csoportházirend-objektum nem csak a szervezeti egységhez van társítva, de a hivatkozást is engedélyezni kell.
 
-1. Keresse meg a létrehozott csoportházirend-jáminót, kattintson a jobb gombbal, és válassza a Legördülő menü **Szerkesztés** gombjára.
-2. Ha a csoportházirend-ellevelet a szervezeti egységre szeretné alkalmazni, válassza az **Engedélyezve hivatkozás lehetőséget.**
+1. Keresse meg a létrehozott csoportházirend-objektumot, kattintson rá a jobb gombbal, és válassza a **Szerkesztés** lehetőséget a legördülő menüből.
+2. Ha a csoportházirend-objektumot a szervezeti egységre szeretné alkalmazni, válassza a **hivatkozás engedélyezve**lehetőséget.
 
-   [![12]][12.]
+   [![12]][12]
 
-## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. Az IP-szűrőművelet meghatározása
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. az IP-szűrő művelet megadása
 
-1. A legördülő menüben kattintson a jobb gombbal **az Active Directory IP-biztonsági házirendje**elemre, majd kattintson **az IP-szűrőlisták és szűrőműveletek kezelése parancsra.**
+1. A legördülő menüben kattintson a jobb gombbal a **Active Directory IP-biztonsági házirend**elemre, majd kattintson az **IP-szűrőlisták és-szűrési műveletek kezelése**lehetőségre.
 
    [![15]][15]
-2. A **"Szűrőműveletek kezelése"** lapon kattintson a **Hozzáadás**gombra.
+2. A "**szűrési műveletek kezelése**" lapon kattintson a **Hozzáadás**gombra.
 
-   [![16]][16.]
+   [![16]][16]
 
-3. Az **IP-biztonság szűrőművelet varázslóján**kattintson a **Tovább**gombra.
+3. Az **IP-biztonsági szűrő művelet varázslóban**kattintson a **tovább**gombra.
 
-   [![17]][17.]
-4. Nevezze el a szűrőműveletet egy intuitív névnek, hogy később megtalálhassa. Ebben a példában a szűrőművelet neve **myEncryption**. Leírást is hozzáadhat. Ezután kattintson a **Tovább gombra.**
+   [![17]][17]
+4. Adjon nevet a szűrőnek egy intuitív nevet, hogy később is megtalálja. Ebben a példában a szűrő művelet neve **myEncryption**. Leírást is hozzáadhat a szolgáltatáshoz. Ezután kattintson a **tovább**gombra.
 
-   [![18]][18.]
-5. **A biztonsági egyeztetés** lehetővé teszi a viselkedés meghatározását, ha az IPsec nem állapítható meg másik számítógéppel. Válassza **a Biztonsági egyeztetés lehetőséget,** majd kattintson a **Tovább**gombra.
+   [![18]][18]
+5. Az **egyeztetési biztonság** lehetővé teszi, hogy meghatározza a viselkedést, ha az IPSec nem hozható létre másik számítógéppel. Válassza a **Biztonság egyeztetése**elemet, majd kattintson a **tovább**gombra.
 
-   [![19]][19.]
-6. Az **IPsec-et nem támogató számítógépekkel való kommunikáció** lapon jelölje be a **Nem biztonságos kommunikáció engedélyezése**jelölőnégyzetet, majd kattintson a **Tovább**gombra.
+   [![19]][19]
+6. Az **IPsec-et nem támogató számítógépekkel folytatott kommunikáció** lapon válassza a nem **biztonságos kommunikáció engedélyezése**lehetőséget, majd kattintson a **tovább**gombra.
 
    [![20]][20]
-7. Az **IP-forgalom és biztonság** lapon válassza az **Egyéni**lehetőséget, majd kattintson a **Beállítások...** gombra.
+7. Az **IP-forgalom és biztonság** lapon válassza az **Egyéni**lehetőséget, majd kattintson a **beállítások...** elemre.
 
    [![21]][21]
-8. Az **Egyéni biztonsági módszer beállításai** lapon válassza az **Adatintegritás és titkosítás (ESP): SHA1, 3DES**lehetőséget. Ezután kattintson **az OK gombra.**
+8. Az **egyéni biztonsági módszer beállításai** lapon válassza az **adatok sértetlensége és titkosítása (ESP): SHA1, 3DES**elemet. Ezután kattintson **az OK**gombra.
 
    [![22]][22]
-9. A **Műveletek kezelése** lapon láthatja, hogy a **myEncryption** szűrő hozzáadása sikeresen megtörtént. Kattintson a **Bezárás** gombra.
+9. A **szűrőműveletek kezelése** oldalon láthatja, hogy a **myEncryption** szűrő hozzáadása sikeres volt. Kattintson a **Bezárás** gombra.
 
    [![23]][23]
 
-## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. IP-szűrőlista definiálása
+## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. adja meg az IP-szűrőlisták listáját
 
-Hozzon létre egy szűrőlistát, amely megadja a titkosított HTTP-forgalmat a 8080-as célporttal.
+Hozzon létre egy olyan szűrőlistát, amely a 8080-as porttal rendelkező titkosított HTTP-forgalmat határozza meg.
 
-1. Annak minősítéséhez, hogy milyen típusú forgalmat kell titkosítani, használjon **IP-szűrőlistát.** Az **IP-szűrőlisták kezelése** lapon kattintson a **Hozzáadás** gombra új IP-szűrőlista hozzáadásához.
+1. Ahhoz, hogy a forgalom milyen típusú forgalmat titkosítani kell, használjon **IP-szűrőlistát**. Az IP-szűrőlisták **kezelése** lapon kattintson a **Hozzáadás** gombra új IP-szűrőlista hozzáadásához.
 
-   [![24]][24.]
-2. A **Név:** mezőbe írja be az IP-szűrőlista nevét. Például **az azure-onpremises-HTTP8080**. Ezután kattintson a **Hozzáadás gombra.**
+   [![24]][24]
+2. A **név:** mezőben adja meg az IP-szűrőlista nevét. Például: **Azure-onpremises-HTTP8080**. Ezután kattintson a **Hozzáadás**gombra.
 
    [![25]][25]
-3. Az **IP-szűrő leírása és tükrözött tulajdonságlapján** válassza **a Tükrözött**lehetőséget. A tükrözött beállítás megegyezik a mindkét irányban haladó csomagoknak, ami lehetővé teszi a kétirányú kommunikációt. Kattintson a **Tovább** gombra.
+3. Az **IP-szűrő leírása és a tükrözött tulajdonság** lapon válassza a **tükrözött**lehetőséget. A tükrözött beállítás mindkét irányban elérhető csomagokat tartalmazza, ami kétirányú kommunikációt tesz lehetővé. Kattintson a **Tovább** gombra.
 
    [![26]][26]
-4. Az **IP-forgalom forrása** lapon a **Forrás címe:** legördülő menüben válassza az **Adott IP-cím vagy Alhálózat**lehetőséget. 
+4. Az **IP-forgalom forrása** lapon, a **forrás címe:** legördülő menüben válasszon ki **egy adott IP-címet vagy alhálózatot**. 
 
    [![27]][27]
-5. Adja meg az **IP-forgalom forráscímét, IP-címét vagy alhálózatát,** majd kattintson a **Tovább**gombra.
+5. Adja meg a forráscím **IP-címét vagy alhálózatát:** az IP-forgalom, majd kattintson a **tovább**gombra.
 
    [![28]][28]
-6. Adja meg a **célcímet:** IP-cím vagy alhálózat. Ezután kattintson a **Tovább gombra.**
+6. Itt adhatja meg a **cél címét:** IP-cím vagy alhálózat. Ezután kattintson a **tovább**gombra.
 
-   [![29]][29.]
-7. Az **IP-protokoll típusa** lapon válassza a **TCP**lehetőséget. Ezután kattintson a **Tovább gombra.**
+   [![29]][29]
+7. Az **IP protokoll típusa** lapon válassza a **TCP**lehetőséget. Ezután kattintson a **tovább**gombra.
 
    [![30]][30]
-8. Az **IP-protokoll portja** lapon válassza **bármelyik portról** és **erre a portra lehetőséget:**. Írja be a **8080-as** beírást a szövegmezőbe. Ezek a beállítások csak a 8080-as célport HTTP-forgalmát határozzák meg. Ezután kattintson a **Tovább gombra.**
+8. Az **IP-protokoll portja** lapon válassza a **bármelyik portot** és **a következő portot:**. Írja be a **8080** értéket a szövegmezőbe. Ezek a beállítások csak a 8080-as porton megadott HTTP-forgalmat titkosítják. Ezután kattintson a **tovább**gombra.
 
    [![31]][31]
-9. Az IP-szűrőlista megtekintése.  Az **azure-onpremises-HTTP8080 IP-szűrőlista** konfigurációja az alábbi feltételeknek megfelelő összes forgalom titkosítását váltja ki:
+9. Tekintse meg az IP-szűrők listáját.  Az **Azure-onpremises-HTTP8080** IP-szűrőlista konfigurációja a következő feltételeknek megfelelő összes forgalom titkosítását indítja el:
 
-   * A 10.0.1.0/24 bármely forráscíme (Azure Subnet2)
+   * Bármely forráscím a 10.0.1.0/24-ben (Azure Subnet2 alhálózattal)
    * Bármely célcím a 10.2.27.0/25-ben (helyszíni alhálózat)
    * TCP protokoll
-   * Célállomás-port 8080
+   * 8080-es célport
 
    [![32]][32]
 
-## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5. Az IP-szűrőlista szerkesztése
+## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5. az IP-szűrők listájának szerkesztése
 
-Az azonos típusú forgalom ellenkező irányú titkosításához (a helyszíni gazdagépről az Azure virtuális gépre) egy második IP-szűrőre van szükség. Az új szűrő beállításának folyamata megegyezik az első IP-szűrő beállításának folyamatával. Az egyetlen különbség a forrásalhálózat és a célalhálózat.
+Ha az azonos irányú forgalmat (a helyszíni gazdagépről az Azure virtuális gépre) szeretné titkosítani, egy második IP-szűrőre van szüksége. Az új szűrő beállításának folyamata ugyanaz a folyamat, amelyet az első IP-szűrő beállításához használt. Az egyetlen különbség a forrás-alhálózat és a célként megadott alhálózat.
 
-1. Ha új IP-szűrőt szeretne hozzáadni az IP-szűrőlistához, válassza a **Szerkesztés**lehetőséget.
+1. Ha új IP-szűrőt szeretne hozzáadni az IP-szűrő listához, válassza a **Szerkesztés**lehetőséget.
 
    [![33]][33]
-2. Az **IP-szűrőlista** lapon kattintson a **Hozzáadás**gombra.
+2. Az **IP-szűrők listája** lapon kattintson a **Hozzáadás**gombra.
 
    [![34]][34]
-3. Hozzon létre egy második IP-szűrőt a következő példában megadott beállításokkal:
+3. Hozzon létre egy második IP-szűrőt a következő példában szereplő beállítások használatával:
 
    [![35]][35]
-4. A második IP-szűrő létrehozása után az IP-szűrőlista a következőkkel fog kinézni:
+4. A második IP-szűrő létrehozása után az IP-szűrő lista a következőképpen fog kinézni:
 
    [![36]][36]
 
-Ha egy helyszíni hely és egy Azure-alhálózat között titkosításra van szükség egy alkalmazás védelme érdekében, a meglévő IP-szűrőlista módosítása helyett hozzáadhat egy új IP-szűrőlistát. A 2 IP-szűrőlista ugyanazon IPsec-házirendhez való társítása nagyobb rugalmasságot biztosít, mivel egy adott IP-szűrőlista bármikor módosítható vagy eltávolítható anélkül, hogy befolyásolnák a többi IP-szűrőlistát.
+Ha a meglévő IP-szűrőlista módosítása helyett titkosításra van szükség egy helyszíni hely és egy Azure-alhálózat között egy alkalmazás védeleméhez, akkor ehelyett új IP-szűrőlistát adhat hozzá. A 2 IP-szűrőlisták ugyanahhoz az IPsec-házirendhez való társítása nagyobb rugalmasságot biztosít, mivel egy adott IP-szűrőlista bármikor módosítható vagy eltávolítható anélkül, hogy ez hatással lenne a többi IP-szűrési listára.
 
 ## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. IPsec biztonsági házirend létrehozása 
 
 Hozzon létre egy IPsec-házirendet biztonsági szabályokkal.
 
-1. Válassza ki az **Active Directory IP-biztonsági házirendjeit,** amelyek a szervezeti egységhez vannak társítva. Kattintson a jobb gombbal, és válassza **az IP-biztonsági házirend létrehozása parancsot.**
+1. Válassza ki a **IPSecurity szabályzatokat az Active Directoryban** , amely a szervezeti egységhez van társítva. Kattintson a jobb gombbal, majd válassza az **IP-biztonsági házirend létrehozása**lehetőséget.
 
    [![37]][37]
-2. Nevezze meg a biztonsági házirendet. Például **a policy-azure-onpremises**. Ezután kattintson a **Tovább gombra.**
+2. Nevezze el a biztonsági házirendet. Például: **Policy-Azure-onpremises**. Ezután kattintson a **tovább**gombra.
 
    [![38]][38]
-3. A jelölőnégyzet bejelölése nélkül kattintson a **Tovább** gombra.
+3. Kattintson a **tovább** gombra a jelölőnégyzet bejelölése nélkül.
 
    [![39]][39]
-4. Ellenőrizze, hogy a **Tulajdonságok szerkesztése** jelölőnégyzet be van-e jelölve, majd kattintson a **Befejezés gombra.**
+4. Győződjön meg arról, hogy a **Tulajdonságok szerkesztése** jelölőnégyzet be van jelölve, majd kattintson a **Befejezés**gombra.
 
    [![40]][40]
 
-## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7. Az IPsec biztonsági házirendjének szerkesztése
+## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7. az IPsec biztonsági házirend szerkesztése
 
-Adja hozzá az IPsec-házirendhez a korábban konfigurált **IP-szűrőlistát** és **szűrőműveletet.**
+Adja hozzá az IPsec-házirendhez a korábban konfigurált **IP-szűrési listát** és **szűrési műveletet** .
 
-1. A HTTP-házirend **tulajdonságainak szabályai** lapon kattintson a **Hozzáadás**gombra.
+1. A HTTP- **házirend tulajdonságai lapon** kattintson a **Hozzáadás**gombra.
 
    [![41]][41]
 2. Az Üdvözöljük lapon kattintson a **Tovább** gombra.
 
    [![42]][42]
-3. A szabály lehetővé teszi az IPsec mód: alagút vagy szállítási mód definiálására.
+3. A szabály lehetővé teszi az IPsec mód definiálását: bújtatási mód vagy átviteli mód.
 
-   * Bújtatási módban az eredeti csomagot IP-fejlécek készlete foglalja be. A bújtatási mód az eredeti csomag IP-fejlécének titkosításával védi a belső útválasztási adatokat. A bújtatási mód széles körben elterjedt az átjárók között a helyek közötti VPN-forgatókönyvekben. A bújtatási mód a legtöbb esetben végpontok közötti titkosításra szolgál az állomások között.
+   * Bújtatási módban az eredeti csomag IP-fejlécek készletével van beágyazva. A bújtatási mód védi a belső útválasztási adatokat az eredeti csomag IP-fejlécének titkosításával. A bújtatási mód széles körben implementálva van az átjárók között a helyek közötti VPN-forgatókönyvekben. A bújtatási mód a gazdagépek közötti végpontok közötti titkosításhoz használt legtöbb esetben használatos.
 
-   * A szállítási mód csak a hasznos terhet és az ESP pótkocsit titkosítja; az eredeti csomag IP-fejléce nincs titkosítva. Szállítási módban a csomagok IP-forrása és IP-címe változatlan marad.
+   * A szállítási mód csak a hasznos adatokat és az ESP-pótkocsit titkosítja. az eredeti csomag IP-fejléce nem titkosított. Átviteli módban a csomagok IP-forrása és IP-címe változatlan marad.
 
-   Jelölje **be: Ez a szabály nem ad meg bújtatást,** majd kattintson a **Tovább**gombra.
+   Válassza ki **ezt a szabályt, ne adjon meg alagutat**, majd kattintson a **tovább**gombra.
 
    [![43]][43]
-4. **A Hálózattípusa** határozza meg, hogy melyik hálózati kapcsolat társítva van a biztonsági házirendhez. Jelölje be **az Összes hálózati kapcsolat**lehetőséget, majd kattintson a **Tovább**gombra.
+4. A **hálózat típusa** határozza meg, hogy melyik hálózati kapcsolat társítva van a biztonsági házirenddel. Válassza a **minden hálózati kapcsolat**lehetőséget, majd kattintson a **tovább**gombra.
 
    [![44]][44]
-5. Jelölje ki a korábban létrehozott **IP-szűrőlistát, az azure-onpremises-HTTP8080**protokollt, majd kattintson a **Tovább**gombra.
+5. Válassza ki a korábban létrehozott IP-szűrési listát, az **Azure-onpremises-HTTP8080**, majd kattintson a **tovább**gombra.
 
    [![45]][45]
-6. Jelölje ki a korábban létrehozott **myEncryption** szűrőműveletet.
+6. Válassza ki a korábban létrehozott szűrési művelet **myEncryption** .
 
    [![46]][46]
-7. A Windows négy különböző típusú hitelesítést támogat: Kerberos, tanúsítványok, NTLMv2 és előmegosztott kulcs. Mivel tartományhoz csatlakozott állomásokkal dolgozunk, válassza az **Active Directory alapértelmezett (Kerberos V5 protokoll)** lehetőséget, majd kattintson a **Tovább**gombra.
+7. A Windows négy különböző típusú hitelesítést támogat: Kerberos, tanúsítványok, NTLMv2 és előmegosztott kulcs. Mivel a tartományhoz csatlakoztatott gazdagépekkel dolgozunk, válassza az **Active Directory alapértelmezett (Kerberos V5 protokoll)** lehetőséget, majd kattintson a **tovább**gombra.
 
    [![47]][47]
-8. Az új házirend létrehozza a biztonsági szabályt: **azure-onpremises-HTTP8080**. Kattintson az **OK** gombra.
+8. Az új szabályzat létrehozza a biztonsági szabályt: **Azure-onpremises-HTTP8080**. Kattintson az **OK** gombra.
 
    [![48]][48]
 
-Az IPsec-házirend használatához a 8080-as célport összes HTTP-kapcsolata az IPsec átviteli módot használja. Mivel a HTTP egy tiszta szöveges protokoll, a biztonsági házirend engedélyezése biztosítja az adatok titkosítását az ExpressRoute privát társviszony-létesítésén keresztül. Az Active Directory IP-biztonsági házirendje bonyolultabbkonfigurálás, mint a fokozott biztonságú Windows tűzfal, de lehetővé teszi az IPsec-kapcsolat további testreszabását.
+Az IPsec-házirend használatához az 8080-as célport összes HTTP-kapcsolatának az IPsec átviteli módot kell használnia. Mivel a HTTP egy tiszta szöveges protokoll, a biztonsági házirend engedélyezése lehetővé teszi, hogy a rendszer titkosítsa az adattitkosítást, ha a ExpressRoute privát társán keresztül továbbítja őket. A Active Directory IP-biztonsági házirendje összetettebb a fokozott biztonságú Windows tűzfal konfigurálásához, de lehetővé teszi az IPsec-kapcsolatok további testreszabását.
 
-## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. Az IPsec-házirend-azonosító hozzárendelése a szervezeti egységhez
+## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. az IPsec csoportházirend-objektumának társítása a szervezeti egységhez
 
-1. Tekintse meg a házirendet. A biztonságicsoport-házirend definiálva van, de még nincs hozzárendelve.
+1. Tekintse meg a szabályzatot. A biztonsági csoportházirend definiálva van, de még nincs hozzárendelve.
 
    [![49]][49]
-2. Ha a biztonságicsoport-házirendet hozzá szeretné rendelni a szervezeti egység **IPSecOU-jához,** kattintson a jobb gombbal a biztonsági házirendre, és válassza a **Hozzárendelés lehetőséget.**
-   Minden számítógép, amely a szervezeti egységhez tartozik, a biztonságicsoport-házirendet hozzá rendeli.
+2. A biztonsági csoportházirend szervezeti egység **IPSecOU**való hozzárendeléséhez kattintson a jobb gombbal a biztonsági házirendre, majd válassza a **hozzárendelés**lehetőséget.
+   A szervezeti egységhez tartozó összes számítógép esetében a biztonsági csoportházirend hozzá lesz rendelve.
 
    [![50]][50]
 
-## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>Forgalmi titkosítás ellenőrzése
+## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>Forgalom titkosításának ellenõrzése
 
-A szervezeti egységen alkalmazott titkosítási gpo-ból való kivételhez telepítse az IIS-t az összes Azure-beli virtuális gépen és az állomáson1. Minden IIS testre szabott, hogy válaszoljon a HTTP-kérésekre a 8080-as porton.
-A titkosítás ellenőrzéséhez telepíthet egy hálózati szimatolót (például a Wireshark-ot) a szervezeti egység összes számítógépére.
-A PowerShell-parancsfájl HTTP-ügyfélként működik a 8080-as porton http-kérelmek létrehozásához:
+Ha szeretné megtekinteni a szervezeti egységen alkalmazott titkosítási csoportházirend-objektumot, telepítse az IIS-t az összes Azure-beli virtuális gépre és a host1. Minden IIS testre szabott, hogy válaszoljon a HTTP-kérelmekre a 8080-es porton.
+A titkosítás ellenőrzéséhez a szervezeti egység összes számítógépén telepítheti a Network szippantás (például a Wireshark) programot.
+A PowerShell-parancsfájlok HTTP-ügyfélként működnek a 8080-es porton HTTP-kérések létrehozásához:
 
 ```powershell
 $url = "http://10.0.1.20:8080"
@@ -306,59 +306,59 @@ $req = $null
 }
 
 ```
-A következő hálózati rögzítés a helyszíni állomás1 eredményeit jeleníti meg, és az ESP-szűrő csak a titkosított forgalomnak felel meg:
+A következő hálózati rögzítés megjeleníti a helyszíni host1 és a megjelenítési szűrő ESP-vel való eredményét, hogy csak a titkosított forgalomhoz illeszkedjen:
 
 [![51]][51]
 
-Ha a powershell-parancsfájl on-premisies (HTTP-ügyfél) futtatásához, a hálózati rögzítés az Azure virtuális gép mutat hasonló nyomkövetést.
+Ha a PowerShell-szkriptet premisies (HTTP-ügyfél) futtatja, az Azure-beli virtuális gépen lévő hálózati rögzítés hasonló nyomkövetést mutat be.
 
 ## <a name="next-steps"></a>További lépések
 
-Az ExpressRoute-ról további információt az [ExpressRoute gyakori kérdések című](expressroute-faqs.md)témakörben talál.
+A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 
 <!--Image References-->
 
-[1]: ./media/expressroute-howto-ipsec-transport-private-windows/network-diagram.png "hálózati diagram IPsec átviteli mód expresszroute-on keresztül"
-[4]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-interesting-traffic.png "IPsec érdekes forgalom"
-[5]: ./media/expressroute-howto-ipsec-transport-private-windows/windows-ipsec.png "Windows IPsec házirend"
-[9]: ./media/expressroute-howto-ipsec-transport-private-windows/ou.png "Szervezeti egység a csoportházirendben"
-[10]: ./media/expressroute-howto-ipsec-transport-private-windows/create-gpo-ou.png "hozzon létre egy csoportházirend-ormányt a szervezeti egységhez társítva"
-[11]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-name.png "név hozzárendelése a szervezeti egységhez társított gpo-hoz"
-[12]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-gpo.png "a gpo szerkesztése"
-[15]: ./media/expressroute-howto-ipsec-transport-private-windows/manage-ip-filter-list-filter-actions.png "IP-szűrőlisták és szűrőműveletek kezelése"
-[16]: ./media/expressroute-howto-ipsec-transport-private-windows/add-filter-action.png "add Szűrő akció"
+[1]: ./media/expressroute-howto-ipsec-transport-private-windows/network-diagram.png "Hálózati diagram IPSec átviteli módja ExpressRoute-n keresztül"
+[4]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-interesting-traffic.png "IPSec – érdekes forgalom"
+[5]: ./media/expressroute-howto-ipsec-transport-private-windows/windows-ipsec.png "Windows IPSec-házirend"
+[9]: ./media/expressroute-howto-ipsec-transport-private-windows/ou.png "szervezeti egység a csoportházirend"
+[10]: ./media/expressroute-howto-ipsec-transport-private-windows/create-gpo-ou.png "a szervezeti egységhez társított csoportházirend-objektum létrehozása"
+[11]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-name.png "rendeljen hozzá egy nevet a szervezeti egységhez társított csoportházirend-objektumhoz"
+[12]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-gpo.png "a csoportházirend-objektum szerkesztése"
+[15]: ./media/expressroute-howto-ipsec-transport-private-windows/manage-ip-filter-list-filter-actions.png "IP-szűrőlisták és szűrési műveletek kezelése"
+[16]: ./media/expressroute-howto-ipsec-transport-private-windows/add-filter-action.png "szűrő hozzáadása művelet"
 [17]: ./media/expressroute-howto-ipsec-transport-private-windows/action-wizard.png "Művelet varázsló"
-[18]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-name.png "Szűrőművelet neve"
-[19]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action.png "Szűrő művelet"
-[20]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-no-ipsec.png "adja meg a viselkedés egy nem biztonságos kapcsolat jön létre"
+[18]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-name.png "szűrési művelet neve"
+[19]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action.png "szűrési művelet"
+[20]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-no-ipsec.png "meg kell határozni, hogy a viselkedés nem biztonságos a kapcsolatok" létrehozásakor
 [21]: ./media/expressroute-howto-ipsec-transport-private-windows/security-method.png "biztonsági mechanizmus"
-[22]: ./media/expressroute-howto-ipsec-transport-private-windows/custom-security-method.png "Egyéni biztonsági módszer"
-[23]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-actions-list.png "szűrő műveletlista"
-[24]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-ip-filter.png "Új IP-szűrőlista hozzáadása"
-[25]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-http-traffic.png "HTTP-forgalom hozzáadása az IP-szűrőhöz"
-[26]: ./media/expressroute-howto-ipsec-transport-private-windows/match-both-direction.png "match csomag mindkét irányban"
-[27]: ./media/expressroute-howto-ipsec-transport-private-windows/source-address.png "a Forrás alhálózat kiválasztása"
-[28]: ./media/expressroute-howto-ipsec-transport-private-windows/source-network.png "Forráshálózat"
-[29]: ./media/expressroute-howto-ipsec-transport-private-windows/destination-network.png "Célhálózat"
-[30]: ./media/expressroute-howto-ipsec-transport-private-windows/protocol.png "jegyzőkönyv"
+[22]: ./media/expressroute-howto-ipsec-transport-private-windows/custom-security-method.png "egyéni biztonsági módszer"
+[23]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-actions-list.png "szűrési műveletek listája"
+[24]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-ip-filter.png "új IP-szűrőlista hozzáadása"
+[25]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-http-traffic.png "http-forgalom hozzáadása az IP-szűrőhöz"
+[26]: ./media/expressroute-howto-ipsec-transport-private-windows/match-both-direction.png "egyeztetési csomag mindkét irányban"
+[27]: ./media/expressroute-howto-ipsec-transport-private-windows/source-address.png "a forrás-alhálózat kiválasztása"
+[28]: ./media/expressroute-howto-ipsec-transport-private-windows/source-network.png "forrásoldali hálózat"
+[29]: ./media/expressroute-howto-ipsec-transport-private-windows/destination-network.png "célként megadott hálózat"
+[30]: ./media/expressroute-howto-ipsec-transport-private-windows/protocol.png "protokoll"
 [31]: ./media/expressroute-howto-ipsec-transport-private-windows/source-port-and-destination-port.png "forrásport és célport"
-[32]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list.png "szűrőlista"
-[33]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-for-http.png "IP-szűrőlista HTTP-forgalommal"
-[34]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-add-second-entry.png "Második IP-szűrő hozzáadása"
-[35]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-second-entry.png "IP-szűrőlista másodperces bejegyzése"
-[36]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list-2entries.png "IP-szűrő lista másodperces bejegyzés"
-[37]: ./media/expressroute-howto-ipsec-transport-private-windows/create-ip-security-policy.png "hozza létre az IP-biztonsági házirendet"
-[38]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-policy-name.png "az IPsec-házirend neve"
-[39]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-wizard.png "IPsec-házirend varázsló"
-[40]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-security-policy.png "szerkesztés az IPsec-házirendről"
-[41]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-rule.png "új biztonsági szabály hozzáadása az IPsec-házirendhez"
+[32]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list.png "Filter lista"
+[33]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-for-http.png "IP-szűrési lista http-forgalommal"
+[34]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-add-second-entry.png "második IP-szűrő hozzáadása"
+[35]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-second-entry.png "IP-szűrési lista – második bejegyzés"
+[36]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list-2entries.png "IP-szűrési lista – második bejegyzés"
+[37]: ./media/expressroute-howto-ipsec-transport-private-windows/create-ip-security-policy.png "az IP-biztonsági házirend létrehozása"
+[38]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-policy-name.png "az IPSec-házirend neve"
+[39]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-wizard.png "IPSec-házirend varázsló"
+[40]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-security-policy.png "az IPSec-házirend szerkesztése"
+[41]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-rule.png "új biztonsági szabály hozzáadása az IPSec-házirendhez"
 [42]: ./media/expressroute-howto-ipsec-transport-private-windows/create-security-rule.png "új biztonsági szabály létrehozása"
-[43]: ./media/expressroute-howto-ipsec-transport-private-windows/transport-mode.png "Átviteli mód"
-[44]: ./media/expressroute-howto-ipsec-transport-private-windows/network-type.png "Hálózat típusa"
-[45]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-list.png "a meglévő IP-szűrőlista kiválasztása"
-[46]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-action.png "a meglévő szűrőművelet kiválasztása"
+[43]: ./media/expressroute-howto-ipsec-transport-private-windows/transport-mode.png "átviteli mód"
+[44]: ./media/expressroute-howto-ipsec-transport-private-windows/network-type.png "hálózat típusa"
+[45]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-list.png "meglévő IP-szűrőlista kiválasztása"
+[46]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-action.png "meglévő szűrési művelet kiválasztása"
 [47]: ./media/expressroute-howto-ipsec-transport-private-windows/authentication-method.png "a hitelesítési módszer kiválasztása"
-[48]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-completed.png "a biztonsági politika létrehozásának folyamatának vége"
-[49,]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-not-assigned.png "a főházirend-jámorához kapcsolódó, de hozzá nem rendelt IPsec-politika"
-[50]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-assigned.png "IPsec-házirend a főházirend-ár-jácasnához rendelve"
-[51]: ./media/expressroute-howto-ipsec-transport-private-windows/encrypted-traffic.png "Az IPsec titkosított forgalmának rögzítése"
+[48]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-completed.png "a biztonsági házirend létrehozási folyamatának vége"
+[49]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-not-assigned.png "IPSec-házirend csatolva a csoportházirend-objektumhoz, de nincs hozzárendelve"
+[50]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-assigned.png "IPSec-házirend társítva a csoportházirend-objektumhoz"
+[51]: ./media/expressroute-howto-ipsec-transport-private-windows/encrypted-traffic.png "IPSec titkosított forgalom rögzítése"

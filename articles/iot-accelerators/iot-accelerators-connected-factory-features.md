@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatott gyári megoldásfunkciók - Azure | Microsoft dokumentumok
-description: Ez a cikk a Csatlakoztatott gyár előre konfigurált megoldás, például a felhőalapú irányítópult, a szabályok és a riasztások funkcióinak áttekintését ismerteti.
+title: Csatlakoztatott Factory-megoldási funkciók – Azure | Microsoft Docs
+description: Ez a cikk áttekintést nyújt az előre konfigurált csatlakoztatott gyár megoldás szolgáltatásairól, például a felhő-irányítópultról, a szabályokról és a riasztásokról.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73820114"
 ---
-# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi a Connected Factory IoT megoldásgyorsító?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi a Connected Factory IoT megoldás-gyorsító?
 
-A Connected Factory a Microsoft Azure Industrial IoT referenciaarchitektúrájának implementációja, amely nyílt forráskódú megoldásként van csomagolva. Használhatja, mint a kiindulási pont egy kereskedelmi termék. A Connected Factory megoldás előre elkészített verzióját telepítheti az Azure [IoT-megoldásgyorsítókból](https://www.azureiotsolutions.com/#solutions/types/CF)az Azure-előfizetésbe.
+A csatlakoztatott gyár a Microsoft Azure Industrial IoT-referenciájának olyan implementációja, amely nyílt forráskódú megoldásként van csomagolva. Egy kereskedelmi termék kiindulási pontként használható. A csatlakoztatott gyári megoldás előre összeállított verzióját üzembe helyezheti Azure-előfizetésében az [Azure IoT megoldás-gyorssegédek](https://www.azureiotsolutions.com/#solutions/types/CF)szolgáltatásban.
 
 ![Csatlakoztatott gyári megoldás irányítópultja](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
-A Connected Factory megoldásgyorsító [kódja elérhető a GitHubon.](https://github.com/Azure/azure-iot-connected-factory)
+A csatlakoztatott gyári megoldás gyorsító [kódja elérhető a githubon](https://github.com/Azure/azure-iot-connected-factory).
 
-A Connected Factory a következő funkciókat tartalmazza:
+A csatlakoztatott gyár a következő funkciókat tartalmazza:
 
-## <a name="industrial-device-interoperability"></a>Ipari eszközök interoperabilitása
+## <a name="industrial-device-interoperability"></a>Ipari eszközök együttműködése
 
-- Csatlakozzon ipari eszközökhöz opc UA felülettel.
-- Használja a szimulált termelési sorok (futó OPC UA-kiszolgálók Docker-tárolók) élő telemetriai adatok at tőlük.
-- Böngésszen az OPC UA-kiszolgálók OPC UA-információs modelljében egy felhőalapú irányítópultról.
+- Egy OPC UA interfésszel rendelkező ipari eszközökhöz csatlakozhat.
+- A szimulált éles vonalakat (OPC UA-kiszolgálókat futtatva Docker-tárolókban) az élő telemetria megjelenítéséhez használhatja.
+- Böngésszen az OPC UA-kiszolgálók OPC UA-információs modelljében egy Felhőbeli irányítópulton.
 
 ## <a name="remote-management"></a>Távfelügyelet
 
-- Konfigurálja az OPC UA-eszközeit a felhőirányítópultról (hívási módszerek, olvasási és írási adatok).
-- Telemetriai adatok közzététele és közzétételének visszavonása az OPC UA-eszközök egy felhőirányítópulton.
+- Konfigurálja az OPC UA-eszközöket a felhő-Irányítópultról (metódusok hívása, olvasási és írási adatok).
+- Az OPC UA-eszközökről származó telemetria-adatok közzététele és visszavonása egy Felhőbeli irányítópultról.
 
-## <a name="cloud-dashboard"></a>Felhőalapú irányítópult
+## <a name="cloud-dashboard"></a>Felhőbeli irányítópult
 
-- Telemetriai előnézetek közvetlenül a felhőirányítópulton.
-- A Time Series Insights Explorer irányítópultján megtekintheti a telemetriai adatok trendjeit, és korrelációkat hozhat létre.
-- Tekintse meg a számított általános berendezéshatékonysági (OEE) és fő teljesítménymutatókat (KPI-k) egy felhőalapú irányítópultról.
-- Megtekintheti az ipari eszközhierarchiákat egy fatopológiában, valamint egy interaktív térképen.
-- Riasztások megtekintése, nyugtázása és bezárása egy felhőalapú irányítópultról.
+- Telemetria-előnézetek megtekintése közvetlenül egy Felhőbeli irányítópulton.
+- Megtekintheti a telemetria-adattrendeket és összefüggéseket hozhat létre a Time Series Insights Explorer irányítópultjának használatával.
+- Lásd: számított általános berendezések hatékonysága (OEE) és fő teljesítménymutatók (KPI-k) a Felhőbeli irányítópulton.
+- Megtekintheti az ipari eszközök hierarchiáit egy fa-topológiában, valamint egy interaktív térképen.
+- Riasztások megtekintése, nyugtázása és lezárása egy Felhőbeli irányítópulton.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-- [Az Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) nagy mennyiségű idősorozat-adatok tárolására, megjelenítésére és lekérdezésére készült. A Connected Factory ezt a szolgáltatást használja.
-- A Connected Factory integrálódik ezzel a szolgáltatással, amely lehetővé teszi az eszközadatok mély, valós idejű elemzését.
+- A [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) nagy mennyiségű idősoros adatsorozat tárolására, megjelenítésére és lekérdezésére készült. A csatlakoztatott gyár ezt a szolgáltatást használja.
+- A csatlakoztatott gyár integrálva van ezzel a szolgáltatással, amely lehetővé teszi, hogy az eszköz adatainak alapos, valós idejű elemzését végezze el.
 
 ## <a name="rules-and-alerts"></a>Szabályok és riasztások
 
-[A riasztásokhoz küszöbérték-alapú szabályok konfigurálása.](iot-accelerators-connected-factory-configure.md)
+[Küszöbérték-alapú szabályok konfigurálása a riasztásokhoz](iot-accelerators-connected-factory-configure.md).
 
-## <a name="end-to-end-security"></a>Végpontok között a biztonság
+## <a name="end-to-end-security"></a>Végpontok közötti biztonság
 
-- A szerepköralapú hozzáférés-vezérlés (RBAC) használatával a felhasználók biztonsági engedélyeinek konfigurálása.
-- A végpontok közötti titkosítás opc UA-hitelesítéssel (X.509-es tanúsítványokkal) és biztonsági jogkivonatokkal valósítja meg.
+- Konfigurálja a felhasználók biztonsági engedélyeit szerepköralapú Access Control (RBAC) használatával.
+- A végpontok közötti titkosítás az OPC UA hitelesítéssel (X. 509 tanúsítványok használatával) és biztonsági jogkivonatokkal valósítható meg.
 
 ## <a name="customizability"></a>Testreszabhatóság
 
-- A megoldás testreszabása az adott üzleti követelményeknek megfelelően.
-- A GitHubon elérhető teljes körű megoldás forráskód. Tekintse meg a [Csatlakoztatott gyár előre konfigurált megoldástár.](https://github.com/Azure/azure-iot-connected-factory)
+- Testre szabhatja a megoldást, hogy megfeleljen az adott üzleti követelményeknek.
+- Teljes körű megoldás forrása – a GitHubon elérhető forráskód. Tekintse meg az [előre konfigurált csatlakoztatott gyár megoldás](https://github.com/Azure/azure-iot-connected-factory) -tárházat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Connected Factory megoldásgyorsítóról, olvassa el a Rövid útmutató Egy felhőalapú megoldás sal az [ipari IoT-eszközök kezelését.](quickstart-connected-factory-deploy.md)
+Ha többet szeretne megtudni a csatlakoztatott Factory megoldás-gyorssegédről, tekintse meg a gyors üzembe helyezési [kísérlet felhőalapú megoldását az ipari IoT-eszközök kezeléséhez](quickstart-connected-factory-deploy.md)című témakörben.

@@ -1,6 +1,6 @@
 ---
-title: Botvédelem konfigurálása az Azure Web Application Firewall (WAF) számára
-description: Ismerje meg, hogyan konfigurálhatja a webalkalmazás-tűzfal (WAF) robotvédelmét az Azure Application Gateway-en.
+title: A bot Protection konfigurálása az Azure webalkalmazási tűzfal (WAF) számára
+description: Ismerje meg, hogyan konfigurálhatja a bot Protectiont a webalkalmazási tűzfal (WAF) számára az Azure Application Gatewayon.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,34 +8,34 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73516863"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Bot-védelem konfigurálása a webalkalmazás-tűzfalhoz az Azure Application Gateway-en (előzetes verzió)
+# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>A robot Protection konfigurálása a webalkalmazási tűzfalhoz az Azure Application Gateway (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy bot védelmi szabályt az Azure Web Application Firewall (WAF) alkalmazásátjáró hoz az Azure Portalon. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy robot Protection-szabályt az Azure webalkalmazási tűzfal (WAF) szolgáltatásban Application Gateway a Azure Portal használatával. 
 
-Engedélyezheti a felügyelt robotvédelmi szabálykészletet, hogy a WAF letiltsa vagy naplózza az ismert rosszindulatú IP-címekről érkező kérelmeket. Az IP-címek a Microsoft Threat Intelligence hírcsatornából származnak. Az Intelligent Security Graph a Microsoft fenyegetésekkel kapcsolatos intelligenciáját működteti, és több szolgáltatás, köztük az Azure Security Center is használja.
+Engedélyezheti a WAF felügyelt bot Protection-szabálykészlet számára az ismert kártékony IP-címekről érkező kérések blokkolását vagy naplózását. Az IP-címek forrása a Microsoft Threat Intelligence-hírcsatorna. A Intelligens biztonsági gráf a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.
 
 > [!NOTE]
-> A robotvédelemi szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és egy előzetes szolgáltatásiszint-szerződéssel van ellátva. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A [részleteket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a Microsoft Azure előzetes verziók kiegészítő használati feltételei ben találja.
+> A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel rendelkezik. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részletekért tekintse meg a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy alapvető WAF-házirendet az Application Gateway alkalmazásátjáróhoz a [Webalkalmazás tűzfalházirendek létrehozása alkalmazásátjáróhoz](create-waf-policy-ag.md)című utasításait követve.
+Hozzon létre egy alapszintű WAF szabályzatot a Application Gateway számára a [webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz](create-waf-policy-ag.md)című témakörben leírtak szerint.
 
-## <a name="enable-bot-protection-rule-set"></a>Botvédelmi szabálykészlet engedélyezése
+## <a name="enable-bot-protection-rule-set"></a>Robot Protection-szabály beállításának engedélyezése
 
-1. A korábban létrehozott **Alapházirend** lapon a **Beállítások**csoportban válassza a **Szabályok**lehetőséget.  
+1. A korábban létrehozott **alapszintű** szabályzat lapon a **Beállítások**területen válassza a **szabályok**elemet.  
 
-2. A részletek lap **Szabályok** kezelése szakaszában, a legördülő menüben jelölje be a robotvédelem szabály jelölőnégyzetét, majd kattintson a **Mentés gombra.**
+2. A Részletek lapon, a **szabályok** kezelése szakaszban, a legördülő menüben jelölje be a bot Protection-szabály jelölőnégyzetét, majd kattintson a **Mentés**gombra.
 
 > [!div class="mx-imgBorder"]
 > ![Robotvédelem](../media/bot-protection/bot-protection.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az egyéni szabályokról további információt az [Azure Application Gateway webalkalmazás-tűzfal 2-es webhelyének egyéni szabályai című témakörben talál.](custom-waf-rules-overview.md)
+Az egyéni szabályokkal kapcsolatos további információkért lásd: [webalkalmazási tűzfal v2 egyéni szabályai az Azure Application Gateway](custom-waf-rules-overview.md).

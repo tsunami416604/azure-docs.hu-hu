@@ -1,45 +1,45 @@
 ---
-title: A tárolási költség optimalizálása az Azure Cosmos DB-ben
-description: Ez a cikk bemutatja, hogyan kezelheti az Azure Cosmos DB-ben tárolt adatok tárolási költségeit
+title: A tárolási díj optimalizálása Azure Cosmos DB
+description: Ez a cikk azt ismerteti, hogyan kezelhető a Azure Cosmos DB tárolt adattárolási költségei.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72754943"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási költség optimalizálása az Azure Cosmos DB-ben
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási díj optimalizálása Azure Cosmos DB
 
-Az Azure Cosmos DB korlátlan tárhelyet és átviteli kapacitást kínál. Az átviteli kapacitással ellentétben, amelyet az Azure Cosmos-tárolókon vagy adatbázisokon kell kiépítenie/konfigurálnia, a tárolás számlázása a felhasználás alapján történik. A számlázás csak a felhasznált logikai tárolóért van kiszámlázva, és nem kell előre lefoglalnia a tárhelyet. A storage automatikusan fel-le skálázódik az Azure Cosmos-tárolóhoz hozzáadott vagy eltávolított adatok alapján.
+Azure Cosmos DB korlátlan tárterületet és átviteli sebességet biztosít. Az átviteli sebességtől eltérően, amelyet az Azure Cosmos-tárolókban vagy-adatbázisokban kell kiépíteni/konfigurálni, a tárterületet fogyasztási alapon számítjuk fel. Csak az Ön által felhasznált logikai tárterületért kell fizetnie, és nem kell előzetesen lefoglalnia a tárterületet. A tárterület automatikusan fel-és leskálázásra kerül az Azure Cosmos-tárolóba felvett vagy eltávolított adathalmazok alapján.
 
 ## <a name="storage-cost"></a>Tárolási költség
 
-A tárolás számlázása a GB-k egységével történik. A helyi SSD-alapú tárolót az adatok és az indexelés használják. A teljes felhasznált tárterület megegyezik az összes olyan régióban használt adatok és indexek által igényelt tárterület, ahol az Azure Cosmos DB-t használja. Ha globálisan replikál egy Azure Cosmos-fiókot három régióban, akkor a teljes tárolási költség ért kell fizetnie a három régió mindegyikében. A tárolási igény becsléséhez tekintse meg a [kapacitástervező](https://www.documentdb.com/capacityplanner) eszközt. Az Azure Cosmos DB-ben a tárolás költsége $0.25 GB/hó, tekintse meg a legújabb frissítések [díjszabása oldalon.](https://azure.microsoft.com/pricing/details/cosmos-db/) Riasztásokat állíthat be az Azure Cosmos-tároló által használt tárterület meghatározásához, a storage figyeléséhez, [lásd: Az Azure Cosmos DB monitorozása](monitor-accounts.md)) című cikket.
+A tárterületet a GB-os egységgel számoljuk el. A helyi SSD által támogatott tárterületet az adatai és az indexelése használja. A felhasznált teljes tárterület megegyezik az összes olyan régióban használt adattárolási és indexekkel, amelyeket Azure Cosmos DB használ. Ha globálisan replikál egy Azure Cosmos-fiókot három régióban, akkor a teljes tárolási díjat a három régióban kell fizetnie. A tárolási követelmények becsléséhez tekintse meg a [Capacity Planner](https://www.documentdb.com/capacityplanner) eszköz című témakört. A Azure Cosmos DB tárterületének díja $0,25 GB/hó, a legújabb frissítések [díjszabási oldalán](https://azure.microsoft.com/pricing/details/cosmos-db/) talál. Beállíthatja a riasztásokat az Azure Cosmos-tároló által használt tárterület meghatározásához, a tárhely figyeléséhez lásd: [Azure Cosmos db figyelése](monitor-accounts.md)).
 
-## <a name="optimize-cost-with-item-size"></a>Költség optimalizálása cikkmérettel
+## <a name="optimize-cost-with-item-size"></a>A Cost optimalizálása az elemek méretével
 
-Az Azure Cosmos DB az optimális teljesítmény és költségelőnyök érdekében 2 MB-os vagy annál kisebb elemméretet vár. Ha 2 MB-nál nagyobb adatok tárolására van szüksége, fontolja meg az elemséma újratervezését. Abban a ritka esetben, ha nem tudja újratervezni a sémát, feloszthatja az elemet alelemekre, és logikailag összekapcsolhatja őket egy közös azonosítóval(ID). Az Azure Cosmos DB összes szolgáltatása következetesen működik a logikai azonosítóhoz való rögzítéssel.
+Az optimális teljesítmény és a költséghatékonyság érdekében a Azure Cosmos DB 2 MB vagy kevesebb méretet vár. Ha olyan elemre van szüksége, amely 2 MB-nál nagyobb mennyiségű adattárolást igényel, érdemes lehet újratervezni az elem sémáját. Abban a ritka esetben, ha nem tudja újratervezni a sémát, feloszthatja az elemet alelemekre, és logikailag összekapcsolhatja őket egy közös azonosítóval (AZONOSÍTÓval). Az összes Azure Cosmos DB funkció konzisztensen működik a logikai azonosítóra való rögzítéssel.
 
-## <a name="optimize-cost-with-indexing"></a>Költség optimalizálása indexeléssel
+## <a name="optimize-cost-with-indexing"></a>A Cost optimalizálása az indexeléssel
 
-Alapértelmezés szerint az adatok automatikusan indexelt, ami növelheti a teljes felhasznált tárterület. Azonban egyéni indexházirendeket is alkalmazhat a terhelés csökkentéséhez. A házirenden keresztül nem hangolt automatikus indexelés az elemméret körülbelül 10–20%-a. Az indexházirendek eltávolításával vagy testreszabásával nem kell külön költséget fizetnie az írásokért, és nincs szükség további átviteli kapacitásra. Az Egyéni indexelési szabályzatok konfigurálásához tekintse [indexelés az Azure Cosmos DB-ben.](indexing-policies.md) Ha korábban már dolgozott relációs adatbázisokkal, azt gondolhatja, hogy az "index mindent" a tárhely megduplázását vagy magasabb összeírását jelenti. Azonban az Azure Cosmos DB, a medián esetben, ez sokkal alacsonyabb. Az Azure Cosmos DB-ben az index tárolási terhelése általában alacsony (10–20%) még az automatikus indexelés, mert úgy tervezték, hogy az alacsony tárolási helyigény. Az indexelési házirend kezelésével szabályozhatja az indexalapkontúr és a lekérdezési teljesítmény kompromisszumot részletesebben.
+Alapértelmezés szerint a rendszer automatikusan indexeli az adatmennyiséget, ami növelheti a felhasznált teljes tárterületet. Azonban egyéni index-házirendeket is alkalmazhat a terhelés csökkentése érdekében. A szabályzattal nem hangolt Automatikus indexelés az elem méretének 10-20%-a. Az indexelési szabályzatok eltávolításával vagy testreszabásával nem számítunk fel extra díjat az írásokhoz, és nem igényelnek további átviteli kapacitást. Az egyéni indexelési házirendek konfigurálásához lásd: [Azure Cosmos DB indexelése](indexing-policies.md) . Ha korábban már használta a kapcsolatok adatbázisait, úgy gondolhatja, hogy az "index mindent" kifejezés azt jelenti, hogy megduplázta a tárterületet vagy magasabbra. A medián esetben azonban a Azure Cosmos DB sokkal alacsonyabb. A Azure Cosmos DBban az index tárolási terhelése általában alacsony (10-20%) még az automatikus indexeléssel is, mivel az alacsony tárolási helyigényhez lett tervezve. Az indexelési szabályzat kezelésével részletesebben szabályozhatja az index-lábnyom és a lekérdezési teljesítmény kompromisszumát.
 
-## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>A költségek optimalizálása az élethez és a hírcsatorna módosításához
+## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizálja a költségeket az élettartam és a váltás során
 
-Ha már nincs szüksége az adatokra, szabályosan törölheti azokat az Azure Cosmos-fiókból [az élettartam](time-to-live.md)használatával, módosíthatja a [hírcsatornát,](change-feed.md) vagy áttelepítheti a régi adatokat egy másik adattárba, például az Azure blobstorage-ba vagy az Azure-adatraktárba. Az élő vagy TTL idő, az Azure Cosmos DB lehetővé teszi, hogy egy adott időszak után automatikusan törölje az elemeket egy tárolóból. Alapértelmezés szerint beállíthatja, hogy az idő a tároló szintjén éljen, és felülbírálja az értéket cikkenként. Miután beállította a TTL egy tárolóban vagy egy elem szintjén, az Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az utolsó módosítás uk óta eltelt idő után. Módosítási hírcsatorna használatával adatokat telepíthet át az Azure Cosmos DB egy másik tárolóba vagy egy külső adattárba. Az áttelepítés nulla leadási időt vesz igénybe, és ha befejezte az áttelepítést, törölheti vagy konfigurálhatja az élő ideig a forrás Azure Cosmos-tároló törléséhez.
+Ha már nincs szüksége az adatokra, könnyedén törölheti azt az Azure Cosmos-fiókjából, ha [időt](time-to-live.md)használ, [megváltoztathatja a hírcsatornát](change-feed.md) , vagy áttelepítheti a régi adatait egy másik adattárba, például az Azure Blob Storage szolgáltatásba vagy az Azure-adattárházba. Az élettartam vagy a TTL esetében a Azure Cosmos DB lehetővé teszi, hogy egy adott időszak után automatikusan törölje a tárolóból az elemeket. Alapértelmezés szerint beállíthatja az időt a tároló szintjén, és felülbírálhatja az értéket cikkenként. Miután beállította az ÉLETTARTAMot egy tárolóban vagy egy elem szintjén, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az utolsó módosítás óta eltelt idő után. A Change feed használatával áttelepítheti az adatátvitelt egy másik tárolóba Azure Cosmos DB vagy egy külső adattárba. Az áttelepítés nulla időt vesz igénybe, és amikor végzett az áttelepítés során, törölheti vagy beállíthatja az élettartamot, hogy törölje a forrásként szolgáló Azure Cosmos-tárolót.
 
-## <a name="optimize-cost-with-rich-media-data-types"></a>A költségek optimalizálása multimédiás adattípusokkal 
+## <a name="optimize-cost-with-rich-media-data-types"></a>A Cost optimalizálása a multimédiás adattípusokkal 
 
-Ha multimédiás típusokat szeretne tárolni, például videókat, képeket stb., számos lehetőség közül választhat az Azure Cosmos DB-ben. Az egyik lehetőség az, hogy ezeket a multimédiás típusokat Azure Cosmos-elemekként tárolja. Elemenként 2 MB-os korlát van, és ezt a korlátot elkerülheti, ha az adatelemet több alelemhez láncolja. Vagy tárolhatja őket az Azure Blob storage-ban, és a metaadatok segítségével hivatkozhat rájuk az Azure Cosmos-elemekből. Számos előnye és hátránya ezzel a megközelítéssel. Az első megközelítés a késés, az átviteli kapacitás SL-ek és a multimédiás adattípusok kulcsrakész globális terjesztési képességei tekintetében a legjobb teljesítményt kapja a rendszeres Azure Cosmos-elemek mellett. Azonban a támogatás elérhető magasabb áron. Az azure Blob-tárolóban tárolt adathordozók tárolásával csökkentheti a teljes költségeket. Ha a késés kritikus fontosságú, prémium szintű storage-ot használhat az Azure Cosmos-elemekből hivatkozott multimédiás fájlokhoz. Ez natívan integrálható a CDN-nel, hogy a peremhálózati kiszolgálóról származó képeket alacsonyabb költséggel szolgálja ki a földrajzi korlátozás megkerülése érdekében. A forgatókönyv hátránya, hogy két szolgáltatással kell foglalkoznia – az Azure Cosmos DB-vel és az Azure Blob storage-tal, amelyek növelhetik a működési költségeket. 
+Ha olyan multimédiás típusokat szeretne tárolni, mint például a videók, a képek stb., számos lehetőség közül választhat Azure Cosmos DB. Az egyik lehetőség, hogy ezeket a gazdag adathordozó-típusokat Azure Cosmos-elemekként tárolja. Az egyes elemekhez 2 MB-os korlátot kell megadni, és ezt a korlátot elkerülheti az adatelem több alelembe való láncolásával. Az Azure Blob Storage-ban is tárolhatja őket, és a metaadatok használatával hivatkozhat rájuk az Azure Cosmos-elemekből. Ennek a megközelítésnek számos előnye és hátránya van. Az első módszer a legjobb teljesítményt nyújtja a késés, az átviteli SLA-EK és a kulcsrakész globális terjesztési képességek terén a multimédiás adattípusok mellett, a normál Azure Cosmos-elemek mellett. A támogatás azonban magasabb áron érhető el. Az adathordozók Azure Blob Storage-tárolóban való tárolásával csökkentheti a teljes költséget. Ha a késés kritikus, akkor az Azure Cosmos-elemek által hivatkozott Rich Media-fájlok Premium Storage szolgáltatását is használhatja. Ez natív módon integrálható a CDN szolgáltatással, hogy a földrajzi korlátozás megkerülése érdekében alacsonyabb áron szolgálja ki a képeket a peremhálózati kiszolgálóról. Ennek a forgatókönyvnek a lejárati helye, hogy két szolgáltatással kell foglalkoznia – Azure Cosmos DB és az Azure Blob Storage-hoz, ami növelheti a működési költségeket. 
 
-## <a name="check-storage-consumed"></a>Felhasznált tárhely ellenőrzése
+## <a name="check-storage-consumed"></a>A felhasznált tároló keresése
 
-Az Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy HEAD vagy GET `x-ms-request-quota` kérelmet a tárolón, és vizsgálja meg a és a `x-ms-request-usage` fejlécek. Másik lehetőségként a .NET SDK használatakor a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságokkal is lefoglalhatja a felhasznált tárolót.
+Egy Azure Cosmos-tároló tárolási felhasználásának ellenőrzéséhez futtathat egy HEAD vagy GET kérelmet a tárolón, és megvizsgálhatja a `x-ms-request-quota` és a `x-ms-request-usage` fejléceket is. Ha a .NET SDK-val dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))és a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságot is a felhasznált tárterület beszerzéséhez.
 
 ## <a name="using-sdk"></a>Az SDK használata
 
@@ -52,12 +52,12 @@ Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuo
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután az alábbi cikkekkel többet tudhat meg a költségoptimalizálásról az Azure Cosmos DB-ben:
+A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 
-* További információ [az optimalizálásról fejlesztési és tesztelési célokra](optimize-dev-test.md)
-* További információ [az Azure Cosmos DB-számlájának ismertetéséről](understand-your-bill.md)
-* További információ az [átviteli költség optimalizálásáról](optimize-cost-throughput.md)
-* További információ [az olvasási és írási költségek optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések költségének optimalizálásáról](optimize-cost-queries.md)
-* További információ a több régióra kiterjedő [Azure Cosmos-fiókok költségeinek optimalizálásáról](optimize-cost-regions.md)
+* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
+* További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
+* További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
+* További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
 

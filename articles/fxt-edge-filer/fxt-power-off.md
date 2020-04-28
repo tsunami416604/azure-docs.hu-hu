@@ -1,39 +1,39 @@
 ---
-title: Microsoft Azure FXT Edge Filer egység leállítása
-description: Eljárások az Azure FXT Edge Filer csomópont indításához és biztonságos leállításához
+title: Microsoft Azure FXT Edge Filer-egység leállítása
+description: Az Azure FXT Edge Filer-csomópont indítási és biztonságos leállítási eljárásai
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72256006"
 ---
-# <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Az Azure FXT Edge Filer hardverbiztonságos kikapcsolása
+# <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Az Azure FXT Edge Filer-Hardver biztonságos kikapcsolása
 
-Bár a fizikai bekapcsológombbal bekapcsolhatja az egyes csomópontokat, normál körülmények között nem szabad a készüléket leállítani.
+Bár a fizikai főkapcsoló gomb használatával egy adott csomópontra válthat, nem ajánlott az egységet normál körülmények között leállítani.
 
-Miután egy Azure FXT Edge Filer csomópont ot használ egy fürt részeként, a fürt vezérlőpult szoftverét kell használnia a hardver leállításához. 
+Miután egy Azure FXT Edge Filer-csomópont használatban van egy fürt részeként, a fürt Vezérlőpultjának szoftverét kell használnia a hardver leállításához. 
 
 > [!NOTE] 
-> Az esetleges adatvesztés vagy sérülés elkerülése érdekében mindig használja a Vezérlőpult szoftverét egy Azure FXT Edge Filer leállításához. A fizikai bekapcsológombot csak akkor használja leállításhoz, ha erre a Microsoft ügyfélszolgálata utasítja.
+> A lehetséges adatvesztés és-sérülés elkerülése érdekében mindig a Vezérlőpult szoftver használatával állítsa le az Azure FXT Edge Filer-t. Ne használja a fizikai főkapcsoló gombot a leállításhoz, ha a Microsoft ügyfélszolgálata és támogatása nem utasítja erre a célra.
 > 
-> Elektromos vészhelyzet esetén húzza ki a tápkábeleket, vagy használja az adatközpont elektromos leválasztó mechanizmusát.
+> Elektromos vészhelyzet esetén válassza le a tápkábeleket, vagy használja az adatközpontjának villamosenergia-leválasztási mechanizmusát.
 
 ## <a name="shut-down-a-node-from-the-control-panel"></a>Csomópont leállítása a Vezérlőpultról
 
-Kövesse az alábbi utasításokat az Azure FXT Edge Filer-csomópont biztonságos kikapcsolásához:
+Kövesse ezeket az utasításokat az Azure FXT Edge Filer-csomópontjának biztonságos kikapcsolásához:
 
-1. Jelentkezzen be a Fürt vezérlőpultjára. (Irányok a [Beállítások oldalak megnyitása párbeszédpanelen)](fxt-cluster-create.md#open-the-settings-pages)
-1. Kattintson a **Beállítások** fülre, majd töltse be a **Fürt** > **FXT-csomópontok lapját.**
-1. A fürtcsomópontok listájában keresse meg a leállítani kívánt csomópontot. Kattintson a **Kikapcsolás** gombra a **Műveletek** oszlopban. 
-1. Várjon néhány percet. A csomópont kikapcsol, és kikapcsol.
+1. Jelentkezzen be a fürt Vezérlőpultján. (Útmutató a [Beállítások lapok megnyitásához](fxt-cluster-create.md#open-the-settings-pages))
+1. Kattintson a **Beállítások** lapra, majd töltse be a **fürt** > **FXT-csomópontjai** lapot.
+1. A fürtcsomópontok listájában keresse meg azt, amelyet le szeretne állítani. Kattintson a **kikapcsolás** gombra a **műveletek** oszlopban. 
+1. Várjon néhány percet. A csomópont leáll, és ki is kapcsolhatja magát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet az állapotjelzőkről és egyéb mutatókról az [Azure FXT Edge Filer hardverállapotának monitorozása című](fxt-monitor.md)részben.
-* További információ az Azure FXT Edge Filer tápegységekről a [Connect tápkábelekben.](fxt-network-power.md#connect-power-cables)
+* Ismerje meg az állapotjelző LED-eket és az [Azure FXT Edge Filer-hardver állapotának figyelésére](fxt-monitor.md)szolgáló egyéb indikátorokat.
+* További információk az Azure FXT Edge Filer tápegységek [csatlakoztatásával](fxt-network-power.md#connect-power-cables)kapcsolatban.

@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg az Apache Spark adatformátumait az Azure Data Lake Analytics U-SQL fejlesztői számára.
-description: Ez a cikk az Apache Spark-kal kapcsolatos fogalmakat ismerteti, amelyek segítségével U_SQL a fejlesztők megismerhetik az U-SQL és a Spark-adatformátumok közötti különbségeket.
+title: Ismerje meg Apache Spark adatformátumait Azure Data Lake Analytics U-SQL-fejlesztők számára.
+description: Ez a cikk Apache Spark fogalmakat ismerteti, amelyek segítenek U_SQL fejlesztőknek megérteni az U-SQL és a Spark adatformátumai közötti különbségeket.
 author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonh
@@ -9,48 +9,48 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73648440"
 ---
-# <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Az U-SQL és a Spark-adatformátumok közötti különbségek ismertetése
+# <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Az U-SQL és a Spark adatformátumai közötti különbségek ismertetése
 
-Ha [azure Databricks](../azure-databricks/what-is-azure-databricks.md) vagy [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md)használatával szeretné használni, javasoljuk, hogy telepítse át az adatokat az Azure Data Lake Storage [Gen1](../data-lake-store/data-lake-store-overview.md) szolgáltatásból az [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)szolgáltatásba.
+Ha [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) vagy [Azure HDInsight Sparkt](../hdinsight/spark/apache-spark-overview.md)szeretne használni, javasoljuk, hogy az adatait [Azure Data Lake Storage Gen1ról](../data-lake-store/data-lake-store-overview.md) [Azure Data Lake Storage Gen2ra](../storage/blobs/data-lake-storage-introduction.md)telepítse át.
 
-A fájlok áthelyezése mellett az U-SQL táblákban tárolt adatokat is elérhetővé kell tennie a Spark számára.
+A fájlok áthelyezésén kívül a Spark számára elérhető U-SQL-táblákban is el szeretné végezni az adatok tárolását.
 
-## <a name="move-data-stored-in-azure-data-lake-storage-gen1-files"></a>Az Azure Data Lake Storage Gen1 fájlokban tárolt adatok áthelyezése
+## <a name="move-data-stored-in-azure-data-lake-storage-gen1-files"></a>Azure Data Lake Storage Gen1 fájlban tárolt adatáthelyezés
 
-A fájlokban tárolt adatok többféleképpen mozgathatók:
+A fájlokban tárolt adatfájlok többféleképpen is áthelyezhetők:
 
-- Írjon egy Azure Data Factory-folyamatot az Azure Data Lake Storage [Gen1](../data-lake-store/data-lake-store-overview.md) fiókból az [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) fiókba történő másolásához. [Azure Data Factory](../data-factory/introduction.md)
-- Írjon egy Spark-feladatot, amely beolvassa az adatokat az [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) fiókból, és írja az Azure Data Lake Storage [Gen2](../storage/blobs/data-lake-storage-introduction.md) fiókba. A használati eset alapján előfordulhat, hogy más formátumban, például a Parketta formátumban szeretné írni, ha nem kell megőriznie az eredeti fájlformátumot.
+- [Azure Data Factory](../data-factory/introduction.md) folyamat írása az adatok [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) -fiókból a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -fiókba való másolásához.
+- Írjon be egy Spark-feladatot, amely beolvassa az adatokat a [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) -fiókból, és írja azt a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -fiókba. A használati eset alapján előfordulhat, hogy más formátumban szeretné írni, például a Parquet, ha nem kell megőriznie az eredeti fájlformátumot.
 
-Javasoljuk, hogy tekintse át a big [data-elemzési megoldások frissítése az Azure Data Lake Storage Gen1-ről az Azure Data Lake Storage Gen2-re című cikket.](../storage/blobs/data-lake-storage-upgrade.md)
+Javasoljuk, hogy tekintse át a [Big Data Analytics-megoldások Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2re való frissítését](../storage/blobs/data-lake-storage-upgrade.md) ismertető cikket.
 
-## <a name="move-data-stored-in-u-sql-tables"></a>U-SQL táblákban tárolt adatok áthelyezése
+## <a name="move-data-stored-in-u-sql-tables"></a>Az U-SQL-táblákban tárolt adatáthelyezés
 
-U-SQL-táblák nem értik a Spark. Ha az U-SQL táblákban tárolt adatokkal rendelkezik, egy U-SQL-feladatot fog futtatni, amely kinyeri a táblaadatokat, és olyan formátumban menti őket, amelyet a Spark megért. A legmegfelelőbb formátum a Parkettafájlok készletének létrehozása a Hive metastore mappaelrendezése után.
+A Spark nem értelmezi a U-SQL-táblákat. Ha a U-SQL-táblákban tárolt adatokkal rendelkezik, egy U-SQL-feladatot fog futtatni, amely Kinyeri a táblázatos adatok kibontását, és a Spark által értelmezett formátumban menti azt. A legmegfelelőbb formátum a Hive-metaadattár mappa elrendezését követő Parquet-fájlok készletének létrehozása.
 
-A kimenet az U-SQL-ben érhető el a beépített Parquet outputter segítségével, és a dinamikus kimeneti particionálás fájlkészletekkel a partíciómappák létrehozásához. [Minden eddiginél több fájlt dolgoz fel, és a Parquet használata](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) példát mutat az ilyen Spark-fogyóadatok létrehozására.
+A kimenet a U-SQL-ben érhető el, a beépített parketta-előállítók használatával, valamint a dinamikus kimeneti particionálással a fájlokkal a partíciós mappák létrehozásához. [Minden eddiginél több fájlt dolgozhat fel, és a Parquet használatával](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) megtudhatja, hogyan hozhat létre ilyen Spark-adatmennyiséget.
 
-Az átalakítás után másolja az adatokat az [Azure Data Lake Storage Gen1 fájlokban tárolt adatok áthelyezése című fejezetben](#move-data-stored-in-azure-data-lake-storage-gen1-files)ismertetett módon.
+Az átalakítást követően a [Azure Data Lake Storage Gen1 fájlban tárolt adatáthelyezési](#move-data-stored-in-azure-data-lake-storage-gen1-files)fejezetben leírtak szerint másolja az adatfájlokat.
 
-## <a name="caveats"></a>Ellenmondások
+## <a name="caveats"></a>Figyelmeztetések
 
-- Adatszemantika Fájlok másolásakor a másolás bájtszinten történik. Így ugyanazokat az adatokat kell megjelennie az [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) fiókban. Megjegyzés: a Spark azonban egyes karaktereket eltérően értelmezhet. Előfordulhat például, hogy egy CSV-fájl ban lévő sorhatárolóhoz más alapértelmezett beállítást használ.
-    Továbbá, ha gépelt adatokat másol (táblákból), akkor a Parketta és a Spark eltérő pontosságú és léptékes lehet néhány beírt érték (például egy úszó), és eltérően kezelheti a null értékeket. Például az U-SQL rendelkezik a C# szemantika null értékek, míg a Spark egy három értékű logika null értékek.
+- Adatszemantika fájlok másolásakor a másolás a bájt szintjén történik. Így ugyanazokat az adatfájlokat kell megadnia a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) fiókban. Vegye figyelembe azonban, hogy a Spark más karaktereket is értelmez. Előfordulhat például, hogy egy CSV-fájlban eltérő alapértelmezett értéket használ a sorok elválasztója számára.
+    Emellett, ha a beírt adatok másolása (táblákból) történik, akkor a parketta és a Spark különböző pontossággal és méretezéssel rendelkezhet néhány beírt értéknél (például lebegőpontos), és a null értékeket különbözőképpen is kezelheti. Például a U-SQL C# szemantikai értékkel rendelkezik a null értékek esetében, míg a Spark három értékű logikát tartalmaz a null értékekhez.
 
-- Az adatok szervezése (particionálás) U-SQL-táblák kétszintű particionálást biztosítanak. A külső`PARTITIONED BY`szint ( ) érték szerint, és leképezi többnyire a Hive/Spark particionálási séma segítségével mappa hierarchiák. Gondoskodnia kell arról, hogy a null értékek a megfelelő mappába legyenek leképezve. Az U-SQL belső szintje (`DISTRIBUTED BY`) 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
-    Hiv/Spark-táblák csak támogatja az érték particionálásvagy kivonatparticionálás, egy másik kivonatoló függvény, mint az U-SQL. Az U-SQL-táblaadatok kimenetekor valószínűleg csak a Spark értékparticionálási értékparticionálására lesz képes leképezni, és előfordulhat, hogy a végső Spark-lekérdezésektől függően további hangolást kell végeznie az adatelrendezésen.
+- Az adatszervezet (particionálás) U-SQL-táblák két szintű particionálást biztosítanak. A külső szint (`PARTITIONED BY`) értéke és leképezése elsősorban a kaptár/Spark particionálási sémában, a mappa-hierarchiák használatával. Biztosítania kell, hogy a null értékek a megfelelő mappába legyenek leképezve. A U-SQL`DISTRIBUTED BY`belső szintje 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
+    A kaptár/Spark táblák csak az U-SQL-nél eltérő kivonatoló függvényt használnak az érték particionálásához vagy a kivonatoló particionáláshoz. Ha a U-SQL-tábla adatait adja meg, valószínűleg csak a Spark érték particionálásához lesz képes leképezni, és a végső Spark-lekérdezésektől függően szükség lehet az adatelrendezés további finomhangolására.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Spark-kód fogalmai az U-SQL-fejlesztők számára](understand-spark-code-concepts.md)
-- [Frissítse big data-elemzési megoldásait az Azure Data Lake Storage Gen1-ről az Azure Data Lake Storage Gen2-re](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET apache sparkhoz](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
-- [Adatok átalakítása az Azure Data Factory Spark-tevékenységével](../data-factory/transform-data-using-spark.md)
-- [Adatok átalakítása a Hadoop-struktúra használatával az Azure Data Factoryban](../data-factory/transform-data-using-hadoop-hive.md)
+- [A Spark Code-fogalmak megismerése U-SQL-fejlesztőknek](understand-spark-code-concepts.md)
+- [Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
+- [.NET az Apache Sparkhoz](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Adatátalakítás a Spark-tevékenységgel Azure Data Factory](../data-factory/transform-data-using-spark.md)
+- [Az adatátalakítás a Hadoop-struktúra tevékenységgel Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Mi az az Azure HDInsight-alapú Apache Spark?](../hdinsight/spark/apache-spark-overview.md)

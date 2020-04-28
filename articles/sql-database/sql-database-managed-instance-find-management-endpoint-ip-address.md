@@ -1,6 +1,6 @@
 ---
-title: Felügyelt példányfelügyeleti végpont felderítése
-description: Megtudhatja, hogy miként szerezheti be az Azure SQL Database felügyelt példánykezelési végpont nyilvános IP-címét, és hogyan ellenőrizheti a beépített tűzfalvédelmet
+title: Felügyelt példányok felügyeleti végpontjának felderítése
+description: Ismerje meg, hogyan kérhet Azure SQL Database felügyelt példányok felügyeleti végpontjának nyilvános IP-címét, és ellenőrizheti a beépített tűzfal-védelmet
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,23 +12,23 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 03cd89084c2bae3339311f2f684a0d5e7bac1f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825713"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>A felügyeleti végpont IP-címének meghatározása
 
-Az Azure SQL Database felügyelt példány virtuális fürt tartalmaz egy felügyeleti végpontot, amelyet a Microsoft a felügyeleti műveletekhez használ. A felügyeleti végpont hálózati szinten beépített tűzfallal és az alkalmazás szintjén kölcsönös tanúsítványellenőrzéssel védett. Meghatározhatja a felügyeleti végpont IP-címét, de nem férhet hozzá ehhez a végponthoz.
+A Azure SQL Database felügyelt példány virtuális fürt felügyeleti végpontot tartalmaz, amelyet a Microsoft a felügyeleti műveletekhez használ. A felügyeleti végpontot a rendszer egy beépített tűzfallal védi a hálózati szinten, valamint a kölcsönös tanúsítvány-ellenőrzést az alkalmazás szintjén. Meghatározhatja a felügyeleti végpont IP-címét, de ehhez a végponthoz nem férhet hozzá.
 
-A felügyeleti IP-cím meghatározásához végezze el a DNS-keresmel a felügyelt példány fqdn-ját: `mi-name.zone_id.database.windows.net`. Ez olyan DNS-bejegyzést ad `trx.region-a.worker.vnet.database.windows.net`vissza, amely hasonló. Ezután dns-kereséset végezhet ezen a teljes tartománynnon a ".vnet" eltávolításával. Ez visszaadja a felügyeleti IP-címet. 
+A felügyeleti IP-cím meghatározásához hajtson végre DNS-lekérdezést a felügyelt példány `mi-name.zone_id.database.windows.net`teljes tartománynevén:. Ez egy olyan DNS-bejegyzést ad vissza, `trx.region-a.worker.vnet.database.windows.net`amely hasonló. Ezt követően a ". vnet" nevű DNS-lekérdezést törölheti a teljes tartománynévre. Ekkor a rendszer visszaküldi a felügyeleti IP-címet. 
 
-Ez a PowerShell mindent megtesz az \<Ön számára,\> ha lecseréli az `mi-name.zone_id.database.windows.net`MI FQDN-t a felügyelt példány DNS-bejegyzésére: :
+Ez a PowerShell mindent megtesz, ha a mi FQDN \<\> -t a felügyelt példány DNS-bejegyzésével helyettesíti `mi-name.zone_id.database.windows.net`::
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"
   resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
 ```
 
-A felügyelt példányokról és a kapcsolatról az [Azure SQL Database Felügyelt példányok kapcsolatarchitektúrája című témakörben](sql-database-managed-instance-connectivity-architecture.md)talál további információt.
+A felügyelt példányokkal és kapcsolatokkal kapcsolatos további információkért lásd: [Azure SQL Database felügyelt példány kapcsolati architektúrája](sql-database-managed-instance-connectivity-architecture.md).

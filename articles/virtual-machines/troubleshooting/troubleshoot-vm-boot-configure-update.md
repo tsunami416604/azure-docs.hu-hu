@@ -1,6 +1,6 @@
 ---
-title: VM indítása megragadt a "Felkészülés a Windows. Ne kapcsolja ki a számítógépet" az Azure-ban | Microsoft dokumentumok
-description: A "Windows felindulása" című probléma elhárításának lépéseit ismertetheti a probléma megoldásához, amelyben a virtuális gép indítása korvan. Ne kapcsolja ki a számítógépet.”
+title: A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. Ne kapcsolja ki a számítógépet az Azure-ban | Microsoft Docs
+description: Bemutatjuk azokat a lépéseket, amelyekkel elhárítható a virtuális gép indításakor beragadt "a Windows rendszer kész állapotba kerül. Ne kapcsolja ki a számítógépet.”
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,56 +14,56 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73749643"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM indítása megragadt a "Felkészülés a Windows. Ne kapcsolja ki a számítógépet" az Azure-ban
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
-Ez a cikk a "Felkészülés" és a "Felkészülés a Windows-ra" képernyőket ismerteti, amelyek a Windows virtuális gép (VM) Microsoft Azure-beli indításakor találkozhatnak. Ez a támogatási jegy adatainak gyűjtéséhez szükséges lépéseket tartalmazza.
+Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure való indításakor felmerülő "felkészülést" és "Windows Ready" képernyőket ismerteti. Ez a témakör segítséget nyújt a támogatási jegy adatainak gyűjtéséhez.
 
  
 
 ## <a name="symptoms"></a>Probléma
 
-A Windows virtuális gép nem indul el. Amikor **a rendszerindítási diagnosztika** segítségével a képernyőkép a virtuális gép, előfordulhat, hogy a virtuális gép megjeleníti a "Felkészülés" vagy a "A Windows készen áll".
+Egy Windows rendszerű virtuális gép nem indul el. Ha **rendszerindítási diagnosztikát** használ a virtuális gép képernyőképének beszerzéséhez, láthatja, hogy a virtuális gép a "felkészülés" vagy a "Windows Ready" üzenetet jeleníti meg.
 
-![Példa üzenet a Windows Server 2012 R2 rendszerhez](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Példa a Windows Server 2012 R2-re](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
-![Példa üzenetre](./media/troubleshoot-vm-configure-update-boot/message2.png)
+![Üzenet – példa](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Ok
 
-Ez a probléma általában akkor fordul elő, amikor a kiszolgáló a konfiguráció módosítása után a végső újraindítást végzi. A konfigurációs módosítást inicializálhatják a Windows-frissítések vagy a kiszolgáló szerepkörein/szolgáltatásán végrehajtott módosítások. A Windows Update rendszerben, ha a frissítések mérete nagy volt, az operációs rendszernek több időre van szüksége a módosítások újrakonfigurálásához.
+Ez a probléma általában akkor fordul elő, ha a kiszolgáló a konfiguráció módosítása után a végső újraindítást végzi. Előfordulhat, hogy a konfigurációs módosítást a Windows-frissítések vagy a kiszolgáló szerepkörei/funkciójának módosításai inicializálják. Windows Update esetén, ha a frissítések mérete nagy, az operációs rendszernek több időre van szüksége a módosítások újrakonfigurálásához.
 
-## <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképgyűjtése
+## <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképének begyűjtése
 
-Ha a probléma nem oldódik meg, miután megvárta a módosítások feldolgozását, össze kell gyűjtenie egy memóriaképfájlt, és kapcsolatba kell lépnie az ügyfélszolgálattal. A kiírási fájl összegyűjtéséhez hajtsa végre az alábbi lépéseket:
+Ha a probléma nem oldódik meg a módosítások feldolgozásának megkezdése után, be kell gyűjtenie egy memóriakép-fájlt, és kapcsolatba kell lépnie a támogatási szolgálattal. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációs rendszer lemezének csatolása helyreállítási virtuális géphez
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](../windows/snapshot-copy-managed-disk.md)című témakörben talál.
-2. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](../windows/troubleshoot-recovery-disks-portal.md)
-3. Távoli asztal a helyreállítási virtuális géphez. 
-4. Ha az operációs rendszer lemeze titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt a következő lépésre lépne. További információt a nem indítható virtuális gép [titkosított operációsrendszer-lemezének visszafejtése című témakörben talál.](troubleshoot-bitlocker-boot-error.md#solution)
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+3. Távoli asztalról a helyreállítási virtuális gépre. 
+4. Ha az operációsrendszer-lemez titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt továbblép a következő lépésre. További információ: [a titkosított operációsrendszer-lemez visszafejtése a virtuális gépen, amely nem indítható el](troubleshoot-bitlocker-boot-error.md#solution).
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Dump fájl megkeresése és támogatási jegy beküldése
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Memóriaképfájl megkeresése és támogatási jegy beküldése
 
-1. A helyreállítási virtuális gép, ugrás a Windows mappába a csatlakoztatott operációs rendszer lemezén. Ha a csatlakoztatott operációsrendszer-lemezhez rendelt illesztőprogram-betű "F" betű, akkor az F:\Windows rendszerre kell lépnie.
-2. Keresse meg a memory.dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriaképfájllal. 
+1. A helyreállítási virtuális gépen nyissa meg a Windows mappát a csatolt operációsrendszer-lemezen. Ha a csatlakoztatott operációsrendszer-lemezhez hozzárendelt illesztőprogram betűjele F, akkor a F:\Windows. kell lépnie.
+2. Keresse meg a Memory. dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljában. 
 
-Ha nem találja a memóriaképfájlt, a következő lépéssel engedélyezze a memóriaképnaplót és a Soros konzolt.
+Ha nem találja a memóriaképet, helyezze át a következő lépést a memóriakép és a soros konzol engedélyezéséhez.
 
-### <a name="enable-dump-log-and-serial-console"></a>Memóriaképnapló és soros konzol engedélyezése
+### <a name="enable-dump-log-and-serial-console"></a>A memóriakép és a soros konzol engedélyezése
 
-A memóriaképnapló és a Soros konzol engedélyezéséhez futtassa a következő parancsfájlt.
+A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkriptet.
 
-1. Nyissa meg a rendszergazdai jogú parancssori munkamenetet (futtatás rendszergazdaként).
+1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa a következő parancsfájlt:
 
-    Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel f.  Cserélje le a megfelelő értéket a virtuális gép.
+    Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F.  Cserélje le a megfelelő értékre a virtuális gépen.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -87,8 +87,8 @@ A memóriaképnapló és a Soros konzol engedélyezéséhez futtassa a következ
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Győződjön meg arról, hogy elegendő hely van a lemezen annyi memória lefoglalásához, mint a RAM, amely a virtuális géphez kiválasztott mérettől függ.
-    2. Ha nincs elég hely, vagy ez egy nagy méretű virtuális gép (G, GS vagy E sorozat), akkor módosíthatja a helyet, ahol ez a fájl jön létre, és olvassa el, hogy bármely más adatlemez, amely a virtuális géphez csatlakozik. Ehhez meg kell változtatnia a következő kulcsot:
+    1. Győződjön meg arról, hogy elegendő lemezterület áll rendelkezésre a lemezen a RAM memóriájának lefoglalásához, amely a virtuális gép számára kiválasztott mérettől függ.
+    2. Ha nincs elég hely, vagy nagy méretű virtuális gép (G, GS vagy E sorozat), akkor megváltoztathatja a fájl létrehozásának helyét, és a virtuális géphez csatolt bármely más adatlemezre hivatkozni fog. Ehhez módosítania kell a következő kulcsot:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -97,12 +97,12 @@ A memóriaképnapló és a Soros konzol engedélyezéséhez futtassa a következ
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [Válassza le az operációs rendszer lemezét, majd csatlakoztassa újra az operációs rendszer lemezét az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
-4. Indítsa el a virtuális gép, és a soros konzol eléréséhez.
-5. A memóriakép aktiválásához válassza **a Nem maszkolható megszakítás (NMI) küldése** lehetőséget.
-    ![a nem maszkolásos megszakítás elküldésének helye](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
-6. Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális gép hez újra, gyűjtse dump fájlt.
+3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+4. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.
+5. A memóriakép kiváltásához válassza a **nem maszkolt megszakítás (NMI) küldése** lehetőséget.
+    ![a nem maszkolt megszakítások küldésére szolgáló rendszerkép](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
+6. Csatlakoztassa újra az operációsrendszer-lemezt egy helyreállítási virtuális géphez, és Gyűjtse össze a memóriaképet tartalmazó fájlt.
 
 ## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
-A memóriaképfájl összegyűjtése után lépjen kapcsolatba a [Microsoft támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a kiváltó ok elemzéséhez.
+A memóriakép-fájl összegyűjtése után forduljon a [Microsoft támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és elemezze a kiváltó okot.
