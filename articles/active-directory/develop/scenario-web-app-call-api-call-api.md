@@ -1,6 +1,6 @@
 ---
-title: Webes api felhívása webalkalmazásból – Microsoft identity platform | Azure
-description: Megtudhatja, hogy miként hozhat létre webes alkalmazásokat, amelyek webes API-kat hívnak meg (védett webes API-k hívása)
+title: Webes API meghívása egy webalkalmazásból – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre olyan webalkalmazást, amely webes API-kat hív meg (védett webes API-t hív meg)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,20 +11,24 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 84df33137566445015848655cfecb87ba67ef123
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868716"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181681"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: Webes API hívása
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
 
-Most, hogy rendelkezik egy jogkivonatot, meghívhat egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
+
+## <a name="call-a-protected-web-api"></a>Védett webes API meghívása
+
+A védett webes API-k meghívása a választott nyelvtől és keretrendszertől függ:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Az alábbiakban egyszerűsített kódot olvashat `HomeController`a művelethez. Ez a kód kap egy jogkivonatot a Microsoft Graph hívásához. A kód hozzáadva megmutatja, hogyan hívhatja meg a Microsoft Graphot REST API-ként. A Microsoft Graph API URL-címe az appsettings.json fájlban található, és a következő változóban `webOptions`olvasható:
+Íme a művelethez tartozó egyszerűsített kód `HomeController`. Ez a kód lekéri a Microsoft Graph meghívására szolgáló tokent. A kód hozzá lett adva, hogy megmutassa, hogyan hívhatja meg Microsoft Graph REST APIként. A Microsoft Graph API URL-címe a appSettings. JSON fájlban van megadva, és a következő nevű `webOptions`változóban olvasható:
 
 ```json
 {
@@ -40,48 +44,33 @@ Az alábbiakban egyszerűsített kódot olvashat `HomeController`a művelethez. 
 ```csharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token.
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
- // Get the account.
- IAccount account = await application.GetAccountAsync(accountIdentifier);
+ // Use the access token to call a protected web API.
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ 
+  var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 
- // Special case for guest users, because the guest ID / tenant ID are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
+  if (response.StatusCode == HttpStatusCode.OK)
+  {
+   var content = await response.Content.ReadAsStringAsync();
 
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
+   dynamic me = JsonConvert.DeserializeObject(content);
+   return me;
+  }
 
- // Calls the web API (Microsoft Graph in this case).
- HttpClient httpClient = new HttpClient();
- httpClient.DefaultRequestHeaders.Authorization =
-     new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
- var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
-
- if (response.StatusCode == HttpStatusCode.OK)
- {
-  var content = await response.Content.ReadAsStringAsync();
-
-  dynamic me = JsonConvert.DeserializeObject(content);
-  return me;
- }
-
- ViewData["Me"] = me;
- return View();
+  ViewData["Me"] = me;
+  return View();
 }
 ```
 
 > [!NOTE]
-> Használhatja ugyanazt az elvet bármely webes API-hívásához.
+> Ugyanezt az elvet használhatja bármely webes API meghívásához.
 >
-> A legtöbb Azure webes API-k egy SDK, amely leegyszerűsíti az API-hívás. Ez a Microsoft Graph-ra is igaz. A következő cikkben megtudhatja, hogy hol találhat olyan oktatóanyagot, amely szemlélteti az API-használatot.
+> A legtöbb Azure-beli webes API egy SDK-t biztosít, amely leegyszerűsíti az API meghívását. Ez Microsoft Graph is igaz. A következő cikkben megtudhatja, hol találhat egy olyan oktatóanyagot, amely bemutatja az API-használatot.
 
 # <a name="java"></a>[Java](#tab/java)
 

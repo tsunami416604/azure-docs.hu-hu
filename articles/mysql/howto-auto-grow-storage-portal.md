@@ -1,45 +1,45 @@
 ---
-title: Automatikus tárhelynövelés - Azure portal – Azure Database for MySQL
-description: Ez a cikk azt ismerteti, hogy miként engedélyezheti az Azure Database for MySQL automatikus bővítését az Azure Portal használatával
+title: Tárterület automatikus növekedése – Azure Portal – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növekedés tárolását Azure Database for MySQL használatával Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ddbcb0143a4f84d9e0f3dc2fedf780fca6637692
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062520"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Automatikus tárhelyek az Azure Database for MySQL-ben az Azure Portal használatával
-Ez a cikk azt ismerteti, hogyan konfigurálhatja az Azure Database for MySQL kiszolgálói tároló növekedését anélkül, hogy befolyásolná a számítási feladatokat.
+# <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>A tároló automatikus növekedése Azure Database for MySQL a Azure Portal használatával
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
 
-Amikor egy kiszolgáló eléri a lefoglalt tárolási korlátot, a kiszolgáló írásvédettként lesz megjelölve. Ha azonban engedélyezi a tároló automatikus növekedését, a kiszolgáló tárhelye növekszik a növekvő adatok befogadására. A 100 GB-nál kevesebb üzembe foglalt tárhellyel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5 GB-tal nő, amint az ingyenes tárhely a kiépített tár terület 1 GB-nál vagy a kiosztott tárterület 10%-ánál alacsonyabb. A 100 GB-nál több kiosztott tárhellyel rendelkező kiszolgálók esetében a kiosztott tárterület 5%-kal nő, ha a szabad tárhely a kiosztott tárterület 5%-a alatt van. Az [itt](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) megadott maximális tárolási korlátok érvényesek.
+Ha egy kiszolgáló eléri a lefoglalt tárterület korlátját, a kiszolgáló csak olvashatóként van megjelölve. Ha azonban engedélyezi a tárterület automatikus növekedését, a kiszolgáló tárterülete megnöveli a növekvő adatmennyiséget. A 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) megadott maximális tárolási korlátozások érvényesek.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató befejezéséhez a következőkre van szükség:
-- [Azure-adatbázis a MySQL-kiszolgálóhoz](quickstart-create-mysql-server-database-using-azure-portal.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Automatikus tárhelynövekedés engedélyezése 
+## <a name="enable-storage-auto-grow"></a>Tárterület automatikus növekedésének engedélyezése 
 
-A MySQL-kiszolgáló automatikus növekedésének beállításához kövesse az alábbi lépéseket:
+A MySQL Server Storage automatikus növekedésének beállításához kövesse az alábbi lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a meglévő Azure-adatbázis mySQL-kiszolgáló.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL-kiszolgálót.
 
-2. A MySQL-kiszolgáló lap **Beállítások** fejléce csoportban kattintson **a Tarifacsomag** elemre a Tarifacsomag lap megnyitásához.
+2. A MySQL-kiszolgáló lapon, a **Beállítások** fejléc alatt kattintson a **díjszabási** csomag elemre a díjszabási szintek lap megnyitásához.
 
-3. Az Automatikus növekedés szakaszban válassza az **Igen** lehetőséget a tárhely automatikus növekedésének engedélyezéséhez.
+3. Az automatikus növekedés szakaszban válassza az **Igen** lehetőséget a tárterület automatikus növekedésének engedélyezéséhez.
 
-    ![Azure Database for MySQL - Settings_Pricing_tier - Automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![Azure Database for MySQL-Settings_Pricing_tier – automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. A módosítások mentéséhez kattintson az **OK** gombra.
 
-5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve volt.
+5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
-    ![Azure Database for MySQL - automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
+    ![Azure Database for MySQL – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [arról, hogyan hozhat létre riasztásokat a mérőszámokon.](howto-alert-on-metric.md)
+Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

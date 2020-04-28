@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239846"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182344"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -127,7 +127,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 2. A **Házirend létrehozása és társítása** beállításnál adja meg a szabályzat nevét. **ContosoReplicationPolicy**használunk.
 3. Ebben az oktatóanyagban az alapértelmezett beállítások maradnak:
     - A **Másolás gyakorisága** azt jelzi, hogy a rendszer milyen gyakran replikálja a különbözeti adatváltozásokat (a kezdeti replikálás után) Az alapértelmezett gyakoriság 5 percenként történik.
-    - A **helyreállítási pont megőrzése** azt jelzi, hogy a helyreállítási pontok két óráig megmaradnak.
+    - A **helyreállítási pont megőrzése** azt jelzi, hogy a helyreállítási pontok két óráig megmaradnak. A Hyper-V-gazdagépeken üzemeltetett virtuális gépek védelme esetén a maximálisan megengedett megőrzési érték 24 óra.
     - Az **Alkalmazáskonzisztens pillanatkép gyakorisága** azt jelzi, hogy a rendszer minden órában létrehozza az alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat.
     - A **kezdeti replikálás kezdő időpontja** azt jelzi, hogy a kezdeti replikáció azonnal elindul.
 4. A szabályzat létrehozása után kattintson **az OK gombra**. Új szabályzat létrehozásakor a rendszer automatikusan hozzárendeli a megadott Hyper-V-helyhez. Az oktatóanyagban ez a **ContosoHyperVSite**.

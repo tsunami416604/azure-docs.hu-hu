@@ -1,47 +1,47 @@
 ---
-title: (ELAVULT) Az Azure DC/OS-fürt figyelése – Datadog
-description: Egy Azure Container Service-fürt figyelése datadog. A DC/OS webes felhasználói felület használatával telepítse a Datadog ügynökök a fürtre.
+title: ELAVULT Azure DC/OS-fürt figyelése – Datadoggal
+description: Azure Container Service-fürt figyelése a Datadoggal. A DC/OS webes felhasználói felület segítségével telepítse a Datadoggal-ügynököket a fürtön.
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcb005e39f89298b35bf0f3a0ad1e19601ae4d13
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275255"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166145"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(ELAVULT) Azure Container Service DC/OS-fürt figyelése datadogmal
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>ELAVULT Azure Container Service DC/OS-fürt figyelése a Datadoggal
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Ebben a cikkben a Datadog-ügynököket az Azure Container Service-fürt összes ügynökcsomópontjára telepítjük. Szüksége lesz egy fiókot Datadog ehhez a konfigurációhoz. 
+Ebben a cikkben a Datadoggal-ügynököket a Azure Container Service-fürt összes ügynök-csomópontjára telepíteni fogjuk. Ehhez a konfigurációhoz szüksége lesz egy Datadoggal-fiókra. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Fedezze fel a [Marathon UI](container-service-mesos-marathon-ui.md). Tovább, [https://datadoghq.com](https://datadoghq.com) hogy hozzanak létre egy Datadog számla. 
+[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Fedezze fel a [Marathon felhasználói felületét](container-service-mesos-marathon-ui.md). [https://datadoghq.com](https://datadoghq.com) A datadoggal-fiók beállításához nyissa meg a következőt:. 
 
-## <a name="datadog"></a>Datadog (Adatkutya)
-A Datadog egy figyelési szolgáltatás, amely az Azure Container Service-fürtön belüli tárolókból gyűjti a figyelési adatokat. Datadog rendelkezik egy Docker-integrációs irányítópult, ahol megtekintheti a tárolókon belül adott metrikák. A tárolókból összegyűjtött mérőszámok cpu, memória, hálózat és i/o szerint vannak rendezve. Datadog osztja metrikák tárolók és képek. Egy példa arra, hogy hogyan néz ki a felhasználói felület a CPU-használathoz, az alábbiakban található.
+## <a name="datadog"></a>Datadog
+A datadoggal egy figyelési szolgáltatás, amely a Azure Container Service-fürtön belüli tárolók figyelési adatait gyűjti. A datadoggal rendelkezik egy Docker-integrációs irányítópulttal, ahol megtekintheti a tárolókban található konkrét mérőszámokat. A tárolók által gyűjtött mérőszámokat a CPU, a memória, a hálózat és az I/O rendezi. A datadoggal tárolók és képek számára osztja szét a metrikákat. Alább látható egy példa arra, hogy a felhasználói felület hogyan néz ki a CPU-használathoz.
 
-![Datadog felhasználói felület](./media/container-service-monitoring/datadog4.png)
+![Datadoggal felhasználói felület](./media/container-service-monitoring/datadog4.png)
 
-## <a name="configure-a-datadog-deployment-with-marathon"></a>Datadog üzembe helyezésének konfigurálása a Marathon segítségével
-Ezek a lépések bemutatják, hogyan konfigurálhatja és telepítheti a Datadog-alkalmazásokat a fürtre a Marathon segítségével. 
+## <a name="configure-a-datadog-deployment-with-marathon"></a>Datadoggal-telepítés konfigurálása a Marathon segítségével
+Ezek a lépések bemutatják, hogyan konfigurálhat és helyezhet üzembe Datadoggal-alkalmazásokat a fürtön a Marathon segítségével. 
 
-A DC/OS felhasználói [http://localhost:80/](http://localhost:80/)felületét a segítségével érheti el. Miután a DC / OS UI navigálni a "Universe", amely a bal alsó sarokban, majd keressen a "Datadog", és kattintson a "Telepítés."
+A DC/OS felhasználói felületét `http://localhost:80/`a használatával érheti el. Egyszer a DC/OS felhasználói felületen navigáljon a "Universe" elemre, amely a bal alsó sarokban található, majd keressen rá a "Datadoggal" kifejezésre, és kattintson a "telepítés" gombra.
 
-![Datadog csomag a DC / OS Univerzum](./media/container-service-monitoring/datadog1.png)
+![Datadoggal csomag a DC/OS-Univerzumon belül](./media/container-service-monitoring/datadog1.png)
 
-Most a konfiguráció befejezéséhez szüksége lesz egy Datadog fiókra vagy egy ingyenes próbafiókra. Miután bejelentkezett a Datadog webhelyre, balra néz, és az Integrációk -> majd [API-kat.](https://app.datadoghq.com/account/settings#api) 
+Most, hogy elvégzi a konfigurálást, szüksége lesz egy Datadoggal-fiókra vagy egy ingyenes próbaverziós fiókra. Miután bejelentkezett a Datadoggal webhelyre, keresse fel a bal oldalt, és válassza az integrációk-> majd az [API](https://app.datadoghq.com/account/settings#api)-k lehetőséget. 
 
-![Datadog API kulcs](./media/container-service-monitoring/datadog2.png)
+![Datadoggal API-kulcs](./media/container-service-monitoring/datadog2.png)
 
-Ezután adja meg az API-kulcsot a Datadog konfigurációa a DC / OS Univerzumban. 
+Ezután adja meg az API-kulcsot a DC/OS univerzumban található Datadoggal-konfigurációba. 
 
-![Datadog konfiguráció a DC/OS univerzumban](./media/container-service-monitoring/datadog3.png) 
+![Datadoggal-konfiguráció a DC/OS-univerzumban](./media/container-service-monitoring/datadog3.png) 
 
-A fenti konfigurációs példányok vannak beállítva 10000000, így amikor egy új csomópont ot a fürtdatadog automatikusan telepíti az ügynököt, hogy a csomópont. Ez egy átmeneti megoldás. Miután telepítette a csomagot, vissza kell navigálnia a Datadog webhelyére, és meg kell találnia a "[Irányítópultokat](https://app.datadoghq.com/dash/list)". Innen egyéni és integrációs irányítópultok láthatók. A [Docker-irányítópult](https://app.datadoghq.com/screen/integration/docker) a fürt figyeléséhez szükséges összes tárolómetrikával rendelkezik. 
+A fenti konfigurációs példányok értéke 10000000, így valahányszor új csomópont kerül a fürt Datadoggal, a rendszer automatikusan telepíti az ügynököt a csomópontra. Ez egy átmeneti megoldás. A csomag telepítése után térjen vissza a Datadoggal webhelyére, és keresse meg az "[irányítópultok](https://app.datadoghq.com/dash/list)" kifejezést. Ekkor megjelenik az egyéni és integrációs irányítópultok. A [Docker irányítópultján](https://app.datadoghq.com/screen/integration/docker) megjelenik a fürt figyeléséhez szükséges összes tároló-metrika. 
 

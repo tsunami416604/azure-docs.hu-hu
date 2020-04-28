@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory jelszó nélküli bejelentkezése (előzetes verzió)
-description: Ismerje meg az Azure Active Directoryba való jelszó nélküli bejelentkezés lehetőségeit a FIDO2 biztonsági kulcsokkal vagy a Microsoft Authenticator alkalmazással
+title: Jelszó nélküli bejelentkezés Azure Active Directory (előzetes verzió)
+description: További tudnivalók a jelszó nélküli bejelentkezés lehetőségeiről Azure Active Directory FIDO2 biztonsági kulcsok vagy a Microsoft Authenticator alkalmazás használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,163 +11,163 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
-ms.translationtype: MT
+ms.openlocfilehash: fe602972cb16bf24b1c35b2aadfe25c499bce69f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743539"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181851"
 ---
-# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Jelszó nélküli hitelesítési lehetőségek az Azure Active Directoryhoz
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
-A többtényezős hitelesítés (MFA) nagyszerű módja a szervezet védelmének, de a felhasználók gyakran frusztrálják a további biztonsági réteget, ráadásul meg kell emlékezniük a jelszavukra. Jelszó nélküli hitelesítési módszerek sokkal kényelmesebb, mert a jelszót eltávolítjuk, és helyébe valami van, plusz valami van, vagy valami, amit tud.
+A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók gyakran frusztráltak a további biztonsági réteggel szemben, hogy emlékezzenek a jelszavára. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, vagy valamire, amit tud.
 
-|   | Valami, ami van | Valami, ami vagy tudod |
+|   | Valamilyen dolog | Amit Ön vagy ismer |
 | --- | --- | --- |
 | Jelszó nélküli | Windows 10-es eszköz, telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
-Minden szervezetnek különböző igényei vannak a hitelesítéssel kapcsolatban. A Microsoft a következő három jelszó nélküli hitelesítési lehetőséget kínálja, amelyek integrálhatók az Azure Active Directoryba (Azure AD):
+A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft a következő három, a Azure Active Directory (Azure AD) szolgáltatással integrálható, jelszóval nem kompatibilis hitelesítési lehetőséget nyújt:
 
 - Vállalati Windows Hello
 - A Microsoft Authenticator alkalmazás
 - FIDO2 biztonsági kulcsok
 
-![Hitelesítés: Biztonság kontra kényelem](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+![Hitelesítés: biztonság és kényelem](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
 ## <a name="windows-hello-for-business"></a>Vállalati Windows Hello
 
-A Windows Hello for Business ideális olyan informatikai dolgozók számára, akik saját Windows pc-vel rendelkeznek. A biometrikus és PIN-kód közvetlenül a felhasználó számítógépéhez van kötve, ami megakadályozza a hozzáférést a tulajdonoson kívül mástól. A nyilvános kulcsú infrastruktúra (PKI) integrációjával és az egyszeri bejelentkezés (SSO) beépített támogatásával a Windows Hello for Business kényelmes módszert kínál a vállalati erőforrások zökkenőmentes eléréséhez a helyszínen és a felhőben.
+A vállalati Windows Hello ideális olyan információkkal dolgozó munkatársak számára, akik saját kijelölt Windows-számítógéppel rendelkeznek. A biometrikus és PIN-kód közvetlenül a felhasználó SZÁMÍTÓGÉPéhez van kötve, ami megakadályozza a hozzáférést a tulajdonostól eltérő személyek számára. A nyilvános kulcsokra épülő infrastruktúrával (PKI) való integrációval és az egyszeri bejelentkezés (SSO) beépített támogatásával a Windows Hello for Business kényelmes módszert kínál a vállalati erőforrások zökkenőmentes elérésére a helyszínen és a felhőben.
 
-![Példa a Windows Hello vállalati verzióval való bejelentkezésre](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
+![Felhasználói bejelentkezés a vállalati Windows Hello-ben – példa](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
 
-A következő lépések bemutatják, hogyan működik a bejelentkezési folyamat az Azure Active Directoryval.
+A következő lépések bemutatják, hogyan működik a bejelentkezési folyamat a Azure Active Directory.
 
-![A Windows Hello vállalati verzióval való felhasználói bejelentkezés lépéseit ismerő diagram](./media/concept-authentication-passwordless/windows-hello-flow.png)
+![A vállalati Windows Hello szolgáltatásban a felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
-1. A felhasználó biometrikus vagy PIN-kódos kézmozdulattal jelentkezik be a Windows rendszerbe. A kézmozdulat feloldja a Windows Hello for Business titkos kulcsát, és elküldi a felhőalapú hitelesítés biztonsági támogatási szolgáltatójának, a *felhőalapú hozzáférési pont szolgáltatónak.*
-1. A felhőbeli HOZZÁFÉRÉSI-szolgáltató nonce-t kér az Azure AD-től.
-1. Az Azure AD egy 5 percig érvényes nonce értéket ad vissza.
-1. A felhőalapú HOZZÁFÉRÉSI-szolgáltatás-szolgáltató aláírja a nonce a felhasználó személyes kulcsa használatával, és visszaadja az aláírt nonce az Azure AD.
-1. Az Azure AD érvényesíti az aláírt nonce a felhasználó biztonságosan regisztrált nyilvános kulcs a nonce aláírással. Az aláírás érvényesítése után az Azure AD majd érvényesíti a visszaküldött aláírt nonce. A nonce érvényesítésekor az Azure AD létrehoz egy elsődleges frissítési jogkivonatot (PRT) az eszköz átviteli kulcsára titkosított munkamenetkulccsal, és visszaadja azt a felhőalapú hozzáférési pont-szolgáltatónak.
-1. A felhőalapú hozzáférési pont szolgáltató a titkosított PRT-t munkamenetkulccsal kapja meg. Az eszköz személyes átviteli kulcsával a felhőalapú hozzáférési pont szolgáltató visszafejti a munkamenetkulcsot, és az eszköz platformmegbízhatósági moduljával (TPM) védi a munkamenetkulcsot.
-1. A felhőalapú hozzáférési pont szolgáltató sikeres hitelesítési választ ad vissza a Windows rendszernek. A felhasználó ezután anélkül férhet hozzá a Windows, valamint a felhőbeli és helyszíni alkalmazásokhoz, hogy újra hitelesítenie kellene magát.The user is then able to access Windows as well as cloud and on-premises applications without the need to authenticate again (SSO).
+1. A felhasználó biometrikus vagy PIN-kód típusú kézmozdulattal jelentkezik be a Windowsba. A kézmozdulat feloldja a vállalati Windows Hello-kulcs zárolását, és elküldjük a Cloud Authentication biztonsági támogatási szolgáltatónak, amelyet a *Felhőbeli AP-szolgáltatónak*nevezünk.
+1. A Felhőbeli AP-szolgáltató az Azure AD-ből kér egy alkalomot.
+1. Az Azure AD egy egypéldányos értéket ad vissza, amely 5 percig érvényes.
+1. A Felhőbeli AP-szolgáltató aláírja az időpontot a felhasználó titkos kulcsa alapján, és visszaadja az aláírt alkalmi lehetőséget az Azure AD-nek.
+1. Az Azure AD a felhasználó biztonságos regisztrált nyilvános kulcsával érvényesíti az aláírt alkalmi használatot az egyszeres aláírással. Az aláírás ellenőrzése után az Azure AD ezt követően érvényesíti a visszaadott, aláírt időpontot. Az egyszeres hitelesítés ellenőrzése után az Azure AD létrehoz egy elsődleges frissítési tokent (PRT) az eszköz átviteli kulcsához titkosított munkamenetkulcs használatával, és visszaadja a Felhőbeli AP-szolgáltatónak.
+1. A Felhőbeli AP-szolgáltató fogadja a titkosított PRT-t a munkamenet-kulccsal. Az eszköz privát átviteli kulcsa segítségével a Cloud AP Provider visszafejti a munkamenetkulcsot, és a platformmegbízhatósági modul (TPM) használatával védi a munkamenetkulcsot.
+1. A Felhőbeli AP-szolgáltató sikeres hitelesítési választ ad vissza a Windowsnak. A felhasználó ezután hozzáférhet a Windowshoz, valamint a Felhőbeli és a helyszíni alkalmazásokhoz anélkül, hogy újra kellene hitelesítenie magát (SSO).
 
-A Windows Hello vállalati verzió [tervezési útmutatója](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével meghozhatja a Windows Hello vállalati verzió telepítésének típusát és a figyelembe veendő lehetőségeket.
+A vállalati Windows Hello [tervezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével döntéseket hozhat a vállalati Windows Hello üzembe helyezésének típusáról és a szükséges lehetőségekről.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Hitelesítő alkalmazás
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 
-Lehetővé teszi, hogy az alkalmazott telefonja jelszó nélküli hitelesítési módszerré váljon. Lehet, hogy már használja a Microsoft Authenticator App, mint egy kényelmes többtényezős hitelesítési lehetőség mellett egy jelszót. A Hitelesítő alkalmazást jelszó nélküli beállításként is használhatja.
+Annak engedélyezése, hogy az alkalmazott telefonja jelszavas hitelesítésen alapuló hitelesítési módszer legyen. Előfordulhat, hogy a jelszó mellett már használja a Microsoft Authenticator alkalmazást kényelmes multi-Factor Authentication beállításként. A hitelesítő alkalmazást jelszóval nem rendelkező megoldásként is használhatja.
 
 ![Bejelentkezés a Microsoft Edge-be a Microsoft Authenticator alkalmazással](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-A Hitelesítő alkalmazás minden iOS vagy Android telefont erős, jelszó nélküli hitelesítő adattá alakít. A felhasználók bármely platformra vagy böngészőbe bejelentkezhetnek, ha értesítést kapnak a telefonjukon, amely megfelel a képernyőn megjelenő számnak a telefonjukon lévőszámnak, majd a biometrikus (érintés vagy arc) vagy a PIN-kód segítségével megerősítik. A telepítés részleteiért olvassa el [A Microsoft Authenticator alkalmazás letöltése és telepítése](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) című témakört.
+A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) című témakört.
 
-Az Authenticator alkalmazással történő jelszó nélküli hitelesítés a Windows Hello for Business alapvető mintájával megegyezik. Ez egy kicsit bonyolultabb, mivel a felhasználót azonosítani kell, hogy az Azure AD megtalálja a Microsoft Authenticator Alkalmazás használt verzióját:
+A hitelesítő alkalmazással való jelszóval nem rendelkező hitelesítés a vállalati Windows Hello szolgáltatással megegyező alapszintű mintát követi. Ez egy kicsit bonyolultabb, mivel a felhasználó azonosítására van szükség, hogy az Azure AD megtalálja a használt Microsoft Authenticator alkalmazás verzióját:
 
-![A Microsoft Authenticator alkalmazással való felhasználói bejelentkezés lépéseit ismertetni kívánt diagram](./media/concept-authentication-passwordless/authenticator-app-flow.png)
+![A Microsoft Authenticator alkalmazással való felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/authenticator-app-flow.png)
 
-1. A felhasználó megadja a felhasználónevét.
-1. Az Azure AD észleli, hogy a felhasználó erős hitelesítő adatokkal rendelkezik, és elindítja az erős hitelesítő adatok folyamata.
-1. Az értesítést az Apple Push Notification Service (APNS) keresztül küldi el az alkalmazásnak iOS-eszközökön, vagy a Firebase Cloud Messaging (FCM) segítségével Android-eszközökön.
+1. A felhasználó beírja a felhasználónevét.
+1. Az Azure AD észleli, hogy a felhasználó erős hitelesítő adatokkal rendelkezik, és elindítja a hitelesítő adatok erős folyamatát.
+1. Értesítés küldése az alkalmazásnak az iOS-eszközökön Apple Push Notification Service (APNS), vagy az Android-eszközökön futó Firebase Cloud Messaging (FCM) használatával.
 1. A felhasználó megkapja a leküldéses értesítést, és megnyitja az alkalmazást.
-1. Az alkalmazás meghívja az Azure AD-t, és megkapja a jelenlétigazolási kihívást, és nonce.
-1. A felhasználó a személyes kulcs feloldásához beírja a kihívást a biometrikus vagy PIN-kód megadásával.
-1. The nonce is signed with the private key and sent back to Azure AD.
-1. Az Azure AD nyilvános/titkos kulcs-érvényesítést hajt végre, és egy jogkivonatot ad vissza.
+1. Az alkalmazás meghívja az Azure AD-t, és befogadja a jelenléti igazolást.
+1. A felhasználó a titkos kulcs feloldásához a biometrikus vagy PIN-kód megadásával befejezi a kihívást.
+1. A rendszer aláírja a titkos kulcsot, és visszaküldi az Azure AD-nek.
+1. Az Azure AD nyilvános/titkos kulcs érvényesítését hajtja végre, és visszaadja a tokent.
 
 ## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
-FiDO2 biztonsági kulcsok egy nem phishable szabványokon alapuló jelszó nélküli hitelesítési módszer, amely jöhet bármilyen formában tényező. A Fast Identity Online (FIDO) a jelszó nélküli hitelesítés nyílt szabványa. A FIDO lehetővé teszi a felhasználók és szervezetek számára, hogy a szabvány segítségével jelentkezzenek be az erőforrásaikba felhasználónév vagy jelszó nélkül egy külső biztonsági kulccsal vagy egy eszközbe épített platformkulccsal.
+A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. A parancs lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközbe épített platform-kulccsal.
 
-A nyilvános előzetes verzióhoz az alkalmazottak biztonsági kulcsok használatával bejelentkezhetnek az Azure AD-be vagy a hibrid Azure AD-hez csatlakozott Windows 10-es eszközökre, és egyszeri bejelentkezést kaphatnak a felhőbeli és helyszíni erőforrásaikba. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. FiDO2 biztonsági kulcsok egy nagyszerű lehetőség a vállalatok számára, akik nagyon biztonsági érzékeny, vagy forgatókönyvek vagy alkalmazottak, akik nem hajlandóak, vagy képes használni a telefont, mint a második tényező.
+A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsok használatával jelentkezhetnek be az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést kapnak a felhőbe és a helyszíni erőforrásokhoz. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
 
-![Bejelentkezés a Microsoft Edge-be biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
+![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-A következő eljárást akkor használja, ha a felhasználó FIDO2 biztonsági kulccsal jelentkezik be:
+A következő folyamat akkor használatos, amikor a felhasználó egy FIDO2 biztonsági kulccsal jelentkezik be:
 
-![A FIDO2 biztonsági kulccsal való felhasználói bejelentkezés lépéseit ismertetni kívánt diagram](./media/concept-authentication-passwordless/fido2-security-key-flow.png)
+![A FIDO2 biztonsági kulccsal való felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/fido2-security-key-flow.png)
 
-1. A felhasználó a FIDO2 biztonsági kulcsot csatlakoztatja a számítógépéhez.
+1. A felhasználó csatlakoztatja a FIDO2 biztonsági kulcsot a számítógépéhez.
 2. A Windows észleli a FIDO2 biztonsági kulcsot.
 3. A Windows hitelesítési kérelmet küld.
-4. Az Azure AD küld vissza egy nonce.
-5. A felhasználó befejezi a gesztust, hogy feloldja a FIDO2 biztonsági kulcs biztonságos enklávéjában tárolt személyes kulcsot.
-6. A FIDO2 biztonsági kulcs aláírja a nonce a személyes kulcsot.
-7. Az elsődleges frissítési jogkivonat (PRT) token kérelem aláírt nonce küldi az Azure AD.The primary refresh token (PRT) token request with signed nonce is sent to Azure AD.
-8. Az Azure AD ellenőrzi az aláírt nonce a FIDO2 nyilvános kulcs használatával.
-9. Az Azure AD visszaadja a PRT-t a helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez.
+4. Az Azure AD egy alkalomból álló üzenetet küld vissza.
+5. A felhasználó befejezi a kézmozdulatot a FIDO2 biztonsági kulcs biztonságos enklávéban tárolt titkos kulcs feloldásához.
+6. A FIDO2 biztonsági kulcs aláírja az egyszeres kulcsot a titkos kulccsal.
+7. Az Azure AD-nek az elsődleges frissítési jogkivonat (PRT) jogkivonat-kérelmét aláírt egyszer kell elküldeni.
+8. Az Azure AD a FIDO2 nyilvános kulcsával ellenőrzi a bejelentkezett alkalmi használatot.
+9. Az Azure AD a PRT-t a helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez adja vissza.
 
-Bár sok kulcs, amely FIDO2 által hitelesített FIDO Alliance, a Microsoft igényel néhány opcionális kiterjesztések a FIDO2 Client-to-Authenticator Protokoll (CTAP) specifikáció kell végrehajtani a szállító számára, hogy biztosítsák a maximális biztonságot és a legjobb élményt.
+Noha a FIDO2 által hitelesített kulcsok sok kulcsot használnak, a Microsoft a FIDO2 ügyfél és a hitelesítő protokoll (CTAP) specifikációjának bizonyos opcionális kiterjesztését igényli a gyártó által megvalósított maximális biztonság és a legjobb felhasználói élmény biztosítása érdekében.
 
-A biztonsági **kulcsnak** a FIDO2 CTAP protokoll következő szolgáltatásait és bővítményeit kell megvalósítania ahhoz, hogy a Microsoft kompatibilis legyen:
+A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **kell** megvalósítania a FIDO2 CTAP-protokollból, hogy a Microsoft-kompatibilis legyen:
 
-| # | Szolgáltatás / Bővítmény megbízhatósága | Miért van szükség erre a funkcióra vagy bővítményre? |
+| # | Szolgáltatás/bővítmény megbízhatósága | Miért szükséges a funkció vagy a bővítmény? |
 | --- | --- | --- |
-| 1 | Rezidens kulcs | Ez a szolgáltatás lehetővé teszi, hogy a biztonsági kulcs hordozható legyen, ahol a hitelesítő adatok a biztonsági kulcson tárolódnak. |
-| 2 | Ügyfél pin | Ez a szolgáltatás lehetővé teszi a hitelesítő adatok védelmét egy második tényezővel, és olyan biztonsági kulcsokra vonatkozik, amelyek nem rendelkeznek felhasználói felülettel. |
-| 3 | hmac-titkos | Ez a bővítmény biztosítja, hogy akkor jelentkezzen be az eszközre, amikor az nem működik, vagy repülőgép módban van. |
-| 4 | Több fiók RP-nként | Ez a funkció biztosítja, hogy ugyanazt a biztonsági kulcsot több szolgáltatás, például a Microsoft-fiók és az Azure Active Directory között is használhatja. |
+| 1 | Rezidens kulcs | Ez a funkció lehetővé teszi, hogy a biztonsági kulcs hordozható legyen, ahol a hitelesítő adatokat a biztonsági kulcs tárolja. |
+| 2 | Ügyfél PIN-kódja | Ez a funkció lehetővé teszi, hogy a hitelesítő adatait egy második tényezővel megvédje, és azokra a biztonsági kulcsokra vonatkozzon, amelyek nem rendelkeznek felhasználói felülettel. |
+| 3 | HMAC – titkos kód | Ez a bővítmény biztosítja, hogy bejelentkezzen az eszközre, amikor az offline vagy a repülőgép üzemmódban van. |
+| 4 | Több fiók/RP | Ez a funkció biztosítja, hogy ugyanazt a biztonsági kulcsot használja több szolgáltatáshoz, például a Microsoft-fiókhoz és a Azure Active Directory. |
 
-A következő szolgáltatók kínálnak FIDO2 biztonsági kulcsok különböző formában tényezők, amelyekről ismert, hogy kompatibilis a jelszó nélküli élményt. Javasoljuk, hogy értékelje a biztonsági tulajdonságait ezeka kulcsok kapcsolatba lépve a szállító, valamint a FIDO Szövetség.
+A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. Javasoljuk, hogy a kulcsok biztonsági tulajdonságainak kiértékeléséhez vegye fel a kapcsolatot a gyártóval, valamint a következőt:.
 
 | Szolgáltató | Kapcsolattartó |
 | --- | --- |
-| Yubico között | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
+| Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
-| Hid | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Nyugalom | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
+| HID fájlok | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
+| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
-| Gemalto (Thales Csoport) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| A OneSpan Zrt. | [https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf](https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf) |
-| IDmelon Technologies Kft. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
+| Gemalto (Thales csoport) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
+| OneSpan Inc. | [https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf](https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf) |
+| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
 
 > [!NOTE]
-> Ha NFC-alapú biztonsági kulcsokat vásárol és szeretne használni, a biztonsági kulcshoz támogatott NFC-olvasóra van szüksége. Az NFC-olvasó nem azure-követelmény vagy korlátozás. A támogatott NFC-olvasók listájáról érdeklődjön a forgalmazónál az NFC-alapú biztonsági kulcsról.
+> Ha NFC-alapú biztonsági kulcsok megvásárlását és megtervezését tervezi, akkor a biztonsági kulcshoz támogatott NFC-olvasóra van szükség. Az NFC-olvasó nem Azure-követelmény vagy-korlátozás. A támogatott NFC-olvasók listáját az NFC-alapú biztonsági kulcs gyártójánál találja.
 
-Ha Ön gyártó, és szeretné, hogy az eszköz a [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)támogatott eszközök listáját, forduljon a.
+Ha Ön szállító, és az eszközt a támogatott eszközök listáján szeretné beszerezni, forduljon [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)a következőhöz:.
 
-## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióval?
+## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióban?
 
-- A rendszergazdák jelszó nélküli hitelesítési módszereket engedélyezhetnek a bérlőjüknek
-- A rendszergazdák megcélozhatják az összes felhasználót, vagy kiválaszthatják a bérlőn belüli felhasználókat/csoportokat az egyes módszerekhez
-- A végfelhasználók regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket a fiókportáljukon
+- A rendszergazdák engedélyezhetik a jelszóval nem rendelkező hitelesítési módszereket a bérlők számára
+- A rendszergazdák az összes felhasználót megcélozhatja, vagy kiválaszthatják a bérlőn belüli felhasználókat és csoportokat az egyes módszereknél
+- A végfelhasználók a fiók-portálon regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket
 - A végfelhasználók ezekkel a jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be
-   - Microsoft Authenticator App: Olyan esetekben működik, ahol az Azure AD-hitelesítést használják, beleértve az összes böngészőt, a Windows 10 Oobe (OOBE) beállítása során, valamint az integrált mobilalkalmazásokat bármely operációs rendszeren.
-   - Biztonsági kulcsok: Dolgozzon a Windows 10 zárolási képernyőjén és a weben olyan támogatott böngészőkben, mint a Microsoft Edge (mind az örökölt, mind az új Edge).
+   - Microsoft Authenticator alkalmazás: olyan helyzetekben működik, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) beállítása során, valamint az integrált Mobile apps bármely operációs rendszeren.
+   - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén használható böngészők, például a Microsoft Edge (örökölt és új Edge).
 
-## <a name="choose-a-passwordless-method"></a>Válasszon jelszó nélküli módszert
+## <a name="choose-a-passwordless-method"></a>Jelszóval nem rendelkező metódus kiválasztása
 
-A három jelszó nélküli beállítás közötti választás a vállalat biztonsági, platform- és alkalmazáskövetelményeitől függ.
+A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vállalat biztonsági, platform-és alkalmazási követelményeitől függ.
 
-Íme néhány tényező, amelyet figyelembe kell vennie a Microsoft jelszó nélküli technológiájának kiválasztásakor:
+Íme néhány tényező, amelyet érdemes figyelembe venni a Microsoft jelszavas technológiájának kiválasztásakor:
 
 ||**Vállalati Windows Hello**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
 |:-|:-|:-|:-|
-|**Előfeltétel**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (androidos és Android-alapú eszközök androidos 6.0 vagy újabb verziók at.)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
+|**Előfeltétel**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
 |**Mód**|Platform|Szoftverek|Hardver|
-|**Rendszerek és eszközök**|Beépített platformmegbízhatósági modullal (TPM) rendelkező számítógép<br>PIN- és biometrikus felismerés |PIN- és biometrikus felismerés telefonon|FiDO2 biztonsági eszközök, amelyek microsoftos kompatibilisek|
-|**Felhasználó felület**|Jelentkezzen be PIN-kóddal vagy biometrikus felismeréssel (arc-, írisz vagy ujjlenyomat) Windows-eszközökkel.<br>A Windows Hello-hitelesítés az eszközhöz van kötve; a felhasználónak szüksége van mind az eszközre, mind egy bejelentkezési összetevőre, például egy PIN-kódra vagy biometrikus tényezőre a vállalati erőforrások eléréséhez.|Jelentkezzen be mobiltelefonon ujjlenyomat-vizsgálattal, arc- vagy íriszfelismeréssel vagy PIN-kóddal.<br>A felhasználók bejelentkeznek a munkahelyi vagy személyes fiókba számítógépükről vagy mobiltelefonjukról.|Bejelentkezés FIDO2 biztonsági eszközzel (biometria, PIN-kód és NFC)<br>A felhasználó hozzáférhet a szervezet vezérlőialapján, és pin-kód, biometria alapján hitelesítheti magát olyan eszközök használatával, mint az USB biztonsági kulcsok és az NFC-kompatibilis intelligens kártyák, kulcsok vagy viselhető eszközök.|
-|**Engedélyezett forgatókönyvek**| Jelszó nélküli felhasználói élmény a Windows-eszközzel.<br>Az eszközre és az alkalmazásokra való egyszeri bejelentkezésre alkalmas dedikált munkahelyi pc-re alkalmazható.|Jelszó nélküli bárhol megoldás segítségével mobiltelefon.<br>Bármilyen eszközről elérhető a munkahelyi vagy személyes alkalmazások az interneten.|Jelszó nélküli tapasztalat a biometrikus, PIN-kódot és NFC-t használó dolgozók számára.<br>A megosztott számítógépekre vonatkozik, és ahol a mobiltelefon nem járható út (például a help desk személyzete, a nyilvános kioszk vagy a kórházi csapat)|
+|**Rendszerek és eszközök**|Beépített platformmegbízhatósági modul (TPM) rendelkező számítógép<br>PIN-kód és biometriai felismerés |PIN-kód és biometriai felismerés telefonon|Microsoft-kompatibilis FIDO2 biztonsági eszközök|
+|**Felhasználó felület**|Bejelentkezés PIN-kód vagy biometrikus felismerés (arc, írisz vagy ujjlenyomat) használatával Windows-eszközökkel.<br>A Windows Hello-hitelesítés az eszközhöz van kötve; a felhasználónak az eszközre és egy bejelentkezési összetevőre is szüksége van, például PIN-kódot vagy biometrikus tényezőt a vállalati erőforrások eléréséhez.|Jelentkezzen be egy olyan mobiltelefonnal, amely ujjlenyomat-vizsgálatot, arc-vagy írisz-felismerést vagy PIN-kódot használ.<br>A felhasználók a SZÁMÍTÓGÉPRŐL vagy a mobiltelefonjára bejelentkezhetnek a munkahelyi vagy személyes fiókba.|Bejelentkezés a FIDO2 biztonsági eszközzel (biometria, PIN-kód és NFC)<br>A felhasználó a szervezeti vezérlők és a PIN-kód alapján végzett hitelesítés alapján képes hozzáférni az eszközhöz, például az USB biztonsági kulcsok és az NFC-kompatibilis intelligens kártyák, kulcsok vagy hordható eszközök használatával.|
+|**Engedélyezett forgatókönyvek**| Jelszó nélküli felhasználói élmény a Windows-eszközön.<br>A dedikált munkahelyi SZÁMÍTÓGÉPekre alkalmazható, amely képes az egyszeri bejelentkezésre az eszközre és az alkalmazásokra.|Jelszó nélküli, bárhol elérhető megoldás mobiltelefon használatával.<br>A munkahelyi vagy személyes alkalmazások webes elérésére bármely eszközről.|Jelszó nélküli felhasználói élmény a biometria, a PIN-kód és az NFC használatát végző feldolgozók számára.<br>A megosztott számítógépekre alkalmazható, és ha a mobiltelefon nem életképes megoldás (például ügyfélszolgálati munkatárs, nyilvános kioszk vagy kórházi csapat)|
 
-Az alábbi táblázat segítségével választhatja ki, hogy melyik módszer támogatja a követelményeket és a felhasználókat.
+A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Forgatókönyv|Környezet|Jelszó nélküli technológia|
+|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
-|**Felügyelet**|Biztonságos hozzáférés egy eszközhöz a felügyeleti feladatokhoz|Hozzárendelt Windows 10-eszköz|Windows Hello Vállalati verzió és/vagy FIDO2 biztonsági kulcs|
-|**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil vagy nem windowsos eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
-|**Információs dolgozó**|Termelékenységi munka|Hozzárendelt Windows 10-eszköz|Windows Hello Vállalati verzió és/vagy FIDO2 biztonsági kulcs|
-|**Információs dolgozó**|Termelékenységi munka| Mobil vagy nem windowsos eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
-|**Frontline dolgozó**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-eszközök|FIDO2 biztonsági kulcsok|
+|**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
+|**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
+|**Információkkal dolgozó feldolgozó**|Termelékenységi munka|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
+|**Információkkal dolgozó feldolgozó**|Termelékenységi munka| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
+|**Frontline Worker**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-es eszközök|FIDO2 biztonsági kulcsok|
 
 ## <a name="next-steps"></a>További lépések
 
-[A FIDO2 biztonságikulcs jelszó nélküli beállításainak engedélyezése a szervezetben](howto-authentication-passwordless-security-key.md)
+[FIDO2 biztonsági kulcs jelszavas beállításainak engedélyezése a szervezetben](howto-authentication-passwordless-security-key.md)
 
-[Telefonalapú jelszó nélküli beállítások engedélyezése a szervezetben](howto-authentication-passwordless-phone.md)
+[Telefonos jelszó-megadási lehetőségek engedélyezése a szervezetben](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>Külső hivatkozások
 
-[FIDO Szövetség](https://fidoalliance.org/)
+[A-Szövetség](https://fidoalliance.org/)
 
-[FIDO2 CTAP specifikáció](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+[FIDO2 CTAP-specifikáció](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

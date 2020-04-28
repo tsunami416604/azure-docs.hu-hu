@@ -1,6 +1,6 @@
 ---
-title: Az Azure Portal használata az ügyfél által felügyelt kulcsok konfigurálásához az importálási/exportálási szolgáltatáshoz
-description: Megtudhatja, hogy az Azure Portal használatával hogyan konfigurálhatja az ügyfelek által felügyelt kulcsokat az Azure Key Vault for Azure import/export szolgáltatással. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlők létrehozását, elforgatását, letiltását és visszavonását.
+title: Az ügyfél által felügyelt kulcsok konfigurálása az importálási/exportálási szolgáltatáshoz a Azure Portal használatával
+description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat az Azure import/export szolgáltatáshoz Azure Key Vault az Azure Portal használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,103 +8,102 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456498"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176328"
 ---
-# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Ügyfél által felügyelt kulcsok használata az Azure Key Vaultban importálási/exportálási szolgáltatáshoz
+# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz
 
-Az Azure Import/Export védi a meghajtók titkosítási kulcson keresztül a meghajtók zárolásához használt BitLocker-kulcsokat. Alapértelmezés szerint a BitLocker-kulcsok microsoftáltal kezelt kulccsal vannak titkosítva. A titkosítási kulcsok további szabályozásához ügyfél által kezelt kulcsokat is biztosíthat.
+Az Azure import/export védi a meghajtók titkosítási kulccsal történő zárolásához használt BitLocker-kulcsokat. Alapértelmezés szerint a BitLocker-kulcsok a Microsoft által felügyelt kulcsokkal vannak titkosítva. A titkosítási kulcsok további vezérléséhez az ügyfél által felügyelt kulcsokat is megadhatja.
 
-Az ügyfél által felügyelt kulcsokat létre kell hozni, és egy Azure Key Vaultban kell tárolni. Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
+Az ügyfél által felügyelt kulcsokat egy Azure Key Vault kell létrehozni és tárolni. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
-Ez a cikk bemutatja, hogyan használhatja az ügyfél által felügyelt kulcsokat az Importálás/exportálás szolgáltatással az [Azure Portalon.](https://portal.azure.com/)
+Ez a cikk bemutatja, hogyan használhatók az ügyfél által felügyelt kulcsok az importálási/exportálási szolgáltatással a [Azure Portalban](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. A következő utasításoknak megfelelően hozott létre importálási vagy exportálási feladatot:
+1. Importálási vagy exportálási feladatot hozott létre a következők szerint:
 
-    - [Hozzon létre egy importálási feladatot a blobok számára.](storage-import-export-data-to-blobs.md)
-    - [Hozzon létre egy importálási feladatot a fájlokhoz.](storage-import-export-data-to-files.md)
-    - [Exportálási feladat létrehozása blobok számára](storage-import-export-data-from-blobs.md)
+    - [Hozzon létre egy importálási feladatot a Blobok számára](storage-import-export-data-to-blobs.md).
+    - [Hozzon létre egy importálási feladatot a fájlokhoz](storage-import-export-data-to-files.md).
+    - [Exportálási feladatok létrehozása blobokhoz](storage-import-export-data-from-blobs.md)
 
-2. Van egy meglévő Azure Key Vault egy kulcs, amely a BitLocker-kulcs védelmére használható. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/secrets/quick-create-portal.md)
+2. Rendelkezik egy meglévő Azure Key Vault kulccsal, amelyet a BitLocker-kulcsának védelemmel ellátni használhat. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../../key-vault/secrets/quick-create-portal.md).
 
-    - **A helyreállítható törlés** és **a Ne ürítés** beállítás a meglévő Key Vaulton van beállítva. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. Ezeknek a tulajdonságoknak az **engedélyezéséről** és a **kiürítési védelem engedélyezése** című szakaszokból az alábbi cikkek egyikében található:
+    - A **Soft delete** és a **not Purge** beállítása a meglévő Key Vaultra van beállítva. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. A tulajdonságok engedélyezéséhez tekintse meg a következő cikkek egyikében a **Soft-delete engedélyezése** és a **kiürítési védelem engedélyezése** című szakaszt:
 
-        - [A soft-delete használata a PowerShell használatával.](../../key-vault/general/soft-delete-powershell.md)
-        - [A soft-delete használata a CLI-vel.](../../key-vault/general/soft-delete-cli.md)
-    - A meglévő key vault rendelkeznie kell egy RSA-kulcs 2048 méretű vagy annál nagyobb. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **kulcstárolók** című témakörben talál.
-    - A key vault nak ugyanabban a régióban kell lennie, mint az adatok tárfiókjának.  
-    - Ha nem rendelkezik egy meglévő Azure Key Vault, is létrehozhatja a következő szakaszban leírtak szerint.
+        - [A Soft-delete használata a PowerShell-](../../key-vault/general/soft-delete-powershell.md)lel.
+        - [A Soft delete használata a parancssori](../../key-vault/general/soft-delete-cli.md)felülettel.
+    - A meglévő Key Vault 2048 méretű RSA-kulccsal kell rendelkeznie. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+    - A Key vaultnak ugyanabban a régióban kell lennie, mint az adataihoz tartozó Storage-fióknak.  
+    - Ha nem rendelkezik meglévő Azure Key Vaultval, a következő szakaszban leírtak szerint is létrehozhatja azt.
 
 ## <a name="enable-keys"></a>Kulcsok engedélyezése
 
-Az ügyfél által felügyelt kulcs konfigurálása az importálási/exportálási szolgáltatáshoz nem kötelező. Alapértelmezés szerint az Importálás/exportálás szolgáltatás microsoft által kezelt kulcsot használ a BitLocker kulcs védelmére. Az ügyfél által felügyelt kulcsok engedélyezéséhez az Azure Portalon kövesse az alábbi lépéseket:
+Az ügyfél által felügyelt kulcs konfigurálása az importálási/exportálási szolgáltatáshoz nem kötelező. Alapértelmezés szerint az importálási/exportálási szolgáltatás a Microsoft által felügyelt kulcs használatával védi a BitLocker-kulcsot. Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az **Importálási** feladat Áttekintés paneljét.
-2. A jobb oldali ablaktáblában válassza **a BitLocker-kulcsok titkosításának kiválasztása**lehetőséget.
+1. Nyissa meg az importálási feladatokhoz tartozó **Áttekintés** panelt.
+2. A jobb oldali panelen válassza a **válassza ki a BitLocker-kulcsok titkosításának módját**.
 
-    ![Titkosítási beállítás kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
+    ![Titkosítási lehetőség kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
-3. A **Titkosítás** panelen megtekintheti és másolhatja az eszköz BitLocker kulcsát. A **Titkosítás típusa csoportban**megadhatja, hogyan szeretné védeni a BitLocker kulcsot. Alapértelmezés szerint a Microsoft által felügyelt kulcs használatos.
+3. A **titkosítás** panelen megtekintheti és átmásolhatja az eszköz BitLocker-kulcsát. A **titkosítás típusa**területen kiválaszthatja, hogyan szeretné védelemmel ellátni a BitLocker-kulcsot. Alapértelmezés szerint a rendszer egy Microsoft által felügyelt kulcsot használ.
 
     ![BitLocker-kulcs megtekintése](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Megadhatja a vevő által kezelt kulcsot. Miután kiválasztotta az ügyfél által kezelt kulcsot, válassza ki a **kulcstartót és egy kulcsot.**
+4. Lehetősége van ügyfél által felügyelt kulcs megadására. Miután kiválasztotta az ügyfél által felügyelt kulcsot, **válassza a Key Vault és a kulcs lehetőséget**.
 
-    ![Vevő által kezelt kulcs kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
+    ![Ügyfél által felügyelt kulcs kiválasztása](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
-5. Az **Azure Key Vault panelkiválasztása kulcs** panelen az előfizetés automatikusan kitöltődik. A **Key Vault**, kiválaszthat egy meglévő key vault a legördülő listából.
+5. Az előfizetést a Azure Key Vault panelen a **kulcs kiválasztásával** automatikusan kitölti a rendszer. A **Key Vault**esetében választhat egy meglévő kulcstartót a legördülő listából.
 
-    ![Az Azure Key Vault kijelölése vagy létrehozása](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
+    ![Azure Key Vault kiválasztása vagy létrehozása](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. Új kulcstartó létrehozásához válassza az **Új létrehozása lehetőséget** is. A **Key Vault létrehozása panelen**adja meg az erőforráscsoportot és a key vault nevét. Fogadja el az összes többi alapértelmezést. Válassza **a Véleményezés + Létrehozás lehetőséget.**
+6. Új kulcstartó létrehozásához az **új létrehozása** lehetőséget is választhatja. A **Key Vault létrehozása**panelen adja meg az erőforráscsoportot és a kulcstároló nevét. Fogadja el az összes többi alapértelmezett beállítást. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
     ![Új Azure Key Vault létrehozása](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Tekintse át a kulcstartóhoz társított információkat, és válassza a **Létrehozás gombot.** Várjon néhány percet, amíg a kulcstartó létrehozása befejeződik.
+7. Tekintse át a kulcstartóhoz tartozó információkat, és válassza a **Létrehozás**lehetőséget. Várjon pár percet, amíg a Key Vault létrehozása befejeződik.
 
     ![Azure Key Vault létrehozása](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. Az **Azure Key Vault ból select kulcs**kiválasztásához kiválaszthat egy kulcsot a meglévő kulcstartóban.
+8. A **válasszon kulcsot Azure Key Vault közül**választhat egy kulcsot a meglévő kulcstartóban.
 
-9. Ha új kulcstartót hozott létre, válassza az **Új létrehozása lehetőséget** a kulcs létrehozásához. Az RSA-kulcs mérete 2048 vagy nagyobb lehet.
+9. Ha létrehozott egy új kulcstartót, válassza az **új létrehozása** elemet a kulcs létrehozásához. Az RSA-kulcs mérete 2048 vagy nagyobb lehet.
 
-    ![Új kulcs létrehozása az Azure Key Vaultban](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
+    ![Új kulcs létrehozása Azure Key Vaultban](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
 
-    Ha a kulcstartó létrehozásakor a helyreállítható törlési és törlési védelem nincs engedélyezve, a kulcstartó frissül, hogy a rendszer engedélyezve legyen a helyreállítható törlési és törlési védelem.
+    Ha a helyreállítható törlési és kiürítési védelem nincs engedélyezve a kulcstartó létrehozásakor, a Key Vault frissül, hogy a rendszer a helyreállítható törlési és kiürítési védelmet engedélyezze.
 
-10. Adja meg a kulcs nevét, fogadja el a többi alapértelmezést, és válassza a **Létrehozás gombot.**
+10. Adja meg a kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás**lehetőséget.
 
     ![Új kulcs létrehozása](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. Válassza a **Verzió lehetőséget,** majd válassza a **Kijelölés gombot.** Értesítést kap arról, hogy egy kulcs jön létre a key vaultban.
+11. Válassza ki a **verziót** , majd válassza a **kiválasztás**lehetőséget. Értesítést kap arról, hogy a Key vaultban létrejön egy kulcs.
 
-    ![Új kulcs a key vaultban](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
+    ![A Key vaultban létrehozott új kulcs](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 
-A **Titkosítás** panelen láthatja a kulcstartót és az ügyfél által felügyelt kulcshoz kiválasztott kulcsot.
+A **titkosítás** panelen megtekintheti a Key vaultot és az ügyfél által felügyelt kulcshoz kiválasztott kulcsot.
 
-## <a name="disable-keys"></a>Billentyűk letiltása
+## <a name="disable-keys"></a>Kulcsok letiltása
 
-Az importálási/exportálási feladat bármely szakaszában letilthatja a Microsoft által kezelt kulcsokat, és áthelyezheti az ügyfél által kezelt kulcsokat. Létrehozása után azonban nem tilthatja le az ügyfél által kezelt kulcsot.
+Csak a Microsoft által felügyelt kulcsokat tilthatja le, és az importálási/exportálási feladatok bármely szakaszában áthelyezheti az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcs azonban a létrehozása után nem tiltható le.
 
-## <a name="troubleshoot-customer-managed-key-errors"></a>Ügyfél által kezelt kulcshibák elhárítása
+## <a name="troubleshoot-customer-managed-key-errors"></a>Ügyfél által felügyelt kulcsokkal kapcsolatos hibák elhárítása
 
-Ha az ügyfél által kezelt kulccsal kapcsolatos hibákat észlel, az alábbi táblázat segítségével háríthatja el a hibákat:
+Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhárításhoz használja az alábbi táblázatot:
 
-| Hibakód     |Részletek     | Visszaszerezhető?    |
+| Hibakód     |Részletek     | Helyreállítható?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | Alkalmazott egy ügyfél által kezelt kulcsot, de a kulcshozzáférés jelenleg visszavonásra kerül. További információt [a kulcshozzáférés engedélyezése című témakörben talál.](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)                                                      | Igen, ellenőrizze, hogy: <ol><li>A key vault továbbra is rendelkezik az MSI a hozzáférési szabályzatban.</li><li>A hozzáférési házirend engedélyeket biztosít a Beszedés, Betakarás és Kicsomagolás lehetőséghez.</li><li>Ha a kulcstartó a tűzfal mögötti virtuális hálózatban van, ellenőrizze, hogy **engedélyezze-e** a Microsoft megbízható szolgáltatások engedélyezését.</li></ol>                                                                                            |
-| CmkError Disabled      | Alkalmazott egy ügyfél által kezelt kulcsot, de a kulcs le van tiltva. További információt [a kulcs engedélyezése című témakörben talál.](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)                                                                             | Igen, a kulcsverzió engedélyezésével     |
-| CmkErrorNemTalálható      | Alkalmazott egy ügyfél által kezelt kulcsot, de nem találja a kulcsot. <br>Ha a kulcs törlődik, és a megőrzési időszak után törlődik, nem tudja helyreállítani a kulcsot. Ha biztonsági másolatot tett a kulcsról, a probléma megoldásához visszaállíthatja a kulcsot. | Nem, a kulcs törölve lett, és a megőrzési időszak után is törlődött. <br>Igen, csak akkor, ha az ügyfél rendelkezik a kulccsal, és visszaállítja azt.  |
-| CmkErrorVaultNem található | Alkalmazott egy ügyfél által kezelt kulcsot, de nem találja a kulcshoz társított kulcstartót.<br>Ha törölte a key vault, nem tudja helyreállítani az ügyfél által kezelt kulcs.  Ha áttelepítette a key vault egy másik bérlő, [lásd: Kulcstartó bérlői azonosító módosítása előfizetés áthelyezése után.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Nem, ha az ügyfél törölte a key vault.<br> Igen, ha a kulcstartó bérlői áttelepítésen ment keresztül, tegye a következők egyikét: <ol><li>helyezze vissza a kulcstartót a régi bérlőhöz.</li><li>set Identity = None, majd vissza az Identity = SystemAssigned, ez törli, és újralétrehozza az identitást</li></ol>|
+| CmkErrorAccessRevoked | Egy ügyfél által felügyelt kulcs alkalmazva, de a kulcshoz való hozzáférés jelenleg visszavonva. További információ: [a kulcsokhoz való hozzáférés engedélyezése](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Igen, ellenőrizze, hogy: <ol><li>A Key Vault továbbra is az MSI szerepel a hozzáférési házirendben.</li><li>A hozzáférési házirend engedélyeket biztosít a beolvasáshoz, a becsomagoláshoz, a kicsomagoláshoz.</li><li>Ha a Key Vault a tűzfal mögötti vNet van, ellenőrizze, hogy engedélyezve van-e a **Microsoft megbízható szolgáltatásainak engedélyezése** lehetőség.</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | Az ügyfél által felügyelt kulcs alkalmazva, de a kulcs le van tiltva. További információ: [a kulcs engedélyezése](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Igen, a kulcs verziójának engedélyezésével     |
+| CmkErrorKeyNotFound      | Egy ügyfél által felügyelt kulcs alkalmazva, de nem találja a kulcshoz társított kulcstartót.<br>Ha törölte a kulcstartót, az ügyfél által felügyelt kulcs nem állítható helyre.  Ha áttelepítette a kulcstartót egy másik bérlőre, tekintse meg a [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)című témakört. |   Ha törölte a Key vaultot:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a Key Vault bérlői áttelepítést hajtott végre, igen, az alábbi lépések egyikével állítható helyre: <ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa `Identity = None` be, majd állítsa vissza az értéket `Identity = SystemAssigned`. Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A Key Vault hozzáférési `Unwrap` házirendjében engedélyezze az új identitás engedélyezését `Get`és engedélyeit. `Wrap`</li></ol>|
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

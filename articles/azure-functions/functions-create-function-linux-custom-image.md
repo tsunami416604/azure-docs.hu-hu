@@ -1,55 +1,55 @@
 ---
-title: Azure-függvények létrehozása Linuxon egyéni lemezkép használatával
+title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatával
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
 ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 80881d96d713f3dc4127c94fd324e925e3c68792
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382929"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165722"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linuxon egyéni tároló használatával
+# <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
-Ebben az oktatóanyagban hozza létre és telepíti a kódot az Azure Functions egyéni Docker-tárolóként egy Linux alaprendszerkép használatával. Általában egyéni lemezképet használ, ha a függvények egy adott nyelvi verziót igényelnek, vagy olyan adott függőséget vagy konfigurációt, amelyet a beépített lemezkép nem biztosít.
+Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, hogy az egyéni Docker-tárolóként Azure Functions egy Linux-alapú alaprendszerkép használatával. Általában egyéni rendszerképeket használ, ha a függvények egy adott nyelvi verziót igényelnek, vagy olyan függőséget vagy konfigurációt használnak, amelyet a beépített rendszerkép nem biztosít.
 
-Az Azure App Service alapértelmezett tárolóját is használhatja [a Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című részen leírtak szerint. Az Azure Functions támogatott alaplemezképei az [Azure Functions alaplemeztárában](https://hub.docker.com/_/microsoft-azure-functions-base)találhatók.
+Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy függvényalkalmazást és a Docker-fájlt az Azure Functions Core Tools használatával.
+> * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
 > * Egyéni rendszerkép készítése a Docker használatával.
 > * Egyéni rendszerkép közzététele egy tárolójegyzékben.
-> * Támogató erőforrások létrehozása az Azure-ban a függvényalkalmazáshoz
+> * Támogatási erőforrások létrehozása az Azure-ban a Function alkalmazáshoz
 > * Függvényalkalmazás üzembe helyezése a Docker Hubból.
 > * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
-> * Engedélyezze a folyamatos üzembe helyezést.
+> * Folyamatos üzembe helyezés engedélyezése.
 > * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
-> * Várólista-tároló kimenetkötés hozzáadása. 
+> * Adja hozzá a várólista-tároló kimeneti kötését. 
 
-Az oktatóanyag ot bármely Windows, macOS vagy Linux rendszert futtató számítógépen követheti. Az oktatóanyag befejezése néhány amerikai dollár költségét fogja kitölteni az Azure-fiókjában.
+Ezt az oktatóanyagot követheti Windows, macOS vagy Linux rendszerű számítógépeken is. Az oktatóanyag elvégzése után az Azure-fiókban néhány USA-dollárért kell fizetnie.
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
 <!---Requirements specific to Docker --->
-+ [Docker között](https://docs.docker.com/install/)  
++ [Docker](https://docs.docker.com/install/)  
 
 + [Docker-azonosító](https://hub.docker.com/signup)
 
 [!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
 
-+ Fuss, `docker login` hogy jelentkezzen be a Dockerbe. Ez a parancs sikertelen, ha a Docker nem fut, ebben az esetben indítsa el a docker-t, és próbálkozzon újra a paranccsal.
++ Futtassa `docker login` a parancsot a Docker-ba való bejelentkezéshez. Ez a parancs meghiúsul, ha a Docker nem fut, amely esetben a Docker elindítása után próbálja megismételni a parancsot.
 
 [!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
-## <a name="create-and-test-the-local-functions-project"></a>A helyi függvényprojekt létrehozása és tesztelése
+## <a name="create-and-test-the-local-functions-project"></a>A local functions projekt létrehozása és tesztelése
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Terminál- vagy parancssorban futtassa a következő parancsot a kiválasztott nyelvhez, és hozzon létre egy függvényalkalmazás-projektet a nevű `LocalFunctionsProject`mappában.  
+Egy terminálon vagy parancssorban futtassa a következő parancsot a választott nyelvhez, és hozzon létre egy Function app-projektet egy `LocalFunctionsProject`nevű mappában.  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
 ```
@@ -79,7 +79,7 @@ func init LocalFunctionsProject --worker-runtime node --language typescript --do
 ::: zone pivot="programming-language-java"  
 Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához.
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
 ```
@@ -93,23 +93,23 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-A Maven olyan értékeket kér, amelyek a projekt üzembe helyezéséhez szükségesek.   
-Amikor a rendszer kéri, adja meg a következő értékeket:
+A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
+Ha a rendszer kéri, adja meg a következő értékeket:
 
 | Kérdés | Érték | Leírás |
 | ------ | ----- | ----------- |
-| **csoportazonosító** | `com.fabrikam` | Olyan érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomagelnevezési szabályainak](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) megfelelően. |
-| **artifactId** | `fabrikam-functions` | Az edény neve verziószám nélküli érték. |
-| **Változat** | `1.0-SNAPSHOT` | Válassza ki az alapértelmezett értéket. |
-| **Csomag** | `com.fabrikam.functions` | Olyan érték, amely a létrehozott függvénykód Java-csomagja. Használja az alapértelmezettet. |
+| **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
+| **artifactId** | `fabrikam-functions` | Egy érték, amely a jar neve, verziószám nélkül. |
+| **verziója** | `1.0-SNAPSHOT` | Válassza ki az alapértelmezett értéket. |
+| **csomag** | `com.fabrikam.functions` | Egy érték, amely a generált függvény kódjához tartozó Java-csomag. Használja az alapértelmezettet. |
 
-A `Y` megerősítéshez írja be vagy nyomja le az Enter billentyűt.
+A `Y` megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
 
-A Maven egy új mappában hozza létre a projektfájlokat, `fabrikam-functions`amelynek neve _artifactId_, amely ebben a példában a. 
+A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions`. 
 ::: zone-end
-A `--docker` beállítás létrehoz `Dockerfile` egy a projekt, amely meghatározza a megfelelő egyéni tároló azure functions és a kiválasztott futásidejű használható.
+A `--docker` beállítás létrehoz egy `Dockerfile` projektet a projekthez, amely egy megfelelő egyéni tárolót határoz meg a Azure functions és a kiválasztott futtatókörnyezettel való használatra.
 
-Navigálás a projekt mappájába:
+Navigáljon a projekt mappájába:
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 ```
 cd LocalFunctionsProject
@@ -121,13 +121,13 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Adjon hozzá egy függvényt a projekthez `--name` a következő paranccsal, ahol `--template` az argumentum a függvény egyedi neve, és az argumentum megadja a függvény eseményindítóját. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének megfelelő kódfájlt tartalmazó függvénynévnek, valamint egy *function.json*nevű konfigurációs fájlt.
+Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol `--name` az argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
 
 ```
 func new --name HttpExample --template "HTTP trigger"
 ```
 ::: zone-end  
-A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű állomást a projektmappa gyökerében: 
+A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű gazdagépet a projekt mappájának gyökerében: 
 ::: zone pivot="programming-language-csharp"  
 ```
 func start --build  
@@ -150,228 +150,228 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
-Ha megjelenik `HttpExample` a végpont a kimenetben, keresse meg a t. [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions) A böngészőnek meg kell jelennie egy `Functions`"hello" üzenetet, amely visszhangzik vissza , a `name` lekérdezési paraméterhez megadott érték.
+Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt: `http://localhost:7071/api/HttpExample?name=Functions`. A böngészőnek egy "Hello" üzenetet kell megjelenítenie `Functions`, amely visszaismétli a `name` lekérdezési paraméternek megadott értéket.
 
-A **Ctrl C billentyűvel**-**C** állítsa le az állomást.
+A gazdagép leállításához használja a CTRL**C** **billentyűt**-.
 
-## <a name="build-the-container-image-and-test-locally"></a>A tárolórendszerkép létrehozása és helyi tesztelése
+## <a name="build-the-container-image-and-test-locally"></a>A tároló rendszerképének létrehozása és helyi tesztelése
 
-(Nem kötelező) Vizsgálja meg a *Dockerfile" fájlt a projektmappa gyökerében. A Dockerfile ismerteti a szükséges környezetet a függvényalkalmazás linuxos futtatásához.  Az Azure Functions támogatott alaplemezképeinek teljes listája megtalálható az [Azure Functions alaplemezképe oldalon.](https://hub.docker.com/_/microsoft-azure-functions-base)
+Választható Vizsgálja meg a * Docker a projekt mappájának gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához.  A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
     
-A gyökérprojekt mappájában futtassa a [docker](https://docs.docker.com/engine/reference/commandline/build/) build `azurefunctionsimage`parancsot, `v1.0.0`és adjon meg egy nevet , és címkézze meg a . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
+A legfelső szintű projekt mappában futtassa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet `azurefunctionsimage`, és egy címkét `v1.0.0`. A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
 ```
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
-Amikor a parancs befejeződik, futtathatja az új tárolót helyileg.
+Ha a parancs befejeződik, az új tárolót helyileg is futtathatja.
     
-A build teszteléséhez futtassa a lemezképet egy helyi tárolóban a [docker run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal, cserélje le újra `<DOCKER_ID` a Docker-azonosítót, és adja hozzá a portok argumentumát: `-p 8080:80`
+A Build teszteléséhez futtassa a rendszerképet egy helyi tárolóban a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal, és cserélje le `<DOCKER_ID` újra a Docker-azonosítóval, és adja hozzá `-p 8080:80`a portok argumentumot:
 
 ```
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Miután a kép egy helyi tárolóban `http://localhost:8080`fut, nyisson meg egy böngészőt a számára, amelynek meg kell jelenítenie az alábbi helyőrző képet. A rendszerkép jelenik meg ezen a ponton, mert a függvény fut a helyi tárolóban, ahogy az Azure-ban, ami `"authLevel": "function"` azt jelenti, hogy a *függvény.json* a tulajdonsággal meghatározott hozzáférési kulcs védi. A tároló még nem lett közzétéve egy függvényalkalmazásban az Azure-ban, így a kulcs még nem érhető el. Ha a helyi tárolóval szeretné tesztelni, állítsa le `"authLevel": "anonymous"`a docker-t, módosítsa az engedélyezési tulajdonságot , építse újra a lemezképet, és indítsa újra a dockert. Ezután `"authLevel": "function"` állítsa vissza a *function.json*. További információt az [engedélyezési kulcsok című témakörben talál.](functions-bindings-http-webhook-trigger.md#authorization-keys)
+Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080`, amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy, a *function. JSON* fájlban definiált hozzáférési kulccsal védi `"authLevel": "function"` a tulajdonságot. A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha tesztelni szeretné a helyi tárolót, állítsa le a Docker-t, módosítsa az `"authLevel": "anonymous"`engedélyezési tulajdonságot a értékre, hozza létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa `"authLevel": "function"` alaphelyzetbe a *function. JSON*fájlt. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-![Helyőrző lemezkép, amely jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+![Helyőrző képe, amely azt jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-Miután a rendszerkép egy helyi [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)tárolóban fut, keresse meg a tallózással, amelynek ugyanazt a "hello" üzenetet kell megjelenítenie, mint korábban. Mivel a Maven archetípus létrehoz egy HTTP-aktivált függvényt, amely névtelen engedélyezést használ, akkor is meghívhatja a függvényt, még akkor is, ha az a tárolóban fut. 
+Ha a rendszerkép egy helyi tárolóban fut, keresse meg a `http://localhost:8080/api/HttpExample?name=Functions`(z) parancsot, amely a korábban megjelenő "Hello" üzenetet jeleníti meg. Mivel a Maven archetípusa olyan HTTP által aktivált függvényt hoz létre, amely névtelen hitelesítést használ, továbbra is meghívhatja a függvényt annak ellenére, hogy a tárolóban fut. 
 ::: zone-end  
 
-Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a docker-t **a Ctrl C-vel.**+**C**
+Miután ellenőrizte a Function alkalmazást a tárolóban, állítsa le a Docker-t a CTRL**C** **billentyűkombinációval**+.
 
-## <a name="push-the-image-to-docker-hub"></a>A lemezkép leküldése a Docker Hubra
+## <a name="push-the-image-to-docker-hub"></a>A rendszerkép leküldése a Docker hub-ra
 
-A Docker Hub egy tárolóbeállításjegyzék, amely rendszerképeket tárol, és lemezkép- és tárolószolgáltatásokat biztosít. A lemezkép megosztásához, amely magában foglalja az Azure-ba való üzembe helyezést, le kell küldnie egy beállításjegyzékbe.
+A Docker hub egy tároló-beállításjegyzék, amely képeket és lemezképeket és tároló szolgáltatásokat biztosít. Ha meg szeretné osztani a lemezképet, amely magában foglalja az Azure-ba való üzembe helyezést, azt egy beállításjegyzékbe kell leküldeni.
 
-1. Ha még nem jelentkezett be a Dockerbe, tegye meg a `<docker_id>` [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) paranccsal, és cserélje le a Docker-azonosítót. Ez a parancs a felhasználónevet és a jelszót kéri. A "Bejelentkezés sikeres" üzenet megerősíti, hogy be van jelentkezve.
+1. Ha még nem jelentkezett be a Docker-be, ezt a [Docker-bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) paranccsal teheti `<docker_id>` meg, és cserélje le a Docker-azonosítóra. Ez a parancs megkéri a felhasználónevet és a jelszót. A "sikeres bejelentkezés" üzenet megerősíti, hogy bejelentkezett.
 
     ```
     docker login
     ```
     
-1. Miután bejelentkezett, leküldéses a rendszerképet a Docker Hub a `<docker_id>` [docker push](https://docs.docker.com/engine/reference/commandline/push/) parancs, ismét lecseréli a Docker-azonosító.
+1. Miután bejelentkezett, küldje le a rendszerképet Docker hub-ra a Docker [push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal, majd ismét cserélje `<docker_id>` le a Docker-azonosítóra.
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
-1. A hálózati sebességtől függően a kép első lenyomása néhány percet is igénybe vehet (a későbbi módosítások lenyomása sokkal gyorsabb). Várakozás közben folytathatja a következő szakaszt, és létrehozhat Azure-erőforrásokat egy másik terminálon.
+1. A hálózati sebességtől függően a rendszerképet úgy kell kitolni, hogy az első alkalommal is eltarthat néhány percig (a későbbi változtatások gyorsabban megadhatók). Várakozás közben folytassa a következő szakasszal, és hozzon létre Azure-erőforrásokat egy másik terminálon.
 
-## <a name="create-supporting-azure-resources-for-your-function"></a>Támogató Azure-erőforrások létrehozása a funkcióhoz
+## <a name="create-supporting-azure-resources-for-your-function"></a>A függvényhez kapcsolódó Azure-erőforrások létrehozása
 
-A függvénykód Azure-ba való üzembe helyezéséhez három erőforrást kell létrehoznia:
+A függvény kódjának az Azure-ba történő üzembe helyezéséhez három erőforrást kell létrehoznia:
 
-- Erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
-- Egy Azure Storage-fiók, amely fenntartja a projektek állapot- és egyéb adatait.
-- Egy Azure-függvényalkalmazás, amely a függvénykód végrehajtásához biztosít környezetet. A függvényalkalmazás leképezi a helyi függvényprojektet, és lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében.
+- Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
+- Egy Azure Storage-fiók, amely fenntartja az állapotot és a projektekkel kapcsolatos egyéb információkat.
+- Egy Azure functions-alkalmazás, amely biztosítja a környezetet a függvény kódjának végrehajtásához. A Function alkalmazás a helyi function projekthez kapcsolódik, és lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében.
 
-Az Azure CLI-parancsok segítségével hozhatja létre ezeket az elemeket. Minden parancs a teljesítésután biztosítja a JSON-kimenetet.
+Ezeket az elemeket az Azure CLI-parancsok használatával hozhatja létre. Az egyes parancsok a JSON-kimenetet biztosítják a befejezés után.
 
-1. Jelentkezzen be az Azure-ba az [az bejelentkezési](/cli/azure/reference-index#az-login) paranccsal:
+1. Jelentkezzen be az Azure-ba az az [login](/cli/azure/reference-index#az-login) paranccsal:
 
     ```azurecli
     az login
     ```
     
-1. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz `AzureFunctionsContainers-rg` egy `westeurope` erőforráscsoportot a régióban. (Az erőforráscsoportot és az erőforrásokat általában egy Ön közelében `az account list-locations` lévő régióban hozza létre, a parancsból elérhető terület használatával.)
+1. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példában létrehozunk egy nevű `AzureFunctionsContainers-rg` erőforráscsoportot a `westeurope` régióban. (Az erőforráscsoport és az erőforrások általában az Ön közelében lévő régióban hozhatók létre a `az account list-locations` parancsból elérhető régió használatával.)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
     ```
     
     > [!NOTE]
-    > Nem üzemeltethet Linux- és Windows-alkalmazásokat ugyanabban az erőforráscsoportban. Ha egy Windows-függvényalkalmazással vagy webalkalmazással elnevezett `AzureFunctionsContainers-rg` meglévő erőforráscsoporttal rendelkezik, másik erőforráscsoportot kell használnia.
+    > Nem futtathat Linux-és Windows-alkalmazásokat ugyanabban az erőforráscsoporthoz. Ha már van egy nevű `AzureFunctionsContainers-rg` erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
     
-1. Hozzon létre egy általános célú tárfiókot az erőforráscsoportban és a régióban az [az storage fiók létrehozása](/cli/azure/storage/account#az-storage-account-create) paranccsal. A következő példában `<storage_name>` cserélje le az Ön számára megfelelő globálisan egyedi nevet. A nevek csak 3–24 karakterből és kisbetűkből állhatnak. `Standard_LRS`egy tipikus általános célú számlát határoz meg.
+1. Hozzon létre egy általános célú Storage-fiókot az erőforráscsoport és a régió területén az az [Storage Account Create](/cli/azure/storage/account#az-storage-account-create) paranccsal. A következő példában cserélje le `<storage_name>` egy globálisan egyedi névre, amely az Ön számára megfelelő. A névnek három – 24 karakterből kell állnia, és csak kisbetűket tartalmazhat. `Standard_LRS`egy tipikus általános célú fiókot határoz meg.
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
     ```
     
-    A tárfiók csak néhány USD centet von maga után az oktatóanyaghoz.
+    Ebben az oktatóanyagban a Storage-fióknak csupán néhány USD-es százaléka van.
     
-1. A parancs segítségével hozzon létre egy `myPremiumPlan` prémium csomagot az Azure`--sku EP1`Functions nevű elastic Premium`-location westeurope` **1** tarifacsomag ( ), a Nyugat-európai régióban ( , vagy használja a megfelelő régióban az Ön közelében), és egy Linux-tárolóban (`--is-linux`).
+1. A (z) paranccsal hozzon létre egy prémium szintű `myPremiumPlan` Azure functions csomagot a **rugalmas prémium 1** díjszabási`--sku EP1`szinten (), a Nyugat-európai`-location westeurope`régióban (vagy az Ön közelében egy megfelelő régió használatával), és egy Linux-`--is-linux`tárolóban ().
 
     ```azurecli
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Az egyéni függvénytárolók Linux-tárhelye [támogatott dedikált (App Service) csomagokban](functions-scale.md#app-service-plan) és [prémium csomagokban.](functions-premium-plan.md#features) Itt használjuk a Prémium csomagot, amely szükség szerint skálázható. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md). A költségek kiszámításához tekintse meg a [Functions árképzési lapját.](https://azure.microsoft.com/pricing/details/functions/)
+    Az egyéni functions-tárolók Linux-üzemeltetése [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-premium-plan.md#features)esetén támogatott. Az itt található prémium csomagot használjuk, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md). A költségek kiszámításához tekintse meg a [functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
 
-    A parancs is rendelkezik egy társított Azure Application Insights-példány ugyanabban az erőforráscsoportban, amellyel figyelheti a függvényalkalmazást, és megtekintheti a naplókat. További információ: [Monitor Azure Functions](functions-monitoring.md). A példány nem jár költségekkel, amíg nem aktiválja.
+    A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
 
-## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Függvényalkalmazás létrehozása és konfigurálása az Azure-ban a lemezképpel
+## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Function-alkalmazás létrehozása és konfigurálása az Azure-ban a rendszerképpel
 
-Az Azure-beli függvényalkalmazás kezeli a funkciók végrehajtását a tárhelycsomagban. Ebben a szakaszban az Azure-erőforrások az előző szakaszban hozzon létre egy függvényalkalmazást egy képa Docker Hub, és konfigurálja azt egy kapcsolati karakterlánc ot az Azure Storage-ba.
+Az Azure-beli Function-alkalmazás kezeli a függvények végrehajtását a üzemeltetési tervben. Ebben a szakaszban az előző szakasz Azure-erőforrásaival hozzon létre egy Function alkalmazást a Docker hub egyik rendszerképéről, és konfigurálja azt egy Azure Storage-hoz tartozó kapcsolódási karakterlánccal.
 
-1. Hozza létre a Functions alkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) paranccsal. A következő példában `<storage_name>` cserélje le a tárfiók előző szakaszában használt nevet. Is `<app_name>` cserélje ki az Ön számára megfelelő `<docker_id>` globálisan egyedi nevet, és a Docker-azonosító.
+1. Hozza létre a functions alkalmazást az az [functionapp Create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. A következő példában cserélje le `<storage_name>` a nevet az előző szakaszban használt névre a Storage-fiókhoz. Cserélje le `<app_name>` egy globálisan egyedi névre is, és `<docker_id>` a Docker-azonosítójával.
 
     ```azurecli
     az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-    A *központi telepítési-tároló-image-name* paraméter megadja a függvényalkalmazáshoz használandó lemezképet. Az az [functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) parancs segítségével megtekintheti a központi telepítéshez használt lemezkép adatait. Az [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) paranccsal is üzembe helyezheti egy másik lemezképből.
+    Az *üzembe helyezés-Container-rendszerkép-Name* paraméter megadja a Function alkalmazáshoz használandó rendszerképet. Az az [functionapp config Container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) parancs használatával megtekintheti az üzembe helyezéshez használt rendszerképpel kapcsolatos információkat. Egy másik rendszerképből is üzembe helyezheti az az [functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) parancsot.
 
-1. Az [az a tárfiók show-connection-string](/cli/azure/storage/account) paranccsal létrehozott tárfiók kapcsolati karakterláncának `storageConnectionString`lekérése egy rendszerhéj-változóhoz rendelve:
+1. Kérje le a létrehozott Storage-fiókhoz tartozó kapcsolati karakterláncot az az [Storage Account show-kapcsolat-string](/cli/azure/storage/account) paranccsal, és rendelje hozzá egy rendszerhéj `storageConnectionString`-változóhoz:
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. Adja hozzá ezt a beállítást a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal. A következő parancsban `<app_name>` cserélje le a függvényalkalmazás `<connection_string>` nevét, és cserélje le az előző lépésben lévő kapcsolati karakterláncra (egy hosszú kódolású karakterláncra, amely "DefaultEndpointProtocol=" karakterrel kezdődik):
+1. Adja hozzá ezt a beállítást a Function alkalmazáshoz az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) parancs használatával. A következő parancsban cserélje le `<app_name>` a kifejezést a Function alkalmazás nevére, és cserélje le `<connection_string>` az előző lépéshez tartozó (hosszú kódolású karakterláncot, amely a "DefaultEndpointProtocol =" kifejezéssel kezdődik):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
 
-1. A függvény most már használhatja ezt a kapcsolati karakterláncot a tárfiók eléréséhez.
+1. A függvény mostantól használhatja ezt a kapcsolati karakterláncot a Storage-fiók eléréséhez.
 
     > [!TIP]
-    > A bash, akkor egy shell változó, hogy rögzítse a kapcsolat string használata helyett a vágólapra. Először a következő paranccsal hozzon létre egy változót a kapcsolati karakterlánccal:
+    > A bash-ben egy rendszerhéj-változó használatával rögzítheti a kapcsolódási karakterláncot a vágólap használata helyett. Először a következő parancs használatával hozzon létre egy változót a kapcsolódási karakterlánccal:
     > 
     > ```bash
     > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
     > ```
     > 
-    > Ezután olvassa el a második parancs ban található változót:
+    > Ezután tekintse meg a változót a második parancsban:
     > 
     > ```azurecli
     > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
     > ```
 
 > [!NOTE]    
-> Ha közzéteszi az egyéni lemezképet egy privát tárolófiókban, használjon környezeti változókat a Dockerfile-ban a kapcsolati karakterlánchoz. További információt az [ENV utasításban](https://docs.docker.com/engine/reference/builder/#env)talál. A változókat is `DOCKER_REGISTRY_SERVER_USERNAME` `DOCKER_REGISTRY_SERVER_PASSWORD`be kell állítania, és . Az értékek használatához, majd újra kell építenie a lemezképet, leküldése a rendszerképet a beállításjegyzékbe, majd indítsa újra a függvényalkalmazást az Azure-ban.
+> Ha egyéni rendszerképet tesz közzé egy privát Container-fiókban, ehelyett környezeti változókat kell használnia a Docker a kapcsolódási karakterlánchoz. További információ: [env utasítás](https://docs.docker.com/engine/reference/builder/#env). A változókat `DOCKER_REGISTRY_SERVER_USERNAME` és `DOCKER_REGISTRY_SERVER_PASSWORD`a értéket is be kell állítania. Az értékek használatához újra kell építenie a rendszerképet, le kell küldenie a rendszerképet a beállításjegyzékbe, majd újra kell indítania a Function alkalmazást az Azure-ban.
 
-## <a name="verify-your-functions-on-azure"></a>A funkciók ellenőrzése az Azure-ban
+## <a name="verify-your-functions-on-azure"></a>A függvények ellenőrzése az Azure-ban
 
-A rendszerkép üzembe helyezése a függvényalkalmazás az Azure-ban, most már http-kérelmeken keresztül meghívhatja a függvényt. Mivel a *function.json* definíció `"authLevel": "function"`tartalmazza a tulajdonságot, először be kell szereznie a hozzáférési kulcsot (más néven a "függvénykulcsot"), és url-paraméterként kell szerepelnie a végpontra irányuló kérelmekben.
+Az Azure-beli Function alkalmazásban üzembe helyezett képpel a függvényt HTTP-kérelmeken keresztül hívhatja meg. Mivel a *function. JSON* definíciója tartalmazza a `"authLevel": "function"`tulajdonságot, először be kell szereznie a hozzáférési kulcsot (más néven "Function Key"), és a végpontra irányuló kérésekben URL-ként kell megadni.
 
-1. A függvény URL-címének lekérése a hozzáférési (függvény) kulccsal az `az rest` Azure Portal használatával, vagy az Azure CLI használatával a paranccsal.)
+1. A függvény URL-címének lekérése a hozzáférési (Function) kulccsal a Azure Portal használatával vagy az Azure CLI használatával a `az rest` paranccsal.)
 
     # <a name="portal"></a>[Portál](#tab/portal)
 
-    1. Jelentkezzen be az Azure Portalon, majd keresse meg a függvényalkalmazást a függvényalkalmazás nevének megadásával a lap tetején lévő **Keresőmezőbe.** Az eredmények ben válassza ki az App Service-erőforrást. **App Service**
+    1. Jelentkezzen be a Azure Portalba, majd keresse meg a Function alkalmazást a függvény alkalmazás nevének megadásával az oldal tetején található **keresőmezőbe** . Az eredmények között válassza ki a **app Service** erőforrást.
 
-    1. A bal oldali navigációs panel **Funkciók (írásvédett)** területén válassza ki a függvény nevét.
+    1. A bal oldali navigációs panel **functions (csak olvasás)** területén válassza ki a függvény nevét.
 
-    1. A részletek panelen válassza **a</> Funkció URL-címének bekerülése**lehetőséget:
+    1. A részletek panelen válassza a **</> függvény URL-címének beolvasása**lehetőséget:
     
-        ![A Függvény URL-címének beszerezniparancsa az Azure Portalon](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+        ![A funkció URL-címének beolvasása parancs a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
 
-    1. Az előugró ablakban válassza az **alapértelmezett (Funkcióbillentyű)** elemet, majd **a Másolás lehetőséget.** A kulcs a következő `?code=`karaktersorozat.
+    1. Az előugró ablakban válassza az **alapértelmezett (Function Key)** elemet, majd **másolja a vágólapra**. A kulcs a következő `?code=`karakterből álló karakterlánc.
 
-        ![A függvény URL-címének másolása az Azure Portalról](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+        ![A függvény URL-címének másolása a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
 
     > [!NOTE]  
-    > Mivel a függvényalkalmazás tárolóként van telepítve, nem módosíthatja a függvénykódot a portálon. Ehelyett frissítenie kell a projektet a helyi lemezképen, ismét le kell nyomnia a lemezképet a beállításjegyzékbe, majd újra telepítenie kell az Azure-ba. A folyamatos telepítést egy későbbi szakaszban állíthatja be.
+    > Mivel a Function alkalmazás tárolóként van telepítve, nem módosíthatja a függvény kódját a portálon. Ehelyett frissítenie kell a projektet a helyi rendszerképben, küldje újra a rendszerképet a beállításjegyzékbe, majd telepítse újra az Azure-ba. A folyamatos üzembe helyezést egy későbbi szakaszban állíthatja be.
     
     # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-    1. Az URL-karakterláncot a következő `<subscription_id>` `<resource_group>`formátumban `<app_name>` hozhat létre, a , a , és az Azure-előfizetés-azonosítóját, a függvényalkalmazás erőforráscsoportját, illetve a függvényalkalmazás nevét:
+    1. A következő formátumban hozza létre az URL-karakterláncot `<subscription_id>`, `<resource_group>`és `<app_name>` cserélje le az Azure-előfizetés azonosítóját, a Function alkalmazás erőforráscsoporthoz, valamint a Function alkalmazás nevét:
 
         ```
         "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
         ```
 
-        Az URL-cím például a következő címre nézhet ki:
+        Előfordulhat például, hogy az URL-cím a következő címet keresi:
 
         ```
         "/subscriptions/1234aaf4-1234-abcd-a79a-245ed34eabcd/resourceGroups/AzureFunctionsContainers-rg/providers/Microsoft.Web/sites/msdocsfunctionscontainer/host/default/listKeys?api-version=2018-11-01"
         ```
 
         > [!TIP]
-        > Az egyszerűség kedvéért az URL-címet hozzárendelheti egy `az rest` környezeti változóhoz, és használhatja azt a parancsban.
+        > A kényelem érdekében Ehelyett hozzárendelheti az URL-címet egy környezeti változóhoz, és használhatja azt `az rest` a parancsban.
     
-    1. Futtassa `az rest` a következő parancsot (amely az Azure CLI 2.0.77-es és újabb verziójában érhető el), és cserélje le `<uri>` az utolsó lépésURI-karakterláncára, beleértve az árajánlatokat is:
+    1. Futtassa az alábbi `az rest` parancsot (az Azure CLI 2.0.77 és újabb verzióiban érhető el), `<uri>` és cserélje le az elemet az utolsó lépés URI-karakterláncára, az idézőjelekkel együtt:
 
         ```azurecli
         az rest --method post --uri <uri> --query functionKeys.default --output tsv
         ```
 
-    1. A parancs kimenete a funkcióbillentyű. Ekkor a teljes `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`függvény `<app_name>`URL-címe a , a , `<function_name>`és `<key>` a meghatározott értékekre kerül.
+    1. A parancs kimenete a függvény kulcsa. A teljes függvény URL-címe `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`ekkor a `<app_name>`, `<function_name>`a és `<key>` a értékre van lecserélve az adott értékeknél.
     
         > [!NOTE]
-        > Az itt beolvasott kulcs az a *gazdakulcs,* amely a függvények alkalmazás összes funkciójához működik; a portálon látható módszer csak egy függvény kulcsát olvassa be.
+        > A beolvasott kulcs a functions alkalmazás összes függvényéhez használható *gazdagép* kulcsa. a portálon megjelenített metódus csak az egyetlen függvény kulcsát kérdezi le.
 
     ---
 
-1. Illessze be a függvény URL-címét a `&name=Azure` böngésző címsorába, és adja hozzá a paramétert az URL végéhez. A "Hello Azure" szövegnek meg kell jelennie a böngészőben.
+1. Illessze be a függvény URL-címét a böngésző címsorába, és adja hozzá `&name=Azure` a paramétert az URL-cím végéhez. A böngészőben a "Hello Azure" szövegnek kell megjelennie.
 
     ![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. Az engedélyezés teszteléséhez távolítsa el a code= paramétert az URL-címből, és ellenőrizze, hogy nem kap-e választ a függvénytől.
+1. Az engedélyezés teszteléséhez távolítsa el a Code = paramétert az URL-címről, és ellenőrizze, hogy nem kap-e választ a függvénytől.
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>Folyamatos üzembe helyezés engedélyezése az Azure-ban
 
-Engedélyezheti, hogy az Azure Functions automatikusan frissítse a lemezkép központi telepítését, amikor frissíti a lemezképet a beállításjegyzékben.
+Engedélyezheti, hogy a Azure Functions automatikusan frissítse a rendszerkép központi telepítését, amikor frissíti a rendszerképet a beállításjegyzékben.
 
-1. Engedélyezze a folyamatos üzembe helyezést az az `<app_name>` [functionapp központi telepítési tároló konfigurációs](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) parancsával, amely a függvényalkalmazás nevére lép:
+1. Engedélyezze a folyamatos üzembe helyezést az az [functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) parancs `<app_name>` használatával, a függvény alkalmazásának nevével lecserélve:
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    Ez a parancs lehetővé teszi a folyamatos üzembe helyezést, és visszaadja a központi telepítési webhook URL-címét. (Ezt az URL-címet később az [az functionapp telepítési tároló show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) parancsával bármikor lekérheti.)
+    Ez a parancs engedélyezi a folyamatos üzembe helyezést, és visszaadja az üzembe helyezési webhook URL-címét. (Ezt az URL-címet bármely későbbi időpontban lekérheti az az [functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) paranccsal.)
 
-1. Másolja a központi telepítési webhook URL-címét a vágólapra.
+1. Másolja az üzembe helyezési webhook URL-címét a vágólapra.
 
-1. Nyissa meg [a Docker Hubot,](https://hub.docker.com/)jelentkezzen be, és válassza **a Tárolók lehetőséget** a navigációs sávon. Keresse meg és jelölje ki a képet, válassza a **Webhooks** lapot, adja meg a **Webhook nevét,** illessze be az URL-címet a **Webhook URL-címébe,** majd válassza a **Létrehozás**lehetőséget:
+1. Nyissa meg a [Docker hub](https://hub.docker.com/)-t, jelentkezzen be, majd válassza a **tárolók** lehetőséget a navigációs sávon. Keresse meg és válassza ki a képet, válassza a **webhookok** fület, adja meg a **webhook nevét**, illessze be az URL-címet a **webhook URL-címébe**, majd válassza a **Létrehozás**lehetőséget:
 
-    ![A webhook hozzáadása a DockerHub-tárházban](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+    ![Webhook hozzáadása a DockerHub-tárházban](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
-1. A webhook-készlettel az Azure Functions újratelepíti a lemezképet, amikor frissíti a Docker Hubban.
+1. A webhook készlettel Azure Functions a lemezképet a Docker hub-ban való frissítésekor újra üzembe helyezi.
 
 ## <a name="enable-ssh-connections"></a>SSH-kapcsolatok engedélyezése
 
-Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ha az SSH engedélyezve van, az App Service Advanced Tools (Kudu) segítségével csatlakozhat a tárolóhoz. Annak érdekében, hogy az SSH használatával könnyen kapcsolódjon a tárolóhoz, az Azure Functions olyan alaplemezképet biztosít, amelyen már engedélyezve van az SSH. Csak a Docker-fájlt kell szerkeszteni, majd újra kell építenie és újra kell telepítenie a lemezképet. Ezután az Advanced Tools (Kudu) segítségével csatlakozhat a tárolóhoz.
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ha engedélyezve van az SSH, App Service speciális eszközökkel (kudu) is csatlakozhat a tárolóhoz. Ahhoz, hogy az SSH-val könnyedén csatlakozhasson a tárolóhoz, Azure Functions olyan alaprendszerképet biztosít, amely már engedélyezve van az SSH-val. Csak szerkesztenie kell a Docker, majd újból létre kell hoznia és újra üzembe kell helyeznie a lemezképet. Ezután a speciális eszközökön (kudu) keresztül kapcsolódhat a tárolóhoz
 
-1. A Docker-fájlban fűzze hozzá a `-appservice` `FROM` karakterláncot az alaplemezképhez az utasításban:
+1. A Docker fűzze hozzá a karakterláncot `-appservice` az `FROM` utasításban található alaprendszerképhez:
 
     ::: zone pivot="programming-language-csharp"
     ```Dockerfile
@@ -403,35 +403,35 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     ```
     ::: zone-end
 
-    Az alaprendszerképek közötti különbségeket az [App Services – Egyéni docker-rendszerképek oktatóanyag ismerteti.](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)
+    Az alapképek közötti különbségekről az [app Services-Custom Docker images oktatóanyagban](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)olvashat.
 
-1. Építse újra a `docker build` lemezképet a `<docker_id>` parancs ismételt használatával, és cserélje le a Docker-azonosítót:
+1. Hozza létre újra a rendszerképet a `docker build` paranccsal, és cserélje `<docker_id>` le a Docker-azonosítóra:
 
     ```
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
-1. A frissített rendszerképet a Docker Hubra kell leadni, amely lényegesen kevesebb időt vesz igénybe, mint az első leküldéses, csak a rendszerkép frissített szegmenseit kell feltölteni.
+1. Küldje le a frissített rendszerképet a Docker hub szolgáltatásba, amely jóval kevesebb időt vesz igénybe, mint az első leküldéses példány, amelyet a rendszerképnek csak a frissített szegmenseit kell feltölteni.
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Az Azure Functions automatikusan újratelepíti a lemezképet a függvények alkalmazásba; a folyamat kevesebb, mint egy perc alatt lezajlik.
+1. Azure Functions automatikusan újra üzembe helyezi a rendszerképet a functions alkalmazásban; a folyamat egy percnél rövidebb ideig tart.
 
-1. A böngészőben `https://<app_name>.scm.azurewebsites.net/`nyissa `<app_name>` meg a , az egyedi nevet. Ez az URL-cím a speciális eszközök (Kudu) végpont a függvényalkalmazás-tároló.
+1. Egy böngészőben nyissa meg `https://<app_name>.scm.azurewebsites.net/`a kifejezést `<app_name>` , és cserélje le az egyedi névre. Ez az URL-cím a Function app-tároló speciális eszközök (kudu) végpontja.
 
-1. Jelentkezzen be az Azure-fiókjába, majd válassza ki az **SSH-t** a tárolóval való kapcsolat létrehozásához. A csatlakozás eltarthat néhány pillanatig, ha az Azure még mindig frissíti a tárolórendszerképet.
+1. Jelentkezzen be az Azure-fiókjába, majd válassza ki az **SSH** -t, és hozzon létre kapcsolatot a tárolóval. A csatlakozás eltarthat néhány másodpercig, ha az Azure továbbra is frissíti a tároló rendszerképét.
 
-1. Miután létrejött egy kapcsolat a `top` tárolóval, futtassa a parancsot az éppen futó folyamatok megtekintéséhez. 
+1. Miután létrejött a kapcsolatok a tárolóval, futtassa a `top` parancsot az aktuálisan futó folyamatok megtekintéséhez. 
 
-    ![Linux felső parancs fut egy SSH munkamenetben](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
+    ![SSH-munkamenetben futó Linux-alapú leggyakoribb parancs](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
-## <a name="write-to-an-azure-storage-queue"></a>Írás egy Azure Storage-várólistába
+## <a name="write-to-an-azure-storage-queue"></a>Írás Azure Storage-várólistába
 
-Az Azure Functions lehetővé teszi, hogy a függvényeket más Azure-szolgáltatásokhoz és erőforrásokhoz csatlakoztassa, amelyeknek saját integrációs kódot kell írniuk. Ezek *a kötések*, amelyek mind a bemeneti, mind a kimeneti kötéseket képviselik, a függvénydefinícióban vannak deklarálva. A kötések adatai a függvények számára paraméterekként vannak megadva. Az *eseményindító* a bemeneti kötés egy speciális típusa. Bár egy függvény csak egy eseményindítóval rendelkezik, több bemeneti és kimeneti kötéssel rendelkezhet. További információ: [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
+Azure Functions lehetővé teszi a függvények más Azure-szolgáltatásokhoz és-erőforrásokhoz való összekapcsolását, mivel saját integrációs kódot kell megírnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatai a függvények számára paraméterekként vannak megadva. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 
-Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-várólistával. A függvényhez hozzáadott kimeneti kötés http-kérelemből adatokat ír a várólistában lévő üzenetbe.
+Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -448,7 +448,7 @@ Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-v�
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
-A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
+Ha a várólista-kötés definiálva van, most frissítheti a függvényt `msg` , hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -476,33 +476,33 @@ A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy me
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
-### <a name="update-the-image-in-the-registry"></a>A lemezkép frissítése a rendszerleíró adatbázisban
+### <a name="update-the-image-in-the-registry"></a>A rendszerkép frissítése a beállításjegyzékben
 
-1. A gyökérmappában `docker build` futtassa újra, és ezúttal `v1.0.1`frissítse a tag verzióját a számára. A korábhoz `<docker_id>` képest cserélje le a Docker Hub-fiók azonosítóját:
+1. A gyökérkönyvtárban futtassa újra a `docker build` parancsot, és ezúttal frissítse a címkében szereplő verziót `v1.0.1`. Ahogy korábban is, `<docker_id>` cserélje le a Docker hub-fiók azonosítóját:
 
     ```
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
     ```
     
-1. A frissített kép visszaküldése a `docker push`tárházba a következővel:
+1. Küldje vissza a frissített képet a tárházba a `docker push`következővel:
 
     ```
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 
-1. Mivel konfigurált a folyamatos kézbesítés, a rendszerkép frissítése a beállításjegyzékben ismét automatikusan frissíti a függvényalkalmazást az Azure-ban.
+1. Mivel a folyamatos teljesítést konfigurálta, a beállításjegyzékben lévő rendszerkép frissítése ismét automatikusan frissíti a Function alkalmazást az Azure-ban.
 
-## <a name="view-the-message-in-the-azure-storage-queue"></a>Az üzenet megtekintése az Azure Storage várólistájában
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Az üzenet megtekintése az Azure Storage-várólistában
 
-A böngészőben használja ugyanazt az URL-címet, mint korábban a függvény meghívásához. A böngészőnek ugyanazt a választ kell megjelenítenie, mint korábban, mert nem módosította a függvénykód nak ezt a részét. A hozzáadott kód azonban az URL-paraméter t `outqueue` használja a `name` tárolóvárólistába.
+A böngészőben a függvény meghívásához ugyanazt az URL-címet használja. A böngészőnek ugyanazt a választ kell megjelennie, mint korábban, mert nem módosította a függvény kódjának részét. A hozzáadott kód azonban a `name` `outqueue` Storage-üzenetsor URL-címének használatával írt egy üzenetet.
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbbra is az Azure-funkcióval szeretne dolgozni az oktatóanyagban létrehozott erőforrások használatával, az összes erőforrást a helyén hagyhatja. Mivel prémium csomagot hozott létre az Azure Functionshez, napi egy vagy két USD-t kell felűröznie a folyamatos költségekben.
+Ha az oktatóanyagban létrehozott erőforrásokkal szeretné tovább használni az Azure-függvényt, akkor az összes erőforrást helyben hagyhatja. Mivel prémium szintű csomagot hozott létre a Azure Functionshoz, a folyamatos költségek napi egy vagy két USD-t foglalnak magukban.
 
-A folyamatos költségek elkerülése `AzureFunctionsContainer-rg` érdekében törölje az erőforráscsoportot a csoport összes erőforrásának törléséhez: 
+A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsContainer-rg` erőforráscsoportot a csoport összes erőforrásának tisztításához: 
 
 ```azurecli
 az group delete --name AzureFunctionsContainer-rg
@@ -510,6 +510,6 @@ az group delete --name AzureFunctionsContainer-rg
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Felügyeleti funkciók](functions-monitoring.md)
++ [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)
-+ [Kubernetes-alapú kiszolgáló nélküli tárhely](functions-kubernetes-keda.md)
++ [Kubernetes-alapú kiszolgáló nélküli üzemeltetés](functions-kubernetes-keda.md)

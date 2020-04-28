@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Az Azure Active Directory integrációja a Bpm'online szolgáltatással | Microsoft dokumentumok"
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Bpm'online között.
+title: 'Oktatóanyag: Azure Active Directory integráció a creatio-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és creatio között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,186 +11,150 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937278f6a9261ca807f934718bc108bf125f44a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feffefbc9da15dc074d69549446b471984e4422d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67106025"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183364"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Oktatóanyag: Az Azure Active Directory integrációja a Bpm'online szolgáltatással
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-creatio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a creatio
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Bpm'online szolgáltatást az Azure Active Directoryval (Azure AD).
-A Bpm'online integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a creatio a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az creatio-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Bpm'online szolgáltatáshoz.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve bpm'online (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* A creatio-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a creatio az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához a Bpm'online szolgáltatással a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
-* Bpm'online egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Creatio egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Bpm'online támogatja az **SP-t és az IDP** által kezdeményezett sso-t
+* A creatio támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-bpmonline-from-the-gallery"></a>Bpm'online hozzáadása a galériából
+* A creatio konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-A Bpm'online azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Bpm'online-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+## <a name="adding-creatio-from-the-gallery"></a>Creatio hozzáadása a gyűjteményből
 
-**Ha a Bpm'online webhelyet hozzá szeretné adni a galériából, hajtsa végre az alábbi lépéseket:**
+A creatio Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a creatio a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonra.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **creatio** kifejezést a keresőmezőbe.
+1. Válassza ki a **creatio** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-creatio"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a creatio
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a creatio a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a creatio-ben.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **Új alkalmazás** gombra.
+Az Azure AD SSO és a creatio konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[CREATIO SSO konfigurálása](#configure-creatio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre creatio-teszt felhasználót](#create-creatio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-creatio rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-4. A keresőmezőbe írja be a **Bpm'online**parancsot, válassza a **Bpm'online** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Bpm'online az eredménylistában](common/search-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+1. A [Azure Portal](https://portal.azure.com/) **creatio** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Bpm'online szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat bpm'online létre kell hozni.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Bpm'online szolgáltatással a következő építőelemeket kell végrehajtania:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Állítsa be a Bpm'online single sign-on](#configure-bpmonline-single-sign-on)** --hoz configure a Single Sign-On beállítások at alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre bpm'online teszt felhasználó](#create-bpmonline-test-user)** - egy megfelelője Britta Simon a Bpm'online, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/`
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/ServiceModel/AuthService.svc/SsoLogin`
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-Az Azure AD egyszeri bejelentkezésének bpm'online szolgáltatással való konfigurálásához hajtsa végre az alábbi lépéseket:
-
-1. Az [Azure Portalon](https://portal.azure.com/)a **Bpm'online** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
-
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
-
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
-
-    ![Bpm'online Domain és URL-címek egyszeri bejelentkezési információk](common/idp-intiated.png)
-
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/`
-
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/ServiceModel/AuthService.svc/SsoLogin`
-
-5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
-
-    ![Bpm'online Domain és URL-címek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
-
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<client site name>.bpmonline.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Bpm'online ügyféltámogatási csapatával,](mailto:support@bpmonline.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a creatio ügyfélszolgálati [csapatához](mailto:support@creatio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** másolásához és mentéséhez a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-bpmonline-single-sign-on"></a>A Bpm'online egyszeri bejelentkezés konfigurálása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-A **Bpm'online** oldalon való egyszeri bejelentkezés konfigurálásához el kell küldenie az **App Federation metaadat-címét** a [Bpm'online támogatási csapatnak.](mailto:support@bpmonline.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a creatio.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **creatio**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-    ![Új felhasználó gomb](common/new-user.png)
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
-  
-    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
+## <a name="configure-creatio-sso"></a>Creatio SSO konfigurálása
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+Az egyszeri bejelentkezés **creatio** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [creatio támogatási csapatának](mailto:support@creatio.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-    d. Kattintson **a Létrehozás gombra.**
+### <a name="create-creatio-test-user"></a>Creatio-tesztelési felhasználó létrehozása
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a creatio-ben. Együttműködik a [creatio támogatási csapatával](mailto:support@creatio.com) , hogy hozzáadja a felhasználókat a creatio platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t a Bpm'online hozzáférést biztosítva.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Bpm'online**lehetőséget.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+Ha a hozzáférési panelen a creatio csempére kattint, automatikusan be kell jelentkeznie arra a creatio, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-2. Az alkalmazások listájában válassza a **Bpm'online**lehetőséget.
+## <a name="additional-resources"></a>További háttéranyagok
 
-    ![A Bpm'online hivatkozás az Alkalmazások listában](common/all-applications.png)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+- [A creatio kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
-
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
-
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
-
-### <a name="create-bpmonline-test-user"></a>Bpm'online tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Bpm'online szolgáltatásban. Együttműködve [bpm'online támogatási csapat](mailto:support@bpmonline.com) a felhasználók hozzáadása a Bpm'online platform. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
-
-Amikor a Hozzáférési panelen a Bpm'online csempére kattint, automatikusan be kell jelentkeznie arra a Bpm'online-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
-
-## <a name="additional-resources"></a>További források
-
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

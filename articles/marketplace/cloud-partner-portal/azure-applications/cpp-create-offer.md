@@ -7,29 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 823c9cbe8c850fbc4170a5734305f9cc5e45be83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405593a97571ac5be351011890d162b5c0396966
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285282"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865580"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy Azure-alkalmazás ajánlatbejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és a következő eszközcsoportokból és támogató szolgáltatásokból áll: ajánlatrészletei, termékprogramok, marketingösszetevők és támogatási információk.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja az Azure-alkalmazásajánlatok létrehozását és kezelését. Ehelyett ezt a funkciót áthelyezték a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információ: [Create an Azure application offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-## <a name="new-offer-form"></a>Új ajánlat űrlap
-
-Jelentkezzen be a [Cloud Partner Portal ba](https://cloudpartner.azure.com/), és válassza a + Új **ajánlat** lehetőséget a bal oldali menüsorban. Az Új ajánlat menüben válassza az **Azure Applications lehetőséget** az Új **ajánlat** űrlap megjelenítéséhez, és indítsa el az új ajánlat eszközeinek meghatározását.
-
-![Új ajánlati űrlap](./media/azure-new-managedapp-offer.png)
-
-## <a name="next-steps"></a>További lépések
-
-Az Új ajánlat lap lapok és űrlapmezők készletét tartalmazza, amelyek segítségével új ajánlatot hozhat létre. Az alábbi cikkek ismertetik, hogyan határozhatja meg az eszközcsoportokat és a támogató szolgáltatásokat az új ajánlathoz.
-
-* [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
-* [Termékváltozatok lap](./cpp-skus-tab.md)
-* [Tesztverzió lap](./cpp-testdrive-tab.md)
-* [Marketplace lap](./cpp-marketplace-tab.md)
-* [Támogatási lap](./cpp-support-tab.md)
+Mielőtt új Azure-alkalmazásajánlatot hozna létre, olvassa el [a Partnerközpont-fiók létrehozása című témakört,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) majd nyissa meg a [Kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) az **Áttekintés** lap kiválasztásával. Kövesse az [Azure-alkalmazásajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) az ajánlat létrehozásához kövesse az utasításokat.

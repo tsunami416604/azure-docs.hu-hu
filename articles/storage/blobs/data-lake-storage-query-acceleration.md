@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137535"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176702"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)
 
@@ -71,7 +71,7 @@ Az alkalmazások a lekérdezési gyorsítás integrálásának példáját lásd
 
 ## <a name="pricing"></a>Díjszabás
 
-A Azure Data Lake Storage szolgáltatásban megnövelt számítási terhelés miatt a lekérdezési gyorsítás használatának díjszabási modellje eltér a normál Azure Data Lake Storage tranzakciós modelltől. A lekérdezési gyorsítás díja a beolvasott adatok mennyiségének, valamint a hívónak visszaadott adatok mennyiségének a költségei.
+A Azure Data Lake Storage szolgáltatásban megnövelt számítási terhelés miatt a lekérdezési gyorsítás használatának díjszabási modellje eltér a normál Azure Data Lake Storage tranzakciós modelltől. A lekérdezési gyorsítás díja a beolvasott adatok mennyiségének, valamint a hívónak visszaadott adatok mennyiségének a költségei. További információ: [Azure Data Lake Storage Gen2 díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 A számlázási modellre való váltás ellenére a lekérdezési gyorsítás díjszabási modellje úgy van kialakítva, hogy csökkentse a számítási feladatok teljes tulajdonlási költségét, a jóval drágább virtuális gépek költségeinek csökkentése miatt.
 

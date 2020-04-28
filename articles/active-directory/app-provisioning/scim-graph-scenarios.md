@@ -1,6 +1,6 @@
 ---
-title: Az SCIM, a Microsoft Graph és az Azure AD-kiépítési szolgáltatás használata a felhasználók kibővítéséhez és az alkalmazás bővítéséhez a szükséges adatokkal | Microsoft dokumentumok
-description: Az SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez a szükséges adatokkal.
+title: A SCIM, a Microsoft Graph és az Azure AD-kiépítési szolgáltatás használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal | Microsoft Docs
+description: A SCIM és a Microsoft Graph együttes használatával kiépítheti a felhasználókat, és gazdagíthatja az alkalmazást az általa igénybe venni kívánt adattal.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -12,36 +12,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134237b66a803abaf07621112e3a4a518a3ae8a7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82087620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181834"
 ---
-# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Az SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez a szükséges adatokkal
+# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
-**Célközönség:** Ez a dokumentum az Azure AD-vel integrált alkalmazásokat fejlesztő fejlesztőkszámára készült. Mások számára szeretnének integrálni egy meglévő alkalmazás, mint a Zoom, ServiceNow, és a DropBox akkor hagyja ki ezt, és tekintse át az alkalmazás specifikus [oktatóanyagok](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+**Célközönség:** Ez a dokumentum az Azure AD-vel való integrációt célzó fejlesztők számára készült. Másoknak, akik az Azure AD-vel már integrált alkalmazásokat szeretnének használni, például a nagyítás, a ServiceNow és a DropBox használatával, kihagyhatja ezt, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , vagy áttekintheti [a kiépítési szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
 
 **Gyakori helyzetek**
 
+Az Azure AD az üzembe helyezéshez és az alkalmazások kiépítéséhez használható bővíthető platformot biztosít az alkalmazásokhoz. A döntési fa azt ismerteti, hogy a fejlesztők hogyan használják a [scim](https://aka.ms/scimoverview) és a [Microsoft Graph](https://docs.microsoft.com/graph/overview) a kiépítés automatizálására. 
+
 > [!div class="checklist"]
 > * Felhasználók automatikus létrehozása az alkalmazásban
-> * A felhasználók automatikus eltávolítása az alkalmazásból, ha már nem kellene hozzáférésük
-> * Az alkalmazás integrálása több identitásszolgáltatóval a kiépítéshez
-> * Az alkalmazás richdrészea Microsoft-szolgáltatásokból, például a SharePointból, az Outlookból és az Office-ból származó adatokkal gazdagíthatja az alkalmazást.
-> * Felhasználók és csoportok automatikus létrehozása, frissítése és törlése az Azure AD-ben és az Active Directoryban
+> * Automatikusan eltávolíthatja a felhasználókat az alkalmazásból, ha már nem férnek hozzá
+> * Saját alkalmazás integrálása több identitás-szolgáltatóval az üzembe helyezéshez
+> * A Microsoft-szolgáltatásokból, például a csapatokból, az Outlookból és az Office-ból származó adatokkal gazdagíthatja alkalmazásait.
+> * Felhasználók és csoportok automatikus létrehozása, frissítése és törlése az Azure AD-ben és Active Directory
 
-![SciM Graph döntési fa](./media/user-provisioning/scim-graph.png)
+![SCIM gráf döntési fája](./media/user-provisioning/scim-graph.png)
 
-## <a name="scenario-1-automatically-create-users-in-my-app"></a>1. eset: Felhasználók automatikus létrehozása az alkalmazásban
-Ma, informatikai rendszergazdák manuálisan létre felhasználói fiókok az én alkalmazás minden alkalommal, amikor valakinek szüksége van a hozzáféréshez, vagy rendszeresen feltölteni CSV fájlokat. A folyamat időigényes az ügyfelek számára, és lassítja az alkalmazásom elfogadását. Minden amire szükségem van van alapvető [felhasználó](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) információ mint név, elektronikus levél, és userPrincipalName -hoz teremt egy felhasználó. Továbbá az ügyfeleim különböző azonosítókat használnak, és nem rendelkezem az erőforrásokkal a szinkronizálási motor és az egyéni integrációk fenntartásához az egyes IdP-vel. 
+## <a name="scenario-1-automatically-create-users-in-my-app"></a>1. forgatókönyv: felhasználók automatikus létrehozása az alkalmazásban
+Napjainkban a rendszergazdák kiépítik a felhasználókat a felhasználói fiókok manuális létrehozásával vagy a CSV-fájlok alkalmazásba való rendszeres feltöltésével. A folyamat időt vesz igénybe az ügyfelek számára, és lelassítja az alkalmazás bevezetését. A felhasználók létrehozásához szükség van az alapvető felhasználói információkra, például a név, az e-mail és a userPrincipalName. 
 
-**Javaslat**: Scim-kompatibilis [/Felhasználók](https://aka.ms/scimreferencecode) végpont támogatása. Az ügyfelek könnyen használhatják ezt a végpontot az Azure AD-kiépítési szolgáltatással való integrációhoz, és automatikusan létrehozhatnak felhasználói fiókokat, amikor hozzáférésre van szükségük. A végpontot egyszer is létrehozhatja, és kompatibilis lesz az összes idp-vel, anélkül, hogy szinkronmotort kellene fenntartania. Tekintse meg az alábbi példakérelmet a felhasználó létrehozásának módjáról.
+**Javaslat**: 
+* Ha az ügyfelek különböző IDP használnak, és nem szeretné, hogy a szinkronizálási motort az egyes szolgáltatásokkal integrálja, támogassa a SCIM-kompatibilis [/Users](https://aka.ms/scimreferencecode) -végpontot. Az ügyfelek könnyedén használhatják ezt a végpontot az Azure AD-kiépítési szolgáltatásba való integráláshoz és a felhasználói fiókok automatikus létrehozásához, amikor hozzáférésre van szükségük. A végpontot egyszer is felépítheti, és minden IDP kompatibilis lesz. Tekintse meg az alábbi példában, hogy a felhasználók hogyan hozhatók létre a SCIM használatával.
+* Ha felhasználói adatokra van szüksége az Azure AD-ben és a Microsofton kívül más adatokban található felhasználói objektumon, érdemes lehet SCIM-végpontot létrehozni a felhasználók kiépítésekor, és a további adatok beszerzéséhez meg kell hívni a Microsoft Graph. 
+
 
 ```json
 POST /Users
@@ -64,10 +69,10 @@ POST /Users
 }
 ```
     
-## <a name="scenario-2-automatically-remove-users-from-my-app"></a>2. eset: A felhasználók automatikus eltávolítása az alkalmazásból
-Az alkalmazásom használó ügyfelei biztonságra összpontosítanak, és cégirányítási követelményekkel rendelkeznek a fiókok eltávolításához, amikor az alkalmazottaknak már nincs rájuk szükségük. Hogyan automatizálhatom az alkalmazásból való megszüntetést?
+## <a name="scenario-2-automatically-remove-users-from-my-app"></a>2. forgatókönyv: a felhasználók automatikus eltávolítása az alkalmazásból
+Az alkalmazást használó ügyfeleink biztonságra vannak koncentrálva, és irányítási követelményekkel rendelkeznek a fiókok eltávolításához, ha az alkalmazottaknak már nincs rájuk szükségük. Hogyan automatizálható a kiépítés az alkalmazásból?
 
-**Ajánlás:** SciM-kompatibilis /Users végpont támogatása. Az Azure AD-kiépítési szolgáltatás letiltási és törlési kérelmeket küld, ha a felhasználónak már nem kell hozzáféréssel rendelkeznie. Javasoljuk, hogy a felhasználók letiltását és törlését is támogassa. Tekintse meg az alábbi példákat, hogy hogyan néz ki a letiltási és törlési kérelem. 
+**Javaslat:** Támogatja a SCIM-kompatibilis/Users-végpontot. Az Azure AD kiépítési szolgáltatás a letiltási és törlési kérelmeket küldi el, ha a felhasználónak többé nem lesz hozzáférése. Javasoljuk, hogy a felhasználók letiltását és törlését is támogassa. Tekintse meg az alábbi példákat a letiltási és törlési kérelem kinézetéhez. 
 
 Felhasználó letiltása
 ```json
@@ -90,33 +95,33 @@ Felhasználó törlése
 DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ```
 
-## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>3. forgatókönyv: Csoporttagságok kezelésének automatizálása az alkalmazásomban
-Az alkalmazás csoportokra támaszkodik a különböző erőforrásokhoz való hozzáféréshez, és az ügyfelek szeretnék újra felhasználni az Azure AD-ben lévő csoportokat. Hogyan importálhatok csoportokat az Azure AD-ből, és hogyan frissíthetem őket a tagságok változásával?  
+## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>3. forgatókönyv: csoporttagság kezelése az alkalmazásban
+Az alkalmazás a különböző erőforrásokhoz való hozzáféréshez használt csoportokra támaszkodik, és az ügyfelek szeretnék újra felhasználni az Azure AD-ban található csoportokat. Hogyan importálhatók csoportok az Azure AD-ből, és hogyan frissíthetik őket a tagságok változásakor?  
 
-**Ajánlás:** SciM-kompatibilis /Csoportok [végpont](https://aka.ms/scimreferencecode)támogatása . Az Azure AD-kiépítési szolgáltatás gondoskodik a csoportok létrehozásáról és a tagsági frissítések kezeléséről az alkalmazásban. 
+**Javaslat:** Támogatja a SCIM-kompatibilis/groups- [végpontot](https://aka.ms/scimreferencecode). Az Azure AD-kiépítési szolgáltatás gondoskodik a csoportok létrehozásáról és a tagsági frissítések kezeléséről az alkalmazásban. 
 
-## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>4. forgatókönyv: Az alkalmazás omlása a Microsoft-szolgáltatásokból, például a Teamsből, az Outlookból és a OneDrive-ból származó adatokkal.
-Az alkalmazásom be van építve a Microsoft Teamsbe, és az üzenetadatokra támaszkodik. Ezenkívül a felhasználók számára fájlokat tárolunk a OneDrive-on. Hogyan gazdagíthatom az alkalmazásomat az ezekből a szolgáltatásokból és a Microsofttól származó adatokkal?
+## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>4. forgatókönyv: az alkalmazás gyarapítása Microsoft-szolgáltatásokból, például csapatokból, Outlookból és OneDrive származó adatokkal
+Az alkalmazásom be van építve a Microsoft Teams szolgáltatásba, és az üzenetek adataira támaszkodik. Emellett a OneDrive lévő felhasználók fájljait is tároljuk. Hogyan frissíthetem az alkalmazást a szolgáltatások adataival és a Microsofton keresztül?
 
-**Ajánlás:** A [Microsoft Graph](https://docs.microsoft.com/graph/) a Belépési pont a Microsoft-adatok eléréséhez. Minden számítási feladatok elérhetővé teszi kita az API-k at a szükséges adatokkal. A Microsoft graph használható együtt [SCIM kiépítése](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) a fenti forgatókönyvek. Az SCIM használatával alapvető felhasználói attribútumokat helyezhet el az alkalmazásba, miközben a graph-ba hívás közben behívhat bármilyen más szükséges adatot. 
+**Javaslat:** A [Microsoft Graph](https://docs.microsoft.com/graph/) a belépési pontja a Microsoft adataihoz való hozzáféréshez. Minden munkaterhelés elérhetővé teszi az API-kat a szükséges adatokkal. A Microsoft Graph a fenti forgatókönyvek esetében a [scim kiépítés](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) mellett is használható. A SCIM segítségével alapszintű felhasználói attribútumokat helyezhet üzembe az alkalmazásban, miközben diagramon is meghívja a szükséges egyéb adatok beszerzését. 
 
-## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>5. forgatókönyv: Kövesse nyomon a változásokat a Microsoft-szolgáltatások, például a Teams, az Outlook és az Azure AD.
-Képesnek kell lennem nyomon követni a Teams és az Outlook üzenetek változásait, és valós időben kell reagálnom rájuk. Hogyan érhetem el ezeket a módosításokat az alkalmazásomba?
+## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>5. forgatókönyv: a Microsoft-szolgáltatások, például a csapatok, az Outlook és az Azure AD változásainak követése
+Követni kell a csapatok és az Outlook üzeneteinek változásait, és valós időben reagálni kell rájuk. Hogyan szerezhetem be ezeket a módosításokat az alkalmazásba?
 
-**Ajánlás:** A Microsoft Graph [változási értesítéseket](https://docs.microsoft.com/graph/webhooks) és változáskövetést biztosít a különböző erőforrásokhoz. Vegye figyelembe a változásértesítések következő korlátait:
-- Ha egy esemény fogadója tudomásul vesz egy eseményt, de bármilyen okból nem cselekszik, az esemény elveszhet
-- Ha egy esemény fogadója tudomásul vesz egy eseményt, de bármilyen okból nem cselekszik, az esemény elveszhet
-- A változási értesítések nem mindig tartalmazzák az [erőforrásadatokat](https://docs.microsoft.com/graph/webhooks-with-resource-data) A fenti okok miatt a fejlesztők gyakran használnak változásértesítéseket a változáskövetéslel együtt a szinkronizálási forgatókönyvekhez. 
+**Javaslat:** A Microsoft Graph a különböző erőforrások [változási értesítéseit](https://docs.microsoft.com/graph/webhooks) és a [változások nyomon követését](https://docs.microsoft.com/graph/delta-query-overview) teszi lehetővé. Vegye figyelembe a változási értesítések következő korlátozásait:
+- Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész
+- Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész
+- Az értesítések módosítása a fenti okok miatt nem mindig tartalmaz [erőforrásadatokat](https://docs.microsoft.com/graph/webhooks-with-resource-data) , a fejlesztők gyakran a módosítási értesítéseket használják a szinkronizálási forgatókönyvek módosítási nyomon követésével együtt. 
 
-## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>6. forgatókönyv: Felhasználók és csoportok kiépítése az Azure AD-ben.
-Az alkalmazásom olyan felhasználóadatait hozza létre, amelynek az ügyfeleknek szükségük van az Azure AD-ben. Ez lehet egy HR-alkalmazás, mint kezeli a bérbeadás, egy kommunikációs alkalmazás, amely telefonszámokat hoz létre a felhasználók számára, vagy más alkalmazás, amely olyan adatokat hoz létre, amelyek értékesek lennének az Azure AD-ben. Hogyan tudom feltölteni a felhasználói rekordot az Azure AD-ben ezekkel az adatokkal? 
+## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>6. forgatókönyv: felhasználók és csoportok kiépítése az Azure AD-ben
+Az alkalmazás egy olyan felhasználóról hoz létre információt, amelyet az ügyfeleknek az Azure AD-ben kell megadniuk. Ez lehet egy HR-alkalmazás, mint a bérbeadás kezelése, egy kommunikációs alkalmazás, amely telefonszámokat hoz létre a felhasználók számára, vagy egy másik alkalmazás, amely az Azure AD-ben értékes adatokat generál. Hogyan feltölti a felhasználói rekordot az Azure AD-ben az adatokkal? 
 
-**Ajánlás** A Microsoft graph elérhetővé teszi a /Users és a /Groups végpontokat, amelyekkel ma integrálható a felhasználók Azure AD-be való kiépítéséhez. Vegye figyelembe, hogy az Azure Active Directory nem támogatja a felhasználók visszaírását az Active Directoryba. 
+**Javaslat** A Microsoft Graph olyan/Users-és/groups-végpontokat tesz elérhetővé, amelyeket ma integrálhat a felhasználók Azure AD-be való kiépítéséhez. Vegye figyelembe, hogy a Azure Active Directory nem támogatja a felhasználók Active Directoryba való visszaírását. 
 
 > [!NOTE]
-> A Microsoft rendelkezik egy kiépítési szolgáltatással, amely lekéri az adatokat a HR-alkalmazásokból, például a Workday és a SuccessFactors alkalmazásokból. Ezeket az integrációkat a Microsoft építi és kezeli. A bevezetés egy új HR alkalmazás a szolgáltatás, akkor kérheti, hogy a [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests). 
+> A Microsoft olyan kiépítési szolgáltatással rendelkezik, amely HR-alkalmazásokból, például munkanapokból és SuccessFactors származó adatokra kéri le. Ezeket az integrációkat a Microsoft építette és felügyeli. Ha új HR-alkalmazást szeretne bevezetni a szolgáltatásba, azt [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests)-on keresztül kérheti le. 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [A Microsoft Graph szinkronizálási dokumentációjának áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [Egyéni SCIM-alkalmazások integrálása az Azure AD-vel](use-scim-to-provision-users-and-groups.md)
+- [A szinkronizálási Microsoft Graph dokumentációjának áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Egyéni SCIM-alkalmazás integrálása az Azure AD-vel](use-scim-to-provision-users-and-groups.md)

@@ -1,68 +1,73 @@
 ---
-title: Automation-fiók létrehozása Azure Resource Manager-sablonokkal | Microsoft dokumentumok
-description: Azure Resource Manager-sablon használatával azure automation-fiók létrehozásához.
+title: Automation-fiók létrehozása Azure Resource Manager-sablonok használatával | Microsoft Docs
+description: Egy Azure Automation-fiók létrehozásához használhat Azure Resource Manager sablont.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/15/2020
-ms.openlocfilehash: efe51fbada8ac70b24c16a5c7c1e0e91879e5e9f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.date: 04/24/2020
+ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618684"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165824"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Automation-fiók létrehozása az Azure Resource Manager-sablonnal
+# <a name="create-automation-account-using-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
-[Az Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával azure automation-fiókot hozhat létre az erőforráscsoportban. Ez a cikk egy mintasablont tartalmaz, amely automatizálja a következőket:
+[Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával létrehozhat egy Azure Automation fiókot az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
 
-* Egy Azure Monitor Log Analytics munkaterület létrehozása.
-* Egy Azure Automation-fiók létrehozása.
-* Az Automation-fiók a Log Analytics-munkaterülethez kapcsolódik.
+* Azure Monitor Log Analytics munkaterület létrehozása.
+* Azure Automation-fiók létrehozása.
+* Az Automation-fiók csatolása a Log Analytics munkaterülethez.
 
-A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép vagy megoldás bevezetési folyamatát. 
+A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép, illetve megoldás bevezetését. 
 
 >[!NOTE]
->Az Automation Run As fiók létrehozása nem támogatott Az Azure Resource Manager-sablon használata esetén. Ha manuálisan szeretne futtatni futtatási fiókot a portálról vagy a PowerShell használatával, olvassa [el a Futtatás másként fiók kezelése című témakört.](manage-runas-account.md)
+>Azure Resource Manager-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiók kezelése](manage-runas-account.md)című témakört.
 
 ## <a name="api-versions"></a>API-verziók
 
-Az alábbi táblázat a példában használt erőforrások API-verzióját sorolja fel.
+A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| Munkaterület | munkaterületek | 2017-03-15-előzetes |
+| Munkaterület | munkaterületek | 2017-03-15 – előzetes verzió |
 | Automation-fiók | automation | 2015-10-31 | 
 
 ## <a name="before-using-the-template"></a>A sablon használata előtt
 
-Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk az Azure PowerShell Az modult igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. Az Azure PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment szolgáltatást](/powershell/module/az.resources/new-azresourcegroupdeployment)használja.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A Azure PowerShell használatával a telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli, hogy az Azure CLI 2.1.0-s vagy újabb verzióját futassza. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az Azure CLI,ez a központi telepítés használja [az csoport központi telepítés létrehozása](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
 
-A JSON-sablon úgy van beállítva, hogy a következőket kérje:
+A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
 
 * A munkaterület neve
-* Az a régió, amelyben a munkaterületet létre lehet hozni
+* Az a régió, amelyben létre kívánja hozni a munkaterületet
 * Az Automation-fiók neve
-* Az a régió, amelyben a fiókot létre szeretné hozni
-
-A JSON-sablon egy alapértelmezett értéket ad meg a többi paraméterhez, amelyek valószínűleg szabványos konfigurációként lennének használva a környezetben. A sablon tárolhatja egy Azure storage-fiók megosztott hozzáférést a szervezetben. A sablonok használatával kapcsolatos további tudnivalókért olvassa el az [Erőforrások telepítése erőforrás-kezelői sablonokkal és az Azure CLI-vel című témakört.](../azure-resource-manager/templates/deploy-cli.md)
+* Az a régió, amelyben létre kell hozni a fiókot
 
 A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
 
-* sku - alapértelmezés szerint a 2018 áprilisában kiadott új GB-onkénti díjszabási szint
-* adatmegőrzés - alapértelmezés szerint harminc nap
-* kapacitásfoglalás - alapértelmezés szerint 100 GB
+* SKU – alapértelmezett érték az új GB-os díjszabási szinten, amely az áprilisi 2018 díjszabási modellben jelent meg
+* adatmegőrzés – az alapértelmezett érték 30 nap
+* kapacitás foglalása – alapértelmezett érték: 100 GB
 
 >[!WARNING]
->Ha egy Log Analytics-munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új 2018 áprilisi díjszabási modellt választotta, az egyetlen érvényes Log Analytics-díjszabási szint a **PerGB2018.**
+>Ha Log Analytics munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új, április 2018 díjszabási modellbe van lefoglalva, az egyetlen érvényes Log Analytics díjszabási csomag **PerGB2018**.
 >
 
->[!NOTE]
->A sablon használata előtt tekintse át a [további részleteket](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) a munkaterület konfigurációs beállításainak teljes megértéséhez, például a hozzáférés-vezérlési mód, a tarifacsomag, a megőrzési és a kapacitásfoglalási szint. Ha most ismerkedik az Azure Monitor naplóival, és még nem telepített munkaterületet, tekintse át a [munkaterület tervezési](../azure-monitor/platform/design-logs-deployment.md) útmutatóját a hozzáférés-vezérlésről, valamint a szervezet számára ajánlott tervezési megvalósítási stratégiák megértéséről.
+A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
+
+Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor ne a hibák elkerülése érdekében a következő konfigurációs részleteket Ismerje meg: Azure Automation és Azure Monitor.
+
+* [További részletekért](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
+
+* Mivel csak bizonyos régiók támogatottak egy Log Analytics munkaterület és egy Automation-fiók összekapcsolásához az előfizetésben, tekintse át a [munkaterület-hozzárendeléseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy Parameters fájlban való megadásához.
+
+* Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakításával](../azure-monitor/platform/design-logs-deployment.md) kapcsolatos útmutatót a hozzáférés-vezérlés megismeréséhez, és ismerkedjen meg a szervezete számára ajánlott kialakítási stratégiákkal.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -112,32 +117,6 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
         },
         "location": {
             "type": "string",
-            "allowedValues": [
-                "australiacentral",
-                "australiaeast",
-                "australiasoutheast",
-                "brazilsouth",
-                "canadacentral",
-                "centralindia",
-                "centralus",
-                "eastasia",
-                "eastus",
-                "eastus2",
-                "francecentral",
-                "japaneast",
-                "koreacentral",
-                "northcentralus",
-                "northeurope",
-                "southafricanorth",
-                "southcentralus",
-                "southeastasia",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westeurope",
-                "westus",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
@@ -307,11 +286,11 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
     }
     ```
 
-2. A sablont az igényeinek megfelelően szerkesztheti. Fontolja meg egy [Erőforrás-kezelő paraméterfájl létrehozását](../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket szövegközi értékként adná át.
+2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át.
 
-3. Mentse ezt a fájlt deployAzAutomationAccttemplate.json fájlként egy helyi mappába.
+3. Mentse ezt a fájlt deployAzAutomationAccttemplate. JSON néven egy helyi mappába.
 
-4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShell vagy az Azure CLI. Amikor a rendszer egy munkaterület- és Automation-fióknév megadását kéri, adjon meg egy globálisan egyedi nevet az összes Azure-előfizetésben.
+4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
     **PowerShell**
 
@@ -325,10 +304,10 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
+    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
 
-    ![Példa eredmény, ha a telepítés befejeződött](media/automation-create-account-template/template-output.png)
+    ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik egy Automation-fiókkal, létrehozhat runbookokat, és automatizálhatja a manuális folyamatokat.
+Most, hogy rendelkezik egy Automation-fiókkal, létrehozhat runbookok, és automatizálhatja a manuális folyamatokat.

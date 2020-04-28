@@ -1,61 +1,140 @@
 ---
 title: A fiók hozzáférési kulcsainak kezelése
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan tekintheti meg, kezelheti és forgathatja a tárfiók hozzáférési kulcsait.
+description: Megtudhatja, hogyan tekintheti meg, kezelheti és forgathatja el a Storage-fiók hozzáférési kulcsait.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454662"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176624"
 ---
-# <a name="manage-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak kezelése
+# <a name="manage-storage-account-access-keys"></a>A Storage-fiók hozzáférési kulcsainak kezelése
 
-Amikor létrehoz egy tárfiókot, az Azure két 512 bites tárfiók-hozzáférési kulcsot hoz létre. Ezek a kulcsok a tárfiókban lévő adatokhoz való hozzáférés engedélyezésére használhatók a megosztott kulcs engedélyezése révén.
+A Storage-fiók létrehozásakor az Azure 2 512 bites Storage-fiókhoz tartozó hozzáférési kulcsokat hoz létre. Ezek a kulcsok a Storage-fiókban lévő adathozzáférés engedélyezésére használhatók a megosztott kulcsos hitelesítésen keresztül.
 
-A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje a hozzáférési kulcsokat, és rendszeresen forgassa el és forgassa újra a kulcsokat. Az Azure Key Vault használatával egyszerűen elforgathatja a kulcsokat az alkalmazások megszakítása nélkül. A billentyűket manuálisan is elforgathatja.
+A Microsoft azt javasolja, hogy a Azure Key Vault segítségével kezelje a hozzáférési kulcsokat, és hogy rendszeresen elforgatja és újragenerálja a kulcsokat. A Azure Key Vault használata megkönnyíti a kulcsok elforgatását az alkalmazásokkal való megszakítás nélkül. Manuálisan is elforgathatja a kulcsokat.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Hozzáférési kulcsok és kapcsolati karakterlánc megtekintése
+## <a name="view-account-access-keys"></a>Fiók hozzáférési kulcsainak megtekintése
 
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+A fiókhoz való hozzáférési kulcsokat a Azure Portal, a PowerShell vagy az Azure CLI használatával tekintheti meg és másolhatja. A Azure Portal is biztosít a Storage-fiókhoz a másolható kapcsolatok karakterláncát.
 
-## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>A hozzáférési kulcsok kezelése az Azure Key Vault használatával
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje és forgassa el a hozzáférési kulcsokat. Az alkalmazás biztonságosan hozzáférhet a kulcsaihoz a Key Vaultban, így elkerülheti azok tárolását az alkalmazáskóddal. A Key Vault kulcskezeléshez való használatáról az alábbi cikkekben talál további információt:
+A Storage-fiók hozzáférési kulcsainak vagy kapcsolati karakterláncának megtekintése és másolása a Azure Portalből:
 
-- [Tárfiók-kulcsok kezelése az Azure Key Vault és a PowerShell használatával](../../key-vault/secrets/overview-storage-keys-powershell.md)
-- [Tárfiók-kulcsok kezelése az Azure Key Vault és az Azure CLI segítségével](../../key-vault/secrets/overview-storage-keys.md)
+1. Navigáljon a Storage-fiókjához a [Azure Portal](https://portal.azure.com).
+1. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
+1. Keresse meg a **kulcs** értékét a **key1**alatt, és kattintson a **Másolás** gombra a fiók kulcsának másolásához.
+1. Másik lehetőségként átmásolhatja a teljes kapcsolatok sztringjét. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához.
 
-## <a name="manually-rotate-access-keys"></a>Hozzáférési billentyűk manuális elforgatása
+    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="A Azure Portal elérési kulcsainak megtekintését bemutató képernyőkép":::
 
-A Microsoft azt javasolja, hogy rendszeresen forgassa el a hozzáférési kulcsokat a tárfiók biztonságának megőrzése érdekében. Ha lehetséges, használja az Azure Key Vault a hozzáférési kulcsok kezeléséhez. Ha nem használja a Key Vaultot, manuálisan kell elforgatnia a kulcsokat.
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Két hozzáférési kulcs van hozzárendelve, így elforgathatja a kulcsokat. Két kulcs biztosítja, hogy az alkalmazás a folyamat során is fenntartja az Azure Storage-hoz való hozzáférést.
+A fiók hozzáférési kulcsainak PowerShell-lel való lekéréséhez hívja meg a [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) parancsot.
+
+A következő példa az első kulcsot kéri le. A második kulcs lekéréséhez használja `Value[1]` a helyett `Value[0]`a következőt:. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+
+```powershell
+$storageAccountKey = `
+    (Get-AzStorageAccountKey `
+    -ResourceGroupName <resource-group> `
+    -Name <storage-account>).Value[0]
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A fiók hozzáférési kulcsainak az Azure CLI-vel való listázásához hívja meg az az [Storage Account Keys List](/cli/azure/storage/account/keys#az-storage-account-keys-list) parancsot az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire. 
+
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <resource-group> \
+  --account-name <storage-account>
+```
+
+---
+
+A két kulcs közül bármelyiket használhatja az Azure Storage eléréséhez, de általánosságban ajánlott az első kulcs használata, és a második kulcs használatának fenntartása a kulcsok elforgatásakor.
+
+A fiók hozzáférési kulcsainak megtekintéséhez vagy olvasásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy RBAC szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**. A művelet részét képező beépített RBAC szerepkörök a **tulajdonos**, a **közreműködő**és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepkör** -szerepkörei. A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure RBAC-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [RBAC beépített Azure-beli beépített szerepköreinek](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
+
+## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>A Azure Key Vault használata a hozzáférési kulcsok kezeléséhez
+
+A Microsoft azt javasolja, hogy a Azure Key Vault segítségével kezelje és forgassa el a hozzáférési kulcsokat. Az alkalmazás képes biztonságosan hozzáférni a kulcsaihoz Key Vaultban, így elkerülhető az alkalmazás kódjának tárolása. A kulcskezelő Key Vault használatáról a következő cikkekben talál további információt:
+
+- [A Storage-fiók kulcsainak kezelése a Azure Key Vault és a PowerShell használatával](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [A Storage-fiók kulcsainak kezelése a Azure Key Vault és az Azure CLI használatával](../../key-vault/secrets/overview-storage-keys.md)
+
+## <a name="manually-rotate-access-keys"></a>Hozzáférési kulcsok manuális elforgatása
+
+A Microsoft azt javasolja, hogy rendszeres időközönként elforgatni a hozzáférési kulcsokat a Storage-fiók biztonságának megőrzése érdekében. Ha lehetséges, használja a Azure Key Vault a hozzáférési kulcsok kezeléséhez. Ha nem Key Vault használ, manuálisan kell elforgatnia a kulcsokat.
+
+Két hozzáférési kulcs van hozzárendelve, hogy el lehessen forgatni a kulcsokat. A két kulcs biztosítja, hogy az alkalmazás a folyamat során fenntartsa az Azure Storage-hoz való hozzáférést.
 
 > [!WARNING]
-> A hozzáférési kulcsok újragenerálása hatással lehet minden olyan alkalmazásra vagy Azure-szolgáltatásra, amely a tárfiók kulcsától függ. Minden olyan ügyfelet, amely a fiókkulcsot használja a tárfiók eléréséhez, frissíteni kell az új kulcs használatához, beleértve a médiaszolgáltatásokat, a felhőalapú, asztali és mobilalkalmazásokat, valamint az Azure Storage grafikus felhasználói felületi alkalmazásait, például az [Azure Storage Explorert.](https://azure.microsoft.com/features/storage-explorer/)
+> A hozzáférési kulcsok újragenerálása hatással lehet bármely olyan alkalmazásra vagy Azure-szolgáltatásra, amely a Storage-fiók kulcsával függ. Minden olyan ügyfelet, amely a fiók kulcsát használja a Storage-fiók eléréséhez, frissíteni kell az új kulcs használatára, beleértve a Media Servicest, a felhőt, az asztali és a mobil alkalmazásokat, valamint az Azure Storage-hoz készült grafikus felhasználói felületi alkalmazásokat, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-Kövesse ezt a folyamatot a tárfiók kulcsainak elforgatásához:
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Frissítse az alkalmazáskódban lévő kapcsolati karakterláncokat a másodlagos kulcs használatához.
-2. Generálja újra a tárfiók elsődleges elérési kulcsát. Az **Azure** Portalon az Access Keys panelen kattintson a **Kulcs újragenerálása1**, majd az **Igen** gombra annak megerősítéséhez, hogy új kulcsot szeretne létrehozni.
-3. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
-4. Hasonló módon generálja újra a másodlagos elérési kulcsot.
+A Storage-fiók hozzáférési kulcsainak elforgatásához a Azure Portalban:
+
+1. Frissítse az alkalmazás kódjában található kapcsolati karakterláncokat a Storage-fiók másodlagos elérési kulcsára való hivatkozáshoz.
+1. Navigáljon a Storage-fiókjához a [Azure Portal](https://portal.azure.com).
+1. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet.
+1. A Storage-fiók elsődleges elérési kulcsának újralétrehozásához válassza az **újragenerált** gombot az elsődleges elérési kulcs mellett.
+1. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
+1. Hasonló módon generálja újra a másodlagos elérési kulcsot.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+A Storage-fiók hozzáférési kulcsainak elforgatása a PowerShell-lel:
+
+1. Frissítse az alkalmazás kódjában található kapcsolati karakterláncokat a Storage-fiók másodlagos elérési kulcsára való hivatkozáshoz.
+1. Hívja meg a [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) parancsot az elsődleges hozzáférési kulcs újralétrehozásához, ahogy az az alábbi példában is látható:
+
+    ```powershell
+    New-AzStorageAccountKey -ResourceGroupName <resource-group> `
+      -Name <storage-account> `
+      -KeyName key1
+    ```
+
+1. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
+1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1`.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A Storage-fiók hozzáférési kulcsainak elforgatása az Azure CLI-vel:
+
+1. Frissítse az alkalmazás kódjában található kapcsolati karakterláncokat a Storage-fiók másodlagos elérési kulcsára való hivatkozáshoz.
+1. Az elsődleges elérési kulcs újragenerálása érdekében hívja meg az az [Storage Account Keys renew](/cli/azure/storage/account/keys#az-storage-account-keys-renew) parancsot az alábbi példában látható módon:
+
+    ```azurecli-interactive
+    az storage account keys renew \
+      --resource-group <resource-group> \
+      --account-name <storage-account>
+      --key primary
+    ```
+
+1. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
+1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1`.
+
+---
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken az 1-es kulcsot, másokban a 2-es kulcsot használja, akkor nem tudja elforgatni a billentyűket anélkül, hogy néhány alkalmazás elveszítené a hozzáférést.
+> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
 
-Egy fiók hozzáférési kulcsainak elforgatásához a felhasználónak szolgáltatás-rendszergazdának kell lennie, vagy olyan RBAC szerepkört kell hozzárendelnie, amely tartalmazza a **Microsoft.Storage/storageAccounts/regeneratekey/action műveletet.** Néhány beépített RBAC szerepkör, amely tartalmazza ezt a műveletet a **tulajdonos,** **közreműködő**és **a tárfiók kulcsoperátori szolgáltatás szerepkör** szerepkörei. A Service Administrator szerepkörrel kapcsolatos további információkért lásd: [Klasszikus előfizetéses rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure AD-szerepkörök.](../../role-based-access-control/rbac-and-directory-admin-roles.md) Az Azure Storage beépített RBAC szerepköreiről az [Azure RBAC beépített szerepkörei](../../role-based-access-control/built-in-roles.md#storage)tárolási **szakaszában** talál részletes információt.
+A fiók hozzáférési kulcsainak elforgatásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy RBAC szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/regeneratekey/műveletet**. A művelet részét képező beépített RBAC szerepkörök a **tulajdonos**, a **közreműködő**és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepkör** -szerepkörei. A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure RBAC-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage beépített RBAC szerepköreivel kapcsolatos részletes információkért tekintse meg a **Storage** szakaszt az Azure [-beli beépített szerepkörök az Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure storage-fiók – áttekintés](storage-account-overview.md)
+- [Az Azure Storage-fiók áttekintése](storage-account-overview.md)
 - [Tárfiók létrehozása](storage-account-create.md)

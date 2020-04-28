@@ -7,329 +7,329 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81756984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185115"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
-Az Azure Security Baseline for Key Vault javaslatokat tartalmaz, amelyek segítenek javítani a központi telepítés biztonsági állapotát.
+Az Key Vault Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapkonfigurációja az [Azure Security Benchmark 1.0-s verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tartalmaz arra vonatkozóan, hogy miként biztosíthatja felhőalapú megoldásait az Azure-ban az ajánlott eljárásokra vonatkozó útmutatónkkal.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security Baselines overview](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt a [Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Erőforrások védelme hálózati biztonsági csoportokkal vagy az Azure tűzfallal a virtuális hálózaton
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
 
-**Útmutató:** Integrálja az Azure Key Vaultot az Azure Private Linkkel. 
+**Útmutató**: Azure Key Vault integrálása az Azure Private-hivatkozással. 
 
-Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
+Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például Azure Key Vault) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
 
-Az Azure Private Endpoint egy olyan hálózati felület, amely privát és biztonságos kapcsolatot biztosít az Azure Private Link által működtetett szolgáltatással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatáshoz irányuló összes forgalom átirányítható a privát végponton keresztül, így nincs szükség átjárókra, NAT-eszközökre, ExpressRoute- vagy VPN-kapcsolatokra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Csatlakozhat egy Azure-erőforrás egy példányához, így a legmagasabb szintű részletességet biztosíthatja a hozzáférés-vezérlésben.
+Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-A Key Vault integrálása az Azure Private Linkkel:
+Key Vault integrálása az Azure Private-hivatkozással:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: A virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató:** Használja az Azure Security Centert, és kövesse a hálózatvédelmi javaslatokat a Key Vault által konfigurált erőforrások azure-beli védelméhez. 
+**Útmutató**: a Azure Security Center használata és a hálózati védelmi javaslatok követése a Key Vault által konfigurált erőforrások biztonságossá tételéhez az Azure-ban. 
 
-Az Azure Security Center által biztosított hálózati biztonságról további információt talál: 
+További információ a Azure Security Center által biztosított hálózati biztonságról: 
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Védje a kritikus webes alkalmazásokat
+### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert rosszindulatú IP-címekkel folytatott kommunikáció megtagadása
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutató:** Engedélyezze az Azure DDoS Protection Standard ot a Key Vault-példányokkal társított Azure virtuális hálózatokon az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú vagy nem használt internetes IP-címekkel folytatott kommunikációt.
+**Útmutató**: a Key Vault-példányokhoz társított Azure-beli virtuális hálózatok Azure DDoS Protection szabványának engedélyezése az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
  
-Az Azure DDoS Protection Standard kezelése az Azure Portalhasználatával:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Azure DDoS Protection standard kezelése a Azure Portal használatával:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Az Azure Biztonsági központban az Azure-szolgáltatási réteg fenyegetésészlelése:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Veszélyforrások észlelése a Azure Security Center Azure szolgáltatási rétegében:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Hálózati csomagok és folyamatnaplók rögzítése
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: hálózati csomagok és adatforgalmi naplók rögzítése
 
-**Útmutatás: Az**Azure Key Vault nem használ hálózati biztonsági csoportokat (NSG) és az Azure Key Vault folyamatnaplóit nem rögzítik. Ehelyett az Azure Private Link használatával biztonságossá az Azure Key Vault-példányok, és lehetővé teszi a diagnosztikai beállításokat a metrikák rögzítésére és a naplózási események.
+**Útmutató**: a Azure Key Vault nem használ hálózati biztonsági csoportokat (NSG), és a flow-naplókat nem rögzíti Azure Key Vault. Ehelyett használja az Azure privát hivatkozását Azure Key Vault példányai biztonságossá tételéhez és a diagnosztikai beállítások engedélyezéséhez a mérőszámok és a naplózási események rögzítéséhez.
 
-Integrálja a Key Vaultot az Azure Privát hivatkozással:
+Key Vault integrálása az Azure Private-hivatkozással:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Azure Key Vault naplózása:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Azure Key Vault naplózás:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Hálózati behatolásészlelő/behatolás-megelőző rendszerek (IDS/IPS) telepítése
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-**Útmutató:** Ez a követelmény az Azure Key Vault speciális veszélyforrások elleni védelmének (ATP) konfigurálásával teljesíthető. Az ATP a biztonsági intelligencia további rétegét biztosítja. Ez az eszköz észleli az Azure Key Vault-fiókok elérésére vagy kihasználására irányuló potenciálisan káros kísérleteket.
+**Útmutató**: ezt a követelményt a Azure Key Vault komplex veszélyforrások elleni védelem (ATP) konfigurálásával lehet kielégíteni. Az ATP további biztonsági intelligencia réteget biztosít. Ez az eszköz észleli a Azure Key Vault fiókok elérését vagy kiaknázását okozó potenciálisan káros kísérleteket.
 
-Amikor az Azure Security Center észleli a rendellenes tevékenység, riasztásokat jelenít meg. Emellett e-mailben az előfizetés rendszergazdája a gyanús tevékenység részleteit, és ajánlásokat, hogyan vizsgálja meg és orvosolja az azonosított fenyegetéseket.
+Amikor Azure Security Center észleli a rendellenes tevékenységeket, riasztásokat jelenít meg. Emellett e-mailben elküldi az előfizetés-rendszergazdának a gyanús tevékenységek részleteit, és javaslatokat tesz az azonosított fenyegetések kivizsgálására és szervizelésére.
 
-Speciális veszélyforrások elleni védelem beállítása az Azure Key Vaulthoz:
+Komplex veszélyforrások elleni védelem beállítása Azure Key Vaulthoz:
 
 https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: A webes alkalmazások forgalmának kezelése
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
-
-**Útmutató:** Az Azure Key Vault-példányokhoz hozzáférést igénylő erőforrásokhoz használja az Azure Key Vault Azure-szolgáltatáscímkéit a hálózati biztonsági csoportok vagy az Azure firewall hálózati hozzáférés-vezérlésének meghatározásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatáscímke nevének (pl. ApiManagement) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
-
-Az Azure szolgáltatáscímkék áttekintése:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: nem alkalmazható
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációinak karbantartása
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
-**Útmutató:** Az Azure Key Vault-példányokhoz társított hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és megvalósítása az Azure Policy használatával. A "Microsoft.KeyVault" és a "Microsoft.Network" névterekben az Azure Key Vault-példányok hálózati konfigurációjának naplózására vagy kényszerítésére egyéni szabályzatok létrehozásához használjon Azure Policy aliasokat. Az Azure Key Vaulthoz kapcsolódó beépített szabályzatdefiníciókat is használhatja, például:
+**Útmutató**: a Azure Key Vault példányokhoz hozzáférést igénylő erőforrásokhoz használja az Azure-szolgáltatás címkéit a Azure Key Vault számára a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-A Key Vaultnak virtuális hálózati szolgáltatás végpontját kell használnia
+Az Azure-szolgáltatás címkék áttekintése:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez:
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
+
+**Útmutató**: a Azure Key Vault-példányokhoz társított hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. kulcstartó" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Azure Key Vault példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a Azure Key Vaulthoz kapcsolódó beépített szabályzat-definíciókat is, például a következőket:
+
+Key Vault virtuális hálózati szolgáltatás végpontját kell használnia
+
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure-szabályzatminták:
+Azure Policy minták:
 
 https://docs.microsoft.com/azure/governance/policy/samples/#networ
 
-Rövid útmutató: Tervrajz definiálása és hozzárendelése a portálon:
+Rövid útmutató: terv meghatározása és hozzárendelése a portálon:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: A forgalom konfigurációs szabályainak dokumentálása
+### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
-**Útmutató:** Az Azure Key Vault-példányok hálózati biztonsággal és forgalomforgalommal kapcsolatos erőforrások címkéivel metaadatok és logikai szervezet biztosításához használjon címkéket.
+**Útmutató**: a metaadatok és a logikai szervezet számára a Azure Key Vault-példányok hálózati biztonságával és forgalmával kapcsolatos erőforrásokhoz használható címkék használata.
 
-Használja a címkézéssel kapcsolatos beépített Azure-szabályzat-definíciók bármelyikét, például a "Címke és annak értéke" használatával győződjön meg arról, hogy minden erőforrás címkékkel jön létre, és értesítheti a meglévő címkézetlen erőforrásokról.
+A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról.
 
-Használhatja az Azure PowerShell vagy az Azure CLI keresni, vagy műveleteket hajt végre az erőforrások alapján a címkéket.
+A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-Címkék használatával rendszerezheti azure-erőforrásait:
+Címkék használata az Azure-erőforrások rendszerezéséhez:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrás-konfigurációk figyelésére és a változások észlelésére
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
-**Útmutató:** Az Azure-tevékenységnapló segítségével figyelheti a hálózati erőforrás-konfigurációkat, és észlelheti az Azure Key Vault-példányokkal kapcsolatos hálózati erőforrások változásait. Hozzon létre riasztásokat az Azure Monitoron belül, amelyek a kritikus hálózati erőforrások módosításakor aktiválódnak.
+**Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Key Vault-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása:
+Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Tevékenységnapló-riasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával:
+Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ: [Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Jóváhagyott időszinkronizációs források használata
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
-**Útmutatás**: Nem alkalmazható; A Microsoft fenntartja az Azure-erőforrásokhoz, például az Azure Key Vaulthoz használt időforrást a naplókban lévő időbélyegek hez.
+**Útmutató**: nem alkalmazható; A Microsoft fenntartja az Azure-erőforrásokhoz használt időforrást, például a Azure Key Vault a naplókban lévő időbélyegek esetében.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: A központi biztonsági napló kezelésének konfigurálása
+### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-**Útmutató:** Az Azure-figyelőn keresztüli naplók betöltése az Azure Key Vault által létrehozott biztonsági adatok összesítéséhez. Az Azure Monitoron belül az Azure Log Analytics-munkaterület használatával lekérdezheti és elvégezheti az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Másik lehetőségként engedélyezheti és a fedélzeti adatok at Azure Sentinel vagy egy harmadik fél SIEM. 
+**Útmutató**: naplók beolvasása Azure monitor segítségével a Azure Key Vault által generált biztonsági adatokat összesítve. A Azure Monitoron belül az Azure Log Analytics-munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
-Azure Key Vault naplózása:
+Azure Key Vault naplózás:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
-Rövid útmutató: Az Azure Sentinel fedélzeti szolgáltatása:
+Rövid útmutató: a fedélzeti Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Az Azure-erőforrások naplózásának engedélyezése
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
-**Útmutató:** Engedélyezze a diagnosztikai beállításokat az Azure Key Vault-példányokon a naplózási, biztonsági és diagnosztikai naplók eléréséhez. Az automatikusan elérhető tevékenységnaplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscímek, a célcímek és egyéb hasznos elemek.
+**Útmutató**: a diagnosztikai beállítások engedélyezése a Azure Key Vault példányokon a naplózási, biztonsági és diagnosztikai naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek.
 
-Azure Key Vault naplózása:
+Azure Key Vault naplózás:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Biztonsági naplók gyűjtése az operációs rendszerekről
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="25-configure-security-log-storage-retention"></a>2.5: A biztonsági napló tárolásának megőrzése
-
-**Útmutató:** Az Azure Monitoron belül az Azure Key Vault-naplók tárolására használt Log Analytics-munkaterülethez állítsa be a megőrzési időszakot a szervezet megfelelőségi szabályzatainak megfelelően. Azure Storage-fiókok használata hosszú távú/archiválási tároláshoz.
-
-Az adatmegőrzési időszak módosítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: nem alkalmazható
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Naplók figyelése és felülvizsgálata
+### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
-**Útmutató:** Elemezheti és figyelheti a naplókat a rendellenes viselkedéshez, és rendszeresen tekintse át az Eredményeket az Azure Key Vault által védett erőforrásokhoz. Az Azure Monitor Log Analytics-munkaterületével tekintse át a naplókat, és hajtson végre lekérdezéseket a naplóadatokon. Másik lehetőségként engedélyezheti és a fedélzeti adatok at Azure Sentinel vagy egy harmadik fél SIEM. 
+**Útmutató**: a Azure monitoron belül a Azure Key Vault-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-Rövid útmutató: Fedélzeti Azure Sentinel:
+Az adatok megőrzési idejének módosítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
+
+**Útmutató**: a rendellenes viselkedésre vonatkozó naplók elemzése és figyelése, valamint a Azure Key Vault által védett erőforrások eredményeinek rendszeres áttekintése. Az Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és lekérdezéseket végezhet a naplózási adatokon. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek. 
+
+Gyors útmutató: Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Ismerkedés a Log Analytics szolgáltatással az Azure Monitorban:
+Ismerkedjen meg a Azure Monitor Log Analyticsával:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-A naplólekérdezések első lépései az Azure Monitorban:
+Ismerkedés a Azure Monitor-naplózási lekérdezésekkel:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Riasztás engedélyezése rendellenes tevékenységre
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
-**Útmutató:** Az Azure Security Centerben engedélyezze a speciális veszélyforrások elleni védelmet (ATP) a Key Vault számára. Engedélyezze a diagnosztikai beállításokat az Azure Key Vaultban, és küldjön naplókat egy Log Analytics-munkaterületre. A Log Analytics-munkaterület et az Azure Sentinelbe, mivel egy biztonsági vezénylési automatikus válasz (SZÁRNYALÁs) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák elhárítását.
+**Útmutató**: a Azure Security Center a komplex veszélyforrások elleni védelem (ATP) engedélyezése a Key Vaulthoz. A Azure Key Vault diagnosztikai beállításainak engedélyezése és a naplók elküldése egy Log Analytics munkaterületre. A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását.
 
-Rövid útmutató: Fedélzeti Azure Sentinel:
+Gyors útmutató: Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben:
+Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
-Eseményekre való válaszadás az Azure Monitor-riasztások segítségével:
+Válaszadás az Azure Monitor riasztásokkal rendelkező eseményekre:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: A kártevőirtó naplózás központosítása
+### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
-**Útmutatás**: Nem alkalmazható; Az Azure Key Vault nem dolgozza fel és nem készít kártevők elleni kapcsolódó naplókat.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="29-enable-dns-query-logging"></a>2.9: Dns-lekérdezésnaplózás engedélyezése
-
-**Útmutatás**: Nem alkalmazható; Az Azure Key Vault nem dolgozza fel és nem hoz létre DNS-sel kapcsolatos naplókat.
+**Útmutató**: nem alkalmazható; Azure Key Vault nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Parancssori naplózás engedélyezése
+### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; A Azure Key Vault nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
+
+### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt a [Biztonságvezérlés: Identitás- és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
+*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Az adminisztratív számlák leltárának fenntartása
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató:** Leltárt tartaz Azure Active Directory ban regisztrált alkalmazások, valamint az Azure Key Vault-kulcsokhoz, titkos kulcsokhoz és tanúsítványokhoz hozzáféréssel rendelkező felhasználói fiókok ról. Használhatja az Azure Portalon vagy a PowerShell a Key Vault-hozzáférés lekérdezéséhez és egyeztetéséhez. A PowerShell-hozzáférés megtekintéséhez használja a következő parancsot:
+**Útmutató**: a Azure Active Directory által regisztrált alkalmazások leltárának fenntartása, valamint a Azure Key Vault kulcsok, titkos kódok és tanúsítványok hozzáférését biztosító felhasználói fiókok. A Key Vault-hozzáférés lekérdezéséhez és egyeztetéséhez használhatja a Azure Portal vagy a PowerShellt is. A PowerShell elérésének megtekintéséhez használja a következő parancsot:
 
-(Get-AzResource -ResourceId [KeyVaultResourceID]). Properties.AccessPolicies
+(Get-AzResource-ResourceId [KeyVaultResourceID]). Properties. AccessPolicies
 
-Alkalmazás regisztrálása az Azure Active Directoryval:
+Alkalmazás regisztrálása a Azure Active Directory:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
@@ -338,51 +338,51 @@ Biztonságos hozzáférés a kulcstartóhoz:
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Adott esetben változtassa meg az alapértelmezett jelszavakat
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutatás**: Nem alkalmazható; Az Azure Key Vault nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítést az Active Directory biztosítja, és a szerepköralapú hozzáférés-vezérlés biztosítja.
+**Útmutató**: nem alkalmazható; A Azure Key Vault nem rendelkezik az alapértelmezett jelszavakkal, mivel a hitelesítés Active Directory és a szerepköralapú hozzáférés-vezérléssel biztosított.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Dedikált felügyeleti fiókok használata
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
-**Útmutató:** Hozzon létre szabványos működési eljárásokat az Azure Key Vault-példányokhoz hozzáféréssel rendelkező dedikált felügyeleti fiókok használatával kapcsolatban. Az Azure Security Center identitás- és hozzáférés-kezelése (jelenleg előzetes verzióban) használatával figyelheti az aktív felügyeleti fiókok számát.
+**Útmutató**: szabványos üzemeltetési eljárások létrehozása a Azure Key Vault példányokhoz hozzáféréssel rendelkező dedikált rendszergazdai fiókok használatával. Az aktív rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelési (jelenleg előzetes verzióban elérhető) használatát.
 
 Identitás és hozzáférés figyelése (előzetes verzió):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) használata az Azure Active Directoryval
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató:** Az AppId, TenantID és ClientSecret használatával egy Azure-szolgáltatásnév használatával zökkenőmentesen hitelesítheti az alkalmazást, és lekérheti az Azure Key Vault-titkos kulcsok eléréséhez használt jogkivonatot.
+**Útmutató**: az alkalmazás zökkenőmentes hitelesítéséhez és a Azure Key Vault titkos kódok eléréséhez használni kívánt jogkivonat lekéréséhez használja az Azure egyszerű szolgáltatását a AppID, a TenantID és a ClientSecret együtt.
 
-Szolgáltatás-szolgáltatás hitelesítés az Azure Key Vault számára a .NET használatával:
+Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával:
 
 https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Többtényezős hitelesítés használata az összes Azure Active Directory-alapú hozzáféréshez
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató:** Engedélyezze az Azure Active Directory többtényezős hitelesítését, és kövesse az Azure Security Center identitás- és hozzáférés-kezelési (jelenleg előzetes verzióban elérhető) ajánlásait az Event Hub-kompatibilis erőforrások védelme érdekében.
+**Útmutató**: engedélyezze az Azure Active Directory multi-Factor Authentication, és kövesse Azure Security Center identitás-és hozzáférés-kezelési (jelenleg előzetes verzióban elérhető) javaslatokat az Event hub-kompatibilis erőforrások védelméhez.
 
-Felhőalapú Azure többtényezős hitelesítési telepítés megtervezése:
+Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -391,321 +391,321 @@ Identitás és hozzáférés figyelése (előzetes verzió):
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Használjon dedikált gépeket (kiemelt hozzáférésű munkaállomásokat) minden adminisztratív feladathoz
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
-**Útmutató:** Használjon emelt szintű hozzáférésű munkaállomás (PAW) az Azure többtényezős hitelesítés (MFA) konfigurálva, hogy jelentkezzen be, és konfigurálja a Key Vault-kompatibilis erőforrásokat. 
+**Útmutató**: az Azure multi-Factor Authentication (MFA) szolgáltatással konfigurált, rendszerjogosultságú hozzáférésű munkaállomás (Paw) használata Key Vault engedélyezett erőforrások bejelentkezni és konfigurálására. 
 
-Kiemelt hozzáférésű munkaállomások:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Emelt szintű hozzáférésű munkaállomások:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-Felhőalapú Azure többtényezős hitelesítési telepítés megtervezése:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: A gyanús tevékenységek naplózása és riasztása az adminisztratív fiókokból
-
-**Útmutató:** Használja az Azure Active Directory (AAD) kiemelt identitáskezelés (PIM) a naplók és riasztások létrehozásához, ha gyanús vagy nem biztonságos tevékenység történik a környezetben. Az AAD-kockázatészlelések használatával megtekintheti a riasztásokat és a kockázatos felhasználói viselkedésről szóló jelentéseket. További naplózáshoz küldjön az Azure Security Center kockázatészlelési riasztásait az Azure Monitorba, és konfigurálja az egyéni riasztási/értesítési beállításokat a műveletcsoportok használatával.
-
-Engedélyezze a speciális veszélyforrások elleni védelmet (ATP) az Azure Key Vault számára, hogy riasztásokat generáljon a gyanús tevékenységekhez.
-
-Az Azure AD kiemelt identitáskezelés (PIM) telepítése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
-Speciális veszélyforrások elleni védelem beállítása az Azure Key Vaulthoz (előzetes verzió):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
-
-Riasztások az Azure Key Vault (előzetes verzió):https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-Az Azure Active Directory kockázatészlelései:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
-
-Műveletcsoportok létrehozása és kezelése az Azure Portalon:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Az Azure-erőforrások kezelése csak jóváhagyott helyekről
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-**Útmutató:** Konfigurálja a feltételes hozzáférési házirend helyfeltételét, és kezelje a megnevezett helyeket. Az elnevezett helyek segítségével logikai csoportosításokat hozhat létre AZ IP-címtartományokból vagy országokból és régiókból. Korlátozhatja a hozzáférést a bizalmas erőforrásokhoz, például a Key Vault titkos kulcsaihoz a konfigurált elnevezett helyekre.
+**Útmutató**: a naplók és a riasztások generálásához Azure Active Directory (hre) PRIVILEGED Identity Management (PIM) használata, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A HRE kockázati észlelések használatával megtekintheti a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket. További naplózáshoz küldje el Azure Security Center kockázatkezelési riasztásokat a Azure Monitorba, és konfigurálja az egyéni riasztásokat/értesítéseket a műveleti csoportok használatával.
 
-Mi a helyfeltétel az Azure Active Directory feltételes hozzáférésében?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+A komplex veszélyforrások elleni védelem (ATP) engedélyezése a Azure Key Vault számára a gyanús tevékenységekre vonatkozó riasztások létrehozásához.
+
+Azure AD Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+
+Összetett veszélyforrások elleni védelem beállítása a Azure Key Vault (előzetes verzió):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+
+Azure Key Vault (előzetes verzió) riasztásai:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+
+Azure Active Directory kockázati észlelések:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+
+Műveleti csoportok létrehozása és kezelése a Azure Portalban:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="39-use-azure-active-directory"></a>3.9: Az Azure Active Directory használata
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
-**Útmutató:** Használja az Azure Active Directory (AAD) az Azure-erőforrások, például a Key Vault központi hitelesítési és engedélyezési rendszerként. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) a bizalmas erőforrások adminisztrálása.
+**Útmutató**: a feltételes hozzáférési szabályzat tárolási állapotának konfigurálása és az elnevezett helyek kezelése. Az elnevezett helyszínekkel logikai csoportosításokat hozhat létre az IP-címtartományok vagy országok és régiók számára. A konfigurált elnevezett helyekre korlátozhatja a bizalmas erőforrásokhoz, például a Key Vault titkos kódokhoz való hozzáférést.
+
+Mi a hely feltétele Azure Active Directory feltételes hozzáférésben?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+
+
+
+**Azure Security Center figyelés**: jelenleg nem érhető el
+
+**Felelősség**: ügyfél
+
+### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
+
+**Útmutató**: a Azure Active Directory (HRE) használata központi hitelesítési és engedélyezési rendszerként az Azure-erőforrások, például a Key Vault számára. Ez lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) számára a bizalmas erőforrások felügyeletét.
 
  
 
-Rövid útmutató: Hozzon létre egy új bérlőt az Azure Active Directoryban:
+Rövid útmutató: új bérlő létrehozása Azure Active Directoryban:
 
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Rendszeresen vizsgálja felül és egyeztetje össze a felhasználói hozzáférést
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató:** Tekintse át az Azure Active Directory (AAD) naplók at az elavult fiókok azure key vault felügyeleti szerepkörök felderítéséhez. Emellett az AAD-hozzáférési felülvizsgálatok használatával hatékonyan kezelheti a csoporttagságokat, az Azure Key Vault eléréséhez használható vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférést rendszeresen, például 90 naponta felül kell vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzá.
+**Útmutató**: a Azure Active Directory-(HRE-) naplók áttekintése, amelyek segítenek az elavult fiókok Azure Key Vault rendszergazdai szerepkörökkel való felderítésében. Emellett a HRE-hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagság-hozzáférést a Azure Key Vault és a szerepkör-hozzárendelések eléréséhez használható vállalati alkalmazásokhoz is. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-Az Azure Active Directory jelentései és figyelési dokumentációja:
+Azure Active Directory jelentések és figyelési dokumentáció:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Mik azok az Azure AD-hozzáférési felülvizsgálatok?:
+Mik az Azure AD hozzáférési felülvizsgálatai?:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Az inaktivált fiókok elérésére tett kísérletek figyelése
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-**Útmutató:** Engedélyezze az Azure Key Vault és az Azure Active Directory diagnosztikai beállításait, és küldje el az összes naplót egy Log Analytics-munkaterületre. Konfigurálja a kívánt riasztásokat (például a letiltott titkos kulcsok elérésére tett kísérleteket) a Log Analytics szolgáltatásban.
+**Útmutató**: a Azure Key Vault és Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. A kívánt riasztások (például a letiltott titkok elérésére tett kísérletek) konfigurálása Log Analyticson belül.
 
-Integrálja az Azure AD-naplókat az Azure Monitor-naplókkal:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure AD-naplók integrálása Azure Monitor naplókkal:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Áttelepítés a régi Key Vault-megoldásból:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
-
-
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Riasztás a fiók bejelentkezési viselkedésének eltéréséről
-
-**Útmutató:** Az Azure Active Directory identitásvédelmi és kockázatészlelési szolgáltatásaival konfigurálhatja az Azure Key Vault által védett erőforrásokkal kapcsolatos észlelt gyanús műveletekre adott automatikus válaszokat. Az Automatikus válaszokat az Azure Sentinelen keresztül engedélyeznie kell a szervezet biztonsági válaszainak megvalósításához. 
-
-Kockázatos bejelentkezések jelentés az Azure Active Directory portálon:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
-
-Útmutató: Kockázati házirendek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
-
-Az Azure Sentinel fedélzeti szolgáltatása:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: A Microsoft hozzáférésének biztosítása a releváns ügyféladatokhoz támogatási forgatókönyvek során
-
-**Útmutatás**: Nem alkalmazható; Az Ügyfélszéf nem támogatott az Azure Key Vault számára.
-
-Támogatott szolgáltatások és forgatókönyvek általános anammár elérhetősége:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Áttelepítés a régi Key Vault megoldásról:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: ügyfél
+
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
+
+**Útmutató**: a Azure Active Directory Identity Protection és kockázati észlelési funkciói segítségével konfigurálhatja az Azure Key Vault védett erőforrásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával. 
+
+Kockázatos bejelentkezési jelentések a Azure Active Directory portálon:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
+
+Útmutató: kockázatkezelési házirendek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+
+Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
+
+**Útmutató**: nem alkalmazható; A Ügyfélszéf Azure Key Vault esetében nem támogatott.
+
+Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információ: [Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Az érzékeny információk leltárának karbantartása
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
-**Útmutató:** Címkék használatával nyomon követheti az Azure-erőforrásokat, amelyek bizalmas információkat tárolnak vagy dolgoznak fel az Azure Key Vault-kompatibilis erőforrásokon. 
+**Útmutató**: az olyan Azure-erőforrások nyomon követéséhez, amelyek bizalmas információkat tárolnak vagy dolgoznak fel Azure Key Vault engedélyezett erőforrásokon, használja a címkéket. 
 
-Címkék használatával rendszerezheti azure-erőforrásait:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Érzékeny információkat tároló vagy feldolgozó rendszerek elkülönítése
-
-**Útmutató:** Biztonságos hozzáférést biztosíthat az Azure Key Vaulthoz az adott alhálózatokhoz való hozzáférés korlátozására konfigurált virtuális hálózati szolgáltatásvégpontok használatával.
-
-A tűzfalszabályok érvénybe lépése után csak akkor hajthat végre Azure Key Vault adatsík-műveleteket, ha a kérés engedélyezett alhálózatokból vagy IP-címtartományokból származik. Ez az Azure Key Vault-hozzáférésre is vonatkozik az Azure Portalon. Bár az Azure Portalon lévő kulcstartót böngészheti, előfordulhat, hogy nem tudja listázza a kulcsokat, titkos kulcsokat vagy tanúsítványokat, ha az ügyfélgép nem szerepel az engedélyezett listán. Ez hatással van az Azure Key Vault-választóra és más Azure-szolgáltatásokra is. Előfordulhat, hogy láthatja a Key Vaults listáit, de a kulcsokat nem, ha a tűzfalszabályok megakadályozzák az ügyfélgép ezt.
-
-Konfigurálja az Azure Key Vault tűzfalait és virtuális hálózatait:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
-
-Virtuális hálózati szolgáltatás végpontjai az Azure Key Vaulthoz:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: A bizalmas adatok jogosulatlan továbbításának figyelése és blokkolása
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató:** Az Azure Key Vaultban tárolt összes adat bizalmasnak minősül. Az Azure Key Vault adatsík-hozzáférési vezérlőivel szabályozhatja az Azure Key Vault titkos kulcsaihoz való hozzáférést. A Key Vault beépített tűzfala segítségével is szabályozhatja a hálózati rétegen lévő hozzáférést. Az Azure Key Vault elérésének figyeléséhez engedélyezze a Key Vault diagnosztikai beállításait, és küldjön naplókat egy Azure Storage-fiókba vagy a Log Analytics-munkaterületre.
+**Útmutató**: az Azure Key Vaulthoz való hozzáférés biztosítása érdekében a virtuális hálózati szolgáltatás végpontjai úgy vannak konfigurálva, hogy korlátozzák az egyes alhálózatokhoz való hozzáférést.
+
+A tűzfalszabályok érvénybe léptetése után csak akkor hajthat végre Azure Key Vault adatsík-műveleteket, ha a kérelme engedélyezett alhálózatokból vagy IP-címtartományokból származik. Ez a Azure Portal Azure Key Vault hozzáférésére is vonatkozik. Bár a Azure Portal is tallózhat a kulcstartóban, előfordulhat, hogy nem tudja listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógép nem szerepel az engedélyezett listán. Ez hatással van a Azure Key Vault választóra és az egyéb Azure-szolgáltatásokra is. Előfordulhat, hogy látni fogja a kulcstartók listáját, de nem jeleníti meg a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
+
+Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+
+Azure Key Vault virtuális hálózati szolgáltatási végpontok:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+
+
+
+**Azure Security Center figyelés**: jelenleg nem érhető el
+
+**Felelősség**: ügyfél
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
+
+**Útmutató**: a Azure Key Vaulton belül tárolt összes adat bizalmasnak tekintendő. A Azure Key Vault titkokhoz való hozzáférés szabályozásához használja Azure Key Vault adatsík-hozzáférés-vezérlést. A hálózati réteg elérésének vezérléséhez Key Vault beépített tűzfallal is használhatja. A Azure Key Vaulthoz való hozzáférés figyeléséhez engedélyezze Key Vault diagnosztikai beállításokat, és küldje el a naplókat egy Azure Storage-fiókba vagy Log Analytics munkaterületre.
 
 Biztonságos hozzáférés a kulcstartóhoz:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-Konfigurálja az Azure Key Vault tűzfalait és virtuális hálózatait:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Azure Key Vault naplózása:https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-
-
-**Az Azure Security Center figyelése:** Igen
-
-**Felelősség**: Ügyfél
-
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az összes bizalmas információ titkosítása szállítás közben
-
-**Útmutató:** Az Azure Key Vaultba a hitelesítéshez, a felügyeleti és az adatsík-hozzáféréshez irányuló összes forgalom titkosítva van, és HTTPS-en keresztül megy: 443-as port. (A visszavont tanúsítványok listájának azonban időnként http[80-as port] forgalma lesz.) 
-
-Az Azure Key Vault elérése tűzfal mögött:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Azure Key Vault naplózás:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: igen
+
+**Felelősség**: ügyfél
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
+
+**Útmutató**: a hitelesítéshez, a felügyelethez és az adatsíkon való hozzáféréshez Azure Key Vault összes forgalom titkosítva van, és HTTPS-en keresztül megy át: 443-as port. (A CRL esetében azonban esetenként a HTTP [port 80] forgalom lesz látható.) 
+
+Hozzáférés Azure Key Vault tűzfal mögött:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
+
+
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosítására
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
-**Útmutatás**: Nem alkalmazható; az Azure Key Vaultban lévő összes adat (titkos kulcsok, kulcsok és tanúsítványok) bizalmasnak minősül.
+**Útmutató**: nem alkalmazható; a Azure Key Vaulton (titkok, kulcsok és tanúsítványok) belüli összes adat bizalmasnak számít.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Az Azure RBAC használatával szabályozhatja az erőforrásokhoz való hozzáférést
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató:** Biztonságos hozzáférés az Azure Key Vault-példányok felügyeleti és adatsíkjához.
+**Útmutató**: biztonságos hozzáférés a Azure Key Vault példányok felügyeleti és adatsíkjával.
 
 Biztonságos hozzáférés a kulcstartóhoz:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: A hozzáférés-vezérlés kényszerítése gazdagépalapú adatveszteség-megelőzéssel
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
-**Útmutató: A**Microsoft kezeli az Azure Key Vault alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megelőzése érdekében.
+**Útmutató**: a Microsoft kezeli a Azure Key Vault alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
 Mi az Azure Key Vault?
 
 https://docs.microsoft.com/azure/key-vault/key-vault-overview
 
-Az Azure-ügyfelek adatainak védelme:
+Azure Customer-adatvédelem:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Bizalmas információk titkosítása nyugalmi
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
-**Útmutató:** Az azure Key Vault ban minden felügyelt objektum (kulcs, tanúsítvány és titkos kulcs) titkosítva van.
+**Útmutató**: az összes felügyelt objektum (kulcs, tanúsítvány és titok) titkosítva van Azure Key Vaultban.
 
-Alátámasztó dokumentáció:
+Támogató dokumentáció:
 
-- [Titkosítási modell és kulcskezelési tábla](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-model-and-key-management-table)
+- [Titkosítási modell és kulcskezelő tábla](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-model-and-key-management-table)
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Naplózza és figyelmeztesse a kritikus Azure-erőforrások változásait
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató:** Az Azure Key Vault Analytics-megoldás az Azure Monitorban az Azure Key Vault naplózási eseménynaplók áttekintéséhez.
+**Útmutató**: a Azure monitor Azure Key Vault elemzési megoldásával áttekintheti Azure Key Vault naplózási eseménynaplóit.
 
-Azure Key Vault Analytics-megoldás az Azure Monitorban:
+Azure Key Vault elemzési megoldás a Azure Monitorban:
 
 https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információt a [Biztonsági ellenőrzés: Biztonsági rés kezelése című](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)témakörben talál.*
+*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Automatikus biztonsági rés-ellenőrző eszközök futtatása
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató: A**Microsoft biztonsági réskezelést hajt végre az Azure Key Vaultot támogató mögöttes rendszereken.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Microsoft
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Az operációs rendszer automatikus javításkezelési megoldásának telepítése
-
-**Útmutató**: N/A; A Microsoft a Key Vault ot támogató mögöttes rendszereken végez javításkezelést.
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Automatizált, harmadik féltől származó szoftverjavítás-kezelési megoldás telepítése
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: a Microsoft a sebezhetőségek kezelését a Azure Key Vault támogató mögöttes rendszereken hajtja végre.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Hasonlítsa össze a biztonsági rés vizsgálatait
-
-**Útmutató: A**Microsoft biztonsági réskezelést hajt végre a Key Vaultot támogató mögöttes rendszereken.
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: Microsoft
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Kockázatminősítési eljárás használata a felfedezett biztonsági rések helyreállításának rangsorolására
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 
-**Útmutatás:** Használja az Azure Security Center által biztosított alapértelmezett kockázati minősítéseket (Secure Score).
+**Útmutató**: N/A; A Microsoft a Key Vaultt támogató mögöttes rendszereken végzi a javítások kezelését.
 
-Javítsa biztonságos pontszámát az Azure Security Centerben:
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: a harmadik féltől származó szoftveres javításokat kezelő megoldás telepítése
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
+
+**Útmutató**: a Microsoft a sebezhetőségek kezelését a Key Vault támogató mögöttes rendszereken hajtja végre.
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: Microsoft
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
+
+**Útmutató**: a Azure Security Center által biztosított alapértelmezett kockázati minősítések (biztonságos pontszám) használata.
+
+Javítsa biztonságos pontszámát Azure Security Centerban:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információ: [Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Az Azure Asset Discovery használata
+### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
 
-**Útmutatás:** Az Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve az Azure Key Vault-példányokat is) az előfizetésen belül. Győződjön meg arról, hogy rendelkezik a megfelelő (olvasási) engedélyekkel a bérlőben, és képes az összes Azure-előfizetések és az előfizetéseken belüli erőforrások számbavételét.
+**Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésen belüli összes erőforrást (beleértve Azure Key Vault példányokat is). Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-Rövid útmutató: Futtassa az első Resource Graph-lekérdezést az Azure Resource Graph Explorer használatával:
+Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Az aktuális fiók által elérhető előfizetések beszerezhetők.:
+Az aktuális fiók által elérhető előfizetések beolvasása.:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -713,297 +713,297 @@ Mi az Azure-erőforrásokhoz (RBAC) való szerepköralapú hozzáférés-vezérl
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Az eszközök metaadatainak karbantartása
+### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
-**Útmutató: Címkék**alkalmazása az Azure Key Vault-erőforrásokra, amelyek metaadatokat adnak, hogy logikusan rendszerezzék őket egy taxonómiába.
+**Útmutató**: címkék alkalmazása olyan Azure Key Vault erőforrásokhoz, amelyekkel a metaadatok logikailag rendezhetők a besorolásba.
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Jogosulatlan Azure-erőforrások törlése
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
-**Útmutató:** Adott esetben tagging, felügyeleti csoportok és külön előfizetések használatával rendszerezheti és nyomon követheti az Azure Key Vault-példányokat és a kapcsolódó erőforrásokat. A készlet rendszeres egyeztetése és a jogosulatlan erőforrások időben történő törlése az előfizetésből.
+**Útmutató**: a címkézés, a felügyeleti csoportok és a különálló előfizetések használata, ahol szükséges, Azure Key Vault példányok és kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
 Hozzon létre egy további Azure-előfizetést:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Felügyeleti csoportok létrehozása erőforrás-szervezéshez és -kezeléshez:
+Felügyeleti csoportok létrehozása az erőforrás-szervezethez és-kezeléshez:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-Címkék használatával rendszerezheti azure-erőforrásait:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: A jóváhagyott Azure-erőforrások és szoftvercímek leltárának karbantartása
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: a jóváhagyott Azure-erőforrások és-szoftverek leltárának fenntartása
 
-**Útmutató:** A jóváhagyott Azure-erőforrások és a számítási erőforrások jóváhagyott szoftvereinek listájának meghatározása
+**Útmutató**: a számítási erőforrásokhoz jóváhagyott Azure-erőforrások és jóváhagyott szoftverek listájának meghatározása
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: A nem jóváhagyott Azure-erőforrások figyelése
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató:** Az Azure-szabályzatok használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
-
-- Nem engedélyezett erőforrástípusok
-
-- Engedélyezett erőforrástípusok
-
-Emellett az Azure Resource Graph használatával lekérdezheti/felderítheti az erőforrásokat az előfizetés(ek)en belül.
-
-Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Rövid útmutató: Futtassa az első Resource Graph-lekérdezést az Azure Resource Graph Explorer használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: A nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: A nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure egészére, valamint a számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazásokat használjon
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
-
-**Útmutató:** Az Azure-szabályzatok használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+**Útmutató**: az Azure-szabályzatok használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
 - Nem engedélyezett erőforrástípusok
 
 - Engedélyezett erőforrástípusok
 
-Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Azure-szabályzatminták:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="610-implement-approved-application-list"></a>6.10: A jóváhagyott pályázati lista végrehajtása
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: Korlátozza a felhasználók azon képességét, hogy parancsfájlokon keresztül kommunikáljanak az AzureResources Managerrel
+**Felelősség**: ügyfél
 
-**Útmutató:** Az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók azon képességét, hogy az Azure Resource Manager (ARM) használatával konfigurálja a "Blokk hozzáférés" a "Microsoft Azure Management" app. Ez megakadályozhatja a magas biztonsági szintű környezetben, például a Key Vault-konfigurációval rendelkező erőforrások létrehozását és módosításait.
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-Az Azure-kezeléshez való hozzáférés kezelése feltételes hozzáféréssel:
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
+
+**Útmutató**: nem alkalmazható; Ez a javaslat az Azure egészére és számítási erőforrásaira szolgál.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
+
+**Útmutató**: az Azure-szabályzatok használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
+
+- Nem engedélyezett erőforrástípusok
+
+- Engedélyezett erőforrástípusok
+
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Azure Policy minták:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="610-implement-approved-application-list"></a>6,10: jóváhagyott alkalmazások listájának implementálása
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
+
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6,11: korlátozza a felhasználók képességét a AzureResources-kezelővel való interakcióra parancsfájlok használatával
+
+**Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager (ARM) használatára a "Microsoft Azure felügyelet" alkalmazás "hozzáférés letiltása" beállításával. Ez megakadályozhatja az erőforrások létrehozását és módosítását a magas biztonsági környezetben, például a Key Vault konfigurációval rendelkezők számára.
+
+Az Azure-felügyelethez való hozzáférés kezelése feltételes hozzáféréssel:
 
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre a számítási erőforrásokon belül
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizikailag vagy logikailag elkülönítve a magas kockázatú alkalmazásokat
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat az Azure App Service-en vagy számítási erőforrásokon futó webalkalmazásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
+
+**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt a [Biztonsági ellenőrzés: Biztonságos konfiguráció című](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)témakörben talál.*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató:** Azure-szabályzat aliasok a "Microsoft.KeyVault" névtérben egyéni szabályzatok létrehozásához az Azure Key Vault-példányok naplózása vagy kényszerítése. Az Azure Key Vault beépített Azure-szabályzat-definícióit is használhatja, például:
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. kulcstartó" névtérben egyéni szabályzatok létrehozásához a Azure Key Vault példányok konfigurációjának naplózásához vagy érvényesítéséhez. Használhat beépített Azure Policy-definíciókat is Azure Key Vault például:
 
-A Key Vault-objektumoknak helyreállíthatónak kell lenniük
+Key Vault objektumoknak helyreállítható kell lenniük
 
-A Key Vault diagnosztikai beállításainak telepítése a Log Analytics-munkaterületre
+Key Vault diagnosztikai beállításainak központi telepítése Log Analytics munkaterületre
 
-A Key Vault diagnosztikai naplóit engedélyezni kell
+A Key Vault lévő diagnosztikai naplókat engedélyezni kell
 
-A Key Vaultnak virtuális hálózati szolgáltatás végpontját kell használnia
+Key Vault virtuális hálózati szolgáltatás végpontját kell használnia
 
-A Key Vault diagnosztikai beállításainak telepítése az Event Hubra
+Key Vault diagnosztikai beállításainak üzembe helyezése az Event hub-ban
 
-Az Azure Security Center ajánlásait biztonságos konfigurációs alapkonfigurációként használhatja az Azure Key Vault-példányokhoz.
+A Azure Security Center javaslatainak használata biztonságos alapkonfigurációként a Azure Key Vault példányok számára.
 
-Az elérhető Azure Policy-aliasok megtekintése:
+Az elérhető Azure Policy aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez:
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Biztonságos operációsrendszer-konfigurációk létrehozása
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Biztonságos Azure-erőforrás-konfigurációk karbantartása
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
-**Útmutató:** Használja az Azure-szabályzat [megtagadás] és a [üzembe helyezés, ha nem létezik] az Azure Key Vault-kompatibilis erőforrások biztonságos beállításainak kényszerítéséhez. 
+**Útmutató**: használja a Azure Policy [megtagadás] és a [telepítés, ha nem létezik] lehetőséget a biztonságos beállítások betartatásához a Azure Key Vault-kompatibilis erőforrások között. 
 
-Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez:
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage 
 
   
-Az Azure-szabályzat hatásainak ismertetése: 
+Azure Policy effektusok ismertetése: 
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Biztonságos operációsrendszer-konfigurációk karbantartása
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások biztonságos tárolása
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
-**Útmutató:** Ha egyéni Azure-szabályzat-definíciókat használ az Azure Key Vault-kompatibilis erőforrásokhoz, használja az Azure Repos-t a kód biztonságos tárolásához és kezeléséhez.
+**Útmutató**: ha az Azure Key Vault engedélyezett erőforrásokhoz egyéni Azure Policy definíciókat használ, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-Kód tárolása az Azure DevOps-ban: 
+Kód tárolása az Azure DevOps: 
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops 
 
-Azure Repos dokumentáció: 
+Az Azure Repos dokumentációja: 
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Biztonságosan tárolhatja az operációs rendszer egyedi lemezképeit
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Rendszerkonfiguráció-kezelő eszközök telepítése
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 
-**Útmutató:** A "Microsoft.KeyVault" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a rendszerkonfigurációk riasztására, naplózására és kényszerítésére. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirendkivételek kezeléséhez.
+**Útmutató**: a "Microsoft. kulcstartó" névtérben található Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-Az Azure-szabályzat konfigurálása és kezelése:
+Azure Policy konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Rendszerkonfiguráció-kezelő eszközök telepítése operációs rendszerekhez
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: rendszerkonfiguráció-felügyeleti eszközök központi telepítése operációs rendszerekhez
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-szolgáltatásokhoz
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
 
-**Útmutató: Az**Azure Security Center használatával alapszintű vizsgálatokat végezhet az Azure Key Vault által védett erőforrásokhoz 
+**Útmutató**: a Azure Security Center használata a Azure Key Vault által védett erőforrások alapkonfigurációjának vizsgálatához 
 
   
 
-Javaslatok kijavítása az Azure Security Centerben: 
+Javaslatok szervizelése Azure Security Centerban: 
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Az operációs rendszerek automatizált konfigurációs figyelésének megvalósítása
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 
-**Útmutatás**: Nem alkalmazható; ez a referenciaérték számítási erőforrásokra szolgál.
+**Útmutató**: nem alkalmazható; Ez a teljesítményteszt számítási erőforrások számára készült.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése
+### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
-**Útmutató:** A felügyelt szolgáltatásidentitás az Azure Key Vaulttal együtt egyszerűsítése és biztonságos sápkezelése a felhőalapú alkalmazások. Győződjön meg arról, hogy az Azure Key Vault helyreállítható törlés engedélyezve van.
+**Útmutató**: a Managed Service Identity együttes használata a Azure Key Vault a Felhőbeli alkalmazások titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében. Győződjön meg arról, hogy a Azure Key Vault-törlés engedélyezve van.
 
-Integrálás az Azure felügyelt identitásaival:
+Integráció az Azure felügyelt identitásokkal:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -1011,21 +1011,21 @@ Key Vault létrehozása:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-A Kulcstartó hitelesítése felügyelt identitással: 
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: 
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: A személyazonosságok biztonságos és automatikus kezelése
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató:** A felügyelt szolgáltatásidentitás az Azure Key Vaulttal együtt egyszerűsítése és biztonságos sápkezelése a felhőalapú alkalmazások. 
+**Útmutató**: a Managed Service Identity együttes használata a Azure Key Vault a Felhőbeli alkalmazások titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében. 
 
   
 
-Integrálás az Azure felügyelt identitásaival: 
+Integráció az Azure felügyelt identitásokkal: 
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
 
@@ -1033,274 +1033,274 @@ Key Vault létrehozása:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal    
 
-A Kulcstartó hitelesítése felügyelt identitással:  
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:  
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A nem kívánt hitelesítő adatok expozíciójának kiküszöbölése
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató:** A hitelesítő adatok at a kódon belüli hitelesítő adatok azonosítására valósíthatja meg. A Hitelesítő adatok olvasója azt is ösztönzi a felderített hitelesítő adatok áthelyezése biztonságosabb helyekre, például az Azure Key Vault.  
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.  
   
- A Hitelesítő adatok képolvasójának beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+ A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információ: [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Központilag kezelt kártevőirtó szoftverek használata
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál. A Microsoft kezeli a kártevőirtót az alapul szolgáló platformhoz.
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Nem alkalmazható
-
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: A nem számítási Azure-erőforrásokba feltöltendő fájlok előzetes beszkéselése
-
-**Útmutató: A**Microsoft kártevőirtó eszköz e-alapú gazdagépen engedélyezve van az Azure-szolgáltatásokat támogató gazdagépen (például az Azure Key Vaultban), azonban nem fut az ügyféltartalomon.
-
-A nem számítási Azure-erőforrásokba, például az Azure Key Vaultba feltöltött vagy küldött tartalmak előzetes beírása. A Microsoft ezekben az esetekben nem fér hozzá az Ön adataihoz.
-
-Ismerje meg a Microsoft kártevőirtó szoftvereit az Azure Felhőszolgáltatásokhoz és a virtuális gépekhez:https://docs.microsoft.com/azure/security/fundamentals/antimalware
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Gondoskodjon a kártevőirtó szoftverek és aláírások frissítéséről
-
-**Útmutatás**: Nem alkalmazható; ez a javaslat számítási erőforrásokra szolgál. A Microsoft kezeli a kártevőirtót az alapul szolgáló platformhoz.
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a kártevő szoftvereket a mögöttes platformon.
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Nem alkalmazható
+**Felelősség**: nem alkalmazható
+
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
+
+**Útmutató**: a Microsoft kártevő szoftverrel való ellátása engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például Azure Key Vault), azonban nem az ügyfél tartalmán fut.
+
+A nem számítási Azure-erőforrásokra, például a Azure Key Vaultra feltöltött vagy azokon továbbított tartalmak előzetes vizsgálata. A Microsoft nem fér hozzá az adataihoz ezekben a példányokban.
+
+Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
+
+**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a kártevő szoftvereket a mögöttes platformon.
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: nem alkalmazható
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információ: [Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Rendszeres automatizált biztonsági másolatok biztosítása
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
-**Útmutató:** A következő PowerShell-parancsokkal biztosíthatja a Key Vault-tanúsítványok, kulcsok, felügyelt tárfiókok és titkos kulcsok rendszeres automatikus biztonsági mentését:
+**Útmutató**: a következő PowerShell-parancsokkal biztosíthatja a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését:
 
-- Biztonsági másolat-AzKeyVaultCertificate
+- Backup – AzKeyVaultCertificate
 
-- Backup-AzKeyVaultKey
+- Backup – AzKeyVaultKey
 
-- Backup-AzKeyVaultManagedStorageAccount
+- Backup – AzKeyVaultManagedStorageAccount
 
-- Backup-AzKeyVaultSecret
+- Backup – AzKeyVaultSecret
 
-Szükség esetén a Key Vault biztonsági mentéseit az Azure Backup ban is tárolhatja.
+Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
-A kulcstároló-tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Key Vault tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-A kulcstároló kulcsainak biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-A Kulcstároló felügyelt tárfiókjainak biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Key Vault felügyelt Storage-fiókok biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-A Key Vault titkainak biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Key Vault titkos kódok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Az Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
-
-
-
-**Az Azure Security Center figyelése:** Nem alkalmazható
-
-**Felelősség**: Ügyfél
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Teljes rendszerbiztonsági mentés végrehajtása és biztonsági mentés bármely ügyfél által kezelt kulcs ról
-
-**Útmutató:** Készítsen biztonsági másolatot a Key Vault-tanúsítványokról, kulcsokról, felügyelt tárfiókokról és titkos kulcsokról a következő PowerShell-parancsokkal:
-
-- Biztonsági másolat-AzKeyVaultCertificate
-
-- Backup-AzKeyVaultKey
-
-- Backup-AzKeyVaultManagedStorageAccount
-
-- Backup-AzKeyVaultSecret
-
-Szükség esetén a Key Vault biztonsági mentéseit az Azure Backup ban is tárolhatja.
-
-A kulcstároló-tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
-
-A kulcstároló kulcsainak biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
-
-A Kulcstároló felügyelt tárfiókjainak biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
-
-A Key Vault titkainak biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
-
-Az Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
+A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
 
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által kezelt kulcsokat is
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
 
-**Útmutató:** A key vault-tanúsítványok, kulcsok, felügyelt tárfiókok és titkos kulcsok adat-visszaállítása rendszeres időközönként a következő PowerShell-parancsokkal hajthatja végre az adatokat:
+**Útmutató**: biztonsági másolatokat készíthet a Key Vault tanúsítványokról, kulcsokról, felügyelt tárolási fiókokról és titkokról a következő PowerShell-parancsokkal:
 
-- Visszaállítás-AzKeyVaultCertificate
+- Backup – AzKeyVaultCertificate
 
-- Visszaállítás-AzKeyVaultKey
+- Backup – AzKeyVaultKey
 
-- Restore-AzKeyVaultManagedStorageAccount
+- Backup – AzKeyVaultManagedStorageAccount
 
-- Visszaállítás-AzKeyVaultSecret
+- Backup – AzKeyVaultSecret
 
-A Key Vault-tanúsítványok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
-A kulcstároló kulcsainak visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+Key Vault tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-A Key Vault által felügyelt tárfiókok visszaállítása:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-A Key Vault titkos kulcsainak visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+Key Vault felügyelt Storage-fiókok biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+
+Key Vault titkos kódok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+
+A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
 
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Azure Security Center figyelés**: nem alkalmazható
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: A biztonsági mentések és az ügyfél által felügyelt kulcsok védelmének biztosítása
+**Felelősség**: ügyfél
 
-**Útmutató:** Győződjön meg arról, hogy a helyreállítható törlés engedélyezve van az Azure Key Vault. A helyreállítható törlés lehetővé teszi a törölt kulcstartók és tárolóobjektumok, például kulcsok, titkos kulcsok és tanúsítványok helyreállítását. 
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
-Az Azure Key Vault ideiglenes törlése: 
+**Útmutató**: a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkos kódok adatvisszaállításának rendszeres időközönkénti végrehajtása a következő PowerShell-parancsokkal:
+
+- Visszaállítás – AzKeyVaultCertificate
+
+- Visszaállítás – AzKeyVaultKey
+
+- Visszaállítás – AzKeyVaultManagedStorageAccount
+
+- Visszaállítás – AzKeyVaultSecret
+
+Key Vault tanúsítványok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+
+Key Vault kulcsok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+
+Key Vault felügyelt Storage-fiókok visszaállítása:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+
+Key Vault titkos kódok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+
+
+**Azure Security Center figyelés**: nem alkalmazható
+
+**Felelősség**: ügyfél
+
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
+
+**Útmutató**: Ellenőrizze, hogy engedélyezve van-e a Azure Key Vault a Soft delete. A Soft-delete lehetővé teszi a törölt kulcstartók és tároló objektumok, például kulcsok, titkos kódok és tanúsítványok helyreállítását. 
+
+A Azure Key Vault Soft delete használata: 
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ: [Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Incidenselhárítási útmutató létrehozása
+### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató:** Hozzon létre egy incidens-elhárítási útmutatót a szervezet számára. Győződjön meg arról, hogy vannak olyan írásos eseményreagálási tervek, amelyek meghatározzák a személyzet összes szerepkörét, valamint az incidenskezelés/-kezelés fázisait az észleléstől az incidens utáni felülvizsgálatig. Ezeknek a folyamatoknak a bizalmas rendszerek, például a Key Vault-titkos kulcsok at használó rendszerek védelmére kell összpontosítaniuk.
+**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig. Ezeknek a folyamatoknak összpontosítaniuk kell a bizalmas rendszerek védelmére, például a Key Vault titkokat használó rendszerekre.
 
-Munkafolyamat-automatizálások konfigurálása az Azure Security Centerben: 
+Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül: 
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
 
-Útmutató a saját biztonsági incidensek reválaszolási folyamatának felépítéséhez:  
+Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához:  
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-A Microsoft Security Response Center egy incidens anatómia:   
+A Microsoft Security Response Center egy Incidensének anatómiája:   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process   
 
-Az Ügyfél a NIST számítógépes biztonsági incidenskezelési útmutatóját is felhasználhatja, hogy segítse saját eseményreagálási tervének létrehozását: 
+Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához: 
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és rangsorolási eljárás létrehozása
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutatás:** A Biztonsági központ minden riasztáshoz súlyossági szintet rendel, hogy segítsen rangsorolni, mely riasztásokat kell először kivizsgálni. A súlyosság attól függ, hogy a Security Center mennyire magabiztos a keresésben, vagy a riasztás kiadásához használt analitikus, valamint a riasztáshoz vezető tevékenység mögött rosszindulatú szándék megbízhatósági szintje. Ezenkívül egyértelműen jelölje meg az előfizetéseket (pl. termelés, nem prod), és hozzon létre egy elnevezési rendszert, amely egyértelműen azonosítja és kategorizálja az Azure-erőforrásokat, különösen azokat, amelyek bizalmas adatokat, például az Azure Key Vault titkos titkait dolgoznak fel.
+**Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt. Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva), és létrehoz egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok, például a Azure Key Vault titkok feldolgozásához.
 
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="103-test-security-response-procedures"></a>10.3: A tesztelési biztonsági reagálási eljárások
+### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató:** Végezzen gyakorlatokat a rendszerek incidensválasz-képességeinek rendszeres ütemben való teszteléséhez az Azure Key Vault-példányok és a kapcsolódó erőforrások védelme érdekében. Azonosítsa a gyenge pontokat és hiányosságokat, és szükség szerint vizsgálja felül a tervet.
+**Útmutató**: a rendszerek incidensekre adott válaszait rendszeres ütemben tesztelheti az Azure Key Vault-példányok és a kapcsolódó erőforrások védelmének elősegítése érdekében. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-Tekintse meg a NIST kiadványát: Útmutató az informatikai tervekés képességek tesztelési, képzési és edzésprogramjaihoz: 
+Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez: 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Adja meg a biztonsági incidensek elérhetőségét, és állítsa be a biztonsági incidensek riasztási értesítéseit
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
-**Útmutató: A**Microsoft a biztonsági incidensek kapcsolattartási adatait arra használja fel, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy az Ön adataihoz jogosulatlan vagy jogosulatlan fél fért hozzá.  Tekintse át az incidenseket a problémák megoldásának biztosítása érdekében.
+**Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte.  A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-Az Azure Security Center biztonsági kapcsolattartójának beállítása:
+A Azure Security Center biztonsági kapcsolattartó beállítása:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Az Azure Security Center figyelése:** Igen
+**Azure Security Center figyelés**: igen
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidenselhárítási rendszerbe
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
-**Útmutató:** Exportálja az Azure Security Center-riasztásokat és javaslatokat a Folyamatos exportálás funkcióval az Azure Key Vault-kompatibilis erőforrásokkal kapcsolatos kockázatok azonosításához. A Folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális exportálását, vagy folyamatos, folyamatos módon.  Használhatja az Azure Security Center adatösszekötőt a riasztások streameléséhez az Azure Sentinel. 
+**Útmutató**: a Azure Security Center riasztások és javaslatok exportálása a folyamatos exportálás funkcióval a Azure Key Vault-kompatibilis erőforrások kockázatainak azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását.  Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba. 
 
  
 
-A folyamatos exportálás konfigurálása: 
+Folyamatos exportálás konfigurálása: 
 
 https://docs.microsoft.com/azure/security-center/continuous-export 
 
   
 
-Értesítések streamelése az Azure Sentinelbe: 
+Riasztások továbbítása az Azure Sentinelbe: 
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztásokra adott válasz automatizálása
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
-**Útmutató:** Az Azure Security Center munkafolyamat-automatizálási szolgáltatásával automatikusan elindíthatja a "Logic Apps" szolgáltatáson keresztül a biztonsági riasztásokra és az Azure Key Vault által védett erőforrásokvédelmére vonatkozó javaslatokra adott válaszokat. 
+**Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és a Azure Key Vault által védett erőforrások védelme érdekében javasolt javaslatok alapján. 
 
  
 
-A munkafolyamat-automatizálás és a logikai alkalmazások konfigurálása: 
+A Munkafolyamat-automatizálás és a Logic Apps konfigurálása: 
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: Ügyfél
+**Felelősség**: ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információ: [Security Control: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Rendszeres behatolási tesztelést végez az Azure-erőforrásokon, és 60 napon belül biztosítja az összes kritikus biztonsági megállapítás helyreállítását
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
 
-**Útmutatás:** Közvetlenül nem végezhet tolltesztelést az Azure Key Vault szolgáltatáson, azonban javasoljuk, hogy tesztelje az Azure-erőforrásokat, amelyek key vault használatával biztosítják a titkos kulcsok biztonságát.
+**Útmutató**: nem kell közvetlenül a Azure Key Vault szolgáltatáson elvégezni a toll-tesztelést, azonban javasoljuk, hogy tesztelje az Azure-erőforrásokat, amelyek Key Vault használnak a titkok biztonságának biztosításához.
 
-A Microsoft kötelezettségvállalási szabályzatát be kell tartania annak érdekében, hogy a behatolási tesztek ne sértsék meg a Microsoft irányelveit:
+Követnie kell a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-A Microsoft stratégiájáról és a Red Teaming és az élő webhely behatolási tesztelésének végrehajtásáról a Microsoft által felügyelt felhőalapú infrastruktúrák, szolgáltatások és alkalmazások terén itt olvashat bővebben: 
+A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Az Azure Security Center figyelése:** Nem alkalmazható
+**Azure Security Center figyelés**: nem alkalmazható
 
-**Felelősség**: Megosztott
+**Felelősség**: megosztott
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az [Azure biztonsági referenciaértékét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alapkonfigurációiról](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

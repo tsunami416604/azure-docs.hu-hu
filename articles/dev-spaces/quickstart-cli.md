@@ -1,44 +1,44 @@
 ---
-title: Alkalmazás fejlesztése a Kubernetes-en
+title: Alkalmazás fejlesztése a Kubernetes-on
 services: azure-dev-spaces
 ms.date: 02/20/2020
 ms.topic: quickstart
-description: Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Dev Spaces-t és a parancssort egy alkalmazás fejlesztéséhez az Azure Kubernetes szolgáltatáson
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a parancssor az alkalmazások fejlesztéséhez az Azure Kubernetes Service-ben
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8ee5cba06d9a526640d9057ee88a681d46392f4f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 337c3cb139e1fe0c35344e49271503b98a59fa7b
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80239699"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166002"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Rövid útmutató: Alkalmazás fejlesztése a Kubernetes en – Azure Dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése a Kubernetes-ben – Azure dev Spaces
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
-- Kód kifejlesztése és futtatása tárolókban a parancssor használatával.
+- A parancssor használatával fejlesszen és futtasson kódot a tárolókban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- [Az Azure CLI telepítve van.](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes-szolgáltatásfürt létrehozása
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-AKS-fürtöt támogatott régióban kell [létrehoznia.][supported-regions] Az alábbi parancsok létrehoznak egy *SamiresourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AKS-fürtöt.
+Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-regions]. Az alábbi parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AK-fürtöt.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev spaces engedélyezése az AKS-fürtön
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
-A `use-dev-spaces` paranccsal engedélyezheti a fejlesztői szóközöket az AKS-fürtön, és kövesse az utasításokat. Az alábbi parancs engedélyezi a Fejlesztői szóközöket a *MyResourceGroup* csoport *MyAKS* fürtjében, és létrehoz egy *alapértelmezett* fejlesztői területet.
+A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure Dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure Dev Spaces CLI nem telepíthető az Azure Cloud Shellben.
+> A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -60,35 +60,35 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Mintaalkalmazás kódjának beszereznie
+## <a name="get-sample-application-code"></a>Minta alkalmazás kódjának beolvasása
 
-Ebben a cikkben az [Azure Dev Spaces mintaalkalmazás](https://github.com/Azure/dev-spaces) használatával bemutatja az Azure Dev Spaces használatával.
+Ebben a cikkben az [Azure dev Spaces minta alkalmazásával](https://github.com/Azure/dev-spaces) mutatjuk be az Azure dev Spaces használatát.
 
-Klónozza az alkalmazást a GitHubról, és navigáljon a *fejlesztői terekbe/mintákba/nodejs/getting-started/webfrontend* könyvtárba:
+Az alkalmazás klónozása a GitHubról, és a *dev-Spaces/Samples/NodeJS/Getting-Started/webfrontend* könyvtárba való belépés:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="prepare-the-application"></a>A kérelem előkészítése
+## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
 
-Az alkalmazás Azure Dev Spaces futtatásához dockerfile és helm diagramra van szükség. Egyes nyelvek, például a [Java][java-quickstart], [.NET core][netcore-quickstart]és [node.js,][nodejs-quickstart]az Azure Dev Spaces ügyféleszköz-készítési hozhat létre az összes szükséges eszközöket. Sok más nyelvek, például a Go, php és Python, az ügyfél-eszközkészítés generálhatja a Helm diagram, amíg meg tudja adni egy érvényes Dockerfile.
+Ahhoz, hogy alkalmazást futtasson az Azure dev Spaces szolgáltatásban, szüksége lesz egy Docker és egy Helm-diagramra. Bizonyos nyelveken (például a [Java][java-quickstart], a [.net Core][netcore-quickstart]és a [Node. js][nodejs-quickstart]esetében) az Azure dev Spaces Client Tooling az összes szükséges eszközt képes létrehozni. Számos más nyelv, például a go, a PHP és a Python esetében az ügyfél-eszközkészlet létrehozhatja a Helm diagramot, feltéve, hogy érvényes Docker ad meg.
 
-Hozza létre a Docker- és Helm-diagram eszközeit `azds prep` az alkalmazás Kubernetes-ben való futtatásához a parancs használatával:
+A Docker és a Helm diagram eszközeinek előállítása az alkalmazás Kubernetes való `azds prep` futtatásához a következő parancs használatával:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-A Docker- és Helm-diagrameszközök megfelelő létrehozásához a parancsot a `prep` *fejlesztési-terek/samples/nodejs/getting-started/webfrontend* könyvtárból kell futtatnia.
+A Docker és `prep` a Helm diagram eszközeinek megfelelő létrehozásához futtatnia kell a parancsot a *dev-Spaces/Samples/NodeJS/Getting-Started/webfrontend* könyvtárból.
 
 > [!TIP]
-> A `prep` parancs [docker-fájl- és helmdiagramot](how-dev-spaces-works-prep.md#prepare-your-code) próbál létrehozni a projekthez. Az Azure Dev Spaces ezeket a fájlokat használja a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítését és futtatását.
+> A `prep` parancs megkísérli [egy Docker és egy Helm-diagram](how-dev-spaces-works-prep.md#prepare-your-code) létrehozását a projekthez. Az Azure dev Spaces ezeket a fájlokat használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 
-A kód létrehozása és futtatása `azds up` az AKS-ben a következő paranccsal:
+Hozza létre és futtassa a kódot az AK- `azds up` ban a parancs használatával:
 
 ```cmd
 $ azds up
@@ -107,31 +107,31 @@ Step 7/8 : COPY . .
 Step 8/8 : CMD ["npm", "start"]
 Built container image in 6m 17s
 Waiting for container...13s
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at `http://webfrontend.1234567890abcdef1234.eus.azds.io/`
 Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-A futó szolgáltatás a nyilvános URL megnyitásával érhető el, `azds up` amely a parancs kimenetében jelenik meg. Ebben a példában a *http://webfrontend.1234567890abcdef1234.eus.azds.io/* nyilvános URL-cím .
+A szolgáltatás futtatásához nyissa meg a `azds up` parancs kimenetében megjelenő nyilvános URL-címet. Ebben a példában a nyilvános URL-cím *`http://webfrontend.1234567890abcdef1234.eus.azds.io/`* a következő:.
 
 > [!NOTE]
-> Amikor futás `azds up`közben a szolgáltatáshoz navigál, a HTTP-kérelem nyomkövetései is megjelennek a `azds up` parancs kimenetén. Ezek a nyomok segíthetnek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket a futás során `--disable-http-traces` letilthatja. `azds up`
+> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor `azds up`.
 
-Ha a `azds up` *Ctrl+c billentyűkombinációval*leállítja a parancsot, a szolgáltatás továbbra is futni fog az AKS-ben, és a nyilvános URL továbbra is elérhető marad.
+Ha a `azds up` *CTRL + c billentyűkombinációval*állítja le a parancsot, a szolgáltatás továbbra is az AK-ban fog futni, és a nyilvános URL-cím továbbra is elérhető marad.
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának telepítéséhez frissítheti a projekt bármely `azds up` fájlját, és újra futtathatja a parancsot. Példa:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a `azds up` parancsot. Például:
 
-1. Ha `azds up` még fut, nyomja *le a Ctrl+c billentyűkombinációt.*
-1. A [13-as `server.js` sor](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) frissítése a következőre:
+1. Ha `azds up` még fut, nyomja le a *CTRL + c*billentyűkombinációt.
+1. [A 13. sor `server.js` frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Mentse a módosításokat.
-1. Futtassa `azds up` újra a parancsot:
+1. Futtassa újra `azds up` a parancsot:
 
     ```cmd
     $ azds up
@@ -142,10 +142,10 @@ A szolgáltatás frissített verziójának telepítéséhez frissítheti a proje
     ...    
     ```
 
-1. Nyissa meg a futó szolgáltatást, és figyelje meg a módosításokat.
-1. A *ctrl+c billentyűkombinációval* állítsa le a `azds up` parancsot.
+1. Navigáljon a futó szolgáltatáshoz, és figyelje meg a módosításokat.
+1. Nyomja le a *CTRL + c* billentyűkombinációt a `azds up` parancs leállításához.
 
-## <a name="clean-up-your-azure-resources"></a>Az Azure-erőforrások karbantartása
+## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
 ```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
@@ -153,10 +153,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy az Azure Dev Spaces hogyan segít összetettebb alkalmazások fejlesztésében több tárolóközött, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést a kód különböző verzióival vagy ágaival való együttműködéssel különböző helyeken.
+Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 
 > [!div class="nextstepaction"]
-> [Csapatfejlesztés az Azure Dev Spaces-ben][team-quickstart]
+> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-quickstart]
 
 [java-quickstart]: quickstart-java.md
 [nodejs-quickstart]: quickstart-nodejs.md

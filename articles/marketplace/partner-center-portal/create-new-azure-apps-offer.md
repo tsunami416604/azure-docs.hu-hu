@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730617"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867270"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -221,6 +221,9 @@ A **Támogatás kapcsolatrészben** meg kell adnia a **támogatási URL-címet**
 
 Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie.
 
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
+
 #### <a name="store-logos"></a>Áruházi emblémák
 
 Adja meg az ajánlat logóját három méretben: **Kicsi (48 x 48)**, **Közepes (90 X 90)** és **Nagy (216 x 216)**.
@@ -355,7 +358,7 @@ Ha már beállította a terv árait amerikai dollárban (USD), és egy másik pi
 
 Adja meg a csomag havi árát.  Ez az ár az Azure-infrastruktúrán vagy a használatalapú használatalapú szoftverköltségeken felül értendő, amelyek a megoldás által üzembe helyezett erőforrásoknál merülnek fel.
 
-A helyi pénznemben (USD = amerikai dollár) meghatározott árakat a rendszer a beállítás során rendelkezésre álló aktuális árfolyamok alapján az összes kiválasztott piac helyi pénznemére váltja át. A közzététel előtt ellenőrizze ezeket az árakat az árképzési táblázat exportálásával és az egyes piacok árainak áttekintésével. Ha egyéni árakat szeretne beállítani egy adott piacon, módosítsa és importálja az árképzési táblázatot. 
+Az USD-ben (USD = amerikai dollár) meghatározott árakat az összes kiválasztott piac helyi pénznemére konvertálja a mentett aktuális árfolyamok használatával. A közzététel előtt ellenőrizze ezeket az árakat az árképzési táblázat exportálásával és az egyes piacok árainak áttekintésével. Ha egyéni árakat szeretne beállítani egy adott piacon, módosítsa és importálja az árképzési táblázatot. 
 
 >[!Note]
 >Az árképzési adatok exportálásának engedélyezéséhez először mentenie kell az árképzési módosításokat.
@@ -397,7 +400,16 @@ Minden Azure-alkalmazáscsomag-csomagnak tartalmaznia kell ezt `.zip` a két fá
 
 * A [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)nevű Azure-alkalmazás létrehozási felületének felhasználói felületdefiníciója.
 
+A támogatott fájlméretek maximális méreteai a következők:
+
+* Akár 1 Gb teljes `.zip` tömörített archív méretben
+
+* Akár 1 Gb az `.zip` archívumon belüli egyes tömörítetlen fájlok esetén  
+
 Minden új Azure-alkalmazásajánlatnak tartalmaznia kell egy [Azure-partner ügyfélhasználati](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) guid azonosítót is.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 ### <a name="previously-published-packages"></a>Korábban közzétett csomagok 
 

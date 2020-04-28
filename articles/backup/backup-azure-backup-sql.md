@@ -1,166 +1,167 @@
 ---
-title: Az SQL Server biztonsági és felügyeleti tartaléka az Azure-ba DPM-számítási feladatként
-description: Bevezetés az SQL Server-adatbázisok biztonsági mentéséhez az Azure Backup szolgáltatás használatával
+title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
+description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8cbb8c833bc2933afac300bcc848fd50861011d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01504fcfd81040d75e57ce62a9f77a5bb248d59b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505930"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183789"
 ---
-# <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Az SQL Server biztonsági és felügyeleti tartaléka az Azure-ba DPM-számítási feladatként
+# <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
-Ez a cikk végigvezeti a konfigurációs lépéseket az SQL Server-adatbázisok azure backup használatával biztonsági mentést.
+Ez a cikk végigvezeti a SQL Server adatbázisok Azure Backup használatával történő biztonsági mentésének konfigurációs lépésein.
 
-Az SQL Server-adatbázisok Azure-ba való biztonsági mentéséhez szüksége van egy Azure-fiókra. Ha még nem rendelkezik ilyen, létrehozhat egy ingyenes fiókot néhány perc alatt. További információ: [Create your Azure free account](https://azure.microsoft.com/pricing/free-trial/).
+SQL Server adatbázisok Azure-ba történő biztonsági mentéséhez Azure-fiókra van szükség. Ha még nem rendelkezik ilyennel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. További információ: [az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-Sql Server-adatbázis biztonsági mentése az Azure-ba és helyreállítása az Azure-ból:
+SQL Server-adatbázis biztonsági mentése az Azure-ba és az Azure-ból való helyreállítás:
 
-1. Hozzon létre egy biztonsági mentési szabályzatot az SQL Server-adatbázisok védelmére az Azure-ban.
-1. Igény szerinti biztonsági másolatokat hozhat létre az Azure-ban.
+1. Hozzon létre egy biztonsági mentési szabályzatot SQL Server adatbázisok védelméhez az Azure-ban.
+1. Hozzon létre igény szerinti biztonsági másolatokat az Azure-ban.
 1. Az adatbázis helyreállítása az Azure-ból.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt elkezdené, győződjön meg arról, hogy megfelelt az Azure Backup használatának [előfeltételeinek](backup-azure-dpm-introduction.md#prerequisites-and-limitations) a számítási feladatok védelme érdekében. Íme néhány előfeltételi feladat: 
-* Hozzon létre egy tartalék tárolót.
-* A tároló hitelesítő adatainak letöltése. 
-* Telepítse az Azure Backup-ügynököt.
-* Regisztrálja a kiszolgálót a tárolóval.
+Mielőtt elkezdené, győződjön meg arról, hogy teljesítette az Azure Backup használatának [előfeltételeit](backup-azure-dpm-introduction.md#prerequisites-and-limitations) a munkaterhelések elleni védelemhez. Íme néhány előfeltételt jelentő feladat:
 
-## <a name="create-a-backup-policy"></a>Biztonsági mentési házirend létrehozása 
+* Hozzon létre egy backup-tárolót.
+* Tár hitelesítő adatainak letöltése.
+* Telepítse a Azure Backup ügynököt.
+* Regisztrálja a kiszolgálót a tárolóban.
 
-Az SQL Server-adatbázisok azure-beli védelméhez először hozzon létre egy biztonsági mentési szabályzatot:
+## <a name="create-a-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-1. Az Adatvédelmi menedzser (DPM) kiszolgálón válassza a **Védelem** munkaterületet.
-1. Védelmi csoport létrehozásához válassza az **Új** lehetőséget.
+SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy biztonsági mentési szabályzatot:
+
+1. A Data Protection Manager (DPM) kiszolgálón válassza a **védelem** munkaterületet.
+1. A védelmi csoport létrehozásához válassza az **új** lehetőséget.
 
     ![Védelmi csoport létrehozása](./media/backup-azure-backup-sql/protection-group.png)
-1. A kezdőlapon tekintse át a védelmi csoport létrehozásáról szóló útmutatót. Ezután válassza a **Tovább**gombot.
-1. Válassza a **Kiszolgálók**lehetőséget.
+1. A kezdőlapon tekintse át a védelmi csoport létrehozásával kapcsolatos útmutatást. Ezután válassza a **tovább**lehetőséget.
+1. Válassza a **kiszolgálók**lehetőséget.
 
-    ![Válassza ki a Kiszolgálók védelmi csoport típusát](./media/backup-azure-backup-sql/pg-servers.png)
-1. Bontsa ki azt az SQL Server-gépet, amelyről a biztonsági másolatot szeretne tenni. Láthatja azokat az adatforrásokat, amelyekről biztonsági másolatot lehet kapni akiszolgálóról. Bontsa ki **az összes SQL-megosztást,** majd jelölje ki a biztonsági másolatot létrehozni kívánt adatbázisokat. Ebben a példában a ReportServer$MSDPM2012 és a ReportServer$MSDPM2012TempDB lehetőséget választjuk. Ezután válassza a **Tovább**gombot.
+    ![A kiszolgálók védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sql/pg-servers.png)
+1. Bontsa ki azt a SQL Server gépet, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Ezután válassza a **tovább**lehetőséget.
 
-    ![SQL Server-adatbázis kijelölése](./media/backup-azure-backup-sql/pg-databases.png)
-1. Nevezze el a védelmi csoportot, majd válassza az **Online védelem lehetőséget.**
+    ![SQL Server-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
+1. Nevezze el a védelmi csoportot, majd válassza az **online védelmet szeretnék**lehetőséget.
 
-    ![Válasszon adatvédelmi módszert – rövid távú lemezvédelem vagy online Azure-védelem](./media/backup-azure-backup-sql/pg-name.png)
-1. A **Rövid távú célok megadása** lapon adja meg a lemezbiztonsági pontok létrehozásához szükséges bemeneteket.
+    ![Adatvédelmi módszer választása – rövid távú lemezes védelem vagy online Azure-védelem](./media/backup-azure-backup-sql/pg-name.png)
+1. A **rövid távú célok megadása lapon adja** meg a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához.
 
-    Ebben a példában **a megőrzési tartomány** *5 napra*van állítva. A biztonsági mentés **szinkronizálási gyakorisága** *15 percenként*egyszer van beállítva. **Az Expressz teljes biztonsági mentése** *20:00-ra*van állítva.
+    Ebben a példában a **megőrzési tartomány** értéke *5 nap*. A biztonsági mentési **szinkronizálás gyakorisága** *15 percenként*egyszer van beállítva. Az **expressz teljes biztonsági mentés** *8:00 órakor*van beállítva.
 
-    ![Rövid távú célok beállítása a biztonsági mentés védelmére](./media/backup-azure-backup-sql/pg-shortterm.png)
+    ![Rövid távú célok beállítása a biztonsági másolatok védelméhez](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > Ebben a példában egy biztonsági mentési pont jön létre minden nap 20:00 órakor. Az előző napi 20:00-as biztonsági mentési pont óta módosított adatok átvitele történik. Ezt a folyamatot **expressz teljes biztonsági mentésnek nevezzük.** Bár a tranzakciónaplók szinkronizálása 15 percenként történik, ha 21:00-kor kell helyreállítanunk az adatbázist, akkor a pont az utolsó expressz teljes biztonsági mentési pont naplóinak visszajátszásával jön létre, amely ebben a példában 20:00.
+   > Ebben a példában a rendszer minden nap 8:00 ÓRAKOR létrehoz egy biztonsági mentési pontot. Az előző nap 8:00 PM biztonsági mentési pontja óta módosított adat átvitele megtörtént. Ezt a folyamatot **expressz teljes biztonsági mentésnek**nevezzük. Bár a tranzakciónaplók szinkronizálása 15 percenként történik, ha az adatbázist 9:00 ÓRAKOR kell helyreállítani, akkor a pont a legutóbbi expressz teljes biztonsági mentési pontról, amely ebben a példában a 8:00.
    >
    >
 
-1. Válassza a **Tovább lehetőséget.** A DPM a rendelkezésre álló teljes tárhelyet mutatja. Azt is mutatja, a potenciális lemezterület-kihasználtság.
+1. Kattintson a **Tovább** gombra. A DPM megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
 
-    ![Lemezfoglalás beállítása](./media/backup-azure-backup-sql/pg-storage.png)
+    ![Lemez kiosztásának beállítása](./media/backup-azure-backup-sql/pg-storage.png)
 
-    Alapértelmezés szerint a DPM adatforrásonként egy kötetet (SQL Server adatbázis) hoz létre. A kötet a kezdeti biztonsági másolathoz használatos. Ebben a konfigurációban a Logikai lemezkezelő (LDM) a DPM-védelmet 300 adatforrásra (SQL Server-adatbázisokra) korlátozza. A korlátozás megkerüléséhez válassza **az adatok közös megkeresése lehetőséget a DPM-tárolókészletben.** Ha ezt a beállítást használja, a DPM egyetlen kötetet használ több adatforráshoz. Ez a beállítás lehetővé teszi a DPM számára, hogy akár 2000 SQL Server-adatbázist is megvédjen.
+    Alapértelmezés szerint az DPM egy kötetet hoz létre adatforrásként (SQL Server adatbázis). A kötet a kezdeti biztonsági másolathoz használatos. Ebben a konfigurációban a logikai lemezkezelő (LDM) a 300 adatforrásokra (SQL Server adatbázisokra) korlátozza a DPM védelmét. Ennek a korlátozásnak a megkerüléséhez válassza az **DPM-tárolóban található adatkeresés**lehetőséget. Ha ezt a beállítást használja, a DPM egyetlen kötetet használ több adatforráshoz. Ez a beállítás lehetővé teszi, hogy a DPM akár 2 000 SQL Server-adatbázist is megvédjen.
 
-    Ha a Kötetek automatikus növelése lehetőséget **választja,** akkor a DPM a termelési adatok növekedésével a megnövekedett biztonsági mentési kötetet is figyelembe veheti. Ha nem választja a **Kötetek automatikus megnőése**lehetőséget, akkor a DPM a biztonsági mentési tárolót a védelmi csoport adatforrásaira korlátozza.
+    Ha a **kötetek automatikus növelését**választja, akkor a DPM képes a megnövekedett biztonsági mentési kötetre, mert az éles adatmennyiség növekszik. Ha nem választja ki **automatikusan a kötetek növekedését**, a DPM korlátozza a biztonsági mentési tárolót a védelmi csoport adatforrásaira.
 
-1. Ha Ön rendszergazda, választhatja ezt a kezdeti biztonsági mentést **automatikusan a hálózaton keresztül,** és kiválaszthatja az átvitel idejét. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután válassza a **Tovább**gombot.
+1. Ha Ön rendszergazda, dönthet úgy, hogy a kezdeti biztonsági mentést **automatikusan továbbítja a hálózaton keresztül** , és kiválasztja az átvitel időpontját. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután válassza a **tovább**lehetőséget.
 
-    ![Kópia-létrehozási módszer kiválasztása](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-sql/pg-manual.png)
 
-    A kezdeti biztonsági másolat a teljes adatforrás (SQL Server-adatbázis) átvitelét igényli. A biztonsági mentési adatok az éles kiszolgálóról (SQL Server-gép) a DPM-kiszolgálóra kerülnek. Ha ez a biztonsági másolat nagy, akkor az adatok hálózaton keresztüli átvitele sávszélesség-torlódást okozhat. Ezért a rendszergazdák dönthetnek úgy, hogy cserélhető adathordozót használnak a kezdeti biztonsági másolat **manuális átviteléhez.** Vagy átvihetik az adatokat **automatikusan a hálózaton keresztül** egy adott időpontban.
+    A kezdeti biztonsági másolat a teljes adatforrás (SQL Server adatbázis) átvitelét igényli. A biztonsági mentési adatok az üzemi kiszolgálóról (SQL Server gépről) a DPM-kiszolgálóra kerülnek. Ha a biztonsági mentés nagy méretű, akkor az adatátvitelt a hálózaton keresztül okozhatja a sávszélesség zsúfoltsága. Emiatt a rendszergazdák úgy dönthetnek, hogy cserélhető adathordozót használnak a kezdeti biztonsági mentés **manuális**átviteléhez. Az adatok pedig automatikusan átvihetők **a hálózaton keresztül** egy adott időpontban.
 
-    A kezdeti biztonsági mentés befejezése után a biztonsági mentések növekményesen folytatódnak a kezdeti biztonsági másolaton. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
-    
-1. Adja meg, hogy mikor szeretné futtatni a konzisztencia-ellenőrzést. Ezután válassza a **Tovább**gombot.
+    A kezdeti biztonsági mentés befejeződése után a biztonsági mentések a kezdeti biztonsági másolaton fokozatosan folytatódnak. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 
-    ![A konzisztencia-ellenőrzés futtatásának megtervezése](./media/backup-azure-backup-sql/pg-consistent.png)
+1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután válassza a **tovább**lehetőséget.
 
-    A DPM konzisztencia-ellenőrzést futtathat a biztonsági mentési pont sértetlenségén. Kiszámítja az éles kiszolgálón lévő biztonsági másolat (ebben a példában az SQL Server-gép) ellenőrzőösszegét és a fájl biztonsági mentési adatait a DPM-ben. Ha az ellenőrzés ütközést talál, akkor a DPM biztonsági másolatot követő fájlja sérültnek minősül. A DPM úgy javítja ki a biztonsági másolatot, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzés teljesítményigényes művelet, a rendszergazdák dönthetnek úgy, hogy ütemezik a konzisztencia-ellenőrzést, vagy automatikusan futtatják azt.
+    ![A konzisztencia-ellenőrzés futtatási idejének kiválasztása](./media/backup-azure-backup-sql/pg-consistent.png)
 
-1. Válassza ki az Azure-ban védni kívánt adatforrásokat. Ezután válassza a **Tovább**gombot.
+    A DPM képes konzisztencia-ellenőrzés futtatására a biztonsági mentési pont integritásán. Kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a példában a SQL Server gép) és az adott fájl biztonsági másolatait a DPM-ben. Ha az ellenőrzési ütközést észlel, akkor a rendszer a DPM található biztonsági másolati fájlt is megsérültnek tekinti. A DPM az ellenőrzőösszeg-eltérésnek megfelelő blokkok küldésével javítja a biztonsági másolatban szereplő adatokat. Mivel a konzisztencia-ellenőrzés teljesítmény-igényes művelet, a rendszergazdák dönthetnek úgy, hogy a konzisztencia-ellenőrzés vagy a Futtatás automatikusan történik.
 
-    ![Válassza ki a védeni kívánt adatforrásokat az Azure-ban](./media/backup-azure-backup-sql/pg-sqldatabases.png)
-1. Ha Ön rendszergazda, kiválaszthatja a szervezet szabályzatainak megfelelő biztonsági mentési ütemezéseket és adatmegőrzési házirendeket.
+1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután válassza a **tovább**lehetőséget.
 
-    ![Ütemezések és adatmegőrzési házirendek kiválasztása](./media/backup-azure-backup-sql/pg-schedule.png)
+    ![Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat](./media/backup-azure-backup-sql/pg-sqldatabases.png)
+1. Ha Ön rendszergazda, kiválaszthatja a szervezeti szabályzatoknak megfelelő biztonsági mentési ütemterveket és adatmegőrzési házirendeket.
 
-    Ebben a példában a biztonsági mentések naponta 12:00 és 20:00 órakor készülnek.
+    ![Ütemtervek és adatmegőrzési szabályzatok kiválasztása](./media/backup-azure-backup-sql/pg-schedule.png)
+
+    Ebben a példában a biztonsági mentések naponta 12:00 ÓRAKOR és 8:00 ÓRAKOR készültek.
 
     > [!TIP]
-    > A gyors helyreállítás érdekében tartson néhány rövid távú helyreállítási pontot a lemezen. Ezek a helyreállítási pontok a működési helyreállításhoz használatosak. Az Azure jó külső helyként szolgál, magasabb SLA-kat és garantált rendelkezésre állást biztosítva.
+    > A gyors helyreállításhoz tartsa meg néhány rövid távú helyreállítási pontot a lemezen. Ezek a helyreállítási pontok az operatív helyreállításhoz használatosak. Az Azure jó külső helyszínen működik, és magasabb SLA-kat és garantált rendelkezésre állást biztosít.
     >
-    > A DPM segítségével ütemezheti az Azure Backups-t a helyi lemezbiztonsági mentések befejezése után. Ha ezt a gyakorlatot követi, a rendszer átmásolja a legújabb lemezbiztonsági mentést az Azure-ba.
+    > A DPM használatával ütemezhet Azure-alapú biztonsági mentéseket a helyi lemezes biztonsági mentések befejezését követően. Ha ezt a gyakorlatot követi, a rendszer átmásolja a lemez legújabb biztonsági mentését az Azure-ba.
     >
 
-1. Válassza ki az adatmegőrzési házirend ütemezését. Az adatmegőrzési szabályzat működéséről az [Azure Backup használata a szalagos infrastruktúra cseréjéhez](backup-azure-backup-cloud-as-tape.md)című témakörben talál további információt.
+1. Válassza ki az adatmegőrzési szabály ütemtervét. További információ az adatmegőrzési szabályzat működéséről: [Azure Backup használata a szalagos infrastruktúra lecseréléséhez](backup-azure-backup-cloud-as-tape.md).
 
-    ![Adatmegőrzési házirend kiválasztása](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Adatmegőrzési szabály kiválasztása](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Ebben a példában:
 
-    * A biztonsági mentéseket naponta 12:00 és 20:00 órakor készítik. 180 napig őrzik őket.
-    * A biztonsági mentés szombaton 12:00-kor tartják 104 hétig.
-    * A hónap utolsó szombatjáról 12:00-kor készült biztonsági mentés60 hónapig tartatva.
-    * A biztonsági mentés március utolsó szombatján 12:00-kor 10 évig tartatva.
-    
-    Az adatmegőrzési szabály kiválasztása után válassza a **Tovább**gombot.
+    * A biztonsági mentések naponta 12:00 ÓRAKOR és 8:00 ÓRAKOR készültek. 180 napig tartanak.
+    * A szombaton 12:00 ÓRAKOR készült biztonsági mentés 104 hétig tart.
+    * A hónap utolsó szombatján 12:00 ÓRAKOR történő biztonsági mentését 60 hónapig őrzi meg a rendszer.
+    * A március 12:00-kor múlt Szombatjának biztonsági mentését 10 évig őrzi meg a rendszer.
 
-1. Válassza ki, hogyan szeretné átvinni a kezdeti biztonsági másolat át az Azure-ba.
+    Miután kiválasztott egy adatmegőrzési szabályzatot, válassza a **tovább**lehetőséget.
 
-    * A **Hálózaton keresztül automatikusan** beállítás követi a biztonsági mentésütemezést az adatok Azure-ba való átviteléhez.
-    * A kapcsolat **nélküli biztonsági mentésről**a Kapcsolat nélküli biztonsági másolat – Áttekintés című [témakörben](offline-backup-overview.md)olvashat bővebben.
+1. Válassza ki, hogyan szeretné átvinni a kezdeti biztonsági másolatot az Azure-ba.
 
-    Miután kiválasztotta az átviteli mechanizmust, válassza a **Tovább gombot.**
+    * Az **automatikusan a hálózaton keresztül** lehetőség a biztonsági mentési ütemtervet követi az adatok Azure-ba történő átviteléhez.
+    * További információ az **Offline biztonsági mentésről**: [az offline biztonsági mentés áttekintése](offline-backup-overview.md).
 
-1. Az **Összegzés** lapon tekintse át a házirend részleteit. Ezután válassza **a Csoport létrehozása**lehetőséget. A Bezárás lehetőséget **választhatja,** és megtekintheti a feladat előrehaladását a **Figyelés** munkaterületen.
+    Az átviteli mechanizmus kiválasztása után válassza a **tovább**lehetőséget.
 
-    ![A védelmi csoport létrehozásának előrehaladása](./media/backup-azure-backup-sql/pg-summary.png)
+1. Az **Összefoglalás** lapon tekintse át a szabályzat részleteit. Ezután válassza a **csoport létrehozása**lehetőséget. A **Bezárás** gombra kattintva megtekintheti a feladatok előrehaladását a **figyelés** munkaterületen.
 
-## <a name="create-on-demand-backup-copies-of-a-sql-server-database"></a>SQL Server adatbázis igény szerinti biztonsági másolatainak létrehozása
+    ![A védelmi csoport létrehozásának folyamata](./media/backup-azure-backup-sql/pg-summary.png)
 
-Az első biztonsági mentés kor létrejön egy helyreállítási pont. Ahelyett, hogy megvárna az ütemezés futtatására, manuálisan aktiválhatja egy helyreállítási pont létrehozását:
+## <a name="create-on-demand-backup-copies-of-a-sql-server-database"></a>SQL Server-adatbázis igény szerinti biztonsági másolatának létrehozása
 
-1. A védelmi csoportban győződjön meg arról, hogy az adatbázis állapota **rendben**van.
+A rendszer létrehoz egy helyreállítási pontot az első biztonsági mentés alkalmával. Ahelyett, hogy az ütemezett futtatásra várakozik, manuálisan aktiválhatja a helyreállítási pontok létrehozását:
 
-    ![Az adatbázis állapotát megjelenítő védelmi csoport](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-1. Kattintson a jobb gombbal az adatbázisra, és válassza **a Helyreállítási pont létrehozása parancsot.**
+1. Győződjön meg arról, hogy a védelmi csoportban az adatbázis állapota **OK**.
 
-    ![Online helyreállítási pont létrehozása](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-1. A legördülő menüben válassza az **Online védelem**lehetőséget. Ezután válassza **az OK gombot** egy helyreállítási pont létrehozásához az Azure-ban.
+    ![Egy védelmi csoport, amely az adatbázis állapotát mutatja](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
+1. Kattintson a jobb gombbal az adatbázisra, majd válassza a **helyreállítási pont létrehozása**lehetőséget.
+
+    ![Online helyreállítási pont létrehozásának kiválasztása](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
+1. A legördülő menüben válassza az **online védelem**lehetőséget. Ezután kattintson az **OK** gombra egy helyreállítási pont Azure-beli létrehozásának megkezdéséhez.
 
     ![Helyreállítási pont létrehozásának megkezdése az Azure-ban](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-1. A feladat előrehaladását a Figyelés munkaterületen **tekintheti** meg.
+1. A feladatok előrehaladását a **figyelés** munkaterületen tekintheti meg.
 
-    ![A feladat előrehaladásának megtekintése a Figyelés konzolon](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
+    ![A feladatok előrehaladásának megtekintése a figyelési konzolon](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>SQL Server-adatbázis helyreállítása az Azure-ból
 
-Védett entitás, például egy SQL Server-adatbázis helyreállítása az Azure-ból:
+Védett entitás, például SQL Server adatbázis helyreállítása az Azure-ból:
 
-1. Nyissa meg a DPM-kiszolgálófelügyeleti konzolt. Nyissa meg a **Helyreállítási** munkaterületet, és tekintse meg a DPM által biztonsági mentést lefolytató kiszolgálókat. Válassza ki az adatbázist (ebben a példában ReportServer$MSDPM2012). Válassza ki az **Online**végződésű **helyreállítási időt.**
+1. Nyissa meg a DPM-kiszolgáló felügyeleti konzolját. Lépjen a **helyreállítási** munkaterületre, és tekintse meg azokat a kiszolgálókat, amelyekről a DPM biztonsági másolatot készít. Válassza ki az adatbázist (ebben a példában a reportserver $ MSDPM2012). Válasszon ki egy **online**állapotú **helyreállítási időpontot** .
 
     ![Helyreállítási pont kiválasztása](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **Helyreállítás parancsot.**
+1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább lehetőséget.** Az adatbázis felülírásához válassza a Helyreállítás az **SQL Server eredeti példányára**helyreállítási típust. Ezután válassza a **Tovább**gombot.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután válassza a **tovább**lehetőséget.
 
-    ![Adatbázis helyreállítása az eredeti helyére](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
+    ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    Ebben a példában a DPM lehetővé teszi az adatbázis egy másik SQL Server-példányba vagy egy önálló hálózati mappába való visszaszolgáltatását.
-1. A **Helyreállítási beállítások megadása** lapon kiválaszthatja a helyreállítási beállításokat. A rendszer például a **hálózati sávszélesség-használat szabályozásának** beállításával szabályozhatja a helyreállítási sávszélességet. Ezután válassza a **Tovább**gombot.
-1. Az **Összegzés** lapon látható az aktuális helyreállítási konfiguráció. Válassza **a Helyreállítás**lehetőséget.
+    Ebben a példában a DPM lehetővé teszi az adatbázis helyreállítását egy másik SQL Server példányba vagy egy különálló hálózati mappába.
+1. A **helyreállítási beállítások megadása** lapon választhatja ki a helyreállítási beállításokat. Kiválaszthatja például a **hálózati sávszélesség használatának szabályozását** a helyreállítás által használt sávszélesség szabályozásához. Ezután válassza a **tovább**lehetőséget.
+1. Az **Összefoglalás** lapon az aktuális helyreállítási konfiguráció látható. Válassza a **helyreállítás**lehetőséget.
 
-    A helyreállítási állapot azt mutatja, hogy az adatbázis helyreállt. A Varázsló bezárásához és a **Figyelés** munkaterület állapotának megtekintéséhez válassza a **Bezárás** lehetőséget.
+    A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamat állapotát a **figyelés** munkaterületen.
 
-    ![A helyreállítási folyamat megkezdése](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
+    ![A helyreállítási folyamat elindítása](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    Amikor a helyreállítás befejeződött, a visszaállított adatbázis konzisztens az alkalmazással.
+    A helyreállítás befejezésekor a visszaállított adatbázis konzisztens az alkalmazással.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [Azure Backup GYAKORI KÉRDÉSEK](backup-azure-backup-faq.md).
+További információ: [Azure Backup GYIK](backup-azure-backup-faq.md).

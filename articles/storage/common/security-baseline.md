@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d083ba757004fa477038750ad6210e4bb30659ee
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120755"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176600"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -140,7 +140,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
-**Útmutató**: használja a hálózati biztonsági csoportokhoz (NSG) és a hálózati biztonsággal és a forgalommal kapcsolatos egyéb erőforrásokhoz tartozó címkéket. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat. A címkézéshez kapcsolódó beépített Azure Policy-definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról. A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon. 
+**Útmutató**: használja a hálózati biztonsági csoportokhoz (NSG) és a hálózati biztonsággal és a forgalommal kapcsolatos egyéb erőforrásokhoz tartozó címkéket. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat. A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról. A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon. 
 
 - [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -687,7 +687,7 @@ Emellett az Azure Storage komplex veszélyforrások elleni védelmének használ
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával: 
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával: 
 
  - Nem engedélyezett erőforrástípusok 
  - Engedélyezett erőforrástípusok 
@@ -730,7 +730,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
-**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával: 
+**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával: 
 
 - Nem engedélyezett erőforrástípusok 
 - Engedélyezett erőforrástípusok 
@@ -783,7 +783,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. Storage" névtérben egyéni szabályzatok létrehozásához a Storage-fiókok példányainak konfigurálásához vagy érvényesítéséhez. Az Azure Storage-fiókhoz beépített Azure Policy-definíciókat is használhat, például: 
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. Storage" névtérben egyéni szabályzatok létrehozásához a Storage-fiókok példányainak konfigurálásához vagy érvényesítéséhez. Az Azure Storage-fiókokhoz beépített Azure Policy-definíciókat is használhat, például: 
 
 Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz a komplex veszélyforrások elleni védelem telepítése a Storage-fiókok tárolási fiókjain át kell telepíteni az új Azure Resource Manager erőforrásokra való biztonságos átvitelt a Storage-fiókokra. 
 
@@ -807,7 +807,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7,3: biztonságos konfigurációk karbantartása az összes Azure-erőforráshoz
 
-**Útmutató**: az Azure Policy [megtagadás] és a [telepítés ha nem létezik] használatával kényszerítse ki a biztonságos beállításokat a Storage-fiók erőforrásai között. 
+**Útmutató**: használja a Azure Policy [megtagadás] és a [telepítés, ha nem létezik] lehetőséget a Storage-fiók erőforrásaiban található biztonságos beállítások betartatásához. 
 
 - [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

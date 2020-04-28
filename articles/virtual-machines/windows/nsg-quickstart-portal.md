@@ -1,24 +1,18 @@
 ---
 title: Portok megnyitása virtuális géphez az Azure Portal használatával
-description: Megtudhatja, hogy miként nyithat meg egy portot/ hozhat létre végpontot a Windows virtuális géphez az Azure Portal erőforrás-kezelőtelepítési modelljével
-services: virtual-machines-windows
-documentationcenter: ''
+description: Megtudhatja, hogyan nyithat meg egy portot/ hozhat létre végpontot a Windows virtuális géphez az Azure Portal használatával
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371411"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865490"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális gépre az Azure Portalsegítségével
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]

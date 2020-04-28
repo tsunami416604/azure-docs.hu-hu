@@ -1,24 +1,18 @@
 ---
 title: Windows virtuálisgép-erőforrás áthelyezése az Azure-ban
 description: Windows virtuális gép áthelyezése egy másik Azure-előfizetésbe vagy erőforráscsoportba az Erőforrás-kezelő telepítési modelljében.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c3f5541405d1fd983bbf988b99d2b4e10d8908c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919566"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865663"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Windows rendszerű virtuális gép áthelyezése más Azure-előfizetésbe vagy erőforráscsoportba
 Ez a cikk bemutatja, hogyan helyezhet át egy Windows virtuális gépet (VM) erőforráscsoportok vagy előfizetések között. Az előfizetések közötti váltás akkor lehet hasznos, ha eredetileg egy virtuális gép egy személyes előfizetés, és most szeretné áthelyezni a vállalat előfizetését, hogy folytassa a munkát. Nem kell elindítani a virtuális gép áthelyezése érdekében, és továbbra is fut az áthelyezés során.

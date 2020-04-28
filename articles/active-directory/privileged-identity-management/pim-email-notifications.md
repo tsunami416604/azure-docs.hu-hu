@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/05/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72756387"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866419"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail értesítések a PIM-ben
 
@@ -76,6 +76,18 @@ Az e-mail négy csempét tartalmaz:
 | **Pim-en kívüli szerepkör-hozzárendelések** | Azon alkalmak száma, amikor a felhasználók állandó szerepkört kapnak a kiemelt identitáskezelésen kívül (az Azure AD-n belül). |
 
 A **felső szerepkörök áttekintése** szakasz felsorolja az első öt szerepkör a bérlőben az egyes szerepkörök állandó és jogosult rendszergazdák teljes száma alapján. A **Művelet eleévével** hivatkozás megnyitja a [PIM varázslót,](pim-security-wizard.md) ahol az állandó rendszergazdákat kötegekben jogosult rendszergazdákká alakíthatja.
+
+## <a name="email-timing-for-activation-approvals"></a>Az aktiválás jóváhagyásának e-mailes időzítése
+
+Amikor a felhasználók aktiválják a szerepkörüket, és a szerepkör-beállítás jóváhagyást igényel, a jóváhagyók minden jóváhagyáshoz három e-mailt kapnak:
+
+- A felhasználó aktiválási kérelmének jóváhagyására vagy elutasítására irányuló kérelem (amelyet a kérelem-jóváhagyási motor küldött)
+- A felhasználó kérelmét jóváhagyták (a kérelem-jóváhagyási motor küldte)
+- A felhasználó szerepköre aktiválva van (a kiemelt identitáskezelés küldi)
+
+A kérelem-jóváhagyási motor által küldött első két e-mail késhet. Jelenleg az e-mailek 90% -a 3-10 percet vesz igénybe, de az 1% -os ügyfelek számára sokkal hosszabb, legfeljebb tizenöt perc lehet.
+
+Ha egy jóváhagyási kérelmet az első e-mail elküldése előtt jóváhagynak az Azure Portalon, az első e-mail már nem aktiválódik, és más jóváhagyók nem kap értesítést e-mailben a jóváhagyási kérelemről. Úgy tűnhet, mintha nem kapnának e-mailt, de ez a várt viselkedés.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mailek az Azure-erőforrás-szerepkörökhöz
 

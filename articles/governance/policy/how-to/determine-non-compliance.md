@@ -1,51 +1,51 @@
 ---
 title: A nemmegfelelőség okainak meghatározása
-description: Ha egy erőforrás nem megfelelő, számos oka lehet. Ismerje meg, hogy mi okozta a meg nem felelést.
+description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "79264634"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182582"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
-Ha egy Azure-erőforrás úgy határozott, hogy nem felel meg egy szabályzati szabálynak, hasznos tudni, hogy a szabály melyik része az erőforrás nem felel meg. Azt is hasznos tudni, hogy milyen változás módosította a korábban megfelelő erőforrást, hogy nem megfelelő legyen. Ezeket az információkat kétféleképpen találjuk meg:
+Ha egy Azure-erőforrás úgy van meghatározva, hogy nem felel meg egy házirend-szabálynak, érdemes megismerni, hogy az erőforrás melyik része nem felel meg a szabálynak. Azt is érdemes megismerni, hogy milyen változás lett módosítva egy korábban megfelelő erőforrásnak, hogy az nem megfelelő legyen. Ezt az információt kétféleképpen lehet megkeresni:
 
 > [!div class="checklist"]
-> - [A megfelelőség részletei](#compliance-details)
-> - [Módosítási előzmények (előzetes verzió)](#change-history)
+> - [Megfelelőség részletei](#compliance-details)
+> - [Változási előzmények (előzetes verzió)](#change-history)
 
-## <a name="compliance-details"></a>A megfelelőség részletei
+## <a name="compliance-details"></a>Megfelelőség részletei
 
-Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi részletei a **Szabályzat megfelelősége** lapon érhetők el. A megfelelőségi részletek ablaktábla a következő információkat tartalmazza:
+Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi adatai a **szabályzat megfelelőségi** lapján érhetők el. A megfelelőség részleteit tartalmazó ablaktábla a következő információkat tartalmazza:
 
-- Erőforrás adatai, például név, típus, hely és erőforrásazonosító
-- Az aktuális házirend-hozzárendelés utolsó kiértékelésének megfelelőségi állapota és időbélyege
-- Az erőforrás meg nem felelése _okainak_ listája
+- Erőforrás részletei, például név, típus, hely és erőforrás-azonosító
+- Az aktuális szabályzat-hozzárendelés utolsó kiértékelésének megfelelőségi állapota és időbélyege
+- Az erőforrás nem megfelelőségi _okainak_ listája
 
 > [!IMPORTANT]
-> Mivel egy nem _megfelelő_ erőforrás megfelelőségi részletei az adott erőforrás tulajdonságainak aktuális értékét mutatják, a felhasználónak **olvasási** művelettel kell rendelkeznie az erőforrás **típusához.** Ha például a _nem megfelelő_ erőforrás **microsoft.compute/virtualMachines,** akkor a felhasználónak rendelkeznie kell a **Microsoft.Compute/virtualMachines/read** művelettel. Ha a felhasználó nem rendelkezik a szükséges művelettel, egy hozzáférési hiba jelenik meg.
+> Mivel a _nem megfelelő_ erőforrások megfelelőségi adatai az adott erőforrás tulajdonságainak aktuális értékét jelenítik meg, a felhasználónak **olvasási** művelettel kell rendelkeznie az erőforrás **típusához** . Ha például a _nem megfelelő_ erőforrás a **Microsoft. számítás/virtualMachines** , akkor a felhasználónak rendelkeznie kell a **Microsoft. számítási/virtualMachines/olvasási** művelettel. Ha a felhasználó nem rendelkezik a szükséges művelettel, a rendszer hozzáférési hibaüzenetet jelenít meg.
 
-A megfelelőségi részletek megtekintéséhez kövesse az alábbi lépéseket:
+A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
 
-1. Az **Áttekintés** vagy **a Megfelelőség** lapon válasszon ki egy nem megfelelő **megfelelőségi állapotú** _szabályzatot._
+1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot olyan **megfelelőségi állapotban** , amely _nem megfelelő_.
 
-1. A **Házirend-megfelelőség** lap **Erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki egy erőforrás három pontot egy _nem megfelelő_ **megfelelőségi állapotban.** Ezután válassza **a Megfelelőségi részletek megtekintése lehetőséget.**
+1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki az erőforrás három pontját egy olyan **megfelelőségi állapotban** , amely _nem megfelelő_. Ezután válassza a **megfelelőségi adatok megtekintése**lehetőséget.
 
-   ![Megfelelőségi részletek megtekintése beállítás](../media/determine-non-compliance/view-compliance-details.png)
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Megfelelőségi részletek megtekintése lehetőség" border="false":::
 
-1. A **Megfelelőség részletei** ablaktábla az erőforrás legutóbbi kiértékelésétől az aktuális házirend-hozzárendelésig származó információkat jeleníti meg. Ebben a példában a **Microsoft.Sql/servers/version** mező _12.0,_ míg a házirend-definíció _14.0-ra_várt . Ha az erőforrás több okból sem megfelelő, mindegyik ezen az ablaktáblán jelenik meg.
+1. A **megfelelőség részletei** ablaktábla az erőforrás legutóbbi kiértékelésével kapcsolatos információkat jeleníti meg az aktuális szabályzat-hozzárendeléshez. Ebben a példában a **Microsoft. SQL/Servers/Version** mező értéke _12,0_ , míg a rendszer a _14,0_-es szabályzat-definíciót várta. Ha az erőforrás több okból nem megfelelő, az egyes elemek a panelen jelennek meg.
 
-   ![A megfelelőség részleteinek ablaktáblája és a meg nem felelés okai](../media/determine-non-compliance/compliance-details-pane.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Megfelelőség részletei ablaktábla és a meg nem felelés okai" border="false":::
 
-   Egy **auditIfNotExists** vagy **deployIfNotExists** házirend-definíció esetén a részletek tartalmazzák a **details.type** tulajdonságot és a választható tulajdonságokat. A lista megtekintéséhez [lásd: auditIfNotExists tulajdonságok](../concepts/effects.md#auditifnotexists-properties) és [deployIfNotExists tulajdonságokat.](../concepts/effects.md#deployifnotexists-properties) **Az utolsó kiértékelt erőforrás** a definíció **részletek** szakaszából származó kapcsolódó erőforrás.
+   **AuditIfNotExists** vagy **deployIfNotExists** házirend-definíció esetén a részletek között szerepel a **részletek. Type** tulajdonság és a nem kötelező tulajdonságok. A listában tekintse meg a [auditIfNotExists tulajdonságai](../concepts/effects.md#auditifnotexists-properties) és a [deployIfNotExists tulajdonságai](../concepts/effects.md#deployifnotexists-properties)című témakört. Az **utolsó kiértékelt erőforrás** a definíció **részletek** szakaszában található kapcsolódó erőforrás.
 
-   Példa részleges **deployIfNotExists** definícióra:
+   Példa részleges **deployIfNotExists** -definícióra:
 
    ```json
    {
@@ -70,68 +70,68 @@ A megfelelőségi részletek megtekintéséhez kövesse az alábbi lépéseket:
    }
    ```
 
-   ![Megfelelőségi részletek ablaktábla - *ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Megfelelőség részletei panel-* ifNotExists" border="false":::
 
 > [!NOTE]
-> Az adatok védelme _érdekében,_ ha egy tulajdonságérték titkos, az aktuális érték csillagokat jelenít meg.
+> Az adatvédelemhez, ha egy tulajdonság értéke _titkos_ , a jelenlegi érték csillagokat jelenít meg.
 
-Ezek a részletek azt magyarázzák, hogy egy erőforrás miért nem megfelelő, de nem jelenik meg, ha a módosítás történt az erőforráson, amely miatt nem megfelelővé vált. Erről lásd alább [a Módosítási előzmények (Előzetes verzió)](#change-history) című témakört.
+Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, de ne jelenjen meg, ha az erőforrás változása miatt nem megfelelővé vált. Ebben az esetben tekintse meg az alábbi [változások előzményeit (előzetes verzió)](#change-history) .
 
-### <a name="compliance-reasons"></a>Megfelelési okok
+### <a name="compliance-reasons"></a>Megfelelőségi okok
 
-A következő mátrix a házirend-definícióban minden lehetséges _okot_ a felelős [feltételhez](../concepts/definition-structure.md#conditions) rendel:
+A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős [feltételre](../concepts/definition-structure.md#conditions) :
 
 |Ok | Állapot |
 |-|-|
-|Az aktuális értéknek kulcsként kell tartalmaznia a célértéket. |containsKey vagy **notContainsKey** |
-|Az aktuális értéknek tartalmaznia kell a célértéket. |tartalmaz vagy **nemtartalmaz** |
-|Az aktuális értéknek egyenlőnek kell lennie a célértékkel. |egyenlő vagy **nemEgyenlő** |
-|Az aktuális értéknek kisebbnek kell lennie a célértéknél. |kevesebb vagy **nem** nagyobbOrEquals |
-|Az aktuális értéknek nagyobbnak vagy egyenlőnek kell lennie a célértékkel. |greaterOrEquals vagy **nem** kevesebb |
-|Az aktuális értéknek nagyobbnak kell lennie a célértéknél. |nagyobb vagy **nem** kevesebbOrEquals |
-|Az aktuális értéknek kisebbnek vagy egyenlőnek kell lennie a célértékkel. |lessOrEquals vagy **nem** nagyobb |
-|Az aktuális értéknek léteznie kell. |Létezik |
-|Az aktuális értéknek a célértékben kell lennie. |vagy **nemIn** |
-|Az aktuális értéknek hasonlónak kell lennie a célértékhez. |tetszik vagy **nemTetszik** |
-|Az aktuális értéknek meg kell egyeznie a kis- és nagybetűk megkülönböztetésével. |egyezés vagy **nemMatch** |
-|Az aktuális értéknek meg kell egyeznie a kis- és nagybetűk kel. |matchÉrzéketlenül vagy **not** nemMatchInsensitively |
-|Az aktuális érték nem tartalmazhatja a célértéket kulcsként. |notContainsKey vagy **nem** tartalmazzaKey|
-|Az aktuális érték nem tartalmazhatja a célértéket. |notTartalmaz vagy **nem** tartalmaz |
-|Az aktuális érték nem lehet egyenlő a célértékkel. |notEquals vagy **nem** egyenlő |
-|Az aktuális érték nem létezhet. |**nem** létezik  |
-|Az aktuális érték nem lehet a célértékben. |notIn vagy **nem** |
-|Az aktuális érték nem lehet olyan, mint a célérték. |notLike vagy **nem tetszik** |
-|Az aktuális érték nem egyezheti meg a kis- és nagybetűk megkülönböztetését a célértékkel. |notMatch vagy **nem** egyezik |
-|Az aktuális érték nem egyezheti meg a kis- és nagybetűk megkülönböztetését a célértékkel. |notMatchÉrzéketlenül vagy **nem** egyezésÉrzéketlenül |
-|Nincs kapcsolódó erőforrások megfelelnek a hatás részleteit a szabályzat definíciójában. |Az **akkor.details.type** nyelven definiált típusú erőforrás, amely a házirendszabály **ha** részében definiált erőforráshoz kapcsolódik. |
+|A jelenlegi értéknek a célként megadott értéket kell tartalmaznia kulcsként. |containsKey vagy **nem** notContainsKey |
+|A jelenlegi értéknek tartalmaznia kell a célérték értékét. |notContains tartalmaz vagy **nem** |
+|A jelenlegi értéknek meg kell egyeznie a célként megadott értékkel. |egyenlő vagy **nem** notEquals |
+|A jelenlegi értéknek a célként megadott értéknél kisebbnek kell lennie. |kevesebb vagy **nem** greaterOrEquals |
+|A jelenlegi értéknek nagyobbnak vagy egyenlőnek kell lennie a célként megadott értékkel. |greaterOrEquals vagy **nem** kevesebb |
+|A jelenlegi értéknek nagyobbnak kell lennie a célként megadott értéknél. |nagyobb vagy **nem** lessOrEquals |
+|A jelenlegi érték nem lehet kisebb a célként megadott értéknél. |lessOrEquals vagy **nem** nagyobb |
+|A jelenlegi értéknek léteznie kell. |létezik |
+|A jelenlegi értéknek a célként megadott értéknek kell lennie. |vagy **nem** notIn |
+|A jelenlegi értéknek a célként megadott értéknek kell lennie. |hasonló vagy **nem** notLike |
+|A jelenlegi értéknek a kis-és nagybetűk megkülönböztetésével egyezőnek kell lennie. |egyezés vagy **nem** notMatch |
+|A jelenlegi értéknek a kis-és nagybetűk megkülönböztetésével egyeznie kell a célérték értékével. |matchInsensitively vagy **nem** notMatchInsensitively |
+|A jelenlegi érték nem tartalmazhatja a célként megadott értéket kulcsként. |notContainsKey vagy **nem** containsKey|
+|A jelenlegi érték nem tartalmazhatja a célérték értékét. |notContains vagy **nem** tartalmaz |
+|A jelenlegi érték nem lehet egyenlő a célként megadott értékkel. |notEquals vagy **nem** egyenlő |
+|A jelenlegi érték nem lehet létező. |**nem** létezik  |
+|A jelenlegi érték nem lehet a célként megadott értékben. |notIn vagy **nem** |
+|A jelenlegi érték nem lehet a célként megadott értékhez hasonló. |notLike vagy **nem** hasonló |
+|A jelenlegi érték nem lehet kis-és nagybetűk megkülönböztetése a célként megadott értékkel. |notMatch vagy **nem** egyezik |
+|A jelenlegi érték nem lehet kis-és nagybetűk megkülönböztetése a célként megadott értékkel. |notMatchInsensitively vagy **nem** matchInsensitively |
+|Egyetlen kapcsolódó erőforrás sem felel meg a szabályzat-definícióban szereplő hatás részleteinek. |A **. details. Type** és a Policy szabály **IF** részében definiált erőforráshoz kapcsolódó erőforrás nem létezik. |
 
-## <a name="compliance-details-for-guest-configuration"></a>A vendégkonfiguráció megfelelőségi adatai
+## <a name="compliance-details-for-guest-configuration"></a>A vendég konfigurációjának megfelelőségi adatai
 
-A _vendégkonfiguráció_ kategóriában az _auditIfNotExists_ házirendek esetében több beállítás is lehet a virtuális gépen belül, és meg kell tekintenie a beállítási részleteket. Ha például a jelszóházirendek listáját naplózza, és csak egyikük rendelkezik _Nem megfelelő_állapottal, tudnia kell, hogy mely jelszóházirendek nem felelnek meg a követelményeknek, és miért.
+A _vendég konfiguráció_ kategóriájában a _auditIfNotExists_ házirendek esetében több beállítás is KIÉRTÉKELhető a virtuális gépen, és meg kell tekintenie egy beállítás részleteit. Ha például a rendszer naplózza a jelszóházirend listáját, és csak az egyikük állapota _nem megfelelő_, akkor tudnia kell, hogy mely konkrét jelszóházirend-szabályzatok nem felelnek meg az előírásoknak, és miért.
 
-Előfordulhat, hogy nem rendelkezik hozzáféréssel közvetlenül a virtuális gépbe való bejelentkezéshez, de jelentést kell jelentenie arról, hogy miért _nem megfelelő_a virtuális gép.
+Előfordulhat, hogy nem fér hozzá közvetlenül a virtuális géphez, de jelentenie kell, hogy a virtuális gép miért _nem megfelelő_.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Kezdje a fenti szakaszban a szabályzatmegfelelőségi részletek megtekintéséhez szükséges lépések végrehajtásával.
+A szabályzat megfelelőségi részleteinek megtekintéséhez kövesse a fenti szakasz lépéseit.
 
-A **Megfelelőség részletei** ablaktábla nézetben kattintson az **Utolsó értékelt erőforrás**hivatkozásra.
+A **megfelelőség részletei** ablaktáblán kattintson az **utolsó kiértékelt erőforrás**hivatkozásra.
 
-   ![Az auditIfNotExists definíció részleteinek megtekintése](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="AuditIfNotExists-definíció részleteinek megtekintése" border="false":::
 
-A **Vendég-hozzárendelés** lap megjeleníti az összes rendelkezésre álló megfelelőségi részletet. A nézet minden sora a számítógépen elvégzett kiértékelést jelöli. Az **Ok** oszlopban megjelenik egy kifejezés, amely leírja, hogy miért _nem megfelelő_ a Vendég-hozzárendelés. Ha például jelszóházirendeket naplóz, az **Ok** oszlop szöveget jelenít meg, beleértve az egyes beállítások aktuális értékét is.
+A **vendég-hozzárendelés** lap megjeleníti az összes elérhető megfelelőségi részletet. A nézet minden sora a gépen belül végrehajtott értékelést jelképezi. Az **OK** oszlopban egy olyan kifejezés látható, amely leírja, hogy a vendég-hozzárendelés miért _nem megfelelő_ . Ha például a jelszóházirend naplózása, az **OK** oszlopban az egyes beállítások aktuális értéke is megjelenik.
 
-![Megfelelőségi részletek megtekintése](../media/determine-non-compliance/guestconfig-compliance-details.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Megfelelőségi részletek megtekintése" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A megfelelőségi részleteket az Azure PowerShellből is megtekintheti. Először győződjön meg arról, hogy a Vendég konfiguráció modul telepítve van.
+Azure PowerShell a megfelelőségi adatokat is megtekintheti. Először győződjön meg arról, hogy telepítve van a vendég konfigurációs modul.
 
 ```azurepowershell-interactive
 Install-Module Az.GuestConfiguration
 ```
 
-A virtuális gépek összes vendég-hozzárendelésének aktuális állapotát a következő paranccsal tekintheti meg:
+A virtuális gép összes vendég hozzárendelésének aktuális állapotát a következő parancs használatával tekintheti meg:
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -144,7 +144,7 @@ Audit that an application is installed inside Windows VMs                 {[Inst
 Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
 ```
 
-Ha csak az _ok_ kifejezés, amely leírja, hogy miért a virtuális gép _nem megfelelő,_ csak a Reason child tulajdonság.
+Ha csak az _OK_ kifejezést szeretné megtekinteni, amely leírja, hogy a virtuális gép miért _nem megfelelő_, csak a gyermek tulajdonságot küldje vissza.
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
@@ -154,10 +154,10 @@ Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname
 The following applications are not installed: '<name>'.
 ```
 
-A vendég-hozzárendelések megfelelőségi előzményeit is kiadhatja a gép hatókörében. A kimenet ebből a parancsból tartalmazza a virtuális gép minden egyes jelentés részleteit.
+A számítógép hatókörében a vendég-hozzárendelések megfelelőségi előzményeit is kiállíthatja. A parancs kimenete tartalmazza a virtuális gép jelentéseinek részleteit.
 
 > [!NOTE]
-> A kimenet nagy mennyiségű adatot adhat vissza. Javasoljuk, hogy a kimenetet egy változóban tárolja.
+> A kimenet nagy mennyiségű adatokat adhat vissza. Azt javasoljuk, hogy a kimenetet egy változóban tárolja.
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -172,7 +172,7 @@ PolicyDisplayName                                                         Compli
 <truncated>
 ```
 
-A nézet egyszerűsítéséhez használja a **ShowChanged paramétert.** A parancs kimenete csak azon jelentéseket tartalmazza, amelyek a megfelelőségi állapot megváltozását követték.
+A nézet egyszerűsítéséhez használja a **ShowChanged** paramétert. A parancs kimenete csak azokat a jelentéseket tartalmazza, amelyek követték a megfelelőségi állapot változását.
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
@@ -188,34 +188,34 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>Módosítási előzmények (előzetes verzió)
+## <a name="change-history-preview"></a><a name="change-history"/>Változási előzmények (előzetes verzió)
 
-Az új **nyilvános előzetes verzió**részeként a módosítási előzmények utolsó 14 napja elérhető minden olyan Azure-erőforráshoz, amely támogatja a teljes [módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A módosítási előzmények részletesen ismertetik, hogy mikor észleltek módosítást, és _vizuális diff-et_ az egyes változásokhoz. A változásészlelés az Erőforrás-kezelő tulajdonságainak hozzáadásakor, eltávolításakor vagy módosításakor aktiválódik.
+Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
 
-1. Az **Áttekintés** vagy a **Megfelelőség** lapon válasszon ki egy szabályzatot bármely **megfelelőségi állapotban.**
+1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot bármilyen **megfelelőségi állapotban**.
 
-1. A **Házirend-megfelelőség** lap **Erőforrás-megfelelőség** lapján válasszon ki egy erőforrást.
+1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján válasszon ki egy erőforrást.
 
-1. Válassza a **Módosítási előzmények (előnézet)** lapot az **Erőforrás-megfelelőség** lapon. Megjelenik az észlelt módosítások listája, ha vannak ilyenek.
+1. Válassza az **erőforrás-megfelelőség** lapon az **Előzmények módosítása (előzetes verzió)** lapot. Megjelenik az észlelt módosítások listája, ha vannak ilyenek.
 
-   ![Az Azure Policy Change History lap az Erőforrás-megfelelőség lapon](../media/determine-non-compliance/change-history-tab.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Az erőforrás-megfelelőség lap Azure Policy módosítási előzmények lapja" border="false":::
 
-1. Válasszon egyet az észlelt módosítások közül. Az erőforrás _vizuális diff-je_ a **Módosítási előzmények** lapon jelenik meg.
+1. Válassza ki az észlelt módosítások egyikét. Az erőforráshoz tartozó _vizualizációs diff_ a **változási előzmények** lapon jelenik meg.
 
-   ![Az Azure Policy Change History Vizuális diff a Változáselőzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Azure Policy változási előzmények Visual diff a változási előzmények lapon" border="false":::
 
-Az erőforrás változásainak azonosításában a _vizuális diff_ aides. Előfordulhat, hogy az észlelt módosítások nem kapcsolódnak az erőforrás aktuális megfelelőségi állapotához.
+A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításához. Előfordulhat, hogy az észlelt változások nem kapcsolódnak az erőforrás aktuális megfelelőségi állapotához.
 
-A változási előzmények adatait az [Azure Resource Graph](../../resource-graph/overview.md)szolgáltatja. Ha ezt az információt az Azure Portalon kívül szeretné lekérdezni, [olvassa el az Erőforrás-módosítások beszereznie című témakört.](../../resource-graph/how-to/get-resource-changes.md)
+Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások beolvasása](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a példákat az [Azure Policy-mintákban.](../samples/index.md)
+- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](programmatically-create.md)
-- További információ a [megfelelőségi adatok beszedéséről.](get-compliance-data.md)
-- További információ a [nem megfelelő erőforrások kiújulásáról.](remediate-resources.md)
-- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](get-compliance-data.md).
+- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

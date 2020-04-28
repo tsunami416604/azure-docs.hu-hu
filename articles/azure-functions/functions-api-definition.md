@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227417"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866722"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Az OpenAPI 2.0 metaadat-támogatása az Azure Functionsben (előzetes verzió)
 Az OpenAPI 2.0 (korábban Swagger) metaadat-támogatása az Azure Functionsben egy előzetes verziójú szolgáltatás, amely segítségével OpenAPI 2.0-definíciót írhat egy függvényalkalmazáson belül. Ezután a függvényalkalmazás segítségével üzemeltetheti a fájlt.
@@ -40,7 +40,7 @@ A részletes útmutatást az [első lépések oktatóanyagcímű témakörben ta
 
 ### <a name="available-templates"></a><a name="templates"></a>Elérhető sablonok
 
-|Név| Leírás |
+|Name (Név)| Leírás |
 |:-----|:-----|
 |Létrehozott definíció|OpenAPI-definíció, amely a függvény meglévő metaadataiból kikövetkeztethető maximális mennyiségű információt tartalmazza.|
 
@@ -60,7 +60,7 @@ Az alábbi táblázat az Azure Portal beállításait és a megfelelő adatokat 
 > [!NOTE]
 > Az x-ms-summary bővítmény megjelenítendő nevet biztosít a Logic Apps, a PowerApps és a Flow alkalmazásban.
 >
-> További információ: [A Swagger-definíció testreszabása a PowerApps alkalmazáshoz](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)című témakörben olvashat.
+> További információ: [A Swagger-definíció testreszabása a PowerApps alkalmazáshoz](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)című témakörben olvashat.
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>API-definíció beállítása CI/CD használatával
 

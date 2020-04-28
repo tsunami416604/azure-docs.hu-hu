@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047982"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866672"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitási problémáinak elhárítása
 
@@ -83,7 +83,7 @@ A probléma azonosításához kövesse az alábbi utasításokat:
     **Tipp** Ha nem tudja, hogyan kell használni a Hegedűs, ellenőrizze a lehetőséget :**"Szeretném összegyűjteni a hálózati forgalmat, és elemezni, hogy a web hibakereső**" alján.
 
 2. Ellenőrizze és elemezze a munkamenet naplókat, hogy megtudja, hogy az ügyfél által biztosított cookie-k rendelkeznek-e az ARRAffinity adataival. Ha nem találja az ARRAffinity adatait, például az "**ARRAffinity=** *ARRAffinityValue*" a cookie-készletben, az azt jelenti, hogy az ügyfél nem válaszol az ARRA cookie-val, amelyet az Application Gateway biztosít.
-    Példa:
+    Például:
 
     ![hibaelhárítás-session-affinitás-problémák-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -97,7 +97,7 @@ A probléma oka az, hogy az Internet Explorer és más böngészők nem tárolj�
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma kijavításához az Application Gatewayhez FQDN-nel férjen hozzá. Például használja [http://website.com](https://website.com/) [http://appgw.website.com](http://appgw.website.com/) a vagyat.
+A probléma kijavításához az Application Gatewayhez FQDN-nel férjen hozzá. Például használja [http://website.com](https://website.com/) [http://appgw.website.com](http://website.com/) a vagyat.
 
 ## <a name="additional-logs-to-troubleshoot"></a>További hibák elhárítása
 

@@ -1,109 +1,109 @@
 ---
-title: A részhalmazban tartott metrikák kiegyensúlyozása
-description: Az elhelyezési korlátok hatása a kiegyensúlyozásra és annak kezelésére
+title: Alfürtözött mérőszámok kiegyensúlyozása
+description: Az elhelyezési megkötések hatása a kiegyensúlyozásra és a kezelésének módjára
 author: nipavlo
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
-ms.openlocfilehash: 23782a86d31251cb1a3474e0395df716a2e832df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430642"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183116"
 ---
-# <a name="balancing-of-subclustered-metrics"></a>A részhalmazban tartott metrikák kiegyensúlyozása
+# <a name="balancing-of-subclustered-metrics"></a>Alfürtözött mérőszámok kiegyensúlyozása
 
 ## <a name="what-is-subclustering"></a>Mi az alfürtözés
 
-Az alfürtözés akkor történik, ha a különböző elhelyezési korlátokkal rendelkező szolgáltatások közös metrikával rendelkeznek, és mindkettő terhelést jelent hozzá. Ha a szolgáltatások által jelentett terhelés jelentősen eltér, a csomópontok teljes terhelése nagy szórással fog rendelkezni, és úgy tűnik, hogy a fürt kiegyensúlyozatlan, még akkor is, ha a lehető legjobb egyensúlyban van.
+Az alfürtözés akkor történik meg, ha a különböző elhelyezési korlátozásokkal rendelkező szolgáltatások közös metrikával rendelkeznek, és a jelentés betöltésére is sor kerül. Ha a szolgáltatások által jelentett terhelés jelentősen eltér, a csomópontok teljes terhelése nagy szórással fog rendelkezni, és úgy tűnik, mintha a fürt kiegyensúlyozatlan, még akkor is, ha a lehető legjobb egyenleggel rendelkezik.
 
-## <a name="how-subclustering-affects-load-balancing"></a>Az alfürtözés hatása a terheléselosztásra?
+## <a name="how-subclustering-affects-load-balancing"></a>Hogyan befolyásolja a fürtözés a terheléselosztást
 
-Ha a szolgáltatások által jelentett terhelés különböző csomópontokon jelentősen eltér, úgy tűnhet, hogy nagy egyensúlyhiány van, ahol nincs. Továbbá, ha az alfürtözés által okozott hamis kiegyensúlyozatlanság nagyobb, mint a tényleges egyensúlyhiány, akkor képes összekeverni az Erőforrás-kezelő kiegyensúlyozó algoritmust, és a fürt optimálistól elmaradó egyensúlyának létrehozásához.
+Ha a szolgáltatások által a különböző csomópontokon jelentett terhelés jelentősen eltér, akkor előfordulhat, hogy egy nagy egyensúlyhiány van, ahol nincs. Továbbá, ha az alfürtözés okozta hamis egyensúlyhiány nagyobb, mint a tényleges egyensúlyhiány, akkor a erőforrás-kezelő kiegyensúlyozó algoritmusa is megzavarható, és a fürtben a legoptimálisabb egyensúly hozható létre.
 
-Tegyük fel például, hogy négy szolgáltatásunk van, és mindegyik terhelést jelent a Metric1 metrika esetében:
+Tegyük fel például, hogy négy szolgáltatásunk van, és mindegyiknek van egy terhelése a metrikus Metric1:
 
-* "NodeType==Type1" elhelyezési megkötéssel rendelkezik, 10-es terhelést jelent
-* B szolgáltatás – elhelyezési megkötése "NodeType==Type1", 10-es terhelést jelent
-* Service C – elhelyezési megkötéssel rendelkezik: "NodeType==Type2", 100-as terhelést jelent
-* D szolgáltatás – elhelyezési megkötése "NodeType==Type2", 100-as terhelést jelent
-* És négy csomónk van. Kettő közülük NodeType beállítása "Type1", a másik kettő pedig "Type2"
+* Az A szolgáltatás – a "NodeType = =" előtér "elhelyezési korlátozással rendelkezik, amely 10-es terhelést jelez
+* B szolgáltatás – elhelyezési korlátozás "NodeType = = frontend", a 10. terhelés jelentése
+* Szolgáltatás C – a "NodeType = = háttér" elhelyezési korlátozással rendelkezik, amely a 100-es terhelést jelenti.
+* A D szolgáltatás – "NodeType = = háttér" elhelyezési korlátozással rendelkezik, és 100-es terhelést jelez.
+* Négy csomóponttal rendelkezik. Kettő közülük a "frontend" NodeType van beállítva, a másik kettő pedig "háttér".
 
-És a következő elhelyezést látjuk:
+A következő elhelyezéssel:
 
 <center>
 
-![Például részhalmazos elhelyezési példa][Image1]
+![Alfürtözött elhelyezési példa][Image1]
 </center>
 
-A fürt tűnhet kiegyensúlyozatlan, van egy nagy terhelés csomópontok 3 és 4, de ez az elhelyezés megteremti a lehető legjobb egyensúlyt ebben a helyzetben.
+A fürt kiegyensúlyozatlan állapotba kerülhet, nagy terhelést biztosítunk a 3. és 4. csomóponton, de ez az elhelyezés a lehető legjobb egyensúlyt hozza létre ebben a helyzetben.
 
-Az Erőforrás-kezelő képes felismerni az alfürtözési helyzeteket, és szinte minden esetben képes az adott helyzet optimális egyensúlyára.
+A Resource Manager képes felismerni az alfürtözési helyzeteket, és szinte minden esetben képes az optimális egyensúlyt létrehozni a megadott helyzetben.
 
-Egyes kivételes helyzetekben, amikor az Erőforrás-kezelő nem képes optimálisan kiegyensúlyozni egy alfürtben lévő metrikát, továbbra is észleli az alfürtözést, és állapotjelentést hoz létre, amely a probléma megoldásához nyújt tanácsot.
+Bizonyos kivételes helyzetekben, amikor a Resource Manager nem tud optimálisan egyensúlyt kiosztani egy alfürtözött metrikával, az továbbra is felismeri az alfürtözést, és állapotjelentést küld a probléma megoldásához.
 
-## <a name="types-of-subclustering-and-how-they-are-handled"></a>Az alhalmazok típusai és azok kezelésének megócsulása
+## <a name="types-of-subclustering-and-how-they-are-handled"></a>Alfürtek típusai és azok kezelése
 
-Az alhalmazhelyzetek három különböző kategóriába sorolhatók. Egy adott alfürtözési helyzet kategóriája határozza meg, hogy az Erőforrás-kezelő hogyan kezelje azt.
+Az alfürtözési helyzetek három különböző kategóriába sorolhatók. Egy adott alfürtözési helyzet kategóriája határozza meg, hogy a Resource Manager hogyan fogja kezelni azt.
 
-### <a name="first-category--flat-subclustering-with-disjoint-node-groups"></a>Első kategória – lapos alklaszter különálló csomópontcsoportokkal
+### <a name="first-category--flat-subclustering-with-disjoint-node-groups"></a>Első kategória – lapos alfürtözés a különálló csomópont-csoportokkal
 
-Ez a kategória rendelkezik az alfürtözés legegyszerűbb formájával, ahol a csomópontok különböző csoportokra oszthatók, és minden szolgáltatás csak az adott csoportok egyikének csomópontjaira helyezhető el. Minden csomópont csak egy és egy csoporthoz tartozik. A fent leírt helyzet ebbe a kategóriába tartozik, akárcsak a legtöbb alhalmazosítási helyzet. 
+Ez a kategória a legegyszerűbben olyan alfürtözést tartalmaz, ahol a csomópontok különböző csoportokba különíthetők el, és az egyes szolgáltatások csak az egyik csoport csomópontjaira helyezhetők el. Mindegyik csomópont csak egy csoporthoz és egy csoporthoz tartozik. A fentiekben ismertetett helyzetek ebben a kategóriában vannak, mint a legtöbb alfürtözési szituációban. 
 
-Ebben a kategóriában az erőforrás-kezelő képes az optimális egyensúlyt, és nincs szükség további beavatkozásra.
+Az ebben a kategóriában lévő helyzetekben a Resource Manager képes az optimális egyensúly kialakítására, és nincs szükség további beavatkozásra.
 
-### <a name="second-category--subclustering-with-hierarchical-node-groups"></a>Második kategória – hierarchikus csomópontcsoportokkal rendelkező alfürtözés
+### <a name="second-category--subclustering-with-hierarchical-node-groups"></a>Második kategória – alfürtözés hierarchikus csomópont-csoportokkal
 
-Ez a helyzet akkor fordul elő, ha egy szolgáltatáshoz engedélyezett csomópontok csoportja egy másik szolgáltatásszámára engedélyezett csomópontcsoport egy részhalmaza. A leggyakoribb példa erre a helyzetre, amikor néhány szolgáltatás rendelkezik elhelyezési megkötés definiálva, és egy másik szolgáltatás nem rendelkezik elhelyezési megkötéssel, és bármely csomópontra helyezhető.
+Ez akkor fordulhat elő, ha az egyik szolgáltatás számára engedélyezett csomópontok csoportja egy másik szolgáltatás számára engedélyezett csomópontok csoportjának egy részhalmaza. Ennek a helyzetnek a leggyakoribb példája, ha egyes szolgáltatásokban van definiálva elhelyezési korlátozás, és egy másik szolgáltatás nem rendelkezik elhelyezési korlátozással, és bármely csomópontra elhelyezhető.
 
 Példa:
 
 * A szolgáltatás: nincs elhelyezési megkötés
-* B szolgáltatás: elhelyezési megkötés :"NodeType==Type1"
-* C szolgáltatás: elhelyezési megkötés :"NodeType==Type2"
+* B szolgáltatás: elhelyezési megkötés "NodeType = = frontend"
+* Szolgáltatás C: elhelyezési megkötés "NodeType = = háttér"
 
-Ez a konfiguráció egy részhalmaz-szuperset kapcsolatot hoz létre a csomópontcsoportok között a különböző szolgáltatásokhoz.
+Ez a konfiguráció egy részhalmazt hoz létre a különböző szolgáltatásokhoz tartozó csomópont-csoportok között.
 
 <center>
 
-![Részhalmazú szuperhalmazú alhalmazú alhalmazok][Image2]
+![Részhalmazt felülbíráló alfürt][Image2]
 </center>
 
-Ebben a helyzetben fennáll annak az esélye, hogy az optimálisnál rosszabb egyensúly jön.
+Ebben az esetben fennáll a valószínűsége, hogy a rendszer az optimálisnál rosszabb egyensúlyt hoz létre.
 
-Az Erőforrás-kezelő felismeri ezt a helyzetet, és egy állapotjelentést készít, amely azt tanácsolja, hogy az A szolgáltatást két szolgáltatásra ossza fel – az A1 szolgáltatásra, amely elhelyezhető a Type1 csomópontokon és az A2-es szolgáltatáson, amelyek a Type2 csomópontokon helyezhetők el. Ez visszavisz minket az első olyan helyzetbe, amely optimálisan kiegyensúlyozható.
+A Resource Manager felismeri ezt a helyzetet, és előkészíti az "A" szolgáltatást két szolgáltatásba – az A1-es szolgáltatásba, amelyek a háttér-csomópontokon helyezhetők el Ez az első kategóriába tartozó, optimálisan kiegyensúlyozott állapotra vált.
 
-### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>Harmadik kategória – csomópontkészletek közötti részleges átfedéssel rendelkező alfürtözés
+### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>Harmadik kategória – részleges átfedés a csomópont-készletek között
 
-Ez a helyzet akkor fordul elő, ha részleges átfedés van a csomópontok halmazai között, amelyekre egyes szolgáltatások elhelyezhetők.
+Ez a helyzet akkor fordul elő, ha a csomópontok csoportjai között részleges átfedés van, amelyre egyes szolgáltatások elhelyezhetők.
 
-Ha például van egy NodeColor nevű csomóponttulajdonságunk, és három csomónk van:
+Ha például van egy NodeColor nevű Node tulajdonság, és három csomóponttal rendelkezik:
 
-* 1. csomópont: NodeColor=Piros
-* 2. csomópont: NodeColor=Kék
-* 2. csomópont: NodeColor=Zöld
+* 1. csomópont: NodeColor = piros
+* 2. csomópont: NodeColor = kék
+* 2. csomópont: NodeColor = zöld
 
-És van két szolgáltatás:
+És két szolgáltatásunk van:
 
-* A szolgáltatás: elhelyezési megkötéssel: "Color==Red || Szín==Kék"
-* B szolgáltatás: elhelyezési megkötéssel: "Color==Blue || Szín==zöld"
+* A szolgáltatás: elhelyezési korlátozással "Color = = Red | | Szín = = kék "
+* B szolgáltatás: elhelyezési korlátozással "Color = = Blue | | Szín = = zöld "
 
-Emiatt az A szolgáltatás az 1- es és 2-es csomópontra, a B szolgáltatás pedig a 2- es és 3-as csomópontra helyezhető.
+Ezért az A szolgáltatás az 1. és a 2. csomóponton helyezhető el, a B szolgáltatás pedig a 2. és 3. csomóponton helyezhető el.
 
-Ebben a helyzetben fennáll annak az esélye, hogy az optimálisnál rosszabb egyensúly jön.
+Ebben az esetben fennáll a valószínűsége, hogy a rendszer az optimálisnál rosszabb egyensúlyt hoz létre.
 
-Az Erőforrás-kezelő felismeri ezt a helyzetet, és létrehoz egy állapotjelentést, amely azt tanácsolja, hogy ossza fel a szolgáltatások egy részét.
+A Resource Manager felismeri ezt a helyzetet, és létrehoz egy állapotjelentést, amely tanácsot ad a szolgáltatások felosztásához.
 
-Ebben a helyzetben az Erőforrás-kezelő nem tud javaslatot adni a szolgáltatások felosztására, mivel több felosztás is elvégezhető, és nincs mód annak becslésére, hogy milyen módon lenne az optimális a szolgáltatások felosztása.
+Ebben az esetben a Resource Manager nem tud javaslatot tenni a szolgáltatások felosztására, mivel több felosztás is végezhető, és nem lehet megbecsülni, hogy melyik módszer lenne az optimális megoldás a szolgáltatások felosztására.
 
-## <a name="configuring-subclustering"></a>Alfürtkonfigurálás konfigurálása
+## <a name="configuring-subclustering"></a>Alfürtözés konfigurálása
 
-Az Erőforrás-kezelő alfürtözéssel kapcsolatos viselkedése a következő konfigurációs paraméterek módosításával módosítható:
-* SubclusteringEnabled - paraméter határozza meg, hogy az Erőforrás-kezelő figyelembe veszi-e az alfürtözést a terheléselosztás során. Ha ez a paraméter ki van kapcsolva, az Erőforrás-kezelő figyelmen kívül hagyja az alfürtözést, és globális szinten megpróbálja elérni az optimális egyensúlyt. A paraméter alapértelmezett értéke hamis.
-* SubclusteringReportingPolicy – meghatározza, hogy az Erőforrás-kezelő hogyan bocsátki állapotjelentéseket a hierarchikus és részleges átfedési alfürtözéshez. A nulla érték azt jelenti, hogy az alfürtről szóló állapotjelentések ki vannak kapcsolva, az "1" azt jelenti, hogy az optimálistól elmaradó szubklaszteres helyzetekben figyelmeztető állapotjelentések készülnek, és a "2" érték "OK" állapotjelentéseket eredményez. A paraméter alapértelmezett értéke "1".
+A Resource Manager alfürtözéssel kapcsolatos viselkedését az alábbi konfigurációs paraméterek módosításával módosíthatja:
+* SubclusteringEnabled – a paraméter azt határozza meg, hogy a Resource Manager a terheléselosztás során figyelembe veszi-e az alfürtözést. Ha ez a paraméter ki van kapcsolva, az erőforrás-kezelő figyelmen kívül hagyja az alfürtözést, és megpróbál optimális egyensúlyt elérni globális szinten. A paraméter alapértelmezett értéke hamis.
+* SubclusteringReportingPolicy – azt határozza meg, hogy a Resource Manager hogyan fogja kibocsátani a hierarchikus és a részlegesen átfedésben lévő alfürthöz tartozó állapotjelentést. A nulla érték azt jelenti, hogy az alfürttel kapcsolatos állapot-jelentések ki vannak kapcsolva, az "1" érték azt jelenti, hogy a rendszer figyelmeztetési állapotra vonatkozó jelentéseket készít az alrendszerek optimális alfürtözési helyzetéhez, és a "2" értéke "OK" állapotú jelentéseket fog készíteni. A paraméter alapértelmezett értéke "1".
 
-ClusterManifest.xml fájl:
+ClusterManifest. XML:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ ClusterManifest.xml fájl:
         </Section>
 ```
 
-a ClusterConfig.json keresztül önálló telepítésekhez vagy template.json az Azure által üzemeltetett fürtökhöz:
+a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -133,8 +133,8 @@ a ClusterConfig.json keresztül önálló telepítésekhez vagy template.json az
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ha meg szeretné tudni, hogy a fürterőforrás-kezelő hogyan kezeli és egyensúlyozza ki a terhelést a fürtben, olvassa el a [terhelés elosztásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
-* Ha meg szeretné tudni, hogy a szolgáltatások hogyan korlátozhatók úgy, hogy csak bizonyos csomópontokon legyenek elhelyezve, [lásd: Csomóponttulajdonságok és elhelyezési korlátok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
+* Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [terhelés kiegyensúlyozásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
+* Ha szeretné megtudni, hogyan korlátozhatja a szolgáltatásait, hogy csak bizonyos csomópontokon legyenek elhelyezve, lásd: [csomópont-tulajdonságok és elhelyezési megkötések](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 
 [Image1]:./media/cluster-resource-manager-subclustering/subclustered-placement.png
 [Image2]:./media/cluster-resource-manager-subclustering/subset-superset-nodes.png

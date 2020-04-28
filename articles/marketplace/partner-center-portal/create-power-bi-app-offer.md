@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674188"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867601"
 ---
 # <a name="create-a-power-bi-app"></a>Power BI-alkalmazás létrehozása
 
@@ -55,7 +55,7 @@ Miután megadta ezt a két értéket, válassza a **Létrehozás** gombot az Aj�
 
 Az **Ajánlat áttekintése** lap az ajánlat közzétételéhez szükséges lépések (befejezett és közelgő) vizuális megjelenítését, valamint az egyes lépések befejezéséhez szükséges lépéseket jeleníti meg.
 
-Ez magában foglalja a linkeket műveletek elvégzésére ezt az ajánlatot alapján a kiválasztás. Példa:
+Ez magában foglalja a linkeket műveletek elvégzésére ezt az ajánlatot alapján a kiválasztás. Például:
 
 - Ha az ajánlat piszkozat - [Ajánlattervezet törlése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Ha az ajánlat élő - [Hagyja abba az ajánlat értékesítését](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -128,7 +128,7 @@ Szükség esetén legfeljebb két iparágat és két vertikális ágazatot vála
 
 ### <a name="legal"></a>Jogi tudnivalók
 
-#### <a name="terms-and-conditions"></a>Feltételek és kikötések
+#### <a name="terms-and-conditions"></a>használati feltételei
 
 Saját egyéni feltételek megadásához írja be a legfeljebb 10 000 karaktert a **Feltételek** mezőbe. Ha a szerződési feltételek hosszabb leírást igényelnek, adjon meg egy internetes hivatkozást arra, hogy hol találhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
 
@@ -149,7 +149,7 @@ Marketplace-adatok (például az ajánlat neve, leírása és képek) definiál�
 > [!NOTE]
 > Ajánlat részletei nem kell angol nyelven, ha az ajánlat &quot;leírása kezdődik a mondat, Ez az alkalmazás csak akkor érhető el [nem angol nyelven]. &quot; Az is&#39;, hogy hasznos linket biztosít, hogy olyan nyelven kínáljon tartalmat, amely&#39;eltér az ajánlati listán használttól.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az **Ajánlat alias** mezőjében az ajánlat létrehozásakor megadott szöveggel. A nevet később módosíthatja.
 
@@ -221,6 +221,9 @@ Adjon meg legalább egy és legfeljebb három kapcsolódó marketingdokumentumot
 ### <a name="marketplace-images"></a>Marketplace-képek
 
 Adjon meg emblémákat és képeket az ajánlatához. Minden képnek .png formátumúnak kell lennie. Az elmosódott képek elutasításra kerülnek.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Áruházi emblémák
 

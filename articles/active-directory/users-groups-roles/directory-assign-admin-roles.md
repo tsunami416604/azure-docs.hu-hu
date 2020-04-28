@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401a39d4a65c7aee67d62ed0a6ba77893a11c2d1
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101144"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181290"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -645,7 +645,7 @@ Olyan általános számlázási feladatokat hajthat végre, mint például a fiz
 | Microsoft. Directory/szervezet/alapszintű/frissítés | A Azure Active Directory szervezet alapszintű tulajdonságainak frissítése. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Commerce. Billing/allEntities/allTasks | Az Office 365-számlázás minden aspektusának kezelése. |
+| Microsoft. Commerce. Billing/allEntities/allTasks | A számlázás összes aspektusának kezelése. |
 | Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
@@ -755,7 +755,7 @@ Az Azure ad-identitásokat használó Azure AD-és Microsoft-szolgáltatások ö
 | Microsoft. Azure. informationProtection/allEntities/allTasks | Azure Information Protection összes aspektusának kezelése. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Commerce. Billing/allEntities/allTasks | Az Office 365-számlázás minden aspektusának kezelése. |
+| Microsoft. Commerce. Billing/allEntities/allTasks | A számlázás összes aspektusának kezelése. |
 | Microsoft. Intune/allEntities/allTasks | Az Intune összes aspektusának kezelése. |
 | Microsoft. Office 365. complianceManager/allEntities/allTasks | Az Office 365 megfelelőség-kezelő összes aspektusának kezelése |
 | Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Az asztali elemzések összes aspektusának kezelése. |
@@ -1048,7 +1048,7 @@ Mindent megtudhat, hogy globális rendszergazda tud-e, de nem szerkeszthet semmi
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft. Commerce. számlázás/allEntities/olvasás    | Olvassa el az Office 365 számlázásának minden aspektusát. |
+| Microsoft. Commerce. számlázás/allEntities/olvasás    | A számlázás összes aspektusának olvasása. |
 | Microsoft. Directory/Administrativeunit/Basic/READ    | A Azure Active Directory Administrativeunit alapszintű tulajdonságainak olvasása. |
 | Microsoft. Directory/Administrativeunit/tagok/olvasás    | Olvassa el a Administrativeunit. Members tulajdonságot Azure Active Directory. |
 | Microsoft. Directory/alkalmazások/alap/olvasás    | Azure Active Directory-alkalmazások alapszintű tulajdonságainak olvasása. |

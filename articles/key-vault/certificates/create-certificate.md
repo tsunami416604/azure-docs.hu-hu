@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430954"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866256"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 
@@ -80,10 +80,10 @@ A címezhető kulcs és a titkos kulcs a KV-tanúsítvány attribútumaiból kap
 ## <a name="partnered-ca-providers"></a>Partneri hitelesítésszolgáltató
 A tanúsítvány létrehozása manuálisan vagy "Saját" kiállítóval is elvégezhető. A Key Vault bizonyos kibocsátó szolgáltatókkal is együttműködik a tanúsítványok létrehozásának egyszerűsítése érdekében. A következő típusú tanúsítványok rendelhetők a kulcstartóhoz ezekkel a partnerkibocsátó szolgáltatókkal.  
 
-|Szolgáltató|Tanúsítvány típusa|  
-|--------------|----------------------|  
-|DigiCert|A Key Vault OV vagy EV SSL tanúsítványokat kínál a DigiCert-tel|
-|Globalsign|A Key Vault OV vagy EV SSL tanúsítványokat kínál a GlobalSign segítségével|
+|Szolgáltató|Tanúsítvány típusa|Konfiguráció beállítása  
+|--------------|----------------------|------------------|  
+|DigiCert|A Key Vault OV vagy EV SSL tanúsítványokat kínál a DigiCert-tel| [Integrációs útmutató](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|Globalsign|A Key Vault OV vagy EV SSL tanúsítványokat kínál a GlobalSign segítségével| [Integrációs útmutató](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  A tanúsítvány kiállítója az Azure Key Vaultban (KV) tanúsítványkiállító-erőforrásként képviselt entitás. A kv-tanúsítvány forrására vonatkozó információk szolgáltatására szolgál; kiállító neve, szolgáltatója, hitelesítő adatai és egyéb felügyeleti adatai.
 

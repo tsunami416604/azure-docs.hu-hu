@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 01121612c5574544ef6985d33f56f3e334f8d37c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120651"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181939"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
 
@@ -34,13 +34,13 @@ Ha a Gmail-összekötőt használó logikai alkalmazások rendelkeznek, e-mailt 
 
 Ebben a szabályzatban, ha egy Gmail fogyasztói fiókot használ, akkor a Gmail-összekötőt csak a Google által jóváhagyott szolgáltatásokkal használhatja, amelyek változhatnak. Mérnöki csapatunk továbbra is együttműködik a Google-szel, hogy további szolgáltatásokat vegyen fel a listára. Jelenleg itt láthatók a Google által jóváhagyott eseményindítók, műveletek és összekötők, amelyek a Gmail-összekötővel azonos logikai alkalmazás-munkafolyamatban, a Gmail-alapú felhasználói fiók használata esetén is használhatók:
 
-* Beépített eseményindítók és műveletek Logic Apps: batch, Control, adatműveletek, dátum idő, lapos fájl, folyadék, kérelem, ütemterv, változók és XML
+* Beépített eseményindítók és műveletek Logic Apps: batch, Control, adatműveletek, dátum idő, lapos fájl, HTTP, folyadék, kérelem, ütemterv, változók és XML
 
 * Google Services: gmail, Google Naptár, Google Contacts, Google Drive, Google Sheets és Google feladatok
 
 * Jóváhagyott Microsoft-szolgáltatások: Dynamics 365, Excel online, Microsoft Teams, Office 365, OneDrive és SharePoint Online
 
-* Ügyfelek által felügyelt adatforrásokhoz kapcsolódó összekötők: FTP, HTTP, RSS, SFTP, SMTP és SQL Server
+* Ügyfelek által felügyelt adatforrásokhoz kapcsolódó összekötők: FTP, RSS, SFTP, SMTP és SQL Server
 
 A legfrissebb információkért tekintse [meg a Gmail-összekötő műszaki útmutatójának dokumentációját](https://docs.microsoft.com/connectors/gmail/).
 
