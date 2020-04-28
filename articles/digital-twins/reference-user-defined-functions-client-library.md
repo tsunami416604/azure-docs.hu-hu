@@ -1,6 +1,6 @@
 ---
-title: Felhasználó által definiált függvények ügyfélkönyvtárának hivatkozása - Azure Digital Twins | Microsoft dokumentumok
-description: Az Azure Digital Twins felhasználó által definiált függvények ügyfélkönyvtár referenciadokumentációja.
+title: Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája – Azure digitális Twins | Microsoft Docs
+description: Azure Digital Twins felhasználó által definiált függvények ügyféloldali függvénytár-referenciák dokumentációja.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,256 +10,256 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276816"
 ---
-# <a name="user-defined-functions-client-library-reference"></a>Felhasználó által definiált függvények ügyféltárának hivatkozása
+# <a name="user-defined-functions-client-library-reference"></a>Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája
 
-Ez a dokumentum az Azure Digital Twins felhasználó által definiált függvényügyfél-kódtár referenciaadatait tartalmazza.
+Ez a dokumentum az Azure Digital Twins felhasználó által definiált functions ügyféloldali függvénytárával kapcsolatos információkat tartalmaz.
 
 ## <a name="helper-methods"></a>Segítő módszerek
 
-Az ügyféltár a gyakran használt műveletek hez határozza meg a segítő módszereket.
+Az ügyféloldali kódtár a gyakran használt műveletekhez biztosít segítő metódusokat.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒`space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (azonosító) ⇒`space`
 
-Térazonosítóval a függvény lekéri a helyet a grafikonról.
+A szóközzel megadott azonosító alapján a függvény lekéri a helyet a gráfból.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Térazonosító |
+| *id*  | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒`sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (azonosító) ⇒`sensor`
 
-Adott egy érzékelő azonosító, ez a függvény lekéri az érzékelőt a grafikonról.
+Ez a függvény az érzékelő azonosítóját adja vissza a gráfból.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Érzékelő azonosítója |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒`device`
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (azonosító) ⇒`device`
 
-Adott eszközazonosító, ez a függvény lekéri az eszközt a grafikonról.
+Az eszköz azonosítója miatt ez a függvény lekéri az eszközt a gráfból.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *id* | `guid` | Eszközazonosító |
+| *id* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒`value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, adattípus) ⇒`value`
 
-Adott érzékelőazonosító és annak adattípusa, ez a függvény lekéri az adott érzékelő aktuális értékét.
+Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő aktuális értékét kérdezi le.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | Érzékelő azonosítója |
 | *Adattípus*  | `string` | Érzékelő adattípusa |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒`value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, valueName) ⇒`value`
 
-Térazonosító és az érték név alapján ez a függvény az adott területtulajdonság aktuális értékét olvassa be.
+A Space azonosító és az érték neve miatt ez a függvény lekéri az aktuális értéket a szóköz tulajdonsághoz.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId*  | `guid` | Térazonosító |
-| *valueName* | `string` | Szóköz tulajdonság neve |
+| *spaceId*  | `guid` | Lemezterület-azonosító |
+| *valueName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒`value[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, adattípus) ⇒`value[]`
 
-Adott érzékelőazonosító és annak adattípusa, ez a függvény lekéri az érzékelő előzményértékeit.
+Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő korábbi értékeit kérdezi le.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Érzékelő azonosítója |
 | *Adattípus* | `string` | Érzékelő adattípusa |
 
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒`value[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, adattípus) ⇒`value[]`
 
-Térazonosító és az érték neve alapján ez a függvény lekéri a tulajdonság előzményértékeit a térben.
+A Space azonosító és az érték neve miatt ez a függvény az adott tulajdonsághoz tartozó korábbi értékeket kérdezi le a tárhelyen.
 
-**Kedves**: globális függvény
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
-| *valueName* | `string` | Szóköz tulajdonság neve |
-
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒`space[]`
-
-Térazonosító t adott meg, ez a függvény lekéri az adott szülőterület gyermekteréit.
-
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
+| *spaceId* | `guid` | Lemezterület-azonosító |
+| *valueName* | `string` | Terület tulajdonságának neve |
+
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒`space[]`
+
+A szóközzel megadott azonosító miatt a függvény lekérdezi az adott szülő terület gyermekeit.
+
+**Típus**: globális függvény
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒`sensor[]`
 
-Térazonosító val, ez a függvény lekéri az adott szülőterület gyermekérzékelőit.
+A Space azonosító megadásakor ez a függvény lekéri a gyermek érzékelőket az adott szülő területhez.
 
-**Kedves**: globális függvény
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
-
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒`device[]`
-
-Térazonosító val, ez a függvény lekéri az adott szülőterület gyermekeszközeit.
-
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒`sensor[]`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒`device[]`
 
-Adott eszközazonosító, ez a függvény lekéri a szülőeszköz gyermekérzékelőit.
+A szóközzel megadott azonosító miatt a függvény lekéri a gyermekeket az adott szülő területhez.
 
-**Kedves**: globális függvény
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Eszközazonosító |
-
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒`space`
-
-Térazonosító t adott meg, ez a függvény beolvassa a szülőterületét.
-
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childSpaceId* | `guid` | Térazonosító |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒`space`
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒`sensor[]`
 
-Adott egy érzékelőazonosító, ez a függvény lekéri a szülőterületet.
+Az eszköz azonosítója miatt ez a függvény lekérdezi az adott szülő eszköz gyermek-érzékelőkét.
 
-**Kedves**: globális függvény
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Érzékelő azonosítója |
-
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒`space`
-
-Adott eszközazonosító, ez a függvény lekéri a szülőterületet.
-
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *childDeviceId* | `guid` | Eszközazonosító |
+| *deviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒`space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒`space`
 
-Adott egy érzékelőazonosító, ez a függvény lekéri a szülőeszközét.
+A szóközzel megadott azonosító alapján a függvény lekéri a szülő területét.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *childSpaceId* | `guid` | Lemezterület-azonosító |
+
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒`space`
+
+A függvény az érzékelő azonosítójának alapján lekéri a szülő területét.
+
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Érzékelő azonosítója |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒`extendedProperty`
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒`space`
 
-Térazonosítót adva ez a függvény lekéri a tulajdonságot és annak értékét a térből.
+Az eszköz azonosítója miatt ez a függvény lekéri a szülő területét.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
-| *tulajdonságNeve* | `string` | Szóköz tulajdonság neve |
+| *childDeviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒`extendedProperty`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒`space`
 
-Adott egy érzékelő azonosító, ez a függvény lekéri a tulajdonság és annak értékét az érzékelő.
+A függvény az érzékelő azonosítója alapján lekéri a fölérendelt eszközét.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *childSensorId* | `guid` | Érzékelő azonosítója |
+
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, propertyName) ⇒`extendedProperty`
+
+A szóközzel megadott azonosító alapján a függvény lekéri a tulajdonságot és annak értékét a területről.
+
+**Típus**: globális függvény
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *spaceId* | `guid` | Lemezterület-azonosító |
+| *propertyName* | `string` | Terület tulajdonságának neve |
+
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, propertyName) ⇒`extendedProperty`
+
+A függvény az érzékelő azonosítója alapján lekéri a tulajdonságot és annak értékét az érzékelőből.
+
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Érzékelő azonosítója |
-| *tulajdonságNeve* | `string` | Érzékelő tulajdonságneve |
+| *propertyName* | `string` | Érzékelő tulajdonságának neve |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒`extendedProperty`
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, propertyName) ⇒`extendedProperty`
 
-Adott eszközazonosító, ez a függvény lekéri a tulajdonságot és annak értékét az eszközről.
+Az eszköz azonosítója miatt ez a függvény a tulajdonságot és annak értékét kérdezi le az eszközről.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Eszközazonosító |
-| *tulajdonságNeve* | `string` | Eszköztulajdonság neve |
+| *deviceId* | `guid` | Eszköz azonosítója |
+| *propertyName* | `string` | Eszköz tulajdonságának neve |
 
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, érték)
+### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, adattípus, érték)
 
-Ez a függvény beállít egy értéket az érzékelőobjektumon a megadott adattípussal.
+Ez a függvény egy értéket állít be az érzékelő objektumon a megadott adattípussal.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Érzékelő azonosítója |
 | *Adattípus*  | `string` | Érzékelő adattípusa |
-| *value*  | `string` | Érték |
+| *érték*  | `string` | Érték |
 
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId; dataType, value)
+### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, adattípus, érték)
 
-Ez a függvény a szóközobjektum adott adattípussal rendelkező értékét állítja be.
+Ez a függvény egy értéket állít be a szóköz objektumon a megadott adattípussal.
 
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Térazonosító |
+| *spaceId* | `guid` | Lemezterület-azonosító |
 | *Adattípus* | `string` | Adattípus |
-| *value* | `string` | Érték |
+| *érték* | `string` | Érték |
 
-### <a name="logmessage"></a>log(üzenet)
+### <a name="logmessage"></a>napló (üzenet)
 
-Ez a függvény a következő üzenetet naplózza a felhasználó által definiált függvényben.
+Ez a függvény a következő üzenetet naplózza a felhasználó által definiált függvényen belül.
 
-**Kedves**: globális függvény
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *Üzenetet* | `string` | Naplózandó üzenet |
-
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, hasznos adat)
-
-Ez a függvény egy egyéni értesítést küld ki a küldéshez.
-
-**Kedves**: globális függvény
+**Típus**: globális függvény
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *topológiaObjectId*  | `guid` | Grafikonobjektum-azonosító. Ilyenpéldául a hely, az érzékelő és az eszközazonosító.|
+| *üzenetet* | `string` | Naplózandó üzenet |
+
+### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, hasznos adatok)
+
+Ez a függvény elküld egy egyéni értesítést a küldéshez.
+
+**Típus**: globális függvény
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *topologyObjectId*  | `guid` | Gráf-objektumazonosító. Ilyenek például a szóköz, az érzékelő és az eszköz azonosítója.|
 | *topologyObjectType*  | `string` | Ilyenek például az érzékelő és az eszköz.|
-| *payload*  | `string` | Az értesítéssel együtt elküldendő JSON-tartalom. |
+| *payload*  | `string` | Az értesítéssel küldendő JSON-adattartalom. |
 
 ## <a name="return-types"></a>Visszatérési típusok
 
-Az ügyfélhivatkozás-segítő módszerektől visszaadott válaszmodelleket az alábbiakban ismertetjük.
+Az ügyfél-referenciák segítő módszereiből visszaadott válaszok modelljei alább olvashatók.
 
 ### <a name="space"></a>Space (Szóköz)
 
@@ -274,51 +274,51 @@ Az ügyfélhivatkozás-segítő módszerektől visszaadott válaszmodelleket az 
 }
 ```
 
-### <a name="space-methods"></a>Térmódszerek
+### <a name="space-methods"></a>Szóköz metódusok
 
-#### <a name="parent--space"></a>Szülő() ⇒`space`
+#### <a name="parent--space"></a>Szülő () ⇒`space`
 
-Ez a függvény az aktuális tér szülőterületét adja vissza.
+Ez a függvény az aktuális terület szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>Gyermekérzékelők() ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒`sensor[]`
 
-Ez a függvény az aktuális tér gyermekérzékelőit adja vissza.
+Ez a függvény az aktuális terület alárendelt érzékelőkből áll vissza.
 
-#### <a name="childdevices--device"></a>Gyermekeszközök() ⇒`device[]`
+#### <a name="childdevices--device"></a>ChildDevices () ⇒`device[]`
 
-Ez a függvény az aktuális terület gyermekeszközeit adja vissza.
+Ez a függvény az aktuális terület alárendelt eszközeit adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
 
-Ez a függvény a kiterjesztett tulajdonságot és az aktuális terület értékét adja vissza.
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *tulajdonságNeve* | `string` | A bővített tulajdonság neve |
-
-#### <a name="valuevaluename--value"></a>Érték(értéknév) ⇒`value`
-
-Ez a függvény az aktuális terület értékét adja eredményül.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális területhez.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Az érték neve |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="historyvaluename--value"></a>Előzmények(értéknév) ⇒`value[]`
+#### <a name="valuevaluename--value"></a>Érték (valueName) ⇒`value`
 
-Ez a függvény az aktuális tér előzményértékeit adja vissza.
+Ez a függvény az aktuális terület értékét adja vissza.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Az érték neve |
 
-#### <a name="notifypayload"></a>Értesítés(hasznos teher)
+#### <a name="historyvaluename--value"></a>Előzmények (valueName) ⇒`value[]`
 
-Ez a függvény értesítést küld a megadott hasznos adattal.
+Ez a függvény az aktuális terület korábbi értékeit adja vissza.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON hasznos teher, amelyet az értesítésbe kell foglalni |
+| *valueName* | `string` | Az érték neve |
+
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
+
+Ez a függvény értesítést küld a megadott adattartalommal.
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *payload* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
 ### <a name="device"></a>Eszköz
 
@@ -340,29 +340,29 @@ Ez a függvény értesítést küld a megadott hasznos adattal.
 
 ### <a name="device-methods"></a>Eszközmetódusok
 
-#### <a name="parent--space"></a>Szülő() ⇒`space`
+#### <a name="parent--space"></a>Szülő () ⇒`space`
 
-Ez a függvény az aktuális eszköz szülőterületét adja vissza.
+Ez a függvény az aktuális eszköz szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>Gyermekérzékelők() ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒`sensor[]`
 
-Ez a funkció az aktuális eszköz gyermekérzékelőit adja vissza.
+Ez a függvény az aktuális eszköz gyermek-érzékelőkét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
 
-Ez a függvény a kiterjesztett tulajdonságot és az aktuális eszköz értékét adja vissza.
-
-| Paraméter  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
-| *tulajdonságNeve* | `string` | A bővített tulajdonság neve |
-
-#### <a name="notifypayload"></a>Értesítés(hasznos teher)
-
-Ez a függvény értesítést küld a megadott hasznos adattal.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális eszközhöz.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON hasznos teher, amelyet az értesítésbe kell foglalni |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
+
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
+
+Ez a függvény értesítést küld a megadott adattartalommal.
+
+| Paraméter  | Típus                | Leírás  |
+| ------ | ------------------- | ------------ |
+| *payload* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
 ### <a name="sensor"></a>Érzékelő
 
@@ -386,39 +386,39 @@ Ez a függvény értesítést küld a megadott hasznos adattal.
 }
 ```
 
-### <a name="sensor-methods"></a>Érzékelőmódszerek
+### <a name="sensor-methods"></a>Érzékelő módszerei
 
-#### <a name="space--space"></a>Szóköz() ⇒`space`
+#### <a name="space--space"></a>Szóköz () ⇒`space`
 
-Ez a függvény az aktuális érzékelő szülőterületét adja vissza.
+Ez a függvény az aktuális érzékelő szülő területét adja vissza.
 
-#### <a name="device--device"></a>Eszköz() ⇒`device`
+#### <a name="device--device"></a>Eszköz () ⇒`device`
 
-Ez a függvény az aktuális érzékelő szülőeszközét adja vissza.
+Ez a függvény az aktuális érzékelő fölérendelt eszközét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
 
-Ez a függvény a kiterjesztett tulajdonságot és az aktuális érzékelő értékét adja vissza.
+Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális érzékelőhöz.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *tulajdonságNeve* | `string` | A bővített tulajdonság neve |
+| *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="value--value"></a>Érték() ⇒`value`
+#### <a name="value--value"></a>Érték () ⇒`value`
 
 Ez a függvény az aktuális érzékelő értékét adja vissza.
 
-#### <a name="history--value"></a>Előzmények() ⇒`value[]`
+#### <a name="history--value"></a>Előzmények () ⇒`value[]`
 
-Ez a függvény az aktuális érzékelő előzményértékeit adja vissza.
+Ez a függvény az aktuális érzékelő korábbi értékeit adja vissza.
 
-#### <a name="notifypayload"></a>Értesítés(hasznos teher)
+#### <a name="notifypayload"></a>Értesítés (hasznos adat)
 
-Ez a függvény értesítést küld a megadott hasznos adattal.
+Ez a függvény értesítést küld a megadott adattartalommal.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON hasznos teher, amelyet az értesítésbe kell foglalni |
+| *payload* | `string` | Az értesítésbe belefoglalni kívánt JSON-adattartalom |
 
 ### <a name="value"></a>Érték
 
@@ -430,7 +430,7 @@ Ez a függvény értesítést küld a megadott hasznos adattal.
 }
 ```
 
-### <a name="extended-property"></a>Bővített tulajdonság
+### <a name="extended-property"></a>Kiterjesztett tulajdonság
 
 ```JSON
 {
@@ -441,8 +441,8 @@ Ez a függvény értesítést küld a megadott hasznos adattal.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure Digital Twins által definiált funkciókról.](./concepts-user-defined-functions.md)
+- Ismerje meg az [Azure Digital Twins felhasználó által definiált függvényeit](./concepts-user-defined-functions.md).
 
-- További információ [a felhasználó által definiált függvények létrehozásáról.](./how-to-user-defined-functions.md)
+- Megtudhatja [, hogyan hozhat létre felhasználó által definiált függvényeket](./how-to-user-defined-functions.md).
 
-- További információ [a felhasználó által definiált függvények hibakereséséről.](./how-to-diagnose-user-defined-functions.md)
+- Útmutató [a felhasználó által definiált függvények hibakereséséhez](./how-to-diagnose-user-defined-functions.md).

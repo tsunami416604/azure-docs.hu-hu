@@ -1,6 +1,6 @@
 ---
-title: SQL Server virtuális gép egy Azure dedikált gazdagépen
-description: Ismerje meg az SQL Server virtuális gép Azure dedikált gazdagépen való futtatásának részleteit.
+title: SQL Server VM egy dedikált Azure-gazdagépen
+description: További információ a SQL Server VM Azure dedikált gazdagépen való futtatásának részleteiről.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,69 +15,69 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834352"
 ---
-# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server virtuális gép egy Azure dedikált gazdagépen 
+# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM egy dedikált Azure-gazdagépen 
 
-Ez a cikk részletezi az SQL Server virtuális gép [Azure dedikált állomással](/azure/virtual-machines/windows/dedicated-hosts)való használatának részleteit. Az Azure dedikált gazdagépéről további információt az [Azure dedikált gazdagépének bemutatása](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)című blogbejegyzésben talál. 
+Ez a cikk a SQL Server VM [Azure dedikált gazdagéptel](/azure/virtual-machines/windows/dedicated-hosts)való használatának részleteit részletezi. Az Azure dedikált gazdagép további információit az [Azure dedikált gazdagép bevezetését](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)ismertető blogbejegyzésben találja. 
 
 ## <a name="overview"></a>Áttekintés
-[Az Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) egy olyan szolgáltatás, amely egy Azure-előfizetésnek szentelt fizikai kiszolgálókat biztosít – amely képes egy vagy több virtuális gép üzemeltetésére. A dedikált állomások ugyanazok a fizikai kiszolgálók, amelyeket a Microsoft adatközpontjaiban használnak, és erőforrásként szolgálnak. Egy régión, rendelkezésre állási zónán és tartalék tartományon belül dedikált állomásokat hozhat létre. Ezután a virtuális gépeket közvetlenül a kiépített gazdagépekbe helyezheti, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
+Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyeket a Microsoft adatközpontjai használnak erőforrásként. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
 
 ## <a name="limitations"></a>Korlátozások
 
-- A virtuálisgép-méretezési csoportok jelenleg nem támogatottak dedikált állomásokon.
-- A következő virtuális gépsorozatok támogatottak: DSv3 és ESv3. 
+- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
+- A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
 
 ## <a name="licensing"></a>Licencek
 
-Két különböző licencelési lehetőség közül választhat, amikor hozzáadja az SQL Server virtuális gép ét egy Azure dedikált gazdagéphez. 
+Két különböző licencelési lehetőség közül választhat, amikor hozzáadja a SQL Server VMt egy Azure dedikált gazdagéphez. 
 
-  - **SQL virtuális gép licencelése:** Ez a meglévő licencelési lehetőség, ahol minden egyes SQL Server virtuálisgép-licenc külön-külön kell fizetnie. 
-  - **Dedikált gazdalicencelés:** Az Azure dedikált gazdagépszámára elérhető új licencelési modell, ahol az SQL Server-licenceket a gazdagép szintjén kötegelik és fizetik ki. 
+  - **SQL virtuális gép licencelése**: Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
+  - **Dedikált gazdagép licencelése**: az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
 
 
-Állomásszintű beállítások a meglévő SQL Server-licencek használatára: 
-  - SQL Server Enterprise Edition Azure hibrid előny
-    - Elérhető az sa-val vagy előfizetéssel rendelkező ügyfelek számára.
-    - Licenc el minden rendelkezésre álló fizikai magok és élvezze a korlátlan virtualizáció (a maximális vCPU-k által támogatott állomás).
-        - Az Azure Hybrid Benefit Azure dedikált gazdagépre történő alkalmazásáról az Azure Hybrid Benefit GYIK című [témakörben talál további információt.](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) 
-  - Október 1-je előtt beszerzett SQL Server licencek
-      - Az SQL Server Enterprise edition állomásszintű és virtuális géplicenc-licenccel is rendelkezik. 
-      - Az SQL Server Standard edition csak virtuális gép licenccel rendelkezik. 
-          - További információt a [Microsoft termékhasználati feltételei](https://www.microsoft.com/licensing/product-licensing/products)ben talál. 
-  - Ha nincs kiválasztható SQL Server dedikált állomásszintű beállítás, akkor az SQL Server AHB is kiválasztható az egyes virtuális gépek szintjén, csakúgy, mint a több-bérlős virtuális gépek.
+A meglévő SQL Server licencek használatára vonatkozó gazdagép-szintű beállítások: 
+  - SQL Server Enterprise Edition Azure Hybrid Benefit
+    - Elérhető az SA vagy előfizetéssel rendelkező ügyfelek számára.
+    - Licenc az összes rendelkezésre álló fizikai magot és korlátlan virtualizációt élvez (a gazdagép által támogatott maximális vCPU).
+        - A Azure Hybrid Benefit Azure dedikált gazdagépre való alkalmazásával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit gyakori kérdések](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)című témakört. 
+  - SQL Server az október 1. előtt beszerzett licencek
+      - A SQL Server Enterprise kiadásban a gazdagép-és a virtuális gépek licencelési lehetőségei is megadhatók. 
+      - A SQL Server Standard Edition rendszerhez csak a-VM licencelési lehetőség áll rendelkezésre. 
+          - Részletekért tekintse [meg a Microsoft termék használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products). 
+  - Ha nincs kiválasztva SQL Server dedikált gazdagép-szintű beállítás, akkor SQL Server AHB az egyes virtuális gépek szintjén lehet kiválasztani, ugyanúgy, mint a több-bérlős virtuális gépekhez.
 
 
 
 ## <a name="provisioning"></a>Kiépítés  
-Egy SQL Server virtuális gép kiépítése a dedikált állomás nem különbözik bármely más Azure virtuális gép. Ezt megteheti az [Azure PowerShell](../dedicated-hosts-powershell.md), az [Azure Portal](../dedicated-hosts-portal.md)és az [Azure CLI](../../linux/dedicated-hosts-cli.md)használatával.
+A SQL Server VM dedikált gazdagépre való kiépítés nem különbözik az Azure-beli virtuális gépektől. Ezt a [Azure PowerShell](../dedicated-hosts-powershell.md), a [Azure Portal](../dedicated-hosts-portal.md)és az [Azure CLI](../../linux/dedicated-hosts-cli.md)használatával teheti meg.
 
-A meglévő SQL Server virtuális gép dedikált állomáshoz való hozzáadásának folyamata állásidőt igényel, de nem befolyásolja az adatokat, és nem lesz adatvesztés. Mindazonáltal az áthelyezés előtt minden adatbázisról, beleértve a rendszeradatbázisokat is, biztonsági másolatot kell kapnia.
+Egy meglévő SQL Server VM a dedikált gazdagéphez való hozzáadásának folyamata állásidőt igényel, de nem befolyásolja az adatvesztést, és nem fog adatvesztést okozni. Ennek ellenére az áthelyezés előtt biztonsági mentést kell készíteni az összes adatbázisról, beleértve a rendszeradatbázisokat is.
 
 ## <a name="virtualization"></a>Virtualizáció 
 
-A dedikált gazdagép egyik előnye a korlátlan virtualizáció. Például 64 virtuális magra is rendelkezhet licencekkel, de beállíthatja, hogy az állomás 128 virtuális maggal rendelkezik, így a virtuális magok kétszeresét kapja, de csak az SQL Server-licencek felét fizeti. 
+A dedikált gazdagépek egyik előnye, hogy korlátlan a virtualizáció. Rendelkezhet például 64 virtuális mag-licenccel, de úgy is beállíthatja a gazdagépet, hogy 128-virtuális mag rendelkezzen, így megduplázhatja a virtuális mag, de csak a SQL Server licencek feléért fizet. 
 
-Mivel ez a házigazda, akkor jogosult beállítani a virtualizáció egy 1:2 arány. 
+Mivel ez a gazdagép, jogosult a virtualizáció 1:2 arányú beállítására. 
 
 ## <a name="faq"></a>GYIK
 
-**K: Hogyan működik az Azure Hybrid Benefit windows Server/SQL Server licencek az Azure dedikált gazdagépen?**
+**K: Hogyan működik a Azure Hybrid Benefit a Windows Server/SQL Server-licencek esetében az Azure dedikált gazdagépen?**
 
-V: Az ügyfelek használhatják a meglévő Windows Server és SQL Server licencek a Frissítési Garancia, vagy a feljogosító előfizetési licencek, fizetni egy kedvezményes díj az Azure dedikált gazdagép az Azure Hybrid Benefit használatával. A Windows Server Datacenter és az SQL Server Enterprise Edition ügyfelei korlátlan virtualizációt kapnak (a lehető legtöbb Windows Server virtuális gépet telepíthetik a gazdagépen az alapul szolgáló kiszolgáló fizikai kapacitásának függvényében), amikor a teljes állomást licencelik és használja az Azure Hybrid Benefit.and use Azure Hybrid Benefit.  Az Azure Dedikált gazdagépben található összes Windows Server- és SQL Server-számítási feladat díjmentesen jogosult a Windows Server és az SQL Server 2008/R2 kiterjesztett biztonsági frissítéseire is. 
+A: a meglévő Windows Server-és SQL Server-licencek értékét frissítési garanciával vagy előfizetési licencekkel vehetik igénybe, hogy a Azure Hybrid Benefit használatával kedvezményes díjszabást fizessenek az Azure dedikált gazdagépen. A Windows Server Datacenter és a SQL Server Enterprise Edition rendszerű ügyfelek korlátlan virtualizációt kapnak (több Windows Server rendszerű virtuális gépet helyezhet üzembe a gazdagépen, a mögöttes kiszolgáló fizikai kapacitása alapján), amikor a teljes gazdagépet licencbe helyezik, és Azure Hybrid Benefit használják.  Az Azure dedikált gazdagép összes Windows Server-és SQL Server-munkaterhelése külön díj nélkül jogosult a Windows Server és a SQL Server 2008/R2 további biztonsági frissítéseire. 
 
 ## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket: 
 
-* [Az SQL Server áttekintése Windows virtuális gépen](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Gyakori kérdések az SQL Server rendszerrel kapcsolatos kérdésekről Windows VM rendszeren](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Az SQL Server díjszabási útmutatója Windows virtuális gépen](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Kibocsátási megjegyzések az SQL Server rendszerhez Windows vM rendszeren](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows rendszerű virtuális gépek SQL Server áttekintése](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
+* [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

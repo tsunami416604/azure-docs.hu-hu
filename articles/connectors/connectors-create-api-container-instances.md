@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezése & az Azure Container-példányok kezelése
-description: Az Azure Logic Apps használatával automatizálhatja azokat a feladatokat és munkafolyamatokat, amelyek tárolók at hoznak létre és kezelnek az Azure Container-példányokban
+title: '& felügyeletének központi telepítése Azure Container Instances'
+description: Feladatok és munkafolyamatok automatizálása, amelyek tároló-telepítéseket hoznak létre és kezelhetnek Azure Container Instances a Azure Logic Apps használatával
 services: logic-apps, container-instances
 ms.service: logic-apps
 ms.suite: integration
@@ -12,66 +12,66 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76046291"
 ---
-# <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Container-példányok üzembe helyezése és kezelése az Azure Logic Apps használatával
+# <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Container Instances üzembe helyezése és kezelése Azure Logic Apps használatával
 
-Az Azure Logic Apps és az Azure Container Instance-összekötő segítségével automatizált feladatokat és munkafolyamatokat állíthat be, amelyek [tárolócsoportokat](../container-instances/container-instances-container-groups.md)telepítenek és kezelnek. A Container Instance összekötő a következő műveleteket támogatja:
+A Azure Logic Apps és az Azure Container instance Connector használatával olyan automatizált feladatokat és munkafolyamatokat állíthat be, amelyek [tároló csoportokat](../container-instances/container-instances-container-groups.md)telepítenek és kezelhetnek. A Container instance Connector a következő műveleteket támogatja:
 
-* Tárolócsoport létrehozása vagy törlése
-* Tárolócsoport tulajdonságainak beszereznie
-* Tárolócsoportok listájának beszereznie
-* Tárolópéldány naplóinak beszereznie
+* Tároló-csoport létrehozása vagy törlése
+* Egy tároló csoport tulajdonságainak beolvasása
+* A tároló-csoportok listájának beolvasása
+* Tároló-példány naplóinak beolvasása
 
-Ezeket a műveleteket a logikai alkalmazások feladatok, például egy tároló számítási feladatok futtatása a Logic Apps eseményindító válaszul. Más műveletek is használhatják a Container Instance-műveletek kimenetét. 
+Ezeket a műveleteket a logikai alkalmazásokban olyan feladatokhoz használhatja, mint például a tároló munkaterhelésének futtatása egy Logic Apps triggerre válaszul. Más műveletek is használhatók a tároló-példányok műveleteinek kimenetére. 
 
-Ez az összekötő csak műveleteket biztosít, így a logikai alkalmazás elindításához használjon egy külön eseményindítót, például egy **ismétlődési eseményindítót** egy tároló számítási feladat ának normál ütemezés szerint történő futtatásához. Előfordulhat az is, hogy egy tárolócsoport központi telepítését egy esemény, például egy Outlook-e-mail érkezése után kell elindítania. 
+Ez az összekötő csak műveleteket biztosít, így a logikai alkalmazás elindításához használjon egy külön eseményindítót, például egy **ismétlődési** eseményindítót, amely rendszeres időközönként futtatja a tároló számítási feladatait. Vagy előfordulhat, hogy a tároló csoport központi telepítését egy olyan esemény után kell elindítania, mint például egy Outlook e-mail érkezésekor. 
 
-Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásáról,](../logic-apps/quickstart-create-first-logic-app-workflow.md) valamint [a tárolópéldányok létrehozásáról és kezeléséről](../container-instances/container-instances-quickstart.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásával](../logic-apps/quickstart-create-first-logic-app-workflow.md) és [a tároló-példányok létrehozásával és kezelésével](../container-instances/container-instances-quickstart.md) kapcsolatban
 
-* A logikai alkalmazás, ahol szeretné elérni a tárolópéldányok. Egy művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **Ismétlődés** eseményindítóval.
+* Az a logikai alkalmazás, ahová el szeretné érni a tároló példányait. Ha műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="add-a-container-instance-action"></a>Tárolópéldány hozzáadása művelet
+## <a name="add-a-container-instance-action"></a>Container instance művelet hozzáadása
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válasszon elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Az utolsó lépésben, ahol műveletet szeretne hozzáadni, válassza az **Új lépés lehetőséget.** 
+   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
 
      – vagy –
 
-   * A lépések között, ahol műveletet szeretne hozzáadni, vigye az egérmutatót a lépések közötti nyíl fölé. 
-   Válassza ki a**+** megjelenő pluszjelet ( ), majd válassza **a Művelet hozzáadása**lehetőséget.
+   * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként a "tárolópéldány" kifejezést. A műveletek listájában válassza ki a kívánt Azure Container Instance-összekötő műveletet.
+1. A keresőmezőbe írja be szűrőként a "Container instance" kifejezést. A műveletek listán válassza ki az Azure Container instance Connector kívánt műveletét.
 
 1. Adja meg a kapcsolat nevét. 
 
-1. Adja meg a kiválasztott művelethez szükséges részleteket, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
+1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
-  Válassza például a **Tárolócsoport létrehozása lehetőséget,** és adja meg egy tárolócsoport és egy vagy több tárolópéldány tulajdonságait a csoportban, ahogy az az alábbi képen látható (részleges részletesség):
+  Válassza például a **tároló csoport létrehozása** elemet, és adja meg egy tároló csoport tulajdonságait, valamint a csoport egy vagy több tároló példányát, ahogy az alábbi képen látható (részleges részletek):
 
   ![Tárolócsoport létrehozása](./media/connectors-create-api-container-instances/logic-apps-aci-connector.png)
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referencialapját](/connectors/aci/) vagy [a YAML-tárolócsoport hivatkozását.](../container-instances/container-instances-reference-yaml.md)
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért, amelyeket az összekötő OpenAPI (korábban hencegés) leírása ismertet, tekintse át az összekötő [hivatkozási oldalát](/connectors/aci/) vagy a [YAML-referenciát](../container-instances/container-instances-reference-yaml.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [minta logikai alkalmazás,](https://github.com/Azure-Samples/aci-logicapps-integration) amely egy tárolót futtat az Azure Container Instances az e-mail vagy a Twitter szöveg hangulatának elemzéséhez
+* Az e-mail vagy a Twitter-szöveg hangulatának elemzéséhez tekintse meg a Azure Container Instances tárolót futtató [minta logikai alkalmazást](https://github.com/Azure-Samples/aci-logicapps-integration) .
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure DNS privát zónáinak virtuális hálózati kapcsolatalerőforrása?
-description: Az Azure DNS-magánzóna virtuális hálózati kapcsolat alerőforrásának áttekintése
+title: Mi a virtuális hálózati kapcsolat alerőforrása Azure DNS privát zónákhoz
+description: A virtuális hálózati kapcsolat alerőforrások Azure DNS privát zóna áttekintése
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,51 +8,51 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646761"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Mi az a virtuális hálózati kapcsolat?
 
-Miután létrehozott egy privát DNS-zónát az Azure-ban, az nem érhető el azonnal egyetlen virtuális hálózatról sem. Ahhoz, hogy a hálózatban üzemeltetett virtuális gép hozzáférhessen a magánDNS-zónához, össze kell kapcsolnia egy virtuális hálózattal.
-Ha egy magánDNS-zónát virtuális hálózattal szeretne összekapcsolni, létre kell hoznia egy virtuális hálózati kapcsolatot a privát DNS-zónában. Minden privát DNS-zóna virtuális hálózati kapcsolat gyermekerőforrásainak gyűjteményével rendelkezik. Ezek az erőforrások mindegyike egy virtuális hálózathoz való kapcsolatot jelent.
+Miután létrehozta a saját DNS-zónát az Azure-ban, az nem érhető el azonnal bármely virtuális hálózatról. Ahhoz, hogy egy adott hálózatban üzemeltetett virtuális gép hozzáférhessen a magánhálózati DNS-zónához, össze kell kapcsolni azt egy virtuális hálózattal.
+Ha a magánhálózati DNS-zónát virtuális hálózattal szeretné összekapcsolni, létre kell hoznia egy virtuális hálózati kapcsolatot a magánhálózati DNS-zónában. Minden magán DNS-zónához tartozik egy virtuális hálózati kapcsolati alárendelt erőforrás gyűjteménye. Ezen erőforrások mindegyike egy virtuális hálózathoz való kapcsolódást jelent.
 
-A virtuális hálózatot regisztrációs virtuális hálózatként vagy feloldó virtuális hálózatként csatolhatja egy magán DNS-zónához.
+Egy virtuális hálózatot egy magánhálózati DNS-zónához is csatolhat regisztrációs virtuális hálózatként vagy megoldásként szolgáló virtuális hálózatként.
 
-## <a name="registration-virtual-network"></a>Regisztráció virtuális hálózat
+## <a name="registration-virtual-network"></a>Regisztrációs virtuális hálózat
 
-Amikor [kapcsolatot hoz létre egy](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) privát DNS-zóna és egy virtuális hálózat között, lehetősége van a virtuális gépek DNS-rekordjaiautomatikus [regisztrációjának](./private-dns-autoregistration.md) bekapcsolására. Ha ezt a lehetőséget választja, a virtuális hálózat a privát DNS-zóna regisztrációs virtuális hálózatává válik. A rendszer automatikusan dns-rekordot hoz létre a hálózatban üzembe helyezett virtuális gépekhez. A DNS-rekordok a virtuális hálózatban már üzembe helyezett virtuális gépekhez jönnek létre. A virtuális hálózat szempontjából a privát DNS-zóna lesz az adott virtuális hálózat regisztrációs zónája.
-Egy privát DNS-zóna több regisztrációs virtuális hálózattal is rendelkezhet, azonban minden virtuális hálózathoz pontosan egy regisztrációs zóna tartozhat.
+Amikor [kapcsolatot hoz létre](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) egy privát DNS-zóna és egy virtuális hálózat között, lehetősége van a DNS-rekordok automatikus [regisztrációjának](./private-dns-autoregistration.md) bekapcsolására a virtuális gépeken. Ha ezt a lehetőséget választja, a virtuális hálózat a magánhálózati DNS-zóna regisztrációs virtuális hálózata lesz. A rendszer automatikusan létrehoz egy DNS-rekordot a hálózaton üzembe helyezett virtuális gépekhez. A rendszer DNS-rekordokat hoz létre a virtuális hálózatban már üzembe helyezett virtuális gépekhez. A virtuális hálózat szemszögéből a saját DNS-zóna lesz az adott virtuális hálózat regisztrációs zónája.
+Egy privát DNS-zónának több regisztrációs virtuális hálózata is lehet, azonban minden virtuális hálózatnak pontosan egy regisztrációs zónája van társítva.
 
-## <a name="resolution-virtual-network"></a>Megoldási virtuális hálózat
+## <a name="resolution-virtual-network"></a>Megoldás virtuális hálózata
 
-Ha privát DNS-zóna alatt hoz létre virtuális hálózati kapcsolatot, és úgy dönt, hogy nem engedélyezi a DNS-rekord automatikus regisztrációját, a virtuális hálózat csak megoldásként, csak virtuális hálózatként lesz kezelve. Az ilyen hálózatokban telepített virtuális gépek DNS-rekordjai nem jönnek létre automatikusan a csatolt magán DNS-zónában. Az ilyen hálózatokban üzembe helyezett virtuális gépek azonban sikeresen lekérdezhetik a DNS-rekordokat a privát DNS-zónából. Ezeket a rekordokat manuálisan is létrehozhatja, vagy más virtuális hálózatokból is feltöltheti, amelyek regisztrációs hálózatként vannak kapcsolva a privát DNS-zónával.
-Egy privát DNS-zóna több felbontású virtuális hálózattal rendelkezhet, és egy virtuális hálózathoz több feloldási zóna is tartozhat.
+Ha egy magánhálózati DNS-zónában hoz létre virtuális hálózati kapcsolatot, és nem engedélyezi a DNS-rekordok automatikus regisztrálását, a virtuális hálózatot csak feloldási virtuális hálózatként kezeli a rendszer. Az ilyen hálózatokban üzembe helyezett virtuális gépek DNS-rekordjait a rendszer nem hozza létre automatikusan a csatolt privát DNS-zónában. Az ilyen hálózatban üzembe helyezett virtuális gépek azonban sikeresen le tudják kérdezni a DNS-rekordokat a magánhálózati DNS-zónából. Ezek a rekordok manuálisan hozhatók létre, vagy más virtuális hálózatokból is feltölthetők, amelyek regisztrációs hálózatként vannak csatolva a magánhálózati DNS-zónával.
+Egy privát DNS-zónának több feloldási virtuális hálózata lehet, és a virtuális hálózat több feloldási zónával is rendelkezhet.
 
 ## <a name="limits"></a>Korlátok
 
-Ha meg szeretné tudni, hogy hány regisztrációs és feloldási hálózat, privát DNS-zónákra hivatkozva az [Azure DNS-korlátok című](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) témakörben található.
+Ha meg szeretné tudni, hogy hány regisztrációs és feloldási hálózattal rendelkezik, a magánhálózati DNS-zónákra mutató hivatkozásokat lásd: [Azure DNS korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 
-* A klasszikus telepítési modell használatával telepített virtuális hálózatok nem támogatottak.
+* A klasszikus üzemi modell használatával üzembe helyezett virtuális hálózatok nem támogatottak.
 
-* A magánDNS-zóna és a virtuális hálózat között csak egy kapcsolat hozhat létre.
+* Csak egy kapcsolatot hozhat létre egy privát DNS-zóna és egy virtuális hálózat között.
 
-* A magánDNS-zóna alatt található minden virtuális hálózati kapcsolatnak egyedi névvel kell rendelkeznie a magánDNS-zóna környezetében. Különböző privát DNS-zónákban azonos nevű hivatkozásokat használhat.
+* A magánhálózati DNS-zónában lévő minden egyes virtuális hálózati kapcsolatnak egyedi névvel kell rendelkeznie a magánhálózati DNS-zóna környezetében. A különböző magánhálózati DNS-zónákban azonos nevű hivatkozásokat használhat.
 
-* Virtuális hálózati kapcsolat létrehozása után ellenőrizze a virtuális hálózati kapcsolat erőforrás "Kapcsolat állapota" mezőjét. A virtuális hálózat méretétől függően a kapcsolat működése és a kapcsolat állapota *befejezettre*változik néhány percig.
+* A virtuális hálózati kapcsolat létrehozása után a virtuális hálózati kapcsolat erőforrás "kapcsolat állapota" mezőjében keresse meg a következőt:. A virtuális hálózat méretétől függően néhány percig is eltarthat, amíg a hivatkozás működik, és a hivatkozás állapota *Befejezettre*változik.
 
-* Virtuális hálózat törlésekor a különböző magánDNS-zónákban társított összes virtuális hálózati kapcsolat és automatikusan regisztrált DNS-rekord automatikusan törlődik.
+* Ha töröl egy virtuális hálózatot, a rendszer a különböző privát DNS-zónákban lévő összes virtuális hálózati kapcsolatot és automatikusan regisztrált DNS-rekordot automatikusan törli.
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogy miként kapcsolhat virtuális hálózatot magánDNS-zónához az [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) használatával
+* Megtudhatja, hogyan kapcsolhat egy virtuális hálózatot egy magánhálózati DNS-zónához [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) használatával
 
-* Ismerje meg, hogyan hozhat létre privát zónát az Azure DNS-ben az [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
+* Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 
-* Az Azure DNS-ben a privát zónákkal megvalósítható gyakori [privát zónaforgatókönyvekről](./private-dns-scenarios.md) olvashat.
+* További információ [a privát zónák](./private-dns-scenarios.md) Azure DNS-beli privát zónákkal való használatával kapcsolatban.
 
-* Az Azure DNS-ben a privát zónákkal kapcsolatos gyakori kérdésekről és válaszokról, beleértve az adott típusú műveleteknél elvárható viselkedést, olvassa el a [Privát DNS gyakori kérdések című témakört.](./dns-faq-private.md)
+* A Azure DNS privát zónákkal kapcsolatos gyakori kérdések és válaszok, beleértve a bizonyos típusú műveletek várható viselkedését, [saját DNS a gyakori](./dns-faq-private.md)kérdések című témakört.

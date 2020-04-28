@@ -1,30 +1,30 @@
 ---
-title: Hozzáférés az adatokhoz a Jupyter-jegyzetfüzetekben – Az Azure Notebooks előzetes verzió
-description: Megtudhatja, hogyan érheti el a fájlokat, REST API-kat, adatbázisokat és különböző Azure Storage-erőforrásokat egy Jupyter-jegyzetfüzetből.
+title: Jupyter-jegyzetfüzetekben tárolt adathozzáférések – Azure Notebooks előzetes verzió
+description: Megtudhatja, hogyan érheti el a fájlokat, a REST API-kat, az adatbázisokat és a különböző Azure Storage-erőforrásokat egy Jupyter-jegyzetfüzetből.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646347"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Felhőbeli adatok elérése egy jegyzetfüzetben
 
-Érdekes munka egy Jupyter notebook adatokat igényel. Data, sőt, az éltető eleme notebookok.
+A Jupyter-jegyzetfüzetben érdekes munkát kell végezni. Az adat valóban a jegyzetfüzetek éltető eleme.
 
-Minden bizonnyal [import adatfájlokat a projekt](work-with-project-data-files.md) `curl` , még parancsok segítségével, mint a notebook letölteni egy fájlt közvetlenül. Valószínű azonban, hogy sokkal szélesebb körű adatokkal kell dolgoznia, amelyek nem fájlforrásokból, például REST API-kból, relációs adatbázisokból és felhőalapú tárolásból, például Azure-táblákból érhetők el.
+Az [adatfájlok természetesen egy projektbe is importálhatók](work-with-project-data-files.md), akár egy jegyzetfüzetből `curl` származó parancsok használatával is, közvetlenül a fájl letöltéséhez. Azonban valószínű, hogy a nem fájlokból, például a REST API-kkal, a rokon adatbázisokkal és a Felhőbeli tárolással, például az Azure Tables szolgáltatással elérhető, sokkal átfogóbb adatokkal kell dolgoznia.
 
-Ez a cikk röviden ismerteti ezeket a különböző lehetőségeket. Mivel az adathozzáférés a legjobban látható működés közben, futtatható kódot találhat az [Azure Notebook minták – Az adatok elérése.](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)
+Ez a cikk röviden ismerteti ezeket a különböző lehetőségeket. Mivel az adathozzáférés a legjobb működésben látható, futtatható kódot talál a [Azure Notebooks-mintákban – hozzáférhet az adataihoz](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API-k
 
-Általánosságban elmondható, hogy az internetről elérhető hatalmas mennyiségű adat nem fájlokon, hanem REST API-kon keresztül érhető el. Szerencsére, mivel a notebook cella tartalmazhat bármilyen kódot szeretne, kód segítségével küldhet kéréseket, és json adatokat. Ezután konvertálhatja a JSON-t bármilyen formátumba, például egy panda dataframe-re.
+Általánosságban elmondható, hogy az internetről elérhető nagy mennyiségű adatok nem a fájlokon, hanem a REST API-kon keresztül érhetők el. Szerencsére, mivel egy jegyzetfüzet-cella bármilyen kódot tartalmazhat, a kérelmek küldéséhez és a JSON-adat fogadásához kód is használható. Ezután átalakíthatja a JSON-t a használni kívánt formátumba, például egy Panda dataframe is.
 
-Az adatok rest API használatával való eléréséhez használja ugyanazt a kódot a jegyzetfüzet kódcelláiban, amelyet bármely más alkalmazásban használ. A kérési könyvtárat használó általános struktúra a következő:
+Ha REST API használatával kívánja elérni az adatelérést, használja ugyanazt a kódot egy jegyzetfüzet kódjában, amelyet bármely más alkalmazásban használ. A kérelmeket tartalmazó függvénytárat használó általános struktúra a következő:
 
 ```python
 import pandas
@@ -43,41 +43,41 @@ if response.status_code == 200:
 
 ## <a name="azure-sql-databases"></a>Azure SQL-adatbázisok
 
-Az SQL Server-adatbázisok a pyodbc vagy pymssql könyvtárak segítségével érhetők el.
+SQL Server adatbázisokhoz a pyodbc vagy a pymssql függvénytárak segítségével férhet hozzá.
 
-[A Python segítségével lekérdezheti az Azure SQL-adatbázis](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) utasításokat az AdventureWorks-adatokat tartalmazó adatbázis létrehozásához, és bemutatja, hogyan lehet lekérdezni ezeket az adatokat. Ugyanez a kód jelenik meg a cikk mintajegyzetfüzetében is.
+A [Python használatával lekérdezheti az Azure SQL Database-t](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) , és útmutatást nyújt a AdventureWorks tartalmazó adatbázisok létrehozásához, és bemutatja, hogyan lehet lekérdezni ezeket az információkat. Ugyanez a kód jelenik meg a minta jegyzetfüzetben ehhez a cikkhez.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Az Azure Storage számos különböző típusú nem relációs tárolást biztosít, attól függően, hogy milyen típusú adatokkal rendelkezik, és hogyan kell elérnie őket:
+Az Azure Storage számos különböző típust biztosít a nem kapcsolódó tároláshoz, az Ön által használt adattípustól és annak eléréséhez szükségestől függően:
 
-- Table Storage: alacsony költségű, nagy mennyiségű tárolót biztosít a táblázatos adatokhoz, például az összegyűjtött érzékelőnaplókhoz, diagnosztikai naplókhoz és így tovább.
-- Blob storage: fájlszerű tárolást biztosít bármilyen típusú adat számára.
+- Table Storage: alacsony díjszabású, nagy mennyiségű tárolást biztosít a táblázatos adatokhoz, például az érzékelők naplóihoz, a diagnosztikai naplókhoz és így tovább.
+- BLOB Storage: bármilyen típusú adattípushoz biztosít fájl-szerű tárolást.
 
-A mintajegyzetfüzet bemutatja a táblákkal és a blobokkal való munkát, beleértve azt is, hogyan használhat közös hozzáférésű aláírást a blobok írásvédett elérésének engedélyezéséhez.
+A minta notebook a táblázatok és a Blobok használatát mutatja be, beleértve a közös hozzáférésű aláírás használatát is, hogy csak olvasási hozzáférést engedélyezzen a blobokhoz.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Az Azure Cosmos DB egy teljes indexelt NoSQL-tárolót biztosít a JSON-dokumentumokhoz). Az alábbi cikkek számos különböző módon dolgozhatnak a Python-ból származó Cosmos DB-vel:
+A Azure Cosmos DB egy teljes körűen indexelt NoSQL-tárolót biztosít a JSON-dokumentumokhoz). A következő cikkek számos különböző módszert biztosítanak a Python-Cosmos DB való együttműködéshez:
 
-- [SQL API-alkalmazás létrehozása pythonnal](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Flask-alkalmazás létrehozása az Azure Cosmos DB MongoDB-hoz való API-jával](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [SQL API-alkalmazás létrehozása a Python használatával](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [MongoDB-hez készült Azure Cosmos DB API-val rendelkező lombik-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Graph-adatbázis létrehozása a Python és a Gremlin API használatával](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Cassandra-alkalmazás létrehozása pythonnal és Azure Cosmos DB-vel](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Table API-alkalmazás létrehozása pythonnal és Azure Cosmos DB-vel](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Cassandra-alkalmazás létrehozása a Python és a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Table API-alkalmazás létrehozása a Python és a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-A Cosmos DB használata során használhatja az [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) könyvtárat.
+Cosmos DB használatakor használhatja az [Azure-cosmosdb-Table](https://pypi.org/project/azure-cosmosdb-table/) könyvtárat.
 
 ## <a name="other-azure-databases"></a>Egyéb Azure-adatbázisok
 
-Az Azure számos más adatbázistípust is biztosít, amelyeket használhat. Az alábbi cikkek útmutatást nyújtanak az adatbázisok Pythonból való eléréséhez:
+Az Azure számos más adatbázis-típust biztosít, amelyeket használhat. Az alábbi cikkek útmutatást nyújtanak az adatbázisok Pythonból való eléréséhez:
 
 - [A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Python használatával](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [Rövid útmutató: Az Azure Redis Cache használata Pythonnal](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Python használatával](https://docs.microsoft.com/azure/mysql/connect-python)
-- [Azure-adatgyár](https://azure.microsoft.com/services/data-factory/)
-  - [Másolás varázsló az Azure Data Factory számára](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+- [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
+  - [Azure Data Factory másolási varázslója](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: Projektadatfájlok kalvaló megoldása](work-with-project-data-files.md)
+- [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)

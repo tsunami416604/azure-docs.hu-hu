@@ -1,17 +1,17 @@
 ---
-title: Hozzáférési házirendek hozzárendelése szolgáltatásvégpontokhoz
-description: Ismerje meg, hogyan rendelhet biztonsági hozzáférési biztonsági biztonsági biztonsági rendszereket http- vagy HTTPS-végpontokhoz a Service Fabric szolgáltatásban.
+title: Hozzáférési szabályzatok társítása szolgáltatási végpontokhoz
+description: Megtudhatja, hogyan rendelhet biztonsági hozzáférési házirendeket a Service Fabric szolgáltatásban lévő HTTP-vagy HTTPS-végpontokhoz.
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614655"
 ---
-# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Biztonsági hozzáférési házirend hozzárendelése HTTP- és HTTPS-végpontokhoz
-Ha run-as házirendet alkalmaz, és a szolgáltatásjegyzék deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy házirendet.**  **A SecurityAccessPolicy** biztosítja, hogy a végpontokhoz rendelt portok megfelelően korlátozódjanak arra a felhasználói fiókra, amelyen a szolgáltatás fut. Ellenkező esetben **a http.sys** nem fér hozzá a szolgáltatáshoz, és hibákat kap az ügyfél hívásaival. A következő példa a Customer1-fiókot alkalmazza az **EndpointName**nevű végpontra, amely teljes hozzáférési jogokat biztosít számára.
+# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz
+Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy**.  A **SecurityAccessPolicy** biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok megfelelően legyenek korlátozva a szolgáltatás által futtatott felhasználói fiókra. Ellenkező esetben a **http. sys** nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibákhoz juthat. A következő példa egy **végpontneve**nevű végpontra alkalmazza a Customer1-fiókot, amely teljes körű hozzáférési jogosultságokat biztosít.
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ Ha run-as házirendet alkalmaz, és a szolgáltatásjegyzék deklarálja a HTTP-
 </Policies>
 ```
 
-HTTPS-végpont esetén adja meg az ügyfélnek visszaadandó tanúsítvány nevét is. Az **EndpointBindingPolicy**használatával hivatkozik a tanúsítványra.  A tanúsítvány az alkalmazásjegyzék **Tanúsítványok** szakaszában van definiálva.
+HTTPS-végpont esetén az ügyfélnek visszaadott tanúsítvány nevét is meg kell adni. A tanúsítványt a **EndpointBindingPolicy**használatával hivatkozhat.  A tanúsítvány az alkalmazás jegyzékfájljának **tanúsítványok** szakaszában van definiálva.
 
 ```xml
 <Policies>
@@ -34,13 +34,13 @@ HTTPS-végpont esetén adja meg az ügyfélnek visszaadandó tanúsítvány nev�
 ```
 
 > [!WARNING] 
-> HTTPS használataesetén ne használja ugyanazt a portot és tanúsítványt az ugyanazon csomópontra telepített különböző szolgáltatáspéldányokhoz (az alkalmazástól függetlenül). Két különböző szolgáltatás frissítése ugyanazon port használatával különböző alkalmazáspéldányokban frissítési hibát eredményez. További információt a [Több alkalmazás frissítése HTTPS-végponttal ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)című témakörben talál.
+> HTTPS használata esetén ne használja ugyanazt a portot és tanúsítványt az azonos csomópontra telepített különböző szolgáltatási példányokhoz (az alkalmazástól függetlenül). Ha két különböző szolgáltatást frissít a különböző alkalmazás-példányok ugyanazon portjával, a frissítés sikertelen lesz. További információ: [több alkalmazás frissítése HTTPS-végpontokkal ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 > 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-A következő lépéseket az alábbi cikkekben olvashatja:
-* [Az alkalmazásmodell ismertetése](service-fabric-application-model.md)
-* [Erőforrások megadása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
+A következő lépésekhez olvassa el a következő cikkeket:
+* [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
+* [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

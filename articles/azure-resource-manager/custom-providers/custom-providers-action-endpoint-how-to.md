@@ -1,26 +1,26 @@
 ---
-title: Egyéni műveletek hozzáadása az Azure REST API-hoz
-description: Ismerje meg, hogyan adhat hozzá egyéni műveleteket az Azure REST API-hoz. Ez a cikk bemutatja az egyéni műveleteket végrehajtani kívánt végpontok követelményeit és ajánlott eljárásokat.
+title: Egyéni műveletek hozzáadása az Azure REST APIhoz
+description: Ismerje meg, hogyan adhat hozzá egyéni műveleteket az Azure REST APIhoz. Ez a cikk végigvezeti azon végpontok követelményein és ajánlott eljárásain, amelyek egyéni műveleteket kívánnak megvalósítani.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650395"
 ---
-# <a name="adding-custom-actions-to-azure-rest-api"></a>Egyéni műveletek hozzáadása az Azure REST API-hoz
+# <a name="adding-custom-actions-to-azure-rest-api"></a>Egyéni műveletek hozzáadása az Azure REST APIhoz
 
-Ez a cikk az egyéni műveleteket megvalósító Azure egyéni erőforrás-szolgáltatóvégpontok létrehozásához szükséges követelményeken és gyakorlati tanácsokon megy keresztül. Ha nem ismeri az Azure egyéni erőforrás-szolgáltatókat, olvassa [el az egyéni erőforrás-szolgáltatók áttekintését.](overview.md)
+Ez a cikk az egyéni műveleteket megvalósító Azure-beli egyéni erőforrás-szolgáltatói végpontok létrehozásának követelményeit és ajánlott eljárásait ismerteti. Ha nem ismeri az Azure egyéni erőforrás-szolgáltatóit, tekintse [meg az egyéni erőforrás-szolgáltatók áttekintése](overview.md)című témakört.
 
-## <a name="how-to-define-an-action-endpoint"></a>Műveletvégpont definiálása
+## <a name="how-to-define-an-action-endpoint"></a>Műveleti végpont definiálása
 
-A **végpont** egy URL-címet, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést közte és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta `myCustomAction` a `endpointURL`által végrehajtott **műveletet** tartalmazza.
+A **végpont** olyan URL-cím, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést az IT és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta egy implementált nevű `myCustomAction` **műveletet** tartalmaz `endpointURL`.
 
-Minta **Erőforrás-szolgáltató**:
+Minta **ResourceProvider**:
 
 ```JSON
 {
@@ -40,15 +40,15 @@ Minta **Erőforrás-szolgáltató**:
 }
 ```
 
-## <a name="building-an-action-endpoint"></a>Műveletvégpont létrehozása
+## <a name="building-an-action-endpoint"></a>Műveleti végpont létrehozása
 
-Egy **műveletet** megvalósító **végpontnak** kezelnie kell az azure-beli új API-ra vonatkozó kérést és választ. Amikor egy egyéni erőforrás-szolgáltató egy **műveletet** hoz létre, akkor létrehoz egy új API-k az Azure-ban. Ebben az esetben a művelet egy új `POST` Azure-művelet API-t hoz létre a hívásokhoz:
+Egy **műveletet** végrehajtó **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ha egy **művelettel** rendelkező egyéni erőforrás-szolgáltatót hoz létre, új API-készletet fog létrehozni az Azure-ban. Ebben az esetben a művelet egy új Azure Action API-t hoz majd `POST` a hívásokhoz:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
 ```
 
-Azure API bejövő kérése:
+Azure API bejövő kérelem:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction?api-version=2018-09-01-preview
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-Ezt a kérést a következő formában továbbítja a **végpontra:**
+Ezt a kérést a rendszer a következő formában továbbítja a **végpontnak** :
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,24 +78,10 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Hasonlóképpen a **végpontválasz** ezután visszakerül az ügyfélhez. A végpontválaszának a következőt kell visszaadnia:
+Hasonlóképpen a **végpont** válasza is vissza lesz továbbítva az ügyfélnek. A végpont válaszának vissza kell térnie:
 
-- Érvényes JSON-objektumdokumentum. Minden tömböt és karakterláncot egy felső objektum alá kell ágyazni.
-- A `Content-Type` fejlécet "application/json; charset=utf-8".
-
-``` HTTP
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-    "myProperty1": "myPropertyValue1",
-    "myProperty2": {
-        "myProperty3" : "myPropertyValue3"
-    }
-}
-```
-
-Az Azure egyéni erőforrás-szolgáltatóválasza:
+- Egy érvényes JSON-objektum dokumentuma. Az összes tömböt és karakterláncot egy felső objektum alá kell ágyazni.
+- A `Content-Type` fejlécet az "Application/JSON;" értékre kell beállítani. charset = UTF-8 ".
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -109,12 +95,26 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## <a name="calling-a-custom-action"></a>Egyéni művelet hívása
+Azure egyéni erőforrás-szolgáltató válasza:
 
-Az egyéni műveletek egyéni erőforrás-szolgáltatótól való lehívásának két fő módja van:
+``` HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+    "myProperty1": "myPropertyValue1",
+    "myProperty2": {
+        "myProperty3" : "myPropertyValue3"
+    }
+}
+```
+
+## <a name="calling-a-custom-action"></a>Egyéni művelet meghívása
+
+Az egyéni műveletek egy egyéni erőforrás-szolgáltatón való meghívásának két fő módja van:
 
 - Azure CLI
-- Azure Resource Manager-sablonok
+- Azure Resource Manager sablonok
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -132,16 +132,16 @@ az resource invoke-action --action {actionName} \
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-action | *igen* | A **ResourceProvider-ben**definiált művelet neve.
-Azonosítók | *igen* | A **ResourceProvider erőforrásazonosítója**.
-megkereső szerv | *nem* | A **végpontra**küldendő kérelemtörzs.
+action | *igen* | A **ResourceProvider**definiált művelet neve.
+azonosítók | *igen* | A **ResourceProvider**erőforrás-azonosítója.
+kérelem – törzs | *nem* | A **végpontnak**küldendő kérelem törzse.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
 > [!NOTE]
-> A műveletek támogatása korlátozott az Azure Resource Manager-sablonokban. Ahhoz, hogy a műveletet sablonon belül [`list`](../templates/template-functions-resource.md#list) lehessen meghívni, az előtagot a nevében kell tartalmaznia.
+> A műveletek korlátozott támogatást Azure Resource Manager sablonokban. Ahhoz, hogy a művelet meghívható legyen egy sablonon belül, tartalmaznia kell az [`list`](../templates/template-functions-resource.md#list) előtagot a nevében.
 
-Minta **erőforrás-szolgáltató** listaművelettel:
+Példa **ResourceProvider** a List művelettel:
 
 ```JSON
 {
@@ -186,13 +186,13 @@ Minta Azure Resource Manager sablon:
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-erőforrás-azonosító | *igen* | A **ResourceProvider erőforrásazonosítója**.
-apiVersion | *igen* | Az erőforrás-futásidejű API-verziója. Ennek mindig "2018-09-01-preview" legyen.
-függvényértékek | *nem* | A **végpontra**küldendő kérelemtörzs.
+resourceIdentifier | *igen* | A **ResourceProvider**erőforrás-azonosítója.
+apiVersion | *igen* | Az erőforrás-futtatókörnyezet API-verziója. Ennek mindig "2018-09-01-Preview" értékűnek kell lennie.
+functionValues | *nem* | A **végpontnak**küldendő kérelem törzse.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
-- [Rövid útmutató: Hozzon létre egyéni erőforrás-szolgáltatót, és telepítsen egyéni erőforrásokat](./create-custom-provider.md)
-- [Oktatóanyag: Egyéni műveletek és erőforrások létrehozása az Azure-ban](./tutorial-get-started-with-custom-providers.md)
-- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-hoz](./custom-providers-resources-endpoint-how-to.md)
+- [Rövid útmutató: Azure egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
+- [Oktatóanyag: egyéni műveletek és erőforrások létrehozása az Azure-ban](./tutorial-get-started-with-custom-providers.md)
+- [Útmutató: egyéni erőforrások hozzáadása az Azure REST APIhoz](./custom-providers-resources-endpoint-how-to.md)

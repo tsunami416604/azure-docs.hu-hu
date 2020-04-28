@@ -1,30 +1,30 @@
 ---
-title: StorageAccountSelector felhasználói felületi elem
-description: A Microsoft.Storage.StorageAccountSelector UI elem ismertetése az Azure Portalon.
+title: StorageAccountSelector FELHASZNÁLÓIFELÜLET-elem
+description: A Azure Portal Microsoft. Storage. StorageAccountSelector felhasználói felületi elemét ismerteti.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4fcaf0e5842ce8a65175d2fc1dfa2483a1203b2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651890"
 ---
-# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector felhasználói felületi elem
+# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector FELHASZNÁLÓIFELÜLET-elem
 
-Új vagy meglévő tárfiók kiválasztásának vezérlőja.
+Egy új vagy meglévő Storage-fiók kiválasztására szolgáló vezérlő.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
+## <a name="ui-sample"></a>Felhasználói felület mintája
 
-A vezérlő az alapértelmezett értéket mutatja.
+A vezérlő megjeleníti az alapértelmezett értéket.
 
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
 
-A vezérlő lehetővé teszi, hogy a felhasználó új tárfiókot hozzon létre, vagy válasszon ki egy meglévő tárfiókot.
+A vezérlő lehetővé teszi, hogy a felhasználó új Storage-fiókot hozzon létre, vagy válasszon ki egy meglévő Storage-fiókot.
 
-![Microsoft.Storage.StorageAccountSelector új](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+![Microsoft. Storage. StorageAccountSelector új](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
 
 ## <a name="schema"></a>Séma
 
@@ -62,11 +62,11 @@ A vezérlő lehetővé teszi, hogy a felhasználó új tárfiókot hozzon létre
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ha meg `defaultValue.name` van adva, a rendszer automatikusan ellenőrzi az egyediséget. Ha a tárfiók neve nem egyedi, a felhasználónak meg kell adnia egy másik nevet, vagy válasszon egy meglévő tárfiókot.
-- Az alapértelmezett `defaultValue.type` érték **a Premium_LRS.**
-- Minden olyan típus, `constraints.allowedTypes` amely nincs megadva, rejtett, és minden olyan típus, amely nincs `constraints.excludedTypes` megadva, megjelenik. `constraints.allowedTypes`és `constraints.excludedTypes` mindkettő választható, de nem használható egyszerre.
-- Ha `options.hideExisting` **igaz,** a felhasználó nem választhat meglévő tárfiókot. Az alapértelmezett érték: **hamis**.
+- Ha meg van `defaultValue.name` adva, a rendszer automatikusan érvényesíti az egyediséget. Ha a Storage-fiók neve nem egyedi, a felhasználónak másik nevet kell megadnia, vagy egy meglévő Storage-fiókot kell választania.
+- Az alapértelmezett értéke `defaultValue.type` **Premium_LRS**.
+- A nem meghatározott `constraints.allowedTypes` típusok rejtettek, és az itt `constraints.excludedTypes` megadott típusok láthatók. `constraints.allowedTypes`és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
+- Ha `options.hideExisting` az értéke **igaz**, a felhasználó nem választhat meglévő Storage-fiókot. Az alapértelmezett érték: **hamis**.
 
 ## <a name="next-steps"></a>További lépések
-* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
-* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

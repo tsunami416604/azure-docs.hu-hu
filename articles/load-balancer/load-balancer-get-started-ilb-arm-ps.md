@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Azure belső terheléselosztót a PowerShell használatával
+title: Belső Azure-Load Balancer létrehozása a PowerShell használatával
 titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure PowerShell-modullal az Azure Resource Managerben
 services: load-balancer
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045483"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 
 > [!div class="op_single_selector"]
-> * [Azure-portál](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -48,7 +48,7 @@ A terheléselosztó üzembe helyezéséhez létre kell hoznia a következő obje
 * Mintavételi konfiguráció: A virtuális gépek állapotának mintavételei.
 * Bejövő NAT-szabályok: A virtuális gépek közvetlen elérésére vonatkozó portszabályok.
 
-A terheléselosztó összetevőiről az [Azure Load Balancer összetevői](concepts-limitations.md#load-balancer-components)című témakörben talál további információt.
+További információ a terheléselosztó összetevőiről: Azure Load Balancer- [összetevők](concepts-limitations.md#load-balancer-components).
 
 A következő lépések elmagyarázzák, hogyan kell terheléselosztót konfigurálni két virtuális gép között.
 
@@ -251,7 +251,7 @@ A virtuális gép létrehozása után adja hozzá a hálózati adaptert.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>1. lépés: A terheléselosztó-erőforrás tárolása
 
-Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). A változó nevét használjuk **$lb.** A parancsfájlban lévő attribútumértékekhez használja az előző lépésekben létrehozott terheléselosztó-erőforrások nevét.
+Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). A (z) **$LB**nevű változót használjuk. A parancsfájlban szereplő attribútumok értékeihez használja az előző lépésekben létrehozott terheléselosztó-erőforrások nevét.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

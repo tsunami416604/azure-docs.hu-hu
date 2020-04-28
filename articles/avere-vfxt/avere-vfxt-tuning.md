@@ -1,54 +1,54 @@
 ---
-title: Avere vFXT fürt hangolása - Azure
-description: Egyéni beállítások áttekintése az Azure-hoz való Avere vFXT teljesítményének optimalizálása érdekében
+title: Avere vFXT-fürt finomhangolása – Azure
+description: Az Azure-beli avere-vFXT teljesítményének optimalizálására szolgáló egyéni beállítások áttekintése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76152935"
 ---
 # <a name="cluster-tuning"></a>A fürtök finomhangolása
 
-A legtöbb vFXT-fürt élvezheti a testreszabott teljesítménybeállítások előnyeit. Ezek a beállítások segítik a fürtöt abban, hogy a legjobban működjön az adott munkafolyamattal, adatkészlettel és eszközökkel.
+A legtöbb vFXT-fürt kihasználhatja a testreszabott teljesítmény-beállításokat. Ezek a beállítások segítenek abban, hogy a fürt a legjobban működjön az adott munkafolyamattal, adatkészlettel és eszközökkel.
 
-Ezt a testreszabást egy támogatási képviselő segítségével kell elvégezni, mivel ez magában foglalhatja az Avere vezérlőpulton nem elérhető szolgáltatások konfigurálását.
+Ezt a testreszabást a támogatási képviselők segítségével kell elvégezni, mivel ez olyan funkciók konfigurálását is magában foglalhatja, amelyek nem érhetők el a avere Vezérlőpultján.
 
-Ez a szakasz néhány, elvégezhető egyéni hangolást ismertet.
+Ez a szakasz néhány olyan egyéni finomhangolást ismertet, amelyet el lehet végezni.
 
 ## <a name="general-optimizations"></a>Általános optimalizálások
 
-Ezek a módosítások az adatkészlet tulajdonságai vagy a munkafolyamat-stílus alapján ajánlottak lehetnek.
+Ezeket a módosításokat az adatkészlet tulajdonságai vagy a munkafolyamat stílusa alapján lehet használni.
 
-* Ha a munkaterhelés írási nehéz, növelje az írási gyorsítótár méretét az alapértelmezett 20%-ról.
-* Ha az adatkészlet sok kis fájlt tartalmaz, növelje a fürt gyorsítótárának fájlszámlálási korlátját.
-* Ha a munka két adattár közötti másolással vagy áthelyezéssel jár, módosítsa az adatok áthelyezéséhez használt szálak számát:
+* Ha a számítási feladat írási nehéz, növelje az írási gyorsítótár méretét a 20%-os alapértéktől.
+* Ha az adatkészlet sok kisméretű fájlt foglal magában, növelje a fürt gyorsítótára fájlméretének számát.
+* Ha a munka két adattár közötti másolást vagy áthelyezést foglalja magában, módosítsa az adatok áthelyezéséhez használt szálak számát:
   * A sebesség növeléséhez növelheti a használt párhuzamos szálak számát.
-  * Ha a háttértároló kötete túlterheltté válik, előfordulhat, hogy csökkentenie kell a használt párhuzamos szálak számát.
-* Ha a fürt gyorsítótárazza az NFSv4 Hozzáférés-hozzáférés-hozzáférés-hozzáférés-hozzáférést használó központi fájlkezelő adatait, engedélyezze a hozzáférési módgyorsítótárazást az egyes ügyfelek fájlengedélyezésének egyszerűsítése érdekében.
+  * Ha a háttérbeli tároló kötete túlterhelt, előfordulhat, hogy csökkentenie kell a használt párhuzamos szálak számát.
+* Ha a fürt Nfsv4 névleképezője ACL-eket használó központi Filer adatait gyorsítótárazza, engedélyezze a hozzáférési mód gyorsítótárazását az egyes ügyfelek számára a fájlok engedélyezésének egyszerűsítése érdekében.
 
-## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Felhőbeli NAS- vagy felhőátjáró-optimalizálás
+## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloud NAS vagy Cloud Gateway-optimalizálás
 
-Felhőbeli NAS- vagy átjáró-forgatókönyv esetén a vFXT-fürt NAS-stílusú hozzáférést biztosít egy felhőtárolóhoz. A vFXT-fürt és a felhőalapú tárhely közötti nagyobb adatsebesség kihasználása érdekében a képviselő javasolhatja a beállítások módosítását, hogy agresszívebben leadja az adatokat a tárolókötetre a gyorsítótárból. Példa:
+A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Például:
 
-* A fürt és a tárolótároló közötti TCP-kapcsolatok számának növelése
+* Növelje meg a fürt és a tároló közötti TCP-kapcsolatok számát
 
-## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Felhőbeli bursting vagy hibrid WAN-optimalizálás
+## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloud burst vagy hibrid WAN-optimalizálás
 
-Felhőalapú bursting forgatókönyv vagy hibrid tároló WAN optimalizálási forgatókönyv esetén a vFXT-fürt integrációt biztosít a felhő és a helyszíni hardveres tárolás között. Ezek a változások hasznosak lehetnek:
+A felhőalapú és a hibrid tárolási WAN-optimalizálási forgatókönyv esetén a vFXT-fürt integrációt biztosít a felhő és a helyszíni hardveres tároló között. Ezek a változások hasznosak lehetnek:
 
-* A fürt és a központi fájlkezelő között engedélyezett TCP-kapcsolatok számának növelése
-* Engedélyezze a TÁVOLI magos fájlkezelő WAN-optimalizálási beállítását (Ez a beállítás távoli helyszíni fájlkezelőhöz vagy egy másik Azure-régióban lévő felhőalapú magfájl-fájlkezelőhöz használható.)
-* A TCP-szoftvercsatorna pufferméretének növelése<sup>*</sup>
-* A "mindig előre" beállítás engedélyezése a feleslegesen gyorsítótárazott fájlok csökkentéséhez<sup>*</sup>
+* Növelje a fürt és a Core Filer között engedélyezett TCP-kapcsolatok számát
+* Engedélyezze a távoli Core Filer WAN-optimalizálási beállítását (ez a beállítás használható távoli helyszíni Filer-hez vagy egy másik Azure-régióban lévő Cloud Core Filer-hoz.)
+* A TCP-szoftvercsatorna pufferének méretének növeléséhez<sup>*</sup>
+* A "mindig továbbítható" beállítás engedélyezése a redundánsan gyorsítótárazott fájlok csökkentése érdekében<sup>*</sup>
 
-<sup>*</sup>Ezek a korrekciók előfordulhat, hogy nem vonatkoznak minden rendszerre, a munkaterheléstől és a teljesítményigényektől függően.
+<sup>*</sup>Előfordulhat, hogy ezek a módosítások nem vonatkoznak minden rendszerre, a munkaterhelés és a teljesítmény igényeitől függően.
 
-## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Az Avere vFXT azure-hoz való optimalizálásának elősegítése
+## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Az Azure-hoz készült avere-vFXT optimalizálásának elősegítése
 
-Ha kapcsolatba szeretne lépni a támogatási munkatársakkal ezekről az optimalizálásokról, használja a Segítség a [rendszerrel kapcsolatban](avere-vfxt-open-ticket.md)című témakörben leírt eljárást.
+Ha kapcsolatba szeretné lépni az ezen optimalizálásokkal kapcsolatos támogatási munkatársakkal, használja a [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md)című témakörben ismertetett eljárást.

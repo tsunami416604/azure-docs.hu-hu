@@ -1,6 +1,6 @@
 ---
-title: Emelt szintű identitáskezelés (PIM) telepítése – Azure AD | Microsoft dokumentumok
-description: Bemutatja, hogyan tervezd meg az Azure AD kiemelt identitáskezelés (PIM) üzembe helyezését.
+title: Privileged Identity Management (PIM) üzembe helyezése – Azure AD | Microsoft Docs
+description: Útmutatás Azure AD Privileged Identity Management (PIM) üzembe helyezésének megtervezéséhez.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,171 +15,171 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025996"
 ---
-# <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD kiemelt identitáskezelés (PIM) telepítése
+# <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
-Ez a részletes útmutató ismerteti, hogyan tervezze meg a kiemelt identitáskezelés (PIM) az Azure Active Directory (Azure AD) szervezetben üzembe helyezését.
+Ez a részletes útmutató ismerteti, hogyan tervezhető meg a Privileged Identity Management (PIM) üzembe helyezése a Azure Active Directory (Azure AD) szervezetében.
 
 > [!TIP]
-> Ebben a cikkben a következő ként jelölt elemek jelennek meg:
+> Ebben a cikkben a következőként megjelölt elemeket fogja látni:
 > 
-> :heavy_check_mark: **A Microsoft ajánlja**
+> : heavy_check_mark: a **Microsoft javasolja**
 > 
-> Ezek általános javaslatok, és csak akkor hajtsa végre, ha az adott vállalati igényekre vonatkoznak.
+> Ezek általános javaslatok, és csak akkor kell megvalósítani, ha az adott vállalati igényekre vonatkoznak.
 
-## <a name="learn-about-privileged-identity-management"></a>Tudnivalók a kiemelt identitáskezelésről
+## <a name="learn-about-privileged-identity-management"></a>Tudnivalók a Privileged Identity Management
 
-Az Azure AD kiemelt identitáskezelés segítségével kezelheti a kiemelt felügyeleti szerepköröket az Azure AD, az Azure-erőforrások és más Microsoft Online Services szolgáltatásban. Egy olyan világban, ahol a kiemelt identitások vannak hozzárendelve és elfelejtve, a Kiemelt identitáskezelés olyan megoldásokat kínál, mint az just-in-time hozzáférés, a jóváhagyási munkafolyamatok kérése és a teljes mértékben integrált hozzáférési felülvizsgálatok, így azonosíthatja, feltárhatja és megelőzheti a rosszindulatú a kiváltságos szerepek valós idejű tevékenységeit. A kiemelt identitáskezelés üzembe helyezése a kiemelt szerepkörök kezelése a szervezetben nagyban csökkenti a kockázatot, miközben a kiemelt szerepkörök tevékenységeinek értékes betekintést nyújt.
+A Azure AD Privileged Identity Management segítségével felügyelheti az Azure AD, az Azure-erőforrások és más Microsoft Online Services Kiemelt felügyeleti szerepköreit. Egy olyan világban, ahol privilegizált identitások vannak hozzárendelve és elfelejtve, Privileged Identity Management olyan megoldásokat kínál, mint az igény szerinti hozzáférés, a jóváhagyási munkafolyamatok kérelmezése és a teljes körűen integrált hozzáférési felülvizsgálatok, amelyek segítségével valós időben azonosíthatja, feltárhatja és megakadályozhatja a Kiemelt szerepkörök rosszindulatú tevékenységeit. A munkahelyen a Kiemelt szerepkörök kezeléséhez Privileged Identity Management üzembe helyezése nagy mértékben csökkenti a kockázatokat, miközben a Kiemelt szerepkörök tevékenységeivel kapcsolatos értékes információkra felszínre kerül.
 
-### <a name="business-value-of-privileged-identity-management"></a>A kiemelt identitáskezelés üzleti értéke
+### <a name="business-value-of-privileged-identity-management"></a>Privileged Identity Management üzleti értéke
 
-**Kockázat kezelése** – A szervezet védelme a [minimális jogosultsági hozzáférés](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) és a just-in-time hozzáférés elvének érvényesítésével. A felhasználók jogosultsággal rendelkező szerepkörökhöz való állandó hozzárendeléseinek számának minimalizálásával, valamint a jóváhagyások és az MFA jogosultságszint-emelésre való kényszerítésével jelentősen csökkentheti a szervezeten belüli kiemelt hozzáféréssel kapcsolatos biztonsági kockázatokat. A legkisebb jogosultság és a just-in-time hozzáférés kényszerítése azt is lehetővé teszi, hogy tekintse meg a kiemelt szerepkörökhöz való hozzáférés előzményeit, és nyomon kövesse a biztonsági problémákat, ahogy azok megtörténnek.
+A [minimális jogosultsági szintű hozzáférés](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) és az igény szerinti hozzáférés elvét kikényszerítve **kezelheti a szervezet kockázatkezelését** . Azáltal, hogy minimalizálja a felhasználók állandó hozzárendeléseinek számát a Kiemelt szerepkörökhöz, valamint a jóváhagyások érvényesítését és az MFA-t a jogosultságszint-emelésre, nagy mértékben csökkentheti az emelt szintű hozzáféréshez kapcsolódó biztonsági kockázatokat a szervezetében. A minimális jogosultságok érvényesítése és az igény szerinti hozzáférés is lehetővé teszi, hogy megtekintse a Kiemelt szerepkörökhöz való hozzáférés előzményeit, és nyomon követhesse a biztonsági problémákat.
 
-**Címmegfelelőség és -A** kiemelt identitáskezelés üzembe helyezése környezetet hoz létre a folyamatos identitáskezeléshez. A kiemelt identitások just-in-time jogosultsági szintű jogosultsággal rendelkező identitások jogosultsági szintű identitások szolgáltatása lehetővé teszi a kiemelt identitáskezelés a szervezet kiemelt hozzáférési tevékenységeinek nyomon követését. Emellett megtekintheti és fogadhatja az állandó és jogosult szerepkörök szervezeten belüli összes hozzárendeléséről szóló értesítéseket. A hozzáférés-felülvizsgálat révén rendszeresen naplózhatja és eltávolíthatja a szükségtelen kiemelt identitásokat, és meggyőződhet arról, hogy a szervezet megfelel a legszigorúbb identitás-, hozzáférési és biztonsági szabványoknak.
+A **megfelelőség és az irányítás** – a Privileged Identity Management üzembe helyezése a környezet folyamatos identitás-irányítását eredményezi. A magas jogosultsági szintű identitások igény szerinti megemelése lehetővé teszi, hogy a Privileged Identity Management nyomon kövessék a szervezet privilegizált hozzáférési tevékenységeit. A szervezeten belüli állandó és jogosult szerepkörök összes hozzárendelésére vonatkozó értesítéseket is megtekinthet és fogadhat. A hozzáférési felülvizsgálattal rendszeresen ellenőrizheti és eltávolíthatja a szükségtelen jogosultságú identitásokat, és gondoskodhat arról, hogy a szervezet megfeleljen a legszigorúbb identitási, hozzáférési és biztonsági szabványoknak.
 
-**Költségek csökkentése** – Csökkentse a költségeket a hatékonysági problémák, az emberi hibák és a biztonsági problémák megszüntetésével a Kiemelt identitáskezelés megfelelő telepítésével. A nettó eredmény a kiváltságos identitásokkal kapcsolatos kiberbűncselekmények csökkentése, amelyekből költségesés nehéz kiheverni őket. A kiemelt identitáskezelés a szabályok és szabványok betartásával kapcsolatban a hozzáféréssel kapcsolatos információk naplózásával kapcsolatos költségek csökkentésében is segítséget nyújt.
+**Csökkentse a költségeket** – csökkentse a hatékonyságot, az emberi hibákat és a biztonsági problémákat a Privileged Identity Management megfelelő üzembe helyezésével. A nettó eredmény az emelt szintű identitásokkal kapcsolatos számítógépes bűncselekmények csökkentése, ami költséges és nehézkes a helyreállításhoz. A Privileged Identity Management a szervezet számára is segít csökkenteni a hozzáférés-naplózási információkhoz kapcsolódó költségeket, amikor megfelel a szabályozásoknak és szabványoknak.
 
-További információ: [Mi az Azure AD kiemelt identitáskezelés?](pim-configure.md).
+További információ: [Mi az Azure ad Privileged Identity Management?](pim-configure.md)
 
 ### <a name="licensing-requirements"></a>Licenckövetelmények
 
-A Kiemelt identitáskezelés használatához a címtárnak rendelkeznie kell az alábbi fizetett vagy próbalicencek egyikével:
+Privileged Identity Management használatához a címtárnak a következő fizetős vagy próbaverziós licencek egyikével kell rendelkeznie:
 
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- M5 Microsoft 365
 
-További információt a [Kiemelt identitáskezelés használatára vonatkozó licenckövetelmények](subscription-requirements.md)című témakörben talál.
+További információ: [a Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
 ### <a name="key-terminology"></a>Kulcsfontosságú terminológia
 
 | Kifejezés vagy fogalom | Leírás |
 | --- | --- |
-| Támogatható | Olyan szerepkör-hozzárendelés, amelya szerepkör használatához egy vagy több műveletet kell végrehajtania. Ha egy felhasználó jogosulttá vált egy szerepkörre, ez azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell végrehajtania. Nincs különbség a hozzáférés adott valaki egy állandó versus jogosult szerepkör-hozzárendelés. Az egyetlen különbség az, hogy néhány ember nem kell, hogy a hozzáférés minden alkalommal. |
-| aktiválás | Egy vagy több művelet végrehajtása egy olyan szerepkör használatára, amelyre a felhasználó jogosult. A műveletek közé tartozhat a többtényezős hitelesítés (MFA) ellenőrzése, az üzleti indoklás megadása vagy a kijelölt jóváhagyók jóváhagyásának kérése. |
-| just-in-time (JIT) hozzáférés | Olyan modell, amelyben a felhasználók ideiglenes engedélyeket kapnak a kiemelt feladatok végrehajtására, ami megakadályozza, hogy rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek az engedélyek lejárta után. A hozzáférés csak akkor érhető el, ha a felhasználóknak szükségük van rá. |
-| a legkisebb jogosultsághoz való hozzáférés elve | Ajánlott biztonsági gyakorlat, amelyben minden felhasználó csak a feladatok elvégzéséhez szükséges minimális jogosultságokkal rendelkezik. Ez a gyakorlat minimálisra csökkenti a globális rendszergazdák számát, és ehelyett bizonyos esetekben adott rendszergazdai szerepköröket használ. |
+| támogatható | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
+| aktiválás | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
+| igény szerinti (JIT) hozzáférés | Olyan modell, amelyben a felhasználók ideiglenes engedélyeket kapnak a Kiemelt feladatok végrehajtásához, ami megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek az engedélyek lejárta után. A hozzáférés csak akkor adható meg, ha a felhasználóknak szüksége van rá. |
+| a minimális jogosultsági szintű hozzáférés elve | Ajánlott biztonsági eljárás, amelyben minden felhasználó csak a végrehajtásra jogosult feladatok végrehajtásához szükséges minimális jogosultságokkal rendelkezik. Ez a gyakorlat lekicsinyíti a globális rendszergazdák számát, és bizonyos helyzetekben adott rendszergazdai szerepköröket használ. |
 
-További információ: [Terminológia](pim-configure.md#terminology).
+További információ: [terminológia](pim-configure.md#terminology).
 
-### <a name="high-level-overview-of-how-privileged-identity-management-works"></a>A kiemelt identitáskezelés működésének magas szintű áttekintése
+### <a name="high-level-overview-of-how-privileged-identity-management-works"></a>A Privileged Identity Management működésének magas szintű áttekintése
 
-1. A kiemelt identitáskezelés úgy van beállítva, hogy a felhasználók jogosultak legyenek a kiemelt szerepkörökre.
-1. Ha egy jogosult felhasználónak a kiemelt szerepkörét kell használnia, aktiválja a szerepkört a kiemelt identitáskezelés ben.
-1. A szerepkörhöz beállított kiemelt identitáskezelési beállításoktól függően a felhasználónak végre kell hajtson végre bizonyos lépéseket (például többtényezős hitelesítést, jóváhagyást vagy ok megadását.)
-1. Miután a felhasználó sikeresen aktiválta a szerepkörét, megkapja a szerepkört egy előre konfigurált időszakra.
-1. A rendszergazdák megtekinthetik az összes kiemelt identitáskezelési tevékenység előzményeit a naplóban. Emellett tovább biztosíthatják az Azure AD-szervezeteket, és megfelelhetnek a megfelelőségnek a kiemelt identitáskezelési funkciók, például a hozzáférési felülvizsgálatok és riasztások használatával.
+1. A Privileged Identity Management úgy van beállítva, hogy a felhasználók jogosultak legyenek a Kiemelt szerepkörökre.
+1. Ha egy jogosult felhasználónak a Kiemelt szerepkört kell használnia, aktiválja a szerepkört Privileged Identity Managementban.
+1. A szerepkörhöz konfigurált Privileged Identity Management beállításoktól függően a felhasználónak végre kell hajtania bizonyos lépéseket (például a többtényezős hitelesítés végrehajtása, a jóváhagyás beszerzése vagy az OK megadása).
+1. Miután a felhasználó sikeresen aktiválta a szerepkört, egy előre konfigurált időszakot kapnak a szerepkörhöz.
+1. A rendszergazdák megtekinthetik az összes Privileged Identity Management tevékenység előzményeit a naplóban. Emellett az Azure AD-szervezeteket továbbra is biztonságossá tehetik, és Privileged Identity Management-funkciókkal, például hozzáférési felülvizsgálatokkal és riasztásokkal teljesítik a megfelelőséget.
 
-További információ: [Mi az Azure AD kiemelt identitáskezelés?](pim-configure.md).
+További információ: [Mi az Azure ad Privileged Identity Management?](pim-configure.md)
 
-### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>Kiemelt identitáskezelés által kezelhető szerepkörök
+### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>A Privileged Identity Management felügyelhető szerepkörök
 
-**Azure AD-szerepkörök** – Ezek a szerepkörök mind az Azure Active Directoryban (például a globális rendszergazda, az Exchange-rendszergazda és a biztonsági rendszergazda). A szerepkörökről és azok funkcióiról az [Azure Active Directory rendszergazdai szerepkör-engedélyei](../users-groups-roles/directory-assign-admin-roles.md)című dokumentumban olvashat bővebben. Ha segítségre van szüksége annak meghatározásához, hogy mely szerepköröket szeretné hozzárendelni a rendszergazdákhoz, olvassa el [a legkevésbé kiemelt szerepkörök feladat szerint című témakört.](../users-groups-roles/roles-delegate-by-task.md)
+**Azure ad-szerepkörök** – ezek a szerepkörök mind Azure Active Directory (például globális rendszergazda, Exchange-rendszergazda és biztonsági rendszergazda). A szerepkörökről és azok funkcióival kapcsolatos további információkért tekintse meg [Azure Active Directory a rendszergazdai szerepkör engedélyei](../users-groups-roles/directory-assign-admin-roles.md)című részt. A rendszergazdák által hozzárendelt szerepkörök meghatározásával kapcsolatos segítségért tekintse meg a [legkevésbé Kiemelt szerepkörök feladat szerint feladatot](../users-groups-roles/roles-delegate-by-task.md).
 
-**Azure-erőforrás-szerepkörök** – Ezek a szerepkörök egy Azure-erőforráshoz, erőforráscsoporthoz, előfizetéshez vagy felügyeleti csoporthoz kapcsolódnak. A kiemelt identitáskezelés csak időben biztosít hozzáférést a beépített szerepkörökhöz, például a tulajdonoshoz, a felhasználói hozzáférés rendszergazdájához és a közreműködőhöz, valamint [az egyéni szerepkörökhöz.](../../role-based-access-control/custom-roles.md) Az Azure-erőforrás-szerepkörökről további információt a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)című témakörben talál.
+**Azure-erőforrás szerepkörei** – ezek a szerepkörök egy Azure-erőforráshoz, erőforráscsoporthoz, előfizetéshez vagy felügyeleti csoportjához vannak társítva. A Privileged Identity Management igény szerinti hozzáférést biztosít a beépített szerepkörökhöz, például a tulajdonoshoz, a felhasználói hozzáférés-adminisztrátorhoz és a Közreműködőhöz, valamint [egyéni szerepkörökhöz](../../role-based-access-control/custom-roles.md). Az Azure erőforrás-szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md).
 
-További információt a [Kiemelt identitáskezelés ben nem kezelhető szerepkörök című témakörben](pim-roles.md)talál.
+További információ: [Privileged Identity Managementban nem felügyelhető szerepkörök](pim-roles.md).
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
 
-Ez a szakasz arra összpontosít, hogy mit kell tennie, mielőtt a szervezetben üzembe helyezne kiemelt identitáskezelést. Alapvető fontosságú, hogy kövesse az utasításokat, és megérteni a fogalmakebben a szakaszban, mivel ezek végigvezeti, hogy megteremtse a legjobb terv szabott a szervezet kiemelt identitások.
+Ez a szakasz azt ismerteti, hogy mit kell tennie a Privileged Identity Management a szervezeten belüli üzembe helyezése előtt. Fontos, hogy kövesse az utasításokat, és Ismerje meg az ebben a szakaszban ismertetett fogalmakat, mivel útmutatást nyújt a szervezet emelt szintű identitásához igazított legjobb terv létrehozásához.
 
-### <a name="identify-your-stakeholders"></a>Az érdekelt felek azonosítása
+### <a name="identify-your-stakeholders"></a>Az érintettek azonosítása
 
-A következő szakasz segítséget nyújt a projektben részt vevő összes érdekelt fél azonosításában, és a regisztrációt, az értékelést vagy a tájékoztatáshoz szükséges adatokat. Külön táblákat tartalmaz a kiemelt identitáskezelés azure AD-szerepkörökhöz és az Azure-erőforrás-szerepkörök kiemelt identitáskezelés telepítéséhez. A szervezetnek megfelelően vegye fel az érdekelt feleket az alábbi táblázatba.
+A következő szakasz segítségével azonosíthatja a projektben érintett összes érintettet, és ki kell jelentkeznie, ellenőriznie vagy tájékoztatnia kell. Külön táblákat tartalmaz a Privileged Identity Management Azure AD-szerepkörökhöz való üzembe helyezéséhez és az Azure-beli erőforrás-szerepkörök Privileged Identity Managementához. Adja hozzá az érintetteket az alábbi táblázathoz a szervezete számára megfelelő módon.
 
-- SO = A projekt aláírása
-- R = Tekintse át ezt a projektet, és adjon meg
-- I = Tájékoztatás erről a projektről
+- TEHÁT = kijelentkezés ezen a projekten
+- R = a projekt áttekintése és bemenet megadása
+- I = tájékozott a projektről
 
-#### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érdekelt felek: Kiemelt identitáskezelés Azure AD-szerepkörökhöz
+#### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Név | Szerepkör | Műveletek |
+| Name (Név) | Szerepkör | Műveletek |
 | --- | --- | --- |
-| Név és e-mail | **Identitástervező vagy Az Azure globális rendszergazdája**<br/>Az identitáskezelő csapat képviselője, aki annak meghatározásáért felelős, hogy ez a változás hogyan igazodik a szervezet alapvető identitáskezelési infrastruktúrájához. | SO/R/I |
-| Név és e-mail | **Szolgáltatás tulajdonosa / Line manager**<br/>Egy szolgáltatás informatikai tulajdonosainak vagy egy szolgáltatáscsoportnak a képviselője. Ezek kulcsfontosságúak a döntések meghozatalában és a kiemelt identitáskezelés bevezetésében a csapat számára. | SO/R/I |
-| Név és e-mail | **Biztonság tulajdonosa**<br/>A biztonsági csoport képviselője, aki aláírhatja, hogy a terv megfelel a szervezet biztonsági követelményeinek. | SO/R |
-| Név és e-mail | **INFORMATIKAI támogatási menedzser / Ügyfélszolgálat**<br/>Az informatikai támogatási szervezet képviselője, aki az ügyfélszolgálati szempontból tud hozzájárulni a módosítás támogathatóságához. | R/I |
-| A próbafelhasználók neve és e-mail címe | **Kiemelt szerepkör-felhasználók**<br/>Az a felhasználói csoport, amelyhez a kiemelt identitáskezelés van megvalósítva. Tudniuk kell, hogyan aktiválhatják a szerepköreiket, ha a kiemelt identitáskezelés megvalósítása után. | I |
+| Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management-infrastruktúrához. | SO/R/I |
+| Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a munkatársaik Privileged Identity Managementának elősegítésében. | SO/R/I |
+| Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
+| Név és e-mail | **INFORMATIKAI támogatás kezelője/ügyfélszolgálata**<br/>Az informatikai támogatási szervezet egyik képviselője, aki a változás támogatását nyújtja a helpdesk szemszögéből. | R/I |
+| A kísérleti felhasználók neve és e-mail-címe | **Kiemelt szerepkörű felhasználók**<br/>Azon felhasználók csoportja, amelyeken a Privileged Identity Management implementálva van. Tudnia kell, hogyan aktiválja a szerepköröket Privileged Identity Management megvalósítása után. | I |
 
-#### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érdekelt felek: Kiemelt identitáskezelés Azure-erőforrás-szerepkörökhöz
+#### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érintett felek: Privileged Identity Management az Azure-erőforrás szerepköreihez
 
-| Név | Szerepkör | Műveletek |
+| Name (Név) | Szerepkör | Műveletek |
 | --- | --- | --- |
-| Név és e-mail | **Előfizetés / Erőforrás-tulajdonos**<br/>A Kiemelt identitáskezelés felügyeletét használó minden egyes előfizetés vagy erőforrás informatikai tulajdonosainak képviselője | SO/R/I |
-| Név és e-mail | **Biztonság tulajdonosa**<br/>A biztonsági csoport képviselője, aki aláírhatja, hogy a terv megfelel a szervezet biztonsági követelményeinek. | SO/R |
-| Név és e-mail | **INFORMATIKAI támogatási menedzser / Ügyfélszolgálat**<br/>Az informatikai támogatási szervezet képviselője, aki az ügyfélszolgálati szempontból tud hozzájárulni a módosítás támogathatóságához. | R/I |
-| A próbafelhasználók neve és e-mail címe | **RBAC szerepkör-felhasználók**<br/>Az a felhasználói csoport, amelyhez a kiemelt identitáskezelés van megvalósítva. Tudniuk kell, hogyan aktiválhatják a szerepköreiket, ha a kiemelt identitáskezelés megvalósítása után. | I |
+| Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
+| Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
+| Név és e-mail | **INFORMATIKAI támogatás kezelője/ügyfélszolgálata**<br/>Az informatikai támogatási szervezet egyik képviselője, aki a változás támogatását nyújtja a helpdesk szemszögéből. | R/I |
+| A kísérleti felhasználók neve és e-mail-címe | **RBAC szerepkör-felhasználók**<br/>Azon felhasználók csoportja, amelyeken a Privileged Identity Management implementálva van. Tudnia kell, hogyan aktiválja a szerepköröket Privileged Identity Management megvalósítása után. | I |
 
-### <a name="enable-privileged-identity-management"></a>Kiemelt identitáskezelés engedélyezése
+### <a name="enable-privileged-identity-management"></a>Privileged Identity Management engedélyezése
 
-A tervezési folyamat részeként először hozzá kell járulnia, és engedélyeznie kell a kiemelt identitáskezelést a Kiemelt identitáskezelés cikk [használatának megkezdéséhez](pim-getting-started.md) követve. A kiemelt identitáskezelés engedélyezése hozzáférést biztosít bizonyos funkciókhoz, amelyek kifejezetten a központi telepítés elősegítésére szolgálnak.
+A tervezési folyamat részeként először el kell fogadnia a Privileged Identity Managementt, és engedélyeznie kell az [Privileged Identity Management cikk használatának](pim-getting-started.md) első lépéseit. A Privileged Identity Management engedélyezése olyan funkciók elérését teszi lehetővé, amelyek kifejezetten az üzemelő példány segítségére lettek kialakítva.
 
-Ha a cél az Azure-erőforrások kiemelt identitáskezelése üzembe helyezése, kövesse [a discover Azure-erőforrások kezelésére a kiemelt identitáskezelés cikkben.](pim-resource-roles-discover-resources.md) Csak az előfizetések és felügyeleti csoportok tulajdonosai fedezhetik fel és hozhatják létre ezeket az erőforrásokat a kiemelt identitáskezeléshez. A bedeszkázott rendszer bedeszkázása után a PIM-funkció minden szinten elérhető a tulajdonosok számára, beleértve a felügyeleti csoportot, az előfizetést, az erőforráscsoportot és az erőforrást. Ha Ön globális rendszergazda, aki az Azure-erőforrásokhoz próbálja üzembe helyezni a kiemelt identitáskezelést, [az összes Azure-előfizetés kezeléséhez hozzáférhet,](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) hogy hozzáférést biztosítson magának a címtárban lévő összes Azure-erőforráshoz felderítéscéljából. Azonban azt javasoljuk, hogy jóváhagyást kapjon az egyes előfizetés-tulajdonosok, mielőtt az erőforrások kezelése a kiemelt identitáskezelés.
+Ha a cél az Azure-erőforrásokhoz való Privileged Identity Management üzembe helyezése, kövesse az [Azure-erőforrások felderítése Privileged Identity Management cikkben való felügyeletét](pim-resource-roles-discover-resources.md) ismertető cikket. Csak az előfizetések és a felügyeleti csoportok tulajdonosai tudják felderíteni és bevezetni ezeket az erőforrásokat Privileged Identity Managementba. A bevezetést követően a PIM funkció minden szinten elérhető a tulajdonosok számára, beleértve a felügyeleti csoportot, az előfizetést, az erőforráscsoportot és az erőforrást. Ha Ön a globális rendszergazda, aki az Azure-erőforrások Privileged Identity Management telepítését kísérli meg, az [összes Azure-előfizetés kezeléséhez megemelheti a hozzáférést](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , hogy az összes Azure-erőforráshoz hozzáférhessen a felderítéshez. Azt javasoljuk azonban, hogy az egyes előfizetésekhez tartozó tulajdonosok jóváhagyása előtt az erőforrásaikat Privileged Identity Management-mel kezelhesse.
 
-### <a name="enforce-principle-of-least-privilege"></a>A legkisebb jogosultság elvének érvényesítése
+### <a name="enforce-principle-of-least-privilege"></a>A legalacsonyabb jogosultsági szint betartatásának elve
 
-Fontos, hogy győződjön meg arról, hogy a szervezetben a legkisebb jogosultság elvét az Azure AD és az Azure erőforrás-szerepkörök.
+Fontos, hogy az Azure AD-hez és az Azure-erőforrás szerepköreihez egyaránt érvényesítse a legalacsonyabb jogosultsági szint elvét a szervezetben.
 
 #### <a name="azure-ad-roles"></a>Azure AD-szerepkörök
 
-Az Azure AD-szerepkörök esetében gyakori, hogy a szervezetek a globális rendszergazdai szerepkört jelentős számú rendszergazdához rendelik, ha a legtöbb rendszergazdának csak egy vagy két adott rendszergazdai szerepkörre van szüksége. Kiemelt szerepkör-hozzárendelések is általában nem felügyelt marad.
+Az Azure AD-szerepkörök esetében gyakori, hogy a szervezetek jelentős számú rendszergazdához rendelik a globális rendszergazdai szerepkört, ha a legtöbb rendszergazdának csak egy vagy két konkrét rendszergazdai szerepkörre van szüksége. A Kiemelt szerepkör-hozzárendelések is általában nem maradnak felügyelet alatt.
 
 > [!NOTE]
 > Gyakori buktatók a szerepkör-delegálásban:
 >
-> - Az Exchange-ért felelős rendszergazda globális rendszergazdai szerepkört kap, még akkor is, ha csak az Exchange-rendszergazdai szerepkörre van szüksége a napi feladat elvégzéséhez.
-> - A Globális rendszergazda szerepkör egy Office-rendszergazdához van rendelve, mert a rendszergazdának biztonsági és SharePoint-rendszergazdai szerepkörökre is szüksége van, és egyszerűbb csak egy szerepkört delegálni.
-> - A rendszergazda már régen biztonsági rendszergazdai szerepkört kapott egy feladat végrehajtásához, de soha nem lett eltávolítva.
+> - Az Exchange-hez felelős rendszergazda a globális rendszergazdai szerepkört kapja, annak ellenére, hogy csak az Exchange-rendszergazdai szerepkörre van szükségük a napi feladat elvégzéséhez.
+> - A globális rendszergazdai szerepkör hozzá van rendelve egy Office-rendszergazdához, mert a rendszergazdának a biztonsági és a SharePoint-rendszergazdai szerepkörökre is szüksége van, és egyszerűbb csak egyetlen szerepkört delegálni.
+> - A rendszergazda biztonsági rendszergazdai szerepkört rendelt a feladat elvégzéséhez, de soha nem távolították el.
 
-Kövesse az alábbi lépéseket az Azure AD-szerepkörök minimális jogosultsági elvének érvényesítéséhez.
+Az alábbi lépések végrehajtásával kényszerítheti ki az Azure AD-szerepkörökhöz tartozó legalacsonyabb jogosultsági szint elvét.
 
-1. A szerepkörök részletességét az elérhető Azure [AD-rendszergazdai szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles)olvasásával és megértésével értheti meg. Önnek és a csapatának az [Azure AD-ben identitásfeladat szerint](../users-groups-roles/roles-delegate-by-task.md)is hivatkoznia kell a rendszergazdai szerepkörökre, amely ismerteti az adott feladatok legkevésbé kiemelt szerepkörét.
+1. A szerepkörök részletességének megismeréséhez olvassa el és ismerkedjen meg az [elérhető Azure ad-rendszergazdai szerepkörökkel](../users-groups-roles/directory-assign-admin-roles.md#available-roles). Az Azure AD-ben Ön és csapata is hivatkozhat a [rendszergazdai szerepkörökre az Azure ad-ben](../users-groups-roles/roles-delegate-by-task.md), amely ismerteti a legkevésbé Kiemelt szerepkört az adott feladatokhoz.
 
-1. Azok nak a listája, akik kiemelt szerepköröket töltenek be a szervezetben. A Kiemelt [identitáskezelés varázslóval](pim-security-wizard.md#run-the-wizard) a következőhöz hasonló lapot érhet el.
+1. A szervezete Kiemelt szerepkörrel rendelkező szerepköreinek listázása. A [Privileged Identity Management varázslóval](pim-security-wizard.md#run-the-wizard) a következőhöz hasonló oldalhoz juthat.
 
-    ![A Kiemelt szerepkörök panelje, amely megmutatja, hogy ki rendelkezik kiemelt szerepkörrel](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Kiemelt szerepkörök felderítése ablaktábla, amely kiemelt szerepkörökkel rendelkezik](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
-1. A szervezet összes globális rendszergazdája számára megtudhatja, hogy miért van szükségük a szerepkörre. Az előző dokumentáció elolvasása alapján, ha a személy feladatát egy vagy több részletes rendszergazdai szerepkör is el tudja végezni, távolítsa el őket a globális rendszergazdai szerepkörből, és ennek megfelelően hajtsa végre a hozzárendeléseket az Azure Active Directoryban (hivatkozásként: A Microsoft jelenleg csak mintegy 10 rendszergazda a globális rendszergazdai szerepkörrel rendelkezik. További információ [arról, hogy](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)a Microsoft hogyan használja a Kiemelt identitáskezelést .
+1. A szervezet összes globális rendszergazdája számára Ismerje meg, hogy miért van szükségük a szerepkörre. A korábbi dokumentáció elolvasása alapján, ha a személy feladatát egy vagy több részletes rendszergazdai szerepkörrel is elvégezheti, távolítsa el őket a globális rendszergazdai szerepkörből, és ennek megfelelően végezze el a hozzárendeléseket Azure Active Directoryban (hivatkozás: a Microsoft jelenleg csak a globális rendszergazdai szerepkörrel rendelkező 10 rendszergazdával rendelkezik. Ismerje meg, [hogyan használja a Microsoft a Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
-1. Az összes többi Azure AD-szerepkör esetében tekintse át a hozzárendelések listáját, azonosítsa azokat a rendszergazdákat, akiknek már nincs szükségük a szerepkörre, és távolítsa el őket a hozzárendeléseikből.
+1. Az összes többi Azure AD-szerepkör esetében tekintse át a hozzárendelések listáját, azonosítsa azokat a rendszergazdákat, akiknek már nincs szüksége a szerepkörre, majd távolítsa el őket a hozzárendeléseiről.
 
-Az utolsó két lépés automatizálásához használhatja a hozzáférési felülvizsgálatok a kiemelt identitáskezelés. A kiemelt [identitáskezelés ben az Azure AD-szerepkörök hozzáférési felülvizsgálatának elindításához](pim-how-to-start-security-review.md)szükséges lépéseket követve beállíthat egy hozzáférési felülvizsgálatot minden olyan Azure AD-szerepkörhöz, amely egy vagy több taggal rendelkezik.
+Az utolsó két lépés automatizálásához használhatja a Privileged Identity Management hozzáférési felülvizsgálatait. Az [Privileged Identity Management Azure ad-szerepkörökhöz való hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md)című rész lépéseit követve hozzáférési felülvizsgálatot állíthat be minden olyan Azure ad-szerepkörhöz, amely egy vagy több taggal rendelkezik.
 
-![Access-ellenőrző ablaktábla létrehozása az Azure AD-szerepkörökhöz](./media/pim-deployment-plan/create-access-review.png)
+![Hozzáférési felülvizsgálati ablaktábla létrehozása Azure AD-szerepkörökhöz](./media/pim-deployment-plan/create-access-review.png)
 
-Az ellenőrzőket **tagokra (saját)** kell állítani. Ez küld egy e-mailt, hogy minden tag a szerepet, hogy őket, hogy erősítse meg, hogy szükségük van a hozzáférést. A speciális beállításokban is be kell kapcsolnia **a Jóváhagyás okának megkövetelése** beállítást, hogy a felhasználók megtudják, miért van szükségük a szerepkörre. Ezen információk alapján eltávolíthatja a felhasználókat a szükségtelen szerepkörökből, és részletesebb rendszergazdai szerepköröket delegálhat a globális rendszergazdák esetében.
+A véleményezőket a **Tagok (saját)** értékre kell beállítani. Ez egy e-mailt küld a szerepkör összes tagjának, hogy megbizonyosodjon róla, hogy szükségük van-e a hozzáférésre. A speciális beállításokban be kell kapcsolni a **jóváhagyás** szükségességét is, hogy a felhasználók tudják, miért van szükségük a szerepkörre. Ezen információk alapján eltávolíthatja a felhasználókat a szükségtelen szerepkörökből, és a globális rendszergazdák esetében részletesebb rendszergazdai szerepköröket delegálhat.
 
-A hozzáférési felülvizsgálatok e-mailekre támaszkodnak, hogy értesítsék az embereket a szerepkörökhöz való hozzáférésük áttekintéséről. Ha olyan kiemelt fiókokkal rendelkezik, amelyekhez nincs enek csatolva az e-mailek, mindenképpen fbanja fel a másodlagos e-mail mezőt ezeken a fiókokon. További információ: [proxyAddresses attribútum az Azure AD-ben.](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)
+A hozzáférési felülvizsgálatok az e-mailekre támaszkodva értesítik a felhasználókat, hogy vizsgálják át a szerepkörük hozzáférését. Ha olyan Kiemelt jogosultságú fiókkal rendelkezik, amelyekhez nem tartozik e-mailek társítva, akkor ügyeljen arra, hogy a másodlagos e-mail-mezőket feltöltse a fiókoknál. További információ: [proxyAddresses attribútum az Azure ad-ben](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
 
-Az Azure-előfizetések és -erőforrások, beállíthat egy hasonló Access-felülvizsgálati folyamat, hogy áttekintse a szerepkörök et az egyes előfizetések vagy erőforrások. A folyamat célja az egyes előfizetésekhez vagy erőforrásokhoz csatolt tulajdonosi és felhasználói hozzáférés-rendszergazdai hozzárendelések minimalizálása, valamint a szükségtelen hozzárendelések eltávolítása. A szervezetek azonban gyakran delegálják ezeket a feladatokat az egyes előfizetések vagy erőforrások tulajdonosának, mert jobban ismerik az adott szerepköröket (különösen az egyéni szerepköröket).
+Az Azure-előfizetések és-erőforrások esetében beállíthat egy hasonló hozzáférési felülvizsgálati folyamatot, amellyel áttekintheti a szerepköröket az egyes előfizetésekben vagy erőforrásokban. Ennek a folyamatnak a célja az egyes előfizetésekhez vagy erőforrásokhoz csatolt tulajdonosi és felhasználói hozzáférési rendszergazdai hozzárendelések csökkentése, valamint a szükségtelen hozzárendelések eltávolítása. A szervezetek azonban gyakran delegálják ezeket a feladatokat az egyes előfizetések vagy erőforrások tulajdonosának, mert jobban megértették az adott szerepköröket (különösen az egyéni szerepköröket).
 
-Ha Ön olyan rendszergazda, aki globális rendszergazdai szerepkörrel próbálja telepíteni a szervezetben az Azure-erőforrások hoz a kiemelt identitáskezelést, [az összes Azure-előfizetés kezeléséhez hozzáférhet](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) az egyes előfizetésekhez való hozzáféréshez. Ezután megkeresheti az egyes előfizetés-tulajdonosokat, és együttműködhet velük a szükségtelen hozzárendelések eltávolításához és a tulajdonosi szerepkör-hozzárendelés minimalizálásához.
+Ha Ön rendszergazda, és a globális rendszergazdai szerepkörrel próbálta üzembe helyezni Privileged Identity Management Azure-erőforrásokhoz a szervezetében, a [hozzáférést az összes Azure-előfizetés kezeléséhez megemelheti](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , hogy hozzáférjen az egyes előfizetésekhez. Ezután megkeresheti az egyes előfizetések tulajdonosait, és dolgozhat velük a szükségtelen hozzárendelések eltávolításához és a tulajdonosi szerepkör-hozzárendelés minimalizálásához.
 
-Az Azure-előfizetés tulajdonosi szerepkörrel rendelkező felhasználók az [Azure-erőforrások hozzáférési ellenőrzéseit](pim-resource-roles-start-access-review.md) is használhatják az Azure-szerepkörökhöz hasonló szükségtelen szerepkör-hozzárendelések naplózásához és eltávolításához.
+Az Azure-előfizetésekhez tartozó tulajdonosi szerepkörrel rendelkező felhasználók az Azure- [erőforrások hozzáférési felülvizsgálatait](pim-resource-roles-start-access-review.md) is használhatják az Azure ad-szerepkörökhöz korábban ismertetett eljáráshoz hasonló, szükségtelen szerepkör-hozzárendelések naplózására és eltávolítására.
 
-### <a name="decide-which-role-assignments-should-be-protected-by-privileged-identity-management"></a>Döntse el, hogy mely szerepkör-hozzárendeléseket kell védenie a kiemelt identitáskezelésnek
+### <a name="decide-which-role-assignments-should-be-protected-by-privileged-identity-management"></a>Döntse el, hogy mely szerepkör-hozzárendeléseket szeretné védeni Privileged Identity Management
 
-A kiemelt szerepkör-hozzárendelések szolgáltatásának a szervezetben való megtisztítása után el kell döntenie, hogy mely szerepköröket kell védenie a kiemelt identitáskezeléssel.
+Miután feltöltötte a Kiemelt szerepkör-hozzárendeléseket a szervezetében, el kell döntenie, hogy mely szerepköröket kell védelemmel ellátni Privileged Identity Management.
 
-Ha egy szerepkört a Kiemelt identitáskezelés véd, a hozzá rendelt jogosult felhasználóknak magasabb szintre kell emelkedniük a szerepkör által biztosított jogosultságok használatához. A jogosultságszint-emelési folyamat magában foglalhatja a jóváhagyás megszerzését, a többtényezős hitelesítés elvégzését és/vagy az aktiválás okának megadását is. A kiemelt identitáskezelés is nyomon követheti a jogosultságok értesítések és a kiemelt identitáskezelés és az Azure AD naplózási eseménynaplók segítségével is nyomon követheti a jogosultsággal rendelkező identitáskezelés és az Azure AD naplózási eseménynaplók.
+Ha Privileged Identity Management védi a szerepkört, akkor a hozzá tartozó jogosult felhasználóknak a szerepkör által biztosított jogosultságokat kell használniuk. A jogosultságszint-emelési folyamat magában foglalhatja a jóváhagyás beszerzését, a többtényezős hitelesítés végrehajtását és/vagy az aktiválásuk okát. Privileged Identity Management az értesítéseken és a Privileged Identity Management és az Azure AD naplózási eseménynaplókban is nyomon követheti a jogosultságszint-emeléseket.
 
-A kiemelt identitáskezeléssel védeni szeretne szerepkörök kiválasztása nehéz lehet, és az egyes szervezetek esetében eltérő lesz. Ez a szakasz az Azure AD és az Azure erőforrás-szerepkörökhöz vonatkozó gyakorlati tanácsok.
+Ha kijelöli, hogy mely szerepköröket szeretné a védelemmel ellátni Privileged Identity Management, akkor az egyes szervezetek számára is bonyolult lehet. Ez a szakasz az Azure AD-vel és az Azure-erőforrás-szerepkörökkel kapcsolatos ajánlott eljárásokat ismerteti.
 
 #### <a name="azure-ad-roles"></a>Azure AD-szerepkörök
 
-Fontos, hogy fontos az Azure AD-szerepkörök, amelyek a legtöbb engedéllyel rendelkeznek. Az összes kiemelt identitáskezelési ügyfél használati mintái alapján a kiemelt identitáskezelés által kezelt 10 Legfontosabb Azure AD-szerepkör a következő:
+Fontos, hogy rangsorolja a legtöbb engedélyekkel rendelkező Azure AD-szerepkörök védelmét. Az összes Privileged Identity Management ügyfél használati mintái alapján a Privileged Identity Management által kezelt első 10 Azure AD-szerepkör a következő:
 
 1. Globális rendszergazda
 1. Biztonsági rendszergazda
-1. Rendszergazda
+1. Felhasználói rendszergazda
 1. Exchange-rendszergazda
 1. SharePoint-rendszergazda
 1. Intune-rendszergazda
@@ -189,227 +189,227 @@ Fontos, hogy fontos az Azure AD-szerepkörök, amelyek a legtöbb engedéllyel r
 1. Skype Vállalati verzió-rendszergazda
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy első lépésként kezelje a kiemelt identitáskezelést használó összes globális rendszergazdát és biztonsági rendszergazdát, mivel ők azok, amelyek a legtöbb kárt okozhatják, ha feltörték őket.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az összes globális rendszergazdát és biztonsági rendszergazdát a Privileged Identity Management első lépéseként kezelje, mivel azok a biztonság sérülése esetén a legtöbbet tehetik.
 
-Fontos figyelembe venni, hogy milyen adatok és engedélyek a legérzékenyebbek a szervezet számára. Előfordulhat például, hogy egyes szervezetek meg szeretnék védeni power bi rendszergazdai szerepkörüket vagy a Teams-rendszergazdai szerepkörüket a Kiemelt identitáskezelés használatával, mivel hozzáférhetnek az adatokhoz és/vagy módosíthatják az alapvető munkafolyamatokat.
+Fontos figyelembe venni, hogy milyen adatok és engedélyek vannak a szervezete számára leginkább kényesek. Előfordulhat például, hogy egyes szervezetek a Privileged Identity Management használatával szeretnék védelemmel ellátni Power BI rendszergazdai szerepkört vagy a csapatuk rendszergazdai szerepkörét, mivel képesek hozzáférni az adataihoz és/vagy módosítani az alapvető munkafolyamatokat.
 
-Ha vannak olyan szerepkörök, amelyekhez vendégfelhasználók vannak hozzárendelve, különösen ki vannak téve a támadásoknak.
+Ha vannak olyan szerepkörök, amelyekhez vendég felhasználó van rendelve, különösen sebezhetőek a támadásokkal szemben.
 
 > [!TIP]
-> :heavy_check_mark: A **Microsoft azt javasolja,** hogy a kiemelt identitáskezelés használatával kezelje az összes szerepkört a sérült vendégfelhasználói fiókokkockázatának csökkentése érdekében.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Privileged Identity Management segítségével minden szerepkört kezelje a vendég felhasználókkal, hogy csökkentse a feltört vendég felhasználói fiókokkal kapcsolatos kockázatokat.
 
-Az olvasói szerepkörök, például a Címtárolvasó, a Message Center-olvasó és a Biztonsági olvasó néha kevésbé fontosak más szerepkörökhöz képest, mivel nem rendelkeznek írási engedéllyel. Egyes ügyfelek azonban ezeket a szerepköröket is védik, mivel azok a támadók, akik hozzáfértek ezekhez a fiókokhoz, bizalmas adatokat, például személyes adatokat olvashatnak. Ezt figyelembe kell venni annak eldöntésekor, hogy a szervezet olvasói szerepköreit kell-e kezelni a Kiemelt identitáskezelés használatával.
+Az olvasói szerepkörök, például a címtár-olvasó, az üzenetsor-olvasó és a biztonsági olvasó úgy vélik, hogy kevésbé fontosak a más szerepkörökhöz képest, mert nem rendelkeznek írási engedéllyel. Azonban láttuk, hogy egyes ügyfelek is védik ezeket a szerepköröket, mert az ilyen fiókokhoz hozzáférő támadók bizalmas adatokat, például személyes adatokat is beolvashatnak. Ezt figyelembe kell vennie annak eldöntése során, hogy a cégen belüli olvasói szerepköröket Privileged Identity Management használatával kell-e felügyelni.
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
 
-Annak eldöntésekor, hogy mely szerepkör-hozzárendeléseket kell kezelni a Kiemelt identitáskezelés azure-erőforráshasználatával, először azonosítania kell a szervezet számára legfontosabb előfizetéseket/erőforrásokat. Ilyen előfizetések/erőforrások például a következők:
+Annak eldöntéséhez, hogy mely szerepkör-hozzárendeléseket kell felügyelni az Azure Resource Privileged Identity Management használatával, először azonosítania kell a szervezete számára leglényegesebb előfizetéseket/erőforrásokat. Ilyen előfizetések/erőforrások például a következők:
 
-- A legérzékenyebb adatokat tartalmazó erőforrások
-- Az alapvető, ügyfélközpontú alkalmazásoktól függő erőforrások
+- A legérzékenyebb adatokat üzemeltető erőforrások
+- Az alapszintű, az ügyfelek felé irányuló alkalmazások a következőktől függenek:
 
-Ha Ön globális rendszergazda, akinek nem sikerül eldöntenie, hogy mely előfizetések/erőforrások a legfontosabbak, vegye fel a szükséges információkat a szervezet előfizetés-tulajdonosaihoz, és gyűjtse össze az egyes előfizetések által kezelt erőforrások listáját. Ezután az előfizetés-tulajdonosokkal együtt kell csoportosítani az erőforrásokat a súlyossági szint alapján abban az esetben, ha azok sérülnek (alacsony, közepes, magas). Az erőforrások kezelését a kiemelt identitáskezelés sel kell rangsorolni a súlyossági szint alapján.
-
-> [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy a kritikus szolgáltatások előfizetés-/erőforrás-tulajdonosaival együttműködve állítsa be a kiemelt identitáskezelési munkafolyamatot a bizalmas előfizetéseken/erőforrásokon belüli összes szerepkörhöz.
-
-Az Azure-erőforrások privilegizált identitáskezelése időhöz kötött szolgáltatásfiókokat támogat. A szolgáltatásfiókokat pontosan ugyanúgy kell kezelnie, mint egy normál felhasználói fiókot.
-
-Az előfizetések/erőforrások, amelyek nem olyan kritikus, nem kell beállítani a kiemelt identitáskezelés minden szerepkörhöz. A tulajdonosi és a felhasználói hozzáférés-rendszergazdai szerepköröket azonban továbbra is védenie kell a Kiemelt identitáskezelés szolgáltatással.
+Ha Ön globális rendszergazda, aki nem tudja, hogy mely előfizetések/erőforrások fontosak, érdemes felvennie a szervezet előfizetésének tulajdonosait, hogy összegyűjtse az egyes előfizetések által kezelt erőforrások listáját. Ezután az előfizetés-tulajdonosokkal együttműködve az erőforrásokat a súlyossági szint alapján csoportosíthatja abban az esetben, ha azok biztonsága megsérül (alacsony, közepes és magas). A súlyossági szint alapján rangsorolni kell az erőforrásokat a Privileged Identity Management.
 
 > [!TIP]
-> :heavy_check_mark: A **Microsoft azt javasolja,** hogy a Kiemelt identitáskezelés használatával kezelje az összes előfizetés/erőforrás tulajdonosi szerepköreit és felhasználói hozzáférés-rendszergazdai szerepköreit.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy a kritikus szolgáltatások előfizetésének/erőforrás-tulajdonosának használatával Privileged Identity Management munkafolyamatot hozzon létre a bizalmas előfizetéseken/erőforrásokon belüli összes szerepkörhöz.
 
-### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Annak eldöntése, hogy mely szerepkör-hozzárendelések legyenek állandóak vagy jogosultak
+Az Azure-erőforrások Privileged Identity Managementa támogatja az időhöz kötött szolgáltatásfiókok használatát. A szolgáltatási fiókokat ugyanúgy kell kezelnie, mint a normál felhasználói fiókok kezelését.
 
-Miután úgy döntött, hogy a kiemelt identitáskezelés által kezelendő szerepkörök listáját, el kell döntenie, hogy mely felhasználók nak kell kapnia a jogosult szerepkört a tartósan aktív szerepkörrel szemben. A tartósan aktív szerepkörök az Azure Active Directory és az Azure-erőforrásokon keresztül hozzárendelt normál szerepkörök, míg a jogosult szerepkörök csak a kiemelt identitáskezelésben rendelhetők hozzá.
-
-> [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy az ajánlott két [törésüveg-segélyhívó fióktól](../users-groups-roles/directory-emergency-access.md)eltérő, állandó globális rendszergazdai szerepkörrel rendelkező, állandó állandó globális rendszergazdai szerepkörrel rendelkező, az Azure AD-szerepkörökhöz és az Azure-erőforrás-szerepkörökhöz nem tartozik véglegesen aktív hozzárendelések.
-
-Annak ellenére, hogy azt javasoljuk, nulla állandó rendszergazda, néha nehéz a szervezetek számára, hogy ezt azonnal elérni. A következő dolgokat kell figyelembe venni a döntés meghozatalakor:
-
-- Jogosultságszint-emelés gyakorisága – Ha a felhasználónak csak egyszer van szüksége a kiemelt hozzárendelésre, nem kell rendelkeznie az állandó hozzárendeléssel. Másrészt, ha a felhasználónak szüksége van a szerepkör a napi feladat, és a kiemelt identitáskezelés használata jelentősen csökkentené a termelékenységet, akkor lehet tekinteni az állandó szerepkör.
-- A szervezetre jellemző esetek – Ha a jogosult szerepkört kapó személy egy nagyon távoli csapattól vagy egy magas rangú vezetőtől származik, addig a pontig, hogy a jogosultsági folyamat kommunikálása és érvényesítése nehéz, akkor az állandó szerepkörhöz lehet tekinteni.
+A nem kritikus fontosságú előfizetések/erőforrások esetében nem szükséges Privileged Identity Management beállítani az összes szerepkörhöz. A tulajdonosi és a felhasználói hozzáférés rendszergazdai szerepköreit azonban továbbra is meg kell Privileged Identity Management.
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy állítsa be az ismétlődő hozzáférési ellenőrzéseket az állandó szerepkör-hozzárendeléssel rendelkező felhasználók számára (ha van ilyen). További információ az ismétlődő hozzáférés-felülvizsgálatról a telepítési terv utolsó részében
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az összes előfizetés/erőforrás tulajdonosi szerepköreit és felhasználói hozzáférés-felügyeleti szerepköreit Privileged Identity Management használatával kezelje.
 
-### <a name="draft-your-privileged-identity-management-settings"></a>A kiemelt identitáskezelési beállítások megrajzolása
+### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Döntse el, hogy melyik szerepkör-hozzárendelés legyen állandó vagy jogosult
 
-A kiemelt identitáskezelési megoldás megvalósítása előtt célszerű a kiemelt identitáskezelési beállításokat a szervezet által használt minden kiemelt szerepkörhöz megfogalmazni. Ez a szakasz néhány példát tartalmaz az adott szerepkörök kiemelt identitáskezelési beállításaira (ezek csak referenciaként szolgálnak, és eltérőek lehetnek a szervezet számára). Ezeket a beállításokat a microsoft javaslatok a táblák után ismertetik részletesen.
+Ha úgy döntött, hogy Privileged Identity Management által felügyelni kívánt szerepkörök listáját választotta, el kell döntenie, hogy mely felhasználók kapják meg a jogosult szerepkört és a véglegesen aktív szerepkört. A tartósan aktív szerepkörök a Azure Active Directory és az Azure-erőforrások által hozzárendelt normál szerepkörök, míg a jogosult szerepkörök csak Privileged Identity Management társíthatók.
 
-#### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Az Azure AD-szerepkörök kiemelt identitáskezelési beállításai
+> [!TIP]
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Azure ad-szerepkörökhöz és az Azure-erőforrásokhoz tartozó, az ajánlott [két](../users-groups-roles/directory-emergency-access.md), az állandó globális rendszergazdai szerepkörrel rendelkező, véglegesen aktív hozzárendeléseket is tartalmazzon.
+
+Habár a nulla állandó rendszergazda használatát javasoljuk, időnként nehéz lehet a szervezetek számára ezt azonnal elérni. Az alábbi szempontokat érdemes figyelembe venni a döntés végrehajtásakor:
+
+- Jogosultságszint-emelés gyakorisága – ha a felhasználónak csak egyszer kell kiemelni a Kiemelt jogosultságú hozzárendelést, nem rendelkezhet állandó hozzárendeléssel. Ha azonban a felhasználónak szüksége van a napi feladatra, és a Privileged Identity Management használata jelentősen csökkenti a termelékenységet, akkor az állandó szerepkörnek tekinthetők.
+- A szervezetre jellemző esetek – ha az a személy, aki a jogosult szerepkört egy nagyon távoli csapattól vagy egy magas prioritású ügyvezetőtől kapja, a jogosultságszint-emelési folyamattal folytatott kommunikációt és érvényesítést nehéz megállapítani, az állandó szerepkörnek tekinthetők.
+
+> [!TIP]
+> : heavy_check_mark: a **Microsoft javasolja** , hogy állítson be ismétlődő hozzáférési felülvizsgálatokat a állandó szerepkör-hozzárendelésekkel rendelkező felhasználók számára (ha van ilyen). További információ az ismétlődő hozzáférési felülvizsgálatról a telepítési terv utolsó szakaszában
+
+### <a name="draft-your-privileged-identity-management-settings"></a>A Privileged Identity Management beállításainak tervezete
+
+A Privileged Identity Management-megoldás implementálása előtt érdemes a szervezet által használt összes Kiemelt szerepkörhöz tartozó Privileged Identity Management-beállításokat előkészíteni. Ez a szakasz néhány példát mutat be az egyes szerepkörök Privileged Identity Management beállításaira (csak referenciák, és a szervezete számára eltérőek lehetnek). Ezeket a beállításokat részletesen ismertetjük a Microsoft javaslataival a táblázatok után.
+
+#### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD-szerepkörök Privileged Identity Management beállításainak megadása
 
 | Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Approver | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészelérési fiókok |
-| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 óra | None |
-| Ügyfélszolgálati rendszergazda | :x: | :x: | :heavy_check_mark: | :x: | None | 8 óra | None |
+| Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
+| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | None | 2 óra | None |
+| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | None | 8 óra | None |
 
-#### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Az Azure-erőforrás-szerepkörök kiemelt identitáskezelési beállításai
+#### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Az Azure-erőforrás szerepköreinek Privileged Identity Management beállításai
 
 | Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Approver | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| A kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | None | n/a | 3 hónap |
-| Kevésbé kritikus előfizetések felhasználói hozzáférési rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 óra | None | n/a | 3 hónap |
-| Virtuális gépek közreműködője | :x: | :heavy_check_mark: | :x: | None | 3 óra | None | n/a | 6 hónap |
+| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | None | n/a | 3 hónap |
+| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | None | 1 óra | None | n/a | 3 hónap |
+| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | None | 3 óra | None | n/a | 6 hónap |
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Szerepkör | Annak a szerepkörnek a neve, amelyhez a beállításokat definiálja. |
-| MFA megkövetelése | Azt jelzi, hogy a jogosult felhasználónak végre kell-e hajtania az MFA-t a szerepkör aktiválása előtt.<br/><br/> :heavy_check_mark: **A Microsoft azt javasolja,** hogy az MFA-t minden rendszergazdai szerepkörhöz kényszerítse, különösen akkor, ha a szerepkörök vendégfelhasználókkal rendelkeznek. |
-| Értesítés | Ha értéke igaz, a globális rendszergazda, a kiemelt szerepkör-rendszergazda és a szervezet biztonsági rendszergazdája e-mailben értesítést kap, amikor egy jogosult felhasználó aktiválja a szerepkört.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkeznek a rendszergazdai fiókokhoz kötött e-mail címmel, az e-mail értesítések levételéhez alternatív e-mail címet kell beállítania, hogy a rendszergazdák megkapják ezeket az e-maileket. |
-| Incidens jegy | Azt jelzi, hogy a jogosult felhasználónak rögzítenie kell-e egy incidensjegyszámát a szerepkör aktiválásakor. Ezzel a beállítással a szervezet azonosíthatja az egyes aktiválásokat egy belső incidensszámmal a nem kívánt aktiválások csökkentése érdekében.<br/><br/> :heavy_check_mark: **A Microsoft azt javasolja,** hogy használja ki az incidens jegyszámok at kötni Privilegizált identitáskezelés a belső rendszer. Ez különösen hasznos a jóváhagyók, akiknek szükségük van összefüggésben az aktiváláshoz. |
-| Jóváhagyás megkövetelése | Azt jelzi, hogy a jogosult felhasználónak szüksége van-e jóváhagyásra a szerepkör aktiválásához.<br/><br/> :heavy_check_mark: **A Microsoft azt javasolja,** hogy a legtöbb engedéllyel rendelkező szerepkörök jóváhagyását állítsa be. A jóváhagyási beállítással rendelkező leggyakoribb szerepkörök az összes kiemelt identitáskezelési ügyfél, globális rendszergazda, felhasználói rendszergazda, Exchange-rendszergazda, biztonsági rendszergazda és jelszórendszergazda használati mintái alapján. |
-| Approver | Ha a jogosult szerepkör aktiválásához jóváhagyás szükséges, sorolja fel azokat, akiknek jóvá kell hagyniuk a kérelmet. Alapértelmezés szerint a Kiemelt identitáskezelés beállítja a jóváhagyó, hogy minden olyan felhasználó, aki egy kiemelt szerepkör-rendszergazda, függetlenül attól, hogy állandó vagy jogosult.<br/><br/>**Megjegyzés:** Ha egy felhasználó is jogosult egy Azure AD-szerepkörés a szerepkör jóváhagyója, akkor nem lesz képes jóváhagyni magukat.<br/><br/> :heavy_check_mark: **A Microsoft azt javasolja,** hogy a jóváhagyókat válassza ki, hogy azok legyenek, akik a leginkább ismerik az adott szerepkört és annak gyakori felhasználóit, nem pedig globális rendszergazdákat. |
-| Aktiválás időtartama | Az az időtartam, amaddig, amíg a felhasználó aktiválódik a szerepkörben, mielőtt lejár. |
-| Állandó rendszergazda | Azon felhasználók listája, akik a szerepkör állandó rendszergazdája lesznek (soha nem kell aktiválniuk).<br/><br/> :heavy_check_mark: **A Microsoft azt javasolja,** hogy a globális rendszergazdák kivételével minden szerepkörhöz nulla állandó rendszergazda legyen. Tudjon meg többet arról, hogy ki legyen jogosult, és ki legyen tartósan aktív része a tervnek. |
-| Aktív rendszergazda | Az Azure-erőforrások esetében az aktív rendszergazda azoknak a felhasználóknak a listája, akiknek soha nem kell aktiválniuk a szerepkör használatához. Ez nem nevezik állandó rendszergazda, mint az Azure AD-szerepkörökben, mert beállíthat egy lejárati idő, amikor a felhasználó elveszíti ezt a szerepkört. |
-| Aktív lejárat | Az Azure-erőforrás-szerepkörök aktív szerepkör-hozzárendelése a beállított időszak után lejár. Választhat 15 nap, 1 hónap, 3 hónap, 6 hónap, 1 év vagy tartósan aktív. |
-| Jogosult lejárat | Az Azure-erőforrás-szerepkörök jogosult szerepkör-hozzárendelése a beállított időszak után lejár. Választhat 15 nap, 1 hónap, 3 hónap, 6 hónap, 1 év vagy véglegesen jogosult. |
+| Szerepkör | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
+| MFA megkövetelése | Azt határozza meg, hogy a jogosult felhasználónak az MFA-t kell-e elvégeznie a szerepkör aktiválása előtt.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy minden rendszergazdai szerepkör esetében érvényesítse az MFA-t, különösen akkor, ha a szerepkörök vendég felhasználókkal rendelkeznek. |
+| Értesítés | Ha igaz értékre van állítva, a globális rendszergazda, a Kiemelt szerepkörű rendszergazda és a szervezet biztonsági rendszergazdája e-mailben értesítést fog kapni, ha egy jogosult felhasználó aktiválja a szerepkört.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkeznek e-mail-címmel, amely a rendszergazdai fiókjához van kötve, az e-mail-értesítések beszerzéséhez be kell állítania egy alternatív e-mail címet, hogy a rendszergazdák megkapják ezeket az e-maileket. |
+| Incidens jegy | Azt határozza meg, hogy a jogosult felhasználónak rögzítenie kell-e az incidens jegy számát a szerepkör aktiválása során. Ez a beállítás segít a szervezetnek az egyes aktiválások belső incidensek számával történő azonosításában a nemkívánatos aktiválások enyhítése érdekében.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az incidensek jegyei száma alapján a belső rendszerébe kösse a Privileged Identity Management. Ez különösen olyan jóváhagyók számára hasznos, akiknek az aktiváláshoz környezetre van szükségük. |
+| Jóváhagyás megkövetelése | Azt határozza meg, hogy a jogosult felhasználónak meg kell-e kapnia a szerepkör aktiválásához szükséges jóváhagyást.<br/><br/> : heavy_check_mark: a **Microsoft javasolja** , hogy állítson be jóváhagyást a legtöbb engedéllyel rendelkező szerepkörökhöz. Az összes Privileged Identity Management ügyfél, a globális rendszergazda, a felhasználói rendszergazda, az Exchange-rendszergazda, a biztonsági rendszergazda és a jelszó-rendszergazda használati mintái alapján a jóváhagyás beállításával leggyakrabban a leggyakoribb szerepkörök. |
+| Approver | Ha a jogosult szerepkör aktiválásához jóváhagyásra van szükség, sorolja fel azokat a személyeket, akiknek jóvá kell hagyniuk a kérést. Alapértelmezés szerint a Privileged Identity Management úgy állítja be a jóváhagyót, hogy az összes olyan felhasználó legyen, aki Kiemelt szerepkörű rendszergazda, függetlenül attól, hogy azok állandóak vagy jogosultak-e.<br/><br/>**Megjegyzés:** Ha a felhasználó is jogosult egy Azure AD-szerepkörre és a szerepkör jóváhagyójának használatára, nem lesznek képesek jóváhagyni magukat.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy a jóváhagyók közül válassza ki azokat a felhasználókat, akik a leghatékonyabban ismerik az adott szerepkört és annak gyakori felhasználóit, nem pedig globális rendszergazdaként. |
+| Aktiválás időtartama | Az az időtartam, ameddig egy felhasználó a szerepkör lejárta előtt aktiválva lesz. |
+| Állandó rendszergazda | Azoknak a felhasználóknak a listája, akik a szerepkör állandó rendszergazdája lesznek (soha nem kell aktiválni).<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az összes szerepkörhöz nulla állandó rendszergazdai jogosultságot biztosítson, kivéve a globális rendszergazdákat. További információt a WHO-ban jogosultnak kell lennie, és ki kell a terv végleges aktív szakaszát. |
+| Aktív rendszergazda | Az Azure-erőforrások esetében az aktív rendszergazda azoknak a felhasználóknak a listája, akik számára soha nem kell aktiválni a szerepkört. Ez nem olyan állandó rendszergazda, mint az Azure AD-szerepkörök esetében, mert lejárati időt állíthat be, amikor a felhasználó elveszíti ezt a szerepkört. |
+| Aktív lejárat | Az Azure erőforrás-szerepkörökhöz tartozó aktív szerepkör-hozzárendelés lejár a beállított időszak után. 15 nap, 1 hónap, 3 hónap, 6 hónap, 1 év vagy tartósan aktív lehetőség közül választhat. |
+| Jogosult lejárat | Az Azure-erőforrás szerepköreihez tartozó jogosult szerepkör-hozzárendelés a beállított időszak után lejár. 15 nap, 1 hónap, 3 hónap, 6 hónap, 1 év vagy tartósan jogosult lehetőség közül választhat. |
 
-## <a name="implement-your-solution"></a>Valósítsa meg a megoldást
+## <a name="implement-your-solution"></a>A megoldás implementálása
 
-A megfelelő tervezés alapja az az alap, amely alapján az Azure Active Directoryval sikeresen üzembe helyezhet egy alkalmazást.  Intelligens biztonságot és integrációt biztosít, amely leegyszerűsíti a bevezetést, miközben csökkenti a sikeres üzembe helyezési időt.  Ez a kombináció biztosítja, hogy az alkalmazás könnyen integrálható legyen, miközben enyhíti a végfelhasználók leállási idejét.
+A megfelelő tervezés alapja az, hogy az alkalmazás sikeresen telepíthető Azure Active Directory használatával.  Intelligens biztonságot és integrációt biztosít, amely leegyszerűsíti a bevezetést, miközben csökkenti a sikeres üzembe helyezések idejét.  Ez a kombináció biztosítja, hogy az alkalmazás könnyen integrálható legyen, miközben csökkenti a végfelhasználók idejét.
 
-### <a name="identify-test-users"></a>Tesztfelhasználók azonosítása
+### <a name="identify-test-users"></a>Tesztelési felhasználók azonosítása
 
-Ebben a szakaszban azonosíthatja a felhasználók és vagy felhasználói csoportok egy csoportját a megvalósítás érvényesítéséhez. A tervezési szakaszban kiválasztott beállítások alapján azonosítsa az egyes szerepkörek teszteléséhez tesztelni kívánt felhasználókat.
+Ez a szakasz a felhasználók és a felhasználók csoportjainak azonosítására használható a megvalósítás ellenőrzéséhez. A tervezés szakaszban kiválasztott beállítások alapján azonosítsa azokat a felhasználókat, akiket szeretne tesztelni az egyes szerepkörökhöz.
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy az egyes Azure AD-szerepkörök szolgáltatástulajdonosait tegye tesztfelhasználóvá, hogy megismerhessék a folyamatot, és a bevezetés belső érdekképviseleti szereplőjévé válhassanak.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az egyes Azure ad-szerepkörök szolgáltatás-tulajdonosai legyenek a tesztek felhasználóinak, hogy megismerjék a folyamatot, és belső tanácsadóként váljon a kivezetéshez.
 
-Ebben a táblában azonosítsa azokat a tesztfelhasználókat, akik ellenőrzik, hogy az egyes szerepkörek beállításai működnek-e.
+A táblázatban azonosíthatja azokat a felhasználókat, akik ellenőrizni fogják, hogy az egyes szerepkörök beállításai működnek-e.
 
 | Szerepkörnév | Felhasználók tesztelése |
 | --- | --- |
-| &lt;Szerepkörnév&gt; | &lt;Felhasználók a szerepkör teszteléséhez&gt; |
-| &lt;Szerepkörnév&gt; | &lt;Felhasználók a szerepkör teszteléséhez&gt; |
+| &lt;Szerepkörnév&gt; | &lt;A szerepkör tesztelésére szolgáló felhasználók&gt; |
+| &lt;Szerepkörnév&gt; | &lt;A szerepkör tesztelésére szolgáló felhasználók&gt; |
 
-### <a name="test-implementation"></a>Teszt megvalósítása
+### <a name="test-implementation"></a>Tesztelés megvalósítása
 
-Most, hogy azonosította a tesztfelhasználókat, ezzel a lépéssel konfigurálhatja a kiemelt identitáskezelést a tesztfelhasználók számára. Ha a szervezet szeretné beépíteni a kiemelt identitáskezelési munkafolyamatot a saját belső alkalmazásába, ahelyett, hogy az Azure Portalon a Kiemelt identitáskezelés használatával, a kiemelt identitáskezelés összes műveletét is támogatja a [graph API-n](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root)keresztül.
+Most, hogy azonosította a felhasználók tesztelését, ezzel a lépéssel konfigurálhatja a Privileged Identity Management a tesztelési felhasználók számára. Ha a szervezete Privileged Identity Management munkafolyamatot kíván beépíteni a saját belső alkalmazásba ahelyett, hogy a Azure Portal Privileged Identity Management kellene használnia, a [Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root)-ban a Privileged Identity Management összes művelete is támogatott.
 
-#### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Kiemelt identitáskezelés konfigurálása Azure AD-szerepkörökhöz
+#### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Privileged Identity Management konfigurálása Azure AD-szerepkörökhöz
 
-1. [Konfigurálja az Azure AD szerepkör beállításait](pim-how-to-change-default-settings.md) a tervezett alapján.
+1. [Konfigurálja az Azure ad szerepkör beállításait](pim-how-to-change-default-settings.md) a tervezett beállítások alapján.
 
-1. Keresse meg az **Azure AD-szerepköröket,** kattintson a **Szerepkörök**elemre, majd válassza ki az imént konfigurált szerepkört.
+1. Navigáljon az **Azure ad-szerepkörökhöz**, kattintson a **szerepkörök**elemre, majd válassza ki az imént konfigurált szerepkört.
 
-1. A tesztfelhasználók csoportja esetében, ha már állandó rendszergazda, akkor jogosulttá teheti őket, ha megkeresi őket, és állandóból jogosulttá alakítja őket, ha a sorukban lévő három pontra kattint. Ha még nem rendelkeznek szerepkör-hozzárendelésekkel, [létrehozhat egy új jogosult hozzárendelést.](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role)
+1. Ha a tesztelési felhasználók csoportjának már állandó rendszergazdája van, jogosult lehet a keresésre, és az állandóról jogosultra konvertálhatja őket, ha a három pontra kattint a sorban. Ha még nem rendelkeznek szerepkör-hozzárendelésekkel, létrehozhat [egy új jogosult hozzárendelést](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role).
 
-1. Ismételje meg az 1-3.
+1. Ismételje meg a 1-3. lépést a tesztelni kívánt összes szerepkörhöz.
 
-1. Miután beállította a tesztfelhasználókat, el kell küldenie nekik az [Azure AD-szerepkör aktiválásának linkjét.](pim-how-to-activate-role.md)
+1. Miután beállította a felhasználók tesztelését, el kell küldenie az [Azure ad-szerepkör aktiválásához](pim-how-to-activate-role.md)szükséges hivatkozást.
 
-#### <a name="configure-privileged-identity-management-for-azure-resource-roles"></a>Kiemelt identitáskezelés konfigurálása Azure-erőforrás-szerepkörökhöz
+#### <a name="configure-privileged-identity-management-for-azure-resource-roles"></a>Privileged Identity Management konfigurálása Azure-beli erőforrás-szerepkörökhöz
 
-1. [Konfigurálja az Azure-erőforrás szerepkör beállításait](pim-resource-roles-configure-role-settings.md) egy előfizetésen vagy erőforráson belül, amelyet tesztelni szeretne.
+1. [Konfigurálja az Azure erőforrás-szerepkör beállításait](pim-resource-roles-configure-role-settings.md) egy olyan szerepkörhöz, amely egy adott előfizetésben vagy erőforrásban szeretne tesztelni.
 
-1. Keresse meg az adott előfizetés **Azure-erőforrásait,** és kattintson a **Szerepkörök**elemre, válassza ki az imént konfigurált szerepkört.
+1. Navigáljon az előfizetéshez tartozó **Azure-erőforrásokhoz** , és kattintson a **szerepkörök**elemre, és válassza ki az imént konfigurált szerepkört.
 
-1. A tesztfelhasználók csoportja esetében, ha már aktív rendszergazda, akkor jogosulttá teheti őket, ha megkeresi őket, és [frissíti a szerepkör-hozzárendelésüket.](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment) Ha még nem rendelkeznek a szerepkörrel, [új szerepkört rendelhet hozzá.](pim-resource-roles-assign-roles.md#assign-a-role)
+1. Ha a tesztelési felhasználók csoportjának már aktív rendszergazdája van, akkor rákereshet rájuk, és [frissítheti a szerepkör-hozzárendelését](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment). Ha még nem rendelkeznek szerepkörrel, [új szerepkört rendelhet hozzá](pim-resource-roles-assign-roles.md#assign-a-role).
 
-1. Ismételje meg az 1-3.
+1. Ismételje meg a 1-3. lépést a tesztelni kívánt összes szerepkörhöz.
 
-1. Miután beállította a tesztfelhasználókat, el kell küldenie nekik az [Azure-erőforrásszerepkör aktiválásának linkjét.](pim-resource-roles-activate-your-roles.md)
+1. Miután beállította a felhasználók tesztelését, el kell küldenie az [Azure-erőforrás szerepkörének aktiválásához](pim-resource-roles-activate-your-roles.md)szükséges hivatkozást.
 
-Ebben a fázisban ellenőrizze, hogy a szerepkörökhöz beállított összes konfiguráció megfelelően működik-e. Az alábbi táblázat segítségével dokumentálhatja a teszteket. Ezt a szakaszt is érdemes használnia az érintett felhasználókkal való kommunikáció optimalizálásához.
+Ezt a szakaszt kell használnia annak ellenőrzéséhez, hogy a szerepkörökhöz beállított összes konfiguráció megfelelően működik-e. A tesztek dokumentálása a következő táblázattal végezhető el. Az érintett felhasználókkal folytatott kommunikáció optimalizálásához ezt a szakaszt is érdemes használni.
 
-| Szerepkör | Várt viselkedés az aktiválás során | Tényleges eredmények |
+| Szerepkör | Az aktiválás során várt viselkedés | Tényleges eredmények |
 | --- | --- | --- |
-| Globális rendszergazda | (1) Többes faszükségtelmi szerződés megkövetelése<br/>(2) Jóváhagyás megkövetelése<br/>(3) A jóváhagyó értesítést kap, és jóváhagyhatja<br/>(4) A szerepkör az előre beállított idő után lejár |  |
-| Az előfizetés tulajdonosa *X* | (1) Többes faszükségtelmi szerződés megkövetelése<br/>(2) a jogosult hozzárendelés a beállított időszak után lejár |  |
+| Globális rendszergazda | (1) MFA megkövetelése<br/>(2) jóváhagyás szükséges<br/>(3) a jóváhagyó értesítést kap, és jóváhagyhatja<br/>(4) a szerepkör az előre beállított idő után lejár |  |
+| Az előfizetés *X* tulajdonosa | (1) MFA megkövetelése<br/>(2) a jogosult hozzárendelés a beállított időszak után lejár |  |
 
-### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>A kiemelt identitáskezelés kommunikációja az érintett érdekelt felekkel
+### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management kommunikál az érintett felekkel
 
-Kiemelt identitáskezelés telepítése további lépéseket vezet be a kiemelt szerepkörök felhasználói számára. Bár a kiemelt identitáskezelés jelentősen csökkenti a kiemelt identitásokkal társított biztonsági problémákat, a módosítást hatékonyan kell közölni a bérlői szintű üzembe helyezés előtt. Az érintett rendszergazdák számától függően a szervezetek gyakran úgy döntenek, hogy belső dokumentumot, videót vagy e-mailt hoznak létre a módosításról. Ezek a közlemények gyakran szerepelnek:
+A Privileged Identity Management üzembe helyezése további lépéseket fog bevezetni a Kiemelt szerepkörök felhasználói számára. Habár Privileged Identity Management nagy mértékben csökkenti a Kiemelt identitásokkal kapcsolatos biztonsági problémákat, a változást a bérlői szintű üzembe helyezés előtt hatékonyan kell közölni. A befolyásolt rendszergazdák számától függően a szervezetek gyakran belső dokumentumot, videót vagy e-mailt hoznak létre a változásról. A közleményekben gyakran szerepelnek a következők:
 
-- Mi az a PIM
-- Mi az előny a szervezet számára?
-- Ki lesz hatással
-- Mikor kerül bevezetésre a PIM-
-- Milyen további lépésekre lesz szükség ahhoz, hogy a felhasználók aktiválják szerepkörüket?
-    - Önnek kell küldeni linkeket a dokumentáció:
+- Mi az a PIM?
+- Milyen előnyökkel jár a szervezet számára
+- Kik lesznek érintettek
+- A PIM kidobásakor
+- Milyen további lépésekre lesz szükség a felhasználók számára a szerepkör aktiválásához
+    - A dokumentációra mutató hivatkozásokat kell elküldenie:
     - [Azure AD-szerepkörök aktiválása](pim-how-to-activate-role.md)
-    - [Azure-erőforrás-szerepkörök aktiválása](pim-resource-roles-activate-your-roles.md)
-- A PIM-mel kapcsolatos problémák elérhetőségi adatai vagy ügyfélszolgálati hivatkozása
+    - [Azure-erőforrás szerepköreinek aktiválása](pim-resource-roles-activate-your-roles.md)
+- A PIM-vel kapcsolatos esetleges problémákért forduljon a kapcsolattartási adatokhoz vagy az ügyfélszolgálathoz
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy állítson be időt az ügyfélszolgálati/támogatási csapatával, hogy végigvezethesse őket a Kiemelt identitáskezelési munkafolyamaton (ha a szervezet belső informatikai támogatási csapattal rendelkezik). Adja meg nekik a megfelelő dokumentációt, valamint elérhetőségi adatait.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az ügyfélszolgálati/támogatási csapatával időt állítsanak be a Privileged Identity Management munkafolyamaton keresztül (ha a szervezet belső informatikai támogatási csapattal rendelkezik). Adja meg a megfelelő dokumentációt, valamint a kapcsolattartási adatait.
 
 ### <a name="move-to-production"></a>Átállás éles üzemre
 
-Miután a tesztelés befejeződött és sikeres, helyezze át a kiemelt identitáskezelés éles környezetbe a tesztelési fázisok összes lépésének ismétlésével a kiemelt identitáskezelési konfigurációban megadott szerepkörök összes felhasználója számára. Az Azure AD-szerepkörök kiemelt identitáskezelése esetén a szervezetek gyakran tesztelik és vezetik be a kiemelt identitáskezelést a globális rendszergazdák számára, mielőtt tesztelnék és bevezetnék a kiemelt identitáskezelést más szerepkörökhöz. Eközben az Azure-erőforrás, szervezetek általában teszt és roll-out privilegizált identitáskezelés egy Azure-előfizetés egy időben.
+A tesztelés befejezése és sikeres végrehajtása után helyezze át Privileged Identity Management az éles környezetbe úgy, hogy a tesztelési fázisok összes lépését megismétli a Privileged Identity Management-konfigurációban meghatározott szerepkörök összes felhasználója számára. Az Azure AD-szerepkörökhöz Privileged Identity Management a szervezetek gyakran tesztelik és kivezetik Privileged Identity Management a globális rendszergazdák számára, mielőtt tesztelik és kivezetik a többi szerepkörhöz Privileged Identity Management. Az Azure-erőforrások mellett a szervezetek általában egy Azure-előfizetést Privileged Identity Management egyszerre tesztelnek és állítanak elő.
 
-### <a name="in-the-case-a-rollback-is-needed"></a>Abban az esetben, ha vissza kell vonni
+### <a name="in-the-case-a-rollback-is-needed"></a>Ha visszaállításra van szükség
 
-Ha a kiemelt identitáskezelés nem működött megfelelően az éles környezetben, a következő visszaállítási lépések segíthetnek visszaállítani egy ismert jó állapotba a kiemelt identitáskezelés beállítása előtt:
+Ha Privileged Identity Management az éles környezetben nem tudott megfelelően dolgozni, a következő visszaállítási lépések segítséget nyújthatnak a megfelelő állapot visszaállításához a Privileged Identity Management beállítása előtt:
 
 #### <a name="azure-ad-roles"></a>Azure AD-szerepkörök
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
-1. Kattintson **az Azure AD-szerepkörök,** majd **a Szerepkörök**elemre.
-1. Minden konfigurált szerepkörhöz kattintson a három pontra (**...**) minden jogosult hozzárendeléssel rendelkező felhasználó esetében.
-1. A szerepkör-hozzárendelés állandóvá tételéhez kattintson az **Állandóvá** tétel gombra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Kattintson az **Azure ad-szerepkörök** elemre, majd a **szerepkörök**elemre.
+1. Minden konfigurált szerepkörnél kattintson a három pontra (**..**.) a jogosult hozzárendeléssel rendelkező összes felhasználó esetében.
+1. Kattintson a **véglegesvé tétele** lehetőségre a szerepkör-hozzárendelés véglegesvé tételéhez.
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
-1. Kattintson **az Azure-erőforrások,** majd kattintson egy előfizetés vagy erőforrás vissza szeretne igényelni.
-1. Kattintson **a Szerepkörök gombra.**
-1. Minden konfigurált szerepkörhöz kattintson a három pontra (**...**) minden jogosult hozzárendeléssel rendelkező felhasználó esetében.
-1. A szerepkör-hozzárendelés állandóvá tételéhez kattintson az **Állandóvá** tétel gombra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Kattintson az **Azure-erőforrások** elemre, majd kattintson egy előfizetésre vagy erőforrásra, amelyet vissza szeretne állítani.
+1. Kattintson a **szerepkörök**elemre.
+1. Minden konfigurált szerepkörnél kattintson a három pontra (**..**.) a jogosult hozzárendeléssel rendelkező összes felhasználó esetében.
+1. Kattintson a **véglegesvé tétele** lehetőségre a szerepkör-hozzárendelés véglegesvé tételéhez.
 
-## <a name="next-steps-after-deploying"></a>Következő lépések az üzembe helyezés után
+## <a name="next-steps-after-deploying"></a>A telepítés utáni következő lépések
 
-A kiemelt identitáskezelés éles környezetben történő sikeres üzembe helyezése jelentős előrelépést jelent a szervezet kiemelt identitásainak védelme szempontjából. A kiemelt identitáskezelés telepítésével további kiemelt identitáskezelési funkciókat, amelyeket a biztonság és a megfelelőség érdekében kell használni.
+A Privileged Identity Management éles környezetben történő üzembe helyezése jelentős előrelépést jelent a szervezet emelt szintű identitásának védelme szempontjából. A Privileged Identity Management üzembe helyezése további Privileged Identity Management funkciókat is tartalmaz, amelyeket a biztonság és a megfelelőség érdekében érdemes használni.
 
-### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Kiemelt identitáskezelési riasztások használata a kiemelt hozzáférés védelméhez
+### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Az emelt szintű hozzáférés védelme Privileged Identity Management riasztások használatával
 
-A kiemelt identitáskezelés beépített riasztási funkcióját kell használnia a bérlő jobb védelme érdekében. További információt a Biztonsági riasztások című [témakörben talál.](pim-how-to-configure-security-alerts.md#security-alerts) Ezek a riasztások a következők: a rendszergazdák nem használnak kiemelt szerepköröket, szerepkörök vannak hozzárendelve a kiemelt identitáskezelés, szerepkörök aktiválása túl gyakran és így tovább. A szervezet teljes körű védelme érdekében rendszeresen át kell néznie a riasztások listáját, és ki kell javítania a problémákat. Az értesítéseket a következőképpen tekintheti meg és javíthatja ki:
+A bérlők hatékonyabb védelme érdekében a Privileged Identity Management beépített riasztási funkcióit kell használnia. További információ: [biztonsági riasztások](pim-how-to-configure-security-alerts.md#security-alerts). Ezek a riasztások a következők: a rendszergazdák nem Kiemelt szerepköröket használnak, a szerepköröket a Privileged Identity Managementon kívül kell kiosztani, a szerepköröket túl gyakran aktiválják. A szervezet teljes körű védelem érdekében rendszeresen menjen végig a riasztások listáján, és javítsa ki a problémákat. A riasztásokat a következő módon tekintheti meg és javíthatja:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
-1. Kattintson **az Azure AD-szerepkörök,** majd **a Riasztások**elemre.
-
-> [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy azonnal foglalkozzon a magas súlyosllyal jelölt összes riasztással. Közepes és alacsony súlyosságú riasztások esetén legyen tájékozott, és módosítsa, ha úgy véli, hogy biztonsági fenyegetés van.
-
-Ha az adott riasztások bármelyike nem hasznos, vagy nem vonatkozik a szervezetre, bármikor elvetheti a riasztást a riasztások oldalon. Ezt az elbocsátást később az Azure AD-beállítások lapon bármikor visszaállíthatja.
-
-### <a name="set-up-recurring-access-reviews-to-regularly-audit-your-organizations-privileged-identities"></a>Ismétlődő hozzáférési felülvizsgálatok beállítása a szervezet kiemelt identitásainak rendszeres naplózásához
-
-Access-felülvizsgálatok a legjobb módja annak, hogy kérje a kiemelt szerepkörökkel vagy adott ellenőrzők, hogy minden felhasználónak szüksége van a kiemelt identitás. A hozzáférési felülvizsgálatok nagyszerűek, ha csökkenteni szeretné a támadási felületet, és megfelelő szeretne maradni. A hozzáférés-felülvizsgálat elindításáról további információt az [Azure AD-szerepkörök hozzáférési felülvizsgálata](pim-how-to-start-security-review.md) és az [Azure-erőforrás-szerepkörök hozzáférési felülvizsgálata című témakörben talál.](pim-resource-roles-start-access-review.md) Egyes szervezetek esetében a hozzáférési felülvizsgálat elvégzéséhez rendszeres hozzáférés-felülvizsgálat szükséges ahhoz, hogy megfeleljen a törvényeknek és rendeleteknek, míg mások számára a hozzáférési felülvizsgálat a legjobb módja annak, hogy a szervezeten belül érvényesítse a legkevésbé bizalmas főt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Kattintson az **Azure ad-szerepkörök** elemre, majd a **riasztások**elemre.
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy állítsa be negyedéves hozzáférési felülvizsgálatok az összes Azure AD és Azure erőforrás-szerepkörök.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az összes riasztást azonnal feltüntetve. Közepes és alacsony súlyosságú riasztások esetén tájékoztatni kell, és módosítania kell a módosításokat, ha úgy gondolja, hogy biztonsági fenyegetés van.
 
-A legtöbb esetben az Azure AD-szerepkörök véleményezője maguk a felhasználók, míg az Azure-erőforrás-szerepkörök véleményezője az előfizetés tulajdonosa, amelyben a szerepkör van. Azonban gyakran ez a helyzet, ha a vállalatok kiemelt fiókokkal rendelkeznek, amelyek nem kapcsolódnak egy adott személy e-mail címéhez. Ezekben az esetekben senki sem olvassa el és nem ellenőrzi a hozzáférést.
+Ha az adott riasztások bármelyike nem hasznos, vagy nem vonatkozik a szervezetére, a riasztást bármikor elvetheti a riasztások lapon. Később bármikor visszaállíthatja ezt az elbocsátást az Azure AD beállítások lapján.
 
-> [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy adjon meg egy másodlagos e-mail címet minden olyan, kiemelt szerepkör-hozzárendeléssel rendelkező fiókhoz, amely nem kapcsolódik rendszeresen ellenőrzött e-mail-címhez
+### <a name="set-up-recurring-access-reviews-to-regularly-audit-your-organizations-privileged-identities"></a>Ismétlődő hozzáférési felülvizsgálatok beállítása a szervezet emelt szintű identitásának rendszeres auditálásához
 
-### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>Hozza ki a legtöbbet naplójából a biztonság és a megfelelőség javítása érdekében
-
-A napló az a hely, ahol naprakész maradhat, és megfelelhet a szabályzatoknak. A Kiemelt identitáskezelés jelenleg a szervezet összes előzményének 30 napos előzményeit tárolja a naplójában, beleértve a következőket:
-
-- A jogosult szerepkörök aktiválása/kikapcsolása
-- Szerepkör-hozzárendelési tevékenységek a kiemelt identitáskezelésen belül és kívül
-- A szerepkör-beállítások módosításai
-- A szerepkör aktiválásához szükséges tevékenységek kérése/jóváhagyása/megtagadása a jóváhagyási beállítással
-- Frissítés a riasztásokhoz
-
-Ezeket a naplókat globális rendszergazda vagy kiemelt szereprendszergazda esetén érheti el. További információt az [Azure AD-szerepkörök naplózási előzményei](pim-how-to-use-audit-log.md) és [az Azure-erőforrás-szerepkörök naplózási előzményei című témakörben talál.](azure-pim-resource-rbac.md)
+A hozzáférési felülvizsgálatok lehetővé teszik a legjobb megoldást arra, hogy a Kiemelt szerepkörökkel vagy konkrét felülvizsgálók által hozzárendelt felhasználókat Kérdezzen rá, hogy az egyes felhasználóknak szükségük van-e a privilegizált identitásra. A hozzáférési felülvizsgálatok nagyszerűek, ha csökkenteni szeretné a támadási felületet, és megfelelőnek kell lennie. A hozzáférési felülvizsgálat elindításával kapcsolatos további információkért tekintse meg az [Azure ad-szerepkörök hozzáférési](pim-how-to-start-security-review.md) felülvizsgálatait és az [Azure Resource roles-hozzáférési](pim-resource-roles-start-access-review.md)felülvizsgálatokat. Egyes szervezetek esetében az időszakos hozzáférési felülvizsgálat elvégzése szükséges a törvények és szabályozások betartásához, míg mások esetében a hozzáférési felülvizsgálat a legjobb módszer a legalacsonyabb jogosultsági szint érvényesítésére a szervezeten belül.
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy legalább egy rendszergazdával olvassa el heti rendszerességgel az összes naplózási eseményt, és exportálja a naplózási eseményeket havonta.
+> : heavy_check_mark: a **Microsoft javasolja** , hogy negyedévente hozzáférési felülvizsgálatokat állítson be az összes Azure ad-és Azure-erőforrás-szerepkörhöz.
 
-Ha hosszabb ideig szeretné automatikusan tárolni a naplózási eseményeket, a kiemelt identitáskezelés naplózási naplója automatikusan szinkronizálódik az [Azure AD naplózási naplóiba.](../reports-monitoring/concept-audit-logs.md)
+A legtöbb esetben az Azure AD-szerepkörökhöz tartozó felülvizsgáló maga a felhasználó, miközben az Azure-erőforrás szerepköreihez tartozó felülvizsgáló az előfizetés tulajdonosa, amely a szerepkör. Gyakran előfordul azonban, hogy a vállalatok olyan Kiemelt jogosultságú fiókkal rendelkeznek, amelyek nem kapcsolódnak egy adott személy e-mail-címéhez. Ezekben az esetekben senki nem olvas és nem tekinti át a hozzáférést.
 
 > [!TIP]
-> :heavy_check_mark: **A Microsoft azt javasolja,** hogy állítsa be az [Azure-naplófigyelést](../reports-monitoring/concept-activity-logs-azure-monitor.md) az Azure storage-fiók naplózási eseményeinek archiválásához a biztonság és a megfelelőség szükségessége érdekében.
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy adjon hozzá egy másodlagos e-mail-címet minden olyan fiókhoz, amelynek Kiemelt szerepkörű hozzárendelései vannak, amelyek nem kapcsolódnak rendszeresen ellenőrzött e-mail-címekhez.
+
+### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>A biztonság és a megfelelőség javítása érdekében hozza ki a legtöbbet a naplóból
+
+A napló az a hely, ahol naprakész maradhat, és megfelel a szabályozásoknak. A Privileged Identity Management jelenleg a szervezeti előzmények 30 napos előzményeit tárolja a naplójában, beleértve a következőket:
+
+- A jogosult szerepkörök aktiválása/inaktiválása
+- Szerepkör-hozzárendelési tevékenységek Privileged Identity Managementon belül és kívül
+- A szerepkör beállításaiban bekövetkezett változások
+- A szerepkör-aktiválásra vonatkozó kérés/jóváhagyás/megtagadás tevékenységek jóváhagyási beállítással
+- Frissítés riasztásokra
+
+Ezeket a naplókat akkor érheti el, ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda. További információ: Azure [ad-szerepkörök naplózási előzményei](pim-how-to-use-audit-log.md) és [Naplózási előzmények Azure-beli erőforrás-szerepkörökhöz](azure-pim-resource-rbac.md).
+
+> [!TIP]
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy legalább egy rendszergazdát beolvasson az összes naplózási eseményről hetente, és havi rendszerességgel exportálja a naplózási eseményeket.
+
+Ha hosszabb ideig szeretné automatikusan tárolni a naplózási eseményeket, Privileged Identity Management naplóját a rendszer automatikusan szinkronizálja az [Azure ad-naplókba](../reports-monitoring/concept-audit-logs.md).
+
+> [!TIP]
+> : heavy_check_mark: a **Microsoft azt javasolja** , hogy állítsa be az [Azure-napló figyelését](../reports-monitoring/concept-activity-logs-azure-monitor.md) egy Azure Storage-fiókban lévő naplózási események archiválásához a biztonság és a megfelelőség érdekében.

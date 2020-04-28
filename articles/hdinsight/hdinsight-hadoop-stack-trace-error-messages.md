@@ -1,6 +1,6 @@
 ---
-title: Hadoop veremnyomat-hibaüzenetek – Azure HDInsight
-description: A Hadoop-veremnyomat-hibaüzenetek indexe az Azure HDInsightban. Keresse meg a hibát a listában a hibaelhárítási információk megtekintéséhez.
+title: Hadoop stack nyomkövetési hibaüzenetek – Azure HDInsight
+description: A Hadoop stack nyomkövetési hibaüzenetei az Azure HDInsight. A hibaelhárítási információk megtekintéséhez keresse meg a hibát a listában.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,28 +9,28 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75680247"
 ---
-# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Az Apache Hadoop indexe a HDInsight hibaelhárítási cikkeiben
+# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>A HDInsight-hibaelhárítási cikkek Apache Hadoopjának indexe
 
-A cikkek hibatípusok szerint vannak rendezve.
+A cikkek a hibák típusai szerint vannak rendszerezve.
 
-## <a name="out-of-memory-error"></a>Elfogyott a memória hiba
+## <a name="out-of-memory-error"></a>Nincs elég memória.
 
-* [Az Apache Hive memóriazavarának kijavítása a HDInsightban:](hdinsight-hadoop-hive-out-of-memory-error-oom.md)Kijavíthatja a memóriahibát (OOM) egy Hive-lekérdezésből. Az ügyfél-forgatókönyv számos nagy tábla lekérdezését tartalmazza.
+* [Javítsa ki a memória Apache Hive a HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md): javítsa ki a memóriabeli hibát (bácsi) egy struktúra-lekérdezésből. Az ügyfél forgatókönyve több nagyméretű tábla lekérdezését is magában foglalja.
 
 ## <a name="apache-hive-query-performance"></a>Apache Hive lekérdezési teljesítmény
 
-* [Az Apache Hive-lekérdezések optimalizálása az Apache Hadoop számára a HDInsightban:](hdinsight-hadoop-optimize-hive-query.md)Ez a cikk a Hive-lekérdezésekre alkalmazható hive-teljesítményoptimalizálási módszereket ismerteti.
-* [Az Apache Hive hibáinak elhárítása az Azure HDInsight használatával.](hdinsight-troubleshoot-hive.md)
+* [Apache Hive-lekérdezések optimalizálása a HDInsight-Apache Hadoophoz](hdinsight-hadoop-optimize-hive-query.md): Ez a cikk a kaptár-lekérdezésekre alkalmazható leggyakoribb struktúra-optimalizálási módszereket ismerteti.
+* [Az Azure HDInsight használatával Apache Hive hibák megoldása](hdinsight-troubleshoot-hive.md).
 
 ## <a name="more-troubleshooting-articles"></a>További hibaelhárítási cikkek
 
 * [Információk a HDInsight Linuxon való használatáról](hdinsight-hadoop-linux-information.md)
-* [Az Apache Hadoop YARN alkalmazásnaplók elérése Linux-alapú Hadoopon a HDInsight-on](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Halommemória-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight-alapú](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Kibocsátási megjegyzések az Apache Hadoop-összetevőkhöz az Azure HDInsightban](hdinsight-release-notes.md)
+* [A HDInsight-on futó Linux-alapú Hadoop hozzáférése Apache Hadoop FONALak alkalmazásához](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Az Azure HDInsight Apache Hadoop összetevőinek kibocsátási megjegyzései](hdinsight-release-notes.md)

@@ -1,7 +1,7 @@
 ---
-title: Tudástároló megtekintése (előzetes verzió) a Tároló kezelővel
+title: Knowledge Store (előzetes verzió) megtekintése Storage Explorer
 titleSuffix: Azure Cognitive Search
-description: Tekintse meg és elemezze az Azure Cognitive Search tudástárolóját az Azure Portal Storage Explorer használatával. tudástároló jelenleg nyilvános előzetes verzióban érhető el.
+description: Megtekintheti és elemezheti az Azure Cognitive Search Knowledge Store-t a Azure Portal Storage Explorerával. a Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,57 +9,57 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754070"
 ---
-# <a name="view-a-knowledge-store-with-storage-explorer"></a>Tudástároló megtekintése a Tároló kezelővel
+# <a name="view-a-knowledge-store-with-storage-explorer"></a>Tudásbázis megtekintése Storage Explorer
 
 > [!IMPORTANT] 
-> A tudástároló jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió funkció szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) A [REST API 2019-05-06-preview verziója](search-api-preview.md) előnézeti funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-Ebben a cikkben például megtudhatja, hogyan csatlakozhat egy tudástárolóhoz az Azure Portalon a Storage Explorer használatával.
+Ebből a cikkből megtudhatja, hogyan csatlakozhat a tudásbázishoz, és hogyan derítheti fel a Storage Explorer használatával a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Kövesse a [Tudástároló létrehozása](knowledge-store-create-portal.md) az Azure Portalon című, a forgatókönyvben használt mintatudástár létrehozásának lépéseit.
++ A jelen útmutatóban használt mintaűrlapok létrehozásához kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit.
 
-+ Szüksége lesz a tudástároló létrehozásához használt Azure storage-fiók nevére, valamint az Azure Portalon található hozzáférési kulcsra is.
++ Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Tudástároló megtekintése, szerkesztése és lekérdezése a Tárolókezelőben
+## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Egy Tudásbázis megtekintése, szerkesztése és lekérdezése Storage Explorer
 
-1. Az Azure Portalon [nyissa meg a tudástároló](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) létrehozásához használt tárfiókot.
+1. A Azure Portal [nyissa meg](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) azt a Storage-fiókot, amelyet a Knowledge Store létrehozásához használt.
 
-1. A tárfiók bal oldali navigációs ablakában kattintson a **Tárolókezelő**elemre.
+1. A Storage-fiók bal oldali navigációs paneljén kattintson a **Storage Explorer**elemre.
 
-1. **Bontsa** ki a TABLES listát az Azure-táblázat vetületeinek listájának megjelenítéséhez, amelyek az **Adatok importálása** varázsló nak a szállodai véleményezési mintaadatokon való futtatásához létrejöttek.
+1. A **Tables (táblák** ) lista kibontásával megjelenítheti az Azure Table-előrejelzések listáját, amelyeket a rendszer a mintaadatok **importálása** varázsló futtatásakor hozott létre.
 
-Bármelyik táblázatot kijelölve megtekintheti a bővített adatokat, beleértve a legfontosabb kifejezéseket és a véleménypontszámokat.
+Bármelyik táblát kiválasztva megtekintheti a dúsított adatelemeket, beleértve a legfontosabb kifejezéseket és a hangulati pontszámokat.
 
-   ![Táblázatok megtekintése a Tárolókezelőben](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Táblázatok megtekintése a Tárolókezelőben")
+   ![Táblázatok megtekintése Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Táblázatok megtekintése Storage Explorer")
 
-Bármely táblaérték adattípusának módosításához vagy a táblázat egyes értékeinek módosításához kattintson a **Szerkesztés**gombra. Ha egy táblázatsor bármely oszlopának adattípusát módosítja, az az összes sorra vonatkozik.
+Ha módosítani szeretné bármely tábla értékének adattípusát, vagy módosítani szeretné a tábla egyes értékeit, kattintson a **Szerkesztés**gombra. Ha egy tábla bármely oszlopának adattípusát megváltoztatja, az összes sorra lesz alkalmazva.
 
-   ![Táblázat szerkesztése a Tárolókezelőben](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Táblázat szerkesztése a Tárolókezelőben")
+   ![Táblázat szerkesztése Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Táblázat szerkesztése Storage Explorer")
 
-A lekérdezések futtatásához kattintson a parancssáv **Lekérdezés** gombjára, és adja meg a feltételeket.  
+A lekérdezések futtatásához kattintson a parancssorban a **lekérdezés** elemre, és adja meg a feltételeit.  
 
-   ![Lekérdezési tábla a Tárolókezelőben](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Lekérdezési tábla a Tárolókezelőben")
+   ![Lekérdezési táblázat Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Lekérdezési táblázat Storage Explorer")
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
-Az erőforrásokat a portálon keresheti meg és kezelheti a bal oldali navigációs ablak **Minden erőforrás** vagy **Erőforráscsoport** hivatkozásával.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Ha ingyenes szolgáltatást használ, ne feledje, hogy három indexelésre, indexelőre és adatforrásra van korlátozva. Törölheti az egyes elemeket a portálon, hogy a korlát alatt maradjon.
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
 ## <a name="next-steps"></a>További lépések
 
-Csatlakoztassa ezt a tudástárolót a Power BI-hoz mélyebb elemzéshez, vagy lépjen előre a kódokkal a REST API és a Postman segítségével egy másik tudástároló létrehozásához.
+A Knowledge Store-t összekapcsolhatjuk a mélyebb elemzés érdekében, vagy a REST API és a Poster használatával egy másik Tudásbázis létrehozásával Power BI.
 
 > [!div class="nextstepaction"]
-> [Csatlakozás a Power BI-val](knowledge-store-connect-power-bi.md)
-> [Tudástár létrehozása rest-en](knowledge-store-create-rest.md)
+> [Kapcsolódás Power bi](knowledge-store-connect-power-bi.md)
+> a[Knowledge Store létrehozása a REST-ben](knowledge-store-create-rest.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Architektúra: Helyszíni Apache Hadoop az Azure HDInsight'
-description: Ismerje meg a helyszíni Hadoop-fürtök Azure HDInsightba való áttelepítésével kapcsolatos gyakorlati tanácsok at.
+title: 'Architektúra: helyszíni Apache Hadoop az Azure HDInsight'
+description: Ismerje meg az architektúrával kapcsolatos ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure HDInsight történő áttelepítéséhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
@@ -9,117 +9,117 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934692"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Telepítse át a helyszíni Apache Hadoop-fürtöket az Azure HDInsightba – az építészet ajánlott gyakorlatai
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
 
-Ez a cikk az Azure HDInsight-rendszerek architektúráját ismerteti. Ez egy olyan sorozat része, amely gyakorlati tanácsokkal segíti a helyszíni Apache Hadoop-rendszerek Azure HDInsightba való áttelepítését.
+Ez a cikk az Azure HDInsight-rendszerek architektúrájának javaslatait ismerteti. Egy sorozat része, amely ajánlott eljárásokat biztosít a helyszíni Apache Hadoop rendszerek Azure HDInsight való áttelepítésének segítésére.
 
-## <a name="use-multiple-workload-optimized-clusters"></a>Több, munkaterhelésre optimalizált fürt használata
+## <a name="use-multiple-workload-optimized-clusters"></a>Több munkaterhelés használatára optimalizált fürtök használata
 
-Számos helyszíni Apache Hadoop-üzemegyetlen nagy fürtből áll, amely számos számítási feladatot támogat. Ez az egyetlen fürt összetett lehet, és az egyes szolgáltatások számára kompromisszumokat tehet szükségessé, hogy minden együtt működjön. A helyszíni Hadoop-fürtök áttelepítése az Azure HDInsightba a megközelítés megváltoztatását igényli.
+Számos helyszíni Apache Hadoop üzemelő példány egyetlen nagyméretű fürtből áll, amely sok munkaterhelést támogat. Ez az egyetlen fürt összetett lehet, és az egyes szolgáltatásokhoz való illetéktelen behatolást igényelhet, hogy minden működjenek együtt. A helyszíni Hadoop-fürtök Azure HDInsight-re való áttelepítéséhez meg kell változtatni a megközelítést.
 
-Az Azure HDInsight-fürtök egy adott típusú számítási használatra vannak tervezve. Mivel a tároló több fürt között is megosztható, több, munkaterhelésre optimalizált számítási fürt et is létrehozhat, hogy megfeleljen a különböző feladatok igényeinek. Minden fürttípus rendelkezik az adott munkaterhelés optimális konfigurációjának. Az alábbi táblázat a HDInsight támogatott fürttípusait és a megfelelő munkaterheléseket sorolja fel.
+Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kialakítva. Mivel a tárterület több fürtön is megosztható, lehetséges, hogy több munkaterhelés-optimalizált számítási fürtöt hozhat létre a különböző feladatok igényeinek kielégítése érdekében. Minden egyes fürthöz az adott számítási feladathoz tartozó optimális konfiguráció tartozik. A következő táblázat a HDInsight és a megfelelő munkaterhelések támogatott fürtjének típusait sorolja fel.
 
 |Számítási feladat|HDInsight-fürt típusa|
 |---|---|
-|Kötegelt feldolgozás (ETL / ELT)|Hadoop, Szikra|
-|Adatraktározás|Hadoop, Spark, Interaktív lekérdezés|
-|IoT / Streamelés|Kafka, Vihar, Szikra|
+|Kötegelt feldolgozás (ETL/ELT)|Hadoop, Spark|
+|Adatraktározás|Hadoop, Spark, interaktív lekérdezés|
+|IoT/streaming|Kafka, Storm, Spark|
 |NoSQL tranzakciós feldolgozás|HBase|
-|Interaktív és gyorsabb lekérdezések a memórián belüli gyorsítótárazásával|Interaktív lekérdezés|
-|Adattudomány|ML szolgáltatások, Spark|
+|Interaktív és gyorsabb lekérdezések memórián belüli gyorsítótárazással|Interaktív lekérdezés|
+|Adatelemzés|ML szolgáltatások, Spark|
 
-Az alábbi táblázat a HDInsight-fürt létrehozásához használható különböző módszereket mutatja be.
+A következő táblázat a HDInsight-fürtök létrehozásához használható különböző metódusokat mutatja be.
 
-|Eszköz|Böngésző alapú|Parancssor|REST API|SDK|
+|Eszköz|Böngésző-alapú|Parancssor|REST API|SDK|
 |---|---|---|---|---|
-|[Azure-portál](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
-|[Azure-adatgyár](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
-|[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
+|[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
-|[Curl](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager-sablonok](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-További információt a [HDInsight fürttípusai című cikkben talál.](../hadoop/apache-hadoop-introduction.md)
+További információkért lásd a [fürtök típusai a HDInsight](../hadoop/apache-hadoop-introduction.md)című cikket.
 
-## <a name="use-transient-on-demand-clusters"></a>Tranziens igény szerinti fürtök használata
+## <a name="use-transient-on-demand-clusters"></a>Átmeneti igény szerinti fürtök használata
 
-A HDInsight-fürtök hosszú ideig használaton kívüliek lehetnek. Az erőforrásköltségek csökkentése érdekében a HDInsight támogatja az igény szerinti átmeneti fürtöket, amelyek a munkaterhelés sikeres befejezése után törölhetők.
+A HDInsight-fürtök hosszú ideig nem használhatók fel. Az erőforrás-költségek megtakarításának elősegítése érdekében a HDInsight támogatja az igény szerinti átmeneti fürtöket, amelyek a munkaterhelés sikeres befejeződése után törölhetők.
 
-Fürt törlésekor a társított tárfiók és a külső metaadatok nem törlődnek. A fürt később újra létrehozható ugyanazzal a tárfiókkal és metatárolóval.
+Fürt törlésekor a társított Storage-fiók és a külső metaadatok nem törlődnek. A fürtöt később újra létre lehet hozni ugyanazzal a Storage-fiókkal és meta-tárolókkal.
 
-Az Azure Data Factory igény szerinti HDInsight-fürtök létrehozásának ütemezésére használható. További információt az [Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsightban](../hdinsight-hadoop-create-linux-clusters-adf.md)az Azure Data Factory használatával című témakörben talál.
+Az Azure Data Factory használatával ütemezhetik az igény szerinti HDInsight-fürtök létrehozását. További információkért tekintse [meg az igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben a Azure Data Factory használatával](../hdinsight-hadoop-create-linux-clusters-adf.md)című cikket.
 
-## <a name="decouple-storage-from-compute"></a>A tárolás leválasztása a számítástól
+## <a name="decouple-storage-from-compute"></a>Tárterület kiválasztása a számítási feladatokból
 
-A helyszíni Hadoop-telepítések tipikusan ugyanazokat a gépeket használják az adattároláshoz és az adatfeldolgozáshoz. Mivel közös helyen helyezkednek el, a számítási és tárolási feladatokat együtt kell méretezni.
+A szokásos helyszíni Hadoop üzemelő példányok ugyanazt a gépet használják az adattárolás és az adatfeldolgozás számára. Mivel közösen helyezkednek el, a számítási és a tárolási kapacitást együtt kell méretezni.
 
-A HDInsight-fürtökön a tárolást nem kell a számítással együtt elhelyezni, és lehet az Azure Storage, az Azure Data Lake Storage vagy mindkettő. A tárolás és a számítás függetlenítése a következő előnyökkel jár:
+A HDInsight-fürtökön a tárterületet nem szükséges a számítási és az Azure Storage-ban, Azure Data Lake Storage vagy mindkettőn elhelyezni. A tárterületnek a számításból való leválasztása a következő előnyökkel jár:
 
-- Adatmegosztás fürtök között.
-- Átmeneti fürtök használata, mivel az adatok nem függ a fürttől.
-- Csökkentett tárolási költség.
-- A tárhely és a számítás külön-külön történő méretezése.
+- Fürtök közötti adatmegosztás.
+- Átmeneti fürtök használata, mivel az adatmennyiség nem függ a fürttől.
+- Csökkentett tárolási díj.
+- A tárterület és a számítások méretezése külön történik.
 - Adatreplikáció régiók között.
 
-A számítási fürtök az Azure-régióban a tárfiók-erőforrások közelében jönnek létre a számítási és tárolási elkülönítés teljesítményköltségeinek csökkentése érdekében. A nagy sebességű hálózatok hatékonysá teszik a számítási csomópontok számára az Azure storage-on belüli adatok elérését.
+A számítási fürtöket az Azure-régióban található Storage-fiók erőforrásaihoz közelítve hozhatja létre a számítási és tárolási műveletek elválasztásának a teljesítményének csökkentése érdekében. A nagy sebességű hálózatok azt teszik hatékonyabbá, hogy a számítási csomópontok hozzáférjenek az Azure Storage-ban tárolt adatokhoz.
 
 ## <a name="use-external-metadata-stores"></a>Külső metaadat-tárolók használata
 
-A HDInsight-fürtökkel két fő metatároló működik: [Az Apache Hive](https://hive.apache.org/) és az [Apache Oozie](https://oozie.apache.org/). A Hive metastore a központi sématár, amely et olyan adatfeldolgozó motorok használhatják, mint a Hadoop, a Spark, az LLAP, a Presto és az Apache Pig. Az Oozie metastore tárolja az ütemezés részleteit és a folyamatban lévő állapotot, és befejezte a Hadoop-feladatokat.
+Két fő metaadattárak működik a HDInsight-fürtökkel: [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/). A Hive-metaadattár a központi séma tárháza, amelyet adatfeldolgozó motorok használhatnak, például a Hadoop, a Spark, a LLAP, a Presto és az Apache Pig. A Oozie metaadattár az ütemezés részleteit és a folyamatban lévő és befejezett Hadoop feladatok állapotát tárolja.
 
-A HDInsight az Azure SQL Database-t használja a Hive és az Oozie metaáruházakhoz. A METAtárolók HDInsight-fürtökben kétféleképpen állíthatók be:
+A HDInsight Azure SQL Database használ a kaptár és a Oozie metaadattárak. A HDInsight-fürtökben kétféleképpen állíthatók be metaadattár:
 
-1. Alapértelmezett metabolt
+1. Alapértelmezett metaadattár
 
-    - Nincs további költség.
-    - A metatároló a fürt törlésekor törlődik.
-    - A metastore nem osztható meg a különböző fürtök között.
-    - Egyszerű Azure SQL DB-t használ, amely öt DTU-korláttal rendelkezik.
+    - Nincs további díj.
+    - A metaadattár a fürt törlésekor törlődik.
+    - A metaadattár nem oszthatók meg különböző fürtök között.
+    - Az alapszintű Azure SQL DB-t használja, amely öt DTU korláttal rendelkezik.
 
-1. Egyéni külső metatár
+1. Egyéni külső metaadattár
 
-    - Adjon meg egy külső Azure SQL-adatbázist metastore-ként.
-    - A fürtök a metaadatok elvesztése nélkül hozhatók létre és törölhetők, beleértve a Hive-séma Oozie feladat részleteit.
-    - Az egymetastore db különböző típusú fürtökkel osztható meg.
-    - A metastore szükség szerint felskálázható.
-    - További információ: [Külső metaadat-tárolók használata az Azure HDInsightban című témakörben.](../hdinsight-use-external-metadata-stores.md)
+    - A metaadattár külső Azure SQL Database adható meg.
+    - A fürtöket a metaadatok elvesztése nélkül hozhatja létre és törölheti, beleértve a kaptár-séma Oozie feladatának részleteit.
+    - Az egyetlen metaadattár-adatbázis különböző típusú fürtökkel osztható meg.
+    - A metaadattár igény szerint méretezhető.
+    - További információ: [külső metaadat-tárolók használata az Azure HDInsight-ben](../hdinsight-use-external-metadata-stores.md).
 
-## <a name="best-practices-for-hive-metastore"></a>A Hive Metastore bevált módszerei
+## <a name="best-practices-for-hive-metastore"></a>Ajánlott eljárások a kaptár Metaadattár
 
-Néhány HDInsight Hive metastore ajánlott eljárás a következő:
+Néhány HDInsight Hive-metaadattár ajánlott eljárás a következő:
 
-- Egyéni külső metatár használatával külön számítási erőforrások és metaadatok.
-- Kezdje egy S2 rétegű Azure SQL-példány, amely 50 DTU és 250 GB tárhelyet biztosít. Ha szűk keresztmetszetet lát, felskálázhatja az adatbázist.
-- Ne ossza meg az egy HDInsight-fürthöz létrehozott metatárolót egy másik verzió fürtjével. A különböző Hive-verziók különböző sémákat használnak. Például egy metaáruház nem osztható meg a Hive 1.2 és a Hive 2.1 fürtök.
-- Rendszeresen biztonsági másolatot kell fésülni az egyéni metatárolóról.
-- Tartsa a metastore és a HDInsight-fürt ugyanabban a régióban.
-- Az Azure SQL Database Monitoring eszközeivel, például az Azure Portalon vagy az Azure Monitor-naplókban figyelheti a metatároló teljesítményét és rendelkezésre állását.
-- A `ANALYZE TABLE` táblák és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- A számítási erőforrások és a metaadatok elkülönítéséhez használjon egyéni külső metaadattár.
+- Kezdje egy S2 szintű Azure SQL-példánnyal, amely 50 DTU és 250 GB tárterületet biztosít. Ha szűk keresztmetszet jelenik meg, az adatbázis felskálázása felfelé is elvégezhető.
+- Ne ossza meg a HDInsight-fürt egyik verziójához létrehozott metaadattár eltérő verziójú fürtökkel. A különböző kaptár-verziók különböző sémákat használnak. Egy metaadattár például nem osztható meg a kaptár 1,2 és a kaptár 2,1 fürtökkel.
+- Rendszeresen biztonsági másolatot készíthet az egyéni metaadattár.
+- Tartsa a metaadattár és a HDInsight-fürtöt ugyanabban a régióban.
+- A teljesítmény és a rendelkezésre állás metaadattár figyelése Azure SQL Database monitorozási eszközök, például Azure Portal vagy Azure Monitor naplók használatával.
+- A táblák `ANALYZE TABLE` és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-workloads"></a>Gyakorlati tanácsok a különböző munkaterhelések
+## <a name="best-practices-for-different-workloads"></a>Ajánlott eljárások a különböző számítási feladatokhoz
 
-- Fontolja meg az LLAP-fürt használatát az [llap-válaszidővel](https://cwiki.apache.org/confluence/display/Hive/LLAP) rendelkező, továbbfejlesztett válaszidejű interaktív lekérdezésekhez, a Hive 2.0 új szolgáltatása, amely lehetővé teszi a lekérdezések memórián belüli gyorsítótárazását. Az LLAP bizonyos esetekben sokkal gyorsabbá teszi a Hive-lekérdezéseket, akár [26-szor gyorsabbá, mint a Hive 1.x.](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)
-- Fontolja meg a Spark-feladatok használata a Hive-feladatok helyett.
-- Fontolja meg az impala-alapú lekérdezések LLAP-lekérdezésekkel való lecserélését.
-- Fontolja meg a MapReduce feladatok helyett a Spark-feladatok.
-- Fontolja meg az alacsony késleltetésű Spark kötegelt feladatok helyett a Spark strukturált streamelési feladatok használatával.
-- Fontolja meg az Azure Data Factory (ADF) 2.0-s adatvezénylési használatát.
-- Fontolja meg az Ambari a fürtkezelése.
-- Módosítsa az adattárolást a helyszíni HDFS-ről WASB-re, az ADLS-re vagy az ADFS-re parancsfájlok feldolgozásához.
-- Fontolja meg a Ranger RBAC használatát a Hive-táblákon és a naplózást.
-- Fontolja meg a CosmosDB használatát a MongoDB vagy a Cassandra helyett.
+- Érdemes lehet LLAP-fürtöt használni az interaktív struktúra-lekérdezésekhez a továbbfejlesztett válaszidő- [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) a kaptár 2,0 új funkciója, amely lehetővé teszi a lekérdezések memórián belüli gyorsítótárazását. A LLAP sokkal gyorsabban teszi a kaptár-lekérdezéseket, és akár [26x gyorsabban, mint a kaptár 1. x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Vegye fontolóra a Spark-feladatok használatát a kaptár-feladatok helyett.
+- Érdemes lehet LLAP-lekérdezésekkel rendelkező Impala-alapú lekérdezéseket cserélni.
+- Érdemes lehet MapReduce-feladatokat felváltani a Spark-feladatokkal.
+- Érdemes lehet kis késleltetésű Spark batch-feladatokat felváltani a Spark Structured streaming-feladatok használatával.
+- Az adatelőkészítéshez érdemes Azure Data Factory (ADF) 2,0-et használni.
+- Tekintse át a Ambari.
+- Módosítsa az adattárolót a helyszíni HDFS a WASB vagy a ADLS vagy az ADFS használatával a parancsfájlok feldolgozásához.
+- Érdemes lehet a Ranger RBAC használni a kaptár-táblákon és a naplózáson.
+- Vegye fontolóra a CosmosDB használatát a MongoDB vagy a Cassandra helyett.
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a sorozat következő cikkét:
+Olvassa el a következő cikket a sorozatban:
 
-- [Az Azure HDInsight Hadoop-áttelepítéshez szükséges helyszíni infrastruktúra-eljárások](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)
+- [Infrastruktúra-ajánlott eljárások a helyszíni Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)

@@ -1,7 +1,7 @@
 ---
-title: Nyilvános ügyfélalkalmazás (MSAL.NET) példányos példányosítása | Azure
+title: Nyilvános ügyfélalkalmazás létrehozása (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogy miként hozhat hozzá egy nyilvános ügyfélalkalmazást konfigurációs beállításokkal a Microsoft Authentication Library for .NET (MSAL.NET) segítségével.
+description: Megtudhatja, hogyan hozhat létre egy nyilvános ügyfélalkalmazás konfigurációs beállításokkal a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083597"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Nyilvános ügyfélalkalmazás példányosítása a konfigurációs beállításokkal MSAL.NET
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Nyilvános ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
-Ez a cikk azt ismerteti, hogy miként lehet példányosítani egy [nyilvános ügyfélalkalmazást](msal-client-applications.md) a Microsoft Authentication Library for .NET (MSAL.NET) használatával.  Az alkalmazás példányosított konfigurációs beállítások at egy beállításfájlt.
+Ez a cikk azt ismerteti, hogyan hozható létre [nyilvános ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
 
-Az alkalmazás inicializálása előtt először [regisztrálnia](quickstart-register-app.md) kell azt, hogy az alkalmazás integrálható legyen a Microsoft identitásplatformral. A regisztráció után a következő információkra lehet szüksége (amelyek az Azure Portalon találhatók):
+Az alkalmazás inicializálásához először [regisztrálnia](quickstart-register-app.md) kell, hogy az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
-- Az ügyfélazonosító (guid azonosítót képviselő karakterlánc)
-- Az identitásszolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési közönsége. Ezt a két paramétert együttesen hatóságnak nevezzük.
-- A bérlőazonosító, ha egy üzleti alkalmazást kizárólag a szervezet (más néven egy-bérlős alkalmazás) ír.
-- A webalkalmazások, és néha a nyilvános ügyfélalkalmazások (különösen, ha az alkalmazás kell használni a bróker), akkor is be kell állítania a redirectUri, ahol az identitásszolgáltató kapcsolatba lép az alkalmazás a biztonsági jogkivonatok.
+- Az ügyfél-azonosító (GUID jelölő sztring)
+- Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
+- A bérlő azonosítója, ha csak az Ön szervezete számára ír üzletági alkalmazást (más néven egybérlős alkalmazás).
+- Webalkalmazások esetében, és esetenként a nyilvános ügyfélalkalmazások számára (különösen, ha az alkalmazásnak közvetítőt kell használnia), azt a redirectUri is be kell állítania, amelyben az identitás-szolgáltató felveszi a kapcsolatot az alkalmazással a biztonsági jogkivonatokkal.
 
 
-A .NET Core konzolalkalmazás a következő *appsettings.json konfigurációs* fájllal rendelkezhet:
+Egy .NET Core Console-alkalmazáshoz a következő *appSettings. JSON* konfigurációs fájl tartozhat:
 
 ```json
 {
@@ -48,7 +48,7 @@ A .NET Core konzolalkalmazás a következő *appsettings.json konfigurációs* f
 }
 ```
 
-A következő kód a .
+A következő kód a .NET konfigurációs keretrendszer használatával olvassa be ezt a fájlt:
 
 ```csharp
 public class SampleConfiguration
@@ -90,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-A következő kód hozza létre az alkalmazást a beállításfájl konfigurációjával:
+A következő kód létrehozza az alkalmazást a beállítások fájljának konfigurációjának használatával:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

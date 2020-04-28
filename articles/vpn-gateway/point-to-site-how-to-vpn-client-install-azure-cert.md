@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN-átjáró: Pont-hely ügyféltanúsítvány telepítése'
-description: Telepítse az ügyféltanúsítványt a P2S tanúsítványhitelesítéshez - Windows, Mac, Linux.
+title: 'Azure VPN Gateway: pont – hely típusú ügyféltanúsítvány telepítése'
+description: Ügyféltanúsítvány-alapú P2S-tanúsítvány telepítése – Windows, Mac, Linux.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 787b8a34ed4b232b9e6cc033e67b1a8162c85f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902850"
 ---
-# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>A P2S-tanúsítványhitelesítési kapcsolatok ügyféltanúsítványainak telepítése
+# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Ügyféltanúsítványok telepítése a P2S-tanúsítvány hitelesítési kapcsolataihoz
 
-Minden olyan ügyfél, amely a Point-to-Site Azure tanúsítványhitelesítéshasználatával csatlakozik egy virtuális hálózathoz, ügyféltanúsítványt igényel. Ez a cikk segít a hitelesítéshez használt ügyféltanúsítvány telepítésében, amikor p2S-t használó virtuális hálózathoz csatlakozik.
+Az összes olyan ügyfél, amely pont – hely típusú Azure-tanúsítvány hitelesítése használatával csatlakozik egy virtuális hálózathoz, Ügyféltanúsítvány szükséges. Ez a cikk segítséget nyújt a hitelesítéshez használt ügyféltanúsítvány telepítéséhez a P2S használatával történő VNet való csatlakozáskor.
 
-## <a name="acquire-a-client-certificate"></a><a name="generate"></a>Ügyféltanúsítvány beszerzése
+## <a name="acquire-a-client-certificate"></a><a name="generate"></a>Ügyféltanúsítvány beolvasása
 
-Függetlenül attól, hogy melyik ügyféloperációs rendszerről szeretne csatlakozni, mindig rendelkeznie kell ügyféltanúsítvánnyal. Az ügyféltanúsítvány t vállalati hitelesítésszolgáltatói megoldással létrehozott főtanúsítványból vagy önaláírt főtanúsítványból hozhat létre. Az ügyféltanúsítvány létrehozásának lépéseit a [PowerShell](vpn-gateway-certificates-point-to-site.md), [a MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)vagy a [Linux](vpn-gateway-certificates-point-to-site-linux.md) utasítások ban találja. 
+Függetlenül attól, hogy melyik ügyfél operációs rendszerhez szeretne csatlakozni, mindig rendelkeznie kell ügyféltanúsítvány-tanúsítvánnyal. Létrehozhat egy ügyféltanúsítványt egy vállalati HITELESÍTÉSSZOLGÁLTATÓI megoldással létrehozott főtanúsítványból vagy egy önaláírt főtanúsítványból. Az ügyféltanúsítványok létrehozásához szükséges lépésekért lásd a [PowerShell](vpn-gateway-certificates-point-to-site.md), a [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)vagy a [Linux](vpn-gateway-certificates-point-to-site-linux.md) útmutatását. 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
@@ -29,7 +29,7 @@ Függetlenül attól, hogy melyik ügyféloperációs rendszerről szeretne csat
 ## <a name="mac"></a><a name="installmac"></a>Mac
 
 >[!NOTE]
->A Mac VPN-ügyfelek csak az Erőforrás-kezelő telepítési modelljéhez támogatottak. Nem támogatottak a klasszikus üzembe helyezési modellhez.
+>A Mac VPN-ügyfelek csak a Resource Manager-alapú üzemi modellben támogatottak. A klasszikus üzemi modell esetében nem támogatottak.
 >
 >
 
@@ -37,8 +37,8 @@ Függetlenül attól, hogy melyik ügyféloperációs rendszerről szeretne csat
 
 ## <a name="linux"></a><a name="installlinux"></a>Linux
 
-A Linux-ügyféltanúsítvány az ügyfélkonfiguráció részeként települ az ügyfélre. Az [utasításokat az Ügyfél konfigurációja - Linux.](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)
+A Linux-ügyféltanúsítvány az ügyfél konfigurációjának részeként van telepítve az ügyfélszámítógépen. Útmutatásért lásd: [ügyfél konfigurációja – Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) .
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a [VPN-ügyfél konfigurációs fájlok létrehozásához és telepítéséhez](point-to-site-vpn-client-configuration-azure-cert.md)szükséges pont-hely konfigurációs lépésekkel.
+Folytassa a pont – hely konfiguráció lépéseit a VPN- [ügyfél konfigurációs fájljainak létrehozásához és telepítéséhez](point-to-site-vpn-client-configuration-azure-cert.md).

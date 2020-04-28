@@ -1,6 +1,6 @@
 ---
-title: Az Azure Storage-erőforrás-szolgáltató méretezhetősége
-description: Méretezhetőségi és teljesítménycélok az Azure Storage-erőforrás-szolgáltatón lévő műveletekhez. Az erőforrás-szolgáltató megvalósítja az Azure Resource Manager for Azure Storage.
+title: Az Azure Storage erőforrás-szolgáltató skálázhatósága
+description: Skálázhatósági és teljesítményi célok az Azure Storage erőforrás-szolgáltatóval szembeni műveletekhez. Az erőforrás-szolgáltató Azure Resource Managert valósít meg az Azure Storage-hoz.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,21 +9,21 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e7fb118dbc53b36e01c8188b9013a3f739bf0c59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75747781"
 ---
-# <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Méretezhetőségi és teljesítménycélok az Azure Storage-erőforrás-szolgáltatószámára
+# <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Méretezhetőség és teljesítménybeli célok az Azure Storage erőforrás-szolgáltatóhoz
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
-## <a name="scale-targets-for-the-resource-provider"></a>Az erőforrás-szolgáltató céljainak méretezése
+## <a name="scale-targets-for-the-resource-provider"></a>Célok méretezése az erőforrás-szolgáltatóhoz
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## <a name="see-also"></a>Lásd még
 
-- [Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz](scalability-targets-standard-account.md)
-- [Az Azure előfizetési korlátai és kvótái](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](scalability-targets-standard-account.md)
+- [Azure-előfizetési korlátok és kvóták](../../azure-resource-manager/management/azure-subscription-service-limits.md)

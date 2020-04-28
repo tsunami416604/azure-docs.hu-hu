@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service – gyakori kérdések
+title: ELAVULT Azure Container Service – gyakori kérdések
 description: Válaszok a Azure Container Service-szel, a Docker tárolóalapú alkalmazások futtatására szolgáló virtuálisgép-fürt létrehozását, konfigurálását és kezelését leegyszerűsítő szolgáltatással kapcsolatos gyakori kérdésekre.
 services: container-service
 author: mlearned
@@ -10,13 +10,13 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887920"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>(ELAVULT) A Container Service gyakran feltett kérdések
+# <a name="deprecated-container-service-frequently-asked-questions"></a>ELAVULT Tároló szolgáltatás – gyakori kérdések
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -56,7 +56,7 @@ Ha az Azure CLI-parancsokat használja egy Container Service-fürt központi tel
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Hogyan hozhatok létre egyszerű szolgáltatást a Kubernetes-fürtöm számára?
 
-Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szüksége lesz egy egyszerű Azure Active Directory-szolgáltatás azonosítójára és jelszavára. További információ: [A Kubernetes-fürt egyszerű szolgáltatásának – betekintése.](../../container-service/kubernetes/container-service-kubernetes-service-principal.md)
+Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szüksége lesz egy egyszerű Azure Active Directory-szolgáltatás azonosítójára és jelszavára. További információ: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](../../container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
 Ha az [Azure CLI-parancsokat](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt üzembe helyezéséhez, a szolgáltatásnév hitelesítő adatai automatikusan létrehozhatók a fürt számára.
 
@@ -104,7 +104,7 @@ A kapcsolati sztringet az Azure Portalon vagy az Azure parancssori eszközök se
 
 4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati sztringet. 
 
-A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Példa:
+A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Például:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -114,7 +114,7 @@ Több információ: [Csatlakozás Azure Container Service-fürthöz](../../conta
 
 ### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>A DNS-névfeloldás nem működik a Windowsban. Mit tegyek?
 
-Van néhány ismert DNS-probléma a Windows rendszeren, amelyek javításait még mindig aktívan megszüntetik. Győződjön meg arról, hogy a legfrissebb acs-motort és a Windows verzióját használja [(a KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) és [a KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) frissítéssel), hogy a környezet számára előnyös legyen. Egyéb esetben a hibák kezelésével kapcsolatos részletekért tekintse meg az alábbi táblázatot:
+Vannak olyan ismert DNS-problémák a Windows rendszerben, amelyekben a javítások még aktívan folyamatban vannak. Győződjön meg arról, hogy a legfrissített ACS-motort és Windows-verziót használja (a [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) és a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) telepítve van), hogy a környezet élvezhesse ezt a lehetőséget. Egyéb esetben a hibák kezelésével kapcsolatos részletekért tekintse meg az alábbi táblázatot:
 
 | DNS-tünet | Áthidaló megoldás  |
 |-------------|-------------|

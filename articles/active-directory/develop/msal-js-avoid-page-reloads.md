@@ -1,7 +1,7 @@
 ---
-title: Kerülje az oldal újratöltését (MSAL.js) | Azure
+title: Az oldal újratöltésének elkerülése (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogy miként kerülheti el az oldal újratöltését, amikor a Microsoft JavaScript-hitelesítési könyvtár (MSAL.js) használatával csendben szerzi be és újítja meg a jogkivonatokat.
+description: Ismerje meg, hogy miként kerülheti el a lapok újratöltését a tokenek a Microsoft-hitelesítési kódtár használatával való csendes beszerzése és megújítása közben a JavaScripthez (MSAL. js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,30 +14,30 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084958"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Kerülje az oldal újratöltését, amikor a tokeneket csendesen szerzi be és újítja meg az MSAL.js használatával
-A Microsoft Authentication Library for JavaScript (MSAL.js) rejtett `iframe` elemeket használ a tokenek csendes beszerzésére és megújítására a háttérben. Az Azure AD visszaadja a jogkivonatot a jogkivonat-kérelemben megadott regisztrált redirect_uri (alapértelmezés szerint ez az alkalmazás gyökérlapja). Mivel a válasz egy 302, azt eredményezi, hogy `redirect_uri` `iframe`a HTML megfelelő betöltése a . Általában `redirect_uri` az alkalmazás a gyökéroldal, és ez okozza az újratöltést.
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>A MSAL. js használatával a tokenek beszerzése és megújítása előtt Kerülje a lap újratöltését
+A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL. js) `iframe` rejtett elemeket használ a jogkivonatok csendes beszerzéséhez és megújításához a háttérben. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_urinak (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, az a következőhöz tartozó `redirect_uri` HTML-kódot eredményezi:. `iframe` Általában az alkalmazás `redirect_uri` a legfelső szintű lap, és ez az eszköz újratöltését okozza.
 
-Más esetekben, ha az alkalmazás gyökérlapjára való navigálás hitelesítést igényel, beágyazott `iframe` elemekhez vagy `X-Frame-Options: deny` hibához vezethet.
+Más esetekben, ha az alkalmazás főoldalára való navigálás hitelesítés szükséges, a beágyazott `iframe` elemek vagy `X-Frame-Options: deny` hibák vezethetnek.
 
-Mivel az MSAL.js nem utasíthatja el az Azure AD által kiadott 302-es értéket, és a visszaadott jogkivonat feldolgozásához szükséges, nem akadályozhatja meg a `redirect_uri` betöltést a `iframe`.
+Mivel a MSAL. js nem tudja elhagyni az Azure AD által kiadott 302-et, és a visszaadott jogkivonat feldolgozásához szükséges, nem akadályozhatja meg a `redirect_uri` betöltését a `iframe`alkalmazásban.
 
-A teljes alkalmazás újbóli újratöltésének vagy az ebből eredő egyéb hibák elkerülése érdekében kövesse az alábbi megoldásokat.
+Ha el szeretné kerülni, hogy a teljes alkalmazás újratöltődik újra, vagy más hibák okozzák a problémát, kövesse ezeket a megoldásokat.
 
-## <a name="specify-different-html-for-the-iframe"></a>Másik HTML megadása az iframe-hez
+## <a name="specify-different-html-for-the-iframe"></a>Különböző HTML-elemek megadása az IFRAME számára
 
-Állítsa `redirect_uri` be a tulajdonságot egy egyszerű oldalra, amely nem igényel hitelesítést. Meg kell győződnie arról, `redirect_uri` hogy megegyezik a regisztrált Az Azure Portalon. Ez nem befolyásolja a felhasználó bejelentkezési élményét, mivel az MSAL elmenti a kezdőlapot, amikor a felhasználó elindítja a bejelentkezési folyamatot, és a bejelentkezés befejezése után visszairányítja a pontos helyre.
+Állítsa be `redirect_uri` a config tulajdonságot egy egyszerű lapra, amely nem igényel hitelesítést. Győződjön meg arról, hogy az megfelel a `redirect_uri` regisztrált Azure Portal. Ez nem befolyásolja a felhasználó bejelentkezési folyamatát, mivel a MSAL menti a kezdőlapot, amikor a felhasználó megkezdi a bejelentkezési folyamatot, és a bejelentkezés befejeződése után visszairányítja a pontos helyre.
 
-## <a name="initialization-in-your-main-app-file"></a>Inicializálás a fő alkalmazásfájlban
+## <a name="initialization-in-your-main-app-file"></a>Inicializálás a fő alkalmazás fájljában
 
-Ha az alkalmazás úgy van felépítve, hogy van egy központi Javascript-fájl, amely meghatározza az alkalmazás inicializálását, útválasztását `iframe` és egyéb dolgait, feltételesen betöltheti az alkalmazásmodulokat attól függően, hogy az alkalmazás betöltődik-e egy vagy sem. Példa:
+Ha az alkalmazás úgy van strukturálva, hogy az alkalmazás inicializálási, útválasztási és egyéb elemeinek definiálására egy központi JavaScript-fájl van, akkor az alkalmazás moduljait feltételesen is betöltheti, attól függően, `iframe` hogy az alkalmazás betöltődik-e vagy sem. Például:
 
-A következő városban: AngularJS: app.js
+A AngularJS: app. js fájlban
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -74,7 +74,7 @@ else {
 }
 ```
 
-Az Angular: app.module.ts
+Szögletes: app. Module. TS
 
 ```javascript
 // Imports...
@@ -146,4 +146,4 @@ export class MsalComponent {
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ [az egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) msal.js használatával történő létrehozásáról.
+További információ az [egyoldalas alkalmazások (Spa)](scenario-spa-overview.md) a MSAL. js használatával történő létrehozásáról.

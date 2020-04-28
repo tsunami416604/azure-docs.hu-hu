@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Facebookhoz
-description: A Facebook idővonalát és oldalát kezelő feladatok és munkafolyamatok automatizálása az Azure Logic Apps használatával
+title: Kapcsolódás a Facebookhoz
+description: A Facebook-idővonalat és-oldalt kezelő feladatok és munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75665802"
 ---
-# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>A Facebook idővonalának és oldalának kezelése az Azure Logic Apps használatával
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Facebook-ütemterv és-oldal kezelése Azure Logic Apps használatával
 
-Csatlakozz a Facebookhoz, és tetsztesd meg az idővonalat, kapsz egy oldalfeedet stb. A Facebook segítségével a következőket teheti:
+Csatlakozhat a Facebookhoz, és közzéteheti az ütemtervet, beolvashatja az oldal hírcsatornáját és egyebeket. A Facebook használatával a következőket teheti:
 
-* Építsd meg az üzleti folyamatot a Facebooktól kapott adatok alapján. 
-* Új bejegyzés érkezésekor használjon eseményindítót.
-* Olyan műveleteket használsz, amelyek közzétesznek az idővonaladon, oldalképet kapnak stb. Ezek a műveletek választ kapnak, majd a kimenetet elérhetővé teszik más műveletek számára. Ha például új bejegyzés van az idővonaladon, akkor a bejegyzést a Twitter-hírcsatornára is eltolhatja. 
+* Hozza létre üzleti folyamatát a Facebookból kapott adatok alapján. 
+* Trigger használata új bejegyzés érkezésekor.
+* Az ütemtervre felvenni kívánt műveletek, az oldal hírcsatornáinak beszerzése és egyebek. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Ha például egy új bejegyzés van az idővonalon, akkor ezt a bejegyzést követheti, és leküldheti a Twitter-hírcsatornába. 
 
-A kezdéshez hozzon létre egy logikai alkalmazást most, [lásd: Logikai alkalmazás létrehozása.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
 
-## <a name="create-a-connection-to-facebook"></a>Kapcsolat létrehozása a Facebookkal
+## <a name="create-a-connection-to-facebook"></a>Facebook-kapcsolódás létrehozása
 
-Amikor hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, engedélyeznie kell a logikai alkalmazásokat a Facebookhoz való csatlakozáshoz.
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, engedélyezni kell a Logic apps-t a Facebookhoz való csatlakozáshoz.
 
-1. Jelentkezzen be Facebook-fiókjába.
+1. Jelentkezzen be a Facebook-fiókjába.
 
-2. Válaszd **az Engedélyezés**lehetőséget, és engedélyezd a logikai alkalmazásaidnak, hogy csatlakozzanak a Facebookhoz, és használják azokat. 
+2. Válassza az **Engedélyezés**lehetőséget, és engedélyezze a logikai alkalmazások számára a kapcsolódást és a Facebook használatát. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő OpenAPI (korábbi nevén Swagger) fájljában leírtak szerint technikai részleteket, például eseményindítókat, műveleteket és korlátokat az [összekötő referenciaoldalán talál.](/connectors/facebook/)
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/facebook/).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

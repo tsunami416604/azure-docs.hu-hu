@@ -1,6 +1,6 @@
 ---
-title: Az Azure Értesítési központok mintái
-description: Az elérhető Azure Notification Hubs-minták listája.
+title: Azure Notification Hubs-minták
+description: Az elérhető Azure Notification Hubs minták listája.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263931"
 ---
-# <a name="azure-notification-hubs-samples"></a>Az Azure Értesítési központok mintái
+# <a name="azure-notification-hubs-samples"></a>Azure Notification Hubs-minták
 
-Ez a cikk az Azure Notification Hubs fő funkcióit szemléltető mintákra mutató hivatkozásokat tartalmaz.
+Ez a cikk olyan mintákra mutató hivatkozásokat tartalmaz, amelyek az Azure Notification Hubs legfontosabb funkcióit mutatják be.
 
 ## <a name="samples"></a>Példák
 
@@ -34,4 +34,4 @@ Ez a cikk az Azure Notification Hubs fő funkcióit szemléltető mintákra muta
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd az oktatóanyagokat a tartalomjegyzék **Oktatóanyagok** részében.
+Tekintse **meg az oktatóanyagok szakaszt a** tartalomjegyzékben.

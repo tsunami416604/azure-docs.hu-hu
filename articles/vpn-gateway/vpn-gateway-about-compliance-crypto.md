@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN-átjáró: Kriptográfiai követelmények'
-description: Ez a cikk a kriptográfiai követelményeket és az Azure VPN-átjárókat ismerteti
+title: 'Azure VPN Gateway: titkosítási követelmények'
+description: Ez a cikk a titkosítási követelményeket és az Azure VPN-átjárókat ismerteti.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902827"
 ---
-# <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kriptográfiai követelmények és Azure VPN-átjárók –
+# <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure VPN-átjárók at a kriptográfiai követelmények nek mind a létesítmények közötti S2S VPN-alagutak és a Virtuálishálózat-vNet-kapcsolatok az Azure-on belül.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja az Azure VPN Gatewayt úgy, hogy az az Azure-ban a létesítmények közötti S2S VPN-alagutakra és VNet-VNet-kapcsolatokra vonatkozó titkosítási követelményeket is kielégítse.
 
-## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Az IKEv1 és az IKEv2 az Azure VPN-kapcsolatokhoz
+## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Tudnivalók az Azure VPN-kapcsolatok IKEv1 és IKEv2
 
-Hagyományosan csak az Alapvető termékkészlethez engedélyeztük az IKEv1-kapcsolatokat, és az Egyszerű termékkészlettől eltérő összes VPN-átjáró termékkészlethez engedélyeztük az IKEv1-kapcsolatokat. Az alapszintű termékfelhasználó készletek csak 1 kapcsolatot engedélyeznek, és más korlátozásokkal, például a teljesítménnyel együtt a csak IKEv1 protokollokat támogató örökölt eszközöket használó ügyfelek korlátozott tapasztalattal rendelkeztek. Az IKEv1 protokollokat használó ügyfelek élményének fokozása érdekében mostantól engedélyezzük az IKEv1-kapcsolatokat az összes VPN átjáró termékváltozatához, kivéve az alapszintű termékváltozatokat. További információ: [VPN Gateway SKS](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
+Az alapszintű SKU-hoz csak az alapszintű SKU-IKEv1 és a IKEv2-kapcsolat engedélyezett Az alapszintű SKU-ok csak 1 kapcsolódást és más korlátozásokat, például teljesítményeket biztosítanak, az olyan örökölt eszközöket használó ügyfelek, amelyek csak a IKEv1 protokollok használatát támogatják, korlátozott tapasztalattal rendelkeznek. Az IKEv1 protokollt használó ügyfelek felhasználói élményének fokozása érdekében mostantól engedélyezhető a IKEv1-kapcsolat az összes VPN Gateway-SKU esetében, az alapszintű SKU kivételével. További információ: [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)-i.
 
-![Az Azure VPN Gateway IKEv1 és IKEv2 kapcsolatai](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
+![Azure VPN Gateway IKEv1 és IKEv2 kapcsolatok](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
-Ha az IKEv1 és ikev2 kapcsolatokat ugyanarra a VPN-átjáróra alkalmazza, a két kapcsolat közötti átvitel automatikusan engedélyezve van.
+Ha a IKEv1-és IKEv2-kapcsolatok ugyanarra a VPN-átjáróra vannak alkalmazva, akkor a két kapcsolat közötti átvitel automatikusan engedélyezve van.
 
-## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Az Azure VPN-átjárók IPsec- és IKE-házirendparamétereinek
+## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Tudnivalók az Azure VPN-átjárók IPsec-és IKE-szabályzati paramétereinek használatáról
 
-Az IPsec és az IKE protokollszabvány a kriptográfiai algoritmusok széles skáláját támogatja különböző kombinációkban. Ha nem kér egy adott kombinációja kriptográfiai algoritmusok és paraméterek, az Azure VPN-átjárók alapértelmezett javaslatok at használ. Az alapértelmezett házirend-készleteket úgy választottuk ki, hogy maximalizálják az interoperabilitást a külső VPN-eszközök széles választékával az alapértelmezett konfigurációkban. Ennek eredményeképpen a házirendek és a javaslatok száma nem fedheti le a rendelkezésre álló kriptográfiai algoritmusok és kulcserősségek összes lehetséges kombinációját.
+Az IPsec és az IKE protokoll standard verziója számos titkosítási algoritmust támogat különböző kombinációkban. Ha nem igényel titkosítási algoritmusok és paraméterek adott kombinációját, az Azure VPN Gateway az alapértelmezett javaslatok készletét használja. Az alapértelmezett szabályzatok úgy lettek kiválasztva, hogy maximalizálják az együttműködési képességet számos külső VPN-eszköz esetében az alapértelmezett konfigurációkban. Ennek eredményeképpen a szabályzatok és a javaslatok száma nem fedi le a rendelkezésre álló titkosítási algoritmusok és a kulcsfontosságú erősségek összes lehetséges kombinációját.
 
-Az Azure VPN-átjáró alapértelmezett házirend-készlete a következő cikkben található: [A VPN-eszközök és az IPsec/IKE paraméterek a helyek közötti VPN-átjárókapcsolatokhoz.](vpn-gateway-about-vpn-devices.md)
+Az Azure VPN Gateway alapértelmezett házirendjének beállítása: [Tudnivalók a VPN-eszközökről és az IPSec/IKE-paraméterekről helyek közötti VPN Gateway kapcsolatok](vpn-gateway-about-vpn-devices.md)esetén.
 
-## <a name="cryptographic-requirements"></a>Kriptográfiai követelmények
+## <a name="cryptographic-requirements"></a>Titkosítási követelmények
 
-Bizonyos kriptográfiai algoritmusokat vagy paramétereket igénylő kommunikációk esetében, általában a megfelelőségi vagy biztonsági követelmények miatt, most már beállíthatja az Azure VPN-átjárókat, hogy egy egyéni IPsec/IKE-szabályzatot használjanak adott kriptográfiai algoritmusokkal és kulcserősségekkel, nem pedig az Azure alapértelmezett házirend-készleteit.
+Az egyes titkosítási algoritmusokat vagy paramétereket igénylő kommunikációhoz – jellemzően a megfelelőségi vagy biztonsági követelmények miatt – mostantól konfigurálhatja az Azure-beli VPN-átjárókat, hogy egyéni IPsec/IKE-házirendet használjanak az adott titkosítási algoritmusokkal és kulcsokkal, nem pedig az Azure alapértelmezett házirendjének készleteit.
 
-Például az Azure VPN-átjárók IKEv2 alapmódú szabályzatai csak a Diffie-Hellman Group 2 (1024 bit) csoportot használják, míg az IKE-ben használandó erősebb csoportokat kell megadnia, például a 14-es csoportban (2048 bites), a 24-es csoportban (2048 bites MODP-csoport) vagy az ECP-ben (elliptikus görbe) 256 vagy 384 bites (19-es, illetve 20-as csoport). Hasonló követelmények vonatkoznak az IPsec gyorsmódú házirendekre is.
+Például: az Azure VPN-átjárók IKEv2 alapmódú házirendjei csak a Diffie-Hellman csoport 2 (1024 bit) használatát használják, míg előfordulhat, hogy az IKE-ben használni kívánt erősebb csoportokat kell megadnia, például a 14 (2048 bites), a Group 24 (2048 bites MODP) vagy az ECP (elliptikus görbe csoportok) 256 vagy 384 bit (a 19. és a. csoport). A hasonló követelmények az IPsec-alapú gyorsmódú házirendekre is érvényesek.
 
-## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Egyéni IPsec-/IKE-szabályzat Az Azure VPN-átjárókkal
+## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Egyéni IPsec/IKE-házirend Azure VPN Gateway átjárókkal
 
-Az Azure VPN-átjárók mostantól támogatják a kapcsolatonkénti egyéni IPsec/IKE-házirendet. Helyek közötti vagy virtuális hálózat közötti kapcsolatok esetén az IPsec és az IKE kriptográfiai algoritmusainak egy adott kombinációját választhatja a kívánt kulcserősséggel, ahogy az a következő példában látható:
+Az Azure VPN Gateway mostantól támogatja a kapcsolatonként, az Egyéni IPsec/IKE-házirendet. Helyek közötti vagy VNet kapcsolat esetén az IPsec és az IKE titkosítási algoritmusok adott kombinációját választhatja ki a kívánt VNet, ahogy az alábbi példában is látható:
 
-![ipsec-ike-politika](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![IPSec-IKE-Policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
-IPsec/IKE-házirendet hozhat létre, és új vagy meglévő kapcsolatra vonatkozhat.
+Létrehozhat egy IPsec/IKE-szabályzatot, és alkalmazhatja azt egy új vagy meglévő kapcsolódásra is.
 
 ### <a name="workflow"></a>Munkafolyamat
 
-1. Hozza létre a virtuális hálózatokat, VPN-átjárókat vagy helyi hálózati átjárókat a kapcsolódási topológiához, ahogyan azt más útmutató dokumentumok is ismertetik
-2. IPsec/IKE-házirend létrehozása
-3. A házirendet S2S- vagy VNet-to-VNet-kapcsolat létrehozásakor alkalmazhatja.
-4. Ha a kapcsolat már létrejött, alkalmazhatja vagy frissítheti a házirendet egy meglévő kapcsolatra
+1. Hozza létre a virtuális hálózatokat, a VPN-átjárókat vagy a hálózati átjárókat a kapcsolati topológiához a további útmutató dokumentumokban leírtak szerint.
+2. IPsec/IKE-szabályzat létrehozása
+3. A szabályzatot S2S vagy VNet-VNet-kapcsolatok létrehozásakor is alkalmazhatja
+4. Ha a kapcsolódás már létrejött, a szabályzatot alkalmazhatja vagy frissítheti egy meglévő kapcsolatban.
 
-## <a name="ipsecike-policy-faq"></a>Gyakran feltett kérdések az IPsec/IKE-házirendről
+## <a name="ipsecike-policy-faq"></a>IPsec/IKE-házirend – gyakori kérdések
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Az Egyéni IPsec/IKE-házirend konfigurálásához a kapcsolategyéni IPsec/IKE-házirendjének részletes beállításával kapcsolatos részletes útmutatásért olvassa el az [IPsec/IKE-házirend konfigurálása](vpn-gateway-ipsecikepolicy-rm-powershell.md) című témakört.
+A kapcsolatok Egyéni IPsec/IKE-szabályzatának konfigurálásával kapcsolatos részletes útmutatásért lásd: [IPSec/IKE-házirend konfigurálása](vpn-gateway-ipsecikepolicy-rm-powershell.md) .
 
-A UsePolicyBasedTrafficSelectors beállításról további információ: [Több házirendalapú VPN-eszköz](vpn-gateway-connect-multiple-policybased-rm-ps.md) csatlakoztatása.
+Lásd még: [több házirend-alapú VPN-eszköz csatlakoztatása](vpn-gateway-connect-multiple-policybased-rm-ps.md) a UsePolicyBasedTrafficSelectors beállítással kapcsolatos további információkért.

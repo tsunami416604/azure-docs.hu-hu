@@ -1,36 +1,36 @@
 ---
-title: Teljesítményriasztások létrehozása az Azure Monitorhoz tárolókhoz | Microsoft dokumentumok
-description: Ez a cikk ismerteti, hogyan hozhat létre egyéni riasztások naplólekérdezések memória és a CPU-használat az Azure Monitor tárolók.
+title: Teljesítmény-riasztások létrehozása a Azure Monitor for containers szolgáltatáshoz | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztások a memória és a CPU-használat Azure Monitor a tárolók számára történő naplózási lekérdezései alapján.
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75730925"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémákkal kapcsolatos riasztások beállítása a tárolókhoz készült Azure Monitorban
 
-Az Azure Monitor tárolók figyeli az Azure Container-példányok vagy az Azure Kubernetes-szolgáltatás (AKS) üzemeltetett felügyelt Kubernetes-fürtök üzembe helyezett tárolószámítási feladatok teljesítményét.
+A tárolók Azure Monitor figyelik az Azure Kubernetes szolgáltatásban (ak) üzemeltetett, Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét.
 
-Ez a cikk azt ismerteti, hogyan engedélyezze a riasztásokat a következő helyzetekben:
+Ez a cikk a riasztások engedélyezését ismerteti a következő helyzetekben:
 
-- Ha a processzor- vagy memóriahasználat a fürtcsomópontokon meghaladja a küszöbértéket
-- Ha a processzor- vagy memóriahasználat a vezérlő n belüli tárolókon meghaladja a küszöbértéket a megfelelő erőforráson beállított korláthoz képest.
-- *NotReady* állapotcsomópont-számlálók
-- *Sikertelen*, *Függőben*, *Ismeretlen*, *Futó*, vagy *Sikeres* pod-fázisok száma
-- Ha a fürtcsomópontokon a szabad lemezterület túllépi a küszöbértéket 
+- Ha a fürt csomópontjain a CPU vagy a memória kihasználtsága meghaladja a küszöbértéket
+- Ha a processzor vagy a memória kihasználtsága egy vezérlőn belül bármely tárolón meghaladja a küszöbértéket, a megfelelő erőforráson beállított korláthoz képest
+- A nem *Feltaposott* állapot-csomópontok száma
+- *Sikertelen*, *függőben lévő*, *ismeretlen*, *futó*vagy *sikeres* Pod-Phase Counts
+- Ha a fürtcsomópontok szabad lemezterülete meghaladja a küszöbértéket 
 
-A magas processzor- vagy memóriakihasználtság, illetve a fürtcsomópontokon kevés szabad lemezterület riasztásához használja a megadott lekérdezéseket metrikariasztás vagy metrikamérési riasztás létrehozásához. Metrikariasztások kisebb késésű, mint a naplóriasztások. A naplóriasztások azonban speciális lekérdezést és nagyobb kifinomultságot biztosítanak. A naplóriasztások lekérdezései összehasonlítják a datetime-ot a jelenvel a *most* operátor használatával, és egy órával visszatérve. (Az Azure Monitor tárolók tárolja az összes dátumot koordinált világidő (UTC) formátumban.)
+Ha magas CPU-vagy memóriahasználat-kihasználtságot szeretne használni, vagy kevés a szabad lemezterület a fürtcsomópontokon, használja a metrikai riasztás vagy metrika-mérési riasztás létrehozásához megadott lekérdezéseket. A metrikák riasztásai alacsonyabb késéssel rendelkeznek, mint a naplók riasztásai. A naplózási riasztások azonban speciális lekérdezéseket és kifinomult kifinomultságot biztosítanak. A naplózási riasztások lekérdezések összehasonlítják a DateTime-et a jelen értékkel a *Now* operátor használatával, és egy óra múlva. (A tárolók Azure Monitor az összes dátumot az egyezményes világidő (UTC) formátumában tárolja.)
 
-Ha nem ismeri az Azure Monitor-riasztásokat, olvassa [el a Riasztások áttekintése a Microsoft Azure-ban](../platform/alerts-overview.md) indítás előtt című témakört. A naplólekérdezéseket használó riasztásokról a [Naplóriasztások az Azure Monitorban található naplózási témakörben](../platform/alerts-unified-log.md)olvashat bővebben. A metrikariasztásokról további információkért tekintse meg [a Metrikariasztások az Azure Monitorban.](../platform/alerts-metric-overview.md)
+Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md) című témakört. Ha többet szeretne megtudni a naplózási lekérdezéseket használó riasztásokról, tekintse meg a következő témakörben [szereplő riasztásokat: Azure monitor](../platform/alerts-unified-log.md). A metrikus riasztásokról további információt a [metrikus riasztások Azure monitorban](../platform/alerts-metric-overview.md)című témakörben talál.
 
-## <a name="resource-utilization-log-search-queries"></a>Erőforrás-kihasználtsági napló keresési lekérdezései
+## <a name="resource-utilization-log-search-queries"></a>Erőforrás-felhasználási naplók keresési lekérdezései
 
-Ebben a szakaszban a lekérdezések támogatják az egyes riasztási forgatókönyvek. A cikk [létrehozási riasztási](#create-an-alert-rule) szakaszának 7.
+Az ebben a szakaszban található lekérdezések támogatják az egyes riasztási forgatókönyveket. A cikk a [riasztás létrehozása](#create-an-alert-rule) szakasz 7. lépésében használatos.
 
-A következő lekérdezés kiszámítja az átlagos CPU-kihasználtság, mint a tag csomópontok CPU-kihasználtsága percenként átlagosan.  
+A következő lekérdezés az átlagos CPU-kihasználtságot számítja ki percenként a tagok CPU-kihasználtságának átlaga alapján.  
 
 ```kusto
 let endDateTime = now();
@@ -65,7 +65,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 
-A következő lekérdezés kiszámítja az átlagos memóriakihasználtságot a tagcsomópontok memóriakihasználtságának percenkénti átlagaként.
+A következő lekérdezés minden percben kiszámítja az átlagos memória kihasználtságát a tag csomópontjainak átlagos kihasználtsága alapján.
 
 ```kusto
 let endDateTime = now();
@@ -100,9 +100,9 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->A következő lekérdezések a \<> \<fürt és a vezérlő nevét> helyőrző értékeket használják. A riasztások beállításakor cserélje le őket a környezetére jellemző értékekre.
+>A következő lekérdezések a-cluster- \<Name> és \<a-Controller-Name> helyőrző értékeket használják a fürt és a vezérlő jelölésére. A riasztások beállításakor cserélje le őket a környezetre jellemző értékekre.
 
-A következő lekérdezés kiszámítja az átlagos CPU-kihasználtsága az összes tárolók egy vezérlőben, mint egy átlagos CPU-kihasználtsága minden tárolópéldány egy vezérlő percenként. A mérték a tárolóhoz beállított korlát százaléka.
+A következő lekérdezés kiszámítja a vezérlőben lévő összes tároló átlagos CPU-kihasználtságát a vezérlő minden tároló példányának átlagos CPU-kihasználtsága alapján percenként. A mérték a tárolóhoz beállított korlát százalékát adja meg.
 
 ```kusto
 let endDateTime = now();
@@ -142,7 +142,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-A következő lekérdezés kiszámítja a vezérlőösszes tárolójának átlagos memóriakihasználtságát, mint a vezérlő minden tárolópéldányának átlagos memóriakihasználtságát percenként. A mérték a tárolóhoz beállított korlát százaléka.
+A következő lekérdezés kiszámítja a vezérlőben lévő összes tároló átlagos memóriájának kihasználtságát egy vezérlő minden egyes tároló-példányának átlagos memória-kihasználtsága alapján percenként. A mérték a tárolóhoz beállított korlát százalékát adja meg.
 
 ```kusto
 let endDateTime = now();
@@ -182,7 +182,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-A következő lekérdezés visszaadja az összes olyan csomópontot és számlálót, amelynek *állapota Ready* és *NotReady.*
+A következő lekérdezés visszaadja az összes olyan csomópontot, amely *kész* és nem megfelelő állapotú *.*
 
 ```kusto
 let endDateTime = now();
@@ -209,7 +209,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-A következő lekérdezés az összes fázis alapján adja vissza a pod fázisok számát: *Sikertelen*, *Függőben,* *Ismeretlen*, *Futás*vagy *Sikeres*.  
+A következő lekérdezés a pod fázisok számát adja vissza az összes fázis alapján: *sikertelen*, *függőben lévő*, *ismeretlen*, *futó*vagy *sikeres*.  
 
 ```kusto
 let endDateTime = now();
@@ -246,9 +246,9 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Bizonyos podfázisok, például *a Függőben lévő*, *sikertelen*vagy *ismeretlen*fázisok riasztásához módosítsa a lekérdezés utolsó sorát. Például a *FailedCount használatával* kapcsolatos riasztás: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>Bizonyos Pod fázisok (például *függő*, *sikertelen*vagy *ismeretlen*) riasztásához módosítsa a lekérdezés utolsó sorát. Például a *FailedCount* való riasztáshoz használja a következőt: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-A következő lekérdezés olyan fürtcsomópontok lemezeit adja vissza, amelyek meghaladják a 90%-os szabad területet. A fürtazonosító lekért e-két lekérdezést először `ClusterId` futtassa a következő lekérdezést, és másolja az értéket a tulajdonságból:
+A következő lekérdezés a fürtcsomópontok lemezeit adja vissza, amelyek meghaladják a felhasznált 90%-os szabad területet. A fürt AZONOSÍTÓjának lekéréséhez először futtassa a következő lekérdezést, és másolja az értéket `ClusterId` a tulajdonságból:
 
 ```kusto
 InsightsMetrics
@@ -277,35 +277,35 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
-Kövesse az alábbi lépéseket, hogy hozzon létre egy naplóriasztást az Azure Monitorban a korábban megadott naplókeresési szabályok egyikének használatával. ARM-sablon használatával történő létrehozásról a [Mintanapló-riasztás létrehozása az Azure Resource Template használatával című témakörben](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)olvashat.
+Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure Monitorban a korábban megadott napló-keresési szabályok egyikének használatával. ARM-sablon használatával történő létrehozáshoz lásd: [példa a naplóbeli riasztások létrehozására az Azure Resource template használatával](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
 
 >[!NOTE]
->Az alábbi eljárás a tárolóerőforrás-kihasználtság riasztási szabályának létrehozásához új naplóriasztások API-ra kell váltania a [Naplóriasztások Hoz való Api-váltása](../platform/alerts-log-api-switch.md)című részben leírtak szerint.
+>A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../platform/alerts-log-api-switch.md)című témakörben talál.
 >
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Az Azure Portalon keressen és válassza **a Log Analytics-munkaterületeket.**
-3. A Log Analytics-munkaterületek listájában válassza ki az Azure Monitort támogató munkaterületet a tárolókhoz. 
-4. A bal oldali ablaktáblában válassza **a Naplók** lehetőséget az Azure Monitor naplók lapjának megnyitásához. Ezen a lapon azure log analytics-lekérdezéseket írhat és hajthat végre.
-5. A **Naplók** lapon illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **Keresési lekérdezés** mezőbe, majd válassza a **Futtatás** lehetőséget az eredmények érvényesítéséhez. Ha nem hajtja végre ezt a lépést, az **+Új riasztás** beállítás nem választható ki.
-6. A naplóriasztás létrehozásához válassza az **+Új riasztás** lehetőséget.
-7. A **Feltétel csoportban** jelölje be a **Ha az egyéni naplókeresés \<logikai>** előre definiált egyéni naplófeltétel. Az **egyéni naplókeresési** jel típusa automatikusan kiválasztásra kerül, mert közvetlenül az Azure Monitor naplók lapról hozunk létre riasztási szabályt.  
-8. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **Keresési lekérdezés** mezőbe.
-9. Állítsa be a riasztást az alábbiak szerint:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A Azure Portal keresse meg és válassza ki **log Analytics munkaterületeket**.
+3. Log Analytics munkaterületek listájában válassza ki a tárolók Azure Monitor támogató munkaterületet. 
+4. A bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.
+5. A **naplók** lapon illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe, majd kattintson a **Futtatás** elemre az eredmények ellenőrzéséhez. Ha nem hajtja végre ezt a lépést, a **+ új riasztási** lehetőség nem választható ki.
+6. A log-riasztás létrehozásához válassza az **+ új riasztás** elemet.
+7. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni \<naplóbeli keresés logika nélküli,>** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
+8. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe.
+9. A riasztást a következőképpen állíthatja be:
 
-    1. Az **Alapul** legördülő listában válassza a **Metrikus mérés**lehetőséget. A metrikamérés riasztást hoz létre a lekérdezés minden olyan objektumához, amelynek értéke meghaladja a megadott küszöbértéket.
-    1. A **Feltétel mezőben**válassza a **Nagyobb, mint**lehetőséget, és írja be a **75** értéket a processzor- és memóriakihasználtsági riasztások kezdeti **alapvonal-küszöbértékeként.** Az alacsony lemezterület-riasztáshoz írja be a **90**értéket. Vagy adjon meg egy másik értéket, amely megfelel a feltételeknek.
-    1. Az **Eseményindító riasztás alapján** szakaszban válassza az **Egymást követő incidensek lehetőséget.** A legördülő listában válassza a **Nagyobb mint**lehetőséget, és írja be a **2**értéket.
-    1. A tároló processzorának vagy a memóriahasználatnak a riasztáskonfigurálásához **az Összesítés a területen**csoportban válassza a **ContainerName**lehetőséget. A fürtcsomópont alacsony lemezriasztásának konfigurálásához válassza a **ClusterId**lehetőséget.
-    1. A **Kiértékelés alapján** szakaszban állítsa az **Időszak** értéket **60 percre.** A szabály 5 percenként fut, és az aktuális időponttól számított utolsó órában létrehozott rekordokat adja vissza. Az időszak beállítása egy széles ablakszámlák lehetséges adatkésés. Azt is biztosítja, hogy a lekérdezés adatokat ad vissza, hogy elkerüljék a hamis negatív, amelyben a riasztás soha nem aktiválódik.
+    1. A legördülő lista **alapján** válassza a **metrika mértékét**. A metrikák mérése riasztást hoz létre a lekérdezés minden olyan objektumához, amelynek értéke a megadott küszöbérték felett van.
+    1. A **feltétel**beállításnál válassza a **nagyobb, mint**lehetőséget, és adja meg a **75** értéket kezdeti alapértékként **a CPU** -és memória-kihasználtsági riasztásokhoz. A kevés lemezterülettel kapcsolatos riasztáshoz adja meg a **90**értéket. Vagy adjon meg egy másik értéket, amely megfelel a feltételnek.
+    1. Az **trigger riasztás alapján** szakaszban válassza az **egymást követő szabálysértések**lehetőséget. A legördülő listában válassza a nagyobb, **mint**lehetőséget, és írja be a **2**értéket.
+    1. Ha riasztást szeretne beállítani a tároló PROCESSZORához vagy a memória kihasználtságához, az Összesítés területen válassza **a** **ContainerName**lehetőséget. A fürt csomópontjának alacsony lemezes riasztásának konfigurálásához válassza a **ClusterId**lehetőséget.
+    1. A **kiértékelt alapján** szakaszban állítsa **60 percre**az **időszak** értékét. A szabály 5 percenként fut, és az aktuális időponton belül az elmúlt órában létrehozott rekordokat adja vissza. Az időszak beállítása széles ablakos fiókok számára az esetleges adatkésés érdekében. Azt is biztosítja, hogy a lekérdezés az adatok visszaadása után elkerülje a hamis negatív értéket, ha a riasztás soha nem következik be.
 
-10. A riasztási szabály végrehajtásához válassza a **Kész** lehetőséget.
-11. Írjon be egy nevet a **Riasztási szabály neve** mezőbe. Adjon meg egy **leírást,** amely a riasztás részleteit tartalmazza. És válassza ki a megfelelő súlyossági szintet a megadott lehetőségek közül.
-12. A riasztási szabály azonnali aktiválásához fogadja el az Alapértelmezett értéket az **Engedélyezés szabály létrehozáskor mezőben.**
-13. Jelöljön ki egy meglévő **műveletcsoportot,** vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy ugyanazokat a műveleteket minden alkalommal, amikor egy riasztás aktiválódik. Konfigurálja az informatikai vagy DevOps-műveleti csapat incidensek kezelése alapján.
-14. A riasztási szabály végrehajtásához válassza a **Figyelmeztetési szabály létrehozása** lehetőséget. Azonnal el fog indulni.
+10. A riasztási szabály befejezéséhez válassza a **kész** lehetőséget.
+11. Adjon meg egy nevet a **riasztási szabály neve** mezőben. Adja meg azt a **leírást** , amely a riasztás részleteit tartalmazza. Válassza ki a megfelelő súlyossági szintet a megadott beállítások közül.
+12. Ha azonnal aktiválni szeretné a riasztási szabályt, fogadja el az alapértelmezett értéket a **létrehozáskor a szabály engedélyezéséhez**.
+13. Válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy a rendszer minden alkalommal végrehajtson ugyanazokat a műveleteket, amikor a rendszer riasztást indít el. Konfigurálás az alapján, hogy az informatikai vagy DevOps operatív csapata hogyan kezeli az incidenseket.
+14. Válassza a **riasztási szabály létrehozása** lehetőséget a riasztási szabály befejezéséhez. Azonnal el fog indulni.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg [a naplólekérdezési példákat](container-insights-log-search.md#search-logs-to-analyze-data) az előre definiált lekérdezések és példák megtekintéséhez vagy testreszabásához a fürtök riasztásához, megjelenítéséhez vagy elemzéséhez.
-- Ha többet szeretne tudni az Azure Monitorról és a Kubernetes-fürt egyéb aspektusainak figyeléséről, olvassa el a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és [a Kubernetes-fürt állapotának megtekintése](container-insights-health.md)című témakört.
+- Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
+- Ha többet szeretne megtudni a Azure Monitorről és a Kubernetes-fürt egyéb szempontjainak figyeléséről, tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és a [Kubernetes-fürt állapotának megtekintése](container-insights-health.md)című témakört

@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági naplózása és naplózása | Microsoft dokumentumok
-description: Ismerje meg az Azure-ban elérhető naplókat és a biztonsági elemzéseket.
+title: Azure biztonsági naplózás és naplózás | Microsoft Docs
+description: Ismerje meg az Azure-ban elérhető naplókat, valamint az Ön által megszerezhető biztonsági információkat.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,56 +16,56 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750788"
 ---
-# <a name="azure-security-logging-and-auditing"></a>Az Azure biztonsági naplózása és naplózása
+# <a name="azure-security-logging-and-auditing"></a>Azure biztonsági naplózás és naplózás
 
-Az Azure konfigurálható biztonsági naplózási és naplózási lehetőségek széles skáláját kínálja a biztonsági szabályzatok és mechanizmusok hiányosságainak azonosításához. Ez a cikk ismerteti az Azure-ban üzemeltetett szolgáltatások biztonsági naplóinak generálását, gyűjtését és elemzését.
+Az Azure a konfigurálható biztonsági naplózási és naplózási lehetőségek széles skáláját biztosítja, amelyek segítségével azonosíthatja a biztonsági szabályzatokban és mechanizmusokban mutatkozó réseket. Ez a cikk az Azure-ban üzemeltetett szolgáltatások biztonsági naplóinak generálását, gyűjtését és elemzését ismerteti.
 
 > [!Note]
-> A cikkben szereplő bizonyos javaslatok növelhetik az adat-, hálózati vagy számítási erőforrás-használatot, és növelhetik a licenc- vagy előfizetési költségeket.
+> A cikkben szereplő bizonyos javaslatok megnövelheti az adatok, a hálózat vagy a számítási erőforrások használatát, és növelheti a licenc-vagy előfizetési költségeket.
 
-## <a name="types-of-logs-in-azure"></a>Naplók típusai az Azure-ban
+## <a name="types-of-logs-in-azure"></a>Az Azure-beli naplók típusai
 
-A felhőalapú alkalmazások összetettek, sok mozgó alkatrészrel. Az adatok naplózása betekintést nyújthat az alkalmazásokba, és segítséget nyújthat:
+A Felhőbeli alkalmazások számos mozgó részből összetettek. A naplózási adatelemzések segítségével információkat biztosíthat az alkalmazásokról, és segítséget nyújthat a következőket:
 
-- A múltbeli problémák elhárítása vagy a lehetséges problémák megelőzése
-- Az alkalmazások teljesítményének vagy karbantarthatóságának javítása
-- Automatizálja azokat a műveleteket, amelyek egyébként kézi beavatkozást igényelnének
+- Korábbi problémák elhárítása vagy a lehetséges lehetőségek megelőzése
+- Az alkalmazások teljesítményének és karbantartásának javítása
+- Olyan műveletek automatizálása, amelyek egyébként manuális beavatkozást igényelnek
 
-Az Azure-naplók a következő típusokba vannak kategorizálva:
-* **A vezérlő/felügyeleti naplók** az Azure Resource Manager CREATE, UPDATE és DELETE műveletekkel kapcsolatos információkat tartalmaznak. További információ: [Azure-tevékenységnaplók.](../../azure-monitor/platform/platform-logs-overview.md)
+Az Azure-naplók a következő típusokra vannak kategorizálva:
+* A **vezérlési/felügyeleti naplók** a Azure Resource Manager létrehozási, frissítési és törlési műveleteivel kapcsolatos információkat biztosítanak. További információ: Azure- [tevékenységek naplói](../../azure-monitor/platform/platform-logs-overview.md).
 
-* **Az adatsík-naplók** az Azure-erőforrások használatának részeként emelt eseményekről nyújtanak információt. Ilyen típusú napló példák a Windows eseményrendszer, a biztonság és az alkalmazásnaplók egy virtuális gép (VM) és a [diagnosztikai naplók,](../../azure-monitor/platform/platform-logs-overview.md) amelyek az Azure Monitoron keresztül konfigurálva vannak.
+* Az **adatsíkok naplói** az Azure-erőforrások használatának részeként kiváltott eseményekről nyújtanak információt. Ilyen típusú napló például a Windows-eseményrendszer, a biztonság és az alkalmazás naplófájljai egy virtuális gépen (VM) és a Azure Monitoron keresztül konfigurált [diagnosztikai naplókon](../../azure-monitor/platform/platform-logs-overview.md) .
 
-* **A feldolgozott események** az Ön nevében feldolgozott elemzett eseményekről/riasztásokról nyújtanak információt. Ilyen típusúpéldául az [Azure Security Center riasztásai,](../../security-center/security-center-managing-and-responding-alerts.md) ahol az [Azure Security Center](../../security-center/security-center-intro.md) feldolgozta és elemezte az előfizetést, és tömör biztonsági riasztásokat biztosít.
+* A **feldolgozott események** információt nyújtanak az Ön nevében feldolgozott elemzett eseményekről/riasztásokról. Ilyen típusú példák olyan [Azure Security Center riasztások](../../security-center/security-center-managing-and-responding-alerts.md) , ahol a [Azure Security Center](../../security-center/security-center-intro.md) feldolgozta és elemezte az előfizetését, és rövid biztonsági riasztásokat biztosít.
 
-Az alábbi táblázat az Azure-ban elérhető legfontosabb naplótípusokat sorolja fel:
+A következő táblázat az Azure-ban elérhető naplók legfontosabb típusait sorolja fel:
 
 | Naplókategória | Napló típusa | Használat | Integráció |
 | ------------ | -------- | ------ | ----------- |
-|[Tevékenységnaplók](../../azure-monitor/platform/platform-logs-overview.md)|Vezérlősíkesemények az Azure Resource Manager erőforrásaiban|  Betekintést nyújt az előfizetésben lévő erőforrásokon végrehajtott műveletekbe.|    Rest API, [Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)|
-|[Azure Resource-naplók](../../azure-monitor/platform/platform-logs-overview.md)|Gyakori adatok az Azure Resource Manager-erőforrások előfizetésben való működéséről|   Betekintést nyújt az erőforrás által végrehajtott műveletekbe.| Azure Monitor|
-|[Jelentéskészítés az Azure Active Directoryban](../../active-directory/reports-monitoring/overview-reports.md)|Naplók és jelentések | Felhasználói bejelentkezési tevékenységeket és rendszertevékenység-információkat jelent a felhasználókról és a csoportkezelésről.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
-|[Virtuális gépek és felhőszolgáltatások](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows eseménynapló szolgáltatás és Linux Syslog|  Rögzíti a rendszeradatokat és a naplózási adatokat a virtuális gépeken, és továbbítja az adatokat egy ön által kiválasztott tárfiókba.|   Windows (a Windows Azure Diagnostics [[WAD](../../monitoring-and-diagnostics/azure-diagnostics.md)] storage használatával) és Linux az Azure Monitorban|
-|[Azure Storage-statisztika](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|A tárnaplózás mérőszámokat biztosít egy tárfiókhoz|Betekintést nyújt a nyomkövetési kérelmekbe, elemzi a használati trendeket, és diagnosztizálja a tárfiókkal kapcsolatos problémákat.|   REST API vagy az [ügyféltár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
-|[Hálózati biztonsági csoport (NSG) folyamatnaplói](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON formátum, szabályonként mutatja a kimenő és bejövő folyamatokat|Információkat jelenít meg a hálózati biztonsági csoporton keresztüli be- és kimenő IP-forgalomról.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
-|[Alkalmazásbetekintés](../../azure-monitor/app/app-insights-overview.md)|Naplók, kivételek és egyéni diagnosztika|  Alkalmazásteljesítmény-figyelési (APM) szolgáltatást biztosít a webfejlesztők számára több platformon.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|[Adatok / biztonsági riasztások feldolgozása](../../security-center/security-center-intro.md)|  Az Azure Security Center riasztásai, az Azure Monitor naplói riasztások|    Biztonsági információkat és riasztásokat tartalmaz.|  REST API-k, JSON|
+|[Tevékenységnaplók](../../azure-monitor/platform/platform-logs-overview.md)|Az Azure Resource Manager-erőforrásokon futó események vezérlése|  Betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre.|    REST API, [Azure monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Azure-erőforrás-naplók](../../azure-monitor/platform/platform-logs-overview.md)|Az előfizetésben Azure Resource Manager erőforrások működésével kapcsolatos gyakori információk|   Betekintést nyújt az erőforrás által végrehajtott műveletekre.| Azure Monitor|
+|[Jelentéskészítés az Azure Active Directoryban](../../active-directory/reports-monitoring/overview-reports.md)|Naplók és jelentések | A felhasználók és csoportok kezelésével kapcsolatos felhasználói bejelentkezési tevékenységek és rendszertevékenység-információk jelentése.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
+|[Virtual Machines és Cloud Services](../../azure-monitor/learn/quick-collect-azurevm.md)|A Windows Eseménynapló szolgáltatás és a Linux syslog|  Rögzíti a rendszerinformációkat és a naplózási adatait a virtuális gépeken, és átviszi azokat egy tetszőleges Storage-fiókba.|   Windows (Windows Azure Diagnostics [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] Storage) és Linux használata a Azure monitor|
+|[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|A Storage-naplózási szolgáltatás metrikákat biztosít a Storage-fiókhoz|Betekintést nyújt a nyomkövetési kérelmekbe, elemzi a használati trendeket, és diagnosztizálja a Storage-fiókkal kapcsolatos problémákat.|   REST API vagy az [ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
+|[Hálózati biztonsági csoport (NSG) folyamatábrái](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON-formátum, a kimenő és a bejövő folyamatok megjelenítése a szabályok alapján|Egy hálózati biztonsági csoporton keresztül megjeleníti a bejövő és kimenő IP-forgalomra vonatkozó információkat.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
+|[Alkalmazás-betekintés](../../azure-monitor/app/app-insights-overview.md)|Naplók, kivételek és egyéni diagnosztika|  Egy Application Performance monitoring (APM) szolgáltatást biztosít több platformon futó webes fejlesztőknek.| REST API, [Power bi](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
+|[Adatfeldolgozási/biztonsági riasztások](../../security-center/security-center-intro.md)|  Riasztások Azure Security Center Azure Monitor naplók riasztásai|    Biztonsági információkat és riasztásokat biztosít.|  REST API-k, JSON|
 
-## <a name="log-integration-with-on-premises-siem-systems"></a>Naplóintegráció helyszíni SIEM-rendszerekkel
-[A Security Center-riasztások integrálása bemutatja,](../../security-center/security-center-export-data-to-siem.md) hogyan szinkronizálhatja a Security Center-riasztásokat, az Azure diagnosztikai naplók által gyűjtött virtuálisgép-biztonsági eseményeket, valamint az Azure naplózási naplóit az Azure Monitor-naplókkal vagy a SIEM-megoldással.
+## <a name="log-integration-with-on-premises-siem-systems"></a>A helyszíni SIEM-rendszerekkel való integráció naplózása
+A [Security Center riasztások integrálása](../../security-center/security-center-export-data-to-siem.md) azt ismerteti, hogyan lehet szinkronizálni Security Center riasztásokat, az Azure Diagnostics-naplók által gyűjtött virtuális gépek biztonsági eseményeit, valamint az Azure-naplókat az Azure monitor naplók vagy Siem-megoldás segítségével.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Naplózás és naplózás:](management-monitoring-overview.md)Az adatok védelme a láthatóság megőrzésével és az időben érkező biztonsági riasztásokra való gyors reagálással.
+- [Naplózás és naplózás](management-monitoring-overview.md): az adatvédelmet a láthatóság fenntartása és az időben gyorsan reagáló riasztások megválaszolásával biztosíthatja.
 
-- [Biztonsági naplózás és naplózási napló gyűjtése az Azure-on belül:](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/)Kényszerítse ezeket a beállításokat annak érdekében, hogy az Azure-példányok a megfelelő biztonsági és naplózási naplókat gyűjtsék.
+- [Biztonsági naplózás és naplózási naplók az Azure-](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/)ban: a beállítások érvénybe léptetésével biztosíthatja, hogy az Azure-példányok a megfelelő biztonsági és naplózási naplókat gyűjtsék.
 
-- [Webhelycsoport naplózási beállításainak konfigurálása:](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US)Ha webhelycsoport-rendszergazda, olvassa be az egyes felhasználók műveleteinek előzményeit és az adott dátumtartományban végrehajtott műveletek előzményeit.
+- [Webhelycsoport naplózási beállításainak konfigurálása](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): ha Ön webhelycsoport-rendszergazda, kérje le az egyes felhasználói műveletek előzményeit, és az adott dátumtartomány során végrehajtott műveletek előzményeit.
 
-- [Keressen a naplóban az Office 365 Biztonsági & megfelelőségi központban:](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)Az Office 365 Biztonsági & Megfelelőségi központban kereshet az egyesített naplóban, és megtekintheti az Office 365-szervezet felhasználói és rendszergazdai tevékenységét.
+- Keresse meg a naplót az [office 365 biztonsági & megfelelőségi központban](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): az Office 365 biztonsági & megfelelőségi központban keresse meg az egyesített naplót, és tekintse meg az Office 365-szervezet felhasználói és rendszergazdai tevékenységeit.

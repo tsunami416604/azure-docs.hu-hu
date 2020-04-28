@@ -1,6 +1,6 @@
 ---
-title: Nem lehet távolról csatlakozni az Azure virtuális gépekhez, mert a DHCP le van tiltva| Microsoft dokumentumok
-description: Megtudhatja, hogy miként háríthatja el a DHCP-ügyfélszolgáltatás által okozott ügyfélszolgáltatás okozta probléma hibaelhárítását a Microsoft Azure-ban.| Microsoft dokumentumok
+title: Nem lehet távolról kapcsolódni az Azure Virtual Machineshoz, mert a DHCP le van tiltva | Microsoft Docs
+description: Megtudhatja, hogyan lehet letiltani a DHCP-ügyfélszolgáltatás által okozott RDP-problémák elhárítását Microsoft Azure. | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,87 +13,87 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749892"
 ---
-#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Az RdP nem érhető el az Azure virtuális gépekhez, mert a DHCP-ügyfélszolgáltatás le van tiltva
+#  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nem lehet RDP-t létesíteni az Azure Virtual Machines miatt, mert a DHCP-ügyfélszolgáltatás le van tiltva
 
-Ez a cikk egy olyan problémát ismertet, amely nek köszönhetően nem lehet távoli asztalt az Azure Windows virtuális gépekre (VM-ek) távoli gépre, miután a DHCP-ügyfél szolgáltatás le van tiltva a virtuális gépben.
+Ez a cikk egy olyan problémát ismertet, amelyben nem lehet távoli asztali Azure-Windows Virtual Machines (VM), miután a DHCP-ügyfélszolgáltatás le lett tiltva a virtuális gépen.
 
 
 ## <a name="symptoms"></a>Probléma
-RdP-kapcsolat nem hozhat létre virtuális gép az Azure-ban, mert a DHCP-ügyfél szolgáltatás le van tiltva a virtuális gép. Amikor ellenőrzi a képernyőképet a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, a virtuális gép általában megjelenik, és várja a hitelesítő adatokat a bejelentkezési képernyőn. Távolról megtekintheti az eseménynaplókat a virtuális gép en az Eseménynapló használatával. Láthatja, hogy a DHCP-ügyfélszolgáltatás nem indult el, vagy nem indul el. A következő mintanapló:
+Azure-beli virtuális géppel nem lehet RDP-kapcsolattal csatlakozni, mert a DHCP-ügyfélszolgáltatás le van tiltva a virtuális gépen. Amikor bejelöli a képernyőképet a Azure Portal [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) eszközében, a virtuális gép rendesen elindul, és megvárja a hitelesítő adatokat a bejelentkezési képernyőn. A virtuális gép eseménynaplóit a Eseménynapló használatával távolról tekintheti meg. Láthatja, hogy a DHCP-ügyfélszolgáltatás nincs elindítva vagy nem indul el. A következő egy minta napló:
 
-**Napló neve**: Rendszer </br>
-**Forrás**: Szolgáltatásvezérlő </br>
-**Dátum**: 12/16/2015 11:19:36 AM </br>
+**Napló neve**: rendszer </br>
+**Forrás**: Service Control Manager </br>
+**Dátum**: 12/16/2015 11:19:36 </br>
 **Eseményazonosító**: 7022 </br>
-**Feladatkategória**: Nincs </br>
-**Szint**: Hiba </br>
-**Kulcsszavak:** Klasszikus</br>
+**Feladat kategóriája**: nincs </br>
+**Szint**: hiba </br>
+**Kulcsszavak**: klasszikus</br>
 **Felhasználó**: N/A </br>
 **Számítógép**: myvm.cosotos.com</br>
-**Leírás**: A DHCP-ügyfél szolgáltatás a kezdéskor lógott.</br>
+**Leírás**: a DHCP-ügyfélszolgáltatás a kezdés után lefagyott.</br>
 
-Az Erőforrás-kezelő virtuális gépei esetén a Serial Access Console szolgáltatással a következő paranccsal kérdezheti le a 7022-es eseménynaplókat:
+A Resource Manager-alapú virtuális gépek esetében a soros hozzáférési konzol funkció segítségével lekérdezheti az 7022-es eseménynaplókat a következő paranccsal:
 
     wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 
-A klasszikus virtuális gépek, akkor kell dolgozni offline módban, és gyűjtsük össze a naplókat manuálisan.
+A klasszikus virtuális gépek esetében OFFLINE módban kell működnie, és manuálisan kell összegyűjtenie a naplókat.
 
 ## <a name="cause"></a>Ok
 
-A DHCP-ügyfélszolgáltatás nem fut a virtuális számítógépen.
+A DHCP-ügyfélszolgáltatás nem fut a virtuális gépen.
 
 > [!NOTE]
-> Ez a cikk csak a DHCP-ügyfélszolgáltatásra vonatkozik, a DHCP-kiszolgálóra nem.
+> Ez a cikk csak a DHCP-ügyfélszolgáltatás és a DHCP-kiszolgáló esetében érvényes.
 
 ## <a name="solution"></a>Megoldás
 
-Az alábbi lépések végrehajtása előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](../windows/snapshot-copy-managed-disk.md)című témakörben talál.
+Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 
-A probléma megoldásához használja a Soros vezérlőt a virtuális gép DHCP-címének engedélyezéséhez vagy a [hálózati kapcsolat alaphelyzetbe állításához.](reset-network-interface.md)
+A probléma megoldásához a soros vezérlőelem használatával engedélyezze a DHCP-t vagy a virtuális gép [hálózati adapterének alaphelyzetbe állítását](reset-network-interface.md) .
 
 ### <a name="use-serial-control"></a>Soros vezérlő használata
 
-1. Csatlakozzon a [Soros konzolhoz, és nyissa meg a CMD-példányt.](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)
-). Ha a soros konzol nincs engedélyezve a virtuális gépen, olvassa el [a Hálózati adapter alaphelyzetbe állítása című témakört.](reset-network-interface.md)
+1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
+). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md)című témakört.
 2. Ellenőrizze, hogy a DHCP le van-e tiltva a hálózati adapteren:
 
         sc query DHCP
-3. Ha a DHCP le van állítva, próbálja meg elindítani a szolgáltatást
+3. Ha a DHCP leáll, próbálja meg elindítani a szolgáltatást.
 
         sc start DHCP
 
-4. A szolgáltatás ismételt lekérdezése a szolgáltatás sikeres elindításának biztosításához.
+4. A szolgáltatás ismételt lekérdezésekor ellenőrizze, hogy a szolgáltatás sikeresen elindult-e.
 
         sc query DHCP
 
-    Próbáljon meg csatlakozni a virtuális géphez, és nézze meg, hogy a probléma megoldódott-e.
+    Próbáljon csatlakozni a virtuális géphez, és ellenőrizze, hogy megoldódott-e a probléma.
 5. Ha a szolgáltatás nem indul el, használja a következő megfelelő megoldást a kapott hibaüzenet alapján:
 
     | Hiba  |  Megoldás |
     |---|---|
-    | 5 - HOZZÁFÉRÉS MEGTAGADVA  | Lásd: [A DHCP-ügyfél szolgáltatás leáll a hozzáférés megtagadása miatt.](#dhcp-client-service-is-stopped-because-of-an-access-denied-error)  |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT   | Lásd: [A DHCP-ügyfél szolgáltatás összeomlik vagy lefagy.](#dhcp-client-service-crashes-or-hangs)  |
-    | 1058 - ERROR_SERVICE_DISABLED  | Lásd: [A DHCP-ügyfél szolgáltatás le van tiltva.](#dhcp-client-service-is-disabled)  |
-    | 1059 - ERROR_CIRCULAR_DEPENDENCY  |A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.   |
-    | 1067 - ERROR_PROCESS_ABORTED |Lásd: [A DHCP-ügyfél szolgáltatás összeomlik vagy lefagy.](#dhcp-client-service-crashes-or-hangs)   |
-    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL   | A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.  |
-    |1069 - ERROR_SERVICE_LOGON_FAILED   |  Tekintse meg, hogy [a DHCP-ügyfélszolgáltatás bejelentkezési hiba miatt sikertelen](#dhcp-client-service-fails-because-of-logon-failure) |
-    | 1070 - ERROR_SERVICE_START_HANG  | Lásd: [A DHCP-ügyfél szolgáltatás összeomlik vagy lefagy.](#dhcp-client-service-crashes-or-hangs)  |
-    | 1077 - ERROR_SERVICE_NEVER_STARTED  | Lásd: [A DHCP-ügyfél szolgáltatás le van tiltva.](#dhcp-client-service-is-disabled)  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.  |
-    |1053 | A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.  |
+    | 5 – HOZZÁFÉRÉS MEGTAGADVA  | [A hozzáférés-megtagadási hiba miatt a rendszer leállítja a DHCP-ügyfélszolgáltatás szolgáltatást](#dhcp-client-service-is-stopped-because-of-an-access-denied-error).  |
+    |1053 – ERROR_SERVICE_REQUEST_TIMEOUT   | Lásd: a [DHCP-ügyfélszolgáltatás összeomlik vagy lefagy](#dhcp-client-service-crashes-or-hangs).  |
+    | 1058 – ERROR_SERVICE_DISABLED  | Lásd: [a DHCP-ügyfélszolgáltatás le van tiltva](#dhcp-client-service-is-disabled).  |
+    | 1059 – ERROR_CIRCULAR_DEPENDENCY  |A probléma megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .   |
+    | 1067 – ERROR_PROCESS_ABORTED |Lásd: a [DHCP-ügyfélszolgáltatás összeomlik vagy lefagy](#dhcp-client-service-crashes-or-hangs).   |
+    |1068 – ERROR_SERVICE_DEPENDENCY_FAIL   | A probléma megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .  |
+    |1069 – ERROR_SERVICE_LOGON_FAILED   |  [A sikertelen bejelentkezés miatt nem sikerül a DHCP-ügyfél szolgáltatás](#dhcp-client-service-fails-because-of-logon-failure) : |
+    | 1070 – ERROR_SERVICE_START_HANG  | Lásd: a [DHCP-ügyfélszolgáltatás összeomlik vagy lefagy](#dhcp-client-service-crashes-or-hangs).  |
+    | 1077 – ERROR_SERVICE_NEVER_STARTED  | Lásd: [a DHCP-ügyfélszolgáltatás le van tiltva](#dhcp-client-service-is-disabled).  |
+    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   | A probléma megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .  |
+    |1053 | A probléma megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .  |
 
 
-#### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>A DHCP-ügyfél szolgáltatás leáll a hozzáférés megtagadása miatt hiba miatt
+#### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>A DHCP-ügyfélszolgáltatás egy hozzáférés-megtagadási hiba miatt leáll
 
-1. Csatlakozzon a [Soros konzolhoz,](serial-console-windows.md) és nyisson meg egy PowerShell-példányt.
-2. Töltse le a Folyamatfigyelő eszközt a következő parancsfájl futtatásával:
+1. Kapcsolódjon a [soros konzolhoz](serial-console-windows.md) , és nyisson meg egy PowerShell-példányt.
+2. Töltse le a Process monitor eszközt a következő parancsfájl futtatásával:
 
    ```powershell
    remove-module psreadline
@@ -102,18 +102,18 @@ A probléma megoldásához használja a Soros vezérlőt a virtuális gép DHCP-
    $wc = New-Object System.Net.WebClient
    $wc.DownloadFile($source,$destination)
    ```
-3. Most kezdj el egy **procmon** nyomkövetést:
+3. Most indítson el egy **Procmon** -nyomkövetést:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
    ```
-4. Reprodukálja a problémát a **hozzáférés** megtagadása üzenetet generáló szolgáltatás elindításával:
+4. A **hozzáférés megtagadva** üzenetet generáló szolgáltatás indításával reprodukálja a problémát:
 
    ```
    sc start DHCP
    ```
 
-   Ha nem sikerül, szakítsa meg a Folyamatfigyelő nyomkövetését:
+   Ha nem sikerül, szakítsa meg a folyamat figyelője nyomkövetését:
 
    ```
    procmon /Terminate
@@ -122,67 +122,67 @@ A probléma megoldásához használja a Soros vezérlőt a virtuális gép DHCP-
 
     1. [Adatlemez csatolása a virtuális géphez](../windows/attach-managed-disk-portal.md
 ).
-    2. A Serial Console segítségével a fájlt az új meghajtóra másolhatja. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban Az F a csatolt adatlemez illesztőprogram-betűjele. Cserélje le a betűt a megfelelő értékre.
-    3. Válassza le az adatmeghajtót, majd csatlakoztassa egy működő virtuális géphez, amelyen telepítve van a Folyamatfigyelő ubstakke.
+    2. A soros konzol segítségével átmásolhatja a fájlt az új meghajtóra. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban az F a csatolt adatlemez illesztőprogram-betűjele. Cserélje le a betűt a megfelelő értékre.
+    3. Válassza le az adatmeghajtót, majd csatolja egy olyan működő virtuális géphez, amelyen telepítve van a Process monitor ubstakke.
 
-6. Nyissa meg **a ProconTrace.PML-t** a folyamatfigyelő használatával a működő virtuális számítógépen. Ezután a szűrés eredmény szerint **az ACCESS DENIED**, ahogy az a következő képernyőképen látható:
+6. Nyissa meg a **ProcMonTrace. PML** a munkavirtuális gépen a Process monitor használatával. Ezután a szűrés **eredmény alapján hozzáférés MEGtagadva**, az alábbi képernyőképen látható módon:
 
-    ![Szűrés eredmény szerint a Folyamatfigyelőben](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![Szűrés eredményként a Process monitorban](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
-7. Javítsa ki a kimeneten lévő beállításkulcsokat, mappákat vagy fájlokat. Ezt a problémát általában akkor okozza, ha a szolgáltatásban használt bejelentkezési fiók nem rendelkezik ACL-engedéllyel ezekhez az objektumokhoz. A bejelentkezési fiók megfelelő ACL-engedélyének meghatározásához ellenőrizheti a kifogástalan állapotú virtuális gép.
+7. Javítsa ki a beállításjegyzékben található beállításkulcsokat, mappákat vagy fájlokat. Ezt a problémát általában akkor okozhatja, ha a szolgáltatásban használt bejelentkezési fiók nem rendelkezik ACL-engedéllyel az objektumok eléréséhez. A bejelentkezési fiók megfelelő ACL-engedélyének meghatározásához megtekintheti az egészséges virtuális gépet.
 
-#### <a name="dhcp-client-service-is-disabled"></a>A DHCP-ügyfél szolgáltatás le van tiltva
+#### <a name="dhcp-client-service-is-disabled"></a>A DHCP-ügyfélszolgáltatás le van tiltva
 
-1. A szolgáltatás visszaállítása az alapértelmezett indítási értékre:
+1. Állítsa vissza a szolgáltatást az alapértelmezett indítási értékre:
 
    ```
    sc config DHCP start= auto
    ```
 
-2. Indítsa el a szolgáltatást:
+2. A szolgáltatás elindítása:
 
    ```
    sc start DHCP
    ```
 
-3. A szolgáltatás állapotának lekérdezése ismét, hogy biztosan fusson:
+3. A szolgáltatás állapotának lekérése, hogy ellenőrizze, hogy fut-e:
 
    ```
    sc query DHCP
    ```
 
-4. Próbáljon meg csatlakozni a virtuális géphez a Távoli asztal használatával.
+4. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
-#### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>A DHCP-ügyfél szolgáltatás bejelentkezési hiba miatt sikertelen
+#### <a name="dhcp-client-service-fails-because-of-logon-failure"></a>A DHCP-ügyfélszolgáltatás sikertelen bejelentkezési hiba miatt meghiúsult
 
-1. Mivel ez a probléma a szolgáltatás indítási fiókjának módosításakor jelentkezik, a fiók visszaállítása az alapértelmezett állapotra:
+1. Mivel ez a probléma akkor fordul elő, ha a szolgáltatás indítási fiókja módosult, a fiók visszaállítása az alapértelmezett állapotra:
 
         sc config DHCP obj= 'NT Authority\Localservice'
-2. Indítsa el a szolgáltatást:
+2. A szolgáltatás elindítása:
 
         sc start DHCP
-3. Próbáljon meg csatlakozni a virtuális géphez a Távoli asztal használatával.
+3. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
-#### <a name="dhcp-client-service-crashes-or-hangs"></a>A DHCP-ügyfél szolgáltatás összeomlik vagy lefagy
+#### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-ügyfélszolgáltatás összeomlik vagy lefagy
 
-1. Ha a szolgáltatás állapota **indítási** vagy **leállítási** állapotban van, próbálja meg leállítani a szolgáltatást:
+1. Ha a szolgáltatás állapota elakad a **kezdő** vagy a **Leállítás** állapotban, próbálja meg leállítani a szolgáltatást:
 
         sc stop DHCP
-2. Különítse el a szolgáltatást a saját "svchost" tárolóján:
+2. A szolgáltatás elkülönítése a saját "Svchost" tárolóján:
 
         sc config DHCP type= own
-3. Indítsa el a szolgáltatást:
+3. A szolgáltatás elindítása:
 
         sc start DHCP
-4. Ha a szolgáltatás továbbra sem indul el, [forduljon az ügyfélszolgálathoz.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+4. Ha a szolgáltatás még nem indul el, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>A virtuális gép kapcsolat nélküli javítása
+### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációs rendszer lemezének csatolása helyreállítási virtuális géphez
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](../windows/troubleshoot-recovery-disks-portal.md)
-2. Távoli asztali kapcsolat indítása a helyreállítási virtuális géppel. Győződjön meg arról, hogy a csatlakoztatott lemez **online** ként van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
-3.  Nyisson meg egy rendszergazdai jogú parancssorpéldányt (**Futtatás rendszergazdaként**). Ezután futtassa a következő parancsfájlt. Ez a parancsfájl feltételezi, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel **F.** Cserélje le a betűt a virtuális gép értékére.
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+2. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez. Győződjön meg arról, hogy a csatlakoztatott lemez **online** állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
+3.  Nyisson meg egy rendszergazda jogú parancssor-példányt (**Futtatás rendszergazdaként**). Ezután futtassa az alábbi szkriptet. Ez a parancsfájl feltételezi, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel **F**. A betűt a megfelelő módon cserélje le a virtuális gép értékére.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
@@ -198,8 +198,8 @@ A probléma megoldásához használja a Soros vezérlőt a virtuális gép DHCP-
     reg unload HKLM\BROKENSYSTEM
     ```
 
-4. [Válassza le az operációs rendszer lemezét, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md). Ezután ellenőrizze, hogy a probléma megoldódott-e.
+4. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md). Ezután győződjön meg arról, hogy a probléma megoldódott-e.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha továbbra is segítségre van szüksége, lépjen kapcsolatba az [ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma megoldásához.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma megoldását.

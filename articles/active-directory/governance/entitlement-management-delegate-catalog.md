@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés-szabályozás leirányításának delegálása a katalóguskészítők számára az Azure AD jogosultságkezelésben – Azure Active Directory
-description: Megtudhatja, hogy miként delegálhatja a hozzáférés-irányítást az informatikai rendszergazdáktól a katalóguskészítők és a projektmenedzserek számára, hogy saját maguk is kezelhessék a hozzáférést.
+title: Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelése szolgáltatásban az alkotók katalógusához – Azure Active Directory
+description: Megtudhatja, hogyan delegálhat hozzáférési szabályozást a rendszergazdáktól az alkotók és a projektmenedzserek számára, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,54 +17,54 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77120198"
 ---
-# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Hozzáférés-szabályozás leirányításának delegálása a katalóguskészítők számára az Azure AD-jogosultságkezelésben
+# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében az alkotók katalógusában
 
-A katalógus erőforrások és hozzáférési csomagok tárolója. Katalógust akkor hoz létre, ha a kapcsolódó erőforrásokat és hozzáférési csomagokat szeretné csoportosítani. Alapértelmezés szerint a globális rendszergazda vagy a felhasználó rendszergazda [létrehozhat katalógust,](entitlement-management-catalog-create.md)és további felhasználókat vehet fel katalógustulajdonosként.
+A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell hoznia egy katalógust, ha a kapcsolódó erőforrásokat és a hozzáférési csomagokat szeretné csoportosítani. Alapértelmezés szerint a globális rendszergazda vagy a felhasználó rendszergazdája [létrehozhat egy katalógust](entitlement-management-catalog-create.md), és további felhasználókat is hozzáadhat a katalógus tulajdonosaként.
 
-Delegálni a felhasználók, akik nem rendszergazdák, hogy azok saját katalógusok létrehozása, hozzáadhatja ezeket a felhasználókat az Azure AD jogosultságkezelés által definiált katalógus készítői szerepkör. Hozzáadhat egyéni felhasználókat, vagy hozzáadhat egy csoportot, amelynek tagjai ezután katalógusokat hozhatnak létre.  A katalógus létrehozása után később hozzáadhatják a saját erőforrásaikat a katalógusukhoz.
+Ha olyan felhasználók számára kíván delegálni, akik nem rendszergazdák, így saját katalógusokat hozhatnak létre, ezeket a felhasználókat hozzáadhatja az Azure AD jogosultságok kezelése által definiált katalógus-létrehozó szerepkörhöz. Hozzáadhat egyéni felhasználókat, vagy hozzáadhat egy csoportot is, amelynek tagjai ezután létrehozhatnak katalógusokat.  Miután létrehozta a katalógust, később hozzáadhat erőforrásokat a katalógushoz.
 
-## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Rendszergazdaként delegáljon katalóguskészítővel
+## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Rendszergazdaként delegált katalógus létrehozója
 
-Az alábbi lépésekkel rendeljen hozzá egy felhasználót a katalógus létrehozója szerepkörhöz.
+Kövesse az alábbi lépéseket egy felhasználó hozzárendeléséhez a katalógus-létrehozó szerepkörhöz.
 
-**Előfeltételi szerepkör:** Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
 
-1. A bal oldali menü **Jogosultságkezelés** szakaszában kattintson a **Beállítások gombra.**
+1. A bal oldali menüben, a **jogosultságok kezelése** szakaszban kattintson a **Beállítások**elemre.
 
 1. Kattintson a **Szerkesztés** gombra.
 
-    ![Katalóguskészítők hozzáadásának beállításai](./media/entitlement-management-delegate-catalog/settings-delegate.png)
+    ![Katalógus-készítők hozzáadására szolgáló beállítások](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
-1. A **Delegált jogosultság kezelésszakaszában** kattintson a **Katalóguskészítők hozzáadása** elemre, és jelölje ki azokat a felhasználókat vagy csoportokat, akiknek delegálni szeretné ezt a jogosultságkezelési szerepkört.
+1. A jogosultság-kezelés **delegálása** szakaszban kattintson a **katalógus-létrehozók hozzáadása** lehetőségre azon felhasználók vagy csoportok kiválasztásához, akikre a jogosultsági felügyeleti szerepkört delegálni kívánja.
 
 1. Kattintson a **Kiválasztás** gombra.
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Delegált szerepkörök hozzáférésének engedélyezése az Azure Portalhoz
+## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>A Azure Portal elérésének engedélyezése a delegált szerepköröknek
 
-Ha engedélyezni szeretné a delegált szerepkörök, például a katalóguskészítők és a hozzáférés-csomagkezelők számára a hozzáférési csomagok kezeléséhez való hozzáférést, ellenőrizze a felügyeleti portál beállítását.
+Ha engedélyezni szeretné a delegált szerepköröket, például a katalógus-létrehozókat és a hozzáférési csomag kezelőit, a hozzáférési csomagok kezeléséhez tekintse meg a Azure Portal a felügyeleti portál beállításban.
 
-**Előfeltételi szerepkör:** Globális rendszergazda vagy felhasználó
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Az Azure Portalon kattintson az **Azure Active Directory,** majd a **Felhasználók**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd a **felhasználók**elemre.
 
-1. A bal oldali menüben kattintson a **Felhasználói beállítások parancsra.**
+1. A bal oldali menüben kattintson a **felhasználói beállítások**elemre.
 
-1. Győződjön meg **arról, hogy az Azure AD felügyeleti portálhoz való hozzáférés korlátozása** **nem**.
+1. Győződjön meg arról, hogy az **Azure ad felügyeleti portálhoz való hozzáférés korlátozása** **nem**értékre van állítva.
 
-    ![Az Azure AD felhasználói beállításai – Felügyeleti portál](./media/entitlement-management-delegate-catalog/user-settings.png)
+    ![Azure AD felhasználói beállítások – felügyeleti portál](./media/entitlement-management-delegate-catalog/user-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)
-- [Hozzáférés-szabályozás delegálása a csomagkezelőkszámára](entitlement-management-delegate-managers.md)
+- [Hozzáférési szabályozás delegálása a csomagkezelő-kezelők eléréséhez](entitlement-management-delegate-managers.md)
 

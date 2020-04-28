@@ -1,18 +1,18 @@
 ---
-title: GMSA beállítása az Azure Service Fabric tárolószolgáltatásaihoz
-description: Ismerje meg most a felügyelt szolgáltatásfiókok (gMSA) beállítását az Azure Service Fabricben futó tárolóhoz.
+title: Az Azure Service Fabric Container Services gMSA beállítása
+description: Ismerkedjen meg az Azure Service Fabric rendszerű tárolók csoportosan felügyelt szolgáltatásfiókok (gMSA) beállításával.
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639207"
 ---
-# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>GMSA beállítása a Service Fabric en futó Windows-tárolókhoz
+# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>GMSA beállítása a Service Fabric-on futó Windows-tárolók számára
 
-A gMSA (csoport felügyelt szolgáltatásfiókok) beállításához`credspec`a fürt összes csomópontján egy hitelesítőadat-specifikációs fájl ( ) kerül elhelyezésre. A fájl a virtuális gép kiterjesztésével minden csomópontra másolható.  A `credspec` fájlnak tartalmaznia kell a gMSA-fiók adatait. A fájlról `credspec` további információt a [Hitelesítő adatok specifikációjának létrehozása című témakörben talál.](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec) A hitelesítő adatok `Hostname` specifikációja és a címke az alkalmazásjegyzékben van megadva. A `Hostname` címkének meg kell egyeznie a gMSA-fiók nevével, amely alatt a tároló fut.  A `Hostname` címke lehetővé teszi, hogy a tároló kerberos-hitelesítéssel hitelesítse magát a tartomány más szolgáltatásai számára.  Az alkalmazásjegyzékben `Hostname` szereplő `credspec` és a minta megadása a következő kódrészletben látható:
+A gMSA (csoportosan felügyelt szolgáltatásfiókok) beállításához a rendszer a hitelesítő`credspec`adatok specifikációjának fájlját () a fürt összes csomópontjára áthelyezi. A fájl egy virtuálisgép-bővítmény használatával is másolható az összes csomópontra.  A `credspec` fájlnak tartalmaznia kell a gMSA-fiók adatait. További információt a `credspec` fájlról a [hitelesítő adatok specifikációjának létrehozása](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec)című témakörben talál. A hitelesítő adatok specifikációja és a `Hostname` címke meg van adva az alkalmazás jegyzékfájljában. A `Hostname` címkének meg kell egyeznie annak a gMSA-fióknak a nevével, amelyet a tároló futtat.  A `Hostname` címke lehetővé teszi, hogy a tároló a Kerberos-hitelesítés használatával hitelesítse magát a tartományban lévő más szolgáltatásokban.  A `Hostname` és az `credspec` alkalmazás jegyzékfájljának megadására szolgáló minta az alábbi kódrészletben látható:
 
 ```xml
 <Policies>
@@ -23,5 +23,5 @@ A gMSA (csoport felügyelt szolgáltatásfiókok) beállításához`credspec`a f
 ```
 Következő lépésként olvassa el a következő cikkeket:
 
-* [Windows-tároló központi telepítése a Service Fabric szolgáltatásba Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)
-* [Docker-tároló üzembe helyezése linuxos Service Fabric-re](service-fabric-get-started-containers-linux.md)
+* [Windows-tároló üzembe helyezése Service Fabric Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)
+* [Docker-tároló üzembe helyezése Linuxon Service Fabric](service-fabric-get-started-containers-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Elemzés az SQL Serveren R, Python és T-SQL - Csapatadatelemzési folyamattal
-description: Példák, amelyek végigvezetik az R, Python és T-SQL használatával az SQL Server ben a prediktív elemzéshez.
+title: Analitika SQL Server R, Python és T-SQL-Team adatelemzési folyamattal
+description: Példák az R, Python és T-SQL használatával SQL Server a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,41 +12,41 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864094"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server adatelemzési forgatókönyvek Az R, Python és T-SQL használatával
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>Adatelemzési forgatókönyvek SQL Server R, Python és T-SQL használatával
 
-Ezek a forgatókönyvek az SQL Server, az SQL Server R Services és az SQL Server Python Services segítségével végeznek prediktív elemzést. Az R és Python-kód a tárolt eljárásokban van telepítve. A csapatadat-elemzési folyamatban ismertetett lépéseket követik. A csapatadat-elemzési folyamat áttekintését az [Adatelemzési folyamat című](overview.md)témakörben találja. 
+Ezek a forgatókönyvek a SQL Server, SQL Server R Services és SQL Server Python-szolgáltatásokat használják a prediktív elemzések elvégzéséhez. Az R és a Python kód tárolt eljárásokban van üzembe helyezve. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). 
 
-További adatelemzési forgatókönyvek, amelyek végrehajtják a csapat adatelemzési folyamat az általuk használt **platform** szerint vannak csoportosítva. Lásd: [A csapatadat-elemzési folyamatot végrehajtó forgatókönyvek](walkthroughs.md) a példák részletezéséhez.
-
-
-## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Taxitippek előrejelzése Python- és SQL-lekérdezések használatával az SQL Server kiszolgálóval 
-
-Az [SQL Server használata](sql-walkthrough.md) forgatókönyv bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolási és regressziós modelleket.  Az adatok egy nyilvánosan elérhető NYC taxi út és a viteldíj adatkészlet.
+A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Taxitippek előrejelzése a Microsoft R és az SQL Server használatával 
+## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Tippek a Python és az SQL-lekérdezések használatával a SQL Server 
 
-Az [SQL Server R Services használata](https://msdn.microsoft.com/library/mt612857.aspx) forgatókönyv bemutatja, hogyan hozhat létre és helyezhet üzembe R-modellt az SQL Server kiszolgálóra. A forgatókönyv célja, hogy bemutassa az R-fejlesztőket az R-szolgáltatásoknak (Adatbázison belüli).
-
-
-## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Taxitippek előrejelzése az R használatával a T-SQL-ből vagy a tárolt eljárások az SQL Server rel
-
-Az [R és az SQL Server adatelemzési forgatókönyve](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) az SQL-programozók számára tapasztalatot biztosít egy fejlett elemzési megoldás létrehozásában a Transact-SQL SQL-kiszolgáló r-szolgáltatások használatával az R-megoldás működőképessé tételéhez. 
+A [Use SQL Server](sql-walkthrough.md) walkthrough bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolást és regressziós modelleket.  Az adat egy nyilvánosan elérhető NYC taxi Trip és fare adatkészlet.
 
 
-## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Taxitippek előrejelzése a Python használatával az SQL Server tárolt eljárásaiban
+## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>A Microsoft R és a SQL Server használatával kapcsolatos tippek előrejelzése 
 
-A [T-SQL használata az SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) forgatókönyve az SQL-programozók számára tapasztalatot biztosít egy gépi tanulási megoldás létrehozásában az SQL Server ben. Bemutatja, hogyan építhetbe python-t egy alkalmazásba python-kód hozzáadása a tárolt eljárásokhoz.
+A [Use SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) útmutató bemutatja, hogyan hozhat létre és helyezhet üzembe egy R-modellt SQL Server. A bemutató úgy lett kialakítva, hogy R-fejlesztőket vezessen be az R-szolgáltatásokba (adatbázison belül).
+
+
+## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>A T-SQL-ből vagy tárolt eljárásokból származó R-T használó R-tippek előrejelzése SQL Server
+
+Az [r és a SQL Server adatelemzési útmutatója](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) olyan SQL-programozókat biztosít, amelyekben a Transact-SQL használatával fejlett analitikai megoldás építhető ki a SQL Server R Services segítségével működővé tenni egy R-megoldást. 
+
+
+## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>A taxi használatának előrejelzése a Python használatával SQL Server tárolt eljárásokban
+
+A [T-SQL és a SQL Server Python Services bemutató használata](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) lehetővé teszi az SQL-programozók számára, hogy a gépi tanulási megoldás kiépítése SQL Serverban. Bemutatja, hogyan építheti be a Pythont egy alkalmazásba a Python-kód tárolt eljárásokhoz való hozzáadásával.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A csapatadat-elemzési folyamatot alkotó legfontosabb összetevőkről a [Csapat adatelemzési folyamatának áttekintése című témakörben olvashat.](overview.md)
+A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
 
-A csapatadat-elemzési folyamat életciklusának, amely az adatelemzési projektek strukturálásához használható, a [Csapat adatelemzési folyamat életciklusa](lifecycle.md)című témakörben ismer. Az életciklus ismerteti azokat a lépéseket, az elejétől a végéig, amelyeket a projektek általában a végrehajtáskor követnek. 
+A csoportos adatelemzési folyamat életciklusának megvitatására, amelyet az adatelemzési projektek felépítéséhez használhat, lásd: [csoportos adatelemzési folyamat életciklusa](lifecycle.md). Az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 

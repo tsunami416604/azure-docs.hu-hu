@@ -1,6 +1,6 @@
 ---
-title: A kapcsolatbontások diagnosztizálása és hibaelhárítása az Azure IoT Hub DPS-szel
-description: Ismerje meg a gyakori hibák diagnosztizálását és elhárítását az Azure IoT Hub-eszközkiépítési szolgáltatás (DPS) eszközkapcsolatával kapcsolatban
+title: Az Azure IoT Hub DPS kapcsolatának diagnosztizálása és hibakeresése
+description: Az Azure IoT Hub Device Provisioning Service (DPS) eszköz kapcsolataival kapcsolatos gyakori hibák diagnosztizálásának és hibaelhárításának megismerése
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646472"
 ---
-# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub eszközkiépítési szolgáltatásával
+# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
 
-Az IoT-eszközök kapcsolódási problémáit nehéz lehet elhárítani, mivel számos lehetséges hibapont létezik, például tanúsítványhibák, regisztrációs hibák stb. Ez a cikk útmutatást nyújt az eszközkapcsolati problémák észleléséhez és elhárításához az [Azure Monitoron](https://docs.microsoft.com/azure/azure-monitor/overview)keresztül.
+A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárításhoz, mert számos lehetséges meghibásodási pont, például az igazolási hibák, a regisztrációs hibák stb. Ez a cikk útmutatást nyújt az eszközök csatlakozási problémáinak észleléséhez és hibaelhárításához [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview)keresztül.
 
-## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Az Azure Monitor használata metrikák megtekintéséhez és riasztások beállításához
+## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>A Azure Monitor használata a metrikák megjelenítéséhez és a riasztások beállításához
 
-Az alábbi eljárás bemutatja, hogyan tekintheti meg és állíthatja be a riasztást az IoT Hub-eszközkiépítési szolgáltatás metrikája. 
+Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a riasztást IoT Hub Device Provisioning Service metrikán. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Tallózással keresse meg az IoT Hub-eszközkiépítési szolgáltatást.
+2. Keresse meg a IoT Hub Device Provisioning Service.
 
 3. Válassza a **Metrika** lehetőséget.
 
 4. Válassza ki a kívánt metrikát. 
-   <br />Jelenleg három mérőszám létezik a DPS-hez:
+   <br />A DPS jelenleg három mérőszámot biztosít:
 
-    | Metrikus neve | Leírás |
+    | Metrika neve | Leírás |
     |-------|------------|
-    | Igazolási kísérletek | Az eszközkiépítési szolgáltatással hitelesítést megkísérelt eszközök száma|
-    | Regisztrációs kísérletek | Azon eszközök száma, amelyek sikeres hitelesítés után megpróbáltak regisztrálni az IoT Hubba|
-    | Hozzárendelt eszköz | Az IoT Hubhoz sikeresen hozzárendelt eszközök száma|
+    | Igazolási kísérletek | Az eszköz kiépítési szolgáltatásával hitelesíteni próbált eszközök száma|
+    | Regisztrációs kísérletek | A sikeres hitelesítés után IoT Hub regisztrálni próbált eszközök száma|
+    | Eszköz hozzárendelve | IoT Hub sikeresen hozzárendelt eszközök száma|
 
 5. Válassza ki a kívánt összesítési módszert a metrika vizuális nézetének létrehozásához. 
 
-6. Metrika riasztásának beállításához válassza az **Új riasztási szabályok lehetőséget** a metrikapanel jobb felső részén, hasonlóképpen a **Riasztás** panelre, és kiválaszthatja az **Új riasztási szabályok lehetőséget.**
+6. Egy metrika riasztásának beállításához válassza a metrika panel jobb felső sarkában található **új riasztási szabályok** lehetőséget, és **válassza az** **új riasztási szabályok**lehetőséget.
 
-7. Válassza **a Feltétel hozzáadása**lehetőséget, majd a következő utasításokat követve válassza ki a kívánt metrikát és küszöbértéket.
+7. Válassza a **feltétel hozzáadása**lehetőséget, majd a kérdésekkel válassza ki a kívánt metrikát és küszöbértéket.
 
-További információ: [Mik a klasszikus riasztások a Microsoft Azure-ban?](../azure-monitor/platform/alerts-overview.md)
+További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azure-monitor/platform/alerts-overview.md)
 
-## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hibák megtekintése és megoldása a Naplóantikus használatával
+## <a name="using-log-analytic-to-view-and-resolve-errors"></a>A log Analytics használata a hibák megtekintéséhez és megoldásához
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Tallózással az IoT-központ.
+2. Keresse meg az IoT hubot.
 
-3. Válassza **a Diagnosztikai beállítások lehetőséget**.
+3. Válassza a **diagnosztikai beállítások**lehetőséget.
 
-4. Válassza **a Diagnosztika bekapcsolása**lehetőséget.
+4. Kattintson **a diagnosztika bekapcsolása**elemre.
 
-5. Engedélyezze a kívánt naplók gyűjtését.
+5. A kívánt naplók összegyűjtésének engedélyezése.
 
     | Napló neve | Leírás |
     |-------|------------|
-    | DeviceOperations (Eszközüzemeltetés) | Eszközcsatlakozási eseményekhez kapcsolódó naplók |
-    | Szolgáltatási műveletek | A szolgáltatás SDK használatával kapcsolatos eseménynaplók (pl. regisztrációs csoportok létrehozása vagy frissítése)|
+    | DeviceOperations | Eszköz-kapcsolódási eseményekhez kapcsolódó naplók |
+    | ServiceOperations | A Service SDK-val kapcsolatos eseménynaplók (például regisztrációs csoportok létrehozása vagy frissítése)|
 
-6. Kapcsolja be a **Küldés a Log Analytics szolgáltatásba** [(lásd: díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)). 
+6. A **küldés log Analytics** bekapcsolása ([lásd a díjszabást](https://azure.microsoft.com/pricing/details/log-analytics/)). 
 
-7. Nyissa meg a **Naplók** lapot az Azure Portalon az Eszközkiépítési szolgáltatás erőforrás alatt.
+7. Ugrás a **naplók** lapra a Azure Portal eszköz kiépítési szolgáltatásának erőforrás területén.
 
-8. A legutóbbi események megtekintéséhez kattintson a **Futtatás** gombra.
+8. Kattintson a **Futtatás** gombra a legutóbbi események megtekintéséhez.
 
-9. Ha vannak eredmények, `OperationName`keresse `ResultType` `ResultSignature`meg `ResultDescription` a , , és (hibaüzenetet) a hiba részletesebb ismertetéséhez.
+9. `OperationName`Ha vannak eredmények, keresse `ResultType` `ResultSignature`meg a, a, a `ResultDescription` és a (hibaüzenetet), hogy részletesebb információkat kapjon a hibáról.
 
 
 ## <a name="common-error-codes"></a>Gyakori hibakódok
-Ebben a táblázatban megismerheti és megoldhatja a gyakori hibákat.
+Ez a táblázat a gyakori hibák megismerésére és megoldására használható.
 
 | Hibakód| Leírás | HTTP-állapotkód |
 |-------|------------|------------|
-| 400 | A kérelem törzse érvénytelen; például nem elemezhető, vagy az objektum nem érvényesíthető.| 400 Rossz formátum |
-| 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt, vagy nem vonatkozik a kérelem URI-jára. Ez a hibakód a TPM-tanúsítványfolyamat részeként is visszakerül az eszközökre. | 401 Jogosulatlan|
-| 404 | Az Eszközkiépítési szolgáltatás példánya vagy egy erőforrás (pl. egy regisztráció) nem létezik. |404 Nem található |
-| 412 | A kérelemben lévő ETag nem egyezik meg a meglévő erőforrás ETag jének az RFC7232 szerint. | 412 Az előfeltétel nem sikerült |
-| 429 | A műveleteket a szolgáltatás szabályozza. Az adott szolgáltatáskorlátokat az [IoT Hub-eszközkiépítési szolgáltatás korlátai.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits) | 429 Túl sok kérés |
+| 400 | A kérelem törzse nem érvényes; például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni.| 400 helytelen formátum |
+| 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 jogosulatlan|
+| 404 | Az eszköz kiépítési szolgáltatásának példánya vagy egy erőforrás (például egy beléptetés) nem létezik. |404 Nem található |
+| 412 | A kérelemben szereplő ETag nem felel meg a meglévő erőforrás ETag, a RFC7232. | 412 előfeltétel sikertelen |
+| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 túl sok kérés |
 | 500 | Belső hiba történt. | 500 Belső kiszolgálóhiba|

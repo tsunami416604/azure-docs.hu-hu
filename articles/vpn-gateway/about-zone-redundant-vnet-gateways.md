@@ -1,6 +1,6 @@
 ---
-title: Zónaredundáns virtuális hálózati átjárók az Azure rendelkezésre állási zónáiban
-description: Ismerje meg a VPN-átjárók és az ExpressRoute-átjárók at a rendelkezésre állási zónákban.
+title: Tudnivalók a Azure Availability Zones-beli virtuális hálózati átjárók használatáról
+description: Ismerkedjen meg VPN Gateway-és ExpressRoute-átjárókkal Availability Zonesban.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -10,80 +10,80 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864298"
 ---
-# <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Zónaredundáns virtuális hálózati átjárók az Azure rendelkezésre állási zónáiban
+# <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Tudnivalók a Azure Availability Zones-beli virtuális hálózati átjárók használatáról
 
-VPN- és ExpressRoute-átjárókat telepíthet az [Azure rendelkezésre állási zónáiban.](../availability-zones/az-overview.md) Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól.
+A VPN-és ExpressRoute-átjárók üzembe helyezhetők a [Azure Availability Zonesban](../availability-zones/az-overview.md). Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól.
 
 ### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>Zónaredundáns átjárók
 
-A virtuális hálózati átjárók automatikus üzembe helyezéséhez a rendelkezésre állási zónák között, használhatja zónaredundáns virtuális hálózati átjárók. A zónaredundáns átjárók segítségével a zóna rugalmasságából profitálhat az Azure-beli létfontosságú, méretezhető szolgáltatásaihoz.
+A virtuális hálózati átjárók rendelkezésre állási zónákon keresztüli automatikus üzembe helyezéséhez használhatja a zóna-redundáns virtuális hálózati átjárókat. A Zone-redundáns átjárókkal kihasználhatja az Azure-beli üzleti szempontból alapvető fontosságú, méretezhető szolgáltatások elérését.
 
 <br>
 <br>
 
-![zónaredundáns átjárók grafikus](./media/create-zone-redundant-vnet-gateway/zonered.png)
+![zóna – redundáns átjárók ábrája](./media/create-zone-redundant-vnet-gateway/zonered.png)
 
-### <a name="zonal-gateways"></a><a name="zgw"></a>Övezeti átjárók
+### <a name="zonal-gateways"></a><a name="zgw"></a>Zóna-átjárók
 
-Átjárók üzembe helyezése egy adott zónában, használhatja a zónaszintű átjárók. Zónaszintű átjáró telepítésekor az átjáró összes példánya ugyanabban a rendelkezésre állási zónában van telepítve.
+Az átjárók egy adott zónában való üzembe helyezéséhez a zóna-átjárókat használhatja. Ha egy zóna-átjárót helyez üzembe, az átjáró összes példánya ugyanabban a rendelkezésre állási zónában lesz telepítve.
 
 <br>
 <br>
 
-![zónaátjárók grafikus](./media/create-zone-redundant-vnet-gateway/zonal.png)
+![zóna-átjárók ábrája](./media/create-zone-redundant-vnet-gateway/zonal.png)
 
 ## <a name="gateway-skus"></a><a name="gwskus"></a>Átjáró-termékváltozatok
 
-Zónaredundáns és zónaszintű átjárók érhetők el új átjáró-skus. Új virtuális hálózati átjáró-sk-eket adtunk hozzá az Azure AZ régióiban. Ezek a termékkészletek hasonlóak az ExpressRoute és a VPN-átjáró megfelelő meglévő termékkészleteihez, azzal a különbséggel, hogy a zónaredundáns és a zónaszintű átjárókra jellemzőek. Ezeket a termékváltozatokat a termékváltozat nevében az "AZ" alapján azonosíthatja.
+A Zone-redundáns és a zóna-átjárók új Gateway SKU-ként érhetők el. Új Virtual Network Gateway SKU-ket adott hozzá az Azure-ban az Regions. Ezek a SKU-azonosítók a ExpressRoute és a VPN Gateway vonatkozó meglévő SKU-hoz hasonlóak, azzal a különbséggel, hogy azok a zóna-redundáns és a zónákhoz tartozó átjárók. Ezeket a SKU-ket az SKU-név "az" részében azonosíthatja.
 
-Az átjárótermékkel kapcsolatos további tudnivalókért tekintse meg a [VPN-átjáró termékkészleteit](vpn-gateway-about-vpngateways.md#gwsku) és az [ExpressRoute átjárótermékkel kapcsolatos termékinformációs készleteket.](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)
+További információ az átjárók SKU-ról: [VPN Gateway SKU](vpn-gateway-about-vpngateways.md#gwsku) -i és [ExpressRoute Gateway SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)-i.
 
-## <a name="public-ip-skus"></a><a name="pipskus"></a>Nyilvános IP SKUs
+## <a name="public-ip-skus"></a><a name="pipskus"></a>Nyilvános IP-SKU
 
-Zónaredundáns átjárók és zónaszintű átjárók egyaránt támaszkodnak az Azure nyilvános IP-erőforrás *standard* termékváltozat. Az Azure nyilvános IP-erőforrás konfigurációja határozza meg, hogy a telepített átjáró zónaredundáns vagy zónaszintű. Ha egy nyilvános IP-erőforrást hoz létre *egy egyszerű* termékváltozattal, az átjáró nem rendelkezik zónaredundanciával, és az átjáró erőforrásai regionálisak lesznek.
+A Zone-redundáns átjárók és a zóna-átjárók egyaránt az Azure nyilvános IP-erőforrás *standard* SKU-ra támaszkodnak. Az Azure nyilvános IP-erőforrásának konfigurációja határozza meg, hogy az Ön által telepített átjáró a zóna redundáns vagy a zónákhoz van-e telepítve. Ha *alapszintű* SKU-val hoz létre egy nyilvános IP-erőforrást, akkor az átjáró nem rendelkezik zónával, és az átjáró erőforrásai regionálisak lesznek.
 
 ### <a name="zone-redundant-gateways"></a><a name="pipzrg"></a>Zónaredundáns átjárók
 
-Ha zóna megadása nélkül hoz létre nyilvános IP-címet a **standard** nyilvános IP-termékváltozat használatával, a viselkedés attól függően változik, hogy az átjáró VPN-átjáró vagy ExpressRoute-átjáró. 
+Amikor nyilvános IP-címet hoz létre a **szabványos** nyilvános IP-SKU használatával a zóna megadása nélkül, a viselkedés eltér attól függően, hogy az átjáró VPN-átjáró vagy ExpressRoute-átjáró. 
 
-* A VPN-átjáró konkretincia a két átjárópéldányok lesznek telepítve bármely 2 a három zónából, hogy zóna-redundancia. 
-* ExpressRoute-átjáró esetén, mivel kettőnél több példány is lehet, az átjáró a három zónára is kiterjedhet.
+* A VPN-átjárók esetében a két átjáró közül bármelyik kettőt üzembe helyezi a rendszer a következő három zónából a zóna-redundancia biztosítása érdekében. 
+* Egy ExpressRoute-átjáró esetében, mivel kettőnél több példány is lehet, az átjáró a három zónára terjedhet.
 
-### <a name="zonal-gateways"></a><a name="pipzg"></a>Övezeti átjárók
+### <a name="zonal-gateways"></a><a name="pipzg"></a>Zóna-átjárók
 
-Ha nyilvános IP-címet hoz létre a **szabványos** nyilvános IP-termékváltozat használatával, és megadja a zónát (1, 2 vagy 3), az összes átjárópéldány ugyanabban a zónában lesz telepítve.
+Amikor nyilvános IP-címet hoz létre a **standard** nyilvános IP-SKU használatával, és megadja a zónát (1, 2 vagy 3), az összes átjáró-példány ugyanabban a zónában lesz telepítve.
 
 ### <a name="regional-gateways"></a><a name="piprg"></a>Regionális átjárók
 
-Ha nyilvános IP-címet hoz létre az **alapszintű** nyilvános IP-termékváltozat használatával, az átjáró regionális átjáróként lesz telepítve, és nem rendelkezik az átjáróba beépített zónaredundanciával.
+Amikor nyilvános IP-címet hoz létre az **alapszintű** nyilvános IP-SKU használatával, az átjáró regionális átjáróként van üzembe helyezve, és nem rendelkezik az átjáróba épített összes zónával.
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Mi változik az új sk-ek telepítésekor?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Mi változik, ha az új SKU-t üzembe helyezem?
 
-Az Ön szemszögéből az átjárók zónaredundanciával telepíthetők. Ez azt jelenti, hogy az átjárók összes példánya az Azure rendelkezésre állási zónáiban lesz telepítve, és minden rendelkezésre állási zóna egy másik hiba és frissítési tartomány. Ez megbízhatóbbá, elérhetőbbé és zónahibákkal szembenellenállóbbá teszi az átjárókat.
+Az átjárók az Ön szemszögéből is üzembe helyezhetők a zóna-redundanciával. Ez azt jelenti, hogy az átjárók összes példánya Azure Availability Zones lesz telepítve, és az egyes rendelkezésre állási zónák egy másik hiba-és frissítési tartomány. Így az átjárók megbízhatóbbak, elérhetők és rugalmasak lesznek a zónák meghibásodása miatt.
 
-### <a name="can-i-use-the-azure-portal"></a>Használhatom az Azure Portalt?
+### <a name="can-i-use-the-azure-portal"></a>Használhatom a Azure Portal?
 
-Igen, az Azure Portal segítségével telepítheti az új sk-eket. Ezek az új termékkészletek azonban csak azokban az Azure-régiókban jelennek meg, amelyek rendelkeznek az Azure rendelkezésre állási zónáival.
+Igen, a Azure Portal használatával telepítheti az új SKU-t. Ezeket az új SKU-ket azonban csak azokban az Azure-régiókban fogja látni, amelyek Azure Availability Zones rendelkeznek.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Milyen régiók érhetők el az új sk-ek használatához?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Milyen régiókban érhetők el az új SKU-i használata?
 
-Az új termékverziók az Azure-régiókban érhetők el, amelyek rendelkeznek az Azure rendelkezésre állási zónáival – Közép-USA, Franciaország Közép-, Észak-Európa, Nyugat-Európa és AZ USA nyugati régiói 2 régió, USA keleti régiója, USA keleti régiója 2, Délkelet-Ázsia, Kelet-Japán, Az Egyesült Királyság déli része. A jövőben zónaredundáns átjárókat teszünk elérhetővé az Ön számára más Azure nyilvános régiókban.
+Az új SKU-ket olyan Azure-régiókban lehet elérni, amelyek Azure Availability Zones – Közép-USA, Közép-Franciaország, Észak-Európa, Nyugat-Európa és az USA 2. nyugati régiója, USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia, Kelet Egyesült Királyság déli régiója-Japán A jövőben az Azure-beli nyilvános régiókban elérhetővé tesszük a zóna-redundáns átjárókat.
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Módosíthatom/áttelepíthetem/frissíthetem a meglévő virtuális hálózati átjáróimat zónaredundáns vagy zónaszintű átjárókra?
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Módosíthatom/telepíthetem vagy frissíthetem a meglévő virtuális hálózati átjárókat a zóna-redundáns vagy a zónák közötti átjáróra?
 
-A meglévő virtuális hálózati átjárók áttelepítése zónaredundáns vagy zónaszintű átjárókba jelenleg nem támogatott. Azonban törölheti a meglévő átjárót, és újra létrehozhat egy zónaredundáns vagy zónaszintű átjárót.
+Jelenleg nem támogatott a meglévő virtuális hálózati átjárók áttelepítése a zóna-redundáns vagy a zónák közötti átjáróra. Azonban törölheti a meglévő átjárót, és újból létrehozhatja a zóna-redundáns vagy a zónákhoz tartozó átjárót.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Telepíthetek VPN- és Express Route átjárókat is ugyanabban a virtuális hálózatban?
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Telepíthetek VPN-és Express Route Gateway-átjárókat is ugyanazon a virtuális hálózaton?
 
-Az ugyanazon virtuális hálózatban lévő VPN- és express route átjárók együttélése támogatott. Azonban le kell foglalnia egy /27 IP-címtartományt az átjáró alhálózathoz.
+Az azonos virtuális hálózatban található VPN-és Express Route-átjárók együttes létezése is támogatott. Az átjáró-alhálózat esetében azonban foglaljon le egy/27 IP-címtartományt.
 
 ## <a name="next-steps"></a>További lépések
 

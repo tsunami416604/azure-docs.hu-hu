@@ -1,5 +1,5 @@
 ---
-title: 'Helyszíni hálózatok csatlakoztatása virtuális hálózathoz: Helyek közötti VPN: CLI'
+title: 'Helyszíni hálózatok összekapcsolása virtuális hálózattal: helyek közötti VPN: parancssori felület'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a parancssori felület segítségével.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: 6d28a5a37be2947ea6cc7019d2b3cc73932c60d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779093"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával
@@ -20,8 +20,8 @@ ms.locfileid: "75779093"
 Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:<br>
 
 > [!div class="op_single_selector"]
-> * [Azure-portál](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Powershell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -39,7 +39,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
-* Az Azure Cloud Shell segítségével futtathatja a CLI-parancsokat (az alábbi utasításokat). Ha azonban a parancsokat helyileg szeretné futtatni, ellenőrizze, hogy telepítette-e a CLI-parancsok legújabb verzióját (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli). 
+* A CLI-parancsok futtatásához Azure Cloud Shell használhatja az alábbi utasításokat. Ha azonban a parancsokat helyileg szeretné futtatni, ellenőrizze, hogy telepítette-e a CLI-parancsok legújabb verzióját (2,0 vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli). 
  
   [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -68,13 +68,13 @@ GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
-## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. Csatlakozás az előfizetéshez
+## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. kapcsolódás az előfizetéshez
 
-Ha úgy dönt, hogy helyileg futtatja a CLI-t, csatlakozzon az előfizetéséhez. Ha az Azure Cloud Shellt használja a böngészőben, nem kell csatlakoznia az előfizetéséhez. Automatikusan csatlakozik az Azure Cloud Shellben. Előfordulhat azonban, hogy a csatlakozás után ellenőrizni szeretné, hogy a megfelelő előfizetést használja-e.
+Ha a parancssori felület helyi futtatását választja, kapcsolódjon az előfizetéshez. Ha Azure Cloud Shellt használ a böngészőben, nem kell csatlakoznia az előfizetéséhez. Azure Cloud Shell automatikusan fog összekapcsolást létesíteni. A kapcsolódás után azonban érdemes ellenőrizni, hogy a megfelelő előfizetést használja-e.
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. Erőforráscsoport létrehozása
+## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. erőforráscsoport létrehozása
 
 A következő példában létrehozunk egy „TestRG1” nevű erőforráscsoportot az „eastus” helyen. Ha már rendelkezik erőforráscsoporttal abban a régióban, ahol létre kívánja hozni a virtuális hálózatát, használhatja azt is.
 
@@ -82,7 +82,7 @@ A következő példában létrehozunk egy „TestRG1” nevű erőforráscsoport
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. Hozzon létre egy virtuális hálózat
+## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. virtuális hálózat létrehozása
 
 Ha még nem rendelkezik virtuális hálózattal, akkor hozzon létre egyet az [az network vnet create](/cli/azure/network/vnet) paranccsal. Virtuális hálózat létrehozásakor győződjön meg róla, hogy a megadott címterek nincsenek átfedésben a helyszíni hálózaton található egyéb címterekkel.
 
@@ -97,7 +97,7 @@ Az alábbi példa létrehoz egy „TestVNet1” nevű virtuális hálózatot és
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
-## <a name="4-create-the-gateway-subnet"></a>4. <a name="gwsub"> </a>Az átjáró alhálózatának létrehozása
+## <a name="4-create-the-gateway-subnet"></a>4. <a name="gwsub"> </a>az átjáró alhálózatának létrehozása
 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
@@ -110,7 +110,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. A helyi hálózati átjáró létrehozása
+## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. a helyi hálózati átjáró létrehozása
 
 A helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. A helyszíni hálózat módosításakor az előtagok egyszerűen frissíthetők.
 
@@ -125,7 +125,7 @@ Az [az network local-gateway create](/cli/azure/network/local-gateway) paranccsa
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
-## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. Nyilvános IP-cím kérése
+## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. nyilvános IP-cím kérése
 
 Egy VPN Gateway-nek rendelkeznie kell nyilvános IP-címmel. Először az IP-cím típusú erőforrást kell kérnie, majd hivatkoznia kell arra, amikor létrehozza a virtuális hálózati átjárót. Az IP-címet a rendszer dinamikusan rendeli hozzá az erőforráshoz a VPN Gateway létrehozásakor. A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Nem kérheti statikus IP-cím hozzárendelését. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 
@@ -135,14 +135,14 @@ Az [az network public-ip create](/cli/azure/network/public-ip) paranccsal kérhe
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
-## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. A VPN-átjáró létrehozása
+## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. a VPN-átjáró létrehozása
 
 Hozza létre a virtuális hálózat VPN-átjáróját. A VPN-átjáró létrehozása akár 45 percet vagy többet is igénybe vehet.
 
 Használja a következő értékeket:
 
 * A helyek közötti konfiguráció *--gateway-type* paraméterének értéke: *Vpn*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. További információért lásd: [Átjárótípusok](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
-* A *--vpn-típus* lehet *RouteBased* (más néven dinamikus átjáró egyes dokumentációban), vagy *PolicyBased* (más néven statikus átjáró egyes dokumentációban). A beállítás azon eszköz követelményeire vonatkozik, amelyhez csatlakozik. További információk a VPN-átjárótípusokról: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
+* A *--VPN-Type* lehet *útvonalalapú* (más néven dinamikus átjáró néhány dokumentációban), vagy *házirendalapú* (más néven statikus átjáró néhány dokumentációban). A beállítás azon eszköz követelményeire vonatkozik, amelyhez csatlakozik. További információk a VPN-átjárótípusokról: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 * Válassza ki az átjáró használni kívánt termékváltozatát. Egyes termékváltozatok konfigurációs korlátokkal rendelkeznek. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/network/vnet-gateway) paranccsal. Ha ezt a parancsot a „--no-wait” paraméterrel futtatja, nem jelenik meg visszajelzés vagy kimenet. Ez a paraméter lehetővé teszi, hogy az átjáró a háttérben jöjjön létre. Egy átjáró létrehozása nagyjából 45 percet vesz igénybe.
@@ -151,7 +151,7 @@ Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/netw
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
-## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. A VPN-eszköz konfigurálása
+## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. a VPN-eszköz konfigurálása
 
 A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Ebben a lépésben a VPN-eszköz konfigurálása következik. A VPN-eszköz konfigurálásakor a következőkre van szüksége:
 
@@ -166,7 +166,7 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. A VPN-kapcsolat létrehozása
+## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. a VPN-kapcsolat létrehozása
 
 Hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a helyszíni VPN-eszköz között. Különösen figyeljen oda a megosztott kulcs értékére, amelynek meg kell egyeznie a VPN-eszköz konfigurált megosztottkulcs-értékével.
 
@@ -178,7 +178,7 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 A kapcsolat rövid időn belül létrejön.
 
-## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. A VPN-kapcsolat ellenőrzése
+## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. a VPN-kapcsolat ellenőrzése
 
 [!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 

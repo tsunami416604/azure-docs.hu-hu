@@ -1,13 +1,13 @@
 ---
-title: Meglévő alkalmazás gyors üzembe helyezése fürtre
+title: Meglévő alkalmazás gyors üzembe helyezése fürtön
 description: Meglévő Node.js-alkalmazás üzemeltetése egy Azure Service Fabric-fürtön a Visual Studio használatával.
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614842"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
@@ -16,15 +16,15 @@ Ez a rövid útmutató segítséget nyújt egy meglévő alkalmazás (ebben a p�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md). Amely magában foglalja a Service Fabric SDK és a Visual Studio 2019 vagy 2015 telepítését.
+Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md). Ide tartozik a Service Fabric SDK és a Visual Studio 2019 vagy a 2015 telepítése.
 
 Egy meglévő Node.js-alkalmazással is rendelkeznie kell, amelyet üzembe helyezhet. Ez a rövid útmutató egy egyszerű Node.js-webhelyet használ, amely [innen][download-sample] tölthető le. Miután a következő lépésben létrehozza a projektet, csomagolja ki ezt a fájl a következő mappába: `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.][create-account]
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][create-account].
 
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
-Indítsa el a Visual Studio **alkalmazást rendszergazdaként**.
+Indítsa el a Visual studiót **rendszergazdaként**.
 
 Projekt létrehozása `CTRL`+`SHIFT`+`N` használatával
 
@@ -33,7 +33,7 @@ Az **Új projekt** párbeszédpanelen válassza a **Felhő > Service Fabric-alka
 Adja a **MyGuestApp** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
 
 >[!IMPORTANT]
->A Node.js gyakran túllépi a Windows elérési utakra vonatkozó 260 karakteres korlátját. Használjon rövid elérési utat a projekthez, például: **c:\code\svc1**. Szükség esetén az **[alábbi utasításokat](https://stackoverflow.com/a/41687101/1664231)** is követheti a hosszú fájlelérési utak engedélyezéséhez a Windows 10-ben.
+>A Node.js gyakran túllépi a Windows elérési utakra vonatkozó 260 karakteres korlátját. Használjon rövid elérési utat a projekthez, például: **c:\code\svc1**. Igény szerint az **[alábbi utasításokat](https://stackoverflow.com/a/41687101/1664231)** követve engedélyezheti a hosszú fájlelérési utakat a Windows 10 rendszerben.
    
 ![A Visual Studio Új projekt párbeszédpanelje][new-project]
 
@@ -43,7 +43,7 @@ Adja a **MyGuestService** nevet a szolgáltatásnak, adja meg a következő ért
 
 | Beállítás                   | Érték |
 | ------------------------- | ------ |
-| Kódcsomag mappája       | _&lt;a mappa a Node.js alkalmazással&gt;_ |
+| Kódcsomag mappája       | _&lt;a Node. js-alkalmazással rendelkező mappa&gt;_ |
 | Kódcsomag viselkedése     | A mappa tartalmának másolása a projektbe |
 | Program                   | node.exe |
 | Argumentumok                 | server.js |
@@ -55,7 +55,7 @@ Kattintson az **OK** gombra.
 
 A Visual Studio létrehozza az alkalmazásprojektet és az aktorszolgáltatás-projektet, és megjeleníti őket a Megoldáskezelőben.
 
-Az alkalmazás projekt **(MyGuestApp**) nem tartalmaz semmilyen kódot közvetlenül. A projekt szolgáltatási projektek egy készletére hivatkozik. Emellett három másik tartalomtípust is tartalmaz:
+Az Application Project (**MyGuestApp**) nem tartalmaz közvetlenül semmilyen kódot. A projekt szolgáltatási projektekre hivatkozik. Emellett három más típusú tartalmat is tartalmaz:
 
 * **Profilok közzététele**  
 Különböző környezetek eszközbeállításai.
@@ -72,7 +72,7 @@ A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Re
 
 A példában üzembe helyezett Node.js-alkalmazás a **80**-as portot használja, és a Service Fabricnak tudnia kell, hogy ennek a portnak elérhetőnek kell lennie.
 
-Nyissa meg a **ServiceManifest.xml** fájlt a projektben. A jegyzék alján van egy `<Resources> \ <Endpoints>` bejegyzés, amit már definiáltak. Módosítsa ezt a bejegyzést a `Port`, a `Protocol` és a `Type` hozzáadásával. 
+Nyissa meg a **ServiceManifest.xml** fájlt a projektben. A jegyzékfájl alján van egy `<Resources> \ <Endpoints>` már definiált bejegyzés. Módosítsa ezt a bejegyzést a `Port`, a `Protocol` és a `Type` hozzáadásával. 
 
 ```xml
   <Resources>
@@ -87,7 +87,7 @@ Nyissa meg a **ServiceManifest.xml** fájlt a projektben. A jegyzék alján van 
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
-Ha megnyomja **az F5 billentyűt,** és futtatja a projektet, az a helyi fürtre lesz telepítve. Azonban helyezzük üzembe inkább az Azure-ban.
+Ha lenyomja az **F5** billentyűt, és futtatja a projektet, a rendszer telepíti a helyi fürtre. Azonban helyezzük üzembe inkább az Azure-ban.
 
 Kattintson a jobb gombbal a projektre, és válassza a **Közzététel** lehetőséget, amely egy párbeszédpanelt nyit meg az Azure-on történő közzétételhez.
 
@@ -97,13 +97,13 @@ Válassza ki a **PublishProfiles\Cloud.xml** célprofilt.
 
 Ha korábban még nem tette meg, válassza ki az üzembe helyezés céljaként szolgáló Azure-fiókot. Ha még nem rendelkezik ilyen fiókkal, [regisztráljon egyet][create-account].
 
-A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha nem rendelkezik ilyentel, válassza ** &lt;az Új fürt létrehozása lehetőséget... &gt; ** amely megnyitja a böngésző ablakot az Azure Portalon. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az ** &lt;új fürt létrehozása... lehetőséget. &gt; ** ekkor megnyílik a webböngésző ablaka a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 A Service Fabric-fürt létrehozásakor ügyeljen rá, hogy az **Egyéni végpontok** beállítás értéke **80** legyen.
 
 ![Service Fabric-csomóponttípus konfigurálása egyéni végponttal][custom-endpoint]
 
-Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Létrehozása után lépjen vissza a közzétételi párbeszédpanelre, és válassza a ** &lt;Frissítés&gt;** lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
+Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Miután létrejött, lépjen vissza a közzététel párbeszédpanelre, és válassza a ** &lt;frissítés&gt;** lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
 
 Kattintson a **Közzététel** gombra, és várjon, amíg az üzembe helyezés befejeződik.
 
@@ -119,11 +119,11 @@ Ellenőrizze a szolgáltatás címének Áttekintés paneljét. Használja az _�
 
 ![A Service Fabric áttekintési panelje az Azure Portalon][overview]
 
-Keresse meg ezt a címet, `HELLO WORLD` ahol látni fogja a választ.
+Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Ne felejtse el törölni az összes olyan erőforrást, amelyet ehhez a rövid útmutatóhoz hozott létre, mivel ezekért az erőforrásokért díjat számítunk fel.
+Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
 ## <a name="next-steps"></a>További lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).

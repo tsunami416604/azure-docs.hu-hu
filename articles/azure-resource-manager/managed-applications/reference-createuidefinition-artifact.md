@@ -1,24 +1,24 @@
 ---
-title: CreateUiDefinition összetevő
-description: Bemutatja, hogyan hozhat létre a createUiDefinition összetevő egy Azure felügyelt alkalmazáshoz. A fájl neve createUiDefinition.json.
+title: CreateUiDefinition-összetevő
+description: Bemutatja, hogyan hozhatja létre az createUiDefinition-összetevőt egy Azure által felügyelt alkalmazáshoz. A fájl neve createUiDefinition. JSON.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651487"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Hivatkozás: Felhasználói felület elemeinek összetevője
+# <a name="reference-user-interface-elements-artifact"></a>Hivatkozás: felhasználói felület elemeinek összetevője
 
-Ez a cikk egy hivatkozás egy *createUiDefinition.json* összetevő az Azure felügyelt alkalmazásokban. A felhasználói felület elemeinek létrehozásáról a [Felhasználói felület elemeinek létrehozása](create-uidefinition-elements.md)című témakörben talál további információt.
+Ez a cikk a Azure Managed Applications *createUiDefinition. JSON* összetevőjét ismerteti. A felhasználói felület elemeinek létrehozásáról további információt a [felhasználói felület elemeinek létrehozása](create-uidefinition-elements.md)című témakörben talál.
 
 ## <a name="user-interface-elements"></a>Felhasználó felület elemei
 
-A következő JSON egy példát mutat be az Azure felügyelt *alkalmazásokhoz készült createUiDefinition.json* fájlra:
+A következő JSON a Azure Managed Applications *createUiDefinition. JSON* fájljának példáját mutatja be:
 
 ```json
 {
@@ -81,6 +81,6 @@ A következő JSON egy példát mutat be az Azure felügyelt *alkalmazásokhoz k
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
-- [Hivatkozás: Telepítési sablon műterméke](reference-main-template-artifact.md)
-- [Hivatkozás: Definíciós műtermék megtekintése](reference-view-definition-artifact.md)
+- [Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
+- [Hivatkozás: telepítési sablon összetevő](reference-main-template-artifact.md)
+- [Hivatkozás: definíciós összetevő megtekintése](reference-view-definition-artifact.md)

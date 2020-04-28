@@ -1,6 +1,6 @@
 ---
-title: Szűrők létrehozása az Azure Media Services 3-as v3-as ával .NET SDK
-description: Ez a témakör azt ismerteti, hogyan hozhat létre szűrőket, hogy az ügyfél használhassa őket az adatfolyam adott szakaszainak streameléséhez. A Media Services dinamikus jegyzékeket hoz létre a szelektív streamelés eléréséhez.
+title: Szűrők létrehozása Azure Media Services v3 .NET SDK-val
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779246"
 ---
-# <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása a Media Services .NET SDK szolgáltatással
+# <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val
 
-Amikor a tartalmat az ügyfelek (élő események streamelése vagy igény szerinti videó) az ügyfél szükség lehet nagyobb rugalmasságot, mint amit az alapértelmezett eszköz jegyzékfájljában leírt. Az Azure Media Services lehetővé teszi, hogy fiókszűrőket és eszközszűrőket határozzon meg a tartalomhoz. 
+Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel közvetíti), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
-A szolgáltatás részletes leírását és a használatának forgatókönyveit a Dinamikus jegyzékek és [szűrők című témakörben tetszésszerint.](filters-concept.md) [Dynamic Manifests](filters-dynamic-manifest-overview.md)
+A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ez a témakör azt mutatja be, hogy a Media Services .NET SDK használatával hogyan definiálható szűrő egy igény szerinti videóeszközhöz, és hogyan hozhat létre [számlaszűrőket](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) és [eszközszűrőket](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK egy szűrő megadására az igény szerinti videóhoz, valamint a [fiókok](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) és az adategységek [szűrők](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)létrehozásához. 
 
 > [!NOTE]
-> Ügyeljen arra, hogy tekintse át [a presentationTimeRange](filters-concept.md#presentationtimerange).
+> Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Tekintse át [a szűrőket és a dinamikus jegyzékeket.](filters-dynamic-manifest-overview.md)
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Győződjön meg arról, hogy nem emlékszik az erőforráscsoport nevére és a Media Services-fiók nevére. 
-- Az [API-k eléréséhez](access-api-cli-how-to.md) szükséges információk beszerezni
-- Tekintse [át a feltöltést, a kódolást és az adatfolyamot az Azure Media Services használatával,](stream-files-tutorial-with-api.md) és tekintse meg a [.NET SDK használatának megkezdését](stream-files-tutorial-with-api.md#start_using_dotnet)
+- Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md).
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- Az API-k [eléréséhez](access-api-cli-how-to.md) szükséges információk beolvasása
+- Tekintse át a [feltöltést, a kódolást és a streamet a Azure Media Services használatával, és](stream-files-tutorial-with-api.md) tekintse meg a [.net SDK használatának megkezdéséhez](stream-files-tutorial-with-api.md#start_using_dotnet)
 
 ## <a name="define-a-filter"></a>Szűrő definiálása  
 
-A .NET-ben [a FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) és [filterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) osztályok segítségével konfigurálhatja a pályabeállításokat. 
+A .NET-ben a [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) és a [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) osztályok használatával követheti nyomon a beállításokat. 
 
-A következő kód egy szűrőt határoz meg, amely tartalmazza az EK-3 hangsávokat és a 0-1000000 tartományban lévő bitrátát.
+A következő kód egy olyan szűrőt határoz meg, amely minden olyan hangsávot tartalmaz, amely EC-0-1000000 3.
 
 ```csharp
 var audioConditions = new List<FilterTrackPropertyCondition>()
@@ -64,29 +64,29 @@ List<FilterTrackSelection> includedTracks = new List<FilterTrackSelection>()
 };
 ```
 
-## <a name="create-account-filters"></a>Fiókszűrők létrehozása
+## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-A következő kód bemutatja, hogyan hozhat létre a .NET programmal olyan fiókszűrőt, amely tartalmazza a fent meghatározott összes [pályakijelölést.](#define-a-filter) 
+A következő kód bemutatja, hogyan használható a .NET egy olyan fiók szűrő létrehozásához, amely tartalmazza a [fent megadott](#define-a-filter)összes nyomkövetési beállítást. 
 
 ```csharp
 AccountFilter accountFilterParams = new AccountFilter(tracks: includedTracks);
 client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "accountFilterName1", accountFilter);
 ```
 
-## <a name="create-asset-filters"></a>Eszközszűrők létrehozása
+## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása
 
-A következő kód bemutatja, hogyan hozhat létre a .NET értékszűrőt, amely tartalmazza a [fent meghatározott](#define-a-filter)összes pályaválasztást . 
+A következő kód bemutatja, hogyan használható a .NET egy olyan objektum-szűrő létrehozásához, amely tartalmazza a [fent megadott](#define-a-filter)összes követési kijelölést. 
 
 ```csharp
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>Szűrők társítása a streamelési lokátorral
+## <a name="associate-filters-with-streaming-locator"></a>Szűrők hozzárendelése a folyamatos átviteli Lokátorhoz
 
-Megadhatja az eszköz- vagy fiókszűrők listáját, amely a streamelési lokátorra vonatkozna. A [dinamikus csomagzó (Streamelési végpont)](dynamic-packaging-overview.md) alkalmazza ezt a szűrőlistát az ügyfél által az URL-ben megadott szűrőkkel együtt. Ez a kombináció [dinamikus jegyzéket](filters-dynamic-manifest-overview.md)hoz létre, amely a Streamelési lokátoron megadott URL+ szűrők szűrőin alapul. Javasoljuk, hogy használja ezt a funkciót, ha szűrőket szeretne alkalmazni, de nem szeretné elérhetővé tenni az URL-címben szereplő szűrőneveket.
+Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
-A következő C# kód bemutatja, hogyan `StreamingLocator.Filters`hozhat létre streamelési lokátort, és adja meg. Ez egy nem kötelező `IList<string>` tulajdonság, amely egy szűrőneveket vesz fel.
+A következő C#-kód azt mutatja be, hogyan hozható létre adatfolyam- `StreamingLocator.Filters`kereső, és hogyan adható meg. Ez egy opcionális tulajdonság, amely `IList<string>` a szűrők nevét veszi figyelembe.
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -104,11 +104,11 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
       
-## <a name="stream-using-filters"></a>Adatfolyam szűrők használatával
+## <a name="stream-using-filters"></a>Stream szűrők használatával
 
-Miután definiálja a szűrőket, az ügyfelek használhatják őket a streamelési URL-címben. A szűrők adaptív sávszélességű streamelési protokollokra alkalmazhatók: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
+A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatják őket. A szűrők alkalmazhatók az adaptív sávszélességű adatfolyam-továbbítási protokollokra: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
 
-Az alábbi táblázat néhány példát mutat be a szűrőkkel ellátott URL-címekre:
+Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
 |Protocol (Protokoll)|Példa|
 |---|---|
@@ -118,6 +118,6 @@ Az alábbi táblázat néhány példát mutat be a szűrőkkel ellátott URL-cí
 
 ## <a name="next-steps"></a>További lépések
 
-[Videók streamelése](stream-files-tutorial-with-api.md) 
+[Stream-videók](stream-files-tutorial-with-api.md) 
 
 

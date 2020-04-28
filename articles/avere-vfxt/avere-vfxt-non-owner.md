@@ -1,32 +1,32 @@
 ---
-title: Az Avere vFXT nem tulajdonosi megoldás - Azure
-description: 'Megoldás: Az előfizetés tulajdonosi engedélyével nem rendelkező felhasználók számára az Avere vFXT azure-hoz való üzembe helyezését'
+title: Avere vFXT nem tulajdonosi megkerülő megoldás – Azure
+description: Megkerülő megoldás, amely lehetővé teszi, hogy a felhasználók előfizetés-tulajdonos engedélye nélkül avere vFXT az Azure-hoz
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153275"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
 
-Ezek az utasítások egy olyan megoldás, amely lehetővé teszi, hogy az előfizetés tulajdonosi jogosultságokkal nem rendelkező felhasználó Hozzon létre egy Avere vFXT azure-rendszerhez.
+Ezek az utasítások egy megkerülő megoldás, amely lehetővé teszi, hogy a felhasználó előfizetés-tulajdonosi jogosultság nélkül hozzon létre egy avere-vFXT az Azure System számára
 
-(Az Avere vFXT rendszer telepítésének ajánlott módja, ha a tulajdonosi jogosultságokkal rendelkező felhasználó elvégezheti a létrehozási lépéseket, amint azt [az Avere vFXT létrehozásának előkészítése](avere-vfxt-prereqs.md)című részben ismertetik.)  
+(A avere vFXT rendszer központi telepítésének ajánlott módja, ha egy tulajdonosi jogosultsággal rendelkező felhasználó rendelkezik a létrehozás lépéseivel, ahogy azt a [felkészülés a avere vFXT létrehozására](avere-vfxt-prereqs.md)című cikk ismerteti.)  
 
-A megoldás egy további hozzáférési szerepkör létrehozását jelenti, amely elegendő engedélyt ad a felhasználóknak a fürt telepítéséhez. A szerepkört egy előfizetés tulajdonosának kell létrehoznia, és a tulajdonosnak hozzá kell rendelnie a megfelelő felhasználókhoz.
+A megkerülő megoldás olyan további hozzáférési szerepkör létrehozásával jár, amely megfelelő jogosultságot biztosít a felhasználóknak a fürt telepítéséhez. A szerepkört egy előfizetés tulajdonosának kell létrehoznia, és a tulajdonosnak hozzá kell rendelnie a megfelelő felhasználókhoz.
 
-Az előfizetés tulajdonosának el kell [fogadnia az](avere-vfxt-prereqs.md) Avere vFXT piactéri lemezkép használati feltételeit is.
+Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketplace-rendszerkép [használati feltételeit](avere-vfxt-prereqs.md) is.
 
 > [!IMPORTANT]
-> Ezeket a lépéseket a fürthöz használt előfizetéstulajdonosi jogosultságokkal rendelkező felhasználónak kell megtennie.
+> Ezeket a lépéseket a fürthöz használni kívánt előfizetéshez tartozó tulajdonosi jogosultságokkal rendelkező felhasználónak kell elvégeznie.
 
-1. Másolja ezeket a sorokat, és `averecreatecluster.json`mentse őket egy fájlba (például ). Használja az előfizetés-azonosítóját a `AssignableScopes` kimutatásban.
+1. Másolja ezeket a sorokat, és mentse őket fájlba (például `averecreatecluster.json`). Használja az előfizetés-AZONOSÍTÓját `AssignableScopes` az utasításban.
 
    ```json
    {
@@ -58,7 +58,7 @@ Az előfizetés tulajdonosának el kell [fogadnia az](avere-vfxt-prereqs.md) Ave
    }
    ```
 
-1. A szerepkör létrehozásához futtassa ezt a parancsot:
+1. Futtassa ezt a parancsot a szerepkör létrehozásához:
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
@@ -72,8 +72,8 @@ Az előfizetés tulajdonosának el kell [fogadnia az](avere-vfxt-prereqs.md) Ave
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-A folyamat befejezése után a szerepkör a következő engedélyeket adja az előfizetéshez hozzárendelt felhasználóknak:
+A folyamat befejezése után a szerepkör minden felhasználóhoz hozzárendelte a következő engedélyeket az előfizetéshez:
 
 * A hálózati infrastruktúra létrehozása és konfigurálása
-* A fürtvezérlő létrehozása
-* Fürtlétrehozási parancsfájlok futtatása a fürtvezérlőből a fürt létrehozásához
+* A fürt létrehozása
+* Fürt létrehozási parancsfájljainak futtatása a fürtből a fürt létrehozásához

@@ -1,19 +1,19 @@
 ---
-title: Szereplők számbavétele az Azure Service Fabric-en
-description: Példák használatával ismerje meg a megbízható szereplők és metaadataik felsorolását egy Azure Service Fabric-alkalmazásban.
+title: Az Azure Service Fabric szereplőinek számbavétele
+description: Példák a Reliable Actors és azok metaadatainak enumerálására egy Azure Service Fabric-alkalmazásban példák használatával.
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645599"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Szolgáltatás-háló megbízható szereplőinek számbavétele
-A Reliable Actors szolgáltatás lehetővé teszi, hogy az ügyfél a szolgáltatás üzemeltetése által üzemeltetett szereplők metaadatait számba veresse. Mivel az aktor szolgáltatás egy particionált állapotalapú szolgáltatás, a felsorolás partíciónként történik. Mivel minden partíció sok szereplőt tartalmazhat, a felsorolás lapozható eredmények halmazaként jelenik meg. Az oldalak végigvannak hurkolva, amíg az összes oldal el nem olvassa. A következő példa bemutatja, hogyan hozhat létre egy listát az összes aktív szereplőről egy aktorszolgáltatás egy partícióján:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric enumerálása Reliable Actors
+A Reliable Actors szolgáltatás lehetővé teszi, hogy az ügyfél a szolgáltatás által üzemeltetett szereplők metaadatait enumerálja. Mivel a Actors szolgáltatás particionált állapot-nyilvántartó szolgáltatás, a számbavétel egy partíción történik. Mivel az egyes partíciók több résztvevőt is tartalmazhatnak, a számbavétel a lapozható eredmények halmazát adja vissza. A lapokat a rendszer az összes oldal beolvasása után összehurkolja. Az alábbi példa bemutatja, hogyan hozhatja létre az összes aktív szereplő listáját a Actors szolgáltatás egy partíciójában:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -59,11 +59,11 @@ while (continuationToken != null);
 
 
 ## <a name="next-steps"></a>További lépések
-* [Szereplő állapotkezelése](service-fabric-reliable-actors-state-management.md)
-* [A szereplő életciklusa és a szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API referenciadokumentáció](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
+* [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
+* [A Actors API-dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

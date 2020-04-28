@@ -1,6 +1,6 @@
 ---
-title: Hibakezelés az Azure API-kezelési házirendekben | Microsoft dokumentumok
-description: Ismerje meg, hogyan reagálhat a kérelmek azure API-kezelés során esetleg előforduló hibafeltételekre.
+title: Hibakezelés az Azure API Management-szabályzatokban | Microsoft Docs
+description: Megtudhatja, hogyan reagálhat a kérelmek Azure API Management-ban való feldolgozása során felmerülő hibákra.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902461"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hibakezelés az API Management-szabályzatokban
 
-Egy `ProxyError` objektum biztosításával az Azure API Management lehetővé teszi a közzétevők számára, hogy válaszoljanak a hibafeltételekre, amelyek a kérelmek feldolgozása során fordulhatnak elő. Az `ProxyError` objektum a környezeten keresztül érhető [el. LastError](api-management-policy-expressions.md#ContextVariables) tulajdonság, és a `on-error` házirend szakasz házirendjei használhatják. Ez a cikk az Azure API Management hibakezelési képességeire mutató hivatkozást tartalmaz.
+Egy `ProxyError` objektum megadásával az Azure API Management lehetővé teszi a kiadók számára, hogy válaszolják meg a hibákra vonatkozó feltételeket, amelyek a kérelmek feldolgozása során fordulhatnak elő. Az `ProxyError` objektum a környezeten keresztül érhető el [. A LastError](api-management-policy-expressions.md#ContextVariables) tulajdonságot, amelyet a `on-error` házirendek a szabályzat szakaszban használhatnak. Ez a cikk az Azure-API Management hibakezelés funkcióinak hivatkozását ismerteti.
 
-## <a name="error-handling-in-api-management"></a>Hibakezelés az API-kezelésben
+## <a name="error-handling-in-api-management"></a>Hibakezelés a API Managementban
 
-Az Azure API Management `inbound`szabályzatai a következő példában látható módon , `backend`, `outbound`és `on-error` szakaszokra vannak osztva.
+Az Azure API Management házirendjei az alábbi példában látható `inbound`módon `backend`vannak `outbound`felosztva `on-error` ,, és szakaszokra bontva.
 
 ```xml
 <policies>
@@ -47,92 +47,92 @@ Az Azure API Management `inbound`szabályzatai a következő példában láthat�
 </policies>
 ```
 
-A kérelem feldolgozása során a beépített lépések végrehajtása a kérelem hatókörében lévő szabályzatokkal együtt történik. Hiba esetén a feldolgozás azonnal a `on-error` házirendszakaszra ugrik.
-A `on-error` házirendszakasz bármely hatókörben használható. Az API-közzétevők egyéni viselkedést konfigurálhatnak, például naplózhatják a hibát az eseményközpontokba, vagy új választ hozhatnak létre a hívónak való visszatéréshez.
+A kérelem feldolgozása során a beépített lépések minden olyan szabályzattal együtt futnak, amely a kérelem hatókörében van. Ha hiba történik, a feldolgozás azonnal beugrik a `on-error` házirend szakaszra.
+A `on-error` szabályzat szakasz bármely hatókörben használható. Az API-közzétevők egyéni viselkedést állíthatnak be, például naplózzák a hibát az Event hubokba, vagy létrehozhatnak egy új választ a hívónak való visszatéréshez.
 
 > [!NOTE]
-> A `on-error` szakasz alapértelmezés szerint nincs jelen a házirendekben. Ha hozzá `on-error` szeretné adni a szakaszt egy házirendhez, keresse meg a kívánt házirendet a házirend-szerkesztőben, és adja hozzá. A házirendek konfigurálásáról az [API-kezelés házirendjei](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)című témakörben talál további információt.
+> A `on-error` szakasz alapértelmezés szerint nem szerepel a szabályzatokban. A `on-error` szakasz szabályzathoz való hozzáadásához keresse meg a kívánt szabályzatot a szabályzat-szerkesztőben, és adja hozzá. A házirendek konfigurálásával kapcsolatos további információkért lásd: [szabályzatok API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).
 >
-> Ha nincs `on-error` szakasz, a hívók 400 vagy 500 HTTP-válaszüzenetet kapnak, ha hiba lép fel.
+> Ha nincs `on-error` szakasz, a hívók 400 vagy 500 http-válaszüzenetet kapnak, ha hiba történik.
 
-### <a name="policies-allowed-in-on-error"></a>A hiba esetén engedélyezett házirendek
+### <a name="policies-allowed-in-on-error"></a>Hiba esetén engedélyezett házirendek
 
-A következő házirendek használhatók `on-error` a házirend szakaszban.
+A `on-error` házirend szakaszban a következő szabályzatok használhatók.
 
--   [Válassza ki](api-management-advanced-policies.md#choose)
--   [beállított változó](api-management-advanced-policies.md#set-variable)
--   [keresés és csere](api-management-transformation-policies.md#Findandreplacestringinbody)
--   [visszaadás](api-management-advanced-policies.md#ReturnResponse)
--   [set-fejléc](api-management-transformation-policies.md#SetHTTPheader)
--   [set-módszer](api-management-advanced-policies.md#SetRequestMethod)
--   [beállított állapot](api-management-advanced-policies.md#SetStatus)
--   [küldési kérelem](api-management-advanced-policies.md#SendRequest)
--   [küldés-egyirányú kérés](api-management-advanced-policies.md#SendOneWayRequest)
--   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
--   [json-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
--   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
+-   [Válassza](api-management-advanced-policies.md#choose)
+-   [változó beállítása](api-management-advanced-policies.md#set-variable)
+-   [Keresés és csere](api-management-transformation-policies.md#Findandreplacestringinbody)
+-   [visszatérési válasz](api-management-advanced-policies.md#ReturnResponse)
+-   [fejléc beállítása](api-management-transformation-policies.md#SetHTTPheader)
+-   [set-Method](api-management-advanced-policies.md#SetRequestMethod)
+-   [állapot beállítása](api-management-advanced-policies.md#SetStatus)
+-   [kérelem küldése](api-management-advanced-policies.md#SendRequest)
+-   [egyirányú küldési kérelem](api-management-advanced-policies.md#SendOneWayRequest)
+-   [eventhub](api-management-advanced-policies.md#log-to-eventhub)
+-   [JSON – XML](api-management-transformation-policies.md#ConvertJSONtoXML)
+-   [XML – JSON](api-management-transformation-policies.md#ConvertXMLtoJSON)
 
 ## <a name="lasterror"></a>LastError
 
-Ha hiba történik, és a `on-error` vezérlő a házirendszakaszra ugrik, a rendszer a hibát [a környezetben tárolja. LastError](api-management-policy-expressions.md#ContextVariables) tulajdonság, amely a `on-error` szakasz házirendjei által érhető el. A LastError a következő tulajdonságokkal rendelkezik.
+Ha hiba lép fel, és a vezérlő a `on-error` házirend szakaszra ugrik, a rendszer a hibát a [kontextusban tárolja. LastError](api-management-policy-expressions.md#ContextVariables) tulajdonság, amely a `on-error` szakasz szabályzatai alapján érhető el. A LastError a következő tulajdonságokkal rendelkezik.
 
-| Név       | Típus   | Leírás                                                                                               | Kötelező |
+| Name (Név)       | Típus   | Leírás                                                                                               | Kötelező |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamatlépés neve.      | Igen      |
-| `Reason`   | sztring | Gépbarát hibakód, amely hibakezeléshez használható.                                       | Nem       |
-| `Message`  | sztring | Ember által olvasható hibaleírás.                                                                         | Igen      |
-| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és lehet a "globális", "termék", "api" vagy "művelet" egyike | Nem       |
-| `Section`  | sztring | Az a szakasz név, ahol hiba történt. Lehetséges értékek: "bejövő", "háttérrendszer", "kimenő" vagy "hiba".      | Nem       |
-| `Path`     | sztring | Beágyazott házirendet ad meg, például "choose[3]/when[2]".                                                 | Nem       |
-| `PolicyId` | sztring | Az `id` attribútum értéke, ha azt az ügyfél adja meg, abban a házirendben, ahol hiba történt             | Nem       |
+| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamat lépésének neve.      | Igen      |
+| `Reason`   | sztring | Számítógép-barát hibakód, amely a hibakezelés során használható.                                       | Nem       |
+| `Message`  | sztring | Ember által olvasható hiba leírása.                                                                         | Igen      |
+| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és a "globális", "termék", "API" vagy "művelet" lehet. | Nem       |
+| `Section`  | sztring | A szakasz neve, ahol a hiba történt. Lehetséges értékek: "bejövő", "háttér", "kimenő" vagy "on-Error".      | Nem       |
+| `Path`     | sztring | Beágyazott szabályzatot határoz meg, például "válasszon [3]/when [2]".                                                 | Nem       |
+| `PolicyId` | sztring | Az `id` attribútum értéke, ha az ügyfél megadja azt a házirendet, ahol a hiba történt             | Nem       |
 
 > [!TIP]
-> Az állapotkódot a környezeten keresztül érheti el. Response.StatusCode.
+> Az állapotkódot a kontextusban érheti el. Response. StatusCode.
 
 > [!NOTE]
-> Minden házirend rendelkezik egy választható `id` attribútummal, amely hozzáadható a házirend gyökéreleméhez. Ha ez az attribútum hibaesetén szerepel egy házirendben, az attribútum értéke a `context.LastError.PolicyId` tulajdonság használatával beolvasható.
+> Az összes házirendhez választható `id` attribútum tartozik, amely a házirend gyökérszintű eleméhez adható hozzá. Ha ez az attribútum hiba esetén a szabályzatban szerepel, az attribútum értéke a `context.LastError.PolicyId` tulajdonság használatával kérhető le.
 
-## <a name="predefined-errors-for-built-in-steps"></a>Előre definiált hibák a beépített lépésekhez
+## <a name="predefined-errors-for-built-in-steps"></a>Beépített lépések előre megadott hibák
 
-A következő hibák előre definiálva vannak a beépített feldolgozási lépések kiértékelése során előforduló hibafeltételekhez.
+A következő hibák előre definiálva vannak a beépített feldolgozási lépések kiértékelése során felmerülő hibákra vonatkozó feltételekhez.
 
 | Forrás        | Állapot                                 | Ok                  | Üzenet                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| konfiguráció | Az Uri nem egyezik egyetlen API-val vagy művelettel sem | A művelet nem található       | Nem lehet egyeztetni a bejövő kérést egy művelettel.                                                                      |
-| engedélyezés | Az előfizetési kulcs nincs megadva             | A SubscriptionKey Nem található | A hozzáférés megtagadva a hiányzó előfizetési kulcs miatt. Győződjön meg arról, hogy az API-ra vonatkozó kérelmek kérések esetén tartalmazza az előfizetési kulcsot. |
-| engedélyezés | Az előfizetési kulcs értéke érvénytelen         | Előfizetési kulcsérvénytelen  | A hozzáférés érvénytelen előfizetési kulcs miatt megtagadva. Győződjön meg arról, hogy egy aktív előfizetéshez érvényes kulcsot ad meg.            |
-| multiple (többszörös) | Az ügyfél (egy ügyfél és egy API Management átjáró között) megszakadt az ügyfél, miközben a kérés függőben volt | Ügyfélkapcsolati hiba | multiple (többszörös) |
-| multiple (többszörös) | Upstream kapcsolat (egy API Management átjáróról háttérszolgáltatásra) nem jött létre, vagy a háttérrendszer megszakította | HáttérrendszerConnectionFailure | multiple (többszörös) |
-| multiple (többszörös) | Futásidejű kivétel történt egy adott kifejezés kiértékelése során | Kifejezésérték-értékeléssikertelen | multiple (többszörös) |
+| konfiguráció | Az URI nem felel meg egyetlen API-nak vagy műveletnek sem | OperationNotFound       | Nem lehet egyeztetni a bejövő kérést egy művelethez.                                                                      |
+| engedélyezés | Nincs megadva az előfizetési kulcs             | SubscriptionKeyNotFound | A hozzáférés megtagadva a hiányzó előfizetési kulcs miatt. Ügyeljen arra, hogy előfizetési kulcsot tartalmazzon az API-nak küldött kérésekhez. |
+| engedélyezés | Az előfizetési kulcs értéke érvénytelen.         | SubscriptionKeyInvalid  | A hozzáférés megtagadva, mert érvénytelen az előfizetési kulcs. Győződjön meg arról, hogy érvényes kulcsot ad meg egy aktív előfizetéshez.            |
+| multiple (többszörös) | Az ügyfél megszakította az alsóbb rétegbeli kapcsolatokat (az ügyfélről egy API Management átjáróra), amíg a kérelem függőben volt. | ClientConnectionFailure | multiple (többszörös) |
+| multiple (többszörös) | A felsőbb rétegbeli kapcsolatok (API Management átjáróról a háttérbeli szolgáltatásra) nem jöttek meg, vagy a háttér megszakította. | BackendConnectionFailure | multiple (többszörös) |
+| multiple (többszörös) | Futásidejű kivétel történt egy adott kifejezés kiértékelése során. | ExpressionValueEvaluationFailure | multiple (többszörös) |
 
-## <a name="predefined-errors-for-policies"></a>A házirendek előre definiált hibái
+## <a name="predefined-errors-for-policies"></a>Szabályzatok előre megadott hibái
 
-A következő hibák előre definiálva vannak a házirend-kiértékelés során előforduló hibafeltételekhez.
+A következő hibák előre definiálva vannak a szabályzat kiértékelése során felmerülő hibákra vonatkozóan.
 
 | Forrás       | Állapot                                                       | Ok                    | Üzenet                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| sebességhatár   | Túllépte a díjkorlátot                                             | RateLimitExceeded         | Túllépte a sebességkorlátot                                                                                                               |
-| kvóta        | Túllépve a kvótát                                                  | Kvótatúllépve             | A csomagba foglalt lebeszélhető percek elfogytak. A kvóta feltöltése xx:xx:xx. -vagy- Elfogyott a sávszélesség-kvóta. A kvóta feltöltése xx:xx:xx. |
-| Jsonp        | A visszahívási paraméter értéke érvénytelen (nem megfelelő karaktereket tartalmaz) | CallbackParameterInvalid  | A(z) {callback-parameter-name} visszahívási paraméter értéke nem érvényes JavaScript-azonosító.                                          |
-| ip-szűrő    | Nem sikerült elemezni a hívó IP-címét a kérésből                          | Nem sikerültToParseCallerIP     | Nem sikerült létrehozni a hívó IP-címét. A hozzáférés megtagadva.                                                                        |
-| ip-szűrő    | A hívó IP-címe nem szerepel az engedélyezett listában                                | CallerIpNem engedélyezett        | A hívó IP-címe ({ip-address} nem engedélyezett. A hozzáférés megtagadva.                                                                        |
-| ip-szűrő    | A hívó IP-címe letiltott listában van                                    | CallerIpBlokkolva           | A hívó IP-címe le van tiltva. A hozzáférés megtagadva.                                                                                         |
-| ellenőrző fejléc | A szükséges fejléc nincs megmutatva, vagy az érték hiányzik               | A fejléc nem található            | A(z) {header-name} fejléc nem található a kérelemben. A hozzáférés megtagadva.                                                                    |
-| ellenőrző fejléc | A szükséges fejléc nincs megmutatva, vagy az érték hiányzik               | HeaderValue Nem engedélyezett     | A(z) {header-name} fejléc(header-name} értéke nem engedélyezett. A hozzáférés megtagadva.                                                          |
-| érvényesít-jwt | Hiányzik a JWT token a kérelemből                                 | Token Nem található             | A JWT nem található a kérelemben. A hozzáférés megtagadva.                                                                                         |
-| érvényesít-jwt | Az aláírás érvényesítése nem sikerült                                     | TokenSignatureÉrvénytelen     | <üzenetet jwt\>könyvtár . A hozzáférés megtagadva.                                                                                          |
-| érvényesít-jwt | Érvénytelen közönség                                                | TokenAudience Notallowed   | <üzenetet jwt\>könyvtár . A hozzáférés megtagadva.                                                                                          |
-| érvényesít-jwt | Érvénytelen kibocsátó                                                  | TokenIssuerNotAllowed     | <üzenetet jwt\>könyvtár . A hozzáférés megtagadva.                                                                                          |
-| érvényesít-jwt | Lejárt a jogkivonat.                                                   | TokenExpired              | <üzenetet jwt\>könyvtár . A hozzáférés megtagadva.                                                                                          |
-| érvényesít-jwt | Az aláíráskulcs nem lett feloldva az azonosítóval                            | TokenSignatureKeyNotFound | <üzenetet jwt\>könyvtár . A hozzáférés megtagadva.                                                                                          |
-| érvényesít-jwt | A szükséges jogcímek hiányoznak a jogkivonatból                          | TokenClaimNotFound        | JWT token hiányzik a következő\>állítások: <\>c1, <c2 , ... A hozzáférés megtagadva.                                                            |
-| érvényesít-jwt | A jogcímértékek nem egyeznek                                           | TokenClaimValueNem engedélyezett | A(z) {jogcímnév} {jogcím-név} jogcímértéke nem engedélyezett. A hozzáférés megtagadva.                                                             |
-| érvényesít-jwt | Egyéb érvényesítési hibák                                       | JwtInvalid                | <üzenet jwt könyvtárból\>                                                                                                          |
-| továbbítási kérelem vagy küldési kérelem | A HTTP-válasz állapotkódja és a fejlécek nem érkeztek meg a háttérrendszertől a beállított időkorláton belül | Időkorlát | multiple (többszörös) |
+| korlát mértéke   | Túllépte a díjszabási korlátot                                             | RateLimitExceeded         | Túllépte a díjszabási korlátot                                                                                                               |
+| kvóta        | Kvóta túllépve                                                  | QuotaExceeded             | A csomagba foglalt lebeszélhető percek elfogytak. A kvóta a XX: xx: xx nyelven lesz feltöltve. -vagy a sávszélesség-kvóta. A kvóta a XX: xx: xx nyelven lesz feltöltve. |
+| jsnop támogatással        | A visszahívási paraméter értéke érvénytelen (helytelen karaktereket tartalmaz) | CallbackParameterInvalid  | A (z) {callback-paraméter-Name} visszahívási paraméter értéke nem érvényes JavaScript-azonosító.                                          |
+| IP-szűrő    | Nem sikerült elemezni a hívó IP-címét a kérelemből                          | FailedToParseCallerIP     | Nem sikerült a hívó IP-címének létrehozása. A hozzáférés megtagadva.                                                                        |
+| IP-szűrő    | A hívó IP-címe nem engedélyezett a listában                                | CallerIpNotAllowed        | A hívó IP-címe ({IP-cím}) nem engedélyezett. A hozzáférés megtagadva.                                                                        |
+| IP-szűrő    | A hívó IP-címe tiltott listán van                                    | CallerIpBlocked           | A hívó IP-címe le van tiltva. A hozzáférés megtagadva.                                                                                         |
+| fejléc bejelölése | A kötelező fejléc nem jelenik meg, vagy hiányzik az érték               | HeaderNotFound            | A kérelemben nem található a (z) {header-Name} fejléc. A hozzáférés megtagadva.                                                                    |
+| fejléc bejelölése | A kötelező fejléc nem jelenik meg, vagy hiányzik az érték               | HeaderValueNotAllowed     | A (z) {header-Value} fejlécben szereplő {header-Name} érték nem engedélyezett. A hozzáférés megtagadva.                                                          |
+| ellenőrzés – JWT | A kérelemben hiányzik az JWT token.                                 | TokenNotFound             | A JWT nem található a kérelemben. A hozzáférés megtagadva.                                                                                         |
+| ellenőrzés – JWT | Az aláírás ellenőrzése nem sikerült                                     | TokenSignatureInvalid     | <üzenet a JWT könyvtárából\>. A hozzáférés megtagadva.                                                                                          |
+| ellenőrzés – JWT | Érvénytelen célközönség                                                | TokenAudienceNotAllowed   | <üzenet a JWT könyvtárából\>. A hozzáférés megtagadva.                                                                                          |
+| ellenőrzés – JWT | Érvénytelen kiállító                                                  | TokenIssuerNotAllowed     | <üzenet a JWT könyvtárából\>. A hozzáférés megtagadva.                                                                                          |
+| ellenőrzés – JWT | Lejárt a jogkivonat.                                                   | TokenExpired              | <üzenet a JWT könyvtárából\>. A hozzáférés megtagadva.                                                                                          |
+| ellenőrzés – JWT | Az aláírási kulcs nem lett feloldva azonosító alapján                            | TokenSignatureKeyNotFound | <üzenet a JWT könyvtárából\>. A hozzáférés megtagadva.                                                                                          |
+| ellenőrzés – JWT | A szükséges jogcímek hiányoznak a jogkivonatból                          | TokenClaimNotFound        | Az JWT tokenből hiányzik a következő jogcímek\>: <c1\>, <C2,... A hozzáférés megtagadva.                                                            |
+| ellenőrzés – JWT | Nem egyező jogcím-értékek                                           | TokenClaimValueNotAllowed | A (z) {jogcím-Value} jogcím {jogcím-Name} értéke nem engedélyezett. A hozzáférés megtagadva.                                                             |
+| ellenőrzés – JWT | Egyéb érvényesítési hibák                                       | JwtInvalid                | Üzenet <a JWT könyvtárából\>                                                                                                          |
+| továbbítás – kérelem vagy küldési kérelem | A HTTP-válasz állapotkód és a fejlécek nem érkeztek meg a háttérben a beállított időkorláton belül | Időkorlát | multiple (többszörös) |
 
 ## <a name="example"></a>Példa
 
-API-házirend beállítása a következőkre:
+API-szabályzat beállítása a következőre:
 
 ```xml
 <policies>
@@ -175,15 +175,15 @@ API-házirend beállítása a következőkre:
 </policies>
 ```
 
-és a jogosulatlan kérelem küldése a következő választ fogja eredményezni:
+a jogosulatlan kérések küldése a következő választ eredményezi:
 
-![Nem engedélyezett hibaválasz](media/api-management-error-handling-policies/error-response.png)
+![Jogosulatlan hiba válasza](media/api-management-error-handling-policies/error-response.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A házirendekkel kapcsolatos további információkért lásd:
+További információ a házirendek használatáról:
 
--   [Szabályzatok az API Managementben](api-management-howto-policies.md)
+-   [Szabályzatok API Management](api-management-howto-policies.md)
 -   [API-k átalakítása](transform-api.md)
--   [Házirend-útmutató](api-management-policy-reference.md) a házirend-utasítások és beállításaik teljes listájához
--   [Házirendminták](policy-samples.md)
+-   Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
+-   [Házirend-minták](policy-samples.md)

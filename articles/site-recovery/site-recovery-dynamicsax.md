@@ -1,185 +1,185 @@
 ---
-title: A Dynamics AX vészhelyreállítása az Azure Site Recovery szolgáltatással
-description: Ismerje meg, hogyan állíthatja be a Dynamics AX vészutáni helyreállítását az Azure Site Recovery szolgáltatással
+title: A Dynamics AX vész-helyreállítása Azure Site Recovery
+description: Ismerje meg, hogyan állíthatja be a Dynamics AX vész-helyreállítását Azure Site Recovery
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75941587"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vészhelyreállítás beállítása többrétegű Dynamics AX-alkalmazáshoz   
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
 
 
 
 
- A Dynamics AX az egyik legnépszerűbb ERP-megoldás, amelyet a vállalatok a folyamatok különböző helyek közötti szabványosítására, az erőforrások kezelésére és a megfelelőség egyszerűsítésére használnak. Mivel az alkalmazás kritikus fontosságú egy szervezet számára, katasztrófa esetén az alkalmazásnak minimális idő alatt kell felkeserednie és futnia kell.
+ A Dynamics AX az egyik legnépszerűbb ERP-megoldás, amelyet a vállalatok a különböző helyszíneken felhasználva szabványosítják a folyamatokat, kezelhetik az erőforrásokat és egyszerűsítik a megfelelőséget. Mivel az alkalmazás kritikus fontosságú a szervezet számára, katasztrófa esetén az alkalmazásnak minimális időben kell futnia.
 
-Ma a Dynamics AX nem biztosít semmilyen beépített vész-helyreállítási képességeket. A Dynamics AX számos kiszolgálóösszetevőből áll, például a Windows Application Object Serverből, az Azure Active Directoryból, az Azure SQL Databaseből, a SharePoint Serverből és a Reporting Servicesszolgáltatásból. Az egyes összetevők vész-helyreállítási manuális kezelése nem csak költséges, hanem hibalehetőségeket is rejt.
+Napjainkban a Dynamics AX nem biztosít beépített vész-helyreállítási lehetőségeket. A Dynamics AX számos kiszolgálói összetevőből áll, mint például a Windows Application Object Server, a Azure Active Directory, a Azure SQL Database, a SharePoint Server és a Reporting Services. Ezeknek az összetevőknek a vész-helyreállítási felszámolásához nem csak a költséges, hanem a hibák is fennállnak.
 
-Ez a cikk bemutatja, hogyan hozhat létre vészhelyreállítási megoldást a Dynamics AX-alkalmazáshoz az [Azure Site Recovery](site-recovery-overview.md)használatával. Azt is magában foglalja a tervezett/nem tervezett teszt feladatátvételek egy kattintással helyreállítási terv, támogatott konfigurációk és előfeltételek használatával.
+Ez a cikk azt ismerteti, hogyan hozhat létre vész-helyreállítási megoldást a Dynamics AX-alkalmazáshoz [Azure site Recovery](site-recovery-overview.md)használatával. A tervezett/nem tervezett feladatátvételeket is magában foglalja egy egykattintásos helyreállítási terv, támogatott konfigurációk és előfeltételek használatával.
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Dynamics AX-alkalmazás vész-helyreállítási megvalósításának megvalósítása a Site Recovery használatával a következő előfeltételeket igényli:
+A Dynamics AX-alkalmazások vész-helyreállításának a Site Recovery használatával történő megvalósításához a következő előfeltételek szükségesek:
 
-• Hozzon létre egy helyszíni Dynamics AX központi telepítést.
+• A helyszíni Dynamics AX üzembe helyezésének beállítása.
 
-• Hozzon létre egy Site Recovery trezort egy Azure-előfizetésben.
+• Hozzon létre egy Site Recovery tárolót egy Azure-előfizetésben.
 
-• Ha az Azure a helyreállítási hely, futtassa az Azure virtuális gép relevanciád-felmérési eszközét a virtuális gépeken. Kompatibilisnek kell lennie az Azure virtuális gépek és a site recovery szolgáltatások.
+• Ha az Azure a helyreállítási hely, futtassa az Azure Virtual Machine Readiness Assessment eszközt a virtuális gépeken. Kompatibilisnek kell lenniük az Azure Virtual Machines és Site Recovery szolgáltatásokkal.
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
 
-A cikk létrehozásához a Windows Server 2012 R2 Enterprise rendszeren a Dynamics AX 2012 R3 rendszerrel rendelkező VMware virtuális gépeket használtuk. Mivel a Site Recovery replikációalkalmazás-független, az itt megadott javaslatok at a következő esetekben kell tárolni.
+Ennek a cikknek a létrehozása céljából a VMware virtuális gépeket a Dynamics AX 2012 R3 verzióval használtuk a Windows Server 2012 R2 Enterprise rendszeren. Mivel Site Recovery replikáció az alkalmazás agnosztikusja, a következő forgatókönyvek esetében az itt megadott ajánlásokat várjuk.
 
 ### <a name="source-and-target"></a>Forrás és cél
 
 **Forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
 **Hyper-V** | Igen | Igen
-**Vmware** | Igen | Igen
+**VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
 
-## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>A Dynamics AX alkalmazás vészutáni helyreállításának engedélyezése a Site Recovery használatával
-### <a name="protect-your-dynamics-ax-application"></a>A Dynamics AX alkalmazás védelme
-A teljes alkalmazásreplikáció és -helyreállítás engedélyezéséhez a Dynamics AX minden egyes összetevőjét védeni kell.
+## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>A Dynamics AX-alkalmazás vész-helyreállításának engedélyezése Site Recovery használatával
+### <a name="protect-your-dynamics-ax-application"></a>A Dynamics AX-alkalmazás megóvása
+Az alkalmazás teljes replikálásának és helyreállításának engedélyezéséhez védeni kell a Dynamics AX minden összetevőjét.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Az Active Directory és a DNS replikáció beállítása
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. a Active Directory és a DNS-replikáció beállítása
 
-Az Active Directory szükséges a vész-helyreállítási helyen a Dynamics AX alkalmazás működéséhez. Az ügyfél helyszíni környezetének összetettsége alapján az alábbi két választási lehetőséget javasoljuk.
+Active Directory szükséges a Dynamics AX-alkalmazás működéséhez a vész-helyreállítási helyen. Az ügyfél helyszíni környezetének összetettsége alapján javasolt a következő két lehetőség választása.
 
 **1. lehetőség**
 
-Az ügyfél rendelkezik egy kis számú alkalmazás és egy tartományvezérlő a teljes helyszíni hely, és azt tervezi, hogy feladatátvétela az egész hely együtt. Azt javasoljuk, hogy a Site Recovery replikáció használatával replikálja a tartományvezérlő-gépet egy másodlagos helyre (amely mind a helyek, mind a helyek közötti és az Azure-ba forgatókönyvek esetén alkalmazható).
+Az ügyfél kis számú alkalmazást és egyetlen tartományvezérlőt tartalmaz a teljes helyszíni helyhez, és a teljes webhely feladatátvételét tervezi. Azt javasoljuk, hogy Site Recovery replikáció használatával replikálja a tartományvezérlői gépet egy másodlagos helyre (a helyek közötti és a helyek közötti Azure-forgatókönyvek esetében egyaránt alkalmazható).
 
 **2. lehetőség**
 
-Az ügyfél számos alkalmazással rendelkezik, és egy Active Directory-erdőt futtat, és azt tervezi, hogy egyszerre néhány alkalmazást átad. Azt javasoljuk, hogy hozzon létre egy további tartományvezérlőt a vész-helyreállítási helyen (egy másodlagos helyen vagy az Azure-ban).
+Az ügyfél nagy számú alkalmazással rendelkezik, és egy Active Directory erdőt futtat, és egy időben több alkalmazás feladatátvételét tervezi. Javasoljuk, hogy állítson be egy további tartományvezérlőt a vész-helyreállítási webhelyre (másodlagos helyre vagy az Azure-ba).
 
- További információt a [Tartományvezérlő elérhetővé tévává az vész-helyreállítási helyen című témakörben talál.](site-recovery-active-directory.md) A dokumentum további, feltételezzük, hogy egy tartományvezérlő érhető el a vész-helyreállítási helyen.
+ További információ: [tartományvezérlő elérhetővé tétele vész-helyreállítási helyen](site-recovery-active-directory.md). A dokumentum további részében feltételezzük, hogy a vész-helyreállítási helyen a tartományvezérlő elérhető.
 
-### <a name="2-set-up-sql-server-replication"></a>2. Sql Server replikáció beállítása
-Az SQL-szint védelmére ajánlott beállítással kapcsolatos technikai útmutatásért olvassa el az [alkalmazások replikálása sql server rel és az Azure Site Recovery szolgáltatással című témakört.](site-recovery-sql.md)
+### <a name="2-set-up-sql-server-replication"></a>2. SQL Server replikáció beállítása
+Az SQL-csomag védelmének ajánlott beállításával kapcsolatos technikai útmutatásért lásd: [alkalmazások replikálása SQL Server és Azure site Recovery](site-recovery-sql.md).
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Védelem engedélyezése a Dynamics AX-ügyfél és az Application Object Server virtuális gépek számára
-Végezze el a megfelelő site recovery konfigurációt attól függően, hogy a virtuális gépek telepítve [vannak-e a Hyper-V vagy](site-recovery-hyper-v-site-to-azure.md) a [VMware szolgáltatásban.](site-recovery-vmware-to-azure.md)
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. a Dynamics AX-ügyfél és az Application Object Server-alapú virtuális gépek védelmének engedélyezése
+Végezze el a megfelelő Site Recovery konfigurációt annak alapján, hogy a virtuális gépek telepítve vannak-e a [Hyper-V-n](site-recovery-hyper-v-site-to-azure.md) vagy [VMware](site-recovery-vmware-to-azure.md)-en.
 
 > [!TIP]
-> Azt javasoljuk, hogy konfigurálja az összeomlás-konzisztens gyakoriság15 perc.
+> Javasoljuk, hogy állítsa be az összeomlás-konzisztens gyakoriságot 15 percre.
 >
 
-A következő pillanatkép a Dynamics-component virtuális gépek védelmi állapotát mutatja be egy VMware-hely–Azure védelmi forgatókönyvben.
+A következő pillanatkép a Dynamics-Components virtuális gépek védelmi állapotát mutatja be egy VMware-helyek közötti védelmi forgatókönyvben.
 
 ![Védett elemek](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. Hálózat konfigurálása
-**Vm számítási és hálózati beállítások konfigurálása**
+### <a name="4-configure-networking"></a>4. hálózatkezelés konfigurálása
+**VIRTUÁLIS gépek számítási és hálózati beállításainak konfigurálása**
 
-A Dynamics AX-ügyfél- és az Application Object Server virtuális gépek esetében konfigurálja a hálózati beállításokat a Site Recovery alkalmazásban úgy, hogy a virtuálisgép-hálózatok a feladatátvétel után a megfelelő vész-helyreállítási hálózathoz kapcsolódjanak. Győződjön meg arról, hogy a vész-helyreállítási hálózat ezek a rétegek irányítható az SQL-szintre.
+A Dynamics AX-ügyfél és az Application Object Server-alapú virtuális gépek esetében konfigurálja a hálózati beállításokat Site Recovery, hogy a virtuálisgép-hálózatok a feladatátvételt követően a megfelelő vész-helyreállítási hálózathoz legyenek csatolva. Győződjön meg arról, hogy az ilyen rétegek vész-helyreállítási hálózata az SQL-szinten irányítható.
 
-A virtuális gép kiválasztásával konfigurálhatja a hálózati beállításokat, ahogy az a következő pillanatképben látható:
+A replikált elemek közül kiválaszthatja a virtuális gépet a hálózati beállítások konfigurálásához, ahogy az a következő pillanatképben látható:
 
-* Alkalmazásobjektum-kiszolgálók esetén válassza ki a megfelelő rendelkezésre állási készletet.
+* Application Object Server-kiszolgálók esetén válassza ki a megfelelő rendelkezésre állási készletet.
 
-* Statikus IP-cím használata esetén adja meg azt az IP-címet, amelyet a virtuális gépnek a **cél IP-szövegmezőben** kell használnia.
+* Ha statikus IP-címet használ, akkor határozza meg azt az IP-címet, amelyet a virtuális gépnek a **cél IP** -szövegmezőben kell elvégeznie.
 
     ![Hálózati beállítások](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Helyreállítási terv létrehozása
+### <a name="5-create-a-recovery-plan"></a>5. helyreállítási terv létrehozása
 
-A feladatátvételi folyamat automatizálásához hozzon létre helyreállítási tervet a Site Recovery-ben. Adjon hozzá egy alkalmazásszintet és egy webes réteget a helyreállítási tervben. Rendelje meg őket különböző csoportokban, hogy az előtér leáll az alkalmazásszint előtt.
+A feladatátvételi folyamat automatizálásához létrehozhat egy helyreállítási tervet a Site Recovery. Vegyen fel egy alkalmazási szintet és egy webes szintet a helyreállítási tervbe. Rendeljen különböző csoportokba, hogy az előtér az alkalmazási réteg előtt leálljon.
 
-1. Válassza ki a Site Recovery tárolót az előfizetésében, és válassza a **Helyreállítási tervek** csempét.
+1. Válassza ki az előfizetéshez tartozó Site Recovery-tárolót, és válassza a **helyreállítási tervek** csempét.
 
-2. Válassza a **+ helyreállítási terv**lehetőséget , és adjon meg egy nevet.
+2. Válassza a **+ helyreállítási terv**lehetőséget, és adjon meg egy nevet.
 
-3. Válassza ki a **Forrás** és **a Cél**lehetőséget . A cél lehet az Azure vagy egy másodlagos hely. Ha az Azure-t választja, meg kell adnia a központi telepítési modellt.
+3. Válassza ki a **forrást** és a **célt**. A cél lehet Azure vagy másodlagos hely. Ha az Azure-t választja, meg kell adnia a telepítési modellt.
 
     ![Helyreállítási terv létrehozása](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Válassza ki az Application Object Server és az ügyfél virtuális gépek a helyreállítási terv, és válassza ki a ✓.
+4. Válassza ki az Application Object-kiszolgálót és a helyreállítási tervhez tartozó ügyfél virtuális gépeket, és válassza ki a ✓.
 
     ![Elemek kijelölése](./media/site-recovery-dynamics-ax/selectvms.png)
 
-    Például helyreállítási terv:
+    Helyreállítási terv példája:
 
     ![A helyreállítási terv részletei](./media/site-recovery-dynamics-ax/recoveryplan.png)
 
-A Dynamics AX alkalmazás helyreállítási tervét a következő lépések hozzáadásával testreszabhatja. Az előző pillanatkép az összes lépés hozzáadása után megjeleníti a teljes helyreállítási tervet.
+A Dynamics AX-alkalmazás helyreállítási tervét a következő lépések végrehajtásával szabhatja testre. Az előző pillanatkép a teljes helyreállítási tervet mutatja az összes lépés hozzáadása után.
 
 
-* **SQL Server feladatátvételi lépései**: Az SQL-kiszolgálóra vonatkozó helyreállítási lépésekről az SQL Server és az [Azure Site Recovery replikációs alkalmazások című](site-recovery-sql.md)témakörében talál további információt.
+* **SQL Server feladatátvételi lépések**: az SQL Serverre vonatkozó helyreállítási lépésekről további információt a következő témakörben talál: [Replication applications with SQL Server and Azure site Recovery](site-recovery-sql.md).
 
-* **1. feladatátvételi csoport:** Feladatátvétel az Application Object Server virtuális gépein.
-Győződjön meg arról, hogy a kiválasztott helyreállítási pont a lehető legközelebb van az adatbázis PIT adatbázishoz, de nem előtte.
+* **1. feladatátvételi csoport**: az Application Object Server-alapú virtuális gépek feladatátvétele.
+Győződjön meg arról, hogy a kiválasztott helyreállítási pont a lehető legrövidebb legyen az adatbázis-PIT-hez, de még nem.
 
-* **Script**: Terheléselosztó hozzáadása (csak E-A).
-Adjon hozzá egy parancsfájlt (az Azure Automationen keresztül) miután az Application Object Server virtuális gépcsoport jön létre, hogy hozzáadjon egy terheléselosztót. A feladat végrehajtásához parancsfájlt használhat. További információ: [Terheléselosztó hozzáadása többrétegű alkalmazás vész-helyreállítási.](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)
+* **Parancsfájl**: a terheléselosztó hozzáadása (csak E-A).
+Adjon hozzá egy parancsfájlt (Azure Automation), miután az Application Object Server virtuálisgép-csoportja felveszi a terheléselosztó hozzáadását. Ezt a feladatot parancsfájl használatával végezheti el. További információkért lásd: [Load Balancer hozzáadása többplatformos alkalmazás vész-helyreállításához](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **2 feladatátvételi csoport:** A Dynamics AX-ügyfél virtuális gépei átvétele. A helyreállítási terv részeként a webes réteg virtuális gépei nem felelnek meg.
+* **2. feladatátvételi csoport**: a Dynamics AX-ügyfél virtuális gépei feladatátvétele. A helyreállítási terv részeként adja át a virtuális gépek webes szintjeinek feladatátvételét.
 
 
-### <a name="perform-a-test-failover"></a>Teszt feladatátvétel végrehajtása
+### <a name="perform-a-test-failover"></a>Feladatátvételi teszt végrehajtása
 
-Az Active Directoryra vonatkozó további információkért tekintse meg az "Active Directory vész-helyreállítási megoldás" kísérőútmutatóját.
+A feladatátvételi teszt során Active Directory vonatkozó további információkért tekintse meg a "Active Directory vész-helyreállítási megoldás" című útmutatót.
 
-A tesztfeladat-átvétel során az SQL-kiszolgálóra vonatkozó további információkért [lásd: Alkalmazások replikálása sql server rel és az Azure Site Recovery szolgáltatással.](site-recovery-sql.md)
+A feladatátvételi teszt során az SQL Serverre vonatkozó további információkért lásd: [alkalmazások replikálása SQL Server és Azure site Recovery](site-recovery-sql.md).
 
-1. Nyissa meg az Azure Portalon, és válassza ki a site recovery-tároló.
+1. Lépjen a Azure Portalra, és válassza ki a Site Recovery-tárolót.
 
-2. Válassza ki a Dynamics AX-hez létrehozott helyreállítási tervet.
+2. Válassza ki a Dynamics AX-hoz létrehozott helyreállítási tervet.
 
 3. Kattintson a **Feladatátvétel tesztelése** elemre.
 
-4. Válassza ki a virtuális hálózatot a teszt feladatátvételi folyamat elindításához.
+4. Válassza ki a virtuális hálózatot a feladatátvételi teszt folyamatának elindításához.
 
-5. A másodlagos környezet leállása után elvégezheti az ellenőrzéseket.
+5. A másodlagos környezet létrehozása után elvégezheti az érvényességét.
 
-6. Az ellenőrzések befejezése után válassza **az Érvényesítések befejeződött,** és a teszt feladatátvételi környezet törlődik.
+6. Az érvényesítések befejezése után válassza az **érvényesítések kész** lehetőséget, és a teszt feladatátvételi környezet megtisztítva.
 
-A tesztfeladat-átvétel végrehajtásáról további információt a [Feladatátvétel tesztelése az Azure-ba a Site Recovery szolgáltatásban című témakörben talál.](site-recovery-test-failover-to-azure.md)
+A feladatátvételi teszt végrehajtásával kapcsolatos további információkért lásd: a [feladatátvételi teszt tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
 ### <a name="perform-a-failover"></a>Feladatátvétel végrehajtása
 
-1. Nyissa meg az Azure Portalon, és válassza ki a site recovery-tároló.
+1. Lépjen a Azure Portalra, és válassza ki a Site Recovery-tárolót.
 
-2. Válassza ki a Dynamics AX-hez létrehozott helyreállítási tervet.
+2. Válassza ki a Dynamics AX-hoz létrehozott helyreállítási tervet.
 
-3. Válassza **a Feladatátvétel**lehetőséget, majd a **Feladatátvétel**lehetőséget.
+3. Válassza a **feladatátvétel**lehetőséget, majd válassza a **feladatátvétel**lehetőséget.
 
-4. Válassza ki a célhálózatot, és válassza **a ✓** lehetőséget a feladatátvételi folyamat elindításához.
+4. Válassza ki a célként kijelölt hálózatot, és válassza a **✓** lehetőséget a feladatátvételi folyamat elindításához.
 
-A feladatátvételről a [Site Recovery feladatátvétel című témakörben](site-recovery-failover.md)talál további információt.
+A feladatátvétel végrehajtásával kapcsolatos további információkért lásd: [feladatátvétel a site Recoveryban](site-recovery-failover.md).
 
 ### <a name="perform-a-failback"></a>Feladat-visszavétel végrehajtása
 
-Az SQL Server feladat-visszavétel során kapcsolatos szempontokról az [ALKALMAZÁSOK replikálása az SQL Server és az Azure Site Recovery használatával](site-recovery-sql.md)című témakörben található.
+A feladat-visszavétel során SQL Server vonatkozó szempontokat lásd: [alkalmazások replikálása SQL Server és Azure site Recovery](site-recovery-sql.md).
 
-1. Nyissa meg az Azure Portalon, és válassza ki a site recovery-tároló.
+1. Lépjen a Azure Portalra, és válassza ki a Site Recovery-tárolót.
 
-2. Válassza ki a Dynamics AX-hez létrehozott helyreállítási tervet.
+2. Válassza ki a Dynamics AX-hoz létrehozott helyreállítási tervet.
 
-3. Válassza **a Feladatátvétel**lehetőséget, majd a **Feladatátvétel**lehetőséget.
+3. Válassza a **feladatátvétel**lehetőséget, majd válassza a **feladatátvétel**lehetőséget.
 
-4. Válassza **az Irányváltás lehetőséget.**
+4. Válassza a **változás iránya**lehetőséget.
 
-5. Válassza ki a megfelelő beállításokat: adatszinkronizálás és virtuális gép létrehozása.
+5. Válassza ki a megfelelő beállításokat: az adatszinkronizálást és a virtuális gépek létrehozását.
 
-6. Válassza az **✓** lehetőséget a feladat-visszavételi folyamat elindításához.
+6. A feladat-visszavételi folyamat elindításához válassza a **✓** lehetőséget.
 
 
-A feladat-visszavételről további információt a [Feladat-visszaszolgáltatás virtuális gépei az Azure-ból a helyszíni gépekbe című témakörben talál.](site-recovery-failback-azure-to-vmware.md)
+A feladat-visszavétel végrehajtásával kapcsolatos további információkért lásd: [VMWare virtuális gépek visszavétele az Azure-ból a](site-recovery-failback-azure-to-vmware.md)helyszíni rendszerbe.
 
 ## <a name="summary"></a>Összefoglalás
-A Site Recovery használatával teljes körű automatikus vész-helyreállítási tervet hozhat létre a Dynamics AX-alkalmazáshoz. Megszakítás esetén a feladatátvételt másodperceken belül kezdeményezheti bárhonnan, és percek alatt működésbe hozhatja az alkalmazást.
+Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet a Dynamics AX-alkalmazáshoz. Megszakítás esetén másodpercek alatt kezdeményezheti a feladatátvételt, és percek alatt üzembe helyezheti és futtathatja az alkalmazást.
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a vállalati munkaterhelések védelméről a Site Recovery segítségével, olvassa el a [Milyen számítási feladatokat védhetek meg?](site-recovery-workload.md)
+Ha többet szeretne megtudni a vállalati munkaterhelések Site Recovery használatával történő védelméről, tekintse meg a [milyen számítási feladatokat?](site-recovery-workload.md)című témakört.

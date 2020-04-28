@@ -1,102 +1,102 @@
 ---
-title: Az Azure Monitor konfigurálása tárolóügynök-adatgyűjtéshez | Microsoft dokumentumok
-description: Ez a cikk ismerteti, hogyan konfigurálhatja az Azure Monitor tárolók ügynök stdout/stderr és környezeti változók naplógyűjtemény.
+title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933021"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Ügynök-adatgyűjtés konfigurálása az Azure Monitor tárolókhoz
+# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
-Az Azure Monitor tárolók gyűjti stdout, stderr és környezeti változók a tároló számítási feladatok a felügyelt Kubernetes-fürtök a tárolóügynökből. Az ügynökadatgyűjtési beállításokat egyéni Kubernetes ConfigMaps-beállítással konfigurálhatja, amely ezt a felhasználói élményt szabályozza. 
+A tárolók Azure Monitor az stdout, a stderr és a környezeti változókat gyűjtik a felügyelt Kubernetes-fürtökre telepített tároló-munkaterhelésekről a tároló ügynökből. Az ügynök adatgyűjtési beállításainak konfigurálásához létrehozhat egy egyéni Kubernetes-ConfigMaps a felhasználói élmény szabályozása érdekében. 
 
-Ez a cikk bemutatja, hogyan hozhat létre ConfigMap és konfigurálhatja az adatgyűjtést az Ön igényei nek megfelelően.
+Ez a cikk bemutatja, hogyan hozhat létre ConfigMap, és hogyan konfigurálhatja az adatgyűjtést a követelmények alapján.
 
 >[!NOTE]
->Az Azure Red Hat OpenShift esetében egy sablon ConfigMap fájl jön létre az *openshift-azure-logging* névtérben. 
+>Az Azure Red Hat OpenShift esetében a sablon ConfigMap-fájlját a *OpenShift-Azure-Logging* névtérben hozza létre a rendszer. 
 >
 
-## <a name="configmap-file-settings-overview"></a>ConfigMap fájlbeállítások – áttekintés
+## <a name="configmap-file-settings-overview"></a>A ConfigMap-fájlok beállításai – áttekintés
 
-A sablon ConfigMap fájl áll rendelkezésre, amely lehetővé teszi, hogy könnyen szerkesztheti azt a testreszabások anélkül, hogy hozzon létre a semmiből. Mielőtt elkezdené, tekintse át a [ConfigMaps-ról](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) szóló Kubernetes dokumentációt, és ismerkedjen meg a ConfigMaps létrehozásának, konfigurálásának és telepítésének módjával. Ez lehetővé teszi az stderr és stdout névtérenként vagy a teljes fürtön, és a fürt összes podján/csomópontján futó tárolók környezeti változóinak szűrése.
+A sablon ConfigMap fájlja lehetővé teszi, hogy egyszerűen szerkessze a testreszabásokkal anélkül, hogy teljesen létre kellene hoznia. A Kezdés előtt tekintse át a [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) Kubernetes dokumentációját, és ismerkedjen meg a ConfigMaps létrehozásával, konfigurálásával és üzembe helyezésével. Ez lehetővé teszi a stderr és az stdout szűrését a névtérben vagy a teljes fürtön, valamint a fürtben található összes hüvely/csomóponton futó tároló környezeti változóit.
 
 >[!IMPORTANT]
->A tárolószámítási feladatok stderr, stderr és környezeti változók gyűjtésére támogatott minimális ügynökverzió ciprod06142019 vagy újabb. Az ügynök verziójának ellenőrzéséhez a **Csomópont** lapon jelöljön ki egy csomópontot, és a Tulajdonságok ablaktáblán az **Agent Image Tag** tulajdonság tulajdonságai jegyzetértékében. Az ügynökverziókról és az egyes kiadásokban szereplő tudnivalókról az [ügyintézői kiadási megjegyzések című témakörben talál](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)további információt.
+>Az ügynök minimális verziója támogatja az stdout, a stderr és a környezeti változók begyűjtését a tároló munkaterhelésekről ciprod06142019 vagy újabb verzióra. Az ügynök verziójának ellenőrzéséhez a **csomópont** lapon válasszon ki egy csomópontot, majd a Tulajdonságok panelen jegyezze fel az **ügynök Képcímke** tulajdonságának értékét. További információ az ügynök verziójáról és az egyes kiadásokról: [ügynök kibocsátási megjegyzései](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod).
 
-### <a name="data-collection-settings"></a>Adatgyűjtési beállítások
+### <a name="data-collection-settings"></a>Adatgyűjtés beállításai
 
-Az adatgyűjtés vezérlésére konfigurálható beállítások az alábbiakban láthatók.
+Az alábbi beállításokkal konfigurálhatja az adatgyűjtés vezérlését.
 
 |Kulcs |Adattípus |Érték |Leírás |
 |----|----------|------|------------|
-|`schema-version` |Karakterlánc (kis- és nagybetűk megkülönböztetése) |v1 |Ez az ügynök által a ConfigMap elemzéséneknél használt sémaverzió. A jelenleg támogatott sémaverzió v1. Az érték módosítása nem támogatott, és a ConfigMap kiértékelésekor elutasításra kerül.|
-|`config-version` |Sztring | | Támogatja a konfigurációs fájl verziójának nyomon követését a forrásellenőrző rendszerben/tárházban. A megengedett maximális karakterek 10, és az összes többi karakter csonkolva lesz. |
-|`[log_collection_settings.stdout] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ez szabályozza, ha stdout tároló naplógyűjtése engedélyezve van. Ha a `true` beállítás, és nem névterek ki vannak`log_collection_settings.stdout.exclude_namespaces` zárva a stdout napló gyűjtemény ( beállítás alább), stdout naplók gyűjtik az összes tárolók között az összes podok/csomópontok a fürtben. Ha nincs megadva a ConfigMaps `enabled = true`alkalmazásban, az alapértelmezett érték a . |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Kubernetes-névterek tömbje, amelyekhez a rendszer nem gyűjt iménizált logikai naplókat. Ez a beállítás `log_collection_settings.stdout.enabled` csak akkor `true`érvényes, ha a . Ha nincs megadva a ConfigMap `exclude_namespaces = ["kube-system"]`alkalmazásban, az alapértelmezett érték a .|
-|`[log_collection_settings.stderr] enabled =` |Logikai | true (igaz) vagy false (hamis) |Ez szabályozza, ha stderr tároló naplógyűjtése engedélyezve van. Ha be `true` van állítva, és nincs névterek ki`log_collection_settings.stderr.exclude_namespaces` vannak zárva a stdout naplógyűjtemény ( beállítás), stderr naplók lesznek gyűjtve az összes tárolók között az összes podok/csomópontok a fürtben. Ha nincs megadva a ConfigMaps `enabled = true`alkalmazásban, az alapértelmezett érték a . |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Kubernetes-névterek tömbje, amelyekhez az stderr-naplók nem lesznek gyűjtve. Ez a beállítás `log_collection_settings.stdout.enabled` csak akkor `true`érvényes, ha a . Ha nincs megadva a ConfigMap `exclude_namespaces = ["kube-system"]`alkalmazásban, az alapértelmezett érték a . |
-| `[log_collection_settings.env_var] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ez a beállítás szabályozza a környezeti változók gyűjtését a `enabled = true` fürt összes podja/csomópontja között, és alapértelmezés szerint, ha nincs megadva a ConfigMaps. Ha a környezeti változók gyűjtése globálisan engedélyezve van, letilthatja `AZMON_COLLECT_ENV` azt egy adott tárolóhoz, ha a környezeti változót **Hamis** értékre állítja egy Dockerfile-beállítással vagy [a Pod konfigurációs fájljában](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) az **env:** szakasz alatt. Ha a környezeti változók gyűjtése globálisan le van tiltva, akkor nem engedélyezheti egy adott tároló gyűjtését (azaz a tároló szintjén egyetlen felülbírálat, hogy letiltsa a gyűjteményt, ha az globálisan már engedélyezve van).). |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ez a beállítás szabályozza a tárolónapló-bővítést, hogy feltöltse a Name és Image tulajdonságértékeket a ContainerLog táblába írt minden naplórekordhoz a fürt összes tárolónaplója számára. Alapértelmezés szerint, `enabled = false` ha nincs megadva a ConfigMap. |
+|`schema-version` |Karakterlánc (megkülönbözteti a kis-és nagybetűket) |v1 |Ez az ügynök által a ConfigMap elemzésekor használt séma verziója. A jelenleg támogatott séma verziója v1. Az érték módosítása nem támogatott, és a rendszer elutasítja a ConfigMap kiértékelése után.|
+|`config-version` |Sztring | | A támogatja a konfigurációs fájl verziószámának nyomon követését a verziókövetés rendszerében/adattárában. A megengedett karakterek maximális száma 10, az összes többi karakter pedig csonkolt. |
+|`[log_collection_settings.stdout] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre van állítva, `true` és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (`log_collection_settings.stdout.exclude_namespaces` az alábbi beállításnál), az stdout-naplók az összes tárolóból lesznek összegyűjtve a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:.|
+|`[log_collection_settings.stderr] enabled =` |Logikai | true (igaz) vagy false (hamis) |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha a értékre van állítva, `true` és a rendszer nem zárja ki a névtereket az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) számára, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:. |
+| `[log_collection_settings.env_var] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a környezeti változók gyűjteménye a fürt összes hüvelye/csomópontja között, és alapértelmezés szerint `enabled = true` a ConfigMaps-ben nincs meghatározva. Ha a környezeti változók gyűjteménye globálisan engedélyezve van, letilthatja egy adott tárolóra vonatkozóan, ha a `AZMON_COLLECT_ENV` környezeti változót **hamis** értékre állítja, vagy a Docker beállítással vagy az **env:** szakaszban található [Pod konfigurációs fájljában](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) . Ha a környezeti változók gyűjteménye globálisan le van tiltva, akkor a gyűjtemény nem engedélyezhető egy adott tárolónál (azaz a tároló szintjén alkalmazható egyetlen felülbírálás a gyűjtemény letiltása, ha az már engedélyezve van a globálisan.). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a tároló naplójának bővítése, hogy feltöltse a ContainerLog táblába írt összes naplóbejegyzés nevét és képtulajdonságának értékét a fürt összes tároló-naplójába. Alapértelmezés `enabled = false` szerint a ConfigMap-ben nincs megadva. |
 
-A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. Nem lehet másik ConfigMaps felülbírálja a gyűjtemények.
+A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 
 ## <a name="configure-and-deploy-configmaps"></a>A ConfigMaps konfigurálása és telepítése
 
-Hajtsa végre az alábbi lépéseket a ConfigMap konfigurációs fájl konfigurálásához és fürtbe való telepítéséhez.
+A következő lépések végrehajtásával konfigurálja és telepítheti a ConfigMap konfigurációs fájlját a fürtön.
 
-1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablonconfigMap yaml fájlt, és mentse a container-azm-ms-agentconfig.yaml. 
+1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablon ConfigMap YAML fájlt, és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven. 
 
    >[!NOTE]
-   >Ez a lépés nem szükséges az Azure Red Hat OpenShift használatakor, mivel a ConfigMap sablon már létezik a fürtön.
+   >Ez a lépés nem szükséges az Azure Red Hat OpenShift használata esetén, mivel a ConfigMap sablon már létezik a fürtön.
 
-2. A ConfigMap yaml fájlt a testreszabásokkal szerkesztheti az stdout, stderr és/vagy környezeti változók összegyűjtéséhez. Ha az Azure Red Hat OpenShift ConfigMap yaml fájlját `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` szerkeszti, először futtassa a parancsot a fájl szövegszerkesztőben való megnyitásához.
+2. Szerkessze a ConfigMap YAML-fájlt a testreszabásokkal az stdout, a stderr és/vagy a környezeti változók összegyűjtéséhez. Ha a ConfigMap YAML-fájlt szerkeszti az Azure Red Hat OpenShift, először futtassa a parancsot `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a fájl megnyitásához egy szövegszerkesztőben.
 
-    - Ha ki szeretne zárni bizonyos névtereket az stdout naplógyűjteményhez, a kulcsot/értéket a következő példával kell konfigurálnia: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
+    - Ha ki szeretné zárni az stdout log Collection adott névtereit, a kulcs/érték konfigurálásához a következő példát `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`kell használni:.
     
-    - Egy adott tároló környezeti változók gyűjtésének letiltásához állítsa be a kulcsot/értéket `[log_collection_settings.env_var] enabled = true` a változók globális gyűjtésének engedélyezéséhez, majd kövesse az [itt](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) leírt lépéseket az adott tároló konfigurációjának befejezéséhez.
+    - A környezeti változók egy adott tárolóhoz való letiltásához állítsa be a kulcs `[log_collection_settings.env_var] enabled = true` /érték beállítást a változó globális begyűjtésének engedélyezéséhez, majd kövesse az [itt](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) leírt lépéseket az adott tároló konfigurációjának befejezéséhez.
     
-    - Az stderr log collection cluster-wide letiltásához a kulcsot/értéket a következő példával kell konfigurálnia: `[log_collection_settings.stderr] enabled = false`.
+    - A stderr-naplók fürtre kiterjedő letiltásához konfigurálja a kulcsot/értéket a következő példa használatával `[log_collection_settings.stderr] enabled = false`:.
 
-3. Az Azure Red Hat OpenShifttől eltérő fürtök esetén hozza létre a ConfigMap-et a következő kubectl parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml>` az Azure Red Hat OpenShifttől eltérő fürtökön. 
+3. Az Azure Red Hat OpenShift eltérő fürtök esetén a következő kubectl parancs futtatásával hozza létre a ConfigMap `kubectl apply -f <configmap_yaml_file.yaml>` : az Azure Red Hat OpenShift kívüli fürtökön. 
     
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-    Az Azure Red Hat OpenShift esetén mentse a módosításokat a szerkesztőben.
+    Az Azure Red Hat OpenShift mentse a módosításokat a szerkesztőben.
 
-A konfiguráció módosítása néhány percet is igénybe vehet, mielőtt életbe lépne, és a fürt összes omsagent podja újraindul. Az újraindítás egy folyamatos újraindítás az összes omsagent podok, nem minden újraindítás egy időben. Amikor az újraindítások befejeződtek, egy üzenet jelenik meg, amely `configmap "container-azm-ms-agentconfig" created`hasonló a következőhöz, és tartalmazza az eredményt: .
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
-Annak ellenőrzéséhez, hogy a konfiguráció sikeresen lett-e alkalmazva az Azure Red Hat OpenShifttől `kubectl logs omsagent-fdf58 -n=kube-system`eltérő fürtre, a következő paranccsal tekintse át az ügynöki pod naplóit: . Ha az omsagent podok konfigurációs hibákat tartalmaznak, a kimenet a következőhöz hasonló hibákat jelenít meg:
+Annak ellenőrzéséhez, hogy a konfiguráció sikeresen alkalmazva lett-e az Azure Red Hat OpenShift eltérő fürtre, a következő paranccsal tekintheti át a naplókat egy ügynök pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Ha konfigurációs hibák vannak a omsagent hüvelyből, a kimenet az alábbihoz hasonló hibákat jelenít meg:
 
 ``` 
 ***************Start Config Processing******************** 
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-A konfigurációs módosítások alkalmazásával kapcsolatos hibák is ellenőrizhetővé vehetők. A konfigurációs módosítások további hibaelhárításához a következő lehetőségek állnak rendelkezésre:
+A konfigurációs módosítások alkalmazásával kapcsolatos hibák a felülvizsgálathoz is elérhetők. A konfigurációs változások további hibaelhárításához a következő lehetőségek érhetők el:
 
-- Egy ügynök pod naplók ugyanazt `kubectl logs` a parancsot. 
+- Egy ügynök Pod-naplóiból ugyanazzal `kubectl logs` a paranccsal. 
 
     >[!NOTE]
-    >Ez a parancs nem alkalmazható az Azure Red Hat OpenShift fürtre.
+    >Ez a parancs nem alkalmazható az Azure Red Hat OpenShift-fürtre.
     > 
 
-- Élő naplókból. Az élő naplók a következőhöz hasonló hibákat jelenítek meg:
+- Élő naplókból. Az élő naplók az alábbihoz hasonló hibákat mutatnak:
 
     ```
     config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
     ```
 
-- A **KubeMonAgentEvents** táblából a Log Analytics-munkaterületen. Az adatok küldése óránként *hiba* súlyossága a konfigurációs hibák. Ha nincsenek hibák, a táblában szereplő bejegyzés súlyossági *adatokat tartalmaz,* amelyek nem jelentenek hibákat. A **Címkék** tulajdonság további információkat tartalmaz a pod és a tároló azonosítóját, amelyen a hiba történt, valamint az első előfordulás, az utolsó előfordulás és a számláló az elmúlt órában.
+- A Log Analytics munkaterület **KubeMonAgentEvents** táblájában. Az adatküldés óránként, a konfigurációs *hibák súlyossága miatt.* Ha nincsenek hibák, a táblázatban szereplő *bejegyzés súlyossági adatokkal*fog rendelkezni, ami nem jelent hibát. A **címkék** tulajdonság további információkat tartalmaz a pod és a Container azonosítóról, amelyen a hiba történt, valamint az első előfordulást, az utolsó előfordulást és a számlálást is az elmúlt órában.
 
-- Az Azure Red Hat OpenShift segítségével ellenőrizze az **ContainerLog** omsagent naplók at a ContainerLog-táblában, és ellenőrizze, hogy az openshift-azure-naplózás naplógyűjteménye engedélyezve van-e.
+- Az Azure Red Hat OpenShift ellenőrizze a omsagent naplóit, ha a **ContainerLog** táblában ellenőrzi, hogy a OpenShift naplózási gyűjteménye engedélyezve van-e.
 
-Miután kijavította a hibát(oka)t a ConfigMap-ben az Azure Red Hat OpenShift-től eltérő fürtökön, mentse a yaml fájlt, és alkalmazza a frissített ConfigMaps-ot a következő parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml`. Az Azure Red Hat OpenShift esetén a parancs futtatásával szerkesztheti és mentheti a frissített ConfigMaps-ot:
+Miután kijavította a hibát (ka) t az Azure Red Hat OpenShift eltérő fürtökön lévő ConfigMap, mentse a YAML-fájlt, és alkalmazza a frissített ConfigMaps a `kubectl apply -f <configmap_yaml_file.yaml`következő parancs futtatásával:. Az Azure Red Hat OpenShift szerkessze és mentse a frissített ConfigMaps a következő parancs futtatásával:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -104,19 +104,19 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
-Ha már telepített egy ConfigMap-et az Azure Red Hat OpenShift-től eltérő fürtökön, és újabb konfigurációval szeretné frissíteni, szerkesztheti a korábban használt ConfigMap-fájlt, majd ugyanazzal a paranccsal alkalmazhatja, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`. Az Azure Red Hat OpenShift esetén a parancs futtatásával szerkesztheti és mentheti a frissített ConfigMaps-ot:
+Ha már telepített egy ConfigMap az Azure Red Hat OpenShift eltérő fürtökön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, `kubectl apply -f <configmap_yaml_file.yaml`mint korábban. Az Azure Red Hat OpenShift szerkessze és mentse a frissített ConfigMaps a következő parancs futtatásával:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 ```
 
-A konfiguráció módosítása néhány percet is igénybe vehet, mielőtt életbe lépne, és a fürt összes omsagent podja újraindul. Az újraindítás egy folyamatos újraindítás az összes omsagent podok, nem minden újraindítás egy időben. Amikor az újraindítások befejeződtek, egy üzenet jelenik meg, amely `configmap "container-azm-ms-agentconfig" updated`hasonló a következőhöz, és tartalmazza az eredményt: .
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 
-## <a name="verifying-schema-version"></a>Sémaverzió ellenőrzése
+## <a name="verifying-schema-version"></a>Séma verziójának ellenőrzése
 
-A támogatott konfigurációs sémaverziók pod-annotációként (sémaverzióként) érhetők el az omsagent podon. Láthatjuk őket a következő kubectl parancs:`kubectl describe pod omsagent-fdf58 -n=kube-system`
+A konfigurációs sémák támogatott verziói a omsagent Pod-on található Pod megjegyzésként (Schema-Versions) érhetők el. Ezeket a következő kubectl-paranccsal tekintheti meg:`kubectl describe pod omsagent-fdf58 -n=kube-system`
 
-A kimenet a következőhöz hasonlóan jelenik meg a megjegyzésséma-verziókkal:
+A kimenet az alábbihoz hasonlóan fog megjelenni a Megjegyzés sémája – verziók:
 
 ```
     Name:           omsagent-fdf58
@@ -133,8 +133,8 @@ A kimenet a következőhöz hasonlóan jelenik meg a megjegyzésséma-verziókka
 
 ## <a name="next-steps"></a>További lépések
 
-- A tárolók Azure Monitor nem tartalmaz egy előre meghatározott riasztások készletét. Tekintse át a teljesítményriasztások létrehozása az [Azure Monitor tárolók,](container-insights-alerts.md) hogyan hozhat létre ajánlott riasztásokat a magas CPU és a memória kihasználtsága a DevOps vagy az operatív folyamatok és eljárások támogatása érdekében.
+- A tárolók Azure Monitor nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](container-insights-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához
 
-- Ha a figyelés engedélyezve van az AKS vagy a hibrid fürt és a rajtuk futó számítási feladatok állapotának és erőforrás-kihasználtságának összegyűjtéséhez, ismerje meg, [hogyan használhatja az](container-insights-analyze.md) Azure Monitort tárolókhoz.
+- A figyelés lehetővé teszi, hogy az AK-beli vagy hibrid fürtök és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtésével [hogyan használhatók](container-insights-analyze.md) a Azure monitor a tárolók számára.
 
-- Tekintse meg [a naplólekérdezési példákat](container-insights-log-search.md#search-logs-to-analyze-data) az előre definiált lekérdezések és példák megtekintéséhez vagy testreszabásához a fürtök riasztásához, megjelenítéséhez vagy elemzéséhez.
+- Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.

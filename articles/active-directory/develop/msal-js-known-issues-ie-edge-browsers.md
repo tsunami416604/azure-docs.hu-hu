@@ -1,7 +1,7 @@
 ---
-title: Problémák az Internet Explorer & a Microsoft Edge (MSAL.js) | Azure
+title: Problémák az Internet Explorerben & a Microsoft Edge-ben (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogy miként merülnek fel a Microsoft JavaScript hitelesítési kódtárának (MSAL.js) Internet Explorer és Microsoft Edge böngészőkkel való használata korával kapcsolatos problémákról.
+description: Az Internet Explorer és a Microsoft Edge böngészők használatával megismerheti a JavaScripthez készült Microsoft-hitelesítési függvénytár (MSAL. js) használata során felmerülő problémákat.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,58 +14,58 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696095"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Ismert problémák az Internet Explorer és a Microsoft Edge böngészőkben (MSAL.js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL. js)
 
 ## <a name="issues-due-to-security-zones"></a>Biztonsági zónák miatti problémák
-Az IE és a Microsoft Edge hitelesítésével kapcsolatos problémákról több jelentést is beszámoltunk (a Microsoft Edge böngésző verziójának frissítése óta *40.15063.0.0).* Nyomon követjük ezeket, és tájékoztattuk a Microsoft Edge csapatát. Bár a Microsoft Edge megoldáson dolgozik, itt van a gyakran előforduló problémák és a lehetséges lehetséges lehetséges megoldások leírása.
+Az IE-ben és a Microsoft Edge-ben történt hitelesítéssel kapcsolatos hibákról több jelentést is készítettünk (mivel a *Microsoft Edge böngésző verziójának*frissítése a 40.15063.0.0-re). Ezeket követjük nyomon, és tájékoztatták a Microsoft Edge-csapatot. Míg a Microsoft Edge egy megoldáson dolgozik, itt látható a gyakran előforduló problémák és a megvalósítható lehetséges megkerülő megoldások leírása.
 
 ### <a name="cause"></a>Ok
-Az oka a legtöbb ilyen kérdések a következők. A munkamenet-tárolót és a helyi tárolót a Microsoft Edge böngésző biztonsági zónái particionálják. A Microsoft Edge ezen verziójában, amikor az alkalmazás zónák között van átirányítva, a munkamenet-tároló és a helyi tároló törlődik. Pontosabban a munkamenet-tároló törlődik a normál böngészőnavigációban, és mind a munkamenet, mind a helyi tároló törlődik a böngésző InPrivate-módjában. Az MSAL.js bizonyos állapotot ment a munkamenet-tárolóban, és a hitelesítési folyamatok során ennek az állapotnak az ellenőrzésére támaszkodik. A munkamenet-tároló törlésekor ez az állapot elvész, és így megszakadt élményeket eredményez.
+A legtöbb probléma oka a következő: A munkamenet-tároló és a helyi tároló a Microsoft Edge böngésző biztonsági zónái között van particionálva. A Microsoft Edge ezen verziójában, amikor az alkalmazást átirányítják a zónák között, a munkamenet-tároló és a helyi tároló törlődik. A munkamenet-tárolót a böngésző normál navigációs sávjában törli, és a munkamenet és a helyi tárterület is törlődik a böngésző InPrivate módjában. A MSAL. js bizonyos állapotot ment a munkamenet-tárolóban, és ennek az állapotnak a ellenőrzésére támaszkodik a hitelesítési folyamatok során. Ha a munkamenet-tároló törlődik, ez az állapot elvész, ezért a rendszer hibás élményt eredményez.
 
 ### <a name="issues"></a>Hibák
 
-- **Végtelen átirányítási hurkok és oldal újratöltése a hitelesítés során**. Amikor a felhasználók bejelentkeznek az alkalmazásba a Microsoft Edge-en, a rendszer visszairányítja őket az AAD bejelentkezési oldalról, és végtelen átirányítási hurokba kerülnek, ami ismétlődő oldalújratöltést eredményez. Ezt általában a `invalid_state` munkamenet-tároló hibája kíséri.
+- **A hitelesítés során a végtelen átirányítási hurkok és a lap újratöltődik**. Amikor a felhasználók bejelentkeznek az alkalmazásba a Microsoft Edge-ben, a rendszer visszairányítja őket a HRE bejelentkezési oldaláról, és egy végtelen átirányítási hurokba ragadnak, ami ismétlődő oldal újratöltését eredményezi. Ezt általában a munkamenet-tárolóban `invalid_state` lévő hiba kíséri.
 
-- **Végtelen megszerezni token hurkok és AADSTS50058 hiba**. Amikor egy Microsoft Edge-en futó alkalmazás megpróbál jogkivonatot beszerezni egy erőforráshoz, az alkalmazás a beszerzési jogkivonat-hívás végtelen ciklusában ragadhat, valamint a hálózati nyomkövetésa során az AAD következő hibája:
+- **Végtelen beszerzési jogkivonat-hurkok és AADSTS50058-hiba**. Ha egy Microsoft Edge-ben futó alkalmazás egy erőforráshoz tartozó jogkivonatot próbál beszerezni, az alkalmazás a beszerzési jogkivonat-hívás végtelen ciklusában is elakadhat, és a következő hibaüzenetet kaphatja a hálózati nyomkövetés HRE:
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **Az előugró ablak nem záródik be, vagy beragadt, amikor a bejelentkezést a Popup-on keresztül használja a hitelesítéshez.** A Microsoft Edge vagy az IE(InPrivate) előugró ablakán keresztül történő hitelesítéskor a hitelesítő adatok megadása és a bejelentkezés után, ha a navigációs zónában több tartomány is részt vesz, az előugró ablak nem zárul be, mert az MSAL.js elveszíti a az előugró ablakot.  
+- Az **előugró ablak nem zárul be, vagy a bejelentkező használatával történő bejelentkezéskor a hitelesítéshez beragadt**. Ha a Microsoft Edge vagy IE (InPrivate) előugró ablakán keresztül végez hitelesítést, a hitelesítő adatok beírása és a bejelentkezés után, ha több tartomány található a biztonsági zónákban, akkor az előugró ablak nem zárul le, mert a MSAL. js elveszti a leírót az előugró ablakban.  
 
-### <a name="update-fix-available-in-msaljs-023"></a>Update: Fix elérhető MSAL.js 0.2.3
-A hitelesítési átirányítási ciklussal kapcsolatos problémák javításai az [MSAL.js 0.2.3-ban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)jelentek meg. Engedélyezze `storeAuthStateInCookie` a jelzőt az MSAL.js config-ban, hogy kihasználja ezt a javítást. Alapértelmezés szerint ez a jelző hamis értékre van állítva.
+### <a name="update-fix-available-in-msaljs-023"></a>Frissítés: elérhető javítás a MSAL. js 0.2.3
+A hitelesítés átirányítási ciklusával kapcsolatos hibák javításait a [MSAL. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)tették közzé. A javítás kihasználása érdekében engedélyezze a jelölőt `storeAuthStateInCookie` a MSAL. js konfigurációban. Alapértelmezés szerint ez a jelző hamis értékre van állítva.
 
-Ha `storeAuthStateInCookie` a jelző engedélyezve van, az MSAL.js a böngésző cookie-kat fogja használni az auth-folyamatok érvényesítéséhez szükséges kérelemállapot tárolására.
+Ha a `storeAuthStateInCookie` jelző engedélyezve van, a MSAL. js a böngésző cookie-jait fogja használni a hitelesítési folyamatok érvényesítéséhez szükséges kérelem állapotának tárolásához.
 
 > [!NOTE]
-> Ez a javítás még nem áll rendelkezésre a msal-szög és msal-szög-szögcsomagolók. Ez a javítás nem oldja meg az előugró ablakokkal kapcsolatos problémát.
+> Ez a javítás még nem érhető el a msal és msal-angularjs burkolók esetében. Ez a javítás nem foglalkozik a felugró ablakokkal kapcsolatos problémával.
 
-Az alábbi kerülő megoldásokat használhatja.
+Használja az alábbi áthidaló megoldásokat.
 
-#### <a name="other-workarounds"></a>Egyéb megoldások
-Győződjön meg arról, hogy a probléma csak a Microsoft Edge böngésző adott verzióján jelentkezik, és a többi böngészőben is működik, mielőtt ezeket a megoldásokat alkalmaznák.  
-1. Első lépésként a problémák megkerüléséhez győződjön meg arról, hogy az alkalmazástartomány és a hitelesítési folyamat átirányításaiban részt vevő bármely más webhely megbízható helyként kerül hozzáadásra a böngésző biztonsági beállításaiközött, hogy azok ugyanahhoz a biztonsági zónához tartozzanak.
+#### <a name="other-workarounds"></a>Egyéb megkerülő megoldások
+Győződjön meg arról, hogy a probléma csak a Microsoft Edge böngésző adott verziójánál fordul elő, és a megkerülő megoldások elfogadása előtt működik a többi böngészőben.  
+1. A problémák megkerülésének első lépéseként győződjön meg arról, hogy az alkalmazás tartománya, valamint a hitelesítési folyamat átirányításában részt vevő egyéb helyek megbízható helyként lesznek hozzáadva a böngésző biztonsági beállításaiban, hogy azok ugyanahhoz a biztonsági zónához tartozzanak.
 Ehhez kövesse az alábbi lépéseket:
-    - Nyissa meg **az Internet Explorert,** és kattintson a **beállításokra** (fogaskerék ikonra) a jobb felső sarokban
-    - **Internetbeállítások kiválasztása**
-    - A Biztonság lap **kijelölése**
-    - A **Megbízható helyek csoportban** kattintson a **Webhelyek** gombra, és adja hozzá az URL-címeket a megnyíló párbeszédpanelen.
+    - Nyissa meg az **Internet Explorert** , és kattintson a **Beállítások** (fogaskerék ikon) elemre a jobb felső sarokban
+    - **Internetes beállítások** kiválasztása
+    - Válassza a **Biztonság** fület.
+    - A **megbízható helyek** lehetőségnél kattintson a **helyek** gombra, és adja hozzá az URL-címeket a megnyíló párbeszédpanelen.
 
-2. Ahogy korábban említettük, mivel csak a munkamenet-tároló törlődik a normál navigáció során, beállíthatja az MSAL.js-t a helyi tároló használatára. Ez az MSAL `cacheLocation` inicializálása során konfigurációs paraméterként állítható be.
+2. Ahogy korábban említettük, mivel a normál Navigálás során csak a munkamenet-tárolót törli a rendszer, a MSAL. js-t úgy is beállíthatja, hogy a helyi tárterületet használja. Ez beállítható a MSAL inicializálásakor a `cacheLocation` konfigurációs paraméterként.
 
-Megjegyzés: ez nem oldja meg az InPrivate-böngészés problémáját, mivel mind a munkamenet, mind a helyi tároló törlődik.
+Vegye figyelembe, hogy ez nem oldja meg az InPrivate-böngészés hibáját, mivel a munkamenet és a helyi tárterület is törlődik.
 
-## <a name="issues-due-to-popup-blockers"></a>Az előugró ablakok blokkolása miatti problémák
+## <a name="issues-due-to-popup-blockers"></a>Felugró ablakos blokkolók miatti problémák
 
-Vannak olyan esetek, amikor az ie vagy a Microsoft Edge levan tiltva, például amikor egy második előugró ablak történik a többtényezős hitelesítés során. Kapsz egy figyelmeztetést a böngészőben, hogy a lakosság egyszer vagy mindig. Ha úgy dönt, hogy engedélyezi, a böngésző automatikusan megnyitja az előugró ablakot, és visszaad egy `null` leírót. Ennek eredményeképpen a könyvtár nem rendelkezik az ablak leírójával, és nincs mód az előugró ablak bezárására. Ugyanez a probléma nem fordul elő a Chrome-ban, amikor kéri, hogy engedélyezze a felugró ablakokat, mert nem nyit meg automatikusan egy előugró ablakot.
+Előfordulhat, hogy az előugró ablakok le vannak tiltva az IE-ben vagy a Microsoft Edge-ben, például ha egy második előugró ablak jelenik meg a multi-Factor Authentication során. A böngészőben megjelenik egy riasztás, amely lehetővé teszi, hogy az előugró ablak egyszer vagy bármikor elérhető legyen. Ha úgy dönt, hogy engedélyezi, a böngésző automatikusan megnyitja az előugró ablakot, `null` és visszaadja a hozzá tartozó leírót. Ennek eredményeképpen a függvénytár nem rendelkezik leíróval az ablakhoz, és nincs lehetőség az előugró ablak bezárására. Ugyanez a probléma nem fordul elő a Chrome-ban, amikor rákérdez, hogy engedélyezi-e a felugró ablakokat, mert nem nyit meg automatikusan előugró ablakot.
 
-A **probléma elkerülése érdekében a**fejlesztőknek engedélyezniük kell az IE és a Microsoft Edge előugró ablakait, mielőtt elkezdenék használni az alkalmazásukat.
+**Megkerülő megoldásként**a fejlesztőknek engedélyeznie kell a felugró ablakokat az IE-ben és a Microsoft Edge-ben, mielőtt elkezdik használni az alkalmazást a probléma elkerüléséhez.
 
 ## <a name="next-steps"></a>További lépések
-További információ [az MSAL.js használatáról az Internet Explorer programban.](msal-js-use-ie-browser.md)
+További információ a [MSAL. js használatáról az Internet Explorerben](msal-js-use-ie-browser.md).

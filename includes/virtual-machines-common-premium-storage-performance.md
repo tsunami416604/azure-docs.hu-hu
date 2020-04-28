@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75942712"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
@@ -27,7 +27,7 @@ A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hog
 
 Ha prémium szintű tárolót csatlakoztat a nagy méretű virtuális gépéhez, az Azure a lemez specifikációinak megfelelően kiosztja a garantált IOPS-t. A P50-es lemeznél például 7500 IOPS lesz kiosztva. Minden nagy méretű virtuális gép rendelkezik egy IOPS-korláttal is, amelyet még fenn tud tartani. A standard GS5 virtuális gép például 80 000 IOPS korláttal rendelkezik.
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 
 Az átviteli sebesség vagy a sávszélesség azt az adatmennyiséget adja meg, amelyet az alkalmazás a megadott intervallumban küld a Storage-lemezeknek. Ha az alkalmazás nagy i/o-méretű bemeneti/kimeneti műveleteket végez, nagy átviteli sebességre van szükség. Az adatraktár-alkalmazások általában nagy mennyiségű adathoz hozzáférő, nagyméretű műveleteket végző, nagyszámú adatokhoz hozzáférő, intenzíven végrehajtott ellenőrzéseket adnak ki. Más szóval az ilyen alkalmazások esetében nagyobb átviteli sebességre van szükség. Ha van ilyen alkalmazás, meg kell terveznie az infrastruktúráját az átviteli sebesség optimalizálása érdekében. A következő szakaszban részletesen ismertetjük azokat a tényezőket, amelyeket meg kell valósítania.
 
@@ -72,7 +72,7 @@ Ezután mérje fel az alkalmazás maximális teljesítményre vonatkozó követe
 | Szekvenciális műveletek%-ban | | | |
 | I/o-kérelem mérete | | | |
 | Átlagos átviteli sebesség | | | |
-| Legfeljebb Teljesítmény | | | |
+| Legfeljebb Átviteli sebesség | | | |
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
@@ -96,7 +96,7 @@ A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló m
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
-| **Teljesítmény** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
+| **Átviteli sebesség** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
@@ -119,7 +119,7 @@ Az alábbi táblázat összefoglalja a teljesítménnyel kapcsolatos tényezőke
 
 A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a késésről az egyes virtuálisgép-típusok esetében a [Linux VM-méretek](../articles/virtual-machines/linux/sizes.md) vagy a [Windowsos virtuális gépek méretei](../articles/virtual-machines/windows/sizes.md)című témakörben talál további információt.
 
-| &nbsp; | **IOPS** | **Teljesítmény** | **Késés** |
+| &nbsp; | **IOPS** | **Átviteli sebesség** | **Késés** |
 | --- | --- | --- | --- |
 | **Példa forgatókönyvre** |Nagyvállalati OLTP alkalmazás, amely másodpercenként nagy mennyiségű tranzakciót igényel. |Nagyvállalati adattárház-kezelő alkalmazás nagy mennyiségű adattal. |Közel valós idejű alkalmazások, amelyek azonnali válaszokat igényelnek a felhasználói kérésekre, például az online játékokba. |
 | Teljesítménnyel kapcsolatos tényezők | &nbsp; | &nbsp; | &nbsp; |

@@ -1,7 +1,7 @@
 ---
-title: Internetes társviszony-létesítés - gyakori kérdések
+title: Internetes társközi – gyakori kérdések
 titleSuffix: Azure
-description: Internetes társviszony-létesítés - gyakori kérdések
+description: Internetes társközi – gyakori kérdések
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,28 +9,28 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75775497"
 ---
-# <a name="internet-peering---faqs"></a>Internetes társviszony-létesítés - gyakori kérdések
+# <a name="internet-peering---faqs"></a>Internetes társközi – gyakori kérdések
 
-Az általános kérdésekért tekintse át az alábbi információkat.
+Az alábbi információkat általános kérdésekre is áttekintheti.
 
-**Mi a különbség az internetes társviszony-létesítés és a társviszony-létesítési szolgáltatás között?**
+**Mi a különbség az internetes társ-és a társ-szolgáltatási szolgáltatás között?**
 
-A társviszony-létesítési szolgáltatás olyan szolgáltatás, amely vállalati szintű nyilvános IP-kapcsolatot kíván biztosítani a Microsoft számára a vállalati ügyfelek számára. A nagyvállalati szintű internetkapcsolat olyan internetszolgáltatókon keresztül izolált kapcsolatot is magában foglal, amelyek nagy átviteli sebességű kapcsolattal rendelkeznek a Microsofttal, és redundanciát biztosítanak a HA-kapcsolathoz. Emellett a felhasználói forgalom van optimalizálva a késés a legközelebbi Microsoft Edge. A társviszony-létesítési szolgáltatás a partnerszolgáltatóval való társviszonyra épül. A partnerrel létesítési kapcsolatnak közvetlen társviszony-létesítésnek kell lennie, nem pedig exchange-társviszony-létesítésnek. A közvetlen társviszony-létesítésnek helyi és georedundanciával kell rendelkeznie.
+Az egyenrangú szolgáltatás olyan szolgáltatás, amely nagyvállalati szintű nyilvános IP-kapcsolatot biztosít a Microsoft vállalatának ügyfelei számára. A nagyvállalati szintű internet olyan internetszolgáltatókon keresztül kapcsolódik a hálózathoz, amelyek nagy átviteli sebességű kapcsolattal rendelkeznek a Microsofttal, és redundanciát biztosítanak. Emellett a felhasználói forgalom a legközelebbi Microsoft Edge-re való késésre van optimalizálva. A társ-létesítési szolgáltatás a partneri szolgáltatóval való egyenrangú kapcsolaton alapul. A partnerrel való társítási kapcsolatnak az Exchange-társítással nem rendelkezőnek kell lennie. A közvetlen társításnak helyi és földrajzi redundanciával kell rendelkeznie.
 
-**Mi az örökölt társviszony-létesítés?**
+**Mi az örökölt peering?**
 
-Az Azure PowerShell használatával beállított társviszony-létesítési kapcsolat Azure-erőforrásként van kezelve. A múltban beállított társviszony-létesítési kapcsolatok a rendszerünkben örökölt társviszony-létesítésként tárolódnak, amelyet azure-erőforrásként kezelhet.
+A Azure PowerShell használatával beállított egyenrangú kapcsolatok Azure-erőforrásként kezelhetők. A múltban beállított összekapcsolási kapcsolatokat a rendszer olyan örökölt társításként tárolja, amelyet az Azure-erőforrásként való átalakításra is választhat.
 
-**A New-AzPeeringDirectConnectionObject elnevezésekénél milyen IP-címeket kapnak a Microsoft és a Társeszközök?**
+**A New-AzPeeringDirectConnectionObject meghívásakor milyen IP-címek vannak megadva a Microsoft és a társ-eszközök számára?**
 
-A New-AzPeeringDirectConnectionObject parancsmag hívásakor egy /31-es címet (a.b.c.d/31) vagy /30-as címet (a.b.c.d/30) kell megadni. Az első IP-cím (a.b.c.d+0) a Társ eszközének, a második IP-címe (a.b.c.d+1) pedig a Microsoft-eszköznek van megadva.
+A New-AzPeeringDirectConnectionObject parancsmag meghívásakor a/31 (a. b. c. d/31) vagy a/30 (a. b. c. d/30) címeket kell megadni. A rendszer az első IP-címet (a. b. c. d + 0) adja meg a társ eszközének és második IP-címének (a. b. c. d + 1) a Microsoft-eszköz számára.
 
-**Mi a MaxPrefixesAdvertisedIPv4 és A MaxPrefixesAdvertisedIPv6 paraméter e New-AzPeeringDirectConnectionObject parancsmagban?**
+**Mi az a MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméter a New-AzPeeringDirectConnectionObject parancsmagban?**
 
-A MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméterek az IPv4 és az IPv6-előtagok maximális számát jelentik, amelyeket a Társ a Microsoftáltal el kell fogadnia. Ezek a paraméterek bármikor módosíthatók.
+A MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméterek azon IPv4-és IPv6-előtagok maximális számát jelölik, amelyeknek a társának el kívánja fogadni a Microsoftot. Ezeket a paramétereket bármikor módosíthatja.

@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatási korlátok és korlátozások - Azure Active Directory | Microsoft dokumentumok
-description: Használati korlátozások és egyéb szolgáltatáskorlátozások az Azure Active Directory szolgáltatáshoz
+title: Szolgáltatási korlátozások és korlátozások – Azure Active Directory | Microsoft Docs
+description: A Azure Active Directory szolgáltatás használati korlátozásai és egyéb szolgáltatási korlátai
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,14 +16,14 @@ ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659644"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD szolgáltatási korlátozások
-Ez a cikk az Azure Active Directory (Azure AD) szolgáltatás használati korlátait és egyéb szolgáltatáskorlátait tartalmazza. Ha a Microsoft Azure szolgáltatáskorlátainak teljes készletét keresi, olvassa el az [Azure előfizetési és szolgáltatáskorlátok, kvóták és korlátozások című témakört.](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+Ez a cikk a Azure Active Directory (Azure AD) szolgáltatás használati korlátozásait és egyéb szolgáltatási korlátozásait tartalmazza. Ha Microsoft Azure szolgáltatási korlátok teljes készletét keresi, tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../../azure-resource-manager/management/azure-subscription-service-limits.md)ismertető témakört.
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

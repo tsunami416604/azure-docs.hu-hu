@@ -1,34 +1,34 @@
 ---
-title: Az Azure Spring Cloud geokatasztrófa-helyreállítása | Microsoft dokumentumok
-description: Ismerje meg, hogyan védheti meg tavaszi felhőalkalmazását a regionális kimaradásoktól
+title: Azure Spring Cloud geo – vész-helyreállítás | Microsoft Docs
+description: Ismerje meg, hogyan védhető a Spring Cloud-alkalmazás a regionális kimaradásokból
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279142"
 ---
-# <a name="azure-spring-cloud-disaster-recovery"></a>Az Azure Spring Cloud vész-helyreállítási
+# <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud vész-helyreállítás
 
-Ez a cikk néhány stratégiát ismertet, amelyekkel megvédheti az Azure Spring Cloud-alkalmazásokat az állásidőtől.  Bármely régióban vagy adatközpontban előfordulhat állásidő okozta regionális katasztrófák, de gondos tervezés csökkentheti az ügyfelekre gyakorolt hatást.
+Ez a cikk azokat a stratégiákat ismerteti, amelyekkel biztosíthatja, hogy az Azure Spring Cloud-alkalmazásai a leállás során is védve legyenek.  Előfordulhat, hogy bármely régió vagy adatközpont a regionális katasztrófák által okozott állásidőt tapasztalhatja, de a gondos tervezés csökkentheti az ügyfelekre gyakorolt hatást.
 
-## <a name="plan-your-application-deployment"></a>Az alkalmazás telepítésének megtervezése
+## <a name="plan-your-application-deployment"></a>Az alkalmazás központi telepítésének megtervezése
 
-Az Azure Spring Cloud-alkalmazások egy adott régióban futnak.  Az Azure világszerte számos földrajzi területen működik. Az Azure-földrajzi terület a világ egy meghatározott területe, amely legalább egy Azure-régiót tartalmaz. Az Azure-régió egy földrajzi területen belüli terület, amely egy vagy több adatközpontot tartalmaz.  Minden Azure-régió párosítva van egy másik régióval ugyanazon a földrajzi területen belül, és együtt egy regionális pár. Az Azure szerializálja a platformfrissítéseket (tervezett karbantartást) a regionális párok között, biztosítva, hogy minden párban egyszerre csak egy régió frissüljön. Több régiót érintő kimaradás esetén minden párban legalább egy régió lesz rangsorolva a helyreállításhoz.
+Az Azure Spring Cloud-alkalmazások egy adott régióban futnak.  Az Azure világszerte számos földrajzi területen működik. Az Azure földrajz a világ egy meghatározott területe, amely legalább egy Azure-régiót tartalmaz. Az Azure-régió egy földrajzon belüli terület, amely egy vagy több adatközpontot tartalmaz.  Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. Az Azure szerializálja a platform frissítéseit (tervezett karbantartás) a regionális párok között, így biztosítva, hogy egyszerre csak egy régió legyen frissítve az egyes párokban. Ha egy leállás több régiót érint, akkor az egyes párokban legalább egy régiót előnyben részesíti a helyreállítás.
 
-A katasztrófák magas rendelkezésre állásának és védelmének biztosításához a Spring Cloud-alkalmazásokat több régióra kell telepítenie.  Az Azure a [párosított régiók](../best-practices-availability-paired-regions.md) listáját tartalmazza, így megtervezheti a tavaszi felhőbeli üzembe helyezéseket a regionális párok számára.  Azt javasoljuk, hogy a mikroszolgáltatási architektúra tervezésekor három fő tényezőt vegye figyelembe: a régió elérhetőségét, az Azure-ban párosított régiókat és a szolgáltatás rendelkezésre állását.
+A magas rendelkezésre állás és a katasztrófák elleni védelem biztosításához szükséges, hogy a Spring Cloud-alkalmazásokat több régióra telepítse.  Az Azure a [párosított régiók](../best-practices-availability-paired-regions.md) listáját jeleníti meg, hogy a tavaszi Felhőbeli üzemelő példányokat a regionális párokra tervezze.  Javasoljuk, hogy a mikro-szolgáltatás architektúrájának tervezésekor három fő tényezőt vegye figyelembe: a régiók elérhetőségét, az Azure párosított régiókat és a szolgáltatás rendelkezésre állását.
 
-*  Régió elérhetősége: Válasszon a felhasználókhoz közeli földrajzi területet a hálózati késés és az átviteli idő minimalizálása érdekében.
-*  Azure párosított régiók: Válassza ki a párosított régiók a kiválasztott földrajzi területen belül, hogy összehangolt platformfrissítéseket és rangsorolva helyreállítási erőfeszítéseket, ha szükséges.
-*  A szolgáltatás elérhetősége: Döntse el, hogy a párosított régióknak meleg/meleg, meleg/meleg vagy meleg/hideg legyen-e.
+*  Régió elérhetősége: válasszon ki egy földrajzi területet a felhasználók számára a hálózati késés és az átviteli idő minimalizálásához.
+*  Azure párosított régiók: ha szükséges, a kiválasztott földrajzi területen válassza a párosított régiók lehetőséget az összehangolt platform-frissítések és a rangsorolt helyreállítási erőfeszítések biztosításához.
+*  Szolgáltatás rendelkezésre állása: döntse el, hogy a párosított régióknak meleg/gyakori, meleg/meleg vagy meleg/hidegen kell futniuk.
 
-## <a name="use-azure-traffic-manager-to-route-traffic"></a>Forgalom irányítása az Azure Traffic Manager használatával
+## <a name="use-azure-traffic-manager-to-route-traffic"></a>Az Azure Traffic Manager használata a forgalom irányításához
 
-[Az Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) DNS-alapú terheléselosztást biztosít, és több régióban is eloszthatja a hálózati forgalmat.  Az Azure Traffic Manager segítségével a legközelebbi Azure Spring Cloud szolgáltatáspéldányhoz irányíthatja ügyfeleit.  A legjobb teljesítmény és redundancia érdekében irányítsa az összes alkalmazásforgalmat az Azure Traffic Manageren keresztül, mielőtt elküldene az Azure Spring Cloud szolgáltatásnak.
+Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) a DNS-alapú forgalom terheléselosztását biztosítja, és több régióban is terjesztheti a hálózati forgalmat.  Az Azure Traffic Manager használatával irányíthatja az ügyfeleket a legközelebbi Azure Spring Cloud Service-példányra.  A legjobb teljesítmény és redundancia érdekében az Azure Traffic Manageron keresztül az összes alkalmazás forgalmát az Azure Spring Cloud Service-be való elküldés előtt irányítsa.
 
-Ha az Azure Spring Cloud-alkalmazások több régióban, az Azure Traffic Manager segítségével szabályozhatja a forgalom áramlását az alkalmazások az egyes régiókban.  Definiáljon egy Azure Traffic Manager-végpontot minden szolgáltatáshoz a szolgáltatás IP-címhasználatával. Az ügyfeleknek csatlakozniuk kell egy Azure Traffic Manager DNS-névhez, amely az Azure Spring Cloud szolgáltatásra mutat.  Az Azure Traffic Manager terhelési kiegyensúlyozza a forgalmat a meghatározott végpontok között.  Ha egy katasztrófa ütközik egy adatközpont, az Azure Traffic Manager irányítja a forgalmat, hogy a régió a pár, biztosítva a szolgáltatás folytonosságát.
+Ha több régióban is rendelkezik Azure Spring Cloud-alkalmazásokkal, az Azure Traffic Manager segítségével szabályozhatja az alkalmazások forgalmának áramlását az egyes régiókban.  Definiáljon egy Azure Traffic Manager végpontot az egyes szolgáltatásokhoz a szolgáltatás IP-címének használatával. Az ügyfeleknek csatlakozniuk kell egy Azure Traffic Manager DNS-névhez, amely az Azure Spring Cloud szolgáltatásra mutat.  Az Azure Traffic Manager terheléselosztási forgalmat a meghatározott végpontok között.  Ha egy katasztrófa egy adatközpontot üt ki, akkor az Azure Traffic Manager az adott régiótól a párja felé irányítja a forgalmat, így biztosítva a szolgáltatás folytonosságát.

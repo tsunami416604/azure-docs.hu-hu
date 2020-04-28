@@ -1,6 +1,6 @@
 ---
-title: ADAL a MSAL migrációs útmutató az Android | Azure
-description: Ismerje meg, hogyan telepítheti át az Azure Active Directory hitelesítési könyvtár (ADAL) Android-alkalmazását a Microsoft authentication library (MSAL) alkalmazásba.
+title: ADAL az Androidhoz készült MSAL-áttelepítési útmutatóhoz | Azure
+description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authentication Library (ADAL) Android-alkalmazást a Microsoft hitelesítési tárba (MSAL).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,121 +14,121 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084055"
 ---
-# <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL migrációs útmutató az Android
+# <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
-Ez a cikk kiemeli azokat a módosításokat, amelyeket az Azure Active Directory hitelesítési könyvtár (ADAL) a Microsoft authentication library (MSAL) használatához használó alkalmazás áttelepítéséhez szükséges módosításokat kell végrehajtania.
+Ez a cikk azokat a módosításokat mutatja be, amelyeket a Azure Active Directory hitelesítési függvénytárat (ADAL) használó alkalmazások áttelepíteni kell a Microsoft Authentication Library (MSAL) használatára.
 
-## <a name="difference-highlights"></a>Különbség kiemeli
+## <a name="difference-highlights"></a>Különbségi csúcsfények
 
-Az ADAL az Azure Active Directory 1.0-s frissítése ponttal működik. A Microsoft authentication library (MSAL) együttműködik a Microsoft identitás platform - korábbi nevén az Azure Active Directory v2.0 végpont. A Microsoft identity platform annyiban különbözik az Azure Active Directory 1.0-s verziójától, hogy:
+A ADAL az Azure Active Directory v 1.0-s végponttal működik. A Microsoft Authentication Library (MSAL) a Microsoft Identity platformmal működik – korábbi nevén Azure Active Directory v 2.0-végpont. A Microsoft Identity platform eltér a Azure Active Directory 1.0-s verziótól:
 
-Támogatja:
+Támogatja
   - Szervezeti identitás (Azure Active Directory)
-  - Nem szervezeti identitások, például Outlook.com, Xbox Live és így tovább
-  - (Csak B2C) Összevont bejelentkezés a Google, a Facebook, a Twitter és az Amazon segítségével
+  - Nem szervezeti identitások, például Outlook.com, Xbox Live stb.
+  - (Csak B2C) Összevont bejelentkezés a Google, a Facebook, a Twitter és az Amazon között
 
-- A szabványok kompatibilisek-e a következőkkel:
-  - OAuth v2.0
+- A szabványokkal kompatibilis szabványok:
+  - OAuth 2.0-s verzió
   - OpenID Connect (OIDC)
 
-Az MSAL nyilvános API fontos változásokat vezet be, többek között:
+A MSAL nyilvános API fontos változásokat vezet be, beleértve a következőket:
 
-- Új modell a jogkivonatok eléréséhez:
-  - Az ADAL hozzáférést biztosít `AuthenticationContext`a tokenekhez a , amely a kiszolgálót jelöli. Az MSAL hozzáférést biztosít `PublicClientApplication`a tokenekhez a , amely az ügyfelet jelöli. Az ügyfélfejlesztőknek nem kell `PublicClientApplication` új példányt létrehozniuk minden olyan hatósághoz, amelyhez interakcióra szükségük van. Csak `PublicClientApplication` egy konfiguráció szükséges.
-  - A hozzáférési jogkivonatok kérelemezése az erőforrás-azonosítók mellett hatókörök használatával.
-  - A növekményes hozzájárulás támogatása. A fejlesztők hatókört kérhetnek, mivel a felhasználó egyre több funkciót fér hozzá az alkalmazáshoz, beleértve azokat is, amelyek nem szerepelnek az alkalmazás regisztrációja során.
-  - A hatóságok már nem érvényesítve a futásidőben. Ehelyett a fejlesztő bejelenti az "ismert hatóságok" listáját a fejlesztés során.
-- Token API változások:
-  - Az ADAL-ban `AcquireToken()` először néma kérést tesz. Ennek hiányában interaktív kérést tesz. Ez a viselkedés azt eredményezte, `AcquireToken`hogy egyes fejlesztők csak a , ami azt eredményezte, hogy a felhasználó váratlanul kéri a hitelesítő adatok időnként. Az MSAL megköveteli, hogy a fejlesztők szándékosan jelenjenek meg, amikor a felhasználó felhasználói felületi kérdést kap.
-    - `AcquireTokenSilent`mindig olyan néma kérést eredményez, amely sikeres vagy sikertelen.
-    - `AcquireToken`mindig olyan kérést eredményez, amely a felhasználói felületen keresztül kéri a felhasználót.
-- Az MSAL támogatja a bejelentkezést egy alapértelmezett böngészőből vagy egy beágyazott webnézetből:
-  - Alapértelmezés szerint az eszköz alapértelmezett böngészője használatos. Ez lehetővé teszi az MSAL számára, hogy olyan hitelesítési állapotot (cookie-kat) használjon, amelyek már jelen lehetnek egy vagy több bejelentkezett fióknál. Ha nincs jelen hitelesítési állapot, az MSAL-on keresztüli engedélyezés során történő hitelesítés eredményeképpen hitelesítési állapot (cookie-k) jönnek létre az ugyanabban a böngészőben használt más webes alkalmazások javára.
-- Új kivételmodell:
-  - A kivételek egyértelműbben meghatározzák a hiba típusát, és azt, hogy a fejlesztőnek mit kell tennie a probléma megoldásához.
-- Az MSAL támogatja `AcquireToken` a `AcquireTokenSilent` paraméterobjektumokat és a hívásokat.
-- Az MSAL támogatja a deklaratív konfigurációt:
-  - Ügyfélazonosító, URI átirányítása.
+- Új modell a tokenek eléréséhez:
+  - A ADAL hozzáférést biztosít a tokenekhez a `AuthenticationContext`-kiszolgálón keresztül, amely a kiszolgálót jelképezi. A MSAL hozzáférést biztosít a tokenekhez a `PublicClientApplication`használatával, amely az ügyfelet jelöli. Az ügyfél-fejlesztőknek nem kell új `PublicClientApplication` példányt létrehozniuk minden olyan szolgáltató számára, amelyre szükségük van a használatához. Csak egy `PublicClientApplication` konfiguráció szükséges.
+  - Az erőforrás-azonosítók mellett hatóköröket használó hozzáférési tokenek kérésének támogatása.
+  - Növekményes beleegyezett támogatás támogatása. A fejlesztők hatókört igényelhetnek, mivel a felhasználó több és több funkciót is elérhet az alkalmazásban, beleértve azokat is, amelyek nem szerepelnek az alkalmazás regisztrálásakor.
+  - A hatóságok már nem lesznek érvényesítve a Futtatás ideje alatt. Ehelyett a fejlesztő deklarálja az "ismert hatóságok" listáját a fejlesztés során.
+- Token API módosításai:
+  - A ADAL- `AcquireToken()` ben először csendes kérést tesznek elérhetővé. Ha ezt elmulasztja, interaktív kérelmet készít. Ez a viselkedés néhány olyan fejlesztőt eredményezett, akik `AcquireToken`csak a-re támaszkodtak, ami azt eredményezte, hogy a felhasználó időnként váratlanul kéri a hitelesítő adatok megadását. A MSAL használatához a fejlesztőknek szándékosnak kell lennie, amikor a felhasználó felhasználói FELÜLETi kérést kap.
+    - `AcquireTokenSilent`mindig egy csendes kérést eredményez, amely sikeres vagy sikertelen.
+    - `AcquireToken`mindig olyan kérést eredményez, amely felhasználói felületen keresztül kéri a felhasználót.
+- A MSAL egy alapértelmezett böngészőből vagy egy beágyazott webes nézetből támogatja a bejelentkezést:
+  - Alapértelmezés szerint a rendszer az eszköz alapértelmezett böngészőjét használja. Ez lehetővé teszi a MSAL számára, hogy egy vagy több bejelentkezett fiók esetében már jelen lehet a hitelesítési állapot (cookie-k) használata. Ha nincs hitelesítő állapot, az MSAL-n keresztül történő hitelesítés során a rendszer a hitelesítési állapot (cookie-k) segítségével hozza létre az adott böngészőben használni kívánt egyéb webalkalmazások előnyeit.
+- Új kivétel modellje:
+  - A kivételek világosabban határozzák meg, hogy milyen típusú hiba történt, és a fejlesztőnek hogyan kell megoldania.
+- A MSAL támogatja a és `AcquireToken` a `AcquireTokenSilent` hívások paraméter-objektumait.
+- A MSAL támogatja a deklaratív konfigurációját:
+  - Ügyfél-azonosító, átirányítási URI.
   - Beágyazott vs alapértelmezett böngésző
   - Hatóságok
   - HTTP-beállítások, például olvasási és kapcsolati időtúllépés
 
-## <a name="your-app-registration-and-migration-to-msal"></a>Az alkalmazás regisztrációja és az MSAL-ra való áttérés
+## <a name="your-app-registration-and-migration-to-msal"></a>Az alkalmazás regisztrálása és migrálása a MSAL-be
 
-Az MSAL használatához nem kell módosítania a meglévő alkalmazásregisztrációt. Ha szeretné kihasználni a növekményes/ progresszív hozzájárulás előnyeit, előfordulhat, hogy át kell tekintenie a regisztrációt, hogy azonosítsa azokat a hatóköröket, amelyeket fokozatosan szeretne kérni. További információ a hatókörökről és a növekményes hozzájárulásról.
+A MSAL használatához nem szükséges módosítania a meglévő alkalmazás regisztrációját. Ha szeretné kihasználni a növekményes/fokozatos jóváhagyást, érdemes áttekintenie a regisztrációt, hogy azonosítsa a Növekményesen igényelni kívánt hatóköröket. A hatókörökkel és a növekményes engedélyekkel kapcsolatos további információk a következők.
 
-Az alkalmazás regisztrációjában a portálon egy **API-engedélyek** lapot fog látni. Ez tartalmazza azoknak az API-knak és engedélyeknek (hatóköröknek) a listáját, amelyekhez az alkalmazás jelenleg úgy van beállítva, hogy hozzáférést kérjen. Az egyes API-engedélyekhez társított hatókörnevek listáját is megjeleníti.
+Ha az alkalmazás regisztrálva van a portálon, megjelenik az **API-engedélyek** lap. Itt megtalálhatók azon API-k és engedélyek (hatókörök) listája, amelyeket az alkalmazás jelenleg úgy konfigurált, hogy hozzáférést igényeljen. Emellett az egyes API-engedélyekhez társított hatókör-nevek listáját is megjeleníti.
 
 ### <a name="user-consent"></a>Felhasználói beleegyezés
 
-Az ADAL és az AAD v1-végpont, a felhasználó beleegyezését az erőforrások saját adtak az első használat kor. Az MSAL és a Microsoft identity platform segítségével a hozzájárulás fokozatosan kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó magas jogosultságnak tekinthet, vagy más módon megkérdőjelezheti, ha nem rendelkezik egyértelmű magyarázattal arról, hogy miért van szükség az engedélyre. Az ADAL-ban előfordulhat, hogy ezek az engedélyek azt eredményezték, hogy a felhasználó felhagyott az alkalmazásba való bejelentkezéssel.
+A ADAL és a HRE v1 végpont esetében az első használatkor a felhasználó beleegyezik a saját erőforrásaiba. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
 
 > [!TIP]
-> Azt javasoljuk, hogy a növekményes hozzájárulás olyan esetekben, ahol meg kell adnia további környezetben a felhasználó arról, hogy miért az alkalmazás engedélyre van szüksége.
+> Javasoljuk, hogy növekményes beleegyezést alkalmazzon olyan helyzetekben, ahol további kontextust kell megadnia a felhasználónak arról, hogy miért van szüksége az alkalmazásnak egy engedélyre.
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 
-A szervezet rendszergazdái beleegyezésüket tehetik az alkalmazás által a szervezet összes tagja nevében igényelt engedélyekhez. Egyes szervezetek csak azt engedélyezik a rendszergazdáknak, hogy hozzájáruljanak az alkalmazásokhoz. A rendszergazdai jóváhagyás megköveteli, hogy az alkalmazás regisztrációjában szerepeljen az alkalmazás által használt összes API-engedély és hatókör.
+A szervezeti rendszergazdák megadhatják, hogy az alkalmazás a szervezet minden tagjának nevében a szükséges engedélyekkel rendelkezik. Egyes szervezetek csak a rendszergazdák számára engedélyezik az alkalmazásoknak való hozzájárulásukat. A rendszergazdai jóváhagyáshoz meg kell adnia az alkalmazás által használt API-engedélyeket és hatóköröket az alkalmazás regisztrálásakor.
 
 > [!TIP]
-> Annak ellenére, hogy az alkalmazásregisztrációban nem szereplő apple-tartalomhoz kérhet hatókört, javasoljuk, hogy frissítse az alkalmazásregisztrációt úgy, hogy tartalmazza az összes olyan erőforrást és hatókört, amelyhez a felhasználó valaha is engedélyt adhat.
+> Annak ellenére, hogy a MSAL használatával olyan hatókört is igényelhet, amely nem szerepel az alkalmazás regisztrációjában, javasoljuk, hogy frissítse az alkalmazás regisztrációját, hogy tartalmazza az összes olyan erőforrást és hatókört, amelyet a felhasználó bármikor engedélyezhet.
 
-## <a name="migrating-from-resource-ids-to-scopes"></a>Áttelepítés erőforrásazonosítókról hatókörökre
+## <a name="migrating-from-resource-ids-to-scopes"></a>Áttelepítés erőforrás-azonosítóról hatókörökre
 
-### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Az első használatra vonatkozó összes engedély hitelesítése és kérése
+### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>A hitelesítés és az engedélyezés kérése az első használathoz szükséges összes engedélyhez
 
-Ha jelenleg ADAL-t használ, és nem kell növekményes jóváhagyást használnia, az `acquireToken` MSAL `AcquireTokenParameter` használatának legegyszerűbb módja az, ha kérelmet nyújt be az új objektum használatával, és beállítja az erőforrás-azonosító értékét.
+Ha jelenleg a ADAL-t használja, és nem kell növekményes beleegyeznie, akkor a MSAL használatának legegyszerűbb módja, ha `acquireToken` az új `AcquireTokenParameter` objektummal szeretne kérelmet készíteni, és BEÁLLÍTJA az erőforrás-azonosító értékét.
 
 > [!CAUTION]
-> Nem lehet mind a hatóköröket, mind az erőforrás-azonosítót beállítani. Ha mindkettőt megpróbálja beállítani, `IllegalArgumentException`az a .
+> Nem lehet beállítani mindkét hatókört és egy erőforrás-azonosítót. A mindkettő beállítására tett kísérlet a következő eredményt `IllegalArgumentException`fogja eredményezni:.
 
- Ez azt eredményezi, hogy ugyanazt a v1 viselkedés, amit használ. Az alkalmazásregisztrációban kért összes engedélyt a felhasználó kéri az első interakció során.
+ Ez azt eredményezi, hogy ugyanazt a v1-es viselkedést fogja használni. Az alkalmazás regisztrálásához szükséges összes engedélyt a felhasználó az első interakció során kéri le.
 
-### <a name="authenticate-and-request-permissions-only-as-needed"></a>Csak szükség esetén hitelesítse és kérje az engedélyeket
+### <a name="authenticate-and-request-permissions-only-as-needed"></a>Csak a szükséges engedélyek hitelesítése és kérése
 
-A növekményes hozzájárulás kihasználásához készítsen listát az alkalmazás által az alkalmazás regisztrációjából használt engedélyekről (hatókörökről), és rendezze őket két listába a következők alapján:
+A növekményes jóváhagyás kihasználása érdekében készítsen egy listát az alkalmazás által az alkalmazás regisztrálásakor használt engedélyekről (hatókörökről), és rendezze őket két listába a következő alapján:
 
-- Mely hatóköröket szeretné kérni a felhasználó első interakciója során az alkalmazással a bejelentkezés során.
-- Az alkalmazás egyik fontos funkciójához társított engedélyek, amelyeket a felhasználónak is el kell magyaráznia.
+- A bejelentkezés során a felhasználó első interakciójában milyen hatóköröket szeretne kérni.
+- Az alkalmazás egy fontos szolgáltatásához társított engedélyek, amelyeknek a felhasználónak is meg kell magyaráznia.
 
-Miután rendszerezte a hatóköröket, rendszerezze az egyes listákat, amelyekhez az erőforrást (API-t) jogkivonatot szeretne kérni. Csakúgy, mint minden más hatókörök, amelyek et szeretné, hogy a felhasználó engedélyezze egy időben.
+Miután megszervezte a hatóköröket, rendezze az egyes listákat, hogy melyik erőforrás (API) számára kíván jogkivonatot kérni. Valamint minden olyan hatókört, amelyet a felhasználónak egyszerre kell engedélyeznie.
 
-A paraméterek objektum használt, hogy a kérelmet MSAL támogatja:
+A MSAL kérelmének támogatásához használt Parameters objektum:
 
-- `Scope`: Azoknak a hatóköröknek a listája, amelyekhez engedélyt kíván kérni, és hozzáférési jogkivonatot szeretne kapni.
-- `ExtraScopesToConsent`: Egy további lista a hatókörök, amelyek engedélyt szeretne kérni, miközben egy másik erőforrás hozzáférési jogkivonatát kéri. Ez a hatókörök listája lehetővé teszi, hogy minimálisra csökkentse a felhasználói engedély kérésének számát. Ez kevesebb felhasználói engedélyt vagy hozzájárulási kérdést jelent.
+- `Scope`: Azoknak a hatóköröknek a listája, amelyekhez engedélyt kíván kérni és hozzáférési jogkivonatot kap.
+- `ExtraScopesToConsent`: A hatókörök további listája, amelyekhez engedélyt kell kérni, amíg egy másik erőforráshoz hozzáférési jogkivonatot kér. A hatókörök ezen listája lehetővé teszi, hogy csökkentse a felhasználói hitelesítés kérelmezéséhez szükséges időt. Ez azt jelenti, hogy kevesebb felhasználói engedély vagy hozzájárulási kérés van.
 
-## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Áttelepítés a AuthenticationContext környezetből publicclientapplications-be
+## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Migrálás a AuthenticationContext-ből a PublicClientApplications-be
 
-### <a name="constructing-publicclientapplication"></a>PublicClientApplication összeállítása
+### <a name="constructing-publicclientapplication"></a>PublicClientApplication építése
 
-Az MSAL használatakor a . `PublicClientApplication` Ez az objektum modellezi az alkalmazás identitását, és egy vagy több hatóságnak történő kérésekre szolgál. Ezzel az objektummal konfigurálhatja az ügyfélidentitást, átirányítja az URI-t, az alapértelmezett jogosultságot, hogy használja-e az eszköz böngészőjét és a beágyazott webnézetet, a naplószintet és egyebeket.
+A MSAL használatakor az a `PublicClientApplication`példányt hozza létre. Ez az objektum modellezi az alkalmazás identitását, és a kérelmeket egy vagy több hatóság számára teszi elérhetővé. Ezzel az objektummal konfigurálhatja az ügyfél identitását, az átirányítási URI-t, az alapértelmezett szolgáltatót, függetlenül attól, hogy az eszköz böngészőjét vagy a beágyazott webes nézetet, a naplózási szintet és egyebeket használja-e.
 
-Ezt az objektumot deklaratív módon konfigurálhatja a JSON-nal, amelyet fájlként vagy erőforrásként az APK-n belül biztosít.
+Ezt az objektumot a JSON használatával is konfigurálhatja, amelyet fájlként vagy tárolóként is megadhat az APK-ban lévő erőforrásként.
 
-Bár ez az objektum nem egytárcsa, `Executors` belsőleg használja megosztott interaktív és csendes kérelmek.
+Bár ez az objektum nem egypéldányos, belsőleg az interaktív és `Executors` a csendes kérelmek esetében is közösen használja.
 
-### <a name="business-to-business"></a>Üzletről vállalkozásra
+### <a name="business-to-business"></a>Üzleti tevékenység
 
-Az ADAL-ban minden szervezetnek, amelytől hozzáférési jogkivonatokat kér, külön példányára van szüksége. `AuthenticationContext` Az MSAL-ban ez már nem követelmény. Megadhatja azt a jogosultságot, amelytől jogkivonatot szeretne kérni a csendes vagy interaktív kérés részeként.
+A ADAL-ben minden olyan szervezetnek, amelyhez hozzáférési jogkivonatok szükségesek, külön `AuthenticationContext`példányt kell megadnia. A MSAL-ben ez már nem követelmény. Megadhatja azt a szolgáltatót, amelyről a csendes vagy interaktív kérelem részeként jogkivonatot szeretne kérni.
 
-### <a name="migrate-from-authority-validation-to-known-authorities"></a>A hatóság-érvényesítésről az ismert hatóságokra való áttérés
+### <a name="migrate-from-authority-validation-to-known-authorities"></a>Migrálás a hatóság általi ellenőrzésből az ismert hatóságok felé
 
-Az MSAL nem rendelkezik a hitelesítés engedélyezésére vagy letiltására. A jogosultságérvényesítés az ADAL egyik szolgáltatása, és az MSAL korai kiadásaiban, amely megakadályozza, hogy a kód jogkivonatokat kérjen egy potenciálisan rosszindulatú hatóságtól. Az MSAL most lekéri a Microsoft által ismert hatóságok listáját, és egyesíti a listát a konfigurációban megadott hatóságokkal.
+A MSAL nem rendelkezik jelölővel a hitelesítésszolgáltató érvényesítésének engedélyezéséhez vagy letiltásához. A ADAL-ben és a MSAL korai kiadásaiban a hitelesítésszolgáltató ellenőrzése lehetővé teszi, hogy a kód a lehetséges kártékony hatóságtól származó jogkivonatokat kérjen. A MSAL most lekéri a Microsoft számára ismert hatóságok listáját, és egyesíti a listát a konfigurációban megadott hatóságokkal.
 
 > [!TIP]
-> Ha Ön Egy Azure Business to Consumer (B2C) felhasználó, ez azt jelenti, hogy már nem kell letiltania a jogosultságérvényesítést. Ehelyett az MSAL-konfigurációban adja meg a támogatott Azure AD B2C-szabályzatokat.
+> Ha Ön Azure-beli üzleti felhasználói (B2C) felhasználó, ez azt jelenti, hogy többé nem kell letiltania a szolgáltatói ellenőrzést. Ehelyett vegye fel az összes támogatott Azure AD B2C-szabályzatot a MSAL-konfigurációban található hatóságként.
 
-Ha olyan szolgáltatót próbál használni, amelyet a Microsoft nem ismer, és amely `UnknownAuthorityException`nem szerepel a konfigurációban, a .
+Ha olyan szolgáltatót próbál meg használni, amely nem ismeri a Microsoftot, és nem szerepel a konfigurációjában, akkor a `UnknownAuthorityException`következőt kapja:.
 
 ### <a name="logging"></a>Naplózás
-Most már deklaratív módon konfigurálhatja a naplózást a konfiguráció részeként, így:
+Mostantól a konfiguráció részeként deklaratív módon konfigurálhatja a naplózást, például:
 
  ```
  "logging": {
@@ -138,27 +138,27 @@ Most már deklaratív módon konfigurálhatja a naplózást a konfiguráció ré
   }
   ```
 
-## <a name="migrate-from-userinfo-to-account"></a>Áttelepítés a UserInfo-ról a fiókba
+## <a name="migrate-from-userinfo-to-account"></a>Migrálás a UserInfo-ből a fiókba
 
-Az ADAL-ban `AuthenticationResult` `UserInfo` a hitelesített fiókkal kapcsolatos információk lekéréséhez használt objektumot biztosít. A "felhasználó" kifejezést, ami emberi vagy szoftveres ügynököt jelentett, úgy alkalmazták, hogy nehéz volt azt közölni, hogy egyes alkalmazások egyetlen felhasználót támogatnak (akár emberi, akár szoftverügynök), amely több fiókkal rendelkezik.
+A ADAL-ben `AuthenticationResult` a biztosítja `UserInfo` a hitelesített fiók adatainak lekérésére szolgáló objektumot. A "felhasználó" kifejezést, amely emberi vagy szoftveres ügynököt jelentett, olyan módon lett alkalmazva, hogy megnehezíti a kommunikációt, hogy egyes alkalmazások támogatják a több fiókkal rendelkező egyetlen felhasználót (például egy emberi vagy egy szoftver-ügynököt).
 
-Fontolja meg egy bankszámlát. Előfordulhat, hogy egynél több számlája is van egynél több pénzintézetnél. Amikor számlát nyit, ön (a felhasználó) olyan hitelesítő adatokat kap, például egy ATM-kártyát & PIN-kódot, amelyek az egyenleg, a számlakifizetések és így tovább eléréséhez használatosak az egyes fiókokhoz. Ezek a hitelesítő adatok csak az azokat kibocsátó pénzintézetnél használhatók fel.
+Vegyünk egy bankszámlát. Több fiókkal is rendelkezhet több pénzügyi intézményben. Amikor megnyit egy fiókot, Ön (a felhasználó) hitelesítő adatokat kap, például egy ATM-kártyát & PIN-kódot, amely az egyenlegének, a számla kifizetésének és egyebeknek az elérésére szolgál az egyes fiókokhoz. Ezeket a hitelesítő adatokat csak az azokat kiállító pénzügyi intézményben lehet használni.
 
-Analógia, mint a számlák egy pénzügyi intézmény, fiókok a Microsoft identitás platform on keresztül érhető el hitelesítő adatokkal. Ezeket a hitelesítő adatokat vagy a Microsoft regisztrálta, vagy a Microsoft adta ki. Vagy a Microsoft egy szervezet nevében.
+Az analógia, például a pénzügyi intézmény fiókjai esetében a Microsoft Identity platform fiókjai a hitelesítő adatok használatával érhetők el. Ezek a hitelesítő adatok regisztrálva vannak a-ban vagy a-ben, a Microsoft számára. Vagy a Microsoft által a szervezet nevében.
 
-Amennyiben a Microsoft-identitásplatform ebben az analógiában különbözik a pénzügyi intézménytől, az az, hogy a Microsoft identitásplatform olyan keretrendszert biztosít, amely lehetővé teszi a felhasználó számára, hogy egy fiókot és a hozzá tartozó hitelesítő adatokat használjon a hozzá tartozó erőforrások eléréséhez. több személy és szervezet számára. Ez olyan, mintha egy bank, egy másik pénzintézet által kibocsátott kártyát használhatnál. Ez azért működik, mert az összes szóban forgó szervezet a Microsoft identitásplatformot használja, amely lehetővé teszi egy fiók használatát több szervezetben. Például:
+Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Például:
 
-Sam Contoso.com dolgozik, de kezeli az Azure Fabrikam.com virtuális gépeit. Ahhoz, hogy Sam kezelni tudja Fabrikam virtuális gépeit, engedélyt kell kérnie a hozzáférésükhöz. Ez a hozzáférés úgy adható meg, hogy Sam fiókját hozzáadja Fabrikam.com, és olyan szerepkört biztosít a fiókjának, amely lehetővé teszi számára, hogy a virtuális gépekkel dolgozzon. Ez az Azure Portalon történik.
+A Sam Contoso.com működik, de a Fabrikam.com-hoz tartozó Azure-beli virtuális gépeket kezeli. Ahhoz, hogy a Sam felügyelje a fabrikam virtuális gépeket, engedélyezni kell az elérését. Ez a hozzáférés a Sam-fiók Fabrikam.com való hozzáadásával, valamint a fióknak a virtuális gépekkel való együttműködését lehetővé tevő szerepkör megadásával adható meg. Ezt a Azure Portal fogja elvégezni.
 
-Sam Contoso.com fiókjának hozzáadása Fabrikam.com tagjaként egy új rekord létrehozását eredményezné a Fabrikam.com Azure Active Directory for Sam szolgáltatásában. Sam rekord az Azure Active Directoryban ismert, mint egy felhasználói objektum. Ebben az esetben a felhasználói objektum sam felhasználói objektumra mutatna Contoso.com. Sam Fabrikam felhasználói objektuma Sam helyi ábrázolása, és a Sam-hez társított fiókadatait Fabrikam.com keretében kell tárolni. Contoso.com Sam címe Senior DevOps Consultant. A Fabrikam, Sam címe vállalkozó-virtuális gépek. a Contoso.com Sam nem felelős, és nem jogosult a virtuális gépek kezelésére. Fabrikam.com ez az egyetlen feladata. Sam azonban még mindig csak egy hitelesítő adatok nyomon követni, amelyek a hitelesítő adatok által kiadott Contoso.com.
+Ha Sam Contoso.com-fiókját a Fabrikam.com tagjaként adja hozzá, egy új rekordot hoz létre a fabrikam. com Azure Active Directory a Sam számára. A Sam rekordja a Azure Active Directoryban felhasználói objektumként ismert. Ebben az esetben ez a felhasználói objektum a Sam felhasználói objektumára mutat vissza a Contoso.com-ben. Sam a fabrikam felhasználói objektuma a Sam helyi ábrázolása, és a Sam-hoz társított fiók adatainak tárolására szolgál a Fabrikam.com környezetében. A Contoso.com-ben a Sam 's title vezető DevOps-tanácsadó. A fabrikam-ben a Sam címe a kivitelező – Virtual Machines. A Contoso.com-ben a Sam nem felelős a virtuális gépek kezeléséhez. A Fabrikam.com-ben ez az egyetlen feladat funkciója. A Sam még mindig csak egy hitelesítő adatokkal rendelkezik, amelyekkel nyomon követheti a Contoso.com által kiadott hitelesítő adatokat.
 
-A sikeres `acquireToken` hívás után megjelenik egy hivatkozás `IAccount` egy objektumra, `acquireTokenSilent` amely későbbi kérelmekben használható.
+A sikeres `acquireToken` hívás után egy olyan `IAccount` objektumra mutató hivatkozás jelenik meg, amely a későbbi `acquireTokenSilent` kérelmekben is felhasználható.
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-Ha olyan alkalmazással rendelkezik, amely hozzáfér az egyes bérlők fiókja kapcsolatos jogcímekhez, amelyekben a fiók képviselteti magát, objektumokat jeleníthet `IAccount` meg. `IMultiTenantAccount` Ez a felület `ITenantProfiles`biztosít egy térképet, bérlői azonosító, amely lehetővé teszi, hogy hozzáférjen a jogcímek, amelyek a fiókhoz tartozik az egyes bérlők, akikkért egy jogkivonatot, az aktuális fiókhoz képest.
+Ha olyan alkalmazással rendelkezik, amely a fiók által képviselt bérlők fiókjával kapcsolatos jogcímeket fér hozzá, az `IAccount` objektumokat a `IMultiTenantAccount`következőre állíthatja:. Ez az interfész egy `ITenantProfiles`, a bérlői azonosító által megadott térképet biztosít, amely lehetővé teszi a fiókhoz tartozó jogcímek elérését az egyes bérlők által az aktuális fiókhoz képest.
 
-A jogcímek a `IAccount` gyökere, és `IMultiTenantAccount` mindig tartalmazza a követeléseket a hazai bérlő. Ha még nem kért egy jogkivonatot az otthoni bérlőn belül, ez a gyűjtemény üres lesz.
+A `IAccount` és `IMultiTenantAccount` a gyökerében lévő jogcímek mindig tartalmazzák a hazai bérlő jogcímeit. Ha még nem hozott létre jogkivonatra vonatkozó kérelmet a hazai bérlőn belül, akkor ez a gyűjtemény üres lesz.
 
 ## <a name="other-changes"></a>További változások
 
@@ -233,28 +233,28 @@ public interface SilentAuthenticationCallback {
 
 ```
 
-## <a name="migrate-to-the-new-exceptions"></a>Áttelepítés az új kivételekre
+## <a name="migrate-to-the-new-exceptions"></a>Migrálás az új kivételekre
 
-Az ADAL-ban van egy kivételtípus, `AuthenticationException`amely tartalmazza a `ADALError` felsorolási érték beolvasásának módját.
-Az MSAL-ban a kivételek hierarchiája van, és mindegyiknek megvan a saját speciális hibakódkészlete.
+A ADAL egyetlen kivételt `AuthenticationException`tartalmaz, amely magában foglal egy metódust az `ADALError` enumerálás értékének beolvasásához.
+A MSAL-ben van egy kivételek hierarchiája, és mindegyikhez tartozik egy adott hibakód.
 
-MSAL kivételek listája
+MSAL-kivételek listája
 
 |Kivétel  | Leírás  |
 |---------|---------|
-| `MsalException`     | Az MSAL által okozott alapértelmezett ellenőrzött kivétel.  |
-| `MsalClientException`     | Dobott, ha a hiba ügyféloldali. |
-| `MsalArgumentException`     | Ha egy vagy több bemeneti argumentum érvénytelen, akkor a szöveg előkerül. |
-| `MsalClientException`     | Dobott, ha a hiba ügyféloldali. |
-| `MsalServiceException`     | Dobott, ha a hiba szerver oldalon. |
-| `MsalUserCancelException`     | Akkor dobva, ha a felhasználó megszakította a hitelesítési folyamatot.  |
-| `MsalUiRequiredException`     | Ha a token nem frissíthető csendesen, akkor kidobva.  |
-| `MsalDeclinedScopeException`     | Ha a kiszolgáló egy vagy több kért hatókört elutasított, a rendszer ellett.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Akkor jelenik meg, ha az erőforráson engedélyezve van a MAMCA védelmi házirend. |
+| `MsalException`     | A MSAL által kiváltott alapértelmezett kivétel.  |
+| `MsalClientException`     | Kidobás, ha a hiba ügyféloldali. |
+| `MsalArgumentException`     | Ha egy vagy több bemeneti argumentum érvénytelen. |
+| `MsalClientException`     | Kidobás, ha a hiba ügyféloldali. |
+| `MsalServiceException`     | Ha a hiba a kiszolgáló oldalon van kiváltva. |
+| `MsalUserCancelException`     | A rendszer eldobta, ha a felhasználó megszakította a hitelesítési folyamatot.  |
+| `MsalUiRequiredException`     | Ha a jogkivonat nem frissíthető csendesen.  |
+| `MsalDeclinedScopeException`     | Akkor következik be, ha a kiszolgáló egy vagy több kért hatókört visszautasított.  |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Akkor dobták, ha az erőforráshoz engedélyezve van a MAMCA védelmi szabályzat. |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError a MsalException hibakódra
+### <a name="adalerror-to-msalexception-errorcode"></a>ADALError a MsalException ErrorCode
 
-### <a name="adal-logging-to-msal-logging"></a>ADAL naplózás az MSAL naplózásba
+### <a name="adal-logging-to-msal-logging"></a>ADAL naplózása a MSAL-Naplózásba
 
 ```java
 // Legacy Interface

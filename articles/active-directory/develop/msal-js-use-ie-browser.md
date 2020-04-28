@@ -1,7 +1,7 @@
 ---
-title: Problémák az Internet Explorer (MSAL.js) | Azure
+title: Problémák az Internet Explorerben (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
-description: Használja a Microsoft Authentication Library for JavaScript (MSAL.js) programot az Internet Explorer böngészővel.
+description: Használja az Internet Explorer böngészőt a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,44 +14,44 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76695857"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Ismert problémák az Internet Explorer és a Microsoft Edge böngészőkben (MSAL.js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL. js)
 
-A Microsoft Authentication Library for JavaScript (MSAL.js) a [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) protokollhoz jön létre, hogy az internetexplorerben is futtatható legyen. Van azonban néhány dolog, amit tudni kell.
+A javascripthez készült Microsoft Authentication Library (MSAL. js) JavaScript- [ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) jön létre, hogy az Internet Explorerben is futtatható legyen. Van azonban néhány tudnivaló.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Alkalmazás futtatása az Internet Explorerben
-Ha az MSAL.js-t olyan alkalmazásokban kívánja használni, amelyek futtathatók az Internet Explorer programban, az MSAL.js parancsfájlra való hivatkozás előtt hozzá kell adnia egy hivatkozást egy ígéret isznakkitöltésére.
+Ha az Internet Explorerben futtatható alkalmazásokban szeretné használni a MSAL. js fájlt, akkor a MSAL. js parancsfájlra való hivatkozás előtt hozzá kell adnia egy hivatkozást egy ígérethez.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
 ```
 
-Ennek az az oka, hogy az Internet Explorer nem támogatja a JavaScript ígér natív.
+Ennek az az oka, hogy az Internet Explorer nem támogatja natív módon a JavaScript-ígéreteket.
 
-## <a name="debugging-an-application-running-in-internet-explorer"></a>Az Internet Explorer böngészőben futó alkalmazások hibakeresése
+## <a name="debugging-an-application-running-in-internet-explorer"></a>Az Internet Explorerben futó alkalmazások hibakeresése
 
-### <a name="running-in-production"></a>Futás a termelésben
-Az alkalmazás éles környezetben történő üzembe helyezése (például az Azure Web apps) általában jól működik, feltéve, hogy a végfelhasználó elfogadta a felugró ablakokat. Teszteltük az Internet Explorer 11-ben.
+### <a name="running-in-production"></a>Éles üzemben fut
+Az alkalmazás éles környezetben történő üzembe helyezése (például az Azure web Appsben) általában jól működik, ha a végfelhasználó elfogadta a felugró ablakokat. Az Internet Explorer 11 böngészőben teszteltük.
 
-### <a name="running-locally"></a>Helyi futtatás
-Ha helyileg szeretné futtatni és hibakeresést követni az Internet Explorer programban futó alkalmazással, tisztában kell lennie *http://localhost:1234*a következő szempontokkal (tegyük fel, hogy az alkalmazást a következőképpen szeretné futtatni:
+### <a name="running-locally"></a>Helyileg futtatva
+Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és hibakeresést végezni, a következő szempontokat kell figyelembe vennie (tegyük fel, hogy az alkalmazást a következőképpen *http://localhost:1234*szeretné futtatni):
 
-- Az Internet Explorer "védett mód" nevű biztonsági mechanizmussal rendelkezik, amely megakadályozza az MSAL.js megfelelő működését. A tünetek között, miután bejelentkezett, az oldal http://localhost:1234/nullátirányítható a- ra.
+- Az Internet Explorer "védett mód" nevű biztonsági mechanizmussal rendelkezik, amely megakadályozza, hogy a MSAL. js megfelelően működjön. A jelenségek között a bejelentkezés után a rendszer átirányítja a lapot http://localhost:1234/null.
 
 - Az alkalmazás helyi futtatásához és hibakereséséhez le kell tiltania ezt a "védett módot". Ehhez:
 
-    1. Kattintson az Internet Explorer **Eszközök** (a fogaskerék ikon) ikonjára.
-    1. Válassza **az Internetbeállítások,** majd a **Biztonság** lapot.
-    1. Kattintson az **Internet** zónára, és törölje a jelet **a Védett mód engedélyezése jelölőnégyzetből (az Internet Explorer újraindítását igényli)**. Az Internet Explorer figyelmeztet, hogy a számítógép már nem védett. Kattintson az **OK** gombra.
+    1. Kattintson az Internet Explorer **eszközök** elemre (a fogaskerék ikonra).
+    1. Válassza az **Internetbeállítások lehetőséget** , majd a **Biztonság** lapot.
+    1. Kattintson az **Internet** zónára, és törölje a **védett mód engedélyezése (az Internet Explorer újraindítását igényli)** jelölőnégyzet jelölését. Az Internet Explorer figyelmezteti, hogy a számítógép már nem védett. Kattintson az **OK** gombra.
     1. Indítsa újra az Internet Explorert.
-    1. Futtassa és hibakeresés az alkalmazást.
+    1. Az alkalmazás futtatása és hibakeresése.
 
-Ha végzett, állítsa vissza az Internet Explorer biztonsági beállításait.  Válassza az**Internetbeállítások** ->  **beállításai** -> **biztonság** -> **lehetőséget Az összes zóna visszaállítása az alapértelmezett szintre**.
+Ha elkészült, állítsa vissza az Internet Explorer biztonsági beállításait.  Válassza a **Beállítások** -> **Internetbeállítások** -> **biztonsági** -> **alaphelyzetbe állítása az összes zónát alapértelmezett szintre**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
-További információ [az MSAL.js internetexplorerben való használatasorán ismert problémákról.](msal-js-use-ie-browser.md)
+További információ a [MSAL. js az Internet Explorerben való használatakor felmerülő ismert problémákról](msal-js-use-ie-browser.md).

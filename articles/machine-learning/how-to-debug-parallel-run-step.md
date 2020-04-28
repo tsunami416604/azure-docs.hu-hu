@@ -1,7 +1,7 @@
 ---
-title: A ParallelRunStep hibakeresése és hibaelhárítása
+title: ParallelRunStep hibakeresése és hibaelhárítása
 titleSuffix: Azure Machine Learning
-description: Hibakeresés és a ParallelRunStep hibaelhárítása az Azure Machine Learning SDK python-hoz gépi tanulási folyamataiban. Ismerje meg a folyamatok fejlesztésének gyakori buktatóit, és tippeket, amelyek segítenek a parancsfájlok hibakeresésében a távoli végrehajtás előtt és alatt.
+description: ParallelRunStep hibakeresése és hibaelhárítása a gépi tanulási folyamatokban a Pythonhoz készült Azure Machine Learning SDK-ban. Ismerje meg a folyamatokkal kapcsolatos gyakori buktatókat, valamint a távoli végrehajtás előtt és közben a parancsfájlok hibakeresését segítő tippeket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,54 +11,54 @@ ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
 ms.openlocfilehash: ca50d70965d5edc4e31606e542ddf163fe3b0741
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122963"
 ---
-# <a name="debug-and-troubleshoot-parallelrunstep"></a>A ParallelRunStep hibakeresése és hibaelhárítása
+# <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep hibakeresése és hibaelhárítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan hibakeresés és hibaelhárítás a [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) osztály az [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) osztályból a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-ból.
 
 ## <a name="testing-scripts-locally"></a>Parancsfájlok helyi tesztelése
 
-Tekintse meg a [tesztelési parancsfájlok helyileg szakasz](how-to-debug-pipelines.md#testing-scripts-locally) gépi tanulási folyamatok. A ParallelRunStep a rendszerhiba-folyamatok lépésként fut, így ugyanaz a válasz mindkét.
+Tekintse meg a gépi tanulási folyamatok [helyi tesztelése című szakaszt](how-to-debug-pipelines.md#testing-scripts-locally) . A ParallelRunStep a ML-folyamatok lépéseit futtatja, így ugyanazt a választ is alkalmazza.
 
-## <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresési funkciója távoli környezetből
+## <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresése távoli környezetből
 
-A pontozási parancsfájl helyi hibakereséséről a pontozási parancsfájl tényleges folyamatában történő hibakeresésére való áttérés nehéz ugrás lehet. A naplók a portálon való megkeresésével kapcsolatos információkért a [gépi tanulási folyamatok szakasza a parancsfájlok távoli környezetből történő hibakereséséről.](how-to-debug-pipelines.md#debugging-scripts-from-remote-context) Az ebben a szakaszban szereplő információk egy párhuzamos lépésfuttatásra is vonatkoznak.
+Egy pontozási szkript helyi hibakeresése egy valós folyamaton belül egy pontozási parancsfájl hibakeresése egy nehéz ugrás lehet. A naplók a portálon való megtalálásával kapcsolatos információkért [lásd a Machine learning-folyamatok című szakaszt a parancsfájlok távoli környezetből való hibakereséséhez](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). Az ebben a szakaszban található információk egy párhuzamos lépés futtatására is érvényesek.
 
-A naplófájl `70_driver_log.txt` például a párhuzamos futtatási lépéskódot elindító vezérlő adatait tartalmazza.
+A naplófájl például `70_driver_log.txt` olyan adatokat tartalmaz a vezérlőről, amelyek a párhuzamos futtatási lépés kódját futtatják.
 
-A párhuzamos futtatási feladatok elosztott jellege miatt több különböző forrásból származó naplók találhatók. Azonban két összevont fájl jön létre, amelyek magas szintű információkat nyújtanak:
+A párhuzamos futtatási feladatok elosztott jellegéből adódóan különböző forrásokból származó naplók találhatók. A rendszer azonban két konszolidált fájlt hoz létre, amelyek magas szintű információkat biztosítanak:
 
-- `~/logs/overview.txt`: Ez a fájl magas szintű információt nyújt az eddig létrehozott minikötegek (más néven feladatok) számáról és az eddig feldolgozott minikötegek számáról. Ezen a végén, azt mutatja, az eredmény a feladat. Ha a feladat nem sikerült, akkor megjelenik a hibaüzenet, és hol kell elindítani a hibaelhárítást.
+- `~/logs/overview.txt`: Ez a fájl magas szintű információt nyújt a mini-batchs (más néven feladatoknak) számáról, amely az eddig feldolgozott mini-batchek számát tartalmazza. Ezen a helyen a feladatok eredményét jeleníti meg. Ha a feladatainak végrehajtása sikertelen volt, a hibaüzenet jelenik meg, és a hibaelhárítás elindításának helye.
 
-- `~/logs/sys/master.txt`: Ez a fájl biztosítja a futó feladat fő csomópontját (más néven az orchestratornézetet). Tartalmazza a feladat létrehozását, a folyamatfigyelést, a futtatás eredményét.
+- `~/logs/sys/master.txt`: Ez a fájl a futó feladathoz tartozó főcsomópontot (más néven Orchestrator) jeleníti meg. Magában foglalja a feladatok létrehozását, a folyamat figyelését, a Futtatás eredményét.
 
-Az EntryScript.logger és a print statements használatával a bejegyzési parancsfájlból létrehozott naplók a következő fájlokban találhatók:
+A EntryScript. Logger és Print utasítások használatával generált naplók a következő fájlokban találhatók:
 
-- `~/logs/user/<ip_address>/Process-*.txt`: Ez a fájl az Entry_script-ből írt naplókat tartalmazza az EntryScript.logger használatával. Ez is tartalmaz print statement (stdout) entry_script.
+- `~/logs/user/<ip_address>/Process-*.txt`: Ez a fájl entry_script írt naplókat tartalmaz a EntryScript. Logger használatával. Emellett a Print utasítást (StdOut) is tartalmazza entry_scriptból.
 
-Ha teljes körűen meg kell ismernie, hogy az egyes csomópontok hogyan hajtották végre a pontszámparancsfájlt, tekintse meg az egyes csomópontok egyes folyamatnaplóit. A folyamatnaplók a `sys/worker` feldolgozócsomópontok szerint csoportosított mappában találhatók:
+Ha teljes mértékben meg kell ismernie, hogy az egyes csomópontok hogyan hajtották végre a pontszám-parancsfájlt, tekintse meg az egyes csomópontok egyes folyamatainak naplóit. A folyamat naplófájljai a `sys/worker` mappában találhatók, munkavégző csomópontok szerint csoportosítva:
 
-- `~/logs/sys/worker/<ip_address>/Process-*.txt`: Ez a fájl részletes információkat tartalmaz minden egyes mini-tételről, amikor a dolgozó felveszi vagy kitölti. Minden mini-tétel, ez a fájl tartalmazza:
+- `~/logs/sys/worker/<ip_address>/Process-*.txt`: Ez a fájl részletes információkat nyújt az egyes mini-kötegekről, mivel azokat a feldolgozó felvette vagy befejezte. Minden egyes mini-batch esetében ez a fájl a következőket tartalmazza:
 
     - A munkavégző folyamat IP-címe és PID-je. 
-    - Az elemek teljes száma, a sikeresen feldolgozott cikkek száma és a sikertelen cikkek száma.
+    - Az elemek teljes száma, a sikeresen feldolgozott elemek száma és a sikertelen elemek száma.
     - A kezdési idő, az időtartam, a feldolgozási idő és a futtatási módszer ideje.
 
-Az egyes dolgozók folyamatainak erőforrás-felhasználásáról is találhat információkat. Ez az információ CSV formátumú, és a ban `~/logs/sys/perf/<ip_address>/`található. Egyetlen csomópont esetén a feladatfájlok a `~logs/sys/perf`területen érhetők el. Ha például az erőforrások kihasználtságát ellenőrzi, tekintse meg a következő fájlokat:
+Az egyes feldolgozókhoz tartozó folyamatok erőforrás-használatáról is talál információt. Ez az információ CSV formátumú, és a következő helyen `~/logs/sys/perf/<ip_address>/`található:. Egyetlen csomópont esetében a feladatok a következő területen `~logs/sys/perf`lesznek elérhetők. Ha például az erőforrás-használatot ellenőrzi, tekintse meg a következő fájlokat:
 
-- `Process-*.csv`: Dolgozónkénti erőforrás-használat. 
-- `sys.csv`: Csomópontonkénti napló.
+- `Process-*.csv`: Munkavégző folyamatok erőforrásainak használata. 
+- `sys.csv`:/Csomópontos napló.
 
-### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hogyan tudok távoli környezetből naplózni a felhasználói parancsfájlból?
-Az EntryScript-ből beszerezhet egy naplózót, ahogy az az alábbi mintakódban látható, hogy a **naplók/felhasználói** mappák megjelenjenek a portálon.
+### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>A felhasználói szkriptből Hogyan a naplót egy távoli környezetből?
+A EntryScript az alábbi mintakód alapján is beolvashatja, hogy a naplók megjelenjenek a **naplók/felhasználói** mappában a portálon.
 
-**Mintabejegyzés-parancsfájl a naplózó használatával:**
+**Egy minta-bejegyzési parancsfájl a Logger használatával:**
 ```python
 from entry_script import EntryScript
 
@@ -80,9 +80,9 @@ def run(mini_batch):
     return mini_batch
 ```
 
-### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hogyan adhatok át egy oldalbevitelt, például egy, egy keress táblát tartalmazó fájlt vagy fájlt vagy fájlt az összes dolgozómnak?
+### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hogyan adhatok át egy olyan oldali bemenetet, mint például egy keresési táblázatot tartalmazó fájl vagy fájl (ok) az összes feldolgozónak?
 
-Hozzon [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) létre egy adatkészlet-objektumot, amely tartalmazza az oldalsó bemenetet, és regisztráljon a munkaterülettel. Ezt követően a következtetési parancsfájlban (például az init() metódusban) az alábbiak szerint érheti el:
+Állítson össze egy [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) -objektumot, amely tartalmazza az oldal bemenetét, és regisztrálja magát a munkaterületen. Ezután elérheti azt a következtetési parancsfájlban (például az init () metódusban) a következőképpen:
 
 ```python
 from azureml.core.run import Run
@@ -95,6 +95,6 @@ lookup_ds.download(target_path='.', overwrite=True)
 
 ## <a name="next-steps"></a>További lépések
 
-* Az [Azureml-contrib-pipeline-step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) csomaggal és a ParallelRunStep osztály [dokumentációjával](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) kapcsolatban az SDK-referencia című témakörben talál segítséget.
+* Tekintse meg az SDK-referenciát, amely segítséget nyújt a [azureml-felépítések](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) és a ParallelRunStep osztály [dokumentációjában](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) .
 
-* Kövesse a párhuzamos futtatási lépésekkel rendelkező folyamatok használatának [speciális oktatóanyagát.](tutorial-pipeline-batch-scoring-classification.md)
+* Kövesse a [speciális oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md) a párhuzamos futtatási lépésekkel rendelkező folyamatok használatáról.

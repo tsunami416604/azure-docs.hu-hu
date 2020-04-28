@@ -1,7 +1,7 @@
 ---
-title: Interaktív kérésprompt viselkedése (MSAL.js) | Azure
+title: Interaktív kérések (MSAL. js) – gyors működés | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a gyors viselkedés testreszabását az interaktív hívásokban a Microsoft Authentication Library for JavaScript (MSAL.js) használatával.
+description: Megtudhatja, hogyan szabhatja testre a prompt viselkedését az interaktív hívásokban a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76695976"
 ---
-# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Azonnali viselkedés az MSAL.js interaktív kérésekben
+# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>A MSAL. js interaktív kéréseinek bekérési viselkedése
 
-Ha egy felhasználó létrehozott egy aktív Azure AD-munkamenet több felhasználói fiókkal, az Azure AD bejelentkezési lap alapértelmezés szerint kérni fogja a felhasználót, hogy válasszon ki egy fiókot, mielőtt a bejelentkezéshez. A felhasználók nem fognak látni egy fiókkiválasztási élményt, ha csak egyetlen hitelesített munkamenet van az Azure AD-vel.
+Ha egy felhasználó több felhasználói fiókkal rendelkező aktív Azure AD-munkamenetet létesített, az Azure AD bejelentkezési oldala alapértelmezés szerint arra kéri a felhasználót, hogy válasszon egy fiókot a bejelentkezés folytatása előtt. Ha az Azure AD-vel csak egyetlen hitelesített munkamenet van, a felhasználók nem látják a fiók kiválasztási élményét.
 
-Az MSAL.js függvénytár (a v0.2.4-es értéktől kezdve) `loginPopup` `acquireTokenRedirect` nem `acquireTokenPopup`küld gyors paramétert az interaktív kérések (`loginRedirect`, és a ) során, és így nem kényszerít azonnali viselkedést. A metódust használó `acquireTokenSilent` néma tokenkérelmek esetén az MSAL.js egy prompt paramétert ad át a számára. `none`
+A MSAL. js függvénytár (a v 0.2.4-től kezdve) nem küldi el a prompt paramétert az`loginRedirect`interaktív `loginPopup`kérések (, `acquireTokenRedirect` és `acquireTokenPopup`) során, így nem kényszeríti ki a kérdéses viselkedést. A `acquireTokenSilent` metódust használó csendes jogkivonat-kérelmek esetén a MSAL. js átadja a következőre beállított prompt paramétert: `none`.
 
-Az alkalmazásforgatókönyv alapján szabályozhatja az interaktív kérelmek gyors viselkedését, ha a metódusok számára megadott kérésparaméterekben beállítja a prompt paramétert. Ha például meg szeretné hívni a fiókkijelölési felületet:
+Az alkalmazás forgatókönyve alapján szabályozhatja az interaktív kérések viselkedését úgy, hogy a metódusnak átadott kérési paraméterekben a prompt paramétert állítja be. Ha például meg szeretné hívni a fiók kiválasztási élményét:
 
 ```javascript
 var request = {
@@ -38,16 +38,16 @@ userAgentApplication.loginRedirect(request);
 ```
 
 
-Az Azure AD-vel való hitelesítéskor a következő gyorsértékek adhatók meg:
+Az Azure AD-vel való hitelesítéskor a következő prompt értékek adhatók át:
 
-**bejelentkezés:** Ez az érték arra kényszeríti a felhasználót, hogy adja meg a hitelesítő adatokat a hitelesítési kérelemben.
+**Bejelentkezés:** Ez az érték kényszeríti a felhasználót, hogy adja meg a hitelesítő adatokat a hitelesítési kérelemben.
 
-**select_account:** Ez az érték a munkamenet összes fiókját felsoroló fiókkijelölési élményt nyújt a felhasználónak.
+**select_account:** Ez az érték megadja a felhasználónak a fiók kiválasztási élményét, amely felsorolja az összes fiókot a munkamenetben.
 
-**hozzájárulás:** Ez az érték az OAuth hozzájárulási párbeszédet fogja meghívni, amely lehetővé teszi a felhasználók számára, hogy engedélyeket adjanak az alkalmazásnak.
+**beleegyezik:** Ez az érték meghívja a OAuth-jóváhagyással kapcsolatos párbeszédet, amely lehetővé teszi, hogy a felhasználók engedélyeket adjanak az alkalmazásnak.
 
-**nincs:** Ez az érték biztosítja, hogy a felhasználó ne jelenjenek meg interaktív kérdés. Javasoljuk, hogy ne adja át ezt az értéket az MSAL.js interaktív metódusainak, mivel nem várt viselkedések lehetnek. Ehelyett használja `acquireTokenSilent` a módszert a néma hívások eléréséhez.
+**nincs:** Ez az érték biztosítja, hogy a felhasználó nem lát interaktív üzenetet. Ezt az értéket nem ajánlott a MSAL. js interaktív módszereire átadni, mert nem várt viselkedéssel rendelkezhet. Ehelyett használja a `acquireTokenSilent` metódust a csendes hívások eléréséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ `prompt` az MSAL.js függvény által használt [OAuth 2.0 implicit támogatási](v2-oauth2-implicit-grant-flow.md) protokoll paraméteréről.
+További információ a `prompt` [OAuth 2,0 implicit engedélyezési](v2-oauth2-implicit-grant-flow.md) protokoll paraméteréről, amelyet a MSAL. js függvénytár használ.

@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: Az áramkörök áthelyezése klasszikusról az Azure Resource Managerre'
-description: A klasszikus és a Resource Manager telepítési modellek közötti áthidalás áttekintése.
+title: 'ExpressRoute: áramkörök áthelyezése a Klasszikusból a Azure Resource Managerba'
+description: A klasszikus és a Resource Manager-alapú üzemi modellek összevetésének áttekintése.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645905"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
@@ -57,7 +57,7 @@ Az ExpressRoute-kapcsolatcsoportokon a következő klasszikus műveletek támoga
 * Virtuális hálózati kapcsolatok létrehozása/frissítése/lekérése/törlése klasszikus virtuális hálózatokkal
 * Virtuális hálózati kapcsolatok hitelesítéseinek létrehozása/frissítése/lekérése/törlése előfizetések közötti kapcsolatokhoz
 
-Ha azonban az **allowClassicOperations** értéke TRUE, a következő klasszikus műveletek nem hajthatók végre:
+Ha azonban a **allowClassicOperations** értéke TRUE (igaz), a következő klasszikus műveletek nem végezhetők el:
 
 * Border Gateway Protocol- (BGP-) társviszonyok létrehozása/frissítése/lekérése/törlése Azure privát, Azure nyilvános és Microsoft társviszony-létesítéshez
 * ExpressRoute-kapcsolatcsoportok törlése
@@ -87,7 +87,7 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott művel
 * ExpressRoute-kapcsolatcsoportok életciklusának kezelése a klasszikus üzemi modellből.
 * Szerepköralapú hozzáférés-vezérlés (RBAC) támogatása a klasszikus üzemi modell esetében. A klasszikus üzemi modellben nem hajthat végre RBAC-vezérlési műveleteket a kapcsolatcsoportokon. Az előfizetés bármelyik rendszergazdája/társrendszergazdája csatlakoztathat virtuális hálózatokat a kapcsolatcsoporthoz, illetve leválaszthatja azokat.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md) című szakaszban ismertetett utasításokat.
 
 ## <a name="next-steps"></a>További lépések
@@ -95,7 +95,7 @@ Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Re
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása:
   
-  * [ExpressRoute-kapcsolat létrehozása](expressroute-howto-circuit-arm.md)
+  * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-arm.md)
   * [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
 

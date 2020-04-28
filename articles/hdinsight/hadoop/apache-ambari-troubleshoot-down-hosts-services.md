@@ -1,6 +1,6 @@
 ---
-title: Az Apache Ambari felhasználói felülete megjeleníti a gazdagépeket és szolgáltatásokat az Azure HDInsightban
-description: Az Apache Ambari felhasználói felületével kapcsolatos probléma elhárítása, amikor az az Azure HDInsightban a gazdagépeket és szolgáltatásokat jeleníti meg
+title: Az Apache Ambari felhasználói felülete a gazdagépeket és szolgáltatásokat mutatja be az Azure HDInsight
+description: Apache Ambari felhasználói felülettel kapcsolatos probléma elhárítása, amikor az Azure HDInsight gazdagépeit és szolgáltatásait mutatja be
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,25 +8,25 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/02/2019
 ms.openlocfilehash: 5340b1c7a6510595376789bc5777e6fb6f07dd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75895635"
 ---
-# <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>Eset: Az Apache Ambari felhasználói felülete megmutatja a gazdagépeket és szolgáltatásokat az Azure HDInsightban
+# <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>Forgatókönyv: az Apache Ambari felhasználói felülete a gazdagépeket és szolgáltatásokat mutatja be az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Az Apache Ambari felhasználói felülete elérhető, de a felhasználói felület azt mutatja, hogy szinte az összes szolgáltatás nem működik, az összes gazdagép szívverést mutat.
+Az Apache Ambari felhasználói felülete elérhető, de a felhasználói felület szinte minden szolgáltatás leállt, a szívverést jelző összes gazdagép elveszett.
 
 ## <a name="cause"></a>Ok
 
-A legtöbb esetben ez a probléma az Ambari kiszolgáló nem fut az aktív headnode. Ellenőrizze, hogy melyik headnode az aktív headnode, és győződjön meg róla, hogy az ambari-szerver fut a megfelelő. Ne indítsa el manuálisan az ambari-kiszolgálót, hagyja, hogy a feladatátvevő vezérlő szolgáltatás felelős az ambari-kiszolgáló elindításáért a jobb oldali csomóponton. Indítsa újra az aktív headnode feladatátvétel kényszerítéséhez.
+A legtöbb esetben ez az a probléma, hogy a Ambari-kiszolgáló nem fut az aktív átjárócsomóponthoz. Ellenőrizze, hogy melyik átjárócsomóponthoz az aktív átjárócsomóponthoz, és győződjön meg arról, hogy a ambari-kiszolgáló fut a jobb oldalon. Ne indítsa el kézzel a ambari, hagyja, hogy a feladatátvételi vezérlő szolgáltatás felelős a ambari a megfelelő átjárócsomóponthoz való indításához. Indítsa újra az aktív átjárócsomóponthoz a feladatátvétel kényszerítéséhez.
 
-A hálózati problémák is okozhatják ezt a problémát. Az egyes fürtcsomópontokból nézze meg, hogy tud-e pingelni. `headnodehost` Ritka olyan helyzet áll fenn, amikor `headnodehost`egyetlen fürtcsomópont sem tud csatlakozni:
+A hálózati problémák is okozhatják ezt a problémát. A fürt minden csomópontján ellenőrizze, hogy tud- `headnodehost`e pingelni. Ritka helyzet van, ha egy fürtcsomópont nem tud csatlakozni a `headnodehost`következőhöz:
 
 ```
 $>telnet headnodehost 8440
@@ -35,14 +35,14 @@ $>telnet headnodehost 8440
 
 ## <a name="resolution"></a>Megoldás:
 
-Az aktív headnode újraindítása általában enyhíti ezt a problémát. Ha nem, kérjük, forduljon a HDInsight támogatási csapatához.
+Általában az aktív átjárócsomóponthoz újraindítása csökkenti a problémát. Ha nem forduljon a HDInsight ügyfélszolgálatához.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal, amely javítja az ügyfélélményt azáltal, hogy az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Csatlakozás az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse át az Azure-támogatási kérelem létrehozása című, [továbbcímű tájékoztatót.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -1,6 +1,6 @@
 ---
-title: A fürtcsomópontból elfogy a lemezterület az Azure HDInsightban
-description: Az Apache Hadoop fürtcsomópont lemezterületével kapcsolatos problémák elhárítása az Azure HDInsightban.
+title: A fürtcsomópont elfogyott a lemezterület az Azure HDInsight
+description: A fürt csomópontjának lemezterülettel kapcsolatos problémáinak Apache Hadoop elhárítása az Azure HDInsight-ben.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894131"
 ---
-# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Eset: A fürtcsomópontból elfogy a lemezterület az Azure HDInsightban
+# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Forgatókönyv: a fürtcsomópont elfogyott a lemezterület az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Egy feladat a következőhöz hasonló hibaüzenettel sikertelen lehet:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
+Egy feladat meghiúsulhat a következőhöz hasonló hibaüzenettel:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
-Vagy apache Ambari riasztást kaphat, hasonlóan a következőkhöz: `local-dirs usable space is below configured utilization percentage`.
+Vagy a következőhöz hasonló Apache Ambari-riasztás jelenhet `local-dirs usable space is below configured utilization percentage`meg:.
 
 ## <a name="cause"></a>Ok
 
-Előfordulhat, hogy az Apache Yarn alkalmazás-gyorsítótára minden rendelkezésre álló lemezterületet felemésztett. A Spark-alkalmazás valószínűleg nem hatékonyan fut.
+Lehetséges, hogy az Apache fonal-alkalmazás gyorsítótára felhasználta az összes rendelkezésre álló lemezterületet. A Spark-alkalmazás valószínűleg nem fog hatékonyan futni.
 
 ## <a name="resolution"></a>Megoldás:
 
-1. Az Ambari felhasználói felületével határozza meg, hogy melyik csomóponton elfogy a lemezterület.
+1. A Ambari felhasználói felületének használatával meghatározhatja, hogy melyik csomóponton fogy el a szabad lemezterület.
 
-1. Határozza meg, hogy a zavaró csomópont melyik mappája járul hozzá a lemezterület nagy részéhez. SSH a csomóponthoz először, majd futtassa `df` a lemezhasználat listázásához az összes csatlakoztatáshoz. Általában ez `/mnt` az, ami egy ideiglenes lemez által használt OSS. Beírhat egy mappát, `sudo du -hs` majd beírhatja az összesített fájlméretek megjelenítéséhez egy mappát. Ha a ,hoz `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`hasonló mappát lát, az azt jelenti, hogy az alkalmazás még fut. Ennek oka lehet az RDD-tartalommegőrzés vagy a köztes véletlen sorrendű adat-megőrzési fájlok.
+1. Határozza meg, hogy az aggasztó csomópont melyik mappája járul hozzá a lemezterület nagy részét. Először az SSH-t a csomópontra `df` , majd futtassa a parancsot a lemez használatának listázásához az összes csatlakoztatáshoz. Általában ez `/mnt` az OSS által használt Temp-lemez. Megadhat egy mappát, majd beírhatja `sudo du -hs` egy mappa összegzett fájlméretének megjelenítéséhez. Ha egy hasonló mappa jelenik meg, `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`ez azt jelenti, hogy az alkalmazás továbbra is fut. Ennek oka lehet a RDD-megőrzés vagy a közbenső véletlenszerű fájlok.
 
-1. A probléma enyhítése érdekében hagyja el az alkalmazást, amely felszabadítja az alkalmazás által használt lemezterületet.
+1. A probléma megoldásához öld meg az alkalmazást, amely felszabadítja az alkalmazás által használt lemezterületet.
 
-1. A probléma végső megoldása érdekében optimalizálja az alkalmazást.
+1. A probléma végső megoldásához optimalizálja az alkalmazást.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal, amely javítja az ügyfélélményt azáltal, hogy az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Csatlakozás az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse át az Azure-támogatási kérelem létrehozása című, [továbbcímű tájékoztatót.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

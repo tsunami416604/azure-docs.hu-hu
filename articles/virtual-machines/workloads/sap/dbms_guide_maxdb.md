@@ -1,6 +1,6 @@
 ---
-title: SAP MaxDB, liveCache és Content Server központi telepítése az Azure virtuális gépein | Microsoft dokumentumok
-description: Az SAP MaxDB, a liveCache és a Content Server központi telepítése az Azure-ban
+title: Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése az Azure-beli virtuális gépeken | Microsoft Docs
+description: Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése az Azure-ban
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,13 +16,13 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645871"
 ---
-# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache és Content Server központi telepítése az Azure virtuális gépein
+# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -309,166 +309,166 @@ ms.locfileid: "75645871"
 
 
 
-Ez a dokumentum számos különböző területet fed le, amelyeket figyelembe kell venni a MaxDB, a liveCache és a Content Server Azure IaaS-ben történő telepítésekor. A dokumentum előfeltételeként el kell olvasnia a [dokumentumot az Azure virtual machines DBMS üzembe helyezésével kapcsolatos szempontok sap-számítási feladatokhoz,](dbms_guide_general.md) valamint az Azure dokumentációjában az [SAP-munkaterhelés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)egyéb útmutatóit. 
+Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe kell venni a MaxDB, a liveCache és a Content Server Azure IaaS való üzembe helyezése során. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -számítási feladatokhoz, valamint az [Azure-dokumentáció SAP-munkaterhelésének](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)egyéb útmutatói című dokumentumait. 
 
-## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Az SAP MaxDB windowsos központi telepítéseinek sajátosságai
-### <a name="sap-maxdb-version-support-on-azure"></a>SAP MaxDB verziótámogatás az Azure-ban
-Az SAP jelenleg támogatja az SAP MaxDB 7.9-es vagy újabb verzióját az SAP NetWeaver-alapú termékekkel való használatra az Azure-ban. Az SAP MaxDB-kiszolgáló, illetve az SAP NetWeaver-alapú termékekkel használható JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP Service Marketplace-en keresztül érhető el a rendszerben. <https://support.sap.com/swdc>
-Az SAP NetWeaver SAP MaxDB-n való <https://www.sap.com/community/topic/maxdb.html>futtatásával kapcsolatos általános információk a következő címen találhatók: .
+## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>A Windows rendszeren futó SAP MaxDB üzemelő példányokra vonatkozó részletek
+### <a name="sap-maxdb-version-support-on-azure"></a>Az SAP MaxDB-verziójának támogatása az Azure-ban
+Az SAP jelenleg a 7,9-es vagy újabb verziójú SAP-MaxDB támogatja az Azure-beli SAP NetWeaver-alapú termékekkel való használatra. Az SAP MaxDB-kiszolgáló, illetve a JDBC-és az ODBC-illesztőprogramok az SAP NetWeaver-alapú termékekkel való használatának minden frissítését kizárólag az SAP <https://support.sap.com/swdc>szolgáltatási Piactéren keresztül biztosítjuk.
+Az SAP NetWeaver SAP MaxDB való futtatásával kapcsolatos általános információk a következő <https://www.sap.com/community/topic/maxdb.html>címen találhatók:.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Támogatott Microsoft Windows-verziók és Azure virtuálisgép-típusok SAP MaxDB DBMS esetén
-Az SAP MaxDB DBMS támogatott Microsoft Windows-verziójának az Azure-ban című témakört a következő témakörben találja:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Támogatott Microsoft Windows-verziók és Azure-beli virtuálisgép-típusok az SAP MaxDB adatbázis-kezelők számára
+Az Azure-beli SAP MaxDB-adatbázis támogatott Microsoft Windows-verziójának megkereséséhez tekintse meg a következőt:
 
-* [SAP termék rendelkezésre állási mátrixa (PAM)][sap-pam]
-* SAP Megjegyzés [1928533]
+* [SAP-termékek rendelkezésre állási mátrixa (PAM)][sap-pam]
+* SAP-Megjegyzés [1928533]
 
-Erősen ajánlott a Microsoft Windows operációs rendszer legújabb verzióját használni, amely a Microsoft Windows 2016.
+Javasoljuk, hogy a Microsoft Windows operációs rendszer legújabb verzióját használja, amely a Microsoft Windows 2016.
 
-### <a name="available-sap-maxdb-documentation-for-maxdb"></a>Elérhető SAP MaxDB dokumentáció a MaxDB-hez
-Az SAP MaxDB dokumentációjának frissített listáját az alábbi SAP Note [767598]
+### <a name="available-sap-maxdb-documentation-for-maxdb"></a>A MaxDB elérhető SAP MaxDB dokumentációja
+Az SAP MaxDB dokumentációjának frissített listáját a következő SAP-megjegyzésekben találja: [767598]
 
-### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Az SAP MaxDB konfigurációs irányelvei az SAP-telepítésekhez az Azure virtuális gépeken
+### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-konfigurációs irányelvek az SAP-telepítésekhez az Azure virtuális gépeken
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tároló konfigurálása
-Az Sap MaxDB Azure storage-tal kapcsolatos gyakorlati tanácsok az [RDBMS-telepítésekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)való virtuális gép tárolási struktúrájában található általános javaslatokat követik.
+Az Azure Storage ajánlott eljárásai az SAP-MaxDB az RDBMS-alapú [virtuális gépek tárolási struktúrájának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)fejezetében említett általános ajánlásokat követve.
 
 > [!IMPORTANT]
-> Más adatbázisokhoz hasonlóan az SAP MaxDB is rendelkezik adatokkal és naplófájlokkal. Az SAP MaxDB terminológiában azonban a helyes kifejezés a "kötet" (nem a "fájl"). Például vannak SAP MaxDB adatkötetek és naplókötetek. Ne tévesszük össze ezeket az operációs rendszer lemezköteteivel. 
+> A többi adatbázishoz hasonlóan az SAP-MaxDB is rendelkezik adatfájlokkal és naplófájlokkal. Az SAP MaxDB terminológiájában azonban a helyes kifejezés a "Volume" (nem "file"). Például vannak SAP MaxDB-adatkötetek és-naplózási kötetek. Ne tévesszük össze az operációsrendszer-lemez köteteit. 
 > 
 > 
 
-Röviden meg kell:
+Röviden a következőket kell tennie:
 
-* Ha Azure Storage-fiókokat használ, állítsa be az Azure Storage-fiókot, amely az SAP MaxDB-adatokat és naplóköteteket (adat- és naplófájlokat) **helyi redundáns tárolásra (LRS)** állítja az [SAP-munkaterheléshez szükséges Azure Virtual Machines DBMS-telepítés](dbms_guide_general.md)szempontjai című részben megadottak szerint.
-* Válassza el az SAP MaxDB adatkötetek (adatfájlok) IO elérési útját a naplókötetek (naplófájlok) IO elérési útjától. Ez azt jelenti, hogy az SAP MaxDB adatköteteket (adatfájlokat) egy logikai meghajtóra kell telepíteni, és az SAP MaxDB naplóköteteket (naplófájlokat) egy másik logikai meghajtóra kell telepíteni.
-* Állítsa be a megfelelő gyorsítótárazási típust az egyes lemezekhez, attól függően, hogy az SAP MaxDB-adatokhoz vagy naplókötetekhez (adat- és naplófájlokhoz) használja-e, és hogy az Azure Standard vagy az Azure Premium Storage-ot használja-e, az [Azure virtuális gépek DBMS-üzembe helyezésének megfontolásai sap-munkaterheléshez](dbms_guide_general.md)című részen leírtak szerint.
-* Mindaddig, amíg a lemezenkénti aktuális IOPS-kvóta megfelel a követelményeknek, az összes adatkötet egyetlen csatlakoztatott lemezen tárolható, és az összes adatbázisnapló-kötet et egy másik csatlakoztatott lemezen is tárolhatja.
-* Ha több IOPS-ra és/vagy területre van szükség, ajánlott microsoft window tárolókészleteket használni (csak microsoft Windows Server 2012-ben és újabb verzióban érhető el) egy nagy logikai eszköz több csatlakoztatott lemezen történő létrehozásához. További részletek: [Az Azure virtual machines DBMS üzembe helyezésének szempontjai az SAP-munkaterheléshez.](dbms_guide_general.md) Ez a megközelítés leegyszerűsíti a lemezterület kezeléséhez szükséges adminisztrációs többletterhelést, és elkerüli a fájlok manuális terjesztését több csatlakoztatott lemez között.
-* erősen ajánlott az Azure Premium Storage használata a MaxDB-telepítésekhez. 
+* Ha Azure Storage-fiókokat használ, állítsa be azt az Azure Storage-fiókot, amely az SAP MaxDB-adatok és a naplózási kötetek (adat-és naplófájlok) a **helyi redundáns tárolóba (LRS)** TÁROLJA az [SAP-munkaterhelések esetében az Azure Virtual Machines adatbázis-kezelő üzembe helyezésével kapcsolatos szempontok](dbms_guide_general.md)szerint
+* Válassza el a SAP MaxDB adatkötetek (adatfájlok) IO-elérési útját a naplófájlok IO-útvonaláról (naplófájlok). Ez azt jelenti, hogy az SAP-MaxDB adatköteteit (adatfájlokat) egy logikai meghajtóra és az SAP MaxDB (naplófájlokra) kell telepíteni egy másik logikai meghajtóra.
+* Állítsa be az egyes lemezek megfelelő gyorsítótárazási típusát attól függően, hogy az SAP MaxDB-adatokhoz vagy a naplózási kötetekhez (adatokhoz és naplófájlokhoz) használja-e, és hogy az Azure standard vagy az Azure Premium Storage használatát használja-e az [azure Virtual Machines adatbázis-kezelői telepítés az SAP-munkaterheléshez](dbms_guide_general.md)című cikkben leírtak szerint.
+* Ha a jelenlegi IOPS kvóta megfelel a követelményeknek, egyetlen csatlakoztatott lemezen is tárolhatja az összes adatkötetet, és egy másik csatlakoztatott lemezen tárolja az összes adatbázis-naplózási kötetet.
+* Ha további IOPS és/vagy lemezterületre van szükség, javasolt a Microsoft Window Storage-készletek használata (csak a Microsoft Windows Server 2012-es és újabb verziókban érhető el) egy nagyméretű logikai eszköz több csatlakoztatott lemezre való létrehozásához. További részletek: [Az Azure Virtual Machines adatbázis-kezelő rendszerbe állítása az SAP-munkaterheléshez](dbms_guide_general.md). Ez a megközelítés leegyszerűsíti az adminisztrációs terhelést a lemezterület kezeléséhez, és elkerüli a fájlok manuális terjesztését több csatlakoztatott lemez között.
+* erősen ajánlott az Azure Premium Storage használata a MaxDB üzemelő példányokhoz. 
 
-![Az Azure IaaS virtuális gép referenciakonfigurációja az SAP MaxDB DBMS-hez](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
+![Az Azure IaaS VM referenciájának konfigurálása az SAP MaxDB adatbázis-kezelő rendszerhez](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
 #### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Biztonsági mentés és visszaállítás
-Az SAP MaxDB Azure-ba való üzembe helyezésekor át kell tekintenie a biztonsági mentési módszertant. Még akkor is, ha a rendszer nem produktív rendszer, az SAP MaxDB által üzemeltetett SAP-adatbázisról rendszeres időközönként biztonsági másolatot kell kapnia. Mivel az Azure Storage három lemezképet tárol, a biztonsági mentés most már kevésbé fontos a rendszer tárolási hibák és a fontosabb működési vagy felügyeleti hibák elleni védelme szempontjából. A megfelelő biztonsági mentési és visszaállítási terv fenntartásának elsődleges oka a logikai vagy manuális hibák kompenzálása a pont-in-time helyreállítási képességek biztosításával. Így a cél az, hogy vagy biztonsági mentések segítségével visszaállítsa az adatbázist egy adott időpontban, vagy használja a biztonsági mentések az Azure-ban egy másik rendszer a meglévő adatbázis másolásával. 
+Az SAP-MaxDB Azure-ba történő telepítésekor át kell tekintenie a biztonsági mentési módszert. Akkor is, ha a rendszer nem produktív rendszer, az SAP-MaxDB által üzemeltetett SAP-adatbázist rendszeresen biztonsági mentéssel kell elkészíteni. Mivel az Azure Storage három lemezképet tart fenn, a biztonsági mentés mostantól kevésbé fontos a rendszernek a tárolási hibákkal és fontosabb működési vagy adminisztratív hibákkal szembeni védelme szempontjából. A megfelelő biztonsági mentési és helyreállítási terv fenntartásának elsődleges oka, hogy az időponthoz mért helyreállítási képességek biztosításával kompenzálja a logikai vagy manuális hibákat. A cél az, hogy a biztonsági mentések használatával egy adott időpontra állítsa vissza az adatbázist, vagy az Azure-ban lévő biztonsági mentések használatával a meglévő adatbázis másolásával egy másik rendszert. 
 
-Az Azure-beli adatbázisok biztonsági mentése és visszaállítása ugyanúgy működik, mint a helyszíni rendszerek esetében, így használhatja a szabványos SAP MaxDB biztonsági mentési/visszaállítási eszközöket, amelyeket az SAP [767598.] 
+Az Azure-beli adatbázisok biztonsági mentése és visszaállítása ugyanúgy történik, mint a helyszíni rendszerek esetében, így szabványos SAP MaxDB biztonsági mentési/helyreállítási eszközöket használhat, amelyek leírása az SAP [767598]-as verziójában felsorolt SAP MaxDB dokumentációs dokumentumok egyikében található. 
 
-#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>A biztonsági mentés és visszaállítás teljesítményével kapcsolatos szempontok
-A csupasz fémből készült központi telepítésekhez, a biztonsági mentés és visszaállítás teljesítménye attól függ, hogy hány kötet olvasható párhuzamosan, és a kötetek átviteli. Ezért feltételezhető:
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>A biztonsági mentés és a visszaállítás teljesítményével kapcsolatos szempontok
+Az operációs rendszer nélküli telepítésekhez hasonlóan a biztonsági mentési és a visszaállítási teljesítmény attól függ, hogy hány kötet olvasható be párhuzamosan és a kötetek átviteli sebessége. Ezért feltételezhető, hogy az alábbiakra van lehetőség:
 
-* Minél kevesebb enkeresztül tárolják az adatbázis-eszközöket, annál kisebb a teljes olvasási átviteli
-* Minél kevesebb cél (csíkos könyvtárak, lemezek) írhatja a biztonsági mentést, annál kisebb az átviteli
+* Minél kevesebb az adatbázis-eszközök tárolására használt lemezek száma, annál kisebb a teljes olvasási sebesség
+* A kevesebb célpont (könyvtárak, lemezek) a biztonsági mentés megírásához, annál alacsonyabb az átviteli sebesség
 
-Az íráshoz használt célok számának növeléséhez két lehetőség közül választhat, esetleg kombinálva, az igényeitől függően:
+Ha szeretné megnövelni, hogy milyen célokat kell írnia, két lehetőség közül választhat:
 
-* Külön kötetek felszentelése biztonsági mentéshez
-* A biztonsági mentési célkötet csíkozása több csatlakoztatott lemezre a csíkozott lemezkötet IOPS-átviteli átviteli teljesítményének javítása érdekében
-* Külön dedikált logikai lemezeszközök:
-  * SAP MaxDB biztonsági mentési kötetek (pl. fájlok)
-  * SAP MaxDB adatkötetek (pl. fájlok)
-  * SAP MaxDB naplókötetek (pl. fájlok)
+* Külön kötetek kiosztása a biztonsági mentéshez
+* A biztonsági mentési cél kötetének csíkozása több csatlakoztatott lemezre a IOPS átviteli sebességének növelése érdekében a csíkozott lemez kötetén
+* Külön dedikált logikai lemezes eszközök a következőhöz:
+  * SAP-MaxDB biztonsági mentési kötetei (például fájlok)
+  * SAP-MaxDB adatkötetei (például fájlok)
+  * SAP MaxDB-naplózási kötetek (például fájlok)
 
-A kötet több csatlakoztatott lemezen való csíkozását korábban az [Azure virtual machines DBMS-telepítéssel kapcsolatos sap-számítási feladatok](dbms_guide_general.md)ban tárgyaltuk. 
+A kötetek több csatlakoztatott lemezre való csíkozása korábban már megtörtént az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP-munkaterheléshez való üzembe helyezésének szempontjaiban](dbms_guide_general.md). 
 
-#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Egyéb szempontok
-Az összes többi általános terület, például az Azure availability sets vagy az SAP monitoring is érvényesek az [Azure virtuális gépek ADATBÁZIS-üzembe helyezésének megfontolásai sap számítási feladatokhoz](dbms_guide_general.md)című részen leírtak szerint.  Az SAP MaxDB adatbázissal rendelkező virtuális gépek központi telepítéseihez.
-Az Sap MaxDB-specifikus egyéb beállításai az Azure virtuális gépei számára transzparensek, és az SAP [767598] megjegyzésében és az SAP-megjegyzésekben felsorolt különböző dokumentumokban találhatók:
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Egyéb megfontolások
+Az összes többi általános terület, például az Azure-beli rendelkezésre állási készletek vagy az SAP-figyelés az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md)számítási feladataihoz  a virtuális gépek SAP MaxDB-adatbázissal történő üzembe helyezéséhez.
+Más SAP MaxDB-specifikus beállítások transzparensek az Azure-beli virtuális gépek számára, és az SAP Note [767598] -ben és a következő SAP-megjegyzésekben felsorolt különböző dokumentumokban találhatók:
 
 * [826037] 
 * [1139904]
 * [1173395]
 
-## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Az SAP liveCache windowsos központi telepítésének sajátosságai
-### <a name="sap-livecache-version-support"></a>SAP liveCache verziótámogatás
-Az SAP liveCache minimális, az Azure virtuális gépekben támogatott verziója az **SAP LC/LCAPPS 10.0 SP 25,** beleértve **a liveCache 7.9.08.31** és **lca-build 25-öt,** amely az EhP 2 számára érhető el az SAP **SCM 7.0** és újabb verziókhoz.
+## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>A Windows rendszeren futó SAP liveCache-telepítésekre vonatkozó részletek
+### <a name="sap-livecache-version-support"></a>SAP liveCache-verziók támogatása
+Az Azure Virtual Machines által támogatott SAP-liveCache minimális verziója az SAP **LC/LCAPPS 10,0 SP 25** , beleértve a **liveCache 7.9.08.31** és az **LCA-Build 25-** et, amely a **EHP Hotels 2 for SAP SCM 7,0** és újabb kiadásokban jelent meg.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Támogatott Microsoft Windows-verziók és Azure virtuálisgép-típusok az SAP liveCache DBMS-hez
-A támogatott Microsoft Windows-verzió az SAP liveCache azure-ban, lásd:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Támogatott Microsoft Windows-verziók és Azure-beli virtuálisgép-típusok az SAP liveCache adatbázis-kezelők számára
+Az Azure-beli SAP liveCache támogatott Microsoft Windows-verziójának megkereséséhez tekintse meg a következőt:
 
-* [SAP termék rendelkezésre állási mátrixa (PAM)][sap-pam]
-* SAP Megjegyzés [1928533]
+* [SAP-termékek rendelkezésre állási mátrixa (PAM)][sap-pam]
+* SAP-Megjegyzés [1928533]
 
-Erősen ajánlott a Microsoft Windows Server operációs rendszer legújabb verzióját használni. 
+Javasoljuk, hogy az operációs rendszer legújabb verzióját használja a Microsoft Windows Serveren. 
 
-### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Az SAP liveCache konfigurációs irányelvei az SAP-telepítésekhez az Azure virtuális gépeken
-#### <a name="recommended-azure-vm-types-for-livecache"></a>Ajánlott Azure virtuálisgép-típusok az élőgyorsítótárhoz
-Mivel az SAP liveCache egy olyan alkalmazás, amely hatalmas számításokat végez, a RAM és a CPU mennyisége és sebessége jelentős hatással van az SAP liveCache teljesítményére. 
+### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache-konfigurációs irányelvek az SAP-telepítésekhez az Azure virtuális gépeken
+#### <a name="recommended-azure-vm-types-for-livecache"></a>Ajánlott Azure-beli virtuálisgép-típusok a liveCache
+Az SAP-liveCache olyan alkalmazások, amelyek hatalmas számításokat hajtanak végre, a RAM és a CPU mennyisége és sebessége jelentős hatással van az SAP liveCache teljesítményére. 
 
-Az SAP által támogatott Azure virtuálisgép-típusok (SAP Note [1928533)]esetében a virtuális gépszámára lefoglalt összes virtuális CPU-erőforrást a hipervizor dedikált fizikai CPU-erőforrásai támogatják. Nincs túlterhelés (és ezért nem verseny a CPU-erőforrások) kerül sor.
+Az SAP által támogatott Azure-beli virtuálisgép-típusok esetében (SAP Megjegyzés [1928533]) a virtuális géphez rendelt összes virtuális CPU-erőforrást a hypervisor DEDIKÁLT fizikai CPU-erőforrásai támogatják. Nincs túlépítés (és így nincs verseny a CPU-erőforrásokhoz).
 
-Hasonlóképpen az SAP által támogatott összes Azure virtuálisgép-példánytípushoz a virtuális gép memóriája 100%-ban a fizikai memóriához van rendelve – például a túl-kiépítés (túlzott kötelezettségvállalás) nem használatos.
+Hasonlóképpen, az SAP által támogatott összes Azure-beli virtuálisgép-példány esetében a virtuális gép memóriája 100%-ra van leképezve a fizikai memória feletti kiépítés során (például a rendszer nem használja).
 
-Ebből a szempontból erősen ajánlott a legújabb Dv2, Dv3, Ev3 és M sorozatú virtuális gépek használata. A különböző virtuálisgép-típusok kiválasztása a liveCache-hez szükséges memóriától és a szükséges CPU-erőforrásoktól függ. Mint minden más DBMS-telepítéshez, célszerű az Azure Premium Storage-t a teljesítmény szempontjából kritikus kötetekhez használni.
+Ebből a szemszögből erősen ajánlott a legújabb Dv2, Dv3, Ev3 és M sorozatú virtuális gépeket használni. A különböző virtuálisgép-típusok kiválasztása a liveCache és a szükséges CPU-erőforrásokra vonatkozó memóriától függ. Akárcsak az összes többi adatbázis-kezelői telepítés esetében, javasoljuk, hogy az Azure Premium Storaget használja a teljesítmény szempontjából kritikus fontosságú kötetekhez.
 
-#### <a name="storage-configuration-for-livecache-in-azure"></a>A liveCache tárolási konfigurációja az Azure-ban
-Mivel az SAP liveCache az SAP MaxDB technológián alapul, az SAP MaxDB-hez ezen a dokumentumban ismertetett összes ajánlott Azure-tárolási gyakorlati javaslat az SAP liveCache-re is érvényes. 
+#### <a name="storage-configuration-for-livecache-in-azure"></a>Az Azure-beli liveCache tárolási konfigurációja
+Mivel az SAP-liveCache az SAP MaxDB technológián alapul, az ebben a dokumentumban ismertetett SAP-MaxDB vonatkozó ajánlott ajánlott eljárások az SAP-liveCache is érvényesek. 
 
-#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Dedikált Azure virtuális gép liveCache-forgatókönyvhöz
-Mivel az SAP liveCache intenzíven használja a számítási teljesítményt, a produktív használathoz erősen ajánlott egy dedikált Azure virtuális gépen telepíteni. 
+#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Dedikált Azure-beli virtuális gép liveCache-forgatókönyvhöz
+Mivel az SAP liveCache nagy mértékben használja a számítási teljesítményt, a produktív használat érdekében erősen ajánlott üzembe helyezni egy dedikált Azure-beli virtuális gépen. 
 
-![Dedikált Azure virtuális gép az élőgyorsítótárhoz a produktív használati esethez](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
+![Dedikált Azure-beli virtuális gép produktív használati esetekhez liveCache](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
 
 
-#### <a name="backup-and-restore-for-livecache-in-azure"></a>Biztonsági mentés és visszaállítás az azure-beli liveCache-hez
-a biztonsági mentés és visszaállítás, beleértve a teljesítménnyel kapcsolatos szempontokat is, már szerepel a jelen dokumentum megfelelő SAP MaxDB fejezeteiben. 
+#### <a name="backup-and-restore-for-livecache-in-azure"></a>LiveCache biztonsági mentése és visszaállítása az Azure-ban
+a biztonsági mentést és visszaállítást, beleértve a teljesítménnyel kapcsolatos szempontokat is, a jelen dokumentum megfelelő SAP MaxDB fejezeteiben olvashat. 
 
 #### <a name="other-considerations"></a>Egyéb szempontok
-Az összes többi általános terület már ismert et a vonatkozó SAP MaxDB fejezetben. 
+Az összes többi általános terület már le van írva a megfelelő SAP MaxDB fejezetben. 
 
-## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Az SAP Content Server Azure-beli windowsos telepítésének sajátosságai
-Az SAP Content Server egy különálló, kiszolgálóalapú összetevő, amely különböző formátumokban tárolja a tartalmakat, például az elektronikus dokumentumokat. Az SAP Content Server a technológia fejlesztése, és kell használni cross-application minden SAP-alkalmazások. Ez telepítve van egy külön rendszer. A tipikus tartalom a Tudásraktár ból származó képzési anyag és dokumentáció, vagy a mySAP PLM dokumentumkezelő rendszerből származó műszaki rajzok. 
+## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Az SAP Content Server telepítésének sajátosságai az Azure-ban Windows rendszeren
+Az SAP Content Server egy különálló, kiszolgáló-alapú összetevő, amely különböző formátumokban tárolja a tartalmakat, például az elektronikus dokumentumokat. Az SAP Content Servert a technológia fejlesztése és az alkalmazások bármely SAP-alkalmazáshoz való használata során kell használni. Külön rendszerre van telepítve. A tipikus tartalom az mySAP PLM dokumentumkezelő rendszerből származó, a Knowledge Warehouse-ból vagy a technikai rajzoktól származó tananyagok és dokumentáció. 
 
-### <a name="sap-content-server-version-support-for-azure-vms"></a>Az SAP-tartalomkiszolgáló verziótámogatása az Azure virtuális gépeihez
+### <a name="sap-content-server-version-support-for-azure-vms"></a>Az SAP Content Server verziója támogatja az Azure-beli virtuális gépeket
 Az SAP jelenleg a következőket támogatja:
 
-* **SAP Content Server** **6.50-es verzióval (vagy újabbverzióval)**
-* **SAP MaxDB 7.9-es verzió**
-* **Microsoft IIS (Internet Information Server) 8.0-s verzió (és újabb)**
+* **SAP Content Server** 6,50-es verzióval **(és újabb)**
+* **SAP MaxDB 7,9-es verzió**
+* **Microsoft IIS (Internet Information Server) 8,0-es verzió (és újabb)**
 
-Erősen ajánlott az SAP Content Server legújabb és a **Microsoft IIS**legújabb verzióját használni. 
+Javasoljuk, hogy az SAP Content Server legújabb verzióját és a **Microsoft IIS**legújabb verzióját használja. 
 
-Ellenőrizze az SAP Content Server és a Microsoft IIS legújabb támogatott verzióit az [SAP termékelérhetőségi mátrixában (PAM).][sap-pam]
+Tekintse meg az SAP Content Server és a Microsoft IIS legújabb támogatott verzióit az [SAP termék rendelkezésre állási mátrixában (PAM)][sap-pam].
 
-### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Támogatott Microsoft Windows és Azure virtuálisgép-típusok az SAP Content Server szolgáltatáshoz
-Ha meg szeretné tudni, hogy az SAP Content Server támogatott Windows-verziója az Azure-ban, olvassa el a következő témakört:
+### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Támogatott Microsoft Windows-és Azure-beli virtuálisgép-típusok az SAP Content Serverhez
+Az SAP Content Server támogatott Windows-verziójának megkereséséhez az Azure-ban tekintse meg a következőt:
 
-* [SAP termék rendelkezésre állási mátrixa (PAM)][sap-pam]
-* SAP Megjegyzés [1928533]
+* [SAP-termékek rendelkezésre állási mátrixa (PAM)][sap-pam]
+* SAP-Megjegyzés [1928533]
 
-Erősen ajánlott a Microsoft Windows Server legújabb verzióját használni.
+Javasoljuk, hogy a Microsoft Windows Server legújabb verzióját használja.
 
-### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Az SAP-tartalomkiszolgáló konfigurációs irányelvei az SAP-telepítésekhez az Azure virtuális gépein
-#### <a name="storage-configuration-for-content-server-in-azure"></a>A tartalomkiszolgáló tárolási konfigurációja az Azure-ban
-Ha úgy konfigurálja az SAP Content Server rendszert, hogy fájlokat tároljon az SAP MaxDB adatbázisban, az SAP MaxDB-hez ebben a dokumentumban említett összes Azure storage-ajánlott eljárás is érvényes az SAP Content Server forgatókönyvben. 
+### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP-tartalom kiszolgálójának konfigurációs irányelvei az Azure-beli virtuális gépeken futó SAP-telepítésekhez
+#### <a name="storage-configuration-for-content-server-in-azure"></a>A Content Server Azure-beli tárolási konfigurációja
+Ha úgy konfigurálja az SAP Content Servert, hogy az SAP MaxDB adatbázisban tárolja a fájlokat, akkor a jelen dokumentum SAP MaxDB vonatkozó összes Azure Storage ajánlott eljárása érvényes az SAP Content Server-forgatókönyv esetében is. 
 
-Ha úgy állítja be az SAP Content Server kiszolgálót, hogy fájlokat tároljon a fájlrendszerben, ajánlott dedikált logikai meghajtót használni. A Windows storage Spaces használatával is növelheti a logikai lemez méretét és az IOPS-átviteli kapacitást, ahogy azt az [Azure virtuális gépek ADATBÁZIS-telepítési szempontjai az SAP-munkaterheléshez című részen leírtak](dbms_guide_general.md)szerint. 
+Ha úgy konfigurálja az SAP Content Servert, hogy a fájlrendszerben tárolja a fájlokat, ajánlott dedikált logikai meghajtót használni. A Windows Storage Spaces lehetővé teszi a logikai lemez méretének és a IOPS átviteli sebességének növelését, az [Azure Virtual Machines adatbázis-kezelő rendszerekben történő üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md)című témakörben leírtak szerint 
 
-#### <a name="sap-content-server-location"></a>SAP-tartalomkiszolgáló helye
-Az SAP Content Server t ugyanabban az Azure-régióban és az Azure-virtuális hálózatban kell telepíteni, ahol az SAP-rendszer telepítve van. Szabadon eldöntheti, hogy az SAP Content Server-összetevőket egy dedikált Azure virtuális gépre vagy ugyanazon a virtuális gépre szeretné-e telepíteni, ahol az SAP-rendszer fut. 
+#### <a name="sap-content-server-location"></a>SAP-tartalom kiszolgálójának helye
+Az SAP-tartalom kiszolgálóját ugyanabban az Azure-régióban és Azure-VNET kell telepíteni, ahol az SAP-rendszer telepítve van. Szabadon eldöntheti, hogy szeretne-e SAP Content Server-összetevőket telepíteni egy dedikált Azure-beli virtuális gépre vagy ugyanarra a virtuális gépre, amelyen az SAP-rendszer fut. 
 
-![Dedikált Azure virtuális gép az SAP-tartalomkiszolgálóhoz](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
+![Dedikált Azure-beli virtuális gép az SAP Content Serverhez](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
 
 
-#### <a name="sap-cache-server-location"></a>SAP gyorsítótárazási kiszolgáló helye
-Az SAP cache-kiszolgáló egy további kiszolgálóalapú összetevő, amely helyileg biztosítja a (gyorsítótárazott) dokumentumok elérését. Az SAP-gyorsítótárazási kiszolgáló gyorsítótárazza az SAP-tartalomkiszolgáló dokumentumait. Ez a hálózati forgalom optimalizálása, ha a dokumentumokat többször is le kell kérni különböző helyekről. Az általános szabály az, hogy az SAP cache-kiszolgálónak fizikailag közel kell lennie ahhoz az ügyfélhez, amely hozzáfér az SAP gyorsítótár-kiszolgálóhoz. 
+#### <a name="sap-cache-server-location"></a>SAP-gyorsítótár kiszolgálójának helye
+Az SAP-gyorsítótár kiszolgálója egy további kiszolgáló-alapú összetevő, amely helyileg biztosít hozzáférést a (gyorsítótárazott) dokumentumokhoz. Az SAP-gyorsítótár kiszolgálója gyorsítótárazza az SAP-tartalom kiszolgálójának dokumentumait. A hálózati forgalom optimalizálása, ha a dokumentumokat többször kell lekérni a különböző helyekről. Az általános szabály az, hogy az SAP-gyorsítótár-kiszolgálónak fizikailag le kell zárnia az ügyfél számára, amely hozzáfér az SAP gyorsítótár-kiszolgálóhoz. 
 
 Itt két lehetőség közül választhat:
 
-1. **Az ügyfél egy háttérSAP-rendszer** Ha egy háttérSAP-rendszer sap content server elérésére van konfigurálva, akkor az SAP-rendszer egy ügyfél. Mivel az SAP-rendszer és az SAP Content Server ugyanabban az Azure-régióban, ugyanabban az Azure-adatközpontban van telepítve, fizikailag közel vannak egymáshoz. Ezért nincs szükség dedikált SAP-gyorsítótár-kiszolgálóra. Az SAP felhasználói felületi ügyfelei (SAP GUI vagy webböngésző) közvetlenül érik el az SAP-rendszert, és az SAP-rendszer lekéri a dokumentumokat az SAP Content Serverből.
-2. **Az ügyfél egy helyszíni webböngésző** Az SAP Content Server beállítható úgy, hogy közvetlenül a webböngészővel férjen hozzá. Ebben az esetben a helyszíni webböngésző az SAP Content Server ügyfele. A helyszíni adatközpont és az Azure-adatközpont különböző fizikai helyeken (ideális esetben közel vannak egymáshoz). A helyszíni adatközpont az Azure-ból az Azure-ból helyek közötti VPN-en vagy ExpressRoute-on keresztül csatlakozik az Azure-hoz. Bár mindkét lehetőség biztonságos VPN-hálózati kapcsolatot biztosít az Azure-ral, a helyek közötti hálózati kapcsolat nem biztosít hálózati sávszélességet és késésű SLA-t a helyszíni adatközpont és az Azure-adatközpont között. A dokumentumokhoz való hozzáférés felgyorsítása érdekében az alábbi elkövetésre lehet a következő t:
-   1. Telepítse az SAP Cache Server-t a helyszínen, közel a helyszíni webböngészőhöz (az alábbi ábrán látható lehetőség)
-   2. Konfigurálja az Azure ExpressRoute szolgáltatást, amely nagy sebességű és alacsony késleltetésű dedikált hálózati kapcsolatot kínál a helyszíni adatközpont és az Azure-adatközpont között.
+1. **Az ügyfél a háttérrendszer SAP rendszer** Ha a háttérrendszer SAP-rendszere az SAP Content Server elérésére van konfigurálva, az SAP-rendszer ügyfél. Mivel az SAP-rendszer és az SAP-tartalom kiszolgálója ugyanabban az Azure-régióban van telepítve, ugyanabban az Azure-adatközpontban, fizikailag közel vannak egymáshoz. Ezért nincs szükség dedikált SAP gyorsítótár-kiszolgálóra. Az SAP felhasználói felület ügyfelei (SAP GUI vagy webböngésző) közvetlenül férnek hozzá az SAP-rendszerhez, és az SAP-rendszer lekéri a dokumentumokat az SAP Content Serverről.
+2. Az **ügyfél egy helyszíni webböngésző** Az SAP-tartalom kiszolgálója beállítható úgy, hogy közvetlenül a webböngésző használatával legyen elérhető. Ebben az esetben a helyszínen futó webböngésző az SAP Content Server ügyfele. A helyszíni adatközpont és az Azure-adatközpont különböző fizikai helyeken található (ideális esetben egymáshoz közeledik). A helyszíni adatközpont Azure-helyek közötti VPN-vagy ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-hoz. Habár mindkét lehetőség biztonságos VPN-hálózati kapcsolatot biztosít az Azure-hoz, a helyek közötti hálózati kapcsolat nem biztosít hálózati sávszélességet és a késési SLA-t a helyszíni adatközpont és az Azure-adatközpont között. A dokumentumokhoz való hozzáférés felgyorsításához a következők egyikét teheti:
+   1. Telepítse a helyszíni SAP gyorsítótár-kiszolgálót a helyszíni webböngészőhöz (az alábbi ábrán látható lehetőséggel).
+   2. Konfigurálja az Azure ExpressRoute, amely nagy sebességű és kis késleltetésű dedikált hálózati kapcsolatot biztosít a helyszíni adatközpont és az Azure-adatközpont között.
 
-![Az SAP Cache Server helyszíni telepítésének lehetősége](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+![Az SAP gyorsítótár-kiszolgáló helyszíni telepítésének lehetősége](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
-#### <a name="backup--restore"></a>Biztonsági mentés / visszaállítás
-Ha úgy konfigurálja az SAP Content Server kiszolgálót, hogy fájlokat tároljon az SAP MaxDB adatbázisban, a biztonsági mentési/visszaállítási eljárás és a teljesítményre vonatkozó szempontok a dokumentum SAP MaxDB fejezeteiben már szerepelnek. 
+#### <a name="backup--restore"></a>Biztonsági mentés/visszaállítás
+Ha úgy konfigurálja az SAP Content Servert, hogy az SAP MaxDB adatbázisban tárolja a fájlokat, a biztonsági mentési/visszaállítási eljárást és a teljesítménnyel kapcsolatos szempontokat már a jelen dokumentum SAP MaxDB fejezeteiben ismertetjük. 
 
-Ha úgy állítja be az SAP Content Server kiszolgálót, hogy fájlokat tároljon a fájlrendszerben, az egyik lehetőség a dokumentumok helye szerinti teljes fájlstruktúra manuális biztonsági mentésének/visszaállításának végrehajtása. Az SAP MaxDB biztonsági mentéshez/visszaállításhoz hasonlóan ajánlott egy dedikált lemezkötet biztonsági mentési célra. 
+Ha úgy konfigurálja az SAP-tartalom kiszolgálóját, hogy a fájlrendszerben tárolja a fájlokat, az egyik lehetőség a teljes fájl struktúra manuális biztonsági mentése/visszaállítása, ahol a dokumentumok találhatók. Az SAP MaxDB Backup/Restore utasításhoz hasonlóan ajánlott a biztonsági mentési célra dedikált lemezterületet használni. 
 
 #### <a name="other"></a>Egyéb
-Az SAP-tartalomkiszolgáló-specifikus egyéb beállítások az Azure virtuális gépei számára transzparensek, és különböző dokumentumokban és SAP-megjegyzésekben vannak leírva:
+Más SAP-tartalom kiszolgáló-specifikus beállításai transzparensek az Azure-beli virtuális gépek számára, és különböző dokumentumokban és SAP-megjegyzésekben vannak leírva:
 
 * <https://service.sap.com/contentserver> 
-* SAP Megjegyzés [1619726]  
+* SAP-Megjegyzés [1619726]  

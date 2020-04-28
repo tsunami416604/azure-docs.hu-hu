@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Az Azure DC/OS fürt kezelése a Marathon UI segítségével
+title: ELAVULT Azure DC/OS-fürt kezelése Marathon felhasználói felülettel
 description: A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével.
 author: iainfoulds
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277806"
 ---
-# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(ELAVULT) Azure Container Service DC/OS-fürt kezelése a Marathon webes felhasználói felületén keresztül
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>ELAVULT Azure Container Service DC/OS-fürt kezelése a Marathon webes felhasználói felületén
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról.
 
-Bár a keretrendszerek számos népszerű számítási feladathoz érhetők el, ez a dokumentum bemutatja, hogyan kezdheti el telepíteni a tárolókat a Marathon segítségével. 
+Míg a keretrendszerek számos népszerű munkaterheléshez elérhetők, ez a dokumentum azt ismerteti, hogyan lehet megkezdeni a tárolók üzembe helyezését a Marathon használatával. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -30,16 +30,16 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 * [Csatlakozás Azure tárolószolgáltatási fürthöz](../container-service-connect.md)
 
 > [!NOTE]
-> Ez a cikk feltételezi, hogy a dc/os fürthöz a 80-as helyi porton keresztül bújtat.
+> Ez a cikk azt feltételezi, hogy a DC/OS-fürtöt a 80-as helyi porton keresztül bújtatással látja el.
 >
 
 ## <a name="explore-the-dcos-ui"></a>A DC/OS felhasználói felületének megnyitása
-A létrehozott Secure Shell (SSH) [alagúttal](../container-service-connect.md)keresse meg a http:\//localhost/ Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
+Ha a rendszer [létrehoz](../container-service-connect.md)egy Secure Shell-(SSH-) alagutat,\/keresse meg a http:/localhost/. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
 
 ![A DC/OS UI felhasználói felülete](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>A Marathon felhasználói felület megnyitása
-A Marathon felhasználói felületének megtekintéséhez\/keresse meg a http: /localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
+A Marathon felhasználói felületének megtekintéséhez keresse fel a http\/:/localhost/Marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
 
 ![Marathon felhasználói felület](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -83,7 +83,7 @@ A Marathon főoldalára visszatérve láthatja a tároló üzembe helyezési ál
 
 ![A Marathon főoldala – a tároló üzembe helyezési állapota](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Amikor visszavált a DC/OS webes felhasználói\/felületére (http: /localhost/), láthatja, hogy egy feladat (ebben az esetben egy Docker-formátumú tároló) fut a DC/OS fürtön.
+Amikor visszavált a DC/OS webes felhasználói felületére (http:\//localhost/), láthatja, hogy a DC/os-fürtön fut egy feladat (ebben az esetben egy Docker-formázott tároló).
 
 ![DC/OS webes felhasználói felülete – a fürtön futó feladat](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,9 +91,9 @@ Ha szeretné megtekinteni azt a fürtcsomópontot, amelyen a feladat fut, kattin
 
 ![A DC/OS webes felhasználói felülete – a feladat fürtcsomópontja](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Érje el a tartályt
+## <a name="reach-the-container"></a>A tároló elérése
 
-Ebben a példában az alkalmazás egy nyilvános ügynök csomóponton fut. Az alkalmazást az internetről érheti el, ha a fürt `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`ügynökének Teljes tartománynát böngészi: , ahol:
+Ebben a példában az alkalmazás egy nyilvános ügynök-csomóponton fut. Az alkalmazást az internetről érheti el, ha megkeresi a fürt teljes tartománynevét `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`:, ahol:
 
 * a **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.
 * a **REGION** az a régió, ahol az erőforráscsoport megtalálható.

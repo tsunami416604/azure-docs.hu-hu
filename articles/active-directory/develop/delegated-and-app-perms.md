@@ -1,6 +1,6 @@
 ---
-title: A delegált és az alkalmazásengedélyei közötti különbségek | Azure
-description: Ismerje meg a delegált és alkalmazásengedélyeket, az ügyfelek általi használatuk és az Azure AD-vel fejlesztett alkalmazások erőforrásai által elérhetővé tett adatokat
+title: A delegált és az alkalmazás engedélyei közötti különbségek | Azure
+description: A delegált és az alkalmazás engedélyeinek megismerése, hogyan használják az ügyfelek az Azure AD-vel fejlesztett alkalmazások erőforrásai által elérhetővé tett alkalmazásokat
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697608"
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>A delegált és az alkalmazásengedélyek közötti különbségek felismerése
+# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>A delegált és az alkalmazás engedélyei közötti különbségek felismerése
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- További információ arról, hogy az ügyfélalkalmazások hogyan használják [a delegált és az alkalmazásengedély-kérelmeket](developer-glossary.md#permissions) az erőforrások eléréséhez.
-- Az [ügyfélalkalmazások engedélykérelmeinek konfigurálásáról](quickstart-configure-app-access-web-apis.md) szóló lépésenkénti útmutató
-- További részletes, megtudhatja, hogyan erőforrás-alkalmazások [hatóköreit](developer-glossary.md#scopes) és [alkalmazásszerepkörök](developer-glossary.md#roles) az ügyfélalkalmazások, amelyek az Azure Portalon delegált és alkalmazásengedélyek jelennek meg. 
+- További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](developer-glossary.md#permissions) az erőforrásokhoz való hozzáféréshez.
+- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](quickstart-configure-app-access-web-apis.md) részletes ismertetését lásd:.
+- További részletekért tekintse meg, hogy az erőforrás-alkalmazások hogyan teszik elérhetővé a [hatóköröket](developer-glossary.md#scopes) és az [alkalmazási szerepköröket](developer-glossary.md#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
 
 ## <a name="next-steps"></a>További lépések
-[AzureAD-veremtúlcsordulás](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -1,48 +1,48 @@
 ---
-title: Az Azure Resource Manager sablonmintái
-description: Az Azure Resource Manager-sablonminták keresése az Azure Container-példányok különböző konfigurációkban történő üzembe helyezéséhez
+title: Azure Resource Manager sablon mintái
+description: Azure Container Instances különböző konfigurációkban való üzembe helyezéséhez Azure Resource Manager sablon mintáinak megkeresése
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981646"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-sablonok Azure-tárolópéldányokhoz
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances Azure Resource Manager sablonjai
 
-A következő mintasablonok tárolópéldányokat telepítenek különböző konfigurációkban.
+A következő sablonfájlok különböző konfigurációkban helyezik üzembe a Container instances-példányokat.
 
-A telepítési lehetőségeket a Központi telepítés című [szakaszban](#deployment) talál. Ha saját sablonokat szeretne létrehozni, az Azure Container Instances Resource Manager sablon referencia-sablonformátumra és a rendelkezésre álló tulajdonságokra [hivatkozik.][ref]
+Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#deployment) című szakaszt. Ha saját sablonokat szeretne létrehozni, a Azure Container Instances [Resource Manager-sablon dokumentációja][ref] és a rendelkezésre álló tulajdonságok.
 
 ## <a name="sample-templates"></a>Példasablonok
 
 | | |
 |-|-|
 | **Alkalmazások** ||
-| [WordPress][app-wp] | WordPress webhelyet és annak MySQL adatbázisát egy tárolócsoportban hozza létre. A WordPress webhely tartalma és a MySQL-adatbázis egy Azure Files megosztáson marad. Is létrehoz egy alkalmazás átjáró, hogy ki a nyilvános hálózati hozzáférést a WordPress. |
-| [MS NAV SQL Server és IIS rendszerrel][app-nav] | Egyetlen Windows-tárolót telepít teljes értékű, önálló Dynamics NAV / Dynamics 365 Business Central környezettel. |
+| [WordPress][app-wp] | Létrehoz egy WordPress-webhelyet és a MySQL-adatbázisát egy tároló csoportban. A WordPress-webhely tartalma és a MySQL-adatbázis egy Azure Files megosztásban marad. Létrehoz egy Application Gateway-t is, amely nyilvános hálózati hozzáférést tesz elérhetővé a WordPress számára. |
+| [MS NAV SQL Server és IIS][app-nav] | Egyetlen Windows-tárolót helyez üzembe a teljes funkcionalitású, önálló Dynamics NAV/Dynamics 365 üzleti központi környezettel. |
 | **Kötetek** ||
-| [emptyDir][vol-emptydir] | Két Linux-tárolót telepít, amelyek egy emptyDir köteten osztoznak. |
-| [gitRepo][vol-gitrepo] | Telepítegy Linux-tárolót, amely klónozza a GitHub-tárfelhasználta, és csatolja azt kötetként. |
-| [titkos kód][vol-secret] | Linux-tárolót telepít titkos kötetként csatlakoztatott PFX-tanúsítványzal. |
+| [emptyDir][vol-emptydir] | Két Linux-tárolót telepít, amelyek osztoznak egy emptyDir-köteten. |
+| [gitRepo][vol-gitrepo] | Üzembe helyez egy GitHub-tárházat klónozott Linux-tárolót, és kötetként csatlakoztatja azt. |
+| [titkos kód][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
 | **Hálózat** ||
-| [UDP-expozíciónak kitett tároló][net-udp] | Telepíti az UDP-portot elérhető Windows- vagy Linux-tárolót. |
-| [Linux-tároló nyilvános IP-címvel][net-publicip] | Egyetlen, nyilvános IP-n keresztül elérhető Linux-tárolót telepít. |
-| [Tárolócsoport üzembe helyezése virtuális hálózattal (előzetes verzió)][net-vnet] | Új virtuális hálózat, alhálózat, hálózati profil és tárolócsoport telepítése. |
+| [UDP-vel feltett tároló][net-udp] | Egy olyan Windows vagy Linux rendszerű tároló üzembe helyezése, amely egy UDP-portot tesz elérhetővé. |
+| [Linux-tároló nyilvános IP-címmel][net-publicip] | Egyetlen linuxos tárolót helyez üzembe egy nyilvános IP-címen keresztül. |
+| [Tároló-csoport üzembe helyezése virtuális hálózattal (előzetes verzió)][net-vnet] | Üzembe helyez egy új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot. |
 | **Azure-erőforrások** ||
-| [Azure Storage-fiók és fájlok megosztásának létrehozása][az-files] | Az Azure CLI egy tárolópéldányban egy tárfiók és egy Azure Files megosztás létrehozásához.
+| [Azure Storage-fiók és-fájlmegosztás létrehozása][az-files] | Az Azure CLI-t használja egy tároló példányban egy Storage-fiók és egy Azure Files-megosztás létrehozásához.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
-Számos lehetősége van az erőforrások Erőforrás-kezelő sablonokkal történő üzembe helyezésére:
+Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének számos lehetősége van:
 
 [Azure CLI][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure-portál][deploy-portal]
+[Azure Portal][deploy-portal]
 
 [REST API][deploy-rest]
 

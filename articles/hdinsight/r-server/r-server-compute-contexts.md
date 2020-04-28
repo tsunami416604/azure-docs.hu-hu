@@ -1,6 +1,6 @@
 ---
-title: Az ML-szolgáltatások környezeti beállításainak számítása a HDInsightban – Azure
-description: Ismerje meg a HDInsight ML-szolgáltatást használó felhasználók számára elérhető különböző számítási környezetbeállításokat
+title: Számítási környezeti lehetőségek a HDInsight ML-szolgáltatásaihoz – Azure
+description: Ismerje meg a különböző számítási környezeti lehetőségeket, amelyek a HDInsight ML-szolgáltatásaival rendelkező felhasználók számára elérhetők
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75660256"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Az ML-szolgáltatások környezeti beállításainak számítási környezete a HDInsightban
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
 
-Az Azure HDInsight ML-szolgáltatásai a számítási környezet beállításával szabályozzák a hívások végrehajtását. Ez a cikk ismerteti azokat a beállításokat, amelyek rendelkezésre állnak annak meghatározására, hogy a végrehajtás párhuzamos-e a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
+Az Azure HDInsight ML-szolgáltatásai vezérlik a hívások végrehajtását a számítási környezet beállításával. Ez a cikk azokat a lehetőségeket ismerteti, amelyekkel megadható, hogy a végrehajtás hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
 
-A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való csatlakozáshoz és az R-parancsfájlok futtatásához. Egy peremhálózati csomópont esetén lehetősége van a RevoScaleR párhuzamos elosztott függvényeinek futtatására a peremhálózati csomópont-kiszolgáló magjain. A RevoScaleR Hadoop-térképcsökkentés vagy az Apache Spark számítási környezeteinek használatával is futtathatja őket a fürt csomópontjain.
+A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópontok esetében lehetősége van a RevoScaleR párhuzamosan elosztott funkcióinak futtatására a peremhálózati csomópont-kiszolgáló magjai között. Ezeket a fürtök csomópontjain is futtathatja a RevoScaleR Hadoop-leképezésével, és csökkentheti vagy Apache Spark a számítási környezeteket.
 
-## <a name="ml-services-on-azure-hdinsight"></a>Ml-szolgáltatások az Azure HDInsightban
+## <a name="ml-services-on-azure-hdinsight"></a>ML szolgáltatások az Azure HDInsight
 
-[Az Azure HDInsight ML-szolgáltatásai](r-server-overview.md) az R-alapú elemzések legújabb funkcióit biztosítják. Az Apache Hadoop HDFS-tárolóban az [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") storage-fiókban, a Data Lake Store-ban vagy a helyi Linux-fájlrendszerben tárolt adatokat használhatja. Mivel az ML Services nyílt forráskódú R-re épül, az Ön által készített R-alapú alkalmazások a 8000+ nyílt forráskódú R csomagok bármelyikét alkalmazhatják. Ők is használhatják a rutinok [RevoScaleR,](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)a Microsoft big data-elemzési csomag, amely tartalmazza az ML-szolgáltatások.  
+Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemzések legújabb képességeit biztosítják. Az [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage-fiók, a Data Lake Store vagy a helyi Linux fájlrendszer Apache Hadoop HDFS tárolt adatait is használhatja. Mivel a ML-szolgáltatások nyílt forráskódú R-re épülnek, az Ön által létrehozott R-alapú alkalmazások a 8000-es és a nyílt forráskódú R-csomagok bármelyikét alkalmazhatják. Emellett a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft Big Data Analytics-csomagjában található rutinokat is használhatják, amelyek a ml-szolgáltatások részét képezik.  
 
-## <a name="compute-contexts-for-an-edge-node"></a>Peremhálózati csomópont környezetének számítása
+## <a name="compute-contexts-for-an-edge-node"></a>Az Edge-csomópont számítási környezete
 
-Általában egy R-parancsfájl, amely fut az ML Services-fürt a peremhálózati csomóponton fut az R értelmező az adott csomóponton. A kivételek azok a lépések, amelyek meghívják a RevoScaleR függvényt. A RevoScaleR-hívások olyan számítási környezetben futnak, amelyet a RevoScaleR számítási környezet beállításának módját határozza meg.  Amikor az R-parancsfájlt peremcsomópontról futtatja, a számítási környezet lehetséges értékei a következők:
+Általánosságban elmondható, hogy egy, az Edge-csomóponton található ML Services-fürtön futó R-szkript az adott csomóponton az R-tolmácson belül fut. A kivételek a RevoScaleR függvényt meghívó lépések. A RevoScaleR-hívások olyan számítási környezetben futnak, amelyet a RevoScaleR számítási környezetének beállítása határoz meg.  Ha az R-szkriptet egy peremhálózati csomópontról futtatja, a számítási környezet lehetséges értékei a következők:
 
-- helyi szekvenciális *(helyi*)
+- helyi szekvenciális (*helyi*)
 - helyi párhuzamos (*localpar*)
-- Térkép csökkentése
+- Leképezés csökkentése
 - Spark
 
-A *helyi* és *a localpar* beállítások csak az **rxExec** hívások végrehajtása módjában különböznek. A RevoScaleR **numCoresToUse** beállítás használatával például `rxOptions(numCoresToUse=6)`a többi rx-függvényhíváspárhuzamosan hajtják végre az összes rendelkezésre álló magot, kivéve, ha másként nincs megadva. A párhuzamos végrehajtási lehetőségek optimális teljesítményt nyújtanak.
+A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehajtásának módjában különböznek. Mindkettő más Rx-függvény hívásokat párhuzamosan hajtja végre az összes rendelkezésre álló magokon, kivéve, ha az RevoScaleR **numCoresToUse** kapcsoló használatával másképp van megadva `rxOptions(numCoresToUse=6)`. A párhuzamos végrehajtási lehetőségek optimális teljesítményt nyújtanak.
 
-Az alábbi táblázat összefoglalja a különböző számítási környezet beállításait a hívások végrehajtásának beállításához:
+A következő táblázat összefoglalja a különböző számítási környezeti beállításokat a hívások végrehajtásának beállításához:
 
-| Számítási környezet  | Hogyan kell beállítani                      | Végrehajtási környezet                        |
+| Számítási környezet  | A beállítás módja                      | Végrehajtási környezet                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Helyi szekvenciális | rxSetComputeContext('local')    | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között, kivéve az rxExec hívásokat, amelyek sorozatosan hajthatók végre |
-| Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos végrehajtás a peremcsomópont-kiszolgáló magjai között |
-| Spark            | RxSpark()                       | Párhuzamosan elosztott végrehajtás a Sparkon keresztül a HDI-fürt csomópontjain |
-| Térkép csökkentése       | RxHadoopMR()                    | Párhuzamos elosztott végrehajtás a Map Reduce segítségével a HDI-fürt csomópontjain |
+| Helyi szekvenciális | rxSetComputeContext ("local")    | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között, a rxExec-hívások kivételével, amelyeket a rendszer a sorosan hajt végre. |
+| Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között |
+| Spark            | RxSpark ()                       | Párhuzamos elosztott végrehajtás az HDI-fürt csomópontjain keresztül a Sparkon keresztül |
+| Leképezés csökkentése       | RxHadoopMR()                    | A leképezésen keresztüli párhuzamos elosztott végrehajtás a HDI-fürt csomópontjain is csökken |
 
-## <a name="guidelines-for-deciding-on-a-compute-context"></a>A számítási környezetel kapcsolatos döntés irányelvei
+## <a name="guidelines-for-deciding-on-a-compute-context"></a>Útmutató a számítási környezetek döntéséhez
 
-A párhuzamos végrehajtást biztosító három lehetőség közül melyik függ az elemzési munka jellegétől, méretétől és az adatok helyétől. Nincs egyszerű képlet, amely megmondja, hogy melyik számítási környezetet használja. Vannak azonban olyan vezérelvek, amelyek segíthetnek a helyes választás meghozatalában, vagy legalábbis segítenek leszűkíteni a választási lehetőségeket, mielőtt lefuttatna egy viszonyítási alaptesztet. Ezek az irányadó elvek a következők:
+A párhuzamos végrehajtást biztosító három lehetőség közül választhat az elemzési munka természetétől, a mérettől és az adatok helyétől függően. Nincs egyszerű képlet, amely azt jelzi, hogy milyen számítási kontextust kell használni. Vannak azonban olyan irányadó alapelvek, amelyek segíthetnek a megfelelő választásban, vagy legalábbis a teljesítményteszt futtatása előtt segítenek leszűkíteni a döntéseket. Ezek az irányadó alapelvek a következők:
 
-- A helyi Linux fájlrendszer gyorsabb, mint a HDFS.
-- Az ismételt elemzések gyorsabbak, ha az adatok helyiek, és ha Az XDF-ben vannak.
-- Célszerű kis mennyiségű adatot streamelni szöveges adatforrásból. Ha az adatmennyiség nagyobb, az elemzés előtt konvertálja XDF-re.
-- Az adatok nak a peremhálózati csomópontra történő másolása vagy streamelése az elemzéshez nem kezelhető a nagyon nagy mennyiségű adat esetében.
-- Az ApacheSpark gyorsabb, mint a Map Reduce elemzéshadoopban.
+- A helyi Linux-fájlrendszer gyorsabb, mint a HDFS.
+- Az ismétlődő elemzések gyorsabbak, ha az adatterületek helyiek, és ha a XDF van.
+- Érdemes kis mennyiségű adat átvitelét egy szöveges adatforrásból. Ha az adatmennyiség nagyobb, akkor az elemzés előtt alakítsa át a XDF.
+- Az adatoknak az Edge-csomópontba való másolása vagy továbbítása a nagy mennyiségű adathoz nem lesz kezelhető.
+- A ApacheSpark gyorsabb, mint a leképezések csökkentése az Hadoop-ben végzett elemzésekhez.
 
-Tekintettel ezekre az elvekre, a következő szakaszok kínálnak néhány általános ökölszabály kiválasztásához számítási környezetben.
+Ezen alapelvek alapján a következő szakaszokban a számítási környezet kiválasztására vonatkozó általános szabályok nyújtanak segítséget.
 
 ### <a name="local"></a>Helyi
 
-- Ha az elemzandó adatok mennyisége kicsi, és nem igényel ismételt elemzést, akkor közvetlenül az elemzési rutinba továbbítsa a *helyi* vagy *localpar*használatával.
-- Ha az elemzendő adatok mennyisége kicsi vagy közepes méretű, és ismételt elemzést igényel, másolja a helyi fájlrendszerbe, importálja az XDF-be, és elemezze *helyi* vagy *localpar*keresztül .
+- Ha az elemezni kívánt adat mennyisége kicsi, és nem igényel ismétlődő elemzést, akkor közvetlenül az elemzési rutinba továbbítja a *helyi* vagy *localpar*használatával.
+- Ha az elemzett adat mennyisége kis vagy közepes méretű, és ismétlődő elemzést igényel, akkor másolja a helyi fájlrendszerbe, importálja a XDF, és elemezze a *helyi* vagy *localpar*keresztül.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Ha az elemzandó adatok mennyisége nagy, importálja azt egy Spark DataFrame-be **Az RxHiveData** vagy **rxParquetData**használatával, vagy az XDF-be a HDFS-ben (kivéve, ha a tárolás probléma), és elemezze azt a Spark számítási környezetben.
+- Ha az elemezni kívánt adatok mennyisége nagy, akkor importálja azt egy Spark-DataFrame **RxHiveData** vagy **RxParquetData**használatával, vagy XDF a HDFS-ben (kivéve, ha a tár problémát jelent), és elemezni szeretné a Spark számítási környezet használatával.
 
-### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop térkép csökkentése
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Térkép csökkentése
 
-- Csak akkor használja a Map Reduce számítási környezetet, ha a Spark számítási környezetével leküzdhetetlen problémával találkozik, mivel általában lassabb.  
+- A Térkép használata csak akkor csökkentse a számítási környezetet, ha a Spark számítási környezettel egy leküzdhetetlen probléma merül fel, mivel általában lassabb.  
 
-## <a name="inline-help-on-rxsetcomputecontext"></a>Inline súgó az rxSetComputeContext-en
-További információt és példákat a RevoScaleR számítási környezetek, lásd a szövegközi súgó R az rxSetComputeContext módszer, például:
+## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott Súgó a rxSetComputeContext
+További információ és példák a RevoScaleR számítási környezetekre: a rxSetComputeContext metódus inline súgója az R-ben, például:
 
     > ?rxSetComputeContext
 
-A [Machine Learning Server dokumentációjában](https://docs.microsoft.com/machine-learning-server/)található [Elosztott számítástechnika áttekintése](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekinthető.
+A [Machine learning Server dokumentációjának](https://docs.microsoft.com/machine-learning-server/) [elosztott számítástechnikai áttekintését](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekintheti.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedhet a lehetőségekkel, amelyek azt a datálják, hogy a végrehajtás párhuzamos-e a peremhálózati csomópont vagy a HDInsight-fürt magjai között. Az ML-szolgáltatások HDInsight-fürtökkel való használatáról az alábbi témakörökben olvashat bővebben:
+Ebből a cikkből megtudhatta, hogy milyen lehetőségek állnak rendelkezésre annak megadásához, hogy a végrehajtás hogyan és hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között. Ha többet szeretne megtudni a HDInsight-fürtökkel rendelkező ML-szolgáltatások használatáról, tekintse meg a következő témaköröket:
 
-- [Az Apache Hadoop ML-szolgáltatásainak áttekintése](r-server-overview.md)
-- [Az Azure Storage lehetőségei az ML-szolgáltatásokhoz a HDInsightban](r-server-storage.md)
+- [A Apache Hadoop ML-szolgáltatásainak áttekintése](r-server-overview.md)
+- [Azure Storage-beállítások a HDInsight ML-szolgáltatásaihoz](r-server-storage.md)

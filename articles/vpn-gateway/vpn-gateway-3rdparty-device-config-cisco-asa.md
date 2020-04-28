@@ -1,6 +1,6 @@
 ---
-title: Mintakonfiguráció a Cisco ASA-eszközök Azure VPN-átjárókhoz való csatlakoztatásához
-description: Ez a cikk mintakonfigurációt biztosít a Cisco ASA-eszközök Azure-beli VPN-átjárókhoz való csatlakoztatásához.
+title: A Cisco ASA-eszközök Azure VPN Gateway-hez való csatlakoztatásának mintája
+description: Ez a cikk egy minta konfigurációt biztosít a Cisco ASA-eszközök Azure VPN Gateway-hez való csatlakoztatásához.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,115 +8,115 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75778082"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Mintakonfiguráció: Cisco ASA-eszköz (IKEv2/no BGP)
-Ez a cikk mintakonfigurációk at cisco adaptive security appliance (ASA) eszközök csatlakoztatásához az Azure VPN-átjárók. A példa azIKEv2-t a Border Gateway Protocol (BGP) nélkül futó Cisco ASA-eszközökre vonatkozik. 
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Példa konfiguráció: Cisco ASA-eszköz (IKEv2/nincs BGP)
+Ez a cikk példákat tartalmaz a Cisco adaptív biztonsági berendezés (ASA) eszközeinek Azure VPN Gateway-hez való csatlakoztatására. Ez a példa a IKEv2 rendszert futtató Cisco ASA-eszközökre vonatkozik a Border Gateway Protocol (BGP) nélkül. 
 
-## <a name="device-at-a-glance"></a>Eszköz egy pillantással
+## <a name="device-at-a-glance"></a>Eszköz dióhéjban
 
 |                        |                                   |
 | ---                    | ---                               |
 | Eszköz szállítója          | Cisco                             |
 | Eszközmodell           | ASA                               |
-| Célverzió         | 8.4 és újabb                     |
+| Cél verziója         | 8,4 és újabb verziók                     |
 | Tesztelt modell           | ASA 5505                          |
-| Tesztelt verzió         | 9.2                               |
-| Internetes kulcscsere verziója            | IKEv2                             |
+| Tesztelt verzió         | 9,2                               |
+| IKE-verzió            | IKEv2                             |
 | BGP                    | Nem                                |
-| Azure VPN-átjáró típusa | Útvonalalapú VPN-átjáró           |
+| Azure VPN Gateway típusa | Route-alapú VPN-átjáró           |
 |                        |                                   |
 
 > [!NOTE]
-> A mintakonfiguráció egy Cisco ASA-eszközt kapcsol össze egy **Azure-útvonalalapú** VPN-átjáróval. A kapcsolat egyéni IPsec/IKE-házirendet használ a **UsePolicyBasedTrafficSelectors** beállítással, a [jelen cikkben](vpn-gateway-connect-multiple-policybased-rm-ps.md)leírtak szerint.
+> A minta konfigurációja egy Cisco ASA-eszközt csatlakoztat egy Azure **Route-alapú** VPN-átjáróhoz. A kapcsolatok Egyéni IPsec/IKE-házirendet használnak a **UsePolicyBasedTrafficSelectors** beállítással, a [jelen cikkben](vpn-gateway-connect-multiple-policybased-rm-ps.md)leírtak szerint.
 >
-> A minta megköveteli, hogy az ASA-eszközök az **IKEv2-házirendet** hozzáférésilista-alapú konfigurációkkal használják, ne VTI-alapúkonfigurációkkal. A VPN-eszköz gyártójának specifikációiból ellenőrizheti, hogy az IKEv2 házirend támogatott-e a helyszíni VPN-eszközökön.
+> A minta megköveteli, hogy az ASA-eszközök a **IKEv2** szabályzatot használják hozzáférés-lista alapú konfigurációkkal, nem VTI. A VPN-eszközök gyártójának specifikációit megkeresve ellenőrizze, hogy a IKEv2 szabályzat támogatott-e a helyszíni VPN-eszközökön.
 
 
-## <a name="vpn-device-requirements"></a>A VPN-eszközökre vonatkozó követelmények
-Az Azure VPN-átjárók a szabványos IPsec/IKE protokollcsomagok használatával hozzák létre a helyek közötti (S2S) VPN-alagutakat. Az IPsec/IKE protokoll részletes paramétereit és az Azure VPN-átjárók alapértelmezett kriptográfiai algoritmusait a [VPN-eszközök – ismertető](vpn-gateway-about-vpn-devices.md)című témakörben olvashat.
+## <a name="vpn-device-requirements"></a>VPN-eszközre vonatkozó követelmények
+Az Azure VPN-átjárók a szabványos IPsec/IKE Protocol Suite-csomagokat használják helyek közötti (S2S) VPN-alagutak létrehozására. A részletes IPsec/IKE protokoll paramétereinek és az Azure VPN-átjárók alapértelmezett titkosítási algoritmusait lásd: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 
 > [!NOTE]
-> Megadhatja a kriptográfiai algoritmusok és a kulcserősségek pontos kombinációját egy adott kapcsolathoz, a [Kriptográfiai követelmények – ismertetés](vpn-gateway-about-compliance-crypto.md)e szerint. Ha az algoritmusok és a kulcserősségek pontos kombinációját adja meg, ügyeljen arra, hogy a megfelelő specifikációkat használja a VPN-eszközökön.
+> Megadhatja a titkosítási algoritmusok és a kulcsfontosságú erősségek pontos kombinációját egy adott kapcsolatok esetében a [titkosítási követelmények](vpn-gateway-about-compliance-crypto.md)című témakörben leírtak szerint. Ha az algoritmusok és a kulcsfontosságú erősségek pontos kombinációját adja meg, ügyeljen arra, hogy a megfelelő specifikációkat használja a VPN-eszközökön.
 
-## <a name="single-vpn-tunnel"></a>Egy VPN-alagút
-Ez a konfiguráció egyetlen S2S VPN-alagútból áll egy Azure VPN-átjáró és egy helyszíni VPN-eszköz között. A BGP-t a VPN-alagúton keresztül is konfigurálhatja.
+## <a name="single-vpn-tunnel"></a>Egyetlen VPN-alagút
+Ez a konfiguráció egyetlen S2S VPN-alagutat tartalmaz az Azure VPN Gateway és egy helyszíni VPN-eszköz között. Igény szerint konfigurálhatja a BGP-t a VPN-alagúton keresztül.
 
 ![Egyetlen S2S VPN-alagút](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Az Azure-konfigurációk létrehozásának lépésenkénti útmutatása az [egyVPN-alagút beállítása című témakörben található.](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)
+Az Azure-konfigurációk létrehozásával kapcsolatos részletes utasításokért lásd: [önálló VPN-alagút beállítása](vpn-gateway-3rdparty-device-config-overview.md#singletunnel).
 
-### <a name="virtual-network-and-vpn-gateway-information"></a>Virtuális hálózat és VPN-átjáró adatai
+### <a name="virtual-network-and-vpn-gateway-information"></a>Virtuális hálózat és VPN Gateway-információk
 Ez a szakasz a minta paramétereit sorolja fel.
 
 | **Paraméter**                | **Érték**                    |
 | ---                          | ---                          |
-| Virtuális hálózati cím előtagok        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Azure VPN-átjáró IP-címe         | Azure_Gateway_Public_IP      |
-| Helyszíni címelőtagok | 10.51.0.0/16<br>10.52.0.0/16 |
+| Virtuális hálózati címek előtagjai        | 10.11.0.0/16<br>10.12.0.0/16 |
+| Azure VPN Gateway IP-címe         | Azure_Gateway_Public_IP      |
+| Helyszíni címek előtagjai | 10.51.0.0/16<br>10.52.0.0/16 |
 | Helyszíni VPN-eszköz IP-címe    | OnPrem_Device_Public_IP     |
-| * Virtuális hálózat BGP ASN                | 65010                        |
-| * Az Azure BGP-társ IP-címe           | 10.12.255.30                 |
-| * Helyszíni BGP ASN         | 65050                        |
+| * Virtual Network BGP ASN-es                | 65010                        |
+| * Azure BGP-társ IP-címe           | 10.12.255.30                 |
+| * Helyszíni BGP ASN-es         | 65050                        |
 | * Helyszíni BGP-társ IP-címe     | 10.52.255.254                |
 |                              |                              |
 
-\*Csak a BGP-hez választható paraméter.
+\*Nem kötelező paraméter a BGP-hez.
 
-### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE házirend és paraméterek
-Az alábbi táblázat a mintában használt IPsec/IKE algoritmusokat és paramétereket sorolja fel. A VPN-eszköz specifikációiból ellenőrizheti a VPN-eszközmodellek és a belső vezérlőprogram-verziók által támogatott algoritmusokat.
+### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE-házirend és paraméterek
+A következő táblázat a mintában használt IPsec/IKE algoritmusokat és paramétereket sorolja fel. A VPN-eszközök és a belső vezérlőprogram verziója által támogatott algoritmusok ellenőrzéséhez forduljon a VPN-eszköz specifikációhoz.
 
 | **IPsec/IKEv2**  | **Érték**                            |
 | ---              | ---                                  |
 | IKEv2-titkosítás | AES256                               |
 | IKEv2-integritás  | SHA384                               |
 | DH-csoport         | DHGroup24                            |
-| * IPsec titkosítás | AES256                               |
-| * IPsec integritás  | SHA1                                 |
+| * IPsec-titkosítás | AES256                               |
+| * IPsec-integritás  | SHA1                                 |
 | PFS-csoport        | PFS24                                |
-| Gyorsmódú biztonsági társítás élettartama   | 7200 másodperc                         |
+| Gyorsmódú biztonsági társítás élettartama   | 7 200 másodperc                         |
 | Forgalomválasztó | UsePolicyBasedTrafficSelectors $True |
 | Előre megosztott kulcs   | PreSharedKey                         |
 |                  |                                      |
 
 \*Egyes eszközökön az IPsec-integritásnak null értékűnek kell lennie, ha az IPsec titkosítási algoritmus AES-GCM.
 
-### <a name="asa-device-support"></a>ASA-eszköz támogatás
+### <a name="asa-device-support"></a>ASA-eszközök támogatása
 
-* Az IKEv2 támogatásához az ASA 8.4-es és újabb verziója szükséges.
+* A IKEv2-támogatáshoz a 8,4-es és újabb ASA-verzió szükséges.
 
-* A DH-csoport és a PFS-csoport 5-ös csoportján túli támogatása az ASA 9.x verzióját igényli.
+* Az 5. csoporton túli DH-csoport és PFS-csoport támogatásához az ASA 9-es. x verziója szükséges.
 
-* Az IPsec-titkosítás sHA-256, SHA-384 vagy SHA-512 titkosítással való támogatása az ASA 9.x-es verzióját igényli. Ez a támogatási követelmény az újabb ASA-eszközökre vonatkozik. A közzététel időpontjában az ASA 5505, 5510, 5520, 5540, 5550 és 5580 modellek nem támogatják ezeket az algoritmusokat. A VPN-eszköz specifikációiból ellenőrizheti a VPN-eszközmodellek és a belső vezérlőprogram-verziók által támogatott algoritmusokat.
+* Az AES-GCM és az IPsec-integritás és az SHA-256, az SHA-384, vagy az SHA-512 használatával történő IPsec-titkosítás támogatása az ASA 9-es. x verzióját igényli. Ez a támogatási követelmény az újabb ASA-eszközökre vonatkozik. A közzététel időpontjában a 5505, 5510, 5520, 5540, 5550 és 5580 ASA-modellek nem támogatják ezeket az algoritmusokat. A VPN-eszközök és a belső vezérlőprogram verziója által támogatott algoritmusok ellenőrzéséhez forduljon a VPN-eszköz specifikációhoz.
 
 
-### <a name="sample-device-configuration"></a>Mintaeszköz konfigurációja
-A parancsfájl egy minta, amely az előző szakaszokban ismertetett konfiguráción és paramétereken alapul. Az S2S VPN-alagút konfigurációja a következő részekből áll:
+### <a name="sample-device-configuration"></a>Minta-eszköz konfigurációja
+A parancsfájl egy olyan mintát biztosít, amely az előző szakaszokban leírt konfigurációtól és paraméterektől függ. A S2S VPN-alagút konfigurációja a következő részekből áll:
 
-1. Kapcsolódási pontok és útvonalak
+1. Felületek és útvonalak
 2. Hozzáférési listák
-3. IkE-házirend és paraméterek (1. fázis vagy alapmód)
-4. IPsec-házirend és paraméterek (2. fázis vagy gyorsmód)
-5. Egyéb paraméterek, mint például a TCP MSS befogás
+3. IKE-házirend és-paraméterek (1. fázis vagy Main Mode)
+4. IPsec-házirend és paraméterek (2. fázis vagy gyors mód)
+5. Egyéb paraméterek, például TCP MSS-befogó
 
 > [!IMPORTANT]
-> A mintaparancsfájl használata előtt hajtsa végre a következő lépéseket. Cserélje le a parancsfájl helyőrző értékeit a konfiguráció eszközbeállításaira.
+> A minta parancsfájl használata előtt végezze el a következő lépéseket. Cserélje le a parancsfájlban szereplő helyőrző értékeket a konfiguráció eszközbeállítások értékére.
 
-* Adja meg a kapcsolat konfigurációját mind a belső, mind a külső összeköttetésekhez.
-* Azonosítsa a belső/magán- és külső/nyilvános hálózatok útvonalait.
-* Győződjön meg arról, hogy minden név és házirendszám egyedi az eszközön.
-* Győződjön meg arról, hogy a kriptográfiai algoritmusok támogatottak az eszközön.
+* A belső és külső felületek felületi konfigurációjának megadása.
+* Azonosítsa a belső/magán-és kívüli/nyilvános hálózatokon lévő útvonalakat.
+* Győződjön meg arról, hogy az eszközön a nevek és a szabályzatok száma egyedi.
+* Győződjön meg arról, hogy az eszközön a titkosítási algoritmusok támogatottak.
 * Cserélje le a következő **helyőrző értékeket** a konfiguráció tényleges értékeire:
-  - Külső kapcsolat neve: **kívül**
+  - Külső felület neve: **kívül**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - Virtuális hálózat és helyi hálózati átjárónevek: **VNetName** és **LNGName**
-  - Virtuális hálózati és helyszíni hálózati **címelőtagok**
+  - Virtuális hálózat és helyi hálózati átjáró neve: **VNetName** és **LNGName**
+  - Virtuális hálózat és helyszíni hálózati címek **előtagjai**
   - Megfelelő **netmasks**
 
 #### <a name="sample-script"></a>Példaszkript
@@ -274,9 +274,9 @@ sysopt connection tcpmss 1350
 
 ## <a name="simple-debugging-commands"></a>Egyszerű hibakeresési parancsok
 
-Hibakereséscéljából használja az alábbi ASA-parancsokat:
+Hibakeresési célokra használja az alábbi ASA-parancsokat:
 
-* Az IPsec vagy az IKE biztonsági társításának (SA) megjelenítése:
+* Az IPsec vagy az IKE biztonsági társítás (SA) megjelenítése:
     ```
     show crypto ipsec sa
     show crypto ikev2 sa
@@ -287,13 +287,13 @@ Hibakereséscéljából használja az alábbi ASA-parancsokat:
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    A `debug` parancsok jelentős kimenetet generálhatnak a konzolon.
+    A `debug` parancsok jelentős kimenetet hozhatnak ki a konzolon.
 
 * Az eszköz aktuális konfigurációinak megjelenítése:
     ```
     show run
     ```
-    Az `show` alparancsokkal az eszköz konfigurációjának egyes részeit sorolhat fel, például:
+    Alparancsok használata `show` az eszköz konfigurációjának bizonyos részeinek listázásához, például:
     ```
     show run crypto
     show run access-list
@@ -301,4 +301,4 @@ Hibakereséscéljából használja az alábbi ASA-parancsokat:
     ```
 
 ## <a name="next-steps"></a>További lépések
-Az aktív-aktív létesítmények közötti és a virtuális hálózat és a virtuális hálózat közötti kapcsolatok konfigurálása az [aktív-aktív VPN-átjárók konfigurálása](vpn-gateway-activeactive-rm-powershell.md)című témakörben található.
+Az aktív-aktív létesítmények közötti és VNet kapcsolatok konfigurálásával kapcsolatban lásd: [Active-Active VPN Gateway-átjárók konfigurálása](vpn-gateway-activeactive-rm-powershell.md).

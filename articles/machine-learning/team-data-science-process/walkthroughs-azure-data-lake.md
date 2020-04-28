@@ -1,6 +1,6 @@
 ---
-title: Analytics az U-SQL használatával az Azure Data Lake-en – Csapatadat-elemzési folyamat
-description: Példák, amelyek végigvezetik az U-SQL használatával az Azure Data Lake-ben a prediktív elemzésekhez.
+title: Elemzés a U-SQL használatával Azure Data Lake-Team adatelemzési folyamaton
+description: Példák az U-SQL on Azure Data Lake használatára a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864179"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Az Azure Data Lake adatelemzési forgatókönyvei az U-SQL használatával
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Adatelemzési útmutató Azure Data Lake a U-SQL használatával
 
-Ezek a forgatókönyvek az U-SQL és az Azure Data Lake segítségével prediktív elemzéseket végeznek. A csapatadat-elemzési folyamatban ismertetett lépéseket követik. A csapatadat-elemzési folyamat áttekintését az [Adatelemzési folyamat című](overview.md)témakörben találja. Az Azure Data Lake bemutatása az [Azure Data Lake Áruház áttekintése című témakörben található.](../../data-lake-store/data-lake-store-overview.md)
+Ezek a forgatókönyvek a U-SQL-t használják Azure Data Lake a prediktív elemzések elvégzéséhez. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A Azure Data Lake bevezetését lásd: [Azure Data Lake Store áttekintése](../../data-lake-store/data-lake-store-overview.md).
 
-További adatelemzési forgatókönyvek, amelyek végrehajtják a csapat adatelemzési folyamat az általuk használt **platform** szerint vannak csoportosítva. Lásd: [A csapatadat-elemzési folyamatot végrehajtó forgatókönyvek](walkthroughs.md) a példák részletezéséhez.
+A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Taxitippek előrejelzése az U-SQL használatával az Azure Data Lake segítségével
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Az U-SQL és a Azure Data Lake használatával megjósolható a taxi
 
-Az [Azure Data-tó használata adatelemzési](data-lake-walkthrough.md) forgatókönyvben bemutatja, hogyan használhatja az Azure Data Lake-et az adatok feltárására és a bináris besorolási feladatokra.  Az adatok a NYC taxi adatkészlet minta.  A feladat előre jelzi, hogy egy tippet egy vevő fizet-e vagy sem. 
+Az [adatelemzési útmutató Azure Data Lake használata](data-lake-walkthrough.md) című cikk azt mutatja be, hogyan használhatók az adatfelderítési és a bináris besorolási feladatok Azure Data Lake.  Az adat a New York-i taxi adatkészletének mintája.  A feladat előre jelzi, hogy az ügyfél fizetett-e borravalót. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A csapatadat-elemzési folyamat áttekintését a [Csapat adatelemzési folyamatának áttekintése című témakörben találja.](overview.md)
+A csoportos adatelemzési folyamat áttekintését lásd: a [csoportos adatelemzési folyamat áttekintése](overview.md).
 
-A csapatadat-elemzési folyamat életciklusának témakörét a [Csapatadat-elemzési folyamat életciklusa című témakörben közöld.](lifecycle.md) Ez az életciklus ismerteti azokat a lépéseket, amelyeket a projektek általában végrehajtva követnek. 
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus azokat a lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk során követnek. 

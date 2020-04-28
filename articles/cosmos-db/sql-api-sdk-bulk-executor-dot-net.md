@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Tömeges végrehajtó .NET API, SDK & erőforrások'
-description: Tudjon meg mindent a tömeges végrehajtó .NET API és SDK beleértve a kiadási dátumokat, a megszüntetési dátumokat és az Azure Cosmos DB tömeges végrehajtó .NET SDK egyes verziói között végrehajtott módosításokat.
+title: 'Azure Cosmos DB: tömeges végrehajtó .NET API, SDK &-erőforrások'
+description: Ismerkedjen meg a tömeges végrehajtó .NET API-val és az SDK-val, beleértve a kiadási dátumokat, a kivonási dátumokat és a Azure Cosmos DB tömeges végrehajtó .NET SDK egyes verzióiban végrehajtott módosításokat.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,152 +9,152 @@ ms.topic: reference
 ms.date: 01/16/2020
 ms.author: ramkris
 ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169401"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó tár: Letöltési információk 
+# <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: letöltési információ 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Aszinkron Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **Leírás**| A .Net tömeges végrehajtó könyvtár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket hajtsanak végre az Azure Cosmos DB-fiókokon. Ez a tár bulkimport, bulkupdate és bulkdelete névtereket biztosít. A BulkImport modul tömegesen betudja adni a dokumentumokat optimalizált módon, így a gyűjteményhez kiépített átviteli teljesítmény a lehető legnagyobb mértékben felhasználásra kerül. A BulkUpdate modul tömegesen frissítheti a meglévő adatokat az Azure Cosmos-tárolókban javításként. A BulkDelete modul tömegesen törölheti a dokumentumokat optimalizált módon, hogy a gyűjteményhez kiépített átviteli teljesítmény a lehető legnagyobb mértékben felhasználásra kerüljön.|
-|**SDK letöltés**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **Tömeges végrehajtó könyvtár a GitHubon**| [Github](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API-dokumentáció**|[.NET API referenciadokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Első lépések**|[Első lépések a tömeges végrehajtó könyvtár (.NET SDK) segítségével](bulk-executor-dot-net.md)|
-| **Jelenlegi támogatott keretrendszer**| Microsoft . |
+| **Leírás**| A .net tömeges végrehajtó függvénytár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket végezzenek Azure Cosmos DB fiókokon. Ez a függvénytár BulkImport, BulkUpdate és BulkDelete névtereket biztosít. A BulkImport modul képes a dokumentumok egy optimalizált módon történő betöltésére, így a gyűjtemény számára kiépített átviteli sebesség a maximális mértékben felhasználható. A BulkUpdate modul a meglévő, az Azure Cosmos-tárolókban tárolt adatmennyiséget javításként is frissítheti. A BulkDelete modul képes a dokumentumok tömeges törlésére olyan optimalizált módon, hogy a gyűjteményhez kiépített átviteli sebesség a maximális mértékig legyen felhasználva.|
+|**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+| **Tömeges végrehajtó könyvtár a GitHubban**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+|**API-dokumentáció**|[.NET API-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Bevezetés**|[Ismerkedés a tömeges végrehajtó függvénytár .NET SDK-val](bulk-executor-dot-net.md)|
+| **Jelenleg támogatott keretrendszer**| Microsoft .NET Framework 4.5.2, 4.6.1 és .NET Standard 2,0 |
 
 > [!NOTE]
-> Tömeges végrehajtó használata esetén tekintse meg a [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md)legújabb 3.x verzióját, amelynek az SDK-ba beépített tömeges végrehajtója van beépítve. 
+> Ha tömeges végrehajtót használ, tekintse meg a [.net SDK](tutorial-sql-api-dotnet-bulk-import.md)legújabb 3. x verzióját, amely az SDK-ba épített tömeges végrehajtót tartalmaz. 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1-előnézet
+### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1 – előzetes verzió
 
-* Javítva: TotalElapsedTime a BulkDelete válaszában, hogy pontosan mérje a teljes időt, beleértve az újrapróbálkozásokat is.
+* A BulkDelete válaszában rögzített TotalElapsedTime, hogy megfelelően mérje a teljes időt, beleértve az újrapróbálkozásokat is.
 
-### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0-előnézet
+### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0 – előzetes verzió
 
-* Az SDK-függőség módosítása >= 2.5.1
+* Módosult az SDK-függőség a következőre: >= 2.5.1
 
-### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0 – Preview2
 
-* Hozzáadott támogatása grafikon tömeges végrehajtó elfogadja ttl a csúcsok és élek
+* A Graph tömeges végrehajtó támogatása a csúcspontok és élek élettartamának elfogadásához
 
-### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0 – Preview2
 
-* Kijavítottuk azt a problémát, amely az Azure Cosmos DB rugalmas méretezése során kivételeket okozott, amikor átjáró módban fut. Ez a javítás funkcionálisan egyenértékűvé teszi az 1.4.1 kiadásnak.
+* Kijavított egy problémát, amely kivételeket okozott a Azure Cosmos DB rugalmas skálázása során, ha átjáró módban fut. Ez a javítás az 1.4.1-es kiadással egyenértékű működést tesz lehetővé.
 
-### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0 – Preview2
 
-* BulkDelete támogatás hozzáadva az SQL API-fiókokhoz a partíciókulcs, a törlendő dokumentumazonosítók elfogadásához. Ez a változás funkcionálisan egyenértékűvé teszi az 1.4.0 kiadással.
+* BulkDelete-támogatás hozzáadva az SQL API-fiókokhoz a partíciós kulcs elfogadásához, a rekordok törléséhez. Ez a módosítás a 1.4.0-kiadásnak megfelelő működést tesz lehetővé.
 
-### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0 – Preview2
 
-* Beleértve a MongoBulkExecutor t a .NET Standard 2.0 támogatásával. Ez a funkció funkcionálisan egyenértékűvé teszi az 1.3.0 kiadással, a .NET Standard 2.0 támogatásával.
+* A .NET Standard 2,0-et támogató MongoBulkExecutor is beleértve. Ez a funkció lehetővé teszi, hogy az a 1.3.0-kiadásnak megfelelően működjön, és a .NET Standard 2,0-et a célként megadott keretrendszerként támogatja.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-előzetes
+### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0 – előzetes verzió
 
-* A .NET Standard 2.0 a támogatott célkeretrendszerek egyikeként adható hozzá, hogy a tömeges végrehajtó könyvtár működjön a .NET Core alkalmazásokkal.
+* A .NET Standard 2,0 a támogatott cél keretrendszerek egyike, hogy a tömeges végrehajtó függvénytár működjön a .NET Core-alkalmazásokkal.
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 
-* Kijavítottuk a MongoBulkExecutor egyik problémánkat, amely a dokumentum méretének váratlan növelését okozta a kitöltés hozzáadásával, és bizonyos esetekben túllépte a dokumentum maximális méretkorlátját.
+* Javítva lett egy olyan probléma a MongoBulkExecutor, amely a dokumentum méretét váratlanul megnövelte a kitöltés hozzáadásával és bizonyos esetekben a dokumentum maximális méretére vonatkozó korláttal.
 
 ### <a name="187"></a><a name="1.8.7"/>1.8.7
 
-* Kijavítottuk a BulkDeleteAsync hibáját, amikor a gyűjtemény beágyazta a partíciókulcs elérési útjait.
+* A BulkDeleteAsync hibája javítva, ha a gyűjtemény beágyazott partíciós kulcs elérési utakat tartalmaz.
 
 ### <a name="186"></a><a name="1.8.6"/>1.8.6
 
-* A MongoBulkExecutor most már megvalósítja az IDisposable-ot, és használat után várhatóan ártalmatlanítani fog.
+* A MongoBulkExecutor most megvalósítja a IDisposable-t, és a használat után várhatóan el lesz távolítva.
 
 ### <a name="185"></a><a name="1.8.5"/>1.8.5
 
-* Eltávolítottzár az SDK verzióján. A csomag mostantól az SDK-tól függ, >= 2.5.1.
+* Az SDK-verzió zárolása törölve. A csomag mostantól függ az SDK >= 2.5.1-től.
 
 ### <a name="184"></a><a name="1.8.4"/>1.8.4
 
-* Az azonosítók kezelése rögzített, amikor a BulkImport-ot numerikus értékekkel rendelkező POCO-objektumok listájával hívta meg.
+* Az azonosítók rögzített kezelése a BulkImport hívásakor numerikus értékkel rendelkező POCO objektumok listájával.
 
 ### <a name="183"></a><a name="1.8.3"/>1.8.3
 
-* Javítva: TotalElapsedTime a BulkDelete válaszában, hogy pontosan mérje a teljes időt, beleértve az újrapróbálkozásokat is.
+* A BulkDelete válaszában rögzített TotalElapsedTime, hogy megfelelően mérje a teljes időt, beleértve az újrapróbálkozásokat is.
 
 ### <a name="182"></a><a name="1.8.2"/>1.8.2
 
-* Rögzített magas CPU-fogyasztás bizonyos forgatókönyvek.
-* A nyomkövetés mostantól tracesource-t használ. A felhasználók meghatározhatják a `BulkExecutorTrace` forrás figyelőit.
-* Javítva egy ritka eset, amely a 2Mb méretű dokumentumok küldésekor zárolást okozhat.
+* Rögzített magas CPU-felhasználás bizonyos helyzetekben.
+* A nyomkövetés mostantól a TraceSource-t használja. A felhasználók megadhatnak figyelőket `BulkExecutorTrace` a forráshoz.
+* Rögzített egy ritka forgatókönyv, amely zárolást okozhat a dokumentumok 2 MB-os méretének közelében történő küldésekor.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
 
-* Frissítve a tömeges végrehajtó, hogy most már az Azure Cosmos DB .NET SDK (2.4.0) legújabb verzióját használja
+* Frissítette a tömeges végrehajtót, hogy most a Azure Cosmos DB .NET SDK (2.4.0) legújabb verzióját használja.
 
 ### <a name="150"></a><a name="1.5.0"/>1.5.0
 
-* Hozzáadott támogatása grafikon tömeges végrehajtó elfogadja ttl a csúcsok és élek
+* A Graph tömeges végrehajtó támogatása a csúcspontok és élek élettartamának elfogadásához
 
 ### <a name="141"></a><a name="1.4.1"/>1.4.1
 
-* Kijavítottuk azt a problémát, amely az Azure Cosmos DB rugalmas méretezése során kivételeket okozott, amikor átjáró módban fut.
+* Kijavított egy problémát, amely kivételeket okozott a Azure Cosmos DB rugalmas skálázása során, ha átjáró módban fut.
 
 ### <a name="140"></a><a name="1.4.0"/>1.4.0
 
-* BulkDelete támogatás hozzáadva az SQL API-fiókokhoz a partíciókulcs, a törlendő dokumentumazonosítók elfogadásához.
+* BulkDelete-támogatás hozzáadva az SQL API-fiókokhoz a partíciós kulcs elfogadásához, a rekordok törléséhez.
 
 ### <a name="130"></a><a name="1.3.0"/>1.3.0
 
-* Kijavítottunk egy problémát, amely a tömeges végrehajtó által használt felhasználói ügynök formázási problémája miatt történt.
+* Kijavított egy problémát, amely a tömeges végrehajtó által használt felhasználói ügynök formázási hibáját okozta.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 
-* A tömeges végrehajtó importálása és az API-k frissítése a Cosmos-tároló rugalmas méretezéséhez való transzparens módon történő adaptálása érdekében, ha a tárolás kivételek nélkül meghaladja az aktuális kapacitást.
+* Továbbfejlesztettük a tömeges végrehajtó importálási és frissítési API-kat, hogy transzparens módon igazodjanak a Cosmos-tároló rugalmas skálázásához, ha a tárterület meghaladja a jelenlegi kapacitást a kivételek nélkül.
 
 ### <a name="112"></a><a name="1.1.2"/>1.1.2
 
-* A DocumentDB .NET SDK-függőség 2.1.3-as verzióra emelt.
+* A DocumentDB .NET SDK függőségének összeütközött a 2.1.3-es verzióra.
 
 ### <a name="111"></a><a name="1.1.1"/>1.1.1
 
-* Kijavítottuk azt a hibát, amely miatt a tömeges végrehajtó jsrt-hibát okozott a rögzített gyűjtemények importálása közben.
+* Kijavított egy problémát, amely a tömeges végrehajtót okozta, hogy JSRT hibát okozott a rögzített gyűjteményekbe való importálás során.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
 
-* Az Azure Cosmos DB SQL API-fiókok BulkDelete művelettámogatása hozzáadva.
-* Az Azure Cosmos DB MongoDB-hez való API-jával rendelkező fiókok bulkimport-műveletének támogatása.
-* A DocumentDB .NET SDK-függőség 2.0.0-s verzióra emelt. 
+* A BulkDelete művelet támogatása a Azure Cosmos DB SQL API-fiókokhoz.
+* A BulkImport művelet támogatása a Azure Cosmos DB API-MongoDB rendelkező fiókokhoz.
+* A DocumentDB .NET SDK függőségének a 2.0.0 verziójára ütközött. 
 
 ### <a name="102"></a><a name="1.0.2"/>1.0.2
 
-* Az Azure Cosmos DB Gremlin API-fiókok BulkImport-művelet támogatása.
+* A BulkImport művelet támogatása a Azure Cosmos DB Gremlin API-fiókokhoz.
 
 ### <a name="101"></a><a name="1.0.1"/>1.0.1
 
-* Kisebb hibajavítás az Azure Cosmos DB SQL API-fiókok BulkImport műveletéhez.
+* Kisebb hibajavítás a BulkImport művelethez Azure Cosmos DB SQL API-fiókokhoz.
 
 ### <a name="100"></a><a name="1.0.0"/>1.0.0
 
-* Az Azure Cosmos DB SQL API-fiókok BulkImport és BulkUpdate műveleteinek támogatása hozzáadva.
+* A BulkImport-és BulkUpdate-műveletek támogatása a Azure Cosmos DB SQL API-fiókokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-A tömeges végrehajtó Java-könyvtáráról az alábbi cikkben olvashat:
+A tömeges végrehajtó Java-függvénytárat a következő cikkben tekintheti meg:
 
 [Java tömeges végrehajtó könyvtár SDK és kiadási információk](sql-api-sdk-bulk-executor-java.md)

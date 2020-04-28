@@ -1,6 +1,6 @@
 ---
-title: Az Azure importálási/exportálási eszköz hibáinak elhárítása | Microsoft dokumentumok
-description: Ismerje meg az Azure importálási/exportálási eszköz használata során észlelt gyakori problémákat, és hogyan kezelhető.
+title: Az Azure import/export eszköz hibaelhárítása | Microsoft Docs
+description: Ismerkedjen meg az Azure import/export eszköz használata során felmerülő gyakori problémákról és azok kezeléséről.
 author: twooley
 services: storage
 ms.service: storage
@@ -9,31 +9,31 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 4eeeb538bcd39eed40a92dd45e7ba7bed25558e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978407"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz hibaelhárítása
-A Microsoft Azure importálási/exportálási eszköz hibaüzeneteket ad vissza, ha problémákba ütközik. Ez a témakör néhány gyakori problémát sorol fel, amelyekkel a felhasználók problémák kalkulezek be.  
+A Microsoft Azure Import/Export eszköz hibaüzeneteket ad vissza, ha problémákba ütközik. Ez a témakör felsorolja azokat a gyakori problémákat, amelyekkel a felhasználók futhatnak.  
 
-## <a name="a-copy-session-fails-what-i-should-do"></a>A másolási munkamenet sikertelen, mit kell tennem?  
- Ha egy másolási munkamenet sikertelen, két lehetőség közül választhat:  
+## <a name="a-copy-session-fails-what-i-should-do"></a>A másolási munkamenet meghiúsul, mit kell tennem?  
+ Ha egy másolási munkamenet meghiúsul, két lehetőség közül választhat:  
 
- Ha a hiba újrapróbálkozásra képes, például ha a hálózati megosztás rövid ideig offline állapotban volt, és most újra online állapotba került, folytathatja a másolási munkamenetet. Ha a hiba nem próbálható meg újra, például ha nem a megfelelő forrásfájlkönyvtárat adta meg a parancssori paraméterekben, meg kell szakítania a másolási munkamenetet. A másolási munkamenetek folytatásáról és megszakításáról a [Merevlemezek előkészítése importálási feladathoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md) című témakörben talál további információt.  
+ Ha a hiba újrapróbálható, például ha a hálózati megosztás rövid ideig offline állapotban van, és most újra online állapotú, akkor folytathatja a másolási munkamenetet. Ha a hiba nem újrapróbálható, például ha helytelen forrásfájl-könyvtárat adott meg a parancssori paraméterekben, meg kell szakítania a másolási munkamenetet. A másolási munkamenetek folytatásával és megszakításával kapcsolatos további információkért lásd: [merevlemezek előkészítése importálási](../storage-import-export-tool-preparing-hard-drives-import-v1.md) feladatokhoz.  
 
-## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nem lehet folytatni vagy megszakítani a másolási munkamenetet  
- Ha a másolási munkamenet a meghajtó első másolási munkamenete, akkor a hibaüzenetnek a következőt kell kimondania: "Az első másolási munkamenet nem folytatható vagy szakítható meg." Ebben az esetben törölheti a régi naplófájlt, és újrafuttathatja a parancsot.  
+## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nem tudom folytatni vagy megszakítani a másolási munkamenetet.  
+ Ha a másolási munkamenet a meghajtó első másolási munkamenete, akkor a hibaüzenetnek meg kell jelennie: "az első másolási munkamenet nem folytatható és nem szakítható meg." Ebben az esetben törölheti a régi naplófájlt, és újra futtathatja a parancsot.  
 
- Ha a másolási munkamenet nem az első, amely a meghajtóhoz tartozik, bármikor folytatható vagy megszakítható.  
+ Ha a másolási munkamenet nem az első egy meghajtóhoz, akkor mindig folytatható vagy megszakítható.  
 
-## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Elvesztettem a naplófájlt, létrehozhatom a feladatot?  
- A meghajtó naplófájlja tartalmazza az adatok erre a meghajtóra történő másolásának teljes adatait, és további fájlok hozzáadására van szükség a meghajtóhoz, és importálási feladat létrehozásához használható. Ha a naplófájl elvész, újra kell csinálnia a meghajtó összes másolási munkamenetét.  
+## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Elveszítettem a naplófájlt, továbbra is létrehozhatom a feladatot?  
+ A meghajtóhoz tartozó naplófájl tartalmazza az adatoknak a meghajtóra másolásának teljes adatait, és szükség van további fájlok hozzáadására a meghajtóhoz, és az importálási feladatok létrehozásához lesz használva. Ha a naplófájl elvész, a meghajtó összes másolási munkamenetét újra meg kell ismételni.  
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az azure importálási/exportálási eszköz beállítása](../storage-import-export-tool-setup-v1.md)   
+* [Az Azure import/export eszköz beállítása](../storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Feladatok állapotának áttekintése a másolási naplófájlokkal](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Importálási feladat javítása](../storage-import-export-tool-repairing-an-import-job-v1.md)   

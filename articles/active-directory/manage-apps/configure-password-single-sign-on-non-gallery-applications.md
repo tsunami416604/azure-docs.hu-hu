@@ -1,6 +1,6 @@
 ---
-title: A jelszó egyszeri bejelentkezése az Azure AD-alkalmazásokhoz | Microsoft dokumentumok
-description: Jelszó egyszeri bejelentkezés (SSO) beállítása az Azure AD vállalati alkalmazásokhoz a Microsoft identity platformon (Azure AD)
+title: Az Azure AD-alkalmazások jelszavas egyszeri bejelentkezésének konfigurálása | Microsoft Docs
+description: Jelszavas egyszeri bejelentkezés (SSO) konfigurálása Azure AD vállalati alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,87 +12,87 @@ ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063526"
 ---
-# <a name="configure-password-single-sign-on"></a>Jelszó egyszeri bejelentkezéskonfigurálása
+# <a name="configure-password-single-sign-on"></a>Jelszó egyszeri bejelentkezésének konfigurálása
 
-Amikor [hozzáad egy katalógusalkalmazást](add-gallery-app.md) vagy egy [nem galéria alapú webalkalmazást](add-non-gallery-app.md) az Azure AD Enterprise Applications alkalmazáshoz, az egyetlen bejelentkezési lehetőségek egyike a [jelszóalapú egyszeri bejelentkezés.](what-is-single-sign-on.md#password-based-sso) Ez a beállítás minden HTML-bejelentkezési lappal rendelkező webhelyen elérhető. Jelszóalapú egyszeri bejelentkezés, más néven jelszó-tároló, lehetővé teszi a felhasználói hozzáférés és jelszavak kezelését olyan webalkalmazásokhoz, amelyek nem támogatják az identitás-összevonást. Ez olyan esetekben is hasznos, amikor több felhasználónak kell megosztania egyetlen fiókot, például a szervezet közösségi média alkalmazásfiókjaival. 
+Ha [egy Gallery-alkalmazást](add-gallery-app.md) vagy egy [nem Gallery-webalkalmazást](add-non-gallery-app.md) AD hozzá az Azure ad vállalati alkalmazásaihoz, az egyik elérhető egyszeri bejelentkezési lehetőség a [jelszó-alapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso). Ez a lehetőség bármely, HTML-alapú bejelentkezési oldallal rendelkező web esetében elérhető. A jelszó-alapú egyszeri bejelentkezés (más néven a jelszó-tároló) lehetővé teszi a felhasználók hozzáférésének és jelszavának kezelését az identitás-összevonást nem támogató webalkalmazásokhoz. Olyan helyzetekben is hasznos, amikor több felhasználónak egyetlen fiókot kell megosztania, például a szervezete közösségi Media app-fiókjaival. 
 
-A jelszóalapú egyszeri bejelentkezés segítségével gyorsan elkezdheti integrálni az alkalmazásokat az Azure AD-be, és lehetővé teszi a következőket:
+A jelszó-alapú egyszeri bejelentkezés nagyszerű lehetőséget biztosít az alkalmazások Azure AD-ba való integrálásának gyors megkezdésére, és lehetővé teszi a következőket:
 
--   Egyszeri bejelentkezés engedélyezése a felhasználók számára az Azure **AD-vel** integrált alkalmazás felhasználónevének és jelszavának biztonságos tárolásával és visszajátszásával
+-   Engedélyezze az **egyszeri bejelentkezést a felhasználók** számára az Azure ad-vel integrált alkalmazáshoz tartozó felhasználónevek és jelszavak biztonságos tárolásával és visszajátszásával
 
--   **Olyan alkalmazások támogatása, amelyek több bejelentkezési mezőt igényelnek** olyan alkalmazásokhoz, amelyek nem csak felhasználónév- és jelszómezőket igényelnek a bejelentkezéshez
+-   Olyan alkalmazások **támogatása, amelyeknek több bejelentkezési mezőre van szükségük** olyan alkalmazásokhoz, amelyek több, mint a Felhasználónév és a jelszó mezőt igényelnek a bejelentkezéshez
 
--   A felhasználók által az [Alkalmazás-hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) a hitelesítő adatok megadásakor a felhasználónév- és jelszóbeviteli mezők **címkéinek testreszabása**
+-   A felhasználónevek és jelszavak beviteli mezőinek **testreszabása** a felhasználók számára az alkalmazás- [hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) a hitelesítő adatok megadásakor
 
--   Annak engedélyezése, hogy a **felhasználók** saját felhasználónevüket és jelszavukat adják meg az [alkalmazáshoz való hozzáférés panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) beírt meglévő alkalmazásfiókokhoz.
+-   Saját felhasználónevek és jelszavak megadásának engedélyezése a **felhasználók** számára az [alkalmazás-hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) manuálisan begépelt összes meglévő alkalmazás-fiókhoz
 
--   Az **üzleti csoport egy tagjának** engedélyezheti, hogy az [Önkiszolgáló alkalmazáselérés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) szolgáltatás használatával adja meg a felhasználóhoz rendelt felhasználóneveket és jelszavakat
+-   A felhasználóhoz rendelt felhasználónevek és jelszavak megadásának engedélyezése az **üzleti csoport tagjai** számára az [önkiszolgáló alkalmazás-hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) szolgáltatás használatával
 
--   A **hitelesítő** adatok frissítése szolgáltatással a rendszergazda megadhatja azt a felhasználónevet és jelszót, amelyet személyek vagy csoportok használnak az alkalmazásba való bejelentkezéskor. 
+-   Annak engedélyezése, hogy a **rendszergazda** megadhatja a felhasználók vagy csoportok által az alkalmazásba való bejelentkezéskor használandó felhasználónevet és jelszót a hitelesítő adatok frissítése funkció használatával. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha az alkalmazás még nem lett hozzáadva az Azure AD-bérlőhöz, olvassa el [a Katalógusalkalmazás hozzáadása](add-gallery-app.md) vagy a Nem galériaalkalmazás hozzáadása című [témakört.](add-non-gallery-app.md)
+Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a Gallery-alkalmazás hozzáadása](add-gallery-app.md) vagy [a nem Gallery-alkalmazás hozzáadása](add-non-gallery-app.md)című témakört.
 
-## <a name="open-the-app-and-select-password-single-sign-on"></a>Az alkalmazás megnyitása és a jelszó egyszeri bejelentkezésének kiválasztása
+## <a name="open-the-app-and-select-password-single-sign-on"></a>Nyissa meg az alkalmazást, és válassza a jelszó egyszeri bejelentkezés lehetőséget.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) egy felhőalapú alkalmazás-rendszergazdaként, vagy egy alkalmazás-rendszergazda az Azure AD-bérlő.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-2. Nyissa meg az **Azure Active Directory** > **Enterprise alkalmazásokat.** Az Azure AD-bérlőben lévő alkalmazások véletlenszerű mintája jelenik meg. 
+2. Navigáljon **Azure Active Directory** > **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
 
-3. Az **Alkalmazás típusa** menüben válassza a **Minden alkalmazás**lehetőséget, majd az **Alkalmaz parancsot.**
+3. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
-4. Írja be az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
+4. Adja meg az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
 
-5. A **Kezelés csoportban** válassza az **Egyszeri bejelentkezés**lehetőséget. 
+5. A **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget. 
 
-6. Válassza **a Jelszó alapú lehetőséget.**
+6. Válassza a **jelszó-alapú**lehetőséget.
 
-7. Adja meg az alkalmazás webalapú bejelentkezési lapjának URL-címét. Ennek a karakterláncnak a felhasználónév beviteli mezőjét tartalmazó lapnak kell lennie.
+7. Adja meg az alkalmazás webalapú bejelentkezési oldalának URL-címét. A karakterláncnak a Felhasználónév beviteli mezőjét tartalmazó oldalnak kell lennie.
 
-   ![Jelszóalapú egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Jelszó alapú egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési lapot egy felhasználónév-bemenethez és egy jelszóbemenethez. Ha a kísérlet sikerrel jár, véged. 
+8. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési oldalt a Felhasználónév-bevitelhez és a jelszó beviteléhez. Ha a kísérlet sikeres, elkészült. 
  
 > [!NOTE]
-> A következő lépés a [felhasználók vagy csoportok hozzárendelése az alkalmazáshoz.](methods-for-assigning-users-and-groups.md) Miután hozzárendelte a felhasználókat és csoportokat, megadhat hitelesítő adatokat, amelyeket a felhasználó nevében használhat, amikor bejelentkeznek az alkalmazásba. Jelölje be a **Felhasználók és csoportok**jelölőnégyzetet a felhasználó vagy a csoport sorában, majd kattintson a Hitelesítő adatok frissítése **gombra.** Ezután adja meg a felhasználó vagy csoport nevében használandó felhasználónevet és jelszót. Ellenkező esetben a rendszer felszólítja a felhasználókat, hogy az indításkor maguk adják meg a hitelesítő adatokat.
+> A következő lépés a [felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md). A felhasználók és csoportok hozzárendelése után megadhatja a felhasználó nevében használt hitelesítő adatokat, amikor bejelentkeznek az alkalmazásba. Válassza a **felhasználók és csoportok**lehetőséget, jelölje be a felhasználó vagy csoport sorához tartozó jelölőnégyzetet, majd kattintson a **hitelesítő adatok frissítése**elemre. Ezután adja meg a felhasználó vagy csoport nevében használni kívánt felhasználónevet és jelszót. Ellenkező esetben a rendszer megkéri a felhasználókat, hogy indítsák el magukat a hitelesítő adatokat.
  
 
 ## <a name="manual-configuration"></a>Manuális konfigurálás
 
-Ha az Azure AD elemzési kísérlet sikertelen, manuálisan konfigurálhatja a bejelentkezést.
+Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja a bejelentkezést.
 
-1. Az ** \<alkalmazásnév> Konfiguráció**csoportban válassza az **Alkalmazásnév konfigurálása> Jelszó egyszeri bejelentkezési beállításai nak beállításához \<** lehetőséget a Bejelentkezés **konfigurálása** lap megjelenítéséhez. 
+1. Az ** \<alkalmazás neve> konfiguráció**területen válassza **az \<alkalmazás nevének konfigurálása> jelszó egyszeri bejelentkezés beállításai** lehetőséget a **Bejelentkezés konfigurálása** lap megjelenítéséhez. 
 
-2. Jelölje **be a Bejelentkezési mezők manuális észlelése**jelölőnégyzetet. A bejelentkezési mezők manuális észlelését leíró további utasítások jelennek meg.
+2. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet. A bejelentkezési mezők manuális észlelését ismertető további utasítások jelennek meg.
 
-   ![A jelszóalapú egyszeri bejelentkezés manuális konfigurálása](./media/configure-password-single-sign-on/password-configure-sign-on.png)
-3. Válassza **a Bejelentkezési mezők rögzítése lehetőséget.** Egy új lapon megnyílik egy rögzítési állapotlap, amely azt mutatja, hogy az üzenet **metaadat-rögzítése folyamatban van.**
+   ![Jelszó alapú egyszeri bejelentkezés manuális konfigurálása](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. Jelölje be **a bejelentkezési mezők rögzítése**jelölőnégyzetet. Egy új lapon megnyílik egy rögzítési állapot lap, amely azt mutatja, hogy az üzenet **metaadatainak rögzítése jelenleg folyamatban van**.
 
-4. Ha a **Hozzáférési panel kiterjesztés kötelező mezője** egy új lapon jelenik meg, válassza a **Telepítés most** lehetőséget a My Apps **Secure Sign-in Extension** böngészőbővítmény telepítéséhez. (A böngészőbővítményhez Microsoft Edge, Chrome vagy Firefox szükséges.) Ezután telepítse, indítsa el és engedélyezze a bővítményt, és frissítse a rögzítési állapotlapot.
+4. Ha megjelenik a **hozzáférési panel bővítmény kötelező** mezője egy új lapon, válassza a **Telepítés most** lehetőséget a **saját alkalmazások biztonságos bejelentkezési bővítményének** telepítéséhez. (A böngésző kiterjesztéséhez a Microsoft Edge, a Chrome vagy a Firefox szükséges.) Ezután telepítse, indítsa el és engedélyezze a bővítményt, és frissítse a rögzítés állapota lapot.
 
-   A böngészőbővítmény ezután megnyit egy másik lapot, amely a megadott URL-címet jeleníti meg.
-5. A beírt URL-címet bekövetkező lapon menjen végig a bejelentkezési folyamaton. Töltse ki a felhasználónév és a jelszó mezőket, és próbáljon meg bejelentkezni. (Nem kell megadnia a helyes jelszót.)
+   Ekkor megnyílik egy másik lap, amely megjeleníti a megadott URL-címet.
+5. A megadott URL-címmel rendelkező lapon ugorjon végig a bejelentkezési folyamaton. Adja meg a Felhasználónév és a jelszó mezőket, majd próbáljon meg bejelentkezni. (Nem kell megadnia a megfelelő jelszót.)
 
-   A rendszer kéri a rögzített bejelentkezési mezők mentését.
-6. Válassza **az OK gombot.** A böngészőbővítmény frissíti a rögzítésállapot-lapot azzal az üzenettel, hogy a **metaadatok frissültek az alkalmazáshoz.** A böngésző lap bezárul.
+   A rendszer felszólítja a rögzített bejelentkezési mezők mentésére.
+6. Kattintson az **OK** gombra. A böngésző bővítménye frissíti a rögzítés állapota lapot, és az üzenet **metaadatai frissültek az alkalmazáshoz**. A böngésző lap bezárul.
 
-7. Az Azure AD **konfigurálása bejelentkezési** lapon válassza **az Ok lehetőséget, sikeresen be tudtak jelentkezni az alkalmazásba.**
+7. Az Azure AD **configure bejelentkezési** oldalán kattintson az **OK gombra, és sikerült bejelentkezni az alkalmazásba**.
 
-8. Válassza **az OK gombot.**
+8. Kattintson az **OK** gombra.
 
-A bejelentkezési lap rögzítése után felhasználókat és csoportokat rendelhet hozzá, és a hitelesítő adatokra vonatkozó házirendeket a hagyományos [jelszóegyszeri bejelentkezési alkalmazásokhoz](what-is-single-sign-on.md)hasonlóan állíthatja be.
+A bejelentkezési oldal rögzítése után felhasználókat és csoportokat rendelhet hozzá, és a hitelesítő adatokat ugyanúgy állíthatja be, mint a normál jelszó-SSO- [alkalmazások](what-is-single-sign-on.md)esetében.
 
 > [!NOTE]
-> Az alkalmazás hoz a Beállítás **lapon** található **Embléma feltöltése** gomb segítségével tölthet fel csempeemblémát az alkalmazáshoz.
+> Feltöltheti az alkalmazás csempe emblémáját az alkalmazás **Konfigurálás** lapján található **embléma feltöltése** gombbal.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felhasználók vagy csoportok hozzárendelése az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
-- [A felhasználói fiókok automatikus kiépítésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
+- [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

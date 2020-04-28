@@ -1,37 +1,37 @@
 ---
 title: Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
-description: A szolgáltatásállapot-értesítések lehetővé teszik a Microsoft Azure által közzétett szolgáltatásállapot-üzenetek megtekintését.
+description: A szolgáltatás állapotával kapcsolatos értesítések segítségével megtekintheti Microsoft Azure által közzétett szolgáltatás-egészségügyi üzeneteket.
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75748649"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
 
-A szolgáltatásállapot-értesítéseket az Azure-infrastruktúra teszi közzé az [Azure tevékenységnaplójában.](../azure-monitor/platform/platform-logs-overview.md)  Az értesítések az előfizetés alá eső erőforrásokkal kapcsolatos információkat tartalmaznak. Tekintettel a tevékenységnaplóban tárolt adatok nagy mennyiségére, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a szolgáltatásállapot-értesítésekre vonatkozó riasztások megtekintését és beállítását. 
+A szolgáltatás állapotával kapcsolatos értesítéseket az Azure-infrastruktúra teszi közzé az [Azure-tevékenység naplójába](../azure-monitor/platform/platform-logs-overview.md).  Az értesítések az előfizetéséhez tartozó erőforrásokra vonatkozó információkat tartalmaznak. A tevékenység naplójában tárolt, valószínűleg nagy mennyiségű információ miatt külön felhasználói felület van, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotára vonatkozó értesítésekben. 
 
-A szolgáltatásállapot-értesítések az osztálytól függően lehetnek tájékoztató vagy perelhető kérhetőek.
+A szolgáltatás állapotával kapcsolatos értesítések az osztálytól függően tájékoztató vagy végrehajthatóak lehetnek.
 
-A szolgáltatásállapot-értesítések különböző osztályairól a [Szolgáltatásállapot-értesítések tulajdonságai című](service-health-notifications-properties.md)témakörben talál további információt.
+A szolgáltatási állapot értesítéseinek különböző osztályaival kapcsolatos további információkért lásd: a [Service Health Notifications tulajdonságai](service-health-notifications-properties.md).
 
-## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>A szolgáltatásállapot-értesítések megtekintése az Azure Portalon
+## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>A szolgáltatás állapotára vonatkozó értesítések megtekintése a Azure Portal
 
-1. Az [Azure Portalon](https://portal.azure.com)válassza a **Figyelő**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **figyelő**elemet.
 
-    ![Képernyőkép az Azure Portal menüjéről, kijelölve a Monitor](./media/service-notifications/home-monitor.png)
+    ![A Azure Portal menü képernyőképe a kijelölt figyelővel](./media/service-notifications/home-monitor.png)
 
-    Az Azure Monitor egyetlen összevont nézetben egyesíti az összes figyelési beállítást és adatot. A panel az első alkalommal a **Tevékenységnapló** területet megjelenítve nyílik meg.
+    A Azure Monitor az összes megfigyelési beállítást és az adatait egyetlen összevont nézetbe foglalja össze. A panel az első alkalommal a **Tevékenységnapló** területet megjelenítve nyílik meg.
 
-1. Válassza **a Riasztások lehetőséget.**
+1. Válassza a **riasztások**lehetőséget.
 
-    ![Képernyőkép a Figyelő tevékenységnaplóról, kijelölve a Riasztások](./media/service-notifications/service-health-summary.png)
+    ![Képernyőfelvétel a figyelési tevékenység naplóról, a riasztások kiválasztásával](./media/service-notifications/service-health-summary.png)
 
-1. Válassza a **+Tevékenységnapló-riasztás hozzáadása**lehetőséget, és állítson be egy riasztást, amely biztosítja, hogy értesítést kapjon a jövőbeli szolgáltatási értesítésekről. További információt a [Tevékenységnapló-értesítések létrehozása a szolgáltatásértesítésekhez](../azure-monitor/platform/alerts-activity-log-service-notifications.md)című témakörben talál.
+1. Válassza a **+ tevékenység naplójának hozzáadása riasztás**lehetőséget, és állítson be egy riasztást, amely biztosítja, hogy értesítést kapjon a jövőbeli szolgáltatási értesítésekről. További információkért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [tevékenységnapló-riasztásokról.](../azure-monitor/platform/activity-log-alerts.md)
+* További információ a [tevékenység naplójának riasztásokról](../azure-monitor/platform/activity-log-alerts.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-feladatok másolása vagy biztonsági másolata
-description: Ez a cikk ismerteti, hogyan másolhatja vagy készíthet biztonsági másolatot egy Azure Stream Analytics-feladatról.
+title: Azure Stream Analytics feladatok másolása vagy biztonsági mentése
+description: Ez a cikk a Azure Stream Analytics feladatok másolását és biztonsági mentését ismerteti.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,49 +8,49 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75771495"
 ---
-# <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok másolása vagy biztonsági másolata
+# <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok másolása vagy biztonsági mentése
 
-A telepített Azure Stream Analytics-feladatokmásolása és biztonsági másolata a Visual Studio-kód vagy a Visual Studio használatával. 
+A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy biztonsági másolatot készíthet az üzembe helyezett Azure Stream Analytics-feladatokról. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-* Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-* Telepítse [az Azure Stream Analytics bővítményt a Visual Studio-kódhoz](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension) vagy az Azure Stream [Analytics-eszközökhöz a Visual Studio-hoz.](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)  
+* Telepítse [Azure stream Analytics bővítményt a Visual Studio Code](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension) vagy a [Azure stream Analytics Tools for Visual Studio alkalmazáshoz](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension).  
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Kattintson az **Azure** ikonra a Visual Studio kódtevékenységsávján, majd bontsa ki a **Stream Analytics** csomópontot. A feladatoknak az előfizetések alatt kell megjelenniük.
+1. Kattintson az **Azure** ikonra a Visual Studio Code tevékenység sávján, majd bontsa ki **stream Analytics** csomópontot. A feladatoknak az előfizetések alatt kell megjelenniük.
 
-   ![A Stream Analytics Explorer megnyitása](./media/vscode-explore-jobs/open-explorer.png)
+   ![Stream Analytics Explorer megnyitása](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Ha egy feladatot egy helyi projektbe szeretne exportálni, keresse meg az exportálni kívánt feladatot a **Stream Analytics Intézőben** a Visual Studio-kódban. Ezután jelöljön ki egy mappát a projekthez.
+2. Ha a feladatot egy helyi projektbe szeretné exportálni, keresse meg az exportálni kívánt feladatot a Visual Studio Code **stream Analytics Explorerben** . Ezután válasszon ki egy mappát a projekt számára.
 
-    ![ASA-feladat exportálása a Visual Studio-kódban](./media/vscode-explore-jobs/export-job.png)
+    ![ASA-feladatok exportálása a Visual Studio Code-ban](./media/vscode-explore-jobs/export-job.png)
 
-    A program a projektet a kijelölt mappába exportálja, és hozzáadja az aktuális munkaterülethez.
+    A projektet a rendszer a kiválasztott mappába exportálja, és hozzáadja az aktuális munkaterülethez.
 
-    ![ASA-feladat exportálása a Visual Studio-kódban](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
+    ![ASA-feladatok exportálása a Visual Studio Code-ban](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Ha a feladatot egy másik régióban vagy biztonsági másolatban szeretné közzétenni egy\*másik névvel, válassza a Kijelölés lehetőséget az előfizetések közül a lekérdezésszerkesztőben ( .asaql) **közzétenni kívánt előfizetései közül,** és kövesse az utasításokat.
+3. Ha más néven szeretné közzétenni a feladatot egy másik régióban vagy biztonsági másolatban, válassza a **kiválasztás az előfizetések közül** lehetőséget a\*lekérdezés-szerkesztőben (. asaql) való közzétételhez, és kövesse az utasításokat.
 
-    ![Közzététel az Azure-ban a Visual Studio-kódban](./media/quick-create-vs-code/submit-job.png)
+    ![Közzététel az Azure-ban a Visual Studio Code-ban](./media/quick-create-vs-code/submit-job.png)
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. Kövesse az [üzembe helyezett Azure Stream Analytics-feladat exportálását egy projektutasításokba.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)
+1. Kövesse az [üzembe helyezett Azure stream Analyticsi feladat exportálása projekt utasításait](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
 
-2. Nyissa \*meg az .asaql fájlt a Lekérdezésszerkesztőben, válassza a Küldés az **Azure-ba** lehetőséget a parancsfájlszerkesztőben, és kövesse az utasításokat a feladat közzétételéhez egy másik régióban, vagy egy új név használatával biztonsági mentést.
+2. Nyissa \*meg a. asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Stream Analytics-feladat létrehozása a Visual Studio-kód használatával](quick-create-vs-code.md)
-* [Rövid útmutató: Stream Analytics-feladat létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio Code használatával](quick-create-vs-code.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)

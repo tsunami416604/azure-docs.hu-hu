@@ -1,7 +1,7 @@
 ---
 title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg az Azure AD B2C használatával kapcsolatos konkrét szempontokat a Microsoft Android hitelesítési könyvtárával (MSAL). Android)
+description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni, amikor az Androidhoz készült Microsoft Authentication Library (MSAL) használatával Azure AD B2Ct használ. Android
 services: active-directory
 author: brianmel
 manager: CelesteDG
@@ -14,27 +14,27 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696521"
 ---
-# <a name="use-msal-for-android-with-b2c"></a>Az MSAL használata Android-ra B2C-vel
+# <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
 
-A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazásfejlesztők számára, hogy az [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és helyi identitással. Az Azure AD B2C egy identitáskezelési szolgáltatás. Segítségével testre szabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztráljanak, jelentkezzenek be és kezeljék a profiljukat az alkalmazások használata során.
+A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és a helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. Ezzel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
 
-## <a name="configure-known-authorities-and-redirect-uri"></a>Ismert hatóságok konfigurálása és URI-átirányítás
+## <a name="configure-known-authorities-and-redirect-uri"></a>Ismert hatóságok és átirányítási URI konfigurálása
 
-Az Android-alapú MSAL-ban a B2C-házirendek (felhasználói utak) egyéni hatóságokként vannak konfigurálva.
+Az Android rendszerhez készült MSAL-ben a B2C-szabályzatok (felhasználói útvonalak) önálló hatóságokként vannak konfigurálva.
 
-Adott egy B2C alkalmazás, amely két házirend:
-- Regisztráció / Bejelentkezés
+Olyan B2C-alkalmazás, amely két házirenddel rendelkezik:
+- Regisztráció/bejelentkezés
     * Úgynevezett`B2C_1_SISOPolicy`
 - Profil szerkesztése
     * Úgynevezett`B2C_1_EditProfile`
 
-Az alkalmazás konfigurációs fájlja `authorities`két deklarál. Minden politikához egy. Az `type` egyes hatóságok `B2C`tulajdona .
+Az alkalmazás konfigurációs fájlja kettőt `authorities`deklarál. Egyet az egyes szabályzatokhoz. Az `type` egyes hatóságok tulajdonsága `B2C`.
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -54,11 +54,11 @@ Az alkalmazás konfigurációs fájlja `authorities`két deklarál. Minden polit
 }
 ```
 
-Az `redirect_uri` engedélyezési [kód engedélyezési folyamata](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)során `AndroidManifest.xml` regisztrálni kell az alkalmazás konfigurációjában, valamint az átirányítás támogatásához.
+A `redirect_uri` -t regisztrálni kell az alkalmazás konfigurációjában, valamint a `AndroidManifest.xml` -ben az átirányítás támogatásához az [engedélyezési kód engedélyezése folyamat](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)során.
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication inicializálása
 
-`IPublicClientApplication`gyári módszerrel készült, hogy lehetővé tegye az alkalmazás konfigurációjának aszinkron elemzését.
+`IPublicClientApplication`a egy gyári metódussal jön létre, amely lehetővé teszi az alkalmazás konfigurációjának aszinkron elemzését.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -79,9 +79,9 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 );
 ```
 
-## <a name="interactively-acquire-a-token"></a>Interaktív antomot szerezni
+## <a name="interactively-acquire-a-token"></a>Token interaktív beszerzése
 
-Token interaktív beszerzéséhez az MSAL-lal hozzon létre egy példányt, `AcquireTokenParameters` és adja meg a `acquireToken` metódusnak. Az alábbi jogkivonat-kérelem a `default` jogosultságot használja.
+Ha a tokent interaktív módon szeretné beszerezni a MSAL, `AcquireTokenParameters` hozzon létre egy példányt, `acquireToken` és adja meg a metódusnak. Az alábbi jogkivonat-kérelem a `default` szolgáltatót használja.
 
 ```java
 IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -110,9 +110,9 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 pca.acquireToken(parameters);
 ```
 
-## <a name="silently-renew-a-token"></a>Zábban jogkivonat csendes megújítása
+## <a name="silently-renew-a-token"></a>Token csendes megújítása
 
-Token csendes beszerzéséhez az MSAL-lal, hozzon létre egy példányt, `AcquireTokenSilentParameters` és adja meg a `acquireTokenSilentAsync` metódusnak. A `acquireToken` metódussal `authority` ellentétben a token csendes megszerzéséhez meg kell adni.
+Ha a tokent a MSAL-mel csendben szeretné `AcquireTokenSilentParameters` beszerezni, hozzon létre `acquireTokenSilentAsync` egy példányt, és adja meg a metódusnak. A `acquireToken` metódussal ellentétben a `authority` rendszernek meg kell adni a token csendes beszerzését.
 
 ```java
 IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -137,9 +137,9 @@ AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Build
 pca.acquireTokenSilentAsync(parameters);
 ```
 
-## <a name="specify-a-policy"></a>Házirend megadása
+## <a name="specify-a-policy"></a>Házirend meghatározása
 
-Mivel a B2C házirendjei külön hatóságokként jelennek meg, az alapértelmezetttől eltérő `fromAuthority` házirend meghívása egy záradék megadásával érhető el a létrehozáskor `acquireToken` vagy `acquireTokenSilent` a paraméterekben.  Példa:
+Mivel a B2C-szabályzatok külön hatóságokként jelennek meg, az alapértelmezetttől eltérő házirendet nem kell megadnia `fromAuthority` egy záradék létrehozásával `acquireToken` vagy `acquireTokenSilent` paraméterekkel való megadásával.  Például:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -151,13 +151,13 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
     .build();
 ```
 
-## <a name="handle-password-change-policies"></a>Jelszómódosítási házirendek kezelése
+## <a name="handle-password-change-policies"></a>Jelszó-módosítási házirendek kezelése
 
-A helyi fiókra való feliratkozási vagy bejelentkezési felhasználói folyamat ontja**az elfelejtett jelszót?** Link. Erre a hivatkozásra kattintva nem indítja el automatikusan a jelszó-visszaállítási felhasználói folyamatot.
+A helyi fiók regisztrálása vagy bejelentkezési felhasználói folyamata egy "**elfelejtett jelszót**" mutat be hivatkozás. Ha erre a hivatkozásra kattint, nem indítja el automatikusan a jelszó-visszaállítás felhasználói folyamatát.
 
-Ehelyett a hibakódot `AADB2C90118` visszaküldi az alkalmazásnak. Az alkalmazásnak kezelnie kell ezt a hibakódot egy adott felhasználói folyamat futtatásával, amely alaphelyzetbe állítja a jelszót.
+Ehelyett a hibakódot a `AADB2C90118` rendszer visszaadja az alkalmazásnak. Az alkalmazásnak ezt a hibakódot egy adott felhasználói folyamat futtatásával kell kezelnie, amely alaphelyzetbe állítja a jelszót.
 
-A jelszó-visszaállítási hibakód elfogásához a `AuthenticationCallback`következő implementáció használható a következőkben:
+Ha a jelszó-visszaállítási hibakódot szeretné elfogni, a következő implementáció használható `AuthenticationCallback`a rendszerben:
 
 ```java
 new AuthenticationCallback() {
@@ -183,11 +183,11 @@ new AuthenticationCallback() {
 }
 ```
 
-## <a name="use-iauthenticationresult"></a>Az IAuthenticationResult használata
+## <a name="use-iauthenticationresult"></a>IAuthenticationResult használata
 
-A sikeres token-beszerzés egy objektumot `IAuthenticationResult` eredményez. A hozzáférési jogkivonatot, a felhasználói jogcímeket és a metaadatokat tartalmazza.
+A jogkivonat sikeres beszerzése egy `IAuthenticationResult` objektumot eredményez. A hozzáférési jogkivonatot, a felhasználói jogcímeket és a metaadatokat tartalmazza.
 
-### <a name="get-the-access-token-and-related-properties"></a>A hozzáférési jogkivonat és a kapcsolódó tulajdonságok beszereznie
+### <a name="get-the-access-token-and-related-properties"></a>Hozzáférési jogkivonat és kapcsolódó tulajdonságok beolvasása
 
 ```java
 // Get the raw bearer token
@@ -203,7 +203,7 @@ Date expiry = authenticationResult.getExpiresOn();
 String tenantId = authenticationResult.getTenantId();
 ```
 
-### <a name="get-the-authorized-account"></a>Az engedélyezett fiók beszerezése
+### <a name="get-the-authorized-account"></a>A hitelesítő fiók beszerzése
 
 ```java
 // Get the account from the result
@@ -227,16 +227,16 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken jogcímek
 
-Az IdToken ben visszaadott jogcímeket a biztonsági jogkivonat-szolgáltatás (STS) tölti fel, nem pedig az MSAL. A használt identitásszolgáltatótól (IdP) függően előfordulhat, hogy egyes jogcímek hiányoznak. Egyes idp-k jelenleg `preferred_username` nem biztosítják a jogcímet. Mivel ezt a jogcímet az MSAL gyorsítótárazásra `MISSING FROM THE TOKEN RESPONSE`használja, a helyén egy helyőrző érték van használatban. A B2C IdToken jogcímekről az [Azure Active Directory B2C tokeneinek áttekintése](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)című témakörben olvashat bővebben.
+A IdToken visszaadott jogcímeket a biztonsági jogkivonat szolgáltatás (STS) tölti fel, nem pedig a MSAL. A használt identitásszolgáltató függően előfordulhat, hogy egyes jogcímek hiányoznak. Egyes IDP jelenleg nem nyújtják be `preferred_username` a jogcímet. Mivel ezt a jogcímet a MSAL használja a gyorsítótárazáshoz, a `MISSING FROM THE TOKEN RESPONSE`rendszer helyőrző értéket használ a helyén. A B2C-IdToken jogcímeivel kapcsolatos további információkért lásd: [a jogkivonatok áttekintése Azure Active Directory B2Cban](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Fiókok és házirendek kezelése
 
-A B2C minden egyes politikát külön hatóságként kezel. Így a hozzáférési jogkivonatok, a frissítési jogkivonatok és az egyes házirendekből visszaadott azonosító jogkivonatok nem felcserélhetők. Ez azt jelenti, `IAccount` hogy minden házirend egy külön objektumot ad vissza, amelynek jogkivonatai nem használhatók más házirendek meghívására.
+A B2C az egyes szabályzatokat külön szolgáltatóként kezeli. Így a hozzáférési tokenek, a frissítési tokenek és az egyes szabályzatok által visszaadott azonosító tokenek nem módosíthatók. Ez azt jelenti, hogy az egyes `IAccount` házirendek egy külön objektumot adnak vissza, amelynek tokenjét nem lehet más szabályzatok meghívására használni.
 
-Minden házirend `IAccount` minden felhasználó számára hozzáad egy értéket a gyorsítótárhoz. Ha egy felhasználó bejelentkezik egy alkalmazásba, és két `IAccount`szabályzatot hív meg, akkor két s lesz. Ha el szeretné távolítani ezt a `removeAccount()` felhasználót a gyorsítótárból, minden házirendet meg kell hívnia.
+Mindegyik szabályzat minden felhasználóhoz hozzáadja `IAccount` a gyorsítótárat. Ha egy felhasználó bejelentkezik egy alkalmazásba, és két házirendet hív meg, akkor `IAccount`két ok lesz. Ha el szeretné távolítani ezt a felhasználót a gyorsítótárból, `removeAccount()` minden szabályzatot meg kell hívnia.
 
-Amikor megújítja a jogkivonatokat a rendszerhez, `acquireTokenSilent`adja meg ugyanazt, `IAccount` amelyet a házirend korábbi meghívásaiból a. `AcquireTokenSilentParameters` Egy másik házirend által visszaadott fiók megadása hibát eredményez.
+Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent`, megadhatja, `IAccount` hogy a szabályzat korábbi hívásai milyen értéket adtak vissza. `AcquireTokenSilentParameters` Egy másik házirend által visszaadott fiók megadása hibát eredményez.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Active Directory B2C -ről (Azure AD B2C) a [Mi az Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

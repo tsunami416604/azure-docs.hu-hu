@@ -1,6 +1,6 @@
 ---
-title: Az Apache Tez alkalmazás lefagy az Azure HDInsightban
-description: Az Apache Tez alkalmazás lefagy az Azure HDInsightban
+title: Apache TEZ-alkalmazás lefagy az Azure HDInsight
+description: Apache TEZ-alkalmazás lefagy az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,36 +8,36 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: ec5a0d6e8c0a5236ae3929560e81033d983d4dfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75895115"
 ---
-# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>Forgatókönyv: Az Apache Tez alkalmazás lefagy az Azure HDInsightban
+# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>Forgatókönyv: az Apache TEZ-alkalmazás lefagy az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Az Apache Hive-feladat elküldése után a Tez nézetből a feladat állapota "Futás", de nem tűnik úgy, hogy előrehaladást érne el
+Apache Hive-feladatoknak a TEZ való elküldése után a feladatok állapota "fut", de úgy tűnik, hogy nem végez előrehaladást
 
 ## <a name="cause"></a>Ok
 
-Túl sok elküldött állás; hosszú fonal sorban.
+Túl sok feladat van elküldve; hosszú fonalas üzenetsor.
 
 ## <a name="resolution"></a>Megoldás:
 
-Méretezsd fel a fürtöt, vagy csak várjon, amíg a fonalsor kiürítése megtörténik.
+Bővítse a fürtöt, vagy csak várjon, amíg a fonal-várólista el nem kerül.
 
-Alapértelmezés `yarn.scheduler.capacity.maximum-applications` szerint a futó vagy függőben lévő `10000`alkalmazások maximális száma a.
+Alapértelmezés `yarn.scheduler.capacity.maximum-applications` szerint a vagy függőben lévő alkalmazások maximális számát szabályozza, és alapértelmezés szerint a ( `10000`) értéket használja.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

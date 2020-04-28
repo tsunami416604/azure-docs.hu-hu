@@ -1,7 +1,7 @@
 ---
-title: Xamarin Android rendszer böngésző szempontok (MSAL.NET) | Azure
+title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: A cikk ismerteti a rendszerböngészők Xamarin Android rendszeren és a Microsoft Authentication Library for .NET (MSAL.NET) használatával kapcsolatos szempontokat.
+description: Ismerje meg a Xamarin-alapú rendszerböngészők használatának szempontjait a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatással.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -15,62 +15,62 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad26a4d619a7984f08a8decc87f9339adae47cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77132613"
 ---
-#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android rendszer böngésző szempontjai tabellán MSAL.NET
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>A Xamarin Android rendszerbeli böngészővel kapcsolatos szempontok a MSAL.NET használatához
 
-Ez a cikk azt ismerteti, hogy mit kell figyelembe venni, amikor a rendszerböngészőt a Xamarin Android rendszerböngészőjét használja a Microsoft Authentication Library for .NET (MSAL.NET) segítségével.
+Ez a cikk azt ismerteti, hogy milyen szempontokat kell figyelembe vennie, amikor az Android rendszerhez készült Microsoft Authentication Library (MSAL.NET) Xamarin használja a rendszerböngészőt.
 
-A MSAL.NET 2.4.0 Preview-tól kezdve MSAL.NET a Chrome-tól eltérő böngészőket is támogat. Már nincs szükség chrome kell telepíteni az Android készülék hitelesítéshez.
+A MSAL.NET 2.4.0 előzetes verziójától kezdődően a MSAL.NET a Chrome-tól eltérő böngészőket is támogat. A továbbiakban nincs szükség a Chrome telepítésére az Android-eszközön a hitelesítéshez.
 
-Javasoljuk, hogy egyéni lapokat támogató böngészőket használjon. Íme néhány példa a következő böngészőkre:
+Javasoljuk, hogy használjon egyéni lapokat támogató böngészőket. Íme néhány példa a böngészőkre:
 
-| Az egyéni lapokkal támogatott böngészők | Csomag neve |
+| Egyéni lapokat támogató böngészők | Csomag neve |
 |------| ------- |
 |Chrome | com.android.chrome|
-|Microsoft Edge | com.microsoft.emmx|
-|Firefox | org.mozilla.firefox|
-|Ecosia között | com.ecosia.android|
-|Kiwi | com.kiwibrowser.böngésző|
-|Bátor | com.brave.browser|
+|Microsoft Edge | com. microsoft. emmx|
+|Firefox | org. mozilla. Firefox|
+|Ecosia | com. ecosia. Android|
+|Kiwi | com. kiwibrowser. Browser|
+|Bátor | com. bátor. böngésző|
 
-Az egyéni lapokat támogató böngészők azonosítása mellett a tesztelés azt is jelzi, hogy néhány olyan böngésző, amely nem támogatja az egyéni lapokat, szintén működik a hitelesítéshez. Ezek a böngészők közé opera, Opera Mini, InBrowser, és Maxthon. 
+Az egyéni lapokat támogató böngészők azonosításán kívül a tesztelés azt jelzi, hogy néhány böngésző, amely nem támogatja az egyéni lapokat, a hitelesítéshez is működik. Ezen böngészők közé tartozik az Opera, az Opera Mini, a inBrowser és a Maxthon. 
 
 ## <a name="tested-devices-and-browsers"></a>Tesztelt eszközök és böngészők
-Az alábbi táblázat azokat az eszközöket és böngészőket sorolja fel, amelyekhitelesítési kompatibilitás szempontjából tesztelték őket.
+A következő táblázat felsorolja a hitelesítési kompatibilitáshoz tesztelt eszközöket és böngészőket.
 
 | Eszköz | Böngésző     |  Eredmény  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One+ | Chrome\* | Át|
-| Huawei/One+ | Edge\* | Át|
-| Huawei/One+ | Firefox\* | Át|
-| Huawei/One+ | Bátor\* | Át|
-| Egy+ | Ecosia között\* | Át|
-| Egy+ | Kiwi\* | Át|
-| Huawei/One+ | Opera | Át|
-| Huawei | OperaMini | Át|
-| Huawei/One+ | InBrowser | Át|
-| Egy+ | Maxthon | Át|
-| Huawei/One+ | DuckDuckGo | A felhasználó megszakította a hitelesítést|
-| Huawei/One+ | UC böngésző | A felhasználó megszakította a hitelesítést|
-| Egy+ | Delfin | A felhasználó megszakította a hitelesítést|
-| Egy+ | CM böngésző | A felhasználó megszakította a hitelesítést|
-| Huawei/One+ | Nincs telepítve | AndroidActivityNemFound kivétel|
+| Huawei/egy + | Chrome\* | Pass|
+| Huawei/egy + | Edge\* | Pass|
+| Huawei/egy + | Firefox\* | Pass|
+| Huawei/egy + | Bátor\* | Pass|
+| Egy + | Ecosia\* | Pass|
+| Egy + | Kiwi\* | Pass|
+| Huawei/egy + | Operát | Pass|
+| Huawei | OperaMini | Pass|
+| Huawei/egy + | Inböngésző | Pass|
+| Egy + | Maxthon | Pass|
+| Huawei/egy + | DuckDuckGo | Felhasználó által megszakított hitelesítés|
+| Huawei/egy + | UC böngésző | Felhasználó által megszakított hitelesítés|
+| Egy + | Delfin | Felhasználó által megszakított hitelesítés|
+| Egy + | CM böngésző | Felhasználó által megszakított hitelesítés|
+| Huawei/egy + | Nincs telepítve | AndroidActivityNotFound kivétel|
 
-\*Támogatja az egyéni lapokat
+\*Egyéni lapok támogatása
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Ha a felhasználónak nincs engedélyezve böngészője `AndroidActivityNotFound` az eszközön, MSAL.NET kivételt fog nak.  
-  - **Kockázatcsökkentés**: Kérje meg a felhasználót, hogy engedélyezze a böngészőt az eszközén. Javasoljon olyan böngészőt, amely támogatja az egyéni lapokat.
+Ha a felhasználónak nincs böngészője engedélyezve az eszközön, a MSAL.NET `AndroidActivityNotFound` kivételt fog kiváltani.  
+  - **Enyhítés**: kérje meg a felhasználót, hogy engedélyezzen egy böngészőt az eszközön. Olyan böngészőt javasoljon, amely támogatja az egyéni lapokat.
 
-Ha a hitelesítés sikertelen (például ha a hitelesítés elindul `AuthenticationCanceled MsalClientException`duckduckgo), MSAL.NET visszatér . 
-  - **Gyökérprobléma:** Az egyéni lapokat támogató böngésző nem volt engedélyezve az eszközön. A hitelesítés olyan böngészővel indult, amely nem tudta befejezni a hitelesítést. 
-  - **Kockázatcsökkentés**: Kérje meg a felhasználót, hogy engedélyezze a böngészőt az eszközén. Javasoljon olyan böngészőt, amely támogatja az egyéni lapokat.
+Ha a hitelesítés meghiúsul (például ha a hitelesítés a DuckDuckGo-val kezdődik), a `AuthenticationCanceled MsalClientException`MSAL.net visszaadja. 
+  - **Gyökérszintű probléma**: az eszközön nincs engedélyezve az egyéni lapokat támogató böngésző. A hitelesítés olyan böngészővel lett elindítva, amely nem tudta befejezni a hitelesítést. 
+  - **Enyhítés**: kérje meg a felhasználót, hogy engedélyezzen egy böngészőt az eszközön. Olyan böngészőt javasoljon, amely támogatja az egyéni lapokat.
 
 ## <a name="next-steps"></a>További lépések
-További információ és kódpéldák: [Választás beágyazott webböngésző és rendszerböngésző között a Xamarin Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) és Embedded versus system web felhasználói [felületén.](msal-net-web-browsers.md#embedded-vs-system-web-ui)  
+További információkért és Példákért lásd: [kiválasztás egy beágyazott webböngésző és egy rendszerböngésző között a Xamarin Android és a](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) Embedded és a [rendszer webes felhasználói felületén](msal-net-web-browsers.md#embedded-vs-system-web-ui).  

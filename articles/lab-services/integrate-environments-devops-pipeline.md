@@ -1,6 +1,6 @@
 ---
-title: Környezetek integrálása az Azure DevTest Labs-ben az Azure DevTest Labs környezetébe
-description: Ismerje meg, hogyan integrálhatja az Azure DevTest Labs környezeteket az Azure DevOps folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamataiba.
+title: Környezetek integrálása Azure-folyamatokra Azure DevTest Labs
+description: Ismerje meg, hogyan integrálhatja Azure DevTest Labs környezeteit az Azure DevOps folyamatos integrációs (CI) és a folyamatos továbbítási (CD-) folyamatokba.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,72 +13,72 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169428"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatokba
-Az Azure DevOps-feladatok bővítményt az Azure DevOps-szolgáltatásokban (korábbi nevén Visual Studio Team Services) telepített Azure DevTest Labs tasks-bővítmény segítségével egyszerűen integrálhatja a folyamatos integrációs (CI)/ folyamatos kézbesítési (CD) build-és kiadási folyamatot az Azure DevTest Labs alkalmazással. Ezek a bővítmények megkönnyítik egy [környezet](devtest-lab-test-env.md) gyors üzembe helyezését egy adott tesztfeladathoz, majd törlik azt, amikor a teszt befejeződött. 
+Az Azure DevOps Services szolgáltatásban (korábbi nevén Visual Studio Team Services) telepített Azure DevTest Labs Tasks bővítmény használatával egyszerűen integrálhatja a folyamatos integrációs (CI)/folyamatos kézbesítés (CD) build-és kiadási folyamatát Azure DevTest Labsokkal. Ezek a bővítmények megkönnyítik a [környezet](devtest-lab-test-env.md) gyors üzembe helyezését egy adott teszt feladathoz, majd a teszt befejezésekor törli azt. 
 
-Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy környezetet, majd törölheti a környezetet, mindezt egy teljes folyamatban. Ezeket a feladatokat általában külön-külön hajtsa végre a saját egyéni build-teszt-üzembe helyezési folyamatában. A cikkben használt bővítmények a [Következő létrehozási/törlési virtuálisgép-feladatokon](devtest-lab-integrate-ci-cd-vsts.md)kívül találhatók:
+Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy környezetet, majd törölheti a környezetet egy teljes folyamaton belül. Ezeket a feladatokat általában a saját egyéni Build-test-üzembe helyezési folyamata során egyénileg hajthatja végre. A cikkben használt bővítmények a DTL virtuálisgép- [feladatok létrehozásához és törléséhez](devtest-lab-integrate-ci-cd-vsts.md)szükségesek:
 
 - Környezet létrehozása
 - Környezet törlése
 
 ## <a name="before-you-begin"></a>Előkészületek
-Mielőtt integrálná ci/CD-folyamatát az Azure DevTest Labs alkalmazásával, telepítse az [Azure DevTest Labs feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) bővítményt a Visual Studio Piactérről. 
+A CI/CD-folyamat Azure DevTest Labs használatával történő integrálásához telepítse [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) bővítményt a Visual Studio Piactérről. 
 
-## <a name="create-and-configure-the-lab-for-environments"></a>A tesztkörnyezet létrehozása és konfigurálása környezetekben
-Ez a szakasz azt ismerteti, hogyan hozhat létre és konfigurálhat egy tesztkörnyezetet, ahol az Azure-környezet telepítve lesz.
+## <a name="create-and-configure-the-lab-for-environments"></a>Tesztkörnyezet létrehozása és konfigurálása környezetekhez
+Ez a szakasz azt ismerteti, hogyan lehet létrehozni és konfigurálni egy olyan labort, amelyben az Azure-környezet üzembe lesz helyezve.
 
-1. [Hozzon létre egy labort,](devtest-lab-create-lab.md) ha még nem rendelkezik ilyensel. 
-2. Konfigurálja a labort, és hozzon létre egy környezetsablont a cikk ben található utasítások szerint: [Többvirtuális gépkörnyezetek és PaaS-erőforrások létrehozása az Azure Resource Manager-sablonokkal.](devtest-lab-create-environment-from-arm.md)
-3. Ebben a példában használjon egy [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/)meglévő Azure-gyorsindítási sablont.
-4. Másolja a **201-web-app-redis-cache-sql-database** mappába az **ArmTemplate** mappába a 2.
+1. [Hozzon létre egy labort](devtest-lab-create-lab.md) , ha még nem rendelkezik ilyennel. 
+2. Konfigurálja a labort, és hozzon létre egy környezeti sablont a jelen cikk utasításait követve: [hozzon létre több virtuális gépre kiterjedő környezeteket és a Pásti-erőforrásokat Azure Resource Manager sablonokkal](devtest-lab-create-environment-from-arm.md).
+3. Ebben a példában egy meglévő Azure gyorsindítási sablont [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/)használunk.
+4. Másolja a **201-Web-App-Redis-cache-SQL-Database** mappát a 2. lépésben konfigurált adattár **ArmTemplate** mappájába.
 
 ## <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
-A kiadási definíció létrehozásához tegye a következőket:
+A kiadás definíciójának létrehozásához tegye a következőket:
 
-1.  A Build & Release hub **Felenged és** **felszabadítja lapján**válassza a **pluszjel (+)** gombot.
-2.  A **Kiadásdefiníció létrehozása** ablakban jelölje ki az **Üres** sablont, majd kattintson a **Tovább**gombra.
-3.  Válassza **a Később kiválasztása**lehetőséget, majd a **Létrehozás gombra,** ha egy alapértelmezett környezettel rendelkező új kiadási definíciót szeretne létrehozni, csatolt összetevők nélkül.
-4.  A helyi menü megnyitásához az új kiadási definícióban jelölje ki a három **pontot (...)** a környezet neve mellett, majd válassza a **Változók konfigurálása**lehetőséget.
-5.  A **Konfigurálás - környezet** ablakban a kiadási definíciós feladatokban használt változókhoz adja meg a következő értékeket:
-1.  A **administratorLogin**mezőbe írja be az SQL administrator bejelentkezési nevét.
-2.  A **administratorLoginPassword**mezőbe írja be az SQL administrator bejelentkezési jelszavát. A jelszó elrejtéséhez és biztonságossá tétele érdekében használja a "lakat" ikont.
-3.  Az **databaseName**mezőbe írja be az SQL Database nevet.
-4.  Ezek a változók a példakörnyezetek, a különböző környezetekben különböző változók lehetnek.
+1.  A **Build & kiadási központ** **kiadások** lapján válassza a **pluszjel (+)** gombot.
+2.  A **kiadás definíciójának létrehozása** ablakban válassza ki az **üres** sablont, majd válassza a **tovább**lehetőséget.
+3.  Válassza a **később**kiválasztása lehetőséget, majd a **Létrehozás** lehetőséget választva hozzon létre egy új kiadási definíciót egyetlen alapértelmezett környezettel, és ne legyen csatolt összetevők.
+4.  A helyi menü megnyitásához az új kiadás definíciójában válassza a környezet neve melletti **három pontot (...)** , majd válassza a **változók konfigurálása**lehetőséget.
+5.  A **Konfigurálás – környezet** ablakban a kiadási definíciós feladatokban használt változóknál adja meg a következő értékeket:
+1.  A **administratorLogin**mezőben adja meg az SQL-rendszergazda bejelentkezési nevét.
+2.  A **administratorLoginPassword**mezőben adja meg az SQL-rendszergazdai bejelentkezés által használandó jelszót. A jelszó elrejtéséhez és védelméhez használja a "lakat" ikont.
+3.  A **databaseName**mezőben adja meg a SQL Database nevét.
+4.  Ezek a változók a példában szereplő környezetekre jellemzőek, a különböző környezetek eltérő változókkal rendelkezhetnek.
 
 ## <a name="create-an-environment"></a>Környezet létrehozása
-A központi telepítés következő szakasza a fejlesztési vagy tesztelési célokra használandó környezet létrehozása.
+Az üzembe helyezés következő lépése a fejlesztési vagy tesztelési célokra használandó környezet létrehozása.
 
-1. A kiadási definícióban válassza a **Tevékenységek hozzáadása**lehetőséget.
-2. A **Feladatok** lapon adjon hozzá egy Azure DevTest Labs create environment feladatot. Állítsa be a feladatot az alábbiak szerint:
-    1. Az **Azure RM-előfizetés**esetén válasszon egy kapcsolatot a **Rendelkezésre álló Azure-szolgáltatáskapcsolatok** listában, vagy hozzon létre egy korlátozottabb engedélykapcsolatot az Azure-előfizetéshez. További információ: [Azure Resource Manager service endpoint](/azure/devops/pipelines/library/service-endpoints).
-2. A **Labor neve**területen válassza ki a korábban létrehozott példány nevét*.
-3. A **tárház neve,** válassza ki a tárház, ahol az Erőforrás-kezelő sablon (201) lett leküldéses*.
-4. A **Sablon neve mezőben**válassza ki a forráskódtárba mentett környezet nevét*. 
-5. A **Labor neve,** **tárház neve**és a sablon **neve** az Azure-erőforrás-azonosítók rövid ábrázolásai. A rövid név manuális megadása hibákat okoz, a legördülő listák segítségével válassza ki az adatokat.
-6. A **Környezet neve**mezőbe írjon be egy nevet, amely egyedileg azonosítja a környezetpéldányt a laboron belül.  Egyedinek kell lennie a laborban.
-7. A **paraméterfájl** és a **Paraméterek**lehetővé teszi kontrájának egyéni paraméterek átvitelét a környezetben. A paraméterértékek beállítására vagy mindkettőre használható. Ebben a példában a Paraméterek szakasz lesz használva. Használja a környezetben definiált változók nevét, például:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. A környezeti sablonon belüli információk a sablon kimeneti szakaszában továbbíthatók. Jelölje be **a Kimeneti változók létrehozása a környezeti sablon kimenetén alapuló jelölőnégyzetet,** hogy más feladatok is használhassák az adatokat. `$(Reference name.Output Name)`a minta, hogy kövesse. Ha például a Hivatkozási név DTL volt, és a sablonban a kimenetneve hely volt, akkor a változó a . `$(DTL.location)`
+1. A kiadás definíciójában válassza a **feladatok hozzáadása**elemet.
+2. A **feladatok** lapon vegyen fel egy Azure DevTest Labs környezet létrehozása feladatot. Konfigurálja a feladatot a következőképpen:
+    1. Az **Azure RM-előfizetés**esetében válasszon ki egy kapcsolatot az **elérhető Azure-szolgáltatások kapcsolatai** listán, vagy hozzon létre egy korlátozott engedélyeket az Azure-előfizetéshez való kapcsolódáshoz. További információ: [Azure Resource Manager szolgáltatási végpont](/azure/devops/pipelines/library/service-endpoints).
+2. A **labor neve**mezőben válassza ki a korábban létrehozott példány nevét *.
+3. A **tárház neve**mezőben válassza ki azt a tárházat, amelyben a Resource Manager-sablont (201) leküldte a * rendszerbe.
+4. A **sablon neve**mezőben válassza ki a forráskód adattárba mentett környezet nevét. 
+5. A **labor neve**, a **tárház neve**és a **sablon neve** az Azure-erőforrás-azonosítók felhasználóbarát ábrázolása. Ha manuálisan adja meg a rövid nevet, a rendszer hibákat fog okozni, a legördülő lista segítségével pedig kiválaszthatja az adatokat.
+6. A **környezet neve**mezőben adjon meg egy nevet, amely egyedileg azonosítja a környezeti példányt a laboron belül.  Egyedinek kell lennie a laboron belül.
+7. A **paraméter fájl** és a **Paraméterek**lehetővé teszik az egyéni paraméterek átadását a környezetnek. A paraméterek értékeinek beállításához bármelyik vagy mindkettő használható. Ebben a példában a parameters (paraméterek) szakaszt fogjuk használni. Használja a környezetben meghatározott változók nevét, például:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. A környezeti sablonban található információk a sablon kimenet szakaszában adhatók át. A **környezeti sablon kimenete alapján tekintse meg a kimeneti változók létrehozását** , hogy más feladatok is használhassák az adatokat. `$(Reference name.Output Name)`a követendő minta. Például, ha a hivatkozás neve DTL volt, és a sablonban lévő kimenet neve a változó lenne `$(DTL.location)`.
 
 ## <a name="delete-the-environment"></a>A környezet törlése
-Az utolsó szakasz az Azure DevTest Labs-példányban üzembe helyezett környezet törlése. Általában törölni kell a környezetet a fejlesztési feladatok végrehajtása vagy a telepített erőforrásokon szükséges tesztek futtatása után.
+Az utolsó lépés az Azure DevTest Labs-példányban üzembe helyezett környezet törlése. Általában törli a környezetet a fejlesztői feladatok végrehajtása vagy a szükséges tesztek futtatása után az üzembe helyezett erőforrásokon.
 
-A kiadási definícióban válassza a **Feladatok hozzáadása**lehetőséget, majd a **Telepítés** lapon adjon hozzá egy **Azure DevTest Labs delete environment** feladatot. Állítsa be a következőképpen:
+A kiadás definíciójában válassza a **feladatok hozzáadása**lehetőséget, majd a **telepítés** lapon adjon hozzá egy **Azure DevTest Labs törlés környezeti** feladatot. Konfigurálja az alábbiak szerint:
 
-1. A virtuális gép törléséről az [Azure DevTest Labs-feladatok című témakörben látható:](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)
-    1. Az **Azure RM-előfizetés**esetén válasszon egy kapcsolatot a **Rendelkezésre álló Azure-szolgáltatáskapcsolatok** listában, vagy hozzon létre egy korlátozottabb engedélykapcsolatot az Azure-előfizetéshez. További információ: [Azure Resource Manager service endpoint](/azure/devops/pipelines/library/service-endpoints).
-    2. A **Labor neve**, válassza ki a labor, ahol a környezet létezik.
-    3. A **Környezet neve mezőbe**írja be az eltávolítandó környezet nevét.
-2. Adja meg a kiadási definíció nevét, majd mentse.
+1. A virtuális gép törléséhez tekintse meg a [Azure DevTest Labs feladatokat](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
+    1. Az **Azure RM-előfizetés**esetében válasszon ki egy kapcsolatot az **elérhető Azure-szolgáltatások kapcsolatai** listán, vagy hozzon létre egy korlátozott engedélyeket az Azure-előfizetéshez való kapcsolódáshoz. További információ: [Azure Resource Manager szolgáltatási végpont](/azure/devops/pipelines/library/service-endpoints).
+    2. A **labor neve**mezőben válassza ki azt a labort, ahol a környezet létezik.
+    3. A **környezet neve**mezőben adja meg az eltávolítandó környezet nevét.
+2. Adja meg a kiadás definíciójának nevét, majd mentse azt.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
-- [Többvirtuális gépes környezeteket hozhat létre az Erőforrás-kezelő sablonjaival.](devtest-lab-create-environment-from-arm.md)
-- A [DevTest Labs GitHub-tárházból](https://github.com/Azure/azure-quickstart-templates)származó Gyorsindítási Erőforrás-kezelő sablonok a DevTest Labs automatizálásához.
-- [VSTS hibaelhárítási lap](/azure/devops/pipelines/troubleshooting)
+- [Több virtuális gépre kiterjedő környezetek létrehozása Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md).
+- Gyors útmutató Resource Manager-sablonok a DevTest Labs automatizálásához a [DevTest Labs GitHub-adattárból](https://github.com/Azure/azure-quickstart-templates).
+- [VSTS hibaelhárítási oldala](/azure/devops/pipelines/troubleshooting)
 

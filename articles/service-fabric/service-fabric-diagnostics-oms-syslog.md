@@ -1,38 +1,38 @@
 ---
-title: Linux-fürtesemények figyelése az Azure Service Fabricben
-description: Ismerje meg, hogyan figyelheti a Service Fabric Linux-fürtesemények a Service Fabric platformesemények syslog írásával.
+title: Linux-fürtök eseményeinek figyelése az Azure-ban Service Fabric
+description: Megtudhatja, hogyan figyelheti Service Fabric linuxos fürtök eseményeit Service Fabric platform eseményeinek a syslog-be való írásával.
 author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645752"
 ---
-# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric Linux-fürtesemények a Syslogban
+# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-fürt eseményeinek Service Fabric a syslog-ben
 
-A Service Fabric platformesemények készletét teszi elérhetővé, hogy tájékoztassa a fürt fontos tevékenységéről. A kitett események teljes listája [itt](service-fabric-diagnostics-event-generation-operational.md)érhető el. Ezek az események számos módon használhatók fel. Ebben a cikkben fogjuk megvitatni, hogyan konfigurálhatja a Service Fabric ezeket az eseményeket a Syslog.
+Service Fabric platform-eseményeket tesz elérhetővé, amelyekkel tájékoztathatja a fürt fontos tevékenységeit. A feltehetően elérhető események teljes listája [itt](service-fabric-diagnostics-event-generation-operational.md)érhető el. Többféle módon is felhasználhatja ezeket az eseményeket. Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Service Fabrict, hogy ezeket az eseményeket a syslog-be írja.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-A 6.4-es kiadásban a SyslogConsumer bevezetésre került, hogy a Service Fabric platformeseményeket a Syslog Linux-fürtöknek küldje el. Bekapcsolás után az események automatikusan a Syslog-ba kerülnek, amelyet a Log Analytics-ügynök gyűjthet és küldhet.
+Az 6,4-es kiadásban a SyslogConsumer bevezették a Service Fabric platform eseményeinek a syslog for Linux-fürtökbe való küldéséhez. Ha bekapcsolta, az események automatikusan a syslog-be kerülnek, amelyet a Log Analytics ügynök gyűjthet és küldhet.
 
-Minden Syslog esemény 4 összetevőből áll
+Minden syslog-esemény 4 összetevővel rendelkezik
 * Létesítmény
 * Identitás
 * Üzenet
 * Severity
 
-A SyslogConsumer az összes platformeseményt `Local0`a Facility használatával írja. A config config módosításával bármely érvényes létesítményre frissíthet. A használt identitás `ServiceFabric`a . Az Üzenet mező tartalmazza a jsonban szerializált teljes eseményt, így számos eszköz lekérdezhető és felhasználható. 
+A SyslogConsumer minden platform-eseményt ír a `Local0`létesítmény használatával. A konfiguráció konfigurációjának módosításával bármely érvényes létesítményre frissítheti. A használt identitás: `ServiceFabric`. Az üzenet mező a JSON-ban szerializált teljes eseményt tartalmazza, így számos eszközről lekérdezhető és felhasználható. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer engedélyezése
 
-A SyslogConsumer engedélyezéséhez a fürt frissítését kell végrehajtania. A `fabricSettings` szakaszt a következő kóddal kell frissíteni. Megjegyzés: ez a kód csak a SyslogConsumer-hez kapcsolódó szakaszokat tartalmazza
+A SyslogConsumer engedélyezéséhez végre kell hajtania a fürt frissítését. A `fabricSettings` szakaszt a következő kóddal kell frissíteni. Megjegyzés Ez a kód csak a SyslogConsumer kapcsolatos részeket tartalmazza
 
 ```json
     "fabricSettings": [
@@ -74,10 +74,10 @@ A SyslogConsumer engedélyezéséhez a fürt frissítését kell végrehajtania.
     ],
 ```
 
-Itt vannak a változások, hogy hívja fel
-1. A Közös szakaszban van egy `LinuxStructuredTracesEnabled`új paraméter, a . **Erre a Syslog nak küldött Linux-események strukturált és szerializált rendszerezett.**
-2. A Diagnosztika szakaszban egy új ConsumerInstance: SyslogConsumer lett hozzáadva. Ez azt mondja a platform van egy másik fogyasztó az eseményeket. 
-3. Az új szakasz SyslogConsumer `IsEnabled` `true`kell, hogy a . Úgy van beállítva, hogy automatikusan használja a Local0 létesítményt. Ezt felülírhatja egy másik paraméter hozzáadásával.
+Itt láthatók a meghívott változások
+1. A Common (közös) szakaszban a nevű `LinuxStructuredTracesEnabled`új paraméter szerepel. **Erre azért van szükség, hogy a rendszer a syslog szolgáltatásba való elküldésekor strukturálja és szerializálja a Linux-eseményeket.**
+2. A diagnosztika szakaszban új ConsumerInstance: SyslogConsumer lett hozzáadva. Ez azt jelzi, hogy a platformon van egy másik fogyasztó az eseményekről. 
+3. Az új szakasznak SyslogConsumer kell `IsEnabled` lennie `true`. Úgy van konfigurálva, hogy automatikusan használja a Local0-létesítményt. Ezt felülbírálhatja egy másik paraméter hozzáadásával.
 
 ```json
     {
@@ -86,33 +86,33 @@ Itt vannak a változások, hogy hívja fel
     }
 ```
 
-## <a name="azure-monitor-logs-integration"></a>Az Azure Monitor naplóinak integrációja
-Ezeket a Syslog-eseményeket egy figyelési eszközben, például az Azure Monitor naplókban olvashatja. A Log Analytics-munkaterületet az Azure Marketplace használatával hozhatja létre az alábbi [utasítások] használatával. (.. /azure-monitor/learn/quick-create-workspace.md) A Log Analytics-ügynököt is hozzá kell adnia a fürthöz, hogy összegyűjtse és elküldje ezeket az adatokat a munkaterületre. Ez ugyanaz az ügynök, amelyet a teljesítményszámlálók gyűjtésére használnak. 
+## <a name="azure-monitor-logs-integration"></a>Azure Monitor naplók integrációja
+Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például Azure Monitor naplókban. Az alábbi [utasítások] használatával létrehozhat egy Log Analytics munkaterületet az Azure Marketplace használatával. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) Emellett hozzá kell adnia a Log Analytics-ügynököt a fürthöz, hogy adatokat gyűjtsön és küldjön a munkaterületre. Ez ugyanaz az ügynök, amely a teljesítményszámlálók gyűjtésére szolgál. 
 
-1. Keresse meg `Advanced Settings` a pengét
+1. Navigáljon a `Advanced Settings` panelre
 
     ![Munkaterület beállításai](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
 2. Kattintson a következőre: `Data`
 3. Kattintson a következőre: `Syslog`
-4. Konfigurálja a Local0-t a nyomon követő eszközként. Hozzáadhat egy másik létesítményt, ha megváltoztatta a fabricBeállítások
+4. Konfigurálja a Local0 a nyomon követési lehetőségként. Ha módosította a fabricSettings-ben, további létesítményt is hozzáadhat.
 
-    ![Syslog konfigurálása](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. A lekérdezés megkezdéséhez `Logs` kattintson a lekérdezési kezelőre a munkaterületi erőforrás menüjében
+    ![A syslog konfigurálása](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
+5. A lekérdezés indításához a munkaterület-erőforrás menüjére kattintva `Logs` lépjen a lekérdezési tallózóba.
 
-    ![Munkaterületi naplók](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. Lekérdezheti a `Syslog` `ServiceFabric` folyamatnévként keresett táblára. Az alábbi lekérdezés egy példa arra, hogyan elemezheti a JSON-t az eseményben, és hogyan jelenítheti meg annak tartalmát
+    ![Munkaterület naplófájljai](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
+6. Lekérdezheti a `Syslog` processname keresett `ServiceFabric` táblát. Az alábbi lekérdezés szemlélteti, hogyan elemezheti a JSON-t az eseményen, és megjelenítheti annak tartalmát
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload
 ```
 
-![Syslog lekérdezés](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
+![Syslog-lekérdezés](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
 
-A fenti példa egy NodeDown-esemény. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.
+A fenti példa egy NodeDown esemény. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.
 
 ## <a name="next-steps"></a>További lépések
-* [Telepítse a Log Analytics-ügynököt](service-fabric-diagnostics-oms-agent.md) a csomópontokra teljesítményszámlálók összegyűjtéséhez, valamint a docker-statisztikák és naplók gyűjtéséhez a tárolókhoz
-* Ismerkedjen meg az Azure Monitor naplóinak részeként kínált [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
-* [Egyéni nézetek létrehozása az Azure Monitor naplóiban a Nézettervező használatával](../log-analytics/log-analytics-view-designer.md)
-* Az Azure [Monitor naplóinak és a Syslog szolgáltatással való integrációjának hivatkozása.](../log-analytics/log-analytics-data-sources-syslog.md)
+* [A log Analytics-ügynök üzembe helyezése](service-fabric-diagnostics-oms-agent.md) a csomópontokon a teljesítményszámlálók összegyűjtéséhez, valamint a tárolók Docker-statisztikáinak és naplóinak összegyűjtéséhez
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
+* [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../log-analytics/log-analytics-view-designer.md)
+* Útmutató a [naplók Azure monitor a syslog-integrációhoz](../log-analytics/log-analytics-data-sources-syslog.md).

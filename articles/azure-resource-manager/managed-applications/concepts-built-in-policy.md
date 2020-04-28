@@ -1,53 +1,53 @@
 ---
 title: Társítások telepítése felügyelt alkalmazáshoz házirend használatával
-description: Ismerje meg, hogyan telepíthet társításokat egy felügyelt alkalmazáshoz az Azure Policy szolgáltatás használatával.
+description: Ismerje meg, hogyan telepíthet társításokat felügyelt alkalmazásokhoz Azure Policy szolgáltatás használatával.
 author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650941"
 ---
-# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Társítások üzembe helyezése felügyelt alkalmazásokhoz az Azure Policy használatával
+# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Felügyelt alkalmazáshoz tartozó társítások telepítése Azure Policy használatával
 
-Az Azure-szabályzatok segítségével társítások erőforrásokat társíthat egy felügyelt alkalmazáshoz. Ebben a cikkben egy beépített szabályzatot ismertetünk, amely társításokat telepít, és hogyan használhatja ezt a szabályzatot.
+Az Azure-szabályzatok segítségével társításokat helyezhet üzembe az erőforrások felügyelt alkalmazásokhoz való társításához. Ebben a cikkben egy olyan beépített szabályzatot ismertetünk, amely a társításokat telepíti, és hogyan használhatja ezt a házirendet.
 
-## <a name="built-in-policy-to-deploy-associations"></a>Beépített házirend társítások üzembe helyezéséhez
+## <a name="built-in-policy-to-deploy-associations"></a>Beépített szabályzat a társítások telepítéséhez
 
-A felügyelt alkalmazások társításai egy beépített házirend, amely egy erőforrás felügyelt alkalmazáshoz társítására használható társítások üzembe helyezéséhez használható. A házirend három paramétert fogad el:
+A felügyelt alkalmazásokhoz tartozó társítások üzembe helyezése egy beépített szabályzat, amely az erőforrások felügyelt alkalmazásokhoz társítására használható. A szabályzat három paramétert fogad el:
 
-- Felügyelt alkalmazásazonosító – Ez az azonosító annak a felügyelt alkalmazásnak az erőforrásazonosítója, amelyhez az erőforrásokat társkell társozni.
-- Társítandó erőforrástípusok – Ezek az erőforrástípusok a felügyelt alkalmazáshoz társítható erőforrástípusok listája. Ugyanazzal a házirenddel több erőforrástípust is társíthat egy felügyelt alkalmazáshoz.
-- Társítási név előtag – Ez a karakterlánc a létrehozandó társítási erőforrás nevéhez hozzáadandó előtag. Az alapértelmezett érték a "DeployedByPolicy".
+- Felügyelt alkalmazás azonosítója – ez az azonosító annak a felügyelt alkalmazásnak az erőforrás-azonosítója, amelyhez az erőforrásokat társítani kell.
+- Társítandó erőforrástípusok – ezek az erőforrástípusok a felügyelt alkalmazáshoz társítandó erőforrástípusok listája. Több erőforrástípust is hozzárendelhet egy felügyelt alkalmazáshoz ugyanazzal a házirenddel.
+- Társítás neve előtag – ez a karakterlánc a létrehozandó társítási erőforrás neveként hozzáadandó előtag. Az alapértelmezett érték a "DeployedByPolicy".
 
-A házirend deployIfnotExists kiértékelést használ. Azt követően fut, hogy egy erőforrás-szolgáltató kezelte a kiválasztott erőforrástípus(ok) létrehozási vagy frissítési erőforráskérelmét, és a kiértékelés sikeres állapotkódot adott vissza. Ezt követően a társítási erőforrás egy sablon központi telepítése használatával lesz telepítve.
-A társításokról az [Azure Custom Providers erőforrás bevezetéscímű témaköre.](../custom-providers/concepts-resource-onboarding.md)
+A szabályzat DeployIfNotExists-értékelést használ. Azt követően fut, hogy az erőforrás-szolgáltató a kiválasztott erőforrástípus (ok) hoz létre vagy frissít erőforrás-kérelmet, és a kiértékelés sikeres állapotkódot adott vissza. Ezt követően a társítási erőforrás üzembe helyezése sablon-telepítés használatával történik.
+További információ a társításokról: [Azure Custom Providers erőforrás](../custom-providers/concepts-resource-onboarding.md) bevezetése
 
-## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>A beépített házirendek üzembe helyezése 
+## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>A beépített társítási szabályzat használata 
 
 ### <a name="prerequisites"></a>Előfeltételek
-Ha a felügyelt alkalmazásnak engedélyekre van szüksége az előfizetéshez egy művelet végrehajtásához, a társítási erőforrás házirend-telepítése nem működne az engedélyek megadása nélkül.
+Ha a felügyelt alkalmazásnak engedélyre van szüksége az előfizetéshez, a művelet végrehajtásához a társítási erőforrás házirend-telepítése nem fog működni az engedélyek megadása nélkül.
 
 ### <a name="policy-assignment"></a>Szabályzat-hozzárendelés
-A beépített házirend használatához hozzon létre egy házirend-hozzárendelést, és rendelje hozzá a felügyelt alkalmazásházirend-társítások központi telepítését. Miután a házirend sikeresen hozzá lett rendelve, a házirend azonosítja a nem megfelelő erőforrásokat, és telepíti az erőforrások társítását.
+A beépített házirend használatához hozzon létre egy szabályzat-hozzárendelést, és rendelje hozzá a felügyelt alkalmazás-házirendhez tartozó központi telepítéseket. Miután a szabályzat sikeresen hozzá lett rendelve, a szabályzat azonosítja a nem megfelelő erőforrásokat, és nem telepíti a társítást ezekhez az erőforrásokhoz.
 
-![Beépített házirend hozzárendelése](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)
+![Beépített szabályzat kiosztása](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)
 
 ## <a name="getting-help"></a>Segítség kérése
 
-Ha kérdése van az Azure egyéni erőforrás-szolgáltatók fejlesztésével kapcsolatban, próbálja meg feltenni őket a [Veremtúlcsordulás szolgáltatásban.](https://stackoverflow.com/questions/tagged/azure-custom-providers) Lehet, hogy egy hasonló kérdésre már válaszoltak, ezért először a feladás előtt ellenőrizze. Add hozzá ```azure-custom-providers``` a címkét, hogy gyors választ kapj!
+Ha kérdése van az Azure-beli egyéni erőforrás-szolgáltatók fejlesztésével kapcsolatban, próbálja meg megkérdezni őket [stack Overflowon](https://stackoverflow.com/questions/tagged/azure-custom-providers). Egy hasonló kérdés megválaszolása már megtörtént, ezért először A feladás előtt érdemes megnéznie. A címke ```azure-custom-providers``` hozzáadásával gyors választ kaphat!
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a beépített szabályzat használatával kapcsolatban is olvashat. További információ:
+Ebből a cikkből megtanulta, hogyan telepíthet a beépített szabályzatot a társítások üzembe helyezésére. További információt a következő cikkekben talál:
 
-- [Fogalmak: Az Azure egyéni szolgáltatók erőforrás bevezetés](../custom-providers/concepts-resource-onboarding.md)
-- [Oktatóanyag: Erőforrás-bevezetés egyéni szolgáltatókkal](../custom-providers/tutorial-resource-onboarding.md)
-- [Oktatóanyag: Egyéni műveletek és erőforrások létrehozása az Azure-ban](../custom-providers/tutorial-get-started-with-custom-providers.md)
-- [Rövid útmutató: Egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](../custom-providers/create-custom-provider.md)
-- [Útmutató: Egyéni műveletek hozzáadása azure REST API-hoz](../custom-providers/custom-providers-action-endpoint-how-to.md)
-- [Útmutató: Egyéni erőforrások hozzáadása Azure REST API-hoz](../custom-providers/custom-providers-resources-endpoint-how-to.md)
+- [Fogalmak: Azure Custom Providers erőforrás-előkészítés](../custom-providers/concepts-resource-onboarding.md)
+- [Oktatóanyag: erőforrás-előkészítés egyéni szolgáltatókkal](../custom-providers/tutorial-resource-onboarding.md)
+- [Oktatóanyag: egyéni műveletek és erőforrások létrehozása az Azure-ban](../custom-providers/tutorial-get-started-with-custom-providers.md)
+- [Gyors útmutató: egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](../custom-providers/create-custom-provider.md)
+- [Útmutató: egyéni műveletek hozzáadása egy Azure-REST APIhoz](../custom-providers/custom-providers-action-endpoint-how-to.md)
+- [Útmutató: egyéni erőforrások hozzáadása Azure-REST APIhoz](../custom-providers/custom-providers-resources-endpoint-how-to.md)

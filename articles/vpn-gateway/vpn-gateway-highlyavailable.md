@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN-átjáró: Áttekintés – Magas rendelkezésre állású átjárókonfigurációk'
+title: 'Azure VPN Gateway: áttekintés – a magasan elérhető átjáró-konfigurációk'
 description: Ez a cikk áttekintést nyújt a magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779620"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
@@ -36,12 +36,12 @@ Az alábbi ábrán látható módon több VPN-eszközt is használhat a helyszí
 
 Ez a konfiguráció több aktív alagutat biztosít ugyanabból az Azure-alapú VPN-átjáróból az azonos helyen lévő helyszíni eszközeihez. Van néhány követelmény és megkötés:
 
-1. Több S2S VPN-kapcsolatot kell létesítenie a VPN-eszközök és az Azure között. Ha ugyanabból a helyszíni hálózatból több VPN-eszközt csatlakoztat az Azure-hoz, minden VPN-eszközhöz létre kell hoznia egy helyi hálózati átjárót, és egy kapcsolatot az Azure VPN-átjáróról minden helyi hálózati átjáróhoz.
+1. Több S2S VPN-kapcsolatot kell létesítenie a VPN-eszközök és az Azure között. Ha ugyanarról a helyszíni hálózatról csatlakoztat több VPN-eszközt az Azure-hoz, létre kell hoznia egy helyi hálózati átjárót minden egyes VPN-eszközhöz, és egy kapcsolatot az Azure VPN gatewaytől az egyes helyi hálózati átjárókkal.
 2. A VPN-eszközöknek megfelelő helyi hálózati átjáróknak egyedi nyilvános IP-címmel kell rendelkezniük a GatewayIpAddress tulajdonságban.
 3. Ehhez a konfigurációhoz BGP szükséges. A VPN-eszközöknek megfelelő összes helyi hálózati átjáróhoz meg kell adnia egy egyedi BGP társ IP-címet a BgpPeerIpAddress tulajdonságban.
 4. Az egyes helyi hálózati átjárók AddressPrefix tulajdonságmezői nem lehetnek egymással átfedésben. A BgpPeerIpAddress tulajdonságot /32 CIDR formátumban kell megadnia az AddressPrefix mezőben, például így: 10.200.200.254/32.
 5. Az azonos helyszíni hálózatok előtagjait BGP használatával kell meghirdetnie az Azure-alapú VPN-átjárónak, hogy a forgalom továbbítása egyszerre történjen ezeken az alagutakon keresztül.
-6. Egyenlő költségű többútvonalas útválasztást (ECMP) kell használnia.
+6. A több elérési úttal rendelkező útválasztást (ECMP) kell használnia.
 7. Minden kapcsolat beleszámít az Azure-alapú VPN-átjáró alagútjainak maximális számába: 10 az alapszintű és standard, illetve 30 a HighPerformance termékváltozat esetében. 
 
 Ebben a konfigurációban az Azure-alapú VPN-átjáró továbbra is aktív-készenléti állapotban van, ezért a feladatátvétel és a rövid megszakítás továbbra is bekövetkezik a [fent](#activestandby) leírtak szerint. Ez a beállítás viszont védelmet nyújt a hibák vagy megszakítások ellen a helyszíni hálózat és a VPN-eszközök esetében.

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A 4me konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiirtsa a felhasználói fiókokat a 4me-be.
+title: 'Oktatóanyag: a 4me konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a 4me.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77059164"
 ---
-# <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: A 4me konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 4me konfigurálása
 
-Ez az oktatóanyag célja, hogy bemutassa a 4me és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok 4me-re történő automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a 4me és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a 4me.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő
-* [4me bérlő](https://www.4me.com/trial/)
+* Azure AD-bérlő
+* [4me-bérlő](https://www.4me.com/trial/)
 * Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a 4me-ben.
 
-## <a name="add-4me-from-the-gallery"></a>4me hozzáadása a galériából
+## <a name="add-4me-from-the-gallery"></a>4me hozzáadása a gyűjteményből
 
-A 4me konfigurálása előtt az Automatikus felhasználói kiépítés az Azure AD-vel, hozzá kell adnia 4me az Azure AD-alkalmazáskatalógusa a felügyelt SaaS-alkalmazások listájához.
+Az Azure AD-vel való automatikus 4me konfigurálása előtt hozzá kell adnia a 4me az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**4me hozzáadása az Azure AD alkalmazáskatalógusból, hajtsa végre a következő lépéseket:**
+**Ha 4me szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **4me**értéket, válassza a **4me** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **4me**kifejezést, válassza az **4me** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![4me az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-4me"></a>Felhasználók hozzárendelése a 4me-hez
+## <a name="assigning-users-to-4me"></a>Felhasználók kiosztása a 4me
 
-Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Konfigurálása előtt, és az automatikus felhasználói kiépítés engedélyezése előtt el kell döntenie, hogy mely felhasználók és/vagy csoportok az Azure AD-ben kell hozzáférni e 4me. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a 4me-hez rendelheti hozzá az alábbi utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a 4me való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a 4me az alábbi utasításokat követve:
 
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-4me"></a>Fontos tippek a felhasználók 4me-hez való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-4me"></a>Fontos Tippek a felhasználók 4me való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve 4me az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a 4me-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználót 4me-hez rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Amikor 4me rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-4me"></a>Automatikus felhasználói kiépítés konfigurálása a 4me-re 
+## <a name="configuring-automatic-user-provisioning-to-4me"></a>Automatikus felhasználó-kiépítés beállítása a 4me 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le 4me-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy 4me alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Azt is választhatja, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a 4me-hez, a [4me egyszeri bejelentkezési oktatóanyag](4me-tutorial.md)utasításait követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a 4me számára, az [4me egyszeri bejelentkezés oktatóanyagában](4me-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Az automatikus felhasználói kiépítés konfigurálása a 4me-hez az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a 4me az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **4me**lehetőséget.
+2. Az alkalmazások listában válassza a **4me**lehetőséget.
 
-    ![A 4me hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az 4me hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **4me-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse a 6.
+5. A 4me **-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse az útmutatót a 6. lépésben leírtak szerint.
 
-6. Jelentkezzen be a 4me Felügyeleti konzolba. Nyissa meg a **Beállítások lapot.**
+6. Jelentkezzen be a 4me felügyeleti konzolra. Navigáljon a **Beállítások**elemre.
 
-    ![4me beállítások](media/4me-provisioning-tutorial/4me01.png)
+    ![4me-beállítások](media/4me-provisioning-tutorial/4me01.png)
 
     Írja be az **alkalmazásokat** a keresősávba.
 
-    ![4me alkalmazások](media/4me-provisioning-tutorial/4me02.png)
+    ![4me-alkalmazások](media/4me-provisioning-tutorial/4me02.png)
 
-    Nyissa meg az **SCIM** legördülő a titkos jogkivonat és az SCIM-végpont lekéréséhez.
+    Nyissa meg a **scim** legördülő listát a titkos jogkivonat és az scim végpont lekéréséhez.
 
     ![4me SCIM](media/4me-provisioning-tutorial/4me03.png)
 
-7. Az 5. **Test Connection** Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a 4me fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a 4me. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a 4me-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítési e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Kattintson a **Save** (Mentés) gombra.
 
-10. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a 4me-re**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 4me**lehetőséget.
 
     ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. Tekintse át az Azure AD-ről 4me-re szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a 4me felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 4me. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-attributes.png)
     
-12. A **Leképezések** csoportban válassza **az Azure Active Directory-csoportok szinkronizálása 4me -re**lehetőséget.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 4me**lehetőséget.
 
     ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-group-mapping.png)
     
-13. Tekintse át az Azure AD-ről 4me-re szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a 4me csoportban lévő csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+13. Tekintse át az Azure AD-ből szinkronizált 4me az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![4me csoport leképezése](media/4me-provisioning-tutorial/4me-group-attribute.png)
+    ![4me csoport-hozzárendelések](media/4me-provisioning-tutorial/4me-group-attribute.png)
 
-14. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Az Azure AD-kiépítési szolgáltatás 4me engedélyezéséhez módosítsa a **Kiépítés állapotát** **be a** **Beállítások** szakaszban.
+15. Az Azure AD-kiépítési szolgáltatás 4me való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-16. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a 4me-be szeretne kiépíteni, ha a **Beállítások** szakasz **Hatókör csoportjában** kiválasztja a kívánt értékeket.
+16. Adja meg a 4me kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-17. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által 4me-en végrehajtott összes műveletet.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a 4me-on végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő korlátai
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A 4me különböző SCIM végpont-URL-címekkel rendelkezik a teszt- és éles környezetekben. Az előbbi **.qa-val** végződik, míg az utóbbi **.com-al végződik.**
-* 4me generált titkos tokenek lejárati dátuma egy hónap generáció.
-* A 4me nem támogatja **a DELETE** műveleteket
+* a 4me különböző SCIM-végponti URL-címekkel rendelkezik a tesztelési és éles környezetekhez. Az előző a **. QA** -vel végződik, míg az utóbbi a **. com** -val végződik.
+* a 4me által generált titkos jogkivonatok egy hónap lejárati dátummal rendelkeznek a létrehozásból.
+* a 4me nem támogatja a **törlési** műveleteket.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN-átjáró: Átjáró-kapcsolat ellenőrzése'
-description: Ez a cikk bemutatja, hogyan ellenőrizheti a virtuális hálózati VPN-átjáró kapcsolatot.
+title: 'Azure VPN Gateway: átjáró-kapcsolatok ellenőrzése'
+description: Ez a cikk bemutatja, hogyan ellenőrizheti a virtuális hálózati VPN Gateway a kapcsolatokat.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: cherylmc
 ms.openlocfilehash: 40417b078577424b1ba13ce60f4f773a1c8fd4dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75780147"
 ---
-# <a name="verify-a-vpn-gateway-connection"></a>VPN-átjárókapcsolat ellenőrzése
+# <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway-kapcsolatok ellenőrzése
 
-Ez a cikk bemutatja, hogyan ellenőrizheti a VPN-átjáró kapcsolat a klasszikus és az Erőforrás-kezelő telepítési modellek.
+Ez a cikk bemutatja, hogyan ellenőrizheti a VPN Gateway-kapcsolatokat a klasszikus és a Resource Manager-alapú üzemi modellekhez.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-Ha a PowerShell használatával szeretné ellenőrizni az Erőforrás-kezelő telepítési modelljéhez használt VPN-átjáró-kapcsolatot, telepítse az [Azure Resource Manager PowerShell-parancsmagok](/powershell/azure/overview)legújabb verzióját.
+Ha a PowerShell használatával szeretné ellenőrizni a Resource Manager-alapú üzemi modell VPN Gateway-kapcsolatát, telepítse az [Azure Resource Manager PowerShell-parancsmagok](/powershell/azure/overview)legújabb verzióját.
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Ha az Azure CLI használatával szeretné ellenőrizni az Erőforrás-kezelő telepítési modelljéhez használt VPN-átjáró-kapcsolatot, telepítse a [CLI-parancsok](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0-s vagy újabb) legújabb verzióját.
+Ha az Azure CLI használatával szeretné ellenőrizni a Resource Manager-alapú üzemi modell VPN Gateway-kapcsolatát, telepítse a [CLI-parancsok](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verzióját (2,0 vagy újabb).
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
@@ -41,7 +41,7 @@ Ha az Azure CLI használatával szeretné ellenőrizni az Erőforrás-kezelő te
 
 ## <a name="powershell-classic"></a>PowerShell (klasszikus)
 
-A klasszikus üzembe helyezési modell VPN-átjáró-kapcsolatának ellenőrzéséhez telepítse az Azure PowerShell-parancsmagok legújabb verzióit. Mindenképpen töltse le és telepítse a [Szolgáltatáskezelés](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modult. Használja az "Add-AzureAccount" a klasszikus üzembe helyezési modellbe való bejelentkezéshez.
+A klasszikus üzemi modellhez készült VPN Gateway-kapcsolat ellenőrzéséhez a PowerShell használatával telepítse az Azure PowerShell-parancsmagok legújabb verzióit. Ügyeljen arra, hogy letöltse és telepítse a [Service Management](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modult. Az Add-AzureAccount használatával jelentkezzen be a klasszikus üzembehelyezési modellbe.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Az Apache HBase REST nem válaszol a kérésekre az Azure HDInsightban
-description: Hárítsa el azt a problémát, amely miatt az Apache HBase REST nem válaszol az Azure HDInsight-beli kérésekre.
+title: Az Apache HBase REST nem válaszol a kérelmekre az Azure HDInsight
+description: Hárítsa el a problémát az Apache HBase REST szolgáltatásban, és ne válaszoljon az Azure HDInsight-kérelmekre.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,23 +8,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 49b547829a369ea6df35e2f1c2f7d60458e41040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887172"
 ---
-# <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Eset: Az Apache HBase REST nem válaszol az Azure HDInsight ban lévő kérésekre
+# <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Forgatókönyv: az Apache HBase REST nem válaszol a kérelmekre az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Az Apache HBase REST szolgáltatás nem válaszol az Azure HDInsight ban lévő kérésekre.
+Az Apache HBase REST szolgáltatás nem válaszol a kérelmekre az Azure HDInsight.
 
 ## <a name="cause"></a>Ok
 
-A lehetséges ok itt lehet Apache HBase REST szolgáltatás szivárog foglalat, ami különösen gyakori, ha a szolgáltatás már régóta fut (például hónapok). Az ügyfél SDK-ból a következőhöz hasonló hibaüzenet jelenhet meg:
+Ennek lehetséges oka az lehet, hogy az Apache HBase REST-szolgáltatás a kiszivárgó szoftvercsatornák, ami különösen gyakori, ha a szolgáltatás hosszú ideig futott (például hónapok). Az ügyfél-SDK-ból a következőhöz hasonló hibaüzenet jelenhet meg:
 
 ```
 System.Net.WebException : Unable to connect to the remote server --->
@@ -33,15 +33,15 @@ System.Net.Sockets.SocketException : A connection attempt failed because the con
 
 ## <a name="resolution"></a>Megoldás:
 
-Indítsa újra a HBase REST programot az alábbi paranccsal az SSH-állomásra való ssh-elés után. Parancsfájlműveletek segítségével is újraindíthatja ezt a szolgáltatást az összes munkavégző csomóponton:
+Indítsa újra a HBase REST-et az alábbi parancs használatával, miután SSH a gazdagépre. Parancsfájl-műveletek használatával a szolgáltatás újraindítását is elvégezheti az összes munkavégző csomóponton:
 
 ```bash
 sudo service hdinsight-hbrest restart
 ```
 
-Ez a parancs leállítja a HBase régiókiszolgálót ugyanazon az állomáson. Manuálisan is elindíthatja a HBase Region Server alkalmazást az Ambari segítségével, vagy hagyja, hogy az Ambari automatikus újraindítási funkciói automatikusan helyreállítsák a HBase Region Server kiszolgálót.
+Ez a parancs leállítja a HBase-régió kiszolgálóját ugyanazon a gazdagépen. A HBase-régió kiszolgálóját manuálisan is elindíthatja a Ambari használatával, vagy engedélyezheti a Ambari automatikus újraindítási funkciójának automatikus helyreállítását a HBase-régió kiszolgáló
 
-Ha a probléma továbbra is fennáll, telepítheti a következő kockázatcsökkentési parancsfájlt CRON-feladatként, amely minden munkavégző csomóponton 5 percenként fut. Ez a kockázatcsökkentő parancsfájl pingeli a REST-szolgáltatást, és újraindítja azt, ha a REST szolgáltatás nem válaszol.
+Ha a probléma továbbra is fennáll, telepítheti a következő kockázatcsökkentő parancsfájlt CRON-feladatként, amely minden munkavégző csomóponton 5 percenként fut. Ez a megoldási parancsfájl Pingeli a REST szolgáltatást, és újraindítja azt abban az esetben, ha a REST szolgáltatás nem válaszol.
 
 ```bash
 #!/bin/bash
@@ -55,10 +55,10 @@ fi
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal, amely javítja az ügyfélélményt azáltal, hogy az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Csatlakozás az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse át az Azure-támogatási kérelem létrehozása című, [továbbcímű tájékoztatót.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

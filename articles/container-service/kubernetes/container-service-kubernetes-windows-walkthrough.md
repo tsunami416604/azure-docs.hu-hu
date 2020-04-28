@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Rövid útmutató – Azure Kubernetes-fürt windowsos hoz
+title: ELAVULT Rövid útmutató – Azure Kubernetes-fürt Windows rendszerhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Kubernetes-fürtöt Windows-tárolókhoz az Azure Container Service szolgáltatásban az Azure parancssori felületével.
 author: dlepow
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277642"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(ELAVULT) Kubernetes-fürt telepítése Windows-tárolókhoz
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>ELAVULT Kubernetes-fürt üzembe helyezése Windows-tárolókhoz
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Az útmutatóból megtudhatja, hogyan használható az Azure CLI [Kubernetes](https://kubernetes.io/docs/home/)-fürtök [Azure Container Service-ben](../container-service-intro.md) történő üzembe helyezésére. Miután üzembe helyezte a fürtöt, a Kubernetes `kubectl` parancssori eszközével kapcsolódhat hozzá, és üzembe helyezheti az első Windows-tárolóját.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Pár perc múlva befejeződik a parancs futtatása, és megjelennek az üzembe h
 
 ## <a name="install-kubectl"></a>A kubectl telepítése
 
-Ha az ügyfélszámítógépről szeretne csatlakozni a Kubernetes-fürthöz, használja [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)a Kubernetes parancssori ügyfelet. 
+Ha csatlakozni szeretne a Kubernetes-fürthöz az ügyfélszámítógépről, [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)használja a Kubernetes parancssori ügyfelet. 
 
 Az Azure CloudShell használata esetén a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) parancsot.
 

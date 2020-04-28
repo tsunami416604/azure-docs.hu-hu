@@ -1,5 +1,5 @@
 ---
-title: Ügyféladat-igénylési funkciók az Azure IoT Centralban | Microsoft dokumentumok
+title: Az Azure IoT Central felhasználói adatkérési funkciói | Microsoft Docs
 description: Ez a cikk az ügyféladatok azonosítását, törlését és exportálását ismerteti az Azure IoT Central alkalmazásban.
 author: dominicbetts
 ms.author: dobett
@@ -9,38 +9,38 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77023752"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-igénylési funkciók összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
 
-Az Azure IoT Central egy teljes körűen felügyelt eszközök internetes hálózata (IoT) szoftverszolgáltatásként megoldás, amely megkönnyíti az IoT-eszközök nagy méretekben történő csatlakoztatását, figyelését és kezelését, az IoT-adatok ból származó mély elemzéseket, és megalapozott lépéseket tesz.
+Az Azure IoT Central egy teljes körűen felügyelt, eszközök internetes hálózata (IoT) szoftveres megoldás, amely megkönnyíti a IoT-eszközök összekapcsolását, figyelését és felügyeletét nagy méretekben, mélyreható elemzéseket készíthet a IoT-adatokból, és tájékozott műveleteket végezhet.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Az ügyféladatok azonosítása
+## <a name="identifying-customer-data"></a>Ügyféladatok azonosítása
 
-Az Azure Active Directory objektumazonosítók a felhasználók azonosítására és szerepkörök hozzárendelésére szolgálnak. Az Azure IoT Central portál megjeleníti a szerepkör-hozzárendelések felhasználói e-mail-címeket, de csak az Azure Active Directory Object-ID tárolja, az e-mail cím dinamikusan lekérdezett az Azure Active Directoryból. Az Azure IoT Központi rendszergazdák megtekinthetik, exportálhatják és törölhetik az alkalmazás-felhasználókat az Azure IoT Central alkalmazás felhasználói felügyeleti szakaszában.
+Azure Active Directory Object-ID azonosítókat használ a felhasználók azonosítására és a szerepkörök hozzárendelésére. Az Azure IoT Central portál a szerepkör-hozzárendelések felhasználói e-mail-címeit jeleníti meg, de csak az Azure Active Directory Object-ID tárolja, az e-mail-címet a rendszer dinamikusan kérdezi le a Azure Active Directory. Az Azure IoT Central-rendszergazdák megtekinthetik, exportálják és törölhetik az alkalmazás felhasználóit egy Azure IoT Central-alkalmazás felhasználói adminisztráció szakaszában.
 
-Az alkalmazáson belül az e-mail címek beállíthatók riasztások fogadására. Ebben az esetben az e-mail-címek az IoT Central ban tárolódnak, és az alkalmazáson belüli fiókfelügyeleti lapról kell kezelni őket.
+Az alkalmazáson belül az e-mail-címek is konfigurálhatók a riasztások fogadására. Ebben az esetben az e-mail-címeket IoT Central tárolja, és az alkalmazáson belüli fiók felügyelete lapon kell felügyelni.
 
-Az eszközök tekintetében a Microsoft nem tart fenn adatokat, és nem fér hozzá olyan adatokhoz, amelyek lehetővé teszik az eszköz és a felhasználói korreláció elérését. Az Azure IoT Centralban kezelt eszközök közül sok nem személyes eszköz, például egy automatából vagy kávéfőzőből. Az ügyfelek azonban úgy tekinthetik, hogy egyes eszközök személyazonosításra alkalmasak, és saját belátásuk szerint fenntarthatják saját eszköz- vagy készletkövető rendszereiket, amelyek az eszközöket egyénekhez kötik. Az Azure IoT Central úgy kezeli és tárolja az eszközökhöz társított összes adatot, mintha azok személyes adatok lennének.
+Az eszközökre vonatkozóan a Microsoft nem tart fenn információt, és nem fér hozzá az eszköz felhasználói korrelációját lehetővé tevő adatokhoz. Az Azure IoT Centralban felügyelt eszközök közül sok nem személyes eszköz, például egy automatából vagy kávéfőzőn. Előfordulhat azonban, hogy egyes eszközök személyes azonosításra alkalmasak, és a saját belátásuk szerint megőrizheti saját eszközeiket vagy leltározási nyomon követési rendszereit, amelyek az eszközöket az egyéni felhasználókhoz köti. Az Azure IoT Central kezeli és tárolja az eszközökhöz kapcsolódó összes olyan adatmennyiséget, amely személyes adatként volt.
 
-A Microsoft vállalati szolgáltatásainak használatakor a Microsoft létrehoz néhány információt, más néven a rendszer által létrehozott naplókat. Ezek a naplók a szolgáltatáson belül végzett tényszerű műveleteket és az egyes eszközökkel kapcsolatos diagnosztikai adatokat jelentik, és nem kapcsolódnak a felhasználói tevékenységhez. Az Azure IoT Central rendszer által létrehozott naplók nem érhetők el, vagy exportálható az alkalmazás-rendszergazdák.
+A Microsoft nagyvállalati szolgáltatásainak használatakor a Microsoft bizonyos adatokat hoz létre a rendszer által létrehozott naplók néven. Ezek a naplók a szolgáltatáson belüli, valamint az egyes eszközökhöz kapcsolódó diagnosztikai és a felhasználói tevékenységekhez nem kapcsolódó, ténybeli műveleteket alkotnak. Az Azure IoT Central rendszer által generált naplók nem érhetők el és nem exportálhatók az alkalmazás-rendszergazdák számára.
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 
-A felhasználói adatok törlésének lehetősége csak az IoT Central adminisztrációs oldalán érhető el. Az alkalmazásgazdák kiválaszthatják a törölni kívánt felhasználót, és a bejegyzés törléséhez az alkalmazás jobb felső sarkában a **Törlés** lehetőséget választhatják. Az alkalmazás-rendszergazdák eltávolíthatják azokat a fiókokat is, amelyek már nincsenek társítva a kérdéses alkalmazáshoz.
+A felhasználói adattörlési képesség csak a IoT Central adminisztrációs oldalon keresztül érhető el. Az alkalmazás-rendszergazdák kiválaszthatják a törölni kívánt felhasználót, és az alkalmazás jobb felső sarkában található **Törlés** gombra kattintva törölhetik a rekordot. Az alkalmazás-rendszergazdák eltávolíthatják azokat az egyes fiókokat is, amelyek már nincsenek társítva a szóban forgó alkalmazáshoz.
 
-A felhasználó törlése után a rendszer nem küld nekik további értesítéseket. Az e-mail címüket azonban egyenként el kell távolítani minden egyes konfigurált riasztásból.
+A felhasználó törlése után a rendszer nem küld további riasztásokat. Az e-mail-címüket azonban egyenként el kell távolítani az egyes konfigurált riasztásokból.
 
-## <a name="exporting-customer-data"></a>Vevői adatok exportálása
+## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 
-Az adatok exportálásának lehetősége csak az IoT Central adminisztrációs oldalán érhető el. Az ügyféladatokat, beleértve a hozzárendelt szerepköröket is, az alkalmazás rendszergazdája kijelölheti, másolhatja és beillesztheti.
+Az adatexportálási képesség csak a IoT Central adminisztrációs oldalon keresztül érhető el. Az ügyféladatokat, a hozzárendelt szerepköröket is beleértve, az alkalmazás rendszergazdája kiválaszthatja, másolhatja és beillesztheti.
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációra mutató hivatkozások
 
-A fiókfelügyeletről, beleértve a szerepkör-definíciókat is, az [alkalmazás felügyelete](howto-administer.md)című témakörben talál további információt.
+További információ a fiókok felügyeletéről, beleértve a szerepkör-definíciókat: [az alkalmazás felügyelete](howto-administer.md).

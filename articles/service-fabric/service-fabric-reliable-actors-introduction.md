@@ -1,71 +1,71 @@
 ---
-title: Szolgáltatásfabric megbízható szereplők áttekintése
-description: Bevezetés a Service Fabric megbízható szereplők programozási modell, a virtuális aktor minta alapján.
+title: Service Fabric Reliable Actors áttekintése
+description: Bevezetés a Service Fabric Reliable Actors programozási modellbe a virtuális színész mintája alapján.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645565"
 ---
-# <a name="introduction-to-service-fabric-reliable-actors"></a>Bevezetés a Service Fabric megbízható szereplők
-Megbízható szereplők egy Service Fabric alkalmazás keretrendszer a [virtuális aktor](https://research.microsoft.com/en-us/projects/orleans/) minta alapján. A Reliable Actors API egy egyszálas programozási modellt biztosít, amely a Service Fabric által biztosított méretezhetőségi és megbízhatósági garanciákra épül.
+# <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors bemutatása
+A Reliable Actors a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáján alapuló Service Fabric alkalmazás-keretrendszer. A Reliable Actors API egy egyszálas programozási modellt biztosít, amely a Service Fabric által biztosított méretezhetőségi és megbízhatósági garanciára épül.
 
-## <a name="what-are-actors"></a>Mik azok a színészek?
-Az aktor egy elszigetelt, független számítási egység és állapot egyszálas végrehajtással. Az [aktorminta](https://en.wikipedia.org/wiki/Actor_model) egy számítási modell egyidejű vagy elosztott rendszerek, amelyben nagyszámú ilyen szereplők végre egyszerre és egymástól függetlenül. A színészek kommunikálhatnak egymással, és több szereplőt hozhatnak létre.
+## <a name="what-are-actors"></a>Mik azok a szereplők?
+A színész egy elkülönített, különálló számítási és állapotú egység, egyszálas végrehajtással. A [Actor minta](https://en.wikipedia.org/wiki/Actor_model) egy egyidejű vagy elosztott rendszerek számítási modellje, amelyben nagy mennyiségű ilyen szereplő futhat egyszerre, egymástól függetlenül. A szereplők képesek kommunikálni egymással, és több résztvevőt is létrehozhatnak.
 
-### <a name="when-to-use-reliable-actors"></a>Mikor kell használni a Megbízható szereplőket?
-A Service Fabric megbízható szereplői az aktor tervezési minta megvalósítása. Mint minden szoftver tervezési minta, a döntés, hogy egy adott minta alapján történik-e vagy sem egy szoftver tervezési probléma illeszkedik a mintát.
+### <a name="when-to-use-reliable-actors"></a>Mikor kell használni a Reliable Actors
+A Service Fabric Reliable Actors a színész kialakítási mintájának implementációja. Ahogy a szoftveres kialakítási minta esetében is, az adott minta használatának döntése attól függ, hogy a szoftver tervezési problémája megfelel-e a mintának.
 
-Bár az aktor tervezési minta lehet egy jó illeszkedést számos elosztott rendszerek problémák és forgatókönyvek, gondos anamnézis a korlátok a minta és a keret végrehajtása kell tenni. Általános útmutatásként vegye figyelembe az aktormintát a probléma vagy forgatókönyv modellezéséhez, ha:
+Bár a színész kialakítási mintája alkalmas lehet számos elosztott rendszerbeli problémára és forgatókönyvre, körültekintően figyelembe kell venni a minta korlátait és a megvalósítási keretrendszert. Általános útmutatásként vegye fontolóra a probléma vagy forgatókönyv modellezésére a színész mintáját, ha:
 
-* A problémás terület nagy számú (több ezer vagy több) kis, független és elszigetelt állapot- és logikai egységet foglal magában.
-* Olyan egyszálas objektumokkal szeretne dolgozni, amelyek nem igényelnek jelentős interakciót a külső összetevőktől, beleértve az állapot lekérdezését az egy adott szereplőkészletben.
-* Az aktorpéldányok nem blokkolja a hívókat előre nem látható késésekkel I/O-műveletek kibocsátásával.
+* A problémás terület nagy számú (több ezer vagy több) kis, független és elszigetelt állapotú és logikai egységből áll.
+* Olyan egyszálas objektumokkal szeretne dolgozni, amelyek nem igényelnek jelentős interakciót a külső összetevőktől, többek között a lekérdezési állapotot a szereplők egy csoportján belül.
+* Az I/O-műveletek kiadásával a színész példányai nem tudják előre nem látható késéssel letiltani a hívókat.
 
-## <a name="actors-in-service-fabric"></a>A service fabric szereplői
-A Service Fabric, a szereplők a Reliable Actors keretrendszerben: Egy aktor-minta-alapú alkalmazás keretrendszer a [Service Fabric megbízható szolgáltatások.](service-fabric-reliable-services-introduction.md) Minden megbízható aktor szolgáltatás ír egy particionált, állapotalapú megbízható szolgáltatás.
+## <a name="actors-in-service-fabric"></a>A Service Fabric szereplői
+Service Fabric a szereplők a Reliable Actors-keretrendszerben valósulnak meg: egy, a [Service Fabric Reliable Servicesra](service-fabric-reliable-services-introduction.md)épülő Actor-Pattern-alapú alkalmazás-keretrendszer. Az Ön által írt megbízható Actors szolgáltatás tulajdonképpen egy particionált, állapot-nyilvántartó megbízható szolgáltatás.
 
-Minden aktor egy aktortípus példányaként van definiálva, amely megegyezik azzal, ahogyan a .NET objektum egy .NET típusú példány. Előfordulhat például, hogy van egy aktortípus, amely megvalósítja a számológép funkcióit, és előfordulhat, hogy sok ilyen típusú szereplő van elosztva a fürt különböző csomópontjain. Minden ilyen szereplőegyedileg azonosítja egy aktor azonosító.
+Minden szereplő egy Actor típusú példányként van definiálva, amely megegyezik azzal, ahogyan a .NET-objektum egy .NET-típusú példány. Előfordulhat például, hogy egy olyan Actor-típust alkalmaz, amely egy adott számológép funkcióit valósítja meg, és számos, a fürtben lévő csomóponton terjesztett résztvevő lehet. Minden ilyen szereplőt egyedileg azonosít egy színész azonosítója.
 
 ## <a name="actor-lifetime"></a>Színész élettartama
-A Service Fabric-szereplők virtuálisak, ami azt jelenti, hogy élettartamuk nem kötődik a memórián belüli ábrázolásukhoz. Ennek eredményeképpen ezeket nem kell kifejezetten létrehozni vagy megsemmisíteni. A Reliable Actors futásidejű automatikusan aktiválja az aktor az első alkalommal, amikor az aktor-azonosítóra vonatkozó kérést kap. Ha egy aktor nem használja egy ideig, a Reliable Actors futásidejű szemétgyűjti a memóriában lévő objektumot. Azt is fenntartja ismerete a színész létezését kell újra ítani később. További részletek: [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md).
+Service Fabric szereplők virtuálisak, ami azt jelenti, hogy az élettartamuk nem kötődik a memóriában tárolt ábrázoláshoz. Ennek eredményeképpen nem kell explicit módon létrehozni vagy megsemmisíteni. A Reliable Actors futtatókörnyezet automatikusan aktiválja a szereplőt, amikor az első alkalommal kérelmet kap az adott színész AZONOSÍTÓjának. Ha egy szereplőt nem használ egy adott időszakra, akkor a Reliable Actors futtatókörnyezet a memóriában lévő objektumot gyűjti. Emellett a szereplő létezéséről is gondoskodni fog arról, hogy később újra kell aktiválni. További részletek: [Actors Lifecycle and szemetet Collection](service-fabric-reliable-actors-lifecycle.md).
 
-Ez a virtuális szereplő élettartama absztrakció hordoz néhány kikötések eredményeként a virtuális aktor modell, és valójában a Reliable Actors megvalósítása eltér időnként ettől a modelltől.
+A virtuális színészek élettartamának absztrakciója bizonyos kikötéseket hajt végre a virtuális színészi modell miatt, és valójában a Reliable Actors megvalósítás a modelltől függően eltér.
 
-* Az aktor automatikusan aktiválódik (ami egy aktorobjektum felépítését okozza) az üzenet első elküldése az aktorazonosítójára. Egy idő után a szereplő objektum szemetet gyűjtött. A jövőben az aktorazonosító újra használva egy új aktorobjektumot hoz létre. Egy szereplő állapota túléli az objektum élettartamát, amikor az állapotkezelőtárolja.
-* Bármely aktor metódus hívása egy aktorazonosítóhoz aktiválja az aktort. Emiatt az aktortípusok a konstruktor t implicit módon a futásidejű. Ezért az ügyfélkód nem tudja átadni a paramétereket az aktortípus konstruktorának, bár a paramétereket maga a szolgáltatás is átadhatja az aktor konstruktorának. Az eredmény az, hogy az operátorok lehet létrehozni egy részlegesen inicializált állapotban, mire más metódusok hívják meg, ha az aktor szükséges inicializálási paramétereket az ügyféltől. Nincs egyetlen belépési pont az ügyfélaktól származó aktor aktiválásához.
-* Bár a Reliable Actors implicit módon aktorobjektumokat hoz létre; ön képes explicit módon törölni egy aktor és annak állapotát.
+* A színész automatikusan aktiválódik (egy színészi objektum kiépítésének előidézése), amikor a rendszer első alkalommal küld el egy üzenetet a színészi AZONOSÍTÓjának. Néhány idő elteltével a Actor objektum a beszedett szemetet gyűjti. A jövőben a színész AZONOSÍTÓjának újbóli használata egy új Actor objektum kiépítését eredményezi. A színész állapota kiadja az objektum élettartamát a State Managerben való tárolás során.
+* A Actors-azonosító bármely Actor metódusának meghívása aktiválja ezt a szereplőt. Emiatt a szereplők típusait a futtatókörnyezet implicit módon hívja meg. Ezért az ügyfél kódja nem tud paramétereket átadni a színész típusa konstruktorának, bár a paramétereket a szolgáltatás maga is átadhatja a szereplő konstruktorának. Ennek eredményeképpen a szereplők részlegesen inicializált állapotban lehetnek, ha más módszerekkel is meghívja őket, ha a színész inicializálási paramétereket igényel az ügyféltől. Nem áll rendelkezésre egyetlen belépési pont a szereplő ügyféltől való aktiválására.
+* Bár a Reliable Actors implicit módon hozzon létre Actor objektumokat; lehetősége van arra, hogy explicit módon törölje a szereplőt és annak állapotát.
 
 ## <a name="distribution-and-failover"></a>Terjesztés és feladatátvétel
-A méretezhetőség és a megbízhatóság biztosítása érdekében a Service Fabric elosztja a fürtök szereplőit, és szükség szerint automatikusan áttelepíti őket a sikertelen csomópontokról a kifogástalan állapotúakra. Ez egy absztrakció egy [particionált, állapotalapú megbízható szolgáltatás felett.](service-fabric-concepts-partitioning.md) A terjesztési, méretezhetőségi, megbízhatósági és automatikus feladatátvétel mind azon tény alapján biztosítják, hogy a szereplők az *aktorszolgáltatás*nevű állapotalapú megbízható szolgáltatáson belül futnak.
+A méretezhetőség és a megbízhatóság biztosítása érdekében a Service Fabric a fürtön keresztül osztja el a résztvevőket, és a szükséges módon automatikusan áttelepíti azokat a meghibásodott csomópontokból. Ez egy [particionált, állapot-nyilvántartó megbízható szolgáltatáson](service-fabric-concepts-partitioning.md)alapuló absztrakció. A terjesztést, a méretezhetőséget, a megbízhatóságot és az automatikus feladatátvételt mind az a tény biztosítja, hogy a szereplők egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatáson belül futnak.
 
-A szereplők az aktorszolgáltatás partíciói között vannak elosztva, és ezek a partíciók egy Service Fabric-fürt csomópontjai között vannak elosztva. Minden szolgáltatáspartíció tartalmaz egy szereplőkészletet. A Service Fabric kezeli a szolgáltatáspartíciók disztribúcióját és feladatátvételét.
+A szereplők a Actors szolgáltatás partíciói között oszlanak el, és ezek a partíciók a Service Fabric-fürt csomópontjai között oszlanak meg. Minden szolgáltatás-partíció tartalmaz egy készletet. Service Fabric kezeli a szolgáltatási partíciók eloszlását és feladatátvételét.
 
-Például egy aktor szolgáltatás kilenc partíciók üzembe helyezett három csomópont az alapértelmezett aktor partíció elhelyezése lenne elosztva így:
+Például egy, az alapértelmezett Actor Partition-elhelyezést használó három csomóponton üzembe helyezett kilenc partíciót tartalmazó Actor-szolgáltatás a következő módon terjeszthető:
 
-![Megbízható szereplők elosztása][2]
+![Reliable Actors eloszlás][2]
 
-Az Aktor keretrendszer kezeli a partíciósémát és a kulcstartomány beállításait. Ez leegyszerűsíti néhány választás, hanem hordoz némi figyelmet:
+A Actor Framework a particionálási sémát és a kulcs tartományának beállításait kezeli. Ez egyszerűsíti az egyes döntéseket, de a következőket is figyelembe veszi:
 
-* Megbízható szolgáltatások lehetővé teszi, hogy válasszon egy particionálási séma, kulcstartomány (tartomány particionálási séma használata esetén) és a partíciók száma. A Reliable Actors a tartományparticionálási sémára (az egységes Int64 sémára) korlátozódik, és a teljes Int64 kulcstartomány t igényel.
-* Alapértelmezés szerint a szereplők véletlenszerűen kerülnek partíciókba, ami egységes elosztást eredményez.
-* Mivel a szereplők véletlenszerűen vannak elhelyezve, várható, hogy az aktorműveletek mindig hálózati kommunikációt igényelnek, beleértve a metódushívási adatok szerializálását és deszerializálását, késést és terhelést.
-* Speciális forgatókönyvekben az aktor partíció elhelyezése az adott partíciókhoz leképező Int64 aktorazonosítók használatával szabályozható. Ez azonban a szereplők kiegyensúlyozatlan eloszlását eredményezheti a partíciók között.
+* Reliable Services lehetővé teszi a particionálási séma, a kulcs tartomány (tartomány particionálási séma használata esetén) és a partíciók számának kiválasztását. Reliable Actors a tartomány particionálási sémája (egységes Int64 séma) használatára korlátozódik, és a teljes Int64-tartomány használatát igényli.
+* Alapértelmezés szerint a szereplők véletlenszerűen vannak elhelyezve a partíciókban, ami egységes eloszlást eredményez.
+* Mivel a szereplők véletlenszerűen vannak elhelyezve, várható, hogy a színészi műveletek mindig hálózati kommunikációt igényelnek, beleértve a metódus hívási adatok szerializálását és deszerializálását, a késést és a terhelést.
+* A speciális forgatókönyvek esetében lehetséges, hogy a Int64 Actors-azonosítók használatával vezérli a szereplők partíciójának elhelyezését. Ez azonban a különböző partíciókban lévő szereplők kiegyensúlyozatlan eloszlásával járhat.
 
-Az aktorszolgáltatások particionálásáról a szereplők particionálási fogalmai című további információkért tekintse meg a [műveletek particionálási fogalmait.](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)
+A Actor Services particionálásával kapcsolatos további információkért tekintse meg a [szereplők particionálási fogalmai](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)című témakört.
 
-## <a name="actor-communication"></a>Színész kommunikáció
-Az aktor interakciók egy olyan felületen vannak definiálva, amelyet a felületet megvalósító aktor és az ugyanazon a felületen keresztül egy aktorhoz proxyt kap. Mivel ez a felület aszinkron módon aktormetódusok meghívására szolgál, a kapcsolat minden metódusának Feladat-visszatérőnek kell lennie.
+## <a name="actor-communication"></a>Színészi kommunikáció
+A színészek interakciói olyan felületen vannak definiálva, amelyet az illesztőfelületet megvalósító színész közösen használ, és az ügyfél, amely egy adott felületen keresztül kap proxyt egy szereplőnek. Mivel ez az interfész a Actor metódusok aszinkron meghívására használatos, az illesztőfelület minden metódusának tevékenység-visszaküldési műveletnek kell lennie.
 
-A metódus-meghívások és azok válaszai végső soron hálózati kérelmeket eredményeznek a fürtön keresztül, így a visszaadott feladatok argumentumainak és eredménytípusainak a platform által szerializálhatónak kell lenniük. Különösen az [adatszerződésekszerializálhatónak](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)kell lenniük.
+A metódus-meghívások és a válaszok végső soron hálózati kérelmeket eredményeznek a fürtben, ezért az általuk visszaadott feladatok argumentumait és az eredmény típusát a platformnak szerializálni kell. Különösen fontos, hogy az [adategyezmény szerializálható](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)legyen.
 
-### <a name="the-actor-proxy"></a>Az aktor proxyja
-A Reliable Actors ügyfél API-t egy aktor példány és egy aktor ügyfél közötti kommunikációt biztosít. Aszereplővel való kommunikációhoz az ügyfél létrehoz egy aktor proxyobjektumot, amely megvalósítja az aktor felületét. Az ügyfél a proxyobjektummetódusok meghívásával lép kapcsolatba az aktorral. Az aktor proxy ügyfél-színész és a színész-színész kommunikáció használható.
+### <a name="the-actor-proxy"></a>A Actor proxy
+A Reliable Actors ügyfél API kommunikációt biztosít egy Actor-példány és egy Actor-ügyfél között. Egy szereplővel folytatott kommunikációhoz az ügyfél létrehoz egy Actors proxy objektumot, amely megvalósítja a színészi felületet. A-ügyfél a proxy objektumon metódusok meghívásával kommunikál a szereplővel. A Actor proxy használható az ügyfél és a színész közötti kommunikációhoz.
 
 ```csharp
 // Create a randomly distributed actor ID
@@ -90,54 +90,54 @@ myActor.DoWorkAsync().get();
 ```
 
 
-Vegye figyelembe, hogy az aktor proxyobjektum létrehozásához használt két információ az aktorazonosítója és az alkalmazás neve. Az aktor azonosítója egyedileg azonosítja az aktor, míg az alkalmazás neve azonosítja a [Service Fabric-alkalmazást,](service-fabric-reliable-actors-platform.md#application-model) ahol az aktor telepítve van.
+Vegye figyelembe, hogy a Actor proxy objektum létrehozásához használt két adat a színész azonosítója és az alkalmazás neve. A színész azonosítója egyedileg azonosítja a szereplőt, míg az alkalmazás neve azonosítja azt a [Service Fabric alkalmazást](service-fabric-reliable-actors-platform.md#application-model) , amelyben a szereplő üzembe lett helyezve.
 
-A `ActorProxy`(C#) `ActorProxyBase`/ (Java) osztály az ügyféloldalon elvégzi a szükséges felbontást, hogy keresse meg az aktor azonosító val, és nyisson meg vele egy kommunikációs csatornát. Azt is újrapróbálkozik, hogy keresse meg az aktor kommunikációs hibák és feladatátvételek esetén. Ennek eredményeképpen az üzenetek kézbesítése a következő jellemzőkkel rendelkezik:
+Az `ActorProxy`ügyfél oldalán található ( `ActorProxyBase`C#)/(Java) osztály végrehajtja a szükséges megoldást, hogy az azonosító alapján keresse meg a szereplőt, és nyisson meg egy kommunikációs csatornát. A kommunikációs hibák és feladatátvételek esetén is megpróbálja megkeresni a szereplőt. Ennek eredményeképpen az üzenetek kézbesítése a következő jellemzőkkel rendelkezik:
 
-* Az üzenetek kézbesítése a legjobb erőfeszítés.
-* Az szereplők ismétlődő üzeneteket kaphatnak ugyanattól az ügyféltől.
+* Az üzenetek kézbesítése a legjobb megoldás.
+* Előfordulhat, hogy a szereplők duplikált üzeneteket kapnak ugyanarról az ügyfélről.
 
 ## <a name="concurrency"></a>Egyidejűség
-A Reliable Actors futásidejű egy egyszerű, többalapú hozzáférési modell az aktor metódusok eléréséhez. Ez azt jelenti, hogy egy aktorobjektum kódján belül egyszerre legfeljebb egy szál lehet aktív. A turn-based hozzáférés nagymértékben leegyszerűsíti az egyidejű rendszereket, mivel nincs szükség szinkronizálási mechanizmusokra az adatok hozadékához. Ez azt is jelenti, hogy a rendszereket az egyes aktorpéldányok egyszálas hozzáférési jellegére vonatkozó különleges szempontok figyelembevételével kell megtervezni.
+A Reliable Actors Runtime egy egyszerű, kulcsrakész hozzáférési modellt biztosít a Actor metódusok eléréséhez. Ez azt jelenti, hogy a Actor objektum kódjában egyszerre legfeljebb egy szál aktív lehet. A turn-based Access nagy mértékben leegyszerűsíti az egyidejű rendszereket, mivel nincs szükség az adathozzáféréshez szükséges szinkronizálási mechanizmusokra. Emellett azt is jelenti, hogy a rendszereknek speciális szempontokat kell megfontolniuk az egyes Actors-példányok egyszálas hozzáférési jellegének biztosításához.
 
-* Egyetlen aktorpéldány egyszerre csak egy kérelmet dolgozhat fel. Az aktorpéldány átviteli szűk keresztmetszetet okozhat, ha várhatóan egyidejű kérelmeket kell kezelnie.
-* A szereplők holtpontra juttathatják egymást, ha két szereplő között körkörös kérelem érkezik, miközben az egyik szereplőnek egyidejűleg külső kérés érkezik. Az aktor futásidejű automatikusan időbeli ki az aktor hívások, és egy kivételt a hívó fél megszakítása esetleges holtponti helyzetekben.
+* Egyetlen Actor-példány egyszerre csak egy kérést tud feldolgozni. Egy Actor-példány az átviteli sebesség szűk keresztmetszetét okozhatja, ha az egyidejű kérelmek kezelésére várható.
+* A szereplők egymás közötti holtpontra válthatnak, ha a két szereplő között körkörös kérelem van, míg egy külső kérést egy egyidejű résztvevőnek kell elvégeznie. A színészi futtatókörnyezet automatikusan időtúllépést jelez a színészi hívásoknál, és kivételt jelez a hívónak a lehetséges holtponti helyzetek megszakítására.
 
-![Megbízható szereplők kommunikáció][3]
+![Reliable Actors kommunikáció][3]
 
-### <a name="turn-based-access"></a>Átaszta-alapú hozzáférés
-A turn egy aktor metódus teljes végrehajtásából áll, más szereplők vagy ügyfelek kérésére adott válaszként, vagy egy [időzítő/emlékeztető](service-fabric-reliable-actors-timers-reminders.md) visszahívás teljes végrehajtásából. Annak ellenére, hogy ezek a módszerek és visszahívások aszinkron, az Actors futásidejű nem interleave őket. Egy kanyarnak teljesen be kell fejeződnie, mielőtt új fordulatot engedélyezne. Más szóval egy aktor metódus vagy időzítő/emlékeztető visszahívás, amely jelenleg futtatva kell teljesen befejeződött, mielőtt egy új hívás egy metódus vagy visszahívás engedélyezett. Egy metódus vagy visszahívás akkor tekinthető befejezettnek, ha a végrehajtás a metódusból vagy visszahívásból érkezett, és a metódus vagy visszahívás által visszaadott feladat befejeződött. Érdemes hangsúlyozni, hogy a turn-based egyidejűség tiszteletben tartják még a különböző módszerek, időzítők, és visszahívások.
+### <a name="turn-based-access"></a>Kulcsrakész hozzáférés
+A turn egy Actor metódus teljes végrehajtását jelenti, amely a többi résztvevőtől vagy ügyféltől érkező kérésre reagál, vagy egy [időzítő/emlékeztető](service-fabric-reliable-actors-timers-reminders.md) visszahívás teljes végrehajtása. Annak ellenére, hogy ezek a metódusok és visszahívások aszinkron módon működnek, a szereplők futtatókörnyezete nem áll le. Az új turn engedélyezése előtt a turnön teljesen el kell fejezni. Más szóval a jelenleg végrehajtás alatt álló Actor metódus vagy időzítő/emlékeztető visszahívás csak akkor végezhető el, ha a metódus vagy a visszahívás új hívása engedélyezett. A metódus vagy visszahívás akkor tekinthető befejezettnek, ha a végrehajtás visszakapott a metódusból vagy visszahívásból, és a metódus vagy visszahívás által visszaadott feladat befejeződött. Érdemes kiemelni, hogy a többtényezős párhuzamosságot a különböző metódusok, időzítők és visszahívások között is figyelembe veszi.
 
-Az Actors futásidejű kényszeríti a turn-alapú egyidejűség megszerzésével egy aktorzár elején egy fordulatot, és felszabadítja a zárat a forduló végén. Így a turn-based egyidejűség érvényesítése egy szereplőnként, és nem a szereplők között. Aktor metódusok és időzítő/emlékeztető visszahívások egyszerre hajthatók végre a különböző szereplők nevében.
+A szereplők futtatókörnyezete kikényszeríti a Turn-alapú párhuzamosságot azáltal, hogy egy fordulat elején beszerezz egy színészi zárolást, és a turn végén kiszabadítja a zárolást. Ennek megfelelően a turn-based Egyidejűség kikényszeríthető egy színészi alapon, és nem a szereplők között. A színészi metódusok és az időzítő/emlékeztető visszahívásai a különböző szereplők nevében egyidejűleg hajthatók végre.
 
-A következő példa a fenti fogalmakat mutatja be. Vegyünk egy aktortípust, amely két aszinkron metódust (például *Method1* és *Method2),* egy időzítőt és egy emlékeztetőt valósít meg. Az alábbi ábra egy példát mutat be egy ütemtervet a végrehajtás ezen módszerek és visszahívások nevében két szereplő (*ActorId1* és *ActorId2 ),* amelyek ehhez az aktortípushoz tartoznak.
+Az alábbi példa szemlélteti a fenti fogalmakat. Vegyünk egy olyan színészi típust, amely két aszinkron módszert valósít meg (mondjuk, *Method1* és *Method2*), egy időzítőt és egy emlékeztetőt. Az alábbi ábrán egy példa látható a metódusok végrehajtásához és a visszahívásokhoz két, a*ActorId1* és a *ActorId2*tartozó résztvevő nevében.
 
-![Megbízható szereplők futásidejű, többre épülő egyidejűség és hozzáférés][1]
+![Reliable Actors Runtime turn-based Egyidejűség és hozzáférés][1]
 
-Ez az ábra az alábbi konvenciókat követi:
+Ez az ábra a következő konvenciókat követi:
 
-* Minden függőleges vonal egy metódus vagy visszahívás végrehajtásának logikai áramlását mutatja egy adott szereplő nevében.
-* Az egyes függőleges sorokon jelzett események időrendi sorrendben fordulnak elő, az újabb a régebbiek alatt következnek be.
-* Különböző színeket használnak a különböző szereplőknek megfelelő idővonalakhoz.
-* A kiemelés azt jelzi, hogy a metódus vagy visszahívás nevében milyen időtartamalatt tartják az egyktorzárat.
+* Mindegyik függőleges vonal egy metódus vagy egy adott szereplő nevében történő visszahívás logikai áramlását mutatja.
+* Az egyes függőleges vonalakon megjelenő események időrendi sorrendben történnek, és az újabb események a régebbiek alatt történnek.
+* Különböző színek használatosak a különböző szereplőkhöz tartozó ütemtervekhez.
+* A kiemelés azt jelzi, hogy milyen időtartamot kell megtartani a színészi zárolás egy metódus vagy visszahívás nevében.
 
-Néhány fontos szempont, hogy fontolja meg:
+Néhány fontos szempontot figyelembe kell venni:
 
-* Míg *a Method1* az *ActorId2* nevében hajt végre *az xyz789*ügyfélkérésére válaszolva, egy másik ügyfélkérés (*abc123*) érkezik, amely szintén megköveteli *a Method1-et* *az ActorId2*által végrehajtandó . A *Method1* második végrehajtása azonban csak az előző végrehajtás befejezése után kezdődik meg. Hasonlóképpen, egy emlékeztető által regisztrált *ActorId2* tüzek míg *Method1* végrehajtása során válaszul az ügyfél kérésére *xyz789*. Az emlékeztető visszahívása csak a *Method1* mindkét végrehajtása után kerül végrehajtásra. Mindez annak köszönhető, hogy a turn-based egyidejűség, hogy végre *a ActorId2*.
-* Hasonlóképpen, turn-based egyidejűség is kikényszeríti *a ActorId1*, amint azt a végrehajtás *Method1*, *Method2*, és az időzítő visszahívás nevében *ActorId1* történik egy soros módon.
-* *Az* *ActorId1* nevében történő *1.* Ennek az az oka, hogy a többre épülő egyidejűség csak egy szereplőn belül van kényszerítve, és nem a szereplők között.
-* Néhány metódus/visszahívási végrehajtások, a `Task`(C#) `CompletableFuture`/ (Java) által visszaadott metódus/visszahívás befejeződik, miután a metódus visszatér. Másokban az aszinkron művelet már befejeződött, mire a metódus/visszahívás visszatér. Mindkét esetben a per-aktorzár csak akkor szabadul fel, ha mind a metódus/visszahívás visszatér, mind az aszinkron művelet befejeződik.
+* Míg a *Method1* a *ActorId2* nevében hajtja végre az ügyfél kérésére *xyz789*, egy másik ügyfél-kérelem (*abc123*) érkezik, amely megköveteli, hogy *a Method1 is*végrehajtsa a *ActorId2* . A *Method1* második végrehajtása azonban addig nem kezdődik meg, amíg az előző végrehajtás nem fejeződött be. Hasonlóképpen, a *ActorId2* által regisztrált emlékeztető, miközben a *Method1* az ügyfél-kérelem *xyz789*válaszol. Az emlékeztető visszahívása csak a *Method1* végrehajtásának befejeződése után hajtható végre. Ennek az az oka, hogy a *ActorId2*esetében a turn-based Egyidejűség kényszerített.
+* Ehhez hasonlóan a *ActorId1*is kényszeríteni kell a párhuzamos párhuzamosságot, ahogy azt a *Method1*, a *Method2*és a *ActorId1* nevében az időzítő visszahívása is mutatja, soros módon történik.
+* A *Method1* a *ActorId1* nevében való végrehajtása átfedésben van a *ActorId2*nevében végrehajtott végrehajtással. Ennek az az oka, hogy a turn-based Egyidejűség csak egy színészen belül, és nem a különböző szereplőkön van érvényben.
+* Néhány módszer/visszahívás végrehajtás esetén a metódus/visszahívás által `Task`visszaadott (C# `CompletableFuture`)/(Java)/(Java) a metódus visszatérése után fejeződik be. Másokban az aszinkron művelet már befejeződött a metódus/visszahívás visszatérési ideje szerint. Mindkét esetben a rendszer csak a metódus/visszahívás visszaadása és az aszinkron művelet befejezése után szabadítja fel a per-Actor zárolást.
 
 ### <a name="reentrancy"></a>Újbóli belépés
-Az Actors futásidejű lehetővé teszi a reentrancy alapértelmezés szerint. Ez azt jelenti, hogy ha az *Aktor aktor aktora* metódusa meghívja a *"B" aktor*egy metódusát, ami viszont egy másik módszert hív meg az *A aktoron,* akkor a metódus futtathat. Ennek az az oka, hogy ugyanannak a logikai híváslánc-környezetnek a része. Minden időzítő- és emlékeztetőhívás az új logikai hívási környezettel kezdődik. További részletekért tekintse meg a [Megbízható szereplők reentrancy](service-fabric-reliable-actors-reentrancy.md) című témakörét.
+A Actors futtatókörnyezet alapértelmezés szerint engedélyezi a újbóli belépés. Ez azt jelenti, hogy ha a *Actors* metódusa egy metódust hív meg a " *B" szereplőn*, amely egy másik metódust hív meg az *A actorn*, akkor ez a metódus futhat. Ennek az az oka, hogy ez a logikai hívási lánc környezetének része. Az időzítő és az emlékeztető összes hívása az új logikai hívási környezettel kezdődik. További részletekért tekintse meg a [Reliable Actors újbóli belépés](service-fabric-reliable-actors-reentrancy.md) .
 
-### <a name="scope-of-concurrency-guarantees"></a>Az egyidejűségi garanciák hatálya
-Az Actors futásidejű biztosítja ezeket az egyidejűségi garanciákat olyan helyzetekben, amikor szabályozza ezeknek a módszereknek a meghívását. Ezeket a garanciákat például az ügyfélkérésre adott válaszként végzett metódus-meghívásokra, valamint az időzítő- és emlékeztetővisszahívásokra vonatkozóan biztosítja. Ha azonban az aktorkód közvetlenül meghívja ezeket a metódusokat az Actors futásidejű által biztosított mechanizmusokon kívül, majd a futásidejű nem nyújthat egyidejűségi garanciákat. Ha például a metódust olyan feladat környezetében hívja meg, amely nincs társítva az aktor metódusok által visszaadott feladathoz, akkor a futásidejű nem tud egyidejűségi garanciákat nyújtani. Ha a metódus meghívása egy szál, amely az aktor saját maga hoz létre, majd a futásidejű is nem nyújthat egyidejűségi garanciákat. Ezért a háttér-műveletek végrehajtásához a szereplőknek [aktoridőzítőket és aktor-emlékeztetőket kell használniuk,](service-fabric-reliable-actors-timers-reminders.md) amelyek tiszteletben tartják a többalapú egyidejűséget.
+### <a name="scope-of-concurrency-guarantees"></a>Egyidejűségi garanciák hatóköre
+A szereplők futtatókörnyezete biztosítja ezeket a párhuzamossági garanciákat olyan helyzetekben, amikor a módszerek meghívását vezérli. Ezek a garanciák például az ügyfélre vonatkozó kérelemre adott válaszként, valamint az időzítő és az emlékeztető visszahívásai esetén is. Ha azonban a színészi kód közvetlenül az Actors Runtime által biztosított mechanizmusokon kívül hívja meg ezeket a metódusokat, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha például a metódust egy olyan feladat kontextusában hívja meg, amely nincs társítva a Actor metódusok által visszaadott feladathoz, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha a metódust olyan szálon hívja meg, amelyet a színész saját maga hoz létre, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ezért a háttérbeli műveletek végrehajtásához a szereplőknek olyan [színészi időzítőket és színészi emlékeztetőket](service-fabric-reliable-actors-timers-reminders.md) kell használniuk, amelyek figyelembe veszik a párhuzamos párhuzamosságot.
 
 ## <a name="next-steps"></a>További lépések
-Első lépések az első Reliable Actors szolgáltatás létrehozásával:
-   * [A Reliable Actors with .NET – első lépések](service-fabric-reliable-actors-get-started.md)
-   * [A Megbízható szereplők a Java-n való ismerkedése](service-fabric-reliable-actors-get-started-java.md)
+Ismerkedjen meg az első Reliable Actors szolgáltatás létrehozásával:
+   * [Első lépések a Reliable Actors a .NET-keretrendszerben](service-fabric-reliable-actors-get-started.md)
+   * [Első lépések a Reliable Actors Javával](service-fabric-reliable-actors-get-started-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

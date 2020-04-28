@@ -1,6 +1,6 @@
 ---
 title: Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
-description: Ismerje meg, hogyan használhatja az Azure PowerShellt munkaállomásról az Apache Sqoop importálásának és exportálásának futtatásához egy Apache Hadoop-fürt és egy Azure SQL-adatbázis között.
+description: Megtudhatja, hogyan használhatja a Azure PowerShell egy munkaállomásról az Apache Sqoop importálásának és exportálásának futtatására egy Apache Hadoop-fürt és egy Azure SQL Database között.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: f39b595adf249b7412cb9b6b48f86b6fbd2c5e1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263404"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása az Azure PowerShell for Apache Hadoop használatával a HDInsightban
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight Apache Hadoop Azure PowerShell használatával
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Megtudhatja, hogy az Azure PowerShell használatával hogyan futtathatja az Apache Sqoop-feladatokat az Azure HDInsightban egy HDInsight-fürt és egy Azure SQL-adatbázis vagy EGY Azure SQL Server-adatbázis közötti adatok importálásához és exportálásához.  Ez a cikk az Apache Sqoop használatának folytatása a [Hadoop-mal a HDInsight-ban.](./hdinsight-use-sqoop.md)
+Megtudhatja, hogyan használhatja a Azure PowerShellt az Apache Sqoop-feladatok Azure HDInsight való futtatásához egy HDInsight-fürt és egy Azure SQL Database vagy SQL Server adatbázis közötti adatok importálásához és exportálásához.  Ez a cikk az [Apache Sqoop és a Hadoop HDInsight-ben való használatának](./hdinsight-use-sqoop.md)folytatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy munkaállomás, amelyen telepítve van az Azure PowerShell [AZ modul.](https://docs.microsoft.com/powershell/azure/overview)
+* Egy munkaállomás, amelyen Azure PowerShell [az modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
 
-* A [Tesztkörnyezet beállítása](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) az [Apache Sqoop használata a Hadoop segítségével a HDInsight ban](./hdinsight-use-sqoop.md).
+* A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
 
-* A Sqoop ismerete. További információ: [Sqoop User Guide](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
+* Az Sqoop ismerete. További információ: [Sqoop felhasználói útmutató](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-## <a name="sqoop-export"></a>Sqoop export
+## <a name="sqoop-export"></a>Sqoop-exportálás
 
-A Hive-tól az SQL Serverkiszolgálóig.
+A kaptárból a SQL Serverba.
 
-Ez a példa exportálja `hivesampletable` az `mobiledata` adatokat a Hive táblából az SQL Database táblájába. Állítsa be az alábbi változók értékeit, majd hajtsa végre a parancsot.
+Ez a példa a struktúra `hivesampletable` táblából exportálja az `mobiledata` adatait a SQL Database lévő táblába. Állítsa be az alábbi változók értékeit, majd hajtsa végre a parancsot.
 
 ```powershell
 $hdinsightClusterName = ""
@@ -62,7 +62,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ### <a name="alternative-execution"></a>Alternatív végrehajtás
 
-1. Az alábbi kód ugyanazt az exportálást hajtja végre; azonban lehetővé teszi a kimeneti naplók olvasását. Az exportálás megkezdéséhez hajtsa végre a kódot.
+1. Az alábbi kód ugyanezt az exportálást hajtja végre. azonban lehetővé teszi a kimeneti naplók olvasását. Futtassa a kódot az Exportálás megkezdéséhez.
 
     ```powershell
     $sqoopCommand = "export --connect $connectionString --table mobiledata --hcatalog-table hivesampletable"
@@ -76,7 +76,7 @@ New-AzHDInsightSqoopJobDefinition `
                     -JobDefinition $sqoopDef
     ```
 
-1. Az alábbi kód a kimeneti naplókat jeleníti meg. Hajtsa végre az alábbi kódot:
+1. Az alábbi kód megjeleníti a kimeneti naplókat. Hajtsa végre az alábbi kódot:
 
     ```powershell
     Get-AzHDInsightJobOutput `
@@ -92,11 +92,11 @@ New-AzHDInsightSqoopJobDefinition `
         -DisplayOutputType StandardOutput
     ```
 
-Ha a hibaüzenet megjelenik, `The specified blob does not exist.`próbálkozzon újra néhány perc múlva.
+Ha a hibaüzenet jelenik meg, `The specified blob does not exist.`néhány perc múlva próbálkozzon újra.
 
-## <a name="sqoop-import"></a>Sqoop import
+## <a name="sqoop-import"></a>Sqoop importálása
 
-Az SQL Servertől az Azure Storage-ig. Ez a példa `mobiledata` adatokat importál az `wasb:///tutorials/usesqoop/importeddata` SQL Database táblájából a HDInsight könyvtárába. Az adatok mezőit tabulátorkarakter választja el egymástól, a sorokat pedig egy új sorkarakter szakítja meg. Ez a példa feltételezi, hogy befejezte a korábbi példát.
+SQL Server az Azure Storage-ba. Ez a példa a SQL Database lévő `mobiledata` táblából importálja az adatait `wasb:///tutorials/usesqoop/importeddata` a HDInsight található könyvtárba. Az adatokban található mezőket tabulátor karakter választja el egymástól, a vonalakat pedig egy új sor karaktere állítja le. Ez a példa feltételezi, hogy végrehajtotta az előző példát.
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -124,11 +124,11 @@ Get-AzHDInsightJobOutput `
 
 ```
 
-## <a name="additional-sqoop-export-example"></a>További Sqoop exportálási példa
+## <a name="additional-sqoop-export-example"></a>További Sqoop-exportálási példa
 
-Ez egy megbízható példa, `/tutorials/usesqoop/data/sample.log` amely adatokat exportál az alapértelmezett tárfiókból, majd importálja azSQL Server-adatbázisban hívott `log4jlogs` táblába. Ez a példa nem függ a korábbi példáktól.
+Ez egy robusztus példa arra, hogy az alapértelmezett `/tutorials/usesqoop/data/sample.log` Storage-fiókból exportálja az adatait, majd importálja egy SQL Server `log4jlogs` -adatbázisban nevű táblába. Ez a példa nem függ az előző példáktól.
 
-A következő PowerShell-parancsfájl elődolgozza a forrásfájlt, majd exportálja `log4jlogs`egy Azure SQL-adatbázisba a táblába. Cserélje `CLUSTERNAME` `CLUSTERPASSWORD`le `SQLPASSWORD` a , és az előfeltételből használt értékekre.
+A következő PowerShell-parancsfájl előre feldolgozza a forrásfájlt, majd exportálja egy Azure SQL Databaseba a `log4jlogs`táblába. Cserélje `CLUSTERNAME`le `CLUSTERPASSWORD`a, `SQLPASSWORD` , és értéket az előfeltételként használt értékekre.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -271,13 +271,13 @@ Get-AzHDInsightJobOutput `
 
 A Linux-alapú HDInsight a következő korlátozásokat mutatja be:
 
-* Tömeges exportálás: A Sqoop-összekötő, amely adatok Microsoft SQL Server vagy Azure SQL Database exportálására szolgál, jelenleg nem támogatja a tömeges beszúrásokat.
+* Tömeges exportálás: a Sqoop-összekötő, amely az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 
-* Kötegelés: A `-batch` kapcsoló használatával, amikor lapkákat hajt végre, a Sqoop több lapkát hajt végre a lapkaműveletek kötegelése helyett.
+* Kötegelt feldolgozás: Ha a kapcsolót a `-batch` beszúrások végrehajtásakor használja, a Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan kell használni Sqoop. További tudnivalókért lásd:
+Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 
-* [Az Apache Oozie használata a HDInsight segítségével:](../hdinsight-use-oozie-linux-mac.md)Sqoop művelet használata Oozie-munkafolyamatokban.
-* [Adatok feltöltése a HDInsightba:](../hdinsight-upload-data.md)Más módszereket is kereshet az adatok HDInsightba vagy az Azure Blob storage-ba való feltöltéséhez.
+* Az [Apache Oozie és a HDInsight használata](../hdinsight-use-oozie-linux-mac.md): Sqoop művelet használata Oozie-munkafolyamatokban.
+* [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszereket talál az adatok HDInsight vagy Azure Blob Storage-ba való feltöltéséhez.

@@ -1,6 +1,6 @@
 ---
-title: Személyes adatok törlése és exportálása az Azure DevTest Labs programból
-description: Ismerje meg, hogyan törölheti és exportálhatja a személyes adatokat az Azure DevLast Labs szolgáltatásból az általános adatvédelmi rendelet (GDPR) szerinti kötelezettségeinek támogatása érdekében.
+title: Személyes adatok törlése és exportálása Azure DevTest Labs
+description: Megtudhatja, hogyan törölheti és exportálhatja a személyes adatait az Azure DevLast Labs szolgáltatásból a Általános adatvédelmi rendelet (GDPR) alatti kötelezettségek támogatásához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,70 +13,70 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169687"
 ---
-# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése az Azure DevTest Labs programból
-Ez a cikk a személyes adatok azure DevTest Labs szolgáltatásból történő törlésének és exportálásának lépéseit ismerteti. 
+# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése Azure DevTest Labs
+Ez a cikk a személyes adatok Azure DevTest Labs szolgáltatásból történő törlésének és exportálásának lépéseit ismerteti. 
 
 ## <a name="what-personal-data-does-devtest-labs-collect"></a>Milyen személyes adatokat gyűjt a DevTest Labs?
-A DevTest Labs két fő személyes adatot gyűjt a felhasználótól. Ezek a következők: felhasználói e-mail cím és felhasználói objektum azonosítója. Ez az információ kritikus fontosságú a szolgáltatás számára, hogy a labor-rendszergazdák és a tesztkörnyezet-felhasználók szolgáltatáson ként szolgálnak.
+A DevTest Labs két fő személyes adatot gyűjt a felhasználótól. Ezek a következők: felhasználói e-mail-cím és felhasználói objektum azonosítója. Ez az információ kritikus fontosságú ahhoz, hogy a szolgáltatás szolgáltatásokat nyújtson a laboratóriumi rendszergazdák és a labor felhasználói számára.
 
-### <a name="user-email-address"></a>Felhasználói e-mail cím
-DevTest Labs a felhasználói e-mail cím segítségével küldautomatikus leállítási e-mail értesítéseket a labor felhasználóknak. Az e-mail értesíti a felhasználókat a számítógép leállításáról. A felhasználók elhalaszthatják vagy kihagyhatják a leállítást, ha ezt kívánják. Konfigurálja az e-mail címet a labor vagy a virtuális gép szintjén.
+### <a name="user-email-address"></a>Felhasználói e-mail-cím
+A DevTest Labs a felhasználói e-mail-cím használatával küldi el az e-mailek automatikus leállítását a labor felhasználói számára. Az e-mail értesíti arról, hogy a számítógép felhasználóinak leállítása folyamatban van. Ha szeretné, a felhasználók elhalaszthatja vagy kihagyhatják a leállítást. Az e-mail-címet a tesztkörnyezet szintjén vagy a virtuális gép szintjén kell konfigurálni.
 
-**E-mail beállítása a laborban:**
+**E-mailek beállítása a laborban:**
 
-![E-mail beállítása a labor szintjén](./media/personal-data-delete-export/lab-user-email.png)
+![Az e-mailek beállítása a labor szintjén](./media/personal-data-delete-export/lab-user-email.png)
 
-**E-mail beállítása a virtuális gépen:**
+**E-mailek beállítása a virtuális gépen:**
 
 ![E-mailek beállítása a virtuális gép szintjén](./media/personal-data-delete-export/vm-user-email.png)
 
 ### <a name="user-object-id"></a>Felhasználói objektum azonosítója
-DevTest Labs a felhasználói objektum azonosítója segítségével jeleníti meg a hónapon kénti költségtrendek és a költségek erőforrás-információk a labor adminisztrátorok. Lehetővé teszi számukra a költségek nyomon követését és a tesztkörnyezetük küszöbértékének kezelését. 
+A DevTest Labs a felhasználói objektum AZONOSÍTÓjának használatával jeleníti meg a havi költségeket és a költségeket az erőforrás-információk alapján a laboratóriumi rendszergazdáknak. Lehetővé teszi számukra a költségek nyomon követését és a tesztkörnyezet küszöbértékének kezelését. 
 
-**Az aktuális naptári hónap becsült költségtendenciája:**
-![Az aktuális naptári hónap becsült költségtendenciája](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**Az aktuális naptári hónap becsült trendje:**
+![becsült költségek trendje az aktuális naptári hónapra vonatkozóan](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Becsült hónap-dátum költség erőforrás szerint:**
-![Becsült hónap-dátum költség erőforrásonként](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**Becsült havi költségek erőforrás szerint:**
+![becsült hónap – dátum erőforrás szerint](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
-## <a name="why-do-we-need-this-personal-data"></a>Miért van szükségünk ezekre a személyes adatokra?
-A DevTest Labs szolgáltatás a személyes adatokat használja fel működési célokra. Ezek az adatok kritikus fontosságúak a szolgáltatás számára a kulcsfontosságú funkciók biztosításához. Ha adatmegőrzési szabályt állít be a felhasználói e-mail címhez, a laborfelhasználók nem kapnak időben automatikus leállítási e-mail értesítéseket, miután az e-mail címüket törölték a rendszerünkből. Hasonlóképpen a labor rendszergazdája nem tekintheti meg a havi költségtrendek és a költségek erőforrás on-erőforrás a laborokban, ha a felhasználói objektum azonosítók adatmegőrzési házirend alapján törlődnek. Ezért ezeket az adatokat meg kell őrizni mindaddig, amíg a felhasználó erőforrás aktív a laborban.
+## <a name="why-do-we-need-this-personal-data"></a>Miért van szükségünk erre a személyes adatszolgáltatásra?
+A DevTest Labs szolgáltatás a személyes adatkezelési célokat használja. Ezek az adatelemek kritikus fontosságúak a szolgáltatás kulcsfontosságú funkcióinak kézbesítéséhez. Ha adatmegőrzési szabályzatot állít be a felhasználói e-mail-címen, a labor felhasználói nem kapnak időben automatikusan leállítási értesítő e-maileket, miután az e-mail-címük törölve lett a rendszerből. Hasonlóképpen, a labor rendszergazdája nem tudja megtekinteni a havi hónapra kiterjedő költségeket, a laborban lévő gépek esetében pedig a költségeket, ha a felhasználói objektumok azonosítóit adatmegőrzési házirend alapján törlik. Ezért ezeket az adatforrásokat mindaddig meg kell őrizni, amíg a felhasználó erőforrása aktív a laborban.
 
-## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Hogyan lehet a rendszer, hogy felejtse el a személyes adatokat?
-Labor felhasználóként, ha szeretné, hogy ezeket a személyes adatokat törölni, megteheti a megfelelő erőforrás törlésével a laborban. A DevTest Labs szolgáltatás anonimizálja a törölt személyes adatokat 30 nappal azután, hogy a felhasználó törölte őket.
+## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Honnan tudom, hogy a rendszeren felejtsem a személyes adataim?
+Ha a személyes adatmennyiséget törölni szeretné a laborban, a megfelelő erőforrás törlésével megteheti a laborban. A DevTest Labs szolgáltatás 30 nappal névteleníti a törölt személyes adatfájlokat, miután a felhasználó törölte azt.
 
-Ha például törli a virtuális gép, vagy eltávolította az e-mail címét, a DevTest Labs szolgáltatás anonimizálja ezeket az adatokat 30 nappal az erőforrás törlése után. A 30 napos adatmegőrzési szabályzat törlés után annak biztosítása, hogy pontos havi költségelőrejelzést biztosítsunk a labor adminisztrátorának.
+Ha például törli a virtuális gépet, vagy eltávolította az e-mail-címét, a DevTest Labs szolgáltatás az erőforrás törlése után 30 nappal névteleníti ezt az adatforrást. A 30 napos adatmegőrzési szabályzat törlés utáni megadásával gondoskodhat arról, hogy a tesztkörnyezet rendszergazdájának pontos havi havi költségszámítást biztosítson.
 
-## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Hogyan kérhetek exportot a személyes adataimból?
-Személyes és laborhasználati adatok at exportálhat az Azure Portalon vagy a PowerShellhasználatával. Az adatok két különböző CSV-fájlként lesznek exportálva:
+## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Hogyan Kérhetek exportálást a személyes adataim között?
+A személyes és laboratóriumi használati adatokat a Azure Portal vagy a PowerShell használatával is exportálhatja. Az adatexportálás két különböző CSV-fájlként történik:
 
-- **disks.csv** - információkat tartalmaz a különböző virtuális gépek által használt lemezekről
-- **virtualmachines.csv** - a laborban lévő virtuális gépekről tartalmaz információkat.
+- **Disks. csv** – a különböző virtuális gépek által használt lemezekkel kapcsolatos információkat tartalmazza.
+- **virtualmachines. csv** – a laborban található virtuális gépekkel kapcsolatos információkat tartalmaz.
 
-### <a name="azure-portal"></a>Azure portál
-Laborfelhasználóként kérheti a DevTest Labs szolgáltatás által tárolott személyes adatok exportálását. Exportálás igényléséhez keresse meg a **Személyes adatok** lehetőséget a **tesztkörnyezet Áttekintés lapján.** Válassza ki az **exportálás kérése** gombot, amely elindítja egy letölthető excel fájl létrehozását a Lab-rendszergazda tárfiókjában. Ezután kapcsolatba léphet a labor rendszergazdájával az adatok megtekintéséhez.
+### <a name="azure-portal"></a>Azure Portal
+Labor-felhasználóként az DevTest Labs szolgáltatás által tárolt személyes értékekre is kérhet exportálást. Az Exportálás kérelmezéséhez navigáljon a **személyes adatai** lehetőségre a labor **Áttekintés** lapján. Válassza az **Exportálás kérése** gombot egy letölthető Excel-fájl létrehozásával a labor rendszergazdája Storage-fiókjában. Ezután kapcsolatba léphet a labor rendszergazdájával, és megtekintheti ezeket az adatfájlokat.
 
-1. Válassza a bal oldali menü **Személyes adatai lehetőséget.** 
+1. A bal oldali menüben válassza a **személyes adatértékek** lehetőséget. 
 
-    ![Személyes adatok oldal](./media/personal-data-delete-export/personal-data-page.png)
-2. Válassza ki a labort tartalmazó **erőforráscsoportot.**
+    ![Személyes adatoldal](./media/personal-data-delete-export/personal-data-page.png)
+2. Válassza ki a labort tartalmazó **erőforráscsoportot** .
 
     ![Erőforráscsoport kiválasztása](./media/personal-data-delete-export/select-resource-group.png)
-3. Válassza ki a **tárfiókot** az erőforráscsoportban.
-4. A **Tárfiók** lapon válassza **a Blobok**lehetőséget.
+3. Válassza ki a **Storage-fiókot** az erőforráscsoporthoz.
+4. A **Storage-fiók** lapon válassza a **Blobok**lehetőséget.
 
     ![Blobok csempe kiválasztása](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Válassza ki a **labresourceusage** nevű tárolót a tárolók listájában.
 
-    ![Blob-tároló kijelölése](./media/personal-data-delete-export/select-blob-container.png)
-6. Jelölje ki a tesztkörnyezetről elnevezett **mappát.** Ebben a mappában található **a lemez-** és **virtuálisgépekhez** való **csv-fájlok.** Letöltheti ezeket a csv fájlokat, szűrheti a hozzáférést kérő laborfelhasználó tartalmát, és megoszthatja velük.
+    ![BLOB-tároló kiválasztása](./media/personal-data-delete-export/select-blob-container.png)
+6. Válassza ki a laborból elnevezett **mappát** . Ebben a mappában megtalálja a laborban található **lemezek** és **virtuális gépek** **CSV** -fájljait. Letöltheti ezeket a CSV-fájlokat, szűrheti a hozzáférést kérő labor felhasználó tartalmát, és megoszthatja velük.
 
     ![CSV-fájl letöltése](./media/personal-data-delete-export/download-csv-file.png)
 
@@ -144,76 +144,76 @@ else
 }
 ```
 
-A fenti minta fő összetevői a következők:
+A fenti példában a legfontosabb összetevők a következők:
 
-- Az Invoke-AzureRmResourceAction parancs.
+- A meghívó-AzureRmResourceAction parancs.
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
-- Két beavatkozási paraméter
-    - **blobStorageAbsoluteSasUri** – A tárfiók URI-ja a megosztott hozzáférésű aláírás (SAS) jogkivonattal. A PowerShell-parancsfájlban ez az érték a tárolókulcs helyett átadható.
-    - **usageStartDate** - Az adatok lekérése kezdő dátuma, a záró dátum pedig az aktuális dátum, amelyen a művelet végrehajtásra kerül. A részletesség a nap szintjén van, így még akkor is, ha időadatokat ad hozzá, a rendszer figyelmen kívül hagyja.
+- Két művelet paraméterei
+    - **blobStorageAbsoluteSasUri** – a Storage-fiók URI-ja a közös hozzáférési aláírás (SAS) jogkivonatával. A PowerShell-parancsfájlban ezt az értéket a Storage-kulcs helyett lehet átadni.
+    - **usageStartDate** – az adatok lekérésének kezdő dátuma, a befejezési dátum pedig a művelet végrehajtásának aktuális dátuma. A részletesség a nap szintjén történik, így akkor is, ha időt vesz fel, a rendszer figyelmen kívül hagyja.
 
-### <a name="exported-data---a-closer-look"></a>Exportált adatok - közelebbről
-Most vessünk egy közelebbi pillantást az exportált adatokra. Mint korábban említettük, miután az adatok sikeresen exportált, nem lesz két CSV fájlokat. 
+### <a name="exported-data---a-closer-look"></a>Exportált adatértékek – alaposabb keresés
+Most nézzük meg közelebbről az exportált információkat. Ahogy korábban említettük, az adatexportálás sikeres exportálása után két CSV-fájl lesz. 
 
-A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
+A **virtualmachines. csv** fájl a következő adatoszlopokat tartalmazza:
 
 | Oszlop neve | Leírás |
 | ----------- | ----------- | 
-| SubscriptionId | Az előfizetés-azonosító, amelyben a tesztkörnyezet létezik. |
-| LabUId között | A tesztkörnyezet egyedi GUID-azonosítója |
-| Laborneve | A labor neve. |
-| LabResourceId | Teljesen minősített laborerőforrás-azonosító. |
-| ResourceGroupName | A virtuális gép által tartalmazó erőforráscsoport neve | 
-| ResourceId | A virtuális gép teljesen minősített erőforrás-azonosítója. |
-| Erőforrás-azonosító | GuiD a virtuális gép |
-| Név | Virtuális gép neve. |
+| SubscriptionId | A laborban található előfizetés-azonosító. |
+| LabUId | A labor egyedi GUID azonosítója. |
+| LabName | A labor neve. |
+| LabResourceId | Teljes körű laboratóriumi erőforrás-azonosító. |
+| ResourceGroupName | A virtuális gépet tartalmazó erőforráscsoport neve | 
+| ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
+| ResourceUId | A virtuális gép GUID azonosítója |
+| Name (Név) | A virtuális gép neve. |
 | CreatedTime | A virtuális gép létrehozásának dátuma és időpontja. |
-| DeletedDate (Törlésdátum) | A virtuális gép törlésének dátuma.The date-date, which the VM was deleted. Ha üres, a törlés még nem történt meg. |
-| Erőforrástulajdonos | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy jogcímzésre jogosult virtuális gép, vagy egy egyszerű szolgáltatás által létrehozott. |
-| Árak | A virtuális gép díjszabási szintje |
-| Erőforrás állapota | A virtuális gép rendelkezésre állási állapota. Aktív, ha még létezik, vagy inaktív, ha a virtuális gép törölve lett. |
-| Számítási erőforrásazonosító | Teljesen minősített virtuálisgép-számítási erőforrás-azonosító. |
-| Követelésre méltó | Állítsa igaz, ha a virtuális gép egy követelhető virtuális gép | 
-| Környezetazonosító | Az a környezeti erőforrás-azonosító, amelyben a virtuális gép létrejött. Üres, ha a virtuális gép nem jött létre egy környezeti erőforrás részeként. |
-| Lejárati dátum | A virtuális gép lejárati dátuma. Üres, ha nincs beállítva lejárati dátum.
-| GalleryImageReferenceVersion |  A virtuális gép alaplemezképének verziója. |
-| GalleryImageReferenceOffer | A virtuális gép alaplemezképének ajánlata. |
-| GalleryImageReferencePublisher | A virtuális gép alaplemezképének közzétevője. |
-| GalériaImageReferenceSku | A virtuális gép alaplemezképének skuja |
-| GalériaKépHivatkozásostípus | A virtuális gép alaplemezképének operációs rendszer típusa |
-| CustomImageId azonosító | A virtuális gép alapegyéni lemezképének teljesen minősített azonosítója. |
+| DeletedDate | A virtuális gép törlésének dátuma és időpontja. Ha üres, a törlés még nem történt meg. |
+| ResourceOwner | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy lekérhető virtuális gép, vagy egy egyszerű szolgáltatásnév hozza létre. |
+| PricingTier | A virtuális gép díjszabási szintje |
+| ResourceStatus | A virtuális gép rendelkezésre állási állapota. Aktív, ha még létezik vagy inaktív, ha a virtuális gépet törölték. |
+| ComputeResourceId | A virtuális gép számítási erőforrás-azonosítója teljesen minősített. |
+| Igényelhető | Értéke TRUE (igaz), ha a virtuális gép igényelhető virtuális gép | 
+| EnvironmentId | Az a környezeti erőforrás-azonosító, amelyen belül a virtuális gép létrejött. Üres, ha a virtuális gép nem a környezeti erőforrás részeként lett létrehozva. |
+| ExpirationDate | A virtuális gép lejárati dátuma. Ha nincs beállítva lejárati dátum, az üres értékre van állítva.
+| GalleryImageReferenceVersion |  A virtuális gép alaprendszerképének verziója. |
+| GalleryImageReferenceOffer | A virtuális gép alaprendszerképének ajánlata. |
+| GalleryImageReferencePublisher | A virtuális gép alaprendszerképének közzétevője. |
+| GalleryImageReferenceSku | A virtuális gép alaprendszerképének SKU-a |
+| GalleryImageReferenceOsType | A virtuális gép alaprendszerképének operációsrendszer-típusa |
+| CustomImageId | A virtuális gép alapszintű egyéni rendszerképének teljesen minősített azonosítója. |
 
-A **disks.csv** e-mezőben található adatoszlopok a következők:
+A **Disks. csv** fájlban található adatoszlopok alább láthatók:
 
 | Oszlop neve | Leírás | 
 | ----------- | ----------- | 
-| SubscriptionId | A tesztkörnyezetet tartalmazó előfizetés azonosítója |
-| LabUId között | GuiD a labor |
-| Laborneve | A labor neve | 
-| LabResourceId | Teljesen minősített erőforrás-azonosító a laborhoz | 
+| SubscriptionId | A labort tartalmazó előfizetés azonosítója |
+| LabUId | A tesztkörnyezet GUID azonosítója |
+| LabName | A labor neve | 
+| LabResourceId | A tesztkörnyezet teljes erőforrás-azonosítója | 
 | ResourceGroupName | A labort tartalmazó erőforráscsoport neve | 
-| ResourceId | A virtuális gép teljesen minősített erőforrás-azonosítója. |
-| Erőforrás-azonosító | GuiD a virtuális gép |
- |Név | A csatlakoztatott lemez neve |
+| ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
+| ResourceUId | A virtuális gép GUID azonosítója |
+ |Name (Név) | A csatolt lemez neve |
 | CreatedTime |Az adatlemez létrehozásának dátuma és időpontja. |
-| DeletedDate (Törlésdátum) | Az adatlemez törlésének dátuma és időpontja. |
-| Erőforrás állapota | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, ha törlik. |
-| DiskBlobName | Az adatlemez blobneve. |
-| DiskSizeGB | Az adatlemez mérete. |
-| DiskType | Az adatlemez típusa. 0 a standard, 1 a prémium. |
-| LeasedByVmId | Annak a virtuális gépnek az erőforrásazonosítója, amelyhez az adatlemez csatolva van. |
+| DeletedDate | Az adatlemez törlésének dátuma és időpontja. |
+| ResourceStatus | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, törléskor. |
+| DiskBlobName | Az adatlemez blobjának neve. |
+| DiskSizeGB | Az adatlemez mérete |
+| DiskType | Az adatlemez típusa. 0 standard, prémium szintű 1. |
+| LeasedByVmId | Annak a virtuális gépnek az erőforrás-azonosítója, amelyhez az adatlemez hozzá lett csatolva. |
 
 
 > [!NOTE]
-> Ha több laborral foglalkozik, és átfogó információkat szeretne kapni, a két fő oszlop a **LabUID** és a **ResourceUId**, amelyek az előfizetések közötti egyedi azonosítók.
+> Ha több labort is kezel, és általános információkat szeretne kapni, a két fő oszlop a **LabUID** és a **ResourceUId**, amelyek az egyedi azonosítók az előfizetések között.
 
-Az exportált adatok manipulálhatók és láthatóvá tehetők olyan eszközökkel, mint az SQL Server, a Power BI stb. Ez a funkció különösen akkor hasznos, ha a tesztkörnyezet használatát olyan felügyeleti csapatnak szeretné jelenteni, amely nem ugyanazt az Azure-előfizetést használja, mint Ön.
+Az exportált adatai az eszközök, például SQL Server, Power BI stb. használatával kezelhetők és megjeleníthetők. Ez a funkció különösen akkor hasznos, ha a tesztkörnyezet használatát szeretné jelenteni a felügyeleti csapatának, amely esetleg nem ugyanazt az Azure-előfizetést használja.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
 
-- [Szabályzatok beállítása egy tesztkörnyezethez](devtest-lab-get-started-with-lab-policies.md)
+- [Tesztkörnyezet szabályzatának beállítása](devtest-lab-get-started-with-lab-policies.md)
 - [Gyakori kérdések](devtest-lab-faq.md)

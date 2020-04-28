@@ -1,6 +1,6 @@
 ---
-title: Az Azure Notification Hubs használata php-vel
-description: Ismerje meg, hogyan használhatja az Azure Értesítési központokat egy PHP háttérrendszerből.
+title: Az Azure Notification Hubs használata a PHP-vel
+description: Ismerje meg, hogyan használható az Azure Notification Hubs a PHP háttérrendszer használatával.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,30 +17,30 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263846"
 ---
-# <a name="how-to-use-notification-hubs-from-php"></a>Az értesítési központok használata a PHP-ből
+# <a name="how-to-use-notification-hubs-from-php"></a>A Notification Hubs használata PHP-ból
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Az értesítési központok összes szolgáltatását java/PHP/Ruby háttérrendszerből érheti el az Értesítési központ REST-felületén leírtak szerint az MSDN [értesítési központok REST API-jai című](https://msdn.microsoft.com/library/dn223264.aspx)témakörben leírtak szerint.
+A Java/PHP/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületének használatával érheti el az MSDN témakör [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx)-k című részében leírtak szerint.
 
-Ebben a témában megmutatjuk, hogyan:
+Ebben a témakörben a következőket mutatjuk be:
 
-* Rest-ügyfél létrehozása a PHP értesítési központok funkcióihoz;
-* Kövesse az [Első lépések oktatóanyagot](notification-hubs-ios-apple-push-notification-apns-get-started.md) a választott mobil platformhoz, és valósítsa meg a háttérrészt a PHP-ben.
+* REST-ügyfél létrehozása a PHP Notification Hubs szolgáltatásaihoz;
+* Kövesse az [első lépések oktatóanyagot](notification-hubs-ios-apple-push-notification-apns-get-started.md) a választható mobil platformhoz, és alkalmazza a háttérrendszer részét a PHP-ben.
 
-## <a name="client-interface"></a>Ügyfél kapcsolata
+## <a name="client-interface"></a>Ügyfél felülete
 
-A fő ügyfélfelület ugyanazokat a módszereket biztosítja, amelyek a [.NET Notification Hubs SDK-ban](https://msdn.microsoft.com/library/jj933431.aspx)érhetők el, amely lehetővé teszi, hogy közvetlenül lefordítsa az összes oktatóanyagot és mintát, amely jelenleg elérhető ezen az oldalon, és hozzájárult a közösség által az interneten.
+A fő ügyfél felülete ugyanazokat a módszereket nyújtja, mint a [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx), amely lehetővé teszi, hogy közvetlenül lefordítsa az ezen a helyen jelenleg elérhető oktatóanyagokat és mintákat, és a Közösség az interneten is részt vesz.
 
-Megtalálható az összes kód elérhető a [PHP REST wrapper minta].
+A [php Rest wrapper-mintában]elérhető összes kód megtalálható.
 
-Például egy ügyfél létrehozása:
+Például egy ügyfél létrehozásához:
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
@@ -55,18 +55,18 @@ IOS natív értesítés küldése:
 
 ## <a name="implementation"></a>Megvalósítás
 
-Ha még nem tette meg, kövesse az [Első lépések oktatóanyagot] az utolsó szakaszig, ahol végre kell hajtania a háttérrendszert.
-Továbbá, ha azt szeretnénk, használhatja a kódot a [PHP REST burkoló mintát,] és közvetlenül a [teljes az oktatóanyag](#complete-tutorial) szakaszban.
+Ha még nem tette meg, kövesse az [első lépések oktatóanyagot] az utolsó szakaszhoz, ahol a háttérrendszer megvalósítására van szükség.
+Azt is megteheti, hogy a [php Rest burkoló mintából] is használhatja a kódot, és közvetlenül a [teljes oktatóanyag](#complete-tutorial) szakaszra lép.
 
-A teljes REST-burkoló megvalósításának minden részlete megtalálható az [MSDN-en.](https://msdn.microsoft.com/library/dn530746.aspx) Ebben a szakaszban az Értesítési központok REST-végpontjaieléréséhez szükséges főbb lépések PHP-implementációját ismertetjük:
+A teljes REST-burkoló megvalósításának minden részletét az [MSDN webhelyén](https://msdn.microsoft.com/library/dn530746.aspx)találja. Ebben a szakaszban a Notification Hubs REST-végpontokhoz való hozzáféréshez szükséges fő lépések PHP-megvalósítását ismertetjük:
 
 1. Kapcsolati sztring elemzése
-2. Az engedélyezési jogkivonat létrehozása
-3. A HTTP-hívás végrehajtása
+2. Az engedélyezési jogkivonat előállítása
+3. HTTP-hívás végrehajtása
 
 ### <a name="parse-the-connection-string"></a>Kapcsolati sztring elemzése
 
-Itt van az ügyfél megvalósításának fő osztálya, amelynek konstruktora elemzi a kapcsolati karakterláncot:
+Itt látható a fő osztály, amely az ügyfelet alkalmazza, amelynek a konstruktora elemzi a következő kapcsolatot:
 
     ```php
     class NotificationHub {
@@ -104,9 +104,9 @@ Itt van az ügyfél megvalósításának fő osztálya, amelynek konstruktora el
 
 ### <a name="create-a-security-token"></a>Biztonsági jogkivonat létrehozása
 
-A [SAS biztonsági jogkivonat létrehozásáról](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)az Azure dokumentációjában olvashat.
+Az [sas biztonsági jogkivonat létrehozásával](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)kapcsolatos információkért tekintse meg az Azure dokumentációját.
 
-Adja `generateSasToken` hozzá a `NotificationHub` metódust az osztályhoz az aktuális kérelem URI-ja és a kapcsolati karakterláncból kinyert hitelesítő adatok alapján történő létrehozásához.
+Adja hozzá `generateSasToken` a metódust `NotificationHub` a osztályhoz a jogkivonat létrehozásához az aktuális kérelem URI-ja és a kapcsolati karakterláncból kinyert hitelesítő adatok alapján.
 
     ```php
     private function generateSasToken($uri) {
@@ -128,7 +128,7 @@ Adja `generateSasToken` hozzá a `NotificationHub` metódust az osztályhoz az a
 
 ### <a name="send-a-notification"></a>Értesítés küldése
 
-Először is határozzunk meg egy értesítést képviselő osztályt.
+Először is Definiáljon egy olyan osztályt, amely egy értesítést jelöl.
 
     ```php
     class Notification {
@@ -151,11 +151,11 @@ Először is határozzunk meg egy értesítést képviselő osztályt.
     }
     ```
 
-Ez az osztály egy natív értesítési törzs tárolója, vagy egy sablonértesítés esetén a tulajdonságok készlete, valamint a fejlécek készlete, amely formátumot (natív platform vagy sablon) és platformspecifikus tulajdonságokat (például Apple lejárati tulajdonságot és WNS-t tartalmaz) tartalmaz. fejlécek).
+Ez az osztály egy natív értesítési törzs tárolója, vagy egy sablonra vonatkozó értesítés esetén a tulajdonságok halmaza, valamint egy olyan fejléc, amely formátum (natív platform vagy sablon) és platform-specifikus tulajdonságok (például Apple lejárat és WNS fejlécek) formájában szerepel.
 
-Tekintse meg az [értesítési központok REST API-k dokumentációját](https://msdn.microsoft.com/library/dn495827.aspx) és az egyes értesítési platformok formátumait az összes rendelkezésre álló lehetőségről.
+A rendelkezésre álló lehetőségekért tekintse meg a [Notification HUBS REST API-k dokumentációját](https://msdn.microsoft.com/library/dn495827.aspx) és az egyes értesítési platformok formátumait.
 
-Felfegyverkezve ebben az osztályban, most már írni `NotificationHub` a küldési értesítési módszerek belül az osztály:
+Ezt az osztályt felfegyverezve most már megírhatjuk a Küldés értesítési `NotificationHub` metódusait az osztályban belül:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,21 +216,21 @@ Felfegyverkezve ebben az osztályban, most már írni `NotificationHub` a küld�
     } 
     ```
 
-A fenti módszerek http postakérést küldenek az `/messages` értesítési központ végpontjára, a megfelelő törzsgel és fejlécekkel az értesítés elküldéséhez.
+A fenti módszerek HTTP POST-kérést küldenek `/messages` az értesítési központ végpontjának, és a megfelelő törzstel és fejlécekkel küldik el az értesítést.
 
 ## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>Az oktatóanyag befejezése
 
-Most már befejezheti az Első lépések oktatóanyagot egy PHP háttérrendszerértesítés elküldésével.
+Most már elvégezheti az első lépéseket ismertető oktatóanyagot az értesítés PHP-háttérből való elküldésével.
 
-Az Értesítési központok ügyfélalkalmazás inicializálása (a kapcsolati karakterlánc és a hub nevének helyettesítése az [Első lépések oktatóanyagban):]
+Inicializálja a Notification Hubs ügyfelet (a [kezdeti lépések oktatóanyagban]leírtak szerint helyettesítse be a kapcsolatok karakterláncát és a hub nevét):
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
     ```
 
-Ezután adja hozzá a küldési kódot a célmobil platformtól függően.
+Ezután adja hozzá a küldési kódot a cél mobil platformtól függően.
 
-### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Áruház és Windows Phone 8.1 (nem Silverlight)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows áruház és Windows Phone-telefon 8,1 (nem Silverlight)
 
     ```php
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
@@ -255,7 +255,7 @@ Ezután adja hozzá a küldési kódot a célmobil platformtól függően.
     $hub->sendNotification($notification, null);
     ```
 
-### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 és 8.1 Silverlight
+### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone-telefon 8,0 és 8,1 Silverlight
 
     ```php
     $toast = '<?xml version="1.0" encoding="utf-8"?>' .
@@ -270,7 +270,7 @@ Ezután adja hozzá a küldési kódot a célmobil platformtól függően.
     $hub->sendNotification($notification, null);
     ```
 
-### <a name="kindle-fire"></a>Kindle Tűz
+### <a name="kindle-fire"></a>Kindle-Tűz
 
     ```php
     $message = '{"data":{"msg":"Hello from PHP!"}}';
@@ -278,17 +278,17 @@ Ezután adja hozzá a küldési kódot a célmobil platformtól függően.
     $hub->sendNotification($notification, null);
     ```
 
-A PHP-kód futtatása mostantól egy értesítést eredményez a céleszközön.
+A PHP-kód futtatásával azonnal megjelenik egy értesítés, amely megjelenik a megcélzott eszközön.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a témakörben azt mutatta, hogyan hozhat létre egy egyszerű Java REST-ügyfél értesítési központok. Ebből a menüből:
+Ebben a témakörben bemutatjuk, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Ebből a menüből:
 
-* Töltse le a teljes [PHP REST wrapper mintát], amely tartalmazza a fenti kódot.
-* További ismerkedés az Értesítési központok címkézési funkciójáról a [Breaking News oktatóanyag]
-* További információ az értesítések leküldése az egyes felhasználóknak a [Felhasználók értesítése bemutató]
+* Töltse le a teljes [php Rest burkoló mintát], amely tartalmazza a fenti kódot.
+* Folytassa a Notification Hubs címkézési funkció megismerésével kapcsolatos tudnivalókat [a legfrissebb hírek oktatóanyagban]
+* További információ az egyéni felhasználók értesítéseinek leküldéséről [a felhasználók értesítése oktatóanyagban]
 
-További információ: A [PHP Developer Center](https://azure.microsoft.com/develop/php/).
+További információ: a [php fejlesztői központ](https://azure.microsoft.com/develop/php/)is.
 
-[PHP REST burkolóminta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[PHP REST burkoló minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Első lépéseket ismertető oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

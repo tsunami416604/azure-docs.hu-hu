@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6a90b23c10e08e8b14a18f9619cff5aaeb003cab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045709"
 ---
 ### <a name="to-modify-the-local-network-gateway-gatewayipaddress---no-gateway-connection"></a><a name="gwipnoconnection"></a> Helyi hálózati átjáró „GatewayIpAddress” értékének módosítása – nincs átjárókapcsolat
@@ -32,7 +32,7 @@ New-AzLocalNetworkGateway -Name Site1 `
 Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. Ha már létezik egy átjárókapcsolat, először el kell távolítania a kapcsolatot. Ha a kapcsolatot eltávolította, módosíthatja az átjáró IP-címét, és létrehozhat egy új kapcsolatot. Ugyanekkor módosíthatja a címelőtagokat is. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az átjáró IP-címét, nem kell törölnie a VPN-átjárót. Csak a kapcsolatot kell eltávolítania.
  
 
-1. Távolítsa el a kapcsolatot. A kapcsolat nevét a "Get-AzVirtualNetworkNetworkConnection" parancsmag segítségével találhatja meg.
+1. Távolítsa el a kapcsolatot. A "Get-AzVirtualNetworkGatewayConnection" parancsmag használatával megkeresheti a kapcsolatok nevét.
 
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
@@ -45,7 +45,7 @@ Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-cím�
    -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
    -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
    ```
-3. Hozza létre a kapcsolatot. Ebben a példában egy IPsec kapcsolattípust konfigurálunk. A kapcsolat létrehozásakor a konfigurációban meghatározott kapcsolattípust használja. További kapcsolattípusok esetén tekintse meg a [PowerShell-parancsmag](https://msdn.microsoft.com/library/mt603611.aspx) oldalát.  A VirtualNetworkGateway név megszerzéséhez futtassa a "Get-AzVirtualNetworkGateway" parancsmagát.
+3. Hozza létre a kapcsolatot. Ebben a példában egy IPsec kapcsolattípust konfigurálunk. A kapcsolat létrehozásakor a konfigurációban meghatározott kapcsolattípust használja. További kapcsolattípusok esetén tekintse meg a [PowerShell-parancsmag](https://msdn.microsoft.com/library/mt603611.aspx) oldalát.  A VirtualNetworkGateway nevének beszerzéséhez futtassa a Get-AzVirtualNetworkGateway parancsmagot.
    
     Állítsa be a változókat.
 

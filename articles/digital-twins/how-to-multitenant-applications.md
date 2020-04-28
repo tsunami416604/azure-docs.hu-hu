@@ -1,6 +1,6 @@
 ---
-title: Több-bérlős alkalmazások engedélyezése - Azure Digital Twins | Microsoft dokumentumok
-description: Több-bérlős Azure Active Directory-alkalmazások konfigurálása az Azure Digital Twins számára.
+title: Több-bérlős alkalmazások engedélyezése – Azure digitális Twins | Microsoft Docs
+description: Több-bérlős Azure Active Directory alkalmazások konfigurálása Azure digitális Twins-hoz.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,64 +9,64 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264933"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Több-bérlős alkalmazások engedélyezése az Azure Digital Twins segítségével
 
-Az Azure Digital Twins-re épülő megoldások fejlesztői úgy találhatják, hogy egyetlen szolgáltatással vagy megoldással több ügyfelet szeretnének támogatni. Valójában *a több-bérlős* alkalmazások a leggyakoribb Azure Digital Twins konfigurációk közé tartoznak.
+Az Azure Digital Twins-ra épülő megoldások fejlesztői úgy találhatják, hogy több ügyfelet szeretnének támogatni egyetlen szolgáltatással vagy megoldással. Valójában a több- *bérlős* alkalmazások a leggyakoribb Azure-beli digitális Twins-konfigurációk.
 
-Ez a dokumentum bemutatja, hogyan konfigurálhat egy Azure Digital Twins alkalmazást több Azure Active Directory-bérlő és -ügyfél támogatására.
+Ez a dokumentum azt ismerteti, hogyan konfigurálható egy Azure digitális Twins-alkalmazás több Azure Active Directory bérlő és ügyfél támogatásához.
 
-## <a name="multitenancy"></a>Több-bérlős
+## <a name="multitenancy"></a>Bérlős
 
-A *több-bérlős* erőforrás egyetlen kiépített példány, amely több ügyfelet támogat. Minden ügyfélnek saját független adatai és jogosultságai vannak. Minden ügyfél tapasztalata el van különítve egymástól, így az alkalmazás "nézete" eltérő.
+A több- *bérlős* erőforrás egyetlen kiosztott példány, amely több ügyfelet is támogat. Minden ügyfél saját független adattal és jogosultságokkal rendelkezik. Minden ügyfél felhasználói felülete el van különítve egymástól, így az alkalmazás "nézete" különbözik.
 
-Ha többet szeretne megtudni a többbérlős szolgáltatásról, olvassa el [a Több-bérlős alkalmazások az Azure-ban.](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)
+Ha többet szeretne megtudni a bérlős, olvassa el [a több-bérlős alkalmazások az Azure-ban](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)című témakört.
 
-## <a name="problem-scenario"></a>Probléma forgatókönyv
+## <a name="problem-scenario"></a>Probléma forgatókönyve
 
-Ebben a forgatókönyvben fontolja meg egy fejlesztő épület egy Azure Digital Twins megoldás (**DEVELOPER**) és egy ügyfél, aki használja ezt a megoldást **(CUSTOMER):**
+Ebben az esetben Vegyünk egy olyan fejlesztőt, aki egy Azure digitális Twins-megoldást (**fejlesztőt**) és egy olyan ügyfelet használ, aki ezt a megoldást használja (**ügyfél**):
 
-- **A DEVELOPER** rendelkezik egy Azure-előfizetéssel egy Azure Active Directory-bérlővel.
-- **A DEVELOPER** egy Azure Digital Twins-példányt telepít az Azure-előfizetésbe. Az Azure Active Directory automatikusan létrehozott egy egyszerű szolgáltatása **a DEVELOPER**Azure Active Directory-bérlőben.
-- A **DEVELOPER's**Azure Active Directory-bérlőn belüli felhasználók ezután [oauth 2.0-s jogkivonatokat szerezhetnek](./security-authenticating-apis.md) be az Azure Digital Twins szolgáltatásból.
-- **A DEVELOPER** most létrehoz egy mobilalkalmazást, amely közvetlenül integrálható az Azure Digital Twins Management API-kkal.
-- **Developer** lehetővé teszi **az ügyfél** számára a mobil alkalmazás használatát.
-- **Az ÜGYFÉL-nek** jogosultnak kell lennie az Azure Digital Twins Management API használatára a **DEVELOPER**alkalmazásában.
+- A **fejlesztő** Azure-előfizetéssel rendelkezik Azure Active Directory Bérlővel.
+- A **fejlesztő** üzembe helyez egy Azure digitális Twins-példányt az Azure-előfizetésében. Azure Active Directory automatikusan létrehozott egy egyszerű szolgáltatást a **fejlesztői**Azure Active Directory-bérlőben.
+- A **fejlesztői**Azure Active Directory bérlőn belüli felhasználók ezután [OAuth 2,0 jogkivonatokat tudnak beszerezni](./security-authenticating-apis.md) az Azure Digital Twins szolgáltatásból.
+- A **fejlesztői** most létrehoz egy olyan Mobile-alkalmazást, amely közvetlenül integrálódik az Azure digitális Twins felügyeleti API-kkal.
+- A **fejlesztő** lehetővé teszi, hogy a **felhasználó** használhassa a mobil alkalmazást.
+- Az **ügyfélnek** engedélyeznie kell az Azure Digital Twins Management API használatát a **fejlesztői**alkalmazáson belül.
 
 A probléma:
 
-- Amikor **az ÜGYFÉL** bejelentkezik a **DEVELOPER**alkalmazásába, az alkalmazás nem szerezhet tokeneket az **ÜGYFÉL**felhasználói számára az Azure Digital Twins Management API-kkal való hitelesítéshez.
-- Egy kivétel t ad ki az Azure Active Directoryban, amely jelzi, hogy az Azure Digital Twins nem ismeri fel **a CUSTOMER**címtárban.
+- Amikor az **ügyfél** bejelentkezik a **fejlesztői**alkalmazásba, az alkalmazás nem tud jogkivonatokat beszerezni az **ügyfél**felhasználói számára az Azure digitális Twins felügyeleti API-kkal való hitelesítéshez.
+- Kivételt jelent a Azure Active Directory, amely azt jelzi, hogy az Azure digitális Twins nem ismerhető fel az **ügyfél**címtárában.
 
-## <a name="problem-solution"></a>Problémamegoldás
+## <a name="problem-solution"></a>Probléma megoldása
 
-Az előző problémaforgatókönyv megoldásához a következő műveletekre van szükség az Azure Digital Twins szolgáltatásnév létrehozásához az **ÜGYFÉL**Azure Active Directory-bérlőn belül:
+Az előző probléma megoldásához a következő műveletek szükségesek ahhoz, hogy Azure Digital Twins-szolgáltatást hozzon létre az **ügyfél**Azure Active Directory bérlőn belül:
 
-- Ha **az ÜGYFÉL** még nem rendelkezik Azure-előfizetéssel egy Azure Active Directory-bérlővel:
+- Ha az **ügyfél** még nem rendelkezik Azure-előfizetéssel Azure Active Directory Bérlővel:
 
-  - **A CUSTOMER**Azure Active Directory-bérlői rendszergazdájának be kell szereznie egy [felosztó-kiosztó Azure-előfizetést.](https://azure.microsoft.com/offers/ms-azr-0003p/)
-  - **Az ÜGYFÉL**Azure Active Directory-bérlői rendszergazdájának ezután össze kell [kapcsolnia a bérlőt az új előfizetéssel.](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+  - Az **ügyfél**Azure Active Directory bérlői rendszergazdájának utólagos elszámolású [Azure-előfizetést kell befizetnie](https://azure.microsoft.com/offers/ms-azr-0003p/).
+  - Az **ügyfél**Azure Active Directory bérlői rendszergazdájának [az új előfizetéssel kell összekapcsolnia a bérlőt](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
 
-- Az [Azure Portalon](https://portal.azure.com)a **CUSTOMER's**Azure Active Directory bérlői rendszergazdája a következő lépéseket teszi:
+- A [Azure Portal](https://portal.azure.com) **ügyfél**Azure Active Directory bérlői rendszergazdája a következő lépéseket hajtja végre:
 
-  1. Az **Előfizetések** keresése a legfelső Azure-keresőmezőben. Válassza az **Előfizetések** lehetőséget.
-  1. Válassza ki azt az előfizetést, amely rendelkezik a **DEVELOPER**alkalmazásában használandó Azure Active Directory-bérlővel.
+  1. Az **előfizetések** keresése a felső Azure Search mezőben. Válassza az **Előfizetések** lehetőséget.
+  1. Válassza ki azt az előfizetést, amely a **fejlesztői**alkalmazásban használandó Azure Active Directory Bérlővel rendelkezik.
 
-     [![Azure Active Directory-előfizetések](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [![Előfizetések Azure Active Directory](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
-  1. Válassza ki **az erőforrás-szolgáltatókat**.
-  1. Keressen a **Microsoft.IoTSpaces**.
+  1. Válassza az **erőforrás-szolgáltatók**lehetőséget.
+  1. Keressen rá a **Microsoft. IoTSpaces**kifejezésre.
   1. Kattintson a **Register** (Regisztrálás) elemre.
 
-     [![Azure Active Directory-erőforrás-szolgáltatók](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
+     [![Erőforrás-szolgáltatók Azure Active Directory](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne tudni arról, hogyan használhatja a felhasználó által definiált függvényeket az Azure Digital Twins szolgáltatással, olvassa el [az Azure Digital Twins felhasználó által definiált függvények létrehozása](./how-to-user-defined-functions.md)című olvasni.
+- Ha szeretne többet megtudni arról, hogyan használhatja a felhasználó által definiált függvényeket az Azure Digital Twins szolgáltatással, olvassa el az [Azure Digital Twins felhasználói függvények létrehozása](./how-to-user-defined-functions.md)című témakört.
 
-- A szerepköralapú hozzáférés-vezérlés használatával tovább biztosíthatja az alkalmazást szerepkör-hozzárendelésekkel, olvassa el [az Azure Digital Twins szerepköralapú hozzáférés-vezérlés létrehozása és kezelése](./security-create-manage-role-assignments.md)című útmutatót.
+- Ha szeretné megtudni, hogyan használhatja a szerepköralapú hozzáférés-vezérlést az alkalmazás szerepkör-hozzárendelésekkel való további biztonságossá tételéhez, olvassa el az [Azure digitális Twins szerepköralapú hozzáférés-vezérlés létrehozása és kezelése](./security-create-manage-role-assignments.md)című témakört.

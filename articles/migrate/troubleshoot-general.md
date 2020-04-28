@@ -1,6 +1,6 @@
 ---
-title: Az Azure Áttelepítési problémáinak elhárítása | Microsoft dokumentumok
-description: Áttekintést nyújt az Azure Áttelepítés szolgáltatás ismert problémáiról, valamint hibaelhárítási tippeket nyújt a gyakori hibákhoz.
+title: Azure Migrate problémák elhárítása | Microsoft Docs
+description: Áttekintést nyújt a Azure Migrate szolgáltatás ismert problémáiról, valamint a gyakori hibákkal kapcsolatos hibaelhárítási tippekről.
 author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
 ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75725870"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
-[Az Azure Migrate](migrate-services-overview.md) az értékeléshez és az áttelepítéshez szükséges eszközök, valamint a külső független szoftverszállítói (ISV) ajánlatok csomópontja. Ez a cikk segít az Azure Áttelepítés, az Azure Áttelepítési kiszolgáló értékelése és az Azure Áttelepítési kiszolgáló áttelepítésével kapcsolatos problémák elhárítását.
+A [Azure Migrate](migrate-services-overview.md) az értékelési és áttelepítési eszközök, valamint a külső gyártóktól származó független szoftvergyártók (ISV-ajánlatok) központját biztosítja. Ez a cikk segítséget nyújt a Azure Migrateával, Azure Migrate a kiszolgálók értékelésével és a Azure Migrate kiszolgáló áttelepítésével kapcsolatos problémák elhárításában.
 
-## <a name="how-do-i-create-or-find-a-project"></a>Hogyan hozhatok létre vagy kereshetek meg egy projektet?
+## <a name="how-do-i-create-or-find-a-project"></a>Hogyan létrehozni vagy megkeresni egy projektet?
 
-Tekintse át az [Azure Migrate projekt hibaelhárítási útmutatóját.](troubleshoot-project.md)
+Tekintse át a [Azure Migrate projekt hibaelhárítási útmutatóját](troubleshoot-project.md).
 
-## <a name="i-cant-get-the-appliance-working"></a>Nem tudom beüzemelni a készüléket
+## <a name="i-cant-get-the-appliance-working"></a>Nem tudom beolvasni a készülék működését
 
-Tekintse át a készülék üzembe helyezésével [kapcsolatos gyakori problémákra adott válaszokat.](troubleshoot-appliance-discovery.md)
+Tekintse át a berendezések üzembe helyezésével kapcsolatos [gyakori problémákra adott válaszokat](troubleshoot-appliance-discovery.md) .
 
-## <a name="machines-arent-discovered"></a>A gépeket nem fedezték fel
+## <a name="machines-arent-discovered"></a>A gépek nincsenek felderítve
 
 Tekintse át a gyakori felderítési problémákat.
 
-## <a name="app-discovery-isnt-working"></a>Az alkalmazásfelderítés nem működik
+## <a name="app-discovery-isnt-working"></a>Az alkalmazás-felderítés nem működik
 
-A helyszíni gépeken futó alkalmazások, szerepkörök és funkciók felderítése jelenleg csak a VMware virtuális gépek en támogatott. [Tekintse át](troubleshoot-appliance-discovery.md#common-app-discovery-errors) az alkalmazásfelderítés gyakori hibáit.
+A helyszíni gépeken futó alkalmazások, szerepkörök és szolgáltatások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott. [Tekintse át](troubleshoot-appliance-discovery.md#common-app-discovery-errors) az App-Discovery gyakori hibáit.
 
 ## <a name="assessment-isnt-working"></a>Az értékelés nem működik
 

@@ -9,16 +9,16 @@ ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75945139"
 ---
-## <a name="what-happens-to-my-app-during-deployment"></a>Mi történik az alkalmazásommal a telepítés során?
+## <a name="what-happens-to-my-app-during-deployment"></a>Mi történik az alkalmazással az üzembe helyezés során?
 
-A hivatalosan támogatott telepítési módszerek mindegyike `/home/site/wwwroot` módosítja az alkalmazás mappájában lévő fájlokat. Ezeket a fájlokat az alkalmazás futtatásához használjuk. Ezért a központi telepítés zárolt fájlok miatt sikertelen lehet. Az alkalmazás is viselkedhet kiszámíthatatlanul a központi telepítés során, mert nem minden fájl frissítése egy időben. Ez nem kívánatos egy ügyfél felé néző alkalmazás esetében. Néhány féleképpen lehet elkerülni ezeket a problémákat:
+Az összes hivatalosan támogatott üzembe helyezési módszer módosítja az alkalmazás `/home/site/wwwroot` mappájában található fájlokat. Ezek a fájlok az alkalmazás futtatására szolgálnak. Ezért a központi telepítés zárolt fájlok miatt sikertelen lehet. Az alkalmazás az üzembe helyezés során kiszámíthatatlanul is működhet, mert nem minden fájl frissült egyszerre. Ez nem kívánatos az ügyfél által használt alkalmazásokhoz. Ezeket a problémákat többféleképpen is elkerülheti:
 
-- [Futtassa az alkalmazást közvetlenül a ZIP-csomagból](../articles/app-service/deploy-run-package.md) kicsomagolás nélkül.
-- Állítsa le az alkalmazást, vagy engedélyezze az alkalmazás offline üzemmódját a telepítés során. További információ: [A zárolt fájlok kezelése a telepítés során.](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)
-- Üzembe helyezés egy [átmeneti tárolóhelyre,](../articles/app-service/deploy-staging-slots.md) ahol [az automatikus csere](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) engedélyezve van. 
+- Az [alkalmazást közvetlenül a kicsomagolás nélkül futtathatja a zip-csomagból](../articles/app-service/deploy-run-package.md) .
+- Állítsa le az alkalmazást, vagy engedélyezze az alkalmazás offline üzemmódját az üzembe helyezés során. További információ: [az üzembe helyezés során zárolt fájlok kezelése](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
+- Üzembe helyezés [átmeneti tárolóhelyre](../articles/app-service/deploy-staging-slots.md) , amelyen engedélyezve van az [automatikus felcserélés](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) . 

@@ -1,26 +1,26 @@
 ---
-title: Szubvezénylések tartós függvényekhez – Azure
-description: Vezénylési vezénylések hívása az Azure Functions durable functions bővítményében.
+title: Durable Functions – Azure
+description: A Azure Functionshoz Durable Functions-bővítményben lévő előkészítési folyamatokat hívhatja.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76261517"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Szubvezénylések a tartós függvényekben (Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
-A tevékenységfüggvények hívása mellett az orchestrator függvények más orchestrator függvényeket is meghívhatnak. Például hozhat létre egy nagyobb vezénylési kisebb orchestrator függvények könyvtárából. Vagy futtathat több példányt egy orchestrator függvény párhuzamosan.
+A Orchestrator függvények más Orchestrator-függvényeket is hívhatnak. Létrehozhat például egy kisebb Orchestrator-függvények könyvtárainak nagyobb előkészítését. Vagy egy Orchestrator függvény több példányát is futtathatja párhuzamosan.
 
-Az orchestrator függvény hívhat egy másik `CallSubOrchestratorAsync` orchestrator függvényt a vagy a metódusok használatával a `CallSubOrchestratorWithRetryAsync` .NET, vagy a `callSubOrchestrator` vagy `callSubOrchestratorWithRetry` a javascript-ben metódusok használatával. A [hibakezelés & kompenzációs](durable-functions-error-handling.md#automatic-retry-on-failure) cikk további információt tartalmaz az automatikus újrapróbálkozásról.
+Egy Orchestrator függvény meghívhat egy másik Orchestrator-függvényt `CallSubOrchestratorAsync` a `CallSubOrchestratorWithRetryAsync` .net- `callSubOrchestrator` `callSubOrchestratorWithRetry` ben lévő metódusok vagy a JavaScript-metódusok használatával. A [& Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) szolgáltatással kapcsolatos hiba további információkat tartalmaz az automatikus Újrapróbálkozással kapcsolatban.
 
-Sub-orchestrator függvények viselkednek, mint a tevékenység függvények a hívó szemszögéből. Visszaadhatnak egy értéket, kivételt vethetnek, és a szülő orchestrator függvény megvárhatja őket. 
+Az Orchestrator függvények a hívó szemszögéből hasonlóan működnek a tevékenységi funkciókkal. Egy értéket adhatnak vissza, kivételt jeleznek, és a szülő Orchestrator függvénytől is megtekinthetők. 
 ## <a name="example"></a>Példa
 
-A következő példa egy IoT ("az eszközök internetes hálózata") forgatókönyv, ahol több eszköz, amelyki kell építeni. A következő függvény az egyes eszközökhöz végrehajtandó létesítési munkafolyamatot jelöli:
+Az alábbi példa egy IoT ("eszközök internetes hálózata") forgatókönyvet mutat be, ahol több eszközt kell kiépíteni. A következő függvény az egyes eszközökön végrehajtandó kiépítési munkafolyamatot jelöli:
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -66,9 +66,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Ez az orchestrator-függvény használható, mint az egyszeri eszköz kiépítése, vagy része lehet egy nagyobb vezénylési. Az utóbbi esetben a szülő orchestrator függvény `DeviceProvisioningOrchestration` ütemezheti példányait a `CallSubOrchestratorAsync` (.NET) vagy `callSubOrchestrator` (JavaScript) API használatával.
+Ez a Orchestrator függvény használható az egyszeri eszköz kiosztásához, vagy egy nagyobb előkészítés része lehet. Az utóbbi esetben a szülő Orchestrator függvény a (.net) vagy `DeviceProvisioningOrchestration` `CallSubOrchestratorAsync` `callSubOrchestrator` a (JavaScript) API használatával is ütemezhet példányokat.
 
-Íme egy példa, amely bemutatja, hogyan kell futtatni több orchestrator függvények párhuzamosan.
+Íme egy példa, amely bemutatja, hogyan futtathat párhuzamosan több Orchestrator-függvényt.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -94,9 +94,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
+> Az előző C#-példák a Durable Functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,9 +123,9 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Alvezénylési kell definiálni ugyanabban a függvényalkalmazásban, mint a szülő vezénylési. Ha meg kell hívnia, és meg kell várnia a vezényléseket egy másik függvényalkalmazásban, fontolja meg a HTTP API-k beépített támogatását és a HTTP 202 lekérdezési fogyasztói mintát. További információt a [HTTP-szolgáltatások témakörben talál.](durable-functions-http-features.md)
+> Az alrendszereket a szülő-összehangolás során megegyező Function alkalmazásban kell meghatározni. Ha egy másik Function-alkalmazásban kell meghívnia és várnia a meghívást, érdemes lehet használni a HTTP API-k beépített támogatását és a HTTP 202 lekérdezési fogyasztói mintát. További információkért lásd a http- [funkciók](durable-functions-http-features.md) témakört.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az egyéni vezénylési állapot beállítása](durable-functions-custom-orchestration-status.md)
+> [Ismerje meg, hogyan állíthat be egyéni előkészítési állapotot](durable-functions-custom-orchestration-status.md)

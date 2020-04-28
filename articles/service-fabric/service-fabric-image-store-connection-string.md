@@ -1,44 +1,44 @@
 ---
-title: Az Azure Service Fabric rendszerkép-tároló kapcsolati karakterlánca
-description: Ismerje meg a lemezkép-tároló kapcsolati karakterlánc, beleértve annak felhasználásait és alkalmazásait a Service Fabric-fürthöz.
+title: Azure Service Fabric rendszerkép-tárolóhoz tartozó kapcsolatok karakterlánca
+description: Ismerje meg a rendszerkép-tároló kapcsolati karakterláncát, beleértve annak használatát és alkalmazásait egy Service Fabric-fürthöz.
 author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
 ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645667"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Az ImageStoreConnectionString beállítás ismertetése
 
-Néhány dokumentációnkban röviden megemlítjük az "ImageStoreConnectionString" paraméter létezését anélkül, hogy leírnánk, mit is jelent valójában. És miután egy cikket, [például alkalmazások telepítése és eltávolítása a PowerShell használatával,][10]úgy néz ki, mint minden, amit csinál, másolja/illessze be az értéket, ahogy az a célfürt jegyzékfájljában látható. Így a beállítás konfigurálhatónak kell lennie fürtenként, de amikor létrehoz egy fürtöt az [Azure Portalon][11]keresztül, nincs lehetőség a beállítás konfigurálására, és mindig "fabric:ImageStore". Akkor mi a célja ennek a beállításnak?
+Néhány dokumentációban röviden megemlítjük egy "ImageStoreConnectionString" paraméter létezését anélkül, hogy leírja, hogy mit jelent valójában. Ha pedig egy olyan cikket használ, mint például az [alkalmazások telepítése és eltávolítása a PowerShell használatával][10], úgy tűnik, hogy minden, ami a cél fürt fürt jegyzékfájljában látható módon másolja vagy beilleszti az értéket. Így a beállításnak fürtön kell lennie, de ha a [Azure Portalon][11]keresztül hoz létre fürtöt, nincs lehetőség a beállítás konfigurálására, és mindig "Fabric: lemezképtárolóba". Mi a célja ennek a beállításnak?
 
-![Fürtjegyzék][img_cm]
+![Fürt jegyzékfájlja][img_cm]
 
-A Service Fabric a Microsoft belső fogyasztásának platformjaként indult számos különböző csapat számára, így bizonyos aspektusai nagymértékben testreszabhatók - az "Image Store" az egyik ilyen szempont. Lényegében az Image Store egy csatlakoztatható tárház az alkalmazáscsomagok tárolására. Amikor az alkalmazás telepítve van a fürt egyik csomópontjára, a csomópont letölti az alkalmazáscsomag tartalmát a rendszerképtárból. Az ImageStoreConnectionString egy olyan beállítás, amely tartalmazza az összes szükséges információt mind az ügyfelek és a csomópontok, hogy megtalálják a megfelelő image store egy adott fürthöz.
+A Service Fabric számos különböző csapat számára indult el platformként a belső Microsoft-fogyasztáshoz, így az informatikai részleg néhány aspektusa rendkívül testreszabható – a "lemezképtároló" az egyik ilyen aspektus. Lényegében a lemezképtároló egy csatlakoztatható adattár az alkalmazáscsomag tárolásához. Ha az alkalmazás a fürt egyik csomópontjára van telepítve, a csomópont letölti az alkalmazáscsomag tartalmát a lemezképtároló. A ImageStoreConnectionString olyan beállítás, amely tartalmazza az ügyfelek és a csomópontok összes szükséges adatát, hogy megkeresse az adott fürthöz tartozó megfelelő lemezképtároló.
 
-Jelenleg három féle Image Store szolgáltatók és a megfelelő kapcsolat karakterláncok a következők:
+Jelenleg háromféle lemezképtároló-szolgáltató létezik, és a hozzájuk tartozó kapcsolatok sztringje a következő:
 
-1. Image Store szolgáltatás: "fabric:ImageStore"
+1. Lemezképtároló szolgáltatás: "Fabric: Lemezképtárolóba"
 
-2. Fájlrendszer: "file:[fájlrendszer elérési útja]"
+2. Fájlrendszer: "fájl: [fájlrendszer elérési útja]"
 
-3. Azure Storage: "xstore:DefaultEndpointsProtocol=https; AccountName=[...]; Számlakulcs =[...]; Konténer=[...]"
+3. Azure Storage: "xstore: DefaultEndpointsProtocol = https; AccountName = [...]; AccountKey = [...]; Container = [...] "
 
-Az éles környezetben használt szolgáltató típusa a Image Store szolgáltatás, amely egy állapotalapú, megőrzött rendszerszolgáltatás, amely a Service Fabric Explorerből látható. 
+Az éles üzemben használt szolgáltató típusa a lemezképtároló szolgáltatás, amely egy állapot-nyilvántartó megőrzött rendszerszolgáltatás, amely Service Fabric Explorerból látható. 
 
-![Image Store szolgáltatás][img_is]
+![lemezképtároló szolgáltatás][img_is]
 
-Az Image Store üzemeltetése a fürtön belüli rendszerszolgáltatásban kiküszöböli a csomagtár külső függőségeit, és nagyobb ellenőrzést biztosít a tárolási hely felett. Az Image Store körüli jövőbeli fejlesztések valószínűleg először az Image Store-szolgáltatót célozzák meg, ha nem kizárólag. A Image Store-szolgáltató kapcsolati karakterlánca nem rendelkezik egyedi adatokkal, mivel az ügyfél már csatlakozik a célfürthöz. Az ügyfélnek csak tudnia kell, hogy a rendszerszolgáltatást célzó protokollokat kell használni.
+A lemezképtároló a fürtön belüli rendszerszolgáltatásban való üzemeltetése kiküszöböli a csomagok tárházának külső függőségeit, és nagyobb mértékben szabályozza a tárterületet. A lemezképtároló jövőbeli fejlesztései valószínűleg először a lemezképtároló-szolgáltatót célozzák meg, ha nem kizárólag. A lemezképtároló szolgáltató kapcsolati karakterlánca nem rendelkezik egyedi információval, mivel az ügyfél már csatlakoztatva van a célként megadott fürthöz. Az ügyfélnek csak azt kell tudnia, hogy a rendszerszolgáltatást célzó protokollokat kell használni.
 
-A fájlrendszer-szolgáltatót a rendszer a helyi egydobozos fürtök képtárszolgáltatása helyett használja a fejlesztés során, hogy a fürtet kissé gyorsabban próbálja megbeiktatni. A különbség általában kicsi, de ez egy hasznos optimalizálás a legtöbb ember a fejlesztés során. Lehetőség van egy helyi egydobozos fürt üzembe helyezésére a többi tárolószolgáltató-típussal is, de általában nincs ok erre, mivel a fejlesztési/tesztelési munkafolyamat a szolgáltatótól függetlenül ugyanaz marad. Az Azure Storage-szolgáltató csak az Image Store-szolgáltató bevezetése előtt üzembe helyezett régi fürtök örökölt támogatásához létezik.
+A rendszer a lemezképtároló szolgáltatás helyett a fájlrendszer-szolgáltatót használja a helyi egyablakos fürtökhöz a fejlesztés során, hogy a fürt valamivel gyorsabban beindítsa a fürtöt. A különbség általában kicsi, de a fejlesztés során a legtöbb ember számára hasznos optimalizálás. A másik tárolási szolgáltatói típussal rendelkező helyi egyablakos fürtök is üzembe helyezhetők, de ez általában nem indokolja, mert a fejlesztés/tesztelés munkafolyamat a szolgáltatótól függetlenül változatlan marad. Az Azure Storage-szolgáltató csak a lemezképtároló szolgáltató bevezetése előtt üzembe helyezett régi fürtök korábbi támogatásához létezik.
 
-Továbbá nem a fájlrendszer-szolgáltatót vagy az Azure Storage-szolgáltatót kell használni a képtár több fürt közötti megosztásának módjaként – ez a fürt konfigurációs adatainak sérülését eredményezi, mivel minden fürt ütköző adatokat írhat a lemezképre Tárolja. A kiépített alkalmazáscsomagok több fürt közötti megosztásához használjon [sfpkg-fájlokat,][12] amelyek bármely külső tárolóba feltölthetők letöltési URI-val.
+Továbbá, nem a fájlrendszer-szolgáltatót, sem az Azure Storage-szolgáltatót több fürt közötti lemezképtároló megosztására kell használni – ez a fürt konfigurációs információinak sérülését eredményezi, mivel az egyes fürtök ütköző adatmennyiséget írhatnak a lemezképtároló. Ha több fürt között szeretné megosztani a kiépített alkalmazáscsomag-csomagokat, használja helyette a [sfpkg][12] -fájlokat, amelyek a letöltési URI-val bármely külső tárolóba feltölthetők.
 
-Tehát míg az ImageStoreConnectionString konfigurálható, csak az alapértelmezett beállítást használja. Amikor a Visual Studio-n keresztül teszi közzé az Azure-t, a paraméter ennek megfelelően automatikusan be van állítva. Az Azure-ban üzemeltetett fürtöknek történő programozott központi telepítés esetén a kapcsolati karakterlánc mindig "fabric:ImageStore". Ha kétségei vannak, értéke mindig ellenőrizhető a [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)vagy [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest)fürtjegyzékének beolvasásával. Mind a helyszíni teszt, mind az éles fürtök mindig úgy vannak konfigurálva, hogy a Image Store-szolgáltatót is használják.
+Így amíg a ImageStoreConnectionString konfigurálható, csak az alapértelmezett beállítást használja. Az Azure-ban a Visual studión keresztül történő közzétételkor a paraméter automatikusan be lesz állítva. Az Azure-ban üzemeltetett fürtök programozott telepítéséhez a kapcsolódási sztring mindig "Fabric: Lemezképtárolóba". Habár kétségei vannak, az értéke mindig ellenőrizhető a fürt jegyzékfájljának a [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), a [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)vagy a [Rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest)használatával történő beolvasásával. A helyszíni teszt-és üzemi fürtöket mindig úgy kell konfigurálni, hogy az lemezképtároló szolgáltatót is használják.
 
 ### <a name="next-steps"></a>További lépések
 [Alkalmazások telepítése és eltávolítása a PowerShell használatával][10]

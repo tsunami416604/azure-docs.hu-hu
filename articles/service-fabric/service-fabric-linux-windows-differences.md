@@ -1,27 +1,27 @@
 ---
-title: Az Azure Service Fabric linux os és windowsos különbségei
+title: Az Azure Service Fabric a Linux és a Windows közötti különbségek
 description: Az Azure Service Fabric Linux- és Windows-verziója közötti különbségek.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75748528"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
 
-Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, és minden újabb kiadással egyre csökkennek a szolgáltatásbeli különbségek. A következő különbségek vannak a legújabb elérhető kiadások között.
+Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, és minden újabb kiadással egyre csökkennek a szolgáltatásbeli különbségek. A legújabb elérhető kiadások között a következő különbségek állnak fenn.
 
-* Envoy (Reverse Proxy) előzetes verzióban érhető el Linux on
+* A megbízottat (fordított proxy) előzetes verzióban érhető el a Linux rendszerben
 * Önálló Linuxos telepítő még nem érhető el Linux rendszeren.
 * Konzolátirányítás (nem támogatott az éles fürtökben sem Linux, sem Windows rendszeren)
 * A Fault Analysis Service (FAS) Linuxon
 * DNS szolgáltatás a Service Fabric-szolgáltatásokhoz (a DNS szolgáltatás a tárolók esetében támogatott a Linuxon)
 * Egyes PowerShell-parancsok parancssori felületi megfelelője (lásd az alábbi listát; a parancsok nagy része csak önálló fürtökre vonatkozik)
-* [A napló megvalósításának különbségei, amelyek befolyásolhatják a méretezhetőséget](service-fabric-concepts-scalability.md#choosing-a-platform)
+* [A naplózás megvalósításának eltérései befolyásolhatják a méretezhetőséget](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
 
@@ -83,6 +83,6 @@ Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Időve
 * [A fejlesztőkörnyezet előkészítése Linuxon](service-fabric-get-started-linux.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
-* [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linuxon a Service Fabric Plugin for Eclipse használatával](service-fabric-get-started-eclipse.md)
+* [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse-hez készült Service Fabric beépülő modullal](service-fabric-get-started-eclipse.md)
 * [Az első CSharp-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [A Service Fabric parancssori felület használata az alkalmazások kezeléséhez](service-fabric-application-lifecycle-sfctl.md)

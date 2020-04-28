@@ -1,29 +1,29 @@
 ---
 title: Hibák szimulálása az Azure Service Fabric-alkalmazásokban
-description: Ismerje meg, hogyan keményítheti meg az Azure Service Fabric-szolgáltatásokat a kecses és nem kecses hibák ellen.
+description: Ismerje meg, hogyan erősítheti meg Azure Service Fabric szolgáltatásait a kecses és a nem zökkenőmentes meghibásodások ellen.
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645990"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatás-munkaterhelések során
-Az Azure Service Fabric tesztképességi forgatókönyvei lehetővé teszik a fejlesztők számára, hogy ne aggódjanak az egyes hibák kezelése miatt. Vannak azonban olyan esetek, ahol az ügyfél-munkaterhelés és a hibák explicit interleaving lehet szükség. Az ügyfél-munkaterhelés és a hibák közötti átjárva biztosítja, hogy a szolgáltatás ténylegesen végrehajtbizonyos műveletet, ha hiba történik. Tekintettel a tesztelhetőség által biztosított vezérlés szintjére, ezek a számítási feladatok végrehajtásának pontos pontjai lehetnek. Ez az indukciós hibák különböző államok az alkalmazás megtalálja a hibákat, és javítja a minőséget.
+# <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatás munkaterhelései során
+Az Azure Service Fabric tesztelési forgatókönyvei lehetővé teszik a fejlesztők számára, hogy ne aggódjanak az egyes hibák kezelésével kapcsolatban. Vannak azonban olyan forgatókönyvek, amelyekben szükség lehet az ügyfél-munkaterhelések és a hibák explicit módon történő elvégzésére. Az ügyfél-munkaterhelések és a hibák elhagyása biztosítja, hogy a szolgáltatás ténylegesen végezzen valamilyen műveletet, ha a hiba történik. A tesztelés által biztosított szabályozás szintje miatt ezek a számítási feladatok végrehajtásának pontos pontjai lehetnek. Az alkalmazás különböző állapotában lévő hibák levonása hibákat talál, és javíthatja a minőséget.
 
-## <a name="sample-custom-scenario"></a>Egyéni mintaforgatókönyv
-Ez a teszt egy olyan forgatókönyvet mutat be, amely az üzleti számítási [feladatokat kecses és nem kecses hibákkal keresztezi.](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions) A hibákat kell indukálni a szolgáltatási műveletek közepén, vagy a legjobb eredmény érdekében számítási.
+## <a name="sample-custom-scenario"></a>Példa egyéni forgatókönyvre
+Ez a teszt egy olyan forgatókönyvet mutat be, amely összekapcsolja az üzleti munkaterhelést [kecses és zavartalan hibákkal](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibákat a szolgáltatási műveletek közepén vagy a legjobb eredmények érdekében kell kiszámítani.
 
-Mutassunk be egy példát egy olyan szolgáltatásra, amely négy számítási feladatot tesz elérhetővé: A, B, C és D. Mindegyik munkafolyamat-készletnek felel meg, és lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példánkban található munkaterheléseket absztrakttá tesszük. Ebben a példában a következő hibákat hajtják végre:
+Ismerkedjen meg egy olyan szolgáltatás példáján, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. az egyes munkafolyamatok egy csoportjának felelnek meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
 
-* RestartNode: Ungraceful hiba szimulálni a gép újraindítását.
-* RestartDeployedCodePackage: Ungraceful hiba szimulálni szolgáltatás gazdafolyamat összeomlik.
-* RemoveReplica: Kecses hiba a replika eltávolításának szimulálására.
-* MovePrimary: A Service Fabric terheléselosztó által kiváltott replikaáthelyezések szimulálása.
+* RestartNode: nem megfelelő hiba a gép újraindításának szimulálása érdekében.
+* RestartDeployedCodePackage: hiba a Service Host-folyamat összeomlásának szimulálása közben.
+* RemoveReplica: kecses hiba a replika eltávolításának szimulálása érdekében.
+* MovePrimary: az Service Fabric Load Balancer által aktivált replika-áthelyezések szimulálására szolgáló kecses hiba.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

@@ -1,6 +1,6 @@
 ---
-title: Engedélyező ügynökök és azok engedélyezése | Azure
-description: Ismerje meg, hogy a Microsoft Authentication Library (MSAL) milyen különböző engedélyezési ügynököket engedélyez az Android-alkalmazás számára, és hogyan engedélyezheti azokat.
+title: Engedélyezési ügynökök és azok engedélyezése | Azure
+description: Tudnivalók a különböző engedélyezési ügynökökről a Microsoft Authentication Library (MSAL) lehetővé teszi az Android-alkalmazás használatát és azok engedélyezését.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,81 +13,81 @@ ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085329"
 ---
 # <a name="authorization-agents-android"></a>Engedélyezési ügynökök (Android)
 
-Ez a cikk azokat a különböző engedélyezési ügynököket ismerteti, amelyeket a Microsoft hitelesítési tár (MSAL) engedélyez az alkalmazás számára, és amelynek engedélyezését.
+Ez a cikk azokat a különböző engedélyezési ügynököket ismerteti, amelyekkel a Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazás használatát és azok engedélyezését.
 
-Az engedélyezési ügynökök reprezentatiójának kiválasztása nem kötelező, és további funkciókat jelent, amelyeket az alkalmazások testre szabhatnak. A legtöbb alkalmazás az MSAL alapértelmezett beállításait fogja használni [(lásd: Az Android MSAL konfigurációs fájlának megértése](msal-configuration.md) a különböző alapértelmezett értékek megtekintéséhez).
+Az engedélyezési ügynökökhöz tartozó konkrét stratégia kiválasztása nem kötelező, és a további funkcionalitási alkalmazásokat is testreszabhatja. A legtöbb alkalmazás a MSAL alapértelmezett beállításait fogja használni (lásd: az [androidos MSAL konfigurációs fájljának ismertetése](msal-configuration.md) a különböző alapértelmezett beállítások megjelenítéséhez).
 
-Az MSAL támogatja `WebView`az engedélyezést a , vagy a rendszerböngészővel.  Az alábbi képen látható, `WebView`hogyan néz ki a , vagy a rendszer böngésző CustomTabs vagy anélkül CustomTabs:
+A MSAL a vagy a `WebView`rendszerböngésző használatával támogatja az engedélyezést.  Az alábbi képen látható, hogyan néz ki a `WebView`vagy a rendszerböngésző a CustomTabs vagy CustomTabs nélkül:
 
-![Példák a MSAL bejelentkezési példáira](./media/authorization-agents/sign-in-ui.jpg)
+![MSAL bejelentkezési példák](./media/authorization-agents/sign-in-ui.jpg)
 
-## <a name="single-sign-in-implications"></a>Egyszeri bejelentkezési vonatkozások
+## <a name="single-sign-in-implications"></a>Egyszeri bejelentkezés következményei
 
-Alapértelmezés szerint az MSAL-ba integrált alkalmazások a rendszerböngésző egyéni lapjait használják az engedélyezéshez. A webnézetekkel ellentétben az egyéni lapok cookie-tégelyt osztanak meg az alapértelmezett rendszerböngészővel, amely kevesebb bejelentkezést engedélyez a webböngészővel vagy más natív alkalmazásokkal, amelyek integrálva vannak az egyéni lapokkal.
+Alapértelmezés szerint a MSAL-ben integrált alkalmazások a rendszerböngésző egyéni lapjait használják az engedélyezéshez. A webnézetekkel ellentétben az egyéni lapok megosztanak egy cookie jar-t az alapértelmezett rendszerböngészővel, így kevesebb bejelentkezést tesznek lehetővé az egyéni lapokkal integrált webes vagy más natív alkalmazásokkal.
 
-Ha az alkalmazás `WebView` stratégiát használ anélkül, hogy integrálná a Microsoft Authenticator vagy a Vállalati portál támogatását az alkalmazásba, a felhasználók nem rendelkeznek egyszeri bejelentkezési (SSO) felhasználói felülettel az eszközön vagy a natív alkalmazások és a webalkalmazások között.
+Ha az alkalmazás olyan stratégiát `WebView` használ, amely nem integrálja Microsoft Authenticator vagy céges portál támogatást az alkalmazásba, a felhasználóknak nincs egyszeri bejelentkezési (SSO) felhasználói felülete az eszközön, illetve a natív alkalmazások és a webalkalmazások között.
 
-Ha az alkalmazás az MSAL-t a Microsoft Authenticator vagy a Vállalati portál támogatásával használja, akkor a felhasználók egyszeri bejelentkezéssel élhetnek az alkalmazások között, ha a felhasználó aktív bejelentkezéssel rendelkezik az egyik alkalmazással.
+Ha az alkalmazás a MSAL-t Microsoft Authenticator vagy Céges portál támogatással használja, akkor a felhasználók az alkalmazásokban egyszeri bejelentkezéses felhasználói felülettel rendelkezhetnek, ha a felhasználó aktív bejelentkezést végez az egyik alkalmazással.
 
-## <a name="webview"></a>WebView nézet
+## <a name="webview"></a>WebView
 
-Az alkalmazáson belüli WebView használatához tegye a következő sort az MSAL-nak átadott JSON alkalmazáskonfigurációban:
+A alkalmazáson belüli webnézet használatához helyezze a következő sort az App Configuration JSON-ba, amelyet a MSAL továbbít:
 
 ```json
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Az alkalmazáson `WebView`belüli használatakor a felhasználó közvetlenül bejelentkezik az alkalmazásba. A tokenek az alkalmazás sandboxán belül maradnak, és nem érhetők el az alkalmazás cookie-jar-ján kívül. Ennek eredményeképpen a felhasználó nem rendelkezhet sso-élménygel az alkalmazások között, kivéve, ha az alkalmazások integrálhatók a hitelesítővel vagy a vállalati portállal.
+Az alkalmazáson belüli `WebView`használatakor a felhasználó közvetlenül az alkalmazásba jelentkezik be. A tokenek az alkalmazás Homokozójában maradnak, és nem érhetők el az alkalmazás cookie jar-on kívül. Ennek eredményeképpen a felhasználónak nem lehet egyszeri bejelentkezéses felhasználói felülete, kivéve, ha az alkalmazások integrálva vannak a hitelesítő vagy a Céges portál.
 
-Azonban `WebView` nem biztosítja a lehetőséget, hogy testre szabhatja a megjelenését és hangulatát a bejelentkezési felhasználói felület. A testreszabás módjáról az [Android WebViews webhelyen](https://developer.android.com/reference/android/webkit/WebView) további tudnivalókat talál.
+A azonban `WebView` lehetővé teszi a bejelentkezési felhasználói felület megjelenésének és működésének testreszabását. A testreszabással kapcsolatos további tudnivalókért tekintse meg az [androidos Webnézeteket](https://developer.android.com/reference/android/webkit/WebView) .
 
 ## <a name="default-browser-plus-custom-tabs"></a>Alapértelmezett böngésző és egyéni lapok
 
-Alapértelmezés szerint az MSAL a böngészőt és az [egyéni lapok stratégiáját](https://developer.chrome.com/multidevice/android/customtabs) használja. Ezt a stratégiát explicit módon jelezheti a `DEFAULT` jövőbeli kiadások ban a következő JSON-konfiguráció használatával az egyéni konfigurációs fájlban:
+Alapértelmezés szerint a MSAL a böngészőt és az [Egyéni lapfülek](https://developer.chrome.com/multidevice/android/customtabs) stratégiát használja. Explicit módon jelezheti ezt a stratégiát, hogy megakadályozza a jövőbeli kiadásokban `DEFAULT` történt változásokat az egyéni konfigurációs fájl következő JSON-konfigurációjának használatával:
 
 ```json
 "authorization_user_agent" : "BROWSER"
 ```
 
-Ezzel a módszerrel sso-élményt biztosít az eszköz böngészőjében. Az MSAL megosztott cookie-tsót használ, amely lehetővé teszi, hogy más natív alkalmazások vagy webalkalmazások sso-t érjenek el az eszközön az MSAL által beállított munkamenet-cookie-k használatával.
+Ezzel a megközelítéssel egyszeri bejelentkezéses felhasználói élményt biztosíthat az eszköz böngészőjében. A MSAL egy megosztott cookie jar-t használ, amely lehetővé teszi más natív alkalmazások vagy webalkalmazások számára az egyszeri bejelentkezést az eszközön a MSAL által beállított állandó munkamenet-cookie használatával.
 
-## <a name="browser-selection-heuristic"></a>Böngésző kiválasztása heurisztikus
+## <a name="browser-selection-heuristic"></a>Böngésző kiválasztása – heurisztikus
 
-Mivel lehetetlen, hogy az MSAL pontosan meghatározza az Android telefonok minden egyes széles skáláján használandó böngészőcsomagot, az MSAL egy böngészőkiválasztási heurisztikát valósít meg, amely megpróbálja a legjobb eszközközi SSO-t biztosítani.
+Mivel a MSAL nem tudja megállapítani az androidos telefonok széles skáláján használni kívánt böngésző-csomagot, a MSAL egy olyan böngésző-kiválasztási heurisztikus szolgáltatást valósít meg, amely a legjobb eszközök közötti egyszeri bejelentkezést próbálja megadni.
 
-Az MSAL lekéri az eszközre telepített böngészők teljes listáját, hogy kiválassza, melyik böngészőt használja. A lista a csomagkezelő által visszaküldött sorrendben van, amely közvetve tükrözi a felhasználó preferenciáit. Ha be van állítva, az alapértelmezett böngésző például a lista első bejegyzése. A lista _első_ böngészője attól függetlenül kerül kiválasztásra, hogy támogatja-e az egyéni lapokat. Ha a böngésző támogatja az egyéni lapokat, az MSAL elindítja az Egyéni lapot. `WebView` További információ: [Egyéni lapok az Android androidos alkalmazásában.](https://developer.chrome.com/multidevice/android/customtabs)
+A MSAL lekéri az eszközön telepített böngészők teljes listáját, hogy kiválassza a használni kívánt böngészőt. A lista a Package Manager által visszaadott sorrendben történik, amely közvetett módon a felhasználó beállításait mutatja. Például az alapértelmezett böngésző, ha be van állítva, a lista első bejegyzése. A lista _első_ böngészője attól függetlenül lesz kiválasztva, hogy támogatja-e az egyéni lapokat. Ha a böngésző támogatja az egyéni lapokat, a MSAL elindítják az egyéni fület. az egyéni lapok megjelenése és `WebView` a felhasználói felület alapvető testreszabásának engedélyezése. További információért lásd: [Egyéni lapok az Androidban](https://developer.chrome.com/multidevice/android/customtabs) .
 
-Ha nincsenek böngészőcsomagok az eszközön, az MSAL `WebView`az alkalmazáson belüli .
+Ha nincsenek böngésző-csomagok az eszközön, a MSAL az alkalmazáson belüli alkalmazást `WebView`használja.
 
-A böngészők sorrendjét a böngészőlistában az operációs rendszer határozza meg. Ez annak érdekében, hogy a legtöbb preferált a legkevésbé. Ha az eszköz alapértelmezett beállítása nem változik, ugyanazt a böngészőt kell indítani minden bejelentkezéshez az SSO-élmény biztosítása érdekében.
+A böngésző listájában szereplő böngészők sorrendjét az operációs rendszer határozza meg. A legkevesebb előnyben részesített a legkevésbé. Ha az eszköz alapértelmezett beállítása nem módosul, a bejelentkezéshez ugyanazt a böngészőt kell elindítani az egyszeri bejelentkezéses felhasználói élmény biztosítása érdekében.
 
 > [!NOTE]
-> Az MSAL már nem mindig részesíti előnyben a Chrome-ot, ha egy másik böngésző van beállítva alapértelmezettként. Például egy olyan eszközön, amelyen a Chrome és egy másik böngésző is előre telepítve van, az MSAL a felhasználó által alapértelmezettként beállított böngészőt fogja használni.
+> A MSAL már nem mindig a Chrome-ot részesíti előnyben, ha egy másik böngésző alapértelmezettként van beállítva. Például egy olyan eszközön, amelyen a Chrome és egy másik böngésző előre telepítve van, a MSAL a felhasználó által alapértelmezettként beállított böngészőt fogja használni.
 
 ### <a name="tested-browsers"></a>Tesztelt böngészők
 
-A következő böngészők tesztelték, hogy azok megfelelően `"redirect_uri"` átirányítsák-e a konfigurációs fájlban megadott akövetkező böngészők:
+A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-e `"redirect_uri"` a konfigurációs fájlban megadott értékre:
 
-| | Beépített böngésző | Chrome | Opera  | Microsoft Edge | UC böngésző | Firefox |
+| | Beépített böngésző | Chrome | Operát  | Microsoft Edge | UC böngésző | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (API 17) | Át | Át |nem alkalmazható |nem alkalmazható |nem alkalmazható |nem alkalmazható |
-| Samsung S7 (API 25) | áthaladás* | Át | Át | Át | Nem |Át |
-| Huawei (API 26) |át** | Át | Nem | Át | Át |Át |
-| Vivo (API 26) |Át|Át|Át|Át|Át|Nem|
-| Pixel 2 (API 26) |Át | Át | Át | Át | Nem |Át |
-| Ellenfél | Át | nem alkalmazható*** |nem alkalmazható  |nem alkalmazható |nem alkalmazható | nem alkalmazható|
-| OnePlus (API 25) |Át | Át | Át | Át | Nem |Át |
-| Nexus (API 28) |Át | Át | Át | Át | Nem |Át |
-|MI | Át | Át | Át | Át | Nem |Át |
+| 4. Nexus (API 17) | pass | pass |nem alkalmazható |nem alkalmazható |nem alkalmazható |nem alkalmazható |
+| Samsung S7 (API 25) | pass | pass | pass | pass | sikertelen |pass |
+| Huawei (API 26) |pass * * | pass | sikertelen | pass | pass |pass |
+| Vivo (API 26) |pass|pass|pass|pass|pass|sikertelen|
+| 2. képpont (API 26) |pass | pass | pass | pass | sikertelen |pass |
+| Ellenfél | pass | nem alkalmazható * * * |nem alkalmazható  |nem alkalmazható |nem alkalmazható | nem alkalmazható|
+| OnePlus (25. API) |pass | pass | pass | pass | sikertelen |pass |
+| Nexus (API 28) |pass | pass | pass | pass | sikertelen |pass |
+|MI | pass | pass | pass | pass | sikertelen |pass |
 
-*A Samsung beépített böngészője a Samsung Internet.  
-**A Huawei beépített böngészője a Huawei böngésző.  
-Az alapértelmezett böngésző nem módosítható az Oppo eszközbeállításán belül.
+* A Samsung beépített böngészője a Samsung Internet.  
+* * A Huawei beépített böngészője a Huawei böngésző.  
+Az alapértelmezett böngésző nem módosítható a ellenfél-eszköz beállításán belül.

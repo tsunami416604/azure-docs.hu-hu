@@ -1,54 +1,54 @@
 ---
-title: Avere vFXT DNS - Azure
-description: DNS-kiszolgáló konfigurálása ciklikus multiplexeléses terheléselosztáshoz az Azure-hoz tartozó Avere vFXT-vel
+title: Avere vFXT DNS – Azure
+description: DNS-kiszolgáló konfigurálása ciklikus időszeleteléses terheléselosztáshoz az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153785"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere-fürt DNS-konfigurációja
 
-Ez a szakasz az Avere vFXT-fürt terheléselosztáshoz való konfigurálásának alapjait ismerteti.
+Ez a szakasz ismerteti a DNS-rendszer konfigurálásának alapjait a avere vFXT-fürt terheléselosztásához.
 
-Ez a dokumentum *nem tartalmaz* utasításokat a DNS-kiszolgáló azure-környezetben történő beállításához és kezeléséhez.
+Ez a dokumentum *nem tartalmaz* utasításokat a DNS-kiszolgáló Azure-környezetben történő beállításához és kezeléséhez.
 
-Ahelyett, hogy ciklikus multiplexelésdns-t használna egy virtuális gép-fürt azure-beli terheléselosztásához, fontolja meg manuális módszerek használatával az IP-címek egyenletes hozzárendelését az ügyfelek között csatlakoztatáskor. Az [Avere-fürt felszerelhető.](avere-vfxt-mount-clients.md)
+Az Azure-beli vFXT-fürtök terheléselosztása helyett használjon kézi metódusokat, hogy az ügyfelek között egyenletesen rendeljen IP-címeket a csatlakoztatásuk során. [A avere-fürt csatlakoztatása](avere-vfxt-mount-clients.md)számos módszert ismertet.
 
-Tartsa szem előtt az alábbi dolgokat annak eldöntésekor, hogy használ-e DNS-kiszolgálót:
+Tartsa szem előtt ezeket a dolgokat, amikor eldönti, hogy használ-e DNS-kiszolgálót:
 
-* Ha a rendszert csak az NFS-ügyfelek férnek hozzá, a DNS használata nem kötelező - az összes hálózati cím megadható numerikus IP-címek használatával.
+* Ha a rendszer csak az NFS-ügyfelek számára érhető el, a DNS használata nem kötelező – az összes hálózati címet numerikus IP-címek használatával lehet megadni.
 
-* Ha a rendszer támogatja az SMB (CIFS) hozzáférést, dns szükséges, mert meg kell adnia egy DNS-tartományt az Active Directory-kiszolgálóhoz.
+* Ha a rendszer támogatja az SMB (CIFS) elérését, a DNS-t kötelező megadni, mert meg kell adnia egy DNS-tartományt a Active Directory-kiszolgálóhoz.
 
-* A Kerberos-hitelesítés használatához DNS szükséges.
+* A DNS használata kötelező, ha Kerberos-hitelesítést kíván használni.
 
 ## <a name="load-balancing"></a>Terheléselosztás
 
-A teljes terhelés elosztásához konfigurálja a DNS-tartományt úgy, hogy ciklikus multiplexeléses terheléselosztást használjon az ügyféloldali IP-címekhez.
+A teljes terhelés elosztásához konfigurálja a DNS-tartományt úgy, hogy az ügyfél által elérhető IP-címekhez ciklikusan megjelenő elosztott terhelési eloszlást használjon.
 
-## <a name="configuration-details"></a>A konfiguráció részletei
+## <a name="configuration-details"></a>Konfiguráció részletei
 
-Amikor az ügyfelek hozzáférnek a fürthöz, az RRDNS automatikusan kiegyensúlyozza a kéréseiket az összes elérhető felület között.
+Amikor az ügyfelek hozzáférnek a fürthöz, a RRDNS automatikusan kiegyenlíti a kéréseket az összes elérhető felület között.
 
-Az optimális teljesítmény érdekében állítsa be a DNS-kiszolgálót úgy, hogy az ügyfélfelé néző fürtcímeket az alábbi ábrán látható módon kezelje.
+Az optimális teljesítmény érdekében konfigurálja úgy a DNS-kiszolgálót, hogy az alábbi ábrán látható módon kezelje az ügyfélre irányuló fürt címeit.
 
-A fürt vserver jelenik meg a bal oldalon, és IP-címek jelennek meg a középső és a jobb oldalon. Konfigurálja az egyes ügyfél-hozzáférési pontot a látható A rekordokkal és mutatókkal.
+A bal oldalon megjelenik egy fürt VServer, és az IP-címek a központban és a jobb oldalon jelennek meg. Konfigurálja az egyes ügyfél-hozzáférési pontokat egy rekordokkal és mutatókkal az ábrán látható módon.
 
-![Avere fürt ciklikus multiplexeléses DNS-diagramja](media/avere-vfxt-rrdns-diagram.png)
+![Avere-fürt ciklikus multiplexelés DNS-diagramja](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
-Minden ügyfélfelé néző IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatához. (Ebben az ábrán az ügyfél IP-k neve vs1-client-IP-* az egyértelműség érdekében, de éles környezetben érdemes használni valami tömörebb, mint az ügyfél *.)
+Minden ügyfél felé irányuló IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatára. (Ebben a diagramban az ügyfél IP-címeinek neve vs1-Client-IP-*, az éles környezetben azonban érdemes lehet valami tömörebb, például az ügyfél * esetében használni.)
 
-Az ügyfelek a virtuális kiszolgáló nevét használva csatlakoztatják a fürtöt kiszolgálói argumentumként.
+Az ügyfelek a VServer nevével csatlakoztatják a fürtöt a kiszolgálói argumentumként.
 
-Módosítsa a DNS-kiszolgáló fájlját ``named.conf`` a vserver lekérdezések ciklikus sorrendjének beállításához. Ez a beállítás biztosítja, hogy az összes rendelkezésre álló érték végighalad. Adjon hozzá egy utasítást, mint a következő:
+A DNS-kiszolgáló ``named.conf`` fájljának módosításával ciklikus sorrendet állíthat be a VServer való lekérdezésekhez. Ezzel a beállítással biztosíthatja, hogy az összes elérhető érték a következőn keresztül történjen:. Adjon hozzá egy, a következőhöz hasonló utasítást:
 
 ```
 options {
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-A ``nsupdate`` következő parancsok a DNS megfelelő konfigurálására nyújtanak példát:
+A következő ``nsupdate`` parancsok példát nyújtanak a DNS helyes konfigurálására:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -74,10 +74,10 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Fürt DNS-beállításai
 
-Adja meg a vFXT-fürt által használt DNS-kiszolgálót a **Fürtfelügyeleti** > **hálózat** beállításai lapon. Az oldal beállításai a következők:
+Itt adhatja meg azt a DNS-kiszolgálót, amelyet a vFXT-fürt használ a **fürt** > **felügyeleti hálózati** beállításai lapon. Az oldalon található beállítások a következők:
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév
-* DNS-kereső tartományok
+* DNS-keresési tartományok
 
-A lap használatával kapcsolatos további részletekért olvassa el az Avere fürtkonfigurációs [útmutatódns-beállításokcímű](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) lapját.
+A lap használatával kapcsolatos további részletekért olvassa el a [DNS-beállításokat](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) a avere-fürt konfigurációs útmutatójában.

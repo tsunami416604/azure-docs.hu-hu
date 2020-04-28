@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop-feladatok futtatása a .NET és a HDInsight használatával – Azure
-description: Ismerje meg, hogyan futtathatja a HDInsight .NET SDK használatával az Apache Sqoop importálását és exportálását egy Apache Hadoop-fürt és egy Azure SQL-adatbázis között.
+title: Apache Sqoop-feladatok futtatása a .NET és a HDInsight-Azure használatával
+description: Ismerje meg, hogyan futtathatja az Apache Sqoop importálását és exportálását a HDInsight .NET SDK használatával egy Apache Hadoop-fürt és egy Azure SQL Database között.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76157066"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a .NET SDK apache hadoop-hoz a HDInsightban
+# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogyan futtathatja az Azure HDInsight .NET SDK használatával az Apache Sqoop-feladatok futtatását a HDInsight-fürtök és egy Azure SQL Database vagy SQL Server adatbázis között.
+Ismerje meg, hogy az Azure HDInsight .NET SDK-val hogyan futtathat Apache Sqoop-feladatokat a HDInsight-ben egy HDInsight-fürt és egy Azure SQL Database vagy SQL Server-adatbázis közötti importáláshoz és exportáláshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Tesztkörnyezet beállítása](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) az [Apache Sqoop használata a Hadoop segítségével a HDInsight ban](./hdinsight-use-sqoop.md).
+* A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
-* A Sqoop ismerete. További információ: [Sqoop User Guide](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
+* Az Sqoop ismerete. További információ: [Sqoop felhasználói útmutató](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Sqoop használata HDInsight-fürtökön a .NET SDK-val
+## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>A Sqoop használata HDInsight-fürtökön a .NET SDK-val
 
-A HDInsight .NET SDK .NET ügyféltárakat biztosít, így könnyebben dolgozhat a .NET-ről származó HDInsight-fürtökkel. Ebben a szakaszban hozzon létre egy `hivesampletable` C# konzolalkalmazást az előfeltételekből létrehozott Azure SQL Database-táblába való exportáláshoz.
+A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, így könnyebben használható a .NET-alapú HDInsight-fürtökkel. Ebben a szakaszban egy C# konzolos alkalmazást hoz létre, amely az `hivesampletable` előfeltételekből létrehozott Azure SQL Database táblát exportálja.
 
 ## <a name="set-up"></a>Beállítás
 
-1. Indítsa el a Visual Studio alkalmazást, és hozzon létre egy C# konzolalkalmazást.
+1. Indítsa el a Visual studiót, és hozzon létre egy C# konzolos alkalmazást.
 
-1. Nyissa meg az **Eszközök** > **NuGet Csomagkezelő csomagkezelő** > **konzolját,** és futtassa a következő parancsot:
+1. Navigáljon az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolra** , és futtassa a következő parancsot:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-## <a name="sqoop-export"></a>Sqoop export
+## <a name="sqoop-export"></a>Sqoop-exportálás
 
-A Hive-tól az SQL Serverkiszolgálóig.  Ez a példa exportálja `hivesampletable` az `mobiledata` adatokat a Hive táblából az SQL Database táblájába.
+A kaptárból a SQL Serverba.  Ez a példa a struktúra `hivesampletable` táblából exportálja az `mobiledata` adatait a SQL Database lévő táblába.
 
-1. Használja a következő kódot a Program.cs fájlban. A kód szerkesztése a `ExistingClusterName`és `ExistingClusterPassword`a érték értékének beállításához.
+1. Használja a következő kódot a Program.cs fájlban. Szerkessze a kódot a és `ExistingClusterName` `ExistingClusterPassword`a értékének megadásához.
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -113,11 +113,11 @@ A Hive-tól az SQL Serverkiszolgálóig.  Ez a példa exportálja `hivesampletab
 
 1. A program futtatásához válassza az **F5** billentyűt.
 
-## <a name="sqoop-import"></a>Sqoop import
+## <a name="sqoop-import"></a>Sqoop importálása
 
-Az SQL Servertől az Azure Storage-ig. Ez a példa attól függ, hogy a fenti exportálás történt-e.  Ez a példa `mobiledata` adatokat importál az `wasb:///tutorials/usesqoop/importeddata` SQL Database táblájából a fürt alapértelmezett tárfiókjának könyvtárába.
+SQL Server az Azure Storage-ba. Ez a példa a fenti exportálási művelettől függ.  Ez a példa a SQL Database lévő `mobiledata` táblából importálja az `wasb:///tutorials/usesqoop/importeddata` adatait a fürt alapértelmezett Storage-fiókjának könyvtárába.
 
-1. Cserélje le a `//sqoop start //sqoop end` fenti kódot a blokkban a következő kódra:
+1. Cserélje le a fenti kódot a `//sqoop start //sqoop end` blokkba a következő kóddal:
 
     ```csharp
     var tableName = "mobiledata";
@@ -135,13 +135,13 @@ Az SQL Servertől az Azure Storage-ig. Ez a példa attól függ, hogy a fenti ex
 
 A Linux-alapú HDInsight a következő korlátozásokat mutatja be:
 
-* Tömeges exportálás: A Sqoop-összekötő, amely adatok Microsoft SQL Server vagy Azure SQL Database exportálására szolgál, jelenleg nem támogatja a tömeges beszúrásokat.
+* Tömeges exportálás: a Sqoop-összekötő, amely az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 
-* Kötegelés: A `-batch` kapcsoló használatával a Sqoop több lapkát hajt végre a lapkaműveletek kötegelése helyett.
+* Kötegelt feldolgozás: a kapcsoló használatával `-batch` a Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan kell használni Sqoop. További tudnivalókért lásd:
+Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 
-* [Az Apache Oozie használata a HDInsight segítségével:](../hdinsight-use-oozie-linux-mac.md)Sqoop művelet használata Oozie-munkafolyamatokban.
-* [Adatok feltöltése a HDInsightba:](../hdinsight-upload-data.md)Más módszereket is kereshet az adatok HDInsightba vagy az Azure Blob storage-ba való feltöltéséhez.
+* Az [Apache Oozie és a HDInsight használata](../hdinsight-use-oozie-linux-mac.md): Sqoop művelet használata Oozie-munkafolyamatokban.
+* [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszereket talál az adatok HDInsight vagy Azure Blob Storage-ba való feltöltéséhez.

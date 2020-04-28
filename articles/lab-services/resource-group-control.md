@@ -1,6 +1,6 @@
 ---
-title: Erőforráscsoport megadása virtuális gépekhez az Azure DevTest Labsben | Microsoft dokumentumok
-description: Megtudhatja, hogyan adhat meg erőforráscsoportot a virtuális gépekhez az Azure DevTest Labs tesztkörnyezetében.
+title: Erőforráscsoport megadása a Azure DevTest Labs virtuális gépekhez | Microsoft Docs
+description: Megtudhatja, hogyan határozhat meg egy erőforráscsoportot a virtuális gépekhez Azure DevTest Labs-ban laborban.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,42 +13,42 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
 ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77134536"
 ---
-# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Erőforráscsoport megadása az Azure DevTest Labs ben lévő tesztkörnyezetben lévő virtuális gépekhez
+# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Válasszon erőforráscsoportot a tesztkörnyezet virtuális gépei számára Azure DevTest Labs
 
-Labortulajdonosként konfigurálhatja a tesztkörnyezet virtuális gépeit egy adott erőforráscsoportban létrehozva. Ez a funkció a következő esetekben nyújt segítséget:
+A labor tulajdonosaként beállíthatja, hogy a tesztkörnyezet virtuális gépei egy adott erőforráscsoporthoz jöjjenek létre. Ez a funkció a következő helyzetekben nyújt segítséget:
 
-- Kevesebb erőforráscsoportok által létrehozott labs az előfizetésben.
-- A laborok a konfigurált erőforráscsoportok rögzített készletén belül működjenek.
-- Az Azure-előfizetésen belüli erőforráscsoportok létrehozásához szükséges korlátozások és jóváhagyások megkerülése.
-- Konszolidálja az összes labor erőforrást egyetlen erőforráscsoporton belül, hogy egyszerűsítse az erőforrások nyomon követését és az erőforrások erőforráscsoport szintjén történő kezeléséhez szükséges [házirendek](../governance/policy/overview.md) alkalmazását.
+- A laborok kevesebb erőforráscsoportot hoztak létre az előfizetésében.
+- A laborok az Ön által konfigurált erőforráscsoport-csoporton belül működnek.
+- Az Azure-előfizetéshez tartozó erőforráscsoportok létrehozásához szükséges korlátozások és jóváhagyások megkerülő megoldás.
+- Egyesítse az összes laboratóriumi erőforrást egy adott erőforráscsoporthoz, hogy leegyszerűsítse ezeknek az erőforrásoknak a nyomon követését, és [házirendeket](../governance/policy/overview.md) alkalmazzon az erőforrások erőforráscsoport szintjén történő kezeléséhez.
 
-Ezzel a funkcióval egy parancsfájl segítségével adhat meg egy új vagy meglévő erőforráscsoportot az Azure-előfizetésében az összes tesztkörnyezetbeli virtuális géphez. Jelenleg az Azure DevTest Labs támogatja ezt a funkciót egy API-n keresztül.
+Ezzel a funkcióval egy parancsfájl segítségével megadhat egy új vagy egy meglévő erőforráscsoportot az Azure-előfizetésében az összes Tesztkörnyezet virtuális gépe számára. A Azure DevTest Labs jelenleg egy API-n keresztül támogatja ezt a funkciót.
 
 > [!NOTE]
-> Minden előfizetési korlát akkor érvényes, ha laborokat hoz létre a DevTest Labs-ben. Gondoljon egy tesztkörnyezetre, mint bármely más erőforrásra az előfizetésében. Erőforráscsoportok esetén a korlát [előfizetésenként 980 erőforráscsoport.](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 
+> A DevTest Labs szolgáltatásban a Labs létrehozásakor minden előfizetési korlát érvényes. Gondoljon egy laborra, mint bármely más erőforrásra az előfizetésében. Erőforráscsoportok esetén a korlát [980 erőforráscsoport/előfizetés](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Az alábbi lépések végrehajtásával adja meg a laborban létrehozott összes virtuális gép erőforráscsoportját. 
+Kövesse az alábbi lépéseket a laborban létrehozott összes virtuális géphez tartozó erőforráscsoport megadásához. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza a bal oldali navigációs menü **Minden szolgáltatás lehetőséget.** 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget. 
 3. Válassza a **DevTest Labs** elemet a listából.
-4. A laborok listájából válassza ki a **labort.**  
-5. A bal oldali menü **Beállítások** szakaszában válassza a **Konfiguráció és házirendek** lehetőséget. 
-6. Válassza a bal oldali menü **Lab-beállításai parancsát.** 
-7. Válassza az **Összes virtuális gép egy erőforráscsoportban**lehetőséget. 
-8. Jelöljön ki egy meglévő erőforráscsoportot a legördülő listában (vagy) válassza **az Új létrehozása lehetőséget,** adja meg az erőforráscsoport **nevét,** és válassza az **OK gombot.** 
+4. A Labs listából válassza ki a **labort**.  
+5. A bal oldali menüben a **Beállítások** szakaszban válassza a **konfiguráció és szabályzatok** lehetőséget. 
+6. A bal oldali menüben válassza a **labor-beállítások** lehetőséget. 
+7. Válassza ki **az összes virtuális gépet egy erőforráscsoporthoz**. 
+8. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából (vagy) válassza az **új létrehozása**lehetőséget, adja meg az erőforráscsoport **nevét** , majd kattintson **az OK gombra**. 
 
-    ![Az összes tesztkörnyezet virtuális gépéhez az erőforráscsoport kiválasztása](./media/resource-group-control/select-resource-group.png)
+    ![Válassza ki az erőforráscsoportot az összes laboratóriumi virtuális gép számára](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>A PowerShell használata 
-A következő példa bemutatja, hogyan egy PowerShell-parancsfájl használatával hozzon létre egy új erőforráscsoportban az összes tesztkörnyezet virtuális gépét.
+Az alábbi példa azt szemlélteti, hogyan használható egy PowerShell-szkript az összes Tesztkörnyezet virtuális gép létrehozásához egy új erőforráscsoporthoz.
 
 ```powershell
 [CmdletBinding()]
@@ -72,14 +72,14 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 "Done. New virtual machines will now be created in the resource group '$vmRg'."
 ```
 
-A parancsfájl meghívása a következő paranccsal. A ResourceGroup.ps1 fájl az előző parancsfájlt tartalmazó fájl:
+Hívja meg a szkriptet a következő parancs használatával. A ResourceGroup. ps1 az előző parancsfájlt tartalmazó fájl:
 
 ```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 
 ## <a name="use-an-azure-resource-manager-template"></a>Azure Resource Manager-sablon használata
-Ha egy Azure Resource Manager-sablont használ egy tesztkörnyezet létrehozásához, használja a **vmCreationResourceGroupId tulajdonságot** a sablon labortulajdonságai nak szakaszában, ahogy az a következő példában látható:
+Ha Azure Resource Manager sablont használ a labor létrehozásához, használja a **vmCreationResourceGroupId** tulajdonságot a sablon labor tulajdonságai szakaszában, az alábbi példában látható módon:
 
 ```json
         {
@@ -101,24 +101,24 @@ Ha egy Azure Resource Manager-sablont használ egy tesztkörnyezet létrehozás�
 ```
 
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API-t a tesztkörnyezet virtuális gépei erőforráscsoportjának konfigurálásához
-Az API használatakor a következő lehetőségek állnak rendelkezésre a tesztkörnyezet tulajdonosaként:
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API egy erőforráscsoport laboratóriumi virtuális gépekhez való konfigurálásához
+Az API használatakor a következő lehetőségek közül választhat labor-tulajdonosként:
 
-- Válassza ki a **labor erőforráscsoport** az összes virtuális gép.
-- Válasszon egy **meglévő erőforráscsoportot** a labor erőforráscsoportjától eltérő minden virtuális géphez.
-- Adja meg az összes virtuális gép **új erőforráscsoportnevét.**
-- Folytassa a meglévő viselkedés használatát, amelyben a laborban minden egyes virtuális géphez létrehoz egy erőforráscsoportot.
+- Válassza ki a **tesztkörnyezet erőforrás-csoportját** az összes virtuális géphez.
+- Válasszon egy **meglévő erőforráscsoportot** , amely nem a labor erőforráscsoport az összes virtuális géphez.
+- Adjon meg egy **Új erőforráscsoport** -nevet az összes virtuális géphez.
+- Folytassa a meglévő viselkedést, amelyben egy erőforráscsoport jön létre a laborban található minden egyes virtuális géphez.
  
-Ez a beállítás a tesztkörnyezetben létrehozott új virtuális gépekre vonatkozik. A laborban a saját erőforráscsoportokban létrehozott régebbi virtuális gépek változatlanok maradnak. A laborban létrehozott környezetek továbbra is a saját erőforráscsoportokban maradnak.
+Ez a beállítás a laborban létrehozott új virtuális gépekre vonatkozik. A laborban a saját erőforráscsoportok létrehozott régebbi virtuális gépek érintetlenek maradnak. A laborban létrehozott környezetek továbbra is a saját erőforráscsoportok maradnak.
 
 Az API használata:
-- Az API-verzió **használata 2018_10_15_preview.**
-- Ha új erőforráscsoportot ad meg, győződjön meg arról, hogy **rendelkezik írási engedélyekkel az előfizetéserőforrás-csoportokhoz.** Ha nem rendelkezik írási engedélyekkel, a megadott erőforráscsoportban új virtuális gépek létrehozása sikertelen lesz.
-- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót.** Például: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
+- Az API-verzió **2018_10_15_preview**használata.
+- Ha új erőforráscsoportot ad meg, győződjön meg arról, hogy rendelkezik **írási engedéllyel** az előfizetésben található erőforráscsoportok számára. Ha nem rendelkezik írási engedélyekkel, az új virtuális gépek létrehozása a megadott erőforráscsoporthoz sikertelen lesz.
+- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót**. Például: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
 
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
 
-- [Szabályzatok beállítása egy tesztkörnyezethez](devtest-lab-get-started-with-lab-policies.md)
+- [Tesztkörnyezet szabályzatának beállítása](devtest-lab-get-started-with-lab-policies.md)
 - [Gyakori kérdések](devtest-lab-faq.md)

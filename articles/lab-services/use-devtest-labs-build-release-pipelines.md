@@ -1,6 +1,6 @@
 ---
 title: A DevTest Labs használata az Azure Pipelines buildelési és kiadási folyamataiban
-description: Megtudhatja, hogyan használhatja az Azure DevTest Labs az Azure-folyamatok létrehozása és kiadása folyamatok.
+description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure-folyamatok létrehozásához és kiadásához.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,90 +13,90 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169234"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>A DevTest Labs használata az Azure Pipelines buildelési és kiadási folyamataiban
-Ez a cikk arról nyújt tájékoztatást, hogyan devtest labs használható Az Azure-folyamatok létrehozása és kiadása folyamatok. 
+Ez a cikk azt ismerteti, hogyan használhatók az DevTest Labs az Azure-folyamatokban a folyamatok létrehozásához és kiadásához. 
 
-## <a name="overall-flow"></a>Teljes áramlás
-Az alapfolyamat egy **buildfolyamat,** amely a következő feladatokat végzi el:
+## <a name="overall-flow"></a>Teljes folyamat
+Az alapszintű folyamat egy olyan **build-folyamat** , amely a következő feladatokat végzi el:
 
-1. Az alkalmazáskód létrehozása.
-1. Hozza létre az alapkörnyezetet a DevTest Labs ben.
+1. Hozza létre az alkalmazás kódját.
+1. Hozzon létre egy alapszintű környezetet a DevTest Labs szolgáltatásban.
 1. Frissítse a környezetet egyéni adatokkal.
-1. Az alkalmazás üzembe helyezése a DevTest Labs környezetben
+1. Az alkalmazás üzembe helyezése a DevTest Labs-környezetben
 1. Tesztelje a kódot. 
 
-Miután a build sikeresen befejeződött, a **kiadási folyamat** a buildösszetevőket fogja használni az átmeneti vagy éles környezet telepítéséhez. 
+Miután a Build sikeresen befejeződött, a **kiadási folyamat** a Build összetevők használatával helyezi üzembe az előkészítést vagy a gyártást. 
 
-Az egyik szükséges telephely, hogy a tesztelt ökoszisztéma újralétrehozásához szükséges összes információ elérhető a build összetevők, beleértve az Azure-erőforrások konfigurációját. Mivel az Azure-erőforrások használata költséggel jár, a vállalatok ellenőrizni vagy nyomon követni szeretnék ezeknek az erőforrásoknak a használatát. Bizonyos esetekben az Azure Resource Manager-sablonokat, amelyek az erőforrások létrehozásához és konfigurálásához használt egy másik részleg, például it. És ezek a sablonok lehet tárolni egy másik tárházban. Ez egy érdekes helyzethez vezet, ahol létrehoznak és tesztelnek egy buildet, és mind a kódot, mind a konfigurációt a buildösszetevőkön belül kell tárolni a rendszer éles környezetben történő megfelelő újralétrehozásához. 
+Az egyik szükséges hely az, hogy a tesztelt ökoszisztéma újbóli létrehozásához szükséges összes információ elérhető legyen a Build-összetevőkön belül, beleértve az Azure-erőforrások konfigurációját is. Az Azure-erőforrások használata esetén a vállalatok ezeket az erőforrásokat szeretnék ellenőrizni vagy nyomon követni. Bizonyos helyzetekben Azure Resource Manager az erőforrások létrehozásához és konfigurálásához használt sablonokat egy másik részleg is felügyelheti. Előfordulhat, hogy ezeket a sablonokat egy másik adattár tárolja. Érdekes helyzetet eredményez, amikor létrehoznak és tesztelnek egy buildet, és a kódot és a konfigurációt is a Build összetevőkön belül kell tárolni, hogy megfelelően újra létrehozza a rendszer éles környezetben történő létrehozását. 
 
-A DevTest Labs használatával a build/teszt fázisban azure Resource Manager-sablonokat és támogató fájlokat adhat hozzá a buildforrásokhoz, így a kiadási fázisban a teszteléshez használt pontos konfiguráció éles környezetben van telepítve. Az **Azure DevTest Labs-környezet létrehozása** feladat a megfelelő konfigurációval menti az Erőforrás-kezelő sablonokat a build-összetevőkközött. Ebben a példában az [oktatóanyag: .NET Core és SQL Database webalkalmazás létrehozása az Azure App Service-ben](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)a webalkalmazás azure-beli üzembe helyezéséhez és teszteléséhez fogja használni.
+A DevTest Labs az összeállítási/tesztelési fázisban való használatával hozzáadhat Azure Resource Manager sablonokat és támogató fájlokat a Build forrásokhoz, így a kiadási fázisban a teszteléshez használt pontos konfiguráció üzembe helyezése éles környezetben történik. A megfelelő konfigurációval rendelkező **Azure DevTest Labs környezet létrehozása** feladat a Build összetevőkön belül menti a Resource Manager-sablonokat. Ebben a példában a kódot fogja használni az [oktatóanyag: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md), a webalkalmazás üzembe helyezéséhez és teszteléséhez az Azure-ban.
 
-![Teljes áramlás](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
+![Teljes folyamat](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
-Van néhány elem, amelyet előre létre kell hozni:
+Már van néhány olyan elem, amelyet előzőleg létre kell hozni:
 
-- Két tároló. Az első az oktatóanyagból származó kóddal és egy Erőforrás-kezelő sablonnal két további virtuális géptel. A második az alap Azure Resource Manager-sablont (meglévő konfigurációt) fogja tartalmazni.
-- Erőforráscsoport a termelési kód és a konfiguráció telepítéséhez.
-- Egy tesztkörnyezet kell beállítani [a kapcsolatot a konfigurációs tárház](devtest-lab-create-environment-from-arm.md) a build-folyamat. A Resource Manager-sablont be kell adni a konfigurációs tárházba azuredeploy.json ként a metadata.json használatával, hogy a DevTest Labs felismerhesse és üzembe helyezhesse a sablont.
+- Két tárház. Az első az oktatóanyagból és egy Resource Manager-sablonból álló kóddal, két további virtuális géppel. A második az alap Azure Resource Manager sablont (meglévő konfiguráció) fogja tartalmazni.
+- Egy erőforráscsoport az üzemi kód és a konfiguráció üzembe helyezéséhez.
+- A labort be kell állítani a létrehozási folyamat [konfigurációs tárházához való kapcsolódással](devtest-lab-create-environment-from-arm.md) . A Resource Manager-sablonnak a azuredeploy. JSON néven kell bejelentkeznie a konfigurációs adattárba a metadata. JSON fájl használatával, amely lehetővé teszi a DevTest Labs számára a sablon felismerését és üzembe helyezését.
 
-A buildfolyamat létrehoz egy DevTest Labs-környezetet, és telepíti a kódot tesztelésre.
+A létrehozási folyamat létrehoz egy DevTest Labs-környezetet, és üzembe helyezi a kódot a teszteléshez.
 
-## <a name="set-up-a-build-pipeline"></a>Buildelési folyamat beállítása
-Az Azure-folyamatokban hozzon létre egy buildfolyamatot az oktatóanyagból származó kód [használatával: .NET Core és SQL Database webalkalmazás létrehozása az Azure App Service szolgáltatásban.](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md) Használja a **ASP.NET Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
+## <a name="set-up-a-build-pipeline"></a>Build folyamat beállítása
+Az Azure-folyamatokban hozzon létre egy összeállítási folyamatot az [oktatóanyag használatával: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Használja a **ASP.net Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
 
-![A ASP.NET sablon kiválasztása](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
+![ASP.NET-sablon kiválasztása](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
-Három további feladatot kell hozzáadnia a környezet devtest labs és a környezetben üzembe helyezéséhez.
+Három további feladatot kell felvennie a környezet létrehozásához a DevTest Labs szolgáltatásban, és üzembe kell helyezni a környezetet.
 
-![Három feladattal rendelkező folyamat](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
+![Folyamat három feladattal](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
 
 ### <a name="create-environment-task"></a>Környezeti feladat létrehozása
-A hozzon létre környezetfeladat **(Azure DevTest Labs create environment** feladat) használja a legördülő listákat a következő értékek kiválasztásához:
+A környezet létrehozása feladatban (**Azure DevTest Labs környezet létrehozása** feladat) a legördülő lista segítségével válassza ki a következő értékeket:
 
 - Azure-előfizetés
 - a labor neve
-- az adattár neve
-- a sablon neve (amely a környezetet tároló mappát jeleníti meg). 
+- a tárház neve
+- a sablon neve (amely azt a mappát mutatja, ahol a környezet tárolva van). 
 
-Azt javasoljuk, hogy az adatok manuális megadása helyett használja a legördülő listákat az oldalon. Ha manuálisan adja meg az adatokat, adja meg a teljesen minősített Azure-erőforrás-azonosítók. A tevékenység az erőforrás-azonosítók helyett a rövid neveket jeleníti meg. 
+Javasoljuk, hogy az adatok manuális megadása helyett a lapon lévő legördülő listát használja. Ha manuálisan adja meg az adatokat, adja meg a teljes körű Azure-erőforrás-azonosítókat. A feladat az erőforrás-azonosítók helyett a felhasználóbarát neveket jeleníti meg. 
 
-A környezet neve a DevTest Labs ben megjelenített név. Minden buildnek egyedi névnek kell lennie. Például: **TestEnv$(Build.BuildId)**. 
+A környezet neve a DevTest Labs szolgáltatásban megjelenített név. Minden egyes Build esetében egyedi névnek kell lennie. Például: **TestEnv $ (Build. BuildId)**. 
 
-Megadhatja a paraméterfájlt vagy a paramétereket az Erőforrás-kezelő sablonba történő adatadáshoz. 
+Megadhatja az adatoknak a Resource Manager-sablonba való továbbítására szolgáló paramétereket tartalmazó fájlt vagy paramétereket. 
 
-Jelölje be a **Kimeneti változók létrehozása a környezeti sablon kimeneti beállítása alapján beállítást,** és adjon meg egy hivatkozásnevet. Ebben a példában adja meg a **BaseEnv** értéket a hivatkozási névhez. Ezt a BaseEnv-et fogja használni a következő feladat konfigurálásakor. 
+Válassza a **kimeneti változók létrehozása a környezeti sablon kimenete beállítás alapján** lehetőséget, és adjon meg egy hivatkozási nevet. Ebben a példában a **BaseEnv** adja meg a hivatkozási nevet. Ezt a BaseEnv fogja használni a következő feladat konfigurálásakor. 
 
-![Azure DevTest Labs környezet létrehozása feladat létrehozása](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
+![Azure DevTest Labs környezeti feladat létrehozása](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
 
 ### <a name="populate-environment-task"></a>Környezeti feladat feltöltése
-A második feladat **(Az Azure DevTest Labs feltöltése környezet** feladat) a meglévő DevTest Labs környezet frissítése. A környezeti feladat létrehozása kimenetek **BaseEnv.environmentResourceId,** amely a feladat környezeti nevének konfigurálására szolgál. A példa Resource Manager sablonja két paramétert mutat be : **adminUserName** és **adminPassword**. 
+A második feladat (**Azure DevTest Labs a környezeti feladat kitöltése** ) a meglévő DevTest Labs-környezet frissítése. A környezet létrehozása feladat kimenete **BaseEnv. environmentResourceId** , amely a feladat nevének konfigurálására szolgál. A példában szereplő Resource Manager-sablon két paraméterrel rendelkezik: **adminUserName** és **adminPassword**. 
 
-![Feltölti az Azure DevTest Labs környezet feladatát](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
+![Azure DevTest Labs környezeti feladat feltöltése](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
-## <a name="app-service-deploy-task"></a>Az App Service üzembe helyezési feladata
-A harmadik feladat az **Azure App Service üzembe helyezési** feladat. Az alkalmazás típusa **Web App,** az App Service neve **pedig $(Webhely)** lesz.
+## <a name="app-service-deploy-task"></a>App Service üzembe helyezése feladat
+A harmadik feladat a **Azure app Service üzembe helyezése** feladat. Az alkalmazás típusa a következő: **webalkalmazás** , és a app Service neve **$ (webhely)** értékre van állítva.
 
-![App Service-üzembe helyezési feladat](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
+![App Service üzembe helyezése feladat](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
 ## <a name="set-up-release-pipeline"></a>Kiadási folyamat beállítása
-Két feladattal hoz létre kiadási folyamatot: **Azure Deployment: Erőforráscsoport létrehozása vagy frissítése** és az Azure App Service **telepítése.** 
+A kiadási folyamat két feladattal hozható létre: **Azure-telepítés: erőforráscsoport létrehozása vagy frissítése** és **Azure app Service üzembe helyezése**. 
 
-Az első tevékenységhez adja meg az erőforráscsoport nevét és helyét. A sablon helye egy csatolt műtermék. Ha az Erőforrás-kezelő sablon csatolt sablonokat tartalmaz, egyéni erőforráscsoport-telepítést kell megvalósítani. A sablon a közzétett cseppösszetevőben található. Az Erőforrás-kezelő sablonparamétereinek felülbírálása. A fennmaradó beállításokat az alapértelmezett értékekkel hagyhatja. 
+Az első feladathoz adja meg az erőforráscsoport nevét és helyét. A sablon helye egy csatolt összetevő. Ha a Resource Manager-sablon csatolt sablonokat tartalmaz, egy egyéni erőforráscsoport-telepítést kell megvalósítani. A sablon a közzétett drop-összetevőben van. A Resource Manager-sablonhoz tartozó sablon paramétereinek felülbírálása. A többi beállítás alapértelmezett értékekkel is meghagyható. 
 
-A második feladat **üzembe helyezése Azure App Service**, adja meg az Azure-előfizetés, válassza a Web **App** az **alkalmazás típusa**, és **$(Webhely)** az **App Service neve.** A fennmaradó beállításokat az alapértelmezett értékekkel hagyhatja. 
+A második feladathoz **Azure app Service üzembe helyezéséhez**adja meg az Azure-előfizetést, válassza a **webalkalmazás** lehetőséget az **alkalmazás típusaként**, a **$ (webhely)** pedig a **app Service nevet**. A többi beállítás alapértelmezett értékekkel is meghagyható. 
 
-## <a name="test-run"></a>Próbaüzem
-Most, hogy mindkét folyamat be van állítva, manuálisan sorakasztja fel a buildet, és látni, hogy működik. A következő lépés a megfelelő eseményindító beállítása a buildhez, és csatlakoztassa a buildet a kiadási folyamathoz.
+## <a name="test-run"></a>Teszt futtatása
+Most, hogy mindkét folyamat be van állítva, manuálisan hozza létre a buildet, és nézze meg, hogy működik-e. A következő lépés a megfelelő trigger beállítása a létrehozáshoz és a build és a kiadási folyamat összekapcsolása.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Integrálja az Azure DevTest Labs-t az Azure Pipelines folyamatos integrációs és kézbesítési folyamatába](devtest-lab-integrate-ci-cd-vsts.md)
-- [Környezetek integrálása az Azure Pipelines CI/CD-folyamataiba](integrate-environments-devops-pipeline.md)
+- [Azure DevTest Labs integrálása az Azure-folyamatok folyamatos integrációs és szállítási folyamatával](devtest-lab-integrate-ci-cd-vsts.md)
+- [Környezetek integrálása az Azure-folyamatokba CI/CD-folyamatokban](integrate-environments-devops-pipeline.md)
