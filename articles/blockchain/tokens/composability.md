@@ -1,84 +1,84 @@
 ---
-title: Az Azure Blockchain tokenek kompozonhatósága
-description: Az Azure Blockchain tokenek komponálhatósága rugalmasságot biztosít a speciális forgatókönyvekhez való jogkivonatok létrehozásához.
+title: Az Azure Blockchain tokenek megkomponálása
+description: Az Azure Blockchain-tokenek megkomponálása rugalmasságot biztosít a speciális forgatókönyvekhez tartozó jogkivonatok létrehozásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: a3fe1b290917de20b7c3af31fe386ed93580d850
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325122"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Az Azure Blockchain tokenek kompozonhatósága
+# <a name="azure-blockchain-tokens-composability"></a>Az Azure Blockchain tokenek megkomponálása
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-A tokenek kompobilitása rugalmasságot biztosít a speciális forgatókönyvekhez való jogkivonatok létrehozásához. Előfordulhat, hogy egy összetett forgatókönyv, amely nem valósítható meg a [négy előre elkészített jogkivonat-sablonok.](templates.md#base-token-types) A tokenek kompobilitása lehetővé teszi, hogy saját jogkivonat-sablonokat tervezzen meghatározott viselkedések hozzáadásával vagy eltávolításával a saját jogkivonatsablon létrehozásához. Új jogkivonatsablon létrehozásakor az Azure Blockchain tokenek ellenőrzi az összes token nyelvtani szabályokat. A komponált sablonokat az Azure Blockchain Tokens szolgáltatás menti a csatlakoztatott blokklánc-hálózatokon történő kibocsátáshoz.
+A jogkivonat-megkomponálás rugalmasságot biztosít a speciális forgatókönyvek jogkivonatok létrehozásához. Előfordulhat, hogy olyan összetett forgatókönyvvel rendelkezik, amely nem valósítható meg a [négy előre elkészített jogkivonat-sablon](templates.md#base-token-types)használatával. A jogkivonat-létrehozás lehetővé teszi saját jogkivonat-sablonok megtervezését a definiált viselkedésmódok hozzáadásával vagy eltávolításával saját jogkivonat-sablon létrehozásához. Új jogkivonat-sablon létrehozásakor az Azure Blockchain-tokenek ellenőrzi az összes jogkivonat nyelvtani szabályát. A komponált sablonok az Azure Blockchain tokens szolgáltatásban lesznek mentve a csatlakoztatott Blockchain-hálózatokon való közzétételhez.
 
-A [jogkivonat-viselkedések](templates.md#token-behaviors) a következő szakaszokban a jogkivonat-sablon megtervezéséhez használhatja.
+A token-sablon kialakításához a következő részben szereplő [jogkivonat-viselkedéseket](templates.md#token-behaviors) használhatja.
 
-## <a name="burnable-b"></a>Égethető (b)
+## <a name="burnable-b"></a>Írható (b)
 
-Képes eltávolítani a tokeneket a kínálatból.
+Lehetőség a tokenek eltávolítására a szolgáltatásból.
 
-Ha például online hitelkártyapontokat vált be ajándékkártyára, a hitelkártyapontok elégnek.
+Ha például beváltja az online hitelkártya-pontokat egy ajándék kártyára, a rendszer megégeti a hitelkártya-pontokat.
 
-## <a name="delegable-g"></a>Delegelható (g)
+## <a name="delegable-g"></a>Delegálható (g)
 
-A saját jogkivonaton végrehajtott műveletek delegálása.
+Az Ön tulajdonában lévő jogkivonaton végrehajtott műveletek delegálásának lehetősége.
 
-A delegált műveleteket hajthat végre a jogkivonat tulajdonosaként. Például egy delegálható tokent használhat a szavazás végrehajtásához. A delegable token lehetővé teszi, hogy a szavazás token tulajdonosa, hogy valaki más szavazni a nevükben.
+A delegált a jogkivonat tulajdonosaként hajthat végre műveleteket. Használhat például egy delegálható tokent egy szavazás megvalósításához. A delegálható-token lehetővé teszi, hogy a szavazati jogkivonat tulajdonosa valaki másnak szavazzon a nevében.
 
-## <a name="logable-l"></a>Naplózható (l)
+## <a name="logable-l"></a>Logable (l)
 
-Képes naplózni.
+Naplózási lehetőség.
 
-Például kiadhat egy naplózható tokent egy filmterjesztéshez minden olyan színházban, amely egy adott filmet jelenít meg. Ahhoz, hogy a film lejátszható legyen, a bemutatónak minden egyes megjelenítéshez be kell jelentkeznie, mivel a jogdíjkifizetések a film kiadási futtatása során jelennek meg. A színészek építeni használhatja a film tokenek érvényesítésére kifizetések egy film mutatja egy színház a forgalmazás.
+Kiállíthat például egy logable jogkivonatot a mozgóképek terjesztésére egy adott filmet bemutató egyes színházokban. A mozgókép lejátszásához a bemutatónak be kell jelentkeznie az egyes megjelenítésekhez, mivel a jogdíj-kifizetések megjelenítése a film kiadásának futtatásakor történik. A színészek Build a film jogkivonatait használva ellenőrizheti, hogy a kifizetések száma moziban, a disztribúcióban.
 
-## <a name="mint-able-m"></a>Menta képes (m)
+## <a name="mint-able-m"></a>Mentás-képes (m)
 
-További jogkivonatok mentézése a tokenosztályhoz. A minta szerep tartalmazza a mentable viselkedést.
+További tokenek megszerzésének lehetősége a jogkivonat osztályhoz. A Minter szerepkör tartalmazza a felmenthető viselkedést.
 
-Például egy kiskereskedelmi vállalat, amely egy hűségprogramot kíván megvalósítani, mentálható tokeneket használhat a hűségprogramhoz. Az ügyfélkör növekedésével további hűségpontokat is verhetnek ügyfeleik számára.  
+Egy olyan kiskereskedelmi vállalat például, amely egy hűségprogram megvalósítását kívánja végrehajtani, felhasználhatja a saját lojalitási programjának felmenthető jogkivonatait. További lojalitási pontokat szereznek az ügyfelek számára, amikor az Ügyfélkörük növekszik.  
 
-## <a name="non-subdividable-or-whole-d"></a>Nem osztható vagy egész (~d)
+## <a name="non-subdividable-or-whole-d"></a>Nem osztható vagy teljes (~ d)
 
-Korlátozás, amely megakadályozza, hogy egy token kisebb részekre oszlik.
+Korlátozás annak megakadályozására, hogy a token kisebb részekre legyen osztva.
 
-Egy műfestmény például nem osztható fel több kisebb részre. 
+Például egyetlen művészi festés nem osztható több kisebb részre. 
 
-## <a name="non-transferable-t"></a>Nem átruházható (~t)
+## <a name="non-transferable-t"></a>Nem átvihető (~ t)
 
-Korlátozás a kezdeti jogkivonat tulajdonosának tulajdonosváltásának megakadályozására.
+Korlátozás a kezdeti jogkivonat tulajdonosának tulajdonjogának megváltozásának megakadályozására.
 
-Például az egyetemi oklevél nem átruházható token. Ha egy oklevelet egy diplomásnak adnak, az nem ruházható át a diplomáról egy másik személyre.
+Egy egyetemi diploma például nem átvihető jogkivonat. Ha diplomát kap egy diploma, nem vihető át a diplomából egy másik személynek.
 
-## <a name="roles-r"></a>Szerepek (r)
+## <a name="roles-r"></a>Szerepkörök (r)
 
-Adott viselkedések szerepkörök definiálása a jogkivonatsablon-osztályon belül.
+Szerepkörök definiálása a jogkivonat-sablon osztályán belül adott viselkedések esetében.
 
-Megadhat egy listát a szerepkörnevek, amelyek a jogkivonat támogatja a jogkivonat létrehozása kor. Ha a szerepkörök meg vannak adva, a felhasználó szerepköröket rendelhet ezekhez a viselkedésekhez. Jelenleg csak a mintaszereper szerepkör támogatott.
+Megadhatja azoknak a szerepkör-neveknek a listáját, amelyeket a jogkivonat a jogkivonat létrehozási idején támogat. Ha a szerepkörök meg vannak adva, a felhasználó szerepköröket rendelhet ezekhez a viselkedésekhez. Jelenleg csak a Minter szerepkör támogatott.
 
-## <a name="singleton-s"></a>Singleton (k)
+## <a name="singleton-s"></a>Egyszeres (s)
 
-Korlátozás egy token biztosításához.
+Egyetlen jogkivonat ellátását engedélyező korlátozás.
 
-Például egy múzeumi műtárgy egy singleton token. A múzeumi leletek egyedülállóak. Egy műterméket képviselő jogkivonat csak egy cikket rendelkezik a készletben.
+Egy múzeumi összetevő például egy egyedi jogkivonat. A múzeumi összetevők egyediek. Egy összetevőt jelképező jogkivonat csak egyetlen elemmel rendelkezik a kínálatban.
 
-## <a name="subdividable-d"></a>Felosztható (d)
+## <a name="subdividable-d"></a>Osztható (d)
 
-A tokenek kisebb részekre osztásának képessége.
+Kisebb részekre oszthatók ki a tokenek.
 
-Például egy dollár centekre osztható.
+Például a dollár felosztható százalékokra.
 
-## <a name="transferable-t"></a>Átruházható (t)
+## <a name="transferable-t"></a>Átvihető (t)
 
-A jogkivonat tulajdonjogának átruházásának képessége.
+Lehetőség a jogkivonat tulajdonjogának átadására.
 
-Például egy ingatlancím átruházható token, amely az ingatlan értékesítésekor átruházható egyik személyről a másikra.
+Például egy tulajdonság címe egy átruházható token, amely az egyik személyről a másikra vihető át a tulajdonság eladásakor.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az [Azure Blockchain Tokens fiókkezeléséről.](account-management.md)
+Ismerje meg az [Azure Blockchain-tokenek fiókjának kezelését](account-management.md).

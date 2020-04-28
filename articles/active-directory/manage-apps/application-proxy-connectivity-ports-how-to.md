@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásproxy-alkalmazáshoz szükséges tűzfalportok megnyitása
-description: Megtudhatja, hogy az Azure AD alkalmazásproxy megfelelő működéséhez milyen portokat kell megnyitnia
+title: Az alkalmazásproxy-alkalmazásokhoz szükséges tűzfal-portok megnyitása
+description: Megtudhatja, milyen portokat kell megnyitni az Azure-AD Application Proxy megfelelő működéséhez
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275553"
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Alkalmazásproxy-alkalmazáshoz szükséges tűzfalportok megnyitása
+# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Az alkalmazásproxy-alkalmazásokhoz szükséges tűzfal-portok megnyitása
 
-A szükséges portok teljes listáját és az egyes portok funkcióját az [Alkalmazásproxy dokumentációjának](application-proxy-add-on-premises-application.md)előfeltételei című szakaszában találja. Vegye figyelembe, hogy az alkalmazásproxy csak kimenő portokat használ.
+Ha meg szeretné tekinteni a szükséges portok és az egyes portok funkcióinak teljes listáját, olvassa el az [alkalmazásproxy dokumentációjának](application-proxy-add-on-premises-application.md)előfeltételek című szakaszát. vegye figyelembe, hogy az alkalmazásproxy csak kimenő portokat használ.
 
-Azt is ellenőrizheti, hogy az összes szükséges port nyitva van-e, ha megnyitja az [összekötő portok teszteszközét](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. Több zöld pipa nagyobb rugalmasságot jelent. 
+Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. A további zöld pipa nagyobb rugalmasságot jelent. 
 
-## <a name="app-proxy-regions"></a>Alkalmazásproxy-területek
+## <a name="app-proxy-regions"></a>Alkalmazásproxy-régiók
 
-Dolgozunk azon a módszeren, hogy tudassam Önnel, hogy e régiók közül melyiknek kell zöldnek lennie az Ön számára. Egyelőre győződj meg róla, hogy mind azok. Az USA központja is szükséges, függetlenül attól, hogy melyik régióban van.
+Dolgozunk azon, hogy tudd, hogy mely régióknak kell Zöldek az Ön számára. Egyelőre győződjön meg róla, hogy az összes. Az USA középső régiója is szükséges, függetlenül attól, hogy melyik régióban található.
 
-Annak érdekében, hogy az eszköz a megfelelő eredményeket adja, győződjön meg róla, hogy:
+Győződjön meg arról, hogy az eszköz biztosítja a megfelelő eredményeket:
 
--   Nyissa meg az eszközt egy böngészőben abból a kiszolgálóból, amelyen az összekötőt telepítette.
+-   Nyissa meg az eszközt egy böngészőben azon a kiszolgálón, amelyen az összekötőt telepítette.
 
--   Győződjön meg arról, hogy az összekötőre vonatkozó proxyk vagy tűzfalak is érvényesek erre az oldalra. Ezt az Internet Explorer programban teheti meg az **Internetbeállítások**  - &gt; **kapcsolatok**  - &gt; helyi beállításai **című** **lapon.**  - &gt; Ezen az oldalon a "Proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze a proxycímet a "Cím" mezőbe.
+-   Győződjön meg arról, hogy az összekötőre érvényes proxyk vagy tűzfalak is érvényesek erre az oldalra. Ez az Internet Explorerben a **Beállítások**  - &gt; **Internetbeállítások**  - &gt; **kapcsolatok**  - &gt; **LAN-beállítások**lehetőségre kattintva végezhető el. Ezen az oldalon a "proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze el a proxy címe mezőt a "címek" mezőbe.
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure AD alkalmazásproxy-összekötők megismerése](application-proxy-connectors.md)
+[Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

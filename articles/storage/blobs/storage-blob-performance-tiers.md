@@ -1,6 +1,6 @@
 ---
-title: Blob-tárolási teljesítményszintek blokkolása – Azure Storage
-description: A cikk ismerteti a prémium és standard szintű teljesítményszintek közötti különbséget az Azure blokkblob-tárolóhoz.
+title: BLOB Storage-teljesítmény szintjeinek letiltása – Azure Storage
+description: A prémium és a standard szintű teljesítményszint közötti különbséget ismerteti az Azure Block blob Storage-hoz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/12/2019
@@ -9,80 +9,80 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74270226"
 ---
-# <a name="performance-tiers-for-block-blob-storage"></a>Teljesítményszintek a blokkblob-tárolóhoz
+# <a name="performance-tiers-for-block-blob-storage"></a>A blob Storage blokkolásához szükséges teljesítményi szintek
 
-Mivel a vállalatok teljesítményérzékeny, natív felhőalapú alkalmazásokat telepítenek, fontos, hogy a különböző teljesítményszinteken költséghatékony adattárolási lehetőségekkel rendelkezzen.
+Mivel a vállalatok teljesítményre érzékeny felhőalapú alkalmazásokat helyeznek üzembe, fontos, hogy a költséghatékony adattárolási lehetőségek különböző teljesítményszint esetén is elérhetők legyenek.
 
-Az Azure blokkblob-tároló két különböző teljesítményszintet kínál:
+Az Azure Block blob Storage két különböző teljesítményszint kínál:
 
-- **Prémium**: a magas tranzakciós arányokra és az egyszámjegyű konzisztens tárolási késleltetésre optimalizálva
-- **Standard**: nagy kapacitásra és nagy átadóképességre optimalizálva
+- **Prémium**: nagy tranzakciós díjszabásra és egyszámjegyű, konzisztens tárolási késésre optimalizált
+- **Standard**: nagy kapacitású és magas átviteli sebességre optimalizált
 
-A következő szempontok vonatkoznak a különböző teljesítményszintekre:
+A következő szempontokat kell figyelembe venni a különböző teljesítményszint esetén:
 
-| Terület |Normál teljesítmény  |Prémium teljesítmény  |
+| Terület |Standard teljesítmény  |Prémium szintű teljesítmény  |
 |---------|---------|---------|
-|Régiónkénti elérhetőség     |   Minden régió      | [Egyes régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
-|Támogatott [tárfiók-típusok](../common/storage-account-overview.md#types-of-storage-accounts)     |     Általános célú v2, BlobStorage, Általános célú v1    |    BlockBlobStorage tároló     |
-|Támogatja a [nagy átviteli sebességű blokkblobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    Igen, 4 MiB PutBlock vagy PutBlob méretnél nagyobb méretben     |    Igen, 256 KiB PutBlock vagy PutBlob méretnél nagyobb méretben    |
-|Redundancia     |     Lásd: [A tárfiókok típusai](../common/storage-account-overview.md#types-of-storage-accounts)   |  Jelenleg csak helyileg redundáns tárolást (LRS) és zónaredudant storage (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+|Régiónkénti elérhetőség     |   Minden régió      | A [régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
+|Támogatott [Storage-fiókok típusai](../common/storage-account-overview.md#types-of-storage-accounts)     |     Általános célú v2, BlobStorage, általános célú v1    |    BlockBlobStorage     |
+|[Nagy teljesítményű blokkos Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) támogatása     |    Igen, 4 MiB-PutBlock vagy PutBlob-méretnél nagyobb méretben     |    Igen, 256 KiB-nál nagyobb PutBlock-vagy PutBlob-méretek    |
+|Redundancia     |     Lásd: [Storage-fiókok típusai](../common/storage-account-overview.md#types-of-storage-accounts)   |  A jelenleg csak a helyileg redundáns tárolást (LRS) és a redudant tárolót (ZRS) támogatja<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
 
-<div id="zone-redundant-storage"><sup>1 1</sup> Zónaredundáns tárolás (ZRS) érhető el a prémium szintű teljesítményblokk blob storage-fiókok egyes régiókban érhető el.</div>
+<div id="zone-redundant-storage"><sup>1</sup> A zóna-redundáns tárolás (ZRS) a prémium szintű teljesítmény-blokkoló blob Storage-fiókok régió kiválasztása területén érhető el.</div>
 
-Ami a költségeket illeti, a prémium szintű teljesítmény optimalizált díjszabást biztosít a magas tranzakciós sebességű alkalmazások számára, hogy csökkentse a [teljes tárolási költséget](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) ezeknél a számítási feladatoknál.
+A költségekkel kapcsolatban a prémium szintű teljesítmény a nagy tranzakciós díjszabású alkalmazások optimalizált díjszabását nyújtja, így csökkentheti a számítási feladatokhoz szükséges [összes tárolási költséget](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) .
 
-## <a name="premium-performance"></a>Prémium teljesítmény
+## <a name="premium-performance"></a>Prémium szintű teljesítmény
 
-Prémium teljesítmény blokk blob storage teszi az adatokat a nagy teljesítményű hardveren keresztül. Az adatok at ssd-meghajtókon (SSD) tárolják, amelyek alacsony késleltetésre vannak optimalizálva. Az SSD-k nagyobb átviteli hatóát biztosítják, mint a hagyományos merevlemezek.
+A prémium szintű teljesítmény-blokkoló blob Storage nagy teljesítményű hardveren keresztül teszi elérhetővé az adattárolást. Az adatok tárolása SSD-meghajtókon történik, amelyek alacsony késésre vannak optimalizálva. Az SSD-k nagyobb átviteli sebességet biztosítanak, mint a hagyományos merevlemezek.
 
-A prémium szintű teljesítményalapú tárolás ideális a gyors és konzisztens válaszidőt igénylő számítási feladatokhoz. A legjobb a sok kis tranzakciót végző számítási feladatokhoz. Példa számítási feladatok közé:
+A prémium szintű tárterület ideális olyan munkaterhelésekhez, amelyek gyors és konzisztens válaszidőt igényelnek. A legjobb a sok kis tranzakciót végző munkaterhelések esetében. A számítási feladatok például a következők:
 
-- **Interaktív munkaterhelések**. Ezek a munkaterhelések azonnali frissítéseket és felhasználói visszajelzéseket igényelnek, például az e-kereskedelmi és térképészeti alkalmazásokat. Egy e-kereskedelmi alkalmazásban például a ritkábban megtekintett elemek valószínűleg nem kerülnek a gyorsítótárba. Ezeket azonban azonnal meg kell jelenlennie az ügyfél számára igény szerint.
+- **Interaktív munkaterhelések**. Ezeknek a számítási feladatoknak azonnali frissítésre és felhasználói visszajelzésre van szükségük, például az e-kereskedelmi és a leképezési alkalmazásokhoz. Egy e-kereskedelmi alkalmazásban például a ritkábban megtekintett elemek valószínűleg nem lesznek gyorsítótárazva. Ezeket azonban azonnal meg kell jeleníteni az ügyfél számára igény szerint.
 
-- **Analytics**. Egy IoT-forgatókönyvben sok kisebb írási műveletek et lehet leküldéses a felhőbe másodpercenként. Nagy mennyiségű adatot lehet venni, elemzési célokra összesíteni, majd szinte azonnal törölni. A prémium szintű blokkblob-tároló magas betöltési képességei hatékonysá teszik az ilyen típusú számítási feladatokhoz.
+- **Elemzések**. Egy IoT-forgatókönyvben sok kisebb írási műveletet lehet leküldeni a felhőbe másodpercenként. A rendszer nagy mennyiségű adattal is rendelkezhet, összesítve elemzés céljára, majd szinte azonnal törölve. A prémium blokkos blob Storage nagy betöltési képességeinek köszönhetően az ilyen típusú számítási feladatok hatékonyan használhatók.
 
-- **Mesterséges intelligencia/gépi tanulás (AI/ML)**. Az AI/ML a különböző adattípusok, például a vizualizációk, a beszéd és a szöveg felhasználásával és feldolgozásával foglalkozik. Ez a nagy teljesítményű számítási számítási feladat nagy mennyiségű adattal foglalkozik, amelyek gyors választ és hatékony betöltési időt igényelnek az adatelemzéshez.
+- **Mesterséges intelligencia/gépi tanulás (AI/ml)**. Az AI/ML különféle adattípusok, például vizualizációk, beszédek és szövegek felhasználását és feldolgozását tárgyalja. Ez a nagy teljesítményű számítási feladatok olyan nagy mennyiségű adatot biztosítanak, amely gyors reagálást és hatékony betöltési időt igényel az adatok elemzéséhez.
 
-- **Adatátalakítás**. Az adatok állandó szerkesztését, módosítását és átalakítását igénylő folyamatok azonnali frissítést igényelnek. A pontos adatmegjelenítés érdekében ezeknek az adatoknak a fogyasztóknak azonnal látniuk kell ezeket a változásokat.
+- **Adatátalakítás**. Az adatszerkesztést, módosítást és átalakítást igénylő folyamatoknak azonnali frissítésre van szükségük. A pontos adatábrázoláshoz ezeknek az információknak a felhasználóknak azonnal tükröznie kell a módosításokat.
 
-## <a name="standard-performance"></a>Normál teljesítmény
+## <a name="standard-performance"></a>Standard teljesítmény
 
-A standard teljesítmény támogatja a különböző [hozzáférési szinteket](storage-blob-storage-tiers.md) az adatok legköltséghatékonyabb módon történő tárolásához. Nagy kapacitásra és nagy átviteli kapacitásra van optimalizálva nagy adatkészleteken.
+A standard szintű teljesítmény a különböző [hozzáférési szinteket](storage-blob-storage-tiers.md) támogatja az adattárolásra a legköltséghatékonyabb módon. A nagyméretű adathalmazok nagy kapacitásának és nagy teljesítményének növelésére van optimalizálva.
 
-- **Biztonsági mentési és vész-helyreállítási adatkészletek**. A standard szintű tárolási kapacitás költséghatékony rétegeket kínál, így tökéletes használati eset mind a rövid távú, mind a hosszú távú vész-helyreállítási adatkészletek, a másodlagos biztonsági mentések és a megfelelőségi adatok archiválása számára.
+- **Biztonsági mentési és vész-helyreállítási adatkészletek**. A standard szintű tárterület költséghatékony szintet kínál, így tökéletes használatot biztosít mind a rövid, mind a hosszú távú vész-helyreállítási adatkészletekhez, a másodlagos biztonsági mentésekhez és a megfelelőségi adatarchiváláshoz.
 
-- **Médiatartalom**. A képekhez és videókhoz gyakran gyakran hozzáférnek, amikor először hozják létre és tárolják őket, de ezt a tartalomtípust ritkábban használják, amint öregszik. A szabványos teljesítményalapú tárolás megfelelő szinteket kínál a médiatartalmak igényeinek megfelelően. 
+- **Médiatartalom**. A képek és a videók gyakran az első létrehozás és tárolás során gyakran érhetők el, de ezt a tartalomtípust ritkábban használják, mint a régebbiek. A standard szintű tárterület a média tartalmának megfelelő kapacitást biztosít. 
 
-- **Tömeges adatfeldolgozás**. Az ilyen típusú számítási feladatok szabványos tárolásra alkalmasak, mivel konzisztens alacsony késés helyett költséghatékony, nagy átviteli sebességű tárolást igényelnek. A nagy, nyers adatkészletek feldolgozásra vannak előkészítve, és végül átkerülnek a hűvösebb szintekre.
+- **Tömeges adatfeldolgozás**. Ezek a számítási feladatok alkalmasak a standard szintű tároláshoz, mivel a magas átviteli sebességű tárolást igénylik a következetes kis késés helyett. A nagyméretű, nyers adatkészletek feldolgozásra készülnek, és végül a hűvösebb szintre lesznek migrálva.
 
-## <a name="migrate-from-standard-to-premium"></a>Áttérés standardról prémiumra
+## <a name="migrate-from-standard-to-premium"></a>Migrálás a standard és a prémium között
 
-Nem konvertálhat egy meglévő szabványos teljesítményszintű tárfiókot egy prémium szintű teljesítménnyel rendelkező blokkblob-tárfiókká. A prémium szintű teljesítménytár-fiókba való áttelepítéshez létre kell hoznia egy BlockBlobStorage-fiókot, és át kell telepítenie az adatokat az új fiókba. További információ: [BlockBlobStorage-fiók létrehozása.](storage-blob-create-account-block-blob.md)
+A meglévő standard teljesítményű Storage-fiókok nem konvertálhatók prémium szintű teljesítményű blokk blob Storage-fiókra. A prémium szintű teljesítményű Storage-fiókba való átlépéshez létre kell hoznia egy BlockBlobStorage-fiókot, és át kell telepítenie az új fiókba. További információt a BlockBlobStorage- [fiók létrehozása](storage-blob-create-account-block-blob.md)című témakörben talál.
 
-Blobok tárfiókok közötti másolásához használhatja az [AzCopy](../common/storage-use-azcopy-blobs.md) parancssori eszköz legújabb verzióját. Más eszközök, például az Azure Data Factory is rendelkezésre állnak az adatok mozgatása és átalakítása.
+A Blobok Storage-fiókok közötti másolásához használhatja a [AzCopy](../common/storage-use-azcopy-blobs.md) parancssori eszköz legújabb verzióját. Más eszközök, például a Azure Data Factory az adatáthelyezéshez és-átalakításhoz is elérhetők.
 
-## <a name="blob-lifecycle-management"></a>Blob életciklus-kezelése
+## <a name="blob-lifecycle-management"></a>BLOB-életciklus kezelése
 
-A Blob-tároló életciklus-kezelése gazdag, szabályalapú szabályzatot kínál:
+A blob Storage életciklus-kezelése sokoldalú, szabályon alapuló szabályzatot kínál:
 
-- **Prémium**: Az adatok lejárata az életciklus végén.
-- **Standard**: Átmenet adatok a legjobb hozzáférési szintre, és lejár az adatok az életciklus végén.
+- **Prémium**: az életciklus végén lejáró adatmennyiség.
+- **Standard**: az adattovábbítás a legjobb hozzáférési szintig, az életciklus végén pedig lejár az adatai.
 
-További információ: [Az Azure Blob-tárolási életciklus kezelése.](storage-lifecycle-management-concepts.md)
+További információ: [Az Azure Blob Storage életciklusának kezelése](storage-lifecycle-management-concepts.md).
 
-A prémium szintű blokkblob-tárfiókban tárolt adatok nem helyezhető át a gyakori elérésű, ritka elérésű és az archív szintek között. Azonban a blobok másolása egy blokk blob storage-fiók a gyakori elérésű hozzáférési szint egy *másik* fiókban. Ha adatokat szeretne másolni egy másik fiókba, használja a [Blokk elhelyezése URL-ből API-t](/rest/api/storageservices/put-block-from-url) vagy az [AzCopy v10 parancsot.](../common/storage-use-azcopy-v10.md) A **Put Block From URL** API szinkron módon másolja az adatokat a kiszolgálón. A hívás csak akkor fejeződik be, ha az összes adat az eredeti kiszolgáló helyéről a célhelyre kerül.
+A prémium szintű blokk blob Storage-fiókban tárolt adatok nem helyezhetők át a gyakori, a ritka elérésű és az archív rétegek között. Egy blokk blob Storage-fiókból is másolhat blobokat egy *másik* fiókban lévő gyors elérési szinthez. Az adatok egy másik fiókba való másolásához használja a [put blokkot az URL](/rest/api/storageservices/put-block-from-url) API vagy a [AzCopy v10](../common/storage-use-azcopy-v10.md)használatával. A **put blokk from URL** API szinkron módon másolja az adatok a kiszolgálón. A hívás csak azt követően fejeződik be, hogy az összes adatok át lettek helyezve az eredeti kiszolgáló helyéről a célhelyre.
 
 ## <a name="next-steps"></a>További lépések
 
-Értékelje a forró, hűvös és archiválási gpv2- és blobtár-fiókokban.
+Értékelje ki a GPv2-és blob Storage-fiókokban a gyakori, ritka elérésű és archív archívumokat.
 
-- [Ismerje meg a blobadatok újrahidratálását az archív rétegből](storage-blob-rehydration.md)
+- [Tudnivalók a blob-adatok archiválási szintről való kiszárításáról](storage-blob-rehydration.md)
 - [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)
-- [A blobstorage- és GPv2-fiókok gyors, hűvös és archív díjszabásának ellenőrzése régiónként](https://azure.microsoft.com/pricing/details/storage/)
+- [Gyors, ritka és archív díjszabás a blob Storage-ban és a GPv2-fiókok régiónként](https://azure.microsoft.com/pricing/details/storage/)
 - [Az adatátviteli díjszabás megtekintése](https://azure.microsoft.com/pricing/details/data-transfers/)

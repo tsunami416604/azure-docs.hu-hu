@@ -1,40 +1,40 @@
 ---
-title: Tömeges beszúrások optimalizálása - Azure Database for PostgreSQL - Single Server
-description: Ez a cikk bemutatja, hogyan optimalizálhatja a tömeges beszúrási műveleteket egy Azure Database for PostgreSQL - Single Server.
+title: Tömeges beszúrások optimalizálása – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan optimalizálható a tömeges beszúrási műveletek egy Azure Database for PostgreSQL egyetlen kiszolgálón.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770135"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Tömeges beszúrások optimalizálása és átmeneti adatok használata egy Azure-adatbázisban a PostgreSQL-hez – Egykiszolgálós 
-Ez a cikk ismerteti, hogyan optimalizálhatja a tömeges beszúrási műveleteket, és hogyan használhat átmeneti adatokat egy Azure Database for PostgreSQL-kiszolgálón.
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Tömeges beszúrások optimalizálása és átmeneti adatmennyiség használata egy Azure Database for PostgreSQL – egyetlen kiszolgálón 
+Ez a cikk azt ismerteti, hogyan optimalizálható a tömeges beszúrási műveletek és hogyan használhatók az átmeneti adatok egy Azure Database for PostgreSQL kiszolgálón.
 
 ## <a name="use-unlogged-tables"></a>Nem naplózott táblák használata
-Ha olyan számítási feladatok vannak, amelyek átmeneti adatokat tartalmaznak, vagy nagy adatkészleteket szúrnak be tömegesen, fontolja meg a nem naplózott táblák használatát.
+Ha olyan munkaterhelési műveletekkel rendelkezik, amelyek átmeneti adatokat tartalmaznak, vagy nagyméretű adatkészleteket szúrnak be ömlesztve, érdemes lehet a nem naplózott táblákat használni.
 
-A nem naplózott táblák egy PostgreSQL funkció, amely hatékonyan használható a tömeges lapkák optimalizálásához. A PostgreSQL a Write-Ahead Logging (WAL) programot használja. Ez biztosítja az atomi és a tartósság, alapértelmezés szerint. Az ACID tulajdonságait az atomiság, a konzisztencia, az izolálás és a tartósság alkotja. 
+A nem naplózott táblák egy PostgreSQL-szolgáltatás, amely hatékonyan használható a tömeges beszúrások optimalizálására. A PostgreSQL írási idejű naplózást (WAL) használ. A szolgáltatás alapértelmezés szerint az atomi és a tartósságot biztosítja. A sav tulajdonságait az atomenergia, a konzisztencia, az elkülönítés és a tartósság teszi elérhetővé. 
 
-A nem naplózott táblába való beszúrás azt jelenti, hogy a PostgreSQL anélkül szúr be, hogy beírna a tranzakciós naplóba, amely maga is egy I/O-művelet. Ennek eredményeképpen ezek a táblák lényegesen gyorsabbak, mint a hagyományos táblák.
+A nem naplózott táblázatba való Beszúrás azt jelenti, hogy a PostgreSQL a tranzakciónaplóba való írás nélkül beszúrja a naplóba, ami maga az I/O művelet. Ennek eredményeképpen ezek a táblázatok lényegesen gyorsabbak, mint a hagyományos táblák.
 
-Az alábbi beállításokkal hozhat létre nem naplózott táblát:
-- Hozzon létre egy új, nem `CREATE UNLOGGED TABLE <tableName>`naplózott táblát a szintaxissal.
-- Meglévő naplózott tábla átalakítása nem naplózott táblává a szintaxis `ALTER TABLE <tableName> SET UNLOGGED`használatával.  
+Nem naplózott tábla létrehozásához használja az alábbi beállításokat:
+- Hozzon létre egy új, nem naplózott táblát `CREATE UNLOGGED TABLE <tableName>`a szintaxis használatával.
+- Egy meglévő naplózott táblázat átalakítása nem naplózott táblára a szintaxis `ALTER TABLE <tableName> SET UNLOGGED`használatával.  
 
-A folyamat megfordításához használja `ALTER TABLE <tableName> SET LOGGED`a szintaxist.
+A folyamat megfordításához használja a szintaxist `ALTER TABLE <tableName> SET LOGGED`.
 
-## <a name="unlogged-table-tradeoff"></a>Nem naplózott tábla-kompromisszum
-A nem naplózott asztalok nem biztonságosak. A nem naplózott tábla automatikusan csonkul egy összeomlás után, vagy egy tisztátalan leállás nak van kitéve. A nem naplózott tábla tartalma is nem replikálódik készenléti kiszolgálókra. A nem naplózott táblában létrehozott indexek is automatikusan lekerülnek a naplódból. A beszúrási művelet befejezése után alakítsa át a táblázatot naplózottá, hogy a lapka tartós.
+## <a name="unlogged-table-tradeoff"></a>Nem naplózott tábla kompromisszuma
+A nem naplózott táblák nem rendelkeznek összeomlás-biztonsággal. Egy nem naplózott tábla automatikusan csonkítva lesz egy összeomlás után, vagy egy nem tiszta leállítás után. A nem naplózott tábla tartalmát szintén nem replikálja a rendszer készenléti kiszolgálókra. A nem naplózott táblán létrehozott indexek is automatikusan visszakerülnek a naplóba. Az INSERT művelet befejeződése után alakítsa át a táblát úgy, hogy a Beszúrás tartós legyen.
 
-Egyes ügyfél-munkaterhelések körülbelül 15–20 százalékos teljesítményjavulást tapasztaltak a nem naplózott táblák használatakor.
+Egyes ügyfelek munkaterhelései körülbelül 15%-os teljesítménybeli javulást tapasztaltak, ha nem naplózott táblákat használtak.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a számítási feladatok átmeneti adatok és nagy tömeges beszúrások. Lásd a következő PostgreSQL dokumentációt:
+Tekintse át az átmeneti adatok és a nagyméretű tömeges beszúrások felhasználásának munkaterhelését. Tekintse meg a következő PostgreSQL-dokumentációt:
  
-- [Táblázat SQL-parancsainak létrehozása](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+- [Táblázatos SQL-parancsok létrehozása](https://www.postgresql.org/docs/current/static/sql-createtable.html)

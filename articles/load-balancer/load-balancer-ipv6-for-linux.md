@@ -1,11 +1,11 @@
 ---
-title: DHCPv6 konfigurálása Linuxos virtuális gépekhez
+title: A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a DHCPv6 linuxos virtuális gépekhez.
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a DHCPv6-t Linux rendszerű virtuális gépekhez.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: ipv6, azúrkék terheléselosztó, kettős verem, nyilvános ip, natív ipv6, mobil, iot
+keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6, mobil, IOT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,48 +15,48 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225325"
 ---
-# <a name="configure-dhcpv6-for-linux-vms"></a>DHCPv6 konfigurálása Linuxos virtuális gépekhez
+# <a name="configure-dhcpv6-for-linux-vms"></a>A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
 
 
-Az Azure Piactér néhány Linux virtuálisgép-lemezképe alapértelmezés szerint nem rendelkezik a Dynamic Host Configuration Protocol 6-os verziójával (DHCPv6). Az IPv6 támogatásához a DHCPv6-ot a használt Linux os disztribúcióban kell konfigurálni. A különböző Linux disztribúciók konfigurálják DHCPv6 a legkülönfélébb módokon, mert az általuk használt különböző csomagokat.
+Az Azure Marketplace-en található linuxos virtuálisgép-rendszerképek közül néhány nem rendelkezik alapértelmezettként konfigurált Dynamic Host Configuration Protocol 6-os verzióval (DHCPv6). Az IPv6 támogatásához a DHCPv6-t az Ön által használt Linux operációs rendszer-eloszlásban kell konfigurálni. A különböző Linux-disztribúciók többféle módon konfigurálhatják a DHCPv6-t, mert különböző csomagokat használnak.
 
 > [!NOTE]
-> Az Azure Marketplace-en a legutóbbi SUSE Linux- és CoreOS-lemezképek előre konfigurálva vannak a DHCPv6-tal. A képek használata kor nincs szükség további módosításokra.
+> Az Azure Marketplace-en a legújabb SUSE Linux-és CoreOS-lemezképek előre konfigurálva lettek a DHCPv6-sel. A rendszerképek használatakor nincs szükség további módosításokra.
 
-Ez a dokumentum azt ismerteti, hogyan engedélyezheti a DHCPv6 protokollt, hogy a Linux virtuális gép iPv6-címet kapjon.
+Ez a dokumentum leírja, hogyan engedélyezhető a DHCPv6, hogy a linuxos virtuális gép IPv6-címeket szerezzen.
 
 > [!WARNING]
-> A hálózati konfigurációs fájlok helytelen szerkesztésével elveszítheti a virtuális gép hez való hálózati hozzáférést. Azt javasoljuk, hogy tesztelje a konfigurációs módosításokat a nem éles rendszereken. Az ebben a cikkben található utasításokat tesztelték a Linux-lemezképek legújabb verzióiról az Azure Marketplace-en. Részletesebb utasításokat, olvassa el a dokumentációt a saját linuxos verzióját.
+> A hálózati konfigurációs fájlok nem megfelelő szerkesztésével elveszítheti a virtuális géphez való hálózati hozzáférést. Javasoljuk, hogy tesztelje a konfigurációs módosításokat a nem éles rendszereken. A cikkben szereplő utasítások az Azure Marketplace-en található Linux-rendszerképek legújabb verzióin lettek tesztelve. Részletesebb útmutatásért olvassa el a Linux saját verziójának dokumentációját.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. Az */etc/dhcp/dhclient6.conf* fájl szerkesztése és a következő sor hozzáadása:
+1. Szerkessze a */etc/DHCP/dhclient6.conf* fájlt, és adja hozzá a következő sort:
 
         timeout 10;
 
-2. Az eth0-csatoló hálózati konfigurációjának szerkesztése a következő konfigurációval:
+2. Szerkessze az ETH0-interfész hálózati konfigurációját a következő konfigurációval:
 
-   * Az **Ubuntu 12.04 és 14.04,** edit the */etc/network/interfaces.d/eth0.cfg* file. 
-   * Az **Ubuntu 16.04-en**szerkesztsd az */etc/network/interfaces.d/50-cloud-init.cfg* fájlt.
+   * **Ubuntu 12,04 és 14,04**esetén szerkessze a */etc/network/interfaces.d/eth0.cfg* fájlt. 
+   * Az **Ubuntu 16,04**-ben szerkessze a */etc/network/interfaces.d/50-Cloud-init.cfg* fájlt.
 
          iface eth0 inet6 auto
              up sleep 5
              up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. Az IPv6-cím megújítása:
+3. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Az Ubuntu 17.10-től kezdve az alapértelmezett hálózati konfigurációs mechanizmus a [NETPLAN]( https://netplan.io).  A telepítés/példányosítás időpontjában a NETPLAN ezen a helyen olvassa be a hálózati konfigurációt a YAML konfigurációs fájljaiból: /{lib, etc,run}/netplan/*.yaml.
+Az Ubuntu 17,10-es verziójától kezdve az alapértelmezett hálózati konfigurációs mechanizmus a [NETPLAN]( https://netplan.io).  A telepítés/létrehozás ideje alatt a NETPLAN beolvassa a hálózati konfigurációt a YAML konfigurációs fájljairól ezen a helyen:/{lib, etc, Run}/netplan/*. YAML.
 
-Kérjük, a konfigurációban minden ethernet-illesztőhez adjon meg egy *dhcp6:true* utasítást.  Példa:
+Adja meg a *dhcp6: true* utasítást a konfigurációban található minden Ethernet-adapterhez.  Például:
   
         network:
           version: 2
@@ -64,21 +64,21 @@ Kérjük, a konfigurációban minden ethernet-illesztőhez adjon meg egy *dhcp6:
             eno1:
               dhcp6: true
 
-A korai rendszerindítás során a netplan "network renderer" a konfigurációt a /run kapcsolóval írja, hogy átadja az https://netplan.io/referenceeszközök vezérlését a megadott hálózati démonnak A NETPLAN-ról szóló további információkért lásd: .
+A korai rendszerindítás során a "hálózati leképező" netplan úgy írja be a konfigurációt, hogy/Run az eszközök vezérlését a megadott hálózati démonnak a NETPLAN vonatkozó https://netplan.io/referencehivatkozási információkkal kapcsolatban:.
  
 ## <a name="debian"></a>Debian
 
-1. Az */etc/dhcp/dhclient6.conf* fájl szerkesztése és a következő sor hozzáadása:
+1. Szerkessze a */etc/DHCP/dhclient6.conf* fájlt, és adja hozzá a következő sort:
 
         timeout 10;
 
-2. Az */etc/network/interfaces fájl szerkesztése,* és adja hozzá a következő konfigurációt:
+2. Szerkessze a */etc/network/interfaces* fájlt, és adja hozzá a következő konfigurációt:
 
         iface eth0 inet6 auto
             up sleep 5
             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. Az IPv6-cím megújítása:
+3. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -86,16 +86,16 @@ A korai rendszerindítás során a netplan "network renderer" a konfigurációt 
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL, CentOS és Oracle Linux
 
-1. Írja be az */etc/sysconfig/network* fájlt, és adja hozzá a következő paramétert:
+1. Szerkessze a */etc/sysconfig/network* fájlt, és adja hozzá a következő paramétert:
 
         NETWORKING_IPV6=yes
 
-2. Írja be az */etc/sysconfig/network-scripts/ifcfg-eth0* fájlt, és adja hozzá a következő két paramétert:
+2. Szerkessze a */etc/sysconfig/network-scripts/ifcfg-eth0* fájlt, és adja hozzá a következő két paramétert:
 
         IPV6INIT=yes
         DHCPV6C=yes
 
-3. Az IPv6-cím megújítása:
+3. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -103,37 +103,37 @@ A korai rendszerindítás során a netplan "network renderer" a konfigurációt 
 
 ## <a name="sles-11-and-opensuse-13"></a>SLES 11 és openSUSE 13
 
-A legutóbbi SUSE Linux Enterprise Server (SLES) és openSUSE-lemezképek az Azure-ban előre konfigurálva vannak a DHCPv6-tal. A képek használata kor nincs szükség további módosításokra. Ha egy régebbi vagy egyéni SUSE-lemezképen alapuló virtuális géppel rendelkezik, tegye a következőket:
+Az Azure-ban a legutóbbi SUSE Linux Enterprise Server (SLES) és az openSUSE-lemezképek előre konfigurálva lettek a DHCPv6-vel. A rendszerképek használatakor nincs szükség további módosításokra. Ha olyan virtuális géppel rendelkezik, amely egy régebbi vagy egyéni SUSE-rendszerképen alapul, tegye a következőket:
 
-1. Telepítse `dhcp-client` a csomagot, ha szükséges:
+1. Szükség esetén `dhcp-client` telepítse a csomagot:
 
     ```bash
     sudo zypper install dhcp-client
     ```
 
-2. Írja be az */etc/sysconfig/network/ifcfg-eth0* fájlt, és adja hozzá a következő paramétert:
+2. Szerkessze a */etc/sysconfig/network/ifcfg-eth0* fájlt, és adja hozzá a következő paramétert:
 
         DHCLIENT6_MODE='managed'
 
-3. Az IPv6-cím megújítása:
+3. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-12-and-opensuse-leap"></a>SLES 12 és openSUSE Leap
+## <a name="sles-12-and-opensuse-leap"></a>SLES 12 és openSUSE ugrás
 
-A legutóbbi SLES és openSUSE-lemezképek az Azure-ban előre konfigurálva vannak a DHCPv6-tal. A képek használata kor nincs szükség további módosításokra. Ha egy régebbi vagy egyéni SUSE-lemezképen alapuló virtuális géppel rendelkezik, tegye a következőket:
+Az Azure-ban a legutóbbi SLES-és openSUSE-lemezképek előre konfigurálva lettek a DHCPv6-sel. A rendszerképek használatakor nincs szükség további módosításokra. Ha olyan virtuális géppel rendelkezik, amely egy régebbi vagy egyéni SUSE-rendszerképen alapul, tegye a következőket:
 
-1. Írja be az */etc/sysconfig/network/ifcfg-eth0* fájlt, és cserélje le a `#BOOTPROTO='dhcp4'` paramétert a következő értékre:
+1. Szerkessze a */etc/sysconfig/network/ifcfg-eth0* fájlt, és cserélje `#BOOTPROTO='dhcp4'` le a paramétert a következő értékre:
 
         BOOTPROTO='dhcp'
 
-2. Az */etc/sysconfig/network/ifcfg-eth0* fájlhoz adja hozzá a következő paramétert:
+2. A */etc/sysconfig/network/ifcfg-eth0* -fájlhoz adja hozzá a következő paramétert:
 
         DHCLIENT6_MODE='managed'
 
-3. Az IPv6-cím megújítása:
+3. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -141,9 +141,9 @@ A legutóbbi SLES és openSUSE-lemezképek az Azure-ban előre konfigurálva van
 
 ## <a name="coreos"></a>CoreOS
 
-Az Azure legutóbbi CoreOS-lemezképei előre konfigurálva vannak a DHCPv6-tal. A képek használata kor nincs szükség további módosításokra. Ha egy régebbi vagy egyéni CoreOS-lemezképen alapuló virtuális géppel rendelkezik, tegye a következőket:
+Az Azure-beli legújabb CoreOS-lemezképek előre konfigurálva lettek a DHCPv6-sel. A rendszerképek használatakor nincs szükség további módosításokra. Ha a virtuális gép egy régebbi vagy egyéni CoreOS-rendszerkép alapján rendelkezik, tegye a következőket:
 
-1. Az */etc/systemd/network/10_dhcp.network* fájl szerkesztése:
+1. Szerkessze a */etc/systemd/network/10_dhcp. Network* fájlt:
 
         [Match]
         eth0
@@ -151,7 +151,7 @@ Az Azure legutóbbi CoreOS-lemezképei előre konfigurálva vannak a DHCPv6-tal.
         [Network]
         DHCP=ipv6
 
-2. Az IPv6-cím megújítása:
+2. Újítsa meg az IPv6-cím:
 
     ```bash
     sudo systemctl restart systemd-networkd

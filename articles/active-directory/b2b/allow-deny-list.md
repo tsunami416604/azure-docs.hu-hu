@@ -1,6 +1,6 @@
 ---
-title: Adott szervezeteknek szóló meghívók engedélyezése vagy letiltása – Azure AD
-description: Bemutatja, hogy a rendszergazda hogyan használhatja az Azure Portalon vagy a PowerShellben egy hozzáférési vagy megtagadási lista beállításához, hogy bizonyos tartományokb2B-felhasználók engedélyezése vagy letiltása.
+title: Engedélyezés vagy Letiltás adott szervezetek számára – Azure AD
+description: Azt mutatja, hogy a rendszergazda hogyan használhatja a Azure Portal vagy a PowerShell-t egy hozzáférési vagy megtagadási lista beállítására, amely lehetővé teszi vagy letiltja a B2B-felhasználók számára bizonyos tartományokat.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,110 +13,110 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74273426"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Meghatározott B2B-felhasználóktól érkező meghívások engedélyezése vagy letiltása
 
-Az engedélyezési lista vagy a megtagadási lista segítségével engedélyezheti vagy letilthatja az adott szervezetek B2B-felhasználóinak szóló meghívókat. Ha például le szeretné tiltani a személyes e-mail címtartományokat, beállíthat egy megtagadási listát, amely olyan tartományokat tartalmaz, mint Gmail.com és Outlook.com. Ha vállalkozása más vállalkozásokkal is partnerségben áll, például Contoso.com, Fabrikam.com és Litware.com, és csak ezekre a szervezetekre szeretné korlátozni a meghívókat, hozzáadhat Contoso.com, Fabrikam.com és Litware.com az engedélyezési listához.
+Az engedélyezési és a megtagadási lista használatával engedélyezheti vagy letilthatja a VÁLLALATKÖZI felhasználók számára az adott szervezetektől érkező meghívókat. Ha például le szeretné tiltani a személyes e-mail-címek tartományait, beállíthat egy megtagadási listát, amely olyan tartományokat tartalmaz, mint a Gmail.com és a Outlook.com. Ha vállalata más vállalatokkal is rendelkezik, mint például a Contoso.com, a Fabrikam.com és a Litware.com, és csak ezekre a szervezetekre szeretné korlátozni a meghívókat, hozzáadhat Contoso.com, Fabrikam.com és Litware.com is az engedélyezési listához.
   
 ## <a name="important-considerations"></a>Fontos szempontok
 
-- Létrehozhat engedélyezési listát vagy megtagadási listát. Nem állítható be mindkét típusú lista. Alapértelmezés szerint bármilyen tartomány nem szerepel az engedélyezési listában, szerepel a megtagadási listán, és fordítva. 
-- Szervezetenként csak egy házirendet hozhat létre. Frissítheti a házirendet úgy, hogy több tartományt vegyen fel, vagy törölheti a házirendet egy új fájl létrehozásához. 
-- Az engedélyezési listához vagy a megtagadási listához hozzáadható tartományok számát csak a házirend mérete korlátozza. A teljes házirend maximális mérete 25 KB (25 000 karakter), amely tartalmazza az engedélyezési listát vagy a megtagadási listát, valamint az egyéb szolgáltatásokhoz konfigurált paramétereket.
-- Ez a lista a OneDrive Vállalati verziótól és a SharePoint Online engedélyezési/tiltólistáitól függetlenül működik. Ha korlátozni szeretné az egyes fájlmegosztásokat a SharePoint Online-ban, be kell állítania egy engedélyezési vagy megtagadási listát a OneDrive Vállalati verzióhoz és a SharePoint Online-hoz. További információt a [Korlátozott tartományok megosztása a SharePoint Online-ban és a OneDrive Vállalati verzióban című témakörben talál.](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)
-- A lista nem vonatkozik azokra a külső felhasználókra, akik már beváltották a meghívót. A lista beállítása után a lista lesz érvényesítve. Ha egy felhasználói meghívó függőben van, és olyan házirendet állít be, amely blokkolja a tartományukat, a felhasználó sikertelenül próbálja beváltani a meghívót.
+- Létrehozhat egy engedélyezési listát vagy egy megtagadási listát is. Mindkét típusú listát nem lehet beállítani. Alapértelmezés szerint az engedélyezési listán nem szereplő tartományok találhatók a megtagadási listán, és fordítva. 
+- Szervezeten belül csak egy házirendet hozhat létre. A házirendet frissítheti, hogy több tartományt is tartalmazzon, vagy törölheti is a szabályzatot egy új létrehozásához. 
+- Az engedélyezési vagy megtagadási listához felvehető tartományok számát csak a házirend mérete korlátozza. A teljes szabályzat maximális mérete 25 KB (25 000 karakter), amely tartalmazza az engedélyezési lista vagy a Megtagadás listát, valamint az egyéb funkciókhoz konfigurált egyéb paramétereket.
+- Ez a lista a OneDrive for Business és a SharePoint Online engedélyezési/letiltási listáktól függetlenül működik. Ha korlátozni szeretné az egyes fájlmegosztást a SharePoint Online-ban, be kell állítania egy engedélyezési vagy letiltási listát a OneDrive for Business és a SharePoint Online szolgáltatáshoz. További információ: [korlátozott tartományok megosztása a SharePoint Online-ban és a OneDrive for Business](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
+- A lista nem vonatkozik azokra a külső felhasználókra, akik már beváltották a meghívót. A lista a lista beállítása után lesz érvényesítve. Ha egy felhasználói meghívás függő állapotban van, és olyan házirendet állít be, amely blokkolja a tartományt, a felhasználó a meghívót beváltó kísérlet sikertelen lesz.
 
-## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>Az engedélyezési vagy megtagadási listaházirend beállítása a portálon
+## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>Az engedélyezési vagy letiltási lista szabályzatának beállítása a portálon
 
-Alapértelmezés szerint a **Meghívók elküldésének engedélyezése bármely tartomány (legátfogóbb)** beállításban engedélyezve van. Ebben az esetben bármely szervezetBB-felhasználóit meghívhatja.
+Alapértelmezés szerint a **meghívókat bármely tartományba (a legtöbb befogadó)** beállítás engedélyezi. Ebben az esetben bármely szervezettől hívhat meg VÁLLALATKÖZI felhasználókat.
 
 ### <a name="add-a-deny-list"></a>Megtagadási lista hozzáadása
 
-Ez a legjellemzőbb forgatókönyv, ahol a szervezet szinte minden szervezettel szeretne dolgozni, de meg szeretné akadályozni, hogy bizonyos tartományokfelhasználói b2b-felhasználóként meghívást kapjanak.
+Ez a leggyakoribb forgatókönyv, ahol a szervezet szinte bármilyen szervezetet szeretne használni, de meg szeretné akadályozni, hogy a felhasználók az adott tartományokban legyenek meghívva B2B-felhasználóként.
 
 Megtagadási lista hozzáadása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza az **Azure Active Directory** > **felhasználóinak** > **beállításait.**
-3. A **Külső felhasználók csoportban**válassza **a Külső együttműködési beállítások kezelése**lehetőséget.
-4. Az **Együttműködési korlátozások**csoportban jelölje be a **Meghívók megtagadása a megadott tartományokra jelölőnégyzetet.**
-5. A **TARGET DOMAINS csoportban**adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartomány esetén adja meg az egyes tartományokat egy új sorban. Példa:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
+3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
+4. Az **együttműködési korlátozások**területen válassza **a meghívások megtagadása a megadott tartományokra**lehetőséget.
+5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
 
-   ![A megtagadási lehetőség megjelenítése hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
+   ![A megtagadási beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
  
-6. Ha elkészült, kattintson a **Mentés gombra.**
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
-Miután beállította a házirendet, ha egy felhasználót megpróbál meghívni egy letiltott tartományból, egy üzenet jelenik meg, amely szerint a felhasználó tartományát jelenleg letiltja a meghívási házirend.
+Miután beállította a házirendet, ha egy felhasználót egy letiltott tartományból próbál meghívni, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
  
 ### <a name="add-an-allow-list"></a>Engedélyezési lista hozzáadása
 
-Ez egy szigorúbb konfiguráció, ahol az engedélyezési listában meghatározott tartományokat állíthat be, és a meghívókat bármely más, nem említett szervezetre vagy tartományra korlátozhatja. 
+Ez egy szigorúbb konfiguráció, amelyben meghatározott tartományokat állíthat be az engedélyezési listán, és korlátozhatja a meghívókat a nem említett más szervezetekre vagy tartományokra. 
 
-Ha engedélyezési listát szeretne használni, győződjön meg arról, hogy időt szán arra, hogy teljes mértékben kiértékelje üzleti igényeit. Ha ezt a házirendet túlságosan korlátozóvá teszi, a felhasználók dönthetnek úgy, hogy e-mailben küldenek dokumentumokat, vagy más, nem informatikai szempontból engedélyezett együttműködési módokat keresnek.
+Ha az engedélyezési listát szeretné használni, ügyeljen arra, hogy az üzleti igények teljes körű kiértékeléséhez időt szánjon. Ha a szabályzatot túlságosan korlátozóként teszi meg, a felhasználók dönthetnek úgy, hogy e-mailben küldenek dokumentumokat, vagy más, nem engedélyezett együttműködési módszereket is megkereshetnek.
 
 
 Engedélyezési lista hozzáadása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza az **Azure Active Directory** > **felhasználóinak** > **beállításait.**
-3. A **Külső felhasználók csoportban**válassza **a Külső együttműködési beállítások kezelése**lehetőséget.
-4. Az **Együttműködési korlátozások csoportban**jelölje be a Csak a megadott tartományokra szóló **meghívók engedélyezése jelölőnégyzetet (a legszigorúbb).**
-5. A **TARGET DOMAINS területen**adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartomány esetén adja meg az egyes tartományokat egy új sorban. Példa:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
+3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
+4. Az **együttműködési korlátozások**területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
+5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
 
-   ![Az engedélyezési beállítás megjelenítése hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
+   ![Az engedélyezési beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
  
-6. Ha elkészült, kattintson a **Mentés gombra.**
+6. Ha elkészült, kattintson a **Mentés**gombra.
 
-Miután beállította a házirendet, ha olyan tartományból próbál meg meghívni egy felhasználót, amely nem szerepel az engedélyezési listán, egy üzenet jelenik meg arról, hogy a felhasználó tartományát jelenleg letiltja a meghívási házirend.
+Miután beállította a házirendet, ha olyan tartományból próbál meg felhasználót meghívni, amely nem szerepel az engedélyezési listán, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
 
-### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Váltás az engedélyezési listáról és fordítva 
+### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Váltás az engedélyezéstől a megtagadási listára és fordítva 
 
-Ha egyik házirendről a másikra vált, ez elveti a meglévő házirend-konfigurációt. A váltás végrehajtása előtt készítsen biztonsági másolatot a konfiguráció részleteiről. 
+Ha az egyik házirendből a másikra vált, a rendszer elveti a meglévő házirend-konfigurációt. A kapcsoló elvégzése előtt készítsen biztonsági másolatot a konfiguráció részleteiről. 
 
-## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Az engedélyezési vagy megtagadási listaházirend beállítása a PowerShell használatával
+## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Az engedélyezési vagy letiltási lista házirend beállítása a PowerShell használatával
 
 ### <a name="prerequisite"></a>Előfeltétel
 
 > [!Note]
-> Az AzureADPreview modul nem teljesen támogatott modul, mivel előzetes verzióban érhető el. 
+> A AzureADPreview modul nem teljes mértékben támogatott modul, mert előzetes verzióban érhető el. 
 
-Az engedélyezési vagy megtagadási lista beállítása a PowerShell használatával, telepítenie kell az Azure Active Directory modul windows PowerShell előzetes verzióját. Pontosabban telepítse az AzureADPreview modul 2.0.0.98-as vagy újabb verzióját.
+Az engedélyezési vagy megtagadási lista PowerShell használatával történő beállításához telepítenie kell a Windows PowerShell Azure Active Directory moduljának előzetes verzióját. Konkrétan telepítse a AzureADPreview modul 2.0.0.98 vagy újabb verzióját.
 
-A modul verziójának ellenőrzése (és annak ellenőrzése, hogy telepítve van-e):
+A modul verziójának (és annak telepítésének megtekintése):
  
 1. Nyissa meg a Windows PowerShellt emelt szintű felhasználóként (Futtatás rendszergazdaként). 
-2. Futtassa a következő parancsot, és nézze meg, hogy telepítve van-e az Azure Active Directory modul a Windows PowerShellhez a számítógépen:
+2. A következő parancs futtatásával ellenőrizze, hogy rendelkezik-e a számítógépen telepített Windows PowerShell Azure Active Directory moduljának bármelyik verziójával:
 
    ```powershell  
    Get-Module -ListAvailable AzureAD*
    ```
 
-Ha a modul nincs telepítve, vagy nincs kötelező verziója, tegye az alábbiak egyikét:
+Ha a modul nincs telepítve, vagy nem rendelkezik a szükséges verzióval, hajtsa végre az alábbi műveletek egyikét:
 
-- Ha nem ad vissza eredményt, futtassa a következő parancsot az AzureADPreview modul legújabb verziójának telepítéséhez:
+- Ha a rendszer nem ad vissza eredményt, futtassa a következő parancsot a AzureADPreview modul legújabb verziójának telepítéséhez:
   
    ```powershell  
    Install-Module AzureADPreview
    ```
-- Ha csak az AzureAD-modul jelenik meg az eredményekközött, futtassa a következő parancsokat az AzureADPreview modul telepítéséhez: 
+- Ha csak a AzureAD modul jelenik meg az eredmények között, futtassa a következő parancsokat a AzureADPreview modul telepítéséhez: 
 
    ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
    ```
-- Ha csak az AzureADPreview modul jelenik meg az eredményekközött, de a verzió kisebb, mint 2.0.0.98, futtassa a következő parancsokat a frissítéséhez: 
+- Ha a találatok között csak a AzureADPreview modul látható, de a verziószáma kisebb, mint a 2.0.0.98, futtassa a következő parancsokat a frissítéséhez: 
 
    ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
    ```
 
-- Ha mind az AzureAD, mind az AzureADPreview-modulok megjelennek az eredményekközött, de az AzureADPreview modul verziója kisebb, mint 2.0.0.98, futtassa a következő parancsokat a frissítéshez: 
+- Ha a AzureAD és a AzureADPreview modulok is megjelennek az eredmények között, de a AzureADPreview modul verziója kisebb, mint 2.0.0.98, a frissítéshez futtassa a következő parancsokat: 
 
    ```powershell 
    Uninstall-Module AzureAD 
@@ -124,9 +124,9 @@ Ha a modul nincs telepítve, vagy nincs kötelező verziója, tegye az alábbiak
    Install-Module AzureADPreview 
     ```
 
-### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Az AzureADPolicy parancsmagokkal konfigurálhatja a házirendet
+### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>A szabályzat konfigurálásához használja a AzureADPolicy-parancsmagokat.
 
-Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmag. A következő példa bemutatja, hogyan állíthat be olyan megtagadási listát, amely blokkolja a "live.com" tartományt.
+Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Az alábbi példa bemutatja, hogyan állíthat be egy megtagadási listát, amely letiltja a "live.com" tartományt.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -134,25 +134,25 @@ $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomain
 New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-A következő mutatja ugyanazt a példát, de a házirend-definíció inline.
+A következő példában ugyanaz a példa látható, de a házirend-definíció inline.
 
 ```powershell  
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Az engedélyezési vagy megtagadási listaházirend beállításához használja a [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmag. Példa:
+Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-A szabályzat lekért, használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmag. Példa:
+A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-A szabályzat eltávolításához használja az [Eltávolítás-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmag. Példa:
+A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
@@ -160,8 +160,8 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure AD B2B áttekintését a [Mi az Azure AD B2B együttműködés?](what-is-b2b.md)
-- A feltételes hozzáférésről és a B2B együttműködésről a [Feltételes hozzáférés a B2B együttműködési felhasználók számára című](conditional-access.md)témakörben talál.
+- Az Azure AD B2B áttekintése: [Mi az az Azure ad B2B Collaboration?](what-is-b2b.md)
+- További információ a feltételes hozzáférésről és a B2B együttműködésről: [feltételes hozzáférés a B2B együttműködés felhasználói](conditional-access.md)számára.
 
 
 

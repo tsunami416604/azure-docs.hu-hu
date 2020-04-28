@@ -1,6 +1,6 @@
 ---
-title: Személyes adatok eltávolítása – Azure Active Directory alkalmazásproxy
-description: Személyes adatok eltávolítása az Azure Active Directory alkalmazásproxy eszközeire telepített összekötőkből.
+title: Személyes adattárolás eltávolítása – Azure Active Directory Application Proxy
+description: A személyes adatok eltávolítása a Azure Active Directory Application Proxy eszközökön telepített összekötők közül.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -16,69 +16,69 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275410"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Az Azure Active Directory alkalmazásproxy személyes adatainak eltávolítása
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Application Proxy személyes adatfájljainak eltávolítása
 
-Az Azure Active Directory alkalmazásproxy megköveteli, hogy összekötők telepítése az eszközökre, ami azt jelenti, hogy előfordulhat, hogy a személyes adatok az eszközökön. Ez a cikk az adatvédelem javítása érdekében ismerteti a személyes adatok törlésének lépéseit.
+A Azure Active Directory Application Proxy megköveteli, hogy az eszközökön telepítsen összekötőket, ami azt jelenti, hogy az eszközökön személyes adatai lehetnek. Ez a cikk azokat a lépéseket ismerteti, amelyekkel a személyes adatok az adatvédelem javítása érdekében törölhetők.
 
-## <a name="where-is-the-personal-data"></a>Hol vannak a személyes adatok?
+## <a name="where-is-the-personal-data"></a>Hol található a személyes adathalmaz?
 
-Az alkalmazásproxy a következő naplótípusokba írhatja a személyes adatokat:
+Az Application proxy a következő típusú naplókba írhatja a személyes adattípusokat:
 
-- Összekötő eseménynaplói
+- Összekötő-eseménynaplók
 - Windows-eseménynaplók
 
-## <a name="remove-personal-data-from-windows-event-logs"></a>Személyes adatok eltávolítása a Windows eseménynaplóiból
+## <a name="remove-personal-data-from-windows-event-logs"></a>Személyes adatok eltávolítása a Windows-eseménynaplóból
 
-A Windows eseménynaplók adatmegőrzési beállításairól az [eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx)című témakörben olvashat. A Windows eseménynaplóiról a [Windows eseménynapló használata .using](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)
+További információ a Windows-eseménynaplók adatmegőrzésének konfigurálásáról: [Eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx). A Windows-eseménynaplók megismeréséhez lásd: [a Windows Eseménynapló használata](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="remove-personal-data-from-connector-event-logs"></a>Személyes adatok eltávolítása az Összekötő eseménynaplóiból
+## <a name="remove-personal-data-from-connector-event-logs"></a>Személyes adatok eltávolítása az összekötő eseménynaplóból
 
-Annak érdekében, hogy az alkalmazásproxy-naplók ne rendelkezzenek személyes adatokkal, a következőket teheti:
+Annak biztosítása érdekében, hogy az alkalmazásproxy naplói ne rendelkezzenek személyes adattal, a következők közül választhat:
 
-- Szükség esetén adatok törlése vagy megtekintése, vagy
+- Szükség esetén törölheti vagy megtekintheti az adatmegjelenítést, vagy
 - Naplózás kikapcsolása
 
-A következő szakaszok segítségével távolítsa el a személyes adatokat az összekötő eseménynaplókból. Be kell fejeznie az eltávolítási folyamatot minden olyan eszközön, amelyre az összekötő telepítve van.
+A következő részben az összekötő-eseménynaplók személyes adatait távolíthatja el. Az eltávolítási folyamatot minden olyan eszközön el kell végeznie, amelyen az összekötő telepítve van.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-### <a name="view-or-export-specific-data"></a>Adott adatok megtekintése vagy exportálása
+### <a name="view-or-export-specific-data"></a>Megadott adatértékek megtekintése vagy exportálása
 
-Adott adatok megtekintéséhez vagy exportálásához keresse meg a kapcsolódó bejegyzéseket az összekötő minden eseménynaplójában. A naplók a `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`helyen találhatók.
+Adott adatok megtekintéséhez vagy exportálásához keresse meg a kapcsolódó bejegyzéseket az egyes összekötő-eseménynaplókban. A naplók a következő helyen `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`találhatók:.
 
-Mivel a naplók szöveges fájlok, [a findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) segítségével kereshet a felhasználóhoz kapcsolódó szöveges bejegyzéseket.  
+Mivel a naplók szövegfájlok, a [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) használatával keresheti meg a felhasználóhoz kapcsolódó szöveges bejegyzéseket.  
 
-Személyes adatok megkereséséhez keressen a naplófájlokban a UserID elemre.
+Személyes adatkereséshez keresse meg a felhasználói azonosítóhoz tartozó naplófájlokat.
 
-Kerberos korlátozott delegálást használó alkalmazás által naplózott személyes adatok megkereséséhez keresse meg a felhasználónév típusú összetevőket:
+A Kerberos által korlátozott delegálást használó alkalmazás által naplózott személyes adatkeresések kereséséhez keresse meg a Felhasználónév típusa következő összetevőit:
 
-- Helyszíni egyszerű felhasználónév
-- Az egyszerű felhasználónév része
-- A helyszíni egyszerű felhasználónév felhasználóneve
-- Helyszíni biztonsági fiókkezelő (SAM) fiókneve
+- Helyszíni egyszerű Felhasználónév
+- Felhasználónév része az egyszerű felhasználónévnek
+- A helyszíni egyszerű felhasználónév része
+- Helyszíni biztonsági fiókkezelő (SAM) fiók neve
 
-### <a name="delete-specific-data"></a>Adott adatok törlése
+### <a name="delete-specific-data"></a>Megadott adatértékek törlése
 
-Adott adatok törlése:
+Megadott adatértékek törlése:
 
-1. Új naplófájl létrehozásához indítsa újra a Microsoft Azure AD alkalmazásproxy-összekötő szolgáltatást. Az új naplófájl lehetővé teszi a régi naplófájlok törlését vagy módosítását. 
-1. A korábban leírt [konkrét adatfolyamatok megtekintése vagy exportálása](#view-or-export-specific-data) során keresse meg a törölendő adatokat. Keressen az összes összekötő naplóban.
-1. Vagy törölje a megfelelő naplófájlokat, vagy szelektíven törölje a személyes adatokat tartalmazó mezőket. Törölheti az összes régi naplófájlt is, ha már nincs rájuk szüksége.
+1. Indítsa újra a Microsoft Azure AD alkalmazásproxy-összekötő szolgáltatást egy új naplófájl létrehozásához. Az új naplófájl lehetővé teszi a régi naplófájlok törlését vagy módosítását. 
+1. A korábban ismertetett adatfolyamatok [megtekintéséhez vagy exportálásához](#view-or-export-specific-data) kövesse a törölni kívánt adatokat. Keresse meg az összes összekötő naplóját.
+1. Törölje a kapcsolódó naplófájlokat, vagy törölje a személyes adatokat tartalmazó mezőket. Ha már nincs szüksége rájuk, törölheti az összes régi naplófájlt is.
 
-### <a name="turn-off-connector-logs"></a>Összekötőnaplók kikapcsolása
+### <a name="turn-off-connector-logs"></a>Összekötő naplófájljainak kikapcsolása
 
-Az egyik lehetőség annak biztosítására, hogy az összekötő naplók nem tartalmaznak személyes adatokat, hogy kapcsolja ki a napló létrehozását. Az összekötőnaplók létrehozásának leállításához távolítsa el `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`a következő kiemelt sort a alkalmazásból.
+Az egyik lehetőség annak biztosítására, hogy az összekötő naplófájljai ne tartalmazzanak személyes adattartalmakat a napló létrehozásának kikapcsolásához. Az összekötő-naplók létrehozásának leállításához távolítsa el az `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`alábbi kiemelt sort a következőből:.
 
-![Az eltávolítandó kiemelt kódrészlettel rendelkező kódrészlet](./media/application-proxy-remove-personal-data/01.png)
+![Megjelenít egy kódrészletet az eltávolítandó Kiemelt kóddal](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazásproxy áttekintését a [Helyszíni alkalmazások biztonságos távelérésének biztosítása](application-proxy.md)című témakörben találja.
+Az alkalmazásproxy áttekintését lásd: [biztonságos távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz](application-proxy.md).

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag`:` Felügyelt identitás használata az Azure Storage SAS-hitelesítő adatokkal történő eléréséhez – Azure AD
-description: Egy oktatóanyag, amely bemutatja, hogyan használhatja a Windows virtuális gép rendszer hez rendelt felügyelt identitás azure storage eléréséhez, egy SAS hitelesítő adatok használata helyett a tárfiók hozzáférési kulcs.
+title: 'Oktatóanyag`:` : felügyelt identitás használata az Azure Storage sas-hitelesítő adatokkal való eléréséhez – Azure ad'
+description: Egy oktatóanyag, amely bemutatja, hogyan használható a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás az Azure Storage eléréséhez, a Storage-fiók elérési kulcsa helyett SAS hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,22 +16,22 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74232165"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage SAS-hitelesítő adatokon keresztüli eléréséhez használjon Windows virtuálisgép-rendszerhez rendelt felügyelt identitást
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure Storage SAS-hitelesítő adatokkal való eléréséhez
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a rendszer által kijelölt identitást egy Windows virtuális gép (VM) storage megosztott hozzáférésű aláírás (SAS) hitelesítő adatok beszerzése. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerhez rendelt identitást egy Windowsos virtuális géphez (VM) a Storage Shared Access Signature (SAS) hitelesítő adatainak beszerzéséhez. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
 
-A Service SAS lehetővé teszi, hogy korlátozott hozzáférést biztosítson a tárfiókban lévő objektumokhoz korlátozott ideig, és egy adott szolgáltatás (a mi esetünkben a blob szolgáltatás), anélkül, hogy egy fiók hozzáférési kulcs. A SAS-hitelesítő adatokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban bemutatjuk egy blob feltöltését és letöltését az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
+A Service SAS lehetővé teszi, hogy a fiók hozzáférési kulcsa nélkül korlátozott ideig és egy adott szolgáltatásban (a mi esetünkben a blob szolgáltatásban) engedélyezze a hozzáférést a Storage-fiók objektumaihoz. A SAS-hitelesítő adatokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban egy blob feltöltését és letöltését mutatjuk be az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Hozzáférés engedélyezése virtuális gép számára a tárfiók a Resource Managerben lévő SAS-adataihoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a SAS-adatok lekérése a Resource Managerből annak használatával 
 
@@ -41,16 +41,16 @@ A Service SAS lehetővé teszi, hogy korlátozott hozzáférést biztosítson a 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Ezt a lépést is kihagyhatja, és a virtuális gép rendszeráltal hozzárendelt felügyelt identitás-hozzáférésének megadását egy meglévő tárfiók SAS-hitelesítő adataihoz. 
+Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Kihagyhatja ezt a lépést, és megadhatja a virtuális gép rendszer által hozzárendelt felügyelt identitási hozzáférését egy meglévő Storage-fiók SAS hitelesítő adataihoz. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+/Új szolgáltatás létrehozása** gombra.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre, amit követően megjelenik egy új „Tárfiók létrehozása” panel.
 3. Nevezze el a tárfiókot, amelyet később fog használni.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson **a Létrehozás gombra.**
+6. Kattintson a **Létrehozás**gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -67,11 +67,11 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>Hozzáférés engedélyezése virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tároló SAS-adatainak használatához 
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonban egy felügyelt identitás segítségével lekérheti a tárolási SAS-t az Erőforrás-kezelőből, majd a SAS használatával érheti el a tárolót.  Ebben a lépésben hozzáférést biztosít a virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tárfiók SAS-adataihoz.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A felügyelt identitással azonban lekérhet egy Storage SAS-t a Resource Managerből, majd a SAS használatával elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tárfiók SAS-adataihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.   
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. Kattintson **a + Szerepkör-hozzárendelés hozzáadása** a lap tetejére egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez
 4. A lap jobb oldalán a **Szerepkör** értékeként adja meg a „Tárfiók-közreműködő” értéket.  
 5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a „Virtuális gép” értéket.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a „Minden erőforráscsoport” értékre.  
@@ -110,7 +110,7 @@ Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell haszn�
 
 ## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>SAS-hitelesítő adatok lekérése az Azure Resource Managerből tárolóhívások indításához 
 
-Most a PowerShell használatával hívja meg az Erőforrás-kezelőt az előző szakaszban lekért hozzáférési jogkivonat használatával, hogy hozzon létre egy tárolási SAS-hitelesítő adatokat. Miután rendelkezünk a SAS hitelesítő adatokkal, meghívhatjuk a tárolási műveleteket.
+Most a PowerShell segítségével hívja meg a Resource Managert az előző szakaszban lekért hozzáférési jogkivonat használatával a Storage SAS hitelesítő adatainak létrehozásához. A SAS hitelesítő adataival meghívhatjuk a tárolási műveleteket.
 
 Ehhez a kéréshez az alábbi HTTP-kérésparamétereket használja majd a SAS-hitelesítő adatok létrehozásához:
 
@@ -126,7 +126,7 @@ Ehhez a kéréshez az alábbi HTTP-kérésparamétereket használja majd a SAS-h
 
 Ezek a paraméterek a SAS-hitelesítő adatokra vonatkozó kérés POST-törzsében találhatók. A SAS-hitelesítő adatok létrehozására vonatkozó paraméterekkel kapcsolatos további információkat [a szolgáltatási SAS REST referenciában](/rest/api/storagerp/storageaccounts/listservicesas) találja.
 
-Először konvertálja a paramétereket JSON-ra, majd hívja meg a tárolási `listServiceSas` végpontot a SAS-hitelesítő adatok létrehozásához:
+Először alakítsa át a paramétereket a JSON-be, majd hívja `listServiceSas` meg a tárolási végpontot az SAS hitelesítő adatainak létrehozásához:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}
@@ -139,21 +139,21 @@ $sasResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions
 > [!NOTE] 
 > Az URL megkülönbözteti a kis- és nagybetűket, ezért ellenőrizze, hogy pontosan ugyanúgy írja be a kis- és nagybetűket, mint az erőforráscsoport elnevezésekor, beleértve a „resourceGroups” kifejezés nagy „G” betűjét is. 
 
-Most már kinyerheti a SAS hitelesítő adatait a válaszból:
+Most kinyerhetjük a SAS hitelesítő adatait a válaszból:
 
 ```powershell
 $sasContent = $sasResponse.Content | ConvertFrom-Json
 $sasCred = $sasContent.serviceSasToken
 ```
 
-Ha megvizsgálja a SAS cred látni fogja, valami ilyesmi:
+Ha megvizsgálja az SAS-beli cred-t, a következőhöz hasonló lesz:
 
 ```powershell
 PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Ezután létrehozunk egy „test.txt” nevű fájlt. Ezután a SAS-hitelesítő `New-AzStorageContent` adatok kal hitelesítheti magát a parancsmaggal, töltse fel a fájlt a blobtárolóba, majd töltse le a fájlt.
+Ezután létrehozunk egy „test.txt” nevű fájlt. Ezután használja az SAS hitelesítő adatait a `New-AzStorageContent` parancsmaggal való hitelesítéshez, töltse fel a fájlt a blob-tárolóba, majd töltse le a fájlt.
 
 ```bash
 echo "This is a test text file." > test.txt
@@ -202,7 +202,7 @@ Name              : testblob
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja a Windows virtuális gép rendszeráltal hozzárendelt felügyelt identitását az Azure Storage SAS-hitelesítő adatokkal való eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
+Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Windows rendszerű virtuális gépekhez rendelt felügyelt identitást az Azure Storage SAS-hitelesítő adatokkal való eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
 
 > [!div class="nextstepaction"]
 >[Közös hozzáférésű jogosultságkódok (SAS) használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

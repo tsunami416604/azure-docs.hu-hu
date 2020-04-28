@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az 1-es háttér-véghez
-description: Megtudhatja, hogyan csatlakozhat biztonságosan háttér-erőforrásokhoz egy App Service-környezetből. Ez a dokumentum csak az örökölt v1 ASE-t használó ügyfelek számára érhető el.
+title: Kapcsolódás a back end V1-hez
+description: További információ a háttérbeli erőforrásokhoz való biztonságos kapcsolódásról egy App Service Environment. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
 author: stefsch
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.topic: article
@@ -8,78 +8,78 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687298"
 ---
-# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Csatlakozás biztonságosan háttérerőforrásokhoz egy App Service-környezetből
-Mivel az App Service-környezet **either** mindig egy Azure Resource Manager virtuális hálózaton **vagy** egy klasszikus üzembe helyezési modell [virtuális hálózatban][virtualnetwork]jön létre, az App Service-környezetből más háttérerőforrásokhoz való kimenő kapcsolatok kizárólag a virtuális hálózaton keresztül folyhatnak.  A 2016 júniusában történt legutóbbi módosítással az ASE-k olyan virtuális hálózatokba is telepíthetők, amelyek vagy nyilvános címtartományokat, vagy RFC1918 címtereket (azaz magáncímeket) használnak.  
+# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Biztonságos kapcsolódás App Service környezetből a végponti erőforrásokhoz
+Mivel a App Service Environment **mindig egy Azure Resource Manager** virtuális hálózatban, **vagy** egy klasszikus üzemi modell [virtuális hálózatban][virtualnetwork]jön létre, a app Service Environmentból más háttér-erőforrások felé irányuló kimenő kapcsolatok kizárólag a virtuális hálózaton keresztül áramlanak.  A 2016 júniusában történt legutóbbi módosítással a ASE olyan virtuális hálózatokon is üzembe helyezhetők, amelyek nyilvános címtartományt vagy RFC1918 (például magánhálózati címeket) használnak.  
 
-Előfordulhat például, hogy egy SQL Server egy 1433-as porttal zárolt virtuális gépekből álló fürtön fut.  A végpont lehet ACLd, hogy csak a hozzáférést más erőforrások ugyanazon a virtuális hálózaton.  
+Előfordulhat például, hogy egy olyan SQL Server fut a virtuális gépek fürtjén, amelyen a 1433-es port le van zárva.  Előfordulhat, hogy a végpont ACLd csak ugyanazon a virtuális hálózaton lévő más erőforrásokból való hozzáférést engedélyezi.  
 
-Egy másik példa: a bizalmas végpontok a helyszínen futtathatók, és a helyek közötti vagy [az Azure ExpressRoute-kapcsolatokon][ExpressRoute] keresztül kapcsolódhatnak az [Azure-hoz.][SiteToSite]  Ennek eredményeképpen csak a helyek közötti vagy expressroute-alagutakhoz kapcsolódó virtuális hálózatok erőforrásai férhetnek hozzá a helyszíni végpontokhoz.
+Egy másik példa, hogy a bizalmas végpontok a helyszínen futnak, és a [helyek közötti][SiteToSite] vagy az [Azure ExpressRoute][ExpressRoute] -kapcsolatokon keresztül csatlakoznak az Azure-hoz.  Ennek eredményeképpen csak a helyek közötti vagy ExpressRoute-alagutakhoz csatlakozó virtuális hálózatok erőforrásai férhetnek hozzá a helyszíni végpontokhoz.
 
-Az összes ilyen forgatókönyv esetén az App Service-környezetben futó alkalmazások biztonságosan csatlakozhatnak a különböző kiszolgálókhoz és erőforrásokhoz.  Az App Service-környezetben futó alkalmazásokból az azonos virtuális hálózat (vagy ugyanahhoz a virtuális hálózathoz kapcsolódó) privát végpontok közötti kimenő forgalom csak a virtuális hálózaton keresztül fog áramlani.  A privát végpontokra irányuló kimenő forgalom nem fog a nyilvános interneten keresztül áramlani.
+Ezen forgatókönyvek esetében a App Service Environment futó alkalmazások képesek lesznek biztonságosan csatlakozni a különböző kiszolgálókhoz és erőforrásokhoz.  A App Service Environmentban futó alkalmazások kimenő forgalma ugyanazon a virtuális hálózaton (vagy ugyanahhoz a virtuális hálózathoz csatlakoztatva) lévő privát végpontokon fut, csak a virtuális hálózatra kerül.  A privát végpontok felé irányuló kimenő forgalom nem a nyilvános interneten keresztül történik.
 
-Egy kikötés vonatkozik az App Service-környezetből érkező kimenő forgalom a virtuális hálózaton belüli végpontok.  Az App Service-környezetek nem érik el az App Service-környezettel **azonos** alhálózatban található virtuális gépek végpontjait.  Ez általában nem lehet probléma, amíg az App Service-környezetek vannak telepítve egy alhálózat számára fenntartott kizárólagos használatra csak az App Service-környezetben.
+Az egyik kikötés a virtuális hálózaton belüli végpontokra App Service Environment kimenő forgalomra vonatkozik.  App Service környezetek nem érhetik el a virtuális gépek azon végpontját, amely **ugyanabban** az alhálózatban található, mint a app Service Environment.  Ez általában nem jelent problémát, ha App Service környezetek csak a App Service Environment által kizárólagos használatra fenntartott alhálózatba vannak telepítve.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Kimenő kapcsolat és DNS-követelmények
-Ahhoz, hogy egy App Service-környezet megfelelően működjön, több végponthoz kimenő hozzáférést igényel. Az ASE által használt külső végpontok teljes listája az [ExpressRoute hálózati konfigurációja](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) című cikk "Szükséges hálózati kapcsolat" című részében található.
+Ahhoz, hogy egy App Service Environment megfelelően működjön, a különböző végpontokhoz kimenő hozzáférést igényel. A szolgáltató által használt külső végpontok teljes listája a [ExpressRoute hálózati konfigurációjának](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) "szükséges hálózati kapcsolat" szakaszában található.
 
-Az App Service-környezetek hez érvényes DNS-infrastruktúra szükséges a virtuális hálózathoz konfigurálva.  Ha az App Service-környezet létrehozása után bármilyen okból megváltozik a DNS-konfiguráció, a fejlesztők kényszeríthetik az App Service-környezetet az új DNS-konfiguráció felvételére.  A működés közbeni használatújraindítás a portálon az App Service-környezet felügyeleti paneljének tetején található "Újraindítás" ikonnal a környezet új DNS-konfigurációjának felvételéhez.
+App Service környezetekhez a virtuális hálózathoz konfigurált érvényes DNS-infrastruktúra szükséges.  Ha bármilyen okból a DNS-konfiguráció megváltozik egy App Service Environment létrehozása után, a fejlesztők kényszerítheti az App Service Environment az új DNS-konfiguráció felvételére.  A működés közbeni környezet újraindításának elindítása a portál App Service Environment felügyelet paneljének tetején található újraindítás ikon használatával a környezet az új DNS-konfigurációt fogja felvenni.
 
-Azt is javasoljuk, hogy a virtuális hálózat minden egyéni DNS-kiszolgálóit az App Service-környezet létrehozása előtt előzetesen állítsa be.  Ha egy virtuális hálózat DNS-konfigurációja megváltozik az App Service-környezet létrehozása közben, az az App Service-környezet létrehozási folyamatának sikertelensítését eredményezi.  Hasonló ha egy VPN-átjáró másik végén létezik egyéni DNS-kiszolgáló, és a DNS-kiszolgáló nem érhető el vagy nem érhető el, az App Service-környezet létrehozási folyamata is sikertelen lesz.
+Azt is javasoljuk, hogy a vnet lévő egyéni DNS-kiszolgálókat a App Service Environment létrehozása előtt előre be kell állítani.  Ha a virtuális hálózat DNS-konfigurációja megváltozik egy App Service Environment létrehozásakor, az App Service Environment létrehozási folyamata sikertelen lesz.  Hasonló módon, ha egy egyéni DNS-kiszolgáló létezik egy VPN-átjáró másik végén, és a DNS-kiszolgáló nem érhető el, vagy nem érhető el, a App Service Environment létrehozási folyamata is sikertelen lesz.
 
-## <a name="connecting-to-a-sql-server"></a>Csatlakozás SQL Server kiszolgálóhoz
-Egy általános SQL Server-konfigurációvégpont figyel az 1433-as porton:
+## <a name="connecting-to-a-sql-server"></a>Csatlakozás egy SQL Serverhoz
+Egy közös SQL Server konfiguráció egy végpontot figyel a 1433-as porton:
 
 ![SQL Server végpont][SqlServerEndpoint]
 
-Két módszer létezik a forgalom ezen végpontra történő korlátozásához:
+A végpontra irányuló forgalom korlátozásának két módja van:
 
-* [Hálózati hozzáférés-vezérlési listák][NetworkAccessControlLists] (hálózati Hozzáférés-vezérlési listák)
+* [Hálózati Access Control listák][NetworkAccessControlLists] (hálózati ACL-ek)
 * [Hálózati biztonsági csoportok][NetworkSecurityGroups]
 
-## <a name="restricting-access-with-a-network-acl"></a>Hozzáférés korlátozása hálózati hozzáférés-hozzáférés-hozzáférési lid-rel
-Az 1433-as port hálózati hozzáférés-vezérlési listával biztosítható.  Az alábbi példa a virtuális hálózaton belülről származó ügyfélcímeket listázza, és letiltja az összes többi ügyfél elérését.
+## <a name="restricting-access-with-a-network-acl"></a>Hozzáférés korlátozása hálózati ACL-sel
+A 1433-es portot hálózati hozzáférés-vezérlési lista használatával lehet biztosítani.  Az alábbi példa a virtuális hálózatból származó ügyfél-címeket, valamint az összes többi ügyfél hozzáférését blokkolja.
 
-![Példa a hálózati hozzáférés-vezérlési listára][NetworkAccessControlListExample]
+![Példa hálózati Access Control listára][NetworkAccessControlListExample]
 
-Az SQL Server kiszolgálóval azonos virtuális hálózatban futó appok az SQL Server virtuális gép virtuális gép virtuális gép **virtuális** ip-címének virtuális ip-címével csatlakozhatnak az SQL Server-példányhoz.  
+A App Service Environmentban futó összes alkalmazás, amely ugyanabban a virtuális hálózaton fut, mint a SQL Server, a SQL Server virtuális gép **VNet belső** IP-címének használatával tud csatlakozni a SQL Server példányhoz.  
 
-Az alábbi példa kapcsolati karakterlánc az SQL Server privát IP-címét használja.
+Az alábbi példában szereplő kapcsolati sztring a saját magánhálózati IP-címére hivatkozik a SQL Server.
 
     Server=tcp:10.0.1.6;Database=MyDatabase;User ID=MyUser;Password=PasswordHere;provider=System.Data.SqlClient
 
-Bár a virtuális gép nyilvános végponttal is rendelkezik, a nyilvános IP-címet használó csatlakozási kísérleteket a rendszer elutasítja a hálózati acl miatt. 
+Bár a virtuális gép nyilvános végponttal is rendelkezik, a nyilvános IP-címet használó csatlakozási kísérletek a hálózati ACL miatt el lesznek utasítva. 
 
 ## <a name="restricting-access-with-a-network-security-group"></a>Hozzáférés korlátozása hálózati biztonsági csoporttal
-A hozzáférés biztonságossá tétele egy hálózati biztonsági csoport.  A hálózati biztonsági csoportok alkalmazhatók egyes virtuális gépekre vagy a virtuális gépeket tartalmazó alhálózatra.
+A hozzáférés biztonságossá tételének másik módja egy hálózati biztonsági csoport.  A hálózati biztonsági csoportok az egyes virtuális gépekre, illetve a virtuális gépeket tartalmazó alhálózatra is alkalmazhatók.
 
 Először létre kell hozni egy hálózati biztonsági csoportot:
 
     New-AzureNetworkSecurityGroup -Name "testNSGexample" -Location "South Central US" -Label "Example network security group for an app service environment"
 
-A hálózati biztonsági csoport okkal nagyon egyszerű, ha csak a virtuális hálózat belső forgalmára korlátozza a hozzáférést.  A hálózati biztonsági csoport alapértelmezett szabályai csak az ugyanazon virtuális hálózat más hálózati ügyfeleitől engedélyezik a hozzáférést.
+A hozzáférés korlátozása csak a VNet belső forgalmára nagyon egyszerű hálózati biztonsági csoporttal.  A hálózati biztonsági csoport alapértelmezett szabályai csak az azonos virtuális hálózatban lévő más hálózati ügyfelek hozzáférését teszik lehetővé.
 
-Ennek eredményeképpen az SQL Server hez való hozzáférés zárolása olyan egyszerű, mint egy hálózati biztonsági csoport alkalmazása az alapértelmezett szabályokkal az SQL Server t futtató virtuális gépekre vagy a virtuális gépeket tartalmazó alhálózatra.
+Ennek eredményeképpen a SQL Serverhoz való hozzáférés zárolása olyan egyszerű, mint a hálózati biztonsági csoport alapértelmezett szabályainak alkalmazása a SQL Servert futtató virtuális gépek vagy a virtuális gépeket tartalmazó alhálózat számára.
 
-Az alábbi minta egy hálózati biztonsági csoportot alkalmaz az alhálózatra:
+Az alábbi minta egy hálózati biztonsági csoportot alkalmaz az azt tartalmazó alhálózatra:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-1'
 
-A végeredmény olyan biztonsági szabályok készlete, amelyek blokkolják a külső hozzáférést, miközben engedélyezik a virtuális hálózat belső hozzáférését:
+A végeredmény olyan biztonsági szabályok összessége, amelyek letiltják a külső hozzáférést, miközben lehetővé teszik a VNet belső hozzáférését:
 
 ![Alapértelmezett hálózati biztonsági szabályok][DefaultNetworkSecurityRules]
 
 ## <a name="getting-started"></a>Első lépések
-Az App Service-környezetek ismerkedése az [App Service-környezet bemutatása című témakörben][IntroToAppServiceEnvironment]
+App Service környezetek használatának megkezdéséhez tekintse [meg a app Service Environment bemutatása][IntroToAppServiceEnvironment] című témakört.
 
-Az App Service-környezetbe irányuló bejövő forgalom szabályozásáról az [App Service-környezetbe irányuló bejövő forgalom szabályozása című][ControlInboundASE] témakörben talál további információt.
+A App Service Environment bejövő forgalmának szabályozásával kapcsolatban lásd: a [Bejövő forgalom vezérlése egy app Service Environment][ControlInboundASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

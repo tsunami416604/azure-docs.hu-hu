@@ -1,6 +1,6 @@
 ---
-title: Waf egyéni szabályok konfigurálása & Alapértelmezett szabálykészlet az Azure bejárati ajtajához
-description: Megtudhatja, hogyan konfigurálhatja a WAF-szabályzat egyéni és felügyelt szabályok egy meglévő bejárati ajtajának végpontja.
+title: Egyéni WAF-szabályok konfigurálása az Azure bejárati ajtóhoz & alapértelmezett szabálykészlet
+description: Megtudhatja, hogyan konfigurálhat egy WAF házirendet egy meglévő bejárati végpontra vonatkozó egyéni és felügyelt szabályokból.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74186632"
 ---
-# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Webalkalmazás-tűzfal házirend konfigurálása az Azure PowerShell használatával
+# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Webalkalmazási tűzfal házirend konfigurálása Azure PowerShell használatával
 
-Az Azure Web Application Firewall (WAF) szabályzat határozza meg a szükséges ellenőrzéseket, amikor egy kérelem érkezik a bejárati ajtót.
-Ez a cikk bemutatja, hogyan konfigurálhat egy WAF-szabályzatot, amely néhány egyéni szabályból és az Azure által felügyelt alapértelmezett szabálykészletből áll.
+Az Azure webalkalmazási tűzfal (WAF) szabályzata meghatározza a szükséges ellenőrzéseket, amikor egy kérés érkezik a bejárati ajtón.
+Ez a cikk bemutatja, hogyan konfigurálhat olyan WAF szabályzatot, amely néhány egyéni szabályt és az Azure által felügyelt alapértelmezett szabálykészlet használatát teszi lehetővé.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené beállítani a díjkorlát-szabályzatot, állítsa be a PowerShell-környezetet, és hozzon létre egy bejárati ajtó-profilt.
+Mielőtt elkezdi a díjszabási szabályzat beállítását, állítsa be a PowerShell-környezetet, és hozzon létre egy bejárati profilt.
 
 ### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
 
 Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez. 
 
-Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az utasításokat a lapon, az Azure-hitelesítő adatokkal való bejelentkezéshez, és telepítse az Az PowerShell-modult.
+Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
 
 #### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -43,18 +43,18 @@ A Front Door-modul telepítése előtt győződjön meg arról, hogy telepítve 
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>Az Az.FrontDoor modul telepítése 
+#### <a name="install-azfrontdoor-module"></a>Telepítés az. FrontDoor modul 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Bejárati ajtó profil létrehozása
+### <a name="create-a-front-door-profile"></a>Bejárati ajtó profiljának létrehozása
 
-Bejárati ajtó profil létrehozása a [Rövid útmutató: Bejárati ajtó profil létrehozása című](../../frontdoor/quickstart-create-front-door.md) részben leírt utasítások szerint
+Hozzon létre egy bevezető ajtót a következő témakörben ismertetett utasításokat követve [: első ajtós profil létrehozása](../../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="custom-rule-based-on-http-parameters"></a>Egyéni szabály http-paraméterek alapján
 
-A következő példa bemutatja, hogyan konfigurálhat egy egyéni szabályt két egyezési feltétellel a [New-AzFrontDoorWafMatchConditionObject használatával.](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) A kérelmek egy megadott helyről származnak, a hogy a hivatkozó konkretinó konkretin, a lekérdezési karakterlánc pedig nem tartalmaz "jelszót". 
+Az alábbi példa bemutatja, hogyan konfigurálhat egy egyéni szabályt két egyeztetési feltétellel a [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)használatával. A kérések egy megadott helyről származnak a referrer által meghatározott módon, és a lekérdezési karakterlánc nem tartalmazza a "password" karaktert. 
 
 ```powershell-interactive
 $referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
@@ -62,42 +62,42 @@ $password = New-AzFrontDoorWafMatchConditionObject -MatchVariable QueryString -O
 $AllowFromTrustedSites = New-AzFrontDoorWafCustomRuleObject -Name "AllowFromTrustedSites" -RuleType MatchRule -MatchCondition $referer,$password -Action Allow -Priority 1
 ```
 
-## <a name="custom-rule-based-on-http-request-method"></a>Egyéni szabály http-kérelem metódus alapján
+## <a name="custom-rule-based-on-http-request-method"></a>Egyéni szabály http-kérési módszer alapján
 
-Hozzon létre egy szabályblokkoló "PUT" metódust a [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) használatával az alábbiak szerint:
+Hozzon létre egy szabályt, amely blokkolja a "PUT" metódust a [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) használatával, a következőképpen:
 
 ```powershell-interactive
 $put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
 $BlockPUT = New-AzFrontDoorWafCustomRuleObject -Name "BlockPUT" -RuleType MatchRule -MatchCondition $put -Action Block -Priority 2
 ```
 
-## <a name="create-a-custom-rule-based-on-size-constraint"></a>Egyéni szabály létrehozása méretmegkötés alapján
+## <a name="create-a-custom-rule-based-on-size-constraint"></a>Egyéni szabály létrehozása a méret megkötése alapján
 
-A következő példa létrehoz egy szabályblokkoló kérelmek url-cím, amely hosszabb, mint 100 karakter az Azure PowerShell használatával:
+Az alábbi példa egy olyan szabályt hoz létre, amely a 100 karakternél hosszabb URL-lel rendelkező kérelmeket blokkol Azure PowerShell használatával:
 ```powershell-interactive
 $url = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
 $URLOver100 = New-AzFrontDoorWafCustomRuleObject -Name "URLOver100" -RuleType MatchRule -MatchCondition $url -Action Block -Priority 3
 ```
 ## <a name="add-managed-default-rule-set"></a>Felügyelt alapértelmezett szabálykészlet hozzáadása
 
-A következő példa létrehoz egy felügyelt alapértelmezett szabálykészletet az Azure PowerShell használatával:
+A következő példa létrehoz egy felügyelt alapértelmezett szabálykészlet Azure PowerShell használatával:
 ```powershell-interactive
 $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version 1.0
 ```
 ## <a name="configure-a-security-policy"></a>Biztonsági házirend konfigurálása
 
-Keresse meg annak az erőforráscsoportnak a `Get-AzResourceGroup`nevét, amely a Bejárati ajtó profilt tartalmazza a használatával. Ezután konfiguráljon egy biztonsági házirendet létrehozott szabályokkal az előző lépésekben a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoportban, amely tartalmazza a Bejárati ajtó profilt.
+Keresse meg annak az erőforráscsoportnak a nevét, amely az első ajtó profilját tartalmazza a használatával `Get-AzResourceGroup`. Ezután állítson be egy biztonsági szabályzatot az előző lépésekben létrehozott szabályokkal az [új-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoporthoz, amely tartalmazza az előtérben profilt.
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
 ```
 
-## <a name="link-policy-to-a-front-door-front-end-host"></a>Házirend csatolása bejárati ajtó előtér-állomásához
+## <a name="link-policy-to-a-front-door-front-end-host"></a>Házirend csatolása egy előtér-előtéri gazdagéphez
 
-Kapcsolja össze a biztonsági házirend-objektumot egy meglévő bejárati ajtó előtér-állomásával, és frissítse a Bejárati ajtó tulajdonságait. Először olvassa be a Bejárati ajtó objektumot a [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)használatával.
-Ezután állítsa be az *előtér-WebApplicationFirewallPolicyLink* tulajdonságot az előző lépésben létrehozott "$myWAFPolicy$" *erőforrásazonosítójára* a [Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)segítségével. 
+Csatolja a biztonsági házirend objektumot egy meglévő előtér-előtéri gazdagéphez, és frissítse a bejárati ajtó tulajdonságait. Először a [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)paranccsal kérje le az előtérben lévő objektumot.
+Ezután állítsa be az előtér- *WebApplicationFirewallPolicyLink* tulajdonságot az előző lépésben létrehozott "$myWAFPolicy $" *resourceId* a [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)használatával. 
 
-Az alábbi példa a *myResourceGroupFD1* erőforráscsoport nevet használja azzal a feltételezéssel, hogy a Bejárati ajtó profilt a [Rövid útmutató: Front Door cikkben](../../frontdoor/quickstart-create-front-door.md) megadott utasítások alapján hozta létre. Az alábbi példában cserélje le $frontDoorName a bejárati ajtó profiljának nevére. 
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtaját a gyors útmutató [: Create a](../../frontdoor/quickstart-create-front-door.md) bejárati ajtóról szóló cikket. Emellett az alábbi példában cserélje le a $frontDoorName nevet a bejárati ajtó profiljának nevére. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -108,9 +108,9 @@ Az alábbi példa a *myResourceGroupFD1* erőforráscsoport nevet használja azz
  ```
 
 > [!NOTE]
-> Csak egyszer kell beállítania a *WebApplicationFirewallPolicyLink* tulajdonságot, hogy biztonsági házirendet csatoljon a bejárati ajtó előtéréhez. A további házirend-frissítések automatikusan az előtérre lesznek alkalmazva.
+> A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Bejárati ajtóról](../../frontdoor/front-door-overview.md) 
-- További információ a [WAF-ról a bejárati ajtóval](afds-overview.md)
+- További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md) 
+- További információ a [WAF a bejárati ajtóval](afds-overview.md)

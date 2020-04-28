@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-minták a terheléselosztóhoz
+title: Azure CLI-minták a Load Balancerhoz
 titleSuffix: Azure Load Balancer
 description: Azure CLI-minták
 services: load-balancer
@@ -14,21 +14,21 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: f35007bc3c47aeec9bcdd8a418983b95f6f20ad6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225418"
 ---
-# <a name="azure-cli-samples-for-load-balancer"></a>Azure CLI-minták a terheléselosztóhoz
+# <a name="azure-cli-samples-for-load-balancer"></a>Azure CLI-minták a Load Balancerhoz
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
-| [Terheléselosztási forgalom a virtuális gépekre a magas rendelkezésre állás érdekében](./scripts/load-balancer-linux-cli-sample-nlb.md) | Több virtuális gépet hoz létre magas rendelkezésre állású és terheléselosztásos konfigurációban. |
-| [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md) | Három virtuális gépet hoz létre egy régión belül különböző rendelkezésre állási zónákban, és a normál terheléselosztót zónaredundáns előtér IP-címmel. Ez a terheléselosztó-konfiguráció segít megvédeni az alkalmazásokat és az adatokat egy nem valószínű hiba vagy veszteség egy teljes adatközpont. |
-|[Virtuális gépek terheléselosztása adott rendelkezésre állási zónán belül](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)|Három virtuális gépet hoz létre, egy szabványos terheléselosztót zónaszintű előtér-IP-címvel, amely segít az adatelérési út és az erőforrások egyetlen zónában való igazításában egy adott régióban.|
-| [Több webhely terheléselosztása a virtuális gépeken](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md) | Két virtuális gépet hoz létre több IP-konfigurációval, amelyek egy Azure-os terheléselosztón keresztül elérhető Azure rendelkezésre állási csoporthoz csatlakoznak. |
+| [A virtuális gépek forgalmának elosztása magas rendelkezésre állás érdekében](./scripts/load-balancer-linux-cli-sample-nlb.md) | Több virtuális gépet hoz létre egy magasan elérhető és terheléselosztásos konfigurációban. |
+| [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md) | Három virtuális gépet hoz létre különböző rendelkezésre állási zónákban a régión belül, és standard Load Balancer egy zóna redundáns előtér-IP-címével. Ez a terheléselosztó-konfiguráció segít az alkalmazások és adatok védelme érdekében egy teljes adatközpont valószínűtlen meghibásodása vagy elvesztése miatt. |
+|[Virtuális gépek terheléselosztása adott rendelkezésre állási zónán belül](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)|Három virtuális gépet hoz létre, amely egy olyan standard Load Balancer, amely egy zónabeli előtér-IP-címmel rendelkezik, amely segítségével egyetlen zónában igazíthatja az adatelérési útvonalat és erőforrásokat egy adott régió|
+| [Terheléselosztás több webhelyről a virtuális gépeken](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md) | Két, több IP-konfigurációval rendelkező virtuális gépet hoz létre, amelyek egy Azure-beli rendelkezésre állási készlethez csatlakoznak, és egy Azure Load Balanceron keresztül |
 | | |
 

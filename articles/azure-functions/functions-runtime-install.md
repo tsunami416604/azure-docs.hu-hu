@@ -1,135 +1,135 @@
 ---
-title: Az Azure Functions futásidejű telepítése
-description: Az Azure Functions Runtime preview 2 telepítése
+title: Azure Functions-futtatókörnyezet telepítés
+description: A Azure Functions-futtatókörnyezet Preview 2 telepítése
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74226725"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>Az Azure Functions Runtime preview 2 telepítése
+# <a name="install-the-azure-functions-runtime-preview-2"></a>A 2. Azure Functions-futtatókörnyezet előzetes verziójának telepítése
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Ha telepíteni szeretné az Azure Functions Runtime preview 2-t, kövesse az alábbi lépéseket:
+Ha a Azure Functions-futtatókörnyezet Preview 2 verziót szeretné telepíteni, kövesse az alábbi lépéseket:
 
-1. Győződjön meg róla, hogy a gép megfelel a minimális követelményeknek.
-1. Töltse le az [Azure Functions Runtime Preview Installer](https://aka.ms/azafrv2)alkalmazást.
-1. Távolítsa el az Azure Functions Runtime preview 1.Uninstall the Azure Functions Runtime preview 1.
-1. Telepítse az Azure Functions Runtime preview 2-t.
-1. Végezze el az Azure Functions Runtime preview 2 konfigurációját.
-1. Az első funkció létrehozása az Azure Functions futásidejű előzetes verziójában
+1. Győződjön meg arról, hogy a gép megfelel a minimális követelményeknek.
+1. Töltse le a [Azure functions-futtatókörnyezet előzetes verziójának telepítőjét](https://aka.ms/azafrv2).
+1. Távolítsa el az 1. Azure Functions-futtatókörnyezet előzetes verzióját.
+1. Telepítse a Azure Functions-futtatókörnyezet Preview 2.
+1. Fejezze be a Azure Functions-futtatókörnyezet Preview 2 konfigurációját.
+1. Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes verzióban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Functions Runtime előzetes verzió telepítése előtt a következő erőforrásokkal kell rendelkeznie:
+A Azure Functions-futtatókörnyezet előzetes verziójának telepítése előtt a következő erőforrásokat kell elérhetővé tennie:
 
-1. Microsoft Windows Server 2016 vagy Microsoft Windows 10 Creators Update (Professional vagy Enterprise Edition) rendszert futtató gép.
-1. A hálózaton futó SQL Server-példány.  A minimális kiadás az SQL Server Express.
+1. Microsoft Windows Server 2016 vagy Microsoft Windows 10 Creators Update (Professional vagy Enterprise Edition) rendszert futtató számítógép.
+1. A hálózaton belül futó SQL Server példány.  A minimálisan szükséges kiadás SQL Server Express.
 
 ## <a name="uninstall-previous-version"></a>Előző verzió eltávolítása
 
-Ha korábban már telepítette az Azure Functions Runtime előzetes verziót, el kell távolítania a legújabb kiadás telepítése előtt.  Távolítsa el az Azure Functions runtime előzetes verzióját a program eltávolításával a Windows Programok telepítése/törlése segédprogramjában.
+Ha korábban már telepítette a Azure Functions-futtatókörnyezet előzetes verzióját, el kell távolítania a legújabb kiadás telepítése előtt.  Távolítsa el a Azure Functions-futtatókörnyezet előzetes verzióját, ha eltávolítja a programot a Windows rendszer programok telepítése és törlése alkalmazásával.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>Az Azure Functions runtime előzetes verziójának telepítése
+## <a name="install-the-azure-functions-runtime-preview"></a>A Azure Functions-futtatókörnyezet előzetes verziójának telepítése
 
-Az Azure Functions Runtime Preview Installer végigvezeti az Azure Functions runtime előzetes verziókezelési és feldolgozói szerepkörök telepítésén.  Lehetőség van a felügyeleti és a feldolgozói szerepkör ugyanazon a számítógépen telepíthető.  Azonban további függvényalkalmazások hozzáadásakor több feldolgozói szerepkört kell telepítenie további gépeken, hogy a függvényeket több dolgozóra méretezhet.
+A Azure Functions-futtatókörnyezet előzetes verziójának telepítője végigvezeti a Azure Functions-futtatókörnyezet előzetes verziójú felügyeleti és feldolgozói szerepkörök telepítésén.  A felügyeleti és a feldolgozói szerepkört ugyanarra a gépre lehet telepíteni.  Azonban a további Function-alkalmazások hozzáadásakor több feldolgozói szerepkört kell üzembe helyeznie a további gépeken, hogy a függvényeket több feldolgozóra lehessen méretezni.
 
-## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>A felügyeleti és a feldolgozói szerepkör telepítése ugyanarra a gépre
+## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>A felügyeleti és feldolgozói szerepkör telepítése ugyanarra a gépre
 
-1. Futtassa az Azure Functions futásidejű előzetes telepítőt.
+1. Futtassa a Azure Functions-futtatókörnyezet Preview telepítőjét.
 
-    ![Az Azure Functions futásidejű előzetes telepítője][1]
+    ![Azure Functions-futtatókörnyezet előzetes verziójának telepítője][1]
 
 1. Kattintson a **Tovább** gombra.
-1. Miután elolvasta a **feltételeket a EULA,** **jelölje be a jelölőnégyzetet,** hogy elfogadja a feltételeket, és kattintson a **Tovább** gombot előre.
-1. Válassza ki a gépen telepíteni kívánt **szerepköröket, majd** kattintson a **Tovább**gombra. **Functions Worker Role**
+1. Ha elolvasta a **végfelhasználói licencszerződés**feltételeit, **jelölje be a jelölőnégyzetet** a feltételek elfogadásához, majd kattintson a **tovább** gombra.
+1. Válassza ki azokat a szerepköröket, amelyeket telepíteni kíván a Machine **functions felügyeleti szerepkör** és/vagy **functions feldolgozói szerepkörre** , majd kattintson a **tovább**gombra.
 
-    ![Azure Functions Runtime előzetes telepítő – szerepkör kiválasztása][3]
-
-    > [!NOTE]
-    > A Functions **Worker role** számos más gépre telepíthető. Ehhez kövesse az alábbi utasításokat, és csak a **kezelői szerepkör funkciók lehetőséget** válassza a telepítőben.
-
-1. Kattintson a **Tovább** gombra, ha azt szeretné, hogy az **Azure Functions futásidejű telepítővarázsló** megkezdje a telepítési folyamatot a számítógépen.
-1. Miután elkészült, a telepítő varázsló elindítja az **Azure Functions Runtime** konfigurációs eszközt.
-
-    ![Az Azure Functions futásidejű előzetes telepítője kész][6]
+    ![Azure Functions-futtatókörnyezet előzetes verziójának telepítője – szerepkör kiválasztása][3]
 
     > [!NOTE]
-    > Ha **windows 10-re** telepít, és a **Tároló** szolgáltatás korábban még nincs engedélyezve, az Azure **Functions Runtime setup** kéri, hogy indítsa újra a számítógépet a telepítés befejezéséhez.
+    > A **functions feldolgozói szerepkört** számos más gépen is telepítheti. Ehhez kövesse az alábbi utasításokat, és csak a **functions feldolgozói szerepkört** válassza ki a telepítőben.
 
-## <a name="configure-the-azure-functions-runtime"></a>Az Azure Functions runtime konfigurálása
+1. Kattintson a **tovább** gombra, hogy a **Azure functions-futtatókörnyezet** telepítővarázsló megkezdje a telepítési folyamatot a gépen.
+1. Ha elkészült, a telepítővarázsló elindítja a **Azure functions-futtatókörnyezet** konfigurációs eszközt.
 
-Az Azure Functions runtime telepítésének befejezéséhez be kell fejeznie a konfigurációt.
+    ![Azure Functions-futtatókörnyezet előnézet telepítője kész][6]
 
-1. Az **Azure Functions Runtime** konfigurációs eszköz megmutatja, hogy mely szerepkörök vannak telepítve a gépen.
+    > [!NOTE]
+    > Ha a-t a **Windows 10 rendszerre** telepíti, és a **tároló** funkció korábban nem volt engedélyezve, a **Azure functions-futtatókörnyezet telepítője** felszólítja a gép újraindítására a telepítés befejezéséhez.
 
-    ![Az Azure Functions Runtime előzetes konfigurációs eszköze][7]
+## <a name="configure-the-azure-functions-runtime"></a>A Azure Functions-futtatókörnyezet konfigurálása
 
-1. Kattintson az **Adatbázis** fülre, adja meg az SQL Server-példány kapcsolatának részleteit, például adja meg [az Adatbázis-főkulcs kulcsát,](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)majd kattintson az Alkalmaz **gombra.**  Az SQL Server-példányhoz való kapcsolódás szükséges ahhoz, hogy az Azure Functions Runtime adatbázist hozzon létre a Futásidejű támogatásához.
+A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kell hajtania a konfigurációt.
 
-    ![Az Azure Functions futásidejű előzetes adatbázis-konfigurációja][8]
+1. A **Azure functions-futtatókörnyezet** konfigurációs eszköz megjeleníti, hogy mely szerepkörök vannak telepítve a gépen.
 
-1. Kattintson a **Hitelesítő adatok** fülre.  Itt két új hitelesítő adatot kell létrehoznia egy fájlmegosztással való használatra az összes függvényalkalmazás üzemeltetéséhez.  Adja meg **a felhasználónév** és **a jelszó** kombinációt a **fájlmegosztás tulajdonosának** és a **fájlmegosztás-felhasználónak,** majd kattintson az **Alkalmaz**gombra.
+    ![Azure Functions-futtatókörnyezet előnézet konfigurációs eszköz][7]
 
-    ![Az Azure Functions futásidejű előzetes hitelesítő adatai][9]
+1. Kattintson az **adatbázis** lapra, adja meg SQL Server példányának kapcsolati adatait, beleértve az [adatbázis főkulcsának](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)megadását, majd kattintson az **alkalmaz**gombra.  SQL Server-példányhoz való kapcsolódásra van szükség ahhoz, hogy a Azure Functions-futtatókörnyezet adatbázist hozzon létre a futtatókörnyezet támogatásához.
 
-1. Kattintson a **Fájlmegosztás** fülre.  Itt meg kell adnia a fájlmegosztás helyének részleteit.  A fájlmegosztás létrehozható, vagy használhat egy meglévő fájlmegosztást, és kattintson **az Alkalmaz**gombra.  Ha új fájlmegosztási helyet választ, meg kell adnia egy könyvtárat az Azure Functions Runtime számára.
+    ![Azure Functions-futtatókörnyezet előnézeti adatbázis konfigurálása][8]
 
-    ![Azure Functions Runtime előzetes fájlmegosztás][10]
+1. Kattintson a **hitelesítő adatok** fülre.  Itt két új hitelesítő adatot kell létrehoznia egy fájlmegosztás használatával az összes Function-alkalmazás üzemeltetéséhez.  Adja meg a **fájlmegosztás tulajdonosának** és a **fájlmegosztás felhasználójának** **felhasználónevét** és **jelszavát** , majd kattintson az **alkalmaz**gombra.
 
-1. Kattintson az **IIS** fülre.  Ez a lap az Azure Functions Runtime konfigurációs eszköz által létrehozott IIS-ben található webhelyek részleteit jeleníti meg.  Itt megadhat egy egyéni DNS-nevet az Azure Functions Runtime preview portálhoz.  Kattintson **az Alkalmazás gombra** a befejezéshez.
+    ![Azure Functions-futtatókörnyezet előzetes verziójú hitelesítő adatok][9]
 
-    ![Az Azure Functions futásidejű előzetes verziójának IIS-e][11]
+1. Kattintson a **fájlmegosztás** fülre.  Itt meg kell adnia a fájlmegosztás helyének részleteit.  A fájlmegosztás létrehozható, vagy használhat egy meglévő fájlmegosztást, és kattintson az **alkalmaz**gombra.  Ha új fájlmegosztási helyet választ, meg kell adnia egy könyvtárat, amelyet a Azure Functions-futtatókörnyezet használhat.
 
-1. Kattintson a **Szolgáltatások** fülre.  Ez a lap az Azure Functions futásidejű konfigurációs eszköz szolgáltatásainak állapotát mutatja be.  Ha az **Azure Functions Host Activation Service** nem fut a kezdeti konfiguráció után, kattintson a Szolgáltatás **indítása**gombra.
+    ![Azure Functions-futtatókörnyezet előnézet-fájlmegosztás][10]
 
-    ![Az Azure Functions futásidejű előzetes konfigurációja befejeződött][12]
+1. Kattintson az **IIS** fülre.  Ezen a lapon megtekintheti az IIS-ben a Azure Functions-futtatókörnyezet konfigurációs eszköz által létrehozott webhelyek részleteit.  Itt megadhat egyéni DNS-nevet a Azure Functions-futtatókörnyezet betekintő portálhoz.  A befejezéshez kattintson az **alkalmaz** gombra.
 
-1. Tallózással keresse meg az **Azure Functions Runtime Portal** tallózva. `https://<machinename>.<domain>/`
+    ![Azure Functions-futtatókörnyezet előnézet IIS][11]
 
-    ![Az Azure Functions futásidejű előzetes portálja][13]
+1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon láthatók a Azure Functions-futtatókörnyezet konfigurációs eszköz szolgáltatásainak állapota.  Ha a **Azure functions gazdagép aktiválási szolgáltatása** nem fut a kezdeti konfigurálás után, kattintson a **szolgáltatás indítása**lehetőségre.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Az első funkció létrehozása az Azure Functions Runtime előzetes verziójában
+    ![Azure Functions-futtatókörnyezet előzetes verzió konfigurációjának befejezése][12]
 
-Az első függvény létrehozása az Azure Functions Runtime előzetes verziójában
+1. Tallózással keresse meg a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>/`.
 
-1. Tallózással keresse meg `https://<machinename>.<domain>` például `https://mycomputer.mydomain.com`az Azure Functions **Runtime Portal** tallózva.
+    ![Azure Functions-futtatókörnyezet betekintő portál][13]
 
-1. Ha a tartományban van telepítve, jelentkezzen **be,** használja a tartományi fiók felhasználónevét és jelszavát, ellenkező esetben a helyi fiók felhasználónevét és jelszavát használja a portálra való bejelentkezéshez.
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes verzióban
 
-    ![Az Azure Functions Runtime előzetes portálbejelentkezési portálja][14]
+Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes verzióban
 
-1. Függvényalkalmazások létrehozásához létre kell hoznia egy Előfizetést.  A portál bal felső sarkában kattintson **+** az előfizetések melletti lehetőségre.
+1. Keresse meg például `https://mycomputer.mydomain.com`a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>` .
 
-    ![Az Azure Functions Runtime előzetes portálelőfizetései][15]
+1. A rendszer arra kéri, hogy **Jelentkezzen be**, ha egy tartományban van telepítve, használja a tartományi fiókja felhasználónevét és jelszavát, máskülönben a helyi fiók felhasználónevét és jelszavát használja a portálra való bejelentkezéshez.
 
-1. Válassza **a DefaultPlan**( Alapértelmezett terv) lehetőséget, adja meg az előfizetés nevét, majd kattintson a **Létrehozás gombra.**
+    ![Azure Functions-futtatókörnyezet betekintő portál bejelentkezés][14]
 
-    ![Az Azure Functions Runtime előzetes portál előfizetési csomagja és neve][16]
+1. A Function apps létrehozásához létre kell hoznia egy előfizetést.  A portál bal felső sarkában kattintson az **+** előfizetések melletti lehetőségre.
 
-1. Az összes függvényalkalmazás a portál bal oldali ablaktáblájában jelenik meg.  Új függvényalkalmazás létrehozásához jelölje ki a **függvényalkalmazások címsort,** és kattintson a **+** lehetőségre.
+    ![Azure Functions-futtatókörnyezet betekintő portál előfizetései][15]
 
-1. Adja meg a függvényalkalmazás nevét, válassza ki a megfelelő előfizetést, válassza ki, hogy az Azure Functions futásidejű melyik verziójához szeretne programozni, és kattintson a **Létrehozás gombra.**
+1. Válassza a **DefaultPlan**lehetőséget, adja meg az előfizetés nevét, majd kattintson a **Létrehozás**gombra.
 
-    ![Azure Functions Runtime preview portal új függvényalkalmazás][17]
+    ![Azure Functions-futtatókörnyezet betekintő portál előfizetési terve és neve][16]
 
-1. Az új függvényalkalmazás a portál bal oldali ablaktáblájában jelenik meg.  Válassza a Funkciók lehetőséget, majd kattintson az **Új függvény** elemre a portál középső ablaktábla tetején.
+1. Az összes Function-alkalmazás a portál bal oldali ablaktábláján jelenik meg.  Új függvényalkalmazás létrehozásához válassza ki a fejléc **függvény alkalmazásait** , és kattintson **+** a lehetőségre.
 
-    ![Az Azure Functions futásidejű előzetes sablonjai][18]
+1. Adja meg a Function alkalmazás nevét, válassza ki a megfelelő előfizetést, válassza ki, hogy a Azure Functions futtatókörnyezet melyik verzióját szeretné programozni, és kattintson a **Létrehozás** gombra.
 
-1. Válassza ki az Időzítő trigger funkciót, a jobb oldali úszó `*/5 * * * * *` panelen a függvény nevét, és módosítsa az Ütemezés (ez a cron kifejezés okozza az időzítő funkció végrehajtása öt másodpercenként), és kattintson a **Create**
+    ![Azure Functions-futtatókörnyezet betekintő portál új Function alkalmazás][17]
 
-    ![Az Azure Functions Runtime preview új időzítőfunkció-konfigurációja][19]
+1. Az új Function-alkalmazás a portál bal oldali ablaktábláján jelenik meg.  Válassza a függvények lehetőséget, majd kattintson a portál középső paneljének tetején található **new Function (új függvény** ) elemre.
 
-1. A funkció létrehozása létrejött.  Megtekintheti a végrehajtási naplót a függvény alkalmazás kibontásával a **napló** ablaktábla alján a portálon.
+    ![Azure Functions-futtatókörnyezet előnézeti sablonok][18]
 
-    ![Az Azure Functions futásidejű előzetes verziója funkció végrehajtása][20]
+1. Válassza ki az időzítő eseményindító függvényt, a jobb oldali menüben adja meg a függvényt, és módosítsa `*/5 * * * * *` az ütemtervet (ez a cron-kifejezés azt eredményezi, hogy az időzítő függvény öt másodpercenként végrehajtódik), majd kattintson a **Létrehozás** gombra.
+
+    ![Azure Functions-futtatókörnyezet előzetes verzió új időzítő funkciójának konfigurálása][19]
+
+1. A függvény már létre lett hozva.  A Function alkalmazás végrehajtási naplóját a portál alján található **napló** ablaktábla kibontásával tekintheti meg.
+
+    ![Azure Functions-futtatókörnyezet előnézeti függvény végrehajtása][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

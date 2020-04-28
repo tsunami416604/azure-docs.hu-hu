@@ -1,6 +1,6 @@
 ---
 title: B2B külső együttműködési beállítások engedélyezése – Azure AD
-description: Megtudhatja, hogy miként engedélyezheti az Active Directory B2B külső együttműködését, és hogyan kezelheti, hogy ki hívhat meg vendégfelhasználókat. Meghívók delegálása a Vendégmeghívó szerepkör használatával.
+description: Megtudhatja, hogyan engedélyezheti Active Directory B2B külső együttműködését, és hogyan kezelheti a vendég felhasználókat meghívó személyeket. A meghívók delegálásához használja a vendég meghívó szerepkört.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,50 +12,50 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272898"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>A B2B külső együttműködés engedélyezése és annak kezelése, hogy ki hívhat meg vendégeket
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégek meghívójának kezelése
 
-Ez a cikk ismerteti, hogyan engedélyezheti az Azure Active Directory (Azure AD) B2B együttműködést, és határozza meg, hogy ki hívhat vendégeket. Alapértelmezés szerint a címtárban lévő összes felhasználó és vendég akkor is meghívhat vendégeket, ha nincs enek rendszergazdai szerepkörhöz rendelve. A külső együttműködési beállítások lehetővé teszik a vendégmeghívók be- és kikapcsolását a szervezet különböző felhasználói számára. Az egyes felhasználóknak is delegálhat meghívókat, ha olyan szerepköröket rendel hozzá, amelyek lehetővé teszik számukra a vendégek meghívását.
+Ez a cikk bemutatja, hogyan engedélyezheti a Azure Active Directory (Azure AD) B2B-együttműködést, és meghatározhatja, hogy kik hívhatják meg a vendégeket. Alapértelmezés szerint a címtárban lévő összes felhasználó és vendég meghívhatja a vendégeket, még akkor is, ha nincsenek rendszergazdai szerepkörhöz rendelve. A külső együttműködési beállítások lehetővé teszik a vendég meghívások be-és kikapcsolását a szervezet különböző típusaihoz. Az egyes felhasználóknak küldött meghívókat olyan szerepkörök hozzárendelésével is delegálhatja, amelyek lehetővé teszik a vendégek meghívását.
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B külső együttműködési beállítások konfigurálása
 
-Az Azure AD B2B együttműködéssel a bérlői rendszergazda a következő meghívási szabályzatokat állíthatja be:
+Az Azure AD B2B együttműködés révén a bérlői rendszergazdák a következő Meghívási szabályzatokat állíthatják be:
 
 - Meghívók kikapcsolása
-- Csak a Vendégmeghívó szerepkör adminisztrátorai és felhasználói hívhatnak meg
-- A rendszergazdák, a Vendégmeghívó szerepkör és a tagok meghívhatják
-- Minden felhasználó, beleértve a vendégeket is,
+- Csak a vendég meghívó szerepkörben található rendszergazdák és felhasználók hívhatják meg
+- Rendszergazdák, a vendég meghívó szerepkör, és a tagok meghívhatják
+- Minden felhasználó, a vendégeket is meghívhatja
 
-Alapértelmezés szerint minden felhasználó, beleértve a vendégeket is, meghívhat vendégfelhasználókat.
+Alapértelmezés szerint az összes felhasználó, köztük a vendégek is meghívhatják a vendég felhasználókat.
 
-### <a name="to-configure-external-collaboration-settings"></a>Külső együttműködési beállítások konfigurálása:
+### <a name="to-configure-external-collaboration-settings"></a>A külső együttműködési beállítások konfigurálása:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) bérlői rendszergazdaként.
-2. Válassza az **Azure Active Directory** > **felhasználóinak** > **beállításait.**
-3. A **Külső felhasználók csoportban**válassza **a Külső együttműködési beállítások kezelése**lehetőséget.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) bérlői rendszergazdaként.
+2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
+3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
    > [!NOTE]
-   > A **Külső együttműködési beállítások** a Szervezeti kapcsolatok lapon is **elérhetők.** Az Azure Active Directory **Kezelése területén**nyissa meg a **Szervezeti kapcsolatok** > **beállításai t.**
-4. A **Külső együttműködési beállítások** lapon válassza ki az engedélyezni kívánt házirendeket.
+   > A **külső együttműködési beállítások** a **szervezeti kapcsolatok** lapon is elérhetők. Azure Active Directory a **kezelés**alatt válassza a **szervezeti kapcsolatok** > **beállításai lehetőséget**.
+4. A **külső együttműködési beállítások** lapon válassza ki az engedélyezni kívánt házirendeket.
 
    ![Külső együttműködési beállítások](./media/delegate-invitations/control-who-to-invite.png)
 
-  - **A vendégfelhasználók engedélyei korlátozottak:** Ez a házirend a címtárban szereplő vendégek engedélyeit határozza meg. Válassza az **Igen** lehetőséget, ha le szeretné tiltani a vendégeket bizonyos címtárfeladatokból, például a felhasználók, csoportok vagy más címtár-erőforrások számbavételétől. Válassza a **Nem** lehetőséget, ha a címtáradatokhoz ugyanolyan hozzáférést szeretne biztosítani a címtáradatokhoz, mint a címtárban lévő normál felhasználók.
-   - **A vendégmeghívó szerepkör adminisztrátorai és felhasználói meghívhatják**a : Ha engedélyezni szeretné a "Vendégmeghívó" szerepkörben lévő rendszergazdáknak és felhasználóknak a vendégek meghívását, állítsa ezt a házirendet **Igen**beállításra.
-   - **A tagok meghívhatják:** Ha engedélyezni szeretné a könyvtár nem rendszergazdai tagjainak a vendégek meghívását, állítsa ezt a házirendet **Igen**beállításra.
-   - **A vendégek meghívhatják:** Ha engedélyezni szeretné a vendégeknek, hogy más vendégeket is meghívhassanak, állítsa ezt a szabályzatot **Igen**beállításra.
-   - **Egyszeri e-mail-jelkód engedélyezése a vendégek számára (előzetes verzió):** Az egyszeri jelkódfunkcióról az [Egyszeri jelkód-hitelesítés küldése (előzetes verzió) című témakörben](one-time-passcode.md)talál további információt.
-   - **Együttműködési korlátozások**: Az adott tartományokra szóló meghívók engedélyezéséről vagy letiltásáról az [Adott szervezetek b2b-felhasználóinak szóló meghívók engedélyezése vagy letiltása](allow-deny-list.md)című témakörben talál további információt.
+  - A **vendég felhasználói engedélyei korlátozottak**: Ez a házirend határozza meg a címtárban lévő vendégek engedélyeit. Az **Igen** gombot választva letilthatja a vendégeket bizonyos címtárbeli feladatokból, például a felhasználók, csoportok vagy más címtárbeli erőforrások számbavételével. Válassza a **nem** lehetőséget, ha a címtárban lévő felhasználók számára ugyanazokat a hozzáférést szeretné biztosítani a felhasználóknak.
+   - **Meghívhatják a rendszergazdákat és felhasználókat a vendég meghívó szerepkörben**: Ha engedélyezni szeretné a rendszergazdák és a felhasználók számára a "vendég meghívót" szerepkört a vendégek meghívásához, állítsa ezt a házirendet **Igen**értékre.
+   - A **tagok meghívhatják**: ha lehetővé szeretné tenni a címtár nem rendszergazdai tagjai számára a vendégek meghívását, állítsa **Igen**értékre a szabályzatot.
+   - A **vendégek meghívhatják**: ha lehetővé szeretné tenni a vendégek számára más vendégek meghívását, állítsa **Igen**értékre a szabályzatot.
+   - **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)**: az egyszeri PIN-kód szolgáltatással kapcsolatos további információkért lásd az [e-mailek egyszeri jelszavas hitelesítését (előzetes verzió)](one-time-passcode.md).
+   - **Együttműködési korlátozások**: az adott tartományokra vonatkozó meghívások engedélyezésével vagy blokkolásával kapcsolatos további információkért lásd: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](allow-deny-list.md).
 
-## <a name="assign-the-guest-inviter-role-to-a-user"></a>A Vendégmeghívó szerepkör hozzárendelése felhasználóhoz
+## <a name="assign-the-guest-inviter-role-to-a-user"></a>A vendég meghívó szerepkör társítása egy felhasználóhoz
 
-A Vendégmeghívó szerepkörrel lehetővé teheti az egyes felhasználók számára, hogy globális rendszergazdai vagy más rendszergazdai szerepkör hozzárendelése nélkül is meghívhassák őket. Rendelje hozzá a Vendég meghívó szerepkört az egyénekhez. Ezután győződjön meg arról, hogy a **rendszergazdák és a vendégmeghívó szerepkörben lévő felhasználók meghívhatják az** **Igen**lehetőséget.
+A vendég meghívó szerepkörrel egyéni felhasználók is meghívhatják a vendégeket, anélkül, hogy globális rendszergazdai vagy egyéb rendszergazdai szerepkört rendeljenek hozzájuk. Rendelje hozzá a vendég meghívó szerepkört az egyéni felhasználókhoz. Ezután győződjön meg arról, hogy **a rendszergazdák és a felhasználók megadhatják a vendég meghívó szerepkört** **Igen**értékre.
 
-Íme egy példa, amely bemutatja, hogyan használhatja a PowerShell t a vendégmeghívó szerepkörhöz való hozzáadásához:
+Az alábbi példa bemutatja, hogyan adhat hozzá felhasználót a vendég meghívó szerepkörhöz a PowerShell használatával:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
@@ -63,10 +63,10 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az alábbi cikkeket az Azure AD B2B együttműködés:
+Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [B2B együttműködési vendégfelhasználók hozzáadása meghívás nélkül](add-user-without-invite.md)
-- [B2B együttműködési felhasználó hozzáadása szerepkörhöz](add-guest-to-role.md)
+- [B2B Collaboration Guest Users hozzáadása meghívás nélkül](add-user-without-invite.md)
+- [B2B csoportmunka-felhasználó hozzáadása egy szerepkörhöz](add-guest-to-role.md)
 
 

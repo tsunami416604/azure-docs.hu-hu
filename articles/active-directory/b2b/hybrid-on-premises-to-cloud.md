@@ -1,6 +1,6 @@
 ---
-title: Helyi partnerfiókok szinkronizálása felhőben B2B-felhasználóként – Azure AD
-description: Az Azure AD B2B-együttműködéssel helyileg felügyelt külső partnerek nek is hozzáférést biztosíthatja a helyi és a felhőbeli erőforrásokhoz az azure AD B2B-együttműködéssel.
+title: Helyi partneri fiókok szinkronizálása a felhőbe B2B-felhasználókként – Azure AD
+description: A helyileg felügyelt külső partnerek a helyi és a Felhőbeli erőforrásokhoz is hozzáférhetnek ugyanazzal a hitelesítő adatokkal az Azure AD B2B együttműködés segítségével.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,38 +13,38 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272613"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Helyileg kezelt partnerfiókok hozzáférésének biztosítása a felhőbeli erőforrásokhoz az Azure AD B2B együttműködéshasználatával
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával
 
-Az Azure Active Directory (Azure AD) előtt a helyszíni identitásrendszerekkel rendelkező szervezetek hagyományosan felügyelt partnerfiókkal rendelkeznek a helyszíni címtárban. Egy ilyen szervezetben, amikor elkezdi áthelyezni az alkalmazásokat az Azure AD-be, győződjön meg arról, hogy partnerei hozzáférhetnek a szükséges erőforrásokhoz. Nem számít, hogy az erőforrások a helyszínen vagy a felhőben. Azt is szeretné, hogy a partnerfelhasználók ugyanazokat a bejelentkezési hitelesítő adatokat használhassák a helyszíni és az Azure AD-erőforrásokhoz is. 
+Az Azure Active Directory (Azure AD) előtt a helyszíni identitási rendszerekkel rendelkező szervezeteknek hagyományosan kezelt partneri fiókjai vannak a helyszíni címtárban. Ilyen szervezet esetén, amikor elkezdi áthelyezni az alkalmazásokat az Azure AD-ba, meg kell győződnie arról, hogy partnerei hozzáférhetnek a számukra szükséges erőforrásokhoz. Nem számít, hogy az erőforrások a helyszínen vagy a felhőben vannak-e. Azt is szeretné, hogy a partner felhasználóinak ugyanazokat a bejelentkezési hitelesítő adatokat tudják használni mind a helyszíni, mind az Azure AD-erőforrásokhoz. 
 
-Ha a külső partnerek számára fiókokat hoz létre a helyszíni címtárban (például létrehoz egy "wmoran" bejelentkezési nevet használó fiókot egy Wendy Moran nevű külső felhasználó számára a partners.contoso.com tartományban), most már szinkronizálhatja ezeket a fiókokat a Felhő. Pontosabban az Azure AD Connect segítségével szinkronizálhatja a partnerfiókokat a felhőben Azure AD B2B-felhasználók (azaz a UserType = Guest) használó felhasználók. Ez lehetővé teszi a partnerfelhasználók számára, hogy a felhőbeli erőforrásokhoz a helyi fiókokhoz hasonló hitelesítő adatokhasználatával férjenek hozzá anélkül, hogy a szükségesnél több hozzáférést biztosítanának számukra. 
+Ha a helyszíni címtárban hoz létre fiókokat a külső partnerekhez (például létrehoz egy "wmoran" bejelentkezési névvel rendelkező fiókot egy, a partners.contoso.com-tartományban található Wendy Moran nevű külső felhasználóhoz), most már szinkronizálhatja ezeket a fiókokat a felhővel. A Azure AD Connect segítségével szinkronizálhatja a partneri fiókokat a felhőbe Azure AD B2B-felhasználók (azaz a UserType = Guest) felhasználókkal. Ez lehetővé teszi a partner felhasználók számára, hogy a helyi fiókjaikkal megegyező hitelesítő adatokkal férjenek hozzá a felhőalapú erőforrásokhoz anélkül, hogy a számukra nagyobb hozzáférésre lenne szükségük. 
 
 ## <a name="identify-unique-attributes-for-usertype"></a>A UserType egyedi attribútumainak azonosítása
 
-Mielőtt engedélyezne a UserType attribútum szinkronizálását, először el kell döntenie, hogyan származtatja a UserType attribútumot a helyszíni Active Directoryból. Más szóval, milyen paraméterek a helyszíni környezetben egyediek a külső közreműködők számára? Határozza meg azt a paramétert, amely megkülönbözteti ezeket a külső közreműködőket a saját szervezet tagjaitól.
+Mielőtt engedélyezi a UserType attribútum szinkronizálását, először el kell döntenie, hogyan származtatja a UserType attribútumot a helyszíni Active Directoryból. Más szóval, hogy a helyszíni környezetben milyen paraméterek egyediek a külső közreműködők számára? Határozza meg azt a paramétert, amely megkülönbözteti ezeket a külső közreműködőket a saját szervezete tagjaitól.
 
-Ennek két közös megközelítése a következő:
+Két gyakori megközelítés:
 
-- Jelöljön ki egy nem használt helyszíni Active Directory attribútumot (például az Extensionattribute1 attribútumot), amelyet forrásattribútumként szeretne használni. 
-- Másik lehetőségként a UserType attribútum értékét más tulajdonságokból is levezetni. Ha például az összes felhasználót vendégként szeretné szinkronizálni, ha a helyszíni Active Directory UserPrincipalName attribútumuk a * \@tartománypartners.contoso.com.*
+- Kijelöl egy nem használt helyszíni Active Directory attribútumot (például extensionAttribute1), amelyet a forrás attribútumként kíván használni. 
+- Azt is megteheti, hogy származtatja a UserType attribútum értékét más tulajdonságokból. Például ha a helyi Active Directory userPrincipalName attribútuma a tartomány * \@Partners.contoso.com*végződik, szinkronizálni szeretné az összes felhasználót a vendégként.
  
-A részletes attribútumkövetelményekről a [UserType szinkronizálásának engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)című témakörben van. 
+A részletes attribútumokra vonatkozó követelményekért lásd: [a UserType szinkronizálásának engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Az Azure AD Connect konfigurálása a felhasználók felhővel való szinkronizálásához
+## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Azure AD Connect konfigurálása a felhasználók felhőbe való szinkronizálásához
 
-Miután azonosította az egyedi attribútumot, konfigurálhatja az Azure AD Connectet, hogy ezeket a felhasználókat azure AD B2B-felhasználókként (azaz UserType = Guest) szinkronizálja a felhőben. Engedélyezési szempontból ezek a felhasználók megkülönböztethetetlenek az Azure AD B2B együttműködési meghívási folyamaton keresztül létrehozott B2B-felhasználóktól.
+Az egyedi attribútum azonosítása után beállíthatja, hogy Azure AD Connect szinkronizálja ezeket a felhasználókat a felhőre az Azure AD B2B-felhasználók (azaz a UserType = Guest) felhasználók számára. Az engedélyezési szempontból ezek a felhasználók nem különböztethetők meg az Azure AD B2B együttműködés Meghívási folyamatán keresztül létrehozott B2B-felhasználóktól.
 
-A megvalósítási utasításokról a [UserType szinkronizálásának engedélyezése témakörben talál.](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)
+A megvalósítási utasításokért lásd: [a UserType szinkronizálásának engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Active Directory B2B együttműködés hibrid szervezetek számára](hybrid-organizations.md)
-- [B2B-felhasználók nak az Azure AD-ben való hozzáférés megadása a helyszíni alkalmazásokhoz](hybrid-cloud-to-on-premises.md)
-- Az Azure AD Connect áttekintése a [helyszíni könyvtárak integrálása az Azure Active Directoryval című témakörben található.](../hybrid/whatis-hybrid-identity.md)
+- [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
+- [B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez](hybrid-cloud-to-on-premises.md)
+- A Azure AD Connect áttekintését lásd: a [helyszíni címtárak integrálása Azure Active Directoryokkal](../hybrid/whatis-hybrid-identity.md).
 

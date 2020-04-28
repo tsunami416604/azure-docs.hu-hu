@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies és cloudMsExchUserHoldPolicies | Microsoft dokumentumok'
-description: Ez a témakör az msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies attribútumok viselkedését ismerteti
+title: 'Azure AD Connect: msExchUserHoldPolicies és cloudMsExchUserHoldPolicies | Microsoft Docs'
+description: Ez a témakör a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies attribútumok attribútum-viselkedését ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,60 +15,60 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74213077"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
-A következő referenciadokumentum ismerteti az Exchange által használt attribútumokat és az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
+Az alábbi dokumentum ismerteti ezeket az attribútumokat, amelyeket az Exchange használ, valamint az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mik azok az msExchUserHoldPolicies és cloudMsExchUserHoldPolicies?
-Az Exchange Server kiszolgálóhoz kétféle [raktér](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) áll rendelkezésre: peres eljárás miatti tartás és helybeni tartás. Ha a peres eljárás miatti tartás engedélyezve van, az összes postaláda várakoztatása várakoztatva lesz.  A helyben történő visszatartás csak azokat az elemeket őrzi meg, amelyek megfelelnek a helyben történő elektronikus adatfeltárás eszközzel meghatározott keresési lekérdezés feltételeinek.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mi a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies?
+Az Exchange Serverhez két különböző típusú [tároló érhető el: a peres](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a helyben tartás. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  A helyben tartott tárolók csak azokat az elemeket őrzik meg, amelyek megfelelnek a helyi elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
 
-Az MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók vannak várakoztatva attól függően, hogy helyszíni Exchange vagy Exchange on-line szolgáltatást használnak-e.
+A MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók tartanak fenn, attól függően, hogy helyszíni Exchange-et vagy Exchange-et használnak-e.
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies szinkronizálási folyamat
-Alapértelmezés szerint az MsExchUserHoldPolcies-t az Azure AD Connect közvetlenül a metaverzumban lévő msExchUserHoldPolicies attribútummal, majd az Azure AD msExchUserHoldPolices attribútumával szinkronizálja.
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies szinkronizálási folyamata
+Alapértelmezés szerint a MsExchUserHoldPolcies szinkronizálja Azure AD Connect közvetlenül a metaverse-ban található msExchUserHoldPolicies attribútummal, majd az Azure AD msExchUserHoldPolices attribútumával.
 
-Az alábbi táblázatok a folyamatot ismertetik:
+Az alábbi táblázatok ismertetik a folyamatot:
 
-Bejövő bejövő a helyszíni Active Directoryból:
+Helyszíni Active Directorytól bejövő:
 
-|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverzum attribútum|Szinkronizálási szabály|
+|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverse-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|Be az AD - Felhasználói exchange|
+|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|Az AD-User Exchange-ből|
 
-Kimenő Azure AD:
+Kimenő az Azure AD-be:
 
-|Metaverzum attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
+|Metaverse-attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Kimenő AAD - UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|HRE – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies szinkronizálási folyamat
-Alapértelmezés szerint cloudMsExchUserHoldPolicies szinkronizálja az Azure AD Connect közvetlenül a cloudMsExchUserHoldPolicies attribútum a metaverzumban. Ezután ha az msExchUserHoldPolices értéke nem null a metaverzumban, akkor a befelé irányuló attribútum kiáramlott az Active Directoryba.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies szinkronizálási folyamata
+Alapértelmezés szerint a cloudMsExchUserHoldPolicies szinkronizálja Azure AD Connect közvetlenül a metaverse cloudMsExchUserHoldPolicies attribútumához. Ezt követően, ha a msExchUserHoldPolices nem null értékű a metaverse-ben, az attribútum a Active Directory.
 
-Az alábbi táblázatok a folyamatot ismertetik:
+Az alábbi táblázatok ismertetik a folyamatot:
 
-Bejövő az Azure AD-ből:
+Bejövő Azure AD-ből:
 
-|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverzum attribútum|Szinkronizálási szabály|
+|Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverse-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Helyszíni Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|Be az AAD - Felhasználói csere|
+|Helyszíni Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|HRE – felhasználói Exchange|
 
-Kimenő szolgáltatás a helyszíni Active Directoryba:
+Kimenő – helyszíni Active Directory:
 
-|Metaverzum attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
+|Metaverse-attribútum|Attribútum neve|Folyamat típusa|Azure AD-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|HA(NEM NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF (NEM NULL)|msExchUserHoldPolicies|Ki az AD – UserExchangeOnline|
 
 ## <a name="information-on-the-attribute-behavior"></a>Az attribútum viselkedésére vonatkozó információk
-Az msExchangeUserHoldPolicies egyetlen hatóságattribútum.  Egyetlen hatóságattribútum állítható be egy objektumon (ebben az esetben felhasználói objektumon) a helyszíni könyvtárban vagy a felhőkönyvtárban.  A Jogosultság kezdete szabályok azt diktálják, hogy ha az attribútum szinkronizálva van a helyszíni, majd az Azure AD nem lesz szabad frissíteni ezt az attribútumot.
+A msExchangeUserHoldPolicies egyetlen szolgáltatói attribútum.  Egyetlen Authority attribútum állítható be egy objektumra (ebben az esetben a felhasználói objektumra) a helyszíni címtárban vagy a Felhőbeli címtárban.  A felügyeleti szabályok kezdete azt diktálja, hogy ha az attribútum a helyszíni rendszerből van szinkronizálva, akkor az Azure AD nem fogja tudni frissíteni ezt az attribútumot.
 
-Annak érdekében, hogy a felhasználók holdszabályzatot állíthassanak be egy felhasználói objektumon a felhőben, a cloudMSExchangeUserHoldPolicies attribútumot használja a rendszer. Ez az attribútum azért használatos, mert az Azure AD nem tudja beállítani msExchangeUserHoldPolicies közvetlenül a fent ismertetett szabályok alapján.  Ez az attribútum ezután szinkronizálja a helyszíni könyvtárba, ha az msExchangeUserHoldPolicies nem null értékű, és lecseréli az msExchangeUserHoldPolicies aktuális értékét.
+Annak lehetővé tétele, hogy a felhasználók a felhőben lévő felhasználói objektumon állítsanak be tartási szabályzatot, a rendszer a cloudMSExchangeUserHoldPolicies attribútumot használja. Ezt az attribútumot használja a rendszer, mert az Azure AD nem tudja közvetlenül beállítani a msExchangeUserHoldPolicies a fent ismertetett szabályok alapján.  Ezt az attribútumot ezután a rendszer visszaszinkronizálja a helyszíni címtárral, ha a msExchangeUserHoldPolicies nem null értékű, és lecseréli a msExchangeUserHoldPolicies aktuális értékét.
 
-Bizonyos körülmények között, például ha mindkettő a helyszínen és az Azure-ban egy időben, ez okozhat bizonyos problémákat.  
+Bizonyos körülmények között, például ha mindkettőt a helyszínen és az Azure-ban módosították egyszerre, akkor ez bizonyos problémákat okozhat.  
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

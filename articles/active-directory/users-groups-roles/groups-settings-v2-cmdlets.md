@@ -1,7 +1,7 @@
 ---
-title: Példák a PowerShell V2 csoportok kezelésére – Azure AD | Microsoft dokumentumok
-description: Ez a lap PowerShell-példákat tartalmaz a csoportok Azure Active Directoryban való kezeléséhez
-keywords: Azure AD, Azure Active Directory, PowerShell, Csoportok, Csoportkezelés
+title: PowerShell V2 példák a csoportok kezelésére – Azure AD | Microsoft Docs
+description: Ez az oldal PowerShell-példákkal segíti a csoportok kezelését Azure Active Directory
+keywords: Azure AD, Azure Active Directory, PowerShell, csoportok, csoport kezelése
 services: active-directory
 author: curtand
 manager: daveba
@@ -15,32 +15,32 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74233116"
 ---
-# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Az Azure Active Directory 2-es verziójának parancsmagjai a csoportkezeléshez
+# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
 > [!div class="op_single_selector"]
-> - [Azure-portál](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> - [Powershell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
-Ez a cikk példákat tartalmaz arra, hogyan használhatja a PowerShellt a csoportok kezelésére az Azure Active Directoryban (Azure AD).  Azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modul. Először le kell [töltenie az Azure AD PowerShell-modult.](https://www.powershellgallery.com/packages/AzureAD/)
+Ez a cikk példákat tartalmaz arra, hogyan használhatja a PowerShell-t a csoportok kezelésére Azure Active Directory (Azure AD).  Emellett azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modult. Először [le kell töltenie az Azure ad PowerShell-modult](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell-modul telepítése
 
-Az Azure AD PowerShell-modul telepítéséhez használja a következő parancsokat:
+Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
 
 ```powershell
     PS C:\Windows\system32> install-module azuread
     PS C:\Windows\system32> import-module azuread
 ```
 
-Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, használja a következő parancsot:
+A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
 
 ```powershell
     PS C:\Windows\system32> get-module azuread
@@ -50,17 +50,17 @@ Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, használja 
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Most már elkezdheti használni a modul parancsmagjait. Az Azure AD modul parancsmagjainak teljes leírását az [Azure Active Directory PowerShell 2-es verziójának](/powershell/azure/install-adv2?view=azureadps-2.0)online referenciadokumentációjában találja.
+Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását a [Azure Active Directory PowerShell 2-es verziójának](/powershell/azure/install-adv2?view=azureadps-2.0)online dokumentációjában találja.
 
-## <a name="connect-to-the-directory"></a>Csatlakozás a könyvtárhoz
+## <a name="connect-to-the-directory"></a>Kapcsolódás a címtárhoz
 
-Mielőtt elkezdheti a csoportok kezelését az Azure AD PowerShell-parancsmagokkal, csatlakoztatnia kell a PowerShell-munkamenetet a kezelni kívánt könyvtárhoz. Használja az alábbi parancsot:
+A csoportok Azure AD PowerShell-parancsmagokkal történő kezelésének megkezdése előtt össze kell kapcsolni a PowerShell-munkamenetet a felügyelni kívánt címtárral. Használja az alábbi parancsot:
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-A parancsmag a címtár eléréséhez használni kívánt hitelesítő adatok megadását kéri. Ebben a példában karen@drumkit.onmicrosoft.com a bemutató könyvtár eléréséhez használjuk. A parancsmag megerősítést ad arról, hogy a munkamenet sikeresen csatlakozott a címtárhoz:
+A parancsmag kérni fogja a címtár eléréséhez használni kívánt hitelesítő adatokat. Ebben a példában a szolgáltatást használjuk karen@drumkit.onmicrosoft.com a bemutató könyvtár eléréséhez. A parancsmag visszaigazolja a munkamenet sikeres csatlakoztatását a címtárhoz:
 
 ```powershell
     Account                       Environment Tenant
@@ -68,27 +68,27 @@ A parancsmag a címtár eléréséhez használni kívánt hitelesítő adatok me
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
-Most már elkezdheti használni az AzureAD-parancsmagokat a címtárban lévő csoportok kezeléséhez.
+Most már elkezdheti a AzureAD-parancsmagok használatát a csoportok kezeléséhez a címtárban.
 
-## <a name="retrieve-groups"></a>Csoportok beolvasása
+## <a name="retrieve-groups"></a>Csoportok lekérése
 
-Meglévő csoportok beolvasásához a címtárból, használja a Get-AzureADGroups parancsmag. 
+A meglévő csoportok címtárból való lekéréséhez használja a Get-AzureADGroups parancsmagot. 
 
-A címtárösszes csoportjának beolvasásához használja a parancsmabot paraméterek nélkül:
+A címtárban lévő összes csoport lekéréséhez használja a következő parancsmagot paraméterek nélkül:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup
 ```
 
-A parancsmag a csatlakoztatott könyvtár összes csoportját adja vissza.
+A parancsmag az összes csoportot visszaadja a csatlakoztatott címtárban.
 
-Az -objectID paraméter rel egy adott csoport beolvasásához használhatja, amelyhez a csoport objektumazonosítóját adja meg:
+A-objectID paraméterrel lekérhet egy adott csoportot, amelyhez meg kell adnia a csoport objectID:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 ```
 
-A parancsmag most azt a csoportot adja vissza, amelynek objectID azonosítója megegyezik a megadott paraméter értékével:
+A parancsmag most visszaadja azt a csoportot, amelynek objectID megegyezik a megadott paraméter értékével:
 
 ```powershell
     DeletionTimeStamp            :
@@ -107,7 +107,7 @@ A parancsmag most azt a csoportot adja vissza, amelynek objectID azonosítója m
     SecurityEnabled              : True
 ```
 
-Egy adott csoportot a -filter paraméterrel kereshet. Ez a paraméter egy ODATA szűrőzáradékot vesz fel, és a következő példában szereplő összes olyan csoportot visszaadja, amely megfelel a szűrőnek:
+A-Filter paraméter használatával kereshet egy adott csoportot. Ez a paraméter egy ODATA szűrő záradékot használ, és visszaadja az összes olyan csoportot, amely megfelel a szűrőnek, ahogy az alábbi példában is látható:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -130,19 +130,19 @@ Egy adott csoportot a -filter paraméterrel kereshet. Ez a paraméter egy ODATA 
 ```
 
 > [!NOTE]
-> Az Azure AD PowerShell-parancsmagok megvalósítják az OData-lekérdezési szabványt. További információt az [OData-végpont használatával az OData-végpont használatával](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)$filter az OData rendszer lekérdezési beállításaiban című témakörben talál. **$filter**
+> Az Azure AD PowerShell-parancsmagok implementálják a OData lekérdezési szabványt. További információ: **$Filter** a [OData rendszer-lekérdezési beállításokban az OData végpont használatával](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
 ## <a name="create-groups"></a>Csoportok létrehozása
 
-Új csoport létrehozásához a címtárban használja a New-AzureADGroup parancsmag. Ez a parancsmag létrehoz egy új biztonsági csoportot, a "Marketing" nevű csoportot:
+Ha új csoportot szeretne létrehozni a címtárban, használja a New-AzureADGroup parancsmagot. Ez a parancsmag létrehoz egy "marketing" nevű új biztonsági csoportot:
 
 ```powershell
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 ```
 
-## <a name="update-groups"></a>Csoportok frissítése
+## <a name="update-groups"></a>Frissítési csoportok
 
-Meglévő csoport frissítéséhez használja a Set-AzureADGroup parancsmag. Ebben a példában az "Intune rendszergazdák" csoport DisplayName tulajdonságát módosítjuk. Először is a Get-AzureADGroup parancsmag és -szűrő használatával találjuk meg a csoportot a DisplayName attribútum használatával:
+Meglévő csoport frissítéséhez használja a set-AzureADGroup parancsmagot. Ebben a példában az "Intune-rendszergazdák" csoport DisplayName tulajdonságát módosítjuk. Először a Get-AzureADGroup parancsmaggal és a szűréssel keresse meg a csoportot a DisplayName attribútum használatával:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -164,13 +164,13 @@ Meglévő csoport frissítéséhez használja a Set-AzureADGroup parancsmag. Ebb
     SecurityEnabled              : True
 ```
 
-Ezután módosítjuk a Description tulajdonságot az "Intune-eszközrendszergazdák" új értékre:
+Ezután a Description (Leírás) tulajdonságot az "Intune-eszköz rendszergazdája" értékre változtatjuk:
 
 ```powershell
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-Most, ha újra megtaláljuk a csoportot, azt látjuk, hogy a Description tulajdonság frissül, hogy tükrözze az új értéket:
+Ha már megtalálta a csoportot, a Description (Leírás) tulajdonság frissül, hogy tükrözze az új értéket:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -193,7 +193,7 @@ Most, ha újra megtaláljuk a csoportot, azt látjuk, hogy a Description tulajdo
 
 ## <a name="delete-groups"></a>Csoportok törlése
 
-Csoportok törlése a címtárból, használja az Eltávolítás-AzureADGroup parancsmag az alábbiak szerint:
+A címtárból származó csoportok törléséhez használja a Remove-AzureADGroup parancsmagot az alábbi módon:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
@@ -203,17 +203,17 @@ Csoportok törlése a címtárból, használja az Eltávolítás-AzureADGroup pa
 
 ### <a name="add-members"></a>Tagok hozzáadása
 
-Ha új tagokat szeretne hozzáadni egy csoporthoz, használja az Add-AzureADGroupMember parancsmag. Ez a parancs hozzáad egy tagot az előző példában használt Intune Rendszergazdák csoporthoz:
+Ha új tagokat szeretne felvenni egy csoportba, használja az Add-AzureADGroupMember parancsmagot. Ezzel a paranccsal egy tagot adhat hozzá az előző példában használt Intune-rendszergazdák csoportjához:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-A -ObjectId paraméter annak a csoportnak az ObjectID azonosítója, amelyhez tagot szeretnénk hozzáadni, és a -RefObjectId annak a felhasználónak az ObjectID azonosítója, amelyet tagként szeretnénk hozzáadni a csoporthoz.
+A-ObjectId paraméter annak a csoportnak a ObjectID, amelyhez hozzá szeretne adni egy tagot, a-RefObjectId pedig annak a felhasználónak a ObjectID, akit tagként hozzá kíván adni a csoporthoz.
 
-### <a name="get-members"></a>Tagok beszereznie
+### <a name="get-members"></a>Tagok beolvasása
 
-Egy csoport meglévő tagjainak lekért, használja a Get-AzureADGroupMember parancsmag, mint ebben a példában:
+Egy csoport meglévő tagjainak beszerzéséhez használja a Get-AzureADGroupMember parancsmagot, az alábbi példában látható módon:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -226,7 +226,7 @@ Egy csoport meglévő tagjainak lekért, használja a Get-AzureADGroupMember par
 
 ### <a name="remove-members"></a>Tagok eltávolítása
 
-A csoporthoz korábban felvett tag eltávolításához használja az Eltávolítás-AzureADGroupMember parancsmalapot, ahogy az itt látható:
+Ha el szeretné távolítani a csoportba előzőleg hozzáadott tagot, használja a Remove-AzureADGroupMember parancsmagot, ahogy az itt látható:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -234,19 +234,19 @@ A csoporthoz korábban felvett tag eltávolításához használja az Eltávolít
 
 ### <a name="verify-members"></a>Tagok ellenőrzése
 
-A felhasználó csoporttagságainak ellenőrzéséhez használja a Select-AzureADGroupIdsUserIsMemberOf parancsmag. Ez a parancsmag a paraméterek a felhasználó ObjectId, amelynek a csoporttagságok, és a csoportok listáját, amelyek hez, hogy ellenőrizze a tagságok. A csoportok listáját "Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck" típusú összetett változó formájában kell megadni, ezért először létre kell hoznunk egy ilyen típusú változót:
+Egy felhasználó csoport-tagságának ellenőrzéséhez használja a Select-AzureADGroupIdsUserIsMemberOf parancsmagot. Ez a parancsmag annak a felhasználónak a ObjectId, amelynek a csoport tagságát ellenőriznie kell, valamint azoknak a csoportoknak a listáját, amelyeknek a tagságát ellenőriznie kell. A csoportok listáját "Microsoft. Open. AzureAD. Model. GroupIdsForMembershipCheck" típusú összetett változó formájában kell megadni, ezért először létre kell hoznia egy változót a következő típussal:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 ```
 
-Ezután értékeket adunk a groupIds-nek, hogy ellenőrizze a "GroupIds" attribútumot ennek az összetett változónak:
+A következő lépésben az összetett változó "GroupIds" attribútumának beadásához szükséges groupIds értékeket adja meg:
 
 ```powershell
     PS C:\Windows\system32> $g.GroupIds = "b11ca53e-07cc-455d-9a89-1fe3ab24566b", "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
 ```
 
-Most, ha azt akarjuk, hogy ellenőrizze a csoport tagsága a felhasználó ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea ellen csoportok $g, akkor kell használni:
+Ha a ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea rendelkező felhasználó csoport-tagságát szeretné ellenőrizni a $g-ban található csoportokkal, a következőt kell használnia:
 
 ```powershell
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
@@ -256,21 +256,21 @@ Most, ha azt akarjuk, hogy ellenőrizze a csoport tagsága a felhasználó Objec
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-A visszaadott érték azoknak a csoportoknak a listája, amelyeknek ez a felhasználó tagja. Ezt a módszert a Kapcsolattartók, csoportok vagy egyszerű szolgáltatástagok tagságának ellenőrzésére is alkalmazhatja a Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf vagy Select-AzureADGroupIdsServicePrincipalIsMemberOf
+A visszaadott érték azoknak a csoportoknak a listája, amelyeknek ez a felhasználó a tagja. Ezt a módszert alkalmazhatja a névjegyek, csoportok vagy egyszerű szolgáltatások tagságának a csoportok adott listájához való megadására is, a Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf vagy Select-AzureADGroupIdsServicePrincipalIsMemberOf használatával.
 
-## <a name="disable-group-creation-by-your-users"></a>A felhasználók csoportlétrehozásának letiltása
+## <a name="disable-group-creation-by-your-users"></a>Csoport létrehozásának letiltása a felhasználók számára
 
-Megakadályozhatja, hogy a nem rendszergazda felhasználók biztonsági csoportokat hozzanak létre. A Microsoft Online Directory Services (MSODS) alapértelmezett viselkedése az, hogy lehetővé teszi a nem rendszergazda felhasználók számára, hogy csoportokat hozzanak létre, függetlenül attól, hogy az önkiszolgáló csoportkezelés (SSGM) is engedélyezve van-e. Az SSGM beállítás csak a Saját alkalmazások hozzáférési panelen szabályozza a viselkedést.
+Megakadályozhatja, hogy a nem rendszergazda felhasználók biztonsági csoportokat hozzanak létre. A Microsoft Online Directory Services (MSODS) alapértelmezett viselkedése, hogy lehetővé tegye a nem rendszergazda felhasználók számára csoportok létrehozását, függetlenül attól, hogy az önkiszolgáló csoportos felügyelet (CSOPORTKEZELÉS) is engedélyezve van-e. A CSOPORTKEZELÉS beállítás csak a saját alkalmazások hozzáférési paneljén működik.
 
-Csoportlétrehozás letiltása nem rendszergazda felhasználók számára:
+A csoportok létrehozásának letiltása a nem rendszergazda felhasználók számára:
 
-1. Ellenőrizze, hogy a nem rendszergazda felhasználók hozhatnak-e létre csoportokat:
+1. Győződjön meg arról, hogy a nem rendszergazda felhasználók számára engedélyezett a csoportok létrehozása:
    
    ```powershell
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Ha visszaadja `UsersPermissionToCreateGroupsEnabled : True`a lehetőséget, akkor a nem rendszergazda felhasználók csoportokat hozhatnak létre. A szolgáltatás letiltása:
+2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -278,21 +278,21 @@ Csoportlétrehozás letiltása nem rendszergazda felhasználók számára:
   
 ## <a name="manage-owners-of-groups"></a>Csoportok tulajdonosainak kezelése
 
-Tulajdonosok hozzáadása egy csoporthoz, használja az Add-AzureADGroupOwner parancsmag:
+A tulajdonosok egy csoportba való felvételéhez használja az Add-AzureADGroupOwner parancsmagot:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-A -ObjectId paraméter annak a csoportnak az ObjectID azonosítója, amelyhez tulajdonost szeretnénk hozzáadni, és a -RefObjectId a csoport tulajdonosaként hozzáadni kívánt felhasználó vagy szolgáltatásnév ObjectID azonosítója.
+A-ObjectId paraméter annak a csoportnak a ObjectID, amelyhez tulajdonost kíván hozzáadni, a-RefObjectId pedig annak a felhasználónak vagy egyszerű szolgáltatásnak a ObjectID, amelyet a csoport tulajdonosaként szeretne hozzáadni.
 
-Egy csoport tulajdonosainak lekéréséhez használja a Get-AzureADGroupOwner parancsmag:
+Egy csoport tulajdonosainak beolvasásához használja a Get-AzureADGroupOwner parancsmagot:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-A parancsmag a megadott csoport tulajdonosainak (felhasználók és szolgáltatástagok) listáját adja vissza:
+A parancsmag a megadott csoport tulajdonosainak (felhasználók és egyszerű szolgáltatások) listáját adja vissza:
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -300,7 +300,7 @@ A parancsmag a megadott csoport tulajdonosainak (felhasználók és szolgáltat�
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 ```
 
-Ha el szeretne távolítani egy tulajdonost egy csoportból, használja az Eltávolítás-AzureADGroupOwner parancsmast:
+Ha el szeretne távolítani egy tulajdonost egy csoportból, használja a Remove-AzureADGroupOwner parancsmagot:
 
 ```powershell
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
@@ -308,33 +308,33 @@ Ha el szeretne távolítani egy tulajdonost egy csoportból, használja az Eltá
 
 ## <a name="reserved-aliases"></a>Fenntartott aliasok
 
-Csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára, hogy megadjon egy mailNickname vagy alias a csoport e-mail címének részeként.A következő magas szintű jogosultsággal rendelkező e-mail aliasokkal rendelkező csoportokat csak egy Azure AD globális rendszergazda hozhatja létre. 
+Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára a csoport e-mail-címének részeként használandó mailNickname vagy alias megadását.A következő, magas jogosultságú e-mail-aliasokkal rendelkező csoportokat csak az Azure AD globális rendszergazdája hozhatja létre. 
   
-* Visszaélés
+* visszaélés
 * admin
 * adminisztrátor
 * hostmaster
-* majordomo között
-* Postamester
-* Gyökér
-* Biztonságos
+* majordomo
+* postamester
+* legfelső szintű
+* biztonságos
 * biztonság
-* ssl-admin
+* SSL – rendszergazda
 * Webmester
 
-## <a name="group-writeback-to-on-premises-preview"></a>Csoportos visszaírás a helyszíni környezetbe (előzetes verzió)
+## <a name="group-writeback-to-on-premises-preview"></a>Helyszíni visszaírási (előzetes verzió)
 
-Ma sok csoport továbbra is felügyelt a helyszíni Active Directoryban. A felhőcsoportok helyszíni szinkronizálására vonatkozó kérésekre való válaszadáshoz az Office 365 csoportok visszaírási szolgáltatása az Azure AD-hez már előzetes verzióban is elérhető.
+Napjainkban számos csoport továbbra is a helyszíni Active Directory felügyelhető. A felhőalapú csoportok a helyszíni környezetbe való szinkronizálására irányuló kérések megválaszolásához az Office 365 groups visszaírási funkció az Azure AD-hez már elérhető előzetes verzióként.
 
-Az Office 365-csoportok a felhőben jönnek létre és kezelhetők. A visszaírási funkció lehetővé teszi, hogy az Office 365-csoportokat terjesztési csoportként írja vissza egy Active Directory erdőbe, amelyen telepítve van az Exchange. A helyszíni Exchange-postaládával rendelkező felhasználók ezután e-maileket küldhetnek és fogadhatnak ezekből a csoportokból. A csoport visszaírási funkció nem támogatja az Azure AD biztonsági csoportok vagy terjesztési csoportok.
+Az Office 365-csoportok létrehozása és kezelése a felhőben történik. A visszaírási funkció lehetővé teszi, hogy az Office 365-csoportokat terjesztési csoportként írja egy Active Directory erdőben, amelyen az Exchange telepítve van. A helyszíni Exchange-postaládákkal rendelkező felhasználók ezt követően e-maileket küldhetnek és fogadhatnak ezekből a csoportokból. A csoport visszaírási szolgáltatása nem támogatja az Azure AD biztonsági csoportokat vagy terjesztési csoportokat.
 
-További részletekért tekintse meg az [Azure AD Connect szinkronizálási szolgáltatásdokumentációját.](../hybrid/how-to-connect-syncservice-features.md)
+További részletekért tekintse meg a [Azure ad Connect Sync szolgáltatás](../hybrid/how-to-connect-syncservice-features.md)dokumentációját.
 
-Az Office 365-ös csoportvisszaírás az Azure Active Directory (Azure AD) nyilvános előzetes verziójú szolgáltatása, és bármely fizetős Azure AD licenccsomaggal elérhető. Az előzetes verziókkal kapcsolatos jogi információkat a [Microsoft Azure előzetes verziók kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
+Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>További lépések
 
-További Azure Active Directory PowerShell-dokumentációmegtalálható az [Azure Active Directory-parancsmagokban.](/powershell/azure/install-adv2?view=azureadps-2.0)
+[Azure Active Directory-parancsmagokkal](/powershell/azure/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

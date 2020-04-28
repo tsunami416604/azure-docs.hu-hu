@@ -1,38 +1,38 @@
 ---
-title: Kapcsolattárak - Azure Database for PostgreSQL - Single Server
-description: Ez a cikk számos könyvtárat és illesztőprogramot ismertet, amelyek segítségével alkalmazásokat csatlakoztathat és lekérdezhet a PostgreSQL – Single Server azure-adatbázisának lekérdezéséhez.
+title: Kapcsolatok kódtárai – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk számos olyan kódtárat és illesztőprogramot ismertet, amelyek az alkalmazások Azure Database for PostgreSQL-kiszolgálóval való összekapcsolásához és lekérdezéséhez használhatók.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768894"
 ---
-# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Kapcsolattárak az Azure Database for PostgreSQL-hez – Egykiszolgálós
-Ez a cikk felsorolja a tárak és illesztőprogramok, amelyek segítségével a fejlesztők alkalmazások at, hogy csatlakozzanak, és lekérdezi az Azure Database for PostgreSQL.
+# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló közötti kapcsolatok kódtárai
+Ez a cikk felsorolja azokat a kódtárakat és illesztőprogramokat, amelyeket a fejlesztők a Azure Database for PostgreSQLhoz való kapcsolódáshoz és lekérdezéshez használhatnak az alkalmazások fejlesztéséhez.
 
-## <a name="client-interfaces"></a>Ügyfélfelületek
-A PostgreSQL kiszolgálóhoz való csatlakozáshoz használt legtöbb nyelvi ügyfélkönyvtár külső projekt, és egymástól függetlenül kerül terjesztésre. A felsorolt könyvtárak támogatottak a Windows, Linux és Mac platformokon, az Azure Database for PostgreSQL-hez való csatlakozáshoz. Számos rövid útmutató példa a Következő lépések szakaszban található.
+## <a name="client-interfaces"></a>Ügyféloldali felületek
+A PostgreSQL-kiszolgálóhoz való kapcsolódáshoz használt legtöbb nyelvi ügyfélszoftver külső projekt, és egymástól függetlenül oszlik meg. A felsorolt kódtárak a Windows, Linux és Mac platformokon támogatottak a Azure Database for PostgreSQLhoz való csatlakozáshoz. A következő lépések szakaszban számos gyors üzembe helyezési példa látható.
 
-| **Nyelv** | **Ügyfél kapcsolata** | **További információk** | **Letöltés** |
+| **Nyelv** | **Ügyfél felülete** | **További információ** | **Letöltés** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
-| Python | [psycopg között](http://initd.org/psycopg/) | DB API 2.0-kompatibilis | [Letöltés](http://initd.org/psycopg/download/) |
-| PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | Adatbázis-bővítmény | [Telepítse](https://secure.php.net/manual/en/pgsql.installation.php) |
-| Node.js | [Pg npm csomag](https://www.npmjs.com/package/pg) | Tiszta JavaScript nem blokkoló ügyfél | [Telepítse](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | 4. típus JDBC illesztőprogram | [Letöltés](https://jdbc.postgresql.org/download.html)  |
-| Ruby | [Pg drágakő](https://deveiate.org/code/pg/) | Rubin felület | [Letöltés](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Indítás | [Csomag pq](https://godoc.org/github.com/lib/pq) | Pure Go postgres illesztőprogram | [Telepítse](https://github.com/lib/pq/blob/master/README.md) |
-| C\#/ .NET | [Npgsql között](https://www.npgsql.org/) | ADO.NET adatszolgáltató | [Letöltés](https://www.microsoft.com/net/) |
+| Python | [psycopg](http://initd.org/psycopg/) | ADATBÁZIS-API 2,0-kompatibilis | [Letöltés](http://initd.org/psycopg/download/) |
+| PHP | [PHP – pgsql](https://secure.php.net/manual/en/book.pgsql.php) | Adatbázis-bővítmény | [Telepítse](https://secure.php.net/manual/en/pgsql.installation.php) |
+| Node.js | [PG NPM-csomag](https://www.npmjs.com/package/pg) | A Pure JavaScript nem blokkoló ügyfele | [Telepítse](https://www.npmjs.com/package/pg) |
+| Java | [JDBC](https://jdbc.postgresql.org/) | 4-es típusú JDBC-illesztő | [Letöltés](https://jdbc.postgresql.org/download.html)  |
+| Ruby | [PG gem](https://deveiate.org/code/pg/) | Ruby-interfész | [Letöltés](https://rubygems.org/downloads/pg-0.20.0.gem) |
+| Indítás | [Csomagok pq](https://godoc.org/github.com/lib/pq) | Pure go postgres-illesztőprogram | [Telepítse](https://github.com/lib/pq/blob/master/README.md) |
+| C\#/.net | [Npgsql](https://www.npgsql.org/) | ADO.NET-adatszolgáltató | [Letöltés](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC-illesztő | [Letöltés](https://www.postgresql.org/ftp/odbc/versions/) |
-| C# | [libpq között](https://www.postgresql.org/docs/9.6/static/libpq.html) | Elsődleges C nyelvi felület | Tartalmazza |
-| C++ | [libpqxx között](http://pqxx.org/) | Új stílusú C++ felület | [Letöltés](http://pqxx.org/download/software/) |
+| C# | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Elsődleges C nyelvi felület | Tartalmazza |
+| C++ | [libpqxx](http://pqxx.org/) | Új stílusú C++ interfész | [Letöltés](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>További lépések
-Olvassa el ezeket a rövid útmutatókat arról, hogyan csatlakozhat a PostgreSQL Azure-adatbázishoz, és hogyan kérdezheti le az Ön által választott nyelvet:
+Az alábbi rövid útmutatókból megtudhatja, hogyan csatlakozhat a Azure Database for PostgreSQLhoz, és hogyan kérdezheti le azt a választott nyelv használatával:
 
-[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Ugrás](./connect-go.md)
+[Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) |  | [Go](./connect-go.md) [PHP](./connect-php.md)php .net[(C#) ugrás](./connect-csharp.md) | 

@@ -1,287 +1,287 @@
 ---
-title: Az Ethereum Blockchain-összekötő használata az Azure Logic Apps alkalmazásokkal – Azure Blockchain szolgáltatás
-description: Az Ethereum Blockchain-összekötő és az Azure Logic Apps intelligens szerződésfunkciók indításához és az intelligens szerződéseseményekre való reagáláshoz használható.
+title: A Ethereum Blockchain-összekötő használata a Azure Logic Apps-Azure Blockchain szolgáltatással
+description: A Ethereum Blockchain-összekötővel a Azure Logic Apps használatával aktiválhatja az intelligens szerződési funkciókat, és reagálhat az intelligens szerződési eseményekre.
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325221"
 ---
-# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Az Ethereum Blockchain-összekötő használata az Azure Logic Apps alkalmazásokkal
+# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
-Az [Ethereum Blockchain-összekötő](https://docs.microsoft.com/connectors/blockchainethereum/) és az [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) intelligens szerződésműveletek végrehajtásához és az intelligens szerződéseseményekre való reagáláshoz használható. Tegyük fel például, hogy egy REST-alapú mikroszolgáltatást szeretne létrehozni, amely egy blokklánc főkönyvből származó információkat ad vissza. Egy logikai alkalmazás használatával elfogadhatja a blokklánc-főkönyvben tárolt adatokat lekérdező HTTP-kérelmeket.
+Az Ethereum Blockchain- [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) [összekötővel](https://docs.microsoft.com/connectors/blockchainethereum/) intelligens szerződéses műveleteket hajthat végre, és reagálhat az intelligens szerződési eseményekre. Tegyük fel például, hogy olyan REST-alapú szolgáltatást szeretne létrehozni, amely egy blockchain-főkönyvből származó információkat ad vissza. Logikai alkalmazás használatával elfogadhatja azokat a HTTP-kérelmeket, amelyek a blockchain-főkönyvben tárolt információkat kérdezik le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Töltse ki az opcionális előfeltételként használható [rövid útmutatót: A Visual Studio-kód dal csatlakozhat egy Azure Blockchain Service konzorciumi hálózathoz.](connect-vscode.md) A rövid útmutatók segítségével telepítheti az [Azure Blockchain Development Kit for Ethereum-ot,](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) és üzembe helyezheti a blokklánc-fejlesztési környezetet.
+Fejezze be az előfeltételként szükséges útmutatót [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). A rövid útmutató végigvezeti a [Ethereum készült Azure Blockchain Development Kit](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) telepítésének és a Blockchain-fejlesztési környezet beállításának lépésein.
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
-Az Azure Logic Apps segítségével ütemezheti és automatizálhatja az üzleti folyamatokat és munkafolyamatokat, amikor integrálnia kell a rendszereket és szolgáltatásokat. Először hozzon létre egy logikát, amely az Ethereum Blockchain összekötőt használja.
+A Azure Logic Apps segítségével az üzleti folyamatok és munkafolyamatok ütemezhetők és automatizálható, ha a rendszerek és szolgáltatások integrálására van szükség. Először létre kell hoznia egy olyan logikát, amely a Ethereum Blockchain-összekötőt használja.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Integráció** > **Logikai alkalmazás** lehetőséget.
-1. A **Logikai alkalmazás létrehozása**csoportban adja meg a logikai alkalmazás létrehozásának helyével kapcsolatos részleteket. Miután elkészült, válassza a **Létrehozás gombot.**
+1. A **logikai alkalmazás létrehozása**területen adja meg a logikai alkalmazás létrehozási helyének részleteit. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
-    A logikai alkalmazások létrehozásáról további információt az [Automatikus munkafolyamatok létrehozása az Azure Logic Apps alkalmazásokkal című témakörben talál.](../../logic-apps/quickstart-create-first-logic-app-workflow.md)
+    A logikai alkalmazások létrehozásával kapcsolatos további információkért lásd: [automatizált munkafolyamatok létrehozása Azure Logic Appsokkal](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Miután az Azure üzembe helyezte az alkalmazást, válassza ki a logikai alkalmazás erőforrás.
-1. A Logic Apps Designer **Sablonok csoportban**válassza az **Üres logikai alkalmazás lehetőséget.**
+1. Miután az Azure üzembe helyezte az alkalmazást, válassza ki a logikai alkalmazás erőforrását.
+1. A Logic Apps Designer **sablonok**területén válassza az **üres logikai alkalmazás**lehetőséget.
 
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot.
 
-Az Ethereum Blockchain összekötő egy eseményindítóval és több műveletel. A ttól függ, hogy melyik eseményindítót vagy műveletet használja a forgatókönyvtől.
+A Ethereum Blockchain-összekötő egyetlen triggerrel és számos művelettel rendelkezik. A használt trigger vagy művelet a forgatókönyvtől függ.
 
 Ha a munkafolyamat:
 
-* Eseményindítók, amikor egy esemény történik a blockchain, [Használja az eseményindító](#use-the-event-trigger).
-* Lekérdezések vagy telepíti az intelligens szerződés, [Műveletek használata.](#use-actions)
-* Egy gyakori forgatókönyvet követ, [a Munkafolyamat létrehozása a fejlesztői készlet használatával.](#generate-a-workflow)
+* Eseményindítót [használ](#use-the-event-trigger), ha a blockchain esemény történik.
+* Egy intelligens szerződés lekérdezése vagy üzembe helyezése, [műveletek használata](#use-actions).
+* Egy gyakori forgatókönyvet követ, amely [létrehoz egy munkafolyamatot a fejlesztői készlet használatával](#generate-a-workflow).
 
-## <a name="use-the-event-trigger"></a>Az eseményindító használata
+## <a name="use-the-event-trigger"></a>Az esemény eseményindítójának használata
 
-Használja Ethereum Blockchain eseményesemény eseményindítók, ha azt szeretné, hogy egy logikai alkalmazás fut, miután egy intelligens szerződés esemény történik. Például egy intelligens szerződésfunkció megnevezésekekénél e-mailt szeretne küldeni.
+Akkor használja a Ethereum Blockchain-eseményindítókat, ha azt szeretné, hogy egy logikai alkalmazás egy intelligens szerződési esemény után fusson. Tegyük fel például, hogy e-mailt szeretne küldeni egy intelligens szerződési függvény meghívásakor.
 
-1. A Logic Apps Designer ben válassza ki az Ethereum Blockchain összekötőt.
-1. Az **Eseményindítók** lapon válassza az **Intelligens szerződésesemény bekövetkeztekor**lehetőséget.
-1. [API-kapcsolat](#create-an-api-connection) módosítása vagy létrehozása az Azure Blockchain Szolgáltatással.
-1. Adja meg az eseményeket ellenőrizni kívánt intelligens szerződés részleteit.
+1. A Logic Apps Designerben válassza ki a Ethereum Blockchain-összekötőt.
+1. Az **Eseményindítók** lapon válassza ki, **hogy mikor történjen egy intelligens szerződési esemény**.
+1. Módosítsa vagy [hozzon létre egy API-kapcsolódást](#create-an-api-connection) az Azure Blockchain szolgáltatáshoz.
+1. Adja meg az események kereséséhez használni kívánt intelligens szerződés részleteit.
 
-    ![Logic Apps Designer eseményindító-tulajdonságokkal](./media/ethereum-logic-app/event-properties.png)
+    ![Logic Apps Designer az Event trigger tulajdonságaival](./media/ethereum-logic-app/event-properties.png)
 
     | Tulajdonság | Leírás |
     |----------|-------------|
-    | **Szerződés ABI** | A szerződéses alkalmazás bináris felülete (ABI) határozza meg az intelligens szerződés felületeket. További információ: [Get the contract ABI](#get-the-contract-abi). |
-    | **Intelligens szerződés címe** | A szerződés címe az intelligens szerződés célcíme az Ethereum blokkláncon. További információ: [Get the contract address](#get-the-contract-address). |
-    | **Esemény neve** | Válassza ki az ellenőrizni kívánt intelligens szerződéseseményt. Az esemény elindítja a logikai alkalmazást. |
-    | **Időköz** és **gyakoriság** | Adja meg, hogy milyen gyakran szeretné ellenőrizni az eseményt. |
+    | **Egyezményes ABI** | A szerződéses alkalmazás bináris felülete (ABI) meghatározza az intelligens szerződési felületeket. További információ: [Get the szerződés ABI](#get-the-contract-abi). |
+    | **Intelligens Szerződés címe** | A Szerződés címe az intelligens szerződési cél címe a Ethereum blockchain. További információ: [a szerződési címek beszerzése](#get-the-contract-address). |
+    | **Esemény neve** | Válasszon ki egy intelligens szerződési eseményt az ellenõrzéshez. Az esemény elindítja a logikai alkalmazást. |
+    | **Intervallum** és **gyakoriság** | Válassza ki, hogy milyen gyakran szeretné megkeresni az eseményt. |
 
 1. Kattintson a **Mentés** gombra.
 
-A logikai alkalmazás befejezéséhez hozzáadhat egy új lépést, amely az Ethereum Blockchain eseményindító alapján hajt végre egy műveletet. Például küldjön egy e-mailt.
+A logikai alkalmazás befejezéséhez hozzáadhat egy új lépést, amely a Ethereum Blockchain esemény eseményindítóján alapuló műveletet hajt végre. Küldjön például egy e-mailt.
 
 ## <a name="use-actions"></a>Műveletek használata
 
-Használja az Ethereum Blockchain műveleteket, ha azt szeretné, hogy egy logikai alkalmazás végrehajtson egy műveletet a blokklánc főkönyvi. Például létre szeretne hozni egy REST-alapú mikroszolgáltatást, amely intelligens szerződésfüggvényt hív meg, amikor egy LOGIKAi alkalmazáshttp-kérelmet küld.
+Használja a Ethereum Blockchain műveleteit, ha azt szeretné, hogy egy logikai alkalmazás végrehajtson egy műveletet a Blockchain-főkönyvben. Létrehozhat például egy olyan REST-alapú szolgáltatást, amely intelligens szerződési funkciót hív meg, ha egy logikai alkalmazás HTTP-kérést végez.
 
-Összekötő műveletek eseményindítót igényel. Használhatja az Ethereum Blockchain-összekötő művelet, mint a következő lépés után egy eseményindító, például egy HTTP-kérelem eseményindító egy mikroszolgáltatás.
+Az összekötő műveleteihez trigger szükséges. A Ethereum Blockchain-összekötő műveletét a következő lépésként használhatja egy trigger után, például egy HTTP-kérelem-triggert a szolgáltatáshoz.
 
-1. A Logic Apps Designer ben válassza az **Új lépés** az eseményindítót követően lehetőséget.
-1. Válassza ki az Ethereum Blockchain csatlakozót.
-1. A **Műveletek** lapon válassza ki az elérhető műveletek egyikét.
+1. A Logic Apps Designerben válasszon egy triggert követő **új lépést** .
+1. Válassza ki a Ethereum Blockchain-összekötőt.
+1. A **műveletek** lapon válassza ki az elérhető műveletek egyikét.
 
-    ![Logic Apps Designer műveletek tulajdonságaival](./media/ethereum-logic-app/action-properties.png)
+    ![Logic Apps Designer with Actions Properties](./media/ethereum-logic-app/action-properties.png)
 
-1. [API-kapcsolat](#create-an-api-connection) módosítása vagy létrehozása az Azure Blockchain Szolgáltatással.
-1. A választott művelettől függően adja meg az intelligens szerződés funkciójával kapcsolatos alábbi részleteket.
+1. Módosítsa vagy [hozzon létre egy API-kapcsolódást](#create-an-api-connection) az Azure Blockchain szolgáltatáshoz.
+1. A választott művelettől függően adja meg az intelligens szerződés funkciójának következő részleteit.
 
     | Tulajdonság | Leírás |
     |----------|-------------|
-    | **Szerződés ABI** | A szerződés ABI határozza meg az intelligens szerződés interfészek. További információ: [Get the contract ABI](#get-the-contract-abi). |
-    | **Szerződés bytecode** | A lefordított intelligens szerződés bytecode. További információ: [Get the contract bytecode](#get-the-contract-bytecode). |
-    | **Intelligens szerződés címe** | A szerződés címe az intelligens szerződés célcíme az Ethereum blokkláncon. További információ: [Get the contract address](#get-the-contract-address). |
-    | **Intelligens egyezményfüggvény neve** | Válassza ki a művelet intelligens egyezményfüggvényének nevét. A lista a szerződés abi-ban szereplő részletekből kerül feltöltésre. |
+    | **Egyezményes ABI** | A szerződési ABI definiálja az intelligens szerződési felületeket. További információ: [Get the szerződés ABI](#get-the-contract-abi). |
+    | **Szerződés bytecode** | A lefordított intelligens szerződés bytecode. További információ: [a szerződés bytecode beszerzése](#get-the-contract-bytecode). |
+    | **Intelligens Szerződés címe** | A Szerződés címe az intelligens szerződési cél címe a Ethereum blockchain. További információ: [a szerződési címek beszerzése](#get-the-contract-address). |
+    | **Intelligens szerződés függvényének neve** | Válassza ki az intelligens szerződés funkciójának nevét a művelethez. A lista a szerződési ABI-ban található részletekből van feltöltve. |
 
-    Az intelligens egyezményfüggvény nevének kiválasztása után előfordulhat, hogy a függvényparaméterekhez szükséges mezők jelennek meg. Adja meg a forgatókönyvhöz szükséges értékeket vagy dinamikus tartalmat.
+    Az intelligens szerződési függvény nevének kiválasztása után megjelenhetnek a függvények paramétereinek kötelező mezői. Adja meg a forgatókönyvhöz szükséges értékeket vagy dinamikus tartalmat.
 
-Most már használhatja a logikai alkalmazást. Amikor a logikai alkalmazás esemény aktiválódik, az Ethereum Blockchain művelet fut. Például egy HTTP-kérelem eseményindító fut egy Ethereum blockchain művelet lekérdezni egy intelligens szerződés állapotértékét. Ez a lekérdezés http-választ eredményez, amely az értéket adja vissza.
+Ezután használhatja a logikai alkalmazást. A Logic app-esemény elindítása után a Ethereum Blockchain művelet fut. Egy HTTP-kérési trigger például egy Ethereum blockchain műveletet futtat egy intelligens szerződési állapot lekérdezéséhez. Ez a lekérdezés egy HTTP-választ eredményez, amely visszaadja az értéket.
 
 ## <a name="generate-a-workflow"></a>Munkafolyamat létrehozása
 
-Az Azure Blockchain Development Kit for Ethereum Visual Studio Code bővítmény logikai alkalmazás-munkafolyamatokat hozhat létre a gyakori forgatókönyvekhez. Négy forgatókönyv áll rendelkezésre:
+A Visual Studio Code Ethereum készült Azure Blockchain Development Kit képes logikai alkalmazás-munkafolyamatokat előállítani a gyakori forgatókönyvekhez. Négy forgatókönyv érhető el:
 
-* Adatközzététel Azure SQL Database-példányban
-* Eseményközzététel az Azure Event Grid vagy az Azure Service Bus egy példányában
+* Adatközzététel Azure SQL Database-példányba
+* Esemény-közzététel Azure Event Grid vagy Azure Service Bus egy példányához
 * Jelentés közzététele
-* REST-alapú mikroszolgáltatás
+* REST-alapú szolgáltatás
 
- Az Azure Blockchain Development Kit szarvasgombát használ a blokklánc-fejlesztés egyszerűsítésére. Egy intelligens szerződésen alapuló logikai alkalmazás létrehozásához szarvasgomba-megoldásra van szükség az intelligens szerződéshez. Az Azure Blockchain Service konzorciumi hálózatához is szüksége van egy kapcsolatra. További információ: [A Visual Studio Code használata az Azure Blockchain Service konzorciumhálózati rövid útmutatóhoz való csatlakozáshoz című témakörben található.](connect-vscode.md)
+ Az Azure Blockchain Development Kit a szarvasgomba segítségével egyszerűsíti a Blockchain fejlesztését. Egy intelligens szerződésen alapuló logikai alkalmazás létrehozásához szükség van egy szarvasgombás-megoldásra az intelligens szerződéshez. Az Azure Blockchain Service Consortium-hálózathoz is csatlakoznia kell. További információ: a [Visual Studio Code használata az Azure Blockchain Service Consortium Network rövid útmutatóhoz való kapcsolódáshoz](connect-vscode.md).
 
-A következő lépések például egy REST-alapú mikroszolgáltatás-logikai alkalmazást hoznak létre a **HelloBlockchain** intelligens szerződés gyorsindítása alapján:
+Például a következő lépések egy REST-alapú, a gyors üzembe helyezési **HelloBlockchain** intelligens szerződésen alapuló Service Logic app-alkalmazást hoznak elő:
 
-1. A Visual Studio Kódkezelő oldalsávján bontsa ki a megoldás **szerződési** mappáját.
-1. Kattintson a jobb gombbal **a HelloBlockchain.sol** elemre, és válassza a **mikroszolgáltatások generálása intelligens szerződésekhez parancsot** a menüből.
+1. A Visual Studio Code Explorer oldalsávján bontsa ki a **szerződések** mappát a megoldásban.
+1. Kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza az **intelligens szerződések előállítása** a menüből lehetőséget.
 
-    ![A Visual Studio kódablaktáblája a Mikroszolgáltatások létrehozása intelligens szerződésekhez beállítással](./media/ethereum-logic-app/generate-logic-app.png)
+    ![Visual Studio Code ablaktábla az intelligens szerződések kiválasztására szolgáló Service-sel](./media/ethereum-logic-app/generate-logic-app.png)
 
-1. A parancspalettán válassza a **Logic App**lehetőséget.
-1. Adja meg a **szerződés címét**. További információ: [Get the contract address](#get-the-contract-address).
-1. Válassza ki az Azure-előfizetés és erőforráscsoport a logikai alkalmazáshoz.
+1. A parancs palettáján válassza a **logikai alkalmazás**lehetőséget.
+1. Adja meg a **szerződési címeket**. További információ: [a szerződési címek beszerzése](#get-the-contract-address).
+1. Válassza ki a logikai alkalmazáshoz tartozó Azure-előfizetést és erőforráscsoportot.
 
-    A logikai alkalmazás konfigurációja és kódfájlok jönnek létre a **generáltLogicApp** könyvtárban.
+    A Logic app-konfiguráció és a kód fájljai a **generatedLogicApp** könyvtárban jönnek létre.
 
-1. Tekintse meg a **generáltLogicApp/HelloBlockchain** könyvtárat. Minden intelligens szerződésfüggvényhez, eseményhez és tulajdonsághoz van egy logikai alkalmazás JSON-fájlja.
-1. Nyissa meg a **generatedLogicApp/HelloBlockchain/Service/property kapcsolót. RequestMessage.logicapp.json** fájlt, és másolja a tartalmát.
+1. Tekintse meg a **generatedLogicApp/HelloBlockchain** könyvtárat. Minden egyes intelligens szerződési funkció, esemény és tulajdonság esetében létezik egy logikai alkalmazás JSON-fájlja.
+1. Nyissa meg a **generatedLogicApp/HelloBlockchain/szolgáltatás/tulajdonságot. RequestMessage. logicapp. JSON** fájlt, és másolja a tartalmat.
 
-    ![JSON-fájl másolandó kóddal](./media/ethereum-logic-app/requestmessage.png)
+    ![A másolandó kódot tartalmazó JSON-fájl](./media/ethereum-logic-app/requestmessage.png)
 
-1. A logikai alkalmazásban válassza a **Logikai alkalmazás kódnézetét.** Cserélje le a meglévő JSON-t a létrehozott JSON logikai alkalmazásra.
+1. A logikai alkalmazásban válassza a **logikai alkalmazás kódjának megtekintése**lehetőséget. Cserélje le a meglévő JSON-t a generált Logic app JSON-ra.
 
-    ![Logikai alkalmazáskód nézet új lecserélt alkalmazáskóddal](./media/ethereum-logic-app/code-view.png)
+    ![Logikai alkalmazás kódjának nézete új lecserélt alkalmazás kódjával](./media/ethereum-logic-app/code-view.png)
 
-1. Válassza **a Tervező** lehetőséget a tervezőnézetre való váltáshoz.
-1. A logikai alkalmazás tartalmazza a forgatókönyv alapvető lépéseit. Azonban frissítenie kell az Ethereum Blockchain összekötő konfigurációs adatait.
-1. Válassza ki a **Kapcsolatok lépést,** és módosítsa vagy [hozzon létre egy API-kapcsolatot](#create-an-api-connection) az Azure Blockchain Szolgáltatással.
+1. Válassza ki a **tervezőt** a Tervező nézetre váltáshoz.
+1. A logikai alkalmazás a forgatókönyv alapvető lépéseit tartalmazza. Azonban frissítenie kell a Ethereum Blockchain-összekötő konfigurációs adatait.
+1. Válassza a **kapcsolatok** lépést, és módosítsa vagy [hozzon létre egy API-kapcsolatot](#create-an-api-connection) az Azure Blockchain szolgáltatással.
 
-    ![Tervezői nézet a Kapcsolatok kijelöléssel](./media/ethereum-logic-app/microservice-logic-app.png)
+    ![Tervező nézet a kapcsolatok kijelölésével](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. Most már használhatja a logikai alkalmazást. A REST-alapú mikroszolgáltatás teszteléséhez adjon ki HTTP POST-kérelmet a logikai alkalmazás kérelem URL-címére. Másolja a **HTTP-BEJEGYZÉS URL-cím** tartalmát a **HTTP-kérelem fogadása** kor lépésből.
+1. Ezután használhatja a logikai alkalmazást. A REST-alapú webszolgáltatás teszteléséhez adjon ki egy HTTP POST-kérelmet a logikai alkalmazás kérésének URL-címére. Másolja a **http-post URL-** tartalmát a **http-kérelem fogadása** lépésből.
 
-    ![Logic Apps Designer ablaktábla a HTTP POST URL-címmel](./media/ethereum-logic-app/post-url.png)
+    ![Logic Apps Designer panel a HTTP POST URL-címmel](./media/ethereum-logic-app/post-url.png)
 
-1. HTTP POST-kérelem létrehozásához használja a cURL-t. Cserélje le a helyőrző * \<szövegHTTP POST\> URL-címét* az előző lépés URL-címére.
+1. Hozzon létre egy HTTP POST-kérelmet a cURL használatával. Cserélje le a helyőrző szöveg * \<http post\> URL-címét* az előző lépés URL-címére.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
     ```
 
-    A cURL parancs a logikai alkalmazás válaszát adja vissza. Ebben az esetben a válasz a **RequestMessage** intelligens szerződés függvény kimenete.
+    A cURL parancs a logikai alkalmazás válaszát adja vissza. Ebben az esetben a válasz a **RequestMessage** intelligens szerződési függvény kimenete.
 
-    ![Kódkimenet a RequestMessage intelligens egyezmény függvényéből](./media/ethereum-logic-app/curl.png)
+    ![Kód kimenete a RequestMessage intelligens szerződés függvényből](./media/ethereum-logic-app/curl.png)
 
-A fejlesztői készlet használatáról további információt az [Azure Blockchain Development Kit for Ethereum wiki oldalán](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)talál.
+A fejlesztői csomag használatával kapcsolatos további információkért tekintse meg az [Azure Blockchain Development Kit for Ethereum wiki oldalt](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki).
 
-## <a name="create-an-api-connection"></a>API-kapcsolat létrehozása
+## <a name="create-an-api-connection"></a>API-kapcsolatok létrehozása
 
-Az Ethereum Blockchain-összekötőhöz API-kapcsolat szükséges a blokklánchoz. Az API-összekötő több logikai alkalmazások is használhatja. Egyes tulajdonságok szükségesek, míg mások a forgatókönyvtől függenek.
+A Ethereum Blockchain-összekötőhöz egy blockchain API-csatlakozás szükséges. Az API-összekötő több logikai alkalmazáshoz is használható. Bizonyos tulajdonságok szükségesek, mások pedig a forgatókönyvtől függenek.
 
 > [!IMPORTANT]
-> A blokkláncon végrehajtott tranzakciók létrehozásához titkos kulcs vagy fiókcím és jelszó szükséges. Csak egy hitelesítési forma szükséges. Nem kell megadnia mind a személyes kulcsot, sem a fiók adatait. Az egyezmények lekérdezéséhez nincs szükség tranzakcióra. Ha olyan műveleteket használ, amelyek lekérdezik a szerződés állapotát, a személyes kulcs vagy a fiókcím és a jelszó nem szükséges.
+> A blockchain tranzakcióinak létrehozásához titkos kulcs vagy fiók címe és jelszava szükséges. Csak egy hitelesítési űrlapra van szükség. Nem kell megadnia a titkos kulcs és a fiók adatait is. A szerződések lekérdezéséhez nincs szükség tranzakcióra. Ha a szerződési állapotot lekérdező műveleteket használ, a titkos kulcs vagy a fiók címe és jelszava nem szükséges.
 
-Az Azure Blockchain szolgáltatás egyik tagjával való kapcsolat beállításához az alábbi lista a forgatókönyvtől függően szükség lehet a lehetséges tulajdonságokra.
+Ha segítségre van szüksége az Azure Blockchain-szolgáltatáshoz való kapcsolódáshoz, az alábbi listában a forgatókönyvtől függően lehetséges tulajdonságok lehetnek.
 
 | Tulajdonság | Leírás |
 |----------|-------------|
-|**Kapcsolat neve** | Az API-kapcsolat neve. Kötelező. |
-|**Ethereum RPC végpont** | Az Azure Blockchain Service tranzakciós csomópont HTTP-címe. Kötelező. További információ: [Az RPC-végpont beolvassa.](#get-the-rpc-endpoint) |
-|**Titkos kulcs** | Ethereum fiók titkos kulcs. A tranzakciókhoz személyes kulcs vagy fiókcím és jelszó szükséges. További információ: [A személyes kulcs beszereznie.](#get-the-private-key) |
-|**Fiók címe** | Az Azure Blockchain Service-tagfiók címe. A tranzakciókhoz személyes kulcs vagy fiókcím és jelszó szükséges. További információ: [A fiók címének beszereznie](#get-the-account-address). |
-|**Fiók jelszava** | A fiók jelszava a tag létrehozásakor van beállítva. A jelszó alaphelyzetbe állításáról az [Ethereum-fiók című témakörben](consortium.md#ethereum-account)talál további információt.|
+|**Kapcsolatok neve** | Az API-kapcsolatok neve. Kötelező. |
+|**Ethereum RPC-végpont** | Az Azure Blockchain szolgáltatás tranzakciós csomópontjának HTTP-címe. Kötelező. További információ: [az RPC-végpont beszerzése](#get-the-rpc-endpoint). |
+|**Titkos kulcs** | Ethereum fiók titkos kulcsa. A tranzakcióhoz titkos kulcs vagy fiók címe és jelszava szükséges. További információ: [Get the Private Key (titkos kulcs beszerzése](#get-the-private-key)). |
+|**Fiók címe** | Az Azure Blockchain-szolgáltatási tag fiókjának címe. A tranzakcióhoz titkos kulcs vagy fiók címe és jelszava szükséges. További információkért lásd: [a fiók címe beszerzése](#get-the-account-address). |
+|**Fiók jelszava** | A fiók jelszava a tag létrehozásakor van beállítva. A jelszó alaphelyzetbe állításával kapcsolatos információkért lásd: [Ethereum-fiók](consortium.md#ethereum-account).|
 
-## <a name="get-the-rpc-endpoint"></a>Az RPC-végpont beszerezése
+## <a name="get-the-rpc-endpoint"></a>Az RPC-végpont beszerzése
 
-Az Azure Blockchain Service RPC-végpont címe szükséges a blokklánc-hálózathoz való csatlakozáshoz. A végpont címét az Azure Blockchain Development Kit for Ethereum vagy az Azure Portal használatával szerezheti be.
+Az Azure Blockchain szolgáltatás RPC-végpontjának címe Blockchain hálózathoz való kapcsolódáshoz szükséges. A végpont címe az Azure Blockchain Development Kit for Ethereum vagy a Azure Portal használatával szerezhető be.
 
-**A fejlesztői készlet használata:**
+**A fejlesztői csomag használata:**
 
-1. Az **Azure Blockchain Szolgáltatás** a Visual Studio-kód, kattintson a jobb gombbal a konzorcium.
-1. Válassza **az RPC végpontcím másolása lehetőséget.**
+1. Az **Azure Blockchain Service** -ben a Visual Studio Code-ban kattintson a jobb gombbal a konzorciumra.
+1. Válassza az **RPC-végponti címek másolása**lehetőséget.
 
-    ![A Visual Studio Kód ablaktáblája, amely a konzorciumot jeleníti meg az RPC végpontcím másolása beállítással](./media/ethereum-logic-app/devkit-rpc.png)
+    ![A Visual Studio Code ablaktábla, amely a konzorciumot mutatja az RPC-végpontok másolásának kiválasztásával](./media/ethereum-logic-app/devkit-rpc.png)
 
-    A program az RPC-végpontot a vágólapra másolja.
+    A rendszer átmásolja az RPC-végpontot a vágólapra.
 
-**Az Azure Portal használata:**
+**A Azure Portal használata:**
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Nyissa meg az Azure Blockchain szolgáltatás tagot. Válassza **a Tranzakciócsomópontok és** az alapértelmezett tranzakciócsomópont-kapcsolat lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Nyissa meg az Azure Blockchain-szolgáltatás tagját. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
 
-    ![Tranzakciócsomópontok lap az (alapértelmezett csomópont) kijelöléssel](./media/ethereum-logic-app/transaction-nodes.png)
+    ![Tranzakciós csomópontok lap (alapértelmezett csomópont) kijelölése](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Válassza **a Kapcsolati karakterláncok** > **Hozzáférési kulcsok lehetőséget**.
-1. Másolja a végpont címét **HTTPS (1. hozzáférési kulcs)** vagy **HTTPS (Access key 2)** címből.
+1. Válassza a **kapcsolati karakterláncok** > **hozzáférési kulcsok**elemet.
+1. Másolja a végponti címeket a https-ről **(1. hozzáférési kulcs)** vagy a https-re **(2. hozzáférési kulcs)**.
 
-    ![Az Azure Portal a kapcsolati karakterlánc-hozzáférési kulcsokkal](./media/ethereum-logic-app/connection-string.png)
+    ![Azure Portal a kapcsolati karakterlánc elérési kulcsaival](./media/ethereum-logic-app/connection-string.png)
 
-    Az RPC-végpont a HTTPS URL-cím, amely tartalmazza az Azure Blockchain Service tagtranzakció-csomópontcím- és hozzáférési kulcsát.
+    Az RPC-végpont a HTTPS URL-cím, amely tartalmazza az Azure Blockchain-szolgáltatás tagjának tranzakciós csomópontjának címét és hozzáférési kulcsát.
 
-## <a name="get-the-private-key"></a>A személyes kulcs beszerezése
+## <a name="get-the-private-key"></a>A titkos kulcs beszerzése
 
-Az Ethereum-fiók személyes kulcsa segítségével hitelesítheti magát, amikor tranzakciót küld a blokkláncnak. Az Ethereum-fiók nyilvános és személyes kulcsai egy 12 szavas mnemonikus ból származnak. Az Azure Blockchain Development Kit for Ethereum mnemonikus, amikor csatlakozik egy Azure Blockchain Service konzorciumi taghoz. A végpont címét a fejlesztői készlet bővítmény használatával kaphatja meg.
+A Ethereum-fiók titkos kulcsával hitelesítheti a tranzakciókat a blockchain. A Ethereum-fiók nyilvános és titkos kulcsai egy 12 szavas hívóbetűje jönnek létre. A Ethereum készült Azure Blockchain Development Kit létrehoz egy hívóbetűje az Azure Blockchain Service Consortium egyik tagjához való csatlakozáskor. A végpont címe a fejlesztői csomag bővítményének használatával szerezhető be.
 
-1. A Visual Studio-kódban nyissa meg a parancspalettát (F1).
-1. Válassza az **Azure Blockchain: Személyes kulcs lekérése**lehetőséget.
-1. Válassza ki a konzorciumtaghoz való csatlakozáskor mentett mnemonikus elemet.
+1. A Visual Studio Code-ban nyissa meg a Command paletta (F1) parancsot.
+1. Válassza az **Azure Blockchain: titkos kulcs lekérése**elemet.
+1. Válassza ki azt a hívóbetűje, amelyet a konzorcium tagjához való csatlakozáskor mentett.
 
-    ![Parancspaletta a mnemonikus kiválasztása](./media/ethereum-logic-app/private-key.png)
+    ![A hívóbetűje kiválasztását biztosító parancssori paletta](./media/ethereum-logic-app/private-key.png)
 
-    A személyes kulcs a vágólapra kerül.
+    A titkos kulcsot a rendszer a vágólapra másolja.
 
-## <a name="get-the-account-address"></a>A fiók címének beszerezése
+## <a name="get-the-account-address"></a>Fiók címe beolvasása
 
-A tagfiók és a jelszó segítségével hitelesítheti magát, amikor tranzakciót küld a blokkláncnak. A jelszó a tag létrehozásakor van beállítva.
+Ha tranzakciót küld a blockchain, a fiók és a jelszó használatával hitelesítheti a hitelesítést. A jelszó beállítása a tag létrehozásakor történik.
 
-1. Az Azure Portalon nyissa meg az Azure Blockchain-szolgáltatás áttekintő lapját.
-1. A tagfiók címének **másolása.**
+1. A Azure Portal nyissa meg az Azure Blockchain szolgáltatás áttekintés lapját.
+1. Másolja a **tag fiókjának** a címeit.
 
-    ![Áttekintő lap a tagfiók címével](./media/ethereum-logic-app/member-account.png)
+    ![Áttekintő lap a tag fiók címével](./media/ethereum-logic-app/member-account.png)
 
-A fiókcímről és a jelszóról további információt az [Ethereum-fiók című témakörben talál.](consortium.md#ethereum-account)
+A fiókra és a jelszóra vonatkozó további információkért lásd: [Ethereum-fiók](consortium.md#ethereum-account).
 
-## <a name="get-the-contract-abi"></a>Szerezd meg a szerződést ABI
+## <a name="get-the-contract-abi"></a>A szerződési ABI beszerzése
 
-A szerződés ABI határozza meg az intelligens szerződés interfészek. Leírja, hogyan lehet kölcsönhatásba lépni az intelligens szerződéssel. A szerződés ABI az Azure Blockchain Development Kit for Ethereum használatával szerezhető be. A Solidity fordító által létrehozott szerződés metaadatfájlból is beszerezheti.
+A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja, hogyan kezelheti az intelligens szerződést. A szerződési ABI-t a Ethereum készült Azure Blockchain Development Kit használatával szerezheti be. Azt is megteheti, hogy a Solidion compiler által létrehozott szerződési metaadatokat tartalmazó fájlból származik.
 
-**A fejlesztői készlet használata:**
+**A fejlesztői csomag használata:**
 
-Ha a fejlesztőkészletet vagy a Szarvasgombát használta az intelligens szerződés létrehozásához, a kiterjesztés segítségével másolhatja a szerződés ABI-t a vágólapra.
+Ha a fejlesztői készletet vagy a szarvasgombát használta az intelligens szerződés kiépítéséhez, a bővítmény használatával másolhatja át a szerződéses ABI-t a vágólapra.
 
-1. A Visual Studio Kódkezelő ablaktábláján bontsa ki a Solidity projekt **build/szerződések** mappáját.
-1. Kattintson a jobb gombbal a szerződés metaadat-jsonfájljára. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Válassza **a Szerződés ABI másolása lehetőséget.**
+1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
+1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Válassza a **Szerződés másolása ABI**elemet.
 
-    ![A Visual Studio Kód ablaktáblája a Szerződés másolása ABI-kijelöléssel](./media/ethereum-logic-app/abi-devkit.png)
+    ![A Visual Studio Code panel és a másolási szerződés ABI kiválasztása](./media/ethereum-logic-app/abi-devkit.png)
 
-    A szerződés ABI másolja a vágólapra.
+    A rendszer átmásolja a szerződéses ABI-t a vágólapra.
 
-**A szerződés metaadatfájljának használata:**
+**A szerződés metaadatainak fájljának használata:**
 
-1. Nyissa meg a Solidity projekt **build/szerződések** mappájában található szerződés metaadatfájlját. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Keresse meg az **abi** szakaszt a JSON-fájlban.
-1. Másolja az **abi** JSON tömböt.
+1. Nyissa meg a konszolidációs projekt **Build/szerződések** mappájában található szerződéses metaadat-fájlt. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Keresse meg az **ABI** SZAKASZT a JSON-fájlban.
+1. Másolja az **ABI** JSON-tömböt.
 
-    ![ABI-kód a szerződés metaadatfájljában](./media/ethereum-logic-app/abi-metadata.png)
+    ![ABI-kód a szerződés metaadatainak fájljában](./media/ethereum-logic-app/abi-metadata.png)
 
-## <a name="get-the-contract-bytecode"></a>A szerződés bytecode-jának beszereznie
+## <a name="get-the-contract-bytecode"></a>A szerződés bytecode beszerzése
 
-A szerződés bytecode az Ethereum virtuális gép által végrehajtott lefordított intelligens szerződés. A szerződés bytecode az Azure Blockchain Development Kit for Ethereum használatával. Azt is kap, hogy a Solidity fordító.
+A szerződés bytecode a Ethereum virtuális gép által végrehajtott lefordított intelligens szerződés. A szerződés bytecode a Ethereum készült Azure Blockchain Development Kit használatával kérheti le. Azt is megteheti, hogy a szilárdtest-fordítóból is beszerezhető.
 
-**A fejlesztői készlet használata:**
+**A fejlesztői csomag használata:**
 
-Ha a fejlesztőkészletet vagy a Szarvasgombát használta az intelligens szerződés létrehozásához, a bővítmény segítségével másolhatja a szerződés bytecode-ját a vágólapra.
+Ha a fejlesztői készletet vagy a szarvasgombát használta az intelligens szerződés kiépítéséhez, a bővítményt használhatja a szerződés bytecode másolásához a vágólapra.
 
-1. A Visual Studio Kódkezelő ablaktábláján bontsa ki a Solidity projekt **build/szerződések** mappáját.
-1. Kattintson a jobb gombbal a szerződés metaadat-jsonfájljára. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Válassza **a Szerződés bájtekód másolása lehetőséget.**
+1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
+1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Válassza a **Szerződés másolása bytecode**elemet.
 
-    ![A Visual Studio Kód ablaktáblája a Szerződés bájkód másolása beállítással](./media/ethereum-logic-app/bytecode-devkit.png)
+    ![A Visual Studio Code panel és a másolási szerződés bytecode kiválasztása](./media/ethereum-logic-app/bytecode-devkit.png)
 
-    A szerződés bytecode-ja a vágólapra kerül.
+    A rendszer átmásolja a bytecode a vágólapra.
 
-**A szerződés metaadatfájljának használata:**
+**A szerződés metaadatainak fájljának használata:**
 
-1. Nyissa meg a Solidity projekt **build/szerződések** mappájában található szerződés metaadatfájlját. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
+1. Nyissa meg a konszolidációs projekt **Build/szerződések** mappájában található szerződéses metaadat-fájlt. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
 1. Keresse meg a **bytecode** elemet a JSON-fájlban.
 1. Másolja a **bytecode** értéket.
 
-    ![A Visual Studio Kód ablaktáblája bájtkóddal a metaadatokban](./media/ethereum-logic-app/bytecode-metadata.png)
+    ![A Visual Studio Code panel a metaadatokban található bytecode](./media/ethereum-logic-app/bytecode-metadata.png)
 
-**A Solidity fordító használata:**
+**A szilárdtest-fordító használata:**
 
-A parancs `solc --bin <smart contract>.sol` segítségével hozza létre a szerződés bytecode.
+A parancs `solc --bin <smart contract>.sol` használatával létrehozza a szerződés bytecode.
 
-## <a name="get-the-contract-address"></a>A szerződés címének beszereznie
+## <a name="get-the-contract-address"></a>A szerződési címnek beszerzése
 
-A szerződés címe az intelligens szerződés célcíme az Ethereum blokkláncon. Ezzel a címmel tranzakciót vagy lekérdezési állapotot küldhet egy intelligens szerződéshez. A szerződés címét a szarvasgomba áttelepítési kimenetéből vagy a szerződés metaadatfájljából szerezheti be.
+A Szerződés címe az intelligens szerződési cél címe a Ethereum blockchain. Ez a címe egy intelligens szerződés tranzakciós vagy lekérdezési állapotának elküldésére használható. A Szerződés címe a szarvasgomba-áttelepítési kimenetből vagy a szerződés metaadatainak fájljából kérhető le.
 
-**A szarvasgomba áttelepítési kimenetének használata:**
+**A szarvasgomba-áttelepítés kimenetének használata:**
 
-Szarvasgomba az intelligens szerződés üzembe helyezése után jeleníti meg a szerződés címét. Másolja a **szerződés címét** a kimenetből.
+A szarvasgomba az intelligens szerződés üzembe helyezése után megjeleníti a szerződés címeit. Másolja a **Szerződés címeit** a kimenetből.
 
-![Szarvasgomba-áttelepítési kimenet a Szerződés címével a Visual Studio Code-ban](./media/ethereum-logic-app/contract-address-truffle.png)
+![A szarvasgomba áttelepítési kimenete a szerződéses címen a Visual Studio Code-ban](./media/ethereum-logic-app/contract-address-truffle.png)
 
-**A szerződés metaadatfájljának használata:**
+**A szerződés metaadatainak fájljának használata:**
 
-1. Nyissa meg a Solidity projekt **build/szerződések** mappájában található szerződés metaadatfájlját. A fájlnév az intelligens szerződés neve, amelyet a **.json** kiterjesztés követ.
-1. Keresse meg a **Hálózatok** szakaszt a JSON-fájlban.
-1. A magánhálózatokat egész hálózati azonosító azonosítja. Keresse meg a címértéket a hálózati szakaszban.
-1. Másolja a **cím** értékét.
+1. Nyissa meg a konszolidációs projekt **Build/szerződések** mappájában található szerződéses metaadat-fájlt. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
+1. Keresse meg a **Networks** SZAKASZT a JSON-fájlban.
+1. A magánhálózati hálózatokat egész számú hálózati azonosító azonosítja. A címek értékének megkeresése a hálózat szakaszon belül.
+1. Másolja a **címtartomány** értékét.
 
-![Metaadatok a Visual Studio-kód címértékével](./media/ethereum-logic-app/contract-address-metadata.png)
+![Metaadatok a Visual Studio Code-ban található címtartomány értékével](./media/ethereum-logic-app/contract-address-metadata.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a gyakori forgatókönyveket a [videóban, ha többet szeretne tenni a Logic Apps alkalmazásokkal.](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true)
+Tekintse meg a videó gyakori forgatókönyveit a [Logic Appsával](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

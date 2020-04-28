@@ -1,6 +1,6 @@
 ---
-title: Az Azure Load Balancer biztonsági vezérlői
-description: A terheléselosztó kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
+title: A Azure Load Balancer biztonsági vezérlői
+description: A Load Balancer értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: load-balancer
 author: asudbring
 manager: KumudD
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: allensu
 ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74214904"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Az Azure Load Balancer biztonsági vezérlői
+# <a name="security-controls-for-azure-load-balancer"></a>A Azure Load Balancer biztonsági vezérlői
 
-Ez a cikk az Azure Load Balancer beépített biztonsági vezérlőket dokumentálja.
+Ez a cikk a Azure Load Balancer beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
@@ -25,18 +25,18 @@ Ez a cikk az Azure Load Balancer beépített biztonsági vezérlőket dokumentá
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| A szolgáltatás végpontjának támogatása| N/A | |
-| A VNet injekciózás támogatása| N/A | |
-| Hálózati elkülönítés és tűzfaltámogatás| N/A |  |
-| Kényszerített bújtatástámogatása| N/A | |
+| Szolgáltatás végpontjának támogatása| N/A | |
+| VNet-befecskendezés támogatása| N/A | |
+| Hálózati elkülönítés és tűzfalak támogatása| N/A |  |
+| Kényszerített bújtatás támogatása| N/A | |
 
-## <a name="monitoring--logging"></a>Naplózás & figyelése
+## <a name="monitoring--logging"></a>& naplózás figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | Tekintse meg [az Azure Monitor naplóit a nyilvános alapszintű terheléselosztóhoz.](load-balancer-monitor-log.md) |
-| Vezérlő és felügyeleti sík naplózása és naplózása| Igen | Tekintse meg [az Azure Monitor naplóit a nyilvános alapszintű terheléselosztóhoz.](load-balancer-monitor-log.md) |
-| Adatsík naplózása és naplózása | N/A |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Adatsíkok naplózása és naplózása | N/A |  |
 
 ## <a name="identity"></a>Identitás
 
@@ -49,18 +49,18 @@ Ez a cikk az Azure Load Balancer beépített biztonsági vezérlőket dokumentá
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | N/A | |
-| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat titkosítása és Virtuálishálózati titkosítás)| N/A | |
-| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | N/A | |
-| Oszlopszintű titkosítás (Azure Data Services)| N/A | |
-| TITKOSÍTOTT API-hívások| Igen | Az [Azure Resource Manager](../azure-resource-manager/index.yml)segítségével. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | N/A | |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| N/A | |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | N/A | |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
+| Titkosított API-hívások| Igen | A [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfigurációkezelés támogatása (a konfiguráció verziószámozása stb.)| N/A |  | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| N/A |  | 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../security/fundamentals/security-controls.md)
+- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

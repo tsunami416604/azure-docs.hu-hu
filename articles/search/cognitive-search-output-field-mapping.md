@@ -1,7 +1,7 @@
 ---
-title: Bemenet hozzárendelése kimeneti mezőkhöz
+title: Bemenet hozzárendelése a kimeneti mezőkhöz
 titleSuffix: Azure Cognitive Search
-description: Kinyerheti és gazdagíthatja a forrásadatmezőket, és leképezheti az Azure Cognitive Search index kimeneti mezőihez.
+description: Kinyerheti és gazdagíthatja a forrásadatok mezőit, és leképezheti a kimeneti mezőket egy Azure Cognitive Search indexben.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74280969"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>A i-dúsított mezők leképezése kereshető indexhez
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
-Ebből a cikkből megtudhatja, hogyan képezheti le a bővített bemeneti mezőket a kereshető index kimeneti mezőihez. Miután [definiált egy skillsetet,](cognitive-search-defining-skillset.md)le kell képeznie minden olyan szakértelem kimeneti mezőit, amely közvetlenül hozzájárul egy adott mezőhöz a keresési indexben. 
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. 
 
-Kimeneti mezőleképezések szükségesek a bővített dokumentumok tartalmának az indexbe való áthelyezéséhez.  A dúsított dokumentum valójában az információk fája, és bár az indexben támogatja az összetett típusokat, néha érdemes a dúsított fából származó információkat egyszerűbb típussá (például karakterláncok tömbjé) átalakítani. A kimeneti mezőleképezések lehetővé teszik adatalakzat-átalakítások elvégzését az adatok összeolvasztásával.
+A bővített dokumentumokból származó tartalomnak az indexbe való áthelyezéséhez kimeneti mezők hozzárendelése szükséges.  A dúsított dokumentum valójában az információk fája, és bár az index összetett típusai is támogatottak, időnként előfordulhat, hogy a dúsított fában lévő adatokat egy egyszerű típusra kívánja átalakítani (például karakterláncok tömbje). A kimeneti mezők leképezése lehetővé teszi az adatalakzatok átalakításának elvégzését az információk összeolvasztásával.
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
-Mezők leképezéséhez adja hozzá `outputFieldMappings` az indexelő definícióját az alábbi módon:
+A mezők leképezéséhez adja `outputFieldMappings` hozzá az indexelő definícióját az alábbi ábrán látható módon:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -30,7 +30,7 @@ api-key: [admin key]
 Content-Type: application/json
 ```
 
-A kérelem törzse a következőképpen épül fel:
+A kérelem törzse a következőképpen van strukturálva:
 
 ```json
 {
@@ -64,21 +64,21 @@ A kérelem törzse a következőképpen épül fel:
 }
 ```
 
-Minden kimeneti mező leképezéséhez állítsa be az adatok helyét a bővített dokumentumfában (sourceFieldName), valamint a mező nevét az indexben hivatkozottmódon (targetFieldName).
+Minden egyes kimeneti mező leképezéséhez állítsa be a dúsított dokumentum fájában (sourceFieldName) található adatokat, valamint a mező nevét az indexben hivatkozott módon (targetFieldName).
 
-## <a name="flattening-information-from-complex-types"></a>Adatok összeolvasztása összetett típusokból 
+## <a name="flattening-information-from-complex-types"></a>Információk összeolvasztása összetett típusokból 
 
-A sourceFieldName elérési útja egy elemet vagy több elemet jelölhet. A fenti példában egyetlen numerikus ```/document/content/sentiment``` értéket, míg ```/document/content/organizations/*/description``` több szervezeti leírást jelöl. 
+Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti ```/document/content/sentiment``` példában egyetlen numerikus érték szerepel, míg ```/document/content/organizations/*/description``` a több szervezet leírását jelöli. 
 
-Azokban az esetekben, ahol több elem van, azok "összeolvasztott" egy tömb, amely tartalmazza az egyes elemeket. 
+Azokban az esetekben, ahol több elem is van, azok egy tömbbe kerülnek, amely tartalmazza az egyes elemeket. 
 
-Konkrétabban, a ```/document/content/organizations/*/description``` példában a *leírások* mezőben lévő adatok a leírások sík tömbjének tűnnek, mielőtt indexelnék őket:
+A fenti ```/document/content/organizations/*/description``` példában a *leírások* mezőben szereplő információ a leírások egy lapos tömbje lesz, az indexelés előtt:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 
-Ez egy fontos elv, ezért egy másik példát is mutatunk. Képzelje el, hogy a dúsító fa részeként összetett típusok ból álló tömbvan. Tegyük fel, hogy van egy customEntities nevű tag, amely az alábbiakban ismertetetthez hasonló összetett típusok tömbjével rendelkezik.
+Ez fontos elv, ezért egy másik példát is biztosítunk. Képzelje el, hogy az összetett típusok tömbje a dúsítási fa része. Tegyük fel, hogy van egy customEntities nevű tag, amely az alább leírtak szerint összetett típusokat tartalmaz.
 
 ```json
 "document/customEntities": 
@@ -109,9 +109,9 @@ Ez egy fontos elv, ezért egy másik példát is mutatunk. Képzelje el, hogy a 
 ]
 ```
 
-Tegyük fel, hogy az index rendelkezik egy Collection (Edm.String) típusú "betegségek" nevű mezővel, ahol az entitások egyes neveit szeretné tárolni. 
+Tegyük fel, hogy az indexnek van egy "diseases" nevű mezője (EDM. String), ahol az entitások nevét tárolni szeretné. 
 
-Ez könnyen elvégezhető a\*" " szimbólum használatával, az alábbiak szerint:
+Ezt egyszerűen megteheti a "\*" szimbólum használatával, a következőképpen:
 
 ```json
     "outputFieldMappings": [
@@ -122,13 +122,13 @@ Ez könnyen elvégezhető a\*" " szimbólum használatával, az alábbiak szerin
     ]
 ```
 
-Ez a művelet egyszerűen "összeolvasztja" az egyéni entitások elemeinek nevét egyetlen karakterlánctömbbe, mint ez:
+Ez a művelet egyszerűen "lelapul" a customEntities elemek mindegyikének egyetlen tömbje a következőhöz hasonlóan:
 
 ```json
   "diseases" : ["heart failure","morquio"]
 ```
 
 ## <a name="next-steps"></a>További lépések
-Miután a bővített mezőket kereshető mezőkhöz rendelte, az indexdefiníció részeként beállíthatja az egyes kereshető mezők [mezőattribútumait.](search-what-is-an-index.md)
+Miután leképezte a dúsított mezőket a kereshető mezőkre, az [index definíciójának részeként](search-what-is-an-index.md)megadhatja az egyes kereshető mezőkhöz tartozó mezőtulajdonságokat.
 
-A mezőleképezésről további információt az [Azure Cognitive Search indexelői mezőleképezései című témakörben talál.](search-indexer-field-mappings.md)
+További információ a mezők hozzárendeléséről: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.

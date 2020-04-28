@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Alapvető Active Directory helyszíni és Azure AD-környezetben.
+title: Oktatóanyag – alapszintű Active Directory helyszíni és Azure AD-környezetekben.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,40 +11,40 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74793897"
 ---
-# <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: Alapszintű Active Directory-környezet
+# <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
 
-Ez az oktatóanyag bemutatja az alapvető Active Directory-környezet létrehozását. 
+Ez az oktatóanyag végigvezeti egy alapszintű Active Directory környezet létrehozásán. 
 
 ![Létrehozás](media/tutorial-single-forest/diagram1.png)
 
-Használhatja a környezetet hoz létre az oktatóanyag ban, hogy tesztelje a hibrid identitás forgatókönyvek különböző aspektusait, és lesz előfeltétele néhány oktató.  Ha már rendelkezik meglévő Active Directory-környezettel, azt használhatja helyettesítőként.  Ez az információ az egyének, akik az én kezdve a semmiből.
+Az oktatóanyagban létrehozott környezettel tesztelheti a hibrid identitási forgatókönyvek különböző szempontjait, és néhány oktatóanyag előfeltételként is használható.  Ha már rendelkezik meglévő Active Directory-környezettel, ezt helyettesítőként használhatja.  Ezek az adatok olyan személyeknek szólnak, akik nem a semmiből indulnak.
 
-Ez az oktatóanyag a következőkből áll:
+Ez az oktatóanyag a következő elemekből áll
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag befejezéséhez az alábbiakban az alábbi előfeltételek szükségesek
-- Egy számítógép, amelyen telepítve van a [Hyper-V.](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview)  Javasoljuk, hogy ezt Windows [10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépen tegye meg.
-- [Külső hálózati adapter,](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
+Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek
+- [Hyper-V-](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) t futtató számítógép.  Ezt a [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépeken javasolt elvégezni.
+- Egy [külső hálózati adapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
 - [Azure-előfizetés](https://azure.microsoft.com/free)
 - A Windows Server 2016 másolata
-- [Microsoft .](https://www.microsoft.com/download/details.aspx?id=56115)
+- [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
 
 > [!NOTE]
-> Ez az oktatóanyag PowerShell-parancsfájlokat használ, így a leggyorsabb idő alatt hozhatja létre az oktatóanyag-környezetet.  A parancsfájlok mindegyike olyan változót használ, amely a parancsfájlok elején deklarálva van deklarálva.  Módosíthatja és meg is kell változtatnia a változókat, hogy azok tükrözzék a környezetet.
+> Ez az oktatóanyag PowerShell-parancsfájlokat használ, hogy a leggyorsabb idő alatt létre tudja hozni az oktatóanyag-környezetet.  Mindegyik parancsfájl a parancsfájlok elején deklarált változókat használ.  A változókat a környezetnek megfelelően módosítani lehet.
 >
->A használt parancsfájlok egy általános Active Directory-környezetet hoznak létre az Azure AD Connect felhőkiépítési ügynök telepítése előtt.  Ezek relevánsak az összes oktató.
+>A szkriptek a Azure AD Connect Cloud kiépítési ügynök telepítése előtt általános Active Directory környezetet hoznak létre.  Ezek minden oktatóanyaghoz relevánsak.
 >
-> Az oktatóanyagban használt PowerShell-parancsfájlok másolatai [itt](https://github.com/billmath/tutorial-phs)érhetők el a GitHubon.
+> Az oktatóanyagban használt PowerShell-parancsfájlok példányai [itt](https://github.com/billmath/tutorial-phs)érhetők el a githubon.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Az első dolog, amit meg kell tennie, annak érdekében, hogy a hibrid identitáskörnyezet, és fut, hogy hozzon létre egy virtuális gépet, amely a helyszíni Active Directory-kiszolgálóként lesz használva.  Tegye a következőket:
+Az első teendő, hogy a hibrid identitás-környezet felépítésének és működtetésének megkezdéséhez hozzon létre egy virtuális gépet, amelyet a helyszíni Active Directory-kiszolgálóként fog használni.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell
@@ -72,24 +72,24 @@ Az első dolog, amit meg kell tennie, annak érdekében, hogy a hibrid identitá
     Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive 
     ```
 
-## <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer telepítésének befejezése
-Annak érdekében, hogy befejezze az épület a virtuális gép, be kell fejeznie az operációs rendszer telepítését.
+## <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer központi telepítésének befejezése
+A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operációs rendszer telepítését.
 
-1. Hyper-V Manager, kattintson duplán a virtuális gépre
+1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
-3. A program kéri, hogy "Nyomjon meg egy billentyűt a CD-ről vagy DVD-ről történő rendszerindításhoz". Rajta, és tegye meg.
-4. A Windows Server indítási képernyőjén válassza ki a kívánt nyelvet, és kattintson a **Tovább**gombra.
-5. Kattintson **a Telepítés gombra.**
-6. Írja be a licenckulcsot, és kattintson a **Tovább**gombra.
-7. Ellenőrizze **Elfogadom a licencfeltételeket, és kattintson a **Tovább**gombra.
-8. Egyéni beállítás **kiválasztása: Csak a Windows telepítése (speciális)**
-9. Kattintson a **Tovább gombra**
-10. A telepítés befejezése után indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket annak érdekében, hogy a virtuális gép a legfrissebb legyen.  Telepítse a legújabb frissítéseket.
+3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
+5. Kattintson a **Telepítés most**lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
+9. Kattintson a **tovább** gombra
+10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
 
-## <a name="install-active-directory-prerequisites"></a>Az Active Directory előfeltételeinek telepítése
-Most, hogy egy virtuális gép fel, meg kell tennie néhány dolgot telepítése előtt Az Active Directory telepítése előtt.  Ez azt illeti, át kell neveznie a virtuális gépet, statikus IP-címet és DNS-adatokat kell beállítania, és telepítenie kell a Távoli kiszolgáló felügyeleti eszközeit.   Tegye a következőket:
+## <a name="install-active-directory-prerequisites"></a>Active Directory Előfeltételek telepítése
+Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése előtt végre kell hajtania néhány dolgot.  Éppen ezért át kell neveznie a virtuális gépet, meg kell adnia egy statikus IP-címet és a DNS-adatokat, és telepítenie kell a Távoli kiszolgálófelügyelet eszközeit.   Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell
@@ -122,10 +122,10 @@ Most, hogy egy virtuális gép fel, meg kell tennie néhány dolgot telepítése
     Restart-Computer
     ```
 
-## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD környezet létrehozása
-Most, hogy létrehozta a virtuális gép, és átnevezték, és statikus IP-címmel rendelkezik, telepítheti és konfigurálhatja az Active Directory tartományi szolgáltatásokat.  Tegye a következőket:
+## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
+Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell 
@@ -154,9 +154,9 @@ Most, hogy létrehozta a virtuális gép, és átnevezték, és statikus IP-cím
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD-felhasználó létrehozása
-Most, hogy rendelkezik az Active Directory-környezettel, tesztfiókra van szüksége.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
+Most, hogy már rendelkezik Active Directory-környezettel, tesztelési fiókkal kell rendelkeznie.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell 
@@ -194,35 +194,35 @@ Most, hogy rendelkezik az Active Directory-környezettel, tesztfiókra van szük
 
 
 ## <a name="create-an-azure-ad-tenant"></a>Azure AD-bérlő létrehozása
-Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálhassa a felhasználókat a felhővel.  Új Azure AD-bérlő létrehozásához tegye a következőket.
+Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felhasználókat a felhőben.  Új Azure AD-bérlő létrehozásához tegye a következőket.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
 4. Kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-single-forest/create1.png)</br>
-5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza **a Létrehozás lehetőséget.** Ezzel létrejön a címtár.
-6. Miután ez befejeződött, kattintson az **itt** linkre, a könyvtár kezeléséhez.
+5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás**lehetőséget. Ezzel létrejön a címtár.
+6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Globális rendszergazda létrehozása az Azure AD-ben
-Most, hogy rendelkezik egy Azure AD-bérlővel, létrehoz egy globális rendszergazdai fiókot.  A globális rendszergazdai fiók létrehozásához tegye a következőket.
+Most, hogy rendelkezik egy Azure AD-Bérlővel, létre fog hozni egy globális rendszergazdai fiókot.  A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
 1.  A **Kezelés** alatt válassza a **Felhasználókat**.</br>
 ![Létrehozás](media/tutorial-single-forest/administrator1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
-3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **Címtár szerepkört** globális **rendszergazdára** is módosítani szeretné. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
+3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-single-forest/administrator2.png)</br>
-4. Miután ez befejeződött, nyisson meg egy új webböngészőt, és jelentkezzen be myapps.microsoft.com az új globális rendszergazdai fiók és az ideiglenes jelszó használatával.
-5. Módosítsa a globális rendszergazda jelszavát olyanra, amire emlékezni fog.
+4. Ha ez befejeződik, nyisson meg egy új webböngészőt, és jelentkezzen be a myapps.microsoft.com-be az új globális rendszergazdai fiókkal és az ideiglenes jelszóval.
+5. Módosítsa a globális rendszergazda jelszavát úgy, hogy megjegyezzen.
 
-## <a name="optional--additional-server-and-forest"></a>Nem kötelező: További kiszolgáló és erdő
-Az alábbi szakasz nem kötelező, amely további kiszolgáló és erdő létrehozásának lépéseit ismerteti.  Ez használható néhány fejlettebb oktatóanyagok, mint például [a Pilot for Azure AD Connect a felhőkiépítés.](tutorial-pilot-aadc-aadccp.md)
+## <a name="optional--additional-server-and-forest"></a>Nem kötelező: további kiszolgáló és erdő
+A következő egy választható szakasz, amely egy további kiszolgáló és vagy erdő létrehozásának lépéseit ismerteti.  Ez néhány fejlettebb oktatóanyagban használható, például a [próbaüzem Azure ad Connect a felhőbe való kiépítés](tutorial-pilot-aadc-aadccp.md)során.
 
-Ha csak egy további kiszolgálóra van szüksége, leállíthatja a **- A virtuálisgép-lépés létrehozása** és a kiszolgáló csatlakoztatása a fent létrehozott meglévő tartományhoz.  
+Ha csak további kiszolgálóra van szüksége, akkor a- **create The Virtual Machine (virtuális gép létrehozása** ) lépés után leállíthatja a kiszolgálót, és csatlakoztathatja a kiszolgálót a fent létrehozott meglévő tartományhoz.  
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell
@@ -259,24 +259,24 @@ Ha csak egy további kiszolgálóra van szüksége, leállíthatja a **- A virtu
     Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
     ```
 
-### <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer telepítésének befejezése
-Annak érdekében, hogy befejezze az épület a virtuális gép, be kell fejeznie az operációs rendszer telepítését.
+### <a name="complete-the-operating-system-deployment"></a>Az operációs rendszer központi telepítésének befejezése
+A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operációs rendszer telepítését.
 
-1. Hyper-V Manager, kattintson duplán a virtuális gépre
+1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
-3. A program kéri, hogy "Nyomjon meg egy billentyűt a CD-ről vagy DVD-ről történő rendszerindításhoz". Rajta, és tegye meg.
-4. A Windows Server indítási képernyőjén válassza ki a kívánt nyelvet, és kattintson a **Tovább**gombra.
-5. Kattintson **a Telepítés gombra.**
-6. Írja be a licenckulcsot, és kattintson a **Tovább**gombra.
-7. Ellenőrizze **Elfogadom a licencfeltételeket, és kattintson a **Tovább**gombra.
-8. Egyéni beállítás **kiválasztása: Csak a Windows telepítése (speciális)**
-9. Kattintson a **Tovább gombra**
-10. A telepítés befejezése után indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket annak érdekében, hogy a virtuális gép a legfrissebb legyen.  Telepítse a legújabb frissítéseket.
+3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
+5. Kattintson a **Telepítés most**lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
+9. Kattintson a **tovább** gombra
+10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
 
-### <a name="install-active-directory-prerequisites"></a>Az Active Directory előfeltételeinek telepítése
-Most, hogy egy virtuális gép fel, meg kell tennie néhány dolgot telepítése előtt Az Active Directory telepítése előtt.  Ez azt illeti, át kell neveznie a virtuális gépet, statikus IP-címet és DNS-adatokat kell beállítania, és telepítenie kell a Távoli kiszolgáló felügyeleti eszközeit.   Tegye a következőket:
+### <a name="install-active-directory-prerequisites"></a>Active Directory Előfeltételek telepítése
+Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése előtt végre kell hajtania néhány dolgot.  Éppen ezért át kell neveznie a virtuális gépet, meg kell adnia egy statikus IP-címet és a DNS-adatokat, és telepítenie kell a Távoli kiszolgálófelügyelet eszközeit.   Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell
@@ -323,10 +323,10 @@ Most, hogy egy virtuális gép fel, meg kell tennie néhány dolgot telepítése
     #Restart the computer 
     Restart-Computer
     ```
-### <a name="create-a-windows-server-ad-environment"></a>Windows Server AD környezet létrehozása
-Most, hogy létrehozta a virtuális gép, és átnevezték, és statikus IP-címmel rendelkezik, telepítheti és konfigurálhatja az Active Directory tartományi szolgáltatásokat.  Tegye a következőket:
+### <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
+Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell
@@ -370,9 +370,9 @@ Most, hogy létrehozta a virtuális gép, és átnevezték, és statikus IP-cím
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Windows Server AD-felhasználó létrehozása
-Most, hogy rendelkezik az Active Directory-környezettel, tesztfiókra van szüksége.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
+Most, hogy már rendelkezik Active Directory-környezettel, tesztelési fiókkal kell rendelkeznie.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
 
-1. Nyissa meg a PowerShell ISE rendszergazdaként.
+1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsprogramot.
 
     ```powershell 
@@ -409,7 +409,7 @@ Most, hogy rendelkezik az Active Directory-környezettel, tesztfiókra van szük
     ```
 
 ## <a name="conclusion"></a>Összegzés
-Most már rendelkezik egy olyan környezettel, amely használható a meglévő oktatóanyagokhoz, és további funkciók tesztelésére felhőkiépítés biztosít.
+Most már rendelkezik egy olyan környezettel, amely használható a meglévő oktatóanyagokhoz, és tesztelheti a további funkciókat a felhőalapú kiépítés terén.
 
 ## <a name="next-steps"></a>További lépések 
 

@@ -1,6 +1,6 @@
 ---
 title: B2B együttműködési felhasználó naplózása és jelentése – Azure AD
-description: A vendégfelhasználói tulajdonságok konfigurálhatók az Azure Active Directory B2B együttműködésében
+description: A vendég felhasználói tulajdonságok Azure Active Directory B2B együttműködésben konfigurálhatók.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,29 +13,29 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74273285"
 ---
-# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B együttműködési felhasználó naplózása és jelentése
-A vendégfelhasználók esetében a tagfelhasználókhoz hasonló naplózási funkciókkal rendelkezik. 
+# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B csoportmunka-felhasználó naplózása és jelentése
+A vendég felhasználóival a felhasználókhoz hasonló naplózási funkciókkal rendelkezhet. 
 
 ## <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
-A hozzáférési felülvizsgálatok segítségével rendszeresen ellenőrizheti, hogy a vendégfelhasználóknak továbbra is szükségük van-e az erőforrásokhoz való hozzáférésre. Az **Access-ellenőrzések** szolgáltatás az **Azure Active Directoryban** érhető el a Szervezeti**kapcsolatok** **kezelése** > csoportban. (Az Azure **Portalon minden szolgáltatásból** is kereshet "hozzáférési felülvizsgálatokat".) A hozzáférési felülvizsgálatok használatáról a [Vendéghozzáférés kezelése az Azure AD-hozzáférés-felülvizsgálatokkal című témakörben olvashat.](../governance/manage-guest-access-with-access-reviews.md)
+A hozzáférési felülvizsgálatok segítségével rendszeres időközönként ellenőrizheti, hogy a vendég felhasználóknak továbbra is szükségük van-e az erőforrásokhoz való hozzáférésre. A **hozzáférési felülvizsgálatok** szolgáltatás **Azure Active Directory** a**szervezeti kapcsolatok** **kezelése** > területen érhető el. (A Azure Portal **összes szolgáltatásának** "hozzáférési felülvizsgálatok" kifejezésére is lehetősége van.) A hozzáférési felülvizsgálatok használatának megismeréséhez lásd: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Naplók
 
-Az Azure AD naplózási naplók rendszer- és felhasználói tevékenységek rekordjait biztosítják, beleértve a vendégfelhasználók által kezdeményezett tevékenységeket is. A naplók eléréséhez az **Azure Active Directory** **figyelés e**területen válassza a Naplók **naplózása**lehetőséget. Íme egy példa a meghívásés megváltás története meghívott Sam Oogle:
+Az Azure AD-naplók rögzítik a rendszer-és felhasználói tevékenységeket, beleértve a vendég felhasználók által kezdeményezett tevékenységeket is. A naplók eléréséhez **Azure Active Directory**a **figyelés**területen válassza a **naplók**lehetőséget. Íme egy példa a Meghívási és visszaváltási előzményekre a meghívott Sam oogle:
 
-![Képernyőkép és példa a napló kimenetére](./media/auditing-and-reporting/audit-log.png)
+![A napló kimenetét bemutató képernyőkép és példa](./media/auditing-and-reporting/audit-log.png)
 
-Akkor belevetik magukat az egyes események, hogy a részleteket. Nézzük meg például az elfogadás részleteit.
+Ezeket az eseményeket a részletek megismeréséhez is elsajátíthatja. Tekintse meg például az elfogadás részleteit.
 
-![Képernyőkép és a tevékenység részleteinek kimenete](./media/auditing-and-reporting/activity-details.png)
+![A tevékenység részleteinek kimenetét bemutató képernyőkép és példa](./media/auditing-and-reporting/activity-details.png)
 
-Ezeket a naplókat exportálhatja az Azure AD-ből is, és a választott jelentéskészítő eszközzel személyre szabott jelentéseket kaphat.
+Ezeket a naplókat az Azure AD-ből is exportálhatja, és az Ön által választott jelentéskészítő eszköz használatával testreszabott jelentéseket kaphat.
 
 ### <a name="next-steps"></a>További lépések
 

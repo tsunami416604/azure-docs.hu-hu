@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása a Hadoop-streamelési tevékenység használatával – Azure
-description: Megtudhatja, hogy miként használhatja a Hadoop streamelési tevékenységet egy Azure-adat-előállítóban az adatok átalakításához a Hadoop streaming programok igény szerinti/saját HDInsight-fürtön való futtatásával.
+title: Adatátalakítás az Hadoop streaming-tevékenység használatával – Azure
+description: Megtudhatja, hogyan alakíthatja át az Hadoop streaming-tevékenységet egy Azure-beli adatgyárban az Hadoop streaming-programok futtatásával egy igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703369"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatok átalakítása a Hadoop streamelési tevékenységével az Azure Data Factoryban
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
-> * [Hive-tevékenység](data-factory-hive-activity.md) 
-> * [Sertés tevékenység](data-factory-pig-activity.md)
+> * [Struktúra tevékenysége](data-factory-hive-activity.md) 
+> * [Pig-tevékenység](data-factory-pig-activity.md)
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
-> * [Hadoop streaming tevékenység](data-factory-hadoop-streaming-activity.md)
-> * [Szikratevékenység](data-factory-spark.md)
+> * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
+> * [Spark-tevékenység](data-factory-spark.md)
 > * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
@@ -33,18 +33,18 @@ ms.locfileid: "74703369"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatok átalakítása a Hadoop adatkezelési tevékenység használatával című témakört](../transform-data-using-hadoop-streaming.md)a Data Factory ban.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az adatátalakítás a Data Factory Hadoop streaming Activity használatával](../transform-data-using-hadoop-streaming.md)című témakört.
 
 
-Használhatja a HDInsightStreamingActivity tevékenység meghívása egy Hadoop streamelési feladat egy Azure Data Factory-folyamat. Az alábbi JSON-kódrészlet a HDInsightStreamingActivity folyamatJSON-fájlban való használatának szintaxisát mutatja. 
+Használhatja a HDInsightStreamingActivity tevékenységet egy Hadoop streaming-feladatoknak egy Azure Data Factory folyamatból való meghívásához. A következő JSON-kódrészlet a HDInsightStreamingActivity egy folyamat JSON-fájlban való használatának szintaxisát mutatja be. 
 
-A DATA [Factory-folyamat](data-factory-create-pipelines.md) HDInsight-streamelési tevékenysége saját vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre [a](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) Hadoop-streamelési programokat. Ez a cikk az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.
+A Data Factory- [folyamat](data-factory-create-pipelines.md) HDInsight adatfolyam-továbbítási tevékenysége a [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre a Hadoop streaming-programokat. Ez a cikk az Adatátalakítási [tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
 
 > [!NOTE] 
-> Ha most jön az Azure Data Factory, olvassa el [az Azure Data Factory bevezetés](data-factory-introduction.md) című, és nem az oktatóanyag: [Készítse el az első adatfolyamat](data-factory-build-your-first-pipeline.md) a cikk elolvasása előtt. 
+> Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="json-sample"></a>JSON-minta
-A HDInsight-fürt automatikusan kitöltődik a példaprogramok (wc.exe és cat.exe) és az adatok (davinci.txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve maga a fürt neve. Ha például a fürt neve myhdicluster, a társított blobtároló neve myhdicluster lesz. 
+A rendszer automatikusan kitölti a HDInsight-fürtöt például a (WC. exe és Cat. exe) és az adatokat (DaVinci. txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz. 
 
 ```JSON
 {
@@ -94,28 +94,28 @@ A HDInsight-fürt automatikusan kitöltődik a példaprogramok (wc.exe és cat.e
 
 Vegye figyelembe a következő szempontokat:
 
-1. Állítsa be a **linkedServiceName** a neve a csatolt szolgáltatás, amely rámutat arra a HDInsight-fürtre, amelyen a streamelési mapreduce feladat fut.
-2. Állítsa be a tevékenység típusát **a HDInsightStreaming**beállításra.
-3. A **leképező** tulajdonsághoz adja meg a leképező végrehajtható fájl nevét. A példában a cat.exe a leképező végrehajtható.
-4. A **szűkítő** tulajdonsághoz adja meg a szűkítő végrehajtható fájljának nevét. A példában a wc.exe a szűkítő végrehajtható fájlja.
-5. A **bemeneti** típus tulajdonsághoz adja meg a leképező bemeneti fájlját (a helyet is beleértve). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample a blob tároló, példa/data/Gutenberg a mappa, és davinci.txt a blob.
-6. A **kimeneti** típus tulajdonsághoz adja meg a szűkítő kimeneti fájlját (beleértve a helyet is). A Hadoop-streamelési feladat kimenete a tulajdonsághoz megadott helyre íródik.
-7. A **filePaths** szakaszban adja meg a leképező és a szűkítő végrehajtható fájlelérési útjait. A példában: "adfsample/example/apps/wc.exe", adfsample a blob tároló, példa/alkalmazások a mappa, és wc.exe a végrehajtható.
-8. A **fileLinkedService** tulajdonság, adja meg az Azure Storage csatolt szolgáltatás, amely az Azure storage, amely tartalmazza a filePaths szakaszban megadott fájlokat.
-9. Az **arguments** tulajdonsághoz adja meg a streamelési feladat argumentumait.
-10. A **getDebugInfo** tulajdonság nem kötelező elem. Ha hiba, a naplók csak hiba esetén töltődnek le. Ha mindig van beállítva, a naplók mindig letöltődnek a végrehajtási állapottól függetlenül.
+1. Állítsa be a **linkedServiceName** a társított szolgáltatás nevére, amely arra a HDInsight-fürtre mutat, amelyen a streaming MapReduce-feladatot futtatja.
+2. Állítsa be a tevékenység típusát a **HDInsightStreaming**értékre.
+3. A **Mapper** tulajdonságnál adja meg a Mapper végrehajtható fájljának nevét. A példában a Cat. exe a Mapper végrehajtható fájlja.
+4. A **csökkentő** tulajdonságnál adja meg a csökkentő végrehajtható fájl nevét. A példában a WC. exe a csökkentő végrehajtható fájl.
+5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample a blob tároló, például az adatfájlok és a Gutenberg mappa, a DaVinci. txt pedig a blob.
+6. A **kimeneti** típus tulajdonságnál adja meg a redukáló kimeneti fájlját (beleértve a helyét is). Az Hadoop streaming-feladatok kimenete a tulajdonsághoz megadott helyre íródik.
+7. A **filePaths** szakaszban határozza meg a mapper és a csökkentő végrehajtható fájlok elérési útját. A példában: "adfsample/example/apps/WC. exe", a adfsample a blob tároló, például az alkalmazások mappa, a WC. exe pedig a végrehajtható fájl.
+8. A **fileLinkedService** tulajdonságnál adja meg az Azure Storage társított szolgáltatást, amely az filePaths szakaszban megadott fájlokat tartalmazó Azure Storage-tárolót jelöli.
+9. Az **argumentumok** tulajdonságnál határozza meg a folyamatos átviteli feladatokhoz tartozó argumentumokat.
+10. A **getDebugInfo** tulajdonság egy opcionális elem. Ha a hiba értékre van állítva, a naplók letöltése csak meghibásodás esetén történik meg. Ha a mindig értékre van állítva, a rendszer mindig letölti a naplókat a végrehajtási állapottól függetlenül.
 
 > [!NOTE]
-> Amint az a példában látható, adja meg a kimeneti adatkészletet a Hadoop streamelési tevékenység a **kimeneti** tulajdonság. Ez az adatkészlet csak egy dumi adatkészlet, amely a folyamat ütemezésének meghajtója. Nem kell megadnia a bemeneti adatkészletet a tevékenység hez a **bemeneti** tulajdonsághoz.  
+> Ahogy az a példában is látható, a **kimenetek** tulajdonsághoz meg kell adnia egy kimeneti adatkészletet a Hadoop adatfolyam-továbbítási tevékenységhez. Ez az adatkészlet csak egy olyan próbabábu-adatkészlet, amely a folyamat ütemtervének megadásához szükséges. A **bemenetek** tulajdonsághoz nem kell megadnia a tevékenységhez tartozó bemeneti adatkészletet.  
 > 
 > 
 
 ## <a name="example"></a>Példa
-A forgatókönyvben szereplő folyamat futtatja a Word-számláló streamelési/kicsinyítési programot az Azure HDInsight-fürtön. 
+Az ebben a bemutatóban található folyamat futtatja az Azure HDInsight-fürtön lévő "streaming Map/csökkentse" programot. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Először hozzon létre egy összekapcsolt szolgáltatást az Azure HDInsight-fürt által használt Azure Storage és az Azure-adatgyár összekapcsolásához. Ha másolja/illessze be a következő kódot, ne felejtse el lecserélni a fiók nevét és a fiókkulcsot az Azure Storage nevére és kulcsára. 
+Először létre kell hoznia egy társított szolgáltatást, amely összekapcsolja az Azure HDInsight-fürt által az Azure-beli adatgyárhoz használt Azure-tárolót. Ha a következő kódot másolja/illeszti be, ne felejtse el lecserélni a fiók nevét és a fiók kulcsát az Azure Storage-beli nevére és kulcsára. 
 
 ```JSON
 {
@@ -129,8 +129,8 @@ Először hozzon létre egy összekapcsolt szolgáltatást az Azure HDInsight-f�
 }
 ```
 
-#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight-kapcsolt szolgáltatás
-Ezután hozzon létre egy összekapcsolt szolgáltatást az Azure HDInsight-fürt és az Azure-adatgyár összekapcsolásához. Ha a következő kódot másolja/illeszti be, cserélje le a HDInsight-fürt nevét a HDInsight-fürt nevére, és módosítsa a felhasználónév és a jelszó értékeit. 
+#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás
+Ezután létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure HDInsight-fürtöt az Azure-beli adatgyárral. Ha a következő kódot másolja/illeszti be, cserélje le a HDInsight-fürtöt a HDInsight-fürt nevére, és változtassa meg a Felhasználónév és a jelszó értékét. 
 
 ```JSON
 {
@@ -149,7 +149,7 @@ Ezután hozzon létre egy összekapcsolt szolgáltatást az Azure HDInsight-für
 
 ### <a name="datasets"></a>Adathalmazok
 #### <a name="output-dataset"></a>Kimeneti adatkészlet
-Ebben a példában a folyamat nem vesz fel minden bemenetet. Megkell adnia egy kimeneti adatkészletet a HDInsight streamelési tevékenységhez. Ez az adatkészlet csak egy dumi adatkészlet, amely a folyamat ütemezésének meghajtója. 
+Az ebben a példában szereplő folyamat nem tesz elérhetővé semmilyen bemenetet. Meg kell adnia egy kimeneti adatkészletet a HDInsight streaming tevékenységhez. Ez az adatkészlet csak egy olyan próbabábu-adatkészlet, amely a folyamat ütemtervének megadásához szükséges. 
 
 ```JSON
 {
@@ -174,9 +174,9 @@ Ebben a példában a folyamat nem vesz fel minden bemenetet. Megkell adnia egy k
 ```
 
 ### <a name="pipeline"></a>Folyamat
-Ebben a példában a folyamat csak egy tevékenység, amely a típus: **HDInsightStreaming**. 
+Az ebben a példában szereplő folyamathoz csak egy: **HDInsightStreaming**típusú tevékenység tartozik. 
 
-A HDInsight-fürt automatikusan kitöltődik a példaprogramok (wc.exe és cat.exe) és az adatok (davinci.txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve maga a fürt neve. Ha például a fürt neve myhdicluster, a társított blobtároló neve myhdicluster lesz.  
+A rendszer automatikusan kitölti a HDInsight-fürtöt például a (WC. exe és Cat. exe) és az adatokat (DaVinci. txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz.  
 
 ```JSON
 {
@@ -223,8 +223,8 @@ A HDInsight-fürt automatikusan kitöltődik a példaprogramok (wc.exe és cat.e
 }
 ```
 ## <a name="see-also"></a>Lásd még:
-* [Hive-tevékenység](data-factory-hive-activity.md)
-* [Sertés tevékenység](data-factory-pig-activity.md)
+* [Struktúra tevékenysége](data-factory-hive-activity.md)
+* [Pig-tevékenység](data-factory-pig-activity.md)
 * [MapReduce tevékenység](data-factory-map-reduce.md)
 * [Spark-programok meghívása](data-factory-spark.md)
 * [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

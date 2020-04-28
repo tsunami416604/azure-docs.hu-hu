@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások közzététele külön hálózatokon összekötőcsoportokon keresztül – Azure AD
-description: Bemutatja, hogyan hozhat létre és kezelhet összekötők csoportjait az Azure AD alkalmazásproxyban.
+title: Alkalmazások közzététele különálló hálózatokon összekötő csoportok használatával – Azure AD
+description: Bemutatja, hogyan hozhatók létre és kezelhetők összekötők csoportjai az Azure AD Application Proxyban.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -15,118 +15,118 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275566"
 ---
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Alkalmazások közzététele különböző hálózatokon és helyeken összekötőcsoportok használatával
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával
 
-Az ügyfelek az Azure AD alkalmazásproxyját használják egyre több forgatókönyvhöz és alkalmazáshoz. Ezért még rugalmasabbá tettük az App Proxy-t azáltal, hogy több topológiát tettünk lehetővé. Alkalmazásproxy-összekötőcsoportokat hozhat létre, így adott összekötőket rendelhet hozzá adott alkalmazások kiszolgálásához. Ez a funkció több vezérlést és az alkalmazásproxy központi telepítésének optimalizálását teszi lehetővé.
+Az ügyfelek egyre több forgatókönyvhöz és alkalmazáshoz használják az Azure AD Application proxyját. Így a további topológiák engedélyezésével még rugalmasabbak lettek az alkalmazás-proxyk. Alkalmazásproxy-összekötő csoportokat úgy hozhat létre, hogy konkrét összekötőket rendeljen hozzá adott alkalmazások kiszolgálásához. Ezzel a képességgel hatékonyabban vezérelheti az alkalmazásproxy üzembe helyezését.
 
-Minden alkalmazásproxy-összekötő egy összekötőcsoporthoz van rendelve. Az azonos összekötők csoportjához tartozó összekötők külön egységként működnek a magas rendelkezésre állás és a terheléselosztás érdekében. Minden összekötő egy összekötőcsoporthoz tartozik. Ha nem hoz létre csoportokat, akkor az összes összekötő egy alapértelmezett csoportban van. A rendszergazda új csoportokat hozhat létre, és összekötőket rendelhet hozzájuk az Azure Portalon.
+Minden alkalmazásproxy-összekötő hozzá van rendelve egy összekötő-csoporthoz. Az ugyanahhoz az összekötő csoporthoz tartozó összes összekötő külön egységként működik a magas rendelkezésre állás és a terheléselosztás érdekében. Minden összekötő egy összekötő csoporthoz tartozik. Ha nem hoz létre csoportokat, az összes összekötő alapértelmezett csoportba kerül. A rendszergazda új csoportokat hozhat létre és összekötőket rendelhet hozzájuk a Azure Portal.
 
-Minden alkalmazás egy összekötő csoporthoz van rendelve. Ha nem hoz létre csoportokat, akkor az összes alkalmazás egy alapértelmezett csoporthoz lesz rendelve. De ha az összekötők csoportokba rendszerezi, beállíthatja, hogy minden alkalmazás egy adott összekötő csoporttal működjön. Ebben az esetben csak az abban a csoportban lévő összekötők szolgálják ki az alkalmazást kérésre. Ez a funkció akkor hasznos, ha az alkalmazások különböző helyeken vannak tárolva. Összekötőcsoportokat hozhat létre a hely alapján, így az alkalmazásokat mindig olyan összekötők szolgálják ki, amelyek fizikailag közel vannak hozzájuk.
+Minden alkalmazás hozzá van rendelve egy összekötő csoporthoz. Ha nem hoz létre csoportokat, az összes alkalmazás hozzá van rendelve egy alapértelmezett csoporthoz. Ha azonban csoportokba rendezi az összekötőket, beállíthatja, hogy az egyes alkalmazások egy adott összekötő-csoporthoz működjenek. Ebben az esetben csak az adott csoport összekötői szolgálnak az alkalmazás kérésére. Ez a funkció akkor hasznos, ha az alkalmazások különböző helyszíneken futnak. A hely alapján létrehozhat összekötő csoportokat, így az alkalmazások mindig a fizikailag közel lévő összekötők számára lesznek kiszolgálva.
 
 > [!TIP]
-> Ha nagy alkalmazásproxy-központi telepítéssel rendelkezik, ne rendeljen alkalmazásokat az alapértelmezett összekötőcsoporthoz. Így az új összekötők nem kapnak élő forgalmat, amíg hozzá nem rendeli őket egy aktív összekötő csoporthoz. Ez a konfiguráció azt is lehetővé teszi, hogy az összekötőket tétlen módban helyezze el, ha visszahelyezi őket az alapértelmezett csoportba, így a karbantartást anélkül végezheti el, hogy ez hatással lenne a felhasználókra.
+> Ha nagyméretű alkalmazásproxy-telepítéssel rendelkezik, ne rendeljen hozzá alkalmazásokat az alapértelmezett összekötő-csoporthoz. Így az új összekötők nem kapnak élő forgalmat, amíg hozzá nem rendeli őket egy aktív összekötő-csoporthoz. Ez a konfiguráció lehetővé teszi az összekötők üresjárati módba helyezését azáltal, hogy visszahelyezi őket az alapértelmezett csoportba, így a felhasználókra gyakorolt hatás nélkül végezheti el a karbantartást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az összekötők csoportosításához meg kell győződnie arról, hogy [több összekötőt telepített.](application-proxy-add-on-premises-application.md) Új összekötő telepítésekor automatikusan csatlakozik az **Alapértelmezett** összekötőcsoporthoz.
+Az összekötők csoportosításához meg kell győződnie arról, hogy [több összekötőt telepített](application-proxy-add-on-premises-application.md). Új összekötő telepítésekor automatikusan csatlakozik az **alapértelmezett** összekötő-csoporthoz.
 
-## <a name="create-connector-groups"></a>Összekötőcsoportok létrehozása
+## <a name="create-connector-groups"></a>Összekötő-csoportok létrehozása
 
-Ezekkel a lépésekkel annyi összekötőcsoportot hozhat létre, amennyit csak szeretne.
+Az alábbi lépések segítségével tetszőleges számú összekötő-csoportot hozhat létre.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Válassza az **Azure Active Directory** > **Enterprise applications** > **application proxy lehetőséget.**
-1. Válassza az **Új összekötőcsoport lehetőséget**. Megjelenik az Új összekötőcsoport panel.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy lehetőséget.**
+1. Válassza az **új összekötő csoport**lehetőséget. Megjelenik az új összekötő-csoport panel.
 
-   ![Új összekötőcsoport kijelölésének képernyője](./media/application-proxy-connector-groups/new-group.png)
+   ![Megjeleníti az új összekötő csoport kiválasztására szolgáló képernyőt](./media/application-proxy-connector-groups/new-group.png)
 
-1. Adjon nevet az új összekötőcsoportnak, majd a legördülő menüsegítségével válassza ki, hogy mely összekötők tartoznak ebbe a csoportba.
+1. Adjon nevet az új összekötő csoportnak, majd a legördülő menüben válassza ki, hogy mely összekötők tartoznak ebbe a csoportba.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="assign-applications-to-your-connector-groups"></a>Alkalmazások hozzárendelése az összekötőcsoportokhoz
+## <a name="assign-applications-to-your-connector-groups"></a>Alkalmazások társítása az összekötő-csoportokhoz
 
-Az alkalmazásproxyval közzétett minden egyes alkalmazáshoz kövesse az alábbi lépéseket. Az alkalmazást az első közzétételkor hozzárendelheti egy összekötőcsoporthoz, vagy ezekkel a lépésekkel bármikor módosíthatja a hozzárendelést.
+Ezeket a lépéseket minden alkalmazásproxy használatával közzétett alkalmazáshoz használhatja. Amikor először tesz közzé egy alkalmazást egy összekötő-csoporthoz, vagy az alábbi lépésekkel módosíthatja a hozzárendelést, amikor csak szeretné.
 
-1. A címtár felügyeleti irányítópultján válassza a **Vállalati alkalmazások** > **minden alkalmazás** > az alkalmazáshoz rendelni kívánt alkalmazás > **alkalmazásproxy**.
-1. Az **Összekötőcsoport** legördülő menüben válassza ki azt a csoportot, amelyet az alkalmazáshasználni szeretne.
-1. A módosítás alkalmazásához válassza a **Mentés** gombot.
+1. A címtár felügyeleti irányítópultján válassza a **vállalati alkalmazások** > **minden alkalmazás** lehetőséget, > az alkalmazáshoz hozzárendelni kívánt alkalmazást > **alkalmazásproxy**.
+1. Az **összekötő csoport** legördülő menüjéből válassza ki azt a csoportot, amelyet használni szeretne az alkalmazáshoz.
+1. A módosítás alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a name="use-cases-for-connector-groups"></a>Esetek használata összekötőcsoportokhoz
+## <a name="use-cases-for-connector-groups"></a>Összekötő-csoportok használati esetei
 
-Az összekötőcsoportok különböző forgatókönyvek esetén hasznosak, például:
+Az összekötő-csoportok különböző forgatókönyvekhez hasznosak, többek között:
 
 ### <a name="sites-with-multiple-interconnected-datacenters"></a>Több összekapcsolt adatközponttal rendelkező helyek
 
-Számos szervezet rendelkezik számos összekapcsolt adatközponttal. Ebben az esetben szeretné megtartani a lehető legnagyobb forgalmat az adatközponton belül, mert az adatközpontok közötti kapcsolatok drágák és lassúak. Összekötők üzembe helyezése minden adatközpontban csak az adatközponton belül található alkalmazások kiszolgálására. Ez a megközelítés minimalizálja az adatközpontok közötti kapcsolatokat, és teljesen átlátható élményt nyújt a felhasználóknak.
+Számos szervezet több összekapcsolt adatközpontot tartalmaz. Ebben az esetben az adatközpontban a lehető legtöbb forgalmat szeretné megőrizni, mert az adatközpontok közötti kapcsolatok költségesek és lassúak. Az egyes adatközpontokban lévő összekötőket csak az adatközponton belüli alkalmazások kiszolgálására lehet telepíteni. Ez a megközelítés lekicsinyíti az adatközpontok közötti kapcsolatokat, és teljes mértékben átlátható élményt nyújt a felhasználók számára.
 
 ### <a name="applications-installed-on-isolated-networks"></a>Elszigetelt hálózatokra telepített alkalmazások
 
-Az alkalmazások olyan hálózatokban üzemeltethetők, amelyek nem részei a fő vállalati hálózatnak. Összekötőcsoportok használatával dedikált összekötők elszigetelt hálózatokon is elkülönítheti az alkalmazásokat a hálózaton. Ez általában akkor fordul elő, ha egy külső szállító egy adott alkalmazást tart fenn a szervezet számára.
+Az alkalmazások olyan hálózatokban is tárolhatók, amelyek nem részei a fő vállalati hálózatnak. Az összekötő csoportok használatával dedikált összekötőket telepíthet az elkülönített hálózatokon, hogy az alkalmazások a hálózatra is elkülönítve legyenek. Ez általában akkor fordul elő, ha egy külső gyártó egy adott alkalmazást tart fenn a szervezet számára.
 
-Az összekötőcsoportok lehetővé teszik, hogy dedikált összekötőket telepítsen azokra a hálózatokra, amelyek csak bizonyos alkalmazásokat tesznek közzé, így könnyebbés biztonságosabb az alkalmazáskezelés külső gyártókhoz való kiszervezése.
+Az összekötő csoportok lehetővé teszik dedikált összekötők telepítését azokhoz a hálózatokhoz, amelyek csak bizonyos alkalmazásokat tesznek közzé, így egyszerűbbé és biztonságosabbá teszik a külső gyártóktól származó alkalmazások felügyeletét.
 
-### <a name="applications-installed-on-iaas"></a>Az IaaS-re telepített alkalmazások
+### <a name="applications-installed-on-iaas"></a>A IaaS telepített alkalmazások
 
-Az IaaS-re telepített felhőalapú hozzáféréshez telepített alkalmazások esetében az összekötőcsoportok közös szolgáltatást nyújtanak az összes alkalmazás hoz való hozzáférés biztosításához. Az összekötőcsoportok nem hoznak létre további függőséget a vállalati hálózattól, és nem töredelítik az alkalmazásélményt. Az összekötők minden felhőalapú adatközpontra telepíthetők, és csak az adott hálózatban található alkalmazásokat szolgálják ki. A magas rendelkezésre állás elérése érdekében több csatlakozót is telepíthet.
+A IaaS-re telepített alkalmazások esetében az összekötő csoportok közös szolgáltatást biztosítanak az összes alkalmazáshoz való hozzáférés biztonságossá tételéhez. Az összekötő-csoportok nem hoznak létre további függőséget a vállalati hálózatban, vagy feldarabolják az alkalmazás élményét. Az összekötők minden Felhőbeli adatközpontban telepíthetők, és csak az adott hálózaton található alkalmazásokat szolgálják fel. A magas rendelkezésre állás érdekében több összekötőt is telepíthet.
 
-Vegyünk példát egy olyan szervezet, amely több virtuális gép csatlakozik a saját IaaS üzemeltetett virtuális hálózat. Annak érdekében, hogy az alkalmazottak használhassák ezeket az alkalmazásokat, ezek a magánhálózatok a helyek közötti VPN használatával csatlakoznak a vállalati hálózathoz. Ez jó élményt nyújt a helyszíni alkalmazottak számára. De nem feltétlenül ideális a távoli alkalmazottak számára, mivel további helyszíni infrastruktúrára van szükség a hozzáférés irányításához, amint az az alábbi ábrán látható:
+Példaként vegyen fel egy olyan szervezetet, amely több virtuális géppel csatlakozik a saját IaaS üzemeltetett virtuális hálózathoz. Annak engedélyezéséhez, hogy az alkalmazottak használhassák ezeket az alkalmazásokat, ezek a magánhálózatok helyek közötti VPN-kapcsolattal csatlakoznak a vállalati hálózathoz. Ez jó élményt nyújt a helyszínen található alkalmazottak számára. Előfordulhat azonban, hogy nem ideális a távoli alkalmazottak számára, mivel további helyszíni infrastruktúrát igényel a hozzáférés irányításához, ahogy az alábbi ábrán látható:
 
-![Az Azure AD IaaS-hálózatot szemléltető diagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Az Azure AD IaaS-hálózatot bemutató diagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
-Az Azure AD alkalmazásproxy-összekötő csoportokkal engedélyezheti, hogy egy közös szolgáltatás biztosítsa a hozzáférést az összes alkalmazáshoz anélkül, hogy további függőséget hozna létre a vállalati hálózatban:
+Az Azure AD Application Proxy-összekötő csoportjaival engedélyezheti a közös szolgáltatást, hogy minden alkalmazáshoz hozzáférjen, anélkül, hogy további függőséget hozna létre a vállalati hálózatban:
 
-![Az Azure AD IaaS több felhőbeli szállítója](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Több felhőalapú gyártó Azure AD-IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
-### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Többerdős – különböző összekötőcsoportok az egyes erdőkhöz
+### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Multi-Forest – különböző összekötő-csoportok minden erdőhöz
 
-Az alkalmazásproxyt üzembe helyező legtöbb ügyfél a Kerberos korlátozott delegálás (KCD) végrehajtásával használja az egyszeri bejelentkezési (SSO) képességeit. Ennek elérése érdekében az összekötő gépeit csatlakoztatni kell egy olyan tartományhoz, amely delegálhatja a felhasználókat az alkalmazás felé. A KCD támogatja az erdők közötti képességeket. De a vállalatok, akik különböző többerdős környezetben nincs bizalom közöttük, egyetlen összekötő nem használható minden erdőben. 
+A legtöbb telepített alkalmazásproxy az egyszeri bejelentkezés (SSO) képességeit használja a Kerberos által korlátozott delegálás (KCD) végrehajtásával. Ennek eléréséhez az összekötő számítógépeit olyan tartományhoz kell csatlakoztatni, amely delegálhatja a felhasználókat az alkalmazás felé. A KCD támogatja az erdők közötti képességeket. A különböző többerdős környezetekkel rendelkező vállalatok esetében azonban egyetlen összekötő nem használható az összes erdőhöz. 
 
-Ebben az esetben adott összekötők erdőnként telepíthetők, és úgy állíthatók be, hogy olyan alkalmazásokat szolgálnak ki, amelyek csak az adott erdő felhasználóinak kiszolgálására kerültek közzétételre. Minden összekötőcsoport egy másik erdőt jelöl. Míg a bérlő és a legtöbb a tapasztalat összes erdő, a felhasználók hozzárendelhetők az erdőalkalmazások az Azure AD-csoportok használatával.
+Ebben az esetben az adott összekötőket erdőn belül lehet üzembe helyezni, és úgy kell beállítani, hogy az csak az adott erdő felhasználóinak kiszolgálására közzétett alkalmazásokat szolgálja ki. Minden összekötő csoport egy másik erdőt jelöl. Míg a bérlő és a legtöbb felhasználói felület az összes erdő esetében egységes, a felhasználók az Azure AD-csoportok használatával hozzárendelhetők az erdő alkalmazásaihoz.
 
-### <a name="disaster-recovery-sites"></a>Katasztrófa utáni helyreállítási helyek
+### <a name="disaster-recovery-sites"></a>Vész-helyreállítási helyek
 
-A katasztrófa-elhárítási (DR) hely két különböző megközelítést alkalmazhat, attól függően, hogy a webhelyek hogyan valósulnak meg:
+A webhelyek megvalósításának módjától függően két különböző megközelítéssel elvégezhető a vész-helyreállítási (DR) hely:
 
-* Ha a VÉSZ-hely aktív-aktív módban van, ahol pontosan olyan, mint a főhely, és ugyanazokkal a hálózati és AD-beállításokkal rendelkezik, létrehozhatja az összekötőket a VÉSZ-helyen ugyanabban az összekötőcsoportban, mint a főhelyen. Ez lehetővé teszi, hogy az Azure AD észleli a feladatátvételt az Ön számára.
-* Ha a VÉSZ-hely elkülönül a fő helytől, létrehozhat egy másik összekötő csoportot a VÉSZ-helyen, és vagy 1) biztonsági mentési alkalmazásokkal rendelkezik, vagy 2) manuálisan átirányítja a meglévő alkalmazást a VÉSZ-összekötő csoportba, ha szükséges.
+* Ha a DR-hely aktív-aktív módban van, ahol pontosan ugyanúgy, mint a fő hely, és ugyanazokkal a hálózatkezelési és AD-beállításokkal rendelkezik, akkor a DR-helyen is létrehozhatja az összekötőket a fő hellyel azonos összekötő csoportban. Ez lehetővé teszi az Azure AD számára a feladatátvételek észlelését.
+* Ha a DR-hely elkülönül a fő helytől, létrehozhat egy másik összekötő csoportot a DR-helyen, és 1) a biztonsági mentési alkalmazásokkal vagy 2.) manuálisan átirányíthatja a meglévő alkalmazást a DR-összekötő csoportba, igény szerint.
 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Több vállalat kiszolgálása egyetlen bérlőből
 
-Számos különböző módon valósítható meg egy olyan modell, amelyben egyetlen szolgáltató telepíti és karbantartja az Azure AD-vel kapcsolatos szolgáltatásokat több vállalat számára. Összekötő csoportok segítségével a rendszergazda elkülöníti az összekötők és alkalmazások különböző csoportokba. Az egyik módja, amely alkalmas a kis vállalatok, az, hogy egyetlen Azure AD-bérlő, míg a különböző vállalatok saját domain nevet és hálózatokat. Ez az M&A forgatókönyvekre és helyzetekre is igaz, amikor egyetlen informatikai részleg több vállalatot szolgál ki szabályozási vagy üzleti okokból.
+Számos különböző módon lehet megvalósítani egy olyan modellt, amelyben egyetlen szolgáltató üzembe helyezi és karbantartja az Azure AD-hez kapcsolódó szolgáltatásokat több vállalat számára. Az összekötő csoportok segítenek a rendszergazdának az összekötők és az alkalmazások különböző csoportokba való elkülönítésében. Az egyik módszer, amely alkalmas a kisvállalatok számára, egyetlen Azure AD-Bérlővel rendelkezik, míg a különböző vállalatok saját tartománynevet és hálózatokat biztosítanak. Ez az M&is igaz, és olyan helyzetekben, amikor egyetlen informatikai részleg számos vállalatot biztosít szabályozási vagy üzleti okokból.
 
-## <a name="sample-configurations"></a>Mintakonfigurációk
+## <a name="sample-configurations"></a>Minta konfiguráció
 
-Néhány példa, hogy a valósítható meg, a következő összekötő csoportok közé tartozik.
+Néhány példa, amelyet megvalósíthat, belefoglalhatja a következő összekötő-csoportokat.
 
-### <a name="default-configuration--no-use-for-connector-groups"></a>Alapértelmezett konfiguráció – nincs használat összekötőcsoportokhoz
+### <a name="default-configuration--no-use-for-connector-groups"></a>Alapértelmezett konfiguráció – nincs használatban összekötő csoportok számára
 
-Ha nem használ összekötőcsoportokat, a konfiguráció a következőkre fog kinézni:
+Ha nem használ összekötő csoportokat, a konfiguráció a következőképpen fog kinézni:
 
-![Példa Az Azure AD Nincs összekötőcsoport](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Példa az Azure AD-re – nincs összekötő-csoport](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
-Ez a konfiguráció elegendő a kis telepítések és tesztek. Akkor is jól fog működni, ha a szervezet egy sima hálózati topológiával rendelkezik.
+Ez a konfiguráció elegendő a kis-és nagyvállalati környezetek és tesztek számára. Emellett akkor is jól működik, ha a szervezete rendelkezik egy egyszerű hálózati topológiával.
 
 ### <a name="default-configuration-and-an-isolated-network"></a>Alapértelmezett konfiguráció és elszigetelt hálózat
 
-Ez a konfiguráció az alapértelmezett konfiguráció, amelyben van egy adott alkalmazás, amely egy elszigetelt hálózaton, például az IaaS virtuális hálózaton fut:
+Ez a konfiguráció az alapértelmezett érték fejlődése, amelyben egy adott alkalmazás egy elkülönített hálózaton, például a IaaS virtuális hálózaton fut:
 
-![Példa Az Azure AD nincs összekötőcsoportok és egy elszigetelt hálózat](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Példa az Azure AD-ben nincs összekötő-csoport és egy elkülönített hálózat](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
-### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Ajánlott konfiguráció – több konkrét csoport és egy alapértelmezett csoport az alapjárathoz
+### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Ajánlott konfiguráció – több meghatározott csoport és alapértelmezett csoport tétlen
 
-A nagy és összetett szervezetek ajánlott konfigurációja az alapértelmezett összekötőcsoport olyan csoportként való használata, amely nem szolgál ki alkalmazásokat, és tétlen vagy újonnan telepített összekötőkhöz használatos. Minden alkalmazás személyre szabott összekötőcsoportokkal szolgálki. Ez lehetővé teszi a fent leírt forgatókönyvek összes összetettségét.
+A nagyméretű és összetett szervezetek ajánlott konfigurációja az, hogy az alapértelmezett összekötő csoportot olyan csoportként használja, amely nem tartalmaz alkalmazásokat, és az üresjárati vagy újonnan telepített összekötők esetében használatos. Minden alkalmazás testreszabott összekötő-csoportokkal szolgál. Ez lehetővé teszi a fent ismertetett forgatókönyvek összetettségét.
 
-Az alábbi példában a vállalat két adatközponttal rendelkezik, az A és a B, két összekötővel, amelyek az egyes helyeket szolgálják ki. Minden webhely különböző alkalmazásokkal rendelkezik, amelyek futnak rajta.
+Az alábbi példában a vállalat két, az A és B adatközpontot tartalmaz, amelyek mindegyike két összekötővel rendelkezik, amelyek mindegyike az egyes helyek kiszolgálására szolgál. Minden helyhez különböző alkalmazások futnak.
 
-![Példa 2 adatközponttal és 2 összekötővel rendelkező vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Példa 2 adatközpontot és 2 összekötőt tartalmazó vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure AD alkalmazásproxy-összekötők megismerése](application-proxy-connectors.md)
+* [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)

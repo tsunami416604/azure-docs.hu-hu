@@ -1,7 +1,7 @@
 ---
-title: SQL Database DAC-csomagok és Stream Analytics-feladatok használata az Azure SQL Database Edge használatával | Microsoft dokumentumok
-description: Tudnivalók a Stream Analytics-feladatok használatáról az SQL Database Edge-ben
-keywords: sql adatbázis széle, stream analytics, sqlpackage
+title: SQL Database DAC-csomagok és Stream Analytics feladatok használata az Azure SQL Database Edge használatával | Microsoft Docs
+description: Tudnivalók a Stream Analytics feladatok használatáról SQL Database Edge-ben
+keywords: SQL Database Edge, Stream Analytics, sqlpackage
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74384158"
 ---
-# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>SQL Database DAC-csomagok és Stream Analytics-feladatok használata AZ SQL Database Edge-el
+# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>SQL Database DAC-csomagok és Stream Analytics feladatok használata a SQL Database Edge használatával
 
-Az Azure SQL Database Edge Preview egy optimalizált relációs adatbázis-motor, amely IOt- és peremhálózati telepítésekhez készült. A Microsoft SQL Server Database Engine legújabb verzióira épül, amely iparágvezető teljesítményt, biztonságot és lekérdezésfeldolgozási lehetőségeket biztosít. Az SQL Server iparágvezető relációs adatbázis-kezelési képességei mellett az Azure SQL Database Edge beépített streamelési képességet biztosít a valós idejű elemzéshez és az összetett eseményfeldolgozáshoz.
+Az Azure SQL Database Edge Preview egy optimalizált, a IoT és az Edge-alapú környezetekhez készült adatkezelő motor. Ez az Microsoft SQL Server adatbázismotor legújabb verziójára épül, amely piacvezető teljesítményt, biztonságot és lekérdezés-feldolgozási képességeket biztosít. A SQL Server piacvezető kapcsolati adatbázis-felügyeleti képességeivel együtt a Azure SQL Database Edge a valós idejű elemzések és az összetett események feldolgozására szolgáló, beépített folyamatos átviteli képességgel rendelkezik.
 
-Az Azure SQL Database Edge az SqlPackage.exe natív implementációját is biztosítja, amely lehetővé teszi az [SQL Database DAC-csomag](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) üzembe helyezését az SQL Database Edge telepítése során.
+Az Azure SQL Database Edge a SqlPackage. exe natív implementációját is biztosítja, amely lehetővé teszi, hogy [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -csomagot helyezzen üzembe a SQL Database Edge telepítése során.
 
-Az Azure SQL Database Edge két `module twin's desired properties` választható paramétert tetszésszerint az IoT Edge modul beállításával elérhetővé teszi:
+Azure SQL Database Edge két választható paramétert tesz elérhetővé `module twin's desired properties` a IoT Edge modul beállításával:
 
 ```json
 {
@@ -36,35 +36,35 @@ Az Azure SQL Database Edge két `module twin's desired properties` választható
 
 |Mező | Leírás |
 |------|-------------|
-| SqlPackage | Az SQL Database DAC csomagot tartalmazó *.zip-fájl Azure Blob storage URI-ja.
-| ASAJobInfo | Az Azure Blob storage URI az ASA Edge feladathoz. További információ: [Az ASA Edge feladat közzététele az SQL Database Edge számára](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)című témakörben található.
+| SqlPackage | Az SQL Database DAC-csomagot tartalmazó *. zip fájl Azure Blob Storage URI azonosítója.
+| ASAJobInfo | Az ASA Edge-feladatokhoz tartozó Azure Blob Storage URI-ja. További információ: [ASA Edge-feladatok közzététele SQL Database Edge-hez](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
-## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database DAC-csomagok használata SQL Database Edge-el
+## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database DAC-csomagok használata a SQL Database Edge használatával
 
-Ha SQL Database DAC csomagot (*.dacpac) szeretne használni az SQL Database Edge-el, tegye az alábbi lépéseket:
+SQL Database DAC-csomag (*. dacpac) SQL Database Edge-vel való használatához hajtsa végre a következő lépéseket:
 
-1. SQL Database DAC-csomag létrehozása vagy kibontása. A [DAC-csomagok adatbázisból történő kibontása](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) című témakörben további információt talál arról, hogyan hozhat létre DAC-csomagot egy meglévő SQL Server-adatbázishoz.
+1. SQL Database DAC-csomag létrehozása vagy kibontása. Lásd: [DAC kibontása egy adatbázisból](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) egy meglévő SQL Server adatbázis DAC-csomagjának létrehozásával kapcsolatban.
 
-2. Zip a *.dacpac és töltse fel egy Azure Blob tárfiókba. A fájlok Azure Blob storage-ba való feltöltésével kapcsolatos további információkért [lásd: Blobok feltöltése, letöltése és listázása az Azure Portalon.](../storage/blobs/storage-quickstart-blobs-portal.md)
+2. Zip a *. dacpac, és töltse fel egy Azure Blob Storage-fiókba. A fájlok Azure Blob Storage-ba való feltöltésével kapcsolatos további információkért lásd: [Blobok feltöltése, letöltése és listázása a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-3. Hozzon létre egy közös hozzáférési aláírást a zip-fájlhoz az Azure Portalhasználatával. További információ: [Hozzáférés delegálása megosztott hozzáférésű aláírásokkal (SAS).](../storage/common/storage-sas-overview.md)
+3. Közös hozzáférési aláírás létrehozása a zip-fájlhoz a Azure Portal használatával. További információ: [hozzáférés delegálása közös hozzáférésű aláírásokkal (SAS)](../storage/common/storage-sas-overview.md).
 
-4. Frissítse az SQL Database Edge modul konfigurációját, hogy tartalmazza a DAC-csomag megosztott hozzáférésű URI-ját. Az SQL Database Edge modul frissítéséhez tegye a következőket:
+4. Frissítse az SQL Database Edge-modul konfigurációját, hogy tartalmazza a DAC-csomag közös hozzáférésű URI-JÁT. Az SQL Database Edge-modul frissítéséhez hajtsa végre a következő lépéseket:
 
-    1. Az Azure Portalon nyissa meg az IoT Hub üzembe helyezését.
+    1. A Azure Portal lépjen a IoT Hub üzemelő példányra.
 
-    2. A bal oldali ablaktáblában válassza az **IoT Edge**lehetőséget.
+    2. A bal oldali ablaktáblán válassza a **IoT Edge**lehetőséget.
 
-    3. Az **IoT Edge** lapon keresse meg és jelölje ki az IoT peremhálózati, ahol az SQL Database Edge modul telepítve van.
+    3. A **IoT Edge** lapon keresse meg és válassza ki azt a IoT-szegélyt, ahol az SQL Database Edge-modul telepítve van.
 
-    4. Az **IoT Edge device** oldalon válassza a **Modul beállítása**lehetőséget.
+    4. A **IoT Edge eszköz** eszköz lapon válassza a **modul beállítása**lehetőséget.
 
-    5. A **Modulok beállítása** lapon válassza a **Konfigurálás** az SQL Database Edge modulon lehetőséget.
+    5. A **modulok beállítása** lapon válassza a **Konfigurálás** az SQL Database Edge-modulban lehetőséget.
 
-    6. Az **IoT Edge egyéni modulok** ablaktábláján válassza **a Modul ikerkívánt tulajdonságainak beállítása**lehetőséget. Frissítse a kívánt tulajdonságokat, `SQLPackage` hogy tartalmazza a beállítás URI-ját, ahogy az a következő példában látható.
+    6. A **IoT Edge egyéni modulok** ablaktáblán válassza a **modul Twin-k kívánt tulajdonságainak beállítása**lehetőséget. Frissítse a kívánt tulajdonságokat, hogy tartalmazza a `SQLPackage` beállítás URI-ját, ahogy az az alábbi példában is látható.
 
         > [!NOTE]
-        > A SAS URI a következő JSON csak egy példa. Cserélje le az URI-t a központi telepítésből származó tényleges URI-val.
+        > A következő JSON SAS URI-ja csupán egy példa. Cserélje le az URI-t az üzemelő példány tényleges URI azonosítójának helyére.
 
         ```json
             {
@@ -77,38 +77,38 @@ Ha SQL Database DAC csomagot (*.dacpac) szeretne használni az SQL Database Edge
 
     7. Kattintson a **Mentés** gombra.
 
-    8. A **Modulok beállítása** lapon válassza a **Tovább gombot.**
+    8. A **modulok beállítása** lapon válassza a **tovább**lehetőséget.
 
-    9. A **Modulok beállítása** lapon válassza a **Tovább,** majd a **Küldés lehetőséget.**
+    9. A **modulok beállítása** lapon válassza a **tovább** , majd a **Küldés**lehetőséget.
 
-5. A modul frissítésután a DAC csomagfájl letöltődik, kicsomagolva és az SQL Database Edge példányon való üzembe helyezéskor.
+5. A modul frissítését követően a DAC-csomagfájl le van töltve, kibontva, és az SQL Database Edge-példányon lesz telepítve.
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>Streamelési feladatok használata az SQL Database Edge-el
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>Folyamatos átviteli feladatok használata SQL Database Edge használatával
 
-Az Azure SQL Database Edge a streamelemzési futásidő natív implementációjával rendelkezik. Ez a megvalósítás lehetővé teszi, hogy hozzon létre egy Azure Stream Analytics peremhálózati feladat, és üzembe helyezi azt a feladatot, mint egy SQL Database Edge streamelési feladat. A Stream Analytics peremhálózati feladatának létrehozásához hajtsa végre az alábbi lépéseket:
+Azure SQL Database Edge a stream Analytics futtatókörnyezet natív implementációját tartalmazza. Ez a megvalósítás lehetővé teszi, hogy egy Azure Stream Analytics Edge-feladatot hozzon létre, és ezt a feladatot SQL Database Edge streaming-feladatokként telepítse. Stream Analytics Edge-feladatok létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az Azure Portalt az előzetes [URL-cím](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)használatával. Ez az előzetes URL-cím lehetővé teszi az SQL Database kimenetének konfigurálását a Stream Analytics peremhálózati feladathoz.
+1. Az előnézeti [URL-cím](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)használatával lépjen a Azure Portal. Ez az előzetes verziójú URL-cím lehetővé teszi Stream Analytics Edge-feladatok SQL Database kimenetének konfigurálását.
 
-2. Hozzon létre egy új **Azure Stream Analytics IoT** Edge-feladat. Válassza ki az Edge-et megcélozó üzemeltetési **környezetet.**
+2. Hozzon létre egy új **IoT Edge-eszközökön futó Azure stream Analytics** feladatot. Válassza ki az **Edge**-t tároló üzemeltetési környezetet.
 
-3. Definiáljon egy bemeneti és kimeneti azure Stream Analytics-feladathoz. Minden itt beállított SQL-kimenet egyetlen táblához van kötve az adatbázisban. Ha több táblába kell adatokat streamelnie, több SQL-adatbázis kimenetet kell létrehoznia. Az SQL kimenetek konfigurálhatók úgy, hogy különböző adatbázisokra mutassanak.
+3. Adja meg a Azure Stream Analytics-feladathoz tartozó bemenetet és kimenetet. Az itt beállított összes SQL-kimenet az adatbázis egyetlen táblájához van kötve. Ha több táblázatba kell továbbítania az adatokat, több SQL Database kimenetet kell létrehoznia. Beállíthatja, hogy az SQL-kimenetek különböző adatbázisokra mutassanak.
 
-    **Beírás**. Válassza az EdgeHub-ot a peremhálózati feladat bemeneteként, és adja meg az erőforrás-adatokat.
+    **Bemenet**. Válassza a EdgeHub lehetőséget az Edge-feladathoz tartozó bemenetként, és adja meg az erőforrás-információkat.
 
-    **Kimenet .** Válassza ki az SQL Database a kimeneti. Válassza **az SQL Database beállításainak manuális megadása lehetőséget.** Adja meg az adatbázis és a tábla konfigurációs adatait.
+    **Kimenet**. Válassza ki SQL Database a kimenetként. Válassza a **SQL Database beállításainak manuális**megadása lehetőséget. Adja meg az adatbázis és a tábla konfigurációjának részleteit.
 
     |Mező      | Leírás |
     |---------------|-------------|
     |Kimeneti alias | A kimeneti alias neve.|
     |Adatbázis | Az SQL-adatbázis neve. Az SQL Database Edge-példányon található adatbázis érvényes nevének kell lennie.|
-    |Kiszolgálónév | Az SQL-példány neve (vagy IP-címe) és portszámának adatai. Az SQL Database Edge központi telepítéséhez használhatja a **tcp:.,1433** a kiszolgáló nevét.|
-    |Felhasználónév | SQL bejelentkezési fiók, amely adatolvasó és adatíró hozzáférést biztosít a korábban megadott adatbázishoz.|
-    |Jelszó | A korábban megadott SQL bejelentkezési fiók jelszava.|
-    |Tábla | A streamelési feladat kimenetére kimenetre kerülő tábla neve.|
-    |Particionálás öröklése| Lehetővé teszi az előző lekérdezési lépés vagy bemenet particionálási séma öröklését. Ha ez a beállítás engedélyezve van, akkor számíthat arra, hogy jobb átviteli sebességet, amikor ír egy lemezalapú tábla, és egy teljesen párhuzamos topológiát a feladathoz.|
-    |Köteg mérete| Az egyes tömeges beszúrási tranzakciókhoz küldött rekordok maximális száma.|
+    |Kiszolgálónév | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Database Edge-telepítés esetén a 1433 a (z **) TCP:.,** a kiszolgáló nevét használhatja.|
+    |Felhasználónév | Olyan SQL-bejelentkezési fiók, amely adatolvasóval és adatírókkal fér hozzá a korábban megadott adatbázishoz.|
+    |Jelszó | A korábban megadott SQL-bejelentkezési fiók jelszava.|
+    |Tábla | A folyamatos átviteli feladatokhoz használandó tábla neve.|
+    |Particionálás öröklése| Engedélyezi az előző lekérdezési lépés vagy bemenet particionálási sémájának öröklését. Ha ez a beállítás engedélyezve van, a lemezes táblára való írásnál nagyobb átviteli sebesség várható, és a feladatokhoz teljes mértékben párhuzamos topológia szükséges.|
+    |Köteg mérete| Az összes tömeges beszúrási tranzakcióval ellátott rekordok maximális száma.|
 
-    Íme egy minta bemeneti/kimeneti konfiguráció:
+    Íme egy példa bemeneti/kimeneti konfiguráció:
 
     ```txt
         Input:
@@ -130,32 +130,32 @@ Az Azure SQL Database Edge a streamelemzési futásidő natív implementációj�
     ```
 
     > [!NOTE]
-    > Az Azure Stream Analytics SQL kimeneti adapterével kapcsolatos további információkért tekintse meg az [Azure Stream Analytics azure SQL-adatbázisba való kimenetét.](../stream-analytics/stream-analytics-sql-output-perf.md)
+    > A Azure Stream Analytics SQL kimeneti adapterével kapcsolatos további információkért lásd: [Azure stream Analytics kimenet Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
 
-4. Adja meg az ASA-feladatlekérdezést a peremhálózati feladathoz. Ez a lekérdezés a megadott bemeneti/kimeneti aliasokat kell használnia a lekérdezés bemeneti és kimeneti neveként. További információt a [Stream Analytics lekérdezési nyelvének hivatkozása című témakörben talál.](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+4. Adja meg az Edge-feladatokhoz tartozó ASA-feladatok lekérdezését. A lekérdezésnek a megadott bemeneti/kimeneti aliasokat kell használnia a lekérdezés bemeneti és kimeneti neveként. További információ: [stream Analytics lekérdezés nyelvi leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
-5. Állítsa be a tárfiók beállításait a peremhálózati feladathoz. A tárfiók a peremhálózati feladat közzétételi célként szolgál.
+5. Adja meg az Edge-feladatokhoz tartozó Storage-fiók beállításait. A Storage-fiók a peremhálózati feladatokhoz tartozó közzétételi célként van használatban.
 
-6. A **Konfigurálás**csoportban válassza a **Közzététel**lehetőséget, majd kattintson a **Közzététel gombra.** Mentse a SAS URI-t az SQL Database Edge modullal való használatra.
+6. A **Konfigurálás**területen válassza a **Közzététel**lehetőséget, majd kattintson a **Közzététel** gombra. Mentse az SAS URI-t az SQL Database Edge-modullal való használatra.
 
-### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>A Stream Analytics peremhálózati feladat telepítése az SQL Database Edge-re
+### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>Az Stream Analytics Edge-feladatok üzembe helyezése SQL Database Edge-ben
 
-A streamelési feladat az SQL Database Edge modulüzembe való üzembe helyezéséhez frissítse az SQL Database Edge modul konfigurációját, hogy tartalmazza a SAS URI-t a streamelési feladathoz a korábbi lépésből. Az SQL Database Edge modul frissítése:
+Ha a folyamatos átviteli feladatot az SQL Database Edge-modulban szeretné telepíteni, frissítse az SQL Database Edge-modul konfigurációját, hogy az a korábbi lépésből tartalmazza a folyamatos átviteli feladatokhoz tartozó SAS URI-t. Az SQL Database Edge-modul frissítése:
 
-1. Az Azure Portalon nyissa meg az IoT Hub üzembe helyezését.
+1. A Azure Portal lépjen a IoT Hub üzemelő példányra.
 
-2. A bal oldali ablaktáblában válassza az **IoT Edge**lehetőséget.
+2. A bal oldali ablaktáblán válassza a **IoT Edge**lehetőséget.
 
-3. Az **IoT Edge** lapon keresse meg és jelölje ki az IoT peremhálózati, ahol az SQL Database Edge modul telepítve van.
+3. A **IoT Edge** lapon keresse meg és válassza ki azt a IoT-szegélyt, ahol az SQL Database Edge-modul telepítve van.
 
-4. Az **IoT Edge device** oldalon válassza a **Modul beállítása**lehetőséget.
+4. A **IoT Edge eszköz** eszköz lapon válassza a **modul beállítása**lehetőséget.
 
-5. A **Modulok beállítása** lapon válassza a **Konfigurálás** az SQL Database Edge modulon lehetőséget.
+5. A **modulok beállítása** lapon válassza a **Konfigurálás** az SQL Database Edge-modulban lehetőséget.
 
-6. Az **IoT Edge egyéni modulok** ablaktábláján válassza **a Modul ikerkívánt tulajdonságainak beállítása**lehetőséget. Frissítse a kívánt tulajdonságokat, `ASAJobInfo` hogy tartalmazza a beállítás URI-ját, ahogy az a következő példában látható.
+6. A **IoT Edge egyéni modulok** ablaktáblán válassza a **modul Twin-k kívánt tulajdonságainak beállítása**lehetőséget. Frissítse a kívánt tulajdonságokat, hogy tartalmazza a `ASAJobInfo` beállítás URI-ját, ahogy az az alábbi példában is látható.
 
     > [!NOTE]
-    > A SAS URI a következő JSON csak egy példa. Cserélje le az URI-t a központi telepítésből származó tényleges URI-val.
+    > A következő JSON SAS URI-ja csupán egy példa. Cserélje le az URI-t az üzemelő példány tényleges URI azonosítójának helyére.
 
     ```json
         {
@@ -168,14 +168,14 @@ A streamelési feladat az SQL Database Edge modulüzembe való üzembe helyezés
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **Modulok beállítása** lapon válassza a **Tovább gombot.**
+8. A **modulok beállítása** lapon válassza a **tovább**lehetőséget.
 
-9. A **Modulok beállítása** lapon válassza a **Tovább,** majd a **Küldés lehetőséget.**
+9. A **modulok beállítása** lapon válassza a **tovább** , majd a **Küldés**lehetőséget.
 
-10. A modul frissítésután a stream elemzési feladat fájl letöltődik, kicsomagolva, és az SQL Database Edge-példányon telepítve lesz.
+10. A modul frissítése után a stream Analytics-feladatsor le van töltve, kibontva, és az SQL Database Edge-példányon lesz telepítve.
 
 ## <a name="next-steps"></a>További lépések
 
-- A díjszabással és a rendelkezésre állással kapcsolatos részletekről az [Azure SQL Database Edge című témakörben talál.](https://azure.microsoft.com/services/sql-database-edge/)
-- Az Azure SQL Database Edge előfizetéshez való engedélyezése.
-- Első lépések: [Az SQL Database Edge telepítése az Azure Portalon keresztül](deploy-portal.md)című témakörben található.
+- A díjszabással és a rendelkezésre állással kapcsolatos részletekért lásd: [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/).
+- Kérelem engedélyezése Azure SQL Database Edge számára az előfizetéshez.
+- Első lépésként lásd: [SQL Database Edge üzembe helyezése Azure Portal használatával](deploy-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: A B2B-együttműködés támogatása – Azure Active Directory
-description: Mi az Azure Active Directory B2B együttműködés támogatási élménye?
+title: A B2B Collaboration támogatásának beszerzése – Azure Active Directory
+description: Mi a Azure Active Directory B2B-együttműködés támogatási tapasztalata?
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,30 +13,30 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272769"
 ---
-# <a name="getting-support-for-b2b-collaboration"></a>A B2B együttműködés támogatása
+# <a name="getting-support-for-b2b-collaboration"></a>A B2B-együttműködés támogatásának beszerzése
 
-Elolvastad a dokumentációt, helyesen cselekedtél, de még mindig nem tudsz valamit dolgozni? Nyisson meg egy támogatási jegyet (támogatási csomag szükséges):
+Elolvasta a dokumentációt, elvégezte a megfelelő dolgokat, de még mindig nem tud valamit dolgozni? Támogatási jegy megnyitása (támogatási csomag szükséges):
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg a Súgó és támogatás panelt, és válassza az Új támogatási kérelem lehetőséget:
+1. [A Azure Portalban](https://portal.azure.com)navigáljon a Súgó és támogatás panelre, és válassza az új támogatási kérelem lehetőséget:
    - Problématípus: Technikai
-   - Előfizetés: Válassza ki az érintett előfizetést
+   - Előfizetés: válassza az érintett előfizetést
      - Szolgáltatás: Active Directory
-     - Támogatási csomag: Válassza ki a megfelelő támogatási csomagot
+     - Támogatási csomag: válassza ki a megfelelő támogatási csomagot
 
-   ![Új támogatási kérelemről készült képernyőkép](media/get-support/new-support-request.png)
+   ![Egy új támogatási kérést ábrázoló képernyőfelvétel](media/get-support/new-support-request.png)
 
-2. Írja le a problémát:
-   - Válassza ki a szükséges súlyosságot.
-   - A Problématípus kiválasztása felhasználó- és csoportkezelésként
-   - Kategória kiválasztása felhasználók hozzáadásaként (B2B)
-   - Bármilyen hibaüzenetet, például korrelációs azonosítót, érintett felhasználókat és így tovább.
+2. A probléma leírása:
+   - Válassza ki a megfelelő súlyosságot, amely megfelel az igényeinek.
+   - A probléma típusának kiválasztása felhasználói és csoportos kezelésként
+   - Kategória kiválasztása felhasználó hozzáadásakor (B2B)
+   - Adja meg a hibaüzeneteket, például a CorrelationID, az érintett felhasználókat és így tovább.
 
-   ![A támogatási jegy problémájának leírását bemutató képernyőkép](media/get-support/problem-description.png)
+   ![A támogatási jegyekkel kapcsolatos problémák leírását bemutató képernyőkép](media/get-support/problem-description.png)
 
-3. Ha egy támogatási képviselő vel kapcsolatba szeretne lépni Önnel további hibaelhárítás céljából, adja meg elérhetőségi adatait.
+3. Ha támogatási képviselőt szeretne felvenni Önnel a kapcsolatot a további hibaelhárítás érdekében, adja meg a kapcsolattartási adatait.

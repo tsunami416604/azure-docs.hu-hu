@@ -1,7 +1,7 @@
 ---
-title: Egyéni webes API-szakértelem a skillsets
+title: Egyéni webes API-képesség a szakértelmével-ben
 titleSuffix: Azure Cognitive Search
-description: Bővítse az Azure Cognitive Search-képességek képességeit webes API-k hívásával. Az egyéni webes API-szakértelem segítségével integrálhatja az egyéni kódot.
+description: Kiterjesztheti az Azure Cognitive Search szakértelmével képességeit a webes API-k meghívásával. Egyéni kód integrálásához használja az egyéni webes API-képességet.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,26 +9,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74484116"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-szakértelem az Azure Cognitive Search bővítési folyamatában
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
 
-Az **egyéni webes API-szakértelem** lehetővé teszi az AI-bővítés kiterjesztését azáltal, hogy egyéni műveleteket biztosító webes API-végpontra hív. A beépített képességekhez hasonlóan az **egyéni webes API-szakértelem** bemenetekkel és kimenetekkel rendelkezik. A bemenetektől függően a webes API JSON-tartalommal rendelkezik az indexelő futtatásakor, és válaszként egy JSON-hasznos adatot, valamint egy sikeres állapotkódot ad ki. A válasz várhatóan az egyéni szakértelem által megadott kimenetek. Minden más válasz hibának minősül, és nem végez dúsítást.
+Az **egyéni webes API** -képesség lehetővé teszi, hogy kiterjessze az AI-bővítést úgy, hogy az egyéni műveleteket biztosító webes API-végpontot hívja meg. A beépített képességekhez hasonlóan egy **egyéni webes API** -képesség is tartalmaz bemeneteket és kimeneteket. A bemenettől függően a webes API egy JSON-adattartalmat kap, amikor az indexelő fut, és válaszként egy JSON-adattartalmat ad eredményként, valamint egy sikerességi állapotkódot. A válasz várhatóan az egyéni szakértelem által megadott kimeneteket adja meg. Minden más válasz hibát jelez, és nem végezhető el a dúsítás.
 
-A JSON-hasznos teher szerkezetét ebben a dokumentumban lejjebb írjuk le.
+A JSON-adattartalom szerkezetét részletesebben ismertetjük ebben a dokumentumban.
 
 > [!NOTE]
-> Az indexelő kétszer próbálja meg újra a webes API-ból visszaadott egyes szabványos HTTP-állapotkódokat. Ezek a HTTP-állapotkódok a következők: 
+> Az indexelő kétszer próbálkozik a webes API által visszaadott szabványos HTTP-állapotkódok esetében. Ezek a HTTP-állapotkódok a következők: 
 > * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Custom.WebApiSkill
+Microsoft. Skills. Custom. WebApiSkill
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
@@ -36,20 +36,20 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| Uri | Annak a webes API-nak az URI-ja, amelyre a _JSON-tartalom_ lesz elküldve. Csak **https** URI séma engedélyezett |
-| httpMódszer | A hasznos adat küldése közben használandó módszer. Az engedélyezett `PUT` módszerek`POST` |
-| httpFejlécek | Kulcs-érték párok gyűjteménye, ahol a kulcsok fejlécneveket és értékeket jelölnek a webes API-nak a tartalommal együtt küldött fejlécértékek. Ebben a gyűjteményben tilos a következő `Accept`fejlécek szerepeljenek: `TE` `Upgrade`, `Accept-Charset`, `Accept-Encoding` `Content-Length`, `Content-Type`, `Cookie`, `Host`, ,`Via` |
-| timeout | (Nem kötelező) Ha meg van adva, azt jelzi, hogy az API-hívást végző http-ügyfél időeltemég mindig elérhető. XSD "dayTimeDuration" értékként kell formázni (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték korlátozott részhalmaza). Például `PT60S` 60 másodpercig. Ha nincs beállítva, a program 30 másodperces alapértelmezett értéket választ. Az időhosszabbítás legfeljebb 230 másodpercre és legalább 1 másodpercre állítható be. |
-| batchSize | (Nem kötelező) Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ tartalomstruktúrát) küldi el az API-hívás. Ha nincs beállítva, az alapértelmezett 1000 lesz kiválasztva. Azt javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési átviteli és az API betöltése között. |
-| fokOfParallelism | (Nem kötelező) Ha meg van adva, azt jelzi, hogy az indexelő a megadott végpontpal párhuzamosan hány hívást fog kezdeményezni. Ezt az értéket csökkentheti, ha a végpont sikertelen a kérelem terhelése alatt, vagy emelje fel, ha a végpont képes fogadni több kérelmet, és szeretné az indexelő teljesítményének növelését.  Ha nincs beállítva, a rendszer 5-ös alapértelmezett értéket használ. A degreeOfParallelism legfeljebb 10, de legalább 1. |
+| URI | Annak a webes API-nak az URI-ja, amelybe a _JSON_ -tartalom el lesz küldve. Csak **https** URI-séma engedélyezett |
+| httpMethod | A hasznos adatok küldésekor használandó metódus. Engedélyezett módszerek `PUT` vagy`POST` |
+| httpHeaders | Olyan kulcs-érték párok gyűjteménye, amelyekben a kulcsok fejléc-és értéknek felelnek meg, a webes API-ra és a hasznos adattartalommal együtt küldendő fejléc-értékeket. A következő fejlécek nem engedélyezettek ebben a gyűjteményben: `Accept`, `Accept-Charset` `Accept-Encoding` `Content-Length` `Content-Type` `Cookie` `Host` `TE`,,,,,,, `Upgrade`,`Via` |
+| timeout | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). Például `PT60S` 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
+| batchSize | Választható Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ -adattartalom-szerkezetet) egy API-hívás alapján lesz elküldve. Ha nincs beállítva, a rendszer alapértelmezett 1000-as értéket választ. Javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési teljesítmény és az API terhelése között |
+| Analyticsunits | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A Analyticsunits legfeljebb 10 és legalább 1 értékre állítható be. |
 
-## <a name="skill-inputs"></a>Szakértelem bemenetei
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-Ehhez a szakértelemhez nincsenek "előre definiált" bemenetek. Kiválaszthat egy vagy több olyan mezőt, amely már elérhető lenne a szakértelem végrehajtásakor bemenetként, és a Webes API-nak küldött _JSON-tartalom_ különböző mezőkkel fog rendelkezni.
+Ehhez a képzettséghez nincsenek "előre definiált" bemenetek. Kiválaszthat egy vagy több olyan mezőt, amely a szaktudás végrehajtásának időpontjában már elérhető lesz, és a webes API-hoz továbbított _JSON_ -adattartalom különböző mezőket tartalmaz.
 
-## <a name="skill-outputs"></a>Szakértelem kimenetei
+## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-Ehhez a szakértelemhez nincsenek "előre definiált" kimenetek. Attól függően, hogy a válasz a webes API-t ad vissza, adja hozzá a kimeneti mezőket, hogy azok a _JSON-válaszból_ is levethetők.
+Ehhez a szakértelemhöz nem tartoznak "előre definiált" kimenetek. Attól függően, hogy a webes API milyen választ ad vissza, adja hozzá a kimeneti mezőket, hogy azok a _JSON_ -válaszból is felvehetők legyenek.
 
 
 ## <a name="sample-definition"></a>Minta definíciója
@@ -82,15 +82,15 @@ Ehhez a szakértelemhez nincsenek "előre definiált" kimenetek. Attól függőe
         ]
       }
 ```
-## <a name="sample-input-json-structure"></a>Mintabemeneti JSON-struktúra
+## <a name="sample-input-json-structure"></a>Minta bemeneti JSON-struktúra
 
-Ez a _JSON-struktúra_ a webes API-nak küldött hasznos adat.
-Mindig az alábbi korlátozásokat követi:
+Ez a _JSON_ -struktúra a webes API-nak küldendő adattartalmat jelöli.
+Mindig a következő korlátozásokat fogja követni:
 
-* A legfelső szintű entitás `values` neve objektumtömb lesz. Az ilyen objektumok száma legbőleg`batchSize`
-* A tömb `values` minden objektuma
-    * Egyedi `recordId` **karakterlánc,** amely a rekord azonosítására szolgál.
-    * `data` _JSON-objektum._ A `data` tulajdonság mezői a szakértelem-definíció `inputs` szakaszában megadott "neveknek" felelnek meg. Ezeknek a mezőknek az `source` értéke e mezők ből származik (amelyek lehetnek a dokumentum egy mezőjéből, vagy potenciálisan más szakértelemből származnak)
+* A legfelső szintű entitás neve `values` , és az objektumok tömbje lesz. Az ilyen objektumok száma a következő lesz:`batchSize`
+* A tömb minden objektuma tartalmazni fogja a `values`
+    * Olyan `recordId` tulajdonság, amely **egyedi** karakterlánc, amely a rekord azonosítására szolgál.
+    * Egy `data` olyan tulajdonság, amely egy _JSON_ -objektum. A `data` tulajdonság mezői a szaktudás definíciójának `inputs` szakaszában megadott "nevek" értékkel fognak egyezni. Ezeknek a mezőknek az értéke az adott mezőkből származik `source` (amelyek a dokumentum egy mezőjéből származnak, vagy esetleg egy másik képességből)
 
 ```json
 {
@@ -135,18 +135,18 @@ Mindig az alábbi korlátozásokat követi:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Mintakimeneti JSON-struktúra
+## <a name="sample-output-json-structure"></a>Minta kimenet JSON-szerkezete
 
-A "kimenet" a webes API-ból visszaadott válasznak felel meg. A webes API-nak csak _JSON-hasznos_ adatot `Content-Type` kell visszaadnia (a válaszfejléc nézettel ellenőrizve), és meg kell felelnie a következő megkötéseknek:
+A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak csak _JSON_ -adattartalomot kell visszaadnia `Content-Type` (a válasz fejlécének ellenőrzésével ellenőrizve), és meg kell felelnie a következő megkötéseknek:
 
-* Léteznie kell egy legfelső `values` szintű entitásnak, amely objektumok tömbje kell, hogy legyen.
-* A tömbben lévő objektumok számának meg kell egyeznie a webes API-ra küldött objektumok számával.
-* Minden objektumnak rendelkeznie kell:
-   * Egy `recordId` ingatlan
-   * Olyan `data` tulajdonság, amely olyan objektum, ahol a mezők a "nevek" és az érték szerinti "nevek" `output` dúsításának megfelelő dúsítást jelentenek.
-   * Egy `errors` tulajdonság, egy tömb, amely felsorolja az indexelő végrehajtási előzményeihez hozzáadott hibákat. Ez a tulajdonság kötelező, `null` de lehet értéke.
-   * Egy `warnings` tulajdonság, egy tömb, amely felsorolja az indexelő végrehajtási előzményeihez hozzáadott figyelmeztetéseket. Ez a tulajdonság kötelező, `null` de lehet értéke.
-* A `values` tömbobjektumnak nem kell ugyanabban a sorrendben `values` lennie, mint a tömbben lévő objektumoknak, amelyeket kérésként küldtek a webes API-nak. A korreláció azonban `recordId` a program szerint a `recordId` webes API-ra irányuló eredeti kérelemnek nem részeként tartalmazó válasz minden rekordját elveti.
+* Egy olyan legfelső szintű entitásnak kell lennie, `values` amely az objektumok tömbje lehet.
+* A tömbben lévő objektumok számának meg kell egyeznie a webes API-nak eljuttatott objektumok számával.
+* Minden objektumnak a következőket kell tartalmaznia:
+   * Egy `recordId` tulajdonság
+   * Egy `data` tulajdonság, amely egy olyan objektum, amelyben a mezők olyan dúsítások, amelyek megfelelnek a "nevek `output` " elemnek, és amelynek értéke a dúsításnak minősül.
+   * Egy `errors` tulajdonság, egy tömb, amely felsorolja az indexelő végrehajtási előzményeihez hozzáadott hibákat. Ez a tulajdonság kötelező, de `null` értéke is lehet.
+   * Egy `warnings` tulajdonság, amely felsorolja az összes olyan figyelmeztetést, amely az indexelő végrehajtási előzményeihez lesz hozzáadva. Ez a tulajdonság kötelező, de `null` értéke is lehet.
+* A `values` tömb objektumainak nem kell ugyanabban a sorrendben lennie, mint a webes API- `values` nak kérésként elküldett tömb objektumainak. Azonban a a `recordId` korrelációt veszi fel, így a válaszban szereplő olyan rekordokat, `recordId` amelyek nem részei a webes API-nak, a rendszer elveti.
 
 ```json
 {
@@ -193,16 +193,16 @@ A "kimenet" a webes API-ból visszaadott válasznak felel meg. A webes API-nak c
 
 ```
 
-## <a name="error-cases"></a>Hibaesetek
-Amellett, hogy a webes API nem érhető el, vagy nem sikeres állapotkódokat küld ki, a következő esetek hibásnak minősülnek:
+## <a name="error-cases"></a>Hibák esetei
+Amellett, hogy a webes API nem érhető el, vagy a nem sikeres állapotkódot küldi el, a következők hibás eseteknek minősülnek:
 
-* Ha a webes API sikeres állapotkódot ad vissza, `application/json` de a válasz azt jelzi, hogy nem, akkor a válasz érvénytelennek minősül, és nem lesz dúsítás.
-* Ha a választömbben `recordId` `values` **érvénytelen** (az eredeti kérelemben nincs vagy ismétlődő értékekkel) rekordok vannak, akkor **ezekhez** a rekordokhoz nem történik dúsítás.
+* Ha a webes API sikeres állapotkódot ad vissza, de a válasz azt jelzi, hogy `application/json` a válasz érvénytelennek minősül, és a rendszer nem hajtja végre a dúsítást.
+* Ha **érvénytelen** ( `recordId` nem az eredeti kérelemben vagy ismétlődő értékekkel) rekord szerepel a válasz `values` tömbben, a rendszer nem hajtja végre a rekordok dúsítását **those** .
 
-Olyan esetekben, amikor a webes API nem érhető el, vagy http-hibát ad vissza, egy rövid hiba a HTTP-hibával kapcsolatos bármely rendelkezésre álló részletet hozzáadódik az indexelő végrehajtási előzményeihez.
+Azokban az esetekben, amikor a webes API nem érhető el vagy HTTP-hibát ad vissza, a HTTP-hibával kapcsolatos összes rendelkezésre álló adathoz tartozó rövid hiba lesz hozzáadva az indexelő végrehajtási előzményeihez.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
-+ [Egyéni szakértelem hozzáadása a ai-dúsítási folyamathoz](cognitive-search-custom-skill-interface.md)
-+ [Példa: Egyéni szakértelem létrehozása a ai-dúsításhoz](cognitive-search-create-custom-skill-example.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
++ [Példa: egyéni képesség létrehozása AI-bővítéshez](cognitive-search-create-custom-skill-example.md)
