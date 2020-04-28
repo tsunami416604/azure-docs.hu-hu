@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67805709"
 ---
-# <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Naplók használata az Azure Data Box Disk érvényesítési problémáinak elhárításához
+# <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
 
-Ez a cikk a Microsoft Azure Data Box Disk lemezre vonatkozik. A cikk ismerteti, hogyan használhatja a naplókat a megoldás telepítésekor látható érvényesítési problémák elhárításához.
+Ez a cikk Microsoft Azure Data Box Diskre vonatkozik. A cikk azt ismerteti, hogyan használhatók a naplók a megoldás telepítésekor megjelenő érvényesítési problémák elhárításához.
 
-## <a name="validation-tool-log-files"></a>Érvényesítési eszköz naplófájljai
+## <a name="validation-tool-log-files"></a>Ellenőrző eszköz naplófájljai
 
-Ha az [érvényesítési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)érvényesíti a lemezeken lévő adatokat, a rendszer *hiba.xml* fájlt hoz létre a hibák naplózásához. A naplófájl a `Drive:\DataBoxDiskImport\logs` meghajtó mappájában található. Az érvényesítés futtatásakor a hibanaplóra mutató hivatkozás található.
+Ha az [ellenőrzési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)ellenőrzi a lemezeken lévő adatellenőrzéseket, a rendszer egy *error. xml fájlt* hoz létre a hibák naplózásához. A naplófájl a meghajtó `Drive:\DataBoxDiskImport\logs` mappájában található. Az érvényesítés futtatásakor a rendszer a hibanapló hivatkozását is megadja.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
-Ha több munkamenetet futtat ellenőrzésre, munkamenetenként egy hibanapló jön létre.
+Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt hoz létre munkamenetenként.
 
-- Itt van egy példa a hibanapló, `PageBlob` ha az adatok betöltve a mappába nem 512 bájt igazodik. A PageBlob-ba feltöltött adatoknak 512 bájtosnak kell lenniük, például egy Virtuális merevlemezvagy VHDX. A fájlban lévő hibák `<Errors>` a `<Warnings>`és a figyelmeztetések a ban találhatók.
+- Itt látható a hibanapló mintája, ha a `PageBlob` mappába betöltött adat nem 512 bájtra van igazítva. A PageBlob feltöltött összes adatnak 512 bájthoz igazítottnak kell lennie, például egy VHD-vagy VHDX. A fájlban található hibák a `<Errors>` és a figyelmeztetései. `<Warnings>`
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -48,7 +48,7 @@ Ha több munkamenetet futtat ellenőrzésre, munkamenetenként egy hibanapló j�
         </ErrorLog>
     ```
 
-- Itt van egy példa a hibanapló, ha a tároló neve érvénytelen. A , `BlockBlob` `PageBlob`vagy `AzureFile` a lemezen lévő mappák alatt létrehozott mappa az Azure Storage-fiók tárolójává válik. A tároló nevének követnie kell az [Azure elnevezési konvencióit.](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)
+- Itt látható a hibanapló mintája, ha a tároló neve érvénytelen. A (z) vagy `BlockBlob` `PageBlob` `AzureFile` a (z) alatt létrehozott mappa az Azure Storage-fiókban található tároló lesz. A tároló nevének meg kell felelnie az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
     ```xml
         <?xml version="1.0" encoding="utf-8"?>
@@ -69,31 +69,31 @@ Ha több munkamenetet futtat ellenőrzésre, munkamenetenként egy hibanapló j�
     </ErrorLog>
     ```
 
-## <a name="validation-tool-errors"></a>Érvényesítési eszköz hibái
+## <a name="validation-tool-errors"></a>Ellenőrző eszköz hibái
 
-Az *error.xml* fájlban található hibákat a megfelelő ajánlott műveletekkel az alábbi táblázat foglalja össze.
+A *error. XML* fájlban található hibák a megfelelő ajánlott műveletekkel együtt a következő táblázatban vannak összefoglalva.
 
 | Hibakód| Leírás                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
-| `None` | Sikeresen érvényesítette az adatokat. | Semmit nem kell tenni. |
-| `InvalidXmlCharsInPath` |Nem sikerült létrehozni egy jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |
-| `OpenFileForReadFailed`| A fájl nem dolgozható fel. Ennek oka hozzáférési probléma vagy fájlrendszersérülés lehet.|Hiba miatt nem olvasható a fájl. A hiba részletei a kivételben találhatók. |
-| `Not512Aligned` | Ez a fájl nem érvényes formátumú a PageBlob mappához.| Csak a mappához igazított 512 `PageBlob` bájtos adatokat töltse fel. Távolítsa el a fájlt a PageBlob mappából, vagy helyezze át a BlockBlob mappába. Próbálkozzon újra az ellenőrzéssel.|
-| `InvalidBlobPath` | A fájl elérési útja nem felel meg egy érvényes blob elérési úta a felhőben, mint az Azure Blob elnevezési konvenciók.|Kövesse az Azure elnevezési irányelveit a fájl elérési útjának átnevezéséhez. |
-| `EnumerationError` | Nem lehet felsorolni a fájlt ellenőrzésre. |Ennek a hibának több oka is lehet. Ennek legvalószínűbb oka a fájlhoz való hozzáférés. |
-| `ShareSizeExceeded` | Ez a fájl miatt az Azure fájlmegosztás mérete meghaladja az Azure-korlát 5 TB-os.|Csökkentse a megosztásban lévő adatok méretét, hogy azok megfeleljenek az [Azure-objektum méretkorlátainak.](data-box-disk-limits.md#azure-object-size-limits) Próbálkozzon újra az ellenőrzéssel. |
-| `AzureFileSizeExceeded` | A fájlméret meghaladja az Azure-fájlméret-korlátokat.| Csökkentse a fájl vagy az adatok méretét, hogy azok megfeleljenek az [Azure-objektum méretkorlátainak.](data-box-disk-limits.md#azure-object-size-limits) Próbálkozzon újra az ellenőrzéssel.|
-| `BlockBlobSizeExceeded` | A fájlméret meghaladja az Azure Block Blob méretkorlátját. | Csökkentse a fájl vagy az adatok méretét, hogy azok megfeleljenek az [Azure-objektum méretkorlátainak.](data-box-disk-limits.md#azure-object-size-limits) Próbálkozzon újra az ellenőrzéssel. |
-| `ManagedDiskSizeExceeded` | A fájlméret meghaladja az Azure felügyelt lemez méretkorlátját. | Csökkentse a fájl vagy az adatok méretét, hogy azok megfeleljenek az [Azure-objektum méretkorlátainak.](data-box-disk-limits.md#azure-object-size-limits) Próbálkozzon újra az ellenőrzéssel. |
-| `PageBlobSizeExceeded` | A fájlméret meghaladja az Azure felügyelt lemez méretkorlátját. | Csökkentse a fájl vagy az adatok méretét, hogy azok megfeleljenek az [Azure-objektum méretkorlátainak.](data-box-disk-limits.md#azure-object-size-limits) Próbálkozzon újra az ellenőrzéssel. |
-| `InvalidShareContainerFormat`  |A címtárnevek nem felelnek meg a tárolók vagy megosztások Azure-elnevezési konvencióinak.         |A lemezen lévő, már meglévő mappák alatt létrehozott első mappa tárolóvá válik a tárfiókban. Ez a megosztás vagy tároló név nem felel meg az Azure elnevezési konvenciók. Nevezze át a fájlt úgy, hogy megfeleljen az [Azure elnevezési konvencióinak.](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) Próbálkozzon újra az ellenőrzéssel.   |
-| `InvalidBlobNameFormat` | A fájl elérési útja nem felel meg egy érvényes blob elérési úta a felhőben, mint az Azure Blob elnevezési konvenciók.|Nevezze át a fájlt úgy, hogy megfeleljen az [Azure elnevezési konvencióinak.](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) Próbálkozzon újra az ellenőrzéssel. |
-| `InvalidFileNameFormat` | A fájl elérési útja nem felel meg érvényes fájlelérési útnak a felhőben az Azure-fájlelnevezési konvenciók szerint. |Nevezze át a fájlt úgy, hogy megfeleljen az [Azure elnevezési konvencióinak.](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) Próbálkozzon újra az ellenőrzéssel. |
-| `InvalidDiskNameFormat` | A fájl elérési útja nem felel meg érvényes lemeznévnek a felhőben az Azure felügyelt lemez elnevezési konvencióinak. |Nevezze át a fájlt úgy, hogy megfeleljen az [Azure elnevezési konvencióinak.](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) Próbálkozzon újra az ellenőrzéssel.       |
-| `NotPartOfFileShare` | A fájlok feltöltési útvonala érvénytelen. Töltse fel a fájlokat egy mappába az Azure Files.   | Távolítsa el a hibás fájlokat, és töltse fel azokat egy előre létrehozott mappába. Próbálkozzon újra az ellenőrzéssel. |
-| `NonVhdFileNotSupportedForManagedDisk` | Nem Virtuális merevlemezes fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem `ManagedDisk` VHD-s fájlokat a mappából, mivel ezek nem támogatottak, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappába. Próbálkozzon újra az ellenőrzéssel. |
+| `None` | Az adatellenőrzés sikeresen megtörtént. | Semmit nem kell tenni. |
+| `InvalidXmlCharsInPath` |Nem sikerült létrehozni a jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |
+| `OpenFileForReadFailed`| Nem lehetett feldolgozni a fájlt. Ennek oka lehet egy hozzáférési probléma vagy a fájlrendszer sérülése.|Hiba miatt nem sikerült beolvasni a fájlt. A hiba részletei a kivételek. |
+| `Not512Aligned` | Ez a fájl nem érvényes formátumú a PageBlob mappához.| Csak a `PageBlob` mappához igazított 512 bájtos adatok feltöltése. Távolítsa el a fájlt a PageBlob mappából, vagy helyezze át a BlockBlob mappába. Próbálja megismételni az ellenőrzést.|
+| `InvalidBlobPath` | A fájl elérési útja nem a felhőben érvényes blob-elérési úttal van leképezve, mint az Azure Blob elnevezési konvenciói.|A fájl elérési útjának átnevezéséhez kövesse az Azure elnevezési irányelveit. |
+| `EnumerationError` | Nem lehetett enumerálni a fájlt az érvényesítéshez. |Ennek a hibának több oka is lehet. Ennek legvalószínűbb oka a fájlhoz való hozzáférés. |
+| `ShareSizeExceeded` | A fájl miatt az Azure-fájlmegosztás mérete túllépte az Azure-os korlátot 5 TB-nál.|Csökkentse a megosztásban lévő adatméretet, hogy az megfeleljen az [Azure-objektumok méretének](data-box-disk-limits.md#azure-object-size-limits). Próbálja megismételni az ellenőrzést. |
+| `AzureFileSizeExceeded` | A fájl mérete meghaladja az Azure-fájlméret korlátait.| Csökkentse a fájl méretét vagy az adatmennyiséget úgy, hogy az megfeleljen az Azure- [objektumok méretére vonatkozó korlátozásoknak](data-box-disk-limits.md#azure-object-size-limits). Próbálja megismételni az ellenőrzést.|
+| `BlockBlobSizeExceeded` | A fájl mérete meghaladja az Azure Block blob méretének korlátozásait. | Csökkentse a fájl méretét vagy az adatmennyiséget úgy, hogy az megfeleljen az Azure- [objektumok méretére vonatkozó korlátozásoknak](data-box-disk-limits.md#azure-object-size-limits). Próbálja megismételni az ellenőrzést. |
+| `ManagedDiskSizeExceeded` | A fájlméret meghaladja az Azure Managed Disk size korlátait. | Csökkentse a fájl méretét vagy az adatmennyiséget úgy, hogy az megfeleljen az Azure- [objektumok méretére vonatkozó korlátozásoknak](data-box-disk-limits.md#azure-object-size-limits). Próbálja megismételni az ellenőrzést. |
+| `PageBlobSizeExceeded` | A fájlméret meghaladja az Azure Managed Disk size korlátait. | Csökkentse a fájl méretét vagy az adatmennyiséget úgy, hogy az megfeleljen az Azure- [objektumok méretére vonatkozó korlátozásoknak](data-box-disk-limits.md#azure-object-size-limits). Próbálja megismételni az ellenőrzést. |
+| `InvalidShareContainerFormat`  |A címtár neve nem felel meg a tárolók és a megosztások Azure elnevezési konvencióinak.         |A lemezen a már meglévő mappák alatt létrehozott első mappa a Storage-fiókban található tároló lesz. Ez a megosztás vagy tároló neve nem felel meg az Azure elnevezési konvencióinak. Nevezze át a fájlt úgy, hogy az megfeleljen az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Próbálja megismételni az ellenőrzést.   |
+| `InvalidBlobNameFormat` | A fájl elérési útja nem a felhőben érvényes blob-elérési úttal van leképezve, mint az Azure Blob elnevezési konvenciói.|Nevezze át a fájlt úgy, hogy az megfeleljen az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Próbálja megismételni az ellenőrzést. |
+| `InvalidFileNameFormat` | A fájl elérési útja nem képezi le érvényes elérési utat a felhőben az Azure-fájl elnevezési konvenciói alapján. |Nevezze át a fájlt úgy, hogy az megfeleljen az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Próbálja megismételni az ellenőrzést. |
+| `InvalidDiskNameFormat` | A fájl elérési útja nem a felhőben érvényes, hanem az Azure által felügyelt lemez elnevezési konvenciói alapján van leképezve. |Nevezze át a fájlt úgy, hogy az megfeleljen az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Próbálja megismételni az ellenőrzést.       |
+| `NotPartOfFileShare` | A fájlok feltöltési elérési útja érvénytelen. Töltse fel a fájlokat Azure Files egy mappájába.   | Távolítsa el a hibát tartalmazó fájlokat, és töltse fel ezeket a fájlokat egy előlétrehozott mappába. Próbálja megismételni az ellenőrzést. |
+| `NonVhdFileNotSupportedForManagedDisk` | Nem VHD-fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem VHD- `ManagedDisk` fájlokat a mappából, mivel ezek nem támogatottak, vagy `PageBlob` helyezze át ezeket a fájlokat egy mappába. Próbálja megismételni az ellenőrzést. |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása .
+- [Az adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása.

@@ -1,6 +1,6 @@
 ---
-title: Linkek és URL-ek fordítása Azure AD App Proxy | Microsoft dokumentumok
-description: Ismerteti az Azure AD alkalmazásproxy-összekötők alapjait.
+title: Hivatkozások és URL-címek lefordítása Azure AD alkalmazás proxyn | Microsoft Docs
+description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,139 +17,139 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69533703"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxyval közzétett alkalmazások hoz a kódolt hivatkozások átirányítása
+# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Hardcoded-hivatkozások átirányítása az Azure AD Application Proxy-ban közzétett alkalmazásokra
 
-Az Azure AD alkalmazásproxy elérhetővé teszi a helyszíni alkalmazásokat a távoli vagy saját eszközökön lévő felhasználók számára. Egyes alkalmazásokat azonban a HTML-be ágyazott helyi hivatkozásokkal fejlesztettek ki. Ezek a hivatkozások nem működnek megfelelően, ha az alkalmazást távolról használják. Ha több helyszíni alkalmazás is rámutat egymásra, a felhasználók azt várják, hogy a hivatkozások akkor is működjenek, amikor nem az irodában tartózkodnak. 
+Az Azure AD Application Proxy elérhetővé teszi a helyszíni alkalmazásokat a távoli vagy a saját eszközökön lévő felhasználók számára. Egyes alkalmazások azonban a HTML-ben beágyazott helyi hivatkozásokkal lettek kialakítva. Ezek a hivatkozások nem működnek megfelelően, ha az alkalmazást távolról használják. Ha több helyszíni alkalmazás is mutat egymásra, a felhasználók elvárják, hogy a hivatkozások továbbra is működőképesek maradjanak, ha nem az irodában vannak. 
 
-A legjobb módja annak, hogy a hivatkozások a vállalati hálózaton belül és kívül is ugyanúgy működjenek, ha az alkalmazások külső URL-címeit úgy állítja be, hogy azok megegyeznek a belső URL-címekkel. [Egyéni tartományok](application-proxy-configure-custom-domain.md) használatával konfigurálhatja a külső URL-címeket úgy, hogy az alapértelmezett alkalmazásproxy-tartomány helyett a vállalati tartománynevet kapják.
+A legjobb módszer annak biztosítására, hogy a kapcsolatok ugyanúgy működjenek, mint a vállalati hálózaton belül és kívül is, hogy az alkalmazások külső URL-címei megegyezzenek a belső URL-címekkel. [Egyéni tartományokkal](application-proxy-configure-custom-domain.md) konfigurálhatja a külső URL-címeket úgy, hogy az alapértelmezett alkalmazásproxy-tartomány helyett a vállalati tartománynevet használják.
 
 
-Ha nem tudja használni az egyéni tartományok at a bérlőben, számos más lehetőség van a funkció biztosítására. Ezek mindegyike kompatibilis az egyéni tartományokkal és egymással, így szükség esetén egyéni tartományokat és más megoldásokat is konfigurálhat.
+Ha nem használhat egyéni tartományokat a bérlőben, több további lehetőség is rendelkezésre áll a funkció biztosításához. Ezek mindegyike az egyéni tartományokkal és egymással is kompatibilis, így szükség esetén egyéni tartományokat és egyéb megoldásokat is beállíthat.
 
 > [!NOTE]
-> A Javascript en keresztül létrehozott, kódolt belső URL-ek esetében a hivatkozásfordítás nem támogatott.
+> A hivatkozás fordítása nem támogatott a JavaScript használatával generált, rögzített belső URL-címek esetében.
 
-**1. lehetőség: Használja a Felügyelt böngészőt vagy a Microsoft Edge-** t – Ez a megoldás csak akkor alkalmazható, ha azt szeretné ajánlani, vagy meg kívánja követelni, hogy a felhasználók az Intune felügyelt böngészőjén vagy a Microsoft Edge böngészőn keresztül férjenek hozzá az alkalmazáshoz. Ez kezeli az összes közzétett URL-eket. 
+**1. lehetőség: a Managed Browser vagy a Microsoft Edge használata** – ez a megoldás csak akkor alkalmazható, ha azt tervezi, hogy a felhasználók a Intune Managed Browser vagy a Microsoft Edge böngésző használatával érik el az alkalmazást. A szolgáltatás minden közzétett URL-címet kezelni fog. 
 
-**2. lehetőség: Használja a MyApps extension** - Ez a megoldás megköveteli a felhasználókszámára, hogy telepítsen egy ügyféloldali böngészőbővítményt, de kezeli az összes közzétett URL-t, és a legnépszerűbb böngészőkkel működik. 
+**2. lehetőség: a MyApps bővítmény használata** – ehhez a megoldáshoz a felhasználóknak ügyféloldali böngésző-bővítményt kell telepíteniük, de az összes közzétett URL-címet kezelni fogják, és a legnépszerűbb böngészőkkel működnek. 
 
-**3. lehetőség: Használja a linkfordítási beállítást** – Ez egy olyan rendszergazdai oldalbeállítás, amely a felhasználók számára láthatatlan. Azonban csak HTML és CSS URL-címeket kezel.   
+**3. lehetőség: a hivatkozás fordítási beállításának használata** – ez egy rendszergazdai oldal, amely láthatatlan a felhasználók számára. Azonban csak HTML-és CSS-URL-címeket fog kezelni.   
 
-Ez a három funkció folyamatosan működik a linkek nem számít, hol a felhasználók. Ha olyan alkalmazásokkal rendelkezik, amelyek közvetlenül a belső végpontokra vagy portokra mutatnak, ezeket a belső URL-címeket leképezheti a közzétett külső alkalmazásproxy-URL-címekre. 
+Ez a három funkció tárolja a hivatkozásokat, függetlenül attól, hogy a felhasználók hol vannak. Ha olyan alkalmazásokkal rendelkezik, amelyek közvetlenül a belső végpontokra vagy portokra mutatnak, ezeket a belső URL-címeket a közzétett külső alkalmazásproxy URL-címeire képezheti le. 
 
  
 > [!NOTE]
-> Az utolsó lehetőség csak a bérlők, hogy bármilyen okból nem használhatja az egyéni tartományok, hogy ugyanazt a belső és külső URL-eket az alkalmazások. A szolgáltatás engedélyezése előtt tekintse meg, hogy [az Azure AD alkalmazásproxy egyéni tartományai](application-proxy-configure-custom-domain.md) működhetnek-e az Ön számára. 
+> Az utolsó lehetőség csak olyan bérlők esetében használható, amelyek bármilyen okból nem használhatják az egyéni tartományokat az alkalmazásokhoz tartozó belső és külső URL-címekkel. A szolgáltatás engedélyezése előtt tekintse meg, hogy az [Azure ad Application proxy-beli egyéni tartományok](application-proxy-configure-custom-domain.md) működhetnek-e. 
 > 
-> Ha a hivatkozásfordítással konfigurálni kívánt alkalmazás SharePoint, olvassa el a [SharePoint 2013-hoz való alternatív hozzáférés-hozzárendelések konfigurálása](https://technet.microsoft.com/library/cc263208.aspx) című témakört a hivatkozások leképezésének másik megközelítéséhez. 
+> Vagy ha a hivatkozás fordításával konfigurálni kívánt alkalmazás SharePoint rendszerű, tekintse meg a következő témakört: [alternatív hozzáférés-leképezések konfigurálása a sharepoint 2013](https://technet.microsoft.com/library/cc263208.aspx) -hoz a hivatkozások leképezésének másik megközelítéséhez. 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>1. lehetőség: Az Intune felügyelt böngészője és a Microsoft Edge-integráció 
+### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>1. lehetőség: a Intune Managed Browser és a Microsoft Edge integrációja 
 
-Az Intune felügyelt böngészője vagy a Microsoft Edge segítségével tovább védheti az alkalmazást és a tartalmat. A megoldás használatához meg kell követelnie/ajánlania kell a felhasználóknak az alkalmazás elérését az Intune felügyelt böngészőn keresztül. Az alkalmazásproxyval közzétett összes belső URL-t a felügyelt böngésző felismeri, és a megfelelő külső URL-re irányítja át. Ez biztosítja, hogy az összes kódolt belső URL-ek működnek, és ha a felhasználó a böngészőbe lép, és közvetlenül beírja a belső URL-t, akkor is működik, ha a felhasználó távoli.  
+Az alkalmazás és a tartalom további védelemmel való ellátásához a Intune Managed Browser vagy a Microsoft Edge használható. Ennek a megoldásnak a használatához meg kell követelnie/javasolnia kell, hogy a felhasználók hozzáférhessenek az alkalmazáshoz a Intune Managed Browseron keresztül. A Managed Browser felismeri az alkalmazásproxy által közzétett összes belső URL-címet, és átirányítja a megfelelő külső URL-címre. Ez biztosítja, hogy a rögzített belső URL-címek működnek, és ha a felhasználó a böngészőbe lép, és közvetlenül a belső URL-címet írja be, akkor is működik, ha a felhasználó távoli.  
 
-További információért, például a beállítás konfigurálásáról, olvassa el a [Felügyelt böngésző](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentációját.  
+Ha többet szeretne megtudni, beleértve a beállítás konfigurálásának módját, tekintse meg a [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentációját.  
 
-### <a name="option-2-myapps-browser-extension"></a>2. lehetőség: MyApps böngészőbővítmény 
+### <a name="option-2-myapps-browser-extension"></a>2. lehetőség: MyApps böngésző bővítmény 
 
-A MyApps böngészőbővítmény segítségével az alkalmazásproxyval közzétett összes belső URL-t a bővítmény felismeri, és átirányítja a megfelelő külső URL-re. Ez biztosítja, hogy az összes kódolt belső URL-ek működnek, és ha a felhasználó a böngésző címsorába lép, és közvetlenül beírja a belső URL-t, akkor is működik, ha a felhasználó távoli.  
+A MyApps böngésző bővítménnyel a bővítmény felismeri az alkalmazásproxy által közzétett összes belső URL-címet, és átirányítja a megfelelő külső URL-címre. Ez biztosítja, hogy a rögzített belső URL-címek működnek, és ha a felhasználó a böngésző címsorába kerül, és közvetlenül a belső URL-címet írja be, akkor is működik, ha a felhasználó távoli.  
 
-A funkció használatához a felhasználónak le kell töltenie a bővítményt, és be kell jelentkeznie. Nincs más konfiguráció szükséges a rendszergazdák vagy a felhasználók számára. 
+A szolgáltatás használatához a felhasználónak le kell töltenie a bővítményt, és be kell jelentkeznie. A rendszergazdák vagy a felhasználók számára nincs szükség további konfigurálásra. 
 
-További információért, beleértve a beállítás konfigurálását, olvassa el a [MyApps böngészőbővítmény](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
+Ha többet szeretne megtudni, beleértve a beállítás konfigurálásának módját, tekintse meg a [MyApps böngésző bővítmény](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
 
-### <a name="option-3-link-translation-setting"></a>3. lehetőség: Hivatkozásfordítási beállítás 
+### <a name="option-3-link-translation-setting"></a>3. lehetőség: fordítási beállítás csatolása 
 
-Ha a hivatkozásfordítás engedélyezve van, az Alkalmazásproxy szolgáltatás html- és CSS-en keresztül keres közzétett belső hivatkozásokat, és lefordítja azokat, hogy a felhasználók megszakítás nélküli élményt kapjanak. A MyApps böngészőbővítmény használata előnyös ebbi a Hivatkozásfordítási beállításnál, mivel ez nagyobb teljesítményt nyújt a felhasználóknak.
+Ha a hivatkozás fordítása engedélyezve van, az Application proxy szolgáltatás HTML-és CSS-keresést végez a közzétett belső hivatkozásokon, és lefordítja őket, hogy a felhasználók zavartalan élményt kapjanak. A MyApps böngésző bővítmény használata ajánlott a link Translation beállításhoz, mivel a felhasználók számára nagyobb teljesítményű felhasználói élményt nyújt.
 
 > [!NOTE]
-> Ha a 2.
+> Ha a 2. vagy a 3. lehetőséget használja, egyszerre csak az egyiket kell engedélyezni.
 
-## <a name="how-link-translation-works"></a>Hogyan működik a hivatkozásfordítás?
+## <a name="how-link-translation-works"></a>A link Translation működése
 
-A hitelesítés után, amikor a proxykiszolgáló átadja az alkalmazás adatokat a felhasználónak, az alkalmazásproxy megvizsgálja az alkalmazást a kódolt hivatkozások után, és lecseréli azokat a megfelelő, közzétett külső URL-címekre.
+A hitelesítés után, amikor a proxykiszolgáló átadja az alkalmazásadatok a felhasználónak, az alkalmazásproxy megkeresi az alkalmazást az hardcoded-hivatkozásokra, és lecseréli azokat a megfelelő, közzétett külső URL-címekre.
 
-Az alkalmazásproxy feltételezi, hogy az alkalmazások UTF-8-ban vannak kódolva. Ha nem ez a helyzet, adja meg a kódolás típusát `Content-Type:text/html;charset=utf-8`egy http válaszfejlécben, például .
+Az alkalmazásproxy feltételezi, hogy az alkalmazások UTF-8-ban vannak kódolva. Ha ez nem így van, adja meg a kódolás típusát egy http-válasz fejlécében, `Content-Type:text/html;charset=utf-8`például:.
 
-### <a name="which-links-are-affected"></a>Mely hivatkozásokérintettek?
+### <a name="which-links-are-affected"></a>Mely hivatkozások érintik?
 
-A hivatkozásfordítási funkció csak az okat a címkéket tartalmazó hivatkozásokat keresi meg az alkalmazás törzsében. Az alkalmazásproxy külön funkcióval rendelkezik a cookie-k vagy URL-ek fejlécekben történő fordításához. 
+A hivatkozás fordítási funkciója csak az alkalmazás törzsében lévő kódelemekben található hivatkozásokat keresi. Az alkalmazásproxy külön funkcióval rendelkezik a cookie-k és URL-címek lefordításához a fejlécekben. 
 
-A helyszíni alkalmazásokban a belső kapcsolatoknak két gyakori típusa van:
+A helyszíni alkalmazásokban két általános típusú belső kapcsolat létezik:
 
-- **Relatív belső hivatkozások,** amelyek egy helyi fájlstruktúrában lévő megosztott erőforrásra mutatnak, például `/claims/claims.html`. Ezek a hivatkozások automatikusan működnek az alkalmazásproxyn keresztül közzétett alkalmazásokban, és továbbra is kapcsolatfordítással vagy anélkül működnek. 
-- **Kódolt belső hivatkozások** más helyszíni alkalmazásokhoz, `http://expenses` például `http://expenses/logo.jpg`a . A hivatkozásfordítási funkció a kódolt belső hivatkozásokon működik, és azokat a távoli felhasználók által átkell mennünk.
+- **Relatív belső hivatkozások** , amelyek egy megosztott erőforrásra mutatnak egy helyi fájlmegosztás, `/claims/claims.html`például:. Ezek a hivatkozások automatikusan működnek az Application proxyn keresztül közzétett alkalmazásokban, és a kapcsolat fordításával vagy anélkül is dolgozhatnak. 
+- A **hardcoded belső hivatkozásokat** más helyszíni alkalmazásokra, `http://expenses` például a (z `http://expenses/logo.jpg`) vagy a közzétett fájlokra. A hivatkozás fordítási funkciója hardcoded belső hivatkozásokon működik, és úgy módosítja őket, hogy azok a külső URL-címekre mutassanak, amelyeket a távoli felhasználóknak el kell végezniük.
 
-Az alkalmazásproxy által támogatott HTML-kódcímkék teljes listája a következők:
+Az Application proxy által támogatott HTML-kódelemek teljes listája a következőkhöz:
 * a
-* Audio
+* hang
 * base
 * gombra
 * div
-* Beágyaz
-* Formában
-* Keret
-* Fej
+* beágyaz
+* űrlap
+* keret
+* fej
 * html
 * iframe
 * kép
 * bemenet
-* Link
-* Menuitem
-* Meta
+* hivatkozás
+* MENUITEM
+* meta
 * objektum
 * szkriptet.
 * source
 * követés
 * Videó
 
-Ezenkívül a CSS-en belül az URL-attribútum is levan fordítva.
+Emellett a CSS-en belül az URL-attribútum is le van fordítva.
 
-### <a name="how-do-apps-link-to-each-other"></a>Hogyan kapcsolódnak egymáshoz az alkalmazások?
+### <a name="how-do-apps-link-to-each-other"></a>Hogyan hivatkoznak az alkalmazások egymásra?
 
-A hivatkozásfordítás minden alkalmazáshoz engedélyezve van, így alkalmazásonként szabályozhatja a felhasználói élményt. Ha azt szeretné, hogy az adott alkalmazás *hivatkozásait* lefordítsa, ne az adott *alkalmazásra* mutató hivatkozásokat. 
+A link Translation minden alkalmazás esetében engedélyezve van, így a felhasználói élmény az alkalmazáson belüli szinten szabályozható. Kapcsolja be a hivatkozás fordítását egy alkalmazáshoz, ha az *alkalmazás hivatkozásait* le szeretné fordítani, és nem *hivatkozik erre az* alkalmazásra. 
 
-Tegyük fel például, hogy három alkalmazás van közzétéve az alkalmazásproxyn keresztül, amelyek mindegyike egymásra mutató hivatkozással rendelkezik: előnyök, költségek és utazás. Van egy negyedik alkalmazás, a Visszajelzés, amely nem jelenik meg az alkalmazásproxyn keresztül.
+Tegyük fel például, hogy három, az Application proxyn keresztül közzétett alkalmazással rendelkezik, amelyek mindegyike kapcsolódik egymáshoz: előnyök, költségek és utazás. Van egy negyedik alkalmazás, visszajelzés, amely nincs közzétéve az alkalmazásproxy használatával.
 
-Ha engedélyezi a kapcsolatok fordítását a Előnyök alkalmazáshoz, a költségekre és az utazásra mutató hivatkozásokat a rendszer átirányítja az alkalmazások külső URL-jeire, de a visszajelzésre mutató hivatkozást nem irányítja át, mert nincs külső URL. A költségekés az utazások vissza az előnyökre mutató hivatkozások nem működnek, mert a két alkalmazás esetében nincs engedélyezve a hivatkozásfordítás.
+Ha engedélyezi a kapcsolat fordítását az előnyök alkalmazáshoz, a költségekre és az utazásra mutató hivatkozások átirányítva lesznek az alkalmazások külső URL-címeire, de a visszajelzésre mutató hivatkozás nem lesz átirányítva, mert nincs külső URL-cím. A költségekre mutató hivatkozások és az előnyök visszautazása nem működik, mert a hivatkozás fordítása nincs engedélyezve a két alkalmazás esetében.
 
-![Az előnyökről mutató hivatkozások más alkalmazásokra, ha a hivatkozásfordítás engedélyezve van](./media/application-proxy-configure-hard-coded-link-translation/one_app.png)
+![Az előnyöktől más alkalmazásokra mutató hivatkozások a kapcsolat fordításának engedélyezésekor](./media/application-proxy-configure-hard-coded-link-translation/one_app.png)
 
-### <a name="which-links-arent-translated"></a>Mely hivatkozások nincsenek lefordítva?
+### <a name="which-links-arent-translated"></a>Mely hivatkozások nem fordíthatók le?
 
-A teljesítmény és a biztonság javítása érdekében egyes hivatkozások at nem fordítanak le:
+A teljesítmény és a biztonság javítása érdekében egyes hivatkozások nem fordíthatók le:
 
-- Linkek nem belül a kódcímkéket. 
-- Linkek nem HTML vagy CSS. 
-- Linkek URL-kódolású formátumban.
-- Más programokból megnyitott belső hivatkozások. Az e-mailben vagy csevegőüzenetben küldött, illetve más dokumentumokban szereplő hivatkozásokat nem fordítják le. A felhasználóknak tudniuk kell, hogy menjen a külső URL-t.
+- A kódelemeken kívüli hivatkozások. 
+- HTML-vagy CSS-hivatkozások nem. 
+- URL-kódolású formátumú hivatkozások
+- Más programokból megnyitott belső hivatkozások. Az e-mailben vagy csevegésen keresztül küldött hivatkozások nem lesznek lefordítva. A felhasználóknak ismerniük kell a külső URL-címet.
 
-Ha a két forgatókönyv egyikét kell támogatnia, használja ugyanazokat a belső és külső URL-címeket a hivatkozásfordítás helyett.  
+Ha a két forgatókönyv egyikét kell támogatnia, használja a kapcsolat fordítása helyett ugyanazt a belső és külső URL-címet.  
 
-## <a name="enable-link-translation"></a>Hivatkozásfordítás engedélyezése
+## <a name="enable-link-translation"></a>Hivatkozás fordításának engedélyezése
 
-A hivatkozások fordításának megkezdése olyan egyszerű, mint egy gombra kattintani:
+A hivatkozás fordításának első lépései olyan egyszerűek, mint a gombra kattintva:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) rendszergazdaként.
-2. Nyissa meg az **Azure Active Directory** > **Enterprise alkalmazások:** > **Minden alkalmazás** > válassza ki a > **alkalmazásproxyt**kezelni kívánt alkalmazást.
-3. Fordítsa **le fordítani az URL-címeket az alkalmazás törzsében** Igen **(Igen)** fordulatra.
+1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
+2. Lépjen **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** lehetőségre > válassza ki azt az alkalmazást, amelyet > **alkalmazásproxy**kezelésére szeretne használni.
+3. Az **alkalmazás törzsében lévő URL-címek fordítása** **Igen**.
 
-   ![Válassza az Igen lehetőséget az URL-ek alkalmazástörzsben való fordításához.](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
+   ![Válassza az Igen lehetőséget az URL-címek lefordításához az alkalmazás törzsében](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
-Most, amikor a felhasználók hozzáférnek ehhez az alkalmazáshoz, a proxy automatikusan megkeresi a belső URL-címeket, amelyek közzétettalkalmazás-proxy a bérlőn keresztül.
+Most, amikor a felhasználók hozzáférnek az alkalmazáshoz, a proxy automatikusan ellenőrzi azokat a belső URL-címeket, amelyek a bérlőn keresztül lettek közzétéve az Application proxyn keresztül.
 
 ## <a name="send-feedback"></a>Visszajelzés küldése
 
-Azt szeretnénk, hogy a segítsége, hogy ez a funkció működik az összes apps. Több mint 30 címkét keresünk HTML és CSS formátumban. Ha van egy példa a létrehozott hivatkozásokra, amelyeket nem fordítanak le, küldjön egy kódrészletet [az alkalmazásproxy-visszajelzésnek.](mailto:aadapfeedback@microsoft.com) 
+Szeretnénk, ha segítségre van szüksége a funkció működéséhez az összes alkalmazás számára. Több mint 30 címkét keresünk HTML-ben és CSS-ben. Ha például olyan generált hivatkozásokat tartalmaz, amelyek nincsenek lefordítva, küldjön egy kódrészletet az [alkalmazásproxy visszajelzéséhez](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>További lépések
-[Egyéni tartományok használata az Azure AD alkalmazásproxyval](application-proxy-configure-custom-domain.md) ugyanazt a belső és külső URL-címet
+[Egyéni tartományok használata az Azure ad Application proxy](application-proxy-configure-custom-domain.md) ugyanazzal a belső és külső URL-címmel
 
-[Alternatív hozzáférés-hozzárendelések konfigurálása a SharePoint 2013-hoz](https://technet.microsoft.com/library/cc263208.aspx)
+[Alternatív hozzáférés-leképezések konfigurálása a SharePoint 2013-hoz](https://technet.microsoft.com/library/cc263208.aspx)

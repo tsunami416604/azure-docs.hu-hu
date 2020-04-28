@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179069"
 ---
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Key Vault-integráció engedélyezése után engedélyezheti az SQL Server titkosítást az SQL virtuális gépen. Először létre kell hoznia egy aszimmetrikus kulcsot a key vaultban, és egy szimmetrikus kulcsot az SQL Server-en belül a virtuális gépen. Ezután t-SQL-utasítások végrehajtására is képes lesz az adatbázisok és biztonsági mentések titkosításának engedélyezéséhez.
+Azure Key Vault integráció engedélyezése után engedélyezheti SQL Server titkosítását az SQL-alapú virtuális gépen. Először létre kell hoznia egy aszimmetrikus kulcsot a kulcstartóban és egy szimmetrikus kulcsot a virtuális gépen SQL Serveron belül. Ezt követően a T-SQL-utasítások végrehajtásával engedélyezheti az adatbázisok és a biztonsági másolatok titkosítását.
 
-A titkosításnak számos formája van, amelyeket kihasználhat:
+A titkosítás többféle formában is kihasználható:
 
 * [Transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Titkosított biztonsági mentések](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Oszlopszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Titkosított biztonsági másolatok](https://msdn.microsoft.com/library/dn449489.aspx)
+* [Oszlop szintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-A következő Transact-SQL parancsfájlok példákat szolgáltatnak az egyes területekre.
+A következő Transact-SQL-szkriptek példákat biztosítanak ezekre a területekre vonatkozóan.
 
-### <a name="prerequisites-for-examples"></a>A példák előfeltételei
+### <a name="prerequisites-for-examples"></a>Példák az előfeltételekre
 
-Minden példa a két előfeltételen alapul: egy aszimmetrikus kulcs a kulcstartóból, **amelyet CONTOSO_KEY** és az AKV-integráció szolgáltatás által létrehozott hitelesítő adat **Azure_EKM_TDE_cred.** A következő Transact-SQL parancsok beállítják ezeket az előfeltételeket a példák futtatásához.
+Mindegyik példa a két előfeltételen alapul: egy **CONTOSO_KEY** nevű kulcstartó aszimmetrikus kulcsára és egy **Azure_EKM_TDE_cred**nevű AKV-integrációs szolgáltatás által létrehozott hitelesítő adatra. A következő Transact-SQL-parancsok a példák futtatásához szükséges előfeltételeket állítják be.
 
 ``` sql
 USE master;
@@ -52,7 +52,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>Transzparens adattitkosítás (TDE)
 
-1. Hozzon létre egy SQL Server bejelentkezési rendszert, amelyet a TDE adatbázis-kezelő motorja használ, majd adja hozzá a hitelesítő adatokat.
+1. Hozzon létre egy SQL Server bejelentkezési azonosítót, amelyet a TDE adatbázismotor használ, majd adja hozzá a hitelesítő adatokat.
 
    ``` sql
    USE master;
@@ -70,7 +70,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Hozza létre a TDE-hez használt adatbázis-titkosítási kulcsot.
+1. Hozza létre az adatbázis-titkosítási kulcsot, amelyet a rendszer a TDE fog használni.
 
    ``` sql
    USE ContosoDatabase;
@@ -87,9 +87,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="encrypted-backups"></a>Titkosított biztonsági mentések
+### <a name="encrypted-backups"></a>Titkosított biztonsági másolatok
 
-1. Hozzon létre egy SQL Server bejelentkezési rendszert, amelyet az adatbázis-kezelő motor a biztonsági mentések titkosításához használ, és adja hozzá a hitelesítő adatokat.
+1. Hozzon létre egy SQL Server bejelentkezési azonosítót, amelyet az adatbázismotor használ a biztonsági másolatok titkosításához, és adja hozzá a hitelesítő adatokat.
 
    ``` sql
    USE master;
@@ -106,7 +106,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Biztonsági másolatot készítsen a titkosítást meghatározó adatbázisról a key vaultban tárolt aszimmetrikus kulccsal.
+1. Biztonsági másolat készítése az adatbázisról a Key vaultban tárolt aszimmetrikus kulccsal történő titkosítás megadásával.
 
    ``` sql
    USE master;
@@ -117,9 +117,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="column-level-encryption-cle"></a>Oszlopszintű titkosítás (CLE)
+### <a name="column-level-encryption-cle"></a>Oszlop szintű titkosítás (CLE)
 
-Ez a parancsfájl létrehoz egy szimmetrikus kulcsot, amelyet a key vault aszimmetrikus kulcsa véd, majd a szimmetrikus kulcsot használja az adatbázisban lévő adatok titkosításához.
+Ez a szkript létrehoz egy szimmetrikus kulcsot, amelyet az aszimmetrikus kulcs véd a kulcstartóban, majd a szimmetrikus kulcs használatával titkosítja az adatbázist.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -142,8 +142,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-A titkosítási szolgáltatások használatáról az [EKM használata az SQL Server titkosítási szolgáltatásokkal című témakörben talál](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)további információt.
+A titkosítási funkciók használatáról további információt a [EKM használata SQL Server titkosítási funkciókkal](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)című témakörben talál.
 
-Vegye figyelembe, hogy a cikkben leírt lépések feltételezik, hogy már rendelkezik az SQL Server egy Azure virtuális gépen. Ha nem, olvassa [el az SQL Server virtuális gép kiépítése az Azure-ban című témakört.](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) Az SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további útmutatásért tekintse meg [az SQL Server az Azure virtuális gépeken című témakört.](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+Vegye figyelembe, hogy a cikkben ismertetett lépések azt feltételezik, hogy már fut SQL Server Azure-beli virtuális gépen. Ha nem, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure-ban](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)című témakört. A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további útmutatásért lásd: [SQL Server az azure Virtual Machines áttekintése](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
