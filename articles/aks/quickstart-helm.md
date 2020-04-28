@@ -1,40 +1,40 @@
 ---
-title: Fejlesztés az Azure Kubernetes szolgáltatáson (AKS) a Helm segítségével
-description: A Helm az AKS-sel és az Azure Container Registry használatával csomag, és futtatja az alkalmazástárolók egy fürtben.
+title: Fejlesztés az Azure Kubernetes szolgáltatásban (ak) a Helmtal
+description: Az alkalmazás-tárolók fürtben való kicsomagolásához és futtatásához használja az AK-t és a Azure Container Registry-t.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
-ms.openlocfilehash: 77627ab846999ea5ba42fde7a9c49b9cc7559fba
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873432"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82169568"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rövid útmutató: Fejlesztés az Azure Kubernetes szolgáltatáson (AKS) a Helm
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
 
-[A Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segít a Kubernetes-alkalmazások életciklusának telepítésében és kezelésében. Hasonló a Linux csomagkezelők, mint az *APT* és *a Yum,* Helm kezelésére használják Kubernetes diagramok, amelyek csomagok előre konfigurált Kubernetes erőforrások.
+A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum*hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
 
-Ez a cikk bemutatja, hogyan használhatja a Helm egy alkalmazás csomagolásához és futtatásához az AKS-en. A Helm használatával meglévő alkalmazások telepítéséről a [Meglévő alkalmazások telepítése a Helm segítségével az AKS-ben][helm-existing]című témakörben talál további információt.
+Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtathat egy alkalmazást az AK-ban. Egy meglévő alkalmazás Helm használatával történő telepítésével kapcsolatos további információkért lásd: [meglévő alkalmazások telepítése az AK-ban Helm-ben][helm-existing].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-* [Az Azure CLI telepítve van.](/cli/azure/install-azure-cli?view=azure-cli-latest)
-* A Docker telepítve és konfigurálva. A Docker csomagokat biztosít, amelyekkel a Docker [Mac][docker-for-mac], [Windows][docker-for-windows] vagy [Linux][docker-for-linux] rendszereken konfigurálható.
-* [Helm v3 telepítve][helm-install].
+* Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* A Docker telepítése és konfigurálása megtörtént. A Docker csomagokat biztosít, amelyekkel a Docker [Mac][docker-for-mac], [Windows][docker-for-windows] vagy [Linux][docker-for-linux] rendszereken konfigurálható.
+* A [Helm v3 telepítve van][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
-Helm használatával az alkalmazás a KS-fürtben, szüksége van egy Azure Container Registry a tárolórendszerképek tárolásához. Az alábbi példában [az acr create][az-acr-create] segítségével hozzon létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* erőforráscsoportban az *alapszintű* termékváltozattal. Meg kell adnia a saját egyedi rendszerleíró nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+Ha a Helm használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az *alapszintű* SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-A kimenet a következő példához hasonló. Jegyezze fel az ACR *loginServer* értékét, mivel egy későbbi lépésben fogja használni. Az alábbi példában *myhelmacr.azurecr.io* a *MyHelmACR* *loginServer kiszolgálója.*
+A kimenet a következő példához hasonló. Jegyezze fel az ACR *lekéréséhez* értékét, mivel azt egy későbbi lépésben fogja használni. Az alábbi példában a *myhelmacr.azurecr.IO* a *myhelmacr* *lekéréséhez* .
 
 ```console
 {
@@ -58,7 +58,7 @@ A kimenet a következő példához hasonló. Jegyezze fel az ACR *loginServer* �
 }
 ```
 
-Az ACR-példány használatához először be kell jelentkeznie. A bejelentkezéshez használja az [acr bejelentkezési][az-acr-login] parancsot. Az alábbi példa egy *MyHelmACR*nevű ACR-be jelentkezik be.
+Az ACR-példány használatához először be kell jelentkeznie. A bejelentkezéshez használja az az [ACR login][az-acr-login] parancsot. Az alábbi példa egy *MyHelmACR*nevű ACR-be fog bejelentkezni.
 
 ```azurecli
 az acr login --name MyHelmACR
@@ -66,17 +66,17 @@ az acr login --name MyHelmACR
 
 A parancs a *Bejelentkezés sikeres* üzenetet adja vissza, ha befejeződött.
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes-szolgáltatásfürt létrehozása
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-Hozzon létre egy AKS-fürtöt. Az alábbi parancs létrehoz egy AKS-fürt nevű MyAKS és csatolja MyHelmACR.
+Hozzon létre egy AK-fürtöt. Az alábbi parancs létrehoz egy MyAKS nevű AK-fürtöt, és csatolja a MyHelmACR.
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Az AKS-fürtnek hozzáférésre van szüksége az ACR-hez a tárolórendszerképek lekérése és futtatása érdekében. A fenti parancs a *MyAKS-fürtnek* is hozzáférést biztosít a *MyHelmACR* ACR-hez.
+Az AK-fürtnek hozzá kell férnie az ACR-hez a tároló lemezképének lekéréséhez és futtatásához. A fenti parancs azt is megadja, hogy a *MyAKS* -fürt hozzáférjen a *MyHelmACR* ACR-hez.
 
-## <a name="connect-to-your-aks-cluster"></a>Csatlakozás az AKS-fürthöz
+## <a name="connect-to-your-aks-cluster"></a>Kapcsolódás az AK-fürthöz
 
 Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz a helyi számítógépről, használja a Kubernetes [kubectl][kubectl] nevű parancssori ügyfelét.
 
@@ -86,7 +86,7 @@ Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is
 az aks install-cli
 ```
 
-Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyResourceGroup*ban a MyResourceGroup ban *myaks* nevű AKS-fürt hitelesítő adatait kapja meg:
+Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyAKS* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -94,16 +94,16 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-Ez a rövid útmutató [egy példa Node.js alkalmazást használ az Azure Dev Spaces minttárházból.][example-nodejs] Klónozza az alkalmazást a GitHubról, és keresse meg a `dev-spaces/samples/nodejs/getting-started/webfrontend` könyvtárat.
+Ez a rövid útmutató [egy példa Node. js-alkalmazást használ az Azure dev Spaces minta adattárból][example-nodejs]. Klónozott az alkalmazást a GitHubról, és navigáljon a `dev-spaces/samples/nodejs/getting-started/webfrontend` címtárhoz.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="create-a-dockerfile"></a>Docker-fájl létrehozása
+## <a name="create-a-dockerfile"></a>Docker létrehozása
 
-Hozzon létre egy új *Docker-fájlt* az alábbi használatával:
+Hozzon létre egy új *Docker* -fájlt a következő használatával:
 
 ```dockerfile
 FROM node:latest
@@ -120,15 +120,15 @@ EXPOSE 80
 CMD ["node","server.js"]
 ```
 
-## <a name="build-and-push-the-sample-application-to-the-acr"></a>A mintaalkalmazás létrehozása és leküldése az ACR-be
+## <a name="build-and-push-the-sample-application-to-the-acr"></a>A minta alkalmazás létrehozása és leküldése az ACR-be
 
-A bejelentkezési kiszolgáló címének beszereznie az [acr list][az-acr-list] paranccsal és a *loginServer lekérdezésével:*
+Szerezze be a bejelentkezési kiszolgáló nevét az az [ACR List][az-acr-list] paranccsal, és kérdezze le a *lekéréséhez*:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-A Docker használatával hozhat létre, címkézhet és lelökheti a mintaalkalmazás-tárolót az ACR-be:
+A Docker használatával felépítheti, címkézheti és leküldheti a minta alkalmazás-tárolóját az ACR-be:
 
 ```console
 docker build -t webfrontend:latest .
@@ -138,16 +138,16 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>A Helm-diagram létrehozása
 
-Hozza létre a `helm create` Helm diagramot a paranccsal.
+A Helm-diagramot a `helm create` parancs használatával hozhatja ki.
 
 ```console
 helm create webfrontend
 ```
 
-Végezze el a következő frissítéseket *a webfrontend/values.yaml webhelyen:*
+Végezze el a következő frissítéseket a *webfrontend/Values. YAML*:
 
-* Váltás `image.repository` a következőre:`<acrLoginServer>/webfrontend`
-* Váltás `service.type` a következőre:`LoadBalancer`
+* Módosítás `image.repository` ide`<acrLoginServer>/webfrontend`
+* Módosítás `service.type` ide`LoadBalancer`
 
 Például:
 
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-Frissítés `appVersion` `v1` a *webfrontend/Chart.yaml .* Példa:
+Frissítés `appVersion` a `v1` következőhöz: *webfrontend/chart. YAML*. Példa:
 
 ```yml
 apiVersion: v2
@@ -179,15 +179,15 @@ name: webfrontend
 appVersion: v1
 ```
 
-## <a name="run-your-helm-chart"></a>Futtassa a Helm chart
+## <a name="run-your-helm-chart"></a>A Helm-diagram futtatása
 
-A `helm create` parancs segítségével telepítse az alkalmazást a Helm diagram használatával.
+Az `helm install` parancs használatával telepítse az alkalmazást a Helm-diagram használatával.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-A szolgáltatás néhány percet vesz igénybe a nyilvános IP-cím visszaadása. A folyamat figyeléséhez `kubectl get service` használja a parancsot a *figyelési* paraméterrel:
+Néhány percet vesz igénybe, hogy a szolgáltatás egy nyilvános IP-címet ad vissza. A folyamat figyeléséhez használja az `kubectl get service` parancsot a *Watch* paraméterrel:
 
 ```console
 $ kubectl get service --watch
@@ -198,25 +198,25 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Keresse meg az alkalmazás terheléselosztóját a `<EXTERNAL-IP>` böngészőben a mintaalkalmazás megtekintéséhez.
+Nyissa meg az alkalmazás terheléselosztó eszközét egy böngészőben a `<EXTERNAL-IP>` használatával, és tekintse meg a minta alkalmazást.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Ha a fürtre már nincs szükség, az [az csoport törlési][az-group-delete] parancsával távolítsa el az erőforráscsoportot, az AKS-fürtöt, a tároló beállításjegyzékét, az ott tárolt tárolólemezképeket és az összes kapcsolódó erőforrást.
+Ha a fürtre már nincs szükség, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot, az AK-fürtöt, a tároló-beállításjegyzéket, az ott tárolt tároló-lemezképeket és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform kezeli, és nem igényel eltávolítást.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
 ## <a name="next-steps"></a>További lépések
 
 A Helm használatával kapcsolatos további információkért tekintse meg a Helm dokumentációját.
 
 > [!div class="nextstepaction"]
-> [Helm dokumentáció][helm-documentation]
+> [A Helm dokumentációja][helm-documentation]
 
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create

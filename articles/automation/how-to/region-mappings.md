@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114479"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165773"
 ---
 # <a name="workspace-mappings"></a>Munkaterület-leképezések
 
 Update Management, Change Tracking és leltár, illetve Start/Stop VMs during off-hours engedélyezésekor csak bizonyos régiók támogatottak egy Log Analytics munkaterület és egy Automation-fiók összekapcsolásához az előfizetésben. Ez a leképezés csak az Automation-fiókra és a Log Analytics munkaterületre vonatkozik. A Log Analytics munkaterület és az Automation-fióknak ugyanahhoz az előfizetéshez kell tartoznia, de az adott régióban üzembe helyezett különböző erőforráscsoportok is lehetnek.
 
-További információ: [log Analytics munkaterület és Automation-fiók](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account).
+További információ: [log Analytics munkaterület és Automation-fiók](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Támogatott leképezések
 

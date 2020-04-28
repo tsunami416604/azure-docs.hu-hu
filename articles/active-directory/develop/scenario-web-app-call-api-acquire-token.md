@@ -1,6 +1,6 @@
 ---
-title: Token beszereznie egy webes API-kat meghívjaó webalkalmazásban – Microsoft identity platform | Azure
-description: További információ a webes API-kat meghívjaó webalkalmazások jogkivonatának beszerzéséről
+title: Token beszerzése webes API-kat meghívó webalkalmazásban – Microsoft Identity platform | Azure
+description: Útmutató a webes API-kat meghívó webalkalmazások jogkivonatának beszerzéséhez
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,23 +11,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537100"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181732"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívjaó webalkalmazás: Jogkivonat beszerzése az alkalmazáshoz
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás: az alkalmazás jogkivonatának beszerzése
 
-Az ügyfélalkalmazás-objektumot felépítette. Most fogja használni, hogy szerezzen be egy jogkivonatot egy webes API-t. A ASP.NET vagy ASP.NET Core-ban a webes API-k hívása a vezérlőben történik:
+Létrehozott egy ügyfélalkalmazás-objektumot. Most ezt a lehetőséget fogja használni a webes API-t meghívó token beszerzéséhez. A ASP.NET vagy ASP.NET Core a webes API meghívása a vezérlőben történik:
 
-- A token cache segítségével a webes API-t kap egy token. A token beszerzéséhez hívja `AcquireTokenSilent` meg a metódust.
+- Szerezze be a webes API tokenjét a jogkivonat-gyorsítótár használatával. A jogkivonat beszerzéséhez hívja meg a MSAL `AcquireTokenSilent` metódust (vagy ennek megfelelőjét a Microsoft. Identity. Web-ben).
 - Hívja meg a védett API-t, és adja át a hozzáférési jogkivonatot paraméterként.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A vezérlőmetódusokat egy `[Authorize]` attribútum védi, amely a hitelesítést a webalkalmazás használatára kényszeríti a felhasználókat. A Microsoft Graph-ot az alábbiakszerint szólítja meg:
+A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. A Microsoft Graph meghívására szolgáló kód:
 
 ```csharp
 [Authorize]
@@ -45,16 +45,16 @@ public class HomeController : Controller
 }
 ```
 
-A `ITokenAcquisition` szolgáltatást a ASP.NET függőségi injektálással injektálják.
+A `ITokenAcquisition` szolgáltatást a ASP.net a függőségi befecskendezés használatával fecskendezi.
 
-Az egyszerűsített kódot a művelethez, `HomeController`amely kap egy jogkivonatot a Microsoft Graph hívásához:
+Itt látható a művelethez tartozó egyszerűsített kód `HomeController`, amely a Microsoft Graph meghívására szolgáló tokent kap:
 
 ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -63,28 +63,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Az ehhez a forgatókönyvhöz szükséges kód jobb[2-1-Web app Calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)megértéséhez tekintse meg az [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) oktatóanyag 2.
+A forgatókönyvhöz szükséges kód jobb megismeréséhez tekintse meg a 2. fázis ([2-1-Web App calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) lépést az [MS-Identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) oktatóanyagban.
 
-Vannak más összetett változatok, mint például:
+Más összetett változatok is léteznek, például:
 
-- Több API hívása.
-- Növekményes hozzájárulás és feltételes hozzáférés feldolgozása.
+- Több API meghívása.
+- Növekményes beleegyezett és feltételes hozzáférés feldolgozása.
 
-Ezeket a speciális lépéseket a [3-WebApp-multi-API-k](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) oktatóanyagának 3.
+Ezek a speciális lépések a [3 – WebApp-multi-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) -k oktatóanyag 3. fejezetében vannak lefoglalva.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET kódja hasonlít a core ASP.NET kódjához:
+A ASP.NET kódja hasonló a ASP.NET Corehoz megjelenített kódhoz:
 
-- Az [Authorize] attribútum által védett vezérlőművelet kinyeri a `ClaimsPrincipal` vezérlőtag bérlői azonosítóját és felhasználói azonosítóját. (ASP.NET `HttpContext.User`használja .)
-- Onnan épít egy MSAL.NET `IConfidentialClientApplication` objektumot.
-- Végül meghívja `AcquireTokenSilent` a bizalmas ügyfélalkalmazás metódusát.
+- Egy [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának BÉRLŐi azonosítóját és felhasználói azonosítóját. (A ASP.NET `HttpContext.User`használja.)
+- Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication` objektumot.
+- Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A Java mintában az API-t meghívó kód az [AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)metódusgetUsersFromGraph metódusában található.
+A Java-mintában az API-t meghívó kód a [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)getUsersFromGraph metódusában található.
 
-A metódus megpróbálja `getAuthResultBySilentFlow`meghívni a . Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza az `MsalInteractionRequiredException` objektumot, hogy kihívást jelentsen a felhasználó számára.
+A metódus hívására `getAuthResultBySilentFlow`tett kísérlet. Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza az `MsalInteractionRequiredException` objektumot, hogy megtámadja a felhasználót.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -144,9 +144,9 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Python-mintában a Microsoft Graph-ot megíró kód az [app.py#L53-L62-ben található.](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62)
+A Python-mintában a Microsoft Graph meghívására szolgáló kód az [app. a # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-A kód megkísérli a jogkivonat ot a jogkivonat-gyorsítótárból leadni. Ezután az engedélyezési fejléc beállítása után meghívja a webes API-t. Ha nem tud token, akkor újra bejelentkezik a felhasználó.
+A kód kísérletet tesz a jogkivonat-gyorsítótárból való lekérésére. Ezután az engedélyezési fejléc beállítása után meghívja a webes API-t. Ha nem tud jogkivonatot beolvasni, a rendszer ismét aláírja a felhasználót.
 
 ```python
 @app.route("/graphcall")
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

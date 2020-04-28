@@ -1,7 +1,7 @@
 ---
-title: Egyoldalas alkalmazásoktatóanyag – Azure
+title: Egyoldalas alkalmazás-oktatóanyag – Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hívhatnak meg az Angular SPA-alkalmazások egy olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft identity platform végpontjáról.
+description: Ismerje meg, hogy a szögletes SPA-alkalmazások hogyan hívhatnak meg olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platform végpontján.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,63 +12,56 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c3c12f78118734c31641b90e6fcb8469ddda30b0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678010"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181596"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy egyoldalas alkalmazásból
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás egyes aspektusai az általános elérhetőség (GA) előtt változhatnak.
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
-Ez az oktatóanyag bemutatja, hogy egy egyoldalas alkalmazás (SPA) hogyan teheti ki:
-- Jelentkezzen be személyes fiókokba, munkahelyi fiókokba vagy iskolai fiókokba.
-- Szerezzen be egy hozzáférési jogkivonatot.
-- Hívja meg a Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft identity platform végpontjáról.*
+Ez az oktatóanyag azt mutatja be, hogyan használható a szögletes egyoldalas alkalmazás (SPA):
+- Jelentkezzen be személyes fiókjaiba, munkahelyi fiókjaiba vagy iskolai fiókjaiba.
+- Hozzáférési jogkivonat beszerzése.
+- Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*.
 
 >[!NOTE]
->Ez az oktatóanyag bemutatja, hogyan hozhat létre új Angular SPA-t a Microsoft authentication library (MSAL) használatával. Ha mintaalkalmazást szeretne letölteni, olvassa el a [rövid útmutatót.](quickstart-v2-angular.md)
+>Ez az oktatóanyag bemutatja, hogyan hozhat létre új szögletes SPA-t a Microsoft Authentication Library (MSAL) használatával. Ha egy minta alkalmazást szeretne letölteni, tekintse [meg a rövid](quickstart-v2-angular.md)útmutatót.
 
-## <a name="how-the-sample-app-works"></a>A mintaalkalmazás működése
+## <a name="how-the-sample-app-works"></a>A minta alkalmazás működése
 
-![Az oktatóanyagban létrehozott mintaalkalmazás működését bemutató diagram](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Diagram, amely bemutatja, hogyan működik az oktatóanyagban létrehozott minta alkalmazás](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Az oktatóanyagban létrehozott mintaalkalmazás lehetővé teszi, hogy egy Angular SPA lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a Microsoft identity platform végponttokenjeit. Az MSAL az Angular könyvtár egy wrapper a mag MSAL.js könyvtár. Lehetővé teszi, hogy az Angular (6+) alkalmazások hitelesítsék a vállalati felhasználókat a Microsoft Azure Active Directory, a Microsoft-fiók felhasználói és a közösségi identitás felhasználói (például a Facebook, a Google és a LinkedIn) használatával. A tár lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft felhőszolgáltatásaihoz vagy a Microsoft Graphhoz.
+Az ebben az oktatóanyagban létrehozott minta alkalmazás lehetővé teszi, hogy egy szögletes fürdő lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely a Microsoft Identity platform végpontjának jogkivonatait fogadja el. A szögletes kódtár MSAL az alapszintű MSAL. js függvénytár burkolója. Lehetővé teszi a szögletes (6 +) alkalmazások számára a vállalati felhasználók hitelesítését Microsoft Azure Active Directory, Microsoft-fiók felhasználók és a közösségi identitást használó felhasználók (például a Facebook, a Google és a LinkedIn) használatával. A kódtár azt is lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft Cloud Serviceshez vagy Microsoft Graphhoz.
 
-Ebben a forgatókönyvben, miután egy felhasználó bejelentkezik, egy hozzáférési jogkivonatot kér, és hozzáadja a HTTP-kérelmek az engedélyezési fejlécen keresztül. A tokenek beszerzését és megújítását az MSAL kezeli.
+Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. A token beszerzését és megújítását a MSAL kezeli.
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>Kódtárak
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-|Erőforrástár|Leírás|
+|Kódtár|Leírás|
 |---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Hitelesítési könyvtár JavaScript-háromszögburkolóhoz|
+|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
-Az MSAL.js tár forráskódját a GitHub [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) tártárában találja.
-
-<!--end-collapse-->
-
+A MSAL. js függvénytár forráskódját a GitHubon található [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattárban találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag futtatásához a következőkre van szükség:
+Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
-* Egy helyi webkiszolgáló, például [a Node.js](https://nodejs.org/en/download/). Az oktatóanyag utasításai a Node.js-en alapulnak.
-* A projektfájlok szerkesztéséhez integrált fejlesztői környezet (IDE), például [Visual Studio-kód.](https://code.visualstudio.com/download)
+* Egy helyi webkiszolgálót, például a [Node. js](https://nodejs.org/en/download/)-t. Az oktatóanyag utasításai a Node. js-re épülnek.
+* Integrált fejlesztési környezet (IDE), például a [Visual Studio Code](https://code.visualstudio.com/download)a projektfájlok szerkesztéséhez.
 
 ## <a name="create-your-project"></a>A projekt létrehozása
 
-Hozzon létre egy új Szögletes alkalmazást a következő npm parancsokkal:
+Új szögletes alkalmazás létrehozása a következő NPM parancsok használatával:
 
 ```Bash
 npm install -g @angular/cli@8                    # Install the Angular CLI
@@ -80,15 +73,15 @@ ng generate component page-name                  # To add a new page (such as a 
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-Kövesse az [utasításokat egy egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) az Azure Portalon.
+Kövesse az [utasításokat egy egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) a Azure Portal.
 
-A regisztráció **alkalmazásáttekintése** lapján jegyezze fel az **alkalmazás (ügyfél) azonosító** értékét későbbi használatra.
+A regisztráció alkalmazás **áttekintése** oldalán jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 
-Regisztrálja az **átirányítási URI-értéket,** **http://localhost:4200/** és engedélyezze az implicit támogatási beállításokat.
+Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/** és engedélyezze az implicit engedélyezési beállításokat.
 
 ## <a name="configure-the-application"></a>Az alkalmazás konfigurálása
 
-1. Az *src/app* mappában edit *app.module.ts* és add, `MSALModule` `imports` valamint az `isIE` állandó:
+1. A *src/app* mappában szerkessze az *app. Module. TS* fájlt, `MSALModule` és `imports` adja hozzá a `isIE` következőt:
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -132,28 +125,28 @@ Regisztrálja az **átirányítási URI-értéket,** **http://localhost:4200/** 
 
     |Érték neve|Névjegy|
     |---------|---------|
-    |Enter_the_Application_Id_Here|Az **alkalmazásregisztráció Áttekintés lapján** ez az **Alkalmazás (ügyfél) azonosító** értéke. |
-    |Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy globális Azure-felhőbe írja be a ( fő vagy globális Azure-felhő) mezőbe. **https://login.microsoftonline.com** A nemzeti felhők (például Kína), lásd: [Nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
-    |Enter_the_Tenant_Info_Here| Állítsa be a következő beállítások egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat,* cserélje le ezt az értéket a címtár (bérlői) azonosító vagy a bérlő nevére (például **contoso.microsoft.com).** Ha az alkalmazás *bármely szervezeti címtárban támogatja a fiókokat,* cserélje le ezt az értéket **szervezetekre.** Ha az alkalmazás támogatja *a szervezeti címtárban és a személyes Microsoft-fiókokban lévő fiókokat,* cserélje le ezt az értéket a **közös értékre.** Ha csak *a személyes Microsoft-fiókokra*szeretné korlátozni a támogatást, cserélje le ezt az értéket **a fogyasztókra**. |
-    |Enter_the_Redirect_Uri_Here|Csere **http://localhost:4200**a következőre:|
+    |Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
+    |Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz **https://login.microsoftonline.com**írja be a következőt:. Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+    |Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
+    |Enter_the_Redirect_Uri_Here|Cserélje le **http://localhost:4200**a-t.|
 
-    Az elérhető konfigurálható beállításokról az [Ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md)című témakörben talál további információt.
+    További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 
-2. Ugyanannak a fájlnak a tetején adja hozzá a következő importálási utasítást:
+2. A fájl elején adja hozzá a következő importálási utasítást:
 
     ```javascript
     import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
     ```
 
-3. Adja hozzá a következő importálási `src/app/app.component.ts`nyilatkozatokat a következő szövegéhez:
+3. Adja hozzá a következő importálási utasításokat a felső `src/app/app.component.ts`részhez:
 
     ```javascript
     import { MsalService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
-## <a name="sign-in-a-user"></a>Felhasználó bejelentkezése
+## <a name="sign-in-a-user"></a>Bejelentkezés felhasználóként
 
-Adja hozzá a `AppComponent` következő kódot a felhasználó bejelentkezéséhez:
+Adja hozzá a következő kódot `AppComponent` a felhasználóhoz való bejelentkezéshez:
 
 ```javascript
 export class AppComponent implements OnInit {
@@ -176,15 +169,15 @@ export class AppComponent implements OnInit {
 ```
 
 > [!TIP]
-> Javasoljuk, `loginRedirect` hogy az Internet Explorer felhasználói számára használja.
+> Javasoljuk, hogy `loginRedirect` az Internet Explorer felhasználóit használja.
 
 ## <a name="acquire-a-token"></a>Jogkivonat beszerzése
 
-### <a name="angular-interceptor"></a>Szögelfogó
+### <a name="angular-interceptor"></a>Szögletes Interceptor
 
-Az MSAL Angular egy olyan osztályt `Interceptor` biztosít, amely automatikusan `http` beszerzi a jogkivonatokat az olyan kimenő kérelmekhez, amelyek az Angular ügyfelet használják az ismert védett erőforrásokhoz.
+A MSAL olyan `Interceptor` osztályt biztosít, amely automatikusan lekéri azokat a kimenő kérelmeket, amelyek `http` a szögletes ügyfelet használják az ismert védett erőforrásokra.
 
-Először is, adja meg az `Interceptor` osztályt, mint az alkalmazás szolgáltatóját:
+Először is adja meg `Interceptor` az osztályt szolgáltatóként az alkalmazáshoz:
 
 ```javascript
 import { MsalInterceptor, MsalModule } from "@azure/msal-angular";
@@ -202,7 +195,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Ezután adja meg a védett `MsalModule.forRoot()` `protectedResourceMap` erőforrások térképét, `consentScopes`és tartalmazza ezeket a hatóköröket a következőben:
+Ezután adja meg a védett erőforrások leképezését a `MsalModule.forRoot()` következőre, `protectedResourceMap` és adja hozzá `consentScopes`a hatókört a következőhöz:
 
 ```javascript
 @NgModule({
@@ -237,7 +230,7 @@ Ezután adja meg a védett `MsalModule.forRoot()` `protectedResourceMap` erőfor
 });
 ```
 
-Végül kérje le egy felhasználó profilját HTTP-kérelemmel:
+Végül egy HTTP-kérelemmel rendelkező felhasználó profiljának beolvasása:
 
 ```JavaScript
 const graphMeEndpoint = "https://graph.microsoft.com/v1.0/me";
@@ -251,11 +244,11 @@ getProfile() {
 ```
 
 ### <a name="acquiretokensilent-acquiretokenpopup-acquiretokenredirect"></a>acquireTokenSilent, acquireTokenPopup, acquireTokenRedirect
-Az MSAL három módszert használ `acquireTokenRedirect` `acquireTokenPopup`a `acquireTokenSilent`tokenek beszerzésére: , , és . Azonban azt javasoljuk, `MsalInterceptor` hogy az osztály helyett az Angular alkalmazások, az előző szakaszban látható módon.
+A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect`, `acquireTokenPopup`és `acquireTokenSilent`. Azt javasoljuk azonban, hogy a `MsalInterceptor` szögletes alkalmazások helyett az osztályt használja, ahogy az az előző szakaszban is látható.
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `acquireTokenSilent` módszer kezeli a tokenek beszerzése és megújítása felhasználói beavatkozás nélkül. Miután `loginRedirect` `loginPopup` a vagy metódus végrehajtása `acquireTokenSilent` az első alkalommal, gyakran használják a jogkivonatok eléréséhez használt védett erőforrások későbbi hívásokban. A tokenek kérelmezésére vagy megújítására irányuló hívások csendesen történik.
+A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginRedirect` vagy `loginPopup` a metódus első `acquireTokenSilent` futtatása után általában a védett erőforrások a későbbi hívásokban való eléréséhez használt jogkivonatok beszerzésére szolgál. A jogkivonatok kérése vagy megújítása csendesen történik.
 
 ```javascript
 const requestObj = {
@@ -270,24 +263,24 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-Ebben a `scopes` kódban tartalmazza a rendszerkérést az API hozzáférési jogkivonatában visszaadandó hatóköröket.
+Ebben a kódban az `scopes` API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz.
 
 Például:
 
-* `["user.read"]`Microsoft Graph-hoz
-* `["<Application ID URL>/scope"]`egyéni webes API-khoz `api://<Application ID>/access_as_user`(azaz)
+* `["user.read"]`Microsoft Graph
+* `["<Application ID URL>/scope"]`egyéni webes API- `api://<Application ID>/access_as_user`khoz (azaz)
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Néha szükség van a felhasználónak, hogy a Microsoft identity platform végpont. Például:
+Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal kell kommunikálnia. Például:
 
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
-* Az alkalmazás további erőforrás-hatókörökhöz való hozzáférést kér, amelyekhez a felhasználónak hozzá kell járulnia.
+* Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.
 
-Az ajánlott minta a `acquireTokenSilent` legtöbb alkalmazás számára az, hogy `acquireTokenPopup` először hívja, majd elkapni a kivételt, majd hívja meg (vagy `acquireTokenRedirect`) egy interaktív kérelem indításához.
+A legtöbb alkalmazás javasolt mintája először hívja `acquireTokenSilent` meg a-t, majd a kivételt, majd `acquireTokenPopup` a hívást `acquireTokenRedirect`(vagy) egy interaktív kérelem elindításához.
 
-A `acquireTokenPopup` hívás eredménye előugró bejelentkezési ablak. Másik lehetőségként `acquireTokenRedirect` átirányítja a felhasználókat a Microsoft identity platform végpontjára. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrás beleegyezését, vagy el kell végezniük a kétlépéses hitelesítést.
+Az `acquireTokenPopup` eredmények meghívása egy előugró bejelentkezési ablakban. Azt is `acquireTokenRedirect` megteheti, hogy átirányítja a felhasználókat a Microsoft Identity platform-végpontra. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrást, vagy el kell végezniük a kétfaktoros hitelesítést.
 
 ```javascript
   const requestObj = {
@@ -303,11 +296,11 @@ A `acquireTokenPopup` hívás eredménye előugró bejelentkezési ablak. Másik
 ```
 
 > [!NOTE]
-> Ez a rövid `loginRedirect` `acquireTokenRedirect` útmutató a Microsoft Internet Explorer programot használja, mert [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) van az előugró ablakok Internet Explorer általi kezelésével kapcsolatban.
+> Ez a rövid útmutató `loginRedirect` a `acquireTokenRedirect` és a metódusokat a Microsoft Internet Explorer használatával használja az előugró ablakok Internet Explorer általi kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
 ## <a name="log-out"></a>Kijelentkezés
 
-Adja hozzá a következő kódot a felhasználó kijelentkeztetéséhez:
+Adja hozzá a következő kódot a felhasználó kijelentkezéséhez:
 
 ```javascript
 logout() {
@@ -316,46 +309,41 @@ logout() {
 ```
 
 ## <a name="add-ui"></a>Felhasználói felület hozzáadása
-A felhasználói felület hozzáadásának például a Szögletes anyag összetevőtár használatával a [mintaalkalmazás ban](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular)található.
+A következő témakörben talál példát arra, hogyan adhat hozzá felhasználói felületet a szögletes anyagminta-függvénytár használatával: [minta alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular).
 
 ## <a name="test-your-code"></a>A kód tesztelése
 
-1.  Indítsa el a webkiszolgálót a port meghallgatásához úgy, hogy az alkalmazásmappából parancssori parancssori parancssorban futtatja a következő parancsokat:
+1.  Indítsa el a webkiszolgálót a port figyeléséhez a következő parancsok parancssori parancssorból történő futtatásával az alkalmazás mappájából:
 
     ```bash
     npm install
     npm start
     ```
-1. A böngészőben **http://localhost:4200** adja **http://localhost:{port}** meg vagy a , ahol a *port* az a port, amelyet a webkiszolgáló figyel.
+1. A böngészőben adja meg a **http://localhost:4200** vagy **http://localhost:{port}** a (z) értéket, ahol a *port* a webkiszolgáló által figyelt port.
 
 
-### <a name="provide-consent-for-application-access"></a>Hozzájárulás hozzájárulása az alkalmazáshoz való hozzáféréshez
+### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
 
-Amikor először kezd bejelentkezni az alkalmazásba, a rendszer kéri, hogy adjon hozzáférést a profiljához, és engedélyezze a bejelentkezést:
+Amikor először kezdi bejelentkezni az alkalmazásba, a rendszer felszólítja, hogy adjon hozzáférést a profilhoz, és engedélyezze, hogy bejelentkezzen:
 
-![A "Kért engedélyek" ablak](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+![A "kért engedélyek" ablak](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
+## <a name="add-scopes-and-delegated-permissions"></a>Hatókörök és delegált engedélyek hozzáadása
 
+A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelkeznie a felhasználói profil olvasásához. Alapértelmezés szerint a rendszer automatikusan hozzáadja ezt a hatókört a regisztrációs portálon regisztrált összes alkalmazáshoz. A Microsoft Graph egyéb API-jai, valamint a háttér-kiszolgálóhoz tartozó egyéni API-k további hatóköröket is igényelhetnek. A Microsoft Graph API-nak például a *naptárak. Read* hatókört kell megadnia a felhasználók naptárának listázásához.
 
-<!--start-collapse-->
-### <a name="add-scopes-and-delegated-permissions"></a>Hatókörök és delegált engedélyek hozzáadása
-
-A Microsoft Graph API-nak a *user.read* hatókörre van szüksége a felhasználói profil olvasásához. Alapértelmezés szerint ez a hatókör automatikusan hozzáadódik a regisztrációs portálon regisztrált minden alkalmazáshoz. A Microsoft Graph egyéb API-k, valamint a háttérkiszolgáló egyéni API-jai további hatóköröket igényelhetnek. A Microsoft Graph API-nak például a *Naptárak.Read* hatókörre van szükség a felhasználó naptárai listázásához.
-
-Ha egy alkalmazás környezetében szeretné elérni a felhasználó naptárait, adja hozzá a *Calendars.Read* delegált engedélyt az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *Calendars.Read* hatókört a `acquireTokenSilent` híváshoz.
+Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a *naptárakat. olvassa el* a delegált jogosultságokat az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *naptárak. Read* hatókört a `acquireTokenSilent` híváshoz.
 
 >[!NOTE]
->A rendszer további jóváhagyásokat kérhet a felhasználótól, ahogy növeli a hatókörök számát.
+>A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználótól.
 
-Ha egy háttér-API nem igényel hatókört (nem ajánlott), *használhatja az ügyfélazonosító* t, mint a jogkivonatok beszerzéséhez a hívások hatóköre.
-
-<!--end-collapse-->
+Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *clientId* használhatja a jogkivonatok beszerzésére irányuló hívások hatókörét.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután megtudhatja, hogyan jelentkeztetheti be a felhasználót, és hogyan szerezhet tokeneket az Angular oktatóanyagban:
+Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 
 > [!div class="nextstepaction"]
-> [Szögletes bemutató](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+> [Szögletes oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)

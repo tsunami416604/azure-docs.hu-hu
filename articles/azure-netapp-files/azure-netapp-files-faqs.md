@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések az Azure NetApp-fájlokról | Microsoft dokumentumok
-description: Gyakori kérdések megválaszolása az Azure NetApp-fájlokkal kapcsolatban.
+title: Gyakori kérdések a Azure NetApp Filesról | Microsoft Docs
+description: Válaszok a Azure NetApp Filesekkel kapcsolatos gyakori kérdésekre.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,138 +12,142 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aebc669a90511e48ddd2a7876553948c04b97710
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667815"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185642"
 ---
-# <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések az Azure NetApp-fájlokról
+# <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
-Ez a cikk választ ad az Azure NetApp-fájlokkal kapcsolatos gyakori kérdésekre(GYIK). 
+Ez a cikk a Azure NetApp Filesokkal kapcsolatos gyakori kérdéseket (GYIK) válaszol. 
 
-## <a name="networking-faqs"></a>Gyakori kérdések a hálózatkezelésről
+## <a name="networking-faqs"></a>Hálózatkezelés – gyakori kérdések
 
-### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Az NFS-adatelérési út az interneten keresztül vezet?  
+### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Az NFS-adatelérési út az interneten keresztül megy?  
 
-Nem. Az NFS-adatelérési út nem megy át az interneten. Az Azure NetApp Files egy Azure natív szolgáltatás, amely az Azure virtuális hálózatba (VNet) van telepítve, ahol a szolgáltatás elérhető. Az Azure NetApp Files egy delegált alhálózatot használ, és közvetlenül a virtuális hálózaton egy hálózati adaptert tartalmaz. 
+Nem. Az NFS-adatelérési út nem az interneten keresztül halad. A Azure NetApp Files egy Azure-beli natív szolgáltatás, amely az Azure Virtual Network (VNet) szolgáltatásba kerül üzembe, ahol a szolgáltatás elérhető. A Azure NetApp Files delegált alhálózatot használ, és közvetlenül a VNet helyez üzembe egy hálózati adaptert. 
 
-A [részleteket az Azure NetApp Files hálózati tervezésirányelvei](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) című témakörben találja.  
+A részletekért tekintse [meg a Azure NetApp Files hálózati tervezésével kapcsolatos útmutatót](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
-### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Csatlakoztathatok egy már létrehozott virtuális hálózatot az Azure NetApp Files szolgáltatáshoz?
+### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Kapcsolódhat egy már létrehozott VNet a Azure NetApp Files szolgáltatáshoz?
 
-Igen, csatlakoztathatja a létrehozott virtuális hálózatokat a szolgáltatáshoz. 
+Igen, összekapcsolhatók a szolgáltatáshoz létrehozott virtuális hálózatok. 
 
-A [részleteket az Azure NetApp Files hálózati tervezésirányelvei](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) című témakörben találja.  
+A részletekért tekintse [meg a Azure NetApp Files hálózati tervezésével kapcsolatos útmutatót](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
-### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Csatlakoztathatok egy NFS-kötetet az Azure NetApp-fájlokból a DNS FQDN-név használatával?
+### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Csatlakoztatható Azure NetApp Files NFS-kötet a DNS FQDN-név használatával?
 
-Igen, ha létrehozza a szükséges DNS-bejegyzéseket. Az Azure NetApp Files biztosítja a szolgáltatás IP a kiosztott kötet. 
+Igen, ha létrehozza a szükséges DNS-bejegyzéseket. Azure NetApp Files megadja a kiépített kötet szolgáltatási IP-címét. 
 
 > [!NOTE] 
-> Az Azure NetApp-fájlok szükség szerint további IP-ket telepíthetnek a szolgáltatáshoz.  Előfordulhat, hogy a DNS-bejegyzéseket rendszeresen frissíteni kell.
+> A Azure NetApp Files szükség szerint telepíthet további IP-címeket a szolgáltatáshoz.  Előfordulhat, hogy a DNS-bejegyzéseket rendszeresen frissíteni kell.
 
-## <a name="security-faqs"></a>Biztonsági gyakori kérdések
+### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Megadhatom vagy kiválaszthatom a saját IP-címüket egy Azure NetApp Files kötethez?  
 
-### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Az Azure virtuális gép és a tárterület közötti hálózati forgalom titkosítható?
+Nem. A Azure NetApp Files kötetek IP-hozzárendelése dinamikus. A statikus IP-hozzárendelés nem támogatott. 
+ 
+## <a name="security-faqs"></a>Biztonsági GYIK
 
-Adatforgalom (az NFSv3, NFSv4.1 vagy SMBv3 kliens ről az Azure NetApp Files kötetekre irányuló forgalma) nincs titkosítva. Azonban az Azure-beli virtuális gép (NFS- vagy SMB-ügyfelet futtató) és az Azure NetApp-fájlok közötti forgalom ugyanolyan biztonságos, mint bármely más Azure-VM-vm-vm-forgalom. Ez a forgalom helyi az Azure adatközpont-hálózat. 
+### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Titkosítható az Azure-beli virtuális gép és a tároló közötti hálózati forgalom?
 
-### <a name="can-the-storage-be-encrypted-at-rest"></a>Lehet a tároló tinikben titkosítva?
+Az adatforgalom (a NFSv3, a NFSv 4.1 vagy a SMBv3-Azure NetApp Files ügyfél közötti forgalom nincs titkosítva). Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
 
-Az összes Azure NetApp-fájlkötet a FIPS 140-2 szabvány használatával van titkosítva. Az összes kulcsot az Azure NetApp Files szolgáltatás kezeli. 
+### <a name="can-the-storage-be-encrypted-at-rest"></a>Titkosítható a tároló a nyugalmi állapotban?
+
+Az összes Azure NetApp Files kötet titkosítása az FIPS 140-2 szabvány használatával történik. Az összes kulcsot a Azure NetApp Files szolgáltatás kezeli. 
 
 ### <a name="how-are-encryption-keys-managed"></a>Hogyan történik a titkosítási kulcsok kezelése? 
 
-Az Azure NetApp-fájlok kulcskezelését a szolgáltatás kezeli. Minden kötethez egyedi XTS-AES-256 adattitkosítási kulcs jön létre. A titkosítási kulcshierarchia az összes kötetkulcs titkosítására és védelmére szolgál. Ezek a titkosítási kulcsok soha nem jelennek meg vagy nem titkosított formátumban jelennek meg. A titkosítási kulcsok azonnal törlődnek a kötet törlésekor.
+Azure NetApp Files felügyeletét a szolgáltatás kezeli. Minden kötethez létrejön egy egyedi XTS-AES-256 adattitkosítási kulcs. A titkosítási kulcs hierarchiája az összes kötet kulcsának titkosítására és védelemmel való ellátására szolgál. Ezeket a titkosítási kulcsokat a rendszer soha nem titkosítatlan formában jeleníti meg vagy jelenti. A rendszer azonnal törli a titkosítási kulcsokat a kötetek törlésekor.
 
-A felhasználó által felügyelt kulcsok (Hozd a saját kulcsok) az Azure dedikált HSM érhető el ellenőrzött alapon az USA keleti, USA West2 és az USA déli középső régióiban.  A hozzáférést a. **anffeedback@microsoft.com** A kapacitás rendelkezésre áll, a kérelmek et jóvá kell hagyni.
+A felhasználó által felügyelt kulcsok támogatása (saját kulcsok használata) az Azure dedikált HSM az USA keleti, USA-beli West2 és USA déli középső régiójában szabályozott módon érhető el.  A következő címen kérhet hozzáférést **anffeedback@microsoft.com**:. A kapacitás elérhetősége esetén a rendszer jóváhagyja a kérelmeket.
 
-### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Konfigurálhatom az NFS exportálási szabályzatszabályait az Azure NetApp Files szolgáltatáscsatlakoztatási célhoz való hozzáférés szabályozására?
+### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Megadhatom az NFS-exportálási házirend szabályait a Azure NetApp Files Service Mount-célhoz való hozzáférés szabályozásához?
 
 
-Igen, legfeljebb öt szabályt konfigurálhat egyetlen NFS-exportálási házirendben.
+Igen, legfeljebb öt szabályt állíthat be egyetlen NFS-exportálási házirendben.
 
-### <a name="does-azure-netapp-files-support-network-security-groups"></a>Támogatja az Azure NetApp-fájlok a hálózati biztonsági csoportokat?
+### <a name="does-azure-netapp-files-support-network-security-groups"></a>Támogatja a Azure NetApp Files a hálózati biztonsági csoportokat?
 
-Nem, jelenleg nem alkalmazhat hálózati biztonsági csoportokat az Azure NetApp-fájlok delegált alhálózatára vagy a szolgáltatás által létrehozott hálózati felületekre.
+Nem, jelenleg nem alkalmazhat hálózati biztonsági csoportokat a Azure NetApp Files meghatalmazott alhálózatára vagy a szolgáltatás által létrehozott hálózati adapterekre.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Használhatom az Azure IAM-et az Azure NetApp-fájlokkal?
+### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Használhatom az Azure IAM-t a Azure NetApp Files?
 
-Igen, az Azure NetApp Files támogatja az RBAC-funkciókat az Azure IAM szolgáltatással.
+Igen, Azure NetApp Files támogatja az Azure IAM RBAC funkcióit.
 
 ## <a name="performance-faqs"></a>Teljesítmény – gyakori kérdések
 
-### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Mit kell tennem az Azure NetApp Files teljesítményének optimalizálása vagy finomhangolása érdekében?
+### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Mit kell tennem a Azure NetApp Files teljesítményének optimalizálásához vagy finomhangolásához?
 
-A teljesítménykövetelmények szerint a következő műveleteket teheti meg: 
-- Győződjön meg arról, hogy a virtuális gép megfelelő méretezése.
-- A virtuális gép gyorsított hálózatba írásának engedélyezése.
-- Válassza ki a kívánt szolgáltatási szintet és méretet a kapacitáskészlethez.
-- Hozzon létre egy kötetet a kapacitás és a teljesítmény kívánt kvótamérettel.
+A teljesítményre vonatkozó követelmények alapján a következő műveleteket hajthatja végre: 
+- Győződjön meg arról, hogy a virtuális gép mérete megfelelő.
+- A virtuális gép gyorsított hálózatkezelésének engedélyezése.
+- Válassza ki a kapacitási készlet kívánt szolgáltatási szintjét és méretét.
+- Hozzon létre egy kötetet a kapacitás és a teljesítmény kívánt kvótájának méretével.
 
-### <a name="how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops"></a>Hogyan konvertálhatom az Azure NetApp-fájlok átviteli sebességű szolgáltatási szintjeit IOPS-ra?
+### <a name="how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops"></a>Azure NetApp Files a Hogyan az átviteli sebesség-alapú szolgáltatási szinteket IOPS?
 
-Az MB/s-t IOPS-ra konvertálhatja a következő képlet telje:  
+A MB/s IOPS a következő képlet használatával alakíthatja át:  
 
 `IOPS = (MBps Throughput / KB per IO) * 1024`
 
-### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Hogyan módosíthatom egy kötet szolgáltatási szintjét?
+### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Hogyan módosítja egy kötet szolgáltatási szintjét?
 
-A kötet szolgáltatásszintjének módosítása jelenleg nem támogatott.
+A kötetek szolgáltatási szintjének módosítása jelenleg nem támogatott.
 
-### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Hogyan figyelhetem az Azure NetApp Files teljesítményét?
+### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Hogyan monitor Azure NetApp Files teljesítmény?
 
-Az Azure NetApp Files mennyiségi teljesítménymutatókat biztosít. Az Azure Monitor használatával is figyelheti az Azure NetApp-fájlok használati metrikákat.  Az Azure NetApp-fájlok teljesítménymutatóinak listáját az [Azure NetApp-fájlok metrikák](azure-netapp-files-metrics.md) című témakörében olvassa el.
+A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. Azure Monitor a Azure NetApp Files használati metrikáinak figyelésére is használható.  A Azure NetApp Files teljesítmény-metrikáinak listáját a [Azure NetApp Files mérőszámai](azure-netapp-files-metrics.md) részben tekintheti meg.
 
 ## <a name="nfs-faqs"></a>NFS – gyakori kérdések
 
-### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Azt szeretném, hogy egy kötet automatikusan csatlakoztatva, amikor egy Azure virtuális gép indításakor vagy újraindítása.  Hogyan konfigurálhatom a gazdagépemet az állandó NFS-kötetekhez?
+### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Az Azure-beli virtuális gépek indításakor vagy újraindításakor egy kötetet szeretnék automatikusan csatlakoztatni.  Hogyan konfigurálja a gazdagépet az állandó NFS-kötetek számára?
 
-Ha egy NFS-kötet automatikusan csatlakoztatja a virtuális gép `/etc/fstab` indításakor vagy újraindításkor, adjon hozzá egy bejegyzést a fájlhoz az állomáson. 
+Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor `/etc/fstab` , adjon hozzá egy bejegyzést a gazdagépen lévő fájlhoz. 
 
-A részleteket [a Kötet csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez.](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)  
+A részletekért lásd: [kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
-### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Miért nem jeleníti meg a DF parancs az NFS-ügyfélen a kiosztott kötet méretét?
+### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Miért nem jelenik meg az NFS-ügyfél DF-parancsa a kiosztott kötet méretének?
 
-A DF-ben jelentett kötetmérete az Azure NetApp Files kötet maximális mérete. Az Azure NetApp Files kötet mérete a DF parancsban nem tükrözi a kötet kvótáját vagy méretét.  Az Azure NetApp Files kötetméretét vagy kvótáját az Azure Portalon vagy az API-n keresztül szerezheti be.
+A DF által jelentett kötet mérete a maximális méret, amelyet a Azure NetApp Files kötet képes növelni. A Azure NetApp Files kötet mérete a DF parancsban nem tükrözi a kötet kvótáját vagy méretét.  A Azure NetApp Files kötet méretét vagy kvótáját a Azure Portal vagy az API használatával szerezheti be.
 
-### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Milyen NFS-verziót támogat az Azure NetApp Files?
+### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Milyen NFS-verziót támogat Azure NetApp Files?
 
-Azure NetApp Files supports NFSv3 and NFSv4.1. Kötetet az NFS-verzióval is [létrehozhat.](azure-netapp-files-create-volumes.md) 
+Azure NetApp Files támogatja a NFSv3 és a NFSv 4.1-es verziója. [A köteteket](azure-netapp-files-create-volumes.md) az NFS-verzióval is létrehozhatja. 
 
-### <a name="how-do-i-enable-root-squashing"></a>Hogyan engedélyezhetem a gyökérösszenyomódását?
+### <a name="how-do-i-enable-root-squashing"></a>Hogyan engedélyezi a gyökér leverését?
 
-A gyökérösszenyomódás jelenleg nem támogatott.
+A gyökérszintű leverés jelenleg nem támogatott.
 
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 
-### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Szükséges az Active Directory-kapcsolat az SMB-hozzáféréshez? 
+### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Az SMB-hozzáféréshez Active Directory kapcsolat szükséges? 
 
-Igen, az SMB-kötet telepítése előtt létre kell hoznia egy Active Directory-kapcsolatot. A megadott tartományvezérlőknek az Azure NetApp-fájlok delegált alhálózatának kell elérhetőnek lennie a sikeres kapcsolat érdekében.  A részleteket az [SMB-kötet létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) című témakörben találja. 
+Igen, az SMB-kötetek telepítése előtt létre kell hoznia Active Directory-kapcsolatokat. A sikeres kapcsolatok eléréséhez a megadott tartományvezérlőknek a Azure NetApp Files delegált alhálózatának kell elérhetőnek lennie.  További részleteket az [SMB-kötet létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) című témakörben talál. 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Hány Active Directory-kapcsolat támogatott?
 
-Az Azure NetApp Files nem támogatja a több Active Directory (AD) kapcsolatok egy *régióban,* még akkor is, ha az AD-kapcsolatok különböző NetApp-fiókok. Egy *előfizetésben*azonban több AD-kapcsolat is lehet, feltéve, hogy az AD-kapcsolatok különböző régiókban találhatók. Ha egy adott régióban több AD-kapcsolatra van szüksége, ehhez külön előfizetéseket is használhat. 
+A Azure NetApp Files nem támogatja több Active Directory (AD) kapcsolat használatát egyetlen *régióban*, még akkor is, ha az ad-kapcsolatok különböző NetApp-fiókokban vannak. Egyetlen *előfizetéshez*azonban több ad-kapcsolat is tartozhat, ha az ad-kapcsolatok különböző régiókban találhatók. Ha egyetlen régióban több AD-kapcsolatra van szüksége, külön előfizetéseket is használhat. 
 
-Az AD-kapcsolat NetApp-fiókonként van konfigurálva; az AD-kapcsolat csak azon a NetApp-fiókon keresztül látható, amelyben létrejött.
+Az AD-kapcsolatok egy NetApp-fiókkal vannak konfigurálva; az AD-kapcsolatok csak a ben létrehozott NetApp-fiókon keresztül láthatók.
 
-### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Támogatja az Azure NetApp-fájlok az Azure Active Directoryt? 
+### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files támogatja Azure Active Directory? 
 
-Az [Azure Active Directory (AD) tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/overview) és az Active Directory tartományi szolgáltatások [(AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) is támogatottak. Meglévő Active Directory-tartományvezérlőket használhat az Azure NetApp-fájlokkal. A tartományvezérlők az Azure-ban virtuális gépként, illetve ExpressRoute-on vagy S2S VPN-en keresztül is elláthatók az Azure-ban. Az Azure NetApp Files jelenleg nem támogatja az AD-csatlakozást az [Azure Active Directoryhoz.](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)
+A [Azure Active Directory (ad) tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/overview) és a [Active Directory tartományi szolgáltatások (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Ha Az Azure NetApp-fájlokat az Azure Active Directory tartományi `OU=AADDC Computers` szolgáltatásokkal használja, a szervezeti egység elérési útja az Active Directory konfigurálása a NetApp-fiókhoz.
+Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési `OU=AADDC Computers` útja az Active Directory beállítása a NetApp-fiókhoz.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>A Windows Server Active Directory mely verziói támogatottak?
 
-Az Azure NetApp Files támogatja az Active Directory tartományi szolgáltatások Windows Server 2008r2SP1-2019-es verzióit.
+Azure NetApp Files támogatja a Active Directory tartományi szolgáltatások Windows Server 2008r2SP1-2019-es verzióját.
 
-### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Miért nem jeleníti meg az SMB-ügyfélen rendelkezésre álló hely a kiosztott méretet?
+### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Miért nem jelenik meg a kiépített méret az SMB-ügyfélen elérhető szabad terület?
 
-Az SMB-ügyfél által jelentett kötetmérete az Azure NetApp Files kötet maximális mérete. Az Azure NetApp Files kötet mérete az SMB-ügyfélen látható módon nem tükrözi a kötet kvótáját vagy méretét. Az Azure NetApp Files kötetméretét vagy kvótáját az Azure Portalon vagy az API-n keresztül szerezheti be.
+Az SMB-ügyfél által jelentett kötet mérete az a maximális méret, ameddig a Azure NetApp Files kötet képes növekedni. Az SMB-ügyfélen látható Azure NetApp Files kötet mérete nem tükrözi a kötet kvótáját vagy méretét. A Azure NetApp Files kötet méretét vagy kvótáját a Azure Portal vagy az API használatával szerezheti be.
 
 <!--
 ### Does Azure NetApp Files support Kerberos encryption?
@@ -157,21 +161,21 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
-## <a name="capacity-management-faqs"></a>Kapacitáskezelési gyakori kérdések
+## <a name="capacity-management-faqs"></a>A kapacitások kezelésével kapcsolatos gyakori kérdések
 
-### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Hogyan figyelhetem a kapacitáskészlet és az Azure NetApp-fájlok mennyiségének használatát? 
+### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Hogyan figyelni a kapacitási készlet és a Azure NetApp Files mennyiségének használatát? 
 
-Az Azure NetApp Files kapacitáskészletet és kötethasználati metrikákat biztosít. Az Azure NetApp-fájlok használatának figyeléséhez az Azure Monitor használatával is figyelheti. A részletekért tekintse meg [az Azure NetApp-fájlok metrikákat.](azure-netapp-files-metrics.md) 
+A Azure NetApp Files kapacitási készletet és mennyiségi használati metrikákat biztosít. A Azure Monitor a Azure NetApp Files használatának figyelésére is használható. Részletekért tekintse [meg a Azure NetApp Files mérőszámait](azure-netapp-files-metrics.md) . 
 
-### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Kezelhetem az Azure NetApp-fájlokat az Azure Storage Explorer en keresztül?
+### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Kezelhetem Azure NetApp Files a Azure Storage Explorer használatával?
 
-Nem. Az Azure NetApp-fájlokat az Azure Storage Explorer nem támogatja.
+Nem. Azure Storage Explorer nem támogatja a Azure NetApp Files.
 
-### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Hogyan állapíthatom meg, hogy egy könyvtár megközelíti-e a korlát méretét?
+### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Hogyan megállapítja, hogy egy könyvtár eléri-e a korlát méretét?
 
-Az ügyfél `stat` parancsával megállapíthatja, hogy egy könyvtár megközelíti-e a maximális méretkorlátot (320 MB).
+A `stat` parancs használatával megtekintheti, hogy a címtár eléri-e a maximális méretkorlátot (320 MB).
 
-320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokkméret 512 bájt.  (Azaz, 320x1024x1024/512.)  
+320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  
 
 Példák:
 
@@ -187,48 +191,48 @@ Példák:
     File: 'tmp1'
     Size: 4096            Blocks: 8          IO Block: 65536  directory
 
-## <a name="data-migration-and-protection-faqs"></a>Adatmigrációról és -védelemről – gyakori kérdések
+## <a name="data-migration-and-protection-faqs"></a>Adatáttelepítés és-védelem – gyakori kérdések
 
-### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>Hogyan telepíthetek át adatokat az Azure NetApp-fájlokba?
-Az Azure NetApp Files NFS- és SMB-köteteket biztosít.  Az adatok nak a szolgáltatásba történő áttelepítéséhez bármilyen fájlalapú másolási eszközt használhat. 
+### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>Hogyan az adatáttelepítés Azure NetApp Filesre?
+A Azure NetApp Files NFS-és SMB-köteteket biztosít.  Bármilyen fájl alapú másolási eszköz használatával áttelepítheti az adatátvitelt a szolgáltatásba. 
 
-A NetApp SaaS-alapú megoldást kínál, [a NetApp Cloud Sync-et.](https://cloud.netapp.com/cloud-sync-service)  A megoldás lehetővé teszi, hogy NFS- vagy SMB-adatokat replikáljon az Azure NetApp Files NFS-exportálására vagy SMB-megosztásokra. 
+A NetApp SaaS-alapú megoldást kínál a [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service)szolgáltatással.  A megoldás lehetővé teszi az NFS-vagy SMB-alapú adatreplikálást Azure NetApp Files NFS-exportálás vagy SMB-megosztások számára. 
 
-Az adatok másolásához ingyenes eszközök széles skáláját is használhatja. NFS esetén számítási feladatok eszközeivel, például [az rsync-el](https://rsync.samba.org/examples.html) másolhatja és szinkronizálhatja a forrásadatokat egy Azure NetApp Files kötetbe. Az SMB-hez ugyanúgy használhatja a [robocopy-feladatokat.](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)  Ezek az eszközök fájl- vagy mappaengedélyeket is replikálhatnak. 
+Az adatmásoláshoz az ingyenes eszközök széles választékát is használhatja. Az NFS esetében olyan számítási feladatokhoz használható eszközöket használhat, mint például az [rsync](https://rsync.samba.org/examples.html) a forrásadatok Azure NetApp Files kötetre másolásához és szinkronizálásához. Az SMB-hez hasonló módon használhat munkaterheléseket a [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) szolgáltatásban.  Ezek az eszközök a fájl-vagy mappaengedélyek replikálására is képesek. 
 
-A helyszíni adatok Azure NetApp-fájlokba való áttelepítésének követelményei a következők: 
+A helyszínről Azure NetApp Filesre történő adatáttelepítés követelményei a következők: 
 
-- Győződjön meg arról, hogy az Azure NetApp-fájlok elérhetők a cél Azure-régióban.
-- Ellenőrizze a forrás és az Azure NetApp Files célkötet IP-címe közötti hálózati kapcsolatot. A helyszíni és az Azure NetApp-fájlok szolgáltatás közötti adatátvitel az ExpressRoute-on keresztül támogatott.
+- Ellenőrizze, Azure NetApp Files elérhető-e a cél Azure-régióban.
+- Ellenőrizze a forrás és a Azure NetApp Files cél kötet IP-címe közötti hálózati kapcsolatot. A helyszíni és a Azure NetApp Files szolgáltatás közötti adatátvitel támogatott a ExpressRoute-en keresztül.
 - Hozza létre a cél Azure NetApp Files kötetet.
-- A forrásadatok átvitele a célkötetre a kívánt fájlmásolási eszközzel.
+- Vigye át a forrásadatokat a cél kötetre a kívánt fájlmásolás-eszköz használatával.
 
-### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Hogyan hozhatok létre másolatot egy Azure NetApp Files kötetről egy másik Azure-régióban?
+### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Hogyan másolatot készíteni egy Azure NetApp Files kötetről egy másik Azure-régióban?
     
-Az Azure NetApp Files NFS- és SMB-köteteket biztosít.  Bármely fájlalapú másolási eszköz használható az Azure-régiók közötti adatok replikálására. 
+A Azure NetApp Files NFS-és SMB-köteteket biztosít.  Bármilyen fájl alapú másolási eszköz használható az Azure-régiók közötti adatreplikálásra. 
 
-A NetApp SaaS alapú megoldást kínál, [a NetApp Cloud Sync-et.](https://cloud.netapp.com/cloud-sync-service)  A megoldás lehetővé teszi, hogy NFS- vagy SMB-adatokat replikáljon az Azure NetApp Files NFS-exportálására vagy SMB-megosztásokra. 
+A NetApp SaaS-alapú megoldást kínál a [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service)szolgáltatással.  A megoldás lehetővé teszi az NFS-vagy SMB-alapú adatreplikálást Azure NetApp Files NFS-exportálás vagy SMB-megosztások számára. 
 
-Az adatok másolásához ingyenes eszközök széles skáláját is használhatja. NFS esetén számítási feladatok eszközeivel, például [az rsync-el](https://rsync.samba.org/examples.html) másolhatja és szinkronizálhatja a forrásadatokat egy Azure NetApp Files kötetbe. Az SMB-hez ugyanúgy használhatja a [robocopy-feladatokat.](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)  Ezek az eszközök fájl- vagy mappaengedélyeket is replikálhatnak. 
+Az adatmásoláshoz az ingyenes eszközök széles választékát is használhatja. Az NFS esetében olyan számítási feladatokhoz használható eszközöket használhat, mint például az [rsync](https://rsync.samba.org/examples.html) a forrásadatok Azure NetApp Files kötetre másolásához és szinkronizálásához. Az SMB-hez hasonló módon használhat munkaterheléseket a [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) szolgáltatásban.  Ezek az eszközök a fájl-vagy mappaengedélyek replikálására is képesek. 
 
-Az Azure NetApp Files-kötet ek egy másik Azure-régióba történő replikálásának követelményei a következők: 
-- Győződjön meg arról, hogy az Azure NetApp-fájlok elérhetők a cél Azure-régióban.
-- Ellenőrizze a virtuális hálózatok közötti hálózati kapcsolatot az egyes régiókban. Jelenleg a virtuális hálózatok közötti globális társviszony-létesítés nem támogatott.  A virtuális hálózatok közötti kapcsolatot expressroute-kapcsolattal vagy S2S VPN-kapcsolathasználatával hozhatja létre. 
+A Azure NetApp Files kötetek egy másik Azure-régióba való replikálásának követelményei a következők: 
+- Ellenőrizze, Azure NetApp Files elérhető-e a cél Azure-régióban.
+- Ellenőrizze az egyes régiók virtuális hálózatok közötti hálózati kapcsolatot. Jelenleg a virtuális hálózatok közötti globális egyenrangúság nem támogatott.  Kapcsolatot létesíthet a virtuális hálózatok között egy ExpressRoute-áramkör vagy egy S2S VPN-kapcsolat használatával. 
 - Hozza létre a cél Azure NetApp Files kötetet.
-- A forrásadatok átvitele a célkötetre a kívánt fájlmásolási eszközzel.
+- Vigye át a forrásadatokat a cél kötetre a kívánt fájlmásolás-eszköz használatával.
 
-### <a name="is-migration-with-azure-data-box-supported"></a>Támogatott az áttelepítés az Azure Data Box használatával?
+### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box támogatott a Migrálás?
 
-Nem. Az Azure Data Box jelenleg nem támogatja az Azure NetApp-fájlokat. 
+Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files. 
 
-### <a name="is-migration-with-azure-importexport-service-supported"></a>Támogatott az áttelepítés az Azure importálási/exportálási szolgáltatásával?
+### <a name="is-migration-with-azure-importexport-service-supported"></a>Támogatott az Azure import/export szolgáltatással való áttelepítés?
 
-Nem. Az Azure importálási/exportálási szolgáltatás jelenleg nem támogatja az Azure NetApp-fájlokat.
+Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
 ## <a name="next-steps"></a>További lépések  
 
-- [A Microsoft Azure ExpressRoute – gyakori kérdések](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [A Microsoft Azure virtuális hálózat – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
+- [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
+- [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Azure-támogatáskérések létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 - [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
-- [Gyakori kérdések az Azure NetApp-fájlok SMB-teljesítményéről](azure-netapp-files-smb-performance.md)
+- [A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések](azure-netapp-files-smb-performance.md)
