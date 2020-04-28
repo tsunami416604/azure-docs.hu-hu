@@ -1,47 +1,47 @@
 ---
-title: Fedezze fel az Azure Stream Analytics-feladatokat a Visual Studio-kódban
-description: Ez a cikk bemutatja, hogyan exportálhat egy Azure Stream Analytics-feladatot egy helyi projektbe, listázhatja a feladatokat és tekintheti meg a feladatentitásokat.
+title: Azure Stream Analytics feladatok megismerése a Visual Studio Code-ban
+description: Ez a cikk bemutatja, hogyan exportálhat egy Azure Stream Analytics feladatot egy helyi projektbe, hogyan listázhatja a feladatokat, és megtekintheti a feladatok entitásait.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75479240"
 ---
-# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Az Azure Stream Analytics felfedezése a Visual Studio-kóddal (előzetes verzió)
+# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Ismerkedés a Azure Stream Analytics a Visual Studio Code (előzetes verzió) szolgáltatással
 
-Az Azure Stream Analytics for Visual Studio Code bővítmény könnyű élményt nyújt a fejlesztőknek a Stream Analytics-feladatok kezeléséhez. Ezt fel lehet használni a Windows, Mac és Linux. Az Azure Stream Analytics-bővítménysegítségével a következőket teheti:
+A Visual Studio Code-bővítmény Azure Stream Analytics a fejlesztők számára a Stream Analytics-feladatok kezelésének egyszerű élményét nyújtja. Windows, Mac és Linux rendszereken is használható. A Azure Stream Analytics bővítménnyel a következőket teheti:
 
-- [Feladatok létrehozása,](quick-create-vs-code.md)indítása és leállítása
+- Feladatok [létrehozása](quick-create-vs-code.md), elindítása és leállítása
 - Meglévő feladatok exportálása helyi projektbe
-- Feladatok listázása és feladatentitások megtekintése
+- Feladatok listázása és feladat-entitások megtekintése
 
-## <a name="export-a-job-to-a-local-project"></a>Feladat exportálása helyi projektbe
+## <a name="export-a-job-to-a-local-project"></a>Feladatok exportálása helyi projektbe
 
-Ha egy feladatot egy helyi projektbe szeretne exportálni, keresse meg az exportálni kívánt feladatot a **Stream Analytics Intézőben** a Visual Studio-kódban. Ezután jelöljön ki egy mappát a projekthez. A program exportálja a projektet a kijelölt mappába, és a feladatot továbbra is kezelheti a Visual Studio-kódból. A Stream Analytics-feladatok Visual Studio-kód dal kezeléséről a Visual Studio-kód [rövid útmutatójában](quick-create-vs-code.md)talál további információt.
+Ha a feladatot egy helyi projektbe szeretné exportálni, keresse meg az exportálni kívánt feladatot a Visual Studio Code **stream Analytics Explorerben** . Ezután válasszon ki egy mappát a projekt számára. A program a kiválasztott mappába exportálja a projektet, és a Visual Studio Code-ból folytathatja a feladatok kezelését. A Visual [Studio code stream Analytics](quick-create-vs-code.md)feladatok kezelésével kapcsolatos további információkért tekintse meg a Visual Studio Code gyors útmutatóját.
 
-![ASA-feladat exportálása a Visual Studio-kódban](./media/vscode-explore-jobs/export-job.png)
+![ASA-feladatok exportálása a Visual Studio Code-ban](./media/vscode-explore-jobs/export-job.png)
 
-## <a name="list-job-and-view-job-entities"></a>Feladat listázása és feladatentitások megtekintése
+## <a name="list-job-and-view-job-entities"></a>Feladatok listázása és a feladatok megtekintése
 
-A feladatnézet segítségével a Visual Studio Azure Stream Analytics-feladataival kommunikálhat.
+A feladat nézettel a Visual studióból Azure Stream Analytics feladatokkal dolgozhat.
 
 
-1. Kattintson az **Azure** ikonra a Visual Studio kódtevékenységsávján, majd bontsa ki a **Stream Analytics csomópontot.** A feladatoknak az előfizetések alatt kell megjelenniük.
+1. Kattintson az **Azure** ikonra a Visual Studio Code tevékenység sávján, majd bontsa ki **stream Analytics csomópontot**. A feladatoknak az előfizetések alatt kell megjelenniük.
 
-   ![A Stream Analytics Explorer megnyitása](./media/vscode-explore-jobs/open-explorer.png)
+   ![Stream Analytics Explorer megnyitása](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Bontsa ki a feladat csomópont, megnyithatja és megtekintheti a feladat lekérdezés, konfiguráció, bemenetek, kimenetek és függvények. 
+2. A feladatok csomópontjának kibontásával megnyithatja és megtekintheti a feladatok lekérdezését, konfigurációját, bemeneteit, kimeneteit és funkcióit. 
 
-3. Kattintson a jobb gombbal a feladatcsomópontra, és válassza a Feladatnézet megnyitása a **portálcsomópontban** lehetőséget a feladatnézet megnyitásához az Azure Portalon.
+3. Kattintson a jobb gombbal a feladatra, majd válassza a feladatok nézet **megnyitása a portálon** csomópontot a Azure Portal feladatok nézetének megnyitásához.
 
-   ![Feladatnézet megnyitása a portálon](./media/vscode-explore-jobs/open-job-view.png)
+   ![A feladatok nézet megnyitása a portálon](./media/vscode-explore-jobs/open-job-view.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Stream Analytics felhőfeladat létrehozása a Visual Studio-kódban (előzetes verzió)](quick-create-vs-code.md)
+* [Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)](quick-create-vs-code.md)

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: a3928ac4caca5247dcacc639698a7a7bb49826a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466926"
 ---
-Az alábbiakban a tárfiókba másolt adatok méretére vonatkozó korlátokat. Győződjön meg arról, hogy a feltöltött adatok megfelelnek ezeknek a korlátoknak. Ezekről a korlátokról a [méretezhetőségi és teljesítménycélok a Blob storage](../articles/storage/blobs/scalability-targets.md) és az [Azure Files méretezhetőségi és teljesítménycélok](../articles/storage/files/storage-files-scale-targets.md)című témakörben talál.
+Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk: a [blob Storage skálázhatósági és teljesítményi céljai](../articles/storage/blobs/scalability-targets.md) , valamint a [méretezhetőség és a teljesítmény-Azure Files](../articles/storage/files/storage-files-scale-targets.md).
 
-| Az Azure storage-fiókba másolt adatok mérete                      | Alapértelmezett korlát          |
+| Az Azure Storage-fiókba másolt adatmennyiség                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|
-| Blob és lapblob blokkolása                                            | 500 TB tárfiókonként|
+| BLOB és oldal blobjának letiltása                                            | 500 TB/Storage-fiók|

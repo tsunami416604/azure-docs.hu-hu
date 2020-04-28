@@ -1,117 +1,117 @@
 ---
 title: Szabályok konfigurálása és riasztások kezelése
-description: A szabályok konfigurálása és a riasztások kezelése a FarmBeats-ben
+description: Útmutató szabályok konfigurálásához és a riasztások kezeléséhez a FarmBeats-ben
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 02373da114b6dc4663cd3ffc9a0780ac6a7a9e23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482984"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Szabályok konfigurálása és riasztások kezelése
 
-Az Azure FarmBeats lehetővé teszi, hogy az üzleti logika alapján hozzon létre szabályokat, a farmban telepített érzékelőkből és eszközökből származó érzékelőadatok on kívül. A szabályok riasztást váltanak ki a rendszerben, ha az érzékelő értékei átlépnek egy küszöbértéket. A küszöbértékek után létrehozott riasztások megtekintésével és elemzésével gyorsan eljátszhatja a problémákat, és megkaphatja a szükséges megoldásokat.
+Az Azure FarmBeats lehetővé teszi, hogy az üzleti logikán alapuló szabályokat hozzon létre a farmon üzembe helyezett érzékelőktől és eszközöktől származó érzékelői adatok mellett. A szabályok riasztásokat váltanak ki a rendszeren, amikor az érzékelő értéke túllép egy küszöbértéket. A küszöbértékek után létrehozott riasztások megtekintésével és elemzésével gyorsan elvégezheti a problémák megoldását és a szükséges megoldások beszerzését.
 
 ## <a name="create-rule"></a>Szabály létrehozása
 
-1. A kezdőlapon nyissa meg a Szabályok ( Rules ) **(Szabályok) lapot.**
-2. Válassza az **Új szabály lehetőséget.** Megjelenik az Új szabály ablak.
+1. A kezdőlapon nyissa meg a **szabályok**lapot.
+2. Válassza az **új szabály**lehetőséget. Megjelenik az új szabály ablak.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
 
-3. Írja be a **szabály nevét** és a **szabály leírását,** majd válasszon ki egy farmot a **Farm kiválasztása** legördülő menüből.
-4. Írja be a farm nevét, ha ki szeretné jelölni, hogy a Farm és a **Feltételek** szakasz ugyanabban az ablakban jelenik meg.  
+3. Adja meg a **szabály nevét** és a **szabály leírását** , majd válasszon ki egy farmot a **Farm kiválasztása** legördülő menüből.
+4. Adja meg a farm nevét, hogy kiválassza a farm és a **feltételek** szakaszt, amely ugyanabban az ablakban jelenik meg.  
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. A **Feltételek mezőbe**írja be a **Mérték**, **Operátor** és **Érték**értékét.
-6. Írja be a mérték nevét a **Mérték** legördülő menübe.
-7. Válassza a **+Feltétel hozzáadása lehetőséget,** ha további feltételeket szeretne hozzáadni a szabályhoz.
-8. Válassza ki a **Súlyossági szintet**.
-9. A **Művelet alkalmazásban**kapcsolja be az **E-mail engedélyezve** a váltógombot az e-mail értesítések engedélyezéséhez.
+5. A **feltételek**mezőben adja meg a **mérték**, az **operátor** és az **érték**értékét.
+6. Írja be a mérték nevét a **mérték** legördülő menüben.
+7. Válassza a **+ feltétel hozzáadása** lehetőséget a szabályhoz tartozó további feltételek hozzáadásához.
+8. Válassza ki a **súlyossági szintet**.
+9. Az **e-mail-** riasztások engedélyezéséhez kapcsolja be az **e-mailek engedélyezve** váltógomb gombot.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
-10. Adja meg azokat az **e-mail címeket,** amelyekre el szeretné küldeni az e-mail értesítést, valamint az **e-mail tárgya** és a **További megjegyzések**.  
-11. A **Szabály állapota**mezőben kapcsolja be az **Engedélyezve** váltógombot a szabály engedélyezéséhez vagy letiltásához.
+10. Adja meg azokat az **e-mail-címeket** , amelyekre el szeretné küldeni az e-mail-riasztást, valamint az **e-mail tárgyát** és a **További megjegyzéseket**.  
+11. A **szabály állapota**beállításnál a szabály engedélyezéséhez vagy letiltásához váltson az **engedélyezve** váltógomb gombra.
     Megtekintheti a szabály által érintett eszközök számát.
-12. A szabály létrehozásához válassza az **Alkalmaz** lehetőséget.
+12. A szabály létrehozásához kattintson az **alkalmaz** gombra.
 
 ## <a name="view-rule"></a>Szabály megtekintése
 
-A **Farm** lap az elérhető szabályok listáját jeleníti meg. Jelöljön ki egy **szabálynevet**. Az ablak a kiválasztott szabályra vonatkozó következő részleteket jeleníti meg:
+A **Farm** lap az elérhető szabályok listáját jeleníti meg. Válassza ki a **szabály nevét**. Egy ablakban a következő, a kiválasztott szabályra vonatkozó részletek jelennek meg:
  - Szabály neve
- - Hivatkozás arra a farmra, amelyhez a szabály társítva van
+ - Azon farmra mutató hivatkozás, amelyhez a szabály társítva van
  - Létrehozás dátuma
  - Utolsó frissítés dátuma
  - Súlyossági szint
  - Szabály állapota
- - A feltételek listája  
+ - Feltételek listája  
  - A szabály által érintett eszközök száma
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
 
 ## <a name="edit-rule"></a>Szabály szerkesztése
 
-Szabály szerkesztéséhez kövesse az alábbi lépéseket:
+A szabály szerkesztéséhez kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a bal oldali navigációs menü **Szabályok** parancsát.
-   Megjelenik a szabályablak.
-2. Jelölje ki azt a szabályt, amelynek a szerkesztett szabályát szeretné.
+1. A kezdőlapon válassza a bal oldali navigációs menü **szabályok** elemét.
+   Megjelenik a szabályok ablak.
+2. Válassza ki azt a szabályt, amelynek szerkeszteni kívánja.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
 
-3. Válassza a műveletsáv **Szerkesztés parancsát,** és megjelenik a **Szabály szerkesztése** ablak.
+3. Válassza a **Szerkesztés** lehetőséget a művelet sávján, a **szabály szerkesztése** ablakban.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. Módosítsa a **szabály nevét**és a **szabály leírását,** majd válasszon ki egy farmot a **Farm kiválasztása** legördülő menüből.
-5. Írja be a farm nevét, hogy kiválassza a **farmot,** és a Feltételek ugyanabban az ablakban jelenik meg.  
-6. A **Feltételek ben**a **Mérték**, **Operátor** és **Érték szerkesztése**területen .
-7. Írja be a mérték nevét a **Mérték** legördülő menübe.
-8. Válassza a **+Feltétel hozzáadása lehetőséget** a feltételek hozzáadásához/szerkesztéséhez.
+4. Módosítsa a **szabály nevét**és a **szabály leírását** , majd válasszon ki egy farmot a **Farm kiválasztása** legördülő menüből.
+5. Adja meg a farm nevét, hogy kiválassza a farm és a **feltételek** ugyanabban az ablakban.  
+6. A **feltételek**területen szerkessze a **mértéket**, az **operátort** és az **értéket**.
+7. Írja be a mérték nevét a **mérték** legördülő menüben.
+8. Válassza a **+ feltétel hozzáadása** lehetőséget a feltételek a szabályokhoz való hozzáadásához és szerkesztéséhez.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
 
 9.  Válassza ki a **súlyossági szintet**.  
-10. A **Művelet alkalmazásban**kapcsolja be az **E-mail engedélyezve** a váltógombot az e-mail értesítések engedélyezéséhez.
-11. Az **e-mail-értesítés** küldéséhez kívánt e-mail címek, valamint az **e-mail tárgyés** a **további megjegyzések szerkesztése**.  
-12. A **Szabály állapota**mezőben kapcsolja be az **Engedélyezve** váltógombot a szabály engedélyezéséhez vagy letiltásához.
+10. Az **e-mail-** riasztások engedélyezéséhez kapcsolja be az **e-mailek engedélyezve** váltógomb gombot.
+11. Szerkessze azokat az **e-mail-címeket** , amelyekre el szeretné küldeni az e-mail-riasztást, valamint az **e-mail tárgyát** és a **További megjegyzéseket**.  
+12. A **szabály állapota**beállításnál a szabály engedélyezéséhez vagy letiltásához váltson az **engedélyezve** váltógomb gombra.
 Megtekintheti a szabály által érintett eszközök számát.
-13. A szabály szerkesztéséhez válassza az **Alkalmaz** lehetőséget.
+13. A szabály szerkesztéséhez kattintson az **alkalmaz** gombra.
 
 ## <a name="change-rule-status"></a>Szabály állapotának módosítása
 
-A szabály állapotának módosításához hajtsa végre az alábbi lépéseket:
+Egy szabály állapotának módosításához kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a bal oldali navigációs menü **Szabályok** parancsát. Megjelenik a szabályablak.
-2. Jelölje ki azt a szabályt, amelynek állapotát módosítani szeretné.
+1. A kezdőlapon válassza a bal oldali navigációs menü **szabályok** elemét. Megjelenik a szabályok ablak.
+2. Válassza ki azt a szabályt, amelynek az állapotát módosítani kívánja.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
 
-3. Válassza az **Állapot módosítása lehetőséget** a műveletsávon. Megjelenik **az Állapot módosítása** ablak.
+3. Válassza az **Állapot módosítása** lehetőséget a műveleti sávon. Megjelenik az **Állapot módosítása** ablak.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
 
-3. Módosítsa a szabály állapotát az **Állapot módosítása** váltógombbal.
+3. Módosítsa a szabály állapotát az **Állapot módosítása** váltógomb használatával.
    Megtekintheti a szabály által érintett eszközök számát.
-4. A szabály állapotának módosításához válassza az **Alkalmaz** lehetőséget.
+4. Válassza az **alkalmaz** lehetőséget a szabály állapotának módosításához.
 
 ## <a name="delete-rule"></a>Szabály törlése
 
-Szabály törléséhez hajtsa végre az alábbi lépéseket:
+Egy szabály törléséhez kövesse az alábbi lépéseket:
 
-1. A kezdőlapon válassza a bal oldali navigációs menü **Szabályok** parancsát. Megjelenik a szabályablak.
-2. Jelölje ki azt a szabályt, amelynek törölni kívánt szabályát törölni szeretné.
+1. A kezdőlapon válassza a bal oldali navigációs menü **szabályok** elemét. Megjelenik a szabályok ablak.
+2. Válassza ki azt a szabályt, amelynek törölni kívánja.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
 
-3. Válassza a **törlés** lehetőséget a műveletsávról.
+3. Válassza a **Törlés** lehetőséget a műveleti sávon.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
+    ![A Project Farm veri](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
 
-4. Megjelenik **a Szabály törlése** párbeszédpanel. Válassza a **Törlés** elemet.
+4. Megjelenik a **szabály törlése** párbeszédpanel. Válassza a **Törlés** elemet.

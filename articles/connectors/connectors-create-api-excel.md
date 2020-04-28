@@ -1,6 +1,6 @@
 ---
-title: Adatok, munkalapok és táblázatok kezelése az Excel Online-ban
-description: Adatok kezelése munkalapokon és táblázatokban az Excel Online Vállalati verzióban vagy a OneDrive-hoz készült Excel Online-ban az Azure Logic Apps használatával
+title: Az Excel online-ban kezelheti az adatkezelési, munkalapokat és táblázatokat
+description: A munkalapokon és a táblákban lévő, az Excel online-ban vagy az Excel online-ban található OneDrive Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75445882"
 ---
-# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online-adatok kezelése az Azure Logic Apps alkalmazásokkal
+# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
 
-Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és az Excel Online for [Business](/connectors/excelonlinebusiness/) összekötő vagy az Excel Online [for OneDrive-összekötő](/connectors/excelonline/) segítségével automatizált feladatokat és munkafolyamatokat hozhat létre az Excel Online vállalati verzióban vagy a OneDrive-on lévő adatai alapján. Ez az összekötő olyan műveleteket biztosít, amelyek segítenek az adatokkal való munkában és a számolótáblák kezelésében, például:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Excel Online for Business](/connectors/excelonlinebusiness/) Connector vagy az [Excel Online for OneDrive](/connectors/excelonline/) -összekötő használatával automatizált feladatokat és munkafolyamatokat hozhat létre az Excel Online for Business vagy a OneDrive adatai alapján. Ez az összekötő olyan műveleteket biztosít, amelyek segítségével dolgozhat az adataival, és kezelheti a számolótáblákat, például:
 
-* Új munkalapok és táblázatok létrehozása.
-* Munkalapok, táblázatok és sorok beszerezhetése és kezelése.
-* Egyetlen sorok és kulcsoszlopok hozzáadása.
+* Hozzon létre új munkalapokat és táblákat.
+* Munkalapok, táblák és sorok beolvasása és kezelése.
+* Egyetlen sor és egy fő oszlop hozzáadása.
 
-Ezután használhatja a kimenetek ezek a műveletek műveletek más szolgáltatásokhoz. Ha például minden héten munkalapot létrehozó műveletet használ, akkor egy másik műveletet is használhat, amely az Office 365 Outlook-összekötő vel küld visszaigazoló e-mailt.
+Ezután a műveletek kimeneteit más szolgáltatásokkal kapcsolatos műveletekkel is használhatja. Ha például olyan műveletet használ, amely hetente hoz létre munkalapokat, egy másik műveletet is használhat, amely megerősítő e-mailt küld az Office 365 Outlook Connector használatával.
 
-Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> Az [Excel Online Vállalati verzió](/connectors/excelonlinebusiness/) és a [OneDrive-hoz készült Excel Online-összekötők](/connectors/excelonline/) együttműködnek az Azure Logic Apps alkalmazásokkal, és különböznek a [PowerApps Excel-összekötőjétől.](/connectors/excel/)
+> Az [Excel Online for Business](/connectors/excelonlinebusiness/) és az [Excel Online for OneDrive](/connectors/excelonline/) -összekötők Azure Logic apps és eltérnek a [PowerApps készült Excel-összekötőtől](/connectors/excel/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Munkahelyi vagy személyes Microsoft-fiókjához készült [Office 365-fiók](https://www.office.com/)
+* [Office 365-fiók](https://www.office.com/) munkahelyi fiókjához vagy személyes Microsoft-fiók
 
-  Az Excel-adatok létezhetnek vesszővel tagolt értékfájlként egy tárolómappában, például a OneDrive-on. 
-  Ugyanazt a CSV-fájlt is használhatja a [síkfájlú összekötővel.](../logic-apps/logic-apps-enterprise-integration-flatfile.md)
+  Az Excel-adatok vesszővel tagolt (CSV) fájlként is létezhetnek egy tárolási mappában, például a OneDrive-ben. 
+  Ugyanezt a CSV-fájlt is használhatja a [sima fájl összekötővel](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez hozzá szeretne férni az Excel Online-adatokhoz. Ez az összekötő csak műveleteket biztosít, így a logikai alkalmazás elindításához válasszon ki egy külön eseményindítót, például az **Ismétlődés eseményindítót.**
+* Az a logikai alkalmazás, amelyhez el szeretné érni az Excel online-adatait. Ez az összekötő csak műveleteket biztosít, ezért a logikai alkalmazás indításához válasszon egy különálló eseményindítót, például az **Ismétlődés** eseményindítóját.
 
-## <a name="add-excel-action"></a>Excel hozzáadása művelet
+## <a name="add-excel-action"></a>Excel-művelet hozzáadása
 
-1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben, ha még nincs megnyitva.
 
-1. Az eseményindító alatt válassza az **Új lépés lehetőséget.**
+1. Az trigger alatt válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként az "excel" szót. A műveletek listájában jelölje ki a kívánt műveletet.
+1. A keresőmezőbe írja be a "Excel" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
    > [!NOTE]
-   > A Logic App Designer nem tudja betölteni a 100 vagy több oszlopot tartalmazó táblákat. Ha lehetséges, csökkentse a kijelölt tábla oszlopainak számát, hogy a tervező betölthesse a táblát.
+   > A Logic app Designer nem tud betölteni 100 vagy több oszlopot tartalmazó táblákat. Ha lehetséges, csökkentse a kiválasztott tábla oszlopainak számát, hogy a tervező betöltse a táblát.
 
-1. Ha a rendszer kéri, jelentkezzen be Office 365-fiókjába.
+1. Ha a rendszer kéri, jelentkezzen be az Office 365-fiókjába.
 
-   A hitelesítő adatok felhatalmazzák a logikai alkalmazást, hogy kapcsolatot hozzon létre az Excel Online-nal, és hozzáférjen az adatokhoz.
+   A hitelesítő adataival engedélyezheti a logikai alkalmazásnak, hogy kapcsolatot hozzon létre az Excel online-ban, és hozzáférhessen az adataihoz.
 
-1. Továbbra is adja meg a szükséges részleteket a kiválasztott művelethez, és a logikai alkalmazás munkafolyamatának létrehozása.
+1. Folytassa a kijelölt művelethez szükséges részletek megadását és a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő OpenAPI (korábbi nevén Swagger) fájljaiban leírtak szerint technikai részleteket, például eseményindítókat, műveleteket és korlátokat az összekötő referencialapjai ban talál:
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljaiban leírtak szerint tekintse meg a következő összekötő-hivatkozási lapokat:
 
-* [Excel Online vállalati verzió](/connectors/excelonlinebusiness/)
-* [A OneDrive-hoz készült Excel Online](/connectors/excelonline/)
+* [Vállalati Excel online](/connectors/excelonlinebusiness/)
+* [Excel online OneDrive](/connectors/excelonline/)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

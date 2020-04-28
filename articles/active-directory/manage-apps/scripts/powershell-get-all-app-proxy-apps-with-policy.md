@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minta – Az összes alkalmazásproxy-alkalmazás listázása házirenddel
-description: PowerShell-példa, amely felsorolja az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazások a címtárban, amelyek egy életre szóló jogkivonat-szabályzatot.
+title: PowerShell-minta – az összes alkalmazásproxy-alkalmazás listázása házirenddel
+description: PowerShell-példa, amely felsorolja az összes olyan Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást a címtárban, amely élettartam-jogkivonat-házirenddel rendelkezik.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2ad7b769dc890917e5364fe57582acdfe16acac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482126"
 ---
-# <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Az összes alkalmazásproxy-alkalmazás beszereznie egy jogkivonat-élettartam-szabályzattal
+# <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Az összes alkalmazásproxy-alkalmazás beolvasása jogkivonat-élettartam-házirenddel
 
-Ez a PowerShell-parancsfájl-példa felsorolja az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást a címtárban, amelyek egy token élettartam-szabályzattal rendelkeznek, és a szabályzat részleteit tartalmazza.
+Ez a PowerShell-parancsfájl felsorolja a címtárban található összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást, amely rendelkezik jogkivonat-élettartam-házirenddel, és felsorolja a szabályzat részleteit.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Ez a PowerShell-parancsfájl-példa felsorolja az összes Azure Active Directory
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul előzetes verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Ehhez a mintához a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) szükséges.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -39,14 +39,14 @@ Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul előzetes verziój
 
 | Parancs | Megjegyzések |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy szolgáltatásvezetőt kap. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beszerzi az Azure AD-alkalmazást. |
-|[Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) | Beszerzi a szabályzatot az Azure AD-ben. |
-|[Get-AzureADServicePrincipalPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview) | Egy egyszerű szolgáltatás szabályzata az Azure AD-ben. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beolvas egy Azure AD-alkalmazást. |
+|[Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) | Házirend beolvasása az Azure AD-ben. |
+|[Get-AzureADServicePrincipalPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview) | Lekéri egy egyszerű szolgáltatásnév házirendjét az Azure AD-ben. |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD PowerShell-modulról az [Azure AD PowerShell-modul áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)
+Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)című témakörben olvashat bővebben.
 
-További PowerShell-példák az alkalmazásproxyhoz, lásd: [Azure AD PowerShell példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)
+További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).

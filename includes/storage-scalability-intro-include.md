@@ -9,14 +9,14 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75477147"
 ---
-Ez a hivatkozás részletezi az Azure Storage méretezhetőségét és teljesítménycéljait. Az itt felsorolt méretezhetőségi és teljesítménycélok csúcsminőségű célok, de elérhetők. A tárfiók által elért kérelemsebesség és sávszélesség minden esetben a tárolt objektumok méretétől, a használt hozzáférési mintáktól és az alkalmazás által végrehajtott munkaterhelés típusától függ.
+Ez a hivatkozás az Azure Storage méretezhetőségi és teljesítménybeli céljait ismerteti. Az itt felsorolt méretezhetőségi és teljesítményi célok magas végponti célokat szolgálnak, de elérhetők. A Storage-fiók által elért kérelmek aránya és sávszélessége minden esetben a tárolt objektumok méretétől, a felhasznált hozzáférési mintáktól, valamint az alkalmazás által végrehajtott számítási feladatok típusától függ.
 
-Győződjön meg arról, hogy tesztelje a szolgáltatást annak megállapítására, hogy a teljesítmény megfelel-e az Ön igényeinek. Ha lehetséges, kerülje a forgalom sebességének hirtelen kiugrásait, és győződjön meg arról, hogy a forgalom jól elosztott partíciók között.
+Győződjön meg arról, hogy teszteli a szolgáltatást annak megállapításához, hogy a teljesítménye megfelel-e a követelményeknek. Ha lehetséges, kerülje a forgalom sebességének hirtelen kiugrását, és győződjön meg arról, hogy a forgalom megfelelően oszlik meg a partíciók között.
 
-Amikor az alkalmazás eléri azt a korlátot, amelyet egy partíció képes kezelni a számítási feladatokhoz, az Azure Storage az 503-as (kiszolgáló foglalt) vagy az 500-as (Operation Timeout) hibakóddal(500- as hibakóddal) kapcsolatban. Ha 503-as hibák fordulnak elő, fontolja meg az alkalmazás módosítását, hogy exponenciális visszamaradási házirendet használjon az újrapróbálkozásokhoz. Az exponenciális visszalépés lehetővé teszi, hogy a partíció terhelése csökkenjen, és enyhítse a partíció forgalmának kiugrásait.
+Ha az alkalmazás eléri azt a korlátot, amelyet a partíció képes kezelni a munkaterhelés esetében, az Azure Storage megkezdi a 503-as hibakód (a kiszolgáló foglalt) vagy a 500 (művelet időtúllépése) válaszait. Ha 503 hiba történt, érdemes lehet módosítani az alkalmazást, hogy az újrapróbálkozások exponenciális leállítási szabályzatot használjanak. Az exponenciális leállítási lehetővé teszi a partíció terhelésének csökkentését, valamint az adott partíció felé irányuló adatforgalom megkönnyítése érdekében.

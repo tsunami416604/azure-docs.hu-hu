@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minta – Alkalmazásproxy-alkalmazások áthelyezése egy másik csoportba
-description: Az Azure Active Directory (Azure AD) alkalmazásproxy-PowerShell-példa az összekötőcsoporthoz jelenleg hozzárendelt összes alkalmazás áthelyezése egy másik összekötő csoportba.
+title: PowerShell-minta – alkalmazásproxy-alkalmazások áthelyezése másik csoportba
+description: Azure Active Directory (Azure AD) alkalmazásproxy PowerShell-példa arra, hogy az összes olyan alkalmazást, amely jelenleg hozzá van rendelve egy összekötő-csoporthoz, egy másik összekötő csoportba helyezi.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6dccdaa96dadb061b168bbdf6148ed4d759776c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75481983"
 ---
-# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>Az összekötőcsoporthoz rendelt összes alkalmazás áthelyezése egy másik összekötőcsoportba
+# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>Összekötő csoporthoz rendelt összes alkalmazás áthelyezése egy másik összekötő csoportba
 
-Ez a PowerShell-parancsfájl-példa az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást, amely jelenleg egy másik összekötő csoporthoz van rendelve.
+Ez a PowerShell-parancsfájl például az összes olyan Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást áthelyezi, amely jelenleg egy összekötő csoporthoz van rendelve egy másik összekötő csoportba.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Ez a PowerShell-parancsfájl-példa az összes Azure Active Directory (Azure AD)
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) vagy az [AzureAD V2 PowerShell graph modul előzetes verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) szükséges.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -39,13 +39,13 @@ Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul](https://docs.micr
 
 | Parancs | Megjegyzések |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy szolgáltatásvezetőt kap. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beszerzi az Azure AD-alkalmazást. |
-| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Az összes összekötőcsoport listáját lekéri, vagy ha meg van adva, a megadott összekötőcsoport adatait. |
-| [Set-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationconnectorgroup?view=azureadps-2.0) | Az adott összekötőcsoportot egy adott alkalmazáshoz rendeli hozzá.|
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beolvas egy Azure AD-alkalmazást. |
+| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Lekéri az összes összekötő csoport listáját, vagy ha meg van adva, a megadott összekötő-csoport részleteit. |
+| [Set-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationconnectorgroup?view=azureadps-2.0) | Hozzárendeli az adott összekötő csoportot egy adott alkalmazáshoz.|
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD PowerShell-modulról az [Azure AD PowerShell-modul áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)
+Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)című témakörben olvashat bővebben.
 
-További PowerShell-példák az alkalmazásproxyhoz, lásd: [Azure AD PowerShell példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)
+További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).

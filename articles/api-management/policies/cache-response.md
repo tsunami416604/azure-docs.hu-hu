@@ -1,7 +1,7 @@
 ---
-title: Minta API-felügyeleti házirend – Képességek hozzáadása háttérszolgáltatáshoz
+title: Példa API Management-szabályzat – képességek hozzáadása a háttér-szolgáltatáshoz
 titleSuffix: Azure API Management
-description: Azure API-kezelési szabályzat minta – bemutatja, hogyan adhat hozzá képességeket egy háttérszolgáltatáshoz. Lehetővé teheti például, hogy egy időjárás-előrejelző API-ban a szélesség és hosszúság helyett elég legyen egy hely nevét megadni.
+description: Azure API Management-szabályzat mintája – bemutatja, hogyan adhat hozzá képességeket egy háttér-szolgáltatáshoz. Lehetővé teheti például, hogy egy időjárás-előrejelző API-ban a szélesség és hosszúság helyett elég legyen egy hely nevét megadni.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442471"
 ---
-# <a name="add-capabilities-to-a-backend-service"></a>Képességek hozzáadása háttérszolgáltatáshoz
+# <a name="add-capabilities-to-a-backend-service"></a>Képességek hozzáadása egy háttérbeli szolgáltatáshoz
 
-Ez a cikk egy Azure API-felügyeleti szabályzat mintát mutat be, amely bemutatja, hogyan adhat hozzá képességeket egy háttérszolgáltatáshoz. Lehetővé teheti például, hogy egy időjárás-előrejelző API-ban a szélesség és hosszúság helyett elég legyen egy hely nevét megadni. Házirendkód beállításához vagy szerkesztéséhez kövesse a [Házirend beállítása vagy szerkesztése](../set-edit-policies.md)című részben ismertetett lépéseket. További példák megtekintéséhez tekintse meg [a házirendmintákat.](../policy-samples.md)
+Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan adhat hozzá képességeket egy háttér-szolgáltatáshoz. Lehetővé teheti például, hogy egy időjárás-előrejelző API-ban a szélesség és hosszúság helyett elég legyen egy hely nevét megadni. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -32,8 +32,8 @@ Illessze be a kódot a **bejövő** blokkba.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-házirendekről:
+További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirendminták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

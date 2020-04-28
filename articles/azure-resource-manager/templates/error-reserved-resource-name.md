@@ -1,22 +1,22 @@
 ---
-title: Fenntartott erőforrásnév-hibák
-description: Ez a témakör azt ismerteti, hogy miként hárítható el a hibák, amikor fenntartott szót tartalmazó erőforrásnevet ad meg.
+title: Lefoglalt erőforrás neve hibák
+description: Ismerteti, Hogyan oldhatók fel hibák a fenntartott szót tartalmazó erőforrások nevének megadásakor.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477628"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Fenntartott erőforrásnév-hibák elhárítása
+# <a name="resolve-reserved-resource-name-errors"></a>Lefoglalt erőforrás-nevek feloldási hibáinak elhárítása
 
-Ez a cikk azt a hibát ismerteti, amellyel egy olyan erőforrás telepítésekor találkozhat, amely a nevében egy fenntartott szót tartalmaz.
+Ez a cikk azt a hibát ismerteti, amikor olyan erőforrást telepít, amely tartalmaz egy fenntartott szót a nevében.
 
 ## <a name="symptom"></a>Hibajelenség
 
-Nyilvános végponton keresztül elérhető erőforrás telepítésekor a következő hibaüzenet jelenhet meg:
+Nyilvános végponton keresztül elérhető erőforrás telepítésekor a következő hibaüzenetet kaphatja:
 
 ```
 Code=ReservedResourceName;
@@ -25,47 +25,47 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Ok
 
-A nyilvános végponttal ellátott erőforrások nem használhatnak fenntartott szavakat vagy védjegyeket a névben.
+A nyilvános végponttal rendelkező erőforrások nem használhatják a névben foglalt szavakat vagy védjegyeket.
 
 A következő szavak vannak fenntartva:
 
 * HOZZÁFÉRÉS
-* Azure
-* Bing
-* Bizspark
-* Biztalk
-* CORTANA (CORTANA)
-* Directx
-* Dotnet
-* Dynamics
+* AZURE
+* BING
+* BIZSPARK
+* BIZTALK
+* CORTANA
+* DIRECTX
+* DOTNET
+* DYNAMICS
 * EXCEL
-* Exchange
-* Élvonalban
-* Groove
+* EXCHANGE
+* FOREFRONT
+* GROOVE
 * HOLOLENS
-* HIPERV
-* Kinect
-* Lync
+* HYPERV
+* KINECT
+* LYNC
 * MSDN
 * O365
-* Office
-* OFFICE365
+* OFFICE
+* Office 365
 * ONEDRIVE
-* Onenote
-* Outlook
-* Powerpoint
-* Sharepoint
-* Skype
-* Visio
-* VISUALSTUDIO (VIZUÁLIS STÚDIÓ)
+* ONENOTE
+* OUTLOOK
+* POWERPOINT
+* SHAREPOINT
+* SKYPE
+* VISIO
+* VISUALSTUDIO
 
-A következő szavak nem használhatók teljes szóként vagy karakterláncrészként a névben:
+A következő szavak nem használhatók teljes kifejezésként vagy alsztringként a névben:
 
-* Logika
-* Microsoft
-* Windows
-* Xbox
+* BEJELENTKEZÉSI
+* MICROSOFT
+* WINDOWS
+* XBOX
 
 ## <a name="solution"></a>Megoldás
 
-Adjon meg egy olyan nevet, amely nem használja a fenntartott szavak egyikét sem.
+Olyan nevet adjon meg, amely nem használja a fenntartott szavak egyikét.

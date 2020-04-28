@@ -1,24 +1,24 @@
 ---
 title: RequestDisallowedByPolicy hiba
-description: A RequestDisallowedByPolicy hiba okának ismertetése az Azure Resource Manager használatával történő erőforrások üzembe helyezésekor.
+description: A RequestDisallowedByPolicy hibájának okát ismerteti az erőforrások Azure Resource Manager-vel való telepítésekor.
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477667"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy hiba az Azure erőforrás-házirendjével
 
-Ez a cikk ismerteti az oka a RequestDisallowedByPolicy hiba, ez is megoldást nyújt erre a hibára.
+Ez a cikk a RequestDisallowedByPolicy hibájának okát mutatja be, továbbá megoldást nyújt erre a hibára.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A telepítés során előfordulhat, hogy egy **RequestDisallowedByPolicy** hiba, amely megakadályozza az erőforrások létrehozását. A következő példa a hibát mutatja be:
+Az üzembe helyezés során **RequestDisallowedByPolicy** hibaüzenet jelenhet meg, amely megakadályozza az erőforrások létrehozását. A következő példa a hibát mutatja be:
 
 ```json
 {
@@ -31,13 +31,13 @@ A telepítés során előfordulhat, hogy egy **RequestDisallowedByPolicy** hiba,
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A központi telepítést letiltó házirend részleteinek beolvasásához használja az alábbi módszerek egyikét:
+Az üzembe helyezést blokkoló házirend részleteinek lekéréséhez használja a következő módszerek egyikét:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A PowerShellben adja meg, `Id` hogy a szabályzat azonosítója, mint a paraméter a házirend, amely letiltotta a központi telepítést.
+A PowerShellben adja meg a `Id` házirend-azonosítót paraméterként, hogy lekérje a központi telepítést blokkoló házirend részleteit.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -45,7 +45,7 @@ A PowerShellben adja meg, `Id` hogy a szabályzat azonosítója, mint a paramét
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-ben adja meg a szabályzatdefiníció nevét:
+Az Azure CLI-ben adja meg a házirend-definíció nevét:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -53,8 +53,8 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Megoldás
 
-A biztonság vagy a megfelelőség érdekében az előfizetés-rendszergazdák olyan házirendeket rendelhetnek hozzá, amelyek korlátozzák az erőforrások üzembe helyezését. Előfordulhat például, hogy az előfizetés rendelkezik egy szabályzattal, amely megakadályozza a nyilvános IP-címek, a hálózati biztonsági csoportok, a felhasználó által definiált útvonalak vagy az útvonaltáblák létrehozását. A **Jelenség ek** szakaszban található hibaüzenet a házirend nevét jeleníti meg.
-A probléma megoldásához tekintse át az erőforrás-házirendeket, és határozza meg, hogyan helyezheti üzembe az okat megfelelő erőforrásokat.
+Biztonság vagy megfelelőség esetén az előfizetési rendszergazdák olyan házirendeket rendelhetnek, amelyek korlátozzák az erőforrások központi telepítését. Előfordulhat például, hogy az előfizetése olyan házirenddel rendelkezik, amely megakadályozza a nyilvános IP-címek, a hálózati biztonsági csoportok, a felhasználó által megadott útvonalak vagy az útválasztási táblák létrehozását. A **jelenségek** szakaszban található hibaüzenet a szabályzat nevét mutatja.
+A probléma megoldásához tekintse át az erőforrás-házirendeket, és határozza meg, hogyan telepítse a szabályzatoknak megfelelő erőforrásokat.
 
 További információkért tekintse át a következő cikkeket:
 

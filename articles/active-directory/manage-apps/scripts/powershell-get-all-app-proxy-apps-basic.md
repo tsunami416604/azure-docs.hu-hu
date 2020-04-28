@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minta – Az alkalmazásproxy-alkalmazások alapvető adatainak listázása
-description: PowerShell-példa, amely felsorolja az Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazások mellett az alkalmazás azonosítóját (AppId), név (DisplayName) és az objektum azonosítóját (ObjId).
+title: PowerShell-minta – alkalmazásproxy-alkalmazások alapszintű adatainak listázása
+description: PowerShell-példa, amely felsorolja Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazásait, valamint az alkalmazás AZONOSÍTÓját (AppId), a nevet (DisplayName) és az Object ID-t (ObjId).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 009aabb8b742a752a29d775efbd11b153588c09b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482217"
 ---
-# <a name="get-all-application-proxy-apps-and-list-basic-information"></a>Az összes alkalmazásproxy-alkalmazás beszerezése és az alapvető információk listázása
+# <a name="get-all-application-proxy-apps-and-list-basic-information"></a>Az összes alkalmazásproxy-alkalmazás beolvasása és alapvető információk listázása
 
-Ez a PowerShell-parancsfájl-példa az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazásadatait tartalmazza, beleértve az alkalmazásazonosítót (AppId), a nevet (DisplayName) és az objektumazonosítót (ObjId).
+Ez a PowerShell-parancsfájl az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazással kapcsolatos információkat listázza, beleértve az alkalmazás AZONOSÍTÓját (AppId), a nevet (DisplayName) és az Object ID-t (ObjId).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Ez a PowerShell-parancsfájl-példa az összes Azure Active Directory (Azure AD)
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) vagy az [AzureAD V2 PowerShell graph modul előzetes verziója](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) szükséges.
 ## <a name="sample-script"></a>Példaszkript
 
 [!code-azurepowershell[main](~/powershell_scripts/application-proxy/get-all-appproxy-apps-basic.ps1 "Get all Application Proxy apps")]
@@ -38,10 +38,10 @@ Ez a minta megköveteli az [AzureAD V2 PowerShell graph modul](https://docs.micr
 
 | Parancs | Megjegyzések |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy szolgáltatásvezetőt kap. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD PowerShell-modulról az [Azure AD PowerShell-modul áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)
+Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)című témakörben olvashat bővebben.
 
-További PowerShell-példák az alkalmazásproxyhoz, lásd: [Azure AD PowerShell példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)
+További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).

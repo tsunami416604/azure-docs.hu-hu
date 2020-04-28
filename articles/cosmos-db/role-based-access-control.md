@@ -1,49 +1,49 @@
 ---
 title: Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
-description: Ismerje meg, hogy az Azure Cosmos DB hogyan nyújt adatbázis-védelmet az Active Directory-integráció (RBAC) segítségével.
+description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis-védelmet az Active Directory-integrációval (RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75445097"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az Azure Cosmos DB gyakori felügyeleti forgatókönyveihez. Az Azure Active Directoryban profillal rendelkező egyén hozzárendelheti ezeket az RBAC-szerepköröket a felhasználókhoz, csoportokhoz, szolgáltatástagokhoz vagy felügyelt identitásokhoz az Azure Cosmos DB-erőforrások erőforrásaihoz és műveleteihez való hozzáférés biztosításához vagy megtagadásához. Szerepkör-hozzárendelések hatóköre csak a vezérlősík-hozzáférés, amely magában foglalja az Azure Cosmos-fiókok, adatbázisok, tárolók és ajánlatok (átviteli érték) eléréséhez való hozzáférést.
+A Azure Cosmos DB beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos DB gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a RBAC-szerepköröket hozzárendelheti a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
-Az Azure Cosmos DB által támogatott beépített szerepkörök a következők:
+A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 
 |**Beépített szerepkör**  |**Leírás**  |
 |---------|---------|
-|[DocumentDB-fiók közreműködője](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Az Azure Cosmos DB-fiókok kezelése.|
-|[Cosmos DB-fiókolvasó](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Az Azure Cosmos DB-fiók adatai olvasása.|
-|[Cosmos biztonsági mentési operátor](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Az Azure Cosmos-adatbázis vagy egy tároló visszaállítási kérelmet küldhet.|
-|[Cosmos DB operátor](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos-fiókok, adatbázisok és tárolók kiépítése, de nem férhet hozzá az adatok eléréséhez szükséges kulcsokat.|
+|[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat.|
+|[Cosmos DB-fiók olvasója](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása.|
+|[Cosmos Backup operátor](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Visszaállíthatja az Azure Cosmos-adatbázis vagy-tároló visszaállítási kérelmét.|
+|[Cosmos DB operátor](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Kiépítheti az Azure Cosmos-fiókokat,-adatbázisokat és-tárolókat, de nem férhet hozzá az adathozzáféréshez szükséges kulcsokhoz.|
 
 > [!IMPORTANT]
-> Az RBAC-támogatás az Azure Cosmos DB-ben csak a vezérlősík-műveletekre vonatkozik. Az adatsík-műveletek főkulcsokkal vagy erőforrás-jogkivonatokkal vannak biztosítva. További információ: [Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben](secure-access-to-data.md)
+> A Azure Cosmos DB RBAC-támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei a főkulcsok vagy az erőforrás-tokenek használatával biztonságosak. További információ: az [adathozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md)
 
-## <a name="identity-and-access-management-iam"></a>Identitás- és hozzáférés-kezelés (IAM)
+## <a name="identity-and-access-management-iam"></a>Identitás-és hozzáférés-kezelés (IAM)
 
-A **hozzáférés-vezérlési (IAM)** ablaktábla az Azure Portalon az Azure Cosmos-erőforrások szerepköralapú hozzáférés-vezérlés konfigurálására szolgál. A szerepkörök az Active Directoryban lévő felhasználókra, csoportokra, egyszerű szolgáltatástagokra és felügyelt identitásokra vonatkoznak. A beépített szerepköröket vagy egyéni szerepköröket egyénekhez és csoportokhoz használhatja. Az alábbi képernyőképen az Active Directory integráció (RBAC) hozzáférés-vezérléssel (IAM) látható az Azure Portalon:
+A Azure Portal hozzáférés-vezérlés **(iam)** ablaktáblája az Azure Cosmos-erőforrások szerepköralapú hozzáférés-vezérlésének konfigurálására szolgál. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat. Az alábbi képernyőfelvételen a Azure Portal hozzáférés-vezérlés (IAM) használatával Active Directory integráció (RBAC) látható:
 
-![Hozzáférés-vezérlés (IAM) az Azure Portalon – az adatbázis biztonságának bemutatása](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
+![Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 
-A beépített szerepkörökön kívül a felhasználók [egyéni szerepköröket](../role-based-access-control/custom-roles.md) is létrehozhatnak az Azure-ban, és ezeket a szerepköröket az Active Directory-bérlőn belüli összes előfizetésben alkalmazhatják. Az egyéni szerepkörök lehetővé teszik a felhasználók számára, hogy RBAC szerepkör-definíciókat hozzanak létre az erőforrás-szolgáltatói műveletek egyéni készletével. Ha meg szeretné tudni, hogy mely műveletek érhetők el az Azure Cosmos DB egyéni szerepkörök létrehozásához, lásd: [Azure Cosmos DB erőforrás-szolgáltató i.](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+A beépített szerepkörökön kívül a felhasználók [Egyéni szerepköröket](../role-based-access-control/custom-roles.md) is létrehozhatnak az Azure-ban, és ezeket a szerepköröket a Active Directory bérlőn belüli összes előfizetéshez alkalmazhatják az egyes szolgáltatásokra. Az egyéni szerepkörök lehetővé teszik a felhasználók számára, hogy RBAC-szerepkör-definíciókat hozzanak létre az erőforrás-szolgáltatói műveletek egyéni készletével. Annak megismeréséhez, hogy mely műveletek érhetők el a Azure Cosmos DB egyéni szerepköreinek létrehozásához: [Azure Cosmos db erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 ## <a name="preventing-changes-from-cosmos-sdk"></a>A Cosmos SDK változásainak megakadályozása
 
-A Cosmos erőforrás-szolgáltató zárolható, hogy megakadályozzák az erőforrások módosításait, beleértve a Cosmos-fiók, adatbázisok, tárolók és átviteli bármely ügyfél fiókkulcsokon keresztül csatlakozik (azaz a Cosmos SDK-n keresztül csatlakozó alkalmazások). Ha be van állítva, a módosításokat bármely erőforrás kell a megfelelő RBAC szerepkörrel és hitelesítő adatokkal rendelkező felhasználó. Ez a képesség `disableKeyBasedMetadataWriteAccess` a Cosmos erőforrás-szolgáltató tulajdonságértékével van beállítva. Egy példa egy Azure Resource Manager sablon ezzel a tulajdonság beállítással az alábbiakban.
+A Cosmos erőforrás-szolgáltató zárolható úgy, hogy megakadályozza az erőforrások, például a Cosmos-fiók, az adatbázisok, a tárolók és az átviteli sebességek változását a fiók kulcsainak (például a Cosmos SDK-n keresztül csatlakozó alkalmazások) használatával csatlakozó ügyfelektől. Ha be van állítva, minden erőforrás módosítása csak a megfelelő RBAC szerepkörrel és hitelesítő adatokkal rendelkező felhasználótól lehet. Ez a képesség a Cosmos `disableKeyBasedMetadataWriteAccess` erőforrás-szolgáltató tulajdonság értékével van beállítva. Alább látható egy példa erre a tulajdonság-beállításra Azure Resource Manager sablonra.
 
 ```json
 {
@@ -65,6 +65,6 @@ A Cosmos erőforrás-szolgáltató zárolható, hogy megakadályozzák az erőfo
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz?](../role-based-access-control/overview.md)
+- [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz](../role-based-access-control/overview.md)
 - [Egyéni szerepkörök Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md)
-- [Az Azure Cosmos DB erőforrás-szolgáltatói műveletei](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+- [Erőforrás-szolgáltatói műveletek Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
