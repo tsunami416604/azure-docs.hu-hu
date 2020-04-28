@@ -1,7 +1,7 @@
 ---
-title: PowerShell-parancsok futtatása Azure AD-hitelesítő adatokkal a blob- vagy várólista-adatok eléréséhez
+title: PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 titleSuffix: Azure Storage
-description: A PowerShell támogatja az Azure AD-hitelesítő adatokkal történő bejelentkezést az Azure Storage blobok és várólisták adatainak futtatásához. A munkamenethez hozzáférési jogkivonat áll rendelkezésre, amely a hívási műveletek engedélyezésére szolgál. Az engedélyek az Azure AD rendszerbiztonsági taghoz rendelt RBAC szerepkörtől függenek.
+description: A PowerShell támogatja az Azure AD-beli hitelesítő adatokkal való bejelentkezést, hogy parancsokat futtasson az Azure Storage blob és a Queues adatain. A munkamenethez hozzáférési token van megadva, és a hívási műveletek engedélyezésére szolgál. Az engedélyek az Azure AD rendszerbiztonsági tag által hozzárendelt RBAC-szerepkörtől függenek.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,41 +11,41 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 373b939ac63f31ccaf6a9f01fac92920e19074ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75553448"
 ---
-# <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>PowerShell-parancsok futtatása Azure AD-hitelesítő adatokkal a blob- vagy várólista-adatok eléréséhez
+# <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 
-Az Azure Storage olyan powershell-bővítményeket biztosít, amelyek lehetővé teszik a bejelentkezést és a parancsfájl-parancsfájl-parancsok futtatását az Azure Active Directory (Azure AD) hitelesítő adataival. Amikor bejelentkezik a PowerShell-be az Azure AD-hitelesítő adatokkal, egy OAuth 2.0-s hozzáférési jogkivonatot ad vissza. Ezt a jogkivonatot a PowerShell automatikusan használja a Blob vagy a Queue storage további adatműveletek engedélyezésére. A támogatott műveletek, már nem kell átadni egy fiókkulcsot vagy SAS-jogkivonatot a parancsot.
+Az Azure Storage olyan bővítményeket biztosít a PowerShellhez, amelyek lehetővé teszik a Azure Active Directory-(Azure AD-) hitelesítő adatokkal való bejelentkezést és parancsfájlok futtatását. Ha Azure AD-beli hitelesítő adatokkal jelentkezik be a PowerShellbe, egy OAuth 2,0 hozzáférési tokent ad vissza. A PowerShell automatikusan használja ezt a tokent, hogy engedélyezze a további adatműveleteket a blob vagy a várólista-tárolón. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
 
-Szerepköralapú hozzáférés-vezérlés (RBAC) keresztül engedélyeket rendelhet a blob- és várólista-adatokhoz egy Azure AD rendszerbiztonsági taghoz. Az RBAC-szerepkörökről az Azure Storage-ban további információt az [Azure Storage-adatokhoz való hozzáférési jogok kezelése az RBAC-mal című](storage-auth-aad-rbac.md)témakörben talál.
+Az Azure AD rendszerbiztonsági tag számára a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet a blob-és üzenetsor-szolgáltatásokhoz. Az Azure Storage RBAC szerepköreivel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz a RBAC használatával](storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-Az Azure Storage-bővítmények blob- és várólista-adatokon végzett műveletekhez támogatottak. Mely műveleteket hívhatja meg, az Azure AD rendszerbiztonsági tagnak adott engedélyektől függ, amellyel bejelentkezik a PowerShellbe. Az Azure Storage-tárolókhoz vagy várólistákhoz az RBAC-on keresztül vannak hozzárendelve. Ha például a **Blob Data Reader** szerepkört kapta, futtathat parancsfájl-kezelési parancsokat, amelyek adatokat olvasnak egy tárolóból vagy várólistából. Ha a **Blob Data Contributor** szerepkört kapta, futtathat parancsfájl-kezelési parancsokat, amelyek egy tárolót vagy várólistát vagy a benne lévő adatokat olvasnak, írnak vagy törölnek.
+Az Azure Storage-bővítmények támogatottak a blob-és üzenetsor-adatokon végzett műveletekhez. A felhívható műveletek az Azure AD rendszerbiztonsági tag által a PowerShellbe való bejelentkezéshez megadott engedélyektől függenek. Az Azure Storage-tárolók vagy-várólisták engedélyei a RBAC-on keresztül vannak hozzárendelve. Ha például hozzárendelte a **blob-Adatolvasó** szerepkört, futtathat parancsfájl-parancsokat, amelyek egy tárolóból vagy várólistából olvasnak be egy adatforrást. Ha hozzá lett rendelve a **blob-adatközreműködői** szerepkörhöz, futtathat olyan parancsfájl-parancsokat, amelyek egy tárolót vagy várólistát, illetve a bennük található adatkészleteket olvassák, írhatják vagy törölhetik.
 
-Az egyes Azure Storage-műveletekhez egy tárolón vagy várólistán szükséges engedélyekről az [OAuth-jogkivonatokkal végzett tárolási műveletek hívása](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)című témakörben talál.  
+További információ az egyes Azure Storage-műveletekhez szükséges engedélyekről a tárolón vagy a várólistán: [tárolási műveletek hívása OAuth-jogkivonatokkal](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
-## <a name="call-powershell-commands-using-azure-ad-credentials"></a>PowerShell-parancsok hívása az Azure AD-hitelesítő adatokkal
+## <a name="call-powershell-commands-using-azure-ad-credentials"></a>PowerShell-parancsok meghívása az Azure AD hitelesítő adataival
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure PowerShell használatával jelentkezzen be, és futtassa a további műveleteket az Azure Storage-on az `-UseConnectedAccount` Azure AD hitelesítő adatok használatával, hozzon létre egy tárolási környezetben hivatkozik a tárfiók, és tartalmazza a paramétert.
+Ha a Azure PowerShell használatával szeretne bejelentkezni, és az Azure Storage-ban az Azure Storage-ban további műveleteket hajt végre, hozzon létre egy tárolási környezetet a Storage `-UseConnectedAccount` -fiókra való hivatkozáshoz, és adja meg a paramétert.
 
-A következő példa bemutatja, hogyan hozhat létre egy tárolót egy új tárfiókban az Azure PowerShell az Azure AD hitelesítő adatait. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-fiókban Azure PowerShell az Azure AD-beli hitelesítő adataival. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
-1. Jelentkezzen be Azure-fiókjába a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal:
+1. Jelentkezzen be az Azure-fiókjába a [Kapcsolódás-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal:
 
     ```powershell
     Connect-AzAccount
     ```
 
-    Az Azure-ba a PowerShellhasználatával való bejelentkezésről a [Bejelentkezés az Azure PowerShellhasználatával](/powershell/azure/authenticate-azureps)című témakörben talál további információt.
+    További információ az Azure-ba történő bejelentkezésről a PowerShell használatával: [bejelentkezés Azure PowerShellsal](/powershell/azure/authenticate-azureps).
 
-1. Hozzon létre egy [Azure-erőforráscsoportot a New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)hívásával. 
+1. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)hívásával. 
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"
@@ -53,7 +53,7 @@ A következő példa bemutatja, hogyan hozhat létre egy tárolót egy új tárf
     New-AzResourceGroup -Name $resourceGroup -Location $location
     ```
 
-1. Tárfiókot hozhat létre a [New-AzStorageAccount hívásával.](/powershell/module/az.storage/new-azstorageaccount)
+1. Hozzon létre egy Storage-fiókot a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)hívásával.
 
     ```powershell
     $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
@@ -62,18 +62,18 @@ A következő példa bemutatja, hogyan hozhat létre egy tárolót egy új tárf
       -Location $location `
     ```
 
-1. A Tárfiók környezetének bekésezése, amely a [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)hívásával határozza meg az új tárfiókot. Egy tárfiókon való működés során hivatkozhat a környezetre a hitelesítő adatok ismételt átadása helyett. Adja `-UseConnectedAccount` meg a paramétert az Azure AD-hitelesítő adatok használatával végzett további adatműveletek hívásához:
+1. Szerezze be a Storage-fiók környezetét, amely az új Storage-fiókot adja meg a [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)hívásával. Storage-fiók esetén a hitelesítő adatok ismételt átadása helyett hivatkozhat a környezetre. Az Azure `-UseConnectedAccount` ad-beli hitelesítő adataival a következő adatműveletek meghívásához használja a paramétert:
 
     ```powershell
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. A tároló létrehozása előtt rendelje hozzá a [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magához. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekre van szüksége az adatműveletek a tárfiókon való végrehajtásához. Az RBAC-szerepkörök hozzárendeléséről az [Azure blob- és várólista-adatok hoz való hozzáférés megadása az RBAC-mal című témakörben talál további információt az Azure Portalon.](storage-auth-aad-rbac.md)
+1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. A RBAC-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és üzenetsor-adatokhoz a Azure Portal RBAC](storage-auth-aad-rbac.md)használatával.
 
     > [!IMPORTANT]
-    > Az RBAC szerepkör-hozzárendelések propagálása néhány percet is igénybe vehet.
+    > A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
-1. Hozzon létre egy tárolót a [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)hívásával. Mivel ez a hívás az előző lépésekben létrehozott környezetet használja, a tároló az Azure AD hitelesítő adataival jön létre.
+1. Hozzon létre egy tárolót a [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)hívásával. Mivel ez a hívás az előző lépésekben létrehozott környezetet használja, a tároló az Azure AD-beli hitelesítő adataival jön létre.
 
     ```powershell
     $containerName = "sample-container"
@@ -82,5 +82,5 @@ A következő példa bemutatja, hogyan hozhat létre egy tárolót egy új tárf
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PowerShell használatával RBAC-szerepkört rendelhet a blob- és várólista-adatokhoz való hozzáféréshez](storage-auth-aad-rbac-powershell.md)
-- [Blob- és várólista-adatokhoz való hozzáférés engedélyezése felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)
+- [A PowerShell használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez](storage-auth-aad-rbac-powershell.md)
+- [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](storage-auth-aad-msi.md)

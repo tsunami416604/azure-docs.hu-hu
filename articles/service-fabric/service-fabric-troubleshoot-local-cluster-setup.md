@@ -1,24 +1,24 @@
 ---
-title: Az Azure Service Fabric helyi fürtjének beállítása – problémamegoldás
-description: Ez a cikk a helyi fejlesztési fürt hibaelhárítására vonatkozó javaslatokat ismerteti
+title: A helyi Azure Service Fabric-fürt telepítésének hibáinak megoldása
+description: Ez a cikk a helyi fejlesztési fürttel kapcsolatos hibaelhárítási javaslatok körét ismerteti
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465499"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Helyi fejlesztői fürtkonfiguráció hibaelhárítása
-Ha a helyi Azure Service Fabric-fejlesztői fürttel való interakció során problémát okoz, tekintse át az alábbi javaslatokat a lehetséges megoldásokra vonatkozóan.
+Ha problémába ütközne a helyi Azure Service Fabric fejlesztői fürttel való interakció során, tekintse át a következő javaslatokat a lehetséges megoldásokról.
 
-## <a name="cluster-setup-failures"></a>Fürttelepítési hibák
-### <a name="cannot-clean-up-service-fabric-logs"></a>A Service Fabric-naplók nem törölhető
+## <a name="cluster-setup-failures"></a>Fürt telepítési hibái
+### <a name="cannot-clean-up-service-fabric-logs"></a>Nem lehet törölni Service Fabric naplókat
 #### <a name="problem"></a>Probléma
-A DevClusterSetup parancsfájl futtatása közben a következő hiba jelenik meg:
+A DevClusterSetup parancsfájl futtatásakor a következő hibaüzenet jelenik meg:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -28,20 +28,20 @@ A DevClusterSetup parancsfájl futtatása közben a következő hiba jelenik meg
 
 
 #### <a name="solution"></a>Megoldás
-Zárja be az aktuális PowerShell-ablakot, és nyisson meg egy új PowerShell-ablakot rendszergazdaként. Most már sikeresen futtathatja a parancsfájlt.
+Az aktuális PowerShell-ablak bezárásával nyisson meg egy új PowerShell-ablakot rendszergazdaként. Most már sikeresen futtathatja a szkriptet.
 
-## <a name="cluster-connection-failures"></a>Fürtkapcsolati hibák
+## <a name="cluster-connection-failures"></a>Fürt csatlakoztatási hibái
 
-### <a name="type-initialization-exception"></a>Típusinicializálás kivétel
+### <a name="type-initialization-exception"></a>Inicializálási kivétel típusa
 #### <a name="problem"></a>Probléma
-Amikor a fürthöz csatlakozik a PowerShellben, a System.Fabric.Common.AppTrace hiba typeinitializationexception jelenik meg.
+Ha a PowerShellben csatlakozik a fürthöz, a System. Fabric. Common. AppTrace TypeInitializationException hibaüzenet jelenik meg.
 
 #### <a name="solution"></a>Megoldás
-Az elérési út változója nem lett megfelelően beállítva a telepítés során. Jelentkezzen ki a Windows rendszerből, majd jelentkezzen be újra. Ez felfrissíti az utadat.
+Az elérésiút-változó nem lett megfelelően beállítva a telepítés során. Jelentkezzen ki a Windowsból, és jelentkezzen be újra. Ez frissíti az elérési utat.
 
-### <a name="cluster-connection-fails-with-object-is-closed"></a>A fürtkapcsolat megszakad az "Objektum bevan zárva"
+### <a name="cluster-connection-fails-with-object-is-closed"></a>A fürthöz való csatlakozás meghiúsul "az objektum bezárva"
 #### <a name="problem"></a>Probléma
-A Connect-ServiceFabricCluster hívása a következőhöz hasonló hibával sikertelen:
+A kapcsolódáshoz szükséges hívás – a ServiceFabricCluster a következőhöz hasonló hibával meghiúsul:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -51,23 +51,23 @@ A Connect-ServiceFabricCluster hívása a következőhöz hasonló hibával sike
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Megoldás
-Zárja be az aktuális PowerShell-ablakot, és nyisson meg egy új PowerShell-ablakot rendszergazdaként.
+Az aktuális PowerShell-ablak bezárásával nyisson meg egy új PowerShell-ablakot rendszergazdaként.
 
-### <a name="fabric-connection-denied-exception"></a>Hálókapcsolat megtagadva kivétel
+### <a name="fabric-connection-denied-exception"></a>Fabric-kapcsolódás megtagadásának kivétele
 #### <a name="problem"></a>Probléma
-Amikor a Visual Studio hibakeresés, kap egy FabricConnectionDeniedException hiba.
+A Visual studióból történő hibakereséskor FabricConnectionDeniedException hibaüzenet jelenik meg.
 
 #### <a name="solution"></a>Megoldás
-Ez a hiba általában akkor fordul elő, amikor manuálisan próbál elindítani egy szolgáltatásgazda folyamatot.
+Ez a hiba általában akkor fordul elő, ha manuálisan próbál meg elindítani egy Service Host-folyamatot.
 
-Győződjön meg arról, hogy a megoldásban nincs beállítva indítási projektként beállított szolgáltatási projekt. Csak a Service Fabric alkalmazásprojekteket kell beállítani indítási projektekként.
+Győződjön meg arról, hogy nem rendelkezik indítási projektként beállított szolgáltatási projektekkel a megoldásban. Csak Service Fabric alkalmazás-projekteket kell beállítani indítási projektként.
 
 > [!TIP]
-> Ha a telepítést követően a helyi fürt rendellenesen kezd el dolgozni, a helyi fürtkezelő rendszertálca-alkalmazással alaphelyzetbe állíthatja azt. Ezzel eltávolítja a meglévő fürtöt, és újat állít be. Vegye figyelembe, hogy az összes telepített alkalmazás és a kapcsolódó adatok törlődnek.
+> Ha a telepítés után a helyi fürt rendellenesen megkezdi a működést, alaphelyzetbe állíthatja a helyi cluster Manager rendszertálca-alkalmazás használatával. Ezzel eltávolítja a meglévő fürtöt, és beállíthat egy újat. Vegye figyelembe, hogy a rendszer eltávolítja az összes telepített alkalmazást és a hozzá tartozó összes adatmennyiséget.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-* [A fürt ismertetése és hibaelhárítása a rendszerállapot-jelentésekkel](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+* [A fürt megismerése és hibakeresése rendszerállapot-jelentésekkel](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)
 

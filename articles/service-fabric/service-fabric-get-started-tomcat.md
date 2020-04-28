@@ -1,45 +1,45 @@
 ---
-title: Hozzon létre egy tárolót apache Tomcat Linuxon
-description: Linux-tároló létrehozása az Apache Tomcat-kiszolgálón futó alkalmazás azure Service Fabric. Hozzon létre egy Docker-rendszerképet az alkalmazással és az Apache Tomcat-kiszolgálóval, küldje le a lemezképet egy tároló beállításjegyzékébe, hozzon létre és telepítsen egy Service Fabric-tárolóalkalmazást.
+title: Tároló létrehozása az Apache Tomcat számára Linuxon
+description: Hozzon létre Linux-tárolót az Apache Tomcat Serveren futó alkalmazások elérhetővé tétele érdekében az Azure Service Fabricon. Hozzon létre egy Docker-rendszerképet az alkalmazással és az Apache Tomcat-kiszolgálóval, küldje el a lemezképet egy tároló-beállításjegyzékbe, és hozzon létre és helyezzen üzembe egy Service Fabric Container alkalmazást
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614417"
 ---
-# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat-kiszolgálót futtató Service Fabric-tároló létrehozása Linuxon
-Az Apache Tomcat a Java Servlet és a Java Server technológiák népszerű, nyílt forráskódú implementációja. Ez a cikk bemutatja, hogyan hozhat létre egy tárolót az Apache Tomcat és egy egyszerű webalkalmazással, hogyan telepítheti a tárolót egy Linux ot futtató Service Fabric-fürtre, és hogyan csatlakozhat a webalkalmazáshoz.  
+# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat Servert futtató Service Fabric tároló létrehozása Linux rendszeren
+Az Apache Tomcat a Java servlet és a Java Server technológiák népszerű, nyílt forráskódú implementációja. Ez a cikk bemutatja, hogyan hozhat létre egy olyan tárolót az Apache Tomcat használatával és egy egyszerű webalkalmazással, hogyan helyezheti üzembe a tárolót egy Linux rendszerű Service Fabric-fürtön, és hogyan csatlakozhat a webalkalmazáshoz.  
 
-Ha többet szeretne megtudni az Apache Tomcat-ról, tekintse meg az [Apache Tomcat honlapját.](https://tomcat.apache.org/) 
+Az Apache Tomcat szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Apache Tomcat kezdőlapját](https://tomcat.apache.org/). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy fejlesztői számítógép, amelyen a következők futnak:
-  * [Service Fabric SDK és eszközök](service-fabric-get-started-linux.md).
+  * [Service FABRIC SDK-t és eszközöket](service-fabric-get-started-linux.md).
   * [Linuxhoz készült Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric parancssori felület](service-fabric-cli.md)
 
-* Egy tároló beállításjegyzék az Azure Container Registry. Az Azure Portalon vagy [az Azure CLI-n](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry)keresztül létrehozhat egy tároló-beállításjegyzéket az Azure-előfizetésben. [the Azure portal](../container-registry/container-registry-get-started-portal.md) 
+* Egy Azure Container Registry tároló-beállításjegyzék. Az Azure-előfizetésben létrehozhat egy tároló-beállításjegyzéket [az Azure Portal](../container-registry/container-registry-get-started-portal.md) vagy [Az Azure CLI](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry)használatával. 
 
-## <a name="build-a-tomcat-image-and-run-it-locally"></a>Tomcat-lemezkép létrehozása és helyi futtatása
-Ebben a szakaszban leírt lépéseket követve hozzon létre egy Apache Tomcat-lemezkép és egy egyszerű webalkalmazás alapján docker-lemezképet, majd futtassa azt egy tárolóban a helyi rendszeren. 
+## <a name="build-a-tomcat-image-and-run-it-locally"></a>Tomcat-rendszerkép létrehozása és helyi futtatása
+Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép és egy egyszerű webalkalmazás alapján hozhat létre Docker-rendszerképet, majd futtathatja azt egy tárolóban a helyi rendszeren. 
  
-1. Klónozza a [Service Fabric első lépések a Java](https://github.com/Azure-Samples/service-fabric-java-getting-started) mintatárház a fejlesztési számítógépen.
+1. A Service Fabric klónozása a Java-minták tárházának [első lépései](https://github.com/Azure-Samples/service-fabric-java-getting-started) a fejlesztői számítógépen.
 
    ```bash
    git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
    ```
 
-1. Könyvtárak módosítása az Apache Tomcat kiszolgáló mintakönyvtárára *(service-fabric-java-getting-started/container-apache-tomcat-web-server-sample):*
+1. Módosítsa a címtárakat az Apache Tomcat Server Sample könyvtárba (*Service-Fabric-Java-Getting-Started/Container-Apache-Tomcat-Web-Server-Sample*):
 
    ```bash
    cd service-fabric-java-getting-started/container-apache-tomcat-web-server-sample
    ```
 
-1. Hozzon létre egy Docker-fájlt a Docker Hubon és a Tomcat-kiszolgálómintán található hivatalos [Tomcat-lemezkép](https://hub.docker.com/_/tomcat/) alapján. A *service-fabric-java-getting-started/container-apache-tomcat-web-server-sample* könyvtárban hozzon létre egy *Dockerfile* nevű fájlt (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
+1. Hozzon létre egy Docker-fájlt a Docker hub-on és a Tomcat Server-mintán található hivatalos [tomcat-rendszerkép](https://hub.docker.com/_/tomcat/) alapján. A *Service-Fabric-Java-Getting-Started/Container-Apache-Tomcat-Web-Server-Sample Directory lapon* hozzon létre egy *Docker* nevű fájlt (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
 
    ```
    FROM library/tomcat
@@ -49,16 +49,16 @@ Ebben a szakaszban leírt lépéseket követve hozzon létre egy Apache Tomcat-l
    COPY ./ApacheTomcat /usr/local/tomcat
    ```
 
-   További információkért tekintse meg a [Docker-fájl hivatkozását.](https://docs.docker.com/engine/reference/builder/)
+   További információért tekintse meg a [Docker-referenciát](https://docs.docker.com/engine/reference/builder/) .
 
 
-4. Futtassa a `docker build` parancsot a webalkalmazást futtató lemezkép létrehozásához:
+4. A következő `docker build` parancs futtatásával hozza létre a webalkalmazást futtató rendszerképet:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Ez a parancs az új lemezképet a Docker-fájl utasításai nak megfelelően építi fel, és a rendszerképet `tomcattest`(-tagging) nevezi el . Egy tárolórendszerkép létrehozásához az alaprendszerkép először letöltődik a Docker Hubról, és az alkalmazás hozzáadódik hozzá. 
+   Ez a parancs létrehozza az új rendszerképet a Docker, a rendszerkép `tomcattest`elnevezése (-t címkézés) című rész utasításai alapján. A tárolók rendszerképének létrehozásához először le kell töltenie az alapképet a Docker hub-ból, és hozzá kell adni az alkalmazást. 
 
    Miután az összeállító parancs lefutott, futtassa a `docker images` parancsot az új rendszerkép információinak megtekintéséhez:
 
@@ -69,27 +69,27 @@ Ebben a szakaszban leírt lépéseket követve hozzon létre egy Apache Tomcat-l
    tomcattest                    latest              86838648aab6        2 minutes ago       194 MB
    ```
 
-5. Ellenőrizze, hogy a tárolós alkalmazás helyileg fut-e, mielőtt lenyomja a tároló beállításjegyzékét:
+5. Ellenőrizze, hogy a tároló alkalmazás helyileg fut-e a tároló beállításjegyzékének leküldése előtt:
  
    ```bash
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`megnevezi a tárolót, így nem az azonosítója, hanem egy rövid név használatával hivatkozhat rá.
-   * `-p`megadja a tároló és a gazdaoperációs rendszer közötti portleképezést. 
+   * `--name`nevezze el a tárolót, így az azonosítója helyett egy rövid nevet használva hivatkozhat rá.
+   * `-p`Megadja a tároló és a gazda operációs rendszer közötti port-hozzárendelést. 
 
    > [!Note]
-   > A `-p` paraméterrel megnyitott portnak kell lennie annak a portnak, amelyen a Tomcat alkalmazás meghallgatja a kéréseket. Az aktuális példában van egy összekötő konfigurálva az *ApacheTomcat/conf/server.xml* fájlban, amely a 8080-as porton http-kérelmeket figyel. Ez a port az állomás 8080-as portjára van leképezve. 
+   > A `-p` paraméterrel megnyitott portnak annak a portnak kell lennie, amelyen a Tomcat-alkalmazás megfigyeli a kérelmeket. Az aktuális példában egy összekötő van konfigurálva a *ApacheTomcat/conf/Server. XML* fájlban, hogy a http-kérelmekhez a 8080-es porton figyeljen. Ez a port a gazdagép 8080-es portjára van leképezve. 
 
-   További információ a [Docker futtatási dokumentációjában.](https://docs.docker.com/engine/reference/commandline/run/)
+   A többi paraméterrel kapcsolatos további tudnivalókért tekintse meg a [Docker-futtatási dokumentációt](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg az alábbi URL-címek egyikét. Látni fogja egy változata a "Hello World!" üdvözlőképernyőt az egyes URL-címekhez.
+1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg a következő URL-címek egyikét. Ekkor megjelenik a ""Helló világ!"alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
    - `http://localhost:8080/hello/sayhi` 
 
-   ![Hello világ / sayhi](./media/service-fabric-get-started-tomcat/hello.png)
+   ![Hello World/sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
 2. Állítsa le a tárolót, és törölje a fejlesztői számítógépről:
 
@@ -98,12 +98,12 @@ Ebben a szakaszban leírt lépéseket követve hozzon létre egy Apache Tomcat-l
    docker rm tomcat-site
    ```
 
-## <a name="push-the-tomcat-image-to-your-container-registry"></a>A Tomcat-lemezkép leküldése a tároló beállításjegyzékébe
-Most, hogy meggyőződött arról, hogy a Tomcat-lemezkép egy tárolóban fut a fejlesztői számítógépen, leküldéses egy tároló beállításjegyzékben lévő tárházba. Ez a cikk az Azure Container Registry segítségével tárolja a lemezképet, de néhány lépés módosításával használhatja bármelyik tároló beállításjegyzék et választhat. Ebben a cikkben a rendszerleíró adatbázis neve a *rendszerleíró adatbázis* neve, a teljes rendszerleíró név pedig myregistry.azurecr.io. Módosítsa ezeket a forgatókönyvnek megfelelően. 
+## <a name="push-the-tomcat-image-to-your-container-registry"></a>A Tomcat-rendszerkép leküldése a tároló-beállításjegyzékbe
+Most, hogy ellenőrizte, hogy a Tomcat-rendszerkép egy tárolóban fut a fejlesztői számítógépen, leküldheti azt egy tároló-beállításjegyzékben lévő adattárba. Ez a cikk a rendszerkép tárolására Azure Container Registry használ, de a lépések némelyikének módosításával bármely kiválasztott tároló-beállításjegyzéket használhat. Ebben a cikkben a rendszer feltételezi, hogy a beállításjegyzék neve *myregistry* , és a teljes beállításjegyzék neve myregistry.azurecr.IO. Módosítsa ezeket megfelelően a forgatókönyvhöz. 
 
-1. Futtassa `docker login` a rendszerleíró adatbázisba való bejelentkezéshez a [rendszerleíró adatbázis hitelesítő adataival.](../container-registry/container-registry-authentication.md)
+1. A `docker login` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
-   Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy a rendszerleíró adatbázis felhasználónevével és jelszavával is bejelentkezhet.
+   Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -121,25 +121,25 @@ Most, hogy meggyőződött arról, hogy a Tomcat-lemezkép egy tárolóban fut a
    docker push myregistry.azurecr.io/samples/tomcattest
    ```
 
-## <a name="build-and-deploy-the-service-fabric-container-application"></a>A Service Fabric-tárolóalkalmazás létrehozása és üzembe helyezése
-Most, hogy leküldte a Tomcat-lemezképet egy tároló beállításjegyzékébe, létrehozhat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást, amely lekéri a Tomcat-lemezképet a rendszerleíró adatbázisból, és a fürtben tárolószolgáltatásként futtatja. 
+## <a name="build-and-deploy-the-service-fabric-container-application"></a>Az Service Fabric Container-alkalmazás létrehozása és üzembe helyezése
+Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, létrehozhat és üzembe helyezhet egy Service Fabric Container-alkalmazást, amely lekéri a Tomcat-rendszerképet a beállításjegyzékből, és a fürtben tároló szolgáltatásként futtatja azt. 
 
-1. Hozzon létre egy új könyvtárat a helyi klónon kívül (a *szolgáltatás-fabric-java-getting-started* könyvtárfán kívül). Váltson rá, és használja yeoman segítségével hozzon létre egy állványt egy konténer alkalmazás: 
+1. Hozzon létre egy új könyvtárat a helyi klónon kívül (a *Service-Fabric-Java-Getting-Started címtár-* fában kívül). Váltson rá, és a Yeoman használatával hozzon létre egy állványt egy tároló alkalmazáshoz: 
 
    ```bash
    yo azuresfcontainer 
    ```
-   Amikor a rendszer kéri, adja meg a következő értékeket:
+   Ha a rendszer kéri, adja meg a következő értékeket:
 
-   * Az alkalmazás neve: ServiceFabricTomcat
-   * Az alkalmazásszolgáltatás neve: TomcatService
-   * Adja meg a lemezkép nevét: Adja meg a tárolórendszerkép URL-címét a tároló beállításjegyzékében; például myregistry.azurecr.io/samples/tomcattest.
-   * Parancsok: Hagyja üresen ezt a lehetőséget. Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így nem kell explicit módon megadni a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását).
-   * Vendégtároló-alkalmazás példányainak száma: 1
+   * Adja meg az alkalmazás nevét: ServiceFabricTomcat
+   * Az Application Service neve: TomcatService
+   * Adja meg a rendszerkép nevét: adja meg a tároló beállításjegyzékének URL-címét; például: myregistry.azurecr.io/samples/tomcattest.
+   * Parancsok: hagyja üresen ezt a mezőt. Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így nem kell explicit módon megadni a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását).
+   * A vendég tároló alkalmazás példányainak száma: 1
 
    ![Tárolókhoz készült Service Fabric Yeoman-generátor](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. A szolgáltatásjegyzékben (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*) adja hozzá a következő XML-t a root **ServiceManfest** címkében, hogy megnyissa azt a portot, amelyen az alkalmazás kéréseket figyel. Az **Endpoint** címke deklarálja a végpont protokollját és portját. Ebben a cikkben a tárolós szolgáltatás a 8080-as porton hallgatja: 
+10. A szolgáltatás jegyzékfájljában (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. XML*) adja hozzá a következő XML-kódot a root **ServiceManfest** címkével, és nyissa meg azt a portot, amelyet az alkalmazás a kérelmekre figyel. A **végpont** címkéje deklarálja a protokollt és a portot a végpont számára. Ebben a cikkben a tároló szolgáltatás a 8080-as portot figyeli: 
 
    ```xml
    <Resources>
@@ -152,7 +152,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló beállításjegyzékébe,
    </Resources>
    ```
 
-11. Az alkalmazásjegyzékben (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*), a **ServiceManifestImport** címkénél adja hozzá a következő XML-t. Cserélje le a RepositoryCredentials címkét a **Tárházhitelesítőcímkét** tartalmazó **fióknév** és **jelszó** helyére a tároló beállításjegyzékének nevére és a bejelentkezéshez szükséges jelszóra.
+11. Az alkalmazás jegyzékfájljában (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest. XML*) a **ServiceManifestImport** címke alatt adja hozzá a következő XML-kódot. Cserélje le a **accountname** és a **jelszót** a **RepositoryCredentials** címkére a tároló-beállításjegyzék nevével és a bejelentkezéshez szükséges jelszóval.
 
    ```xml
    <Policies>
@@ -163,60 +163,60 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló beállításjegyzékébe,
    </Policies>
    ```
 
-   A **ContainerHostPolicies** címke a tárolóállomások aktiválására vonatkozó házirendeket határozza meg.
+   A **ContainerHostPolicies** címke meghatározza a tároló gazdagépek aktiválására vonatkozó házirendeket.
     
-   * A **PortBinding** címke konfigurálja a tárolóport-állomás port hozzárendelési házirendet. A **ContainerPort** attribútum 8080-ra van állítva, mert a tároló a Docker-fájlban megadott 8080-as portot teszi elérhetővé. Az **EndpointRef** attribútum "endpointTest" értékre van állítva, amely az előző lépésben a szolgáltatásjegyzékben definiált végpont. Így a 8080-as porton lévő szolgáltatáshoz érkező kérelmek a tárolón lévő 8080-as portra vannak leképezve. 
-   * A **RepositoryCredentials** címke megadja azokat a hitelesítő adatokat, amelyeket a tárolónak hitelesítenie kell a (magán) tárházzal, ahonnan lekéri a lemezképet. Nincs szüksége erre a házirendre, ha a rendszerkép egy nyilvános tárházból lesz lekéri.
+   * A **PortBinding** címke konfigurálja a tároló port – gazdagép port-hozzárendelési házirendjét. A **ContainerPort** attribútum értéke 8080, mert a tároló a 8080-es portot teszi elérhetővé a Docker megadott módon. A **EndpointRef** attribútum értéke "endpointTest", az előző lépésben a szolgáltatás jegyzékfájljában meghatározott végpont. Így az 8080-as porton a szolgáltatás felé irányuló bejövő kérések a tároló 8080-es portjára vannak leképezve. 
+   * A **RepositoryCredentials** címke meghatározza azokat a hitelesítő adatokat, amelyeket a tárolónak hitelesítenie kell a (privát) adattárral, ahol lekéri a rendszerképet. Nincs szüksége erre a szabályzatra, ha a rendszerkép le lesz húzva egy nyilvános tárházból.
     
 
-12. A *ServiceFabricTomcat* mappában csatlakozzon a szolgáltatásháló-fürthöz. 
+12. A *ServiceFabricTomcat* mappában kapcsolódjon a Service Fabric-fürthöz. 
 
-   * A helyi Service Fabric-fürthöz való csatlakozáshoz futtassa a következőt:
+   * A helyi Service Fabric fürthöz való kapcsolódáshoz futtassa a következőt:
 
      ```bash
      sfctl cluster select --endpoint http://localhost:19080
      ```
     
-   * Biztonságos Azure-fürthöz való csatlakozáshoz győződjön meg arról, hogy az ügyféltanúsítvány .pem fájlként van jelen a *ServiceFabricTomcat* könyvtárban, és futtassa a következőket: 
+   * Ha biztonságos Azure-fürthöz szeretne csatlakozni, győződjön meg róla, hogy az ügyféltanúsítvány. PEM-fájlként van jelen a *ServiceFabricTomcat* könyvtárban, és futtassa a következőt: 
 
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Az előző parancsban `your-certificate.pem` cserélje le az ügyféltanúsítvány-fájl nevét. Fejlesztési és tesztelési környezetekben a fürttanúsítványt gyakran használják ügyféltanúsítványként. Ha a tanúsítvány nincs önaláírt, `-no-verify` hagyja ki a paramétert. 
+     Az előző parancsban cserélje le `your-certificate.pem` az nevet az ügyféltanúsítvány-fájl nevére. A fejlesztési és tesztelési környezetekben a fürt tanúsítványát gyakran használják ügyféltanúsítványt. Ha a tanúsítvány nem önaláírt, hagyja ki a `-no-verify` paramétert. 
        
-     A fürttanúsítványokat általában helyileg .pfx fájlként töltik le. Ha még nem rendelkezik a tanúsítvánnyal PEM formátumban, a következő paranccsal .pfx fájlból hozhat létre .pem fájlt:
+     A fürtözött tanúsítványok általában. pfx-fájlként vannak letöltve. Ha még nem rendelkezik a tanúsítvány PEM formátumban való használatával, a következő parancs futtatásával hozhat létre egy. pfx-fájlból származó. PEM-fájlt:
 
      ```bash
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     Ha a .pfx fájl nem jelszóval védett, használja `-passin pass:` az utolsó paramétert.
+     Ha a. pfx fájl jelszava nem védett, használja `-passin pass:` az utolsó paramétert.
 
 
-13. Futtassa a sablonban megadott telepítési parancsfájlt az alkalmazás fürtre való központi telepítéséhez. A parancsfájl átmásolja az alkalmazáscsomagot a fürt lemezképtárolójára, regisztrálja az alkalmazás típusát, és létrehozza az alkalmazás egy példányát.
+13. Futtassa a sablonban megadott telepítési parancsfájlt az alkalmazás fürtön való üzembe helyezéséhez. A szkript átmásolja az alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és létrehozza az alkalmazás egy példányát.
 
      ```bash
      ./install.sh
      ```
 
-   A telepítési parancsfájl futtatása után nyisson meg egy böngészőt, és keresse meg a Service Fabric Intézőt:
+   A telepítési parancsfájl futtatása után nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer:
     
-   * Egy helyi fürtön `http://localhost:19080/Explorer` használja a *helyi állomást* a virtuális gép privát IP-címével, ha AMac OS X rendszeren használja a Vagrant-et).
-   * Egy biztonságos Azure-fürtön használja a használatát. `https://PublicIPorFQDN:19080/Explorer` 
+   * Helyi fürtön használja `http://localhost:19080/Explorer` a ( *localhost* a virtuális gép magánhálózati IP-címére), ha Mac OS X-ben a Csavargót használja.
+   * Biztonságos Azure-fürtön használja `https://PublicIPorFQDN:19080/Explorer`a következőt:. 
     
-   Bontsa ki az **Alkalmazások** csomópontot, és vegye figyelembe, hogy most már van egy bejegyzés az alkalmazás típusához, **ServiceFabricTomcatType**, és egy másik az adott típusú első példányhoz. Eltarthat néhány percig, amíg az alkalmazás teljes mértékben üzembe helyezhető, ezért legyen türelmes.
+   Bontsa ki az **alkalmazások** csomópontot, és figyelje meg, hogy most már van egy bejegyzés az alkalmazás típusához, a **ServiceFabricTomcatType**és egy másikhoz az adott típus első példányához. Az alkalmazás teljes körű üzembe helyezése eltarthat néhány percig, tehát türelmesnek kell lennie.
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Az alkalmazás Tomcat kiszolgálón való eléréséhez nyisson meg egy böngészőablakot, és adja meg az alábbi URL-címek bármelyikét. Ha a helyi fürtre telepítette, használja a *localhost-ot* a *PublicIPorFQDN számára.* Látni fogja egy változata a "Hello World!" üdvözlőképernyőt az egyes URL-címekhez.
+1. Ha a Tomcat-kiszolgálón szeretné elérni az alkalmazást, nyisson meg egy böngészőablakot, és adja meg a következő URL-címek bármelyikét. Ha központilag telepítette a helyi fürtöt, használja a *localhost* elemet a *PublicIPorFQDN*. Ekkor megjelenik a ""Helló világ!"alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-A sablonban található eltávolítási parancsfájl segítségével törölheti az alkalmazáspéldányt a fürtből, és törölheti az alkalmazástípus regisztrációját.
+A sablonban megadott eltávolítási parancsfájl használatával törölje az alkalmazás példányát a fürtből, és törölje az alkalmazás típusának regisztrációját.
 
 ```bash
 ./uninstall.sh
@@ -230,8 +230,8 @@ docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A további Linux-tárolófunkciók gyors lépéseiért olvassa [el az Első Service Fabric-tárolóalkalmazás létrehozása Linuxon](service-fabric-get-started-containers-linux.md)című olvasnivalót.
-* A Linux-tárolók részletesebb lépéseiért olvassa el a [Linux-tárolóalkalmazás létrehozása oktatóanyag](service-fabric-tutorial-create-container-images.md) című oktatóanyagát.
+* A Linux-tárolók további funkcióinak gyors lépéseihez olvassa el [az első Service Fabric Container-alkalmazás létrehozása Linux](service-fabric-get-started-containers-linux.md)rendszeren című témakört.
+* A Linux-tárolókkal kapcsolatos részletesebb lépésekért olvassa el a [Linux Container App-alkalmazás létrehozása oktatóanyagot](service-fabric-tutorial-create-container-images.md) .
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 
 

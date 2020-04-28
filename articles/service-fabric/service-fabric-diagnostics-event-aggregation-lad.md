@@ -1,47 +1,47 @@
 ---
-title: Eseményösszesítés linuxos Azure-diagnosztikával
-description: Ismerje meg az események összesítését és gyűjtését a LAD használatával az Azure Service Fabric-fürtök figyeléséhez és diagnosztikájához.
+title: Események összesítése Linux Azure Diagnostics
+description: Ismerje meg, hogy az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához a LAD használatával hogyan összesítheti és gyűjtheti az eseményeket.
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609961"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Eseményösszesítés és -gyűjtés linuxos Azure-diagnosztika használatával
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Események összesítése és gyűjtése linuxos Azure Diagnostics használatával
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Ha egy Azure Service Fabric-fürtöt futtat, célszerű a naplókat egy központi helyen lévő összes csomópontról gyűjteni. A naplók központi helyen történő elhelyezése segít a fürtben, illetve az adott fürtben futó alkalmazásokban és szolgáltatásokban felmerülő problémák elemzésében és elhárításában.
+Ha Azure Service Fabric-fürtöt futtat, érdemes összegyűjteni a naplókat egy központi helyen lévő összes csomópontról. A központi helyen található naplók segítségével elemezheti és elháríthatja a fürtben felmerülő problémákat, illetve a fürtben futó alkalmazások és szolgáltatások hibáit.
 
-A naplók feltöltésének és gyűjtésének egyik módja a Linux Azure Diagnostics (LAD) bővítmény használata, amely feltölti a naplókat az Azure Storage-ba, és rendelkezik a naplók küldésére az Azure Application Insights vagy az Event Hubs számára. Egy külső folyamat is használhatja az eseményeket a tárolóból, és helyezze el őket egy elemzési platform termék, például [az Azure Monitor naplók](../log-analytics/log-analytics-service-fabric.md) vagy más log-elemzési megoldás.
+A naplók feltöltésének és összegyűjtésének egyik módja a Linux Azure Diagnostics (LAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például [Azure monitor naplókban](../log-analytics/log-analytics-service-fabric.md) vagy egy másik naplózási megoldásban.
 
-## <a name="log-and-event-sources"></a>Napló- és eseményforrások
+## <a name="log-and-event-sources"></a>Napló-és eseményforrás
 
-### <a name="service-fabric-platform-events"></a>Service Fabric platformesemények
-A Service Fabric néhány beépített naplót bocsát ki az [LTTng-en](https://lttng.org)keresztül, beleértve az operatív eseményeket vagy a futásidejű eseményeket. Ezek a naplók a fürt Erőforrás-kezelő sablonja által megadott helyen tárolódnak. A tárfiók részleteinek beszerzéséhez vagy beállításához keresse meg az **AzureTableWinFabETWQueryable** címkét, és keresse meg a **StoreConnectionString**kifejezést.
+### <a name="service-fabric-platform-events"></a>Service Fabric platform eseményei
+Service Fabric a [lttng érhető el](https://lttng.org)-on keresztül néhány beépített naplót bocsát ki, beleértve az operatív eseményeket vagy a futásidejű eseményeket. Ezeket a naplókat abban a helyen tárolja a rendszer, ahol a fürt Resource Manager-sablonja meg van határozva. A Storage-fiók adatainak beszerzéséhez vagy beállításához keresse meg a **AzureTableWinFabETWQueryable** címkét, és keresse meg a **StoreConnectionString**.
 
-### <a name="application-events"></a>Alkalmazásesemények
- Az alkalmazások és szolgáltatások kódjából kibocsátott események, ahogy azt Ön a szoftver műszerezése során meghatározta. Bármilyen naplózási megoldást használhat, amely szövegalapú naplófájlokat ír – például LTTng. További információt az LTTng dokumentációjában talál az alkalmazás nyomon követéséről.
+### <a name="application-events"></a>Alkalmazás eseményei
+ Az alkalmazásokból és a szolgáltatásokból származó, a szoftver kiszervezése során megadott események. Bármilyen, szöveges alapú naplófájlokat írásos naplózási megoldást használhat – például Lttng érhető el. További információkért tekintse meg az alkalmazás nyomkövetésének Lttng érhető el dokumentációját.
 
-[A szolgáltatások figyelése és diagnosztizálása a helyi gépfejlesztési beállításokban.](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+[A szolgáltatások figyelése és diagnosztizálása a helyi számítógép-fejlesztési beállításokban](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 
-## <a name="deploy-the-diagnostics-extension"></a>A Diagnosztika bővítmény telepítése
-A naplók gyűjtésének első lépése a diagnosztikai bővítmény üzembe helyezése a Service Fabric-fürt minden egyes virtuális gépén. A Diagnosztikai bővítmény minden virtuális gép naplóit gyűjti, és feltölti őket a megadott tárfiókba. 
+## <a name="deploy-the-diagnostics-extension"></a>A diagnosztikai bővítmény üzembe helyezése
+A naplók összegyűjtésének első lépéseként telepítenie kell a diagnosztikai bővítményt a Service Fabric-fürtön lévő összes virtuális gépre. A diagnosztikai bővítmény összegyűjti a naplókat az egyes virtuális gépeken, és feltölti azokat a megadott Storage-fiókba. 
 
-Ha a fürt létrehozása részeként telepíti a diagnosztikai bővítményt a fürt ben lévő virtuális gépekre, állítsa **a Diagnosztika** **beállítását Be állapotra.** A fürt létrehozása után ezt a beállítást nem módosíthatja a portál használatával, ezért el kell végrehajtania a megfelelő módosításokat az Erőforrás-kezelő sablonban.
+Ha a fürt létrehozása során a diagnosztikai bővítményt a fürtben lévő virtuális gépekre szeretné telepíteni, állítsa a **diagnosztika** lehetőséget **a**következőre:. A fürt létrehozása után ez a beállítás nem módosítható a portál használatával, ezért a megfelelő módosításokat el kell végeznie a Resource Manager-sablonban.
 
-Ez úgy konfigurálja a LAD-ügynököt, hogy a megadott naplófájlokat figyelje. Amikor új sort fűz a fájlhoz, létrehoz egy syslog bejegyzést, amelyet a rendszer a megadott tárolóba (táblába) küld.
+Ezzel konfigurálja a LAD-ügynököt a megadott naplófájlok figyelésére. Minden alkalommal, amikor új sort fűz a fájlhoz, létrehoz egy syslog-bejegyzést, amelyet a rendszer a megadott tárolóba (táblára) küld.
 
 
 ## <a name="next-steps"></a>További lépések
 
-1. Ha részletesebben szeretné megtudni, hogy milyen eseményeket kell megvizsgálnia a hibaelhárítás során, olvassa el az [LTTng dokumentációját](https://lttng.org/docs) és [a LAD használata című témakört.](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)
-2. [Állítsa be a Log Analytics-ügynököt a](service-fabric-diagnostics-event-analysis-oms.md) metrikák összegyűjtéséhez, a fürtön üzembe helyezett tárolók figyeléséhez és a naplók megjelenítéséhez 
+1. A hibák elhárítása során megfontolandó események részletesebb megismeréséhez tekintse meg a [lttng érhető el dokumentációját](https://lttng.org/docs) és a [Lad használatával](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)foglalkozó témakört.
+2. [A log Analytics ügynök beállítása](service-fabric-diagnostics-event-analysis-oms.md) a metrikák gyűjtéséhez, a fürtön üzembe helyezett tárolók figyeléséhez és a naplók megjelenítéséhez 

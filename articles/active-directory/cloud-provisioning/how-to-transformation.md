@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect felhőalapú kiépítési átalakításai
-description: Ez a cikk azt ismerteti, hogy miként lehet átalakítások segítségével módosítani az alapértelmezett attribútumleképezéseket.
+title: Azure AD Connect felhőalapú kiépítési átalakítások
+description: Ez a cikk azt ismerteti, hogyan használhatók a transzformációk az alapértelmezett attribútumok leképezésének módosításához.
 author: billmath
 ms.author: billmath
 manager: davba
@@ -9,32 +9,32 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75549295"
 ---
 # <a name="transformations"></a>Átalakítások
 
-Az átalakítással módosíthatja az azure Active Directoryval (Azure AD) való attribútumszinkronizálás alapértelmezett viselkedését a felhőalapú kiépítés használatával.
+Az átalakítással megváltoztathatja az attribútumok Azure Active Directory (Azure AD) szolgáltatással való szinkronizálásának alapértelmezett viselkedését a Felhőbeli kiépítés használatával.
 
-A feladat végrehajtásához szerkesztenikell a sémát, majd újra el kell küldenie egy webes kérelemen keresztül.
+A feladat elvégzéséhez szerkesztenie kell a sémát, majd újra el kell küldenie egy webes kérelem használatával.
 
-A felhőalapú kiépítési attribútumokkal kapcsolatos további információkért [lásd: Az Azure AD-séma ismertetése.](concept-attributes.md)
+A felhőalapú kiépítési attribútumokkal kapcsolatos további információkért lásd [Az Azure ad-séma megismerése](concept-attributes.md)című témakört.
 
 
-## <a name="retrieve-the-schema"></a>A séma beolvasása
-A séma beolvasásához kövesse [a Séma megtekintése](concept-attributes.md#view-the-schema)című részben leírt lépéseket. 
+## <a name="retrieve-the-schema"></a>Séma beolvasása
+A séma beolvasásához kövesse a [séma megtekintése](concept-attributes.md#view-the-schema)című témakör lépéseit. 
 
-## <a name="custom-attribute-mapping"></a>Egyéni attribútumleképezés
-Egyéni attribútumleképezés hozzáadásához kövesse az alábbi lépéseket.
+## <a name="custom-attribute-mapping"></a>Egyéni attribútumok leképezése
+Egyéni attribútumok hozzárendelésének hozzáadásához kövesse az alábbi lépéseket.
 
-1. Másolja a sémát egy szövegbe vagy kódszerkesztőbe, például [a Visual Studio-kódba.](https://code.visualstudio.com/)
+1. Másolja a sémát egy szöveg-vagy Kódszerkesztő-Szerkesztőbe, például a [Visual Studio Code](https://code.visualstudio.com/)-ba.
 1. Keresse meg a sémában frissíteni kívánt objektumot.
 
    ![Objektum a sémában](media/how-to-transformation/transform1.png)</br>
-1. Keresse meg `ExtensionAttribute3` a felhasználói objektum alatti kódot.
+1. Keresse meg a felhasználói `ExtensionAttribute3` objektum alatt található kódot.
 
     ```
                             {
@@ -62,7 +62,7 @@ Egyéni attribútumleképezés hozzáadásához kövesse az alábbi lépéseket.
                                 }
                             },
     ```
-1. A kód szerkesztése úgy, hogy a vállalat `ExtensionAttribute3`attribútuma hozzá legyen rendelve.
+1. Szerkessze a kódot úgy, hogy a vállalati attribútum le `ExtensionAttribute3`legyen képezve.
 
    ```
                                     {
@@ -90,25 +90,25 @@ Egyéni attribútumleképezés hozzáadásához kövesse az alábbi lépéseket.
                                         }
                                     },
    ```
- 1. Másolja vissza a sémát a Graph Explorer programba, módosítsa a **kérelem típusát** **PUT -ra,** és válassza a **Lekérdezés futtatása**lehetőséget.
+ 1. Másolja vissza a sémát a Graph Explorerben, módosítsa a **kérelem típusát** a **put**értékre, majd válassza a **lekérdezés futtatása**lehetőséget.
 
     ![Lekérdezés futtatása](media/how-to-transformation/transform2.png)
 
- 1. Most az Azure Portalon lépjen a felhőkiépítési konfigurációra, és válassza **a Kiépítés újraindítása**lehetőséget.
+ 1. Most a Azure Portal nyissa meg a felhő üzembe helyezési konfigurációját, és válassza a **kiépítés újraindítása**lehetőséget.
 
     ![Kiépítés újraindítása](media/how-to-transformation/transform3.png)
 
- 1. Egy idő után ellenőrizze, hogy az attribútumok feltöltése `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`a következő lekérdezés futtatásával van-e feltöltve a Graph Explorer programban: .
- 1. Most látnia kell az értéket.
+ 1. Egy kis idő elteltével ellenőrizze, hogy az attribútumok feltöltése a következő lekérdezés futtatásával történik-e a Graph Explorerben `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`:.
+ 1. Ekkor az értéknek kell megjelennie.
 
-    ![Az érték megjelenik](media/how-to-transformation/transform4.png)
+    ![Az érték jelenik meg](media/how-to-transformation/transform4.png)
 
-## <a name="custom-attribute-mapping-with-function"></a>Egyéni attribútumleképezés funkcióval
-A fejlettebb leképezéshez olyan függvényeket használhat, amelyek lehetővé teszik az adatok manipulálását és a szervezet igényeinek megfelelő attribútumok értékeinek létrehozását.
+## <a name="custom-attribute-mapping-with-function"></a>Egyéni attribútumok leképezése függvénnyel
+A speciális leképezéshez használhatja azokat a függvényeket, amelyek lehetővé teszik az adatok módosítását és az attribútumok értékének létrehozását a szervezet igényeinek megfelelően.
 
-A feladat végrehajtásához hajtsa végre az előző lépéseket, majd szerkesztse a végső érték létrehozásához használt függvényt.
+A feladat elvégzéséhez kövesse az előző lépéseket, majd szerkessze a végső érték létrehozásához használt függvényt.
 
-A szintaxisról és a kifejezések példáiról az [Attribútumleképezések kifejezések írása az Azure Active Directoryban](reference-expressions.md)című témakörben talál további információt.
+A szintaxissal és a kifejezésekkel kapcsolatos további információkért lásd: [kifejezések írása az attribútumok megfeleltetéséhez Azure Active Directory](reference-expressions.md).
 
 
 ## <a name="next-steps"></a>További lépések 

@@ -1,53 +1,53 @@
 ---
-title: Az Azure Cloud Services-alkalmazások konvertálása Service Fabric-é
-description: Ez az útmutató összehasonlítja a Cloud Services web- és feldolgozói szerepkörök és a Service Fabric állapotmentes szolgáltatások segítségével migrálni a Cloud Services service fabric.
+title: Azure Cloud Services-alkalmazások konvertálása Service Fabric
+description: Ez az útmutató összehasonlítja Cloud Services webes és feldolgozói szerepköröket, és Service Fabric állapot nélküli szolgáltatásokat biztosít a Cloud Servicesról a Service Fabricre való Migrálás céljából.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463343"
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök szolgáltatásfabric állapotmentes szolgáltatásokká történő konvertálásához
-Ez a cikk ismerteti, hogyan telepítheti át a Cloud Services webes és feldolgozói szerepkörök Service Fabric állapotmentes szolgáltatások. Ez a legegyszerűbb áttelepítési útvonal a Cloud Services-től a Service Fabric-ig olyan alkalmazások hoz, amelyek teljes architektúrája nagyjából ugyanaz marad.
+# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök Service Fabric állapot nélküli szolgáltatásokhoz való átalakításához
+Ez a cikk azt ismerteti, hogyan telepítheti át Cloud Services webes és feldolgozói szerepköreit Service Fabric állapot nélküli szolgáltatások számára. Ez a legegyszerűbb áttelepítési útvonal Cloud Servicesról Service Fabric olyan alkalmazások számára, amelyek általános architektúrája nagyjából azonos marad.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Felhőszolgáltatás-projekt a Service Fabric alkalmazásprojektjéhez
- A Cloud Service-projekt és a Service Fabric-alkalmazás projekt hasonló szerkezetű, és mindkettő képviseli az alkalmazás központi telepítési egysége - azaz mindegyik határozza meg a teljes csomagot, amely telepítve van az alkalmazás futtatásához. A Cloud Service-projekt egy vagy több webes vagy feldolgozói szerepkört tartalmaz. Hasonlóképpen egy Service Fabric-alkalmazás projekt egy vagy több szolgáltatást tartalmaz. 
+## <a name="cloud-service-project-to-service-fabric-application-project"></a>Cloud Service-projekt Service Fabric alkalmazás-projekthez
+ A Cloud Service-projekt és a Service Fabric alkalmazás-projekt hasonló struktúrával rendelkezik, és mindkettő az alkalmazás üzembe helyezési egységét képviseli, azaz mindegyiknek meg kell határoznia az alkalmazás futtatásához üzembe helyezett teljes csomagot. A felhőalapú szolgáltatási projekt egy vagy több webes vagy feldolgozói szerepkört tartalmaz. Hasonlóképpen, egy Service Fabric alkalmazás-projekt tartalmaz egy vagy több szolgáltatást. 
 
-A különbség az, hogy a Cloud Service-projekt az alkalmazás üzembe helyezését egy virtuális gép központi telepítésével választja, és így tartalmazza a virtuális gép konfigurációs beállításait, míg a Service Fabric-alkalmazás projekt csak egy olyan alkalmazást határoz meg, amely egy meglévő virtuális gépek et egy Service Fabric-fürtben. Maga a Service Fabric-fürt csak egyszer van üzembe helyezve, akár egy Resource Manager-sablonon keresztül, akár az Azure Portalon keresztül, és több Service Fabric-alkalmazás is telepíthető.
+A különbség az, hogy a Cloud Service Project a virtuálisgép-telepítéssel párosítja az alkalmazás üzembe helyezését, így a virtuális gép konfigurációs beállításait tartalmazza, míg a Service Fabric alkalmazás-projekt csak olyan alkalmazást határoz meg, amely egy Service Fabric-fürtben lévő meglévő virtuális gépek készletére lesz telepítve. Maga a Service Fabric-fürt csak egyszer lesz telepítve, vagy egy Resource Manager-sablonon vagy a Azure Portalon keresztül, és több Service Fabric alkalmazás is üzembe helyezhető.
 
-![A Szolgáltatás fabric és a felhőszolgáltatások projektjának összehasonlítása][3]
+![Service Fabric és Cloud Services projekt összehasonlítása][3]
 
-## <a name="worker-role-to-stateless-service"></a>Feldolgozói szerepkör az állapotnélküli szolgáltatáshoz
-Fogalmilag a feldolgozói szerepkör egy állapot nélküli számítási feladatot jelent, ami azt jelenti, hogy a munkaterhelés minden példánya azonos, és a kérelmek bármikor átirányíthatók bármely példányhoz. Minden példány nak nem kell megjegyeznie az előző kérést. Azt állítják, hogy a számítási feladatok működik egy külső állapottároló, például az Azure Table Storage vagy az Azure Cosmos DB által kezelt. A Service Fabric ilyen típusú számítási feladatok egy állapotmentes szolgáltatás képviseli. A feldolgozói szerepkör Service Fabric-be való migrálásának legegyszerűbb megközelítése a feldolgozói szerepkör kód állapotnélküli szolgáltatássá alakításával végezhető el.
+## <a name="worker-role-to-stateless-service"></a>Feldolgozói szerepkör az állapot nélküli szolgáltatáshoz
+Elméletileg a feldolgozói szerepkör állapot nélküli munkaterhelést képvisel, ami azt jelenti, hogy a munkaterhelés minden példánya azonos, és a kérések bármikor átirányíthatók bármelyik példányra. Az egyes példányok nem várnak az előző kérelemre. Azt, hogy a munkaterhelést a (z) rendszer felügyeli-e, külső állapotú tároló (például Azure Table Storage vagy Azure Cosmos DB) kezeli. Service Fabric az ilyen típusú számítási feladatokat egy állapot nélküli szolgáltatás jelképezi. A feldolgozói szerepkör Service Fabricre való áttelepítésének legegyszerűbb megközelítése a feldolgozói szerepkör kódjának állapot nélküli szolgáltatásba történő átváltásával hajtható végre.
 
-![Feldolgozói szerepkör állapotnélküli szolgáltatáshoz][4]
+![Feldolgozói szerepkör az állapot nélküli szolgáltatáshoz][4]
 
-## <a name="web-role-to-stateless-service"></a>Webes szerepkör az állapotnélküli szolgáltatáshoz
-A feldolgozói szerepkörhöz hasonlóan a webes szerepkör is állapotnélküli számítási feladatot jelent, és így fogalmilag is leképezhető egy Service Fabric állapotmentes szolgáltatáshoz. A webes szerepköröktől eltérően azonban a Service Fabric nem támogatja az IIS szolgáltatást. Ahhoz, hogy egy webalkalmazást webes szerepkörből állapotmentes szolgáltatásba telepítsen, először olyan webes keretrendszerbe kell áttérni, amely saját üzemeltethető, és nem függ az IIS-től vagy a System.Web-től, például ASP.NET Core 1-től.
+## <a name="web-role-to-stateless-service"></a>Az állapot nélküli szolgáltatás webes szerepköre
+A feldolgozói szerepkörhöz hasonlóan a webes szerepkörök állapot nélküli számítási feladatokat is jelentenek, így a fogalmi módon is leképezhetők egy Service Fabric állapot nélküli szolgáltatáshoz. A webes szerepköröktől eltérően azonban a Service Fabric nem támogatja az IIS-t. Webalkalmazás webes szerepkörről állapot nélküli szolgáltatásba való áttelepítéséhez először olyan webes keretrendszerre kell áttérnie, amely saját üzemeltetésű, és nem függ az IIS-től vagy a System. Web-től, például ASP.NET Core 1.
 
 | **Alkalmazás** | **Támogatott** | **Áttelepítési útvonal** |
 | --- | --- | --- |
-| webes űrlapok ASP.NET |Nem |Konvertálás ASP.NET Core 1 MVC-vé |
-| ASP.NET, MVC |Áttelepítéssel |Frissítés ASP.NET Core 1 MVC-re |
-| ASP.NET, webes API |Áttelepítéssel |Saját üzemeltetésű kiszolgáló vagy ASP.NET Core 1 használata |
-| ASP.NET 1. |Igen |N/A |
+| ASP.NET Web Forms |Nem |Átalakítás ASP.NET Core 1 MVC-re |
+| ASP.NET, MVC |Áttelepítéssel |Frissítés ASP.NET Core 1 MVC-ra |
+| ASP.NET, webes API |Áttelepítéssel |Saját üzemeltetésű kiszolgáló használata vagy ASP.NET Core 1 |
+| ASP.NET Core 1 |Igen |N/A |
 
-## <a name="entry-point-api-and-lifecycle"></a>Belépési pont API és életciklus
-A feldolgozói szerepkör és a service fabric szolgáltatás API-jai hasonló belépési pontokat kínálnak: 
+## <a name="entry-point-api-and-lifecycle"></a>Belépési pont API és életciklusa
+A feldolgozói szerepkör és a Service Fabric szolgáltatás API-jai hasonló belépési pontokat kínálnak: 
 
-| **Belépési pont** | **Dolgozói szerepkör** | **Szolgáltatás fabric szolgáltatás** |
+| **Belépési pont** | **Feldolgozói szerepkör** | **Service Fabric szolgáltatás** |
 | --- | --- | --- |
 | Feldolgozás |`Run()` |`RunAsync()` |
 | Virtuális gép indítása |`OnStart()` |N/A |
 | Virtuális gép leállítása |`OnStop()` |N/A |
-| Figyelő megnyitása ügyfélkérelmekhez |N/A |<ul><li> `CreateServiceInstanceListener()`a stateless</li><li>`CreateServiceReplicaListener()`az állapotalapú</li></ul> |
+| Ügyfél-kérelmekhez tartozó figyelő megnyitása |N/A |<ul><li> `CreateServiceInstanceListener()`állapot nélküli</li><li>`CreateServiceReplicaListener()`állapot-nyilvántartó</li></ul> |
 
-### <a name="worker-role"></a>Dolgozói szerepkör
+### <a name="worker-role"></a>Feldolgozói szerepkör
 ```csharp
 
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -72,7 +72,7 @@ namespace WorkerRole1
 
 ```
 
-### <a name="service-fabric-stateless-service"></a>Szolgáltatásfabric állapotmentes szolgáltatás
+### <a name="service-fabric-stateless-service"></a>Állapot nélküli szolgáltatás Service Fabric
 ```csharp
 
 using System.Collections.Generic;
@@ -97,38 +97,38 @@ namespace Stateless1
 
 ```
 
-Mindkettő rendelkezik egy elsődleges "Run" felülbírálása, amelyben a feldolgozás megkezdéséhez. A Service `Run`Fabric `Start`szolgáltatásai `Stop` egyetlen belépési `RunAsync`pontba, a . A szolgáltatásnak meg `RunAsync` kell kezdenie a `RunAsync` munkát, amikor elindul, és le kell állítania a munkát, ha a metódus CancellationToken jelzést kap. 
+Mindkettő rendelkezik egy elsődleges "Futtatás" felülbírálással, amelyben megkezdheti a feldolgozást. A Service Fabric- `Run`szolgáltatások `Start`egyetlen belépési ponttal kombinálják a-t és `Stop` a-t `RunAsync`. A szolgáltatásnak a `RunAsync` kezdéskor kell megkezdenie a munkát, és `RunAsync` a metódus CancellationToken jelzése szerint leáll. 
 
-A feldolgozói szerepkörök és a Service Fabric-szolgáltatások életciklusa és élettartama között számos fő különbség van:
+A feldolgozói szerepkörök és a Service Fabric szolgáltatások életciklusa és élettartama között számos lényeges különbség van:
 
-* **Életciklus:** A legnagyobb különbség az, hogy a feldolgozói szerepkör egy virtuális gép, és így az életciklusa a virtuális géphez van kötve, amely magában foglalja a virtuális gép indításakor és leállításakor eseményeket. A Service Fabric-szolgáltatás rendelkezik egy életciklus, amely elkülönül a virtuális gép életciklusa, így nem tartalmazza az eseményeket, amikor a gazdagép virtuális gép vagy a gép elindul, és leáll, mivel azok nem kapcsolódnak.
-* **Élettartam:** A feldolgozói szerepkör példánya újrahasznosítja, ha a `Run` metódus kilép. A `RunAsync` metódus egy Service Fabric szolgáltatás azonban futtatható a befejezésig, és a szolgáltatáspéldány marad fel. 
+* **Életciklus:** A legnagyobb különbség az, hogy a feldolgozói szerepkör egy virtuális gép, ezért életciklusa a virtuális GÉPHEZ van kötve, amely a virtuális gép indításakor és leállításakor bekövetkező eseményeket tartalmazza. A Service Fabric szolgáltatásnak van olyan életciklusa, amely elkülönül a virtuális gép életciklusával, így nem tartalmazza azokat az eseményeket, amikor a gazdagép virtuális gépe vagy a gép leáll, mert nem kapcsolódnak egymáshoz.
+* **Élettartam:** Egy feldolgozói szerepkör példánya újraindul `Run` , ha a metódus kilép. A `RunAsync` Service Fabric szolgáltatás metódusa azonban a befejezéshez is futtatható, és a szolgáltatási példány marad. 
 
-A Service Fabric egy opcionális kommunikációs beállítási belépési pontot biztosít az ügyfélkéréseket figyelő szolgáltatásokhoz. Mind a RunAsync, mind a kommunikációs belépési pont opcionális felülbírálása a Service Fabric-szolgáltatásokban – a szolgáltatás dönthet úgy, hogy csak az ügyfélkérelmeket hallgatja, vagy csak egy feldolgozási hurkot futtat, vagy mindkettőt –, ezért a RunAsync metódus újraindítás nélkül kiléphet a szolgáltatáspéldányt, mert továbbra is figyelheti az ügyfélkérelmeket.
+Service Fabric egy opcionális kommunikációs beállítási pontot biztosít az ügyfelek kéréseinek figyelésére szolgáló szolgáltatásokhoz. A RunAsync és a kommunikáció belépési pontja nem kötelező felülbírálások Service Fabric-szolgáltatásokban – a szolgáltatás dönthet úgy, hogy csak az ügyfelek kéréseinek figyelését, vagy csak feldolgozási ciklust futtat, vagy mindkettőt, ezért a RunAsync metódus a szolgáltatás példányának újraindítása nélkül is lehetséges, mivel az ügyfelek kéréseinek figyelése továbbra is lehetséges.
 
 ## <a name="application-api-and-environment"></a>Alkalmazás API és környezet
-A Cloud Services-környezet API-t az aktuális virtuálisgép-példány, valamint a többi virtuálisgép-szerepkör példányok információkat és funkciókat biztosít. A Service Fabric a futtatóórával kapcsolatos információkat és a szolgáltatás jelenleg futó csomópontjára vonatkozó információkat tartalmazza. 
+A Cloud Services környezeti API az aktuális virtuálisgép-példányra vonatkozó információkat és funkciókat, valamint a többi virtuálisgép-szerepköri példányra vonatkozó információkat tartalmaz. Service Fabric a futtatókörnyezetével kapcsolatos információkat biztosít, és néhány információt arról, hogy a szolgáltatás jelenleg melyik csomóponton fut. 
 
 | **Környezeti feladat** | **Felhőszolgáltatások** | **Service Fabric** |
 | --- | --- | --- |
-| Konfigurációs beállítások és értesítés módosítása |`RoleEnvironment` |`CodePackageActivationContext` |
-| Helyi tárhely |`RoleEnvironment` |`CodePackageActivationContext` |
-| Végpont adatai |`RoleInstance` <ul><li>Jelenlegi példány:`RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepkörök és példányok:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`az aktuális csomópontcímhez</li><li>`FabricClient`és `ServicePartitionResolver` a szolgáltatásvégpont-felderítéshez</li> |
+| Konfigurációs beállítások és változási értesítés |`RoleEnvironment` |`CodePackageActivationContext` |
+| Helyi tárterület |`RoleEnvironment` |`CodePackageActivationContext` |
+| Végpont adatai |`RoleInstance` <ul><li>Aktuális példány:`RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepkörök és példányok:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`aktuális csomópont-címnek</li><li>`FabricClient`és `ServicePartitionResolver` a szolgáltatás végpontjának felderítéséhez</li> |
 | Környezeti emuláció |`RoleEnvironment.IsEmulated` |N/A |
-| Egyidejű változási esemény |`RoleEnvironment` |N/A |
+| Egyidejű módosítási esemény |`RoleEnvironment` |N/A |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
-A Felhőszolgáltatások konfigurációs beállításai egy virtuálisgép-szerepkörhöz vannak beállítva, és az adott virtuálisgép-szerepkör összes példányára vonatkoznak. Ezek a beállítások a ServiceConfiguration.*.cscfg fájlokban beállított kulcs-érték párok, és közvetlenül a RoleEnvironment-en keresztül érhetők el. A Service Fabric beállításai egyenként vonatkoznak az egyes szolgáltatásokra és az egyes alkalmazásokra, nem pedig egy virtuális gépre, mert a virtuális gép több szolgáltatást és alkalmazást is üzemeltethet. A szolgáltatás három csomagból áll:
+A Cloud Services konfigurációs beállításai virtuálisgép-szerepkörre vannak beállítva, és az adott virtuálisgép-szerepkör összes példányára érvényesek. Ezek a beállítások a ServiceConfiguration. *. cscfg-fájlokban beállított kulcs-érték párok, amelyek közvetlenül a RoleEnvironment keresztül érhetők el. Service Fabric a beállítások a virtuális gépek helyett az egyes szolgáltatásokra és az egyes alkalmazásokra vonatkoznak, mivel egy virtuális gép több szolgáltatást és alkalmazást is képes tárolni. A szolgáltatás három csomagból áll:
 
-* **Kód:** tartalmazza a szolgáltatás végrehajtható fájljait, bináris fájljait, DEL-jeit és minden más fájlt, amelyet a szolgáltatásnak futtatnia kell.
-* **Konfiguráció:** a szolgáltatás összes konfigurációs fájlja és beállítása.
-* **Adatok:** a szolgáltatáshoz társított statikus adatfájlok.
+* **Kód:** tartalmazza a szolgáltatás végrehajtható fájljait, bináris fájljait, DLL-fájljait és minden más, a szolgáltatás futtatásához szükséges fájlt.
+* **Config:** egy szolgáltatás összes konfigurációs fájlja és beállítása.
+* **Adatai:** a szolgáltatáshoz társított statikus adatfájlok.
 
-Ezek a csomagok egymástól függetlenül verziószámba vehethetők és frissíthetők. A Cloud Serviceshez hasonlóan a konfigurációs csomagok is programozott módon érhetők el egy API-n keresztül, és események érhetők el a konfigurációs csomagok módosításának értesítésére. A Settings.xml fájl az App.config fájl alkalmazásbeállítások szakaszához hasonló kulcsérték-konfigurációhoz és programozott hozzáféréshez használható. A Cloud Services szolgáltatással ellentétben azonban a Service Fabric konfigurációs csomag bármilyen konfigurációs fájlt tartalmazhat bármilyen formátumban, legyen az XML, JSON, YAML vagy egyéni bináris formátum. 
+Ezek a csomagok egymástól függetlenül telepíthetők és frissíthetők. A Cloud Serviceshoz hasonlóan a konfigurációs csomag programozott módon, API-n keresztül érhető el, és az események elérhetők, hogy értesítsék a konfigurációs csomag megváltozásának szolgáltatásáról. Egy Settings. xml fájl használható a kulcs-érték konfigurációhoz és a programozott eléréshez, hasonlóan az app. config fájl Alkalmazásbeállítások szakaszához. A Cloud Servicestól eltérően azonban egy Service Fabric konfigurációs csomag bármilyen formátumú konfigurációs fájlt tartalmazhat, legyen az XML, JSON, YAML vagy egyéni bináris formátum. 
 
 ### <a name="accessing-configuration"></a>Hozzáférés a konfigurációhoz
 #### <a name="cloud-services"></a>Cloud Services
-A ServiceConfiguration.*.cscfg konfigurációs beállításai `RoleEnvironment`a . Ezek a beállítások globálisan elérhetők az azonos felhőszolgáltatás-telepítésben lévő összes szerepkörpéldány számára.
+A ServiceConfiguration. *. cscfg konfigurációs beállításai a használatával `RoleEnvironment`érhetők el. Ezek a beállítások globálisan elérhetők az összes szerepkör-példány számára ugyanabban a felhőalapú szolgáltatás-telepítésben.
 
 ```csharp
 
@@ -137,9 +137,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Minden szolgáltatás saját egyéni konfigurációs csomaggal rendelkezik. Nincs beépített mechanizmus a globális konfigurációs beállításokhoz, amelyeket a fürt összes alkalmazása elérhető. Ha a Service Fabric speciális Settings.xml konfigurációs fájlját használja egy konfigurációs csomagon belül, a Settings.xml fájl értékei felülírhatók az alkalmazás szintjén, így az alkalmazásszintű konfigurációs beállítások lehetségesek.
+Minden szolgáltatás saját egyéni konfigurációs csomaggal rendelkezik. A fürtben található összes alkalmazás által elérhető globális konfigurációs beállításokhoz nincs beépített mechanizmus. Ha a Service Fabric speciális Settings. xml konfigurációs fájlját használja egy konfigurációs csomagon belül, a Settings. xml fájlban található értékek felülírhatják az alkalmazás szintjén, így lehetséges az alkalmazás-szintű konfigurációs beállítások végrehajtása.
 
-A konfigurációs beállítások az egyes szolgáltatáspéldányokon belül a szolgáltatáson keresztül érhetők `CodePackageActivationContext`el.
+A konfigurációs beállítások az egyes szolgáltatási példányokon belül a szolgáltatáson keresztül `CodePackageActivationContext`érhetők el.
 
 ```csharp
 
@@ -160,7 +160,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ### <a name="configuration-update-events"></a>Konfigurációs frissítési események
 #### <a name="cloud-services"></a>Cloud Services
-Az `RoleEnvironment.Changed` esemény segítségével értesíti az összes szerepkörpéldányt, ha változás történik a környezetben, például egy konfigurációs változás. Ez a konfigurációs frissítések felhasználására szolgál a szerepkörpéldányok újrahasznosítása vagy a munkavégző folyamat újraindítása nélkül.
+Az `RoleEnvironment.Changed` esemény az összes szerepkör-példány értesítésére szolgál, ha változás történik a környezetben, például a konfiguráció módosításakor. Ez a konfigurációs frissítések felhasználására szolgál a szerepkör-példányok újrahasznosítása vagy a munkavégző folyamat újraindítása nélkül.
 
 ```csharp
 
@@ -179,9 +179,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-A szolgáltatás ban található három csomagtípus – a Kód, a Konfiguráció és az Adatok – mind a három csomagtípusnak olyan eseményekkel rendelkezik, amelyek értesítik a szolgáltatáspéldányt, amikor egy csomagot frissítenek, hozzáadnak vagy eltávolítanak. Egy szolgáltatás minden típusból több csomagot is tartalmazhat. Egy szolgáltatás például több konfigurációs csomaggal is rendelkezhet, amelyek mindegyike egyenként verziózott és frissíthető. 
+A szolgáltatási kód, a konfiguráció és az adattípusok mindhárom csomagja tartalmaz olyan eseményeket, amelyek értesítik a szolgáltatási példányt a csomagok frissítésekor, hozzáadásakor vagy eltávolításakor. A szolgáltatás több különböző típusú csomagot is tartalmazhat. Előfordulhat például, hogy egy szolgáltatás több konfigurációs csomaggal rendelkezik, és mindegyik külön verzióban és frissíthető. 
 
-Ezek az események a szolgáltatáspéldány újraindítása nélkül is felhasználhatók a szolgáltatáscsomagok változásainak felhasználásához.
+Ezek az események elérhetők a szolgáltatási csomagok változásainak a szolgáltatási példány újraindítása nélkül történő felhasználásához.
 
 ```csharp
 
@@ -197,16 +197,16 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ```
 
 ## <a name="startup-tasks"></a>Indítási feladatok
-Az indítási feladatok olyan műveletek, amelyeket az alkalmazás indítása előtt hajtanak végre. Az indítási feladat általában emelt szintű jogosultságokkal történő beállítási parancsfájlok futtatására szolgál. A Cloud Services és a Service Fabric egyaránt támogatja az indítási feladatokat. A fő különbség az, hogy a Cloud Services,egy indítási feladat van kötve egy virtuális gép, mert egy szerepkörpéldány része, míg a Service Fabric egy indítási feladat van kötve egy szolgáltatás, amely nem kötődik egy adott virtuális gép.
+Az indítási feladatok olyan műveletek, amelyeket az alkalmazás elindítása előtt hajtanak végre. A telepítési parancsfájlok emelt szintű jogosultságokkal történő futtatására általában egy indítási feladat használatos. Mindkét Cloud Services és Service Fabric támogatja az indítási feladatokat. A fő különbség az, hogy Cloud Servicesban az indítási feladat egy virtuális géphez van kötve, mert egy szerepkör-példány része, míg Service Fabric az indítási feladat egy olyan szolgáltatáshoz van kötve, amely nem kötődik egy adott virtuális géphez.
 
 | Service Fabric | Cloud Services |
 | --- | --- |
-| Konfiguráció helye |ServiceDefinition.csdef |
-| Jogosultságok |"korlátozott" vagy "emelkedett" |
+| Konfigurációs hely |ServiceDefinition. csdef |
+| Jogosultságok |"Limited" vagy "emelt" |
 | Alkalmazás-előkészítés |"egyszerű", "háttér", "előtér" |
 
 ### <a name="cloud-services"></a>Cloud Services
-A Cloud Services szolgáltatásban egy indítási belépési pont van konfigurálva szerepkörenként a ServiceDefinition.csdef-ben. 
+Cloud Services egy indítási belépési pont szerepkört konfigurál a ServiceDefinition. csdef. 
 
 ```xml
 
@@ -224,7 +224,7 @@ A Cloud Services szolgáltatásban egy indítási belépési pont van konfigurá
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-A Service Fabric fájlban szolgáltatásonként van konfigurálva egy indítási belépési pont a ServiceManifest.xml fájlban:
+Service Fabric az indítási belépési pont szolgáltatásként van konfigurálva a ServiceManifest. xml fájlban:
 
 ```xml
 
@@ -241,13 +241,13 @@ A Service Fabric fájlban szolgáltatásonként van konfigurálva egy indítási
 ``` 
 
 ## <a name="a-note-about-development-environment"></a>Megjegyzés a fejlesztési környezetről
-A Cloud Services és a Service Fabric egyaránt integrálva van a Visual Studióba projektsablonokkal, valamint a helyi és az Azure-beli hibakeresés, konfigurálás és üzembe helyezés támogatásával. A Cloud Services és a Service Fabric is helyi fejlesztési futásidejű környezetet biztosít. A különbség az, hogy míg a Cloud Service fejlesztési futásidejű emulálja az Azure-környezet, amelyen fut, a Service Fabric nem használ emulátort – a teljes Service Fabric-futási időt használja. A Service Fabric-környezet a helyi fejlesztői gépen futtatott ugyanaz a környezet, amely éles környezetben fut.
+A Cloud Services és a Service Fabric egyaránt integrálva van a Visual Studióval és a Project sablonjaival, és támogatja a helyi és az Azure-beli hibakeresést, konfigurálást és üzembe helyezést. A Cloud Services és a Service Fabric is biztosít helyi fejlesztési futtatókörnyezetet. A különbség az, hogy míg a Cloud Service fejlesztői futtatókörnyezet emulálja az Azure-környezetet, amelyen fut, Service Fabric nem használ emulátort – a teljes Service Fabric futtatókörnyezetet használja. A helyi fejlesztési gépen futtatott Service Fabric környezet ugyanaz a környezet, amely éles környezetben fut.
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet a Service Fabric megbízható szolgáltatások és az alapvető különbségek a Cloud Services és a Service Fabric-alkalmazás architektúra, hogyan használhatja ki a Service Fabric-funkciók teljes készletét.
+További információ a Service Fabric Reliable Servicesről és az Cloud Services és Service Fabric alkalmazás-architektúra közötti alapvető különbségekről, hogy megtudja, hogyan használhatja ki a Service Fabric funkciók teljes készletét.
 
-* [A Service Fabric megbízható szolgáltatásainak első lépései](service-fabric-reliable-services-quick-start.md)
-* [Fogalmi útmutató a Felhőszolgáltatások és a Service Fabric közötti különbségekről](service-fabric-cloud-services-migration-differences.md)
+* [Első lépések a Service Fabric Reliable Services](service-fabric-reliable-services-quick-start.md)
+* [Elméleti útmutató a Cloud Services és Service Fabric közötti különbségekhez](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

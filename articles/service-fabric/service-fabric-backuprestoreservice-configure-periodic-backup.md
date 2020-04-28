@@ -1,42 +1,42 @@
 ---
 title: Rendszeres biztonsági mentési konfiguráció ismertetése
-description: Használja a Service Fabric rendszeres biztonsági mentési és visszaállítási szolgáltatását az alkalmazásadatok rendszeres adatbiztonsági mentésének engedélyezéséhez.
+description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használja Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610148"
 ---
-# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric időszakos biztonsági mentési konfigurációjának ismertetése
+# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
 
-A megbízható állapotalapú szolgáltatások vagy a Reliable Actors rendszeres biztonsági mentésének konfigurálása a következő lépésekből áll:
+A megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors rendszeres biztonsági mentésének konfigurálása a következő lépésekből áll:
 
-1. **Biztonsági mentési házirendek létrehozása:** Ebben a lépésben egy vagy több biztonsági mentési szabályzat jön létre a követelményektől függően.
+1. **Biztonsági mentési szabályzatok létrehozása**: ebben a lépésben a követelményektől függően egy vagy több biztonsági mentési szabályzat jön létre.
 
-2. **Biztonsági mentés engedélyezése**: Ebben a lépésben az _Partition_ **1.** _Application_ _Service_
+2. **Biztonsági mentés engedélyezése**: ebben a lépésben az **1. lépésben** létrehozott biztonsági mentési házirendeket rendeli hozzá a szükséges entitásokhoz, _alkalmazáshoz_, _szolgáltatáshoz_vagy _partícióhoz_.
 
-## <a name="create-backup-policy"></a>Biztonsági másolat házirendjének létrehozása
+## <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-A biztonsági mentési házirend a következő konfigurációkból áll:
+A biztonsági mentési szabályzat a következő konfigurációkból áll:
 
-* **Automatikus visszaállítás adatvesztés esetén**: Megadja, hogy a visszaállítás automatikusan elinduljon-e a legújabb rendelkezésre álló biztonsági mentés használatával, ha a partíció adatvesztési eseményt tapasztal.
+* **Automatikus visszaállítás adatvesztés**esetén: Megadja, hogy a rendszer automatikusan aktiválja-e a visszaállítást a legújabb elérhető biztonsági mentéssel, ha a partíció adatvesztési eseményt használ.
 
-* **Maximális növekményes biztonsági mentések:** Két teljes biztonsági mentés között a növekményes biztonsági mentések maximális számát határozza meg. A maximális növekményes biztonsági mentések határozzák meg a felső korlátot. Teljes biztonsági mentés készíthető, mielőtt a megadott számú növekményes biztonsági mentés tana van az alábbi feltételek egyikében
+* **Növekményes biztonsági mentések**maximális száma: meghatározza a két teljes biztonsági mentés közötti növekményes biztonsági mentések maximális számát. A növekményes biztonsági mentések maximális száma a felső korlátot határozza meg. A megadott számú növekményes biztonsági mentések a következő feltételek egyike után teljes biztonsági mentést végezhetnek.
 
-    1. A replika soha nem vett teljes biztonsági mentést, mivel elsődlegesvé vált.
+    1. A replika soha nem készített teljes biztonsági mentést, mert az elsődleges.
 
-    2. A legutóbbi biztonsági mentés óta a naplórekordok egy része csonkolva lett.
+    2. Néhány naplózási rekord a legutóbbi biztonsági mentés óta csonkolt.
 
-    3. A replika túllépte a MaxAccumulatedBackupLogSizeInMB korlátot.
+    3. A replika átadotta a MaxAccumulatedBackupLogSizeInMB korlátot.
 
-* **Biztonsági mentés ütemezése**: Az az idő vagy gyakoriság, amelyen rendszeres biztonsági mentéseket kell készíteni. A biztonsági mentések ismétlődőként történő ütemezése meghatározott időközönként vagy egy meghatározott időpontban naponta / hetente.
+* **Biztonsági mentési ütemezés**: az időszakos biztonsági másolatok készítésének ideje vagy gyakorisága. Az egyik ütemezheti a biztonsági mentések ütemezését a megadott időközönként vagy napi/heti rögzített időtartamon keresztül.
 
-    1. **Gyakoriságalapú biztonsági mentés ütemezése:** Ezt az ütemezéstípust kell használni, ha az adatok biztonsági mentését rögzített időközönként kell készíteni. A két egymást követő biztonsági mentés közötti kívánt időintervallumot ISO8601 formátumban definiálja. A gyakoriságalapú biztonsági mentésütemezés támogatja az időköz felbontását a percig.
+    1. **Gyakoriság-alapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést rögzített időközönként kell végrehajtani. A két egymást követő biztonsági mentések közötti kívánt időintervallumot a ISO8601 formátuma határozza meg. A gyakoriság-alapú biztonsági mentési ütemterv az intervallum felbontását támogatja a percben.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -44,8 +44,8 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
         }
         ```
 
-    2. **Időalapú biztonsági mentés ütemezése**: Ezt az ütemezéstípust kell használni, ha az adatok biztonsági mentését a nap vagy a hét meghatározott időpontjaiban kell készíteni. Az ütemezés gyakoriságának típusa lehet napi vagy heti.
-        1. ** _Napi_ időalapú biztonsági mentésütemezés:** Ezt az ütemezési típust kell használni, ha az id-nek a nap meghatározott időpontjaiban kell biztonsági másolatot készítenie. Ennek megadásához `ScheduleFrequencyType` állítsa _a Napi_; és `RunTimes` állítsa a kívánt időt a nap folyamán ISO8601 formátumban, megadott dátum mellett az idő figyelmen kívül hagyja. Például, `0001-01-01T18:00:00` képviseli _6:00 pm_ mindennapi, figyelmen kívül hagyva dátum rész _0001-01-01_. Az alábbi példa bemutatja a napi biztonsági mentés indítását _napi 9:00_ és _18:00 órakor_ minden nap.
+    2. **Időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap vagy hét adott időpontjában kell végrehajtani. Az ütemezett gyakoriság típusa lehet naponta vagy hetente.
+        1. ** _Napi_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. A beállítás megadásához `ScheduleFrequencyType` állítsa _napire_a következőt: `RunTimes` a ISO8601 formátumban megadott időpontot pedig a kívánt idő listájának megfelelően a rendszer figyelmen kívül hagyja. Például `0001-01-01T18:00:00` a _6:00 PM_ mindennapi, figyelmen kívül hagyva a _0001-01-01_. Az alábbi példa azt szemlélteti, hogy a napi biztonsági mentést az _9:00_ -es és a _6:00_ -as nap minden nap elindítsa.
 
             ```json
             {
@@ -58,7 +58,7 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
             }
             ```
 
-        2. ** _Heti_ időalapú biztonsági mentés ütemezése:** Ezt az ütemezési típust kell használni, ha az id-nek a nap meghatározott időpontjaiban kell biztonsági másolatot készítenie. Ennek megadásához `ScheduleFrequencyType` állítsa _heti_; állítsa `RunDays` be a hét azon napjainak listájára, `RunTimes` amikor a biztonsági mentést el kell indítani, és a nap folyamán a kívánt idő listájára kell állítani Az ISO8601 formátumban, a megadott dátumot az idővel együtt figyelmen kívül hagyja. A hét azon napjainak listája, amikor a rendszeres biztonsági mentés t indítja el. Az alábbi példa a napi biztonsági mentés hétfőtől péntekig _9:00_ és _18:00 órakor_ való indításának konfigurációját mutatja be.
+        2. ** _Heti_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. Ennek megadásához állítsa `ScheduleFrequencyType` be a következőt: _Weekly_; azt `RunDays` a napot adja meg egy héten belül, amikor a biztonsági mentést el kell indítani `RunTimes` , és a nap folyamán a ISO8601 formátumban a kívánt idő listájára kell beállítani, a dátummal együtt megadott dátumot pedig figyelmen kívül hagyja a rendszer. Egy hét napjainak listája az időszakos biztonsági mentés elindításához. Az alábbi példa azt szemlélteti, hogyan lehet a napi biztonsági mentést az _9:00_ -es és a _6:00_ -es időpontra kiváltani a hétfőtől péntekig.
 
             ```json
             {
@@ -78,8 +78,8 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
             }
             ```
 
-* **Biztonsági másolat tárolása**: Megadja a biztonsági másolatok feltöltésének helyét. A storage lehet Azure blob áruház vagy fájlmegosztás.
-    1. **Azure blob store:** Ezt a tárolási típust kell kiválasztani, ha a létrehozott biztonsági mentések tárolása az Azure-ban. Mind _az önálló,_ mind _az Azure-alapú_ fürtök használhatják ezt a tárolási típust. Ennek a tárolótípusnak a leírása kapcsolati karakterláncot és annak a tárolónak a nevét igényli, ahol a biztonsági másolatokat fel kell tölteni. Ha a megadott nevű tároló nem érhető el, majd egy biztonsági másolat feltöltése során jön létre.
+* **Biztonsági mentési tár**: megadja a biztonsági másolatok feltöltésének helyét. A tárterület lehet Azure Blob Store vagy fájlmegosztás.
+    1. **Azure Blob Store**: ezt a tárolási típust akkor kell kiválasztani, ha a létrehozott biztonsági mentéseket az Azure-ban kell tárolni. Az _önálló_ és az _Azure-alapú_ fürtök is használhatják ezt a tárolási típust. A tárolási típus leírásához a kapcsolati sztringre és annak a tárolónak a nevére van szükség, amelyben a biztonsági másolatokat fel kell tölteni. Ha a megadott nevű tároló nem érhető el, akkor a biztonsági mentés feltöltése során jön létre.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -89,8 +89,8 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
         }
         ```
 
-    2. **Fájlmegosztás**: Ezt a tárolási típust kell kiválasztani _az önálló_ fürtökhöz, ha az adatok biztonsági mentését a helyszínen kell tárolni. Ennek a tárolási típusnak a leírásához fájlmegosztási elérési út szükséges, ahol a biztonsági másolatokat fel kell tölteni. A fájlmegosztáshoz való hozzáférés az alábbi lehetőségek egyikével konfigurálható
-        1. _Integrált Windows-hitelesítés_, ahol a fájlmegosztáshoz való hozzáférés a Service Fabric-fürthöz tartozó összes számítógép számára biztosított. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztásalapú_ biztonsági mentési tároló konfigurálásához.
+    2. **Fájlmegosztás**: ezt a tárolási típust _különálló_ fürtökhöz kell kiválasztani, ha az adatbiztonsági mentést a helyszínen kell tárolni. A tárolási típus leírásához meg kell adni a fájlmegosztás elérési útját, ahol a biztonsági másolatokat fel kell tölteni. A fájlmegosztás elérését az alábbi lehetőségek egyikével konfigurálhatja
+        1. _Integrált Windows-hitelesítés_, ahol a fájlmegosztás elérését a Service Fabric fürthöz tartozó összes számítógép számára biztosítjuk. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztás_ alapú biztonsági mentési tár konfigurálásához.
 
             ```json
             {
@@ -100,7 +100,7 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
             }
             ```
 
-        2. _A fájlmegosztás védelme felhasználónévvel és jelszóval,_ ahol a fájlmegosztáshoz való hozzáférés adott felhasználók számára biztosított. A fájlmegosztási tárolási specifikáció lehetővé teszi másodlagos felhasználónév és másodlagos jelszó megadását is, hogy tartalék hitelesítő adatokat adjon meg abban az esetben, ha a hitelesítés nem sikerül az elsődleges felhasználónévvel és az elsődleges jelszóval. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztásalapú_ biztonsági mentési tároló konfigurálásához.
+        2. A _fájlmegosztás védelme felhasználónévvel és jelszóval_, ahol a fájlmegosztás elérését meghatározott felhasználók számára biztosítjuk. A fájlmegosztás tárolási specifikációja lehetőséget biztosít a másodlagos Felhasználónév és a másodlagos jelszó megadására, hogy a rendszer visszaadja a hitelesítő adatokat, ha a hitelesítés meghiúsul az elsődleges felhasználónévvel és az elsődleges jelszóval. Ebben az esetben állítsa be a következő mezőket a _fájlmegosztás_ alapú biztonsági mentési tár konfigurálásához.
 
             ```json
             {
@@ -115,11 +115,11 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
             ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy a tárolási megbízhatóság megfelel vagy meghaladja a biztonsági mentési adatok megbízhatósági követelményeit.
+> Győződjön meg arról, hogy a tárolási megbízhatóság megfelel vagy meghaladja a biztonsági mentési adat megbízhatósági követelményeit.
 >
 
-* **Adatmegőrzési szabály**: Megadja a biztonsági mentések megőrzésére szolgáló házirendet a konfigurált tárolóban. Csak az alapvető adatmegőrzési házirend támogatott.
-    1. **Alapszintű adatmegőrzési szabály:** Ez az adatmegőrzési szabály lehetővé teszi az optimális tárolási kihasználtság biztosítását olyan biztonsági mentési fájlok eltávolításával, amelyekre már nincs szükség. `RetentionDuration`megadható, hogy beállítsa azt az időtartamot, amelyhez a biztonsági mentések megőrzése szükséges a tárolóban. `MinimumNumberOfBackups`egy választható paraméter, amely megadható annak érdekében, hogy a megadott számú biztonsági `RetentionDuration`másolat mindig megmaradjon, függetlenül atól. Az alábbi példa bemutatja a biztonsági mentések _10_ napig tartó megőrzésének konfigurációját, és nem teszi lehetővé, hogy a biztonsági mentések száma _20_alá csökkenjen .
+* **Adatmegőrzési szabály**: a konfigurált tárolóban lévő biztonsági másolatok megőrzésére vonatkozó házirendet határozza meg. Csak az alapszintű adatmegőrzési szabályok támogatottak.
+    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration`megadható azt az időtartományt, ameddig a tárolóban meg kell őrizni a biztonsági mentéseket. `MinimumNumberOfBackups`egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a-tól függetlenül megmaradjon `RetentionDuration`. Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
 
         ```json
         {
@@ -130,116 +130,116 @@ A biztonsági mentési házirend a következő konfigurációkból áll:
         ```
 
 ## <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
-Az adatmentési követelmények teljesítéséhez szükséges biztonsági mentési házirend meghatározása után a biztonsági mentési házirendet megfelelően társkell-e társviszonyba állítani egy _alkalmazáshoz_, _szolgáltatáshoz_vagy _egy partícióhoz._
+Miután meghatározta a biztonsági mentési szabályzatot az adatbiztonsági mentési követelmények teljesítése érdekében, a biztonsági mentési szabályzatnak megfelelő módon kell társítania egy _alkalmazást_vagy _szolgáltatást_, vagy egy _partíciót_.
 
-### <a name="hierarchical-propagation-of-backup-policy"></a>A biztonsági mentési házirend hierarchikus terjesztése
-A Service Fabric, az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [application modellben](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési házirend társítható egy _alkalmazáshoz_, _szolgáltatáshoz_vagy egy _partícióhoz_ a hierarchiában. A biztonsági mentési házirend hierarchikusan a következő szintre propagál. Feltételezve, hogy csak egy biztonsági mentési házirend jön létre, és egy _alkalmazáshoz_társított, az összes _megbízható állapotalapú szolgáltatások_ és az _alkalmazás_ _megbízható szereplői_ a biztonsági mentési szabályzat használatával lesz biztonsági mentés. Vagy ha a biztonsági mentési szabályzat egy _megbízható állapotalapú szolgáltatáshoz_van társítva, az összes partícióról a biztonsági mentési házirend használatával lesz biztonsági másolat.
+### <a name="hierarchical-propagation-of-backup-policy"></a>A biztonsági mentési szabályzat hierarchikus propagálása
+Service Fabric az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [alkalmazás modelljében](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési szabályzat egy _alkalmazással_, _szolgáltatással_vagy a hierarchiában található _partícióval_ is társítható. A biztonsági mentési szabályzat hierarchikusan propagálja a következő szintre. Feltéve, hogy csak egy biztonsági mentési szabályzatot hozott létre és társít egy _alkalmazáshoz_, az összes _megbízható állapot-nyilvántartó szolgáltatáshoz_ és az alkalmazás _Reliable Actors_ tartozó összes _application_ állapot-nyilvántartó partíciót a biztonsági mentési szabályzattal kell elkészíteni. Ha a biztonsági mentési szabályzat _megbízható állapot-nyilvántartó szolgáltatáshoz_van társítva, a biztonsági mentési szabályzattal minden partíciója biztonsági mentésre kerül.
 
-### <a name="overriding-backup-policy"></a>A biztonsági mentési házirend felülbírálása
-Előfordulhat, hogy az alkalmazás összes szolgáltatásához azonos biztonsági mentési ütemezéssel rendelkező adatbiztonsági mentésre van szükség, kivéve azokat az egyes szolgáltatásokat, ahol az adatok biztonsági mentésének magasabb gyakoriságú ütemezéssel történő biztonsági mentésére vagy egy másik tárfiókba történő biztonsági mentésre van szükség, vagy fájlmegosztás. Az ilyen esetek megoldásához a biztonsági mentési visszaállítási szolgáltatás lehetővé teszi a szolgáltatás és a partíció hatókörének propagált házirendjének felülbírálásához. Ha a biztonsági mentési házirend _szervizben_ vagy _partíción_van társítva, felülírja a propagált biztonsági mentési házirendet, ha van ilyen.
+### <a name="overriding-backup-policy"></a>Biztonsági mentési szabályzat felülbírálása
+Előfordulhat, hogy az alkalmazás összes szolgáltatásához azonos biztonsági mentési ütemtervtel rendelkező adatbiztonsági mentésre van szükség, kivéve azokat a szolgáltatásokat, amelyekhez szükség van az adatbiztonsági mentésre a magasabb gyakoriságú ütemterv használatával, vagy a biztonsági mentést egy másik Storage-fiókra vagy fájlmegosztás. Az ilyen forgatókönyvek kezeléséhez a Backup Restore Service lehetővé teszi a propagált házirend felülbírálását a szolgáltatás és a partíció hatókörén. Ha a biztonsági mentési szabályzat _szolgáltatáshoz_ vagy _partícióhoz_van társítva, akkor felülbírálja a propagált biztonsági mentési szabályzatot, ha van ilyen.
 
 ### <a name="example"></a>Példa
 
-Ez a példa két alkalmazással , _MyApp_A_ és _MyApp_B_beállítást használ. Alkalmazás _MyApp_A_ két megbízható állapotalapú szolgáltatások, _SvcA1_ & _SvcA3_, és egy megbízható szereplő szolgáltatás, _ActorA2_. _Az SvcA1_ három partíciót tartalmaz, míg _az ActorA2_ és _az SvcA3_ két partíciót tartalmaz.  Az alkalmazás _MyApp_B_ három megbízható állapotalapú szolgáltatást tartalmaz, _az SvcB1,_ _az SvcB2_és az _SvcB3_szolgáltatást. _Az SvcB1_ és _az SvcB2_ két partíciót tartalmaz, míg _az SvcB3_ három partíciót.
+Ez a példa a telepítőt használja két alkalmazással, _MyApp_A_ és _MyApp_Bval_. Az alkalmazás _MyApp_A_ két megbízható állapot-nyilvántartó szolgáltatást tartalmaz, a _SvcA1_ & _SvcA3_és egy megbízható Actor Service-t, a _ActorA2_-t. A _SvcA1_ három partíciót tartalmaz, míg a _ActorA2_ és a _SvcA3_ két partíciót tartalmaz.  Az alkalmazás _MyApp_B_ három megbízható állapot-nyilvántartó szolgáltatást, _SvcB1_, _SvcB2_és _SvcB3_tartalmaz. A _SvcB1_ és a _SvcB2_ két partíciót tartalmaz, míg a _SvcB3_ három partíciót tartalmaz.
 
-Tegyük fel, hogy ezek az alkalmazások adatbiztonsági követelményei a következők:
+Tegyük fel, hogy ezek az alkalmazások biztonsági mentési követelményei a következők:
 
 1. MyApp_A
-    1. Hozzon létre napi biztonsági másolatot az adatok az összes _megbízható állapotalapú szolgáltatások_ és az alkalmazáshoz tartozó _megbízható szereplők_ összes partícióját. Töltse fel a biztonsági mentési adatokat a _BackupStore1_helyre.
+    1. Napi biztonsági mentés készítése az összes _megbízható állapot-nyilvántartó szolgáltatás_ és az alkalmazáshoz tartozó _Reliable Actors_ összes partíciója számára. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-    2. Az egyik szolgáltatás, _az SvcA3_óránként adatmentést igényel.
+    2. Az egyik szolgáltatás ( _SvcA3_) minden órában biztonsági mentést igényel.
 
-    3. Az adatok mérete a _partíción SvcA1_P2_ a vártnál nagyobb, és a biztonsági mentési adatokat kell tárolni a különböző tárolási hely _BackupStore2_.
+    3. A partíciós _SvcA1_P2_ adatmérete a vártnál nagyobb, és a biztonsági mentési adatmennyiséget a különböző tárolási hely _BackupStore2_kell tárolni.
 
 2. MyApp_B
-    1. Készítsen biztonsági másolatot az adatokról minden vasárnap 8:00 órakor az _SvcB1_ szolgáltatás összes partíciójához. Töltse fel a biztonsági mentési adatokat a _BackupStore1_helyre.
+    1. Készítsen biztonsági mentést minden vasárnap 8:00 ÓRAKOR a _SvcB1_ szolgáltatás összes partíciója számára. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-    2. Minden nap 8:00 órakor készítsen biztonsági másolatot az adatokról a _partícióSvcB2_P1._ Töltse fel a biztonsági mentési adatokat a _BackupStore1_helyre.
+    2. Készítsen biztonsági másolatot az adatokról minden nap 8:00 ÓRAKOR a következőhöz: Partition _SvcB2_P1_. Biztonsági mentési adatok feltöltése a hely _BackupStore1_.
 
-Ezen adatbiztonsági követelmények teljesítése érdekében a BP_5 BP_1 biztonsági mentési házirendek jönnek létre, és a biztonsági mentés az alábbiak szerint engedélyezve van.
+Az adatbiztonsági mentésre vonatkozó követelmények megoldásához a biztonsági mentési szabályzatok BP_1 BP_5 létrejön, és a biztonsági mentés az alábbiak szerint van engedélyezve.
 1. MyApp_A
-    1. Hozzon létre biztonsági mentési házirendet, _BP_1,_ gyakoriságalapú biztonsági mentési ütemezéssel, ahol a gyakoriság 24 óra. és a _BackupStore1_tárolási hely használatára konfigurált biztonsági mentési tároló. Engedélyezze ezt a házirendet az _Alkalmazás-MyApp_A_ [alkalmazásbiztonsági mentés engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API használatával. Ez a művelet lehetővé teszi az adatok biztonsági mentését biztonsági mentési _házirend BP_1_ használatával a _megbízható állapotalapú szolgáltatások_ és az _alkalmazáshoz_tartozó megbízható _szereplők_ összes MyApp_A.
+    1. Hozzon létre biztonsági mentési szabályzatot, _BP_1_a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 24 óra. és a biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet az alkalmazás- _MyApp_A_ az [alkalmazás-biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) paranccsal. Ez a művelet lehetővé teszi az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_1_ a _megbízható állapot-nyilvántartó szolgáltatások_ összes partíciója és az alkalmazás- _MyApp_Ahoz_tartozó _Reliable Actors_ számára.
 
-    2. Hozzon létre biztonsági mentési házirendet, _BP_2,_ gyakoriságalapú biztonsági mentési ütemezéssel, ahol a gyakoriság 1 óra. és a _BackupStore1_tárolási hely használatára konfigurált biztonsági mentési tároló. Engedélyezze ezt a házirendet az _SvcA3_ szolgáltatáshoz [a Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API engedélyezése használatával. Ez a művelet felülbírálja a propagált _házirendBP_1_ az _SvcA3_ szolgáltatás összes partíciójára vonatkozó, kifejezetten engedélyezett biztonsági mentési _házirend BP_2,_ amely adatbiztonsági mentéshez vezet ezen partíciók biztonsági mentési _házirendBP_2_ használatával.
+    2. Hozzon létre biztonsági mentési szabályzatot, _BP_2_, a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 1 óra. és a biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a szolgáltatás _SvcA3_ a [Service backup API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) használatával. Ez a művelet felülbírálja a propagált házirendet _BP_1_ explicit módon engedélyezett biztonsági mentési házirend _BP_2_ a _SvcA3_ összes partíciója számára, amely az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_2_ a partíciók esetében.
 
-    3. Hozzon létre biztonsági mentési szabályzatot, _BP_3,_ gyakoriságalapú biztonsági mentési ütemezéssel, ahol a gyakoriság 24 óra. és a _BackupStore2_tárolási hely használatára konfigurált biztonsági mentési tároló. Engedélyezze ezt a házirendet a _partícióSvcA1_P2_ a [Partícióbiztonsági mentés engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API használatával. Ez a művelet felülbírálja a _partícióSvcA1_P2_kifejezetten engedélyezett biztonsági mentési _házirend-BP_3_ által _BP_1_ propagált házirendet.
+    3. Hozzon létre biztonsági mentési szabályzatot, _BP_3_a gyakoriság-alapú biztonsági mentési ütemtervtel, ahol a gyakoriság értéke 24 óra. és a biztonsági mentési tár a tárolási hely _BackupStore2_használatára van konfigurálva. Engedélyezze ezt a házirendet a partíciós _SvcA1_P2_ a [partíciós biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) paranccsal. Ez a művelet felülbírálja a propagált házirendet _BP_1_ explicit módon engedélyezett biztonsági mentési házirend _BP_3_ a partíció _SvcA1_P2_.
 
 2. MyApp_B
-    1. Hozzon létre biztonsági mentési házirendet, _BP_4_időalapú biztonsági mentési ütemezéssel, ahol az ütemezés gyakoriságának típusa heti, a futtatási napok vasárnapra, a futási idők pedig 8:00-ra vannak állítva. A BackupStore1 tárolóhely használatára konfigurált biztonsági másolat _tárolója._ Engedélyezze ezt a házirendet az _SvcB1_ szolgáltatáshoz [a Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API engedélyezése használatával. Ez a művelet lehetővé teszi az adatok biztonsági mentését az _SvcB1_szolgáltatás összes partíciójának biztonsági mentési _BP_4_ használatával.
+    1. Biztonsági mentési szabályzat létrehozása, _BP_4_, időalapú biztonsági mentési ütemtervtel, ahol az ütemezett gyakoriság típusa heti értékre van állítva, a futtatási napok értéke vasárnap, a futtatási idők értéke pedig 8:00. A biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a szolgáltatás _SvcB1_ a [Service backup API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) használatával. Ez a művelet lehetővé teszi az adatbiztonsági mentést a biztonsági mentési szabályzattal _BP_4_ a Service _SvcB1_összes partíciójának használatával.
 
-    2. Hozzon létre biztonsági mentési házirendet, _BP_5_időalapú biztonsági mentési ütemezéssel, ahol az ütemezés gyakoriságának típusa napi és futtatási idő 8:00-ra van állítva. A BackupStore1 tárolóhely használatára konfigurált biztonsági másolat _tárolója._ Engedélyezze ezt a házirendet a _partícióSvcB2_P1_ a [Partícióbiztonsági mentés engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API használatával. Ez a művelet lehetővé teszi az adatmentést a _partícióSvcB2_P1_biztonsági mentési _házirendjének BP_5_ használatával.
+    2. Biztonsági mentési szabályzat létrehozása, _BP_5_, időalapú biztonsági mentési ütemtervtel, ahol az ütemezett gyakoriság típusa napi értékre van állítva, és a futtatási időpontok értéke 8:00. A biztonsági mentési tár a tárolási hely _BackupStore1_használatára van konfigurálva. Engedélyezze ezt a házirendet a partíciós _SvcB2_P1_ a [partíciós biztonsági mentési API engedélyezése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) paranccsal. Ez a művelet lehetővé teszi az adatbiztonsági mentést a _SvcB2_P1_partícióra vonatkozó biztonsági mentési szabályzat _BP_5_ használatával.
 
-Az alábbi ábra explicit módon engedélyezett biztonsági mentési házirendeket és propagált biztonsági mentési házirendeket ábrázol.
+Az alábbi ábra a explicit módon engedélyezett biztonsági mentési házirendeket és a propagált biztonsági mentési szabályzatokat ábrázolja.
 
-![Szolgáltatásháló alkalmazáshierarchiája][0]
+![Service Fabric alkalmazás-hierarchia][0]
 
-## <a name="disable-backup"></a>Biztonsági másolat letiltása
-A biztonsági mentési házirendek letilthatók, ha nincs szükség adatok biztonsági mentéséhez. Egy _alkalmazásban_ engedélyezett biztonságimentési házirend csak ugyanabban az _alkalmazásban_ tiltható le az [Alkalmazásbiztonsági mentés letiltása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API-val, a _szolgáltatásban_ engedélyezett biztonsági mentési házirend ugyanazon a _szolgáltatáson_ tiltható le a Service Backup API [letiltása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) funkcióval, a _partíción_ engedélyezett biztonsági mentési házirend pedig ugyanazon a _partíción_ tiltható le a [Partícióbiztonsági mentési API letiltása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) funkcióval.
+## <a name="disable-backup"></a>Biztonsági mentés letiltása
+A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiztonsági mentésre. Az _alkalmazásban_ engedélyezett biztonsági mentési szabályzatot csak az alkalmazás-biztonsági mentési API [letiltásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) lehet letiltani, és a _szolgáltatásban_ engedélyezett biztonsági mentési szabályzat a _service_ [szolgáltatás biztonsági mentési API-k letiltásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) is letiltható. _a partíciós_ biztonsági [mentési API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) letiltásával _ugyanazon a_ _partíción_ is letiltható.
 
-* Egy _alkalmazás_ biztonsági mentési házirendjének letiltása leállítja az összes időszakos adatbiztonsági mentést a biztonsági mentési házirend megbízható állapotalapú szolgáltatáspartíciókra vagy reliable actor partíciókra való propagálása miatt.
+* Egy _alkalmazás_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a biztonsági mentési szabályzat propagálásának eredményeképpen, megbízható állapot-nyilvántartó partíciók vagy megbízható szereplők partíciói számára.
 
-* A _szolgáltatás_ biztonsági mentési házirendjének letiltása leállítja az összes rendszeres adatbiztonsági mentést, amely a biztonsági mentési házirendnek a _szolgáltatás_partícióira történő propagálása miatt történik.
+* Egy _szolgáltatás_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést, amely a biztonsági mentési szabályzatnak a _szolgáltatás_partíciókhoz való propagálásának eredményeképpen történik.
 
-* A _partíció_ biztonsági mentési házirendjének letiltása leállítja az összes rendszeres adatbiztonsági mentést a partícióbiztonsági házirend miatt.
+* Egy _partíció_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a partíció biztonsági mentési szabályzata miatt.
 
-* Egy entitás (alkalmazás/szolgáltatás/partíció) `CleanBackup` biztonsági mentésének letiltása közben igaz értékre állítható be a konfigurált tárolóösszes biztonsági másolatának törléséhez. _true_
+* Az entitások (alkalmazás/szolgáltatás/partíció) biztonsági mentésének letiltása `CleanBackup` közben _igaz_ értékre állítható, hogy a konfigurált tárolóban lévő összes biztonsági mentést törölni lehessen.
     ```json
     {
         "CleanBackup": true 
     }
     ```
 
-## <a name="suspend--resume-backup"></a>A & a biztonsági mentés folytatásának felfüggesztése
-Bizonyos helyzetekben az adatok rendszeres biztonsági mentésének ideiglenes felfüggesztését követelhetik. Ebben az esetben a követelménytől függően a biztonsági mentési API felfüggesztése alkalmazáson _,_ _szolgáltatáson_vagy _partíción_is használható. Az időszakos biztonsági mentés felfüggesztése tranzitív az alkalmazás hierarchiájának részfája felett az alkalmazási ponttól. 
+## <a name="suspend--resume-backup"></a>Felfüggesztés & biztonsági mentés folytatása
+Bizonyos helyzetek ideiglenes felfüggesztést igényelhetnek az adatmennyiség rendszeres biztonsági mentéséről. Ilyen helyzetekben a követelménytől függően a backup API felfüggesztése egy _alkalmazáson_, _szolgáltatáson_vagy _partíción_is felhasználható. A biztonsági mentés rendszeres felfüggesztése az alkalmazás hierarchiájának az alkalmazott pontról való átjárása. 
 
-* Ha a felfüggesztés t alkalmaz egy _alkalmazás_ alkalmazás biztonsági [mentési API-t](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) használó, majd az alkalmazás alatt az összes szolgáltatás és partíciók felfüggesztették az adatok rendszeres biztonsági mentése.
+* Ha egy _alkalmazás_ felfüggesztését az [alkalmazás felfüggesztése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API-val alkalmazza, akkor az alkalmazásban lévő összes szolgáltatás és partíció fel van függesztve az adat rendszeres biztonsági mentéséhez.
 
-* Ha a felfüggesztést egy _szolgáltatás_ a [Szolgáltatás biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API felfüggesztésével alkalmazza, majd a szolgáltatás összes partícióját felfüggeszti az adatok rendszeres biztonsági mentése.
+* Ha a felfüggesztést a szolgáltatás [felfüggesztése szolgáltatás biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) _API használatával alkalmazza_ , akkor a szolgáltatásban lévő összes partíció fel van függesztve az adat rendszeres biztonsági mentéséhez.
 
-* Ha a felfüggesztés t alkalmaz egy _partíción_ a [Partíció biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API felfüggesztése, majd felfüggeszti partíciók at ez a szolgáltatás felfüggesztették az adatok rendszeres biztonsági mentése.
+* Ha a felfüggesztést egy olyan _partíción_ alkalmazza, amely a [felfüggesztési partíció biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API-ját használja, a rendszer felfüggeszti a szolgáltatásban lévő partíciókat a rendszeres biztonsági mentéshez.
 
-Miután a felfüggesztés szükségessége véget ért, akkor az időszakos adatmentés visszaállítható a megfelelő önéletrajz-biztonsági mentési API-val. Az időszakos biztonsági mentést ugyanabban az _alkalmazásban_, _szolgáltatásban_vagy _partíción_ kell folytatni, ahol felfüggesztették.
+Miután a felfüggesztés igénybe van véve, az időszakos biztonsági mentés visszaállítható a megfelelő folytatási biztonsági mentési API használatával. Az időszakos biztonsági mentést ugyanabban az _alkalmazásban_, _szolgáltatásban_vagy _partíción_ kell folytatni, ahol fel lett függesztve.
 
-* Ha egy _alkalmazásfelfüggesztéset_alkalmaztak, akkor a [Folytatás alkalmazásbiztonsági](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API-val kell folytatni. 
+* Ha a felfüggesztést egy _alkalmazáson_alkalmazták, akkor azt az alkalmazás- [biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API-val folytathatja. 
 
-* Ha egy _szolgáltatás_felfüggesztése lett alkalmazva, akkor a [szolgáltatásbiztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API-t kell használnia.
+* Ha a felfüggesztést egy _szolgáltatáson_alkalmazták, akkor azt folytatni kell a [Service backup API folytatásával](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) .
 
-* Ha a felfüggesztést egy _partíción_alkalmazták, akkor a [Folytatás partíció biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-jával kell folytatni.
+* Ha a felfüggesztést egy _partíción_alkalmazták, akkor azt újra kell folytatni a [partíciós biztonsági mentési](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-val.
 
-### <a name="difference-between-suspend-and-disable-backups"></a>Különbség a biztonsági mentések felfüggesztése és letiltása között
-A biztonsági mentés letiltását akkor kell használni, ha egy adott alkalmazáshoz, szolgáltatáshoz vagy partícióhoz már nincs szükség biztonsági másolatokra. Lehet meghívni tiltsa biztonsági mentési kérelmet együtt tiszta biztonsági mentés paraméter igaz, ami azt jelentené, minden meglévő biztonsági mentések törlődnek is. Azonban a felfüggesztésolyan esetekben használatos, amikor az ember ideiglenesen ki akarja kapcsolni a biztonsági mentéseket, például amikor a helyi lemez megtelik, vagy a biztonsági mentés feltöltése ismert hálózati probléma miatt sikertelen stb. 
+### <a name="difference-between-suspend-and-disable-backups"></a>A biztonsági másolatok felfüggesztése és letiltása közötti különbség
+Ha egy adott alkalmazáshoz, szolgáltatáshoz vagy partícióhoz már nincs szükség biztonsági mentésre, akkor tiltsa le a biztonsági mentést. Az egyik meghívhatja a biztonsági mentési kérelem letiltását a tiszta biztonsági mentések paraméterrel, ami azt jelenti, hogy az összes meglévő biztonsági mentés is törlődik. A felfüggesztést azonban olyan helyzetekben kell használni, amikor az egyik az ismert hálózati probléma miatt nem sikerül ideiglenesen kikapcsolni a biztonsági mentéseket. 
 
-Bár a letiltás csak olyan szinten hívható meg, amely korábban kifejezetten engedélyezve volt a biztonsági mentéshez, azonban a felfüggesztés bármely olyan szinten alkalmazható, amely jelenleg engedélyezve van a biztonsági mentéshez közvetlenül vagy öröklési/ hierarchia útján. Ha például a biztonsági mentés alkalmazásszinten engedélyezve van, csak az alkalmazás szintjén lehet meghívni a letiltást, azonban a felfüggesztés meghívható az alkalmazás, az adott alkalmazás bármely szolgáltatása vagy partíciója. 
+Bár a Letiltás csak olyan szinten hívható meg, amely korábban engedélyezve lett a biztonsági mentéshez, azonban a felfüggesztés bármely olyan szinten alkalmazható, amely jelenleg engedélyezve van a biztonsági mentéshez közvetlenül, vagy öröklés/hierarchia használatával. Ha például a biztonsági mentés alkalmazási szinten engedélyezve van, az egyik csak az alkalmazás szintjén lehet letiltani a letiltást, azonban az alkalmazásban az alkalmazáshoz tartozó bármely szolgáltatás vagy partíció is meghívja a felfüggesztést. 
 
-## <a name="auto-restore-on-data-loss"></a>Automatikus visszaállítás adatvesztés esetén
-A szolgáltatáspartíció váratlan hibák miatt adatokat veszíthet. Például a partíció (beleértve az elsődleges replikát is) három replikájából kettő lemeze megsérül vagy törlődik.
+## <a name="auto-restore-on-data-loss"></a>Automatikus visszaállítás az adatvesztéskor
+A szolgáltatás partíciója nem várt hibák miatt elveszítheti az adatvesztést. Például a partíciók három másodpéldánya (beleértve az elsődleges replikát is) esetében a lemez megsérül vagy törölve lesz.
 
-Amikor a Service Fabric észleli, hogy a `OnDataLossAsync` partíció adatvesztés, meghívja a partíción a felület metódusát, és elvárja, hogy a partíció tegye meg a szükséges műveletet az adatvesztésből való kijövetelhez. Ebben a helyzetben, ha a partíció `AutoRestoreOnDataLoss` hatékony `true` biztonsági mentési házirendje jelzőt állít be, majd a visszaállítás automatikusan aktiválódik a partíció legújabb rendelkezésre álló biztonsági mentésének használatával.
+Ha Service Fabric észleli, hogy a partíció adatvesztésben van, meghívja `OnDataLossAsync` a csatoló metódust a partíción, és elvárja, hogy a partíció elvégezze az adatvesztést. Ebben az esetben, ha a partíción a tényleges biztonsági mentési házirendben a `AutoRestoreOnDataLoss` jelző `true` van beállítva, akkor a visszaállítás automatikusan aktiválódik a partíció legújabb elérhető biztonsági másolatának használatával.
 
-## <a name="get-backup-configuration"></a>Biztonsági másolat konfigurálásának beszereznie
-Külön API-k érhetők el, hogy biztonsági mentési konfigurációs információkat kapjon egy _alkalmazáson_, _szolgáltatáson_és _partícióhatókörön._ [Az alkalmazásbiztonsági mentés konfigurációs adatainak beszereznie](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [a szolgáltatás biztonsági másolatának konfigurációs adatainak beszereznie](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)és [a partícióbiztonsági másolat konfigurációs adatai](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) ezek az API-k. Ezek az API-k főként a vonatkozó biztonsági mentési szabályzatot, hatókört, amelynél a biztonsági mentési szabályzat alkalmazása és a biztonsági mentés felfüggesztésének részletei jelennek meg. Az alábbiakban röviden ismertetjük ezeket az API-kat.
+## <a name="get-backup-configuration"></a>Biztonsági mentési konfiguráció beolvasása
+Az _alkalmazások_, _szolgáltatások_és _partíciók_ hatókörében külön API-k érhetők el a biztonsági mentési konfigurációs információk lekéréséhez. Az [alkalmazás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)beszerzése, a [szolgáltatás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)beolvasása, valamint a [partíció biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) beolvasása ezen API-k Ezek az API-k elsősorban a megfelelő biztonsági mentési szabályzatot, a biztonsági mentési szabályzat hatálya alá eső hatókört és a biztonsági mentési felfüggesztés részleteit adják vissza. Az alábbi rövid leírás az API-k visszaadott eredményeiről szól.
 
-- Alkalmazás biztonsági másolat konfigurációs információk: az alkalmazáson alkalmazott biztonsági mentési házirend részleteit, valamint az alkalmazáshoz tartozó szolgáltatások és partíciók túlterhelt házirendek részleteit tartalmazza. Azt is tartalmazza a felfüggesztési információkat az alkalmazás és az informatikai szolgáltatások, és a partíciók.
+- Az alkalmazás biztonsági másolatának konfigurációs adatai: az alkalmazáson alkalmazott biztonsági mentési házirend részleteit, valamint az alkalmazáshoz tartozó szolgáltatásokon és partíciókban található összes, a felett felülbírált szabályzatot tartalmazza. Emellett az alkalmazás és az IT-szolgáltatások, valamint a partíciók felfüggesztési információit is tartalmazza.
 
-- Szolgáltatás biztonsági mentéskonfigurációjának adatai: a szolgáltatás hatékony biztonsági mentési házirendjének részleteit, valamint a házirend alkalmazásának hatókörét és a partíciók on-over-ridden házirendek részleteit tartalmazza. A szolgáltatás és partíciói felfüggesztési adatait is tartalmazza.
+- A szolgáltatás biztonsági mentési konfigurációjának adatai: megadja a szolgáltatásra vonatkozó érvényes biztonsági mentési házirend részleteit, valamint azt a hatókört, amelyre a szabályzatot alkalmazták A szolgáltatás és a partíciók felfüggesztési információit is tartalmazza.
 
-- Partíció biztonsági mentéskonfigurációjának adatai: a partíción érvényes biztonsági mentési házirend részleteit és a házirend alkalmazásának hatókörét tartalmazza. A partíciók felfüggesztési adatait is tartalmazza.
+- Partíció biztonsági mentési konfigurációs adatai: a biztonsági mentési szabályzat részletes adatait tartalmazza a partíción, valamint azt a hatókört, amelyre a szabályzat érvényes. A partíciók felfüggesztési információit is tartalmazza.
 
-## <a name="list-available-backups"></a>Az elérhető biztonsági mentések listája
+## <a name="list-available-backups"></a>Elérhető biztonsági másolatok listázása
 
-Az elérhető biztonsági mentések a Biztonsági másolat lista beszerzése API használatával sorolhatók fel. Az API-hívás eredménye tartalmazza a biztonsági mentési adatok at kapcsolatos biztonsági mentési tároló, amely a megfelelő biztonsági mentési szabályzatban konfigurált biztonsági mentési adatok kapcsolatos biztonsági mentési elemeket tartalmaz. Az API különböző változatai egy alkalmazáshoz, szolgáltatáshoz vagy partícióhoz tartozó rendelkezésre álló biztonsági mentések listázásához érhetők el. Ezek az API-k támogatják az összes vonatkozó partíció _legfrissebb_ rendelkezésre álló biztonsági mentésének beszerzését, illetve a biztonsági mentések _szűrését_ a kezdési és _befejezési dátum_alapján.
+Az elérhető biztonsági másolatok a biztonsági mentési listával API-val is megtekinthetők. Az API-hívás eredménye tartalmazza a biztonsági mentési tárolóban elérhető biztonsági másolatokhoz kapcsolódó biztonsági mentési adatokat, amelyek a megfelelő biztonsági mentési házirendben vannak konfigurálva. Az API különböző változatai az alkalmazáshoz, szolgáltatáshoz vagy partícióhoz tartozó elérhető biztonsági másolatok listázására szolgálnak. Ezek az API-k támogatják az összes megfelelő partíció _legújabb_ elérhető biztonsági mentését, illetve a biztonsági másolatok szűrését a _kezdő dátum_ és a _befejezési dátum_alapján.
 
-Ezek az API-k is támogatják az eredmények tördelését, ha a _MaxResults_ paraméter értéke nem nulla pozitív egész szám, majd az API maximális _MaxResults_ biztonsági mentési információs elemeket ad vissza. Abban az esetben, több biztonsági mentési információ elemek állnak rendelkezésre, mint a _MaxResults_ érték, majd a folytatási jogkivonatot adja vissza. Az érvényes folytatási token paraméter használható a következő eredményhalmaz lekéréséhez. Ha érvényes folytatási token értéket ad át az API következő hívása, az API a következő eredményhalmazt adja vissza. A válasz nem tartalmaz folytatási jogkivonatot, ha az összes rendelkezésre álló eredményt visszaadja.
+Ezek az API-k az eredmények tördelését is támogatják, ha a _MaxResults_ paraméter értéke nem nulla pozitív egész szám, akkor az API a maximális _MaxResults_ biztonsági mentési információ elemeit adja vissza. Ha a _MaxResults_ értéknél több biztonsági mentési információ is elérhető, akkor a rendszer a folytatási tokent adja vissza. A folytatási jogkivonat érvényes paramétere az eredmények következő készletének beolvasására használható. Ha az API következő hívására érvényes folytatólagos jogkivonat értéket ad át, az API a következő eredményeket adja vissza. Az összes elérhető eredmény visszaadásakor a válasz nem tartalmazza a folytatási tokent.
 
-Az alábbiakban rövid információt a támogatott változatok.
+Az alábbiakban a támogatott változatokkal kapcsolatos rövid információk szerepelnek.
 
-- [Alkalmazásbiztonsági lista beszerzése:](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist)Az adott Service Fabric-alkalmazáshoz tartozó minden partícióhoz elérhető biztonsági mentések listáját adja vissza.
+- [Alkalmazás biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): az adott Service Fabric alkalmazáshoz tartozó összes partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-- [Szolgáltatás biztonsági másolatlistájának beszerzése:](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist)Az adott Service Fabric-szolgáltatáshoz tartozó minden partícióhoz elérhető biztonsági mentések listáját adja vissza.
+- [Szolgáltatás biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): a megadott Service Fabric szolgáltatáshoz tartozó minden partíció számára elérhető biztonsági másolatok listáját adja vissza.
  
-- [Partícióbiztonsági lista beszerzése](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): A megadott partícióhoz rendelkezésre álló biztonsági mentések listáját adja vissza.
+- [Partíció biztonsági mentési listájának beolvasása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
 ## <a name="next-steps"></a>További lépések
-- [Rest API-kézikönyv biztonsági mentésének visszaállítása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Biztonsági mentés visszaállítása REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

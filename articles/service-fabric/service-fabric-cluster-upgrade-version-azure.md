@@ -1,70 +1,70 @@
 ---
-title: Fürt Azure Service Fabric-verziójának frissítése
-description: Frissítse a Service Fabric-kódot és/vagy konfigurációt, amely egy Service Fabric-fürtöt futtat, beleértve a fürtfrissítési mód beállítását, a tanúsítványok frissítését, az alkalmazásportok hozzáadását, az operációs rendszer javításait és így tovább. Mire számíthat a frissítések végrehajtásakor?
+title: Fürt Azure Service Fabric verziójának frissítése
+description: Frissítse a Service Fabric kódot és/vagy konfigurációt, amely egy Service Fabric fürtöt futtat, beleértve a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációs rendszer javítását stb. Mire számíthat a frissítések végrehajtásakor?
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451809"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Egy fürt Service Fabric-verziójának frissítése
 
-Minden modern rendszer számára a felbonthatóság tervezése kulcsfontosságú a termék hosszú távú sikerének eléréséhez. Az Azure Service Fabric-fürt egy olyan erőforrás, amely az Ön tulajdonában van, de részben a Microsoft kezeli. Ez a cikk ismerteti, hogyan frissítheti az Azure-fürtben futó Service Fabric verzióját.
+Bármely modern rendszer esetében a minőségének megtervezése kulcsfontosságú a termék hosszú távú sikerességének megvalósításához. Az Azure Service Fabric-fürt olyan erőforrás, amelyet Ön birtokol, de részben a Microsoft felügyeli. Ez a cikk az Azure-fürtön futó Service Fabric verziójának frissítését ismerteti.
 
-Beállíthatja, hogy a fürt automatikus hálófrissítéseket kapjon, amint azok a Microsoft által kiadott, vagy kiválaszthatja a támogatott hálóverziót, amelyen a fürthöz be kell lépnie.
+Beállíthatja, hogy a fürt a Microsoft által kiadott automatikus háló-frissítéseket fogadja, vagy kiválaszthat egy olyan támogatott háló-verziót, amelyet be szeretne állítani a fürtön.
 
-Ehhez a "upgradeMode" fürtkonfiguráció beállításával a portálon, vagy az Erőforrás-kezelő használatával a létrehozáskor vagy egy élő fürtön használja az Erőforrás-kezelőt. 
+Ezt úgy teheti meg, hogy az "upgradeMode" fürtöt a portálon vagy a Resource Managert használja a létrehozáskor vagy később egy élő fürtön 
 
 > [!NOTE]
-> Győződjön meg arról, hogy a fürt mindig támogatott hálóverziót futtat. Ahogy és amikor bejelenti a szolgáltatásháló új verziójának kiadását, az előző verzió a támogatás megszűnése után legalább 60 nap elteltével van megjelölve. Az új kiadások bejelentette [a szolgáltatás szövet csapat blog](https://blogs.msdn.microsoft.com/azureservicefabric/). Az új kiadás akkor választható. 
+> Ügyeljen arra, hogy a fürtön mindig a támogatott háló verziót futtassa. Ahogy és amikor bejelentjük a Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, legalább 60 nappal az adott dátumtól számítva. Az új kiadások a [Service Fabric csapatának blogjában](https://blogs.msdn.microsoft.com/azureservicefabric/)jelennek meg. Az új kiadás elérhető lesz a választáshoz. 
 > 
 > 
 
-14 nappal a kiadás lejárta előtt a fürt fut, egy állapotesemény jön létre, amely a fürt egy figyelmeztető állapotba helyezi. A fürt figyelmeztetési állapotban marad, amíg nem frissít egy támogatott hálóverzióra.
+a fürt kiadásának lejárta előtt 14 nappal egy állapot-esemény jön létre, amely figyelmeztetési állapotba helyezi a fürtöt. A fürt figyelmeztetési állapotban marad, amíg nem frissít egy támogatott Fabric-verzióra.
 
-## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>A frissítési mód beállítása az Azure Portalon
-A fürt ötös vagy manuális beállítását beállíthatja a fürt létrehozásakor.
+## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>A frissítési mód beállítása a Azure Portalban
+A fürtöt beállíthatja automatikus vagy manuálisra a fürt létrehozásakor.
 
 ![Create_Manualmode][Create_Manualmode]
 
-A fürt ötös vagy manuális, ha egy élő fürtön, a kezelési élmény használatával állítható be. 
+A fürtöt beállíthatja automatikus vagy manuálisra, ha élő fürtön, a kezelés felületén keresztül. 
 
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Frissítés egy új verzióra egy olyan fürtön, amely manuális módra van állítva a portálon keresztül.
-Az új verzióra való frissítéshez mindössze annyit kell tennie, hogy kiválasztja a legördülő menüből a rendelkezésre álló verziót, és mentse. A Fabric frissítés automatikusan elindul. A fürt állapotházirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) a frissítés során be vannak tartva.
+### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Frissítés egy új verzióra egy olyan fürtön, amely manuális módra van beállítva a portálon keresztül.
+Az új verzióra való frissítéshez mindössze annyit kell tennie, hogy kijelöli a rendelkezésre álló verziót a legördülő menüből, és menti a mentést. A háló frissítése automatikusan bekerül. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) be vannak tartva a frissítés során.
 
-Ha a fürt állapotházirendjei nem teljesülnek, a frissítés visszalesz állítva. Görgessen le a dokumentumon, hogy többet tudjon meg az egyéni állapotházirendek beállításáról. 
+Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Görgessen le a dokumentumhoz, és olvassa el, hogyan állíthatja be ezeket az egyéni állapotú házirendeket. 
 
-Miután kijavította a visszaállítást eredményező problémákat, újra el kell indítania a frissítést, ugyanazokat a lépéseket követve, mint korábban.
+A visszaállítást eredményező hibák kijavítása után újra kell indítania a frissítést a korábban leírt lépések követésével.
 
 ![Manage_Automaticmode][Manage_Automaticmode]
 
-## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>A frissítési mód beállítása Erőforrás-kezelő sablonnal
-Adja hozzá a "upgradeMode" konfigurációt a Microsoft.ServiceFabric/clusters erőforrás-definíciójához, és állítsa be a "clusterCodeVersion" értéket a támogatott hálóverziók egyikére az alábbiak szerint, majd telepítse a sablont. A "upgradeMode" érvényes értékei a "Manuális" vagy az "Automatikus"
+## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>A frissítési mód beállítása Resource Manager-sablon használatával
+Adja hozzá a "upgradeMode" konfigurációt a Microsoft. ServiceFabric/Clusters erőforrás-definícióhoz, és állítsa be a "clusterCodeVersion" kifejezést az alább látható támogatott háló verziók egyikére, majd telepítse a sablont. A "upgradeMode" értéke "kézi" vagy "automatikus".
 
-![ARMUpgradeMode (ARMUpgradeMode)][ARMUpgradeMode]
+![ARMUpgradeMode][ARMUpgradeMode]
 
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Frissítés egy új verzióra egy olyan fürtön, amely Egy Erőforrás-kezelő sablonon keresztül kézi módra van állítva.
-Ha a fürt kézi üzemmódban van, új verzióra való frissítéshez módosítsa a "clusterCodeVersion" verziót egy támogatott verzióra, és telepítse azt. A sablon üzembe helyezése, a Fabric-frissítés rúgásai automatikusan elindulnak. A fürt állapotházirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) a frissítés során be vannak tartva.
+### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Frissítés egy új verzióra egy olyan fürtön, amely egy Resource Manager-sablonon keresztül manuális üzemmódra van beállítva.
+Ha a fürt manuális módban van, az új verzióra való frissítéshez módosítsa a "clusterCodeVersion" kifejezést egy támogatott verzióra, és telepítse azt. A sablon üzembe helyezése, a háló frissítésének rúgásai automatikusan elindulnak. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) be vannak tartva a frissítés során.
 
-Ha a fürt állapotházirendjei nem teljesülnek, a frissítés visszalesz állítva.  
+Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést.  
 
-Miután kijavította a visszaállítást eredményező problémákat, újra el kell indítania a frissítést, ugyanazokat a lépéseket követve, mint korábban.
+A visszaállítást eredményező hibák kijavítása után újra kell indítania a frissítést a korábban leírt lépések követésével.
 
-## <a name="set-custom-health-polices-for-upgrades"></a>Egyéni állapotfigyelő késedelmi dista beállítása a frissítésekhez
-Megadhatja az egyéni egészségügyi biztonsági anyagok háló frissítés. Ha a fürtöt automatikus háló-frissítésekre állította, akkor ezek a házirendek az [automatikus hálófrissítések 1.](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)
-Ha beállította a fürt manuális háló frissítések, majd ezek a házirendek minden alkalommal, amikor kiválaszt egy új verziót, amely elindítja a rendszert, hogy indítsa el a háló frissítése a fürtben. Ha nem bírálja felül a házirendeket, a rendszer az alapértelmezett értékeket használja.
+## <a name="set-custom-health-polices-for-upgrades"></a>Egyéni állapot-házirendek beállítása a frissítésekhez
+Megadhat egyéni állapot-házirendeket a háló frissítéséhez. Ha úgy állította be a fürtöt, hogy az automatikus háló frissítése megtörténjen, akkor ezek a szabályzatok az [automatikus háló frissítéseinek 1. fázisára](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)vonatkoznak.
+Ha a fürtöt manuális hálós frissítésre állította be, akkor a rendszer minden alkalommal alkalmazza ezeket a házirendeket, amikor kiválaszt egy új verziót, amely elindítja a rendszerindítást a fürtben. Ha nem bírálja felül a szabályzatokat, a rendszer az alapértelmezett értékeket használja.
 
-Megadhatja az egyéni állapotházirendeket, vagy tekintse át az aktuális beállításokat a "háló frissítési" panel alatt, a speciális frissítési beállítások kiválasztásával. Tekintse át az alábbi képet arról, hogyan kell. 
+A speciális frissítési beállítások kiválasztásával megadhatja az egyéni állapotfigyelő házirendeket, vagy áttekintheti az aktuális beállításokat a "háló frissítése" panelen. Tekintse át a következő képet a című témakörben. 
 
-![Egyéni állapotházirendek kezelése][HealthPolices]
+![Egyéni állapotfigyelő házirendek kezelése][HealthPolices]
 
-## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Az adott előfizetés összes környezetéhez elérhető összes verzió listázása
+## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Az összes elérhető verzió listázása egy adott előfizetés összes környezetéhez
 Futtassa a következő parancsot, és ehhez hasonló kimenetet kell kapnia.
 
-A "supportExpiryUtc" jelzi, ha egy adott kiadás lejár vagy lejárt. A legújabb kiadásnak nincs érvényes dátuma - értéke "9999-12-31T23:59:59.9999999", ami csak azt jelenti, hogy a lejárati dátum még nincs beállítva.
+a "supportExpiryUtc" jelzi, ha egy adott kiadás lejár vagy lejárt. A legújabb kiadás nem rendelkezik érvényes dátummal – a "9999-12-31T23:59:59.9999999" értékkel rendelkezik, ami azt jelenti, hogy a lejárati dátum még nincs beállítva.
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
@@ -109,9 +109,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan szabhatja testre a [szolgáltatásháló fürthálózatának néhány beállítását](service-fabric-cluster-fabric-settings.md)
-* További információ [a fürt méretezése és méretezése](service-fabric-cluster-scale-up-down.md)
-* További információ [az alkalmazásfrissítésekről](service-fabric-application-upgrade.md)
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

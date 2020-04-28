@@ -1,52 +1,52 @@
 ---
 title: Aszinkron műveletek állapota
-description: Bemutatja, hogyan követhető az aszinkron műveletek az Azure-ban. A hosszú ideig futó művelet állapotának lefelvételéhez használt értékeket jeleníti meg.
+description: Útmutatás az aszinkron műveletek nyomon követéséhez az Azure-ban. Megjeleníti a hosszan futó művelet állapotának lekéréséhez használt értékeket.
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485441"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
-Egyes Azure REST-műveletek aszinkron módon futnak, mert a művelet nem hajtható végre gyorsan. Ez a cikk azt ismerteti, hogyan követheti nyomon az aszinkron műveletek állapotát a válaszban visszaadott értékeken keresztül.  
+Bizonyos Azure REST-műveletek aszinkron módon futnak, mert a művelet nem hajtható végre gyorsan. Ez a cikk bemutatja, hogyan követheti nyomon az aszinkron műveletek állapotát a válaszban visszaadott értékek alapján.  
 
-## <a name="status-codes-for-asynchronous-operations"></a>Állapotkódok az aszinkron műveletekhez
-Az aszinkron művelet kezdetben a következő HTTP-állapotkódot adja vissza:
+## <a name="status-codes-for-asynchronous-operations"></a>Az aszinkron műveletekhez tartozó állapotkódok
+Egy aszinkron művelet először a HTTP-állapotkódot adja vissza a következők közül:
 
 * 201 (létrehozva)
-* 202 (Elfogadva) 
+* 202 (elfogadva) 
 
-Ha a művelet sikeresen befejeződik, a következő értéket adja vissza:
+A művelet sikeres befejezését követően a a következők egyikét adja vissza:
 
 * 200 (OK)
-* 204 (Nincs tartalom) 
+* 204 (nincs tartalom) 
 
-Tekintse meg a [REST API dokumentációját](/rest/api/) a végrehajtandó műveletre adott válaszok megtekintéséhez.
+Tekintse meg az [REST API dokumentációját](/rest/api/) , hogy láthassa a végrehajtandó műveletre adott válaszokat.
 
-## <a name="monitor-status-of-operation"></a>A működés állapotának figyelése
-Az aszinkron REST-műveletek fejlécértékeket adnak vissza, amelyek segítségével meghatározhatja a művelet állapotát. A következő tetszésszerint három fejlécértéket kell megvizsgálni:
+## <a name="monitor-status-of-operation"></a>A művelet állapotának figyelése
+Az aszinkron REST-műveletek adja vissza a fejléc értékeit, amelyek segítségével meghatározhatja a művelet állapotát. A megvizsgálható három fejléc-érték is lehetséges:
 
-* `Azure-AsyncOperation`- URL a művelet folyamatos állapotának ellenőrzéséhez. Ha a művelet ezt az értéket adja vissza, mindig használja azt (a Hely helyett) a művelet állapotának nyomon követéséhez.
-* `Location`- URL a művelet befejezésének meghatározásához. Ezt az értéket csak akkor használja, ha az Azure-AsyncOperation nem adja vissza.
-* `Retry-After`- Az aszinkron művelet állapotának ellenőrzése előtt várjon másodperceket.
+* `Azure-AsyncOperation`-URL a művelet folyamatos állapotának ellenőrzéséhez. Ha a művelet visszaadja ezt az értéket, mindig használja (hely helyett) a művelet állapotának nyomon követéséhez.
+* `Location`-A művelet befejezését meghatározó URL-cím. Ezt az értéket csak akkor használja, ha az Azure-AsyncOperation nem ad vissza.
+* `Retry-After`– Az aszinkron művelet állapotának ellenőrzése előtt megvárni kívánt másodpercek száma.
 
-Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie az Azure-AsyncOperation fejlécértékét egy művelethez, és a Hely fejléc értékét egy másik művelethez. 
+Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie az Azure-AsyncOperation fejléc értékét egy művelethez, és egy másik műveletnél a Location fejléc értékét. 
 
-A fejlécértékeket úgy lehet beolvasni, ahogy a kérés bármely fejlécértékét. A C#-ban például a fejlécértékét `HttpWebResponse` a `response` következő kóddal elnevezett objektumból lehet beolvasni:
+A fejléc értékeinek lekérése a kérelem fejlécének bármely értékének lekérése esetén. A C# nyelvben például lekéri a fejléc értékét egy `HttpWebResponse` nevű `response` objektumból a következő kóddal:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation kérés és válasz
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation kérelem és válasz
 
-Az aszinkron művelet állapotának lekéréséhez küldjön get-kérelmet az Azure-AsyncOperation fejlécértékében lévő URL-címre.
+Az aszinkron művelet állapotának lekéréséhez küldjön egy GET kérelmet az URL-címre az Azure-AsyncOperation header Value értékben.
 
-A műveletből származó válasz törzse a műveletről tartalmaz információkat. A következő példa a műveletből visszaadott lehetséges értékeket mutatja be:
+A művelettől kapott válasz törzse információkat tartalmaz a műveletről. A következő példa a művelet által visszaadott lehetséges értékeket mutatja:
 
 ```json
 {
@@ -66,42 +66,42 @@ A műveletből származó válasz törzse a műveletről tartalmaz információk
 }
 ```
 
-Csak `status` az összes válaszhoz kerül visszaadásra. A hibaobjektum akkor jelenik meg, ha az állapot sikertelen vagy megszakítva. Az összes többi érték nem kötelező; ezért a kapott válasz máshogy nézhet ki, mint a példa.
+A `status` rendszer csak az összes válasz eredményét adja vissza. A rendszer a hiba objektumot adja vissza, ha az állapot meghiúsul vagy meg lett szakítva. Az összes többi érték nem kötelező; Ezért a kapott válasz a példától eltérő lehet.
 
-## <a name="provisioningstate-values"></a>provisioningState értékek
+## <a name="provisioningstate-values"></a>provisioningState-értékek
 
-Olyan műveletek, amelyek erőforrást hoznak létre, frissítnek vagy törölnek (PUT, PATCH, DELETE), általában `provisioningState` értéket adnak vissza. Ha egy művelet befejeződött, a következő három érték egyikét adja vissza: 
+Az erőforrások létrehozására, frissítésére vagy törlésére (PUT, javítás, törlés) vonatkozó műveletek általában `provisioningState` értéket adnak vissza. Egy művelet befejezését követően a következő három érték egyikét adja vissza: 
 
 * Sikeres
 * Sikertelen
 * Megszakítva
 
-Az összes többi érték azt jelzi, hogy a művelet még fut. Az erőforrás-szolgáltató visszaadhat egy testreszabott értéket, amely jelzi az állapotát. Például előfordulhat, hogy a kérelem fogadásakor és futtatásakor megkapja az **Elfogadva.**
+Az összes többi érték azt jelzi, hogy a művelet még fut. Az erőforrás-szolgáltató egy testreszabott értéket adhat vissza, amely jelzi az állapotát. Előfordulhat például, hogy **fogadja el** a kérés fogadása és futtatása esetén elfogadott értesítést.
 
-## <a name="example-requests-and-responses"></a>Példa kérések és válaszok
+## <a name="example-requests-and-responses"></a>Példa kérelmekre és válaszokra
 
-### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Virtuális gép indítása (202 az Azure-AsyncOperation művelettel)
-Ez a példa bemutatja, hogyan határozhatja meg a virtuális gépek **indítási** művelet állapotát. Az első kérelem formátuma a következő:
+### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Virtuális gép indítása (202 Azure-AsyncOperation)
+Ebből a példából megtudhatja, hogyan határozhatja meg a virtuális gépek **indítási** műveletének állapotát. A kezdeti kérelem formátuma a következő:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-202-es állapotkódot ad vissza. A fejlécértékek között a következők láthatók:
+A 202 állapotkódot adja vissza. A fejléc értékei között a következő jelenik meg:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Az aszinkron művelet állapotának ellenőrzéséhez küldjön egy másik kérést az adott URL-címre.
+Az aszinkron művelet állapotának megtekintéséhez küldjön egy másik kérelmet erre az URL-címre.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-A választörzs a művelet állapotát tartalmazza:
+A válasz törzse a művelet állapotát tartalmazza:
 
 ```json
 {
@@ -111,78 +111,78 @@ A választörzs a művelet állapotát tartalmazza:
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Erőforrások üzembe helyezése (201 az Azure-AsyncOperation művelettel)
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Erőforrások üzembe helyezése (201 Azure-AsyncOperation)
 
-Ez a példa bemutatja, hogyan határozhatja meg az erőforrások Azure-ba történő üzembe helyezéséhez üzembe **helyezési** művelet állapotát. Az első kérelem formátuma a következő:
+Ebből a példából megtudhatja, hogyan határozhatja meg a **központi telepítések** állapotát az erőforrások Azure-ba történő telepítéséhez. A kezdeti kérelem formátuma a következő:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-201-es állapotkódot ad vissza. A válasz törzse a következőket tartalmazza:
+A 201 állapotkódot adja vissza. A válasz törzse a következőket tartalmazza:
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-A fejlécértékek között a következők láthatók:
+A fejléc értékei között a következő jelenik meg:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Az aszinkron művelet állapotának ellenőrzéséhez küldjön egy másik kérést az adott URL-címre.
+Az aszinkron művelet állapotának megtekintéséhez küldjön egy másik kérelmet erre az URL-címre.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-A választörzs a művelet állapotát tartalmazza:
+A válasz törzse a művelet állapotát tartalmazza:
 
 ```json
 {"status":"Running"}
 ```
 
-A telepítés befejezése után a válasz a következőket tartalmazza:
+Ha a telepítés befejeződött, a válasz a következőket tartalmazza:
 
 ```json
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a>Tárfiók létrehozása (202 hely és újrapróbálkozás után)
+### <a name="create-storage-account-202-with-location-and-retry-after"></a>Storage-fiók létrehozása (202, hely és újrapróbálkozás után)
 
-Ez a példa bemutatja, hogyan határozhatja meg a tárolási fiókok **létrehozási** műveletállapotát. Az első kérelem formátuma a következő:
+Ebből a példából megtudhatja, hogyan határozhatja meg a **létrehozási** művelet állapotát a Storage-fiókok esetében. A kezdeti kérelem formátuma a következő:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-És a kérelem törzse tartalmazza a tárfiók tulajdonságait:
+A kérés törzse a Storage-fiók tulajdonságait tartalmazza:
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-202-es állapotkódot ad vissza. A fejlécértékek között a következő két érték látható:
+A 202 állapotkódot adja vissza. A fejléc értékei között a következő két érték látható:
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-Miután megvárta az Újrapróbálkozás után megadott számú másodpercet, ellenőrizze az aszinkron művelet állapotát egy másik kérés elküldésével az adott URL-címre.
+Az újrapróbálkozást követően megadott másodpercek számának várakozása után az aszinkron művelet állapotának ellenőrzéséhez küldjön egy másik kérelmet erre az URL-címre.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-Ha a kérelem még fut, 202-es állapotkódot kap. Ha a kérés befejeződött, a 200-as állapotkódot kap, és a válasz törzse tartalmazza a létrehozott tárfiók tulajdonságait.
+Ha a kérelem még fut, a 202 állapotkódot kapja meg. Ha a kérelem befejeződött, a kapott állapotkód 200, a válasz törzse pedig a létrehozott Storage-fiók tulajdonságait tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az egyes REST-műveletekről a [REST API dokumentációjában](/rest/api/)olvashat dokumentációt.
-* A sablonok Erőforrás-kezelő REST API-n keresztüli központi telepítéséről az [Erőforrások telepítése erőforrás-kezelői sablonokkal és az Erőforrás-kezelő REST API-jával című témakörben](../templates/deploy-rest.md)olvashat.
+* Az egyes REST-műveletekkel kapcsolatos dokumentációért lásd: [REST API dokumentáció](/rest/api/).
+* A sablonok Resource Manager-REST API használatával történő telepítésével kapcsolatos információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../templates/deploy-rest.md).

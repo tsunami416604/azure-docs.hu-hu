@@ -1,48 +1,48 @@
 ---
-title: Hyper-V virtuálisgép-lemezek kizárása a vészhelyreállításból az Azure-ba az Azure-ban az Azure Site Recovery segítségével
-description: Hogyan zárhatja ki a Hyper-V virtuálisgép-lemezeket az Azure Site Recovery használatával az Azure-ba történő replikációból.
+title: A Hyper-V VM-lemezek kizárása a vész-helyreállításból az Azure-ba Azure Site Recovery
+description: Hyper-V virtuális gépek lemezeinek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 author: mayurigupta13
 manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498132"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 
-Ez a cikk ismerteti, hogyan zárhatja ki a lemezeket a Hyper-V virtuális gépek Azure-ba replikálásakor. A lemezeket több okból is ki szeretné zárni a replikációból:
+Ez a cikk azt ismerteti, hogyan zárhatók ki lemezek a Hyper-V virtuális gépek Azure-ba történő replikálása során. Előfordulhat, hogy több okból szeretné kizárni a lemezeket a replikációból:
 
-- Győződjön meg arról, hogy a kizárt lemezen nem fontos adatok nem leszreplikálva.
-- Optimalizálja a felhasznált replikációs sávszélességet vagy a céloldali erőforrásokat, kivéve azokat a lemezeket, amelyeket nem kell replikálnia.
-- Mentse a tárolási és hálózati erőforrásokat, ha nem replikálja a szükségtelen adatokat.
+- Győződjön meg arról, hogy a kizárt lemezen lévő nem fontos adatforgalom nem replikálódik.
+- Optimalizálja a felhasznált replikációs sávszélességet vagy a cél-oldali erőforrásokat a replikálni nem szükséges lemezek kizárásával.
+- Mentse a tárterületet és a hálózati erőforrásokat úgy, hogy nem replikálja a nem szükséges adatforrásokat.
 
-Mielőtt kizárná a lemezeket a replikációból:
+A lemezek replikációból való kizárása előtt:
 
-- [További információ](exclude-disks-replication.md) a lemezek kizárásáról.
-- Tekintse át [a tipikus kizárási forgatókönyveket](exclude-disks-replication.md#typical-scenarios) és [példákat,](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) amelyek bemutatják, hogy a lemez kizárása hogyan befolyásolja a replikációt, a feladatátvételt és a feladatátvételt.
+- [További](exclude-disks-replication.md) információ a lemezek kizárásáról.
+- Tekintse át a [tipikus kizárási forgatókönyveket](exclude-disks-replication.md#typical-scenarios) és [példákat](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) , amelyek bemutatják, hogyan befolyásolja a lemez kizárása a replikációt, a feladatátvételt
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A kezdés előtt vegye figyelembe az alábbiakat:
+A Kezdés előtt vegye figyelembe a következőket:
 
-- **Replikáció**: Alapértelmezés szerint a rendszer a számítógép összes lemezét replikálja.
+- **Replikáció**: alapértelmezés szerint a rendszer a gép minden lemezét replikálja.
 - **Lemez típusa**:
-    - Az alaplemezek kizárhatók a replikációból.
+    - A replikációból kizárhatja az alaplemezeket.
     - Nem zárhatja ki az operációsrendszer-lemezeket.
-    - Azt javasoljuk, hogy ne zárja ki a dinamikus lemezeket. A Site Recovery nem tudja azonosítani, hogy melyik virtuális merevlemez alapvető vagy dinamikus a vendég virtuális gépben.  Ha nem zárja ki az összes függő dinamikus kötetlemezek, a védett dinamikus lemez lesz egy meghibásodott lemez egy feladatátvételi rendszer, és az adatok a lemezen nem érhető el.
-- **Lemezek hozzáadása/eltávolítása/kizárása:** A replikáció engedélyezése után nem adhat hozzá/távolíthat el/zárhat ki lemezeket a replikációhoz. Ha lemezt szeretne hozzáadni vagy eltávolítani vagy kizárni, le kell tiltania a virtuális gép védelmét, majd újra engedélyeznie kell azt.
-- **Feladatátvétel:** Feladatátvétel után, ha a feladatátvétel i alkalmazások ki kell zárni a lemezeket annak érdekében, hogy működjön, manuálisan kell létrehoznia ezeket a lemezeket. Azt is megteheti, hogy integrálja az Azure-automatizálást egy helyreállítási tervbe, hogy a lemezt a gép feladatátvétele során hozza létre.
-- **Feladat-visszavétel:** Ha feladatátvétel után visszaadja a feladatátvételt a helyszíni helyre, az Azure-ban manuálisan létrehozott lemezek nem lesznek visszavételek. Ha például három lemezt sikertelenül, és két lemezt hoz létre közvetlenül egy Azure virtuális gépen, csak három lemez, amely feladatátvételt követően a feladatátvétel után. Nem vehet fel olyan lemezeket, amelyeket manuálisan hoztak létre a feladat-visszavételkor vagy a virtuális gépek fordított replikációjában.
+    - Azt javasoljuk, hogy ne zárja ki a dinamikus lemezeket. Site Recovery nem tudja azonosítani, hogy melyik VHD a vendég virtuális gép alapszintű vagy dinamikus.  Ha nem zárja ki az összes függő dinamikus kötet lemezét, a védett dinamikus lemez hibás lemezvé válik a feladatátvételen átadott virtuális gépen, és a lemezen lévő adat nem érhető el.
+- **Lemezek hozzáadása/eltávolítása/kizárása**: miután engedélyezte a replikálást, nem lehet hozzáadni/eltávolítani vagy kizárni a lemezeket a replikáláshoz. Ha lemez hozzáadását vagy eltávolítását vagy kizárását szeretné végezni, le kell tiltania a virtuális gép védelmét, majd újra engedélyeznie kell.
+- **Feladatátvétel**: Ha a feladatátvételt követően az alkalmazásoknak ki kell zárniuk a lemezeket, manuálisan kell létrehoznia ezeket a lemezeket. Másik megoldásként integrálhatja az Azure automationt egy helyreállítási tervbe, hogy létrehozza a lemezt a gép feladatátvétele során.
+- Feladat- **visszavétel**: Ha feladatátvétel után visszaadja a helyszíni helyet, az Azure-ban manuálisan létrehozott lemezek nem működnek vissza. Ha például három lemez feladatátvételét hajtja végre, és közvetlenül egy Azure-beli virtuális gépen hoz létre két lemezt, akkor a rendszer csak a feladatátvétel alatt álló három lemezt adja vissza. Nem vehetők fel manuálisan a feladat-visszavétel során létrehozott lemezek, vagy a virtuális gépek fordított replikációja.
 
 ## <a name="exclude-disks"></a>Lemezek kizárása
 
-1. Ha ki szeretné zárni a lemezeket, amikor engedélyezi a [replikációt](site-recovery-hyper-v-site-to-azure.md) egy Hyper-V virtuális géphez, miután kiválasztotta a replikálni kívánt virtuális gépeket, a **Replikációs** > **tulajdonságok** > **konfigurálása lapban** tekintse át a **Lemezek replikáláshoz** oszlopot. Alapértelmezés szerint minden lemez ki van jelölve a replikációhoz.
-2. Ha nem szeretne replikálni egy adott lemezt, a **Lemezek ben a kizárni** kívánt lemezek kijelölésének törlése. 
+1. Ha egy Hyper-V virtuális gép [replikálásának engedélyezése](site-recovery-hyper-v-site-to-azure.md) után szeretné kizárni a lemezeket, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási** > **Tulajdonságok** > **konfigurálása tulajdonságok** lapon tekintse át az oszlop **replikálásához szükséges lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
+2. Ha nem szeretne replikálni egy adott lemezt, a **lemezeken a replikáláshoz** törölje a kizárni kívánt lemezek kijelölését. 
 
     ![Lemezek kizárása a replikációból](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 

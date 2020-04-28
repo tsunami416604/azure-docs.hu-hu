@@ -1,6 +1,6 @@
 ---
-title: Az Azure Table tároló tervezése lekérdezésekhez | Microsoft dokumentumok
-description: Az Azure Table storage-ban lekérdezésekhez tervezzen táblákat.
+title: Azure Table Storage tervezése lekérdezésekhez | Microsoft Docs
+description: Táblák megtervezése az Azure Table Storage-beli lekérdezésekhez.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,96 +9,96 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457641"
 ---
 # <a name="design-for-querying"></a>Tervezés lekérdezéshez
-Table service megoldások lehetnek olvasási intenzív, írási intenzív, vagy a kettő keveréke. Ez a cikk azokra a dolgokra összpontosít, amelyeket szem előtt kell tartania, amikor a Table szolgáltatás tervezésekor hatékonyan támogatja az olvasási műveleteket. Általában egy olyan terv, amely hatékonyan támogatja az olvasási műveleteket, szintén hatékony az írási műveletekhez. Az írási műveletek támogatása során azonban további szempontokat kell szem előtt tartani, amelyeket a [Tervezés az adatok módosításához](table-storage-design-for-modification.md)című cikkben tárgyal.
+Table service megoldások intenzív, írásos vagy a kettő kombinációját is beolvashatja. Ez a cikk azokat a dolgokat ismerteti, amelyeket figyelembe kell vennie, amikor megtervezi a Table service az olvasási műveletek hatékony támogatásához. Az olvasási műveleteket hatékonyan támogató kialakítás általában írási műveletek esetén is hatékony. Azonban további szempontokat is figyelembe kell vennie az írási műveletek támogatásának tervezésekor, a cikk az [adatok módosítására szolgáló tervezési tervében](table-storage-design-for-modification.md)tárgyalt.
 
-Egy jó kiindulási pont a Table szolgáltatás megoldásának az adatok hatékony olvasása érdekében történő tervezéséhez, hogy feltegye a kérdést: "Milyen lekérdezéseket kell végrehajtania az alkalmazásnak a table szolgáltatásból szükséges adatok lekéréséhez?"  
+Egy jó kiindulási pont a Table service megoldás megtervezéséhez, amely lehetővé teszi az adatok hatékony olvasását, ha megkérdezi, hogy milyen lekérdezéseket kell végrehajtani az alkalmazásnak, hogy lekérje a szükséges adatok lekérését a Table service? "  
 
 > [!NOTE]
-> A Table szolgáltatással fontos, hogy a design elöl legyen, mert később nehéz és költséges megváltoztatni. Például egy relációs adatbázisban gyakran lehetséges a teljesítményproblémák egyszerű kezelése egy meglévő adatbázishoz való indexek hozzáadásával: ez nem lehetséges a Table szolgáltatással.  
+> A Table service esetében fontos, hogy a kialakítás megtörténjen, mert nehéz és költséges lehet később módosítani. Például egy rokon adatbázisban gyakran lehetséges a teljesítménnyel kapcsolatos problémák megoldása, ha indexeket ad hozzá egy meglévő adatbázishoz: ez nem egy lehetőség a Table service.  
 > 
 > 
 
-Ez a szakasz azokra a kulcsfontosságú kérdésekre összpontosít, amelyekkel a táblák lekérdezésre való tervezésekor foglalkoznia kell. Az ebben a részben tárgyalt témák a következők:
+Ez a szakasz azokat a kulcsfontosságú problémákat tárgyalja, amelyeket a táblák lekérdezéshez való tervezésekor kell megadnia. Az ebben a szakaszban szereplő témakörök a következők:
 
-* [A PartitionKey és a RowKey által választott lehetőségek hatása a lekérdezésteljesítményre](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
-* [A megfelelő PartitionKey kiválasztása](#choosing-an-appropriate-partitionkey)
-* [Lekérdezések optimalizálása a Table szolgáltatáshoz](#optimizing-queries-for-the-table-service)
-* [Adatok rendezése a Table szolgáltatásban](#sorting-data-in-the-table-service)
+* [A PartitionKey és a RowKey hatása a lekérdezési teljesítményre](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
+* [Megfelelő PartitionKey kiválasztása](#choosing-an-appropriate-partitionkey)
+* [A Table service lekérdezések optimalizálása](#optimizing-queries-for-the-table-service)
+* [Adatrendezés a Table serviceban](#sorting-data-in-the-table-service)
 
-## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>A PartitionKey és a RowKey által választott lehetőségek hatása a lekérdezésteljesítményre
-A következő példák feltételezik, hogy a table service az alkalmazotti entitásokat a következő struktúrával tárolja (a legtöbb példa kihagyja az **Időbélyeg** tulajdonságot az egyértelműség kedvéért):  
+## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>A PartitionKey és a RowKey hatása a lekérdezési teljesítményre
+A következő példák azt feltételezik, hogy a Table Service az alábbi struktúrával tárolja az alkalmazotti entitásokat (a legtöbb példa kihagyja az Érthetőségi **timestamp** tulajdonságot):  
 
 | *Oszlop neve* | *Adattípus* |
 | --- | --- |
-| **Partíciókulcs** (részleg neve) |Sztring |
-| **RowKey** (alkalmazottazonosító) |Sztring |
-| **Utónév** |Sztring |
-| **Vezetéknév** |Sztring |
+| **PartitionKey** (részleg neve) |Sztring |
+| **RowKey** (alkalmazott azonosítója) |Sztring |
+| **FirstName** |Sztring |
+| **LastName** |Sztring |
 | **Kor** |Egész szám |
-| **E-mail cím** |Sztring |
+| **EmailAddress** |Sztring |
 
-Az [Azure Table storage áttekintése](table-storage-overview.md) az Azure Table szolgáltatás néhány kulcsfontosságú szolgáltatását ismerteti, amelyek közvetlen hatással vannak a lekérdezés tervezésére. Ezek a table service-lekérdezések tervezésére vonatkozó alábbi általános irányelvek nek adják le. Vegye figyelembe, hogy az alábbi példákban használt szűrőszintaxis a Table service REST API-ból származik, további információt a [Lekérdezésentitások](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)című témakörben talál.  
+Az [Azure Table Storage áttekintése című](table-storage-overview.md) cikk az Azure Table Service főbb funkcióit ismerteti, amelyek közvetlen hatással vannak a lekérdezés tervezésére. Ezek a következő általános irányelveket eredményezik Table service lekérdezések tervezéséhez. Vegye figyelembe, hogy az alábbi példákban használt szűrési szintaxis a Table service REST API, további információ: [lekérdezési entitások](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
 
-* A ***Pontlekérdezés*** a leghatékonyabb keresettség, amelyet nagy mennyiségű vagy legkisebb késést igénylő nagy mennyiségű kereséshez kell használni. Egy ilyen lekérdezés az indexek segítségével keresse meg az egyes entitások nagyon hatékonyan megadásával a **PartitionKey** és **a RowKey** értékeket. Például: $filter=(PartitionKey eq 'Sales') és (RowKey eq '2')  
-* A második legjobb egy ***tartománylekérdezés,*** amely a **PartitionKey-t** használja, és egy **sorkulcs-értéktartományt** szűr egynél több entitás visszaadására. A **PartitionKey** érték egy adott partíciót azonosít, és a **RowKey** értékek azonosítják az adott partíció entitásainak egy részét. Például: $filter=PartitionKey eq 'Sales' és RowKey ge 'S' és RowKey lt 'T'  
-* A harmadik legjobb egy ***partíciós vizsgálat,*** amely a **PartitionKey-t** használja, és egy másik nem kulcstulajdonságszűrőit használja, és amely egynél több entitást adhat vissza. A **PartitionKey** érték egy adott partíciót azonosít, és a tulajdonságértékek az adott partíció entitásainak egy részhalmazához választanak ki. Például: $filter=PartitionKey eq 'Sales' és LastName eq 'Smith'  
-* A ***table scan*** nem tartalmazza a **PartitionKey,** és nagyon nem hatékony, mert megkeresi az összes partíciót, amelyek alkotják a táblát viszont a megfelelő entitások. Táblázat-vizsgálat hajt végre, függetlenül attól, hogy a szűrő a **RowKey-t**használja-e. Például: $filter=Vezetéknév eq 'Jones'  
-* A több entitást visszaadó lekérdezések **partitionkey** és **rowkey** sorrendben rendezve adják vissza őket. Az ügyfél entitásai alkalmazásának elkerülése érdekében válasszon egy **RowKey-t,** amely meghatározza a leggyakoribb rendezési sorrendet.  
+* Az adott ***pont lekérdezése*** a leghatékonyabb keresési módszer, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés a **PartitionKey** és a **RowKey** értékek megadásával nagyon hatékonyan megkeresheti az egyes entitásokat az indexek használatával. Például: $filter = (PartitionKey EQ ' Sales ') és (RowKey EQ ' 2 ')  
+* A második legjobb egy ***tartományos lekérdezés*** , amely a **PartitionKey** és a szűrőket használja számos **RowKey** -értékkel, így több entitást ad vissza. A **PartitionKey** érték egy adott partíciót azonosít, és a **RowKey** értékek a partícióban lévő entitások egy részhalmazát azonosítják. Például: $filter = PartitionKey EQ ' Sales ' and RowKey GE ' and RowKey lt 'T '  
+* A harmadik legjobb egy olyan ***partíciós vizsgálat*** , amely a **PartitionKey** és a szűrőket használja egy másik nem kulcsfontosságú tulajdonságnál, amely több entitást is visszaadhat. A **PartitionKey** érték egy adott partíciót azonosít, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például: $filter = PartitionKey EQ "Sales" és LastName EQ "Smith"  
+* A ***táblázatos vizsgálat*** nem tartalmazza a **PartitionKey** , és nagyon nem hatékony, mivel az összes olyan partíciót megkeresi, amely a táblázatot felkészíti a megfelelő entitásokra. Táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a **RowKey**használja-e. Például: $filter = LastName EQ ' Jones '  
+* Azok a lekérdezések, amelyek több entitást adnak vissza, **PartitionKey** és **RowKey** sorrendben rendezik őket. Ha nem szeretné, hogy az entitások ne legyenek az ügyfélben, válasszon egy **RowKey** , amely meghatározza a leggyakoribb rendezési sorrendet.  
 
-Ne feledje, hogy a **RowKey** értékeken alapuló szűrő megadásához "**vagy**" használatával partícióvizsgálat történik, és nem lesz tartománylekérdezés. Ezért kerülje az olyan lekérdezéseket, amelyek olyan szűrőket használnak, mint a következők: $filter=PartitionKey eq 'Sales' és (RowKey eq '121' vagy RowKey eq '322')  
+Vegye figyelembe, hogy a "**vagy**" használatával **RowKey** -értékek alapján határozhat meg egy partíciós vizsgálatot, és nem kezelhető tartomány-lekérdezésként. Ezért érdemes elkerülni a szűrőket használó lekérdezéseket, például a következőket: $filter = PartitionKey EQ ' Sales ' és (RowKey EQ ' 121 ' vagy RowKey EQ ' 322 ')  
 
-Példák olyan ügyféloldali kódra, amely a storage-ügyfélkódtár hatékony lekérdezések végrehajtására használja, lásd:  
+A Storage ügyféloldali kódtárat használó ügyféloldali kódokra vonatkozó példákat a hatékony lekérdezések végrehajtásához lásd:  
 
-* [Pontlekérdezés végrehajtása a Tárolóügyféltár használatával](table-storage-design-patterns.md#executing-a-point-query-using-the-storage-client-library)
+* [Pont lekérdezés végrehajtása a Storage ügyféloldali kódtár használatával](table-storage-design-patterns.md#executing-a-point-query-using-the-storage-client-library)
 * [Több entitás beolvasása a LINQ használatával](table-storage-design-patterns.md#retrieving-multiple-entities-using-linq)
-* [Kiszolgálóoldali vetítés](table-storage-design-patterns.md#server-side-projection)  
+* [Kiszolgálóoldali kivetítés](table-storage-design-patterns.md#server-side-projection)  
 
-Példák olyan ügyféloldali kódra, amely több, ugyanabban a táblában tárolt entitástípust képes kezelni, lásd:  
+Az ugyanabban a táblában tárolt több entitást kezelő ügyféloldali kódokra vonatkozó Példákért lásd:  
 
-* [Heterogén entitástípusokkal végzett munka](table-storage-design-patterns.md#working-with-heterogeneous-entity-types)  
+* [Heterogén entitások típusának használata](table-storage-design-patterns.md#working-with-heterogeneous-entity-types)  
 
-## <a name="choosing-an-appropriate-partitionkey"></a>A megfelelő PartitionKey kiválasztása
-A **választott PartitionKey** egyensúlyt kell teremtenie az EGT-k használatának engedélyezéséhez (a konzisztencia biztosítása érdekében) az entitások több partíció között történő elosztásának követelményével szemben (méretezhető megoldás biztosítása érdekében).  
+## <a name="choosing-an-appropriate-partitionkey"></a>Megfelelő PartitionKey kiválasztása
+Az Ön által választott **PartitionKey** egyensúlyt kell biztosítania ahhoz, hogy lehetővé váljon a EGTs használata (az egységesség biztosítása érdekében) az entitások több partíción való terjesztésének követelménye (a méretezhető megoldás biztosításához).  
 
-Egy szélsőséges, az entitások egyetlen partíción tárolhatja, de ez korlátozhatja a megoldás méretezhetőségét, és megakadályozhatja, hogy a table service-t, hogy képes-hoz terheléselosztási kérelmek. A másik véglet, partíciónként egy entitástárolhatja, amely nagymértékben méretezhető, és amely lehetővé teszi a table service terheléselosztási kérelmek, de amely megakadályozza az entitáscsoport-tranzakciók használatát.  
+Egyetlen szélsőséges esetben egyetlen partícióban tárolhatja az összes entitást, ez azonban korlátozhatja a megoldás méretezhetőségét, és megakadályozhatja, hogy a Table Service terheléselosztási kérelmeket tudjon betölteni. A másik véglet, ha egy entitást tárol egy partíción, ami nagy mértékben méretezhető, és lehetővé teszi a Table szolgáltatás számára, hogy terheléselosztási kérelmeket helyezzen el, de ez megakadályozná az Entity Group-tranzakciók használatát.  
 
-Az ideális **PartitionKey** az egyik, amely lehetővé teszi a hatékony lekérdezések használatát, és amely elegendő partíciót biztosít a megoldás méretezhető. Általában azt fogja találni, hogy az entitások lesz egy megfelelő tulajdonság, amely elosztja az entitások között elegendő partíciókat.
+Az ideális **PartitionKey** , amely lehetővé teszi, hogy hatékony lekérdezéseket használjon, és elegendő partíciót biztosítson a megoldás méretezhetőségének biztosításához. Általában úgy látja, hogy az entitások megfelelő tulajdonsággal rendelkeznek, amely az entitásokat a megfelelő partíciók között osztja szét.
 
 > [!NOTE]
-> Egy olyan rendszerben például, amely a felhasználókvagy alkalmazottak adatait tárolja, a UserID jó partitionkey lehet. Előfordulhat, hogy több entitás, amely egy adott UserID partíciókulcsként. Minden entitás, amely tárolja a felhasználó adatait egyetlen partícióra van csoportosítva, és így ezek az entitások entitáscsoport-tranzakciókon keresztül érhetők el, miközben továbbra is nagymértékben méretezhető.
+> A felhasználókkal vagy alkalmazottakkal kapcsolatos adatokat tároló rendszerekben például a UserID jó PartitionKey lehet. Előfordulhat, hogy több olyan entitása van, amely egy adott felhasználóazonosító-t használ partíciós kulcsként. Minden olyan entitás, amely egy felhasználó adatait tárolja, egyetlen partícióba van csoportosítva, így ezek az entitások az Entity Group Transactions használatával érhetők el, miközben továbbra is jól méretezhetők.
 > 
 > 
 
-A **PartitionKey** által választott további szempontok további szempontokat is figyelembe vesz, amelyek az entitások beszúrásával, frissítésével és törlésével kapcsolatosak. További információt a [Táblák tervezése adatmódosításhoz](table-storage-design-for-modification.md)című témakörben talál.  
+További szempontokat is figyelembe kell vennie a **PartitionKey** , amelyek az entitások beszúrására, frissítésére és törlésére vonatkoznak. További információ: [táblák tervezése adatmódosításra](table-storage-design-for-modification.md).  
 
-## <a name="optimizing-queries-for-the-table-service"></a>Lekérdezések optimalizálása a Table szolgáltatáshoz
-A Table szolgáltatás automatikusan indexeli az entitásokat a **PartitionKey** és **a RowKey** értékek használatával egyetlen fürtözött indexben, ezért a pontlekérdezések a leghatékonyabbak. A **PartitionKey** és a **RowKey**fürtözött indexén kívül azonban nincs más index.
+## <a name="optimizing-queries-for-the-table-service"></a>A Table service lekérdezések optimalizálása
+A Table service automatikusan indexeli az entitásokat egy fürtözött indexben lévő **PartitionKey** és **RowKey** értékekkel, ezért az az oka, hogy a pontok lekérdezései a leghatékonyabbak. A **PartitionKey** és a **RowKey**fürtözött indexén azonban nincsenek indexek.
 
-Számos tervnek meg kell felelnie a követelményeknek ahhoz, hogy több feltétel alapján engedélyezhesse az entitások megkeresését. Például az alkalmazotti entitások megkeresése e-mail, alkalmazottazonosító vagy vezetéknév alapján. A [táblatervezési mintákban](table-storage-design-patterns.md) leírt minták az ilyen típusú követelményekre vonatkoznak, és leírják a munka módját, hogy a Table szolgáltatás nem biztosít másodlagos indexeket:  
+Számos tervnek meg kell felelnie az entitások több feltételen alapuló keresésének engedélyezéséhez szükséges követelményeknek. Például az alkalmazotti entitások az e-mailek, az alkalmazotti azonosítók vagy a vezetéknév alapján vannak megkeresve. A [táblázatos tervezési mintákban](table-storage-design-patterns.md) leírt mintázatok az ilyen típusú követelményekkel foglalkoznak, és leírják, hogy a Table Service milyen módszereket biztosít a másodlagos indexek eléréséhez:  
 
-* [Partíción belüli másodlagos indexminta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző **RowKey-értékek** használatával (ugyanabban a partícióban) a gyors és hatékony keresések és a különböző **RowKey-értékek** használatával történő rendezési sorrendek engedélyezéséhez.  
-* [Partíciók közötti másodlagos indexminta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző **RowKey-értékek** használatával külön partíciókon vagy külön táblákban, hogy gyors és hatékony keresések és alternatív rendezési sorrendek különböző **RowKey-értékek** használatával.  
-* [Index entitások mintája](table-storage-design-patterns.md#index-entities-pattern) – Index entitások karbantartása az entitások listájának visszaadását tartalmazó hatékony keresések engedélyezéséhez.  
+* [Partíción belüli másodlagos index minta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző **RowKey** -értékekkel (ugyanabban a partícióban) a gyors és hatékony keresési és alternatív rendezési sorrendek eltérő **RowKey** -értékek használatával történő engedélyezéséhez.  
+* [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző **RowKey** -értékekkel külön partíciókban vagy külön táblákban, hogy a gyors és hatékony keresési és alternatív rendezési sorrendet a különböző **RowKey** értékek használatával engedélyezze.  
+* [Entitások indexelése](table-storage-design-patterns.md#index-entities-pattern) – az indexelési entitások megtartása az entitások listáját visszaadó hatékony keresések engedélyezéséhez.  
 
-## <a name="sorting-data-in-the-table-service"></a>Adatok rendezése a Table szolgáltatásban
-A Table szolgáltatás a **PartitionKey,** majd a **RowKey**alapján növekvő sorrendbe rendezett entitásokat adja vissza. Ezek a kulcsok karakterlánc-értékek, és annak érdekében, hogy a numerikus értékek megfelelően rendeződjenek, konvertálja őket rögzített hosszúságúra, és nullákkal kell kipárnáznia őket. Ha például a **RowKey-ként** használt alkalmazotti azonosító érték egész szám, akkor a **123-as** alkalmazottat **00000123-ra**kell konvertálni.  
+## <a name="sorting-data-in-the-table-service"></a>Adatrendezés a Table serviceban
+A Table service a **PartitionKey** , majd a **RowKey**alapján növekvő sorrendbe rendezi az entitásokat. Ezek a kulcsok karakterlánc-értékek, és így biztosítható, hogy a numerikus értékek megfelelően rendezettek legyenek, és nulla értékkel kell alakítani őket. Ha például a **RowKey** használt alkalmazotti azonosító érték egész érték, akkor a **123** -as alkalmazott azonosítóját a **00000123**-re kell konvertálnia.  
 
-Számos alkalmazás nak vannak követelményei a különböző sorrendben rendezett adatok használatára: például az alkalmazottak név szerint vagy csatlakozás dátuma szerint történő rendezése. A következő minták az entitások rendezési sorrendjének váltakozásával foglalkoznak:  
+Számos alkalmazás rendelkezik a különböző megrendelésekben tárolt adatok használatára vonatkozó követelményekkel: például az alkalmazottak név szerinti rendezése vagy a csatlakozás dátuma. A következő minták az entitások alternatív rendezési sorrendjét ismertetik:  
 
-* [Partíción belüli másodlagos indexminta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző RowKey-értékek használatával (ugyanabban a partícióban) a gyors és hatékony keresések és a különböző RowKey-értékek használatával történő rendezési sorrendek engedélyezéséhez.  
-* [Partíciók közötti másodlagos indexminta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző RowKey-értékek használatával külön partíciókban, külön táblákban, hogy gyors és hatékony keresések és alternatív rendezési sorrendek különböző RowKey-értékek használatával.
-* [Log tail minta](table-storage-design-patterns.md#log-tail-pattern) – A partícióhoz legutóbb hozzáadott *n* entitások lekérése **egy RowKey** érték használatával, amely fordított dátum- és idősorrendben rendezi.  
+* [Partíción belüli másodlagos index minta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző RowKey-értékekkel (ugyanabban a partícióban) a gyors és hatékony keresési és alternatív rendezési sorrendek eltérő RowKey-értékek használatával történő engedélyezéséhez.  
+* [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző RowKey-értékekkel különálló partíciókban külön táblákban, amelyek lehetővé teszik a gyors és hatékony keresési és alternatív rendezési sorrendek használatát a különböző RowKey értékek használatával.
+* [Naplóbeli farok minta](table-storage-design-patterns.md#log-tail-pattern) – a partícióhoz legutóbb hozzáadott *n* entitások beolvasása egy **RowKey** értékkel, amely fordított dátum és idő sorrendbe rendezi.  
 
 ## <a name="next-steps"></a>További lépések
 
 - [Táblatervezési minták](table-storage-design-patterns.md)
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)
-- [Táblaadatok titkosítása](table-storage-design-encrypt-data.md)
+- [Tábla adatai titkosítása](table-storage-design-encrypt-data.md)
 - [Tervezés adatmódosításhoz](table-storage-design-for-modification.md)

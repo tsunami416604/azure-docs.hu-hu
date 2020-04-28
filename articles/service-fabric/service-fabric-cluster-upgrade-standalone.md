@@ -1,45 +1,45 @@
 ---
-title: Önálló Azure Service Fabric-fürt frissítése
-description: Ismerje meg az Azure Service Fabric önálló fürt verziójának vagy konfigurációjának frissítését.  T
+title: Azure Service Fabric önálló fürt frissítése
+description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló fürtjének verzióját vagy konfigurációját.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451828"
 ---
-# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>A Service Fabric önálló fürtjének frissítése és frissítése
+# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
 
-Minden modern rendszer számára a felbonthatóság tervezése kulcsfontosságú a termék hosszú távú sikerének eléréséhez. Az Azure Service Fabric önálló fürt egy saját erőforrás. Ez a cikk azt ismerteti, hogy mit lehet frissíteni vagy frissíteni.
+Bármely modern rendszer esetében a minőségének megtervezése kulcsfontosságú a termék hosszú távú sikerességének megvalósításához. Az Azure Service Fabric önálló fürt egy saját erőforrás. Ez a cikk ismerteti, hogy mi frissíthető vagy frissíthető.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó hálóverzió vezérlése
-Győződjön meg arról, hogy a fürt mindig egy [támogatott Service Fabric-verziót](service-fabric-versions.md)futtat. Amikor a Microsoft bejelenti a Service Fabric új verziójának kiadását, az előző verzió a bejelentés dátumától számított legalább 60 nap elteltével a támogatás megszűnése után a támogatás megszűnése jelzővel van ellátva. Új kiadások vannak jelentették be [a Service Fabric csapat blog](https://blogs.msdn.microsoft.com/azureservicefabric/). Az új kiadás ezen a ponton választható.
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó háló verziójának szabályozása
+Győződjön meg arról, hogy a fürt mindig [támogatott Service Fabric verziót](service-fabric-versions.md)futtat. Ha a Microsoft bejelenti Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, a bejelentés dátumától számítva legalább 60 nappal. Az új kiadások a [Service Fabric csapat blogjában](https://blogs.msdn.microsoft.com/azureservicefabric/)jelennek meg. Az új kiadás elérhető az adott pontra való választáshoz.
 
-Beállíthatja, hogy a fürt automatikus hálófrissítéseket kapjon, amint azok a Microsoft által kiadott, vagy manuálisan kiválaszthatja a támogatott hálóverziót, amelyen a fürthöz be szeretne érkezni. További információért olvassa el [a fürtön futó Service Fabric-verzió frissítése](service-fabric-cluster-upgrade-windows-server.md)című olvasni.
+Beállíthatja úgy a fürtöt, hogy a Microsoft által kiadott automatikus háló-frissítéseket fogadja, vagy manuálisan kiválaszthatja azt a támogatott Fabric-verziót, amelyre a fürtöt be szeretné állítani. További információért olvassa el [a fürtön futó Service Fabric verziójának frissítése](service-fabric-cluster-upgrade-windows-server.md)című témakört.
 
 ## <a name="customize-configuration-settings"></a>Konfigurációs beállítások testreszabása
 
-A *ClusterConfig.json* fájlban számos különböző [konfigurációs beállítás](service-fabric-cluster-manifest.md) állítható be, például a fürt és a csomópont tulajdonságainak megbízhatósági szintje.  További információ: [Önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).  Sok más, fejlettebb, beállításokat is testre szabható.  További információért olvassa el a [Service Fabric fürtháló beállításait.](service-fabric-cluster-fabric-settings.md)
+A *ClusterConfig. JSON* fájlban számos különböző [konfigurációs beállítás](service-fabric-cluster-manifest.md) állítható be, például a fürt és a csomópont tulajdonságainak megbízhatósági szintje.  További információért olvassa el [az önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakört.  Számos más, fejlettebb beállítások is testreszabhatók.  További információkért olvassa el [Service Fabric a fürt hálójának beállításait](service-fabric-cluster-fabric-settings.md).
 
-## <a name="define-node-properties"></a>Csomóponttulajdonságok definiálása
-Előfordulhat, hogy biztosítani szeretné, hogy bizonyos számítási feladatok csak bizonyos típusú csomópontokon fussanak a fürtben. Előfordulhat például, hogy egyes munkaterhelések GPU-kat vagy SSD-ket igényelnek, míg mások nem. A fürt minden csomóponttípusához egyéni csomóponttulajdonságokat adhat hozzá a fürtcsomópontokhoz. Az elhelyezési megkötések az egyes szolgáltatásokhoz csatolt utasítások, amelyek egy vagy több csomóponttulajdonsághoz választanak ki. Az elhelyezési megkötések határozzák meg, hogy a szolgáltatások nak hol kell futniuk.
+## <a name="define-node-properties"></a>Csomópont tulajdonságainak megadása
+Előfordulhat, hogy bizonyos számítási feladatok csak bizonyos típusú csomópontokon futnak a fürtben. Előfordulhat például, hogy egyes számítási feladatok GPU vagy SSD-ket igényelnek, míg mások esetleg nem. A fürt minden egyes csomópont-típusához hozzáadhat egyéni csomópont-tulajdonságokat a fürtcsomópontok számára. Az elhelyezési megkötések az egyes szolgáltatásokhoz csatolt utasítások, amelyek egy vagy több csomópont-tulajdonságot választanak ki. Az elhelyezési megkötések határozzák meg a szolgáltatások futtatásának helyét.
 
-Az elhelyezési megkötések, a csomóponttulajdonságok használatáról és azok meghatározásáról, a [csomópont tulajdonságainak és az elhelyezési kényszereknek](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)a használatával kapcsolatos részletekért olvassa el a csomópont tulajdonságait és az elhelyezési kényszereket.
+Az elhelyezési megkötések, a csomópont-tulajdonságok és a definiált beállítások használatával kapcsolatos részletekért olvassa el a [csomópont-tulajdonságok és az elhelyezési korlátozások](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)című témakört.
  
 
-## <a name="add-capacity-metrics"></a>Kapacitásmérők hozzáadása
-Az egyes csomóponttípusok egyéni kapacitásmetrikákat adhat hozzá, amelyeket az alkalmazásokban a betöltés jelentéséhez szeretne használni. A terhelés jelentéséhez szükséges kapacitásmérők használatával kapcsolatos részleteket a Fürt és [metrikák](service-fabric-cluster-resource-manager-metrics.md) [leírásáról](service-fabric-cluster-resource-manager-cluster-description.md) szóló Service Fabric-fürterőforrás-kezelő dokumentumok című dokumentumai ban találja.
+## <a name="add-capacity-metrics"></a>Kapacitási mérőszámok hozzáadása
+Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a [metrikák, valamint a terhelések](service-fabric-cluster-resource-manager-metrics.md) [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer javítása a fürtcsomópontokban
-A patch vezénylési alkalmazás (POA) egy Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javítását egy Service Fabric-fürtön állásidő nélkül. A [Windows patch vezénylési alkalmazás](service-fabric-patch-orchestration-application.md) telepíthető a fürtre a javítások hangszerelt módon történő telepítéséhez, miközben a szolgáltatások mindig elérhetőek maradnak. 
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer javítása a fürtcsomópontok között
+A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti. 
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan szabhatja testre a [szolgáltatásháló fürthálózatának néhány beállítását](service-fabric-cluster-fabric-settings.md)
-* További információ [a fürt méretezése és méretezése](service-fabric-cluster-scale-up-down.md)
-* További információ [az alkalmazásfrissítésekről](service-fabric-application-upgrade.md)
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

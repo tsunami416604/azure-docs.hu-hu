@@ -1,49 +1,49 @@
 ---
-title: Biztonságos Azure Service Fabric-fürtkapcsolatok konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja az Azure Service Fabric-fürt által támogatott biztonságos kapcsolatokat a Visual Studio használatával.
+title: Biztonságos Azure Service Fabric-fürt kapcsolatainak konfigurálása
+description: Ismerje meg, hogyan konfigurálhatja a Visual studiót az Azure Service Fabric-fürt által támogatott biztonságos kapcsolatok konfigurálására.
 author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464093"
 ---
-# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása a Visual Studio szolgáltatásfabric-fürtjeivel
-Megtudhatja, hogyan használhatja a Visual Studio segítségével biztonságosan egy Azure Service Fabric-fürthöz konfigurált hozzáférés-vezérlési szabályzatokkal.
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása egy Service Fabric-fürthöz a Visual studióból
+Ismerje meg, hogyan férhet hozzá a Visual Studióval egy Azure Service Fabric-fürt biztonságos eléréséhez a konfigurált hozzáférés-vezérlési házirendekkel.
 
-## <a name="cluster-connection-types"></a>Fürtkapcsolat-típusok
-Az Azure Service Fabric-fürt kétféle kapcsolatot támogat: **nem biztonságos** kapcsolatokat és **x509-es tanúsítványalapú** biztonságos kapcsolatokat. (A helyszíni üzemeltetett Service Fabric-fürtök esetében a **Windows** és **a dSTS-hitelesítések** is támogatottak.) A fürt kapcsolattípusát a fürt létrehozásakor kell konfigurálnia. Létrehozása után a kapcsolat típusa nem módosítható.
+## <a name="cluster-connection-types"></a>Fürt kapcsolatainak típusai
+Az Azure Service Fabric-fürt két típusú kapcsolatot támogat: **nem biztonságos** kapcsolatok és **x509 tanúsítványalapú** biztonságos kapcsolatok. (A helyszíni, **Windows** -és **dSTS** -alapú hitelesítések esetében is támogatottak a Service Fabric-fürtök.) Konfigurálnia kell a fürt kapcsolódási típusát a fürt létrehozásakor. Miután létrejött, a kapcsolattípus nem módosítható.
 
-A Visual Studio Service Fabric eszközei minden hitelesítési típust támogatnak a fürthöz való csatlakozáshoz a közzétételhez. A Biztonságos Service Fabric-fürt beállításával kapcsolatos útmutatásért olvassa [el a Service Fabric-fürt beállítása az Azure Portalról](service-fabric-cluster-creation-via-portal.md) című témakört.
+A Visual Studio Service Fabric eszközei támogatják a fürthöz való csatlakozáshoz szükséges összes hitelesítési típust a közzétételhez. A biztonságos Service Fabric fürt beállításával kapcsolatos útmutatásért lásd: [Service Fabric-fürt beállítása a Azure Portalból](service-fabric-cluster-creation-via-portal.md) .
 
-## <a name="configure-cluster-connections-in-publish-profiles"></a>Fürtkapcsolatok konfigurálása közzétételi profilokban
-Ha egy Service Fabric-projektet tesz közzé a Visual Studio-ból, a **Service Fabric-alkalmazás közzététele** párbeszédpanelen válasszon egy Azure Service Fabric-fürtöt. A **Kapcsolat végpontja**csoportban jelöljön ki egy meglévő fürtöt az előfizetése alatt.
+## <a name="configure-cluster-connections-in-publish-profiles"></a>A fürt kapcsolatainak konfigurálása a közzétételi profilokban
+Ha Service Fabric projektet tesz közzé a Visual studióból, a **Service Fabric alkalmazás közzététele** párbeszédpanelen választhatja ki az Azure Service Fabric-fürtöt. A **csatlakoztatási végpont**területen válasszon ki egy meglévő fürtöt az előfizetése alatt.
 
-![A **Publish Service Fabric Application** párbeszédpanel a Service Fabric-kapcsolat konfigurálására szolgál.][publishdialog]
+![A * * közzétételi Service Fabric alkalmazás * * párbeszédpanel egy Service Fabric-kapcsolatok konfigurálására szolgál.][publishdialog]
 
-A **Szolgáltatásháló-alkalmazás közzététele** párbeszédpanel automatikusan ellenőrzi a fürtkapcsolatot. Ha a rendszer kéri, jelentkezzen be az Azure-fiókjába. Ha az érvényesítés sikeres, az azt jelenti, hogy a rendszer a megfelelő tanúsítványokkal rendelkezik a fürthöz való biztonságos csatlakozáshoz, vagy a fürt nem biztonságos. Az érvényesítési hibákat hálózati problémák okozhatják, vagy ha a rendszer nem megfelelően van beállítva egy biztonságos fürthöz való csatlakozáshoz.
+A **Service Fabric alkalmazás közzététele** párbeszédpanel automatikusan ellenőrzi a fürthöz való kapcsolatokat. Ha a rendszer kéri, jelentkezzen be az Azure-fiókjába. Ha az érvényesítés sikeres, az azt jelenti, hogy a rendszernek megfelelő tanúsítványok vannak telepítve a fürt biztonságos csatlakoztatásához, vagy a fürt nem biztonságos. Az érvényesítési hibákat hálózati problémák okozhatják, vagy ha a rendszer konfigurációja nem megfelelően van konfigurálva a biztonságos fürthöz való kapcsolódáshoz.
 
-![A **Publish Service Fabric Application** párbeszédpanel egy meglévő, helyesen konfigurált Service Fabric-fürtkapcsolatot ellenőriz.][selectsfcluster]
+![A * * közzétételi Service Fabric alkalmazás * * párbeszédpanel érvényesít egy meglévő, megfelelően konfigurált Service Fabric-fürtöt.][selectsfcluster]
 
-### <a name="to-connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
-1. Győződjön meg arról, hogy el tudja érni a célfürt által megbízhatónak adott ügyféltanúsítványok egyikét. A tanúsítvány általában személyes adatcserefájlként (.pfx) van megosztva. A [Service Fabric-fürt beállítása az Azure Portalról](service-fabric-cluster-creation-via-portal.md) című témakörben ismerteti, hogyan konfigurálhatja a kiszolgálót az ügyfél elérésének engedélyezéséhez.
-2. Telepítse a megbízható tanúsítványt. Ehhez kattintson duplán a .pfx fájlra, vagy használja a PowerShell import-PfxCertificate parancsfájlt a tanúsítványok importálásához. Telepítse a **tanúsítványt a Tanúsítvány:\LocalMachine\My**mappába. A tanúsítvány importálása közben minden alapértelmezett beállítást elfogad.
-3. Válassza a **Közzététel...** parancsot a projekt helyi menüjében az **Azure-alkalmazás közzététele** párbeszédpanel megnyitásához, majd válassza ki a célfürtöt. Az eszköz automatikusan feloldja a kapcsolatot, és menti a biztonságos kapcsolat paramétereit a közzétételi profilba.
-4. Nem kötelező: A közzétételi profil szerkesztéséhez biztonságos fürtkapcsolatot adhat meg.
+### <a name="to-connect-to-a-secure-cluster"></a>Kapcsolódás biztonságos fürthöz
+1. Győződjön meg arról, hogy a cél fürt által megbízhatónak ítélt Ügyféltanúsítványok egyikét is elérheti. A tanúsítvány általában személyes információcsere (. pfx) fájlként van megosztva. Lásd: [Service Fabric-fürt beállítása a Azure Portalból](service-fabric-cluster-creation-via-portal.md) , hogy miként konfigurálhatja a kiszolgálót egy ügyfélhez való hozzáférés biztosításához.
+2. Telepítse a megbízható tanúsítványt. Ehhez kattintson duplán a. pfx fájlra, vagy használja az import-PfxCertificate PowerShell-parancsfájlt a tanúsítványok importálásához. Telepítse a tanúsítványt a következő tanúsítványra **: \ LocalMachine\My**. A tanúsítvány importálása során az összes alapértelmezett beállítást el kell fogadnia.
+3. A projekt helyi menüjében válassza a **Publish...** parancsot az **Azure-alkalmazás közzététele** párbeszédpanel megnyitásához, majd válassza ki a célként megadott fürtöt. Az eszköz automatikusan feloldja a kapcsolatokat, és menti a biztonságos kapcsolatok paramétereit a közzétételi profilban.
+4. Nem kötelező: a közzétételi profil szerkesztésével megadhat egy biztonságos fürtöt.
    
-   Mivel a Tanúsítvány közzététele XML-fájlt manuálisan szerkeszti a tanúsítványadatok megadásához, mindenképpen jegyezze fel a tanúsítványtároló nevét, az üzlet helyét és a tanúsítvány ujjlenyomatát. Ezeket az értékeket meg kell adnia a tanúsítvány üzletnevéhez és tárolási helyéhez. További információ: [A tanúsítvány ujjlenyomatának lekérése.](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)
+   Mivel manuálisan módosítja a közzétételi profil XML-fájlját a tanúsítvány adatainak megadásához, jegyezze fel a tanúsítványtároló nevét, az áruház helyét és a tanúsítvány ujjlenyomatát. Ezeket az értékeket meg kell adnia a tanúsítvány tárolójának és tárolási helyének. További információt a [tanúsítvány ujjlenyomatának beolvasása](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) című témakörben talál.
    
-   A *ClusterConnectionParameters* paraméterek segítségével megadhatja a PowerShell-paramétereket, amelyeket a Service Fabric-fürthöz való csatlakozáskor használ. Az érvényes paraméterek azok, amelyeket a Connect-ServiceFabricCluster parancsmag elfogad. Az elérhető paraméterek listáját a [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) oldalon található.
+   A *ClusterConnectionParameters* paraméterrel megadhatja a Service Fabric-fürthöz való csatlakozáskor használandó PowerShell-paramétereket. Az érvényes paraméterek tetszőlegesek, amelyeket a ServiceFabricCluster parancsmag fogad el. A rendelkezésre álló paraméterek listáját a [Csatlakozás – ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) című részben tekintheti meg.
    
-   Ha egy távoli fürtön tesz közzé, meg kell adnia az adott fürthöz tartozó megfelelő paramétereket. Az alábbi példa egy nem biztonságos fürthöz való csatlakozást mutat be:
+   Ha távoli fürtöt tesz közzé, meg kell adnia a megfelelő paramétereket az adott fürthöz. A következő példa egy nem biztonságos fürthöz való csatlakozásra mutat be:
    
    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
    
-   Íme egy példa az x509-es tanúsítványalapú biztonságos fürthöz való csatlakozásra:
+   Az alábbi példa egy x509 tanúsítvány alapú biztonságos fürthöz való csatlakozásra mutat:
    
    ```xml
    <ClusterConnectionParameters
@@ -55,10 +55,10 @@ A **Szolgáltatásháló-alkalmazás közzététele** párbeszédpanel automatik
    StoreLocation="CurrentUser"
    StoreName="My" />
    ```
-5. Szerkessze az egyéb szükséges beállításokat, például a frissítési paramétereket és az alkalmazásparaméter fájlhelyét, majd tegye közzé az alkalmazást a Visual Studio **Szolgáltatásháló-alkalmazás közzététele** párbeszédpanelén.
+5. Szerkessze az egyéb szükséges beállításokat, például a frissítési paramétereket és az alkalmazás paramétereinek helyét, majd tegye közzé az alkalmazást a Visual Studióban a **közzététel Service Fabric alkalmazásban** párbeszédpanelen.
 
 ## <a name="next-steps"></a>További lépések
-A Service Fabric-fürtök eléréséről a [Fürt megjelenítése a Service Fabric Intéző vel](service-fabric-visualizing-your-cluster.md)című témakörben talál további információt.
+A Service Fabric-fürtök elérésével kapcsolatos további információkért lásd: [a fürt megjelenítése Service Fabric Explorer használatával](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png

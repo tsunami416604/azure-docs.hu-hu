@@ -1,29 +1,29 @@
 ---
-title: 'Biztonságos szolgáltatás-átirányító kommunikáció C-vel #'
-description: Ismerje meg, hogyan biztosíthat szolgáltatás-kapcsolaton alapuló kommunikáció c# megbízható szolgáltatások, amelyek egy Azure Service Fabric-fürtön futnak.
+title: 'Biztonságos szolgáltatás távelérési kommunikációja C-vel #'
+description: Ismerje meg, hogyan védheti meg az Azure Service Fabric-fürtön futó C# megbízható szolgáltatásokat a szolgáltatás távelérés-alapú kommunikációjában.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609621"
 ---
-# <a name="secure-service-remoting-communications-in-a-c-service"></a>Biztonságos szolgáltatás-átirányító kommunikáció C# szolgáltatásban
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Biztonságos szolgáltatás – távelérési kommunikáció C#-szolgáltatásban
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-secure-communication.md)
 > * [Java Linuxon](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-A biztonság a kommunikáció egyik legfontosabb szempontja. A Megbízható szolgáltatások alkalmazáskeretrendszer néhány előre összeállított kommunikációs veremeket és eszközöket biztosít, amelyek a biztonság növelése érdekében használhatók. Ez a cikk ismerteti, hogyan növelheti a biztonságot, ha a c# szolgáltatás ban szolgáltatás átirányító használata. Egy meglévő [példára](service-fabric-reliable-services-communication-remoting.md) épül, amely bemutatja, hogyan állítható be a C#-ban írt megbízható szolgáltatások kalkulációja. 
+A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ez a cikk azt ismerteti, hogyan javíthatja a biztonságot, ha C#-szolgáltatásban használja a szolgáltatás távelérését. Egy meglévő [példára](service-fabric-reliable-services-communication-remoting.md) épül, amely elmagyarázza, hogyan állíthatja be a távoli eljáráshívás szolgáltatást a C# nyelven írt megbízható szolgáltatásokhoz. 
 
-A szolgáltatás C# szolgáltatásokkal való használata során történő szolgáltatás-használat biztonságossá tétele érdekében kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha a szolgáltatás távelérését C#-szolgáltatásokkal használja:
 
-1. Hozzon létre `IHelloWorldStateful`egy felületet, amely meghatározza azokat a módszereket, amelyek a szolgáltatás távoli eljáráshívásához rendelkezésre állnak. A szolgáltatás `FabricTransportServiceRemotingListener`a , a `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` névtérben deklarált szolgáltatást fogja használni. Ez egy `ICommunicationListener` olyan megvalósítás, amely átirányító képességeket biztosít.
+1. Hozzon létre egy `IHelloWorldStateful`felületet, amely meghatározza azokat a metódusokat, amelyek elérhetők lesznek a szolgáltatás távoli eljáráshívási hívásához. A szolgáltatás fogja használni `FabricTransportServiceRemotingListener`, amely deklarálva van a `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` névtérben. Ez egy olyan `ICommunicationListener` implementáció, amely távelérési funkciókat biztosít.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -46,16 +46,16 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
         }
     }
     ```
-2. Adja hozzá a figyelő beállításait és a biztonsági hitelesítő adatokat.
+2. Figyelő-beállítások és biztonsági hitelesítő adatok hozzáadása.
 
-    Győződjön meg arról, hogy a szolgáltatáskommunikáció védelméhez használni kívánt tanúsítvány telepítve van a fürt összes csomópontjára. 
+    Győződjön meg arról, hogy a szolgáltatás kommunikációjának biztonságossá tételéhez használni kívánt tanúsítvány telepítve van a fürt összes csomópontján. 
     
     > [!NOTE]
-    > Linux-csomópontokon a tanúsítványnak PEM-formátumú fájlként kell lennie a */var/lib/sfcerts* könyvtárban. További információ: [Az X.509 tanúsítványok helye és formátuma Linux csomópontokon](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+    > Linux-csomópontokon a tanúsítványnak PEM formátumú fájlként kell lennie a */var/lib/sfcerts* könyvtárban. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux-csomópontokon](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
 
-    A figyelőbeállításokat és a biztonsági hitelesítő adatokat kétféleképpen adhatmeg:
+    Kétféle módon biztosíthat figyelő-beállításokat és biztonsági hitelesítő adatokat:
 
-   1. Adja meg őket közvetlenül a szolgáltatási kódban:
+   1. Adja meg azokat közvetlenül a szolgáltatás kódjában:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -90,7 +90,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
        ```
    2. Adja meg őket egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md)használatával:
 
-       Névvel `TransportSettings` ellátott szakasz hozzáadása a settings.xml fájlhoz.
+       Adjon hozzá egy `TransportSettings` nevesített szakaszt a Settings. xml fájlban.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -106,7 +106,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
        </Section>
        ```
 
-       Ebben az esetben `CreateServiceReplicaListeners` a módszer így fog kinézni:
+       Ebben az esetben a metódus `CreateServiceReplicaListeners` a következőhöz hasonlóan fog kinézni:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -120,7 +120,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
        }
        ```
 
-        Ha hozzáad `TransportSettings` egy szakaszt a settings.xml fájlhoz, `FabricTransportRemotingListenerSettings` alapértelmezés szerint az összes beállítást betölti ebből a szakaszból.
+        Ha hozzáad egy `TransportSettings` szakaszt a Settings. xml fájlban, `FabricTransportRemotingListenerSettings` akkor a rendszer alapértelmezés szerint betölti a szakasz összes beállítását.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -128,7 +128,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
             ...
         </Section>
         ```
-        Ebben az esetben `CreateServiceReplicaListeners` a módszer így fog kinézni:
+        Ebben az esetben a metódus `CreateServiceReplicaListeners` a következőhöz hasonlóan fog kinézni:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -141,7 +141,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
             };
         }
         ```
-3. Ha egy biztonságos szolgáltatás metódusait a feladathívási verem `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` használatával hívja meg, ahelyett, hogy az osztályt használná szolgáltatásproxy létrehozásához, használja a használatát. `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` Adja `FabricTransportRemotingSettings`be a `SecurityCredentials`.
+3. Ha metódusokat hív meg egy biztonságos szolgáltatáson a távelérési verem használatával, nem az osztályt használja a szolgáltatás-proxy létrehozásához `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`, használja a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` parancsot. Beadás `FabricTransportRemotingSettings`, amely tartalmazza `SecurityCredentials`.
 
     ```csharp
 
@@ -171,7 +171,7 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
 
     ```
 
-    Ha az ügyfélkód egy szolgáltatás részeként fut, a settings.xml fájlból tölthető be. `FabricTransportRemotingSettings` Hozzon létre egy HelloWorldClientTransportSettings szakaszt, amely hasonló a szolgáltatáskódhoz, ahogy azt korábban mutatuk. Hajtsa végre a következő módosításokat az ügyfélkódon:
+    Ha az ügyfél kódja egy szolgáltatás részeként fut, akkor a Settings. `FabricTransportRemotingSettings` XML fájlból tölthető be. Hozzon létre egy olyan HelloWorldClientTransportSettings szakaszt, amely hasonló a szolgáltatás kódjához, ahogy az a korábban látható. Hajtsa végre a következő módosításokat az ügyfél kódjában:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,11 +184,11 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
 
     ```
 
-    Ha az ügyfél nem egy szolgáltatás részeként fut, létrehozhat egy client_name.settings.xml fájlt ugyanazon a helyen, ahol a client_name.exe van. Ezután hozzon létre egy TransportSettings szakaszt a fájlban.
+    Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy client_name. Settings. xml fájlt ugyanazon a helyen, ahol a client_name. exe fájl található. Ezután hozzon létre egy TransportSettings szakaszt a fájlban.
 
-    A szolgáltatáshoz hasonlóan, ha `TransportSettings` az ügyfélsettings.xml/client_name.settings.xml `FabricTransportRemotingSettings` fájlban hozzáad egy szakaszt, alapértelmezés szerint az összes beállítást betölti ebből a szakaszból.
+    A szolgáltatáshoz hasonlóan, ha hozzáad egy `TransportSettings` szakaszt az Client Settings. xml/client_name. Settings. XML `FabricTransportRemotingSettings` fájlban, a rendszer alapértelmezés szerint betölti az összes beállítást ebből a szakaszból.
 
-    Ebben az esetben a korábbi kód még tovább egyszerűsödik:  
+    Ebben az esetben a korábbi kód még egyszerűbbé válik:  
 
     ```csharp
 
@@ -200,4 +200,4 @@ A szolgáltatás C# szolgáltatásokkal való használata során történő szol
     ```
 
 
-Következő lépésként olvassa el a [Web API-t az OWIN szolgáltatással a Reliable Services alkalmazásban.](service-fabric-reliable-services-communication-webapi.md)
+A következő lépésként olvassa el a [webes API-t a OWIN Reliable Services-ben](service-fabric-reliable-services-communication-webapi.md)című témakörben.

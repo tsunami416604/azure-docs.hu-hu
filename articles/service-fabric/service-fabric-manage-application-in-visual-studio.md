@@ -1,82 +1,82 @@
 ---
 title: Alkalmazások kezelése a Visual Studióban
-description: A Visual Studio segítségével hozhatja létre, fejlesztheti, csomagolhatja, telepítheti és hibakereséssel használhatja az Azure Service Fabric-alkalmazásokat és -szolgáltatásokat.
+description: Az Azure Service Fabric-alkalmazások és-szolgáltatások létrehozásához, fejlesztéséhez, csomagolásához, üzembe helyezéséhez és hibakereséséhez használja a Visual studiót.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614332"
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>A Visual Studio segítségével egyszerűsítheti a Service Fabric-alkalmazások írását és kezelését
-Az Azure Service Fabric-alkalmazásokat és -szolgáltatásokat a Visual Studióban kezelheti. Miután [beállította a fejlesztői környezetet,](service-fabric-get-started.md)a Visual Studio segítségével hozhat létre Service Fabric-alkalmazásokat, szolgáltatásokat adhat hozzá, vagy csomagokat adhat hozzá, regisztrálhat és telepíthet alkalmazásokat a helyi fejlesztési fürtben.
+# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>A Visual Studio használata a Service Fabric-alkalmazások írásának és kezelésének egyszerűbbé tételéhez
+Azure Service Fabric-alkalmazásait és szolgáltatásait a Visual Studióban kezelheti. [A fejlesztési környezet beállítása](service-fabric-get-started.md)után a Visual Studio használatával Service Fabric alkalmazásokat hozhat létre, szolgáltatásokat vehet fel, illetve csomagokat telepíthet, regisztrálhat és telepíthet alkalmazásokat a helyi fejlesztési fürtben.
 
-## <a name="deploy-your-service-fabric-application"></a>A Service Fabric-alkalmazás üzembe helyezése
-Alapértelmezés szerint egy alkalmazás telepítése a következő lépéseket egyesíti egyetlen egyszerű műveletben:
+## <a name="deploy-your-service-fabric-application"></a>A Service Fabric alkalmazás üzembe helyezése
+Alapértelmezés szerint az alkalmazások központi telepítése egyetlen egyszerű művelettel ötvözi a következő lépéseket:
 
 1. Az alkalmazáscsomag létrehozása
-2. Az alkalmazáscsomag feltöltése a képtárba
-3. Az alkalmazástípus regisztrálása
-4. A futó alkalmazáspéldányok eltávolítása
-5. Alkalmazáspéldány létrehozása
+2. Alkalmazáscsomag feltöltése a rendszerkép-tárolóba
+3. Az alkalmazás típusának regisztrálása
+4. Futó alkalmazások példányainak eltávolítása
+5. Alkalmazás példányának létrehozása
 
-A Visual **Studio,P.** pnyomással F5 üzembe helyezi az alkalmazást, és csatolja a hibakereső az összes alkalmazáspéldányok. A **Ctrl+F5 billentyűkombinációval** hibakeresés nélkül is telepíthet egy alkalmazást, vagy közzétehet egy helyi vagy távoli fürtön a közzétételi profil használatával.
+A Visual Studióban nyomja le az **F5** billentyűt az alkalmazás üzembe helyezéséhez, és csatolja a hibakeresőt az összes alkalmazás-példányhoz. A **CTRL + F5 billentyűkombinációval** hibakeresés nélkül telepítheti az alkalmazásokat, vagy közzéteheti a helyi vagy távoli fürtön a közzétételi profil használatával.
 
-### <a name="application-debug-mode"></a>Alkalmazáshiba-keresési mód
-A Visual Studio egy **Alkalmazás-hibakeresési mód**nevű tulajdonságot biztosít, amely azt szabályozza, hogy a Visual Studios hogyan kezelje az alkalmazások telepítését a hibakeresés részeként.
+### <a name="application-debug-mode"></a>Alkalmazás hibakeresési módja
+A Visual Studio egy **Application Debug Mode**nevű tulajdonságot biztosít, amely azt szabályozza, hogy a Visual studiók hogyan kezelhetik az alkalmazások telepítését a hibakeresés részeként.
 
-#### <a name="to-set-the-application-debug-mode-property"></a>Az Alkalmazás-hibakeresési mód tulajdonság beállítása
-1. A Service Fabric alkalmazásprojekt (*.sfproj) helyi menüjében válassza a **Tulajdonságok** (vagy nyomja meg az **F4** billentyűt) menüt.
-2. A **Tulajdonságok** ablakban állítsa be az **Alkalmazáshibakeresési mód** tulajdonságot.
+#### <a name="to-set-the-application-debug-mode-property"></a>Az alkalmazás hibakeresési módjának tulajdonságának beállítása
+1. A Service Fabric alkalmazás projekt (*. sfproj) helyi menüjében válassza a **Tulajdonságok** lehetőséget (vagy nyomja le az **F4** billentyűt).
+2. A **Tulajdonságok** ablakban állítsa be az **alkalmazás hibakeresési módjának** tulajdonságát.
 
-![Alkalmazáshiba-keresési mód tulajdonságának beállítása][debugmodeproperty]
+![Alkalmazás hibakeresési módjának beállítása tulajdonság][debugmodeproperty]
 
-#### <a name="application-debug-modes"></a>Alkalmazáshiba-keresési módok
+#### <a name="application-debug-modes"></a>Alkalmazás hibakeresési módjai
 
-1. **Alkalmazás frissítése** Ez a mód lehetővé teszi a kód gyors módosítását és hibakeresését, és támogatja a statikus webfájlok szerkesztését hibakeresés közben. Ez a mód csak akkor működik, ha a helyi fejlesztési fürt 1 csomópontos módban van. Ez az alapértelmezett alkalmazáshiba-keresési mód.
-2. **Az Alkalmazás eltávolítása** hatására az alkalmazás törlődik a hibakeresési munkamenet befejezésekor.
-3. **Automatikus frissítés** Az alkalmazás a hibakeresési munkamenet befejezésekor is fut. A következő hibakeresési munkamenet a központi telepítést frissítésként kezeli. A frissítési folyamat megőrzi az előző hibakeresési munkamenetben megadott adatokat.
-4. **Alkalmazás megtartása** Az alkalmazás a hibakeresési munkamenet befejezésekor is fut a fürtben. A következő hibakeresési munkamenet kezdetén az alkalmazás törlődik.
+1. **Alkalmazás frissítése** Ez a mód lehetővé teszi a kód gyors módosítását és hibakeresését, és támogatja a statikus webfájlok hibakeresés közbeni szerkesztését. Ez a mód csak akkor működik, ha a helyi fejlesztési fürt 1 csomópontos módban van. Ez az alkalmazás alapértelmezett hibakeresési módja.
+2. Az **alkalmazás eltávolítása** hatására az alkalmazás el lesz távolítva a hibakeresési munkamenet végén.
+3. **Automatikus frissítés** Az alkalmazás továbbra is fut, amikor a hibakeresési munkamenet véget ér. A következő hibakeresési munkamenet az üzemelő példányt frissítésként fogja kezelni. A frissítési folyamat megőrzi az előző hibakeresési munkamenetben megadott összes adat megadását.
+4. **Alkalmazás megtartása** Ha a hibakeresési munkamenet véget ér, az alkalmazás a fürtön fut. A következő hibakeresési munkamenet elején a rendszer eltávolítja az alkalmazást.
 
-Az **automatikus frissítési** adatok a Service Fabric alkalmazásfrissítési képességeinek alkalmazásfrissítési képességeinek alkalmazásfrissítési lehetőségeinek alkalmazásfrissítési lehetőségeinek alkalmazásfrissítési lehetőségeinek alkalmazásfrissítési lehetőségeinek alkalmazás-frissítési lehetőségeinek alkalmazás-frissítési alkalmazás-alkalmazás-alkalmazás-frissítési lehetőségeinek alkalmazás Az alkalmazások frissítéséről és arról, hogy hogyan hajthatja végre a frissítést valós környezetben, olvassa el a [Service Fabric alkalmazásfrissítés című témakört.](service-fabric-application-upgrade.md)
+Az **automatikus verziófrissítéshez** az Service Fabric alkalmazás frissítési funkcióit alkalmazva megőrzi a rendszer. További információ az alkalmazások frissítéséről és a valós környezetben való frissítésről: [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md).
 
-## <a name="add-a-service-to-your-service-fabric-application"></a>Szolgáltatás hozzáadása a Service Fabric-alkalmazáshoz
-Új szolgáltatásokat adhat az alkalmazáshoz a funkció kiterjesztéséhez. Annak érdekében, hogy a szolgáltatás szerepeljen az alkalmazáscsomagban, adja hozzá a szolgáltatást az **Új hálószolgáltatás...** menüelemen keresztül.
+## <a name="add-a-service-to-your-service-fabric-application"></a>Szolgáltatás hozzáadása a Service Fabric alkalmazáshoz
+Új szolgáltatásokat adhat hozzá az alkalmazáshoz, és kiterjesztheti a funkcióit. Annak biztosítása érdekében, hogy a szolgáltatás szerepeljen az alkalmazáscsomag részeként, adja hozzá a szolgáltatást az **új háló szolgáltatás...** menüpontban.
 
-![Új Service Fabric-szolgáltatás hozzáadása][newservice]
+![Új Service Fabric szolgáltatás hozzáadása][newservice]
 
-Válassza ki a Service Fabric projekttípusát, amelyet hozzá szeretne adni az alkalmazáshoz, és adja meg a szolgáltatás nevét.  Lásd: [A szolgáltatás keretrendszerének kiválasztása,](service-fabric-choose-framework.md) amely segít eldönteni, hogy melyik szolgáltatástípust használja.
+Válasszon ki egy Service Fabric projekttípus, amelyet hozzá szeretne adni az alkalmazáshoz, és adja meg a szolgáltatás nevét.  Lásd: [keretrendszer kiválasztása a szolgáltatáshoz](service-fabric-choose-framework.md) , amely segít eldönteni, hogy melyik szolgáltatási típust kell használni.
 
-![Válassza ki az alkalmazáshoz hozzáadni kívánt Service Fabric szolgáltatásprojekt-típust][addserviceproject]
+![Válassza ki az alkalmazáshoz hozzáadandó Service Fabric Service-projekt típusát.][addserviceproject]
 
-Az új szolgáltatás hozzáadódik a megoldáshoz és a meglévő alkalmazáscsomaghoz. A szolgáltatáshivatkozások és az alapértelmezett szolgáltatáspéldány hozzáadódik az alkalmazásjegyzékhez, így a szolgáltatás létrehozása és indítása az alkalmazás következő telepítésekor történik.
+Az új szolgáltatás bekerül a megoldásba és a meglévő alkalmazáscsomagba. A szolgáltatási referenciák és az alapértelmezett szolgáltatási példány hozzá lesz adva az alkalmazás-jegyzékfájlhoz, így a szolgáltatás létrehozható és elindítható az alkalmazás következő telepítésekor.
 
-![Az új szolgáltatás hozzáadódik az alkalmazásjegyzékhez][newserviceapplicationmanifest]
+![Az új szolgáltatás bekerül az alkalmazás-jegyzékfájlba][newserviceapplicationmanifest]
 
-## <a name="package-your-service-fabric-application"></a>A Service Fabric-alkalmazás csomagolása
-Az alkalmazás és szolgáltatásai fürtre való üzembe helyezéséhez létre kell hoznia egy alkalmazáscsomagot.  A csomag az alkalmazásjegyzéket, a szolgáltatásjegyzékeket és más szükséges fájlokat egy adott elrendezésben rendezi.  A Visual Studio beállítja és kezeli a csomagot az alkalmazásprojekt mappájában, a "pkg" könyvtárban.  Az **Alkalmazás** helyi menüjének **Csomag** parancsára kattintva létrejön vagy frissít az alkalmazáscsomag.
+## <a name="package-your-service-fabric-application"></a>A Service Fabric alkalmazás becsomagolása
+Az alkalmazás és a szolgáltatásainak fürtön való üzembe helyezéséhez létre kell hoznia egy alkalmazáscsomag-csomagot.  A csomag egy adott elrendezésben rendezi az alkalmazás jegyzékfájlját, a szolgáltatási jegyzékfájlokat és az egyéb szükséges fájlokat.  A Visual Studio beállítja és kezeli a csomagot az alkalmazás projekt mappájában a "pkg" könyvtárban.  Az **alkalmazás** helyi menüjének **csomag** elemére kattintva létrehozhatja vagy frissítheti az alkalmazáscsomag.
 
-## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Alkalmazások és alkalmazástípusok eltávolítása a Cloud Explorer használatával
-A Visual Studio segítségével alapvető fürtkezelési műveleteket hajthat végre a Cloud Explorer segítségével, amelyet a **Nézet** menüből indíthat el. Például törölheti az alkalmazásokat, és unprovision alkalmazástípusok helyi vagy távoli fürtökön.
+## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Alkalmazások és alkalmazás-típusok eltávolítása a Cloud Explorer használatával
+A Cloud Explorer használatával elvégezheti az alapszintű fürtszolgáltatási műveleteket a Visual studióból, amely a **nézet** menüből indítható el. Például törölheti az alkalmazásokat, és kiépítheti az alkalmazások típusát a helyi vagy távoli fürtökön.
 
 ![Alkalmazás eltávolítása][removeapplication]
 
 > [!TIP]
-> A fürtkezelési funkciókról a [Fürt megjelenítése a Service Fabric Intézővel](service-fabric-visualizing-your-cluster.md)című témakörben nyújt elő.
+> A fürtözést részletesebben kezelő funkciókért lásd: [a fürt megjelenítése a Service Fabric Explorersal](service-fabric-visualizing-your-cluster.md).
 >
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-* [Service Fabric alkalmazásmodell](service-fabric-application-model.md)
-* [A Service Fabric alkalmazás központi telepítése](service-fabric-deploy-remove-applications.md)
-* [Alkalmazásparaméterek kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
-* [A Service Fabric-alkalmazás hibakeresése](service-fabric-debugging-your-application.md)
-* [A fürt megjelenítése a Service Fabric Intéző vel](service-fabric-visualizing-your-cluster.md)
+* [Service Fabric alkalmazás modellje](service-fabric-application-model.md)
+* [Service Fabric alkalmazás központi telepítése](service-fabric-deploy-remove-applications.md)
+* [Alkalmazások paramétereinek kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
+* [Az Service Fabric-alkalmazás hibakeresése](service-fabric-debugging-your-application.md)
+* [A fürt megjelenítése Service Fabric Explorer használatával](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png

@@ -1,59 +1,59 @@
 ---
-title: Fürtcsomópontok indítása és leállítása
-description: Ismerje meg, hogyan használhatja a hiba-injektálás a Service Fabric-alkalmazások teszteléséhez a fürtcsomópontok indításával és leállításával.
+title: Fürtcsomópontok elindítása és leállítása
+description: Megtudhatja, hogyan használhatja a hibák befecskendezését Service Fabric alkalmazások teszteléséhez a fürtcsomópontok elindításával és leállításával.
 author: LMWF
 ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609791"
 ---
-# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>A kezdő csomópont és a csomópont leállítása API-k cseréje a csomópontátmenet API-val
+# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>A csomópont elindítása és a csomópont API-k leállítása a Node áttérési API-val
 
-## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Mire történik a Csomópont leállítása és a Kezdő csomópont API-k?
+## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Mi a csomópont leállítása és a Node API-k elindítása?
 
-A Stop Node API (felügyelt: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) leállítja a Service Fabric csomópont.  A Service Fabric-csomópont folyamat, nem virtuális gép vagy gép – a virtuális gép vagy a gép továbbra is fut.  A dokumentum többi részében a "csomópont" a Service Fabric-csomópontot jelenti.  Egy csomópont leállítása *leállított* állapotba helyezi azt, amelyben nem tagja a fürtnek, és nem tud szolgáltatásokat üzemeltetni, így szimulálva egy *lefelé mutató* csomópontot.  Ez akkor hasznos, ha hibákat szeretne beadni a rendszerbe az alkalmazás teszteléséhez.  A Start Node API (felügyelt: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) megfordítja a Stop Node API-t, amely visszaállítja a csomópontot normál állapotba.
+A Node API leállítása (felügyelt: [StopNodeAsync ()][stopnode], PowerShell: [stop-ServiceFabricNode][stopnodeps]) leállítja a Service Fabric csomópontot.  Service Fabric csomópont a folyamat, nem virtuális gép vagy számítógép – a virtuális gép vagy a gép továbbra is fut.  A "Node" többi dokumentuma Service Fabric csomópontot fog érteni.  Egy csomópont leállítása *leállított* állapotba kerül, ahol nem tagja a fürtnek, és nem képes a szolgáltatások üzemeltetésére, így szimulálva a *lefelé* mutató csomópontot.  Ez akkor hasznos, ha a rendszerbe beinjektálja a hibákat az alkalmazás teszteléséhez.  A Node API elindítása (felügyelt: [StartNodeAsync ()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) megfordítja a csomópont leállítása API-t, amely visszaállítja a csomópontot egy normál állapotba.
 
-## <a name="why-are-we-replacing-these"></a>Miért cseréljük ki ezeket?
+## <a name="why-are-we-replacing-these"></a>Miért cseréljük ezeket?
 
-Akorábban leírtak szerint a *leállított* Service Fabric-csomópont egy csomópont, amelyet szándékosan céloznak meg a Csomópont-leállítás API használatával.  A *lefelé* csomópont olyan csomópont, amely bármely más okból nem érhető el (például a virtuális gép vagy a gép ki van kapcsolva).  A Stop Node API-val a rendszer nem tesz elérhetővé információkat a *leállított* és *a lefelé* futó csomópontok megkülönböztetéséhez.
+A korábban leírtaknak megfelelően egy *leállított* Service Fabric csomópont egy olyan csomópont, amely szándékosan célozza meg a Node API leállítását.  A *le* csomópontok olyan csomópontok, amelyek bármely más okból leálltak (például a virtuális gép vagy a számítógép ki van kapcsolva).  A Node API leállításakor a rendszeren nem jelenik meg információ a *leállított* csomópontok és a *lefelé* irányuló csomópontok megkülönböztetéséhez.
 
-Ezen felül az api-k által visszaadott egyes hibák nem olyan leírójellegűek, mint amilyenek lehetnek.  Ha például egy már *leállított* csomóponton a Csomópont leállítása API-t kéri, az *InvalidAddress*hibaüzenetet adja vissza.  Ez a tapasztalat lehetne javítani.
+Emellett az API-k által visszaadott hibák nem leíró jellegűek.  Ha például egy már *leállított* csomóponton meghívja a Node API-t, a rendszer visszaküldi a hibát a *InvalidAddress*.  Ez a tapasztalat javítható.
 
-Emellett a csomópont leállított időtartama "végtelen", amíg a Start Node API-t meg nem hívja.  Azt találtuk, hogy ez problémákat okozhat, és hibaérzékeny lehet.  Például láttuk problémák, ahol a felhasználó meghívta a Stop Node API-t egy csomóponton, majd elfelejtette azt.  Később nem volt világos, hogy a csomópont *leállt* vagy *megállt*.
-
-
-## <a name="introducing-the-node-transition-apis"></a>A csomópont-átmeneti API-k bemutatása
-
-Ezeket a fenti problémákat új API-készletben oldottuk meg.  Az új csomópontátmeneti API (felügyelt: [StartNodeTransitionAsync()][snt]) használható a Service Fabric-csomópont *leállított* állapotba való átmenetéhez, vagy *a leállított* állapotból egy normál állapotba való átmenethez.  Kérjük, vegye figyelembe, hogy az API nevében a "Start" nem hivatkozik egy csomópont indítására.  Egy aszinkron művelet elindítására utal, amelyet a rendszer végrehajt, hogy a csomópontot *leállított* vagy elindított állapotba váltsa.
-
-**Használat**
-
-Ha a csomópontátmenet API nem okoz kivételt, amikor meghívja, majd a rendszer elfogadta az aszinkron műveletet, és végrehajtja azt.  A sikeres hívás nem jelenti azt, hogy a művelet még befejeződött.  A művelet aktuális állapotáról való információ hozása érdekében hívja meg a Csomópontváltás folyamata API-t (felügyelt: [GetNodeTransitionProgressAsync()][gntp]a művelethez a csomópontátmeneti API meghívásakor használt guid használatával.  A Csomópontátmenet folyamata API egy NodeTransitionProgress objektumot ad vissza.  Az objektum State tulajdonsága a művelet aktuális állapotát adja meg.  Ha az állapot "Futás", akkor a művelet végrehajtása.  Ha befejeződött, a művelet hiba nélkül befejeződött.  Ha hibás, probléma merült fel a művelet végrehajtásakor.  Az Eredmény tulajdonság Exception tulajdonsága jelzi a probléma.  További https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate információt az állapot tulajdonságról és az alábbi "Mintahasználat" című szakaszban a kódpéldákért olvashat.
+Emellett a csomópont leállításának időtartama a "végtelen", amíg meg nem történik a Start Node API meghívása.  Azt találtuk, hogy ez problémákat okozhat, és lehetséges, hogy hiba történt.  Például olyan problémák merültek fel, amikor egy felhasználó meghívja a Node API leállítását egy csomóponton, majd elfelejtette.  Később nem volt egyértelmű, ha a csomópont *le* lett állítva vagy *leállt*.
 
 
-**Különbséget egy leállított csomópont és egy lefelé csomópont között** Ha egy csomópont *leáll* a csomópontátmenet API használatával, egy csomópontlekérdezés kimenete (felügyelt: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) megmutatja, hogy ez a csomópont *egy IsStopped* tulajdonság értéke igaz.  Ne feledje, hogy ez eltér a *NodeStatus* tulajdonság értékétől, amely a *Down*.  Ha a *NodeStatus* tulajdonság értéke *Le*, de *IsStopped* hamis, majd a csomópont nem állt le a Csomópont átmenet API-t, és *le* valamilyen más okból.  Ha az *IsStopped* tulajdonság igaz, és a *NodeStatus* tulajdonság *nem működik,* akkor a Csomópontátmenet API használatával leállt.
+## <a name="introducing-the-node-transition-apis"></a>A csomópont-áttérési API-k bemutatása
 
-A csomópontátmenet API-val *indított leállított* csomópont ismét visszaadja azt a fürt normál tagjaként való működéshez.  A kimeneta a csomópont lekérdezési API-t jeleníti *IsStopped* hamis, és *NodeStatus,* mint valami, ami nem le (például, Fel).
+Ezeket a problémákat az API-k egy új készletében tárgyaljuk.  Az új csomópont-átváltási API (felügyelt: [StartNodeTransitionAsync ()][snt]) felhasználható egy Service Fabric csomópont *leállított* állapotba való átváltására, vagy egy *leállított* állapotból a normál állapotba való átállásra.  Vegye figyelembe, hogy az API neveként a "Start" nem hivatkozik csomópont indítására.  Egy aszinkron művelet megkezdését jelenti, amelyet a rendszer végrehajt, hogy a csomópontot *leállított* vagy elindított állapotba váltson.
+
+**Használati**
+
+Ha a csomópont-átváltási API nem kivételt jelez a meghívásakor, akkor a rendszer elfogadta az aszinkron műveletet, és végrehajtja.  A sikeres hívás nem jelenti azt, hogy a művelet még nem fejeződött be.  Ha információt szeretne kapni a művelet aktuális állapotáról, hívja meg a csomópont-áttérési folyamat API-ját (felügyelt: [GetNodeTransitionProgressAsync ()][gntp]) a csomópont-áttérési API-nak a művelethez való meghívásakor használt GUID azonosítóval.  A csomópont-áttérési folyamat API egy NodeTransitionProgress objektumot ad vissza.  Az objektum State tulajdonsága a művelet aktuális állapotát adja meg.  Ha az állapot "fut", akkor a művelet végrehajtása folyamatban van.  Ha befejeződött, a művelet hiba nélkül befejeződött.  Ha hibás, hiba történt a művelet végrehajtásakor.  Az eredmény tulajdonság kivétel tulajdonsága jelzi, hogy mi volt a probléma.  További https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate információ az állapot tulajdonságról: példák a "minta felhasználás" szakaszra.
 
 
-**Korlátozott időtartam** Amikor a csomópont leállításához a csomópontot használja, a *stopNodeDurationInSeconds*paraméter egyik szükséges paraméter e másodpercben azt az időt jelöli másodpercben, amíg a csomópont *levan állítva.*  Ennek az értéknek a megengedett tartományban kell lennie, amely nek legalább 600, de legfeljebb 14400-nak kell lennie.  Ezen idő lejárta után a csomópont automatikusan újraindul felállási állapotba.  A használat ra vonatkozó példát az alábbi 1.
+**Leállított csomópont és egy lefelé mutató csomópont közötti különbségtétel** Ha egy csomópontot *leállítanak* a csomópont-áttérési API használatával, a csomópont-lekérdezés (felügyelt: [GetNodeListAsync ()][nodequery], a PowerShell: [Get-ServiceFabricNode][nodequeryps]) kimenete azt mutatja, hogy ez a csomópont igaz értékű *IsStopped* tulajdonságot tartalmaz.  Vegye figyelembe, hogy ez eltér a *NodeStatus* tulajdonság értékétől, amely a következőt fogja *lemondani*:.  Ha a *NodeStatus* tulajdonság értéke *lefelé*van, de a *IsStopped* hamis, akkor a csomópont nem állt le a csomópont-áttérési API-val, és valamilyen más ok miatt *leáll* .  Ha a *IsStopped* tulajdonság értéke TRUE (igaz), és a *NodeStatus* tulajdonság nem érhető *el, akkor a csomópont-* áttérési API használatával leállt.
 
-> [!WARNING]
-> Ne keverje a csomópontátmeneti API-kat, valamint a Csomópont leállítása és a csomópont indítása API-kat.  A javaslat csak a csomópont átmeneti API-t használja.  > Ha egy csomópont már leállt a Stop Node API használatával, először a Csomópont-> használata előtt el kell kezdenie a Kezdő csomópont API-k használatát.
+Ha egy *leállított* csomópontot indít el a csomópont-áttérési API használatával, akkor a rendszer visszaküldi a fürt normális tagjaként való működésre.  A csomópont-lekérdezési API kimenete hamis értékként jeleníti meg a *IsStopped* , és *NodeStatus* a nem lefelé (például fel).
+
+
+**Korlátozott időtartam** Ha a csomópont-áttérési API-t egy csomópont leállítására használja, az egyik kötelező paraméter, a *stopNodeDurationInSeconds*pedig azt az időtartamot jelenti, ameddig a csomópontot *le kell állítani*.  Ennek az értéknek a megengedett tartományba kell esnie, amely legalább 600, és legfeljebb 14400.  Az idő lejárta után a csomópont automatikusan újraindul az állapotba.  Tekintse át az alábbi 1. mintát a használati példaként.
 
 > [!WARNING]
-> Több csomópontátmeneti API-hívás nem kezdeményezhető ugyanazon a csomóponton párhuzamosan.  Ilyen esetben a csomóponti átmenet API > a NodeTransitionInProgress ErrorCode tulajdonságértékkel rendelkező FabricException-et dobja.  Miután egy csomópontváltás > el indult, meg kell várnia, amíg a művelet eléri a terminálállapotot (Befejezett, Hibás vagy ForceCancelled), mielőtt új > új átmenetet kezdene el ugyanazon a csomóponton.  A párhuzamos csomópont-átmenet hívások különböző csomópontokon engedélyezettek.
+> Ne keverje a csomópont-áttérési API-kat és a csomópont leállítása és a Node API-k elindítása.  Javasoljuk, hogy csak a csomópont-áttérési API-t használja.  >, hogy egy csomópontot már leállítottak-e a Node API leállítása szolgáltatással, először a Node API elindítása előtt kell elindítania az > Node Transition API-k használata előtt.
+
+> [!WARNING]
+> Több csomópontos áttérési API-hívás nem hajtható végre párhuzamosan ugyanazon a csomóponton.  Ebben az esetben a csomópont-átváltási API > egy FabricException a NodeTransitionInProgress ErrorCode tulajdonságának értékével.  Ha egy csomópontra való áttérés egy adott csomóponton > elindult, várjon, amíg a művelet el nem éri a terminál állapotát (befejezett, hibás vagy ForceCancelled), mielőtt megkezdené a > új átmenetet ugyanarra a csomópontra.  A párhuzamos csomópontok átmeneti hívásait különböző csomópontokon lehet engedélyezni.
 
 
 #### <a name="sample-usage"></a>Példa a használatra
 
 
-**1. minta** – A következő minta a csomópontátmenet API-t használja egy csomópont leállításához.
+**1. minta** – a következő minta a csomópont-áttérési API-t használja a csomópont leállításához.
 
 ```csharp
         // Helper function to get information about a node
@@ -155,7 +155,7 @@ A csomópontátmenet API-val *indított leállított* csomópont ismét visszaad
         }
 ```
 
-**2. minta** – A következő minta *egy leállított* csomópontot indít el.  Használ néhány segítő módszerek az első minta.
+**2. minta** – az alábbi példa egy *leállított* csomópontot indít el.  Az első mintából néhány segítő módszert használ.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
@@ -198,7 +198,7 @@ A csomópontátmenet API-val *indított leállított* csomópont ismét visszaad
         }
 ```
 
-**3. minta** – A következő minta helytelen használatot mutat.  Ez a használat helytelen, mert az általa biztosított *stopDurationInSeconds* nagyobb, mint az engedélyezett tartomány.  Mivel a StartNodeTransitionAsync() végzetes hibával sikertelen lesz, a művelet nem lett elfogadva, és a progress API-t nem kell meghívni.  Ez a minta az első minta néhány segítő módszerét használja.
+**3. minta** – az alábbi példa a helytelen használatot mutatja be.  Ez a használat helytelen, mert az általa biztosított *stopDurationInSeconds* nagyobb, mint az engedélyezett tartomány.  Mivel a StartNodeTransitionAsync () végzetes hiba miatt meghiúsul, a rendszer nem fogadta el a műveletet, és a Progress API-t nem kell meghívni.  Ez a példa néhány segítő módszert használ az első mintában.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -229,7 +229,7 @@ A csomópontátmenet API-val *indított leállított* csomópont ismét visszaad
         }
 ```
 
-**4. minta** – A következő minta a csomópontváltási folyamat API-ból visszaadott hibainformációkat mutatja be, amikor a csomópontátmenet API által kezdeményezett műveletet elfogadja, de később sikertelen a végrehajtás során.  Abban az esetben sikertelen, mert a csomópontátmenet API nem létező csomópont ot próbál elindítani.  Ez a minta az első minta néhány segítő módszerét használja.
+**4. minta** – a következő minta azokat a hibaüzeneteket mutatja be, amelyeket a csomópont-áttérési folyamat API-nak kell visszaadnia, ha a csomópont-áttérési API által kezdeményezett műveletet elfogadják, de később a végrehajtás közben nem sikerül.  Ebben az esetben a művelet meghiúsul, mert a csomópont-áttérési API megpróbál olyan csomópontot elindítani, amely nem létezik.  Ez a példa néhány segítő módszert használ az első mintában.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)

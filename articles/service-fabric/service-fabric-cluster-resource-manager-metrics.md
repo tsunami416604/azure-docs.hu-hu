@@ -1,86 +1,86 @@
 ---
-title: Az Azure Service Fabric alkalmazásterhelés kezelése metrikák használatával
-description: Megtudhatja, hogyan konfigurálhatja és használhatja a metrikák at Service Fabric szolgáltatás erőforrás-felhasználás kezelésére.
+title: Azure Service Fabric-alkalmazások terhelésének kezelése mérőszámok használatával
+description: Ismerje meg, hogyan konfigurálhatja és használhatja a Service Fabric mérőszámait a szolgáltatások erőforrás-felhasználásának kezeléséhez.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452002"
 ---
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Erőforrás-felhasználás és -betöltés kezelése a Service Fabricben mérőszámokkal
-*Metrikák* azok az erőforrások, amelyek a szolgáltatások törődnek, és amelyeket a fürt csomópontjai által biztosított. A mérőszám minden, amit kezelni szeretne a szolgáltatások teljesítményének javítása vagy figyelése érdekében. Előfordulhat például, hogy a memóriafelhasználást figyeli, hogy a szolgáltatás túlterhelt-e. Egy másik felhasználás, hogy kitaláljuk, hogy a szolgáltatás mozoghat máshol, ahol a memória kevésbé korlátozott annak érdekében, hogy jobb teljesítményt.
+# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Az erőforrás-felhasználás és a terhelések kezelése a metrikákkal Service Fabric
+A *metrikák* azok az erőforrások, amelyeket a szolgáltatásai törődnek, és amelyeket a fürt csomópontjai biztosítanak. A mérőszám a szolgáltatások teljesítményének javításához vagy figyeléséhez szükséges. Megtekintheti például, hogy a szolgáltatás túlterhelt-e a memóriában. Egy másik lehetőség, hogy kiderítse, hogy a szolgáltatás máshol is mozog-e, ahol a memória kevésbé korlátozott a jobb teljesítmény érdekében.
 
-Az olyan dolgok, mint a memória, a lemez és a processzorhasználat, például metrikák. Ezek a metrikák fizikai metrikák, erőforrások, amelyek megfelelnek a fizikai erőforrások a csomóponton, amelyeket kezelni kell. Metrikák is lehet (és általában azok) logikai metrikák. A logikai metrikák például a "MyWorkQueueDepth" vagy a "MessagesToProcess" vagy a "TotalRecords". Logikai metrikák az alkalmazás által meghatározott, és közvetve megfelelnek bizonyos fizikai erőforrás-felhasználás. A logikai metrikák gyakoriak, mert nehéz lehet mérni és jelenteni a fizikai erőforrások felhasználását szolgáltatásonként. A saját fizikai metrikák mérésének és jelentésének összetettsége is, ezért a Service Fabric néhány alapértelmezett metrikákat biztosít.
+A memória, a lemez és a CPU-használat például mérőszámokra mutat. Ezek a mérőszámok fizikai mérőszámok, a csomóponton található fizikai erőforrásoknak megfelelő erőforrások, amelyeket kezelni kell. A metrikák is lehetnek (és gyakran) logikai metrikák. A logikai mérőszámok olyan dolgok, mint a "MyWorkQueueDepth" vagy a "MessagesToProcess" vagy a "TotalRecords". A logikai mérőszámok az alkalmazás által definiált és közvetetten egy fizikai erőforrás-felhasználásnak felelnek meg. A logikai mérőszámok gyakoriak, mert nehéz lehet mérni és jelenteni a fizikai erőforrások felhasználását egy szolgáltatás alapján. A saját fizikai mérőszámok mérésének és jelentésének összetettsége azt is jelenti, hogy Service Fabric biztosít néhány alapértelmezett metrikát.
 
-## <a name="default-metrics"></a>Alapértelmezett mutatók
-Tegyük fel, hogy el szeretné kezdeni a szolgáltatás írását és üzembe helyezését. Ezen a ponton nem tudja, milyen fizikai vagy logikai erőforrásokat használ fel. Jó lesz így! A Service Fabric fürterőforrás-kezelő néhány alapértelmezett metrikákat használ, ha nincs más metrikák vannak megadva. Ezek a következők:
+## <a name="default-metrics"></a>Alapértelmezett metrikák
+Tegyük fel, hogy meg szeretné kezdeni a szolgáltatás írását és üzembe helyezését. Ezen a ponton nem tudja, hogy milyen fizikai vagy logikai erőforrások használják. Ez rendben van! A Service Fabric fürterőforrás-kezelő néhány alapértelmezett metrikát használ, ha nincs megadva más metrika. Ezek a következők:
 
-  - PrimaryCount - elsődleges replikák száma a csomóponton 
-  - ReplicaCount - a csomópont összes állapotalapú replikájának száma
-  - Count - a csomóponton lévő összes szolgáltatásobjektum (állapot nélküli és állapotmentes) száma
+  - PrimaryCount – a csomóponton lévő elsődleges replikák száma 
+  - ReplicaCount – a csomóponton található állapot-nyilvántartó replikák száma
+  - Az összes szolgáltatási objektum (állapot nélküli és állapot-nyilvántartó) száma a csomóponton
 
-| Metrika | Állapotnélküli példánybetöltése | Állapotalapú másodlagos terhelés | Állapotalapú elsődleges terhelés | Tömeg |
+| Metrika | Állapot nélküli példányok betöltése | Állapot-nyilvántartó másodlagos terhelés | Állapot-nyilvántartó elsődleges terhelés | Tömeg |
 | --- | --- | --- | --- | --- |
-| Elsődleges szám |0 |0 |1 |Magasság |
-| ReplicaCount (Replikaszáma) |0 |1 |1 |Közepes |
+| PrimaryCount |0 |0 |1 |Magasság |
+| ReplicaCount |0 |1 |1 |Közepes |
 | Darabszám |1 |1 |1 |Alacsony |
 
 
-Az alapvető számítási feladatok hoz az alapértelmezett metrikák a fürtben végzett munka megfelelő elosztását biztosítják. A következő példában nézzük meg, mi történik, ha két szolgáltatást hozunk létre, és az alapértelmezett mutatók at az egyensúlyozáshoz. Az első szolgáltatás egy állapotalapú szolgáltatás három partícióval és egy cél replika készlet három méretével. A második szolgáltatás egy állapotmentes szolgáltatás egy partícióval és egy példány száma három.
+Az alapszintű számítási feladatok esetében az alapértelmezett mérőszámok biztosítják a feladatok tisztességes elosztását a fürtben. Az alábbi példában lássuk, mi történik, ha két szolgáltatást hozunk létre, és az alapértelmezett mérőszámokra támaszkodunk. Az első szolgáltatás egy állapot-nyilvántartó szolgáltatás, amely három partícióval és egy célként megadott replika három mérettel rendelkezik. A második szolgáltatás egy állapot nélküli szolgáltatás, amely egy partícióval és három példányszámmal rendelkezik.
 
 A következőkről van szó:
 
 <center>
 
-![Fürtelrendezés alapértelmezett mérőszámokkal][Image1]
+![Fürt elrendezése alapértelmezett metrikákkal][Image1]
 </center>
 
 Ügyeljen a következőkre:
-  - Az állapotalapú szolgáltatás elsődleges replikái több csomópont között vannak elosztva
-  - Ugyanazon partíció replikái különböző csomópontokon találhatók
-  - Az elsődleges és másodlagos elsődleges elemek teljes száma a fürtben van elosztva
-  - A szolgáltatásobjektumok teljes száma egyenletesen van lefoglalva az egyes csomópontokon
+  - Az állapot-nyilvántartó szolgáltatás elsődleges replikái több csomópont között oszlanak meg
+  - Ugyanahhoz a partícióhoz tartozó replikák különböző csomópontokon találhatók
+  - Az elsődleges és a formátumú másodlagos zónák teljes száma a fürtben van elosztva
+  - A szolgáltatási objektumok teljes száma egyenletesen van lefoglalva az egyes csomópontokon
 
 jó!
 
-Az alapértelmezett metrikák jól működnek, mint a kezdet. Az alapértelmezett metrikák azonban csak eddig viszik. Például: Mi a valószínűsége annak, hogy a kiválasztott particionálási séma tökéletesen egyenletes kihasználtságot eredményez az összes partíció által? Mi az esélye annak, hogy egy adott szolgáltatás terhelése állandó az idő múlásával, vagy akár csak ugyanaz több partícióközött most?
+Az alapértelmezett mérőszámok az indításkor is remekül működnek. Az alapértelmezett mérőszámok azonban csak ennyi ideig lesznek végrehajtva. Például: mi a valószínűsége annak, hogy a kiválasztott particionáló séma tökéletesen egyenletes kihasználtságot eredményez az összes partíción? Mi a valószínűsége annak, hogy egy adott szolgáltatás terhelése az idő múlásával állandó, vagy akár több partíción is ugyanaz van?
 
-Futtathatja csak az alapértelmezett metrikákat. Ez azonban általában azt jelenti, hogy a fürt kihasználtsága alacsonyabb és egyenetlenebb, mint szeretné. Ennek az az oka, hogy az alapértelmezett metrikák nem adaptívak, és feltételezik, hogy minden egyenértékű. Például egy elsődleges, amely elfoglalt, és egy, amely nem egyszerre járul hozzá "1" a PrimaryCount metrika. A legrosszabb esetben csak az alapértelmezett metrikák használata is eredményezhet túlütemezett csomópontok, ami teljesítményproblémákat okozhat. Ha szeretné a legtöbbet kivenni a fürtből, és elkerülni a teljesítményproblémákat, egyéni metrikákat és dinamikus terhelési jelentéseket kell használnia.
+A-t csak az alapértelmezett metrikákkal futtathatja. Azonban ez általában azt jelenti, hogy a fürt kihasználtsága alacsonyabb, és még ennél is rosszabb, mint szeretné. Ennek az az oka, hogy az alapértelmezett mérőszámok nem alkalmazkodnak, és feltételezik, hogy minden egyenértékű. Például egy foglalt elsődleges és egy, a PrimaryCount metrikához nem járul hozzá "1". A legrosszabb esetben, ha csak az alapértelmezett mérőszámokat használja, a rendszer a túlütemezett csomópontokat is eredményezi, ami teljesítménnyel kapcsolatos problémákat okoz. Ha szeretné, hogy a lehető legtöbbet hozza ki a fürtből, és elkerülje a teljesítménnyel kapcsolatos problémákat, egyéni metrikákat és dinamikus betöltési jelentéskészítést kell használnia.
 
 ## <a name="custom-metrics"></a>Egyéni metrikák
-Metrikák vannak konfigurálva egy névvel ellátott-szolgáltatás-példány alapján, amikor létrehozza a szolgáltatást.
+A metrikák a szolgáltatás létrehozásakor egy névvel ellátott, szolgáltatás-példány alapon vannak konfigurálva.
 
-Minden metrika rendelkezik néhány tulajdonsággal, amelyek leírják: egy nevet, egy súlyt és egy alapértelmezett terhelést.
+Bármely metrika tartalmaz néhány tulajdonságot, amely leírja azt: egy nevet, egy súlyozást és egy alapértelmezett betöltést.
 
-* Metrika neve: A metrika neve. A metrikaneve a metrika egyedi azonosítója a fürtön belül az Erőforrás-kezelő szemszögéből.
-* Súly: Metrika súlya határozza meg, hogy milyen fontos ez a metrika a szolgáltatás többi metrikákhoz képest.
-* Alapértelmezett betöltés: Az alapértelmezett terhelés eltérő módon jelenik meg attól függően, hogy a szolgáltatás állapot nélküli vagy állapotalapú.
-  * Állapotnélküli szolgáltatások esetén minden metrika egyetlen DefaultLoad nevű tulajdonsággal rendelkezik.
-  * A megadott állapotalapú szolgáltatásokhoz:
-    * PrimaryDefaultLoad: A szolgáltatás által felhasznált metrika alapértelmezett mennyisége, ha elsődleges
-    * SecondaryDefaultLoad: A szolgáltatás által felhasznált metrika alapértelmezett mennyisége, ha másodlagos
+* Metrika neve: a metrika neve. A metrika neve a fürtben lévő metrika egyedi azonosítója az erőforrás-kezelő szemszögéből.
+* Súlyozás: a metrika súlya határozza meg, hogy ez a metrika milyen fontos a szolgáltatáshoz tartozó többi metrikához képest.
+* Alapértelmezett betöltés: az alapértelmezett terhelés eltérő módon jelenik meg attól függően, hogy a szolgáltatás állapota vagy állapota nem megfelelő-e.
+  * Az állapot nélküli szolgáltatások esetében minden metrika egyetlen, DefaultLoad nevű tulajdonsággal rendelkezik.
+  * Az Ön által definiált állapot-nyilvántartó szolgáltatások esetében:
+    * PrimaryDefaultLoad: a metrika alapértelmezett értéke, amelyet a szolgáltatás akkor használ, ha az elsődleges
+    * SecondaryDefaultLoad: a metrika alapértelmezett értéke, ha a szolgáltatás másodlagosként használja
 
 > [!NOTE]
-> Ha egyéni metrikákat határoz meg, és az alapértelmezett metrikákat _is_ szeretné használni, _explicit módon_ vissza kell adnia az alapértelmezett mutatókat, és meg kell adnia a súlyokat és az értékeket. Ennek az az oka, hogy meg kell határoznia az alapértelmezett metrikák és az egyéni metrikák közötti kapcsolatot. Például, talán érdekel ConnectionCount vagy WorkQueueDepth több, mint az elsődleges elosztás. Alapértelmezés szerint a PrimaryCount metrika súlya magas, ezért szeretné csökkenteni közepes, amikor hozzáadja a többi metrikák, hogy megbizonyosodjon arról, hogy elsőbbséget élveznek.
+> Ha egyéni metrikákat ad meg, és az alapértelmezett metrikákat _is_ használni szeretné, _explicit módon_ hozzá kell adnia az alapértelmezett metrikákat, és meg kell határoznia azok súlyozásait és értékeit. Ennek az az oka, hogy meg kell határoznia az alapértelmezett mérőszámok és az egyéni metrikák közötti kapcsolatot. Tegyük fel például, hogy a ConnectionCount vagy a WorkQueueDepth nagyobb mértékben érdekli az elsődleges eloszlás. Alapértelmezés szerint a PrimaryCount metrikájának súlya magas, ezért közepesre szeretné csökkenteni a többi mérőszámot, hogy azok elsőbbséget élvezzenek.
 >
 
-### <a name="defining-metrics-for-your-service---an-example"></a>A szolgáltatás mutatóinak meghatározása – példa
-Tegyük fel, hogy a következő konfigurációt szeretné:
+### <a name="defining-metrics-for-your-service---an-example"></a>Mérőszámok definiálása a szolgáltatáshoz – példa
+Tegyük fel, hogy a következő konfigurációt szeretné használni:
 
-  - A szolgáltatás egy "ConnectionCount" nevű metrikát jelent
-  - Az alapértelmezett mutatókat is használni szeretné 
-  - Elvégzett néhány mérést, és tudja, hogy általában a szolgáltatás elsődleges replikája 20 egység "ConnectionCount"
-  - A másodlagos a "ConnectionCount" 5 egységét használja
-  - Tudja, hogy a "ConnectionCount" a legfontosabb mérőszám az adott szolgáltatás teljesítményének kezelése szempontjából
-  - Továbbra is szeretné elsődleges replikák kiegyensúlyozott. Az elsődleges replikák kiegyensúlyozása általában jó ötlet, nem számít, mi történik. Ez segít megakadályozni, hogy egyes csomópontok vagy tartalék tartományok elvesztése hatással legyen az elsődleges replikák többségére. 
+  - A szolgáltatás jelentést készít a "ConnectionCount" nevű metrikáról
+  - Az alapértelmezett mérőszámokat is használni szeretné 
+  - Elvégezte néhány mérést, és tudja, hogy az adott szolgáltatás elsődleges replikája 20 egységet vesz igénybe a "ConnectionCount"
+  - A formátumú másodlagos zónák a "ConnectionCount" 5 egységét használja
+  - Tudja, hogy az adott szolgáltatás teljesítményének kezelése szempontjából a legfontosabb mérőszám az "ConnectionCount".
+  - Továbbra is érdemes az elsődleges replikákat kiegyensúlyozottan használni. Az elsődleges replikák kiegyensúlyozása általában jó ötlet, függetlenül attól, hogy mi. Ez segít megakadályozni, hogy egyes csomópontok vagy tartalék tartományok elveszítsék az elsődleges replikák többségét. 
   - Ellenkező esetben az alapértelmezett mérőszámok rendben vannak
 
-Az adott metrikakonfigurációval rendelkező szolgáltatás létrehozásához az alábbiakat írja:
+Az alábbi kód azt írja le, hogy az adott metrikai konfigurációval hozzon létre egy szolgáltatást:
 
 Kód:
 
@@ -118,54 +118,54 @@ serviceDescription.Metrics.Add(totalCountMetric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Powershell:
+PowerShell
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ConnectionCount,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
 > [!NOTE]
-> A fenti példák és a dokumentum többi része ismerteti a metrikák kezelését névszerint szolgáltatásonként. Lehetőség van a szolgáltatások metrikák meghatározására a _szolgáltatástípus_ szintjén. Ez úgy érhető el, hogy megadja őket a szolgáltatásjegyzékekben. A típusszintű metrikák definiálása több okból sem ajánlott. Az első ok az, hogy a metrikanevek gyakran környezetspecifikusak. Hacsak nincs egy szilárd szerződés a helyén, nem lehet biztos abban, hogy a metrikus "Magok" egy környezetben nem "MiliCores" vagy "CoReS" másokban. Ha a metrikák vannak definiálva a jegyzékfájlban létre kell hoznia új jegyzékek környezetenként. Ez általában a különböző manifesztek elterjedéséhez vezet, csak kisebb különbségekkel, ami irányítási nehézségekhez vezethet.  
+> A fenti példák és a jelen dokumentum többi része leírja a metrikák felügyeletét egy névvel ellátott szolgáltatás alapján. A szolgáltatások mérőszámait a szolgáltatás _típusa_ szintjén is meghatározhatja. Ennek megvalósításához meg kell adni őket a szolgáltatás jegyzékfájljában. A típus szintű mérőszámok meghatározása több okból nem ajánlott. Ennek első oka, hogy a metrikák nevei gyakran a környezetre jellemzőek. Ha nincs határozott szerződés, nem biztos benne, hogy az egyik környezetben lévő "magok" mérőszám nem "MiliCores" vagy "magok". Ha a metrikák definiálva vannak a jegyzékfájlban, új jegyzékfájlokat kell létrehoznia egy adott környezetben. Ez általában olyan különböző jegyzékfájlok elterjedését eredményezi, amelyek csak kisebb eltérésekkel járnak, ami felügyeleti problémákhoz vezethet.  
 >
-> Metrika terhelések általában rendelt egy névvel ellátott-szolgáltatás-példány alapján. Tegyük fel például, hogy a szolgáltatás egy példányát az Ügyfél számára hozza létre, aki csak könnyedén kívánja használni. Tegyük fel azt is, hogy létrehoz egy másikat a CustomerB számára, akinek nagyobb munkaterhelése van. Ebben az esetben valószínűleg módosítani szeretné az alapértelmezett terheléseket ezekhez a szolgáltatásokhoz. Ha a metrikák és terhelések keresztül definiált jegyzékek, és szeretné támogatni ezt a forgatókönyvet, különböző alkalmazás- és szolgáltatástípusokat igényel az egyes ügyfelek. A szolgáltatás létrehozási ideje alatt meghatározott értékek felülbírálják a jegyzékfájlban definiált értékeket, így ezzel beállíthatja az adott alapértelmezett értékeket. Ennek azonban hatására a jegyzékekben deklarált értékek nem egyeznek meg a szolgáltatás ténylegesen fut. Ez zavart okozhat. 
+> A metrikák terhelését általában egy névvel ellátott szolgáltatás-példány alapján kell hozzárendelni. Tegyük fel például, hogy a szolgáltatás egy példányát hozza létre a Customera számára, aki csak kis mennyiségű használatot tervez. Azt is tegyük fel, hogy létrehoz egy másikat a nagyobb számítási feladattal rendelkező CustomerB. Ebben az esetben valószínűleg a szolgáltatások alapértelmezett terhelését szeretné felhangolni. Ha olyan mérőszámokkal és terhelésekkel rendelkezik, amelyek a jegyzékfájlok segítségével vannak meghatározva, és támogatni szeretné ezt a forgatókönyvet, az egyes ügyfelekhez különböző alkalmazás-és szolgáltatási típusok szükségesek. A szolgáltatás-létrehozási időpontban definiált értékek felülbírálják a jegyzékfájlban definiált értékeket, így az adott alapértelmezett beállítások megadására is használható. Ez azonban azt eredményezi, hogy a jegyzékfájlokban deklarált értékek nem egyeznek meg a szolgáltatás által ténylegesen futtatott értékekkel. Ez zavart okozhat. 
 >
 
-Emlékeztetőül: ha csak az alapértelmezett metrikákat szeretné használni, egyáltalán nem kell megérintenie a metrikagyűjteményt, vagy nem kell valami különlegeset tennie a szolgáltatás létrehozásakor. Az alapértelmezett metrikák automatikusan használatosak, ha nincs enek definiálva. 
+Emlékeztető: Ha csak az alapértelmezett mérőszámokat szeretné használni, nem kell többé megérintenie a metrikák gyűjteményét, vagy bármit külön kell tennie a szolgáltatás létrehozásakor. Az alapértelmezett mérőszámok automatikusan használatban lesznek, ha nincs más definiálva. 
 
-Most nézzük át az egyes beállításokat részletesebben, és beszéljünk a viselkedés, hogy befolyásolja.
+Most nézzük át ezeket a beállításokat részletesebben, és beszéljünk az általa befolyásolt viselkedésről.
 
 ## <a name="load"></a>Betöltés
-A metrikák meghatározásának lényege, hogy bizonyos terhelést képviseljen. *A terhelés* azt, hogy egy adott metrika mekkora részét használja fel egy adott szolgáltatáspéldány vagy replika egy adott csomóponton. A betöltés szinte bármikor konfigurálható. Példa:
+A metrikák definiálásának lényege, hogy bizonyos terhelést képviselnek. A *betöltési* érték azt adja meg, hogy egy adott metrika mekkora részét használja egy adott csomópont egyes szolgáltatási példányai vagy replikái. A betöltés szinte bármilyen ponton konfigurálható. Például:
 
-  - A terhelés a szolgáltatás létrehozásakor határozható meg. Ezt _nevezzük alapértelmezett terhelésnek_.
-  - A metrikainformáció, beleértve az alapértelmezett terheléseket, a szolgáltatás a szolgáltatás létrehozása után frissülhet. Ezt _szolgáltatás frissítésének nevezzük._ 
-  - Egy adott partíció terhelése visszaállítható az adott szolgáltatás alapértelmezett értékeire. Ezt _nevezzük a partícióterhelés alaphelyzetbe állításának_.
-  - A betöltés szolgáltatásobjektumonként dinamikusan jelenthető futásidőben. Ezt _nevezzük jelentési terhelésnek_. 
+  - A terhelést a szolgáltatás létrehozásakor lehet meghatározni. Ezt nevezzük _alapértelmezett betöltésnek_.
+  - A metrikák adatai, beleértve az alapértelmezett terheléseket is, a szolgáltatás létrehozása után frissíthetők. Ezt nevezzük a _szolgáltatás frissítésének_. 
+  - Egy adott partíció terhelése visszaállítható a szolgáltatás alapértelmezett értékeire. Ezt nevezzük a _partíciók betöltésének alaphelyzetbe állításához_.
+  - A betöltést szolgáltatási objektum alapján, dinamikusan, futásidőben lehet jelenteni. Ezt nevezik _jelentéskészítési terhelésnek_. 
   
-Mindezek a stratégiák lehet használni ugyanazon a szolgáltatáson belül élettartama alatt. 
+Az összes ilyen stratégia az adott szolgáltatáson belül is felhasználható élettartama alatt. 
 
-## <a name="default-load"></a>Alapértelmezett terhelés
-*Az alapértelmezett terhelés* az, hogy az egyes szolgáltatásobjektumok (állapotnélküli példány vagy állapotalapú replika) metrika-metrikából mennyit használ nak fel. A fürterőforrás-kezelő ezt a számot használja a szolgáltatásobjektum terheléséhez, amíg más információkat, például dinamikus betöltési jelentést nem kap. Egyszerűbb szolgáltatások esetén az alapértelmezett terhelés statikus definíció. Az alapértelmezett terhelés soha nem frissül, és a szolgáltatás élettartama alatt használatos. Az alapértelmezett terhelések nagyszerűen működnek az egyszerű kapacitástervezési forgatókönyvekben, ahol bizonyos mennyiségű erőforrás tasza hozzá a különböző számítási feladatokhoz, és nem változnak.
+## <a name="default-load"></a>Alapértelmezett betöltés
+Az *alapértelmezett terhelés* azt adja meg, hogy az egyes szolgáltatási objektumok (a szolgáltatás állapot nélküli példányai vagy állapot-nyilvántartó replikái) milyen mérőszámot használnak. A fürterőforrás-kezelő ezt a számot használja a szolgáltatási objektum terheléséhez, amíg más adatokat nem kap, például dinamikus betöltési jelentést. Az egyszerűbb szolgáltatások esetében az alapértelmezett terhelés statikus definíció. Az alapértelmezett betöltés soha nem frissül, és a szolgáltatás élettartamára szolgál. Az alapértelmezett terhelések az egyszerű kapacitás-tervezési forgatókönyvek esetében remekül működnek, ahol bizonyos mennyiségű erőforrás a különböző számítási feladatokhoz van hozzárendelve, és nem változik.
 
 > [!NOTE]
-> A kapacitáskezeléssel és a fürt csomópontjainak kapacitásmeghatározásával kapcsolatos további információkért tekintse meg [ezt a cikket.](service-fabric-cluster-resource-manager-cluster-description.md#capacity)
+> A kapacitások kezelésével és a fürt csomópontjainak kapacitásának meghatározásával kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
 > 
 
-A fürterőforrás-kezelő lehetővé teszi, hogy az állapotalapú szolgáltatások eltérő alapértelmezett terhelést adjanak meg az elsődleges és a másodlagos értékekhez. Az állapotmentes szolgáltatások csak egy olyan értéket adhatnak meg, amely az összes példányra vonatkozik. Állapotalapú szolgáltatások esetén az elsődleges és másodlagos replikák alapértelmezett terhelése általában eltérő, mivel a replikák különböző típusú munkát végeznek az egyes szerepkörökben. Az elsődleges elemek például általában olvasási és írási olvasási és írási műveleteket szolgálnak ki, és kezelik a számítási terhek nagy részét, míg a másodlagos értékek nem. Az elsődleges replika alapértelmezett betöltése általában magasabb, mint a másodlagos replika alapértelmezett betöltése. A valós számoknak a saját mérésektől kell függenie.
+A fürterőforrás-kezelő lehetővé teszi, hogy az állapot-nyilvántartó szolgáltatások egy másik alapértelmezett terhelést adjanak ki az elsődleges és a formátumú másodlagos zónák. Az állapot nélküli szolgáltatások csak egyetlen értéket adhatnak meg, amely az összes példányra érvényes. Az állapot-nyilvántartó szolgáltatások esetében az elsődleges és a másodlagos replikák alapértelmezett terhelése általában eltérő, mivel a replikák különböző típusú munkát végeznek az egyes szerepkörökben. Az elsődlegesek például az olvasást és az írást is kiszolgálják, és a számítási terhek többségét kezelik, míg a formátumú másodlagos zónák nem. Az elsődleges replika alapértelmezett terhelése általában magasabb, mint a másodlagos replikák alapértelmezett terhelése. A valós számok a saját mértéktől függenek.
 
-## <a name="dynamic-load"></a>Dinamikus terhelés
-Tegyük fel, hogy már egy ideje a szolgáltatást vezeti. Némi megfigyeléssel észrevette, hogy:
+## <a name="dynamic-load"></a>Dinamikus betöltés
+Tegyük fel, hogy egy ideig futtatta a szolgáltatást. Némi figyeléssel észrevette, hogy:
 
-1. Egy adott szolgáltatás egyes partíciói vagy példányai több erőforrást fogyasztanak, mint mások
-2. Egyes szolgáltatások terhelése idővel változik.
+1. Egy adott szolgáltatás egyes partíciói vagy példányai több erőforrást használnak, mint mások
+2. Egyes szolgáltatások olyan terheléssel rendelkeznek, amely az idő múlásával változhat.
 
-Sok dolog van, ami ilyen típusú terhelésingadozást okozhat. Például a különböző szolgáltatások vagy partíciók különböző ügyfelek különböző követelményekkel vannak társítva. A terhelés is változhat, mert a szolgáltatás által végzett munka mennyisége a nap folyamán változik. Az októl függetlenül általában nincs egyetlen szám, amelyet alapértelmezettként használhat. Ez különösen igaz, ha azt szeretné, hogy a legtöbb kihasználtság a fürtből. Az alapértelmezett terheléshez választott értékek az idő egy részében hibásak. A helytelen alapértelmezett betöltések azt eredményezik, hogy a fürterőforrás-kezelő az erőforrások hozzárendelésén felül vagy alatt történik. Ennek eredményeképpen olyan csomópontokkal rendelkezik, amelyek túl vannak használva, még akkor is, ha a fürterőforrás-kezelő úgy véli, hogy a fürt kiegyensúlyozott. Az alapértelmezett terhelések továbbra is jók, mivel a kezdeti elhelyezéshez szolgáltatnak bizonyos információkat, de nem teljes történet a valós munkaterhelésekhez. A változó erőforrás-követelmények pontos rögzítéséhez a fürterőforrás-kezelő lehetővé teszi, hogy minden szolgáltatásobjektum frissítse saját terhelését futásidőben. Ezt nevezzük dinamikus terhelésjelentésnek.
+Számos dolog lehet, ami az ilyen típusú terhelések ingadozását okozhatja. A különböző szolgáltatások vagy partíciók például különböző ügyfelekkel vannak társítva, eltérő követelményekkel. A Load is változhat, mert a szolgáltatás által végzett munka mennyisége a nap folyamán változik. Az ok miatt általában nincs egyetlen szám, amelyet alapértelmezettként használhat. Ez különösen akkor igaz, ha ki szeretné próbálni a legtöbbet a fürtből. Az alapértelmezett betöltéshez kiválasztott értékek közül néhányat nem megfelelőnek tekint. Helytelenek az alapértelmezett betöltések a fürterőforrás-kezelőben vagy az erőforrások lefoglalása során. Ennek eredményeképpen olyan csomópontok vannak, amelyek túl vannak vagy a kihasználtság alatt vannak, bár a fürterőforrás-kezelő úgy gondolja, hogy a fürt egyensúlyban van. Az alapértelmezett betöltések még mindig jók, mivel a kezdeti elhelyezéshez bizonyos információkat biztosítanak, de nem teljes körűek a valós számítási feladatok elvégzéséhez. Az erőforrás-követelmények módosításának pontos rögzítése érdekében a fürterőforrás-kezelő lehetővé teszi, hogy az egyes szolgáltatási objektumok saját terhelést frissítsenek a futtatókörnyezet során. Ezt nevezzük dinamikus betöltési jelentéskészítésnek.
 
-A dinamikus terhelési jelentések lehetővé teszik a replikák vagy példányok számára, hogy módosítsák a metrikák felosztását/jelentett terhelését azok élettartama alatt. A szolgáltatás replika vagy példány, amely hideg volt, és nem végez semmilyen munkát általában azt jelenti, hogy egy adott metrika kis mennyiségű használatával. Egy forgalmas replika vagy példány azt jelenti, hogy többet használnak.
+A dinamikus betöltési jelentések lehetővé teszik a replikák vagy példányok számára, hogy az élettartamuk során módosítsák a kiosztott/jelentett terhelést. Egy olyan szolgáltatás-replika vagy-példány, amely hideg volt, és nem végez munkát, általában azt jelenti, hogy az adott metrika alacsony mennyiségét használta. Egy foglalt replika vagy példány azt jelenti, hogy több használatban van.
 
-A replika vagy példányonkénti jelentéskészítési terhelés lehetővé teszi, hogy a fürterőforrás-kezelő átszervezze a fürt egyes szolgáltatásobjektumait. A szolgáltatások átszervezése segít biztosítani, hogy megkapják a szükséges erőforrásokat. Foglalt szolgáltatások hatékonyan kap a "visszaszerzése" erőforrások más replikák vagy példányok, amelyek jelenleg hideg, vagy kevesebb munkát végez.
+A jelentési betöltés replikán vagy példányon lehetővé teszi, hogy a fürterőforrás-kezelő átszervezzék a fürtben lévő egyes szolgáltatási objektumokat. A szolgáltatások átrendezése segít biztosítani, hogy megkapják a számukra szükséges erőforrásokat. A foglalt szolgáltatások hatékonyan hozzáférhetnek más replikák vagy olyan példányok erőforrásairól, amelyek jelenleg nem működnek, vagy amelyek kevésbé működnek.
 
-A Megbízható szolgáltatásokon belül a betöltésdinamikusan történő jelentéskódja a következőképpen néz ki:
+Reliable Services belül a betöltésre szolgáló kód dinamikusan a következőképpen néz ki:
 
 Kód:
 
@@ -173,97 +173,97 @@ Kód:
 this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnectionCount", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Egy szolgáltatás a létrehozás időpontjában definiált mutatók bármelyikéről jelentést tehet. Ha egy szolgáltatás jelentések betöltése egy metrika, amely nincs konfigurálva a használata, service fabric figyelmen kívül hagyja a jelentést. Ha vannak más, egyidejűleg érvényes mutatók, akkor ezek a jelentések elfogadottak. A szolgáltatáskód mérhető és jelentheti az összes általa használható metrikát, és az operátorok megadhatják a metrika konfigurációját a szolgáltatáskód módosítása nélkül. 
+A szolgáltatás a létrehozáskor meghatározott mérőszámok bármelyikén jelentést tud készíteni. Ha a szolgáltatás egy olyan metrika betöltését jelenti, amelyet nincs konfigurálva a használatára, Service Fabric figyelmen kívül hagyja ezt a jelentést. Ha más mérőszámok is érvényesek, akkor ezek a jelentések elfogadva lesznek. A szolgáltatási kód mérhetővé és jelentést készít az összes, az általa ismert mérőszámról, és a kezelők a szolgáltatás kódjának módosítása nélkül is meghatározhatják a használni kívánt metrikai konfigurációt. 
 
-### <a name="updating-a-services-metric-configuration"></a>Egy szolgáltatás metrikakonfigurációjának frissítése
-A szolgáltatáshoz társított metrikák listája, és ezek a metrikák tulajdonságai dinamikusan frissíthetők, amíg a szolgáltatás él. Ez lehetővé teszi a kísérletezést és a rugalmasságot. Néhány példa arra, hogy ez mikor hasznos:
+### <a name="updating-a-services-metric-configuration"></a>A szolgáltatás metrika-konfigurációjának frissítése
+A szolgáltatáshoz társított mérőszámok listája és a metrikák tulajdonságai dinamikusan frissíthetők a szolgáltatás élő állapotában. Ez lehetővé teszi a kísérletezést és a rugalmasságot. Néhány példa, ha ez hasznos:
 
-  - egy metrika letiltása egy adott szolgáltatás hibás jelentésével
-  - a mérőszámok súlyának újrakonfigurálása a kívánt viselkedés alapján
-  - új metrika engedélyezése csak azt követően, hogy a kódot már telepítették és más mechanizmusokon keresztül érvényesítették
-  - szolgáltatás alapértelmezett terhelésének módosítása a megfigyelt viselkedés és fogyasztás alapján
+  - egy adott szolgáltatáshoz tartozó hibás jelentéssel rendelkező metrika letiltása
+  - a mérőszámok súlyozásának újrakonfigurálása a kívánt viselkedés alapján
+  - új metrika engedélyezése csak azt követően, hogy a kód már üzembe lett helyezve és érvényesítve más mechanizmusokon keresztül
+  - egy szolgáltatás alapértelmezett terhelésének módosítása a megfigyelt viselkedés és a felhasználás alapján
 
-A fő API-k a `FabricClient.ServiceManagementClient.UpdateServiceAsync` metrikakonfiguráció módosítása a C# és `Update-ServiceFabricService` a PowerShell. Bármilyen információt is ad meg ezekkel az API-kkal, azonnal lecseréli a szolgáltatás meglévő metrikaadatait. 
+A metrikák konfigurációjának módosítására szolgáló `FabricClient.ServiceManagementClient.UpdateServiceAsync` fő API- `Update-ServiceFabricService` k a C# és a PowerShell-ben találhatók. Az ezekkel az API-kkal megadott információk azonnal lecserélik a szolgáltatás meglévő metrikai információit. 
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Az alapértelmezett terhelési értékek és a dinamikus terhelési jelentések keverése
-Az alapértelmezett terhelés és a dinamikus terhelések ugyanahhoz a szolgáltatáshoz használhatók. Ha egy szolgáltatás az alapértelmezett terhelési és a dinamikus betöltési jelentéseket is használja, az alapértelmezett terhelés becslésként szolgál, amíg a dinamikus jelentések meg nem jelennek. Az alapértelmezett terhelés jó, mert a fürterőforrás-kezelőnek ad valamit, amivel dolgozhat. Az alapértelmezett terhelés lehetővé teszi, hogy a fürterőforrás-kezelő a szolgáltatásobjektumokat létrehozásakor jó helyekre helyezze. Ha nincs megadva alapértelmezett betöltési információ, a szolgáltatások elhelyezése gyakorlatilag véletlenszerű. Amikor a terhelési jelentések később érkeznek, a kezdeti véletlenszerű elhelyezés gyakran hibás, és a fürterőforrás-kezelőnek át kell helyeznie a szolgáltatásokat.
+## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Alapértelmezett betöltési értékek és dinamikus betöltési jelentések keverése
+Az alapértelmezett terhelés és a dinamikus terhelések is használhatók ugyanahhoz a szolgáltatáshoz. Ha egy szolgáltatás az alapértelmezett betöltési és dinamikus betöltési jelentéseket is használja, az alapértelmezett terhelés becslésként szolgál a dinamikus jelentések megjelenítése előtt. Az alapértelmezett betöltés jó, mert a fürterőforrás-kezelőhöz való munkavégzést biztosít. Az alapértelmezett betöltés lehetővé teszi, hogy a fürterőforrás-kezelő a létrehozáskor megfelelő helyen helyezze el a szolgáltatási objektumokat. Ha nincs megadva alapértelmezett betöltési információ, a szolgáltatások elhelyezése gyakorlatilag véletlenszerű. Ha a betöltési jelentések később érkeznek, a kezdeti véletlenszerű elhelyezés gyakran helytelen, és a fürterőforrás-kezelőnek át kell helyeznie a szolgáltatásokat.
 
-Vegyük az előző példánkat, és nézzük meg, mi történik, ha hozzáadunk néhány egyéni metrikát és dinamikus terhelési jelentést. Ebben a példában a "MemoryInMb" példamérő számot használjuk.
+Vegyük át az előző példát, és nézzük meg, mi történik, ha hozzáadunk néhány egyéni metrikát és dinamikus betöltési jelentést. Ebben a példában a "MemoryInMb" kifejezést használjuk példaként mérőszámként.
 
 > [!NOTE]
-> Memória egyike a rendszer metrikák, amelyek service fabric [erőforrás-szabályozó,](service-fabric-resource-governance.md)és a jelentési magad általában nehéz. Valójában nem várjuk el, hogy számoljon be a memóriafogyasztásról; A memória itt a fürterőforrás-kezelő képességeinek megismerésének elősegítésére szolgál.
+> A memória az a rendszermetrikák egyike, amely Service Fabric az [erőforrás-szabályozást](service-fabric-resource-governance.md), és a jelentés készítése általában nehéz feladat. Valójában nem várjuk, hogy jelentést készítsen a memória használatáról; A memóriát itt találja a fürterőforrás-kezelő képességeinek megismerésére szolgáló támogatásként.
 >
 
-Tegyük fel, hogy kezdetben a következő paranccsal hoztuk létre az állapotalapú szolgáltatást:
+Tételezzük fel, hogy kezdetben a következő paranccsal hoztuk létre az állapot-nyilvántartó szolgáltatást:
 
-Powershell:
+PowerShell
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Emlékeztetőül ez a szintaxis a következő: ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
+Emlékeztetőként ez a szintaxis a következő: ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
 
-Lássuk, hogyan nézhet ki egy lehetséges fürtelrendezés:
+Lássuk, hogyan nézhet ki egy lehetséges fürtcsomópont:
 
 <center>
 
-![Fürt kiegyensúlyozott mind az alapértelmezett, mind az egyéni mérőszámokkal][Image2]
+![Fürt kiegyensúlyozott, alapértelmezett és egyéni metrikákkal][Image2]
 </center>
 
 Néhány dolog, amit érdemes megjegyezni:
 
-* A partíción belüli másodlagos replikák mindegyike saját terheléssel rendelkezhet
-* Összességében a mérőszámok kiegyensúlyozottnak tűnnek. A memória esetében a legnagyobb és a legkisebb terhelés aránya 1,75 (a legnagyobb terhelésű csomópont N3, a legkisebb N2 és 28/16 = 1,75).
+* A partíción belüli másodlagos replikák rendelkezhetnek saját terheléssel
+* Összességében a mérőszámok kiegyensúlyozottnak tűnnek. A memória esetében a maximális és minimális terhelés közötti arány 1,75 (a legtöbb terheléssel rendelkező csomópont N3, a legkevésbé az N2 és a 28/16 = 1,75).
 
-Van néhány dolog, amit még meg kell magyaráznunk:
+Még néhány dolgot meg kell magyarázni:
 
-* Mi határozta meg, hogy az arány 1,75 ésszerű volt-e vagy sem? Honnan tudja a fürterőforrás-kezelő, hogy ez elég jó-e, vagy hogy van-e még tennivaló?
-* Mikor történik az egyensúly?
-* Mit jelent az, hogy a memória súlya "Magas"?
+* Mi határozta meg, hogy a 1,75-os arány ésszerű vagy sem? Honnan tudhatja, hogy a fürterőforrás-kezelő tudja-e, hogy elég jó-e, vagy hogy van-e több tennivaló?
+* Mikor történik a kiegyensúlyozás?
+* Mit jelent az, hogy a memória súlya "magas"?
 
 ## <a name="metric-weights"></a>Metrikus súlyok
-Fontos, hogy ugyanazokat a mutatókat kövesse nyomon a különböző szolgáltatások között. Ez a globális nézet teszi lehetővé a fürterőforrás-kezelő számára, hogy nyomon kövesse a fürt ben lévő felhasználást, egyensúlyba hozza a csomópontok közötti felhasználást, és biztosítsa, hogy a csomópontok ne menjenek túl a kapacitáson. Előfordulhat azonban, hogy a szolgáltatások eltérő nézeteket vallanak ugyanazon mutató fontosságát illetően. Emellett egy fürtben, sok metrikák és sok szolgáltatás, tökéletesen kiegyensúlyozott megoldások nem léteznek minden metrikák. Hogyan kezelje a fürterőforrás-kezelő ezeket a helyzeteket?
+A különböző szolgáltatások által használt mérőszámok nyomon követése fontos. Ez a globális nézet lehetővé teszi, hogy a fürterőforrás-kezelő nyomon követhesse a fürtben való használatot, kiegyenlítse a felhasználást a csomópontok között, és gondoskodjon arról, hogy a csomópontok ne lépjék át Azonban előfordulhat, hogy a szolgáltatások eltérő nézetekkel rendelkeznek, mint az azonos metrika fontossága. Emellett a sok mérőszámot és sok szolgáltatást tartalmazó fürtben nem léteznek tökéletesen kiegyensúlyozott megoldások az összes metrika esetében. Hogyan kezeli ezeket a helyzeteket a fürterőforrás-kezelő?
 
-Metrikasúlyok lehetővé teszik, hogy a fürt erőforrás-kezelő dönti el, hogyan egyensúlyozza ki a fürtöt, ha nincs tökéletes válasz. Metrika súlyok is lehetővé teszik a fürt erőforrás-kezelő az egyes szolgáltatások eltérő egyensúlyban. A mérőszámok négy különböző súlyszinttel rendelkezhetnek: Nulla, Alacsony, Közepes és Magas. A Nulla súlyú metrika semmit sem járul hozzá annak mérlegeléséhez, hogy a dolgok kiegyensúlyozottak-e vagy sem. A terhelés azonban továbbra is hozzájárul a kapacitáskezeléshez. A nulla súlyú metrikák továbbra is hasznosak, és gyakran használják a szolgáltatás viselkedésének és teljesítményfigyelésének részeként. [Ez](service-fabric-diagnostics-event-generation-infra.md) a cikk további információt nyújt a metrikák a szolgáltatások figyelése és diagnosztika használatával. 
+A metrikai súlyok lehetővé teszik a fürterőforrás-kezelő számára, hogy eldöntse, hogyan kell kiegyenlíteni a fürtöt, ha nincs tökéletes válasz. A metrikák súlyozása azt is lehetővé teszi, hogy a fürterőforrás-kezelő eltérő szolgáltatásokat egyenlít ki. A metrikák négy különböző súlyozási szinten lehetnek: nulla, alacsony, közepes és magas. A nulla súlyú mérőszámok nem járulnak hozzá, ha figyelembe vesszük, hogy a dolgok kiegyensúlyozottak-e. A terhelés azonban továbbra is hozzájárul a kapacitások kezeléséhez. A nulla súlyozású mérőszámok továbbra is hasznosak, és gyakran használják a szolgáltatás működésének és a teljesítmény monitorozásának részeként. [Ez a cikk](service-fabric-diagnostics-event-generation-infra.md) további információkat nyújt a szolgáltatások monitorozásához és diagnosztizálásához használt mérőszámok használatáról. 
 
-A fürt különböző metrikasúlyainak valós hatása az, hogy a fürterőforrás-kezelő különböző megoldásokat hoz létre. Metrika súlyok mondja a fürt erőforrás-kezelő, hogy bizonyos metrikák fontosabbak, mint mások. Ha nincs tökéletes megoldás, a fürterőforrás-kezelő előnyben részesítheti azokat a megoldásokat, amelyek jobban kiegyensúlyozzák a nagyobb súlyozott mutatókat. Ha egy szolgáltatás úgy gondolja, hogy egy adott metrika lényegtelen, előfordulhat, hogy a metrika használata kiegyensúlyozatlan. Ez lehetővé teszi, hogy egy másik szolgáltatás egy adott metrika egyenletes eloszlását kapja, amely fontos hozzá.
+A különböző metrikák súlyozásának valódi hatása a fürtben az, hogy a fürterőforrás-kezelő különböző megoldásokat hoz létre. A metrikus súlyok közlik a fürterőforrás-kezelővel, hogy bizonyos mérőszámok fontosabbak a többinél. Ha nincs tökéletes megoldás, a fürterőforrás-kezelő olyan megoldásokat részesít előnyben, amelyek jobban kiegyensúlyozzák a magasabb súlyozású mérőszámokat. Ha egy szolgáltatás azt gondolja, hogy egy adott metrika nem fontos, akkor az adott metrika kiegyensúlyozatlan használatát tapasztalhatja. Ez lehetővé teszi, hogy egy másik szolgáltatás még a fontos mérőszámok eloszlását is beolvassa.
 
-Nézzünk meg egy példát néhány terhelési jelentések, és hogyan különböző metrika súlyok eredményez i különböző foglalások a fürtben. Ebben a példában azt látjuk, hogy a metrikák relatív súlyának váltása miatt a fürterőforrás-kezelő különböző szolgáltatási megoldásokat hoz létre.
+Lássunk egy példát néhány betöltési jelentésre, és azt, hogy a különböző metrikai súlyozások hogyan eredményeznek különböző foglalásokat a fürtben. Ebben a példában azt láthatjuk, hogy a metrikák relatív súlyozásának váltásakor a fürterőforrás-kezelő különböző szolgáltatási szabályokat hoz létre.
 
 <center>
 
-![Metrikus súly példa és annak hatása a kiegyenlítő megoldásokra][Image3]
+![A mérőszám súlyozásának példája és a megoldásokra gyakorolt hatása][Image3]
 </center>
 
-Ebben a példában négy különböző szolgáltatások, az összes jelentéskülönböző értékeket két különböző metrikák, MetricA és MetricB. Egy esetben az összes szolgáltatás határozza meg MetricA a legfontosabb (Súly = Magas) és MetricB lényegtelen (Súly = Alacsony). Ennek eredményeképpen azt látjuk, hogy a fürt erőforrás-kezelő helyezi el a szolgáltatásokat, hogy MetricA kiegyensúlyozottabb, mint a MetricB. A "kiegyensúlyozottabb" azt jelenti, hogy a MetricA alacsonyabb szórással rendelkezik, mint a Metrikus B. A második esetben megfordítjuk a metrikus súlyokat. Ennek eredményeképpen a fürterőforrás-kezelő felcseréli az A és B szolgáltatásokat, hogy olyan felosztást hozzon létre, ahol a MetricB kiegyensúlyozottabb, mint a MetricA.
+Ebben a példában négy különböző szolgáltatás létezik, amelyek mindegyike különböző értékeket jelent két különböző metrika, metrika és MetricB esetében. Egy esetben az összes szolgáltatás határozza meg a metrikát a legfontosabb (súlyozás = magas) és a MetricB (súly = alacsony). Ennek eredményeképpen láthatjuk, hogy a fürterőforrás-kezelő úgy helyezi el a szolgáltatásokat, hogy a metrika jobban kiegyensúlyozott legyen, mint a MetricB. A "jobb kiegyensúlyozott" kifejezés azt jelenti, hogy a metrika alacsonyabb szórású, mint a MetricB. A második esetben fordítottuk a metrikák súlyozását. Ennek eredményeképpen a fürterőforrás-kezelő felcseréli az A és A B szolgáltatást, hogy olyan foglalást dolgozzon ki, amelyben a MetricB jobban kiegyensúlyozott, mint a metrikus.
 
 > [!NOTE]
-> Metrika súlyok határozza meg, hogy a fürt erőforrás-kezelő egyensúlyban kell lennie, de nem akkor, ha a kiegyensúlyozás kell történnie. A kiegyensúlyozásról további információt [ebben a cikkben](service-fabric-cluster-resource-manager-balancing.md) talál.
+> A metrikai súlyok határozzák meg, hogy a fürterőforrás-kezelő hogyan kerüljön egyensúlyba, de nem, ha az egyensúly megtörténne. A kiegyensúlyozással kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-balancing.md)
 >
 
-### <a name="global-metric-weights"></a>Globális metrikasúlyok
-Tegyük fel, hogy a ServiceA a MetricA-t magas súlyként határozza meg, és a B a MetricA súlyát alacsonyra vagy nullára állítja. Mi az a tényleges súly, ami végül hozzászokik?
+### <a name="global-metric-weights"></a>Globális mérőszámok súlyozása
+Tegyük fel, hogy a Servicea nagy súlyú mérőszámot határoz meg, a ServiceB pedig alacsony vagy nulla értékűre állítja a metrikát. Mi a tényleges súlyozás, amely a használat során ér véget?
 
-Vannak több súlyok, amelyek nyomon követik az egyes metrika. Az első súly a metrikához a szolgáltatás létrehozásakor meghatározott súly. A másik súly egy globális súly, amelyet a rendszer automatikusan számít ki. A fürterőforrás-kezelő mindkét súlyozást használja a megoldások pontozásakor. Figyelembe véve mindkét súlyt fontos. Ez lehetővé teszi, hogy a fürterőforrás-kezelő az egyes szolgáltatások saját prioritásai szerint egyensúlyba hozható legyen, és azt is biztosítsa, hogy a fürt egésze megfelelően legyen lefoglalva.
+Az összes metrika esetében több súlyozás is nyomon követhető. Az első súlyozás a szolgáltatás létrehozásakor a metrika számára meghatározott. A másik súlyozás egy globális súlyozás, amelyet a rendszer automatikusan kiszámít. A fürterőforrás-kezelő mindkét súlyozást használja a pontozási megoldásoknál. A súlyok figyelembe vétele fontos. Ez lehetővé teszi, hogy a fürterőforrás-kezelő a saját prioritásainak megfelelően kiegyenlítse az egyes szolgáltatásokat, és gondoskodjon arról, hogy a fürt teljes kiosztása megfelelő legyen.
 
-Mi történne, ha a fürterőforrás-kezelőt nem érdekelné mind a globális, sem a helyi egyensúly? Nos, könnyen hozhat létre olyan megoldásokat, amelyek globálisan kiegyensúlyozottak, de amelyek az egyes szolgáltatások gyenge erőforrás-egyensúlyát eredményezik. A következő példában nézzünk meg egy csak az alapértelmezett metrikákkal konfigurált szolgáltatást, és nézzük meg, mi történik, ha csak a globális egyenleget vesszük figyelembe:
+Mi történne, ha a fürterőforrás-kezelő nem törődik a globális és a helyi egyenleggel? Nos, könnyen létrehozhat globálisan kiegyensúlyozott megoldásokat, azonban az egyes szolgáltatások esetében az erőforrás-egyensúlyt is okoz. Az alábbi példában egy csak az alapértelmezett metrikákkal konfigurált szolgáltatást nézzük meg, és nézzük meg, mi történik, ha a rendszer csak a globális egyenleget veszi figyelembe:
 
 <center>
 
-![A hatása a globális csak megoldás][Image4]
+![Egy globális megoldás hatása][Image4]
 </center>
 
-A legfelső példában, amely csak a globális egyensúlyon alapul, a fürt egésze valóban kiegyensúlyozott. Minden csomópont rendelkezik az elsődleges és az azonos számú összes replikák száma. Ha azonban megnézzük a tényleges hatását ez a felosztás nem olyan jó: a veszteség bármely csomópont hatással van egy adott számítási feladatok aránytalanul, mert kiveszi az összes elsődleges. Ha például az első csomópont meghibásodik, a Circle szolgáltatás három különböző partíciójának három elsődleges partíciója mind elveszne. Ezzel szemben a Háromszög és a Hatszög szolgáltatások partíciói elveszítik a replika. Ez nem okoz fennakadást, azon kívül, hogy helyre kell állítania a replikát.
+A legfelső példában kizárólag globális egyensúlyon alapuló, a teljes fürt valóban kiegyensúlyozott. Az összes csomópont azonos számú elsődleges és azonos számú replikával rendelkezik. Ha azonban megtekinti a kiosztás tényleges hatását, nem annyira jó: a csomópontok elvesztése aránytalanul hatással van egy adott számítási feladatra, mivel az összes elsődleges adatát kiveszi. Ha például az első csomópont nem sikerül, akkor a kör-szolgáltatás három különböző partíciójának három alapadata is elvész. Ezzel szemben a Triangle és a Hexagon szolgáltatás partíciói elveszítik a replikát. Ez nem okoz fennakadást, mert nem kell helyreállítani a le-replikát.
 
-Az alsó példában a fürterőforrás-kezelő elosztotta a replikákat a globális és a szolgáltatásonkénti egyenleg alapján. A megoldás pontszámának kiszámításakor a globális megoldás súlyának nagy részét, az egyes szolgáltatások (konfigurálható) részét pedig a súly nagy részét adja. A metrika globális egyenlegét az egyes szolgáltatások metrikasúlyainak átlaga alapján számítjuk ki. Minden szolgáltatás a saját meghatározott metrikasúlyok szerint kiegyensúlyozott. Ez biztosítja, hogy a szolgáltatások önmagukban saját szükségleteiknek megfelelően kiegyensúlyozottak legyenek. Ennek eredményeképpen, ha ugyanaz az első csomópont sikertelen, a hiba az összes szolgáltatás összes partíciója között oszlik meg. A hatás minden ugyanaz.
+Az alsó példában a fürterőforrás-kezelő a globális és a szolgáltatási egyenlegen alapuló elosztotta a replikákat. A megoldás pontszámának kiszámításakor a legnagyobb súlyt adja a globális megoldásnak, és egy (konfigurálható) részét az egyes szolgáltatásoknak. A metrika globális egyenlegét az egyes szolgáltatásokból származó metrikai súlyok átlaga alapján számítjuk ki. Az egyes szolgáltatások a saját meghatározott mérőszám-súlyozása szerint vannak összefoglalva. Ez biztosítja, hogy a szolgáltatások saját igényeiknek megfelelően kiegyensúlyozottak legyenek. Ennek eredményeképpen, ha ugyanaz az első csomópont meghibásodik, a rendszer az összes szolgáltatás összes partícióján elosztja a hibát. Az egyesekre gyakorolt hatás ugyanaz.
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatások konfigurálásával kapcsolatos további [tudnivalók a Szolgáltatások konfigurálásáról](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- A töredezettségmentesítési metrikák definiálása az egyik módja a csomópontok terhelésének konszolidálásának, ahelyett, hogy szétosztana. A töredezettségmentesítés konfigurálásáról a [jelen cikkben](service-fabric-cluster-resource-manager-defragmentation-metrics.md) olvashat.
-- Ha meg szeretné tudni, hogy a fürterőforrás-kezelő hogyan kezeli és egyensúlyozza ki a terhelést a fürtben, olvassa el a [terhelés elosztásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
-- Kezdje az elejétől, és [kapjon bevezetést a Szolgáltatásháló-fürt erőforrás-kezelőjébe](service-fabric-cluster-resource-manager-introduction.md)
-- A mozgásköltség az egyik módja annak, hogy jelezze a fürterőforrás-kezelőnek, hogy bizonyos szolgáltatások áthelyezése drágább, mint másoké. Ha többet szeretne megtudni a mozgási költségekről, olvassa el [ezt a cikket](service-fabric-cluster-resource-manager-movement-cost.md)
+- A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálásával](service-fabric-cluster-resource-manager-configure-services.md)foglalkozó témakört (Service-Fabric-cluster-resource-Manager-configure-Services.MD).
+- A Lemeztöredezettség-mentesítő mérőszámok meghatározása az egyik módszer a csomópontok terhelésének konszolidálására a kiterjedésük helyett. A töredezettségmentesítés konfigurálásának megismeréséhez tekintse meg [ezt a cikket.](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [terhelés kiegyensúlyozásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
+- Kezdje a kezdetektől, és [Ismerkedjen meg a Service Fabric fürterőforrás-kezelővel](service-fabric-cluster-resource-manager-introduction.md)
+- A szállítási költség az egyik módja annak, hogy a fürterőforrás-kezelőnek jelezze, hogy bizonyos szolgáltatások drágábbak a többinél. Ha többet szeretne megtudni a szállítási díjakról, tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-movement-cost.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

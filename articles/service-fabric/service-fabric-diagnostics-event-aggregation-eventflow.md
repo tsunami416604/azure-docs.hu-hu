@@ -1,45 +1,45 @@
 ---
-title: Az Azure Service Fabric eseményösszesítése az EventFlow-val
-description: Ismerje meg az események összesítését és gyűjtését az EventFlow használatával az Azure Service Fabric-fürtök figyeléséhez és diagnosztikájához.
+title: Azure Service Fabric esemény összesítése a EventFlow segítségével
+description: Ismerje meg, hogy az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához a EventFlow segítségével használatával hogyan összesítheti és gyűjtheti az eseményeket.
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463092"
 ---
-# <a name="event-aggregation-and-collection-using-eventflow"></a>Eseményösszesítés és -gyűjtés az EventFlow használatával
+# <a name="event-aggregation-and-collection-using-eventflow"></a>Események összesítése és gyűjtése a EventFlow segítségével használatával
 
-[A Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) az eseményeket egy csomópontról egy vagy több figyelési helyre irányíthatja. Mivel a szolgáltatásprojektben NuGet-csomagként szerepel, az EventFlow-kód és a szolgáltatással való konfigurációs utazás, kiküszöbölve az Azure Diagnostics korábban említett csomópontonkénti konfigurációs problémát. Az EventFlow a szolgáltatási folyamaton belül fut, és közvetlenül csatlakozik a konfigurált kimenetekhez. A közvetlen kapcsolat miatt az EventFlow az Azure, a tároló és a helyszíni szolgáltatás központi telepítéseihez működik. Legyen óvatos, ha az EventFlow-t nagy sűrűségű forgatókönyvekben, például egy tárolóban futtatja, mert minden EventFlow-folyamat külső kapcsolatot hoz létre. Tehát, ha a fogadó több folyamat, kapsz több kimenő kapcsolatok! Ez nem annyira a Service Fabric-alkalmazások, mert egy `ServiceType` futtatás i. ugyanazon folyamat összes replikák, és ez korlátozza a kimenő kapcsolatok száma. Az EventFlow eseményszűrést is kínál, így csak a megadott szűrőnek megfelelő események kerülnek elküldésre.
+A [Microsoft Diagnostics EventFlow segítségével](https://github.com/Azure/diagnostics-eventflow) egy csomópontról egy vagy több megfigyelési célhelyre irányíthatja át az eseményeket. Mivel a szolgáltatási projektben NuGet-csomagként szerepel, a EventFlow segítségével-kód és a konfiguráció a szolgáltatással utazik, így nem kell megszüntetnie a Azure Diagnosticsról korábban említett csomópontos konfigurációs problémát. A EventFlow segítségével a szolgáltatási folyamaton belül fut, és közvetlenül a konfigurált kimenetekhez csatlakozik. A közvetlen kapcsolódás miatt a EventFlow segítségével az Azure, a Container és a helyszíni szolgáltatások központi telepítései esetében működik. Ügyeljen arra, hogy a EventFlow segítségével nagy sűrűségű helyzetekben, például egy tárolóban fusson, mivel minden egyes EventFlow segítségével-folyamat külső kapcsolatokat tesz elérhetővé. Így ha több folyamatot is üzemeltet, több kimenő kapcsolat is megadható. Ez nem annyira fontos a Service Fabric-alkalmazások esetében, mert egy `ServiceType` folyamat összes replikája azonos folyamatban van, és ez korlátozza a kimenő kapcsolatok számát. A EventFlow segítségével az események szűrését is biztosítja, így csak a megadott szűrőnek megfelelő események lesznek elküldve.
 
-## <a name="set-up-eventflow"></a>EventFlow beállítása
+## <a name="set-up-eventflow"></a>EventFlow segítségével beállítása
 
-Az EventFlow bináris fájljai NuGet-csomagok készleteként érhetők el. Ha az EventFlow-t hozzá szeretné adni egy Service Fabric szolgáltatásprojekthez, kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza a "NuGet-csomagok kezelése" parancsot. Váltson a "Tallózás"`Diagnostics.EventFlow`fülre, és keressen a " ":
+A EventFlow segítségével bináris fájljai NuGet-csomagokként érhetők el. Ha EventFlow segítségével szeretne hozzáadni egy Service Fabric szolgáltatási projekthez, kattintson a jobb gombbal a projektre a Megoldáskezelő, és válassza a "NuGet-csomagok kezelése" lehetőséget. Váltson a "Tallózás" lapra, és keressen rá a`Diagnostics.EventFlow`"" kifejezésre:
 
-![EventFlow NuGet csomagok a Visual Studio NuGet csomagkezelő felhasználói felületén](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
+![EventFlow segítségével NuGet-csomagok a Visual Studio NuGet Package Manager felhasználói felületén](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Megjelenik a különböző csomagok listája, "Bemenetek" és "Kimenetek" felirattal. Az EventFlow különböző naplózási szolgáltatókat és elemzőket támogat. Az EventFlow szolgáltatást üzemeltető szolgáltatásnak az alkalmazásnaplók forrásától és céljától függően megfelelő csomagokat kell tartalmaznia. A mellett, hogy az alapvető ServiceFabric csomag, is szükség van legalább egy bemeneti és kimeneti konfigurálva. Például hozzáadhatja a következő csomagokat, hogy EventSource-eseményeket küldjön az Application Insightsnak:
+Megjelenik a különböző csomagok listája, amely a "bemenetek" és a "kimenetek" címkével jelenik meg. A EventFlow segítségével különböző naplózási szolgáltatókat és elemzőket támogat. A EventFlow segítségével üzemeltető szolgáltatásnak tartalmaznia kell a megfelelő csomagokat az alkalmazás naplói forrásáról és céljától függően. Az alapszintű ServiceFabric-csomag mellett legalább egy bemeneti és kimeneti beállításra is szükség van. Például a következő csomagokat adhatja hozzá a EventSource-események küldéséhez a Application Insightsba:
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`a szolgáltatás EventSource osztályából és a szabványos EventSources forrásokból, például a *Microsoft-ServiceFabric-Services-ből* és a *Microsoft-ServiceFabric-Actors-ből*származó adatok rögzítéséhez)
-* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`(a naplókat egy Azure Application Insights-erőforrásba küldjük)
-* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(lehetővé teszi az EventFlow-folyamat inicializálását a Service Fabric szolgáltatáskonfigurációjából, és jelenti a diagnosztikai adatok Service Fabric állapotjelentésekként való küldésével kapcsolatos problémákat)
-
->[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Inputs.EventSource`csomag hoz a szolgáltatási projektet a .NET Framework 4.6 vagy újabb célértékre. A csomag telepítése előtt győződjön meg arról, hogy beállította a megfelelő célkeretrendszert a projekttulajdonságokban.
-
-Az összes csomag telepítése után a következő lépés az EventFlow konfigurálása és engedélyezése a szolgáltatásban.
-
-## <a name="configure-and-enable-log-collection"></a>Naplógyűjtés konfigurálása és engedélyezése
-A naplók küldéséért felelős EventFlow-folyamat egy konfigurációs fájlban tárolt specifikációból jön létre. A `Microsoft.Diagnostics.EventFlow.ServiceFabric` csomag egy kezdő EventFlow `PackageRoot\Config` konfigurációs fájlt `eventFlowConfig.json`telepít a megoldásmappában, melynek neve . Ezt a konfigurációs fájlt módosítani kell az `EventSource` alapértelmezett szolgáltatásosztály ból származó adatok és a konfigurálni kívánt egyéb bemenetek rögzítéséhez, valamint az adatok nak a megfelelő helyre történő elküldéséhez.
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`adatok rögzítése a szolgáltatás EventSource Osztályáról, valamint a szabványos EventSources, például a *Microsoft-ServiceFabric-Services* és a *Microsoft-ServiceFabric-Actors*használatával
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`(a naplókat egy Azure Application Insights-erőforrásba fogjuk elküldeni)
+* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(engedélyezi a EventFlow segítségével folyamat inicializálását Service Fabric szolgáltatás konfigurációjában, és a diagnosztikai adatok Service Fabric állapot-jelentésként való elküldésével kapcsolatos problémákat jelenti.)
 
 >[!NOTE]
->Ha a projektfájl VisualStudio 2017 formátumú, a `eventFlowConfig.json` fájl nem lesz automatikusan hozzáadva. A probléma megoldásához hozza `Config` létre a fájlt `Copy if newer`a mappában, és állítsa a build műveletet a számára. 
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource`a csomaghoz a szolgáltatási projektnek a .NET-keretrendszer 4,6-es vagy újabb verziójának kell megcéloznia. A csomag telepítése előtt győződjön meg arról, hogy a megfelelő cél keretrendszert a projekt tulajdonságainál állítja be.
 
-Itt van egy minta *eventFlowConfig.json* alapján a NuGet csomagok fent említett:
+Az összes csomag telepítése után a következő lépés a EventFlow segítségével konfigurálása és engedélyezése a szolgáltatásban.
+
+## <a name="configure-and-enable-log-collection"></a>Napló-gyűjtemény konfigurálása és engedélyezése
+A naplók elküldéséhez felelős EventFlow segítségével folyamat egy konfigurációs fájlban tárolt specifikáció alapján jön létre. A `Microsoft.Diagnostics.EventFlow.ServiceFabric` csomag telepíti a nevű `PackageRoot\Config` `eventFlowConfig.json`EventFlow segítségével-konfigurációs fájlt a megoldás mappájába. Ezt a konfigurációs fájlt úgy kell módosítani, hogy az adatokat az alapértelmezett szolgáltatási `EventSource` osztályból, valamint minden más konfigurálni kívánt bemenetről rögzítsen, és adatokat küldjön a megfelelő helyre.
+
+>[!NOTE]
+>Ha a projektfájl VisualStudio 2017 formátumú, a `eventFlowConfig.json` fájl nem lesz automatikusan hozzáadva. A probléma megoldásához hozza létre a fájlt `Config` a mappában, és állítsa a Build `Copy if newer`műveletet a következőre:. 
+
+Íme egy minta *eventFlowConfig. JSON* a fent említett NuGet-csomagok alapján:
 ```json
 {
   "inputs": [
@@ -70,7 +70,7 @@ Itt van egy minta *eventFlowConfig.json* alapján a NuGet csomagok fent említet
 }
 ```
 
-A szolgáltatás ServiceEventSource neve a ServiceEventSource osztályra `EventSourceAttribute` alkalmazott Name tulajdonság értéke. Ez mind meg van `ServiceEventSource.cs` adva a fájlban, amely a szolgáltatáskód része. A következő kódrészletben például a ServiceEventSource neve *MyCompany-Application1-Stateless1:*
+A szolgáltatás ServiceEventSource neve a ServiceEventSource osztályra `EventSourceAttribute` alkalmazott Name tulajdonság értéke. Ez mind a `ServiceEventSource.cs` fájlban van megadva, amely a szolgáltatási kód részét képezi. A következő kódrészletben például a ServiceEventSource neve *SajátVállalat-Application1-Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -80,11 +80,11 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Vegye `eventFlowConfig.json` figyelembe, hogy a fájl a szolgáltatáskonfigurációs csomag része. A fájl módosításai szerepelhetnek a szolgáltatás teljes vagy csak konfigurációs frissítéseiközött, a Service Fabric frissítési állapotának ellenőrzése és az automatikus visszaállítás függvényében, ha frissítési hiba van. További információ: [Service Fabric alkalmazás frissítés.](service-fabric-application-upgrade.md)
+Vegye figyelembe `eventFlowConfig.json` , hogy a fájl a szolgáltatás konfigurációs csomagja részét képezi. A fájl módosításai a szolgáltatás teljes vagy csak konfigurációra vonatkozó frissítéseibe belefoglalhatók, a Service Fabric frissítési állapot-ellenőrzésekre és az automatikus visszaállításra is érvényesek, ha frissítési hiba történik. További információ: [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md).
 
-A *szűrők* szakasza a config lehetővé teszi, hogy tovább testre az információt, amely megy keresztül az EventFlow folyamat a kimenetek, amely lehetővé teszi, hogy csepp vagy mellékelése bizonyos információkat, vagy módosítsa az esemény adatok szerkezetét. A szűrésről további információt az [EventFlow-szűrők című témakörben talál.](https://github.com/Azure/diagnostics-eventflow#filters)
+A konfiguráció *szűrők* szakasza lehetővé teszi, hogy tovább testreszabja a EventFlow segítségével folyamaton keresztül haladó adatokat a kimeneteken, így bizonyos adatokat elhúzhatja vagy belefoglalhat, vagy módosíthatja az események szerkezetét. A szűréssel kapcsolatos további információkért lásd: [EventFlow segítségével-szűrők](https://github.com/Azure/diagnostics-eventflow#filters).
 
-Az utolsó lépés az EventFlow-folyamat példányosítása a szolgáltatás `Program.cs` indítási kódjában, amely a fájlban található:
+Az utolsó lépés a EventFlow segítségével folyamatának példánya a szolgáltatás indítási kódjában, a `Program.cs` fájlban található:
 
 ```csharp
 using System;
@@ -129,24 +129,24 @@ namespace Stateless1
 }
 ```
 
-A metódus paramétereként `CreatePipeline` `ServiceFabricDiagnosticsPipelineFactory` átadott név az EventFlow naplógyűjtemény-folyamatot képviselő *állapotentitás* neve. Ez a név akkor használatos, ha az EventFlow észlelési és hiba, és jelenti, hogy a Service Fabric állapoti alrendszeren keresztül.
+A (z) `CreatePipeline` metódusának `ServiceFabricDiagnosticsPipelineFactory` paramétereként átadott név a EventFlow segítségével-napló gyűjtési folyamatát jelképező *Health entitás* neve. Ezt a nevet akkor használja a rendszer, ha a EventFlow segítségével találkozik és hibát észlel, és a Service Fabric állapot-alrendszer használatával jelenti azt.
 
-### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>A Service Fabric-beállítások és alkalmazásparaméterek használata az eventFlowConfig alkalmazásban
+### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>Service Fabric beállítások és alkalmazás-paraméterek használata a eventFlowConfig-ben
 
-Az EventFlow támogatja a Service Fabric-beállítások és alkalmazásparaméterek használatát az EventFlow-beállítások konfigurálásához. A Service Fabric beállítási paramétereire hivatkozhat ezzel a speciális szintaxissal az értékekhez:
+A EventFlow segítségével támogatja a Service Fabric beállítások és az alkalmazás paramétereinek használatát a EventFlow segítségével beállításainak konfigurálásához. A következő speciális szintaxissal tekintheti meg Service Fabric beállítások paramétereit:
 
 ```json
 servicefabric:/<section-name>/<setting-name>
 ```
 
-`<section-name>`A Service Fabric konfigurációs szakaszának `<setting-name>` neve, és az EventFlow-beállítás konfigurálásához használt értéket biztosító konfigurációs beállítás. Ennek módjáról a [Service Fabric-beállítások és alkalmazásparaméterek támogatása](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters)lehetőséget.
+`<section-name>`a Service Fabric konfigurációs szakasz neve, és `<setting-name>` az a konfigurációs beállítás, amely megadja a EventFlow segítségével-beállítás konfigurálásához használandó értéket. Ennek módjáról bővebben a [Service Fabric beállítások és az alkalmazás paramétereinek támogatása](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters)című témakörben olvashat.
 
 ## <a name="verification"></a>Ellenőrzés
 
-Indítsa el a szolgáltatást, és figyelje meg a Debug kimeneti ablakot a Visual Studióban. A szolgáltatás indítása után meg kell kezdenie a bizonyíték, hogy a szolgáltatás rekordokat küld a beállított kimenetre. Nyissa meg az eseményelemzési és vizualizációs platformot, és ellenőrizze, hogy a naplók megjelentése (eltarthat néhány percig).
+Indítsa el a szolgáltatást, és figyelje meg a hibakeresési kimenet ablakot a Visual Studióban. A szolgáltatás elindítása után meg kell jelennie arról, hogy a szolgáltatás a konfigurált kimenetre küld rekordokat. Navigáljon az Event Analysis and vizualizációs platformra, és ellenőrizze, hogy a naplók megkezdték-e a megjelenítést (eltarthat néhány percig).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Eseményelemzés és vizualizáció az Application Insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Eseményelemzés és vizualizáció az Azure Monitor-naplókkal](service-fabric-diagnostics-event-analysis-oms.md)
-* [EventFlow dokumentáció](https://github.com/Azure/diagnostics-eventflow)
+* [Események elemzése és vizualizáció Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Események elemzése és vizualizáció Azure Monitor naplókkal](service-fabric-diagnostics-event-analysis-oms.md)
+* [A EventFlow segítségével dokumentációja](https://github.com/Azure/diagnostics-eventflow)

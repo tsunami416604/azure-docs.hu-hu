@@ -1,77 +1,77 @@
 ---
-title: Párhuzamos elágazások létrehozása vagy egyesítése a munkafolyamatokban végrehajtott műveletekhez
-description: Megtudhatja, hogyan hozhat létre és egyesíthet párhuzamos futó ágakat független munkafolyamat-műveletekhez az Azure Logic Apps alkalmazásban
+title: Párhuzamos ágak létrehozása vagy csatlakoztatása a munkafolyamatokban lévő műveletekhez
+description: Megtudhatja, hogyan hozhat létre vagy egyesíthet párhuzamosan futó ágakat a független munkafolyamat-műveletekhez Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75453438"
 ---
-# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Párhuzamos ágak létrehozása vagy egyesítése munkafolyamat-műveletekhez az Azure Logic Apps alkalmazásban
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Párhuzamos ágak létrehozása vagy csatlakoztatása a munkafolyamat-műveletekhez Azure Logic Apps
 
-Alapértelmezés szerint a logikai alkalmazás munkafolyamataiban végrehajtott műveletek egymás után futnak. Ha egyszerre szeretne független műveleteket végrehajtani, [párhuzamos ágakat](#parallel-branches)hozhat létre, majd ezeket az [ágakat](#join-branches) később csatlakozhat a folyamathoz. 
+Alapértelmezés szerint a logikai alkalmazás munkafolyamatainak műveletei egymás után futnak. Ha egyazon időben szeretne független műveleteket végezni, [párhuzamos ágakat](#parallel-branches)is létrehozhat, majd később is [csatlakozhat](#join-branches) a folyamathoz. 
 
 > [!TIP] 
-> Ha olyan eseményindítóval rendelkezik, amely tömböt fogad, és munkafolyamatot szeretne futtatni minden tömbelemhez, akkor a [ **SplitOn** eseményindító tulajdonsággal](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *felbonthatja* a tömböt.
+> Ha olyan triggerrel rendelkezik, amely egy tömböt kap, és minden tömb elemhez szeretne futtatni egy munkafolyamatot, akkor a tömböt a [ **SplitOn** trigger tulajdonsággal](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *végezheti el.*
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="parallel-branches"></a>
 
-## <a name="add-parallel-branch"></a>Párhuzamos elágazás hozzáadása
+## <a name="add-parallel-branch"></a>Párhuzamos ág hozzáadása
 
-Ha egyszerre szeretne független lépéseket futtatni, párhuzamos ágakat adhat hozzá egy meglévő lépés mellé. 
+A független lépések egyidejű futtatásához hozzáadhat párhuzamos ágakat egy meglévő lépés mellett. 
 
-![Lépések párhuzamos futtatása](media/logic-apps-control-flow-branches/parallel.png)
+![A lépések párhuzamos futtatása](media/logic-apps-control-flow-branches/parallel.png)
 
-A logikai alkalmazás megvárja, amíg az összes ág befejeződik, mielőtt folytatná a munkafolyamatot. A párhuzamos elágazások csak akkor futnak, ha tulajdonságértékeik `runAfter` megegyeznek a befejezett szülőlépés állapotával. Mindkettő, `branchAction1` és `branchAction2` csak akkor fut, `parentAction` ha a `Succeeded` teljes állapot.
+A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az összes ág be nem fejeződik. A párhuzamos ágak csak akkor futnak `runAfter` , ha a tulajdonságok értéke megegyezik a befejezett fölérendelt lépés állapotával. Például mindkettő `branchAction1` és `branchAction2` csak akkor van beállítva, ha a `parentAction` Befejezés `Succeeded` állapota állapotú.
 
 > [!NOTE]
-> Mielőtt elkezdené, a logikai alkalmazás már rendelkezik egy lépéssel, ahol párhuzamos ágakat adhat hozzá.
+> A művelet elkezdése előtt a logikai alkalmazásnak már rendelkeznie kell egy lépéssel, ahol párhuzamos ágakat adhat hozzá.
 
-1. Az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a>nyissa meg a logikai alkalmazást a Logic App Designerben.
+1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Vigye az egérmutatót a párhuzamos ágak hozzáadására lévő lépés feletti nyíl fölé. Válassza ki a**+** megjelenő **pluszjelet** ( ), majd válassza **a Párhuzamos ág hozzáadása**lehetőséget. 
+1. Vigye az egérmutatót a lépés fölötti nyíl fölé, ahol párhuzamos ágakat kíván hozzáadni. Válassza ki a megjelenő **pluszjelet** (**+**), majd válassza a **párhuzamos ág hozzáadása**lehetőséget. 
 
-   ![Párhuzamos elágazás hozzáadása](media/logic-apps-control-flow-branches/add-parallel-branch.png)
+   ![Párhuzamos ág hozzáadása](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
-1. A keresőmezőben keresse meg és jelölje ki a kívánt műveletet.
+1. A keresőmezőbe keresse meg és válassza ki a kívánt műveletet.
 
-   ![A kívánt művelet megkeresése és kijelölése](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Keresse meg és válassza ki a kívánt műveletet](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    A kiválasztott művelet most megjelenik a párhuzamos ágban, például:
 
-   ![A kívánt művelet megkeresése és kijelölése](media/logic-apps-control-flow-branches/added-parallel-branch.png)
+   ![Keresse meg és válassza ki a kívánt műveletet](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Most minden párhuzamos ágban adja hozzá a kívánt lépéseket. Ha egy másik műveletet szeretne hozzáadni egy ághoz, vigye a mutatót a művelet alá, ahol szekvenciális műveletet szeretne hozzáadni. Válassza **plus** ki**+** a megjelenő plusz ( ) jelet, majd válassza **a Művelet hozzáadása**lehetőséget.
+1. Most minden párhuzamos ág esetében adja hozzá a kívánt lépéseket. Egy másik művelet egy ágra való hozzáadásához vigye a mutatót azon művelet alá, amelyhez egy szekvenciális műveletet szeretne hozzáadni. Válassza a megjelenő **pluszjelet** (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
 
-   ![Szekvenciális művelet hozzáadása párhuzamos elágazáshoz](media/logic-apps-control-flow-branches/add-sequential-action.png)
+   ![Szekvenciális művelet hozzáadása párhuzamos ág](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
-1. A keresőmezőben keresse meg és jelölje ki a kívánt műveletet.
+1. A keresőmezőbe keresse meg és válassza ki a kívánt műveletet.
 
-   ![Szekvenciális művelet keresése és kijelölése](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Szekvenciális művelet keresése és kiválasztása](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
-   A kiválasztott művelet most antól az aktuális ágon belül jelenik meg, például:
+   A kiválasztott művelet most megjelenik az aktuális ág között, például:
 
-   ![Szekvenciális művelet keresése és kijelölése](media/logic-apps-control-flow-branches/added-sequential-action.png)
+   ![Szekvenciális művelet keresése és kiválasztása](media/logic-apps-control-flow-branches/added-sequential-action.png)
 
-Az ágak egyesítéséhez [csatlakozzon a párhuzamos ágakhoz.](#join-branches) 
+Ha össze szeretné vonni az ágakat, [csatlakoztassa a párhuzamos ágakat](#join-branches). 
 
 <a name="parallel-json"></a>
 
 ## <a name="parallel-branch-definition-json"></a>Párhuzamos ág definíciója (JSON)
 
-Ha kódnézetben dolgozik, a párhuzamos struktúrát a logikai alkalmazás JSON-definíciójában határozhatja meg, például:
+Ha kód nézetben dolgozik, megadhatja a párhuzamos struktúrát a logikai alkalmazás JSON-definíciójában, például:
 
 ``` json
 {
@@ -109,31 +109,31 @@ Ha kódnézetben dolgozik, a párhuzamos struktúrát a logikai alkalmazás JSON
 
 <a name="join-branches"></a>
 
-## <a name="join-parallel-branches"></a>Párhuzamos ágak összefűzése
+## <a name="join-parallel-branches"></a>Párhuzamos ágak csatlakoztatása
 
-A párhuzamos ágak egyesítéséhez csak adjon hozzá egy lépést az alján az összes ág alatt. Ez a lépés akkor fut, amikor az összes párhuzamos ág futása befejeződik.
+A párhuzamos ágak egyesítéséhez egyszerűen vegyen fel egy lépést az összes ág alján. Ez a lépés akkor fut le, ha az összes párhuzamos ág futtatása befejeződött.
 
-![Párhuzamos ágak összefűzése](media/logic-apps-control-flow-branches/join.png)
+![Párhuzamos ágak csatlakoztatása](media/logic-apps-control-flow-branches/join.png)
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg és nyissa meg a logikai alkalmazást a Logic App Designerben. 
+1. A [Azure Portal](https://portal.azure.com)a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást. 
 
-1. A csatlakozni kívánt párhuzamos ágak alatt válassza az **Új lépés lehetőséget.** 
+1. Válassza az **új lépés**lehetőséget a csatlakoztatni kívánt párhuzamos ágak alatt. 
 
-   ![Lépés hozzáadása az illesztéshez](media/logic-apps-control-flow-branches/add-join-step.png)
+   ![Lépés hozzáadása a csatlakozáshoz](media/logic-apps-control-flow-branches/add-join-step.png)
 
-1. A keresőmezőben keresse meg és jelölje ki a kívánt műveletet az ágakat egyesítő lépésként.
+1. A keresőmezőbe keresse meg és válassza ki az ágakat összekapcsoló lépésként használni kívánt műveletet.
 
-   ![Párhuzamos ágakat egyesítő művelet megkeresése és kijelölése](media/logic-apps-control-flow-branches/join-steps.png)
+   ![A párhuzamos ágakat összekapcsoló művelet megkeresése és kiválasztása](media/logic-apps-control-flow-branches/join-steps.png)
 
-   A párhuzamos ágak most egyesülnek.
+   A párhuzamos ágak egyesítése már megtörtént.
 
-   ![Egyesített ágak](media/logic-apps-control-flow-branches/joined-branches.png)
+   ![Csatlakoztatott ágak](media/logic-apps-control-flow-branches/joined-branches.png)
 
 <a name="join-json"></a>
 
-## <a name="join-definition-json"></a>Csatlakozás definíciója (JSON)
+## <a name="join-definition-json"></a>Join Definition (JSON)
 
-Ha kódnézetben dolgozik, a logikai alkalmazás JSON-definíciójában definiálhatja az illesztési struktúrát, például:
+Ha kód nézetben dolgozik, megadhatja az illesztési struktúrát a logikai alkalmazás JSON-definíciójában, például:
 
 ``` json
 {
@@ -184,11 +184,11 @@ Ha kódnézetben dolgozik, a logikai alkalmazás JSON-definíciójában definiá
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciók és javaslatok elküldéséhez vagy az azokra való szavazáshoz látogasson el az [Azure Logic Apps felhasználói visszajelzési webhelyére.](https://aka.ms/logicapps-wish)
+* A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Feltételek (feltételes utasítások) alapján lépések futtatása](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Lépések futtatása különböző értékek alapján (kapcsolóutasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Lépések futtatása és ismétlése (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Lépések futtatása csoportosított műveletállapot (hatókörök) alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Futtatási és ismétlési lépések (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Lépések futtatása csoportosított műveleti állapot alapján (hatókörök)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

@@ -1,48 +1,48 @@
 ---
-title: Az Azure Service Fabric alkalmazásmodellje
-description: Alkalmazások és szolgáltatások modellezése és leírása az Azure Service Fabric ben alkalmazás- és szolgáltatásjegyzékfájlok használatával.
+title: Azure Service Fabric-alkalmazás modellje
+description: Alkalmazások és szolgáltatások modellezése és leírása az Azure Service Fabric alkalmazás-és szolgáltatás-jegyzékfájlok használatával.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551879"
 ---
-# <a name="model-an-application-in-service-fabric"></a>Alkalmazás modellezése a Service Fabricben
-Ez a cikk áttekintést nyújt az Azure Service Fabric alkalmazásmodellről, valamint arról, hogyan definiálhat egy alkalmazást és egy szolgáltatást a jegyzékfájlokon keresztül.
+# <a name="model-an-application-in-service-fabric"></a>Alkalmazás modellezése Service Fabric
+Ez a cikk áttekintést nyújt az Azure Service Fabric alkalmazás modelljéről, valamint arról, hogyan határozhat meg egy alkalmazást és szolgáltatást a manifest Files használatával.
 
-## <a name="understand-the-application-model"></a>Az alkalmazásmodell ismertetése
-Az alkalmazás egy bizonyos funkciót vagy függvényeket ellátó rendszerelem-szolgáltatások gyűjteménye. A szolgáltatás teljes és önálló funkciót hajt végre, és más szolgáltatásoktól függetlenül indíthat és futtatható.  A szolgáltatás kódból, konfigurációból és adatokból áll. Minden szolgáltatás esetében a kód a végrehajtható bináris fájlokból áll, a konfiguráció futásidőben betölthető szolgáltatásbeállításokból áll, és az adatok tetszőleges statikus adatokból állnak, amelyeket a szolgáltatás használ fel. A hierarchikus alkalmazásmodell minden egyes összetevője egymástól függetlenül verziószámozható és frissíthető.
+## <a name="understand-the-application-model"></a>Az alkalmazás modelljének megismerése
+Az alkalmazások olyan összetevő-szolgáltatások gyűjteményei, amelyek egy adott függvényt vagy függvényt hajtanak végre. A szolgáltatás teljes és önálló funkciót hajt végre, és a többi szolgáltatástól függetlenül is elindítható és futtatható.  A szolgáltatás kód, konfiguráció és adatmennyiségből áll. Minden egyes szolgáltatás esetében a kód a végrehajtható fájlokból tevődik össze, a konfiguráció pedig olyan szolgáltatás-beállításokból áll, amelyek futáskor tölthetők be, és az adatmennyiség a szolgáltatás által felhasználható tetszőleges statikus információból áll. A hierarchikus alkalmazás modelljének minden összetevője egymástól függetlenül telepíthető és frissíthető.
 
-![A Service Fabric alkalmazásmodell][appmodel-diagram]
+![A Service Fabric alkalmazás modellje][appmodel-diagram]
 
-Az alkalmazástípus egy alkalmazás kategorizálása, és szolgáltatástípusok ból áll. A szolgáltatástípus egy szolgáltatás kategorizálása. A kategorizálás különböző beállításokkal és konfigurációkkal rendelkezhet, de az alapvető funkciók változatlanok maradnak. A szolgáltatás példányai az azonos szolgáltatástípus különböző szolgáltatáskonfigurációs változatai.  
+Az alkalmazás típusa egy alkalmazás kategorizálása, és egy csomag típusú szolgáltatásokból áll. A szolgáltatás típusa egy szolgáltatás kategorizálása. A kategorizálás különböző beállításokkal és konfigurációkkal rendelkezhet, de az alapvető funkciók változatlanok maradnak. A szolgáltatás példányai ugyanazon szolgáltatástípus különböző szolgáltatás-konfigurációs variációi.  
 
-Az alkalmazások és szolgáltatások osztályait (vagy "típusait") XML-fájlok (alkalmazásjegyzékek és szolgáltatásjegyzékek) ismertetik.  A jegyzékek alkalmazásokat és szolgáltatásokat írnak le, és azok a sablonok, amelyekhez az alkalmazások a fürt lemezképtárolójából példányosodhatnak.  A jegyzékek részletesen szerepelnek az [alkalmazás és a szolgáltatásjegyzékekben.](service-fabric-application-and-service-manifests.md) A ServiceManifest.xml és az ApplicationManifest.xml fájl sémadefiníciója a Service Fabric SDK-val, a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricModel.xsd*eszközökkel van telepítve. Az XML-sémát a [ServiceFabricServiceModel.xsd séma dokumentációja dokumentálja.](service-fabric-service-model-schema.md)
+Az alkalmazások és szolgáltatások osztályait (vagy "típusait") az XML-fájlok (az alkalmazás-jegyzékfájlok és a szolgáltatási jegyzékfájlok) írják le.  A jegyzékfájlok leírják az alkalmazásokat és a szolgáltatásokat, és azokat a sablonokat, amelyekkel a fürt rendszerkép-tárolójából lehet létrehozni alkalmazásokat.  A jegyzékfájlok részletesen szerepelnek az [alkalmazás-és szolgáltatás-jegyzékfájlokban](service-fabric-application-and-service-manifests.md). A ServiceManifest. XML és a ApplicationManifest. xml fájl sémájának definíciója a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*Service Fabric SDK-val és eszközökkel együtt települ. Az XML-sémát a [ServiceFabricServiceModel. XSD séma dokumentációjában](service-fabric-service-model-schema.md)dokumentálja.
 
-A különböző alkalmazáspéldányok kódja külön folyamatokként fut, még akkor is, ha ugyanaz a Service Fabric-csomópont üzemelteti. Továbbá az egyes alkalmazáspéldányok életciklusa egymástól függetlenül kezelhető (például frissíthető). Az alábbi ábra bemutatja, hogy az alkalmazástípusok hogyan állnak szolgáltatástípusokból, amelyek viszont kódból, konfigurációból és adatcsomagokból állnak. A diagram egyszerűsítése érdekében csak a kód/konfigurációs/adatcsomagok `ServiceType4` jelennek meg, bár minden szolgáltatástípus tartalmazna néhány vagy az összes ilyen csomagtípust.
+A különböző alkalmazás-példányok kódja külön folyamatként fut, még akkor is, ha ugyanazon a Service Fabric csomóponton futtatja őket. Emellett az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető (például frissített). A következő ábra azt mutatja be, hogyan állnak az alkalmazások típusai a különböző típusú szolgáltatásokból, amelyek pedig kód-, konfigurációs és adatcsomagokból állnak. A diagram leegyszerűsítése érdekében csak a kód/konfiguráció/adatcsomagok `ServiceType4` jelennek meg, de mindegyik szolgáltatástípus tartalmaz néhányat vagy mindegyiket.
 
-![A Service Fabric alkalmazástípusai és szolgáltatástípusai][cluster-imagestore-apptypes]
+![Service Fabric az alkalmazások típusai és a szolgáltatások típusai][cluster-imagestore-apptypes]
 
-A fürtben egy vagy több szolgáltatástípus egy vagy több példánya is lehet aktív. Például az állapotalapú szolgáltatáspéldányok vagy replikák nagy megbízhatóságot érnek el a fürt különböző csomópontjain található replikák közötti állapot replikálásával. A replikáció lényegében redundanciát biztosít a szolgáltatás számára, még akkor is, ha egy fürt egyik csomópontja meghibásodik. A [particionált szolgáltatás](service-fabric-concepts-partitioning.md) tovább osztja az állapotát (és az adott állapothoz való hozzáférési mintákat) a fürt csomópontjai között.
+A fürtben aktív szolgáltatástípus egy vagy több példánya is lehet. Például az állapot-nyilvántartó szolgáltatás példányai vagy replikái a fürt különböző csomópontjain található replikák replikálásával nagy megbízhatóságot érnek el. A replikáció lényegében redundanciát biztosít a szolgáltatás számára akkor is, ha a fürt egyik csomópontja meghibásodik. A [particionált szolgáltatás](service-fabric-concepts-partitioning.md) tovább osztja az állapotát (és az adott állapothoz való hozzáférési mintákat) a fürt csomópontjai között.
 
-Az alábbi ábra az alkalmazások és a szolgáltatáspéldányok, partíciók és replikák közötti kapcsolatot mutatja be.
+Az alábbi ábrán az alkalmazások és a szolgáltatási példányok, a partíciók és a replikák közötti kapcsolat látható.
 
 ![Partíciók és replikák egy szolgáltatáson belül][cluster-application-instances]
 
 > [!TIP]
-> A fürtben lévő alkalmazások elrendezését a Service Fabric Explorer&lt;eszközzel&gt;tekintheti meg, amely http:// a fürtcíme :19080/Explorer címen érhető el. További információt a [fürt megjelenítése a Service Fabric Intézővel](service-fabric-visualizing-your-cluster.md)című témakörben talál.
+> A fürtben található alkalmazások elrendezését a http://&lt;yourclusteraddress&gt;: 19080/Explorerben elérhető Service Fabric Explorer eszköz használatával tekintheti meg. További információ: [a fürt megjelenítése a Service Fabric Explorersal](service-fabric-visualizing-your-cluster.md).
 > 
 > 
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ az [alkalmazások méretezhetőségéről.](service-fabric-concepts-scalability.md)
-- További információ a szolgáltatás [állapotáról,](service-fabric-concepts-state.md) [a particionálásról](service-fabric-concepts-partitioning.md)és [a rendelkezésre állásról.](service-fabric-availability-services.md)
-- További információ arról, hogyan vannak definiálva az alkalmazások és szolgáltatások az [Alkalmazás- és szolgáltatásjegyzékekben.](service-fabric-application-and-service-manifests.md)
-- [Az alkalmazásüzemeltetési modellek](service-fabric-hosting-model.md) egy üzembe helyezett szolgáltatás és a szolgáltatásgazdafolyamat replikái (vagy példányai) közötti kapcsolatot írják le.
+- Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
+- A szolgáltatás [állapotának](service-fabric-concepts-state.md), [particionálásának](service-fabric-concepts-partitioning.md)és [rendelkezésre állásának](service-fabric-availability-services.md)megismerése.
+- További információ arról, hogyan vannak meghatározva az alkalmazások és szolgáltatások az [alkalmazás-és szolgáltatás-jegyzékfájlokban](service-fabric-application-and-service-manifests.md).
+- Az [alkalmazás-üzemeltetési modellek](service-fabric-hosting-model.md) a központilag telepített szolgáltatások és a szolgáltatás-gazdagépek replikái (vagy példányai) közötti kapcsolatot írják le.
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png

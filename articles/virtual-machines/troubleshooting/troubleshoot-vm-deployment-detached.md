@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek leválasztott lemezek miatti telepítésének – problémamegoldás | Microsoft dokumentumok
-description: A virtuális gépek leválasztott lemezek miatti telepítésének – problémamegoldás
+title: A virtuális gépek központi telepítésének hibája leválasztott lemezek miatt | Microsoft Docs
+description: A virtuális gépek központi telepítésének hibája leválasztott lemezek miatt
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75486819"
 ---
-# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>A virtuális gépek leválasztott lemezek miatti telepítésének – problémamegoldás
+# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>A virtuális gépek központi telepítésének hibája leválasztott lemezek miatt
 
 ## <a name="symptom"></a>Hibajelenség
 
-Amikor olyan virtuális gépet próbál frissíteni, amelynek korábbi adatlemez-leválasztása sikertelen volt, előfordulhat, hogy ez a hibakód találkozik.
+Ha olyan virtuális gépet próbál frissíteni, amelynek az előző adatlemeze leválasztása sikertelen volt, előfordulhat, hogy ez a hibakód jelenik meg.
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -32,11 +32,11 @@ Message=\"Cannot attach data disk '{disk ID}' to virtual machine '{vmName}' beca
 
 ## <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha megpróbál újra csatlakoztatni egy adatlemezt, amelynek utolsó leválasztási művelete sikertelen volt. A legjobb módja annak, hogy ki ebben az állapotban, hogy leválassza a hibás lemezt.
+Ez a hiba akkor fordul elő, ha olyan adatlemezt próbál újra csatolni, amelynek utolsó leválasztási művelete sikertelen volt. Ennek az állapotnak a legjobb módja a hibás lemez leválasztása.
 
-## <a name="solution-1-powershell"></a>1. megoldás: Powershell
+## <a name="solution-1-powershell"></a>1. megoldás: PowerShell
 
-### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>1. lépés: A virtuális gép és a lemez részleteinek beszerezni
+### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>1. lépés: a virtuális gép és a lemez adatainak beolvasása
 
 ```azurepowershell-interactive
 PS D:> $vm = Get-AzureRmVM -ResourceGroupName "Example Resource Group" -Name "ERGVM999999" 
@@ -51,23 +51,23 @@ diskSizeGB   : 8
 toBeDetached : False 
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2. lépés: Állítsa a hibás lemezek jelzőjét "true" értékre.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2. lépés: állítsa be a hibás lemezek jelzőjét "true" értékre.
 
-A meghibásodott lemez tömbindexének bekéselése, és a hibás lemez **BeDetached** jelzője (amelynél **attachDiskWhileBeingDetached** hiba történt) "true" értékre állítható. Ez a beállítás azt jelenti, hogy le kell választani a lemezt a virtuális gépről. A hibás lemeznév megtalálható a **errorMessage**.
+Szerezze be a hibás lemez tömb indexét, és állítsa be a hibás lemez **toBeDetached** jelzőjét (amely **AttachDiskWhileBeingDetached** hiba történt) az "igaz" értékre. Ez a beállítás azt jelenti, hogy leválasztja a lemezt a virtuális gépről. A hibás lemez neve megtalálható a **errorMessage**.
 
-> ! Megjegyzés: A hívások lekéréséhez és lebonyolításához megadott API-verziónak 2019-03-01-es vagy nagyobb verziónak kell lennie.
+> ! Megjegyzés: a Get és Put hívásokhoz megadott API-verziónak 2019-03-01 vagy annál nagyobbnak kell lennie.
 
 ```azurepowershell-interactive
 PS D:> $vm.StorageProfile.DataDisks[0].ToBeDetached = $true 
 ```
 
-Másik lehetőségként leis választhatja ezt a lemezt az alábbi paranccsal, ami hasznos lehet az API-verziókat használó felhasználók számára 2019.
+Másik lehetőségként leválaszthatja ezt a lemezt az alábbi parancs használatával is, amely az API-verziókat használó felhasználók számára hasznos lehet a 2019. március 01. előtt.
 
 ```azurepowershell-interactive
 PS D:> Remove-AzureRmVMDataDisk -VM $vm -Name "<disk ID>" 
 ```
 
-### <a name="step-3-update-the-virtual-machine"></a>3. lépés: A virtuális gép frissítése
+### <a name="step-3-update-the-virtual-machine"></a>3. lépés: a virtuális gép frissítése
 
 ```azurepowershell-interactive
 PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm 
@@ -75,17 +75,17 @@ PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm
 
 ## <a name="solution-2-rest"></a>2. megoldás: REST
 
-### <a name="step-1-get-the-virtual-machine-payload"></a>1. lépés: A virtuális gép hasznos terhelésének betöltése.
+### <a name="step-1-get-the-virtual-machine-payload"></a>1. lépés: szerezze be a virtuális gép hasznos adatait.
 
 ```azurepowershell-interactive
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?$expand=instanceView&api-version=2019-03-01
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2. lépés: Állítsa a hibás lemezek jelzőjét "true" értékre.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2. lépés: állítsa be a hibás lemezek jelzőjét "true" értékre.
 
-Állítsa be a **BeDetached** jelzőt a hibás lemez true értékre az 1. Megjegyzés: A hívások fogadásához és kezdeményezéséhez megadott `2019-03-01` API-verziónak vagy annál nagyobbnak kell lennie.
+Az 1. lépésben visszaadott hasznos adatok esetében állítsa a **toBeDetached** jelzőt a hibás lemezre. Megjegyzés: a Get és Put hívásokhoz megadott API-verziónak vagy annál `2019-03-01` nagyobbnak kell lennie.
 
-**Mintakérelem törzse**
+**Mintául szolgáló kérelem törzse**
 
 ```azurepowershell-interactive
 {
@@ -143,17 +143,17 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-Emellett eltávolíthatja a hibás adatlemezt a fenti hasznos adatból is, ami hasznos lehet az API-verziókat használó felhasználók számára 2019.
+Másik lehetőségként eltávolíthatja a hibás adatlemezt a fenti hasznos adatokból, ami hasznos lehet az API-verziókat használó felhasználók számára a 2019. március 01. előtt.
 
-### <a name="step-3-update-the-virtual-machine"></a>3. lépés: A virtuális gép frissítése
+### <a name="step-3-update-the-virtual-machine"></a>3. lépés: a virtuális gép frissítése
 
-A 2.
+Használja a kérelem törzsének a 2. lépésben megadott hasznos adatát, és frissítse a virtuális gépet a következőképpen:
 
 ```azurepowershell-interactive
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2019-03-01
 ```
 
-**Mintaválasz:**
+**Példa a válaszra:**
 
 ```azurepowershell-interactive
 {
@@ -232,6 +232,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha problémái vannak a virtuális géphez való csatlakozással, olvassa [el az RDP-kapcsolatok hibaelhárítása azure-beli virtuális géphez című témakört.](troubleshoot-rdp-connection.md)
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](troubleshoot-rdp-connection.md)című témakört.
 
-A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákról a [Windows virtuális gépeken az alkalmazáscsatlakozási problémák elhárítása című](troubleshoot-app-connection.md)témakörben nyújt fel problémát.
+A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Windows rendszerű virtuális gépen](troubleshoot-app-connection.md).

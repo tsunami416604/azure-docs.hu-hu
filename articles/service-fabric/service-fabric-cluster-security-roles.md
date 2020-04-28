@@ -1,98 +1,98 @@
 ---
-title: 'A Service Fabric fürtjének biztonsága: ügyfélszerepkörök'
-description: Ez a cikk ismerteti a két ügyfélszerepkörök és a szerepkörök nek biztosított engedélyeket.
+title: 'Service Fabric a fürt biztonsága: ügyfelek szerepkörei'
+description: Ez a cikk a két ügyfél-szerepkört és a szerepkörökhöz megadott engedélyeket ismerteti.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451900"
 ---
-# <a name="role-based-access-control-for-service-fabric-clients"></a>Szerepköralapú hozzáférés-vezérlés Service Fabric-ügyfelek számára
-Az Azure Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz kapcsolódó ügyfelek számára: a rendszergazdát és a felhasználót. A hozzáférés-vezérlés lehetővé teszi a fürtrendszergazdának, hogy korlátozza a hozzáférést bizonyos fürtműveletekhez a felhasználók különböző csoportjai számára, így a fürt biztonságosabbá téve azt.  
+# <a name="role-based-access-control-for-service-fabric-clients"></a>Szerepköralapú hozzáférés-vezérlés Service Fabric ügyfelek számára
+Az Azure Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz csatlakozó ügyfelekhez: rendszergazda és felhasználó. A hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája a különböző felhasználói csoportok esetében korlátozza a hozzáférést bizonyos fürt műveleteihez, így a fürt biztonságosabbá válik.  
 
-**A rendszergazdák** teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az olvasási/írási képességeket is). Alapértelmezés szerint a **felhasználók** csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez (például a lekérdezési képességekhez), és képesek az alkalmazások és szolgáltatások feloldására.
+A **rendszergazdák** teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az írási/olvasási képességeket is). Alapértelmezés szerint a **felhasználók** csak olvasási hozzáféréssel rendelkeznek a felügyeleti képességekhez (például a lekérdezési képességekhez), valamint az alkalmazások és a szolgáltatások megoldásához.
 
-A fürt létrehozásakor a két ügyfélszerepkört (rendszergazda és ügyfél) külön tanúsítványok at adhat meg mindegyikhez. A biztonságos Service Fabric-fürt beállításával kapcsolatos részletekért tekintse meg a [Service Fabric fürtbiztonságát.](service-fabric-cluster-security.md)
+A fürt létrehozásakor a két ügyfél-szerepkört (rendszergazdát és ügyfelet) kell megadnia, ha külön tanúsítványokat biztosít mindegyikhez. A biztonságos Service Fabric-fürt beállításával kapcsolatos részletekért tekintse meg a [Service Fabric a fürt biztonsága](service-fabric-cluster-security.md) című témakört.
 
 ## <a name="default-access-control-settings"></a>Alapértelmezett hozzáférés-vezérlési beállítások
-A rendszergazdai hozzáférés-vezérlési típus teljes hozzáféréssel rendelkezik az összes FabricClient API-hoz. Bármilyen olvasási és írási műveletet elvégezhet a Service Fabric-fürtön, beleértve a következő műveleteket is:
+A rendszergazdai hozzáférés-vezérlési típus teljes hozzáféréssel rendelkezik az összes FabricClient API-hoz. A Service Fabric-fürtön bármilyen olvasást és írást végrehajthat, beleértve a következő műveleteket is:
 
-### <a name="application-and-service-operations"></a>Alkalmazási és szolgáltatási műveletek
+### <a name="application-and-service-operations"></a>Alkalmazás-és szolgáltatási műveletek
 * **CreateService**: szolgáltatás létrehozása                             
 * **CreateServiceFromTemplate**: szolgáltatás létrehozása sablonból                             
-* **UpdateService**: szolgáltatásfrissítések                             
-* **DeleteService**: szolgáltatás törlése                             
-* **ProvisionApplicationType**: alkalmazástípus-kiépítés                             
-* **CreateApplication**: alkalmazás létrehozása                               
-* **DeleteApplication**: alkalmazás törlése                             
-* **UpgradeApplication**: alkalmazásfrissítések indítása vagy megszakítása                             
-* **UnprovisionApplicationType**: alkalmazástípus kiépítés nélkül                             
-* **MoveNextUpgradeDomain**: az alkalmazásfrissítések folytatása explicit frissítési tartománnyal                             
-* **ReportUpgradeHealth**: az alkalmazásfrissítések folytatása az aktuális frissítési folyamattal                             
-* **ReportHealth**: az egészség jelentése                             
-* **PredeployPackageToNode**: telepítés előtti API                            
-* **CodePackageControl**: kódcsomagok újraindítása                             
-* **RecoverPartition**: partíció helyreállítása                             
+* **Updateservice művelet**: szolgáltatások frissítései                             
+* **DeleteService művelet**: szolgáltatás törlése                             
+* **ProvisionApplicationType**: alkalmazás típusának kiépítés                             
+* **Létrehozás**: alkalmazás létrehozása                               
+* **Alkalmazástörlés**: alkalmazás törlése                             
+* **UpgradeApplication**: az alkalmazások frissítéseinek elindítása vagy megszakítása                             
+* **UnprovisionApplicationType**: az alkalmazás típusa nem kiépítés                             
+* **MoveNextUpgradeDomain**: az alkalmazások frissítésének folytatása explicit frissítési tartománnyal                             
+* **ReportUpgradeHealth**: az alkalmazások frissítésének folytatása a jelenlegi frissítési folyamattal                             
+* **ReportHealth**: jelentéskészítés állapota                             
+* **PredeployPackageToNode**: előtelepítési API                            
+* **CodePackageControl**: kódok újraindítása                             
+* **Recoverpartition művelet fejeződött**: partíció helyreállítása                             
 * **RecoverPartitions**: partíciók helyreállítása                             
-* **RecoverServicePartitions**: szolgáltatáspartíciók helyreállítása                             
-* **RecoverSystemPartitions**: rendszerszolgáltatás-partíciók helyreállítása                             
+* **Recoverservicepartitions művelet fejeződött**: a szolgáltatási partíciók helyreállítása                             
+* **Recoversystempartitions művelet**: rendszerszolgáltatási partíciók helyreállítása                             
 
 ### <a name="cluster-operations"></a>Fürtműveletek
-* **ProvisionFabric**: MSI és/vagy fürtjegyzék-kiépítés                             
-* **UpgradeFabric**: fürtfrissítések indítása                             
-* **UnprovisionFabric**: MSI és/vagy fürtjegyzék kiépítés                         
-* **MoveNextFabricUpgradeDomain**: fürtfrissítések folytatása explicit frissítési tartománnyal                             
-* **ReportFabricUpgradeHealth**: fürtfrissítések folytatása az aktuális frissítési folyamattal                             
-* **StartInfrastructureTask**: infrastrukturális feladatok indítása                             
+* **ProvisionFabric**: msi és/vagy a fürt jegyzékfájljának kiépítés                             
+* **UpgradeFabric**: a fürt frissítéseinek indítása                             
+* **UnprovisionFabric**: az MSI és/vagy a fürt jegyzékfájljának kiépítése                         
+* **MoveNextFabricUpgradeDomain**: a fürt frissítéseinek folytatása explicit frissítési tartománnyal                             
+* **ReportFabricUpgradeHealth**: a fürt frissítésének folytatása a jelenlegi frissítési folyamattal                             
+* **StartInfrastructureTask**: infrastruktúra-feladatok indítása                             
 * **FinishInfrastructureTask**: infrastrukturális feladatok befejezése                             
-* **InvokeInfrastructureCommand**: infrastruktúrafeladat-kezelési parancsok                              
+* **InvokeInfrastructureCommand**: infrastruktúra-feladatok kezelési parancsai                              
 * **ActivateNode**: csomópont aktiválása                             
-* **DeactivateNode**: csomópont inaktiválása                             
-* **DeactivateNodesBatch**: több csomópont kikapcsolása                             
-* **RemoveNodeDeactivations**: az inaktiválás visszaállítása több csomóponton                             
+* **Deactivatenode művelet (**: csomópont inaktiválása                             
+* **DeactivateNodesBatch**: több csomópont inaktiválása                             
+* **RemoveNodeDeactivations**: inaktiválás visszaállítása több csomóponton                             
 * **GetNodeDeactivationStatus**: inaktiválási állapot ellenőrzése                             
-* **NodeStateRemoved**: a csomópont állapotának jelentése eltávolítva                             
-* **ReportFault**: jelentési hiba                             
-* **FileContent**: lemezképtároló ügyfélfájl átvitele (a fürtön kívül)                             
-* **FileDownload**: image store ügyfélfájl letöltési kezdeményezése (a fürtön kívül)                             
-* **InternalList**: lemezképtároló ügyfélfájllista-művelet (belső)                             
-* **Törlés**: lemezképtároló ügyfél törlési művelete                              
-* **Feltöltés**: image store ügyfél feltöltési művelet                             
+* **Nodestateremoved művelet**: jelentési csomópont állapota eltávolítva                             
+* **ReportFault**: jelentéskészítési hiba                             
+* **FileContent**: rendszerkép-tároló ügyfél-fájlátviteli (a fürtön kívül)                             
+* **FileDownload**: rendszerkép-tároló – ügyféloldali fájl letöltése (a fürtön kívül)                             
+* **InternalList**: a rendszerkép-tároló ügyfél-fájllista művelete (belső)                             
+* **Törlés**: rendszerkép-tároló ügyfél-törlési művelete                              
+* **Feltöltés**: rendszerkép-tároló ügyfél-feltöltési művelete                             
 * **NodeControl**: csomópontok indítása, leállítása és újraindítása                             
 * **MoveReplicaControl**: replikák áthelyezése egyik csomópontról a másikra                             
 
 ### <a name="miscellaneous-operations"></a>Egyéb műveletek
-* **Ping**: ügyfél ping                             
-* **Lekérdezés**: minden lekérdezés engedélyezett
-* **NameExists**: uri létezési ellenőrzésének elnevezése                             
+* **Ping**: ügyfél pingelése                             
+* **Lekérdezés**: az összes engedélyezett lekérdezés
+* **NameExists**: URI-azonosítók létezésének ellenőrzése                             
 
 A felhasználói hozzáférés-vezérlés típusa alapértelmezés szerint a következő műveletekre korlátozódik: 
 
-* **SzámbavételUtónevek:** URI-számbavétel elnevezése                             
-* **EnumerálniTulajdonságok:** tulajdonság számbavétele                             
-* **PropertyReadBatch**: névadási tulajdonság olvasási műveletek                             
-* **GetServiceDescription**: hosszú szavazással kapcsolatos szolgáltatásértesítések és olvasási szolgáltatások leírásai                             
-* **ResolveService**: panaszalapú szolgáltatásmegoldás                             
-* **ResolveNameOwner**: az URI-tulajdonos elnevezésének feloldása                             
+* **EnumerateSubnames**: névhasználati URI enumerálása                             
+* **EnumerateProperties**: elnevezési tulajdonság enumerálása                             
+* **PropertyReadBatch**: névhasználati tulajdonság – olvasási műveletek                             
+* **GetServiceDescription**: hosszú távú lekérdezési szolgáltatás értesítései és olvasási szolgáltatás leírása                             
+* **ResolveService**: panasztételi megoldáson alapuló szolgáltatás feloldása                             
+* **ResolveNameOwner**: névhasználati URI tulajdonosának feloldása                             
 * **ResolvePartition**: rendszerszolgáltatások feloldása                             
-* **ServiceNotifications**: eseményalapú szolgáltatásértesítések                             
-* **GetUpgradeStatus**: alkalmazásfrissítési állapot lekérdezése                             
-* **GetFabricUpgradeStatus**: fürtfrissítési állapot lekérdezése                             
+* **ServiceNotifications**: eseményvezérelt szolgáltatás értesítései                             
+* **GetUpgradeStatus**: az alkalmazás frissítési állapotának lekérdezése                             
+* **GetFabricUpgradeStatus**: a fürt frissítési állapotának lekérdezése                             
 * **InvokeInfrastructureQuery**: infrastruktúra-feladatok lekérdezése                             
-* **Lista**: lemezképtároló ügyfélfájllista-művelete                             
-* **ResetPartitionLoad**: feladatátvevő egység terhelése visszaállítása                             
-* **ToggleVerboseServicePlacementHealthReporting**: részletes szolgáltatáselhelyezési állapotjelentés váltása                             
+* **Lista**: a rendszerkép-tárolóban megjelenő ügyfél-fájllista művelet                             
+* **ResetPartitionLoad**: feladatátvételi egység terhelésének alaphelyzetbe állítása                             
+* **ToggleVerboseServicePlacementHealthReporting**: részletes szolgáltatás elhelyezési állapotának jelentése                             
 
-A rendszergazdai hozzáférés-vezérlés is hozzáfér az előző műveletekhez.
+A rendszergazdai hozzáférés-vezérlés szintén hozzáfér az előző műveletekhez.
 
-## <a name="changing-default-settings-for-client-roles"></a>Az ügyfélszerepkörök alapértelmezett beállításainak módosítása
-A fürtjegyzékfájlban szükség esetén rendszergazdai lehetőségeket biztosíthat az ügyfélnek. Az alapértelmezett értékeket úgy módosíthatja, hogy a [fürt létrehozása](service-fabric-cluster-creation-via-portal.md)során a **Fabric-beállítások** lehetőséget választja, és megadja az előző beállításokat a **névben,** **a rendszergazda**, a **felhasználó**és az **értékmezőkben.**
+## <a name="changing-default-settings-for-client-roles"></a>Az ügyfél szerepköreinek alapértelmezett beállításainak módosítása
+A fürt jegyzékfájljának fájljában szükség esetén rendszergazdai képességeket biztosíthat az ügyfélnek. A [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md)a **háló beállításai** lehetőségre kattintva módosíthatja az alapértelmezett értékeket, és megadhatja az előző beállításokat a **név**, a **rendszergazda**, a **felhasználó**és az **érték** mezőkben.
 
 ## <a name="next-steps"></a>További lépések
-[A Service Fabric fürtjének biztonsága](service-fabric-cluster-security.md)
+[Service Fabric-fürt biztonsága](service-fabric-cluster-security.md)
 
-[A Szolgáltatásháló-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
+[Service Fabric fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
 
