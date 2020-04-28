@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect MV Tervező | Microsoft Dokumentumok"
-description: Ismerje meg a Metaversetervező lapot az Azure AD Connect szinkronizálási szolgáltatáskezelőjében.
+title: Azure AD Connect MV Designer | Microsoft Docs "
+description: A Azure AD Connect Synchronization Service Manager metaverse Designer lapjának megismerése.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,19 +18,19 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60381331"
 ---
-# <a name="sync-service-manager-metaverse-designer"></a>Szolgáltatáskezelő metaverzumtervezőjének szinkronizálása
+# <a name="sync-service-manager-metaverse-designer"></a>Service Manager metaverse Designer szinkronizálása
 
-![Szolgáltatáskezelő szinkronizálása](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
 
-A legtöbb ügyfél számára itt nincs mit beállítani.
+A legtöbb ügyfél esetében itt nem kell konfigurálnia a konfigurációt.
 
 ## <a name="next-steps"></a>További lépések
-További információ az [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációjáról.
+További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

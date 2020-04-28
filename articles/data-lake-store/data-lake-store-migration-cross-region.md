@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen1 régiók közötti áttelepítés | Microsoft dokumentumok
-description: Ismerje meg az Azure Data Lake Storage Gen1 régiók közötti áttelepítését.
+title: Régiók közötti Migrálás Azure Data Lake Storage Gen1 | Microsoft Docs
+description: A Azure Data Lake Storage Gen1 régiók közötti áttelepítésének megismerése.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -13,42 +13,42 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60518463"
 ---
-# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Az Azure Data Lake Storage Gen1 áttelepítése régiók között
+# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migrálása régiók között
 
-Ahogy az Azure Data Lake Storage Gen1 elérhetővé válik az új régiókban, előfordulhat, hogy egyszeri áttelepítést végez, hogy kihasználja az új régió előnyeit. Ismerje meg, hogy mit kell figyelembe venni az áttelepítés megtervezése és befejezése során.
+Ahogy az Azure Data Lake Storage Gen1 elérhetővé válik az új régiókban, dönthet úgy, hogy egyszeri áttelepítést végez, hogy kihasználhassa az új régiót. Megtudhatja, mit érdemes figyelembe venni az áttelepítés megtervezésekor és befejezésekor.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. További információ: [Create your free Azure-fiók még ma.](https://azure.microsoft.com/pricing/free-trial/)
-* **A Data Lake Storage Gen1 fiók két különböző régióban.** További információ: [Az Azure Data Lake Storage Gen1 – Első lépések.](data-lake-store-get-started-portal.md)
-* **Az Azure Data Factory**. További információkért lásd: [Az Azure Data Factory bemutatása](../data-factory/introduction.md).
+* **Azure-előfizetés**. További információkért tekintse [meg az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/)című témakört.
+* **Data Lake Storage Gen1 fiók két különböző régióban**. További információ: [Bevezetés a Azure Data Lake Storage Gen1 használatába](data-lake-store-get-started-portal.md).
+* **Azure Data Factory**. További információkért lásd: [Az Azure Data Factory bemutatása](../data-factory/introduction.md).
 
 
-## <a name="migration-considerations"></a>Migrálási szempontok
+## <a name="migration-considerations"></a>A migrálás szempontjai
 
-Először azonosítsa azt az áttelepítési stratégiát, amely a data-tároló gen1-ben írja, olvassa vagy dolgozza fel az adatokat az alkalmazás számára a legjobban. Amikor kiválaszt egy stratégiát, vegye figyelembe az alkalmazás rendelkezésre állási követelményeit, és az áttelepítés során fellépő állásidőt. A legegyszerűbb megoldás például a "lift-and-shift" felhőmigrálási modell használata lehet. Ebben a megközelítésben szünetelteti az alkalmazást a meglévő régióban, miközben az összes adatot másolja az új régióba. Amikor a másolási folyamat befejeződött, folytatja az alkalmazást az új régióban, majd törölje a régi Data Lake Storage Gen1 fiókot. Az áttelepítés során állásidőre van szükség.
+Először is azonosítsa az alkalmazáshoz legjobban illő áttelepítési stratégiát, amely Data Lake Storage Gen1 adatokat ír, olvas vagy dolgoz fel. Ha kiválaszt egy stratégiát, vegye figyelembe az alkalmazás rendelkezésre állási követelményeit, valamint az áttelepítés során felmerülő állásidőt. Előfordulhat például, hogy a legegyszerűbb módszer a "lift-SHIFT" felhőalapú áttelepítési modell használata. Ebben a megközelítésben szünetelteti az alkalmazást a meglévő régióban, miközben az összes adatait átmásolja az új régióba. A másolási folyamat befejezésekor folytassa az alkalmazást az új régióban, majd törölje a régi Data Lake Storage Gen1 fiókot. Az áttelepítés során felmerülő állásidő szükséges.
 
-Az állásidő csökkentése érdekében előfordulhat, hogy azonnal megkezdi az új adatok betöltését az új régióban. Ha rendelkezik a szükséges minimális adatokkal, futtassa az alkalmazást az új régióban. A háttérben továbbra is másolja a régebbi adatokat a meglévő Data Lake Storage Gen1 fiókból az új Data Lake Storage Gen1 fiókba az új régióban. Ezzel a módszerrel, akkor a váltásaz új régióra kevés állásidővel. Miután az összes régebbi adatok másolása, törölje a régi Data Lake Storage Gen1 fiók.
+Az állásidő csökkentése érdekében azonnal elkezdheti az új adatmennyiség betöltését az új régióban. Ha rendelkezik a minimálisan szükséges adattal, futtassa az alkalmazást az új régióban. A háttérben folytassa a régebbi adatok másolását a meglévő Data Lake Storage Gen1-fiókból az új régióban lévő új Data Lake Storage Gen1-fiókba. Ennek a módszernek a használatával a váltást az új régióra állíthatja kis állásidővel. Ha az összes régebbi adatmásolt, törölje a régi Data Lake Storage Gen1 fiókot.
 
-Az áttelepítés tervezésekor további fontos részleteket kell figyelembe venni:
+A Migrálás megtervezése során megfontolandó további fontos információk:
 
-* **Adatmennyiség**. Az adatok mennyisége (gigabájtban, a fájlok és mappák száma és így tovább) befolyásolja az áttelepítéshez szükséges időt és erőforrásokat.
+* **Az adatmennyiség**. Az adatmennyiség (GB-ban, a fájlok és mappák száma stb.) hatással van az áttelepítéshez szükséges időre és erőforrásokra.
 
-* **Data Lake Storage Gen1 fióknév**. Az új fióknévnek az új régióban globálisan egyedinek kell lennie. Előfordulhat például, hogy a régi Data Lake Storage Gen1-fiók neve az USA keleti részén 2 contosoeastus2.azuredatalakestore.net. Az új Data Lake Storage Gen1 fiókját elnevezheti észak-eu contosonortheu.azuredatalakestore.net.
+* **Data Lake Storage Gen1 fiók neve**. Az új régióban az új fiók nevének globálisan egyedinek kell lennie. Előfordulhat például, hogy az USA 2. keleti régiójában lévő régi Data Lake Storage Gen1-fiók neve contosoeastus2.azuredatalakestore.net. Az új Data Lake Storage Gen1-fiókot az Észak-EU contosonortheu.azuredatalakestore.net lehet megnevezni.
 
-* **Eszközök**. Azt javasoljuk, hogy az [Azure Data Factory Copy Activity](../data-factory/connector-azure-data-lake-store.md) használatával másolja a Data Lake Storage Gen1 fájlokat. A Data Factory nagy teljesítménnyel és megbízhatósággal támogatja az adatmozgást. Ne feledje, hogy a Data Factory csak a mappahierarchiát és a fájlok tartalmát másolja. A régi fiókban használt hozzáférés-vezérlési listákat (ACL-eket) manuálisan kell alkalmaznia az új fiókra. További információkért, beleértve a legjobb esetben megadott teljesítménycélokat, olvassa el a [Tevékenység teljesítményének másolása és finomhangolása útmutatót.](../data-factory/copy-activity-performance.md) Ha azt szeretné, hogy az adatok gyorsabban másolhatók, előfordulhat, hogy további felhőbeli adatmozgatási egységeket kell használnia. Néhány más eszköz, például az AdlCopy, nem támogatja az adatok régiók közötti másolását.  
+* **Eszközök**. Javasoljuk, hogy Data Lake Storage Gen1 fájlok másolásához használja az [Azure Data Factory másolási tevékenységet](../data-factory/connector-azure-data-lake-store.md) . Data Factory támogatja az adatáthelyezést a nagy teljesítmény és megbízhatóság érdekében. Ne feledje, hogy Data Factory csak a mappa-hierarchiát és a fájlok tartalmát másolja át. A régi fiókban használt hozzáférés-vezérlési listákat (ACL-eket) manuálisan kell alkalmaznia az új fiókra. További információért, beleértve a legjobb esetben a teljesítményre vonatkozó célokat is, tekintse meg a [másolási tevékenység teljesítményére és hangolására vonatkozó útmutatót](../data-factory/copy-activity-performance.md). Ha gyorsabban szeretné átmásolni az Adatmásolást, lehetséges, hogy további Felhőbeli adatáthelyezési egységeket kell használnia. Más eszközök, például a AdlCopy, nem támogatják az adatok régiók közötti másolását.  
 
-* **Sávszélesség díjak**. [Sávszélesség-díjak](https://azure.microsoft.com/pricing/details/bandwidth/) at, mert az adatok egy Azure-régióból.
+* **Sávszélességgel kapcsolatos díjak**. A [sávszélességre vonatkozó díjak](https://azure.microsoft.com/pricing/details/bandwidth/) érvényesek, mivel az adatok egy Azure-régióból kerülnek át.
 
-* **ACL-k az adatokon.** Az adatok védelme az új régióban az ACL-ok fájlokra és mappákra való alkalmazásával. További információ: [Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme.](data-lake-store-secure-data.md) Azt javasoljuk, hogy az áttelepítés segítségével frissítse és módosítsa az ACL-k. Előfordulhat, hogy a jelenlegi beállításokhoz hasonló beállításokat szeretne használni. Megtekintheti az ACL-k, amelyek bármely fájlra az Azure Portalon, a [PowerShell-parancsmagok](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)vagy SDK-k használatával.  
+* **Az adataihoz tartozó ACL**-EK. A fájlokra és mappákra vonatkozó ACL-ek alkalmazásával biztonságossá teheti adatait az új régióban. További információ: [Azure Data Lake Storage Gen1 tárolt adatok védelme](data-lake-store-secure-data.md). Javasoljuk, hogy az áttelepítést az ACL-ek frissítésére és módosítására használja. Előfordulhat, hogy az aktuális beállításokhoz hasonló beállításokat szeretne használni. A fájlokra alkalmazott ACL-eket a Azure Portal, a [PowerShell-parancsmagok](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)vagy az SDK-k használatával tekintheti meg.  
 
-* **Az elemzési szolgáltatások helye**. A legjobb teljesítmény érdekében az elemzési szolgáltatásoknak, például az Azure Data Lake Analytics vagy az Azure HDInsight, ugyanabban a régióban kell lenniük, mint az adatok.  
+* **A analitikai szolgáltatások helye**. A legjobb teljesítmény érdekében az elemzési szolgáltatások, például az Azure Data Lake Analytics vagy az Azure-HDInsight ugyanabban a régióban kell lenniük, mint az adatai.  
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Data Lake storage gen1 áttekintése](data-lake-store-overview.md)
+* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

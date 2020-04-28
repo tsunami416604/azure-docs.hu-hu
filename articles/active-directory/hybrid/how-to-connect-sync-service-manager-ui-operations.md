@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect szinkronizálási szolgáltatáskezelő műveletei | Microsoft dokumentumok
-description: Ismerje meg az Azure AD Connect szinkronizálási szolgáltatáskezelőjének Műveletek lapját.
+title: Azure AD Connect Synchronization Service Manager műveletek | Microsoft Docs
+description: A Azure AD Connect Synchronization Service Manager működés lapjának ismertetése.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,36 +18,36 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60381407"
 ---
-# <a name="using-the-sync-service-manager-operations-tab"></a>A Szolgáltatáskezelő szinkronizálása műveletek lap használata
+# <a name="using-the-sync-service-manager-operations-tab"></a>A Sync Service Manager Operations (szinkronizálási műveletek) lap használata
 
-![Szolgáltatáskezelő szinkronizálása](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
 
-A műveletek lapon a legutóbbi műveletek eredményei láthatók. Ez a lap kulcsfontosságú a problémák megértéséhez és elhárításához.
+Az Operations (műveletek) lapon a legutóbbi műveletek eredményei láthatók. Ez a lap kulcsfontosságú a problémák megértéséhez és hibaelhárításához.
 
-## <a name="understand-the-information-visible-in-the-operations-tab"></a>A Műveletek lapon látható információk ismertetése
-A felső fele időrendi sorrendben mutatja az összes futást. Alapértelmezés szerint a műveleti napló információkat tartalmaz az elmúlt hét napról, de ez a beállítás módosítható az [ütemezővel.](how-to-connect-sync-feature-scheduler.md) Olyan futtatást szeretne keresni, amely nem mutat sikeres állapotot. A rendezést a fejlécek kattintásával módosíthatja.
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>A műveletek lapon látható információk megismerése
+A felső fél az összes futtatást időrendi sorrendben jeleníti meg. Alapértelmezés szerint az operatív napló az elmúlt hét nap adatait tárolja, de ez a beállítás az [ütemező](how-to-connect-sync-feature-scheduler.md)segítségével módosítható. Olyan futtatást szeretne keresni, amely nem mutat sikeres állapotot. A rendezést a fejlécek lehetőségre kattintva módosíthatja.
 
-Az **Állapot** oszlop a legfontosabb információ, és a futtatás legsúlyosabb problémáját mutatja. Itt van egy gyors összefoglaló a leggyakoribb állapotok prioritási sorrendben, hogy vizsgálja meg (ahol * jelzi több lehetséges hiba karakterláncok).
+Az **állapot** oszlop a legfontosabb információ, és megjeleníti a Futtatás legsúlyosabb problémáját. Itt látható a leggyakoribb állapotok rövid összefoglalása, hogy a vizsgálat elsőbbséget kapjon (ahol * több lehetséges hibát jeleznek).
 
 | status | Megjegyzés |
 | --- | --- |
-| megállt-\* |A futtatás nem fejeződött be. Ha például a távoli rendszer nem áll meg, és nem lehet kapcsolatba lépni vele. |
-| leállított-hiba-limit |Több mint 5000 hiba van. A futtatás a nagy számú hiba miatt automatikusan leállt. |
-| befejezett-\*-hibák |A futtatás befejeződött, de vannak hibák (kevesebb, mint 5000), amelyeket meg kell vizsgálni. |
-| befejeződött-\*-figyelmeztetések |A futtatás befejeződött, de néhány adat nem a várt állapotban van. Ha hibákat észlel, akkor ez az üzenet általában csak egy tünet. Amíg nem hárította el a hibákat, ne vizsgálja meg a figyelmeztetéseket. |
-| sikeres |Semmi probléma. |
+| megállt\* |A Futtatás nem fejeződött be. Ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
+| leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |
+| befejezve\*– hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyeket meg kell vizsgálni. |
+| befejezve\*– figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibák léptek fel, akkor ez az üzenet általában csak tünet. Amíg nem válaszol a hibákra, ne vizsgálja meg a figyelmeztetéseket. |
+| sikeres |Nincs probléma. |
 
-Amikor kijelöl egy sort, az alsó frissítés az adott futtatás részleteinek megjelenítéséhez frissül. Az alsó sarokban, lehet, hogy van egy lista mondván **Lépés #**. Ez a lista csak akkor jelenik meg, ha az erdőben több olyan tartomány van, ahol minden tartományt egy lépés képvisel. A tartománynév a **Partition**cím alatt található. A **Szinkronizálási statisztika csoportban**további információt talál a feldolgozott módosítások számáról. A hivatkozásokra kattintva lehívhatja a módosított objektumok listáját. Ha hibás objektumokat észlel, ezek a hibák a **Szinkronizálási hibák csoportban**jelennek meg.
+Amikor kijelöl egy sort, a lenti frissítések megjelenítik a Futtatás részleteit. A lenti bal szélen egy lista jelenik meg, amely a következő **lépést**jelzi: #. Ez a lista csak akkor jelenik meg, ha az erdőben több tartománnyal rendelkezik, ahol minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció**alatt található. A **szinkronizálási statisztikák**területen további információkat talál a feldolgozott módosítások számáról. A hivatkozásokra kattintva lekérheti a módosított objektumok listáját. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák**alatt jelennek meg.
 
-További információt a [nem szinkronizált objektumok hibaelhárítása című](tshoot-connect-object-not-syncing.md) témakörben talál.
+További információ: [nem szinkronizált objektumok hibáinak megoldása](tshoot-connect-object-not-syncing.md)
 
 ## <a name="next-steps"></a>További lépések
-További információ az [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációjáról.
+További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

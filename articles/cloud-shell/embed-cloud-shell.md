@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cloud Shell beágyazása | Microsoft dokumentumok
-description: Ismerje meg az Azure Cloud Shell beágyazását.
+title: Beágyazási Azure Cloud Shell | Microsoft Docs
+description: Ismerkedjen meg Azure Cloud Shell beágyazásával.
 services: cloud-shell
 documentationcenter: ''
 author: maertendMSFT
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60614310"
 ---
-# <a name="embed-azure-cloud-shell"></a>Az Azure Cloud Shell beágyazása
+# <a name="embed-azure-cloud-shell"></a>Beágyazás Azure Cloud Shell
 
-A Cloud Shell beágyazása lehetővé teszi a fejlesztők és a tartalomírók számára, hogy közvetlenül megnyissák a Cloud Shellt egy dedikált URL-címről, [shell.azure.com.](https://shell.azure.com) Ez azonnal a Cloud Shell hitelesítési, eszköz- és naprakész Azure CLI/Azure PowerShell-eszközeinek teljes erejét hozza a felhasználók számára.
+A beágyazási Cloud Shell lehetővé teszi a fejlesztők és a tartalmi írók számára, hogy közvetlenül nyissanak meg Cloud Shell egy dedikált URL-címről, a [shell.Azure.com](https://shell.azure.com). Ez azonnal a Cloud Shell hitelesítésének, szerszámozásának és naprakész Azure CLI/Azure PowerShell eszközeinek teljes erejét biztosítja a felhasználók számára.
 
 Normál méretű gomb
 
@@ -31,31 +31,31 @@ Normál méretű gomb
 
 Nagy méretű gomb
 
-[![Nagy indítás](https://shell.azure.com/images/launchcloudshell@2x.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Nagyméretű indítás](https://shell.azure.com/images/launchcloudshell@2x.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Használati útmutató
 
-Integrálja a Cloud Shell indítógombját a markdown fájlokba a következők másolásával:
+A következő lépésekkel integrálhatja Cloud Shell indítás gombját a Markdown-fájlokba:
 
 ```markdown
 [![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
 ```
 
-A POP-Up Cloud Shell beágyazására irányuló HTML az alábbi:
+Az előugró Cloud Shell beágyazására szolgáló HTML a következő:
 ```html
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 ```
 
-## <a name="customize-experience"></a>A felhasználói élmény testreszabása
+## <a name="customize-experience"></a>Felhasználói élmény testreszabása
 
-Állítson be egy adott rendszerhéj-élményt az URL-cím bővítésével.
+Az URL-cím kibővítésével beállíthat egy adott rendszerhéj-élményt.
 
 |Élmény   |URL-cím   |
 |---|---|
-|Legutóbb használt héj   |[shell.azure.com](https://shell.azure.com)           |
+|Legutóbb használt rendszerhéj   |[shell.azure.com](https://shell.azure.com)           |
 |Bash                       |[shell.azure.com/bash](https://shell.azure.com/bash)       |
 |PowerShell                 |[shell.azure.com/powershell](https://shell.azure.com/powershell) |
 
 ## <a name="next-steps"></a>További lépések
-[Bash a Cloud Shell rövid útmutató](quickstart.md)<br>
-[PowerShell a Cloud Shell rövid útmutatójában](quickstart-powershell.md)
+[Bash Cloud Shell rövid útmutatóban](quickstart.md)<br>
+[PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

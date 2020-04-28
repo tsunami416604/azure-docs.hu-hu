@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával | Microsoft dokumentumok
+title: Azure AD Connect telepítése meglévő ADSync-adatbázis használatával | Microsoft Docs
 description: Ez a témakör egy meglévő ADSync-adatbázis használatát ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -18,56 +18,56 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245174"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával
-Az Azure AD Connect adatok tárolásához SQL Server-adatbázisszükséges. Használhatja az Azure AD Connecttel telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja az SQL saját teljes verzióját. Korábban az Azure AD Connect telepítésekor mindig létrejött egy Új ADSync nevű adatbázis. Az Azure AD Connect 1.1.613.0-s verziójával (vagy azt követően) telepítheti az Azure AD Connectet egy meglévő ADSync-adatbázisra mutatva.
+A Azure AD Connect SQL Server adatbázis tárolására van szükség az adattároláshoz. Használhatja a Azure AD Connect telepített alapértelmezett SQL Server 2012 Express LocalDB, vagy használhatja a saját teljes SQL-verzióját. Korábban a Azure AD Connect telepítésekor a rendszer a ADSync nevű új adatbázist mindig létrehozta. A Azure AD Connect verzió 1.1.613.0 (vagy azt követően) lehetősége van a Azure AD Connect telepítésére, ha egy meglévő ADSync-adatbázisra mutat.
 
-## <a name="benefits-of-using-an-existing-adsync-database"></a>Meglévő ADSync-adatbázis használatának előnyei
-Meglévő ADSync-adatbázisra mutatva:
+## <a name="benefits-of-using-an-existing-adsync-database"></a>A meglévő ADSync-adatbázisok használatának előnyei
+Egy meglévő ADSync-adatbázisra mutat:
 
-- A hitelesítő adatok kivételével az ADSync-adatbázisban tárolt szinkronizálási konfiguráció (beleértve az egyéni szinkronizálási szabályokat, az összekötőket, a szűrést és a választható szolgáltatások konfigurációját) automatikusan helyreáll és használatban van a telepítés során. . Az Azure AD Connect által a helyszíni AD-vel és az Azure AD-vel való módosítások szinkronizálásához használt hitelesítő adatok titkosítva vannak, és csak az előző Azure AD Connect-kiszolgáló által érhetők el.
-- Az ADSync adatbázisban tárolt összes identitásadat (összekötőterekhez és metaverzumhoz társítva) és szinkronizálási cookie-k is helyreállnak. Az újonnan telepített Azure AD Connect-kiszolgáló továbbra is szinkronizálhat onnan, ahol az előző Azure AD Connect-kiszolgáló abbahagyta, ahelyett, hogy teljes szinkronizálást kellene végrehajtania.
+- A hitelesítő adatok kivételével a ADSync-adatbázisban tárolt szinkronizálási konfigurációt (beleértve az egyéni szinkronizálási szabályokat, az összekötőket, a szűrést és a választható funkciók konfigurációját) a rendszer automatikusan helyreállítja, és a telepítés során használja. A Azure AD Connect által a helyszíni AD-vel és az Azure AD-vel végzett módosítások szinkronizálásához használt hitelesítő adatok titkosítottak, és csak az előző Azure AD Connect-kiszolgáló érhetik el.
+- A rendszer a ADSync-adatbázisban tárolt összes Identity (összekötő-és metaverse-) és szinkronizálási cookie-t is helyreállítja. Az újonnan telepített Azure AD Connect-kiszolgáló továbbra is képes szinkronizálni az előző Azure AD Connect kiszolgálóról, és nem kell teljes szinkronizálást végeznie.
 
-## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Olyan esetek, amikor egy meglévő ADSync-adatbázis használata előnyös
+## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Olyan forgatókönyvek, amelyekben egy meglévő ADSync-adatbázis használata hasznos
 Ezek az előnyök a következő esetekben hasznosak:
 
 
-- Van egy meglévő Azure AD Connect-telepítés. A meglévő Azure AD Connect-kiszolgáló már nem működik, de az ADSync-adatbázist tartalmazó SQL-kiszolgáló továbbra is működik. Telepíthet egy új Azure AD Connect-kiszolgálót, és a meglévő ADSync-adatbázisra irányíthatja azt. 
-- Van egy meglévő Azure AD Connect-telepítés. Az ADSync adatbázist tartalmazó SQL-kiszolgáló már nem működik. Azonban van egy közelmúltbeli biztonsági másolatot az adatbázisról. Először visszaállíthatja az ADSync adatbázist egy új SQL-kiszolgálóra. Ezt követően telepítheti az új Azure AD Connect-kiszolgálót, és a visszaállított ADSync-adatbázisra irányíthatja.
-- Van egy meglévő Azure AD Connect-központi telepítés, amely a LocalDB-t használja. A LocalDB által előírt 10 GB-os korlát miatt a teljes SQL-re szeretne áttérni. Az ADSync adatbázisról biztonsági másolatot lehet tenni a LocalDB-ről, és visszaállíthatja egy SQL-kiszolgálóra. Ezt követően újratelepítheti az új Azure AD Connect-kiszolgálót, és a visszaállított ADSync-adatbázisra irányíthatja.
-- Átmeneti kiszolgálót próbál beállítani, és meg akar győződni arról, hogy a konfigurációja megegyezik az aktuális aktív kiszolgáló konfigurációjával. Biztonsági másolatot lehet tenni az ADSync adatbázisról, és visszaállíthatja egy másik SQL-kiszolgálóra. Ezt követően újratelepítheti az új Azure AD Connect-kiszolgálót, és a visszaállított ADSync-adatbázisra irányíthatja.
+- Meglévő Azure AD Connect üzemelő példánya van. A meglévő Azure AD Connect-kiszolgáló már nem működik, de a ADSync-adatbázist tartalmazó SQL Server továbbra is működik. Telepíthet új Azure AD Connect-kiszolgálót, és rámutathat a meglévő ADSync-adatbázisra. 
+- Meglévő Azure AD Connect üzemelő példánya van. A ADSync-adatbázist tartalmazó SQL Server-kiszolgáló már nem működik. Van azonban egy nemrég készült biztonsági másolat az adatbázisról. Először a ADSync-adatbázist állíthatja vissza egy új SQL Server-kiszolgálóra. Ezután telepíthet egy új Azure AD Connect-kiszolgálót, és rámutathat a visszaállított ADSync-adatbázisra.
+- Meglévő Azure AD Connect üzemelő példánya van, amely a LocalDB-t használja. A LocalDB által kiszabott 10 GB-os korlát miatt a teljes SQL-re szeretne áttelepíteni. Biztonsági mentést készíthet a ADSync-adatbázisról a LocalDB-ből, és visszaállíthatja azt egy SQL Server-kiszolgálóra. Ezután újratelepítheti az új Azure AD Connect-kiszolgálót, és rámutathat a visszaállított ADSync-adatbázisra.
+- Egy átmeneti kiszolgálót próbál beállítani, és meg szeretné győződni arról, hogy a konfigurációja megegyezik az aktuális aktív kiszolgálóval. Biztonsági mentést készíthet a ADSync-adatbázisról, és visszaállíthatja azt egy másik SQL Server-kiszolgálóra. Ezután újratelepítheti az új Azure AD Connect-kiszolgálót, és rámutathat a visszaállított ADSync-adatbázisra.
 
 ## <a name="prerequisite-information"></a>Előfeltételekre vonatkozó információk
 
-Fontos megjegyzések, amelyeket a folytatás előtt figyelembe kell venni:
+Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 
-- Győződjön meg arról, hogy tekintse át az Azure AD Connect hardveren és előfeltételekben történő telepítésének előfeltételeit, valamint az Azure AD Connect telepítéséhez szükséges fiókot és engedélyeket. Az Azure AD Connect "meglévő adatbázis használata" módban történő telepítéséhez szükséges engedélyek megegyeznek az "egyéni" telepítéssel.
-- Az Azure AD Connect telepítése egy meglévő ADSync-adatbázissal csak a teljes SQL-lel támogatott. Az SQL Express LocalDB nem támogatja. Ha van egy meglévő ADSync-adatbázisa a LocalDB-ben, amelyet használni kíván, először biztonsági másolatot kell készítenie az ADSync adatbázisról (LocalDB), és vissza kell állítania azt a teljes SQL-re. Ezt követően telepítheti az Azure AD Connect et a visszaállított adatbázis ellen ezzel a módszerrel.
+- Győződjön meg arról, hogy a Azure AD Connect telepítésének előfeltételei a hardver és az előfeltételek, valamint a Azure AD Connect telepítéséhez szükséges fiókok és engedélyek. A "meglévő adatbázis használata" módban a Azure AD Connect telepítéséhez szükséges engedélyek megegyeznek az "egyéni" telepítéssel.
+- A Azure AD Connect meglévő ADSync-adatbázison való üzembe helyezése csak a teljes SQL-támogatással támogatott. Az SQL Express LocalDB használata nem támogatott. Ha meglévő ADSync-adatbázissal rendelkezik a használni kívánt LocalDB, először készítsen biztonsági másolatot a ADSync-adatbázisról (LocalDB), és állítsa vissza a teljes SQL-verzióra. Ezt követően a metódus használatával telepítheti Azure AD Connect a visszaállított adatbázison.
 - A telepítéshez használt Azure AD Connect verziójának meg kell felelnie a következő feltételeknek:
-    - 1.1.613.0 vagy újabb, ÉS
-    - Ugyanaz vagy magasabb, mint az Azure AD Connect legutóbbi, az ADSync-adatbázishoz használt verziója. Ha a telepítéshez használt Azure AD Connect verzió nagyobb, mint az ADSync-adatbázishoz legutóbb használt verzió, akkor teljes szinkronizálásra lehet szükség.  Teljes szinkronizálásra van szükség, ha a két verzió között séma vagy szinkronizálási szabály változás történik. 
-- A használt ADSync-adatbázisnak viszonylag új szinkronizálási állapotot kell tartalmaznia. A meglévő ADSync-adatbázissal végzett utolsó szinkronizálási tevékenységnek az elmúlt három héten belül kell lennie.
-- Az Azure AD Connect "meglévő adatbázis használata" módszerrel történő telepítésekor az előző Azure AD Connect-kiszolgálón konfigurált bejelentkezési módszer nem őrződik meg. Továbbá a telepítés során nem konfigurálhatja a bejelentkezési módszert. A bejelentkezési módszer csak a telepítés befejezése után konfigurálható.
-- Nem rendelkezhet több Azure AD Connect-kiszolgálóval, amelyek ugyanazt az ADSync-adatbázist osztják. A "meglévő adatbázis használata" módszer lehetővé teszi, hogy egy meglévő ADSync-adatbázis tanuskodjon újra egy új Azure AD Connect-kiszolgálóval. Nem támogatja a megosztást.
+    - 1.1.613.0 vagy újabb, valamint
+    - A Azure AD Connect a ADSync-adatbázissal utoljára használt verziójával megegyező vagy annál nagyobb. Ha a telepítéshez használt Azure AD Connect verziója magasabb, mint a ADSync-adatbázishoz legutóbb használt verzió, akkor szükség lehet teljes szinkronizálásra.  Teljes szinkronizálásra van szükség, ha a séma vagy a szinkronizálási szabály a két verzió között változik. 
+- A használt ADSync-adatbázisnak egy viszonylag új szinkronizálási állapotot kell tartalmaznia. A meglévő ADSync-adatbázis utolsó szinkronizálási tevékenységének az elmúlt három hétben kell lennie.
+- Azure AD Connect a "meglévő adatbázis használata" metódus használatával történő telepítésekor a rendszer nem őrzi meg az előző Azure AD Connect-kiszolgálón konfigurált bejelentkezési módszert. Emellett a telepítés során nem konfigurálhatja a bejelentkezési módszert. A bejelentkezési módszert csak a telepítés befejezése után lehet konfigurálni.
+- Nem rendelkezhet több Azure AD Connect kiszolgálóval ugyanazzal a ADSync-adatbázissal. A "meglévő adatbázis használata" módszer lehetővé teszi egy meglévő ADSync-adatbázis újrafelhasználását egy új Azure AD Connect-kiszolgálóval. Nem támogatja a megosztást.
 
-## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Az Azure AD Connect "meglévő adatbázis használata" móddal történő telepítésének lépései
-1.  Töltse le az Azure AD Connect telepítőt (AzureADConnect.MSI) a Windows-kiszolgálóra. Kattintson duplán az Azure AD Connect telepítőre az Azure AD Connect telepítésének megkezdéséhez.
+## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>A Azure AD Connect telepítésének lépései a "meglévő adatbázis használata" módban
+1.  Töltse le Azure AD Connect telepítőt (AzureADConnect. MSI) a Windows Serverre. A Azure AD Connect telepítésének megkezdéséhez kattintson duplán a Azure AD Connect Installer elemre.
 2.  Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
 ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db1.png)
-3.  Indítson új parancssort vagy PowerShell-munkamenetet. Keresse meg a "C:\Program Files\Microsoft Azure Active Directory Connect" mappát. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
+3.  Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a "C:\Program Files\Microsoft Azure Active Directory Connect" mappába. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
 
 > [!NOTE]
-> Csak akkor használja a **/UseExistingDatabase** kapcsolót, ha az adatbázis már tartalmaz adatokat egy korábbi Azure AD Connect-telepítésből. Például amikor egy helyi adatbázisból egy teljes SQL Server-adatbázisba költözik, vagy amikor az Azure AD Connect kiszolgálót újraépítették, és visszaállította az ADSync-adatbázis SQL biztonsági másolatát az Azure AD Connect korábbi telepítéséből. Ha az adatbázis üres, azaz nem tartalmaz adatokat egy korábbi Azure AD Connect-telepítésből, hagyja ki ezt a lépést.
+> A kapcsoló **/UseExistingDatabase** csak akkor használja, ha az adatbázis már tartalmaz egy korábbi Azure ad Connect telepítésből származó adatokkal. Ha például egy helyi adatbázisból egy teljes SQL Server adatbázisba helyez át, vagy amikor a Azure AD Connect-kiszolgálót újraépítette, és visszaállította a ADSync-adatbázis SQL-biztonsági másolatát a Azure AD Connect korábbi telepítésével. Ha az adatbázis üres, azaz nem tartalmaz a korábbi Azure AD Connect telepítésből származó összes adatforrást, hagyja ki ezt a lépést.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db3.png)
-1. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
+1. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Például:         
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
@@ -85,23 +85,23 @@ Fontos megjegyzések, amelyeket a folytatás előtt figyelembe kell venni:
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db8.png)
  
  
-1. A **Konfigurálásra kész** képernyőn kattintson a **Telepítés gombra.**
+1. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
  
  
 1. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="post-installation-tasks"></a>Telepítés utáni feladatok
-Az Azure AD Connect 1.2.65.0 előtti verziója által létrehozott adatbázis biztonsági másolatának visszaállításakor az átmeneti kiszolgáló automatikusan kiválasztja a **Ne konfiguráljon**bejelentkezési módszert. Bár a jelszókivonat-szinkronizálási és jelszó-visszaírási beállítások visszaállnak, ezt követően módosítania kell a bejelentkezési módszert, hogy megfeleljen az aktív szinkronizálási kiszolgálóra vonatkozó egyéb házirendeknek.  A lépések végrehajtásának elmulasztása megakadályozhatja, hogy a felhasználók bejelentkezzenek, ha a kiszolgáló aktívvá válik.  
+A 1.2.65.0 előtti Azure AD Connect-verzióval létrehozott adatbázis biztonsági másolatának visszaállításakor az átmeneti kiszolgáló automatikusan kiválasztja a **nem konfigurált**bejelentkezési módszert. Amíg a jelszó-kivonat szinkronizálása és a jelszó visszaírási beállításai visszaállnak, ezt követően módosítania kell a bejelentkezési módszert, hogy az megfeleljen az aktív szinkronizációs kiszolgálóra érvényes egyéb házirendeknek.  A lépések elvégzésének elmulasztása megakadályozhatja, hogy a felhasználók bejelentkezzenek, ha a kiszolgáló aktívvá válik.  
 
-Az alábbi táblázat segítségével ellenőrizze a szükséges további lépéseket.
+Az alábbi táblázat segítségével ellenőrizheti a szükséges további lépéseket.
 
 |Szolgáltatás|Lépések|
 |-----|-----|
-|Jelszókivonat-szinkronizálás| A jelszókivonat-szinkronizálási és jelszó-visszaírási beállítások teljes mértékben vissza állnak az Azure AD Connect 1.2.65.0-tól kezdődő verzióihoz.  Ha az Azure AD Connect egy régebbi verziójával visszaállítás, tekintse át a szinkronizálási beállításokat ezeka funkciók, hogy megbizonyosodjon arról, hogy megfelelnek az aktív szinkronizálási kiszolgáló.  Nincs szükség további konfigurációs lépésekre.|
-|Összevonás az AD FS rendszerrel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált AD FS-házirendet fogják használni.  Ha az Azure AD Connect használatával kezeli az AD FS-farmot, szükség esetén módosíthatja a bejelentkezési módszert AD FS-összevonásra, hogy előkészítse a készenléti kiszolgáló aktív szinkronizálási példánysá válását.   Ha az eszközbeállítások engedélyezve vannak az aktív szinkronizálási kiszolgálón, konfigurálja ezeket a beállításokat ezen a kiszolgálón az "Eszközbeállítások konfigurálása" feladat futtatásával.|
-|Átmenő hitelesítés és egységes bejelentkezés az asztalon|Frissítse a bejelentkezési módszert, hogy megfeleljen az aktív szinkronizálási kiszolgáló konfigurációjának.  Ha ezt nem követi, mielőtt a kiszolgálót elsődlegessé léptetné, az átmenő hitelesítés a zökkenőmentes egyszeri bejelentkezéssel együtt le lesz tiltva, és a bérlő zárolva lesz, ha nem rendelkezik jelszókivonat-szinkronizálással a biztonsági aláírási lehetőségként. Azt is vegye figyelembe, hogy ha átmeneti módban engedélyezi az átmenő hitelesítést, egy új hitelesítési ügynök lesz telepítve, regisztrálva lesz, és magas rendelkezésre állású ügynökként fog futni, amely elfogadja a bejelentkezési kérelmeket.|
-|Összevonás a PingFederate-tel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált PingFederate házirendet fogják használni.  A bejelentkezési módszert szükség esetén pingfederate-re módosíthatja, hogy a készenléti kiszolgáló az aktív szinkronizálási példánysá váljon.  Ez a lépés elhalasztható, amíg további tartományokat nem kell összeegyeztetnie a PingFederate segítségével.|
+|Jelszó-kivonat szinkronizálása| a 1.2.65.0-től kezdődően a jelszó-kivonat szinkronizálása és a jelszó visszaírási beállításai teljes mértékben visszaállíthatók a Azure AD Connect verzióihoz.  Ha a Azure AD Connect egy régebbi verzióját használja, tekintse át ezeket a funkciókat a szinkronizálási beállításokkal, hogy azok megfeleljenek az aktív szinkronizálási kiszolgálónak.  Nincs szükség további konfigurációs lépésekre.|
+|Összevonás az AD FS rendszerrel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált AD FS szabályzatot használják.  Ha Azure AD Connectt használ a AD FS Farm felügyeletéhez, igény szerint megváltoztathatja a bejelentkezési módszert, hogy a rendszer a készenléti kiszolgáló aktív szinkronizálási példányának előkészítésekor AD FS összevonást is megváltoztassa.   Ha az eszköz beállításai engedélyezve vannak az aktív szinkronizációs kiszolgálón, konfigurálja ezeket a beállításokat ezen a kiszolgálón az "eszközbeállítások konfigurálása" feladat futtatásával.|
+|Átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési metódust, hogy az megfeleljen az aktív szinkronizációs kiszolgáló konfigurációjának.  Ha ezt a kiszolgálót az elsődlegesnek való előléptetés előtt nem követi, a zökkenőmentes egyszeri bejelentkezés mellett a rendszer letiltja a bérlőt, és előfordulhat, hogy a bérlő zárolva van, ha nem rendelkezik a jelszó-kivonatok szinkronizálása biztonsági mentéssel lehetőséggel. Azt is vegye figyelembe, hogy az átmenő hitelesítés átmeneti módban való engedélyezésekor az új hitelesítési ügynök települ, regisztrálva lesz, és magas rendelkezésre állású ügynökként fog futni, amely elfogadja a bejelentkezési kérelmeket.|
+|Összevonás a PingFederate-tel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált PingFederate szabályzatot használják.  Igény szerint módosíthatja a bejelentkezési módszert, hogy PingFederate a készenléti kiszolgáló aktív szinkronizálási példányként való előkészítését.  Ez a lépés elhalasztható, amíg további tartományokat nem kell összevonása a PingFederate-mel.|
 
 ## <a name="next-steps"></a>További lépések
 
