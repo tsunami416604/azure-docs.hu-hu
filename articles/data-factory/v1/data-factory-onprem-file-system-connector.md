@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása fájlrendszerbe/fájlrendszerből az Azure Data Factory használatával
-description: Ismerje meg, hogyan másolhatja az adatokat egy helyszíni fájlrendszerbe és onnan az Azure Data Factory használatával.
+title: Adatok másolása egy fájlrendszerbe a Azure Data Factory használatával
+description: Bemutatjuk, hogy miként másolhatók az adatok egy helyszíni fájlrendszerből és a Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,81 +13,81 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265934"
 ---
-# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Adatok másolása helyszíni fájlrendszerbe és onnan az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Adatok másolása helyszíni fájlrendszerből és a Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-file-system-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-file-system.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a [Fájlrendszer-összekötő v2-ben című témakört.](../connector-file-system.md)
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, lásd: [fájlrendszer-összekötő a v2-ben](../connector-file-system.md).
 
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása, és egy helyszíni fájlrendszerből. Az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkre épül, amely általános áttekintést nyújt az adatmozgásról a másolási tevékenységgel.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni fájlrendszerbe történő másolásához. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
-Az intézményi **fájlrendszerből** adatokat másolhat a következő adattárakba:
+Az adatok a helyszíni **fájlrendszerből** a következő adattárakba másolhatók:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-A következő adattárakból adatokat másolhat **egy helyszíni fájlrendszerbe:**
+Az adatok a következő adattárakból egy helyszíni **fájlrendszerbe**másolhatók:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> A Másolási tevékenység nem törli a forrásfájlt, miután sikeresen másolta a célhelyre. Ha a sikeres másolás után törölnie kell a forrásfájlt, hozzon létre egy egyéni tevékenységet a fájl törléséhez és a folyamatban lévő tevékenység használatához.
+> A másolási tevékenység nem törli a forrásfájlt, miután sikeresen átmásolta a célhelyre. Ha sikeres másolás után törölni kell a forrásfájlt, hozzon létre egy egyéni tevékenységet a fájl törléséhez, és használja a folyamatot a folyamatban.
 
-## <a name="enabling-connectivity"></a>Csatlakozás engedélyezése
-A Data Factory támogatja a helyszíni fájlrendszerhez való csatlakozást az **Adatkezelési átjárón**keresztül. A Data Factory szolgáltatás hoz a helyszíni környezetben telepítenie kell az adatkezelési átjárót, hogy bármely támogatott helyszíni adattárhoz csatlakozzon, beleértve a fájlrendszert is. Az Adatkezelési átjáróról és az átjáró beállításával kapcsolatos részletes útmutatásról az [Adatok áthelyezése a helyszíni források és a felhő között az Adatkezelési átjáróval](data-factory-move-data-between-onprem-and-cloud.md)című témakörben olvashat. Az adatkezelési átjárón kívül nincs más bináris fájl telepítve a helyszíni fájlrendszerrel való kommunikációhoz és a helyszíni fájlrendszerből való kommunikációhoz. Telepítenie kell és használnia kell az adatkezelési átjárót, még akkor is, ha a fájlrendszer az Azure IaaS virtuális gépben található. Az átjáróról az [Adatkezelési átjáró című témakörben](data-factory-data-management-gateway.md)talál részletes információt.
+## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
+A Data Factory **adatkezelés átjárón**keresztül támogatja a helyszíni fájlrendszerhez való csatlakozást. Telepítenie kell a adatkezelés átjárót a helyszíni környezetbe ahhoz, hogy a Data Factory szolgáltatás csatlakozhasson bármely támogatott helyszíni adattárhoz, beleértve a fájlrendszert is. Az adatkezelés átjáróval és az átjáró beállításával kapcsolatos részletes utasításokért lásd: az [adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md). A adatkezelés átjárón kívül más bináris fájlokat sem kell telepíteni a helyszíni fájlrendszerről történő kommunikációhoz. Akkor is telepítenie kell a adatkezelés-átjárót, ha a fájlrendszer az Azure IaaS virtuális gépen van. Az átjáróval kapcsolatos részletes információkért lásd: [adatkezelés átjáró](data-factory-data-management-gateway.md).
 
-Linuxos fájlmegosztás használatához telepítse a [Samba-t](https://www.samba.org/) a Linux-kiszolgálóra, és telepítse az Adatkezelési átjárót Windows-kiszolgálóra. Az adatkezelési átjáró Linux-kiszolgálóra történő telepítése nem támogatott.
+Linux-fájlmegosztás használatához telepítse a [Samba](https://www.samba.org/) -t a Linux-kiszolgálóra, és telepítse adatkezelés átjárót egy Windows Serveren. Adatkezelés átjáró Linux-kiszolgálón való telepítése nem támogatott.
 
 ## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot másolási tevékenységgel, amely az adatokat fájlrendszerbe/fájlrendszerből különböző eszközök/API-k használatával helyezi át.
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyezi át az adatait egy fájlrendszerbe.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközökkel is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és REST **API.** Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre egy **adat-előállító**. Az adat-előállító egy vagy több folyamatot tartalmazhat.
-2. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására. Ha például adatokat másol egy Azure blob storage-ból egy helyszíni fájlrendszerbe, két összekapcsolt szolgáltatást hoz létre a helyszíni fájlrendszer és az Azure-tárfiók és az adat-előállító összekapcsolására. A helyszíni fájlrendszerre jellemző csatolt szolgáltatástulajdonságokról a [Csatolt szolgáltatástulajdonságok](#linked-service-properties) című szakaszban találhatók.
-3. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására. Az utolsó lépésben említett példában hozzon létre egy adatkészletet a blob tároló és a bemeneti adatokat tartalmazó mappa megadásához. Emellett egy másik adatkészletet is létrehozhat a fájlrendszer mappájának és fájlnevének megadásához (nem kötelező). A helyszíni fájlrendszerre jellemző adatkészlet-tulajdonságokat az adatkészlet tulajdonságai szakaszban [található.](#dataset-properties)
-4. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel. A korábban említett példában a BlobSource-ot forrásként, a FileSystemSink-et pedig a másolási tevékenység fogadójaként használja. Hasonlóképpen, ha a helyszíni fájlrendszerről az Azure Blob Storage-ba másolja a másolási tevékenységet, használja a FileSystemSource és a BlobSink szolgáltatást. A helyszíni fájlrendszerre jellemző másolási tevékenységtulajdonságokat a [Tevékenység tulajdonságainak másolása](#copy-activity-properties) című szakaszban olvassa el. Az adattár forrásként vagy fogadóként való használatáról az adattár előző szakaszában található hivatkozásra kattintva.
+1. Hozzon létre egy **adatelőállítót**. Egy adatelőállító egy vagy több folyamatot is tartalmazhat.
+2. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához. Ha például egy Azure Blob Storage-ból másol egy helyszíni fájlrendszerbe, két társított szolgáltatást hoz létre, hogy a helyszíni fájlrendszert és az Azure Storage-fiókot a saját adatokkal rendelkező gyárához kapcsolja. A helyi fájlrendszerre jellemző társított szolgáltatások tulajdonságairól a [társított szolgáltatás tulajdonságai](#linked-service-properties) című szakaszban olvashat.
+3. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. Az utolsó lépésben említett példában létrehoz egy adatkészletet, amely megadja a bemeneti adatokat tartalmazó BLOB-tárolót és mappát. Emellett létrehoz egy másik adatkészletet is, amely megadja a mappa és a fájl nevét (opcionális) a fájlrendszerben. A helyszíni fájlrendszerre jellemző adatkészlet-tulajdonságokért lásd az [adatkészlet tulajdonságai](#dataset-properties) szakaszt.
+4. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. A korábban említett példában a BlobSource forrásként és FileSystemSinkként használja a másolási tevékenységhez. Hasonlóképpen, ha a helyszíni fájlrendszerről az Azure Blob Storagera másol, a másolási tevékenységben a FileSystemSource és a BlobSink is használja. A helyi fájlrendszerre jellemző másolási tevékenység tulajdonságairól lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakasz. Az adattár forrásként vagy fogadóként való használatával kapcsolatos részletekért kattintson az adattár előző szakaszában található hivatkozásra.
 
-A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja.  A Data Factory-entitások JSON-definícióival rendelkező mintákat, amelyek adatok másolására szolgálnak a fájlrendszerbe/fájlrendszerből, lásd a [JSON-példák](#json-examples-for-copying-data-to-and-from-file-system) című cikk ben című szakaszt.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  Az adatok fájlrendszerbe való másolásához használt Data Factory JSON-definíciókkal rendelkező minták esetében lásd a jelen cikk JSON- [példák](#json-examples-for-copying-data-to-and-from-file-system) című szakaszát.
 
-A következő szakaszok a Fájlrendszerre jellemző Data Factory entitások meghatározására használt JSON-tulajdonságok részleteit ismertetik:
+A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságokat, amelyeket a rendszer a fájlrendszerre vonatkozó Data Factory definiálásához használ:
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
-A helyszíni fájlrendszert összekapcsolhatja egy Azure-adat-előállítóval a **helyszíni fájlkiszolgálóhoz** csatolt szolgáltatással. Az alábbi táblázat a helyszíni fájlkiszolgálóhoz csatolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **fájlkiszolgáló** társított szolgáltatásával. A következő táblázat a helyszíni fájlkiszolgáló társított szolgáltatásához tartozó JSON-elemek leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |Győződjön meg arról, hogy a típustulajdonság **OnPremisesFileServer**. |Igen |
-| gazda |A másolni kívánt mappa gyökérelérési útját adja meg. Használja a " \ ' escape karaktert a karakterlánc speciális karaktereihez. [Példákat lásd: Minta csatolt szolgáltatás és adatkészlet-definíciók.](#sample-linked-service-and-dataset-definitions) |Igen |
-| Userid |Adja meg annak a felhasználónak az azonosítóját, aki hozzáfér a kiszolgálóhoz. |Nem (ha a encryptedCredential lehetőséget választja) |
-| jelszó |Adja meg a felhasználó jelszavát (userid). |Nem (ha a encryptedCredential (titkosított hitelesítő adat) lehetőséget választja |
-| titkosított hitelesítő adatok |Adja meg a New-AzDataFactoryEncryptValue parancsmag futtatásával beszerezhető titkosított hitelesítő adatokat. |Nem (ha úgy dönt, hogy a használati parancsot és a jelszót egyszerű szövegként adja meg) |
-| átjárónév |Megadja annak az átjárónak a nevét, amelyet a Data Factory a helyszíni fájlkiszolgálóhoz való csatlakozáshoz kell használnia. |Igen |
+| type |Győződjön meg arról, hogy a Type tulajdonság értéke **OnPremisesFileServer**. |Igen |
+| gazda |Megadja a másolni kívánt mappa gyökerének elérési útját. A karakterláncban a speciális karaktereknél használja a Escape karaktert. Példákat a következő témakörben talál: példa [társított szolgáltatás és adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) . |Igen |
+| userid |Itt adhatja meg annak a felhasználónak az AZONOSÍTÓját, aki hozzáfér a kiszolgálóhoz. |Nem (ha a encryptedCredential választja) |
+| jelszó |A felhasználó jelszavának megadása (userid). |Nem (ha a encryptedCredential választja |
+| encryptedCredential |A New-AzDataFactoryEncryptValue parancsmag futtatásával adhatja meg a titkosított hitelesítő adatokat. |Nem (ha úgy dönt, hogy egyszerű szövegként adja meg a felhasználói azonosítót és a jelszót) |
+| Átjáró neve |Annak az átjárónak a nevét adja meg, amelyet a Data Factory kell használnia a helyszíni fájlkiszolgálón való kapcsolódáshoz. |Igen |
 
 
-### <a name="sample-linked-service-and-dataset-definitions"></a>Mintacsatolt szolgáltatás- és adatkészlet-definíciók
-| Forgatókönyv | Állomás a csatolt szolgáltatásdefinícióban | folderPath az adatkészlet definíciójában |
+### <a name="sample-linked-service-and-dataset-definitions"></a>Példa társított szolgáltatás és adatkészlet-definíciók
+| Forgatókönyv | Gazdagép a társított szolgáltatás definíciójában | folderPath az adatkészlet definíciójában |
 | --- | --- | --- |
-| Helyi mappa az adatkezelési átjárógépen: <br/><br/>Példák:\\ \* D: vagy D:\folder\almappa\\\* |D:\\ \\ (adatkezelési átjáró 2.0-s és újabb verzióihoz) <br/><br/> localhost (korábbi verziókhoz, mint az Adatkezelési átjáró 2.0) |. vagy\\\\mappaalmappa (Adatkezelési átjáró 2.0-s és újabb verzióihoz) \\ \\ <br/><br/>D:\\ \\ vagy\\\\D: mappa\\\\almappa (2.0 alatti átjáróverzió esetén) |
-| Távoli megosztott mappa: <br/><br/>\\ \\Példák:\\myserver \\ \\megosztás\\\\ \* \\vagy\\myserver megosztási mappa almappája\\\* |\\\\\\\\myserver\\\\megosztás |. vagy\\\\mappa almappája \\ \\ |
+| Helyi mappa adatkezelés átjáró számítógépén: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\\* |D:\\ \\ (adatkezelés átjáró 2,0-es és újabb verziói esetén) <br/><br/> localhost (a adatkezelés Gateway 2,0-es verziójánál korábbi verziók esetében) |. \\ \\vagy mappa\\almappája (adatkezelés átjáró 2,0-es és \\ újabb verzióihoz) <br/><br/>D:\\ \\ vagy d:\\\\mappa\\\\almappája (az átjáró 2,0-es verziójához) |
+| Távoli megosztott mappa: <br/><br/>Példák: \\ \\MyServer\\Share\\ \* vagy \\\\MyServer Share\\mappa\\ \\\\\* |\\\\\\\\MyServer\\\\-megosztás |. \\ \\vagy mappa\\ \\ |
 
 >[!NOTE]
->A felhasználói felületen keresztültörténő szerkesztéskor nem kell`\\`dupla fordított perjelet ( ) megadnia ahhoz, hogy a JSON-on keresztül ily értsen, adja meg az egyetlen fordított perjelet.
+>Felhasználói felületen keresztüli szerzői műveletek esetén nem szükséges dupla fordított perjelet (`\\`) megadnia, mint a JSON-n keresztül, adjon meg egy fordított perjelet.
 
 ### <a name="example-using-username-and-password-in-plain-text"></a>Példa: Felhasználónév és jelszó használata egyszerű szövegben
 
@@ -106,7 +106,7 @@ A helyszíni fájlrendszert összekapcsolhatja egy Azure-adat-előállítóval a
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Példa: Titkosított hitelesítő adatok használata
+### <a name="example-using-encryptedcredential"></a>Példa: a encryptedcredential használata
 
 ```JSON
 {
@@ -123,28 +123,28 @@ A helyszíni fájlrendszert összekapcsolhatja egy Azure-adat-előállítóval a
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek létrehozása című](data-factory-create-datasets.md)témakörben található. A JSON adatkészletek szerkezete, rendelkezésre állása és házirendje minden adatkészlettípushoz hasonlóak.
+Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [adatkészletek létrehozása](data-factory-create-datasets.md). Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
 
-A typeProperties szakasz az adatkészlet egyes típusaiesetében eltérő. Olyan információkat szolgáltat, mint például az adatok helye és formátuma az adattárban. A **FileShare** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
+A typeProperties szakasz eltérő az egyes adatkészletek esetében. Olyan információkat biztosít, mint például az adattárban lévő adatok helye és formátuma. A **fájlmegosztás** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| folderPath |Megadja a mappa részelérési útját. Használja az escape\' karaktert ' a karakterlánc speciális karaktereihez. A helyettesítő karakter szűrő nem támogatott. [Példákat lásd: Minta csatolt szolgáltatás és adatkészlet-definíciók.](#sample-linked-service-and-dataset-definitions)<br/><br/>Ezt a tulajdonságot kombinálhatja **a partitionBy tulajdonsággal,** hogy a mappaelérési utak a szelet kezdő/záró dátum-időpontja alapján legyenek. |Igen |
-| fileName |Ha azt szeretné, hogy a táblázat a mappában lévő fájlra hivatkozzon, adja meg a fájl nevét a **folder-ban.** Ha nem ad meg értéket ehhez a tulajdonsághoz, a táblázat a mappában lévő összes fájlra mutat.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenységgyűjtőben, a létrehozott fájl neve a következő formátumú: <br/><br/>`Data.<Guid>.txt`(Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
-| fileFilter |Adjon meg egy szűrőt, amelyet a mappapatikus ban lévő fájlok egy részhalmazának kijelölésére, nem pedig az összes fájlhoz kell használni. <br/><br/>Az engedélyezett `*` értékek a következők: (több karakter) és `?` (egy karakter).<br/><br/>1. példa: "fileFilter": "*.log"<br/>2. példa: "fileFilter": 2014-1-?. txt"<br/><br/>Ne feledje, hogy a fileFilter bemeneti FileShare adatkészletesetén alkalmazható. |Nem |
-| particionáltby |A partitionedBy segítségével dinamikus folderPath/fileName mappát adhat meg az idősorozat-adatokhoz. Egy példa folderPath paraméterezett minden óra az adatok. |Nem |
-| Formátum | A következő formátumtípusok támogatottak: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa a formátum alatti **típustulajdonságot** ezen értékek egyikére. További információt a [Szövegformátum,](data-factory-supported-file-and-compression-formats.md#text-format) [a Json formátum,](data-factory-supported-file-and-compression-formats.md#json-format) [az Avro formátum,](data-factory-supported-file-and-compression-formats.md#avro-format) [az Orc Formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [Parkettaformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) című szakaszban talál. <br><br> Ha a fájlokat fájlalapú tárolók között (bináris másolat) szeretné **másolni,** hagyja ki a formátum szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is. |Nem |
-| tömörítés | Adja meg az adatok tömörítésének típusát és szintjét. A támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**és **ZipDeflate**. Támogatott szintek: **Optimális** és **leggyorsabb**. Lásd: [Fájl- és tömörítési formátumok az Azure Data Factoryban.](data-factory-supported-file-and-compression-formats.md#compression-support) |Nem |
+| folderPath |Megadja a mappa alelérési útját. A karakterláncban a speciális\' karakterekhez használja a Escape karaktert. A helyettesítő karakteres szűrő nem támogatott. Példákat a következő témakörben talál: példa [társított szolgáltatás és adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) .<br/><br/>Ezt a tulajdonságot kombinálhatja a **partitionBy** , hogy a mappa elérési útjai a szelet kezdő/befejező dátum-és időpontjain alapulnak. |Igen |
+| fileName |Adja meg a fájl nevét a **folderPath** , ha azt szeretné, hogy a tábla egy adott fájlra hivatkozzon a mappában. Ha nem ad meg értéket ehhez a tulajdonsághoz, a tábla a mappában található összes fájlra mutat.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő formátumban jelenik meg: <br/><br/>`Data.<Guid>.txt`(Például: a. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt fájl) |Nem |
+| fileFilter |Adja meg azt a szűrőt, amelyet a folderPath található fájlok részhalmazának kiválasztására kíván használni az összes fájl helyett. <br/><br/>Az engedélyezett értékek a `*` következők: (több karakter `?` ) és (egyetlen karakter).<br/><br/>1. példa: "fileFilter": "*. log"<br/>2. példa: "fileFilter": 2014-1-?. txt<br/><br/>Vegye figyelembe, hogy a fileFilter egy bemeneti fájlmegosztás adatkészlet esetében alkalmazható. |Nem |
+| partitionedBy |A partitionedBy segítségével megadhatja az idősorozat-adatsorok dinamikus folderPath/fájlnevét. Egy példa a folderPath paramétert minden órában. |Nem |
+| formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. lásd [a Azure Data Factory fájl-és tömörítési formátumait](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 > [!NOTE]
-> A fájlnév és a fájlszűrő nem használható egyszerre.
+> A fájlnév és a fileFilter egyidejű használata nem lehetséges.
 
-### <a name="using-partitionedby-property"></a>PartitionedBy tulajdonság használata
-Ahogy az előző szakaszban is említettük, dinamikus folderPath és fájlnév adható meg az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, a [Data Factory függvényekkel és a rendszerváltozókkal.](data-factory-functions-variables.md)
+### <a name="using-partitionedby-property"></a>A partitionedBy tulajdonság használata
+Ahogy azt az előző szakaszban is említettük, megadhat egy dinamikus folderPath és fájlnevet az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, [Data Factory függvénnyel és a rendszerváltozókkal](data-factory-functions-variables.md).
 
-Az idősorozat-adatkészletek, az ütemezés és a szeletek további részleteinek megismeréséhez olvassa el az [Adatkészletek létrehozása](data-factory-create-datasets.md), [Ütemezés és végrehajtás,](data-factory-scheduling-and-execution.md) [valamint A folyamatok létrehozása című témakört.](data-factory-create-pipelines.md)
+Az idősorozat-adatkészletek, az ütemezés és a szeletek részleteinek megismeréséhez lásd: [adatkészletek létrehozása](data-factory-create-datasets.md), [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md)és [folyamatok létrehozása](data-factory-create-pipelines.md).
 
-#### <a name="sample-1"></a>1. minta:
+#### <a name="sample-1"></a>1. példa:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -154,7 +154,7 @@ Az idősorozat-adatkészletek, az ütemezés és a szeletek további részletein
 ],
 ```
 
-Ebben a példában a ({Slice} ) a Slice Start Data Factory rendszerváltozó értékére cserélődik a formátumban (YYYYMMDDHH). A SliceStart a szelet kezdési időpontjára utal. A folderPath minden szeletesetében más. Például: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104.
+Ebben a példában a {slice} helyére a Data Factory rendszerváltozó értéke SliceStart (YYYYMMDDHH) formátumban van lecserélve. A SliceStart a szelet kezdő időpontját jelöli. A folderPath különbözik az egyes szeletekhez. Például: tulajdonság beállítása wikidatagateway/wikisampledataout/2014100103 vagy tulajdonság beállítása wikidatagateway/wikisampledataout/2014100104.
 
 #### <a name="sample-2"></a>2. minta:
 
@@ -170,57 +170,57 @@ Ebben a példában a ({Slice} ) a Slice Start Data Factory rendszerváltozó ér
 ],
 ```
 
-Ebben a példában a SliceStart évét, hónapját, napját és idejét a folderPath és fileName tulajdonságok által használt különálló változókba bontják ki.
+Ebben a példában a SliceStart év, hónap, nap és időpont a folderPath és a fájlnév tulajdonságai által használt különálló változókba kerül.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálására rendelkezésre álló szakaszok & tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Tulajdonságok, például név, leírás, bemeneti és kimeneti adatkészletek és házirendek állnak rendelkezésre minden típusú tevékenységek. Mivel a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak.
+A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti adatkészletek, valamint a házirendek minden típusú tevékenységhez elérhetők. Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek.
 
-Másolási tevékenység esetén a források és a fogadók típusától függően változnak. Ha egy helyszíni fájlrendszerből helyez át adatokat, a másolási tevékenység forrástípusát a FileSystemSource mezőre **állítja.** Hasonlóképpen, ha az adatokat egy helyszíni fájlrendszerbe helyezi át, a másolási tevékenység fogadótípusát a FileSystemSink beállításra **állítja.** Ez a szakasz a FileSystemSource és a FileSystemSink által támogatott tulajdonságok listáját tartalmazza.
+Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak. Ha helyszíni fájlrendszerből helyez át adatátvitelt, a másolási tevékenységben adja meg a forrás típusát a **FileSystemSource**értékre. Hasonlóképpen, ha egy helyszíni fájlrendszerbe helyezi át az adatátvitelt, a másolási tevékenységben állítsa be a fogadó típusát a **FileSystemSink**értékre. Ez a szakasz a FileSystemSource és a FileSystemSink által támogatott tulajdonságok listáját tartalmazza.
 
-**A FileSystemSource** a következő tulajdonságokat támogatja:
-
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
-| --- | --- | --- | --- |
-| Rekurzív |Azt jelzi, hogy az adatok olvasása rekurzív anameddig az almappákból vagy csak a megadott mappából történik. |Igaz, Hamis (alapértelmezett) |Nem |
-
-**A FileSystemSink** a következő tulajdonságokat támogatja:
+A **FileSystemSource** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| copyBehavior (Másként) |A másolási viselkedést határozza meg, ha a forrás BlobSource vagy FileSystem. |**Hierarchia megőrzése:** Megőrzi a fájlhierarchiát a célmappában. Ez azt illeti, a forrásfájl relatív elérési útja a forrásmappához megegyezik a célfájl célmappához való relatív elérési útvonalával.<br/><br/>**Hierarchia összeolvasztása:** A forrásmappából származó összes fájl a célmappa első szintjén jön létre. A célfájlok automatikusan létrehozott névvel jönnek létre.<br/><br/>**MergeFiles:** A forrásmappából származó összes fájl egyesítése egy fájlba. Ha meg van adva a fájlnév/blobnév, az egyesített fájlnév a megadott név. Ellenkező esetben ez egy automatikusan generált fájlnév. |Nem |
+| rekurzív |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. |Igaz, hamis (alapértelmezett) |Nem |
+
+A **FileSystemSink** a következő tulajdonságokat támogatja:
+
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| --- | --- | --- | --- |
+| copyBehavior |Meghatározza a másolási viselkedést a forrás BlobSource vagy fájlrendszerének használatakor. |**PreserveHierarchy:** Megőrzi a fájl hierarchiáját a célmappában. Ez a forrásfájl és a forrásfájl relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/>**FlattenHierarchy:** A rendszer a forrás mappából származó összes fájlt a célmappa első szintjén hozza létre. A célfájl automatikusan létrehozott névvel lett létrehozva.<br/><br/>**MergeFiles:** Egyesít minden fájlt a forrás mappájából egy fájlba. Ha meg van adva a fájl neve/blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben az automatikusan létrehozott fájlnév. |Nem |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
-Ez a szakasz a Rekurzív és copyBehavior tulajdonságok különböző értékkombinációinak másolási műveletének eredő viselkedését ismerteti.
+Ez a szakasz ismerteti a másolási művelet eredményét a rekurzív és a copyBehavior tulajdonságainak különböző értékeihez.
 
 | rekurzív érték | copyBehavior érték | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| igaz |megőrzési hierarchia |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a Mappa1 mappa a forrással megegyező struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5 |
-| igaz |összeolvasztási hierarchia |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a célmappa1 a következő struktúrával jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;fájl automatikusan létrehozott neve1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott név a File2 fájlhoz<br/>&nbsp;&nbsp;&nbsp;&nbsp;fájl 3 automatikusan létrehozott neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;fájl4 automatikusan létrehozott neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott név a File5 fájlhoz |
-| igaz |mergeFiles |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a célmappa1 a következő struktúrával jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A fájl1 + File2 + File3 + File4 + File 5 tartalom egyetlen fájlba egyesül, automatikusan generált fájlnévvel. |
-| hamis |megőrzési hierarchia |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a Folder1 mappa a következő struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/>A File3, File4 és File5 mappát nem veszi fel a rendszer. |
-| hamis |összeolvasztási hierarchia |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a Folder1 mappa a következő struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;fájl automatikusan létrehozott neve1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott név a File2 fájlhoz<br/><br/>A File3, File4 és File5 mappát nem veszi fel a rendszer. |
-| hamis |mergeFiles |A Mappa1 forrásmappa esetében a következő<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5<br/><br/>a Folder1 mappa a következő struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A Fájl1 + File2 tartalom egyetlen fájlba egyesül, automatikusan generált fájlnévvel.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl automatikusan létrehozott neve1<br/><br/>A File3, File4 és File5 mappát nem veszi fel a rendszer. |
+| igaz |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| igaz |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a fájl3 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File4 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File5 automatikusan generált neve |
+| igaz |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve, amely egy automatikusan létrehozott fájlnevet tartalmaz. |
+| hamis |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem kerül felvételre. |
+| hamis |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem kerül felvételre. |
+| hamis |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 tartalma egyetlen fájlba van egyesítve egy automatikusan létrehozott fájlnévvel.<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 automatikusan generált neve<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem kerül felvételre. |
 
 ## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
-Tekintse meg [a fájl- és tömörítési formátumokat az Azure Data Factory cikkében](data-factory-supported-file-and-compression-formats.md) a részletekről.
+A részletekért tekintse meg a [fájl-és tömörítési formátumokat Azure Data Factory](data-factory-supported-file-and-compression-formats.md) cikkben.
 
-## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-példák az adatok fájlrendszerbe és fájlrendszerből történő másolására
-Az alábbi példák minta JSON-definíciókat tartalmaznak, amelyek segítségével folyamatot hozhat létre a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy az [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával. Bemutatják, hogyan másolhat adatokat egy helyszíni fájlrendszerbe és az Azure Blob storage-ba. Azonban az azure Data Factory másolási tevékenység használatával *közvetlenül* a források bármelyikéből másolhatja az adatokat a [Támogatott források és fogadók](data-factory-data-movement-activities.md#supported-data-stores-and-formats) listában felsorolt a fogadók bármelyikébe.
+## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-példák az adatok fájlrendszerbe történő másolásához
+Az alábbi példák olyan JSON-definíciókat biztosítanak, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatják, hogyan másolhatók az adatok egy helyszíni fájlrendszerből és az Azure Blob Storage-ba. Az adatok másolása azonban *közvetlenül* az egyik forrásból a [támogatott forrásokban](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt mosogatók egyikére, a másolási tevékenység használatával pedig a Azure Data Factoryban is elsüllyed.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Példa: Adatok másolása egy helyszíni fájlrendszerből az Azure Blob storage-ba
-Ez a minta bemutatja, hogyan másolhat adatokat egy helyszíni fájlrendszerből az Azure Blob storage-ba. A minta a következő Data Factory entitásokkal rendelkezik:
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Példa: adatok másolása helyszíni fájlrendszerből az Azure Blob Storage-ba
+Ez a minta bemutatja, hogyan másolhat adatok egy helyszíni fájlrendszerből az Azure Blob Storage szolgáltatásba. A mintában a következő Data Factory entitások vannak:
 
-* [OnPremisesFileServer](#linked-service-properties)típusú csatolt szolgáltatás.
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
-* [FileShare](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
-* [A Fájlrendszerforrást](#copy-activity-properties) és a [BlobSinket](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat.](data-factory-create-pipelines.md)
+* [OnPremisesFileServer](#linked-service-properties)típusú társított szolgáltatás.
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+* [Fájlmegosztás](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+* [FileSystemSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A következő minta óránként másolja az idősorozat-adatokat egy helyszíni fájlrendszerből az Azure Blob storage-ba. Az ezekben a mintákban használt JSON-tulajdonságokat a minták utáni szakaszok ismertetik.
+Az alábbi minta egy helyszíni fájlrendszerből származó idősorozat-adatok óránkénti Azure Blob Storage-ba történő másolását végzi. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként állítsa be az Adatkezelési átjárót az Adatok áthelyezése a [helyszíni források között és a felhő között az Adatkezelési átjáróval](data-factory-move-data-between-onprem-and-cloud.md)című útmutató utasításai nak megfelelően.
+Első lépésként állítsa be adatkezelés átjárót az [adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md)című részben leírtak szerint.
 
-**Helyszíni fájlkiszolgálóhoz csatolt szolgáltatás:**
+**Helyszíni fájlkiszolgáló társított szolgáltatása:**
 
 ```JSON
 {
@@ -237,9 +237,9 @@ Első lépésként állítsa be az Adatkezelési átjárót az Adatok áthelyez�
 }
 ```
 
-Azt javasoljuk, hogy a **userid** és a **jelszó** tulajdonságai helyett használja a **encryptedCredential** tulajdonságot. A csatolt szolgáltatással kapcsolatos részleteket a [Fájlkiszolgáló hoz csatolt szolgáltatás](#linked-service-properties) ban találja.
+Azt javasoljuk, hogy használja a **encryptedCredential** tulajdonságot a **userid** és a **Password** tulajdonság helyett. A társított szolgáltatás részletes ismertetését lásd: [fájlkiszolgáló társított szolgáltatása](#linked-service-properties) .
 
-**Azure Storage-hoz kapcsolódó szolgáltatás:**
+**Azure Storage-beli társított szolgáltatás:**
 
 ```JSON
 {
@@ -255,9 +255,9 @@ Azt javasoljuk, hogy a **userid** és a **jelszó** tulajdonságai helyett haszn
 
 **Helyszíni fájlrendszer bemeneti adatkészlete:**
 
-Az adatokat óránként veszi késve egy új fájlból. A folderPath és fileName tulajdonságok meghatározása a szelet kezdési időpontja alapján kerül meghatározásra.
+Az adatok minden órában egy új fájlból kerülnek felvételre. A folderPath és a fájlnév tulajdonságainak meghatározása a szelet kezdési időpontja alapján történik.
 
-A `"external": "true"` beállítás tájékoztatja a Data Factory-t, hogy az adatkészlet az adat-előállítón kívül található, és nem az adat-előállítóban végzett tevékenység állítja elő.
+A `"external": "true"` beállítás azt Data Factory, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -319,9 +319,9 @@ A `"external": "true"` beállítás tájékoztatja a Data Factory-t, hogy az ada
 }
 ```
 
-**Azure Blob tárolási kimeneti adatkészlet:**
+**Az Azure Blob Storage kimeneti adatkészlete:**
 
-Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül beírásra. A blob mappaelérési útja dinamikusan kiértékelve a feldolgozás alatt álló szelet kezdési időpontja alapján történik. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészeit használja.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év, hónap, nap és óra részét használja.
 
 ```JSON
 {
@@ -379,9 +379,9 @@ Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül be�
 }
 ```
 
-**Másolási tevékenység egy folyamatban, amelynek fájlrendszerforrása és blobfogadója van:**
+**Másolási tevékenység egy folyamatban a fájlrendszer forrásával és a blob-fogadóval:**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A json-definícióban a **forrástípus** **Fájlrendszerforrás,** **a fogadó** típusa pedig **BlobSink**lesz.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **FileSystemSource**értékre van **állítva, a fogadó típusa pedig** **BlobSink**.
 
 ```JSON
 {
@@ -429,18 +429,18 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Példa: Adatok másolása az Azure SQL Database-ből egy helyszíni fájlrendszerbe
-A következő minta a következőket mutatja:
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Példa: adatok másolása Azure SQL Databaseból egy helyszíni fájlrendszerbe
+A következő minta a következőket mutatja be:
 
-* [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties) típusú csatolt szolgáltatás.
-* [OnPremisesFileServer](#linked-service-properties)típusú csatolt szolgáltatás.
-* [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties)típusú bemeneti adatkészlet.
-* [FileShare](#dataset-properties)típusú kimeneti adatkészlet.
-* [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) és [FileSystemSink](#copy-activity-properties)programot használó másolási tevékenységgel rendelkező folyamat.
+* AzureSqlDatabase típusú társított szolgáltatás [.](data-factory-azure-sql-connector.md#linked-service-properties)
+* [OnPremisesFileServer](#linked-service-properties)típusú társított szolgáltatás.
+* [Tulajdonsága azuresqltable](data-factory-azure-sql-connector.md#dataset-properties)típusú bemeneti adatkészlet.
+* [Fájlmegosztás](#dataset-properties)típusú kimeneti adatkészlet.
+* [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) és [FileSystemSink](#copy-activity-properties)használó másolási tevékenységgel rendelkező folyamat.
 
-A minta óránként átmásolja az Azure SQL-táblából az idősorozat adatait egy helyszíni fájlrendszerbe. Az ezekben a mintákban használt JSON-tulajdonságokat a minták utáni szakaszok ismertetik.
+A minta óránként egy Azure SQL-táblából másol idősorozat-adatok egy helyszíni fájlrendszerbe. Az ezekben a mintákban használt JSON-tulajdonságokat a minták után szakasz ismerteti.
 
-**Azure SQL Database csatolt szolgáltatás:**
+**Azure SQL Database társított szolgáltatás:**
 
 ```JSON
 {
@@ -454,7 +454,7 @@ A minta óránként átmásolja az Azure SQL-táblából az idősorozat adatait 
 }
 ```
 
-**Helyszíni fájlkiszolgálóhoz csatolt szolgáltatás:**
+**Helyszíni fájlkiszolgáló társított szolgáltatása:**
 
 ```JSON
 {
@@ -471,13 +471,13 @@ A minta óránként átmásolja az Azure SQL-táblából az idősorozat adatait 
 }
 ```
 
-A **userid** **és** jelszó tulajdonságok használata helyett azt javasoljuk, hogy a **encryptedCredential** tulajdonságot használja. A csatolt szolgáltatással kapcsolatos részleteket a [Fájlrendszerhez csatolt szolgáltatás](#linked-service-properties) ban találja.
+Azt javasoljuk, hogy használja a **encryptedCredential** tulajdonságot a **userid** és a **Password** tulajdonság használata helyett. A társított szolgáltatás részleteiért lásd: [fájlrendszerhez társított szolgáltatás](#linked-service-properties) .
 
 **Azure SQL bemeneti adatkészlet:**
 
-A minta feltételezi, hogy létrehozott egy "MyTable" táblát az Azure SQL-ben, és tartalmaz egy "timestampcolumn" nevű oszlopot az idősorozat-adatokhoz.
+A minta azt feltételezi, hogy létrehozott egy "Sajáttábla" táblát az Azure SQL-ben, és egy "timestampcolumn" nevű oszlopot tartalmaz az idősoros adatsorokhoz.
 
-A ``“external”: ”true”`` beállítás tájékoztatja a Data Factory-t, hogy az adatkészlet az adat-előállítón kívül található, és nem az adat-előállítóban végzett tevékenység állítja elő.
+A ``“external”: ”true”`` beállítás azt Data Factory, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -506,7 +506,7 @@ A ``“external”: ”true”`` beállítás tájékoztatja a Data Factory-t, h
 
 **Helyszíni fájlrendszer kimeneti adatkészlete:**
 
-Az adatokat óránként új fájlba másolja a rendszer. A blob folderPath és fileName fájlneve a szelet kezdési időpontja alapján kerül meghatározásra.
+Az rendszer óránként másolja az adatfájlokat egy új fájlba. A blob folderPath és fájlnevének meghatározása a szelet kezdési időpontja alapján történik.
 
 ```JSON
 {
@@ -568,9 +568,9 @@ Az adatokat óránként új fájlba másolja a rendszer. A blob folderPath és f
 }
 ```
 
-**SQL-forrással és fájlrendszer-fogadóval rendelkező folyamat másolási tevékenysége:**
+**Másolási tevékenység egy folyamaton az SQL-forrással és a fájlrendszer-fogadóval:**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A folyamat JSON-definíciójában a **forrástípus** **sqlsource**lesz állítva, a **fogadó** típusa pedig **FileSystemSink**. Az **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés kiválasztja a másolandó adatokat az elmúlt órában.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **SqlSource**értékre van állítva, a **fogadó típusa pedig** **FileSystemSink**. A **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kiválasztott adatértéket jelöli.
 
 ```JSON
 {
@@ -619,7 +619,7 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 }
 ```
 
-A forrásadatkészletből oszlopokat is leképezhet a fogadó-adatkészletből a másolási tevékenységdefinícióban. További információt az [Adatkészlet-oszlopok leképezése az Azure Data Factoryban című témakörben talál.](data-factory-map-columns.md)
+A másolási tevékenység definíciójában a forrás adatkészletből származó oszlopokat is leképezheti a fogadó adatkészletből származó oszlopokra. Részletekért lásd: [adatkészlet-oszlopok leképezése Azure Data Factoryban](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
- Ha meg szeretné tudni, hogy milyen kulcsfontosságú tényezők befolyásolják az azure Data Factory adatmozgatásának (másolási tevékenység) teljesítményét, és különböző módokon optimalizálhatja azt, olvassa el a [Tevékenység másolása teljesítmény- és hangolási útmutatót.](data-factory-copy-activity-performance.md)
+ Az adatáthelyezés (másolási tevékenység) teljesítményét befolyásoló főbb tényezőkről Azure Data Factory és az optimalizálás különböző módjairól a [másolási tevékenységek teljesítményének és hangolásának útmutatója](data-factory-copy-activity-performance.md)tartalmaz további információt.

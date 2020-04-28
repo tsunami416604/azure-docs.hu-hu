@@ -1,6 +1,6 @@
 ---
-title: Engedélyezési kód folyamata - Azure Active Directory B2C | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre webalkalmazásokat az Azure AD B2C és az OpenID Connect hitelesítési protokoll használatával.
+title: Engedélyezési kód folyamatábrája – Azure Active Directory B2C | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre webalkalmazásokat a Azure AD B2C és az OpenID Connect hitelesítési protokoll használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,33 +12,33 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260890"
 ---
-# <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0 engedélyezési kód folyamat az Azure Active Directory B2C
+# <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2,0 engedélyezési kód folyamata Azure Active Directory B2C
 
-Az OAuth 2.0 engedélyezési kód támogatás az eszközre telepített alkalmazásokban a védett erőforrások, például a webes API-k eléréséhez. Az OAuth 2.0 Azure Active Directory B2C (Azure AD B2C) implementációjával regisztrációs, bejelentkezési és egyéb identitáskezelési feladatokat adhat hozzá a mobil- és asztali alkalmazásokhoz. Ez a cikk nyelvfüggetlen. A cikkben bemutatjuk, hogyan küldhet és fogadhat HTTP-üzeneteket nyílt forráskódú tárak használata nélkül.
+Az eszközön telepített alkalmazásokban a OAuth 2,0-as engedélyezési kód segítségével hozzáférhet a védett erőforrásokhoz, például a webes API-khoz. A OAuth 2,0 Azure Active Directory B2C (Azure AD B2C) implementációjának használatával a mobil-és asztali alkalmazásokhoz regisztrációt, bejelentkezést és egyéb Identitáskezelés-felügyeleti feladatokat adhat hozzá. Ez a cikk nyelvtől független. A cikkben bemutatjuk, hogyan küldhet és fogadhat HTTP-üzeneteket a nyílt forráskódú kódtárak használata nélkül.
 
-Az OAuth 2.0 engedélyezési kódfolyamatát [az OAuth 2.0 specifikáció 4.1 szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. A legtöbb [alkalmazástípusban](application-types.md)használhatja hitelesítésre és engedélyezésre, beleértve a webalkalmazásokat és a natívan telepített alkalmazásokat is. Az OAuth 2.0 engedélyezési kódfolyamat segítségével biztonságosan szerezhet hozzáférési jogkivonatokat és frissítési jogkivonatokat az alkalmazásokhoz, amelyek az [engedélyezési kiszolgáló](protocols-overview.md)által védett erőforrások elérésére használhatók.  A frissítési jogkivonat lehetővé teszi, hogy az ügyfél új hozzáférési (és frissítési) jogkivonatokat szerezzen be, miután a hozzáférési jogkivonat lejár, általában egy óra elteltével.
+Az OAuth 2,0 engedélyezési kód folyamatát a [OAuth 2,0 specifikáció 4,1. szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. Használhatja hitelesítésre és engedélyezésre a legtöbb alkalmazás- [típusban](application-types.md), beleértve a webalkalmazásokat és a natív módon telepített alkalmazásokat is. Az OAuth 2,0 engedélyezési kód folyamatával biztonságosan kaphat hozzáférési jogkivonatokat, és frissítheti az alkalmazásaihoz tartozó jogkivonatokat, amelyek az [engedélyezési kiszolgáló](protocols-overview.md)által védett erőforrások elérésére használhatók.  A frissítési jogkivonat lehetővé teszi, hogy az ügyfél új hozzáférési (és frissítési) jogkivonatokat szerezzen be a hozzáférési jogkivonat lejárta után, általában egy óra elteltével.
 
-Ez a cikk az OAuth 2.0 engedélyezési kód **folyamatnyilvános ügyfeleire** összpontosít. A nyilvános ügyfél minden olyan ügyfélalkalmazás, amely nem megbízható a titkos jelszó integritásának biztonságos fenntartása érdekében. Ez magában foglalja a mobilalkalmazásokat, asztali alkalmazásokat, és lényegében minden olyan alkalmazást, amely egy eszközön fut, és hozzáférési jogkivonatokat kell beszereznie.
+Ez a cikk a **nyilvános ügyfelek** OAuth 2,0 engedélyezési kód folyamatát ismerteti. A nyilvános ügyfél olyan ügyfélalkalmazás, amely nem megbízható a titkos jelszó integritásának biztonságos fenntartásához. Ez magában foglalja a Mobile apps, az asztali alkalmazások és az eszközön futó alkalmazások, valamint a hozzáférési jogkivonatok beszerzését.
 
 > [!NOTE]
-> Ha identitáskezelést szeretne hozzáadni egy webalkalmazáshoz az Azure AD B2C használatával, használja az [OpenID Connectet](openid-connect.md) az OAuth 2.0 helyett.
+> Ha Azure AD B2C használatával szeretne identitás-kezelést hozzáadni egy webalkalmazáshoz, használja az [OpenID connectet](openid-connect.md) a OAuth 2,0 helyett.
 
-Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0-s folyamatokat, hogy ne csak egyszerű hitelesítést és engedélyezést tegyen. Ez bevezeti a [felhasználói folyamat](user-flow-overview.md). A felhasználói folyamatok segítségével az OAuth 2.0 segítségével felhasználói élményt adhat hozzá az alkalmazáshoz, például a regisztrációhoz, a bejelentkezéshez és a profilkezeléshez. Az OAuth 2.0 protokollt használó identitásszolgáltatók közé tartozik az [Amazon,](identity-provider-amazon.md)az [Azure Active Directory, a](identity-provider-azure-ad-single-tenant.md) [Facebook,](identity-provider-facebook.md) [a GitHub](identity-provider-github.md), a [Google](identity-provider-google.md)és a [LinkedIn](identity-provider-linkedin.md).
+Azure AD B2C kiterjeszti a standard OAuth 2,0-as folyamatait, hogy több, mint egyszerű hitelesítést és engedélyezést végezzenek. Bevezeti a [felhasználói folyamatot](user-flow-overview.md). A felhasználói folyamatok esetében a OAuth 2,0 használatával felhasználói élményeket adhat hozzá az alkalmazáshoz, például a regisztráláshoz, a bejelentkezéshez és a profilok kezeléséhez. Az OAuth 2,0 protokollt használó azonosítók közé tartozik az [Amazon](identity-provider-amazon.md), a [Azure Active Directory](identity-provider-azure-ad-single-tenant.md), a [Facebook](identity-provider-facebook.md), a [GitHub](identity-provider-github.md), a [Google](identity-provider-google.md)és a [LinkedIn](identity-provider-linkedin.md).
 
-A cikkben szereplő HTTP-kérések kipróbálása:
+A cikkben szereplő HTTP-kérelmek kipróbálásához:
 
-1. Cserélje `{tenant}` le az Azure AD B2C-bérlő nevét.
-1. Cserélje `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` le az Azure AD B2C-bérlőben korábban regisztrált alkalmazás alkalmazásazonosítóját.
-1. Cserélje `{policy}` le például `b2c_1_sign_in`a bérlőben létrehozott házirend nevére.
+1. Cserélje `{tenant}` le a helyére a Azure ad B2C bérlő nevét.
+1. Cserélje `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` le egy olyan alkalmazás azonosítóját, amelyet korábban már regisztrált a Azure ad B2C-bérlőben.
+1. Cserélje `{policy}` le a helyére a bérlőben létrehozott szabályzat nevét, például `b2c_1_sign_in`:.
 
-## <a name="1-get-an-authorization-code"></a>1. Engedélyezési kód beszerezni
-Az engedélyezési kód folyamata azzal kezdődik, `/authorize` hogy az ügyfél a végpontra irányítja a felhasználót. Ez a folyamat interaktív része, ahol a felhasználó műveleteket tesz. Ebben a kérésben az ügyfél `scope` a paraméterben jelzi a felhasználótól beszerezni kívánt engedélyeket. A következő három példa (az olvashatóság érdekében sortörésekkel) különböző felhasználói folyamatot használ.
+## <a name="1-get-an-authorization-code"></a>1. engedélyezési kód beszerzése
+Az engedélyezési kód folyamata azzal kezdődik, hogy az ügyfél átirányítja `/authorize` a felhasználót a végpontra. Ez a folyamat interaktív része, ahol a felhasználó végrehajtja a műveletet. Ebben a kérelemben az ügyfél a (z `scope` ) paraméterben azt jelzi, hogy milyen engedélyek szükségesek a felhasználótól való beolvasáshoz. A következő három példa (az olvashatóság érdekében sortöréssel) minden más felhasználói folyamatot használ.
 
 
 ```HTTP
@@ -54,21 +54,21 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
-|{bérlő}| Kötelező | Az Azure AD B2C-bérlő neve|
-| {házirend} | Kötelező | A futtatandó felhasználói folyamat. Adja meg az Azure AD B2C-bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in` `b2c_1_sign_up`, `b2c_1_edit_profile`vagy . |
-| client_id |Kötelező |Az alkalmazáshoz rendelt alkalmazásazonosító az [Azure Portalon.](https://portal.azure.com) |
-| response_type |Kötelező |A választípus, amelynek tartalmaznia `code` kell az engedélyezési kód folyamatához. |
-| redirect_uri |Kötelező |Az alkalmazás átirányítási URI-ja, ahol az alkalmazás hitelesítési válaszokat küld és fogad. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy URL-kódolásúnak kell lennie. |
-| scope |Kötelező |A hatókörök térben elválasztott listája. Egyetlen hatókör-érték jelzi az Azure Active Directory (Azure AD) mindkét kért engedélyeket. Az ügyfélazonosító használata hatókörként azt jelzi, hogy az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, amely használható a saját szolgáltatásán vagy webes API-ján, amelyet ugyanaz az ügyfélazonosító jelöl.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak szüksége van egy frissítési jogkivonatra az erőforrások hosszú élettartamú eléréséhez. A hatókör használatával `openid` is kérhet azonosító jogkivonatot az Azure AD B2C-től. |
-| response_mode |Ajánlott |Az eredményül kapott engedélyezési kód nak az alkalmazásba történő visszaküldéséhez használt módszer. Ez lehet `query` `form_post`, `fragment`vagy . |
-| state |Ajánlott |A kérelemben szereplő érték bármilyen használni kívánt tartalom karakterlánca lehet. Általában egy véletlenszerűen generált egyedi értéket használ, hogy megakadályozza a helyek közötti kérelem hamisítási támadások. Az állapot is a felhasználó állapotára vonatkozó információk kódolására szolgál az alkalmazásban a hitelesítési kérelem bekövetkezése előtt. Például az oldal, amelyen a felhasználó volt, vagy a végrehajtás alatt lévő felhasználói folyamat. |
-| Gyors |Optional |A szükséges felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes `login`érték , amely arra kényszeríti a felhasználót, hogy adja meg a hitelesítő adatait a kéréshez. Az egyszeri bejelentkezés nem lép érvénybe. |
+|Bérlő| Kötelező | A Azure AD B2C bérlő neve|
+| politika | Kötelező | A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in`, `b2c_1_sign_up`, vagy. `b2c_1_edit_profile` |
+| client_id |Kötelező |Az alkalmazáshoz a [Azure Portal](https://portal.azure.com)hozzárendelt alkalmazás-azonosító. |
+| response_type |Kötelező |A válasz típusa, amelynek tartalmaznia `code` kell az engedélyezési kód folyamatát. |
+| redirect_uri |Kötelező |Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldi és fogadja a hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolásnak kell lennie. |
+| scope |Kötelező |A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy Azure Active Directory (Azure AD) a kért engedélyek mindegyikét. Az ügyfél-azonosító hatókörének használata azt jelzi, hogy az alkalmazásnak olyan hozzáférési jogkivonatra van szüksége, amely a saját szolgáltatásán vagy webes API-ban használható, ugyanazokat az ügyfél-azonosítót jelképezve.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez. A `openid` hatókör használatával Azure ad B2C azonosító jogkivonatot is igényelhet. |
+| response_mode |Ajánlott |Az eredményül kapott engedélyezési kód az alkalmazásba való visszaküldéséhez használt módszer. Ez lehet `query`a, `form_post`a vagy `fragment`a. |
+| state |Ajánlott |A kérelemben szereplő érték, amely a használni kívánt tartalom karakterlánca lehet. A rendszer általában véletlenszerűen generált egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisításának támadásait. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna. Például a felhasználó lapja vagy a végrehajtás alatt álló felhasználói folyamat. |
+| gyors |Optional |A kötelező felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes érték a `login`, amely arra kényszeríti a felhasználót, hogy adja meg hitelesítő adatait a kérésen. Az egyszeri bejelentkezés nem lép érvénybe. |
 
-Ezen a ponton a felhasználónak be kell fejeznie a felhasználói folyamat munkafolyamatát. Ez magában foglalhatja a felhasználó megadását a felhasználónevét és jelszavát, a közösségi identitással való bejelentkezést, a címtárra való feliratkozást vagy bármely más lépést. A felhasználói műveletek a felhasználói folyamat definiálásától függenek.
+Ekkor a rendszer megkéri a felhasználót, hogy fejezze be a felhasználói folyamat munkafolyamatát. Ez magában foglalhatja a felhasználónevet és a jelszót, illetve a közösségi identitással való bejelentkezést, a címtárra való regisztrációt, illetve az egyéb lépések számát is. A felhasználói műveletek attól függnek, hogy a felhasználói folyamat hogyan van definiálva.
 
-Miután a felhasználó befejezte a felhasználói folyamatot, az Azure AD `redirect_uri`a használt értékkel válaszol az alkalmazásra. A `response_mode` paraméterben megadott módszert használja. A válasz pontosan ugyanaz az egyes felhasználói művelet forgatókönyvek, függetlenül a felhasználói folyamat, amely végrehajtotta.
+Miután a felhasználó befejezte a felhasználói folyamatot, az Azure AD egy választ küld az alkalmazásnak a használt értékre `redirect_uri`. A `response_mode` paraméterben megadott metódust használja. A válasz pontosan ugyanaz, mint a felhasználói műveletek egyes forgatókönyvei esetében, a végrehajtott felhasználói folyamattól függetlenül.
 
-A sikeres válasz, amely a `response_mode=query` következőképpen néz ki:
+Sikeres válasz, amely a `response_mode=query` következőképpen néz ki:
 
 ```HTTP
 GET urn:ietf:wg:oauth:2.0:oob?
@@ -78,10 +78,10 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 
 | Paraméter | Leírás |
 | --- | --- |
-| code |Az alkalmazás által kért engedélyezési kód. Az alkalmazás az engedélyezési kód segítségével hozzáférési jogkivonatot kérhet egy célerőforráshoz. Az engedélyezési kódok nagyon rövid életűek. Általában körülbelül 10 perc után járnak le. |
-| state |Lásd a teljes leírást az előző szakasz táblázatában. Ha `state` egy paraméter szerepel a kérelemben, akkor ugyanazt az értéket kell megjelennie a válaszban. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban lévő értékek azonosak-e. |
+| code |Az alkalmazás által kért engedélyezési kód. Az alkalmazás az engedélyezési kóddal kérhet hozzáférési tokent a cél erőforráshoz. Az engedélyezési kódok nagyon rövid életűek. Általában körülbelül 10 perc elteltével lejárnak. |
+| state |Az előző szakaszban található táblázatban tekintse meg a teljes leírást. Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, `state` hogy a kérelemben és a válaszban szereplő értékek azonosak-e. |
 
-A hibaválaszok is elküldhetők az átirányítási URI-ba, hogy az alkalmazás megfelelően tudja kezelni őket:
+A rendszer a hibaüzeneteket is elküldheti az átirányítási URI-nak, hogy az alkalmazás megfelelően tudja kezelni őket:
 
 ```HTTP
 GET urn:ietf:wg:oauth:2.0:oob?
@@ -92,14 +92,14 @@ error=access_denied
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Hibakód-karakterlánc, amely a előforduló hibatípusok osztályozására használható. A karakterlánc segítségével is reagálhat a hibákra. |
-| error_description |Egy adott hibaüzenet, amely segíthet a hitelesítési hiba kiváltó okának azonosításában. |
-| state |Lásd a teljes leírást az előző táblázatban. Ha `state` egy paraméter szerepel a kérelemben, akkor ugyanazt az értéket kell megjelennie a válaszban. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban lévő értékek azonosak-e. |
+| error |Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható. A karakterláncot is használhatja a hibákra való reagálásra. |
+| error_description |Egy adott hibaüzenet, amely segítséget nyújt a hitelesítési hiba kiváltó okának azonosításában. |
+| state |Tekintse meg az előző táblázatban szereplő teljes leírást. Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, `state` hogy a kérelemben és a válaszban szereplő értékek azonosak-e. |
 
-## <a name="2-get-a-token"></a>2. Kap egy token
-Most, hogy megszerezte az engedélyezési kódot, beválthatja a `code` jogkivonatot a tervezett erőforrásra, ha postakérést küld a `/token` végpontnak. Az Azure AD B2C-ben [hozzáférési jogkivonatokat kérhet más API-khoz](access-tokens.md#request-a-token) a szokásos módon, a kérelemben azok hatókörének megadásával.
+## <a name="2-get-a-token"></a>2. jogkivonat beolvasása
+Most, hogy beszerzett egy engedélyezési kódot, beválthatja `code` a tokent a kívánt erőforrásra egy post-kérelem küldésével a `/token` végpontnak. A Azure AD B2Cban a [más API-k számára a szokásos módon kérhet hozzáférési jogkivonatokat](access-tokens.md#request-a-token) a kérelemben szereplő hatókör (ek) megadásával.
 
-Az alkalmazás saját háttérwebes API-jához hozzáférési jogkivonatot is kérhet, ha az alkalmazás ügyfélazonosítóját használja a kért hatókörként (ami egy hozzáférési jogkivonatot eredményez, amelyben az ügyfélazonosító "közönség"):
+Az alkalmazás saját háttérbeli webes API-hoz is kérhet hozzáférési tokent, ha az alkalmazás ügyfél-AZONOSÍTÓját használja a kért hatókörként (amely az ügyfél-AZONOSÍTÓhoz tartozó hozzáférési jogkivonatot eredményezi a "célközönség"):
 
 ```HTTP
 POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
@@ -112,16 +112,16 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
-|{bérlő}| Kötelező | Az Azure AD B2C-bérlő neve|
-|{házirend}| Kötelező| Az engedélyezési kód beszerzéséhez használt felhasználói folyamat. Ebben a kérésben nem használhat másik felhasználói folyamatot. |
-| client_id |Kötelező |Az alkalmazáshoz rendelt alkalmazásazonosító az [Azure Portalon.](https://portal.azure.com)|
-| client_secret | Igen, a Web Apps alkalmazásban | Az [Azure Portalon](https://portal.azure.com/)létrehozott alkalmazástitok. Az ügyféltitkos kulcsok ebben a folyamatban webalkalmazás-forgatókönyvekben használatosak, ahol az ügyfél biztonságosan tárolhat egy ügyféltitkot. Natív alkalmazás (nyilvános ügyfél) forgatókönyvek esetén az ügyféltitkos kulcsok nem tárolhatók biztonságosan, ezért nem használhatók ebben a hívásban. Ha ügyféltitkot használ, kérjük, rendszeresen módosítsa azt. |
-| grant_type |Kötelező |A támogatás típusa. Az engedélyezési kód folyamatához a `authorization_code`támogatás típusának . |
-| scope |Ajánlott |A hatókörök térben elválasztott listája. Egyetlen hatókör értéke jelzi az Azure AD mindkét kért engedélyeket. Az ügyfélazonosító használata hatókörként azt jelzi, hogy az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, amely használható a saját szolgáltatásán vagy webes API-ján, amelyet ugyanaz az ügyfélazonosító jelöl.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak szüksége van egy frissítési jogkivonatra az erőforrások hosszú élettartamú eléréséhez.  A hatókör használatával `openid` is kérhet azonosító jogkivonatot az Azure AD B2C-től. |
+|Bérlő| Kötelező | A Azure AD B2C bérlő neve|
+|politika| Kötelező| Az engedélyezési kód beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. |
+| client_id |Kötelező |Az alkalmazáshoz a [Azure Portal](https://portal.azure.com)hozzárendelt alkalmazás-azonosító.|
+| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazások (nyilvános ügyfelek) esetében az ügyfél titkos kulcsai nem tárolhatók biztonságosan, ezért nem használhatók ebben a hívásban. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
+| grant_type |Kötelező |A támogatás típusa. Az engedélyezési kód folyamatához a típusnak a következőnek `authorization_code`kell lennie:. |
+| scope |Ajánlott |A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. Az ügyfél-azonosító hatókörének használata azt jelzi, hogy az alkalmazásnak olyan hozzáférési jogkivonatra van szüksége, amely a saját szolgáltatásán vagy webes API-ban használható, ugyanazokat az ügyfél-azonosítót jelképezve.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez.  A `openid` hatókör használatával Azure ad B2C azonosító jogkivonatot is igényelhet. |
 | code |Kötelező |A folyamat első szakaszában beszerzett engedélyezési kód. |
-| redirect_uri |Kötelező |Annak az alkalmazásnak az átirányítási URI-ja, amelynek az engedélyezési kódot kapta. |
+| redirect_uri |Kötelező |Annak az alkalmazásnak az átirányítási URI azonosítója, amelyen az engedélyezési kódot megkapta. |
 
-A sikeres jogkivonat-válasz így néz ki:
+Egy sikeres jogkivonat-válasz a következőképpen néz ki:
 
 ```JSON
 {
@@ -135,14 +135,14 @@ A sikeres jogkivonat-válasz így néz ki:
 ```
 | Paraméter | Leírás |
 | --- | --- |
-| not_before |A token érvényességének időpontja, időszerint. |
-| token_type |A token típusának értéke. Az Azure AD által támogatott egyetlen típus a bemutatóra. |
-| access_token |A kért json-webtoken (JWT). |
-| scope |Azok a hatókörök, amelyekre a jogkivonat érvényes. A további felhasználás érdekében a hatókörök segítségével is gyorsítótárazhatja a tokeneket. |
-| expires_in |A token érvényességi ideje (másodpercben). |
-| refresh_token |Egy OAuth 2.0 frissítési jogkivonat. Az alkalmazás használhatja ezt a jogkivonatot további jogkivonatok beszerzéséhez az aktuális jogkivonat lejárta után. A frissítési tokenek hosszú élettartamúak. Ezek segítségével hosszabb ideig megtarthatja az erőforrásokhoz való hozzáférést. További információ: az [Azure AD B2C token hivatkozás.](tokens-overview.md) |
+| not_before |Az az időpont, amikor a jogkivonat érvényesnek minősül, a kor időpontjában. |
+| token_type |A jogkivonat típusának értéke. Az Azure AD által támogatott egyetlen típus a tulajdonos. |
+| access_token |A kért aláírt JSON Web Token (JWT). |
+| scope |Azok a hatókörök, amelyekhez a jogkivonat érvényes. Hatóköröket is használhat a tokenek későbbi használatra való gyorsítótárazásához. |
+| expires_in |Az az időtartam, ameddig a jogkivonat érvényes (másodpercben). |
+| refresh_token |Egy OAuth 2,0 frissítési token. Az alkalmazás az aktuális jogkivonat lejárta után további jogkivonatok beszerzésére használhatja ezt a tokent. A frissítési tokenek hosszú életűek. A segítségével hosszabb ideig megőrizheti az erőforrásokhoz való hozzáférést. További információ: [Azure ad B2C jogkivonat-hivatkozás](tokens-overview.md). |
 
-A hibaválaszok a következőkre néznek ki:
+A hibaüzenetek így néznek ki:
 
 ```JSON
 {
@@ -153,11 +153,11 @@ A hibaválaszok a következőkre néznek ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Hibakód-karakterlánc, amely a előforduló hibatípusok osztályozására használható. A karakterlánc segítségével is reagálhat a hibákra. |
-| error_description |Egy adott hibaüzenet, amely segíthet a hitelesítési hiba kiváltó okának azonosításában. |
+| error |Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható. A karakterláncot is használhatja a hibákra való reagálásra. |
+| error_description |Egy adott hibaüzenet, amely segítséget nyújt a hitelesítési hiba kiváltó okának azonosításában. |
 
-## <a name="3-use-the-token"></a>3. Használja a token
-Most, hogy sikeresen beszerzett egy hozzáférési jogkivonatot, használhatja a jogkivonatot a háttérwebes API-knak a háttérwebes API-kra irányuló kérelmekben, ha a `Authorization` fejlécbe is belehelyezi:
+## <a name="3-use-the-token"></a>3. a jogkivonat használata
+Most, hogy sikeresen beszerzett egy hozzáférési jogkivonatot, a jogkivonatot a háttérbeli webes API-khoz a kérésekben a `Authorization` fejlécbe belefoglalva is használhatja:
 
 ```HTTP
 GET /tasks
@@ -165,8 +165,8 @@ Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="4-refresh-the-token"></a>4. Frissítse a token
-A hozzáférési jogkivonatok és az azonosító jogkivonatok rövid életűek. Lejáratuk után frissítenie kell őket az erőforrások eléréséhez. Ehhez küldjön be egy másik `/token` POST-kérelmet a végpontnak. Ez úttal adja `refresh_token` meg `code`a helyett a:
+## <a name="4-refresh-the-token"></a>4. a jogkivonat frissítése
+A hozzáférési tokenek és az azonosító tokenek rövid életűek. A lejárat után frissítenie kell őket, hogy továbbra is hozzáférhessenek az erőforrásokhoz. Ehhez egy másik POST-kérést kell elküldeni a `/token` végpontnak. Ezúttal adja meg a `refresh_token` következő helyet: `code`
 
 ```HTTP
 POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
@@ -178,16 +178,16 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
-|{bérlő}| Kötelező | Az Azure AD B2C-bérlő neve|
-|{házirend} |Kötelező |Az eredeti frissítési jogkivonat beszerzéséhez használt felhasználói folyamat. Ebben a kérésben nem használhat másik felhasználói folyamatot. |
-| client_id |Kötelező |Az alkalmazáshoz rendelt alkalmazásazonosító az [Azure Portalon.](https://portal.azure.com) |
-| client_secret | Igen, a Web Apps alkalmazásban | Az [Azure Portalon](https://portal.azure.com/)létrehozott alkalmazástitok. Az ügyféltitkos kulcsok ebben a folyamatban webalkalmazás-forgatókönyvekben használatosak, ahol az ügyfél biztonságosan tárolhat egy ügyféltitkot. Natív alkalmazás (nyilvános ügyfél) forgatókönyvek esetén az ügyféltitkos kulcsok nem tárolhatók biztonságosan, ezért nem használhatók ebben a hívásban. Ha ügyféltitkot használ, kérjük, rendszeresen módosítsa azt. |
-| grant_type |Kötelező |A támogatás típusa. Az engedélyezési kódfolyamat ezen szakasza esetén `refresh_token`a támogatás típusának . |
-| scope |Ajánlott |A hatókörök térben elválasztott listája. Egyetlen hatókör értéke jelzi az Azure AD mindkét kért engedélyeket. Az ügyfélazonosító használata hatókörként azt jelzi, hogy az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, amely használható a saját szolgáltatásán vagy webes API-ján, amelyet ugyanaz az ügyfélazonosító jelöl.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak szüksége lesz egy frissítési jogkivonatra az erőforrások hosszú élettartamú eléréséhez.  A hatókör használatával `openid` is kérhet azonosító jogkivonatot az Azure AD B2C-től. |
-| redirect_uri |Optional |Annak az alkalmazásnak az átirányítási URI-ja, amelynek az engedélyezési kódot kapta. |
-| refresh_token |Kötelező |A folyamat második szakaszában beszerzett eredeti frissítési token. |
+|Bérlő| Kötelező | A Azure AD B2C bérlő neve|
+|politika |Kötelező |Az eredeti frissítési jogkivonat beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. |
+| client_id |Kötelező |Az alkalmazáshoz a [Azure Portal](https://portal.azure.com)hozzárendelt alkalmazás-azonosító. |
+| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazások (nyilvános ügyfelek) esetében az ügyfél titkos kulcsai nem tárolhatók biztonságosan, ezért nem használhatók ebben a hívásban. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
+| grant_type |Kötelező |A támogatás típusa. Az engedélyezési kód folyamatának ezen szakasza esetében a Grant típusnak a `refresh_token`következőnek kell lennie:. |
+| scope |Ajánlott |A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. Az ügyfél-azonosító hatókörének használata azt jelzi, hogy az alkalmazásnak olyan hozzáférési jogkivonatra van szüksége, amely a saját szolgáltatásán vagy webes API-ban használható, ugyanazokat az ügyfél-azonosítót jelképezve.  A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak frissítési tokenre lesz szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez.  A `openid` hatókör használatával Azure ad B2C azonosító jogkivonatot is igényelhet. |
+| redirect_uri |Optional |Annak az alkalmazásnak az átirányítási URI azonosítója, amelyen az engedélyezési kódot megkapta. |
+| refresh_token |Kötelező |A folyamat második szakaszában beszerzett eredeti frissítési jogkivonat. |
 
-A sikeres jogkivonat-válasz így néz ki:
+Egy sikeres jogkivonat-válasz a következőképpen néz ki:
 
 ```JSON
 {
@@ -201,14 +201,14 @@ A sikeres jogkivonat-válasz így néz ki:
 ```
 | Paraméter | Leírás |
 | --- | --- |
-| not_before |A token érvényességének időpontja, időszerint. |
-| token_type |A token típusának értéke. Az Azure AD által támogatott egyetlen típus a bemutatóra. |
-| access_token |Az aláírt JWT, amit kért. |
-| scope |Azok a hatókörök, amelyekre a jogkivonat érvényes. A hatókörök segítségével gyorsítótárazhatja a tokeneket későbbi használatra. |
-| expires_in |A token érvényességi ideje (másodpercben). |
-| refresh_token |Egy OAuth 2.0 frissítési jogkivonat. Az alkalmazás használhatja ezt a jogkivonatot további jogkivonatok beszerzéséhez az aktuális jogkivonat lejárta után. A frissítési jogkivonatok hosszú élettartamúak, és az erőforrásokhoz való hozzáférés hosszabb ideig való megőrzésére használhatók. További információ: az [Azure AD B2C token hivatkozás.](tokens-overview.md) |
+| not_before |Az az időpont, amikor a jogkivonat érvényesnek minősül, a kor időpontjában. |
+| token_type |A jogkivonat típusának értéke. Az Azure AD által támogatott egyetlen típus a tulajdonos. |
+| access_token |A kért aláírt JWT. |
+| scope |Azok a hatókörök, amelyekhez a jogkivonat érvényes. A hatóköröket használhatja a tokenek későbbi használatra való gyorsítótárazásához is. |
+| expires_in |Az az időtartam, ameddig a jogkivonat érvényes (másodpercben). |
+| refresh_token |Egy OAuth 2,0 frissítési token. Az alkalmazás az aktuális jogkivonat lejárta után további jogkivonatok beszerzésére használhatja ezt a tokent. A frissítési tokenek hosszú életűek, és az erőforrásokhoz való hozzáférés hosszabb ideig is használhatók. További információ: [Azure ad B2C jogkivonat-hivatkozás](tokens-overview.md). |
 
-A hibaválaszok a következőkre néznek ki:
+A hibaüzenetek így néznek ki:
 
 ```JSON
 {
@@ -219,12 +219,12 @@ A hibaválaszok a következőkre néznek ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Hibakód-karakterlánc, amely a előforduló hibatípusok osztályozására használható. A karakterlánc segítségével is reagálhat a hibákra. |
-| error_description |Egy adott hibaüzenet, amely segíthet a hitelesítési hiba kiváltó okának azonosításában. |
+| error |Hibakód-karakterlánc, amely a hibák típusának besorolására használható. A karakterláncot is használhatja a hibákra való reagálásra. |
+| error_description |Egy adott hibaüzenet, amely segítséget nyújt a hitelesítési hiba kiváltó okának azonosításában. |
 
-## <a name="use-your-own-azure-ad-b2c-directory"></a>Saját Azure AD B2C-címtár használata
-Ha ezeket a kéréseket saját kezűleg szeretné kipróbálni, hajtsa végre az alábbi lépéseket. Cserélje le a cikkben használt példaértékeket a saját értékeire.
+## <a name="use-your-own-azure-ad-b2c-directory"></a>Saját Azure AD B2C címtár használata
+Ha szeretné kipróbálni ezeket a kéréseket, hajtsa végre az alábbi lépéseket. Cserélje le a cikkben használt példa értékeket a saját értékeire.
 
-1. [Hozzon létre egy Azure AD B2C könyvtárat.](tutorial-create-tenant.md) Használja a könyvtár nevét a kérelmekben.
-2. [Hozzon létre egy alkalmazást](tutorial-register-applications.md) egy alkalmazásazonosító és egy átirányítási URI beszerzéséhez. Natív ügyfél felvétele az alkalmazásba.
-3. [Hozza létre a felhasználói folyamatokat](user-flow-overview.md) a felhasználói folyamatnevek beszerzéséhez.
+1. [Hozzon létre egy Azure ad B2C könyvtárat](tutorial-create-tenant.md). Használja a címtár nevét a kérelmekben.
+2. [Hozzon létre egy alkalmazást](tutorial-register-applications.md) egy alkalmazás-azonosító és egy ÁTirányítási URI beszerzéséhez. Adjon meg egy natív ügyfelet az alkalmazásban.
+3. [Hozza létre a felhasználói folyamatokat](user-flow-overview.md) a felhasználói folyamatok nevének beszerzéséhez.

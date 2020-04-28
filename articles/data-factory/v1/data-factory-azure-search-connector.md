@@ -1,6 +1,6 @@
 ---
-title: Adatok leküldése a keresési indexbe a Data Factory használatával
-description: Ismerje meg, hogyan lehet adatokat leadni az Azure Cognitive Search Index az Azure Data Factory használatával.
+title: Az adatküldés a keresési indexbe Data Factory használatával
+description: Útmutató az Azure Cognitive Search indexbe történő adatküldéshez Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,91 +13,91 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281560"
 ---
-# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Adatok leküldése az Azure Cognitive Search indexébe az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Az adatküldés Azure Cognitive Search indexbe Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-azure-search-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-search.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [Azure Cognitive Search-összekötő t a V2-ben.](../connector-azure-search.md)
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az Azure Cognitive Search Connector v2-ben](../connector-azure-search.md)című témakört.
 
-Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység leküldéses adatokat egy támogatott forrásadat-tároló egy Azure Cognitive Search index. A támogatott forrásadat-tárolók a [támogatott források és fogadók](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla Forrás oszlopában találhatók. Ez a cikk az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) ről szóló cikkre épül, amely általános áttekintést nyújt az adatok mozgásáról a Másolási tevékenységgel és a támogatott adattár-kombinációkkal.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység az adatok egy támogatott forrás adattárból egy Azure Cognitive Search indexbe való leküldéséhez. A támogatott forrás adattárakat a [támogatott források és a mosogatók](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla forrás oszlopában találja. Ez a cikk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatáthelyezésről másolási tevékenységgel és a támogatott adattár-kombinációkkal.
 
-## <a name="enabling-connectivity"></a>Csatlakozás engedélyezése
-Annak érdekében, hogy a Data Factory szolgáltatás egy helyszíni adattárhoz csatlakozzon, telepítse az Adatkezelési átjárót a helyszíni környezetben. Az átjárót telepítheti ugyanarra a számítógépre, amely en a forrás-adattort üzemeltetik, vagy egy külön számítógépre, hogy elkerülje az erőforrásokért való versengést az adattárral.
+## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
+Ahhoz, hogy Data Factory szolgáltatás egy helyszíni adattárhoz kapcsolódjon, adatkezelés átjárót kell telepítenie a helyszíni környezetbe. Az átjárót ugyanarra a gépre telepítheti, amely a forrás-vagy egy különálló gépen található, hogy elkerülje az adattárolóval való konkurens erőforrásokat.
 
-Az Adatkezelési átjáró biztonságos és felügyelt módon kapcsolja össze a helyszíni adatforrásokat a felhőszolgáltatásokkal. Az Adatkezelési átjáróval kapcsolatos részletekért olvassa el az [Adatok áthelyezése a helyszíni és a felhőbeli](data-factory-move-data-between-onprem-and-cloud.md) környezet között című témakört.
+Adatkezelés átjáró biztonságos és felügyelt módon csatlakoztatja a helyszíni adatforrásokat a Cloud Serviceshez. Az adatkezelés átjáróval kapcsolatos további információkért lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot egy másolási tevékenységgel, amely különböző eszközök/API-k használatával lefájlokatják a forrás-adattárból a keresési indexbe az adatokat.
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával küldi el az adatok egy forrás adattárból a keresési indexbe történő küldését.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközökkel is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és REST **API.** Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
-2. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására.
-3. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel.
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
 
-A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja.  A data-indexbe adatok másolásához használt Data Factory-entitások JSON-definícióival rendelkező minta a [JSON-példa: Adatok másolása a helyszíni SQL Serverből egy Azure Cognitive Search index](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) szakaszba ebben a cikkben.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  Az adatok keresési indexbe másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a [JSON-példa: adatok másolása a helyszíni SQL Serverból a jelen cikk Azure Cognitive Search indexbe](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) című szakaszát.
 
-A következő szakaszok a keresési indexre jellemző Data Factory-entitások meghatározására használt JSON-tulajdonságok részleteit ismertetik:
+A következő szakaszokban részletesen ismertetjük a keresési indexre jellemző Data Factory entitások definiálásához használt JSON-tulajdonságokat:
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az alábbi táblázat az Azure Cognitive Search kapcsolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
+Az alábbi táblázat az Azure Cognitive Search társított szolgáltatáshoz tartozó JSON-elemek leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| type | A típustulajdonságot a következőre kell állítani: **AzureSearch**. | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Igen |
 | url | A keresési szolgáltatás URL-címe. | Igen |
-| kulcs | A keresési szolgáltatás felügyeleti kulcsa. | Igen |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A JSON adatkészletek szerkezete, rendelkezésre állása és házirendje minden adatkészlettípushoz hasonlóak. A **typeProperties** szakasz az adatkészlet egyes típusaiesetében eltérő. Az **AzureSearchIndex** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
+Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak. A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **AzureSearchIndex** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| type | A típustulajdonságot **az AzureSearchIndex**beállításra kell állítani.| Igen |
-| indexName | A keresési index neve. A Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Search szolgáltatásban. | Igen |
+| type | A Type tulajdonságot **AzureSearchIndex**értékre kell beállítani.| Igen |
+| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Tulajdonságok, például név, leírás, bemeneti és kimeneti táblák, és a különböző házirendek állnak rendelkezésre minden típusú tevékenységek. Mivel a typeProperties szakaszban elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. A Másolási tevékenység esetében a források és a fogadók típusától függően változnak.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a különböző szabályzatok minden típusú tevékenységhez elérhetők. Míg a typeProperties szakaszban elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-A másolási tevékenység esetén, ha a fogadó **AzureSearchIndexSink**típusú, a következő tulajdonságok érhetők el a typeProperties szakaszban:
+Másolási tevékenység esetén, ha a fogadó típusa **AzureSearchIndexSink**, a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | -------- | ----------- | -------------- | -------- |
-| Írási viselkedés | Itt adható meg, hogy egyesítse vagy cserélje le a programot, ha már létezik dokumentum az indexben. Lásd a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
-| WriteBatchSize írás | Adatokat tölt fel a keresési indexbe, amikor a puffer mérete eléri a writeBatchSize-ot. A részleteket a [WriteBatchSize tulajdonságban](#writebatchsize-property) találja. | 1-ről 1000-re. Az alapértelmezett érték 1000. | Nem |
+| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
+| WriteBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
-Az AzureSearchSink upserts adatok írásakor. Más szóval, amikor egy dokumentum írásakor, ha a dokumentumkulcs már létezik a keresési indexben, az Azure Cognitive Search frissíti a meglévő dokumentumot, nem pedig ütközési kivétel.
+AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum írásakor a dokumentum kulcsa már létezik a keresési indexben, az Azure Cognitive Search frissíti a meglévő dokumentumot ahelyett, hogy ütközést kellene eldobnia.
 
-Az AzureSearchSink a következő két upsert viselkedést biztosítja (az AzureSearch SDK használatával):
+A AzureSearchSink a következő két upsert-viselkedést biztosítja (a AzureSearch SDK használatával):
 
-- **Egyesítés:** az új dokumentum összes oszlopának egyesítése a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő értéke megmarad.
-- **Feltöltés**: Az új dokumentum felváltja a meglévőt. Az új dokumentumban nem megadott oszlopok esetén az érték null értékű, függetlenül attól, hogy a meglévő dokumentumban nem null érték van-e vagy sem.
+- **Egyesítés**: az új dokumentum összes oszlopát egyesítheti a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő érték megmarad.
+- **Feltöltés**: az új dokumentum lecseréli a meglévőt. Az új dokumentumban nem megadott oszlopok esetében az érték null, ha a meglévő dokumentumban nem null érték van megadva, vagy nem.
 
 Az alapértelmezett viselkedés az **Egyesítés**.
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
-Az Azure Cognitive Search szolgáltatás támogatja a dokumentumok kötegként i. Egy köteg 1–1000 műveletet tartalmazhat. Egy művelet egy dokumentumot kezel a feltöltési/egyesítési művelet végrehajtásához.
+Az Azure Cognitive Search szolgáltatás támogatja a dokumentumok kötegként való írását. Egy köteg 1 – 1 000 műveletet tartalmazhat. Egy művelet kezeli az egyik dokumentumot a feltöltési/egyesítési művelet végrehajtásához.
 
-### <a name="data-type-support"></a>Adattípus-támogatás
-Az alábbi táblázat azt határozza meg, hogy az Azure Cognitive Search adattípusa támogatott-e vagy sem.
+### <a name="data-type-support"></a>Adattípusok támogatása
+A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípusa támogatott-e vagy sem.
 
-| Az Azure Cognitive Search adattípusa | Az Azure Cognitive Search mosogatótámogatja |
+| Az Azure Cognitive Search adattípusa | Az Azure Cognitive Search fogadóban támogatott |
 | ---------------------- | ------------------------------ |
 | Sztring | I |
 | Int32 | I |
@@ -106,23 +106,23 @@ Az alábbi táblázat azt határozza meg, hogy az Azure Cognitive Search adattí
 | Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömb | N |
-| FöldrajzPont | N |
+| Geographypoint adattípuson | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON-példa: Adatok másolása a helyszíni SQL Server ről az Azure Cognitive Search indexébe
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON-példa: adatok másolása helyszíni SQL Serverból az Azure Cognitive Search indexbe
 
-A következő minta a következőket mutatja:
+A következő minta a következőket mutatja be:
 
-1. [AzureSearch](#linked-service-properties)típusú összekapcsolt szolgáltatás.
-2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)típusú csatolt szolgáltatás.
+1. [AzureSearch](#linked-service-properties)típusú társított szolgáltatás.
+2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)típusú társított szolgáltatás.
 3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-4. [AzureSearchIndex](#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
-4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) és [AzureSearchIndexSink](#copy-activity-properties)programot használó másolási tevékenységgel rendelkező [folyamat.](data-factory-create-pipelines.md)
+4. [AzureSearchIndex](#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) és [AzureSearchIndexSink](#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta idősorozat-adatokat másol egy helyszíni SQL Server-adatbázisból az index óránkénti kereséséhez. A mintában használt JSON-tulajdonságokat a mintákat követő szakaszok ismertetik.
+A minta idősorozat-adatok másolását végzi egy helyszíni SQL Server adatbázisból az index óránkénti kereséséhez. Az ebben a mintában használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként állítsa be az adatkezelési átjárót a helyszíni gépen. Az utasítások a helyszíni helyek és a felhőalapú cikk [közötti átmozgatási](data-factory-move-data-between-onprem-and-cloud.md) adatokban találhatók.
+Első lépésként állítsa be az adatkezelési átjárót a helyszíni gépen. Az utasítások a helyszíni [helyszínek és a felhő közötti adatáthelyezést](data-factory-move-data-between-onprem-and-cloud.md) ismertetik.
 
-**Azure Cognitive Search kapcsolt szolgáltatás:**
+**Azure Cognitive Search társított szolgáltatás:**
 
 ```JSON
 {
@@ -137,7 +137,7 @@ Első lépésként állítsa be az adatkezelési átjárót a helyszíni gépen.
 }
 ```
 
-**SQL Server csatolt szolgáltatás**
+**Társított szolgáltatás SQL Server**
 
 ```JSON
 {
@@ -152,11 +152,11 @@ Első lépésként állítsa be az adatkezelési átjárót a helyszíni gépen.
 }
 ```
 
-**SQL Server bemeneti adatkészlet**
+**Bemeneti adatkészlet SQL Server**
 
-A minta feltételezi, hogy létrehozott egy "MyTable" táblát az SQL Server ben, és tartalmaz egy "timestampcolumn" nevű oszlopot az idősorozat-adatokhoz. Ugyanazon az adatbázison belül több táblát is lekérdezhet egyetlen adatkészlet használatával, de az adatkészlet táblaname typeProperty eleméhez egyetlen táblát kell használni.
+A minta azt feltételezi, hogy létrehozott egy "Sajáttábla" táblát a SQL Serverban, és egy "timestampcolumn" nevű oszlopot tartalmaz az idősorozat-adatsorokhoz. Egyetlen adatkészletet használva több táblán is lekérdezheti ugyanazon az adatbázison belül, de az adatkészlet táblanév-typeProperty egyetlen táblázatot kell használnia.
 
-A "külső": "true" beállítás tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet az adat-előállítón kívül található, és nem az adat-előállító tevékenység által előállított.
+A "külső": "true" beállítás azt tájékoztatja, Data Factory szolgáltatás, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -185,7 +185,7 @@ A "külső": "true" beállítás tájékoztatja a Data Factory szolgáltatást, 
 
 **Azure Cognitive Search kimeneti adatkészlet:**
 
-A minta adatokat másol egy Azure Cognitive Search index nevű **termékek.** A Data Factory nem hozza létre az indexet. A minta teszteléséhez hozzon létre egy indexet ezzel a névvel. Hozza létre a keresési indexet ugyanannyi oszloppal, mint a bemeneti adatkészletben. Az új bejegyzések óránként kerülnek a keresési indexbe.
+A minta a **Products**nevű Azure Cognitive Search indexbe másolja az adatmásolt fájlokat. Data Factory nem hozza létre az indexet. A minta teszteléséhez hozzon létre egy indexet ezzel a névvel. Hozza létre a keresési indexet ugyanazzal a számú oszloppal, mint a bemeneti adatkészletben. Az új bejegyzések minden órában hozzáadódnak a keresési indexhez.
 
 ```JSON
 {
@@ -204,9 +204,9 @@ A minta adatokat másol egy Azure Cognitive Search index nevű **termékek.** A 
 }
 ```
 
-**Az SQL-forrással és az Azure Cognitive Search Index fogadójával rendelkező folyamat tevékenységének másolása:**
+**Másolási tevékenység egy folyamaton az SQL-forrással és az Azure Cognitive Search index fogadóval:**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A folyamat JSON-definíciójában a **forrástípus** **sqlsource-ra** van állítva, **a fogadó** típusa pedig **Az AzureSearchIndexSink**. Az **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés kiválasztja a másolni kívánt adatokat az elmúlt órában.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **SqlSource** értékre van állítva, a **fogadó típusa** pedig **AzureSearchIndexSink**. A **SqlReaderQuery** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az adatforrást.
 
 ```JSON
 {
@@ -255,7 +255,7 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 }
 ```
 
-Ha adatokat másol egy felhőbeli adattárból `executionLocation` az Azure Cognitive Search, tulajdonság szükséges. A következő JSON-kódrészlet példaként mutatja `typeProperties` be a Tevékenység másolása című dokumentumban szükséges módosítást. A támogatott értékekért és további részletekért tekintse meg az [adatok másolása a felhőbeli adattárolók között](data-factory-data-movement-activities.md#global) című szakaszt.
+Ha Felhőbeli adattárból másol Adatmásolást az Azure Cognitive Searchba, `executionLocation` a tulajdonság megadása kötelező. A következő JSON-kódrészlet a másolási tevékenységhez `typeProperties` szükséges módosítást mutatja példaként. A támogatott értékek és további részletek a [Felhőbeli adattárak közötti Adatmásolás](data-factory-data-movement-activities.md#global) szakaszban olvashatók.
 
 ```JSON
 "typeProperties": {
@@ -270,8 +270,8 @@ Ha adatokat másol egy felhőbeli adattárból `executionLocation` az Azure Cogn
 ```
 
 
-## <a name="copy-from-a-cloud-source"></a>Másolás felhőforrásból
-Ha adatokat másol egy felhőbeli adattárból `executionLocation` az Azure Cognitive Search, tulajdonság szükséges. A következő JSON-kódrészlet példaként mutatja `typeProperties` be a Tevékenység másolása című dokumentumban szükséges módosítást. A támogatott értékekért és további részletekért tekintse meg az [adatok másolása a felhőbeli adattárolók között](data-factory-data-movement-activities.md#global) című szakaszt.
+## <a name="copy-from-a-cloud-source"></a>Másolás felhőalapú forrásból
+Ha Felhőbeli adattárból másol Adatmásolást az Azure Cognitive Searchba, `executionLocation` a tulajdonság megadása kötelező. A következő JSON-kódrészlet a másolási tevékenységhez `typeProperties` szükséges módosítást mutatja példaként. A támogatott értékek és további részletek a [Felhőbeli adattárak közötti Adatmásolás](data-factory-data-movement-activities.md#global) szakaszban olvashatók.
 
 ```JSON
 "typeProperties": {
@@ -285,12 +285,12 @@ Ha adatokat másol egy felhőbeli adattárból `executionLocation` az Azure Cogn
 }
 ```
 
-A forrásadatkészletből oszlopokat is leképezhet a fogadó-adatkészletből a másolási tevékenységdefinícióban. További információt az [Adatkészlet-oszlopok leképezése az Azure Data Factoryban című témakörben talál.](data-factory-map-columns.md)
+A másolási tevékenység definíciójában a forrás adatkészletből származó oszlopokat is leképezheti a fogadó adatkészletből származó oszlopokra. Részletekért lásd: [adatkészlet-oszlopok leképezése Azure Data Factoryban](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-A [Tevékenység másolása teljesítmény- és hangolási útmutatóban](data-factory-copy-activity-performance.md) megismerést talál az adatmozgatás (Másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőkről és optimalizálásának különböző módjairól.
+A [másolási tevékenység teljesítményének és hangolásának útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére (másolási tevékenység) és az optimalizálás különféle módjaira.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-* [A Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lépésenkénti útmutatást tartalmaz egy másolási tevékenységgel rendelkező folyamat létrehozásához.
+* A [másolási](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) tevékenységről szóló oktatóanyag részletesen ismerteti a folyamat másolási tevékenységgel történő létrehozását.

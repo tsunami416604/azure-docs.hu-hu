@@ -1,6 +1,6 @@
 ---
-title: Fájl- és tömörítési formátumok az Azure Data Factoryban
-description: Ismerje meg az Azure Data Factory által támogatott fájlformátumokat.
+title: Fájl-és Tömörítési formátumok Azure Data Factory
+description: A Azure Data Factory által támogatott fájlformátumok ismertetése.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,32 +12,32 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281612"
 ---
-# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Az Azure Data Factory által támogatott fájl- és tömörítési formátumok
-*Ez a témakör a következő összekötőkre vonatkozik: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), Azure Data [Lake Store](data-factory-azure-datalake-connector.md), [File System](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md)és [SFTP](data-factory-sftp-connector.md).*
+# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>A Azure Data Factory által támogatott fájl-és Tömörítési formátumok
+*Ez a témakör az alábbi összekötőket érinti [: Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [File System](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [http](data-factory-http-connector.md)és [SFTP](data-factory-sftp-connector.md).*
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a [támogatott fájlformátumok at és a tömörítési kodekeket a Data Factory alkalmazásban.](../supported-file-formats-and-compression-codecs.md)
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory támogatott fájlformátumok és tömörítési kodekek](../supported-file-formats-and-compression-codecs.md)című témakört.
 
-Az Azure Data Factory a következő fájlformátum-típusokat támogatja:
+A Azure Data Factory a következő fájlformátum-típusokat támogatja:
 
-* [Szöveg formátuma](#text-format)
+* [Szöveges formátum](#text-format)
 * [JSON formátum](#json-format)
 * [Avro formátum](#avro-format)
 * [ORC formátum](#orc-format)
-* [Parketta formátum](#parquet-format)
+* [Parquet formátum](#parquet-format)
 
-## <a name="text-format"></a>Szöveg formátuma
-Ha szövegfájlból szeretne olvasni vagy szövegfájlba írni, `type` állítsa `format` az adatkészlet szakaszának tulajdonságát TextFormat ( **szövegformátum**) beállításra. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A TextFormat használatát bemutató példa](#textformat-example) című szakaszt.
+## <a name="text-format"></a>Szöveges formátum
+Ha szövegfájlból szeretne olvasni, vagy szöveges fájlba ír, az adatkészlet `type` `format` szakaszának tulajdonságát állítsa **Szövegformátum**értékre. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A TextFormat használatát bemutató példa](#textformat-example) című szakaszt.
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet olyan ritka, nem nyomtatható karaktert használni, amely valószínűleg nem szerepel az adatokban. Adja meg például a "\u0001" értéket, amely a Címsor (SOH) kezdetét jelöli. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)**. <br/><br/>Unicode karakter használatához olvassa el a [Unicode karakterek című kódot.](https://en.wikipedia.org/wiki/List_of_Unicode_characters) |Nem |
+| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet olyan ritka, nem nyomtatható karakter használatát használni, amely valószínűleg nem létezik az adataiban. Adja meg például a "\u0001" kifejezést, amely a fejléc kezdetét jelöli (rendszerállapot-kimutatás). |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)**. <br/><br/>Ha Unicode-karaktert szeretne használni, a megfelelő kód beszerzéséhez tekintse meg a [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) . |Nem |
 | rowDelimiter |A fájlokban a sorok elválasztására használt karakter. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték olvasáskor a következő értékek bármelyike: **[„\r\n”, „\r”, „\n”]**, illetve **„\r\n”** írás esetén. |Nem |
 | escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: „Helló, világ”), megadhatja a „$” karakter feloldójelként, és a „Helló$, világ” sztringet használhatja a forrásban. |Nem |
 | quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |Nem |
@@ -48,7 +48,7 @@ Ha szövegfájlból szeretne olvasni vagy szövegfájlba írni, `type` állítsa
 | treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a sztring null vagy üres értékeit null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>False (Hamis) |Nem |
 
 ### <a name="textformat-example"></a>A TextFormat használatát bemutató példa
-A következő JSON-definícióban egy adatkészlethez néhány választható tulajdonság van megadva.
+Az adatkészletek következő JSON-definíciójában a választható tulajdonságok némelyike meg van adva.
 
 ```json
 "typeProperties":
@@ -81,9 +81,9 @@ A következő JSON-definícióban egy adatkészlethez néhány választható tul
 * Egy szöveges fájlból másol, és szeretne kihagyni néhány sort az elejéről, amelyek nem tartalmaznak adatokat vagy fejléc-információkat. Adja meg a `skipLineCount` értékét a kihagyni kívánt sorok számának jelzéséhez. Ha a fájl hátralévő része fejlécsort tartalmaz, a `firstRowAsHeader` is megadható. Ha a `skipLineCount` és a `firstRowAsHeader` is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból
 
 ## <a name="json-format"></a>JSON formátum
-A **JSON-fájl importálása/exportálása az Azure Cosmos DB-be/az Azure Cosmos DB-ből**című témakörben található: [Adatok áthelyezése](data-factory-azure-documentdb-connector.md#importexport-json-documents) [az Azure Cosmos DB-be/az Azure Cosmos DB-ből](data-factory-azure-documentdb-connector.md) című cikkben.
+A **JSON-fájlok importálásához vagy exportálásához a Azure Cosmos db-ba**, az [adatok áthelyezése a](data-factory-azure-documentdb-connector.md) következőn: [Importálás/exportálás JSON-dokumentumok](data-factory-azure-documentdb-connector.md#importexport-json-documents) című rész, Azure Cosmos db cikkbe való áthelyezés.
 
-Ha elemezni szeretné a JSON-fájlokat, vagy JSON formátumban `type` szeretné `format` írni az adatokat, állítsa a szakasz tulajdonságát **JsonFormat**értékre. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
+Ha szeretné elemezni a JSON-fájlokat, vagy JSON formátumban kell írnia az adatírást, `type` állítsa `format` a ( **JsonFormat**) szakaszban található tulajdonságot a következőre:. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ Ha elemezni szeretné a JSON-fájlokat, vagy JSON formátumban `type` szeretné 
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
 
-Másolási tevékenység elemezheti a következő mintákat A JSON fájlok:
+A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
 - **I. típus: setOfObjects**
 
@@ -188,7 +188,7 @@ Másolási tevékenység elemezheti a következő mintákat A JSON fájlok:
 
 **1. eset: Adatok másolása JSON-fájlokból**
 
-A JSON-fájlokból származó adatok másolásakor tekintse meg az alábbi két mintát. Az általános pontok megjegyezni:
+A JSON-fájlokból történő adatmásoláskor tekintse meg a következő két mintát. A feljegyzett általános pontok:
 
 **1. példa: adatok kigyűjtése objektumból és tömbből**
 
@@ -225,8 +225,8 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
-- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. További részletekért olvassa el a [Forrásadatkészlet-oszlopok leképezése a céladatkészletek oszlopaihoz](data-factory-map-columns.md) című szakaszt.
-- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. A tömbből származó adatok másolásához a **tömb[x].tulajdonsággal** kinyerheti az adott tulajdonság értékét az x.-objektumból, vagy a **tömb[*].tulajdonsággal** megkeresheti az ilyen tulajdonságot tartalmazó objektumok értékét.
+- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. További részletekért tekintse meg a [leképezési forrás adatkészletének oszlopai a cél adatkészlet oszlopai](data-factory-map-columns.md) című szakaszt.
+- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Az adatok tömbből való másolásához használhatja a **Array [x]. tulajdonságot** a megadott tulajdonság értékének kinyeréséhez a x objektumból, vagy használhatja a **Array [*]. Property tulajdonságot** az adott tulajdonságot tartalmazó bármely objektum értékének megkereséséhez.
 
 ```json
 "properties": {
@@ -298,7 +298,7 @@ Ebben a példában egy JSON-gyökérobjektumot alakít át több rekorddá tábl
 
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
-- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. További részletekért olvassa el a [Forrásadatkészlet-oszlopok leképezése a céladatkészletek oszlopaihoz](data-factory-map-columns.md) című szakaszt.
+- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. További részletekért tekintse meg a [leképezési forrás adatkészletének oszlopai a cél adatkészlet oszlopai](data-factory-map-columns.md) című szakaszt.
 - A `jsonNodeReference` jelzi az orderlines **tömb** alatti, azonos mintával rendelkező objektumok iterálását, illetve az adatok azokból való kinyerését.
 - A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Ebben a példában az „ordernumber”, az „orderdate” és a „city” a „$.” értékkel kezdődő JSON-útvonallal jelzett gyökérobjektum alatt találhatók, míg az „order_pd” és az „order_price” a „$.” értéket nem tartalmazó tömbelemből származtatott útvonallal vannak meghatározva.
 
@@ -347,7 +347,7 @@ A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghat�
 
 **2. eset: Adatok írása JSON-fájlba**
 
-Ha az SQL Database következő táblával rendelkezik:
+Ha a következő táblázat szerepel a SQL Databaseban:
 
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
@@ -355,7 +355,7 @@ Ha az SQL Database következő táblával rendelkezik:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-és minden rekordhoz a következő formátumban kell json-objektumba írnia:
+minden rekord esetében a következő formátumban kell írnia egy JSON-objektumba:
 ```json
 {
     "id": "1",
@@ -367,7 +367,7 @@ Ha az SQL Database következő táblával rendelkezik:
 }
 ```
 
-A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban a `structure` szakasz határozza meg a célfájlban `nestingSeparator` a testreszabott tulajdonságneveket (az alapértelmezett érték ".") a fészekréteg azonosítására szolgál a névből. Ez a szakasz **nem kötelező**, kivéve, ha módosítani szeretné a tulajdonság nevét a forrásoszlop nevéhez képest, vagy egyes tulajdonságokat egymásba szeretne ágyazni.
+A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban a `structure` szakasz a célfájl testreszabott tulajdonságainak nevét határozza meg (az `nestingSeparator` alapértelmezett érték a "."), amely a név alapján azonosítja a beágyazási réteget. Ez a szakasz **nem kötelező**, kivéve, ha módosítani szeretné a tulajdonság nevét a forrásoszlop nevéhez képest, vagy egyes tulajdonságokat egymásba szeretne ágyazni.
 
 ```json
 "properties": {
@@ -398,7 +398,7 @@ A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghat�
 }
 ```
 
-## <a name="avro-format"></a>AVRO formátum
+## <a name="avro-format"></a>AVRO formátuma
 Ha elemezni szeretné a Avro-fájlokat, vagy Avro formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **AvroFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
 
 ```json
@@ -412,7 +412,7 @@ Az Avro formátum Hive-táblákban való használatával kapcsolatban lásd az [
 
 Vegye figyelembe a következő szempontokat:  
 
-* [Az összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, felsorakatok, tömbök, térképek, összeunionss és fix).
+* Az [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített).
 
 ## <a name="orc-format"></a>ORC formátum
 Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **OrcFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
@@ -454,9 +454,9 @@ Vegye figyelembe a következő szempontokat:
 * A Parquet-fájlok a következő tömörítéshez kapcsolódó beállításokat használják: NONE, SNAPPY, GZIP és LZO. A Data Factory a három tömörített formátum bármelyikében lévő ORC-fájlokból támogatja az adatok olvasását. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
 
 ## <a name="compression-support"></a>Tömörítés támogatása
-Nagy adatkészletek feldolgozása i/o- és hálózati szűk keresztmetszeteket okozhat. Ezért az üzletekben lévő tömörített adatok nem csak felgyorsíthatják az adatátvitelt a hálózaton keresztül, és lemezterületet takaríthatnak meg, hanem jelentős teljesítményjavulást is eredményeznek a big data feldolgozásában. Jelenleg a tömörítés támogatott fájlalapú adattárak, például az Azure Blob vagy a helyszíni fájlrendszer.  
+A nagyméretű adatkészletek feldolgozása az I/O-t és a hálózati szűk keresztmetszeteket is okozhatja. Ezért az áruházakban lévő tömörített adatok nem csak a hálózaton keresztüli adatátvitelt és lemezterületet takarítanak meg, hanem jelentős teljesítménybeli tökéletesítéseket is biztosítanak a big data feldolgozásában. A tömörítés jelenleg a fájl alapú adattárak, például az Azure Blob vagy a helyszíni fájlrendszer esetében támogatott.  
 
-Ha egy adatkészlethez tömörítést szeretne megadni, használja a JSON adatkészlet **tömörítési** tulajdonságát az alábbi példában:   
+Az adatkészlet tömörítésének megadásához használja az adatkészlet JSON **tömörítés** tulajdonságát az alábbi példában látható módon:   
 
 ```json
 {  
@@ -480,33 +480,33 @@ Ha egy adatkészlethez tömörítést szeretne megadni, használja a JSON adatk�
 }  
 ```
 
-Tegyük fel, hogy a minta adatkészlet egy másolási tevékenység kimeneteként használatos, a másolási tevékenység tömöríti a kimeneti adatokat a GZIP codec optimális arány használatával, és írja be a tömörített adatokat egy pagecounts.csv.gz nevű fájlba az Azure Blob Storage-ban.
+Tegyük fel, hogy a minta adatkészletet egy másolási tevékenység kimenete használja, a másolási tevékenység az optimális arány használatával tömöríti a kimeneti adatokat a GZIP kodekkel, majd a tömörített adatokat a pagecounts. csv. gz nevű fájlba írja az Azure Blob Storage.
 
 > [!NOTE]
-> Az **AvroFormat**, **OrcFormat**vagy **ParquetFormat**formátumban lévő adatok nem támogatottak a tömörítési beállítások. Ha ilyen formátumú fájlokat olvas, a Data Factory észleli és használja a metaadatokban lévő tömörítési kodeket. Amikor ilyen formátumú fájlokba ír, a Data Factory kiválasztja az adott formátumhoz tartozó alapértelmezett tömörítési kodeket. Például ZLIB az OrcFormat és a SNAPPY a ParquetFormat esetében.   
+> A **AvroFormat**, **OrcFormat**vagy **ParquetFormat**lévő adattömörítési beállítások nem támogatottak. Ezekben a formátumokban a fájlok olvasásakor a Data Factory észleli és a metaadatokban használja a tömörítési kodeket. A formátumokban lévő fájlok írásakor Data Factory kiválasztja az alapértelmezett tömörítési kodeket az adott formátumhoz. Például: ZLIB for OrcFormat és SNAPPY for ParquetFormat.   
 
-A **tömörítési** szakasznak két tulajdonsága van:  
+A **tömörítési** szakasz két tulajdonsággal rendelkezik:  
 
-* **Típus:** a tömörítő kodek, amely lehet **GZIP,** **Deflate,** **BZIP2**vagy **ZipDeflate**.  
-* **Szint:** a tömörítési arány, amely lehet **optimális** vagy **leggyorsabb**.
+* **Típus:** a tömörítési kodek, amely lehet **gzip**, **deflate**, **bzip2**vagy **ZipDeflate**.  
+* **Szint:** a tömörítési arány, amely **optimális** vagy **leggyorsabb**lehet.
 
-  * **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban el kell végeznie, még akkor is, ha az eredményül kapott fájl nincs optimálisan tömörítve.
-  * **Optimális**: A tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet hosszabb időt vesz igénybe.
+  * **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.
+  * **Optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe.
 
-    További információt a [Tömörítési szint témakörben](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) talál.
+    További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör.
 
-Ha tulajdonságot ad meg `compression` egy JSON bemeneti adatkészletben, a folyamat képes olvasni a forrásból származó tömörített adatokat; és amikor megadja a tulajdonságot egy kimeneti adatkészletben JSON, a másolási tevékenység írhat tömörített adatokat a cél. Íme néhány példa forgatókönyv:
+Ha egy bemeneti `compression` adatkészlet JSON-ban adja meg a tulajdonságot, a folyamat képes olvasni a tömörített adatokat a forrásból. Ha egy kimeneti adatkészlet JSON-ban adja meg a tulajdonságot, a másolási tevékenység tömörített adatokat tud írni a célhelyre. Íme néhány példa a példákra:
 
-* GZIP tömörített adatokat olvashat egy Azure blobból, kibonthatja, és eredményadatokat írhat egy Azure SQL-adatbázisba. A bemeneti Azure Blob-adatkészletet a `compression` `type` JSON tulajdonsággal GZIP-ként definiálja.
-* Adatok olvasása egy egyszerű szöveges fájlból a helyszíni fájlrendszerből, tömörítheti azt GZip formátumban, és írja a tömörített adatokat egy Azure blobba. A `compression` `type` JSON-tulajdonsággal rendelkező kimeneti Azure Blob-adatkészletet GZip-ként definiál.
-* Olvassa el a .zip fájlt az FTP-kiszolgálóról, bontsa ki a fájlokat, és tegye le ezeket az Azure Data Lake Store-ba. A JSON tulajdonsággal `compression` `type` rendelkező bemeneti FTP-adatkészletet ZipDeflate néven definiálhat.
-* GZIP-tömörített adatok at egy Azure blob, kibontani, tömöríteni, tömöríteni a BZIP2 használatával, és írja az eredményadatokat egy Azure blobba. A bemeneti Azure Blob-adatkészletet `compression` `type` a GZIP-re `compression` `type` és a kimeneti adatkészletet a BZIP2-re állítva határozza meg ebben az esetben.   
+* A GZIP által tömörített adatok beolvasása egy Azure-blobból, kibontása és az eredmények adatainak írása egy Azure SQL Database-adatbázisba. A bemeneti Azure Blob-adatkészletet a `compression` `type` JSON-tulajdonsággal adhatja meg a gzip-ként.
+* Az adatok beolvasása egy egyszerű szöveges fájlból a helyszíni fájlrendszerből, GZip formátum használatával tömöríthető, és a tömörített adatok megírása egy Azure-blobba. Egy kimeneti Azure Blob-adatkészletet a `compression` `type` JSON-tulajdonsággal a gzip-ként adhat meg.
+* Olvassa el a. zip fájlt az FTP-kiszolgálóról, bontsa ki, hogy beolvassa a fájlokat a belsejében, és a fájlokat a Azure Data Lake Storeba helyezi. A `compression` `type` JSON tulajdonsággal rendelkező bemeneti FTP-adatkészletet ZipDeflate-ként definiálhatja.
+* Egy Azure-blobból származó, GZIP-tömörített adatok beolvasása, kibontása, a BZIP2 használatával történő tömörítés, valamint az eredmények egy Azure-blobba írása. Ebben az esetben a bemeneti Azure Blob- `compression` `type` adatkészletet a gzip értékre, `compression` `type` a kimeneti adatkészletet pedig a bzip2 értékre kell beállítani.   
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi cikkeket az Azure Data Factory által támogatott fájlalapú adattárakról:
+A Azure Data Factory által támogatott fájl-alapú adattárakat a következő cikkekben találja:
 
-- [Azure Blob Storage](data-factory-azure-blob-connector.md)
+- [Azure-Blob Storage](data-factory-azure-blob-connector.md)
 - [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
 - [FTP](data-factory-ftp-connector.md)
 - [HDFS](data-factory-hdfs-connector.md)

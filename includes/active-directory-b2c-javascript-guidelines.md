@@ -6,28 +6,28 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: mimart
 ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185835"
 ---
-## <a name="guidelines-for-using-javascript"></a>A JavaScript használatának irányelvei
+## <a name="guidelines-for-using-javascript"></a>Útmutató a JavaScript használatához
 
-Kövesse az alábbi irányelveket, amikor az alkalmazás felületét JavaScript használatával testreszabja:
+Kövesse az alábbi irányelveket, amikor testreszabja az alkalmazás felületét a JavaScript használatával:
 
-- Ne kössön kattintási `<a>` eseményt a HTML-elemekhez.
-- Ne vegyen igénybe függőséget az Azure AD B2C-kódtól vagy a megjegyzésektől.
-- Ne módosítsa az Azure AD B2C HTML-elemek sorrendjét vagy hierarchiáját. Az Azure AD B2C-szabályzat használatával szabályozhatja a felhasználói felület elemeinek sorrendjét.
-- A következő szempontokat figyelembe véve bármely RESTful szolgáltatást hívhatja:
-    - Előfordulhat, hogy be kell állítania a RESTful szolgáltatás CORS-t az ügyféloldali HTTP-hívások engedélyezéséhez.
-    - Győződjön meg arról, hogy a RESTful szolgáltatás biztonságos, és csak a HTTPS protokollt használja.
-    - Ne használja a JavaScript közvetlenül az Azure AD B2C végpontok hívásához.
-- Beágyazhatja a JavaScriptet, vagy külső JavaScript-fájlokra hivatkozhat. Külső JavaScript-fájl használata esetén ügyeljen arra, hogy az abszolút URL-t használja, ne pedig relatív URL-t.
+- Ne hozzon létre egy kattintásos eseményt `<a>` HTML-elemeken.
+- Ne vegyen fel függőséget Azure AD B2C kód vagy Megjegyzés alapján.
+- Ne módosítsa Azure AD B2C HTML-elemek sorrendjét vagy hierarchiáját. A felhasználói felületi elemek sorrendjének szabályozásához használjon Azure AD B2C szabályzatot.
+- A következő megfontolásokkal hívhat meg bármilyen REST-szolgáltatást:
+    - Előfordulhat, hogy az ügyféloldali HTTP-hívások engedélyezéséhez be kell állítania a REST szolgáltatás CORS.
+    - Győződjön meg arról, hogy a REST szolgáltatás biztonságos, és csak a HTTPS protokollt használja.
+    - Ne használja közvetlenül a JavaScriptet Azure AD B2C végpontok meghívásához.
+- Beágyazhatja a JavaScriptet, vagy külső JavaScript-fájlokra mutató hivatkozásokat is használhat. Külső JavaScript-fájl használata esetén ügyeljen arra, hogy az abszolút URL-címet használja, nem pedig relatív URL-címet.
 - JavaScript-keretrendszerek:
-    - Az Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery másik verzióját. Ha ugyanazon az oldalon több verziót is használ, az problémákat okoz.
+    - Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
     - A RequireJS használata nem támogatott.
-    - Az Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
-- Az Azure AD B2C-beállítások `window.SETTINGS` `window.CONTENT` at lehet olvasni a hívás , objektumok, például az aktuális felhasználói felület nyelvét. Ne változtassa meg ezeknek az objektumoknak az értékét.
-- Az Azure AD B2C hibaüzenet testreszabásához használja a honosítást egy szabályzatban.
-- Ha valamit el lehet érni egy házirend használatával, általában ez az ajánlott módszer.
+    - Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
+- Azure ad B2C beállítások a következő módon olvashatók `window.SETTINGS`: `window.CONTENT` hívás, objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.
+- A Azure AD B2C-hibaüzenet testreszabásához használjon honosítást egy házirendben.
+- Ha bármilyen adat egy szabályzat használatával érhető el, általában az ajánlott módszer.

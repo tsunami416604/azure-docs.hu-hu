@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Oracle-nek vagy onnan a Data Factory használatával
-description: Ismerje meg, hogyan másolhat adatokat egy helyszíni Oracle-adatbázisba az Azure Data Factory használatával.
+title: Adatok másolása az Oracle-be vagy onnan a Data Factory használatával
+description: Megtudhatja, hogyan másolhat adatok egy helyszíni Oracle-adatbázisba vagy onnan a Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,103 +13,103 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265856"
 ---
-# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása az Oracle helyszíni vagy onnan az Azure Data Factory használatával
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása a helyszíni Oracle-be vagy onnan a Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-oracle-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-oracle.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha az Azure Data Factory szolgáltatás aktuális verzióját használja, tekintse meg az [Oracle-összekötő t a V2-ben.](../connector-oracle.md)
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Azure Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az Oracle-összekötőt a v2-ben](../connector-oracle.md).
 
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése, vagy egy helyszíni Oracle-adatbázis. A cikk [az adatmozgatási tevékenységekre](data-factory-data-movement-activities.md)épül, amely általános áttekintést nyújt az adatok mozgásáról a Másolási tevékenység használatával.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy helyszíni Oracle-adatbázisba való áthelyezéséhez. A cikk az adatáthelyezési [tevékenységekre](data-factory-data-movement-activities.md)épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenység használatával.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Az Oracle *adatbázisból* adatokat másolhat a következő adattárakba:
+Az *Oracle-adatbázisból* a következő adattárakba másolhatja a kívánt adatok:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-A következő adattárakból adatokat másolhat *oracle adatbázisba:*
+A következő adattárakból származó adatok másolhatók *egy Oracle-adatbázisba*:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Data Factory támogatja a helyszíni Oracle-forrásokhoz való csatlakozást a Data Management Gateway használatával. Az [Adatkezelési átjáróról](data-factory-data-management-gateway.md) további információért tekintse meg az Adatkezelési átjárót. Az adatok áthelyezése a [helyszíni adatokról](data-factory-move-data-between-onprem-and-cloud.md)a felhőbe című témakörben részletesútmutatást talál arról, hogyan állíthatja be az átjárót az adatfolyamatban az adatok áthelyezéséhez.
+Data Factory támogatja a helyszíni Oracle-forrásokhoz való kapcsolódást adatkezelés átjáró használatával. Az adatkezelés-átjáróval kapcsolatos további tudnivalókért tekintse meg [adatkezelés átjárót](data-factory-data-management-gateway.md) . Az adatok áthelyezéséről az adatfolyamatokban az átjáró beállításával kapcsolatos részletes útmutatásért lásd: [adatok áthelyezése a helyszínről a felhőbe](data-factory-move-data-between-onprem-and-cloud.md).
 
-Az átjáró akkor is szükséges, ha az Oracle üzemelteti az Azure-infrastruktúra szolgáltatásként (IaaS) virtuális gép. Az átjáró t az adattárban lévő IaaS virtuális gépre vagy egy másik virtuális gépre telepítheti, feltéve, hogy az átjáró csatlakozhat az adatbázishoz.
+Az átjáróra akkor is szükség van, ha az Oracle egy Azure-beli infrastruktúra-szolgáltatásként (IaaS) üzemelő virtuális gépen fut. Az átjárót ugyanarra a IaaS virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
 
 > [!NOTE]
-> A kapcsolattal és az átjáróval kapcsolatos problémák elhárításával kapcsolatos tippek az [átjáróval kapcsolatos problémák elhárítása című](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)témakörben találhatók.
+> A kapcsolattal és az átjáróval kapcsolatos hibák elhárítására vonatkozó tippekért lásd az [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)című témakört.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
 
-Ez az Oracle csatlakozó az illesztőprogramok két verzióját támogatja:
+Ez az Oracle-összekötő az illesztőprogramok két verzióját támogatja:
 
-- **Microsoft driver for Oracle (ajánlott)**: A Data Management Gateway 2.7-es verziójától kezdve az Oracle microsoftos illesztőprogramja automatikusan települ az átjáróval. Az Oracle-hez való csatlakozás létrehozásához nem kell telepítenie vagy frissítenie az illesztőprogramot. Az illesztőprogram használatával jobb másolási teljesítményt is megtapasztalhat. Az Oracle adatbázisok ezen verziói támogatottak:
-  - Oracle 12c R1 (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10.1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
+- **Microsoft Driver for Oracle (ajánlott)**: a adatkezelés Gateway 2,7-es verziójától kezdve az Oracle-hez készült Microsoft-illesztőprogram automatikusan települ az átjáróval. Nem kell telepítenie vagy frissítenie az illesztőprogramot az Oracle-kapcsolat létesítéséhez. Az illesztőprogram használatával jobb másolási teljesítményt is használhat. Az Oracle-adatbázisok ezen verziói támogatottak:
+  - Oracle 12c R1 (12,1)
+  - Oracle 11g R1, R2 (11,1, 11,2)
+  - Oracle 10g R1, R2 (10,1, 10,2)
+  - Oracle 9i R1, R2 (9.0.1, 9,2)
   - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
-    > Az Oracle proxykiszolgáló nem támogatott.
+    > Az Oracle-proxykiszolgáló nem támogatott.
 
     > [!IMPORTANT]
-    > Jelenleg az Oracle Microsoft illesztőprogramja csak az Oracle-től származó adatok másolását támogatja. Az illesztőprogram nem támogatja az Oracle írását. Az Adatkezelési átjáró **diagnosztika** lapján található tesztkapcsolati funkció nem támogatja ezt az illesztőprogramot. Másik lehetőségként a Másolás varázslóval ellenőrizheti a kapcsolatot.
+    > Az Oracle-hez készült Microsoft-illesztőprogram jelenleg csak az Oracle-ből származó adatok másolását támogatja. Az illesztőprogram nem támogatja az Oracle-nek való írást. Az adatkezelés átjáró **diagnosztika** lapján a csatlakozás tesztelése funkció nem támogatja ezt az illesztőprogramot. Másik lehetőségként használhatja a másolás varázslót a kapcsolat ellenőrzéséhez.
     >
 
-- **Oracle Data Provider for .NET**: Az Oracle Data Provider segítségével adatokat másolhat az Oracle-től vagy az Oracle-nek. Ez az összetevő a [Windows Oracle Data Access Components](https://www.oracle.com/technetwork/topics/dotnet/downloads/)részét képezi. Telepítse a megfelelő verziót (32 vagy 64 bites) arra a gépre, amelyen az átjáró telepítve van. [Az Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) hozzáférhet az Oracle Database 10g Release 2 és újabb verziókhoz.
+- **Oracle-adatszolgáltató a .net-hez**: az Oracle-adatszolgáltató használatával adatok másolhatók a vagy az Oracle-ből. Ez az összetevő a [Windowshoz készült Oracle-adatelérési összetevők](https://www.oracle.com/technetwork/topics/dotnet/downloads/)részét képezi. Telepítse a megfelelő verziót (32 bites vagy 64 bites) azon a gépen, amelyen az átjáró telepítve van. [Az Oracle-adatszolgáltató .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) -es verziója Oracle Database 10g 2. és újabb verzióit is elérheti.
 
-    Ha az XCopy telepítése lehetőséget **választja,** hajtsa végre a readme.htm fájlban ismertetett lépéseket. Azt javasoljuk, hogy válassza ki a telepítőt, amely rendelkezik a felhasználói felület (nem az XCopy telepítő).
+    Ha az **xcopy telepítése**lehetőséget választja, hajtsa végre a readme. htm fájlban ismertetett lépéseket. Javasoljuk, hogy válassza ki azt a telepítőt, amely a felhasználói felületen (nem az XCopy-telepítőn) van.
 
-    A szolgáltató telepítése után indítsa újra a Data Management Gateway host szolgáltatást a számítógépen a Szolgáltatások kisalkalmazás vagy az Adatkezelési átjáró konfigurációkezelője segítségével.
+    A szolgáltató telepítése után indítsa újra a adatkezelés Gateway Host szolgáltatást a gépen a szolgáltatások kisalkalmazás vagy a adatkezelés Gateway Configuration Manager használatával.
 
-Ha a Másolás varázslóval készíti a másolási folyamatot, az illesztőprogram típusa automatikusan meg lesz határozva. A Microsoft-illesztőprogram alapértelmezés szerint használatos, kivéve, ha az átjáró verziója korábbi a 2.7-es verziónál, vagy ha az Oracle-t választja fogadóként.
+Ha a másolás varázslót használja a másolási folyamat létrehozásához, az illesztőprogram típusa a következő: automeghatározva. Alapértelmezés szerint a Microsoft illesztőprogramját használja a rendszer, kivéve, ha az átjáró verziója korábbi, mint a 2,7-es verzió, vagy ha az Oracle-t a fogadóként választja.
 
 ## <a name="get-started"></a>Bevezetés
 
-Létrehozhat egy másolási tevékenységet tartalmazó folyamatot. A folyamat az adatokat egy helyszíni Oracle-adatbázisba vagy onnan különböző eszközök vagy API-k használatával helyezi át.
+Létrehozhat egy másolási tevékenységet tartalmazó folyamatot. A folyamat különböző eszközök vagy API-k használatával helyezi át az adatait egy helyszíni Oracle-adatbázisba vagy onnan.
 
-A folyamat létrehozásának legegyszerűbb módja a Másolás varázsló használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) egy gyors forgatókönyvet a folyamat létrehozásához az Adatok másolása varázslóval.
+A folyamat létrehozásának legegyszerűbb módja a másolás varázsló használata. A folyamat létrehozásához a Adatok másolása varázsló segítségével tekintse meg [az oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört.
 
-A következő eszközök egyikével is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager-sablon,** **.NET API**vagy REST **API.** Tekintse meg a [Másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lépésről-lépésre, hogyan hozhat létre egy folyamat, amely egy másolási tevékenységet.
+A következő eszközök egyikét is használhatja egy folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**vagy a **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokért tekintse meg a [másolási tevékenységről szóló oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Akár az eszközöket, akár api-kat használja, az alábbi lépéseket úgy hozza létre, hogy olyan folyamatot hozzon létre, amely adatokat helyezi át a forrásadattárból a fogadó adattárba:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, hajtsa végre a következő lépéseket egy olyan folyamat létrehozásához, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre egy **adat-előállító**. Az adat-előállító konklúzió egy vagy több folyamatot is tartalmazhat.
-2. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására. Ha például adatokat másol egy Oracle-adatbázisból az Azure Blob storage-ba, hozzon létre két összekapcsolt szolgáltatást az Oracle-adatbázis és az Azure storage-fiók és az adat-előállító összekapcsolására. Az Oracle-re jellemző kapcsolt szolgáltatástulajdonságokról a Csatolt szolgáltatás tulajdonságai ( Csatolt szolgáltatás tulajdonságai ) [(Csatolt szolgáltatás tulajdonságai) (Csatolt szolgáltatás tulajdonságai) (Csatolt szolgáltatás tulajdonságai) (Csatolt szolgáltatás tulajdonságai) (Csatolt szolgáltatás tulajdonságai) (Csatolt szolgáltatás tulajdonságai](#linked-service-properties)
-3. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására. Az előző lépésben található példában hozzon létre egy adatkészletet, amely megadja a bemeneti adatokat tartalmazó táblát az Oracle-adatbázisban. Hozzon létre egy másik adatkészletet a blobtároló és az Oracle-adatbázisból másolt adatokat tároló mappa megadásához. Az Oracle-re jellemző adatkészlet-tulajdonságokról az [Adatkészlet tulajdonságai (Dataset properties) (Adatkészlet tulajdonságai) (Adatkészlet tulajdonságai) (Dataset properties) (Adatkészlettulajdonságai) (Dataset properties) (Adatkészlet-tulajdonságok) (Dataset](#dataset-properties)
-4. Hozzon létre egy **folyamatot,** amely egy másolási tevékenység, amely egy adatkészletet bemenetként, és egy adatkészletkimenetként. Az előző példában az **OracleSource-t** használja forrásként, **a BlobSink-et** pedig a másolási tevékenység fogadójaként. Hasonlóképpen, ha az Azure Blob storage-ból egy Oracle-adatbázisba másol, a **BlobSource** és az **OracleSink** a másolási tevékenységben használja. Az Oracle-adatbázisra jellemző tevékenységek másolási tulajdonságairól a [Tevékenység tulajdonságainak másolása (Másolási tulajdonságok) (Tevékenység tulajdonságainak másolása) témakörben](#copy-activity-properties)találhatók. Az adattár forrásként vagy fogadóként való használatáról az előző szakaszban található hivatkozást.
+1. Hozzon létre egy **adatelőállítót**. Egy adatelőállító egy vagy több folyamatot is tartalmazhat.
+2. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához. Ha például egy Oracle-adatbázisból másolja az Azure Blob Storage-ba, hozzon létre két társított szolgáltatást, hogy az Oracle Database-t és az Azure Storage-fiókot a saját adatokkal rendelkező gyárához kapcsolja. Az Oracle-specifikus társított szolgáltatások tulajdonságainál tekintse meg a [társított szolgáltatás tulajdonságai](#linked-service-properties)című témakört.
+3. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. Az előző lépésben szereplő példában létrehoz egy adatkészletet, amely megadja az Oracle-adatbázisban a bemeneti adatokat tartalmazó táblázatot. Létrehoz egy másik adatkészletet a blob-tároló és az Oracle-adatbázisból másolt adatok tárolására szolgáló mappa megadásához. Az Oracle-specifikus adatkészlet-tulajdonságok esetében lásd: [adatkészlet tulajdonságai](#dataset-properties).
+4. Olyan **folyamat** létrehozása, amely egy másolási tevékenységgel rendelkezik, amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzésére szolgál. Az előző példában a **OracleSource** forrásként és **BlobSink** kell használni a másolási tevékenységhez. Hasonlóképpen, ha az Azure Blob Storage-ból egy Oracle-adatbázisba másol, a másolási tevékenységben a **BlobSource** és a **OracleSink** is használható. Az Oracle-adatbázisra jellemző másolási tevékenység tulajdonságai: [másolási tevékenység tulajdonságai](#copy-activity-properties). Az adattárak forrásként vagy fogadóként való használatáról az előző szakaszban található adattárat tartalmazó hivatkozást válassza.
 
-A varázsló használatakor a Data Factory entitásokhoz tartozó JSON-definíciók automatikusan létrejönnek: csatolt szolgáltatások, adatkészletek és a folyamat. Eszközök vagy API-k használataesetén (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja. Azokat a mintákat, amelyek JSON-definíciók data factory entitások, amelyek segítségével adatok másolása egy helyszíni Oracle-adatbázis, lásd: JSON példák.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások JSON-definícióit: társított szolgáltatások, adatkészletek és a folyamat. Ha eszközöket vagy API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia. Olyan mintáknál, amelyek JSON-definíciókkal rendelkeznek az adatok egy helyszíni Oracle-adatbázisba való másolásához használt Data Factory entitásokhoz, lásd a JSON-példákat.
 
-A következő szakaszok a Data Factory entitások definiálásához használt JSON-tulajdonságok részleteit ismertetik.
+A következő szakaszokban részletesen ismertetjük a Data Factory entitások definiálásához használt JSON-tulajdonságokat.
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az alábbi táblázat az Oracle kapcsolódó szolgáltatására jellemző JSON-elemeket ismerteti:
+A következő táblázat az Oracle-hez társított szolgáltatáshoz tartozó JSON-elemeket ismerteti:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A **típustulajdonságot** **OnPremisesOracle (OnPremisesOracle**) tulajdonságra kell állítani. |Igen |
-| driverType (illesztőprogram típusa) | Adja meg, hogy melyik illesztőprogramot használja az Oracle-adatbázisból vagy -ba történő másoláshoz. Az engedélyezett értékek a **Microsoft** és **az ODP** (alapértelmezett). Az illesztőprogram részleteiről a [Támogatott verzió és telepítés](#supported-versions-and-installation) című témakörben talál. | Nem |
-| connectionString (kapcsolati karakterlánc) | Adja meg a **connectionString** tulajdonság Oracle adatbázispéldányához való csatlakozáshoz szükséges adatokat. | Igen |
-| átjárónév | A helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt átjáró neve. |Igen |
+| type |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
+| driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | Nem |
+| connectionString | A **ConnectionString** tulajdonsághoz tartozó Oracle Database-példányhoz való kapcsolódáshoz szükséges információk megadása. | Igen |
+| Átjáró neve | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Igen |
 
-**Példa: A Microsoft-illesztőprogram használata**
+**Példa: a Microsoft-illesztőprogram használata**
 
 > [!TIP]
-> Ha az "ORA-01025: UPI paraméter hatótávolságon kívül" hibaüzenet jelenik meg, `WireProtocolMode=1` és az Oracle 8i-as verziójú, adja hozzá a kapcsolati karakterlánchoz, és próbálkozzon újra:
+> Ha az "ORA-01025: UPI paraméter a tartományon kívül" üzenet jelenik meg, és az Oracle verziója 8i, adja hozzá `WireProtocolMode=1` a kapcsolódási karakterláncot, és próbálkozzon újra:
 
 ```json
 {
@@ -125,9 +125,9 @@ Az alábbi táblázat az Oracle kapcsolódó szolgáltatására jellemző JSON-e
 }
 ```
 
-**Példa: Az ODP-illesztőprogram használata**
+**Példa: az ODP-illesztőprogram használata**
 
-Az engedélyezett formátumokról a [.NET ODP oracle adatszolgáltatója](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Az engedélyezett formátumok megismeréséhez lásd: [Oracle-adatszolgáltató a .net ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)szolgáltatáshoz.
 
 ```json
 {
@@ -144,63 +144,63 @@ Az engedélyezett formátumokról a [.NET ODP oracle adatszolgáltatója](https:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek létrehozása című](data-factory-create-datasets.md)témakörben található.
+Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [adatkészletek létrehozása](data-factory-create-datasets.md).
 
-A JSON-fájl adatkészletszakaszai, például a struktúra, az elérhetőség és a szabályzat, minden adatkészlettípushoz hasonlóak (például az Oracle, az Azure Blob storage és az Azure Table storage esetében).
+Az adatkészlet JSON-fájljának (például a struktúra, a rendelkezésre állás és a szabályzat) részei hasonlóak az összes adatkészlet-típushoz (például Oracle, Azure Blob Storage és Azure Table Storage).
 
-A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok helyéről az adattárban. Az **OracleTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **OracleTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |A csatolt szolgáltatás által hivatkozott Oracle-adatbázisban lévő tábla neve. |Nem (ha **az oracleReaderQuery** vagy az **OracleSource** meg van adva) |
+| tableName |Annak az Oracle-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **oracleReaderQuery** vagy a **OracleSource** meg van adva) |
 
-## <a name="copy-activity-properties"></a>Tevékenység tulajdonságainak másolása
+## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok létrehozása című témakörben található.](data-factory-create-pipelines.md)
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [folyamatok létrehozása](data-factory-create-pipelines.md).
 
-Tulajdonságok, például név, leírás, bemeneti és kimeneti táblák és házirend állnak rendelkezésre minden típusú tevékenységek.
+A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
 
 > [!NOTE]
-> A Másolási tevékenység csak egy bemenetet vesz igénybe, és csak egy kimenetet hoz létre.
+> A másolási tevékenység csak egy bemenetet hoz létre, és csak egy kimenetet állít elő.
 
-A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. A másolási tevékenység tulajdonságai a forrás és a fogadó típusától függően változnak.
+A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. A másolási tevékenység tulajdonságai a forrás és a fogadó típusától függően változnak.
 
-### <a name="oraclesource"></a>OracleForrás
+### <a name="oraclesource"></a>OracleSource
 
-A Másolási tevékenység ben, ha a forrás az **OracleSource** típus, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
-
-| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
-| --- | --- | --- | --- |
-| oracleReaderQuery |Az adatok olvasásához használja az egyéni lekérdezést. |SQL-lekérdezési karakterlánc. Például a \* "select from **MyTable".** <br/><br/>Ha nincs megadva, ez az SQL \* utasítás végrehajtása: "válassza ki a **MyTable"** |Nem<br />(ha **a tableName** of **dataset** meg van adva) |
-
-### <a name="oraclesink"></a>OracleMosogató
-
-**Az OracleSink** a következő tulajdonságokat támogatja:
+A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| writeBatchTimeout |A kötegbehelyezési művelet befejezéséhez szükséges várakozási idő, mielőtt az időtúljárna. |**időtartomány**<br/><br/> Példa: 00:30:00 (30 perc) |Nem |
-| writeBatchSize |Adatokat szúr be az SQL táblába, amikor a puffermérete eléri a **writeBatchSize**értékét. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
-| sqlWriterCleanupScript |Megadja a végrehajtandó másolási tevékenység lekérdezését, hogy egy adott szelet adatai törlődjenek. |Lekérdezési utasítás. |Nem |
-| sliceIdentifierColumnName |Megadja az automatikusan létrehozott szeletazonosítóval kitöltendő másolási tevékenység oszlopnevét. A **sliceIdentifierColumnName** értéke egy adott szelet adatainak tisztítására szolgál az újrafuttatáskor. |A **bináris(32)** adattípusú oszlop oszlopneve. |Nem |
+| oracleReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Egy SQL-lekérdezési karakterlánc. Például: "Select \* from **sajáttábla**". <br/><br/>Ha nincs megadva, a rendszer a következő SQL-utasítást hajtja végre: "Select \* from **sajáttábla**" |Nem<br />(ha **tableName** a táblanév **meg van adva** ) |
 
-## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az Oracle adatbázisba és az Oracle adatbázisból történő másoláshoz
+### <a name="oraclesink"></a>OracleSink
 
-Az alábbi példák minta JSON-definíciókat tartalmaznak, amelyek segítségével folyamatot hozhat létre a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy az [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával. A példák bemutatják, hogyan másolhat adatokat egy Oracle-adatbázisból vagy -ba, illetve az Azure Blob storage-ból. Az adatok azonban a [Támogatott adattárakban és formátumokban](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt fogadók bármelyikébe átmásolhatók az Azure Data Factory másolási tevékenység használatával.
+A **OracleSink** a következő tulajdonságokat támogatja:
 
-**Példa: Adatok másolása az Oracle-től az Azure Blob storage-ba**
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
+| --- | --- | --- | --- |
+| writeBatchTimeout |Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt. |**időtartomány**<br/><br/> Példa: 00:30:00 (30 perc) |Nem |
+| writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a **writeBatchSize**értékét. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
+| sqlWriterCleanupScript |Meghatározza a másolási tevékenység végrehajtásának lekérdezését, hogy egy adott szelet adattisztítása megtörténjen. |Egy lekérdezési utasítás. |Nem |
+| sliceIdentifierColumnName |Megadja a másolási tevékenység oszlopának nevét egy automatikusan létrehozott szelet azonosítójának kitöltéséhez. A **sliceIdentifierColumnName** értékének használatával törölheti egy adott szelet adatmennyiségét az újrafuttatáskor. |A bináris adattípusú oszlop neve **(32)**. |Nem |
 
-A minta a következő Data Factory entitásokkal rendelkezik:
+## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok az Oracle-adatbázisba és onnan történő másolásához
 
-* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)típusú összekapcsolt szolgáltatás.
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
+Az alábbi példák olyan JSON-definíciókat biztosítanak, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. A példák azt mutatják be, hogyan másolhatók az adatok egy Oracle-adatbázisból vagy az Azure Blob Storage-ból vagy-ból. Az adattárakat azonban a Azure Data Factoryban található másolási tevékenység használatával másolhatók a [támogatott adattárakban és-formátumokban](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt mosogatók bármelyikére.
+
+**Példa: adatok másolása az Oracle-ből az Azure Blob Storage-ba**
+
+A mintában a következő Data Factory entitások vannak:
+
+* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)típusú társított szolgáltatás.
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
 * [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
-* Olyan [folyamat,](data-factory-create-pipelines.md) amelynek másolási tevékenysége [az OracleSource-t](data-factory-onprem-oracle-connector.md#copy-activity-properties) használja forrásként és [BlobSink-t](data-factory-azure-blob-connector.md#copy-activity-properties) fogadóként.
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+* Egy másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) , amely a [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) használja forrásként és [BlobSinkként](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
-A minta adatokat másol egy táblából egy helyszíni Oracle-adatbázisban egy blob óránként. A mintában használt különböző tulajdonságokról a mintákat követő szakaszokban talál további információt.
+A minta egy helyszíni Oracle-adatbázisban lévő táblából másolja át az adatait egy blobba óránként. A mintában használt különböző tulajdonságokkal kapcsolatos további információkért tekintse meg a mintákat követő szakaszokat.
 
-**Oracle kapcsolt szolgáltatás**
+**Oracle társított szolgáltatás**
 
 ```json
 {
@@ -216,7 +216,7 @@ A minta adatokat másol egy táblából egy helyszíni Oracle-adatbázisban egy 
 }
 ```
 
-**Azure Blob storage-hoz csatolt szolgáltatás**
+**Azure Blob Storage társított szolgáltatás**
 
 ```json
 {
@@ -232,9 +232,9 @@ A minta adatokat másol egy táblából egy helyszíni Oracle-adatbázisban egy 
 
 **Oracle bemeneti adatkészlet**
 
-A minta feltételezi, hogy létrehozott egy **MyTable** nevű táblát az Oracle-ben. Az **idősorozat-adatok időbélyegoszlopnevű** oszlopát tartalmazza.
+A minta azt feltételezi, hogy létrehozott egy **sajáttábla** nevű táblázatot az Oracle-ben. Egy **timestampcolumn** nevű oszlopot tartalmaz az idősorozat-adatsorokhoz.
 
-**Külső**beállítása: **true** tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet külső adat-előállító, és hogy az adatkészlet nem az adat-előállító tevékenység által előállított.
+**Külső**beállítás: az **igaz** érték azt a Data Factory szolgáltatást tájékoztatja, hogy az adatkészlet kívül esik az adat-előállítón, és hogy az adatkészletet nem egy tevékenység hozta létre az adat-előállítóban.
 
 ```json
 {
@@ -265,7 +265,7 @@ A minta feltételezi, hogy létrehozott egy **MyTable** nevű táblát az Oracle
 
 **Azure blobkimeneti adatkészlet**
 
-Az adatok óránként új blobba vannak írva (**gyakoriság:** **óra**, **időköz**: **1**). A blob mappaelérési útja és fájlneve dinamikusan kiértékelésre kerül a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészét használja.
+A rendszer óránként egy új blobba írja az adatbevitelt (**frekvencia**: **óra**, **intervallum**: **1**). A blob mappájának elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja a kezdési időpont év, hónap, nap és óra részét használja.
 
 ```json
 {
@@ -325,7 +325,7 @@ Az adatok óránként új blobba vannak írva (**gyakoriság:** **óra**, **idő
 
 **Másolási tevékenységgel rendelkező folyamat**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futtatásra ütemezve. A folyamat JSON-definíciójában a **forrástípus** **OracleSource** lesz állítva, a **fogadó** típusa pedig **BlobSink**. Az **oracleReaderQuery** tulajdonsággal megadott SQL-lekérdezés kiválasztja a másolni kívánt adatokat az elmúlt órában.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és az ütemezett futtatás óránként történik. A folyamat JSON-definíciójában a **forrás** típusa **OracleSource** értékre van állítva, a **fogadó típusa pedig** **BlobSink**értékre van állítva. A **oracleReaderQuery** tulajdonsággal megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az adott adatforrást.
 
 ```json
 {
@@ -374,21 +374,21 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 }
 ```
 
-**Példa: Adatok másolása az Azure Blob storage-ból az Oracle-nek**
+**Példa: adatok másolása az Azure Blob Storage-ból az Oracle-be**
 
-Ez a minta bemutatja, hogyan másolhat adatokat egy Azure Blob-tárfiókból egy helyszíni Oracle-adatbázisba. Azonban *közvetlenül* másolhatja az adatokat a [Támogatott adattárakban és formátumokban](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt források bármelyikéből az Azure Data Factory másolási tevékenység használatával.
+Ez a minta bemutatja, hogyan másolhat adatok egy Azure Blob Storage-fiókból egy helyszíni Oracle Database-be. Az adatok másolása azonban *közvetlenül* a [támogatott adattárakban és-formátumokban](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt forrásokból is elvégezhető a Azure Data Factory másolási tevékenységének használatával.
 
-A minta a következő Data Factory entitásokkal rendelkezik:
+A mintában a következő Data Factory entitások vannak:
 
-* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)típusú összekapcsolt szolgáltatás.
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú bemeneti [adatkészlet.](data-factory-create-datasets.md)
+* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)típusú társított szolgáltatás.
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
 * [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
-* Olyan [folyamat,](data-factory-create-pipelines.md) amely nek van egy másolási tevékenysége, amely [a BlobSource-ot](data-factory-azure-blob-connector.md#copy-activity-properties) használja forrás [OracleSink-ként](data-factory-onprem-oracle-connector.md#copy-activity-properties) fogadóként.
+* Olyan [folyamat](data-factory-create-pipelines.md) , amely egy másolási tevékenységgel rendelkezik, amely [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) használ a [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) forrásként.
 
-A minta óránként átmásolja az adatokat egy blobból egy helyszíni Oracle-adatbázis táblájára. A mintában használt különböző tulajdonságokról a mintákat követő szakaszokban talál további információt.
+A minta minden órában átmásolja az adatait egy blobból a helyszíni Oracle-adatbázisban lévő táblába. A mintában használt különböző tulajdonságokkal kapcsolatos további információkért tekintse meg a mintákat követő szakaszokat.
 
-**Oracle kapcsolt szolgáltatás**
+**Oracle társított szolgáltatás**
 
 ```json
 {
@@ -404,7 +404,7 @@ A minta óránként átmásolja az adatokat egy blobból egy helyszíni Oracle-a
 }
 ```
 
-**Azure Blob storage-hoz csatolt szolgáltatás**
+**Azure Blob Storage társított szolgáltatás**
 
 ```json
 {
@@ -420,7 +420,7 @@ A minta óránként átmásolja az adatokat egy blobból egy helyszíni Oracle-a
 
 **Azure blobbemeneti adatkészlet**
 
-Az adatokat óránként veszik fel egy új blobból (**gyakoriság:** **óra**, **időköz**: **1**). A blob mappaelérési útja és fájlneve dinamikusan kiértékelésre kerül a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év-, hónap- és naprészét használja. A fájlnév a kezdési időpont órarészét használja. A **beállítás külső:** **true** tájékoztatja a Data Factory szolgáltatást, hogy ez a tábla az adat-előállító, és nem az adat-előállító tevékenység által előállított.
+Az adatok minden órában egy új blobból származnak (**frekvencia**: **óra**, **intervallum**: **1**). A blob mappájának elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja a kezdési időpont év, hónap és nap részét használja. A fájlnév a kezdési idő óra részét használja. A **külső**beállítás: **true (igaz** ) értékkel tájékoztatja a Data Factory szolgáltatást, hogy ez a tábla az adatelőállítón kívül esik, és nem az adatelőállító tevékenysége.
 
 ```json
 {
@@ -480,7 +480,7 @@ Az adatokat óránként veszik fel egy új blobból (**gyakoriság:** **óra**, 
 
 **Oracle kimeneti adatkészlet**
 
-A minta feltételezi, hogy létrehozott egy **MyTable** nevű táblát az Oracle-ben. Hozza létre a táblát az Oracle-ben ugyanannyi oszloppal, mint ablob CSV-fájl. A rendszer óránként új sorokat ad a táblához.
+A minta feltételezi, hogy létrehozott egy **sajáttábla** nevű táblázatot az Oracle-ben. Hozza létre a táblázatot az Oracle-ben azonos számú oszloppal, amelyek várhatóan tartalmazzák a blob CSV-fájlját. Minden órában új sor kerül a táblázatba.
 
 ```json
 {
@@ -501,7 +501,7 @@ A minta feltételezi, hogy létrehozott egy **MyTable** nevű táblát az Oracle
 
 **Másolási tevékenységgel rendelkező folyamat**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A json-definícióban a **forrástípus** **BlobSource,** a **fogadó** típusa pedig **OracleSink**lesz.
+A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálva, hogy a bemeneti és kimeneti adatkészleteket használja, és minden órában fusson. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa pedig** **OracleSink**értékre van állítva.
 
 ```json
 {
@@ -552,7 +552,7 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-### <a name="problem-1-net-framework-data-provider"></a>1. probléma: .NET keretrendszer-adatszolgáltató
+### <a name="problem-1-net-framework-data-provider"></a>1. probléma: a .NET-keretrendszer adatszolgáltatója
 
 **Hibaüzenet**
 
@@ -560,19 +560,19 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 
 **Lehetséges okok**
 
-* A .NET Framework Data Provider for Oracle nincs telepítve.
-* A .NET Framework Data Provider for Oracle a .NET Framework 2.0 rendszerre lett telepítve, és nem található meg a .NET Framework 4.0 mappáiban.
+* A .NET-keretrendszer Oracle-adatszolgáltatója nem lett telepítve.
+* A .NET-keretrendszer Oracle-adatszolgáltatója a .NET-keretrendszer 2,0-es verziójában lett telepítve, és nem található a .NET-keretrendszer 4,0 mappáiban.
 
 **Resolution** (Osztás)
 
-* Ha még nem telepítette a .NET Provider for Oracle programot, [telepítse azt,](https://www.oracle.com/technetwork/topics/dotnet/downloads/)majd próbálkozzon újra a forgatókönyvvel.
-* Ha a hibaüzenet a szolgáltató telepítése után is megjelenik, hajtsa végre az alábbi lépéseket:
-    1. Nyissa meg a .NET 2.0 számítógép konfigurációs\>fájlját a <rendszerlemez mappájából :\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Keresse meg **az Oracle Data Provider for .NET**. Meg kell tudnia találni egy bejegyzést, amint az a **rendszer.data** > **DbProviderFactories**alábbi mintában látható:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Másolja a bejegyzést a machine.config fájlba a következő .NET\>4.0 mappába: <rendszerlemez :\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután változtassa meg a verziót 4.xxx.x.x.
-* Telepítse <ODP.NET\>Telepített elérési utat \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll a globális összeállítási gyorsítótárban (GAC) a **gacutil /i [szolgáltató elérési útja]** futtatásával.
+* Ha még nem telepítette az Oracle-hez készült .NET-szolgáltatót, [telepítse azt](https://www.oracle.com/technetwork/topics/dotnet/downloads/), majd próbálja megismételni a forgatókönyvet.
+* Ha a szolgáltató telepítése után is megjelenik a hibaüzenet, hajtsa végre a következő lépéseket:
+    1. Nyissa meg a .NET 2,0 számítógép-konfigurációs fájlját a következő mappából <rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Keresse meg a **.net-hez készült Oracle-adatszolgáltatót**. Meg kell tudnia találni a bejegyzést, ahogy az a **System. adat** > **DbProviderFactories**alatt a következő mintában látható:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Másolja ezt a bejegyzést a Machine. config fájlba a következő .NET 4,0 mappában: <rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verziót 4. xxx. x.x.
+* Telepítse <ODP.NET telepített elérési útját\>\ 11.2.0 \ client_1 \odp.net\bin\4\oracle.dataaccess.dll a globális szerelvény-gyorsítótárban (GAC) a **Gacutil/i [szolgáltatói útvonal]** futtatásával.
 
-### <a name="problem-2-datetime-formatting"></a>2. probléma: Dátum/idő formázása
+### <a name="problem-2-datetime-formatting"></a>2. probléma: dátum/idő formázása
 
 **Hibaüzenet**
 
@@ -580,57 +580,57 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimene
 
 **Resolution** (Osztás)
 
-Előfordulhat, hogy módosítania kell a lekérdezési karakterláncot a másolási tevékenységben a dátumok Oracle-adatbázisban való konfigurálásának módját alapulva. Íme egy példa (a **to_date** függvény használatával):
+Előfordulhat, hogy módosítania kell a lekérdezési karakterláncot a másolási tevékenység alapján, hogy a dátumok hogyan vannak konfigurálva az Oracle-adatbázisban. Íme egy példa (a **to_date** függvény használatával):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
-## <a name="type-mapping-for-oracle"></a>Típusleképezés az Oracle-hez
+## <a name="type-mapping-for-oracle"></a>Az Oracle típusának leképezése
 
-Az [Adatmozgatási tevékenységekben](data-factory-data-movement-activities.md)említettek szerint a Másolási tevékenység automatikus típuskonverziót hajt végre a forrástípusokról a fogadótípusokra a következő kétlépéses megközelítés használatával:
+Ahogy az [adatátviteli tevékenységekben](data-factory-data-movement-activities.md)is említettük, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
 
-1. Konvertálás natív forrástípusokról .NET típusra.
-2. Konvertálás a .NET típusról a natív fogadótípusra.
+1. Konvertálja a natív forrásból származó típusokat a .NET típusra.
+2. Alakítsa át a .NET-típusról a natív fogadó típusra.
 
-Amikor adatokat helyez át az Oracle-ből, a rendszer a következő leképezéseket használja az Oracle adattípusból a .NET típusba, és fordítva:
+Ha az Oracle-ből helyez át adatátvitelt, a következő leképezéseket használja az Oracle-adattípusból a .NET-típusra, és fordítva:
 
-| Oracle adattípus | .NET Framework adattípus |
+| Oracle-adattípus | .NET-keretrendszer adattípusa |
 | --- | --- |
-| BFILE |Bájt[] |
-| Blob |Bájt[]<br/>(csak Microsoft-illesztőprogram használata esetén támogatott Oracle 10g és újabb verziókban) |
-| Char |Sztring |
+| BFÁJL |Bájt [] |
+| BLOB |Bájt []<br/>(csak a Microsoft-illesztőprogram használata esetén támogatott az Oracle 10g és újabb verziók esetében) |
+| CHAR |Sztring |
 | CLOB |Sztring |
 | DATE |DateTime |
-| Úszó |Decimális, Karakterlánc (ha a pontosság 28 >) |
-| EGÉSZ SZÁM |Decimális, Karakterlánc (ha a pontosság 28 >) |
-| INTERVALLUM ÉVRŐL HÓNAPRA |Int32 |
-| IDŐKÖZ NAPTÓL A MÁSODIKIG |időtartam |
-| Hosszú |Sztring |
-| HOSSZÚ NYERS |Bájt[] |
-| Nchar |Sztring |
-| NCLOB között |Sztring |
-| Szám |Decimális, Karakterlánc (ha a pontosság 28 >) |
-| NVARCHAR2 között |Sztring |
-| Nyers |Bájt[] |
-| SORAZONOSÍTÓ |Sztring |
-| Időbélyeg |DateTime |
+| FLOAT |Decimális, karakterlánc (ha a pontosság > 28) |
+| EGÉSZ SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
+| ÉV ÉS HÓNAP KÖZÖTTI IDŐSZAK |Int32 |
+| IDŐINTERVALLUM – MÁSODPERC |időtartam |
+| HOSSZÚ |Sztring |
+| HOSSZÚ NYERS |Bájt [] |
+| NCHAR |Sztring |
+| NCLOB |Sztring |
+| SZÁMA |Decimális, karakterlánc (ha a pontosság > 28) |
+| NVARCHAR2 |Sztring |
+| NYERS |Bájt [] |
+| ROWID |Sztring |
+| IDŐBÉLYEG |DateTime |
 | IDŐBÉLYEG HELYI IDŐZÓNÁVAL |DateTime |
 | IDŐBÉLYEG IDŐZÓNÁVAL |DateTime |
-| Aláíratlan egész szám |Szám |
-| VARCHAR2 között |Sztring |
+| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
+| VARCHAR2 |Sztring |
 | XML |Sztring |
 
 > [!NOTE]
-> Microsoft-illesztőprogram használata esetén az **adattípusok évről hónapra,** a **napról a másodpercre** pedig intervallumra vonatkozó akta nem támogatottak.
+> A Microsoft-illesztőprogram használata esetén a rendszer nem támogatja az adattípusok **intervallumát a hónap** és a **nap közötti időszakban** .
 
-## <a name="map-source-to-sink-columns"></a>Forrás leképezése oszlopokhoz
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 
-Ha többet szeretne tudni arról, hogy a forrásadatkészlet oszlopait a fogadó adatkészlet oszlopaihoz szeretné-e hozzásorolni, olvassa el [az Adatkészletoszlopok leképezése a Data Factory ban című témakört.](data-factory-map-columns.md)
+Ha többet szeretne megtudni a forrás-adatkészlet oszlopainak a fogadó adatkészlet oszlopaihoz való hozzárendeléséről, olvassa el a következőt: [adatkészlet-oszlopok leképezése Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Relációs forrásokból ismételhető olvasmony
+## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
 
-Amikor a relációs adattárakból másolja az adatokat, tartsa szem előtt az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. Az Azure Data Factory ban manuálisan futtathat egy szeletet. Az adatkészlet újrapróbálkozási házirendje is konfigurálható, így a szelet újrafut, ha hiba történik. Amikor egy szeletet manuálisan vagy újrapróbálkozási házirenddel újrafuttat, győződjön meg arról, hogy ugyanazokat az adatokat olvassa be, függetlenül attól, hogy hányszor fut egy szelet. További információ: [Ismételhető olvasva relációs forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Amikor Adatmásolást végez a kapcsolódó adattárakból, a nem kívánt eredmények elkerüléséhez tartsa szem előtt az ismétlődést. Azure Data Factoryban manuálisan is újrafuttathatja a szeleteket. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy hiba esetén újra lehessen futtatni a szeleteket. Ha egy szeletet manuálisan vagy újrapróbálkozási szabályzattal futtat újra, ügyeljen arra, hogy a szeletek hányszor fussanak. További információ: [megismételhető olvasás a kapcsolódó forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 
-Tekintse meg a [Másolási tevékenység teljesítmény-és hangolási útmutatót,](data-factory-copy-activity-performance.md) amely ből megtudhatja, hogy milyen kulcsfontosságú tényezők befolyásolják az adatok mozgatását (másolási tevékenység) az Azure Data Factoryban. Az optimalizálás különböző módjairól is megismerheti.
+A [másolási tevékenység teljesítményének és hangolásának útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére a Azure Data Factoryban. Az optimalizálásának különböző módjairól is tájékozódhat.

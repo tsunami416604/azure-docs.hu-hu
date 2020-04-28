@@ -1,40 +1,40 @@
 ---
-title: Térinformatikai adatok indexelése az Azure Cosmos DB-vel
-description: Térbeli adatok indexelése az Azure Cosmos DB-vel
+title: Térinformatikai adatindexek indexelése Azure Cosmos DB
+description: Térbeli adatainak indexelése Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137903"
 ---
-# <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatok indexelése az Azure Cosmos DB-vel
+# <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 
-Úgy terveztük meg az Azure Cosmos DB adatbázis-motorját, hogy valóban séma-agnosztikus legyen, és első osztályú támogatást nyújtson a JSON-hoz. Az Azure Cosmos DB írásra optimalizált adatbázis-motorja natív módon értelmezi a GeoJSON-szabványban képviselt térbeli adatokat.
+Azure Cosmos DB adatbázis-motorját úgy terveztük, hogy valóban séma-agnosztikus legyen, és első osztályú támogatást nyújtson a JSON-hoz. A Azure Cosmos DB írásra optimalizált adatbázismotor natív módon értelmezi a GeoJSON standardban ábrázolt térbeli adatokra vonatkozó információkat.
 
-Dióhéjban, a geometria vetítik geodéziai koordináták rá egy 2D sík, majd osztva fokozatosan sejtek segítségével **quadtree**. Ezek a cellák a **Hilbert térkitöltési görbén**belüli cella helye alapján vannak leképezve az 1D-re, amely megőrzi a pontok helyét. Emellett, ha a helyadatok indexelése, megy keresztül egy folyamat néven **tessellation**, azaz az összes olyan cella, amely metszi a helyet, azonosítja és tárolja a kulcsokat az Azure Cosmos DB index. Lekérdezési időpontban a lekérdezési időpontban a pontokhoz és a sokszögekhez hasonló argumentumok is elvannak tervezve a megfelelő cellaazonosító-tartományok kinyeréséhez, majd az indexből az adatok beolvasására szolgálnak.
+Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree**használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését**. Emellett, ha a helyadatok indexelve lettek, egy **mozaikként**ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
 
-Ha olyan indexelési házirendet ad meg, amely tartalmazza a /* (az összes elérési út) térbeli indexét, akkor a tárolóban található összes adat indexelésre kerül a hatékony térbeli lekérdezések érdekében.
+Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (az összes elérési út) térbeli indexét, akkor a tárolóban található összes adathalmaz a hatékony térbeli lekérdezésekhez van indexelve.
 
 > [!NOTE]
-> Az Azure Cosmos DB támogatja a pontok, linestringek, sokszögek és multipoligonok indexelését
+> Azure Cosmos DB támogatja a pontok, Linestring, sokszögek és többsokszögek indexelését
 >
 >
 
 ## <a name="modifying-geospatial-data-type"></a>Térinformatikai adattípus módosítása
 
-A tárolóban `geospatialConfig` a térinformatikai adatok indexelésének módját adja meg. Tárolónként egyet `geospatialConfig` kell megadnia: földrajzi vagy geometriai. Ha nincs megadva, a `geospatialConfig` földrajzi adattípus alapértelmezett lesz. A módosításakor `geospatialConfig`a tárolóban lévő összes térinformatikai adat újraindexelésre kerül.
+A tárolóban a `geospatialConfig` meghatározza, hogy a térinformatikai adatai hogyan lesznek indexelve. A következőket kell megadnia egy `geospatialConfig` tárolóban: földrajz vagy geometria. Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig`-t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
 
 > [!NOTE]
-> Az Azure Cosmos DB jelenleg csak a 3.6-os vagy újabb verziókban támogatja a térinformatikaikonfiguráció módosításait.
+> Azure Cosmos DB jelenleg csak a 3,6-es és újabb verziókban támogatja a .NET SDK-ban lévő geospatialConfig módosításait.
 >
 
-Íme egy példa a térinformatikai adattípus `geometry` módosítására `geospatialConfig` a tulajdonság beállításával és egy **határolókeret hozzáadásával:**
+Íme egy példa a térinformatikai adattípus `geometry` módosítására a `geospatialConfig` tulajdonság beállításával és a **boundingBox**hozzáadásával:
 
 ```csharp
     //Retrieve the container's details
@@ -64,11 +64,11 @@ A tárolóban `geospatialConfig` a térinformatikai adatok indexelésének módj
     await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-## <a name="geography-data-indexing-examples"></a>Példák földrajzi adatok indexelésére
+## <a name="geography-data-indexing-examples"></a>Földrajzi adatindexelési példák
 
-A következő JSON-kódrészlet egy indexelési házirendet jelenít meg, amelynek térbeli indexelése engedélyezve van a **földrajzi** adattípushoz. A földrajzi adattípussal rendelkező térbeli adatokra érvényes, és indexeli a dokumentumokban térbeli lekérdezéshez található GeoJSON-pontot, Sokszöget, MultiPoligont vagy LineStringet. Ha az Azure Portalon keresztül módosítja az indexelési szabályzatot, megadhatja a következő JSON-t az indexelési szabályzathoz a tároló térbeli indexelésének engedélyezéséhez:
+A következő JSON-kódrészlet egy indexelési házirendet mutat be, amelyen engedélyezve van a **földrajzi** adattípusú térbeli indexelés. A földrajzi adattípussal rendelkező térbeli értékek esetében érvényes, és indexeli az GeoJSON pontot, a sokszöget, a többsokszögű vagy a LineString dokumentumokat a térbeli lekérdezésekhez. Ha az indexelési házirendet a Azure Portal használatával módosítja, megadhatja a következő JSON-t az indexelési házirendhez, hogy engedélyezze a térbeli indexelést a tárolón:
 
-**Tároló indexelési házirend JSON földrajzi térbeli indexelés**
+**Tároló-indexelési házirend JSON földrajzi térbeli indexeléssel**
 
 ```json
     {
@@ -95,26 +95,26 @@ A következő JSON-kódrészlet egy indexelési házirendet jelenít meg, amelyn
 ```
 
 > [!NOTE]
-> Ha a geoJSON hely értéke a dokumentumon belül hibás vagy érvénytelen, akkor nem lesz indexelve térbeli lekérdezéshez. A helyértékeket ST_ISVALID és ST_ISVALIDDETAILED segítségével érvényesítheti.
+> Ha a hely GeoJSON értéke helytelen formátumú vagy érvénytelen, akkor nem lesz indexelve a térbeli lekérdezésekhez. A hely értékeit ST_ISVALID és ST_ISVALIDDETAILED használatával ellenőrizheti.
 
-Az Azure CLI, a PowerShell vagy bármely SDK használatával [indexelési szabályzat is módosíthatja.](how-to-manage-indexing-policy.md)
+Az [indexelési házirendet](how-to-manage-indexing-policy.md) az Azure CLI, a PowerShell vagy bármely SDK használatával is módosíthatja.
 
-## <a name="geometry-data-indexing-examples"></a>Példák geometriai adatok indexelési
+## <a name="geometry-data-indexing-examples"></a>Geometriai adatok indexelésére vonatkozó példák
 
-A földrajzi adattípushoz hasonló **geometriai** adattípussal meg kell adnia a megfelelő görbéket és típusokat az indexeléshez. Ezenkívül meg kell adnia egy `boundingBox` indexelési házirenden belül, amely jelzi az adott elérési úthoz indexelendő kívánt területet. Minden térinformatikai útvonalhoz`boundingBox`saját kell.
+Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő elérési utakat és típusokat kell megadnia az indexhez. Emellett az indexelési házirendben is meg `boundingBox` kell adnia az indexet, hogy jelezze az adott elérési útra vonatkozó kívánt területeket. Minden földrajzi útvonalhoz saját`boundingBox`szükséges.
 
-A határolókeret a következő tulajdonságokból áll:
+A határoló mező a következő tulajdonságokat tartalmazza:
 
-- **xmin**: a minimális indexelt x koordináta
+- **xmin**: a minimálisan indexelt x koordináta
 - **ymin**: a minimális indexelt y koordináta
-- **xmax**: a maximális indexelt x koordináta
-- **ymax**: a maximális indexelt y koordináta
+- **Xmax**: a maximális indexelt x koordináta
+- **Ymax**: a maximális indexelt y koordináta
 
-Határolókeretre azért van szükség, mert a geometriai adatok végtelen síkot foglalnak el. A térbeli indexek azonban véges teret igényelnek. A **földrajzi** adattípus esetében a Föld a határvonal, és nem kell határolókeretet beállítania.
+A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet foglal, amely végtelen lehet. A térbeli indexek esetében azonban véges terület szükséges. A **földrajzi** adattípushoz a föld a határ, és nem kell megadnia egy határoló mezőt.
 
-Hozzon létre egy határolókeretet, amely az összes adatot (vagy a legtöbb adatot) tartalmazza. Csak a teljes mértékben a határolókereten belüli objektumokon számított műveletek tudják használni a térbeli indexet. A határolókeretet ne tegye jelentősen nagyobbá a szükségesnél, mert ez negatívan befolyásolja a lekérdezés teljesítményét.
+Létre kell hoznia egy határoló mezőt, amely az összes (vagy a legtöbb) adatát tartalmazza. A térbeli indexet csak a teljes mértékben a határolókeret belsejében lévő objektumokra kiszámított műveletek lesznek képesek használni. A határolókeret a szükségesnél lényegesen nagyobb mértékben nem végezhető el, mert ez negatív hatással lesz a lekérdezés teljesítményére.
 
-Íme egy példa indexelési házirend, amely indexeli `geometry` **a geometriai** adatok at **térinformatikaiConfig** beállítása:
+Az alábbi példa olyan indexelési házirendet mutat `geometry`be, amely a **geometriai** adatoknak a **geospatialConfig** beállítását a következőre állítja:
 
 ```json
  {
@@ -150,15 +150,15 @@ Hozzon létre egy határolókeretet, amely az összes adatot (vagy a legtöbb ad
 }
 ```
 
-A fenti indexelési házirend **határolókoorbája** (-10, 10) x koordináták, y koordináták esetén pedig (-20, 20). A fenti indexelési házirendet tartalmazó tároló indexeli az összes olyan pontot, sokszöget, multipoligont és linestringet, amelyek teljes egészében ebben a régióban találhatók.
+A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátákat és (-20, 20) az y koordinátákhoz. A fenti indexelési szabályzattal rendelkező tároló az összes olyan pontot, sokszöget, többsokszögű és Linestring indexeli, amely teljes egészében ebben a régióban található.
 
 > [!NOTE]
-> Ha egy **boundingbox-pal-t** tartalmazó indexelési `geography` házirendet próbál hozzáadni egy adattípusú tárolóhoz, az sikertelen lesz. A **boundingbox**hozzáadása `geometry` előtt módosítania kell a tároló **térinformatikai konfigurációját.** Adatokat adhat hozzá, és módosíthatja az indexelési házirend fennmaradó részét (például az elérési utakat és típusokat) a tároló térinformatikai adattípusának kiválasztása előtt vagy után.
+> Ha egy adattípusú tárolóhoz `geography` próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet, a művelet sikertelen lesz. A **boundingBox**hozzáadása `geometry` előtt módosítania kell a tároló **geospatialConfig** . A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan kezdheti el a térinformatikai támogatást az Azure Cosmos DB-ben, a következő ta-
+Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 
-* További információ az [Azure Cosmos DB-lekérdezésről](sql-query-getting-started.md)
-* További információ a [térbeli adatok lekérdezéséről az Azure Cosmos DB segítségével](sql-query-geospatial-query.md)
-* További információ a [Térinformatikai és geoJSON-helyadatokról az Azure Cosmos DB-ben](sql-query-geospatial-intro.md)
+* További információ a [Azure Cosmos db lekérdezésről](sql-query-getting-started.md)
+* További információ a [térbeli adatainak a Azure Cosmos db való lekérdezéséről](sql-query-geospatial-query.md)
+* További információ a [térinformatikai és a GeoJSON-hely adatainak Azure Cosmos db](sql-query-geospatial-intro.md)

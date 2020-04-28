@@ -1,6 +1,6 @@
 ---
-title: Probléma a felhasználók Azure AD Gallery-alkalmazásba való kiépítésének konfigurálásakor
-description: Az Azure AD alkalmazásgalériában már felsorolt alkalmazásokba történő felhasználói kiépítés konfigurálásakor felmerülő gyakori problémák elhárítása
+title: Probléma van a felhasználó üzembe helyezésének egy Azure AD Gallery-alkalmazásban való konfigurálásakor
+description: Az Azure AD-alkalmazás-katalógusban már felsorolt alkalmazások felhasználó általi üzembe helyezésének konfigurálásakor felmerülő gyakori problémák elhárítása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,58 +17,58 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3955b96e4a7edfc79a229d927523bdd4473409d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522764"
 ---
-# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Probléma a felhasználók Azure AD Gallery-alkalmazásba való kiépítésének konfigurálásakor
+# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor
 
-Az alkalmazás [automatikus felhasználói kiépítésének](user-provisioning.md) konfigurálásához (ahol támogatott) szükség van arra, hogy az alkalmazás automatikus kiépítésre való előkészítéséhez meghatározott utasításokat kell követni. Ezután az Azure Portal segítségével konfigurálhatja a létesítési szolgáltatás felhasználói fiókok szinkronizálása az alkalmazással.
+Az [automatikus felhasználó-kiépítés](user-provisioning.md) beállítása egy alkalmazáshoz (ahol támogatott) a szükséges, hogy az alkalmazás előkészítése az automatikus kiépítés előtt történjen. Ezután a Azure Portal használatával konfigurálhatja a kiépítési szolgáltatást, hogy szinkronizálja a felhasználói fiókokat az alkalmazással.
 
-Mindig először keresse meg a telepítő oktatóanyag kifejezetten az alkalmazás kiépítési beállításához. Ezután kövesse ezeket a lépéseket az alkalmazás és az Azure AD konfigurálásához a létesítési kapcsolat létrehozásához. Az alkalmazásoktatóanyagok listája az [SaaS-alkalmazások Azure Active Directoryval való integrálásáról szóló oktatóanyagok listájában](../saas-apps/tutorial-list.md)található.
+Az alkalmazáshoz való kiépítés beállítására vonatkozó beállítási oktatóanyag megkeresésével mindig érdemes kezdeni. Ezután kövesse az alábbi lépéseket az alkalmazás és az Azure AD konfigurálásához a létesítési kapcsolatok létrehozásához. Az alkalmazás-oktatóanyagok listája az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagokban](../saas-apps/tutorial-list.md)található.
 
-## <a name="how-to-see-if-provisioning-is-working"></a>Hogyan lehet tudni, hogy működik-e a kiépítés? 
+## <a name="how-to-see-if-provisioning-is-working"></a>Hogyan lehet megtekinteni, hogy működik-e a kiépítés 
 
-A szolgáltatás konfigurálása után a szolgáltatás működésébe betekintő legtöbb információ két helyről nyerhető ki:
+A szolgáltatás konfigurálása után a szolgáltatás működésével kapcsolatos legtöbb betekintést két helyről lehet kirajzolni:
 
--   **Kiépítési naplók (előzetes verzió)** – A [létesítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a létesítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure AD lekérdezését a hozzárendelt felhasználók számára, amelyek a kiépítés hatókörében vannak. Lekérdezi a célalkalmazást a felhasználók létezésére, összehasonlítva a felhasználói objektumokat a rendszer között. Ezután adja hozzá, frissítse vagy tiltsa le a felhasználói fiókot a célrendszerben az összehasonlítás alapján. Az Azure-portálon a létesítési naplók eléréséhez válassza az **Azure Active Directory** &gt; **Vállalati alkalmazások** &gt; **kiépítése naplók (előzetes verzió)** a **tevékenység** szakaszban.
+-   **Kiépítési naplók (előzetes verzió)** – a [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure ad lekérdezését a kiépítés hatókörében lévő hozzárendelt felhasználók számára. A cél alkalmazás lekérdezése a felhasználók létezéséhez, a rendszer közötti felhasználói objektumok összehasonlításával. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren. A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el.
 
--   **Jelenlegi állapot –** Egy adott alkalmazás utolsó kiépítési futtatásának összegzése az **Azure &gt; Active &gt; \[Directory\] &gt;Vállalati alkalmazások alkalmazásnév-kiépítés** szakaszában, a képernyő alján, a szolgáltatásbeállítások alatt látható. Az Aktuális állapot szakasz azt mutatja, hogy egy kiépítési ciklus megkezdte-e a felhasználói fiókok kiépítését. Megtekintheti a ciklus előrehaladását, megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és megtekintheti, hogy hány szerepkör jön létre. Ha bármilyen hiba merül fel, a részletek a [Kiépítési naplókban (.. /reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
+-   **Aktuális állapot –** Egy adott alkalmazás utolsó kiépítési futtatásának összefoglalása látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazás\] &gt;neve kiépítési** szakaszban, a képernyő alján a szolgáltatás beállításai alatt. A jelenlegi állapot szakasz azt mutatja, hogy a létesítési ciklus megkezdte-e a felhasználói fiókok kiépítési folyamatát. Megtekintheti a ciklus előrehaladását, és megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és hogy hány szerepkört hozott létre. Ha bármilyen hiba merül fel, a részletek a [kiépítési naplókban (..) találhatók. /Reports-monitoring/Concept-Provisioning-logs.MD? Context = Azure/Active-Directory/felügyelet-alkalmazások/környezet/kezelés-alkalmazások-környezet).
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Általános problémás területek a kiépítéssel,
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Általános problémás területek az üzembe helyezéssel
 
-Az alábbi lista azokat az általános problémás területeket tartalmazza, amelyekbe beleáshatja magát, ha van ötlete, hogy hol kezdje.
+Az alábbi lista az általános problémás területeket sorolja fel, amelyeket részletesen bemutathat, ha van ötlete, hogy hol kezdjen hozzá.
 
-* [Úgy tűnik, hogy a kiépítési szolgáltatás nem indul el](#provisioning-service-does-not-appear-to-start)
+* [A kiépítési szolgáltatás nem jelenik meg a Start menüben](#provisioning-service-does-not-appear-to-start)
 * Nem lehet menteni a konfigurációt, mert az alkalmazás hitelesítő adatai nem működnek
-* [A kiépítési naplók szerint a felhasználók "kimaradnak", és nem vannak kiépítve, még akkor is, ha hozzá vannak rendelve](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+* [A naplók kiosztása azt jelenti, hogy a felhasználók "kimaradnak", és nem lettek kiépítve, még akkor is, ha hozzá vannak rendelve](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Úgy tűnik, hogy a kiépítési szolgáltatás nem indul el
+## <a name="provisioning-service-does-not-appear-to-start"></a>A kiépítési szolgáltatás nem jelenik meg a Start menüben
 
-Ha beállítja a **kiépítési** **állapotot** az **Azure Active &gt; Directory Vállalati alkalmazások &gt; \[alkalmazásnév-kiépítési\] &gt;** szakaszában. A későbbi újratöltésután azonban az adott oldalon más állapotrészletek nem jelennek meg. Valószínű, hogy a szolgáltatás fut, de még nem fejezte be a kezdeti ciklust. Ellenőrizze a fent leírt **kiépítési naplókat,** hogy megtudja, milyen műveleteket hajt végre a szolgáltatás, és ha vannak hibák.
+Ha úgy állítja be a **kiépítési állapotot** , hogy be legyen **kapcsolva** a Azure Portal ** &gt; Azure Active Directory vállalati alkalmazások &gt; \[alkalmazásának neve\] &gt;kiépítés** szakaszában. A későbbi Újratöltés után azonban nem jelennek meg más állapotadatok az oldalon. Valószínű, hogy a szolgáltatás fut, de még nem hajtotta végre a kezdeti ciklust. A fent ismertetett **kiépítési naplók** alapján állapítsa meg, hogy milyen műveleteket végez a szolgáltatás, és hogy vannak-e hibák.
 
 >[!NOTE]
->Egy kezdeti ciklus 20 perctől több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítési hatókörben lévő felhasználók számától függően. A kezdeti ciklus utáni későbbi szinkronizálások gyorsabbak lesznek, mivel a létesítési szolgáltatás olyan vízjeleket tárol, amelyek a kezdeti ciklus után mindkét rendszer állapotát jelölik, javítva a későbbi szinkronizálások teljesítményét.
+>Egy kezdeti ciklus akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A későbbi szinkronizálások a kezdeti ciklus után gyorsabbak lesznek, mivel a kiépítési szolgáltatás a kezdeti ciklust követően mindkét rendszer állapotát jelképező vízjeleket tárolja, így javítja a későbbi szinkronizálások teljesítményét.
 >
 >
 
 ## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nem lehet menteni a konfigurációt, mert az alkalmazás hitelesítő adatai nem működnek
 
-Annak érdekében, hogy a kiépítés működjön, az Azure AD érvényes hitelesítő adatokat igényel, amelyek lehetővé teszik, hogy csatlakozzon az alkalmazás által biztosított felhasználói felügyeleti API-hoz. Ha ezek a hitelesítő adatok nem működnek, vagy nem tudja, mik azok, tekintse át az alkalmazás beállításával korábban ismertetett oktatóanyagot.
+Ahhoz, hogy a kiépítés működjön, az Azure AD-nek érvényes hitelesítő adatokra van szüksége, amelyek lehetővé teszik az IT számára az alkalmazás által biztosított felhasználói felügyeleti API-hoz való kapcsolódást. Ha ezek a hitelesítő adatok nem működnek, vagy nem tudja, mi a teendő, tekintse át az alkalmazás beállítását ismertető oktatóanyagot a korábban leírtak szerint.
 
-## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>A kiépítési naplók szerint a rendszer kihagyja a felhasználókat, és nem van kiépítve, még akkor sem, ha hozzá vannak rendelve
+## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>A naplók kiosztása azt jelenti, hogy a felhasználók kimaradnak, és nem lettek kiépítve annak ellenére, hogy hozzájuk vannak rendelve
 
-Amikor egy felhasználó megjelenik a "kihagyott" a létesítési naplók, nagyon fontos, hogy olvassa el a kiterjesztett részleteket a naplóüzenetben, hogy meghatározza az okát. Az alábbiakban felsoroljuk a gyakori okokat és állásfoglalásokat:
+Ha egy felhasználó "kihagyva" állapotba kerül a kiépítési naplókban, nagyon fontos, hogy a naplófájlban részletesen olvassa el a kibővített részleteket az ok megállapításához. Az alábbi gyakori okok és megoldások:
 
-- **Olyan hatókörszűrő van beállítva,** amely egy **attribútumérték alapján szűri ki a felhasználót.** További információ: [Attribútumalapú alkalmazáskiépítés hatókörszűrőkkel.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- **Egy hatókör-szűrő konfigurálva** **van, amely egy attribútumérték alapján szűri ki a felhasználót**. További információ: [attribútum-alapú alkalmazás kiépítés hatóköri szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-- **A felhasználó "nem jogosult ténylegesen".** Ha ez a konkrét hibaüzenet jelenik meg, annak az az oka, hogy probléma van az Azure AD-ben tárolt felhasználói hozzárendelési rekorddal. A probléma megoldásához rendelje hozzá a felhasználót (vagy csoportot) az alkalmazásból, majd rendelje hozzá újra újra. További információt a [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz című témakörben talál.](../manage-apps/assign-user-or-group-access-portal.md)
+- **A felhasználó "nem lesz ténylegesen jogosult".** Ha ezt a hibaüzenetet látja, az azért van, mert probléma van az Azure AD-ben tárolt felhasználói hozzárendelési rekorddal. A probléma megoldásához szüntesse meg a felhasználó (vagy csoport) hozzárendelését az alkalmazásból, majd újból rendelje hozzá újra. További információ: [felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md).
 
-- **Egy szükséges attribútum hiányzik vagy nincs feltöltve egy felhasználóhoz.** A kiépítés beállításakor fontos, hogy tekintse át és konfigurálja az attribútum-leképezések és munkafolyamatok, amelyek meghatározzák, hogy mely felhasználói (vagy csoport) tulajdonságok áramlását az Azure AD az alkalmazásba. Ez magában foglalja a "megfelelő tulajdonság" beállítását, amely a felhasználók/csoportok egyedi azonosítására és egyeztetésére szolgál a két rendszer között. Erről a fontos folyamatról további információt a [Felhasználókiépítési attribútum-hozzárendelések testreszabása című témakörben talál.](../app-provisioning/customize-application-attributes.md)
+- **Egy kötelező attribútum hiányzik vagy nincs feltöltve a felhasználó számára.** A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ebbe beletartozik a "megfeleltetés" tulajdonság beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére használható. További információ erről a fontos folyamatról: a [felhasználó kiépítési attribútumának testreszabása – leképezések](../app-provisioning/customize-application-attributes.md).
 
-  * **Attribútumleképezések csoportokhoz:** A csoport név és a csoport adatainak kiépítése a tagokon kívül, ha bizonyos alkalmazások esetében támogatottak. Ezt a funkciót a **Kiépítés** lapon látható csoportobjektumok **leképezésének** engedélyezésével vagy letiltásával engedélyezheti vagy tilthatja le. Ha a létesítési csoportok engedélyezve van, győződjön meg róla, hogy tekintse át az attribútum leképezések annak érdekében, hogy a megfelelő mező t használja a "megfelelő azonosító". Ez lehet a megjelenítendő név vagy e-mail alias), mivel a csoport és annak tagjai nem létesíthetők, ha a megfelelő tulajdonság üres, vagy nem lakott egy csoport az Azure AD-ben.
+  * **Csoportok attribútumainak hozzárendelése:** A csoport neve és a csoport adatainak kiépítés a tagokon kívül, ha egyes alkalmazások esetében támogatott. A funkció engedélyezéséhez vagy letiltásához engedélyezze vagy tiltsa le a **kiépítés** lapon megjelenő csoportosítási objektumok **leképezését** . Ha a létesítési csoportok engedélyezve vannak, tekintse át az attribútumok leképezéseit, és győződjön meg arról, hogy a megfelelő mező használatban van a "megfeleltetési azonosító" beállításnál. Ez lehet a megjelenítendő név vagy az e-mail-alias, mivel a csoport és a tagjai nem lesznek kiépítve, ha a megfelelő tulajdonság üres vagy nincs feltöltve az Azure AD-beli csoportokra.
 
 ## <a name="next-steps"></a>További lépések
-[A felhasználói kiépítés és a SaaS-alkalmazásokba való megszüntetés automatizálása az Azure Active Directoryval](user-provisioning.md)
+[A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md)

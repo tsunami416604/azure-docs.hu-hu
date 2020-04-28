@@ -1,6 +1,6 @@
 ---
 title: Dinamikusan tiltott jelszavak – Azure Active Directory
-description: Az Azure AD dinamikusan tiltott jelszavaival kitilthatja a gyenge jelszavakat a környezetéből
+description: Gyenge jelszavak betiltása a környezetből az Azure AD által dinamikusan tiltott jelszavakkal
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,169 +12,169 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263997"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A rossz jelszavak kiküszöbölése a szervezetben
 
-Az iparági vezetők azt mondják, hogy ne használja ugyanazt a jelszót több helyen, hogy bonyolultlegyen, és ne legyen egyszerű, mint a "Password123". Hogyan garantálhatják a szervezetek, hogy a felhasználók követik az ajánlott eljárásokra vonatkozó útmutatást? Hogyan győződhetnek meg arról, hogy a felhasználók nem használnak gyenge jelszavakat, vagy akár a gyenge jelszavak at?
+Az iparági vezetők azt mondják, hogy nem ugyanazt a jelszót használják több helyen, így összetett, és nem egyszerű, például "Password123". Hogyan garantálható a szervezetek számára, hogy a felhasználók a legjobb gyakorlati útmutatást használják? Hogyan biztosíthatják, hogy a felhasználók ne használják a gyenge jelszavakat vagy akár a gyenge jelszavakat is?
 
-Az erősebb jelszavak kezdeti lépése, hogy útmutatást nyújtson a felhasználóknak. A Microsoft jelenlegi útmutatója ebben a témában az alábbi linken található:
+Az erősebb jelszavakkal rendelkező kezdeti lépés a felhasználók számára nyújt útmutatást. A jelen témakörben a Microsoft aktuális útmutatója a következő hivatkozásra kattintva érhető el:
 
-[Útmutató a Microsoft jelszóhoz](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft-jelszó – útmutató](https://www.microsoft.com/research/publication/password-guidance)
 
-Miután jó útmutatást fontos, de még azzal is tudjuk, hogy sok felhasználó továbbra is a végén választotta gyenge jelszavakat. Az Azure AD password protection védi a szervezetet az ismert gyenge jelszavak és azok variánsainak észlelésével és blokkolásával, valamint opcionálisan a szervezetre jellemző további gyenge kifejezések blokkolásával.
+Jó útmutatást biztosítunk, de még azzal is tisztában vagyunk vele, hogy sok felhasználó továbbra is a gyenge jelszavakat választja. Az Azure AD jelszavas védelme az ismert gyenge jelszavak és azok változatai észlelésével és blokkolásával védi a szervezetet, valamint opcionálisan blokkolja a szervezetére jellemző további gyenge kifejezéseket is.
 
-Az aktuális biztonsági erőfeszítésekről a [Microsoft security intelligence jelentésben](https://www.microsoft.com/security/operations/security-intelligence-report)talál további információt.
+További információ az aktuális biztonsági erőfeszítésekről: [Microsoft biztonsági intelligencia-jelentés](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="global-banned-password-list"></a>Globális tiltott jelszólista
+## <a name="global-banned-password-list"></a>Globális tiltott jelszavak listája
 
-Az Azure AD Identity Protection csapata folyamatosan elemzi az Azure AD biztonsági telemetriai adatait, amelyek a gyakran használt gyenge vagy feltört jelszavakat keresik, pontosabban a gyenge alapkifejezéseket, amelyek gyakran a gyenge jelszavak alapjául szolgálnak. Ha ilyen gyenge kifejezéseket talál, azok felkerülnek a globális tiltott jelszavak listájára. A globális tiltott jelszavak listájának tartalma nem külső adatforráson alapul. A globális tiltott jelszó lista teljes mértékben az Azure AD biztonsági telemetriai adatok és elemzés folyamatos eredményein alapul.
+A Azure AD Identity Protection csapat folyamatosan elemzi az Azure AD biztonsági telemetria az általánosan használt gyenge vagy sérült jelszavakat keresve, vagy pontosabban a gyenge alapkifejezéseket, amelyek gyakran használatosak a gyenge jelszavak alapjául. Ha ilyen gyenge feltételek találhatók, azok hozzáadódnak a globálisan tiltott jelszavak listájához. A globálisan tiltott jelszavak listájának tartalma nem a külső adatforrásokon alapul. A globálisan tiltott jelszavak listája teljes egészében az Azure AD biztonsági telemetria és elemzésének folyamatos eredményein alapul.
 
-Amikor egy új jelszót módosítanak vagy alaphelyzetbe állítanak bármely bérlő számára az Azure AD-ben, a globális tiltott jelszólista aktuális verziója lesz a kulcsbemenet a jelszó erősségének érvényesítésekor. Ez az ellenőrzés sokkal erősebb jelszavakat eredményez az összes Azure AD-ügyfél számára.
+Valahányszor új jelszót módosítanak vagy állítanak alaphelyzetbe bármely, az Azure AD-ben lévő bérlő bármelyik felhasználója számára, a rendszer a globálisan tiltott jelszavak aktuális verzióját használja a jelszó erősségének érvényesítése során. Ez az ellenőrzés sokkal erősebb jelszavakat eredményez az összes Azure AD-ügyfél számára.
 
 > [!NOTE]
-> A kiberbűnözők hasonló stratégiákat is alkalmaznak a támadásaiksorán. Ezért a Microsoft nem teszi közzé a lista tartalmát nyilvánosan.
+> A Cyber-bűnözők hasonló stratégiákat is használnak a támadások során. Ezért a Microsoft nem teszi közzé nyilvánosan a lista tartalmát.
 
 ## <a name="custom-banned-password-list"></a>Egyéni tiltott jelszavak listája
 
-Egyes szervezetek további biztonságnövelést szeretnének, ha saját testreszabásaikat is felvennék a globális tiltott jelszólista tetejére, amit a Microsoft az egyéni tiltott jelszavak listájának nevez. A Microsoft azt javasolja, hogy a listához hozzáadott kifejezések elsősorban a szervezeti-specifikus kifejezésekre összpontosítsanak, mint például:
+Előfordulhat, hogy egyes szervezetek még tovább szeretnék javítani a biztonságot azáltal, hogy hozzáadják a saját testreszabásokat a globálisan tiltott jelszavak listájához, amit a Microsoft meghívja az egyéni tiltott jelszavak listáját. A Microsoft azt javasolja, hogy a listához hozzáadott feltételek elsősorban a szervezeti feltételekre összpontosítanak, például a következőkre:
 
 - Márkanevek
-- Terméknevek
-- Helyek (például a vállalat székhelye)
-- Vállalatspecifikus belső kifejezések
-- Konkrét vállalati jelentéssel bíró rövidítések.
+- Terméknév
+- Helyek (például a vállalati központ)
+- Vállalatra vonatkozó belső feltételek
+- Adott céges jelentéssel rendelkező rövidítések.
 
-Miután a kifejezéseket hozzáadta az egyéni tiltott jelszavak listájához, a jelszavak érvényesítésekén a globális tiltott jelszavak listájában szereplő kifejezésekkel kombinálódik.
+Miután hozzáadta a feltételeket az egyéni tiltott jelszavak listájához, a jelszavak ellenőrzésekor a rendszer a globálisan tiltott jelszavak listájának feltételeit kombinálja.
 
 > [!NOTE]
-> Az egyéni tiltott jelszavak listája legfeljebb 1000 kifejezésre korlátozódik. Nem alkalmas a rendkívül nagy jelszavak blokkolására. Annak érdekében, hogy teljes mértékben kihasználja az egyéni tiltott jelszavak listájának előnyeit, a Microsoft azt javasolja, hogy először tekintse át és ismerje meg a jelszóértékelési algoritmust (lásd: [Hogyan értékelik ki](concept-password-ban-bad.md#how-are-passwords-evaluated)a jelszavakat ), mielőtt új kifejezéseket ad hozzá az egyéni tiltott listához. Az algoritmus működésének megértése lehetővé teszi a vállalat számára, hogy hatékonyan észlelje és blokkolja a gyenge jelszavak és azok változatai nagy számát.
+> Az egyéni tiltott jelszavak listáját a rendszer legfeljebb 1000 feltételre korlátozza. Nem kifejezetten a jelszavak rendkívül nagy listáját blokkolja. Az egyéni tiltott jelszavak listájának előnyeinek teljes kihasználásához a Microsoft azt javasolja, hogy először tekintse át és Ismerje meg a jelszó-értékelési algoritmust (lásd a [jelszavak kiértékelésének módját](concept-password-ban-bad.md#how-are-passwords-evaluated)), mielőtt új feltételeket adna hozzá az egyéni tiltott listához. Az algoritmus működésének megismerése lehetővé teszi a vállalat számára a nagy mennyiségű gyenge jelszó és a hozzájuk tartozó változatok hatékony észlelését és blokkolását.
 
-Például: fontolja meg egy "Contoso" nevű ügyfelet, amely Londonban található, és amely egy "Widget" nevű terméket készít. Egy ilyen ügyfél számára pazarló és kevésbé biztonságos lenne a következő kifejezések bizonyos változatainak blokkolása:
+Példa: Vegyünk például egy "contoso" nevű ügyfelet, amely Londonban található, és ez egy "widget" nevű terméket tesz elérhetővé. Az ilyen ügyfelek esetében a feleslegesség, valamint a kevésbé biztonságos, hogy megpróbálja letiltani a jelen feltételek adott változatát, például:
 
-- "Contoso!1"
+- "Contoso! 1"
 - "Contoso@London"
 - "ContosoWidget"
-- "! Contoso"
+- "! Contoso
 - "LondonHQ"
-- ... Satöbbi
+- ... satöbbi
 
-Ehelyett sokkal hatékonyabb és biztonságosabb, hogy blokkolja csak a legfontosabb alapfeltételek:
+Ehelyett sokkal hatékonyabb és biztonságos, hogy csak a legfontosabb alapfogalmakat blokkolja:
 
 - "Contoso"
-- "London"
-- "Widget"
+- London
+- Widget
 
-A jelszó érvényesítési algoritmus ezután automatikusan blokkolja a gyenge változatokat és a fentiek kombinációit.
+A jelszó-ellenőrzési algoritmus ezután automatikusan letiltja a fenti gyenge változatokat és kombinációkat.
 
-Az egyéni tiltott jelszó lista és a helyszíni Active Directory-integráció engedélyezésének lehetővé tétele az Azure Portalon keresztül történik.
+Az egyéni tiltott jelszavak listája és a helyszíni Active Directory integrációjának engedélyezése a Azure Portal használatával történik.
 
-![Az egyéni tiltott jelszavak listájának módosítása a hitelesítési módszerek csoportban](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Az egyéni tiltott jelszavak listájának módosítása a hitelesítési módszerek területen](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Jelszószórásos támadások és harmadik fél által feltört jelszólisták
+## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Jelszavas spray-támadások és a harmadik féltől származó feltört jelszavak listája
 
-Az Egyik legfontosabb Azure AD jelszavas védelem előnye, hogy segít megvédeni a jelszó spray támadások ellen. A legtöbb jelszóspray-támadás nem próbál meg több mint néhány alkalommal megtámadni egy adott fiókot, mivel az ilyen viselkedés nagymértékben növeli az észlelés valószínűségét, akár fiókzárolással, akár más módon. A jelszó-szórótámadások többsége ezért az ismert leggyengébb jelszavaknak csak kis számú, a vállalat egyes fiókjaihoz való benyújtásán alapul. Ez a módszer lehetővé teszi a támadó számára, hogy gyorsan keressen egy könnyen feltört fiókot, miközben elkerüli a potenciális észlelési küszöbértékeket.
+Az Azure AD jelszavas védelem egyik legfontosabb előnye, hogy segítsen megvédeni a jelszó-szórásos támadásokat. A legtöbb jelszavas szórásos támadás nem kísérli meg, hogy az adott egyedi fiók többször is megtámadjon, mert az ilyen viselkedés nagy mértékben növeli az észlelés valószínűségét, akár fiókzárolási, akár más módon. A jelszó-szórásos támadások többsége ezért arra támaszkodik, hogy csak kis mennyiségű ismert leggyengébb jelszót küld el egy vállalat minden fiókján. Ez a módszer lehetővé teszi, hogy a támadó gyorsan keressen egy könnyen feltört fiókot, és ezzel egyidejűleg elkerülje a lehetséges észlelési küszöbértékeket.
 
-Az Azure AD jelszavas védelmet úgy tervezték, hogy hatékonyan blokkolja az összes ismert gyenge jelszavakat, amelyek valószínűleg jelszóspray-támadások, az Azure AD által látott valós biztonsági telemetriai adatok alapján.  A Microsoft nak tudomása van olyan külső webhelyekről, amelyek több millió olyan jelszót számlálnak, amelyeket a korábbi nyilvánosan ismert biztonsági rések során feltörtek. Gyakori, hogy a harmadik féltől származó jelszóérvényesítési termékek alapja a találgatásos összehasonlítás a több millió jelszóhoz képest. A Microsoft úgy véli, hogy az ilyen technikák nem a legjobb módja annak, hogy javítsa az általános jelszó erőssége, mivel a tipikus stratégiák által használt jelszó spray támadók.
+Az Azure AD jelszavas védelme úgy lett kialakítva, hogy hatékonyan letiltsa az összes olyan ismert gyenge jelszót, amely a jelszó-permetezési támadásokban valószínűleg használatban van az Azure AD által látott valós biztonsági telemetria alapján.  A Microsoft tudomásul veszi, hogy a harmadik féltől származó webhelyek több millió jelszót felsorolnak, amelyeket a korábbi nyilvánosan ismert biztonsági rések során feltörtek. Gyakori, hogy a harmadik féltől származó jelszó-ellenőrzési termékek a találgatásos összehasonlításon alapulnak a több millió jelszóval. A Microsoft úgy véli, hogy az ilyen technikák nem a legjobb módszer, ha a jelszó-megtámadók által használt tipikus stratégiák alapján javítja az általános jelszó erősségét.
 
 > [!NOTE]
-> A Microsoft globálistiltott jelszólistája egyáltalán nem alapul külső adatforrásokon, beleértve a feltört jelszólistákat is.
+> A Microsoft globálisan tiltott jelszavas listája nem alapul semmilyen harmadik féltől származó adatforráson, beleértve a feltört jelszavak listáját is.
 
-Bár a Microsoft globális tiltott lista kicsi képest néhány harmadik fél tömeges listák, a biztonsági hatások erősítik az a tény, hogy származik a valós biztonsági telemetriai tényleges jelszó spray támadások, valamint az a tény, hogy a Microsoft a jelszóérvényesítési algoritmus intelligens fuzzy-matching technikákat használ. A végeredmény az, hogy hatékonyan észleli és blokkolja a leggyakoribb gyenge jelszavak millióit a vállalatnál. Azok az ügyfelek, akik úgy döntenek, hogy szervezetspecifikus kifejezéseket adnak az egyéni tiltott jelszavak listájához, ugyanannak az algoritmusnak a előnyeit is élvezhetik.
+Bár a Microsoft globálisan tiltott listája kis méretű a harmadik féltől származó tömeges listákkal összehasonlítva, a biztonsági hatásait az a tény fokozza, hogy a tényleges jelszó-és telemetria-támadások valós biztonsági származnak, továbbá azt is, hogy a Microsoft Password Validation algoritmus intelligens, fuzzy-egyeztetési technikákat használ. Ennek végeredménye az, hogy hatékonyan fogja felderíteni és blokkolni a leggyakoribb gyenge jelszavakat a vállalatnál. Azok az ügyfelek, akik úgy döntenek, hogy az egyéni tiltott jelszavak listájára felveszik a szervezetre vonatkozó feltételeket, ugyanezt az algoritmust is élvezik.
 
-A jelszóalapú biztonsági problémákkal kapcsolatos további információkat a [Pa$$word nem számít.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)
+A jelszó-alapú biztonsági problémákra vonatkozó további információkat [a PA $ $wordban nem számítunk](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)fel.
 
 ## <a name="on-premises-hybrid-scenarios"></a>Helyszíni hibrid forgatókönyvek
 
-A csak felhőalapú fiókok védelme hasznos, de számos szervezet hibrid forgatókönyveket tart fenn, beleértve a helyszíni Windows Server Active Directoryt is. Az Azure AD jelszavas védelmének biztonsági előnyei a helyszíni ügynökök telepítésével a Windows Server Active Directory-környezetre is kiterjeszthetők. Mostantól azoknak a felhasználóknak és rendszergazdáknak, akik módosítják vagy alaphelyzetbe állítják a jelszavakat az Active Directoryban, meg kell felelniük a csak felhőalapú felhasználókkal azonos jelszóházirendnek.
+A csak felhőalapú fiókok védelme hasznos, de számos szervezet olyan hibrid forgatókönyveket tart fenn, mint a helyszíni Windows Server Active Directory. Az Azure AD jelszavas védelem biztonsági előnyei a helyszíni ügynökök telepítésével is kiterjeszthetők a Windows Server Active Directory környezetbe. Most a felhasználók és rendszergazdák, akik a Active Directory jelszavakat módosítanak vagy állítanak alaphelyzetbe, meg kell felelniük a csak felhőalapú felhasználókkal megegyező jelszóházirend-házirendnek.
 
-## <a name="how-are-passwords-evaluated"></a>A jelszavak kiértékelése
+## <a name="how-are-passwords-evaluated"></a>A jelszavak kiértékelésének módja
 
-Amikor egy felhasználó módosítja vagy alaphelyzetbe állítja a jelszavát, az új jelszó erőssége és összetettsége szempontjából ellenőrizve azt a globális és egyéni tiltott jelszólistákban szereplő kifejezések kombinált listájával szemben (ha az utóbbi konfigurálva van).
+Amikor egy felhasználó megváltoztatja vagy visszaállítja a jelszavát, az új jelszót a rendszer a globális és az egyéni tiltott jelszavak listájából (ha az utóbbi konfigurálva) a feltételek összevont listáján érvényesíti.
 
-Még ha a felhasználó jelszava tiltott jelszót is tartalmaz, a jelszó akkor is elfogadható, ha az általános jelszó egyébként elég erős. Az újonnan konfigurált jelszó a következő lépéseken megy keresztül annak általános erősségének felméréséhez, hogy el kell-e fogadni vagy el kell-e utasítani.
+Ha a felhasználó jelszava tiltott jelszót tartalmaz, akkor a jelszó továbbra is elfogadható, ha a teljes jelszó elég erős, ellenkező esetben. Az újonnan konfigurált jelszavak az alábbi lépések végrehajtásával vizsgálják meg, hogy a rendszer elfogadja vagy elutasítja-e a teljes erősségét.
 
-### <a name="step-1-normalization"></a>1. lépés: Normalizálás
+### <a name="step-1-normalization"></a>1. lépés: normalizálás
 
-Az új jelszó először egy normalizálási folyamaton megy keresztül. Ez a technika lehetővé teszi, hogy a tiltott jelszavak egy kis készletét leképezve legyen egy sokkal nagyobb, potenciálisan gyenge jelszavakra.
+Az új jelszó először a normalizálás folyamatán halad át. Ez a módszer lehetővé teszi, hogy a tiltott jelszavak kisebb halmaza legyen leképezve a potenciálisan gyenge jelszavak sokkal nagyobb készletére.
 
-A normalizáció nak két része van.  Először is, az összes nagybetű kisbetűsre változik.  Másodszor, gyakori karakterhelyettesítéseket végeznek, például:  
+A normalizálás két részből áll.  Első lépésként az összes nagybetűt kisbetűsre változtatja.  Másodszor, a közös karakteres helyettesítések végrehajtása történik, például:  
 
-| Eredeti levél  | Helyettesített levél |
+| Eredeti levél  | Helyettesített betű |
 | --- | --- |
-| '0'  | "o" |
-| '1'  | "l" |
-| '$'  | "s" |
-| '\@'  | "a" |
+| 0  | o |
+| 1  | l |
+| '$'  | képgalériája |
+| '\@'  | egy |
 
-Példa: tegyük fel, hogy az "üres" jelszó ki vanBl@nKtiltva, és a felhasználó megpróbálja megváltoztatni a jelszavát " ""-ra. Annak ellenére, hogy a "Bl@nk" nincs kifejezetten tiltva, a normalizálási folyamat ezt a jelszót "üres"-re konvertálja, ami egy tiltott jelszó.
+Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni aBl@nKjelszavát a "" értékre. Bár a "Bl@nk" nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>2. lépés: Ellenőrizze, hogy a jelszó tiltottnak minősül-e
+### <a name="step-2-check-if-password-is-considered-banned"></a>2. lépés: Ellenőrizze, hogy a jelszó betiltottnak minősül-e
 
-#### <a name="fuzzy-matching-behavior"></a>Fuzzy egyezési viselkedés
+#### <a name="fuzzy-matching-behavior"></a>Homályos egyezési viselkedés
 
-Az intelligens megfeleltetés a normalizált jelszóban használatos annak azonosítására, hogy tartalmaz-e jelszót a globális vagy az egyéni tiltott jelszólistákon. Az egyeztetési folyamat egy (1) összehasonlítás szerkesztési távolságán alapul.  
+A rendszer a normalizált jelszóval azonosítja a fuzzy megfeleltetést, hogy az tartalmazza-e a globális vagy az egyéni tiltott jelszavak listáján található jelszót. A megfeleltetési folyamat egy (1) összehasonlítási távolságon alapul.  
 
-Példa: tegyük fel, hogy az "abcdef" jelszó ki van tiltva, és a felhasználó megpróbálja megváltoztatni a jelszavát a következők egyikére:
+Példa: tegyük fel, hogy a "ABCDEF" jelszó tiltott, és a felhasználó megpróbálja módosítani a jelszavát a következők egyikére:
 
-"abcdeg" *(az utolsó karakter 'f'-ről 'g'-re változott)* 'abcdefg' *'(g' végezetül hozzáfűzve)* "abcde" *(a záró "f" karaktert törölték a végéről)*
+"abcdeg" *(az utolsó karakter módosult "f" értékről "g"-re)* "abcdefg" *(g* ) "ABCDE" (a záró *"f" a végéről törölve* )
 
-A fenti jelszavak mindegyike nem kifejezetten egyezik a tiltott "abcdef" jelszóval. Mivel azonban minden példa az "abcdef" tiltott kifejezés közül 1-es szerkesztési távolságon belül van, mindegyik az "abcdef" kifejezéssel egyezik.
+A fenti jelszavak mindegyike nem felel meg kifejezetten a betiltott "ABCDEF" jelszónak. Mivel azonban mindegyik példa a "ABCDEF" betiltott kifejezés 1. részén található, a "ABCDEF" értéknek megfelelőnek számít.
 
-#### <a name="substring-matching-on-specific-terms"></a>Karakterlánc-részegyezés (meghatározott feltételek kel)
+#### <a name="substring-matching-on-specific-terms"></a>Alkarakterlánc megfeleltetése (adott kifejezéseken)
 
-A részkarakterlánc-egyeztetés a normalizált jelszóban a felhasználó vezeték- és keresztnevének, valamint a bérlő nevének ellenőrzéséhez használatos (vegye figyelembe, hogy a bérlői név egyeztetése nem történik meg, ha az Active Directory tartományvezérlőn érvényesíti a jelszavakat).
+A rendszer a normalizált jelszóval egyező alsztringet használ a felhasználó utónevét és vezetéknevét, valamint a bérlő nevét (vegye figyelembe, hogy a bérlői név egyeztetése nem történik meg a jelszavaknak egy Active Directory tartományvezérlőn való ellenőrzésekor).
 
-Példa: tegyük fel, hogy van egy felhasználónk, Pol, aki vissza akarja állítani a jelszavát a "P0l123fb"-re. Normalizálás után ez a jelszó lesz "pol123fb". A karakterláncrész-egyeztetés megállapítja, hogy a jelszó a felhasználó "Pol" utónevét tartalmazza. Annak ellenére, hogy a "P0l123fb" nem volt kifejezetten sem tiltott jelszó listán, a "Pol" karakterlánc-illesztés a jelszóban található. Ezért ezt a jelszót a rendszer elutasítja.
+Példa: tegyük fel, hogy van egy felhasználónk, a pol, aki szeretné visszaállítani a jelszavát a "P0l123fb" értékre. A normalizálás után ez a jelszó "pol123fb" lesz. A karakterláncok egyeztetése azt észleli, hogy a jelszó tartalmazza a felhasználó utónevét ("pol"). Annak ellenére, hogy a "P0l123fb" nem volt konkrétan a tiltott jelszavak listáján, a jelszóban a "pol" karakterlánc-egyezés szerepel. Ezért ezt a jelszót a rendszer elutasítja.
 
-#### <a name="score-calculation"></a>Pontszám számítása
+#### <a name="score-calculation"></a>Pontszám kiszámítása
 
-A következő lépés a tiltott jelszavak összes példányának azonosítása a felhasználó normalizált új jelszavában. Ezután:
+A következő lépés a betiltott jelszavak összes példányának azonosítása a felhasználó normalizált új jelszavában. Ezután:
 
-1. Minden a felhasználó jelszavában található tiltott jelszó egy pontot kap.
-2. Minden fennmaradó egyedi karakter kap egy pontot.
-3. A jelszónak legalább öt (5) pontnak kell lennie ahhoz, hogy elfogadják.
+1. A felhasználó jelszavában található összes betiltott jelszó egy pontot kap.
+2. Minden fennmaradó egyedi karakter egy pontot kap.
+3. A jelszónak legalább öt (5) pontnak kell lennie ahhoz, hogy el lehessen fogadni.
 
-A következő két példa, tegyük fel, hogy a Contoso az Azure AD password protection, és a "contoso" az egyéni listán. Tételezzük fel azt is, hogy az "üres" szerepel a globális listán.
+A következő két példa esetében tegyük fel, hogy a contoso az Azure AD jelszavas védelmet használja, és a "contoso" az egyéni listán. Azt is feltételezzük, hogy az "üres" a globális listán található.
 
-Példa: a felhasználó "C0ntos0Blank12" jelszóra módosítja a jelszavát
+Példa: a felhasználó megváltoztatja a jelszavát a "C0ntos0Blank12" értékre.
 
-A normalizálás után ez a jelszó "contosoblank12" lesz. Az egyeztetési folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ez a jelszó ezután kap egy pontszámot:
+A normalizálás után a jelszó "contosoblank12" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ezt a jelszót a rendszer a következő pontszámmal adja meg:
 
-[contoso] + [blank] + [1] + [2] = 4 pont Mivel ez a jelszó öt (5) pont alatt van, a rendszer elutasítja.
+[contoso] + [blank] + [1] + [2] = 4 pont, mivel a jelszó öt (5) pont alatt van, a rendszer elutasítja.
 
-Példa: a felhasználó aContoS0Bl@nkf9jelszavát " "!"-ra módosítja.
+Példa: a felhasználó a "ContoS0Bl@nkf9!" értékre módosítja a jelszavát.
 
-A normalizálás után ez a jelszó "contosoblankf9" lesz. Az egyeztetési folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ez a jelszó ezután kap egy pontszámot:
+A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ezt a jelszót a rendszer a következő pontszámmal adja meg:
 
-[contoso] + [blank] + [f] + [9] + [!] = 5 pont Mivel ez a jelszó legalább öt (5) pont, akkor elfogadásra kerül.
+[contoso] + [blank] + [f] + [9] + [!] = 5 pont, mivel ez a jelszó legalább öt (5) pont, elfogadva.
 
    > [!IMPORTANT]
-   > Kérjük, vegye figyelembe, hogy a tiltott jelszó algoritmus a globális listával együtt bármikor módosíthatja és módosíthatja az Azure-ban a folyamatos biztonsági elemzés és kutatás alapján. A helyszíni tartományvezérlő-ügynök szolgáltatás esetében a frissített algoritmusok csak a tartományvezérlő-ügynök szoftverének újbóli telepítése után lépnek életbe.
+   > Vegye figyelembe, hogy a betiltott jelszó-algoritmus és a globális lista a folyamatos biztonsági elemzés és kutatás alapján bármikor megváltoztatható az Azure-ban. A helyszíni tartományvezérlő ügynök szolgáltatás esetében a frissített algoritmusok csak a DC-ügynök szoftverének újratelepítése után lépnek érvénybe.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
-|   | Azure AD jelszavas védelem globális tiltott jelszólistával | Azure AD jelszavas védelem egyéni tiltott jelszólistával|
+|   | Azure AD jelszavas védelem a globálisan tiltott jelszavak listájával | Azure AD jelszavas védelem egyéni tiltott jelszavak listájával|
 | --- | --- | --- |
-| Csak felhőalapú felhasználók | Azure AD Free | Azure AD Premium P1 vagy P2 |
-| Helyszíni Windows Server Active Directoryból szinkronizált felhasználók | Azure AD Premium P1 vagy P2 | Azure AD Premium P1 vagy P2 |
+| Csak felhőalapú felhasználók | Azure AD Free | prémium szintű Azure AD P1 vagy P2 |
+| Helyi Windows Server-Active Directoryról szinkronizált felhasználók | prémium szintű Azure AD P1 vagy P2 | prémium szintű Azure AD P1 vagy P2 |
 
 > [!NOTE]
-> Az Azure Active Directoryval nem szinkronizált helyszíni Windows Server Active Directory-felhasználók is részesülnek az Azure AD jelszavas védelméből a szinkronizált felhasználók meglévő licencelése alapján.
+> A helyszíni Windows Server Active Directory felhasználók, akik nincsenek szinkronizálva Azure Active Directory az Azure AD jelszavas védelem előnyeit is kihasználják a szinkronizált felhasználók meglévő licencelése alapján.
 
-További licencelési információk, beleértve a költségeket, megtalálható az [Azure Active Directory díjszabási helyen.](https://azure.microsoft.com/pricing/details/active-directory/)
+További licencelési információk, beleértve a költségeket is, a [Azure Active Directory díjszabási oldalon](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
-Amikor egy felhasználó megpróbálja visszaállítani a jelszót valamire, ami ki lenne tiltva, a következő hibaüzenet jelenik meg:
+Amikor egy felhasználó megpróbál visszaállítani egy jelszót a betiltott valamire, a következő hibaüzenet jelenik meg:
 
-Sajnos a jelszó olyan szót, kifejezést vagy mintát tartalmaz, amely könnyen kitalálja a jelszót. Próbálkozzon újra egy másik jelszóval.
+Sajnos a jelszó olyan szót, kifejezést vagy mintát tartalmaz, amely könnyen kitalálhatja a jelszavát. Próbálkozzon újra egy másik jelszóval.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az egyéni tiltott jelszavak listájának konfigurálása](howto-password-ban-bad.md)
-- [Az Azure AD jelszavas védelmi ügynökök engedélyezése a helyszínen](howto-password-ban-bad-on-premises-deploy.md)
+- [Egyéni tiltott jelszavak listájának konfigurálása](howto-password-ban-bad.md)
+- [Azure AD-beli jelszavas védelmi ügynökök engedélyezése a helyszínen](howto-password-ban-bad-on-premises-deploy.md)

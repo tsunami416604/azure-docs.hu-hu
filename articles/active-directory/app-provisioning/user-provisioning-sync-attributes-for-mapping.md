@@ -1,6 +1,6 @@
 ---
-title: Attribútumok szinkronizálása az Azure AD szolgáltatással a leképezéshez | Microsoft dokumentumok
-description: Ismerje meg, hogyan szinkronizálhatja az attribútumokat a helyszíni Active Directory és az Azure AD között. Amikor konfigurálja a felhasználó kiépítését az SaaS-alkalmazásokba, használja a címtárbővítmény-szolgáltatást az alapértelmezés szerint nem szinkronizált forrásattribútumok hozzáadásához.
+title: Attribútumok szinkronizálása az Azure AD-vel a leképezéshez | Microsoft Docs
+description: Ismerje meg, hogyan szinkronizálhatja a helyszíni Active Directory attribútumait az Azure AD-vel. Ha az SaaS-alkalmazásokhoz konfigurálja a felhasználók üzembe helyezését, a címtár-kiterjesztési funkcióval adhat hozzá olyan forrás-attribútumokat, amelyek alapértelmezés szerint nincsenek szinkronizálva.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,47 +16,47 @@ ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 09d1efaf54bee65bd3274987e68e643f887baade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522271"
 ---
-# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Attribútum szinkronizálása a helyszíni Active Directoryból az Azure AD-hez egy alkalmazásba való kiépítéshez
+# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez
 
-Amikor az attribútum-hozzárendelés-hozzárendeléseket a felhasználó kiépítéséhez szabja testre, előfordulhat, hogy a leképezni kívánt attribútum nem jelenik meg a **Forrás attribútumlistában.** Ez a cikk bemutatja, hogyan adja hozzá a hiányzó attribútumot a helyszíni Active Directoryból (AD) az Azure Active Directoryba (Azure AD) történő szinkronizálásával.
+Ha testreszabja a felhasználók kiosztásához szükséges attribútum-hozzárendeléseket, akkor előfordulhat, hogy a leképezni kívánt attribútum nem jelenik meg a **forrás attribútum** listában. Ebből a cikkből megtudhatja, hogyan adhatja hozzá a hiányzó attribútumot a helyszíni Active Directory (AD) és a Azure Active Directory (Azure AD) közötti szinkronizálással.
 
-Az Azure AD-nek tartalmaznia kell a felhasználói profil létrehozásához szükséges összes adatot, amikor felhasználói fiókokat létesít az Azure AD-ből egy SaaS-alkalmazásba. Bizonyos esetekben az adatok elérhetővé teszi szükség lehet szinkronizálni attribútumok a helyszíni AD az Azure AD. Az Azure AD Connect automatikusan szinkronizálja bizonyos attribútumokat az Azure AD-vel, de nem minden attribútumot. Továbbá előfordulhat, hogy az alapértelmezés szerint szinkronizált attribútumok (például a SAMAccountName) nem érhetőel el a Microsoft Graph API használatával. Ezekben az esetekben az Azure AD Connect címtárbővítmény-funkcióval szinkronizálhatja az attribútumot az Azure AD-vel. Így az attribútum látható lesz a Microsoft Graph API és az Azure AD-kiépítési szolgáltatás.
+Az Azure AD-nek tartalmaznia kell az összes olyan adatforrást, amely felhasználói profil létrehozásához szükséges az Azure AD-ből egy SaaS-alkalmazásba való kiépítés során. Bizonyos esetekben előfordulhat, hogy az adatok elérhetővé tételéhez szükség lehet az attribútumok szinkronizálására a helyszíni AD-ből az Azure AD-be. Azure AD Connect automatikusan szinkronizál bizonyos attribútumokat az Azure AD-be, de nem minden attribútumot. Továbbá előfordulhat, hogy egyes attribútumok (például a SAMAccountName) alapértelmezés szerint szinkronizálva vannak a Microsoft Graph API használatával. Ezekben az esetekben a Azure AD Connect Directory-bővítmény funkcióval szinkronizálhatja az attribútumot az Azure AD-vel. Így az attribútum látható lesz a Microsoft Graph API és az Azure AD kiépítési szolgáltatás számára.
 
-Ha a kiépítéshez szükséges adatok az Active Directoryban vannak, de a fent leírt okok miatt nem érhetők el a kiépítéshez, kövesse az alábbi lépéseket.
+Ha az üzembe helyezéshez szükséges adatmennyiség Active Directory, de a fent ismertetett okok miatt nem érhető el a kiépítés során, kövesse az alábbi lépéseket.
  
 ## <a name="sync-an-attribute"></a>Attribútum szinkronizálása 
 
-1. Nyissa meg az Azure AD Connect varázslót, válassza a Feladatok lehetőséget, és válassza **a Szinkronizálási beállítások testreszabása lehetőséget.**
+1. Nyissa meg a Azure AD Connect varázslót, válassza a feladatok, majd a **szinkronizálási beállítások testreszabása lehetőséget**.
 
-   ![Az Azure Active Directory Csatlakozás varázsló További feladatok lap](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
+   ![Azure Active Directory Connect varázsló további feladatok lapja](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
  
 2. Jelentkezzen be Azure AD globális rendszergazdaként. 
 
-3. A **Választható szolgáltatások** lapon válassza a **Címtárbővítmény attribútumszinkronizálása**lehetőséget.
+3. A **választható szolgáltatások** lapon válassza a **címtár-kiterjesztés attribútumának szinkronizálása**lehetőséget.
  
-   ![Az Azure Active Directory Csatlakozás varázsló Választható szolgáltatások lapja](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
+   ![Azure Active Directory Connect varázsló választható funkciók lapja](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
 
-4. Válassza ki az Azure AD-re kiterjeszteni kívánt attribútum(oka)t.
+4. Válassza ki az Azure AD-ra kiterjeszteni kívánt attribútum (oka) t.
    > [!NOTE]
-   > Az **Elérhető attribútumok csoportban** a kis- és nagybetűket megkülönböztető keresés.
+   > A Keresés az **elérhető attribútumok** területen kis-és nagybetűket érint.
 
-   ![Az Azure Active Directory csatlakoztatása varázsló könyvtárbővítményeiválasztó lap](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![Azure Active Directory Connect varázsló Directory-bővítmények kiválasztási lapja](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
-5. Fejezze be az Azure AD Connect varázslót, és engedélyezze a teljes szinkronizálási ciklus futtatását. Amikor a ciklus befejeződött, a séma kivan bővítve, és az új értékek szinkronizálva vannak a helyszíni AD és az Azure AD között.
+5. Fejezze be a Azure AD Connect varázslót, és engedélyezze a teljes szinkronizálási ciklus futtatását. A ciklus befejezésekor a séma ki van bővítve, és a rendszer szinkronizálja az új értékeket a helyszíni AD és az Azure AD között.
  
-6. Az Azure Portalon a [felhasználói attribútum-hozzárendelések szerkesztése](customize-application-attributes.md)közben a **Forrás attribútumlista** mostantól `<attributename> (extension_<appID>_<attributename>)`a hozzáadott attribútumot fogja tartalmazni a formátumban. Válassza ki az attribútumot, és rendelje hozzá a célalkalmazás kiépítéshez.
+6. Ha a Azure Portal a [felhasználói attribútumok leképezéseit szerkeszti](customize-application-attributes.md), a **forrás attribútum** lista mostantól a hozzáadott attribútumot fogja tartalmazni a formátumban `<attributename> (extension_<appID>_<attributename>)`. Válassza ki az attribútumot, és rendelje hozzá a kiépítés céljának alkalmazásához.
 
-   ![Az Azure Active Directory csatlakoztatása varázsló könyvtárbővítményeiválasztó lap](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
+   ![Azure Active Directory Connect varázsló Directory-bővítmények kiválasztási lapja](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> A helyszíni AD-ből származó hivatkozási attribútumok , például **a managedby** vagy **a DN/DistinguishedName**szolgáltatás létesítésének lehetősége ma nem támogatott. Ezt a funkciót a [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory). 
+> A helyszíni AD-ből (például **többé** vagy **DN/DistinguishedName**) származó hivatkozási attribútumok kiépítésének lehetősége jelenleg nem támogatott. Ezt a funkciót [felhasználói hangon](https://feedback.azure.com/forums/169401-azure-active-directory)is kérheti. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Annak meghatározása, hogy ki van a kiépítés hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+* [A kiépítés hatókörében lévő felhasználók meghatározása](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)

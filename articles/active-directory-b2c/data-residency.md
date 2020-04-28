@@ -1,7 +1,7 @@
 ---
-title: A régió elérhetősége és az adatok területi adottsága
+title: Régió rendelkezésre állása és az adattárolás
 titleSuffix: Azure AD B2C
-description: A régió elérhetősége, az adatok letelepedése és az Azure Active Directory B2C előzetes verzióbérlőivel kapcsolatos információk.
+description: A régió rendelkezésre állása, az adatok tartózkodási helye és a Azure Active Directory B2C előzetes verziójú Bérlővel kapcsolatos információk.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,60 +12,60 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188849"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: A régió elérhetősége & az adatok rezidense
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: régió rendelkezésre állása & adattárolás
 
-A régió elérhetősége és az adatok rezidenssége két nagyon különböző fogalom, amelyek eltérően vonatkoznak az Azure AD B2C-re az Azure többi részétől. Ez a cikk ismerteti a két fogalom közötti különbségeket, és összehasonlítja, hogyan vonatkoznak az Azure-ra és az Azure AD B2C-re.
+A régió rendelkezésre állása és az adattárolás két nagyon különböző fogalom, amelyek eltérő módon vonatkoznak az Azure többi részétől való Azure AD B2Cra. Ez a cikk ismerteti a két fogalom közötti különbségeket, és összehasonlítja, hogyan vonatkoznak az Azure-ra és a Azure AD B2Cra.
 
-Az Azure AD B2C **világszerte általánosan elérhető,** és az **Egyesült Államokban, Európában vagy Ázsia csendes-óceáni térségében**is elérhető az **adattárolási lehetőség.**
+A Azure AD B2C **általánosan elérhető világszerte** az **Egyesült Államok, Európa vagy Ázsia és a csendes-óceáni térség** **adattárolási** lehetőségével.
 
-[A régió elérhetősége](#region-availability) arra utal, hogy egy szolgáltatás hol érhető el.
+A [régió elérhetősége](#region-availability) arra utal, hogy a szolgáltatás hol használható.
 
-[Az adattárolási hely](#data-residency) a felhasználói adatok tárolási helyét nevezi meg.
+Az [adatrezidens](#data-residency) a felhasználói adattárolási helyekre utal.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az Azure AD B2C világszerte elérhető az Azure nyilvános felhőn keresztül.
+A Azure AD B2C világszerte elérhető az Azure-beli nyilvános felhőben.
 
-Ez eltér a modell, majd a legtöbb más Azure-szolgáltatások, amelyek általában pár *rendelkezésre állás* *idata rezidensi.* Erre példákat láthat az Azure [Elérhető termékek régiónként](https://azure.microsoft.com/regions/services/) lapon és az [Active Directory B2C díjkalkulátorában.](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+Ez eltér a modelltől, amelyet a legtöbb egyéb Azure-szolgáltatás követ, ami általában a *rendelkezésre állást* és az *adattárolást*is igénybe vette. Ebből az Azure- [termékek régió](https://azure.microsoft.com/regions/services/) oldalán és a [Active Directory B2C árképzési kalkulátorban](https://azure.microsoft.com/pricing/details/active-directory-b2c/)is láthat példát.
 
 ## <a name="data-residency"></a>Adattárolási hely
 
-Az Azure AD B2C a felhasználói adatokat az Egyesült Államokban, Európában vagy az ázsiai és csendes-óceáni térségben tárolja.
+A Azure AD B2C Egyesült Államok, Európa vagy a Ázsia és a Csendes-óceáni térség régióban tárolja a felhasználói adattípusokat.
 
-Az adatok rezidensségét az [Azure AD B2C-bérlő létrehozásakor](tutorial-create-tenant.md)kiválasztott ország/régió határozza meg:
+Az adattárolást a [Azure ad B2C bérlő létrehozásakor](tutorial-create-tenant.md)kiválasztott ország/régió határozza meg:
 
-![Képernyőkép egy előzetes bérlőről](./media/data-residency/data-residency-b2c-tenant.png)
+![Képernyőkép az előzetes verziójú bérlőről](./media/data-residency/data-residency-b2c-tenant.png)
 
-Az adatok az **Egyesült Államokban** találhatók a következő országok/régiók esetében:
+A következő országok/régiók adatai találhatók a **Egyesült Államokban** :
 
 > Egyesült Államok, Kanada, Costa Rica, Dominikai Köztársaság, Salvador, Guatemala, Mexikó, Panama, Puerto Rico és Trinidad & Tobago
 
-Az adatok **európában** találhatók a következő országok/régiók esetében:
+**Európában** az alábbi országok és régiók adatai találhatók:
 
-> Algéria, Ausztria, Azerbajdzsán, Bahrein, Fehéroroszország, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írország, Izrael, Olaszország, Jordánia, Kazahsztán, Kenya, Kuvait, Lettország, Libanon, Liechtenstein, Litvánia, Luxemburg, Észak-Macedónia, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Lengyelország, Portugália, Katar, Románia, Oroszország, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország, Svájc, Tunézia, Törökország, Ukrajna, egyesült arab emírségekés egyesült királyság.
+> Algéria, Ausztria, Azerbajdzsán, Bahrein, Fehéroroszország, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írország, Izrael, Olaszország, Jordánia Kazahsztán, Kenya, Kuvait, Lettország, Libanon, Liechtenstein, Litvánia, Luxemburg, Észak-Macedónia, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Lengyelország, Portugália, Katar, Románia, Oroszország, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország, Svájc, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek és Egyesült Királyság.
 
-Az adatok **az ázsiai és csendes-óceáni térségben** találhatók a következő országok/régiók esetében:
+A következő országok/régiók esetében **Ázsia és a csendes-óceáni térség** az adat:
 
-> Afganisztán, Hongkong KKT, India, Indonézia, Japán, Korea, Malajzia, Fülöp-szigetek, Szingapúr, Srí Lanka, Tajvan és Thaiföld.
+> Afganisztán, Hongkong KKT, India, Indonézia, Japán, Korea, Malajzia, Fülöp-szigetek, Szingapúr, Sri Lanka, Tajvan és Thaiföld.
 
-A következő országok/régiók kerülnek fela listára. Egyelőre továbbra is használhatja az Azure AD B2C-t a fenti országok/régiók bármelyikének kiválasztásával.
+A következő országok/régiók a listához való felvételük folyamatban van. Egyelőre továbbra is használhatja a Azure AD B2Ct a fenti országok/régiók bármelyikének kiválasztásával.
 
 > Argentína, Ausztrália, Brazília, Chile, Kolumbia, Ecuador, Irak, Új-Zéland, Paraguay, Peru, Uruguay és Venezuela.
 
-## <a name="preview-tenant"></a>Bérlő előzetes megtekintése
+## <a name="preview-tenant"></a>Bérlő előzetes verziója
 
-Ha az Azure AD B2C előzetes verziójú időszaka során létrehozott egy B2C-bérlőt, akkor valószínű, hogy a **bérlői típus** az **előzetes bérlőt**mondja.
+Ha a B2C-bérlőt az Azure AD B2C's előzetes verziójának ideje alatt hozta létre, akkor valószínű, hogy a **bérlő típusa** az **előzetes verziójú bérlőt**mondja.
 
-Ebben az esetben csak fejlesztési és tesztelési célokra kell használnia a bérlőt. NE használjon előzetes verziójú bérlőt éles alkalmazásokhoz.
+Ebben az esetben a bérlőt csak fejlesztési és tesztelési célokra kell használnia. Ne használjon előzetes verziójú bérlőt éles alkalmazásokhoz.
 
-**Nincs áttelepítési útvonal** egy előzetes B2C-bérlőtől egy éles méretű B2C-bérlőig. Létre kell hoznia egy új B2C-bérlőt az éles alkalmazásokhoz.
+Egy előnézeti B2C-bérlőtől **nem érhető el áttelepítési útvonal** egy éles méretű B2C-bérlőre. Létre kell hoznia egy új B2C-bérlőt az éles alkalmazásokhoz.
 
-Vannak ismert problémák, amikor törli az előzetes B2C-bérlő, és hozzon létre egy éles méretű B2C bérlő azonos tartománynévvel. *Létre kell hoznia egy éles méretű B2C-bérlőt más tartománynévvel.*
+Ismert problémák merültek fel, ha törli a B2C-bérlőt, és létrehoz egy éles méretű B2C-bérlőt ugyanazzal a tartománynévvel. *Egy másik tartománynévvel rendelkező, éles méretű B2C-bérlőt kell létrehoznia*.
 
-![Képernyőkép egy előzetes bérlőről](./media/data-residency/preview-b2c-tenant.png)
+![Képernyőkép az előzetes verziójú bérlőről](./media/data-residency/preview-b2c-tenant.png)

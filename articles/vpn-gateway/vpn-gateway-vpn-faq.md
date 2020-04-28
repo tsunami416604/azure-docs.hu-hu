@@ -1,5 +1,5 @@
 ---
-title: Az Azure VPN-átjáró – gyakori kérdések
+title: Azure VPN Gateway GYIK
 description: A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network telephelyek közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról.
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279883"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
@@ -30,7 +30,7 @@ Igen.
 
 A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több helyhez is. Lásd a gyakori kérdések [Többhelyes és virtuális hálózatok közötti kapcsolatok](#V2VMulti) című szakaszát.
 
-### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Van-e további költsége a VPN-átjáró aktív-aktívként való beállításáért?
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Van a VPN-átjáró aktív-aktívként való beállításának díja?
 
 Nem. 
 
@@ -42,13 +42,13 @@ A következő létesítmények közötti kapcsolattípusok támogatottak:
 * Pont–hely kapcsolat – VPN-kapcsolat SSTP (Secure Socket Tunneling Protocol) vagy IKE v2 használatával. Ehhez a kapcsolattípushoz nem szükséges VPN-eszköz. További információ: [Pont–hely kapcsolat](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Virtuális hálózatok közötti kapcsolat – A helyek közötti kapcsolattal megegyező kapcsolattípus. A virtuális hálózatok közötti kapcsolat egy IPsec-et (IKE v1 és IKE v2) használó VPN-kapcsolat, nem szükséges hozzá VPN-eszköz. További információ: [Virtuális hálózatok közötti kapcsolat](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Többhelyes kapcsolat – Ez a helyek közötti kapcsolat egy változata, amely több helyszíni hely csatlakoztatását teszi lehetővé egy virtuális hálózathoz. További információ: [Többhelyes kapcsolat](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
-* ExpressRoute – ExpressRoute egy privát kapcsolat az Azure-ból a WAN, nem a VPN-kapcsolat a nyilvános interneten keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
+* ExpressRoute – a ExpressRoute egy privát kapcsolat az Azure-ral a WAN-ból, nem VPN-kapcsolattal a nyilvános interneten keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
 További információk a VPN Gateway-kapcsolatokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Mi a különbség a helyek közötti és a pont–hely kapcsolatok között?
 
-A **helyek közötti** (IPsec/IKE VPN-alagút) konfigurációk az Ön telephelye és az Azure között vannak. Ez azt jelenti, hogy a helyszínen található számítógépek bármelyikéről csatlakozhat a virtuális hálózaton belüli virtuális gépek vagy szerepkörpéldányok bármelyikéhez az útválasztás és az engedélyek konfigurációjától függően. Ez ideális megoldás folyamatosan elérhető létesítmények közötti kapcsolatokhoz, és hibrid konfigurációkhoz is használható. Ez a kapcsolattípus IPsec VPN-készüléket használ (hardvereszközt vagy szoftverkészüléket), amelyet a hálózat szélén kell üzembe helyezni. Ilyen típusú kapcsolat létrehozásához külső viszonylatban álló IPv4-címmel kell rendelkeznie.
+A **helyek közötti** (IPsec/IKE VPN-alagút) konfigurációk az Ön telephelye és az Azure között vannak. Ez azt jelenti, hogy a helyszínen található számítógépek bármelyikéről csatlakozhat a virtuális hálózaton belüli virtuális gépek vagy szerepkörpéldányok bármelyikéhez az útválasztás és az engedélyek konfigurációjától függően. Ez ideális megoldás folyamatosan elérhető létesítmények közötti kapcsolatokhoz, és hibrid konfigurációkhoz is használható. Ez a kapcsolattípus IPsec VPN-készüléket használ (hardvereszközt vagy szoftverkészüléket), amelyet a hálózat szélén kell üzembe helyezni. Ilyen típusú kapcsolatok létrehozásához külsőleg megtekinthető IPv4-címnek kell lennie.
 
 A **pont–hely** (SSTP-alapú VPN) konfigurációkkal csatlakozhat egy tetszőleges helyen található számítógépről a virtuális hálózata összes eleméhez. Ez a típus a Windows beépített VPN-ügyfelét használja. A pont–hely konfiguráció részeként telepíteni kell egy tanúsítványt és egy VPN-ügyfélkonfigurációs csomagot, amelyben azok a beállítások találhatók, amelyeket a számítógépe használ a virtuális hálózatban található virtuális gépekhez vagy szerepkörpéldányokhoz való csatlakozáshoz. Ez ideális megoldás, ha csatlakozni szeretne egy virtuális hálózathoz, de nem a helyszínen tartózkodik, valamint akkor is jól használható, ha nincs hozzáférése VPN-hardverhez vagy kifelé irányuló IPv4-címhez, amelyek a helyek közötti kapcsolatok kialakításához szükségesek.
 
@@ -68,15 +68,15 @@ A házirendalapú átjárók házirendalapú VPN-kapcsolatokat valósítanak meg
 
 Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva.
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem a házirend-alapú VPN-átjárót útvonalalapúra?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem a házirend-alapú VPN-átjárót a Route-alapúra?
 
 Nem.Az Azure VNet-átjáró típusa nem módosítható házirendalapúról útvonalalapúra vagy viszont. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
 1. Törölje a törölni kívánt átjáróval társított kapcsolatokat.
 1. Törölje az átjárót:
-   - [Azure-portál](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell – klasszikus](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Hozzon létre egy új, a kívánt típusú átjárót, és fejezze be a VPN-beállítást.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+1. [Hozzon létre egy új, a kívánt típusú átjárót, és fejezze be a VPN-beállítást](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Szükségem van GatewaySubnetre?
 
@@ -90,15 +90,15 @@ Nem.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Megszerezhetem a VPN-átjáróm IP-címét, mielőtt létrehozom az átjárót?
 
-Zónaredundáns és zónaszintű átjárók (átjáró sku, amelyek az _AZ_ a neve) egyaránt támaszkodnak egy _standard sku_ Azure nyilvános IP-erőforrás. Az Azure Standard SKU nyilvános IP-erőforrásokat statikus foglalási módszert kell használnia. Ezért a VPN-átjáró nyilvános IP-címe lesz, amint létrehozza a szabványos termékváltozat nyilvános IP-erőforrást, amelyet használni kíván.
+A zóna-redundáns és a zónákhoz tartozó átjárók (az az _átjáró a_ névben) mind a _standard SKU_ Azure nyilvános IP-erőforrásra támaszkodnak. Az Azure standard SKU nyilvános IP-erőforrásainak statikus kiosztási módszert kell használniuk. Ezért a VPN-átjáróhoz tartozó nyilvános IP-címet azonnal megkapja a használni kívánt szabványos SKU nyilvános IP-erőforrás létrehozásakor.
 
-A nem zónaredundáns és nem zónaszintű átjárók (átjáró termékszállítói, amelyek _nem_ rendelkeznek _AZ_ a névben), nem tudja beszerezni a VPN-átjáró IP-címét létrehozása előtt. Az IP-cím csak akkor változik, ha törli és újra létrehozza a VPN-átjárót.
+A nem zónában lévő és nem zónákhoz tartozó átjárók (az az átjárók, _not_ amelyek nem _rendelkeznek a_ névben) nem KAPHATJÁK meg a VPN-átjáró IP-címét a létrehozás előtt. Az IP-cím csak akkor változik, ha törli, majd újra létrehozza a VPN-átjárót.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Kérhetek statikus nyilvános IP-címet a VPN-átjáróm számára?
 
-Afentiek szerint a zónaredundáns és zónaszintű átjárók (átjáró sku-k, amelyek az _AZ_ a neve) egy standard _sku_ Azure nyilvános IP-erőforrás támaszkodnak. Az Azure Standard SKU nyilvános IP-erőforrásokat statikus foglalási módszert kell használnia.
+A fentiekben leírtaknak megfelelően a zóna-redundáns és a zónákhoz tartozó átjárók (az az _átjáró, amelynek_ a neve) mind a _standard SKU_ Azure nyilvános IP-erőforrásra támaszkodnak. Az Azure standard SKU nyilvános IP-erőforrásainak statikus kiosztási módszert kell használniuk.
 
-A nem zónaredundáns és nem zónaszintű átjárók (átjáró termékszállító iszin, amelyek _nem_ rendelkeznek _AZ_ a névben), csak a dinamikus IP-cím hozzárendeléstámogatott. Ez azonban nem jelenti azt, hogy az IP-cím megváltozik, miután hozzávan rendelve a VPN-átjáróhoz. A VPN-átjáró IP-címe csak akkor változik meg, amikor az átjárót törlik, majd újra létrehozják. A VPN-átjáró nyilvános IP-címe nem változik, amikor átméretezi, alaphelyzetbe állítja vagy befejezi a VPN-átjáró más belső karbantartását és frissítéseit.
+A nem zóna nélküli és nem zónákhoz tartozó átjárók (az az átjárók, amelyek _nem_ rendelkeznek _a_ névben) esetében csak a dinamikus IP-címek hozzárendelése támogatott. Ez azonban nem jelenti azt, hogy az IP-cím a VPN-átjáróhoz való hozzárendelése után módosul. A VPN-átjáró IP-címe csak akkor változik, ha az átjárót törli, majd újra létrehozza. A VPN-átjáró nyilvános IP-címe nem változik a VPN-átjáró további belső karbantartásának és frissítésének átméretezése, alaphelyzetbe állítása vagy befejezése után.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Hogyan történik a VPN-alagút hitelesítése?
 
@@ -131,11 +131,11 @@ Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forc
 
 Igen, az Azure-ban üzembe helyezheti saját VPN-átjáróit vagy -kiszolgálóit az Azure Piactérről, vagy saját VPN-útválasztók létrehozásával. Ilyenkor a virtuális hálózatában felhasználó által definiált útvonalakat kell konfigurálnia, hogy az adatforgalom megfelelően legyen irányítva a helyszíni hálózatai és a virtuális hálózatainak alhálózatai között.
 
-### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Miért vannak megnyitva bizonyos portok a virtuális hálózati átjárón?
+### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Miért nyílnak meg bizonyos portok a virtuális hálózati átjárón?
 
 Ezek szükségesek az Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). A megfelelő tanúsítványok nélkül a külső entitások – például az átjárók ügyfelei – nem gyakorolhatnak semmilyen hatást a végpontokra.
 
-A virtuális hálózati átjáró alapvetően egy többhelyű eszköz, amelynek egyik hálózati adaptere az ügyfél magánhálózatára, a hálózati adapter pedig a nyilvános hálózat felé néz. Az Azure-infrastruktúra entitásai megfelelőségi okokból nem csatlakozhatnak az ügyfelek magánhálózataihoz, így az infrastruktúra-kommunikációhoz nyilvános végpontokat kell használniuk. A nyilvános végpontokat az Azure biztonsági naplózás rendszeresen ellenőrzi.
+A virtuális hálózati átjáró alapvetően egy többhelyű eszköz, amely egy hálózati adaptert használ az ügyfél magánhálózaton, és egy hálózati ADAPTERt a nyilvános hálózatra. Az Azure-infrastruktúra entitásai megfelelőségi okokból nem csatlakozhatnak az ügyfelek magánhálózataihoz, így az infrastruktúra-kommunikációhoz nyilvános végpontokat kell használniuk. A nyilvános végpontokat az Azure biztonsági naplózás rendszeresen ellenőrzi.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>További információk az átjárótípusokról, a követelményekről és az adatátviteli sebességről
 
@@ -169,9 +169,9 @@ A helyek közötti létesítmények közötti konfigurációkhoz támogatottak a
 
 Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az iparági szabványos IPsec-megvalósításoknak. A konfigurációs és támogatási útmutatáshoz vegye fel a kapcsolatot a szoftver szállítójával.
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hogyan módosíthatom a pont-hely kapcsolatok hitelesítési típusát?
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hogyan módosíthatja a pont – hely kapcsolat hitelesítési típusát?
 
-A pont-hely kapcsolatok hitelesítési módját úgy módosíthatja, hogy a VPN-átjáró alatti **Point-to-site konfigurációs** szakaszba megy, és ellenőrzi a kívánt választógombot. A jelenlegi beállítások az **Azure tanúsítvány, a RADIUS-hitelesítés és az Azure Active Directory.** Kérjük, vegye figyelembe, hogy a jelenlegi ügyfelek **nem tudnak csatlakozni** a módosítás után, amíg az új profilt le nem töltötte és be nem konfigurálta az ügyfélen.
+A pont – hely kapcsolatokhoz tartozó hitelesítési módszert a VPN Gateway alatti **pont – hely konfiguráció** szakaszban módosíthatja, és a kívánt választógombot kell ellenőrizni. Az aktuális lehetőségek az **Azure-tanúsítvány, a RADIUS-hitelesítés és a Azure Active Directory**. Vegye figyelembe, hogy az aktuális ügyfelek **nem tudnak csatlakozni** a változás után, amíg az új profil le nem töltődik, és nincs konfigurálva az ügyfélen.
 
 ## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>Pont–hely kapcsolat az Azure natív tanúsítványalapú hitelesítésének használatával
 
@@ -191,15 +191,15 @@ Ez a szakasz a Resource Manager-alapú üzemi modellre vonatkozik.
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Használhatok Azure VPN Gateway átjárót az adatforgalomhoz a helyszíni helyeim között vagy egy másik virtuális hálózatba?
 
-**Erőforrás-kezelő telepítési modellje**<br>
+**Resource Manager-alapú üzemi modell**<br>
 Igen. További információért lásd a [BGP](#bgp) szakaszt.
 
-**Klasszikus üzembe helyezési modell**<br>
+**Klasszikus üzemi modell**<br>
 Az Azure VPN Gateway-átjárókon keresztüli adatátvitel a klasszikus üzemi modellel lehetséges, de ez a hálózati konfigurációs fájlban statikusan meghatározott címterekre hagyatkozik. A BGP jelenleg nem támogatott az Azure Virtual Networkökhöz és VPN Gateway-átjárókhoz a klasszikus üzemi modell használatával. BGP nélkül az átviteli címterek manuális meghatározása sok hibalehetőséggel jár, ezért nem ajánlott.
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Egy adott virtuális hálózaton az Azure ugyanazt az IPsec/IKE előmegosztott kulcsot hozza létre az összes VPN-kapcsolathoz?
 
-Nem, az Azure alapértelmezés szerint különböző előmegosztott kulcsokat hoz létre a különböző VPN-kapcsolatokhoz. Azonban a VPN-átjáró kulcsának megadása REST API-val vagy PowerShell-parancsmaggal tetszőlegesen megadhatja a kulcs értékét. A kulcsnak nyomtatható ASCII karaktereknek kell lennie.
+Nem, az Azure alapértelmezés szerint különböző előmegosztott kulcsokat hoz létre a különböző VPN-kapcsolatokhoz. Azonban a VPN-átjáró kulcsának megadása REST API-val vagy PowerShell-parancsmaggal tetszőlegesen megadhatja a kulcs értékét. A kulcsnak nyomtatható ASCII-karakternek kell lennie.
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>Nagyobb sávszélességhez jutok több helyek közötti VPN használatával, mint egyetlen virtuális hálózattal?
 
@@ -243,7 +243,7 @@ Nem. Csak az az adatforgalom fog áthaladni a virtuális hálózati átjárón, 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="virtual-network-faq"></a><a name="faq"></a>Virtuális hálózat – gyakori kérdések
+## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network GYIK
 
 A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md) (Virtual Network – gyakori kérdések).
 
@@ -252,4 +252,4 @@ A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network
 * További információk a VPN Gatewayről: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
 * További információk a VPN Gateway konfigurációs beállításairól: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
 
-**Az "OpenVPN" az OpenVPN Inc. védjegye.**
+**Az "OpenVPN" az OpenVPN Inc védjegye.**

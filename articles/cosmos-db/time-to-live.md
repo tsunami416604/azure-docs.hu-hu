@@ -1,6 +1,6 @@
 ---
-title: Adatok lejárata az Azure Cosmos DB-ben az élő idővel
-description: A TTL segítségével a Microsoft Azure Cosmos DB lehetővé teszi, hogy a dokumentumok egy idő után automatikusan törlődjenek a rendszerből.
+title: Az Azure Cosmos DB élettartama lejár
+description: A TTL esetében a Microsoft Azure Cosmos DB lehetővé teszi a dokumentumok automatikus kiürítését a rendszerből egy adott idő elteltével.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,82 +8,82 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77188720"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) az Azure Cosmos DB-ben 
 
-Az Azure Cosmos DB az **Élő idő** vagy a TTL használatával lehetővé teszi az elemek automatikus törlését egy tárolóból egy bizonyos idő elteltével. Alapértelmezés szerint beállíthatja, hogy az idő a tároló szintjén éljen, és felülbírálja az értéket cikkenként. Miután beállította a TTL egy tárolóban vagy egy elem szintjén, az Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az időszak után, mivel az utolsó módosítás óta. Az élő értékhez szükséges idő másodpercek alatt van konfigurálva. A TTL konfigurálásakor a rendszer automatikusan törli a lejárt elemeket a TTL érték alapján, anélkül, hogy az ügyfélalkalmazás által kifejezetten kiadott törlési műveletre lenne szükség.
+Az **élettartam vagy a** TTL esetében a Azure Cosmos db lehetővé teszi, hogy egy adott időszak után automatikusan törölje a tárolóból az elemeket. Alapértelmezés szerint beállíthatja az időt a tároló szintjén, és felülbírálhatja az értéket cikkenként. Miután beállította az ÉLETTARTAMot egy tárolóban vagy egy elem szintjén, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az időszak után az utolsó módosítás időpontja óta. Az élettartam értéke másodpercben van konfigurálva. Az élettartam beállításakor a rendszer automatikusan törli a lejárt elemeket az élettartam értéke alapján, anélkül, hogy az ügyfélalkalmazás által explicit módon kiállított törlési műveletre lenne szükség.
 
-A lejárt elemek törlése olyan háttérfeladat, amely a megmaradt [kérelemegységeket](request-units.md), azaz a felhasználói kérelmek által fel nem számított kérelemegységeket használja fel. Még a TTL lejárta után is, ha a tároló túl van terhelve kérésekkel, és ha nincs elég RU rendelkezésre álló, az adatok törlése késik. Az adatok törlődnek, ha elegendő rt-áll rendelkezésre a törlési művelet végrehajtásához. Bár az adatok törlése késik, az adatokat nem adja vissza semmilyen lekérdezések (bármely API) után a TTL lejárta után.
+A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [kérelmeket, és](request-units.md)ez olyan kérelmeket foglal magába, amelyeket a felhasználói kérések nem használnak fel. Még az élettartam lejárta után is, ha a tároló túlterhelt a kérelmekkel, és ha nincs elegendő RU elérhető, az adattörlés késleltetve van. Az adatok törlődnek, ha elegendő RUs áll rendelkezésre a törlési művelet végrehajtásához. Bár az adattörlés késleltetve van, az élettartam lejárta után bármely lekérdezés (bármely API által) nem adja vissza az adatmennyiséget.
 
-## <a name="time-to-live-for-containers-and-items"></a>Ideje élni a konténerek és elemek
+## <a name="time-to-live-for-containers-and-items"></a>A tárolók és elemek élettartama
 
-Az élő érték másodpercben van beállítva, és az elem utolsó módosításának időpontjától kezdve különbözetként lesz értelmezve. Beállíthatja, hogy az élet egy tárolóban vagy egy elem a tárolón belül:
+Az élettartam értéke másodpercben van megadva, és a rendszer az elem utolsó módosításának időpontjában változásként értelmezi. Beállíthatja, hogy az élettartam egy tárolón vagy egy elemen belül legyen:
 
-1. **Az élethez való idő egy tárolóban** (a használatával beállítva): `DefaultTimeToLive`
+1. A **tárolón való** működéshez szükséges idő ( `DefaultTimeToLive`a használatával beállítva):
 
-   - Ha hiányoznak (vagy null értékre vannak állítva), az elemek nem járnak le automatikusan.
+   - Ha hiányzik (vagy NULL értékre van állítva), az elemek nem lesznek automatikusan lejáratva.
 
-   - Ha a jelen és az érték értéke "-1", akkor végtelen, és az elemek alapértelmezés szerint nem járnak le.
+   - Ha van, és az értéke "-1", akkor az a végtelen értékkel egyenlő, és az elemek alapértelmezés szerint nem járnak le.
 
-   - Ha a jelen és az érték *bizonyos számú "n"* értékre van állítva – az elemek az utolsó módosítási időpont után *másodpercekkel "n"* lejárnak.
+   - Ha van, és az érték egy *"n"* számra van beállítva, az elemek az utolsó módosítás időpontja után az *"n"* másodpercet fogják lejárni.
 
-2. **Életidő egy elemen** (a következő vel beállítva): `ttl`
+2. **Egy elem** (a használatával `ttl`beállított) élettartama:
 
-   - Ez a tulajdonság `DefaultTimeToLive` csak akkor alkalmazható, ha jelen van, és nincs null értékre állítva a szülőtárolóesetében.
+   - Ez a tulajdonság csak akkor alkalmazható `DefaultTimeToLive` , ha létezik, és a szülő tárolóban nem null értékre van állítva.
 
-   - Ha jelen van, `DefaultTimeToLive` felülírja a szülőtároló értékét.
+   - Ha van ilyen, felülbírálja a szülő `DefaultTimeToLive` tároló értékét.
 
-## <a name="time-to-live-configurations"></a>Az élő konfigurációkhoz való idő
+## <a name="time-to-live-configurations"></a>Élettartam-konfigurációk
 
-* Ha a TTL beállítása *"n"* egy tárolón, akkor a tárolóban lévő elemek *n* másodperc után lejárnak.  Ha ugyanabban a tárolóban vannak olyan elemek, amelyeknek saját idejük van az életre, állítsa a -1 értékre (ami azt jelzi, hogy nem járnak le), vagy ha egyes elemek felülbírálták az élethez szükséges időt egy másik számmal, ezek az elemek a saját konfigurált TTL-értékük alapján járnak le. 
+* Ha a TTL értéke *"n"* értékre van állítva egy tárolón, akkor az adott tárolóban lévő elemek *n* másodperc után lejárnak.  Ha ugyanabban a tárolóban vannak olyan elemek, amelyeken a saját élettartama van, állítsa az-1 értéket (jelezve, hogy nem jár le), vagy ha egyes elemek felülbírálják az élő beállítás eltérő számmal való megadásának idejét, akkor ezek az elemek a saját beállított TTL-értékük alapján lejárnak. 
 
-* Ha a TTL nincs beállítva egy tárolón, akkor a tárolóban lévő elemen való életidő nek nincs hatása. 
+* Ha az élettartam nincs beállítva egy tárolón, akkor az ebben a tárolóban lévő elemhez tartozó időtartam nem lép érvénybe. 
 
-* Ha egy tárolóTTL beállítása -1, a tárolóban lévő olyan elem, amelynek élettartama n, n másodperc után lejár, és a fennmaradó elemek nem járnak le.
+* Ha a tárolón lévő TTL-1 értékre van állítva, akkor a tároló egyik eleme, amelynek az élettartama n értékre van állítva, a (z) n másodperc után lejár, és a fennmaradó elemek nem fognak lejárni.
 
 ## <a name="examples"></a>Példák
 
-Ez a szakasz néhány példát mutat be, amelyekkülönböző ideig vannak a tárolóhoz és az elemekhez rendelt élő értékek:
+Ez a szakasz néhány példát mutat be a tárolóhoz és elemekhez rendelt élő értékek különböző időpontjával:
 
 ### <a name="example-1"></a>1. példa
 
-A tárolón lévő TTL értéke null (DefaultTimeToLive = null)
+A tároló ÉLETTARTAMa NULL értékre van állítva (DefaultTimeToLive = null)
 
-|TTL a cikken| Eredmény|
+|TTL az elemnél| Eredmény|
 |---|---|
-|ttl = null|    A TTL le van tiltva. Az elem soha nem jár le (alapértelmezett).|
-|ttl = -1   |A TTL le van tiltva. Az elem soha nem jár le.|
-|ttl = 2000 |A TTL le van tiltva. Az elem soha nem jár le.|
+|TTL = null|    Az élettartam le van tiltva. Az tétel soha nem jár le (alapértelmezett).|
+|TTL =-1   |Az élettartam le van tiltva. Az adott tétel soha nem jár le.|
+|TTL = 2000 |Az élettartam le van tiltva. Az adott tétel soha nem jár le.|
 
 
 ### <a name="example-2"></a>2. példa
 
-A tárolón lévő TTL beállítása -1 (DefaultTimeToLive = -1)
+A tárolón belüli TTL értéke-1 (DefaultTimeToLive =-1)
 
-|TTL a cikken| Eredmény|
+|TTL az elemnél| Eredmény|
 |---|---|
-|ttl = null |A TTL engedélyezve van. Az elem soha nem jár le (alapértelmezett).|
-|ttl = -1   |A TTL engedélyezve van. Az elem soha nem jár le.|
-|ttl = 2000 |A TTL engedélyezve van. Az elem 2000 másodperc után lejár.|
+|TTL = null |Az élettartam engedélyezve van. Az tétel soha nem jár le (alapértelmezett).|
+|TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
+|TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
 
 ### <a name="example-3"></a>3. példa
 
-A tárolón lévő TTL beállítása 1000 (DefaultTimeToLive = 1000)
+A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 
-|TTL a cikken| Eredmény|
+|TTL az elemnél| Eredmény|
 |---|---|
-|ttl = null|    A TTL engedélyezve van. Az elem 1000 másodperc után lejár (alapértelmezett).|
-|ttl = -1   |A TTL engedélyezve van. Az elem soha nem jár le.|
-|ttl = 2000 |A TTL engedélyezve van. Az elem 2000 másodperc után lejár.|
+|TTL = null|    Az élettartam engedélyezve van. Az tétel 1000 másodperc (alapértelmezett) után lejár.|
+|TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
+|TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Time to Live beállításáról az alábbi cikkekben:
+Megtudhatja, hogyan konfigurálhatja az élettartamot a következő cikkekben:
 
-* [A Time to Live beállítása](how-to-time-to-live.md)
+* [Az élettartam konfigurálása](how-to-time-to-live.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory identitás- és hozzáférés-kezelési műveleteinek útmutatója
-description: Ez a műveleti referencia-útmutató ismerteti azokat az ellenőrzéseket és műveleteket, amelyeket meg kell tennie az identitás- és hozzáférés-kezelési műveletek biztonságossá tétele érdekében
+title: Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
+description: Ez az üzemeltetési útmutató ismerteti az identitás-és hozzáférés-kezelési műveletek biztonságossá tételéhez szükséges ellenőrzéseket és műveleteket.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,195 +12,195 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79298614"
 ---
-# <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Az Azure Active Directory identitás- és hozzáférés-kezelési műveleteinek útmutatója
+# <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
 
-Az Azure [AD-műveletek referencia-útmutatóezi](active-directory-ops-guide-intro.md) az okat az ellenőrzéseket és műveleteket, amelyeket figyelembe kell vennie az identitások és azok hozzárendeléseinek életciklusának biztonságossá tétele és kezelése érdekében.
+Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.md) jelen szakasza azokat az ellenőrzéseket és műveleteket ismerteti, amelyeket figyelembe kell venni az identitások és a hozzájuk tartozó hozzárendelések életciklusának védelméhez és kezeléséhez.
 
 > [!NOTE]
-> Ezek az ajánlások a közzététel időpontjától aktuálisak, de idővel változhatnak. A szervezeteknek folyamatosan értékelniük kell identitáskezelési gyakorlatukat, ahogy a Microsoft-termékek és -szolgáltatások idővel fejlődnek.
+> Ezek a javaslatok a közzététel dátumától kezdve érvényesek, de idővel változhatnak. A szervezeteknek folyamatosan értékelniük kell az identitásuk gyakorlatát, mivel a Microsoft termékei és szolgáltatásai idővel fejlődnek.
 
-## <a name="key-operational-processes"></a>Kulcsfontosságú működési folyamatok
+## <a name="key-operational-processes"></a>Fő működési folyamatok
 
-### <a name="assign-owners-to-key-tasks"></a>Tulajdonosok hozzárendelése a legfontosabb feladatokhoz
+### <a name="assign-owners-to-key-tasks"></a>Tulajdonosok kiosztása a legfontosabb feladatokhoz
 
-Az Azure Active Directory kezeléséhez olyan kulcsfontosságú operatív feladatok és folyamatok folyamatos végrehajtására van szükség, amelyek nem feltétlenül részei a bevezetési projektnek. Továbbra is fontos, hogy ezeket a feladatokat a környezet fenntartása érdekében állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
+A Azure Active Directory kezeléséhez olyan kulcsfontosságú működési feladatok és folyamatok folyamatos végrehajtása szükséges, amelyek esetleg nem részei a bevezetési projektnek. Még mindig fontos, hogy ezeket a feladatokat a környezet fenntartásához állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
 | Tevékenység | Tulajdonos |
 | :- | :- |
-| Az Azure-előfizetések létrehozásának folyamatának meghatározása | Szervezetenként változik |
-| Döntse el, ki kapja meg az Enterprise Mobility + Security licenceket | IAM műveleti csapat |
-| Annak eldöntése, hogy ki kap Office 365-licenceket | Termelékenységi csapat |
-| Döntse el, hogy ki kap más licenceket, például a Dynamics, a VSO | Alkalmazás tulajdonosa |
-| Licencek hozzárendelése | IAM műveleti csapat |
-| Licenchozzárendelési hibák elhárítása és javítása | IAM műveleti csapat |
-| Identitások kiépítése az Azure AD-ben lévő alkalmazásokhoz | IAM műveleti csapat |
+| Az Azure-előfizetések létrehozási folyamatának meghatározása | Szervezettől függően |
+| Annak eldöntése, hogy ki kap Enterprise Mobility + Security licenceket | IAM Operations csapat |
+| Döntse el, hogy ki kapja meg az Office 365-licenceket | Termelékenységi csapat |
+| Döntse el, hogy ki kap más licenceket, például Dynamics, VSO | Alkalmazás tulajdonosa |
+| Licencek hozzárendelése | IAM Operations csapat |
+| Licenc-hozzárendelési hibák elhárítása és szervizelése | IAM Operations csapat |
+| Identitások kiépítése az alkalmazásokban az Azure AD-ben | IAM Operations csapat |
 
-A lista áttekintésekor előfordulhat, hogy tulajdonost kell hozzárendelnie a tulajdonosból hiányzó feladatokhoz, vagy módosítania kell a fenti javaslatokhoz nem igazodó tulajdonossal rendelkező feladatok tulajdonjogát.
+A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olyan feladatokhoz, amelyek nem rendelkeznek tulajdonossal, vagy nem módosítanak tulajdonjogot olyan feladatokhoz, amelyek nem illeszkednek a fenti javaslatokhoz.
 
-#### <a name="assigning-owners-recommended-reading"></a>A tulajdonosok ajánlott olvasásának hozzárendelése
+#### <a name="assigning-owners-recommended-reading"></a>A tulajdonos javasolt olvasásának kiosztása
 
 - [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Irányítás az Azure-ban](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-## <a name="on-premises-identity-synchronization"></a>Helyszíni identitás-szinkronizálás
+## <a name="on-premises-identity-synchronization"></a>Helyszíni identitások szinkronizálása
 
 ### <a name="identify-and-resolve-synchronization-issues"></a>Szinkronizálási problémák azonosítása és megoldása
 
-A Microsoft azt javasolja, hogy jó alapkonfigurációval és a helyszíni környezetben felmerülő problémák megértésével, amelyek szinkronizálási problémákat eredményezhetnek a felhőben. Mivel az olyan automatizált eszközök, mint [az IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) és az [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) nagy mennyiségű hamis pozitív eredményt generálhatnak, azt javasoljuk, hogy azonosítsa azokat a szinkronizálási hibákat, amelyeket több mint 100 napig nem címeztek, ha hibaként tisztítja meg ezeket az objektumokat. A hosszú távú megoldatlan szinkronizálási hibák támogatási incidenseket okozhatnak. [A szinkronizálás során előforduló hibák elhárítása](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) áttekintést nyújt a szinkronizálási hibák különböző típusairól, néhány lehetséges forgatókönyvről, amelyek ezeket a hibákat okozzák, és a hibák lehetséges módjairól.
+A Microsoft azt javasolja, hogy a helyszíni környezetben felmerülő problémák megfelelő alapismeretekkel rendelkezzenek, és a felhőben szinkronizálási problémákhoz vezethet. Mivel az automatizált eszközök, mint például a [IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) és a [Azure ad Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) nagy mennyiségű téves pozitív eredményt hozhatnak létre, javasoljuk, hogy azonosítsa azokat a szinkronizálási hibákat, amelyek több mint 100 napig megmaradtak. A hosszú távú megoldatlan szinkronizálási hibák támogatási incidenseket hozhatnak. A szinkronizálás során felmerülő [hibaelhárítási hibák](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) a különböző típusú szinkronizálási hibák áttekintése, a hibákat okozó lehetséges forgatókönyvek és a hibák kijavításának lehetséges módjai.
 
-### <a name="azure-ad-connect-sync-configuration"></a>Az Azure AD Connect szinkronizálásának konfigurációja
+### <a name="azure-ad-connect-sync-configuration"></a>Azure AD Connect szinkronizálási konfiguráció
 
-Az összes hibrid élmény, az eszközalapú biztonsági állapot és az Azure AD-vel való integráció engedélyezéséhez szinkronizálnia kell azokat a felhasználói fiókokat, amelyeket az alkalmazottak az asztalukra való bejelentkezéshez használnak.
+Az összes hibrid élmény, az eszközön alapuló biztonsági testhelyzet és az Azure AD-integráció engedélyezéséhez szinkronizálnia kell a felhasználói fiókokat, amelyeket az alkalmazottak az asztalokra való bejelentkezéshez használnak.
 
-Ha nem szinkronizálja az erdő felhasználói nak bejelentkezését, akkor módosítania kell a szinkronizálást úgy, hogy az a megfelelő erdőből származzon.
+Ha nem szinkronizálja az erdő felhasználói bejelentkezést, akkor módosítania kell a szinkronizálást, hogy a megfelelő erdőből álljon.
 
-#### <a name="synchronization-scope-and-object-filtering"></a>Szinkronizálási hatókör és objektumszűrés
+#### <a name="synchronization-scope-and-object-filtering"></a>Szinkronizálási hatókör és objektum-szűrés
 
-A szinkronizálandó, nem szükséges objektumok ismert gyűjtőinek eltávolítása a következő működési előnyökkel jár:
+A szinkronizáláshoz nem szükséges objektumok ismert gyűjtőit a következő működési előnyökkel távolíthatja el:
 
-- Kevesebb szinkronizálási hibaforrás
+- A szinkronizálási hibák kevesebb forrása
 - Gyorsabb szinkronizálási ciklusok
-- Kevesebb "szemét" átvitele a helyszíni, például a környezetszennyezés a globális címlista a helyszíni szolgáltatás fiókok, amelyek nem relevánsak a felhőben
+- Kevesebb "szemetet" kell végrehajtani a helyszíni, például a felhőben nem releváns helyszíni szolgáltatásfiókok esetében a globális címlista szennyezése miatt.
 
 > [!NOTE]
-> Ha úgy találja, hogy sok olyan objektumot importál, amelyek nem exportálva vannak a felhőbe, szűrje a szervezeti egység vagy az adott attribútumok szerint.
+> Ha úgy találja, hogy sok olyan objektumot importál, amelyet a rendszer nem exportál a felhőbe, akkor szervezeti egység vagy adott attribútumok alapján kell szűrnie.
 
 Példák a kizárandó objektumokra:
 
 - A felhőalapú alkalmazásokhoz nem használt szolgáltatásfiókok
-- Olyan csoportok, amelyeket nem felhőalapú forgatókönyvekben, például az erőforrásokhoz való hozzáférés biztosításához használt csoportokban kell használni
-- Az Azure AD B2B együttműködéssel képviselendő külső identitások vagy kapcsolattartók
-- Olyan számítógépfiókok, amelyeken az alkalmazottak nem használhatják a felhőalapú alkalmazásokat, például kiszolgálókról
+- Azok a csoportok, amelyek nem a Felhőbeli forgatókönyvekben használhatók, például az erőforrásokhoz való hozzáférés biztosítására használják.
+- Az Azure AD B2B együttműködésnek szánt külső identitásokkal rendelkező felhasználók vagy névjegyek
+- Azok a számítógépfiókok, amelyeken az alkalmazottak nem férnek hozzá a felhőalapú alkalmazásokhoz, például kiszolgálókon
 
 > [!NOTE]
-> Ha egyetlen emberi identitáshoz több fiók is tartozik, például örökölt tartományáttelepítésből, összeolvadásból vagy felvásárlásból, akkor csak a felhasználó által napi szinten használt fiókot szinkronizálja, például azt, hogy mit használnak a számítógépükre való bejelentkezéshez. .
+> Ha egyetlen emberi identitásnál több fiók van kiépítve, például egy örökölt tartomány áttelepítése, az egyesítés vagy a beszerzés, csak a felhasználó által a napi rendszerességgel használt fiókot kell szinkronizálni, például hogy mire használják a számítógépére való bejelentkezést.
 
-Ideális esetben el kell érnie az egyensúlyt a szinkronizálandó objektumok számának csökkentése és a szabályok összetettsége között. Általában a szervezeti egység/tároló [szűrése](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) és a cloudFiltered attribútum egyszerű attribútumleképezése kombinációja hatékony szűrési kombináció.
+Ideális esetben egyensúlyt szeretne elérni a szinkronizálandó objektumok számának és a szabályok összetettségének csökkentése között. Általában a szervezeti egységek/tárolók [szűrése](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) , valamint a cloudFiltered attribútumhoz hozzárendelt egyszerű attribútumok kombinációja egy hatékony szűrési kombináció.
 
 > [!IMPORTANT]
-> Ha a csoportszűrést használja éles környezetben, át kell térnie egy másik szűrési megközelítésre.
+> Ha éles környezetben használja a csoportosítást, érdemes áttérnie egy másik szűrési megközelítésre.
 
-#### <a name="sync-failover-or-disaster-recovery"></a>Szinkronizálási feladatátvétel vagy vész-helyreállítás
+#### <a name="sync-failover-or-disaster-recovery"></a>Feladatátvétel vagy vész-helyreállítás szinkronizálása
 
-Az Azure AD Connect kulcsfontosságú szerepet játszik a kiépítési folyamatban. Ha a szinkronizálási kiszolgáló bármilyen okból offline állapotba kerül, a helyszíni módosítások nem frissíthetők a felhőben, és hozzáférési problémákat okozhatnak a felhasználók számára. Ezért fontos olyan feladatátvételi stratégia definiálása, amely lehetővé teszi a rendszergazdák számára a szinkronizálás gyors folytatását, miután a szinkronizálási kiszolgáló offline állapotba kerül. Az ilyen stratégiák a következő kategóriákba sorolhatók:
+Azure AD Connect kulcsfontosságú szerepet játszik a létesítési folyamatban. Ha a szinkronizálási kiszolgáló valamilyen okból offline állapotba kerül, a helyszíni módosítások nem frissíthetők a felhőben, és hozzáférési problémákhoz vezethetnek a felhasználók számára. Ezért fontos olyan feladatátvételi stratégiát definiálni, amely lehetővé teszi a rendszergazdák számára a szinkronizálás gyors folytatását, miután a szinkronizálási kiszolgáló offline állapotba kerül. Az ilyen stratégiák a következő kategóriákba tartozhatnak:
 
-- **Az Azure AD Connect Server(ek) telepítése átmeneti módban** – lehetővé teszi a rendszergazda számára, hogy egy egyszerű konfigurációs kapcsolóval "elősegítse" az átmeneti kiszolgálót az éles környezetben.
-- **Virtualization használata** – Ha az Azure AD-connect egy virtuális gépen (VM) van telepítve, a rendszergazdák a virtualizációs verem segítségével az élő áttelepítésvagy a virtuális gép gyors újratelepítése, és így folytatja a szinkronizálást.
+- **Azure ad Connect kiszolgáló (k) üzembe helyezése átmeneti módban** – lehetővé teszi, hogy a rendszergazda egy egyszerű konfigurációs kapcsoló használatával "népszerűsítse" az átmeneti kiszolgálót éles környezetben.
+- **Virtualizálás használata** – ha az Azure ad-kapcsolódás virtuális GÉPEN (VM) van telepítve, a rendszergazdák a virtualizációs verem segítségével élő áttelepítésre vagy gyors üzembe helyezésre használhatják a virtuális gépet, és így folytatják a szinkronizálást.
 
-Ha a szervezet nem rendelkezik vész-helyreállítási és feladatátvételi stratégia szinkronizálás, ne habozzon telepíteni az Azure AD Connect átmeneti módban. Hasonlóképpen, ha az éles és átmeneti konfiguráció között eltérés van, újra kell alapvonalba hozni az Azure AD Connect átmeneti módot, hogy megfeleljen az éles konfigurációnak, beleértve a szoftververziókat és konfigurációkat is.
+Ha a szervezete nem rendelkezik a szinkronizáláshoz szükséges vész-helyreállítási és feladatátvételi stratégiával, ne habozzon üzembe helyezni Azure AD Connect átmeneti módban. Hasonlóképpen, ha az éles környezet és az előkészítési konfiguráció között eltérés tapasztalható, akkor újra kell alapterv Azure AD Connect átmeneti üzemmódot, hogy az megfeleljen az éles konfigurációnak, beleértve a szoftver-verziókat és a konfigurációkat is.
 
-![Képernyőkép az Azure AD Connect átmeneti mód konfigurációjáról](./media/active-directory-ops-guide/active-directory-ops-img1.png)
+![A Azure AD Connect átmeneti üzemmód konfigurációjának képernyőképe](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
 #### <a name="stay-current"></a>Legyen naprakész
 
-A Microsoft rendszeresen frissíti az Azure AD Connectet. Maradjon naprakész, hogy kihasználhassa az egyes új verziók által nyújtott teljesítménybeli fejlesztéseket, hibajavításokat és új funkciókat.
+A Microsoft frissítései rendszeresen Azure AD Connect. Maradjon naprakész, hogy kihasználhassa az egyes új verziók teljesítménybeli javításait, hibajavításait és új képességeit.
 
-Ha az Azure AD Connect verziója több mint hat hónappal le van maradva, frissítenie kell a legújabb verzióra.
+Ha a Azure AD Connect verziója több mint hat hónapja van hátra, frissítsen a legújabb verzióra.
 
-#### <a name="source-anchor"></a>Forráshorgony
+#### <a name="source-anchor"></a>Forrás horgonya
 
-Az **ms-DS-consistencyguid** [forráshorgonyként](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) való használata lehetővé teszi az objektumok erdők és tartományok közötti áttelepítését, ami gyakori az AD tartomány konszolidációjában/karbantartásában, az egyesülésekben, az akvizíciókban és az elidegenítésekben.
+Az **MS-DS-consistencyguid** használatakor a [forrás-horgony](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) lehetővé teszi az objektumok erdőkön és tartományokban való egyszerűbb áttelepítését, amely az ad-tartomány összevonása/tisztítása, összevonások, beszerzések és eladások esetében gyakori.
 
-Ha jelenleg az **ObjectGuid-ot** használja forráshorgonyként, javasoljuk, hogy váltson **az ms-DS-ConsistencyGuid**elemre.
+Ha jelenleg a **ObjectGuid** használja a forrás-horgonyként, javasoljuk, hogy váltson az **MS-DS-ConsistencyGuid**használatára.
 
 #### <a name="custom-rules"></a>Egyéni szabályok
 
-Az Azure AD Connect egyéni szabályai lehetővé teszik az attribútumok áramlását a helyszíni objektumok és a felhőbeli objektumok között. Az egyéni szabályok túlzott használata vagy helytelen használata azonban a következő kockázatokat jelentheti:
+Azure AD Connect egyéni szabályok lehetővé teszik a helyszíni objektumok és a Felhőbeli objektumok közötti adatforgalom szabályozását. Az egyéni szabályok túlhasználása vagy használata azonban a következő kockázatokat jelentheti:
 
-- Az összetettség hibáinak elhárítása
-- A teljesítmény romlása összetett műveletek objektumok közötti végrehajtásakor
-- Nagyobb a valószínűsége az éles kiszolgáló és az átmeneti kiszolgáló közötti konfigurációdiverzifikációnak
-- További többletterhelés az Azure AD Connect frissítésekor, ha egyéni szabályok jönnek létre a 100-nál nagyobb prioritáson belül (beépített szabályok használják)
+- Bonyolultsági hibák elhárítása
+- Teljesítmény romlása az objektumok közötti összetett műveletek végrehajtásakor
+- Nagyobb valószínűséggel fennáll a konfiguráció eltérése az üzemi kiszolgáló és az átmeneti kiszolgáló között.
+- További terhelés a Azure AD Connect frissítésekor, ha az egyéni szabályok az 100-nál nagyobb prioritáson belül jönnek létre (amelyet a beépített szabályok használnak)
 
-Ha túlságosan összetett szabályokat használ, vizsgálja meg az összetettség okait, és keressen lehetőséget az egyszerűsítésre. Hasonlóképpen, ha 100-nál nagyobb prioritású egyéni szabályokat hozott létre, javítsa ki a szabályokat, hogy ne legyenek veszélyben vagy ütközzenek az alapértelmezett készlettel.
+Ha túlságosan összetett szabályokat használ, érdemes megvizsgálnia az összetettség okait, és megtalálhatja az egyszerűsítési lehetőségeket. Hasonlóképpen, ha az egyéni szabályokat a 100-as prioritási értékkel hozta létre, akkor a szabályokat úgy kell kijavítania, hogy ne legyenek veszélyben vagy ütköznek az alapértelmezett készlettel.
 
-Az egyéni szabályokkal való visszahasználata például a következő:
+Példák az egyéni szabályok használatára:
 
-- **A címtárban lévő szennyezett adatok kompenzálása** – Ebben az esetben ajánlott az AD-csoport tulajdonosaival együttműködni, és a címtárban lévő adatok szervizelési feladatként történő karbantartása, valamint a folyamatok módosítása a rossz adatok újbóli bevezetésének elkerülése érdekében.
-- **Az egyes felhasználók egyszeri szervizelése** – Gyakori, hogy olyan szabályokat találnak, amelyek kiugró értékeket jelentenek, általában egy adott felhasználóval kapcsolatos probléma miatt.
-- **Túlbonyolított "CloudFiltering"** - Bár az objektumok számának csökkentése egy jó gyakorlat, fennáll a veszélye létrehozása és túlbonyolított szinkronizálási hatókör segítségével sok szinkronizálási szabályokat. Ha a szervezeti egység szűrésén kívül összetett logika is szerepel,/zárható ki, ajánlott ezt a logikát a szinkronizáláson kívül kezelni, és az objektumokat egy egyszerű "cloudFiltered" attribútummal címkézni, amely egyszerű szinkronizálási szabállyal is folyhat.
+- **A hibás adatok kompenzálása a címtárban** – ebben az esetben ajánlott az ad-csapat tulajdonosait használni, és szervizelési feladatként törölni a címtárban lévő adatok mennyiségét, és a folyamatok módosításával elkerülheti a helytelen adatok ismételt bevezetését.
+- **Az egyes felhasználók egyszeri szervizelése** – gyakran előfordul, hogy olyan szabályokat talál, amelyek különleges eseteket mutatnak be, általában egy adott felhasználó problémája miatt.
+- A **"CloudFiltering" túlbonyolítása** – az objektumok számának csökkentése jó gyakorlat, ezért a szinkronizálási hatókör számos szinkronizálási szabály használatával történő létrehozása és a túlbonyolítás kockázata is fennáll. Ha összetett logika van a szervezeti egység szűrésén kívüli objektumok belefoglalására/kizárására, akkor azt javasoljuk, hogy ezt a logikát a szinkronizáláson kívül is kezeljék, és az objektumokat egyszerű "cloudFiltered" attribútummal kell ellátni, amely egy egyszerű szinkronizálási szabállyal végezhető el.
 
-#### <a name="azure-ad-connect-configuration-documenter"></a>Az Azure AD Connect konfigurációs dokumentumkezelője
+#### <a name="azure-ad-connect-configuration-documenter"></a>Azure AD Connect konfigurációs dokumentáló
 
-Az [Azure AD Connect konfigurációs dokumentumkészítő](https://github.com/Microsoft/AADConnectConfigDocumenter) egy olyan eszköz, amellyel az Azure AD Connect-telepítés dokumentációját hozhatja létre, hogy jobban megértse a szinkronizálási konfigurációt, bizalmat építsen a dolgok helyes beírásában, és hogy megtudja, mi változott az Azure AD Connect új buildjének vagy konfigurációjának alkalmazásakor, illetve hozzáadott vagy frissített egyéni szinkronizálási szabályok hozzáadásakor. Az eszköz jelenlegi képességei a következők:
+A [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter) egy olyan eszköz, amellyel egy Azure ad Connect-telepítés dokumentációját hozhatja létre, amely lehetővé teszi a szinkronizálási konfiguráció jobb megismerését, a megfelelő dolgok megszerzését, valamint a Azure ad Connect új összeállításának és konfigurálásának, illetve az egyéni szinkronizálási szabályok hozzáadásának vagy frissítésének módosítását. Az eszköz jelenlegi képességei a következők:
 
-- Az Azure AD Connect szinkronizálásteljes konfigurációjának dokumentációja.
-- Két Azure AD Connect szinkronizálási kiszolgáló konfigurációjának változásainak vagy egy adott konfigurációs alapkonfiguráció változásainak dokumentálása.
-- PowerShell-telepítési parancsfájl létrehozása a szinkronizálási szabályok különbségeinek vagy testreszabásainak egyik kiszolgálóról a másikra történő áttelepítéséhez.
+- Azure AD Connect Sync teljes konfigurációjának dokumentációja.
+- A két Azure AD Connect szinkronizálási kiszolgáló konfigurációjában vagy egy adott alapkonfiguráció változásaiban bekövetkező változások dokumentációja.
+- PowerShell üzembe helyezési parancsfájl létrehozása a szinkronizálási szabályok közötti különbségek vagy testreszabások áttelepítéséhez az egyik kiszolgálóról a másikra.
 
 ## <a name="assignment-to-apps-and-resources"></a>Hozzárendelés alkalmazásokhoz és erőforrásokhoz
 
-### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Csoportalapú licencelés a Microsoft felhőszolgáltatásaihoz
+### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Csoportos licencelés a Microsoft Cloud Serviceshez
 
-Az Azure Active Directory a Microsoft felhőszolgáltatásainak [csoportalapú licencelésével](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) egyszerűsíti a licencek kezelését. Ily módon az IAM biztosítja a csoport infrastruktúráját és a csoportok delegált kezelését a szervezetek megfelelő csoportjai számára. Az Azure AD-ben többféleképpen is beállíthatja a csoportok tagságát, többek között a következőket:
+A Azure Active Directory a Microsoft Cloud Services [csoportos licencelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) révén egyszerűsíti a licencek kezelését. Így a IAM a csoportok infrastruktúráját és delegált felügyeletét biztosítja a szervezetek megfelelő csoportjai számára. Több módon is beállíthatja a csoportok tagságát az Azure AD-ben, beleértve a következőket:
 
-- **A helyszíni** szinkronizálás – A csoportok helyszíni könyvtárakból származhatnak, ami jól illeszkedhet az olyan szervezetek számára, amelyek olyan csoportkezelési folyamatokat hoztak létre, amelyek kiterjeszthetők az Office 365-ben lévő licencek hozzárendeléséhez.
+- A helyszíni csoportokból **szinkronizálva** a helyszíni címtárakból is származhatnak, ami jó illeszkedést jelenthet olyan szervezetek számára, amelyek olyan csoport-felügyeleti folyamatokkal rendelkeznek, amelyek kiterjeszthetők az Office 365-licencek hozzárendeléséhez.
 
-- **Attribútumalapú / dinamikus** – A csoportok a felhőben a felhasználói attribútumokon alapuló kifejezés alapján hozhatók létre, például a Részleg egyenlő az "értékesítéssel". Az Azure AD fenntartja a csoport tagjait, és konzisztens marad a definiált kifejezéssel. Ha ezt a fajta csoportot licenc-hozzárendeléshez használja, az attribútumalapú licenc-hozzárendelést tesz lehetővé, amely jól illeszkedik a címtárukban magas adatminőséggel rendelkező szervezetek számára.
+- **Attribútum-alapú/dinamikus** csoportok hozhatók létre a felhőben egy felhasználói attribútumokon alapuló kifejezés alapján, például a részleg az "értékesítés". Az Azure AD megtartja a csoport tagjait, és összhangban tartja a definiált kifejezéssel. Ha ezt a csoportot használja a licenc-hozzárendeléshez, az attribútum-alapú licenc-hozzárendelést is lehetővé teszi, amely kiválóan alkalmas a címtárban magas adatminőséggel rendelkező szervezetek számára.
 
-- **Delegált tulajdonjog** – Csoportok hozhatók létre a felhőben, és kijelölhetők tulajdonosok. Így felhatalmazhatja a vállalkozások tulajdonosait, például az együttműködési csapatot vagy a BI-csapatot, hogy meghatározzák, kinek kell hozzáféréssel rendelkeznie.
+- A **delegált tulajdonosi** csoportok a felhőben hozhatók létre, és kijelölhető tulajdonosok is lehetnek. Így az üzleti tulajdonosok, például az együttműködési csapat vagy a BI-csapat megadható, hogy ki férhet hozzá.
 
-Ha jelenleg manuális eljárást használ a licencek és összetevők felhasználókhoz rendelésére, javasoljuk, hogy hajtsa végre a csoportalapú licencelést. Ha az aktuális folyamat nem figyeli a licencelési hibákat, vagy azt, hogy mi van hozzárendelve, és mi érhető el, meg kell határoznia a folyamat fejlesztéseit a licencelési hibák kezelése és a licencelési hozzárendelés figyelése érdekében.
+Ha jelenleg manuális eljárást használ a licencek és összetevők felhasználóknak való hozzárendeléséhez, javasoljuk, hogy hozzon létre csoportos licencelést. Ha az aktuális folyamat nem figyeli a licencelési hibákat, illetve hogy mi van hozzárendelve az elérhető megoldáshoz, a licencelési hibák elhárításához és a licencelési hozzárendelés figyeléséhez meg kell határoznia a javításokat.
 
-A licenckezelés másik aspektusa a szolgáltatási csomagok (a licenc összetevői) definíciója, amelyet engedélyezni kell a szervezet feladatfunkciói alapján. A szükségtelen szolgáltatási csomagokhoz való hozzáférés megadásával a felhasználók olyan eszközöket láthatnak az Office-portálon, amelyekhez nem képezték ki őket, vagy amelyeket nem kellene használniuk. További ügyfélszolgálati kötetet, szükségtelen kiépítést és a megfelelőségés a cégirányítási kockázatot jelenthet, például amikor olyan személyeknek biztosít ki, akik esetleg nem oszthatnak meg tartalmakat.
+A licencek kezelésének egy másik aspektusa a szolgáltatási csomagok (a licenc összetevői) meghatározása, amelyet a szervezeten belüli feladatok alapján kell engedélyezni. A nem szükséges szolgáltatási csomagokhoz való hozzáférés biztosítása azt eredményezheti, hogy a felhasználók olyan eszközöket látnak el az Office Portalon, amelyeket nem tanítanak meg vagy nem használnak. Az informatikai részleg további ügyfélszolgálati kötetet, szükségtelen kiépítéseket, valamint a megfelelőség és a kockázatkezelés kockázatát is lehetővé teszi, például ha olyan személyeknek állít ki OneDrive, akik a tartalmak megosztására nem jogosultak.
 
-Az alábbi irányelvek segítségével határozza meg a felhasználók nak szóló szolgáltatási csomagokat:
+A következő irányelvek segítségével határozhatja meg a felhasználóknak szóló szolgáltatási terveket:
 
-- A rendszergazdáknak meg kell határozniuk a felhasználóknak felajánlandó szolgáltatási csomagok "csomagjait" a szerepkörük alapján, például a fehérgalléros dolgozó és a padlódolgozó között.
-- Csoportok létrehozása fürt szerint, és a licenc hozzárendelése a szolgáltatási csomaggal.
-- Szükség esetén egy attribútum definiálható a csomagok tárolására a felhasználók számára.
+- A rendszergazdáknak meg kell határozniuk a felhasználók számára a szerepkörük alapján felkínált szolgáltatási csomagok "csomagjait", például a Fehér galléros munkavégzők és a padló feldolgozók számára.
+- Hozzon létre csoportokat fürt szerint, és rendelje hozzá a licencet a Service csomaghoz.
+- Szükség esetén egy attribútum is meghatározható a felhasználók csomagjainak tárolására.
 
 > [!IMPORTANT]
-> Az Azure AD csoportalapú licencelése a felhasználók licencelési hibaállapotú koncepcióját mutatja be. Ha licencelési hibát észlel, azonnal [azonosítsa és megoldja](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) a licenchozzárendelési problémákat.
+> Az Azure AD-beli csoportos licencelés bevezeti a licencelési hiba állapotában lévő felhasználók fogalmát. Ha bármilyen licencelési hibát észlel, azonnal [azonosítania kell és fel kell oldania](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) a licenc-hozzárendelési problémákat.
 
-![A képernyőkép a számítógép képernyőjénAutomatikusan generált leírás](./media/active-directory-ops-guide/active-directory-ops-img2.png)
+![A számítógép képernyőjének leírását tartalmazó képernyőkép automatikusan létrejön](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Életciklus-kezelés
 
-Ha jelenleg olyan eszközt használ, például [a Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) vagy a külső rendszer, amely egy helyszíni infrastruktúrára támaszkodik, javasoljuk, hogy a meglévő eszközből kiszervezi a hozzárendelést, valósítsa meg a csoportalapú licencelést, és [csoportalapú](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups)csoportéletciklus-kezelést határozzon meg. Hasonlóképpen, ha a meglévő folyamat nem veszi figyelembe az új alkalmazottak vagy alkalmazottak, hogy hagyja el a szervezetet, telepítenie kell a csoportalapú licencelés dinamikus csoportok alapján, és meghatározza a csoport tagságéletciklusát. Végül, ha a csoportalapú licencelés olyan helyszíni csoportok ellen van telepítve, amelyek nem rendelkeznek életciklus-felügyelettel, fontolja meg a felhőcsoportok használatát olyan képességek engedélyezéséhez, mint például a delegált tulajdonjog vagy az attribútumalapú dinamikus tagság.
+Ha jelenleg olyan eszközt használ, mint például a [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) vagy a harmadik féltől származó rendszer, amely egy helyszíni infrastruktúrára támaszkodik, javasoljuk, hogy a hozzárendelést kiszervezje a meglévő eszközről, hozzon létre csoportos licencelést, és definiáljon csoportokon alapuló csoportos életciklus- [kezelést.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups) Hasonlóképpen, ha a meglévő folyamat nem veszi figyelembe a szervezeten kívüli új alkalmazottakat vagy alkalmazottakat, akkor a csoport alapú licencelést dinamikus csoportok alapján kell telepítenie, és meg kell határoznia a csoporttagság életciklusát. Végül, ha a csoportos licencelés olyan helyszíni csoportokra van telepítve, amelyek nem rendelkeznek életciklus-felügyelettel, érdemes lehet felhőalapú csoportokat használni olyan képességek engedélyezéséhez, mint például a delegált tulajdonjog vagy az attribútum-alapú dinamikus tagság.
 
-### <a name="assignment-of-apps-with-all-users-group"></a>Alkalmazások hozzárendelése a "Minden felhasználó" csoporttal
+### <a name="assignment-of-apps-with-all-users-group"></a>Alkalmazások hozzárendelése a "minden felhasználó" csoporttal
 
-Az erőforrás-tulajdonosok úgy érezhetik, hogy a **Minden felhasználó** csoport csak **vállalati alkalmazottakat** tartalmaz, ha azok ténylegesen tartalmazhatnak **vállalati alkalmazottakat** és **vendégeket is.** Ennek eredményeképpen különös figyelmet kell fordítania arra, hogy a **Minden felhasználó** csoportot használja az alkalmazás-hozzárendeléshez, és hozzáférést biztosítson az erőforrásokhoz, például a SharePoint-tartalomhoz vagy az alkalmazásokhoz.
+Az erőforrás-tulajdonosok úgy vélik, hogy a **minden felhasználó** csoport csak **vállalati alkalmazottakat** tartalmaz, ha azok ténylegesen **vállalati alkalmazottakat** és **vendégeket**is tartalmazhatnak. Ennek eredményeképpen különleges figyelmet igényel, ha az **összes felhasználó** csoportot használja az alkalmazás-hozzárendeléshez, és hozzáférést biztosít az erőforrásokhoz, például a SharePoint-tartalomhoz vagy-alkalmazásokhoz.
 
 > [!IMPORTANT]
-> Ha a **Minden felhasználó** csoport engedélyezve van, és feltételes hozzáférési szabályzatokhoz, alkalmazás- vagy erőforrás-hozzárendeléshez van használva, győződjön meg arról, hogy [biztonságossá teszi a csoportot,](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) ha nem szeretné, hogy vendégfelhasználókat tartalmazzon. Ezenkívül a licencelési hozzárendeléseket úgy kell kijavítania, hogy olyan csoportokat hoz létre és rendel hozzá, amelyek csak **vállalati alkalmazottakat tartalmaznak.** Ha viszont úgy találja, hogy a **Minden felhasználó** csoport engedélyezve van, de nem használható az erőforrásokhoz való hozzáférés engedélyezésére, győződjön meg arról, hogy a szervezet működési útmutatója a csoport szándékos használata (amely magában foglalja a **vállalati alkalmazottakat** és **a vendégeket**is).
+> Ha a **minden felhasználó** csoport engedélyezve van, és a feltételes hozzáférési házirendekhez, alkalmazásokhoz vagy erőforrás-hozzárendelésekhez használatos, akkor ügyeljen arra, hogy [a csoport biztonságossá](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) tétele, ha nem szeretné, hogy a vendég felhasználók is szerepeljenek. Emellett a licencelési hozzárendeléseket úgy kell kijavítania, hogy csak **vállalati alkalmazottakat** tartalmazó csoportokat hozzon létre és rendeljen hozzájuk. Ha azonban úgy találja, hogy a **minden felhasználó** csoport engedélyezve van, de nem használja az erőforrásokhoz való hozzáférést, akkor győződjön meg arról, hogy a szervezet operatív útmutatása szerint szándékosan használja ezt a csoportot (amely magában foglalja a **vállalati alkalmazottakat** és a **vendégeket**is).
 
-### <a name="automated-user-provisioning-to-apps"></a>Automatikus felhasználói kiépítés az alkalmazásokba
+### <a name="automated-user-provisioning-to-apps"></a>Automatikus felhasználó-kiépítés az alkalmazásokba
 
-[Az alkalmazásokautomatikus felhasználói kiépítés](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a legjobb módja annak, hogy egységes kiépítést, megszüntetést és az identitások életciklusát hozzon létre több rendszeren keresztül.
+A [felhasználók automatikus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) kiosztása az alkalmazásokban a legjobb módszer a különböző rendszerekben lévő identitások egységes kiépítésének, megszüntetésének és életciklusának létrehozására.
 
-Ha jelenleg ad-hoc módon épít ki alkalmazásokat, vagy például CSV-fájlokat, jit-fájlokat vagy olyan helyszíni megoldást használ, amely nem foglalkozik az életciklus-kezeléssel, javasoljuk, hogy [valósítsa meg az alkalmazások azure](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) AD-vel való kiépítését a támogatott alkalmazásokhoz, és egységes mintát határozzon meg az Azure AD által még nem támogatott alkalmazásokhoz.
+Ha jelenleg ad-hoc módon helyez üzembe alkalmazásokat, vagy olyan dolgokkal, mint például a CSV-fájlok, az JIT vagy egy olyan helyszíni megoldás, amely nem foglalkozik az életciklus-kezeléssel, javasoljuk, hogy az Azure AD által még nem támogatott alkalmazások esetében [alkalmazza](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) az alkalmazások üzembe helyezését az Azure ad-vel.
 
 ![Azure AD-kiépítési szolgáltatás](./media/active-directory-ops-guide/active-directory-ops-img3.png)
 
-### <a name="azure-ad-connect-delta-sync-cycle-baseline"></a>Azure AD Connect különbözeti szinkronizálási ciklus alapkonfigurációja
+### <a name="azure-ad-connect-delta-sync-cycle-baseline"></a>Azure AD Connect különbözeti szinkronizálási ciklus alapterve
 
-Fontos megérteni a szervezetben végrehajtott változások mennyiségét, és győződjön meg arról, hogy nem tart túl sokáig a kiszámítható szinkronizálási idő.
+Fontos megérteni a szervezet változásainak mennyiségét, és győződjön meg arról, hogy nem tart túl sokáig ahhoz, hogy kiszámítható szinkronizációs idő legyen.
 
-Az [alapértelmezett különbözeti szinkronizálási](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) gyakoriság 30 perc. Ha a különbözeti szinkronizálás konzisztensen 30 percnél tovább tart, vagy jelentős eltérések vannak az előkészítés és az éles környezet különbözeti szinkronizálási teljesítménye között, meg kell vizsgálnia és át kell [tekintenie az Azure AD Connect teljesítményét befolyásoló tényezőket.](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors)
+Az [alapértelmezett különbözeti szinkronizálás](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) gyakorisága 30 perc. Ha a különbözeti szinkronizálás folyamatosan 30 percnél hosszabb időt vesz igénybe, vagy jelentős eltérések vannak az átmeneti és a termelési különbözeti szinkronizálási teljesítmény között, akkor vizsgálja meg és tekintse át a [Azure ad Connect teljesítményét befolyásoló tényezőket](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors).
 
-#### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Az Azure AD Connect hibaelhárítása az ajánlott olvasással kapcsolatban
+#### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect ajánlott olvasmányok hibaelhárítása
 
-- [Címtárattribútumok előkészítése az Office 365-tel való szinkronizáláshoz az IdFix eszközzel - Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
-- [Azure AD Connect: Hibaelhárítás a szinkronizálás során](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+- [Címtár attribútumainak előkészítése az Office 365-vel való szinkronizáláshoz a IdFix eszköz használatával – Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect: hibák elhárítása szinkronizálás közben](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
 ## <a name="summary"></a>Összefoglalás
 
-A biztonságos identitás-infrastruktúra öt szempontból áll. Ez a lista segít gyorsan megtalálni és megtenni a szükséges lépéseket az identitások és jogosultságaik életciklusának és a szervezeten belüli életciklusának biztonságossá tétele és kezelése érdekében.
+A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listában gyorsan megtalálhatja és megteheti a szükséges műveleteket az identitások és jogosultságok életciklusának védelméhez és kezeléséhez a szervezetében.
 
 - Rendeljen tulajdonosokat a legfontosabb feladatokhoz.
 - A szinkronizálási problémák megkeresése és megoldása.
-- Feladatátvételi stratégia meghatározása a vész-helyreállítási.
+- A vész-helyreállítási feladatátvételi stratégia meghatározása.
 - Egyszerűsítse a licencek kezelését és az alkalmazások hozzárendelését.
-- Automatizálhatja a felhasználók alkalmazásokba való kiépítését.
+- A felhasználók üzembe helyezésének automatizálása az alkalmazásokban.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a [hitelesítéskezelési ellenőrzésekkel és műveletekkel.](active-directory-ops-guide-auth.md)
+Ismerkedés a [hitelesítési kezelési ellenőrzésekkel és műveletekkel](active-directory-ops-guide-auth.md).

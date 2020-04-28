@@ -1,7 +1,7 @@
 ---
-title: Az erőforrás-tulajdonos jelszóhitelesítő folyamatának konfigurálása
+title: Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan konfigurálhatja a ROPC-folyamatot az Azure AD B2C-ben.
+description: Megtudhatja, hogyan konfigurálhatja a ROPC folyamatot a Azure AD B2Cban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,33 +12,33 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189701"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszóhitelesítő adatainak konfigurálása az Azure AD B2C-ben
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása Azure AD B2C
 
-Az erőforrás-tulajdonos jelszó hitelesítő adatai (ROPC) folyamat egy OAuth szabványos hitelesítési folyamat, ahol az alkalmazás, más néven a függő entitás, kicseréli érvényes hitelesítő adatok, például a userid és jelszó egy azonosító jogkivonat, hozzáférési jogkivonat és egy frissítési jogkivonat.
+Az erőforrás-tulajdonosi jelszó hitelesítő adatai (ROPC) a OAuth standard hitelesítési folyamata, ahol az alkalmazás, más néven a függő entitás, az érvényes hitelesítő adatokat (például felhasználóazonosító és jelszó) az azonosító token, a hozzáférési jogkivonat és a frissítési jogkivonat esetében cseréli.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás-tulajdonos felhasználói folyamatának létrehozása
+##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás-tulajdonos felhasználói folyamat létrehozása
 
 1. Jelentkezzen be az Azure Portalra az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Az Azure AD B2C-bérlőre való váltáshoz válassza ki a B2C könyvtárat a portál jobb felső sarkában.
-3. Kattintson **a Felhasználói folyamatok**elemre, és válassza az Új felhasználói folyamat **lehetőséget.**
-4. Kattintson az **Összes** fülre, és válassza **a Bejelentkezés a ROPC használatával**lehetőséget.
-5. Adjon nevet a felhasználói folyamatnak, például *ROPC_Auth.*
-6. Az **Alkalmazásjogcímek**csoportban kattintson a **Tovább megjelenítése**gombra.
-7. Válassza ki az alkalmazáshoz szükséges alkalmazásjogcímeket, például a Megjelenítendő nevet, az e-mail-címet és az identitásszolgáltatót.
+2. A Azure AD B2C bérlőre való váltáshoz válassza a B2C könyvtárat a portál jobb felső sarkában.
+3. Kattintson a **felhasználói folyamatok**elemre, majd válassza az **új felhasználói folyamat**elemet.
+4. Kattintson az **összes** fülre, és válassza a **Bejelentkezés a ROPC használatával**lehetőséget.
+5. Adja meg a felhasználói folyamat nevét, például *ROPC_Auth*.
+6. Az **alkalmazás jogcímei**területen kattintson a **továbbiak megjelenítése**lehetőségre.
+7. Válassza ki az alkalmazáshoz szükséges jogcímeket, például a megjelenítendő nevet, az e-mail-címet és az identitás-szolgáltatót.
 8. Kattintson az **OK**, majd a **Létrehozás** gombra.
-9. Kattintson **a Felhasználói folyamat futtatása gombra.**
+9. Kattintson a **felhasználói folyamat futtatása**elemre.
 
-   Ekkor megjelenik egy végpont, például ez a példa:
+   Ekkor megjelenik egy végpont, például a következő példa:
 
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
@@ -49,10 +49,10 @@ Az erőforrás-tulajdonos jelszó hitelesítő adatai (ROPC) folyamat egy OAuth 
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-Használja a kedvenc API-fejlesztő alkalmazás api-hívás létrehozásához, és tekintse át a választ a felhasználói folyamat hibakereséséhez. Az alábbi táblázatban szereplő információkkal a POST kérés törzseként hozhat létre egy ilyen hívást:
-- Cserélje * \<* le yourtenant.onmicrosoft.com>a B2C-bérlő nevére.
-- Cserélje * \<* le B2C_1A_ROPC_Auth>az erőforrás-tulajdonos jelszóhitelesítő házirendjének teljes nevére.
-- Cserélje * \<le a bef2222d56-552f-4a5b-b90a-1988a7d634c3>-t* a regisztrációból származó alkalmazásazonosítóra.
+Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a felhasználói folyamat hibakeresésére szolgáló választ. A következő táblázatban szereplő információk alapján állítson össze egy hívást a post kérelem törzse:
+- Cserélje le * \<a yourtenant.onmicrosoft.com>t* a B2C-bérlő nevére.
+- Cserélje le * \<B2C_1A_ROPC_Auth>t* az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
+- Cserélje le * \<a bef2222d56-552f-4a5b-b90a-1988a7d634c3>* a regisztrációhoz tartozó alkalmazás-azonosítóra.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -61,13 +61,13 @@ Használja a kedvenc API-fejlesztő alkalmazás api-hívás létrehozásához, �
 | felhasználónév | leadiocl@outlook.com |
 | jelszó | Passxword1 |
 | grant_type | jelszó |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
-*Client_id* az az érték, amelyet korábban az alkalmazásazonosítóként megjegyzett. *Offline_access* nem kötelező, ha frissítési jogkivonatot szeretne kapni. A felhasználónevet és a jelszót, amelyet használ kell hitelesítő adatokat egy meglévő felhasználó az Azure AD B2C bérlőben.
+*Client_id* az az érték, amelyet korábban alkalmazás-azonosítóként észlelt. A *Offline_access* megadása nem kötelező, ha frissítési tokent szeretne kapni. A használt felhasználónévnek és jelszónak a Azure AD B2C bérlő egy meglévő felhasználójának hitelesítő adatainak kell lennie.
 
-A tényleges POST kérelem a következőképpen néz ki:
+A tényleges POST-kérelem a következőhöz hasonlóan néz ki:
 
 ```
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
@@ -78,7 +78,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Az offline hozzáféréssel rendelkező sikeres válasz a következő példához hasonlóan néz ki:
+Az offline-hozzáférés sikeres válasza a következő példához hasonlóan néz ki:
 
 ```json
 {
@@ -90,9 +90,9 @@ Az offline hozzáféréssel rendelkező sikeres válasz a következő példához
 }
 ```
 
-## <a name="redeem-a-refresh-token"></a>Frissítési token beváltása
+## <a name="redeem-a-refresh-token"></a>Frissítési jogkivonat beváltása
 
-Készítsünk egy POST hívást, mint az itt látható az alábbi táblázatban szereplő információkat, mint a kérelem törzsét:
+Az alábbi táblázatban szereplő információk alapján készítse el a kérés törzsét:
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -101,12 +101,12 @@ Készítsünk egy POST hívást, mint az itt látható az alábbi táblázatban 
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| Erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* és *az erőforrás* azok az értékek, amelyeket korábban az alkalmazásazonosítóként megjegyzett. *Refresh_token* a korábban említett hitelesítési hívásban kapott jogkivonat.
+A *Client_id* és az *erőforrás* az alkalmazás-azonosítóként korábban megjegyzett értékek. *Refresh_token* a korábban megemlített hitelesítési hívásban kapott jogkivonat.
 
-A sikeres válasz a következő példához hasonlóan néz ki:
+A sikeres válasz a következő példához hasonlít:
 
 ```json
 {
@@ -124,13 +124,13 @@ A sikeres válasz a következő példához hasonlóan néz ki:
 }
 ```
 > [!NOTE]
-> Amikor a felhasználókat graph API-n keresztül hoz létre, az alkalmazásnak "openid", "offline_access" és "profile" engedélyekkel kell rendelkeznie a Microsoft Graph-tól.
+> Ha Graph APIon keresztül hoz létre felhasználókat, az alkalmazásnak az "OpenID", a "offline_access" és a "profil" engedélyekkel kell rendelkeznie a Microsoft Graph.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Valósítsa meg a kívánt natív SDK-val, vagy használja az App-Auth-ot
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementálja az előnyben részesített natív SDK-val, vagy használja az App-Autht
 
-Az Azure AD B2C-implementáció megfelel az OAuth 2.0 szabványoknak a nyilvános ügyfél-erőforrás-tulajdonosi jelszó hitelesítő adatok, és kompatibilisnek kell lennie a legtöbb ügyfél SDK-k. Teszteltük ezt a folyamatot széles körben, a termelés, az AppAuth iOS és AppAuth Android. A legfrissebb információkért lásd: [Native App SDK for OAuth 2.0 és OpenID Connect végrehajtási modern gyakorlati tanácsok](https://appauth.io/).
+A Azure AD B2C implementációja megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. Az Androidhoz készült iOS-es és AppAuth-alapú AppAuth esetében alaposan teszteltük ezt a folyamatot, éles környezetben. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
-A GitHubról, [Androidra](https://aka.ms/aadb2cappauthropc) és [iOS-re](https://aka.ms/aadb2ciosappauthropc)az Azure AD B2C-vel való használatra konfigurált munkaminták letöltése.
+Töltse le a GitHubról, [az Android](https://aka.ms/aadb2cappauthropc) és [az iOS](https://aka.ms/aadb2ciosappauthropc)rendszerhez készült Azure ad B2C használatára konfigurált munkamintákat.
 
 
 

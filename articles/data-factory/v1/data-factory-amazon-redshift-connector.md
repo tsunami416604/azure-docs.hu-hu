@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése az Amazon Redshift szolgáltatásból az Azure Data Factory használatával
-description: Ismerje meg, hogyan helyezhetát át az adatokat az Amazon Redshift-ből az Azure Data Factory Copy Activity használatával.
+title: Adatok áthelyezése az Amazon Vöröseltolódásból Azure Data Factory használatával
+description: Megtudhatja, hogyan helyezhet át az Amazon Vöröseltolódásból származó adatok Azure Data Factory másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,101 +13,101 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260526"
 ---
-# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift szolgáltatásból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-amazon-redshift-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [Amazon Redshift összekötő t a V2-ben.](../connector-amazon-redshift.md)
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az Amazon vöröseltolódás-összekötőt a v2-ben](../connector-amazon-redshift.md).
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése az Amazon Redshift. A cikk az [Adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkre épül, amely általános áttekintést nyújt az adatmozgásról a másolási tevékenységgel.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factory az Amazon Vöröseltolódásáról származó adatok áthelyezéséhez. A cikk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
-A Data Factory jelenleg csak az Amazon Redshift-ről egy [támogatott fogadóadattárba](data-factory-data-movement-activities.md#supported-data-stores-and-formats)való átcsoportosítást támogatja. Más adattárakból az Amazon Redshiftbe történő áthelyezés nem támogatott.
+Data Factory jelenleg csak az Amazon vöröseltolódásról származó adatok áthelyezését támogatja egy [támogatott fogadó adattárba](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Az adatok más adattárakból az Amazon Vöröseltolódásba való áthelyezése nem támogatott.
 
 > [!TIP]
-> A legjobb teljesítmény elérése érdekében, amikor nagy mennyiségű adatot másol az Amazon Redshift-ből, fontolja meg a beépített Redshift **UNLOAD** parancsot az Amazon Simple Storage Service (Amazon S3) szolgáltatáson keresztül. További információt a Kirakodás használata az [Amazon Redshift adatainak másolásához című témakörben talál.](#use-unload-to-copy-data-from-amazon-redshift)
+> A legjobb teljesítmény elérése érdekében az Amazon-vöröseltolódás nagy mennyiségű adatának másolása során érdemes lehet a beépített vöröseltolódás **eltávolítására** szolgáló parancsot használni az Amazon Simple Storage Service (Amazon S3) használatával. Részletekért lásd: az [Eltávolítás használata az adatok az Amazon vöröseltolódásból történő másolásához](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Ha adatokat helyez át egy helyszíni adattárba, telepítse az [adatkezelési átjárót](data-factory-data-management-gateway.md) egy helyszíni számítógépre. Hozzáférést biztosít az Amazon Redshift fürt höz a helyszíni számítógép IP-címének használatával átjáró. További információt [a Fürthöz való hozzáférés engedélyezése című témakörben talál.](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)
-* Az adatok Azure-adattárba való áthelyezéséhez tekintse meg a [Microsoft Azure adatközpontok által használt Számítási IP-cím és SQL-tartományok című témakört.](https://www.microsoft.com/download/details.aspx?id=41653)
+* Ha helyszíni adattárba helyezi át az adatátvitelt, telepítse [adatkezelés átjárót](data-factory-data-management-gateway.md) egy helyszíni gépre. A helyszíni számítógép IP-címének használatával adjon hozzáférést egy átjáróhoz az Amazon Vöröseltolódási fürthöz. Útmutatásért lásd: [hozzáférés engedélyezése a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Az adatok Azure-adattárba való áthelyezéséhez tekintse meg az [Microsoft Azure adatközpontok által használt számítási IP-címeket és SQL-tartományokat](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Első lépések
-Létrehozhat egy másolási tevékenységet, amelynek segítségével adatokat helyezhet át egy Amazon Redshift forrásból különböző eszközök és API-k használatával.
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök és API-k használatával helyezi át az adatait egy Amazon Vöröseltolódási forrásból.
 
-A folyamat létrehozásának legegyszerűbb módja az Azure Data Factory Copy wizard használata. A folyamat másolása varázslóval történő létrehozásáról az [Oktatóanyag: Folyamat létrehozása a Másolás varázslóval című oktatóanyagcímű témakörben](data-factory-copy-data-wizard-tutorial.md)tud hatja el a folyamatot.
+A folyamat létrehozásának legegyszerűbb módja a Azure Data Factory másolási varázsló használata. A folyamat a másolás varázslóval történő létrehozásával kapcsolatos gyors útmutatóért tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md)című témakört.
 
-Folyamatot is létrehozhat a Visual Studio, az Azure PowerShell vagy más eszközök használatával. Az Azure Resource Manager-sablonok, a .NET API vagy a REST API is használható a folyamat létrehozásához. A másolási tevékenységgel rendelkező folyamat létrehozásának lépésenkénti útmutatója a [Tevékenység másolása oktatóanyagban található.](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+Létrehozhat egy folyamatot a Visual Studio, a Azure PowerShell vagy más eszközök használatával is. Azure Resource Manager sablonokat, a .NET API-t vagy a REST API is felhasználhatja a folyamat létrehozásához. A másolási tevékenységgel rendelkező folyamat lépésről lépésre történő létrehozásával kapcsolatban lásd a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Összekapcsolt szolgáltatások létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
-2. Adatkészletek létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására.
-3. Hozzon létre egy folyamatot egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel.
+1. Társított szolgáltatások létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre adatkészleteket a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
+3. Hozzon létre egy másolási tevékenységgel rendelkező folyamatot, amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
 
-A Másolás varázsló használatakor a Data Factory entitásokhoz automatikusan létrejönnek a JSON-definíciók. Eszközök vagy API-k használataesetén (a .NET API kivételével) a Data Factory entitásokat a JSON formátum használatával definiálhatja. A JSON-példa: Adatok másolása az Amazon Redshift az Azure Blob storage-ba a Data Factory-entitások JSON-definícióit jeleníti meg, amelyek az Amazon Redshift-adattárból adatok másolására szolgálnak.
+A másolás varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások JSON-definícióit. Ha eszközöket vagy API-kat használ (kivéve a .NET API-t), akkor a Data Factory entitásokat a JSON formátum használatával kell meghatároznia. A JSON-példa: adatok másolása az Amazon Vöröseltolódásból az Azure Blob Storage-ba – a Data Factory entitások JSON-definícióit jeleníti meg, amelyek az adatok Amazon vöröseltolódás-adattárból való másolásához használatosak.
 
-A következő szakaszok ismertetik a JSON-tulajdonságokat, amelyek az Amazon Redshift Data Factory entitások meghatározásához használatosak.
+A következő szakaszok ismertetik az Amazon vöröseltolódás Data Factory entitásának definiálásához használt JSON-tulajdonságokat.
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az alábbi táblázat az Amazon Redshift-hez csatolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
+Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásához tartozó JSON-elemek leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Típus** |Ezt a tulajdonságot **AmazonRedshift**-re kell állítani. |Igen |
-| **Szerver** |Az Amazon Redshift kiszolgáló IP-címe vagy állomásneve. |Igen |
-| **port** |Az Amazon Redshift kiszolgáló által az ügyfélkapcsolatok figyelésére használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
-| **Adatbázis** |Az Amazon Redshift adatbázis neve. |Igen |
-| **Felhasználónév** |Az adatbázishoz hozzáféréssel rendelkező felhasználó neve. |Igen |
+| **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Igen |
+| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
+| **port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
+| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
+| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Igen |
 | **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A **szerkezet,** **a rendelkezésre állás**és a **házirendszakaszok** minden adatkészlettípushoz hasonlóak. Adatkészlet-típusok például az Azure SQL, az Azure Blob storage és az Azure Table storage.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. A **struktúra**, a **rendelkezésre állás**és a **házirend** fejezetei hasonlóak az összes adatkészlet típusához. Ilyen típusú adathalmazok például az Azure SQL, az Azure Blob Storage és az Azure Table Storage.
 
-A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok tárolóban való helyéről. A **RelationalTable**típusú adatkészlet **typeProperties** szakasza, amely az Amazon Redshift adatkészletet tartalmazza, a következő tulajdonságokkal rendelkezik:
-
-| Tulajdonság | Leírás | Kötelező |
-| --- | --- | --- |
-| **táblaneve** |A tábla neve az Amazon Redshift adatbázisban, amelyre a csatolt szolgáltatás hivatkozik. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
-
-## <a name="copy-activity-properties"></a>Tevékenység tulajdonságainak másolása
-
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. A **név**, **leírás**, **bemeneti** tábla, **kimeneti** tábla és **házirend-tulajdonságok** minden típusú tevékenységhez elérhetők. A **typeProperties** szakaszban elérhető tulajdonságok tevékenységtípusonként eltérőek lehetnek. A Másolási tevékenység esetében a tulajdonságok az adatforrások és fogadók típusától függően változnak.
-
-A Másolási tevékenység esetében, ha a forrás **AmazonRedshiftSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt a tárolóban lévő adatok helyéről. A **RelationalTable**típusú, Amazon vöröseltolódás-adatkészletet tartalmazó adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Lekérdezés** | Az adatok olvasásához használja az egyéni lekérdezést. |Nem (ha egy adatkészlet **tableName** tulajdonsága meg van adva) |
-| **redshiftUnloadSettings** | A tulajdonságcsoportot tartalmazza a Redshift **UNLOAD** parancs használatakor. | Nem |
-| **s3LinkedServiceName** | Az Amazon S3 használni, mint egy ideiglenes boltban. A csatolt szolgáltatás **a wsAccessKey**típusú Azure Data Factory névvel van megadva. | A **redshiftUnloadSettings** tulajdonság használataesetén szükséges |
-| **bucketName (vödörneve)** | Az átmeneti adatok tárolására használt Amazon S3 gyűjtőt jelzi. Ha ez a tulajdonság nincs megadva, a Másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használataesetén szükséges |
+| **Táblanév** |Annak a táblának a neve az Amazon vöröseltolódás-adatbázisban, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
 
-Másik lehetőségként használhatja a **RelationalSource** típust, amely tartalmazza az Amazon Redshift-et, a következő tulajdonsággal a **typeProperties** szakaszban. Ne feledje, hogy ez a forrástípus nem támogatja a Redshift **UNLOAD** parancsot.
+## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
+
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A **név**, a **Leírás**, a **beviteli** tábla, a **kimenet** tábla és a **házirend** tulajdonságai minden típusú tevékenységhez elérhetők. A **typeProperties** szakaszban elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a tulajdonságok az adatforrások típusától és a mosdótól függően változnak.
+
+Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Lekérdezés** |Az adatok olvasásához használja az egyéni lekérdezést. | Nem (ha egy adatkészlet **tableName** tulajdonsága meg van adva) |
+| **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
+| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
+| **s3LinkedServiceName** | Az Amazon S3, amelyet ideiglenes tárolóként kell használni. A társított szolgáltatás egy **awsaccesskey használnia**típusú Azure Data Factory-név használatával van megadva. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
+| **bucketName** | Azt az Amazon S3 gyűjtőt jelzi, amely az ideiglenes adattároláshoz használható. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 
-## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Adatok másolása az Amazon Redshift-ből az UNLOAD használatával
+Azt is megteheti, hogy a **RelationalSource** típust használja, amely tartalmazza az Amazon vöröseltolódását, és a következő tulajdonsággal rendelkezik a **typeProperties** szakaszban. Megjegyzés: Ez a forrástípus nem támogatja a vöröseltolódás **KItöltése** parancsot.
 
-Az Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancs eltávolítja a lekérdezés eredményeit egy vagy több fájlba az Amazon S3-on. Ezt a parancsot az Amazon nagy adatkészletek Redshift ből történő másolásához ajánlott.
+| Tulajdonság | Leírás | Kötelező |
+| --- | --- | --- |
+| **lekérdezés** |Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. | Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
 
-**Példa: Adatok másolása az Amazon Redshift-ből az Azure SQL Data Warehouse-ba**
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Az Eltávolítás használata az adatok az Amazon Vöröseltolódásból való másolásához
 
-Ez a példa adatokat másol az Amazon Redshift-ből az Azure SQL Data Warehouse-ba. A példa a Redshift **UNLOAD** parancsot, a szakaszos másolási adatokat és a Microsoft PolyBase parancsot használja.
+Az Amazon Vöröseltolódásának [**eltávolítási**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancsa eltávolít egy lekérdezés eredményét egy vagy több fájlra az Amazon S3-on. Ezt a parancsot az Amazon ajánlja a nagyméretű adathalmazok Vöröseltolódásból való másolásához.
 
-Ebben a mintahasználati esetben a Másolási tevékenység először eltávolítja az adatokat az Amazon Redshift-ről az Amazon S3-ra a **redshiftUnloadSettings** beállításban konfigurálva. Ezután az adatok at az Amazon S3-ból az Azure Blob storage-ba másolja az **átmenetibeállítások** beállításban megadottmódon. Végül a PolyBase betölti az adatokat az SQL Data Warehouse-ba. Az összes köztes formátumot a Másolási tevékenység kezeli.
+**Példa: adatok másolása az Amazon Vöröseltolódásból a Azure SQL Data Warehouseba**
 
-![Munkafolyamat másolása az Amazon Redshift-ről az SQL Data Warehouse-ra](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+Ez a példa az Amazon vöröseltolódásról Azure SQL Data Warehousera másolt adatait másolja. A példa a vöröseltolódás **KItöltési** parancsát, az előkészített adatok másolását és a Microsoft Base-t használja.
+
+Ebben a példában a másolási tevékenység először a **redshiftUnloadSettings** beállításban konfigurált módon távolítja el az Amazon vöröseltolódásról az Amazon S3-be az adatokból. Ezután az adatok az Amazon S3-ból az Azure Blob Storage-ba másolódnak a **stagingSettings** beállításban megadott módon. Végezetül a SQL Data Warehouseba tölti be az adatok. Az összes ideiglenes formátumot a másolási tevékenység kezeli.
+
+![Munkafolyamat másolása az Amazon Vöröseltolódásból a SQL Data Warehouseba](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -137,20 +137,20 @@ Ebben a mintahasználati esetben a Másolási tevékenység először eltávolí
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON-példa: Adatok másolása az Amazon Redshift szolgáltatásból az Azure Blob storage-ba
-Ez a minta bemutatja, hogyan másolhat adatokat egy Amazon Redshift adatbázisból az Azure Blob Storage-ba. Az adatok közvetlenül bármely [támogatott fogadóba](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolhatók a Másolási tevékenység használatával.
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON-példa: adatok másolása az Amazon Vöröseltolódásból az Azure Blob Storage-ba
+Ez a minta bemutatja, hogyan másolhat adatok egy Amazon vöröseltolódás-adatbázisból az Azure Blob Storageba. Az adatmásolási tevékenység használatával közvetlenül átmásolható a [támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) fogadók adatai.
 
-A minta a következő adatfeldolgozó entitásokkal rendelkezik:
+A minta a következő adatgyári entitásokat tartalmazhatja:
 
-* [AmazonRedshift](#linked-service-properties) típusú összekapcsolt szolgáltatás
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
+* [AmazonRedshift](#linked-service-properties) típusú társított szolgáltatás
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
 * [RelationalTable](#dataset-properties) típusú bemeneti [adatkészlet](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) típusú kimeneti [adatkészlet](data-factory-create-datasets.md)
-* A [RelationalSource](#copy-activity-properties) és a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) tulajdonságokat használó másolási tevékenységet használó [folyamat](data-factory-create-pipelines.md)
+* A [RelationalSource](#copy-activity-properties) és a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) tulajdonságot használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md)
 
-A minta adatokat másol egy lekérdezéseredmény az Amazon Redshift egy Azure blob óránként. A mintában használt JSON-tulajdonságokat az entitásdefiníciókat követő szakaszok ismertetik.
+A minta az Amazon vöröseltolódását egy lekérdezési eredményből másolja egy Azure-blobba óránként. A mintában használt JSON-tulajdonságokat az entitás-definíciókat követő szakaszokban ismertetjük.
 
-**Amazon Redshift kapcsolt szolgáltatás**
+**Amazon vöröseltolódás társított szolgáltatás**
 
 ```json
 {
@@ -170,7 +170,7 @@ A minta adatokat másol egy lekérdezéseredmény az Amazon Redshift egy Azure b
 }
 ```
 
-**Azure Blob storage-hoz csatolt szolgáltatás**
+**Azure Blob Storage társított szolgáltatás**
 
 ```json
 {
@@ -183,9 +183,9 @@ A minta adatokat másol egy lekérdezéseredmény az Amazon Redshift egy Azure b
   }
 }
 ```
-**Amazon Redshift bemeneti adatkészlet**
+**Amazon vöröseltolódás bemeneti adatkészlete**
 
-A **külső** tulajdonság értéke "true", hogy tájékoztassa a Data Factory szolgáltatást arról, hogy az adatkészlet az adat-előállítón kívül található. Ez a tulajdonságbeállítás azt jelzi, hogy az adatkészletet nem az adat-előállító tevékenység hozza létre. Állítsa a tulajdonságot igaz értékre egy olyan bemeneti adatkészleten, amelyet nem a folyamatban lévő tevékenység hoz létre.
+A **külső** tulajdonság értéke "true" (igaz) értékre van állítva, hogy tájékoztassa a Data Factory szolgáltatást arról, hogy az adatkészlet kívül esik az adat-előállítón. Ez a tulajdonság azt jelzi, hogy az adatkészletet nem az adat-előállító tevékenysége állítja elő. Állítsa a tulajdonságot igaz értékre olyan bemeneti adatkészleten, amelyet nem a folyamat tevékenysége hozott létre.
 
 ```json
 {
@@ -207,7 +207,7 @@ A **külső** tulajdonság értéke "true", hogy tájékoztassa a Data Factory s
 
 **Azure blobkimeneti adatkészlet**
 
-Az adatok óránként egy új blobba írásra kerül, ha a **gyakorisági** tulajdonságot "Óra" értékre, az **intervallum** tulajdonságot pedig 1-re állítja. A blob **folderPath** tulajdonsága dinamikusan kiértékelésre kerül. A tulajdonság értéke a feldolgozás alatt álló szelet kezdési időpontjától függ. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészeit használja.
+Az új blobba való beírása óránként történik, ha a **Frequency** tulajdonságot "Hour" értékre állítja, az **intervallum** tulajdonság értéke pedig 1. A blob **folderPath** tulajdonsága dinamikusan ki van értékelve. A tulajdonság értéke a feldolgozás alatt álló szelet kezdő időpontján alapul. A mappa elérési útja a kezdési időpont év, hónap, nap és óra részét használja.
 
 ```json
 {
@@ -265,9 +265,9 @@ Az adatok óránként egy új blobba írásra kerül, ha a **gyakorisági** tula
 }
 ```
 
-**Tevékenység másolása egy Azure Redshift-forrással (RelationalSource típusú) és egy Azure Blob-fogadóval rendelkező folyamatban**
+**Másolási tevékenység egy folyamatba egy Azure Vöröseltolódási forrással (RelationalSource típusú) és egy Azure Blob-fogadóval**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva. A folyamat óránként fog futni. A folyamat JSON-definíciójában a **forrástípus** **RelationalSource,** a **fogadó** típusa pedig **BlobSink**lesz. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés kiválasztja az elmúlt órából másolandó adatokat.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva. A folyamat óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a fogadó **típusa pedig** **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés kiválasztja az előző órában másolandó adatok közül.
 
 ```json
 {
@@ -319,37 +319,37 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és kimene
     }
 }
 ```
-### <a name="type-mapping-for-amazon-redshift"></a>Típusleképezés az Amazon Redshift hez
-Az [adatmozgatási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben említettek szerint a Másolási tevékenység automatikus típuskonverziót hajt végre a forrástípustól a fogadótípusig. A típusok konvertálása kétlépéses megközelítéssel:
+### <a name="type-mapping-for-amazon-redshift"></a>Típus leképezése Amazon vöröseltolódáshoz
+Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység a forrás típusa és a fogadó típus közötti automatikus típus-konverziókat hajtja végre. A típusokat két lépésből álló megközelítéssel konvertáljuk:
 
-1. Konvertálás natív forrástípusból .NET típussá
-2. Konvertálás .NET típusból natív fogadótípussá
+1. Átalakítás natív forrásból típusról .NET-típusra
+2. Átalakítás .NET-típusról natív fogadó típusra
 
-A következő leképezések akkor használatosak, amikor a Másolási tevékenység az amazonredshift típusból .NET típusúvá alakítja az adatokat:
+A következő leképezések akkor használatosak, ha a másolási tevékenység egy Amazon Vöröseltolódási típusból .NET-típusra konvertálja az adatait:
 
-| Amazon Redshift típus | .NET típus |
+| Amazon Vöröseltolódásának típusa | .NET-típus |
 | --- | --- |
-| SMALLINT között |Int16 |
+| SMALLINT |Int16 |
 | EGÉSZ SZÁM |Int32 |
-| BIGINT között |Int64 |
-| Decimális |Decimal |
+| BIGINT |Int64 |
+| DECIMÁLIS |Decimal |
 | VALÓS SZÁM |Egyirányú |
 | DUPLA PONTOSSÁG |Double |
-| Logikai |Sztring |
-| Char |Sztring |
-| Varchar |Sztring |
+| LOGIKAI |Sztring |
+| CHAR |Sztring |
+| VARCHAR |Sztring |
 | DATE |DateTime |
-| Időbélyeg |DateTime |
+| IDŐBÉLYEG |DateTime |
 | TEXT |Sztring |
 
-## <a name="map-source-to-sink-columns"></a>Forrás leképezése oszlopokhoz
-Ha meg szeretné tudni, hogyan képezheti le a forrásadatkészlet oszlopait a fogadó adatkészlet oszlopaihoz, olvassa [el az Adatkészletoszlopok leképezése az Azure Data Factoryban című témakört.](data-factory-map-columns.md)
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
+Ha meg szeretné tudni, hogyan képezhetők le oszlopok a forrás-adatkészletben a fogadó adatkészlet oszlopaiba, tekintse meg a következőt: [adatkészlet oszlopainak megfeleltetése Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-reads-from-relational-sources"></a>Relációs forrásokból megismételhető olvasások
-Amikor egy relációs adattárból másolja az adatokat, tartsa szem előtt az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryban manuálisan futtathatja a szeletet. Az adatkészlet újrapróbálkozási **házirendje** is konfigurálható úgy, hogy hiba esetén újrafusson egy szeletet. Győződjön meg arról, hogy ugyanazokat az adatokat olvassa be a rendszer, függetlenül attól, hogy hányszor fut újra a szeletet. Győződjön meg arról is, hogy ugyanazokat az adatokat olvassa be a rendszer, függetlenül attól, hogy hogyan futtatja újra a szeletet. További információ: [Relációs forrásokból származó Megismételhető olvasások](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-reads-from-relational-sources"></a>Ismétlődő olvasások a rokon forrásokból
+Amikor Adatmásolást végez egy kapcsolódó adattárból, a nem kívánt eredmények elkerüléséhez tartsa szem előtt az ismétlődést. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási **szabályzatot** is konfigurálhatja egy adatkészlethez, hogy hiba esetén újra lehessen futtatni a szeleteket. Győződjön meg arról, hogy ugyanazok az információk olvashatók, függetlenül attól, hogy hányszor futtatja újra a szeletet. Győződjön meg arról is, hogy ugyanaz az információ olvasható, függetlenül attól, hogy hogyan futtatja újra a szeletet. További információ: [ismétlődő olvasások a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Ismerje meg a másolási tevékenység teljesítményét befolyásoló legfontosabb tényezőket, valamint a teljesítmény optimalizálásának módjait a [Másolási teljesítmény és a hangolás útmutatójában.](data-factory-copy-activity-performance.md)
+Ismerje meg a másolási tevékenység teljesítményét befolyásoló főbb tényezőket és a teljesítmény optimalizálásának módjait a [másolási tevékenység teljesítményének és hangolási útmutatójának](data-factory-copy-activity-performance.md)használatával.
 
 ## <a name="next-steps"></a>További lépések
-A folyamat másolási tevékenységgel való létrehozásáról a [Másolási tevékenység oktatóanyagcímű témakörben](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)talál részletes útmutatást.
+A másolási tevékenységgel rendelkező folyamatok létrehozásával kapcsolatos részletes útmutatásért lásd a [másolási tevékenységről szóló oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

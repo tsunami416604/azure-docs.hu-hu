@@ -12,10 +12,10 @@ ms.date: 10/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183091"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: alkalmazás regisztrálása Azure Active Directory B2Cban

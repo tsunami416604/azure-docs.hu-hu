@@ -1,7 +1,7 @@
 ---
-title: Azure AD jóváhagyási keretrendszer
+title: Azure AD-beli engedélyezési keretrendszer
 titleSuffix: Microsoft identity platform
-description: Ismerje meg az Azure Active Directory hozzájárulási keretrendszerét, és hogyan könnyíti meg a több-bérlős webes és natív ügyfélalkalmazások fejlesztését.
+description: Ismerje meg a Azure Active Directory engedélyezési keretrendszerét, és azt, hogy miként könnyíti meg a több-bérlős webes és natív ügyfélalkalmazások fejlesztését.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,55 +14,55 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161134"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszere
+# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory engedélyezési keretrendszer
 
-Az Azure Active Directory (Azure AD) hozzájárulási keretrendszer megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztését. Ezek az alkalmazások lehetővé teszik a bejelentkezést egy Azure AD-bérlő, amely eltér az alkalmazás, ahol az alkalmazás regisztrálva van. Előfordulhat, hogy a saját webes API-k mellett webes API-kat is el kell érniük, például a Microsoft Graph API-kat (az Azure AD, az Intune és az Office 365 szolgáltatásainak eléréséhez), valamint más Microsoft-szolgáltatások API-jait is.
+A Azure Active Directory (Azure AD) engedélyezési keretrendszere megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztését. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést olyan Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Emellett a saját webes API-jai mellett olyan webes API-kat is el kell érniük, mint például a Microsoft Graph API (az Azure AD, az Intune és az Office 365-es szolgáltatások eléréséhez) és más Microsoft-szolgáltatások API-jai.
 
-A keretrendszer olyan felhasználón vagy rendszergazdaon alapul, aki hozzájárul egy olyan alkalmazáshoz, amely a címtárban való regisztrációt kéri, és amely magában foglalhatja a címtáradatok elérését. Ha például egy webügyfél-alkalmazásnak el kell olvasnia a felhasználó naptáradatait az Office 365-ből, akkor a felhasználónak először hozzá kell járulnia az ügyfélalkalmazáshoz. A hozzájárulás után az ügyfélalkalmazás képes lesz felhívni a Microsoft Graph API-t a felhasználó nevében, és szükség szerint felhasználhatja a naptáradatokat. A [Microsoft Graph API](https://developer.microsoft.com/graph) hozzáférést biztosít az Office 365-ben tárolt adatokhoz (például naptárakhoz és üzenetekhez az Exchange-ből, webhelyekhez és listákhoz a SharePointból, dokumentumok a OneDrive-ról, jegyzetfüzetek a OneNote-ból, feladatok a Plannerből és munkafüzetek az Excelből), valamint az Azure AD felhasználóihoz és csoportjaihoz, valamint más Microsoft felhőszolgáltatásokból származó adatobjektumokhoz.
+A keretrendszer egy olyan felhasználó vagy rendszergazda számára, aki beleegyezik egy olyan alkalmazásba, amely megkéri a címtárban való regisztrálást, ami a címtáradatok elérését is magában foglalja. Ha például egy webügyfél-alkalmazásnak meg kell olvasnia a felhasználóhoz tartozó naptári adatokat az Office 365-ből, akkor először a felhasználónak kell megadnia az ügyfélalkalmazás belefoglalását. A belefoglalást követően az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja a naptári adatokat. A [Microsoft Graph API](https://developer.microsoft.com/graph) hozzáférést biztosít az Office 365-beli adatokhoz (például az Exchange-ről, webhelyekről és a sharepointból származó, a OneDrive származó, a OneNote-ból származó, a plannertől származó és az Excel-munkafüzetekből származó, valamint a Microsoft Cloud servicesből származó, az Azure ad-ból származó és más adatobjektumokból származó adatokhoz.
 
-A hozzájárulási keretrendszer az OAuth 2.0-s rendszerére és annak különböző folyamataira épül, például az engedélyezési kód megadására és az ügyfél hitelesítő adatainak megadására, nyilvános vagy bizalmas ügyfelek használatával. Az OAuth 2.0 használatával az Azure AD lehetővé teszi, hogy számos különböző típusú ügyfélalkalmazások - például telefonon, táblagépen, kiszolgálón vagy egy webalkalmazáson - és a szükséges erőforrások eléréséhez.
+A hozzájárulási keretrendszer a OAuth 2,0-ra és annak különböző folyamataira épül, például az engedélyezési kód engedélyezésére és az ügyfél hitelesítő adataira a nyilvános vagy bizalmas ügyfelek használatával. Az OAuth 2,0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazás (például telefon, tábla, kiszolgáló vagy webalkalmazás) kiépítését, és hozzáférést biztosít a szükséges erőforrásokhoz.
 
-A jóváhagyási keretrendszer OAuth2.0 engedélyezési támogatásokkal való használatáról az [OAuth 2.0-s és az Azure AD-hez való hozzáférés engedélyezése](v2-oauth2-auth-code-flow.md) című témakörben talál további információt. [Authentication scenarios for Azure AD](authentication-scenarios.md) Az Office 365-höz a Microsoft Graphon keresztül történő nyílt hozzáférésről az [Alkalmazáshitelesítés a Microsoft Graph programmal](https://developer.microsoft.com/graph/docs/authorization/auth_overview)című témakörben talál.
+További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](authentication-scenarios.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)használatával.
 
-## <a name="consent-experience---an-example"></a>Hozzájárulási tapasztalat – példa
+## <a name="consent-experience---an-example"></a>Beleegyező felhasználói élmény – példa
 
-A következő lépések bemutatják, hogyan működik a hozzájárulási élmény mind az alkalmazás fejlesztője, mind a felhasználó számára.
+A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő és a felhasználó beleegyezik a felhasználói felülettel.
 
-1. Tegyük fel, hogy rendelkezik egy webügyfél-alkalmazás, amely nek szüksége van egy adott engedélyek eléréséhez egy erőforrás/API eléréséhez. Megtudhatja, hogyan kell ezt a konfigurációt a következő szakaszban, de lényegében az Azure Portal on deklarálni engedélykérelmek konfigurációs időben. Más konfigurációs beállításokhoz hasonlóan az alkalmazás Azure AD-regisztrációjának részévé válnak:
+1. Tegyük fel, hogy van egy olyan webes ügyfélalkalmazás, amelynek adott engedélyekre van szüksége az erőforrás/API eléréséhez. Megtudhatja, hogyan hajthatja végre ezt a konfigurációt a következő szakaszban, de lényegében a Azure Portal a rendszer a konfigurációs időpontban megjelenő engedélyezési kérelmeket használja. Más konfigurációs beállításokhoz hasonlóan az alkalmazás Azure AD-regisztrációja is részévé válik:
 
     ![Engedélyek más alkalmazásokhoz](./media/consent-framework/permissions.png)
 
-1. Vegye figyelembe, hogy az alkalmazás engedélyei frissültek, az alkalmazás fut, és a felhasználó első alkalommal használja azt. Először is az alkalmazás nak be kell szereznie `/authorize` egy engedélyezési kódot az Azure AD végpontjától. Az engedélyezési kód ezután egy új hozzáférési és frissítési jogkivonat megszerzéséhez használható.
+1. Vegye figyelembe, hogy az alkalmazásra vonatkozó engedélyek frissítve lettek, az alkalmazás fut, és a felhasználó első alkalommal hamarosan használatba veszi azt. Először az alkalmazásnak meg `/authorize` kell szereznie egy engedélyezési kódot az Azure ad végpontján. Az engedélyezési kód ezután új hozzáférési és frissítési jogkivonat beszerzésére használható.
 
-1. Ha a felhasználó még nincs hitelesítve, `/authorize` az Azure AD végpontja kéri a felhasználót, hogy jelentkezzen be.
+1. Ha a felhasználó még nincs hitelesítve, az Azure AD `/authorize` -végpont felszólítja a felhasználót, hogy jelentkezzen be.
 
-    ![Felhasználó vagy rendszergazda bejelentkezés az Azure AD-be](./media/consent-framework/usersignin.png)
+    ![Felhasználói vagy rendszergazdai bejelentkezés az Azure AD-be](./media/consent-framework/usersignin.png)
 
-1. Miután a felhasználó bejelentkezett, az Azure AD határozza meg, hogy a felhasználónak meg kell jelennie egy jóváhagyási oldal. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazás beleegyezését. Ha a hozzájárulás még nem lett megadva, az Azure AD kéri a felhasználó beleegyezését, és megjeleníti a működéséhez szükséges engedélyeket. A jóváhagyási párbeszédpanelen megjelenő engedélyek készlete megegyezik az Azure Portalon a **Delegált engedélyekben kiválasztott engedélyekkel.**
+1. Miután a felhasználó bejelentkezett, az Azure AD megállapítja, hogy a felhasználónak meg kell-e jelenítenie egy beleegyező lapot. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazáshoz való hozzájárulásukat. Ha még nem adta meg a jóváhagyást, az Azure AD belekéri a felhasználót, és megjeleníti a működéséhez szükséges engedélyeket. A beleegyezési párbeszédpanelen megjelenő engedélyek halmaza megegyezik a Azure Portal **delegált engedélyeiben** kiválasztott engedélyekkel.
 
-    ![Példa a hozzájárulási párbeszédpanelen megjelenített engedélyekre](./media/consent-framework/consent.png)
+    ![A belefoglalt hozzáférési párbeszédpanelen megjelenő engedélyek példáját jeleníti meg](./media/consent-framework/consent.png)
 
-1. Miután a felhasználó megadja a jóváhagyást, egy engedélyezési kódot arendszer visszaad az alkalmazásnak, amely et egy hozzáférési jogkivonat és a frissítési jogkivonat beszerzése érdekében vált be. Erről a folyamatról további információt az [OAuth 2.0 engedélyezési kódfolyamata című témakörben talál.](v2-oauth2-auth-code-flow.md)
+1. Miután a felhasználó beleegyezett a hozzájárulásba, a rendszer egy engedélyezési kódot ad vissza az alkalmazásnak, amely a hozzáférési jogkivonat és a frissítési jogkivonat beszerzésére lett beváltva. További információ erről a folyamatról: [OAuth 2,0 engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md).
 
-1. Rendszergazdaként is hozzájárulhat egy alkalmazás delegált engedélyeihez a bérlő összes felhasználója nevében. A rendszergazdai hozzájárulás megakadályozza, hogy a jóváhagyási párbeszéd a bérlő minden felhasználója számára megjelenjen, és az [Azure Portalon](https://portal.azure.com) a rendszergazdai szerepkörrel rendelkező felhasználók elvégezhetők. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök járulhatnak hozzá a delegált engedélyekhez, olvassa el [a Rendszergazdai szerepkör-engedélyek az Azure AD-ben című témakört.](../users-groups-roles/directory-assign-admin-roles.md)
+1. Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a rendszer a bérlő összes felhasználója számára megjelenjen a belefoglalt hozzáférés párbeszédablakban, és a rendszergazda szerepkörrel rendelkező felhasználók [Azure Portal](https://portal.azure.com) is elvégezhető. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../users-groups-roles/directory-assign-admin-roles.md).
 
-    **Hozzájárulás egy alkalmazás delegált engedélyeihez**
+    **Az alkalmazás delegált engedélyeinek beleegyezett**
 
-   1. Ugrás az **alkalmazás API-engedélyek** lapjára
-   1. Kattintson a **Grant admin consent** gombra.
+   1. Ugrás az alkalmazás **API-engedélyeinek** oldalára
+   1. Kattintson a **rendszergazdai jóváhagyás megadása** gombra.
 
-      ![Engedélyek megadása kifejezett rendszergazdai jóváhagyáshoz](./media/consent-framework/grant-consent.png)
+      ![Engedélyek megadása explicit rendszergazdai jóváhagyáshoz](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > Az Engedélyek **megadása** gomb használatával kifejezett hozzájárulás megadása jelenleg szükséges az ADAL.js-t használó egyoldalas alkalmazásokhoz (SPA). Ellenkező esetben az alkalmazás sikertelen lesz, ha a hozzáférési jogkivonatot kéri.
+   > A ADAL. js-t használó egyoldalas alkalmazások (SPA) esetében jelenleg kötelező megadni a kifejezett jóváhagyást az **engedélyek megadása** gomb használatával. Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse [meg, hogyan alakíthat át egy alkalmazást több-bérlőssé](howto-convert-app-to-be-multi-tenant.md)
-* További mélységért ismerje meg, [hogyan támogatja a jóváhagyást az OAuth 2.0 protokollréteg az engedélyezési kód engedélyezési folyamat során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+* Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
+* További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)

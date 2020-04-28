@@ -1,6 +1,6 @@
 ---
-title: Felhasználói fiókok áttekintése az Azure Active Directory B2C-ben
-description: Ismerje meg az Azure Active Directory B2C-ben használható felhasználói fiókok típusait.
+title: A Azure Active Directory B2C felhasználói fiókjainak áttekintése
+description: Tudnivalók a Azure Active Directory B2C használható felhasználói fiókok típusairól.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,77 +11,77 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185658"
 ---
-# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Felhasználói fiókok áttekintése az Azure Active Directory B2C-ben
+# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
-Az Azure Active Directory B2C (Azure AD B2C) többféle fiók hozható létre. Az Azure Active Directory, az Active Directory B2B és az Active Directory B2C megosztása a használható felhasználói fiókok típusaiban.
+Azure Active Directory B2C (Azure AD B2C) számos különböző típusú fiókot hozhat létre. Azure Active Directory, Active Directory B2B és Active Directory B2C megosztás a használható felhasználói fiókok típusaiban.
 
 A következő típusú fiókok érhetők el:
 
-- **Munkahelyi fiók** – A munkahelyi fiók hozzáférhet a bérlő erőforrásaihoz, és rendszergazdai szerepkörrel kezelheti a bérlőket.
-- **Vendégfiók** – A vendégfiók csak egy Microsoft-fiók vagy egy Azure Active Directory-felhasználó lehet, amely alkalmazások elérésére vagy bérlők kezelésére használható.
-- **Fogyasztói fiók** – A fogyasztói fiókot az Azure AD B2C-ben regisztrált alkalmazások felhasználója használja. A fogyasztói fiókokat a következők hozhatják létre:
-  - A felhasználó egy Azure AD B2C-alkalmazásban egy regisztrációs felhasználói folyamaton megy keresztül
-  - A Microsoft Graph API használata
+- **Munkahelyi fiók** – a munkahelyi fiók hozzáférhet a bérlő erőforrásaihoz, és rendszergazdai szerepkörrel is kezelheti a bérlőket.
+- **Vendégfiók** – a vendég fiók csak olyan Microsoft-fiók vagy Azure Active Directory felhasználó lehet, amely használható az alkalmazások eléréséhez vagy a bérlők kezeléséhez.
+- **Fogyasztói fiók** – a Azure ad B2C regisztrált alkalmazások felhasználója használja a fogyasztói fiókot. A felhasználói fiókokat a alábbiakkal hozhatja létre:
+  - A felhasználó egy Azure AD B2C alkalmazásban egy regisztrációs felhasználói folyamaton keresztül zajlik
+  - Microsoft Graph API használata
   - Az Azure Portal használata
 
 ## <a name="work-account"></a>Munkahelyi fiók
 
-A munkahelyi fiók ugyanúgy jön létre az Azure AD-n alapuló összes bérlő számára. Munkahelyi fiók létrehozásához használja a rövid útmutatóban található [információkat: Új felhasználók hozzáadása az Azure Active Directoryhoz.](../active-directory/fundamentals/add-users-azure-active-directory.md) A munkahelyi fiók az **Azure Portalon** az Új felhasználó választás használatával jön létre.
+A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő számára az Azure AD-on alapuló módon. Munkahelyi fiók létrehozásához használhatja a gyors útmutató [: új felhasználók hozzáadása Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). A munkahelyi fiók az **új felhasználó** választása alapján jön létre a Azure Portal.
 
-Új munkahelyi fiók hozzáadásakor a következő konfigurációs beállításokat kell figyelembe vennie:
+Új munkahelyi fiók hozzáadásakor figyelembe kell vennie a következő konfigurációs beállításokat:
 
-- **Név** és **felhasználónév** – A **Név** tulajdonság a felhasználó vezeték- és keresztnevét tartalmazza. A **felhasználónév** az az azonosító, amelyet a felhasználó bead a bejelentkezéshez. A felhasználónév tartalmazza a teljes tartományt. A felhasználónév tartománynév-részének vagy a kezdeti alapértelmezett tartománynévnek *your-domain.onmicrosoft.com,* vagy ellenőrzött, nem összevont [egyéni tartománynévnek](../active-directory/fundamentals/add-custom-domain.md) , például *contoso.com.*
-- **Profil** – A fiók felhasználói adatok profiljával van beállítva. Lehetősége van utónév, vezetéknév, beosztás és részlegnév megadására. A profila fiók létrehozása után szerkeszthető.
-- **Csoportok** – Csoport használatával felügyeleti feladatokat hajthat végre, például licenceket vagy engedélyeket rendel egyszerre több felhasználóhoz vagy eszközhöz. Az új fiókot a bérlő egy meglévő [csoportjába](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) helyezheti.
-- **Címtárszerepkör** – Meg kell adnia a felhasználói fiók által a bérlőerőforrásaihoz való hozzáférés szintjét. A következő jogosultsági szintek érhetők el:
+- **Név** és **Felhasználónév** – a **Name (név** ) tulajdonság a felhasználó megadott és vezetéknevét tartalmazza. A **Felhasználónév** annak az azonosítónak a neve, amelyet a felhasználó be kell jelentkeznie. A Felhasználónév tartalmazza a teljes tartományt. A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynév *Your-Domain.onmicrosoft.com*vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../active-directory/fundamentals/add-custom-domain.md) (például *contoso.com*) kell lennie.
+- **Profil** – a fiók felhasználói adatprofillal van beállítva. Lehetősége van megadnia az utónév, a vezetéknév, a beosztás és a részleg nevét. A profilt a fiók létrehozása után módosíthatja.
+- **Csoportok** – olyan felügyeleti feladatok elvégzésére, mint például a licencek vagy az engedélyek több felhasználóhoz vagy eszközhöz való hozzárendelésének engedélyezése egy csoport használatával. Az új fiókot egy meglévő [csoportba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) helyezheti a bérlőben.
+- **Directory-szerepkör** – meg kell adnia azt a hozzáférési szintet, amelyet a felhasználói fióknak a bérlő erőforrásaihoz kell használnia. A következő jogosultsági szintek érhetők el:
 
-    - **Felhasználó** – A felhasználók hozzáférhetnek a hozzárendelt erőforrásokhoz, de nem kezelhetik a legtöbb bérlői erőforrást.
-    - **Globális rendszergazda** – A globális rendszergazdák teljes hozzáféréssel rendelkeznek az összes bérlői erőforrás felett.
-    - **Korlátozott rendszergazda** – Válassza ki a felhasználó felügyeleti szerepkörét vagy szerepköreit. A kijelölhető szerepkörökről további információt a [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban című témakörben talál.](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+    - **User** A felhasználók hozzáférhetnek a hozzárendelt erőforrásokhoz, de nem kezelhetik a legtöbb bérlői erőforrást.
+    - **Globális rendszergazda** – a globális rendszergazdák teljes hozzáféréssel rendelkeznek az összes bérlői erőforráshoz.
+    - **Korlátozott rendszergazda** – válassza ki a felhasználó rendszergazdai szerepkörét vagy szerepköreit. További információ a kiválasztható szerepkörökről: [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="create-a-work-account"></a>Munkahelyi fiók létrehozása
 
-A következő információk segítségével hozhat létre új munkahelyi fiókot:
+Új munkahelyi fiók létrehozásához a következő információkat használhatja:
 
-- [Azure-portál](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Felhasználói profil frissítése
 
 A következő információk segítségével frissítheti a felhasználó profilját:
 
-- [Azure-portál](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Felhasználó jelszavának alaphelyzetbe állítása
 
-A következő információk segítségével állíthatja alaphelyzetbe a felhasználó jelszavát:
+A felhasználó jelszavának alaphelyzetbe állításához a következő információkat használhatja:
 
-- [Azure-portál](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Vendégfelhasználó
+## <a name="guest-user"></a>Vendég felhasználó
 
-Külső felhasználókat meghívhat a bérlőbe vendégfelhasználóként. Egy tipikus forgatókönyv egy vendégfelhasználó meghívására az Azure AD B2C bérlő, hogy megosszák a felügyeleti feladatokat. Egy vendégfiók használatával kapcsolatos példa: [Az Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)című témakörben található.
+Meghívhatja a külső felhasználókat a bérlőnek vendég felhasználóként. Egy tipikus példa arra, hogy a vendég felhasználókat meghívja a Azure AD B2C bérlőre, hogy megossza az adminisztrációs feladatokat. A vendég fiók használatára példát a [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)című témakörben talál.
 
-Amikor meghív egy vendégfelhasználót a bérlőhöz, megadja a címzett e-mail címét és a meghívót leíró üzenetet. A meghívóhivatkozás a felhasználót arra a jóváhagyási lapra viszi, ahol az **Első lépések** gomb ki van jelölve, és az engedélyek ellenőrzése elfogadásra kerül. Ha egy beérkezett üzenetek mappája nincs csatolva az e-mail címhez, a felhasználó a microsoftos lapon a meghívott hitelesítő adatok használatával a hozzájárulási lapra léphet. A felhasználó ezután kénytelen beváltani a meghívást ugyanúgy, mint kattintson a linkre az e-mailben. Például: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Amikor meghívja a vendég felhasználóját a bérlőre, megadja a címzett e-mail-címét, valamint egy, a meghívót leíró üzenetet. A Meghívási hivatkozás a felhasználót a jóváhagyás oldalra viszi, ahol az **első lépések** gomb van kiválasztva, az engedélyek felülvizsgálata pedig elfogadva. Ha a beérkezett fájlok nem az e-mail-címre vannak csatolva, a felhasználó a meghívott hitelesítő adatokkal megnyitva egy Microsoft-oldalra navigálva megkeresheti a beleegyezik lapot. A felhasználónak ezután meg kell váltania a meghívót úgy, hogy az e-mailben szereplő hivatkozásra kattint. Például: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-A [Microsoft Graph API-val](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) vendégfelhasználót is meghívhat.
+Használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) -t is egy vendég felhasználó meghívásához.
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 
-A fogyasztó felhasználó bejelentkezhet az Azure AD B2C által védett alkalmazásokba, de nem férhet hozzá az Azure-erőforrásokhoz, például az Azure Portalhoz. A fogyasztó felhasználó használhat helyi fiókot vagy összevont fiókokat, például a Facebookot vagy a Twittert. A fogyasztói fiók egy [regisztrációs vagy bejelentkezési felhasználói folyamat,](user-flow-overview.md)a Microsoft Graph API használatával vagy az Azure Portal használatával jön létre.
+A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiók a Microsoft Graph API használatával vagy a Azure Portal használatával jön létre a [regisztrációs vagy bejelentkezési felhasználói folyamat](user-flow-overview.md)használatával.
 
-Megadhatja azokat az adatokat, amelyek akkor gyűjtenek, amikor egy fogyasztói felhasználói fiókot egyéni felhasználói attribútumok használatával hoznak létre. További információ: [Egyéni attribútumok definiálása az Azure Active Directory B2C könyvtárban.](user-flow-custom-attributes.md)
+Megadhatja azokat az adatokat, amelyeket a rendszer akkor gyűjt, amikor egyéni felhasználói attribútumokkal hozza létre a fogyasztói felhasználói fiókot. További információ: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](user-flow-custom-attributes.md).
 
-A fogyasztói fiókok kezeléséről az [Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph programmal](manage-user-accounts-graph-api.md)című témakörben talál további információt.
+A fogyasztói fiókok kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](manage-user-accounts-graph-api.md).
 
-### <a name="migrate-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok áttelepítése
+### <a name="migrate-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok migrálása
 
-Előfordulhat, hogy át kell telepítenie a meglévő fogyasztói felhasználói fiókokat bármely identitásszolgáltatóról az Azure AD B2C-be. További információ: [A felhasználók áttelepítése az Azure AD B2C-be](user-migration.md)című témakörben talál.
+Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználók Áttelepítése Azure ad B2Cra](user-migration.md).

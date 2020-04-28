@@ -1,34 +1,34 @@
 ---
-title: Környezeti változók beállítása a tárolópéldányban
-description: Megtudhatja, hogyan állíthatja be a környezeti változókat az Azure Container Instances tárolóiban futtatott tárolókban
+title: Környezeti változók beállítása a Container-példányban
+description: Megtudhatja, hogyan állíthatja be a környezeti változókat a Azure Container Instancesban futtatott tárolókban.
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247227"
 ---
-# <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása tárolópéldányokban
+# <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a Container instances szolgáltatásban
 
-A tárolópéldányok környezeti változóinak beállítása lehetővé teszi a tárolóban futó alkalmazás vagy szkript dinamikus konfigurálását. Ez hasonló a `--env` parancssori `docker run`argumentumhoz. 
+A tárolópéldányok környezeti változóinak beállítása lehetővé teszi a tárolóban futó alkalmazás vagy szkript dinamikus konfigurálását. Ez hasonló a `--env` parancssori argumentumhoz `docker run`. 
 
-Környezeti változók beállítása a tárolóban, adja meg őket, amikor létrehoz egy tárolópéldányt. Ez a cikk példákat mutat be a környezeti változók beállítására, amikor egy tárolót az [Azure CLI,](#azure-cli-example)az [Azure PowerShell](#azure-powershell-example)és az [Azure Portal](#azure-portal-example)használatával indít el. 
+A tárolók környezeti változóinak megadásához adja meg őket a tároló-példány létrehozásakor. Ez a cikk példákat mutat be környezeti változók beállítására, amikor elindít egy tárolót az [Azure CLI](#azure-cli-example)-vel, [Azure PowerShell](#azure-powershell-example)és a [Azure Portal](#azure-portal-example). 
 
-Ha például a Microsoft [aci-wordcount tárolórendszerképet][aci-wordcount] futtatja, a következő környezeti változók megadásával módosíthatja annak működését:
+Ha például a Microsoft [ACI-WordCount][aci-wordcount] tároló rendszerképét futtatja, a következő környezeti változók megadásával módosíthatja a viselkedését:
 
-*NumWords*: Az STDOUT-nak küldött szavak száma.
+*NumWords*: az stdout-ba küldendő szavak száma.
 
-*MinLength*: A szavak ban lévő karakterek minimális száma, hogy meg lehessen számolni. A nagyobb szám figyelmen kívül hagyja az olyan gyakori szavakat, mint a ""- és "a".
+*MinLength*: a szavakban szereplő karakterek minimális számát kell megszámolni. A nagyobb szám figyelmen kívül hagyja a gyakori szavakat, például az "a" és a "The" kifejezést.
 
-Ha környezeti változókként kell titkos kulcsokat átadnia, az Azure Container Instances támogatja a Windows és a Linux-tárolók [biztonságos értékeit.](#secure-values)
+Ha környezeti változókként kell átadnia a titkokat, Azure Container Instances támogatja a Windows-és Linux-tárolók [biztonságos értékeit](#secure-values) .
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-cli-example"></a>Példa az Azure CLI-re
+## <a name="azure-cli-example"></a>Azure CLI-példa
 
-Az [aci-wordcount][aci-wordcount] tároló alapértelmezett kimenetének megtekintéséhez először futtassa ezzel az [az container create][az-container-create] paranccsal (nincs megadva környezeti változó):
+Az [ACI-WordCount][aci-wordcount] tároló alapértelmezett kimenetének megtekintéséhez futtassa először az [az Container Create][az-container-create] paranccsal (nincs megadva környezeti változó):
 
 ```azurecli-interactive
 az container create \
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-A kimenet módosításához indítson el `--environment-variables` egy második tárolót a hozzáadott argumentummal, és adja meg a *NumWords* és a *MinLength* változók értékeit. (Ebben a példában feltételezi, hogy a CLI-t egy Bash rendszerhéjban vagy az Azure Cloud Shellben futtatja. Ha a Windows parancssorát használja, adja meg a változókat dupla idézőjelekkel, például `--environment-variables "NumWords"="5" "MinLength"="8"`.)
+A kimenet módosításához indítson el egy második tárolót a `--environment-variables` hozzáadott argumentummal, adja meg a *NumWords* és a *MinLength* változók értékeit. (Ez a példa feltételezi, hogy a parancssori felületet egy bash-rendszerhéjban vagy Azure Cloud Shellban futtatja. Ha a Windows-parancssort használja, a változókat idézőjelek között `--environment-variables "NumWords"="5" "MinLength"="8"`kell megadni, például:.)
 
 ```azurecli-interactive
 az container create \
@@ -49,16 +49,16 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Miután mindkét tároló állapota *leállítva* jelenik meg (használja [az container show][az-container-show] állapot ellenőrzéséhez), jelenítse meg a naplókat az az tároló [naplók][az-container-logs] a kimenet megtekintéséhez.
+Ha mindkét tároló állapota *Leálltként* jelenik meg (az [az Container show][az-container-show] to ellenőrizze State), akkor a kimenet megtekintéséhez jelenítse meg a naplókat az [az Container logs][az-container-logs] használatával.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
 az container logs --resource-group myResourceGroup --name mycontainer2
 ```
 
-A tárolók kimenete azt mutatja, hogyan módosította a második tároló parancsfájljának viselkedését a környezeti változók beállításával.
+A tárolók kimenete azt mutatja be, hogyan módosította a második tároló parancsfájl-viselkedését környezeti változók beállításával.
 
-**sajtakonténer1**
+**mycontainer1**
 ```output
 [('the', 990),
  ('and', 702),
@@ -72,7 +72,7 @@ A tárolók kimenete azt mutatja, hogyan módosította a második tároló paran
  ('HAMLET', 386)]
 ```
 
-**startály2**
+**tarolo2**
 ```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
@@ -81,11 +81,11 @@ A tárolók kimenete azt mutatja, hogyan módosította a második tároló paran
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="azure-powershell-example"></a>Példa az Azure PowerShellre
+## <a name="azure-powershell-example"></a>Azure PowerShell példa
 
-A környezeti változók beállítása a PowerShellben hasonló `-EnvironmentVariable` a CLI-hez, de a parancssori argumentumot használja.
+A környezeti változók a PowerShellben való beállítása hasonló a CLI-hez, `-EnvironmentVariable` de a parancssori argumentumot használja.
 
-Először indítsa el az [aci-wordcount][aci-wordcount] tárolót az alapértelmezett konfigurációban ezzel a [New-AzContainerGroup][new-Azcontainergroup] paranccsal:
+Először indítsa el az [ACI-WordCount][aci-wordcount] tárolót az alapértelmezett konfigurációban ezzel a [New-AzContainerGroup][new-Azcontainergroup] paranccsal:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Most futtassa a következő [New-AzContainerGroup][new-Azcontainergroup] parancsot. Ez a *tömbváltozó* feltöltése után a NumWords és *a MinLength* környezeti változókat adja meg: `envVars`
+Most futtassa a következő [New-AzContainerGroup][new-Azcontainergroup] parancsot. Ez határozza meg a *NumWords* és a *MinLength* környezeti változókat a tömb változóinak feltöltése `envVars`után:
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -106,14 +106,14 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-Miután mindkét tároló állapota *levan állítva* (használja [a Get-AzContainerInstanceLog][azure-instance-log] állapot ellenőrzéséhez), húzza le a naplókat a [Get-AzContainerInstanceLog][azure-instance-log] paranccsal.
+Ha mindkét tároló állapota *le van állítva* (a [Get-AzContainerInstanceLog][azure-instance-log] használatával kell ellenőriznie az állapotot), a naplók a [Get-AzContainerInstanceLog][azure-instance-log] paranccsal hívhatók meg.
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 ```
 
-Az egyes tárolók kimenete bemutatja, hogyan módosította a tároló által futtatott parancsfájlt a környezeti változók beállításával.
+Az egyes tárolók kimenete azt mutatja be, hogyan módosította a tároló által futtatott parancsfájlt környezeti változók beállításával.
 
 ```console
 PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -139,29 +139,29 @@ PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -Conta
 Azure:\
 ```
 
-## <a name="azure-portal-example"></a>Példa az Azure Portalra
+## <a name="azure-portal-example"></a>Azure Portal példa
 
-Környezeti változók beállítása, amikor egy tárolót az Azure Portalon, adja meg őket a **Speciális** lapon, amikor létrehozza a tárolót.
+Ha környezeti változókat szeretne beállítani a Azure Portal tárolójának indításakor, a tároló létrehozásakor adja meg azokat a **speciális** lapon.
 
-1. A **Speciális** lapon állítsa az **Újraindítás házirendet** *A hiba után*
-2. A **Környezeti változók**csoportban adja meg `NumWords` az első változó értékét, `5` és írja be `MinLength` a második változó `8` értékét. 
-1. Válassza **a Véleményezés + létrehozás** lehetőséget a tároló ellenőrzéséhez és központi telepítéséhez.
+1. A **speciális** lapon állítsa be a *sikertelen* **Újraindítási szabályzatot** .
+2. A **környezeti változók**területen adja `NumWords` meg az értéket `5` az első változóhoz, és adja meg `MinLength` a értékét a második `8` változó értékeként. 
+1. A tároló ellenőrzéséhez és üzembe helyezéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 
-![Portállap az Engedélyezés gombbal és szövegdobozokkal][portal-env-vars-01]
+![A portál lap környezeti változó engedélyezése gomb és szövegmezők][portal-env-vars-01]
 
-A tároló naplóinak megtekintéséhez a **Beállítások csoportban** válassza a **Tárolók**lehetőséget, majd **a Naplók lehetőséget.** Az előző CLI- és PowerShell-szakaszokban látható kimenethez hasonlóan láthatja, hogy a környezeti változók hogyan módosították a parancsfájl viselkedését. Csak öt szó jelenik meg, mindegyik legalább nyolc karakter hosszú.
+A tároló naplóinak megtekintéséhez a **Beállítások** területen válassza a **tárolók**, majd a **naplók**lehetőséget. Az előző CLI-és PowerShell-szakaszban bemutatott kimenethez hasonlóan láthatja, hogyan módosították a parancsfájl viselkedését a környezeti változók. Csak öt szó jelenik meg, amelyek mindegyike legalább nyolc karakter hosszú lehet.
 
-![Tárolónapló kimenetét megjelenítő portál][portal-env-vars-02]
+![A tároló napló kimenetét bemutató portál][portal-env-vars-02]
 
 ## <a name="secure-values"></a>Biztonságos értékek
 
-A biztonságos értékekkel rendelkező objektumok bizalmas adatokat, például jelszavakat vagy kulcsokat tartalmazhatnak az alkalmazáshoz. A környezeti változók biztonságos értékeinek használata biztonságosabb és rugalmasabb, mint a tároló rendszerképébe való felvétel. Egy másik lehetőség a titkos kötetek használata, amelyet [az Azure Container Instances titkos kötetének csatlakoztatása ismertet.](container-instances-volume-secret.md)
+A biztonságos értékekkel rendelkező objektumok bizalmas adatok, például jelszavak vagy kulcsok tárolására szolgálnak. A környezeti változók biztonságos értékeinek használata biztonságosabb és rugalmasabb, mint például a tároló rendszerképében. Egy másik lehetőség a titkos kötetek használata a [titkos kötet csatlakoztatása Azure Container Instancesban](container-instances-volume-secret.md)című témakörben.
 
-A biztonságos értékekkel rendelkező környezeti változók nem láthatók a tároló tulajdonságaiban – értékeik csak a tárolón belül érhetők el. Például az Azure Portalon vagy az Azure CLI-ben megtekintett tárolótulajdonságok csak egy biztonságos változó nevét jelenítik meg, az értékét nem.
+A biztonságos értékekkel rendelkező környezeti változók nem láthatók a tároló tulajdonságaiban – az értékük csak a tárolón belülről érhető el. A Azure Portal vagy az Azure CLI-ben megtekintett tároló tulajdonságai például csak a biztonságos változó nevét jelenítik meg, nem az értékét.
 
-Állítson be egy biztonságos `secureValue` környezeti változót `value` úgy, hogy a változó típusának szabályos a tulajdonsága helyett a tulajdonságot adja meg. A következő YAML-ben meghatározott két változó mutatja be a két változótípust.
+Állítsa be a biztonságos környezeti változót úgy, `secureValue` hogy megadja a tulajdonságot `value` a változó típusának normál helyett. A következő YAML meghatározott két változó mutatja be a két változó típusát.
 
-### <a name="yaml-deployment"></a>YAML-telepítés
+### <a name="yaml-deployment"></a>YAML üzembe helyezése
 
 Hozzon `secure-env.yaml` létre egy fájlt a következő kódrészlettel.
 
@@ -190,7 +190,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Futtassa a következő parancsot a tárolócsoport YAML-rel történő telepítéséhez (szükség szerint módosítsa az erőforráscsoport nevét):
+Futtassa a következő parancsot a tároló csoport YAML való üzembe helyezéséhez (szükség szerint módosítsa az erőforráscsoport nevét):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file secure-env.yaml
@@ -198,13 +198,13 @@ az container create --resource-group myResourceGroup --file secure-env.yaml
 
 ### <a name="verify-environment-variables"></a>Környezeti változók ellenőrzése
 
-Futtassa az [az container show][az-container-show] parancsot a tároló környezeti változóinak lekérdezéséhez:
+Futtassa az az [Container show][az-container-show] parancsot a tároló környezeti változóinak lekérdezéséhez:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name securetest --query 'containers[].environmentVariables'
 ```
 
-A JSON-válasz a nem biztonságos környezeti változó kulcsát és értékét is megjeleníti, de csak a biztonságos környezeti változó nevét:
+A JSON-válasz a nem biztonságos környezeti változó kulcsát és értékét jeleníti meg, de csak a biztonságos környezeti változó nevét:
 
 ```json
 [
@@ -223,13 +223,13 @@ A JSON-válasz a nem biztonságos környezeti változó kulcsát és értékét 
 ]
 ```
 
-Az [az container exec][az-container-exec] paranccsal, amely lehetővé teszi egy parancs futtatását egy futó tárolóban, ellenőrizheti, hogy a biztonságos környezet változó be van-e állítva. Futtassa a következő parancsot egy interaktív bash munkamenet elindításához a tárolóban:
+Az az [Container exec][az-container-exec] paranccsal, amely lehetővé teszi egy parancs futtatását egy futó tárolóban, ellenőrizheti, hogy a biztonságos környezeti változó be van-e állítva. Futtassa a következő parancsot egy interaktív bash-munkamenet elindításához a tárolóban:
 
 ```azurecli-interactive
 az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-Miután megnyitotta az interaktív rendszerhéjat a tárolón belül, elérheti a `SECRET` változó értékét:
+Miután megnyitotta az interaktív felületet a tárolón belül, elérheti a `SECRET` változó értékét:
 
 ```console
 root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
@@ -238,7 +238,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>További lépések
 
-A feladatalapú forgatókönyvek, például a több tárolóval rendelkező nagy adatkészlet kötegelt feldolgozása, futásidőben egyéni környezeti változók előnyeit élvezhetik. A feladatalapú tárolók futtatásáról további információt a [Tárolóalapú feladatok futtatása újraindítási házirendekkel című témakörben talál.](container-instances-restart-policy.md)
+A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozásával az egyéni környezeti változók is kihasználhatják futásidőben. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférési házirendek áttelepítése – Azure Active Directory
-description: Ismerje meg, mit kell tudnia a klasszikus szabályzatok áttelepítéséhez az Azure Portalon.
+title: Feltételes hozzáférési szabályzatok áttelepíteni – Azure Active Directory
+description: Ismerje meg, hogy mit kell tudnia a klasszikus szabályzatok áttelepítéséhez a Azure Portalban.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,111 +12,111 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77185911"
 ---
-# <a name="conditional-access-classic-policy-migration"></a>Feltételes hozzáférés – klasszikus házirend-áttelepítés
+# <a name="conditional-access-classic-policy-migration"></a>A feltételes hozzáférés klasszikus szabályzatának áttelepítése
 
-A feltételes hozzáférés az Azure Active Directory által használt eszköz a jelek egyesítéséhez, a döntések meghozatalához és a szervezeti szabályzatok kényszerítéséhez. A feltételes hozzáférés az új identitásvezérelt vezérlősík középpontjában áll. Bár a cél továbbra is ugyanaz, az új Azure Portal kiadása jelentős fejlesztéseket vezetett be a feltételes hozzáférés működéséhez.
+A feltételes hozzáférés az Azure Active Directory által használt eszköz, amely lehetővé teszi a jelek összekapcsolását, a döntések meghozatalát és a szervezeti házirendek betartatását. A feltételes hozzáférés az új Identity vezérelt vezérlő síkja szívében található. Habár a cél még mindig ugyanaz, az új Azure Portal kiadása jelentős újdonságokat vezetett be a feltételes hozzáférés működéséhez.
 
-Fontolja meg az Azure Portalon nem létrehozott szabályzatok áttelepítését, mert:
+Érdemes áttelepíteni azokat a házirendeket, amelyeket nem a Azure Portal hozott létre, mert:
 
-- Most már foglalkozik forgatókönyvek nem tudta kezelni korábban.
-- A kezelni kívánt házirendek számát a konszolidálásukkal csökkentheti.
-- Az összes feltételes hozzáférési szabályzatot egy központi helyen kezelheti.
-- A klasszikus Azure-portál megszűnik.
+- Mostantól olyan forgatókönyveket is megadhat, amelyeket nem tudott kezelni.
+- Csökkentheti a felügyelni kívánt szabályzatok számát.
+- A feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti.
+- A klasszikus Azure portál kivonásra kerül.
 
-Ez a cikk ismerteti, mit kell tudni a meglévő feltételes hozzáférési szabályzatok áttelepítése az új keretrendszerbe.
+Ez a cikk azt ismerteti, hogy mit kell tudnia a meglévő feltételes hozzáférési szabályzatok új keretrendszerre való átállításához.
 
-## <a name="classic-policies"></a>Klasszikus házirendek
+## <a name="classic-policies"></a>Klasszikus szabályzatok
 
-Az [Azure Portalon](https://portal.azure.com)a feltételes hozzáférési szabályzatok az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférése**területen találhatók. Előfordulhat, hogy a szervezet régebbi feltételes hozzáférési házirendekkel is rendelkezik, amelyeket nem ezen a lapon hoztak létre. Ezeket a házirendeket *klasszikus házirendeknek*nevezzük. A klasszikus házirendek feltételes hozzáférési házirendek, amelyekben létrehozott:
+A [Azure Portal](https://portal.azure.com)a feltételes hozzáférési szabályzatok a **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**területen találhatók. Előfordulhat, hogy a szervezet régebbi feltételes hozzáférési szabályzatokat nem hozott létre ezen a lapon. Ezeket a szabályzatokat *klasszikus szabályzatoknak*nevezzük. A klasszikus szabályzatok feltételes hozzáférési szabályzatok, amelyeket a ben hozott létre:
 
-- Klasszikus Azure-portál
-- Az Intune klasszikus portálja
-- Az Intune Alkalmazásvédelmi portálja
+- A klasszikus Azure portál
+- A klasszikus Intune-portál
+- A Intune App Protection portál
 
-A **feltételes hozzáférés** lapon a klasszikus szabályzatok eléréséhez kattintson a [**Klasszikus házirendek**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) a **Kezelés** szakaszban. 
+A **feltételes hozzáférés** lapon a [**klasszikus házirendek lehetőségre kattintva érheti**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) el a klasszikus házirendeket a **kezelés** szakaszban. 
 
-![Feltételes hozzáférés az Azure AD-ben a klasszikus szabályzatok nézetét megjelenítő](./media/policy-migration/71.png)
+![Feltételes hozzáférés az Azure AD-ben klasszikus házirendek nézet](./media/policy-migration/71.png)
 
-A **Klasszikus házirendek** nézet lehetőséget nyújt a következőkre:
+A **klasszikus szabályzatok** nézet a következő lehetőségeket kínálja:
 
-- A klasszikus házirendek szűrése.
-- Tiltsa le a klasszikus házirendeket.
-- Tekintse át a klasszikus házirend beállításait, és tiltsa le.
+- A klasszikus szabályzatok szűrése.
+- Klasszikus szabályzatok letiltása.
+- Tekintse át a klasszikus szabályzat beállításait, és tiltsa le.
 
-   ![Klasszikus házirend-részletek, beleértve a meglévő házirend-konfigurációt](./media/policy-migration/74.png)
+   ![Klasszikus szabályzatok részletei, beleértve a meglévő házirend-konfigurációt](./media/policy-migration/74.png)
 
 > [!WARNING]
-> Miután letiltotta a klasszikus szabályzatnem engedélyezhető újra.
+> A klasszikus szabályzat letiltását követően nem engedélyezhető újra.
 
-A klasszikus házirend részletes nézete lehetővé teszi a beállítások dokumentálását, a belefoglalt vagy kizárt csoportok módosítását, valamint a házirend letiltását.
+A klasszikus szabályzat részletes nézete lehetővé teszi a beállítások dokumentálására, a befoglalt vagy kizárt csoportok módosítására, valamint a szabályzat letiltására.
 
-![Házirend részletei - A felvehető vagy kizárandó csoportok](./media/policy-migration/75.png)
+![Szabályzat részletei – belefoglalni vagy kizárni kívánt csoportok](./media/policy-migration/75.png)
 
-A kijelölt csoportok módosításával vagy adott csoportok kizárásával tesztelheti a letiltott klasszikus házirend hatását néhány tesztfelhasználó számára, mielőtt letiltaná a házirendet az összes belefoglalt felhasználóra és csoportra vonatkozóan.
+A kiválasztott csoportok módosításával vagy adott csoportok kizárásával tesztelheti a letiltott klasszikus házirendek hatását néhány tesztelési felhasználóra, mielőtt letiltja a házirendet az összes befoglalt felhasználó és csoport számára.
  
-## <a name="migration-considerations"></a>Migrálási szempontok
+## <a name="migration-considerations"></a>A migrálás szempontjai
 
-Ebben a cikkben az Azure AD feltételes hozzáférési szabályzatok is nevezik *az új szabályzatok.*
-A klasszikus szabályzatok továbbra is együtt dolgoznak az új házirendekkel, amíg le nem tiltja vagy nem törli őket. 
+Ebben a cikkben az Azure AD feltételes hozzáférési szabályzatait *új szabályzatoknak*is nevezzük.
+A klasszikus szabályzatok továbbra is az új szabályzatokkal együtt működnek, amíg le nem tiltja vagy nem törli őket. 
 
-A következő szempontok fontosak a szakpolitikai konszolidáció összefüggésében:
+A házirend-Összevonás kontextusában a következő szempontok fontosak:
 
-- Bár a klasszikus szabályzatok egy adott felhőalkalmazáshoz vannak kötve, annyi felhőalkalmazást választhat ki, amennyit csak kell egy új szabályzatban.
-- A klasszikus szabályzat és a felhőalapú alkalmazások új szabályzatának vezérléséhez az összes vezérlő (*ÉS*) teljesülnie kell. 
-- Egy új házirendben a következőket teheti:
-   - Több feltétel kombinálása, ha a forgatókönyv megköveteli. 
-   - Jelöljön ki több támogatási követelményt hozzáférés-vezérlésként, és kombinálja azokat egy logikai *VAGY* (a kijelölt vezérlők valamelyikének megkövetelése) vagy egy logikai *ÉS* (az összes kijelölt vezérlőelem szükséges).
+- Habár a klasszikus szabályzatok egy adott felhőalapú alkalmazáshoz vannak kötve, az új szabályzatokban tetszőleges számú felhőalapú alkalmazást választhat.
+- A klasszikus szabályzatok és a felhőalapú alkalmazások új szabályzatának szabályozása megköveteli az összes vezérlő (*és*) teljesítését. 
+- Egy új szabályzatban a következőket teheti:
+   - Ha a forgatókönyve megköveteli, több feltételt is egyesíteni kell. 
+   - Válasszon több engedélyezési követelményt hozzáférés-vezérlésként, és kombinálja őket logikai *vagy* (a kijelölt vezérlők valamelyikének megkövetelése) vagy logikai *és* (az összes kijelölt vezérlő megkövetelése) beállítással.
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange online
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-Ha az **Office 365 Exchange online** klasszikus szabályzatait szeretné áttelepíteni, amelyek ügyfélalkalmazásként tartalmazzák az Exchange Active **Sync-et,** előfordulhat, hogy nem tudja azokat egyetlen új házirendbe egyesíteni. 
+Ha olyan klasszikus házirendeket szeretne áttelepíteni az **Office 365 Exchange Online** -hoz, amelyek **Exchange Active Sync** ügyfél-alkalmazási feltételként szerepelnek, előfordulhat, hogy nem tudja összevonni őket egy új szabályzatba. 
 
-Ez például akkor áll fenn, ha az összes ügyfélalkalmazás-típust támogatni szeretné. Az Exchange Active Sync ügyfélalkalmazások feltételként való **használatára** vonatkozó új szabályzatban nem választhat más ügyfélalkalmazásokat.
+Ez például az az eset, ha az összes ügyfélalkalmazás-típust támogatni szeretné. Egy olyan új szabályzatban, amely **Exchange Active Sync** ügyfél-alkalmazási feltételként, nem választhat más ügyfélalkalmazások közül.
 
-![Feltételes hozzáférés az ügyfélalkalmazások kijelölése](./media/policy-migration/64.png)
+![Ügyfélalkalmazások kiválasztása feltételes hozzáféréssel](./media/policy-migration/64.png)
 
-Egy új házirendbe való bevonás akkor sem lehetséges, ha a klasszikus házirendek több feltételt tartalmaznak. Az **Exchange Active Sync** ügyfélalkalmazások feltételként konfigurált új házirendje nem támogat más feltételeket:   
+Ha a klasszikus szabályzat több feltételt is tartalmaz, akkor nem lehet konszolidálni egy új szabályzatot. Egy olyan új szabályzat, amely **Exchange Active Sync** ügyfél-alkalmazási feltétel konfigurálva, nem támogatja a többi feltételt:   
 
-![Az Exchange ActiveSync nem támogatja a kijelölt feltételeket](./media/policy-migration/08.png)
+![Az Exchange ActiveSync nem támogatja a kiválasztott feltételeket](./media/policy-migration/08.png)
 
-Ha olyan új házirenddel rendelkezik, amelyhez az **Exchange Active Sync** ügyfélalkalmazások feltétele konfigurálva van, meg kell győződnie arról, hogy az összes többi feltétel nincs konfigurálva. 
+Ha van olyan új szabályzata, amely **Exchange Active Sync** ügyfél-alkalmazási feltétel konfigurálva van, akkor győződjön meg arról, hogy az összes többi feltétel sincs konfigurálva. 
 
 ![Feltételes hozzáférési feltételek](./media/policy-migration/16.png)
  
-Az Office 365 Exchange Online alkalmazásalapú klasszikus szabályzatai, amelyek tartalmazzák az **Exchange Active Sync-et,** mivel az ügyfélalkalmazások feltétele **lehetővé** teszi a támogatott és **nem támogatott** eszközplatformokat. Bár nem konfigurálhat egyes eszközplatformokat egy kapcsolódó új házirendben, a támogatást csak a [támogatott eszközplatformokra korlátozhatja.](concept-conditional-access-conditions.md#device-platforms) 
+Az Office 365 Exchange Online-hoz készült, alkalmazáson alapuló klasszikus házirendek, amelyek tartalmazzák a **Exchange Active Sync** as Client apps-feltételt, lehetővé teszik a **támogatott** és nem **támogatott** eszközök platformját Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](concept-conditional-access-conditions.md#device-platforms) korlátozhatja a támogatást. 
 
 ![Feltételes hozzáférés az Exchange ActiveSync kiválasztása](./media/policy-migration/65.png)
 
-Több klasszikus szabályzatot is konszolidálhat, amelyek az **Exchange Active Sync-et** ügyfélalkalmazásokként tartalmazzák, ha rendelkeznek:
+Több klasszikus szabályzatot is összevonhat, amelyek a **Exchange Active Sync** ügyfél-alkalmazási feltételnek minősülnek, ha rendelkeznek a következőkkel:
 
-- Csak **az Exchange aktív szinkronizálása** feltételként 
-- A hozzáférés megadására vonatkozó számos követelmény konfigurálva
+- Csak **Exchange Active Sync** feltételként 
+- A hozzáférés konfigurálásának számos követelménye
 
-Az egyik gyakori forgatókönyv a következők konszolidálása:
+Az egyik gyakori forgatókönyv az alábbiak összevonása:
 
-- Az Azure klasszikus portáleszköz-alapú klasszikus szabályzata 
-- Alkalmazásalapú klasszikus szabályzat az Intune alkalmazásvédelmi portálján 
+- A klasszikus Azure portál eszközön alapuló klasszikus szabályzata 
+- Egy alkalmazás-alapú klasszikus szabályzat az Intune app Protection portálon 
  
-Ebben az esetben a klasszikus szabályzatokat egyetlen új szabályzatba konszolidálhatja, amely mindkét követelményt kiválasztotta.
+Ebben az esetben a klasszikus szabályzatokat egy új házirendbe összevonhatja, amely mindkét követelménynek megfelel.
 
-![Feltételes hozzáférés-támogatási vezérlők](./media/policy-migration/62.png)
+![Feltételes hozzáférés engedélyezési vezérlői](./media/policy-migration/62.png)
 
 ### <a name="device-platforms"></a>Eszközplatformok
 
-Az alkalmazásalapú vezérlőkkel rendelkező klasszikus szabályzatok előre konfigurálva vannak az iOS és az Android rendszerrel, mint az eszköz platformfeltételével. 
+Az alkalmazáson alapuló vezérlőkkel rendelkező klasszikus szabályzatok előre konfigurálva vannak az iOS és az Android platformon az eszköz platformjának feltétele. 
 
-Egy új szabályzatban ki kell választania az egyénileg támogatni kívánt [eszközplatformokat.](concept-conditional-access-conditions.md#device-platforms)
+Egy új szabályzatban ki kell választania a támogatni kívánt [eszközök platformját](concept-conditional-access-conditions.md#device-platforms) .
 
-![Feltételes hozzáférésű eszközplatformok kiválasztása](./media/policy-migration/41.png)
+![Feltételes hozzáférésű eszköz platformok kiválasztása](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az új házirend-döntések hatásának meghatározásához használja a csak jelentésmódot a feltételes hozzáféréshez.](concept-conditional-access-report-only.md)
-- Ha tudni szeretné, hogyan konfigurálhat feltételes hozzáférési házirendet, olvassa el a Feltételes hozzáférés közös házirendjei című [témakört.](concept-conditional-access-policy-common.md)
-- Ha készen áll a feltételes hozzáférési házirendek konfigurálására a környezetéhez, olvassa el a [Hogyan tervezze meg a feltételes hozzáférés központi telepítését az Azure Active Directoryban című témakört.](plan-conditional-access.md) 
+- [A feltételes hozzáféréshez csak jelentési módot használhat az új házirend-döntések hatásának megállapításához.](concept-conditional-access-report-only.md)
+- Ha tudni szeretné, hogyan konfigurálhat feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md).
+- Ha készen áll a környezethez tartozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a következő cikket [: Hogyan tervezze meg a feltételes hozzáférés telepítését a Azure Active Directory](plan-conditional-access.md). 

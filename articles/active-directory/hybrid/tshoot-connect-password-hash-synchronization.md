@@ -1,6 +1,6 @@
 ---
-title: Jelszókivonat-szinkronizálás – problémamegoldás az Azure AD Connect szinkronizálásával | Microsoft dokumentumok
-description: Ez a cikk a jelszókivonat-szinkronizálási problémák elhárításáról nyújt tájékoztatást.
+title: Jelszó-kivonatolási szinkronizálás hibáinak megoldása Azure AD Connect szinkronizálással | Microsoft Docs
+description: Ez a cikk a jelszó-kivonatolási szinkronizálással kapcsolatos problémák elhárításához nyújt információt.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,194 +17,194 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253545"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat szinkronizálásának hibaelhárítása Azure AD Connect-szinkronizálással
 
-Ez a témakör a jelszókivonat-szinkronizálással kapcsolatos problémák elhárításának lépéseit ismerteti. Ha a jelszavak szinkronizálása nem a várt módon történik, akkor az a felhasználók egy részhalmaza vagy az összes felhasználó számára lehetséges.
+Ez a témakör a jelszó-kivonatok szinkronizálásával kapcsolatos hibák elhárításának lépéseit ismerteti. Ha a jelszavak nem a várt módon vannak szinkronizálva, a felhasználók egy részhalmaza vagy az összes felhasználó számára lehet.
 
-Az Azure Active Directory (Azure AD) A központi telepítés csatlakoztatása az 1.1.614.0-s vagy azt követő verzióval esetén a varázsló hibaelhárítási feladatával hárítsa el a jelszókivonat-szinkronizálási problémákat:
+A (z) Azure Active Directory (Azure AD) 1.1.614.0 vagy későbbi verzióval való összekapcsolásához használja a varázsló hibaelhárítási feladatát a jelszó-kivonatolási szinkronizálással kapcsolatos problémák elhárításához:
 
-* Ha olyan problémája van, amelynél nincsenek jelszavak szinkronizálása, olvassa el a [Nincs jelszó szinkronizálása című témakört: hibaelhárítás a hibaelhárítási feladat](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) szakasz használatával.
+* Ha olyan problémáról van szó, amely nem szinkronizálja a jelszavakat, tekintse meg a [nem szinkronizált jelszavakat: hibaelhárítás a hibaelhárítási feladat szakasz használatával](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) .
 
-* Ha problémája van az egyes objektumok, olvassa el a [One objektum nem szinkronizálja a jelszavakat: hibaelhárítás segítségével a hibaelhárítási feladat](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) szakaszban.
+* Ha problémája van az egyes objektumokkal kapcsolatban, akkor az [egyik objektum nem szinkronizálja a jelszavakat: hibaelhárítás a hibaelhárítási feladat szakasz használatával](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) .
 
-Az 1.1.524.0-s vagy újabb verziójú telepítéshez van egy diagnosztikai parancsmag, amellyel elháríthatja a jelszókivonat-szinkronizálási problémákat:
+A 1.1.524.0 vagy újabb verzióval való üzembe helyezéshez egy diagnosztikai parancsmag használható, amely a jelszó-kivonatolási szinkronizálási problémák elhárítására szolgál:
 
-* Ha olyan problémája van, amelynél nincsenek jelszavak szinkronizálása, olvassa el a [Nincs jelszó szinkronizálása című témakört: hibaelhárítás a diagnosztikai parancsmag használatával.](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet)
+* Ha olyan problémáról van szó, amely nem szinkronizálja a jelszavakat, tekintse meg a [nem szinkronizált jelszavakat: hibakeresés a diagnosztikai parancsmag használatával](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) című szakaszt.
 
-* Ha problémája van az egyes objektumok, olvassa el a [One objektum nem szinkronizálja a jelszavakat: hibaelhárítás segítségével a diagnosztikai parancsmag](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) szakaszban.
+* Ha az egyes objektumokkal kapcsolatban probléma merül fel, az [egyik objektum nem szinkronizálja a jelszavakat: hibakeresés a diagnosztikai parancsmaggal szakasz használatával](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) .
 
-Az Azure AD Connect telepítésének régebbi verzióiesetén:
+Azure AD Connect üzemelő példány régebbi verziói esetén:
 
-* Ha olyan problémája van, amelynél nincsenek jelszavak szinkronizálása, olvassa el a [Nincs jelszó szinkronizálása: manuális hibaelhárítási lépések című részt.](#no-passwords-are-synchronized-manual-troubleshooting-steps)
+* Ha olyan problémáról van szó, amely nem szinkronizálja a jelszavakat, tekintse meg a [nem szinkronizált jelszavakat: manuális hibaelhárítási lépések](#no-passwords-are-synchronized-manual-troubleshooting-steps) szakaszt.
 
-* Ha problémája van az egyes objektumok, olvassa el a [One objektum nem szinkronizálja a jelszavakat: kézi hibaelhárítási lépések](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) szakaszban.
+* Ha problémája van az egyes objektumokkal kapcsolatban, az [egyik objektum nem szinkronizálja a jelszavakat: manuális hibaelhárítási lépések](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) szakasz.
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>A rendszer nem szinkronizálja a jelszavakat: hibaelhárítása a hibaelhárítási feladat használatával
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>A rendszer nem szinkronizálja a jelszavakat: hibaelhárítás a hibaelhárítási feladat használatával
 
-A hibaelhárító feladat segítségével kiderítheti, hogy miért nincsenek szinkronizálva a jelszavak.
+A hibaelhárítási feladat segítségével megtalálhatja, hogy a rendszer miért nem szinkronizálja a jelszavakat.
 
 > [!NOTE]
-> A hibaelhárítási feladat csak az Azure AD Connect 1.1.614.0-s vagy újabb verziójához érhető el.
+> A hibaelhárítási feladat csak Azure AD Connect vagy újabb verziójú 1.1.614.0 érhető el.
 
 ### <a name="run-the-troubleshooting-task"></a>A hibaelhárítási feladat futtatása
 
-Jelszavak szinkronizálása esetén felmerülő problémák elhárítása:
+A jelszavak szinkronizálása nélküli hibák elhárítása:
 
-1. Nyisson meg egy új Windows PowerShell-munkamenetet az Azure AD Connect kiszolgálón a **Futtatás rendszergazdaként** beállítással.
+1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a vagy `Set-ExecutionPolicy Unrestricted`a ot.
+2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
 
-3. Indítsa el az Azure AD Connect varázslót.
+3. Indítsa el a Azure AD Connect varázslót.
 
-4. Nyissa meg a **További feladatok** lapot, válassza **a Hibaelhárítás**lehetőséget, és kattintson a **Tovább**gombra.
+4. Navigáljon a **További feladatok** lapra, válassza a **hibakeresés**lehetőséget, majd kattintson a **tovább**gombra.
 
-5. A Hibaelhárítás lapon kattintson az **Indítás** gombra a PowerShell hibaelhárítási menüjének elindításához.
+5. A hibaelhárítás lapon kattintson a **Launch (indítás** ) elemre a PowerShell hibaelhárítási menüjének elindításához.
 
-6. A főmenüben válassza a **Jelszókivonat-szinkronizálás hibaelhárítása lehetőséget.**
+6. A főmenüben válassza a **jelszó kivonatának szinkronizálása**lehetőséget.
 
-7. Az almenüben válassza a **Jelszókivonat-szinkronizálás parancsát.**
+7. Az almenüben válassza a **jelszó kivonat szinkronizálása egyáltalán nem működik**lehetőséget.
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeinek megismerése
 
 A hibaelhárítási feladat a következő ellenőrzéseket hajtja végre:
 
-* Ellenőrzi, hogy a jelszókivonat-szinkronizálási funkció engedélyezve van-e az Azure AD-bérlőhöz.
+* Ellenőrzi, hogy az Azure AD-bérlőhöz engedélyezve van-e a jelszó-kivonat szinkronizálása funkció.
 
-* Ellenőrzi, hogy az Azure AD Connect-kiszolgáló nincs-e átmeneti módban.
+* Ellenőrzi, hogy a Azure AD Connect-kiszolgáló nem átmeneti módban van-e.
 
-* Minden meglévő helyszíni Active Directory-összekötő esetén (amely egy meglévő Active Directory-erdőnek felel meg):
+* Minden meglévő helyszíni Active Directory összekötőhöz (amely egy meglévő Active Directory erdőnek felel meg):
 
-   * Ellenőrzi, hogy a jelszókivonat-szinkronizálási szolgáltatás engedélyezve van-e.
+   * Ellenőrzi, hogy a jelszó-kivonat szinkronizációs funkciója engedélyezve van-e.
    
-   * Jelszókivonat-szinkronizálási szívverési események keresése a Windows alkalmazás eseménynaplóiban.
+   * Megkeresi a jelszó-kivonatolás szinkronizálásának szívverési eseményeit a Windows alkalmazás eseménynaplói között.
 
-   * A helyszíni Active Directory-összekötő alatti minden Egyes Active Directory-tartomány esetén:
+   * Minden Active Directory tartományhoz a helyszíni Active Directory-összekötő alatt:
 
-      * Ellenőrzi, hogy a tartomány elérhető-e az Azure AD Connect-kiszolgálóról.
+      * Ellenőrzi, hogy a tartomány elérhető-e a Azure AD Connect-kiszolgálóról.
 
-      * Ellenőrzi, hogy a helyszíni Active Directory-összekötő által használt Active Directory tartományi szolgáltatások (AD DS) fiókok rendelkeznek-e a megfelelő felhasználónévvel, jelszóval és a jelszókivonat-szinkronizáláshoz szükséges engedélyekkel.
+      * Ellenőrzi, hogy a helyszíni Active Directory-összekötő által használt Active Directory tartományi szolgáltatások (AD DS) fiókok helyes felhasználónevet, jelszót és engedélyeket igényelnek-e a jelszó kivonatának szinkronizálásához.
 
-Az alábbi ábra egy helyszíni Active Directory-topológia parancsmagjának eredményeit mutatja be:
+Az alábbi ábrán egy egytartományos, helyszíni Active Directory topológia parancsmagjának eredményei láthatók:
 
-![Diagnosztikai kimenet a jelszókivonat-szinkronizáláshoz](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
+![Diagnosztikai kimenet a jelszó-kivonatolási szinkronizáláshoz](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
 
-A szakasz többi része a feladat által visszaadott konkrét eredményeket és a kapcsolódó problémákat ismerteti.
+A szakasz további része a feladat által visszaadott eredményeket és a hozzájuk tartozó problémákat ismerteti.
 
-#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>a jelszókivonat-szinkronizálási szolgáltatás nincs engedélyezve
+#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>nincs engedélyezve a jelszó-kivonat szinkronizálása funkció
 
-Ha az Azure AD Connect varázslóval nem engedélyezte a jelszókivonat-szinkronizálást, a következő hibaüzenet jelenik meg:
+Ha nem engedélyezte a jelszó-kivonatoló szinkronizálást a Azure AD Connect varázsló használatával, a következő hibaüzenetet kapja:
 
-![a jelszókivonat-szinkronizálás nincs engedélyezve](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
+![nincs engedélyezve a jelszó-kivonat szinkronizálása](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
-#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Az Azure AD Connect kiszolgáló átmeneti üzemmódban van
+#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect kiszolgáló átmeneti módban van
 
-Ha az Azure AD Connect kiszolgáló átmeneti üzemmódban van, a jelszókivonat-szinkronizálás ideiglenesen le van tiltva, és a következő hibaüzenet jelenik meg:
+Ha a Azure AD Connect-kiszolgáló átmeneti módban van, a jelszó-kivonatolási szinkronizálás átmenetileg le van tiltva, és a következő hibaüzenetet adja vissza:
 
-![Az Azure AD Connect kiszolgáló átmeneti üzemmódban van](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
+![Azure AD Connect kiszolgáló átmeneti módban van](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
-#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Nincs jelszókivonat-szinkronizálási szívverési esemény
+#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Nincs jelszó-kivonatoló szinkronizálási szívverési esemény
 
-Minden helyszíni Active Directory-összekötő saját jelszókivonat-szinkronizálási csatornával rendelkezik. Amikor létrejön a jelszókivonat-szinkronizálási csatorna, és nincs szinkronizálandó jelszómódosítás, a Windows alkalmazás eseménynaplója alatt 30 percenként szívveréses esemény (EventId 654) jön létre. Minden helyszíni Active Directory-összekötő esetén a parancsmag megkeresi a megfelelő szívveréses eseményeket az elmúlt három órában. Ha nem talál szívverési eseményt, a következő hibaüzenet jelenik meg:
+Minden helyszíni Active Directory-összekötőhöz tartozik egy saját jelszó-kivonat szinkronizációs csatornája. A jelszó-kivonat szinkronizációs csatornájának létrehozásakor és a jelszó módosításainak szinkronizálásakor a rendszer 30 percenként egyszer generál szívverési eseményt (Napszállta 654) a Windows-alkalmazás eseménynaplójában. Az egyes helyszíni Active Directory összekötők esetében a parancsmag az elmúlt három órában megkeresi a megfelelő szívverési eseményeket. Ha nem található szívverési esemény, a következő hibaüzenetet adja vissza:
 
-![Nincs jelszókivonat-szinkronizálási szívveréses esemény](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
+![Nincs jelszó-kivonatoló szinkronizációs szívverési esemény](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
-#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>Az AD DS-fiók nem rendelkezik megfelelő engedélyekkel
+#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS fiók nem rendelkezik megfelelő engedélyekkel
 
-Ha a helyszíni Active Directory-összekötő által a jelszókivék szinkronizálására használt Active Directory-fiók nem rendelkezik a megfelelő engedélyekkel, a következő hibaüzenet jelenik meg:
+Ha a helyszíni Active Directory-összekötő által a jelszó-kivonatok szinkronizálásához használt AD DS fiók nem rendelkezik a megfelelő engedélyekkel, a rendszer a következő hibaüzenetet adja vissza:
 
-![Helytelen hitelesítő adatok](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Helytelen hitelesítő adat](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
-#### <a name="incorrect-ad-ds-account-username-or-password"></a>Helytelen AD DS-fiók felhasználóneve vagy jelszava
+#### <a name="incorrect-ad-ds-account-username-or-password"></a>Helytelen AD DS fiók felhasználóneve vagy jelszava
 
-Ha a helyszíni Active Directory-összekötő által a jelszókivék szinkronizálására használt Active Directory-fiók nem megfelelő felhasználónévvel vagy jelszóval rendelkezik, a következő hibaüzenet jelenik meg:
+Ha a helyszíni Active Directory-összekötő által a jelszó-kivonatok szinkronizálásához használt AD DS fiók helytelen felhasználónevet vagy jelszót tartalmaz, a rendszer a következő hibaüzenetet adja vissza:
 
-![Helytelen hitelesítő adatok](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
+![Helytelen hitelesítő adat](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
 
 
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Az egyik objektum nem szinkronizálja a jelszavakat: hibaelhárítás a hibaelhárítási feladat használatával
 
-A hibaelhárító feladat segítségével meghatározhatja, hogy egy objektum miért nem szinkronizálja a jelszavakat.
+A hibaelhárítási feladat segítségével meghatározhatja, hogy az egyik objektum miért nem szinkronizálja a jelszavakat.
 
 > [!NOTE]
-> A hibaelhárítási feladat csak az Azure AD Connect 1.1.614.0-s vagy újabb verziójához érhető el.
+> A hibaelhárítási feladat csak Azure AD Connect vagy újabb verziójú 1.1.614.0 érhető el.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>A diagnosztikai parancsmag futtatása
 
-Adott felhasználói objektummal kapcsolatos problémák elhárítása:
+Egy adott felhasználói objektum problémáinak elhárítása:
 
-1. Nyisson meg egy új Windows PowerShell-munkamenetet az Azure AD Connect kiszolgálón a **Futtatás rendszergazdaként** beállítással.
+1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a vagy `Set-ExecutionPolicy Unrestricted`a ot.
+2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
 
-3. Indítsa el az Azure AD Connect varázslót.
+3. Indítsa el a Azure AD Connect varázslót.
 
-4. Nyissa meg a **További feladatok** lapot, válassza **a Hibaelhárítás**lehetőséget, és kattintson a **Tovább**gombra.
+4. Navigáljon a **További feladatok** lapra, válassza a **hibakeresés**lehetőséget, majd kattintson a **tovább**gombra.
 
-5. A Hibaelhárítás lapon kattintson az **Indítás** gombra a PowerShell hibaelhárítási menüjének elindításához.
+5. A hibaelhárítás lapon kattintson a **Launch (indítás** ) elemre a PowerShell hibaelhárítási menüjének elindításához.
 
-6. A főmenüben válassza a **Jelszókivonat-szinkronizálás hibaelhárítása lehetőséget.**
+6. A főmenüben válassza a **jelszó kivonatának szinkronizálása**lehetőséget.
 
-7. Az almenüben válassza a **Jelszó nincs szinkronizálva egy adott felhasználói fiókhoz**lehetőséget.
+7. Az almenüben válassza a **jelszó nincs szinkronizálva beállítást egy adott felhasználói fiókhoz**.
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeinek megismerése
 
 A hibaelhárítási feladat a következő ellenőrzéseket hajtja végre:
 
-* Az Active Directory-objektum állapotát vizsgálja az Active Directory-összekötő, a Metaverzum és az Azure AD-összekötő térben.
+* Megvizsgálja a Active Directory objektum állapotát a Active Directory-összekötő területéről, a metaverse és az Azure AD-összekötő területéről.
 
-* Ellenőrzi, hogy vannak-e szinkronizálási szabályok jelszókivonat-szinkronizálással, és alkalmazható-e az Active Directory-objektumra.
+* Ellenőrzi, hogy vannak-e olyan szinkronizálási szabályok, amelyeken engedélyezve van a jelszó-kivonatoló szinkronizálás, és hogy azok a Active Directory objektumra vonatkoznak.
 
-* Az objektum jelszavának szinkronizálására tett utolsó kísérlet eredményeinek beolvasására és megjelenítésére tett kísérletek.
+* Megkísérli beolvasni és megjeleníteni az objektum jelszavának utolsó szinkronizálási kísérletének eredményét.
 
-Az alábbi ábra a parancsmag eredményeit mutatja be egyetlen objektum jelszókivonat-szinkronizálásának hibaelhárításakor:
+Az alábbi ábrán a parancsmag eredményei láthatók, amikor a jelszó-kivonatolási szinkronizálást egy adott objektumra vonatkozó hibaelhárítás során hajtja végre:
 
-![Diagnosztikai kimenet a jelszókivonat-szinkronizáláshoz - egyetlen objektum](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
+![Diagnosztikai kimenet a jelszó kivonatának szinkronizálásához – egyetlen objektum](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
 
-A szakasz többi része a parancsmag által visszaadott konkrét eredményeket és a megfelelő problémákat ismerteti.
+A szakasz további része a parancsmag által visszaadott eredményeket és a hozzájuk tartozó problémákat ismerteti.
 
-#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Az Active Directory-objektum nem lesz exportálva az Azure AD-be
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Az Active Directory objektum nincs exportálva az Azure AD-be
 
-jelszó-kivonat szinkronizálás a helyszíni Active Directory-fiók sikertelen, mert nincs megfelelő objektum az Azure AD-bérlőben. A következő hibát adja vissza:
+a helyszíni Active Directory fiók jelszavas kivonatának szinkronizálása meghiúsul, mert nincs megfelelő objektum az Azure AD-bérlőben. A rendszer a következő hibaüzenetet adja vissza:
 
-![Az Azure AD objektum hiányzik](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
+![Hiányzik az Azure AD-objektum](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>A felhasználónak ideiglenes jelszava van
 
-Jelenleg az Azure AD Connect nem támogatja az ideiglenes jelszavak szinkronizálását az Azure AD-vel. A jelszó ideiglenesnek minősül, ha a Jelszó módosítása a **következő bejelentkezéskor** beállítás van beállítva a helyszíni Active Directory-felhasználónál. A következő hibát adja vissza:
+A Azure AD Connect jelenleg nem támogatja az ideiglenes jelszavak Azure AD-vel történő szinkronizálását. A jelszó ideiglenesnek tekintendő, ha a **következő bejelentkezéskor a jelszó módosítása** lehetőség be van állítva a helyszíni Active Directory felhasználóra. A rendszer a következő hibaüzenetet adja vissza:
 
-![Az ideiglenes jelszó nem exportálva](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
+![Az ideiglenes jelszó nincs exportálva](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>A jelszó legutóbbi szinkronizálási kísérletének eredményei nem érhetők el
+#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>A jelszó Legutóbbi szinkronizálási kísérletének eredményei nem érhetők el
 
-Alapértelmezés szerint az Azure AD Connect hét napig tárolja a jelszókivonat-szinkronizálási kísérletek eredményeit. Ha a kijelölt Active Directory-objektumhoz nem állnak rendelkezésre eredmények, a következő figyelmeztetést adja vissza:
+Alapértelmezés szerint a Azure AD Connect hét napig tárolja a jelszó-kivonat szinkronizációs kísérletének eredményét. Ha a kiválasztott Active Directory objektumhoz nem érhetők el eredmények, a rendszer a következő figyelmeztetést adja vissza:
 
-![Diagnosztikai kimenet egyetlen objektumhoz – nincs jelszószinkronizálási előzmény](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
+![Egyetlen objektum diagnosztikai kimenete – jelszó-szinkronizálási előzmények nélkül](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Nincsenek jelszavak szinkronizálása: hibaelhárítás a diagnosztikai parancsmag használatával
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>A rendszer nem szinkronizálja a jelszavakat: hibakeresés a diagnosztikai parancsmag használatával
 
-A `Invoke-ADSyncDiagnostics` parancsmag segítségével kitudja találni, hogy miért nincsenek szinkronizálva a jelszavak.
+A parancsmag segítségével kiderítheti, hogy a `Invoke-ADSyncDiagnostics` rendszer miért nem szinkronizálja a jelszavakat.
 
 > [!NOTE]
-> A `Invoke-ADSyncDiagnostics` parancsmag csak az Azure AD Connect 1.1.524.0-s vagy újabb verziójához érhető el.
+> A `Invoke-ADSyncDiagnostics` parancsmag csak Azure ad Connect vagy újabb verziójú 1.1.524.0 érhető el.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>A diagnosztikai parancsmag futtatása
 
-Jelszavak szinkronizálása esetén felmerülő problémák elhárítása:
+A jelszavak szinkronizálása nélküli hibák elhárítása:
 
-1. Nyisson meg egy új Windows PowerShell-munkamenetet az Azure AD Connect kiszolgálón a **Futtatás rendszergazdaként** beállítással.
+1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a vagy `Set-ExecutionPolicy Unrestricted`a ot.
+2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
 
 3. Futtassa az `Import-Module ADSyncDiagnostics` parancsot.
 
@@ -212,20 +212,20 @@ Jelszavak szinkronizálása esetén felmerülő problémák elhárítása:
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Az egyik objektum nem szinkronizálja a jelszavakat: hibaelhárítás a diagnosztikai parancsmag használatával
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Az egyik objektum nem szinkronizálja a jelszavakat: hibakeresés a diagnosztikai parancsmag használatával
 
-A `Invoke-ADSyncDiagnostics` parancsmag segítségével meghatározhatja, hogy egy objektum miért nem szinkronizálja a jelszavakat.
+A parancsmag segítségével meghatározhatja, hogy az egyik objektum miért nem szinkronizálja a `Invoke-ADSyncDiagnostics` jelszavakat.
 
 > [!NOTE]
-> A `Invoke-ADSyncDiagnostics` parancsmag csak az Azure AD Connect 1.1.524.0-s vagy újabb verziójához érhető el.
+> A `Invoke-ADSyncDiagnostics` parancsmag csak Azure ad Connect vagy újabb verziójú 1.1.524.0 érhető el.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>A diagnosztikai parancsmag futtatása
 
-Olyan problémák elhárítása, amelyek miatt a felhasználó nem szinkronizált jelszavakat:
+A felhasználók számára nem szinkronizált jelszavakkal kapcsolatos hibák elhárítása:
 
-1. Nyisson meg egy új Windows PowerShell-munkamenetet az Azure AD Connect kiszolgálón a **Futtatás rendszergazdaként** beállítással.
+1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a vagy `Set-ExecutionPolicy Unrestricted`a ot.
+2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
 
 3. Futtassa az `Import-Module ADSyncDiagnostics` parancsot.
 
@@ -235,7 +235,7 @@ Olyan problémák elhárítása, amelyek miatt a felhasználó nem szinkronizál
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Példa:
+   Például:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -243,130 +243,130 @@ Olyan problémák elhárítása, amelyek miatt a felhasználó nem szinkronizál
 
 
 
-## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Nincsenek szinkronizálva jelszavak: manuális hibaelhárítási lépések
+## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>A rendszer nem szinkronizálja a jelszavakat: manuális hibaelhárítási lépések
 
-Az alábbi lépésekkel állapíthatja meg, hogy miért nincsenek szinkronizálva a jelszavak:
+A következő lépések végrehajtásával megállapíthatja, hogy a rendszer miért nem szinkronizálja a jelszavakat:
 
-1. A Csatlakozás kiszolgáló [átmeneti módban van?](how-to-connect-sync-staging-server.md) Az átmeneti üzemmódban lévő kiszolgálók nem szinkronizálják a jelszavakat.
+1. A csatlakozási kiszolgáló [átmeneti módban](how-to-connect-sync-staging-server.md)van? Az átmeneti üzemmódú kiszolgálók nem szinkronizálják a jelszavakat.
 
-2. Futtassa a parancsfájlt [a Jelszó-szinkronizálási beállítások állapotának beszereznie](#get-the-status-of-password-sync-settings) szakaszban. Áttekintést ad a jelszószinkronizálás konfigurációjáról.  
+2. Futtassa a parancsfájlt a [jelszó-szinkronizálási beállítások állapotának beolvasása](#get-the-status-of-password-sync-settings) szakaszban. Áttekintést nyújt a jelszó-szinkronizálási konfigurációról.  
 
-    ![PowerShell parancsfájlkimenet a jelszószinkronizálási beállításokból](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
+    ![PowerShell-parancsfájl kimenete a jelszó-szinkronizálási beállításokból](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Ha a szolgáltatás nincs engedélyezve az Azure AD-ben, vagy ha a szinkronizálási csatorna állapota nincs engedélyezve, futtassa a Csatlakozás telepítő varázslót. Válassza **a Szinkronizálási beállítások testreszabása lehetőséget,** és törölje a jelszószinkronizálás kijelölését. Ez a módosítás ideiglenesen letiltja a szolgáltatást. Ezután futtassa újra a varázslót, és engedélyezze újra a jelszószinkronizálást. Futtassa újra a parancsfájlt, és ellenőrizze, hogy a konfiguráció helyes-e.
+3. Ha a szolgáltatás nincs engedélyezve az Azure AD-ben, vagy ha a szinkronizálási csatorna állapota nincs engedélyezve, futtassa a telepítővarázsló összekapcsolása varázslót. Válassza a **szinkronizálási beállítások testreszabása lehetőséget**, és törölje a jelszó-szinkronizálás kijelölését. Ez a módosítás átmenetileg letiltja a szolgáltatást. Ezután futtassa újra a varázslót, és engedélyezze újra a jelszó-szinkronizálást. Futtassa újra a parancsfájlt annak ellenőrzéséhez, hogy a konfiguráció megfelelő-e.
 
-4. Keresse meg az eseménynaplóban a hibákat. Keresse meg a következő eseményeket, amelyek problémát jeleznek:
-    * Forrás: "Címtár-szinkronizálás" azonosító: 0, 611, 652, 655 Ha látja ezeket az eseményeket, kapcsolódási problémája van. Az eseménynapló-üzenet olyan erdőadatokat tartalmaz, ahol probléma merült fel. További információt a [Kapcsolódási probléma című témakörben talál.](#connectivity problem)
+4. Az Eseménynaplóban keresse meg a hibákat. Keresse meg a következő eseményeket, amelyek a problémát jelezhetik:
+    * Forrás: "címtár-szinkronizálás" azonosító: 0, 611, 652, 655 ha ezeket az eseményeket látja, kapcsolódási probléma van. Az eseménynapló-üzenet olyan erdő-információkat tartalmaz, amelyekben probléma van. További információ: [kapcsolódási probléma](#connectivity problem).
 
-5. Ha nem lát szívverést, vagy ha semmi más nem működött, [futtassa az Összes jelszó teljes szinkronizálásának aktiválását](#trigger-a-full-sync-of-all-passwords). Csak egyszer futtassa a parancsfájlt.
+5. Ha nem lát szívverést, vagy ha más nem működött, futtassa [az trigger teljes szinkronizálását az összes jelszóval](#trigger-a-full-sync-of-all-passwords). Csak egyszer futtassa a parancsfájlt.
 
-6. Tekintse meg az egyik olyan objektum hibaelhárítása című témakört, amely nem szinkronizálja a jelszavakat.
+6. Tekintse meg a jelszavakat nem szinkronizáló egyik objektum hibáit ismertető szakaszt.
 
-### <a name="connectivity-problems"></a>Kapcsolódási problémák
+### <a name="connectivity-problems"></a>Csatlakozási problémák
 
-Van kapcsolataz Azure AD-vel?
+Van kapcsolata az Azure AD-vel?
 
-Rendelkezik-e a fiók a jelszókibésékok olvasásához szükséges engedélyekkel minden tartományban? Ha a Connect programot expressz beállításokkal telepítette, az engedélyeknek már helyesnek kell lenniük. 
+Rendelkezik a fiók a jelszó-kivonatok összes tartományban való olvasásához szükséges engedélyekkel? Ha az expressz beállítások használatával telepítette a kapcsolatot, az engedélyeknek már helyesnek kell lenniük. 
 
-Ha egyéni telepítést használt, manuálisan állítsa be az engedélyeket az alábbi módon:
+Ha egyéni telepítést használt, manuálisan állítsa be az engedélyeket a következő módon:
     
-1. Az Active Directory-összekötő által használt fiók megkereséséhez indítsa el a **Szinkronizálási szolgáltatáskezelőt.** 
+1. Az Active Directory-összekötő által használt fiók megkereséséhez indítsa el a **synchronization Service Manager**. 
  
-2. Nyissa meg **az Összekötők**, majd keresse meg a helyszíni Active Directory-erdő hibaelhárítás. 
+2. Válassza az **Összekötők**lehetőséget, majd keressen rá a helyszíni Active Directory erdőre, amelyről hibaelhárítást végez. 
  
-3. Jelölje ki az összekötőt, majd kattintson **a Tulajdonságok gombra.** 
+3. Válassza ki az összekötőt, majd kattintson a **Tulajdonságok**elemre. 
  
-4. Nyissa meg **a Csatlakozás az Active Directory erdőhöz (Csatlakozás az Active Directory erdőhöz ) (Csatlakozás az Active Directory erdőhöz ) elemre**  
+4. Lépjen a **kapcsolódás Active Directory erdőhöz**.  
     
-    ![Az Active Directory-összekötő által használt fiók](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
-    Jegyezze fel a felhasználónevet és azt a tartományt, ahol a fiók található.
+    ![Active Directory-összekötő által használt fiók](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
+    Jegyezze fel a felhasználónevet és a tartományt, ahol a fiók található.
     
-5. Indítsa el az Active Directory – felhasználók és számítógépek beépülő **modult,** majd ellenőrizze, hogy a korábban talált fiók rendelkezik-e az erdő összes tartományának gyökerében az alábbi engedélyekkel:
-    * Címtármódosítások replikálása
-    * Könyvtármódosítás-módosítások replikálása
+5. Indítsa el **Active Directory felhasználókat és számítógépeket**, majd ellenőrizze, hogy a korábban megtalált fiók rendelkezik-e az erdő összes tartományának gyökerében a következő engedélyekkel:
+    * Címtárbeli módosítások replikálása
+    * A címtár összes módosításának replikálása
 
-6. Elérhetők a tartományvezérlők az Azure AD Connect által? Ha a Csatlakozás kiszolgáló nem tud csatlakozni az összes tartományvezérlőhöz, konfigurálja **a Csak az elsődleges tartományvezérlőt**.  
+6. Elérhetők a tartományvezérlők Azure AD Connect? Ha a csatlakozási kiszolgáló nem tud csatlakozni az összes tartományvezérlőhöz, konfigurálja a **csak az előnyben részesített tartományvezérlőt**.  
     
-    ![Az Active Directory-összekötő által használt tartományvezérlő](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
+    ![Active Directory-összekötő által használt tartományvezérlő](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
-7. Lépjen vissza a **Szinkronizálási szolgáltatáskezelőhöz** és **a Címtárpartíció konfigurálásához.** 
+7. Lépjen vissza a **synchronization Service Managerra** , és **konfigurálja a címtárpartíciót**. 
  
-8. Jelölje be a tartományt a **Címtárpartíciók kiválasztása**párbeszédpanelen, jelölje be a **Csak az előnyben részesített tartományvezérlők használata jelölőnégyzetet,** majd kattintson a **Konfigurálás gombra.** 
+8. Válassza ki a tartományt a címtárpartíciók **kijelölése**területen, jelölje be a **csak az előnyben részesített tartományvezérlők használata** jelölőnégyzetet, majd kattintson a **Konfigurálás**elemre. 
 
-9. A listában adja meg azokat a tartományvezérlőket, amelyeket a Connectnek a jelszószinkronizáláshoz használnia kell. Ugyanez a lista az importáláshoz és exportáláshoz is használható. Végezze el az alábbi lépéseket az összes tartományban.
+9. A listában adja meg, hogy a csatlakoztatott tartományvezérlők a jelszó-szinkronizálást használják. Ugyanez a lista az importáláshoz és az exportáláshoz is használatos. Hajtsa végre ezeket a lépéseket az összes tartományban.
 
-10. Ha a parancsfájl azt mutatja, hogy nincs szívverés, futtassa a parancsfájlt az [Összes jelszó teljes szinkronizálásának aktiválása kor](#trigger-a-full-sync-of-all-passwords).
+10. Ha a parancsfájl azt mutatja, hogy nincs szívverés, futtassa a parancsfájlt az [összes jelszó teljes szinkronizálásának elindításával](#trigger-a-full-sync-of-all-passwords).
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Az egyik objektum nem szinkronizálja a jelszavakat: manuális hibaelhárítási lépések
 
-Az objektum állapotának áttekintésével könnyedén elháríthatja a jelszókivonat-szinkronizálási problémákat.
+Az objektumok állapotának áttekintésével könnyedén elháríthatja a jelszó-kivonatolás szinkronizálásával kapcsolatos problémákat.
 
-1. Az **Active Directory – felhasználók és számítógépek beépülő modulban**keresse meg a felhasználót, majd ellenőrizze, hogy a **felhasználónak módosítania kell-e a jelszót a következő bejelentkezéskor** jelölőnégyzet.  
+1. **Active Directory felhasználók és számítógépek**területen keresse meg a felhasználót, majd ellenőrizze, hogy a **következő bejelentkezéskor a felhasználónak meg kell-e változtatnia a jelszót** jelölőnégyzet jelölését.  
 
-    ![Az Active Directory produktív jelszavai](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
+    ![Active Directory produktív jelszavak](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
     Ha a jelölőnégyzet be van jelölve, kérje meg a felhasználót, hogy jelentkezzen be, és módosítsa a jelszót. Az ideiglenes jelszavak nincsenek szinkronizálva az Azure AD-vel.
 
-2. Ha a jelszó helyesnek tűnik az Active Directoryban, kövesse a felhasználót a szinkronizálási motorban. Ha a felhasználót a helyszíni Active Directoryból az Azure AD-be követi, láthatja, hogy van-e leíró hiba az objektumon.
+2. Ha a jelszó helyesnek tűnik Active Directoryban, kövesse a felhasználót a Szinkronizáló motorban. A helyszíni Active Directoryról az Azure AD-be való beküldést követően láthatja, hogy van-e leíró hiba az objektumon.
 
-    a. Indítsa el a [Szinkronizálási szolgáltatáskezelőt](how-to-connect-sync-service-manager-ui.md).
+    a. Indítsa el a [synchronization Service Manager](how-to-connect-sync-service-manager-ui.md).
 
-    b. Kattintson **az Összekötők gombra.**
+    b. Kattintson az **Összekötők**elemre.
 
-    c. Jelölje ki azt az **Active Directory-összekötőt,** ahol a felhasználó található.
+    c. Válassza ki azt a **Active Directory-összekötőt** , ahol a felhasználó található.
 
-    d. Válassza a **Keresési összekötő tér ben**lehetőséget.
+    d. Válassza a **Keresés összekötő terület**lehetőséget.
 
-    e. A **Hatókör** mezőben válassza a **DN vagy a Horgony**lehetőséget, majd adja meg a hibaelhárításáltal kiválasztott felhasználó teljes dn-jét.
+    e. A **hatókör** mezőben válassza a **megkülönböztető név vagy a horgony**lehetőséget, majd adja meg a hibaelhárításhoz szükséges felhasználó teljes megkülönböztető nevét.
 
-    ![Felhasználó keresése az összekötőtérben a DN segítségével](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
+    ![Felhasználó keresése az összekötői térben a DN-vel](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. Keresse meg a keresett felhasználót, majd kattintson a **Tulajdonságok** gombra az összes attribútum megtekintéséhez. Ha a felhasználó nem szerepel a keresési eredményben, ellenőrizze a [szűrési szabályokat,](how-to-connect-sync-configure-filtering.md) és ellenőrizze, hogy [futtatta-e](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) az Alkalmazás és a módosítások ellenőrzését, hogy a felhasználó megjelenjen a Csatlakozás szolgáltatásban.
+    f. Keresse meg a keresett felhasználót, majd kattintson a **Tulajdonságok** elemre az összes attribútum megjelenítéséhez. Ha a felhasználó nem szerepel a keresési eredmények között, ellenőrizze a [szűrési szabályokat](how-to-connect-sync-configure-filtering.md) , és győződjön meg arról, hogy az alkalmazás fut, [és ellenőrizze](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) , hogy a felhasználó a kapcsolódás területen megjelenjen-e.
 
-    g. Az objektum múlt heti jelszószinkronizálási adatainak megtekintéséhez kattintson a **Napló gombra.**  
+    g. Ha meg szeretné tekinteni az elmúlt hét objektumának jelszó-szinkronizálási részleteit, kattintson a **napló**gombra.  
 
-    ![Objektumnapló részletei](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
+    ![Objektum naplójának részletei](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Ha az objektumnapló üres, az Azure AD Connect nem tudta olvasni a jelszókivonatot az Active Directoryból. Folytassa a hibaelhárítást a kapcsolódási hibákkal. Ha **a sikeresen**kívül más értéket is lát, olvassa el a [Jelszó szinkronizálási naplójában](#password-sync-log)található táblázatot.
+    Ha az objektum naplója üres, Azure AD Connect nem tudta beolvasni a jelszó-kivonatot a Active Directoryból. A hibaelhárítást a kapcsolódási hibákkal folytathatja. Ha a **sikernél**más értéket lát, tekintse meg a jelszó- [szinkronizálási naplóban](#password-sync-log)található táblázatot.
 
-    h. Jelölje ki a **vonallapot,** és győződjön meg arról, hogy a **PasswordSync** oszlopban legalább egy szinkronizálási szabály **Igaz**. Az alapértelmezett konfigurációban a szinkronizálási szabály neve **In from AD - User AccountEnabled**.  
+    h. Válassza ki a **Lineage** fület, és győződjön meg arról, hogy a **PasswordSync** oszlopban legalább egy szinkronizálási szabály **igaz értékű**. Az alapértelmezett konfigurációban a szinkronizálási szabály neve az **ad-User AccountEnabled**található.  
 
-    ![A felhasználó vonalsegédje](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
+    ![A felhasználóra vonatkozó kifejlődési információ](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. A felhasználói attribútumok listájának megjelenítéséhez kattintson a **Metaverzum-objektum tulajdonságai** parancsra.  
+    i. A felhasználói attribútumok listájának megjelenítéséhez kattintson a **metaverse-objektum tulajdonságai** elemre.  
 
-    ![Metaverzum információ](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Metaverse-információk](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
-    Ellenőrizze, hogy **nincs-e cloudFiltered** attribútum. Győződjön meg arról, hogy a tartományattribútumok (domainFQDN és domainNetBios) rendelkeznek a várt értékekkel.
+    Ellenőrizze, hogy nincs-e **cloudFiltered** attribútum. Győződjön meg arról, hogy a tartományi attribútumok (domainFQDN és domainNetBios) a várt értékekkel rendelkeznek.
 
-    j. Kattintson az **összekötők** fülre. Győződjön meg arról, hogy a helyszíni Active Directory és az Azure AD összekötők jelennek meg.
+    j. Kattintson az **Összekötők** lapra. Ellenőrizze, hogy az összekötők a helyszíni Active Directory és az Azure ad-hez is megjelennek-e.
 
-    ![Metaverzum információ](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
+    ![Metaverse-információk](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Jelölje ki az Azure AD-t jelölő sort, kattintson a **Tulajdonságok**gombra, majd a **Vonal** fülre. Az összekötő térobjektumnak a **PasswordSync** oszlopban egy kimenő szabálynak igaz értékre kell **állítava.** Az alapértelmezett konfigurációban a szinkronizálási szabály neve **Out to AAD - User Join**.  
+    k. Válassza ki az Azure AD-t jelölő sort, kattintson a **Tulajdonságok**elemre, majd kattintson a **Lineage** (leválasztás) fülre. Az összekötő terület objektumnak rendelkeznie kell egy kimenő szabállyal a **PasswordSync** oszlopban az **igaz**értékre állítva. Az alapértelmezett konfigurációban a szinkronizálási szabály neve nem **HRE – felhasználó illesztés**.  
 
-    ![Összekötő térobjektum tulajdonságai párbeszédpanel](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
+    ![Összekötő terület objektumának tulajdonságai párbeszédpanel](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
-### <a name="password-sync-log"></a>Jelszó szinkronizálási naplója
+### <a name="password-sync-log"></a>Jelszó-szinkronizálási napló
 
-Az állapotoszlop a következő értékeket tartalmazhatja:
+Az Állapot oszlopban a következő értékek szerepelhetnek:
 
 | status | Leírás |
 | --- | --- |
 | Sikeres |A jelszó szinkronizálása sikeresen megtörtént. |
-| FilteredByTarget |Jelszó van beállítva, hogy **a felhasználónak meg kell változtatni a jelszót a következő bejelentkezéskor**. A jelszó nincs szinkronizálva. |
-| NoTargetConnection (NoTargetConnection) |Nincs objektum a metaverzumban vagy az Azure AD-összekötő térben. |
-| SourceConnectorNotPresent |Nem található objektum a helyszíni Active Directory-összekötő térben. |
-| TargetNotExportedToDirectory |Az objektum az Azure AD-összekötő térben még nem exportált. |
-| MigratedCheckDetailsForMoreInfo |A naplóbejegyzés az 1.0.9125.0-s verzió létrehozása előtt jött létre, és az örökölt állapotában jelenik meg. |
+| FilteredByTarget |A jelszó beállítása a **következő bejelentkezéskor a felhasználónak kell megváltoztatnia a jelszót**. A jelszó nincs szinkronizálva. |
+| NoTargetConnection |Nincs objektum a metaverse-ban vagy az Azure AD-összekötőben. |
+| SourceConnectorNotPresent |Nem található objektum a helyszíni Active Directory-összekötő területén. |
+| TargetNotExportedToDirectory |Az Azure AD-összekötő területének objektuma még nem lett exportálva. |
+| MigratedCheckDetailsForMoreInfo |A naplóbejegyzés a 1.0.9125.0 létrehozása előtt lett létrehozva, és a korábbi állapotukban jelenik meg. |
 | Hiba |A szolgáltatás ismeretlen hibát adott vissza. |
-| Ismeretlen |Hiba történt a jelszókijelentések kötegének feldolgozása közben.  |
-| MissingAttribute |Az Azure AD tartományi szolgáltatások által igényelt bizonyos attribútumok (például Kerberos-kivonat) nem érhetők el. |
-| ÚjrapróbálkozásKérés |Az Azure AD tartományi szolgáltatások által igényelt speciális attribútumok (például Kerberos-kivonat) korábban nem voltak elérhetők. A rendszer kísérletet tesz a felhasználó jelszókivonatának újraszinkronizálására. |
+| Ismeretlen |Hiba történt a jelszó-kivonatok kötegének feldolgozására tett kísérlet során.  |
+| MissingAttribute |A Azure AD Domain Services által igényelt adott attribútumok (például Kerberos-kivonatok) nem érhetők el. |
+| RetryRequestedByTarget |A Azure AD Domain Services által igényelt konkrét attribútumok (például Kerberos-kivonatok) korábban nem voltak elérhetők. Kísérlet történt a felhasználó jelszavas kivonatának újraszinkronizálására. |
 
-## <a name="scripts-to-help-troubleshooting"></a>Parancsfájlok a hibaelhárításhoz
+## <a name="scripts-to-help-troubleshooting"></a>Hibaelhárítást segítő parancsfájlok
 
-### <a name="get-the-status-of-password-sync-settings"></a>A jelszószinkronizálási beállítások állapotának beszereznie
+### <a name="get-the-status-of-password-sync-settings"></a>Jelszó-szinkronizálási beállítások állapotának beolvasása
 
 ```powershell
 Import-Module ADSync
@@ -421,12 +421,12 @@ if ($adConnectors -eq $null)
 Write-Host
 ```
 
-#### <a name="trigger-a-full-sync-of-all-passwords"></a>Az összes jelszó teljes szinkronizálásának aktiválása
+#### <a name="trigger-a-full-sync-of-all-passwords"></a>Az összes jelszó teljes szinkronizálásának elindítása
 
 > [!NOTE]
-> Csak egyszer futtassa ezt a parancsfájlt. Ha többször is futtatnia kell, valami más a probléma. A probléma elhárításához forduljon a Microsoft támogatási szolgálatához.
+> Ezt a parancsfájlt csak egyszer futtassa. Ha többször kell futtatnia, valami más a probléma. A probléma elhárításához forduljon a Microsoft ügyfélszolgálatához.
 
-Az összes jelszó teljes szinkronizálását a következő parancsfájl segítségével indíthatja el:
+Az összes jelszó teljes szinkronizálását a következő parancsfájl használatával aktiválhatja:
 
 ```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
@@ -444,6 +444,6 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>További lépések
 
-* [Jelszókivonat-szinkronizálás megvalósítása az Azure AD Connect szinkronizálásával](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect Sync: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Jelszó-kivonatolási szinkronizálás megvalósítása Azure AD Connect szinkronizálással](how-to-connect-password-hash-synchronization.md)
+* [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

@@ -1,6 +1,6 @@
 ---
-title: ASIN az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg, hogyan adja vissza az Arcsine (ASIN) SQL rendszer függvényét az Azure Cosmos DB-ben, amelynek szinusza a megadott numerikus kifejezés.
+title: ASIN Azure Cosmos DB lekérdezési nyelven
+description: Ismerje meg, hogy a Azure Cosmos DB arkusz (ASIN) SQL System függvénye hogyan adja vissza azt a szöget (radiánban), amelynek szinusza a megadott numerikus kifejezés
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302695"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
- Radiánban lévő szöget számít ja, amelynek szinusza a megadott numerikus kifejezés. Ezt arcsinnak is nevezik.  
+ Azt a szöget adja vissza radiánban, amelynek szinusza a megadott numerikus kifejezés. Ezt az arkusz tangens is hívja.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ ASIN(<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Ez egy numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Numerikus kifejezést ad eredményül.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa `ASIN` a -1 értékét adja vissza.  
+  A következő példa a `ASIN` -1 értéket adja vissza.  
   
 ```sql
 SELECT ASIN(-1) AS asin  
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"asin": -1.5707963267948966}]  
@@ -48,10 +48,10 @@ SELECT ASIN(-1) AS asin
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Hatókören kívüli felhasználók törlésének kihagyása | Microsoft dokumentumok
-description: Ismerje meg, hogyan bírálhatja felül a hatókörből kieső felhasználókon kívüli kiépítés alapértelmezett viselkedését.
+title: A hatókörön kívüli felhasználók törlésének kihagyása | Microsoft Docs
+description: Megtudhatja, hogyan bírálhatja felül a kiépítés alapértelmezett viselkedését a hatókör felhasználói közül.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -16,53 +16,53 @@ ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1668c022a0f067a381ba09b397c7d38c99ad074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522449"
 ---
-# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívül eső felhasználói fiókok törlésének kihagyása
+# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
-Alapértelmezés szerint az Azure AD kiépítési motor ideiglenesen törli vagy letiltja a hatókörön kívül eső felhasználókat. Bizonyos esetekben azonban, mint a Workday az AD-felhasználó bejövő kiépítése ez a viselkedés nem lehet a várt, és érdemes felülírni ezt az alapértelmezett viselkedést.  
+Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Azonban előfordulhat, hogy bizonyos forgatókönyvek, például az AD-felhasználó bejövő üzembe helyezése esetén ez a viselkedés nem a várt, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
 
-Ez az útmutató bemutatja, hogyan használhatja a Microsoft Graph API-t és a Microsoft Graph API-kezelőt a ***SkipOutOfScopeDeletions*** jelző beállításához, amely a hatókörön kívül eső fiókok feldolgozását szabályozza. 
-* Ha ***a SkipOutOfScopeDeletions*** értéke 0 (hamis), akkor a hatókörön kívül eső fiókok le lesznek tiltva a célban
-* Ha ***skipOutOfScopeDeletions*** van beállítva 1 (igaz), majd a fiókok, amelyek kikerülnek a hatókörnem lesz letiltva a cél Ez a jelző van beállítva a *kiépítési alkalmazás* szintjén, és konfigurálható a Graph API használatával. 
+Ez az útmutató ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozását vezérlő ***SkipOutOfScopeDeletions*** beállításához. 
+* Ha a ***SkipOutOfScopeDeletions*** 0 (hamis) értékre van állítva, akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen
+* Ha a ***SkipOutOfScopeDeletions*** értéke 1 (igaz), akkor a hatókörön kívüli fiókok nem lesznek letiltva a *kiépítési alkalmazás* szintjén, és a Graph API használatával konfigurálhatók. 
 
-Mivel ez a konfiguráció széles körben használják a *Workday az Active Directory felhasználói kiépítési* alkalmazás, az alábbi lépések közé képernyőképek a Workday alkalmazás. Azonban ez is használható **az összes többi alkalmazással,** mint például (ServiceNow, Salesforce, Dropbox stb.).
+Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, az alábbi lépésekben a munkanap alkalmazás képernyőképei szerepelnek. Ez azonban a **többi alkalmazással** (például ServiceNow, Salesforce, Dropbox stb.) is használható.
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. lépés: A kiépítési alkalmazás egyszerű szolgáltatásazonosítójának (objektumazonosító) lekérése
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. lépés: a kiépítési App Service rendszerbiztonsági tag AZONOSÍTÓjának beolvasása (objektumazonosító)
 
-1. Indítsa el az [Azure Portalt](https://portal.azure.com), és keresse meg a kiépítési alkalmazás Tulajdonságok szakaszát. Például ha a *Workday-t a Workday alkalmazáskiépítési alkalmazásleképezésbe* szeretné exportálni, keresse meg az alkalmazás Tulajdonságok szakaszát. 
-1. A kiépítési alkalmazás Tulajdonságok szakaszábamásolja az *Objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId-jának** is nevezik, és a Graph Explorer műveleteiben fogja használni.
+1. Indítsa el a [Azure Portal](https://portal.azure.com), és navigáljon a kiépítési alkalmazás tulajdonságok szakaszába. Például ha a *munkanapokat az ad-felhasználók kiépítési alkalmazás-* hozzárendeléséhez szeretné exportálni, navigáljon az alkalmazás tulajdonságok szakaszába. 
+1. A kiépítési alkalmazás tulajdonságok szakaszában másolja az *objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId** is nevezik, és a Graph Explorer műveleteiben fogja használni.
 
-   ![Workday alkalmazásszolgáltatás egyszerű azonosítója](./media/skip-out-of-scope-deletions/wd_export_01.png)
+   ![Munkanapok App Service résztvevő azonosítója](./media/skip-out-of-scope-deletions/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. lépés: Bejelentkezés a Microsoft Graph Explorer programba
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. lépés: bejelentkezés Microsoft Graph Explorerbe
 
-1. A [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
-1. Kattintson a "Bejelentkezés a Microsofttal" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy alkalmazásfelügyeleti hitelesítő adataival.
+1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
+1. Kattintson a "Bejelentkezés Microsofttal" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy az alkalmazás-rendszergazdai hitelesítő adataival.
 
-    ![Graph bejelentkezés](./media/skip-out-of-scope-deletions/wd_export_02.png)
+    ![Gráf bejelentkezés](./media/skip-out-of-scope-deletions/wd_export_02.png)
 
-1. Sikeres bejelentkezés után a felhasználói fiók részletei a bal oldali ablaktáblában jelennek meg.
+1. A sikeres bejelentkezés után a bal oldali ablaktáblán megjelenik a felhasználói fiók adatai.
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>3. lépés: Meglévő alkalmazás-hitelesítő adatok és kapcsolódási részletek beszerezni
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>3. lépés: meglévő alkalmazás hitelesítő adatainak és kapcsolati adatainak beolvasása
 
-A Microsoft Graph Explorer programban futtassa a következő GET-lekérdezést, amely a [servicePrincipalId] helyére **az** [1.](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)
+A Microsoft Graph Explorerben futtassa a következő GET lekérdezést a [servicePrincipalId] helyett az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert **servicePrincipalId** .
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![Feladatlekérdezés beszése](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![Feladatok lekérdezésének beolvasása](./media/skip-out-of-scope-deletions/skip-03.png)
 
-Másolja a választ egy szöveges fájlba. Úgy fog kinézni, mint az alábbi JSON-szöveg, a központi telepítésre jellemző sárga színnel kiemelve lévő értékekkel. Adja hozzá a zöldszínnel kiemelt vonalakat a végére, és frissítse a kék színnel kiemelt Workday-kapcsolat jelszavát. 
+Másolja a választ egy szövegfájlba. Az alábbi JSON-szöveghez hasonlóan fog kinézni, amely az üzembe helyezéshez tartozó sárga színnel van kiemelve. Adja hozzá a zöld színnel jelölt vonalakat a végponthoz, és frissítse a munkanapokhoz való kapcsolódási jelszót kék színnel. 
 
-   ![Get állásválasz](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![Válasz beolvasása](./media/skip-out-of-scope-deletions/skip-04.png)
 
-Itt van a JSON blokk hozzáadni a leképezéshez. 
+Itt látható a leképezéshez hozzáadandó JSON-blokk. 
 
 ```json
         {
@@ -71,33 +71,33 @@ Itt van a JSON blokk hozzáadni a leképezéshez.
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. lépés: Frissítse a titkos kulcsok végpontját a SkipOutOfScopeDeletions jelzővel
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. lépés: a titkok végpontjának frissítése a SkipOutOfScopeDeletions jelzővel
 
-A Graph Explorer, futtassa az alábbi parancsot, hogy frissítse a titkos kulcsok végponta a ***SkipOutOfScopeDeletions*** jelző. 
+A Graph Explorerben futtassa az alábbi parancsot a Secrets végpont ***SkipOutOfScopeDeletions*** jelzővel való frissítéséhez. 
 
-Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet **az** [1.](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 
+Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert **servicePrincipalId** . 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
-Másolja a frissített szöveget a 3. 
+Másolja a 3. lépésben szereplő frissített szöveget a "kérés törzse" értékre, és állítsa be a "Content-Type" fejlécet "Application/JSON" értékre a "kérések fejléce" kifejezésben. 
 
    ![PUT kérelem](./media/skip-out-of-scope-deletions/skip-05.png)
 
-Kattintson a "Lekérdezés futtatása" gombra. 
+Kattintson a "lekérdezés futtatása" gombra. 
 
-Önnek kellene kap a termelés mint " siker – helyzet Kód 204". 
+A kimenetet "sikeres – állapotkód 204" értékre kell beolvasni. 
 
-   ![PUT válasz](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Válasz elhelyezése](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>5. lépés: Ellenőrizze, hogy a hatókörön kívül a felhasználók nem lesznek letiltva
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>5. lépés: annak ellenőrzése, hogy a hatókörön kívüli felhasználók ne legyenek letiltva
 
-Tesztelheti ezt a jelzőt a várt viselkedés, ha frissíti a hatókörszabályokat, hogy kihagyja egy adott felhasználó. Az alábbi példában a 21173-as azonosítóval rendelkező alkalmazottat (aki korábban hatókörben volt) egy új hatóköri szabály hozzáadásával kizárjuk: 
+Ezt a jelzőt tesztelheti a várt viselkedés alapján, ha frissíti a hatóköri szabályokat egy adott felhasználó kihagyásához. Az alábbi példában egy új hatókör-szabály hozzáadásával kizárja a 21173-as AZONOSÍTÓJÚ alkalmazottat (aki korábban a hatókörben volt): 
 
-   ![Példa hatókör-hatókörre](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Hatókör – példa](./media/skip-out-of-scope-deletions/skip-07.png)
 
-A következő kiépítési ciklusban az Azure AD létesítési szolgáltatás azonosítja, hogy a felhasználó 21173 kikerült a hatókör, és ha a SkipOutOfScopeDeletions tulajdonság engedélyezve van, majd a szinkronizálási szabály az adott felhasználó megjelenik egy üzenet az alábbiak szerint: 
+A következő üzembe helyezési ciklusban az Azure AD kiépítési szolgáltatás megállapítja, hogy a 21173-es felhasználó kikerült a hatókörből, és ha a SkipOutOfScopeDeletions tulajdonság engedélyezve van, akkor az adott felhasználó szinkronizálási szabálya az alábbi képen látható üzenetet jeleníti meg: 
 
-   ![Példa hatókör-hatókörre](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Hatókör – példa](./media/skip-out-of-scope-deletions/skip-08.png)
 
 

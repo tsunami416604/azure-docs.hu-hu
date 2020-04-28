@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183779"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Bejelentkezés Android-alkalmazással Azure Active Directory B2C
@@ -65,7 +65,7 @@ A minta a [AppAuth](https://openid.github.io/AppAuth-Android/)által megadott mi
 > A AppAuth az Android API 16 (Jellybean) és újabb verzióit támogatja. Javasoljuk, hogy a 23. és újabb API-t használja.
 >
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
 A Azure AD B2Choz való kommunikáció konfigurálásához adja meg a felderítési URI-t, vagy adja meg az engedélyezési végpontot és a jogkivonat-végpont URI-JÁT is. Mindkét esetben a következő információkra lesz szüksége:
 

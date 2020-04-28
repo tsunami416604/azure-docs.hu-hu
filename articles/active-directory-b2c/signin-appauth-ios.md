@@ -1,7 +1,7 @@
 ---
-title: AppAuth használata iOS-alkalmazásban
+title: AppAuth használata iOS-alkalmazásokban
 titleSuffix: Azure AD B2C
-description: Hogyan hozhat létre egy iOS-alkalmazást, amely az AppAuth és az Azure Active Directory B2C használatával kezeli a felhasználói identitásokat és hitelesíti a felhasználókat.
+description: AppAuth-t használó iOS-alkalmazás létrehozása a Azure Active Directory B2C a felhasználói identitások kezeléséhez és a felhasználók hitelesítéséhez.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,75 +12,75 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186828"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Bejelentkezés iOS-alkalmazáshasználatával
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
 
-A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A nyílt szabványú protokoll használata több fejlesztői lehetőséget kínál, amikor kiválaszt egy könyvtárat, amelyintegrálódik a szolgáltatásainkkal. Ezt a forgatókönyvet és a hozzá hasonló kontőket a Microsoft Identity platformhoz csatlakozó alkalmazások írásában segíthetjük a fejlesztőknek. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) megvalósító legtöbb könyvtár képes csatlakozni a Microsoft Identity platformhoz.
+A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A nyílt szabványú protokoll használatával további fejlesztői lehetőségek közül választhat, amikor kijelöl egy könyvtárat a szolgáltatásokkal való integrációhoz. Ezt a bemutatót és másokat, például a Microsoft Identity platformhoz kapcsolódó alkalmazások írásához segítséget nyújt a fejlesztőknek. [A RFC6749 OAuth2 SPECT](https://tools.ietf.org/html/rfc6749) megvalósító kódtárak többsége képes csatlakozni a Microsoft Identity platformhoz.
 
 > [!WARNING]
-> A Microsoft nem biztosít javításokat harmadik féltől származó tárakhoz, és nem vizsgálta felül ezeket a könyvtárakat. Ez a minta egy külső gyártótól származó, AppAuth nevű függvénytárat használ, amelyet az Azure AD B2C-vel az alapvető forgatókönyvekben való kompatibilitás szempontjából teszteltek. A problémákat és a szolgáltatáskérelmeket a tár nyílt forráskódú projektjéhez kell irányítani. További információt [ebben a cikkben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)talál.
+> A Microsoft nem biztosít javításokat harmadik féltől származó tárak számára, és nem végzett felülvizsgálatot ezen könyvtárakon. Ez a minta egy AppAuth nevű harmadik féltől származó könyvtárat használ, amely a Azure AD B2C segítségével alapszintű forgatókönyvekben való kompatibilitásra lett tesztelve. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 >
 >
 
-Ha most jön az OAuth2 vagy az OpenID Connect, a mintakonfiguráció nagy része nem sok értelme van. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](protocols-overview.md).
+Ha még nem ismeri a OAuth2 vagy az OpenID Connectet, akkor előfordulhat, hogy a minta konfigurációjának nagy része nem lenne értelme. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](protocols-overview.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtár egy tároló az összes felhasználó, alkalmazások, csoportok és így tovább. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtár minden felhasználó, alkalmazás, csoport és egyéb tároló. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Ezután regisztráljon egy alkalmazást az Azure AD B2C-bérlőben. Ez biztosítja az Azure AD az alkalmazással való biztonságos kommunikációhoz szükséges információkat.
+Ezután regisztráljon egy alkalmazást a Azure AD B2C-bérlőben. Ez biztosítja az Azure AD számára az alkalmazással való biztonságos kommunikációhoz szükséges információkat.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
+Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
-Is rögzítse az egyéni átirányítási URI-hoz használ egy későbbi lépésben. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Az egyéni átirányítási URI-t is rögzítheti egy későbbi lépésben való használatra. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Felhasználói folyamatok létrehozása
-Az Azure AD B2C-ben minden felhasználói élményt egy [felhasználói folyamat](user-flow-overview.md)határoz meg. Ez az alkalmazás egy identitásélményt tartalmaz: a kombinált bejelentkezés és a regisztráció. A felhasználói folyamat létrehozásakor ügyeljen arra, hogy:
+Azure AD B2C minden felhasználói élményt egy [felhasználói folyamat](user-flow-overview.md)definiál. Ez az alkalmazás egyetlen identitási élményt tartalmaz: egy kombinált bejelentkezést és egy regisztrációt. A felhasználói folyamat létrehozásakor ügyeljen arra, hogy:
 
-* A **Regisztrációs attribútumok csoportban**válassza ki a **Megjelenítendő név attribútumot.**  Más attribútumokat is kiválaszthat.
-* Az **Alkalmazásjogcímek**csoportban válassza ki a **jogcímeket A megjelenített név** és a felhasználó **objektumazonosítója csoportban.** Más jogcímeket is választhat.
-* A létrehozás után másolja az egyes felhasználói folyamatok **nevét.** A felhasználói folyamat neve `b2c_1_` előtaggal van ellátva a felhasználói folyamat mentésekor.  Később szüksége lesz a felhasználói folyamat nevére.
+* A **regisztrálási attribútumok**területen válassza ki az attribútum **megjelenítendő nevét**.  Más attribútumok is kiválaszthatók.
+* Az **alkalmazás jogcímei**területen válassza ki a jogcímek **megjelenítendő nevét** és a **felhasználó objektumának azonosítóját**. Más jogcímeket is kijelölhet.
+* A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve a felhasználói folyamat mentésekor `b2c_1_` előtaggal van ellátva.  A felhasználói folyamat nevét később kell megadnia.
 
-Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozásához.
+Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozására.
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
-A [GitHubon](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)az Azure AD B2C használatával működő mintát biztosítottunk. Letöltheti a kódot, és futtathatja. Saját Azure AD B2C-bérlő használatához kövesse a [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md)című utasításokat.
+Olyan munkamintaot kaptunk, amely a AppAuth-t használja Azure AD B2C [a githubon](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Letöltheti a kódot, és futtathatja. Ha saját Azure AD B2C bérlőt szeretne használni, kövesse a [readme.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md)utasításait.
 
-Ezt a mintát az iOS AppAuth projekt README utasításainak követésével hozták létre [a GitHubon.](https://github.com/openid/AppAuth-iOS) A minta és a könyvtár működésével kapcsolatos további részletekért keresse fel az AppAuth README-t a GitHubon.
+Ezt a mintát a [githubon lévő iOS AppAuth projekt](https://github.com/openid/AppAuth-iOS)readme utasításai követték. A minta és a könyvtár működésével kapcsolatos további részletekért lásd a AppAuth README fájlt a GitHubon.
 
-## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Az alkalmazás módosítása az Azure AD B2C és az AppAuth használatához
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Az alkalmazás módosítása Azure AD B2C használatára a AppAuth
 
 > [!NOTE]
-> Az AppAuth támogatja az iOS 7-es és újabb rendszert.  A Google közösségi bejelentkezéseinek támogatásához azonban az SFSafariViewController szükséges, amelyhez iOS 9 vagy újabb rendszer szükséges.
+> A AppAuth az iOS 7-es vagy újabb verzióját támogatja.  Ahhoz azonban, hogy támogassa a közösségi bejelentkezéseket a Google-on, SFSafariViewController van szükség, amelyhez iOS 9-es vagy újabb verzió szükséges.
 >
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
-Az Azure AD B2C-vel való kommunikáció konfigurálásához adja meg az engedélyezési végpont és a token végpont URI-k.  Az URI-k létrehozásához a következő információkra van szükség:
-* Bérlőazonosítója (például contoso.onmicrosoft.com)
-* Felhasználóforgalom neve (például B2C\_1\_SignUpIn)
+Az Azure AD B2Cval való kommunikációt az engedélyezési végpont és a jogkivonat-végpont URI-k megadásával állíthatja be.  Az URI-k létrehozásához a következő információk szükségesek:
+* Bérlő azonosítója (például contoso.onmicrosoft.com)
+* Felhasználói folyamat neve (például B2C\_1\_SignUpIn)
 
-A jogkivonat-végpont URI-ja a\_bérlői azonosító\_és a házirend neve lecserélésével jön létre a következő URL-címen:
+A jogkivonat-végpont URI-ja a bérlői\_azonosító és a szabályzat\_nevének a következő URL-címben való lecserélésével hozható létre:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Az engedélyezési végpont URI-ja a bérlői\_azonosító és\_a házirend neve lecserélésével jön létre a következő URL-címen:
+Az engedélyezési végpont URI-ja a bérlői\_azonosító és a szabályzat\_nevének a következő URL-címben való lecserélésével hozható létre:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
 ```
 
-Futtassa a következő kódot az AuthorizationServiceConfiguration objektum létrehozásához:
+Futtassa a következő kódot a AuthorizationServiceConfiguration objektum létrehozásához:
 
 ```objc
 OIDServiceConfiguration *configuration =
@@ -90,12 +90,12 @@ OIDServiceConfiguration *configuration =
 
 ### <a name="authorizing"></a>Engedélyezése
 
-Az engedélyezési szolgáltatás konfigurációjának konfigurálása vagy beolvasása után engedélyezési kérelem állítható létre. A kérelem létrehozásához a következő adatokra van szükség:
+Az engedélyezési szolgáltatás konfigurációjának konfigurálása vagy beolvasása után egy engedélyezési kérelem is létrehozható. A kérelem létrehozásához a következő információk szükségesek:
 
-* A korábban rögzített ügyfélazonosító (APPLICATION ID). Például: `00000000-0000-0000-0000-000000000000`.
-* Egyéni átirányítási URI, amely korábban rögzített. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+* Az ügyfél-azonosító (alkalmazás azonosítója), amelyet korábban rögzített. Például: `00000000-0000-0000-0000-000000000000`.
+* A korábban rögzített egyéni átirányítási URI. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-Az [alkalmazás regisztrálásakor](#create-an-application)mindkét elemet menteni kellett volna.
+[Az alkalmazás regisztrálásakor](#create-an-application)mindkét elemet el kell menteni.
 
 ```objc
 OIDAuthorizationRequest *request =
@@ -121,16 +121,16 @@ appDelegate.currentAuthorizationFlow =
     }];
 ```
 
-Ha be szeretné állítani az alkalmazást úgy, hogy az egyéni sémával kezelje az URI-ba való átirányítást, frissítenie kell az "URL-sémák" listáját az Info.pList listában:
-* Nyissa meg az Info.pList parancsot.
-* Mutasson egy sorra, például a \+ "Bundle OS Type Code" (Csomagoperációsrendszer típuskód) elemre, és kattintson a szimbólumra.
-* Nevezze át az új sor "URL-típusok".
-* A fa megnyitásához kattintson az "URL-típusok" bal oldalán található nyílra.
-* A fa megnyitásához kattintson a "0. elem" bal oldalán lévő nyílra.
-* Nevezze át az első elemet a 0.
-* A fa megnyitásához kattintson az "URL-sémák" bal oldalán található nyílra.
-* Az "Érték" oszlopban egy üres mező található a "0.  Állítsa be az értéket az alkalmazás egyedi sémára.  Az értéknek meg kell egyeznie az REDirectURL-ben használt sémával az OIDAuthorizationRequest objektum létrehozásakor.  A mintában a rendszer "com.onmicrosoft.fabrikamb2c.exampleapp" rendszer használatos.
+Ha úgy szeretné beállítani az alkalmazást, hogy az az egyéni sémával kezelje az átirányítást az URI-ra, frissítenie kell az "URL-sémák" listáját az info. plist fájlban:
+* Nyissa meg az info. plist fájlt.
+* Vigye az egérmutatót egy olyan sorra, mint a "köteg operációs rendszer \+ típusa", majd kattintson a szimbólumra.
+* Nevezze át az új sor URL-típusait.
+* Kattintson az "URL-típusok" bal oldalán található nyílra a fa megnyitásához.
+* Kattintson a "0. elem" bal oldalán található nyílra a fa megnyitásához.
+* Nevezze át a 0. tétel alá tartozó első tételt az "URL-sémák" értékre.
+* Kattintson az "URL-sémák" bal oldalán található nyílra a fa megnyitásához.
+* Az "érték" oszlopban van egy üres mező, amely a "0. elem" bal oldalán található az "URL-sémák" alatt.  Állítsa be az értéket az alkalmazás egyedi sémájára.  Az értéknek meg kell egyeznie a redirectURL a OIDAuthorizationRequest objektum létrehozásakor használt sémával.  A mintában a "com. onmicrosoft. fabrikamb2c. exampleapp" séma van használatban.
 
-Tekintse meg az [AppAuth útmutatót](https://openid.github.io/AppAuth-iOS/) a folyamat további befejezéséhez. Ha gyorsan el kell kezdenie egy működő alkalmazást, tekintse meg [a mintát.](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) saját Azure AD B2C-konfigurációjának megadásához kövesse a lépéseket.
+Tekintse át az [AppAuth útmutatót](https://openid.github.io/AppAuth-iOS/) , amely bemutatja, hogyan végezheti el a folyamat hátralévő részét. Ha gyorsan kell megkezdenie egy működő alkalmazás használatát, tekintse meg [a mintát](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). A saját Azure AD B2C konfigurációjának megadásához kövesse a [readme.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) lépéseit.
 
-Mindig nyitottak vagyunk a visszajelzésekre és a javaslatokra! Ha bármilyen nehézséget okoz ez a cikk, vagy javaslatokat tesz a tartalom javítására, nagyra értékeljük a visszajelzést az oldal alján. Szolgáltatáskérések esetén adja hozzá őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Ha problémája merül fel a jelen cikkben vagy a tartalom javítására vonatkozó javaslatokkal, a lap alján értékeljük a visszajelzését. A szolgáltatási kérelmek esetében adja hozzá őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).

@@ -1,6 +1,6 @@
 ---
-title: RADIÁN AZ Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg a RADIANS SQL-rendszerfunkciót az Azure Cosmos DB-ben.
+title: RADIÁN Azure Cosmos DB lekérdezési nyelven
+description: A Azure Cosmos DB SQL System Function radián ismertetése.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302236"
 ---
 # <a name="radians-azure-cosmos-db"></a>RADIÁN (Azure Cosmos DB)
- A függvény függvényének beírásakor a függvény függvényak ben a függvény a dimára ír.  
+ A radián értéket adja vissza, ha egy numerikus kifejezés (fokban) van megadva.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ RADIANS (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Ez egy numerikus kifejezés.  
+   Egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Numerikus kifejezést ad eredményül.  
+  Egy numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa néhány szöget vesz fel bemenetként, és visszaadja a megfelelő radiánértékeket.  
+  A következő példa eltarthat néhány nézőpontot bemenetként, és visszaadja a hozzájuk tartozó radián-értékeket.  
   
 ```sql
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
-  Itt van az eredményhalmaz.  
+  Itt látható az eredményhalmaz.  
   
 ```json
 [{  
@@ -54,10 +54,10 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

@@ -1,7 +1,7 @@
 ---
 title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal (előzetes verzió)
 titleSuffix: Azure AD B2C
-description: Az Azure Active Directory B2C egyéni szabályzataival sms-ben egyszeri jelszavakat (OTP) küldhet az alkalmazás felhasználóinak telefonjaira.
+description: Egyszeri jelszó (OTP) küldése szöveges üzenetekben az alkalmazás felhasználói telefonokra egyéni szabályzatokkal Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,81 +12,81 @@ ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183958"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal az Azure AD B2C-ben (előzetes verzió)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2Cban (előzetes verzió)
 
-Telefonos regisztráció és bejelentkezés az Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a felhasználók számára, hogy regisztráljon, és jelentkezzen be az alkalmazások segítségével egy egyszeri jelszó (OTP) küldött szöveges üzenetet a telefonra. Az egyszeri jelszavak minimálisra csökkenthetik annak kockázatát, hogy a felhasználók elfelejtsék vagy felveszélyezzék a jelszavukat.
+A telefonos regisztráció és bejelentkezés Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a felhasználók számára, hogy egy szöveges üzenetben SMS-ben küldött egyszeri jelszó (OTP) használatával regisztráljanak és jelentkezzenek be az alkalmazásaiba. Az egyszeri jelszavak segítségével csökkentheti a felhasználók felejtésének kockázatát, vagy megsérült a jelszavuk.
 
-A cikkben ismertetett lépéseket követve az egyéni házirendek használatával lehetővé teszi az ügyfelek számára, hogy a telefonjukra küldött egyszeri jelszóval regisztráljanak és jelentkezzenek be az alkalmazásokba.
+A cikk lépéseit követve az egyéni szabályzatok használatával engedélyezheti ügyfelei számára, hogy regisztráljanak, és bejelentkezzenek az alkalmazásaiba a telefonjára eljuttatott egyszeri jelszó használatával.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="pricing"></a>Díjszabás
 
-Az egyszeri jelszavakat sms-ben küldik el a felhasználóknak, és előfordulhat, hogy minden egyes elküldött üzenetért díjat kell fizetnie. Az árképzéssel kapcsolatos információkért tekintse meg az [Azure Active Directory B2C díjszabásának](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **külön díjak** című részét.
+Az egyszeri jelszavakat SMS szöveges üzenetek formájában küldi el a felhasználók számára, és minden egyes elküldött üzenet után díjat számítunk fel. A díjszabással kapcsolatos információkért tekintse meg a [Azure Active Directory B2C díjszabásának](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **külön** díjszabását ismertető szakaszt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az OTP beállítása előtt a következő erőforrásokra van szükség.
 
-* [Azure AD B2C-bérlő](tutorial-create-tenant.md)
+* [Azure AD B2C bérlő](tutorial-create-tenant.md)
 * A bérlőben [regisztrált webalkalmazás](tutorial-register-applications.md)
-* A bérlőbe feltöltött [egyéni házirendek](custom-policy-get-started.md)
+* A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
 
-## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>A telefonos regisztráció & a bejelentkezési csomag
+## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Telefonos regisztráció & bejelentkezési indító csomag beszerzése
 
-Kezdje azzal, hogy frissíti a telefonos előfizetést, és egyéni szabályzatfájlokat regisztrál az Azure AD B2C-bérlővel való együttműködésre.
+Először frissítse a telefonos regisztrációt és a bejelentkezési egyéni házirend-fájlokat a Azure AD B2C Bérlővel való együttműködéshez.
 
-A következő lépések feltételezik, hogy befejezte az [előfeltételeket,](#prerequisites) és már klónozta az [egyéni szabályzat kezdőcsomag-tárházat][starter-pack] a helyi számítógépre.
+A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltételeket](#prerequisites) , és már klónozotta az [egyéni házirend-indító csomag][starter-pack] tárházát a helyi gépre.
 
-1. Keresse meg a [telefonos előfizetést és az egyéni házirendfájlokat][starter-pack-phone] az indítócsomag-tártár helyi klónjában, vagy töltse le őket közvetlenül. Az XML-házirendfájlok a következő könyvtárban találhatók:
+1. Keresse meg a [telefonos regisztrációs és bejelentkezési egyéni házirend-fájlokat][starter-pack-phone] az alapszintű csomag tárházának helyi klónjában, vagy töltse le őket közvetlenül. Az XML-házirend fájljai a következő könyvtárban találhatók:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Minden fájlban cserélje `yourtenant` le a karakterláncot az Azure AD B2C-bérlő nevére. Ha például a B2C-bérlő neve *contosob2c,* akkor `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com`a lesz a .
+1. Minden fájlban cserélje le a karakterláncot `yourtenant` a Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz. `contosob2c.onmicrosoft.com`
 
-1. Hajtsa végre az [Alkalmazásazonosítók hozzáadása az](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [Azure Active Directory B2C egyéni szabályzataihoz](custom-policy-get-started.md)tartozó egyéni szabályzatok hoz című szakaszlépéseit. Ebben az esetben `/phone-number-passwordless/` **`Phone_Email_Base.xml`** frissítse a két regisztrált alkalmazás **(ügyfél) azonosítóival** az előfeltételek, az *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*.
+1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben az előfeltételek `/phone-number-passwordless/` **`Phone_Email_Base.xml`** , a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóit** kell frissíteni.
 
-## <a name="upload-the-policy-files"></a>A házirendfájlok feltöltése
+## <a name="upload-the-policy-files"></a>A szabályzat fájljainak feltöltése
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az Azure AD B2C-bérlőt.
-1. A **Házirendek**csoportban válassza **az Identitáskezelési keretrendszert**.
-1. Válassza **az Egyéni házirend feltöltése lehetőséget.**
-1. Töltse fel a házirendfájlokat a következő sorrendben:
-    1. *Phone_Email_Base.xml fájl*
-    1. *SignUpOrSignInWithPhone.xml*
-    1. *SignUpOrSignInWithPhoneOrEmail.xml*
-    1. *ProfilEditPhoneOnly.xml*
-    1. *Profil: Cím: PhoneEmail.xml*
-    1. *ChangePhoneNumber.xml*
-    1. *PasswordResetEmail.xml*
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Azure ad B2C bérlőhöz.
+1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
+1. Válassza az **egyéni házirend feltöltése**lehetőséget.
+1. Töltse fel a házirend-fájlokat a következő sorrendben:
+    1. *Phone_Email_Base. XML*
+    1. *SignUpOrSignInWithPhone. XML*
+    1. *SignUpOrSignInWithPhoneOrEmail. XML*
+    1. *ProfileEditPhoneOnly. XML*
+    1. *ProfileEditPhoneEmail. XML*
+    1. *ChangePhoneNumber. XML*
+    1. *PasswordResetEmail. XML*
 
-Az egyes fájlok feltöltésekén `B2C_1A_`az Azure hozzáadja az előtagot.
+Az egyes fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_`.
 
-## <a name="test-the-custom-policy"></a>Az egyéni házirend tesztelése
+## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
-1. Az **Egyéni házirendek csoportban**válassza **a B2C_1A_SignUpOrSignInWithPhone**lehetőséget.
-1. Az **Alkalmazás kiválasztása**csoportban válassza ki azt a *webapp1-alkalmazást,* amelyet az előfeltételek teljesítésekor regisztrált.
-1. A Válasz url `https://jwt.ms`kiválasztása **területen**válassza a lehetőséget.
-1. Válassza **a Futtatás most** lehetőséget, és regisztráljon egy e-mail címmel vagy telefonszámmal.
-1. Válassza a **Futtatás újra** lehetőséget, és jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy a megfelelő konfigurációval rendelkezik-e.
+1. Az **Egyéni házirendek**területen válassza a **B2C_1A_SignUpOrSignInWithPhone**lehetőséget.
+1. Az **alkalmazás kiválasztása**területen válassza ki azt a *webapp1* -alkalmazást, amelyet az előfeltételek végrehajtásakor regisztrált.
+1. Válassza a **Válasz URL-cím kiválasztása**lehetőséget `https://jwt.ms`.
+1. Válassza a **Futtatás most** lehetőséget, és regisztráljon e-mail-cím vagy telefonszám használatával.
+1. Kattintson ismét a **Futtatás** gombra, és jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy megfelelő-e a konfigurációja.
 
-## <a name="get-user-account-by-phone-number"></a>Felhasználói fiók beszerezni telefonszám szerint
+## <a name="get-user-account-by-phone-number"></a>Felhasználói fiók beolvasása telefonszám alapján
 
-A felhasználó, aki feliratkozik egy telefonszámot, de nem adja meg a helyreállítási e-mail-címet rögzíti az Azure AD B2C címtárban a telefonszámukat, mint a bejelentkezési nevet. Ha a felhasználó ezután módosítani kívánja a telefonszámát, az ügyfélszolgálatnak vagy az ügyfélszolgálatnak először meg kell találnia a fiókját, majd frissítenie kell a telefonszámát.
+Egy olyan felhasználó, amely regisztrál egy telefonszámot, de nem biztosít helyreállítási e-mail-címet, a rendszer a bejelentkezési nevüknek megfelelő telefonszámon rögzíti a Azure AD B2C könyvtárban. Ha a felhasználó ezután módosítani szeretné a telefonszámát, akkor az ügyfélszolgálatnak vagy a támogatási csapatnak először meg kell keresnie a fiókját, majd frissítenie kell a telefonszámát.
 
-A felhasználót telefonszámuk (bejelentkezési neve) alapján megtalálhatjuk a [Microsoft Graph](manage-user-accounts-graph-api.md)segítségével:
+A felhasználó telefonszáma alapján (bejelentkezési név) a [Microsoft Graph](manage-user-accounts-graph-api.md)használatával kereshet:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Példa:
+Például:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -94,14 +94,14 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>További lépések
 
-A telefonra való feliratkozást és a bejelentkezésegyéni szabályzatkezdőcsomagját (és más kezdőcsomagokat) a GitHubon találja:
+Megtalálhatja a telefonos regisztrációt és az egyéni házirend-előfizetési csomagot (és más kezdő csomagokat is) a GitHubon:
 
-[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone]
+[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/forgatókönyvek/telefon-szám-jelszó][starter-pack-phone]
 
-Az indítócsomag házirendfájljai többtényezős hitelesítéstechnikai profilokat és telefonszámjogcímek-átalakításokat használnak:
+Az alapszintű csomag házirend-fájljai a multi-Factor Authentication technikai profilokat és a telefonszám-adatfeldolgozási jogcímeket használják:
 
-* [Azure többtényezős hitelesítéstechnikai profiljának definiálása](multi-factor-auth-technical-profile.md)
-* [Telefonszámjogcím-átalakítások definiálása](phone-number-claims-transformations.md)
+* [Azure Multi-Factor Authentication technikai profil megadása](multi-factor-auth-technical-profile.md)
+* [Telefonszám-jogcímek átalakításának meghatározása](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

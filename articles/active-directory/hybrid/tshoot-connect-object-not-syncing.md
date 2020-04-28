@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directoryval nem szinkronizált objektumok – hibaelhárítása | Microsoft Dokumentumok"
-description: Az Azure Active Directoryval nem szinkronizált objektumok – problémahárítás elhárítása.
+title: A Azure Active Directorykal nem szinkronizált objektumok hibáinak megoldása | Microsoft Docs "
+description: A Azure Active Directorykal nem szinkronizált objektumok hibáinak megoldása.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,197 +17,197 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253532"
 ---
-# <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directoryval nem szinkronizált objektumok – problémamegoldás
+# <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directory-val nem szinkronizált objektumok hibáinak megoldása
 
-Ha egy objektum nem a várt módon szinkronizálja a Microsoft Azure Active Directoryt (Azure AD), annak több oka is lehet. Ha hibaüzenetet kapott az Azure AD-től, vagy az Azure AD Connect Health szolgáltatásban látja a hibát, olvassa el a [Hibaelhárítási hibák](tshoot-connect-sync-errors.md) szinkronizálás közbeni hibáit. De ha olyan problémát hárít el, amelyben az objektum nem az Azure AD-ben található, ez a cikk az Ön számára. Ismerteti, hogyan találhat hibákat a helyszíni összetevő Azure AD Connect szinkronizálás.
+Ha egy objektum nem a várt módon szinkronizálódik a Microsoft Azure Active Directory (Azure AD) használatával, több okból is előfordulhat. Ha hibaüzenetet kapott az Azure AD-től, vagy a Azure AD Connect Health hibát észlelt, olvassa el a [hibaelhárítási hibákat a szinkronizáció során](tshoot-connect-sync-errors.md) . Ha azonban olyan problémát észlel, amelyben az objektum nem az Azure AD-ben van, akkor ez a cikk Önnek szól. Ismerteti, hogyan lehet hibákat keresni a helyszíni összetevőben Azure AD Connect a szinkronizálást.
 
 >[!IMPORTANT]
->Az Azure AD Connect 1.1.749.0-s vagy újabb verziójú központi telepítéséhez használja a varázsló [hibaelhárítási feladatát](tshoot-connect-objectsync.md) az objektumszinkronizálási problémák elhárításához. 
+>A 1.1.749.0 vagy újabb verzióval rendelkező Azure AD Connect telepítéséhez használja a varázsló [hibaelhárítási feladatát](tshoot-connect-objectsync.md) az objektumok szinkronizálásával kapcsolatos problémák elhárításához. 
 
 ## <a name="synchronization-process"></a>Szinkronizálási folyamat
 
-Mielőtt megvizsgálnánk a szinkronizálási problémákat, ismerjük meg az Azure AD Connect szinkronizálási folyamatát:
+A szinkronizálási problémák megvizsgálása előtt Ismerkedjen meg a Azure AD Connect szinkronizálási folyamattal:
 
-  ![Az Azure AD Connect szinkronizálási folyamatának diagramja](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+  ![Azure AD Connect szinkronizálási folyamat ábrája](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
 
 ### <a name="terminology"></a>**Terminológia**
 
-* **CS:** Összekötő tér, adatbázis táblája
+* **CS:** Összekötő terület, adatbázisbeli tábla
 * **MV:** Metaverse, egy tábla egy adatbázisban
 
-### <a name="synchronization-steps"></a>**Szinkronizálási lépések**
+### <a name="synchronization-steps"></a>**Szinkronizálás lépései**
 A szinkronizálási folyamat a következő lépéseket foglalja magában:
 
-1. **Importálás AD-ből:** Az Active Directory-objektumok az Active Directory CS-be kerülnek.
+1. **Importálás az ad-ből:** Active Directory objektumokat a rendszer a Active Directory CS-ba helyezi át.
 
-2. **Importálás az Azure AD-ből:** Az Azure AD-objektumok az Azure AD CS-be kerülnek.
+2. **Importálás az Azure ad-ből:** Az Azure AD-objektumok bekerülnek az Azure AD CS-ba.
 
-3. **Szinkronizálás:** A bejövő szinkronizálási szabályok és a kimenő szinkronizálási szabályok a prioritási sorrendben futnak, alacsonyabbtól a magasabbig. A szinkronizálási szabályok megtekintéséhez nyissa meg az asztali alkalmazások szinkronizálási szabályok szerkesztőjét. A bejövő szinkronizálási szabályok adatokat hoznak a CS-ről az MV-re. A kimenő szinkronizálási szabályok áthelyezik az adatokat az MV-ről a CS-re.
+3. **Szinkronizálás:** A bejövő szinkronizálási szabályok és a kimenő szinkronizálási szabályok elsőbbségi szám sorrendben futnak, az alacsonyabbtól a magasabbig. A szinkronizálási szabályok megtekintéséhez nyissa meg a szinkronizálási szabályok szerkesztőjét az asztali alkalmazásokban. A bejövő szinkronizálási szabályok a CS és az MV közötti adatbevitelt eredményezik. A kimenő szinkronizálási szabályok MV-ból CS-ra helyezik át az adatforgalmat.
 
-4. **Exportálás AD-be:** A szinkronizálás után az objektumok exportálása az Active Directory CS könyvtárból az Active Directoryba történik.
+4. **Exportálás az ad-be:** A szinkronizálást követően a rendszer az objektumokat a Active Directory CS-ból Active Directoryba exportálja.
 
-5. **Exportálás az Azure AD szolgáltatásba:** Szinkronizálás után az objektumok exportálása az Azure AD CS-ből az Azure AD-be.
+5. **Exportálás az Azure ad-be:** A szinkronizálást követően az objektumok az Azure AD CS-ből az Azure AD-be lesznek exportálva.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A hibák megkereséséhez tekintsen meg néhány különböző helyet a következő sorrendben:
+A hibák megkereséséhez tekintse meg néhány különböző helyet a következő sorrendben:
 
-1. A [művelet naplói](#operations) a szinkronizálási motor által az importálás és szinkronizálás során azonosított hibák keresésére.
-2. A [connector space](#connector-space-object-properties) hiányzó objektumok és szinkronizálási hibák keresésére szolgál.
-3. Az adatokkal kapcsolatos problémák at keresendő [metaverzum.](#metaverse-object-properties)
+1. A [művelet](#operations) a szinkronizálási motor által az Importálás és a szinkronizálás során azonosított hibákat keresi.
+2. Az [összekötő területe](#connector-space-object-properties) hiányzó objektumok és szinkronizálási hibák kereséséhez.
+3. A [metaverse](#metaverse-object-properties) az adatokkal kapcsolatos problémákat keresi.
 
-A lépések megkezdése előtt indítsa el [a Szinkronizálási szolgáltatáskezelőt.](how-to-connect-sync-service-manager-ui.md)
+A lépések megkezdése előtt indítsa el [synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) .
 
 ## <a name="operations"></a>Műveletek
-A Szinkronizálási szolgáltatáskezelő **Műveletek** lapján kell elindítania a hibaelhárítást. Ez a lap a legutóbbi műveletek eredményeit jeleníti meg. 
+A Synchronization Service Manager **Operations (műveletek** ) lapján kell elindítania a hibaelhárítást. Ezen a lapon a legutóbbi műveletek eredményei láthatók. 
 
-![Képernyőkép a Szinkronizálási szolgáltatáskezelőről, amelyen az Műveletek lap kijelölt](./media/tshoot-connect-object-not-syncing/operations.png)  
+![Synchronization Service Manager képernyőképe – a műveletek lap kijelölve](./media/tshoot-connect-object-not-syncing/operations.png)  
 
-**Az Műveletek** lap felső fele időrendi sorrendben jeleníti meg az összes futtatást. Alapértelmezés szerint a műveleti napló információkat tartalmaz az elmúlt hét napról, de ez a beállítás módosítható az [ütemezővel.](how-to-connect-sync-feature-scheduler.md) Keressen olyan futtatást, amely nem mutat **sikeres** állapotot. A rendezést a fejlécek kattintásával módosíthatja.
+Az **Operations (műveletek** ) lap felső fele az összes Futtatás időrendi sorrendben jelenik meg. Alapértelmezés szerint az operatív napló az elmúlt hét nap adatait tárolja, de ez a beállítás az [ütemező](how-to-connect-sync-feature-scheduler.md)segítségével módosítható. Keresse meg az összes olyan futtatást, amely nem jeleníti meg a **sikerességi** állapotot. A rendezést a fejlécek lehetőségre kattintva módosíthatja.
 
-Az **Állapot** oszlop tartalmazza a legfontosabb információkat, és megmutatja a futtatás legsúlyosabb problémáját. Az alábbiakban a leggyakoribb állapotok gyors összegzését olvashatja a vizsgálati prioritás sorrendjében (ahol a * több lehetséges hibakarakterláncot jelöl).
+Az **állapot** oszlop a legfontosabb információkat tartalmazza, és megjeleníti a Futtatás legsúlyosabb problémáját. Íme egy rövid összefoglalás a leggyakoribb állapotokról a vizsgálat prioritási sorrendjében (ahol a * több lehetséges hibát jelez).
 
 | status | Megjegyzés |
 | --- | --- |
-| leállítva-* |A futás nem fejeződhet be. Ez például akkor fordulhat elő, ha a távoli rendszer nem áll meg, és nem lehet kapcsolatba lépni vele. |
-| leállított-hiba-limit |Több mint 5000 hiba van. A futtatás a nagy számú hiba miatt automatikusan leállt. |
-| befejezett-\*-hibák |A futtatás befejeződött, de vannak hibák (kevesebb, mint 5000), amelyeket meg kell vizsgálni. |
-| befejeződött-\*-figyelmeztetések |A futtatás befejeződött, de néhány adat nem a várt állapotban van. Ha hibákat észlel, ez az üzenet általában csak tünet. Ne vizsgálja meg a figyelmeztetéseket, amíg nem hárította el a hibákat. |
-| sikeres |Semmi probléma. |
+| leállítva – * |A Futtatás nem fejezhető be. Ez akkor fordulhat elő, ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
+| leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |
+| befejezve\*– hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyet meg kell vizsgálni. |
+| befejezve\*– figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibákat észlel, ez az üzenet általában csak tünet. Ne vizsgálja meg a figyelmeztetéseket, amíg nem válaszol a hibákra. |
+| sikeres |Nincs probléma. |
 
-Amikor kijelöl egy sort, a **Műveletek** lap alja frissül, hogy megjelenjen a futtatás részletei. A terület bal szélén lehet egy **Step #** című lista. Ez a lista csak akkor jelenik meg, ha az erdőben több tartomány van, és minden tartományt egy lépés képvisel. A tartománynév a **Partition**cím alatt található. A **Szinkronizálási statisztika** fejlécalatt további információt talál a feldolgozott módosítások számáról. A hivatkozások kijelölésével megjelenik a módosított objektumok listája. Ha hibás objektumokat észlel, ezek a hibák a **Szinkronizálási hibák** fejléc alatt jelennek meg.
+Amikor kijelöl egy sort, a rendszer frissíti az **Operations (műveletek** ) lap alját, hogy megjelenítse a Futtatás részleteit. A terület bal oldali részén lehet, hogy egy lista szerepel a következő **lépésben: #**. Ez a lista csak akkor jelenik meg, ha az erdőben több tartomány található, és minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció**alatt található. A **szinkronizálási statisztika** fejlécében további információkat talál a feldolgozott módosítások számáról. Válassza ki a hivatkozásokat a módosított objektumok listájának lekéréséhez. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák** fejlécében jelennek meg.
 
-### <a name="errors-on-the-operations-tab"></a>Hibák a Műveletek lapon
-Ha hibákat észlel, a Szinkronizálási szolgáltatáskezelő a hibás objektumot és magát a hibát is hivatkozásként jeleníti meg, amelyek további információt nyújtanak.
+### <a name="errors-on-the-operations-tab"></a>Hibák az Operations (műveletek) lapon
+Ha hibák léptek fel, a Synchronization Service Manager a hibás objektumot és a hibát is a további információkat tartalmazó hivatkozásként jeleníti meg.
 
-![Képernyőkép a Szinkronizálási szolgáltatáskezelő ben található hibákról](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-Kezdje a hibakarakterlánc kiválasztásával. (Az előző ábrán a hibakarakterlánc **szinkronizálási szabály-hiba-függvény által kiváltott**.) Először az objektum áttekintése jelenik meg. A tényleges hiba megtekintéséhez válassza a **Veremkövetés lehetőséget.** Ez a nyomkövetés hibakeresési szintű információkat tartalmaz a hibáról.
+![Képernyőkép a Synchronization Service Manager lévő hibákról](./media/tshoot-connect-object-not-syncing/errorsync.png)  
+Először válassza a hiba karakterláncot. (Az előző ábrán a hiba sztring **szinkronizálási szabály – hiba – függvény – aktiválva**.) Először az objektum áttekintését mutatjuk be. A tényleges hiba megtekintéséhez válassza a **verem nyomon követése**elemet. Ez a nyomkövetés hibakeresési szintű információt biztosít a hibához.
 
-Kattintson a jobb gombbal a **Hívásverem adatai mezőre,** válassza **az Összes kijelölése**parancsot, és válassza a **Másolás parancsot.** Ezután másolja a halom, és nézd meg a hibát a kedvenc szerkesztő, mint például a Jegyzettömb.
+Kattintson a jobb gombbal a **hívási verem adatai** mezőre, kattintson az **összes kijelölése**elemre, majd válassza a **Másolás**lehetőséget. Ezután másolja a verembe, és tekintse meg a hibát a kedvenc szerkesztőben, például a Jegyzettömbben.
 
-Ha a hiba a **SyncRulesEngine**programból származik, a hívásverem adatai először az objektum összes attribútumát listázza. Görgessen lefelé, amíg meg nem jelenik az **InnerException =>**.  
+Ha a hiba a **SyncRulesEngine**-ből származik, a hívási verem adatai először az objektum összes attribútumát listázza. Görgessen lefelé, amíg meg nem jelenik a **InnerException =>** fejléc.  
 
-  ![Képernyőkép a Szinkronizálási szolgáltatáskezelőről, amely az InnerException =>](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
+  ![Képernyőkép a Synchronization Service Managerről, amely a InnerException => vámtarifaszám alá tartozó hibákat mutatja.](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
-A címsor utáni sor a hibát mutatja. Az előző ábrán a hiba a Fabrikam által létrehozott egyéni szinkronizálási szabályból származik.
+A fejléc utáni sor a hibát mutatja. Az előző ábrán a hiba egy, a fabrikam által létrehozott egyéni szinkronizálási szabályból származik.
 
-Ha a hiba nem ad elegendő információt, itt az ideje, hogy nézd meg az adatokat is. Jelölje ki az objektumazonosítóval rendelkező hivatkozást, és folytassa az [importált összekötőterület hibaelhárítását.](#cs-import)
+Ha a hiba nem ad elég információt, ideje megtekinteni az adatokat. Válassza ki az objektumazonosító hivatkozását, és folytassa a hibaelhárítást az [összekötő terület importált objektumával](#cs-import)kapcsolatban.
 
 ## <a name="connector-space-object-properties"></a>Összekötőtér-objektum tulajdonságai
-Ha az [**Operations**](#operations) lapon nem jelennek meg hibák, kövesse az összekötő tér objektum az Active Directorytól a metaverzum az Azure AD. Ezen az úton meg kell találnia, hogy hol van a probléma.
+Ha az [**Operations (műveletek**](#operations) ) lap nem jelenít meg hibákat, kövesse az összekötő területét Active Directoryról a metaverse – Azure ad-be. Ezen az elérési úton megtalálja a probléma helyét.
 
-### <a name="searching-for-an-object-in-the-cs"></a>Objektum keresése a CS-ben
+### <a name="searching-for-an-object-in-the-cs"></a>Objektum keresése a CS-ban
 
-A Szinkronizálási szolgáltatáskezelőben válassza **az Összekötők**lehetőséget, jelölje ki az Active Directory-összekötőt, és válassza a **Keresési összekötő tér ben**lehetőséget.
+Az Synchronization Service Manager területen válassza az **Összekötők**lehetőséget, válassza ki a Active Directory-összekötőt, és válassza a **Keresés összekötő terület**lehetőséget.
 
-A **Hatókör mezőben** válassza az **RDN** lehetőséget, ha a CN attribútumban szeretne keresni, vagy válassza a **DN vagy a horgony** lehetőséget, ha a **distinguishedName** attribútumban szeretne keresni. Írjon be egy értéket, és válassza a **Keresés**lehetőséget. 
+A **hatókör** mezőben válassza a **RDN** elemet, ha a CN attribútumon szeretne keresni, vagy válassza a **DN vagy a Anchor** lehetőséget, ha a **distinguishedName** attribútumon szeretne keresni. Adjon meg egy értéket, és válassza a **Keresés**lehetőséget. 
  
-![Képernyőkép egy összekötő térkereséséről](./media/tshoot-connect-object-not-syncing/cssearch.png)  
+![Képernyőkép az összekötő területének kereséséről](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
-Ha nem találja a keresett objektumot, akkor lehet, hogy [tartományalapú szűréssel](how-to-connect-sync-configure-filtering.md#domain-based-filtering) vagy [szervezetiegység-alapú szűréssel szűrte.](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) Annak ellenőrzéséhez, hogy a szűrés a várt módon van-e konfigurálva, olvassa el az [Azure AD Connect szinkronizálási: Szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)című olvasnivalót.
+Ha nem találja a keresett objektumot, előfordulhat, hogy a [rendszer tartományalapú szűréssel](how-to-connect-sync-configure-filtering.md#domain-based-filtering) vagy [ou-alapú szűréssel](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)szűrt. Annak ellenőrzéséhez, hogy a szűrés a várt módon van-e konfigurálva, olvassa el [Azure ad Connect szinkronizálás: a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md).
 
-Az Azure AD-összekötő kiválasztásával egy másik hasznos keresést is végrehajthat. A **Hatókör** mezőben válassza a **Függőben lévő importálás**lehetőséget, majd jelölje be a **Hozzáadás** jelölőnégyzetet. Ez a keresés az Azure AD összes szinkronizált objektumot biztosítja, amelyek nem társíthatók a helyszíni objektumhoz.  
+Az Azure AD-összekötő kiválasztásával más hasznos keresést is végrehajthat. A **hatókör** mezőben válassza a **függőben lévő importálás**lehetőséget, majd jelölje be a **Hozzáadás** jelölőnégyzetet. Ez a Keresés az Azure AD összes olyan szinkronizált objektumát tartalmazza, amely nem társítható helyszíni objektumhoz.  
 
-![Árvák képernyőképe az összekötőtér-keresésben](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
+![Képernyőkép az árvákról az összekötő területének keresésekor](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
  
-Ezeket az objektumokat egy másik szinkronizálási motor vagy egy másik szűrési konfigurációval rendelkező szinkronizálási motor hozta létre. Ezek az árva objektumok már nem kezelhetők. Tekintse át ezt a listát, és fontolja meg az objektumok eltávolítását az [Azure AD PowerShell-parancsmagok](https://aka.ms/aadposh) használatával.
+Ezeket az objektumokat egy másik szinkronizálási motor vagy egy másik szűrési konfigurációval rendelkező szinkronizációs motor hozta létre. Ezek az árva objektumok már nem kezelhetők. Tekintse át a listát, és távolítsa el ezeket az objektumokat az [Azure ad PowerShell](https://aka.ms/aadposh) -parancsmagok használatával.
 
-### <a name="cs-import"></a>CS-importálás
-Amikor megnyit egy CS-objektumot, a lap tetején több lap található. Az **Importálás** lapon láthatók az importálás után előkészített adatok.  
+### <a name="cs-import"></a>CS importálás
+A CS-objektumok megnyitásakor több lap van a tetején. Az **Importálás** lapon az importálás után elkészített adatértékek láthatók.  
 
-![Képernyőkép az Összekötő térobjektum tulajdonságai ablakról, amelyen az Importálás lap van kijelölve](./media/tshoot-connect-object-not-syncing/csobject.png)    
+![Képernyőkép az összekötő terület objektumról Tulajdonságok ablak, az importálás lapon kiválasztva](./media/tshoot-connect-object-not-syncing/csobject.png)    
 
-A **Régi érték** oszlop ban látható, hogy jelenleg mi van tárolva a Csatlakozás alkalmazásban, az Új érték oszlop **pedig** azt, hogy mi érkezett a forrásrendszertől, és még nincs alkalmazva. Ha hiba történik az objektumon, a rendszer nem dolgozza fel a módosításokat.
+A **régi érték** oszlopban látható, hogy mit tárol a rendszer a kapcsolatban, és az **új érték** oszlopban látható, hogy mit kapott a forrásrendszer, és még nincs alkalmazva. Ha hiba van az objektumon, a módosítások nem lesznek feldolgozva.
 
-A **Szinkronizálási hiba** lap csak akkor látható az **Összekötő térobjektum tulajdonságai** ablakban, ha probléma van az objektummal. További információt a Műveletek lapon található [szinkronizálási hibák **Operations** elhárításáról](#errors-on-the-operations-tab)talál.
+A **szinkronizálási hiba** lap csak akkor látható az **összekötő terület objektum tulajdonságai** ablakban, ha probléma van az objektummal. További információkért tekintse át [a szinkronizálási hibák elhárítása a **műveletek** lapon](#errors-on-the-operations-tab)című témakört.
 
-![Képernyőkép az Összekötő térobjektum tulajdonságai ablak Szinkronizálási hiba lapjáról](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
+![Képernyőkép a szinkronizációs hiba lapról az összekötő terület objektumban Tulajdonságok ablak](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
 
-### <a name="cs-lineage"></a>CS családvonal
-Az **Összekötő térobjektum tulajdonságai** ablak **Lineage (Lineage)** lapján látható, hogy az összekötő térobjektum hogyan kapcsolódik a metaverzum-objektumhoz. Láthatja, hogy az összekötő mikor importált utoljára egy módosítást a csatlakoztatott rendszerből, és mely szabályok vonatkoznak a metaverzumban lévő adatok feltöltésére.  
+### <a name="cs-lineage"></a>CS-Lineage
+Az **összekötő terület objektum tulajdonságai** ablakban a **Lineage** lap mutatja, hogy az összekötő terület objektum a metaverse objektumhoz kapcsolódik-e. Láthatja, ha az összekötő utoljára importálta a csatlakoztatott rendszer változását, és hogy mely szabályok vonatkoznak a metaverse adatainak feltöltésére.  
 
-![Az Összekötő térobjektum tulajdonságai ablak Vonal lapját ábrázoló képernyőkép](./media/tshoot-connect-object-not-syncing/cslineage.png)  
+![Az összekötő terület objektumának Lineage lapját ábrázoló képernyőkép Tulajdonságok ablak](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 
-Az előző **ábrán** a Művelet oszlop egy bejövő szinkronizálási szabályt jelenít meg a **kiépítés**művelettel. Ez azt jelzi, hogy amíg ez az összekötő térobjektum jelen van, a metaverzum objektum megmarad. Ha a szinkronizálási szabályok listája ehelyett egy kimenő szinkronizálási szabályt jelenít meg egy **létesítési** művelettel, akkor ez az objektum törlődik a metaverzum-objektum törlésekor.  
+Az előző ábrán a **művelet** oszlop egy bejövő szinkronizálási szabályt mutat be a művelet **kiépítésekor**. Ez azt jelzi, hogy ha ez az összekötő szóköz van jelen, a metaverse objektum marad. Ha a szinkronizálási szabályok listája Ehelyett egy **kiépítési** művelettel rendelkező kimenő szinkronizálási szabályt mutat, akkor ez az objektum törlődik a metaverse-objektum törlésekor.  
 
-![Képernyőkép az Összekötő térobjektum tulajdonságai ablak Vonal lapjának vonalablakáról](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
+![Képernyőkép az összekötő-terület objektumának Lineage lapján lévő Lineage (lenyíló) ablakról Tulajdonságok ablak](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
 
-Az előző ábrán azt is láthatja a **PasswordSync** oszlopban, hogy a bejövő összekötő terület adhat változásokat a jelszót, mivel egy szinkronizálási szabály értéke **Igaz**. Ezt a jelszót a kimenő szabály on keresztül küldi el az Azure AD.This password is sent to Azure AD through the outbound rule.
+Az előző ábrán látható, hogy a **PasswordSync** oszlopban a bejövő összekötő területe is hozzájárulhat a jelszó módosításához, mert az egyik szinkronizálási szabály értéke TRUE ( **igaz**). Ezt a jelszót a rendszer a kimenő szabályon keresztül elküldi az Azure AD-nek.
 
-A **Lineage** lapon a [**Metaverzum-objektum tulajdonságai**](#mv-attributes)lehetőséget választva érheti el a metaverzumot.
+A **Lineage** lapon a metaverse [**objektum tulajdonságainak**](#mv-attributes)kiválasztásával érheti el a metaverse-t.
 
 ### <a name="preview"></a>Előzetes verzió
-Az **Összekötő térobjektum tulajdonságai** ablak bal alsó sarkában található az **Előnézet** gomb. Ezzel a gombbal megnyithatja az **Előnézet** lapot, ahol egyetlen objektumot szinkronizálhat. Ez a lap akkor hasznos, ha néhány egyéni szinkronizálási szabályt hibaelhárít, és szeretné látni a módosítás hatását egyetlen objektumra. Kiválaszthatja a **Teljes szinkronizálást** vagy a **Delta szinkronizálást.** Az Előnézet létrehozása lehetőséget is **választhatja,** amely csak a memóriában tartja a módosítást. Vagy válassza **a Véglegesítés előnézete**lehetőséget, amely frissíti a metaverzumot, és a célösszekötő terek összes módosítását leadja.  
+Az **összekötő terület objektum Tulajdonságok** ablakának bal alsó sarkában az **előnézet** gomb jelenik meg. Ezzel a gombbal megnyithatja az **előnézet** lapot, ahol egyetlen objektumot is szinkronizálhat. Ez az oldal akkor hasznos, ha néhány egyéni szinkronizálási szabályt elhárít, és szeretné megtekinteni egy adott objektum változásának hatását. Választhatja a **teljes szinkronizálást** vagy a **különbözeti szinkronizálást**. Kiválaszthatja az **előnézet létrehozása**lehetőséget is, amely csak a memóriában megjelenő változást tárolja. Vagy válassza a **véglegesítés várható eredménye**lehetőséget, amely frissíti a metaverse-t, és a megcélzott összekötők tárolóhelyeit érintő összes változást.  
 
-![Képernyőkép az Előnézet lapról, amelyen a Start előnézet van kiválasztva](./media/tshoot-connect-object-not-syncing/preview.png)  
+![Képernyőkép az előnézet oldalról, a Start Preview kiválasztva](./media/tshoot-connect-object-not-syncing/preview.png)  
 
-Az előnézetben megvizsgálhatja az objektumot, és megtekintheti, hogy melyik szabály vonatkozik egy adott attribútumfolyamatra.  
+Az előzetes verzióban megvizsgálhatja az objektumot, és megtekintheti, hogy melyik szabály vonatkozik egy adott attribútum folyamatára.  
 
-![Képernyőkép az Előnézet lapról, amelyen az Attribútumimportálási folyamat látható](./media/tshoot-connect-object-not-syncing/previewresult.png)
+![Képernyőkép az előnézet oldalról, amely az attribútum-folyamat importálását mutatja](./media/tshoot-connect-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Napló
-Az **Előnézet** gomb mellett kattintson a **Napló** gombra a **Napló** lap megnyitásához. Itt láthatja a jelszó szinkronizálási állapotát és előzményeit. További információt a [Jelszókivonat-szinkronizálás hibaelhárítása az Azure AD Connect szinkronizálásával](tshoot-connect-password-hash-synchronization.md)című témakörben talál.
+Az **előnézet** gomb mellett kattintson a **napló** gombra a **napló** oldal megnyitásához. Itt láthatja a jelszó-szinkronizálás állapotát és előzményeit. További információ: jelszó- [kivonatolási szinkronizálás hibáinak megoldása Azure ad Connect szinkronizálással](tshoot-connect-password-hash-synchronization.md).
 
-## <a name="metaverse-object-properties"></a>Metaverzum objektum tulajdonságai
-Általában jobb, ha a forrásból kezdi el a keresést az Active Directory-összekötő területéről. De elkezdheti a keresést a metaverzumból is.
+## <a name="metaverse-object-properties"></a>Metaverse-objektum tulajdonságai
+Általában jobb, ha megkezdi a keresést a forrás Active Directory-összekötő területéről. De a metaverse használatával is megkezdheti a keresést.
 
-### <a name="searching-for-an-object-in-the-mv"></a>Objektum keresése az MV-ben
-A Szinkronizálási szolgáltatáskezelőben válassza a **Metaverzum-keresés**lehetőséget, az alábbi ábrán is. Hozzon létre egy olyan lekérdezést, amelyről tudja, hogy megtalálja a felhasználót. Keresse meg a közös attribútumokat, például **az accountName** **(sAMAccountName**) és **a userPrincipalName tulajdonságot.** További információ: [Sync Service Manager Metaverse search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+### <a name="searching-for-an-object-in-the-mv"></a>Objektum keresése az MV-ban
+A Synchronization Service Managerban válassza a **metaverse Search**lehetőséget, ahogy az az alábbi ábrán is látható. Hozzon létre egy lekérdezést, amelyről tudja, hogy megkeresi a felhasználót. Általános attribútumok, például **accountName** (**sAMAccountName**) és **userPrincipalName**keresése. További információ: [Sync Service Manager metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
-![Képernyőkép a Szinkronizálási szolgáltatáskezelőről, a Metaverzum-keresés lap kijelölésével](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
+![Képernyőkép a Synchronization Service Managerről, és a metaverse-Keresés lap van kiválasztva](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
-A **Keresési eredmények ablakban** kattintson az objektumra.
+A **keresési eredmények** ablakban kattintson az objektumra.
 
-Ha nem találja az objektumot, még nem érte el a metaverzumot. Folytassa az objektum keresését az Active Directory [összekötő területén](#connector-space-object-properties). Ha az objektumot az Active Directory-összekötő térben találja, előfordulhat, hogy szinkronizálási hiba akadályozza az objektum metaverzumhoz való eljövetelét, vagy egy szinkronizálási szabály hatókörszűrője alkalmazható.
+Ha nem találta meg az objektumot, még nem érte el a metaverse-t. Folytassa az objektum keresését az Active Directory- [összekötő területén](#connector-space-object-properties). Ha megtalálta az objektumot a Active Directory-összekötő területén, akkor lehet, hogy szinkronizálási hiba történt, amely blokkolja az objektumot a metaverse felé, vagy a szinkronizálási szabály hatóköre szűrőt is alkalmazhatja.
 
-### <a name="object-not-found-in-the-mv"></a>Az objektum nem található az MV-ben
-Ha az objektum az Active Directory CS-ben található, de nincs jelen az MV-ben, a rendszer hatókörszűrőt alkalmaz. A hatókörszűrő t, nyissa meg az asztali alkalmazás menüjét, és válassza a **Szinkronizálási szabályok szerkesztője**parancsot. Az alábbi szűrő módosításával szűrheti az objektumra vonatkozó szabályokat.
+### <a name="object-not-found-in-the-mv"></a>Az objektum nem található az MV-ban
+Ha az objektum a Active Directory CS, de nem szerepel az MV-ban, a rendszer egy hatókör-szűrőt alkalmaz. A hatókör szűrő megjelenítéséhez nyissa meg a Desktop alkalmazás menüt, és válassza a **szinkronizációs szabályok szerkesztő**elemet. Szűrje az objektumra vonatkozó szabályokat az alábbi szűrő módosításával.
 
-  ![Képernyőkép: Szinkronizálási szabályok szerkesztője bejövő szinkronizálási szabályok keresésével](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+  ![Képernyőkép a szinkronizálási szabályok szerkesztőjéről, amely a bejövő szinkronizálási szabályok keresését mutatja](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
 
-Tekintse meg a lista egyes szabályait felülről, és ellenőrizze a **Hatókör szűrőt**. A következő hatókörszűrőben, ha az **isCriticalSystemObject** értéke null vagy HAMIS vagy üres, akkor hatókörben van.
+Tekintse meg a lista egyes szabályait, és tekintse meg a **hatókör szűrőt**. A következő hatókör-szűrőben, ha a **isCriticalSystemObject** értéke null vagy hamis vagy üres, akkor a hatóköre.
 
-  ![Képernyőkép: hatókörszűrő bejövő szinkronizálási szabálykeresésben](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+  ![Képernyőfelvétel a bejövő szinkronizálási szabályban található hatóköri szűrőről](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
 
-Lépjen a [CS import](#cs-import) attribútumlistára, és ellenőrizze, hogy melyik szűrő blokkolja az objektum ot az MV-re való áttéréshez. Az **Összekötő tér** attribútumlista csak nem null értékű és nem üres attribútumokat jelenít meg. Ha például **az isCriticalSystemObject** nem jelenik meg a listában, az attribútum értéke null vagy üres.
+Lépjen a [cs importálási](#cs-import) attribútumok listájához, és győződjön meg arról, hogy melyik szűrő blokkolja az OBJEKTUMOT az MV-ra való áttéréssel. Az **összekötő terület** attribútuma listában csak a nem null és a nem üres attribútumok jelennek meg. Ha például a **isCriticalSystemObject** nem jelenik meg a listában, akkor az attribútum értéke null vagy üres.
 
-### <a name="object-not-found-in-the-azure-ad-cs"></a>Az objektum nem található az Azure AD CS-ben
-Ha az objektum nincs jelen az Azure AD összekötő területén, de az MV-ben is megtalálható, tekintse meg a megfelelő összekötő terület kimenő szabályainak hatókör-szűrőjét, és derítse ki, hogy az objektum ki van-e szűrve, mert az [MV-attribútumok](#mv-attributes) nem felelnek meg a feltételeknek.
+### <a name="object-not-found-in-the-azure-ad-cs"></a>Az objektum nem található az Azure AD CS-ban
+Ha az objektum nem található az Azure AD-összekötő területén, de az MV-ban található, tekintse meg a megfelelő összekötő-terület kimenő szabályainak hatóköri szűrőjét, és ellenőrizze, hogy az objektum ki van-e szűrve, mert az [MV attribútumok](#mv-attributes) nem felelnek meg a feltételeknek.
 
-A kimenő hatókörszűrő t, válassza ki az objektumra vonatkozó szabályokat az alábbi szűrő módosításával. Tekintse meg az egyes szabályokat, és tekintse meg a megfelelő [MV attribútumértéket.](#mv-attributes)
+A kimenő hatóköri szűrő megkereséséhez válassza ki az objektumra vonatkozó szabályokat az alábbi szűrő beállításával. Tekintse meg az egyes szabályokat, és tekintse meg a megfelelő [MV attribútumérték](#mv-attributes) értékét.
 
-  ![Képernyőkép egy kimenő szinkronizálási szabályok kereséséről a Szinkronizálási szabályok szerkesztőjében](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+  ![Képernyőkép a kimenő szinkronizálási szabályok kereséséről a szinkronizálási szabályok szerkesztőjében](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
 
 
 ### <a name="mv-attributes"></a>MV-attribútumok
-Az **Attribútumok** lapon láthatja az értékeket, és hogy mely összekötők járultak hozzájuk.  
+Az **attribútumok** lapon megtekintheti az értékeket, és hogy mely összekötők járultak hozzájuk.  
 
-![Képernyőkép a Metaverzum-objektum tulajdonságai ablakról, az Attribútumok lap kijelölésével](./media/tshoot-connect-object-not-syncing/mvobject.png)  
+![Képernyőfelvétel a metaverse-objektumról Tulajdonságok ablakról, az attribútumok lapon kiválasztva](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
-Ha egy objektum nem szinkronizálódik, tegye fel a következő kérdéseket a metaverzum attribútumállapotával kapcsolatban:
-- A **cloudFiltered** attribútum jelen van, és **Igaz**értékre van állítva? Ha ez így van, akkor az attribútumalapú szűrés lépései szerint lett [szűrve.](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)
-- Az attribútum **sourceAnchor** jelen van? Ha nem, van-e fiókerőforrás-erdőtopológiája? Ha egy objektum csatolt postaládaként van azonosítva (az **msExchRecipientTypeDetails** attribútum **értéke 2),** a **sourceAnchor-t** az engedélyezett Active Directory-fiókkal rendelkező erdő adják hozzá. Ellenőrizze, hogy a főfiók importálása és szinkronizálása megfelelő-e. A főfióknak szerepelnie kell az objektum [összekötői](#mv-connectors) között.
+Ha egy objektum nem szinkronizál, kérdezze meg a következő kérdéseket a metaverse attribútum-állapotáról:
+- Az attribútum **cloudFiltered** van, és **igaz**értékre van állítva? Ha igen, az [attribútum-alapú szűrés](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)lépéseinek megfelelően szűrve lett.
+- A **sourceAnchor** attribútum jelen van? Ha nem, van egy fiók-erőforrás erdő-topológiája? Ha egy objektum csatolt postaládaként van azonosítva (a **msExchRecipientTypeDetails** attribútum **2**értékkel rendelkezik), akkor a **sourceAnchor** az erdő az engedélyezett Active Directory fiókkal járul hozzá. Győződjön meg arról, hogy a fő fiók importálása és szinkronizálása megfelelő volt. A fő fióknak szerepelnie kell az objektum [összekötői](#mv-connectors) között.
 
-### <a name="mv-connectors"></a>MV csatlakozók
-Az **Összekötők** lapon látható az objektumot reprezentativitását ábrázoló összes összekötő hely. 
+### <a name="mv-connectors"></a>MV-összekötők
+Az **Összekötők** lapon az összes olyan összekötő látható, amely az objektum ábrázolásával rendelkezik. 
  
-![Képernyőkép a Metaverzum-objektum tulajdonságai ablakról, az Összekötők lap kijelölésével](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
+![Képernyőfelvétel a metaverse-objektumról Tulajdonságok ablakről, az összekötők lapon kiválasztva](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 
-Rendelkeznie kell egy összekötő:
+Rendelkeznie kell egy összekötővel a következőhöz:
 
-- Minden olyan Active Directory-erdő, amelyben a felhasználó képviselteti magát. Ez a képviselet tartalmazhat **foreignSecurityPrincipals** és **contact** objektumokat.
-- Összekötő az Azure AD-ben.
+- Minden Active Directory erdő, amelyet a felhasználó képvisel. Ez a képviselet tartalmazhat **foreignSecurityPrincipals** és **kapcsolattartási** objektumokat is.
+- Egy összekötő az Azure AD-ben.
 
-Ha hiányzik az azure AD-összekötő, tekintse át az [MV-attribútumok](#mv-attributes) szakaszát az Azure AD-be való kiépítés feltételeinek ellenőrzéséhez.
+Ha hiányzik az összekötő az Azure AD-hoz, tekintse át az [MV-attribútumok](#mv-attributes) szakaszt az Azure ad-ben való kiépítés feltételeinek ellenőrzéséhez.
 
-Az **Összekötők** lapon az összekötő [térobjektumra](#connector-space-object-properties)is léphet. Jelöljön ki egy sort, és kattintson **a Tulajdonságok gombra.**
+Az **Összekötők lapon az** [összekötő terület objektumra](#connector-space-object-properties)is léphet. Jelöljön ki egy sort, és kattintson a **Tulajdonságok**elemre.
 
 ## <a name="next-steps"></a>További lépések
-- További információ az [Azure AD Connect szinkronizálásáról.](how-to-connect-sync-whatis.md)
-- További információ a [hibrid identitásról.](whatis-hybrid-identity.md)
+- További információ a [Azure ad Connect szinkronizálásról](how-to-connect-sync-whatis.md).
+- További információ a [hibrid identitásról](whatis-hybrid-identity.md).

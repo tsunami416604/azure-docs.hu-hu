@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Gallery alkalmazásba való felhasználói kiépítés órákat vagy többet vesz igénybe
-description: Hogyan derítheti ki, hogy miért tarthat tovább az alkalmazás kiépítése a vártnál?
+title: A felhasználó üzembe helyezése az Azure AD Gallery alkalmazásban óra vagy több időt vesz igénybe
+description: Annak megállapítása, hogy az alkalmazás kiépítés miért lehet hosszabb a vártnál.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,24 +17,24 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb22d19733fbeb162fba55dd732c10e552879c78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522645"
 ---
-# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Az Azure AD Gallery-alkalmazásba való felhasználói kiépítés órákat vagy többet vesz igénybe
+# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe
 
-Amikor először engedélyezi az automatikus kiépítés egy alkalmazás, a kezdeti ciklus is eltarthat bárhol 20 perctől több óráig, méretétől függően az Azure AD-címtár és a felhasználók száma a kiépítés hatókörében. 
+Az alkalmazások automatikus kiosztásának első engedélyezésekor a kezdeti ciklus 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. 
 
-A kezdeti ciklus utáni későbbi szinkronizálások gyorsabbak lesznek, mivel a létesítési szolgáltatás olyan vízjeleket tárol, amelyek a kezdeti ciklus után mindkét rendszer állapotát jelölik, javítva a későbbi szinkronizálások teljesítményét.
+A későbbi szinkronizálások a kezdeti ciklus után gyorsabbak lesznek, mivel a kiépítési szolgáltatás a kezdeti ciklust követően mindkét rendszer állapotát jelképező vízjeleket tárolja, így javítja a későbbi szinkronizálások teljesítményét.
 
 ## <a name="how-to-improve-provisioning-performance"></a>A kiépítési teljesítmény javítása
 
-Ha a kezdeti ciklus több mint néhány órát vesz igénybe, van egy dolog, amit tehetünk, hogy javítsa a teljesítményt:
+Ha a kezdeti ciklus több mint néhány órát vesz igénybe, a teljesítmény javítása érdekében egy dologra van szükség:
 
--   **Felhasználói hatókörszűrők.** A hatókörszűrők lehetővé teszik, hogy finomhangolja azokat az adatokat, amelyeket a létesítési szolgáltatás kibont az Azure AD-ből, adott attribútumértékek alapján kiszűrve a felhasználókat. A szűrők hatókörének kezeléséről további információt az [Attribútumalapú alkalmazáskiépítés hatókörszűrőkkel című témakörben talál.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+-   **Felhasználói hatókörű szűrők.** A hatóköri szűrők lehetővé teszik a kiépítési szolgáltatás által az Azure AD által kinyert adatok finomhangolását a felhasználók adott attribútumérték alapján történő kiszűrésével. A szűrők hatókörével kapcsolatos további információkért lásd: [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>További lépések
-[A felhasználói kiépítés és a SaaS-alkalmazásokba való megszüntetés automatizálása az Azure Active Directoryval](user-provisioning.md)
+[A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md)
 

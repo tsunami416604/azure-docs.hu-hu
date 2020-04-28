@@ -1,6 +1,6 @@
 ---
-title: 'Többórás hitelesítés engedélyezése VPN-felhasználók számára: Azure AD-hitelesítés'
-description: Többtényezős hitelesítés engedélyezése VPN-felhasználók számára
+title: 'MFA engedélyezése VPN-felhasználók számára: Azure AD-hitelesítés'
+description: A többtényezős hitelesítés engedélyezése a VPN-felhasználók számára
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: alzam
 ms.openlocfilehash: 34ef1b73b06870fd4eaabe88147cd98b281c1f11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77472349"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Az Azure többtényezős hitelesítésének (MFA) engedélyezése VPN-felhasználók számára
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) engedélyezése a VPN-felhasználók számára
 
 [!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 
@@ -26,14 +26,14 @@ ms.locfileid: "77472349"
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-vwan-openvpn-sign-in.md)]
 
-## <a name="option-1---per-user-access"></a><a name="peruser"></a>1. lehetőség – Felhasználónkénti hozzáférés
+## <a name="option-1---per-user-access"></a><a name="peruser"></a>1. lehetőség – felhasználónkénti hozzáférés
 
 [!INCLUDE [per user](../../includes/vpn-gateway-vwan-openvpn-per-user.md)]
 
-## <a name="option-2---conditional-access"></a><a name="conditional"></a>2. lehetőség – Feltételes hozzáférés
+## <a name="option-2---conditional-access"></a><a name="conditional"></a>2. lehetőség – feltételes hozzáférés
 
 [!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyfélprofilt. Lásd: [VPN-ügyfél konfigurálása p2s VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).
+A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).

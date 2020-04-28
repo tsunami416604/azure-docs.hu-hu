@@ -1,24 +1,24 @@
 ---
 title: Felhasználó által definiált függvények a sablonokban
-description: Bemutatja, hogyan definiálhatja és használhatja a felhasználó által definiált függvényeket egy Azure Resource Manager-sablonban.
+description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943218"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Felhasználó által definiált függvények az Azure Resource Manager-sablonban
+# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Felhasználó által definiált függvények Azure Resource Manager sablonban
 
-A sablonon belül létrehozhatja saját funkcióit. Ezek a funkciók a sablonban használhatók. A felhasználó által definiált függvények elkülönülnek a sablonon belül automatikusan elérhető [szabványos sablonfüggvényektől.](template-functions.md) Hozzon létre saját függvényeket, ha bonyolult kifejezésekkel rendelkezik, amelyeket többször is használ a sablonban.
+A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. A felhasználó által definiált függvények eltérhetnek a sablonon belül automatikusan elérhető [szabványos sablon-függvényektől](template-functions.md) . Saját függvényeket hozhat létre, ha olyan bonyolult kifejezésekkel rendelkezik, amelyeket a sablonban ismételten használnak.
 
-Ez a cikk ismerteti, hogyan adhat hozzá felhasználó által definiált függvényeket az Azure Resource Manager-sablonban.
+Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználó által definiált függvényeket a Azure Resource Manager-sablonhoz.
 
-## <a name="define-the-function"></a>A függvény meghatározása
+## <a name="define-the-function"></a>A függvény megadása
 
-A függvények névtérértéket igényelnek a sablonfüggvényekkel való ütközések elkerülése érdekében. A következő példa egy olyan függvényt mutat be, amely egyedi nevet ad vissza:
+A függvények névtér-értéket igényelnek, így elkerülhető a sablon függvényekkel való névütközés. A következő példa egy olyan függvényt mutat be, amely egyedi nevet ad vissza:
 
 ```json
 "functions": [
@@ -44,7 +44,7 @@ A függvények névtérértéket igényelnek a sablonfüggvényekkel való ütk�
 
 ## <a name="use-the-function"></a>A függvény használata
 
-A következő példa egy felhasználó által definiált függvényt tartalmazó sablont mutat be. Ezt a függvényt használja egy tárfiók egyedi nevének lekérnie. A sablon egy **storageNamePrefix** nevű paraméterrel rendelkezik, amely paraméterként halad át a függvényben.
+A következő példa egy olyan sablont mutat be, amely egy felhasználó által definiált függvényt tartalmaz. Ezt a függvényt használja a Storage-fiók egyedi nevének beszerzéséhez. A sablon egy **storageNamePrefix** nevű paraméterrel rendelkezik, amelyet paraméterként a függvénynek továbbít.
 
 ```json
 {
@@ -95,16 +95,16 @@ A következő példa egy felhasználó által definiált függvényt tartalmazó
 
 ## <a name="limitations"></a>Korlátozások
 
-A felhasználói függvény ek meghatározásakor vannak bizonyos korlátozások:
+A felhasználói függvények meghatározásakor bizonyos korlátozások vonatkoznak:
 
-* A függvény nem tud hozzáférni a változókhoz.
-* A függvény csak a függvényben definiált paramétereket használhatja. Ha a [paraméterek függvényt](template-functions-deployment.md#parameters) egy felhasználó által definiált függvényen belül használja, akkor az adott függvény paramétereire van korlátozva.
-* A függvény nem hívhat meg más felhasználó által definiált függvényeket.
-* A függvény nem használhatja a [referencia](template-functions-resource.md#reference) függvényt vagy a [lista](template-functions-resource.md#list) függvényeket.
+* A függvény nem fér hozzá a változókhoz.
+* A függvény csak a függvényben definiált paramétereket tudja használni. Ha a [Parameters](template-functions-deployment.md#parameters) függvényt egy felhasználó által definiált függvényen belül használja, akkor a függvény paraméterei vannak korlátozva.
+* A függvény nem hívhat meg más, felhasználó által definiált függvényeket.
+* A függvény nem tudja használni a [Reference](template-functions-resource.md#reference) függvényt vagy a [List](template-functions-resource.md#list) függvények egyikét sem.
 * A függvény paraméterei nem rendelkezhetnek alapértelmezett értékekkel.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* A felhasználó által definiált függvények elérhető tulajdonságairól [az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat.](template-syntax.md)
-* A rendelkezésre álló sablonfüggvények listáját az [Azure Resource Manager sablonfüggvényei című témakörben olvashatja.](template-functions.md)
+* A felhasználó által definiált függvények elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
+* A sablonhoz elérhető függvények listáját itt tekintheti meg: [Azure Resource Manager template functions](template-functions.md).

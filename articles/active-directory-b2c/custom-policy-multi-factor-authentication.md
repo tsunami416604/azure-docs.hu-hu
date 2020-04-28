@@ -1,6 +1,6 @@
 ---
-title: Többtényezős hitelesítés az Azure Active Directory B2C könyvtárában | Microsoft dokumentumok
-description: A többtényezős hitelesítés engedélyezése az Azure Active Directory B2C által védett, fogyasztói ügyfélbarát alkalmazásokban.
+title: Multi-Factor Authentication a Azure Active Directory B2Cban | Microsoft Docs
+description: A Multi-Factor Authentication engedélyezése a Azure Active Directory B2C által védett, a felhasználók felé irányuló alkalmazásokban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,41 +11,41 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 25724ba82e57c5e3800fa1a989dd4f504df1c163
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189276"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Többtényezős hitelesítés engedélyezése az Azure Active Directory B2C-ben
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Multi-Factor Authentication engedélyezése Azure Active Directory B2C
 
-Az Azure Active Directory B2C (Azure AD B2C) közvetlenül integrálható [az Azure többtényezős hitelesítésével,](../active-directory/authentication/multi-factor-authentication.md) így egy második biztonsági réteget adhat hozzá a regisztrációhoz és a bejelentkezési élményhez az alkalmazásokban. A többtényezős hitelesítést egyetlen kódsor írása nélkül engedélyezheti. Ha már létrehozott regisztráció és bejelentkezésfelhasználói folyamatok, továbbra is engedélyezheti a többtényezős hitelesítést.
+A Azure Active Directory B2C (Azure AD B2C) közvetlenül az [Azure multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) integrálódik, így egy második biztonsági réteget adhat hozzá az alkalmazásaiban való regisztráláshoz és bejelentkezési élményekhez. A többtényezős hitelesítés engedélyezése egyetlen sor kód írása nélkül. Ha már létrehozott egy regisztrációs és bejelentkezési felhasználói folyamatot, továbbra is engedélyezheti a többtényezős hitelesítést.
 
-Ez a szolgáltatás segít az alkalmazásoknak a következő forgatókönyvek kezelésében:
+Ez a funkció segít az alkalmazásoknak olyan forgatókönyvek kezelésében, mint például a következők:
 
-- Nincs szükség többtényezős hitelesítésre egy alkalmazás eléréséhez, de egy másik eléréséhez szükséges. Például az ügyfél bejelentkezhet egy autóbiztosítási alkalmazásba egy közösségi vagy helyi fiókkal, de ellenőriznie kell a telefonszámot, mielőtt hozzáférne az ugyanabban a címtárban regisztrált lakásbiztosítási alkalmazáshoz.
-- Az alkalmazások eléréséhez általában nincs szükség többtényezős hitelesítésre, de a bizalmas részek eléréséhez általában szükség van rá. Az ügyfél például közösségi vagy helyi fiókkal jelentkezhet be egy banki alkalmazásba, és ellenőrizheti a számlaegyenlegét, de az átutalás megkísérlése előtt ellenőriznie kell a telefonszámot.
+- Nincs szükség többtényezős hitelesítésre egy alkalmazáshoz való hozzáféréshez, de ehhez egy másikra van szükség. Például az ügyfél be tud jelentkezni egy automatikus biztosítási alkalmazásba egy közösségi vagy helyi fiókkal, de ellenőriznie kell a telefonszámot, mielőtt hozzáfér az ugyanabban a címtárban regisztrált Home Insurance-alkalmazáshoz.
+- A többtényezős hitelesítés nem szükséges ahhoz, hogy általánosan hozzáférjen egy alkalmazáshoz, de ehhez a bizalmas részeit is hozzá kell férnie. Például az ügyfél bejelentkezhet egy banki alkalmazásba egy közösségi vagy helyi fiókkal, és ellenőrizheti a fiók egyenlegét, de a hálózati átvitel megkísérlése előtt ellenőriznie kell a telefonszámot.
 
-## <a name="set-multi-factor-authentication"></a>Többtényezős hitelesítés beállítása
+## <a name="set-multi-factor-authentication"></a>Multi-Factor Authentication beállítása
 
-Felhasználói folyamat létrehozásakor engedélyezheti a többtényezős hitelesítést.
+Felhasználói folyamat létrehozásakor lehetősége van a többtényezős hitelesítés engedélyezésére.
 
-![Többtényezős hitelesítés beállítása](./media/custom-policy-multi-factor-authentication/add-policy.png)
+![Multi-Factor Authentication beállítása](./media/custom-policy-multi-factor-authentication/add-policy.png)
 
-Állítsa a **többtényezős hitelesítést** **Engedélyezve értékre.**
+**Engedélyezze**a **többtényezős hitelesítés** beállítást.
 
-A **felhasználói folyamat futtatása** segítségével ellenőrizheti a felhasználói élményt. Erősítse meg a következő forgatókönyvet:
+A **felhasználói folyamat futtatásával** ellenőrizheti a felhasználói élményt. Erősítse meg a következő helyzetet:
 
-Egy ügyfélfiók jön létre a bérlőben, mielőtt a többtényezős hitelesítési lépés bekövetkezne. A lépés során az ügyfélnek meg kell adnia egy telefonszámot, és ellenőriznie kell azt. Ha az ellenőrzés sikeres, a telefonszám a fiókhoz lesz csatolva későbbi használatra. Még akkor is, ha az ügyfél megszakítja vagy kiesik, az ügyfél kérheti, hogy ellenőrizze a telefonszámot újra a következő bejelentkezés során a többtényezős hitelesítés engedélyezve van.
+A multi-Factor Authentication lépése előtt létrejön egy ügyfél-fiók a bérlőben. A lépés során a rendszer megkéri az ügyfelet, hogy adjon meg egy telefonszámot, és ellenőrizze azt. Ha az ellenőrzés sikeres, a telefonszámot a rendszer a fiókhoz csatolja későbbi használatra. Annak ellenére, hogy az ügyfél megszakítja vagy kiesik, az ügyfél megkérheti, hogy a következő bejelentkezéskor ismét ellenőrizze a telefonszámot a többtényezős hitelesítés engedélyezésekor.
 
-## <a name="add-multi-factor-authentication"></a>Többtényezős hitelesítés hozzáadása
+## <a name="add-multi-factor-authentication"></a>Multi-Factor Authentication hozzáadása
 
-Lehetőség van a többtényezős hitelesítés engedélyezésére a korábban létrehozott felhasználói folyamaton.
+A többtényezős hitelesítés engedélyezhető egy korábban létrehozott felhasználói folyamaton.
 
 A többtényezős hitelesítés engedélyezése:
 
-1. Nyissa meg a felhasználói folyamatot, és válassza **a Tulajdonságok lehetőséget.**
-2. A **Többtényezős hitelesítés**csoportban válassza **az Engedélyezve**lehetőséget.
+1. Nyissa meg a felhasználói folyamatot, majd válassza a **Tulajdonságok**lehetőséget.
+2. A **többtényezős hitelesítés**mellett válassza az **engedélyezve**lehetőséget.
 3. Kattintson az oldal tetején lévő **Mentés** elemre.
 
 

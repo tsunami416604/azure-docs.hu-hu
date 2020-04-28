@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78397797"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -51,7 +51,7 @@ A **claimType** elem a következő elemeket tartalmazza:
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
-| Adattípus | 1:1 | A jogcím típusa. |
+| DataType | 1:1 | A jogcím típusa. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcím-típusai, amelyeket egy adott protokollhoz kell használni. Az érték felülírható a **InputClaim** vagy a **OutputClaim** elemekben megadott **PartnerClaimType** . Ezzel az elemmel adhatja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | A jogcímek megjelenítésekor alkalmazható maszkolási karakterek nem kötelező karakterlánca. Például a 324-232-4343-as telefonszám a XXX-XXX-4343 lehet. |
 | UserHelpText | 0:1 | A jogcím típusának leírása, amely hasznos lehet a felhasználók számára, hogy megértsék a célját. Az érték [honosítható](localization.md). |
@@ -62,23 +62,23 @@ PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mut
 
 
 
-### <a name="datatype"></a>Adattípus
+### <a name="datatype"></a>DataType
 
 Az **adattípus** elem a következő értékeket támogatja:
 
 | Típus | Leírás |
 | ------- | ----------- |
-|logikai|A logikai (`true` vagy `false`) értéket jelöli.|
+|logikai|Egy logikai (`true` vagy `false`) értéket jelöl.|
 |dátum| Egy azonnali időpontot jelöl, amely általában nap dátumként van kifejezve. A dátum értéke az ISO 8601 konvenciót követi.|
-|Dátum és idő|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum értéke az ISO 8601 konvenciót követi.|
-|duration|Az év, hónap, nap, óra, perc és másodperc időtartamot jelöli. A formátuma `PnYnMnDTnHnMnS`, ahol a `P` pozitív vagy `N` negatív értéket jelez. `nY` az évek száma, amelyet egy literál `Y`követ. `nMo` az a hónapok száma, amelyet egy literál `Mo`követ. `nD` az a napok száma, amelyet egy literál `D`követ. Példák: a `P21Y` 21 évet jelöl. `P1Y2Mo` egy évet és két hónapot jelöl. `P1Y2Mo5D` egy évet, két hónapot és öt napot jelöl.  `P1Y2M5DT8H5M620S` egy évet, két hónapot, öt napot, nyolc órát, öt percet és húsz másodpercet jelöl.  |
+|dateTime|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum értéke az ISO 8601 konvenciót követi.|
+|duration|Az év, hónap, nap, óra, perc és másodperc időtartamot jelöli. A formátuma `PnYnMnDTnHnMnS`, ahol `P` a pozitív vagy `N` negatív értéket jelöl. `nY`az évek száma, amelyet egy literál `Y`követ. `nMo`az a hónapok száma, amelyet egy literál `Mo`követ. `nD`az a napok száma, amelyet egy literál `D`követ. Példák: `P21Y` 21 évet jelöl. `P1Y2Mo`egy évet és két hónapot jelöl. `P1Y2Mo5D`egy évet, két hónapot és öt napot jelöl.  `P1Y2M5DT8H5M620S`egy évet, két hónapot, öt napot, nyolc órát, öt percet és húsz másodpercet jelöl.  |
 |Telefonszám|A telefonszámot jelöli. |
 |int| A-2 147 483 648 és a 2 147 483 647 közötti számot jelöli|
 |hosszú| A-9223372036854775808 és a 9 223 372 036 854 775 807 közötti számot jelöli |
 |sztring| UTF-16 kód egységként jeleníti meg a szöveget.|
-|StringCollection stb|`string`gyűjteményét jelöli.|
+|StringCollection stb|A gyűjteményét jelöli `string`.|
 |userIdentity| Felhasználói identitást jelöl.|
-|userIdentityCollection|`userIdentity`gyűjteményét jelöli.|
+|userIdentityCollection|A gyűjteményét jelöli `userIdentity`.|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -86,7 +86,7 @@ A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Protokoll | 1: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
+| Protocol (Protokoll) | 1: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
 A **protokoll** elem a következő attribútumokat tartalmazza:
 
@@ -95,7 +95,7 @@ A **protokoll** elem a következő attribútumokat tartalmazza:
 | Name (Név) | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
 | PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
 
-A következő példában, amikor az identitás-keretrendszer egy egy SAML2-identitás szolgáltatóval vagy függő entitással működik együtt, a **vezetéknév** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`ra van leképezve, és a OpenIdConnect és a OAuth2 a jogcímek `family_name`re vannak leképezve.
+A következő példában, amikor az Identity Experience Framework egy egy SAML2-identitás szolgáltatóval vagy egy függő entitás alkalmazásával kommunikál, a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`OpenIdConnect és a OAuth2-mel leképezi a jogcímet `family_name`. **surname**
 
 ```XML
 <ClaimType Id="surname">
@@ -109,7 +109,7 @@ A következő példában, amikor az identitás-keretrendszer egy egy SAML2-ident
 </ClaimType>
 ```
 
-Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat **a nevet a**claimType neve helyett a `family_name` bocsátja ki.
+Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat a ClaimType neve `family_name` helyett kibocsátja **surname**a nevet.
 
 ```JSON
 {
@@ -127,8 +127,8 @@ A **maszk** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot alkalmaz a rendszer egy karakterlánc-jogcím vezető részére. A `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha meg van adva a `Regex` értéke, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
-| `Regex` | Nem | Ha **`Type`** `Regex`re van beállítva, adja meg a használni kívánt reguláris kifejezést.
+| `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. Az `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszk van alkalmazva egy karakterlánc-jogcím vezető részére. Az `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha az `Regex` érték meg van adva, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
+| `Regex` | Nem | Ha **`Type`** a értéke `Regex`, akkor adja meg a használni kívánt reguláris kifejezést.
 
 A következő példa egy **telefonszám** jogcímet konfigurál a `Simple` maszkkal:
 
@@ -167,7 +167,7 @@ A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`vagy `ReplaceAll`. A `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. A `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. A `ReplaceAll` érték a szülő házirendben megadott adatgyűjtemény, amelyet figyelmen kívül kell hagyni. |
+| MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. Az `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. Az `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. Az `ReplaceAll` érték a szülő házirendben megadott, figyelmen kívül hagyott adatgyűjtemény. |
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
@@ -178,7 +178,7 @@ A **korlátozási** elem a következő elemeket tartalmazza:
 
 #### <a name="enumeration"></a>Enumerálás
 
-A **számbavételi** elem a felhasználó számára elérhető beállításokat definiálja a felhasználói felületen lévő jogcímek kiválasztásához, például egy `CheckboxMultiSelect`, `DropdownSingleSelect`vagy `RadioSingleSelect`értékének megadásához. Azt is megteheti, hogy megadhatja és honosíthatja az elérhető beállításokat a [LocalizedCollections](localization.md#localizedcollections) elemmel. Ha meg szeretne keresni egy elemet egy jogcím- **enumerálási** gyűjteményből, használja a [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) jogcím-átalakítást.
+A **számbavételi** elem a felhasználó számára elérhető beállításokat definiálja a felhasználói felületen lévő jogcímek kiválasztásához, például: a `CheckboxMultiSelect`, `DropdownSingleSelect`vagy `RadioSingleSelect`a érték. Azt is megteheti, hogy megadhatja és honosíthatja az elérhető beállításokat a [LocalizedCollections](localization.md#localizedcollections) elemmel. Ha meg szeretne keresni egy elemet egy jogcím- **enumerálási** gyűjteményből, használja a [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) jogcím-átalakítást.
 
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
@@ -188,7 +188,7 @@ A **számbavételi** elem a következő attribútumokat tartalmazza:
 |Érték | Igen | A beállítás kiválasztásához társított jogcím értéke. |
 | SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
 
-Az alábbi **példa egy legördülő lista** jogcímet konfigurál egy alapértelmezett értékkel `New York`:
+Az alábbi példa egy, a **város** legördülő lista jogcímet konfigurálja alapértelmezett értékre beállítva `New York`:
 
 ```XML
 <ClaimType Id="city">
@@ -213,7 +213,7 @@ A **minta** elem a következő attribútumokat tartalmazhatja:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| RegularExpression | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
+| Válaszban | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
 | HelpText | Nem | Hibaüzenet a felhasználók számára, ha a reguláris kifejezés-ellenőrzés sikertelen. |
 
 Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezéses beviteli ellenőrzéssel és a Súgó szöveggel:
@@ -394,7 +394,7 @@ A **readonly** felhasználói bevitel típusa írásvédett mező biztosításá
 
 #### <a name="paragraph"></a>Bekezdés
 
-A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget.  Például &lt;p&gt;Text&lt;/p&gt;. Az önérvényesített technikai profil **`OutputClaim` felhasználói beviteli** típusa beállításnál a `Required` attribútumot `false` (alapértelmezett) értékre kell állítani.
+A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget.  Például: &lt;p&gt;Text&lt;/p.&gt; Az önérvényesített technikai `OutputClaim` **profil felhasználói bemeneti** típusaként az `Required` attribútumot `false` (alapértelmezett) kell beállítania.
 
 ![Jogcím típusának használata bekezdéssel](./media/claimsschema/paragraph.png)
 
