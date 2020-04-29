@@ -1,31 +1,31 @@
 ---
-title: 'Oktatóanyag: Nyelvmegértés Bot C# v4'
-description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a Bot Framework 4-es verziójával és az Azure Web app bot szolgáltatásával készült.
+title: 'Oktatóanyag: Language Understanding robot C# v4'
+description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a robot Framework 4-es verziójával és az Azure Web App bot Service-szel készült.
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.openlocfilehash: 2381f4cba39f81ab593f3149a2708f442156f30d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76987996"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: A C nyelvismertetési funkcióval rendelkező Web App Bot használata #
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: webalkalmazás-robot használata a Language Understanding C használatával #
 
-A C# használatával a nyelvi megértéssel (LUIS) integrált csevegőrobotot hozhat létre. A robot az Azure [Web app bot](https://docs.microsoft.com/azure/bot-service/) erőforrásés a Robot keretrendszer V4-es [verziója.](https://github.com/Microsoft/botbuilder-dotnet)
+A C# használatával a Language Understanding (LUIS) nyelvvel integrált csevegési robotot hozhat létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
 **Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Webalkalmazás-robot létrehozása. Ez a folyamat egy új LUIS-appot hoz létre az Ön számára.
-> * A webrobot szolgáltatás által létrehozott robotprojekt letöltése
+> * A web bot Service által létrehozott robot-projekt letöltése
 > * A robot és az emulátor elindítása a helyi számítógépen
 > * Kimondottszöveg-eredmények megtekintése a robotban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
-* [Vizuális stúdió](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
 ## <a name="create-a-web-app-bot-resource"></a>Webalkalmazás-robot erőforrás létrehozása
@@ -46,11 +46,11 @@ A C# használatával a nyelvi megértéssel (LUIS) integrált csevegőrobotot ho
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App Service-csomag/Hely|Ne változtasson a megadott alapértelmezett értékről.|
-    |Application Insights|Ne változtasson a megadott alapértelmezett értékről.|
-    |Microsoft App Azonosító és jelszó|Ne változtasson a megadott alapértelmezett értékről.|
+    |App Service-csomag/Hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
-1. A **Robotsablonban**válassza a következőket, majd a beállítások alatt válassza a **Kijelölés** gombot:
+1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
     |Beállítás|Cél|Kiválasztás|
     |--|--|--|
@@ -58,51 +58,51 @@ A C# használatával a nyelvi megértéssel (LUIS) integrált csevegőrobotot ho
     |SDK nyelve|Robot programozási nyelve|**C #**|
     |Bot|Robot típusa|**Alapszintű robot**|
 
-1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név az /Azure Bot Service alkalmazás nevén alapul.
+1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
     > [!div class="mx-imgBorder"]
     > [![Webalkalmazás-robot létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
-    A folytatás előtt várja meg, amíg létrejön a robotszolgáltatás.
+    A folytatás előtt várjon, amíg létrejött a robot szolgáltatás.
 
-## <a name="the-bot-has-a-language-understanding-model"></a>A robot nyelvtudási modellel rendelkezik
+## <a name="the-bot-has-a-language-understanding-model"></a>A robot Language Understanding modellt tartalmaz
 
-A bot szolgáltatás létrehozási folyamat is létrehoz egy új LUIS-alkalmazást szándékokkal és példa utterances. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén:
+A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a szándékokkal és példa hosszúságú kimondott szöveg. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén:
 
 |Alapszintű robot LUIS-szándékai|példa kimondott szöveg|
 |--|--|
-|Könyvjárat|`Travel to Paris`|
+|Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
-|GetWeather (Időjárás)|`what's the weather like?`|
+|GetWeather|`what's the weather like?`|
 |None|Az app tartományán kívül bármi.|
 
-## <a name="test-the-bot-in-web-chat"></a>Tesztelje a bot web chat
+## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
-1. Miközben az új robot Azure-portálján van, válassza a **Tesztelés a webes csevegésben**lehetőséget.
-1. Az **Üzenet szövegének beírása** `Book a flight from Seattle to Berlin tomorrow`mezőbe írja be a szöveget. A robot annak ellenőrzésével válaszol, hogy szeretne-e repülőjegyet foglalni.
+1. Miközben az új robot Azure Portal továbbra is elérhető, válassza a **tesztelés webes csevegésben**lehetőséget.
+1. Az írja be az **üzenet** szövegmezőbe írja be a `Book a flight from Seattle to Berlin tomorrow`szöveget. A robot ellenőrzi, hogy szeretne-e repülőjáratot foglalni.
 
-    ![Képernyőkép az Azure Portalról, írja be a "hello" szöveget.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
+    ![A Azure Portal képernyőképe a "Hello" szöveg beírásával.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    A tesztfunkció segítségével gyorsan tesztelheti a robotot. A teljes ebbel végzett teszteléshez, beleértve a hibakeresést is, töltse le a robotkódot, és használja a Visual Studio alkalmazást.
+    A teszt funkció használatával gyorsan tesztelheti a robotot. A teljes teszteléshez, beleértve a hibakeresést, töltse le a robot kódját, és használja a Visual studiót.
 
-## <a name="download-the-web-app-bot-source-code"></a>A webalkalmazás robotforráskódjának letöltése
+## <a name="download-the-web-app-bot-source-code"></a>A webalkalmazás robot-forráskódjának letöltése
 A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi számítógépre.
 
 1. Az Azure Portalon a **Robot felügyelete** szakaszban kattintson a **Build** elemre.
 
 1. Válassza a **Robot forráskódjának letöltse** lehetőséget.
 
-    [![Letöltés web app bot forráskód alapvető bot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Amikor az előugró párbeszédpanel megkérdezi az **Alkalmazásbeállítások felvétele a letöltött zip-fájlba?** lehetőséget választja az **Igen**gombra.
+1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget.
 
 1. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra.
 
-1. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet a Visual Studio segítségével.
+1. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet a Visual Studióval.
 
-## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Tekintse át a kódot, hogy elküldhesse az utterance (kifejezés) a LUIS-nak, és választ kapjon
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Tekintse át a kódot, hogy kinyerje a LUIS-t és a választ
 
-1. Ha a felhasználói utterance (kifejezés) a LUIS előrejelzési végpont, nyissa meg a **FlightBookingRecognizer.cs** fájlt. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz. A LUIS válasza az **RecognizeAsync** metódusból származik.
+1. A felhasználónak a LUIS előrejelzési végpontra történő elküldéséhez nyissa meg a **FlightBookingRecognizer.cs** fájlt. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz. A LUIS válaszát a **RecognizeAsync** metódus adja vissza.
 
     ```csharp
     using System.Threading;
@@ -144,7 +144,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     }
     ````
 
-1. **Nyissa meg a párbeszédpanelek -> MainDialog.cs** rögzíti az utterance (kifejezés) és elküldi azt a executeLuisQuery az actStep metódusban.
+1. **Párbeszédpanelek megnyitása – > MainDialog.cs** rögzíti a megadást, és elküldi a ActStep metódus executeLuisQuery.
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -301,27 +301,27 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     }
     ```
 
-## <a name="start-the-bot-code-in-visual-studio"></a>A robotkód indítása a Visual Studióban
+## <a name="start-the-bot-code-in-visual-studio"></a>A robot kódjának elindítása a Visual Studióban
 
-A Visual Studio 2019-ben indítsa el a robotot. Ekkor megnyílik egy böngészőablak a webalkalmazás-robot webhelyével a `http://localhost:3978/` címen. A kezdőlapon a robottal kapcsolatos információk láthatók.
+A Visual Studio 2019-ben indítsa el a robotot. Ekkor megnyílik egy böngészőablak a webalkalmazás-robot webhelyével a `http://localhost:3978/` címen. A kezdőlapon megjelennek a robottal kapcsolatos információk.
 
-![A kezdőlapon a robottal kapcsolatos információk láthatók.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
+![A kezdőlapon megjelennek a robottal kapcsolatos információk.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>Használja a bot emulátor, hogy tesztelje a bot
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>A bot-emulátor használata a robot teszteléséhez
 
-1. Kezdje el a Bot emulátort, és válassza **az Open Bot**lehetőséget.
-1. A **Robot** előugró ablakának megnyitása párbeszédpanelen adja `http://localhost:3978/api/messages`meg a robot URL-címét, például . Az `/api/messages` útvonal a robot webcíme.
-1. Adja meg a **Microsoft App ID** és a **Microsoft App jelszavát,** amely a letöltött robotkód gyökérében található **appsettings.json** fájlban található.
+1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
+1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például: `http://localhost:3978/api/messages`. Az `/api/messages` útvonal a robot webes címe.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot-kód gyökerében található **appSettings. JSON** fájlban található.
 
 
-1. A bot emulátor, `Book a flight from Seattle to Berlin tomorrow` írja be, és kap ugyanazt a választ az alapvető bot, amit kapott a **Test in Web Chat** egy előző szakaszban.
+1. A robot-emulátorban írja `Book a flight from Seattle to Berlin tomorrow` be és adja meg ugyanazt a választ az alapszintű robothoz, mint amit az előző szakaszban a **webes csevegésben való tesztelés** során kapott.
 
-    [![Alapvető bot válasz emulátor](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. Válassza az **Igen** lehetőséget. A robot a műveletek összegzésével válaszol.
-1. A bot emulátor naplójából válassza ki `Luis Trace`a . Ez megjeleníti a JSON válasz a LUIS a szándék és az entitások az utterance (kifejezés).
+1. Válassza az **Igen** lehetőséget. A robot a műveleteinek összegzésével válaszol.
+1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza `Luis Trace`a elemet. Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
-    [![Alapvető bot válasz emulátor](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
@@ -329,7 +329,7 @@ A Visual Studio 2019-ben indítsa el a robotot. Ekkor megnyílik egy böngésző
 
 ## <a name="next-steps"></a>További lépések
 
-További [minták](https://github.com/microsoft/botframework-solutions) társalgási botokkal.
+További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 
 > [!div class="nextstepaction"]
-> [Nyelvi tudásra vonatkozó alkalmazás létrehozása egyéni tárgytartománysal](luis-quickstart-intents-only.md)
+> [Language Understanding-alkalmazás létrehozása egyéni tárgyú tartománnyal](luis-quickstart-intents-only.md)

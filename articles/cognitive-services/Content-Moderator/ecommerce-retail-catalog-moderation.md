@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Mérsékelt e-kereskedelmi termékképek - Tartalommoderátor'
+title: 'Oktatóanyag: mérsékelt e-kereskedelmi termék lemezképei – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan állíthat be egy alkalmazást a termékképek elemzéséhez és besorolásához megadott címkékkel (az Azure Computer Vision és a Custom Vision használatával). Címke kifogásolható képeket kell tovább vizsgálni (az Azure Content Moderator használatával).
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy alkalmazást a termékek rendszerképeinek a megadott címkékkel való elemzéséhez és besorolásához (az Azure Computer Vision és Custom Vision használatával). A kifogásolt képek címkézése további felülvizsgálatra kerül (az Azure Content Moderator használatával).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,115 +11,115 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 5e74eda9e30c536c0eba4e847019344c87e10cce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774340"
 ---
-# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: Mérsékelt e-kereskedelmi termékképek az Azure-tartalommoderátorral
+# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: az e-kereskedelmi termékkel foglalkozó közepesen súlyos rendszerképek az Azure Content Moderator
 
-Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Cognitive Servicest, beleértve a tartalommoderátort is, az e-kereskedelmi forgatókönyvek termékképeinek besorolásához és moderálására. A Computer Vision és a Custom Vision segítségével címkéket (címkéket) alkalmazhat a képekre, majd létrehoz egy csapatértékelést, amely egyesíti a Tartalommoderátor gépi tanuláson alapuló technológiáit az emberi felülvizsgálati csapatokkal, hogy intelligens moderálási rendszert biztosítson.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Cognitive Servicest, beleértve a Content Moderatoreket, hogy az e-kereskedelmi forgatókönyvek termékeinek besorolását és mérsékelt termékeit. Computer Vision és Custom Vision segítségével címkéket (címkéket) alkalmazhat a képekre, majd létrehoz egy Team reviewot, amely a Content Moderator gépi tanuláson alapuló technológiáit kombinálja az emberi felülvizsgálati csapatokkal, és intelligens moderációs rendszert biztosít.
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
-> * Regisztráljon a tartalommoderátorra, és hozzon létre egy felülvizsgálati csapatot.
+> * Regisztráljon a Content Moderatorra, és hozzon létre egy felülvizsgálati csapatot.
 > * A Content Moderator Image API-jának használata a lehetséges felnőtteknek szóló és kényes tartalom keresésére.
-> * A Computer Vision szolgáltatással hírességek tartalmait (vagy más, a Computer-Vision által kimutatható címkéket) kereshet.
-> * A Custom Vision szolgáltatás segítségével keresse meg a jelzők, játékok és tollak (vagy más egyéni címkék) jelenlétét.
-> * Mutassa be a kombinált vizsgálati eredményeket az emberi felülvizsgálat és a végső döntéshozatal.
+> * Használja a Computer Vision szolgáltatást a Celebrity-tartalmak (vagy más számítógépek által észlelhető címkék) vizsgálatához.
+> * A Custom Vision szolgáltatás segítségével megvizsgálhatja a jelzők, a játékok és a tollak (vagy más egyéni címkék) jelenlétét.
+> * A humán felülvizsgálati és a végső döntéshozatali eredmények összevont vizsgálatának eredményei jelennek meg.
 
-A teljes mintakód a [Minták e-kereskedelmi katalógus moderálástárházban](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) érhető el a GitHubon.
+A teljes mintakód elérhető az [e-kereskedelmi katalógus-moderálási](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) tárházban a githubon.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Content Moderator előfizetői azonosítója. Kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Tartalommoderátor szolgáltatásra, és bekésezse a kulcsot.
-- A Computer Vision előfizetési kulcs (ugyanazokat az utasításokat, mint fent).
-- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/)bármely kiadása.
-- A Custom Vision osztályozó által használt címkék (ebben az esetben játékok, tollak és amerikai jelzők) képei.
+- A Content Moderator előfizetői azonosítója. A Content Moderator szolgáltatásra való előfizetéshez és a kulcs lekéréséhez kövesse az [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakör utasításait.
+- Egy Computer Vision előfizetési kulcs (a fenti utasításokkal).
+- A [Visual Studio 2015-es vagy 2017-](https://www.visualstudio.com/downloads/)es verziójának bármely kiadása.
+- Az Custom Vision osztályozó által használt összes címkéhez tartozó rendszerképek összessége (ebben az esetben a játékok, a tollak és az amerikai zászlók).
 
-## <a name="create-a-review-team"></a>Felülvizsgálati csoport létrehozása
+## <a name="create-a-review-team"></a>Felülvizsgálati csapat létrehozása
 
-A [Tartalommoderátor kipróbálása a weben](quick-start.md) című rövid útmutatóban tájékán megtudhatja, hogyan regisztrálhat a [Tartalommoderátor-ellenőrző eszközre,](https://contentmoderator.cognitive.microsoft.com/) és hogyan hozhat létre felülvizsgálati csoportot. Vegye figyelembe a **Csapatazonosító** értékét a **Hitelesítő adatok** lapon.
+Tekintse át a [Content moderator kipróbálása a webes](quick-start.md) útmutatóban című témakört, amely útmutatást nyújt a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) regisztrálásához és egy felülvizsgálati csapat létrehozásához. Jegyezze fel a **csoport azonosító** értékét a **hitelesítő adatok** lapon.
 
-## <a name="create-custom-moderation-tags"></a>Egyéni moderálási címkék létrehozása
+## <a name="create-custom-moderation-tags"></a>Egyéni moderálási Címkék létrehozása
 
-Ezután hozzon létre egyéni címkéket a Véleményezés eszközben (ha segítségre van szüksége a [Címkék](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) cikkben). Ebben az esetben a következő címkéket adjuk hozzá: **híresség**, **USA**, **zászló**, **játék**és **toll.** Nem minden címke kell kimutatható kategóriák Computer Vision (mint **a híresség);** hozzáadhatja saját egyéni címkéit, feltéve, hogy betanítja a Custom Vision osztályozót, hogy később észlelje őket.
+Ezután hozzon létre egyéni címkéket a felülvizsgálati eszközben (lásd a [címkék](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) cikket, ha segítségre van szüksége ehhez a folyamathoz). Ebben az esetben a következő címkéket fogjuk hozzáadni: **Celebrity**, **USA**, **Flag**, **Toy**és **Pen**. Az összes címkének nem kell észlelhető kategóriának lennie Computer Visionban (például **híresség**); hozzáadhat saját egyéni címkéket is, ha a Custom Vision osztályozó betanításával később felismeri őket.
 
 ![Egyéni címkék konfigurálása](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. A Visual Studióban nyissa meg az Új projekt párbeszédpanelt. Bontsa **ki a Installed**elemet, majd a Visual **C#** lehetőséget, majd válassza **a Console app (.NET Framework)** lehetőséget.
-1. Nevezze el az **alkalmazást EcommerceModeration**, majd kattintson **az OK gombra.**
-1. Ha ezt a projektet egy meglévő megoldáshoz adja hozzá, válassza ki ezt a projektet egyetlen indítási projektként.
+1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **Visual C#**, majd a **Console app (.NET-keretrendszer)** elemet.
+1. Nevezze el az alkalmazás **EcommerceModeration**, majd kattintson **az OK**gombra.
+1. Ha egy meglévő megoldáshoz adja hozzá ezt a projektet, válassza ki ezt a projektet egyetlen indítási projektként.
 
-Ez az oktatóanyag kiemeli a projekt központi kódját, de nem fedi le az összes kódsort. Másolja a _Program.cs_ teljes tartalmát a mintaprojektből ([Minták e-kereskedelmi katalógus moderálása](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) az új projekt _Program.cs_ fájljába. Ezután lépjen végig a következő szakaszokon, és ismerje meg, hogyan működik a projekt, és hogyan használhatja saját maga.
+Ez az oktatóanyag kiemeli a projekt központi részét képező kódot, de nem fedi le a kód minden sorát. Másolja a _program.cs_ teljes tartalmát a minta projektből (az[e-kereskedelmi katalógus moderálása](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) az új projekt _program.cs_ -fájljába. Ezután a következő szakaszokból megismerheti, hogyan működik a projekt, és hogyan használhatja azt.
 
-## <a name="define-api-keys-and-endpoints"></a>API-kulcsok és végpontok definiálása
+## <a name="define-api-keys-and-endpoints"></a>API-kulcsok és-végpontok definiálása
 
-Ez az oktatóanyag három kognitív szolgáltatást használ; ezért három megfelelő kulcsot és API-végpontot igényel. A **Program** osztály következő mezői:
+Ez az oktatóanyag három kognitív szolgáltatást használ; ezért három megfelelő kulcsot és API-végpontot igényel. Tekintse meg a **program** osztály következő mezőit:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Frissítenie kell a `___Key` mezőket az előfizetési kulcsok értékeivel, `___Uri` és a mezőket a megfelelő végpontURL-ekre kell módosítania (később megkapja az Egyéni látás kulcsot és végpontot). Ezeket az értékeket az egyes Azure-erőforrások **rövid útmutatójában** találja. Töltse ki `YOURTEAMID` a `ReviewUri` mező nek a korábban létrehozott ellenőrző csapat azonosítójával. A `CustomVisionUri` mező utolsó részét később ki kell töltenie.
+Frissítenie kell a `___Key` mezőket az előfizetési kulcsok értékeivel, és módosítania kell a `___Uri` mezőket a megfelelő végponti URL-címekre (a Custom Vision kulcsot és a végpontot később kapja meg). Ezek az értékek az egyes Azure-erőforrások **gyors üzembe helyezési** lapjain találhatók. Töltse ki a `YOURTEAMID` `ReviewUri` mező részét a korábban létrehozott felülvizsgálati csapat azonosítójával. A `CustomVisionUri` mező utolsó részét később kitölti a következő időpontban:.
 
 [!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="primary-method-calls"></a>Elsődleges metódushívások
+## <a name="primary-method-calls"></a>Elsődleges metódusok hívása
 
-Tekintse meg a következő kódot a **Fő** metódusban, amely végighalad a kép URL-ek listáján. Elemzi az egyes képeket a három különböző szolgáltatással, rögzíti az alkalmazott címkéket a **ReviewTags** tömbben, majd létrehozza az emberi moderátorok felülvizsgálatát a képek elküldésével a Tartalommoderátor ellenőrző eszköznek. Ezeket a módszereket a következő szakaszokban ismertetheti. Ha szeretné, szabályozhatja, hogy mely képeket küldje át a rendszer, a **ReviewTags** tömb feltételes utasításban, hogy ellenőrizze, mely címkéket alkalmazta.
+Tekintse meg a következő kódot a **Main** metódusban, amely a Képurl-címek listáján keresztül hurkokat mutat be. Elemzi az egyes lemezképeket a három különböző szolgáltatással, rögzíti az alkalmazott címkéket a **ReviewTags** tömbben, majd az emberi moderátorok számára áttekintést küld a rendszerképek Content moderator felülvizsgálati eszközre való elküldésével. Ezeket a módszereket a következő fejezetekben tekintheti át. Ha szeretné, szabályozhatja, hogy mely képek legyenek elküldve a felülvizsgálatra, a **ReviewTags** tömb használatával egy feltételes utasításban ellenőrizheti, hogy mely címkék lettek alkalmazva.
 
 [!code-csharp[Main: evaluate each image and create review](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=53-70)]
 
-## <a name="evaluateadultracy-method"></a>ÉrtékeljeAdultRacy módszer
+## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy metódus
 
-Tekintse meg az **EvaluateAdultRacy** metódust a **Program** osztályban. Ez a módszer egy kép URL-címét és egy kulcs-érték párok tömbjét veszi paraméterekként. Meghívja a tartalommoderátor image API-ját (REST használatával), hogy megkapja a kép felnőtt és pikáns pontszámait. Ha bármelyik pontszáma nagyobb, mint 0,4 (a tartomány 0 és 1 között van), akkor a **Korrektok tömb** megfelelő értékét Igaz értékre **állítja.**
+Tekintse meg a **EvaluateAdultRacy** metódust a **program** osztályban. Ez a metódus képurl-címet és kulcs-érték párok tömbjét veszi fel paraméterekként. Meghívja a Content Moderator rendszerképének API-ját (a REST használatával) a rendszerkép felnőtt és zamatos pontszámának beszerzéséhez. Ha a pontszám értéke nagyobb, mint 0,4 (a tartomány 0 és 1 között van), akkor a **ReviewTags** tömb megfelelő értékét **igaz**értékre állítja.
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
 ## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags metódus
 
-A következő módszer egy kép URL-címét és a Computer Vision előfizetési adatait, és elemzi a képet a hírességek jelenlétét. Ha egy vagy több híresség található, akkor a **Korrektorok** tömb megfelelő értékét Igaz értékre **állítja.**
+A következő módszer egy képurl-címet és a Computer Vision előfizetési adatait veszi figyelembe, és elemzi a rendszerképet a hírességek jelenléte érdekében. Ha egy vagy több híresség található, akkor a **ReviewTags** tömb megfelelő értékét **igaz**értékre állítja.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags metódus
 
-Ezután tekintse meg az **EvaluateCustomVisionTags** metódust,&mdash;amely ebben az esetben a tényleges termékeket sorolja be a jelzőket, játékokat és tollakat. Kövesse a [Hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutatót, hogy saját egyéni képosztályozót hozzon létre, és észlelje a jelzőket, játékokat és tollakat (vagy bármit, amit egyéni címkékként választott) a képekben. A [GitHub-tárházban](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) lévő **mintaképek** mappájában lévő képek segítségével gyorsan betaníthatja a példában szereplő kategóriák némelyikét.
+Ezután tekintse meg a **EvaluateCustomVisionTags** metódust, amely a tényleges termékeket&mdash;osztályozza ebben az esetben a jelzőket, a játékokat és a tollat. Kövesse a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutatót a saját egyéni rendszerkép-osztályozó létrehozásához, valamint a képeken látható jelzők, játékok és tollak (vagy bármi más, az egyéni címkék alapján) észleléséhez. A [GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **-tárház Sample-images** mappájában található lemezképek segítségével gyorsan betaníthatja a példában szereplő kategóriákat.
 
-![Egyéni Vision weboldal tollak, játékok és zászlók képzési képeivel](images/tutorial-ecommerce-custom-vision.PNG)
+![Custom Vision weblap a tollak, játékok és jelzők betanítási képeivel](images/tutorial-ecommerce-custom-vision.PNG)
 
-Miután betanította az osztályozót, kérje le az előrejelzési kulcsot és az előrejelzési végpont URL-címét (lásd: Az `CustomVisionKey` `CustomVisionUri` URL és [az előrejelzési kulcs beolvasása,](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) ha segítségre van szüksége a beolvasásukhoz), és rendelje hozzá ezeket az értékeket a saját és a mezőkhöz. A metódus ezeket az értékeket használja az osztályozó lekérdezéséhez. Ha az osztályozó egy vagy több egyéni címkét talál a képen, ez a módszer a **Korrektorok** tömb megfelelő értékét igaz értékre **állítja.**
+Az osztályozó betanítása után szerezze be az előrejelzési kulcs és az előrejelzési végpont URL-címét (lásd: [az URL-cím és az előrejelzési kulcs beszerzése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , ha segítségre `CustomVisionUri` van szüksége a beolvasáshoz), és ezeket az értékeket a és a `CustomVisionKey` mezőkhöz rendeli A metódus ezeket az értékeket használja az osztályozó lekérdezéséhez. Ha az osztályozó a képen egy vagy több egyéni címkét talál, akkor ez a metódus a **ReviewTags** tömbben lévő megfelelő értékeket állítja be **true**értékre.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
-## <a name="create-reviews-for-review-tool"></a>Vélemények létrehozása a Véleményezés eszközhöz
+## <a name="create-reviews-for-review-tool"></a>Felülvizsgálati eszköz felülvizsgálatának létrehozása
 
-Az előző szakaszokban azt vizsgálta, hogy az alkalmazás hogyan vizsgálja meg a beérkező képeket felnőtt és pikáns tartalom (Content Moderator), hírességek (Computer Vision) és számos egyéb objektum (Custom Vision) számára. Ezután tekintse meg a **CreateReview** metódust, amely feltölti a képeket az összes alkalmazott címkével _(metaadatként_átadva) a Tartalommoderátor ellenőrző eszközébe.
+Az előző szakaszban megvizsgálta, hogy az alkalmazás hogyan vizsgálja meg a felnőtt és a zamatos tartalom (Content Moderator), a hírességek (Computer Vision) és a különböző egyéb objektumok (Custom Vision) beérkező képeit. Ezután tekintse meg a **CreateReview** metódust, amely feltölti a lemezképeket az összes alkalmazott címkével ( _metaadatokként_átadva) a Content moderator felülvizsgálati eszközre.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
-A képek a [Tartalommoderátor-ellenőrző eszköz](https://contentmoderator.cognitive.microsoft.com/)Véleményezés lapján jelennek meg.
+A rendszerképek megjelennek a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/)áttekintés lapján.
 
-![Képernyőkép a Tartalommoderátor-ellenőrző eszközről, amely több képet és azok kiemelt címkéit tartalmaz](images/tutorial-ecommerce-content-moderator.PNG)
+![Képernyőkép a Content Moderator felülvizsgálati eszközről több képpel és a Kiemelt címkékkel](images/tutorial-ecommerce-content-moderator.PNG)
 
-## <a name="submit-a-list-of-test-images"></a>Tesztképek listájának beküldése
+## <a name="submit-a-list-of-test-images"></a>A tesztelési lemezképek listájának elküldése
 
-Mint látható a **Fő** módszer, ez a program keres egy "C:Test" könyvtár egy _Urls.txt_ fájlt, amely tartalmazza a kép URL-eket. Hozza létre ezt a fájlt és könyvtárat, vagy módosítsa az elérési utat úgy, hogy a szövegfájlra mutasson. Ezután feltöltheti ezt a fájlt a tesztelni kívánt képek URL-címével.
+Ahogy a **Main** metódusban is látható, a program egy "C:test" könyvtárat keres egy _URL. txt_ fájllal, amely tartalmazza a képurl-címek listáját. Hozza létre ezt a fájlt és könyvtárat, vagy módosítsa az elérési utat úgy, hogy a szöveges fájlra mutasson. Ezután töltse fel ezt a fájlt a tesztelni kívánt képek URL-címeivel.
 
 [!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Ha a fenti lépések mindegyikét követte, a programnak fel kell dolgoznia az egyes képeket (mindhárom szolgáltatást le kell kérdeznie a megfelelő címkékért), majd fel kell töltenie a címkeinformációkat tartalmazó képeket a Tartalommoderátor ellenőrző eszközébe.
+Ha követte az összes fenti lépést, a programnak fel kell dolgoznia az egyes lemezképeket (mindhárom szolgáltatást lekérdezni a megfelelő címkékre), majd fel kell töltenie a címkével ellátott képeket a Content Moderator felülvizsgálati eszközre.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban beállíthat egy programot a termékképek elemzésére, terméktípus szerint címkézve, és lehetővé teszi, hogy a felülvizsgálati csoport megalapozott döntéseket hozzon a tartalom moderálásáról. Ezután tudjon meg többet a képmoderálás részleteiről.
+Ebben az oktatóanyagban egy olyan programot állít be, amellyel elemezheti a termék rendszerképeit, megcímkézheti a termékeket, és lehetővé teheti, hogy a felülvizsgálati csapat tájékozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
 
 > [!div class="nextstepaction"]
 > [Moderált képek áttekintése](./review-tool-user-guide/review-moderated-images.md)

@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play előzetes verziójú eszközkód csatlakoztatása az IoT Hubhoz | Microsoft dokumentumok
-description: A Node.js használatával hozzon létre és futtasson IoT Plug and Play preview mintaeszköz-kódot, amely egy IoT-központhoz csatlakozik. Az Azure IoT-kezelő eszközzel megtekintheti az eszköz által a hubra küldött információkat.
+title: A IoT csatlakoztatása Plug and Play minta-eszköz kódja a IoT Hubhoz | Microsoft Docs
+description: A Node. js használatával IoT Plug and Play előnézeti minta eszköz kódját, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/26/2019
@@ -9,23 +9,23 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: c5d69ae21cd240b0c68b9694a55de2cf879a1966
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964787"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>Rövid útmutató: Minta IoT Plug and Play előzetes verziójú eszközalkalmazás csatlakoztatása az IoT Hubhoz (Node.js)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>Gyors útmutató: minta IoT csatlakoztatása Plug and Play előnézet-eszköz alkalmazásának IoT Hub (node. js)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy minta IoT Plug and Play eszközalkalmazást, hogyan csatlakoztathatja az IoT-központhoz, és az Azure IoT Explorer eszközzel megtekintheti a hubnak küldött információkat. A mintaalkalmazás a Node.js,és szerepel az Azure IoT Hub Device SDK node.js. A megoldásfejlesztő az Azure IoT-felfedező eszközzel anélkül, hogy bármilyen eszközkódot kellene megtekintenie, az IoT Plug and Play eszközök képességeit.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás a Node. js-hez készült, és a Node. js-hez készült Azure IoT Hub eszközoldali SDK része. A megoldás fejlesztője az Azure IoT Explorer eszköz használatával megismerheti egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához szüksége van a node.js a fejlesztői gépen. Letöltheti a legújabb ajánlott verziót több platformra [a nodejs.org.](https://nodejs.org)
+A rövid útmutató elvégzéséhez a fejlesztői gépen a Node. js fájlra van szükség. A [NodeJS.org](https://nodejs.org)több platformon is letöltheti a legújabb ajánlott verziót.
 
 A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
@@ -33,13 +33,13 @@ A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejles
 node --version
 ```
 
-### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT-felfedező telepítése
+### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
-Töltse le és telepítse az **Azure IoT Explorer** legújabb kiadását az eszköz [tárházlapjáról,](https://github.com/Azure/azure-iot-explorer/releases) válassza ki az .msi fájlt az "Eszközök" alatt a legújabb frissítéshez.
+Töltse le és telepítse az **Azure IoT Explorer** legújabb kiadását az eszköz [tárházának](https://github.com/Azure/azure-iot-explorer/releases) oldaláról, ehhez válassza ki az. msi fájlt a legutóbbi frissítéshez az "eszközök" területen.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Futtassa a következő parancsot az _IoT hub kapcsolati karakterláncának_ lekérnia a hubhoz (megjegyzés későbbi használatra):
+Futtassa a következő parancsot a hub _IoT hub-beli kapcsolódási karakterláncának_ lekéréséhez (jegyezze fel később a használatra):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -47,54 +47,54 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-Ebben a rövid útmutatóban előkészíti a fejlesztői környezetet, amely nek segítségével klónozhatja és létrehozhatja az Azure IoT Hub-eszköz SDK-t a Node.js számára.
+Ebben a rövid útmutatóban egy fejlesztési környezetet készít elő, amellyel klónozott és felépítheti a Node. js-hez készült Azure IoT Hub Device SDK-t.
 
-Nyisson meg egy parancssort az Ön által választott könyvtárban. A következő parancs végrehajtása a [Microsoft Azure IoT SDK node.js](https://github.com/Azure/azure-iot-sdk-node) GitHub-tárházának ezen a helyre történő klónozásához:
+Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa az alábbi parancsot a [Node. js GitHub-tárház Microsoft Azure IOT SDK-nak](https://github.com/Azure/azure-iot-sdk-node) a következő helyre való klónozásához:
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-node --recursive -b digitaltwins-preview
 ```
 
-Ez a művelet több percig is eltarthat.
+A művelet végrehajtása több percet is igénybe vehet.
 
-## <a name="install-required-libraries"></a>Szükséges tárak telepítése
+## <a name="install-required-libraries"></a>A szükséges kódtárak telepítése
 
-Az sdk eszköz segítségével hozhatja létre a mellékelt mintakódot. Az alkalmazást hoz létre szimulálja egy eszköz, amely csatlakozik egy IoT hub. Az alkalmazás telemetriai adatokat és tulajdonságokat küld, és parancsokat fogad.
+Az eszköz SDK-val felépítheti a mellékelt mintakód-kódot. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
-1. Egy helyi terminálablakban nyissa meg a klónozott tárház mappáját, és keresse meg az **/azure-iot-sdk-node/digitaltwins/samples/device/javascript** mappát. Ezután futtassa a következő parancsot a szükséges könyvtárak telepítéséhez:
+1. A helyi terminál ablakban lépjen a klónozott adattár mappájába, és keresse meg a **/Azure-IOT-SDK-Node/digitaltwins/Samples/Device/JavaScript** mappát. Ezután futtassa a következő parancsot a szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
     npm install
     ```
-1. Az _eszköz kapcsolati karakterláncának konfigurálása_:
+1. Az _eszköz-kapcsolatok karakterláncának_konfigurálása:
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-## <a name="run-the-sample-device"></a>A mintaeszköz futtatása
+## <a name="run-the-sample-device"></a>A minta eszköz futtatása
 
-Futtasson egy mintaalkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimulálására, amely telemetriát küld az IoT hubnak. A mintaalkalmazás futtatásához használja a következő parancsot:
+Futtasson egy minta alkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimulálásához, amely telemetria küld az IoT hubhoz. A minta alkalmazás futtatásához használja a következő parancsot:
 
 ```cmd\sh
     node sample_device.js
 ```
 
-A következő kimenet jelenik meg, jelezve, hogy az eszköz megkezdte a telemetriai adatok küldését a hubra, és most már készen áll a parancsok és a tulajdonságfrissítések fogadására.
+A következő kimenet jelenik meg, amely azt jelzi, hogy az eszköz megkezdte a telemetria adatok küldését a központba, és most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására.
 
-   ![Eszköz-megerősítő üzenetek](media/quickstart-connect-pnp-device/device-confirmation-node.png)
+   ![Eszköz megerősítő üzenetei](media/quickstart-connect-pnp-device/device-confirmation-node.png)
 
- A következő lépések végrehajtásával tartsa a mintát.
+ A következő lépések elvégzése közben tartsa a mintát.
 
-## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítéséhez használja az Azure IoT-felfedezőt
+## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítése az Azure IoT Explorer használatával
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. Annak érdekében, hogy az eszköz le tudja olvasni a felületmodell-definíciókat az eszközről, válassza a **Beállítások lehetőséget.** A Beállítások menüben **előfordulhat,** hogy a csatlakoztatott eszközön már megjelennek a Plug and Play konfigurációkban; ha nem, válassza a **+ Add module definition source** and then On the connected **device** to add it.
+4. A **Beállítások**lehetőségre kattintva ellenőrizheti, hogy az eszköz képes-e az eszközön található felületi modell-definíciók beolvasására. Előfordulhat, hogy a beállítások menüben a **csatlakoztatott eszközön** már szerepel a Plug and Play konfigurációk; Ha nem, válassza a **+ modul-definíciós forrás hozzáadása** lehetőséget, majd a **csatlakoztatott eszközön** a hozzáadáshoz.
 
-1. Az **Eszközök** áttekintése lapon keresse meg a korábban létrehozott eszközidentitást. Ha az eszközalkalmazás továbbra is fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorer _ben csatlakoztatottként jelent-e_ (ha nem, nyomja meg a **Frissítés** gombot, amíg nincs). A további részletek megtekintéséhez válassza ki az eszközt.
+1. Az **eszközök** áttekintése lapon keresse meg a korábban létrehozott eszköz identitását. Ha az eszköz még fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorerben _csatlakoztatva_ van-e (ha nem, nyomja meg a **frissítést** , amíg meg nem történik). Válassza ki az eszközt a további részletek megtekintéséhez.
 
-1. Bontsa ki a felületet az ID **urn:contoso:com:EnvironmentalSensor:1** paranccsal, hogy felfedje a felületet és az IoT Plug and Play primitíveket – tulajdonságokat, parancsokat és telemetriai adatokat.
+1. Bontsa ki a felületet a következő AZONOSÍTÓval **: urn: contoso: com: EnvironmentalSensor: 1** , amely felfedi a felületet és a IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetria.
 
 [!INCLUDE [iot-pnp-iot-explorer-2.md](../../includes/iot-pnp-iot-explorer-2.md)]
 
@@ -102,7 +102,7 @@ A következő kimenet jelenik meg, jelezve, hogy az eszköz megkezdte a telemetr
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat ioT Plug and Play-eszközt egy IoT-központhoz. Ha többet szeretne tudni arról, hogyan hozhat létre olyan megoldást, amely kölcsönhatásba lép az IoT Plug and Play eszközeivel, olvassa el a következő témaköröket:
+Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Útmutató: Csatlakozás IoT Plug and Play előzetes verziójához és használata](howto-develop-solution.md)
+> [Útmutató: Kapcsolódás egy IoT Plug and Play előnézeti eszközhöz](howto-develop-solution.md)

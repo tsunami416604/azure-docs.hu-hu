@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Súlyozott ciklikus multiplexeléses forgalomútválasztás konfigurálása az Azure Traffic Managerrel
-description: Ez az oktatóanyag bemutatja, hogyan lehet a forgalom terheléselosztása ciklikus multiplexelési módszerrel a Traffic Managerben
+title: Oktatóanyag – súlyozott Round-Robin forgalom útválasztásának konfigurálása az Azure Traffic Manager
+description: Ez az oktatóanyag azt ismerteti, hogyan lehet terheléselosztást használni a Traffic Manager egy ciklikus multiplexelés használatával.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
 ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76938712"
 ---
-# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: Konfigurálja a súlyozott forgalomútválasztási módszert a Traffic Managerben
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a súlyozott forgalom útválasztási módszerének konfigurálása Traffic Manager
 
-A közös forgalomútválasztási módszer minta az, hogy egy sor azonos végpontok, amelyek magukban foglalják a felhőszolgáltatások és a webhelyek, és a forgalom küldése minden egyenlően. Az alábbi lépések bemutatják, hogyan konfigurálható az ilyen típusú forgalomútválasztási módszer.
+A közös forgalom-útválasztási módszer minta az azonos végpontok készletének biztosítása, amely magában foglalja a Cloud Servicest és a webhelyeket, valamint a forgalmat egyaránt továbbítja. Az alábbi lépések azt ismertetik, hogyan konfigurálható az ilyen típusú forgalom-útválasztási módszer.
 
 > [!NOTE]
-> Az Azure Web App már rendelkezik ciklikus multiplexelés terheléselosztási funkció az Azure-régión belüli (amely több adatközpontok) webhelyeken található. A Traffic Manager lehetővé teszi a forgalom terjesztését a különböző adatközpontokban lévő webhelyek között.
+> Az Azure-webalkalmazás már az Azure-régión belüli (több adatközpontot is tartalmazó) webhelyekhez biztosít ciklikusan részletes terheléselosztási funkciókat. Traffic Manager lehetővé teszi a forgalom terjesztését különböző adatközpontokban lévő webhelyek között.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>A súlyozott forgalomútválasztási módszer konfigurálása
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>A súlyozott forgalom útválasztási módszerének konfigurálása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
-2. A portál keresősávján keresse meg a **Traffic Manager-profilokat,** majd kattintson arra a profilnévre, amelyhez konfigurálni szeretné az útválasztási módszert.
-3. A **Traffic Manager profilpanelen** ellenőrizze, hogy a felhőszolgáltatások és a konfigurációban szerepelhető webhelyek is jelen vannak-e.
-4. A **Beállítások** csoportban kattintson a **Konfiguráció**gombra, és a **Konfiguráció** panelen az alábbiak szerint hajtsa végre:
-    1. A **forgalomútválasztási módszer beállításainál**ellenőrizze, hogy a forgalomútválasztási módszer **súlyozott-e.** Ha nem, kattintson a legördülő listából a **Súlyozott** elemre.
-    2. Állítsa be a **végpontfigyelő beállításait** azonosak a profil összes végpontjára vonatkozóan az alábbiak szerint:
-        1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámát.** 
-        2. A **Görbe** mezőbe */* írjon be egy perjelet . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A perjel "/" a relatív elérési út érvényes bejegyzése, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezett).
-        3. A lap tetején kattintson a **Mentés gombra.**
-5. Tesztelje a konfiguráció változásait az alábbiak szerint:
-    1.  A portál keresősávján keresse meg a Traffic Manager profil nevét, és kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-    2.  A **Traffic Manager** profilpanelen kattintson az **Áttekintés gombra.**
-    3.  A **Traffic Manager profilpanel** megjeleníti az újonnan létrehozott Traffic Manager-profil DNS-nevét. Ezt bármely ügyfél használhatja (például webböngészővel navigálva) az útválasztási típus által meghatározott megfelelő végpontra irányítva. Ebben az esetben minden kérelem minden végpont ciklikus multiplexelés módon van irányítva.
-6. Miután a Traffic Manager-profil működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, és irányítsa a vállalati tartománynevet a Traffic Manager tartománynévre.
+2. A portál keresési sávján keresse meg a **Traffic Manager profilokat** , majd kattintson arra a profil nevére, amelyre az útválasztási módszert konfigurálni kívánja.
+3. A **Traffic Manager profil** panelen ellenőrizze, hogy a konfigurációban szerepeltetni kívánt Cloud Services és websites is megtalálható-e.
+4. A **Beállítások** szakaszban kattintson a **konfiguráció**elemre, majd a **konfiguráció** panelen hajtsa végre a következő lépéseket:
+    1. A **forgalom-útválasztási módszer beállításainál**ellenőrizze, hogy a forgalmi útválasztási módszer **súlyozott**-e. Ha nem, kattintson a legördülő lista **súlyozása** elemre.
+    2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
+        1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
+        2. Az **elérési út** mezőbe írja */* be a perjelet. A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        3. Kattintson a lap tetején található **Mentés**gombra.
+5. Tesztelje a konfiguráció módosításait a következőképpen:
+    1.  A portál keresési sávjában keressen rá a Traffic Manager profilnév nevére, és kattintson a Traffic Manager profilra a megjelenített eredmények között.
+    2.  A **Traffic Manager** profil panelen kattintson az **Áttekintés**elemre.
+    3.  A **Traffic Manager profil** panel az újonnan létrehozott Traffic Manager-profil DNS-nevét jeleníti meg. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján. Ebben az esetben az összes kérelem minden végpontot ciklikus multiplexelés útján irányít.
+6. Ha a Traffic Manager-profilja működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, hogy a vállalat tartománynevét a Traffic Manager tartománynevére mutassa.
 
-![Súlyozott forgalomútválasztási módszer konfigurálása a Traffic Manager használatával][1]
+![Súlyozott forgalom-útválasztási módszer konfigurálása Traffic Manager használatával][1]
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [prioritásos forgalomútválasztási módszerről.](traffic-manager-configure-priority-routing-method.md)
-- További információ a [teljesítményforgalom-útválasztási módszerről.](traffic-manager-configure-performance-routing-method.md)
+- Ismerje meg a [prioritási forgalom útválasztási módszerét](traffic-manager-configure-priority-routing-method.md).
+- A [teljesítmény-forgalom útválasztási módszerének](traffic-manager-configure-performance-routing-method.md)megismerése.
 - További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
-- További információ a [Traffic Manager beállításainak teszteléséről.](traffic-manager-testing-settings.md)
+- Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

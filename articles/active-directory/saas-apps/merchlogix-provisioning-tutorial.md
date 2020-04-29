@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A MerchLogix konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Felhasználói fiókok merchLogix-ra történő automatikus kiépítésére és kivonására.
+title: 'Oktatóanyag: a MerchLogix konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a MerchLogix.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -17,120 +17,120 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061297"
 ---
-# <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: A MerchLogix konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MerchLogix konfigurálása
 
-Ez az oktatóanyag célja, hogy bemutassa a MerchLogix és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok MerchLogix-ba történő automatikus kiépítéséhez és kiépítésének kivonásához.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a MerchLogix és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a MerchLogix.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő
+* Azure AD-bérlő
 * MerchLogix-bérlő
-* Technikai kapcsolattartó a MerchLogix-nál, aki meg tudja adni az SCIM végpont URL-címét és a felhasználó kiépítéséhez szükséges titkos jogkivonatot
+* Technikai kapcsolattartó a MerchLogix, aki megadhatja a SCIM-végpont URL-címét és a felhasználói regisztrációhoz szükséges titkos tokent
 
-## <a name="adding-merchlogix-from-the-gallery"></a>A MerchLogix hozzáadása a galériából
+## <a name="adding-merchlogix-from-the-gallery"></a>MerchLogix hozzáadása a gyűjteményből
 
-A MerchLogix konfigurálása az Azure AD automatikus felhasználói kiépítéséhez, hozzá kell adnia a MerchLogix-ot az Azure AD alkalmazásgyűjteményéből a felügyelt SaaS-alkalmazások listájához.
+Az Azure AD-vel való automatikus MerchLogix konfigurálása előtt hozzá kell adnia a MerchLogix az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Ha hozzá szeretné adni a MerchLogix-ot az Azure AD alkalmazásgyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Ha MerchLogix szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonra. 
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson a **Azure Active Directory** ikonra. 
 
-    ![Az Azure Active Directory gombja][1]
+    ![A Azure Active Directory gomb][1]
 
-2. Keresse meg a **Vállalati alkalmazások** > **Minden alkalmazást**.
+2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**elemhez.
 
     ![A vállalati alkalmazások szakasz][2]
 
-3. MerchLogix hozzáadásához kattintson a párbeszédpanel tetején az **Új alkalmazás** gombra.
+3. MerchLogix hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb][3]
 
 4. A keresőmezőbe írja be a **MerchLogix**kifejezést.
 
-5. Az eredménypanelen válassza a **MerchLogix**lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá a MerchLogix-ot a SaaS-alkalmazások listájához.
+5. Az eredmények panelen válassza a **MerchLogix**lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá a MerchLogix az SaaS-alkalmazások listájához.
 
     ![MerchLogix kiépítés][4]
 
-## <a name="assigning-users-to-merchlogix"></a>Felhasználók hozzárendelése a MerchLogix-hoz
+## <a name="assigning-users-to-merchlogix"></a>Felhasználók kiosztása a MerchLogix
 
-Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak a felhasználók és/vagy csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva vannak. 
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában a rendszer csak azokat a felhasználókat és/vagy csoportokat szinkronizálja, akik az Azure AD-alkalmazáshoz lettek rendelve. 
 
-Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a MerchLogix-hoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a MerchLogix-hoz rendelheti az alábbi utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a MerchLogix való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a MerchLogix az alábbi utasításokat követve:
 
-* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-merchlogix"></a>Fontos tippek a felhasználók MerchLogix-hoz való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-merchlogix"></a>Fontos Tippek a felhasználók MerchLogix való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a MerchLogix a kezdeti automatikus felhasználói kiépítési konfiguráció teszteléséhez. A tesztek sikeresse után további felhasználók és/vagy csoportok is hozzárendelhetők.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a MerchLogix-hoz a kezdeti automatikus felhasználó-kiépítési konfiguráció teszteléséhez. A tesztek sikeres végrehajtása után később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor egy felhasználót a MerchLogix-hoz rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
+* Amikor MerchLogix rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>Automatikus felhasználói kiépítés konfigurálása a MerchLogix rendszerbe 
+## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>Automatikus felhasználó-kiépítés beállítása a MerchLogix 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a MerchLogix-ban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy MerchLogix alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a MerchLogix számára, a [MerchLogix egyszeri bejelentkezési oktatóanyag](merchlogix-tutorial.md)utasításait követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a MerchLogix számára, az [MerchLogix egyszeri bejelentkezés oktatóanyagában](merchlogix-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-merchlogix-in-azure-ad"></a>A MerchLogix automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-merchlogix-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a MerchLogix az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra,](https://portal.azure.com) és keresse meg az **Azure Active Directory > Vállalati alkalmazások > az összes alkalmazást.**
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**lehetőséget.
 
-2. Válassza ki a MerchLogix-ot a SaaS-alkalmazások listájából.
+2. Az SaaS-alkalmazások listájából válassza a MerchLogix lehetőséget.
 
-3. Válassza a **Kiépítés** lapot.
+3. Válassza ki a **kiépítés** lapot.
 
-4. Állítsa a **létesítési módot** **Automatikus**ra.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![MerchLogix kiépítés](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
-5. A **Rendszergazdai hitelesítő adatok csoportban:**
+5. A **rendszergazdai hitelesítő adatok** szakaszban:
 
-    * A **Bérlő URL-cím** mezőjébe írja be a MerchLogix technikai kapcsolattartó jain megadott SCIM-végpont URL-címét.
+    * A **bérlői URL-cím** mezőben adja meg a scim-végpont URL-címét, amelyet a MerchLogix technikai kapcsolattartója adott meg.
 
-    * A **Titkos jogkivonat** mezőbe írja be a MerchLogix technikai kapcsolattartó ja) által biztosított titkos jogkivonatot.
+    * A **titkos jogkivonat** mezőben adja meg a MerchLogix-technikai kapcsolattartó által megadott titkos jogkivonatot.
 
-6. Az 5. **Test Connection** Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a MerchLogix-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+6. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a MerchLogix. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a MerchLogix-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-7. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
+7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-8. Kattintson a **Mentés** gombra.
+8. Kattintson a **Save** (Mentés) gombra.
 
-9. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a MerchLogix szolgáltatással**lehetőséget.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MerchLogix**lehetőséget.
 
-10. Tekintse át az Azure AD és a MerchLogix között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a MerchLogix felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található MerchLogix. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MerchLogix felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-11. A **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása a MerchLogix szolgáltatással**lehetőséget.
+11. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MerchLogix**lehetőséget.
 
-12. Tekintse át az Azure AD és a MerchLogix között szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a MerchLogix csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+12. Tekintse át az Azure AD-ből szinkronizált MerchLogix az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MerchLogix tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-13. Az Azure AD-létesítési szolgáltatás engedélyezéséhez a MerchLogix, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
+13. Az Azure AD-kiépítési szolgáltatás MerchLogix való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-14. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
+14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a MerchLogix-on végrehajtott összes műveletet.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a MerchLogix-on végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: common/select-azuread.png

@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás létrehozása'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan használhatja a Bing Video Search API-t egyoldalas webalkalmazásban.
+description: Ez az oktatóanyag azt ismerteti, hogyan használható a Bing Video Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988260"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Egy tényleges `SafeSearch` API-hívás paramétere lehet `strict`például `moderate` a , vagy `moderate`az alapértelmezett.
+Egy tényleges API- `SafeSearch` hívás paramétere például lehet `strict`, vagy `moderate` `moderate` az alapértelmezett.
 
 ## <a name="performing-the-request"></a>A kérés végrehajtása
-A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -373,7 +373,7 @@ A leképező függvény:
 > * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
-A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing pontosan ekkora [miniatűrt](../bing-web-search/resize-and-crop-thumbnails.md) ad vissza.
+A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing pontosan ezt a méretet tartalmazó [miniatűrt](../bing-web-search/resize-and-crop-thumbnails.md) ad vissza.
 
 ## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
@@ -389,7 +389,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxy válasza `Access-Control-Expose-Headers` fejléccel rendelkezik, amely lehetővé teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz `Access-Control-Expose-Headers` fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
