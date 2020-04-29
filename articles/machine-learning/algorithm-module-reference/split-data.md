@@ -1,7 +1,7 @@
 ---
-title: 'Adatok felosztása: Modul hivatkozása'
+title: 'Adatdarabolás: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a Split Data modult az Azure Machine Learningben egy adatkészlet két különálló készletre osztásához.
+description: Megtudhatja, hogyan oszthat meg egy adatkészletet két különálló készletre a Azure Machine Learning az adatfelosztási modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,84 +10,84 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455893"
 ---
-# <a name="split-data-module"></a>Adatok felosztása modul
+# <a name="split-data-module"></a>Adategység felosztása
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Az Adatok felosztása modul segítségével az adatkészletet két különálló halmazra oszthatja.
+Az adatkészletek felosztása két különálló készletre az adatfelosztási modul használatával.
 
-Ez a modul akkor hasznos, ha az adatokat betanítási és tesztelési készletekre kell elkülöníteni. Az adatok felosztásának módját is testreszabhatja. Egyes beállítások támogatják az adatok véletlenszerűvé t. Mások egy bizonyos adattípushoz vagy modelltípushoz vannak szabva.
+Ez a modul akkor hasznos, ha külön kell elkülönítenie az információkat a képzési és tesztelési készletekben. Testre szabhatja az adatmegosztás módját is. Egyes lehetőségek támogatják a véletlenszerű adatmennyiséget. Mások egy adott adattípus vagy modell típusára vannak igazítva.
 
 ## <a name="configure-the-module"></a>A modul konfigurálása
 
 > [!TIP]
-> A felosztási mód kiválasztása előtt olvassa el az összes beállítást a szükséges felosztás típusának meghatározásához.
-> Ha módosítja a felosztási módot, az összes többi beállítás alaphelyzetbe állhat.
+> A felosztási mód kiválasztása előtt olvassa el az összes lehetőséget a szükséges felosztási típus meghatározásához.
+> Ha megváltoztatja a felosztási módot, előfordulhat, hogy az összes többi beállítás alaphelyzetbe áll.
 
-1. Adja hozzá a **Split Data** modult a tervező folyamatához. Ezt a modult az **Adatátalakítás**csoportban, a **Minta és** a Felosztás kategóriában találja.
+1. Adja hozzá a **feldarabolt** adatmodult a folyamathoz a tervezőben. Ez a modul az **adatátalakítás**alatt, a **minta és a felosztás** kategóriában található.
 
-1. **Felosztási mód:** Válasszon egyet az alábbi módok közül, attól függően, hogy milyen típusú adatokkal rendelkezik, és hogyan szeretné osztani. Minden felosztási módnak különböző lehetőségei vannak.
+1. **Felosztási mód**: válasszon az alábbi módok közül, attól függően, hogy milyen típusú adattípussal rendelkezik, és hogyan szeretné felosztani. Az egyes felosztási módok különböző beállításokkal rendelkeznek.
 
-   - **Sorok felosztása:** Akkor használja ezt a beállítást, ha csak két részre szeretné osztani az adatokat. Megadhatja, hogy az egyes felosztásokban hány százalékot kell behelyezni. Alapértelmezés szerint az adatok 50/50 arányban vannak felosztva.
+   - **Sorok felosztása**: akkor használja ezt a beállítást, ha csak két részre szeretné osztani az adatterületet. Megadhatja az egyes felosztásokban felvenni kívánt adatmennyiség százalékos arányát. Alapértelmezés szerint az adathalmaz 50/50-re van osztva.
 
-     Az egyes csoportok sorainak kiválasztását is véletlenszerűvé teheti, és rétegzett mintavételt használhat. Rétegzett mintavételezésesetén ki kell választania egy adatoszlopot, amelyhez egyenlő en fel szeretné osztani az értékeket a két eredményadatkészlet között.  
+     Az egyes csoportokban lévő sorok kijelölését, valamint rétegzett mintavételezést is használhat. Rétegzett mintavételezés esetén ki kell választania egy olyan adatoszlopot, amelynek az értékeit egyenlően kell kiosztani a két eredmény-adatkészletek között.  
 
-   - **Reguláris kifejezés felosztása:** Akkor válassza ezt a lehetőséget, ha az adatkészletet egy érték egyetlen oszlopának tesztelésével szeretné felosztani.
+   - **Reguláris kifejezés felosztása**: akkor válassza ezt a lehetőséget, ha az adatkészletet egy érték egyetlen oszlopának tesztelésével szeretné osztani.
 
-     Ha például a véleményeket elemzi, ellenőrizheti, hogy egy adott terméknév szerepel-e egy szövegmezőben. Ezután az adatkészletet sorokra oszthatja a céltermék nevével és a céltermék neve nélküli sorokkal.
+     Ha például a hangulat elemzését végzi, a szövegmezőben megtekintheti egy adott terméknév jelenlétét. Ezután feloszthatja az adathalmazt sorokra a cél terméknév és a sorok megjelölése nélkül.
 
-   - **Relatív kifejezés felosztása:** Ezt a beállítást akkor használja, ha feltételt szeretne alkalmazni egy számoszlopra. A szám lehet dátum/idő mező, egy oszlop, amely kor- vagy dollárösszegeket, vagy akár százalékot tartalmaz. Előfordulhat például, hogy az adatkészletet az elemek költsége, a személyek kortartományok szerint való csoportosítása vagy az adatok naptári dátum szerint való elkülönítése alapján szeretné elosztani.
+   - **Relatív kifejezés felosztása**: akkor használja ezt a beállítást, ha egy feltételt egy Number oszlopra kíván alkalmazni. A szám lehet egy dátum/idő mező, egy olyan oszlop, amely az életkor vagy a dollár összegét, vagy akár egy százalékot is tartalmaz. Előfordulhat például, hogy az adatkészletet az elemek díjszabása alapján szeretné megosztani, a csoportba tartozó személyeket korcsoport szerint, vagy az adatokat egy naptári dátummal elválasztva.
 
 ### <a name="split-rows"></a>Sorok felosztása
 
-1. Adja hozzá a [Split Data modult](./split-data.md) a tervező folyamatához, és csatlakoztassa a felosztani kívánt adatkészletet.
+1. Adja hozzá az [Adatfelosztási](./split-data.md) modult a folyamathoz a tervezőben, és kapcsolódjon a felosztani kívánt adatkészlethez.
   
-1. **Felosztási módban**válassza **a Sorok felosztása**lehetőséget. 
+1. A **felosztási mód**beállításnál válassza a **sorok felosztása**elemet. 
 
-1. **Az első kimeneti adatkészlet sorainak töredéke**: Ezzel a beállítással határozhatja meg, hogy hány sor kerül az első (bal oldali) kimenetbe. Az összes többi sor a második (jobb oldali) kimenetbe kerül.
+1. **Sorok töredékei az első kimeneti adatkészletben**: ezzel a beállítással határozható meg, hogy hány sor kerül be az első (bal oldali) kimenetbe. Az összes többi sor bekerül a második (jobb oldali) kimenetbe.
 
-   Az arány az első kimeneti adatkészletbe küldött sorok százalékos arányát jelöli, ezért 0 és 1 közötti tizedesszámot kell megadnia.
+   Az arány az első kimeneti adatkészletbe küldendő sorok százalékos arányát jelöli, ezért 0 és 1 közötti decimális számot kell megadnia.
      
-   Ha például **0,75** értéket ad meg értékként, az adatkészlet 75/25 arányban lesz felosztva. Ebben a felosztásban a sorok 75 százaléka az első kimeneti adatkészletbe kerül. A fennmaradó 25 százalék a második kimeneti adatkészletbe kerül.
+   Ha például a **0,75** értéket adja meg értékként, az adatkészlet felosztása 75/25 lesz. Ebben a felosztásban a sorok 75 százaléka lesz elküldve az első kimeneti adatkészletbe. A fennmaradó 25 százalékot a rendszer a második kimeneti adatkészletbe küldi el.
   
-1. Válassza a **Randomized split** opciót, ha az adatok két csoportba történő véletlenszerű kiválasztását szeretné véletlenszerűvé tenni. Ez az előnyben részesített lehetőség, amikor betanítási és tesztelési adatkészletek létrehozása.
+1. Válassza ki a **randomizált felosztási** lehetőséget, ha az adatválasztást véletlenszerűen szeretné kijelölni a két csoportban. Ez az előnyben részesített lehetőség, ha képzési és tesztelési adatkészleteket hoz létre.
 
-1. **Véletlen mag:** Adjon meg egy nem negatív egész értéket a használandó példányok pszeudovéletlenszerű sorozatának elindításához. Ez az alapértelmezett mag minden olyan modulban használatos, amely véletlenszerű számokat generál. 
+1. **Véletlenszerű mag**: adjon meg egy nem negatív egész értéket a használni kívánt példányok bájtján elvégeznek-sorozatának elindításához. Ezt az alapértelmezett magot használja a rendszer minden olyan modulban, amely véletlenszerű számokat eredményez. 
 
-   A mag megadásával az eredmények reprodukálhatók lesznek. Ha meg kell ismételnie egy felosztási művelet eredményeit, meg kell adnia egy magot a véletlenszám-generátorhoz. Ellenkező esetben a véletlenszerű mag alapértelmezés szerint **0-ra**van állítva, ami azt jelenti, hogy a kezdeti magértéket a rendszerórából kapjuk meg. Ennek eredményeképpen az adatok eloszlása kissé eltérő lehet minden alkalommal, amikor felosztást hajt végre. 
+   A magok megadásával megismételhetővé válik az eredmények. Ha meg kell ismételnie egy felosztási művelet eredményét, meg kell adnia egy magot a véletlenszám-generátorhoz. Ellenkező esetben a véletlenszerű magok értéke alapértelmezés szerint **0**, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be. Ennek eredményeképpen az adatok eloszlása némileg eltérő lehet minden alkalommal, amikor elvégez egy felosztást. 
 
-1. **Rétegzett felosztás**: Állítsa ezt a beállítást **Igaz** értékre annak érdekében , hogy a két kimeneti adatkészlet reprezentatív mintát tartalmazzon a *rétegoszlopban* vagy a *rétegzési kulcs oszlopban*szereplő értékekből . 
+1. **Rétegzett felosztás**: ezt a beállítást állítsa **igaz** értékre, hogy a két kimeneti adatkészlet a *rétegek oszlopban* vagy a *csoportosítási kulcs oszlopban*szereplő értékek reprezentatív mintáját tartalmazza. 
 
-   Rétegzett mintavételezéssel az adatok úgy oszlanak meg, hogy minden kimeneti adatkészlet nagyjából azonos százalékot kap az egyes célértékekből. Például érdemes lehet biztosítani, hogy a betanítási és tesztelési készletek nagyjából kiegyensúlyozottak legyenek az eredmény vagy más oszlop (például a nem) tekintetében.
+   Rétegzett mintavételezés esetén az adatokat a rendszer úgy osztja szét, hogy mindegyik kimeneti adatkészlet nagyjából az egyes célértékek azonos százalékát kapja meg. Előfordulhat például, hogy biztosítani szeretné, hogy a képzés és a tesztelési készletek nagyjából egyensúlyban legyenek az eredmény vagy más oszlop (például a nemek) tekintetében.
 
-1. Küldje el a folyamatot.
+1. A folyamat elküldése.
 
 
-## <a name="select-a-regular-expression"></a>Reguláris kifejezés kijelölése
+## <a name="select-a-regular-expression"></a>Reguláris kifejezés kiválasztása
 
-1. Adja hozzá a [Split Data](./split-data.md) modult a folyamathoz, és csatlakoztassa bemenetként a felosztani kívánt adatkészlethez.  
+1. Adja hozzá az [Adatfelosztási](./split-data.md) modult a folyamathoz, és kapcsolja be bemenetként a felosztani kívánt adatkészlethez.  
   
-1. **Felosztási módban**válassza a **Reguláris kifejezés felosztása**lehetőséget.
+1. A **felosztási mód**beállításnál válassza a **reguláris kifejezés felosztása**elemet.
 
-1. A **Reguláris kifejezés** mezőbe írjon be egy érvényes reguláris kifejezést. 
+1. A **reguláris kifejezés** mezőbe írjon be egy érvényes reguláris kifejezést. 
   
-   A reguláris kifejezésnek python szintaxist kell követnie a reguláris kifejezésekhez.
+   A reguláris kifejezésnek a Python szintaxisát kell követnie reguláris kifejezésekhez.
 
-1. Küldje el a folyamatot.
+1. A folyamat elküldése.
 
-   A megadott reguláris kifejezés alapján az adatkészlet két sorcsoportra oszlik: a kifejezésnek megfelelő értékekkel rendelkező sorokra és az összes többi sorra. 
+   Az Ön által megadott reguláris kifejezés alapján az adatkészlet két sorra van osztva: sorokba, amelyek megfelelnek a kifejezésnek és az összes többi sornak. 
 
-Az alábbi példák bemutatják, hogyan lehet felosztani egy adatkészletet a **Reguláris kifejezés** beállítással. 
+Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **reguláris kifejezés** lehetőség használatával. 
 
 ### <a name="single-whole-word"></a>Egyetlen egész szó 
 
-Ez a példa az első adatkészletbe helyezi `Gryphon` az `Text`összes olyan sort, amely az oszlopban lévő szöveget tartalmazza. Más sorokat helyez a Split Data második **kimenetébe.**
+Ez a példa az első adatkészlet minden olyan sorát tartalmazza, amely `Gryphon` az oszlopban `Text`lévő szöveget tartalmazza. Más sorokat helyez el a **felosztott adatokat**tartalmazó második kimenetbe.
 
 ```text
     \"Text" Gryphon  
@@ -95,57 +95,57 @@ Ez a példa az első adatkészletbe helyezi `Gryphon` az `Text`összes olyan sor
 
 ### <a name="substring"></a>Substring
 
-Ez a példa az adatkészlet második oszlopán belül bármely pozícióban keresi a megadott karakterláncot. A pozíciót itt az 1 indexérték jelöli. Az egyezés a kis- és nagybetűket nem érzékeny.
+Ez a példa a megadott karakterláncot az adatkészlet második oszlopában található bármely pozícióban keresi. A pozíciót az 1. index értéke jelöli. A egyezés megkülönbözteti a kis-és nagybetűket.
 
 ```text
 (\1) ^[a-f]
 ```
 
-Az első eredményadatkészlet tartalmazza az összes olyan sort, ahol `a` `b`az `c` `d`indexoszlop a következő karakterek egyikével kezdődik: , , , , `e`, , . `f` Az összes többi sor a második kimenetre lesz irányítva.
+Az első eredmény adatkészlet minden olyan sort tartalmaz, amelyben az index oszlop a következő karakterek egyikével `a`kezdődik `b`: `c`, `d`, `e`, `f`,,. Minden más sor a második kimenetre lesz irányítva.
 
-## <a name="select-a-relative-expression"></a>Relatív kifejezés kijelölése
+## <a name="select-a-relative-expression"></a>Relatív kifejezés kiválasztása
 
-1. Adja hozzá a [Split Data](./split-data.md) modult a folyamathoz, és csatlakoztassa bemenetként a felosztani kívánt adatkészlethez.
+1. Adja hozzá az [Adatfelosztási](./split-data.md) modult a folyamathoz, és kapcsolja be bemenetként a felosztani kívánt adatkészlethez.
   
-1. **Felosztási mód esetén**válassza a **Relatív kifejezés**lehetőséget.
+1. A **felosztási mód**beállításnál válassza a **relatív kifejezés**lehetőséget.
   
-1. A **Relációs kifejezés** mezőbe írjon be egy olyan kifejezést, amely egyetlen oszlopon végez összehasonlító műveletet.
+1. A **relációs kifejezés** mezőben adjon meg egy olyan kifejezést, amely egy összehasonlítási műveletet hajt végre egyetlen oszlopon.
 
    **Numerikus oszlop**esetén:
-   - Az oszlop bármilyen numerikus adattípus tanusát tartalmazza, beleértve a dátum- és időadattípusokat is.
-   - A kifejezés legfeljebb egy oszlopnévre hivatkozhat.
-   - Használja az ampersand `&`karaktert, az ÉS művelethez. Használja a cső `|`karaktert, a vagy művelethez.
-   - A következő operátorok `<`támogatottak: `==` `!=`, `>`, `<=` `>=`, , , .
-   - A és a használatával nem `(` `)`csoportosíthatók a műveletek.
+   - Az oszlop a numerikus adattípusok számát tartalmazza, beleértve a dátum-és időtípusokat is.
+   - A kifejezés legfeljebb egy oszlop nevét hivatkozhat.
+   - A és a művelethez `&`használja a jel karaktert. A vagy a művelethez `|`használja a pipe karaktert.
+   - A következő operátorok támogatottak `<`: `>`, `<=`, `>=`, `==`, `!=`,.
+   - A és `(` `)`a használatával nem csoportosíthatjuk a műveleteket.
    
-   Karakterlánc **oszlop esetén:**
-   - A következő operátorok `==`támogatottak: . `!=`.
+   **Karakterlánc-oszlop**esetén:
+   - A következő operátorok támogatottak `==`: `!=`,.
 
-1. Küldje el a folyamatot.
+1. A folyamat elküldése.
 
-   A kifejezés az adatkészletet két sorcsoportra osztja: a feltételnek megfelelő értékekkel rendelkező sorokra és az összes többi sorra.
+   A kifejezés két sorból osztja el az adatkészletet: a feltételnek megfelelő értékeket tartalmazó sorok és az összes többi sor.
 
-Az alábbi példák bemutatják, hogyan lehet felosztani egy adatkészletet a **Relatív kifejezés** beállítás használatával a **Split Data** modulban.  
+Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **relatív kifejezés** lehetőséggel az **adatfelosztási** modulban.  
 
 ### <a name="calendar-year"></a>Naptári év
 
-Gyakori forgatókönyv az adatkészlet ek évek közötti felosztása. A következő kifejezés minden olyan sort kijelöl, ahol az oszlopban `Year` lévő értékek nagyobbak, mint `2010`a .
+Gyakori forgatókönyv, hogy az adatkészletet évek szerint osztják el. A következő kifejezés kiválasztja azokat a sorokat, amelyekben az oszlopban `Year` szereplő értékek nagyobbak, mint `2010`.
 
 ```text
 \"Year" > 2010
 ```
 
-A dátumkifejezésnek figyelembe kell vennie az adatoszlopban szereplő összes dátumrészt. Az adatoszlopban szereplő dátumok formátumának konzisztensnek kell lennie. 
+A Date kifejezésnek az adatoszlopban szereplő összes dátumérték szerepelnie kell. Az adatok oszlopban szereplő dátumok formátumának konzisztensnek kell lennie. 
 
-A formátumot `mmddyyyy`használó dátumoszlopokban például a kifejezésnek a következőhez hasonlónak kell lennie:
+Például a formátumot `mmddyyyy`használó Date (dátum) oszlopban a kifejezésnek a következőhöz hasonlónak kell lennie:
 
 ```text
 \"Date" > 1/1/2010
 ```
 
-### <a name="column-index"></a>Oszlopindex
+### <a name="column-index"></a>Oszlop indexe
 
-A következő kifejezés bemutatja, hogyan használhatja az oszlopindexet az adatkészlet első oszlopának minden olyan sorának kijelölésére, amely legfeljebb 30, de legfeljebb 20 értéket tartalmaz.
+A következő kifejezés azt mutatja be, hogyan használható az oszlop indexe az adatkészlet első oszlopában lévő összes olyan sor kiválasztására, amelyek értéke nem lehet kisebb, mint 30, de nem egyenlő 20 értékkel.
 
 ```text
 (\0)<=30 & !=20
@@ -154,4 +154,4 @@ A következő kifejezés bemutatja, hogyan használhatja az oszlopindexet az ada
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

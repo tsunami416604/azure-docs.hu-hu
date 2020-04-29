@@ -1,6 +1,6 @@
 ---
-title: SAML tokentitkosítás az Azure Active Directoryban
-description: Ismerje meg, hogyan konfigurálhatja az Azure Active Directory SAML token titkosítását.
+title: SAML-jogkivonat titkosítása Azure Active Directory
+description: Ismerje meg, hogyan konfigurálhatja Azure Active Directory SAML-jogkivonat titkosítását.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365866"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: Az Azure AD SAML tokentitkosítás konfigurálása
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása
 
 > [!NOTE]
-> A tokentitkosítás egy Azure Active Directory (Azure AD) prémium funkció. Ha többet szeretne megtudni az Azure AD-kiadásokról, -funkciókról és -díjszabásról, olvassa el az [Azure AD díjszabását.](https://azure.microsoft.com/pricing/details/active-directory/)
+> A jogkivonat-titkosítás egy Azure Active Directory (Azure AD) prémium szintű szolgáltatás. Az Azure AD-kiadásokkal,-funkciókkal és-díjszabással kapcsolatos további információkért lásd: az [Azure ad díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Az SAML token titkosítása lehetővé teszi a titkosított SAML-állítások használatát egy olyan alkalmazással, amely támogatja azt. Ha egy alkalmazás konfigurálása, az Azure AD titkosítja az adott alkalmazás saml-állításokat az Azure AD-ben tárolt tanúsítványból beszerzett nyilvános kulcs használatával. Az alkalmazásnak a megfelelő személyes kulcsot kell használnia a jogkivonat visszafejtéséhez, mielőtt a bejelentkezett felhasználó hitelesítésének bizonyítékaként használható lenne.
+Az SAML-jogkivonat titkosítása lehetővé teszi a titkosított SAML-kijelentések használatát egy olyan alkalmazással, amely támogatja azt. Ha egy alkalmazáshoz van konfigurálva, az Azure AD az Azure AD-ben tárolt tanúsítványból beszerzett nyilvános kulccsal titkosítja az alkalmazás számára kibocsátott SAML-kijelentéseket. Az alkalmazásnak a megfelelő titkos kulcsot kell használnia, hogy visszafejtse a tokent, mielőtt a bejelentkezett felhasználó hitelesítésének bizonyítékként használható lenne.
 
-Az Azure AD és az alkalmazás közötti SAML-állítások titkosítása további biztosítékot nyújt arra nézve, hogy a jogkivonat tartalma nem érhető el, és a személyes vagy vállalati adatok feltörése.
+Az Azure AD és az alkalmazás közötti SAML-kikötések titkosítása további garanciát nyújt arra, hogy a jogkivonat tartalma nem oldható fel, és a személyes vagy vállalati adatokat is feltörték.
 
-Még jogkivonat-titkosítás nélkül is, az Azure AD SAML-tokenek soha nem adják át a hálózaton a tiszta. Az Azure AD megköveteli a token kérés/válasz cseréje titkosított HTTPS/TLS csatornákon keresztül, így az IDP, a böngésző és az alkalmazás közötti kommunikáció titkosított kapcsolatokon keresztül történik. Vegye figyelembe a jogkivonat-titkosítás értékét a helyzethez képest a további tanúsítványok kezelésének többletterhelésével.   
+Az Azure AD SAML-tokeneket még a jogkivonat titkosítása nélkül sem adja át a rendszer a hálózaton. Az Azure AD-ben jogkivonat-kérelmek/-válaszok cseréjére van szükség a titkosított HTTPS/TLS-csatornákon keresztül, így a IDENTITÁSSZOLGÁLTATÓ, a böngésző és az alkalmazás közötti kommunikáció titkosított hivatkozások használatával történik. Vegye figyelembe a helyzet token-titkosításának értékét a további tanúsítványok kezelésével szemben.   
 
-A token titkosításkonfigurálásához fel kell töltenie egy X.509 tanúsítványfájlt, amely tartalmazza a nyilvános kulcsot az Azure AD alkalmazásobjektumba, amely az alkalmazást képviseli. Az X.509 tanúsítvány beszerzéséhez letöltheti azt magából az alkalmazásból, vagy beszerezheti az alkalmazás szállítójától olyan esetekben, amikor az alkalmazás szállítója titkosítási kulcsokat biztosít, vagy olyan esetekben, amikor az alkalmazás elvárja, hogy személyes kulcsot adjon meg, kriptográfiai eszközök kel, az alkalmazás kulcstárolójára feltöltött személyes kulcsrész és az Azure AD-be feltöltött megfelelő nyilvános kulcsú tanúsítvány.
+A jogkivonat-titkosítás konfigurálásához fel kell töltenie egy X. 509 nevű tanúsítványfájl, amely a nyilvános kulcsot tartalmazza az alkalmazást képviselő Azure AD Application objektumhoz. Az X beszerzése. 509 tanúsítvány, letöltheti azt az alkalmazásból, vagy beolvashatja az alkalmazás gyártójától olyan esetekben, amikor az alkalmazás gyártója titkosítási kulcsokat biztosít, vagy olyan esetekben, amikor az alkalmazás a titkos kulcs megadását kéri, kriptográfiai eszközökkel, az alkalmazás kulcstárolóba feltöltött titkos kulcs részével, valamint az Azure AD-ba feltöltött, megfelelő nyilvános kulcsú tanúsítvány használatával.
 
-Az Azure AD a AES-256 titkosításához az SAML-állítási adatok titkosításához.
+Az Azure AD AES-256 használatával titkosítja az SAML-kikötések adataival.
 
-## <a name="configure-saml-token-encryption"></a>SAML tokentitkosítás konfigurálása
+## <a name="configure-saml-token-encryption"></a>SAML-jogkivonat titkosításának konfigurálása
 
-Az SAML tokentitkosítás konfigurálásához hajtsa végre az alábbi lépéseket:
+Az SAML-jogkivonat titkosításának konfigurálásához kövesse az alábbi lépéseket:
 
-1. Szerezzen be egy nyilvános kulcstanúsítványt, amely megfelel az alkalmazásban konfigurált személyes kulcsnak.
+1. Szerezzen be egy olyan nyilvános kulcsú tanúsítványt, amely megfelel az alkalmazásban konfigurált titkos kulcsnak.
 
-    Hozzon létre egy aszimmetrikus kulcspárt a titkosításhoz. Vagy ha az alkalmazás egy nyilvános kulcsot biztosít a titkosításhoz, kövesse az alkalmazás utasításait az X.509 tanúsítvány letöltéséhez.
+    Hozzon létre egy, a titkosításhoz használandó aszimmetrikus kulcspárt. Ha az alkalmazás egy nyilvános kulcsot biztosít a titkosításhoz, kövesse az alkalmazás utasításait az X. 509 tanúsítvány letöltéséhez.
 
-    A nyilvános kulcsot X.509 tanúsítványfájlban kell tárolni .cer formátumban.
+    A nyilvános kulcsot. cer formátumban kell tárolni egy X. 509 tanúsítványfájl-fájlban.
 
-    Ha az alkalmazás egy kulcsot használ, amelyet a példányhoz hoz létre, kövesse az alkalmazás által az alkalmazás által az Azure AD-bérlőből származó jogkivonatok visszafejtésére használt titkos kulcs telepítéséhez megadott utasításokat.
+    Ha az alkalmazás egy, a példányhoz létrehozott kulcsot használ, kövesse az alkalmazás által az Azure AD-bérlőből származó tokenek visszafejtéséhez használt titkos kulcs telepítésére vonatkozó utasításokat.
 
 1. Adja hozzá a tanúsítványt az alkalmazás konfigurációjához az Azure AD-ben.
 
-### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Tokentitkosítás konfigurálása az Azure Portalon
+### <a name="to-configure-token-encryption-in-the-azure-portal"></a>A jogkivonat-titkosítás konfigurálása a Azure Portalban
 
-A nyilvános tanúsítvány az Azure Portalon belül az alkalmazás konfigurációját hozzáadhatja.
+A nyilvános tanúsítványt a Azure Portalon belül adhatja hozzá az alkalmazás konfigurációjához.
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
+1. Lépjen a [Azure Portal](https://portal.azure.com).
 
-1. Nyissa meg az **Azure Active Directory > Enterprise alkalmazások** panelt, majd válassza ki azt az alkalmazást, amelyhez jogkivonat-titkosítást kíván konfigurálni.
+1. Lépjen a **Azure Active Directory > vállalati alkalmazások** panelre, majd válassza ki azt az alkalmazást, amelyre a jogkivonat-titkosítást konfigurálni kívánja.
 
-1. Az alkalmazás lapján válassza a **Token titkosítás**lehetőséget.
+1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás**lehetőséget.
 
-    ![Tokentitkosítási lehetőség az Azure Portalon](./media/howto-saml-token-encryption/token-encryption-option-small.png)
+    ![Jogkivonat-titkosítási beállítás a Azure Portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
     > [!NOTE]
-    > A **Token titkosítási** lehetőség csak az **azure-beli** portál vállalati alkalmazáspaneljéről beállított SAML-alkalmazások esetében érhető el, akár az alkalmazástárból, akár egy nem galéria alkalmazásból. Más alkalmazások esetében ez a menüpont le van tiltva. Az Azure Portalon az **alkalmazásregisztrációk** szolgáltatásán keresztül regisztrált alkalmazások esetében konfigurálhatja az SAML-tokenek titkosítását az alkalmazásjegyzék használatával, a Microsoft Graph-on keresztül vagy a PowerShellen keresztül.
+    > A **jogkivonat-titkosítási** beállítás csak olyan SAML-alkalmazásokhoz érhető el, amelyek a Azure Portal **vállalati alkalmazások** paneljéről lettek beállítva, vagy az alkalmazás-katalógusból vagy egy nem katalógusból származó alkalmazásból. Más alkalmazások esetén ez a menüpont le van tiltva. A Azure Portal **Alkalmazásregisztrációk** felületén keresztül regisztrált alkalmazások esetében az alkalmazás jegyzékfájljának használatával konfigurálhatja a titkosítást az SAML-tokenekhez az Microsoft Graph vagy a PowerShell segítségével.
 
-1. A **Token titkosítás** lapján válassza a **Tanúsítvány importálása** lehetőséget a nyilvános X.509 tanúsítványt tartalmazó .cer fájl importálásához.
+1. A **jogkivonat-titkosítás** lapon válassza a **tanúsítvány importálása** elemet a nyilvános X. 509 tanúsítványt tartalmazó. cer fájl importálásához.
 
-    ![Az X.509 tanúsítványt tartalmazó .cer fájl importálása](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![Importálja az X. 509 tanúsítványt tartalmazó. cer fájlt.](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Miután importálta a tanúsítványt, és a személyes kulcs az alkalmazás oldalán való használatra van konfigurálva, aktiválja a titkosítást az ujjlenyomat-állapot melletti **...** kiválasztásával, majd válassza a **Token titkosítás aktiválása lehetőséget** a legördülő menü beállításai között.
+1. A tanúsítvány importálása után, a titkos kulcs pedig az alkalmazás oldalán való használatra van konfigurálva, aktiválja a titkosítást az ujjlenyomat állapota melletti **...** elemre kattintva, majd válassza a **jogkivonat-titkosítás aktiválása** lehetőséget a legördülő menüből.
 
-1. Válassza az **Igen** lehetőséget a tokentitkosítási tanúsítvány aktiválásának megerősítéséhez.
+1. Válassza az **Igen** lehetőséget a jogkivonat-titkosítási tanúsítvány aktiválásának megerősítéséhez.
 
-1. Ellenőrizze, hogy az alkalmazáshoz kibocsátott SAML-állítások titkosítva vannak-e.
+1. Ellenőrizze, hogy az alkalmazáshoz kibocsátott SAML-kijelentések titkosítva vannak-e.
 
-### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Tokentitkosítás inaktiválása az Azure Portalon
+### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Jogkivonat-titkosítás inaktiválása a Azure Portalban
 
-1. Az Azure Portalon nyissa meg az **Azure Active Directory > Enterprise-alkalmazások,** majd válassza ki az alkalmazást, amelyen az SAML token titkosítás engedélyezve van.
+1. A Azure Portal lépjen a **Azure Active Directory > vállalati alkalmazások**elemre, majd válassza ki azt az alkalmazást, amelyen engedélyezve van az SAML-jogkivonat titkosítása.
 
-1. Az alkalmazás lapján válassza a **Token titkosítás**lehetőséget, keresse meg a tanúsítványt, majd válassza a **...** lehetőséget a legördülő menü megjelenítéséhez.
+1. Az alkalmazás lapján válassza a jogkivonat- **titkosítás**elemet, keresse meg a tanúsítványt, majd válassza a **...** lehetőséget a legördülő menü megjelenítéséhez.
 
-1. Válassza **a Token titkosítás inaktiválása**lehetőséget.
+1. Jelölje be a **jogkivonat-titkosítás inaktiválása**jelölőnégyzetet.
 
-## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML tokentitkosítás konfigurálása Graph API, PowerShell vagy alkalmazásjegyzék használatával
+## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML-jogkivonat titkosításának konfigurálása a Graph API, a PowerShell vagy az alkalmazás jegyzékfájljának használatával
 
-A titkosítási tanúsítványok az azure-beli AD-ben az alkalmazásobjektumban tárolódnak egy `encrypt` használati címkével. Több titkosítási tanúsítványt is konfigurálhat, és a tokenek titkosításához `tokenEncryptionKeyID` aktívtanúsítványt az attribútum azonosítja.
+A titkosítási tanúsítványokat az Azure AD-ban található Application objektum tárolja `encrypt` használati címkével. Több titkosítási tanúsítványt is konfigurálhat, amelyek esetében a tokenek titkosítása aktív, az `tokenEncryptionKeyID` attribútum azonosítja.
 
-A tokentitkosítás Microsoft Graph API vagy PowerShell használatával történő konfigurálásához szüksége lesz az alkalmazás objektumazonosítójára. Ezt az értéket programozott módon, vagy az alkalmazás **Tulajdonságok** lapján az Azure Portalon, és az **objektumazonosító** értékét.
+A jogkivonat-titkosítás Microsoft Graph API vagy a PowerShell használatával történő konfigurálásához szüksége lesz az alkalmazás objektumazonosító-azonosítójával. Ezt az értéket programozott módon megkeresheti, vagy megtekintheti az alkalmazás **Tulajdonságok** lapját a Azure Portal, és megállapíthatja az **objektumazonosító** értékét.
 
-Ha graph, PowerShell vagy az alkalmazásjegyzék használatával keyCredential konfigurál, létre kell hoznia egy GUID-ot a keyId használatához.
+Amikor a Graph, a PowerShell vagy az Application manifest használatával konfigurálja a hitelesítő adatokat, akkor a keyId használandó GUID azonosítót kell megadnia.
 
-### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Tokentitkosítás konfigurálása a Microsoft Graph segítségével
+### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Jogkivonat-titkosítás konfigurálása Microsoft Graph használatával
 
-1. Frissítse az alkalmazást `keyCredentials` egy X.509-es tanúsítvánnyal a titkosításhoz. A következő példa bemutatja, hogyan kell ezt megtenni.
+1. Frissítse az alkalmazás `keyCredentials` egy X. 509 tanúsítvánnyal a titkosításhoz. Az alábbi példa azt szemlélteti, hogyan teheti ezt meg.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>
@@ -111,7 +111,7 @@ Ha graph, PowerShell vagy az alkalmazásjegyzék használatával keyCredential k
     }
     ```
 
-1. Azonosítsa a jogkivonatok titkosításához aktív titkosítási tanúsítványt. A következő példa bemutatja, hogyan kell ezt megtenni.
+1. Azonosítsa a tokenek titkosításához aktív titkosítási tanúsítványt. Az alábbi példa azt szemlélteti, hogyan teheti ezt meg.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid> 
@@ -121,17 +121,17 @@ Ha graph, PowerShell vagy az alkalmazásjegyzék használatával keyCredential k
     }
     ```
 
-### <a name="to-configure-token-encryption-using-powershell"></a>Tokentitkosítás konfigurálása a PowerShell használatával
+### <a name="to-configure-token-encryption-using-powershell"></a>Jogkivonat-titkosítás konfigurálása a PowerShell használatával
 
-1. Használja a legújabb Azure AD PowerShell-modult a bérlőhöz való csatlakozáshoz.
+1. A bérlőhöz való kapcsolódáshoz használja a legújabb Azure AD PowerShell-modult.
 
-1. Állítsa be a token titkosítási beállításokat a **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** paranccsal.
+1. Állítsa be a jogkivonat titkosítási beállításait a **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** parancs használatával.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Olvassa el a tokentitkosítási beállításokat a következő parancsokkal.
+1. Olvassa el a jogkivonat titkosítási beállításait a következő parancsokkal.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
@@ -139,17 +139,17 @@ Ha graph, PowerShell vagy az alkalmazásjegyzék használatával keyCredential k
     $app.TokenEncryptionKeyId
     ```
 
-### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Tokentitkosítás konfigurálása az alkalmazásjegyzék használatával
+### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Jogkivonat-titkosítás konfigurálása az alkalmazás jegyzékfájljának használatával
 
-1. Az Azure Portalon nyissa meg az **Azure Active Directory > alkalmazásregisztrációk című lapban.**
+1. A Azure Portal lépjen a **Azure Active Directory > Alkalmazásregisztrációk**.
 
-1. Válassza az **Összes alkalmazás** lehetőséget a legördülő menüből az összes alkalmazás megjelenítéséhez, majd válassza ki a konfigurálni kívánt vállalati alkalmazást.
+1. Válassza a **minden alkalmazás** lehetőséget a legördülő listából az összes alkalmazás megjelenítéséhez, majd válassza ki a konfigurálni kívánt vállalati alkalmazást.
 
-1. Az alkalmazás lapján válassza a **Jegyzékfájl** lehetőséget az [alkalmazásjegyzék](../develop/reference-app-manifest.md)szerkesztéséhez.
+1. Az alkalmazás oldalán válassza a **jegyzékfájl** lehetőséget az [alkalmazás jegyzékfájljának](../develop/reference-app-manifest.md)szerkesztéséhez.
 
 1. Állítsa be az `tokenEncryptionKeyId` attribútum értékét.
 
-    A következő példa egy két titkosítási tanúsítvánnyal konfigurált alkalmazásjegyzéket mutat be, és a másodikat aktívként jelöli meg a tokenEnryptionKeyId használatával.
+    A következő példa egy olyan alkalmazás-jegyzékfájlt mutat be, amely két titkosítási tanúsítvánnyal van konfigurálva, a második pedig a tokenEnryptionKeyId használatával.
 
     ```json
     { 
@@ -220,5 +220,5 @@ Ha graph, PowerShell vagy az alkalmazásjegyzék használatával keyCredential k
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogy az Azure AD hogyan használja az SAML protokollt](../develop/active-directory-saml-protocol-reference.md)
-* Ismerje meg az [SAML-tokenek](../develop/reference-saml-tokens.md) formátumát, biztonsági jellemzőit és tartalmát az Azure AD-ben
+* Ismerje meg, [hogyan használja az Azure ad az SAML protokollt](../develop/active-directory-saml-protocol-reference.md)
+* A SAML-tokenek formátumának, biztonsági jellemzőinek és tartalmának megismerése az [Azure ad-ben](../develop/reference-saml-tokens.md)

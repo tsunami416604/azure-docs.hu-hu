@@ -1,51 +1,51 @@
 ---
-title: Erőforrások telepítése a felügyeleti csoportba
-description: Bemutatja, hogyan helyezhet üzembe erőforrásokat a felügyeleti csoport hatókörén egy Azure Resource Manager-sablonban.
+title: Erőforrások központi telepítése a felügyeleti csoportba
+description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460313"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erőforrások létrehozása a felügyeleti csoport szintjén
 
-A szervezet érlelődése során előfordulhat, hogy [házirendeket](../../governance/policy/overview.md) vagy [szerepköralapú hozzáférés-vezérléseket](../../role-based-access-control/overview.md) kell definiálnia és hozzárendelnie egy felügyeleti csoporthoz. A felügyeleticsoport-szintű sablonokkal deklaratív módon alkalmazhatházirendeket, és szerepköröket rendelhet hozzá a felügyeleti csoport szintjén.
+A szervezete leállása esetén előfordulhat, hogy meg kell adnia és hozzá kell rendelnie egy felügyeleti csoport [szabályzatait](../../governance/policy/overview.md) vagy [szerepköralapú hozzáférés-vezérlését](../../role-based-access-control/overview.md) . A felügyeleti csoport szintű sablonok használatával a felügyeleti csoport szintjén deklarálhatja a házirendeket, és rendelhet hozzá szerepköröket.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
-A felügyeleti csoport szintjén a következő erőforrástípusokat telepítheti:
+A felügyeleti csoport szintjén a következő erőforrástípusok helyezhetők üzembe:
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments) – az előfizetések vagy erőforráscsoportok üzembe helyezésére szolgáló beágyazott sablonok.
-* [házirend-hozzárendelések](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions (policyDefinitions)](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions (policySetDefinitions)](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [szerepkör-hozzárendelések](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions (szerepkördefiníciók)](/azure/templates/microsoft.authorization/roledefinitions)
+* [központi telepítések](/azure/templates/microsoft.resources/deployments) – előfizetések vagy erőforráscsoportok számára üzembe helyezett beágyazott sablonok esetén.
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
+* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 ### <a name="schema"></a>Séma
 
-A felügyeleti csoport központi telepítéseihez használt séma eltér az erőforráscsoport-telepítések sémájáttól.
+A felügyeleti csoportok központi telepítéséhez használt séma eltér az erőforráscsoport-telepítések sémájától.
 
-Sablonok esetén használja a következőket:
+Sablonok esetén használja a következőt:
 
 ```json
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-A paraméterfájl sémája minden telepítési hatóköresetében megegyezik. Paraméterfájlok esetén használja a következőket:
+A paraméterérték sémája megegyezik az összes központi telepítési hatókörnél. A paraméter fájljaihoz használja a következőt:
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
-## <a name="deployment-commands"></a>Telepítési parancsok
+## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
-A felügyeleti csoportok központi telepítéséhez szükséges parancsok eltérnek az erőforráscsoport-telepítések parancsaitól.
+A felügyeleti csoportok központi telepítésére vonatkozó parancsok eltérnek az erőforráscsoport-telepítések parancsaitól.
 
-Az Azure CLI esetében használja [az üzembe helyezési mg create:For](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)Azure CLI, use az deployment mg create:
+Az Azure CLI esetében használja az [az Deployment mg Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
 
 ```azurecli-interactive
 az deployment mg create \
@@ -55,7 +55,7 @@ az deployment mg create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-Az Azure PowerShell esetén használja a [New-AzManagementGroupDeployment szolgáltatást.](/powershell/module/az.resources/new-azmanagementgroupdeployment)
+Azure PowerShell esetén használja a [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment).
 
 ```azurepowershell-interactive
 New-AzManagementGroupDeployment `
@@ -65,26 +65,26 @@ New-AzManagementGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-REST API-hoz használja [a Központi telepítéseket – Létrehozás a felügyeleti csoport hatókörén.](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)
+REST API esetén használja a [központi telepítéseket – hozzon létre egy felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
-## <a name="deployment-location-and-name"></a>A telepítés helye és neve
+## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
 
-A felügyeleti csoport szintű telepítések esetén meg kell adnia a központi telepítés helyét. A központi telepítés helye nem áll meg a telepített erőforrások helyétől. A központi telepítési hely határozza meg, hogy hol kell tárolni a telepítési adatokat.
+Felügyeleti csoport szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
 
-Megadhat nevet a központi telepítésnek, vagy használhatja az alapértelmezett központi telepítés nevét. Az alapértelmezett név a sablonfájl neve. Például egy **azuredeploy.json** nevű sablon üzembe helyezése létrehoz egy alapértelmezett üzembe helyezési nevet az **azuredeploy.**
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
 
-Az egyes központi telepítés neve immutalitása nem módosítható. Nem hozhat létre központi telepítést egy helyen, ha egy másik helyen azonos nevű meglévő központi telepítés van. Ha a hibakódot `InvalidDeploymentLocation`kapja, használjon másik nevet vagy ugyanazon a helyet, mint az előző központi telepítésaz adott névhez.
+Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation`, használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
-## <a name="use-template-functions"></a>Sablonfüggvények használata
+## <a name="use-template-functions"></a>A Template functions használata
 
-A felügyeleti csoport telepítések, vannak néhány fontos szempont, amikor a sablon függvények használata:
+A felügyeleti csoportok központi telepítéséhez néhány fontos szempontot kell figyelembe venni a sablon funkcióinak használatakor:
 
-* A [resourceGroup()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
-* Az [subscription()](template-functions-resource.md#subscription) függvény **nem** támogatott.
-* [A(z) reference()](template-functions-resource.md#reference) és [a list()](template-functions-resource.md#list) függvények támogatottak.
-* A [resourceId()](template-functions-resource.md#resourceid) függvény támogatott. Segítségével lekéri a felügyeleti csoport szintjén telepített telepítések erőforrás-azonosítóját. Ne adjon meg értéket az erőforráscsoport paraméterhez.
+* A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
+* Az [előfizetés ()](template-functions-resource.md#subscription) függvény **nem** támogatott.
+* A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
+* A [resourceId ()](template-functions-resource.md#resourceid) függvény támogatott. Ezzel a beállítással lekérheti a felügyeleti csoport szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Ne adjon meg értéket az erőforráscsoport paraméter számára.
 
-  Ha például egy házirend-definíció erőforrásazonosítóját szeretné lekérni, használja a következőket:
+  Ha például egy házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
   
   ```json
   resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -98,9 +98,9 @@ A felügyeleti csoport telepítések, vannak néhány fontos szempont, amikor a 
 
 ## <a name="create-policies"></a>Szabályzatok létrehozása
 
-### <a name="define-policy"></a>Házirend meghatározása
+### <a name="define-policy"></a>Házirend megadása
 
-A következő példa [bemutatja,](../../governance/policy/concepts/definition-structure.md) hogyan definiálhatja a szabályzatot a felügyeleti csoport szintjén.
+Az alábbi példa bemutatja, hogyan [határozhat meg](../../governance/policy/concepts/definition-structure.md) házirendet a felügyeleti csoport szintjén.
 
 ```json
 {
@@ -131,9 +131,9 @@ A következő példa [bemutatja,](../../governance/policy/concepts/definition-st
 }
 ```
 
-### <a name="assign-policy"></a>Házirend hozzárendelése
+### <a name="assign-policy"></a>Házirend kiosztása
 
-A következő példa egy meglévő házirend-definíciót rendel a felügyeleti csoporthoz. Ha a házirend paramétereket vesz igénybe, adja meg azokat objektumként. Ha a házirend nem vesz igénybe paramétereket, használja az alapértelmezett üres objektumot.
+A következő példa egy meglévő szabályzat-definíciót rendel hozzá a felügyeleti csoporthoz. Ha a házirend paramétereket fogad, adja meg őket objektumként. Ha a házirend nem fogad paramétereket, használja az alapértelmezett üres objektumot.
 
 ```json
 {
@@ -166,12 +166,12 @@ A következő példa egy meglévő házirend-definíciót rendel a felügyeleti 
 }
 ```
 
-## <a name="template-sample"></a>Sablonminta
+## <a name="template-sample"></a>Sablon minta
 
-* [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést.](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)
+* [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>További lépések
 
-* A szerepkörök hozzárendeléséről az [Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md)című témakörben olvashat.
-* Az Azure Security Center munkaterületi beállításainak üzembe helyezését lásd: [deployASCwithWorkspaceSettings.json.](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)
-* A sablonokat [előfizetési és](deploy-to-subscription.md) [bérlői szinten](deploy-to-tenant.md)is telepítheti.
+* A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
+* A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* A sablonokat [előfizetési szinten](deploy-to-subscription.md) és [bérlői szinten](deploy-to-tenant.md)is üzembe helyezheti.

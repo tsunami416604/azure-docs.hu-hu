@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó - URL újraírása | Microsoft dokumentumok
-description: Ez a cikk segít megérteni, hogy az Azure Bejárati ajtó hogyan írja át az url-eket az útvonalakhoz, ha konfigurálva van.
+title: Azure bejárati ajtó – URL-cím újraírása | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogy az Azure bevezető ajtaja hogyan írja le az útvonalak URL-címét, ha be van állítva.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,48 +12,48 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471472"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-újraírás (egyéni továbbítási útvonal)
-Az Azure Front Door támogatja az URL-újraírást azáltal, hogy lehetővé teszi egy opcionális **egyéni továbbítási útvonal** konfigurálását a háttérrendszernek való továbbításra vonatkozó kérés összeállításakor. Ha nincs megadva egyéni továbbítási útvonal, a Front Door alapértelmezés szerint bemásolja a bejövő URL-útvonalat a továbbított kérelemben használt URL-címbe. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvassa el [a háttér-állomásfejlécet,](front-door-backend-pool.md#hostheader) hogy megtudja, mit csinál, és hogyan konfigurálhatja azt.
+Az Azure bevezető ajtaja támogatja az URL-cím újraírását, mivel lehetővé teszi egy opcionális **Egyéni továbbítási útvonal** konfigurálását, amelyet a rendszer a háttérbe való továbbításra irányuló kérés összeállításakor használ. Ha nincs megadva egyéni továbbítási útvonal, a Front Door alapértelmezés szerint bemásolja a bejövő URL-útvonalat a továbbított kérelemben használt URL-címbe. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvassa el a [háttérbeli állomásfejléc-fejlécet](front-door-backend-pool.md#hostheader) , hogy megtudja, mit csinál, és hogyan konfigurálhatja.
 
-Az URL-átírás erőteljes része az egyéni továbbítási útvonal használatával az, hogy a bejövő útvonal bármely olyan részét másolja, amely megegyezik a továbbított elérési úthelyettesítő elérési útjával (ezek az elérési útszegmensek az alábbi példában a **zöld** szegmensek):
+Az URL-cím az egyéni továbbítási útvonal használatával történő újraírásának nagy része az, hogy a bejövő elérési út bármely olyan részét átmásolja, amely megegyezik a továbbított útvonalhoz tartozó helyettesítő karakteres elérési úttal (ezek az elérésiút-szegmensek az alábbi példában szereplő **zöld** szegmensek):
 </br>
-![Az Azure bejárati ajtajának URL-címe újraírása][1]
+![Azure bejárati ajtó URL-címének újraírása][1]
 
-## <a name="url-rewrite-example"></a>Példa URL-újraírására
-Fontolja meg a következő előtér-állomásokkal és elérési utakkal rendelkező útválasztási szabályt:
+## <a name="url-rewrite-example"></a>URL-átírási példa
+Vegye fontolóra egy útválasztási szabályt a következő előtér-gazdagépekkel és elérési utakkal:
 
 | Hosts      | Elérési utak       |
 |------------|-------------|
-| www\.contoso.com | /\*         |
+| www\.-contoso.com | /\*         |
 |            | /foo        |
-|            | /foo/\*     |
+|            | foo\*     |
 |            | /foo/bar/\* |
 
-Az alábbi táblázat első oszlopa példákat mutat be a bejövő kérelmekre, a második pedig azt, hogy mi lenne a "legspecifikusabb" egyező útvonal,' "Path".  A táblázat első sorának harmadik és későbbi oszlopai példák a konfigurált **egyéni továbbítási útvonalakra,** és az oszlopok többi sora példákat mutat be arra, hogy mi lenne a továbbított kérelem elérési útja, ha az megfelelne az adott sorban lévő kérésnek.
+Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat első sorában a harmadik és az azt követő oszlopok a konfigurált **Egyéni továbbítási útvonalakra**mutatnak, az oszlopok többi sora pedig példát mutat arra, hogy a továbbított kérések elérési útja hogyan illeszkedik az adott sorban található kérelemhez.
 
-Ha például a második sorban olvasunk, azt mondjuk, `www.contoso.com/sub`hogy a bejövő kérésesetén, ha az egyéni továbbítási útvonal volt `/`, akkor a továbbított elérési út lesz. `/sub` Ha az egyéni továbbítási útvonal `/fwd/`a , `/fwd/sub`akkor a továbbított elérési út lesz. És így tovább, a többi oszlop. Az alábbi görbék **kijelölt** részei a helyettesítő karakter egyezés részét képező részeket jelölik.
+Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem `www.contoso.com/sub`esetében, ha az egyéni továbbítási útvonal volt `/`, akkor a továbbított elérési út a `/sub`következő lesz:. Ha az egyéni továbbítási útvonal `/fwd/`volt, akkor a továbbított elérési út `/fwd/sub`a következő lesz:. És így tovább, a fennmaradó oszlopokhoz. Az alábbi elérési utak **Kiemelt** részei a helyettesítő karakteres egyezés részét képező részeket jelölik.
 
 
-| Bejövő kérelem       | A legspecifikusabb egyezési útvonala | /          | /fwd/          | /foo/          | /foo/bar/          |
+| Bejövő kérelem       | A legpontosabb egyezési elérési út | /          | fwd          | foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/**sub**     | /\*                      | /**Al**   | /fwd/**al**   | /foo/**al**   | /foo/bar/**al**   |
-| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
-| www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/**bár** | /foo/\*                  | /**Bár**   | /fwd/**sáv**   | /foo/**sáv**   | /foo/bar/**bár**   |
+| www\.-contoso.com/            | /\*                      | /          | fwd          | foo          | /foo/bar/          |
+| www\.contoso.com/**Sub**     | /\*                      | /**Sub**   | /fwd/**Sub**   | /foo/**Sub**   | /foo/Bar/**Sub**   |
+| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/Bar/**a/b/c** |
+| www\.-contoso.com/foo         | /foo                     | /          | fwd          | foo          | /foo/bar/          |
+| www\.-contoso.com/foo/        | foo\*                  | /          | fwd          | foo          | /foo/bar/          |
+| www\.contoso.com/foo/**sáv** | foo\*                  | /**Bár**   | /fwd/**sáv**   | /foo/**sáv**   | /foo/Bar/**sáv**   |
 
 
 ## <a name="optional-settings"></a>Választható beállítások
-Az adott útválasztási szabály beállításaihoz további választható beállításokat is megadhat:
+További választható beállítások is megadhatók a megadott útválasztási szabályok beállításaihoz:
 
-* **Gyorsítótár-konfiguráció** – Ha le van tiltva vagy nincs megadva, akkor az útválasztási szabálynak megfelelő kérelmek nem kísérlik meg használni a gyorsítótárazott tartalmat, és ehelyett mindig a háttérrendszerből fognak lekérni. Tudjon meg többet a [Caching a Bejárati ajtó](front-door-caching.md).
+* **Gyorsítótár-konfiguráció** – ha le van tiltva vagy nincs megadva, akkor az ehhez az útválasztási szabályhoz illeszkedő kérelmek nem kísérlik meg a gyorsítótárazott tartalom használatát, hanem mindig a háttérből fognak beolvasni. További információ a [bejárati ajtók gyorsítótárazásáról](front-door-caching.md).
 
 
 

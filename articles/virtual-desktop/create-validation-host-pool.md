@@ -1,6 +1,6 @@
 ---
-title: A Windows virtuális asztali gazdakészletszolgáltatásának frissítései – Azure
-description: Érvényesítési gazdakészlet létrehozása a szolgáltatásfrissítések figyeléséhez az éles környezetben a frissítések létrehozása előtt.
+title: Windows rendszerű virtuális asztali munkamenetgazda szolgáltatás frissítései – Azure
+description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,52 +9,52 @@ ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79365389"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépkészlet létrehozása a szolgáltatásfrissítések érvényesítéséhez
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
 
-A gazdakészletek egy vagy több azonos virtuális gép gyűjteménye a Windows virtuális asztal bérlői környezetében. A gazdagépkészletek éles környezetben történő üzembe helyezése előtt javasoljuk, hogy hozzon létre egy érvényesítési gazdakészletet. A frissítések először az érvényesítési gazdakészletekre vonatkoznak, így figyelheti a szolgáltatásfrissítéseket, mielőtt azéles környezetbe való kihelyezésüket. Érvényesítési gazdakészlet nélkül előfordulhat, hogy nem észlelolyan módosításokat, amelyek hibákat okoznak, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
+A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
 
-Annak érdekében, hogy az alkalmazások működjenek a legújabb frissítésekkel, az érvényesítési gazdakészletnek a lehető legközelebb kell lennie az éles környezetben lévő gazdakészletekhez. A felhasználóknak ugyanolyan gyakran kell csatlakozniuk az érvényesítési gazdakészlethez, mint az éles gazdagépkészlethez. Ha automatikus tesztelést végzett a gazdakészleten, akkor az érvényesítési gazdakészleten is automatikus tesztelést kell megadnia.
+Annak biztosítása érdekében, hogy az alkalmazások a legújabb frissítésekkel működjenek, az ellenőrzési gazdagép-készletnek a lehető leghasonlónak kell lennie az éles környezetben lévő gazdagépekhez. A felhasználóknak az üzemi gazdagép-készlethez hasonlóan gyakran kell csatlakozniuk az ellenőrzési gazdagéphez. Ha automatizált tesztelést végez a gazdagép-készleten, az automatikus tesztelést is tartalmaznia kell az ellenőrzési gazdagépen.
 
-Az érvényesítési gazdakészletben a [diagnosztikai szolgáltatással](diagnostics-role-service.md) vagy a [Windows virtuális asztal hibaelhárítási cikkeivel](troubleshoot-set-up-overview.md)hibakeresést okozhat az érvényesítési állomáskészletben.
+Az érvényesítési gazdagépen lévő hibák hibakereséséhez használhatja a [diagnosztikai szolgáltatást](diagnostics-role-service.md) vagy a [Windows virtuális asztali hibaelhárítási cikkeit](troubleshoot-set-up-overview.md).
 
 >[!NOTE]
-> Azt javasoljuk, hogy hagyja az ellenőrzési állomáskészletet a helyén az összes jövőbeli frissítés teszteléséhez.
+> Javasoljuk, hogy az összes jövőbeli frissítés teszteléséhez hagyja meg az ellenőrző gazdagép készletét.
 
-Mielőtt elkezdené, [töltse le és importálja a Windows Virtual Desktop PowerShell modult,](/powershell/windows-virtual-desktop/overview/)ha még nem tette meg. Ezután futtassa a következő parancsmast a fiókjába való bejelentkezéshez:
+Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/), ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="create-your-host-pool"></a>A gazdagépkészlet létrehozása
+## <a name="create-your-host-pool"></a>A gazda készlet létrehozása
 
-Gazdakészletet az alábbi cikkekben található utasítások szerint hozhat létre:
-- [Oktatóanyag: Gazdagépkészlet létrehozása az Azure Piactérrel](create-host-pools-azure-marketplace.md)
+A következő cikkek utasításait követve hozhat létre egy gazdagépet:
+- [Oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
 - [Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal](create-host-pools-arm-template.md)
 - [Gazdagépcsoport létrehozása a PowerShell-lel](create-host-pools-powershell.md)
 
-## <a name="define-your-host-pool-as-a-validation-host-pool"></a>A gazdagépkészlet definiálása érvényesítési gazdakészletként
+## <a name="define-your-host-pool-as-a-validation-host-pool"></a>A gazdagép-készlet definiálása érvényesítési gazdagépként
 
-Futtassa a következő PowerShell-parancsmagokat az új gazdakészlet ellenőrzési gazdakészletként való definiálásához. Cserélje le az idézőjelekben lévő értékeket a munkamenetre vonatkozó értékekre:
+Futtassa az alábbi PowerShell-parancsmagokat az új címkészlet érvényesítési gazdagépként való definiálásához. Cserélje le az idézőjelek értékeit a munkamenetéhez tartozó értékekre:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Set-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
 ```
 
-Futtassa a következő PowerShell-parancsmast annak ellenőrzéséhez, hogy az érvényesítési tulajdonság be van-e állítva. Cserélje le az idézőjelekben lévő értékeket a munkamenetre vonatkozó értékekre.
+A következő PowerShell-parancsmag futtatásával ellenőrizze, hogy az érvényesítési tulajdonság be van-e állítva. Cserélje le az idézőjelek értékeit a munkamenetéhez tartozó értékekre.
 
 ```powershell
 Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 ```
 
-A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinézniük:
+A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
 
 ```
     TenantName          : contoso 
@@ -70,13 +70,13 @@ A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinézniük:
     Ring                :
 ```
 
-## <a name="update-schedule"></a>Ütemezés frissítése
+## <a name="update-schedule"></a>Frissítési ütemterv
 
-A szolgáltatásfrissítések havonta történnek. Ha jelentős problémák merülnek fel, a kritikus frissítések et gyakoribb ütemben biztosítjuk.
+A szolgáltatás frissítései havonta történnek. Jelentős problémák esetén a kritikus frissítések gyakoribb ütemben lesznek elérhetők.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozott egy érvényesítési gazdakészletet, megtudhatja, hogyan használhatja az Azure Service Health használatával a Windows virtuális asztal központi telepítésének figyelésére. 
+Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére. 
 
 > [!div class="nextstepaction"]
 > [Szolgáltatásriasztások beállítása](./set-up-service-alerts.md)

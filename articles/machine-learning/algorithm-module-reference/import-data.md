@@ -1,7 +1,7 @@
 ---
-title: 'Adatok importálása: modul hivatkozási'
+title: 'Adatimportálás: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja az Adatok importálása modult az Azure Machine Learningben az adatok gépi tanulási folyamatba való betöltéséhez a meglévő felhőalapú adatszolgáltatásokból.
+description: Ismerje meg, hogyan tölthetők be adatok egy gépi tanulási folyamatba a meglévő felhőalapú adatszolgáltatásokból a Azure Machine Learning adatimportálási moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,27 +10,27 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456199"
 ---
-# <a name="import-data-module"></a>Adatok importálása modul
+# <a name="import-data-module"></a>Adatmodul importálása
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal adatokat tölthet be egy gépi tanulási folyamatba a meglévő felhőalapú adatszolgáltatásokból. 
+Ezzel a modullal az adatok betölthetők egy gépi tanulási folyamatba a meglévő felhőalapú adatszolgáltatásokból. 
 
 > [!Note]
-> A modul által biztosított összes funkciót **az adattár** és az **adatkészletek** végezhetik el a worksapce céloldalon. Azt javasoljuk, hogy **használja az adattároló** és **az adatkészlet,** amely további funkciókat, például az adatfigyelés. További információ: [Az adatok elérése](../how-to-access-data.md) és [az adatkészletek regisztrálása](../how-to-create-register-datasets.md) című cikkben.
-> Miután regisztrált egy adatkészletet, megtalálhatja azt a tervezői felület **Adatkészletek** -> **csoportjában.** Ez a modul a Studio(classic) felhasználók számára van fenntartva egy ismerős élmény érdekében. 
+> A modul által biztosított összes funkció az **adattár** és az **adatkészletek** segítségével végezhető el a munkaterület üzemelő példányának kezdőlapján. Javasoljuk, hogy az adattárat és az **adatkészletet** **használja, amely** olyan további funkciókat is tartalmaz, mint az adatfigyelés További információk: [az adathozzáférés](../how-to-access-data.md) és [az adatkészletek regisztrálása](../how-to-create-register-datasets.md) című cikk.
+> Az adatkészlet regisztrálása után megkeresheti **azt az** -> adatkészletek**saját adatkészletek** kategóriájában a Designer felületen. Ez a modul Studio (klasszikus) felhasználók számára van fenntartva ismerős élmény érdekében. 
 >
 
-**Az Adatok importálása** modul támogatása a következő forrásokból olvassa be az adatokat:
+Az **adatimportálási** modul támogatja az adatok olvasását az alábbi forrásokból:
 
-- URL HTTP-n keresztül
-- Az Azure felhőalapú tárhelyei az [**adatáruházakon**](../how-to-access-data.md)keresztül)
+- URL-cím HTTP-n keresztül
+- Azure Cloud Storage adattárolók [**használatával)**](../how-to-access-data.md)
     - Azure Blob-tároló
     - Azure-fájlmegosztás
     - Azure Data Lake
@@ -38,55 +38,55 @@ Ezzel a modullal adatokat tölthet be egy gépi tanulási folyamatba a meglévő
     - Azure SQL Database
     - Azure PostgreSQL    
 
-A felhőalapú tárhely használata előtt először regisztrálnia kell egy adattáradataz Azure Machine Learning-munkaterületen. További információt az Adatok elérése című témakörben [talál.](../how-to-access-data.md) 
+A felhőalapú tárolás használata előtt először regisztrálnia kell egy adattárat a Azure Machine Learning-munkaterületen. További információ: [az adatok elérése](../how-to-access-data.md). 
 
-Miután definiálta a kívánt adatokat, és csatlakozott a forráshoz, az **[Adatok importálása](./import-data.md)** a benne lévő értékek alapján következtet az egyes oszlopok adattípusából, és betölti az adatokat a tervezői folyamatba. **Az Adatok importálása** egy adatkészlet, amely bármely tervezői folyamattal használható.
+A kívánt adatok definiálása és a forráshoz való kapcsolódás után az **[adatok importálása](./import-data.md)** az egyes oszlopok adattípusát következteti ki a benne foglalt értékek alapján, és betölti az adatait a tervezői folyamatba. Az **importálási adat** kimenete egy olyan adatkészlet, amely bármely tervezői folyamattal használható.
 
-Ha a forrásadatok megváltoznak, az [Adatok importálása](./import-data.md)című fájl újbóli futtatásával frissítheti az adatkészletet, és új adatokat adhat hozzá.
+Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva.
 
-## <a name="how-to-configure-import-data"></a>Az adatok importálásának beállítása
+## <a name="how-to-configure-import-data"></a>Az importálási adatgyűjtés konfigurálása
 
-1. Adja hozzá az **Adatok importálása** modult a folyamathoz. Ezt a modult a tervező **Adatbevitel és kimenet** kategóriában találja.
+1. Adja hozzá az **adatimportálási** modult a folyamathoz. Ezt a modult a tervező **adatbevitel és kimenet** kategóriájában találja.
 
 1. Válassza ki a modult a jobb oldali ablaktábla megnyitásához.
 
-1. Válassza **az Adatforrás**lehetőséget, és válassza ki az adatforrás típusát. Ez lehet HTTP vagy adattár.
+1. Válassza **az adatforrás lehetőséget, majd**válassza ki az adatforrás típusát. Ez lehet HTTP vagy adattár.
 
-    Ha az adattár, kiválaszthatja a meglévő adattárak, amelyek már regisztrált az Azure Machine Learning-munkaterületre, vagy hozzon létre egy új adattárban. Ezután adja meg az adattárban importálandó adatok elérési útját. Könnyedén böngészhet az útvonalon, kattintson **a Tallózás útvonal** ![importálási-adatelérési út](media/module/import-data-path.png)
+    Ha az adattár lehetőséget választja, akkor kiválaszthatja azokat a meglévő adattárolókat, amelyek már regisztrálva vannak a Azure Machine Learning munkaterületen, vagy létrehozhat egy új adattárat. Ezután adja meg az adattárba importálandó adatelérési utat. Az elérési út tallózásával egyszerűen tallózhat az elérési **út** ![importálása – adatelérési út lehetőségre kattintva.](media/module/import-data-path.png)
 
-1. Jelölje ki az előnézeti sémát a felvenni kívánt oszlopok szűréséhez. Speciális beállításokat is megadhat, például határolóbeállítást az elemzési beállításokban.
+1. Válassza ki az előnézeti sémát a felvenni kívánt oszlopok szűréséhez. A speciális beállításokat, például a határolójeleket is megadhatja a beállítások elemzésekor.
 
-    ![import-data-preview](media/module/import-data.png)
+    ![Importálás – adatelőnézet](media/module/import-data.png)
 
-1. A jelölőnégyzet, **Újragenerálása kimenet**, dönti el, hogy végre a modult, hogy újragenerálja a kimenetet a működési idő. 
+1. A **kimenet újragenerált**jelölőnégyzete határozza meg, hogy végrehajtja-e a modult a kimenet újralétrehozásához a futási időben. 
 
-    Alapértelmezés szerint nincs bejelölve, ami azt jelenti, hogy ha a modult korábban ugyanazokat a paramétereket hajtották végre, a rendszer újra felhasználja az utolsó futtatás kimenetét a futási idő csökkentése érdekében. 
+    Alapértelmezés szerint nincs kiválasztva, ami azt jelenti, hogy ha a modult korábban ugyanazokkal a paraméterekkel hajtották végre, a rendszer a legutóbbi futtatásból a futási idő csökkentése érdekében újra fogja használni a kimenetet. 
 
-    Ha be van jelölve, a rendszer újra végrehajtja a modult a kimenet újragenerálásához. Így válassza ezt a lehetőséget, ha az alapul szolgáló adatok a tárolóban frissül, segíthet a legfrissebb adatok betöltésében.
+    Ha be van jelölve, a rendszer ismét végrehajtja a modult a kimenet újralétrehozásához. Ezért válassza ezt a lehetőséget, ha a tárterületen alapuló adatokat frissíti a rendszer, így a legfrissebb adatokat is beolvashatja.
 
 
-1. Küldje el a folyamatot.
+1. A folyamat elküldése.
 
-    Amikor az Adatok importálása betölti az adatokat a tervezőbe, az egyes oszlopok adattípusát a benne lévő értékek alapján következteti be, akár numerikus, akár kategorikus.
+    Amikor az adatok importálása betölti az adatok betöltését a tervezőbe, az egyes oszlopok adattípusát az általa tartalmazott értékek alapján, számszerű vagy kategorikusan következteti ki.
 
     Ha van fejléc, a fejléc a kimeneti adatkészlet oszlopainak elnevezésére szolgál.
 
-    Ha az adatokban nincsenek meglévő oszlopfejlécek, a col1 (col2) formátumban új oszlopnevek jönnek létre,... , coln*.
+    Ha az adatsorokban nem találhatók oszlopfejlécek, az új oszlopnevek a col1, a col2,... formátum használatával jönnek létre. , Coln *.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az importálás befejezéseután kattintson a kimeneti adatkészletre, és válassza a **Visualize** lehetőséget, hogy lássa, sikeresen importálta-e az adatokat.
+Amikor az importálás befejeződik, kattintson a kimeneti adatkészletre, és válassza a **Megjelenítés** lehetőséget, hogy megtekintse az adatokat az importálás sikeres volt-e.
 
-Ha az adatokat újrafelhasználásra szeretné menteni, ahelyett, hogy a folyamat minden egyes futtatásakor új adathalmazt importálna, válassza az **Adatkészlet regisztrálása** ikont a modul jobb oldali paneljének **Kimenetek** lapján. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentés időpontjában, az adatkészlet nem frissül a folyamat újrafuttatásakor, még akkor sem, ha a folyamat adatkészlete megváltozik. Ez az adatok pillanatképeinek készítéséhez lehet hasznos.
+Ha újra szeretné menteni az adatokat, ahelyett, hogy az új adatkészletet importálja a folyamat minden egyes futtatásakor, válassza az **adatkészlet regisztrálása** ikont a modul jobb oldali paneljének **kimenetek** lapján. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentéskor, az adatkészlet nem frissül a folyamat újrafuttatásakor, még akkor is, ha megváltozik a folyamat adatkészlete. Ez hasznos lehet az adatpillanatképek készítésekor.
 
-Az adatok importálása után további előkészületekre lehet szükség a modellezéshez és elemzéshez:
+Az információk importálása után szükség lehet néhány további modellezési és elemzési előkészületre:
 
-- [A Metaadatok szerkesztése](./edit-metadata.md) segítségével módosíthatja az oszlopneveket, más adattípusként kezelheti az oszlopokat, illetve jelezheti, hogy egyes oszlopok címkék vagy szolgáltatások.
+- Használja a [metaadatok szerkesztése](./edit-metadata.md) lehetőséget az oszlopnevek módosításához, egy oszlop más adattípusként való kezeléséhez, illetve annak jelzéséhez, hogy egyes oszlopok címkék vagy szolgáltatások.
 
-- Az [Adatkészlet Oszlopainak kijelölése](./select-columns-in-dataset.md) segítségével kijelölhet egy oszlopot, amelyet át alakítana vagy használhat modellezésben. Az átalakított vagy eltávolított oszlopok könnyen újra csatlakoztathatók az eredeti adatkészlethez az [Oszlopok hozzáadása](./add-columns.md) modul segítségével.  
+- Az [adatkészletben az Oszlopok kiválasztása](./select-columns-in-dataset.md) lehetőséggel kiválaszthatja a modellezéshez átalakítani vagy használni kívánt oszlopok részhalmazát. Az átalakított vagy eltávolított oszlopok könnyedén csatlakoztathatók az eredeti adatkészlethez az [Oszlopok hozzáadása](./add-columns.md) modullal.  
 
-- [A Partition és a Sample](./partition-and-sample.md) segítségével feloszthatja az adatkészletet, mintavételezést végezhet, vagy beszerezheti a felső n sorokat.
+- A [Partition és a Sample](./partition-and-sample.md) használatával ossza fel az adatkészletet, végezzen mintavételezést, vagy töltse le az első n sort.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

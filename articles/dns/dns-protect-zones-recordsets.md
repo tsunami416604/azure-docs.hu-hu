@@ -1,6 +1,6 @@
 ---
-title: A DNS-zónák és -rekordok védelme – Azure DNS
-description: Ebben a tanulási útvonalon ismerkedhet meg a DNS-zónák és rekordkészletek védelmével a Microsoft Azure DNS-ben.
+title: DNS-zónák és rekordok védelme – Azure DNS
+description: Ebben a képzési tervben a DNS-zónák és-rekordhalmazok védelme Microsoft Azure DNS-ben című cikkben olvasható.
 services: dns
 author: asudbring
 ms.service: dns
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 2/20/2020
 ms.author: allensu
 ms.openlocfilehash: 89a945f146601084795b2e12a721a03a1b96aaea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371477"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A DNS-zónák és -rekordok kritikus erőforrások. Dns-zóna vagy egyetlen DNS-rekord törlése szolgáltatáskimaradást eredményezhet. Fontos, hogy a DNS-zónák és -rekordok védve legyenek a jogosulatlan vagy véletlen módosításokkal szemben.
+A DNS-zónák és-rekordok kritikus erőforrások. Egy DNS-zóna vagy egyetlen DNS-rekord törlése a szolgáltatás kimaradását eredményezheti. Fontos, hogy a DNS-zónák és-rekordok védve legyenek a jogosulatlan vagy véletlen változásokkal szemben.
 
-Ez a cikk bemutatja, hogy az Azure DNS hogyan teszi lehetővé a privát DNS-zónák és rekordok védelmét az ilyen változások ellen.  Az Azure Resource Manager által biztosított két hatékony értékpapír-funkciót alkalmazunk: [szerepköralapú hozzáférés-vezérlést](../role-based-access-control/overview.md) és [erőforrászárolást](../azure-resource-manager/management/lock-resources.md).
+Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a saját DNS-zónák és-rekordok védetté tételét az ilyen változásokkal szemben.  A Azure Resource Manager: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és [erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md)által biztosított két hatékony értékpapír-funkciót alkalmazzuk.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a részletes hozzáférés-kezelés az Azure-felhasználók, csoportok és erőforrások. Az RBAC segítségével biztosíthatja a felhasználók számára szükséges hozzáférési szintet. Ha többet szeretne tudni arról, hogy az RBAC hogyan segíti a hozzáférés kezelését, [olvassa el a Mi a szerepköralapú hozzáférés-vezérlés.](../role-based-access-control/overview.md)
+Az Azure szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. A RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. További információ arról, hogyan segít a RBAC a hozzáférés kezelésében: [Mi a szerepköralapú Access Control](../role-based-access-control/overview.md).
 
-### <a name="the-dns-zone-contributor-role"></a>A DNS-zóna közreműködői szerepkör
+### <a name="the-dns-zone-contributor-role"></a>A DNS-zóna közreműködői szerepköre
 
-A DNS-zóna közreműködői szerepkör beépített szerepkör a magánDNS-erőforrások kezeléséhez. Ez a felhasználóra vagy csoportra alkalmazott szerepkör lehetővé teszi a DNS-erőforrások kezelését.
+A DNS-zóna közreműködő szerepköre egy beépített szerepkör a magánhálózati DNS-erőforrások kezeléséhez. A felhasználóra vagy csoportra alkalmazott szerepkör lehetővé teszi a DNS-erőforrások kezelését.
 
-A *myResourceGroup* erőforráscsoport öt zónát tartalmaz a Contoso Corporation számára. A DNS-rendszergazda DNS-zónaközreműködői engedélyeinek megadása az adott erőforráscsoport számára lehetővé teszi a DNS-zónák teljes körű vezérlését. Elkerüli a szükségtelen engedélyek megadását. A DNS-rendszergazda nem hozhat létre és nem állíthat le virtuális gépeket.
+Az erőforráscsoport *myResourceGroup* öt zónát tartalmaz a contoso Corporation számára. A DNS-rendszergazda DNS-zóna közreműködői engedélyeinek megadása az adott erőforráscsoporthoz, lehetővé teszi a DNS-zónák teljes körű felügyeletét. Megakadályozza a szükségtelen engedélyek megadását. A DNS-rendszergazda nem tud virtuális gépeket létrehozni vagy leállítani.
 
-Az RBAC-engedélyek hozzárendelésének legegyszerűbb módja [az Azure Portalon keresztül](../role-based-access-control/role-assignments-portal.md)történik.  
+A RBAC engedélyek hozzárendelésének legegyszerűbb módja [a Azure Portalon keresztül](../role-based-access-control/role-assignments-portal.md)történik.  
 
-Nyissa meg az erőforráscsoport **hozzáférés-vezérlését (IAM),** majd válassza a **Hozzáadás**lehetőséget, majd jelölje ki a **DNS-zóna közreműködői** szerepkört. Válassza ki az engedélyek megadásához szükséges felhasználókat vagy csoportokat.
+Nyissa meg az erőforráscsoport **hozzáférés-vezérlés (iam)** elemét, majd válassza a **Hozzáadás**lehetőséget, majd válassza ki a **DNS-zóna közreműködői** szerepkört. Válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
 
-![Erőforráscsoport szintű RBAC az Azure portalon keresztül](./media/dns-protect-zones-recordsets/rbac1.png)
+![Erőforráscsoport-szintű RBAC a Azure Portal keresztül](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Az Azure [PowerShell használatával is adhatók engedélyek:](../role-based-access-control/role-assignments-powershell.md)
+[Az engedélyek a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)is megadhatók:
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -50,7 +50,7 @@ $rsg = "<resource group name>"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg
 ```
 
-Az ezzel egyenértékű parancs [az Azure CLI-n keresztül](../role-based-access-control/role-assignments-cli.md)is elérhető:
+Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -61,17 +61,17 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="zone-level-rbac"></a>Zónaszintű RBAC
+### <a name="zone-level-rbac"></a>Zóna szintű RBAC
 
-Az Azure RBAC-szabályok egy előfizetésre, egy erőforráscsoportra vagy egy adott erőforrásra is alkalmazhatók. Ez az erőforrás lehet egyedi DNS-zóna vagy egyéni rekordkészlet.
+Az Azure RBAC-szabályok egy előfizetésre, egy erőforráscsoport vagy egy adott erőforrásra is alkalmazhatók. Ez az erőforrás lehet egy egyedi DNS-zóna vagy egy különálló rekordazonosító.
 
-A *myResourceGroup* erőforráscsoport például tartalmazza a *zónát contoso.com* és egy alzónát *customers.contoso.com.* A CNAME rekordok minden vevőszámlához létrejönnek. A CNAME rekordok kezeléséhez használt rendszergazdai fiók engedélyeket kap a *customers.contoso.com* zónában lévő rekordok létrehozásához. A fiók csak *customers.contoso.com* kezelhető.
+A *myResourceGroup* erőforráscsoport például a *contoso.com* zónát és egy alzónát *customers.contoso.com*tartalmaz. A CNAME rekordok mindegyik ügyfél-fiókhoz jönnek létre. A CNAME rekordok kezeléséhez használt rendszergazdai fiók engedélyeket kap a rekordok létrehozásához a *customers.contoso.com* zónában. A fiók csak *customers.contoso.com* tud kezelni.
 
-Zónaszintű RBAC-engedélyek az Azure Portalon keresztül adhatók meg.  Nyissa meg a **zóna hozzáférés-vezérlését (IAM),** válassza a **Hozzáadás**lehetőséget, majd jelölje ki a **DNS-zóna közreműködői** szerepkört, és válassza ki az engedélyek megadásához szükséges felhasználókat vagy csoportokat.
+A zóna szintű RBAC engedélyek a Azure Portalon keresztül adhatók meg.  Nyissa meg a zóna **hozzáférés-vezérlés (iam)** elemét, válassza a **Hozzáadás**lehetőséget, majd válassza ki a **DNS-zóna közreműködői** szerepkört, és válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
 
-![Dns Zone szintű RBAC az Azure portalon keresztül](./media/dns-protect-zones-recordsets/rbac2.png)
+![DNS-zóna szintjének RBAC a Azure Portal keresztül](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Az Azure [PowerShell használatával is adhatók engedélyek:](../role-based-access-control/role-assignments-powershell.md)
+[Az engedélyek a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)is megadhatók:
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -85,7 +85,7 @@ $typ = "Microsoft.Network/DNSZones"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg -ResourceName $zon -ResourceType $typ
 ```
 
-Az ezzel egyenértékű parancs [az Azure CLI-n keresztül](../role-based-access-control/role-assignments-cli.md)is elérhető:
+Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -96,15 +96,15 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/DnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Rekordkészlet-szint RBAC
+### <a name="record-set-level-rbac"></a>Rögzítési szint RBAC
 
-Az engedélyek a rekordhalmaz szintjén lesznek alkalmazva.  A felhasználó szabályozhatja a szükséges bejegyzéseket, és nem tud más módosításokat végrehajtani.
+Az engedélyek a rekord beállítása szintjén lesznek alkalmazva.  A felhasználó vezérlést kap a szükséges bejegyzésekhez, és nem tud más módosításokat végrehajtani.
 
-A rekordkészlet-szintű RBAC-engedélyek konfigurálhatók az Azure Portalon keresztül a **hozzáférés-vezérlés (IAM)** gombbal a rekordkészlet-lapon:
+A Record-set szintű RBAC engedélyek a Azure Portalon keresztül konfigurálhatók a **Access Control (iam)** gomb használatával a rekord beállítása lapon:
 
-![Rekordhalmazszintű RBAC az Azure portalon keresztül](./media/dns-protect-zones-recordsets/rbac3.png)
+![Rögzített szintű RBAC a Azure Portal használatával](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Rekord-készlet szintű RBAC engedélyeket is [meg lehet adni az Azure PowerShell használatával:](../role-based-access-control/role-assignments-powershell.md)
+A Record-set szintű RBAC engedélyek [a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)is megadhatók:
 
 ```azurepowershell
 # Grant permissions to a specific record set
@@ -117,7 +117,7 @@ $sco =
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 ```
 
-Az ezzel egyenértékű parancs [az Azure CLI-n keresztül](../role-based-access-control/role-assignments-cli.md)is elérhető:
+Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -130,11 +130,11 @@ az role assignment create \
 
 ### <a name="custom-roles"></a>Egyéni szerepkörök
 
-A beépített DNS-zónaközreműködői szerepkör lehetővé teszi a DNS-erőforrások teljes körű vezérlését. Lehetőség van saját egyéni Azure-szerepkörök létrehozására, hogy finomabb szemcsés vezérlést biztosítson.
+A beépített DNS-zóna közreműködői szerepkör lehetővé teszi a DNS-erőforrások teljes körű felügyeletét. Létrehozhatók saját egyéni Azure-szerepkörök, amelyek finomabban szabályozható szabályozást tesznek lehetővé.
 
-A CNAMEs kezelésére használt fiók csak a CNAME rekordok kezelésére jogosult. A fiók nem tudja módosítani más típusú rekordokat. A fiók nem tud zónaszintű műveleteket, például zónatörlést végezni.
+A CNAME-rekordok kezeléséhez használt fiók engedélyt kap a CNAME rekordok kezelésére. A fiók nem tudja módosítani a más típusú rekordokat. A fiók nem tudja végrehajtani a zóna szintű műveleteket, például a zóna törlését.
 
-A következő példa csak a CNAME rekordok kezelésére szolgáló egyéni szerepkör-definíciót mutat be:
+Az alábbi példa egy egyéni szerepkör-definíciót mutat be kizárólag a CNAME rekordok kezelésére:
 
 ```json
 {
@@ -160,49 +160,49 @@ A következő példa csak a CNAME rekordok kezelésére szolgáló egyéni szere
 }
 ```
 
-A Műveletek tulajdonság a következő DNS-specifikus engedélyeket határozza meg:
+A műveletek tulajdonság a következő DNS-specifikus engedélyeket határozza meg:
 
-* `Microsoft.Network/dnsZones/CNAME/*`teljes ellenőrzést biztosít a CNAME rekordok felett
-* `Microsoft.Network/dnsZones/read`engedélyt ad a DNS-zónák olvasására, de nem módosítja azokat, lehetővé téve a CNAME létrehozásának zónájának megtekintését.
+* `Microsoft.Network/dnsZones/CNAME/*`teljes hozzáférést biztosít a CNAME-rekordokhoz
+* `Microsoft.Network/dnsZones/read`engedélyt ad a DNS-zónák olvasására, de nem módosítja őket, így megtekintheti azt a zónát, amelyben a CNAME létrejött.
 
-A fennmaradó műveletek a [DNS Zone Contributor beépített szerepköréből](../role-based-access-control/built-in-roles.md#dns-zone-contributor)kerülnek másolásra.
+A fennmaradó műveleteket a rendszer a [DNS-zóna közreműködői beépített szerepkörből](../role-based-access-control/built-in-roles.md#dns-zone-contributor)másolja.
 
 > [!NOTE]
-> Az egyéni RBAC szerepkör használata a rekordkészletek törlésének megakadályozására, miközben továbbra is lehetővé teszi azok frissítését, nem hatékony vezérlő. Megakadályozza a rekordhalmazok törlését, de a módosításukat nem.  Az engedélyezett módosítások közé tartozik a rekordok hozzáadása és eltávolítása a rekordkészletből, beleértve az összes rekord eltávolítását, hogy üres rekordhalmazt hagyjon. Ennek ugyanaz a hatása, mint a rekordkészlet DNS-feloldási szempontból történő törlése.
+> Egyéni RBAC-szerepkör használata a rekordhalmazok törlésének megakadályozása érdekében, miközben továbbra is lehetővé teszi a frissítések frissítését, nem érvényes vezérlő. Megakadályozza a rekordhalmazok törlését, de nem akadályozza meg őket a módosításban.  Az engedélyezett módosítások közé tartoznak a rekordok hozzáadása és eltávolítása a rekordhalmazból, beleértve az összes rekord eltávolítását is, ha üres rekordhalmazt szeretne hagyni. Ennek ugyanaz a hatása, mint a rekord DNS-feloldási nézőpontból való törlése.
 
-Egyéni szerepkör-definíciók jelenleg nem határozható meg az Azure Portalon keresztül. A szerepkör-definíción alapuló egyéni szerepkör az Azure PowerShell használatával hozható létre:
+Az egyéni szerepkör-definíciók jelenleg nem definiálhatók a Azure Portalon keresztül. A szerepkör-definíción alapuló egyéni szerepkört Azure PowerShell használatával lehet létrehozni:
 
 ```azurepowershell
 # Create new role definition based on input file
 New-AzRoleDefinition -InputFile <file path>
 ```
 
-Az Azure CLI-n keresztül is létrehozható:
+Az Azure CLI használatával is létrehozható:
 
 ```azurecli
 # Create new role definition based on input file
 az role create -inputfile <file path>
 ```
 
-A szerepkör ezután ugyanúgy rendelhető hozzá, mint a beépített szerepkörök, ahogy azt a cikk korábbi leírtak szerint.
+A szerepkör ezután ugyanúgy hozzárendelhető a beépített szerepkörökhöz, mint a jelen cikk korábbi részében leírtak szerint.
 
-Az egyéni szerepkörök létrehozásáról, kezeléséről és hozzárendeléséről az [Egyéni szerepkörök az Azure RBAC-ban](../role-based-access-control/custom-roles.md)című témakörben talál további információt.
+Az egyéni szerepkörök létrehozásával, kezelésével és hozzárendelésével kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure RBAC-ben](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Erőforrás-zárolások
 
-Az Azure Resource Manager támogatja a biztonsági ellenőrzés egy másik típusát, az erőforrások zárolásának lehetőségét. Az erőforrászárolások az erőforrásra vonatkoznak, és minden felhasználóés szerepkör esetében érvényesek. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/management/lock-resources.md).
+Azure Resource Manager támogatja a más típusú biztonsági vezérlést, az erőforrások zárolásának lehetőségét. Az erőforrás-zárolások az erőforrásra vonatkoznak, és az összes felhasználóra és szerepkörre érvényesek. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/management/lock-resources.md).
 
-Az erőforrás-zárolásnak két típusa van: **CanNotDelete** és **ReadOnly**. Ezek a zárolási típusok alkalmazhatók egy privát DNS-zónára vagy egy egyéni rekordkészletre. A következő szakaszok számos gyakori forgatókönyvet, és hogyan támogatják őket az erőforrás-zárolások használatával.
+Két típusú erőforrás-zárolás létezik: **CanNotDelete** és **readonly**. Ezek a zárolási típusok egy saját DNS zónára vagy egy különálló készletre is alkalmazhatók. Az alábbi szakaszok számos gyakori forgatókönyvet ismertetnek, valamint azt, hogyan támogatják őket az erőforrás-zárolások használatával.
 
-### <a name="protecting-against-all-changes"></a>Védelem minden változás ellen
+### <a name="protecting-against-all-changes"></a>Védelem az összes módosítás ellen
 
-A módosítások elkerülése érdekében alkalmazzon csak olvasható zárolást a zónára. Ez a zárolás megakadályozza az új rekordkészletek létrehozását, valamint a meglévő rekordkészletek módosítását vagy törlését.
+A változtatások elkerülése érdekében alkalmazzon írásvédett zárolást a zónára. Ez a zárolás megakadályozza, hogy új rekordhalmazok jöjjenek létre, és a meglévő rekordhalmazok módosítva vagy törölve legyenek.
 
-Zónaszintű erőforrás-zárolások az Azure Portalon keresztül hozhatók létre.  A DNS-zóna lapon válassza a **Zárolások**lehetőséget, majd a **+Hozzáadás**lehetőséget:
+A zóna szintű erőforrás-zárolások a Azure Portal használatával hozhatók létre.  A DNS-zóna lapon válassza a **zárolások**, majd a **+ Hozzáadás**lehetőséget:
 
-![Zónaszintű erőforrászárolások az Azure portalon keresztül](./media/dns-protect-zones-recordsets/locks1.png)
+![A zóna szintű erőforrások zárolása a Azure Portal keresztül](./media/dns-protect-zones-recordsets/locks1.png)
 
-Zónaszintű erőforrászárolások az [Azure PowerShellen](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)keresztül is létrehozhatók:
+A zóna szintű erőforrások zárolása [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)használatával is létrehozható:
 
 ```azurepowershell
 # Lock a DNS zone
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Az ezzel egyenértékű parancs [az Azure CLI-n keresztül](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create)is elérhető:
+Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli
 # Lock a DNS zone
@@ -230,14 +230,14 @@ az lock create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="protecting-individual-records"></a>Az egyes bejegyzések védelme
+### <a name="protecting-individual-records"></a>Egyéni rekordok védelme
 
-Ha meg szeretné akadályozni, hogy egy meglévő DNS-rekordkészlet módosításellen edzzen, alkalmazzon csak olvasható zárolást a rekordkészletre.
+Ha meg szeretné akadályozni, hogy egy meglévő DNS-rekordot módosítson a módosítással, alkalmazza a írásvédett zárolást a rekordra.
 
 > [!NOTE]
-> A CanNotDelete zárolás rekordkészletre történő alkalmazása nem hatékony vezérlő. Megakadályozza a rekordkészlet törlését, de a módosítását nem.  Az engedélyezett módosítások közé tartozik a rekordok hozzáadása és eltávolítása a rekordkészletből, beleértve az összes rekord eltávolítását, hogy üres rekordhalmazt hagyjon. Ennek ugyanaz a hatása, mint a rekordkészlet DNS-feloldási szempontból történő törlése.
+> A CanNotDelete zárolásának egy bejegyzéstípusra való alkalmazása nem hatékony vezérlő. Megakadályozza a rekordok törlését, de nem akadályozza meg a módosítást.  Az engedélyezett módosítások közé tartoznak a rekordok hozzáadása és eltávolítása a rekordhalmazból, beleértve az összes rekord eltávolítását is, ha üres rekordhalmazt szeretne hagyni. Ennek ugyanaz a hatása, mint a rekord DNS-feloldási nézőpontból való törlése.
 
-Rekordkészlet-szintű erőforrás-zárolások jelenleg csak az Azure PowerShell használatával konfigurálhatók.  Ezek nem támogatottak az Azure Portalon vagy az Azure CLI-ben.
+A set szintű erőforrás-zárolások jelenleg csak Azure PowerShell használatával konfigurálhatók.  Nem támogatottak a Azure Portal vagy az Azure CLI-ben.
 
 ```azurepowershell
 # Lock a DNS record set
@@ -251,15 +251,15 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-### <a name="protecting-against-zone-deletion"></a>Védelem a zóna törlésével szemben
+### <a name="protecting-against-zone-deletion"></a>A zónák törlésének védelme
 
-Amikor egy zóna törlődik az Azure DNS-ben, a zónában lévő összes rekordkészlet törlődik.  Ezt a műveletet nem lehet visszavonni. A kritikus zóna véletlen törlése jelentős üzleti hatással járhat.  Fontos, hogy megvédje a véletlen zóna törlés.
+Amikor töröl egy zónát Azure DNSban, a zónában lévő összes rekordhalmaz törölve lesz.  Ez a művelet nem vonható vissza. Ha véletlenül töröl egy kritikus zónát, azzal jelentős hatással lehet az üzleti tevékenységre.  Fontos, hogy védelmet nyújtson a zónák véletlen törlésével szemben.
 
-A CanNotDelete zárolás zónára történő alkalmazása megakadályozza a zóna törlését. A zárolásokat a gyermekerőforrások öröklik. A zárolás megakadályozza a zóna rekordkészletei törlését. A fenti feljegyzésben leírtak szerint hatástalan, mivel a rekordok továbbra is eltávolíthatók a meglévő rekordhalmazokból.
+A CanNotDelete zárolásának zónában való alkalmazása megakadályozza a zóna törlését. A zárolásokat a gyermek erőforrások öröklik. A zárolás megakadályozza a zónában lévő rekordhalmazok törlését. A fenti megjegyzésben leírtak szerint ez nem hatékony, mivel a rekordok továbbra is eltávolíthatók a meglévő rekordhalmazokból.
 
-Másik lehetőségként alkalmazzon CanNotDelete zárolást a zónában lévő rekordhalmazra, például a SOA rekordkészletre. A zóna nem törlődik a rekordhalmazok törlése nélkül. Ez a zárolás védelmet nyújt a zóna törlésével szemben, miközben továbbra is lehetővé teszi a zónán belüli rekordkészletek szabadon történő módosítását. Ha kísérletet tesz a zóna törlésére, az Azure Resource Manager észleli ezt az eltávolítást. Az eltávolítás is törli a SOA rekordkészletet, az Azure Resource Manager blokkolja a hívást, mert a SOA zárolva van.  A nem törlődik rekordhalmaz.
+Alternatív megoldásként alkalmazzon egy CanNotDelete-zárolást a zónában lévő egyik rekorddal, például a SOA-rekorddal. A rendszer nem törli a zónát a rekordhalmazok törlése nélkül. Ez a zárolás védi a zónák törlését, miközben továbbra is engedélyezi a zónán belüli rekordhalmazok szabadon módosítását. Ha kísérlet történt a zóna törlésére, Azure Resource Manager észleli ezt az eltávolítást. Az Eltávolítás a SOA-rekord törlését is törli, Azure Resource Manager blokkolja a hívást, mert a SOA zárolva van.  Nincsenek rekordhalmazok törölve.
 
-A következő PowerShell-parancs canNotdelete zárolást hoz létre az adott zóna SOA rekordja ellen:
+A következő PowerShell-parancs egy CanNotDelete-zárolást hoz létre a megadott zóna SOA-rekordjával:
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
@@ -273,18 +273,18 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-A véletlen zónatörlés megakadályozására egy másik lehetőség egy egyéni szerepkör használata. Ez a szerepkör biztosítja, hogy a zónák kezeléséhez használt fiókok nem rendelkeznek zónatörlési engedélyekkel. 
+Egy másik lehetőség, hogy megakadályozza a zónák véletlen törlését egyéni szerepkör használatával. Ez a szerepkör biztosítja, hogy a zónák kezeléséhez használt fiókok ne rendelkezzenek a zónák törléséhez szükséges engedélyekkel. 
 
-Ha törölnie kell egy zónát, kétlépésben kényszerítheti a törlést:
+Ha törölni kell egy zónát, két lépésből álló törlést is kikényszerítheti:
 
- - Először is, a támogatási zóna törlési engedélyei
- - Másodszor, adjon engedélyeket a zóna törlésére.
+ - Első lépésként adja meg a zóna törlésének engedélyeit
+ - Másodszor, adja meg a zóna törléséhez szükséges engedélyeket.
 
-Az egyéni szerepkör a fiókok által elért összes zónában működik. A zónatörlési engedélyekkel rendelkező fiókok, például az előfizetés tulajdonosa, továbbra is véletlenül törölhetnek egy zónát.
+Az egyéni szerepkör a fiókok által elért összes zónára vonatkozóan működik. A zónák törlésére vonatkozó engedélyekkel rendelkező fiókok, például az előfizetés tulajdonosa, véletlenül törölhetnek egy zónát.
 
-Mindkét megközelítés – erőforrászárolás okán és egyéni szerepkörök – egy időben, a DNS-zóna védelmének mélyreható védelmeként is használható.
+Mindkét módszert – erőforrás-zárolásokat és egyéni szerepköröket – egyszerre is használhatja, a DNS-zónák védelmének mélyreható megközelítésével.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az RBAC használatával kapcsolatos további tudnivalókért olvassa [el a Hozzáférés-kezelés az Azure Portalon című témakört.](../role-based-access-control/overview.md)
-* Az erőforrászárolások használatával kapcsolatos további tudnivalókért olvassa el az [Erőforrások zárolása az Azure Resource Manager rel](../azure-resource-manager/management/lock-resources.md)című témakört.
+* További információ a RBAC használatáról: [a Azure Portal hozzáférés-kezelésének első lépései](../role-based-access-control/overview.md).
+* További információ az erőforrás-zárolások használatáról: [erőforrások zárolása Azure Resource Managersal](../azure-resource-manager/management/lock-resources.md).

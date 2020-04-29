@@ -1,7 +1,7 @@
 ---
 title: Matematikai művelet alkalmazása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a Matematikai műveletek alkalmazása modult az Azure Machine Learningben matematikai művelet alkalmazásával egy folyamat oszlopértékeire.
+description: Ismerje meg, hogyan használható a matematikai műveleti modul alkalmazása a Azure Machine Learningban egy matematikai művelet a folyamat oszlopainak értékeire való alkalmazásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,579 +10,579 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456743"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
-Ez a cikk ismerteti az Azure Machine Learning designer modulját (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-A Matematikai művelet alkalmazása segítségével számításokat hozhat létre, amelyek a bemeneti adatkészlet numerikus oszlopaira vonatkoznak. 
+Használja a matematikai művelet alkalmazása lehetőséget a bemeneti adatkészlet numerikus oszlopaira alkalmazott számítások létrehozásához. 
 
-A támogatott matematikai műveletek közé tartoznak a gyakori aritmetikai függvények, például a szorzás és a osztás, a trigonometriai függvények, a különböző kerekítési függvények, valamint az adatelemzésben használt speciális függvények, például a gamma- és hibafüggvények.  
+A támogatott matematikai műveletek közé tartoznak az olyan általános aritmetikai függvények, mint a szorzás és osztás, a trigonometriai függvények, a különböző kerekítési függvények, valamint az adatelemzésben használt speciális függvények, például a gamma és a Error függvények.  
 
-Miután definiált egy műveletet, és futtatta a folyamatot, az értékek hozzáadódnak az adatkészlethez. A modul konfigurálásától függően a következőket teheti:
+A művelet definiálása és a folyamat futtatása után a rendszer hozzáadja az értékeket az adatkészlethez. A modul konfigurálásának módjától függően a következőket teheti:
 
-+ Fűzze hozzá az eredményeket az adatkészlethez. Ez különösen akkor hasznos, ha a művelet eredményét ellenőrzi.
-+ Az oszlopok értékeinek lecserélése az új, számított értékekre.
-+ Hozzon létre egy új oszlopot az eredményekhez, és ne jelenítse meg az eredeti adatokat. 
++ Fűzze hozzá az eredményeket az adatkészlethez. Ez különösen akkor hasznos, ha ellenőrzi a művelet eredményét.
++ Cserélje le az oszlopok értékeit az új, számított értékekre.
++ Új oszlop létrehozása az eredményekhez, és nem jeleníti meg az eredeti adatmennyiséget. 
 
-Keresse meg a szükséges műveletet az alábbi kategóriákban:  
+Keresse meg a szükséges műveletet ezekben a kategóriákban:  
 
 - [Basic](#basic-math-operations)  
   
-     Az **Alap** kategória függvényei egyetlen érték vagy értékoszlop kezelésére használhatók. Előfordulhat például, hogy egy oszlopban lévő összes szám abszolút értékét kapja meg, vagy kiszámítja az oszlop egyes értékeinek négyzetgyökét.  
+     Az **alapszintű** kategóriába tartozó függvények egyetlen érték vagy oszlop értékének módosítására használhatók. Előfordulhat például, hogy egy adott oszlopban az összes szám abszolút értékét kapja meg, vagy kiszámítja az egyes értékek négyzetes gyökerét egy adott oszlopban.  
   
 -   [Összehasonlítás](#comparison-operations)  
   
-      Az Összehasonlítás kategória **függvényei** összehasonlításra szolgálnak: két oszlopban lévő értékek párban történő összehasonlításával, vagy egy oszlop egyes értékeit egy megadott állandóval hasonlíthatja össze. Például összehasonlíthatja az oszlopokat annak meghatározásához, hogy az értékek azonosak voltak-e két adatkészletben. Vagy használhat egy állandót, például egy maximálisan engedélyezett értéket, hogy megkeresse a kiugró értékeket egy numerikus oszlopban.  
+      Az **összehasonlítás kategóriába tartozó függvények** mindegyike az összehasonlításhoz használatos: a két oszlopban lévő értékek párok közötti összehasonlítását, illetve az egyes értékek adott konstanshoz való összehasonlítását is elvégezheti. Az oszlopok összehasonlításával például megállapíthatja, hogy az értékek megegyeznek-e két adatkészletben. Vagy használhat állandót is, például a maximálisan megengedett értéket, hogy kiugró értékeket keressen egy numerikus oszlopban.  
   
 -   [Műveletek](#arithmetic-operations)  
   
-     A **Műveletek** kategória tartalmazza az alapvető matematikai függvényeket: összeadás, kivonás, szorzás és osztás. Oszlopokkal vagy állandókkal dolgozhat. Hozzáadhatja például az A oszlop értékét a B oszlopban szereplő értékhez. Az A oszlop minden értékéből kivonhat egy állandót, például egy korábban számított átlagot.  
+     Az **operatív** kategória az alapszintű matematikai függvényeket tartalmazza: összeadás, kivonás, szorzás és osztás. Akár oszlopokkal, akár állandókkal is dolgozhat. Például hozzáadhatja az A oszlop értékét a B oszlop értékéhez. Vagy előfordulhat, hogy ki kell vonni egy állandót, például egy korábban számított középértéket az A oszlop minden értékéből.  
   
 -   [Kerekítés](#rounding-operations)  
   
-     A **Kerekítés** kategória számos funkciót tartalmaz az olyan műveletek elvégzéséhez, mint a kerekítés, a mennyezet, a padló és a csonkolás különböző pontossági szintekre. Megadhatja a pontosság szintjét mind a decimális, mind az egész számokhoz.  
+     A **kerekítési** kategória számos olyan függvényt tartalmaz, amelyek különböző szintű pontosságú műveleteket hajtanak végre, például a kerekítést, a plafont, a padlót és a csonkítás mértékét. Megadhatja a pontosság szintjét a decimális és egész számok esetében is.  
   
--   [Különleges](#special-math-functions)  
+-   [Speciális](#special-math-functions)  
   
-     A **Speciális** kategória olyan matematikai függvényeket tartalmaz, amelyeket különösen az adattudományban használnak, például az elliptikus integrálokat és a Gauss-hibafüggvényt.  
+     A **speciális** kategória olyan matematikai függvényeket tartalmaz, amelyeket különösen az adatelemzés, például az elliptikus és a Gauss-hiba funkció használ.  
   
--   [Trigonometriai](#trigonometric-functions)  
+-   [Trigonometrikus](#trigonometric-functions)  
   
-     A **trigonometriai** kategória tartalmazza az összes szabványos trigonometriai függvényt. Például a sugarakat fokokká konvertálhatja, vagy olyan függvényeket is kiszámíthat, mint például az érintő radiánban vagy fokban.
-     Ezek a függvények nem tartoznak, ami azt jelenti, hogy egyetlen oszlopnyi értéket vesznek fel bemenetként, alkalmazzák a trigonometriai függvényt, és ennek eredményeként egy értékoszlopot adnak vissza.  Ezért meg kell győződnie arról, hogy a bemeneti oszlop a megfelelő típusú, és tartalmazza a megfelelő típusú értékeket a megadott művelethez.   
+     A **trigonometriai** kategória tartalmazza az összes szabványos trigonometriai függvényt. Átalakíthatja például a radián-t fok-ra, vagy a számítási függvényeket, például az tangenset radiánban vagy fokban.
+     Ezek a függvények egyoperandusú, ami azt jelenti, hogy az értékek egy oszlopát adja meg bemenetként, alkalmazza a trigonometriai függvényt, és az értékek oszlopát adja vissza eredményként.  Ezért győződjön meg arról, hogy a bemeneti oszlop a megfelelő típusú, és tartalmazza a megadott művelet megfelelő típusú értékeit.   
 
-## <a name="how-to-configure-apply-math-operation"></a>A Matematikai művelet alkalmazása beállítás  
+## <a name="how-to-configure-apply-math-operation"></a>A matematikai műveletek alkalmazásának konfigurálása  
 
-A **Matematikai művelet alkalmazása** modulhoz olyan adatkészletszükséges, amely legalább egy, csak számokat tartalmazó oszlopot tartalmaz. A számok lehetnek diszkrétek vagy folytonosak, de numerikus adattípusúaknak kell lenniük, nem karakterláncnak.
+A **matematikai művelet alkalmazása** modulhoz olyan adatkészlet szükséges, amely legalább egy olyan oszlopot tartalmaz, amely csak számokat tartalmaz. A számok lehetnek különállóak vagy folyamatosak, de numerikus adattípusnak kell lennie, nem sztringnek.
 
-Ugyanazt a műveletet több numerikus oszlopra is alkalmazhatja, de minden oszlopnak ugyanabban az adatkészletben kell lennie. 
+Ugyanezt a műveletet több numerikus oszlopra is alkalmazhatja, de az összes oszlopnak ugyanabban az adatkészletben kell lennie. 
 
-A modul minden példánya egyszerre csak egy művelettípust hajthat végre. Összetett matematikai műveletek végrehajtásához szükség lehet a **Matematikai művelet alkalmazása** modul több példányának összeláncolnia.  
+A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajtani. Összetett matematikai műveletek elvégzéséhez előfordulhat, hogy a **matematikai műveleti modul alkalmazása** több példányát is össze kell láncolva.  
   
-1.  Adja hozzá a **Matematikai művelet alkalmazása** modult a folyamathoz.
+1.  Adja hozzá a **matematikai műveleti modul alkalmazása** a folyamathoz lehetőséget.
 
-1. Legalább egy numerikus oszlopot tartalmazó adatkészlet összekapcsolása.  
+1. Csatlakoztasson egy olyan adatkészletet, amely legalább egy numerikus oszlopot tartalmaz.  
 
-1.  Jelöljön ki egy vagy több forrásoszlopot, amelyen a számítást végre szeretné hajtani.   
+1.  Válasszon ki egy vagy több olyan oszlopot, amelyen végre szeretné hajtani a számítást.   
   
-    - A kiválasztott oszlopoknak numerikus adattípusnak kell lenniük. 
-    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény léphet fel. Az Ln(-1.0) érték például érvénytelen művelet, amelynek `NaN`értéke .
+    - Bármely kiválasztott oszlopnak numerikus adattípusnak kell lennie. 
+    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a következő értéket eredményezi: `NaN`.
   
-1.  Kattintson a **Kategória** gombra a végrehajtandó matematikai művelet **típusának** kiválasztásához.
+1.  Kattintson a **category (kategória** ) elemre a végrehajtandó matematikai művelet **típusának** kiválasztásához.
     
-1. Válasszon ki egy adott műveletet az adott kategória listájából.
+1. Válasszon egy adott műveletet a Kategória listából.
   
-1.  Az egyes művelettípusokhoz szükséges további paraméterek beállítása.  
+1.  Adja meg az egyes műveletek által igényelt további paramétereket.  
   
-1.  A **Kimeneti mód** beállítással jelezheti, hogyan szeretné létrehozni a matematikai műveletet: 
+1.  A **kimeneti mód** beállítással jelezze, hogyan kívánja létrehozni a matematikai műveletet: 
 
-    - **Fűzés .** A bemenetként használt összes oszlop szerepel a kimeneti adatkészletben, és egy további oszlop hozzáfűzve, amely tartalmazza a matematikai művelet eredményeit.
-    - **Helyben.** A bemenetként használt oszlopok értékeit a program az új számított értékekre cseréli. 
-    - **ResultOnly**. A program egyetlen oszlopot ad vissza, amely a matematikai művelet eredményeit tartalmazza.
+    - **Hozzáfűzés**. Az összes bemenetként használt oszlop szerepel a kimeneti adatkészletben, valamint egy további oszlop is, amely a matematikai művelet eredményét tartalmazza.
+    - **Helyben**. A bemenetként használt oszlopokban szereplő értékeket az új számított értékekkel helyettesíti a rendszer. 
+    - **ResultOnly**. A rendszer egyetlen oszlopot ad vissza, amely a matematikai művelet eredményét tartalmazza.
   
-1.  Küldje el a folyamatot.  
+1.  A folyamat elküldése.  
   
 ## <a name="results"></a>Results (Eredmények)
 
-Ha az eredményeket a **Hozzáfűzés** vagy az **Eredménycsak** beállítással hozza létre, a visszaadott adatkészlet oszlopfejlécei jelzik a műveletet és a használt oszlopokat. Ha például két oszlopot hasonlít össze az **Egyenlő operátorral,** az eredmények a következőkre néznek ki:  
+Ha a **Hozzáfűzés** vagy a **ResultOnly** lehetőség használatával hoz eredményt, a visszaadott adatkészlet oszlopai a művelet és a használt oszlopok láthatók. Ha például összehasonlítja két oszlopot az **EQUAL** operátor használatával, az eredmények a következőképpen néznek ki:  
   
--   **Egyenlő(Col2_Col1)** érték, jelezve, hogy a Col2-t col1 ellen tesztelte.  
--   **Egyenlő (Col2_10 $),** ami azt jelzi, hogy a 2.  
+-   **Egyenlő (Col2_Col1)**, amely azt jelzi, hogy tesztelte a Col2 a Col1.  
+-   **Egyenlő (Col2_ $10)**, amely azt jelzi, hogy a 2. oszlopot összehasonlítja a konstans 10 értékkel.  
 
-Még ha az **Inplace opciót** is használja, a forrásadatok nem törlődnek vagy módosulnak; az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatok megtekintéséhez csatlakoztassa az [Oszlopok hozzáadása](add-columns.md) modult, és csatlakoztassa őket a Matematikai **művelet alkalmazása**kimenetéhez.  
+A forrásadatok nem törlődnek és nem módosulnak, még akkor is, ha a **inplace** kapcsolót használja. az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
     
-## <a name="basic-math-operations"></a>Alapvető matematikai műveletek 
+## <a name="basic-math-operations"></a>Alapszintű Matematikai műveletek 
 
-**Az Alap** kategóriában lévő függvények általában egyetlen értéket vesznek fel egy oszlopból, végrehajtják az előre definiált műveletet, és egyetlen értéket adnak vissza. Egyes függvények esetében második argumentumként megadhat egy állandót vagy egy oszlopkészletet.  
+Az **alapszintű** kategóriában lévő függvények általában egyetlen értéket foglalnak egy oszlopból, végrehajtják az előre meghatározott műveletet, és egyetlen értéket adnak vissza. Egyes függvények esetében megadhat egy állandót vagy egy oszlopot, amely második argumentumként van beállítva.  
   
- Az Azure Machine Learning a következő függvényeket támogatja az **Alapszintű** kategóriában:  
+ A Azure Machine Learning az **alapszintű** kategóriában a következő függvényeket támogatja:  
 
 ### <a name="abs"></a>Abs
 
-A kijelölt oszlopok abszolút értékét adja eredményül.  
+A kijelölt oszlopok abszolút értékét adja vissza.  
   
 ### <a name="atan2"></a>Atan2
 
-Négykvadráns-inverz érintőt ad eredményül.  
+Egy négy íves, inverz tangenset ad vissza.  
 
-Jelölje ki a pontkoordinátákat tartalmazó oszlopokat. A második argumentumhoz, amely az x koordinátának felel meg, állandót is megadhat.  
+Válassza ki a pont koordinátáit tartalmazó oszlopokat. A második argumentumhoz, amely az x-koordináta értéknek felel meg, állandó is megadható.  
 
-Megfelel a Matlab ATAN2 függvényének.  
+Megfelel a ATAN2 függvénynek a MATLAB-ben.  
 
-### <a name="conj"></a>Conj között
+### <a name="conj"></a>Conj
 
-A kijelölt oszlop ban lévő értékek konjugátumát adja eredményül.  
+A kijelölt oszlopban lévő értékek konjugáltját adja vissza.  
 
-### <a name="cuberoot"></a>Kockagyökér
+### <a name="cuberoot"></a>CubeRoot
 
-Kiszámítja a kockagyökeret a kijelölt oszlop értékeihez.  
+Kiszámítja a kocka gyökerét a kijelölt oszlopban lévő értékeknél.  
 
-### <a name="doublefactorial"></a>DoubleFactorial között  
- Kiszámítja a kijelölt oszlop ban lévő értékek kettős faktoriálisát. A kettős faktoriális a normál faktoriális funkció kiterjesztése, és x-ként jelölik!!.  
+### <a name="doublefactorial"></a>DoubleFactorial  
+ Kiszámítja a kijelölt oszlopban lévő értékek dupla faktoriálisát. A Double faktoriálisát a normál faktoriálisát-függvény kiterjesztése, és az x!!. jelöli.  
 
-### <a name="eps"></a>Eps
+### <a name="eps"></a>EPS
 
-Az aktuális érték és a következő legmagasabb, kétszeres pontosságú szám közötti rés méretét adja eredményül. Megfelel a Matlab EPS funkciójának.  
+Az aktuális érték és a következő legmagasabb, kétszeres pontosságú szám közötti hézag méretét adja vissza. Megfelel a MATLAB EPS-függvényének.  
   
 ### <a name="exp"></a>Exp
 
-A kijelölt oszlopban lévő érték teljesítményére emelt e értéket adja vissza. Ez megegyezik az Excel EXP függvénnyel.  
+Az e értéket adja vissza a kijelölt oszlopban lévő érték hatványára. Ez ugyanaz, mint az Excel EXP függvény.  
 
 ### <a name="exp2"></a>Exp2
 
-Az argumentumok 2.-es alapértékét adja eredményül, az y = x * 2<sup>t</sup> értéket megoldva, ahol t a kitevőket tartalmazó értékek oszlopa.  
+Az argumentumok alap-2 exponenciális értékét adja vissza, amely az y = x * 2<sup>t</sup> , ahol a t a kitevőket tartalmazó értékek oszlopa.  
 
-Az **Oszlopkészletben**jelölje ki a t kitevő értékeket tartalmazó oszlopot.
+Az **oszlop beállítása**területen válassza ki azt az oszlopot, amely a kitevő értékeit tartalmazza (t).
 
-**Az Exp2** esetében megadhat egy második x argumentumot, amely lehet állandó vagy másik értékoszlop. A **Második argumentum típusa mezőben**adja meg, hogy az x szorzót állandóként, vagy oszlopban lévő értéket ad-e meg.  
+A **Exp2** esetében megadhat egy második argumentum x értéket, amely lehet konstans vagy más oszlop is. A **második argumentum típusa mezőben**adja meg, hogy az x szorzót állandóként vagy egy oszlopban lévő értékként adja meg.  
 
-Ha például kiválaszt egy oszlopot, amely mind a szorzó, mind a kitevő értékeit {0,1,2,3,4,5} bejelöli, a függvény {0, 2, 8, 24, 64 160 értéket ad eredményül.  
+Ha például kijelöl egy oszlopot a szorzó és a kitevő {0,1,2,3,4,5} értékével együtt, a függvény {0, 2, 8, 24, 64 160) értéket ad vissza.  
 
 ### <a name="expminus1"></a>ExpMinus1 
 
-A kijelölt oszlop értékeinek negatív kitevőjének értékét adja eredményül.  
+A kijelölt oszlopban szereplő értékek negatív kitevőjét adja vissza.  
 
 ### <a name="factorial"></a>Faktoriális
-A kijelölt oszlop értékeinek faktoriálisát adja eredményül.  
+A kijelölt oszlopban lévő értékek faktoriálisát adja vissza.  
 
-### <a name="hypotenuse"></a>Hipotenzis
-Kiszámítja egy háromszög hipotenzusait, amelyben az egyik oldal hossza értékoszlopként van megadva, a második oldal hossza pedig állandóként vagy két oszlopként van megadva.  
+### <a name="hypotenuse"></a>Átfogó
+Kiszámítja egy olyan háromszög átfogó, amelyben az egyik oldalon az értékek oszlopa van megadva, a második oldal hossza pedig állandó vagy két oszlopként van megadva.  
 
 ### <a name="ln"></a>Természetes logaritmus
 
-A kijelölt oszlop ban lévő értékek természetes logaritmusát adja eredményül.  
+A kijelölt oszlopban lévő értékek természetes alapú logaritmusát adja vissza.  
 
 ### <a name="lnplus1"></a>LnPlus1
 
-A kijelölt oszlopban lévő értékek hez a természetes logaritmust és egy értéket adja eredményül.  
+A természetes logaritmust, valamint a kijelölt oszlopban lévő értékek egyikét adja vissza.  
 
 ### <a name="log"></a>Napló
 
-A kijelölt oszlopban lévő értékek naplóját adja eredményül a megadott alapot adva.  
+A kijelölt oszlopban szereplő értékek naplóját adja vissza a megadott alap alapján.  
 
-Az alapot (a második argumentumot) állandóként vagy egy másik értékoszlop kijelölésével adhatja meg.  
+Megadhatja az alapot (a második argumentumot) állandóként, vagy egy másik oszlop értékének kiválasztásával.  
 
 ### <a name="log10"></a>Log10
 
-A kijelölt oszlop 10 logaritmusértékét adja eredményül.  
+A kijelölt oszlop 10-es alapú logaritmusának értékeit adja vissza.  
 
 ### <a name="log2"></a>Log2
 
-A kijelölt oszlop 2 logaritmus-értékét adja eredményül.  
+A kijelölt oszlophoz tartozó 2. alap logaritmus értékeit adja vissza.  
 
 ### <a name="nthroot"></a>NthRoot
-Az érték n-edik gyökerét adja eredményül a megadott n használatával.  
+Az érték n/s gyökerét adja vissza, amely a megadott n értéket használja.  
 
-A **ColumnSet** beállítással jelölje ki azokat az oszlopokat, amelyekből ki szeretné számítani a gyökeret.  
+Válassza ki azokat az oszlopokat, amelyekhez a gyökeret szeretné kiszámítani a **ColumnSet** beállítás használatával.  
 
-A **Második argumentum típusa mezőben**jelöljön ki egy másik oszlopot, amely a gyökeret tartalmazza, vagy adjon meg egy állandót, amelyet gyökérként szeretne használni.  
+A **második argumentum típusa**mezőben válasszon egy másik oszlopot, amely tartalmazza a gyökeret, vagy adjon meg egy állandót, amelyet gyökérként kíván használni.  
 
-Ha a második argumentum oszlop, akkor az oszlop minden értéke n értékként lesz használva a megfelelő sorhoz. Ha a második argumentum állandó, írja be az n értékét a **Második argumentum** mezőbe.
+Ha a második argumentum egy oszlop, a rendszer az oszlopban szereplő összes értéket használja az n értékként a megfelelő sorhoz. Ha a második argumentum állandó, írja be az n értéket a **második argumentum** szövegmezőbe.
 ### <a name="pow"></a>Pow
 
-Kiszámítja az Y hathatósteljesítményére emelt X-et a kijelölt oszlop ban szereplő értékek mindegyikére.  
+Kiszámítja az X értékét a kijelölt oszlop egyes értékeinek Y teljesítményére.  
 
-Először jelölje ki az okat az oszlopokat, amelyek az **alapot**tartalmazzák , amelynek úszónak kell lennie a **ColumnSet** beállítással.  
+Először válassza ki azokat az oszlopokat, amelyek a **ColumnSet** beállítás használatával lebegőpontos **alapot**tartalmaznak.  
 
-A **Második argumentum típusa mezőben**jelölje ki a kitevőt tartalmazó oszlopot, vagy adjon meg egy állandót, amelyet kitevőként szeretne használni.  
+A **második argumentum típusa**mezőben válassza ki a kitevőt tartalmazó oszlopot, vagy adjon meg egy konstanst, amelyet kitevőként kíván használni.  
 
-Ha a második argumentum oszlop, akkor az oszlop minden egyes értéke lesz a megfelelő sor kitevője. Ha a második argumentum állandó, írja be a kitevő értékét a **Második argumentum** mezőbe.  
+Ha a második argumentum egy oszlop, a rendszer az oszlopban szereplő összes értéket használja a megfelelő sor kitevője. Ha a második argumentum állandó, írja be a kitevő értékét a **második argumentum** szövegmezőbe.  
 
 ### <a name="sqrt"></a>Sqrt
 
-A kijelölt oszlop értékeinek négyzetgyökét adja eredményül.  
+A kijelölt oszlopban lévő értékek négyzet gyökerét adja vissza.  
 
 ### <a name="sqrtpi"></a>SqrtPi
 
-A kijelölt oszlop minden egyes értékéhez megszorozza az értéket pi-vel, majd visszaadja az eredmény négyzetgyökét.  
+A kijelölt oszlopban lévő minden értéknél szorozza meg az értéket PI-vel, majd az eredmény négyzet gyökerét adja vissza.  
 
 ### <a name="square"></a>Square
 
-A kijelölt oszlop értékeit négyzetek.  
+A kijelölt oszlopban lévő értékek négyzeteit jelöli.  
 
-## <a name="comparison-operations"></a>Összehasonlító műveletek  
+## <a name="comparison-operations"></a>Összehasonlítási műveletek  
 
-Az Azure Machine Learning tervezőben bármikor használhatja az összehasonlító függvényeket, amelyek két értékhalmazt tesztelnek egymás ellen. Előfordulhat például, hogy egy folyamatban a következő összehasonlítási műveleteket kell végeznie:  
+A Azure Machine Learning Designerben használja az összehasonlító függvényeket bármikor, amikor két érték tesztelését kell végezni egymásra. Például egy folyamat esetében szükség lehet az alábbi összehasonlítási műveletek elvégzésére:  
 
-- A valószínűségi pontszámok modell oszlopának kiértékelése egy küszöbértékhez.
-- Határozza meg, hogy két eredményhalmaz azonos-e. Minden különböző sorhoz adjon hozzá egy HAMIS jelzőt, amely további feldolgozáshoz vagy szűréshez használható.  
+- Értékelje ki a valószínűség pontszám-modell oszlopát egy küszöbérték alapján.
+- Állapítsa meg, hogy az eredmények két készlete azonos-e. Minden különböző sor esetében adjon hozzá egy hamis jelzőt, amely további feldolgozáshoz vagy szűréshez használható.  
 
-### <a name="equalto"></a>Egyenlő
+### <a name="equalto"></a>EqualTo
 
-Igaz értéket ad vissza, ha az értékek megegyeznek.  
+Igaz értéket ad vissza, ha az értékek azonosak.  
 
 ### <a name="greaterthan"></a>GreaterThan
 
-Igaz értéket ad vissza, ha az **Oszlopkészlet** értékei nagyobbak, mint a megadott állandó, vagy nagyobbak, mint az összehasonlító oszlopmegfelelő értékei.  
+Igaz értéket ad eredményül, ha a **készletben** lévő értékek nagyobbak a megadott konstansnál, vagy nagyobbak, mint a megfelelő értékek az összehasonlítás oszlopban.  
 
-### <a name="greaterthanorequalto"></a>Greaterthanorequalto között
+### <a name="greaterthanorequalto"></a>GreaterThanOrEqualTo
 
-Igaz értéket ad vissza, ha az **Oszlopkészlet** értékei nagyobbak vagy egyenlők a megadott állandóval, vagy nagyobbak vagy egyenlők az összehasonlító oszlop megfelelő értékeivel.  
+Igaz értéket ad vissza, ha a **készletben** lévő értékek nagyobbak vagy egyenlőek a megadott állandóval, vagy nagyobbak vagy egyenlőek az összehasonlítás oszlopban szereplő megfelelő értékekkel.  
 
 ### <a name="lessthan"></a>LessThan
 
-Igaz értéket ad vissza, ha az **Oszlopkészlet** értékei kisebbek, mint a megadott állandó, vagy kisebbek, mint az összehasonlító oszlopmegfelelő értékei.  
+Igaz értéket ad eredményül, ha a **készletben** lévő értékek kisebbek a megadott konstansnál, vagy kisebbek, mint az összehasonlítás oszlopban lévő megfelelő értékek.  
   
-### <a name="lessthanorequalto"></a>lessthanorequalto
+### <a name="lessthanorequalto"></a>LessThanOrEqualTo
 
-Igaz értéket ad vissza, ha az **Oszlopkészlet** értékei kisebbek vagy egyenlők a megadott állandóval, vagy kisebbek vagy egyenlőek az összehasonlító oszlop megfelelő értékeivel.  
+Igaz értéket ad vissza, ha a **készletben** lévő értékek értéke kisebb vagy egyenlő, mint a megadott konstans, vagy kisebb vagy egyenlő, mint az összehasonlító oszlop megfelelő értékei.  
 
-### <a name="notequalto"></a>Notequalto között
+### <a name="notequalto"></a>NotEqualTo
 
-Igaz értéket ad vissza, ha az **Oszlopkészlet** értékei nem egyeznek meg az állandó vagy összehasonlító oszloppal, és hamis értéket ad vissza, ha egyenlőek.  
+Igaz értéket ad vissza, ha a **készletben** lévő értékek nem egyenlőek az állandó vagy az összehasonlító oszlop értékével, és hamis értéket adnak vissza, ha egyenlőek.  
 
-### <a name="pairmax"></a>PárosításMax
+### <a name="pairmax"></a>PairMax
 
-A nagyobb értéket adja eredményül – az **Oszlopkészlet** értékét vagy az állandó vagy összehasonlító oszlop értékét.  
+A nagyobb értéket adja vissza – az **oszlop** értékét vagy az állandó vagy összehasonlító oszlop értékét.  
 
-### <a name="pairmin"></a>PárMin
+### <a name="pairmin"></a>PairMin
 
-A kisebb értéket adja eredményül – az **Oszlopkészlet** értékét vagy az állandó vagy összehasonlító oszlop értékét.  
+A kisebb értéket adja vissza – a **készletben** lévő értéket vagy az állandó vagy összehasonlító oszlop értékét.  
   
 ##  <a name="arithmetic-operations"></a>Aritmetikai műveletek   
 
-Tartalmazza az alapvető aritmetikai műveleteket: összeadás és kivonás, osztás és szorzás.  Mivel a legtöbb művelet bináris, két számot igényel, először ki kell választania a műveletet, majd ki kell választania az első és a második argumentumban használni kívánt oszlopot vagy számokat.
+Az alapszintű aritmetikai műveleteket tartalmazza: összeadás és kivonás, osztás és szorzás.  Mivel a legtöbb művelet bináris, két számot igényel, először válassza ki a műveletet, majd válassza ki az első és második argumentumban használni kívánt oszlopot vagy számokat.
 
-A felosztás és kivonás oszlopainak sorrendje ösztönellenesnek tűnhet; az eredmények megértésének megkönnyítése érdekében azonban az oszlopfejléc megadja a művelet nevét és az oszlopok használatának sorrendjét.
+A felosztás és a kivonás oszlopainak kiválasztásának sorrendje a következő lehet: megszokás; Ahhoz azonban, hogy könnyebb legyen megérteni az eredményeket, az oszlop fejléce megadja a művelet nevét, valamint azt a sorrendet, amelyben az oszlopok használták.
 
-Művelet|Szám1|Szám2|Eredmény oszlop|Eredmény értéke|
+Művelet|Num1|Num2|Eredmény oszlop|Eredmény értéke|
 ----|----|----|----|----
-|Összeadás|1|5|Hozzáadás(Num2_Num1)| 4|
-|Szorzás|1|5|Többszörös(Num2_Num1)|5|
-|Kivonás|1|5|Kivonás(Num2_Num1)|4|
-|Kivonás|0|1|Kivonás(Num2_Num1)|0|
-|Osztás|1|5|Osztás(Num2_Num1)|5|
-|Osztás|0|1|Osztás(Num2_Num1)|Végtelen|
+|Összeadás|1|5|Hozzáadás (Num2_Num1)| 4|
+|Szorzás|1|5|Több (Num2_Num1)|5|
+|Kivonás|1|5|Kivonás (Num2_Num1)|4|
+|Kivonás|0|1|Kivonás (Num2_Num1)|0|
+|Osztás|1|5|Osztás (Num2_Num1)|5|
+|Osztás|0|1|Osztás (Num2_Num1)|Végtelen|
 
 ### <a name="add"></a>Hozzáadás
 
-Adja meg a forrásoszlopokat az **Oszlopkészlet**segítségével, majd adjon hozzá ezekhez az értékekhez a **Második argumentumban**megadott számot.  
+Adja meg a forrás oszlopokat a **set oszlop**használatával, majd adja hozzá azokat az értékeket a **második argumentumban**megadott számú értékhez.  
 
-Ha két oszlopban szeretné hozzáadni az értékeket, válasszon egy oszlopot vagy oszlopokat **az Oszlopkészlet**használatával, majd válasszon egy második oszlopot a **Második argumentum**használatával.  
+Ha két oszlopban szeretné felvenni az értékeket, válasszon ki egy oszlopot vagy oszlopot az **oszlop készlet**használatával, majd válasszon egy második oszlopot a **második argumentum**használatával.  
 
 ### <a name="divide"></a>Osztás
 
-Az Oszlop ban **megadott** értékeket állandóval vagy a **Második argumentumban**megadott oszlopértékekkel osztja el.  Más szóval, először az osztót választod, majd az osztalékot. A kimeneti érték a hányados.
+Az **oszlop** értékeit állandó vagy a **második argumentumban**definiált oszlopok értékei alapján osztja el.  Más szóval először az osztót kell kiválasztani, majd az osztalékot. A kimeneti érték a hányados.
 
 ### <a name="multiply"></a>Szorzás
 
-Megszorozza az **Oszlopban megadott** értékeket a megadott állandó vagy oszlopértékekkel.  
+A megadott konstans vagy oszlop értékeit tartalmazó oszlop értékeinek szorzatát **adja meg** .  
 
 ### <a name="subtract"></a>Kivonás
 
-Adja meg a működéshez használt értékek oszlopát (a *minuendet*), ha egy másik oszlopot választ az **Oszlopkészlet beállítással.** Ezután adja meg a kivonni kívánt számot (a *kimondott*számot) a **Második argumentum** legördülő lista segítségével. Választhat egy állandó vagy oszlop érték.
+Adja meg a működéshez használni kívánt értékek oszlopát (a *kisebbítendőt*) egy másik oszlop kiválasztásával az **oszlop beállítása** beállítással. Ezután adja meg a kivonni kívánt számot (a *kivonandó*) a **második argumentum** legördülő lista használatával. Kiválaszthatja az értékek állandó vagy oszlopát is.
 
 ##  <a name="rounding-operations"></a>Kerekítési műveletek 
 
-Az Azure Machine Learning tervezője számos kerekítési műveletet támogat. Számos művelet esetén meg kell adnia a kerekítéshez használandó pontosság ot. Használhat egy állandóként megadott statikus pontossági szintet, vagy alkalmazhat egy értékoszlopból kapott dinamikus pontossági értéket.  
+A Azure Machine Learning Designer számos kerekítési műveletet támogat. Számos művelet esetében meg kell adnia a kerekítéskor használandó pontosság mértékét. Használhat állandóként megadott statikus pontossági szintet, vagy az értékek oszlopaiból beszerzett dinamikus pontossági értéket is alkalmazhat.  
 
-- Ha állandót használ, állítsa a **Pontosság típusa** értékre **Állandó,** majd írja be a számjegyek számát egész számként az **Állandó pontosság** szövegmezőbe. Ha nem egész számra ír, a modul nem okoz hibát, de az eredmények váratlanok lehetnek.  
+- Ha állandót használ, állítsa a **pontosság típusát** **állandó** értékre, majd írja be a számjegyek számát egész számként az **állandó pontosság** szövegmezőbe. Ha nem egész számot állít be, a modul nem eredményez hibát, de az eredmények váratlanok lehetnek.  
 
-- Ha az adatkészlet minden egyes sorához más pontosságú értéket szeretne használni, állítsa a **Pontosság típusa** értéket **ColumnSet**értékre, majd válassza ki a megfelelő pontossági értékeket tartalmazó oszlopot.  
+- Ha más pontossági értéket szeretne használni az adatkészlet minden sorához, állítsa a **pontosság típusát** **ColumnSet**értékre, majd válassza ki a megfelelő pontossági értékeket tartalmazó oszlopot.  
 
 ### <a name="ceiling"></a>Ceiling
 
-Az Oszlopkészlet értékeinek **plafonát adja eredményül.**  
+Az **oszlop**értékeinek felső határát adja vissza.  
 
-### <a name="ceilingpower2"></a>Mennyezeti teljesítmény2
+### <a name="ceilingpower2"></a>CeilingPower2
 
-Az Oszlopkészlet értékeinek négyzetes **mennyezetét adja eredményül.**  
+Az **oszlop**értékeinek négyzetes felső határát adja vissza.  
 
 ### <a name="floor"></a>Floor
 
-Az **Oszlopkészlet**értékeinek padlóját adja vissza a megadott pontossággal.  
+A megadott pontosságú **oszlop**értékeinek a padlóját adja vissza.  
 
 ### <a name="mod"></a>Mod
 
-Az Oszlopkészlet értékeinek törtrészét adja **eredményül**a megadott pontossággal.  
+A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
 
 ### <a name="quotient"></a>Hányados
 
-Az Oszlopkészlet értékeinek törtrészét adja **eredményül**a megadott pontossággal.  
+A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
 
 ### <a name="remainder"></a>Fennmaradó
 
-Az Oszlopkészlet értékeinek maradékát adja **eredményül.**  
+Az **oszlop**értékeinek maradékát adja vissza.  
 
-### <a name="rounddigits"></a>Kerek számok
+### <a name="rounddigits"></a>RoundDigits
 
-Az Oszlopkészlet értékeit adja **vissza,** amelyet a 4/5 szabály kerekít a megadott számjegyszámra kerekítve.  
+A megadott számú számjegyre kerekítve adja vissza az **oszlop**értékeit az 4/5-szabály alapján.  
 
 ### <a name="rounddown"></a>RoundDown
 
-Az Oszlopkészlet értékeit adja **vissza,** lefelé kerekítve a megadott számjegyek re.  
+A **beállított oszlopban**szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
 
 ### <a name="roundup"></a>RoundUp
 
-Az **Oszlopkészlet**értékeit adja eredményül, a megadott számjegyszámra felfelé kerekítve.  
+A **beállított oszlopban**szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
 
-### <a name="toeven"></a>ToEven között
+### <a name="toeven"></a>ToEven
 
-Az **Oszlopkészlet**értékeit adja eredményül, a legközelebbi egész, páros számra kerekítve.  
+A **beállított oszlopban**szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
 
-### <a name="toodd"></a>Toodd között
+### <a name="toodd"></a>ToOdd
 
-Az **Oszlopkészlet**értékeit adja eredményül, a legközelebbi egész, páratlan számra kerekítve.  
+A **beállított oszlopban**szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
 
 ### <a name="truncate"></a>Truncate
 
-Csonkolja az Oszlop **készletben megadott** értékeket úgy, hogy eltávolítja a megadott pontosság által nem engedélyezett összes számjegyet.  
+A megadott pontosság által nem engedélyezett összes számjegy eltávolításával csonkolja az **oszlop** értékeit.  
   
 ## <a name="special-math-functions"></a>Speciális matematikai függvények
 
-Ez a kategória az adatelemzésben gyakran használt speciális matematikai függvényeket tartalmazza. Ha nincs más feltüntetve, a függvény nem számít, és a kijelölt oszlop ban vagy oszlopokban szereplő egyes értékekre megadott számítást adja vissza.  
+Ez a kategória olyan speciális matematikai függvényeket tartalmaz, amelyek gyakran használják az adatelemzést. Ha másként nincs jelezve, a függvény egyoperandusú, és a kijelölt oszlopban vagy oszlopokban szereplő értékek esetében a megadott számítást adja vissza.  
 
 ### <a name="beta"></a>Beta
 
-Euler bétafüggvényének értékét adja eredményül.  
+A Euler Beta függvényének értékét adja vissza.  
 
 ### <a name="ellipticintegrale"></a>EllipticIntegralE
-A hiányos elliptikus integrál értékét adja eredményül.  
+A nem teljes elliptikus szerves érték értékét adja vissza.  
   
 
 ### <a name="ellipticintegralk"></a>EllipticIntegralK
 
-A teljes elliptikus integrál (K) értékét adja eredményül.  
+A teljes elliptikus szerves (K) értékének beolvasása.  
 
-### <a name="erf"></a>Erf
+### <a name="erf"></a>ERF
 
-A hibafüggvény értékét adja eredményül.  
+A Error függvény értékét adja vissza.  
 
-A hibafüggvény (más néven Gauss hibafüggvény) a szigmoid alakzat egy speciális függvénye, amelyet a diffúzió leírására használnak.  
+A Error függvény (más néven a Gauss Error függvény) a szigmabél alakzat egy speciális funkciója, amely a diffúzió leírására szolgál.  
 
-### <a name="erfc"></a>Erfc között
+### <a name="erfc"></a>ERFC
 
-A kiegészítő hibafüggvény értékét adja eredményül.  
+A kiegészítő hiba funkció értékét adja vissza.  
 
-Az Erfc meghatározása: 1 – erf(x).  
+A ERFC 1 – EMA (x) értékkel van definiálva.  
 
-### <a name="erfscaled"></a>ErfScaled között
+### <a name="erfscaled"></a>ErfScaled
 
-A méretezett hibafüggvény értékét adja eredményül.  
+A méretezett hiba függvény értékét adja vissza.  
 
-A hibafüggvény méretezett változata a számtani alulfolyás elkerülésére használható.  
+A Error függvény méretezett verziója használható az aritmetikai folyamat elkerüléséhez.  
 
 ### <a name="erfinverse"></a>ErfInverse
 
-Az inverz erf függvény értékét adja eredményül.  
+A inverz EMA függvény értékét adja vissza.  
 
-### <a name="exponentialintegralein"></a>Exponenciális IntegralEin
+### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 
-Az Exponenciális Ei integrál értékét adja eredményül.  
+Az exponenciális szerves ei értékét adja vissza.  
 
 ### <a name="gamma"></a>Gamma
 
-A gamma függvény értékét adja eredményül.  
+A gamma függvény értékét adja vissza.  
 
-### <a name="gammaln"></a>GammaLn között
+### <a name="gammaln"></a>GammaLn
 
-A gamma függvény természetes logaritmusát számítja ki.  
+A gamma függvény természetes alapú logaritmusát adja vissza.  
 
 ### <a name="gammaregularizedp"></a>GammaRegularizedP
 
-A szabályosan izált gammafüggvény értékét adja eredményül.  
+A szabályos, hiányos gamma függvény értékét adja vissza.  
 
-Ez a függvény egy második argumentumot vesz fel, amely állandóként vagy értékoszlopként is megadható.  
+Ez a függvény egy második argumentumot vesz igénybe, amely akár állandóként, akár értékek oszlopaiként is megadható.  
 
-### <a name="gammaregularizedpinverse"></a>GammaRegularizedPInverzum
+### <a name="gammaregularizedpinverse"></a>GammaRegularizedPInverse
 
-Az inverz regisztereizált inverz gamma függvény értékét adja eredményül.  
+Az inverz, szabályos, hiányos gamma függvény értékét adja vissza.  
 
-Ez a függvény egy második argumentumot vesz fel, amely állandóként vagy értékoszlopként is megadható.  
+Ez a függvény egy második argumentumot vesz igénybe, amely akár állandóként, akár értékek oszlopaiként is megadható.  
 
 ### <a name="gammaregularizedq"></a>GammaRegularizedQ  
 
-A szabályosan izált gammafüggvény értékét adja eredményül.  
+A szabályos, hiányos gamma függvény értékét adja vissza.  
 
-Ez a függvény egy második argumentumot vesz fel, amely állandóként vagy értékoszlopként is megadható.  
+Ez a függvény egy második argumentumot vesz igénybe, amely akár állandóként, akár értékek oszlopaiként is megadható.  
 
-### <a name="gammaregularizedqinverse"></a>GammaRegularizedQInververzum
+### <a name="gammaregularizedqinverse"></a>GammaRegularizedQInverse
 
-Az inverz generalizált inverz izált incomplete gamma függvény értékét adja eredményül.
+Az inverz általánosított, hiányos gamma-függvény értékét adja vissza.
 
-Ez a függvény egy második argumentumot vesz fel, amely állandóként vagy értékoszlopként is megadható.  
+Ez a függvény egy második argumentumot vesz igénybe, amely akár állandóként, akár értékek oszlopaiként is megadható.  
 
-### <a name="polygamma"></a>PolyGamma (poligamma)
+### <a name="polygamma"></a>Multigamma
 
-A poligamma függvény értékét számítja ki.  
+A multigamma függvény értékét adja vissza.  
 
-Ez a függvény egy második argumentumot vesz fel, amely állandóként vagy értékoszlopként is megadható.
+Ez a függvény egy második argumentumot vesz igénybe, amely akár állandóként, akár értékek oszlopaiként is megadható.
 
 ##  <a name="trigonometric-functions"></a>Trigonometriai függvények 
 
-Ez a kategória tartalmazza a legtöbb fontos trigonometriai és inverz trigonometriai függvények. Minden trigonometriai függvény nem számít, és nem igényel további argumentumokat.  
+Ez a kategória a legfontosabb trigonometriai és inverz trigonometriai függvények többségét iIncludes. Minden trigonometriai függvény egyoperandusú, és nem igényel további argumentumokat.  
 
 ### <a name="acos"></a>Acos
 
-Kiszámítja az oszlopértékek arkózus értékét.  
+Kiszámítja a szám arkusz koszinuszát az oszlop értékeihez.  
 
 ### <a name="acosdegree"></a>AcosDegree
 
-Kiszámítja az oszlopértékek arkkózusát fokban.  
+Kiszámítja az oszlopok értékeinek szám arkusz koszinuszát fokban megadva.  
 
-### <a name="acosh"></a>Acosh között
+### <a name="acosh"></a>ACOSH
 
-Kiszámítja az oszlopértékek arkikus arkuszkinuszát.  
+Kiszámítja az oszlop értékeinek hiperbolikus szám arkusz koszinuszát.  
 
 ### <a name="acot"></a>Acot
 
-Kiszámítja az oszlopértékek arkuszkotansát.  
+Kiszámítja az oszlopok értékeinek kotangensének sajátértékét.  
 
-### <a name="acotdegrees"></a>Acot Fokok
+### <a name="acotdegrees"></a>AcotDegrees
 
-Kiszámítja az oszlopértékek arkuszkotansát fokban.  
+Kiszámítja az oszlopok értékeinek kotangensének sajátértékét fokban megadva.  
 
-### <a name="acoth"></a>Acoth között
+### <a name="acoth"></a>Acoth
 
-Kiszámítja az oszlopértékek arkusz konkutangens hiperbolikuszát.  
+Kiszámítja az oszlop értékeinek hiperbolikus kotangensének sajátértékét.  
 
-### <a name="acsc"></a>Acsc között
+### <a name="acsc"></a>ASCs
 
-Kiszámítja az oszlopértékek ívkodottát.  
+Kiszámítja az oszlopok értékeinek arccosecant.  
 
-### <a name="acscdegrees"></a>AcscFok
+### <a name="acscdegrees"></a>AcscDegrees
 
-Kiszámítja az oszlopértékek ívkodottát fokban.  
-### <a name="asec"></a>Asec
+Kiszámítja az oszlopok értékeinek arccosecant fokban megadva.  
+### <a name="asec"></a>ASec
 
-Kiszámítja az oszlopértékek ívsesztelitását.  
+Kiszámítja az oszlopok értékeinek arcsecant.  
 
-### <a name="asecdegrees"></a>AsecFokok
+### <a name="asecdegrees"></a>AsecDegrees
 
-Kiszámítja az oszlopértékek íveskántását fokokban.  
+Kiszámítja az oszlopok értékeinek arcsecant fokban megadva.  
 
-### <a name="asech"></a>Asech között
+### <a name="asech"></a>Asech
 
-Kiszámítja az oszlopértékek hiperbolikusív-ívét.  
+Kiszámítja az oszlop értékeinek hiperbolikus arcsecant.  
 
 ### <a name="asin"></a>Asin
 
-Kiszámítja az oszlopértékek arkuszszinját.  
+Kiszámítja az oszlopok értékeinek arkusz szinuszát.  
 
-### <a name="asindegrees"></a>AsinFok
+### <a name="asindegrees"></a>AsinDegrees
 
-Kiszámítja az oszlopértékek arkuszszinját fokban.  
+Kiszámítja az oszlop értékeinek arkusz szinuszát fokban megadva.  
 
-### <a name="asinh"></a>Asinh között
+### <a name="asinh"></a>ASINH
 
-Kiszámítja az oszlopértékek arkikus arkusz értékét.  
+Kiszámítja az oszlop értékeinek szinusz hiperbolikus értékét.  
 
 ### <a name="atan"></a>Atan
 
-Kiszámítja az oszlopértékek arkérintőértékét.  
+Kiszámítja az oszlopok értékeinek tangensét.  
 
-### <a name="atandegrees"></a>AtanFok
+### <a name="atandegrees"></a>AtanDegrees
 
-Kiszámítja az oszlopértékek arkusztangensét fokban.  
+Kiszámítja az oszlop értékeinek tangensét fokban megadva.  
 
-### <a name="atanh"></a>Atanh között
+### <a name="atanh"></a>ATANH
 
-Kiszámítja az oszlopértékek hiperbolikus zsúbívtangentét.  
+Kiszámítja az oszlop értékeinek hiperbolikus tangensét.  
 
 ### <a name="cos"></a>Cos
 
-Kiszámítja az oszlopértékek koszinuszát.  
+Kiszámítja az oszlopok értékeinek koszinuszát.  
 
-### <a name="cosdegrees"></a>CosFokok
+### <a name="cosdegrees"></a>CosDegrees
 
-Kiszámítja az oszlopértékek koszinuszát fokban.  
+Kiszámítja az oszlop értékeinek koszinuszát fokban megadva.  
 
 ### <a name="cosh"></a>Cosh
 
-Kiszámítja az oszlopértékek koszinusz hiperbolikuszát.  
+Kiszámítja az oszlopok értékeinek koszinusz hiperbolikusát.  
 
 ### <a name="cot"></a>Cot
 
-Kiszámítja az oszlopértékek kotangensét.  
+Kiszámítja az oszlop értékeinek tangensét.  
 
-### <a name="cotdegrees"></a>CotFok
+### <a name="cotdegrees"></a>CotDegrees
 
-Kiszámítja az oszlopértékek kotangensét fokban.  
+Kiszámítja az oszlop értékeit fokban megadva.  
 
-### <a name="coth"></a>Coth között
-Kiszámítja az oszlopértékek kotangens hiperbolikuszát.  
+### <a name="coth"></a>Coth
+Kiszámítja az oszlop értékeinek hiperbolikus tangensét.  
 
-### <a name="csc"></a>Csc
+### <a name="csc"></a>CSC
 
-Kiszámítja az oszlopértékek kosekánsát.  
+Kiszámítja a koszekáns az oszlop értékeihez.  
 
-### <a name="cscdegrees"></a>CscFok
+### <a name="cscdegrees"></a>CscDegrees
 
-Kiszámítja az oszlopértékek kosekánsát fokokban.  
+Kiszámítja az oszlopok értékeinek koszekáns fokban megadva.  
 
-### <a name="csch"></a>Csch között
+### <a name="csch"></a>Csch
 
-Kiszámítja az oszlopértékek kosekáns hiperbolikuszát.  
+Kiszámítja az oszlop értékeinek hiperbolikus koszekáns.  
 
 ### <a name="degreestoradians"></a>DegreesToRadians
 
 Fokot radiánná alakít.  
 
-### <a name="sec"></a>Sec
+### <a name="sec"></a>SEC
 
-Kiszámítja az oszlopértékek szekánsát.  
+Kiszámítja az oszlopok értékeinek szekáns.  
 
-### <a name="asecdegrees"></a>aSecFokok
+### <a name="asecdegrees"></a>aSecDegrees
 
-Kiszámítja az oszlopértékek szekánsát fokokban.  
+Kiszámítja az oszlopok értékeinek szekáns fokban megadva.  
 
-### <a name="asech"></a>aSech között
+### <a name="asech"></a>aSech
 
-Kiszámítja az oszlopértékek szekáns hiperbolikuszát.  
+Kiszámítja az oszlop értékeinek hiperbolikus szekáns.  
 
 ### <a name="sign"></a>Előjel
 
-Az oszlopértékek előjelét adja eredményül.  
+Az oszlop értékeinek előjelét adja vissza.  
 
 ### <a name="sin"></a>Sin
 
-Kiszámítja az oszlopértékek szinuszát.  
+Kiszámítja az oszlop értékeinek szinuszát.  
 
-### <a name="sinc"></a>Cinc
+### <a name="sinc"></a>Sinc
 
-Kiszámítja az oszlopértékek szinusz-koszinusz értékét.  
+Kiszámítja az oszlop értékeinek szinusz-koszinusz értékét.  
 
-### <a name="sindegrees"></a>SinFok
+### <a name="sindegrees"></a>SinDegrees
 
-Kiszámítja az oszlopértékek szinuszát fokban.  
+Kiszámítja az oszlop értékeinek szinuszát fokban megadva.  
 
 ### <a name="sinh"></a>Sinh
 
-Kiszámítja az oszlopértékek szinusz hiperbolikuszát.  
+Kiszámítja az oszlopok értékeinek szinusz hiperbolikusát.  
 
 ### <a name="tan"></a>Tan
 
-Kiszámítja az oszlopértékek érintőit.  
+Kiszámítja az oszlop értékeinek tangensét.  
 
-### <a name="tandegrees"></a>Tan Fokok
+### <a name="tandegrees"></a>TanDegrees
 
-Kiszámítja az argumentum érintőit fokban.  
+Kiszámítja az argumentum tangensét fokban megadva.  
 
 ### <a name="tanh"></a>Tanh
 
-Kiszámítja az oszlopértékek tangens hiperbolikuszát.  
+Kiszámítja az oszlopok értékeinek tangensét.  
   
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-Legyen óvatos, ha egynél több oszlopot jelöl ki második operátorként. Az eredmények könnyen érthetők, ha a művelet egyszerű, például állandó hozzáadása az összes oszlophoz. 
+Legyen körültekintő, ha egynél több oszlopot választ ki második operátorként. Az eredmények könnyen megérthetők, ha a művelet egyszerű, például állandó hozzáadása az összes oszlophoz. 
 
-Tegyük fel, hogy az adatkészlet több oszlopot tartalmaz, és saját magához adja az adatkészletet. Az eredményekben minden oszlop ot hozzáad magának, az alábbiak szerint:  
+Tegyük fel, hogy az adatkészlet több oszloppal rendelkezik, és saját maga adja hozzá az adatkészletet. Az eredményekben az egyes oszlopok hozzáadása magához az alábbiak szerint történik:  
   
-|Szám1|Szám2|Szám3|Hozzáadás(Num1_Num1)|Hozzáadás(Num2_Num2)|Hozzáadás(Num3_Num3)|
+|Num1|Num2|Num3|Hozzáadás (Num1_Num1)|Hozzáadás (Num2_Num2)|Hozzáadás (Num3_Num3)|
 |----|----|----|----|----|----|
 |1|5|2|2|10|4|
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Ha összetettebb számításokat kell végeznie, a Matematikai **művelet alkalmazása**több példányát is láncolhatja. Hozzáadhat például két oszlopot a **Matematikai művelet alkalmazása**egy példányával, majd a Matematikai művelet **alkalmazása** egy másik példányát használva az összeg állandóval való felosztásához az átlag eléréséhez.  
+Ha összetettebb számításokra van szüksége, több, a **matematikai műveletek alkalmazására**szolgáló példányt is láncba foglalhat. Felvehet például két oszlopot a **matematikai művelet alkalmazása**egyik példányának használatával, majd a **matematikai művelet** egy másik példányával oszthatja meg az összeget állandó értékkel a középérték beszerzéséhez.  
   
-Másik lehetőségként használja az alábbi modulok egyikét az összes számítás egyszerre történő elvégzéséhez, SQL, R vagy Python parancsfájl használatával:
+Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes számítást az SQL, az R vagy a Python parancsfájl használatával:
  
 + [R-szkript végrehajtása](execute-r-script.md)
 + [Python-szkript futtatása](execute-python-script.md)
@@ -590,4 +590,4 @@ Másik lehetőségként használja az alábbi modulok egyikét az összes szám�
   
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

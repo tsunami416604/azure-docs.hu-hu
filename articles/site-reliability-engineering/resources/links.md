@@ -1,6 +1,6 @@
 ---
-title: SRE link gyűjtemények és emészthető | Microsoft dokumentumok
-description: Bővítse ismereteit a webhely megbízhatóságának tervezésével ezekkel az erőforrásokkal
+title: SRE hivatkozások gyűjtése és kivonatolása | Microsoft Docs
+description: Fejlessze tudását a site megbízhatóságának fejlesztésével ezekkel az erőforrásokkal
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471251"
 ---
-# <a name="sources-for-site-reliability-engineering-information"></a>A hely megbízhatóságának műszaki információihoz szükséges források
+# <a name="sources-for-site-reliability-engineering-information"></a>A site megbízhatóság mérnöki információinak forrásai
 
-Sok-sok forrásból webhely megbízhatósága mérnöki (SRE) információk az interneten.
+A webhelyek megbízhatóságának mérnöki (SRE) adatainak számos különböző forrása van a weben.
 
-## <a name="curated-link-lists"></a>Válogatott hivatkozáslisták
+## <a name="curated-link-lists"></a>Kurátori hivatkozások listája
 
-Íme néhány jó válogatott listáját linkek SRE és SRE kapcsolatos témák:
+Íme néhány jó, a SRE és a SRE kapcsolatos témakörökre mutató hivatkozás.
 
-* [Félelmetes Site Megbízhatóság Engineering](https://github.com/dastergon/awesome-sre)
-* [Félelmetes site megbízhatóság mérnöki eszközök](https://github.com/SquadcastHub/awesome-sre-tools)
-* [Skálázható, megbízható és nagyméretű rendszerek mintái](http://awesome-scalability.com)
-* [félelmetes-elosztott-rendszerek](https://github.com/theanalyst/awesome-distributed-systems)
+* [Félelmetes hely megbízhatóságának mérnöki](https://github.com/dastergon/awesome-sre)
+* [A site megbízhatóság mérnöki eszközei](https://github.com/SquadcastHub/awesome-sre-tools)
+* [Méretezhető, megbízható és nagy teljesítményű rendszerek mintái](http://awesome-scalability.com)
+* [félelmetes – elosztott rendszerek](https://github.com/theanalyst/awesome-distributed-systems)
 * [Félelmetes konszenzus](https://github.com/dgryski/awesome-consensus)
-* [félelmetes-monitoring](https://github.com/crazy-canux/awesome-monitoring)
-* [Félelmetes megfigyelés](https://github.com/adriannovegil/awesome-observability)
+* [félelmetes – figyelés](https://github.com/crazy-canux/awesome-monitoring)
+* [Félelmetes Megfigyelhetőség](https://github.com/adriannovegil/awesome-observability)
 
-## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Heti emésztési érdekes a helyszínen megbízhatóság mérnökök
+## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>A site megbízhatósági mérnökök érdeklődésére számot tartó heti kivonatok
 
-* [SRE Weekly](https://sreweekly.com) - "SRE Weekly egy hírlevél szentelt mindent kapcsolatos vezetése a helyszínen vagy szolgáltatás áll rendelkezésre a lehető legkövetkezetesebben."
-* [Devops Weekly](https://www.devopsweekly.com) - "A heti szelet devops hírek hozta neked Gareth Rushgrove."
-* [Ezen a héten a DevOps](https://thisweekindevops.com) - "DevOps hírek nélkül a hype."
-* [KubeWeekly](https://kubeweekly.io) - "A heti hírlevelek mindent Kubernetes."
+* [Sre hetente](https://sreweekly.com) – "a sre Weekly egy olyan hírlevél, amely mindenhez kapcsolódik, hogy a hely vagy szolgáltatás a lehető legkövetkezetesebb legyen."
+* [Devops hetente](https://www.devopsweekly.com) – "A Devops Hírek heti szelete, amelyet Gareth Rushgrove blogs hozott."
+* [Ezen a héten a DevOps](https://thisweekindevops.com) -"DevOps Hírek a hype nélkül".
+* [KubeWeekly](https://kubeweekly.io) – "a heti hírlevelek minden Kubernetes."

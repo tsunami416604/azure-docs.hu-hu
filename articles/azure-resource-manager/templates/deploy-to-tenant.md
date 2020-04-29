@@ -1,41 +1,41 @@
 ---
-title: Erőforrások üzembe helyezése a bérlőre
-description: Bemutatja, hogyan helyezhet i erőforrásokat a bérlői hatókörben egy Azure Resource Manager-sablonban.
+title: Erőforrások üzembe helyezése a bérlőn
+description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460262"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása bérlői szinten
+# <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
-A szervezet érlelődése, előfordulhat, hogy [definiálnia](../../governance/policy/overview.md) és hozzákell rendelnie a szabályzatokat vagy [a szerepköralapú hozzáférés-vezérléseket](../../role-based-access-control/overview.md) az Azure AD-bérlő között. A bérlői szintű sablonok segítségével deklaratív módon alkalmazhatházirendeket, és globális szinten rendelhet hozzá szerepköröket.
+Ha a szervezete megérett, előfordulhat, hogy az Azure AD-bérlőn belül meg kell adnia és hozzá kell rendelnie a [szabályzatokat](../../governance/policy/overview.md) vagy a [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) . A bérlői szintű sablonok használatával a szabályzatok deklaratív alkalmazása és a szerepkörök globális szinten való hozzárendelését végezheti el.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
-A következő erőforrástípusokat telepítheti bérlői szinten:
+A következő erőforrástípusok a bérlői szinten helyezhetők üzembe:
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments) – a felügyeleti csoportokra vagy előfizetésekbe üzembe helyező beágyazott sablonokhoz.
-* [házirend-hozzárendelések](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions (policyDefinitions)](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions (policySetDefinitions)](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [szerepkör-hozzárendelések](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions (szerepkördefiníciók)](/azure/templates/microsoft.authorization/roledefinitions)
+* [központi telepítések](/azure/templates/microsoft.resources/deployments) – a felügyeleti csoportokra vagy előfizetésekre telepítendő beágyazott sablonokhoz.
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
+* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 ### <a name="schema"></a>Séma
 
-A bérlői központi telepítésekhez használt séma eltér az erőforráscsoport-telepítések sémájátétól.
+A bérlői központi telepítésekhez használt séma eltér az erőforráscsoport-telepítések sémájától.
 
-Sablonok esetén használja a következőket:
+Sablonok esetén használja a következőt:
 
 ```json
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-A paraméterfájl sémája minden telepítési hatóköresetében megegyezik. Paraméterfájlok esetén használja a következőket:
+A paraméterérték sémája megegyezik az összes központi telepítési hatókörnél. A paraméter fájljaihoz használja a következőt:
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -43,13 +43,13 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="required-access"></a>Szükséges hozzáférés
 
-A sablont üzembe helyező egyszerű telepítéshez engedéllyel kell rendelkeznie a bérlői hatókörben lévő erőforrások létrehozásához. A főtagnak engedéllyel kell`Microsoft.Resources/deployments/*`rendelkeznie a telepítési műveletek ( ) végrehajtásához és a sablonban definiált erőforrások létrehozásához. Például egy felügyeleti csoport létrehozásához a megbízónak közreműködői engedéllyel kell rendelkeznie a bérlői hatókörben. Szerepkör-hozzárendelések létrehozásához a megbízónak tulajdonosi engedéllyel kell rendelkeznie.
+A sablon központi telepítésének jogosultsággal kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre a bérlői hatókörben. A rendszerbiztonsági tag számára engedéllyel kell rendelkeznie a telepítési műveletek`Microsoft.Resources/deployments/*`végrehajtásához, valamint a sablonban definiált erőforrások létrehozásához. Egy felügyeleti csoport létrehozásához például a résztvevőnek közreműködői engedéllyel kell rendelkeznie a bérlői hatókörben. A szerepkör-hozzárendelések létrehozásához a rendszerbiztonsági tag tulajdonosi engedéllyel kell rendelkeznie.
 
-Az Azure Active Directory globális rendszergazdája nem rendelkezik automatikusan szerepkörök hozzárendelésére vonatkozó engedéllyel. A sablontelepítések bérlői hatókörben történő engedélyezéséhez a globális rendszergazdának a következő lépéseket kell tennie:
+A Azure Active Directory globális rendszergazdája nem rendelkezik automatikusan jogosultsággal a szerepkörök hozzárendeléséhez. Ha engedélyezni szeretné a sablonok központi telepítését a bérlői hatókörben, a globális rendszergazdának a következő lépéseket kell elvégeznie:
 
-1. Növelje a fiókhoz való hozzáférést, hogy a globális rendszergazda szerepköröket rendelhet. További információ: [Access for all Azure subscriptions and management groups](../../role-based-access-control/elevate-access-global-admin.md).
+1. Fiók-hozzáférés emelése, hogy a globális rendszergazda szerepköröket rendeljen hozzá. További információ: jogosultságszint- [emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md).
 
-1. Tulajdonos vagy közreműködő hozzárendelése a sablonok üzembe helyezéséhez szükséges egyszerű taghoz.
+1. Rendeljen tulajdonost vagy közreműködőt a sablonok üzembe helyezéséhez szükséges rendszerbiztonsági tag számára.
 
    ```azurepowershell-interactive
    New-AzRoleAssignment -SignInName "[userId]" -Scope "/" -RoleDefinitionName "Owner"
@@ -59,13 +59,13 @@ Az Azure Active Directory globális rendszergazdája nem rendelkezik automatikus
    az role assignment create --assignee "[userId]" --scope "/" --role "Owner"
    ```
 
-A főtag most már rendelkezik a sablon telepítéséhez szükséges engedélyekkel.
+A rendszerbiztonsági tag most már rendelkezik a sablon üzembe helyezéséhez szükséges engedélyekkel.
 
-## <a name="deployment-commands"></a>Telepítési parancsok
+## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
-A bérlői központi telepítések parancsai eltérnek az erőforráscsoport-telepítések parancsaitól.
+A bérlők központi telepítésére vonatkozó parancsok eltérnek az erőforráscsoport-telepítések parancsaitól.
 
-Az Azure CLI esetében használja [az üzembe helyezési bérlői létrehozását:](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)
+Az Azure CLI esetén használja az [az Deployment bérlő Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -74,7 +74,7 @@ az deployment tenant create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-Az Azure PowerShell esetén használja a [New-AzTenantDeployment szolgáltatást.](/powershell/module/az.resources/new-aztenantdeployment)
+Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
 ```azurepowershell-interactive
 New-AzTenantDeployment `
@@ -83,26 +83,26 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-REST API-hoz használja [a központi telepítéseket – létrehozás vagy frissítés a bérlői hatókörben.](/rest/api/resources/deployments/createorupdateattenantscope)
+REST API esetén használjon [központi telepítéseket – létrehozás vagy frissítés a bérlői hatókörben](/rest/api/resources/deployments/createorupdateattenantscope).
 
-## <a name="deployment-location-and-name"></a>A telepítés helye és neve
+## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
 
-A bérlői szintű központi telepítések esetén meg kell adnia a központi telepítés helyét. A központi telepítés helye nem áll meg a telepített erőforrások helyétől. A központi telepítési hely határozza meg, hogy hol kell tárolni a telepítési adatokat.
+Bérlői szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
 
-Megadhat nevet a központi telepítésnek, vagy használhatja az alapértelmezett központi telepítés nevét. Az alapértelmezett név a sablonfájl neve. Például egy **azuredeploy.json** nevű sablon üzembe helyezése létrehoz egy alapértelmezett üzembe helyezési nevet az **azuredeploy.**
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
 
-Az egyes központi telepítés neve immutalitása nem módosítható. Nem hozhat létre központi telepítést egy helyen, ha egy másik helyen azonos nevű meglévő központi telepítés van. Ha a hibakódot `InvalidDeploymentLocation`kapja, használjon másik nevet vagy ugyanazon a helyet, mint az előző központi telepítésaz adott névhez.
+Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation`, használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
-## <a name="use-template-functions"></a>Sablonfüggvények használata
+## <a name="use-template-functions"></a>A Template functions használata
 
-A bérlői telepítések esetében a sablonfüggvények használata során néhány fontos szempont ot figyelembe kell venni:
+A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak használata:
 
-* A [resourceGroup()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
-* Az [subscription()](template-functions-resource.md#subscription) függvény **nem** támogatott.
-* [A(z) reference()](template-functions-resource.md#reference) és [a list()](template-functions-resource.md#list) függvények támogatottak.
-* A [tenantResourceId()](template-functions-resource.md#tenantresourceid) függvény használatával lekéri a bérlői szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekérni.
+* A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
+* Az [előfizetés ()](template-functions-resource.md#subscription) függvény **nem** támogatott.
+* A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
+* Használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt a bérlői szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
 
-  Ha például egy házirend-definíció erőforrásazonosítóját szeretné lekérni, használja a következőket:
+  Ha például egy házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
   
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -140,9 +140,9 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 }
 ```
 
-## <a name="assign-role"></a>Szerepkör hozzárendelése
+## <a name="assign-role"></a>Szerepkör kiosztása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) szerepkört rendel a bérlői hatókörhöz.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
 
 ```json
 {
@@ -184,5 +184,5 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="next-steps"></a>További lépések
 
-* A szerepkörök hozzárendeléséről az [Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md)című témakörben olvashat.
-* A sablonokat [előfizetési vagy](deploy-to-subscription.md) [felügyeleti csoport szinten](deploy-to-management-group.md)is telepítheti.
+* A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
+* A sablonokat [előfizetési szinten](deploy-to-subscription.md) vagy [felügyeleti csoport szintjén](deploy-to-management-group.md)is üzembe helyezheti.

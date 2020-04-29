@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitás egyszerű szolgáltatásának megtekintése - Azure CLI - Azure AD
-description: A felügyelt identitás egyszerű szolgáltatásának az Azure CLI használatával való megtekintésének lépésenkénti útmutatója.
+title: Felügyelt identitás egyszerű szolgáltatásának megtekintése – Azure CLI – Azure AD
+description: Részletes útmutató a felügyelt identitások Azure CLI használatával történő megtekintéséhez.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,33 +16,33 @@ ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fedef003c6d4143d3ad1814081d55b61d5ee020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79298699"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Felügyelt identitás egyszerű szolgáltatásának megtekintése az Azure CLI használatával
 
-Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásokszámára az Azure Active Directoryban. Ezzel az identitással hitelesítheti magát minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítést anélkül, hogy hitelesítő adatokat a kódot. 
+Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést anélkül, hogy hitelesítő adatokat kellene megadnia a kódban. 
 
-Ebben a cikkben megtudhatja, hogyan tekintheti meg a felügyelt identitás szolgáltatásnév az Azure CLI használatával.
+Ebből a cikkből megtudhatja, hogyan tekintheti meg egy felügyelt identitás egyszerű szolgáltatását az Azure CLI használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [áttekintő szakaszt.](overview.md)
-- Ha még nem rendelkezik Azure-fiókkal, [regisztráljon egy ingyenes fiókot.](https://azure.microsoft.com/free/)
-- A [rendszerhez rendelt identitás engedélyezése virtuális gépen](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazásban.](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)
-- A CLI parancsfájlpéldák futtatásához három lehetőség közül választhat:
-    - Használja az [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
-    - Használja a beágyazott Azure Cloud Shell segítségével a "Try It" gomb, található a jobb felső sarokban minden kódblokk.
-    - [Telepítse az Azure CLI legújabb verzióját,](https://docs.microsoft.com/cli/azure/install-azure-cli) ha helyi CLI-konzolt szeretne használni, és jelentkezzen be az Azure-ba a`az login`
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md).
+- Ha még nem rendelkezik Azure-fiókkal, [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- A [rendszerhez rendelt identitás engedélyezése egy virtuális gépen](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazáson](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity).
+- A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
+    - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
+    - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
+    - [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) , ha inkább helyi CLI-konzolt szeretne használni, és jelentkezzen be az Azure-ba a következővel:`az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="view-the-service-principal"></a>Az egyszerű szolgáltatás megtekintése
 
-Ez a következő parancs bemutatja, hogyan tekintheti meg egy virtuális gép vagy alkalmazás szolgáltatásnév i. Cserélje `<VM or application name>` ki a saját értékeit. 
+Ez a következő parancs azt mutatja be, hogyan lehet megtekinteni a felügyelt identitással rendelkező virtuális gépek vagy alkalmazások egyszerű szolgáltatását. Cserélje `<VM or application name>` le a értéket a saját értékeire. 
 
 ```azurecli-interactive
 az ad sp list --display-name <VM or application name>
@@ -50,6 +50,6 @@ az ad sp list --display-name <VM or application name>
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD szolgáltatástagok Azure CLI használatával történő kezeléséről az [az ad sp.](/cli/azure/ad/sp)
+Az Azure AD egyszerű szolgáltatásainak Azure CLI használatával történő kezelésével kapcsolatos további információkért lásd [az az ad SP](/cli/azure/ad/sp)-ben című témakört.
 
 

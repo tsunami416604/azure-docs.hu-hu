@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299455"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -26,17 +26,17 @@ ms.locfileid: "79299455"
 
 ## <a name="powershell"></a>PowerShell
 
-Az Azure PowerShell segítségével növekményes pillanatképet hozhat létre. Szüksége lesz az Azure PowerShell legújabb verziójára, a következő parancs vagy telepíti, vagy frissíti a meglévő telepítést a legújabbra:
+Növekményes pillanatkép létrehozásához használhatja a Azure PowerShellt is. A Azure PowerShell legújabb verziójára lesz szüksége, a következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Ha ez telepítve van, jelentkezzen be `az login`a PowerShell-munkamenetbe a segítségével.
+A telepítését követően jelentkezzen be a PowerShell-munkamenetbe `az login`a következővel:.
 
-Növekményes pillanatkép létrehozásához az Azure PowerShell, állítsa `-Incremental` be a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) a paraméterrel, és adja át, hogy a változó a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) a `-Snapshot` paraméteren keresztül.
+Ha Azure PowerShell használatával szeretne növekményes pillanatképet létrehozni, állítsa a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) `-Incremental` paraméterrel, majd adja át az értékét a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) `-Snapshot` paraméterrel.
 
-Cserélje `<yourDiskNameHere>` `<yourResourceGroupNameHere>`le `<yourDesiredSnapShotNameHere>` a , és az értékekre, majd a következő parancsfájl segítségével hozzon létre egy növekményes pillanatképet:
+`<yourResourceGroupNameHere>`Cserélje `<yourDiskNameHere>`le a, `<yourDesiredSnapShotNameHere>` a és az értékeket a következő parancsfájl használatával növekményes pillanatkép létrehozására:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-Azonosíthatja a növekményes `SourceResourceId` pillanatképek ugyanabból a lemezről a és a `SourceUniqueId` pillanatképek tulajdonságait. `SourceResourceId`A szülőlemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`A lemez `UniqueId` tulajdonságától örökölt érték. Ha töröl egy lemezt, majd új lemezt hoz létre ugyanazzal a névvel, a `UniqueId` tulajdonság értéke megváltozik.
+Az azonos lemezről származó növekményes pillanatképeket a `SourceResourceId` és a pillanatképek `SourceUniqueId` tulajdonságaival is azonosíthatja. `SourceResourceId`a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`az érték a lemez `UniqueId` tulajdonságában örökölt. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, a `UniqueId` tulajdonság módosul.
 
-Használhatja `SourceResourceId` és `SourceUniqueId` létrehozhatja az adott lemezhez társított összes pillanatkép listáját. Cserélje `<yourResourceGroupNameHere>` le az értéket, majd a következő példa segítségével sorolja fel a meglévő növekményes pillanatképek:
+A `SourceResourceId` és `SourceUniqueId` az használatával létrehozhat egy adott lemezhez társított összes pillanatkép listáját. Cserélje `<yourResourceGroupNameHere>` le az értéket az értékre, majd a következő példa használatával sorolja fel a meglévő növekményes pillanatképeket:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -69,7 +69,7 @@ $incrementalSnapshots
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 
-Az Azure Resource Manager-sablonok használatával növekményes pillanatképet is létrehozhat. Győződjön meg arról, hogy az apiVersion **értéke 2019-03-01,** és hogy a növekményes tulajdonság is igaz. A következő kódrészlet egy példa arra, hogyan hozhat létre növekményes pillanatképet az Erőforrás-kezelő sablonokkal:
+Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat is használhat. Győződjön meg arról, hogy a apiVersion értéke **2019-03-01** , és hogy a növekményes tulajdonság értéke TRUE (igaz) is. A következő kódrészlet egy példa arra, hogyan hozhat létre növekményes pillanatképet Resource Manager-sablonokkal:
 
 ```json
 {
@@ -105,4 +105,4 @@ Az Azure Resource Manager-sablonok használatával növekményes pillanatképet 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a .NET használatával a növekményes pillanatképek különbözeti képességét bemutató mintakódot szeretne látni, olvassa el az [Azure felügyelt lemezek biztonsági másolata egy másik régióba a növekményes pillanatképek különbözeti képességével rendelkező témakört.](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.
