@@ -1,29 +1,29 @@
 ---
-title: Készenléti mintavétel beállítása a tárolópéldányon
-description: Megtudhatja, hogyan konfigurálhat egy mintavételt annak biztosítására, hogy az Azure Container Instances tárolói csak akkor fogadjanak kéréseket, ha készen állnak
+title: Készültségi mintavétel beállítása a tároló-példányon
+description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárolók Azure Container Instances fogadása csak akkor legyen elérhető, amikor készen állnak
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76935686"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
 
-A forgalmat kiszolgáló tárolóba adott alkalmazások esetében érdemes ellenőrizni, hogy a tároló készen áll-e a bejövő kérelmek kezelésére. Az Azure Container Instances támogatja a konfigurációk felvételére szolgáló készenléti mintavételeket, hogy a tároló bizonyos körülmények között ne érhető el. A készenléti szonda úgy viselkedik, mint egy [Kubernetes készenléti szonda.](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) Előfordulhat például, hogy egy tárolóalkalmazásnak nagy adatkészletet kell betöltenie az indítás során, és nem szeretné, hogy ez idő alatt kéréseket fogadjon.
+A forgalmat kiszolgáló tároló alkalmazások esetében érdemes ellenőrizni, hogy a tároló készen áll-e a bejövő kérések kezelésére. Azure Container Instances támogatja a készültségi mintavételt a konfigurációk belefoglalásához, hogy a tároló bizonyos körülmények között nem érhető el. A készültségi mintavétel [Kubernetes-készültségi](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)mintavételhez hasonlóan viselkedik. Előfordulhat például, hogy egy tároló alkalmazásnak be kell töltenie egy nagyméretű adatkészletet az indítás során, és nem szeretné, hogy a rendszer ebben az időszakban fogadja a kéréseket.
 
-Ez a cikk bemutatja, hogyan telepíthet egy tárolócsoportot, amely készenléti mintavételt tartalmaz, így a tároló csak akkor kapja meg a forgalmat, ha a mintavétel sikeres.
+Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy készültségi vizsgálatot magában foglaló tároló-csoport, hogy a tárolók csak a mintavétel sikeressége után kapják meg a forgalmat.
 
-Az Azure Container Instances is támogatja [a liveness mintavételek,](container-instances-liveness-probe.md)amely konfigurálhatja, hogy egy nem megfelelő állapotú tároló automatikusan újraindul.
+A Azure Container Instances támogatja az [élettartam](container-instances-liveness-probe.md)-mintavételt is, amelyet beállíthatja úgy, hogy a nem kifogástalan állapotú tárolót automatikusan újrainduljon.
 
 > [!NOTE]
-> Jelenleg nem használható készenléti mintavétel egy virtuális hálózatra telepített tárolócsoportban.
+> Jelenleg nem használhat készenléti mintavételt egy virtuális hálózatra központilag telepített tároló csoportba.
 
 ## <a name="yaml-configuration"></a>YAML-konfiguráció
 
-Például hozzon `readiness-probe.yaml` létre egy fájlt a következő kódrészlet, amely tartalmazza a készenléti mintavétel. Ez a fájl egy tárolócsoportot határoz meg, amely egy kis webalkalmazást futtató tárolóból áll. Az alkalmazás a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` lemezképből van telepítve. Ez a tárolóba helyezett alkalmazás is látható [egy tárolópéldány üzembe helyezése az Azure CLI](container-instances-quickstart.md) és más rövid útmutatók használatával.
+Például hozzon létre egy `readiness-probe.yaml` fájlt a következő kódrészlettel, amely tartalmazza a készültségi vizsgálatot. Ez a fájl olyan tároló csoportot határoz meg, amely egy kisméretű webalkalmazást futtató tárolóból áll. Az alkalmazás üzembe helyezése a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképből történik. Ez a tároló alkalmazás az Azure CLI-vel és más gyors útmutatókkal is mutatja be [a Container példány üzembe helyezését az Azure](container-instances-quickstart.md) -ban.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,25 +63,25 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Start parancs
 
-A központi `command` telepítés tartalmaz egy tulajdonságot, amely meghatározza a kiindulási parancsot, amely a tároló első futásakor fut. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs szimulálja azt az időpontot, amikor a webalkalmazás fut, de a tároló nem áll készen. 
+Az üzemelő példány `command` egy olyan tulajdonságot határoz meg, amely a tároló első indításakor futtatott indítási parancsot határozza meg. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs egy olyan időpontot szimulál, amikor a webalkalmazás fut, de a tároló nem áll készen. 
 
-Először elindítja a rendszerhéj-munkamenetet, és parancsot `node` futtat a webalkalmazás elindításához. Azt is elindítja a parancsot, hogy aludni 240 `ready` másodpercig, ami után létrehoz egy fájlt hívott a `/tmp` könyvtárban:
+Először indít el egy rendszerhéj-munkamenetet, és `node` futtat egy parancsot a webalkalmazás elindításához. Egy parancsot is elkezd 240 másodpercig alvó állapotba, amely után létrejön egy nevű `ready` fájl a `/tmp` címtárban:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 ```
 
-### <a name="readiness-command"></a>Készenlét parancs
+### <a name="readiness-command"></a>Készültségi parancs
 
-Ez a YAML-fájl határozza meg azt, `readinessProbe` amely támogatja a `exec` készenléti parancsot, amely készenléti ellenőrzésként működik. Ez a példa készen áll a `ready` könyvtárban `/tmp` lévő fájl létezésére.
+Ez a YAML-fájl `readinessProbe` meghatározza a készültségi vizsgálatként szolgáló `exec` készültségi parancsot. Ez a példa a készültségi parancs tesztelését vizsgálja a `ready` fájl meglétét `/tmp` a könyvtárban.
 
-Ha `ready` a fájl nem létezik, a készenléti parancs nem nulla értékkel lép ki; a tároló továbbra is fut, de nem érhető el. Amikor a parancs sikeresen kilép a 0-s kilépési kóddal, a tároló készen áll a hozzáférésre. 
+Ha a `ready` fájl nem létezik, a készültségi parancs nem nulla értékkel kilép. a tároló továbbra is fut, de nem érhető el. Ha a parancs sikeresen kilép a 0. kilépési kóddal, a tároló készen áll a hozzáférésre. 
 
-A `periodSeconds` tulajdonság azt a készenléti parancsot jelöli, amelyet 5 másodpercenként kell végrehajtani. A készenléti mintavétel a tárolócsoport élettartamára fut.
+A `periodSeconds` tulajdonság kijelöli a készültségi parancsot 5 másodpercenként. A készültségi mintavétel a tároló csoport élettartamára fut.
 
-## <a name="example-deployment"></a>Példa telepítésre
+## <a name="example-deployment"></a>Példa központi telepítésre
 
-Futtassa a következő parancsot az előző YAML-konfigurációval rendelkező tárolócsoport telepítéséhez:
+Futtassa a következő parancsot egy tároló csoport üzembe helyezéséhez az előző YAML-konfigurációval:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file readiness-probe.yaml
@@ -89,21 +89,21 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 ## <a name="view-readiness-checks"></a>Készenléti ellenőrzések megtekintése
 
-Ebben a példában az első 240 másodpercben a készenléti `ready` parancs sikertelen lesz, amikor ellenőrzi a fájl létezését. Az állapotkód azt jelzi, hogy a tároló nem áll készen.
+Ebben a példában az első 240 másodpercben a készültségi parancs meghiúsul, amikor ellenőrzi a `ready` fájl létezését. A visszaadott állapotkód azt jelzi, hogy a tároló nem áll készen.
 
-Ezek az események az Azure Portalon vagy az Azure CLI-ben tekinthetők meg. A portál például azt `Unhealthy` mutatja, hogy a típusú események a készenléti parancs sikertelensége esetén aktiválódnak. 
+Ezek az események a Azure Portal vagy az Azure CLI-ből is megtekinthetők. A portálon például a következő típusú `Unhealthy` események jelennek meg, amikor a készültségi parancs sikertelen lesz. 
 
-![A portál nem megfelelő állapotú eseménye][portal-unhealthy]
+![Portál sérült eseménye][portal-unhealthy]
 
-## <a name="verify-container-readiness"></a>A tároló készültségének ellenőrzése
+## <a name="verify-container-readiness"></a>Tároló készültségének ellenőrzése
 
-A tároló elindítása után ellenőrizheti, hogy kezdetben nem érhető-e el. A kiépítés után a tárolócsoport IP-címét:
+A tároló elindítása után ellenőrizheti, hogy a szolgáltatás kezdetben nem érhető el. A kiépítés után szerezze be a tároló csoport IP-címét:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name readinesstest --query "ipAddress.ip" --out tsv
 ```
 
-Próbálja meg elérni a helyet, amíg a készenléti mintavétel sikertelen:
+Próbáljon meg hozzáférni a webhelyhez, miközben a készültségi mintavétel meghiúsul:
 
 ```bash
 wget <ipAddress>
@@ -117,7 +117,7 @@ Connecting to 192.0.2.1... connected.
 HTTP request sent, awaiting response... 
 ```
 
-240 másodperc elteltével a készenléti parancs sikeres, jelezve, hogy a tároló készen áll. Most, amikor futtatja a `wget` parancsot, akkor sikerül:
+240 másodperc elteltével a készültségi parancs sikeres lesz, és jelzi, hogy a tároló készen áll. Most, amikor futtatja a `wget` parancsot, a következő lesz:
 
 ```
 $ wget 192.0.2.1
@@ -132,15 +132,15 @@ index.html.1                       100%[========================================
 2019-10-15 16:49:38 (113 MB/s) - ‘index.html.1’ saved [1663/1663] 
 ```
 
-Amikor a tároló készen áll, a webalkalmazás is elérheti az IP-címet egy webböngésző segítségével.
+Ha a tároló elkészült, elérheti a webalkalmazást úgy is, hogy az IP-címet egy webböngészővel böngészi.
 
 > [!NOTE]
-> A készenléti mintavétel továbbra is fut a tárolócsoport élettartama alatt. Ha a készenléti parancs egy későbbi időpontban meghibásodik, a tároló ismét elérhetetlenné válik. 
+> A készültségi mintavétel továbbra is fut a tároló csoport élettartama során. Ha a készültségi parancs későbbi időpontban meghiúsul, a tároló újra elérhetetlenné válik. 
 > 
 
 ## <a name="next-steps"></a>További lépések
 
-A készenléti mintavétel hasznos lehet a függő tárolókból álló többtárolós csoportokat érintő forgatókönyvekben. A többtárolós forgatókönyvekről további információt az [Azure Container Instances tárolócsoportok című témakörben talál.](container-instances-container-groups.md)
+A készültségi mintavétel hasznos lehet olyan helyzetekben, amelyek függő tárolók álló többtárolós csoportokat érintenek. További információ a többtárolós forgatókönyvekről: [Container groups in Azure Container instances](container-instances-container-groups.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-readiness-probe/readiness-probe-failed.png

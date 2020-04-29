@@ -1,57 +1,57 @@
 ---
-title: Azure Service Fabric CLI- sfctl-beállítások telemetria
-description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. Az sfctl-telemetria konfigurálásához szükséges parancsok listáját tartalmazza.
+title: Azure Service Fabric CLI – sfctl beállítások telemetria
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A sfctl-telemetria konfigurálására szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76903028"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl-beállítások telemetriája
-Konfigurálja az sfctl ezen példányához helyi telemetriai beállításokat.
+Konfigurálja a helyi telemetria-beállításokat a sfctl ezen példányára.
 
-Sfctl telemetriai adatok gyűjti parancs nevét paraméterek nélkül megadott vagy azok értékeit, sfctl verzió, operációs rendszer típusa, python verzió, a sikeres vagy sikertelen a parancs, a hibaüzenet et adott vissza.
+A Sfctl telemetria a megadott paraméterek nélkül gyűjti a parancs nevét, illetve azok értékeit, a Sfctl verzióját, az operációs rendszer típusát, a Python verzióját, a parancs sikerességét vagy hibáját. a visszaadott hibaüzenet.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| beállított telemetria | A telemetriai adatok be- és kikapcsolása. |
+| set-telemetria | Kapcsolja be vagy ki a telemetria. |
 
-## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl-beállítások telemetriai beállítás-telemetriai adatai
-A telemetriai adatok be- és kikapcsolása.
+## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl-beállítások telemetria set-telemetria
+Kapcsolja be vagy ki a telemetria.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --off | Kapcsolja ki a telemetriai adatokat. |
-| --be | Kapcsolja be a telemetriai adatokat. Ez az alapértelmezett érték. |
+| – ki | Kapcsolja ki a telemetria. |
+| – bekapcsolva | Kapcsolja be a telemetria. Ez az alapértelmezett érték. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák
 
-Kapcsolja ki a telemetriai adatokat.
+Kapcsolja ki a telemetria.
 
 ```
 sfctl settings telemetry set_telemetry --off
 ```
 
-Kapcsolja be a telemetriai adatokat.
+Kapcsolja be a telemetria.
 
 ```
 sfctl settings telemetry set_telemetry --on
@@ -59,5 +59,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI.Set up the Service Fabric CLI.
-- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

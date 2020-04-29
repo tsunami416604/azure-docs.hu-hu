@@ -1,88 +1,88 @@
 ---
-title: Tranzakciók és zárolási módok megbízható gyűjtemények esetén
-description: Az Azure Service Fabric megbízható állapotkezelő és megbízható beszedési tranzakciók és zárolás.
+title: Tranzakciók és zárolási módok megbízható gyűjteményekben
+description: Az Azure Service Fabric megbízható State Manager és megbízható gyűjtemények tranzakciója és zárolása.
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938911"
 ---
-# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure Service Fabric megbízható gyűjtemények szolgáltatásában
+# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure-ban Service Fabric megbízható gyűjtemények
 
 ## <a name="transaction"></a>Tranzakció
 
-A tranzakció egyetlen logikai munkaegységként végrehajtott műveletek sorozata. Ez mutatja a közös [SAV](https://en.wikipedia.org/wiki/ACID) (*atom,* *konzisztencia*, *elszigeteltség*, *tartósság)* tulajdonságai adatbázis-tranzakciók:
+A tranzakciók egyetlen logikai egységként végrehajtott műveletek sorozatából állnak. Az adatbázis-tranzakciók általános [sav](https://en.wikipedia.org/wiki/ACID) (*atomi*, *konzisztencia*, *elkülönítés*, *tartósság*) tulajdonságait mutatja be:
 
-* **Atomi :** A tranzakciónak amunka atomegységének kell lennie. Más szóval vagy az összes adatmódosítást végrehajtja a rendszer, vagy egyiket sem hajtja végre.
-* **Konzisztencia**: Ha befejeződött, a tranzakciónak az összes adatot konzisztens állapotban kell hagynia. A tranzakció végén minden belső adatstruktúrának helyesnek kell lennie.
-* **Elkülönítés**: Az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a többi egyidejű gazdasági ügylet módosításaitól. Az [ITransaction-en](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) belüli művelethez használt elkülönítési szintet a műveletet végző [IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) határozza meg.
-* **Tartósság**: A tranzakció befejezése után a rendszer hatásai tartósan érvényben maradnak. A módosítások rendszerhiba esetén is fennállnak.
+* **Atomi**: a tranzakciónak a Work atomi egységének kell lennie. Más szóval a rendszer minden adatmódosítást végez, vagy egyiket sem hajt végre.
+* **Konzisztencia**: Ha elkészült, a tranzakciónak konzisztens állapotban kell hagynia az összes adategységet. A tranzakció végén minden belső adatstruktúrának helyesnek kell lennie.
+* **Elkülönítés**: az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a más párhuzamos tranzakciók által végrehajtott módosításokkal. Egy [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) belüli művelethez használt elkülönítési szintet a műveletet végrehajtó [IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) határozza meg.
+* **Tartósság**: egy tranzakció befejeződése után a rendszer tartósan érvénybe helyezi a hatását. A módosítások rendszerhiba esetén is megmaradnak.
 
 ### <a name="isolation-levels"></a>Elkülönítési szintek
 
-Az elkülönítési szint azt határozza meg, hogy az ügyletet milyen mértékben kell elkülöníteni a más tranzakciók által végrehajtott módosításoktól.
-A Megbízható gyűjtemények két elkülönítési szintet támogatnak:
+Az elkülönítési szint határozza meg, hogy a tranzakciót milyen mértékben kell elkülöníteni a más tranzakciók által végrehajtott módosításoktól.
+A megbízható gyűjtemények két elkülönítési szintet támogatnak:
 
-* **Ismételhető olvasás:** Itt adhatja meg, hogy az utasítások nem tudják olvasni azokat az adatokat, amelyeket más tranzakciók módosítottak, de más tranzakciók még nem véglegesítették, és hogy más tranzakciók nem módosíthatják az aktuális tranzakció által olvasott adatokat az aktuális tranzakció befejezéséig.
-* **Pillanatkép**: Megadja, hogy a tranzakció bármely utasítása által olvasott adatok a tranzakció kezdetén létező adatok tranzakciósan konzisztens változata.
-  A tranzakció csak a tranzakció kezdete előtt véglegesített adatmódosításokat ismeri fel.
-  Az aktuális tranzakció kezdete után más tranzakciók által végrehajtott adatmódosítások nem láthatók az aktuális tranzakcióban végrehajtó utasítások számára.
-  A hatás olyan, mintha a tranzakcióban lévő utasítások pillanatképet kapnának a véglegesített adatokról, ahogy az a tranzakció kezdetén létezett.
+* **Ismételhető olvasás**: azt határozza meg, hogy az utasítások nem tudják olvasni azokat az adatokat, amelyeket más tranzakciók még nem véglegesítettek, és hogy más tranzakciók nem módosíthatják az aktuális tranzakció által beolvasott adatokat, amíg az aktuális tranzakció be nem fejeződik.
+* **Pillanatkép**: azt adja meg, hogy a tranzakció bármely utasítása által beolvasott adatok a tranzakció elején található adatok tranzakciós szempontból konzisztens verziója.
+  A tranzakció csak azokat az adatmódosításokat ismeri fel, amelyeket a tranzakció elindítása előtt véglegesítettek.
+  A más tranzakciók által az aktuális tranzakció kezdete után végrehajtott adatmódosítások nem láthatók az aktuális tranzakcióban végrehajtó utasításokban.
+  Ennek a hatása, mintha egy tranzakció utasításai beolvassák a tranzakció elején található véglegesített adatokat.
   A pillanatképek konzisztensek a megbízható gyűjtemények között.
 
-A Megbízható gyűjtemények automatikusan kiválasztják az adott olvasási művelethez használandó elkülönítési szintet a művelettől és a replika szerepkörétől függően a tranzakció létrehozásakor.
-A következő táblázat a Megbízható szótár és várólista-műveletek elkülönítési szintalapértelmezett beállításait ábrázolja.
+A megbízható gyűjtemények automatikusan kiválasztják az adott olvasási művelethez használt elkülönítési szintet a tranzakció létrehozásakor a művelettől és a replika szerepköreitől függően.
+A következő táblázat az elkülönítési szint alapértelmezett értékeit ábrázolja a megbízható szótárak és üzenetsor-műveletek esetében.
 
-| Művelet \ Szerepkör | Elsődleges | Másodlagos |
+| Művelet \ szerepkör | Elsődleges | Másodlagos |
 | --- |:--- |:--- |
 | Egyetlen entitás olvasása |Ismételhető olvasás |Pillanatkép |
-| Felsorolás, Darabszám |Pillanatkép |Pillanatkép |
+| Számbavétel, darabszám |Pillanatkép |Pillanatkép |
 
 > [!NOTE]
-> Az egyentitásos műveletek `IReliableDictionary.TryGetValueAsync`gyakori `IReliableQueue.TryPeekAsync`példái a .
+> Az egyentitásos műveletek általános példái a következők `IReliableDictionary.TryGetValueAsync`: `IReliableQueue.TryPeekAsync`.
 > 
 
-Mind a megbízható szótár, mind a megbízható várólista támogatja *az írások olvasását.*
-Más szóval a tranzakción belüli bármely írás látható lesz egy következő olvasási lehetőség számára, amely ugyanahhoz a tranzakcióhoz tartozik.
+A megbízható szótár és a megbízható üzenetsor is támogatja az *írások olvasását*.
+Ez azt jelenti, hogy a tranzakción belüli bármilyen írás látható lesz a következő olvasási műveletben, amely ugyanahhoz a tranzakcióhoz tartozik.
 
 ## <a name="locks"></a>Zárolások
 
-A Megbízható gyűjtemények alkalmazásban minden tranzakció szigorú kétfázisú zárolást valósít meg: a tranzakció nem oldja fel a megszerzett zárolásokat, amíg a tranzakció megszakítással vagy véglegesítéssel le nem áll.
+Megbízható gyűjteményekben az összes tranzakció szigorú kétfázisú zárolást valósít meg: egy tranzakció nem szabadítja fel a beszerzett zárolásokat, amíg a tranzakció megszakítással vagy véglegesítéssel leáll.
 
-A Reliable Dictionary sorszintű zárolást használ az összes egyentitásos művelethez.
-Megbízható várólista kereskedik ki egyidejűség szigorú tranzakciós FIFO tulajdonság.
-A Megbízható várólista műveletszintű zárolásokat használ, amelyek egyszerre egy tranzakciót `TryPeekAsync` és/vagy `TryDequeueAsync` egy tranzakcióval tesznek `EnqueueAsync` lehetővé.
-Vegye figyelembe, hogy a `TryPeekAsync` FIFO megőrzése érdekében, ha egy `TryDequeueAsync` vagy `EnqueueAsync`valaha is megjegyzi, hogy a megbízható várólista üres, akkor is zárolja .
+A megbízható szótár minden egyes entitási műveletnél sor szintű zárolást használ.
+A megbízható üzenetsor a szigorú tranzakciós FIFO-tulajdonsághoz tartozó egyidejűségen kívülről kereskedik.
+A megbízható üzenetsor olyan műveleti szintű zárolásokat használ, amelyek `TryPeekAsync` lehetővé teszik egy `TryDequeueAsync` tranzakció és/vagy `EnqueueAsync` egyszerre egy tranzakció beküldését.
+Vegye figyelembe, hogy a FIFO megőrzése érdekében `TryPeekAsync` , `TryDequeueAsync` ha egy vagy minden alkalommal megállapítja, hogy a megbízható várólista üres, akkor `EnqueueAsync`is zárolva lesznek.
 
-Az írási műveletek mindig exkluzív zárakat vesznek igénybe.
-Az olvasási műveletekesetében a zárolás több tényezőtől függ:
+Az írási műveletek mindig kizárólagos zárolást végeznek.
+Olvasási műveletek esetén a zárolás néhány tényezőtől függ:
 
-- A Pillanatkép elkülönítésével végzett olvasási műveletek zárolásmentesek.
-- Minden ismételhető olvasási művelet alapértelmezés szerint megosztott zárolásokat vesz igénybe.
-- Az ismételhető olvashatót támogató olvasási műveletek esetében azonban a felhasználó a megosztott zárolás helyett frissítési zárolást kérhet.
-Az update lock egy aszimmetrikus zárolás, amely megakadályozza a holtpont egy gyakori formáját, amely akkor fordul elő, ha több tranzakció zárolja az erőforrásokat a lehetséges frissítésekhez egy későbbi időpontban.
+- A pillanatkép-elkülönítés használatával végzett olvasási művelet zárolás nélküli.
+- Az összes ismételhető olvasási művelet alapértelmezés szerint a megosztott zárolásokat veszi igénybe.
+- Az ismételhető olvasást támogató olvasási műveletek esetében azonban a felhasználó a megosztott zárolás helyett a frissítési zárolást is kérheti.
+A frissítési zárolás egy aszimmetrikus zárolás, amely megakadályozza a holtpont gyakori formáját, amely akkor fordul elő, ha egy későbbi időpontban több tranzakció zárolja a lehetséges frissítéseket.
 
-A zárolási kompatibilitási mátrix az alábbi táblázatban található:
+A zárolási kompatibilitási mátrix a következő táblázatban található:
 
-| Kérelem \ Megadva | None | Megosztott | Frissítés | Exkluzív |
+| Kérelem \ megadott | None | Megosztott | Frissítés | Kizárólagos |
 | --- |:--- |:--- |:--- |:--- |
 | Megosztott |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
 | Frissítés |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
-| Exkluzív |Nincs ütközés |Ütközés |Ütközés |Ütközés |
+| Kizárólagos |Nincs ütközés |Ütközés |Ütközés |Ütközés |
 
-A Reliable Collections API-k időkapcsolati argumentuma holtpontészleléshez használatos.
-Például két tranzakció (T1 és T2) próbálja olvasni és frissíteni a K1-et.
-Lehetséges, hogy holtpontra jutnak, mert mindketten a megosztott zárat tartják.
-Ebben az esetben az egyik vagy mindkét művelet idővel megmarad. Én ebben a forgatókönyvben, egy frissítészár megakadályozhatja egy ilyen patthelyzet.
+A megbízható gyűjtemények API-k időtúllépési argumentuma a holtpont észlelésére szolgál.
+Például két tranzakció (T1 és T2) megkísérli olvasni és frissíteni a K1-et.
+Lehetséges, hogy holtpontra válnak, mivel mindkettő a megosztott zárolással végződik.
+Ebben az esetben az egyik vagy mindkét művelet időtúllépést eredményez. Ebben a forgatókönyvben egy frissítési zár megakadályozhatja az ilyen holtpontot.
 
 ## <a name="next-steps"></a>További lépések
 
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
-* [Megbízható szolgáltatásokról szóló értesítések](service-fabric-reliable-services-notifications.md)
-* [Megbízható szolgáltatások biztonsági mentése és visszaállítása (vészhelyreállítás)](service-fabric-reliable-services-backup-restore.md)
-* [Megbízható állapotkezelő-konfiguráció](service-fabric-reliable-services-configuration.md)
-* [Fejlesztői referencia a megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
+* [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
+* [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
+* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

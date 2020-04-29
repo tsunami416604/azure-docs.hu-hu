@@ -1,19 +1,19 @@
 ---
-title: Azure Service Fabric – Tárolótár hitelesítő adatainak konfigurálása
-description: Tárház hitelesítő adatainak konfigurálása a rendszerképek tárolóbeállításjegyzékből való letöltéséhez
+title: Azure Service Fabric – tároló-adattár hitelesítő adatainak konfigurálása
+description: Adattár hitelesítő adatainak konfigurálása a lemezképek a tároló beállításjegyzékből való letöltéséhez
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934978"
 ---
-# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Tárház hitelesítő adatainak konfigurálása az alkalmazás számára a tárolórendszerképek letöltéséhez
+# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
 
-Konfigurálja a tároló `RepositoryCredentials` beállításjegyzék-hitelesítését az `ContainerHostPolicies` alkalmazásjegyzék szakaszához való hozzáadással. Adja hozzá a fiókot és a jelszót a tároló rendszerleíró adatbázisához (*myregistry.azurecr.io* az alábbi példában), amely lehetővé teszi a szolgáltatás számára a tárolórendszerkép letöltését a tárházból.
+Konfigurálja a tároló beállításjegyzékének hitelesítését `RepositoryCredentials` az `ContainerHostPolicies` alkalmazás jegyzékfájljának szakaszába való hozzáadásával. Adja hozzá a tároló-beállításjegyzékhez tartozó fiókot és jelszót (a*myregistry.azurecr.IO* az alábbi példában), amely lehetővé teszi, hogy a szolgáltatás letöltse a tároló rendszerképét az adattárból.
 
 ```xml
 <ServiceManifestImport>
@@ -28,14 +28,14 @@ Konfigurálja a tároló `RepositoryCredentials` beállításjegyzék-hitelesít
 </ServiceManifestImport>
 ```
 
-Javasoljuk, hogy titkosítsa a tárház jelszavát egy olyan titkosítási tanúsítvány használatával, amely a fürt összes csomópontjára telepítve van. Amikor a Service Fabric üzembe helyezi a szervizcsomagot a fürtön, a titkosítási tanúsítvánnyal fejti vissza a titkosított szöveget. Az Invoke-ServiceFabricEncryptText parancsmaggal hozhat létre titkosított szöveget a jelszóhoz, amelyet a rendszer hozzáad az ApplicationManifest.xml fájlhoz.
-További [témakör: Titkos kezelés](service-fabric-application-secret-management.md) a tanúsítványokról és a titkosítási szemantikáról.
+Javasoljuk, hogy Titkosítsa a tárház jelszavát egy olyan titkosítási-tanúsítvánnyal, amely a fürt minden csomópontjára telepítve van. Amikor a Service Fabric üzembe helyezi a szervizcsomagot a fürtön, a titkosítási tanúsítvánnyal fejti vissza a titkosított szöveget. Az Invoke-ServiceFabricEncryptText parancsmaggal hozhat létre titkosított szöveget a jelszóhoz, amelyet a rendszer hozzáad az ApplicationManifest.xml fájlhoz.
+A tanúsítványokkal és a titkosítási szemantikagal kapcsolatos további információkért lásd: [Secret Management](service-fabric-application-secret-management.md) .
 
-## <a name="configure-cluster-wide-credentials"></a>Fürtszintű hitelesítő adatok konfigurálása
+## <a name="configure-cluster-wide-credentials"></a>A fürtre kiterjedő hitelesítő adatok konfigurálása
 
-A Service Fabric lehetővé teszi a fürtszintű hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárház-hitelesítő adatokként használhatók.
+Service Fabric lehetővé teszi a teljes fürtre kiterjedő hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárházbeli hitelesítő adataiként használhatók.
 
-Ez a szolgáltatás engedélyezhető vagy `UseDefaultRepositoryCredentials` letiltható, ha hozzáadja az attribútumot az ApplicationManifest.xml fájlhoz `ContainerHostPolicies` egy vagy `true` `false` értékkel.
+Ez a funkció engedélyezhető vagy letiltható úgy `UseDefaultRepositoryCredentials` , hogy `ContainerHostPolicies` hozzáadja az attribútumot a ApplicationManifest `true` . `false` XML fájlhoz a vagy a értékkel.
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +49,14 @@ Ez a szolgáltatás engedélyezhető vagy `UseDefaultRepositoryCredentials` leti
 </ServiceManifestImport>
 ```
 
-A Service Fabric ezután az alapértelmezett tárház hitelesítő adatait használja, amelyek a `Hosting` csoportban a ClusterManifest-ben adhatók meg.  Ha `UseDefaultRepositoryCredentials` `true`a , a Service Fabric beolvassa a következő értékeket a ClusterManifest:If is , Service Fabric reads the following values from the ClusterManifest:
+A Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyek a `Hosting` szakasz ClusterManifest adhatók meg.  Ha `UseDefaultRepositoryCredentials` a `true`értéke, Service Fabric beolvassa a következő értékeket a ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (karakterlánc)
 * DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType (karakterlánc)
 
-Íme egy példa arra, hogy `Hosting` mit lehet hozzáadni a ClusterManifestTemplate.json fájl szakaszán belül. A `Hosting` szakasz hozzáadható a fürt létrehozásakor vagy később egy konfigurációs frissítésben. További információ: [Az Azure Service Fabric fürtbeállításainak módosítása](service-fabric-cluster-fabric-settings.md) és [az Azure Service Fabric-alkalmazások titkos adatainak kezelése](service-fabric-application-secret-management.md)
+Itt látható egy példa arra, hogy mit lehet hozzáadni a `Hosting` ClusterManifestTemplate. JSON fájl szakaszához. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -89,19 +89,19 @@ A Service Fabric ezután az alapértelmezett tárház hitelesítő adatait haszn
 ]
 ```
 
-## <a name="use-tokens-as-registry-credentials"></a>Jogkivonatok használata rendszerleíró hitelesítő adatként
+## <a name="use-tokens-as-registry-credentials"></a>Tokenek használata beállításjegyzékbeli hitelesítő adatokként
 
-A Service Fabric támogatja a jogkivonatok hitelesítő adatok használatával a tárolók lemezképeinek letöltéséhez.  Ez a szolgáltatás az alapul szolgáló virtuálisgép-méretezési készlet *felügyelt identitását* használja a beállításjegyzék hitelesítéséhez, így nincs szükség a felhasználói hitelesítő adatok kezelésére.  További [információ: Felügyelt identitások az Azure-erőforrásokhoz.](../active-directory/managed-identities-azure-resources/overview.md)  A szolgáltatás használatához a következő lépésekre van szükség:
+Service Fabric támogatja a tokenek használatát hitelesítő adatként a tárolók képeinek letöltéséhez.  Ez a szolgáltatás kihasználja a mögöttes virtuálisgép-méretezési csoport *felügyelt identitását* , hogy hitelesítse magát a beállításjegyzékben, így nincs szükség a felhasználói hitelesítő adatok kezeléséhez.  További információért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) .  A szolgáltatás használatához a következő lépések szükségesek:
 
-1. Győződjön meg arról, hogy *a rendszer hozzárendelt felügyelt identitás* engedélyezve van a virtuális gép.
+1. Győződjön meg arról, hogy a *rendszerhez rendelt felügyelt identitás* engedélyezve van a virtuális gépen.
 
-    ![Azure Portal: Virtuálisgép-méretezési csoport identitásának létrehozása](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Azure Portal: virtuálisgép-méretezési csoport identitási beállításának létrehozása](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2. Engedélyek et adhat a virtuálisgép-méretezési készlethez a lemezképek lekérése/olvasása a beállításjegyzékből. Az Azure Container Registry hozzáférés-vezérlési (IAM) paneljén az Azure Portalon, adjon hozzá egy *szerepkör-hozzárendelést* a virtuális géphez:
+2. Adja meg az engedélyeket a virtuálisgép-méretezési csoportnak a lemezképek lekérése/olvasása céljából a beállításjegyzékből. A Azure Portal Azure Container Registry Access Control (IAM) paneljén vegyen fel egy *szerepkör-hozzárendelést* a virtuális géphez:
 
-    ![Virtuálisgép-egyszerű felhasználó hozzáadása az ACR-hez](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
+    ![VM-tag hozzáadása az ACR-hez](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Ezután módosítsa az alkalmazásjegyzéket. A `ContainerHostPolicies` szakaszban adja hozzá `‘UseTokenAuthenticationCredentials=”true”`az attribútumot .
+3. Ezután módosítsa az alkalmazás jegyzékfájlját. A `ContainerHostPolicies` szakaszban adja hozzá az attribútumot `‘UseTokenAuthenticationCredentials=”true”`.
 
     ```xml
       <ServiceManifestImport>
@@ -116,8 +116,8 @@ A Service Fabric támogatja a jogkivonatok hitelesítő adatok használatával a
     ```
 
     > [!NOTE]
-    > A `UseDefaultRepositoryCredentials` jelző értéke `UseTokenAuthenticationCredentials` igaz, míg igaz hibát okoz a telepítés során.
+    > A True `UseDefaultRepositoryCredentials` (igaz `UseTokenAuthenticationCredentials` ) érték TRUE (igaz) értékre van állítva az üzembe helyezés során.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk a [tárolóbeállítás-beállításjegyzék-hitelesítésről.](../container-registry/container-registry-authentication.md)
+* További információ a [tároló-beállításjegyzék hitelesítéséről](../container-registry/container-registry-authentication.md).

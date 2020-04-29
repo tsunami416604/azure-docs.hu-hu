@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897317"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
@@ -59,9 +59,9 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)
-* [Az Azure AD Connect Health műveletei](how-to-connect-health-operations.md)
+* [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
-* [Az Azure AD Connect Health használata szinkronizáláshoz](how-to-connect-health-sync.md)
-* [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md)
-* [Az Azure AD Connect állapotverzióinak előzményei](reference-connect-health-version-history.md)
+* [Szinkronizálás Azure AD Connect Health használata](how-to-connect-health-sync.md)
+* [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](reference-connect-health-faq.md)
+* [Azure AD Connect Health korábbi verziók](reference-connect-health-version-history.md)
 

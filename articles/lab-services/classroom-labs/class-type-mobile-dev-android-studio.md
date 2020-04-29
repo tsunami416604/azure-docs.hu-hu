@@ -1,7 +1,7 @@
 ---
-title: Labor beállítása a mobilalkalmazások fejlesztésének tanítására az Android Studio segítségével
+title: Tesztkörnyezet létrehozása a mobileszköz-fejlesztés Android Studio
 titleSuffix: Azure Lab Services
-description: Ismerje meg, hogyan állíthat be egy tesztkörnyezetet az Android Studio t használó mobilalkalmazás-fejlesztési osztály tanítására.  A cikk azt is megvitatja, hogy az Android Studio használata az Azure-ban egy virtuális gépen.
+description: Megtudhatja, hogyan állíthat be egy labort a Android Studio-t használó adatmobil alkalmazásfejlesztés osztályának tanításához.  A cikk a Android Studio Azure-beli virtuális gépeken való használatakor végrehajtott módosításokat is ismerteti.
 services: lab-services
 author: emaher
 ms.service: lab-services
@@ -9,97 +9,97 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: enewman
 ms.openlocfilehash: 0c257589a2e93ac4c15a639e7156d0c0944b033c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849785"
 ---
-# <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Labor beállítása az androidos mobilalkalmazás-fejlesztés oktatására az Android Studio segítségével
+# <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Tesztkörnyezet beállítása az adatmobil alkalmazások fejlesztéséhez Android Studio
 
-Ez a cikk bemutatja, hogyan állíthat be egy bevezető mobilalkalmazás-fejlesztési osztályt.  Ez az osztály azokra az Android mobilalkalmazásokra összpontosít, amelyek közzétehetők a [Google Play Áruházban.](https://play.google.com/store/apps)  A diákok megtanulják, hogyan kell használni [az Android Studio](https://developer.android.com/studio) alkalmazásokat.  [Az Android visual Studio emulátor](https://visualstudio.microsoft.com/vs/msft-android-emulator/) az alkalmazás helyi tesztelésére szolgál.
+Ez a cikk bemutatja, hogyan állíthat be bevezető mobileszköz-fejlesztési osztályt.  Ez az osztály a [Google Play áruház](https://play.google.com/store/apps)közzétett androidos mobil alkalmazásokra koncentrál.  A tanulók megtudhatják, hogyan hozhat létre alkalmazásokat a [Android Studio](https://developer.android.com/studio) használatával.  Az [Androidhoz készült Visual Studio Emulator](https://visualstudio.microsoft.com/vs/msft-android-emulator/) az alkalmazás helyi tesztelésére szolgál.
 
-## <a name="lab-configuration"></a>Labor konfigurációja
+## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához azure-előfizetésre és laborfiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené. Miután megkapja az Azure-előfizetést, létrehozhat egy új laborfiókot az Azure Lab Servicesben. Az új tesztkörnyezet-fiók létrehozásáról további információt a [tesztkörnyezet-fiók beállításához](tutorial-setup-lab-account.md)szükséges oktatóanyag című témakörben talál.  Meglévő tesztkörnyezet-fiókot is használhat.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) . Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
 
-Kövesse a [beállított tantermi labor oktatóanyag](tutorial-setup-classroom-lab.md) egy új labor, majd alkalmazza a következő beállításokat:
+Kövesse a [tantermi labor beállítása oktatóanyagot](tutorial-setup-classroom-lab.md) , és hozzon létre egy új labort, majd alkalmazza a következő beállításokat:
 
 | Virtuális gép mérete | Kép |
 | -------------------- | ----- |
-| Közepes (beágyazott virtualizáció) | Windows Server 2019 Datacenter |
+| Közepes (beágyazott virtualizálás) | Windows Server 2019 Datacenter |
 
-## <a name="template-machine-configuration"></a>Sablongép konfigurációja
+## <a name="template-machine-configuration"></a>Sablon Számítógép-konfigurációja
 
-Amikor a sablongép létrehozása befejeződött, [indítsa el a gépet, és csatlakozzon hozzá](how-to-create-manage-template.md#update-a-template-vm) a következő feladatok elvégzéséhez:
+A sablon létrehozása után [indítsa el a gépet, és kapcsolódjon](how-to-create-manage-template.md#update-a-template-vm) hozzá a következő feladatok elvégzéséhez:
 
 1. Hyper-V szerepkör hozzáadása
 2. Töltse le és telepítse a Java-t.  
-3. Töltse le és telepítse a Visual Studio Emulátor t Androidra.
-4. Töltse le és telepítse az Android Studio alkalmazást.
-5. Konfigurálja a Visual Studio Emulátort az Android Studio számára.
+3. Töltse le és telepítse az Androidhoz készült Visual Studio Emulatort.
+4. Android Studio letöltése és telepítése.
+5. Konfigurálja a Visual Studio Emulatort a Android Studiohoz.
 
 ## <a name="add-hyper-v-role"></a>Hyper-V szerepkör hozzáadása
 
-A Hyper-V-t engedélyezni kell a Visual Studio Emulátor androidos sikeres telepítéséhez.  Kövesse a beágyazott virtualizálás engedélyezésére vonatkozó utasításokat [egy sablon virtuálisgép-cikkben.](how-to-enable-nested-virtualization-template-vm.md)
+A Hyper-V-nek engedélyezve kell lennie az Androidhoz készült Visual Studio Emulator sikeres telepítéséhez.  Kövesse a [beágyazott virtualizálás engedélyezése sablon virtuális gépekhez](how-to-enable-nested-virtualization-template-vm.md) című cikkben található utasításokat.
 
 ## <a name="install-java"></a>Java telepítése
 
-Android Studio java szükséges.  A Java legújabb verziójának letöltéséhez kövesse az alábbi lépéseket.
+A Android Studio Java-t igényel.  A Java legújabb verziójának letöltéséhez kövesse az alábbi lépéseket.
 
-1. Keresse meg a [Java letöltési lapját.](https://www.java.com/download/) Kattintson a **Java letöltés gombra.**
-2. A 64 bites Windows for Java weboldalon kattintson az Elfogadom és az **Ingyenes letöltés indítása**gombra.
-3. Amikor megjelenik **a Java telepítő** telepítője, kattintson a Telepítés **gombra.**
-4. Várjon, amíg a telepítő címe **megváltozik**a Java telepítő – teljes .  Kattintson **a Bezárás** gombra.
+1. Navigáljon a [Java letöltési oldalára](https://www.java.com/download/). Kattintson a **Java-Letöltés** gombra.
+2. Az 64-bites Windows for Java weblapon kattintson az **Elfogadom gombra, és indítsa el az ingyenes letöltést**.
+3. Amikor megjelenik a **Java telepítőjének** telepítője, kattintson a **telepítés**gombra.
+4. Várjon, amíg a telepítő címe **Java-telepítésre változik – Befejezés**.  Kattintson a **Bezárás** gombra.
 
-## <a name="install-visual-studio-emulator-for-android"></a>Visual Studio Emulátor telepítése Androidra
+## <a name="install-visual-studio-emulator-for-android"></a>A Visual Studio Emulator telepítése Android rendszerre
 
-Az Android-alkalmazások helyi teszteléséhez egy Android-eszköz virtualizált verzióját kell használnia.  Van néhány Android emulátorok elérhető, amely lehetővé teszi a fejlesztő, hogy teszteljék az alkalmazást a gép.  A Visual Studio Android-emulátort használjuk, mert ez egy emulátor, amely támogatja a beágyazott virtualizációt.  Mivel a Lab Service virtuális gép már egy virtuális gép, szükségünk van egy emulátor, amely támogatja a beágyazott virtualizáció.  Az Android Studio beépített emulátora nem támogatja a beágyazott virtualizációt.  Az emulátorok mely beágyazott virtualizációt támogatják, olvassa el [az emulátor teljesítményének hardveres gyorsítását (Hyper-V & HAXM)](https://docs.microsoft.com/xamarin/android/get-started/installation/android-emulator/hardware-acceleration).
+Az Android-alkalmazások helyi teszteléséhez az Android-eszköz virtualizált verzióját kell használnia.  Van néhány elérhető Android-emulátor, amely lehetővé teszi, hogy a fejlesztő tesztelje alkalmazását a gépről.  Visual Studio Emulatort használunk az Androidhoz, mivel ez egy olyan emulátor, amely támogatja a beágyazott virtualizálás szolgáltatást.  Mivel a labor szolgáltatás virtuális gépe már virtuális gép, a beágyazott virtualizálás támogató Emulátorra van szükségünk.  A Android Studio beépített emulátora nem támogatja a beágyazott virtualizálás szolgáltatást.  Ha szeretné megtekinteni, hogy mely emulátorok támogatják a beágyazott virtualizálás szolgáltatást, tekintse meg a következő témakört: [Hardvergyorsítás az emulátor teljesítményéhez (Hyper-& V](https://docs.microsoft.com/xamarin/android/get-started/installation/android-emulator/hardware-acceleration)
 
-Az alábbi utasításokat követve töltse le és telepítse az Android visual studio emulátort.
+Az Androidhoz készült Visual Studio Emulator letöltéséhez és telepítéséhez kövesse az alábbi utasításokat.
 
-1. Nyissa meg a [Visual Studio Android-emulátor](https://visualstudio.microsoft.com/vs/msft-android-emulator/) kezdőlapját.
-2. Kattintson **az Emulátor letöltése** gombra.
-3. A vs_emulatorsetup.exe letöltésekor futtassa a végrehajtható fájlt.
-4. Amikor megjelenik a Visual Studio beállítási párbeszédpanele, kattintson a **Telepítés** gombra.
-5. Várja meg, amíg a telepítő befejeződik.  A számítógép újraindításához és a telepítés befejezéséhez kattintson az **Újraindítás gombra.**
+1. Navigáljon az [Androidhoz készült Visual Studio Emulator](https://visualstudio.microsoft.com/vs/msft-android-emulator/) weboldalára.
+2. Kattintson az **emulátor letöltése** gombra.
+3. Ha a vs_emulatorsetup. exe fájlt letölti, futtassa a végrehajtható fájlt.
+4. Amikor megjelenik a Visual Studio telepítése párbeszédpanel, kattintson a **telepítés** gombra.
+5. Várjon, amíg a telepítő befejeződik.  Kattintson az **Újraindítás most** gombra a számítógép újraindításához és a telepítés befejezéséhez.
 
-Indítsa el először az emulátort, mielőtt az androidos stúdióval telepítené az alkalmazást.  Az Android visual studio emulátorról a [Visual Studio Android-emulátor dokumentációjában olvashat bővebben.](https://docs.microsoft.com/visualstudio/cross-platform/visual-studio-emulator-for-android)
+Először indítsa el az emulátort, mielőtt a Android Studio használatával telepítené az alkalmazást.  További információ az Androidhoz készült Visual Studio Emulatorról: [Visual Studio Emulator for Android dokumentáció](https://docs.microsoft.com/visualstudio/cross-platform/visual-studio-emulator-for-android).
 
-## <a name="install-android-studio"></a>Az Android Studio telepítése
+## <a name="install-android-studio"></a>Android Studio telepítése
 
-Kövesse az alábbi utasításokat az [Android Studio](https://developer.android.com/studio)letöltéséhez és telepítéséhez.
+[Android Studio](https://developer.android.com/studio)letöltéséhez és telepítéséhez kövesse az alábbi utasításokat.
 
-1. Keresse meg az [Android Studio letöltési oldalát.](https://developer.android.com/studio#downloads)  
+1. Navigáljon [Android Studio letöltési oldalra](https://developer.android.com/studio#downloads).  
     > [!NOTE]
-    > Ez a webhely nem támogatja az Internet Explorer böngészőt.
-2. Kattintson a Windows (64 bites) végrehajtható Android Studio csomagjára.
-3. Olvassa el a jogi kifejezéseket írt a pop-up.  Ha készen áll a folytatásra, jelölje be, **hogy elolvastam és elfogadom a fenti feltételeket,** és kattintson az **Android Studio for Windows** letöltése gombra.
-4. Miután az Android Studio telepítő futtatható letöltött, futtassa a futtatható.
-5. Az **Android Studio telepítőjének** Üdvözli az Android Studio telepítőjének **üdvözlőlapján** kattintson a **Tovább**gombra.
-6. A **Konfigurációs beállítások** lapon kattintson a **Tovább**gombra.
-7. A **Start menü mappa kiválasztása** lapon kattintson a **Telepítés gombra.**
-8. Várja meg, amíg a telepítés befejeződik.
-9. A **Telepítés befejeződött** lapon kattintson a **Tovább gombra.**
-10. Az **Android Studio beállításának befejezése** lapon.  Kattintson a **Befejezés** gombra.
-11. Az Android Studio automatikusan elindul a telepítés befejezése után.
-12. Az **Android-beállítások importálása...** párbeszédpanelen válassza a **Beállítások importálásának ne történt et.** Kattintson az **OK** gombra.
-13. Az Android Studio **telepítővarázslójának** **üdvözlőlapján** kattintson a **Tovább**gombra.
-14. A **Telepítés típusa** lapon válassza a **Normál**lehetőséget. Kattintson a **Tovább** gombra.
-15. A **Felhasználói felület téma kiválasztása** lapon válassza ki a kívánt témát. Kattintson a **Tovább** gombra.
-16. A **Beállítások ellenőrzése** lapon kattintson a **Tovább**gombra.
-17. Az **Összetevők letöltése** lapon várja meg, amíg az összes összetevő letöltődik.  Kattintson a **Befejezés** gombra.
+    > Ez a hely nem támogatja az Internet Explorert.
+2. Kattintson a Windows (64 bites) végrehajtható Android Studio csomagra.
+3. Olvassa el az előugró ablakban írt jogi feltételeket.  Ha készen áll a folytatásra, tekintse **meg az elolvastam és elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Windows rendszerhez készült letöltési Android Studio** gombra.
+4. A Android Studio telepítő végrehajtható fájljának letöltése után futtassa a végrehajtható fájlt.
+5. A **Android Studio telepítő** telepítőjének **üdvözli a Android Studio** lapon kattintson a **tovább**gombra.
+6. A **konfigurációs beállítások** lapon kattintson a **tovább**gombra.
+7. A **Start menü mappájának kiválasztása** lapon kattintson a **telepítés**gombra.
+8. Várjon, amíg a telepítés befejeződik.
+9. A **telepítés kész** lapon kattintson a **tovább**gombra.
+10. A **Android Studio telepítésének befejezése** lapon.  Kattintson a **Befejezés** gombra.
+11. A Android Studio automatikusan elindul a telepítés befejeződése után.
+12. Az **Android-beállítások importálása...** párbeszédpanelen válassza a **Ne importálja a beállításokat**lehetőséget. Kattintson az **OK** gombra.
+13. A **Android Studio telepítővarázslójának** **kezdőlapján kattintson a** **tovább**gombra.
+14. A **telepítés típusa** lapon válassza a **standard**lehetőséget. Kattintson a **Tovább** gombra.
+15. A **felhasználói felület kiválasztása téma** lapon válassza a kívánt téma lehetőséget. Kattintson a **Tovább** gombra.
+16. A **Beállítások ellenőrzése** lapon kattintson a **tovább**gombra.
+17. Az **összetevők letöltése** lapon várjon, amíg az összes összetevő le nem töltődik.  Kattintson a **Befejezés** gombra.
 
     > [!IMPORTANT]
-    > A HAXM telepítése várhatóan sikertelen lesz.  A HAXM nem támogatja a beágyazott virtualizációt, ezért telepítettük a Visual Studio Emulátort Androidra a cikk korábbi korábbi cikkében.
+    > A HAXM telepítése várhatóan sikertelen lesz.  A HAXM nem támogatja a beágyazott virtualizálás használatát, ezért a jelen cikk korábbi részében telepítette a Visual Studio Emulator for Android alkalmazást.
 
-18. Az **Üdvözli az Android Studio** párbeszédpanel jelenik meg, amikor a telepítővarázsló befejeződött.
+18. Az **üdvözli a Android Studio** párbeszédablak megjelenik a telepítővarázsló befejezésekor.
 
-## <a name="configure-android-studio-and-visual-studio-emulator-for-android"></a>Az Android Studio és a Visual Studio emulátorának konfigurálása Androidra
+## <a name="configure-android-studio-and-visual-studio-emulator-for-android"></a>A Android Studio és a Visual Studio Emulator konfigurálása Android rendszerhez
 
-Az Android Studio majdnem készen áll a használatra.  Továbbra is meg kell mondani a Visual Studio Emulátor Android, ahol az Android SDK telepítve van.  Ez a Visual Studio for Android alkalmazásban futó emulátorokat az Android Studio hibakeresésének telepítési céljaiként jeleníti meg.
+Android Studio majdnem készen áll a használatra.  Továbbra is meg kell adni az Androidhoz készült Visual Studio Emulatort, amelyen telepítve van az Android SDK.  Így az Androidhoz készült Visual Studio alkalmazásban futó emulátorok a Android Studio hibakereséséhez üzembe helyezési célként jelennek meg.
 
-Meg kell állítanunk egy adott beállításkulcsot, hogy megmondjuk a Visual Studio Emulátor for Android-ot, ahol az Android Sdk található.  A szükséges beállításkulcs beállításához futtassa az alábbi parancsfájlt.  Az alábbi PowerShell-parancsfájl az Android Sdk alapértelmezett telepítési helyét feltételezi.  Ha az Android Sdk-t egy másik `$androidSdkPath` helyre telepítette, módosítsa a parancsfájl futtatása előtt az értéket.
+Be kell állítania egy adott beállításkulcsot, amely közli a Visual Studio Emulatort az Androidhoz, ahol az Android SDK található.  A szükséges beállításkulcs beállításához futtassa az alábbi szkriptet.  Az alábbi PowerShell-szkript feltételezi az Android SDK alapértelmezett telepítési helyét.  Ha az Android SDK-t egy másik helyen telepítette, módosítsa a `$androidSdkPath` értéket a parancsfájl futtatása előtt.
 
 ```powershell
 $androidSdkPath = Resolve-Path $(Join-Path "$($env:APPDATA)" "../Local/Android/Sdk")
@@ -110,25 +110,25 @@ New-ItemProperty -Path $registryKeyPath -Name Path -PropertyType String -Value $
 ```
 
 > [!IMPORTANT]
-> Indítsa újra a Visual Studio Emulátort Android és Android Studio rendszerre, hogy az új beállítás használatban van.
+> Indítsa újra a Visual Studio Emulatort az Androidhoz, és Android Studio, hogy az új beállítás legyen használatban.
 
-Indítsa el a szükséges verziót a Visual Studio emulátorában.  Ez jelenik meg, mint a telepítési cél az Android app androidos stúdióban.  Az Android Studio projekt minimális verziójának támogatnia kell az Android Visual Studio Emulátorban futó verziót.  Most már készen áll arra, hogy projekteket hozzon létre és debugoljon az Android Studio és a Visual Studio Emulátor segítségével.  Ha bármilyen problémája van, olvassa el az Android emulátor hibaelhárításcímű témakört.
+Indítsa el a szükséges verziót a Visual Studio Emulatorban.  Az Android-alkalmazás üzembe helyezési célpontként jelenik meg az Android Studióban.  A Android Studio projekt minimális verziójának támogatnia kell az Androidhoz készült Visual Studio Emulatorban futó verziót.  Most már készen áll a projektek létrehozására és hibakeresésére a Android Studio és a Visual Studio Emulator for Android használatával.  Ha problémák merülnek fel, tekintse meg az Android Emulator hibaelhárítását ismertető témakört.
 
 ## <a name="cost"></a>Költségek
 
-Ha meg szeretné becsülni a labor költségét, kövesse az alábbi példát.
-Egy 25 fős, 20 órás ütemezett óraidővel és 10 óra kvótával rendelkező, házi feladatra vagy feladatokra vonatkozó kvótával rendelkező 25 fős osztály esetében a labor  
+Ha a labor költségeit szeretné megbecsülni, kövesse az alábbi példát.
+Egy 25 tanulós osztály esetében 20 órányi ütemezett időponttal és 10 órányi feladattal vagy hozzárendeléssel kapcsolatban a labor díja  
 
-25 \* diák (20 ütemezett + 10 kvóta) óra * 55 Labor egység * 0,01 USD óránként = 412,5 USD
+25 tanuló \* (20 ütemezett + 10 kvóta) óra * 55 labor egység * 0,01 USD/óra = 412,5 USD
 
-További részletek a díjszabásról az [Azure Lab Services díjszabása.](https://azure.microsoft.com/pricing/details/lab-services/)
+További részletek a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="next-steps"></a>További lépések
 
-A következő lépések gyakoriak a tesztkörnyezet beállításában.
+A következő lépések közösek a laborok beállításához.
 
 - [Sablon létrehozása és kezelése](how-to-create-manage-template.md)
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Ütemezés beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [E-mail regisztrációs linkek diákok](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail-regisztrációs hivatkozások a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users)

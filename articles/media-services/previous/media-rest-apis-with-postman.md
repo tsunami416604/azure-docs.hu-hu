@@ -1,6 +1,6 @@
 ---
-title: Postás konfigurálása az Azure Media Services REST API-hívásaihoz
-description: Ez a cikk a Postman a Media Services REST API-hívások konfigurálását ismerteti.
+title: Poster konfigurálása Azure Media Services REST API hívásokhoz
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a Poster Media Services REST API-hívásokhoz.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76694990"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Postás konfigurálása a Media Services v2 REST API-hívásaihoz  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Poster konfigurálása Media Services v2 REST API hívásokhoz  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez az oktatóanyag bemutatja, hogyan konfigurálhatja **a Postmant** az Azure Media Services (AMS) REST API-k hívásához. A bemutató bemutatja, hogyan kell importálni a környezetet és a gyűjtemény fájlokat **Postman**. A gyűjtemény az Azure Media Services (AMS) REST API-kat hívó HTTP-kérelmek csoportosított definícióit tartalmazza. A környezeti fájl azokat a változókat tartalmazza, amelyeket a gyűjtemény használ.
+Ez az oktatóanyag bemutatja, hogyan konfigurálhatja a **Poster** -t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására. Az oktatóanyag bemutatja, hogyan importálhat környezeteket és gyűjteményeket a **Poster**-ba. A gyűjtemény a Azure Media Services (AMS) REST API-kat meghívó HTTP-kérések csoportosított definícióit tartalmazza. A környezeti fájl azokat a változókat tartalmazza, amelyeket a gyűjtemény használ.
 
-Ez a környezet és gyűjtemény olyan cikkekben használatos, amelyek bemutatják, hogyan valósíthat meg különböző feladatokat az Azure Media Services REST API-kkal.
+Ez a környezet és gyűjtemény olyan cikkekben használatos, amelyek bemutatják, hogyan lehet különböző feladatokat elérni Azure Media Services REST API-kkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Kód** a REST plugin vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs**. 
 
 ## <a name="configure-the-environment"></a>A környezet konfigurálása 
 
-1. Hozzon létre egy .json fájlt, amely az AMS oktatóanyagokban használt környezeti változókat tartalmazza. Nevezze el a fájlt (például **AzureMediaServices.postman_environment.json).** Nyissa meg a fájlt, és illessze be a Postman környezetet meghatározó kódot ebből a [kódlistából.](postman-environment.md) 
+1. Hozzon létre egy. JSON fájlt, amely tartalmazza az AMS oktatóanyagokban használt környezeti változókat. Nevezze el a fájlt (például **AzureMediaServices. postman_environment. JSON**). Nyissa meg a fájlt, és illessze be a Poster-környezetet meghatározó kódot a [kód listájából](postman-environment.md). 
 2. Nyissa meg a **Postmant**.
 3. A képernyő jobb oldalán válassza a **Manage environment (Környezet felügyelete)** lehetőséget.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-env.png)
 4. A **Manage environment (Környezet felügyelete)** párbeszédablakban kattintson az **Import (Importálás)** gombra.
-5. Böngésszen és válassza ki az **AzureMediaServices.postman_environment.json** fájlt.
-6. Az **AzureMedia-környezet** hozzáadva.
+5. Tallózással keresse meg és válassza ki a **AzureMediaServices. postman_environment. JSON** fájlt.
+6. A **AzureMedia** -környezet hozzá van adva.
 7. Zárja be a párbeszédpanelt.
-8. Válassza ki az **AzureMedia** környezetben.
+8. Válassza ki a **AzureMedia** -környezetet.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-choose-env.png)
 
 ## <a name="configure-the-collection"></a>A gyűjtemény konfigurálása
 
-1. Hozzon létre egy .json fájlt, amely tartalmazza a **Postman** gyűjteményt, és tartalmazza a fájl Media Services szolgáltatásba való feltöltéséhez szükséges összes műveletet. Nevezze el a fájlt (például **AzureMediaServicesOperations.postman_collection.json).** Nyissa meg a fájlt, és illessze be a **postás** gyűjteményt meghatározó kódot ebből a [kódlistából.](postman-collection.md)
+1. Hozzon létre egy. JSON-fájlt, amely tartalmazza a **Poster** -gyűjteményt az összes olyan művelettel, amely szükséges a fájlok Media Servicesba való feltöltéséhez. Nevezze el a fájlt (például **AzureMediaServicesOperations. postman_collection. JSON**). Nyissa meg a fájlt, és illessze be a **Poster** [-gyűjteményt meghatározó kódot a](postman-collection.md)listában.
 2. Kattintson az **Import (Importálás)** gombra a gyűjteményfájl importálásához.
-3. Válassza ki az **AzureMediaServicesOperations.postman_collection.json** fájlt.
+3. Válassza ki a **AzureMediaServicesOperations. postman_collection. JSON** fájlt.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [feltöltési kellékek](media-services-rest-upload-files.md) ről szóló cikket.  
+Tekintse meg az [eszközök feltöltése](media-services-rest-upload-files.md) című cikket.  

@@ -1,74 +1,74 @@
 ---
-title: Az Azure azonnali visszaállítási képessége
-description: Azure Instant Restore Képesség és GYIK a virtuális gép biztonsági mentési verem, Resource Manager telepítési modell
+title: Azure azonnali visszaállítási képesség
+description: Azure azonnali visszaállítási képesség és gyakori kérdések a virtuális gépek biztonsági mentési vereméhez, Resource Manager-alapú üzemi modell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705428"
 ---
-# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Az Azure Backup azonnali visszaállítási funkcióval továbbfejlesztett biztonsági mentési és visszaállítási teljesítményre számíthat
+# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
 > [!NOTE]
-> A felhasználók visszajelzései alapján átnevezzük **a vm biztonsági mentési verem V2-t** **azonnali visszaállításra,** hogy csökkentsük az Azure Stack funkcióival való összetévesztést.
-> Az összes Azure biztonsági mentési felhasználó frissítése azonnali **visszaállításra**lett frissítve.
+> A felhasználók visszajelzései alapján átnevezzük a **VM Backup stack v2** -et az **azonnali visszaállításra** , hogy csökkentse a Azure stack funkcióinak összekeveredését.
+> Az Azure Backup összes felhasználója most már frissítve lett az **azonnali visszaállításra**.
 
-Az azonnali visszaállítás új modellje a következő funkciófejlesztéseket biztosítja:
+Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
-* Képes használni a biztonsági mentési feladat részeként készített pillanatképek, amely a helyreállításhoz elérhető, anélkül, hogy megvárna a tárolóba irányuló adatátvitel befejezéséhez. Csökkenti a várakozási időt a pillanatképek másolása a tárolóba visszaállítás a visszaállítás előtt.
-* Csökkenti a biztonsági mentési és visszaállítási időt azáltal, hogy a pillanatképeket helyileg, alapértelmezés szerint két napig megőrzi. Ez az alapértelmezett pillanatkép-megőrzési érték 1 és 5 nap közötti bármely értékre konfigurálható.
-* Támogatja a 32 TB-os lemezméretet. A lemezek átméretezése nem ajánlott az Azure Backup.
-* Támogatja a standard SSD-lemezeket, valamint a standard HDD-lemezeket és a prémium szintű SSD-lemezeket.
-* Nem felügyelt virtuális gépek eredeti tárfiókok (lemezenként) használata visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gép rendelkezik a tárfiókok között elosztott lemezekkel. Felgyorsítja a visszaállítási műveleteket a virtuális gép konfigurációk széles köréhez.
-* A prémium szintű tárhelyet használó virtuális gépek biztonsági mentése esetén az Azonnali visszaállítás szolgáltatással azt javasoljuk, hogy a teljes lefoglalt tárhely *50%-os* szabad területét különítse el, ami **csak** az első biztonsági mentéshez szükséges. Az 50%-os szabad terület nem követelmény a biztonsági mentéshez az első biztonsági mentés befejezése után.
+* A helyreállításhoz elérhető biztonsági mentési feladatok részeként készített pillanatképek használatának lehetősége anélkül, hogy a tárolóba való adatátvitelre kellene várni. Ez csökkenti a várakozási időt a pillanatképek másolásához a tárolóba a visszaállítás elindítása előtt.
+* Csökkenti a biztonsági mentési és visszaállítási időt a pillanatképek helyi megőrzésével, alapértelmezés szerint két napig. Ez az alapértelmezett pillanatkép-megőrzési érték 1 és 5 nap közötti értékre állítható be.
+* A legfeljebb 32 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott.
+* A standard SSD lemezeket standard HDD lemezekkel és prémium SSD lemezekkel együtt támogatja.
+* A nem felügyelt virtuális gépek eredeti Storage-fiókjai (lemezenként) való használatának lehetősége a visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gépnek vannak olyan lemezek, amelyek a Storage-fiókok között oszlanak el. A rendszer a virtuálisgép-konfigurációk széles körére felgyorsítja a visszaállítási műveleteket.
+* A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
 
-## <a name="whats-new-in-this-feature"></a>Újdonságok ebben a funkcióban
+## <a name="whats-new-in-this-feature"></a>A szolgáltatás újdonságai
 
-Jelenleg a biztonsági mentési feladat két fázisból áll:
+A biztonsági mentési feladatok jelenleg két fázisból állnak:
 
-1. Virtuális gép pillanatkép készítése.
-2. Virtuálisgép-pillanatkép átvitele az Azure Recovery Services-tárolóba.
+1. A virtuális gép pillanatképének készítése.
+2. Virtuális gép pillanatképének továbbítása az Azure Recovery Services-tárba.
 
-A helyreállítási pont csak az 1. A frissítés részeként egy helyreállítási pont jön létre, amint a pillanatkép befejeződött, és ez a helyreállítási pont pillanatkép típusú lehet használni, hogy egy visszaállítási ugyanazon visszaállítási folyamat használatával. Ezt a helyreállítási pontot az Azure Portalon a "pillanatkép" használatával a helyreállítási pont típusa, és miután a pillanatkép át a tárolóba, a helyreállítási pont típusa "pillanatkép és a tároló".
+A helyreállítási pontok csak az 1. és 2. fázisok befejezése után tekinthetők meg. A frissítés részeként létrejön egy helyreállítási pont, amint a pillanatkép elkészült, és a pillanatkép-típus helyreállítási pontja ugyanazzal a visszaállítási folyamattal végezheti el a visszaállítást. Ezt a helyreállítási pontot a Azure Portal a helyreállítási pont típusaként a "pillanatkép" használatával azonosíthatja, és a pillanatkép a tárolóba való átvitele után a helyreállítási pont típusa a "Snapshot and Vault" értékre változik.
 
-![Biztonságimentési feladat a virtuális gép biztonsági mentési veremében az Erőforrás-kezelő telepítési modelljében – tároló és tároló](./media/backup-azure-vms/instant-rp-flow.png)
+![Biztonsági mentési feladatok a virtuális gépek biztonsági mentési verem Resource Manager-alapú üzemi modelljében – tárolás és tár](./media/backup-azure-vms/instant-rp-flow.png)
 
-Alapértelmezés szerint a pillanatképek két napig megőrződnek. Ez a funkció lehetővé teszi a visszaállítási műveletet ezekből a pillanatképekből a visszaállítási idők csökkentésével. Csökkenti az adatok átalakításához és a tárolóból való visszamásolásához szükséges időt.
+Alapértelmezés szerint a pillanatképek két napig őrződnek meg. Ez a funkció lehetővé teszi ezen Pillanatképek visszaállítási műveletét a visszaállítási idő csökkentésével. Ez csökkenti az adatok tárolóból való visszaalakításához és másolásához szükséges időt.
 
-## <a name="feature-considerations"></a>A szolgáltatással kapcsolatos szempontok
+## <a name="feature-considerations"></a>A szolgáltatással kapcsolatos megfontolások
 
-* A pillanatképek a lemezekkel együtt tárolódnak a helyreállítási pont létrehozásának fokozása és a visszaállítási műveletek felgyorsítása érdekében. Ennek eredményeképpen az ebben az időszakban készített pillanatképeknek megfelelő tárolási költségeket fog látni.
-* A növekményes pillanatképek lapblobokként tárolódnak. A nem felügyelt lemezeket használó összes felhasználónak díjat kell fizetnie a helyi tárfiókban tárolt pillanatképekért. Mivel a felügyelt virtuális gépek biztonsági másolatai által használt visszaállítási pontgyűjtemények blob pillanatképeket használnak az alapul szolgáló tárolási szinten, a felügyelt lemezeknél a blob pillanatkép-díjszabásának megfelelő költségek et fog látni, és növekményesek.
-* Prémium szintű tárfiókok esetén az azonnali helyreállítási pontokhoz készített pillanatképek a lefoglalt terület 10 TB-os korlátjába számítanak.
-* A pillanatkép-megőrzés konfigurálása a visszaállítási igények alapján konfigurálható. A követelménytől függően beállíthatja a pillanatkép-megőrzési legalább egy napra a biztonsági mentési szabályzat panelen az alábbiak szerint. Ez segít a pillanatkép-megőrzés költségeinek megtakarításában, ha nem hajt végre gyakran visszaállítást.
-* Ez egy irányított frissítés, miután frissített azonnali visszaállításra, nem mehet vissza.
-
->[!NOTE]
->Ezzel az azonnali visszaállítási frissítéssel az összes ügyfél pillanatkép-megőrzési időtartama **(új és meglévő is tartalmazza)** két napos alapértelmezett értékre lesz állítva. Az időtartamot azonban a szükséglet szerint 1 és 5 nap közötti értékre állíthatja be.
-
-## <a name="cost-impact"></a>Költséghatás
-
-A növekményes pillanatképek a virtuális gép tárfiók, amely az azonnali helyreállításhoz használt. A növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt terület megegyezik a pillanatkép létrehozása után írt oldalak által elfoglalt területtel. A számlázás továbbra is a pillanatkép által elfoglalt GB-onkénti használt területre vonatkozik, és a GB-onkénti ár megegyezik az [árképzési oldalon említettekével.](https://azure.microsoft.com/pricing/details/managed-disks/) A nem felügyelt lemezeket használó virtuális gépek esetében a pillanatképek az egyes lemezek Virtuálismerevlemez-fájljának menüjében láthatók. Felügyelt lemezek esetén a pillanatképek egy kijelölt erőforráscsoportban lévő visszaállítási pontgyűjtemény-erőforrásban tárolódnak, és maguk a pillanatképek közvetlenül nem láthatók.
+* A rendszer a pillanatképeket a lemezekkel együtt tárolja a helyreállítási pontok létrehozásának és a visszaállítási műveletek felgyorsításának fokozása érdekében. Ennek eredményeképpen megjelennek a tárolási költségek, amelyek megfelelnek az adott időszakban készített pillanatképeknek.
+* A növekményes pillanatképeket blobként tárolja a rendszer. A nem felügyelt lemezeket használó összes felhasználó díja a helyi Storage-fiókban tárolt pillanatképeknek. Mivel a felügyelt virtuális gépek biztonsági mentései által használt visszaállítási pontok gyűjteményei blob-pillanatképeket használnak az alapul szolgáló tárolási szinten, a felügyelt lemezek esetében látni fogja a blob-pillanatkép díjszabásának megfelelő költségeket, és növekményes.
+* A prémium szintű Storage-fiókok esetében az azonnali helyreállítási pontok számára készített Pillanatképek a lefoglalt terület 10 TB-os korlátján alapulnak.
+* Lehetőség van a pillanatkép-megőrzés konfigurálására a visszaállítási igények alapján. A követelménytől függően a biztonsági mentési szabályzat paneljén legalább egy napig állíthatja be a pillanatkép-megőrzést, az alább leírtak szerint. Ezzel a művelettel megtakaríthatja a pillanatképek megőrzésének költségeit, ha nem végez gyakran visszaállítást.
+* Ez egy irányított frissítés, amely az azonnali visszaállításra való frissítés után nem mehet vissza.
 
 >[!NOTE]
-> A pillanatkép-megőrzés heti szabályzatok esetén 5 nap.
+>Ezzel az azonnali visszaállítással az összes ügyfél pillanatkép-megőrzési időtartamát (az**új és a meglévőket is beleértve**) két nap alapértelmezett értékre állítja a rendszer. Az időtartamot azonban igény szerint állíthatja be az 1 és 5 nap közötti értékre.
+
+## <a name="cost-impact"></a>Cost Impact
+
+A növekményes Pillanatképek tárolása a virtuális gép Storage-fiókjában történik, amelyet az azonnali helyreállításhoz használ a rendszer. A növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt terület egyenlő a pillanatkép létrehozása után írt lapok által elfoglalt területtel. A számlázási szolgáltatás továbbra is a pillanatkép által elfoglalt GB-nyi felhasznált területre vonatkozik, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/managed-disks/)pedig a GB-os díj megegyezik. A nem felügyelt lemezeket használó virtuális gépek esetében a pillanatképek az egyes lemezek VHD-fájljának menüjében láthatók. A felügyelt lemezek esetében a pillanatképek egy kijelölt erőforráscsoport visszaállítási pontjának gyűjteményi erőforrásában vannak tárolva, és maguk a pillanatképek nem láthatók közvetlenül.
+
+>[!NOTE]
+> Heti szabályzatok esetén a pillanatkép-megőrzés 5 napig rögzített.
 
 ## <a name="configure-snapshot-retention"></a>Pillanatkép-megőrzés konfigurálása
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-Az Azure Portalon láthatja a **virtuális gép biztonsági mentési szabályzata** panelen az azonnali **visszaállítás** szakaszban hozzáadott mezőt. Módosíthatja a pillanatkép-megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzata** panelen az adott biztonsági mentési szabályzathoz társított összes virtuális géphez.
+A Azure Portalban megjelenik egy mező, amelyet a **virtuális gép biztonsági mentési szabályzat** paneljén, az **azonnali visszaállítás** szakaszban találhat. A pillanatképek megőrzésének időtartamát a **virtuális gép biztonsági mentési szabályzatának** paneljén módosíthatja az adott biztonsági mentési szabályzathoz társított összes virtuális géphez.
 
 ![Azonnali visszaállítási képesség](./media/backup-azure-vms/instant-restore-capability.png)
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
 >[!NOTE]
-> Az Az PowerShell 1.6.0-s verziójától kezdve frissítheti az azonnali visszaállítás pillanatkép-megőrzési időszakát a szabályzatban a PowerShell használatával
+> Az az PowerShell Version 1.6.0-től kezdődően a PowerShell használatával frissítheti az azonnali visszaállítás pillanatképének megőrzési időtartamát a szabályzatban
 
 ```powershell
 $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -76,49 +76,49 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Az egyes házirendek alapértelmezett pillanatkép-megőrzése két napra van állítva. A felhasználó az értéket legalább 1-re, de legfeljebb öt napra módosíthatja. Heti szabályzatok esetén a pillanatkép-megőrzés öt napra van rögzítve.
+Az egyes szabályzatok alapértelmezett pillanatkép-megőrzése két napra van állítva. A felhasználó módosíthatja az értéket legalább 1 és legfeljebb öt napig. A heti házirendek esetében a pillanatképek megőrzésének öt napig kell megállapítania.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="what-are-the-cost-implications-of-instant-restore"></a>Milyen költségvonzatokkal jár az azonnali visszaállítás?
+### <a name="what-are-the-cost-implications-of-instant-restore"></a>Milyen költségeket érint az azonnali visszaállítás?
 
-A pillanatképek a lemezekkel együtt tárolódnak a helyreállítási pont létrehozásának és a visszaállítási műveleteknek a felgyorsítása érdekében. Ennek eredményeképpen a virtuális gép biztonsági mentési szabályzata részeként kiválasztott pillanatkép-megőrzési költségek et.
+A rendszer a pillanatképeket a lemezekkel együtt tárolja a helyreállítási pontok létrehozásának és visszaállítási műveleteinek felgyorsításához. Ennek eredményeképpen a virtuális gép biztonsági mentési szabályzatának részeként kiválasztott pillanatkép-megőrzésnek megfelelő tárolási költségek láthatók.
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>A prémium szintű storage-fiókokban az azonnali helyreállítási ponthoz készített pillanatképek foglalják el a 10 TB-os pillanatkép korlátot?
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Storage fiókok esetében az azonnali helyreállítási ponthoz készített Pillanatképek elfoglalják a 10 TB-os pillanatkép-korlátot?
 
-Igen, a prémium szintű tárfiókok az azonnali helyreállítási pont hozkészített pillanatképek elfoglalják 10 TB lefoglalt pillanatkép terület.
+Igen, a Premium Storage-fiókok esetében az azonnali helyreállítási ponthoz készített Pillanatképek 10 TB-nyi lefoglalt pillanatképet foglalnak magukban.
 
-### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Hogyan működik a pillanatkép-megőrzési munka az öt napos időszakban?
+### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Hogyan működik a pillanatképek megőrzése az ötnapos időszakban?
 
-Minden nap egy új pillanatkép készül, majd öt egyedi növekményes pillanatképek. A pillanatkép mérete az adatforgalomtól függ, amelyek a legtöbb esetben 2%7% körül vannak.
+Minden nap új pillanatkép készül, és öt egyéni növekményes pillanatkép van. A pillanatkép mérete az adatváltozástól függ, amely a legtöbb esetben a 2%-7% körül van.
 
-### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Az azonnali visszaállítás pillanatképe egy növekményes pillanatkép vagy teljes pillanatkép?
+### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Egy növekményes pillanatkép vagy teljes pillanatkép azonnali visszaállítási pillanatképe?
 
-Az azonnali visszaállítási képesség részeként készített pillanatképek növekményes pillanatképek.
+Az azonnali visszaállítási képesség részeként készített Pillanatképek növekményes Pillanatképek.
 
-### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Hogyan számíthatom ki az azonnali visszaállítási funkció miatti hozzávetőleges költségnövekedést?
+### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Hogyan számítható ki az azonnali visszaállítási funkció miatt megbecsült költségmegtakarítás?
 
-Ez a virtuális gép lemorzsolódásátótól függ. Állandó állapotban feltételezheti, hogy a költségnövekedése = Pillanatkép-megőrzési időszak napi lemorzsolódás virtuálisgép-tárolási költség gb-onként.
+Ez a virtuális gép adatforgalmával függ. Állandó állapot esetén feltételezheti, hogy a költségeket a rendszer a virtuális gép tárterületének napi adatforgalmára vonatkozó, óránkénti adatváltozási időszakra vonatkozóan veszi igénybe.
 
-### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Ha a visszaállítási pont helyreállítási típusa "Pillanatkép és tároló", és visszaállítási műveletet hajtok végre, melyik helyreállítási típust fogja használni?
+### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Ha egy visszaállítási pont helyreállítási típusa "Snapshot and Vault", és elvégezek egy visszaállítási műveletet, amely a helyreállítási típust fogja használni?
 
-Ha a helyreállítási típus "pillanatkép és tároló", visszaállítás automatikusan történik a helyi pillanatkép, amely sokkal gyorsabb lesz, mint a tárolóból végzett visszaállítás.
+Ha a helyreállítás típusa "Snapshot and Vault", a visszaállítás automatikusan a helyi pillanatképből történik, ami sokkal gyorsabb lesz, mint a tárból végzett visszaállítás.
 
-### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Mi történik, ha kiválasztom a visszaállítási pont (Tier 2) megőrzési időszakát, amely kisebb, mint a pillanatkép (Tier1) megőrzési időszak?
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Mi történik, ha a visszaállítási pont megőrzési időtartamát (2. szakasz) kisebb, mint a pillanatkép (Tier1) megőrzési ideje?
 
-Az új modell csak akkor engedélyezi a visszaállítási pont (Tier2) törlését, ha a pillanatkép (Tier1) törlődik. Azt javasoljuk, hogy a pillanatkép-megőrzési időszaknál nagyobb visszaállítási pont (Tier2) megőrzési időszakot ütemező.
+Az új modell nem engedélyezi a visszaállítási pont (szint) törlését, kivéve, ha a pillanatképet (Tier1) törli. Azt javasoljuk, hogy a visszaállítási pont (szint) adatmegőrzési időszaka nagyobb legyen, mint a pillanatkép megőrzési időtartama.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért létezik a pillanatképem a beállított megőrzési időszak után is a biztonsági mentési szabályzatban?
+### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban megadott megőrzési időszak után is?
 
-Ha a helyreállítási pont pillanatképpel rendelkezik, és ez a legújabb elérhető RP, a következő sikeres biztonsági mentésig megmarad. Ez a tervezett "szemétgyűjtés" (GC) házirend ma, amely előírja, hogy legalább egy legújabb RP mindig jelen van abban az esetben, ha az összes biztonsági mentések tovább nem miatt egy probléma a virtuális gép. Normál esetben a rp-k a lejáratuk után legfeljebb 24 órán belül törlődnek.
+Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer megőrzi a következő sikeres biztonsági mentés idejét. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely a virtuális gép hibája miatt nem tesz kötelezővé legalább egy legújabb RP-t, hogy mindig legyen jelen. Normál forgatókönyvekben az RPs-t a lejárat után legfeljebb 24 órával töröljük.
 
-### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükségem azonnali visszaállítási funkcióra. Lehet letiltani?
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 
-Az azonnali visszaállítás mindenki számára engedélyezve van, és nem tiltható le. A pillanatkép-megőrzés legalább egy napra csökkentheti.
+Az azonnali visszaállítás funkció mindenki számára engedélyezve van, és nem tiltható le. A pillanatképek megőrzését legalább egy napra csökkentheti.
 
 >[!NOTE]
-> **Az Azure Backup mostantól támogatja a szelektív lemezbiztonsági mentést és visszaállítást az Azure virtuális gép biztonsági mentési megoldásával.**
+> **A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.**
 >
->Az Azure Backup ma támogatja az összes lemez (operációs rendszer és adatok) biztonsági mentését a virtuális gépben a virtuális gép biztonsági mentési megoldásának használatával. A exclude-disk funkcióval lehetőséget kap arra, hogy egy vagy néhány biztonsági másolatot készítsen a virtuális gép számos adatlemezéről. Ez hatékony és költséghatékony megoldást nyújt a biztonsági mentési és visszaállítási igényekhez. Minden helyreállítási pont a biztonsági mentési műveletben szereplő lemezek adatait tartalmazza, ami lehetővé teszi, hogy a lemezek egy részhalmaza visszaálljon az adott helyreállítási pontról a visszaállítási művelet során. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
+>Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
 >
->**Az előnézetre való feliratkozáshoz írjon nekünk aAskAzureBackupTeam@microsoft.com**
+>**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**

@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub 400027-es hibaesetén A ConnectionForcefullyClosedOnNewConnection
-description: A 400027-es hiba kijavítása ConnectionForcefullyClosedOnNewConnection
+title: Az Azure IoT Hub hibáinak elhárítása 400027 ConnectionForcefullyClosedOnNewConnection
+description: Ismerje meg, hogyan javíthatja a 400027-es hibát a ConnectionForcefullyClosedOnNewConnection
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: f4949816f516c6a6b60cfda0602f458256370d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76960528"
 ---
 # <a name="400027-connectionforcefullyclosedonnewconnection"></a>400027 ConnectionForcefullyClosedOnNewConnection
 
-Ez a cikk a **400027 ConnectionForcefullyClosedOnNewConnection** hibák okait és megoldásait ismerteti.
+Ez a cikk a **400027 ConnectionForcefullyClosedOnNewConnection** -hibák okait és megoldásait ismerteti.
 
 ## <a name="symptoms"></a>Probléma
 
-Az eszközről a felhőbe irányuló ikerművelet (például az olvasás vagy a javítás jelentett tulajdonságainak javítása) vagy a közvetlen metódusmeghívás a **400027**hibakóddal sikertelen.
+Az eszközről a felhőbe irányuló kettős művelet (például a Read vagy a patch jelentett tulajdonságai) vagy a közvetlen metódus meghívása meghiúsul a **400027**hibakód esetén.
 
 ## <a name="cause"></a>Ok
 
-Egy másik ügyfél új kapcsolatot hozott létre az IoT Hubhoz ugyanazzal a hitelesítő adatokkal, így az IoT Hub bezárta az előző kapcsolatot. Az IoT Hub nem engedélyezi egynél több ügyfél számára, hogy azonos hitelesítő adatokkal csatlakozzon.
+Egy másik ügyfél létrehozott egy új kapcsolódást IoT Hub ugyanazzal a hitelesítő adatokkal, így IoT Hub lezárta az előző kapcsolódást. IoT Hub nem engedélyezi, hogy egynél több ügyfél csatlakozhasson ugyanazzal a hitelesítő adatokkal.
 
 ## <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy minden ügyfél csatlakozik az IoT Hubhoz a saját identitásával.
+Győződjön meg arról, hogy minden ügyfél a saját identitásával csatlakozik a IoT Hubhoz.

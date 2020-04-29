@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus prémium és standard szintjei
-description: Ez a cikk az Azure Service Bus standard és prémium szintjeit ismerteti. Összehasonlítja ezeket a szinteket, és technikai különbségeket biztosít.
+title: Prémium és standard szintű Azure Service Bus
+description: Ez a cikk a Azure Service Bus standard és prémium szintű csomagját ismerteti. Összehasonlítja ezeket a szinteket, és technikai különbségeket biztosít.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774572"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
@@ -37,7 +37,7 @@ A következő táblázat néhány fontos eltérést emel ki.
 | Lehetőség a munkaterhelés vertikális fel- és leskálázására |N/A |
 | Legfeljebb 1 MB méretű üzenet |Legfeljebb 256 KB méretű üzenet |
 
-A **Service Bus prémium szintű üzenetkezelés** erőforrás-elkülönítést biztosít a CPU és a memória szintjén, így az ügyfél minden számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Minden Service Bus Premium-névtérhez 1, 2, 4 vagy 8 üzenetküldési egységet vásárolhat. Egyetlen számítási feladat vagy entitás több üzenetküldési egységre is kiterjedhet, és az üzenetküldési egységek száma tetszés szerint módosítható. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.
+A **Service Bus prémium szintű üzenetkezelés** erőforrás-elkülönítést biztosít a CPU és a memória szintjén, így az ügyfél minden számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium szintű névterekhez 1, 2, 4 vagy 8 üzenetküldési egység is megvásárolható. Egyetlen munkaterhelés vagy entitás több üzenetkezelési egységre is kiterjedhet, és az üzenetkezelési egységek száma a következő időpontban módosítható:. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.
 
 Nem csak kiszámíthatóbb és nagyobb rendelkezésre állású a teljesítmény, de gyorsabb is. A Service Bus prémium szintű üzenetkezelés az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásban bemutatott tárolási motorra épít. Prémium szintű üzenetkezelés esetén a csúcsteljesítmény jóval gyorsabb, mint a standard szinten.
 
@@ -55,44 +55,44 @@ Mivel a prémium szintű üzenetkezelés teljesen izolált futtatókörnyezetben
 
 Ha szabványos üzenetkezelés alatt futtat kódot, és továbbítani szeretné a prémium szintre, ügyeljen arra, hogy az [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) tulajdonság beállítása **false** legyen (ez az alapértelmezett érték).
 
-## <a name="premium-messaging-resource-usage"></a>Prémium üzenetküldési erőforrás-használat
-Az entitáson végzett bármely művelet általában processzor- és memóriahasználatot okozhat. Íme néhány ilyen művelet: 
+## <a name="premium-messaging-resource-usage"></a>Prémium szintű üzenetkezelési erőforrás-használat
+Általánosságban elmondható, hogy az entitások bármely művelete CPU-és memóriahasználat okozhatja a használatot. Íme néhány ilyen művelet: 
 
-- Felügyeleti műveletek, például CRUD (Create, Beolvasás, Frissítés és Törlés) műveletek várólistákon, témakörökön és előfizetéseken.
+- Felügyeleti műveletek, például a szifilisz (létrehozás, lekérés, frissítés és törlés) a várólisták, témakörök és előfizetések műveleteihez.
 - Futásidejű műveletek (üzenetek küldése és fogadása)
-- Nyomon követési műveletek és riasztások
+- Figyelési műveletek és riasztások
 
-A további CPU és a memória használat nem árú továbbá mégis. A prémium üzenetküldési szint esetén az üzenetegység egyetlen árat ért el.
+A további CPU-és memóriahasználat azonban nem számítunk fel. A prémium szintű üzenetkezelési szint esetében az üzenet egységének egyetlen ára van.
 
-A cpu- és memóriahasználat nyomon követhető, és a következő okok miatt jelenik meg az Ön számára: 
+A CPU és a memóriahasználat nyomon követhető, és a következő okok miatt jelenik meg: 
 
-- Átláthatóság biztosítása a rendszer belső
+- Átláthatóság biztosítása a belső rendszerek számára
 - Ismerje meg a megvásárolt erőforrások kapacitását.
-- Kapacitástervezés, amely segít eldönteni, hogy fel-le skálázás.
+- A kapacitás megtervezése, amely segít a vertikális felskálázásban.
 
-## <a name="messaging-unit---how-many-are-needed"></a>Üzenetküldő egység - Hány van szükség?
+## <a name="messaging-unit---how-many-are-needed"></a>Üzenetkezelési egység – hányra van szükség?
 
-Az Azure Service Bus Premium-névtér kiépítésekor meg kell adni a lefoglalt üzenetküldési egységek számát. Ezek az üzenetkezelési egységek dedikált erőforrások, amelyek a névtérhez vannak rendelve.
+Azure Service Bus prémium szintű névtér kiosztásakor meg kell adni a lefoglalt üzenetküldési egységek számát. Ezek az üzenetkezelési egységek a névtérhez lefoglalt dedikált erőforrások.
 
-A Service Bus Premium névtérhez rendelt üzenetküldési egységek száma **dinamikusan módosítható** a számítási feladatok változásának (növekedésének vagy csökkenésének) tényezőjéhez.
+A Service Bus Premium névtérhez lefoglalt üzenetküldési egységek száma **dinamikusan módosítható** a munkaterhelések változásának (növekedésének vagy csökkenésének) a felszámításához.
 
-Számos tényezőt kell figyelembe venni az architektúra üzenetkezelő egységeinek számának meghatározásakor:
+Az architektúrához tartozó üzenetkezelési egységek számának meghatározásakor figyelembe kell venni néhány tényezőt:
 
-- Kezdje a névtérhez rendelt ***1 vagy 2 üzenetegységgel.***
-- A cpu-használati metrikák a [névtér erőforrás-használati metrikák.](service-bus-metrics-azure-monitor.md#resource-usage-metrics)
-    - Ha a processzorhasználat ***20% alatt***van, előfordulhat, hogy ***csökkenteni*** tudja a névtérhez rendelt üzenetküldési egységek számát.
-    - Ha a CPU-használat meghaladja a ***70%-ot,*** az alkalmazás számára előnyös lesz a névtérhez rendelt üzenetküldési egységek számának ***növelése.***
+- Kezdje a névtérhez rendelt ***1 vagy 2 üzenetküldési egységgel*** .
+- Tanulmányozza a CPU használati metrikáit a névtér [Erőforrás-használati metrikái](service-bus-metrics-azure-monitor.md#resource-usage-metrics) között.
+    - Ha a CPU-használat ***20%***-nál kisebb, akkor lehetséges, hogy ***le tudja méretezni*** a névtérhez lefoglalt üzenetküldési egységek számát.
+    - Ha a CPU-használat ***meghaladja a 70%-ot***, az alkalmazása kihasználhatja a névtérhez lefoglalt üzenetküldési egységek számának ***növelését*** .
 
-A Service Bus-névterekhez rendelt erőforrások méretezése az [Azure Automation Runbookok](../automation/automation-quickstart-create-runbook.md)használatával automatikusan automatizálható.
+A Service Bus névterek számára lefoglalt erőforrások méretezésének folyamata [Azure Automation runbookok](../automation/automation-quickstart-create-runbook.md)használatával automatizálható.
 
 > [!NOTE]
-> A névtérhez rendelt erőforrások **méretezése** lehet megelőző vagy reaktív.
+> A névtérhez lefoglalt erőforrások **skálázása** lehet preemptív karbantartással vagy reaktív.
 >
->  * **Megelőző:** Ha további számítási feladatok várhatók (szezonalitás vagy trendek miatt), folytathatja további üzenetküldési egységek lefoglalását a névtérhez, mielőtt a számítási feladatok lejönnek.
+>  * **Preemptív karbantartással**: Ha további számítási feladatok várhatók (az évszakok vagy trendek miatt), a számítási feladatok elvégzése előtt további üzenetkezelési egységek is lefoglalhatók a névtérbe.
 >
->  * **Reaktív:** Ha további számítási feladatokat azonosítanak az erőforrás-használati metrikák tanulmányozásával, majd további erőforrásokat lehet kiosztani a névtérbe a növekvő kereslet beépítése érdekében.
+>  * **Reaktív**: Ha a további munkaterheléseket az erőforrás-használati metrikák tanulmányozásával azonosítja, a rendszer további erőforrásokat is kioszthat a névtérbe a növekvő igények kielégítése érdekében.
 >
-> A Service Bus számlázási mérőjeóránként van. Felskálázás esetén csak a további erőforrásokért kell fizetnie a felhasznált órákért.
+> A Service Bus számlázási mérőszáma óránként történik. Vertikális felskálázás esetén csak a felhasznált órák esetében kell fizetnie a további erőforrásokhoz.
 >
 
 ## <a name="get-started-with-premium-messaging"></a>Ismerkedés a prémium szintű üzenetkezeléssel
@@ -107,7 +107,7 @@ A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pe
 
 A Service Bus üzenetküldési funkcióival kapcsolatos további információkért tekintse meg a következőket:
 
-* [Az Azure Service Bus prémium üzenetküldésének bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure Service Bus prémium szintű üzenetkezelés bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Az Azure Service Bus prémium szintű üzenetkezelés bemutatása (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [A Service Bus-üzenetkezelés áttekintése](service-bus-messaging-overview.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)

@@ -1,6 +1,6 @@
 ---
-title: Forgalomnézet az Azure Traffic Managerben
-description: Ebben a bevezetőben megtudhatja, hogyan működik a Traffic manager Traffic view.
+title: forgalomáttekintő az Azure-ban Traffic Manager
+description: Ebből a bevezetőből megtudhatja, hogyan működik a Traffic Manager forgalom nézete.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,88 +13,88 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938360"
 ---
-# <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalom nézet
+# <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalomáttekintő
 
-A Traffic Manager dns-szint-útválasztást biztosít, így a végfelhasználók a profil létrehozásakor megadott útválasztási módszer alapján kifogástalan végpontokba lesznek irányítva. A Traffic View lehetővé teszi a Traffic Manager számára a felhasználói bázisok (DNS-feloldó részletességi szintjén) és a forgalmi minta megtekintését. Ha engedélyezi a Forgalomnézetet, a folyamat ezt az információt feldolgozza, hogy használható elemzéseket nyújthasson. 
+A Traffic Manager DNS-szintű útválasztást biztosít a végfelhasználók számára, hogy a profil létrehozásakor megadott útválasztási módszer alapján a felhasználók egészséges végpontokra legyenek irányítva. A forgalomáttekintő Traffic Managert biztosít a felhasználói bázisok (DNS-feloldó részletességi szint) és a forgalmi minta megtekintésével. A forgalomáttekintő engedélyezésekor a rendszer feldolgozza ezeket az információkat, hogy a gyakorlatban hasznosítható elemzéseket biztosítson. 
 
-A Traffic View használatával a következőket teheti:
-- a felhasználói bázisok tartózkodási helye (a helyi DNS-feloldó szintű részletességig).
-- megtekintheti az ezekből a régiókból származó forgalmat (az Azure Traffic Manager által kezelt DNS-lekérdezésekként megfigyelt).
-- betekintést nyerhet abba, hogy mi a felhasználók által tapasztalt reprezentatív késés.
-- részletesen belekell vetnie magát az egyes felhasználói bázisokról az Azure-régiókba, ahol végpontokkal rendelkezik. 
+A forgalomáttekintő használatával a következőket teheti:
+- Ismerje meg, hogy a felhasználói bázisok hol találhatók (legfeljebb egy helyi DNS-feloldó szintű részletességgel).
+- megtekintheti az ezekből a régiókból származó, az Azure Traffic Manager által kezelt DNS-lekérdezésekben megfigyelt forgalom mennyiségét.
+- betekintést nyerhet a felhasználók által tapasztalt jellemző késésre.
+- részletesen tekintse át az egyes felhasználói bázisok konkrét forgalmi mintáit azon Azure-régiókba, ahol végpontokkal rendelkezik. 
 
-A Traffic View használatával például megismerheti, hogy mely régiók rendelkeznek nagy számú forgalommal, de nagyobb késések kelnek el. Ezután használhatja ezt az információt az új Azure-régiókba való bővítés megtervezéséhez, hogy ezek a felhasználók alacsonyabb késési élményben legyenek.
+A forgalomáttekintő segítségével például megtudhatja, hogy mely régiókban van nagy forgalmú forgalom, de nagyobb késések esetén. Ezt az információt használhatja arra, hogy megtervezze a lábnyom terjeszkedését az új Azure-régiókba, hogy ezek a felhasználók alacsonyabb késési élményt tudjanak használni.
 
-## <a name="how-traffic-view-works"></a>A Traffic View működése
+## <a name="how-traffic-view-works"></a>A forgalomáttekintő működése
 
-A Traffic View úgy működik, hogy a Traffic Manager megvizsgálja az elmúlt hét napban fogadott bejövő lekérdezéseket egy olyan profillal szemben, amelyen engedélyezve van ez a funkció. A bejövő lekérdezések adataiból a Traffic View kinyeri a DNS-feloldó forrásIP-címét, amely a felhasználók helyének ábrázolásaként használatos. Ezek ezután csoportosítva egy DNS-feloldó szintű részletességgel hozzanak létre felhasználói bázisrégiókat a Traffic Manager által kezelt IP-címek földrajzi adatainak használatával. A Traffic Manager ezután megvizsgálja azOkat az Azure-régiókat, amelyekre a lekérdezést irányították, és forgalmi folyamattérképet hoz létre az adott régiókból származó felhasználók számára.  
-A következő lépésben a Traffic Manager korrelálja a felhasználói alaprégiót az Azure-régió leképezésével a hálózati intelligencia késési tábláival, amelyeket a különböző végfelhasználói hálózatok számára tart fenn az adott régiók felhasználói által tapasztalt átlagos késés megértéséhez, amikor az Azure-régiókhoz való csatlakozás. Ezeket a számításokat ezután a helyi DNS-feloldó IP-szintjén kombinálja, mielőtt megjelenik Önnek. Az információkat különböző módokon használhatja fel.
+Forgalomáttekintő úgy működik, hogy Traffic Manager megtekinti az elmúlt hét napban fogadott bejövő lekérdezéseket egy olyan profillal szemben, amelyen engedélyezve van ez a funkció. A bejövő lekérdezések adatainál forgalomáttekintő kibontja a DNS-feloldó forrás IP-címét, amelyet a felhasználók helyének ábrázolására használ a rendszer. Ezeket a rendszer egy DNS-feloldó szintű részletességgel csoportosítja a felhasználói alaprégiók létrehozásához a Traffic Manager által fenntartott IP-címek földrajzi információi alapján. Traffic Manager ezután megtekinti azokat az Azure-régiókat, amelyekhez a lekérdezés át lett irányítva, és létrehoz egy adatforgalmi térképet az adott régiókban lévő felhasználók számára.  
+A következő lépésben a Traffic Manager összekapcsolja a felhasználói alaprégiót az Azure region leképezésével a hálózati intelligencia késési tábláival, amelyeket a különböző végfelhasználói hálózatok számára tart fenn, hogy megértse az adott régiókban lévő felhasználók által az Azure-régiókhoz való csatlakozás során tapasztalt átlagos késést. Ezeket a számításokat ezután a rendszer a helyi DNS-feloldó IP-szinten kombinálja, mielőtt azok bemutatják Önt. Az információkat többféleképpen is felhasználhatja.
 
-A Traffic view adatfrissítésének gyakorisága több belső szolgáltatásváltozótól függ. Az adatok at általában 24 óránként frissítik.
+A forgalmi nézet adatfrissítésének gyakorisága több belső szolgáltatási változótól függ. Az adatgyűjtést azonban általában 24 óránként egyszer kell frissíteni.
 
 >[!NOTE]
->A Traffic View-ban leírt késés egy reprezentatív késés a végfelhasználó és az Azure-régiók között, amelyekhez kapcsolódtak, és nem a DNS-keresési késés. A Traffic View a helyi DNS-feloldó és a lekérdezés által irányított Azure-régió közötti késés becslését teszi lehetővé, ha nincs elegendő adat, akkor a visszaadott késés null értékű lesz. 
+>Az forgalomáttekintőban leírt késés a végfelhasználó és az Azure-régiók között jellemző késés, amelyhez csatlakoztak, és nem a DNS keresési késése. Forgalomáttekintő a helyi DNS-feloldó és az Azure-régió közötti késés legjobb becslését biztosítja, ha nincs elegendő adat, a visszaadott késés pedig NULL lesz. 
 
 ## <a name="visual-overview"></a>Vizuális áttekintés
 
-Amikor a Traffic Manager-lap **Forgalomnézet** szakaszára lép, megjelenik egy földrajzi térkép, amely a Forgalomnézet elemzési adatait fedelével látja el. A térkép a Traffic Manager-profil felhasználói bázisával és végpontjaival kapcsolatos információkat tartalmaz.
+Ha a Traffic Manager oldal **forgalomáttekintő** szakaszára navigál, egy földrajzi Térkép jelenik meg, amely forgalomáttekintői bepillantást tartalmaz. A Térkép információt nyújt a Traffic Manager profiljához tartozó felhasználói bázisról és végpontokról.
 
-![Traffic Manager Traffic View földrajzi nézet][1]
+![Traffic Manager forgalomáttekintő földrajzi nézet][1]
 
-### <a name="user-base-information"></a>Felhasználói alapinformáció
+### <a name="user-base-information"></a>Felhasználói alapinformációk
 
-Azoknak a helyi DNS-feloldóknak, amelyekhely-adatai rendelkezésre állnak, azok megjelennek a térképen. A DNS-feloldó színe azt az átlagos késést jelöli, amelyet azok a végfelhasználók tapasztaltak, akik a DNS-feloldót használták a Traffic Manager-lekérdezéseikhez.
+Azok a helyi DNS-feloldók, amelyekhez a helyadatok elérhetők, megjelennek a térképen. A DNS-feloldó színe azt jelzi, hogy az adott DNS-feloldót használó végfelhasználók milyen átlagos késéssel rendelkeznek a Traffic Manager lekérdezésekhez.
 
-Ha az egérmutatót egy DNS-feloldó hely fölé viszi a térképen, az a következőket jeleníti meg:
+Ha a térképen a DNS-feloldási hely fölé viszi a mutatót, az a következőket jeleníti meg:
 - a DNS-feloldó IP-címe
-- a Traffic Manager által belőle látott DNS-lekérdezési forgalom mennyisége
-- a végpont és a DNS-feloldó közötti vonalként a DNS-feloldóból érkező forgalom továbbítására irányuló végpontok 
-- az adott helytől a végpontig történő átlagos késés, amely az őket összekötő vonal színeként jelenik meg
+- a Traffic Manager által látott DNS-lekérdezési forgalom mennyisége
+- azok a végpontok, amelyeken a DNS-feloldó felé irányuló forgalmat irányították, a végpont és a DNS-feloldó közötti vonalként 
+- az adott hely és a végpont közötti átlagos késés, amely a csatlakozáshoz használt vonal színét jelöli.
 
-### <a name="endpoint-information"></a>Végpontadatai
+### <a name="endpoint-information"></a>Végpont adatai
 
-Az Azure-régiók, ahol a végpontok találhatók, kék pontokként jelennek meg a térképen. Ha a végpont külső, és nem rendelkezik egy Azure-régió leképezve, akkor a térkép tetején jelenik meg. Kattintson bármelyik végpontra a különböző helyek megtekintéséhez (a használt DNS-feloldó alapján), ahonnan a forgalmat az adott végpontra irányították. A kapcsolatok a végpont és a DNS-feloldó helye közötti vonalként jelennek meg, és a pár közötti reprezentatív késés nek megfelelően vannak színezve. Emellett láthatja a végpont nevét, az Azure-régiót, amelyben fut, és a Traffic Manager-profil által hozzá irányított kérelmek teljes mennyiségét.
+Az Azure-régiók, amelyekben a végpontok találhatók, kék pontként jelennek meg a térképen. Ha a végpont kívül van, és nem rendelkezik hozzárendelt Azure-régióval, a Térkép tetején látható. Kattintson bármelyik végpontra a különböző helyszínek (a használt DNS-feloldó alapján) megjelenítéséhez, ahol a forgalom a végpontra irányult. A kapcsolatok a végpont és a DNS-feloldó helye közötti vonalként jelennek meg, és az adott párt közötti reprezentatív késésnek megfelelően színezettek. Emellett megtekintheti a végpont nevét, az Azure-régiót, amelyben az fut, valamint a Traffic Manager-profil által a kérelemre irányuló kérelmek teljes mennyiségét.
 
 
-## <a name="tabular-listing-and-raw-data-download"></a>Táblázatos lista és nyers adatok letöltése
+## <a name="tabular-listing-and-raw-data-download"></a>Táblázatos Listázás és nyers adatok letöltése
 
-A Traffic View-adatokat táblázatos formátumban tekintheti meg az Azure Portalon. Minden DNS-feloldó IP/ végpontpárhoz tartozik egy bejegyzés, amely a DNS-feloldó IP-címét, annak az Azure-régiónak a nevét és földrajzi helyét mutatja, amelyben a végpont található (ha rendelkezésre áll), az adott DNS-feloldóhoz társított kérelmek mennyiségét az adott végponthoz, valamint az adott DNS-t használó végfelhasználókhoz társított reprezentatív késést (ahol elérhető). A Traffic View adatokat CSV-fájlként is letöltheti, amely az Ön által választott elemzési munkafolyamat részeként használható.
+Az forgalomáttekintő adatokat táblázatos formátumban tekintheti meg Azure Portalban. Minden olyan DNS-feloldó IP-/végponti pár esetében szerepel egy bejegyzés, amely megjeleníti a DNS-feloldó IP-címét, az Azure-régió nevét és földrajzi helyét (ha elérhető), a DNS-feloldóhoz társított kérelmek mennyiségét az adott végponthoz, valamint az adott DNS-t használó végfelhasználók (ahol elérhető) jellemző késését. A forgalomáttekintő adatait CSV-fájlként is letöltheti, amely a választott elemzési munkafolyamatok részeként is használható.
 
 ## <a name="billing"></a>Számlázás
 
-A Forgalomnézet használatakor a rendszer a bemutatott elemzési adatok létrehozásához használt adatpontok száma alapján számláz. Jelenleg az egyetlen használt adatpont-típus a Traffic Manager-profilhoz kapott lekérdezések. Az árképzésről további információt a [Traffic Manager díjszabási oldalán talál.](https://azure.microsoft.com/pricing/details/traffic-manager/)
+Forgalomáttekintő használatakor a számlázás a bemutatott elemzések létrehozásához használt adatpontok száma alapján történik. Jelenleg az egyetlen adatpont-típust használja a Traffic Manager profiljához kapott lekérdezések. A díjszabással kapcsolatos további információkért látogasson el a [Traffic Manager díjszabási oldalára](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Mire történik a Traffic View?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Mit tesz forgalomáttekintő?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
 
-* [Hogyan profitálhatok a Traffic View használatából?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Milyen előnyökkel jár a forgalomáttekintő használata?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
 
-* [Miben különbözik a Traffic View a Traffic Manager metrikáitól az Azure-figyelőn keresztül?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Miben különbözik forgalomáttekintő az Azure monitoron keresztül elérhető Traffic Manager metrikákkal?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [A Traffic View használja az EDNS-ügyfél alhálózati adatait?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [A forgalomáttekintő használja az EDNS-ügyfél alhálózati adatait?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
 
-* [Hány nap adatot használ a Traffic View?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Hány napi adatmennyiséget forgalomáttekintő használni?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
 
-* [Hogyan kezeli a Traffic View a külső végpontokat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Hogyan kezeli a forgalomáttekintő a külső végpontokat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
 
-* [Engedélyeznem kell a Traffic View nézetet az előfizetésem minden egyes profiljához?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Engedélyeznie kell a forgalomáttekintő az előfizetésem minden profiljához?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Hogyan tudom kikapcsolni a Forgalomnézetet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Hogyan kapcsolható ki a forgalomáttekintő?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
 
-* [Hogyan működik a Traffic View számlázása?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Hogyan működik forgalomáttekintő számlázás?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Traffic Manager működésének megismerése](traffic-manager-overview.md)
+- Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
-- További információ a [Traffic Manager-profil létrehozásáról](traffic-manager-create-profile.md)
+- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png
