@@ -1,6 +1,6 @@
 ---
-title: Egyetlen identitásvédelem csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan csatlakozhat a One Identity Safeguard az Azure Sentinelhez.
+title: Egy Identity-védelem összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure Sentinelhez egy Identity-védelem.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588144"
 ---
-# <a name="connect-one-identity-safeguard"></a>Egyetlen identitásvédelem csatlakoztatása
-A One Identity Safeguard adatösszekötő javítja a szabványos közös eseményformátum (CEF) összekötőt a Védettség a kiemelt munkamenet-specifikus irányítópultok számára. Ezzel az összekötővel egyszerűen elkezdheti használni az eszköz által vizuális megjelenítéshez, riasztásokhoz, vizsgálatokhoz és egyebekhez létrehozott eseményeket.
+# <a name="connect-one-identity-safeguard"></a>Egy Identity-védelem összekötése
+Az egyetlen Identity védzáradék-összekötő fokozza a standard Common Event Format (CEF) összekötőt, amely védelmet biztosít a Kiemelt munkamenetek-specifikus irányítópultok számára. Ezzel az összekötővel egyszerűen megkezdheti az eszköz vizualizációk, riasztások, nyomozások és egyéb események által generált eseményeinek használatát.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Olvasási és írási engedélyek az Azure Sentinel-munkaterületre.
+- Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez.
 
-## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Csatlakoztassa az Azure Sentinelt egyetlen identitásvédelmi intézkedéshez
+## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Az Azure Sentinel összekötése egy identitás-védelmi kapcsolattal
 
-1. Az Azure Portalon keresse meg az Azure > **Sentinel-adatösszekötők,** és válassza ki a **One Identity Safeguard** összekötő. **Azure Sentinel**
+1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** közé, majd válassza ki az **egyik identitás-védelmi** összekötőt.
 
-2. Válassza **az Összekötő lap megnyitása lehetőséget**.
+2. Válassza az **összekötő megnyitása lapot**.
 
-3. Kövesse az **Egy identitásvédelem** oldalon található utasításokat.
+3. Kövesse az **egyetlen Identity védelme** oldalon található utasításokat.
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a One Identity Safeguard-t az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat az Azure Sentinelhez egy Identity-védelem. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 
 

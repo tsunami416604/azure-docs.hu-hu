@@ -1,6 +1,6 @@
 ---
-title: Fejlett többfokozatú támadásészlelés az Azure Sentinelben
-description: Az Azure Sentinel Fusion-technológiájával csökkentheti a riasztások fáradtságát, és speciális többlépcsős támadásészlelésen alapuló, végrehajtható incidenseket hozhat létre.
+title: Fejlett többlépcsős támadások észlelése az Azure Sentinelben
+description: Az Azure Sentinel fúziós technológiájának használatával csökkentheti a riasztások fáradtságát, és a fejlett többlépcsős támadási észlelésen alapuló, gyakorlati incidenseket hozhat létre.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,328 +13,328 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587923"
 ---
-# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többfokozatú támadásészlelés az Azure Sentinelben
+# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többlépcsős támadások észlelése az Azure Sentinelben
 
 
 > [!IMPORTANT]
-> Az Azure Sentinel egyes Fusion-funkciói jelenleg nyilvános előzetes verzióban jelennek meg.
-> Ezek a szolgáltatások szolgáltatásszint-szerződés nélkül vannak biztosítva, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Az Azure Sentinel néhány fúziós funkciója jelenleg nyilvános előzetes verzióban érhető el.
+> Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
-A gépi tanuláson alapuló Fusion-technológia használatával az Azure Sentinel automatikusan észleli a többlépcsős támadásokat a rendellenes viselkedések és a kill-chain különböző szakaszaiban megfigyelt gyanús tevékenységek kombinálásával. Az Azure Sentinel ezután olyan incidenseket hoz létre, amelyeket egyébként nagyon nehéz lenne elkapni. Ezek az incidensek két vagy több riasztást vagy tevékenységet sújtanak. Ezek az incidensek szándékosan alacsony a térfogatúak, nagy a hűségük és súlyosak.
+A gépi tanuláson alapuló fúziós technológiával az Azure Sentinel automatikusan észleli a többszörös támadásokat a rendellenes viselkedés és a gyanús tevékenységek kombinálásával, amelyek a kill-Chain különböző szakaszaiban figyelhetők meg. Az Azure Sentinel ezután olyan incidenseket hoz létre, amelyek egyébként nagyon nehézek lesznek a fogáshoz. Ezek az incidensek két vagy több riasztást vagy tevékenységet foglalnak magukban. A tervezés szerint ezek az incidensek alacsony mennyiségű, magas megbízhatóságú és nagy fontossággal rendelkeznek.
 
-Az Ön környezetéhez testreszabva ez az észlelés nem csak csökkenti a hamis pozitív arányokat, hanem a korlátozott vagy hiányzó adatokkal rendelkező támadásokat is észlel.
+A környezethez testre szabott, ez az észlelés nem csupán csökkenti a hamis pozitív arányt, de a korlátozott vagy hiányzó adatokat tartalmazó támadásokat is képes észlelni.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Fejlett többfázisú támadásészlelés konfigurálása
 
-Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben. Az állapot ellenőrzéséhez vagy letiltásához, például azért, mert alternatív megoldást használ a több riasztáson alapuló incidensek létrehozásához, kövesse az alábbi utasításokat:
+Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben. Az állapot ellenőrzéséhez, illetve annak letiltásához, mert a több riasztáson alapuló incidensek létrehozására alternatív megoldást használ, kövesse az alábbi utasításokat:
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Navigálás az **Azure Sentinel** > **konfigurációs** > **elemzésre**
+2. Navigáljon az **Azure Sentinel** > **Configuration** > **Analytics szolgáltatáshoz**
 
-3. Válassza **az Aktív szabályok lehetőséget,** és keresse meg a Speciális **többszintű támadásészlelést** a **NAME** oszlopban. Ellenőrizze az **ÁLLAPOT** oszlopot, és ellenőrizze, hogy az észlelés engedélyezve van-e vagy le van tiltva.
+3. Válassza az **aktív szabályok** lehetőséget, és keresse meg a **speciális többlépcsős támadás észlelését** a **Name (név** ) oszlopban. Ellenőrizze az **állapot** oszlopot, és erősítse meg, hogy az észlelés engedélyezve van vagy le van tiltva.
 
-4. Az állapot módosításához jelölje ki ezt a bejegyzést, és a **Speciális többszintű támadásészlelés** panelen válassza a **Szerkesztés**lehetőséget.
+4. Az állapot módosításához válassza ki ezt a bejegyzést, és a **speciális többlépcsős támadás-észlelés** panelen válassza a **Szerkesztés**lehetőséget.
 
-5. A **Szabálykészítő varázsló** panelen a rendszer automatikusan kiválasztja az állapotváltozást, ezért válassza a **Tovább: Véleményezés**lehetőséget, majd a **Mentés lehetőséget.** 
+5. A **szabály létrehozása varázsló** panelen az állapot módosítása automatikusan ki lesz választva, ezért válassza a **Tovább: Áttekintés**, majd a **Mentés**lehetőséget. 
 
-A szabálysablonok nem alkalmazhatók a speciális többszintű támadások észlelésére.
+A szabály sablonjai nem alkalmazhatók a fejlett többlépcsős támadás észlelésére.
 
 > [!NOTE]
-> Az Azure Sentinel jelenleg 30 nap előzményadatokat használ a gépi tanulási rendszerek betanításához. Ezek az adatok mindig titkosítva vannak a Microsoft kulcsaival, ahogy áthaladnak a gépi tanulási folyamaton. A betanítási adatok azonban nem titkosítva vannak [az Ügyfél által felügyelt kulcsok (CMK)](customer-managed-keys.md) használatával, ha engedélyezte a CMK-t az Azure Sentinel-munkaterületen. A Fusion letiltásához keresse meg az **Azure Sentinel** \> **Configuration** \>Analytics ** \> Aktív szabályok \> speciális többfokozatú támadásészlelését,** és az **Állapot** oszlopban válassza a **Letiltás lehetőséget.**
+> Az Azure Sentinel jelenleg 30 napos korábbi adatmennyiséget használ a gépi tanulási rendszerek betanításához. Ezeket az adategységeket a rendszer mindig a Microsoft kulcsaival titkosítja, ahogy az a Machine learning-folyamaton halad át. A betanítási adatait azonban nem titkosítja az [ügyfél által felügyelt kulcsokkal (CMK)](customer-managed-keys.md) , ha engedélyezte a CMK használatát az Azure Sentinel-munkaterületen. A fúzió letiltásához navigáljon az **Azure Sentinel** \> **Configuration** \> **Analytics \> aktív szabályok \> speciális többlépcsős támadás észlelése** elemre, és az **állapot** oszlopban válassza a **Letiltás lehetőséget.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusion segítségével Palo Alto Networks és a Microsoft Defender ATP
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúzió a Palo Alto Networks és a Microsoft Defender ATP használatával
 
-Ezek a forgatókönyvek a biztonsági elemzők által használt két alapvető naplót kombinálják: a Palo Alto Networks tűzfalnaplóit és a Microsoft Defender ATP végpontészlelési naplóit. Az alább felsorolt esetek mindegyikében a rendszer egy gyanús tevékenységet észlel a végponton, amely külső IP-címet tartalmaz, majd ezt a külső IP-címről a tűzfalra visszavezető rendellenes forgalom követi. A Palo Alto naplók, Az Azure Sentinel összpontosít [fenyegetés naplók](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), és a forgalom gyanúsnak tekinthető, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgál, spyware, URL-ek, vírusok, sebezhetőségek, futótűz-vírusok, futótűz).
+Ezek a forgatókönyvek a biztonsági elemzők által használt alapvető naplók közül kettőt kombinálnak: a tűzfal naplóit a Palo Alto hálózatokból és a Microsoft Defender ATP-ből származó végpontok észlelési naplóiból. Az alább felsorolt forgatókönyvekben a rendszer gyanús tevékenységet észlel a végponton, amely egy külső IP-címet is magában foglal, majd ezt követi a külső IP-címről érkező rendellenes forgalom a tűzfalon. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek).
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR anonimizálási szolgáltatásnak, amelyet a Palo Alto Networks tűzfala által megjelölt rendellenes forgalom követ.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
 
-Ebben a forgatókönyvben az Azure Sentinel először észleli a riasztást, hogy a Microsoft Defender Komplex veszélyforrások elleni védelem észlelt egy hálózati kérelmet a TOR anonimizálási szolgáltatás, amely rendellenes tevékenységhez vezet. Ezt a(z) {fióknév} fiók ban kezdeményezték{ sid} SID azonosítóval {time}. A kapcsolat kimenő IP-címe {IndividualIp}.
-Ezt követően a Palo Alto Networks tűzfal a(z) {TimeGenerated} helyen szokatlan tevékenységet észlelt. Ez azt jelzi, hogy rosszindulatú forgalom lépett be a hálózatba A hálózati forgalom cél IP-címe: {DestinationIP}.
-
-Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
-
-
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatot létesített, amelyet a Palo Alto Networks tűzfala által megjelölt rendellenes forgalom követett.
-
-Ebben a forgatókönyvben az Azure Sentinel először észleli a riasztást, hogy a Microsoft Defender komplex veszélyforrások elleni védelem észlelte, hogy a PowerShell egy gyanús hálózati kapcsolat, amely a Palo Alto hálózati tűzfal által észlelt rendellenes tevékenységet eredményez. Ezt a(z) {fióknév} fiók kezdeményezte{ sid} SID azonosítóval a következő helyen: {time}. A kapcsolat kimenő IP-címe {IndividualIp}. Ezt követően a Palo Alto Networks tűzfal a(z) {TimeGenerated} helyen szokatlan tevékenységet észlelt. Ez azt jelzi, hogy rosszindulatú forgalom lépett be a hálózatba. A hálózati forgalom cél IP-címe: {DestinationIP}.
-
-Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
-
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-hez, amelynek előzményei a jogosulatlan hozzáférési kísérletek, majd a Palo Alto Networks tűzfal anomáliaforgalommal
-
-Ebben a forgatókönyvben az Azure Sentinel észlelegy riasztást, amely szerint a Microsoft Defender Komplex veszélyforrások elleni védelem kimenő kapcsolatot észlelt egy OLYAN IP-címhez, amelynek előzményei a nem engedélyezett hozzáférési kísérletek, amelyek a Palo Alto által észlelt rendellenes tevékenységészleléséhez vezetnek Hálózatok tűzfala. Ezt a(z) {fióknév} fiók kezdeményezte{ sid} SID azonosítóval a következő helyen: {time}. A kapcsolat kimenő IP-címe {IndividualIp}. Ezt követően a Palo Alto Networks tűzfal a(z) {TimeGenerated} helyen szokatlan tevékenységet észlelt. Ez azt jelzi, hogy rosszindulatú forgalom lépett be a hálózatba. A hálózati forgalom cél IP-címe: {DestinationIP}.
+Ebben az esetben az Azure Sentinel először riasztást észlel arról, hogy a Microsoft Defender komplex veszélyforrások elleni védelem hálózati kérelmet észlelt egy olyan TOR névtelenítésével-szolgáltatáshoz, amely rendellenes tevékenységeket eredményezett. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} nevű fiókban kezdeményezték. A kapcsolódás kimenő IP-címe: {IndividualIp}.
+Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózati forgalom célként megadott IP-címe {DestinationIP}.
 
 Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
 
 
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatokat követett, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fusion az Identity Protection és a Microsoft Cloud App Security használatával
+Ebben az esetben az Azure Sentinel először riasztást észlel, miszerint a Microsoft Defender komplex veszélyforrások elleni védelem észlelte, hogy a PowerShell gyanús hálózati kapcsolatot hozott létre, amely a Palo Alto hálózati tűzfal által észlelt rendellenes tevékenységekhez vezet. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
 
-A fejlett többfokozatú támadásészlelés használatával az Azure Sentinel a következő forgatókönyveket támogatja, amelyek az Azure Active Directory identity Protection és a Microsoft Cloud App Security anomáliaeseményeit kombinálják:
+Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
 
-- [Lehetetlen utazás atipikus helyre, majd rendellenes Office 365-tevékenység](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Ismeretlen helyre jelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+
+Ebben az esetben az Azure Sentinel olyan riasztást észlel, miszerint a Microsoft Defender komplex veszélyforrások elleni védelem kimenő kapcsolatot észlelt egy IP-címmel, és a nem engedélyezett hozzáférési kísérletek előzményeit, amelyek a Palo Alto Networks tűzfal által észlelt rendellenes tevékenységekhez vezetnek. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
+
+Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+
+
+
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Az Identity Protectiont és a Microsoft Cloud App Securityt használó fúzió
+
+Az Azure Sentinel fejlett többlépcsős támadásokkal támogatja az alábbi forgatókönyveket, amelyekkel összekapcsolhatja a Azure Active Directory Identity Protection és Microsoft Cloud App Security anomália eseményeit:
+
+- [Nem lehet utazni atipikus helyre, amelyet rendellenes Office 365-tevékenység követ](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
+- [Ismeretlen helyre vonatkozó bejelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ.](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
 - [Bejelentkezési tevékenység fertőzött eszközről, majd rendellenes Office 365-tevékenység](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenységről](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Bejelentkezési tevékenység a felhasználótól kiszivárgott hitelesítő adatokkal, majd rendellenes Office 365-tevékenységgel](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+- [Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenység](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
+- [Bejelentkezési tevékenység a felhasználótól a kiszivárgott hitelesítő adatokkal, majd a rendellenes Office 365-tevékenységgel](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
 
-Rendelkeznie kell az [Azure AD Identity Protection adatösszekötővel](connect-azure-ad-identity-protection.md) és a [Cloud App Security](connect-cloud-app-security.md) összekötők konfigurálva.
+Rendelkeznie kell a [Azure ad Identity Protection adatösszekötővel](connect-azure-ad-identity-protection.md) és a konfigurált [Cloud app Security](connect-cloud-app-security.md) -összekötővel.
 
-A következő leírásokban az Azure Sentinel az ezen az oldalon változóként zárójelben megjelenő adatok tényleges értékét jeleníti meg. Például a \< *fiók név* helyett a fiók tényleges megjelenítendő neve \<>, és a tényleges szám a *szám* helyett>.
+Az alábbi leírásokban az Azure Sentinel megjeleníti az ezen az oldalon megjelenített adatok tényleges értékét zárójelek között. Például egy fiók \<tényleges megjelenítendő neve, nem pedig a *fiók neve*>, és a tényleges szám \<nem a *szám*>.
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Lehetetlen utazás atipikus helyre, majd rendellenes Office 365-tevékenység
+### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nem lehet utazni atipikus helyre, amelyet rendellenes Office 365-tevékenység követ
 
-Hét lehetséges Azure Sentinel-incidens létezik, amelyek az Azure AD Identity Protection és a Microsoft Cloud App Security által létrehozott rendellenes Office 365-riasztások nem kívánt helyriasztásaihoz való lehetetlen utazást kombinálják:
+Hét lehetséges Azure Sentinel-incidens áll rendelkezésre, amelyek összekapcsolják a lehetetlen utazást szokatlan helyre Azure AD Identity Protection és a Microsoft Cloud App Security által generált rendellenes Office 365-riasztások esetén:
 
-- **Lehetetlen utazás az Office 365 postafiókjának kiszivárgásához vezető atipikus helyekre**
+- **Az Office 365 postaláda-kiszűrése vezető atipikus helyekre nem lehet utazni**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez a fiók neve \< *alapján,*> egy lehetetlen utazásról a *>* helyre, egy atipikus helyre, majd egy gyanús beérkező továbbítási szabály van beállítva a felhasználó beérkezett üzenetek mappájában.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a bejelentkezési eseményekre, ha \<a *hely*>, egy szokatlan hely, és egy gyanús beérkezett fájlok továbbítására vonatkozó szabály is be van állítva egy felhasználó postaládájába.
     
-    Ez azt jelezheti, hogy a fiók biztonsága sérül, és hogy a postaládát arra használják, hogy kiszivárogjanak a szervezetből származó információkból. A \<felhasználói *fiók neve*> létrehozott vagy frissített egy beérkező levéltovábbítási \<szabályt, amely az összes bejövő e-mailt továbbítja a külső *e-mail címre*>.
+    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználói \< *fiók neve*> létrehozott vagy frissített egy beérkezett fájlok továbbítására szolgáló szabályt, amely az összes beérkező \<e-mailt továbbítja a külső cím *e-mail-címére*>.
 
-- **Lehetetlen utazás atipikus helyekre, amelyek gyanús felhőalkalmazás-felügyeleti tevékenységhez vezetnek**
+- **Nem lehet utazni a gyanús Cloud app felügyeleti tevékenységekhez vezető atipikus helyszínekre**
     
-    Ez a riasztás egy \< *bejelentkezési* esemény jelkép alapján> \<egy lehetetlen utazás *a helyre,*>, egy atipikus helyen.
+    Ez a riasztás azt jelzi, hogy \< \<a *fiók neve*> a bejelentkezési eseményekre, amelyeknek a *helye* nem lehet egy szokatlan hely>.
     
-    Ezután a \< *fiókfiók* nevét \<> egyetlen munkamenetben, *>* felügyeleti tevékenységek száma felett végrehajtani.
+    Ezt követően a fiók \< *fiókjának neve*> több \< *mint>* felügyeleti tevékenységet hajtott végre egyetlen munkamenetben.
 
-- **Lehetetlen utazás atipikus helyekre, ami tömeges fájltörléshez vezet**
+- **Nem lehet utazni a tömeges fájl törlését eredményező atipikus helyszínekre**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez a \<fiók *neve* alapján,> a *helyhez*>, egy atipikus helyre. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, egy szokatlan hely. 
     
-    Ezután a \< *fiókfiók neve*> törölt \< *számú*> egyedi fájlokat egy munkamenetben.
+    Ezután a fiók \< *fiókneve*> törölte \<a> egyedi fájlok *számát* egyetlen munkamenetben.
 
-- **Lehetetlen utazás atipikus helyeken vezető tömeges fájl letöltés**
+- **Nem lehet utazni a tömeges fájl letöltéséhez vezető atipikus helyekre**
     
-    Ez a riasztás egy \< *bejelentkezési* esemény jelkép alapján> \<egy lehetetlen utazás *a helyre,*>, egy atipikus helyen. 
+    Ez a riasztás azt jelzi, hogy \< \<a *fiók neve*> a bejelentkezési eseményekre, amelyeknek a *helye* nem lehet egy szokatlan hely>. 
     
-    Ezután a \< *fiókfiók nevét*> letölteni> egyedi fájlok \< *száma* egy munkamenetben.
+    Ezt követően a fiók \< *fiókjának neve*> letöltött \<egyedi fájlok *száma*> egyetlen munkamenetben.
 
-- **Lehetetlen utazás az Office 365 megszemélyesítéséhez vezető atipikus helyekre**
+- **Az Office 365 megszemélyesítéshez vezető atipikus helyekre nem lehet utazni**
     
-    Ez a riasztás egy \< *bejelentkezési* esemény jelkép alapján> \<egy lehetetlen utazás *a helyre,*>, egy atipikus helyen. 
+    Ez a riasztás azt jelzi, hogy \< \<a *fiók neve*> a bejelentkezési eseményekre, amelyeknek a *helye* nem lehet egy szokatlan hely>. 
     
-    Ezután a \< *fiókfiók neve*>\<szokatlan mennyiségű (tevékenységek*száma*>) végzett megszemélyesítési tevékenységek egyetlen munkamenetben.
+    Ezután a fiók \< *fiókneve*> szokatlan mennyiségű (\<*tevékenységek száma*>) végezte el a megszemélyesítési tevékenységeket egyetlen munkamenetben.
 
-- **Lehetetlen utazás atipikus helyekre, ami tömeges fájlmegosztáshoz vezet**
+- **Nem lehet utazni a tömeges fájlmegosztást eredményező atipikus helyszínekre**
     
-    Ez a riasztás egy \< *bejelentkezési* esemény jelkép alapján> \<egy lehetetlen utazás *a helyre,*>, egy atipikus helyen. 
+    Ez a riasztás azt jelzi, hogy \< \<a *fiók neve*> a bejelentkezési eseményekre, amelyeknek a *helye* nem lehet egy szokatlan hely>. 
     
-    Ezután a \< *fiókfiók nevét*> megosztva \<> egyedi fájlok *egy* munkamenetben.
+    Ezután a fiók \< *fiókjának neve*> megosztva \<> egyedi fájlok *száma* egyetlen munkamenetben.
 
-- **Lehetetlen utazás atipikus helyekre, amelyek zsarolóprogramokhoz vezetnek a felhőalkalmazásban**
+- **Nem lehet utazni a Cloud app ransomware vezető atipikus helyszínekre**
     
-    Ez a riasztás egy \< *bejelentkezési* esemény jelkép alapján> \<egy lehetetlen utazás *a helyre,*>, egy atipikus helyen. 
+    Ez a riasztás azt jelzi, hogy \< \<a *fiók neve*> a bejelentkezési eseményekre, amelyeknek a *helye* nem lehet egy szokatlan hely>. 
     
-    Ezután a \< *fiókfiók* neve \<> feltöltött> fájlok *számát,* és összesen \< *több*> fájlt törölt. 
+    Ezután a fiók \< *fiókjának neve*>> \<fájlok feltöltött *számát* , és törölte \< *a> fájlok teljes számát.* 
     
-    Ez a tevékenységminta egy lehetséges zsarolóvírus-támadásra utal.
+    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
 
 
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Ismeretlen helyre jelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ
+### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Ismeretlen helyre vonatkozó bejelentkezési tevékenység, amelyet rendellenes Office 365-tevékenység követ.
 
-Hét lehetséges Azure Sentinel-incidens létezik, amelyek egyesítik a bejelentkezési tevékenységet az Azure AD Identity Protection ismeretlen helyriasztásai és a Microsoft Cloud App Security által létrehozott rendellenes Office 365-riasztások esetében.
+Hét lehetséges Azure Sentinel-incidens van, amelyek a bejelentkezési tevékenységet a Microsoft Cloud App Security által generált Azure AD Identity Protection és rendellenes Office 365 riasztásokkal ötvözik.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely az Exchange Online postaláda kiszivárgásához vezet**
+- **Bejelentkezési esemény egy ismeretlen helyről, amely az Exchange Online postaláda-kiszűrése vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> \< *egy* ismeretlen helyről,>, majd egy gyanús beérkező továbbítási szabály van beállítva a felhasználó beérkezett üzenetek mappájában.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> \<a *hely*>, ismeretlen hely, majd egy gyanús beérkezett fájlok továbbítására vonatkozó szabály, amelyet egy felhasználó postaládájába állítottak be.
     
-    Ez azt jelezheti, hogy a fiók biztonsága sérül, és hogy a postaládát arra használják, hogy kiszivárogjanak a szervezetből származó információkból. A \<felhasználói *fiók neve*> létrehozott vagy frissített egy beérkező levéltovábbítási \<szabályt, amely az összes bejövő e-mailt továbbítja a külső *e-mail címre*>. 
+    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználói \< *fiók neve*> létrehozott vagy frissített egy beérkezett fájlok továbbítására szolgáló szabályt, amely az összes beérkező \<e-mailt továbbítja a külső cím *e-mail-címére*>. 
 
-- **Bejelentkezési esemény ismeretlen helyről, amely gyanús felhőalkalmazás-felügyeleti tevékenységhez vezet**
+- **Bejelentkezési esemény olyan ismeretlen helyről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> egyetlen munkamenetben> felügyeleti tevékenységek \< *száma* alapján hajtják végre.
+    Ezt követően a fiók \< *fiókjának neve*> egy \<munkamenetben> felügyeleti tevékenységek *száma* felett.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely tömeges fájltörléshez vezet**
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlok törlését eredményezi**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók neve*> törölt \< *számú*> egyedi fájlokat egy munkamenetben.
+    Ezután a fiók \< *fiókneve*> törölte \<a> egyedi fájlok *számát* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely tömeges fájlletöltéshez vezet**
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a Mass file letöltéséhez vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> letölteni> egyedi fájlok \< *száma* egy munkamenetben.
+    Ezt követően a fiók \< *fiókjának neve*> letöltött \<egyedi fájlok *száma*> egyetlen munkamenetben.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely az Office 365 megszemélyesítéséhez vezet**
+- **Bejelentkezési esemény egy ismeretlen helyről, amely az Office 365 megszemélyesítéshez vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt.
     
-    Ezután a \< *fiókfiók nevét* \<egy munkamenetben> különböző fiókok *száma* miatt> megszemélyesíteni.
+    Ezután a fiók \< *fiókjának neve*> megszemélyesített \<> különböző fiókok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely tömeges fájlmegosztáshoz vezet**
+- **Bejelentkezési esemény egy ismeretlen helyről, amely a tömeges fájlmegosztást eredményezi**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> megosztva \<> egyedi fájlok *egy* munkamenetben.
+    Ezután a fiók \< *fiókjának neve*> megosztva \<> egyedi fájlok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény ismeretlen helyről, amely zsarolóprogramokhoz vezet a felhőalkalmazásban**
+- **Bejelentkezési esemény ismeretlen helyről, amely a Cloud app ransomware vezető**
     
-    Ez a riasztás egy bejelentkezési eseményt jelez \< *a fiók neve* alapján,> a> \< *helyről,* egy ismeretlen helyről. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a \< *hely*>, ismeretlen helyről származó bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók* neve \<> feltöltött> fájlok *számát,* és összesen \< *több*> fájlt törölt. 
+    Ezután a fiók \< *fiókjának neve*>> \<fájlok feltöltött *számát* , és törölte \< *a> fájlok teljes számát.* 
     
-    Ez a tevékenységminta egy lehetséges zsarolóvírus-támadásra utal.
+    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
 
 ### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység fertőzött eszközről, majd rendellenes Office 365-tevékenység
 
-Hét lehetséges Azure Sentinel-incidens kombinálható az Azure AD Identity Protection fertőzött eszközriasztásaiból származó bejelentkezési tevékenységgel és a Microsoft Cloud App Security által létrehozott rendellenes Office 365-ös riasztásokkal:
+A rendszer hét lehetséges Azure Sentinel-eseményt tartalmaz, amelyek a Azure AD Identity Protection és a rendellenes Office 365 által generált riasztásokból származó bejelentkezési tevékenységeket egyesítenek Microsoft Cloud App Security:
 
-- **Bejelentkezési esemény az Office 365 postafiókjának kiszivárgásához vezető fertőzött eszközről**
+- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely az Office 365 postaláda-kiszűrése vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *fióknév alapján,*> egy potenciálisan rosszindulatú programokkal fertőzött eszközről, majd egy gyanús beérkező továbbítási szabályt állított be a felhasználó beérkezett üzenetek mappájában.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről, majd egy gyanús beérkezett fájlok továbbítására vonatkozó szabály, amelyet a felhasználó Beérkezett üzenetek mappájában adott meg.
     
-    Ez azt jelezheti, hogy a fiók biztonsága sérül, és hogy a postaládát arra használják, hogy kiszivárogjanak a szervezetből származó információkból. A \<felhasználói *fiók neve*> létrehozott vagy frissített egy beérkező levéltovábbítási \<szabályt, amely az összes bejövő e-mailt továbbítja a külső *e-mail címre*>. 
+    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználói \< *fiók neve*> létrehozott vagy frissített egy beérkezett fájlok továbbítására szolgáló szabályt, amely az összes beérkező \<e-mailt továbbítja a külső cím *e-mail-címére*>. 
 
-- **Bejelentkezési esemény egy fertőzött eszközről, amely gyanús felhőalkalmazás-felügyeleti tevékenységhez vezet**
+- **Bejelentkezési esemény olyan fertőzött eszközről, amely gyanús Cloud app rendszergazdai tevékenységet vezet**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt.
     
-    Ezután a \< *fiókfiók nevét*> egyetlen munkamenetben> felügyeleti tevékenységek \< *száma* alapján hajtják végre.
+    Ezt követően a fiók \< *fiókjának neve*> egy \<munkamenetben> felügyeleti tevékenységek *száma* felett.
 
-- **Bejelentkezési esemény egy fertőzött eszközről, amely tömeges fájltörléshez vezet**
+- **Bejelentkezési esemény egy fertőzött eszközről, amely a tömeges fájl törlését eredményezi**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók neve*> törölt \< *számú*> egyedi fájlokat egy munkamenetben.
+    Ezután a fiók \< *fiókneve*> törölte \<a> egyedi fájlok *számát* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény egy fertőzött eszközről, amely tömeges fájlletöltéshez vezet**
+- **Bejelentkezési esemény egy fertőzött eszközről, amely a Mass file letöltését eredményezi**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> letölteni> egyedi fájlok \< *száma* egy munkamenetben.
+    Ezt követően a fiók \< *fiókjának neve*> letöltött \<egyedi fájlok *száma*> egyetlen munkamenetben.
 
-- **Bejelentkezési esemény az Office 365 megszemélyesítéséhez vezető fertőzött eszközről**
+- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely az Office 365 megszemélyesítést vezeti**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét* \<egy munkamenetben> különböző fiókok *száma* miatt> megszemélyesíteni.
+    Ezután a fiók \< *fiókjának neve*> megszemélyesített \<> különböző fiókok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény tömeges fájlmegosztáshoz vezető fertőzött eszközről**
+- **Bejelentkezési esemény a tömeges fájlmegosztást eredményező fertőzött eszközről**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> megosztva \<> egyedi fájlok *egy* munkamenetben.
+    Ezután a fiók \< *fiókjának neve*> megosztva \<> egyedi fájlok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény egy fertőzött eszközről, amely zsarolóprogramokhoz vezet a felhőalkalmazásban**
+- **Bejelentkezési esemény egy olyan fertőzött eszközről, amely ransomware vezet a Cloud app szolgáltatásban**
     
-    Ez a riasztás egy bejelentkezési esemény \<jele *a fiók neve*> egy eszköz potenciálisan fertőzött malware. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy, a kártevő szoftverrel fertőzött eszközről érkező bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók* neve \<> feltöltött> fájlok *számát,* és összesen \< *több*> fájlt törölt. 
+    Ezután a fiók \< *fiókjának neve*>> \<fájlok feltöltött *számát* , és törölte \< *a> fájlok teljes számát.* 
     
-    Ez a tevékenységminta egy lehetséges zsarolóvírus-támadásra utal.
+    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
 
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenységről
+### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység névtelen IP-címről, majd rendellenes Office 365-tevékenység
 
-Hét lehetséges Azure Sentinel-incidens kombinálható az Azure AD Identity Protection névtelen IP-címriasztásaiból származó bejelentkezési tevékenységgel és a Microsoft Cloud App Security által létrehozott rendellenes Office 365-ös riasztásokkal:
+Hét lehetséges Azure Sentinel-incidens áll rendelkezésre, amelyek a bejelentkezési tevékenységet kombinálják a névtelen IP-címek értesítéseitől Azure AD Identity Protection és a rendellenes Office 365-riasztásokból, amelyeket a Microsoft Cloud App Security generált:
 
-- **Bejelentkezési esemény az Office 365 postafiókjának kiszivárgásához vezető névtelen IP-címről**
+- **Bejelentkezési esemény egy névtelen IP-címről, amely az Office 365 postaláda-kiszűrése vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *a fiók név alapján,*> egy névtelen proxy \< *IP-cím>,* majd egy gyanús beérkező továbbítási szabály van beállítva a felhasználó beérkezett üzenetek mappájában.
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> egy névtelen proxy IP-címének \< *IP-* címe>, amelyet egy gyanús beérkezett fájlok továbbítására vonatkozó szabály követ egy felhasználó Beérkezett üzenetek mappájába.
     
-    Ez azt jelezheti, hogy a fiók biztonsága sérül, és hogy a postaládát arra használják, hogy kiszivárogjanak a szervezetből származó információkból. A \<felhasználói *fiók neve*> létrehozott vagy frissített egy beérkező levéltovábbítási \<szabályt, amely az összes bejövő e-mailt továbbítja a külső *e-mail címre*>. 
+    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználói \< *fiók neve*> létrehozott vagy frissített egy beérkezett fájlok továbbítására szolgáló szabályt, amely az összes beérkező \<e-mailt továbbítja a külső cím *e-mail-címére*>. 
 
-- **Bejelentkezési esemény egy névtelen IP-címről, amely gyanús felhőalkalmazás-felügyeleti tevékenységhez vezet**
+- **Bejelentkezési esemény olyan névtelen IP-címről, amely gyanús Cloud app felügyeleti tevékenységhez vezet**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> egyetlen munkamenetben> felügyeleti tevékenységek \< *száma* alapján hajtják végre.
+    Ezt követően a fiók \< *fiókjának neve*> egy \<munkamenetben> felügyeleti tevékenységek *száma* felett.
 
-- **Bejelentkezési esemény egy névtelen IP-címről, amely tömeges fájltörléshez vezet**
+- **Bejelentkezési esemény a tömeges fájlok törlését eredményező névtelen IP-címről**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók neve*> törölt \< *számú*> egyedi fájlokat egy munkamenetben.
+    Ezután a fiók \< *fiókneve*> törölte \<a> egyedi fájlok *számát* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény egy névtelen IP-címről, amely tömeges fájlletöltéshez vezet**
+- **Bejelentkezési esemény a tömeges fájl letöltését eredményező névtelen IP-címről**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> letölteni> egyedi fájlok \< *száma* egy munkamenetben.
+    Ezt követően a fiók \< *fiókjának neve*> letöltött \<egyedi fájlok *száma*> egyetlen munkamenetben.
 
-- **Bejelentkezési esemény egy névtelen IP-címről, amely office 365-i megszemélyesítéshez vezet**
+- **Bejelentkezési esemény egy névtelen IP-címről, amely az Office 365 megszemélyesítést vezeti**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét* \<egy munkamenetben> különböző fiókok *száma* miatt> megszemélyesíteni.
+    Ezután a fiók \< *fiókjának neve*> megszemélyesített \<> különböző fiókok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény egy névtelen IP-címről, amely tömeges fájlmegosztáshoz vezet**
+- **Bejelentkezési esemény egy tömeges fájlmegosztást eredményező névtelen IP-címről**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók nevét*> megosztva \<> egyedi fájlok *egy* munkamenetben.
+    Ezután a fiók \< *fiókjának neve*> megosztva \<> egyedi fájlok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény névtelen IP-címről zsarolóprogramokba a felhőalapú alkalmazásban**
+- **Bejelentkezési esemény névtelen IP-címről a Cloud app ransomware**
     
-    Ez a riasztás egy bejelentkezési eseményt \<jelez *egy névtelen* proxy \< *IP-címéről*>>. 
+    Ez a riasztás azt jelzi, hogy a \< *fiók neve*> a névtelen proxy IP-címének \< *IP-* címe> az adott bejelentkezési eseményt. 
     
-    Ezután a \< *fiókfiók* neve \<> feltöltött> fájlok *számát,* és összesen \< *több*> fájlt törölt. 
+    Ezután a fiók \< *fiókjának neve*>> \<fájlok feltöltött *számát* , és törölte \< *a> fájlok teljes számát.* 
     
-    Ez a tevékenységminta egy lehetséges zsarolóvírus-támadásra utal.
+    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
 
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység a felhasználótól kiszivárgott hitelesítő adatokkal, majd rendellenes Office 365-tevékenységgel
+### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Bejelentkezési tevékenység a felhasználótól a kiszivárgott hitelesítő adatokkal, majd a rendellenes Office 365-tevékenységgel
 
-Hét lehetséges Azure Sentinel-incidens létezik, amelyek egyesítik a felhasználó bejelentkezési tevékenységét az Azure AD Identity Protection kiszivárgott hitelesítő adataival és a Microsoft Cloud App Security által létrehozott rendellenes Office 365-ös riasztásoksal:
+Hét lehetséges Azure Sentinel-incidens van, amelyek a bejelentkezési tevékenységet összekapcsolják a felhasználótól a kiszivárgott hitelesítő adatokkal Azure AD Identity Protection és az Microsoft Cloud App Security által generált rendellenes Office 365 riasztásokkal:
 
-- **Bejelentkezési esemény az Office 365 postaláda kiszivárgásához vezető, kiszivárgott hitelesítő adatokkal rendelkező felhasználótól**
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal az Office 365 postaláda kiszűrése**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> kiszivárgott hitelesítő adatokat használt, majd egy gyanús beérkezett üzenetek továbbítási szabály a felhasználó beérkezett üzenetek mappájában. 
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokat, majd egy gyanús beérkezett fájlok továbbítására vonatkozó szabályt adott meg a felhasználó beérkezett üzeneteiben. 
     
-    Ez azt jelezheti, hogy a fiók biztonsága sérül, és hogy a postaládát arra használják, hogy kiszivárogjanak a szervezetből származó információkból. A \<felhasználói *fiók neve*> létrehozott vagy frissített egy beérkező levéltovábbítási \<szabályt, amely az összes bejövő e-mailt továbbítja a külső *e-mail címre*>. 
+    Ez arra utalhat, hogy a fiók biztonságban van, és a postaláda használatával exfiltrate az adatokat a szervezettől. A felhasználói \< *fiók neve*> létrehozott vagy frissített egy beérkezett fájlok továbbítására szolgáló szabályt, amely az összes beérkező \<e-mailt továbbítja a külső cím *e-mail-címére*>. 
 
-- **Bejelentkezési esemény a kiszivárgott hitelesítő adatokkal rendelkező felhasználótól, amely gyanús felhőalkalmazás-felügyeleti tevékenységhez vezet**
+- **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús Cloud app felügyeleti tevékenységet vezetnek**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat.
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal.
     
-    Ezután a \< *fiókfiók nevét*> egyetlen munkamenetben> felügyeleti tevékenységek \< *száma* alapján hajtják végre.
+    Ezt követően a fiók \< *fiókjának neve*> egy \<munkamenetben> felügyeleti tevékenységek *száma* felett.
 
-- **Bejelentkezési esemény a felhasználótól kiszivárgott hitelesítő adatokkal, amelyek tömeges fájltörléshez vezetnek**
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek a tömeges fájlok törlését eredményezik**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat.
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal.
     
-    Ezután a \< *fiókfiók neve*> törölt \< *számú*> egyedi fájlokat egy munkamenetben.
+    Ezután a fiók \< *fiókneve*> törölte \<a> egyedi fájlok *számát* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, ami tömeges fájlletöltéshez vezet**
+- **Bejelentkezési esemény a felhasználótól a fájlok letöltéséhez szükséges kiszivárgott hitelesítő adatokkal**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat.
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal.
     
-    Ezután a \< *fiókfiók nevét*> letölteni> egyedi fájlok \< *száma* egy munkamenetben.
+    Ezt követően a fiók \< *fiókjának neve*> letöltött \<egyedi fájlok *száma*> egyetlen munkamenetben.
 
-- **Bejelentkezési esemény az Office 365 megszemélyesítéséhez vezető, kiszivárgott hitelesítő adatokkal rendelkező felhasználótól**
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal az Office 365 megszemélyesítéshez vezető módon**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat. 
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal. 
     
-    Ezután a \< *fiókfiók nevét* \<egy munkamenetben> különböző fiókok *száma* miatt> megszemélyesíteni.
+    Ezután a fiók \< *fiókjának neve*> megszemélyesített \<> különböző fiókok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény a felhasználótól kiszivárgott hitelesítő adatokkal, amelyek tömeges fájlmegosztáshoz vezetnek**
+- **Bejelentkezési esemény a felhasználótól a tömeges fájlmegosztást eredményező kiszivárgott hitelesítő adatokkal**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat.
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal.
     
-    Ezután a \< *fiókfiók nevét*> megosztva \<> egyedi fájlok *egy* munkamenetben.
+    Ezután a fiók \< *fiókjának neve*> megosztva \<> egyedi fájlok *száma* egyetlen munkamenetben.
 
-- **Bejelentkezési esemény a kiszivárgott hitelesítő adatokkal rendelkező felhasználótól a zsarolóprogramokhoz a felhőalkalmazásban**
+- **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal a ransomware a Cloud app szolgáltatásban**
     
-    Ez a riasztás azt jelzi, hogy \<a bejelentkezési esemény *fióknév szerint*> használt kiszivárgott hitelesítő adatokat. 
+    Ez a riasztás azt jelzi, hogy a bejelentkezési esemény \< *fiók neve*> használt kiszivárgott hitelesítő adatokkal. 
     
-    Ezután a \< *fiókfiók* neve \<> feltöltött> fájlok *számát,* és összesen \< *több*> fájlt törölt. 
+    Ezután a fiók \< *fiókjának neve*>> \<fájlok feltöltött *számát* , és törölte \< *a> fájlok teljes számát.* 
     
-    Ez a tevékenységminta egy lehetséges zsarolóvírus-támadásra utal.
+    Ez a tevékenységi minta egy lehetséges ransomware támadásra utal.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy többet megtudhat a fejlett többfokozatú támadások észleléséről, az alábbi rövid útmutatóból megtudhatja, hogyan kaphat betekintést az adatokba és a potenciális fenyegetésekbe: [Ismerkedjen meg az Azure Sentinel használatával.](quickstart-get-visibility.md)
+Most, hogy megismerte a fejlett többlépcsős támadások észlelését, az alábbi rövid útmutatóból megtudhatja, hogyan tekintheti meg az adatait és a potenciális fenyegetéseket: Ismerkedés [Az Azure Sentinel szolgáltatással](quickstart-get-visibility.md).
 
-Ha készen áll az Ön számára létrehozott incidensek kivizsgálására, tekintse meg a következő oktatóanyagot: [Az Azure Sentinel incidensei vizsgálata.](tutorial-investigate-cases.md)
+Ha készen áll az Ön számára létrehozott incidensek vizsgálatára, tekintse meg a következő oktatóanyagot: [incidensek vizsgálata az Azure Sentinel](tutorial-investigate-cases.md)használatával.
 

@@ -1,6 +1,6 @@
 ---
-title: A Symantec ICDx-adatok csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Megtudhatja, hogy miként csatlakoztathatja a Symantec ICDx-adatokat az Azure Sentinelhez.
+title: Symantec ICDx-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók a Symantec ICDx-adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,68 +16,68 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588093"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>A Symantec ICDx készülék csatlakoztatása 
+# <a name="connect-your-symantec-icdx-appliance"></a>A Symantec ICDx-berendezés összekötése 
 
 
 
-A Symantec ICDx-összekötő lehetővé teszi, hogy könnyedén csatlakoztatja az összes Symantec biztonsági megoldásnaplóját az Azure Sentinelhez, megtekintheti az irányítópultokat, egyéni riasztásokat hozzon létre, és javítsa a vizsgálatot. Ez több betekintést nyújt a szervezet hálózatába, és javítja a biztonsági műveleti képességeket. A Symantec ICDx és az Azure Sentinel integrációja a REST API-t használja.
+A Symantec ICDx Connector segítségével könnyedén csatlakoztathatja az összes Symantec biztonsági megoldás naplóját az Azure Sentinelhez, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Ez nagyobb betekintést nyújt a szervezet hálózatára, és javítja a biztonsági műveletek képességeit. A Symantec ICDx és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
 
 
 > [!NOTE]
-> Az adatok at annak a munkaterületnek a földrajzi helyén tároljuk, amelyen az Azure Sentinelt futtatja.
+> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
 
-## <a name="configure-and-connect-symantec-icdx"></a>A Symantec ICDx konfigurálása és csatlakoztatása 
+## <a name="configure-and-connect-symantec-icdx"></a>A Symantec ICDx konfigurálása és összekapcsolása 
 
-A Symantec ICDx közvetlenül integrálhatja és exportálhatja a naplókat az Azure Sentinelbe.
+A Symantec ICDx közvetlenül az Azure Sentinelbe integrálhatja és exportálhatja a naplókat.
 
-1. Nyissa meg az ICDx Management Console-t a Microsoft Azure Sentinel (Log Analytics) továbbítók hozzáadásához.
-2. Az ICDx navigációs sávján kattintson a **Konfiguráció gombra.** 
-3. A **Konfigurációs** képernyő tetején kattintson a **Továbbítók**gombra.
-4. A **Továbbítók**csoportban a Microsoft Azure Sentinel (Log Analytics) csoportban kattintson a **Hozzáadás**gombra. 
-4. A **Microsoft Azure Sentinel (Log Analytics)** ablakban kattintson a **Speciális megjelenítése gombra.** 
-5. A Microsoft Azure Sentinel (Log Analytics) ablakának tetején tegye a következőket:
-    -   **Név**: Írja be a 30 karakternél nem hosszabb továbbító nevét. Válasszon egyedi, tartalmas nevet. Ez a név megjelenik a **továbbítók** listájában a Konfiguráció képernyőn és az **irányítópultokon** az Irányítópult képernyőn. Például: Microsoft Azure Log Analytics East. A mező kitöltése kötelező.
-    -   **Leírás**: Írja be a szállítmányó leírását. Ez a leírás a **konfigurációs** képernyőn a továbbítók listájában is megjelenik. Adja meg a részleteket, például a továbbított esemény típusát és az adatok vizsgálatához szükséges csoportot.
-    -   **Indítástípusa**: Válassza ki a továbbító konfigurációjának indítási módját. A lehetőségek kézi és automatikus.<br>Az alapértelmezett érték az Automatikus. 
-6. Az **Események**csoportban tegye a következőket: 
-    - **Forrás**: Válassza ki azt a vagy több archívumot, amelyből eseményeket szeretne továbbítani. Kiválaszthatja az aktív gyűjtő archívumok (beleértve a Közös Archívum), árva gyűjtő archívumok (azaz archívumok a gyűjtők, hogy a törölt), ICDx vevő archívumok, vagy a Rendszer Archívum. <br>Az alapértelmezett beállítás a Közös archívum.
+1. Microsoft Azure Sentinel (Log Analytics) továbbítók hozzáadásához nyissa meg a ICDx felügyeleti konzolt.
+2. A ICDx navigációs sávon kattintson a **konfiguráció**elemre. 
+3. A **konfiguráció** képernyő felső részén kattintson a **továbbítók**elemre.
+4. A **továbbítók**területen Microsoft Azure Sentinel (log Analytics) mellett kattintson a **Hozzáadás**gombra. 
+4. A **Microsoft Azure Sentinel (log Analytics)** ablakban kattintson a **speciális megjelenítése**elemre. 
+5. A kibontott és a Microsoft Azure Sentinel (Log Analytics) ablak felső részén tegye a következőket:
+    -   **Név**: írja be a továbbító nevét, amely nem hosszabb 30 karakternél. Válasszon egy egyedi, értelmes nevet. Ez a név jelenik meg a továbbítók listájában a **konfiguráció** képernyőjén, illetve az **irányítópult képernyőjén az irányítópultokon** . Például: Microsoft Azure Log Analytics Kelet. A mező kitöltése kötelező.
+    -   **Leírás**: adja meg a továbbító leírását. Ez a leírás a továbbítók listáján is megjelenik a **konfigurációs** képernyőn. Olyan részleteket is tartalmazhat, mint például a továbbított eseménytípus, valamint az adatok vizsgálatát igénylő csoport.
+    -   **Indítási típus**: válassza ki a továbbító konfigurációjának indítási módszerét. A lehetőségek kéziek és automatikusak.<br>Az alapértelmezett érték az automatikus. 
+6. Az **események**területen tegye a következőket: 
+    - **Forrás**: válasszon ki egy vagy több olyan archívumot, amelyből az eseményeket továbbítani kívánja. Kiválaszthatja az aktív gyűjtő archívumokat (beleértve a közös archívumot is), az árva gyűjtő archívumokat (azaz a törölt gyűjtők archívumait), a ICDx-fogadó archívumokat vagy a rendszer archívumát. <br>Az alapértelmezett érték a közös Archívum.
       > [!NOTE]
-      > ICDx vevő archívumok külön-külön vannak felsorolva, név szerint. 
+      > A ICDx-fogadó archívumok külön névvel vannak felsorolva. 
  
-    - **Szűrő**: Adjon hozzá egy szűrőt, amely meghatározza a továbbítandó események részhalmazát. Tegye a következők egyikét:
-        - Szűrőfeltétel kijelöléséhez kattintson a Típus, Az Attribútum, az Operátor és az Érték parancsra. 
-        - A Szűrő mezőben tekintse át a szűrőfeltételt. Közvetlenül szerkesztheti a mezőben, vagy szükség szerint törölheti.
-        - Kattintson az ÉS vagy a VAGY gombra a szűrőfeltételhez való hozzáadáshoz.
-        - Mentett lekérdezések alkalmazásához a Mentett lekérdezések elemre is kattintva.
-    - **Tartalmazza az attribútumokat:** Írja be a továbbított adatokba felvenni rekettel körülvett attribútumok vesszővel tagolt listáját. A mellékelt attribútumok elsőbbséget élveznek a kizárt attribútumokkal szemben.
-    - **Kizárt attribútumok**: Írja be a továbbított adatokból kizárandó attribútumok vesszővel tagolt listáját.
-    - **Kötegméret:** Adja meg a kötegenként küldni kívánt események számát. A lehetőségek 10, 50, 100, 500 és 1000.<br>Az alapértelmezett érték 100. 
-    - **Díjkorlát**: Válassza ki az események másodpercenkénti mértékén kifejezett továbbításának sebességét. A lehetőségek korlátlan, 500, 1000, 5000, 10000. <br> Az alapértelmezett érték 5000. 
-7. Az **Azure Destination csoportban**tegye a következőket: 
-    - **Munkaterület-azonosító:** Illessze be a munkaterület-azonosítót alulról. A mező kitöltése kötelező.
-    - **Elsődleges kulcs:** Illessze alulról az elsődleges kulcsot. A mező kitöltése kötelező.
-    - **Egyéni naplónév:** Írja be az egyéni napló nevét a Microsoft Azure Portal Log Analytics munkaterületére, amelyre eseményeket továbbít. Az alapértelmezett érték a SymantecICDx. A mező kitöltése kötelező.
-8. A *továbbító* konfigurációjának befejezéséhez kattintson a Mentés gombra. 
-9. A továbbító elindításához kattintson a **Beállítások**csoportban az **Egyebek,** majd a **Start gombra.**
-10. Ha a Symantec ICDx-események hez a Log Analytics megfelelő sémáját szeretné használni, keresse meg **a SymantecICDx_CL.**
+    - **Szűrő**: adjon hozzá egy szűrőt, amely meghatározza a továbbítandó események részhalmazát. Tegye a következők egyikét:
+        - Egy szűrési feltétel kiválasztásához kattintson a típus, az attribútum, az operátor és az érték elemre. 
+        - A szűrő mezőben tekintse át a szűrési feltételt. Közvetlenül a mezőben szerkesztheti, vagy szükség szerint törölheti is.
+        - Kattintson a vagy a vagy a gombra a szűrési feltételhez való hozzáadáshoz.
+        - Egy mentett lekérdezés alkalmazásához kattintson a mentett lekérdezések lehetőségre is.
+    - **Belefoglalt attribútumok**: írja be a továbbított adatmennyiségbe felvenni kívánt attribútumok vesszővel tagolt listáját. A befoglalt attribútumok elsőbbséget élveznek a kizárt attribútumokkal szemben.
+    - **Kizárt attribútumok**: írja be a továbbított adatokból kizárandó attribútumok vesszővel tagolt listáját.
+    - **Köteg mérete**: válassza ki a kötegbe küldendő események számát. A lehetőségek a következők: 10, 50, 100, 500 és 1000.<br>Az alapértelmezett érték 100. 
+    - **Díjszabási korlát**: válassza ki az események továbbításának sebességét, az események másodpercenkénti számaként kifejezve. A lehetőségek korlátlanok, 500, 1000, 5000, 10000. <br> Az alapértelmezett érték a 5000. 
+7. Az **Azure-cél**területen tegye a következőket: 
+    - **Munkaterület azonosítója**: illessze be a munkaterület-azonosítót az alábbi listából. A mező kitöltése kötelező.
+    - **Elsődleges kulcs**: illessze be az elsődleges kulcsot az alábbi listából. A mező kitöltése kötelező.
+    - **Egyéni napló neve**: írja be az egyéni napló nevét a Microsoft Azure Portal log Analytics munkaterületen, amelyre az eseményeket továbbítani fogja. Az alapértelmezett érték a SymantecICDx. A mező kitöltése kötelező.
+8. A továbbító konfigurációjának befejezéséhez kattintson a *Mentés* gombra. 
+9. A továbbító indításához a **Beállítások**területen kattintson a **továbbiak** , majd a **Start**gombra.
+10. Ha a Symantec ICDx eseményeihez a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **SymantecICDx_CL**.
 
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 
-A naplók megjelenése a Log Analytics szolgáltatásban 20 percet is igénybe vehet. 
+Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Symantec ICDx-et az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Symantec ICDx az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 
 

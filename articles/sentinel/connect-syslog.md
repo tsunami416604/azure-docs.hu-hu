@@ -1,6 +1,6 @@
 ---
-title: Syslog-adatok csatlakoztatása az Azure Sentinelhez | Microsoft dokumentumok
-description: Ismerje meg, hogyan csatlakoztathatja a Syslog-adatokat az Azure Sentinelhez.
+title: Syslog-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható a syslog-adatbázis az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,96 +15,96 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588076"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Csatlakoztassa külső megoldását a Syslog segítségével
+# <a name="connect-your-external-solution-using-syslog"></a>Külső megoldás összekötése a syslog használatával
 
-A Syslog szolgáltatást támogató bármely helyszíni készüléket csatlakoztathatja az Azure Sentinelhez. Ez a készülék és az Azure Sentinel közötti Linux-gépen alapuló ügynök használatával történik. Ha a Linux-gép az Azure-ban van, streamelheti a naplókat a készülékről vagy alkalmazásból egy dedikált munkaterületre, amelyet az Azure-ban hoz létre, és csatlakoztathatja. Ha a Linux-gép nem az Azure-ban, streamelheti a naplókat a készülékről egy dedikált helyszíni virtuális gép vagy gép, amelyre telepíti a Linux-ügynök. 
+Bármely helyszíni berendezés csatlakoztatható, amely támogatja a syslog szolgáltatást az Azure Sentinel számára. Ezt egy, a készülék és az Azure Sentinel közötti linuxos gépen alapuló ügynök használatával végezheti el. Ha a linuxos gépe az Azure-ban található, a naplókat a készülékről vagy alkalmazásból egy dedikált, az Azure-ban létrehozott munkaterületre továbbíthatja, és összekapcsolhatók. Ha a Linux rendszerű számítógép nem az Azure-ban található, a naplókat a készülékről egy dedikált helyszíni virtuális gépre vagy gépre helyezheti át, amelyre telepíti a Linux-ügynököt. 
 
 > [!NOTE]
-> Ha a készülék támogatja a Syslog CEF-et, a kapcsolat teljesebb, és válassza ezt a lehetőséget, és kövesse a [CEF adatainak csatlakoztatása](connect-common-event-format.md)című részben található utasításokat.
+> Ha a készülék támogatja a syslog CEF, a kapcsolat teljesebb, és ezt a beállítást kell választania, és követnie kell az [adatok CEF-ból való csatlakoztatásának](connect-common-event-format.md)utasításait.
 
 ## <a name="how-it-works"></a>Működés
 
-A Syslog egy olyan eseménynaplózási protokoll, amely a Linux közös. Az alkalmazások olyan üzeneteket küldenek, amelyek a helyi számítógépen tárolhatók, vagy egy Syslog gyűjtőnek kézbesíthetők. A Linuxos Log Analytics-ügynök telepítésekor a helyi Syslog démont konfigurálja az ügynöknek küldött üzenetek továbbítására. Az ügynök ezután elküldi az üzenetet az Azure Monitornak, ahol a megfelelő rekord jön létre.
+A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.
 
-További információ: [Syslog adatforrások az Azure Monitorban.](../azure-monitor/platform/data-sources-syslog.md)
+További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/platform/data-sources-syslog.md).
 
 > [!NOTE]
-> - Az ügynök több forrásból is gyűjthet naplókat, de dedikált proxygépre kell telepíteni.
-> - Ha ugyanazon a virtuális gépen is támogatni szeretné a CEF és a Syslog összekötőit, hajtsa végre az alábbi lépéseket az adatok másolásának elkerülése érdekében:
->    1. Kövesse az utasításokat [a CEF csatlakoztatása gombra.](connect-common-event-format.md)
->    2. A Syslog-adatok csatlakoztatásához nyissa meg a **Beállítások** > **munkaterület beállításai** > **Speciális beállítások** > **Data** > **Syslog** lehetőséget, és állítsa be a létesítményeket és azok prioritásait úgy, hogy ne ugyanazok a létesítmények és tulajdonságok, mint a CEF-konfigurációban használt. <br></br>Ha az Alábbiakban a **konfiguráció alkalmazása a gépeimre**lehetőséget választja, akkor ezeket a beállításokat alkalmazza a munkaterülethez csatlakoztatott összes virtuális gépre.
+> - Az ügynök több forrásból is gyűjthet naplókat, de a dedikált proxykiszolgálón kell telepítenie.
+> - Ha ugyanazon a virtuális gépen szeretné támogatni a CEF és a syslog összekötőit is, hajtsa végre az alábbi lépéseket az adatok duplikálása érdekében:
+>    1. A [CEF összekapcsolásához](connect-common-event-format.md)kövesse az utasításokat.
+>    2. A syslog-adat összekapcsolásához lépjen a **Beállítások** > **munkaterület beállítások** > **Speciális beállítások** > **adat** > **syslog** elemre, és állítsa be a létesítményeket és azok prioritásait, hogy azok ne ugyanazok a létesítmények és tulajdonságok legyenek, amelyeket a CEF-konfigurációban használt. <br></br>Ha **az alábbi konfiguráció alkalmazása a saját gépekre**lehetőséget választja, akkor a rendszer ezeket a setings a munkaterülethez csatlakozó összes virtuális gépre alkalmazza.
 
 
-## <a name="connect-your-syslog-appliance"></a>Csatlakoztassa a Syslog készüléket
+## <a name="connect-your-syslog-appliance"></a>A syslog-berendezés összekötése
 
-1. Az Azure Sentinelben válassza **az Adatösszekötők,** majd válassza ki a **Syslog-összekötőt.**
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd válassza ki a **syslog** -összekötőt.
 
-2. A **Syslog** panelen válassza az **Összekötő megnyitása lapot**.
+2. A **syslog** panelen válassza az **összekötő lap megnyitása**lehetőséget.
 
-3. Telepítse a Linux-ügynököt:
+3. A Linux-ügynök telepítése:
     
-    - Ha a Linux-alapú virtuális gép az Azure-ban van, válassza **az Ügynök letöltése és telepítése az Azure Linux virtuális gépen**lehetőséget. A **Virtuális gépek** panelen jelölje ki az ügynök telepítéséhez szükséges virtuális gépeket, majd kattintson a **Csatlakozás gombra.**
-    - Ha a Linux-gép nem az Azure-ban, válassza **az ügynök letöltése és telepítése linuxos nem Azure-gépen**lehetőséget. A **Direct agent** panelen másolja a **letöltési és fedélzeti ÜGYNÖK LINUX-ra** parancsát, és futtassa azt a számítógépen. 
+    - Ha a linuxos virtuális gép az Azure-ban található, válassza az **ügynök letöltése és telepítése az Azure Linux virtuális gépen**lehetőséget. A **Virtual Machines (virtuális gépek** ) panelen válassza ki azokat a virtuális gépeket, amelyekre telepíteni szeretné az ügynököt, majd kattintson a **Kapcsolódás**elemre.
+    - Ha a Linux rendszerű gép nem az Azure-ban található, válassza az **ügynök letöltése és telepítése a Linuxon nem Azure-beli gépen**lehetőséget. A **Direct Agent (közvetlen ügynök** ) panelen másolja a **letöltéshez és** a BEvezetéshez szükséges ügynököt a Linux rendszerhez, és futtassa azt a számítógépen. 
     
    > [!NOTE]
-   > Győződjön meg arról, hogy ezekhez a számítógépekhez a szervezet biztonsági házirendjének megfelelően konfigurálja a biztonsági beállításokat. Beállíthatja például, hogy a hálózati beállítások igazodjanak a szervezet hálózati biztonsági házirendjéhez, és módosíthatja a démon portjait és protokolljait, hogy megfeleljenek a biztonsági követelményeknek.
+   > Győződjön meg arról, hogy a szervezet biztonsági házirendjének megfelelően konfigurálja a számítógépek biztonsági beállításait. Beállíthatja például, hogy a hálózati beállítások összhangban legyenek a szervezete hálózati biztonsági házirendjével, és a démon portjait és protokollait a biztonsági követelményekkel összhangba lehessen állítani.
 
-4. Válassza **a Munkaterület speciális beállításainak megnyitása lehetőséget.**
+4. Válassza **a munkaterület speciális beállítások konfiguráció megnyitása**lehetőséget.
 
-5. A **Speciális beállítások** panelen válassza a **Data** > **Syslog**lehetőséget. Ezután adja hozzá a csatlakozó összegyűjtéséhez szükséges létesítményeket.
+5. A **Speciális beállítások** **panelen válassza ki az** > **adatsyslog**elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
     
-    Adja hozzá a syslog készülék által a naplófejlécekben található létesítményeket. Ezt a konfigurációt a **Syslog-d Syslog-d** készülékében a mappában, `/etc/syslog-ng/security-config-omsagent.conf`az **r-Syslog alkalmazásban** pedig a `/etc/rsyslog.d/security-config-omsagent.conf` alkalmazásban láthatja.
+    Adja hozzá azokat a létesítményeket, amelyeket a syslog-berendezés tartalmaz a naplójának fejlécében. Ezt a konfigurációt megtekintheti a syslog **-d** -ben a `/etc/rsyslog.d/security-config-omsagent.conf` mappában, és az **r-syslog** -ból `/etc/syslog-ng/security-config-omsagent.conf`.
     
-    Ha rendellenes SSH bejelentkezési észlelést szeretne használni az összegyűjtött adatokkal, adja hozzá az **auth** és **authpriv**értéket. További részleteket a [következő részben](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) talál.
+    Ha rendellenes SSH bejelentkezési észlelést szeretne használni a gyűjtött adatokkal, adja hozzá az **Auth** és a **authpriv**. További részletekért tekintse meg a [következő szakaszt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-6. Ha hozzáadta az összes figyelni kívánt létesítményt, és mindegyikhez módosította a súlyossági beállításokat, jelölje be a **Konfiguráció alkalmazása a gépeimre jelölőnégyzetet.**
+6. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre**jelölőnégyzetet.
 
 7. Kattintson a **Mentés** gombra. 
 
-8. A syslog készüléken győződjön meg arról, hogy a megadott berendezéseket küldi.
+8. Győződjön meg arról, hogy a syslog készülékén a megadott létesítményeket küldi el.
 
-9. Ha a megfelelő sémát szeretné használni az Azure Monitorban a syslog naplókhoz, keresse meg a **Syslog**kifejezést.
+9. A syslog-naplók Azure Monitor vonatkozó sémájának használatához keresse meg a **syslog**kifejezést.
 
-10. Használhatja a Kusto függvény leírt [funkciók használata az Azure Monitor naplólekérdezések](../azure-monitor/log-query/functions.md) a Syslog-üzenetek elemzéséhez. Ezután mentheti őket egy új Log Analytics-függvényként, hogy új adattípusként használhassa őket.
+10. A syslog-üzenetek elemzéséhez használhatja a [függvények használata Azure monitor napló lekérdezésekben](../azure-monitor/log-query/functions.md) című témakörben leírt Kusto függvényt. Ezután új Log Analytics függvényként mentheti őket új adattípusként való használatra.
 
-### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurálja a Syslog összekötőt a rendellenes SSH bejelentkezési észleléshez
+### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>A syslog-összekötő konfigurálása rendellenes SSH-bejelentkezés észleléséhez
 
 > [!IMPORTANT]
 > A rendellenes SSH bejelentkezési észlelés jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel alkalmazhat gépi tanulás (ML) a syslog adatok at anomália biztonságos rendszerhéj (SSH) bejelentkezési tevékenység azonosításához. A forgatókönyvek a következők:
+Az Azure Sentinel gépi tanulást (ML) alkalmazhat a syslog-adatokra a rendellenes Secure Shell-(SSH-) bejelentkezési tevékenységek azonosításához. A forgatókönyvek a következők:
 
-- Lehetetlen utazás – ha két sikeres bejelentkezési esemény két olyan helyről történik, amelyeket a két bejelentkezési esemény időkeretén belül lehetetlen elérni.
-- Váratlan hely – az a hely, ahonnan sikeres bejelentkezési esemény történt, gyanús. Például a helyet nem látták a közelmúltban.
+- Lehetetlen utazás – ha két sikeres bejelentkezési esemény következik be két olyan helyről, amely nem érhető el a két bejelentkezési esemény időkeretén belül.
+- Váratlan hely – a sikeres bejelentkezési esemény előfordulási helye gyanús. Például a hely nem látható a közelmúltban.
  
-Ez az észlelés a Syslog adatösszekötő adott konfigurációját igényli: 
+Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges: 
 
-1. Az előző eljárás 5. **auth** **authpriv** Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy mindegyik ki legyen jelölve. Példa:
+1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Például:
     
     > [!div class="mx-imgBorder"]
-    > ![A rendellenes SSH bejelentkezésészleléshez szükséges létesítmények](./media/connect-syslog/facilities-ssh-detection.png)
+    > ![A rendellenes SSH bejelentkezési észleléshez szükséges szolgáltatások](./media/connect-syslog/facilities-ssh-detection.png)
 
-2. Hagyjon elegendő időt a syslog adatok gyűjtésére. Ezután keresse meg az **Azure Sentinel – Naplók ,** és másolja be a következő lekérdezést:
+2. A syslog-adatok gyűjtéséhez elegendő idő szükséges. Ezután navigáljon az **Azure Sentinel-logs**elemhez, és másolja és illessze be a következő lekérdezést:
     
         Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
     
-    Szükség esetén módosítsa az **időtartományt,** és válassza a **Futtatás**lehetőséget.
+    Szükség esetén módosítsa az **időtartományt** , majd válassza a **Futtatás**lehetőséget.
     
-    Ha az eredményül kapott szám nulla, ellenőrizze az összekötő konfigurációját, és hogy a figyelt számítógépek sikeres bejelentkezési tevékenységgel rendelkeznek-e a lekérdezéshez megadott időszakban.
+    Ha az eredményül kapott darabszám nulla, erősítse meg az összekötő konfigurációját, és hogy a figyelt számítógépek sikeres bejelentkezési tevékenységet hajtanak végre a lekérdezéshez megadott időszakra vonatkozóan.
     
-    Ha az eredményül kapott szám nagyobb, mint nulla, a syslog adatok alkalmasak rendellenes SSH bejelentkezésészlelése. Ezt az észlelést **az Analytics-szabály** >  **sablonokból (előzetes verzió) Rendellenes SSH bejelentkezési észlelési****sablonjaiból** > engedélyezi.
+    Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics** >  -**szabály sablonjai** > **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével**engedélyezheti.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Helyszíni Syslog-készülékeket az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a syslog helyszíni készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 

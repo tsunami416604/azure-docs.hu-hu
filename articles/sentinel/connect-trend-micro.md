@@ -1,6 +1,6 @@
 ---
-title: A Trend Micro Deep Security csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan kapcsolhatja össze a Trend Micro Deep Security t az Azure Sentinelhez.
+title: A Trend Micro Deep Security összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható a Trend Micro Deep Security az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588025"
 ---
-# <a name="connect-trend-micro-deep-security"></a>A Trend Micro Deep Security csatlakoztatása
+# <a name="connect-trend-micro-deep-security"></a>A Trend Micro Deep Security összekötése
 
-A Trend Micro Deep Security összekötő segítségével egyszerűen csatlakoztathatja deep security naplóit az Azure Sentinelhez irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. Ez több betekintést nyújt a szervezet hálózataiba és rendszereibe, és javítja a biztonsági műveleti képességeket.
+A Trend Micro Deep Security összekötővel könnyedén csatlakoztathatja a mély biztonsági naplókat az Azure Sentinel segítségével, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Így jobban betekintést nyerhet a szervezet hálózatára és rendszereibe, és javíthatja a biztonsági műveletek képességeit.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Olvasási és írási engedélyek az Azure Sentinel-munkaterületre.
+- Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez.
 
-## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Csatlakoztassa az Azure Sentinelt a Trend Micro Deep Security-hez
+## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Az Azure Sentinel összekötése a Trend Micro Deep Security szolgáltatással
 
-1. Az Azure Portalon keresse meg az **Azure Sentinel** > **Data-összekötők,** és válassza ki a **Trend Micro Deep Security** összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők területére** , majd válassza ki a **Trend Micro Deep Security** -összekötőt.
 
-2. Válassza **az Összekötő lap megnyitása lehetőséget**.
+2. Válassza az **összekötő megnyitása lapot**.
 
 3. Kövesse az utasításokat és a következő lépéseket.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Trend Micro Deep Security-t az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Trend Micro Deep Security az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 
 

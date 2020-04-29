@@ -1,6 +1,6 @@
 ---
-title: Windows tűzfaladatok csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan kapcsolhatja össze a Windows tűzfaladatait az Azure Sentinelhez.
+title: Windows tűzfal-adatkapcsolatok összekapcsolása az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Megtudhatja, hogyan csatlakoztathatók a Windows tűzfal az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,49 +16,49 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588059"
 ---
 # <a name="connect-windows-firewall"></a>A Windows tűzfal csatlakoztatása
 
 
 
-A Windows tűzfal-összekötő lehetővé teszi a Windows-tűzfalak naplóinak egyszerű csatlakoztatását, ha azok az Azure Sentinel-munkaterülethez csatlakoznak. Ez a kapcsolat lehetővé teszi az irányítópultok megtekintését, egyéni riasztások létrehozását és a vizsgálat javítását. Ez több betekintést nyújt a szervezet hálózatába, és javítja a biztonsági műveleti képességeket. A megoldás a Windows tűzfal eseményeit azon Windows-gépekről gyűjti, amelyeken a Log Analytics-ügynök telepítve van. 
+A Windows tűzfal-összekötő segítségével könnyedén csatlakoztathatja a Windows tűzfal naplóit, ha azok az Azure Sentinel-munkaterülethez csatlakoznak. Ez a kapcsolat lehetővé teszi az irányítópultok megtekintését, az egyéni riasztások létrehozását és a vizsgálat javítását. Ez nagyobb betekintést nyújt a szervezet hálózatára, és javítja a biztonsági műveletek képességeit. A megoldás Windows tűzfalbeli eseményeket gyűjt azokról a Windows-gépekről, amelyeken Log Analytics ügynök van telepítve. 
 
 
 > [!NOTE]
-> - Az adatok at annak a munkaterületnek a földrajzi helyén tároljuk, amelyen az Azure Sentinelt futtatja.
-> - Ha az Azure Sentinel és az Azure Security Center ugyanabba a munkaterületre gyűjti, nincs szükség a Windows tűzfal megoldás engedélyezésére ezen az összekötőn keresztül. Ha mégis engedélyezte, az nem okoz duplikált adatokat. 
+> - Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+> - Ha az Azure Sentinel és a Azure Security Center összegyűjtése ugyanarra a munkaterületre történik, nem szükséges engedélyezni a Windows tűzfal megoldását ezen az összekötőn keresztül. Ha ezt az állapotot engedélyezte, akkor a duplikált adatértékeket nem okoz. 
 
 ## <a name="enable-the-connector"></a>Az összekötő engedélyezése 
 
-1. Az Azure Sentinel portálon válassza **az Adatösszekötők** lehetőséget, majd kattintson a **Windows tűzfal** csempéjére. 
-1.  Ha windowsos gépei az Azure-ban vannak:
-    1. Kattintson **az Ügynök telepítése az Azure Windows virtuális gépen**elemre.
-    1. A **virtuális gépek** listájában válassza ki az Azure Sentinelbe streamelni kívánt Windows-gépet. Győződjön meg arról, hogy ez egy Windows virtuális gép.
-    1. A virtuális gép számára megnyíló ablakban kattintson a **Csatlakozás gombra.**  
-    1. Kattintson az **Engedélyezés gombra** a **Windows tűzfal-összekötő** ablakában. 
+1. Az Azure Sentinel portálon válassza az **adatösszekötők** lehetőséget, majd kattintson a **Windows tűzfal** csempére. 
+1.  Ha a Windows rendszerű gépek az Azure-ban vannak:
+    1. Kattintson **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**elemre.
+    1. A **virtuális gépek** listájában válassza ki azt a Windows-gépet, amelyet az Azure sentinelbe szeretne továbbítani. Győződjön meg arról, hogy ez egy Windows rendszerű virtuális gép.
+    1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat**elemre.  
+    1. A **Windows tűzfal-összekötő** ablakban kattintson az **Engedélyezés** gombra. 
 
-2. Ha a Windows-gép nem Azure virtuális gép:
-    1. Kattintson **az Ügynök telepítése nem Azure-alapú gépekre**elemre.
-    1. A **Közvetlen ügynök** ablakban válassza a **Windows-ügynök letöltése (64 bites)** vagy **a Windows-ügynök letöltése (32 bites) lehetőséget.**
-    1. Telepítse az ügynököt a Windows rendszerű számítógépre. Másolja a **munkaterület-azonosítót**, **az elsődleges kulcsot**és a Másodlagos **kulcsot,** és használja őket, amikor a telepítés során a rendszer kéri.
+2. Ha a Windows rendszerű számítógép nem Azure-beli virtuális gép:
+    1. Kattintson **az ügynök telepítése nem Azure-beli gépekre**elemre.
+    1. A **közvetlen ügynök** ablakban válassza a Windows- **ügynök letöltése (64 bites)** vagy a **windows-ügynök letöltése (32 bit)** lehetőséget.
+    1. Telepítse az ügynököt a Windows rendszerű gépre. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot**és a **másodlagos kulcsot** , és használja őket, ha a telepítés során a rendszer kéri.
 
-4. Válassza ki, hogy mely adattípusokat szeretné streamelni.
-5. Kattintson **a Megoldás telepítése gombra.**
-6. Ha a Windows tűzfal log analytics szolgáltatásában a megfelelő sémát szeretné használni, keresse meg a **SecurityEvent (Biztonság) kifejezést.**
+4. Válassza ki, hogy mely adattípusokat kívánja továbbítani.
+5. Kattintson a **megoldás telepítése**gombra.
+6. A Windows tűzfal Log Analytics vonatkozó sémájának használatához keresse meg a **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 
-A naplók megjelenése a Log Analytics szolgáltatásban 20 percet is igénybe vehet. 
+Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathat Windows tűzfalat az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Windows tűzfal az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

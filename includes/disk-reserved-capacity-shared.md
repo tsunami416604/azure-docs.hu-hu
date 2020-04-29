@@ -9,92 +9,92 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77590747"
 ---
-Mentse az Azure Disk Storage-használatot a fenntartott kapacitással. Az Azure Disk Storage-foglalások és az Azure fenntartott virtuálisgép-példányok segítségével csökkentheti a virtuális gép (VM) teljes költségeit. A foglalási kedvezmény automatikusan vonatkozik a kiválasztott foglalási hatókör megfelelő lemezeire. Az automatikus alkalmazás miatt nem kell foglalást hozzárendelnie egy felügyelt lemezhez a kedvezmények leszámításához.
+Mentse a Azure Disk Storage használatot fenntartott kapacitással. Azure Disk Storage a Azure Reserved Virtual Machine Instances összevont foglalások lehetővé teszik a virtuális gép (VM) teljes költségeinek csökkentését. A foglalási kedvezményt a rendszer automatikusan alkalmazza a kijelölt foglalási hatókörben lévő megfelelő lemezekre. Ennek az automatikus alkalmazásnak az alkalmazása miatt nem szükséges foglalást hozzárendelni egy felügyelt lemezhez a kedvezmények beszerzéséhez.
 
-A kedvezmények a lemezhasználattól függően óránként kerülnek alkalmazásra. A fel nem használt fenntartott kapacitás nem vihető át. Az Azure Disk Storage foglalási kedvezményei nem vonatkoznak a nem felügyelt lemezekre, az ultralemezekre vagy a lapblob-felhasználásra.
+A kedvezményeket óránként, a lemez használattól függően kell alkalmazni. A nem használt fenntartott kapacitás nem veszi át a feladatokat. Azure Disk Storage foglalási kedvezmény nem vonatkozik a nem felügyelt lemezekre, az ultra-lemezekre vagy az oldal blob-felhasználására.
 
-## <a name="determine-your-storage-needs"></a>Határozza meg a tárolási igényeket
+## <a name="determine-your-storage-needs"></a>A tárolási igények meghatározása
 
-Mielőtt megvásárolna egy foglalást, határozza meg a tárolási igényeket. Jelenleg az Azure Disk Storage-foglalások csak bizonyos Prémium Szintű SSD-sK-k esetén érhetők el. A prémium szintű SSD termékváltozata határozza meg a lemez méretét és teljesítményét.
+A foglalás megvásárlása előtt határozza meg a tárolási igényeket. Jelenleg Azure Disk Storage foglalások csak az Azure Premium SSD SKU-k esetében érhetők el. A prémium szintű SSD SKU a lemez méretének és teljesítményének meghatározása.
 
-A tárolási igények meghatározásakor ne gondoljon a lemezekre a kapacitás alapján. Például nem rendelkezhet p40-es lemezfoglalással, és ezzel fizethet két kisebb P30 lemezért. Foglalás vásárlásakor csak a termékváltozatonkénti lemezek teljes számára vásároljon foglalást.
+A tárolási igények meghatározásakor ne gondoljon a lemezekre a csak kapacitás alapján. Nem rendelkezhet például egy P40-lemez foglalásával, és ezzel két kisebb P30-lemezért kell fizetnie. Foglalás megvásárlásakor csak a lemezek teljes számának megadását kell megvásárolnia SKU-ra.
 
-Lemezfoglalás lemeztermékváltozatonként történik. Ennek eredményeképpen a foglalási felhasználás a lemez termékkészletének egységén alapul a megadott méret helyett.
+A lemezes foglalások lemezes SKU-ra épülnek. Ennek eredményeképpen a foglalási felhasználás a megadott méret helyett a lemezes SKU egységén alapul.
 
-Tegyük fel például, hogy egy P40 lemezt foglal le, amely 2 TiB kiépített tárolókapacitással rendelkezik. Azt is feltételezik, hogy csak két P30 lemezt foglal le. A P40-es foglalás ebben az esetben nem veszi figyelembe a P30-felhasználást, és a P30 lemezeken a használatalapú fizetés díját kell fizetnie.
+Tegyük fel például, hogy fenntart egy P40 lemezt, amely 2 TiB kiépített tárolókapacitással rendelkezik. Azt is feltételezzük, hogy csak két P30-lemezt foglal le. A P40-foglalás ebben az esetben nem veszi figyelembe a P30-felhasználást, és az utólagos elszámolású díjszabást a P30-lemezekre kell fizetnie.
 <br/>
 <br/>
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-## <a name="purchase-considerations"></a>Beszerzési szempontok
+## <a name="purchase-considerations"></a>Vásárlási szempontok
 
-A lemezfoglalás vásárlásának mérlegelésekor a következő eljárásokat javasoljuk:
+A lemezek foglalásának megvásárlásakor a következő eljárásokat javasoljuk:
 
-- A használati adatok elemzése segít meghatározni, hogy mely foglalásokat érdemes megvásárolnia. Győződjön meg arról, hogy a kiépített vagy használt lemezkapacitás helyett nyomon követi a lemezsku-k használatát.
-- Vizsgálja meg a lemezfoglalást a virtuális gép foglalásával együtt. Javasoljuk, hogy a maximális megtakarítás érdekében foglaljon mind a virtuális gép, mind a lemezhasználat érdekében. Kezdheti a megfelelő virtuális gép-foglalás meghatározásával, majd a lemezfoglalás kiértékelésével. Általában egy szabványos konfigurációval rendelkezik az egyes számítási feladatokhoz. Egy SQL Server kiszolgáló például két P40 adatlemezzel és egy P30 operációs rendszerlemezzel rendelkezhet.
+- A használati adatok elemzésével megállapíthatja, hogy mely foglalásokat kell megvásárolnia. A kiépítés vagy a felhasznált lemez kapacitása helyett ügyeljen arra, hogy nyomon kövesse a lemezes SKU használatát.
+- Ellenőrizze a lemez foglalását a virtuális gép foglalásával együtt. Javasoljuk, hogy a maximális megtakarítás érdekében foglaljon le a virtuális gépek használatának és a lemezes használatnak a fenntartását. A virtuális gép megfelelő foglalásának meghatározásával és a lemezes foglalás kiértékelésével kezdheti meg. Általánosságban elmondható, hogy minden számítási feladathoz standard konfiguráció tartozik. Előfordulhat például, hogy egy SQL Server kiszolgáló két P40 adatlemezzel és egy P30 operációsrendszer-lemezzel rendelkezik.
   
-  Ez a fajta minta segíthet meghatározni a lefoglalt összeget lehet vásárolni. Ez a megközelítés egyszerűsítheti a kiértékelési folyamatot, és biztosíthatja, hogy a virtuális gép és a lemezek egy-egy összehangolt tervvel rendelkezzen. A csomag olyan szempontokat tartalmaz, mint az előfizetések vagy a régiók.
+  Ez a fajta minta segíthet megállapítani a megvásárolt fenntartott összeget. Ezzel a megközelítéssel egyszerűsítheti a kiértékelési folyamatot, és gondoskodhat arról, hogy a virtuális gép és a lemezek esetében is legyen igazított terv. A terv olyan szempontokat tartalmaz, mint például az előfizetések vagy a régiók.
 
-## <a name="purchase-restrictions"></a>Beszerzési korlátozások
+## <a name="purchase-restrictions"></a>Vásárlási korlátozások
 
-A foglalási kedvezmények jelenleg nem érhetők el a következőkre:
+A foglalási kedvezmények jelenleg nem érhetők el a következőhöz:
 
-- Nem felügyelt lemezek vagy lapblobok.
-- Szabványos SSD-k vagy szabványos merevlemez-meghajtók (HDD-k).
-- P30-nál kisebb prémium ssd-sk-ek: P1, P2, P3, P4, P6, P10, P15 és P20 SSD skus.
-- Lemezek az Azure Government, az Azure Germany vagy az Azure China régióban.
+- Nem felügyelt lemezek vagy Blobok.
+- Standard SSD-k vagy standard merevlemez-meghajtók (HDD-k).
+- Prémium SSD SKU kisebb, mint P30: P1, P2, P3, P4, P6, P10, P15 és P20 SSD SKU.
+- Azure Government, Azure Germany vagy Azure China-régiók lemezei.
 
-Ritka körülmények között az Azure korlátozza az új foglalások vásárlását a lemezsinuszok egy részhalmazára, mert egy régióban alacsony kapacitású.
+Ritka körülmények között az Azure korlátozza az új foglalások beszerzését a lemezes SKU részhalmazára, mivel a régió alacsony kapacitása van.
 
-## <a name="buy-a-disk-reservation"></a>Lemezfoglalás vásárlása
+## <a name="buy-a-disk-reservation"></a>Lemezes foglalás vásárlása
 
-Az Azure Disk Storage-foglalásokat az [Azure Portalon](https://portal.azure.com/)keresztül vásárolhatja meg. A foglalást előre vagy havi fizetéssel is kifizetheti. A havi fizetéssel történő vásárlásról a [Havi fizetéssel történő foglalások vásárlása](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)című témakörben talál további információt.
+Azure Disk Storage foglalásokat a [Azure Portal](https://portal.azure.com/)használatával vásárolhat. A foglalást akár elöl, akár havi fizetéssel is megfizetheti. További információ a havi fizetések megvásárlásáról: [foglalások vásárlása havi fizetéssel](../articles/cost-management-billing/reservations/monthly-payments-reservations.md).
 
 A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [Vásárlás foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ablaktáblát az Azure Portalon.
+1. Lépjen a Azure Portal [vásárlási foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ablaktáblára.
 
-1. Válassza ki **az Azure felügyelt lemezek** et a foglalás megvásárlásához.
+1. Foglalás megvásárlásához válassza az **Azure Managed Disks** lehetőséget.
 
-    ![Ablaktábla a foglalások megvásárlásához](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
+    ![A foglalás megvásárlására szolgáló ablaktábla](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
 
-1. Adja meg a következő táblázatban leírt szükséges értékeket:
+1. Határozza meg a következő táblázatban ismertetett szükséges értékeket:
 
    |Elem  |Leírás  |
    |---------|---------|
-   |**Hatókör**   |  Hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási előnyt. Ez az érték azt is meghatározza, hogy a foglalás hogyan lesz alkalmazva az adott előfizetésekre. <br/><br/> Ha a Megosztott lehetőséget **választja,** a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a számlázási környezetminden előfizetésében. A számlázási környezet az Azure-ra való feliratkozás módjától függ. A vállalati ügyfelek számára a megosztott hatókör a regisztráció, és a regisztráción belüli összes előfizetést tartalmazza. A használatalapú ügyfelek esetében a megosztott hatókör tartalmazza az összes egyéni előfizetést a fiókadminisztrátor által létrehozott használatalapú díjokkal.  <br/><br/>  Ha **az egyetlen előfizetés**t választja, a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a kiválasztott előfizetésben. <br/><br/> Ha **az Egyetlen erőforráscsoport**lehetőséget választja, a foglalási engedmény az Azure Storage-kapacitásra vonatkozik a kiválasztott előfizetésben és az adott előfizetés kiválasztott erőforráscsoportjában. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
-   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetés fizetési módja a költségek felszámítására szolgál. Az előfizetésnek a következő típusok egyikének kell lennie:<br/><ul><li> Nagyvállalati szerződés (ms-AZR-0017P és MS-AZR-0148P ajánlatszámok). Vállalati előfizetés esetén a díjakat levonják a beléptetés pénzügyi kötelezettségvállalási egyenlegéből, vagy túllépésként számítják fel.</li><br/><li>Egyéni előfizetés felosztó-kirovó díjszabással (MS-AZR-0003P és MS-AZR-0023P ajánlatszámok). A felosztó-kiosztó díjszabással rendelkező egyéni előfizetések esetén a díjakat az előfizetés hitelkártyájára vagy számlafizetési módjára terheljük.</li></ul>    |
-   | **Lemezek** | A létrehozni kívánt termékváltozat. |
+   |**Hatókör**   |  Hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Ez az érték határozza meg azt is, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott**lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra lesz alkalmazva a számlázási környezetben lévő összes előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a kiválasztott előfizetésben és az előfizetés kiválasztott erőforráscsoporthoz tartozó Azure Storage-kapacitásra alkalmazza a rendszer. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
+   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie:<br/><ul><li> Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P és MS-AZR-0148P). A nagyvállalati előfizetések esetében a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlege vagy a felszámított díj alapján kell levonni.</li><br/><li>Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P és MS-AZR-0023P). Az utólagos elszámolású előfizetések esetében az előfizetés díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni.</li></ul>    |
+   | **Lemezek** | A létrehozni kívánt SKU. |
    | **Régió** | Az a régió, ahol a foglalás érvényben van. |
-   | **Számlázási gyakoriság** | Milyen gyakran számlázzák ki a fiókot a foglalásért. A lehetőségek közé tartozik **a havi** és **az előzetes**. |
+   | **Számlázási gyakoriság** | Milyen gyakran történik a fiók számlázása a foglaláshoz. A lehetőségek közé tartoznak a **havi** és a **kezdeti**beállítások. |
 
-    ![Ablaktábla a megvásárolni kívánt termék kiválasztásához.png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![A megvásárolni kívánt termék kiválasztására szolgáló ablaktábla. png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
-1. Miután megadta a foglalás értékeit, az Azure Portal megjeleníti a költségeket. A portál on is mutatja az árengedmény százalékos több mint pay-as-you-billing. Válassza a **Tovább** lehetőséget a **Beszerzési foglalások** ablaktáblán való folytatáshoz.
+1. Miután megadta a foglalás értékeit, a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka. A tovább **gombra kattintva folytassa** a **vásárlási foglalások** ablaktáblát.
 
-1. A **Beszerzési foglalások** ablaktáblán elnevezheti a foglalást, és kiválaszthatja a foglalásteljes mennyiségét. A foglalások száma a lemezek számához van rendelve. Ha például száz lemezt szeretne lefoglalni, írja be a **100-as mennyiség** értéket. **100**
+1. **A foglalások ablaktáblán** megadhatja a foglalást, és kiválaszthatja a kívánt foglalások teljes mennyiségét. A foglalások száma a lemezek számához. Ha például száz lemezt szeretne lefoglalni, adja meg a **100**-as **mennyiségű** értéket.
 
-1. Tekintse át a foglalás teljes költségét.
+1. Tekintse át a foglalás teljes díjait.
 
-    ![A Beszerzési foglalások ablaktábla](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
+    ![A vásárlási foglalások ablaktábla](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
 
-A foglalás megvásárlása után a rendszer automatikusan alkalmazza a foglalási feltételeknek megfelelő lemeztároló-erőforrásokra. Ha még nem hozott létre lemeztárolási erőforrásokat, a foglalás minden olyan erőforrás létrehozásakor érvényes, amely megfelel a foglalási feltételeknek. Mindkét esetben a foglalási időszak közvetlenül a sikeres vásárlás után kezdődik.
+A foglalás megvásárlása után a rendszer automatikusan alkalmazza azokat a meglévő Disk Storage-erőforrásokra, amelyek megfelelnek a foglalás feltételeinek. Ha még nem hozott létre Disk Storage erőforrásokat, akkor a foglalás akkor is érvényes, ha olyan erőforrást hoz létre, amely megfelel a foglalási feltételeknek. A foglalási kifejezés mindkét esetben azonnal megkezdődik sikeres vásárlás után.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozások kal lemondhatja, kicserélheti vagy visszatérítheti a foglalásokat. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Bizonyos korlátozásokon belül megszakíthatja, cserélheti vagy visszafizetheti a foglalásokat. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## <a name="expiration-of-a-reservation"></a>Foglalás lejárata
 
-Foglalás lejártakor a foglalás keretében használt Azure Disk Storage-kapacitást a használatalapú díjfizetéskor számlázzuk ki. A foglalások nem újulnak meg automatikusan.
+Ha egy foglalás lejár, az adott foglalás keretében használt Azure Disk Storage kapacitás díját az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem újulnak meg automatikusan.
 
-A foglalás lejárta előtt 30 nappal, majd a lejárati dátumon ismét e-mailben értesítést kap. A foglalás által biztosított költségmegtakarítás előnyeinek további kihasználásához újítsa meg azt legkésőbb a lejárati dátumig.
+A foglalás lejárta előtt 30 nappal e-mail-értesítést fog kapni, és ismét a lejárati dátummal. A foglalás által biztosított költségmegtakarítások kihasználása érdekében a lejárati dátumnál újabb megújítást kell folytatni.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
@@ -102,5 +102,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mik azok az Azure-foglalások?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Mi a Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése](../articles/cost-management-billing/reservations/understand-disk-reservations.md)
