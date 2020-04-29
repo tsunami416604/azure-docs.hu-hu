@@ -1,14 +1,14 @@
 ---
-title: Oktatóanyag – Georeplikált beállításjegyzék létrehozása
+title: Oktatóanyag – földrajzilag replikált beállításjegyzék létrehozása
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238523"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
@@ -37,25 +37,25 @@ Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzé
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-Válassza az > **Erőforrás-tárolók** >  **létrehozása****az Azure Container Registry lehetőséget.**
+Válassza **az erőforrás** > **létrehozása tárolók** > **Azure Container Registry**elemet.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][tut-portal-01]
 
 Konfigurálja az új tárolójegyzéket a következő beállításokkal:
 
 * **Regisztrációs adatbázis neve**: Olyan nevet hozzon létre a tárolójegyzékhez, amely globálisan egyedi az Azure-ban, és 5–50 alfanumerikus karakterből áll.
-* **Erőforráscsoport**: **Új** > `myResourceGroup`
-* **Helyszín**:`West US`
-* **Rendszergazdai** `Enable` felhasználó : (a webalkalmazáshoz szükséges, hogy a tárolók képeket kérjék le)
-* **Termékváltozat** `Premium` : (a földrajzi replikációhoz szükséges)
+* **Erőforráscsoport**: **új létrehozása** > `myResourceGroup`
+* **Hely**:`West US`
+* **Rendszergazda felhasználó**: `Enable` (a képek lekéréséhez Web App for containers szükséges)
+* **SKU**: `Premium` (Geo-replikáláshoz szükséges)
 
 Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][tut-portal-02]
 
-Az oktatóanyag további részében `<acrName>` a kiválasztott **tárolórendszerleíró név** helyőrzőjeként használjuk.
+Az oktatóanyag további részében helyőrzőként használjuk `<acrName>` a kiválasztott tároló beállításjegyzék- **nevét** .
 
 > [!TIP]
 > Mivel az Azure tárolójegyzékek általában több tárológazdagép által használt hosszútávú erőforrások, ajánlott a saját erőforráscsoportjában létrehozni a tárolójegyzéket. A georeplikált tárolójegyzékek és webhookok konfigurálásakor a további erőforrások ugyanabba az erőforráscsoportba kerülnek.

@@ -1,6 +1,6 @@
 ---
-title: Azure felhőszolgáltatás figyelése | Microsoft dokumentumok
-description: Bemutatja, hogy az Azure Cloud-szolgáltatás milyen figyelési lehetőséggel jár, és milyen lehetőségei vannak.
+title: Azure Cloud Service figyelése | Microsoft Docs
+description: Leírja, hogy az Azure Cloud Service milyen figyelési funkciót tartalmaz, és milyen lehetőségek közül választhat.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,58 +9,58 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273097"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a felhőszolgáltatás figyelésének bevezetésébe
+# <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a Cloud Service Monitorozásba
 
-Bármely felhőszolgáltatás fő teljesítménymutatói figyelheti. Minden felhőszolgáltatási szerepkör minimális adatokat gyűjt: processzorhasználat, hálózati használat és lemezkihasználtság. Ha a felhőszolgáltatás `Microsoft.Azure.Diagnostics` a bővítmény egy szerepkörre van alkalmazva, a szerepkör további adatpontokat gyűjthet. Ez a cikk bemutatja az Azure Diagnostics for Cloud Services című témakört.
+Bármely felhőalapú szolgáltatás fő teljesítménymutatóit nyomon követheti. Minden Cloud Service-szerepkör minimális adatmennyiséget gyűjt: a CPU-használatot, a hálózati használatot és a lemez kihasználtságát. Ha a felhőalapú szolgáltatás rendelkezik egy `Microsoft.Azure.Diagnostics` szerepkörre alkalmazott bővítménnyel, akkor a szerepkör további adatpontokat gyűjthet. Ez a cikk a Cloud Services Azure Diagnostics bevezetését ismerteti.
 
-Az alapvető figyelés, a teljesítményszámláló-adatok a szerepkörpéldányok mintavételezése és gyűjtése 3 perces időközönként. Ez az alapvető figyelési adatok nem tárolják a tárfiókban, és nincs további költségek hez kapcsolódó.
+Alapszintű figyeléssel a szerepkör példányaiból származó teljesítményszámláló-adatok mintavétele és összegyűjtése 3 percenként történik. Ezt az alapszintű figyelési adat nem tárolja a Storage-fiókban, és nem rendelkezik további díjszabással.
 
-A speciális figyelés, további metrikák mintavételezése és gyűjtése időközönként 5 perc, 1 óra és 12 óra időközönként. Az összesített adatok egy tárfiókban, táblákban tárolódnak, és 10 nap után törlődnek. A használt tárfiókot szerepkör konfigurálja; különböző tárfiókokat használhat a különböző szerepkörökhöz. Ez a [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) és [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokban lévő kapcsolati karakterlánccal van konfigurálva.
+A speciális monitorozással a további mérőszámok mintavételezése és gyűjtése 5 perc, 1 óra és 12 óra időközönként történik. Az összesített adatokat egy Storage-fiókban tárolja a rendszer, és 10 nap után törlődik. A használt Storage-fiókot a szerepkör konfigurálja; a különböző szerepkörökhöz különböző tárolási fiókokat használhat. Ez a [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) és a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokban lévő kapcsolatok karakterláncával van konfigurálva.
 
 
-## <a name="basic-monitoring"></a>Alapvető ellenőrzés
+## <a name="basic-monitoring"></a>Alapszintű figyelés
 
-Ahogy azt a bevezetés, a felhőszolgáltatás automatikusan összegyűjti az alapvető figyelési adatokat a gazdagép virtuális gép. Ezek az adatok magukban foglaljak a processzor százalékos arányát, a hálózat be- és kiírását, valamint a lemez olvasását/írását. Az összegyűjtött figyelési adatok automatikusan megjelennek a felhőszolgáltatás áttekintő és metrikaoldalain az Azure Portalon. 
+Ahogy az a bevezetésben is szerepel, a Cloud Service automatikusan gyűjti az alapszintű figyelési adatokat a gazdagép virtuális gépről. Ezek az információk a CPU százalékos arányát, a hálózat be-és kijelentkezését, valamint a lemezek olvasását és írását tartalmazzák. A begyűjtött figyelési adatok automatikusan megjelennek a Cloud Service áttekintés és metrikák lapjain, a Azure Portalban. 
 
-Az alapszintű figyeléshez nincs szükség tárfiókra. 
+Az alapszintű figyeléshez nincs szükség Storage-fiókra. 
 
-![alapvető felhőszolgáltatás-figyelési csempék](media/cloud-services-how-to-monitor/basic-tiles.png)
+![alapszintű Cloud Service-figyelési csempék](media/cloud-services-how-to-monitor/basic-tiles.png)
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-A speciális figyelés magában foglalja az **Azure Diagnostics** bővítmény (és adott esetben az Application Insights SDK) használatát a figyelni kívánt szerepkörön. A diagnosztikai bővítmény egy **diagnostics.wadcfgx** nevű konfigurációs fájlt (szerepkörenként) használ a figyelt diagnosztikai metrikák konfigurálásához. Az Azure Diagnostic bővítmény adatokat gyűjt és tárol egy Azure Storage-fiókban. Ezek a beállítások a **.wadcfgx**, [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)és [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokban vannak konfigurálva. Ez azt jelenti, hogy a fejlett figyeléshez további költségek merülnek fel.
+A speciális figyelés a figyelni kívánt szerepkör **Azure Diagnostics** -bővítményét (és opcionálisan a Application Insights SDK-t) használja. A diagnosztikai bővítmény egy **Diagnostics. wadcfgx** nevű konfigurációs fájlt használ a megfigyelt diagnosztikai metrikák konfigurálásához. Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és tárolja az adatokat. Ezek a beállítások a **. wadcfgx**, a [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)és a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokban vannak konfigurálva. Ez azt jelenti, hogy a speciális figyeléshez külön díj jár.
 
-Az egyes szerepkörök létrehozásakor a Visual Studio hozzáadja az Azure Diagnostics bővítményt. Ez a diagnosztikai bővítmény a következő típusú információkat gyűjtheti:
+Az egyes szerepkörök létrehozásakor a Visual Studio hozzáadja a Azure Diagnostics bővítményt. Ez a diagnosztikai bővítmény a következő típusú információkat tudja gyűjteni:
 
 * Egyéni teljesítményszámlálók
-* Alkalmazásnaplók
+* Alkalmazás-naplók
 * Windows-eseménynaplók
-* .NET eseményforrás
+* .NET-esemény forrása
 * IIS-naplók
 * Jegyzékalapú ETW
 * összeomlási memóriaképek,
-* Vevői hibanaplók
+* Felhasználói hibák naplói
 
 > [!IMPORTANT]
-> Bár az összes ilyen adatok a tárfiókba összesítve vannak, a portál **nem** biztosít natív módot az adatok ábrázolására. Erősen ajánlott, hogy egy másik szolgáltatás, például az Application Insights integrálása az alkalmazásba.
+> Noha az összes ilyen adatokat összesíti a rendszer a Storage-fiókba, a portál **nem** biztosít natív módot az adatdiagramhoz. Erősen ajánlott egy másik szolgáltatás, például a Application Insights integrálása az alkalmazásba.
 
 ## <a name="setup-diagnostics-extension"></a>Beállítási diagnosztikai bővítmény
 
-Először is, ha nem rendelkezik **klasszikus** tárfiókkal, [hozzon létre egyet.](../storage/common/storage-account-create.md) Győződjön meg arról, hogy a tárfiók a **klasszikus üzembe helyezési modell** vel van létrehozva.
+Először is, ha nem rendelkezik **klasszikus** Storage-fiókkal, [hozzon létre egyet](../storage/common/storage-account-create.md). Győződjön meg arról, hogy a Storage-fiók a megadott **klasszikus üzembehelyezési modellel** lett létrehozva.
 
-Ezután keresse meg a **Storage-fiók (klasszikus)** erőforrás. Válassza a **Beállítások** > **elérése gombokat,** és másolja az **Elsődleges kapcsolat karakterláncának** értékét. Szüksége van erre az értékre a felhőszolgáltatáshoz. 
+Ezután navigáljon a **Storage-fiók (klasszikus)** erőforráshoz. Válassza a **Beállítások** > **hozzáférési kulcsok** lehetőséget, és másolja az **elsődleges kapcsolati sztring** értéket. Erre az értékre szüksége lesz a Cloud Service-hez. 
 
-A speciális diagnosztika engedélyezéséhez két konfigurációs fájlt kell módosítania, a **ServiceDefinition.csdef** és **a ServiceConfiguration.cscfg**.
+A speciális diagnosztika engedélyezéséhez két konfigurációs fájlra van szükség, a **ServiceDefinition. csdef** és a **ServiceConfiguration. cscfg**.
 
-### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
+### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 
-A **ServiceDefinition.csdef** fájlban adjon hozzá `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` egy új, speciális diagnosztikát használó szerepkörhöz elnevezett beállítást. A Visual Studio új projekt létrehozásakor hozzáadja ezt az értéket a fájlhoz. Abban az esetben, ha hiányzik, most felveheti. 
+A **ServiceDefinition. csdef** fájlban adjon hozzá egy nevű `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` új beállítást minden olyan szerepkörhöz, amely speciális diagnosztikát használ. Ha új projektet hoz létre, a Visual Studio hozzáadja ezt az értéket a fájlhoz. Ha hiányzik, most hozzáadhatja. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -69,9 +69,9 @@ A **ServiceDefinition.csdef** fájlban adjon hozzá `Microsoft.WindowsAzure.Plug
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-Ez egy új beállítást határoz meg, amelyet minden **ServiceConfiguration.cscfg** fájlhoz hozzá kell adni. 
+Ez egy új beállítást határoz meg, amelyet hozzá kell adni minden **ServiceConfiguration. cscfg** fájlhoz. 
 
-Valószínűleg két **.cscfg** fájllal rendelkezik, amelyek közül az **egyiket ServiceConfiguration.cloud.cscfg** néven helyezi üzembe az Azure-ba, és egy **Nevű ServiceConfiguration.local.cscfg** fájlt, amelyet az emulált környezetben helyi telepítésekhez használnak. Nyissa meg és módosítsa az egyes **.cscfg** fájlokat. Adjon hozzá `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`egy nevű beállítást . Állítsa be az értéket a klasszikus tárfiók **elsődleges kapcsolati karakterláncára.** Ha a fejlesztői gépen szeretné használni a `UseDevelopmentStorage=true`helyi tárolót, használja a használatát.
+Legvalószínűbb, hogy két **. cscfg** -fájlt, egy **ServiceConfiguration. Cloud. cscfg** -t használ az Azure-ba való üzembe helyezéshez, valamint egy elnevezett **ServiceConfiguration. local. cscfg** , amely az emulált környezetben való helyi központi telepítésekhez használatos. Nyissa meg és módosítsa az egyes **. cscfg** fájlokat. Adjon hozzá egy nevű `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`beállítást. Állítsa az értéket a klasszikus Storage-fiók **elsődleges kapcsolódási karakterláncára** . Ha a fejlesztői gépen a helyi tárterületet szeretné használni, használja `UseDevelopmentStorage=true`a következőt:.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -85,16 +85,16 @@ Valószínűleg két **.cscfg** fájllal rendelkezik, amelyek közül az **egyik
       -->
 ```
 
-## <a name="use-application-insights"></a>Az Application Insights használata
+## <a name="use-application-insights"></a>Application Insights használata
 
-Amikor közzéteszi a Felhőszolgáltatást a Visual Studio-ból, lehetősége van a diagnosztikai adatok elküldésére az Application Insightsba. Létrehozhatja az Application Insights Azure-erőforrást abban az időben, vagy elküldheti az adatokat egy meglévő Azure-erőforrásnak. A felhőszolgáltatás az Application Insights által figyelhető a rendelkezésre állás, a teljesítmény, a hibák és a használat. Egyéni diagramok adhatók hozzá az Application Insightshoz, így láthatja a legfontosabb adatokat. Szerepkörpéldány-adatok gyűjthetők az Application Insights SDK használatával a felhőszolgáltatás-projekt. Az Application Insights integrálásáról az Application Insights és a Cloud Services című [témakörben](../azure-monitor/app/cloudservices.md)talál további információt.
+Amikor közzéteszi a Cloud Service-t a Visual studióból, lehetősége van a diagnosztikai adatok küldésére Application Insights. Ekkor létrehozhatja az Application Insights Azure-erőforrást, vagy elküldheti azokat egy meglévő Azure-erőforrásnak. A felhőalapú szolgáltatást Application Insights a rendelkezésre állás, a teljesítmény, a hibák és a használat szempontjából is megfigyelheti. Az egyéni diagramok hozzáadhatók a Application Insightshoz, így a leginkább fontos információk láthatók. A szerepkör-példány adatait a Cloud Service-projektben található Application Insights SDK-val lehet gyűjteni. A Application Insights integrálásával kapcsolatos további információkért lásd: [Application Insights a Cloud Services](../azure-monitor/app/cloudservices.md).
 
-Vegye figyelembe, hogy bár az Application Insights segítségével megjelenítheti a Windows Azure Diagnosztikai bővítményen keresztül megadott teljesítményszámlálókat (és a többi beállítást), csak gazdagabb élményt kaphat az Application Insights SDK integrálásával a dolgozói és webes szerepkörök.
+Vegye figyelembe, hogy habár a Application Insights használatával jelenítheti meg a Windows Azure Diagnostics-bővítményen keresztül megadott teljesítményszámlálók (és egyéb beállítások), az Application Insights SDK-nak a munkavégző és webes szerepköreibe való integrálásával gazdagabb élményt nyújt.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ az Application Insights szolgáltatásról a Felhőszolgáltatásokkal](../azure-monitor/app/cloudservices.md)
+- [További információ a Application Insightsról Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Teljesítményszámlálók beállítása](diagnostics-performance-counters.md)
 
 

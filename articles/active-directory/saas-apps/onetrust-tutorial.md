@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a OneTrust privacy management szoftverrel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a OneTrust Privacy Management Software között.
+title: 'Oktatóanyag: Azure Active Directory integráció a OneTrust Privacy Management szoftverrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a OneTrust adatvédelmi felügyeleti szoftvere között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,197 +16,197 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fbec8b6a1a21826896f8e2499b1e8b7237d0ff9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67095897"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Oktatóanyag: Az Azure Active Directory integrációja a OneTrust adatvédelmi kezelő szoftverrel
+# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Oktatóanyag: Azure Active Directory integráció a OneTrust Privacy Management szoftverrel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a OneTrust privacy management szoftvert az Azure Active Directoryval (Azure AD).
-A OneTrust Privacy Management szoftver integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a OneTrust adatvédelmi felügyeleti szoftvereit Azure Active Directory (Azure AD) használatával.
+A OneTrust adatvédelem és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a OneTrust adatvédelmi felügyeleti szoftveréhez.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek a OneTrust Privacy Management Software (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a OneTrust adatvédelmi felügyeleti szoftverhez.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az adatvédelmi OneTrust (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció és a OneTrust Privacy Management Software konfigurálásához a következő elemekre van szükség:
+Az Azure AD-integráció az OneTrust Privacy Management szoftverrel való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* OneTrust Privacy Management Software egyszeri bejelentkezéssel rendelkező előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* OneTrust adatvédelem-kezelő szoftver egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A OneTrust Privacy Management Software támogatja az **SP** és **az IDP** által kezdeményezett egyszeri védelmet
+* A OneTrust Privacy Management szoftver támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO-t
 
-* A OneTrust privacy management szoftver támogatja **a Just In Time** felhasználói kiépítést
+* A OneTrust adatvédelem-kezelő szoftver a felhasználók üzembe helyezését **is** támogatja
 
-## <a name="adding-onetrust-privacy-management-software-from-the-gallery"></a>OneTrust privacy management szoftver hozzáadása a galériából
+## <a name="adding-onetrust-privacy-management-software-from-the-gallery"></a>OneTrust adatvédelem-kezelő szoftver hozzáadása a katalógusból
 
-A OneTrust Privacy Management Software Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OneTrust Privacy Management Software-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A OneTrust adatvédelem-kezelő szoftver Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OneTrust adatvédelmi felügyeleti szoftvert a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a Katalógusból szeretné hozzáadni a OneTrust adatvédelmi szoftvert, hajtsa végre az alábbi lépéseket:**
+**Az alábbi lépéseket követve adhat hozzá OneTrust adatvédelmi felügyeleti szoftvert a katalógusból:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **OneTrust Privacy Management Software (OneTrust Privacy Management Software)** kifejezést, válassza az eredménypanelOneTrust **Privacy Management Software elemét,** majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **OneTrust adatvédelem-kezelő szoftver**, válassza a **OneTrust adatvédelem szoftver** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![OneTrust Privacy Management Software az eredménylistában](common/search-new-app.png)
+     ![OneTrust adatvédelmi felügyeleti szoftver az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a OneTrust Privacy Management Software szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
-Az egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolatkapcsolatot egy Azure AD-felhasználó és a onetrusti adatvédelmi felügyeleti szoftver kapcsolódó felhasználója között.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a OneTrust Privacy Management szoftverrel egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti OneTrust kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a OneTrust Privacy Management Software szoftverrel a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés az OneTrust Privacy Management szoftverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a OneTrust Privacy Management Software Single Sign-On](#configure-onetrust-privacy-management-software-single-sign-on)** --t az egyszeri bejelentkezési beállítások alkalmazásoldali konfigurálásához.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre OneTrust Privacy Management Software teszt felhasználó](#create-onetrust-privacy-management-software-test-user)** - hogy egy megfelelője Britta Simon a OneTrust Privacy Management Software, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[OneTrust adatvédelem-kezelő szoftver egyszeri bejelentkezésének konfigurálása](#configure-onetrust-privacy-management-software-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. A **[OneTrust adatvédelem-kezelő szoftver tesztelési felhasználójának létrehozása](#create-onetrust-privacy-management-software-test-user)** – hogy a Britta Simon partnere legyen a OneTrust Privacy Management szoftverben, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához a OneTrust Privacy Management Software szoftverrel hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés az OneTrust Privacy Management szoftverrel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **OneTrust Privacy Management Software** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **OneTrust adatvédelem kezelése szoftver** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszerű SAML-konfiguráció** szakaszban Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![OneTrust Privacy Management Software Domain és URL-címek egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![OneTrust adatvédelmi felügyeleti szoftverek tartománya és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet:`https://www.onetrust.com/saml2`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://www.onetrust.com/saml2`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.onetrust.com/auth/consumerservice`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.onetrust.com/auth/consumerservice`
 
-5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![OneTrust Privacy Management Software Domain és URL-címek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
+    ![OneTrust adatvédelmi felügyeleti szoftverek tartománya és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.onetrust.com/auth/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.onetrust.com/auth/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a OneTrust Privacy Management Software ügyféltámogatási csapatával,](mailto:support@onetrust.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [OneTrust adatvédelmi szolgálatának ügyfélszolgálati csapatával](mailto:support@onetrust.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. A **OneTrust adatvédelmi szoftver beállítása** csoportban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+7. A **OneTrust-kezelő szoftver beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Hirdetés-azonosító
+    b. Azure AD-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-onetrust-privacy-management-software-single-sign-on"></a>A OneTrust adatvédelmi felügyeleti szoftverének konfigurálása egyszeri bejelentkezés
+### <a name="configure-onetrust-privacy-management-software-single-sign-on"></a>Az OneTrust adatvédelem-kezelő szoftver egyszeri bejelentkezésének konfigurálása
 
-A **OneTrust Privacy Management Software** oldalán történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [OneTrust Privacy Management Software támogatási csapatának.](mailto:support@onetrust.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az **OneTrust adatvédelem-kezelő szoftverre** való egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonás-metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalről, hogy OneTrust az adatvédelem- [kezelő szoftvereket támogató csapatot](mailto:support@onetrust.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a OneTrust Privacy Management Software szoftverhez.
+Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a OneTrust adatvédelmi felügyeleti szoftverhez.
 
-1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **OneTrust Privacy Management Software lehetőséget.**
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **OneTrust adatvédelem-kezelő szoftver**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **OneTrust Privacy Management Software lehetőséget.**
+2. Az alkalmazások listában válassza az **OneTrust adatvédelem-kezelő szoftver**lehetőséget.
 
-    ![A OneTrust adatvédelmi szoftver hivatkozása az Alkalmazások listában](common/all-applications.png)
+    ![Az OneTrust adatvédelem-kezelési szoftver hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-onetrust-privacy-management-software-test-user"></a>OneTrust Privacy Management Software tesztfelhasználó létrehozása
+### <a name="create-onetrust-privacy-management-software-test-user"></a>OneTrust adatvédelem-kezelő szoftver tesztelési felhasználójának létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a OneTrust Privacy Management Software alkalmazásban. A OneTrust Privacy Management Software támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a OneTrust Privacy Management Software alkalmazásban, a hitelesítés után egy új jön létre.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a OneTrust Privacy Management szoftverben. A OneTrust adatvédelem-kezelő szoftver az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a OneTrust adatvédelmi felügyeleti szoftverben, akkor a hitelesítés után létrejön egy új.
 
 >[!Note]
->Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [OneTrust Privacy Management Software támogatási csapatához.](mailto:support@onetrust.com)
+>Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [OneTrust Privacy Management ügyfélszolgálatával](mailto:support@onetrust.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a OneTrust adatvédelmi szoftver csempéjére kattint, automatikusan be kell jelentkeznie a OneTrust adatvédelmi felügyeleti szoftverébe, amelyhez az Egyszeri bejelentkezést beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a OneTrust adatvédelem-kezelő szoftver csempére kattint, automatikusan be kell jelentkeznie a OneTrust adatvédelmi felügyeleti szoftverbe, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

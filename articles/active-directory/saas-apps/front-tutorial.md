@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Fronttal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Front között.
+title: 'Oktatóanyag: Azure Active Directory integráció elölről | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az előtt.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,216 +16,216 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 33ed2f98ba66704072e8139654dfbc4cde8ab3be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73155644"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Az Azure Active Directory integrációja a Fronttal
+# <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Azure Active Directory integráció elölről
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Frontot az Azure Active Directoryval (Azure AD).
-A Front integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a kezdeti Azure Active Directory (Azure AD-val).
+Az Azure AD-vel való integráció az alábbi előnyöket nyújtja:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Fronthoz.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek az első (single sign-on) az Azure AD-fiókjukkal.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben ellenőrizheti, hogy ki férhet hozzá.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció beállítása a Front, szüksége van a következő elemeket:
+Az Azure AD-integráció előzetes konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* Első egyszeri bejelentkezéssel rendelkező előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Előzetes egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az előlap támogatja az **IDP** által kezdeményezett sso-t
+* Az előzetes verziója támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-front-from-the-gallery"></a>Front hozzáadása a galériából
+## <a name="adding-front-from-the-gallery"></a>Előzetes Hozzáadás a katalógusból
 
-A Front azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Frontot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az Azure AD-ba való előzetes integráció konfigurálásához fel kell vennie a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Ha a tárból szeretné hozzáadni az Első t, hajtsa végre az alábbi lépéseket:**
+**Az alábbi lépéseket követve adhat hozzá Elölket a katalógusból:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **Első**, válassza **az Elülső lehetőséget** az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **előre**, válassza az **első** az eredmény panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Elöl az eredménylistában](common/search-new-app.png)
+     ![Első az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést a Fronttal egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó között a Front kapcsolatát kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon**nevű teszt felhasználó alapján konfigurálja és teszteli.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolat létrehozása szükséges.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Frontszolgáltatással a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés előzetes konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Állítsa be az elülső egyszeri bejelentkezést](#configure-front-single-sign-on)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre első teszt felhasználó](#create-front-test-user)** - egy megfelelője Britta Simon elöl, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[első egyszeri bejelentkezés konfigurálása](#configure-front-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre egy felhasználói](#create-front-test-user)** előfizetést, amely a felhasználó Azure ad-Britta kapcsolódik, és az előtte lévő Simon előtt található.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **Első alkalmazás** integrációs lapján válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon hajtsa végre az alábbi lépéseket:
+4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    ![Előtér-tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Az első tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.frontapp.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.frontapp.com`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.frontapp.com/sso/saml/callback`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.frontapp.com/sso/saml/callback`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [a Front Client támogatási csapatával,](mailto:support@frontapp.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az [ügyfél-támogatási csapattal](mailto:support@frontapp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. Az **Elülső beállítás** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. Az **első beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure-hirdetésazonosító
+    b. Azure ad-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-front-single-sign-on"></a>Front Single Sign-on konfigurálása
+### <a name="configure-front-single-sign-on"></a>Az első egyszeri bejelentkezés konfigurálása
 
-1. Jelentkezzen be az első bérlőhöz rendszergazdaként.
+1. Jelentkezzen be rendszergazdaként az első bérlőbe.
 
-2. Nyissa meg a **Beállítások (fogaskerék ikon a bal oldalsáv alján) > Beállítások .**
+2. Lépjen a **beállítások (fogaskerék ikon a bal oldalsáv alján) > beállítások**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_000.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_000.png)
 
-3. Kattintson **az Egyszeri bejelentkezés** hivatkozásra.
+3. Kattintson **az egyszeri bejelentkezés** hivatkozásra.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_001.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_001.png)
 
-4. Válassza az **SAML** elemet az Egyszeri bejelentkezés legördülő **listájában.**
+4. Az **egyszeri bejelentkezés**legördülő listájában válassza az **SAML** lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_002.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_002.png)
 
-5. A **belépési pont** szövegmezőben tegye a **bejelentkezési URL-cím** értékét az Azure AD alkalmazáskonfigurációs varázsló.
+5. A **belépési pont** szövegmezőbe helyezze a **bejelentkezési URL-cím** értéket az Azure ad-alkalmazás konfigurációja varázslóban.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_003.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_003.png)
 
-6. Nyissa meg a letöltött **tanúsítványfájlt(Base64)** a jegyzettömbben, másolja annak tartalmát a vágólapra, majd illessze be az **Aláíró tanúsítvány** szövegmezőbe.
+6. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **aláíró tanúsítvány** szövegmezőbe.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_004.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_004.png)
 
-7. A **Szolgáltató beállításai** csoportban hajtsa végre az alábbi lépéseket:
+7. A **szolgáltató beállításai** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/front-tutorial/tutorial_front_005.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_005.png)
 
-    a. Másolja az **entitásazonosító** értékét, és illessze be az Azure **Portal Első tartomány és URL-címek** **azonosító** szövegmezőjébe.
+    a. Másolja ki az **entitás-azonosító** értékét, és illessze be az **azonosító** szövegmezőbe az **első tartomány és URL-cím** szakaszban Azure Portal.
 
-    b. Másolja az **ACS URL-címének** értékét, és illessze be a **Válasz URL-cím** szövegmezőjébe az **Azure Portal Első tartomány és URL-címek** szakaszába.
+    b. Másolja ki az **ACS URL-cím** értékét, és illessze be a **Válasz URL-** szövegmezőbe az **első tartomány és url-címek** részben a Azure Portal.
     
-8. Kattintson a **Mentés** gombra.
+8. Kattintson a **Save (Mentés** ) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
+    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t a Front hozzáférést biztosítva.
+Ebben a szakaszban az Azure egyszeri bejelentkezés használatának engedélyezésével engedélyezi a Britta Simon számára az előzetes hozzáférést.
 
-1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Front**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd kattintson az **első**elemre.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Front**lehetőséget.
+2. Az alkalmazások listában válassza az **első**lehetőséget.
 
-    ![Az Alkalmazások listában az Elülső hivatkozás](common/all-applications.png)
+    ![Az alkalmazások listájának elülső hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-front-test-user"></a>Első tesztfelhasználó létrehozása
+### <a name="create-front-test-user"></a>Első teszt felhasználó létrehozása
 
-Ebben a szakaszban hozzon létre egy felhasználó nevű Britta Simon elöl. Együttműködve [Front Client támogatási csapat](mailto:support@frontapp.com) a felhasználók hozzáadása a Front platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre elöl. Az [ügyfél-támogatási csapattal](mailto:support@frontapp.com) együtt veheti fel a felhasználókat az első platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panel előlapjára kattint, automatikusan be kell jelentkeznie arra az előlapra, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor a hozzáférési panelen rákattint a csempére, automatikusan be kell jelentkeznie arra az oldalra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Yarn – hiba elhárítása az Azure HDInsightban
-description: Válaszok az Apache Hadoop YARN és az Azure HDInsight használatával kapcsolatos gyakori kérdésekre.
+title: Az Azure HDInsight-beli FONALak hibáinak megoldása
+description: Válaszok a Apache Hadoop-fonal és az Azure-HDInsight használatának gyakori kérdéseire.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,73 +8,73 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272200"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
 
-Ismerje meg a legfontosabb problémákat és azok megoldásait, amikor az Apache Hadoop YARN rakományával dolgozik az Apache Ambari-ban.
+Ismerkedjen meg a leggyakoribb problémákról és azok megoldásaival kapcsolatban, amikor az Apache Ambari-ban Apache Hadoop FONÁL-adattartalommal dolgozik.
 
-## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozhatok létre új YARN-várólistát egy fürtön?
+## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozzon létre egy új szál-várólistát egy fürtön?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-Az Ambari következő lépéseivel hozzon létre egy új YARN várólistát, majd egyensúlyozza ki a kapacitásallokációt az összes várólista között.
+A következő lépések végrehajtásával hozzon létre egy új Ambari-várólistát, majd az összes várólista között válassza a kapacitás kiosztását.
 
-Ebben a példában két meglévő várólista **(alapértelmezett** és **thriftsvr)** egyaránt 50%-os kapacitásról 25%-os kapacitásra változik, ami az új várólista (szikra) 50%-os kapacitást biztosít.
+Ebben a példában két meglévő várólista (**alapértelmezett** és **thriftsvr**) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
 
 | Várólista | Kapacitás | Maximális kapacitás |
 | --- | --- | --- |
 | alapértelmezett | 25% | 50% |
-| thrftsvr között | 25% | 50% |
+| thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Jelölje ki az **Ambari nézetek** ikont, majd a rácsmintát. Ezután válassza a **YARN várólista-kezelő t**.
+1. Válassza a **Ambari nézetek** ikont, majd válassza ki a rács mintát. Ezután válassza a **fonál üzenetsor-kezelő**elemet.
 
-    ![Apache Ambari műszerfal YARN várólista-kezelő](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Apache Ambari irányítópult-szál üzenetsor-kezelője](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Válassza ki az **alapértelmezett** várólistát.
 
-    ![Az Apache Ambari YARN alapértelmezett várólistát választ](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Az **alapértelmezett** várólista esetében módosítsa a **kapacitást** 50%-ról 25%-ra. A **thriftsvr-várólistához** módosítsa a **kapacitást** 25%-ra.
+    ![Apache Ambari-fonal – alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+3. Az **alapértelmezett** várólista esetében módosítsa a **kapacitást** 50%-ról 25%-ra. A **thriftsvr** -várólista esetében módosítsa a **kapacitást** 25%-ra.
 
-    ![Módosítsa a kapacitást 25%-ra az alapértelmezett és a takarékossági vr várólisták esetében](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Új várólista létrehozásához válassza **a Várólista hozzáadása**lehetőséget.
+    ![Módosítsa a kapacitást 25%-ra az alapértelmezett és a thriftsvr várólisták esetében](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+4. Új várólista létrehozásához válassza a **várólista hozzáadása**lehetőséget.
 
-    ![Apache Ambari YARN irányítópult várólistának hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache Ambari-FONÁL irányítópult-várólista hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Nevezze el az új várólistát.
 
-    ![Apache Ambari YARN irányítópult neve Várólista](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache Ambari-szál irányítópultjának neve üzenetsor](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Hagyja a **kapacitásértékeket** 50%-on, majd kattintson a **Műveletek** gombra.
+6. Hagyja meg a **kapacitás** értékeit 50%-ban, majd kattintson a **műveletek** gombra.
 
-    ![Apache Ambari YARN kijelölési művelet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Válassza **a Várólisták mentése és frissítése**lehetőséget.
+    ![Apache Ambari-fonal kiválasztása művelet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+7. Válassza **a Mentés és frissítés várólisták**lehetőséget.
 
-    ![Várólisták mentése és frissítése jelölőnégyzetet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    ![A várólisták mentése és frissítése lehetőség kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
-Ezek a változások azonnal láthatók a YARN scheduler felhasználói felületén.
+Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felületén.
 
-### <a name="additional-reading"></a>További olvasás
+### <a name="additional-reading"></a>További olvasnivaló
 
-- [Apache Hadoop YARN kapacitásütemező](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+- [Apache Hadoop fonal CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan tölthetek le YARN naplókat egy fürtből?
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan letölteni a SZÁLAKat a fürtből?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Csatlakozzon a HDInsight-fürthöz egy Biztonságos rendszerhéj (SSH) ügyfél használatával. További információt a További olvasás című témakörben [talál.](#additional-reading-2)
+1. Kapcsolódjon a HDInsight-fürthöz egy Secure Shell-(SSH-) ügyfél használatával. További információ: [további olvasás](#additional-reading-2).
 
-1. A yarn alkalmazások összes futó alkalmazásazonosítójának listázásához futtassa a következő parancsot:
+1. A jelenleg futó FONÁL-alkalmazások összes alkalmazás-azonosítójának listázásához futtassa a következő parancsot:
 
     ```apache
     yarn top
     ```
 
-    Az azonosítók az **APPLICATIONID** oszlopban jelennek meg. A naplókat az **APPLICATIONID** oszlopból töltheti le.
+    Az azonosítók a **APPLICATIONID** oszlopban jelennek meg. A naplók a **APPLICATIONID** oszlopból tölthetők le.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -89,57 +89,57 @@ Ezek a változások azonnal láthatók a YARN scheduler felhasználói felület�
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-1. A YARN tárolónaplók letöltéséhez használja a következő parancsot:
+1. Ha az összes alkalmazás-főkiszolgáló esetében le szeretné tölteni a fonal-tároló naplóit, használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy amlogs.txt nevű naplófájlt.
+    Ez a parancs létrehoz egy amlogs. txt nevű naplófájlt.
 
-1. Ha csak a legújabb alkalmazáskezelő törzsszámára szeretné letölteni a YARN tárolónaplókat, használja a következő parancsot:
+1. Ha csak a legújabb alkalmazás-főkiszolgáló esetében szeretné letölteni a fonal-tároló naplóit, használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Ez a parancs egy latestamlogs.txt nevű naplófájlt hoz létre.
+    Ez a parancs létrehoz egy latestamlogs. txt nevű naplófájlt.
 
-1. Az első két alkalmazásminta YARN tárolónaplójának letöltéséhez használja a következő parancsot:
+1. Ha az első két alkalmazás-főkiszolgáló esetében le szeretné tölteni a fonal-tároló naplóit, használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy first2amlogs.txt nevű naplófájlt.
+    Ez a parancs létrehoz egy first2amlogs. txt nevű naplófájlt.
 
-1. Az összes YARN tárolónapló letöltéséhez használja a következő parancsot:
+1. Az összes FONALas tároló naplójának letöltéséhez használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Ez a parancs egy logs.txt nevű naplófájlt hoz létre.
+    Ez a parancs egy logs. txt nevű naplófájlt hoz létre.
 
-1. Egy adott tároló YARN tárolónaplójának letöltéséhez használja a következő parancsot:
+1. Egy adott tárolóhoz tartozó fonal-tároló naplójának letöltéséhez használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Ez a parancs egy containerlogs.txt nevű naplófájlt hoz létre.
+    Ez a parancs létrehoz egy containerlogs. txt nevű naplófájlt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>További olvasás
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>További olvasnivaló
 
-- [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Az Apache Hadoop YARN koncepciói és alkalmazásai](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [A fonal-fogalmak és-alkalmazások Apache Hadoop](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-- Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+- Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

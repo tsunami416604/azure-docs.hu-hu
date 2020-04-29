@@ -1,158 +1,158 @@
 ---
-title: Az Azure Diagnostics bővítmény hibaelhárítása
-description: Az Azure-diagnosztika Azure virtuális gépeken, service fabricben vagy felhőszolgáltatásokban való használata kori problémák elhárítása.
+title: Azure Diagnostics bővítmény hibaelhárítása
+description: Az Azure Diagnostics Azure Virtual Machines, Service Fabric vagy Cloud Services használatakor felmerülő problémák elhárítása.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274579"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
-Ez a cikk ismerteti az Azure Diagnostics használatával kapcsolatos hibaelhárítási információkat. Az Azure-diagnosztikáról az [Azure Diagnosztika áttekintése című témakörben olvashat bővebben.](diagnostics-extension-overview.md)
+Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
 
 ## <a name="logical-components"></a>Logikai összetevők
-**Diagnosztika plugin launcher (DiagnosticsPluginLauncher.exe)**: Elindítja az Azure Diagnosztikai bővítményt. Belépési pontként szolgál.
+**Diagnosztikai beépülő modul indítója (DiagnosticsPluginLauncher. exe)**: elindítja a Azure Diagnostics bővítményt. Belépési pontként szolgál.
 
-**Diagnosztikai bővítmény (DiagnosticsPlugin.exe)**: Konfigurálja, elindítja és kezeli a figyelőügynök élettartamát. Ez a fő folyamat, amely elindította a hordozórakéta.
+**Diagnosztikai beépülő modul (DiagnosticsPlugin. exe)**: a figyelési ügynök élettartamának konfigurálása, elindítása és kezelése. Ez az indító által indított fő folyamat.
 
-**Figyelési ügynök\*(MonAgent .exe folyamatok)**: Figyeli, összegyűjti és továbbítja a diagnosztikai adatokat.  
+**Figyelő ügynök (MonAgent\*. exe folyamatok)**: figyeli, gyűjti és továbbítja a diagnosztikai adatokat.  
 
-## <a name="logartifact-paths"></a>Napló/műtermék elérési útjai
-A következőkben néhány fontos napló és műtermék elérési útjai találhatók. Erre az információra a dokumentum többi részében hivatkozunk.
+## <a name="logartifact-paths"></a>Log/lelet elérési útjai
+A következő néhány fontos napló és összetevő elérési útja. Ezt az információt a dokumentum többi részén tekintjük át.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Összetevő | Útvonal |
 | --- | --- |
-| **Az Azure Diagnostics konfigurációs fájlja** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<>\Config.txt verzió |
-| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<>\ |
-| **Helyi adattároló diagnosztikai adatokhoz** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<Szerepkörnév>. DiagnosticStore\WAD0107\Táblák |
-| **Figyelési ügynök konfigurációs fájlja** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<Szerepkörnév>. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Diagnostics bővítménycsomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<> |
-| **Naplógyűjtési segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<Szerepkörnév>. DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
+| **Azure Diagnostics konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<-verzió> \Config.txt |
+| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója> \ |
+| **Diagnosztikai célú helyi tároló** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<RoleName>. DiagnosticStore\WAD0107\Tables |
+| **Figyelési ügynök konfigurációs fájlja** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<RoleName>. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Azure Diagnostics kiterjesztési csomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<-verzió> |
+| **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
+| **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID>. \<RoleName>. DiagnosticStore\WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 | Összetevő | Útvonal |
 | --- | --- |
-| **Az Azure Diagnostics konfigurációs fájlja** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verzió>\RuntimeSettings |
-| **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
-| **Helyi adattároló diagnosztikai adatokhoz** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
-| **Figyelési ügynök konfigurációs fájlja** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
-| **Állapotfájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verzió>\Állapot |
-| **Azure Diagnostics bővítménycsomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsDiagnosticsVersion>|
-| **Naplógyűjtési segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnostics DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
+| **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-verzió> \runtimesettings |
+| **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion> \ |
+| **Diagnosztikai célú helyi tároló** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion> \wad0107\tables |
+| **Figyelési ügynök konfigurációs fájlja** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion> \wad0107\configuration\maconfig.XML |
+| **Állapot fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-verzió> \status |
+| **Azure Diagnostics kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
+| **A log Collection segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
+| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion> \wad0107\configuration\monagenthost. <seq_num>. log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikaadatok nem jelennek meg az Azure Portalon
-Az Azure Diagnostics metrikaadatokat biztosít, amelyek megjelenhetnek az Azure Portalon. Ha problémái vannak az adatok megtekintésével a\* portálon, ellenőrizze a WADMetrics tábla az Azure Diagnostics tárfiókban, hogy ha a megfelelő metrika rekordok vannak, és győződjön meg arról, hogy az [erőforrás-szolgáltató](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft.Insights regisztrálva van.
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
+A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a Azure Diagnostics Storage-fiók WADMetrics\* táblázatát, és ellenőrizze, hogy a megfelelő metrikai rekordok léteznek-e, és győződjön meg arról, hogy az erőforrás- [szolgáltató](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft. az elemzések regisztrálva vannak.
 
-Itt a **tábla PartitionKey-ja** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési készlet. **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
+Itt a tábla **PartitionKey** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési csoport. A **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
 
-Ha az erőforrás-azonosító helytelen, ellenőrizze **a Diagnosztikai konfigurációs** **Configuration** > **metrikák** > **erőforrás-azonosítóját,** hogy az erőforrás-azonosító megfelelően van-e beállítva.
+Ha az erőforrás-azonosító helytelen, ellenőrizze, hogy az erőforrás-azonosító helyesen van-e megadva a **diagnosztikai** **konfigurációs** > **metrikák** > **ResourceId** .
 
-Ha nincs adat az adott metrikához, ellenőrizze **a Diagnosztikai konfigurációs** > **teljesítményszámláló,** hogy ha a metrika (teljesítményszámláló) szerepel. Alapértelmezés szerint a következő számlálókat engedélyezzük:
+Ha az adott metrika nem tartalmaz adatokat, a **diagnosztikai konfiguráció** > **PerformanceCounter** ellenőrizze, hogy szerepel-e a metrika (teljesítményszámláló). Alapértelmezés szerint a következő számlálókat engedélyezjük:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
-- \ASP.NET alkalmazások(__összesen__)\Kérések/Mp
-- \ASP.NET alkalmazások(__összesen__)\Összes hiba/mp
-- \ASP.NET\Várólistára helyezett kérelmek
-- \ASP.NET\Elutasított kérelmek
-- \Processzor(w3wp)\% processzoridő
-- \Process(w3wp)\Privát bájtok
-- \Process(WaIISHost)\% processzoridő
-- \Process(WaIISHost)\Privát bájtok
-- \Process(WaWorkerHost)\% processzoridő
-- \Process(WaWorkerHost)\Privát bájtok
-- \Memória\Laphibák/mp
-- \.NET CLR_Global_memória(\% globális ) idő gc-ben
-- \LogicalDisk(C:)\Lemezírási bájtok/mp
-- \LogicalDisk(C:)\Lemezolvasási bájt/mp
-- \LogicalDisk(D:)\Lemezírási bájtok/mp
-- \LogicalDisk(D:)\Lemezolvasási bájt/mp
+- \ ASP.NET alkalmazások (__összesen__) \ kérelmek/másodperc
+- \ ASP.NET alkalmazások (__összesen__) \Errors összesen/mp
+- \ASP.NET\Requests várólistán
+- \ASP.NET\Requests elutasítva
+- \Processor (w3wp)\% processzoridő
+- \Process (w3wp) \Private bájtok
+- \Process (WaIISHost)\% processzoridő
+- \Process (WaIISHost) \Private bájtok
+- \Process (WaWorkerHost)\% processzoridő
+- \Process (WaWorkerHost) \Private bájtok
+- \Memory\Page hibák másodpercenként
+- \.NET CLR memória (_globális_)\% idő a GC-ben
+- \Logikai lemez (C:) \ írási sebesség (bájt/s)
+- \Logikai lemez (C:) \ olvasási sebesség (bájt/s)
+- \Logikai lemez (D:) \ írási sebesség (bájt/s)
+- \Logikai lemez (D:) \ olvasási sebesség (bájt/s)
 
-Ha a konfiguráció megfelelően van beállítva, de továbbra sem látja a metrikaadatokat, kövesse az alábbi irányelveket a hibaelhárításhoz.
+Ha a konfiguráció helyesen van beállítva, de továbbra sem látja a metrikai adatokat, a következő irányelvek segítséget nyújtanak a hibakereséshez.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Az Azure Diagnosztika nem indul el
-Arról, hogy az Azure Diagnosztika miért nem sikerült elindítani, tekintse meg a **DiagnosticsPluginLauncher.log** és **DiagnosticsPlugin.log** fájlokat a naplófájlok korábban megadott helyen.
+## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics nem indul el
+Arról, hogy miért nem sikerült elindítani a Azure Diagnosticst, tekintse meg a **DiagnosticsPluginLauncher. log** és a **DiagnosticsPlugin. log** fájlt a korábban megadott naplófájlok helyén.
 
-Ha ezek a `Monitoring Agent not reporting success after launch`naplók jelzik , az azt jelenti, hogy hiba történt a MonAgentHost.exe indításakor. Tekintse meg a naplókat az előző `MonAgentHost log file` szakaszban jelzett helyen.
+Ha ezeket a naplókat jelzi `Monitoring Agent not reporting success after launch`, az azt jelenti, hogy hiba történt a MonAgentHost. exe elindítása közben. Tekintse meg az előző szakaszban jelzett `MonAgentHost log file` helyen található naplókat.
 
 A naplófájlok utolsó sora tartalmazza a kilépési kódot.  
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-Ha **negatív** kilépési kódot talál, olvassa el a [Kilépési kód táblázatot](#azure-diagnostics-plugin-exit-codes) a [Hivatkozások szakaszban.](#references)
+Ha **negatív** kilépési kódot talál, tekintse meg a [kilépési kód táblát](#azure-diagnostics-plugin-exit-codes) a [hivatkozások szakaszban](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>A diagnosztikai adatok nem lesznek naplózva az Azure Storage-ba
-Határozza meg, hogy az adatok egyike sem jelenik-e meg, vagy az adatok egy része.
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>A diagnosztikai adatait nem naplózza az Azure Storage
+Annak megállapítása, hogy egyik adathalmaz sem jelenik-e meg, vagy egy adott adathalmaz.
 
-### <a name="diagnostics-infrastructure-logs"></a>Diagnosztikai infrastruktúra-naplók
-A diagnosztika naplózza a diagnosztikai infrastruktúra naplóiban lévő összes hibát. Győződjön meg arról, hogy engedélyezte a [diagnosztikai infrastruktúra naplóinak rögzítését a konfigurációban.](#how-to-check-diagnostics-extension-configuration) Ezután gyorsan megkeresheti a megfelelő `DiagnosticInfrastructureLogsTable` hibákat, amelyek a beállított tárfiók táblájában jelennek meg.
+### <a name="diagnostics-infrastructure-logs"></a>Diagnosztikai infrastruktúra naplói
+A diagnosztika az összes hibát naplózza a diagnosztikai infrastruktúra naplóiban. Győződjön meg arról, hogy engedélyezte a [diagnosztikai infrastruktúra naplófájljainak rögzítését a konfigurációban](#how-to-check-diagnostics-extension-configuration). Ezután gyorsan megkeresheti a konfigurált Storage-fiók `DiagnosticInfrastructureLogsTable` táblában megjelenő esetleges hibákat.
 
-### <a name="no-data-is-appearing"></a>Nem jelennek meg adatok
-A leggyakoribb oka annak, hogy az eseményadatok egyáltalán nem jelennek meg, az, hogy a tárfiók adatai helytelenül vannak definiálva.
+### <a name="no-data-is-appearing"></a>Nem jelenik meg az adatai
+A leggyakoribb ok, hogy az események adatai nem jelennek meg, a Storage-fiók adatai helytelenül vannak megadva.
 
-Megoldás: Javítsa ki a diagnosztika konfigurációját, és telepítse újra a Diagnosztika programot.
+Megoldás: javítsa ki a diagnosztikai konfigurációt, és telepítse újra a diagnosztikát.
 
-Ha a tárfiók megfelelően van konfigurálva, a számítógéphez való távelérés, és ellenőrizze, hogy a *DiagnosticsPlugin.exe* és a *MonAgentCore.exe* fut-e. Ha nem futnak, kövesse az [Azure Diagnosztika nem induló lépéseit.](#azure-diagnostics-is-not-starting)
+Ha a Storage-fiók megfelelően van konfigurálva, a távoli elérést a gépre, és ellenőrizze, hogy fut-e a *DiagnosticsPlugin. exe* és a *MonAgentCore. exe* . Ha nem futnak, hajtsa végre a következő témakörben ismertetett lépéseket: [Azure Diagnostics nem indul](#azure-diagnostics-is-not-starting)el.
 
-Ha a folyamatok futnak, nyissa meg [az Adatok helyileg rögzítésre kerülése?](#is-data-getting-captured-locally)
+Ha a folyamatok futnak, ugorjon a következőre: az adatrögzítés [helyileg?](#is-data-getting-captured-locally) és kövesse az itt található utasításokat.
 
-Ha ez nem oldja meg a problémát, próbálja meg:
+Ha ez nem oldja meg a problémát, próbálja meg a következőket:
 
 1. Ügynök eltávolítása
-2. Directory C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics könyvtár eltávolítása
-3. Ügynök ismételt telepítése
+2. Könyvtár C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics eltávolítása
+3. Ügynök újbóli telepítése
 
 
-### <a name="part-of-the-data-is-missing"></a>Az adatok egy része hiányzik
-Ha bizonyos adatokat kap, de nem az összeset, az azt jelenti, hogy az adatgyűjtési/-átviteli folyamat megfelelően van beállítva. Kövesse az alszakaszokat itt a probléma leszűkítéséhez.
+### <a name="part-of-the-data-is-missing"></a>Az adatmennyiség hiányzik
+Ha bizonyos adatok lekérése nem minden, az adatgyűjtési/-átviteli folyamat helyesen van beállítva. A probléma szűkítéséhez kövesse az alábbi alszakaszokat.
 
-#### <a name="is-the-collection-configured"></a>Be van állítva a gyűjtemény?
-A Diagnosztika konfiguráció utasításokat tartalmaz egy adott típusú adatok gyűjtésére. [Tekintse át a konfigurációt,](#how-to-check-diagnostics-extension-configuration) és ellenőrizze, hogy csak a gyűjteményhez konfigurált adatokat keresi-e.
+#### <a name="is-the-collection-configured"></a>A gyűjtemény konfigurálva van?
+A diagnosztikai konfiguráció egy adott típusú adat gyűjtésére vonatkozó utasításokat tartalmaz. [Tekintse át a konfigurációt](#how-to-check-diagnostics-extension-configuration) annak ellenőrzéséhez, hogy csak a gyűjteményhez konfigurált adatait keresi.
 
-#### <a name="is-the-host-generating-data"></a>Az állomás adatokat hoz létre?
-- **Teljesítményszámlálók**: Nyissa ki a perfmont, és ellenőrizze a számlálót.
+#### <a name="is-the-host-generating-data"></a>A gazdagép létrehozza az adathalmazt?
+- **Teljesítményszámlálók**: Nyissa meg a perfmon eszközt, és keresse meg a számlálót.
 
-- **Nyomkövetési naplók:** Távoli hozzáférés a virtuális gépbe, és adjon hozzá egy TextWriterTraceListener az alkalmazás konfigurációs fájl.  A https://msdn.microsoft.com/library/sk36c28t.aspx szövegfigyelő beállításának megtekintése.  Ellenőrizze, `<trace>` hogy `<trace autoflush="true">`az elem rendelkezik-e.<br />
-Ha nem látja a nyomkövetési naplók létrejöttét, olvassa el a hiányzó nyomkövetési naplókról szóló további témakört.
+- **Nyomkövetési naplók**: távoli hozzáférés a virtuális géphez, és adjon hozzá egy TextWriterTraceListener az alkalmazás konfigurációs fájljához.  Lásd https://msdn.microsoft.com/library/sk36c28t.aspx : a szöveges figyelő beállítása.  Győződjön meg arról `<trace>` , hogy `<trace autoflush="true">`az elem rendelkezik.<br />
+Ha nem látja a létrehozott nyomkövetési naplókat, további információ: hiányzó nyomkövetési naplók.
 
-- **ETW-nyomok**: Távoli hozzáférés a virtuális géphez, és telepítse a PerfView-t.  A PerfView, fuss **File** > **User Command** > **Listen etwprovder1** > **etwprovider2**, és így tovább. A **Figyelés** parancs megkülönbözteti a kis- és nagybetűket, és nem lehet szóköz az ETW-szolgáltatók vesszővel tagolt listája között. Ha a parancs nem fut, a Perfview eszköz jobb alsó sarkában található **Napló** gombra kattintva megtekintheti, hogy mi történt a futtatással, és mi volt az eredmény.  Feltéve, hogy a bemenet helyes, egy új ablak jelenik meg. Néhány másodperc múlva elkezded látni az ETW nyomait.
+- **ETW-nyomkövetés**: távoli hozzáférés a virtuális géphez és a perfview eszköz telepítése.  A perfview eszköz-ben futtassa a **fájl** > **felhasználói parancsát** > ,**figyelje a etwprovder1** > **etwprovider2**, és így tovább. A **Listen** parancs megkülönbözteti a kis-és nagybetűket, és a ETW-szolgáltatók vesszővel tagolt listája nem tartalmazhat szóközöket. Ha a parancs futtatása sikertelen, a Perfview eszköz eszköz jobb alsó sarkában található **log (napló** ) gombra kattintva megtekintheti, hogy milyen kísérlet történt a futtatására és az eredményre.  Ha a bevitel helyes, egy új ablak jelenik meg. Néhány másodpercen belül megkezdheti a ETW nyomkövetését.
 
-- **Eseménynaplók:** Távoli hozzáférés a virtuális géphez. Nyissa `Event Viewer`meg a , majd győződjön meg arról, hogy az események léteznek.
+- **Eseménynaplók**: távoli hozzáférés a virtuális géphez. Nyissa meg `Event Viewer`, majd ellenőrizze, hogy az események léteznek-e.
 
-#### <a name="is-data-getting-captured-locally"></a>Az adatok helyi legrögzítettek?
-Ezután győződjön meg arról, hogy az adatok helyileg rögzítésre kerül.
-Az adatok helyileg tárolódnak a helyi tárolóban `*.tsf` tárolt fájlokban diagnosztikai adatok. Különböző típusú naplók kap gyűjtött `.tsf` különböző fájlokat. A nevek hasonlóak az Azure Storage táblaneveihez.
+#### <a name="is-data-getting-captured-locally"></a>Helyileg történik az adatrögzítés?
+Ezután győződjön meg arról, hogy az adatrögzítés helyileg történik.
+Az adatait a rendszer helyileg tárolja `*.tsf` a helyi tárolóban található fájlokban diagnosztikai adatként. A különböző típusú naplók gyűjtése különböző `.tsf` fájlokban történik. A nevek hasonlóak az Azure Storage-ban található táblák neveihez.
 
-Például `Performance Counters` a begyűjtését a alkalmazásban kaphatja `PerformanceCountersTable.tsf`meg. Az eseménynaplók at `WindowsEventLogsTable.tsf`gyűjtik össze. A [Helyi napló kibontása](#local-log-extraction) szakasz utasításaival nyissa meg a helyi gyűjteményfájlokat, és ellenőrizze, hogy a lemezen gyűjtik-e őket.
+Például `Performance Counters` gyűjtsön adatokat a alkalmazásban `PerformanceCountersTable.tsf`. Az eseménynaplók gyűjtése folyamatban `WindowsEventLogsTable.tsf`van. A helyi [naplók kibontása](#local-log-extraction) szakaszban található utasítások segítségével nyissa meg a helyi gyűjtemény fájljait, és ellenőrizze, hogy a rendszer begyűjti-e őket a lemezen.
 
-Ha nem látja a naplók helyi gyűjtése, és már ellenőrizte, hogy az állomás adatokat generál, akkor valószínűleg egy konfigurációs probléma. Figyelmesen tekintse át a konfigurációt.
+Ha nem jelenik meg a naplók helyi gyűjtése, és már ellenőrizte, hogy a gazdagép adatokat hoz létre, valószínűleg konfigurációs probléma van. Alaposan tekintse át a konfigurációt.
 
-Tekintse át a MonitoringAgent MaConfig.xml fájlhoz létrehozott konfigurációt is. Ellenőrizze, hogy van-e olyan szakasz, amely leírja a megfelelő naplóforrást. Ezután ellenőrizze, hogy nem vész el a fordítás között a diagnosztika konfiguráció és a figyelési ügynök konfigurációja.
+Tekintse át a MonitoringAgent MaConfig. xml fájlhoz létrehozott konfigurációt is. Ellenőrizze, hogy van-e olyan szakasz, amely leírja a kapcsolódó napló forrását. Ezután ellenőrizze, hogy a diagnosztika és a figyelési ügynök konfigurációja között nem vész el a fordítás.
 
-#### <a name="is-data-getting-transferred"></a>Az adatok átvitele történik?
-Ha ellenőrizte, hogy az adatok helyileg rögzítésre kerülnek, de továbbra sem látja őket a tárfiókban, kövesse az alábbi lépéseket:
+#### <a name="is-data-getting-transferred"></a>Az adatátvitel bekerül?
+Ha ellenőrizte, hogy az adatai helyileg vannak rögzítve, de még mindig nem látja a Storage-fiókban, hajtsa végre a következő lépéseket:
 
-- Ellenőrizze, hogy megfelelő tárfiókot adott-e meg, és hogy nem görgette-e át az adott tárfiók kulcsait. Az Azure Cloud Services esetében néha azt `useDevelopmentStorage=true`látjuk, hogy az emberek nem frissülnek.
+- Ellenőrizze, hogy megfelelő Storage-fiókot adott-e meg, és hogy nem adott-e át kulcsokat a megadott Storage-fiókhoz. Az Azure Cloud Services esetében időnként azt látjuk, hogy az emberek `useDevelopmentStorage=true`nem frissítik.
 
-- Ellenőrizze, hogy a megadott tárfiók helyes-e. Győződjön meg arról, hogy nincsenek olyan hálózati korlátozások, amelyek megakadályozzák, hogy az összetevők elérjék a nyilvános tárolási végpontokat. Ennek egyik módja a távoli hozzáférés a géphez, majd megpróbál írni valamit ugyanarra a tárfiókba.
+- Ellenőrizze, hogy helyes-e a megadott Storage-fiók. Győződjön meg arról, hogy nincs hálózati korlátozás, amely megakadályozza, hogy az összetevők elérjék a nyilvános tárolási végpontokat. Ennek egyik módja a távoli hozzáférés a gépen, majd próbáljon meg valamit ugyanabba a Storage-fiókba írni.
 
-- Végül megnézheti, hogy a figyelőügynök milyen hibákat jelent. A figyelőügynök a naplókat `maeventtable.tsf`írja be, amely a helyi tárolóban található diagnosztikai adatokhoz. A fájl megnyitásához kövesse a [Helyi napló kibontása](#local-log-extraction) című szakasz utasításait. Ezután próbálja meg `errors` meghatározni, hogy vannak-e olyan hibák, amelyek a helyi fájlok nak a tárolóba írásban történő olvasását jelzik.
+- Végezetül megtekintheti, hogy a figyelési ügynök milyen hibákat jelez. A figyelési ügynök beírja a `maeventtable.tsf`naplóit, amelyek a helyi tárolóban találhatók a diagnosztikai szolgáltatásokhoz. A fájl megnyitásához kövesse a [helyi naplók kibontása](#local-log-extraction) szakasz utasításait. Ezután próbálja meg megállapítani, hogy `errors` vannak-e olyan hibák, amelyek a tárolóba írás helyi fájlokra való beolvasását jelzik.
 
 ### <a name="capturing-and-archiving-logs"></a>Naplók rögzítése és archiválása
-Ha azon gondolkodik, hogy kapcsolatba lép az ügyfélszolgálattal, az első dolog, amit kérhetnek, hogy gyűjtse össze a naplókat a gépéről. Időt takaríthat meg ezzel, hogy magad. Futtassa a segédprogramot a `CollectGuestLogs.exe` Naplógyűjtemény segédprogram elérési útján. Létrehoz egy .zip fájlt az összes releváns Azure-naplóval ugyanabban a mappában.
+Ha úgy gondolja, hogy felveszi a kapcsolatot a támogatási szolgálattal, az első dolog, hogy megkérdezzük a naplók begyűjtését a gépről. Időt takaríthat meg. Futtassa a `CollectGuestLogs.exe` segédprogramot a log Collection segédprogram elérési útján. Létrehoz egy. zip fájlt, amely az összes kapcsolódó Azure-naplóval azonos mappában található.
 
 ## <a name="diagnostics-data-tables-not-found"></a>A diagnosztikai adattáblák nem találhatók
-Az EtW-eseményeket tároló Azure Storage-beli táblák at a következő kód dal nevezik el:
+A ETW-eseményeket tároló Azure Storage-táblákat a következő kód alapján nevezi el:
 
 ```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
@@ -207,94 +207,94 @@ Ez a kód négy táblát hoz létre:
 
 | Esemény | Tábla neve |
 | --- | --- |
-| provider="prov1" &lt;Esemény azonosító="1" /&gt; |WADEvent+MD5("prov1")+"1" |
-| provider="prov1" &lt;Event id="2" eventDestination="dest1" /&gt; |WADdest1 |
-| provider="prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
-| provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt; |WADdest2 |
+| Provider = "Prov1" &lt;esemény azonosítója = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
+| Provider = "Prov1" &lt;esemény azonosítója = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
+| Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
 ## <a name="references"></a>Referencia
 
-### <a name="how-to-check-diagnostics-extension-configuration"></a>A Diagnosztikai bővítmény konfigurációjának ellenőrzése
-A bővítmény konfigurációjának ellenőrzéséhez a legegyszerűbb en, hogy az [Azure Resource Explorer,](https://resources.azure.com)majd nyissa meg a virtuális gép vagy felhőszolgáltatás, ahol az Azure Diagnostics bővítmény (IaaSDiagnostics / PaaDiagnostics) van.
+### <a name="how-to-check-diagnostics-extension-configuration"></a>A diagnosztikai bővítmény konfigurációjának megkeresése
+A bővítmény konfigurálásának legegyszerűbb módja, ha a [Azure erőforrás-kezelő](https://resources.azure.com), majd a Azure Diagnostics bővítményt (IaaSDiagnostics/PaaDiagnostics) futtató virtuális gépre vagy Felhőbeli szolgáltatásra lép.
 
-Másik lehetőségként a távoli asztalon a gépbe, és tekintse meg az Azure Diagnosztikai konfigurációs fájl, amely a Napló összetevők elérési út szakaszban ismertetjük.
+Azt is megteheti, hogy a Távoli asztalt a gépre helyezi, és megtekinti a log-összetevők elérési útja szakaszban leírt Azure Diagnostics konfigurációs fájlt.
 
-Mindkét esetben keresse meg a **Microsoft.Azure.Diagnostics**, majd az **xmlCfg** vagy **wadCfg** mezőt.
+Mindkét esetben keressen rá a **Microsoft. Azure. Diagnostics**kifejezésre, majd a **XmlCfg** vagy a **WadCfg** mezőre.
 
-Ha virtuális gépen keres, és a **WadCfg** mező jelen van, az azt jelenti, hogy a konfiguráció JSON formátumban van. Ha az **xmlCfg** mező jelen van, az azt jelenti, hogy a konfiguráció XML-ben van, és base64-kódolású. Meg kell [dekódolni,](https://www.bing.com/search?q=base64+decoder) hogy az XML, amely betöltötte a diagnosztika.
+Ha virtuális gépet keres, és a **WadCfg** mező megtalálható, akkor a konfiguráció JSON formátumú. Ha a **xmlCfg** mező megtalálható, az azt jelenti, hogy a konfiguráció XML-ben van, és Base64 kódolású. [Dekódolni](https://www.bing.com/search?q=base64+decoder) kell a diagnosztika által betöltött XML-kód megtekintéséhez.
 
-A felhőalapú szolgáltatás szerepkör, ha kiválasztja a konfigurációt a lemezről, az adatok base64-kódolt, így meg kell [dekódolni,](https://www.bing.com/search?q=base64+decoder) hogy az XML, amely betöltötte a diagnosztika.
+A Cloud Service szerepkör esetében, ha a konfigurációt a lemezről választja, az adatok Base64 kódolású, ezért [dekódolni](https://www.bing.com/search?q=base64+decoder) kell, hogy megjelenjen a diagnosztika által betöltött XML-kód.
 
-### <a name="azure-diagnostics-plugin-exit-codes"></a>Az Azure Diagnostics beépülő modul kilépési kódjai
-A plugin a következő kilépési kódokat adja vissza:
+### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics beépülő modul kilépési kódjai
+A beépülő modul a következő kilépési kódokat adja vissza:
 
 | Kilépési kód | Leírás |
 | --- | --- |
 | 0 |Siker. |
 | -1 |Általános hiba. |
-| -2 |Nem lehet betölteni az rcf fájlt.<p>Ez a belső hiba csak akkor fordulhat elő, ha a vendégügynök bővítményindítója manuálisan helytelenül van meghívva a virtuális gépen. |
-| -3 |A Diagnosztika konfigurációs fájl nem tölthető be.<p><p>Megoldás: Egy konfigurációs fájl nem adja át a sémaérvényesítést. A megoldás az, hogy egy konfigurációs fájlt, amely megfelel a séma. |
-| -4 |A figyelési ügynök diagnosztika egy másik példánya már használja a helyi erőforráskönyvtárat.<p><p>Megoldás: Adjon meg egy másik értéket a **LocalResourceDirectory**könyvtárhoz. |
-| -6 |A vendégügynök bővítményindítója érvénytelen parancssorgal próbálta elindítani a Diagnosztika parancsot.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendégügynök bővítményindítója manuálisan helytelenül van meghívva a virtuális gépen. |
-| -10 |A Diagnosztika bővítmény kezeletlen kivétellel távozott. |
-| -11 |A vendégügynök nem tudta létrehozni a felügyeleti ügynök elindításáért és figyelésével felelős folyamatot.<p><p>Megoldás: Ellenőrizze, hogy elegendő rendszererőforrás áll-e rendelkezésre az új folyamatok elindításához.<p> |
-| -101 |Érvénytelen argumentumok a Diagnosztika bővítmény hívásakor.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendégügynök bővítményindítója manuálisan helytelenül van meghívva a virtuális gépen. |
-| -102 |A beépülő modul folyamata nem képes inicializálni magát.<p><p>Megoldás: Ellenőrizze, hogy elegendő rendszererőforrás áll-e rendelkezésre az új folyamatok elindításához. |
-| -103 |A beépülő modul folyamata nem képes inicializálni magát. Pontosabban nem tudja létrehozni a naplózó objektumot.<p><p>Megoldás: Ellenőrizze, hogy elegendő rendszererőforrás áll-e rendelkezésre az új folyamatok elindításához. |
-| -104 |Nem lehet betölteni a vendégügynök által biztosított rcf fájlt.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendégügynök bővítményindítója manuálisan helytelenül van meghívva a virtuális gépen. |
-| -105 |A Diagnosztika bővítmény nem tudja megnyitni a Diagnosztika konfigurációs fájlt.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztika beépülő modul manuálisan helytelenül van meghívva a virtuális gépen. |
-| -106 |A Diagnosztika konfigurációs fájl nem olvasható.<p><p>Egy konfigurációs fájl nem adja át a séma-érvényesítést. <br><br>Megoldás: Adjon meg egy konfigurációs fájlt, amely megfelel a sémának. További információt a [Diagnosztikai bővítmény konfigurációjának ellenőrzése című témakörben talál.](#how-to-check-diagnostics-extension-configuration) |
-| -107 |Az erőforrás-címtár-átlépés a figyelési ügynök érvénytelen.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a figyelési ügynök manuálisan helytelenül hívható meg a virtuális gépen.</p> |
-| -108 |A Diagnosztikai konfigurációs fájl nem konvertálható a figyelési ügynök konfigurációs fájljává.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a Diagnosztika bővítmény manuálisan érvénytelen konfigurációs fájllal van meghívva. |
-| -110 |Általános diagnosztika konfigurációs hiba.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a Diagnosztika bővítmény manuálisan érvénytelen konfigurációs fájllal van meghívva. |
-| -111 |Nem lehet elindítani a figyelési ügynököt.<p><p>Megoldás: Ellenőrizze, hogy elegendő rendszererőforrás áll-e rendelkezésre. |
-| -112 |Általános hiba |
+| -2 |Nem tölthető be a RCF-fájl.<p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| -3 |Nem tölthető be a diagnosztikai konfigurációs fájl.<p><p>Megoldás: egy konfigurációs fájl nem továbbítja a séma-ellenőrzést. A megoldás egy olyan konfigurációs fájl megadása, amely megfelel a sémának. |
+| -4 |A figyelési ügynök diagnosztika egy másik példánya már használja a helyi erőforrás-könyvtárat.<p><p>Megoldás: válasszon másik értéket a **LocalResourceDirectory**. |
+| -6 |A vendég ügynök plugin-indítója érvénytelen parancssorral próbálta elindítani a diagnosztikát.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| -10 |A diagnosztikai beépülő modul nem kezelt kivétellel kilépett. |
+| -11 |A vendég ügynök nem tudta létrehozni a figyelési ügynök elindításához és figyeléséhez felelős folyamatot.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához.<p> |
+| – 101 |Érvénytelen argumentumok a diagnosztikai beépülő modul meghívásakor.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| – 102 |A beépülő modul folyamata nem tudja inicializálni magát.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
+| – 103 |A beépülő modul folyamata nem tudja inicializálni magát. Konkrétan nem tudja létrehozni a naplózó objektumot.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
+| – 104 |Nem tölthető be a vendég ügynök által biztosított RCF-fájl.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| – 105 |A diagnosztikai beépülő modul nem tudja megnyitni a diagnosztikai konfigurációs fájlt.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, helytelenül hívja meg a virtuális gépen. |
+| – 106 |A diagnosztikai konfigurációs fájl nem olvasható.<p><p>Egy konfigurációs fájl okozta, amely nem továbbítja a séma-ellenőrzést. <br><br>Megoldás: adjon meg egy olyan konfigurációs fájlt, amely megfelel a sémának. További információ: [a diagnosztikai bővítmények konfigurációjának megkeresése](#how-to-check-diagnostics-extension-configuration). |
+| – 107 |Az erőforrás-könyvtár a figyelési ügynöknek való továbbítása érvénytelen.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a figyelési ügynököt manuálisan, helytelenül hívja meg a virtuális gépen.</p> |
+| – 108 |A diagnosztikai konfigurációs fájl nem alakítható át a figyelési ügynök konfigurációs fájljába.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
+| – 110 |Általános diagnosztikai konfigurációs hiba.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
+| – 111 |Nem sikerült elindítani a figyelési ügynököt.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás. |
+| – 112 |Általános hiba |
 
 ### <a name="local-log-extraction"></a>Helyi napló kibontása
-A figyelőügynök naplói és összetevők `.tsf` fájlként gyűjti a naplókat. A `.tsf` fájl nem olvasható, de a `.csv` következőképpen alakítható át:
+A figyelési ügynök `.tsf` naplófájlokat és összetevőket gyűjt a fájlokként. A `.tsf` fájl nem olvasható, de a következőképpen alakítható át `.csv` :
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-A hívott `<relevantLogFile>.csv` új fájl a megfelelő `.tsf` fájlelérési úton jön létre.
+A nevű `<relevantLogFile>.csv` új fájl ugyanabban az elérési úton jön létre, mint `.tsf` a megfelelő fájl.
 
 >[!NOTE]
-> Ezt a segédprogramot csak a fő .tsf fájlon (például PerformanceCountersTable.tsf) kell futtatnia. A kísérő fájlokat (például PerformanceCountersTables_\*\*001.tsf, PerformanceCountersTables_\*\*002.tsf stb.) a program automatikusan feldolgozza.
+> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a kapcsolódó\*\*fájlokat (például PerformanceCountersTables_ 001\*\*. TSF, PerformanceCountersTables_ 002. TSF stb.).
 
-### <a name="more-about-missing-trace-logs"></a>További információk a hiányzó nyomkövetési naplókról
+### <a name="more-about-missing-trace-logs"></a>További információ a hiányzó nyomkövetési naplókról
 
 >[!NOTE]
-> Az alábbi információk főként az Azure Cloud Services, kivéve, ha konfigurálta a DiagnosticsMonitorTraceListener egy alkalmazás, amely fut az IaaS virtuális gép.
+> Az alábbi információk többnyire az Azure Cloud Services vonatkoznak, hacsak nem konfigurálta a DiagnosticsMonitorTraceListener a IaaS virtuális gépen futó alkalmazáson.
 
-- Győződjön meg arról, hogy a **DiagnosticMonitorTraceListener** konfigurálva van a web.config vagy app.config.  Ez alapértelmezés szerint a felhőszolgáltatási projektekben van konfigurálva. Egyes ügyfelek azonban megjegyzésekkel, ami miatt a nyomkövetési utasítások nem gyűjti a diagnosztika.
+- Győződjön meg arról, hogy a **DiagnosticMonitorTraceListener** a web. config vagy az app. config fájlban van konfigurálva.  Ez alapértelmezés szerint a Cloud Service-projektekben van konfigurálva. Egyes ügyfelek azonban bemutatják, hogy a nyomkövetési utasítások nem lesznek összegyűjtve a diagnosztika alapján.
 
-- Ha a naplók nem az **OnStart** vagy a **Run** metódusból írnak, győződjön meg arról, hogy a **DiagnosticMonitorTraceListener** az app.config fájlban található.  Alapértelmezés szerint a web.config fájlban található, de ez csak a w3wp.exe fájlon belül futó kódra vonatkozik. Tehát szükség van rá az app.config-ban a WaIISHost.exe fájlban futó nyomkövetések rögzítéséhez.
+- Ha a naplók nem a **OnStart** vagy a **Run** metódusból íródnak, győződjön meg arról, hogy a **DiagnosticMonitorTraceListener** az app. config fájlban van.  Alapértelmezés szerint a web. config fájlban szerepel, de csak a W3wp. exe fájlon belül futó kódra vonatkozik. Ezért az app. config fájlban kell megadnia a WaIISHost. exe fájlon futó Nyomkövetések rögzítését.
 
-- Győződjön meg arról, hogy **a Diagnostics.Trace.TraceXXX** programot használja a **Diagnostics.Debug.WriteXXX helyett.** A hibakeresési utasítások törlődnek a kiadási buildből.
+- Győződjön meg róla, hogy **Diagnostics. Trace. TraceXXX** használ a **Diagnostics. debug. WriteXXX helyett.** A hibakeresési utasítások el lesznek távolítva a kiadási buildből.
 
-- Győződjön meg róla, hogy a lefordított kód valóban rendelkezik a **Diagnostics.Trace vonalakkal** (használja a Reflektort, az ildasmot vagy az ILSpy-t az ellenőrzéshez). **Diagnostics.Trace** parancsok törlődnek a lefordított bináris, kivéve, ha a TRACE feltételes fordítás szimbólum. Ez egy gyakori probléma, amely akkor fordul elő, amikor msbuild használatával készít egy projektet.   
+- Győződjön meg arról, hogy a lefordított kód ténylegesen rendelkezik a **diagnosztika. nyomkövetési sorokkal** (a tükrözés, a ildasm vagy a ILSpy használata az ellenőrzéshez). A **Diagnostics. Trace** parancsok el lesznek távolítva a lefordított bináris fájlból, kivéve, ha a nyomkövetési feltételes fordítási szimbólumot használja. Ez egy gyakori probléma, amely akkor fordul elő, ha az MSBuild-t használja projekt létrehozásához.   
 
-## <a name="known-issues-and-mitigations"></a>Ismert problémák és megoldások
-Az alábbiakban felsorolunk az ismert kockázatcsökkentésekkel kapcsolatos ismert problémákat:
+## <a name="known-issues-and-mitigations"></a>Ismert problémák és enyhítések
+Az ismert problémákkal kapcsolatos ismert problémák listáját itt találja:
 
-**1. .NET 4.5 függőség**
+**1. .NET 4,5-függőség**
 
-A Windows Azure Diagnosztikai bővítmény futásidejű függéssel rendelkezik a .NET 4.5-ös keretrendszertől vagy újabb verziótól. Az írás időpontjában az Azure Cloud Services hez kiépített összes gép, valamint az Azure virtuális gépeken alapuló összes hivatalos rendszerkép .NET 4.5-ös vagy újabb verzióval rendelkezik.
+A Windows Azure Diagnostics-bővítmény futásidejű függőséggel rendelkezik a .NET 4,5-keretrendszerben vagy újabb verzióban. Az írás időpontjában az Azure Cloud Services számára kiépített összes gép, valamint az Azure-beli virtuális gépeken alapuló összes hivatalos rendszerkép telepítve van a .NET 4,5-es vagy újabb verziójával.
 
-Továbbra is előfordulhat olyan helyzet, amikor a Windows Azure diagnosztikai bővítményt olyan számítógépen próbálja futtatni, amely nem rendelkezik .NET 4.5-ös vagy újabb verzióval. Ez akkor történik, ha a gépet egy régi lemezképből vagy pillanatképből hozza létre, vagy ha saját egyéni lemezt hoz.
+Ha olyan gépen próbál Windows Azure Diagnostics-bővítményt futtatni, amely nem rendelkezik .NET 4,5-es vagy újabb verzióval, továbbra is lehetséges. Ez akkor történik meg, amikor egy régi rendszerképből vagy pillanatképből hozza létre a gépet, vagy ha saját egyéni lemezt használ.
 
-Ez általában a **DiagnosticsPluginLauncher.exe futtatásakor** **255-ös** kilépési kódként jelenik meg. A hiba a következő nem kezelt kivétel miatt következik be:
+Ez általában a **255** -es kilépési kód, amely a **DiagnosticsPluginLauncher. exe** futtatásakor jelentkezik. A hiba a következő kezeletlen kivétel miatt fordul elő:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
 
-**Kockázatcsökkentés:** Telepítse a .NET 4.5-ös vagy újabb verziót a készülékre.
+**Enyhítés:** Telepítse a .NET 4,5-es vagy újabb verzióját a gépen.
 
-**2. A teljesítményszámlálók adatai elérhetők a tárolóban, de nem jelennek meg a portálon**
+**2. a teljesítményszámlálók adatai a tárolóban érhetők el, de nem jelennek meg a portálon**
 
-A portál élménye a virtuális gépeken alapértelmezés szerint bizonyos teljesítményszámlálókat jelenít meg. Ha nem látja a teljesítményszámlálókat, és tudja, hogy az adatok azért jönnek létre, mert a tárolóban elérhetők, ellenőrizze az alábbiakat:
+A virtuális gépeken a portál felülete alapértelmezés szerint bizonyos teljesítményszámlálókat jelenít meg. Ha nem látja a teljesítményszámlálókat, és biztos lehet benne, hogy az adat létrejött, mert elérhető a tárolóban, ellenőrizze a következőket:
 
-- Azt jelzi, hogy a tárolóban lévő adatoknak van-e számlálóneve angol nyelven. Ha a számlálónevek nem angol nyelvűek, a portálmetrikus diagram nem fogja felismerni. **Kockázatcsökkentés**: A rendszerfiókok esetében módosítsa a gép nyelvét angolra. Ehhez válassza a **Vezérlőpult** > **felügyeleti** > **Administrative** > **másolásának beállításai lehetőséget.** Ezután törölje a jelet **az Üdvözlőképernyő és a rendszerfiókok** jelölőnégyzetből, hogy az egyéni nyelv ne kerüljön alkalmazásra a rendszerfiókra.
+- Azt határozza meg, hogy a tárolóban lévő összes számláló neve angol nyelven van-e. Ha a számlálók nevei nem angol nyelvűek, a portál metrikai diagramja nem tudja felismerni. Megoldás **: módosítsa**a gép nyelvét angolra a rendszerfiókok számára. Ehhez válassza a **Vezérlőpult** > **régió** > **felügyeleti** > **másolási beállítások**lehetőséget. Ezután törölje az **üdvözlőképernyő és a rendszerfiókok** kijelölését, hogy a rendszer ne alkalmazza az egyéni nyelvet a rendszerfiókra.
 
-- Ha helyettesítő karaktereket\*( ) használ a teljesítményszámláló neveiben, a portál nem tudja korrelálni a konfigurált és összegyűjtött számlálót, amikor a teljesítményszámlálókat elküldi az Azure Storage-fogadóba. **Kockázatcsökkentés: Győződjön**meg arról, hogy használhatja\*a helyettesítő karaktereket, és a portál kibontja a ( ), a teljesítményszámlálók az Azure Monitor fogadó.
+- Ha helyettesítő karaktereket (\*) használ a teljesítményszámlálók neveiben, a portál nem fogja tudni összekapcsolni a konfigurált és az összegyűjtött számlálót, amikor a teljesítményszámlálók az Azure Storage-tárolóba kerülnek. Megoldás **: Győződjön**meg arról, hogy használhat helyettesítő karaktereket, és a portál kibontásával (\*) a teljesítményszámlálók átirányítása a Azure monitor fogadóba.
 

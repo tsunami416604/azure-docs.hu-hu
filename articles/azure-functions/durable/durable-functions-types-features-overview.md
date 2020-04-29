@@ -1,67 +1,67 @@
 ---
-title: Függvénytípusok az Azure durable functions-ben
-description: Ismerje meg, hogy milyen típusú függvények és szerepkörök, amelyek támogatják a függvény-funkció kommunikáció egy tartós függvények vezénylési az Azure Functions.
+title: Függvények típusai az Azure Durable Functions
+description: Ismerje meg, hogy milyen típusú függvények és szerepkörök működnek a Durable Functions Azure Functions-ben való összehangolása során.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277881"
 ---
-# <a name="durable-functions-types-and-features"></a>Tartós funkciók típusai és szolgáltatásai
+# <a name="durable-functions-types-and-features"></a>Durable Functions típusok és szolgáltatások
 
-A Durable Functions az [Azure Functions](../functions-overview.md)kiterjesztése. A tartós függvények a függvényvégrehajtás állapotalapú vezénylése használható. A tartós függvényalkalmazás olyan megoldás, amely különböző Azure-függvényekből áll. A függvények különböző szerepköröket játszhatnak egy tartós függvény vezénylésében. 
+Durable Functions a [Azure functions](../functions-overview.md)kiterjesztése. A függvények végrehajtásának állapot-nyilvántartó előkészítéséhez Durable Functions is használhatja. A tartós Function app egy olyan megoldás, amely különböző Azure-függvényekből áll. A függvények a különböző szerepköröket egy tartós függvény-előkészítés során is lejátszhatják. 
 
-Jelenleg négy tartós függvénytípus van az Azure Functionsben: tevékenység, orchestrator, entitás és ügyfél. A szakasz további részletei a vezénylési funkciók típusairól.
+Jelenleg a Azure Functions: Activity, a Orchestrator, az Entity és az Client szolgáltatásban négy tartós függvény szerepel. A szakasz további részében további részleteket talál a megszervezésben részt vevő függvények típusairól.
 
 ## <a name="orchestrator-functions"></a>Orchestrator függvények
 
-Az Orchestrator függvények a műveletek végrehajtását és a műveletek végrehajtását leíró sorrendet írják le. Az orchestrator függvények a kódban (C# vagy JavaScript) történő vezénylést írják le a [Durable Functions alkalmazásmintákban](durable-functions-overview.md#application-patterns)látható módon. A vezénylési műveletek számos különböző típusú műveletet használhatnak, beleértve [a tevékenységfüggvényeket,](#activity-functions) [az alvezőtevékenységeket](durable-functions-orchestrations.md#sub-orchestrations), [a külső eseményekre, a](durable-functions-orchestrations.md#external-events) [HTTP-t](durable-functions-http-features.md)és [az időzítőket.](durable-functions-orchestrations.md#durable-timers) Az Orchestrator függvényei entitásfüggvényekkel is kölcsönhatásba [léphetnek.](#entity-functions)
+A Orchestrator függvények leírják a műveletek végrehajtását, valamint a műveletek végrehajtásának sorrendjét. A Orchestrator függvények leírják a kód (C# vagy JavaScript) előkészítését, ahogyan az [Durable functions alkalmazási mintákban](durable-functions-overview.md#application-patterns)látható. Az előkészítés számos különböző típusú műveletet tartalmazhat, többek között a [tevékenységi funkciókat](#activity-functions), az [alfolyamatokat](durable-functions-orchestrations.md#sub-orchestrations), [a külső eseményekre, a](durable-functions-orchestrations.md#external-events) [http](durable-functions-http-features.md)-re és az [időzítőre](durable-functions-orchestrations.md#durable-timers)való várakozást. A Orchestrator függvények is kommunikálhatnak az [Entity functions](#entity-functions)szolgáltatással.
 
 > [!NOTE]
-> Orchestrator függvények írják a szokásos kódot, de vannak szigorú követelmények, hogyan kell írni a kódot. Pontosabban, orchestrator függvénykód kell *determinisztikus*. Ezeknek a determinizmuskövetelményeknek a be nem hagyása azt eredményezheti, hogy az orchestrator függvényei nem futnak megfelelően. Ezekről a követelményekről és azok megkerülésének módjáról részletes információk találhatók a [kódmegkötések](durable-functions-code-constraints.md) témakörében.
+> A Orchestrator függvények egyszerű kóddal vannak írva, de szigorú követelmények vonatkoznak a kód írására. Pontosabban, a Orchestrator függvény kódjának *determinisztikus*kell lennie. Ha nem sikerül követni ezeket a szabályokra vonatkozó követelményeket, a Orchestrator functions nem tud megfelelően futni. A követelményekkel és azok megoldásával kapcsolatos részletes információkat a [kód megkötései](durable-functions-code-constraints.md) témakörben találhat.
 
-Az orchestrator-függvényekkel és azok jellemzőivel kapcsolatos részletesebb információkért tekintse meg a [Tartós vezénylések](durable-functions-orchestrations.md) cikket.
+A Orchestrator functions és azok funkcióinak részletes ismertetését lásd a [tartós](durable-functions-orchestrations.md) előkészítéssel foglalkozó cikkben.
 
-## <a name="activity-functions"></a>Tevékenységfüggvények
+## <a name="activity-functions"></a>Activity függvények
 
-A tevékenységfüggvények a tartós függvényvezénylés alapvető munkaegysége. A tevékenységfüggvények a folyamatban vezénylendő függvények és feladatok. Létrehozhat például egy orchestrator függvényt egy rendelés feldolgozásához. A feladatok közé tartozik a készlet ellenőrzése, a vevő terhelése és a szállítmány létrehozása. Minden feladat külön tevékenységfüggvény lenne. Ezek a tevékenységfüggvények sorozatosan, párhuzamosan vagy a kettő valamilyen kombinációjával hajthatók végre.
+A tevékenységi funkciók az alapszintű Munkaegységek tartós függvények előkészítésében. A Activity functions a folyamat során feldolgozható függvények és feladatok. Létrehozhat például egy Orchestrator függvényt egy megrendelés feldolgozásához. A feladatok közé tartozik a leltár ellenőrzése, az ügyfél töltése és a szállítás létrehozása. Minden feladat külön tevékenységi függvény lenne. Ezek a tevékenység-függvények sorosan, párhuzamosan vagy a kettő kombinációjában is végrehajthatók.
 
-Az orchestrator függvényeivel ellentétben a tevékenységfüggvények nincsenek korlátozva a bennük elvégzett munka típusában. A tevékenységfüggvényeket gyakran használják hálózati hívások kezdeményezésére vagy cpu-igényes műveletek futtatására. Egy tevékenységfüggvény is visszaadhat adatokat az orchestrator függvény. A tartós feladat keretrendszer garantálja, hogy minden egyes megnevezett tevékenység függvény végrehajtása *legalább egyszer* egy vezénylési végrehajtása során.
-
-> [!NOTE]
-> Mivel a tevékenységfüggvények csak *legalább egyszer* garantálják a végrehajtást, azt javasoljuk, hogy a tevékenységfüggvény *logikai logikai idempotens,* amikor csak lehetséges.
-
-[Tevékenységeseményindító](durable-functions-bindings.md#activity-trigger) használatával definiáljon egy tevékenységfüggvényt. A .NET `DurableActivityContext` függvények paraméterként kapnak. Az eseményindítót bármely más JSON-szerializálható objektumhoz is kötheti, hogy a függvény bemeneteit átadja. JavaScript ben az `<activity trigger binding name>` [ `context.bindings` objektum](../functions-reference-node.md#bindings)on keresztül is hozzáférhet egy bemenethez. A tevékenységfüggvények csak egyetlen értéket adhatnak át nekik. Több érték átadásához törzseket, tömböket vagy összetett típusokat kell használnia.
+A Orchestrator függvényektől eltérően a tevékenységi funkciók nem korlátozódnak a bennük elvégezhető feladatok típusára. A tevékenység-függvények gyakran használatosak hálózati hívások kezdeményezéséhez vagy a CPU-igényes műveletek futtatásához. Egy tevékenységi függvény visszatérhet az Orchestrator függvénynek is. A tartós feladatok keretrendszere garantálja, hogy a rendszer minden ún. tevékenységi függvényt *legalább egyszer* végrehajt egy előkészítési művelet végrehajtása során.
 
 > [!NOTE]
-> Tevékenységfüggvényt csak egy orchestrator függvényből indíthat el.
+> Mivel a tevékenységi funkciók csak *legalább egyszer* garantálják a végrehajtást, javasoljuk, hogy ha lehetséges, végezze el a tevékenység függvényének logikai *idempotens* .
 
-## <a name="entity-functions"></a>Entitásfüggvények
-
-Az entitásfüggvények meghatározzák a kis állapotdarabok olvasására és frissítésére szolgáló műveleteket. Gyakran hivatkozunk ezekre az állapotozó entitásokra, mint *tartós entitásokra.* Az orchestrator függvényeihez hasonlóan az entitásfüggvények is speciális eseményindító-típussal rendelkező függvények, *entitáseseményindító*. Ügyfélfüggvények vagy orchestrator függvények is meghívhatók. Az orchestrator függvényeivel ellentétben az entitásfüggvények nem rendelkeznek konkrét kódmegkötések. Az entitásfüggvények explicit módon is kezelik az állapotot, nem pedig implicit módon az állapotot jelölik a vezérlési folyamaton keresztül.
+Aktivitási [trigger](durable-functions-bindings.md#activity-trigger) használata tevékenységi függvény definiálásához. A .NET függvények paraméterként kapják meg a `DurableActivityContext` paramétereket. Azt is megteheti, hogy a triggert bármely más JSON-serializeable objektumhoz köti, hogy beadja a függvény bemeneteit. A JavaScriptben az `<activity trigger binding name>` [ `context.bindings` objektum](../functions-reference-node.md#bindings)tulajdonságán keresztül férhet hozzá egy bemenethez. A tevékenység-függvények csak egyetlen értéket adhatnak át nekik. Több érték továbbításához rekordok, tömböket vagy összetett típusokat kell használnia.
 
 > [!NOTE]
-> Az entitásfüggvények és a kapcsolódó funkciók csak a Durable Functions 2.0 és újabb verziókban érhetők el.
+> A tevékenység függvény csak Orchestrator függvényből aktiválható.
 
-Az entitásfüggvényekről a [Tartós entitások](durable-functions-entities.md) című cikkben olvashat bővebben.
+## <a name="entity-functions"></a>Entitás-függvények
 
-## <a name="client-functions"></a>Ügyfélfüggvények
-
-Az orchestrator függvényeit egy [vezénylési eseményindító kötés](durable-functions-bindings.md#orchestration-trigger) váltja ki, az entitásfüggvényeket pedig egy [entitásesemény-kötés.](durable-functions-bindings.md#entity-trigger) Mindkét eseményindító úgy működik, hogy reagál a [feladatközpontba](durable-functions-task-hubs.md)várólistára helyezett üzenetekre. Az üzenetek kézbesítésének elsődleges módja egy [orchestrator ügyfélkötés](durable-functions-bindings.md#orchestration-client) vagy egy [entitásügyfél-kötés](durable-functions-bindings.md#entity-client) használata egy *ügyfélfüggvényen*belül. Bármely nem orchestrator függvény lehet *ügyfélfüggvény.* Például az orchestrator egy HTTP-aktivált függvény, egy Azure Event Hub aktivált függvény, stb. Mi teszi a függvényt *ügyfélfunkcióvá,* az a tartós ügyfélkimeneti kötés használata.
+Az Entity functions meghatározza a kis mennyiségű állapot olvasására és frissítésére vonatkozó műveleteket. Gyakran hivatkozunk ezekre az állapot-nyilvántartó entitásokra *tartós entitásként*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitások triggerével*működik. Az ügyfél functions vagy a Orchestrator functions használatával is meghívhatók. A Orchestrator függvényektől eltérően az Entity functions nem rendelkezik konkrét kód megkötésekkel. Az Entity functions emellett explicit módon kezeli az állapotot, nem pedig implicit módon jelképezi az állapotot a vezérlési folyamaton keresztül.
 
 > [!NOTE]
-> Más függvénytípusoktól eltérően az orchestrator és az entitásfüggvények nem aktiválhatók közvetlenül az Azure Portal on-in található gombok használatával. Ha azt szeretné, hogy tesztelje az orchestrator vagy entitás függvényaz Azure Portalon, ehelyett futtatnia kell egy *ügyfélfüggvényt,* amely elindítja az orchestrator vagy entitás függvény t a megvalósítás részeként. A legegyszerűbb tesztelési élmény érdekében *kézi trigger* funkció ajánlott.
+> Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el.
 
-Az orchestrator vagy entitásfüggvények aktiválása mellett a *tartós ügyfélkötés* használható futó vezénylési és entitások. Például vezénylések lekérdezhető, megszüntethető, és eseményeket emelhetnek rájuk. Az vezénylések és entitások kezeléséről további információt a [Példánykezelés](durable-functions-instance-management.md) című cikkben talál.
+További információ az Entity functions szolgáltatásról: [tartós entitások](durable-functions-entities.md) cikk.
+
+## <a name="client-functions"></a>Ügyfél-függvények
+
+A Orchestrator függvényeket egy előkészítési [trigger kötése](durable-functions-bindings.md#orchestration-trigger) váltja ki, és az Entity functions egy [entitás-trigger kötést](durable-functions-bindings.md#entity-trigger)indít el. Mindkét eseményindító úgy működik, [hogy a várólistán lévő](durable-functions-task-hubs.md)lévő üzenetekre reagál. Ezeknek az üzeneteknek az elsődleges módja egy [Orchestrator-ügyfél kötésének](durable-functions-bindings.md#orchestration-client) vagy egy [entitás-ügyfél kötésének](durable-functions-bindings.md#entity-client) használata az *ügyfél-függvényen*belül. A nem Orchestrator függvények lehetnek *ügyféloldali függvények*. Aktiválhatja például a Orchestrator egy HTTP által aktivált függvényből, egy Azure Event hub által aktivált függvényt stb. Mi teszi a függvényt az *ügyfél funkció* a tartós ügyfél kimeneti kötésének használatára.
+
+> [!NOTE]
+> Más típusú függvényektől eltérően a Orchestrator és az Entity függvények nem indíthatók el közvetlenül az Azure Portal gombjain keresztül. Ha a Orchestrator vagy az Entity függvényt szeretné tesztelni az Azure Portalon, ehelyett olyan *ügyféloldali függvényt* kell futtatnia, amely elindítja a Orchestrator vagy az Entity függvényt a megvalósításának részeként. A legegyszerűbb tesztelési funkciókhoz *manuális trigger* -függvény használata javasolt.
+
+A Orchestrator vagy az Entity functions kiváltásán túl a *tartós ügyfél* -kötés használható a futtatási feladatokkal és az entitásokkal való interakcióra is. Például lekérdezheti, leállíthatja és megszakíthatja az eseményeket. További információ a munkafolyamatok és az entitások kezeléséről: [példányok kezelése](durable-functions-instance-management.md) .
 
 ## <a name="next-steps"></a>További lépések
 
-A kezdéshez hozza létre az első tartós függvényt [C#](durable-functions-create-first-csharp.md) vagy [JavaScript nyelven.](quickstart-js-vscode.md)
+Első lépésként hozzon létre egy tartós függvényt [C#](durable-functions-create-first-csharp.md) vagy [JavaScript](quickstart-js-vscode.md)nyelven.
 
 > [!div class="nextstepaction"]
-> [További információ a tartós függvények vezényléséről](durable-functions-orchestrations.md)
+> [További információ a Durable Functions](durable-functions-orchestrations.md)

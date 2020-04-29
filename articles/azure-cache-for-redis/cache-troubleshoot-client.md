@@ -1,86 +1,86 @@
 ---
 title: Az Azure Cache for Redis ügyféloldali hibáinak elhárítása
-description: Ismerje meg, hogyan oldhatja meg az Azure Cache for Redis gyakori ügyféloldali problémáit, például a Redis ügyfélmemória-nyomást, a forgalom robbanását, a nagy processzort, a korlátozott sávszélességet, a nagy kéréseket vagy a nagy válaszméretet.
+description: Ismerje meg, hogy miként oldhatók meg az Azure cache szolgáltatással kapcsolatos gyakori ügyféloldali problémák, például a Redis-ügyfelek Redis, a forgalom Bursa, a nagy CPU, a korlátozott sávszélesség, a nagyméretű kérelmek vagy a nagy válaszok mérete.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277946"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure Cache for Redis ügyféloldali hibáinak elhárítása
 
-Ez a szakasz az alkalmazás által használt Redis-ügyfél egyik feltétele miatt felmerülő hibaelhárítási problémákat ismerteti.
+Ez a szakasz azokat a hibaelhárítási problémákat ismerteti, amelyek az alkalmazás által használt Redis-ügyfél feltétele miatt következnek be.
 
-- [Memórianyomás a Redis ügyfélen](#memory-pressure-on-redis-client)
-- [Forgalom robbanás](#traffic-burst)
-- [Magas ügyfélprocesszor-használat](#high-client-cpu-usage)
+- [Memória-nyomás a Redis-ügyfélen](#memory-pressure-on-redis-client)
+- [Forgalom burst](#traffic-burst)
+- [Magas ügyféloldali CPU-használat](#high-client-cpu-usage)
 - [Ügyféloldali sávszélesség korlátozása](#client-side-bandwidth-limitation)
-- [Nagy kérés- vagy válaszméret](#large-request-or-response-size)
+- [Nagyméretű kérelem vagy válasz mérete](#large-request-or-response-size)
 
-## <a name="memory-pressure-on-redis-client"></a>Memórianyomás a Redis ügyfélen
+## <a name="memory-pressure-on-redis-client"></a>Memória-nyomás a Redis-ügyfélen
 
-Az ügyfélgépen lévő memórianyomás mindenféle teljesítményproblémákhoz vezet, amelyek késleltethetik a gyorsítótárból érkező válaszok feldolgozását. Amikor a memórianyomás eléri, a rendszer adatokat paged lemezre. Ez _a laphiba_ miatt a rendszer jelentősen lelassul.
+Az ügyfélgépen a memória terhelése minden olyan teljesítménnyel kapcsolatos problémát eredményez, amely késleltetheti a válaszok feldolgozását a gyorsítótárból. Ha a memória terhelése eléri a memóriát, előfordulhat, hogy a rendszer lemezre küldi az adatlapot. Az _oldal meghibásodása_ miatt a rendszerleállás jelentősen lelassul.
 
-Az ügyfélre nehezedő memórianyomás észlelése:
+A memória terhelésének észlelése az ügyfélen:
 
-- Figyelje a számítógép memóriahasználatát, és győződjön meg arról, hogy az nem haladja meg a rendelkezésre álló memóriát.
-- Az ügyfél teljesítményszámlálójának figyelése. `Page Faults/Sec` Normál működés esetén a legtöbb rendszer oldalhibákkal rendelkezik. A kérelem időtúlterhelésének megfelelő laphibák kiugrásamemória-nyomást jelezhet.
+- Figyelje meg a memória használatát a gépen, és győződjön meg róla, hogy nem lépi túl a rendelkezésre álló memóriát.
+- Figyelje az ügyfél `Page Faults/Sec` teljesítményszámláló értékét. Normál működés esetén a legtöbb rendszernek van néhány lapja. A kérelmek időtúllépésével megegyező lapokon található tüskék a memória nyomását jelezhetik.
 
-Az ügyfélre nehezedő magas memórianyomás többféleképpen mérsékelhető:
+A nagy mennyiségű memória terhelése az ügyfélen több módon is enyhíthető:
 
-- A memóriahasználati minták basaa, hogy csökkentse az ügyfél memóriafelhasználását.
-- Frissítse az ügyfél virtuális gép egy nagyobb méretű, több memóriával.
+- Az ügyfélen a memóriahasználat csökkentése érdekében vegye figyelembe a memória-használati mintákat.
+- Frissítse az ügyfél virtuális gépét nagyobb méretűre, több memóriával.
 
-## <a name="traffic-burst"></a>Forgalom robbanás
+## <a name="traffic-burst"></a>Forgalom burst
 
-A rossz `ThreadPool` beállításokkal kombinált adatlöketek a Redis Server által már elküldött, de az ügyféloldalon még fel nem használott adatok feldolgozásának késését eredményezhetik.
+A gyenge `ThreadPool` beállításokkal összevont adatforgalom miatt a Redis-kiszolgáló által már elküldett adatok feldolgozása késéseket eredményezhet, de az ügyfél oldalán még nem használták fel azokat.
 
-Egy `ThreadPool` [példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)segítségével figyelemmel kísérheti, hogyan változnak a statisztikák az idő múlásával. A StackExchange.Redis üzeneteit az alábbihoz hasonlóan további vizsgálatra használhatja: `TimeoutException`
+Figyelje meg, `ThreadPool` Hogyan változnak a statisztikák az idő múlásával [egy példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)használatával. A StackExchange. `TimeoutException` Redis-ből származó üzeneteket a következőhöz hasonlóan használhatja a további vizsgálathoz:
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
 Az előző kivételben számos érdekes probléma van:
 
-- Figyelje meg, `IOCP` hogy `WORKER` a szakaszban és a szakaszban van egy `Busy` érték, amely nagyobb, mint az `Min` érték. Ez a `ThreadPool` különbség azt jelenti, hogy a beállításokat módosítani kell.
-- Azt is `in: 64221`látni . Ez az érték azt jelzi, hogy 64 211 bájt érkezett az ügyfél kernelsocket rétegére, de az alkalmazás nem olvasta be őket. Ez a különbség általában azt jelenti, hogy az alkalmazás (például StackExchange.Redis) nem olvassa az adatokat a hálózatról olyan gyorsan, mint a kiszolgáló küld i.
+- Figyelje meg `Busy` , hogy `IOCP` a szakasz és `WORKER` a szakasz értéke nagyobb, mint az `Min` érték. Ez a különbség azt `ThreadPool` jelenti, hogy a beállításokat módosítani kell.
+- A következőt is `in: 64221`megtekintheti:. Ez az érték azt jelzi, hogy az ügyfél kernel szoftvercsatorna rétegében 64 211 bájt érkezett, de az alkalmazás nem olvasta el. Ez a különbség általában azt jelenti, hogy az alkalmazás (például a StackExchange. Redis) nem olvas be adatokat a hálózatról olyan gyorsan, ahogy a kiszolgáló elküldi Önnek.
 
-[Beállíthatja a `ThreadPool` beállításokat,](cache-faq.md#important-details-about-threadpool-growth) hogy a szálkészlet gyorsan felskálázható burst forgatókönyvek alatt.
+[A `ThreadPool` beállítások konfigurálásával](cache-faq.md#important-details-about-threadpool-growth) megadhatja, hogy a szál készlete gyors legyen a burst forgatókönyvek alatt.
 
-## <a name="high-client-cpu-usage"></a>Magas ügyfélprocesszor-használat
+## <a name="high-client-cpu-usage"></a>Magas ügyféloldali CPU-használat
 
-A magas ügyfélprocesszor-használat azt jelzi, hogy a rendszer nem tud lépést tartani a feladattal, amelyet meg kellett tennie. Annak ellenére, hogy a gyorsítótár gyorsan elküldte a választ, előfordulhat, hogy az ügyfél nem dolgozza fel a választ időben.
+A magas ügyféloldali CPU-használat azt jelzi, hogy a rendszer nem tud lépést tartani a kért munkával. Bár a gyorsítótár gyorsan elküldötte a választ, előfordulhat, hogy az ügyfél időben nem tud feldolgozni a választ.
 
-Az ügyfél rendszerszintű cpu-használatának figyelése az Azure Portalon vagy a számítógépen elérhető teljesítményszámlálók segítségével. Ügyeljen arra, hogy ne figyelje a *folyamat* PROCESSZORát, mert egyetlen folyamat alacsony CPU-használattal rendelkezhet, de a rendszerszintű CPU magas lehet. Figyelje az időelőnyöknek megfelelő cpu-használat kiugrásait. A magas PROCESSZOR `in: XXX` is `TimeoutException` okozhat magas értékeket a hibaüzenetek, ahogy azt a Forgalom burst szakaszban [leírtak](#traffic-burst) szerint.
+Az ügyfél rendszerszintű CPU-használatának figyelése a Azure Portal vagy a számítógépen található teljesítményszámlálók használatával. Ügyeljen arra, hogy ne figyelje a *folyamat* processzorát, mert egy folyamat alacsony CPU-használattal rendelkezhet, de a rendszerszintű CPU magas lehet. Figyelje meg a CPU-használathoz tartozó, időtúllépésekkel egyező tüskéket. A magas CPU is okozhat magas `in: XXX` értéket a `TimeoutException` hibaüzenetekben a [forgalom burst](#traffic-burst) szakasza szerint.
 
 > [!NOTE]
-> StackExchange.Redis 1.1.603 és `local-cpu` újabb `TimeoutException` tartalmazza a metrika a hibaüzenetekben. Győződjön meg arról, hogy a [StackExchange.Redis NuGet csomag](https://www.nuget.org/packages/StackExchange.Redis/)legújabb verzióját használja. Vannak hibák folyamatosan rögzítik a kódot, hogy ez robusztusabb időtúlállások, így miután a legújabb verzió fontos.
+> A StackExchange. Redis 1.1.603 és a későbbi `local-cpu` verzió tartalmazza `TimeoutException` a metrikát a hibaüzenetekben. Győződjön meg arról, hogy a [StackExchange. Redis NuGet-csomag](https://www.nuget.org/packages/StackExchange.Redis/)legújabb verzióját használja. A kódban folyamatosan rögzített hibák teszik hatékonyabbá az időtúllépéseket, így a legújabb verzió fontos.
 >
 
-Az ügyfél magas processzorhasználatának csökkentése:
+Az ügyfél magas CPU-használatának csökkentése:
 
-- Vizsgálja meg, mi okozza a CPU-csúcsokat.
-- Frissítse az ügyfelet nagyobb virtuális gépméretre, nagyobb processzorkapacitással.
+- Vizsgálja meg, mi okozza a CPU-tüskéket.
+- Frissítse az ügyfelet egy nagyobb méretű virtuálisgép-méretre több CPU-kapacitással.
 
 ## <a name="client-side-bandwidth-limitation"></a>Ügyféloldali sávszélesség korlátozása
 
-Az ügyfélgépek architektúrájától függően előfordulhat, hogy korlátozták a rendelkezésre álló hálózati sávszélességet. Ha az ügyfél túllépi a rendelkezésre álló sávszélességet a hálózati kapacitás túlterhelésével, akkor az ügyféloldalon a rendszer nem dolgozza fel az adatokat olyan gyorsan, mint ahogy azt a kiszolgáló küldi. Ez a helyzet időhosszabbításhoz vezethet.
+Az ügyfélgépek architektúrája alapján előfordulhat, hogy korlátozásokkal rendelkeznek a rendelkezésre álló hálózati sávszélesség mennyiségétől függően. Ha az ügyfél túllépi a rendelkezésre álló sávszélességet a hálózati kapacitás túlterhelésével, akkor a rendszer nem dolgozza fel az adatokat az ügyfél oldalán, ha a kiszolgáló elküldi azt. Ez a helyzet időtúllépéseket eredményezhet.
 
-Egy [példa `BandwidthLogger` ](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)segítségével figyelemmel kísérheti, hogyan változik a sávszélesség-használat az idő múlásával. Előfordulhat, hogy ez a kód nem fut sikeresen bizonyos korlátozott engedélyekkel rendelkező környezetekben (például az Azure-webhelyeken).
+Figyelje meg, hogyan változik a sávszélesség-használat az idő múlásával [egy példa `BandwidthLogger` ](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)használatával. Előfordulhat, hogy ez a kód nem fut sikeresen bizonyos korlátozott engedélyekkel rendelkező környezetekben (például az Azure webhelyek szolgáltatásban).
 
-A hálózati sávszélesség-felhasználás csökkentése vagy az ügyfél virtuális gépméretének növelése egy nagyobb hálózati kapacitással.
+A szolgáltatás mérséklése érdekében csökkentse a hálózati sávszélesség-használatot, vagy növelje az ügyfél virtuális gép méretét egy nagyobb hálózati kapacitással.
 
-## <a name="large-request-or-response-size"></a>Nagy kérés vagy válasz mérete
+## <a name="large-request-or-response-size"></a>Nagyméretű kérelem vagy válasz mérete
 
-Egy nagy kérés/válasz időkéréseket okozhat. Tegyük fel például, hogy az ügyfélen beállított időtúlhasználati érték 1 másodperc. Az alkalmazás egyszerre két kulcsot kér (például "A" és "B") (ugyanazt a fizikai hálózati kapcsolatot használva). A legtöbb ügyfél támogatja a "csővezeték" kérést, ahol mindkét "A" és "B" kérés egymás után érkezik anélkül, hogy megvárná a válaszaikat. A kiszolgáló ugyanabban a sorrendben küldi vissza a válaszokat. Ha az "A" válasz nagy, a későbbi kérelmek időtúllépések többségének felemészthető.
+A nagyméretű kérések/válaszok időtúllépést okozhatnak. Tegyük fel például, hogy az ügyfélen konfigurált időtúllépési érték 1 másodperc. Az alkalmazás két kulcsot kér (például "A" és "B") egy időben (ugyanazokkal a fizikai hálózati kapcsolatok használatával). A legtöbb ügyfél támogatja a "pipeline" kérést, ahol az "A" és a "B" kérelmeket egymás után küldi el a rendszer, anélkül, hogy megvárná a válaszokat. A kiszolgáló ugyanezen sorrendben küldi vissza a válaszokat. Ha az "A" válasz nagy, akkor a későbbi kérelmek esetében az időtúllépés nagy részét is megeszik.
 
-A következő példában az "A" és a "B" kérés tüstént gyorsan elküldi a kiszolgálónak. A szerver gyorsan megkezdi az "A" és "B" válaszok küldését. Az adatátviteli idők miatt a "B" válasznak az "A" válasz mögött kell várnia, még akkor is, ha a kiszolgáló gyorsan reagált.
+A következő példában az "A" és a "B" kérést a rendszer gyorsan elküldi a kiszolgálónak. A kiszolgáló gyorsan megkezdi az "A" és A "B" válaszok küldését. Az adatátviteli időpontok miatt a "B" válasznak az "A" válasz mögött kell várnia, noha a kiszolgáló gyorsan reagál.
 
     |-------- 1 Second Timeout (A)----------|
     |-Request A-|
@@ -89,20 +89,20 @@ A következő példában az "A" és a "B" kérés tüstént gyorsan elküldi a k
                 |- Read Response A --------|
                                            |- Read Response B-| (**TIMEOUT**)
 
-Ezt a kérést/választ nehéz mérni. Az ügyfélkódot a nagy kérések és válaszok nyomon követéséhez is bevetheti.
+Ezt a kérést/választ nehéz mérni. A nagyméretű kérelmek és válaszok nyomon követéséhez az ügyfél kódját is felhasználhatja.
 
-A nagy válaszméretek felbontása változó, de a következőket tartalmazza:
+A nagyméretű válaszok méretének felbontása változó, azonban a következők:
 
-1. Optimalizálja az alkalmazást nagy számú kis értékek, nem pedig néhány nagy értékeket.
-    - Az előnyben részesített megoldás az adatok kapcsolódó kisebb értékekre való bontása.
-    - Lásd a post [Mi az ideális érték méret tartományban redis? A 100 KB túl nagy?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) a kisebb értékek ajánlottjainak részleteiért.
-1. A virtuális gép méretének növelése nagyobb sávszélesség-képességek hez
-    - Nagyobb sávszélességet az ügyfél vagy a kiszolgáló virtuális gép csökkentheti az adatátviteli idő a nagyobb válaszok.
-    - Hasonlítsa össze a jelenlegi hálózati használat mindkét gépen, hogy a jelenlegi virtuális gép mérete. Lehet, hogy csak a kiszolgálón vagy csak az ügyfélen nem elegendő a nagyobb sávszélesség.
-1. Növelje az alkalmazás által használt kapcsolatobjektumok számát.
-    - Ciklikus multiplexelési megközelítést használva különböző kapcsolatobjektumokon keresztül imitoléket intézz.
+1. Néhány nagy érték helyett nagy mennyiségű kis értékre optimalizálhatja alkalmazását.
+    - Az előnyben részesített megoldás az adatoknak a kapcsolódó kisebb értékekre való bontása.
+    - Tekintse meg a post [Mi az ideális érték a Redis számára? Túl nagy a 100 KB?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) További információ a kisebb értékek ajánlott megoldásáról.
+1. Növelje a virtuális gép méretét, hogy nagyobb sávszélesség-képességeket kapjon
+    - Az ügyfél vagy a kiszolgáló virtuális gépe további sávszélessége csökkentheti az adatátviteli időpontokat a nagyobb válaszok érdekében.
+    - Hasonlítsa össze az aktuális hálózati használatot mindkét gépen a virtuális gép jelenlegi méretének korlátaival. Több sávszélesség csak a kiszolgálón, vagy csak az ügyfélen lehet elég.
+1. Növelje az alkalmazás által használt kapcsolatok objektumainak számát.
+    - A különböző kapcsolati objektumokra irányuló kérelmeket ciklikus multiplexelés használatával hajthatja végre.
 
 ## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
-- [Hogyan tesztelhetem és tesztelhetem a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

@@ -1,55 +1,55 @@
 ---
-title: Üzembe helyezett Azure Kubernetes-szolgáltatás (AKS) fürtjének figyelése | Microsoft dokumentumok
-description: Megtudhatja, hogyan engedélyezheti egy Azure Kubernetes-szolgáltatás (AKS) fürt figyelését az Azure Monitorlal az előfizetésében már üzembe helyezett tárolókhoz.
+title: Az Azure Kubernetes Service (ak)-fürt üzembe helyezésének figyelése | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzembe helyezett tárolók Azure Monitor az Azure Kubernetes Service-(ak-) fürtök figyelését.
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275450"
 ---
-# <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Az Azure Kubernetes-szolgáltatás (AKS) már üzembe helyezett fürtjének figyelésének engedélyezése
+# <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk ismerteti, hogyan állíthatja be az Azure Monitor a felügyelt Kubernetes-fürt az Azure Kubernetes szolgáltatás, amely már telepítve van az előfizetésben felügyelt [Kubernetes-fürt](https://docs.microsoft.com/azure/aks/) figyelésére.
+Ez a cikk azt ismerteti, hogyan állíthat be Azure Monitor a tárolók számára az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) -ben üzemeltetett felügyelt Kubernetes-fürtök figyelésére, amelyek már telepítve vannak az előfizetésében.
 
-Engedélyezheti a már telepített AKS-fürt figyelését a támogatott módszerek egyikével:
+Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott módszerek egyikével:
 
 * Azure CLI
 * Terraform
-* [Az Azure Monitorból](#enable-from-azure-monitor-in-the-portal) vagy [közvetlenül az Azure Portalon lévő AKS-fürtből](#enable-directly-from-aks-cluster-in-the-portal)
-* A [megadott Azure Resource Manager sablon](#enable-using-an-azure-resource-manager-template) használatával az `New-AzResourceGroupDeployment` Azure PowerShell-parancsmag vagy az Azure CLI használatával.
+* [Azure monitor](#enable-from-azure-monitor-in-the-portal) vagy közvetlenül a Azure Portal [AK-fürtjéből](#enable-directly-from-aks-cluster-in-the-portal)
+* A [megadott Azure Resource Manager sablonnal](#enable-using-an-azure-resource-manager-template) a Azure PowerShell parancsmaggal `New-AzResourceGroupDeployment` vagy az Azure CLI használatával.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
 
-A következő lépés lehetővé teszi az AKS-fürt figyelését az Azure CLI használatával. Ebben a példában nem szükséges létrehozni vagy megadni egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AKS-fürt-előfizetés alapértelmezett erőforráscsoportjában, ha még nem létezik ilyen a régióban.  A létrehozott alapértelmezett munkaterület a *DefaultWorkspace–\<GUID\<>-Region>* formátumhoz hasonlít.  
+A következő lépés lehetővé teszi az AK-fürt figyelését az Azure CLI használatával. Ebben a példában nem kell létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban.  A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület-\<GUID>\<-region>* formátumához hasonlít.  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
 ```
 
-A kimenet a következőhöz hasonlít:
+A kimenet a következőhöz hasonló lesz:
 
 ```output
 provisioningState       : Succeeded
 ```
 
-### <a name="integrate-with-an-existing-workspace"></a>Integráció meglévő munkaterülettel
+### <a name="integrate-with-an-existing-workspace"></a>Integrálás meglévő munkaterülettel
 
-Ha inkább egy meglévő munkaterülettel integrálni szeretné, hajtsa végre a következő lépéseket a `--workspace-resource-id` log analytics-munkaterület a paraméterhez szükséges teljes erőforrás-azonosító azonosításához, majd futtassa a parancsot a figyelési bővítmény adott munkaterülethez való engedélyezéséhez.  
+Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a következő lépéseket a `--workspace-resource-id` paraméterhez szükséges log Analytics munkaterület teljes erőforrás-azonosítójának megadásához, majd futtassa a parancsot, hogy engedélyezze a figyelési bővítményt a megadott munkaterületen.  
 
-1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáférése van a következő parancs használatával:
+1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáféréssel rendelkezik a következő parancs használatával:
 
     ```azurecli
     az account list --all -o table
     ```
 
-    A kimenet a következőhöz hasonlít:
+    A kimenet a következőhöz hasonló lesz:
 
     ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -57,29 +57,29 @@ Ha inkább egy meglévő munkaterülettel integrálni szeretné, hajtsa végre a
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    A SubscriptionId értékének **másolása.**
+    Másolja a **SubscriptionId**értékét.
 
-2. Váltson át a Log Analytics-munkaterületet üzemeltető előfizetésre a következő paranccsal:
+2. Váltson a Log Analytics munkaterületet üzemeltető előfizetésre a következő paranccsal:
 
     ```azurecli
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. A következő példa az előfizetések munkaterületeinek listáját jeleníti meg az alapértelmezett JSON formátumban.
+3. Az alábbi példa az előfizetésekben lévő munkaterületek listáját jeleníti meg az alapértelmezett JSON-formátumban.
 
     ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics-munkaterület teljes erőforrásazonosítóját a **mezőazonosító**alá.
+    A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
 
-4. Futtassa a következő parancsot a figyelési `--workspace-resource-id` bővítmény engedélyezéséhez, és cserélje le a paraméter értékét. A karakterlánc értékének a dupla idézőjeleken belül kell lennie:
+4. Futtassa a következő parancsot a figyelési bővítmény engedélyezéséhez, és cserélje le a `--workspace-resource-id` paraméter értékét. A karakterlánc értékének idézőjelek közé kell esnie:
 
     ```azurecli
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
     ```
 
-    A kimenet a következőhöz hasonlít:
+    A kimenet a következőhöz hasonló lesz:
 
     ```output
     provisioningState       : Succeeded
@@ -87,7 +87,7 @@ Ha inkább egy meglévő munkaterülettel integrálni szeretné, hajtsa végre a
 
 ## <a name="enable-using-terraform"></a>Engedélyezés a Terraform használatával
 
-1. A **oms_agent** bővítményprofil hozzáadása a meglévő [azurerm_kubernetes_cluster erőforráshoz](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
+1. Adja hozzá a **oms_agent** kiegészítő profilt a meglévő [azurerm_kubernetes_cluster erőforráshoz](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
 
    ```
    addon_profile {
@@ -98,76 +98,76 @@ Ha inkább egy meglévő munkaterülettel integrálni szeretné, hajtsa végre a
    }
    ```
 
-2. Adja hozzá a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a Terraform dokumentációban leírt lépéseket követve.
+2. Adja hozzá a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a Terraform dokumentációjának lépéseit követve.
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>Engedélyezés az Azure Monitorból a portálon
+## <a name="enable-from-azure-monitor-in-the-portal"></a>Engedélyezés Azure Monitor a portálon
 
-Ha engedélyezni szeretné az AKS-fürt figyelését az Azure-portálon az Azure Monitorról, tegye a következőket:
+Ha az AK-fürt figyelését szeretné engedélyezni a Azure Monitor Azure Portalban, tegye a következőket:
 
-1. Az Azure Portalon válassza a **Figyelő**lehetőséget.
+1. A Azure Portal válassza a **figyelő**elemet.
 
-2. Válassza a **tárolók** elemet a listából.
+2. Válassza ki a **tárolókat** a listából.
 
-3. A **Figyelő - tárolók** lapon válassza a **Nem figyelt fürtök lehetőséget.**
+3. A **figyelő-tárolók** lapon válassza a **nem figyelt fürtök**lehetőséget.
 
-4. A nem figyelt fürtök listájában keresse meg a tárolót a listában, és kattintson az **Engedélyezés gombra.**   
+4. A nem figyelt fürtök listájában keresse meg a tárolót a listában, és kattintson az **Engedélyezés**gombra.   
 
-5. Az **Azure-figyelő tárolókhoz** való bevezetés lapon, ha egy meglévő Log Analytics-munkaterület teljében ugyanabban az előfizetésben, mint a fürt, válassza ki a legördülő listából.  
-    A lista előre kiválasztja az alapértelmezett munkaterületet és helyet, amelyhez az AKS-tároló telepítve van az előfizetésben.
+5. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki a kívánt elemet a legördülő listából.  
+    A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
 
-    ![AKS-tárolóelemzési figyelés engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
+    ![AK-tárolók adatellenőrzésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Ha új Log Analytics-munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse a [Log Analytics munkaterület létrehozása című](../../azure-monitor/learn/quick-create-workspace.md)részben található utasításokat. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyhez az AKS-tároló telepítve van.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
 
-Miután engedélyezte a figyelést, körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt állapotmetrikákat.
+A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
-## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>Engedélyezés közvetlenül az AKS-fürtből a portálon
+## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>Közvetlenül az AK-fürtből történő engedélyezés a portálon
 
-Ha közvetlenül az Azure Portalon lévő AKS-fürtök egyikéről szeretné engedélyezni a figyelést, tegye a következőket:
+Ha közvetlenül szeretné engedélyezni a figyelést a Azure Portal egyik AK-fürtjéből, tegye a következőket:
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget.
 
-2. Az erőforrások listájában kezdje el beírni a **Tárolók beírását.**  A lista a bevitel alapján szűr.
+2. Az erőforrások listájában kezdje el begépelni a **tárolókat**.  A lista a bemenet alapján szűri a szűrőket.
 
-3. Válassza a **Kubernetes-szolgáltatások lehetőséget.**  
+3. Válassza a **Kubernetes Services**elemet.  
 
-    ![A Kubernetes szolgáltatások hivatkozás](./media/container-insights-onboard/portal-search-containers-01.png)
+    ![A Kubernetes Services hivatkozása](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. A tárolók listájában válasszon ki egy tárolót.
 
-5. A tároló áttekintése lapon válassza a **Tárolók figyelése**lehetőséget.  
+5. A tároló áttekintése lapon válassza a **tárolók figyelése**lehetőséget.  
 
-6. Az **Azure-figyelő tárolókhoz** való bevezetés lapon, ha egy meglévő Log Analytics-munkaterület teljében ugyanabban az előfizetésben, mint a fürt, válassza ki a legördülő listában.  
-    A lista előre kiválasztja az alapértelmezett munkaterületet és helyet, amelyhez az AKS-tároló telepítve van az előfizetésben.
+6. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki azt a legördülő listából.  
+    A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
 
-    ![AKS-tároló állapotfigyelésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
+    ![AK-tároló állapot-figyelésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Ha új Log Analytics-munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse a [Log Analytics munkaterület létrehozása című](../../azure-monitor/learn/quick-create-workspace.md)részben található utasításokat. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyhez az AKS-tároló telepítve van.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
 
-Miután engedélyezte a figyelést, körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt működési adatait.
+A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt működési adatait.
 
-## <a name="enable-using-an-azure-resource-manager-template"></a>Engedélyezés Azure Resource Manager-sablon használatával
+## <a name="enable-using-an-azure-resource-manager-template"></a>Engedélyezés Azure Resource Manager sablon használatával
 
-Ez a módszer két JSON-sablont tartalmaz. Az egyik sablon a figyelés engedélyezéséhez a konfigurációt adja meg, a másik pedig a következők megadására konfigurált paraméterértékeket tartalmazza:
+Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figyelés engedélyezésének konfigurációját, a másik pedig a konfigurált paramétereket az alábbiak megadásához:
 
-* Az AKS-tároló erőforrásazonosítója.
+* Az AK-tároló erőforrás-azonosítója.
 * Az az erőforráscsoport, amelyben a fürt telepítve van.
 
 >[!NOTE]
->A sablont ugyanabban az erőforráscsoportban kell telepíteni, mint a fürtöt.
+>A sablont a fürttel azonos erőforráscsoporthoz kell telepíteni.
 >
 
-A Log Analytics-munkaterületet létre kell hozni, mielőtt engedélyezne figyelést az Azure PowerShell vagy a CLI használatával. A munkaterület létrehozásához beállíthatja azt az [Azure Resource Manageren](../../azure-monitor/platform/template-workspace-configuration.md)keresztül a [PowerShellen](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy az [Azure Portalon](../../azure-monitor/learn/quick-create-workspace.md)keresztül.
+A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)használatával állíthatja be.
 
-Ha nem ismeri az erőforrások sablon használatával történő üzembe helyezésének fogalmát, olvassa el az:
+Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Erőforrások üzembe helyezése erőforrás-kezelői sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyileg kell használni. Az Azure CLI 2.0.59-es vagy újabb verzióját kell futtatnia. A verzió azonosításához `az --version`futtassa a futtassa a futtassa a futtassa a futtassa Ha telepítenie vagy frissítenie kell az Azure CLI-t, [olvassa el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version`parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -227,7 +227,7 @@ Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyile
     }
     ```
 
-2. Mentse ezt a fájlt **meglévőClusterOnboarding.json fájlként** egy helyi mappába.
+2. Mentse ezt a fájlt **existingClusterOnboarding. JSON** néven egy helyi mappába.
 
 3. Illessze be a következő JSON-szintaxist a fájlba:
 
@@ -256,27 +256,27 @@ Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyile
     }
     ```
 
-4. Az **aksResourceId** és az **aksResourceLocation értékeit** az AKS-fürt **AKS áttekintése** lapján található értékek használatával szerkeszti. A **workspaceResourceId** értéke a Log Analytics-munkaterület teljes erőforrásazonosítója, amely tartalmazza a munkaterület nevét.
+4. Szerkessze a **aksResourceId** és a **aksResourceLocation** értékeit az AK-fürt **AK-áttekintés** lapján található értékek használatával. A **workspaceResourceId** értéke a log Analytics munkaterület teljes erőforrás-azonosítója, amely tartalmazza a munkaterület nevét.
 
-    Az **aksResourceTagValues értékeinek** szerkesztése az AKS-fürthöz megadott meglévő címkeértékeknek megfelelően.
+    Szerkessze a **aksResourceTagValues** értékeit, hogy azok megfeleljenek az AK-fürthöz megadott meglévő címkék értékének.
 
-5. Mentse ezt a fájlt **létezőClusterParam.json néven** egy helyi mappába.
+5. Mentse ezt a fájlt **existingClusterParam. JSON** néven egy helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére.
 
-   * Az Azure PowerShell használatával történő üzembe helyezéshez használja a következő parancsokat a sablont tartalmazó mappában:
+   * A Azure PowerShell használatával történő üzembe helyezéshez használja az alábbi parancsokat a sablont tartalmazó mappában:
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
 
-       A konfiguráció módosítása néhány percet is igénybe vehet. Amikor elkészült, egy üzenet jelenik meg, amely hasonló a következőhöz, és tartalmazza az eredményt:
+       A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
        ```output
        provisioningState       : Succeeded
        ```
 
-   * Az Azure CLI-vel történő üzembe helyezéshez futtassa a következő parancsokat:
+   * Az Azure CLI-vel való üzembe helyezéshez futtassa a következő parancsokat:
 
        ```azurecli
        az login
@@ -284,27 +284,27 @@ Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyile
        az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
        ```
 
-       A konfiguráció módosítása néhány percet is igénybe vehet. Amikor elkészült, egy üzenet jelenik meg, amely hasonló a következőhöz, és tartalmazza az eredményt:
+       A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
        ```output
        provisioningState       : Succeeded
        ```
 
-       Miután engedélyezte a figyelést, körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt állapotmetrikákat.
+       A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
-## <a name="verify-agent-and-solution-deployment"></a>Ügynök- és megoldástelepítés ellenőrzése
+## <a name="verify-agent-and-solution-deployment"></a>Ügynök és megoldás központi telepítésének ellenőrzése
 
-A *06072018-as* vagy újabb ügynökverzióval ellenőrizheti, hogy az ügynök és a megoldás is sikeresen üzembe lett-e. Az ügynök korábbi verzióival csak az ügynök üzembe helyezését ellenőrizheti.
+Az ügynök *06072018* -es vagy újabb verziójával ellenőrizheti, hogy az ügynök és a megoldás telepítése is sikeres volt-e. Az ügynök korábbi verzióiban csak az ügynök üzembe helyezését ellenőrizheti.
 
-### <a name="agent-version-06072018-or-later"></a>Ügynök 06072018-as vagy újabb verziója
+### <a name="agent-version-06072018-or-later"></a>Ügynök 06072018-es vagy újabb verziója
 
-Futtassa a következő parancsot az ügynök sikeres telepítésének ellenőrzéséhez.
+A következő parancs futtatásával ellenőrizheti, hogy az ügynök telepítése sikeresen megtörtént-e.
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
@@ -312,13 +312,13 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-A megoldás telepítésének ellenőrzéséhez futtassa a következő parancsot:
+A megoldás üzembe helyezésének ellenőrzéséhez futtassa a következő parancsot:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
 
 ```output
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
@@ -326,15 +326,15 @@ NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
 
-### <a name="agent-version-earlier-than-06072018"></a>A 06072018-nál korábbi ügynökverzió
+### <a name="agent-version-earlier-than-06072018"></a>Ügynök verziója 06072018-nál korábbi
 
-A *06072018* előtt kiadott Log Analytics-ügynök-verzió megfelelő telepítésének ellenőrzéséhez futtassa a következő parancsot:  
+A következő parancs futtatásával ellenőrizheti, hogy a Log Analytics ügynöknek a *06072018* -es verziójának megfelelő telepítését adta-e meg:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:  
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:  
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
@@ -342,15 +342,15 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése CLI-vel
+## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése a parancssori felülettel
 
-A `aks show` parancs segítségével olyan részleteket kaphat, mint például a megoldás engedélyezve van-e vagy sem, mi a Log Analytics munkaterület-erőforrásazonosítója, és összegző részleteket a fürtről.  
+A `aks show` paranccsal olyan részleteket kaphat, mint például a megoldás, amely a log Analytics munkaterület resourceID, valamint a fürt összegző részleteit is lehetővé teszi.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 ```
 
-Néhány perc múlva a parancs befejezi és visszaadja a JSON-formátumú információkat a megoldásról.  A parancs eredményeinek meg kell mutatniuk a figyelési bővítmény profilt, és a következő példakimenetre hasonlítanak:
+Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JSON-formátumú adatokat adja vissza.  A parancs eredményeinek meg kell jeleníteniük a figyelési bővítmény profilját, és a következő példában szereplő kimenetre hasonlítanak:
 
 ```output
 "addonProfiles": {
@@ -365,6 +365,6 @@ Néhány perc múlva a parancs befejezi és visszaadja a JSON-formátumú inform
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha a megoldás bedeszkázása közben problémákat tapasztal, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md)
+* Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Ha a figyelés engedélyezve van az AKS-fürt és a rajtuk futó számítási feladatok állapotának és erőforrás-kihasználtságának összegyűjtéséhez, ismerje meg, [hogyan használhatja az](container-insights-analyze.md) Azure Monitort tárolókhoz.
+* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.

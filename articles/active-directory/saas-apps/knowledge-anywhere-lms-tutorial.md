@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Knowledge Anywhere LMS-szel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Knowledge Anywhere LMS között.
+title: 'Oktatóanyag: Azure Active Directory integráció az ismeretekkel bárhol az LMS szolgáltatással | Microsoft Docs'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és az ismeretek között bárhol az LMS-ben.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,179 +17,179 @@ ms.date: 05/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f44324bbdd5af6675dfb4f5664cbbde2627edfec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67098562"
 ---
-# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Oktatóanyag: A tudás integrálása bárhol Az LMS szolgáltatásba az Azure Active Directoryval
+# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Oktatóanyag: az ismeretek integrálása bárhová az LMS Azure Active Directory
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Knowledge Anywhere LMS-t az Azure Active Directoryval (Azure AD). Ha integrálja a Knowledge Anywhere LMS-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a tudásbázist a Azure Active Directory (Azure AD) használatával az LMS szolgáltatásba. Ha az Azure AD-vel bárhonnan integrálja a tudást, a következőket teheti:
 
-* Szabályozhatja az Azure AD-t, aki hozzáféréssel rendelkezik a Knowledge Anywhere LMS-hez.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve knowledge anywhere LMS az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* Vezérlés az Azure AD-ben, aki hozzáfér az ismeretekhez bárhol az LMS-ben.
+* Lehetővé teheti a felhasználók számára, hogy az Azure AD-fiókjával bárhonnan automatikusan bejelentkezzenek a tudásba, bárhol is legyenek az LMS.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Knowledge Anywhere LMS egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az egyszeri bejelentkezési (SSO) előfizetés engedélyezett előfizetésének ismerete.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. Tudás Bárhol LMS támogatja **sp** kezdeményezett Egyszeri bejelentkezés és támogatja **a Just In Time** felhasználói kiépítés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Knowledge Anywhere LMS támogatja az **SP** által kezdeményezett egyszeri bejelentkezést, és a felhasználó általi üzembe helyezést **is** támogatja.
 
-## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Tudás hozzáadása bárhol LMS a galériából
+## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Tudásbázisbeli LMS hozzáadása a gyűjteményhez
 
-A Knowledge Anywhere LMS azure-beli AD-be való integrálásának konfigurálásához hozzá kell adnia a Tudás bárhol az LMS-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Ahhoz, hogy az Azure AD-ben az ismereteket bárhová integrálni tudja, a katalógusból a felügyelt SaaS-alkalmazások listájára is hozzá kell adnia a tudást, bárhol az LMS-t.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be a **Tudás bárhol LMS** kifejezést a keresőmezőbe.
-1. Válassza a **Tudás bárhol LMS** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Knowledge Anywhere LMS** kifejezést a keresőmezőbe.
+1. Válassza az **ismeretek bárhol az LMS** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Knowledge Anywhere LMS szolgáltatással egy **B. Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Knowledge Anywhere LMS-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Knowledge bárhol, az LMS használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Tudásbázisban.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Knowledge Anywhere LMS szolgáltatással hajtsa végre a következő építőelemeket:
+Ha az Azure AD SSO-t a Knowledge Anywhere-sel szeretné konfigurálni és tesztelni, végezze el a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák ezt a funkciót.
-2. **[Konfigurálja a Knowledge Anywhere LMS-t](#configure-knowledge-anywhere-lms)** az sso-beállítások alkalmazásoldali konfigurálásához.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez B. Simonnal.
-4. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy b. Simon az Azure AD egyszeri bejelentkezést.
-5. **[Hozzon létre tudás bárhol LMS teszt felhasználó,](#create-knowledge-anywhere-lms-test-user)** hogy egy megfelelője B. Simon a tudás bárhol LMS, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+2. **[Állítsa be a Knowledge Anywhere](#configure-knowledge-anywhere-lms)** -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre tudást bárhol az LMS-teszt felhasználónál](#create-knowledge-anywhere-lms-test-user)** , hogy a "B.
+6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Knowledge Anywhere LMS** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **Egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/), a **Knowledge Anywhere** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
 
-    1. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
-
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-cím, amely később az oktatóanyag ban ismertetjük.
-
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
-
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
 
     > [!NOTE]
-    > A bejelentkezési URL-érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a Knowledge Anywhere LMS ügyféltámogatási csapatával,](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) hogy megkapja ezt az értéket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel, amelyet az oktatóanyag későbbi részében ismertet.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon keresse meg az **SAML aláíró tanúsítvány szakaszát,** keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+
+    > [!NOTE]
+    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ha ezt az értéket szeretné megkapni, lépjen kapcsolatba az ügyfélszolgálattal [bárhol az LMS ügyfél-támogatási csapattal](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Tudás beállítása bárhol LMS** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **tudás beállítása bárhol LMS** -ben szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-knowledge-anywhere-lms"></a>Tudás konfigurálása bárhol LMS
+### <a name="configure-knowledge-anywhere-lms"></a>Az ismeretek konfigurálása bárhol az LMS-ben
 
-1. A Knowledge Anywhere LMS konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
+1. Ha szeretné automatizálni a konfigurációt a Tudásbázisban, a **bővítmény telepítése**lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-2. Miután hozzábővítményt a böngésző, kattintson a **Setup Knowledge Anywhere LMS** irányítja, hogy a Tudás Bárhol LMS alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatokat a Knowledge Anywhere LMS-be való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-7.
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **beállítási ismeretek bárhová az LMS** -ben lehetőségre, hogy a tudás bárhonnan elérhetővé válik az LMS alkalmazásban. Itt adja meg a rendszergazdai hitelesítő adatokat, amelyekkel bármikor bejelentkezhet a tudásba. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
 
-    ![Beállítási konfiguráció](common/setup-sso.png)
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-3. Ha manuálisan szeretné beállítani a Knowledge Anywhere LMS-t, nyisson meg egy új böngészőablakot, és jelentkezzen be rendszergazdaként a Knowledge Anywhere LMS vállalati webhelyére, és hajtsa végre a következő lépéseket:
+3. Ha kézzel szeretné beállítani az LMS szolgáltatást, nyisson meg egy új böngészőablakot, és jelentkezzen be a tudomására bárhová az LMS vállalati webhelyén rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Jelölje ki a **Webhely** lapon.
+4. Válassza a **site (hely** ) lapot.
 
-    ![Tudás bárhol LMS konfiguráció](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
-5. Jelölje ki az **SAML Beállítások** lapon.
+5. Válassza az **SAML-beállítások** lapot.
 
-    ![Tudás bárhol LMS konfiguráció](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
-6. Kattintson az **Új hozzáadása gombra.**
+6. Kattintson az **új hozzáadása**gombra.
 
-    ![Tudás bárhol LMS konfiguráció](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
-7. Az **SAML-beállítások hozzáadása/frissítése** lapon hajtsa végre az alábbi lépéseket:
+7. Az **SAML-beállítások hozzáadása/frissítése** oldalon hajtsa végre a következő lépéseket:
 
-    ![Tudás bárhol LMS konfiguráció](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
-    a. Adja meg az IDP-nevet a szervezetszerint. Az ex:- `Azure`.
+    a. Adja meg a IDENTITÁSSZOLGÁLTATÓ nevét a szervezete számára. Pl.: – `Azure`.
 
-    b. Az **IDP-entitásazonosító** szövegdobozába illessze be **az Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
+    b. Az **identitásszolgáltató entitás-azonosító** szövegmezőben illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt.
 
-    c. Az **IDP URL-cím** szövegmezőjébe illessze be **a bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
+    c. A **identitásszolgáltató URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portalból másolt.
 
-    d. Nyissa meg a letöltött tanúsítványfájlt az Azure Portalról a jegyzettömbbe, másolja a tanúsítvány tartalmát, és illessze be **a Tanúsítvány** szövegmezőbe.
+    d. Nyissa meg a letöltött tanúsítványfájl a Azure Portal a Jegyzettömbben, másolja a tanúsítvány tartalmát, majd illessze be a **tanúsítvány** szövegmezőbe.
 
-    e. A **Kijelentkezés URL-címmezőjébe** illessze be **a kijelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
+    e. A **kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-    f. Válassza ki a **Fő webhelylehetőséget** a **Domain**legördülő menüből.
+    f. Válassza ki a **fő helyet** a **tartomány**legördülő menüjéből.
 
-    g. Másolja az **SP-entitás azonosítójának** értékét, és illessze be **az Azure** Portal **alapszintű SAML-konfiguráció** szakaszában az Azonosító mezőbe.
+    g. Másolja az **SP-entitás azonosítójának** értékét, és illessze be **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    h. Másolja az **SP-válasz(ACS) URL-értékét,** és illessze be a **Válasz URL-cím** mezőjébe az Azure Portal **Alapszintű SAML-konfiguráció** szakaszában.
+    h. Másolja az **SP Response (ACS) URL** értékét, és illessze be a **Válasz URL** -szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    i. Kattintson a **Mentés** gombra.
+    i. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B. Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `BrittaSimon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b. Simon azure egyszeri bejelentkezés t azáltal, hogy hozzáférést biztosít a Knowledge Anywhere LMS.
+Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentkezést használja azáltal, hogy hozzáférést biztosít a tudáshoz bárhol az LMS-ben.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Tudás bárhol LMS**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **ismeretek bárhová az LMS**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B. Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-knowledge-anywhere-lms-test-user"></a>Tudás létrehozása bárhol LMS teszt felhasználó
+### <a name="create-knowledge-anywhere-lms-test-user"></a>Tudás létrehozása bárhol az LMS-tesztkörnyezet felhasználója
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Tudás bárhol LMS. Knowledge Anywhere LMS támogatja a just-in-time felhasználói kiépítés, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik a Knowledge Anywhere LMS,egy új jön létre a hitelesítés után.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a tudásban, bárhol az LMS-ben. A Knowledge Anywhere-LMS az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a tudásban bárhol az LMS-ben, akkor a hitelesítés után létrejön egy újat.
 
-### <a name="test-sso"></a>SSO tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ha a Hozzáférési panelen kiválasztja a Tudás bárhol lms csempét, automatikusan be kell jelentkeznie a Tudás bárhol LMS-be, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen kiválasztja a tudás bárhol az LMS csempét, akkor automatikusan be kell jelentkeznie arra a tudásra, amelybe az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

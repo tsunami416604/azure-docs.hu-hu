@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Kapcsolódási modellek'
-description: Ez a cikk az ügyfél hálózata és a Microsoft Azure, valamint az Office 365-szolgáltatások közötti különböző kapcsolódási módokat ismerteti. Az ügyfelek használhatnak MPLS-szolgáltatókat, felhőbeli adatcserélőket vagy Ethernet-szolgáltatókat.
+title: 'Azure ExpressRoute: kapcsolati modellek'
+description: Ez a cikk az ügyfél hálózati és Microsoft Azure és az Office 365 szolgáltatások közötti különböző csatlakozási módokat ismerteti. Az ügyfelek használhatnak MPLS-szolgáltatókat, felhőbeli adatcserélőket vagy Ethernet-szolgáltatókat.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280884"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute kapcsolati modellek
@@ -36,6 +36,6 @@ WAN hálózatát integrálhatja a Microsoft Clouddal. Az IPVPN-szolgáltatók (j
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 * Tekintse meg az [Útválasztás](expressroute-routing.md), a [NAT](expressroute-nat.md) és a [QoS](expressroute-qos.md) követelményeit.
 * Az ExpressRoute-kapcsolat konfigurálása.
-  * [ExpressRoute-kapcsolat létrehozása](expressroute-howto-circuit-portal-resource-manager.md)
+  * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-portal-resource-manager.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-portal-resource-manager.md)

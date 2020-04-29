@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure Network Watcher connection troubleshoot hibáiba | Microsoft dokumentumok
-description: Ez a lap áttekintést nyújt a Hálózatfigyelő kapcsolatával kapcsolatos hibaelhárítási képességről
+title: Bevezetés az Azure Network Watcher-kapcsolódási hibába | Microsoft Docs
+description: Ez az oldal áttekintést nyújt a Network Watcher-kapcsolatok hibaelhárítási képességéről
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,46 +12,46 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283276"
 ---
-# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Bevezetés a kapcsolatokkal kapcsolatos hibaelhárításba az Azure Network Watcherben
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
 
-A Network Watcher kapcsolathibaelhárítási szolgáltatása lehetővé teszi a virtuális gép és a virtuális gép, a teljesen minősített tartománynév (FQDN), az URI vagy az IPv4-cím közvetlen TCP-kapcsolatának ellenőrzését. A hálózati forgatókönyvek összetettek, hálózati biztonsági csoportok, tűzfalak, felhasználó által definiált útvonalak és az Azure által biztosított erőforrások használatával valósulnak meg. Az összetett konfigurációk kihívást jelentenek a kapcsolódási problémák elhárításában. A Network Watcher segít csökkenteni a kapcsolódási problémák keresésére és észlelésére szolgáló időt. A visszaadott eredmények betekintést nyújthatnak abba, hogy egy kapcsolódási probléma platform vagy felhasználói konfigurációs probléma miatt. A kapcsolat ellenőrizhető a [PowerShell,](network-watcher-connectivity-powershell.md) [az Azure CLI](network-watcher-connectivity-cli.md)és a [REST API segítségével.](network-watcher-connectivity-rest.md)
+A Network Watcher kapcsolódási hibáinak elhárítása lehetővé teszi a közvetlen TCP-kapcsolatok ellenőrzését egy virtuális gépről egy virtuális gépre (VM), a teljes tartománynévre (FQDN), az URI-ra vagy az IPv4-címekre. A hálózati forgatókönyvek összetettek, a hálózati biztonsági csoportokkal, tűzfalakkal, felhasználó által megadott útvonalakkal és az Azure által biztosított erőforrásokkal valósíthatók meg. Az összetett konfigurációk hibaelhárítást tesznek a kapcsolódási problémákkal kapcsolatban. Network Watcher segít csökkenteni a kapcsolódási problémák megtalálásának és észlelésének időtartamát. A visszaadott eredmények révén betekintést nyerhet, hogy a kapcsolódási problémát egy platform vagy egy felhasználói konfigurációs probléma okozza-e. A kapcsolat ellenőrizhető a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)és a [REST API](network-watcher-connectivity-rest.md)használatával.
 
 > [!IMPORTANT]
-> A kapcsolathiba elhárításához szükség van `AzureNetworkWatcherExtension` arra, hogy a virtuális gép, amelyről hibaelhárítási, telepítve van a virtuális gép bővítménye. A bővítmény Windows virtuális gépen történő telepítéséhez látogasson el az [Azure Network Watcher Agent windowsos](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és Linuxos virtuális gépbővítménybe, és látogasson el az [Azure Network Watcher Agent linuxos virtuálisgép-bővítménybe.](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) A bővítmény nem szükséges a célvégponton.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="response"></a>Válasz
 
-Az alábbi táblázat a kapcsolathibaelhárítás futtatásakor visszaadott tulajdonságokat mutatja be.
+A következő táblázat azokat a tulajdonságokat mutatja be, amelyeket a rendszer a kapcsolódási hibák futásának befejeződése után adott vissza.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|ConnectionStatus kapcsolat állapota     | A kapcsolat-ellenőrzés állapota. A lehetséges eredmények **elérhetők** és **nem érhető el.**        |
-|AvgLatencyInM-ek     | Átlagos késés a kapcsolat ellenőrzése során ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzés állapota elérhető)        |
-|MinLatencyInM-ek     | Minimális késés a kapcsolat ellenőrzése során ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzés állapota elérhető)        |
-|MaxLatencyInM-ek     | Maximális késés a kapcsolat ellenőrzése során ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzés állapota elérhető)        |
-|ProbesSent (Küldetés: mintavétel)     | Az ellenőrzés során küldött szondák száma. A maximális érték 100.        |
-|MintavételekSikertelen     | Az ellenőrzés során meghibásodott mintavételek száma. A maximális érték 100.        |
-|Ugrások     | Ugrás ugrási útvonal a forrástól a célig.        |
-|Komló[]. Típus     | Az erőforrás típusa. A lehetséges értékek a **következők: Forrás**, **VirtualAppliance**, **VnetLocal**és **Internet**.        |
-|Komló[]. Id | Az ugrás egyedi azonosítója|
-|Komló[]. Cím | Az ugrás IP-címe.|
-|Komló[]. Erőforrásazonosító | Erőforrás-azonosító, ha az ugrás egy Azure-erőforrás. Ha ez egy internetes erőforrás, ResourceID **az internet**. |
-|Komló[]. NextHopIds | A következő felvett ugrás egyedi azonosítója.|
-|Komló[]. Kérdések | Az adott ugrásnál az ellenőrzés során észlelt problémák gyűjteménye. Ha nem voltak problémák, az érték üres.|
-|Komló[]. Problémák[]. Eredetű | Az aktuális ugrásnál, ahol probléma merült fel. Lehetséges értékek:<br/> **Bejövő** – A kiadás az előző ugrás és az aktuális ugrás közötti kapcsolaton található<br/>**Kimenő** – A kiadás az aktuális ugrásés a következő ugrás közötti kapcsolaton található<br/>**Helyi** – a kiadás az aktuális ugráson van.|
-|Komló[]. Problémák[]. Súlyossága | A feltárt probléma súlyossága. A lehetséges értékek a **Következők: Hiba** és **Figyelmeztetés**. |
-|Komló[]. Problémák[]. Típus |A talált probléma típusa. Lehetséges értékek: <br/>**Cpu**<br/>**Memory (Memória)**<br/>**Vendégtűzfal**<br/>**DnsFelbontás**<br/>**NetworkSecurityRule (Hálózati biztonsági szabály)**<br/>**UserDefinedRoute** |
-|Komló[]. Problémák[]. Összefüggésben |Részletek a probléma található.|
-|Komló[]. Problémák[]. Környezet[].kulcs |A visszaadott kulcsérték-pár kulcsa.|
-|Komló[]. Problémák[]. Környezet[].érték |A visszaadott kulcsérték-pár értéke.|
+|ConnectionStatus     | A kapcsolat-ellenőrzési állapota. A lehetséges eredmények **elérhetők** és nem **érhetők el**.        |
+|AvgLatencyInMs     | Az átlagos késés a kapcsolat ellenőrzése során ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzési állapot elérhető)        |
+|MinLatencyInMs     | A kapcsolat ellenőrzésének minimális késése ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzési állapot elérhető)        |
+|MaxLatencyInMs     | A kapcsolat ellenőrzése során a maximális késés ezredmásodpercben. (Csak akkor jelenik meg, ha az ellenőrzési állapot elérhető)        |
+|ProbesSent     | Az ellenőrzés során eljuttatott mintavételek száma. A maximális érték 100.        |
+|ProbesFailed     | Az ellenőrzés során meghiúsult mintavételek száma. A maximális érték 100.        |
+|Ugrások     | Ugrás a forrás és a cél között a hop útvonalon.        |
+|Ugrások []. Típusa     | Az erőforrás típusa. A lehetséges értékek a következők: **forrás**, **VirtualAppliance**, **VnetLocal**és **Internet**.        |
+|Ugrások []. ID | Az Ugrás egyedi azonosítója.|
+|Ugrások []. Cím | Az ugrás IP-címe.|
+|Ugrások []. ResourceId | ResourceID, ha az Ugrás egy Azure-erőforrás. Ha ez egy internetes erőforrás, a ResourceID az **Internet**. |
+|Ugrások []. NextHopIds | A következő ugrás egyedi azonosítója.|
+|Ugrások []. Kérdések | A hop-ellenőrzés során észlelt problémák gyűjteménye. Ha nem volt probléma, az érték üres.|
+|Ugrások []. Problémák []. Származási | Az aktuális ugrásban, ahol a probléma történt. Lehetséges értékek:<br/> **Bejövő** – probléma az előző ugrásról az aktuális ugrásra mutató hivatkozáson<br/>**Kimenő** – probléma az aktuális ugrásról a következő ugrásra mutató hivatkozáson<br/>**Helyi** – a probléma az aktuális ugráson van.|
+|Ugrások []. Problémák []. Súlyosság | A probléma súlyossága észlelhető. A lehetséges értékek a **hiba** és a **Figyelmeztetés**. |
+|Ugrások []. Problémák []. Típusa |A talált probléma típusa. Lehetséges értékek: <br/>**CPU**<br/>**Memory (Memória)**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Ugrások []. Problémák []. Összefüggésben |A hibával kapcsolatos részletek.|
+|Ugrások []. Problémák []. Kontextus []. Key |A kulcs érték pár visszaadott kulcsa.|
+|Ugrások []. Problémák []. Context []. Value |A visszaadott kulcs érték párok értéke.|
 
-Az alábbi példa egy ugrással kapcsolatos problémát mutat be.
+Az alábbi példa egy hop-beli problémát mutat be.
 
 ```json
 "Issues": [
@@ -68,19 +68,19 @@ Az alábbi példa egy ugrással kapcsolatos problémát mutat be.
     }
 ]
 ```
-## <a name="fault-types"></a>Hibatípusok
+## <a name="fault-types"></a>Hibák típusai
 
-A kapcsolathiba elhárítása hibatípusokat ad vissza a kapcsolatról. Az alábbi táblázat a visszaadott aktuális hibatípusok listáját tartalmazza.
+A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja vissza. A következő táblázat felsorolja az aktuálisan visszaadott típusú hibakódokat.
 
 |Típus  |Leírás  |
 |---------|---------|
 |CPU     | Magas CPU-kihasználtság.       |
-|Memory (Memória)     | Nagy memória kihasználtság.       |
-|Vendégtűzfal     | A forgalom a virtuális gép tűzfalának konfigurációja miatt blokkolva van.        |
-|DNS-feloldás     | A DNS-feloldás nem sikerült a célcímhez.        |
-|NetworkSecurityRule (Hálózati biztonsági szabály)    | A forgalmat egy NSG-szabály blokkolja (a szabályt visszaadja)        |
-|UserDefinedRoute|A rendszer egy felhasználó által definiált vagy rendszerútvonal miatt elesik a forgalom. |
+|Memory (Memória)     | Nagy memória kihasználtsága.       |
+|GuestFirewall     | A virtuális gép tűzfalának konfigurálása miatt a rendszer blokkolja a forgalmat.        |
+|DNSResolution     | A célcím DNS-feloldása nem sikerült.        |
+|NetworkSecurityRule    | Egy NSG szabály blokkolta a forgalmat (a rendszer visszaadja a szabályt)        |
+|UserDefinedRoute|A rendszer egy felhasználó által definiált vagy rendszerútvonal miatt eldobott forgalmat. |
 
 ### <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan háríthatja el a kapcsolatok hibáit az [Azure Portalon,](network-watcher-connectivity-portal.md)a [PowerShellen,](network-watcher-connectivity-powershell.md)az [Azure CLI-n](network-watcher-connectivity-cli.md)vagy a [REST API-n](network-watcher-connectivity-rest.md)keresztül.
+Megtudhatja, hogyan lehet a [Azure Portal](network-watcher-connectivity-portal.md), a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)vagy a [REST API](network-watcher-connectivity-rest.md)használatával a kapcsolatokat elhárítani.

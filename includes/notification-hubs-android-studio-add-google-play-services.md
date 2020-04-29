@@ -9,33 +9,33 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67509100"
 ---
-1. Az Android Studio alkalmazásban válassza a menü **Eszközök parancsát,** majd az **SDK-kezelő t.** 
-2. Válassza ki a projektben használt Android SDK célverzióját. Ezután válassza **a Csomag részleteinek megjelenítése**lehetőséget. 
+1. A Android Studio területen válassza a menü **eszközök** elemét, majd válassza az **SDK-kezelő**elemet. 
+2. Válassza ki a projektben használt Android SDK cél verzióját. Ezután válassza a **csomag adatainak megjelenítése**lehetőséget. 
 
-    ![Android SDK Manager - célverzió kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Válassza a **Google API-k**lehetőséget, ha még nincs telepítve.
+    ![Android SDK-kezelő – cél verziójának kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Válassza a **Google API**-k lehetőséget, ha még nincs telepítve.
 
-    ![Android SDK Manager - Google API-k kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. Váltson az **SDK-eszközök** lapra. Ha még nem telepítette a Google Play-szolgáltatásokat, válassza a **Google Play-szolgáltatásokat** az alábbi képen látható módon. Ezután válassza az **Alkalmaz** a telepítéshez lehetőséget. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
+    ![Android SDK-kezelő – kiválasztott Google API-k](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Váltson az **SDK-eszközök** lapra. Ha még nem telepítette a Google Play-szolgáltatásokat, válassza a **Google Play-szolgáltatások** lehetőséget az alábbi ábrán látható módon. Ezután válassza az **alkalmaz** elemet a telepítéshez. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
 
-    ![Android SDK Manager - Google Play Szolgáltatások kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. Ha megjelenik a **Módosítás megerősítése** párbeszédpanel, válassza az **OK gombot.** A Komponenstelepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
-4. Az **ÚJ projektek beállításai** párbeszédpanel bezárásához válassza az **OK** gombot.  
-5. Nyissa meg a build.gradle fájlt az alkalmazáskönyvtárban, `dependencies`majd adja hozzá a következő sort a területen. **app** 
+    ![Android SDK-kezelő – kiválasztott Google Play-szolgáltatások](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Ha megjelenik a **módosítás megerősítése** párbeszédpanel, kattintson az **OK gombra**. Az összetevő-telepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
+4. Az **új projektek beállításainak** bezárásához kattintson **az OK gombra** .  
+5. Nyissa meg a Build. gradle fájlt az **alkalmazás** könyvtárában, majd adja hozzá a következő `dependencies`sort a elemhez. 
 
     ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. Az eszköztáron válassza a **Szinkronizálás most** ikont.
+5. Kattintson a **szinkronizálás most** ikonra az eszköztáron.
 
-    ![Szinkronizálás a gradle-lel](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
-1. Nyissa meg az AndroidManifest.xml fájlt, és *application* adja hozzá a következő címkét az alkalmazáscímkéhez.
+    ![Szinkronizálás a Gradle](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. Nyissa meg a AndroidManifest. xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

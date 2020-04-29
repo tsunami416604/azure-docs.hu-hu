@@ -1,6 +1,6 @@
 ---
-title: Metrikák használata az Azure IoT Hub figyeléséhez | Microsoft dokumentumok
-description: Az Azure IoT Hub-metrikák használata az IoT-központok általános állapotának felméréséhez és figyeléséhez.
+title: Metrikák használata az Azure-IoT Hub figyeléséhez | Microsoft Docs
+description: Az Azure IoT Hub metrikáinak használata az IoT-hubok általános állapotának felmérésére és figyelésére.
 author: jlian
 ms.service: iot-hub
 services: iot-hub
@@ -8,117 +8,117 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284433"
 ---
-# <a name="understand-iot-hub-metrics"></a>Az IoT Hub-metrikák ismertetése
+# <a name="understand-iot-hub-metrics"></a>IoT Hub mérőszámok ismertetése
 
-Az IoT Hub-metrikák jobb adatokat nyújtanak az Azure IoT-erőforrások állapotáról az Azure-előfizetésben. Az IoT Hub-metrikák lehetővé teszik az IoT Hub-szolgáltatás és a hozzá csatlakoztatott eszközök általános állapotának felmérését. A felhasználók felé irányuló statisztikák azért fontosak, mert segítenek látni, hogy mi történik az IoT-központtal, és segítenek a kiváltó problémák megoldásában anélkül, hogy kapcsolatba kellene lépnie az Azure-támogatással.
+IoT Hub mérőszámok jobb adatokat biztosítanak az Azure-előfizetésben található Azure IoT-erőforrások állapotáról. IoT Hub mérőszámok lehetővé teszik a IoT Hub szolgáltatás és a hozzá csatlakozó eszközök általános állapotának felmérését. A felhasználók felé irányuló statisztikák azért fontosak, mert segítenek megtekinteni, hogy mi történik az IoT hub-ban, és segítsen a kiváltó problémák megoldásában anélkül, hogy fel kellene vennie a kapcsolatot az Azure ügyfélszolgálatával.
 
-A mérőszámok alapértelmezés szerint engedélyezve vannak. Az IoT Hub-metrikák az Azure Portalon megtekintheti.
+A metrikák alapértelmezés szerint engedélyezve vannak. A Azure Portal IoT Hub metrikákat is megtekintheti.
 
 > [!NOTE]
-> Az IoT Hub-metrikák segítségével megtekintheti az IoT Plug and Play-eszközök, az IoT Hub hoz csatlakoztatott információkat. Az IoT Plug and Play eszközök az IoT Plug and Play nyilvános előzetes verzió részét [képezik.](../iot-pnp/overview-iot-plug-and-play.md)
+> IoT Hub metrikák használatával megtekintheti a IoT Hubhoz csatlakoztatott IoT Plug and Play eszközök adatait. A IoT Plug and Play-eszközök a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verzió részét képezik.
 
-## <a name="how-to-view-iot-hub-metrics"></a>Az IoT Hub-metrikák megtekintése
+## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub mérőszámok megtekintése
 
-1. Hozzon létre egy IoT hubot. Az IoT-központ létrehozásáról a [Telemetriai adatok küldése az eszközről](quickstart-send-telemetry-dotnet.md) az IoT Hub-útmutatóba című útmutatóban található.
+1. Hozzon létre egy IoT hubot. Az IoT hub létrehozásával kapcsolatos útmutatást a [telemetria küldése eszközről IoT hub](quickstart-send-telemetry-dotnet.md) útmutatóban találja.
 
-2. Nyissa meg az IoT hub paneljét. Itt kattintson **a Mérőszámok gombra.**
+2. Nyissa meg az IoT hub paneljét. Kattintson a **metrikák**elemre.
    
-    ![Képernyőkép, amely en látható, hogy hol található a metrikák beállítás az IoT Hub erőforráslapján](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Képernyőfelvétel: a metrikák beállításának helye IoT Hub erőforrás oldalon](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. A metrikák panelen megtekintheti az IoT hub metrikák, és a metrikák egyéni nézeteket hozhat létre. 
+3. A metrikák panelen megtekintheti az IoT hub metrikáit, és egyéni nézeteket hozhat létre a metrikák alapján. 
    
-    ![Az IoT Hub metrikalapját megjelenítő képernyőkép](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Képernyőkép a IoT Hub metrikáit megjelenítő oldalról](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. A **diagnosztikai beállítások**, majd a **Diagnosztikai beállítások hozzáadása parancsra** kattintva elküldheti a metrikák adatait egy Event Hubs-végpontnak vagy egy Azure Storage-fióknak.
+4. Kiválaszthatja, hogy a metrikák adatait egy Event Hubs-végpontba vagy egy Azure Storage-fiókba küldje el a **diagnosztikai beállítások**, majd a **diagnosztikai beállítás hozzáadása** lehetőségre kattintva.
 
-   ![Képernyőkép a diagnosztikai beállítások gombjának látható](./media/iot-hub-metrics/enable-metrics-3.png)
+   ![A diagnosztikai beállítások gombjának helyét bemutató képernyőfelvétel](./media/iot-hub-metrics/enable-metrics-3.png)
 
-## <a name="iot-hub-metrics-and-how-to-use-them"></a>Az IoT Hub-metrikák és használatuk
+## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub mérőszámok és azok használatának módjai
 
-Az IoT Hub számos metrikát biztosít a hub állapotának és a csatlakoztatott eszközök teljes számának áttekintéséhez. Több metrika adatait kombinálva nagyobb képet festhet az IoT hub állapotáról. Az alábbi táblázat ismerteti az egyes IoT-központ-pályák metrikákat, és azt, hogy az egyes metrikák hogyan viszonyulnak az IoT hub általános állapotához.
+A IoT Hub számos mérőszámot biztosít, amely áttekintést nyújt a központ állapotáról és a csatlakoztatott eszközök teljes számáról. Több mérőszámból is egyesítheti az adatokat, így az IoT hub állapotának nagyobb képe is kifesthető. A következő táblázat ismerteti az egyes IoT hub-sávok metrikáit, valamint azt, hogy az egyes mérőszámok hogyan kapcsolódnak az IoT hub általános állapotához.
 
-|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|d2c.telemettry.ingress.allProtocol|Telemetriai üzenet küldési kísérletei|Darabszám|Összesen|Az IoT-központba küldeni próbált eszközről felhőbe irányuló telemetriai üzenetek száma|None|
-|d2c.telemetry.ingress.success|Elküldött telemetriai üzenetek|Darabszám|Összesen|Az IoT hubra küldött eszközök ről a felhőbe irányuló telemetriai üzenetek száma|None|
-|c2d.commands.egress.complete.success|A C2D-üzenetek kézbesítése befejeződött|Darabszám|Összesen|Az eszköz által sikeresen végrehajtott felhőből eszközre irányuló üzenetkézbesítések száma|None|
-|c2d.commands.egress.abandon.success|C2D üzenetek elhagyva|Darabszám|Összesen|Az eszköz által elhagyott, felhőről eszközre irányuló üzenetek száma|None|
-|c2d.commands.egress.reject.success|Elutasított C2D-üzenetek|Darabszám|Összesen|Az eszköz által elutasított, felhőről eszközre irányuló üzenetek száma|None|
-|C2DMessagesExpired|C2D üzenetek lejárt (előzetes verzió)|Darabszám|Összesen|Az eszközről az eszközre irányuló lejárt üzenetek száma|None|
-|devices.totalDevices|Összes eszköz (elavult)|Darabszám|Összesen|Az IoT hubhoz regisztrált eszközök száma|None|
-|devices.connectedDevices.allProtocol|Csatlakoztatott eszközök (elavult) |Darabszám|Összesen|Az IoT hubhoz csatlakoztatott eszközök száma|None|
-|d2c.telemettry.egress.success|Útválasztás: telemetriai üzenetek kézbesítve|Darabszám|Összesen|Az üzenetek sikeres kézbesítésének száma az IoT Hub útválasztáshasználatával az összes végpontra. Ha egy üzenet több végpontra van irányítva, ez az érték minden sikeres kézbesítésesetén eggyel nő. Ha egy üzenetet többször kézbesítenek ugyanarra a végpontra, ez az érték minden sikeres kézbesítésesetén eggyel nő.|None|
-|d2c.telemettry.egress.dropped|Útválasztás: eldobott telemetriai üzenetek |Darabszám|Összesen|Az üzenetek zsákutca miatti eldobásának száma az IoT Hub útválasztása. Ez az érték nem számít a tartalék útvonalra kézbesített üzeneteknek, mivel az eldobott üzenetek nem kézbesítve vannak.|None|
-|d2c.telemettry.egress.orphaned|Útválasztás: telemetriai üzenetek árva |Darabszám|Összesen|Az Üzenetek árván maradásának száma az IoT Hub-útválasztás miatt, mert nem felelnek meg semmilyen útválasztási szabálynak (beleértve a tartalék szabályt is). |None|
-|d2c.telemettry.egress.invalid|Útválasztás: a telemetriai üzenetek nem kompatibilisek|Darabszám|Összesen|Az IoT Hub-útválasztás végpontdal való inkompatibilitás miatt nem tudott üzeneteket kézbesíteni. Ez az érték nem tartalmazza az újrapróbálkozásokat.|None|
-|d2c.telemettry.egress.fallback|Útválasztás: tartalékba küldött üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás a tartalék útvonalhoz társított végpontra kézbesített üzenetek száma.|None|
-|d2c.endpoints.egress.eventHubs|Útválasztás: az Event Hubba kézbesített üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás sikeresen kézbesített üzeneteket Event Hub végpontok száma.|None|
-|d2c.endpoints.latency.eventHubs|Útválasztás: üzenetkésés az Eseményközpontszámára|Ezredmásodperc|Átlag|Az IoT Hubba irányuló üzenetek és az Event Hub-végpontba való üzenet-be- és üzenet-be- és üzenetbe- és üzenetbe- és üzenetküldés közötti átlagos késés (ezredmásodperc).|None|
-|d2c.endpoints.egress.serviceBusQueues|Útválasztás: a Service Bus várólistájába kézbesített üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás sikeresen kézbesített üzeneteket Service Bus várólista végpontok száma.|None|
-|d2c.endpoints.latency.serviceBusQueues|Útválasztás: üzenetkésa Service Bus-várólistához|Ezredmásodperc|Átlag|Az IoT Hubba irányuló üzenet-be- és telemetriai üzenetek egy Service Bus-várólista-végpontba való be- és telemetriai üzenet közötti átlagos késés (ezredmásodperc).|None|
-|d2c.endpoints.egress.serviceBusTopics|Útválasztás: a Service Bus topic szolgáltatásba küldött üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás sikeresen kézbesített üzeneteket Service Bus témakör végpontok száma.|None|
-|d2c.endpoints.latency.serviceBusTopics|Útválasztás: üzenetkésés a Service Bus-témakörhöz|Ezredmásodperc|Átlag|Az IoT Hubba küldött üzenet és a telemetriai üzenetek egy Service Bus-témakör végpontjába való be- és telemetriai üzenet közötti átlagos késés (ezredmásodperc).|None|
-|d2c.endpoints.egress.builtIn.events|Útválasztás: üzenetekbe/eseményekre kézbesített üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás sikeresen kézbesített üzeneteket a beépített végpont (üzenetek/események) száma.|None|
-|d2c.endpoints.latency.builtIn.events|Útválasztás: üzenetek/események üzenetkéste|Ezredmásodperc|Átlag|Az IoT Hubba küldött üzenet és a telemetriai üzenetek beépített végpontba (üzenetek/események) való be- és telemetriai üzenetek közötti átlagos késés (ezredmásodperc).|None|
-|d2c.endpoints.egress.storage|Útválasztás: a tárolóba kézbesített üzenetek|Darabszám|Összesen|Az IoT Hub útválasztás sikeresen szállított üzeneteket a tárolási végpontok száma.|None|
-|d2c.endpoints.latency.storage|Útválasztás: üzenet késése a tároláshoz|Ezredmásodperc|Átlag|Az IoT Hubba küldött üzenet és a telemetriai üzenetek tárolási végpontba való be- és telemetriai üzenete közötti átlagos késés (ezredmásodperc).|None|
-|d2c.endpoints.egress.storage.bytes|Útválasztás: a tárolóba szállított adatok|Bájt|Összesen|A tárolási végpontokhoz kézbesített adatok (bájt) adatok mennyisége (bájt).|None|
-|d2c.endpoints.egress.storage.blobok|Útválasztás: a tárolóba szállított blobok|Darabszám|Összesen|Az IoT Hub-útválasztás blobok tárolási végpontok kézbesítésének száma.|None|
-|EventGridDeliveres|Eseményrács-szállítások(előzetes verzió)|Darabszám|Összesen|Az Event Gridben közzétett IoT Hub-események száma. Használja az Eredmény dimenziót a sikeres és sikertelen kérelmek számához. Az EventType dimenzió azhttps://aka.ms/ioteventgrid)esemény típusát ( .|Erőforrásazonosító,<br/>Eredmény<br/>EventType (Eseménytípus)|
-|EventGridLatency|Eseményrács késése (előzetes verzió)|Ezredmásodperc|Átlag|Az iot hub esemény létrehozásának időpontjától az esemény eseménynaptárban való közzétételének időpontjáig eltelt átlagos késés (ezredmásodperc). Ez a szám az összes eseménytípus átlaga. Az EventType dimenzió val egy adott eseménytípus késésének megtekintéséhez.|Erőforrásazonosító,<br/>EventType (Eseménytípus)|
-|d2c.twin.read.success|Sikeres ikerolvasás eszközökről|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett ikerolvasás száma.|None|
-|d2c.twin.read.failure|Nem sikerült ikerbeolvasás az eszközökről|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett ikerolvasás száma.|None|
-|d2c.twin.read.méret|Az eszközökről beolvasások válaszmérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett ikerolvasás átlaga, percés max.|None|
-|d2c.twin.update.success|Sikeres ikerfrissítések az eszközökről|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett ikerfrissítés száma.|None|
-|d2c.twin.update.failure|Nem sikerült ikerfrissítés az eszközökről|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett ikerfrissítés száma.|None|
-|d2c.twin.update.size|Az eszközökről származó ikerfrissítések mérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett ikerfrissítés átlagos, min és maximális mérete.|None|
-|c2d.methods.success|Sikeres közvetlen metódus-meghívások|Darabszám|Összesen|Az összes sikeres közvetlen metódushívás száma.|None|
-|c2d.methods.failure|Sikertelen közvetlen metódus-meghívások|Darabszám|Összesen|A sikertelen közvetlen metódushívások száma.|None|
-|c2d.methods.requestMéret|A közvetlen metódusmetódusok kérésének mérete|Bájt|Átlag|Az összes sikeres közvetlen metóduskérés átlaga, perce és max.|None|
-|c2d.methods.responseMéret|A közvetlen metódusmetódusok válaszmérete|Bájt|Átlag|Az összes sikeres közvetlen metódusválasz átlaga, percés max.|None|
-|c2d.twin.read.success|Sikeres ikerolvasás háttérből|Darabszám|Összesen|Az összes sikeres háttér-kezdeményezett ikerolvasás oka.|None|
-|c2d.twin.read.failure|Sikertelen ikerolvasás háttérből|Darabszám|Összesen|Az összes sikertelen háttér-kezdeményezett ikerolvasások száma.|None|
-|c2d.twin.read.size|A háttérből beolvasások válaszmérete|Bájt|Átlag|Az összes sikeres háttér-kezdeményezett ikerolvasás átlaga, min és max.|None|
-|c2d.twin.update.success|Sikeres ikerfrissítések a háttérrendszerből|Darabszám|Összesen|Az összes sikeres háttér-kezdeményezett ikerfrissítés száma.|None|
-|c2d.twin.update.failure|Sikertelen ikerfrissítések a háttérrendszerből|Darabszám|Összesen|A rendszer az összes sikertelen háttér-kezdeményezett ikerfrissítés számát.|None|
-|c2d.twin.update.size|Két frissítés mérete háttérrendszerről|Bájt|Átlag|Az összes sikeres háttér-kezdeményezett ikerfrissítés átlagos, min és maximális mérete.|None|
-|twinQueries.success|Sikeres ikerlekérdezések|Darabszám|Összesen|Az összes sikeres ikerlekérdezés száma.|None|
-|twinQueries.failure|Sikertelen ikerlekérdezések|Darabszám|Összesen|A sikertelen ikerlekérdezések száma.|None|
-|twinQueries.resultSize|Ikerlekérdezések eredménymérete|Bájt|Átlag|Az összes sikeres ikerlekérdezés eredményméretének átlagos, min és max.|None|
-|jobs.createTwinUpdateJob.success|Két frissítési feladat sikeres létrehozása|Darabszám|Összesen|Az ikerfrissítési feladatok sikeres létrehozásának száma.|None|
-|jobs.createTwinUpdateJob.failure|Két frissítési feladat sikertelen létrehozása|Darabszám|Összesen|Az összes sikertelen ikerfrissítési feladat létrehozása.|None|
-|jobs.createDirectMethodJob.success|A metódus-meghívási feladatok sikeres létrehozása|Darabszám|Összesen|A közvetlen metódusok meghívási feladatainak sikeres létrehozásának száma.|None|
-|jobs.createDirectMethodJob.failure|Metódusmeghívási feladatok sikertelen létrehozása|Darabszám|Összesen|A közvetlen metódus-meghívási feladatok összes sikertelen létrehozásának száma.|None|
-|jobs.listJobs.success|Sikeres hívások a feladatok listázásához|Darabszám|Összesen|A feladatok listázásához sikeres hívások száma.|None|
-|jobs.listJobs.failure|Sikertelen hívások a feladatok listázásához|Darabszám|Összesen|A feladatok listázásához sikertelen hívások száma.|None|
-|jobs.cancelJob.success|Sikeres feladattörlések|Darabszám|Összesen|A feladat megszakításához sikeres hívások száma.|None|
-|jobs.cancelJob.failure|Sikertelen feladatmegszakítások|Darabszám|Összesen|A feladat megszakításához sikertelen hívások száma.|None|
-|jobs.query.success|Sikeres feladatlekérdezések|Darabszám|Összesen|A lekérdezési feladatok összes sikeres hívásának száma.|None|
-|jobs.query.failure|Sikertelen feladatlekérdezések|Darabszám|Összesen|A lekérdezési feladatok összes sikertelen hívásának száma.|None|
-|jobs.befejezett|Befejezett feladatok|Darabszám|Összesen|Az összes befejezett feladat száma.|None|
-|jobs.failed|Sikertelen feladatok|Darabszám|Összesen|Az összes sikertelen feladat száma.|None|
-|d2c.telemettry.ingress.sendThrottle|Szabályozási hibák száma|Darabszám|Összesen|Az eszköz átviteli fojtószelepei miatti szabályozási hibák száma|None|
-|dailyMessageQuotaHasznált|A felhasznált üzenetek száma összesen|Darabszám|Átlag|A ma használt összes üzenet száma. Ez egy olyan összegző érték, amely minden nap 00:00 UTC-kor nullára áll vissza.|None|
-|deviceDataUsage|Az eszköz összes adathasználata|Bájt|Összesen|Az IotHubhoz csatlakoztatott eszközökre és eszközökről átvitt bájtok|None|
-|deviceDataUsageV2|Az eszköz teljes adathasználata (előzetes verzió)|Bájt|Összesen|Az IotHubhoz csatlakoztatott eszközökre és eszközökről átvitt bájtok|None|
-|totalDeviceCount (összeseszközszám)|Eszközök összesen (előzetes verzió)|Darabszám|Átlag|Az IoT hubhoz regisztrált eszközök száma|None|
-|connectedDeviceCount (connectedDeviceCount)|Csatlakoztatott eszközök (előzetes verzió)|Darabszám|Átlag|Az IoT hubhoz csatlakoztatott eszközök száma|None|
-|Konfigurációk|Konfigurációs mutatók|Darabszám|Összesen|A konfigurációs műveletek metrikája|None|
+|D2C. telemetria. beáramló. allProtocol|Telemetria üzenetek küldése|Darabszám|Összesen|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|None|
+|D2C. telemetria. beáramló. sikeres|Telemetria üzenetek elküldése|Darabszám|Összesen|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|None|
+|C2D. commands. kimenő. Complete. success|C2D-üzenetek kézbesítésének befejezése|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|None|
+|C2D. commands. kimenő. elhagyása. sikeres|C2D üzenetek elhagyva|Darabszám|Összesen|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|None|
+|C2D. commands. kimenő. elutasítás. sikeres|C2D-üzenetek elutasítva|Darabszám|Összesen|Az eszköz által visszautasított felhőből eszközre irányuló üzenetek száma|None|
+|C2DMessagesExpired|C2D-üzenetek lejárt (előzetes verzió)|Darabszám|Összesen|A felhőből az eszközre irányuló lejárt üzenetek száma|None|
+|Devices. totalDevices|Összes eszköz (elavult)|Darabszám|Összesen|Az IoT hub-ban regisztrált eszközök száma|None|
+|Devices. connectedDevices. allProtocol|Csatlakoztatott eszközök (elavult) |Darabszám|Összesen|Az IoT hub-hoz csatlakoztatott eszközök száma|None|
+|D2C. telemetria. kimenő. sikeres|Útválasztás: telemetria üzenetek kézbesítése|Darabszám|Összesen|A IoT Hub útválasztást használó összes végponthoz tartozó üzenetek sikeres kézbesítésének száma. Ha egy üzenet több végponthoz van irányítva, ez az érték eggyel nő minden sikeres kézbesítésnél. Ha egy üzenet többször is ugyanarra a végpontra érkezik, az érték minden sikeres kézbesítés esetén eggyel nő.|None|
+|D2C. telemetria. kimenő. eldobott|Útválasztás: telemetria üzenetek elvetve |Darabszám|Összesen|A letiltott végpontok miatt IoT Hub útválasztás által eldobott üzenetek száma. Ez az érték nem számítja ki a tartalék útvonalra küldött üzeneteket, mert az eldobott üzenetek nem kerülnek oda.|None|
+|D2C. telemetria. kimenő. árva|Útválasztás: árva telemetria üzenetek |Darabszám|Összesen|A IoT Hub-útválasztás által elárvult üzenetek száma, mert nem feleltek meg az útválasztási szabályoknak (beleértve a tartalék szabályt is). |None|
+|D2C. telemetria. kimenő. érvénytelen|Útválasztás: Inkompatibilis telemetria-üzenetek|Darabszám|Összesen|Azon időpontok száma IoT Hub az Útválasztás nem tudott kézbesíteni üzeneteket, mert nem kompatibilis a végponttal. Ez az érték nem tartalmazza az újrapróbálkozásokat.|None|
+|D2C. telemetria. kimenő. tartalék|Útválasztás: tartalékként továbbított üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás a tartalék útvonalhoz társított végpontnak küldött üzeneteket.|None|
+|D2C. endpoints. kimenő. eventHubs|Útválasztás: az Event hub számára továbbított üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen leküldte az üzeneteket az Event hub-végpontoknak.|None|
+|D2C. endpoints. késleltetés. eventHubs|Útválasztás: az Event hub üzenetének késése|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) az Event hub-végpontba.|None|
+|D2C. endpoints. kimenő. serviceBusQueues|Útválasztás: Service Bus üzenetsor számára továbbított üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus üzenetsor-végpontoknak.|None|
+|D2C. endpoints. késleltetés. serviceBusQueues|Útválasztás: Service Bus üzenetsor üzenet-késése|Ezredmásodpercben|Átlag|Egy Service Bus üzenetsor-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
+|D2C. endpoints. kimenő. serviceBusTopics|Útválasztás: Service Bus témakörbe küldött üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus témakör-végpontoknak.|None|
+|D2C. endpoints. késleltetés. serviceBusTopics|Útválasztás: Service Bus témakör üzenetének késése|Ezredmásodpercben|Átlag|Egy Service Bus témakör-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
+|D2C. endpoints. kimenő. beépített. események|Útválasztás: üzenetek/események küldésére küldött üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a beépített végpontnak (üzenetek/események).|None|
+|D2C. endpoints. késleltetés. beépített. események|Útválasztás: üzenetek/események üzenetének késése|Ezredmásodpercben|Átlag|A beérkező üzenetek átlagos késése (ezredmásodpercben), hogy IoT Hub és telemetria üzenetet a beépített végpontba (üzenetek/események).|None|
+|D2C. endpoints. kimenő. Storage|Útválasztás: a tárolóba küldött üzenetek|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a tárolási végpontoknak.|None|
+|D2C. endpoints. látencia. Storage|Útválasztás: üzenetek késése a tároláshoz|Ezredmásodpercben|Átlag|A IoT Hub és telemetria üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) a tárolási végpontba.|None|
+|D2C. endpoints. kimenő. Storage. Bytes|Útválasztás: a tárolóba szállított adatmennyiség|Bájt|Összesen|A tárolási végpontoknak továbbított adatmennyiség (bájt) IoT Hub útválasztás.|None|
+|D2C. endpoints. kimenő. Storage. Blobok|Útválasztás: tárolóba szállított Blobok|Darabszám|Összesen|A Blobok tárolási végpontokra IoT Hub útvonalának száma.|None|
+|EventGridDeliveries|Event Grid kézbesítések (előzetes verzió)|Darabszám|Összesen|A Event Grid közzétett IoT Hub események száma. Használja az eredmény dimenziót a sikeres és sikertelen kérelmek számának megkereséséhez. A EventType-dimenzió megjeleníti az esemény típusáthttps://aka.ms/ioteventgrid)(.|ResourceId<br/>Találat<br/>EventType|
+|EventGridLatency|Event Grid késés (előzetes verzió)|Ezredmásodpercben|Átlag|Az átlagos késés (ezredmásodpercben), amikor az IOT hub-eseményt generálták, amikor az eseményt közzétették Event Grid. Ez a szám az összes eseménytípus közötti átlag. Az EventType dimenzió használatával megtekintheti egy adott típusú esemény késését.|ResourceId<br/>EventType|
+|D2C. Twin. Read. success|Sikeres dupla olvasások az eszközökről|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|None|
+|D2C. Twin. Read. failure|Sikertelen dupla olvasások az eszközökről|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|None|
+|D2C. Twin. Read. size|Az eszközökről érkező kettős olvasások válaszának mérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla olvasás átlagos, minimális és maximális száma.|None|
+|D2C. Twin. Update. success|Sikeres dupla frissítések az eszközökről|Darabszám|Összesen|Az eszköz által kezdeményezett két frissítés sikeres száma.|None|
+|D2C. Twin. Update. failure|Sikertelen dupla frissítések az eszközökről|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|None|
+|D2C. Twin. Update. size|Az eszközökből származó kettős frissítések mérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla frissítés átlagos, minimális és maximális mérete.|None|
+|C2D. Methods. success|Közvetlen metódusok sikeres meghívása|Darabszám|Összesen|Az összes sikeres közvetlen metódus hívásának száma.|None|
+|C2D. Methods. failure|Sikertelen közvetlen metódusok meghívása|Darabszám|Összesen|A sikertelen közvetlen metódusok összes hívásának száma.|None|
+|C2D. Methods. requestSize|A közvetlen metódus meghívásának mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus-kérelem átlagos, minimális és maximális száma.|None|
+|C2D. Methods. responseSize|A közvetlen metódus-meghívások válaszának mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus válaszának átlagos, minimális és maximális száma.|None|
+|C2D. Twin. Read. success|Sikeres dupla olvasások a háttérből|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|None|
+|C2D. Twin. Read. failure|Sikertelen dupla olvasások a háttérből|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|None|
+|C2D. Twin. Read. size|Dupla olvasások válaszának mérete a háttérből|Bájt|Átlag|Az összes sikeres háttér-kezdeményező dupla olvasás átlagos, minimális és maximális száma.|None|
+|C2D. Twin. Update. success|Sikeres dupla frissítések a háttérből|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|None|
+|C2D. Twin. Update. failure|Sikertelen dupla frissítések a háttérből|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|None|
+|C2D. Twin. Update. size|Dupla frissítések mérete a háttérből|Bájt|Átlag|Az összes sikeres háttér-kezdeményező dupla frissítés átlagos, minimális és maximális mérete.|None|
+|twinQueries. success|Sikeres Twin-lekérdezések|Darabszám|Összesen|Az összes sikeres dupla lekérdezés száma.|None|
+|twinQueries. hiba|Sikertelen dupla lekérdezések|Darabszám|Összesen|Az összes sikertelen dupla lekérdezés száma.|None|
+|twinQueries.resultSize|Dupla lekérdezések eredményének mérete|Bájt|Átlag|Az összes sikeres dupla lekérdezés eredményének átlagos, minimális és maximális mérete.|None|
+|feladatok. createTwinUpdateJob. sikeres|A kettős frissítési feladatok sikeres létrehozása|Darabszám|Összesen|A kettős frissítési feladatok sikeres létrehozásának száma.|None|
+|feladatok. createTwinUpdateJob. hiba|A kettős frissítési feladatok sikertelen létrehozása|Darabszám|Összesen|A kettős frissítési feladatok sikertelen létrehozásának száma.|None|
+|feladatok. createDirectMethodJob. sikeres|Metódus-Meghívási feladatok sikeres létrehozása|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikeres létrehozásának száma.|None|
+|feladatok. createDirectMethodJob. hiba|Nem sikerült létrehozni a metódus Meghívási feladatait|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikertelen létrehozásának száma.|None|
+|feladatok. listJobs. sikeres|Sikeres hívások a feladatok listázásához|Darabszám|Összesen|A feladatok listázására irányuló sikeres hívások száma.|None|
+|feladatok. listJobs. hiba|Sikertelen hívások a feladatok listázásához|Darabszám|Összesen|A feladatokat listázó sikertelen hívások száma.|None|
+|feladatok. cancelJob. sikeres|Sikeres feladatok törlése|Darabszám|Összesen|A feladat megszakítására irányuló sikeres hívások száma.|None|
+|feladatok. cancelJob. hiba|Sikertelen feladatok megszakítása|Darabszám|Összesen|A feladat megszakítására irányuló sikertelen hívások száma.|None|
+|feladatok. queryJobs. sikeres|Sikeres feladatok lekérdezése|Darabszám|Összesen|A lekérdezési feladatok összes sikeres hívásának száma.|None|
+|feladatok. queryJobs. hiba|Sikertelen feladatok lekérdezése|Darabszám|Összesen|A lekérdező feladatok összes sikertelen hívásának száma.|None|
+|feladatok. kész|Befejezett feladatok|Darabszám|Összesen|Az összes befejezett feladat száma.|None|
+|feladatok. sikertelen|Sikertelen feladatok|Darabszám|Összesen|Az összes sikertelen feladat száma.|None|
+|D2C. telemetria. beáramló. sendThrottle|Szabályozási hibák száma|Darabszám|Összesen|Az eszköz átviteli sebessége miatti szabályozási hibák száma|None|
+|dailyMessageQuotaUsed|A felhasznált üzenetek teljes száma|Darabszám|Átlag|A jelenleg használt üzenetek teljes száma. Ez egy kumulatív érték, amely minden nap 00:00-kor, a nulla időpontra visszaáll.|None|
+|deviceDataUsage|Az eszköz összes adatfelhasználása|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|None|
+|deviceDataUsageV2|Az eszköz összes adatfelhasználása (előzetes verzió)|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|None|
+|totalDeviceCount|Összes eszköz (előzetes verzió)|Darabszám|Átlag|Az IoT hub-ban regisztrált eszközök száma|None|
+|connectedDeviceCount|Csatlakoztatott eszközök (előzetes verzió)|Darabszám|Átlag|Az IoT hub-hoz csatlakoztatott eszközök száma|None|
+|konfigurációk|Konfigurációs mérőszámok|Darabszám|Összesen|A konfigurációs műveletek metrikái|None|
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már látta az IoT Hub-metrikák áttekintését, ezt a hivatkozást követve többet is megtudhat az Azure IoT Hub kezeléséről:
+Most, hogy már látott áttekintést IoT Hub mérőszámokról, kövesse ezt a hivatkozást az Azure IoT Hub kezelésével kapcsolatos további információkért:
 
 * [Diagnosztikai naplók beállítása](iot-hub-monitor-resource-health.md)
 
-Az IoT Hub képességeinek további megismeréséhez lásd:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Az IoT Hub fejlesztői útmutatója](iot-hub-devguide.md)
+* [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
 
 * [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
