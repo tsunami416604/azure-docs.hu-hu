@@ -1,6 +1,6 @@
 ---
-title: Gyakori feltételes hozzáférési szabályzatok – Azure Active Directory
-description: Általánosan használt feltételes hozzáférési házirendek szervezetek számára
+title: Általános feltételes hozzáférési házirendek – Azure Active Directory
+description: Gyakran használt feltételes hozzáférési szabályzatok a szervezeteknél
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,35 +12,35 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295304"
 ---
 # <a name="common-conditional-access-policies"></a>Gyakori feltételes hozzáférési szabályzatok
 
-[A biztonsági alapértékek](../fundamentals/concept-fundamentals-security-defaults.md) néhány számára nagyszerűek, de sok szervezetnek nagyobb rugalmasságra van szüksége, mint amennyit kínálnak. Például sok kell a képesség, hogy kizárják az adott fiókok, például a sürgősségi hozzáférés vagy a törésüveg felügyeleti fiókok feltételes hozzáférés házirendek igénylő többtényezős hitelesítést. Ezek a szervezetek esetében a cikkben hivatkozott közös házirendek használhatók lehetnek.
+A [biztonsági alapértékek](../fundamentals/concept-fundamentals-security-defaults.md) kiválóan használhatók, de számos szervezetnek nagyobb rugalmasságra van szüksége az általuk kínáltnál. Előfordulhat például, hogy a többtényezős hitelesítést igénylő feltételes hozzáférési szabályzatokból bizonyos fiókokat ki kell zárnia, mint a vészhelyzeti hozzáférés vagy a bomlás-üveg felügyeleti fiókok. Ezekben a szervezeteknél a cikkben hivatkozott általános szabályzatok is használhatók.
 
-![Feltételes hozzáférési szabályzatok az Azure Portalon](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
+![Feltételes hozzáférési szabályzatok a Azure Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
-## <a name="emergency-access-accounts"></a>Vészelérési fiókok
+## <a name="emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok
 
-További információ a vészelérési fiókokról és azok fontos tudnivalóiról az alábbi cikkekben található: 
+További információ a segélyhívó fiókokról és azok fontos okairól a következő cikkekben talál további információt: 
 
-* [Vészelérési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
-* [Rugalmas hozzáférés-vezérlési stratégia létrehozása az Azure Active Directoryval](../authentication/concept-resilient-controls.md)
+* [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
+* [Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory](../authentication/concept-resilient-controls.md)
 
-## <a name="typical-policies-deployed-by-organizations"></a>Szervezetek által telepített tipikus házirendek
+## <a name="typical-policies-deployed-by-organizations"></a>A szervezetek által központilag telepített általános házirendek
 
-* [Örökölt hitelesítés blokkolása](howto-conditional-access-policy-block-legacy.md)\*
-* [Többfa megkövetelése rendszergazdáknak](howto-conditional-access-policy-admin-mfa.md)\*
-* [Többéves kor–szolgáltatás megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)\*
-* [Többkori faszükséglés megkövetelése az összes felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)\*
+* [Örökölt hitelesítés tiltása](howto-conditional-access-policy-block-legacy.md)\*
+* [MFA megkövetelése rendszergazdák számára](howto-conditional-access-policy-admin-mfa.md)\*
+* [MFA megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)\*
+* [MFA megkövetelése minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Ez a négy házirend, ha együtt van konfigurálva, a [biztonsági alapértelmezések](../fundamentals/concept-fundamentals-security-defaults.md)által engedélyezett funkciókat utánozza.
+\*Ez a négy házirend együtt van konfigurálva, a [biztonsági alapértékek](../fundamentals/concept-fundamentals-security-defaults.md)által engedélyezett funkciókat utánozza.
 
-## <a name="additional-policies"></a>További irányelvek
+## <a name="additional-policies"></a>További szabályzatok
 
 * [Kockázatalapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk.md)
 * [Megbízható helyek megkövetelése az MFA-regisztrációhoz](howto-conditional-access-policy-registration.md)
@@ -50,6 +50,6 @@ További információ a vészelérési fiókokról és azok fontos tudnivalóir�
 
 ## <a name="next-steps"></a>További lépések
 
-- [A bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel.](troubleshoot-conditional-access-what-if.md)
+- [A bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával.](troubleshoot-conditional-access-what-if.md)
 
-- [Az új házirend-döntések hatásának meghatározásához használja a csak jelentésmódot a feltételes hozzáféréshez.](concept-conditional-access-report-only.md)
+- [A feltételes hozzáféréshez csak jelentési módot használhat az új házirend-döntések hatásának megállapításához.](concept-conditional-access-report-only.md)

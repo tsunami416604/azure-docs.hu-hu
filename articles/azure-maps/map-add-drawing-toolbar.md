@@ -1,6 +1,6 @@
 ---
-title: Rajzeszköztár hozzáadása térképhez | Microsoft Azure Maps
-description: Rajzeszköztár hozzáadása térképhez az Azure Maps Web SDK használatával
+title: Rajzolási eszköztár hozzáadása térképhez | Microsoft Azure térképek
+description: Rajzolási eszköztár hozzáadása térképhez Azure Maps web SDK használatával
 author: philmea
 ms.author: philmea
 ms.date: 09/04/2019
@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334501"
 ---
-# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Rajzeszközök eszköztárának hozzáadása térképhez
+# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Rajzolási eszközök eszköztárának hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan használhatja a Rajzeszközök modult, és hogyan jelenítheti meg a rajzeszköztárat a térképen. A [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) vezérlő hozzáadja a rajz eszköztárat a térképhez. Megtudhatja, hogyan hozhat létre térképeket csak egy és az összes rajzeszközzel, és hogyan szabhatja testre a rajzalakzatok renderelését a rajzkezelőben.
+Ez a cikk bemutatja, hogyan használhatja a rajzolási eszközök modult, és hogyan jelenítheti meg a rajzolás eszköztárat a térképen. A [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) vezérlő hozzáadja a rajzolás eszköztárat a térképen. Megtudhatja, hogyan hozhat létre térképeket csak egy és minden rajzolási eszközzel, és hogyan szabhatja testre a rajzolási alakzatok megjelenítését a rajzolási kezelőben.
 
 ## <a name="add-drawing-toolbar"></a>Rajzolási eszköztár hozzáadása
 
-A következő kód létrehozza a rajzkezelő egy példányát, és megjeleníti az eszköztárat a térképen.
+A következő kód létrehozza a rajzolási kezelő egy példányát, és megjeleníti az eszköztárat a térképen.
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
@@ -33,18 +33,18 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Az alábbiakban a fenti funkciók teljes futókód-mintája látható:
+Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási eszköztár hozzáadása" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg az Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>( Toll <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>hozzáadása rajzeszköztárát</a> ( ) a <a href='https://codepen.io'>CodePen webhelyen.</a>
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Rajzolás eszköztár hozzáadásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-## <a name="limit-displayed-toolbar-options"></a>Megjelenik az eszköztár beállításainak korlátozása
+## <a name="limit-displayed-toolbar-options"></a>Megjelenő eszköztár beállításainak korlátozása
 
-A következő kód létrehozza a rajzkezelő egy példányát, és csak egy sokszögrajzoló eszközzel jeleníti meg az eszköztárat a térképen. 
+A következő kód létrehoz egy példányt a rajzolás-kezelőből, és megjeleníti az eszköztárat, amely csak egy sokszög alakú rajzolási eszközzel jelenik meg a térképen. 
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
@@ -57,20 +57,20 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Az alábbiakban a fenti funkciók teljes futókód-mintája látható:
+Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszögrajzoló eszköz hozzáadása" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>hozzáadása sokszögrajzot az</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által a <a href='https://codepen.io'>CodePen oldalon.</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög rajzolási eszköz hozzáadása" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>sokszög rajzolási eszköz hozzáadása</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-## <a name="change-drawing-rendering-style"></a>Rajzmegjelenítési stílus módosítása
+## <a name="change-drawing-rendering-style"></a>Rajzolási renderelési stílus módosítása
 
-A rajzolt alakzatok stílusa testreszabható a rajzkezelő mögöttes rétegeinek beolvasásával a `drawingManager.getLayers()` funkció használatával, majd az egyes rétegek beállításainak beállításával. Az alakzatok szerkesztésekor a koordinátákhoz megjelenő húzási fogópontok HTML-jelölők. A fogópontok stílusa testreszabható, ha a HTML-jelölő beállításokat a `dragHandleStyle` rajzkezelő és `secondaryDragHandleStyle` -beállítások között adja át.  
+A rajzolt alakzatok stílusa testreszabható úgy, hogy a (z) `drawingManager.getLayers()` függvény használatával beolvassa a Rajzfigyelő mögöttes rétegeit, majd beállítja a beállításokat az egyes rétegeken. A Koordinátákban megjelenő fogópontok az alakzatok szerkesztésekor HTML-jelölők. A húzási fogópontok stílusa testreszabható a HTML-jelölő beállításainak átadásával a `dragHandleStyle` rajzobjektum `secondaryDragHandleStyle` és a beállítások között.  
 
-A következő kód lekéri a renderelési rétegeket a rajzkezelőtől, és módosítja a rajzmegjelenítési stílus módosításának beállításait. Ebben az esetben a pontok egy kék jelölő ikonnal jelennek meg. A vonalak pirosak és négy képpont szélesek lesznek. A sokszögek zöld kitöltőszínnel és narancssárga körvonaljal rendelkeznek. Ezután a fogópontok stílusát négyzetalakú ikonokká változtatja. 
+A következő kód beolvassa a rajzolási rétegeket a projektmenedzsertől, és módosítja a rajzolási stílus módosítására vonatkozó beállításokat. Ebben az esetben a pontok kék jelölő ikonnal jelennek meg. A sorok piros és négy képpont szélesek lesznek. A sokszögek zöld kitöltési színnel és narancssárga körvonalsal fognak rendelkezni. Ezután megváltoztatja a húzási fogópontok stílusát négyzet alakú ikonként. 
 
 ```javascript
 //Get rendering layers of drawing manager.
@@ -117,18 +117,18 @@ drawingManager.setOptions({
 });  
 ```
 
-Az alábbiakban a fenti funkciók teljes futókód-mintája látható:
+Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzmegjelenítési stílus módosítása" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosítása rajzmegjelenítési stílust</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási renderelési stílus módosítása" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosításának rajzolási stílusát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a rajzeszközök modul további funkcióinak használatáról:
+Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkcióit:
 
 > [!div class="nextstepaction"]
 > [Formázott adatok lekérése](map-get-shape-data.md)
@@ -145,7 +145,7 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Rajzolás eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Rajzkezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure ExpressRoute használata távoli felhasználók támogatása érdekében
-description: Ez a lap bemutatja, hogyan használhatja ki az Azure ExpressRoute-ot a covid-19-es világjárvány miatt távolról történő munkavégzés engedélyezéséhez.
+title: Az Azure ExpressRoute használata a távoli felhasználók támogatásához
+description: Ez az oldal azt ismerteti, hogyan használhatja az Azure ExpressRoute-t a COVID-19 világjárvány miatti távoli működéshez.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,45 +8,45 @@ ms.topic: article
 ms.date: 03/22/2020
 ms.author: ajitbhu
 ms.openlocfilehash: 2fe990fd9c5922dd2e059dbb212cd8bb1cd3726e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80336652"
 ---
-# <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatása érdekében
+# <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatásához
 
-Ez a cikk azt ismerteti, hogy miként használhatja ki az ExpressRoute, az Azure, a Microsoft-hálózat és az Azure-partneri ökoszisztéma távoli munkavégzését.
+Ez a cikk azt ismerteti, hogyan használható a ExpressRoute, az Azure, a Microsoft Network és az Azure partneri ökoszisztéma a távoli működéshez.
 
-## <a name="connecting-to-azure-services-with-expressroute"></a>Csatlakozás Azure-szolgáltatásokhoz az ExpressRoute segítségével
+## <a name="connecting-to-azure-services-with-expressroute"></a>Csatlakozás az Azure-szolgáltatásokhoz a ExpressRoute
 
 >[!NOTE]
->Ez a cikk bemutatja, hogyan használhatja ki az ExpressRoute, az Azure, a Microsoft-hálózat és az Azure-partneri ökoszisztéma segítségével a távmunka és a COVID-19-es válság miatt felmerülő hálózati problémák enyhítése.
+>Ez a cikk azt ismerteti, hogyan használhatja a ExpressRoute, az Azure, a Microsoft Network és az Azure partner-ökoszisztémát a COVID-19-válság miatt felmerülő hálózati problémák megoldásához.
 >
 
-[Az ExpressRoute](expressroute-introduction.md) egy Azure-szolgáltatás, amely lehetővé teszi a Microsoft adatközpontok és az infrastruktúra közötti privát kapcsolatot, amely az Ön telephelyén vagy egy helymegosztási létesítményben található. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Biztonságos kapcsolatot, megbízhatóságot és sebességet kínálnak, alacsonyabb és konzisztens késést biztosítva, mint az interneten keresztüli tipikus kapcsolatok.
+A [ExpressRoute](expressroute-introduction.md) egy olyan Azure-szolgáltatás, amely lehetővé teszi a Microsoft-adatközpontok és a helyszíni vagy közös elhelyezési létesítményben lévő infrastruktúra közötti magánhálózati kapcsolódást. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Biztonságos kapcsolattal, megbízhatósággal és sebességgel rendelkeznek, és az interneten keresztüli szokásos kapcsolatoknál alacsonyabb és konzisztens késéssel rendelkeznek.
 
 ## <a name="useful-links"></a>Hasznos hivatkozások
 
-* [A meglévő ExpressRoute-kapcsolat sávszélességének növelése](expressroute-howto-circuit-portal-resource-manager.md#modify)
-* [ExpressRoute figyelése, metrikák és riasztások](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
-* [Útvonaloptimalizálás az ExpressRoute-on keresztül](expressroute-optimize-routing.md)
-* [Azure ExpressRoute for O365](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
-* [Aszimmetrikus útválasztással kapcsolatos szempontok](expressroute-asymmetric-routing.md)
-* [Támogatási kérelem megnyitása az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [A meglévő ExpressRoute-áramkör sávszélességének javítása](expressroute-howto-circuit-portal-resource-manager.md#modify)
+* [ExpressRoute-figyelés, mérőszámok és riasztások](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
+* [Útvonal-optimalizálás ExpressRoute](expressroute-optimize-routing.md)
+* [Azure-ExpressRoute a O365-hez](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [Aszimmetrikus útválasztási megfontolások](expressroute-asymmetric-routing.md)
+* [Támogatási kérelem megnyitása a Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 * [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
-* ARP-tábla beszerzése az [Erőforrás-kezelőben](expressroute-troubleshooting-arp-resource-manager.md) és a [Klasszikus](expressroute-troubleshooting-arp-classic.md)
-* [Hibás áramkör alaphelyzetbe állítása](reset-circuit.md)
+* ARP-tábla lekérése a [Resource Managerben](expressroute-troubleshooting-arp-resource-manager.md) és a [Klasszikusban](expressroute-troubleshooting-arp-classic.md)
+* [Sikertelen áramkör alaphelyzetbe állítása](reset-circuit.md)
 * [Hálózati teljesítmény – problémamegoldás](expressroute-troubleshooting-network-performance.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ az ExpressRoute-kapcsolati modellekről](expressroute-connectivity-models.md)
+* [További tudnivalók a ExpressRoute kapcsolati modelljeiről](expressroute-connectivity-models.md)
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-áramkörök és útválasztási tartományok](expressroute-circuit-peerings.md)
-* Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyek](expressroute-locations.md)
+* Találjon egy szolgáltatót. Lásd: [ExpressRoute Partners és peering Locations](expressroute-locations.md)
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 * [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-portal-resource-manager.md)
 * [ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása](expressroute-howto-routing-portal-resource-manager.md)

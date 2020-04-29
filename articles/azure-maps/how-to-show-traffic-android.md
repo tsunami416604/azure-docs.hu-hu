@@ -1,6 +1,6 @@
 ---
-title: Forgalmi adatok megjelenítése android térképen | Microsoft Azure Maps
-description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat a térképen a Microsoft Azure Maps Android SDK használatával.
+title: Forgalmi adatok megjelenítése az Android térképen | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat egy térképen a Microsoft Azure Maps Android SDK használatával.
 author: philmea
 ms.author: philmea
 ms.date: 02/27/2020
@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335379"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen az Azure Maps Android SDK használatával
+# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
 
-A folyamatadatok és az incidensek adatai a térképen megjeleníthető forgalmi adatok két típusa. Ez az útmutató bemutatja, hogyan jelenítheti meg mindkét típusú forgalmi adatokat. Az incidensadatok pont- és vonalalapú adatokat tartalmaznak olyan dolgokra vonatkozóan, mint az építmények, útlezárások és balesetek. A folyamatadatok az útforgalmának forgalmával kapcsolatos mutatókat jelenítik meg.
+A flow-adatok és az incidensek az adatok a térképen megjeleníthető kétféle forgalmi adatok. Ez az útmutató bemutatja, hogyan jelenítheti meg mindkét típusú forgalmi adatokat. Az incidensek olyan pont-és vonal-alapú adatmennyiségből állnak, mint a konstrukciók, a közúti bezárások és a balesetek. A flow adatai az úton lévő forgalom forgalmára vonatkozó metrikákat jelenítenek meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt megjelenítheti a forgalmat a térképen, [azure-fiókot kell készítenie,](quick-demo-map-app.md#create-an-account-with-azure-maps)és be kell [szereznie egy előfizetési kulcsot.](quick-demo-map-app.md#get-the-primary-key-for-your-account) Ezután telepítenie kell az [Azure Maps Android SDK-t,](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) és be kell töltenie egy térképet.
+Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehoznia](quick-demo-map-app.md#create-an-account-with-azure-maps), és [be kell szereznie egy előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account). Ezután telepítenie kell a [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t, és be kell töltenie egy térképet.
 
-## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatai 
+## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok 
 
-A híváshoz `setTraffic` a következő tárakat `incidents`kell importálnia:
+A következő könyvtárakat kell importálnia a híváshoz `setTraffic` , `incidents`és:
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- A következő kódrészlet bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen. Átadunk egy logikai értéket a `incidents` metódusnak, és átadjuk a `setTraffic` metódusnak. 
+ A következő kódrészlet bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen. Egy logikai értéket adunk át a `incidents` metódusnak, és ezt adjuk át a `setTraffic` metódusnak. 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,23 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="flow-traffic-data"></a>Folyamatforgalmi adatok
+## <a name="flow-traffic-data"></a>Flow forgalmi adatok
 
-Először a következő tárakat kell `setTraffic` `flow`importálnia a híváshoz, és:
+Először importálnia kell a következő könyvtárakat a `setTraffic` meghívásához `flow`és:
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-A forgalmi adatok beállításához használja a következő kódrészletet. Az előző szakaszban található kódhoz hasonlóan a `flow` metódus visszatérési értékét adjuk át a `setTraffic` metódusnak. Négy érték adható át a `flow`lehetőségnek, és `flow` minden egyes érték a megfelelő értéket adja vissza. A visszatérési `flow` érték ezután argumentumként kerül átadásra a számára. `setTraffic` Az alábbi táblázatban az alábbi négy értéket talál:
+Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét `flow` is átadjuk a `setTraffic` metódusnak. Négy érték adható át `flow`, és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke `flow` a következő argumentumként lesz átadva: `setTraffic`. A következő négy értéknél tekintse meg az alábbi táblázatot:
 
 | | |
 | :-- | :-- |
-| TrafficFlow.NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
-| TrafficFlow.RELATIVE | Az út szabad áramlási sebességéhez viszonyított forgalmi adatok megjelenítése |
-| TrafficFlow.RELATIVE_DELAY | Az átlagos várt késleltetésnél lassabb területeket jeleníti meg |
-| TrafficFlow.ABSOLUTE | Megmutatja az összes jármű abszolút sebességét az utakon |
+| Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
+| Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
+| Forgalomáramlási. RELATIVE_DELAY | A várt átlagos késésnél lassabb területeket jelenít meg. |
+| Forgalomáramlási. ABSOLUTE | Az összes jármű teljes sebességét jeleníti meg az úton |
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Incidensforgalom-adatok megjelenítése egy funkcióra kattintva
+## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Incidens forgalmi adatok megjelenítése egy szolgáltatásra kattintva
 
-Az incidensek beszerzéséhez egy adott funkció, használhatja az alábbi kódot. Amikor egy szolgáltatásra kattintanak, a kódlogika ellenőrzi az incidenseket, és üzenetet készít az incidensről. Megjelenik egy üzenet a képernyő alján a részletekkel.
+Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi kódot. Ha egy szolgáltatásra kattint, a kód logikája ellenőrzi az incidenseket, és létrehoz egy üzenetet az incidensről. Egy üzenet jelenik meg a képernyő alján a részletekkel.
 
-1. Először is meg kell szerkeszteni **e res > elrendezést > activity_main.xml**, hogy úgy néz ki, mint az alábbi. A , `mapcontrol_centerLat` `mapcontrol_centerLng`és `mapcontrol_zoom` a kívánt értékeket is lecserélheti. Visszahívás, a nagyítási szint 0 és 22 közötti érték. A 0-s nagyítási szinten az egész világ elfér egyetlen csempén.
+1. Először szerkesztenie kell a **res > elrendezést > activity_main. XML fájlból**, hogy az alábbihoz hasonlóan néz ki. A, `mapcontrol_centerLat` `mapcontrol_centerLng`a és `mapcontrol_zoom` a értékeket a kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ Az incidensek beszerzéséhez egy adott funkció, használhatja az alábbi kódo
    </FrameLayout>
    ```
 
-2. Adja hozzá a következő kódot a **MainActivity.java** fájlhoz. A csomag alapértelmezés szerint benne van, ezért ügyeljen arra, hogy a csomag a tetején maradjon.
+2. Adja hozzá a következő kódot a **MainActivity. Java** fájlhoz. Alapértelmezés szerint a csomag szerepel, ezért ügyeljen arra, hogy a csomag felül legyen.
 
    ```java
    package <yourpackagename>;
@@ -221,17 +221,17 @@ Az incidensek beszerzéséhez egy adott funkció, használhatja az alábbi kódo
    }
    ```
 
-3. Miután beépítette a fenti kódot az alkalmazásba, rákattinthat egy funkcióra, és megtekintheti a forgalmi események részleteit. A **activity_main.xml** fájlban használt szélességi, hosszúsági és nagyítási szintértékektől függően az alábbi hoz hasonló eredmények jelennek meg:
+3. Miután beépíti a fenti kódot az alkalmazásba, rákattinthat egy szolgáltatásra, és megtekintheti a forgalmi incidensek részleteit. A szélesség, a hosszúság és a **activity_main. XML** fájlban használt nagyítási szint értékeitől függően az alábbi képhez hasonló eredmények jelennek meg:
 
    <center>
 
-   ![Incidens-forgalom-on-the-térkép](./media/how-to-show-traffic-android/android-traffic.png)
+   ![Incidens-Traffic-on-the-Map](./media/how-to-show-traffic-android/android-traffic.png)
 
    </center>
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az alábbi útmutatókat, amelyekből megtudhatja, hogyan adhat hozzá további adatokat a térképhez:
+A következő útmutatókból megtudhatja, hogyan adhat hozzá további információkat a térképhez:
 
 > [!div class="nextstepaction"]
 > [Szimbólumréteg hozzáadása](how-to-add-symbol-to-android-map.md)
@@ -240,7 +240,7 @@ Tekintse meg az alábbi útmutatókat, amelyekből megtudhatja, hogyan adhat hoz
 > [Mozaikréteg hozzáadása](how-to-add-tile-layer-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Alakzatok hozzáadása androidos térképhez](how-to-add-shapes-to-android-map.md)
+> [Alakzatok hozzáadása az Android térképhez](how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Funkcióinformációk megjelenítése](display-feature-information-android.md)

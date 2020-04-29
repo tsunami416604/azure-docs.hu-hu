@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133097"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők

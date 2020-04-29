@@ -1,6 +1,6 @@
 ---
-title: Az Eladói elemzések első lépései
-description: Bevezetés a Cloud Partner Portal Eladói elemzési funkciójába.
+title: Első lépések eladói bepillantást
+description: A Cloud Partner Portal eladói betekintési funkciójának bemutatása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: b86c2c8b8d0e44adffa0411799b9be01b9f54a9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80285350"
 ---
-<a name="getting-started-with-seller-insights"></a>Az Eladói elemzések első lépései
+<a name="getting-started-with-seller-insights"></a>Első lépések eladói bepillantást
 ====================================
 
-Ez a cikk a [Felhőpartner-portálon](https://cloudpartner.azure.com/#insights)elérhető Eladói elemzési szolgáltatást ismerteti.
+Ez a cikk a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights)belül elérhető eladói betekintő funkciót ismerteti.
 
 
-<a name="insights-tour"></a>Insights bemutató
+<a name="insights-tour"></a>Bepillantást bemutató
 -------------
 
-A Cloud Partner Portal az Azure- és a VS Marketplace-ügyfelekkel és a használattal kapcsolatos elemzéseket kínál. Az alábbiakban rövid áttekintést olvashat a különböző adatokról és elemzésekről, amelyekkel valószínűleg a legtöbbet fog hatni.
+A Cloud Partner Portal az Azure-ban és a piactéren lévő ügyfelekkel és használattal kapcsolatos információkat nyújt. Íme egy gyors áttekintés a különböző információkról és elemzésekről, amelyeket valószínűleg a legjobban fog használni.
 
 <a name="top-navigation-bar"></a>Felső navigációs sáv
 ------------------
 
-Miután kiválasztotta az **Elemzéseket** a bal menüsorból, megjelenik egy navigációs sáv a tetején, amely jelzi, hogy mely elemzési modulokhoz van hozzáférése.
+Miután **kiválasztotta az** elemzéseket a bal oldali menüsorból, megjelenik egy navigációs sáv a tetején, amely azt jelzi, hogy mely információkhoz férhet hozzá.
 
-1.  **Összegzés** – Ez a lap a közzétevők által legkeresettebb adatok grafikonjait, trendjeit és értékeit jeleníti meg.
+1.  **Summary (összefoglalás** ) – ezen a lapon a közzétevők által legtöbbször keresett adatok diagramjai, trendjei és értékei láthatók.
 
-2.  **Kifizetés** - Ezen a lapon grafikonok és letölthető formátumok ban jeleníti meg a kifizetésekre és a kapcsolódó tranzakciókra vonatkozó információkat.
+2.  **Kifizetés** – ezen a lapon a kifizetésekről és a kapcsolódó tranzakciókra vonatkozó információk láthatók a gráfokban és a letölthető formátumokban.
 
-3.  **Rendelések & használat** – Ezen a lapon a rendelések és használati információk grafikonokon és letölthető formátumokban jelennek meg.
+3.  **Megrendelések & használat** – ezen a lapon a megrendelések és a használati adatok láthatók a gráfokban és a letölthető formátumokban.
 
-4.  **Vevő** – Ez a lap az ügyfelekkel és azok vásárlásaival kapcsolatos információkat jeleníti meg.
+4.  **Ügyfél** – ezen a lapon az ügyfelekkel és a vásárlásokkal kapcsolatos információk láthatók.
 
-5.  **Központi telepítés** – Ez a lap grafikonok és eseményszintű formátumokban jeleníti meg a telepítés sikeres és sikertelen adatait.
+5.  **Üzembe helyezés** – ezen a lapon az üzembe helyezés sikeressége és a hibákra vonatkozó információk láthatók a diagramok és az események szintjének formátumában is.
 
-6.  **Letöltések** – A big data-adatkészletek letöltése egyszerűbb és kevésbé zavaró az új letöltési felülettel.
+6.  **Letöltések** – a Big Data-készletek letöltése egyszerűbb és kevésbé zavaró az új letöltési felülettel.
 
-Előfordulhat, hogy a fent felsorolt moduloknak csak korlátozott készletét láthatja.
-Csak *a tulajdonosi* engedélyekkel rendelkező felhasználók láthatják a **Kifizetési** és **Ügyfél** modulokat a bizalmas ügyfél- és vállalati adatok miatt. A szervezeten belüli tulajdonosi szerepkörrel módosíthatja az engedélyeket, ha hozzáférésre van szüksége ezekhez a modulokhoz.
+Előfordulhat, hogy a fent felsorolt modulok csak korlátozott készletét láthatja.
+Csak a *tulajdonosi* engedélyekkel rendelkező felhasználók láthatják a **kifizetési** és az **ügyfél** modulokat a bizalmas ügyfél-és vállalati adatok miatt. A szervezeten belüli tulajdonosi szerepkörrel dolgozhat a szükséges engedélyekkel, ha hozzá kell férnie ezekhez a modulokhoz.
 
 
-<a name="tips"></a>Tippek:
+<a name="tips"></a>Tippek
 -----
 
--   Ügyeljen arra, hogy módosítsa a dátumokat, hogy megtekinthesse az Önt leginkább érdeklő információkat.
--   Töltse le a tranzakciószintű adatokat, hogy további elemzéseket végezzen az Seller Insights által szolgáltatott információkról.
--   Ha kifizetési vagy ügyféladatokat keres, győződjön meg arról, hogy tulajdonosi szerepkörként van bejelentkezve, nem pedig közreműködői szerepkörként. A felhasználói engedélyekről a [Felhasználók kezelése című](./cloud-partner-portal-manage-users.md)témakörben olvashat bővebben.
+-   Ügyeljen arra, hogy a dátumokat a leginkább érdeklő információk megtekintéséhez módosítsa.
+-   A tranzakciós szint adatainak letöltésével további elemzéseket végezhet az értékesítői információk alapján.
+-   Ha nyereményt vagy vásárlói információt keres, győződjön meg róla, hogy tulajdonosi szerepkörként van bejelentkezve, és nem közreműködő szerepkör. A felhasználói engedélyekkel kapcsolatos további tudnivalókért tekintse meg a [felhasználók kezelése](./cloud-partner-portal-manage-users.md)című témakört.
 
 
 <a name="finding-more-help"></a>További segítség keresése
 -----------------
 
-- [Seller Insights-definíciók](./si-insights-definitions-v4.md) – Metrikák és adatok definícióinak keresése
+- Az [értékesítői elemzések definíciói](./si-insights-definitions-v4.md) – a mérőszámok és az adatok definícióinak megkeresése
 
-- [Első lépések az Eladói elemzések szolgáltatással](./si-getting-started.md) – Bevezetés az Eladói elemzések funkcióba.
+- [Ismerkedés az értékesítői betekintéssel](./si-getting-started.md) – bevezetés az eladói betekintési szolgáltatás használatába.
 

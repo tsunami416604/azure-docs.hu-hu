@@ -1,6 +1,6 @@
 ---
-title: Adatok átvitele az Azure Storage-ba és onnan az Azure Storage-ba | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre importálási és exportálási feladatokat az Azure Portalon az Azure Storage-ba és az Azure Storage-ból történő adatátvitelhez.
+title: Azure import/export használata az Azure Storage-ba irányuló és onnan érkező adatok átvitelére | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre importálási és exportálási feladatokat a Azure Portal az Azure Storage-ba irányuló és onnan érkező adatok átviteléhez.
 author: alkohli
 services: storage
 ms.service: storage
@@ -9,114 +9,114 @@ ms.date: 03/15/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282443"
 ---
-# <a name="what-is-azure-importexport-service"></a>Mi az Azure importálási/exportálási szolgáltatása?
+# <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
 
-Az Azure import/export szolgáltatás segítségével biztonságosan importálhat nagy mennyiségű adatot az Azure Blob storage-ba és az Azure Files-ba lemezmeghajtók azure-adatközpontba szállításával. Ez a szolgáltatás is használható adatok átvitelére az Azure Blob storage lemezmeghajtókra, és a szállítás a helyszíni helyekre. Egy vagy több lemezmeghajtóról származó adatok importálhatók az Azure Blob storage-ba vagy az Azure Files-ba.
+Az Azure import/export szolgáltatás használatával nagy mennyiségű adatmennyiséget importálhat az Azure Blob Storage-ba, és Azure Files a lemezmeghajtók Azure-adatközpontba való szállításával. Ezzel a szolgáltatással adatok vihetők át az Azure Blob Storage-ból a lemezmeghajtóra és a helyszíni helyekre. Egy vagy több lemezmeghajtóról származó adatok az Azure Blob Storage-ba vagy a Azure Filesba importálhatók.
 
-Adja meg saját lemezmeghajtóit, és továbbítsa az adatokat az Azure importálási/exportálási szolgáltatásával. A Microsoft által biztosított lemezmeghajtókat is használhatja.
+Adja meg saját lemezmeghajtóit, és vigye át az adatait az Azure import/export szolgáltatással. Használhatja a Microsoft által biztosított lemezmeghajtókat is.
 
-Ha a Microsoft által biztosított lemezmeghajtók használatával szeretne adatokat átvinni, az [Azure Data Box Disk](../../databox/data-box-disk-overview.md) segítségével importálhat adatokat az Azure-ba. A Microsoft rendelésenként legfeljebb 5 titkosított SSD-meghajtót (SSD) szállít az adatközpontba egy regionális szolgáltatón keresztül. Gyorsan konfigurálhatja a lemezmeghajtókat, átmásolhatja az adatokat usb 3.0-s kapcsolaton keresztül lemezmeghajtókra, és visszaküldheti a lemezmeghajtókat az Azure-ba. További információ: [Azure Data Box Disk overview](../../databox/data-box-disk-overview.md).
+Ha a Microsoft által biztosított lemezmeghajtók használatával szeretne adatátvitelt alkalmazni, a [Azure Data Box Disk](../../databox/data-box-disk-overview.md) használatával importálhatja az Azure-ba az adatok importálását. A Microsoft legfeljebb 5 titkosított SSD-meghajtót (SSD-t) üzemeltet, amely az adatközpontban egy regionális szolgáltatón keresztül 40 TB-os teljes kapacitással rendelkezik. Gyorsan konfigurálhatja a lemezmeghajtókat, átmásolhatja az adatlemezeket a lemezmeghajtóra USB 3,0-kapcsolaton keresztül, és visszahelyezheti a lemezmeghajtókat az Azure-ba. További információ: [Azure Data Box Disk Overview (áttekintés](../../databox/data-box-disk-overview.md)).
 
-## <a name="azure-importexport-use-cases"></a>Azure importálási/exportálási használati esetek
+## <a name="azure-importexport-use-cases"></a>Azure-beli importálási/exportálási használati esetek
 
-Fontolja meg az Azure Import/Export szolgáltatás használatát, ha az adatok hálózaton keresztüli feltöltése vagy letöltése túl lassú, vagy a további hálózati sávszélesség beszerzése költségmegfizethetetlen. A szolgáltatás használata a következő esetekben:
+Az Azure import/export szolgáltatást akkor érdemes használni, ha az adatfeltöltés vagy a hálózaton keresztüli Letöltés túl lassú, vagy további hálózati sávszélességet igényel. Használja ezt a szolgáltatást a következő esetekben:
 
-* **Adatáttelepítés a felhőbe:** Nagy mennyiségű adatot helyezhet át gyorsan és költséghatékonyan az Azure-ba.
-* **Tartalomterjesztés**: Gyorsan küldhet adatokat az ügyfélwebhelyekre.
-* **Biztonsági mentés:** Készítsen biztonsági mentést a helyszíni adatokról az Azure Storage-ban tárolandó adatokról.
-* **Adat-helyreállítás:** Nagy mennyiségű tárolt adatok helyreállítása a tárolóban, és azokat a helyszíni helyre.
+* **Adatáttelepítés a felhőbe**: nagy mennyiségű, gyorsan és költséghatékonyan áthelyezhető adatforgalom az Azure-ba.
+* **Tartalom terjesztése**: gyorsan küldhet adatokat az ügyfelek webhelyeire.
+* **Biztonsági mentés**: készítsen biztonsági másolatot a helyszíni adatairól az Azure Storage-ban való tároláshoz.
+* **Adatok helyreállítása**: a tárterületen tárolt nagy mennyiségű adatok helyreállítása, és a helyszíni helyre való szállítása.
 
-## <a name="importexport-components"></a>Összetevők importálása/exportálása
+## <a name="importexport-components"></a>Importálási/exportálási összetevők
 
-Az Import/Export szolgáltatás a következő összetevőket használja:
+Az import/export szolgáltatás a következő összetevőket használja:
 
-* **Importálási/exportálási szolgáltatás:** Ez az Azure Portalon elérhető szolgáltatás segít a felhasználónak az adatimportálási (feltöltési) és exportálási (letöltési) feladatok létrehozásában és nyomon követésében.  
+* **Importálási/exportálási szolgáltatás**: a Azure Portalben elérhető szolgáltatás segít a felhasználónak adatimportálási (feltöltési) és exportálási (letöltési) feladatok létrehozásában és nyomon követésében.  
 
-* **WAImportExport eszköz**: Ez egy parancssori eszköz, amely a következőket teszi:
-  * Előkészíti a szállított lemezmeghajtókat importálásra.
+* **WAImportExport eszköz**: ez egy parancssori eszköz, amely a következő műveleteket végzi el:
+  * Előkészíti az importálásra szállított lemezmeghajtókat.
   * Megkönnyíti az adatok másolását a meghajtóra.
-  * A meghajtón lévő adatoktitkosítása az AES 128 bites BitLocker segítségével. A BitLocker-kulcs védelméhez külső kulcsvédőt használhat.
-  * Az importálás létrehozása során használt meghajtónapló-fájlokat hozza létre.
-  * Segít azonosítani az exportálási feladatokhoz szükséges meghajtók számát.
+  * Titkosítja a meghajtón lévő, AES 128 bites BitLocker-alapú titkosítást. A BitLocker-kulcs védelme érdekében külső kulcstartót használhat.
+  * Létrehozza az importálás létrehozásakor használt meghajtó-napló fájljait.
+  * Segít az exportálási feladatokhoz szükséges meghajtók számának azonosításában.
 
 > [!NOTE]
-> A WAImportExport eszköz két verzióban érhető el, az 1-es és a 2-es verzióban. Javasoljuk, hogy használja:
+> Az WAImportExport eszköz két, 1. és 2. verzióban érhető el. Javasoljuk, hogy a következőket használja:
 >
-> * 1-es verzió az Azure Blob storage-ba történő importáláshoz/exportáláshoz.
-> * 2-es verzió az adatok Azure-fájlokba történő importálásához.
+> * 1. verzió az Azure Blob Storage-ba való importáláshoz/exportáláshoz.
+> * 2. verzió az adatimportáláshoz az Azure Files szolgáltatásba.
 >
-> A WAImportExport eszköz csak 64 bites Windows operációs rendszerrel kompatibilis. A támogatott operációsrendszer-verziókesetében keresse fel [az Azure importálási/exportálási követelményeit.](storage-import-export-requirements.md#supported-operating-systems)
+> A WAImportExport eszköz csak 64 bites Windows operációs rendszerrel kompatibilis. A támogatott operációsrendszer-verziók esetében lépjen az [Azure import/export követelményekre](storage-import-export-requirements.md#supported-operating-systems).
 
-* **Lemezmeghajtók:** SSD-k vagy merevlemez-meghajtók (HDD-k) szállíthatók az Azure adatközpontba. Importálási feladat létrehozásakor az adatokat tartalmazó lemezmeghajtókat szállítja. Exportálási feladat létrehozásakor üres meghajtókat szállít az Azure-adatközpontba. Bizonyos lemeztípusok esetén nyissa meg a [Támogatott lemeztípusok at.](storage-import-export-requirements.md#supported-hardware)
+* **Lemezmeghajtók**: SSD-vagy merevlemez-meghajtók (HDD-k) szállítása az Azure-adatközpontba. Importálási feladatok létrehozásakor az adatait tartalmazó lemezmeghajtók szállítása. Exportálási feladatok létrehozásakor a rendszer üres meghajtókat szállít az Azure-adatközpontba. Adott típusú lemezek esetében válassza a [támogatott lemez típusok](storage-import-export-requirements.md#supported-hardware)lehetőséget.
 
 ## <a name="how-does-importexport-work"></a>Hogyan működik az Import/Export funkció?
 
-Az Azure importálási/exportálási szolgáltatás lehetővé teszi az azure blobokba és az Azure-fájlokba történő adatátvitelt a feladatok létrehozásával. Az Azure Portal vagy az Azure Resource Manager REST API használatával munkahelyeket hozhat létre. Minden feladat egyetlen tárfiókhoz van társítva.
+Az Azure import/export szolgáltatás lehetővé teszi az adatátvitelt az Azure-Blobokra és Azure Files a feladatok létrehozásával. Feladatok létrehozásához használjon Azure Portal vagy Azure Resource Manager REST API. Mindegyik feladattípus egyetlen Storage-fiókhoz van társítva.
 
-A feladatok lehetnek importálási vagy exportálási feladatok. Az importálási feladat lehetővé teszi az adatok importálását az Azure Blobs vagy az Azure-fájlokba, mivel az exportálási feladat lehetővé teszi az adatok exportálását az Azure Blobsból. Importálási feladat esetén az adatokat tartalmazó meghajtókat szállítja. Amikor létrehoz egy exportálási feladatot, üres meghajtókat szállít egy Azure-adatközpontba. Minden esetben feladatonként legfeljebb 10 lemezmeghajtót szállíthat.
+A feladatok importálhatók és exportálhatók. Az importálási feladatok lehetővé teszik az adatok importálását az Azure-Blobokra vagy az Azure-fájlokra, míg az exportálási feladatok lehetővé teszik az adatok Azure-Blobokból való exportálását. Importálási feladatokhoz az adatait tartalmazó meghajtókat szállíthatja. Exportálási feladatok létrehozásakor a rendszer üres meghajtókat szállít egy Azure-adatközpontba. Minden esetben akár 10 lemezmeghajtót is elhelyezhet a feladatok végrehajtásához.
 
-### <a name="inside-an-import-job"></a>Importálási feladaton belül
+### <a name="inside-an-import-job"></a>Importálási feladatokon belül
 
-Magas szinten az importálási feladat a következő lépéseket foglalja magában:
+Magas szinten az importálási feladatok az alábbi lépéseket foglalják magukban:
 
-1. Határozza meg az importálandó adatokat, a szükséges meghajtók számát, az Azure storage-beli adatok célblob-helyét.
-2. A WAImportExport eszközzel adatokat másolhat lemezmeghajtókra. Titkosítsa a lemezmeghajtókat a BitLocker segítségével.
-3. Hozzon létre egy importálási feladatot a céltárfiókban az Azure Portalon. Töltse fel a meghajtó naplófájljait.
-4. Adja meg a feladó címét és a szállítói számlaszámot a meghajtók visszaküldéséhez.
-5. A lemezmeghajtókat a munkahelyteremtés során megadott szállítási címre szállítsa.
-6. Frissítse a szállítási követési számot az importálási feladat részleteiben, és küldje el az importálási feladatot.
-7. A meghajtók fogadása és feldolgozása az Azure adatközpontban.
-8. A meghajtókat a mobilszolgáltatói fiókhasználatával szállítjuk az importálási feladatban megadott visszaküldési címre.
+1. Határozza meg az importálandó és az Azure Storage-beli adattárolóban tárolt adatmennyiségeket, a szükséges meghajtók számát.
+2. A WAImportExport eszköz használatával másolhat adatlemez-meghajtókat. Titkosítsa a lemezmeghajtókat a BitLockerrel.
+3. Hozzon létre egy importálási feladatot a célként szolgáló Storage-fiókban Azure Portal. Töltse fel a meghajtó-napló fájljait.
+4. Adja meg a visszaküldési címet és a szállítmányozó számlaszámát a meghajtók visszaszállításához.
+5. A lemezmeghajtók szállítása a feladatok létrehozása során megadott szállítási címnek.
+6. Frissítse a kézbesítési nyomon követési számot az importálási feladatok részletei között, és küldje el az importálási feladatot.
+7. A rendszer az Azure-adatközpontban fogadja és dolgozza fel a meghajtókat.
+8. A meghajtókat az importálási feladatokban megadott visszaküldési címnek a Carrier-fiókjával kell továbbítani.
 
 > [!NOTE]
-> Helyi (adatközponti ország/régió) küldemények esetén kérjük, ossza meg a belföldi szállítmányozói fiókját.
+> A helyi (az adatközpont országa/régiója) szállításai esetében ossza meg a belföldi fuvarozó fiókját.
 >
-> Külföldi (adatközpont-országon/-régión kívüli) küldemények esetén kérjük, ossza meg nemzetközi szállítmányozói fiókját.
+> Külföldön (az adatközpont országa/régióján kívül) beszállítások esetén ossza meg a nemzetközi szolgáltatói fiókokat.
 
- ![1. ábra:Feladatfolyamat importálása](./media/storage-import-export-service/importjob.png)
+ ![1. ábra: a feladathoz tartozó folyamat importálása](./media/storage-import-export-service/importjob.png)
 
-Az adatimportálással kapcsolatos részletes útmutatásért látogasson el a következő útmutatóra:
+Az adatimportálás részletes utasításait a következő témakörben találhatja meg:
 
-* [Adatok importálása Az Azure Blobs](storage-import-export-data-to-blobs.md)
-* [Adatok importálása az Azure-fájlokba](storage-import-export-data-to-files.md)
+* [Az Azure-Blobok importálása](storage-import-export-data-to-blobs.md)
+* [Adatimportálás az Azure Filesba](storage-import-export-data-to-files.md)
 
-### <a name="inside-an-export-job"></a>Exportálási feladaton belül
+### <a name="inside-an-export-job"></a>Exportálási feladatokon belül
 
 > [!IMPORTANT]
-> A szolgáltatás csak az Azure Blobok exportálását támogatja. Az Azure-fájlok exportálása nem támogatott.
+> A szolgáltatás csak az Azure-Blobok exportálását támogatja. Az Azure Files exportálása nem támogatott.
 
-Magas szinten az exportálási feladat a következő lépéseket foglalja magában:
+Az exportálási feladatok magas szinten az alábbi lépéseket foglalják magukban:
 
-1. Határozza meg az exportálandó adatokat, a szükséges meghajtók számát, a forrásblobokat vagy az adatok tárolóelérési útjait a Blob storage-ban.
-2. Hozzon létre egy exportálási feladatot a forrástár-fiókban az Azure Portalon.
-3. Adja meg az exportálandó adatok forrásblobjait vagy tárolóelérési útjait.
-4. Adja meg a feladó címét és a szállítói számlaszámot a meghajtók visszaküldéséhez.
-5. A lemezmeghajtókat a munkahelyteremtés során megadott szállítási címre szállítsa.
-6. Frissítse a szállítási követési számot az exportálási feladat részleteiben, és küldje el az exportálási feladatot.
-7. A meghajtók fogadása és feldolgozása az Azure adatközpontban.
-8. A meghajtók titkosítva vannak a BitLocker-szel, és a kulcsok az Azure Portalon keresztül érhetők el.  
-9. A meghajtókat a mobilszolgáltatói fiókhasználatával szállítjuk az importálási feladatban megadott visszaküldési címre.
+1. Határozza meg az exportálni kívánt adatait, a szükséges meghajtók számát, a forrás blobokat vagy a tároló elérési útját a blob Storage-ban.
+2. Hozzon létre egy exportálási feladatot a forrásként szolgáló Storage-fiókban Azure Portal.
+3. A forrás Blobok vagy a tároló elérési útjának megadása az exportálandó adatforrásokhoz.
+4. Adja meg a visszaküldési címet és a szállítmányozó számlaszámát a meghajtók visszaszállításához.
+5. A lemezmeghajtók szállítása a feladatok létrehozása során megadott szállítási címnek.
+6. Frissítse a kézbesítési nyomon követési számot az exportálási feladatok részletei között, és küldje el az exportálási feladatot.
+7. A rendszer az Azure-adatközpontban fogadja és dolgozza fel a meghajtókat.
+8. A meghajtók titkosítva vannak a BitLocker szolgáltatással, és a kulcsok a Azure Portalon keresztül érhetők el.  
+9. A meghajtókat az importálási feladatokban megadott visszaküldési címnek a Carrier-fiókjával kell továbbítani.
 
 > [!NOTE]
-> Helyi (adatközponti ország/régió) küldemények esetén kérjük, ossza meg a belföldi szállítmányozói fiókját.
+> A helyi (az adatközpont országa/régiója) szállításai esetében ossza meg a belföldi fuvarozó fiókját.
 >
-> Külföldi (adatközpont-országon/-régión kívüli) küldemények esetén kérjük, ossza meg nemzetközi szállítmányozói fiókját.
+> Külföldön (az adatközpont országa/régióján kívül) beszállítások esetén ossza meg a nemzetközi szolgáltatói fiókokat.
   
- ![2. ábra:Feladatfolyamat exportálása](./media/storage-import-export-service/exportjob.png)
+ ![2. ábra: a feladatok folyamatának exportálása](./media/storage-import-export-service/exportjob.png)
 
-Az adatok exportálásával kapcsolatos részletes útmutatásért nyissa meg [az Adatok exportálása az Azure Blobs ból (Export Data from Azure Blobs) (Adatok exportálása az Azure Blobsból) (Adatok exportálása az Azure Blobsból) (Adatok exportálása az Azure Blobsból) (Adatok exportálása](storage-import-export-data-from-blobs.md)az
+Az adatok exportálásának lépésenkénti utasításait az [adatok exportálása Azure-blobokból](storage-import-export-data-from-blobs.md)című témakörben találhatja meg.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az Azure importálási/exportálási szolgáltatás a minden Azure storage-fiókba és az összes Azure storage-fiókból történő másolást támogatja. A lemezmeghajtókat a felsorolt helyek egyikére is szállíthatja. Ha a tárfiók egy Azure-helyen, amely nincs megadva itt, egy másik szállítási hely van megadva, amikor létrehozza a feladatot.
+Az Azure import/export szolgáltatás lehetővé teszi az adatok másolását az összes Azure Storage-fiókba. Lemezmeghajtókat a felsorolt helyekre is kiszállíthat. Ha a Storage-fiókja olyan Azure-helyen található, amely itt nincs meghatározva, akkor a rendszer egy másik kézbesítési helyet biztosít a feladatok létrehozásakor.
 
-### <a name="supported-shipping-locations"></a>Támogatott szállítási helyek
+### <a name="supported-shipping-locations"></a>Támogatott szállítási helyszínek
 
 |Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
@@ -131,15 +131,15 @@ Az Azure importálási/exportálási szolgáltatás a minden Azure storage-fiók
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A meghajtón lévő adatok titkosítása AES 128 bites BitLocker meghajtótitkosítással történik. Ez a titkosítás védi az adatokat, amíg az átvitel alatt.
+A meghajtón lévő adatai titkosítva vannak az AES 128 bites BitLocker meghajtótitkosítás használatával. Ez a titkosítás védi az adatait, amíg az átvitel közben van.
 
-Az importálási feladatok esetében a meghajtók kétféleképpen vannak titkosítva.  
+Az importálási feladatok esetében a meghajtók két módon lesznek titkosítva.  
 
-* Adja meg a beállítást a *dataset.csv* fájl használatakor a WAImportExport eszköz futtatása közben a meghajtó előkészítése során.
+* A WAImportExport eszköz a meghajtó előkészítése során történő futtatásakor az *adatkészlet. csv* fájljának használatakor válassza a lehetőséget.
 
-* Engedélyezze a BitLocker titkosítást manuálisan a meghajtón. A WAImportExport eszköz parancssorának futtatásakor adja meg a titkosítási kulcsot a *meghajtó.csv* meghajtóban. A BitLocker titkosítási kulcs további védelmet biztosít egy külső kulcsvédő (más néven a Microsoft által kezelt kulcs) vagy egy ügyfél által kezelt kulcs használatával. További információt a [BitLocker-kulcs védelme érdekében](storage-import-export-encryption-key-portal.md)az ügyfél által kezelt kulcs használata című témakörben talál.
+* Engedélyezze a BitLocker-titkosítást manuálisan a meghajtón. A *driveset. csv fájlban* állítsa be a titkosítási kulcsot a WAImportExport-eszköz parancssorának futtatásakor a meghajtó előkészítése során. A BitLocker titkosítási kulcsa a külső kulcstartó (más néven a Microsoft által felügyelt kulcs) vagy egy ügyfél által felügyelt kulcs használatával tovább védhető. További információkért lásd: Hogyan lehet [ügyfél által felügyelt kulcsot használni a BitLocker-kulcs védeleméhez](storage-import-export-encryption-key-portal.md).
 
-Az exportálási feladatok esetében az adatok meghajtókra másolása után a szolgáltatás titkosítja a meghajtót a BitLocker használatával, mielőtt visszaküldené. A titkosítási kulcs az Azure Portalon keresztül érhető el. A meghajtót fel kell oldani a WAImporExport eszközzel a kulcs használatával.
+Az exportálási feladatok esetében az adatoknak a meghajtókra való másolása után a szolgáltatás a BitLocker használatával titkosítja a meghajtót, mielőtt a rendszer visszaküldi azt. A titkosítási kulcsot a Azure Portalon keresztül kapja meg. A meghajtót fel kell oldani a WAImporExport eszközzel a kulcs használatával.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
@@ -147,20 +147,20 @@ Az exportálási feladatok esetében az adatok meghajtókra másolása után a s
 
 **A meghajtó kezelési díja**
 
-Az importálási vagy exportálási feladat részeként feldolgozott minden egyes meghajtóhoz meghajtókezelési díjat kell fizetni. Tekintse meg az [Azure import/export díjszabásának](https://azure.microsoft.com/pricing/details/storage-import-export/)részleteit.
+Az importálási vagy exportálási feladatok részeként feldolgozható egyes meghajtók esetében a meghajtó kezelése díjköteles. Tekintse meg az [Azure importálási/exportálási díjszabásának](https://azure.microsoft.com/pricing/details/storage-import-export/)részleteit.
 
 **Szállítási költségek**
 
-Amikor meghajtókat szállít az Azure-ba, a szállítási költséget a szállítmányozónak kell kifizetnie. Amikor a Microsoft visszaküldi Önnek a meghajtókat, a szállítási költséget a létrehozáskor megadott szolgáltatói fiókra terhelik.
+Ha meghajtókat szállít az Azure-ba, a szállítási költséget a szállítási szolgáltatónak kell megfizetnie. Ha a Microsoft visszaadja a meghajtókat, a szállítási költség arra a hordozófrekvencia-fiókra kerül, amelyet a feladatok létrehozásakor adott meg.
 
 **Tranzakciós költségek**
 
-[A szokásos tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás és az adatok exportálása során is felszámításra vonatkozik. Az azure storage-ból történő exportáláskor a normál kimenő forgalom díjai is alkalmazhatók a tárolási tranzakciós díjakkal együtt. A kimenő forgalom költségeiről az [Adatátviteli díjak című](https://azure.microsoft.com/pricing/details/data-transfers/)témakörben talál.
+A [standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás során és az adatexportálás során is érvényes. Az Azure Storage-ból származó adatok exportálásakor a standard szintű kimenő költségek is érvényesek a tárolási tranzakciós költségekkel együtt. A kimenő költségekkel kapcsolatos további információkért lásd az [adatátviteli díjszabást.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogyan használhatja az Importálás/exportálás szolgáltatást a következőkre:
+Ismerje meg, hogyan használhatja az import/export szolgáltatást a következőhöz:
 
-* [Adatok importálása Az Azure Blobs](storage-import-export-data-to-blobs.md)
-* [Adatok exportálása az Azure Blobs ból](storage-import-export-data-from-blobs.md)
-* [Adatok importálása Azure-fájlokba](storage-import-export-data-to-files.md)
+* [Az Azure-Blobok importálása](storage-import-export-data-to-blobs.md)
+* [Adatok exportálása az Azure-Blobokból](storage-import-export-data-from-blobs.md)
+* [Az Azure Filesba való adatimportálás](storage-import-export-data-to-files.md)

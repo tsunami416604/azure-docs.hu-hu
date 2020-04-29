@@ -1,7 +1,7 @@
 ---
 title: Végpontok közötti TLS-titkosítás konfigurálása a portál használatával
 titleSuffix: Azure Application Gateway
-description: Megtudhatja, hogyan használhatja az Azure Portalon egy alkalmazásátjáró végpontok közötti TLS-titkosítással.
+description: Ebből a témakörből megtudhatja, hogyan hozhat létre teljes körű TLS-titkosítást használó Application Gateway-t a Azure Portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,58 +10,58 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133014"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Végpontok között a TLS konfigurálása az Application Gateway és a portál használatával
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon
 
-Ez a cikk ismerteti, hogyan használhatja az Azure Portalon a végpontok közötti átviteli réteg biztonsága (TLS) titkosítás, korábbi nevén Secure Sockets Layer (SSL) titkosítás, az Azure Application Gateway v1 termékváltozaton keresztül konfigurálása.
+Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Portal a végpontok közötti Transport Layer Security (TLS) titkosítás, korábbi nevén SSL (SSL) titkosítás az Azure Application Gateway v1 SKU használatával.
 
 > [!NOTE]
-> Az Application Gateway v2 termékváltozat megbízható legfelső szintű tanúsítványokat igényel a végpontok közötti konfiguráció engedélyezéséhez.
+> Application Gateway v2 SKU-nak megbízható legfelső szintű tanúsítványokra van szüksége a végpontok közötti konfiguráció engedélyezéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A végpontok között TLS alkalmazásátjáróval történő konfigurálásához tanúsítványra van szükség az átjáróhoz. A háttérkiszolgálókhoz tanúsítványokra is szükség van. Az átjárótanúsítvány a TLS protokoll specifikációjának megfelelő szimmetrikus kulcs származtatására szolgál. A szimmetrikus kulcs ezután az átjárónak küldött forgalom titkosítására és visszafejtésére szolgál. 
+A végpontok közötti TLS Application Gateway-sel való konfigurálásához tanúsítvány szükséges az átjáróhoz. A háttér-kiszolgálókhoz is szükség van tanúsítványokra. Az átjáró tanúsítványa szimmetrikus kulcs származtatása a TLS protokoll specifikációjának megfelelően történik. A szimmetrikus kulcs ezután az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. 
 
-Végpontok közötti TLS-titkosítás esetén a megfelelő háttérkiszolgálókat engedélyezni kell az alkalmazásátjáróban. A hozzáférés engedélyezéséhez töltse fel a háttérkiszolgálók nyilvános tanúsítványát, más néven hitelesítési tanúsítványokat (v1) vagy megbízható főtanúsítványokat (v2) az alkalmazásátjáróba. A tanúsítvány hozzáadása biztosítja, hogy az alkalmazásátjáró csak ismert háttérpéldányokkal kommunikáljon. Ez a konfiguráció tovább biztosítja a végpontok közötti kommunikációt.
+A végpontok közötti TLS-titkosításhoz a megfelelő háttér-kiszolgálókat engedélyezni kell az Application gatewayben. A hozzáférés engedélyezéséhez töltse fel a háttér-kiszolgálók, más néven hitelesítési tanúsítványok (v1) vagy megbízható főtanúsítványok (v2) nyilvános tanúsítványát az Application gatewaybe. A tanúsítvány hozzáadásával biztosítható, hogy az Application Gateway csak ismert háttérbeli példányokkal kommunikáljon. Ez a konfiguráció tovább biztosítja a végpontok közötti kommunikációt.
 
-További információ: [A TLS-végződtetés áttekintése és a TLS végpontok között az Application Gateway alkalmazásátjáróval című témakörben olvashat.](https://docs.microsoft.com/azure/application-gateway/ssl-overview)
+További információ: [a TLS-lezárás áttekintése és a végpontok közötti TLS és a Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
 
-## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Új alkalmazásátjáró létrehozása végpontok között TLS-sel
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Új Application Gateway létrehozása végpontok közötti TLS-vel
 
-Új alkalmazásátjáró létrehozásához végpontok közötti TLS-titkosítással, először engedélyeznie kell a TLS-végződtetést egy új alkalmazásátjáró létrehozása közben. Ez a művelet lehetővé teszi a TLS-titkosítást az ügyfél és az alkalmazásátjáró közötti kommunikációhoz. Ezután fel kell helyeznie a Megbízható címzettek listájára a háttérkiszolgálók tanúsítványait a HTTP-beállításokban. Ez a konfiguráció lehetővé teszi a TLS-titkosítást az alkalmazásátjáró és a háttérkiszolgálók közötti kommunikációhoz. Ez végpontok közötti TLS titkosítást valósít meg.
+Ahhoz, hogy új Application Gateway-t hozzon létre végpontok közötti TLS-titkosítással, először engedélyeznie kell a TLS-megszakítást egy új Application Gateway létrehozásakor. Ez a művelet engedélyezi a TLS-titkosítást az ügyfél és az Application Gateway közötti kommunikációhoz. Ezután fel kell helyeznie a biztonságos címzetteket a HTTP-beállításokban található háttér-kiszolgálók tanúsítványainak listájára. Ez a konfiguráció lehetővé teszi a TLS-titkosítást az Application Gateway és a háttér-kiszolgálók közötti kommunikációhoz. Ez a végpontok közötti TLS-titkosítást hajtja végre.
 
-### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>TLS-végződtetés engedélyezése új alkalmazásátjáró létrehozása közben
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>TLS-megszakítás engedélyezése új Application Gateway létrehozásakor
 
-További információ: [TLS-végződtetés engedélyezése új alkalmazásátjáró létrehozása közben.](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+További információ: [a TLS-megszakítás engedélyezése új Application Gateway létrehozásakor](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
-### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Háttérkiszolgálók hitelesítési/főtanúsítványainak hozzáadása
+### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Hitelesítő/főtanúsítványok hozzáadása a háttér-kiszolgálókhoz
 
-1. Válassza **az Összes erőforrás**lehetőséget, majd a **myAppGateway**lehetőséget.
+1. Válassza a **minden erőforrás**lehetőséget, majd válassza a **myAppGateway**lehetőséget.
 
-2. Válassza a BAL oldali menü **HTTP-beállítások parancsát.** Az Azure automatikusan létrehozott egy alapértelmezett HTTP-beállítást, **az appGatewayBackendHttpSettings**protokollt, amikor létrehozta az alkalmazásátjárót. 
+2. A bal oldali menüben válassza a **http-beállítások** lehetőséget. Az Azure automatikusan létrehozta a **appGatewayBackendHttpSettings**alapértelmezett http-beállítását az Application Gateway létrehozásakor. 
 
-3. Válassza **az appGatewayBackendHttpSettings lehetőséget.**
+3. Válassza a **appGatewayBackendHttpSettings**lehetőséget.
 
-4. A **Protokoll csoportban**válassza a **HTTPS**lehetőséget. Megjelenik a **háttérrendszer-hitelesítési tanúsítványok vagy a megbízható főtanúsítványok** ablaktáblája.
+4. A **protokoll**területen válassza a **https**lehetőséget. Megjelenik a **háttér-hitelesítési tanúsítványok vagy a megbízható főtanúsítványok** ablaktáblája.
 
 5. Válassza az **Új létrehozása** lehetőséget.
 
-6. A **Név** mezőbe írjon be egy megfelelő nevet.
+6. A **név** mezőben adjon meg egy megfelelő nevet.
 
-7. Jelölje ki a tanúsítványfájlt a **CER-tanúsítvány feltöltése** mezőben.
+7. Válassza ki a tanúsítványfájl elemet a **CER-tanúsítvány feltöltése** mezőben.
 
-   Standard és WAF (v1) alkalmazásátjárók esetén a háttérkiszolgálói tanúsítvány nyilvános kulcsát .cer formátumban kell feltölteni.
+   A standard és a WAF (v1) alkalmazás-átjárók esetében a háttér-kiszolgálói tanúsítvány nyilvános kulcsát. cer formátumban kell feltöltenie.
 
    ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
 
-   A Standard_v2 és WAF_v2 alkalmazásátjárók esetén a háttérkiszolgálói tanúsítvány főtanúsítványát .cer formátumban kell feltölteni. Ha a háttértanúsítványt egy jól ismert hitelesítésszolgáltató adja ki, jelölje be a **Jól ismert hitelesítésszolgáltatói tanúsítvány használata jelölőnégyzetet,** és akkor nem kell feltöltenie egy tanúsítványt.
+   Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert hitelesítésszolgáltató (CA) állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 
    ![Megbízható főtanúsítvány hozzáadása](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
@@ -69,53 +69,53 @@ További információ: [TLS-végződtetés engedélyezése új alkalmazásátjá
 
 8. Kattintson a **Mentés** gombra.
 
-## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Végpontok között a TLS engedélyezése meglévő alkalmazásátjáróhoz
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Végpontok közötti TLS engedélyezése meglévő Application gatewayhez
 
-Ha egy meglévő alkalmazásátjárót végpontok közötti TLS-titkosítással szeretne konfigurálni, először engedélyeznie kell a TLS-végződést a figyelőben. Ez a művelet lehetővé teszi a TLS-titkosítást az ügyfél és az alkalmazásátjáró közötti kommunikációhoz. Ezután helyezze a háttérkiszolgálók tanúsítványait a HTTP-beállítások ba a Megbízható címzettek listában. Ez a konfiguráció lehetővé teszi a TLS-titkosítást az alkalmazásátjáró és a háttérkiszolgálók közötti kommunikációhoz. Ez végpontok közötti TLS titkosítást valósít meg.
+Egy meglévő Application Gateway végpontok közötti TLS-titkosítással való konfigurálásához először engedélyeznie kell a TLS-megszakítást a figyelőben. Ez a művelet engedélyezi a TLS-titkosítást az ügyfél és az Application Gateway közötti kommunikációhoz. Ezután helyezze ezeket a tanúsítványokat a háttér-kiszolgálókhoz a biztonságos címzettek listájának HTTP-beállításai között. Ez a konfiguráció lehetővé teszi a TLS-titkosítást az Application Gateway és a háttér-kiszolgálók közötti kommunikációhoz. Ez a végpontok közötti TLS-titkosítást hajtja végre.
 
-A TLS-végződés engedélyezéséhez egy figyelőt kell használnia a HTTPS protokollal és egy tanúsítvánnyal. Használhatja a meglévő figyelő, amely megfelel ezeknek a feltételeknek, vagy hozzon létre egy új figyelőt. Ha az előbbi lehetőséget választja, figyelmen kívül hagyhatja a következő "TLS-végződtetés engedélyezése meglévő alkalmazásátjáróban" című szakaszt, és közvetlenül a "Hitelesítés/megbízható legfelső szintű tanúsítványok hozzáadása háttérkiszolgálókhoz" szakaszba léphet.
+Egy figyelőt kell használnia a HTTPS protokollal, valamint egy tanúsítványt a TLS-megszakítás engedélyezéséhez. Használhat olyan meglévő figyelőt, amely megfelel a feltételeknek, vagy létrehozhat egy új figyelőt. Ha a korábbi lehetőséget választja, figyelmen kívül hagyhatja a következő "TLS-megszakítás engedélyezése egy meglévő Application Gateway-ben" szakaszt, és közvetlenül a "hitelesítő és megbízható főtanúsítványok hozzáadása a háttér-kiszolgálókhoz" szakaszban.
 
-Ha az utóbbi lehetőséget választja, alkalmazza a következő eljárás lépéseit.
-### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>TLS-végződtetés engedélyezése meglévő alkalmazásátjáróban
+Ha az utóbbi lehetőséget választja, alkalmazza az alábbi eljárás lépéseit.
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>TLS-megszakítás engedélyezése meglévő Application Gateway-ben
 
-1. Válassza **az Összes erőforrás**lehetőséget, majd a **myAppGateway**lehetőséget.
+1. Válassza a **minden erőforrás**lehetőséget, majd válassza a **myAppGateway**lehetőséget.
 
-2. Válassza a **Figyelők** lehetőséget a bal oldali menüből.
+2. Válassza a **figyelők** lehetőséget a bal oldali menüben.
 
-3. Válassza ki **az alapszintű** vagy **többhelyes** figyelő a ttól függően, hogy a követelményeknek.
+3. A követelményektől függően válasszon az **alapszintű** vagy a **többhelyes** figyelő közül.
 
-4. A **Protokoll csoportban**válassza a **HTTPS**lehetőséget. Megjelenik a **Tanúsítvány ablaktáblája.**
+4. A **protokoll**területen válassza a **https**lehetőséget. Megjelenik a **tanúsítvány** ablaktáblája.
 
-5. Töltse fel az ügyfél és az alkalmazásátjáró közötti TLS-végződtetéshez használni kívánt PFX-tanúsítványt.
+5. Töltse fel az ügyfél és az Application Gateway közötti TLS-megszakításhoz használni kívánt PFX-tanúsítványt.
 
    > [!NOTE]
-   > Tesztelési célokra önaláírt tanúsítványt is használhat. Ez azonban nem ajánlott éles számítási feladatok, mert nehezebb kezelni, és nem teljesen biztonságos. További információt az Önaláírt tanúsítvány létrehozása című [témakörben talál.](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)
+   > Tesztelési célból önaláírt tanúsítványt is használhat. Ez azonban nem javasolt az éles számítási feladatokhoz, mivel azok nehezebben kezelhetők és nem teljesen biztonságosak. További információért lásd: [önaláírt tanúsítvány létrehozása](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate).
 
-6. Adja meg a **figyelő**höz szükséges egyéb szükséges beállításokat, a követelményektől függően.
+6. Adja hozzá a **figyelő**egyéb szükséges beállításait a követelményektől függően.
 
 7. A mentéshez kattintson az **OK** gombra.
 
-### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Háttérkiszolgálók hitelesítési/megbízható főtanúsítványainak hozzáadása
+### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Hitelesítési/megbízható legfelső szintű tanúsítványok hozzáadása a háttér-kiszolgálókhoz
 
-1. Válassza **az Összes erőforrás**lehetőséget, majd a **myAppGateway**lehetőséget.
+1. Válassza a **minden erőforrás**lehetőséget, majd válassza a **myAppGateway**lehetőséget.
 
-2. Válassza a BAL oldali menü **HTTP-beállítások parancsát.** A tanúsítványokat a Megbízható címzettek listában meglévő háttérHTTP-beállításba helyezheti, vagy létrehozhat egy új HTTP-beállítást. (A következő lépésben az alapértelmezett HTTP-beállítás, az **appGatewayBackendHttpSettings**tanúsítványa felkerül a Megbízható címzettek listájára.)
+2. A bal oldali menüben válassza a **http-beállítások** lehetőséget. A tanúsítványokat egy meglévő háttérbeli HTTP-beállításban is elhelyezheti a biztonságos címzettek listáján, vagy létrehozhat egy új HTTP-beállítást. (A következő lépésben az alapértelmezett HTTP-beállításhoz ( **appGatewayBackendHttpSettings**) tartozó tanúsítvány hozzá lesz adva a biztonságos címzettek listájához.)
 
-3. Válassza **az appGatewayBackendHttpSettings lehetőséget.**
+3. Válassza a **appGatewayBackendHttpSettings**lehetőséget.
 
-4. A **Protokoll csoportban**válassza a **HTTPS**lehetőséget. Megjelenik a **háttérrendszer-hitelesítési tanúsítványok vagy a megbízható főtanúsítványok** ablaktáblája. 
+4. A **protokoll**területen válassza a **https**lehetőséget. Megjelenik a **háttér-hitelesítési tanúsítványok vagy a megbízható főtanúsítványok** ablaktáblája. 
 
 5. Válassza az **Új létrehozása** lehetőséget.
 
-6. A **Név** mezőbe írjon be egy megfelelő nevet.
+6. A **név** mezőben adjon meg egy megfelelő nevet.
 
-7. Jelölje ki a tanúsítványfájlt a **CER-tanúsítvány feltöltése** mezőben.
+7. Válassza ki a tanúsítványfájl elemet a **CER-tanúsítvány feltöltése** mezőben.
 
-   Standard és WAF (v1) alkalmazásátjárók esetén a háttérkiszolgálói tanúsítvány nyilvános kulcsát .cer formátumban kell feltölteni.
+   A standard és a WAF (v1) alkalmazás-átjárók esetében a háttér-kiszolgálói tanúsítvány nyilvános kulcsát. cer formátumban kell feltöltenie.
 
    ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
 
-   A Standard_v2 és WAF_v2 alkalmazásátjárók esetén a háttérkiszolgálói tanúsítvány főtanúsítványát .cer formátumban kell feltölteni. Ha a háttértanúsítványt egy jól ismert hitelesítésszolgáltató adja ki, jelölje be a **Jól ismert hitelesítésszolgáltatói tanúsítvány használata jelölőnégyzetet,** és akkor nem kell feltöltenie egy tanúsítványt.
+   Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert HITELESÍTÉSSZOLGÁLTATÓ állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 
    ![Megbízható főtanúsítvány hozzáadása](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 

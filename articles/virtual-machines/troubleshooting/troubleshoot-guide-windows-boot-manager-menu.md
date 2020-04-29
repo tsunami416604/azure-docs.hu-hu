@@ -1,6 +1,6 @@
 ---
-title: A Windows virtuális gép nem tud elindulni a Windows rendszerindítás-kezelő miatt
-description: Ez a cikk olyan problémák megoldásához, amelyeknél a Windows Boot Manager megakadályozza az Azure virtuális gép indítását.
+title: A Windows rendszerű virtuális gép nem indítható el a Windows rendszerindítási kezelője miatt
+description: Ez a cikk az Azure-beli virtuális gépek rendszerindítását megakadályozó problémák megoldásának lépéseit ismerteti.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,103 +15,103 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373348"
 ---
-# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>A Windows virtuális gép nem tud elindulni a Windows rendszerindítás-kezelő miatt
+# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>A Windows rendszerű virtuális gép a Windows rendszerindítási kezelője miatt nem indítható el
 
-Ez a cikk olyan problémák megoldásához tartalmaz lépéseket, amelyek miatt a Windows Rendszerindítási Kezelő megakadályozza az Azure virtuális gép (VM) indítását.
+Ez a cikk az Azure-beli virtuális gépek (VM) rendszerindítását megakadályozó problémák megoldásának lépéseit ismerteti.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A virtuális gép beragadt vár egy felhasználó kérdés, és nem indul el, kivéve, ha manuálisan utasítják.
+A virtuális gép egy felhasználói kérésre várakozik, és nem indul el, hacsak manuálisan nem utasította.
 
-Amikor a [Rendszerindításdiagomba-diagnosztikával](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) tekinti meg a virtuális gép képernyőképét, látni fogja, hogy a képernyőképen megjelenik a Windows rendszerindítási kezelője a *Start operációs rendszer kiválasztása üzenettel, vagy a TAB billentyű lenyomásával válasszon ki egy eszközt:*.
+Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőkép megjeleníti a Windows rendszerindítási kezelőt az üzenet alapján, majd a *TAB billentyű lenyomásával kijelöl egy eszközt:*.
 
 1. ábra
  
-![A Windows rendszerindítási kezelője a következőt tartalmazza: "Válasszon egy indításhoz kívánt operációs rendszert, vagy nyomja le a TAB billentyűt az eszköz kiválasztásához:"](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
+![A Windows rendszerindítási kezelőjének "válasszon operációs rendszert az indításhoz, vagy nyomja le a TAB billentyűt egy eszköz kiválasztásához:"](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
 
 ## <a name="cause"></a>Ok
 
-A hiba oka a BcD jelző *displaybootmenu* a Windows Boot Manager. Ha a jelző engedélyezve van, a Windows Rendszerindítás-kezelő a rendszerindítási folyamat során kéri a felhasználót, hogy válassza ki, melyik betöltőt szeretné futtatni, ami rendszerindítási késleltetést okoz. Az Azure-ban ez a funkció adhat hozzá a virtuális gép indításához szükséges időt.
+A hiba oka a Windows rendszerindító kezelőjében található BCD-jelző *displaybootmenu* . Ha a jelző engedélyezve van, a Windows rendszerindító kezelője a rendszerindítási folyamat során felszólítja a felhasználót a futtatni kívánt betöltő kiválasztására, ami a rendszerindítás késleltetését okozza. Az Azure-ban ez a szolgáltatás hozzá tud adni egy virtuális gép rendszerindításához szükséges időt.
 
 ## <a name="solution"></a>Megoldás
 
 Folyamat áttekintése:
 
-1. Konfigurálja a gyorsabb rendszerindítási időt a Soros konzol használatával.
-2. Hozzon létre és férjen hozzá egy javítási virtuális géphez.
+1. A soros konzollal történő gyorsabb rendszerindítás beállítása.
+2. Hozzon létre és nyissa meg a javítási virtuális gépet.
 3. Konfigurálja a gyorsabb rendszerindítási időt a javítási virtuális gépen.
-4. **Ajánlott:** A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét.
-5. Építse újra a virtuális gép.
+4. **Ajánlott**: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét.
+5. Hozza létre újra a virtuális gépet.
 
-### <a name="configure-for-faster-boot-time-using-serial-console"></a>Konfigurálás a soros konzol lal történő gyorsabb rendszerindításhoz
+### <a name="configure-for-faster-boot-time-using-serial-console"></a>Konfigurálás gyorsabb rendszerindítás esetén a soros konzollal
 
-Ha rendelkezik a soros konzollal, kétféleképpen érhetel el gyorsabb rendszerindítási időt. Csökkentse a *displaybootmenu várakozási* idejét, vagy távolítsa el teljesen a jelzőt.
+Ha rendelkezik hozzáféréssel a soros konzolhoz, kétféleképpen érheti el gyorsabban a rendszerindítási időpontokat. Csökkentse a *displaybootmenu* várakozási idejét, vagy távolítsa el a jelzőt teljesen.
 
-1. Kövesse az utasításokat az [Azure Serial Console for Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) eléréséhez a szövegalapú konzol eléréséhez.
+1. Kövesse az [Azure soros konzoljának a Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) rendszerhez való elérésének lépéseit, hogy hozzáférjen a szöveges konzolhoz.
 
    > [!NOTE]
-   > Ha nem tudja elérni a soros konzolt, ugorjon előre [a Virtuális gép létrehozása és elérése](#create-and-access-a-repair-vm)című területre.
+   > Ha nem fér hozzá a soros konzolhoz, ugorjon előre a [javítási virtuális gép létrehozásához és eléréséhez](#create-and-access-a-repair-vm).
 
-2. **A lehetőség:** A várakozási idő csökkentése
+2. " **A" lehetőség: A**várakozási idő csökkentése
 
-   a. A várakozási idő alapértelmezés szerint 30 másodperc, de gyorsabb időre (pl. 5 másodpercre) módosítható.
+   a. A várakozási idő alapértelmezés szerint 30 másodpercre van beállítva, de gyorsabb lehet (például 5 másodperc).
 
-   b. Az időtúlérték módosításához használja a következő parancsot a soros konzolon:
+   b. Az időtúllépési érték beállításához használja az alábbi parancsot a soros konzolon:
 
       `bcdedit /set {bootmgr} timeout 5`
 
-3. **B. lehetőség:** A BCD-jelző eltávolítása
+3. **B. lehetőség**: a BCD jelző eltávolítása
 
-   a. A Megjelenítési rendszerindító menü parancssorának teljes megakadályozásához írja be a következő parancsot:
+   a. Ha meg szeretné akadályozni, hogy a rendszerindítási menü ne jelenjen meg, írja be a következő parancsot:
 
       `bcdedit /deletevalue {bootmgr} displaybootmenu`
 
       > [!NOTE]
-      > Ha a fenti lépésekben nem tudta használni a soros konzolt a gyorsabb rendszerindítási idő konfigurálására, a következő lépésekkel folytathatja. A probléma megoldásához offline módban kell hibaelhárítást elhárítania.
+      > Ha a fenti lépésekben nem sikerült a soros konzol használatával konfigurálni a gyorsabb rendszerindítási időt, az alábbi lépéseket követve folytathatja a műveletet. A probléma megoldásához mostantól a kapcsolat nélküli módban hibaelhárítást hajthat végre.
 
-### <a name="create-and-access-a-repair-vm"></a>Virtuális gép létrehozása és elérése
+### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A [virtuális gép javítási parancsainak 1-3.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)
-2. Használja a Távoli asztali kapcsolat csatlakozása a javítási virtuális gép.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) használva készítse elő a javítási virtuális gépet.
+2. Távoli asztali kapcsolat kapcsolódjon a javítási virtuális géphez.
 
-### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Konfigurálja a gyorsabb rendszerindítási időt javítási virtuális gépen
+### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Gyorsabb rendszerindítási idő beállítása a javítási virtuális gépen
 
 1. Nyisson meg egy rendszergazda jogú parancssort.
-2. A DisplayBootMenu engedélyezéséhez írja be a következőket:
+2. A DisplayBootMenu engedélyezéséhez adja meg a következőt:
 
-   Az **1.**
+   Használja ezt a parancsot az **1. generációs virtuális gépekhez**:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   A **2.**
+   Használja ezt a parancsot a **2. generációs virtuális gépekhez**:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   Cserélje ki a szimbólumoknál nagyobb vagy kisebb szimbólumokat, valamint a bennük lévő szöveget, például a "< szöveg itt >".
+   Cserélje le a több vagy kevesebb szimbólumot, valamint a bennük található szöveget, például: "< szöveg itt >".
 
-3. Módosítsa az időtúlértéket 5 másodpercre:
+3. Módosítsa az időtúllépési értéket 5 másodpercre:
 
-   Az **1.**
+   Használja ezt a parancsot az **1. generációs virtuális gépekhez**:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   A **2.**
+   Használja ezt a parancsot a **2. generációs virtuális gépekhez**:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 
-   Cserélje ki a szimbólumoknál nagyobb vagy kisebb szimbólumokat, valamint a bennük lévő szöveget, például a "< szöveg itt >".
+   Cserélje le a több vagy kevesebb szimbólumot, valamint a bennük található szöveget, például: "< szöveg itt >".
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriaképek gyűjtését
 
-A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a következő parancsfájlt:
+A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a következő parancsfájlt:
 
-1. Nyisson meg egy rendszergazdai parancssori munkamenetet (Futtatás rendszergazdaként).
+1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa az alábbi parancsot:
 
    Soros konzol engedélyezése
@@ -120,19 +120,19 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   Cserélje ki a szimbólumoknál nagyobb vagy kisebb szimbólumokat, valamint a bennük lévő szöveget, például a "< szöveg itt >".
+   Cserélje le a több vagy kevesebb szimbólumot, valamint a bennük található szöveget, például: "< szöveg itt >".
 
-3. Ellenőrizze, hogy az operációs rendszer lemezén lévő szabad terület legalább annyira megvan-e, mint a virtuális gép memóriamérete (RAM).
+3. Győződjön meg arról, hogy az operációsrendszer-lemezen lévő szabad terület a virtuális gép memóriájának méretétől (RAM) függ.
 
-   Ha nincs elég hely az operációs rendszer lemezén, meg kell változtatnia a helyet, ahol a memóriakép fájl jön létre, és olvassa el, hogy minden adatlemez csatlakozik a virtuális gép, amely elegendő szabad terület. A hely módosításához cserélje le a(z) "%SystemRoot%" parancsot az alábbi parancsokban lévő adatlemez meghajtóbetűjelére (például "F:").
+   Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítania kell a memóriakép fájljának helyét, és a virtuális géphez csatlakoztatott minden olyan adatlemezre, amely elegendő szabad hellyel rendelkezik. A hely módosításához cserélje le a "% SystemRoot%" kifejezést az alábbi parancsokban található adatlemez meghajtóbetűjelére (például "F:").
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Javasolt konfiguráció az operációs rendszer memóriaképengedélyezéséhez
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Az operációs rendszer kiírásának engedélyezése javasolt konfiguráció
 
-**Hibás operációsrendszer-lemez betöltése:**
+**Sérült operációsrendszer-lemez betöltése**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Engedélyezés a ControlSet001-en:**
+**Engedélyezés a ControlSet001:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -140,7 +140,7 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Engedélyezés a ControlSet002-n:**
+**Engedélyezés a ControlSet002:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -148,10 +148,10 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Hibás operációsrendszer-lemez eltávolítása:**
+**Sérült operációsrendszer-lemez eltávolítása:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
 ### <a name="rebuild-the-original-vm"></a>Az eredeti virtuális gép újraépítése
 
-A [virtuális gép javítási parancsainak 5.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .

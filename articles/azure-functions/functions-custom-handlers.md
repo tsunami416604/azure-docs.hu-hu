@@ -1,53 +1,53 @@
 ---
-title: Az Azure Functions egyéni kezelői (előzetes verzió)
-description: Ismerje meg, hogyan használhatja az Azure Functions bármely nyelvi vagy futásidejű verziót.
+title: Azure Functions egyéni kezelők (előzetes verzió)
+description: Megtudhatja, hogyan használhatja a Azure Functionst bármilyen nyelvi vagy futtatókörnyezeti verzióval.
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479253"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Az Azure Functions egyéni kezelői (előzetes verzió)
+# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions egyéni kezelők (előzetes verzió)
 
-Minden Functions alkalmazást egy nyelvspecifikus kezelő hajt végre. Bár az Azure Functions alapértelmezés szerint számos [nyelvi kezelőt](./supported-languages.md) támogat, előfordulhat, hogy további szabályozást szeretne az alkalmazásvégrehajtási környezet felett. Az egyéni kezelők ezt a további vezérlőt biztosítják.
+Minden functions alkalmazást egy nyelvspecifikus kezelő hajt végre. Habár a Azure Functions alapértelmezés szerint számos [nyelvi kezelőt](./supported-languages.md) támogat, vannak olyan esetek, amikor további ellenőrzésre van szükség az alkalmazás végrehajtási környezetében. Az egyéni kezelők ezt a további vezérlést adják meg.
 
-Az egyéni kezelők olyan könnyű webkiszolgálók, amelyek eseményeket fogadnak a Functions gazdagéptől. A HTTP primitíveket támogató nyelvek egyéni kezelőt valósíthatnak meg.
+Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek eseményeket fogadnak a functions gazdagépről. Minden olyan nyelv, amely támogatja a HTTP primitíveket, egyéni kezelőt valósíthat meg.
 
-Az egyéni kezelők a legalkalmasabbak olyan helyzetekre, amikor a következőket szeretné:
+Az egyéni kezelők a legmegfelelőbbek olyan helyzetekben, amikor a következőket kívánja használni:
 
-- Functions alkalmazás megvalósítása a hivatalosan támogatott nyelveken túli nyelven
-- Functions alkalmazás megvalósítása olyan nyelvi verzióban vagy futásidőben, amelyet alapértelmezés szerint nem támogatnak
-- Részletes vezérléssel az alkalmazásvégrehajtási környezet felett
+- Functions-alkalmazás implementálása a hivatalosan támogatott nyelveken túli nyelveken
+- Functions-alkalmazás implementálása nyelvi verzióban vagy futtatókörnyezetben alapértelmezés szerint nem támogatott
+- Az alkalmazás végrehajtási környezetének részletes szabályozása
 
-Az egyéni kezelők, az összes [eseményindítók és a bemeneti és kimeneti kötések](./functions-triggers-bindings.md) támogatja [a kiterjesztés kötegek.](./functions-bindings-register.md)
+Az egyéni kezelők esetében az összes [eseményindító és bemeneti és kimeneti kötés](./functions-triggers-bindings.md) támogatott a [bővítmények](./functions-bindings-register.md)használatával.
 
 ## <a name="overview"></a>Áttekintés
 
-Az alábbi ábra a Functions állomás és az egyéni kezelőként megvalósított webkiszolgáló közötti kapcsolatot mutatja be.
+Az alábbi ábrán a functions gazdagép és egy egyéni kezelőként megvalósított webkiszolgáló közötti kapcsolat látható.
 
-![Az Azure Functions egyéni kezelőjének áttekintése](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Azure Functions egyéni kezelő – áttekintés](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- Az események a Functions-állomásnak küldött kérelmet váltanak ki. Az esemény egy nyers HTTP-hasznos adat (a HTTP-aktivált függvények kötések nélkül), vagy egy hasznos, amely rendelkezik a bemeneti kötési adatokat a függvény.
-- A Functions állomás ezután a kérést a webkiszolgálóhoz adja meg egy [kérelem hasznos adatának](#request-payload)kibocsátásával.
-- A webkiszolgáló végrehajtja az egyes függvényt, és visszaküldi a függvények függvényének [a válasz hasznos adatát.](#response-payload)
-- A Functions gazdagép a választ kimeneti kötési hasznos adatként nevezi meg a célhoz.
+- Az események a functions gazdagépnek küldenek kérelmet. Az esemény vagy egy nyers HTTP-adattartalom (a kötések nélküli HTTP által aktivált függvények esetén), vagy egy olyan hasznos adat, amely a függvény bemeneti kötési adatait tárolja.
+- A functions gazdagép ezt követően a kérést a webkiszolgálónak küldi el a [kérelem hasznos](#request-payload)adatainak kibocsátásával.
+- A webkiszolgáló végrehajtja az egyes függvényeket, és visszaküldi a functions gazdagépnek a [Válasz adattartalmát](#response-payload) .
+- A functions gazdagép a választ a célként megadott kimeneti kötési adattartalomként adja meg.
 
-Az egyéni kezelőként megvalósított Azure Functions-alkalmazásnak néhány konvenció szerint konfigurálnia kell a *host.json* és *a function.json* fájlokat.
+Az egyéni kezelőként megvalósított Azure Functions alkalmazásoknak néhány konvenciónak megfelelően kell konfigurálniuk a *Host. JSON* és a *function. JSON* fájlokat.
 
-## <a name="application-structure"></a>Alkalmazási struktúra
+## <a name="application-structure"></a>Alkalmazás szerkezete
 
-Egyéni kezelő megvalósításához az alkalmazás következő szempontokra van szükség:
+Az egyéni kezelők megvalósításához a következő szempontokat kell figyelembe vennie az alkalmazásban:
 
-- *Host.json* fájl az alkalmazás gyökerében
-- *Function.json* fájl minden függvényhez (a függvény nevének megfelelő mappán belül)
-- Webkiszolgálót futtató parancs, parancsfájl vagy végrehajtható fájl
+- Egy *Host. JSON* fájl az alkalmazás gyökérkönyvtárában
+- *Function. JSON* fájl minden függvényhez (a függvény nevével megegyező mappában)
+- Egy webkiszolgálót futtató parancs, parancsfájl vagy végrehajtható fájl
 
-Az alábbi ábra bemutatja, hogyan néznek ki ezek a fájlok a fájlrendszerben egy "sorrend" nevű függvényhez.
+Az alábbi ábrán látható, hogyan jelennek meg a fájlok a "Order" nevű függvény fájlrendszerében.
 
 ```bash
 | /order
@@ -56,11 +56,11 @@ Az alábbi ábra bemutatja, hogyan néznek ki ezek a fájlok a fájlrendszerben 
 | host.json
 ```
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
-Az alkalmazás a *host.json* fájlon keresztül van konfigurálva. Ez a fájl megmondja a Functions állomásnak, hogy hová küldjön kéréseket, ha egy HTTP-események feldolgozására képes webkiszolgálóra mutat.
+Az alkalmazás a *Host. JSON* fájl használatával van konfigurálva. Ez a fájl közli a functions-gazdagépgel, hogy hová kell elküldeni a kérelmeket, ha a HTTP-események feldolgozására képes webkiszolgálóra mutat.
 
-Az egyéni kezelő a *host.json* fájl konfigurálásával határozható meg, amely `httpWorker` részletezi, hogyan kell futtatni a webkiszolgálót a szakaszon keresztül.
+Az egyéni kezelőt a *Host. JSON* fájl konfigurálásával határozzák meg, amely a webkiszolgáló `httpWorker` szakaszon keresztüli futtatásának részleteit tartalmazza.
 
 ```json
 {
@@ -73,9 +73,9 @@ Az egyéni kezelő a *host.json* fájl konfigurálásával határozható meg, am
 }
 ```
 
-A `httpWorker` szakasz a. `defaultExecutablePath`által meghatározott célra mutat. A végrehajtási cél lehet parancs, végrehajtható fájl vagy fájl, ahol a webkiszolgáló tvalósítja meg.
+A `httpWorker` szakasz a által meghatározott célra mutat `defaultExecutablePath`. A végrehajtási cél lehet egy parancs, végrehajtható fájl vagy fájl, amelyben a webkiszolgáló implementálva van.
 
-Parancsfájlalapú alkalmazások `defaultExecutablePath` esetén a parancsfájl nyelvének futásidejére mutat, és `defaultWorkerPath` a parancsfájl helyére. A következő példa bemutatja, hogyan van konfigurálva egy JavaScript-alkalmazás a Node.js-ben egyéni kezelőként.
+A megírt alkalmazások `defaultExecutablePath` esetében a parancsfájl nyelvi futtatókörnyezetére mutat, és `defaultWorkerPath` a parancsfájl helyére mutat. Az alábbi példa bemutatja, hogyan van konfigurálva egy JavaScript-alkalmazás a Node. js-ben egyéni kezelőként.
 
 ```json
 {
@@ -89,7 +89,7 @@ Parancsfájlalapú alkalmazások `defaultExecutablePath` esetén a parancsfájl 
 }
 ```
 
-Az argumentumokat a `arguments` tömb használatával is átadhatja:
+Argumentumokat a `arguments` tömb használatával is át lehet adni:
 
 ```json
 {
@@ -104,32 +104,32 @@ Az argumentumokat a `arguments` tömb használatával is átadhatja:
 }
 ```
 
-Az argumentumok számos hibakeresési beállításhoz szükségesek. További részleteket a [Hibakeresés](#debugging) című részben ismer.
+Számos hibakeresési beállításhoz argumentumok szükségesek. További részletekért tekintse meg a [hibakeresés](#debugging) szakaszt.
 
 > [!NOTE]
-> A *host.json* fájlnak a könyvtárstruktúrában a futó webkiszolgálóval azonos szinten kell lennie. Előfordulhat, hogy egyes nyelvek és eszközláncok alapértelmezés szerint nem helyezik el ezt a fájlt az alkalmazás gyökérhelyére.
+> A *Host. JSON* fájlnak a futó webkiszolgálóként azonos szinten kell lennie a címtár-struktúrában. Előfordulhat, hogy egyes nyelvek és eszközlánccal alapértelmezés szerint nem helyezik el ezt a fájlt az alkalmazás gyökerébe.
 
 #### <a name="bindings-support"></a>Kötések támogatása
 
-Szabványos eseményindítók mellett bemeneti és kimeneti kötések érhetők el hivatkozva [kiterjesztés kötegek](./functions-bindings-register.md) a *host.json* fájlban.
+A standard triggerek és a bemeneti és kimeneti kötések a *Host. JSON* fájlban lévő [kiterjesztési csomagokra](./functions-bindings-register.md) hivatkozva érhetők el.
 
-### <a name="function-metadata"></a>Függvény metaadatai
+### <a name="function-metadata"></a>Függvény metaadatainak
 
-Ha egyéni kezelővel használja, a *function.json* tartalom nem különbözik attól, ahogyan bármely más környezetben definiálna egy függvényt. Az egyetlen követelmény az, hogy *a function.json* fájloknak a függvény nevének megfelelő nevű mappában kell lenniük.
+Egyéni kezelővel való használat esetén a *function. JSON* tartalma nem különbözik a függvények más környezetekben való definiálásának módjától. Az egyetlen követelmény, hogy a *function. JSON* fájloknak egy nevű mappában kell lenniük, hogy egyezzenek a függvény nevével.
 
-### <a name="request-payload"></a>Hasznos adat kérése
+### <a name="request-payload"></a>Kérelem tartalma
 
-A kérelem hasznos a tiszta HTTP-függvények a nyers HTTP-kérelem hasznos adat. A tiszta HTTP-függvények bemeneti vagy kimeneti kötések nélküli függvényekként vannak definiálva, amelyek HTTP-választ adnak vissza.
+A tiszta HTTP-függvények kérelme a nyers HTTP-kérelem hasznos adattartalma. A Pure HTTP függvények olyan függvényként vannak definiálva, amely nem rendelkezik bemeneti vagy kimeneti kötésekkel, és amelyek HTTP-választ adnak vissza.
 
-Bármely más típusú függvény, amely bemeneti, kimeneti kötéseket tartalmaz, vagy http-től eltérő eseményforráson keresztül aktiválódik, egyéni kérelemhasznos adattal rendelkezik.
+Bármilyen más típusú függvény, amely tartalmazza a bemenetet, a kimeneti kötéseket vagy a HTTP-n kívüli eseményindítót, egyéni kérelem-adattartalommal rendelkezik.
 
-A következő kód egy mintakérelem hasznos adatát jelöli. A hasznos teher egy JSON struktúrát tartalmaz, amelynek két tagja van: `Data` és `Metadata`.
+A következő kód egy példaként szolgáló kérelem hasznos adatait jelöli. Az adattartalom tartalmaz egy JSON-struktúrát két `Data` taggal `Metadata`: és.
 
-A `Data` tag olyan kulcsokat tartalmaz, amelyek megfelelnek a bemeneti és eseményindítóneveknek a *function.json* fájlban lévő kötések tömbjében meghatározottak szerint.
+A `Data` tag olyan kulcsokat tartalmaz, amelyek megfelelnek a bemeneti és a trigger neveknek a *function. JSON* fájl kötések tömbében meghatározottak szerint.
 
-A `Metadata` tag [tartalmazza az eseményforrásból létrehozott metaadatokat.](./functions-bindings-expressions-patterns.md#trigger-metadata)
+A `Metadata` tag [az eseményforrás által generált metaadatokat](./functions-bindings-expressions-patterns.md#trigger-metadata)tartalmaz.
 
-A következő *function.json* fájlban definiált kötések alapján:
+A következő *function. JSON* fájlban megadott kötések miatt:
 
 ```json
 {
@@ -152,7 +152,7 @@ A következő *function.json* fájlban definiált kötések alapján:
 }
 ```
 
-A kérelem hasznos adata ehhez a példához hasonló értéket ad vissza:
+A rendszer az ehhez a példához hasonló kérelem-adattartalmat ad vissza:
 
 ```json
 {
@@ -175,30 +175,30 @@ A kérelem hasznos adata ehhez a példához hasonló értéket ad vissza:
 }
 ```
 
-### <a name="response-payload"></a>Válasz hasznos adata
+### <a name="response-payload"></a>Válasz hasznos adat
 
-A függvényválaszok konvenció szerint kulcs-/értékpárokként vannak formázva. A támogatott kulcsok a következők:
+Az egyezmény szerint a függvények válaszai kulcs/érték párokként vannak formázva. A támogatott kulcsok a következők:
 
-| <nobr>Hasznos kulcs</nobr>   | Adattípus | Megjegyzések                                                      |
+| <nobr>Hasznos adatok kulcsa</nobr>   | Adattípus | Megjegyzések                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | A *function.json* `bindings` fájl tömbje által meghatározott válaszértékeket tartalmazza.<br /><br />Például ha egy függvény "blob" nevű blob tárolókimeneti `Outputs` kötéssel `blob`van konfigurálva, majd tartalmaz egy nevű kulcsot, amely a blob értékére van állítva. |
-| `Logs`        | tömb     | Az üzenetek megjelennek a Functions meghívási naplóiban.<br /><br />Amikor az Azure-ban fut, az üzenetek megjelennek az Application Insightsban. |
-| `ReturnValue` | sztring    | Válasz ként szolgál, ha egy `$return` kimenet a *function.json* fájlban van konfigurálva. |
+| `Outputs`     | JSON      | A `bindings` *function. JSON* fájl tömbje által meghatározott válasz értékeket tartalmazza.<br /><br />Ha például egy függvény egy "blob" nevű blob Storage kimeneti kötéssel van konfigurálva, akkor `Outputs` a egy nevű `blob`kulcsot tartalmaz, amely a blob értékére van állítva. |
+| `Logs`        | tömb     | Az üzenetek megjelennek a függvények hívási naplóiban.<br /><br />Az Azure-ban futtatott üzenetek Application Insightsban jelennek meg. |
+| `ReturnValue` | sztring    | Arra szolgál, hogy a *függvény. JSON* fájljában a `$return` kimenet beállításakor választ adjon. |
 
-Tekintse meg a [példa egy minta hasznos teher](#bindings-implementation).
+Tekintse [meg a minta hasznos](#bindings-implementation)adatokat bemutató példát.
 
 ## <a name="examples"></a>Példák
 
-Az egyéni kezelők bármely olyan nyelven implementálhatók, amely támogatja a HTTP-eseményeket. Bár az Azure Functions teljes mértékben támogatja a [JavaScript és a Node.js,](./functions-reference-node.md)a következő példák bemutatják, hogyan valósítható meg egy egyéni kezelő JavaScript használatával node.js utasítás céljából.
+Az egyéni kezelők bármilyen nyelven telepíthetők, amely támogatja a HTTP-eseményeket. Habár Azure Functions [teljes mértékben támogatja a JavaScriptet és a Node. js](./functions-reference-node.md)-t, az alábbi példák bemutatják, hogyan implementálhat egy egyéni kezelőt a Node. js-ben a JavaScript használatával az útmutatás céljából.
 
 > [!TIP]
-> Bár az itt látható Node.js-alapú példák hasznosak lehetnek, ha a Node.js nem támogatott verziójában szeretné futtatni a Functions alkalmazást.
+> Az egyéni kezelők más nyelveken való megvalósításának megismerése közben az itt látható Node. js-alapú példák akkor is hasznosak lehetnek, ha a Node. js nem támogatott verziójában szeretné futtatni a functions alkalmazást.
 
-## <a name="http-only-function"></a>CSAK HTTP-FÜGGVÉNY
+## <a name="http-only-function"></a>Csak HTTP-függvény
 
-A következő példa bemutatja, hogyan konfigurálhat egy HTTP-aktivált függvényt további kötések és kimenetek nélkül. Ebben a példában megvalósított `http` forgatókönyv egy `GET` vagy `POST` .
+Az alábbi példa bemutatja, hogyan konfigurálhat egy HTTP által aktivált függvényt további kötések és kimenetek nélkül. Az ebben a példában megvalósított forgatókönyv egy nevű `http` függvényt tartalmaz, `GET` amely `POST` a vagy a paramétert fogadja.
 
-A következő kódrészlet azt mutatja be, hogy a függvényhez való kérelem hogyan van összeállva.
+A következő kódrészlet azt mutatja be, hogyan áll a függvényre irányuló kérés.
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Megvalósítás
 
-A *function.json* fájl egy *http-aktivált*függvényt konfigurál.
+A *http*nevű mappában a *function. JSON* fájl konfigurálja a http által aktivált függvényt.
 
 ```json
 {
@@ -233,9 +233,9 @@ A *function.json* fájl egy *http-aktivált*függvényt konfigurál.
 }
 ```
 
-A függvény úgy van `GET` `POST` beállítva, hogy fogadja mind a `res`kéréseket, és az eredmény értékét egy argumentum nak nevezett argumentumon keresztül adja meg.
+A függvény a (z) `GET` és `POST` a kérelmek fogadására van konfigurálva, és az eredmény értékét egy `res`nevű argumentummal kell megadnia.
 
-Az alkalmazás gyökerében a *host.json* fájl úgy van beállítva, `server.js` hogy futtassa a Node.js fájlt, és irányítsa a fájlt.
+Az alkalmazás gyökerében a *Host. JSON* fájl a Node. js futtatására van konfigurálva, és rámutat a `server.js` fájlra.
 
 ```json
 {
@@ -249,7 +249,7 @@ Az alkalmazás gyökerében a *host.json* fájl úgy van beállítva, `server.js
 }
 ```
 
-A *server.js* fájl webkiszolgálót és HTTP-függvényt valósít meg.
+A fájlkiszolgáló *. js* fájl egy webkiszolgálót és egy http-függvényt valósít meg.
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-Ebben a példában az Express webkiszolgálót hoz létre a HTTP-események `FUNCTIONS_HTTPWORKER_PORT`kezelésére, és úgy van beállítva, hogy a kéréseket a segítségével figyelje.
+Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a `FUNCTIONS_HTTPWORKER_PORT`-on keresztüli kérelmek figyelésére van beállítva.
 
-A függvény a elérési útján `/hello`van definiálva. `GET`a kéréseket egy egyszerű JSON-objektum `POST` visszaküldésével kezelik, `req.body`és a kérelmek hozzáférhetnek a kéréstörzshöz a rendszeren keresztül.
+A függvény a következő elérési úton van `/hello`definiálva:. `GET`a kérések kezelése egy egyszerű JSON-objektum visszaadása `POST` révén történik, és a kérések a `req.body`kérések törzséhez is hozzáférnek a használatával.
 
-A rendelési függvény útvonala itt van, `/hello` és nem `/api/hello` azért, mert a Functions állomás proxya a kérelmet az egyéni kezelő.
+A Order függvény útvonala itt van `/hello` , és nem `/api/hello` , mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
 
 >[!NOTE]
->A `FUNCTIONS_HTTPWORKER_PORT` nem a függvény hívásához használt nyilvános néző port. Ezt a portot a Functions állomás használja az egyéni kezelő hívására.
+>A `FUNCTIONS_HTTPWORKER_PORT` nem a függvény meghívásához használt nyilvános port. A functions gazdagép ezt a portot használja az egyéni kezelő meghívásához.
 
-## <a name="function-with-bindings"></a>Funkció kötésekkel
+## <a name="function-with-bindings"></a>Függvény kötésekkel
 
-Ebben a példában megvalósított `order` forgatókönyv egy `POST` nevű függvényt tartalmaz, amely elfogadja a termékrendelést képviselő hasznos adattal. A függvényrendelés feladásakor létrejön egy várólista-tároló üzenet, és http-válasz jön vissza.
+Az ebben a példában megvalósított forgatókönyv egy nevű `order` függvényt tartalmaz, `POST` amely a termék megrendelését jelképező hasznos adatokat fogad el. Mivel a függvény elküld egy megrendelést, létrejön egy Queue Storage üzenet, és a rendszer egy HTTP-választ ad vissza.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Megvalósítás
 
-A *function.json* fájl egy *sorrendnevű mappában*konfigurálja a HTTP által aktivált függvényt.
+A *sorrend*nevű mappában a *function. JSON* fájl konfigurálja a http által aktivált függvényt.
 
 ```json
 {
@@ -331,9 +331,9 @@ A *function.json* fájl egy *sorrendnevű mappában*konfigurálja a HTTP által 
 
 ```
 
-Ez a függvény [HTTP-alapú függvényként](./functions-bindings-http-webhook-trigger.md) van definiálva, amely [HTTP-választ](./functions-bindings-http-webhook-output.md) ad vissza, és [várólista-tárolási](./functions-bindings-storage-queue-output.md) üzenetet ad ki.
+Ez a függvény olyan http- [triggert használó függvényként](./functions-bindings-http-webhook-trigger.md) van meghatározva, amely [http-választ](./functions-bindings-http-webhook-output.md) ad vissza, és egy [üzenetsor-tárolási](./functions-bindings-storage-queue-output.md) üzenetet küld.
 
-Az alkalmazás gyökerében a *host.json* fájl úgy van beállítva, `server.js` hogy futtassa a Node.js fájlt, és irányítsa a fájlt.
+Az alkalmazás gyökerében a *Host. JSON* fájl a Node. js futtatására van konfigurálva, és rámutat a `server.js` fájlra.
 
 ```json
 {
@@ -347,7 +347,7 @@ Az alkalmazás gyökerében a *host.json* fájl úgy van beállítva, `server.js
 }
 ```
 
-A *server.js* fájl webkiszolgálót és HTTP-függvényt valósít meg.
+A fájlkiszolgáló *. js* fájl egy webkiszolgálót és egy http-függvényt valósít meg.
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-Ebben a példában az Express webkiszolgálót hoz létre a HTTP-események `FUNCTIONS_HTTPWORKER_PORT`kezelésére, és úgy van beállítva, hogy a kéréseket a segítségével figyelje.
+Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a `FUNCTIONS_HTTPWORKER_PORT`-on keresztüli kérelmek figyelésére van beállítva.
 
-A függvény a elérési útján `/order` van definiálva.  A rendelési függvény útvonala itt van, `/order` és nem `/api/order` azért, mert a Functions állomás proxya a kérelmet az egyéni kezelő.
+A függvény a következő elérési úton van `/order` definiálva:.  A Order függvény útvonala itt van `/order` , és nem `/api/order` , mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
 
-A `POST` függvénynek küldött kérelmek során az adatok néhány ponton keresztül jelennek meg:
+Mivel `POST` a rendszer a kérelmeket elküldi erre a függvénybe, az adat néhány ponton elérhetővé válnak:
 
-- A kérés törzse elérhető a`req.body`
-- A funkcióba küldött adatok a`req.body.Data.req.Body`
+- A kérelem törzse a-on keresztül érhető el`req.body`
+- A függvénynek közzétett adat a következőn keresztül érhető el`req.body.Data.req.Body`
 
-A függvény válasza egy kulcs/érték párba van `Outputs` formázva, ahol a tag jSON-értékkel rendelkezik, ahol a kulcsok megegyeznek a *function.json* fájlban meghatározott kimenetekkel.
+A függvény válasza egy kulcs/érték párokba van formázva, `Outputs` ahol a tag olyan JSON-értéket tartalmaz, amelyben a kulcsok megfelelnek a *function. JSON* fájlban meghatározott kimeneteknek.
 
-Ha `message` a kérelemből érkező üzenettel és `res` a várt HTTP-válaszsal egyenlő beállítást állít be, ez a függvény üzenetet küld a várólista-tárolónak, és HTTP-választ ad vissza.
+Ha a `message` kérelemben szereplő üzenettel egyenlő értéket ad meg, és `res` a várt http-válaszra van állítva, akkor ez a függvény egy üzenetet küld Queue Storage és egy http-választ ad vissza.
 
 ## <a name="debugging"></a>Hibakeresés
 
-A Functions egyéni kezelőalkalmazás hibakereséséhez a hibakeresés engedélyezéséhez hozzá kell adnia a nyelvnek és a futásidejűnek megfelelő argumentumokat.
+A functions egyéni kezelő alkalmazás hibakereséséhez hozzá kell adnia a nyelv és a futtatókörnyezet megfelelő argumentumait a hibakeresés engedélyezéséhez.
 
-Például egy Node.js alkalmazás hibakereséséhez a `--inspect` jelző argumentumként kerül átadásra a *host.json* fájlban.
+Egy Node. js-alkalmazás hibakereséséhez például a `--inspect` jelzőt a *Host. JSON* fájlban lévő argumentumként adja át a rendszer.
 
 ```json
 {
@@ -412,21 +412,21 @@ Például egy Node.js alkalmazás hibakereséséhez a `--inspect` jelző argumen
 ```
 
 > [!NOTE]
-> A hibakeresési konfiguráció a *host.json* fájl része, ami azt jelenti, hogy előfordulhat, hogy el kell távolítania néhány argumentumot az éles környezetben való üzembe helyezés előtt.
+> A hibakeresési konfiguráció a *Host. JSON* fájl részét képezi, ami azt jelenti, hogy előfordulhat, hogy el kell távolítania a néhány argumentumot az éles környezetbe való üzembe helyezés előtt.
 
-Ezzel a konfigurációval a függvény gazdafolyamatát a következő paranccsal indíthatja el:
+Ezzel a konfigurációval elindíthatja a függvény gazdagépének folyamatát a következő parancs használatával:
 
 ```bash
 func host start
 ```
 
-A folyamat indítása után csatolhat egy hibakeresőt, és leléphet a töréspontokhoz.
+A folyamat elindítása után a hibakereső és a találati töréspontok is csatolhatók.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-A következő példa egy mintakonfiguráció, amely bemutatja, hogyan állíthatja be a *launch.json* fájlt, hogy csatlakoztassa az alkalmazást a Visual Studio kód hibakereső.
+A következő példa egy minta-konfiguráció, amely bemutatja, hogyan állíthatja be a *Launch. JSON* fájlt az alkalmazás a Visual Studio Code debuggerhez való összekapcsolásához.
 
-Ez a példa a Node.js, így előfordulhat, hogy módosítania kell ezt a példát más nyelveken vagy futásidőkben.
+Ez a példa a Node. js-re vonatkozik, ezért előfordulhat, hogy módosítania kell ezt a példát más nyelvekre vagy futtatókörnyezetekre.
 
 ```json
 {
@@ -445,13 +445,13 @@ Ez a példa a Node.js, így előfordulhat, hogy módosítania kell ezt a példá
 
 ## <a name="deploying"></a>Telepítése
 
-Az egyéni kezelő szinte minden Azure Functions üzemeltetési lehetőséghez telepíthető (lásd a [korlátozásokat).](#restrictions) Ha a kezelő egyéni függőségeket (például nyelvi futásidejűt) igényel, előfordulhat, hogy egyéni tárolót kell [használnia.](./functions-create-function-linux-custom-image.md)
+Az egyéni kezelők szinte minden Azure Functions üzemeltetési lehetőséghez üzembe helyezhetők (lásd a [korlátozásokat](#restrictions)). Ha a kezelő egyéni függőségeket (például nyelvi futtatókörnyezetet) igényel, előfordulhat, hogy [Egyéni tárolót](./functions-create-function-linux-custom-image.md)kell használnia.
 
 ## <a name="restrictions"></a>Korlátozások
 
-- Az egyéni kezelők nem támogatottak a Linux-felhasználási tervekben.
-- A webszervernek 60 másodpercen belül el kell indulnia.
+- A Linux-fogyasztási csomagok nem támogatják az egyéni kezelőket.
+- A webkiszolgálónak 60 másodpercen belül el kell indulnia.
 
 ## <a name="samples"></a>Példák
 
-Tekintse meg az [egyéni kezelő minták GitHub-tárházban](https://github.com/Azure-Samples/functions-custom-handlers) példákat, hogyan valósítható meg függvények különböző nyelveken.
+Tekintse át az [Egyéni kezelő a GitHub](https://github.com/Azure-Samples/functions-custom-handlers) -tárházat, amely példákat mutat be a függvények különböző nyelveken való megvalósítására.

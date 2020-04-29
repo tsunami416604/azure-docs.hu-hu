@@ -1,27 +1,27 @@
 ---
-title: Virtuálisgép-méretezési készlet konfigurálása meglévő Azure-terheléselosztóval – Azure PowerShell
-description: Ismerje meg, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel.
+title: Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer-Azure PowerShell
+description: Megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/26/2020
 ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349995"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Virtuálisgép-méretezési készlet konfigurálása meglévő Azure Load Balancer-rel az Azure PowerShell használatával
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer használatával Azure PowerShell
 
-Ebben a cikkben megtudhatja, hogyan konfigurálhatja a virtuális gép méretezési készlet egy meglévő Azure Load Balancer. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés.
-- Egy meglévő szabványos sku terheléselosztó az előfizetésben, ahol a virtuális gép méretezési csoport lesz telepítve.
-- Egy Azure virtuális hálózat a virtuális gép méretezési készlet.
+- Egy meglévő standard SKU-terheléselosztó abban az előfizetésben, amelyben a virtuálisgép-méretezési csoport telepítve lesz.
+- Egy Azure-Virtual Network a virtuálisgép-méretezési csoport számára.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -35,9 +35,9 @@ Jelentkezzen be az Azure-ba.
 Connect-AzAccount
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési csoport üzembe helyezése meglévő terheléselosztóval
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési csoport üzembe helyezése meglévő Load balancerrel
 
-Cserélje le a zárójelben lévő értékeket a konfigurációban lévő erőforrások nevére.
+Cserélje le a zárójelben lévő értékeket a konfigurációban található erőforrások nevére.
 
 ```azurepowershell-interactive
 
@@ -55,12 +55,12 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 ```
 
-Az alábbi példa egy virtuálisgép-méretezési készletet telepít a következőkkel:
+Az alábbi példa egy virtuálisgép-méretezési csoport üzembe helyezését mutatja be:
 
-- **MyVMSS** nevű virtuálisgép-méretezési készlet
-- Az Azure Load Balancer nevű Azure load **balancer**
-- **MyBackendPool** nevű terheléselosztó háttérkészlete
-- Az Azure virtuális hálózat neve **myVnet**
+- **MyVMSS** nevű virtuálisgép-méretezési csoport
+- Azure Load Balancer nevű **myLoadBalancer**
+- **MyBackendPool** nevű terheléselosztó-háttérbeli készlet
+- **MyVnet** nevű Azure Virtual Network
 - **MySubnet** nevű alhálózat
 - **MyResourceGroup** nevű erőforráscsoport
 
@@ -79,11 +79,11 @@ $lb = Get-AzLoadBalancer -ResourceGroupName $rsg -Name $lbn
 New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualNetworkName $vnt -SubnetName $sub -LoadBalancerName $lb -UpgradePolicyMode $pol
 ```
 > [!NOTE]
-> A méretezési készlet létrehozása után a háttérport nem módosítható a terheléselosztó állapotminta által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapotminta az Azure virtuálisgép-méretezési készlet frissítésével, frissítse a portot, majd konfigurálja újra az állapotminta.
+> A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben üzembe helyezett egy virtuális gép méretezési készlet egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési készletekről és a terheléselosztóról a következő témakörben olvashat bővebben:
+Ebben a cikkben egy virtuálisgép-méretezési csoport üzembe helyezését egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési csoportokról és a Load balancerről további információt a következő témakörben talál:
 
 - [Mi az az Azure Load Balancer?](load-balancer-overview.md)
 - [Mik a virtuálisgép-méretezési csoportok?](../virtual-machine-scale-sets/overview.md)

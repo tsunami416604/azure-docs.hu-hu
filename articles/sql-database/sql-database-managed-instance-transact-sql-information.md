@@ -12,10 +12,10 @@ ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: e01c61ca4f415ffbb46c86034d4b7441bc2617d9
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80365494"
 ---
 # <a name="managed-instance-t-sql-differences-and-limitations"></a>Felügyelt példányok – T-SQL különbségek és korlátozások
@@ -184,7 +184,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 - A [szolgáltatás főkulcsának biztonsági mentése](/sql/t-sql/statements/backup-service-master-key-transact-sql) nem támogatott (SQL Database szolgáltatás által felügyelt).
 - A [szolgáltatás főkulcsának visszaállítása](/sql/t-sql/statements/restore-service-master-key-transact-sql) nem támogatott (SQL Database szolgáltatás által felügyelt).
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 ### <a name="buffer-pool-extension"></a>Puffer-készlet kiterjesztése
 

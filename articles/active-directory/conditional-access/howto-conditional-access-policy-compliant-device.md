@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférés – Megfelelő eszközök megkövetelése – Azure Active Directory
+title: Feltételes hozzáférés – megfelelő eszközök megkövetelése – Azure Active Directory
 description: Egyéni feltételes hozzáférési szabályzat létrehozása a megfelelő eszközök megköveteléséhez
 services: active-directory
 ms.service: active-directory
@@ -12,57 +12,57 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc6bd486c1e8338eaf875c7026764c80d49e2f05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295197"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Feltételes hozzáférés: Megfelelő eszközök megkövetelése
+# <a name="conditional-access-require-compliant-devices"></a>Feltételes hozzáférés: megfelelő eszközök megkövetelése
 
-A Microsoft Intune-t üzembe helyező szervezetek az eszközeikről visszaküldött adatok alapján azonosíthatják a megfelelőségi követelményeknek megfelelő eszközöket, például a következőket:
+A Microsoft Intune központilag telepített szervezetek a megfelelőségi követelményeknek megfelelő eszközök azonosítására használhatják az eszközük által visszaadott adatokat, például:
 
-* PIN-kód feloldása
-* Eszköztitkosítás megkövetelése
+* PIN-kód feloldásának megkövetelése
+* Eszköz titkosításának megkövetelése
 * Az operációs rendszer minimális vagy maximális verziójának megkövetelése
-* Az eszköz megkövetelése nem feltört vagy gyökerezik
+* Az eszköz megkövetelése nem feltört vagy feltört
 
-Ezt a szabályzatmegfelelőségi információkat továbbítja az Azure AD, ahol a feltételes hozzáférés hozhat döntéseket az erőforrásokhoz való hozzáférés engedélyezéséről vagy letiltásáról. Az eszközmegfelelőségi szabályzatokról további információ a cikkben, [a Szabályok beállítása az eszközökön, hogy az Intune használatával hozzáférést biztosítson a szervezet erőforrásaihoz.](/intune/protect/device-compliance-get-started)
+A szabályzat megfelelőségi információi továbbítva lesznek az Azure AD-nek, ahol a feltételes hozzáférés az erőforrásokhoz való hozzáférés engedélyezésére vagy letiltására vonatkozó döntéseket hozhat. További információ az eszköz megfelelőségi házirendjeiről a cikkben található, [szabályok beállítása eszközökön a szervezet erőforrásaihoz való hozzáférés engedélyezéséhez az Intune használatával](/intune/protect/device-compliance-get-started)
 
-## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása
+## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-A következő lépések segítségével hozzon létre egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy az erőforrásokhoz hozzáférő eszközök a szervezet Intune megfelelőségi szabályzatainak megfelelőként legyenek megjelölve.
+A következő lépések segítséget nyújtanak egy feltételes hozzáférési szabályzat létrehozásához, amely megköveteli, hogy az erőforrások eléréséhez szükséges eszközök megfeleljenek a szervezet Intune megfelelőségi szabályzatának.
 
-1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
-1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Válassza az **Új házirend lehetőséget.**
-1. Adjon nevet a szabályzatának. Azt javasoljuk, hogy a szervezetek hozzanak létre egy értelmes szabvány a házirendek nevét.
-1. A **Hozzárendelések**csoportban válassza a **Felhasználók és csoportok lehetőséget.**
-   1. A **Belefoglalás**csoportban válassza a **Minden felhasználó lehetőséget.**
-   1. A **Kizárás csoportban**válassza a **Felhasználók és csoportok** lehetőséget, és válassza ki a szervezet vészelérési vagy törésüvegfiókjait. 
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
+   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Felhőalapú alkalmazások vagy műveletek** > közé tartozik a**Include csoportban**válassza az Összes **felhőalapú alkalmazás**lehetőséget.
-   1. Ha bizonyos alkalmazásokat ki kell zárnia a szabályzatból, **kiválaszthatja** őket a Kizárt **felhőalkalmazások kiválasztása** csoport Kizárás lapján, és a **Kijelölés lehetőséget.**
+1. A **Cloud apps vagy a műveletek** > területen**válassza a** **minden felhőalapú alkalmazás**lehetőséget.
+   1. Ha ki kell zárnia bizonyos alkalmazásokat a szabályzatból, kiválaszthatja őket a **kizárás lapon** a **kizárt felhőalapú alkalmazások kiválasztása** területen, majd válassza a **kiválasztás**lehetőséget.
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Feltételek** > **az ügyfélalkalmazások (előzetes verzió)** csoportban állítsa a **Konfigurálás** beállítást **Igen**értékre, és válassza a **Kész gombot.**
-1. A**Grant** **Access-vezérlők csoportban** > jelölje be Az **eszköz megfelelőként való megjelölésének megkövetelése**jelölőnégyzetet.
+1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés** > **megadása**területen jelölje be az **eszköz megfelelőként való megjelölésének megkövetelése**jelölőnégyzetet.
    1. Válassza a **Kiválasztás** lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa a **Házirend engedélyezése** **be**beállítást.
-1. A létrehozás gombra a házirend engedélyezéséhez válassza a **Létrehozás** gombot.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 > [!NOTE]
-> Az új eszközöket akkor is regisztrálhatja az Intune-ba, ha a fenti lépésekkel az eszköz minden **felhasználó** számára **megfelelőként való megjelölése megkövetelése** lehetőséget választja, és minden **felhőalapú alkalmazáshoz.** **Az eszköz megfelelő vezérlőként való megjelölésének megkövetelése** nem blokkolja az Intune-regisztrációt. 
+> Az új eszközöket regisztrálhatja az Intune-ban, még akkor is, ha bejelöli az **eszköz megfelelőként való megjelölésének megkövetelése** az **összes felhasználó** és az **összes felhőalapú alkalmazás** számára a fenti lépésekkel. Az **eszköz megfelelőségi vezérlőként való megjelölésének megkövetelése** nem blokkolja az Intune-regisztrációt. 
 
 ### <a name="known-behavior"></a>Ismert viselkedés
 
-Windows 7, iOS, Android, macOS és néhány külső webböngészők az Azure AD azonosítja az eszközt egy ügyfél-tanúsítvány, amely ki van építve, ha az eszköz regisztrálva van az Azure AD. Amikor egy felhasználó először jelentkezik be a böngészőn keresztül, a rendszer kéri, hogy válassza ki a tanúsítványt. A végfelhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhatja a böngészőt.
+Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[Hatás meghatározása csak feltételes hozzáférésű jelentésmódhasználatával](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
-[Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)
+[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Az eszközmegfelelőségi szabályzatok együttműködnek az Azure AD-vel](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
+[Az eszközök megfelelőségi szabályzatai működnek az Azure AD-vel](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

@@ -1,6 +1,6 @@
 ---
-title: Dynamics 365 megoldás előkészítése
-description: Az összetevők csomagolásának, telepítésének és eltávolításának keretrendszere
+title: Dynamics 365-megoldás előkészítése
+description: Az összetevők csomagolására, telepítésére és eltávolítására szolgáló keretrendszer
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278586"
 ---
-# <a name="dynamics-365-solution-preparation"></a>Dynamics 365 megoldás előkészítése
+# <a name="dynamics-365-solution-preparation"></a>Dynamics 365-megoldás előkészítése
 
-A Dynamics 365 megoldásrendszer olyan összetevők csomagolásának, telepítésének és eltávolításának keretrendszere, amelyek speciális üzleti funkciókat biztosítanak. A megoldásokat a független szoftverszállítók és más Microsoft Dynamics 365 partnerek használják az általuk létrehozott bővítmények terjesztésére.
+A Dynamics 365 megoldási rendszer egy olyan keretrendszer, amely adott üzleti funkciókat biztosító összetevők csomagolását, telepítését és eltávolítását végzi. A megoldásokat az ISV-ket és más Microsoft Dynamics 365-partnerek használják a létrehozott bővítmények terjesztésére.
 
-Ha Ön már létező Dynamics 365 (xRM) független szoftverszoftver, valószínűleg már létrehozott egy felügyelt megoldást, és rendelkezik solution.zip fájllal. A megoldásban győződjön meg arról, hogy a "Megjelenítendő név" és a "Leírás" mezők tükrözik azt, amit az ügyfeleknek látniuk kell. Ezek a CRM Online Felügyeleti központban jelennek meg.
+Ha Ön egy meglévő Dynamics 365 (xRM) ISV, akkor valószínűleg már létrehozott egy felügyelt megoldást, és a megoldás. zip fájllal rendelkezik. A megoldásban győződjön meg arról, hogy a "megjelenítendő név" és a "Leírás" mező azt tükrözi, hogy mit szeretne látni az ügyfeleknek. Ezek a CRM Online felügyeleti központban jelennek meg.
 
 ![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**Megjegyzés:** A csomag példájában az alábbi példában azt feltételezzük, hogy a megoldás neve "SampleSolution.zip"_
+_**Megjegyzés:** A következő csomag példájában feltételezzük, hogy a megoldás neve "SampleSolution. zip" lesz._
 
-Ha Ön új isv-szolgáltató, további részleteket kaphat a megoldás létrehozásáról itt:[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
+Ha Ön új ISV-t használ, további részletekért tekintse meg a megoldás létrehozását:[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 
-Ha a megoldás alátámasztó adatokat igényel:
+Ha a megoldás támogatási adatait igényli:
 
 * A mintaadatok létrehozása a tesztkörnyezetben
-* A Konfigurációs áttelepítés eszköz segítségével hozzon létre egy sémát az adatok összehasonlítási szabályaival.
-* Mentse a konfigurációs sémát a projektfájlokkal. Erre később szüksége lesz, ha frissíti a konfigurációs adatokat.
-* Exportálja a konfigurációs adatokat. Ügyeljen arra, hogy az exportfájlnak olyan nevet adjon, amely az exportálás számára jelentőségteljes.
+* A konfiguráció áttelepítési eszközével létrehozhat egy sémát az adataihoz tartozó összehasonlító szabályokkal.
+* Mentse a konfigurációs sémát a Project-fájljaival. Ha frissíti a konfigurációs adatait, később szüksége lesz rá.
+* Exportálja a konfigurációs adatait. Ügyeljen arra, hogy az exportfájl olyan nevet adjon, amely értelmes az exportáláshoz.

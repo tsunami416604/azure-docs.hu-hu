@@ -1,6 +1,6 @@
 ---
-title: Eszköztanúsítványok kezelése - Azure IoT Edge | Microsoft dokumentumok
-description: Hozzon létre teszttanúsítványokat, telepítse és kezelje őket egy Azure IoT Edge-eszközön az éles telepítés előkészítéséhez.
+title: Eszközök tanúsítványainak kezelése – Azure IoT Edge | Microsoft Docs
+description: Hozzon létre tesztelési tanúsítványokat, telepítsen és kezelje őket egy Azure IoT Edge eszközön az éles üzembe helyezés előkészítéséhez.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,67 +9,67 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79539207"
 ---
-# <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése IoT Edge-eszközön
+# <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
-Minden IoT Edge-eszköz tanúsítványok használatával hoz létre biztonságos kapcsolatokat a futtatófa és az eszközön futó modulok között. Az átjáróként működő IoT Edge-eszközök ugyanazokat a tanúsítványokat használják az alsóbb rétegbeli eszközeikhez való csatlakozáshoz is.
+Minden IoT Edge eszköz tanúsítványokat használ a futtatókörnyezet és az eszközön futó modulok közötti biztonságos kapcsolatok létrehozásához. IoT Edge az átjáróként működő eszközök ugyanezeket a tanúsítványokat használják az alsóbb rétegbeli eszközökhöz való kapcsolódáshoz.
 
 ## <a name="install-production-certificates"></a>Éles tanúsítványok telepítése
 
-Amikor először telepíti az IoT Edge-et, és kiépíti az eszközt, az eszköz ideiglenes tanúsítványokkal van beállítva, hogy tesztelhesse a szolgáltatást.
-Ezek az ideiglenes tanúsítványok 90 napon belül lejárnak, vagy a számítógép újraindításával alaphelyzetbe állíthatók.
-Ha készen áll arra, hogy az eszközöket éles környezetbe helyezze át, vagy hozzon létre egy átjáró-forgatókönyvet, saját tanúsítványokat kell megadnia.
-Ez a cikk bemutatja a tanúsítványok telepítésének lépéseit az IoT Edge-eszközökön.
+Amikor először telepíti IoT Edge és kiépíti az eszközt, az eszköz ideiglenes tanúsítvánnyal lesz beállítva, hogy tesztelni tudja a szolgáltatást.
+Ezek az ideiglenes tanúsítványok 90 nap múlva lejárnak, vagy visszaállíthatók a gép újraindításával.
+Ha készen áll az eszközök éles környezetbe való áthelyezésére, vagy egy átjárót szeretne létrehozni, meg kell adnia a saját tanúsítványait.
+Ez a cikk bemutatja a tanúsítványok IoT Edge-eszközökön való telepítésének lépéseit.
 
-Ha többet szeretne megtudni a különböző típusú tanúsítványokról és azok szerepköreiről egy IoT Edge-forgatókönyvben, [olvassa el A tanúsítványok Azure IoT Edge-használati módjának megismerése](iot-edge-certs.md)című témakört.
+Ha többet szeretne megtudni a tanúsítványok különböző típusairól és szerepköreiről IoT Edge forgatókönyvben, tekintse meg a [Azure IoT Edge tanúsítványok használatának ismertetése](iot-edge-certs.md)című témakört.
 
 >[!NOTE]
->A "legfelső szintű hitelesítésszolgáltató" ebben a cikkben használt kifejezés az IoT-megoldás tanúsítványláncának legfelső hatósági nyilvános tanúsítványára hivatkozik. Nem kell használnia a konzorciális hitelesítésszolgáltató tanúsítványgyúját vagy a szervezet hitelesítésszolgáltatójának gyökerét. Sok esetben ez valójában egy köztes hitelesítésszolgáltató nyilvános tanúsítvány.
+>Az ebben a cikkben használt "legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" kifejezés a IoT-megoldáshoz tartozó tanúsítványlánc legfelső szintű nyilvános tanúsítványára vonatkozik. Nem kell használnia egy konzorciális hitelesítésszolgáltató tanúsítványának gyökerét vagy a szervezet hitelesítésszolgáltatójának gyökerét. Sok esetben valójában egy közbenső HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 * IoT Edge-eszköz, amely [Windows](how-to-install-iot-edge-windows.md) vagy [Linux](how-to-install-iot-edge-linux.md)rendszeren fut.
-* Rendelkeznie kell egy legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal, amely saját maga által aláírt, vagy megbízható kereskedelmi hitelesítésszolgáltatótól ( például Baltimore, Verisign, DigiCert vagy GlobalSign) vásárolt.
+* Rendelkeznie kell egy legfelső szintű hitelesítésszolgáltató (CA) tanúsítvánnyal, amely önaláírt vagy megbízható kereskedelmi hitelesítésszolgáltatótól vásárolt, például Baltimore, VeriSign, DigiCert vagy GlobalSign.
 
-Ha még nem rendelkezik legfelső szintű hitelesítésszolgáltatóval, de ki szeretné próbálni az IoT Edge-funkciókat, amelyek éles tanúsítványokat (például átjáróforgatókönyveket) igényelnek, [dedenokolhatja az IoT Edge-eszközszolgáltatások teszteléséhez.](how-to-create-test-certificates.md)
+Ha még nem rendelkezik legfelső szintű hitelesítésszolgáltatóval, de szeretné kipróbálni IoT Edge olyan szolgáltatásokat, amelyek éles tanúsítványokat igényelnek (például átjárói forgatókönyvek), létrehozhat [bemutató-tanúsítványokat a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md).
 
-### <a name="create-production-certificates"></a>Termelési tanúsítványok létrehozása
+### <a name="create-production-certificates"></a>Éles tanúsítványok létrehozása
 
-A következő fájlok létrehozásához saját hitelesítésszolgáltatót kell használnia:
+A következő fájlok létrehozásához használja a saját hitelesítésszolgáltatóját:
 
 * Legfelső szintű hitelesítésszolgáltató
-* Eszközhitelesítéstanúsítvány
-* Az eszközhitelesítéshez tartozó személyes kulcs
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI titkos kulcsa
 
-Ebben a cikkben a *legfelső hitelesítésszolgáltatónem* a legfelső hitelesítésszolgáltató. Ez az IoT Edge-forgatókönyv legfelső hitelesítésszolgáltatója, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök egymás közötti megbízhatóság idomok létrehozásához használnak.
+Ebben a cikkben a *legfelső szintű hitelesítésszolgáltatót* nevezzük, nem pedig a szervezet legfelső szintű hitelesítésszolgáltatója. Ez a legfelső szintű hitelesítésszolgáltató a IoT Edge-forgatókönyvhöz, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök az egymás közötti megbízhatósági kapcsolat létrehozására használnak.
 
-Ha példát szeretne látni ezekre a tanúsítványokra, tekintse át azokat a parancsfájlokat, amelyek demótanúsítványokat hoznak létre a teszthitelesítési tanúsítványok kezelése című témakörben [a minták és oktatóanyagok számára.](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)
+Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutató tanúsítványokat létrehozó parancsfájlokat a [teszt hitelesítésszolgáltatói tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)című témakörben.
 
-### <a name="install-certificates-on-the-device"></a>Tanúsítványok telepítése az eszközre
+### <a name="install-certificates-on-the-device"></a>Tanúsítványok telepítése az eszközön
 
-Telepítse a tanúsítványláncot az IoT Edge-eszközön, és konfigurálja az IoT Edge futásidejű hivatkozva az új tanúsítványokat.
+Telepítse a tanúsítványláncot a IoT Edge eszközre, és konfigurálja a IoT Edge futtatókörnyezetet az új tanúsítványokra való hivatkozáshoz.
 
-Ha például a mintaparancsfájlokat használta [a bemutatótanúsítványok létrehozásához,](how-to-create-test-certificates.md)másolja a következő fájlokat az IoT-Edge eszközre:
+Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja át az alábbi fájlokat a IoT-peremhálózati eszközre:
 
-* Eszközhitelesítéstanúsítvány:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-* Eszközhitelesítésszemélyes kulcsa:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-* Legfelső szintű hitelesítésterület:Root CA:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
+* Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. Másolja a három tanúsítványt és a kulcsfájlokat az IoT Edge-eszközre.
+1. Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre.
 
-   Használhatja a szolgáltatást, például [az Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a függvény, például a Secure copy [protokoll](https://www.ssh.com/ssh/scp/) a tanúsítványfájlok áthelyezéséhez.  Ha maga az IoT Edge-eszközön hozta létre a tanúsítványokat, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
+   Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
 
-1. Nyissa meg az IoT Edge biztonsági démon konfigurációs fájlját.
+1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
 
-   * Windows:`C:\ProgramData\iotedge\config.yaml`
-   * Linux:`/etc/iotedge/config.yaml`
+   * Windows`C:\ProgramData\iotedge\config.yaml`
+   * Linux`/etc/iotedge/config.yaml`
 
-1. Állítsa be a **tanúsítvány** tulajdonságait a config.yaml fájlban a teljes elérési utat a tanúsítvány és a kulcsfájlok at az IoT Edge-eszközön. A `#` tanúsítvány tulajdonságai előtti karakter eltávolítása a négy sor megjegyzésének megszüntetéséhez. Győződjön meg arról, hogy a **tanúsítványok:** sor nem rendelkezik előző szóközzel, és hogy a beágyazott elemeket két szóköz bevan húzva. Példa:
+1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML fájlban a tanúsítvány és a kulcs fájljainak teljes elérési útjára a IoT Edge eszközön. Távolítsa `#` el a karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
    * Windows:
 
@@ -89,29 +89,29 @@ Ha például a mintaparancsfájlokat használta [a bemutatótanúsítványok lé
         trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
       ```
 
-1. Linux-eszközökön győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási engedéllyel a tanúsítványokat tároló könyvtárhoz.
+1. Linux-eszközökön ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e olvasási engedéllyel a tanúsítványokat tároló címtárhoz.
 
-1. Ha korábban már használt más tanúsítványokat az IoT Edge-hez az eszközön, törölje a fájlokat a következő két könyvtárban az IoT Edge indítása vagy újraindítása előtt:
+1. Ha korábban más tanúsítványokat használt IoT Edgehoz az eszközön, a IoT Edge elindítása vagy újraindítása előtt törölje a fájlokat a következő két könyvtárban:
 
    * Windows: `C:\ProgramData\iotedge\hsm\certs` és`C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux: `/var/lib/iotedge/hsm/certs` és`/var/lib/iotedge/hsm/cert_keys`
 
-## <a name="customize-certificate-lifetime"></a>Tanúsítvány élettartamának testreszabása
+## <a name="customize-certificate-lifetime"></a>A tanúsítvány élettartamának testreszabása
 
-Az IoT Edge több esetben automatikusan létrehozza a tanúsítványokat az eszközön, többek között:
+IoT Edge több esetben automatikusan hoz létre tanúsítványokat az eszközön, beleértve a következőket:
 
-* Ha az IoT Edge telepítésekor és üzembe helyezésekor nem adja meg a saját termelési tanúsítványait, az IoT Edge biztonsági kezelője automatikusan létrehoz egy **eszközhitelesítési tanúsítványt.** Ez az önaláírt tanúsítvány csak fejlesztési és tesztelési forgatókönyvek, nem éles környezetben. Ez a tanúsítvány 90 nap után lejár.
-* Az IoT Edge biztonsági kezelője egy **számítási feladat hitelesítésszolgáltatói tanúsítványt** is létrehoz, amelyet az eszköz hitelesítésszolgáltatói tanúsítványa írt alá
+* Ha nem ad meg saját éles tanúsítványokat a IoT Edge telepítésekor és kiépítésekor, akkor a IoT Edge Security Manager automatikusan létrehoz egy **eszköz hitelesítésszolgáltatói tanúsítványát**. Ez az önaláírt tanúsítvány kizárólag fejlesztési és tesztelési célokra szolgál, nem éles környezetben. Ez a tanúsítvány 90 nap után lejár.
+* A IoT Edge Security Manager az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa által aláírt **MUNKATERHELÉS hitelesítésszolgáltatói tanúsítványt** is létrehoz.
 
-Az IoT Edge-eszközön lévő különböző tanúsítványok funkciójáról további információt [a Ismerje meg, hogyan használja az Azure IoT Edge a tanúsítványokat.](iot-edge-certs.md)
+További információ a IoT Edge eszköz különböző tanúsítványainak funkciójával kapcsolatban: a [Azure IoT Edge tanúsítványok használatának ismertetése](iot-edge-certs.md).
 
-E két automatikusan létrehozott tanúsítvány esetén beállíthatja a **auto_generated_ca_lifetime_days** jelzőt a config.yaml fájlban a tanúsítványok élettartama szerinti napok számának beállításához.
+A két automatikusan generált tanúsítvány esetében beállíthatja a **auto_generated_ca_lifetime_days** jelzőt a config. yamlban a tanúsítványok élettartamára vonatkozó napok számának beállításához.
 
 >[!NOTE]
->Van egy harmadik automatikusan létrehozott tanúsítvány, amelyet az IoT Edge biztonsági kezelője hoz létre, az **IoT Edge hub server tanúsítvány.** Ennek a tanúsítványnak mindig 90 napja van, de a lejárat előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nincs hatással erre a tanúsítványra.
+>Létezik egy harmadik automatikusan generált tanúsítvány, amelyet a IoT Edge Security Manager hoz létre, a **IoT Edge hub-kiszolgáló tanúsítványát**. A tanúsítványnak mindig 90 nap, de a lejárata előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nem befolyásolja ezt a tanúsítványt.
 
-Ha a tanúsítvány lejáratát nem az alapértelmezett 90 napra szeretné **certificates** beállítani, adja hozzá az értéket napokban a config.yaml fájl tanúsítványszakaszában.
+Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a config. YAML fájl **tanúsítványok** szakaszába.
 
 ```yaml
 certificates:
@@ -121,15 +121,15 @@ certificates:
   auto_generated_ca_lifetime_days: <value>
 ```
 
-Ha saját eszközhitelesítési tanúsítványokat adott meg, akkor ez az érték továbbra is vonatkozik a számítási feladat hitelesítésszolgáltatói tanúsítványára, feltéve, hogy a beállított élettartamú érték rövidebb, mint az eszköz hitelesítésszolgáltatói tanúsítványának élettartama.
+Ha a saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványait biztosította, akkor ez az érték továbbra is érvényes a munkaterhelés HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, ha a beállított élettartam értéke rövidebb, mint az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának élettartama.
 
-Miután megadta a jelzőt a config.yaml fájlban, tegye a következő lépéseket:
+Miután megadta a jelölőt a config. YAML fájlban, hajtsa végre a következő lépéseket:
 
 1. Törölje a `hsm` mappa tartalmát.
 
    Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux:`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
-1. Indítsa újra az IoT Edge-szolgáltatást.
+1. Indítsa újra a IoT Edge szolgáltatást.
 
    Windows:
 
@@ -143,7 +143,7 @@ Miután megadta a jelzőt a config.yaml fájlban, tegye a következő lépéseke
    sudo systemctl restart iotedge
    ```
 
-1. Erősítse meg az élettartam-beállítást.
+1. Erősítse meg az élettartam beállítást.
 
    Windows:
 
@@ -157,8 +157,8 @@ Miután megadta a jelzőt a config.yaml fájlban, tegye a következő lépéseke
    sudo iotedge check --verbose
    ```
 
-   Ellenőrizze a **termelési készenlét: tanúsítványok** ellenőrzése, amely felsorolja a napok száma, amíg az automatikusan generált eszköz hitelesítésszolgáltató itanúsítványok lejár.
+   Tekintse meg az **éles készültségi** egység kimenetét: tanúsítványok ellenőrzését, amely felsorolja, hogy hány nap elteltével járjon le az automatikusan létrehozott hitelesítésszolgáltatói tanúsítványok érvényessége.
 
 ## <a name="next-steps"></a>További lépések
 
-A tanúsítványok telepítése egy IoT Edge-eszközön szükséges lépés a megoldás éles környezetben való üzembe helyezése előtt. További információ arról, hogyan [készülhet fel az IoT Edge-megoldás éles környezetben való üzembe helyezésére.](production-checklist.md)
+A tanúsítványok IoT Edge eszközön történő telepítése szükséges lépés a megoldás éles környezetben történő üzembe helyezése előtt. További információ a [IoT Edge-megoldás éles környezetben való üzembe helyezésének előkészítéséről](production-checklist.md).

@@ -1,6 +1,6 @@
 ---
-title: Az SAP NetWeaver magas rendelkezésre állású Azure-gépei az SLES multi-SID útmutatójában | Microsoft dokumentumok
-description: Multi-SID magas rendelkezésre állású útmutató az SAP NetWeaver számára a SUSE Linux Enterprise Server SAP-alkalmazásokhoz
+title: Azure-beli virtuális gépek magas rendelkezésre állása az SAP NetWeaver számára a SLES multi-SID útmutatóban | Microsoft Docs
+description: Többszörös SID – magas rendelkezésre állási útmutató SAP NetWeaver-hez SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350061"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Az SAP NetWeaver magas rendelkezésre állása az Azure virtuális gépein az Sap-alkalmazásokhoz készült több SID-alkalmazásokhoz szolgáltatásban
+# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -54,144 +54,144 @@ ms.locfileid: "80350061"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk ismerteti, hogyan telepíthet több SAP NetWeaver vagy S4HANA magas rendelkezésre állású rendszerek (azaz több-SID) egy két csomópontfürt az Azure-beli virtuális gépek SUSE Linux Enterprise Server SAP-alkalmazások.  
+Ez a cikk azt ismerteti, hogyan helyezhetők üzembe több SAP NetWeaver-vagy S4HANA-kompatibilis rendszer (azaz több SID) az Azure-beli virtuális gépeken futó két csomópontos fürtön SUSE Linux Enterprise Server SAP-alkalmazásokhoz.  
 
-A példakonfigurációk, telepítési parancsok, stb. három SAP NetWeaver 7.50 rendszerek egyetlen, két csomópont magas rendelkezésre állású fürt. Az SAP-rendszerek azonosítói a következők:
-* **NW1**: **00** ASCS-példány száma és a virtuális állomásneve **msnw1ascs**; ERS-példány száma **02** és virtuális állomás neve **msnw1ers**.  
-* **NW2**: A **10-es** SZÁMÚ ASCS-példány és **az msnw2ascs**virtuális állomásnév ; ERS-példány száma **12** és a virtuális állomás neve **msnw2ers**.  
-* **NW3**: **20-as** SZÁMÚ ASCS-példány és virtual hostname **msnw3ascs**; ERS-példány száma **22** és a virtuális állomás neve **msnw3ers**.  
+A példában a konfigurációk, telepítési parancsok stb. három SAP NetWeaver 7,50 rendszer van üzembe helyezve egyetlen, két csomópont magas rendelkezésre állású fürtben. Az SAP-rendszerek biztonsági azonosítói a következők:
+* **NW1**: a ASCS-példány száma **00** és a virtuális gazdagép neve **msnw1ascs**; Az ERS-példányok száma **02** és a virtuális gazdagép neve **msnw1ers**.  
+* **NW2**: ASCS-példány száma **10** és virtuális állomásnév **msnw2ascs**; Az ERS-példányok száma **12** és a virtuális gazdagép neve **msnw2ers**.  
+* **NW3**: ASCS-példány száma **20** és virtuális állomásnév **msnw3ascs**; A **22-es** számú példány és a virtuális állomásnév **msnw3ers**.  
 
-A cikk nem terjed ki az adatbázisrétegre és az SAP NFS-megosztások üzembe helyezésére. Ebben a cikkben szereplő példákban az NW2 NFS-megosztások hoz az NW2 NFS-megosztások és az NW3 NFS-megosztások n3-nfs virtuális neveket használunk, feltéve, hogy az NFS-fürt telepítve volt.  
+A cikk nem fedi le az adatbázis rétegét és az SAP NFS-megosztások központi telepítését. A cikkben szereplő példákban a NW2-NFS virtuális neveket használjuk a NW2 NFS-megosztásokhoz és a NW3-NFS-hez a NW3 NFS-megosztásokhoz, feltéve, hogy az NFS-fürt üzembe lett helyezve.  
 
-Mielőtt elkezdené, először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
+Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokumentumokat először:
 
-* Az SAP Note [1928533,][1928533]amely:
-  * Az SAP-szoftverek telepítéséhez támogatott Azure virtuális gépméretek listája
-  * Fontos kapacitásadatok az Azure virtuális gépek méretéhez
-  * Támogatott SAP szoftverek, operációs rendszer (OS) és adatbázis-kombinációk
-  * Szükséges SAP kernel verzió Windows és Linux rendszeren a Microsoft Azure-ban
+* SAP-Megjegyzés [1928533][1928533], amely a következőket tartalmazta:
+  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája
+  * Fontos kapacitási információk Azure-beli virtuális gépek méreteihez
+  * Támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk
+  * A Windows és a Linux rendszerhez szükséges SAP kernel verziója Microsoft Azure
 
-* Az SAP Note [2015553][2015553] felsorolja az SAP által támogatott SAP-szoftvertelepítések előfeltételeit az Azure-ban.
-* Az SAP Note [2205917][2205917] ajánlott operációs rendszer-beállításokat a SUSE Linux Enterprise Server for SAP alkalmazásokhoz
-* Az SAP Note [1944799][1944799] SAP HANA irányelvei tanoncasap Linux Enterprise Server sap alkalmazásokhoz
-* Az SAP Note [2178632][2178632] részletes információkat tartalmaz az Azure-ban az SAP-hoz jelentett összes figyelési metrikáról.
-* Az SAP Note [2191498][2191498] rendelkezik a szükséges SAP Host Agent linuxos verzióval az Azure-ban.
-* Az SAP Note [2243692][2243692] információkat tartalmaz az Sap-licencelésről az Azure-ban.
-* Az SAP Note [1984787][1984787] általános információkat tartalmaz a SUSE Linux Enterprise Server 12-ről.
-* Az SAP Note [1999351][1999351] további hibaelhárítási információkat tartalmaz az SAP-hoz kiadott Azure továbbfejlesztett figyelési bővítményhez.
-* [Az SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) minden szükséges SAP-jegyzetet igényel Linuxhoz.
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz Linuxon][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz Linuxon][deployment-guide]
-* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz Linuxon][dbms-guide]
-* [SUSE SAP HA gyakorlati útmutatók][suse-ha-guide] A segédvonalak tartalmazzák a Netweaver HA és az SAP HANA rendszerreplikáció helyszíni beállításához szükséges összes információt. Ezeket az útmutatókat használja általános kiindulási alapként. Sokkal részletesebb információkat nyújtanak.
-* [SUSE high availability Extension 12 SP3 kiadási megjegyzések][suse-ha-12sp3-relnotes]
-* [SUSE multi-SID fürtútmutató SLES 12 és SLES 15-höz](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
-* [NetApp SAP-alkalmazások a Microsoft Azure-ban az Azure NetApp-fájlok használatával][anf-sap-applications-azure]
+* Az SAP Note [2015553][2015553] az SAP által támogatott SAP-szoftverek Azure-beli üzembe helyezésének előfeltételeit sorolja fel.
+* Az SAP Megjegyzés [2205917][2205917] ajánlott operációsrendszer-beállításokkal SUSE Linux Enterprise Server SAP-alkalmazásokhoz
+* A [1944799][1944799] -es SAP-Megjegyzés SAP HANA irányelvek az SAP-alkalmazásokhoz SUSE Linux Enterprise Server
+* Az [2178632][2178632] -es SAP-Megjegyzés részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési mérőszámról.
+* A [2191498][2191498] -es SAP-Megjegyzés a szükséges SAP-gazdagép ügynökének verziója az Azure-ban linuxos.
+* Az [2243692][2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
+* Az [1984787][1984787] -es SAP-Megjegyzés általános információkat tartalmaz a SUSE Linux Enterprise Server 12.
+* Az SAP Megjegyzés [1999351][1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
+* Az [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik minden szükséges SAP-megjegyzéssel a Linux rendszerhez.
+* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
+* [SUSE SAP ha ajánlott eljárási útmutatók][suse-ha-guide] Az útmutatók az összes szükséges információt tartalmazzák, amelyekkel beállítható a NetWeaver HA és SAP HANA rendszer-replikáció a helyszínen. Ezeket az útmutatókat általános alaptervként használhatja. Sokkal részletesebb információkat biztosítanak.
+* [SUSE magas rendelkezésre állású bővítmény – 12 SP3 kibocsátási megjegyzések][suse-ha-12sp3-relnotes]
+* [SUSE multi-SID cluster útmutató a SLES 12 és SLES 15 rendszerhez](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
+* [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
 ## <a name="overview"></a>Áttekintés
 
-A fürtben részt vevő virtuális gépeknek méretezniük kell az összes erőforrás futtatását, ha feladatátvétel történik. Minden SAP-biztonsági azonosító feladatátvételt egymással szemben a több SID magas rendelkezésre állású fürtben.  Ha SBD kerítés, az SBD-eszközök megoszthatótöbb klaszterek között.  
+A fürtben részt vevő virtuális gépeket úgy kell méretezni, hogy az összes erőforrást futtatni lehessen, ha feladatátvétel történik. Az egyes SAP-SID-feladatok egymástól függetlenek lehetnek a többszörös SID magas rendelkezésre állási fürtben.  SBD-kerítés használata esetén a SBD-eszközök több fürt között is megoszthatók.  
 
-A magas rendelkezésre állás eléréséhez az SAP NetWeaver magas rendelkezésre állású NFS-megosztásokra van szükség. Ebben a példában feltételezzük, hogy az SAP NFS-megosztások vagy magas rendelkezésre állású [NFS fájlkiszolgálón](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)vannak, amelyet több SAP-rendszer is használhat. Vagy a megosztások az [Azure NetApp Files NFS-köteteken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)vannak telepítve.  
+A magas rendelkezésre állás eléréséhez az SAP NetWeaver magas rendelkezésre állású NFS-megosztásokat igényel. Ebben a példában feltételezzük, hogy az SAP NFS-megosztások vagy egy olyan, magasan elérhető [NFS-fájlkiszolgálón](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)futnak, amelyet több SAP-rendszer is használhat. Vagy a megosztások [Azure NETAPP Files NFS-köteteken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)vannak telepítve.  
 
-![SAP NetWeaver magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> Az SAP ASCS/ERS több SID-fürtözésének támogatása a SUSE Linux-szal vendég operációs rendszerként az Azure virtuális gépeken **legfeljebb öt** SAP-SID-re korlátozódik ugyanazon a fürtön. Minden új SID növeli a komplexitást. Az SAP Enqueue Replication Server 1 és az Enqueue Replication Server 2 keveréke **nem támogatott**ugyanazon a fürtön. A több SID-fürtözés több SAP ASCS/ERS-példány telepítését írja le különböző SID-kkel egy pacemaker-fürtben. Jelenleg a több SID-fürtözés csak az ASCS/ERS esetén támogatott.  
+> Az Azure-beli virtuális gépeken futó SUSE Linux rendszerű, az SAP ASCS és a több SID-fürtözés támogatásának támogatása ugyanazon a fürtön **öt** SAP-SID-re korlátozódik. Minden új SID növeli a bonyolultságot. Az SAP sorba helyezni Replication Server 1 és a sorba helyezni Replication Server 2 együttes használata **nem támogatott**ugyanazon a fürtön. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben. Jelenleg a többszörös SID-fürtszolgáltatás csak ASCS/ERS esetén támogatott.  
 
 > [!TIP]
-> Az SAP ASCS/ERS többSID-fürtözése nagyobb komplexitású megoldás. Ez bonyolultabb végrehajtani. Ez is magában foglalja a nagyobb felügyeleti erőfeszítéseket, karbantartási tevékenységek végrehajtásasorán (például az operációs rendszer javítása). A tényleges megvalósítás megkezdése előtt szánjon időt a központi telepítés és az összes érintett összetevő, például a virtuális gépek, az NFS-csatlakoztatások, a VIP-k, a terheléselosztó-konfigurációk és így tovább gondos tervezésére.  
+> Az SAP ASCS/ERS több SID-fürtszolgáltatása nagyobb komplexitású megoldás. A megvalósítás összetettebb. Emellett a karbantartási tevékenységek (például az operációs rendszer javításai) végrehajtásakor is magasabb adminisztrációs erőfeszítéssel jár. A tényleges megvalósítás megkezdése előtt Szánjon időt arra, hogy gondosan tervezze meg az üzembe helyezést és az összes érintett összetevőt, például a virtuális gépeket, az NFS-csatlakoztatásokat, a VIP-ket és a terheléselosztó konfigurációját  
 
-Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és az SAP HANA adatbázis virtuális állomásnevet és virtuális IP-címeket használ. Az Azure-ban egy terheléselosztó szükséges a virtuális IP-cím használatához. [A Standard terheléselosztó](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk.  
+Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk.  
 
-Az alábbi lista az (A)SCS és ERS terheléselosztó konfigurációját mutatja be ehhez a több SID-fürthöz, három SAP-rendszerrel. Külön előtér-IP-cím, állapot-mintavételek és terheléselosztási szabályok minden EGYES ASCS és ERS-példány minden egyes biztonsági azonosítók. Rendelje hozzá az ÖSSZES virtuális gépet, amelyek az ASCS/ASCS-fürt részét képezik egy háttérkészlethez.  
+A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja be ehhez a többszörös SID-fürthöz, például három SAP-rendszerrel. A biztonsági azonosítók mindegyikéhez külön előtérbeli IP-címet, állapot-mintavételi és terheléselosztási szabályokat kell megadnia minden egyes ASCS és ERS-példányhoz. Rendelje hozzá az összes virtuális gépet, amely a ASCS/ASCS-fürt részét képezi egy háttér-készletnek.  
 
-### <a name="ascs"></a>A) a) Scs
+### <a name="ascs"></a>Egy SCS
 
 * Előtér-konfiguráció
-  * AZ NW1 IP-címe: 10.3.1.14
-  * AZ NW2 IP-címe: 10.3.1.16
-  * AZ NW3 IP-címe: 10.3.1.13
+  * A NW1 IP-címe: 10.3.1.14
+  * A NW2 IP-címe: 10.3.1.16
+  * A NW3 IP-címe: 10.3.1.13
 * Mintavételi portok
-  * 620<strong>&lt;nr&gt;</strong>port , ezért a 620**00,** 620**10** és 620**20-as** NW1, NW2 és NW3 szondaportokhoz
-* Terheléselosztási szabályok - 
-* hozzon létre egyet minden példányhoz, azaz NW1/ASCS, NW2/ASCS és NW3/ASCS.
-  * Standard terheléselosztó használata esetén válassza a **HA portok**
-  * Alapterhelés-elosztó használata esetén hozzon létre terheléselosztási szabályokat a következő portokhoz:
+  * <strong>&lt;620&gt;-</strong>es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620**00**, 620**10** és 620**20**
+* Terheléselosztási szabályok – 
+* hozzon létre egyet minden példányhoz, azaz: NW1/ASCS, NW2/ASCS és NW3/ASCS.
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
     * 32<strong>&lt;nr&gt; </strong> TCP
     * 36<strong>&lt;nr&gt; </strong> TCP
     * 39<strong>&lt;nr&gt; </strong> TCP
     * 81<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;óra&gt;</strong>16 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>Ers
+### <a name="ers"></a>ERS
 
 * Előtér-konfiguráció
-  * AZ NW1 10.3.1.15 IP-címe
-  * Az NW2 10.3.1.17 IP-címe
-  * Az NW3 10.3.1.19 IP-címe
-* Szonda port
-  * 621<strong>&lt;nr&gt;</strong>port , ezért nw1, NW2 és N# szondaportokhoz 621**02,** 621**12** és 621**22**
-* Terheléselosztási szabályok – hozzon létre egyet minden példányhoz, azaz NW1/ERS, NW2/ERS és NW3/ERS.
-  * Standard terheléselosztó használata esetén válassza a **HA portok**
-  * Alapterhelés-elosztó használata esetén hozzon létre terheléselosztási szabályokat a következő portokhoz:
+  * A NW1 10.3.1.15 IP-címe
+  * A NW2 10.3.1.17 IP-címe
+  * A NW3 10.3.1.19 IP-címe
+* Mintavételi port
+  * <strong>&lt;621&gt;-</strong>es port, ezért a NW1, a NW2 és a N # mintavételi portok esetében 621**02**, 621**12** és 621**22**
+* Terheléselosztási szabályok – hozzon létre egyet az egyes példányok, azaz a NW1/ERS, a NW2/ERS és a NW3/ERS esetében.
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
     * 32<strong>&lt;nr&gt; </strong> TCP
     * 33<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;óra&gt;</strong>16 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-* Háttérrendszer-konfiguráció
-  * Az (A)SCS/ERS-fürt részét alkotó összes virtuális gép elsődleges hálózati interfészeihez csatlakoztatva
+* Háttér-konfiguráció
+  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 
 
 > [!Note]
-> Ha a nyilvános IP-címekkel nem rendelkező virtuális gépek a belső (nyilvános IP-cím nélküli) standard Azure-terheléselosztó háttérkészletébe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurációt hajt végre a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolat eléréséről további információt a [nyilvános végpont-kapcsolat az Azure Standard Load Balancer használatával az SAP magas rendelkezésre állású forgatókönyvekben használó virtuális gépekhez.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket az Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapotminta sikertelensítését eredményezi. Állítsa a **net.ipv4.tcp_timestamps** paramétert **0-ra**. További részletek: [Terheléselosztó állapotminta.](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
 ## <a name="sap-nfs-shares"></a>SAP NFS-megosztások
 
-Az SAP NetWeaver megosztott tárolást igényel az átvitelhez, a profilkönyvtárhoz és így tovább. A magas rendelkezésre állású SAP-rendszer esetében fontos, hogy magas rendelkezésre állású NFS-megosztásokkal rendelkezik. El kell döntenie az SAP NFS-megosztások architektúráját. Az egyik lehetőség az, hogy [magas rendelkezésre álló NFS-fürt az Azure-beli virtuális gépeken suse Linux Enterprise Server,][nfs-ha]amely több SAP-rendszerek között osztható konkretizálható. 
+Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez, a profil könyvtárához stb. A nagy rendelkezésre állású SAP-rendszerek esetében fontos a nagy rendelkezésre állású NFS-megosztások használata. Az SAP NFS-megosztások architektúráját is el kell döntenie. Az egyik lehetőség, hogy a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken, több SAP-rendszer között megosztható, [jól elérhető NFS-fürtöt][nfs-ha]építhet ki. 
 
-Egy másik lehetőség a megosztások üzembe helyezése az [Azure NetApp Files NFS-köteteken.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)  Az Azure NetApp-fájlokkal az SAP NFS-megosztások beépített magas rendelkezésre állását kapja.
+Egy másik lehetőség a megosztások telepítése [Azure NETAPP Files NFS-köteteken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  A Azure NetApp Files az SAP NFS-megosztások beépített magas rendelkezésre állását fogja kapni.
 
-## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Az első SAP-rendszer telepítése a fürtben
+## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Az első SAP-rendszer üzembe helyezése a fürtben
 
-Most, hogy úgy döntött, az SAP NFS-megosztások architektúrája, telepítse az első SAP-rendszer a fürtben, a megfelelő dokumentációt követve.
+Most, hogy eldöntötte az SAP NFS-megosztások architektúráját, a megfelelő dokumentációt követve telepítse az első SAP-rendszerét a fürtben.
 
-* Ha magas rendelkezésre állású NFS-kiszolgálót használ, kövesse [az SAP NetWeaver magas rendelkezésre állását az Azure-beli virtuális gépeken az SUSE Linux Enterprise Server for SAP-alkalmazásokon.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)  
-* Ha Azure NetApp Files NFS-köteteket használ, kövesse [az SAP NetWeaver magas rendelkezésre állását az Azure virtuális gépeken az SUSE Linux Enterprise Server en az Azure NetApp-fájlokkal az SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Ha magas rendelkezésre állású NFS-kiszolgálót használ, kövesse [Az Azure-beli virtuális gépeken az SAP NetWeaver magas rendelkezésre állását SUSE Linux Enterprise Server SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
+* Ha Azure NetApp Files NFS-köteteket használ, kövesse [Az Azure-beli virtuális gépeken az SAP NetWeaver magas rendelkezésre állását a Azure NetApp Files for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) szolgáltatásban SUSE Linux Enterprise Server
 
-A fent felsorolt dokumentumok végigvezeti a szükséges infrastruktúrák előkészítéséhez, a fürt létrehozásához, az operációs rendszer sap-alkalmazás futtatásához való előkészítéséhez szükséges lépéseken.  
+A fent felsorolt dokumentumok végigvezetik a szükséges infrastruktúrák előkészítésének lépésein, a fürt összeállításán, az operációs rendszernek az SAP-alkalmazás futtatásához való előkészítésének lépésein.  
 
 > [!TIP]
-> Mindig tesztelje a fürt feladatátvételi funkcióit az első rendszer üzembe helyezése után, mielőtt hozzáadná a további SAP-azonosítókat a fürthöz. Így tudni fogja, hogy a fürt funkció működik, mielőtt hozzáadná a fürthöz további SAP-rendszerek összetettségét.   
+> Mindig tesztelje a fürt feladatátvételi funkcióját az első rendszer telepítése után, mielőtt hozzáadja a további SAP-SID-ket a fürthöz. Így tudni fogja, hogy a fürt működése működik-e, mielőtt hozzáadja a további SAP-rendszerek összetettségét a fürthöz.   
 
-## <a name="deploy-additional-sap-systems-in-the-cluster"></a>További SAP-rendszerek telepítése a fürtben
+## <a name="deploy-additional-sap-systems-in-the-cluster"></a>További SAP-rendszerek üzembe helyezése a fürtben
 
-Ebben a példában feltételezzük, hogy az **NW1** rendszer már telepítve van a fürtben. Bemutatjuk, hogyan kell telepíteni a fürt SAP rendszerek **NW2** és **NW3**. 
+Ebben a példában feltételezzük, hogy a rendszer **NW1** már telepítve van a fürtben. Bemutatjuk, hogyan helyezhető üzembe a fürt SAP Systems **NW2** és **NW3**. 
 
-A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópontra vonatkozóan, **[1]** - csak az 1- es vagy **a [2]** csomópontra vonatkozik, és csak a 2-es csomópontra vonatkoznak.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
 ### <a name="prerequisites"></a>Előfeltételek 
 
 > [!IMPORTANT]
-> Mielőtt követné a fürtben további SAP-rendszerek üzembe helyezésére vonatkozó utasításokat, kövesse az utasításokat az első SAP-rendszer központi telepítéséhez a fürtben, mivel vannak olyan lépések, amelyek csak az első rendszer üzembe helyezése során szükségesek.  
+> A fürtben további SAP-rendszerek üzembe helyezéséhez szükséges utasítások követése előtt kövesse az első SAP-rendszer telepítése a fürtben című témakör utasításait, mivel azok a lépések, amelyek csak az első rendszer központi telepítése során szükségesek.  
 
-Ez a dokumentáció feltételezi, hogy:
-* A Pacemaker-fürt már konfigurálva van és fut.  
-* Legalább egy SAP-rendszer (ASCS / ERS-példány) már telepítve van, és fut a fürtben.  
-* A fürt feladatátvételi funkcióit tesztelték.  
-* Az Összes SAP-rendszer NFS-megosztások üzembe helyezése.  
+A dokumentáció a következőket feltételezi:
+* A pacemaker-fürt már konfigurálva van és fut.  
+* Legalább egy SAP-rendszer (ASCS/ERS-példány) már telepítve van, és a fürtben fut.  
+* A fürt feladatátvételi funkcióját tesztelték.  
+* Az összes SAP-rendszer NFS-megosztása telepítve van.  
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-1. Adja hozzá az újonnan üzembe helyezett rendszer (azaz **NW2,** **NW3)** konfigurációját a meglévő Azure Load Balancerhez, az [Azure Load Balancer manuális üzembe helyezésére](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal)vonatkozó utasításokat követve az Azure Portalon keresztül. Állítsa be az IP-címeket, az állapotmintaportokat, a terheléselosztási szabályokat a konfigurációhoz.  
+1. Adja hozzá a konfigurációt az újonnan telepített rendszerhez (azaz **NW2**, **NW3**) a meglévő Azure Load Balancerhoz, és az utasításokat követve [telepítse manuálisan a Azure Load Balancert Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal). Módosítsa az IP-címeket, az állapot-mintavételi portokat, a konfiguráció terheléselosztási szabályait.  
 
-2. **[A]** Névfeloldás beállítása a további SAP-rendszerekhez. Használhatja a DNS-kiszolgálót, vagy módosíthatja `/etc/hosts` az összes csomópontot. Ez a példa a `/etc/hosts` fájl használatát mutatja be.  Igazítsa az IP-címeket és az állomásneveket a környezetéhez. 
+2. **[A]** a további SAP-rendszerek névfeloldásának beállítása. Használhatja a DNS-kiszolgálót, vagy módosíthatja `/etc/hosts` az összes csomópontot. Ez a példa a `/etc/hosts` fájl használatát mutatja be.  Igazítsa az IP-címeket és az állomásneveket a környezethez. 
 
     ```
     sudo vi /etc/hosts
@@ -209,7 +209,7 @@ Ez a dokumentáció feltételezi, hogy:
     10.3.1.32 nw3-nfs
    ```
 
-3. **[A]** Hozza létre a megosztott könyvtárakat a fürtre telepített további **NW2** és **NW3** SAP-rendszerekhez. 
+3. **[A]** hozza létre a megosztott könyvtárakat azon további **NW2** és **NW3** SAP-rendszerek számára, amelyeket üzembe helyez a fürtön. 
 
     ```
     sudo mkdir -p /sapmnt/NW2
@@ -232,27 +232,27 @@ Ez a dokumentáció feltételezi, hogy:
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** `autofs` Konfigurálja a /sapmnt/SID és a /usr/sap/SID/SYS fájlrendszerek csatlakoztatásához a fürtbe üzembe helyezett további SAP-rendszerekhez. Ebben a példában **NW2** és **NW3**.  
+4. **[A]** konfigurálja `autofs` a/sapmnt/SID-és/usr/sap/SID/sys-fájlrendszerek csatlakoztatását a fürtön üzembe helyezett további SAP-rendszerekhez. Ebben a példában a **NW2** és a **NW3**.  
 
-   Frissítse `/etc/auto.direct` a fájlt a fürtre telepített további SAP-rendszerek fájlrendszereivel.  
+   `/etc/auto.direct` Frissítse a fájlrendszert a fürtön üzembe helyezett további SAP-rendszerekhez.  
 
-   * Ha NFS fájlkiszolgálót használ, kövesse az [alábbi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation) utasításokat
-   * Ha Azure NetApp Files-t használ, kövesse az [alábbi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) utasításokat 
+   * Ha NFS-kiszolgálószolgáltatást használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation) található utasításokat.
+   * Ha Azure NetApp Files használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) található utasításokat. 
 
-   Az újonnan hozzáadott `autofs` megosztások csatlakoztatásához újra kell indítania a szolgáltatást.  
+   Az újonnan hozzáadott megosztások csatlakoztatásához újra kell indítania a `autofs` szolgáltatást.  
 
-### <a name="install-ascs--ers"></a>AsCS / ERS telepítése
+### <a name="install-ascs--ers"></a>ASCS/ERS telepítése
 
-1. Hozza létre a virtuális IP-és állapotminta fürt erőforrásait a fürtbe üzembe helyezett további SAP-rendszer ASCS-példányához. Az itt látható példa az **NW2** és **AZ NW3** ASCS, magas rendelkezésre állású NFS-kiszolgáló használatával.  
+1. Hozza létre a virtuális IP-és állapot-mintavételi fürt erőforrásait a fürtre telepítendő további SAP-rendszer ASCS-példányához. Az itt látható példa a **NW2** és a **NW3** ASCS, amely a jól elérhető NFS-kiszolgáló használatával történik.  
 
    > [!IMPORTANT]
-   > A legutóbbi tesztelés olyan helyzeteket tárt fel, amikor a netcat nem válaszol a kérelmekre a hátralék miatt, és csak egy kapcsolat kezelésének korlátozása miatt. A netcat erőforrás leállítja az Azure Load balancer kérelmek meghallgatását, és a lebegő IP elérhetetlenné válik.  
-   > Meglévő Pacemaker klaszterek esetében korábban azt javasoljuk, hogy a netcat-et socat-ra cserélje. Jelenleg azt javasoljuk, hogy az azure-lb erőforrás-ügynök, amely része a csomag erőforrás-ügynökök, a következő csomag verziókövetelmények:
-   > - Az SLES 12 SP4/SP5 esetében a verziónak legalább erőforrás-ügynököknek kell lennie-4.3.018.a7fb5035-3.30.1.  
-   > - Az SLES 15/15 SP1 esetében a verziónak legalább erőforrás-ügynököknek kell lennie-4.3.0184.6ee15eb2-4.13.1.  
+   > A közelmúltbeli tesztelés feltárta a helyzeteket, ahol a netcat nem válaszol a várakozó kérelmekre, és csak egyetlen kapcsolat kezelésére vonatkozó korlátozásokat okoz. A netcat erőforrás nem figyeli az Azure Load Balancer kéréseit, és a lebegőpontos IP-cím elérhetetlenné válik.  
+   > A meglévő pacemaker-fürtök esetében a netcat és a socat helyett a múltban javasolt. Jelenleg a csomag erőforrás-ügynökök részét képező Azure-LB erőforrás-ügynök használatát javasoljuk a következő csomag-verzióra vonatkozó követelményekkel:
+   > - A SLES 12 SP4/SP5 esetében a verziónak legalább Resource-Agent-4.3.018. a7fb5035-3.30.1 kell lennie.  
+   > - A SLES 15/15 SP1 esetében a verziónak legalább Resource-Agent-4.3.0184.6 ee15eb2-4.13.1 kell lennie.  
    >
    > Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
-   > Meglévő pacemaker-fürtök esetén, ha a konfiguráció már megváltozott socat használatára az [Azure Load-Balancer Detection Hardening című](https://www.suse.com/support/kb/doc/?id=7024128)dokumentumban leírtak szerint, nincs szükség arra, hogy azonnal váltson az azure-lb erőforrás-ügynökre.
+   > Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [Azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
 
     ```
       sudo crm configure primitive fs_NW2_ASCS Filesystem device='nw2-nfs:/NW2/ASCS' directory='/usr/sap/NW2/ASCS10' fstype='nfs4' \
@@ -284,21 +284,21 @@ Ez a dokumentáció feltételezi, hogy:
         meta resource-stickiness=3000
     ```
 
-   Az erőforrások létrehozásakor előfordulhat, hogy különböző fürterőforrásokhoz vannak rendelve. Csoportosításkor áttelepülnek az egyik fürtcsomópontra. Győződjön meg arról, hogy a fürt állapota rendben van, és hogy minden erőforrás elindult. Nem fontos, hogy melyik csomóponton futnak az erőforrások.
+   Az erőforrások létrehozásakor előfordulhat, hogy a különböző fürterőforrás-erőforrásokhoz vannak rendelve. A csoportosítás során a rendszer áttelepíti azokat a fürtcsomópontok egyik csomópontjára. Győződjön meg arról, hogy a fürt állapota ok, és hogy minden erőforrás elindult. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
 
-2. **[1]** Telepítse az SAP NetWeaver ASCS-eket  
+2. **[1]** az SAP NetWeaver ASCS telepítése  
 
-   Telepítse az SAP NetWeaver ASCS-t gyökérként egy virtuális állomásnév használatával, amely leképezi az ASCS terheléselosztó előtér-konfigurációjának IP-címét. Az **NW2**rendszer esetében például a virtuális állomásnév <b>az msnw2ascs</b>, <b>10.3.1.16</b> és a terheléselosztó mintavételéhez használt példányszám , például <b>10.</b> az **NW3**rendszer esetében a virtuális állomásnév <b>az msnw3ascs</b>, <b>10.3.1.13</b> és a terheléselosztó mintavételéhez használt példányszám , például <b>20</b>.
+   Telepítse az SAP NetWeaver-ASCS root-ként, egy virtuális állomásnév használatával, amely a ASCS tartozó terheléselosztó előtér-konfigurációjának IP-címét képezi le. A rendszer **NW2**például a virtuális állomásnév a <b>msnw2ascs</b>, a <b>10.3.1.16</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>10</b>. a rendszer **NW3**a virtuális állomásnév a <b>msnw3ascs</b>, a <b>10.3.1.13</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>20</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER segítségével engedélyezheti, hogy egy nem root felhasználó csatlakozzon a sapinsthoz. A paraméter SAPINST_USE_HOSTNAME segítségével telepítheti az SAP-t a virtuális állomásnév használatával.  
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst. A (z) SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális gazdagép nevével.  
 
      ```
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   Ha a telepítés nem tud almappát létrehozni a /usr/sap/**SID**/ASCS**Instance# kapcsolóban,** próbálja meg a tulajdonost az ASCS-példány**sapsys-ra** és újrapróbálkozásra. **sid**
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**SID**/ASCS-**példányában**, próbálja meg a tulajdonost **SID**adm-re állítani, és a ASCS-**példány** sapsys, majd próbálkozzon újra.
 
-3. **[1]** Hozzon létre egy virtuális IP-és állapot-mintavételes fürt erőforrásait a fürtbe üzembe helyezett további SAP-rendszer ERS-példányához. Az itt látható példa az **NW2** és **az NW3** ERS, magas rendelkezésre állású NFS-kiszolgáló használatával. 
+3. **[1]** hozzon létre egy virtuális IP-és állapot-mintavételi fürt erőforrásait a fürtre TELEPÍTENDŐ további SAP-rendszer ERS-példányához. Az itt látható példa a **NW2** és a **NW3** -esekre, a magasan rendelkezésre álló NFS-kiszolgáló használatával. 
 
    ```
     sudo crm configure primitive fs_NW2_ERS Filesystem device='nw2-nfs:/NW2/ASCSERS' directory='/usr/sap/NW2/ERS12' fstype='nfs4' \
@@ -328,39 +328,39 @@ Ez a dokumentáció feltételezi, hogy:
     sudo crm configure group g-NW3_ERS fs_NW3_ERS nc_NW3_ERS vip_NW3_ERS
    ```
 
-   Az erőforrások létrehozásakor előfordulhat, hogy különböző fürtcsomópontokhoz vannak rendelve. Csoportosításkor áttelepülnek az egyik fürtcsomópontra. Győződjön meg arról, hogy a fürt állapota rendben van, és hogy minden erőforrás elindult.  
+   Az erőforrások létrehozásakor előfordulhat, hogy a fürt különböző csomópontjaihoz van rendelve. A csoportosítás során a rendszer áttelepíti azokat a fürtcsomópontok egyik csomópontjára. Győződjön meg arról, hogy a fürt állapota ok, és hogy minden erőforrás elindult.  
 
-   Ezután győződjön meg arról, hogy az újonnan létrehozott ERS-csoport erőforrásai a fürtcsomóponton futnak, szemben azzal a fürtcsomóval, ahol ugyanahhoz az SAP-rendszerhez tartozó ASCS-példány telepítve volt.  Ha például az NW2 ASCS telepítve van a rendszeren, `slesmsscl1` `slesmsscl2`akkor győződjön meg arról, hogy az NW2 ERS csoport fut.  Az NW2 ERS-csoportot `slesmsscl2` a következő parancs futtatásával telepítheti át: 
+   Ezután győződjön meg arról, hogy az újonnan létrehozott ERS-csoport erőforrásai futnak a fürtcsomóponton, szemben azzal a fürtcsomópont-csomóponttal, ahol a ASCS-példány ugyanarra az SAP-rendszerre lett telepítve.  Ha például a `slesmsscl1`NW2 ASCS telepítve van, akkor győződjön meg `slesmsscl2`arról, hogy a NW2 ERS csoport fut.  A NW2 ERS Group `slesmsscl2` a következő parancs futtatásával telepíthető át: 
 
     ```
       crm resource migrate g-NW2_ERS slesmsscl2 force
     ```
 
-4. **[2]** Telepítse az SAP NetWeaver ERS-t
+4. **[2]** SAP NETWEAVER-ERS telepítése
 
-   Telepítse az SAP NetWeaver ERS-t gyökérként a másik csomóponton, egy virtuális állomásnév használatával, amely leképezi az ERS terheléselosztó előtér-konfigurációjának IP-címét. Az **NW2**rendszer esetében például a virtuális állomás neve <b>msnw2ers</b>, <b>10.3.1.17</b> lesz, és a terheléselosztó mintavételéhez használt példányszám , például <b>12</b>. Az **NW3**rendszer esetében a virtuális állomás neve <b>msnw3ers</b>, <b>10.3.1.19</b> és a terheléselosztó mintavételéhez használt példányszám (például <b>22</b>). 
+   Telepítse az SAP NetWeaver-ket root-ként a másik csomóponton, egy virtuális állomásnév használatával, amely a terheléselosztó előtér-konfigurációjának IP-címét képezi le az ERS-hoz. Például a rendszerszintű **NW2**a virtuális állomásnév a <b>msnw2ers</b>, a <b>10.3.1.17</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>12</b>. A rendszer **NW3**a virtuális állomásnév <b>msnw3ers</b>, a <b>10.3.1.19</b> és a terheléselosztó mintavételéhez használt példány számát, például <b>22</b>. 
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER segítségével engedélyezheti, hogy egy nem root felhasználó csatlakozzon a sapinsthoz. A paraméter SAPINST_USE_HOSTNAME segítségével telepítheti az SAP-t a virtuális állomásnév használatával.  
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst. A (z) SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális gazdagép nevével.  
 
     ```
      sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
     ```
 
    > [!NOTE]
-   > Használja swpm SP 20 PL 05 vagy magasabb. Az alacsonyabb verziók nem megfelelően állították be az engedélyeket, és a telepítés sikertelen lesz.
+   > Használja az SWPM SP 20 PL 05-es vagy újabb verzióját. Az alacsonyabb verziók nem tudják megfelelően beállítani az engedélyeket, és a telepítés sikertelen lesz.
 
-   Ha a telepítés nem tud almappát létrehozni a /usr/sap/**NW2**/ERS**instance# kapcsolóban,** próbálja meg a tulajdonost **sid**adm-re, a csoportot pedig az ERS**instance#** mappa sapsys-ére, majd próbálkozzon újra.
+   Ha a telepítés nem tud almappát létrehozni a/usr/SAP/**NW2**/ERS-**példányban**, próbálja meg beállítani a tulajdonost a **SID**adm-re, és a csoportot az ERS-**példány #** mappa sapsys, és próbálkozzon újra.
 
-   Ha szükséges volt az újonnan üzembe helyezett SAP-rendszer ERS-csoportjának áttelepítése egy másik fürtcsomópontra, ne felejtse el eltávolítani az ERS-csoport helymegkötését. A megkötést a következő parancs futtatásával távolíthatja el (a példa az **NW2** és **NW3**SAP rendszerekre van megadva).  
+   Ha szükséges, hogy áttelepítse az újonnan telepített SAP-rendszer ERS-csoportját egy másik fürtcsomóponton, ne felejtse el eltávolítani az ERS csoporthoz tartozó hely megkötését. A korlátozást a következő parancs futtatásával távolíthatja el (ez a példa az SAP Systems **NW2** és a **NW3**esetében van megadva).  
 
     ```
       crm resource unmigrate g-NW2_ERS
       crm resource unmigrate g-NW3_ERS
     ```
 
-5. **[1]** Igazítsa az ASCS/SCS és ERS példányprofilokat az újonnan telepített SAP-rendszer(ek)hez. Az alábbi példa az NW2-re mutat. Az ASCS/SCS és ERS-profilokat a fürthöz hozzáadott összes SAP-példányhoz módosítania kell.  
+5. **[1]** a ASCS/SCS és a ERS instance profilokat az újonnan telepített SAP-rendszer (ek) hez igazíthatja. Az alább látható példa a NW2. A fürthöz hozzáadott összes SAP-példányhoz alkalmazkodnia kell a ASCS/SCS és a ERS profilhoz.  
  
- * ASCS/SCS profil
+ * ASCS/SCS-profil
 
    ```
    sudo vi /sapmnt/NW2/profile/NW2_ASCS10_msnw2ascs
@@ -377,7 +377,7 @@ Ez a dokumentáció feltételezi, hogy:
    enque/encni/set_so_keepalive = true
    ```
 
- * ERS profil
+ * ERS-profil
 
    ```
    sudo vi /sapmnt/NW2/profile/NW2_ERS12_msnw2ers
@@ -394,7 +394,7 @@ Ez a dokumentáció feltételezi, hogy:
    # Autostart = 1
    ```
 
-6. **[A]** Konfigurálja az SAP-felhasználók at az újonnan telepített SAP-rendszer, ebben a példában **NW2** és **NW3.** 
+6. **[A]** KONFIGURÁLJA az SAP-felhasználókat az újonnan telepített SAP-rendszerhez, ebben a példában a **NW2** és a **NW3**. 
 
    ```
    # Add sidadm to the haclient group
@@ -402,9 +402,9 @@ Ez a dokumentáció feltételezi, hogy:
    sudo usermod -aG haclient nw3adm
    ```
 
-7. Adja hozzá az ASCS és ERS SAP-szolgáltatásokat `sapservice` az újonnan telepített SAP-rendszerhez. Az alábbi példa az **NW2** és NW3 SAP rendszerekre **mutat.**  
+7. Adja hozzá az újonnan telepített SAP-rendszerhez tartozó ASCS és ERS SAP- `sapservice` szolgáltatásokat a fájlhoz. Az alább látható példa az SAP Systems **NW2** és a **NW3**.  
 
-   Adja hozzá az ASCS szolgáltatásbejegyzést a második csomóponthoz, és másolja az ERS szolgáltatásbejegyzést az első csomópontra. Hajtsa végre a parancsokat az egyes SAP-rendszer a csomóponton, ahol az ASCS-példány az SAP-rendszer telepítve volt.  
+   Adja hozzá a ASCS-szolgáltatási bejegyzést a második csomóponthoz, és másolja az ERS szolgáltatási bejegyzést az első csomópontra. Hajtsa végre a parancsokat minden egyes SAP-rendszeren a csomóponton, ahol az SAP-rendszer ASCS-példánya telepítve lett.  
 
     ```
      # Execute the following commands on slesmsscl1,assuming the NW2 ASCS instance was installed on slesmsscl1
@@ -415,9 +415,9 @@ Ez a dokumentáció feltételezi, hogy:
      sudo ssh slesmsscl1 "cat /usr/sap/sapservices" | grep ERS22 | sudo tee -a /usr/sap/sapservices
     ```
 
-8. **[1]** Hozza létre az SAP-fürt erőforrásait az újonnan telepített SAP-rendszerhez. 
+8. **[1]** hozza létre az SAP-fürt erőforrásait az újonnan telepített SAP-rendszerhez. 
 
-   Ha enqueue server 1 architektúrát (ENSA1) használ, az **SAP-rendszerek NW2** és **NW3** erőforrásait az alábbiak szerint határozza meg:
+   Ha a sorba helyezni Server 1 architektúráját (ENSA1) használja, az alábbi módon határozza meg az SAP Systems **NW2** és **NW3** erőforrásait:
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -464,8 +464,8 @@ Ez a dokumentáció feltételezi, hogy:
      sudo crm configure property maintenance-mode="false"
     ```
 
-   Az SAP az SAP NW 7.52-es részéhez benyújtotta a 2-es kiszolgáló várólistára állításának támogatását, beleértve a replikációt is. Az ABAP Platform 1809-től kezdve a 2-es várólistára helyezett kiszolgáló alapértelmezés szerint telepítve van. A 2-es kiszolgáló várólistára állításáról az SAP [2630416 megjegyzése.](https://launchpad.support.sap.com/#/notes/2630416)
-   Ha enqueue server 2 architektúrát ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) használ, az **SAP-rendszerek NW2** és **NW3** erőforrásait az alábbiak szerint határozza meg:
+   Az SAP bevezette a 2. sorba helyezni-kiszolgáló, beleértve a replikálást, az SAP NW 7,52-támogatását. A ABAP platform 1809-től kezdődően a sorba helyezni Server 2 alapértelmezés szerint telepítve van. Lásd: SAP-Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) a sorba helyezni Server 2 támogatásához.
+   Ha a sorba helyezni Server 2 architektúráját ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) használja, az alábbi módon határozza meg az SAP Systems **NW2** és **NW3** erőforrásait:
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -508,10 +508,10 @@ Ez a dokumentáció feltételezi, hogy:
      sudo crm configure property maintenance-mode="false"
     ```
 
-   Ha régebbi verzióról frissít, és a 2-es kiszolgáló várólistára lép, olvassa el az SAP [2641019 megjegyzését.](https://launchpad.support.sap.com/#/notes/2641019) 
+   Ha egy régebbi verzióról frissít, és átvált a 2. sorba helyezni-kiszolgálóra, tekintse meg a következőt: SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
-   Győződjön meg arról, hogy a fürt állapota rendben van, és hogy minden erőforrás elindult. Nem fontos, hogy melyik csomóponton futnak az erőforrások.
-   A következő példa a fürt erőforrásainak állapotát mutatja be, miután az **NW2** és **NW3** SAP-rendszerek hozzáadódnak a fürthöz. 
+   Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
+   Az alábbi példa a fürterőforrás állapotát mutatja be, miután az SAP Systems **NW2** és **NW3** a fürthöz lettek adva. 
 
     ```
      sudo crm_mon -r
@@ -553,32 +553,32 @@ Ez a dokumentáció feltételezi, hogy:
     #     rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
     ```
 
-   Az alábbi képen látható, hogyan fog kinézni a források a HA Web Konsole(Hawk), a források SAP rendszer **NW2** bővült.  
+   Az alábbi képen látható, hogyan jelennek meg az erőforrások a HA web-konzolon (Hawk), az SAP System **NW2** erőforrásainak kibontásával.  
 
-   [![SAP NetWeaver magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk.png)](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk-detail.png#lightbox)
+   [![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk.png)](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk-detail.png#lightbox)
 
-### <a name="proceed-with-the-sap-installation"></a>Folytassa az SAP telepítésével 
+### <a name="proceed-with-the-sap-installation"></a>Az SAP telepítésének folytatása 
 
-Az SAP telepítésének befejezése:
+Fejezze be az SAP telepítését:
 
-* [Az SAP NetWeaver alkalmazáskiszolgálók előkészítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [DBMS-példány telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
+* [Az SAP NetWeaver alkalmazás-kiszolgálók előkészítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Adatbázis-kezelő példány telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
 * [Elsődleges SAP-alkalmazáskiszolgáló telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
-* Egy vagy több további SAP-alkalmazáspéldány telepítése
+* Egy vagy több további SAP-alkalmazás példányának telepítése
 
-## <a name="test-the-multi-sid-cluster-setup"></a>A több SID-fürt beállításának tesztelése
+## <a name="test-the-multi-sid-cluster-setup"></a>A többszörös SID-fürt beállításának tesztelése
 
-A következő tesztek a SUSE legjobb gyakorlatokkal kapcsolatos útmutatóiban szereplő vizsgálati esetek egy részét képezik. Ezek az ön kényelme érdekében benne vannak. A fürttesztek teljes listájához a következő dokumentációban tájékozatja a következőket:
+Az alábbi tesztek a SUSE ajánlott eljárási útmutatójában szereplő tesztelési esetek egy részét képezik. Az Ön kényelme érdekében a szolgáltatás részét képezi. A fürt tesztek teljes listáját a következő dokumentációban találja:
 
-* Ha magas rendelkezésre állású NFS-kiszolgálót használ, kövesse [az SAP NetWeaver magas rendelkezésre állását az Azure-beli virtuális gépeken az SUSE Linux Enterprise Server for SAP-alkalmazásokon.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)  
-* Ha Azure NetApp Files NFS-köteteket használ, kövesse [az SAP NetWeaver magas rendelkezésre állását az Azure virtuális gépeken az SUSE Linux Enterprise Server en az Azure NetApp-fájlokkal az SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Ha magas rendelkezésre állású NFS-kiszolgálót használ, kövesse [Az Azure-beli virtuális gépeken az SAP NetWeaver magas rendelkezésre állását SUSE Linux Enterprise Server SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
+* Ha Azure NetApp Files NFS-köteteket használ, kövesse [Az Azure-beli virtuális gépeken az SAP NetWeaver magas rendelkezésre állását a Azure NetApp Files for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) szolgáltatásban SUSE Linux Enterprise Server
 
-Mindig olvassa el a SUSE gyakorlati útmutatókat, és hajtsa végre az összes további, esetleg hozzáadott teszteket.  
-A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer telepítve.  
+Mindig olvassa el a SUSE ajánlott eljárásokat ismertető útmutatóit, és végezze el az esetlegesen hozzáadott további tesztek elvégzését.  
+A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rendszerrel vannak telepítve.  
 
-1. HaGetFailoverConfig és HACheckFailoverConfig tesztelése
+1. HAGetFailoverConfig és HACheckFailoverConfig tesztelése
 
-   Futtassa a <sapsid>következő parancsokat adm-ként azon a csomóponton, ahol az ASCS-példány jelenleg fut. Ha a parancsok sikertelenek: Nincs elegendő memória, azt az állomásnév kötőjelei okozhatják. Ez egy ismert probléma, és a SUSE az sap-suse-cluster-connector csomagban fogja kijavítani.
+   Futtassa az alábbi parancsokat adm <sapsid>-ként azon a csomóponton, AMELYEN a ASCS-példány jelenleg fut. Ha a parancsok meghiúsulnak: nincs elég memória, a gazdagép kötőjelei okozhatja. Ez egy ismert probléma, amelyet a SUSE az SAP-SUSE-cluster-Connector csomagban fog megállapítani.
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -642,8 +642,8 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
     # SUCCESS, SAP CONFIGURATION, SAPInstance RA sufficient version, SAPInstance includes is-ers patch
    ```
 
-2. Manuálisan telepítse át az ASCS-példányt. A példa bemutatja az SAP-rendszer NW2 ASCS-példányának áttelepítését.  
-   Erőforrás állapota, a teszt megkezdése előtt:
+2. Telepítse manuálisan a ASCS-példányt. A példa bemutatja az ASCS-példány áttelepítését az SAP rendszer NW2.  
+   Erőforrás állapota a teszt elindítása előtt:
    ```
     Full list of resources:
     stonith-sbd     (stonith:external/sbd): Started slesmsscl1
@@ -679,7 +679,7 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Az NW2 ASCS-példány áttelepítéséhez futtassa a következő parancsokat gyökérként.
+   Futtassa a következő parancsokat root-ként a NW2 ASCS-példány áttelepíteni.
 
    ```
     crm resource migrate rsc_sap_NW2_ASCS10 force
@@ -729,9 +729,9 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-1. Tesztelje a HAFailoverToNode-ot. Az itt bemutatott teszt az SAP-rendszer NW2 ASCS-példányának áttelepítését mutatja.  
+1. HAFailoverToNode tesztelése. Az itt bemutatott teszt a ASCS-példány áttelepítését mutatja be az SAP rendszer NW2.  
 
-   Erőforrás állapota a teszt megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    ```
     Full list of resources:
@@ -768,7 +768,7 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Futtassa a következő parancsokat **nw2**adm néven az NW2 ASCS-példány áttelepítéséhez.
+   Futtassa a következő parancsokat a **NW2**adm használatával a NW2 ASCS-példány áttelepíteni.
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""
@@ -818,9 +818,9 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-1. Csomópontösszeomlás szimulálása
+1. Csomópont összeomlásának szimulálása
 
-   Erőforrás állapota a teszt megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    ```
     Full list of resources:
@@ -857,13 +857,13 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Futtassa a következő parancsot gyökérként azon a csomóponton, ahol legalább egy ASCS-példány fut. Ebben a példában a `slesmsscl2`parancsot a , , ahol az ASCS-példányok NW1 és NW3 futnak.  
+   Futtassa a következő parancsot gyökérként azon a csomóponton, amelyen legalább egy ASCS-példány fut. Ebben a példában a parancsot futtatjuk `slesmsscl2`, ahol a NW1 és a NW3 ASCS példányai futnak.  
 
    ```
     slesmsscl2:~ # echo b > /proc/sysrq-trigger
    ```
 
-   Ha SBD-t használ, a Pacemaker nem indul el automatikusan a lehalt csomóponton. A csomópont újraindítása utáni állapotnak így kell kinéznie.
+   Ha SBD használ, a pacemaker nem kezdődhet automatikusan a megölt csomóponton. A csomópont újraindítása utáni állapotnak így kell kinéznie.
 
    ```
     Online: [ slesmsscl1 ]
@@ -911,7 +911,7 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
         last-rc-change='Fri Dec 13 19:32:10 2019', queued=0ms, exec=0ms
    ```
 
-   A következő parancsokkal indítsa el a pacemakert a lehalt csomóponton, tisztítsa meg az SBD-üzeneteket, és tisztítsa meg a sikertelen erőforrásokat.
+   Az alábbi parancsokkal elindíthatja a pacemakert a megölt csomóponton, megtisztíthatja a SBD-üzeneteket, és megtisztíthatja a sikertelen erőforrásokat.
 
    ```# run as root
    # list the SBD device(s)
@@ -965,7 +965,7 @@ A bemutatott tesztek egy két csomópont, több SID-fürt három SAP-rendszer te
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz][deployment-guide]
-* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz][dbms-guide]
-* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure virtuális gépeken, olvassa el [az SAP HANA magas rendelkezésre állását az Azure virtuális gépeken (VM-ek) című témakört.][sap-hana-ha]
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

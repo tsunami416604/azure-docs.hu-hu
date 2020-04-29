@@ -1,69 +1,69 @@
 ---
-title: Az Azure Blockchain szolgáltatás fejlesztésének áttekintése
-description: Bevezetés az Azure Blockchain szolgáltatás megoldásainak fejlesztéséről.
+title: Az Azure Blockchain Service Development áttekintése
+description: Bevezetés az Azure Blockchain Service-megoldások fejlesztéséhez.
 ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348381"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain szolgáltatás fejlesztésének áttekintése
+# <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain Service Development áttekintése
 
-Az Azure Blockchain Szolgáltatással konzorciumi blokklánc-hálózatokat hozhat létre, amelyek lehetővé teszik az olyan vállalati forgatókönyveket, mint az eszközkövetés, a digitális token, a hűség és a jutalom, az ellátási lánc pénzügyi és eredete. A következő szakaszok bemutatják az Azure Blockchain szolgáltatás fejlesztését a vállalati blokklánc-megoldások megvalósításához.
+Az Azure Blockchain szolgáltatással konzorciumi Blockchain-hálózatokat hozhat létre, amelyek lehetővé teszik a nagyvállalati forgatókönyvek, például az eszközök nyomon követését, a digitális jogkivonatot, a lojalitást és a jutalmat, az ellátási lánc pénzügyi A következő fejezetek bemutatják az Azure Blockchain Service Development szolgáltatást a vállalati Blockchain megoldások megvalósításához.
 
 ## <a name="connecting-to-azure-blockchain-service"></a>Csatlakozás az Azure Blockchain szolgáltatáshoz
 
-A blokklánc-hálózatokhoz különböző típusú ügyfelek léteznek, beleértve a teljes csomópontokat, a könnyű csomópontokat és a távoli ügyfeleket. Az Azure Blockchain Service egy blokklánc-hálózatot hoz létre, amely csomópontokat tartalmaz. Használhatja a különböző ügyfelek, mint az átjáró az Azure Blockchain szolgáltatás blockchain fejlesztéshez. Az Azure Blockchain Service alapfokú hitelesítést vagy hozzáférési kulcsot kínál fejlesztési végpontként. A következő népszerű ügyfelek segítségével csatlakozni.
+A blockchain-hálózatokhoz különböző típusú ügyfelek tartoznak, beleértve a teljes csomópontokat, a könnyű csomópontokat és a távoli ügyfeleket. Az Azure Blockchain szolgáltatás olyan Blockchain-hálózatot épít, amely csomópontokat tartalmaz. A Blockchain-fejlesztéshez különböző ügyfeleket használhat az Azure Blockchain Service-hez való átjáróként. Az Azure Blockchain szolgáltatás alapszintű hitelesítési vagy hozzáférési kulcsot biztosít fejlesztési végpontként. A következő népszerű ügyfeleket használhatja a csatlakozási lehetőséggel.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Az Azure Blockchain Development Kit Visual Studio Code bővítmény használatával csatlakozhat a konzorciumi tagokhoz. Miután csatlakozott egy konzorciumhoz, intelligens szerződéseket fordíthat, hozhat létre és helyezhet üzembe egy Azure Blockchain Service-konzorciumtagnak.
+A konzorcium tagjaihoz az Azure Blockchain Development Kit Visual Studio Code bővítmény használatával csatlakozhat. A konzorciumhoz való csatlakozás után intelligens szerződéseket állíthat össze, építhet ki és helyezhet üzembe egy Azure Blockchain Service Consortium-tag számára.
 
-A kifinomult vállalati blokklánc-megoldások kifejlesztéséhez fejlesztési keretrendszerre van szükség a különböző blokklánc-hálózatokhoz való csatlakozáshoz és az intelligens szerződési életciklusok kezeléséhez. A legtöbb projekt legalább két blokklánc-csomóponton lép kapcsolatba. A fejlesztők helyi blokkláncot használnak a fejlesztés során. Amikor az alkalmazás készen áll a tesztelésre vagy kiadásra, a fejlesztő telepíti a blokklánc-hálózatra. Például a fő nyilvános Ethereum hálózat vagy az Azure Blockchain szolgáltatás. Az Azure Blockchain Development Kit for Ethereum bővítmény a Visual Studio Code szarvasgombát használ. A Truffle egy népszerű blokklánc-fejlesztési keretrendszer, amely decentralizált alkalmazásokat ír, fordít, telepít és tesz le az Ethereum blokkláncokon. Azt is gondolom, szarvasgomba, mint egy keret, amely megpróbálja zökkenőmentesen integrálni intelligens szerződés fejlesztés és a hagyományos webfejlesztés.
+A kifinomult vállalati blockchain megoldások fejlesztése érdekében fejlesztési keretrendszerre van szükség a különböző blockchain-hálózatokhoz való kapcsolódáshoz és az intelligens szerződési életciklusok kezeléséhez. A legtöbb projekt legalább két blockchain-csomóponttal kommunikál. A fejlesztők a fejlesztés során helyi blockchain használnak. Ha az alkalmazás készen áll a tesztelésre vagy a kiadásra, a fejlesztő üzembe helyezi a blockchain-hálózatot. Például a fő nyilvános Ethereum hálózat vagy az Azure Blockchain szolgáltatás. A Visual Studio Code Ethereum-bővítményéhez készült Azure Blockchain Development Kit a szarvasgombát használja. A szarvasgomba népszerű blockchain-fejlesztési keretrendszer a decentralizált alkalmazások Ethereum blokkláncok történő írásához, fordításához, üzembe helyezéséhez és teszteléséhez. Azt is meggondolhatja, hogy a szarvasgomba olyan keretrendszer, amellyel zökkenőmentesen integrálható az intelligens szerződések fejlesztése és a hagyományos webes fejlesztés.
 
-További információ: [Rövid útmutató: A Visual Studio-kód használatával csatlakozhat egy Azure Blockchain Service konzorciumi hálózathoz.](connect-vscode.md)
+További információ: gyors útmutató [: a Visual Studio Code használata egy Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz](connect-vscode.md).
 
-### <a name="metamask"></a>Metamaszk
+### <a name="metamask"></a>MetaMask
 
-A MetaMask egy böngészőalapú pénztárca (távoli ügyfél), RPC-ügyfél és alapszintű szerződéskezelő. Eltérően más böngésző pénztárca, MetaMask injektál egy web3 példányt a böngésző JavaScript környezetben, eljáró RPC kliens, amely csatlakozik a különböző Ethereum blockchains (*mainnet*, *Ropsten testnet*, *Kovan testnet*, helyi RPC csomópont, stb.) Beállíthatja az egyéni RPC egyszerűen csatlakozhat az Azure Blockchain Szolgáltatáshoz, és elkezdheti a blokklánc-fejlesztést a Remix használatával.
+A MetaMask egy böngészőalapú mobiltárca (távoli ügyfél), RPC-ügyfél és alapszintű szerződés Explorer. A többi böngészőbeli pénztárcától eltérően a MetaMask egy web3-példányt helyez el a böngésző JavaScript-környezetében, amely egy olyan RPC-ügyfélként működik, amely különböző Ethereum-blokkláncok (*mainnet*, *Ropsten TestNet*, *Kovan TestNet*, helyi RPC csomópont stb.) csatlakozik. Az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz egyszerűen beállíthatja az egyéni RPC-t, és megkezdheti a Blockchain fejlesztését a Remix használatával.
 
-További információ: [Rövid útmutató: Intelligens egyezmény csatlakoztatása és üzembe helyezése metamaszk használatával](connect-metamask.md)
+További információ [: gyors üzembe helyezés és a MetaMask használata intelligens szerződések létrehozásához és telepítéséhez](connect-metamask.md)
 
-### <a name="geth"></a>Geth (geth)
+### <a name="geth"></a>Geth
 
-Geth a parancssori felület futtatásához a teljes Ethereum csomópont végre Go. Nem kell futtatnia a teljes csomópontot, de elindíthatja az interaktív konzolt, amely javascript-alapú környezetet biztosít, amely javascript API-t tesz ki az Azure Blockchain szolgáltatással való együttműködéshez.
+A geth az a parancssori felület, amely a Go-ban implementált teljes Ethereum-csomópont futtatására szolgál. Nem kell teljes csomópontot futtatnia, de elindíthatja az interaktív konzolt, amely JavaScript-futtatókörnyezeti környezetet biztosít a JavaScript API-k számára az Azure Blockchain szolgáltatással való kommunikációhoz.
 
-További információ: [Rövid útmutató: Geth használata az Azure Blockchain szolgáltatás tranzakciós csomóponthoz való csatolásához.](connect-geth.md)
+További információ: gyors útmutató [: a geth használata Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz való csatoláshoz](connect-geth.md).
 
-## <a name="ethereum-quorum-private-transactions"></a>Ethereum Quorum magántranzakciók
+## <a name="ethereum-quorum-private-transactions"></a>Ethereum kvórum – privát tranzakciók
 
-A Quorum egy Ethereum-alapú elosztott főkönyvi protokoll tranzakcióval, valamint szerződési adatvédelemmel és új konszenzusos mechanizmusokkal. A Go-Ethereum legfontosabb fejlesztései a következők:
+A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz szerződéses adatvédelmet és új konszenzusi mechanizmusokat is alkalmaz. A go-Ethereum többek között a következők:
 
-* **Adatvédelem** – A Quorum támogatja a magántranzakciókat és a magánszerződéseket a nyilvános és a magánállam szétválasztása révén, és peer-to-peer titkosított üzenetváltásokat használ a személyes adatok nak a hálózat résztvevőinek történő irányított továbbításához.
-* **Alternatív konszenzusos mechanizmusok** – az engedéllyel rendelkező hálózathoz nincs szükség a munka igazolására vagy a cegyek bizonyítására. A Quorum többféle konszenzusos mechanizmust kínál, amelyeket konzorciumi láncokhoz, például a RAFT-hoz és az IBFT-hez terveztek.Az Azure Blockchain Service az IBFT konszenzusmechanizmust használja.
-* **Társengedély –** az intelligens szerződéseket használó csomópontok és társengedélyek biztosítják, hogy csak ismert felek csatlakozhassanak a hálózathoz.
-* **Nagyobb teljesítmény** - A Quorum nagyobb teljesítményt nyújt, mint a nyilvános Geth.
+* **Adatvédelem** – a kvórum az állami és a magánjellegű állapot elkülönítésével támogatja a privát tranzakciókat és a privát szerződéseket, és a személyes adatoknak a hálózati résztvevők felé irányított továbbítására szolgáló, társ-társ titkosítású üzenetváltást használ.
+* **Alternatív konszenzusi mechanizmusok** – nem szükségesek a működést igazoló vagy a bizonyítékokra vonatkozó konszenzus az engedéllyel rendelkező hálózatokhoz. A kvórum több konszenzusos mechanizmust kínál, amelyek olyan konzorciumi láncok számára lettek kialakítva, mint például a TUTAJ és a IBFT.Az Azure Blockchain Service a IBFT konszenzusi mechanizmust használja.
+* **Társ-jogosultság** – a csomópont-és társ-jogosultságok intelligens szerződések használatával biztosítják, hogy csak ismert felek csatlakozhassanak a hálózathoz.
+* **Nagyobb teljesítmény** – a kvórum nagyobb teljesítményt nyújt, mint a nyilvános geth.
 
-## <a name="block-explorers"></a>Felfedezők blokkolása
+## <a name="block-explorers"></a>Felfedezők letiltása
 
-A blokkkezelők olyan online blokklánc-böngészők, amelyek egyedi blokktartalmat, tranzakciós címadatokat és előzményeket jelenítenek meg. Az alapvető blokkinformációk az Azure Blockchain Szolgáltatás Ban érhető el az Azure Monitor on keresztül. Ha azonban további részletekre van szüksége a fejlesztés során, a blokkkezelők hasznosak lehetnek.  A következő blokkkezelők az Azure Blockchain Szolgáltatással dolgoznak:
+A blokkoló felfedezők olyan online blockchain böngészők, amelyek egyedi blokk tartalmakat, tranzakciós címeket és előzményeket jelenítenek meg. Az alapszintű blokkolási információk az Azure Blockchain szolgáltatásban Azure Monitoron keresztül érhetők el. Ha azonban részletesebb információra van szüksége a fejlesztés során, a blokkoló felfedezők hasznosak lehetnek.  A következő blokkoló felfedezők működnek az Azure Blockchain szolgáltatással:
 
-* [Epirus Azure Blockchain Szolgáltatáskezelő](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) a Web3 Labs-től
-* [BlockScout között](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
+* [Empirusz Azure Blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) a Web3 Labs-ből
+* [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-Saját blokkkezelőt is létrehozhat a Blockchain Data Manager és az Azure Cosmos DB használatával, [lásd: Oktatóanyag: A Blockchain Data Manager használatával adatokat küldhet az Azure Cosmos DB-nek.](data-manager-cosmosdb.md)
+A Blockchain Data Manager és Azure Cosmos DB használatával is létrehozhatja a saját blokk-kezelőt, lásd [: oktatóanyag: az adatAzure Cosmos DBba való adatküldés a Blockchain Data Manager használatával](data-manager-cosmosdb.md).
 
-## <a name="tps-measurement"></a>TPS mérés
+## <a name="tps-measurement"></a>TPS mérése
 
-Mivel a blokkláncot több vállalati forgatókönyvben használják, a másodpercenkénti tranzakciók (TPS) sebessége fontos a szűk keresztmetszetek és a rendszer elégtelenségének elkerülése érdekében. A magas tranzakciós arányokat nehéz fenntartani egy decentralizált blokkláncon belül. A pontos TPS-mérést különböző tényezők befolyásolhatják, például a kiszolgálószál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. Ha meg kell mérni TPS sebesség a fejlesztés során, egy népszerű nyílt forráskódú eszköz [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
+Mivel a blockchain több vállalati forgatókönyvben is használatos, a másodpercenkénti tranzakciók (TPS) sebessége fontos a szűk keresztmetszetek és a rendszer elégtelenségének elkerülése érdekében. A magas tranzakciós sebességet nehéz fenntartani egy decentralizált blockchain belül. A pontos TPS-mérést befolyásolhatja különböző tényezők, például a kiszolgálói szál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. Ha a fejlesztés során mérni kell a TPS sebességet, egy népszerű, nyílt forráskódú eszköz is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az Azure Blockchain Development Kit for Ethereum használatával történő rövid útmutatót, amelyhez az Azure Blockchain Szolgáltatás konzorciumához csatolhat.
+Próbáljon ki egy rövid útmutatót az Azure Blockchain Development Kit használatával a Ethereum számára az Azure Blockchain Service-hez készült konzorciumhoz való csatlakoztatáshoz.
 
 > [!div class="nextstepaction"]
-> [Az Azure Blockchain szolgáltatáshoz való csatlakozás hoz a Visual Studio-kód dal](connect-vscode.md)
+> [A Visual Studio Code használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz](connect-vscode.md)

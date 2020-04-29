@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure Application Gateway ingress controller?
-description: Ez a cikk bemutatja, hogy mi az Application Gateway ingress controller.
+title: Mi az Azure Application Gateway inbehatolás vezérlő?
+description: Ez a cikk bemutatja, hogy milyen Application Gateway beléptetési vezérlő.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,38 +8,38 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: d6a63b6276c07b1fe6487b97f5c7fc255b6d3411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335803"
 ---
-# <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway ingress controller?
-Az Application Gateway Ingress Controller (AGIC) egy Kubernetes-alkalmazás, amely lehetővé teszi az [Azure Kubernetes-szolgáltatás (AKS)](https://azure.microsoft.com/services/kubernetes-service/) ügyfelei számára, hogy kihasználják az Azure natív [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 terheléselosztóját a felhőalapú szoftverek internethez való elérhetővé tévává. Az AGIC figyeli azt a Kubernetes-fürtöt, amelyen az alkalmazásátjáró található, és folyamatosan frissíti az Alkalmazásátjárót, hogy a kiválasztott szolgáltatások elérhetők legyenek az interneten.
+# <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway beáramló vezérlő?
+A Application Gateway beáramlási vezérlő (AGIC) egy Kubernetes-alkalmazás, amely lehetővé teszi, hogy az [Azure Kubernetes Service (ak)](https://azure.microsoft.com/services/kubernetes-service/) ügyfelei kihasználják az azure natív [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 Load-balancert a felhőalapú szoftverek interneten való elérhetővé tételéhez. A AGIC figyeli az üzemeltetett Kubernetes-fürtöt, és folyamatosan frissíti egy Application Gateway, hogy a kiválasztott szolgáltatások elérhetők legyenek az internethez.
 
-A bejövő kapcsolatvezérlő saját podjában fut az ügyfél AKS-én. Az AGIC a Kubernetes-erőforrások egy részhalmazát figyeli a változások szempontjából. Az AKS-fürt állapota az Application Gateway-specifikus konfigurációra lesz lefordítva, és az [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)alkalmazásra kerül.
+A bejövő vezérlő a saját Pod-on fut az ügyfél AK-ban. A AGIC a Kubernetes-erőforrások egy részhalmazát figyeli a változásokhoz. Az AK-fürt állapota Application Gateway meghatározott konfigurációra van lefordítva, és a [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)alkalmazásra lett alkalmazva.
 
-## <a name="benefits-of-application-gateway-ingress-controller"></a>Az Application Gateway be- és átjáróvezérlőjének előnyei
-Az AGIC lehetővé teszi, hogy a központi telepítés több AKS-fürtöt vezéreljen egyetlen Application Gateway Ingress Controller rel. Az AGIC segít kiküszöbölni egy másik terheléselosztó/nyilvános IP-cím szükségességét az AKS-fürt előtt, és elkerüli a több ugrást a datapath-ban, mielőtt a kérelmek elérnék az AKS-fürtöt. Az Application Gateway közvetlenül a privát IP-címüket használó podokat beszéli, és nem igényel NodePort vagy KubeProxy szolgáltatásokat. Ez is hozza a jobb teljesítményt a központi telepítések.
+## <a name="benefits-of-application-gateway-ingress-controller"></a>A Application Gateway beáramlási vezérlő előnyei
+A AGIC lehetővé teszi, hogy az üzembe helyezés több AK-alapú fürt vezérlését egyetlen Application Gateway bejövő adatkezelővel. A AGIC azt is lehetővé teszi, hogy egy másik terheléselosztó/nyilvános IP-cím legyen az AK-fürt előtt, és elkerüli a több ugrást a DataPath, mielőtt a kérelmek elérnék az AK-fürtöt. A Application Gateway a saját saját IP-címével beszél a hüvelyekről, és nem igényli a NodePort vagy a KubeProxy szolgáltatás használatát. Ez az üzembe helyezések jobb teljesítményét is lehetővé teszi.
 
-A rendszerszámos adatkezelőt kizárólag Standard_v2 és WAF_v2 suk támogatja, ami automatikus skálázási előnyökkel is jár. Az Application Gateway reagálhat a forgalom terhelésének növekedésére vagy csökkenésére, és ennek megfelelően skálázhatja, anélkül, hogy az AKS-fürtből származó erőforrásokat fellenne szabadítva.
+A beáramló vezérlőt kizárólag Standard_v2 és WAF_v2 SKU támogatja, ami az automatikus skálázási előnyökkel is jár. Application Gateway reagálhat a forgalom terhelésének növekedésére vagy csökkenésére, és ennek megfelelően méretezhető, anélkül, hogy az AK-fürtből erőforrásokat kellene használnia.
 
-Az Alkalmazásátjáró használata az AGIC mellett a TLS-házirend és a WEBApplication Firewall (WAF) funkcióbiztosításával is segít megvédeni az AKS-fürtöt.
+A AGIC mellett a Application Gateway használatával a TLS-házirend és a webalkalmazási tűzfal (WAF) funkciójának segítségével is megvédheti az AK-fürtöt.
 
-![Azure Application Gateway + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
+![Azure Application Gateway + AK](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-Az AGIC a Kubernetes [ingress erőforráson](https://kubernetes.io/docs/user-guide/ingress/)keresztül van konfigurálva, valamint a Service and Deployments/Pods. Számos funkciót kínál, kihasználva az Azure natív Application Gateway L7 terheléselosztóját. Hogy csak néhányat említsünk:
+A AGIC a Kubernetes beáramlási [erőforrással](https://kubernetes.io/docs/user-guide/ingress/), valamint a szolgáltatás és az üzembe helyezések/hüvelyek használatával konfigurálható. Számos funkciót kínál, az Azure natív Application Gateway L7 terheléselosztó használatával. Csak néhányat említsünk:
   - URL-útválasztás
   - Cookie-alapú affinitás
-  - A TLS megszüntetése
-  - Végpontok között TLS
-  - Állami, magán- és hibrid webhelyek támogatása
-  - Integrált webes alkalmazás tűzfal
+  - TLS-lezárás
+  - Végpontok közötti TLS
+  - Nyilvános, privát és hibrid webhelyek támogatása
+  - Integrált webalkalmazási tűzfal
 
-Az AGIC több névteret is képes kezelni, és tiltott célokat is tartalmazó, ami azt jelenti, hogy az AGIC az Alkalmazásátjárót kifejezetten az AKS-fürtökhöz konfigurálhatja anélkül, hogy más meglévő háttérrendszereket befolyásolna. 
+A AGIC több névteret képes kezelni, és ProhibitedTargets rendelkezik, ami azt jelenti, hogy a AGIC a többi meglévő háttérrendszer módosítása nélkül is konfigurálhatja a Application Gatewayt az AK-fürtökhöz. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [**Zöldmezős telepítés:**](ingress-controller-install-new.md)Az AGIC, az AKS és az Application Gateway üres lappal történő infrastruktúrára történő telepítésével kapcsolatos utasítások.
-- [**Brownfield Deployment**](ingress-controller-install-existing.md): Telepítse az AGIC-et egy meglévő AKS- és alkalmazásátjáróra.
+- [**Zöldmezős üzembe helyezés**](ingress-controller-install-new.md): a AGIC, az AK és a Application Gateway telepítésére vonatkozó utasítások az üres-pala infrastruktúrán.
+- [**Rozsdaövezetek rehabilitálása-telepítés**](ingress-controller-install-existing.md): telepítse a AGIC-t egy meglévő AK-ra és Application Gatewayra.
 

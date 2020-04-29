@@ -1,142 +1,142 @@
 ---
-title: Hyperledger Fabric konzorcium az Azure Kubernetes szolgáltatáson (AKS)
-description: A Hyperledger Fabric konzorciumi hálózatának üzembe helyezése és konfigurálása az Azure Kubernetes szolgáltatásban
+title: Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
+description: A Hyperledger Fabric Consortium Network üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
 ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476440"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric konzorcium az Azure Kubernetes szolgáltatáson (AKS)
+# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
-A Hyperledger Fabric (HLF) segítségével az Azure Kubernetes Service (AKS) sablon üzembe helyezéséhez és konfigurálásához hyperledger Fabric konzorcium hálózat az Azure-ban.
+A Hyperledger Fabric (HLF) segítségével Azure Kubernetes Service (ak) sablonnal üzembe helyezheti és konfigurálhatja az Azure-beli Hyperledger Fabric Consortium-hálózatot.
 
 A cikk elolvasása után:
 
-- Szerezzen munkaismereteket a Hyperledger Fabric és a Hyperledger Fabric blokkjait alkotó különböző összetevőkről.
-- Ismerje meg, hogyan telepíthet és konfigurálhat egy Hyperledger Fabric-konzorciumot az Azure Kubernetes-szolgáltatásban az éles forgatókönyvekhez.
+- Szerezze be a Hyperledger-háló és a Hyperledger Fabric blockchain-hálózat építőelemeit alkotó különböző összetevőket.
+- Megtudhatja, hogyan helyezhet üzembe és konfigurálhat Hyperledger Fabric consortiumt az Azure Kubernetes Service-ben az éles környezetekben.
 
-## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium architektúra
+## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium-architektúra
 
-Hyperledger Fabric-hálózat létrehozása az Azure-ban, üzembe kell helyeznie rendelési szolgáltatás és a szervezet társcsomópontok. A sablon központi telepítése során létrehozott különböző alapvető összetevők a következők:
+Ahhoz, hogy az Azure-beli Hyperledger-hálót hozzon létre, üzembe kell helyeznie a szolgáltatást és a szervezetet a társ-csomópontokkal. A sablon központi telepítésének részeként létrehozott különböző alapvető összetevők a következők:
 
-- **Orderer csomópontok**: Olyan csomópont, amely felelős a főkönyvben a tranzakciók rendezéséért. Más csomópontokkal együtt a megrendelt csomópontok alkotják a Hyperledger Fabric hálózat rendelési szolgáltatását.
+- **Rendezési csomópontok**: a főkönyvben a tranzakciók rendezéséhez felelős csomópont. A többi csomóponttal együtt a megrendelt csomópontok képezik a Hyperledger Fabric-hálózat rendezési szolgáltatását.
 
-- **Társcsomópontok**: Olyan csomópont, amely elsősorban a gazdafőkönyveket és az intelligens szerződéseket, a hálózat alapvető elemeit tartalmazza.
+- **Társ-csomópontok**: olyan csomópont, amely elsődlegesen a Főkönyv és az intelligens szerződések, a hálózat ezen alapvető elemei.
 
-- **Fabric CA**: Fabric CA a Hyperledger Fabric hitelesítésszolgáltatója (CA). A Fabric hitelesítésszolgáltató lehetővé teszi a hitelesítésszolgáltatót tartalmazó kiszolgálói folyamat inicializálását és elindítását. Lehetővé teszi az identitások és tanúsítványok kezelését. A sablon részeként üzembe helyezett minden Egyes AKS-fürt alapértelmezés szerint egy Fabric CA-podtal rendelkezik.
+- **FABRIC CA**: a Fabric CA a hitelesítésszolgáltató (CA) a Hyperledger-hálóhoz. A Fabric CA segítségével inicializálhatja és elindíthatja a hitelesítésszolgáltatót futtató kiszolgálói folyamatot. Lehetővé teszi az identitások és a tanúsítványok kezelését. A sablon részeként üzembe helyezett minden AK-fürthöz alapértelmezés szerint a Fabric CA Pod lesz.
 
-- **CouchDB vagy LevelDB**: A társcsomópontok világállapot-adatbázisa a LevelDB vagy a CouchDB fájlban tárolható. A LevelDB a társcsomópontba ágyazott alapértelmezett állapotadatbázis, amely a chaincode adatokat egyszerű kulcsérték-párokként tárolja, és csak a kulcs-, kulcstartomány- és összetettkulcs-lekérdezéseket támogatja. A CouchDB egy opcionális alternatív állapotadatbázis, amely támogatja a bővített lekérdezéseket, ha a chaincode adatértékek JSON-ként vannak modellezve.
+- **CouchDB vagy LevelDB**: a társ-csomópontok globális állapotú adatbázisa a LevelDB-ben vagy a CouchDB-ben is tárolható. A LevelDB a társ-csomópontban beágyazott alapértelmezett állapot-adatbázis, amely egyszerű kulcs-érték párokként tárolja a chaincode, és csak a kulcs, a kulcs tartomány és az összetett kulcsok lekérdezéseit támogatja. A CouchDB egy opcionális, alternatív állapotú adatbázis, amely támogatja a gazdag lekérdezéseket, ha a chaincode az adatértékek JSON-ként vannak modellezve.
 
-A központi telepítéssablon különböző Azure-erőforrásokat hoz létre az előfizetésben. A különböző üzembe helyezett Azure-erőforrások a következők:
+Az üzembe helyezési sablon különböző Azure-erőforrásokat indít el az előfizetésében. Az üzembe helyezett különböző Azure-erőforrások a következők:
 
-- **AKS-fürt:** Az Azure Kubernetes-fürt, amely az ügyfél által biztosított bemeneti paraméterek szerint van konfigurálva. Az AKS-fürt különböző podok konfigurálva a Hyperledger Fabric hálózati összetevők futtatásához. A különböző létrehozott podok a következők:
+- **AK-fürt**: az Azure Kubernetes-fürt, amely az ügyfél által megadott bemeneti paraméterek szerint van konfigurálva. Az AK-fürthöz különböző hüvelyek vannak konfigurálva a Hyperledger háló hálózati összetevőinek futtatásához. A létrehozott különböző hüvelyek a következők:
 
-  - **Fabric eszközök**: A szövet eszköz felelős a Hyperledger Fabric összetevőinek konfigurálásáért.
-  - **Orderer/peer podok**: A HLF-hálózat csomópontjai.
-  - **Proxy**: NGNIX proxypod, amelyen keresztül az ügyfélalkalmazások kapcsolatba léphetnek az AKS-fürttel.
-  - **Fabric CA**: A fabric ca-t futtató pod.
-- **PostgreSQL**: A PostgreSQL egy példánya telepítve van a Fabric CA identitások karbantartásához.
+  - **Háló eszközei**: a Fabric eszköz felelős a Hyperledger-háló összetevőinek konfigurálásához.
+  - **Megrendelő/társ hüvelyek**: a HLF hálózat csomópontjai.
+  - **Proxy**: egy ngnix proxy Pod, amelyen keresztül az ÜGYFÉLALKALMAZÁSOK az AK-fürthöz is csatlakozhatnak.
+  - **FABRIC CA**: a Fabric CA-t futtató Pod.
+- **PostgreSQL**: a rendszer üzembe helyezi a PostgreSQL egy példányát a háló hitelesítésszolgáltatói identitások fenntartásához.
 
-- **Azure Key Vault:** A key vault-példány telepítve van a Fabric hitelesítésszolgáltató hitelesítő adatainak és az ügyfél által biztosított főtanúsítványainak mentéséhez, amely sablonüzembe helyezése esetén újrapróbálkozik, ez a sablon mechanikájának kezelése.
-- **Azure Felügyelt lemez:** Az Azure Felügyelt lemez a főkönyvi és társcsomópont-állapot-adatbázis állandó tárolására.
-- **Nyilvános IP:** Az AKS-fürt nyilvános IP-végpontja, amelyet a fürttel való kapcsolódásra telepítettek.
+- **Azure Key Vault**: a rendszer üzembe helyezi a Key Vault-példányt, hogy mentse a háló hitelesítésszolgáltatói hitelesítő adatait és az ügyfél által biztosított főtanúsítványokat, amelyeket a rendszer a sablon központi telepítésének újrapróbálkozása esetén használ. Ez a sablon mechanikaának kezelésére szolgál.
+- **Azure Managed Disk**: az Azure Managed Disk a Főkönyv és a társ-csomópontok globális állapotú adatbázisának állandó tárolója.
+- **Nyilvános IP-cím**: a fürttel való együttműködéshez üzembe helyezett AK-fürt nyilvános IP-végpontja.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Blockchain hálózati beállítás
+## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Blockchain-hálózat beállítása
 
-Először is olyan Azure-előfizetésre van szüksége, amely több virtuális gép és normál tárfiók üzembe helyezését is támogatja. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
+A kezdéshez olyan Azure-előfizetésre van szükség, amely támogatja több virtuális gép és standard Storage-fiók telepítését. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/)is.
 
-A Hyperledger Fabric Blockchain hálózat beállítása a következő lépésekkel:
+Állítsa be a Hyperledger Fabric Blockchain-hálózatot a következő lépések végrehajtásával:
 
-- [Az orderer/peer szervezet telepítése](#deploy-the-ordererpeer-organization)
-- [A konzorcium építése](#build-the-consortium)
+- [A megrendelés/társ szervezet üzembe helyezése](#deploy-the-ordererpeer-organization)
+- [A konzorcium összeállítása](#build-the-consortium)
 - [Natív HLF-műveletek futtatása](#run-native-hlf-operations)
 
-## <a name="deploy-the-ordererpeer-organization"></a>Az orderer/peer szervezet telepítése
+## <a name="deploy-the-ordererpeer-organization"></a>A megrendelés/társ szervezet üzembe helyezése
 
-A HLF hálózati összetevők üzembe helyezésének megkezdéséhez keresse meg az [Azure Portalt.](https://portal.azure.com) Válassza **az Erőforrás létrehozása > Blockchain** > keressen **hyperledger Fabric az Azure Kubernetes szolgáltatás.**
+Az HLF hálózati összetevők üzembe helyezésének megkezdéséhez navigáljon a [Azure Portal](https://portal.azure.com). Válassza az **erőforrás létrehozása > Blockchain** > Hyperledger- **háló keresése az Azure Kubernetes Service**-ben lehetőséget.
 
-1. A sablon központi telepítésének elindításához válassza a **Létrehozás** lehetőséget. A **Hyperledger Fabric létrehozása az Azure Kubernetes szolgáltatáson** jelenik meg.
+1. Válassza a **Létrehozás** lehetőséget a sablon telepítésének elindításához. Megjelenik a **Hyperledger-háló létrehozása az Azure Kubernetes szolgáltatásban** .
 
-    ![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+    ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
 
-2. Adja meg a projekt részleteit az **Alapok** lapon.
+2. Adja meg a projekt részleteit az **alapok** oldalon.
 
-    ![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
+    ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
 
 3. Adja meg a következő részleteket:
-    - **Előfizetés**: Válassza ki azt az előfizetésnevet, amelyen telepíteni szeretné a HLF hálózati összetevőit.
-    - **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon egy meglévő üres erőforráscsoportot, az erőforráscsoport a sablon részeként üzembe helyezett összes erőforrást megtartja.
-    - **Régió:** Válassza ki azt az Azure-régiót, ahol telepíteni szeretné az Azure Kubernetes-fürtöt a HLF-összetevőkhöz. A sablon minden olyan régióban elérhető, ahol Az AKS elérhető, győződjön meg arról, hogy válasszon egy régiót, ahol az előfizetés nem éri el a virtuális gép (VM) kvótakorlátot.
-    - **Erőforrás-előtag:** Az üzembe helyezett erőforrások elnevezésének előtagja. Az erőforrás-előtag nak hat karakternél rövidebbnek kell lennie, és a karakterek kombinációjának számokat és betűket is tartalmaznia kell.
-4. Válassza **a Fabric Beállítások** fülre a HLF hálózati összetevők, amelyek telepítve lesz.
+    - **Előfizetés**: válassza ki azt az előfizetést, amelyre telepíteni szeretné a HLF hálózati összetevőit.
+    - **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot, az erőforráscsoport a sablon részeként telepített összes erőforrást fogja tárolni.
+    - **Régió**: válassza ki azt az Azure-régiót, ahol az Azure Kubernetes-fürtöt telepíteni szeretné a HLF-összetevőkhöz. A sablon minden olyan régióban elérhető, ahol az AK elérhető legyen, és válassza ki azt a régiót, ahol az előfizetése nem éri el a virtuális gép (VM) kvótájának korlátját.
+    - **Erőforrás-előtag**: előtag a központilag telepített erőforrások elnevezéséhez. Az erőforrás-előtagnak kevesebb, mint hat karakterből kell állnia, és a karakterek kombinációjának tartalmaznia kell a számokat és a betűket is.
+4. A **háló beállításainak** kiválasztása lapon adhatja meg a telepítendő HLF hálózati összetevőket.
 
-    ![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
+    ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Adja meg a következő részleteket:
-    - **Szervezet neve**: A Háló szervezet neve, amely különböző adatsík-műveletekhez szükséges. A szervezet nevének telepítésenként egyedinek kell lennie. 
-    - **Fabric hálózati összetevő:** Válassza a Rendelési szolgáltatás vagy a Társcsomópontok alapján Blockchain hálózati összetevő be szeretne állítani.
-    - **Csomópontok száma** – A csomópontok két típusa a következő:
-        - Rendelési szolgáltatás - válassza ki a hálózati hibatűréshez megadott csomópontok számát. Csak 3,5 és 7 a támogatott rendelési csomópontok száma.
-        - Társcsomópontok – 1-10 csomópontot választhat a követelmény alapján.
-    - **Társcsomópont világállapot-adatbázisa**: Válasszon a LevelDB és a CoucbDB között. Ez a mező akkor jelenik meg, amikor a felhasználó a Fabric hálózati összetevőjének legördülő menüben választja a társcsomópontot.
-    - **Fabric felhasználónév:** Adja meg a felhasználónevet, amely a Fabric hitelesítési használt.
-    - **Fabric CA-jelszó**: Adja meg a fabric hitelesítési jelszó.
-    - **Jelszó megerősítése**: Erősítse meg a Fabric hitelesítési jelszót.
-    - **Tanúsítványok:** Ha saját főtanúsítványokkal szeretné inicializálni a fabric hitelesítésszolgáltatót, majd válassza a Legfelső szintű tanúsítvány feltöltése a Fabric CA beállításhoz lehetőséget, másnéven alapértelmezés szerint a Fabric hitelesítésszolgáltató önaláírt tanúsítványokat hoz létre.
-    - **Főtanúsítvány:** Töltse fel a legfelső szintű tanúsítványt (nyilvános kulcsot), amellyel a Fabric hitelesítésszolgáltatót inicializálni kell. A .pem formátumú tanúsítványok támogatottak, a tanúsítványoknak UTC időzónában kell érvényeseknek lenniük.
-    - **Főtanúsítvány titkos kulcsa**: Töltse fel a főtanúsítvány titkos kulcsát. Ha rendelkezik .pem tanúsítvánnyal, amely nyilvános és személyes kulccsal is rendelkezik, töltse fel ide is.
+    - **Szervezet neve**: a háló szervezet neve, amely különböző adatsíkok-műveletekhez szükséges. Az üzembe helyezéshez a szervezet nevének egyedinek kell lennie. 
+    - **Háló hálózati összetevő**: válassza ki a beállítani kívánt Blockchain hálózati összetevő alapján a szolgáltatás vagy társ csomópontok rendezése lehetőséget.
+    - **Csomópontok száma** – a következő két típusú csomópont létezik:
+        - Rendezési szolgáltatás – válassza ki, hogy hány csomópontot adjon meg a hálózat hibatűrésének. A támogatott sorrendű csomópontok száma csak 3, 5 és 7.
+        - Társ-csomópontok – a követelmények alapján kiválaszthatja a 1-10 csomópontot.
+    - **Társ csomópont globális állapotának adatbázisa**: válasszon a LevelDB és a CoucbDB között. Ez a mező akkor jelenik meg, ha a felhasználó a háló hálózati összetevő legördülő menüjében a társ csomópontot választja.
+    - **Háló felhasználóneve**: adja meg a háló hitelesítésszolgáltatói hitelesítéshez használt felhasználónevet.
+    - **FABRIC CA-jelszó**: adja meg a háló hitelesítésszolgáltatói hitelesítésének jelszavát.
+    - **Jelszó megerősítése**: erősítse meg a háló hitelesítésszolgáltatói jelszavát.
+    - **Tanúsítványok**: Ha saját főtanúsítványokat kíván használni a háló hitelesítésszolgáltató inicializálásához, válassza a főtanúsítvány feltöltése a hálóhoz CA lehetőséget, különben az alapértelmezett Fabric CA önaláírt tanúsítványokat hoz létre.
+    - **Főtanúsítvány**: töltse fel a főtanúsítványt (nyilvános kulcs), amelynek a hálós CA-nak inicializálva kell lennie. A. PEM formátumú tanúsítványok támogatottak, a tanúsítványoknak érvényesnek kell lenniük az UTC időzónában.
+    - **Főtanúsítvány titkos kulcsa**: töltse fel a főtanúsítvány titkos kulcsát. Ha olyan. PEM tanúsítvánnyal rendelkezik, amelynek nyilvános és titkos kulcsa is van, töltse fel ide.
 
 
-6. Válassza **az AKS-fürt beállításai** fülre az Azure Kubernetes fürtkonfiguráció, amely az alapul szolgáló infrastruktúra, amelyen a Fabric hálózati összetevők lesz beállítva.
+6. Válassza az **AK-fürt beállításai** fület az Azure Kubernetes-fürt konfigurációjának meghatározásához, amely az alapul szolgáló infrastruktúra, amelyre a háló hálózati összetevői lesznek beállítva.
 
-    ![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
+    ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
 7. Adja meg a következő részleteket:
-    - **Kubernetes-fürt neve**: A létrehozott AKS-fürt neve. Ez a mező előre kivan töltve a megadott erőforráselőtag alapján, szükség esetén módosítható.
-    - **Kubernetes-verzió:** A Kubernetes fürtön telepítendő verziója. Az **Alapok** lapon kiválasztott régió alapján a rendelkezésre álló támogatott verziók változhatnak.
-    - **DNS-előtag**: Az AKS-fürt DNS-névelőtagja. A DNS használatával csatlakozhat a Kubernetes API-hoz a tárolók kezelése a fürt létrehozása után.
-    - **Csomópont mérete:** A Kubernetes-csomópont mérete, az Azure-ban elérhető virtuálisgép-készletezési egység (SK) listájából választhat. Az optimális teljesítmény érdekében standard DS3 v2 ajánlott.
-    - **Csomópontszám**: A fürtben üzembe helyezendő Kubernetes-csomópontok száma. Azt javasoljuk, hogy ez a csomópont száma legalább egyenlő vagy nagyobb, mint a HlF-csomópontok a Fabric-beállításokban megadott száma.
-    - **Egyszerű szolgáltatásügyfél-azonosító:** Adja meg egy meglévő egyszerű szolgáltatásügyfél-azonosítóját, vagy hozzon létre egy újat, amely az AKS-hitelesítéshez szükséges. Lásd: egyszerű [szolgáltatás létrehozásának lépései.](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)
-    - **Szolgáltatás elsődleges ügyféltitkos:** Adja meg az egyszerű szolgáltatásnévben megadott szolgáltatásnév ügyféltkatkatit.
-    - **Ügyféltitok megerősítése:** Erősítse meg a szolgáltatás elsődleges ügyféltitkosjában megadott ügyféltitkot.
-    - **Tárolófigyelés engedélyezése:** Válassza az AKS-figyelés engedélyezését, amely lehetővé teszi, hogy az AKS-naplók a megadott Log Analytics-munkaterületre kerüljön.
-    - **Log Analytics-munkaterület:** A naplóelemzési munkaterület feltöltésre kerül az alapértelmezett munkaterület, amely akkor jön létre, ha a figyelés engedélyezve van.
+    - **Kubernetes-fürt neve**: a létrehozott AK-fürt neve. Ez a mező előre fel van töltve a megadott erőforrás-előtag alapján, szükség esetén módosítható.
+    - **Kubernetes-verzió**: a fürtön telepítendő Kubernetes verziója. Az **alapok** lapon kiválasztott régió alapján az elérhető támogatott verziók változhatnak.
+    - **DNS-előtag**: tartománynévrendszer (DNS) neve ELŐTAG az AK-fürthöz. A DNS használatával csatlakozhat a Kubernetes API-hoz, amikor a fürt létrehozása után kezeli a tárolókat.
+    - **Csomópont mérete**: a Kubernetes csomópont mérete az Azure-ban elérhető virtuálisgép-készletezési egység (SKU) listájából választható ki. Az optimális teljesítmény érdekében javasoljuk a standard DS3 v2 használatát.
+    - **Csomópontok**száma: a fürtben telepítendő Kubernetes-csomópontok számának száma. Azt javasoljuk, hogy a csomópont megtartása legalább egyenlő vagy annál nagyobb legyen, mint a háló beállításaiban megadott HLF-csomópontok száma.
+    - **Egyszerű szolgáltatásnév ügyfél-azonosítója**: adja meg egy meglévő egyszerű szolgáltatásnév ügyfél-azonosítóját, vagy hozzon létre egy újat, amely az AK-hitelesítéshez szükséges. Lásd: az [egyszerű szolgáltatásnév létrehozásának](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)lépései.
+    - **Egyszerű szolgáltatásnév ügyfél titka**: adja meg az egyszerű szolgáltatás ügyfél-azonosítójában megadott szolgáltatásnév ügyfél-titkát.
+    - **Ügyfél titkos kulcsának megerősítése**: erősítse meg az ügyfél titkos kulcsában megadott titkos kulcsot.
+    - **Tárolók figyelésének engedélyezése**: válassza az AK-figyelés engedélyezése lehetőséget, amely lehetővé teszi az AK-naplók számára a megadott log Analytics munkaterület leküldését.
+    - **Log Analytics munkaterület**: a log Analytics-munkaterület fel lesz töltve az alapértelmezett munkaterülettel, amely akkor jön létre, ha a figyelés engedélyezve van.
 
-8. Miután megadta a fenti részleteket, válassza a **Véleményezés és létrehozás** lapot. Az ellenőrzés és a létrehozás elindítja a megadott értékek érvényesítését.
-9. Miután az ellenőrzés sikeres volt, kiválaszthatja a **create lehetőséget.**
-A központi telepítés általában 10–12 percet vesz igénybe, a megadott AKS-csomópontok méretétől és számától függően változhat.
-10. A sikeres üzembe helyezés után értesítést kap az Azure-értesítéseken keresztül a jobb felső sarokban.
-11. Válassza **az Ugrás erőforráscsoportba** lehetőséget a sablon központi telepítésének részeként létrehozott összes erőforrás ellenőrzéséhez. Az összes erőforrásnév az **Alapok** beállításban megadott előtaggal kezdődik.
+8. A fenti részletek megadása után válassza a **felülvizsgálat és létrehozás** lapot. A felülvizsgálat és létrehozás elindítja a megadott értékek érvényesítését.
+9. Az ellenőrzés után kiválaszthatja a **Létrehozás**lehetőséget.
+Az üzembe helyezés általában 10-12 percet vesz igénybe, a megadott AK-csomópontok méretétől és számától függően változhat.
+10. A sikeres üzembe helyezést követően értesítést kap az Azure-értesítéseken a jobb felső sarokban.
+11. Válassza az **Ugrás az erőforráscsoporthoz** lehetőséget a sablon központi telepítésének részeként létrehozott összes erőforrás megtekintéséhez. Az összes erőforrás neve az **alapvető** beállítások beállításban megadott előtaggal fog kezdődni.
 
-## <a name="build-the-consortium"></a>A konzorcium építése
+## <a name="build-the-consortium"></a>A konzorcium összeállítása
 
-A blokklánc-konzorcium létrehozása a rendelési szolgáltatás és a társcsomópontok üzembe helyezése után, az alábbi lépéseket sorrendben kell végrehajtania. A Network parancsfájl (byn.sh) **létrehozása,** amely segít a konzorcium létrehozásában, a csatorna létrehozásában és a chaincode telepítésében.
+Ha a blockchain konzorciumot a rendezési szolgáltatás és a társ-csomópontok üzembe helyezése után szeretné felépíteni, az alábbi lépéseket kell végrehajtania a sorozatban. Hozza **létre a hálózati** parancsfájlt (Byn.sh), amely segít a konzorcium beállításában, a csatorna létrehozásában és a chaincode telepítésében.
 
 > [!NOTE]
-> Build Your Network (byn) script biztosított szigorúan kell használni a demo/devtest forgatókönyvek. A gyártási fokozatú beállításhoz a natív HLF API-k használatát javasoljuk.
+> A megadott hálózati (Byn) szkriptet kizárólag bemutató/devtest forgatókönyvek esetén kell használni. Az éles környezetben történő telepítéshez a natív HLF API-k használatát javasoljuk.
 
-A byn parancsfájl futtatásához szükséges összes parancs végrehajtható az Azure Bash parancssori felületén (CLI) keresztül. Az Azure rendszerhéj webes verziójába is bejelentkezhet a ![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) lehetőség az Azure Portal jobb felső sarkában. A parancssorba írja be a bash parancsot, és írja be a bash CLI-re való váltáshoz.
+A Byn parancsfájl futtatásához szükséges összes parancs az Azure bash parancssori felületén (CLI) keresztül hajtható végre. Az Azure Shell web Version-be a következővel jelentkezhet be ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) lehetőség a Azure Portal jobb felső sarkában. A parancssorba írja be a bash parancsot, és váltson a bash parancssori felületre.
 
-További információkért lásd az [Azure rendszerhéjat.](https://docs.microsoft.com/azure/cloud-shell/overview)
+További információt az [Azure-rendszerhéjban](https://docs.microsoft.com/azure/cloud-shell/overview) talál.
 
-![Hyperledger Fabric az Azure Kubernetes szolgáltatássablonján](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
+![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Töltse le byn.sh és a fabric-admin.yaml fájlt.
+Töltse le a byn.sh és a Fabric-admin. YAML fájlt.
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
 ```
-**Állítsa be az alábbi környezeti változókat az Azure CLI Bash rendszerhéjban:**
+**Állítsa be az alábbi környezeti változókat az Azure CLI bash rendszerhéjon**:
 
-Csatornaadatok és rendelési szervezeti adatok beállítása
+Csatorna információinak és a megrendelési szervezet adatainak megadása
 
 ```bash
 SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
@@ -147,7 +147,7 @@ ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --na
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
 ```
-Társszervezeti adatok beállítása
+Társ-szervezeti adatok megadása
 
 ```bash
 PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
@@ -157,7 +157,7 @@ PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
 PEER_ORG_NAME=<peerOrganizationName>
 ```
 
-Hozzon létre egy Azure-fájlmegosztást a különböző nyilvános tanúsítványok társ- és rendezett szervezetek közötti megosztásához.
+Hozzon létre egy Azure-fájlmegosztást a különböző nyilvános tanúsítványok megosztásához a társ-és a megrendelő szervezetek között.
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -174,27 +174,27 @@ az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
 ```
-**Csatornakezelési parancsok**
+**Csatorna-felügyeleti parancsok**
 
-Ugrás az aKS-fürtszervező szervezetre, és új csatorna létrehozása parancs
+Ugrás a rendezési szervezet AK-fürthöz és a probléma parancs új csatorna létrehozásához
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
 ./byn.sh createChannel "$CHANNEL_NAME"
 ```
 
-**Konzorciumkezelési parancsok**
+**Konzorcium-kezelési parancsok**
 
-Az alábbi parancsok végrehajtása a megadott sorrendben egy társszervezet hozzáadása a csatornában és a konzorciumban.
+A megadott sorrendben hajtsa végre az alábbi parancsokat, és adjon hozzá egy partneri szervezetet egy csatornához és konzorciumhoz.
 
-1. Nyissa meg a társszervezet AKS-fürtjét, és töltse fel a tagszolgáltatás-szolgáltatást (MSP) egy Azure-fájltárolón.
+1. Nyissa meg a társ-szervezeti AK-fürtöt, és töltse fel a tagsági szolgáltatását (MSP) egy Azure-File Storage.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-2. Nyissa meg az orderer Organization AKS-fürtöt, és adja hozzá a társszervezetet a csatornához és a konzorciumhoz.
+2. Nyissa meg a rendezési szervezeti AK-fürtöt, és adja hozzá a társ-szervezetet a Channel és a Consortium szolgáltatásban.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
@@ -204,26 +204,26 @@ Az alábbi parancsok végrehajtása a megadott sorrendben egy társszervezet hoz
     ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-3. Lépjen vissza a társszervezethez, és adja ki a parancsot a társcsomópontok csatlakoztatásához a csatornában.
+3. Lépjen vissza a társ-szervezeti felületre, és adja meg a parancsot, hogy csatlakozzon a csatorna egyenrangú csomópontjaihoz.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-Hasonlóképpen, további társszervezetek hozzáadása a csatornában, frissítse a társ AKS környezeti változók, mint egy a szükséges társ-szervezet, és hajtsa végre az 1-3 lépéseket.
+Hasonlóképpen, ha további társközi szervezeteket szeretne hozzáadni a csatornához, frissítse a peer AK környezeti változóit a szükséges társ-munkahelyként, és hajtsa végre az 1 – 3. lépést.
 
-**Lánckódkezelési parancsok**
+**Chaincode-kezelési parancsok**
 
-Az alábbi parancs végrehajtása a chaincode-hoz kapcsolódó művelet végrehajtásához. Ezek a parancsok minden műveletet végrehajtanak egy demo chaincode-on. Ez a demo chaincode két változó "a" és "b". A lánckód példányosításakor az "a" 1000, a "b" pedig 2000-rel inicializálódik. A lánckód minden egyes meghívásakor 10 egység kerül át "a"-ról "b"-re. A chaincode lekérdezési művelete az "a" változó világállapotát mutatja.
+Hajtsa végre az alábbi parancsot a chaincode-hez kapcsolódó művelet végrehajtásához. Ezek a parancsok minden műveletet végrehajtanak a bemutató chaincode. Ez a bemutató chaincode két változóval rendelkezik: "a" és "b". A chaincode példányának létrehozásakor az "a" inicializálása 1000, a "b" pedig a 2000-es értékkel van inicializálva. A chaincode minden meghívásakor 10 egység kerül át az "a" és "b" értékre. A chaincode lekérdezési művelete az "a" változó globális állapotát jeleníti meg.
 
-Hajtsa végre a társszervezet AKS-fürtén végrehajtott következő parancsokat.
+Hajtsa végre a következő parancsokat a társ-szervezeti AK-fürtön.
 
 ```bash
 # switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
 SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
 ```
-**Lánckód műveletparancsok**
+**Chaincode művelet parancsai**
 
 ```bash
 PEER_NODE_NAME="peer<peer#>"
@@ -235,49 +235,49 @@ PEER_NODE_NAME="peer<peer#>"
 
 ## <a name="run-native-hlf-operations"></a>Natív HLF-műveletek futtatása
 
-Annak érdekében, hogy az ügyfelek könnyebben végrehajthassák a Hyperledger natív parancsait a HLF-hálózaton az AKS-en. A mintaalkalmazás biztosított, amely a NodeJS SDK hálót használja a HLF-műveletek végrehajtásához. A parancsok új felhasználói identitás létrehozása és a saját chaincode telepítése.
+Annak érdekében, hogy az ügyfelek megismerkedjenek a Hyperledger natív parancsainak futtatásával a HLF-hálózaton az AK-on. A minta alkalmazást a Fabric NodeJS SDK használatával végezheti el a HLF műveletek végrehajtásához. A parancsokkal új felhasználói identitást hozhat létre, és telepítheti saját chaincode.
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Kövesse az alábbi parancsokat az alkalmazás kezdeti beállításához:
+Az alkalmazás kezdeti beállításához kövesse az alábbi parancsokat:
 
 - Alkalmazásfájlok letöltése
 - Kapcsolatprofil és rendszergazdai profil létrehozása
 - Rendszergazdai felhasználói identitás importálása
 
-A kezdeti beállítás befejezése után az SDK segítségével elérheti az alábbi műveleteket:
+A kezdeti beállítás befejezése után az SDK használatával elérheti az alábbi műveleteket:
 
 - Felhasználói identitás létrehozása
-- Lánckódos műveletek
+- Chaincode-műveletek
 
-A fent említett parancsok az Azure Cloud Shell ből hajthatók végre.
+A fent említett parancsokat Azure Cloud Shell lehet végrehajtani.
 
 ### <a name="download-application-files"></a>Alkalmazásfájlok letöltése
 
-Az alkalmazás futtatásának első beállítása a mappában lévő összes alkalmazásfájl letöltése.
+Az alkalmazás futtatásának első beállítása az összes alkalmazás fájljának letöltése egy mappában.
 
-**Alkalmazásmappa létrehozása és a mappa beírása:**
+**Hozzon létre egy app mappát, és írja be a mappába**:
 
 ```bash
 mkdir app
 cd app
 ```
-Az alábbi parancs végrehajtása az összes szükséges fájl és csomag letöltéséhez:
+Futtassa az alábbi parancsot az összes szükséges fájl és csomag letöltéséhez:
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
 ```
-Ez a parancs időt vesz igénybe az összes csomag betöltéséhez. A parancs sikeres végrehajtása után `node_modules` egy mappa látható az aktuális könyvtárban. Az összes szükséges csomag betöltődik a `node_modules` mappába.
+Ez a parancs időt vesz igénybe az összes csomag betöltéséhez. A parancs sikeres végrehajtása után egy `node_modules` mappát láthat az aktuális könyvtárban. Az összes szükséges csomag betöltődik a `node_modules` mappába.
 
 ### <a name="generate-connection-profile-and-admin-profile"></a>Kapcsolatprofil és rendszergazdai profil létrehozása
 
-Könyvtár `profile` létrehozása `app` a mappán belül
+Könyvtár `profile` létrehozása a `app` mappán belül
 
 ```bash
 cd app
 mkdir ./profile
 ```
-Állítsa be ezeket a környezeti változókat az Azure felhőalapú rendszerhéján
+A környezeti változók beállítása az Azure Cloud shellben
 
 ```bash
 # Organization name whose connection profile is to be generated
@@ -286,33 +286,33 @@ ORGNAME=<orgname>
 AKS_RESOURCE_GROUP=<resourceGroup>
 ```
 
-Az alábbi parancs végrehajtása a szervezet kapcsolati profiljának és felügyeleti profiljának létrehozásához
+Az alábbi parancs végrehajtásával létrehozza a szervezet kapcsolódási profilját és rendszergazdai profilját
 
 ```bash
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
 ```
 
-Ez létrehoz kapcsolat profilés admin `profile` a szervezet a `<orgname>-ccp.json` `<orgname>-admin.json` profil mappában a nevét, illetve.
+A profil mappájában létrehozza `profile` a profilt és a nevet, valamint a nevét. `<orgname>-ccp.json` `<orgname>-admin.json`
 
-Hasonlóképpen hozzon létre kapcsolati profilt és rendszergazdai profilt minden egyes orderer és társszervezethez.
+Hasonlóképpen, az egyes megrendelésekhez és a társ-munkaszervezetekhez kapcsolódó profilt és rendszergazdai profilt is elő kell készíteni.
 
 
 ### <a name="import-admin-user-identity"></a>Rendszergazdai felhasználói identitás importálása
 
-Az utolsó lépés a szervezet rendszergazdai felhasználói identitásának importálása a pénztárcában.
+Az utolsó lépés a szervezet rendszergazdai felhasználói identitásának importálása a pénztárcába.
 
 ```bash
 npm run importAdmin -- -o <orgName>
 
 ```
-A fenti parancs végrehajtja az importAdmin.js parancsot a rendszergazdai felhasználói identitás importálásához a pénztárcába. A parancsfájl beolvassa a rendszergazdai identitást a rendszergazdai profilból, `<orgname>-admin.json` és importálja azt a pénztárcában a HLF-műveletek végrehajtásához.
+A fenti parancs végrehajtja a importAdmin. js fájlt, hogy importálja a rendszergazdai felhasználói identitást a pénztárcába. A parancsfájl beolvassa a rendszergazdai identitást `<orgname>-admin.json` a rendszergazdai profilból, és importálja azt a mobiltárca-ben a HLF műveletek végrehajtásához.
 
-A parancsfájlok fájlrendszer-pénztárcát használnak az identitások tárolására. Létrehoz egy pénztárcát a kapcsolatprofil ".wallet" mezőjében megadott elérési út nak. Alapértelmezés szerint a ".wallet" mező `<orgname>`inicializálásra kerül a program, ami azt jelenti, hogy egy megnevezett `<orgname>` mappa jön létre az aktuális könyvtárban az identitások tárolásához. Ha egy másik útvonalon szeretne pénztárcát létrehozni, módosítsa a ".wallet" mezőt a kapcsolatprofilban, mielőtt rendszergazdai felhasználót és bármely más HLF-műveletet futtatna.
+A parancsfájlok fájlrendszer-mobiltárca használatával tárolják az identitásokat. Létrehoz egy adatforrást a kapcsolatprofil ". Wallet" mezőjében megadott elérési út alapján. Alapértelmezés szerint a ". Wallet" mező inicializálva van `<orgname>`, ami azt jelenti, hogy a `<orgname>` rendszer létrehoz egy nevű mappát az aktuális könyvtárban az identitások tárolásához. Ha más elérési úton szeretné létrehozni a mobiltárca szolgáltatást, módosítsa a kapcsolódási profil ". Wallet" mezőjét a regisztrálási rendszergazda felhasználó és bármely más HLF művelet futtatása előtt.
 
-Hasonlóképpen importálja az egyes szervezetek felügyeleti felhasználói identitását.
+Hasonlóképpen importálja az egyes szervezetekhez tartozó rendszergazdai felhasználói identitást is.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgóját.
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 
 ```bash
 npm run importAdmin -- -h
@@ -321,12 +321,12 @@ npm run importAdmin -- -h
 
 ### <a name="user-identity-generation"></a>Felhasználói identitás létrehozása
 
-Hajtsa végre az alábbi parancsokat a megadott sorrendben, hogy új felhasználói identitásokat hozzon létre a HLF szervezet számára.
+A megadott sorrendben hajtsa végre az alábbi parancsokat a HLF-szervezet új felhasználói identitásának létrehozásához.
 
 > [!NOTE]
-> A felhasználói identitás generálásának lépései előtt győződjön meg arról, hogy az alkalmazás kezdeti beállítása megtörtént.
+> A felhasználói azonosító létrehozási lépéseinek megkezdése előtt győződjön meg arról, hogy az alkalmazás kezdeti beállítása megtörtént.
 
-Állítsa be az alábbi környezeti változókat az azure felhőalapú rendszerhéjon
+Az alábbi környezeti változók beállítása az Azure Cloud shellben
 
 ```bash
 # Organization name for which user identity is to be generated
@@ -338,7 +338,7 @@ USER_IDENTITY=<username>
 
 Új felhasználó regisztrálása és regisztrálása
 
-Új felhasználó regisztrálásához és igényléséhez hajtsa végre a registerUser.js fájlon végrehajtó alábbi parancsot. Menti a generált felhasználói identitása a pénztárca.
+Új felhasználó regisztrálásához és regisztrálásához hajtsa végre az alábbi parancsot, amely végrehajtja a registerUser. js fájlt. A létrehozott felhasználói identitást a mobiltárca tárolja.
 
 ```bash
 npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
@@ -346,22 +346,22 @@ npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
 ```
 
 > [!NOTE]
-> A rendszergazdai felhasználói identitás az új felhasználó regiszterparancsának kiadására szolgál. Ezért a parancs végrehajtása előtt kötelező a rendszergazdai felhasználói identitás a pénztárcában lennie. Ellenkező esetben ez a parancs sikertelen lesz.
+> A rendszergazdai felhasználói identitás az új felhasználó regisztrálási parancsának kiadására szolgál. Ezért a parancs végrehajtása előtt kötelező megadni a rendszergazdai felhasználói identitást a tárcában. Ellenkező esetben a parancs sikertelen lesz.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgójának hivatkozását
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 
 ```bash
 npm run registerUser -- -h
 
 ```
 
-### <a name="chaincode-operations"></a>Lánckódos műveletek
+### <a name="chaincode-operations"></a>Chaincode-műveletek
 
 
 > [!NOTE]
-> Mielőtt bármilyen chaincode művelet, győződjön meg arról, hogy a kezdeti beállítás az alkalmazás megtörtént.
+> A chaincode művelet megkezdése előtt győződjön meg arról, hogy az alkalmazás kezdeti beállítása megtörtént.
 
-Az azure cloud-rendszerhéjban az alábbi chaincode-specifikus környezeti változókat állíthatja be:
+Állítsa be az alábbi chaincode-specifikus környezeti változókat az Azure Cloud shellben:
 
 ```bash
 # peer organization name where chaincode is to be installed
@@ -383,91 +383,91 @@ CHANNEL=<channelName>
 
 ````
 
-Az alábbi chaincode műveleteket lehet végezni:
+Az alábbi chaincode műveletek végezhetők el:
 
-- A lánckód telepítése
-- A lánckód példányos példányosítása
-- Lánckód meghívása
-- Lánckód lekérdezése
+- A chaincode telepítése
+- Chaincode példányának példányai
+- Chaincode meghívása
+- Chaincode lekérdezése
 
-### <a name="install-chaincode"></a>A lánckód telepítése
+### <a name="install-chaincode"></a>A chaincode telepítése
 
-Az alábbi parancs végrehajtása a lánckód telepítéséhez a társszervezeten.
+Futtassa az alábbi parancsot a chaincode telepítéséhez a társ-szervezetben.
 
 ```bash
 npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
 
 ```
-A szervezet összes környezeti változóban `ORGNAME` beállított társcsomópontjára chaincode-kódot telepít. Ha két vagy több társszervezet van a csatornában, és mindegyikre chaincode-ot szeretne telepíteni, a parancsokat minden társszervezethez külön-külön hajtsa végre.
+A chaincode a `ORGNAME` környezeti változóban beállított szervezet összes egyenrangú csomópontjára telepíti. Ha a csatornán kettő vagy több egyenrangú szervezet található, és mindegyikhez telepíteni szeretné a chaincode-t, hajtsa végre a parancsokat külön-külön az egyes társ-szervezeteknél.
 
-Kövesse a következő lépéseket:
+Kövesse az alábbi lépéseket:
 
-- Beállítás `ORGNAME` `<peerOrg1Name>` és `installCC` problémaparancs.
-- Beállítás `ORGNAME` `<peerOrg2Name>` és `installCC` problémaparancs.
+- Állítsa `ORGNAME` be `<peerOrg1Name>` és adja `installCC` meg a parancsot.
+- Állítsa `ORGNAME` be `<peerOrg2Name>` és adja `installCC` meg a parancsot.
 
-  Hajtsa végre az egyes társszervezeteknél.
+  Hajtsa végre az összes társ-szervezet számára.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgóját.
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a parancs súgóját.
 
 ```bash
 npm run installCC -- -h
 
 ```
 
-### <a name="instantiate-chaincode"></a>A lánckód példányos példányosítása
+### <a name="instantiate-chaincode"></a>Chaincode példányának példányai
 
-Az alábbi parancs végrehajtása a lánckód példányosítására a társon.
+Futtassa az alábbi parancsot a chaincode a társon való létrehozásához.
 
 ```bash
 npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
 
 ```
-Adja át az példányosítási függvény nevét és `<instantiateFunc>` vesszővel elválasztott argumentumlistáját. `<instantiateFuncArgs>` Például a [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go),, hogy példányosítani `"Init"` `<instantiateFuncArgs>` a chaincode meg, `""` `<instantiateFunc>` és üres string .
+A (z) és a (z) és a `<instantiateFunc>` (z `<instantiateFuncArgs>` ) és a (z) argumentumok egymásba lépése Például a [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)-ben, ha a chaincode-t a `<instantiateFunc>` `"Init"` és a `<instantiateFuncArgs>` értékre állítja `""`, és üres karakterláncot szeretne létrehozni.
 
 > [!NOTE]
-> A parancsot egyszer hajtsa végre a csatorna bármely társszervezetéből.
-> Miután a tranzakció sikeresen elküldésre került a rendelésre, az orderer szétosztja ezt a tranzakciót a csatorna összes társszervezetének. Ezért a chaincode példányosítja az összes társcsomópontok a társszervezetek a csatornában.
+> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől.
+> Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgójának hivatkozását
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 
 ```bash
 npm run instantiateCC -- -h
 
 ```
 
-### <a name="invoke-chaincode"></a>Lánckód meghívása
+### <a name="invoke-chaincode"></a>Chaincode meghívása
 
-Az alábbi parancs végrehajtása a chaincode függvény meghívásához:
+A chaincode függvény meghívásához hajtsa végre az alábbi parancsot:
 
 ```bash
 npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
 
 ```
-Pass invoke függvény neve és vesszővel elválasztott `<invokeFunction>` `<invokeFuncArgs>` argumentumok listája, illetve. Folytatva a fabcar chaincode például, hogy `<invokeFunction>` `"initLedger"` meghívja initLedger függvény beállítása, és `<invokeFuncArgs>` `""`.
+A (z) és a (z) és `<invokeFunction>` `<invokeFuncArgs>` a (z) argumentumban a függvény neve és vesszővel tagolt listája Folytassa a fabcar chaincode példával, hogy meghívja a initLedger `<invokeFunction>` függvényt `<invokeFuncArgs>` a `""` `"initLedger"` és a értékre.
 
 > [!NOTE]
-> A parancsot egyszer hajtsa végre a csatorna bármely társszervezetéből.
-> Miután a tranzakció sikeresen elküldésre került a rendelésre, az orderer szétosztja ezt a tranzakciót a csatorna összes társszervezetének. Ezért a világállapot frissül a csatorna összes társszervezetének összes társcsomópontján.
+> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől.
+> Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a globális állapotot a rendszer az összes társ-csomóponton frissíti a csatornán.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgójának hivatkozását
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 
 ```bash
 npm run invokeCC -- -h
 
 ```
 
-### <a name="query-chaincode"></a>Lánckód lekérdezése
+### <a name="query-chaincode"></a>Chaincode lekérdezése
 
-Az alábbi parancs végrehajtása a chaincode lekérdezéséhez:
+Futtassa az alábbi parancsot a chaincode lekérdezéséhez:
 
 ```bash
 npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
 
 ```
 
-Adja át a lekérdezési függvény nevét és `<queryFunction>` vesszővel elválasztott argumentumlistáját. `<queryFuncArgs>` Ismét figyelembe `fabcar` chaincode referenciaként, hogy a lekérdezés az `<queryFunction>` `"queryAllCars"` összes `<queryArgs>` `""`autó a világ állam meg, és .
+A `<queryFunction>` `<queryFuncArgs>` lekérdezési függvény neve és az argumentumok vesszővel tagolt listája. A chaincode- `fabcar` ként is, hogy a globális állapotban `<queryFunction>` lévő összes, a `"queryAllCars"` és `<queryArgs>` a értékre `""`irányuló összes autó lekérdezése megtörténjen.
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért olvassa el a parancs súgójának hivatkozását
+A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 
 ```bash
 npm run queryCC -- -h

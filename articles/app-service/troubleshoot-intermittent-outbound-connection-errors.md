@@ -1,6 +1,6 @@
 ---
-title: Időszakos kimenő csatlakozási hibák elhárítása az Azure App Service-ben
-description: Az Azure App Service időszakos csatlakozási hibáinak és a kapcsolódó teljesítményproblémáknak a elhárítása
+title: Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
+description: Az időszakos kapcsolati hibák és a kapcsolódó teljesítménnyel kapcsolatos problémák elhárítása Azure App Service
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
@@ -8,169 +8,169 @@ ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
 ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80367550"
 ---
-# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Időszakos kimenő csatlakozási hibák elhárítása az Azure App Service-ben
+# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
-Ez a cikk segítséget nyújt az azure App Service időszakos csatlakozási hibáinak és a kapcsolódó teljesítményproblémáknak a [elhárításában.](https://docs.microsoft.com/azure/app-service/overview) Ez a témakör további információkat és hibaelhárítási módszereket tartalmaz a forráscím-hálózati fordítási (SNAT) portok kimerüléséről. Ha további segítségre van szüksége a cikk bármely pontján, forduljon az Azure szakértőihez az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként nyújtson be egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+Ez a cikk segítséget nyújt az időszakos kapcsolati hibák és a [Azure app Service](https://docs.microsoft.com/azure/app-service/overview)kapcsolódó teljesítménybeli problémák elhárításában. Ez a témakör további információkat nyújt a és a hibaelhárítási módszereiről, valamint a forrásoldali hálózati fordítási (SNAT) portok kimerítéséről. Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN Azure-beli szakértőkkel és a stack overflow fórumokkal](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 ## <a name="symptoms"></a>Probléma
 
-Az Azure App Service szolgáltatásban üzemeltetett alkalmazások és funkciók az alábbi jelenségek közül egyet vagy többet mutathatnak:
+Az Azure app Service-ben üzemeltetett alkalmazások és függvények a következő tünetek közül egyet vagy többet mutathatnak:
 
-* Lassú válaszidő a szolgáltatási csomag összes vagy néhány példányán.
-* Időszakos 5xx vagy **hibás átjáró** hibák
-* Időeltetési hibaüzenetek
-* Nem lehet csatlakozni külső végpontokhoz (például SQLDB, Service Fabric, egyéb alkalmazásszolgáltatások stb.)
+* Lassú válaszidő a szolgáltatási csomag összes példányán vagy egy részén.
+* Időszakos 5xx vagy **hibás átjáróval** kapcsolatos hibák
+* Időtúllépési hibaüzenetek
+* Nem lehet csatlakozni külső végpontokhoz (például SQLDB, Service Fabric, egyéb app Services stb.)
 
 ## <a name="cause"></a>Ok
 
-A jelenségek egyik fő oka, hogy az alkalmazáspéldány nem tud új kapcsolatot nyitni a külső végponthoz, mert elérte az alábbi korlátok egyikét:
+Ezen tünetek egyik fő oka, hogy az alkalmazás példánya nem tud új kapcsolódást nyitni a külső végponthoz, mert elérte a következő korlátozások valamelyikét:
 
-* TCP-kapcsolatok: A kimenő kapcsolatok száma korlátozva van. Ez a használt dolgozó méretéhez van társítva.
-* SNAT-portok: Az [Azure-beli kimenő kapcsolatokban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)tárgyalt módon az Azure a forráshálózati címfordítást (SNAT) és a terheléselosztót (az ügyfelek számára nem elérhető) használja az Azure-on kívüli végpontokkal való kommunikációhoz a nyilvános IP-címtérben. Az Azure App-szolgáltatás minden példánya kezdetben **128** SNAT-port előre lefoglalt száma. Ez a korlát hatással van az azonos állomás- és portkombinációhoz való kapcsolatok megnyitására. Ha az alkalmazás kapcsolatokat hoz létre a cím- és portkombinációk keverékével, akkor nem használja fel az SNAT-portokat. Az SNAT-portok akkor használatosak, ha ugyanazt a címet és portkombinációt többször is meghívja. A port felszabadítása után a port szükség szerint újra felhasználható. Az Azure Network terheléselosztó csak 4 perc várakozás után szerzi vissza az SNAT-portot a lezárt kapcsolatokról.
+* TCP-kapcsolatok: az elvégezhető kimenő kapcsolatok száma korlátozott. Ez a használt munkavégző méretével van társítva.
+* SNAT-portok: az Azure-beli [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)esetében az Azure a forrás hálózati CÍMFORDÍTÁS (SNAT) és egy Load Balancer (az ügyfelek számára nem elérhető) használatával kommunikál az Azure-on kívüli végpontokkal a nyilvános IP-címeken. Az Azure app Service minden példánya eredetileg előre lefoglalt számú **128** SNAT-portot kap. Ez a korlát befolyásolja a kapcsolatok megnyitását ugyanahhoz a gazdagéphez és port kombinációhoz. Ha az alkalmazás a címek és a portok kombinációinak együttes használatával hoz létre kapcsolatokat, nem fogja használni a SNAT-portokat. A rendszer akkor használja a SNAT-portokat, ha ismétlődő hívásokat végez ugyanahhoz a címnek és port kombinációhoz. A portok felszabadítása után a port igény szerint újra felhasználható. Az Azure hálózati terheléselosztó csak 4 perc várakozás után visszaállítja a SNAT-portot a lezárt kapcsolatoktól.
 
-Amikor az alkalmazások vagy funkciók gyorsan új kapcsolatot nyitnak meg, gyorsan kimeríthetik a 128 port előre lefoglalt kvótáját. Ezután le van tiltva, amíg egy új SNAT-port nem válik elérhetővé, akár további SNAT-portok dinamikus kiosztásával, akár egy visszanyert SNAT-port újrafelhasználásával. Azok az alkalmazások vagy függvények, amelyek azért vannak blokkolva, mert nem képesek új kapcsolatokat létrehozni, a cikk **Jelenségei** című szakaszban ismertetett egy vagy több problémát tapasztalnak.
+Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakozást, gyorsan kihasználhatják az 128-es portok előre lefoglalt kvótáját. Ezután le lesznek tiltva, amíg egy új SNAT-port elérhetővé válik, vagy a további SNAT-portok dinamikusan kiosztásával, vagy egy visszaigényelt SNAT-port újbóli használatával. Azok az alkalmazások vagy függvények, amelyek nem tudnak új kapcsolatokat létrehozni, a jelen cikk a **jelenségek** című szakaszában ismertetett problémák valamelyikével kezdődnek.
 
 ## <a name="avoiding-the-problem"></a>A probléma elkerülése
 
-Az SNAT-portproblémájának elkerülése azt jelenti, hogy elkerüljük az ugyanazon állomáshoz és porthoz ismétlődően új kapcsolatok létrehozását.
+A SNAT-port problémájának elkerülése azt jelenti, hogy az új kapcsolatok ismételt létrehozását nem kell ismétlődő módon létrehozni ugyanahhoz a gazdagéphez és porthoz.
 
-Az SNAT-portok kimerülésének csökkentésére vonatkozó általános stratégiákat az Azure **dokumentációjának kimenő kapcsolatainak** [Problémamegoldó szakaszában](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) tárgyaljuk. Ezek közül a stratégiák közül az alábbiak az Azure App-szolgáltatásban üzemeltetett alkalmazásokra és funkciókra vonatkoznak.
+Az SNAT-portok kimerülését csökkentő általános stratégiákat az Azure-dokumentáció **kimenő kapcsolatainak** [problémamegoldó szakasza](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) tárgyalja. Az alábbi stratégiák az Azure app Service-ben üzemeltetett alkalmazásokra és funkciókra vonatkoznak.
 
-### <a name="modify-the-application-to-use-connection-pooling"></a>Az alkalmazás módosítása kapcsolatkészletezés használatára
+### <a name="modify-the-application-to-use-connection-pooling"></a>Az alkalmazás módosítása a kapcsolatok készletezésének használatára
 
-* Http-kapcsolatok készletezéséhez tekintse át [a Http-kapcsolatokat a HttpClientFactory segítségével.](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)
-* Az SQL Server kapcsolatkészletezésről az [SQL Server kapcsolatkészletezés (ADO.NET) című, a kataista kiszolgálói kapcsolatkészletezés című oldalán talál.](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-* Az entitáskeretrendszer-alkalmazásokkal való összevonás megvalósításához tekintse át a [DbContext-készletezést.](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)
+* A HTTP-kapcsolatok készletezéséhez tekintse át [a készlet http-kapcsolatait a HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
+* A SQL Server kapcsolatok készletezésével kapcsolatos információkért tekintse át [SQL Server kapcsolatok készletezése (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)című témakört.
+* Az Entity Framework-alkalmazásokkal való készletezés megvalósításához tekintse át az [DbContext-készletezést](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling).
 
-Itt van egy linkgyűjtemény a különböző megoldásverem kapcsolatkészletezésének megvalósításához.
+Az alábbi hivatkozás a kapcsolatok készletezésének különböző megoldási verem általi megvalósítására szolgál.
 
 #### <a name="node"></a>Csomópont
 
-Alapértelmezés szerint a NodeJS-kapcsolatok nem maradnak életben. Az alábbiakban a népszerű adatbázisok és csomagok kapcsolat készletezés, amelyek példákat tartalmaznak, hogyan lehet megvalósítani őket.
+Alapértelmezés szerint a NodeJS-kapcsolatok nem maradnak életben. Az alábbiakban láthatók a kapcsolatok készletezésének népszerű adatbázisai és csomagjai, amelyek példákat tartalmaznak a megvalósítására.
 
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
 * [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
 * [PostgreSQL](https://node-postgres.com/features/pooling)
 * [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools)
 
-HTTP Életben maradni
+HTTP Keep-Alive
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Node.js v13.9.0 Dokumentáció](https://nodejs.org/api/http.html)
+* [Node. js v 13.9.0 dokumentációja](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
-Az alábbiakban a JDBC-kapcsolatkészlethez használt népszerű tárak találhatók, amelyek példákat tartalmaznak ezek megvalósítására: JDBC kapcsolatkészletezés.
+Az alábbiakban a JDBC-kapcsolatok készletezéséhez használt népszerű kódtárak találhatók, amelyek példákat tartalmaznak a megvalósítására: JDBC-kapcsolatok készletezése.
 
-* [Tomcat, 8.](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
+* [Tomcat 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
 * [C3p0](https://github.com/swaldman/c3p0)
 * [HikariCP](https://github.com/brettwooldridge/HikariCP)
 * [Apache DBCP](https://commons.apache.org/proper/commons-dbcp/)
 
-HTTP-kapcsolat készletezése
+HTTP-kapcsolatok készletezése
 
-* [Apache kapcsolatkezelés](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [OsztálykészletezésHttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache-kapcsolatok kezelése](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
+* [PoolingHttpClientConnectionManager osztály](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
 
 #### <a name="php"></a>PHP
 
-Bár a PHP nem támogatja a kapcsolatkészletezést, megpróbálhat állandó adatbázis-kapcsolatokat használni a háttérkiszolgálóval.
+Habár a PHP nem támogatja a kapcsolatok készletezését, kipróbálhatja az állandó adatbázis-kapcsolatokat a háttér-kiszolgálóval.
  
-* MySQL szerver
+* MySQL-kiszolgáló
 
-   * [MySQLi kapcsolatok](https://www.php.net/manual/mysqli.quickstart.connections.php) újabb verziókhoz
+   * [Mysqli kapcsolatok](https://www.php.net/manual/mysqli.quickstart.connections.php) az újabb verziókhoz
    * [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php) a PHP régebbi verzióihoz
 
 * Egyéb adatforrások
 
-   * [PHP kapcsolatkezelés](https://www.php.net/manual/en/pdo.connections.php)
+   * [PHP-kapcsolatok kezelése](https://www.php.net/manual/en/pdo.connections.php)
 
 #### <a name="python"></a>Python
 
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
 * [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
 * [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (MEGJEGYZÉS: AZ SQLAlchemy a MicrosoftSQL Server en kívül más adatbázisokkal is használható)
-* [HTTP Keep-alive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(A Keep-Alive automatikus, ha [munkamenet-objektumokat](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)használ).
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (Megjegyzés: a SQLAlchemy a MicrosoftSQL-kiszolgálón kívül más adatbázisokkal is használható)
+* [Http életben tartás](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(életben tartási munkamenet [-objektumok](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)használata esetén a Keep-Alive automatikus).
 
-Más környezetekben tekintse át a szolgáltatót vagy az illesztőprogram-specifikus dokumentumokat a kapcsolatkészletezés alkalmazásba való bevezetéséhez.
+Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram-specifikus dokumentumokat a kapcsolatok készletezésének megvalósításához az alkalmazásokban.
 
 ### <a name="modify-the-application-to-reuse-connections"></a>Az alkalmazás módosítása a kapcsolatok újrafelhasználásához
 
-*  Az Azure-függvények kapcsolatainak kezelésével kapcsolatos további mutatókért és példákért tekintse meg [a Kapcsolatok kezelése az Azure Functions ben](https://docs.microsoft.com/azure/azure-functions/manage-connections).
+*  További mutatókkal és példákkal az Azure functions kapcsolatainak kezeléséhez tekintse át a [Azure functions a kapcsolatok kezelése című részt](https://docs.microsoft.com/azure/azure-functions/manage-connections).
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>Az alkalmazás módosítása kevésbé agresszív újrapróbálkozási logika használatára
 
-* További útmutatásért és példákért tekintse át [az Újraminta mintát.](https://docs.microsoft.com/azure/architecture/patterns/retry)
+* További útmutatást és példákat az [újrapróbálkozási minta](https://docs.microsoft.com/azure/architecture/patterns/retry)áttekintése című témakörben talál.
 
-### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Keepalives használatával alaphelyzetbe állíthatja a kimenő tétlen időoutot
+### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>A kimenő Üresjárati időkorlát alaphelyzetbe állítása a Keepalives használatával
 
-* A Node.js alkalmazások keepalives alkalmazásának megvalósításához tekintse át [a Csomópont alkalmazás túlzott kimenő hívásokat.](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)
+* A Node. js-alkalmazások Keepalives megvalósításához tekintse meg a [saját Node-alkalmazást, amely túlzott kimenő hívásokat tesz szükségessé](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
 
-### <a name="additional-guidance-specific-to-app-service"></a>Az App Service-re vonatkozó további útmutatás:
+### <a name="additional-guidance-specific-to-app-service"></a>A App Service vonatkozó további útmutatás:
 
-* A [terhelési tesztnek](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) valós adatokat kell szimulálnia állandó adagolási sebességmellett. Az alkalmazások és funkciók valós stressz alatt való tesztelése előre azonosíthatja és megoldhatja a SNAT-port kimerülésével kapcsolatos problémákat.
-* Győződjön meg arról, hogy a háttérszolgáltatások gyorsan vissza tudják adni a válaszokat. Az Azure SQL-adatbázissal kapcsolatos teljesítményproblémák elhárításához tekintse át [az Azure SQL Database teljesítményhibáinak elhárítását az Intelligent Insights segítségével.](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)
-* Az App Service-csomag horizontális felskálázása további példányokra. A méretezésről további információt az [Alkalmazás méretezése az Azure App Service-ben című témakörben talál.](https://docs.microsoft.com/azure/app-service/manage-scale-up) Az alkalmazásszolgáltatási csomag minden egyes munkavégző példánya több SNAT-portot kap. Ha a használatot több példányközött osztja el, előfordulhat, hogy az SNAT-port használat példányonkénti használata az ajánlott 100 kimenő kapcsolatra vonatkozó korlát alatt van, egyedi távoli végpontonként.
-* Fontolja meg az [App Service-környezet (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), ahol van rendelve egy kimenő IP-címet, és a korlátok a kapcsolatok és az SNAT-portok sokkal magasabbak.
+* A [terhelési tesztnek](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) valós adatátviteli sebességgel kell szimulálnia a valós globális adatértékeket. Az alkalmazások és függvények tesztelése a valós terhelések alatt az idő előtt azonosíthatja és megoldhatja a SNAT-portok kimerülésével kapcsolatos problémákat.
+* Győződjön meg arról, hogy a háttér-szolgáltatások gyorsan adnak vissza válaszokat. Az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárításához tekintse át a [Intelligent Insightskel kapcsolatos teljesítményproblémák elhárítása Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
+* Bővítse a App Service tervet több példányra. További információ a skálázásról: [alkalmazások méretezése Azure app Serviceban](https://docs.microsoft.com/azure/app-service/manage-scale-up). Az App Service-csomagokban minden feldolgozói példány több SNAT-portot foglal le. Ha több példányon terjeszti a használatot, a SNAT-portok használata a 100-as kimenő kapcsolatok ajánlott korlátja alá kerül, egyedi távoli végponton.
+* Érdemes lehet áthelyezni [app Service Environment (](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak.
 
-A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a dolgozó mérete határozza meg. A korlátokat a [Sandbox Cross VM numerikus korlátok – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) mezőben láthatja.
+A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Korlát neve|Leírás|Kicsi (A1)|Közepes (A2)|Nagy (A3)|Elkülönített szint (ASE)|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
-|Kapcsolatok|Kapcsolatok száma a teljes virtuális gép között|1920|3968|8064|16000|
+|Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
-A kimenő TCP-korlátok elkerülése érdekében növelheti a dolgozók méretét, vagy horizontálisan horizontálisan skálázhatja.
+A kimenő TCP-korlátok elkerülése érdekében növelheti a feldolgozók méretét, vagy horizontális felskálázást végez.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A kimenő kapcsolati korlátok két típusának és az alkalmazás által végzett lehetőségeknek a ismerete megkönnyíti a hibaelhárítást. Ha tudja, hogy az alkalmazás sok hívást kezdeményez ugyanarra a tárfiókra, sNAT-korlátra gyanakodhat. Ha az alkalmazás létrehoz egy nagy számú hívások végpontok az interneten, azt gyanítja, hogy eléri a virtuális gép korlátját.
+A kimenő kapcsolatok két típusának ismerete, valamint az alkalmazás működésének megismerése megkönnyíti a hibakeresést. Ha tudja, hogy az alkalmazás számos hívást kezdeményez ugyanazon a Storage-fiókon, akkor SNAT-korlátot lehet feltételezni. Ha az alkalmazás nagy mennyiségű hívást hoz létre a végpontok számára az interneten keresztül, akkor azt gyanítja, hogy eléri a virtuális gép korlátját.
 
-Ha nem ismeri eléggé az alkalmazás viselkedését az ok gyors meghatározásához, az App Service-ben elérhető néhány eszköz és technika segít a meghatározásban.
+Ha nem tudja, hogy az alkalmazás viselkedése elég gyors legyen, néhány eszköz és eljárás is elérhető a App Serviceban, hogy segítse a meghatározást.
 
-### <a name="find-snat-port-allocation-information"></a>SNAT-portfoglalási adatok keresése
+### <a name="find-snat-port-allocation-information"></a>SNAT-port foglalási információinak keresése
 
-[Az App Service Diagnosztika](https://docs.microsoft.com/azure/app-service/overview-diagnostics) segítségével megkeresheti az SNAT-portok foglalási adatait, és megfigyelheti az App Service-webhelyek SNAT-portok foglalási metrikáját. Az SNAT-portfoglalási információk megkereséséhez kövesse az alábbi lépéseket:
+[App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) segítségével megkeresheti a SNAT-portok foglalási adatait, és megfigyelheti egy app Service-hely SNAT-portok foglalási metrikáját. A SNAT-portok foglalási információinak megkereséséhez kövesse az alábbi lépéseket:
 
-1. Az App Service-diagnosztika eléréséhez keresse meg az App Service webappját vagy az App Service-környezetet az [Azure Portalon.](https://portal.azure.com/) A bal oldali navigációs sávon válassza **a Problémák diagnosztizálása és megoldása**lehetőséget.
-2. Elérhetőségi és teljesítménykategória kiválasztása
-3. Válassza az SNAT port kimerülése csempét a kategóriában elérhető csempék listájában. A gyakorlat az, hogy tartsa 128 alatt.
-Ha szüksége van rá, továbbra is megnyithat egy támogatási jegyet, és a támogatási mérnök megkapja a metrikát a háttérrendszerből.
+1. App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com/). A bal oldali navigációs sávon válassza a **problémák diagnosztizálása és megoldása**lehetőséget.
+2. Rendelkezésre állás és teljesítmény kategória kiválasztása
+3. Válassza a SNAT port kimerülése csempét a kategória alatt található elérhető csempék listájában. A gyakorlat az, hogy 128 alatt maradjon.
+Ha szüksége van rá, továbbra is megnyithatja a támogatási jegyet, és a támogatási szakembernek az Ön számára készült mérőszámot fogja kapni.
 
-Vegye figyelembe, hogy mivel az SNAT-port használat nem érhető el metrikaként, nem lehet automatikus skálázás alapján SNAT port használat, vagy konfigurálni automatikus méretezés alapján SNAT portok foglalási metrika alapján.
+Vegye figyelembe, hogy mivel a SNAT-port használata nem érhető el metrikaként, nem lehetséges az automatikus skálázás a SNAT-port használata alapján, vagy az SNAT-portok foglalási metrikája alapján.
 
-### <a name="tcp-connections-and-snat-ports"></a>TCP-kapcsolatok és SNAT-portok
+### <a name="tcp-connections-and-snat-ports"></a>TCP-kapcsolatok és SNAT portok
 
-A TCP-kapcsolatok és az SNAT-portok nem kapcsolódnak közvetlenül egymáshoz. A TCP-kapcsolatok használati érzékelője megtalálható bármely App Service-webhely Problémák diagnosztizálása és megoldása panelen. Keresse meg a "TCP-kapcsolatok" kifejezést a kereséséhez.
+A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. A TCP-kapcsolatok használati detektora az App Service-helyek diagnosztizálási és megoldási problémák paneljén található. Keresse meg a "TCP-kapcsolatok" kifejezést a kereséshez.
 
-* Az SNAT-portok csak külső hálózati folyamatokhoz használatosak, míg a teljes TCP-kapcsolatok helyi visszacsatolási kapcsolatokat tartalmaznak.
-* Az SNAT-portokat különböző folyamatok is megoszthatják, ha a folyamatok protokollban, IP-címben vagy portban eltérőek. A TCP-kapcsolatok metrika minden TCP-kapcsolatot megszámol.
-* A TCP-kapcsolatok korlátja a munkavégző példány szintjén történik. Az Azure Network kimenő terheléselosztás nem használja a TCP-kapcsolatok metrika SNAT-port korlátozása.
-* A TCP-kapcsolatok korlátait a [Sandbox Cross VM numerikus korlátok – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) ismertetik.
+* A SNAT-portok csak külső hálózati folyamatokhoz használatosak, míg a teljes TCP-kapcsolat helyi visszacsatolási kapcsolatokat tartalmaz.
+* Egy SNAT-portot különböző folyamatok oszthatnak meg, ha a folyamatok eltérőek a protokollok, az IP-címek vagy a portok között. A TCP-kapcsolatok metrika minden TCP-kapcsolatot megszámol.
+* A TCP-kapcsolatok korlátja a feldolgozói példány szintjén történik. Az Azure hálózati kimeneti terheléselosztás nem használja a TCP-kapcsolatok metrikáját a SNAT-portok korlátozásához.
+* A TCP-kapcsolatok korlátozásait a [homokozóban futó virtuális gépek numerikus korlátai – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) című cikk írja le.
 
-|Korlát neve|Leírás|Kicsi (A1)|Közepes (A2)|Nagy (A3)|Elkülönített szint (ASE)|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
-|Kapcsolatok|Kapcsolatok száma a teljes virtuális gép között|1920|3968|8064|16000|
+|Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
-### <a name="webjobs-and-database-connections"></a>WebJobs és adatbázis-kapcsolatok
+### <a name="webjobs-and-database-connections"></a>Webjobs-és adatbázis-kapcsolatok
  
-Ha az SNAT-portok kimerültek, ahol a WebJobs nem tud csatlakozni az Azure SQL-adatbázishoz, nincs metrika, amely megmutatja, hogy az egyes webalkalmazás-folyamatok hány kapcsolatot nyitnak meg. A problémás WebJob megkereséséhez helyezzen át több WebJobs-ot egy másik App Service-csomagba, hogy megtudja, javul-e a helyzet, vagy hogy probléma áll-e még fel a csomagok egyikében. Ismételje meg a folyamatot, amíg meg nem találja a problémás WebJob.Repeat the process until you find the problematikus WebJob.
+Ha SNAT-portok vannak kimerítve, ahol a webjobs nem tud csatlakozni az Azure SQL Database-hez, nincs olyan mérőszám, amely azt mutatja, hogy hány kapcsolat van megnyitva az egyes webalkalmazási folyamatokban. A problémás Webjobs megkereséséhez helyezzen át több webfeladatot egy másik App Service tervbe, és ellenőrizze, hogy a helyzet javul-e, vagy ha a probléma továbbra is a csomagok egyikében marad. Ismételje meg a folyamatot, amíg meg nem találja a problémás Webjobs.
 
-### <a name="using-snat-ports-sooner"></a>SNAT-portok használata
+### <a name="using-snat-ports-sooner"></a>SNAT-portok használata hamarabb
 
-Nem módosíthatja az Azure-beállításokat a használt SNAT-portok hamarabbi felszabadításához, mivel az összes SNAT-port az alábbi feltételek nek megfelel, és a viselkedés szándékosan jelenik meg.
+Az Azure-beállítások nem módosíthatók úgy, hogy hamarabb kibocsássák a használt SNAT-portokat, mivel az összes SNAT-portot a rendszer az alábbi feltételek szerint szabadítja fel, és a viselkedés a tervezés szerint történik.
  
-* Ha bármelyik kiszolgáló vagy az ügyfél FINACK-ot küld, az [SNAT-port](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release) 240 másodperc elteltével felszabadul.
-* Ha rst látható, az SNAT-port 15 másodperc elteltével feloldódik.
-* Ha elérte az tétlen időtúllépés t, a port fel szabadul.
+* Ha a kiszolgáló vagy az ügyfél FINACK küld, a SNAT-port 240 másodperc után lesz [felszabadítva](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release) .
+* Ha az első látható, a SNAT-port 15 másodperc elteltével fog megjelenni.
+* Ha elérte az üresjárati időtúllépést, a rendszer felszabadítja a portot.
  
 ## <a name="additional-information"></a>További információ
 
-* [SNAT appszolgáltatással](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
-* [Lassú alkalmazásteljesítménnyel kapcsolatos problémák elhárítása az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)
+* [SNAT App Service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
+* [A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)

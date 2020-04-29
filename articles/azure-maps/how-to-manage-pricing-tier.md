@@ -1,6 +1,6 @@
 ---
-title: Az Azure Maps-fiók tarifacsomagjának kezelése | Microsoft Azure Maps
-description: Az Azure Portal segítségével kezelheti a Microsoft Azure Maps-fiókot és annak tarifacsomagját.
+title: A Azure Maps fiókja díjszabási szintjeinek kezelése | Microsoft Azure térképek
+description: A Azure Portal segítségével kezelheti a Microsoft Azure Maps-fiókját és a hozzá tartozó árképzési szintet.
 author: philmea
 ms.author: philmea
 ms.date: 01/27/2020
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 35e23d4d5babccb4507473826237997afec5f2cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335500"
 ---
-# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure Maps-fiók díjszabási szintjének kezelése
+# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>A Azure Maps-fiók díjszabási szintjeinek kezelése
 
-Az Azure Maps-fiók díjszabási szintjét az Azure Portalon keresztül kezelheti. A [fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)létrehozása után megtekintheti vagy módosíthatja a fiók tarifacsomagját is.
+A Azure Maps-fiók díjszabási szintjét a Azure Portal segítségével kezelheti. A fiók árképzési szintjét a [fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)létrehozása után is megtekintheti vagy módosíthatja.
 
-További információ [az Azure Maps megfelelő tarifacsomagjának kiválasztásáról.](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+További információ [a Azure Maps megfelelő díjszabási szintjéről](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
 
-## <a name="view-your-pricing-tier"></a>A tarifacsomag megtekintése
+## <a name="view-your-pricing-tier"></a>Árképzési szintek megtekintése
 
-A kiválasztott tarifacsomag megtekintéséhez keresse meg a Beállítások menü **Tarifaszint** beállítását.
+A választott díjszabási csomag megtekintéséhez navigáljon a beállítások menü **díjszabási** csomag elemére.
 
-[![A kiválasztott tarifacsomag](./media/how-to-manage-pricing-tier/view-pricing-tier.png) megtekintése](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+[![Kiválasztott díjszabási](./media/how-to-manage-pricing-tier/view-pricing-tier.png) csomag megtekintése](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
 
-## <a name="change-a-pricing-tier"></a>Tarifacsomag módosítása
+## <a name="change-a-pricing-tier"></a>Árképzési szintek módosítása
 
-Miután létrehozta az Azure Maps-fiókot, frissítheti vagy visszaminősítheti az Azure Maps-fiók ravonatkozó csomagját. Frissítéshez vagy visszalépéshez keresse meg a Beállítások menü **Tarifaszint** beállítását. Válassza ki a nem kiemelt tarifacsomagot. A **Mentés** gombra kattintva mentheti a választott tarifacsomagot.
+A Azure Maps-fiók létrehozása után frissítheti vagy visszaminősítheti Azure Maps-fiókja díjszabási szintjét. A frissítéshez vagy a visszalépéshez lépjen a beállítások menü **díjszabási** csomag elemére. Válassza ki a nem Kiemelt árképzési szintet. Kattintson a **Save (Mentés** ) gombra a kiválasztott díjszabási csomag mentéséhez.
 
-[![Tarifacsomag](./media/how-to-manage-pricing-tier/change-pricing-tier.png) módosítása](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+[![Árképzési szintek](./media/how-to-manage-pricing-tier/change-pricing-tier.png) módosítása](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
 
 > [!NOTE]
-> Nem kell új előfizetési kulcsokat vagy ügyfél-azonosítót létrehoznia (az Azure AD-hitelesítéshez), ha frissíti vagy visszaminősíti az Azure Maps-fiók díjszabási szintjét.
+> Ha a Azure Maps-fiók díjszabási szintjét frissíti vagy visszaminősíti, nem kell új előfizetési kulcsot vagy ügyfél-azonosítót (Azure AD-hitelesítéshez) előkészítenie.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan láthatja az Azure Maps-fiók API-használati mutatóit:
+Ismerje meg, hogyan tekintheti meg Azure Maps fiókjának API-használati metrikáit:
 
 > [!div class="nextstepaction"] 
 > [Használati metrikák megtekintése](./how-to-view-api-usage.md)

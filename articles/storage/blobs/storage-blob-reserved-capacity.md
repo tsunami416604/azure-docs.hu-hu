@@ -1,6 +1,6 @@
 ---
-title: A lefoglalt kapacitású Blob-tárhely költségeinek optimalizálása - Azure Storage
-description: Ismerje meg az Azure Storage számára fenntartott kapacitás megvásárlását a blokkblob és az Azure Data Lake Storage Gen2 erőforrások költségeinek csökkentése érdekében.
+title: A blob Storage költségeinek optimalizálása a fenntartott kapacitással – Azure Storage
+description: Ismerje meg az Azure Storage szolgáltatás számára fenntartott kapacitás megvásárlását a blobok és Azure Data Lake Storage Gen2 erőforrások költségeinek megtakarítása érdekében.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,119 +9,119 @@ ms.date: 03/26/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e73686629de8481f6a37e5bfafc9b723206b4853
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80351035"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A fenntartott kapacitású Blob Storage költségeinek optimalizálása
 
-Az Azure Storage számára fenntartott kapacitással pénzt takaríthat meg a blobadatok tárolási költségeiből. Az Azure Storage által fenntartott kapacitás kedvezményt biztosít a blokkblobok kapacitására és az Azure Data Lake Storage Gen2 normál tárfiókokban lévő adataira, ha egy vagy három évre szóló foglalást vállal. A foglalás meghatározott mennyiségű tárolókapacitást biztosít a foglalás időtartama alatt.
+Az Azure Storage szolgáltatás számára fenntartott kapacitással pénzt takaríthat meg a blob-adattárolási költségekkel kapcsolatban. Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményt biztosít a blokkos blobok és a standard szintű Storage-fiókok Azure Data Lake Storage Gen2 adatai számára, ha egy vagy három évre szóló foglalást végez. A foglalás rögzített tárolási kapacitást biztosít a foglalás feltételeihez.
 
-Az Azure Storage által lefoglalt kapacitás jelentősen csökkentheti a blokkblobok és az Azure Data Lake Storage Gen2 adatainak kapacitásköltségeit. Az elért költségmegtakarítás a foglalás időtartamától, a lefoglalni kívánt teljes kapacitástól, valamint a tárfiókhoz kiválasztott hozzáférési szinttől és redundanciatípusától függ. A fenntartott kapacitás számlázási engedményt biztosít, és nem befolyásolja az Azure Storage-erőforrások állapotát.
+Az Azure Storage szolgáltatás számára fenntartott kapacitás jelentős mértékben csökkentheti a blokk-blobok és Azure Data Lake Storage Gen2-adatmennyiségek kapacitásának költségeit. Az elért költségmegtakarítás a foglalás időtartamától, a fenntartott teljes kapacitástól, valamint a Storage-fiókhoz választott hozzáférési szinttől és típustól függ. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja az Azure Storage-erőforrások állapotát.
 
 Az Azure Storage-foglalás díjszabásával kapcsolatos további információkért tekintse meg a [blokkblobok díjszabását](https://azure.microsoft.com/pricing/details/storage/blobs/) és [az Azure Data Lake Storage Gen 2 díjszabását](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 ## <a name="reservation-terms-for-azure-storage"></a>Az Azure Storage foglalási feltételei
 
-A következő szakaszok ismertetik az Azure Storage-foglalás feltételeit.
+Az alábbi szakaszok az Azure Storage-foglalás feltételeit ismertetik.
 
 ### <a name="reservation-capacity"></a>Foglalási kapacitás
 
-Az Azure Storage számára fenntartott kapacitást 100 TB-os és 1 PB/hó egységben vásárolhatja meg egy éves vagy hároméves időtartamra.
+Az Azure Storage szolgáltatás számára fenntartott kapacitást 100 TB-os egységben, a havi 1 PB-ben pedig egy évig vagy hároméves időszakon belül is megvásárolhatja.
 
-### <a name="reservation-scope"></a>Foglalási hatókör
+### <a name="reservation-scope"></a>Foglalás hatóköre
 
-Az Azure Storage számára fenntartott kapacitás egyetlen előfizetéshez vagy több előfizetéshez (megosztott hatókörhöz) érhető el. Ha egyetlen előfizetésre van scoped, a foglalási kedvezmény csak a kiválasztott előfizetésre vonatkozik. Ha több előfizetésre van scoped, a foglalási kedvezmény az ügyfél számlázási környezetében meg oszlik az előfizetések között.
+Az Azure Storage szolgáltatás számára fenntartott kapacitás egyetlen előfizetéshez vagy több előfizetéshez (közös hatókörű) érhető el. Ha a hatókör egyetlen előfizetésre vonatkozik, a foglalási kedvezmény csak a kiválasztott előfizetésre lesz alkalmazva. Több előfizetésre vonatkozó hatókör esetén a foglalási kedvezmény az ügyfél számlázási környezetében található előfizetések között lesz megosztva.
 
-Amikor megvásárolja az Azure Storage számára fenntartott kapacitást, használhatja a foglalást a blokkblobhoz és az Azure Data Lake Storage Gen2 adataihoz is. A foglalás a megvásárolt hatókörön belüli használatra vonatkozik, és nem korlátozódhat egy adott tárfiókra, tárolóra vagy objektumra az előfizetésen belül. A foglalás nem osztható fel több előfizetés között.
+Az Azure Storage szolgáltatás számára fenntartott kapacitás megvásárlása esetén a foglalást a blobok és a Azure Data Lake Storage Gen2ek számára is használhatja. A rendszer foglalást alkalmaz a megvásárolt hatókörön belüli használatra, és nem korlátozható az előfizetésben lévő adott tárolási fiókra, tárolóra vagy objektumra. A foglalások nem oszthatók szét több előfizetésre.
 
-Az Azure Storage-foglalás csak az előfizetésben vagy megosztott erőforráscsoportban tárolt adatok mennyiségét fedezi. A foglalás nem tartalmazza a korai törlési, üzemeltetési, sávszélesség- és adatátviteli díjakat. Amint megvásárol egy foglalást, a foglalási attribútumokkal megegyező kapacitásdíjakat a kedvezményes áron számítjuk fel, nem pedig a felosztó-kiosztó díjszabás szerint. Az Azure-foglalásokról a [Mik azok az Azure-foglalások?](/azure/billing/billing-save-compute-costs-reservations)
+Az Azure Storage-foglalás csak az előfizetésben vagy a megosztott erőforráscsoporthoz tárolt adatmennyiségre vonatkozik. A foglalás nem tartalmazza a korai törlést, a műveletek, a sávszélesség és az adatátviteli díjakat. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő kapacitás díjait az utólagos elszámolású díjszabási díjak helyett a kedvezményes árakon számoljuk el. További információt az Azure-foglalásokról a [Mi a Azure Reservations?](/azure/billing/billing-save-compute-costs-reservations)című témakörben talál.
 
-### <a name="supported-account-types-tiers-and-redundancy-options"></a>Támogatott fióktípusok, rétegek és redundanciabeállítások
+### <a name="supported-account-types-tiers-and-redundancy-options"></a>Támogatott fióktípus, rétegek és redundancia-beállítások
 
-Az Azure Storage számára fenntartott kapacitás érhető el a szabványos tárfiókokban lévő erőforrásokhoz, beleértve az általános célú v2 (GPv2) és a Blob storage-fiókokat.
+Az Azure Storage szolgáltatás számára fenntartott kapacitás a standard szintű Storage-fiókokban lévő erőforrásokhoz érhető el, beleértve az általános célú v2 (GPv2) és a blob Storage-fiókokat.
 
-Minden hozzáférési szint (gyakori elérésű, ritka elérésű és archiválási) foglalásesetén támogatott. A hozzáférési szintekről további információt az [Azure Blob storage: gyakori elérésű, ritka elérésű és archív hozzáférési szintek című témakörben talál.](storage-blob-storage-tiers.md)
+Az összes hozzáférési réteg (gyakori, ritka elérésű és archív) a foglalások esetében támogatott. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md).
 
-A redundancia minden típusa támogatott a foglalásokhoz. A redundanciabeállításokról az [Azure Storage redundanciája](../common/storage-redundancy.md)című témakörben talál további információt.
+Az összes típusú redundancia a foglalások esetében támogatott. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md).
 
 > [!NOTE]
-> Az Azure Storage számára fenntartott kapacitás nem érhető el prémium szintű tárfiókok, általános célú v1 (GPv1) tárfiókok, Azure Data Lake Storage Gen1, lapblobok, Azure Queue storage, Azure Table storage vagy Azure Files.  
+> Az Azure Storage szolgáltatás számára fenntartott kapacitás nem érhető el a Premium Storage-fiókok, az általános célú v1 (GPv1) Storage-fiókok, a Azure Data Lake Storage Gen1, a Blobok, az Azure üzenetsor-tárolás, az Azure Table Storage vagy a Azure Files számára.  
 
-### <a name="security-requirements-for-purchase"></a>A vásárlásbiztonsági követelményei
+### <a name="security-requirements-for-purchase"></a>A vásárlás biztonsági követelményei
 
-Fenntartott kapacitás vásárlása:
+Fenntartott kapacitás megvásárlása:
 
-- Legalább egy vállalati vagy egyéni **előfizetéstulajdonosi** szerepkörben kell lennie, ha felosztó-ki-felárak vannak.
-- Nagyvállalati előfizetések esetén **a Fenntartott példányok hozzáadása** szolgáltatást engedélyezni kell az EA portálon. Ha ez a beállítás le van tiltva, akkor az előfizetésben eA-rendszergazdának kell lennie.
-- A felhőszolgáltató (CSP) program esetében csak a rendszergazdai ügynökök vagy az értékesítési ügynökök vásárolhatnak Azure Blob Storage számára fenntartott kapacitást.
+- Legalább egy Nagyvállalati vagy egyéni előfizetéshez **tulajdonosi** szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
+- Vállalati előfizetések esetén az EA portálon engedélyezni kell a **fenntartott példányok hozzáadását** . Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
+- A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatnak Azure Blob Storage fenntartott kapacitást.
 
-## <a name="determine-required-capacity-before-purchase"></a>A vásárlás előtt szükséges kapacitás meghatározása
+## <a name="determine-required-capacity-before-purchase"></a>A szükséges kapacitás meghatározása a vásárlás előtt
 
-Amikor azure Storage-foglalást vásárol, ki kell választania a régiót, a hozzáférési szintet és a redundancia lehetőséget a foglaláshoz. A foglalás csak az adott régióban tárolt adatokra, hozzáférési szintre és redundanciaszintre érvényes. Tegyük fel például, hogy a zónaredundáns tárolás (ZRS) használatával vásárol egy foglalást az USA nyugati részén lévő adatokhoz. Nem használhatja ugyanazt a foglalást az usa-keleti adatokhoz, az archív rétegben lévő adatokhoz vagy a georedundáns tárolás (GRS) adataihoz. További igényekre azonban vásárolhat egy másik foglalást.  
+Az Azure Storage-foglalás megvásárlásakor ki kell választania a foglaláshoz a régiót, a hozzáférési szintet és a redundancia beállítást. A foglalás csak az adott régióban, a hozzáférési szint és a redundancia szintjén tárolt adatai esetében érvényes. Tegyük fel például, hogy megvásárolja az USA nyugati régiójában tárolt adatok foglalását a forró szinthez a zóna redundáns tárolás (ZRS) használatával. Nem használhatja ugyanazt a foglalást az USA keleti régiójában lévő adatokhoz, az archív rétegben lévő adatokhoz vagy a Geo-redundáns tároláshoz (GRS) tartozó adatokhoz. Azonban további foglalásokat is vásárolhat a további igényekhez.  
 
-A foglalások ma 100 TB vagy 1 PB blokkra állnak rendelkezésre, magasabb kedvezménnyel 1 PB blokkra. Amikor foglalást vásárol az Azure Portalon, a Microsoft javaslatokat tehet önnek a korábbi használat alapján, hogy segítsen meghatározni, hogy melyik foglalást kell megvásárolnia.
+A foglalások jelenleg 100 TB-os vagy 1 PB-blokkhoz érhetők el, és az 1 PB blokknál magasabb kedvezményt biztosítunk. Ha foglalást vásárol a Azure Portalban, a Microsoft a korábbi használat alapján javaslatokat tehet az Ön számára, hogy eldöntse, melyik foglalást kell megvásárolnia.
 
-## <a name="purchase-azure-storage-reserved-capacity"></a>Az Azure Storage számára fenntartott kapacitás vásárlása
+## <a name="purchase-azure-storage-reserved-capacity"></a>Az Azure Storage szolgáltatás számára fenntartott kapacitás vásárlása
 
-Az Azure Storage számára fenntartott kapacitást az [Azure Portalon](https://portal.azure.com)keresztül vásárolhatja meg. A foglalásért fizethet előre vagy havi részletekben. A havi fizetéssel történő vásárlásról az [Azure-foglalások vásárlása előre vagy havi fizetéssel](/azure/billing/billing-monthly-payments-reservations)című témakörben talál további információt.
+Az Azure Storage szolgáltatás számára fenntartott kapacitást az [Azure Portalon](https://portal.azure.com)keresztül vásárolhatja meg. A foglalásért fizethet előre vagy havi részletekben. További információ a havi fizetések megvásárlásáról: [Azure-beli foglalások vásárlása előzetes vagy havi fizetéssel](/azure/billing/billing-monthly-payments-reservations).
 
-A forgatókönyvhöz megfelelő foglalási feltételek azonosításához az [Azure Storage számára fenntartott kapacitáskedvezmény ismertetése](../../cost-management-billing/reservations/understand-storage-charges.md)című témakörben talál segítséget.
+A forgatókönyvhöz legmegfelelőbb Foglalási feltételek azonosításával kapcsolatos segítségért lásd: [Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményének megismerése](../../cost-management-billing/reservations/understand-storage-charges.md).
 
 A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [Vásárlási foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ablaktáblát az Azure Portalon.  
-1. Válassza az **Azure Blob Storage** új foglalás megvásárlásához.  
-1. Töltse ki a szükséges mezőket az alábbi táblázatban leírtak szerint:
+1. Navigáljon a Azure Portal [vásárlási foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) ablaktáblájához.  
+1. Új foglalás megvásárlásához válassza az **Azure Blob Storage** elemet.  
+1. Töltse ki a kötelező mezőket az alábbi táblázatban leírtak szerint:
 
-    ![Képernyőkép a lefoglalt kapacitás megvásárlásáról](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
+    ![A fenntartott kapacitás megvásárlását bemutató képernyőfelvétel](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
    |Mező  |Leírás  |
    |---------|---------|
-   |**Hatókör**   |  Azt jelzi, hogy hány előfizetés használhatja a foglaláshoz társított számlázási előnyt. Azt is szabályozza, hogy a foglalás hogyan vonatkozik az adott előfizetésekre. <br/><br/> Ha a Megosztott lehetőséget **választja,** a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a számlázási környezetbármely előfizetésben. A számlázási környezet az Azure-ra való feliratkozás módjától függ. A vállalati ügyfelek számára a megosztott hatókör a regisztráció, és a regisztráción belüli összes előfizetést tartalmazza. A használatalapú ügyfelek esetében a megosztott hatókör tartalmazza az összes egyéni előfizetést a fiókadminisztrátor által létrehozott használatalapú díjokkal.  <br/><br/>  Ha **az egyetlen előfizetés**t választja, a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a kiválasztott előfizetésben. <br/><br/> Ha **az Egyetlen erőforráscsoport**lehetőséget választja, a foglalási engedmény a kiválasztott előfizetésben és az adott előfizetésen belül az Azure Storage-kapacitásra lesz alkalmazva. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
-   |**Előfizetés**  | Az Azure Storage-foglaláshoz használt előfizetés. A kiválasztott előfizetés fizetési módja a költségek felszámítására szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati szerződés (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P): Nagyvállalati előfizetés esetén a díjakat levonják a beléptetés pénzügyi kötelezettségvállalási egyenlegéből, vagy túllépésként számítanak fel. <br/><br/> Egyéni előfizetés felosztó-kiosztó díjszabással (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P): A felosztó-kiosztó díjak at az előfizetés hitelkártyájára vagy számlafizetési módjára számláznak.    |
+   |**Hatókör**   |  Azt jelzi, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Azt is meghatározza, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott**lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a számlázási környezetben található bármely előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a rendszer a kijelölt előfizetésben és a kiválasztott erőforráscsoporthoz alkalmazza az Azure Storage-kapacitásra. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
+   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P): nagyvállalati előfizetések esetén a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlegére, vagy felszámított összegként kell levonni. <br/><br/> Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P): egyéni előfizetés utólagos elszámolású díjszabással, a díjak számlázása a hitelkártyára vagy a számla fizetési módjára történik az előfizetésben.    |
    | **Régió** | Az a régió, ahol a foglalás érvényben van. |
-   | **Hozzáférési szint** | Az a hozzáférési szint, amelyre vonatkozóan a foglalás érvényben van. A lehetőségek közé tartozik *a Forró,* *A Hűvös*vagy *Archív*. A hozzáférési szintekről további információt az [Azure Blob storage: gyakori elérésű, ritka elérésű és archív hozzáférési szintek című témakörben talál.](storage-blob-storage-tiers.md) |
-   | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartozik *az LRS*, *zrs*, *GRS*és *RA-GZRS*. A redundanciabeállításokról az [Azure Storage redundanciája](../common/storage-redundancy.md)című témakörben talál további információt. |
-   | **Számlázási gyakoriság** | Azt jelzi, hogy milyen gyakran számlázzák ki a fiókot a foglalásért. A lehetőségek közé tartozik *a havi* vagy *az előzetes*. |
+   | **Hozzáférési szint** | Az a hozzáférési szintet, amelyben a foglalás érvényes. A lehetőségek *közé tartoznak*a *gyakori, a*ritka elérésű és az *archív*beállítások. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md). |
+   | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartozik a *LRS*, a *ZRS*, a *GRS*és az *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |
+   | **Számlázási gyakoriság** | Azt jelzi, hogy a fiók milyen gyakran kerül kiszámlázásra a foglaláshoz. A lehetőségek közé tartoznak a *havonta* vagy a *kezdeti*beállítások. |
    | **Méret** | Az a régió, ahol a foglalás érvényben van. |
-   |**Kifejezés**  | Egy vagy három éve.   |
+   |**Távú**  | Egy vagy három év.   |
 
-1. Miután kiválasztotta a foglalás paramétereit, az Azure Portal megjeleníti a költségeket. A portál on is mutatja az árengedmény százalékos több mint pay-as-you-billing.
+1. A foglalás paramétereinek kiválasztása után a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka.
 
-1. A **Vásárlás foglalások** ablaktáblán tekintse át a foglalás teljes költségét. A foglalás nevét is megadhatja.
+1. **A foglalások ablaktáblán** tekintse át a foglalás teljes díját. Megadhatja a foglalás nevét is.
 
-    ![Képernyőkép a foglalás megvásárlásáról](media/storage-blob-reserved-capacity/purchase-reservations.png)
+    ![A foglalás megvásárlását bemutató képernyőfelvétel](media/storage-blob-reserved-capacity/purchase-reservations.png)
 
-Miután megvásárolta a foglalást, a rendszer automatikusan alkalmazza azt a meglévő Azure Storage-blokkblobokra vagy az Azure Data Lake Storage Gen2 erőforrásaira, amelyek megfelelnek a foglalás feltételeinek. Ha még nem hozott létre Azure Storage-erőforrásokat, a foglalás minden alkalommal érvényes lesz, amikor olyan erőforrást hoz létre, amely megfelel a foglalás feltételeinek. Mindkét esetben a foglalás időtartama közvetlenül a sikeres vásárlás után kezdődik.
+A foglalás megvásárlása után a rendszer automatikusan alkalmazza azokat a meglévő Azure Storage blokk-blobokra vagy Azure Data Lake Storage Gen2-erőforrásokra, amelyek megfelelnek a foglalás feltételeinek. Ha még nem hozott létre Azure Storage-erőforrásokat, akkor a foglalás akkor érvényes, ha olyan erőforrást hoz létre, amely megfelel a foglalás feltételeinek. A foglalás időtartama mindkét esetben azonnal megkezdődik a sikeres vásárlás után.
 
 ## <a name="exchange-or-refund-a-reservation"></a>Foglalás cseréje vagy visszatérítése
 
-A foglalást bizonyos korlátozásokkal kicserélheti vagy visszatérítheti. Ezeket a korlátozásokat a következő szakaszok ismertetik.
+A foglalásokat bizonyos korlátozásokkal lehet cserélni vagy visszatéríteni. Ezeket a korlátozásokat a következő szakaszokban ismertetjük.
 
-Foglalás cseréjéhez vagy visszatérítéséhez keresse meg a foglalás részleteit az Azure Portalon. Válassza **az Exchange** vagy a **Visszatérítés**lehetőséget, és kövesse az utasításokat a támogatási kérelem elküldéséhez. A kérelem feldolgozása után a Microsoft e-mailt küld Önnek a kérelem teljesítésének megerősítésére.
+Egy foglalás cseréjéhez vagy visszafizetéséhez navigáljon a Azure Portal foglalási adataihoz. Válassza az **Exchange** vagy a **visszatérítés**lehetőséget, és kövesse az utasításokat egy támogatási kérelem elküldéséhez. A kérelem feldolgozása után a Microsoft e-mailt küld Önnek a kérelem befejezésének megerősítéséhez.
 
-Az Azure-foglalási szabályzatokról az [Azure-foglalások önkiszolgáló cseréje és visszatérítése](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)című témakörben talál további információt.
+Azure Reservations szabályzatokkal kapcsolatos további információkért lásd: [önkiszolgáló cserék és visszatérítések Azure Reservationshoz](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Foglalás cseréje
 
-A foglalás cseréje lehetővé teszi, hogy a foglalás fel nem használt része alapján arányos visszatérítést kapjon. Ezután alkalmazhatja a visszatérítést egy új Azure Storage-foglalás beszerzési árára.
+A foglalások cseréje lehetővé teszi, hogy a foglalás fel nem használt része alapján arányosan fizetett visszatérítést kapjon. Ezután a visszatérítést egy új Azure Storage-foglalás beszerzési árára is alkalmazhatja.
 
-Nincs korlátozva a cserék száma, amit csinálhatsz. Ezenkívül a cserével kapcsolatban nincs díj. A megvásárolt új foglalásnak legalább nagyobb értékűnek kell lennie, mint az eredeti foglalásból származó arányos egyenlegnek. Az Azure Storage-foglalás csak egy másik Azure Storage-foglalásra váltható, más Azure-szolgáltatásra vonatkozó foglalásra nem.
+Az elvégezhető cserék száma nincs korlátozva. Emellett az Exchange-hez nem tartozik díj. A megvásárolt új foglalásnak egyenlőnek vagy nagyobbnak kell lennie, mint az eredeti foglalásból származó arányos kreditek összege. Egy Azure Storage-foglalás csak egy másik Azure Storage-foglalásra cserélhető le, és nem a többi Azure-szolgáltatás foglalása esetén.
 
-### <a name="refund-a-reservation"></a>Foglalás visszatérítése
+### <a name="refund-a-reservation"></a>Foglalás visszafizetése
 
-Bármikor lemondhatja az Azure Storage-foglalást. A lemondáskor a foglalás fennmaradó időtartama alapján arányos visszatérítést kap, levonva ebből a 12 százalékos korai felmondási díjat. A maximális visszatérítés évente 50.000 $.
+Az Azure Storage-foglalások bármikor megvonhatók. Ha megszakítja a szolgáltatást, a rendszer a foglalás hátralévő időtartama alapján, mínusz a 12%-os korai lemondási díjat fogja kapni. A maximális visszatérítés évente $50 000.
 
-A foglalás azonnali lemondása azonnal megszünteti a foglalást, és a fennmaradó hónapokat visszaküldi a Microsoftnak. A fennmaradó arányos egyenleget, levonva a díjat, visszatérítjük az eredeti vásárlási formába.
+A foglalás megszakítása azonnal leállítja a foglalást, és a fennmaradó hónapokat visszaadja a Microsoftnak. A fennmaradó arányos egyenleg, a díj levonása után a rendszer a vásárlás eredeti formáját fogja visszatéríteni.
 
 ## <a name="expiration-of-a-reservation"></a>Foglalás lejárata
 
-Ha egy foglalás lejár, a foglalás keretében használt Azure Storage-kapacitást a fizetős díj díja alapján számlázunk. A foglalások nem újulnak meg automatikusan.
+Ha egy foglalás lejár, az adott foglalás keretében használt Azure Storage-kapacitás díját az utólagos elszámolás díjszabása alapján számoljuk el. A foglalások nem újulnak meg automatikusan.
 
-A foglalás lejárta előtt 30 nappal, majd a lejárati dátumon e-mailben értesítést kap. A foglalás által biztosított költségmegtakarítás előnyeinek további kihasználásához újítsa meg azt legkésőbb a lejárati dátumig.
+A foglalás lejárata előtt 30 nappal a lejárati dátummal megjelenő e-mail-értesítést fog kapni. A foglalás által biztosított költségmegtakarítások kihasználása érdekében a lejárati dátumnál újabb megújítást kell folytatni.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
@@ -129,5 +129,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mik azok az Azure-foglalások?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Mi a Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [A foglalási kedvezmény alkalmazása az Azure Storage-ra](../../cost-management-billing/reservations/understand-storage-charges.md)

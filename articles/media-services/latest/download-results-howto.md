@@ -1,6 +1,6 @@
 ---
-title: Feladat eredményeinek letöltése – Azure Media Services
-description: Ez a cikk bemutatja, hogyan töltheti le egy feladat eredményeit.
+title: Feladatok eredményének letöltése – Azure Media Services
+description: Ez a cikk bemutatja, hogyan töltheti le a feladatok eredményeit.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80346290"
 ---
-# <a name="download-the-results-of-a-job"></a>Feladat eredményeinek letöltése
+# <a name="download-the-results-of-a-job"></a>Feladatok eredményének letöltése
 
-Az Azure Media Servicesben a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladat](transforms-jobs-concept.md)eredményének tárolásához. Ezeket az eredményeket ezután letöltheti egy helyi mappába a Media Service és a Storage API-k használatával. 
+Azure Media Services a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladatok](transforms-jobs-concept.md)eredményének tárolásához. Ezután letöltheti ezeket az eredményeket egy helyi mappába a Media Service és a Storage API-k használatával. 
 
-Ez a cikk bemutatja, hogyan töltheti le az eredményeket Java és .NET SDK-k használatával.
+Ez a cikk bemutatja, hogyan töltheti le az eredményeket a Java és a .NET SDK-k használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Tekintse át az eszközök kezelése című [véleményt.](manage-asset-concept.md)
+Tekintse át az [adatkezelési eszközöket](manage-asset-concept.md).
 
 ## <a name="java"></a>Java
 
@@ -71,7 +71,7 @@ private static void downloadResults(MediaManager manager, String resourceGroup, 
 }
 ```
 
-Tekintse meg a teljes kódmintát: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -120,8 +120,8 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-Tekintse meg a teljes kódmintát: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy feladatbemenetet HTTPS-URL-címről.](job-input-from-http-how-to.md)
+[Hozzon létre egy feladatot a HTTPS URL-címről](job-input-from-http-how-to.md).

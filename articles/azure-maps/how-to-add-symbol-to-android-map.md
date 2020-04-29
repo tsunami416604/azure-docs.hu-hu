@@ -1,6 +1,6 @@
 ---
-title: Szimbólumréteg hozzáadása androidos térképekhez | Microsoft Azure Maps
-description: Ebben a cikkben megtudhatja, hogyan jelenítheti meg a pontadatokat a térképen egy szimbólumréteg hozzáadásával a Microsoft Azure Maps Android SDK használatával.
+title: Szimbólum-réteg hozzáadása az Android Maps-hez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok információit a térképeken, ha hozzáad egy szimbólum réteget a Microsoft Azure Maps Android SDK használatával.
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335589"
 ---
-# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólumréteg hozzáadása térképhez az Azure Maps Android SDK használatával
+# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
 
-Ez a cikk bemutatja, hogyan renderelheti pontadatok egy adatforrásból, mint egy szimbólum réteg egy térképen az Azure Maps Android SDK használatával.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból szimbólumként szolgáló rétegként a Azure Maps Android SDK használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy teljes mértékben kövesse a cikkben leírt lépéseket, telepítenie kell [az Azure Maps Android SDK-t](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a térkép betöltéséhez.
+A cikkben szereplő lépések teljes körű követéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ha jelölőt szeretne hozzáadni a térképhez a szimbólumréteg használatával, kövesse az alábbi lépéseket:
+Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképhez, kövesse az alábbi lépéseket:
 
-1. Az**activity_main.xml**  > **fájl** >  **szerkesztése,** így a következő XML-fájlnak tűnik:
+1. Szerkessze a **res** > **layout** > **activity_main. XML** fájlt úgy, hogy az a következő XML-fájlhoz hasonlítson:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ Ha jelölőt szeretne hozzáadni a térképhez a szimbólumréteg használatáva
     </FrameLayout>
     ```
 
-2. Másolja a következő kódrészletet az `MainActivity.java` osztály **onCreate()** metódusába.
+2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,9 +72,9 @@ Ha jelölőt szeretne hozzáadni a térképhez a szimbólumréteg használatáva
     
     ```
     
-    A kódrészlet felett először beszerez egy Azure Maps map vezérlőpéldány **tonReady()** visszahívási módszer használatával. Ezután létrehoz egy adatforrás-objektumot a **DataSource-osztály** használatával, és hozzáadja azt a térképhez. Ezután hozzáad egy pontgeometriát tartalmazó **funkciót.** A piros jelölőkép ezután a szimbólum ikonjaként lesz beállítva. A **szimbólumréteg** szöveget vagy ikonokat használ az adatforrásba burkolt pontalapú adatok nak a térképen lévő szimbólumként való megjelenítéséhez. Ezután létrehoz egy szimbólumréteget, és az adatforrást átadják a rendereléshez, majd hozzáadjuk a térkép rétegeihez.
+    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ezután hozzáadja a pont geometriáját tartalmazó **funkciót** . Ezután egy piros jelölő képe ikonként van beállítva a szimbólumhoz. A **szimbólum-réteg** szöveggel vagy ikonokkal jeleníti meg az adatforrásban lévő pont-alapú adatfeliratokat a térképen. Ekkor létrejön egy szimbólum-réteg, és a rendszer átadja az adatforrást a rendereléshez, majd hozzáadja a Térkép rétegeihez.
     
-    Hozzáadása után a kódrészlet felett, meg `MainActivity.java` kell kinéznie az alábbi:
+    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;
@@ -166,16 +166,16 @@ Ha jelölőt szeretne hozzáadni a térképhez a szimbólumréteg használatáva
     }
     ```
     
-Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térképen, ahogy itt látható:
+Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térképen, ahogy az itt látható:
 
 <center>
 
-![Android térkép pin](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![Androidos Térkép PIN-kódja](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további dolgokat szeretne hozzáadni a térképhez, olvassa el a következő témakört:
+Ha további dolgokat szeretne hozzáadni a térképhez, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

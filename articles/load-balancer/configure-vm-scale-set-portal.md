@@ -1,97 +1,97 @@
 ---
-title: Virtuálisgép-méretezési készlet konfigurálása egy meglévő Azure Load Balancer-rel - Azure portal
-description: Ismerje meg, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel.
+title: Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer-Azure Portal
+description: Megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/25/2020
 ms.openlocfilehash: b2a83b226a4b2ddbbd554783de6a2b5c85c92f0a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349726"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Virtuálisgép-méretezési csoport konfigurálása egy meglévő Azure Load Balancer-rel az Azure Portal használatával
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer a Azure Portal használatával
 
-Ebben a cikkben megtudhatja, hogyan konfigurálhatja a virtuális gép méretezési készlet egy meglévő Azure Load Balancer. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés.
-- Egy meglévő szabványos sku terheléselosztó az előfizetésben, ahol a virtuális gép méretezési csoport lesz telepítve.
-- Egy Azure virtuális hálózat a virtuális gép méretezési készlet.
+- Egy meglévő standard SKU-terheléselosztó abban az előfizetésben, amelyben a virtuálisgép-méretezési csoport telepítve lesz.
+- Egy Azure-Virtual Network a virtuálisgép-méretezési csoport számára.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 
 
-## <a name="deploy-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési készlet üzembe helyezése meglévő terheléselosztóval
+## <a name="deploy-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési csoport üzembe helyezése meglévő Load balancerrel
 
-Ebben a szakaszban egy virtuális gép méretezési készletét hoz létre az Azure Portalon egy meglévő Azure-terheléselosztóval.
+Ebben a szakaszban egy virtuálisgép-méretezési készletet hoz létre a Azure Portal egy meglévő Azure Load balancerrel.
 
 > [!NOTE]
-> A következő lépések feltételezik, hogy egy **myVNet** nevű virtuális hálózat és egy **Azure loadbalancer** nevű Azure loadbalancer korábban telepített.
+> Az alábbi lépések feltételezik, hogy egy **myVNet** nevű virtuális hálózat és egy **myLoadBalancer** nevű Azure Load Balancer korábban telepítve lett.
 
-1. A képernyő bal felső részén kattintson az Erőforrás >  > számítási**virtuálisgép-méretezési készlet** létrehozása **elemre,** vagy keressen a virtuális gép**Compute** **méretezési készletére** a piactéri keresésben.
+1. A képernyő bal felső részén kattintson az **erőforrás** > **létrehozása számítási** > **virtuálisgép-méretezési csoport** vagy a **virtuálisgép-méretezési csoport** keresése lehetőségre a piactéren.
 
 2. Kattintson a **Létrehozás** gombra.
 
-3. A **Virtuálisgép-méretezési csoport létrehozása csoportban**írja be vagy jelölje ki ezt az információt az **Alapok** lapon:
+3. A **virtuálisgép-méretezési csoport létrehozása**területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
 
     | Beállítás                        | Érték                                                                                                 |
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
     | **Projekt részletei**            |                                                                                                       |
     | Előfizetés                   | Válassza ki az Azure-előfizetését                                                                        |
-    | Erőforráscsoport                 | Válassza az Új létrehozása, írja be a **MyResourceGroup**lehetőséget, majd válassza az OK gombot, vagy jelöljön ki egy meglévő erőforráscsoportot. |
-    | **Készlet részleteinek méretezése**          |                                                                                                       |
-    | A virtuálisgép-méretezési csoport neve | Adja meg **a myVMSS-t**                                                                                      |
-    | Régió                         | **Usa keleti része 2**                                                                                    |
-    | Rendelkezésreállási zóna              | Nincs **kijelölése**                                                                                       |
+    | Erőforráscsoport                 | Válassza az új létrehozása elemet, írja be a **myResourceGroup**, majd kattintson az OK gombra, vagy válasszon ki egy meglévő erőforráscsoportot. |
+    | **Méretezési csoport részletei**          |                                                                                                       |
+    | A virtuálisgép-méretezési csoport neve | **MyVMSS** megadása                                                                                      |
+    | Régió                         | Válassza az **USA 2. keleti** régióját                                                                                    |
+    | Rendelkezésreállási zóna              | Válassza a **nincs** lehetőséget                                                                                       |
     | **Példány részletei**           |                                                                                                       |
-    | Kép                          | Válassza az **Ubuntu Server 18.04 LTS lehetőséget**                                                                    |
-    | Azure Spot-példány            | Válassza a **Nem** lehetőséget                                                                                         |
-    | Méret                           | Kilépés alapértelmezés szerint                                                                                      |
+    | Kép                          | Az **Ubuntu Server 18,04 LTS** kiválasztása                                                                    |
+    | Azure spot-példány            | Válassza a **nem** lehetőséget                                                                                         |
+    | Méret                           | Alapértelmezésben hagyja                                                                                      |
     | **Rendszergazdai fiók**      |                                                                                                       |
     | Hitelesítés típusa            | **Jelszó** kiválasztása                                                                                   |
     | Felhasználónév                       | Adja meg a rendszergazdai felhasználónevét        |
-    | Jelszó                       | Adja meg rendszergazdai jelszavát    |
-    | Jelszó megerősítése               | Írja be újra a rendszergazdai jelszót |
+    | Jelszó                       | Adja meg a rendszergazdai jelszavát    |
+    | Jelszó megerősítése               | Adja meg újra a rendszergazdai jelszót |
 
 
     :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="Hozzon létre virtuálisgép-méretezési készletet." border="true":::
 
-4. Válassza a **Hálózat** lapot.
+4. Válassza a **hálózatkezelés** lapot.
 
-5. Írja be vagy jelölje ki ezt az információt a **Hálózat** lapon:
+5. Adja meg vagy válassza ki ezt az információt a **hálózatkezelés** lapon:
 
      Beállítás                           | Érték                                                    |
     |-----------------------------------|----------------------------------------------------------|
-    | **Virtuális hálózat konfigurációja** |                                                          |
-    | Virtuális hálózat                   | Válassza ki **a myVNet** vagy a meglévő virtuális hálózat.      |
+    | **Virtual Network konfiguráció** |                                                          |
+    | Virtuális hálózat                   | Válassza a **myVNet** vagy a meglévő virtuális hálózat lehetőséget.      |
     | **Terheléselosztás**                |                                                          |
     | Terheléselosztó használata               | Válassza az **Igen** lehetőséget                                           |
     | **Terheléselosztási beállítások**       |                                                          |
-    | Terheléselosztási lehetőségek            | Válassza ki **az Azure terheléselosztót**                           |
-    | Terheléselosztó kiválasztása            | Válassza ki **a myLoadBalancer-t** vagy a meglévő terheléselosztót |
-    | Háttérkészlet kiválasztása             | Válassza ki **a myBackendPool** vagy a meglévő háttérkészletét.  |
+    | Terheléselosztási beállítások            | **Azure Load Balancer** kiválasztása                           |
+    | Terheléselosztó kiválasztása            | Válassza ki a **myLoadBalancer** vagy a meglévő Load balancert |
+    | Háttérbeli készlet kiválasztása             | Válassza ki a **myBackendPool** vagy a meglévő háttér-készletet.  |
 
     :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Hozzon létre virtuálisgép-méretezési készletet." border="true":::
 
-6. Válassza a **Kezelés** lapot.
+6. Válassza a **felügyelet** fület.
 
-7. A **Kezelés** lapon állítsa a **Rendszerindításdia imát** **Ki**beállításra.
+7. A **felügyelet** lapon állítsa be a **rendszerindítási diagnosztika** beállítást **off**értékre.
 
-8. Válassza a kék **Véleményezés + létrehozás** gombot.
+8. Kattintson a kék **Áttekintés + létrehozás** gombra.
 
-9. Tekintse át a beállításokat, és válassza a **Létrehozás** gombot.
+9. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben üzembe helyezett egy virtuális gép méretezési készlet egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési készletekről és a terheléselosztóról a következő témakörben olvashat bővebben:
+Ebben a cikkben egy virtuálisgép-méretezési csoport üzembe helyezését egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési csoportokról és a Load balancerről további információt a következő témakörben talál:
 
 - [Mi az az Azure Load Balancer?](load-balancer-overview.md)
 - [Mik a virtuálisgép-méretezési csoportok?](../virtual-machine-scale-sets/overview.md)

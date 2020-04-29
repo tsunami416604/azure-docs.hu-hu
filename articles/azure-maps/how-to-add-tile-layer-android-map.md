@@ -1,6 +1,6 @@
 ---
-title: Csemperéteg hozzáadása androidos térképekhez | Microsoft Azure Maps
-description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csemperéteget a térképen a Microsoft Azure Maps Android SDK használatával.
+title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg egy csempe rétegét a térképeken a Microsoft Azure Maps Android SDK használatával.
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,46 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335565"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csemperéteg hozzáadása térképhez az Azure Maps Android SDK használatával
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
-Ez a cikk bemutatja, hogyan jelenítheti meg a csemperéteget egy térképen az Azure Maps Android SDK használatával. A mozaikrétegek lehetővé teszik, hogy képeket helyezhet az Azure Maps alaptérképcsempéire. Az Azure Maps csempézési rendszeréről a [Nagyítási szintek és](zoom-levels-and-tile-grid.md) a csemperács dokumentációjában talál további információt.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csempéket a térképeken a Azure Maps Android SDK használatával. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md) dokumentációját.
 
-A mozaikréteg kiszolgálóról töltődik be a csempékbe. Ezek a képek előre renderelhetők és tárolhatók, mint bármely más kép a kiszolgálón, a csemperéteg által érthető elnevezési konvenció használatával. Vagy ezek a képek egy dinamikus szolgáltatással jeleníthetők meg, amely közel valós időben hozza létre a képeket. Az Azure Maps TileLayer osztály a következő három különböző csempeszolgáltatás-elnevezési konvenciót támogat:
+Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón, a csempe rétegének értelmezési elnevezési konvenció használatával. Ezeket a képeket olyan dinamikus szolgáltatással is megjelenítheti, amely a képeket közel valós időben hozza létre. Az Azure Maps TileLayer osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat:
 
-* X, Y, Nagyítás jelölés - A nagyítási szint alapján az x az oszlop, y pedig a mozaikrácsban lévő mozaik sorpozíciója.
-* Négykulcsos jelölés – Az x, y kombináció egyetlen karakterlánc-értékre nagyítja az információt, amely egy csempe egyedi azonosítója.
-* Határolókeret – A határolókeret koordinátái `{west},{south},{east},{north}` segítségével a [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms)által általánosan használt formátumban adható kép.
+* X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
+* Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
+* A határolókerethoz tartozó határoló mező koordinátáit a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)által gyakran `{west},{south},{east},{north}` használt formátumú rendszerképek megadására lehet használni.
 
 > [!TIP]
-> A TileLayer nagyszerű módja annak, hogy nagy adatkészleteket jelenítsen meg a térképen. Nem csak egy mozaikréteg generálható képből, de a vektoradatok is mozaikrétegként is renderelhetők. A vektoradatok mozaikrétegként való megjelenítésével a térképvezérlőnek csak azokat a csempéket kell betöltenie, amelyek fájlméretük sokkal kisebb lehet, mint az általuk képviselt vektoradatoknak. Ezt a technikát sokan használják, akiknek több millió sornyi adatot kell megjelenítenie a térképen.
+> A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelemnek csak be kell töltenie a csempéket, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
 
-A csempe rétegnek átadott csempe URL-címének egy tilejson-erőforrás http/https URL-címének vagy a következő paramétereket használó csempe URL-sablonnak kell lennie: 
+A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
-* `{x}`- X helyzetben a csempe. Is `{y}` szüksége `{z}`van, és .
-* `{y}`- Y helyzetben a csempe. Is `{x}` szüksége `{z}`van, és .
-* `{z}`- Zoom szinten a csempe. Is `{x}` szüksége `{y}`van, és .
-* `{quadkey}`- Csempe négykulcsos azonosító alapján a Bing Maps csempe rendszer elnevezési konvenció.
-* `{bbox-epsg-3857}`- Az EPSG 3857 térbeli referenciarendszer formátumú `{west},{south},{east},{north}` határolókeret-karakterlánca.
-* `{subdomain}`- Az altartomány értékeinek helyőrzője, ha az altartomány értéke meg van adva.
+* `{x}`-A csempe X pozíciója A és `{y}` a `{z}`is szükséges.
+* `{y}`-A csempe Y pozíciója A és `{x}` a `{z}`is szükséges.
+* `{z}`– A csempe nagyítási szintje A és `{x}` a `{y}`is szükséges.
+* `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
+* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a EPSG `{west},{south},{east},{north}` 3857 térbeli hivatkozási rendszer formátumát jelöli.
+* `{subdomain}`– A altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folyamat befejezéséhez ebben a cikkben telepítenie kell az [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) betölteni egy térképet.
+A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
 
 
-## <a name="add-a-tile-layer-to-the-map"></a>Mozaikréteg hozzáadása a térképhez
+## <a name="add-a-tile-layer-to-the-map"></a>Csempe réteg hozzáadása a térképhez
 
- Ez a minta bemutatja, hogyan hozhat létre mozaikréteget, amely mozaikkészletre mutat. Ezek a csempék az "x, y, zoom" csempézési rendszert használják. A forrás a csempe réteg egy időjárási radar overlay az [Iowa Környezetvédelmi Mesonet az Iowa State University](https://mesonet.agron.iastate.edu/ogc/). 
+ Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ezek a csempék az "x, y, zoom" csemperendszer használatát használják. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
 
-Az alábbi lépések végrehajtásával hozzáadhat egy mozaikréteget a térképhez.
+Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
 
-1. A **activity_main.xml > fájl > szerkesztése > elrendezést** úgy, hogy az alábbinak tűnjön:
+1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Az alábbi lépések végrehajtásával hozzáadhat egy mozaikréteget a térké
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate()** metódusába.
+2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Az alábbi lépések végrehajtásával hozzáadhat egy mozaikréteget a térké
     });
     ```
     
-    A kódrészlet felett először beszerez egy Azure Maps map vezérlőpéldány **tonReady()** visszahívási módszer használatával. Ezután létrehoz `TileLayer` egy objektumot, és átad egy `tileUrl` formázott **xyz** csempe URL-t a beállításnak. A réteg opacitása a `0.8` beállítás, és mivel a csempeszolgáltatás csempéi 256 képpont `tileSize` méretű csempék, ez az információ átkerül a beállításba. A csemperéteg ezután átkerül a térképek rétegkezelőbe.
+    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja egy formázott **XYZ** csempe URL- `tileUrl` címét a lehetőséghez. A réteg opacitása úgy van beállítva, `0.8` hogy a csempe szolgáltatás által használt csempék 256 képpont csempék legyenek, ez az információ átkerül `tileSize` a lehetőségbe. Ezután a csempe réteget a Maps Layer Manager továbbítja.
 
-    Hozzáadása után a kódrészlet felett, meg `MainActivity.java` kell kinéznie az alábbi:
+    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;
@@ -168,15 +168,15 @@ Az alábbi lépések végrehajtásával hozzáadhat egy mozaikréteget a térké
     }
     ```
 
-Ha most futtatja az alkalmazást, az alábbi módon kell látnia egy sort a térképen:
+Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az alábbi képen látható módon:
 
 <center>
 
-![Android térképvonal](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Androidos Térkép sora](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>További lépések
 
-A térképstílusok beállításának módjairól az alábbi cikkben olvashat bővebben.
+A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 
 > [!div class="nextstepaction"]
-> [Térképstílusok módosítása androidos térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Térkép stílusainak módosítása Android-térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

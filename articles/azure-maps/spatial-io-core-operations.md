@@ -1,6 +1,6 @@
 ---
-title: Alapvető IO-műveletek | Microsoft Azure Maps
-description: Ismerje meg, hogyan lehet hatékonyan olvasni és írni az XML-t és a tagolt adatokat a térbeli IO-modul alapvető kódtárai használatával.
+title: Alapszintű IO-műveletek | Microsoft Azure térképek
+description: Megtudhatja, hogyan lehet hatékonyan beolvasni és írni az XML-és tagolt adatok alap kódtárak használatával történő használatát a térbeli IO-modulból.
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371442"
 ---
-# <a name="core-io-operations"></a>Alapvető IO-műveletek
+# <a name="core-io-operations"></a>Alapszintű i/o-műveletek
 
-A térbeli IO-modul a térbeli ADATfájlok olvasására szolgáló eszközök mellett az alapvető mögöttes könyvtárakat is elérhetővé teszi az XML olvasásához és írásához, valamint a korlátozott adatok gyors és hatékony definiálásához.
+Amellett, hogy eszközöket biztosít a térbeli adatfájlok olvasásához, a térbeli IO-modul elérhetővé teszi az alapszintű könyvtárakat az XML-és tagolt adatok gyors és hatékony olvasásához és írásához.
 
-A `atlas.io.core` névtér két alacsony szintű osztályt tartalmaz, amelyek gyorsan képesek CSV- és XML-adatok olvasására és írására. Ezek az alaposztályok a térbeli adatolvasókat és az írókat a térbeli IO modulban működtetik. Nyugodtan használja őket, hogy adjunk további olvasási és írási támogatást CSV vagy XML fájlokat.
+A `atlas.io.core` névtér két alacsony szintű osztályt tartalmaz, amelyek gyorsan olvashatnak és ÍRHATnak CSV-és XML-fájlokat. Ezek az alaposztályok a térbeli IO-modul térbeli adatolvasóit és írókat is kikapcsolják. Nyugodtan használhatja őket a CSV-vagy XML-fájlok további olvasási és írási támogatásának hozzáadásához.
  
-## <a name="read-delimited-files"></a>Elválasztott fájlok olvasása
+## <a name="read-delimited-files"></a>Tagolt fájlok olvasása
 
-Az `atlas.io.core.CsvReader` osztály beolvassa a tagolt adatkészleteket tartalmazó karakterláncokat. Ez az osztály két módszert kínál az adatok olvasására:
+Az `atlas.io.core.CsvReader` osztály beolvassa a tagolt adatkészleteket tartalmazó karakterláncokat. Ez az osztály két módszert biztosít az adatolvasáshoz:
 
-- A `read` függvény beolvassa a teljes adatkészletet, és a tagolt adatkészlet összes celláját jelölő karakterláncok kétdimenziós tömbjét adja vissza.
-- A `getNextRow` függvény beolvassa a tagolt adatkészlet minden sorát, és az adatkészlet összes celláját jelölő karakterlánctömböt ad vissza. A felhasználó feldolgozhatja a sort, és a következő sor feldolgozása előtt megsemmisítheti a sor felesleges memóriáját. Tehát, függvény van több memória hathatós.
+- A `read` függvény beolvassa a teljes adatkészletet, és egy kétdimenziós tömböt ad vissza, amely a tagolt adathalmaz összes celláját jelképezi.
+- A `getNextRow` függvény beolvassa a szöveg egyes sorát egy tagolt adatkészletben, és egy sztringet ad vissza, amely az adott sorban lévő összes cellát jelképezi. A felhasználó feldolgozhatja a sort, és a következő sor feldolgozása előtt elvégezheti a felesleges memória megzavarását a sorból. Így a függvény nagyobb memória-hatékonyságot igényel.
 
-Alapértelmezés szerint az olvasó a vesszőkaraktert fogja használni elhatárolójelként. A határolójel azonban bármely karakterre vagy beállításra `'auto'`módosítható. Ha `'auto'`a beállítás , az olvasó elemzi az első sorban a szöveg a karakterláncban. Ezután kiválasztja a leggyakoribb karaktert az alábbi táblázatból, amelyet határolóként használhat.
+Alapértelmezés szerint az olvasó a vessző karaktert fogja használni elválasztóként. A határolójel azonban bármelyik karakterre módosítható, vagy beállítható a következőre: `'auto'`. Ha a értékre `'auto'`van állítva, akkor az olvasó elemzi a karakterlánc első sorát. Ezután kiválasztja a leggyakoribb karaktert az alábbi táblázatból, hogy elválasztóként használja.
 
 | | |
 | :-- | :-- |
 | Vessző | `,` |
 | Tab | `\t` |
-| Cső | `|` |
+| Adatcsatornán | `|` |
 
-Ez az olvasó támogatja a határoló karaktert tartalmazó cellák kezelésére használt szövegminősítőket is. Az idézet`'"'`( ) karakter az alapértelmezett szövegminősítő, de bármely karakterre módosítható.
+Ez az olvasó olyan szöveges minősítőket is támogat, amelyek a határoló karaktert tartalmazó cellák kezelésére szolgálnak. Az idézőjel (`'"'`) karakter az alapértelmezett szöveges minősítő, de egyetlen karakterre is módosítható.
 
 ## <a name="write-delimited-files"></a>Tagolt fájlok írása
 
-Az `atlas.io.core.CsvWriter` objektumok tömbjét tagolt karakterláncként írja. Bármely karakter használható határolóként vagy szövegminősítőként. Az alapértelmezett határolójel a`','`vessző ( ) és az`'"'`alapértelmezett szövegminősítő az idézet ( ) karakter.
+Az `atlas.io.core.CsvWriter` objektumok tömbje tagolt karakterláncként van beírni. Egyetlen karakter is használható határolójelként vagy szöveges minősítőként. Az alapértelmezett határolójel a vessző (`','`), az alapértelmezett szöveges minősítő pedig az idézőjel (`'"'`) karakter.
 
 Az osztály használatához kövesse az alábbi lépéseket:
 
-- Hozzon létre egy példányt az osztályból, és tetszés szerint egyéni határolóvagy szövegminősítőt állítson be.
-- Adatok írása az `write` osztályba `writeRow` a függvény vagy a függvény használatával. A `write` függvényhez adja át a több sort és cellát képviselő objektumok kétdimenziós tömbjét. A függvény `writeRow` használatához adja át a több oszlopot tartalmazó adatsort képviselő objektumok tömbjét.
-- Hívja `toString` meg a függvényt a tagolt karakterlánc beolvasásához. 
-- Ha meg is `clear` adod a metódust, hívja meg az `delete` író újrafelhasználhatóvá és csökkentse az erőforrás-elosztást, vagy hívja meg az írópéldány ártalmatlanítására vonatkozó metódust.
+- Hozza létre az osztály egy példányát, és opcionálisan állítson be egy egyéni határolójelet vagy szöveges minősítőt.
+- Adat írása az osztályba a `write` függvény vagy a `writeRow` függvény használatával. A `write` függvényhez adjon át egy kétdimenziós tömböt, amely több sort és cellát jelképez. A `writeRow` függvény használatához át kell adni egy olyan objektum tömbjét, amely több oszlopból álló adatsort jelöl.
+- Hívja meg `toString` a függvényt a tagolt karakterlánc beolvasásához. 
+- Ha szeretné, hívja meg `clear` a metódust, hogy az író újra felhasználható legyen, és csökkentse erőforrás `delete` -kiosztását, vagy hívja meg a metódust az író példány eldobásához.
 
 > [!Note]
-> Az írott oszlopok száma az írónak átadott adatok első sorának celláinak számára lesz korlátozva.
+> A megírt oszlopok száma az író számára átadott adatmennyiség első sorában található cellák számának megfelelően lesz korlátozva.
 
 ## <a name="read-xml-files"></a>XML-fájlok olvasása
 
-Az `atlas.io.core.SimpleXmlReader` osztály gyorsabb az XML-fájlok `DOMParser`elemzésén, mint a . Az osztály `atlas.io.core.SimpleXmlReader` azonban megköveteli, hogy az XML-fájlok jól formázhatók legyenek. A nem jól formázott XML-fájlok, például a zárócímkék hiányoznak, valószínűleg hibát eredményeznek.
+Az `atlas.io.core.SimpleXmlReader` osztály gyorsabb az XML-fájlok elemzésekor, `DOMParser`mint a. Az osztálynak `atlas.io.core.SimpleXmlReader` azonban az XML-fájloknak megfelelően formázottnak kell lennie. A nem megfelelően formázott XML-fájlok (például a záró címkék hiánya) valószínűleg hibát okoznak.
 
-A következő kód bemutatja, `SimpleXmlReader` hogyan használhatja az osztályt egy XML-karakterlánc JSON-objektummá történő elemzésére és a kívánt formátumba való szerializálására.
+A következő kód bemutatja, hogyan használható az `SimpleXmlReader` osztály egy XML-karakterlánc JSON-objektumba való elemzéséhez, és hogyan szerializálható a kívánt formátumba.
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -80,9 +80,9 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 ## <a name="write-xml-files"></a>XML-fájlok írása
 
-Az `atlas.io.core.SimpleXmlWriter` osztály jól formázott XML-t ír memóriatakarékos módon.
+Az `atlas.io.core.SimpleXmlWriter` osztály jól formázott XML-kódot ír a memóriában.
 
-A következő kód bemutatja, `SimpleXmlWriter` hogyan használható az osztály egy jól formázott XML-karakterlánc létrehozásához.
+A következő kód bemutatja, hogyan használható az `SimpleXmlWriter` osztály egy jól formázott XML-karakterlánc létrehozásához.
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -115,7 +115,7 @@ writer.writeEndElement().writeEndDocument();
 var xmlString = writer.toString();
 ```
 
-A fenti kódból származó létrehozott XML a következőkre néz.
+A fenti kódból létrehozott XML-fájl az alábbihoz hasonlóan fog kinézni.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -142,7 +142,7 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [!div class="nextstepaction"]
 > [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
-További kódmintákat a térképekhez további kódmintákért tekintse meg:
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
 > [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)

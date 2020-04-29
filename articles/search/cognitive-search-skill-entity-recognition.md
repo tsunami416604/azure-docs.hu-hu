@@ -1,7 +1,7 @@
 ---
-title: Entitásfelismerés kognitív készsége
+title: Entitás-felismerés – kognitív képesség
 titleSuffix: Azure Cognitive Search
-description: Különböző típusú entitások kinyerése egy gazdagítási folyamat szövegéből az Azure Cognitive Search-ben.
+description: Különböző típusú entitások kinyerése egy alkoholtartalom-növelési folyamatból az Azure Cognitive Searchban.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,63 +9,63 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297811"
 ---
-#    <a name="entity-recognition-cognitive-skill"></a>Entitásfelismerés kognitív készsége
+#    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
-Az **Entity Recognition** szakértelem különböző típusú entitásokat nyer ki a szövegből. Ez a szakértelem a Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
+Az **entitás-felismerési** képesség Kinyeri a szövegből származó különböző típusú entitásokat. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
 
 > [!NOTE]
-> A hogy a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti a hatókört, [egy számlázható Cognitive Services-erőforrást kell csatolnia.](cognitive-search-attach-cognitive-services.md) A díjak akkor keletkeznek, amikor API-kat hívnak a Cognitive Servicesben, és az Azure Cognitive Search dokumentumfeltörési szakaszának részeként képkinyerést végeznek. A dokumentumokból történő szövegkinyerésért nem kell díjat fizetni.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített képességek végrehajtása a meglévő [Cognitive Services díja int.](https://azure.microsoft.com/pricing/details/cognitive-services/) A képkinyerésdíj szabása az [Azure Cognitive Search díjszabási lapján található.](https://go.microsoft.com/fwlink/?linkid=2042400)
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.EntityRecognitionSkill
+Microsoft. Skills. Text. EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekord maximális méretének 50 000 karakternek [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)kell lennie a szerint mérve. Ha meg kell szakítania az adatokat, mielőtt elküldi azokat a kulcskifejezés-kiválasztónak, fontolja meg a [Szövegfelosztás szakértelem](cognitive-search-skill-textsplit.md)használatát.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterek ben a kis- és nagybetűket nem lehet kiválasztható.
+A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kötelező.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| kategóriák    | Kibontandó kategóriák tömbje.  Lehetséges `"Person"`kategóriatípusok: `"Location"` `"Organization"`, `"Quantity"` `"Datetime"`, `"URL"` `"Email"`, , , , . Ha nincs megadva kategória, a rendszer minden típust visszaad.|
-|defaultLanguageCode |    A bemeneti szöveg nyelvkódja. A következő nyelvek `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`támogatottak: . Nem minden entitáskategória támogatott minden nyelven; lásd az alábbi megjegyzést.|
-|minimumPontosság | 0 és 1 közötti érték. Ha a megbízhatósági `namedEntities` pontszám (a kimenetben) alacsonyabb, mint ez az érték, az entitás nem adja vissza. Az alapértelmezett érték a 0. |
-|includeTypelessEntities | Állítsa `true` be, ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az elismert entitások `entities` a komplex kimeneti mezőben kerülnek visszaadásra. Például a "Windows 10" egy jól ismert entitás (termék), de mivel a "Termékek" nem támogatott kategória, ez az entitás szerepelni fog az entitások kimeneti mezőjében. Az alapértelmezett érték`false` |
+| kategóriák    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"`, `"Location"` `"Organization"` `"Quantity"`,,, `"Datetime"`, `"URL"`, `"Email"`. Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
+|defaultLanguageCode |    A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nem minden entitás-kategória támogatott az összes nyelven; lásd az alábbi megjegyzést.|
+|minimumPrecision | 0 és 1 közötti érték. Ha a megbízhatósági pontszám (a `namedEntities` kimenetben) alacsonyabb ennél az értéknél, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0. |
+|includeTypelessEntities | Állítsa be `true` értékre, ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az azonosított entitások a `entities` komplex kimenet mezőben lesznek visszaadva. Például a "Windows 10" egy jól ismert entitás (a termék), de mivel a "Products" nem támogatott kategória, ez az entitás szerepel az entitások kimenet mezőjében. Alapértelmezett érték`false` |
 
 
-## <a name="skill-inputs"></a>Szakértelem bemenetei
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemenet neve      | Leírás                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | languageCode    | Választható. Az alapértelmezett szint a `"en"`.  |
-| szöveg          | Az elemző szöveg.          |
+| szöveg          | Az elemezni kívánt szöveg.          |
 
-## <a name="skill-outputs"></a>Szakértelem kimenetei
+## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 > [!NOTE]
-> Nem minden entitáskategória támogatott minden nyelven. A `"Person"` `"Location"`, `"Organization"` és az entitás kategóriatípusok a fenti nyelvek teljes listájához támogatottak. Csak _de,_ _en_, _es_, _fr_és `"Quantity"` `"Datetime"` _zh-hans_ támogatja a kivonását, `"URL"`, és `"Email"` típusait. További információ: [Language and region support for the Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"`, `"Location"`a és `"Organization"` az Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-Hans_ támogatás `"URL"`támogatja a `"Email"` `"Quantity"` `"Datetime"`,, és típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
 | Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
-| Személyek       | Karakterláncok tömbje, ahol minden karakterlánc egy személy nevét jelöli. |
-| Helyek  | Karakterláncok tömbje, ahol minden karakterlánc egy helyet jelöl. |
-| organizations  | Karakterláncok tömbje, ahol minden karakterlánc egy szervezetet jelöl. |
-| Mennyiségek  | Karakterláncok tömbje, ahol minden karakterlánc mennyiséget jelöl. |
-| dateTimes  | Karakterláncok tömbje, ahol minden karakterlánc datetime értéket jelöl (ahogy az a szövegben megjelenik). |
-| Urls | Karakterláncok tömbje, ahol minden karakterlánc URL-címet jelöl |
-| E-mail | Karakterláncok tömbje, ahol minden karakterlánc egy e-mailt jelöl |
-| namedEntities (elnevezett entitások) | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>category</li> <li>érték (A tényleges entitás neve)</li><li>eltolás (Az a hely, ahol a szövegben található)</li><li>bizalom (A magasabb érték azt jelenti, hogy inkább valódi entitás)</li></ul> |
-| Entitások | Összetett típusok tömbje, amely gazdag információkat tartalmaz a szövegből kinyert entitásokról, a következő mezőkkel <ul><li> név (a tényleges entitás neve. Ez egy "normalizált" űrlapot jelent)</li><li> wikipediaId</li><li>wikipediaNyelv</li><li>wikipediaUrl (egy link a Wikipédia oldalára a szervezet számára)</li><li>bingId</li><li>típus (a felismert entitás kategóriája)</li><li>altípus (csak bizonyos kategóriákesetében érhető el, ez részletesebb nézetet ad az entitástípusról)</li><li> egyezik (egy összetett gyűjtemény, amely tartalmazza)<ul><li>szöveg (az entitás nyers szövege)</li><li>eltolás (az a hely, ahol megtalálták)</li><li>hossz (a nyers entitásszöveg hossza)</li></ul></li></ul> |
+| személyek       | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
+| helyek  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
+| organizations  | Karakterláncok tömbje, amelyben minden sztring egy szervezetet jelöl. |
+| mennyiségek  | Karakterláncok tömbje, amelyben minden sztring egy mennyiséget jelöl. |
+| Dátum  | Karakterláncok tömbje, amelyben minden karakterlánc egy DateTime értéket jelöl (ahogy a szövegben jelenik meg). |
+| URLs | Karakterláncok tömbje, amelyben minden sztring URL-címet jelöl |
+| e-mailek | Karakterláncok tömbje, amelyben minden karakterlánc egy e-mailt jelöl |
+| namedEntities | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (a magasabb érték azt jelenti, hogy inkább valódi entitásnak kell lennie)</li></ul> |
+| szervezetek | Összetett típusok tömbje, amely részletes információkat tartalmaz a szövegből kinyert entitásokról a következő mezőkkel <ul><li> név (a tényleges entitás neve. Ez a "normalizált" formát jelenti.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (az entitáshoz tartozó wikipedia oldalára mutató hivatkozás)</li><li>bingId</li><li>típus (az elismert entitás kategóriája)</li><li>altípus (csak bizonyos kategóriák esetében érhető el, ez az entitás típusának részletesebb megjelenítését teszi lehetővé)</li><li> egyezések (egy összetett gyűjtemény, amely tartalmazza)<ul><li>szöveg (az entitás nyers szövege)</li><li>eltolás (a hely hol található)</li><li>Hossz (a nyers entitás hosszának hossza)</li></ul></li></ul> |
 
 ##    <a name="sample-definition"></a>Minta definíciója
 
@@ -97,7 +97,7 @@ A paraméterek ben a kis- és nagybetűket nem lehet kiválasztható.
     ]
   }
 ```
-##    <a name="sample-input"></a>Mintabevitel
+##    <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -187,12 +187,12 @@ A paraméterek ben a kis- és nagybetűket nem lehet kiválasztható.
 }
 ```
 
-Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolások közvetlenül a [Text Analytics API-ból](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)származnak, ami azt jelenti, hogy ha az okat az eredeti karakterláncba indexeli, a [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt kell használnia a .NET-ben a megfelelő tartalom kinyeréséhez.  [További részletek itt találhatók.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
-## <a name="error-cases"></a>Hibaesetek
-Ha a dokumentum nyelvi kódja nem támogatott, a rendszer hibát ad vissza, és nem bont ki entitásokat.
+## <a name="error-cases"></a>Hibák esetei
+Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.
 
 ## <a name="see-also"></a>Lásd még
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
-+ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

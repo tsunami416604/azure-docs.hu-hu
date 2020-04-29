@@ -1,6 +1,6 @@
 ---
-title: Kézbesítés és újrapróbálkozás – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Kézbesítés és újrapróbálkozás az Event Gridben az IoT Edge-en.
+title: Kézbesítés és újrapróbálkozás – Azure Event Grid IoT Edge | Microsoft Docs
+description: Kézbesítés és újrapróbálkozás Event Grid IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,63 +10,63 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841712"
 ---
 # <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
 
-Az Event Grid tartós kézbesítést biztosít. Minden egyes üzenetet megpróbál azonnal kézbesíteni minden egyes megfelelő előfizetéshez. Ha egy előfizető végpontja nem nyugtázza egy esemény bevételét, vagy ha hiba történt, az Event Grid újrapróbálkozik a kézbesítéssel egy rögzített **újrapróbálkozási ütemezés** és **újrapróbálkozási házirend**alapján.  Alapértelmezés szerint az Event Grid modul egyszerre csak egy eseményt szállít az előfizetőnek. A hasznos teher azonban egy tömb egyetlen esemény. Beállíthatja, hogy a modul egyszerre több eseményt biztosítson a kimeneti kötegelési funkció engedélyezésével. A funkcióval kapcsolatos részletekért tekintse meg a [kimeneti kötegelést.](delivery-output-batching.md)  
+Event Grid tartós kézbesítést biztosít. Minden egyes megegyező előfizetés esetében minden üzenetet legalább egyszer megpróbál kézbesíteni. Ha egy előfizető végpontja nem igazolja egy esemény fogadását, vagy ha hiba történt, Event Grid újrapróbálkozik a kézbesítéssel egy rögzített **Újrapróbálkozás-ütemterv** alapján, és **újrapróbálkozási házirendet**.  Alapértelmezés szerint a Event Grid modul egyszerre egy eseményt biztosít az előfizetőnek. A hasznos adatok azonban egy tömb, amely egyetlen eseménnyel rendelkezik. A modult egyszerre több esemény is elvégezheti, ha engedélyezi a kimeneti köteg funkciót. A szolgáltatással kapcsolatos további információkért lásd: a [kimenetek kötegelt feldolgozása](delivery-output-batching.md).  
 
 > [!IMPORTANT]
->Az eseményadatok nem nyújtanak megőrzési támogatást. Ez azt jelenti, hogy az Event Grid modul újratelepítése vagy újraindítása miatt elveszíti a még nem kézbesített eseményeket.
+>Az események nem rendelkeznek adatmegőrzési támogatással. Ez azt jelenti, hogy a Event Grid modul újbóli üzembe helyezése vagy újraindítása miatt a még nem szállított események elvesznek.
 
-## <a name="retry-schedule"></a>Újrapróbálkozásütemezés
+## <a name="retry-schedule"></a>Újrapróbálkozási ütemterv
 
-Az Event Grid legfeljebb 60 másodpercet vár a válaszra az üzenet kézbesítése után. Ha az előfizető végpontja nem ACK a választ, majd az üzenet lesz sorban az egyik vissza a várólisták a későbbi újrapróbálkozások.
+Egy üzenet kézbesítése után a Event Grid legfeljebb 60 másodpercet vár a válaszra. Ha az előfizető végpontja nem küldi el a választ, akkor az üzenet a további újrapróbálkozások egyik várólistán lévő fog megjelenni.
 
-Két előre konfigurált visszalépési várólista határozza meg azt az ütemezést, amelyen az újrapróbálkozást megkísérli. Ezek a következők:
+Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemezést, amelyen az újrapróbálkozási kísérlet történik. Ezek a következők:
 
 | Ütemezés | Leírás |
 | ---------| ------------ |
-| 1 perc | Az itt végződő üzeneteket minden percben megkíséreli a kísérlet.
-| 10 perc | Az itt végződő üzeneteket minden tizedik percben megkísérelik.
+| 1 perc | Az itt bekövetkező üzenetek percenként próbálkoznak.
+| 10 perc | Az itt megjelenő üzeneteket 10 percenként kísérli meg a rendszer.
 
 ### <a name="how-it-works"></a>Működés
 
-1. Az üzenet megérkezik az Event Grid modulba. Megkíséreljük azonnal kézbesíteni.
-1. Ha a kézbesítés sikertelen, akkor az üzenet 1 perces várólistába kerül, és egy perc múlva újra megpróbálja.
-1. Ha a kézbesítés továbbra is sikertelen, akkor az üzenet 10 perces várólistába kerül, és 10 percenként újra próbálkozik.
-1. A sikeres vagy újrapróbálkozási házirend-korlátok eléréséig a kézbesítések megkísérlése megkísérlésre.
+1. Üzenet érkezik a Event Grid modulba. Kísérlet történt az azonnali kézbesítésre.
+1. Ha a kézbesítés sikertelen, akkor az üzenet 1 percenként várólistán lévő, és egy perc múlva újra próbálkozik.
+1. Ha a kézbesítés továbbra is sikertelen, a rendszer 10 percenként várólistán lévő az üzenetet, és 10 percenként újrapróbálkozik.
+1. A rendszer a sikeres vagy újrapróbálkozási szabályzatok elérésekor megkísérli a kézbesítést.
 
-## <a name="retry-policy-limits"></a>Házirend-korlátok újrapróbálkozása
+## <a name="retry-policy-limits"></a>Újrapróbálkozási szabályzat korlátai
 
-Két konfiguráció határozza meg az újrapróbálkozási házirendet. Ezek a következők:
+Az újrapróbálkozási szabályzatot két konfiguráció határozza meg. Ezek a következők:
 
-* A kísérletek maximális száma
-* Az esemény ideje az életben (TTL)
+* Kísérletek maximális száma
+* Esemény élettartama (TTL)
 
-Az újrapróbálkozási házirend bármelyikének elérésekor egy esemény ellesz dobva. Magát az újrapróbálkozási ütemezést az Újrapróbálkozásütemezés szakasz ban ismertetjük. Ezeknek a korlátoknak a konfigurálása minden előfizetőre vagy előfizetésenként végezhető el. A következő szakasz ismerteti mindegyik további részleteket.
+Egy esemény el lesz dobva, ha az újrapróbálkozási szabályzat korlátai bármelyike eléri a határértéket. Az újrapróbálkozási ütemtervet maga az újrapróbálkozási ütemterv szakaszban ismertetjük. Ezen korlátok konfigurálása az összes előfizető vagy előfizetések alapján végezhető el. A következő szakasz ismerteti a további részleteket.
 
-## <a name="configuring-defaults-for-all-subscribers"></a>Alapértelmezett beállítások konfigurálása az összes előfizető számára
+## <a name="configuring-defaults-for-all-subscribers"></a>Az összes előfizető alapértelmezett beállításainak konfigurálása
 
-Két tulajdonság létezik: `brokers__defaultMaxDeliveryAttempts` és `broker__defaultEventTimeToLiveInSeconds` ez az Event Grid központi telepítésének részeként konfigurálható, amely az összes előfizető újrapróbálkozási házirend-alapértelmezéseit szabályozza.
+Két tulajdonság létezik: `brokers__defaultMaxDeliveryAttempts` és `broker__defaultEventTimeToLiveInSeconds` a Event Grid központi telepítés részeként konfigurálható, amely az összes előfizető újrapróbálkozási szabályzatának alapértelmezett értékeit szabályozza.
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | Az esemény kézbesítésére tett kísérletek maximális száma. Alapértelmezett érték: 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Esemény TTL másodpercben, amely után egy esemény el kell dobni, ha nem kézbesítik. Alapértelmezett érték: **7200** másodperc
+| `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Alapértelmezett érték: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Az esemény ÉLETTARTAMa másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Alapértelmezett érték: **7200** másodperc
 
-## <a name="configuring-defaults-per-subscriber"></a>Alapértelmezett beállítások konfigurálása előfizetőnként
+## <a name="configuring-defaults-per-subscriber"></a>Alapértelmezett beállítások konfigurálása előfizető számára
 
-Az újrapróbálkozási szabályzat-korlátokat előfizetésenként is megadhatja.
-Az [API dokumentációjában](api.md) tájékozódhat arról, hogyan konfigurálhatja az alapértelmezett beállításokat előfizetőnként. Az előfizetési szint alapértelmezései felülbírálják a modulszint-konfigurációkat.
+Az újrapróbálkozási szabályzat korlátozásait előfizetések alapján is megadhatja.
+Tekintse meg az [API-dokumentációt](api.md) , amelyből megtudhatja, hogyan konfigurálhatja az alapértelmezett beállításokat előfizetőként. Az előfizetési szint alapértelmezett beállításai felülbírálják a modul szintjének konfigurációit.
 
 ## <a name="examples"></a>Példák
 
-A következő példa beállítja az újrapróbálkozási házirendet az Event Grid modulban a maxNumberOfAttempts = 3 és a 30 perces Esemény TTL értékkel
+Az alábbi példa az újrapróbálkozási szabályzatot állítja be a Event Grid modulban a maxNumberOfAttempts = 3 és az Event TTL (30 perc) értékkel.
 
 ```json
 {
@@ -86,7 +86,7 @@ A következő példa beállítja az újrapróbálkozási házirendet az Event Gr
 }
 ```
 
-A következő példa egy webhook-előfizetést állít be a maxNumberOfAttempts = 3 és az Event TTL 30 percértékkel
+Az alábbi példa egy webhook-előfizetést állít be a maxNumberOfAttempts = 3 és az Event TTL (30 perc) értékkel.
 
 ```json
 {

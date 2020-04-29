@@ -1,6 +1,6 @@
 ---
-title: Honosítástámogatása | Microsoft Azure Maps
-description: Ebben a cikkben megismerheti a Microsoft Azure Maps szolgáltatásainak támogatott nyelveit.
+title: Honosítási támogatás | Microsoft Azure térképek
+description: Ebből a cikkből megismerheti a Microsoft Azure Maps szolgáltatásainak támogatott nyelveit.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,145 +9,145 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334070"
 ---
-# <a name="localization-support-in-azure-maps"></a>Honosítástámogatása az Azure Mapsben
+# <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
 
-Az Azure Maps az országon és régión alapuló különböző nyelveket és nézeteket támogatja. Ez a cikk a támogatott nyelveket és nézeteket tartalmazza az Azure Maps megvalósításának irányításához.
+A Azure Maps ország/régió alapján támogatja a különböző nyelveket és nézeteket. Ez a cikk a támogatott nyelveket és nézeteket ismerteti, amelyek segítenek a Azure Maps megvalósításában.
 
 
-## <a name="azure-maps-supported-languages"></a>Az Azure Maps által támogatott nyelvek
+## <a name="azure-maps-supported-languages"></a>Azure Maps támogatott nyelvek
 
-Az Azure Maps különböző nyelveken van honosítva a szolgáltatásaiban. Az alábbi táblázat az egyes szolgáltatások támogatott nyelvi kódjait tartalmazza.  
+Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID (Azonosító)         | Név                   |  Maps | Keresés | Útválasztás | Időjárás | Közlekedési események | JS térkép vezérlése |
+| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
-| af-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
+| AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| bn-BD      | Bangla (Banglades)    |       |       |         |     ✓    |                   |                |
-| bn-IN      | Bangla (India)         |       |       |         |     ✓    |                   |                |
-| bs-BA      | boszniai                 |       |       |         |     ✓    |                   |                |
-| eu-ES      | Baszk                 |       |    ✓   |         |         |                   |                |
+| BN – BD      | Bangla (Banglades)    |       |       |         |     ✓    |                   |                |
+| BN – a      | Bangla (India)         |       |       |         |     ✓    |                   |                |
+| BS-BA      | boszniai                 |       |       |         |     ✓    |                   |                |
+| EU – ES      | Baszk                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | Bolgár              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ca-ES      | Katalán                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS között    | Kínai (egyszerűsített)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Kínai (Hongkong KKT)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanS    | Kínai (egyszerűsített)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanT    | Kínai (Hongkong KKT)  |  |   |    |    ZH-HK   |                   |           |
 | zh-HanT    | Kínai (Tajvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Horvát               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | Dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | nl-BE      | Holland (Belgium)        |       |    ✓   |         |      ✓    |                   |                |
 | nl-NL      | Holland (Hollandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-AU      | Angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-NZ      | Angol (Új-Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| hu-GB      | Angol (Nagy-Britannia) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-AU      | Angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-NZ      | Angol (Új-Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-GB      | Angol (Nagy-Britannia) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-US      | Angol (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Észt               |       |    ✓   |         |      ✓    |         ✓         |                |
-| fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
+| Fil – PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finn                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francia                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| fr-CA      | Francia (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
+| fr – CA      | Francia (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
 | gl-ES      | Gallego               |       |    ✓   |         |         |                   |                |
 | de-DE      | Német                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Görög                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| gu-IN      | gudzsaráti                |       |       |         |     ✓    |                   |                |
+| Gu – a      | gudzsaráti                |       |       |         |     ✓    |                   |                |
 | he-IL      | Héber                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | Magyar              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| is-IS      | Izlandi              |       |       |         |     ✓    |                   |                |
+| a ()      | Izlandi              |       |       |         |     ✓    |                   |                |
 | id-ID      | Indonéz             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | Olasz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japán               |       |        |         |     ✓    |                   |                |
-| kn-IN      | kannada                |       |       |         |     ✓    |                   |                |
+| KN – a      | kannada                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazak                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreai                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latin-amerikai spanyol |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lett                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litván             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| mk-MK      | Macedón             |       |       |         |     ✓    |                   |                |
+| MK-MK      | Macedón             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| mr-IN      | marathi                 |       |       |         |     ✓    |                   |                |
+| Mr-IN      | marathi                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | Norvég (bokmål)       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| NGT        | Semleges földi igazság - Hivatalos nyelvek a helyi szkriptek minden régiójában, ha rendelkezésre állnak |   ✓     |        |         |       |        |      ✓          |
-| NGT-Latn között   | Semleges Földi Igazság - Latin exonyms. Latin script lesz használva, ha rendelkezésre áll |   ✓     |        |         |         |                |        ✓         |
+| NGT        | Semleges földelési igazság – hivatalos nyelvek a helyi parancsfájlok minden régiója számára, ha elérhető |   ✓     |        |         |       |        |      ✓          |
+| NGT – Latn   | Semleges földelési igazság – latin exonyms. Ha elérhető, a latin szkriptet fogja használni |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Lengyel                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugál (Brazília)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portugál (Portugália)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| pa-IN      | pandzsábi                 |       |       |         |     ✓    |                   |                |
+| PA-IN      | pandzsábi                 |       |       |         |     ✓    |                   |                |
 | ro-RO      | Román               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Orosz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| sr-Cyrl-RS | Szerb (cirill betűs)     |       |   sr-RS  |         |    sr-RS     |                   |                |
-| sr-Latn-RS | Szerb (latin betűs)        |       |       |         |     sr-latn    |                   |                |
+| sr-Cyrl-RS | Szerb (cirill betűs)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| sr-Latn-RS | Szerb (latin betűs)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Szlovák             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| sl-SL      | Szlovén              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
+| SL-SL      | Szlovén              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Spanyol                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | es-MX      | Spanyol (Mexikó)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | sv-SE      | Svéd                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| ta-IN      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
-| te-IN      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
+| ta-be      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
+| te-a      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
 | th-TH      | Thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Török                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | Ukrán               |       |    ✓   |         |     ✓    |                   |                |
-| a-PK      | urdu                 |       |       |         |     ✓    |                   |                |
-| uz-Latn-UZ | Üzbég                 |       |       |         |     ✓    |                   |                |
+| az Ön-PK      | urdu                 |       |       |         |     ✓    |                   |                |
+| Uz-Latn-UZ | Üzbég                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | Vietnami             |       |    ✓   |         |      ✓    |                  |                |
 
 
-## <a name="azure-maps-supported-views"></a>Az Azure Maps által támogatott nézetek
+## <a name="azure-maps-supported-views"></a>Azure Maps támogatott nézetek
 
 > [!Note]
-> 2019. augusztus 1-jén megjelent az Azure Maps a következő országokban/régiókban:
+> 2019 augusztus 1-jén adták ki Azure Maps a következő országokban/régiókban:
 >  * Argentína
 >  * India
 >  * Marokkó
 >  * Pakisztán
 >
-> 2019. augusztus 1-je után a **Nézet** paraméter meghatározza a fent felsorolt új régiók/országok visszaadott térképtartalmát. Az Azure Maps **View** paraméter (más néven "felhasználói régió paraméter") egy kétbetűs ISO-3166 országkód, amely megjeleníti a megfelelő leképezések az adott ország/régió, amely meghatározza, hogy mely geopolitikailag vitatott tartalom vissza az Azure Maps szolgáltatások, beleértve a határok at és címkék jelennek meg a térképen. 
+> 2019. augusztus 1-től a **View** paraméter meghatározza a visszaadott leképezési tartalmat a fent felsorolt új régiókban/országokban. Azure Maps **View** paraméter (más néven "felhasználói régió paramétere") egy kétbetűs ISO-3166 országkód, amely az adott országhoz/régióhoz tartozó megfelelő térképeket jeleníti meg, amelyek meghatározzák, hogy a geopolitikai módon vitatott tartalom mely készletét adja vissza Azure Maps szolgáltatásokon keresztül, beleértve a térképen megjelenített szegélyeket és címkéket. 
 
-Győződjön meg arról, hogy **beállította** a View paramétert a REST API-k és az SDK-k, amelyek a szolgáltatások használata.
+Ügyeljen arra, hogy a **View** paramétert a REST API-k és a szolgáltatások által használt SDK-k számára szükséges módon állítsa be.
 >  
 >
->  **Rest API-k:**
+>  **REST API-k:**
 >  
->  Győződjön meg arról, hogy szükség szerint beállította a Nézet paramétert. A View paraméter azt határozza meg, hogy a geopolitikailag vitatott tartalom mely készletét adja vissza az Azure Maps-szolgáltatások. 
+>  Győződjön meg arról, hogy szükség szerint beállította a View paramétert. A View paraméter azt határozza meg, hogy a rendszer mely geopolitikai jogvitás tartalmat adja vissza Azure Maps szolgáltatásokon keresztül. 
 >
 >  Érintett Azure Maps REST-szolgáltatások:
 >    
->    * Térképcsempe beszerezése
->    * Térképkép beszerezése 
->    * Keresés fuzzy
->    * Keresési ÉP-ok beszerezni
->    * Keresési ÉP kategória beszereznie
+>    * Térkép lekérése csempe
+>    * Térkép-rendszerkép lekérése 
+>    * Keresés – fuzzy
+>    * Keresési célobjektum beolvasása
+>    * Keresési célobjektum kategóriájának beolvasása
 >    * Keresés a közelben
->    * Keresési cím beszerezni
->    * Strukturált keresési cím beszerezni
->    * A keresési cím sztornírozása
->    * Keresési cím beszerezése Fordított keresztutca
->    * Keresés a geometrián belül
->    * Keresési cím közzétételi tételének előnézete
->    * Keresési cím könyvelése fordított kötegelt előnézet
->    * Keresés utáni útvonal
->    * Keresés utáni homályos köteg előnézete
+>    * Keresési címek beolvasása
+>    * Felépített keresési címek beolvasása
+>    * Fordított keresési címek lekérése
+>    * A keresési címek fordított kereszt utcájának beolvasása
+>    * Keresés közzététele a geometrián belül
+>    * A Search-címek batch-előnézetének közzététele
+>    * Keresési címe fordított batch előzetes verziójának közzététele
+>    * Keresés közzététele az útvonal mentén
+>    * A Search fuzzy batch előzetes verziójának közzététele
 >
 >    
->  **SDK-k:**
+>  **SDK**
 >
->  Győződjön meg arról, hogy beállította a **Nézet** paramétert, és a Web SDK és az Android SDK legújabb verziójával rendelkezik. Érintett SDK-k:
+>  Győződjön meg arról, hogy szükség szerint állította be a **View** paramétert, és a web SDK és az Android SDK legújabb verziója van telepítve. Érintett SDK-k:
 >
->    * Azure Maps Webes SDK
+>    * Azure Maps web SDK
 >    * Azure Maps Android SDK
 
-Alapértelmezés szerint a Nézet paraméter **egységes,** akkor is, ha még nem definiálta azt a kérelemben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyhez. Másik lehetőségként beállíthatja a "View=Auto" parancsot, amely a kérelem IP-címe alapján adja vissza a térképadatokat.  Az Azure Maps **Nézet** paraméterét a vonatkozó jogszabályoknak megfelelően kell használni, beleértve azokat az ország leképezésére vonatkozó jogszabályokat, ahol a térképek, a képek és egyéb adatok és a harmadik féltől származó tartalmak elérhetővé válikk az Azure Maps-en keresztül.
+Alapértelmezés szerint a View paraméter **egyesített**értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  A Azure Mapsban szereplő **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat is, amelyeken a Maps, a images és más, a Azure Maps használatával való hozzáférésre jogosult, harmadik féltől származó tartalom elérhetővé válik.
 
 
-Az alábbi táblázat támogatott nézeteket tartalmaz.
+A következő táblázat a támogatott nézeteket tartalmazza.
 
-| Nézet         | Leírás                            |  Maps | Keresés | JS térképvezérlő |
+| Nézet         | Leírás                            |  Maps | Keresés | JS térképkezelés |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
 | AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |
@@ -160,10 +160,10 @@ Az alábbi táblázat támogatott nézeteket tartalmaz.
 | MA           | Marokkó (marokkói nézet)                |   ✓   |   ✓     |     ✓          |
 | OM           | Omán (arab nézet)                    |   ✓   |        |     ✓          |
 | PK           | Pakisztán (pakisztáni nézet)              |   ✓   |    ✓    |     ✓          |
-| PS           | Palesztin Hatóság (arab nézet)    |   ✓   |        |     ✓          |
+| PS           | Palesztin hatóság (arab nézet)    |   ✓   |        |     ✓          |
 | QA           | Katar (arab nézet)                   |   ✓   |        |     ✓          |
 | SA           | Szaúd-Arábia (arab nézet)            |   ✓   |        |     ✓          |
 | SY           | Szíria (arab nézet)                   |   ✓   |        |     ✓          |
-| Ti           | Jemen (arab nézet)                   |   ✓   |        |     ✓          |
-| Automatikus         | Adja vissza a térképadatokat a kérelem IP-címe alapján.|   ✓   |    ✓   |     ✓          |
-| Egységes      | Egyesített nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |
+| TI           | Jemeni (arab nézet)                   |   ✓   |        |     ✓          |
+| Automatikus         | A leképezési adatmennyiséget a kérés IP-címe alapján küldi vissza.|   ✓   |    ✓   |     ✓          |
+| Egyesített      | Egyesített nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |

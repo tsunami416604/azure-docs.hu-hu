@@ -1,7 +1,7 @@
 ---
-title: Azok a régiók, amelyekben a Video Indexelő elérhető - Azure
+title: Azok a régiók, amelyekben Video Indexer elérhető – Azure
 titleSuffix: Azure Media Services
-description: Ez a cikk az Azure-régiók, ahol az Azure Media Services videoindexelő érhető el.
+description: Ez a cikk a Azure Media Services Video Indexer elérhető Azure-régiókkal kapcsolatos információkat tárgyalja.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382749"
 ---
-# <a name="azure-regions-in-which-video-indexer-exists"></a>Az Azure-régiók, amelyekben a Video Indexelő létezik
+# <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régiók, amelyekben Video Indexer létezik
 
-A Video Indexer **location** API-k tartalmaznak egy helyparamétert, amelyet be kell állítania az Azure-régióban, amelyre a hívást kell irányítani. Ennek olyan [Azure-régiónak kell lennie, amelyben a Video Indexelő elérhető.](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)
+Video Indexer API-k olyan **Location** paramétert tartalmaznak, amelyet arra az Azure-régióra kell beállítani, amelyre a hívást át kell irányítani. Ennek egy olyan [Azure-régiónak kell lennie, amelyben video Indexer érhető el](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
 ## <a name="locations"></a>Helyek
 
-A **hely** paraméter t kell adni az Azure régió kódnevét, mint az érték. Ha a Video Indexer-t előnézeti módban használja, a *"próbaverziót"* kell értékként használnia. Ellenkező esetben annak az Azure-régiónak a kódnevének lekérnie, amelyben a fiók található, és amelyhez a hívást át kell irányítani, futtathatja a következő sort az [Azure CLI-ben:](/cli/azure)
+A **Location** paraméter értékeként az Azure-régiókód nevét kell megadni. Ha az előnézeti módban Video Indexert használ, a *"próbaverzió"* értéket kell megtennie értékként. Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
 
 ```azurecli-interactive
 az account list-locations
 ```
 
-Miután futtatta a fenti sort, megjelenik az összes Azure-régió listája. Keresse meg az Azure-régióban, amely rendelkezik a *displayName,* amely a keresett, és használja a *név* értékét a **hely** paraméter.
+Miután futtatta a fenti sort, megjelenik az összes Azure-régió listája. Navigáljon ahhoz az Azure-régióhoz, amelynek a *DisplayName* a nevét keresi, és használja a *Name* értékét a **Location** paraméterhez.
 
-Például az Azure régió ban USA 2 nyugati régiója (alább látható), a **helyparaméterhez** a "westus2" lesz.
+Az USA 2. nyugati régiójában (az alábbi ábrán látható) például az "westus2" kifejezést fogja használni a **Location** paraméterhez.
 
 ```json
    {
@@ -47,5 +47,5 @@ Például az Azure régió ban USA 2 nyugati régiója (alább látható), a **h
 ## <a name="next-steps"></a>További lépések
 
 - [Nyelvi modell testreszabása API-k használatával](customize-language-model-with-api.md)
-- [Márkák modell testreszabása API-k használatával](customize-brands-model-with-api.md)
-- [Személymodell testreszabása API-k használatával](customize-person-model-with-api.md)
+- [A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)
+- [Személy modell testreszabása API-k használatával](customize-person-model-with-api.md)

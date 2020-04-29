@@ -1,6 +1,6 @@
 ---
-title: Támogatott adatformátum részletei | Microsoft Azure Maps
-description: Ismerje meg, hogyan van elemezve a dekettozott térbeli adatok a térbeli IO-modulban.
+title: Támogatott adatformátum részletei | Microsoft Azure térképek
+description: Ismerje meg, hogyan történik a tagolt térbeli adatainak elemzése a térbeli IO-modulban.
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,71 +9,71 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334083"
 ---
 # <a name="supported-data-format-details"></a>Támogatott adatformátum részletei
 
-Ez a cikk az összes XML-címke és jól ismert szöveggeometria-típus olvasási és írási támogatásának sajátosságait tartalmazza. Azt is részletezi, hogy a dekált térbeli adatok a térbeli IO-modulban elemző.
+Ez a cikk az összes XML-címke és a jól ismert szöveg-geometriai típusok olvasási és írási támogatását ismerteti. Azt is részletezi, hogyan történik a tagolt térbeli adatok elemzése a térbeli IO-modulban.
 
 ## <a name="supported-xml-namespaces"></a>Támogatott XML-névterek
 
-A térbeli I/O-modul támogatja az alábbi névterekBŐL származó XML-címkéket.
+A térbeli IO-modul támogatja az XML-címkéket a következő névterekben.
 
-| Névtér előtag | Névtér URI   | Megjegyzések                                                                    |
+| Névtér előtagja | Névtér URI-ja   | Megjegyzések                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
-| `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Csak írásvédett támogatás geoRSS fájlokban.           |
+| `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Csak olvasható támogatás a GeoRSS-fájlokban.           |
 | `georss`         | `http://www.georss.org/georss`  |                                                |
-| `geourl`         | `http://geourl.org/rss/module/` | Csak írásvédett támogatás geoRSS fájlokban.                       |
+| `geourl`         | `http://geourl.org/rss/module/` | Csak olvasható támogatás a GeoRSS-fájlokban.                       |
 | `gml`            | `http://www.opengis.net/gml`    |                                                        |
 | `gpx`            | `http://www.topografix.com/GPX/1/1` |                                                   |
-| `gpxx`           | `http://www.garmin.com/xmlschemas/GpxExtensions/v3` | Csak olvasható támogatás a GPX-fájlokban. Elemzi és használja a DisplayColor programot. Az alakzat metaadataihoz hozzáadott összes többi tulajdonság. |
-| `gpx_style`      | `http://www.topografix.com/GPX/gpx_style/0/2`      | Támogatott GPX fájlokat. Vonalszínt használ. |
+| `gpxx`           | `http://www.garmin.com/xmlschemas/GpxExtensions/v3` | Csak olvasható támogatás a GPX-fájlokban. Elemzi és használja az DisplayColor-t. Az alakzat metaadataihoz hozzáadott összes többi tulajdonság. |
+| `gpx_style`      | `http://www.topografix.com/GPX/gpx_style/0/2`      | A GPX-fájlok támogatják. A vonal színét használja. |
 | `gx`             | `http://www.google.com/kml/ext/2.2` |                                                      |
 | `kml`            | `http://www.opengis.net/kml/2.2`    |                                                      |
-| `rss`            |                                 | Csak olvasható. GeoRSS írja atom formátumban.              |
+| `rss`            |                                 | Csak olvasható. GeoRSS az Atom formátum használatával.              |
 
 ## <a name="supported-xml-elements"></a>Támogatott XML-elemek
 
-A térbeli IO-modul a következő XML-elemeket támogatja. A nem támogatott XML-címkék JSON-objektummá alakulnak át. Ezután minden címke a szülőalakzat `properties` vagy -réteg mezőjében tulajdonságként lesz hozzáadva.
+A térbeli IO-modul a következő XML-elemeket támogatja. A nem támogatott XML-címkék egy JSON-objektumba lesznek konvertálva. Ezt követően a rendszer a szülő alakzat vagy réteg `properties` mezőjében minden címkét hozzáad a tulajdonsághoz.
 
 ### <a name="kml-elements"></a>KML-elemek
 
-A térbeli IO modul a következő KML-elemeket támogatja.
+A térbeli IO-modul a következő KML-elemeket támogatja.
 
 | Elem neve         | Olvasás    | Írás   | Megjegyzések                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `address`            | Részleges | igen     | Az objektum elemezve van, de nem használható az alakzat pozicionálásához.                                                                    |
-| `AddressDetails`     | Részleges | nem      | Az objektum elemezve van, de nem használható az alakzat pozicionálásához.                                                                    |
+| `address`            | részleges | igen     | Az objektum elemzése megtörtént, de a pozicionálási alakzat nem használja.                                                                    |
+| `AddressDetails`     | részleges | nem      | Az objektum elemzése megtörtént, de a pozicionálási alakzat nem használja.                                                                    |
 | `atom:author`        | igen     | igen     |                                                                                                                            |
 | `atom:link`          | igen     | igen     |                                                                                                                            |
 | `atom:name`          | igen     | igen     |                                                                                                                            |
-| `BalloonStyle`       | Részleges | Részleges | `displayMode`nem támogatott. Átalakítva `PopupTemplate`a. Az íráshoz `popupTemplate` adjon hozzá egy tulajdonságot annak a szolgáltatásnak a tulajdonságaként, amelyhez írni szeretné. |
+| `BalloonStyle`       | részleges | részleges | `displayMode`nem támogatott. A `PopupTemplate`következőre konvertálva:. Az íráshoz vegyen `popupTemplate` fel egy tulajdonságot annak a szolgáltatásnak a tulajdonságával, amelybe írni szeretné. |
 | `begin`              | igen     | igen     |                                                                                                                            |
-| `color`              | igen     | igen     | Tartalmazza `#AABBGGRR` `#BBGGRR`és . CSS színkarakterláncsá elemezve                                                           |
+| `color`              | igen     | igen     | A `#AABBGGRR` következőket `#BBGGRR`tartalmazza: és. Elemzés egy CSS-szín sztringbe                                                           |
 | `colorMode`          | igen     | nem      |                                                                                                                            |
 | `coordinates`        | igen     | igen     |                                                                                                                            |
 | `Data`               | igen     | igen     |                                                                                                                            |
 | `description`        | igen     | igen     |                                                                                                                            |
 | `displayName`        | igen     | igen     |                                                                                                                            |
 | `Document`           | igen     | igen     |                                                                                                                            |
-| `drawOrder`          | Részleges | nem      | Olvassa el a föld fedvények és használt rendezni őket. 
+| `drawOrder`          | részleges | nem      | Olvassa el a befedéseket, és rendezze őket. 
 | `east`               | igen     | igen     |                                                                                                                            |
 | `end`                | igen     | igen     |                                                                                                                            |
-| `ExtendedData`       | igen     | igen     | Támogatja a nem `Data` `SimpleData` gépelt , vagy `Schema`a `$[dataName]`, és az entitás csere az űrlap .                      |
-| `extrude`            | Részleges | Részleges | Csak sokszögek esetén támogatott. A különböző magasságú sokszögekkel rendelkező MultiGeometry egyedi jellemzőkre lesz bontva. A vonalstílusok nem támogatottak. A 0-s magasságú sokszögek lapos sokszögként jelennek meg. Olvasáskor a külső gyűrű első koordinátájának magassága a sokszög magassági tulajdonságaként lesz hozzáadva. Ezután az első koordináta magassága lesz használva a sokszög renderelésére a térképen. |
+| `ExtendedData`       | igen     | igen     | Támogatja a nem `Data`típusos `SimpleData` , `Schema`vagy és az entitások az űrlapon `$[dataName]`való cseréjét.                      |
+| `extrude`            | részleges | részleges | Csak a sokszögek esetében támogatott. A különböző magasságú sokszögekkel rendelkező többgeometriás elemek az egyes funkciókban lesznek kiosztva. A vonalstílus nem támogatottak. A 0 magasságú sokszögek sima sokszögként lesznek megjelenítve. Olvasáskor a rendszer a külső gyűrű első koordinátája magasságát hozzáadja a sokszög height tulajdonságához. Ezt követően az első koordináta magasságát fogja használni a rendszer a sokszög megjelenítéséhez a térképen. |
 | `fill`               | igen     | igen     |                                                                                                                            |
 | `Folder`             | igen     | igen     |                                                                                                                            |
 | `GroundOverlay`      | igen     | igen     | `color`nem támogatott                                                                                                   |
-| `heading`            | Részleges | nem      | Elemezve, de nem `SimpleDataLayer`renderelte a. Csak akkor ír, ha az alakzat tulajdonságában adatok vannak tárolva.                 |
-| `hotSpot`            | igen     | Részleges | Csak akkor ír, ha az alakzat tulajdonságában adatok vannak tárolva. Az egységek kimenete csak "képpontként" lesz kiteljesítve.                         |
+| `heading`            | részleges | nem      | Elemezve, `SimpleDataLayer`de nem jeleníti meg. Csak azt írja, hogy a rendszer az alakzat tulajdonságában tárolja-e az adatot.                 |
+| `hotSpot`            | igen     | részleges | Csak azt írja, hogy a rendszer az alakzat tulajdonságában tárolja-e az adatot. Az egységek csak "képpont"-ként vannak megadva.                         |
 | `href`               | igen     | igen     |                                                                                                                            |
-| `Icon`               | Részleges | Részleges | Elemezve, de nem `SimpleDataLayer`renderelte a. Csak akkor írja az alakzat ikontulajdonságát, ha URI-adatokat tartalmaz. Csak `href` támogatott. |
-| `IconStyle`          | Részleges | Részleges | `icon`, `heading` `colorMode`, `hotspots` és az értékek et elemzi a függvény, de azokat nem a`SimpleDataLayer`         |
+| `Icon`               | részleges | részleges | Elemezve, `SimpleDataLayer`de nem jeleníti meg. Csak akkor írja be az alakzat Icon tulajdonságát, ha URI-adatot tartalmaz. Csak `href` a támogatott. |
+| `IconStyle`          | részleges | részleges | `icon`a,, és `hotspots` értékek elemzése megtörtént, de a rendszer nem jeleníti meg `heading` `colorMode``SimpleDataLayer`         |
 | `innerBoundaryIs`    | igen     | igen     |                                                                                                                            |
 | `kml`                | igen     | igen     |                                                                                                                            |
 | `LabelStyle`         | nem      | nem      |                                                                                                                            |
@@ -82,52 +82,52 @@ A térbeli IO modul a következő KML-elemeket támogatja.
 | `LinearRing`         | igen     | igen     |                                                                                                                            |
 | `LineString`         | igen     | igen     |                                                                                                                            |
 | `LineStyle`          | igen     | igen     | `colorMode`nem támogatott.                                                                                         |
-| `Link`               | igen     | nem      | Csak `href` a tulajdonság támogatott hálózati kapcsolatok.                                                                   |
-| `MultiGeometry`      | Részleges | Részleges | Olvasás kor az egyes funkciókra bontható.                                                                     |
+| `Link`               | igen     | nem      | A hálózati `href` kapcsolatok csak a tulajdonságot támogatják.                                                                   |
+| `MultiGeometry`      | részleges | részleges | Az olvasáskor az egyes funkciókban is kibonthatók.                                                                     |
 | `name`               | igen     | igen     |                                                                                                                            |
-| `NetworkLink`        | igen     | nem      | A hivatkozásoknak a dokumentummal azonos tartományban kell lenniük.                                                                  |
+| `NetworkLink`        | igen     | nem      | A hivatkozásoknak a dokumentummal megegyező tartományba kell esniük.                                                                  |
 | `NetworkLinkControl` | nem      | nem      |                                                                                                                            |
 | `north`              | igen     | igen     |                                                                                                                            |
 | `open`               | igen     | igen     |                                                                                                                            |
 | `outerBoundaryIs`    | igen     | igen     |                                                                                                                            |
 | `outline`            | igen     | igen     |                                                                                                                            |
 | `overlayXY`          | nem      | nem      |                                                                                                                            |
-| `Pair`               | Részleges | nem      | Csak `normal` a stílus `StyleMap` támogatott. `highlight`nem támogatott.                                   |
+| `Pair`               | részleges | nem      | Csak az `normal` a `StyleMap` stílus támogatott. `highlight`nem támogatott.                                   |
 | `phoneNumber`        | igen     | igen     |                                                                                                                            |
 | `PhotoOverlay`       | nem      | nem      |                                                                                                                            |
 | `Placemark`          | igen     | igen     |                                                                                                                            |
 | `Point`              | igen     | igen     |                                                                                                                            |
 | `Polygon`            | igen     | igen     |                                                                                                                            |
 | `PolyStyle`          | igen     | igen     |                                                                                                                            |
-| `Region`             | Részleges | Részleges | `LatLongBox`dokumentum szinten támogatott.                                                                      |
+| `Region`             | részleges | részleges | `LatLongBox`a dokumentum szintjén támogatott.                                                                      |
 | `rotation`           | nem      | nem      |                                                                                                                            |
 | `rotationXY`         | nem      | nem      |                                                                                                                            |
 | `scale`              | nem      | nem      |                                                                                                                            |
 | `Schema`             | igen     | igen     |                                                                                                                            |
 | `SchemaData`         | igen     | igen     |                                                                                                                            |
-| `schemaUrl`          | Részleges | igen     | Nem támogatja a kmz-ben nem szereplő külső dokumentumok stílusainak betöltését.                             |
+| `schemaUrl`          | részleges | igen     | Nem támogatja a KMZ-ban nem szereplő külső dokumentumok stílusának betöltését.                             |
 | `ScreenOverlay`      | nem      | nem      |                                                                                                                            |
 | `screenXY`           | nem      | nem      |                                                                                                                            |
 | `SimpleData`         | igen     | igen     |                                                                                                                            |
 | `SimpleField`        | igen     | igen     |                                                                                                                            |
 | `size`               | nem      | nem      |                                                                                                                            |
-| `Snippet`            | Részleges | Részleges | `maxLines`attribútum figyelmen kívül hagyja.                                                                                  |
+| `Snippet`            | részleges | részleges | `maxLines`az attribútum figyelmen kívül lesz hagyva.                                                                                  |
 | `south`              | igen     | igen     |                                                                                                                            |
 | `Style`              | igen     | igen     |                                                                                                                            |
-| `StyleMap`           | Részleges | nem      | Csak a normál `StyleMap` stílus támogatott.                                                                        |
-| `styleUrl`           | Részleges | igen     | A külső stílusú URL-címek nem támogatottak.                                                                         |
-| `text`               | igen     | igen     | `$[geDirections]` A csere nem támogatott                                                                          |
+| `StyleMap`           | részleges | nem      | Csak az a `StyleMap` normál stílusa támogatott.                                                                        |
+| `styleUrl`           | részleges | igen     | A külső stílusú URL-címek nem támogatottak.                                                                         |
+| `text`               | igen     | igen     | A `$[geDirections]` helyettesítés nem támogatott                                                                          |
 | `textColor`          | igen     | igen     |                                                                                                                            |
 | `TimeSpan`           | igen     | igen     |                                                                                                                            |
 | `TimeStamp`          | igen     | igen     |                                                                                                                            |
 | `value`              | igen     | igen     |                                                                                                                            |
-| `viewRefreshMode`    | Részleges | nem      |  Ha egy WMS-szolgáltatásra `onStop` mutat, akkor csak a földalatti átfedések támogatottak. Hozzáfűzi `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` az URL-t, és frissíti, ahogy a térkép mozog.  |
+| `viewRefreshMode`    | részleges | nem      |  Ha egy WMS szolgáltatásra mutat, akkor csak `onStop` a felszín alatti átfedések támogatottak. A hozzáfűzi `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` az URL-címhez, majd a frissítéshez, ahogy a Térkép áthelyeződik.  |
 | `visibility`         | igen     | igen     |                                                                                                                            |
 | `west`               | igen     | igen     |                                                                                                                            |
 | `when`               | igen     | igen     |                                                                                                                            |
 | `width`              | igen     | igen     |                                                                                                                            |
 
-### <a name="georss-elements"></a>GeoRSS-elemek
+### <a name="georss-elements"></a>GeoRSS elemek
 
 A térbeli IO-modul a következő GeoRSS-elemeket támogatja.
 
@@ -153,10 +153,10 @@ A térbeli IO-modul a következő GeoRSS-elemeket támogatja.
 | `atom:title`             | igen     | igen   |                                                                                                |
 | `atom:updated`           | igen     | igen   |                                                                                                |
 | `atom:uri`               | igen     | igen   |                                                                                                |
-| `geo:lat`                | igen     | nem    | Írt, `georss:point`mint a .                                                                   |
-| `geo:lon`                | igen     | nem    | Írt, `georss:point`mint a .                                                                   |
-| `geo:long`               | igen     | nem    | Írt, `georss:point`mint a .                                                                   |
-| `georss:box`             | igen     | nem    | Olvassa el, mint egy `subType` sokszög, és adott egy tulajdonsága "Téglalap"                                |
+| `geo:lat`                | igen     | nem    | Írva `georss:point`.                                                                   |
+| `geo:lon`                | igen     | nem    | Írva `georss:point`.                                                                   |
+| `geo:long`               | igen     | nem    | Írva `georss:point`.                                                                   |
+| `georss:box`             | igen     | nem    | Olvasás sokszögként, a "téglalap `subType` " tulajdonságot megadva                                |
 | `georss:circle`          | igen     | igen   |                                                                                                |
 | `georss:elev`            | igen     | igen   |                                                                                                |
 | `georss:featurename`     | igen     | igen   |                                                                                                |
@@ -168,71 +168,71 @@ A térbeli IO-modul a következő GeoRSS-elemeket támogatja.
 | `georss:radius`          | igen     | igen   |                                                                                                |
 | `georss:relationshiptag` | igen     | igen   |                                                                                                |
 | `georss:where`           | igen     | igen   |                                                                                                |
-| `geourl:latitude`        | igen     | nem    | Írt, `georss:point`mint a .                                                                   |
-| `geourl:longitude`       | igen     | nem    | Írt, `georss:point`mint a .                                                                   |
-| `position`               | igen     | nem    | Egyes XML-hírcsatornák a GML-t pozíciócímkével `georss:where` csomagolják, nem pedig címkével. Fogja olvasni ezt a címkét, de írni egy `georss:where` tag. |
-| `rss`                    | igen     | nem    | GeoRSS aTOM formátumban íródott.                                                                 |
-| `rss:author`             | igen     | Részleges | Írt, `atom:author`mint egy .                                                                 |
-| `rss:category`           | igen     | Részleges | Írt, `atom:category`mint egy .                                                               |
+| `geourl:latitude`        | igen     | nem    | Írva `georss:point`.                                                                   |
+| `geourl:longitude`       | igen     | nem    | Írva `georss:point`.                                                                   |
+| `position`               | igen     | nem    | Egyes XML-hírcsatornák betakarják a GML a `georss:where` címkével való körbefuttatás helyett. A beolvassa ezt a címkét, de `georss:where` a címkével fog írni. |
+| `rss`                    | igen     | nem    | Az ATOM formátumú GeoRSS.                                                                 |
+| `rss:author`             | igen     | részleges | Írva `atom:author`.                                                                 |
+| `rss:category`           | igen     | részleges | Írva `atom:category`.                                                               |
 | `rss:channel`            | igen     | nem    |                                                                                                |
 | `rss:cloud`              | igen     | nem    |                                                                                                |
 | `rss:comments`           | igen     | nem    |                                                                                                |
-| `rss:copyright`          | igen     | Részleges | Ha alakzatként `atom:rights` írt, még `rights` `properties` nincs tulajdonsága.       |
-| `rss:description`        | igen     | Részleges | Ha alakzatként `atom:content` írt, még `content` `properties` nincs tulajdonsága.      |
+| `rss:copyright`          | igen     | részleges | Ha az `atom:rights` alakzat nem rendelkezik `rights` `properties` már tulajdonsággal       |
+| `rss:description`        | igen     | részleges | Ha az `atom:content` alakzat nem rendelkezik `content` `properties` már tulajdonsággal      |
 | `rss:docs`               | igen     | nem    |                                                                                                |
 | `rss:enclosure`          | igen     | nem    |                                                                                                |
 | `rss:generator`          | igen     | nem    |                                                                                                |
-| `rss:guid`               | igen     | Részleges | Ha alakzatként `atom:id` írt, még `id` `properties` nincs tulajdonsága.         |
-| `rss:image`              | igen     | Részleges | Ha alakzatként `atom:logo` írt, még `logo` `properties` nincs tulajdonsága.      |
-| `rss:item`               | igen     | Részleges | Írt, `atom:entry`mint egy .                                                                  |
+| `rss:guid`               | igen     | részleges | `atom:id` Ha az alakzat formátuma már nem rendelkezik `id` `properties` tulajdonsággal.         |
+| `rss:image`              | igen     | részleges | Ha az `atom:logo` alakzat nem rendelkezik `logo` `properties` már tulajdonsággal      |
+| `rss:item`               | igen     | részleges | Írva `atom:entry`.                                                                  |
 | `rss:language`           | igen     | nem    |                                                                                                |
-| `rss:lastBuildDate`      | igen     | Részleges | Ha alakzatként `atom:updated` írt, még `updated` `properties` nincs tulajdonsága.     |
-| `rss:link`               | igen     | Részleges | Írt, `atom:link`mint egy .                                                                   |
-| `rss:managingEditor`     | igen     | Részleges | Írt, `atom:contributor`mint egy .                                                            |
-| `rss:pubDate`            | igen     | Részleges | Ha alakzatként `atom:published` írt, még `published` `properties` nincs tulajdonsága.  |
+| `rss:lastBuildDate`      | igen     | részleges | `atom:updated` Ha az alakzat formátuma már nem rendelkezik `updated` `properties` tulajdonsággal.     |
+| `rss:link`               | igen     | részleges | Írva `atom:link`.                                                                   |
+| `rss:managingEditor`     | igen     | részleges | Írva `atom:contributor`.                                                            |
+| `rss:pubDate`            | igen     | részleges | Ha az `atom:published` alakzat nem rendelkezik `published` `properties` már tulajdonsággal  |
 | `rss:rating`             | igen     | nem    |                                                                                                |
 | `rss:skipDays`           | igen     | nem    |                                                                                                |
 | `rss:skipHours`          | igen     | nem    |                                                                                                |
-| `rss:source`             | igen     | Részleges | Írt, `atom:source` mint egy `atom:link`tartalmazó .                                       |
+| `rss:source`             | igen     | részleges | A-t `atom:source` tartalmazóként `atom:link`íródott.                                       |
 | `rss:textInput`          | igen     | nem    |                                                                                                |
-| `rss:title`              | igen     | Részleges | Írt, `atom:title`mint egy .                                                                  |
+| `rss:title`              | igen     | részleges | Írva `atom:title`.                                                                  |
 | `rss:ttl`                | igen     | nem    |                                                                                                |
 | `rss:webMaster`          | igen     | nem    |                                                                                                |
 
-### <a name="gml-elements"></a>GML-elemek
+### <a name="gml-elements"></a>GML elemek
 
-A térbeli IO modul a következő GML-elemeket támogatja. 
+A térbeli IO-modul a következő GML-elemeket támogatja. 
 
 | Elem neve            | Olvasás | Írás | Megjegyzések                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | igen  | nem    | Írásbeli `gml:posList`.                                                              |
+| `gml:coordinates`       | igen  | nem    | Írás másként `gml:posList`.                                                              |
 | `gml:curveMember`       | igen  | nem    |                                                                                        |
 | `gml:curveMembers`      | igen  | nem    |                                                                                        |
-| `gml:Box`               | igen  | nem    | Írásbeli `gml:Envelope`.                                                             |
+| `gml:Box`               | igen  | nem    | Írás másként `gml:Envelope`.                                                             |
 | `gml:description`       | igen  | igen   |                                                                                        |
 | `gml:Envelope`          | igen  | igen   |                                                                                        |
 | `gml:exterior`          | igen  | igen   |                                                                                        |
-| `gml:Feature`           | igen  | nem    | Alakként írva.                                                                    |
-| `gml:FeatureCollection` | igen  | nem    | Geometriagyűjteményként írva.                                                      |
-| `gml:featureMember`     | igen  | nem    | Geometriagyűjteményként írva.                                                      |
-| `gml:geometry`          | igen  | nem    | Alakként írva.                                                                    |
+| `gml:Feature`           | igen  | nem    | Alakzatként írva.                                                                    |
+| `gml:FeatureCollection` | igen  | nem    | Geometriai gyűjteményként íródott.                                                      |
+| `gml:featureMember`     | igen  | nem    | Geometriai gyűjteményként íródott.                                                      |
+| `gml:geometry`          | igen  | nem    | Alakzatként írva.                                                                    |
 | `gml:geometryMember`    | igen  | igen   |                                                                                        |
 | `gml:geometryMembers`   | igen  | igen   |                                                                                        |
 | `gml:identifier`        | igen  | igen   |                                                                                        |
-| `gml:innerBoundaryIs`   | igen  | nem    | Írásbeli `gml.interior`használatával .                                                          |
+| `gml:innerBoundaryIs`   | igen  | nem    | Írás a `gml.interior`használatával.                                                          |
 | `gml:interior`          | igen  | igen   |                                                                                        |
 | `gml:LinearRing`        | igen  | igen   |                                                                                        |
 | `gml:LineString`        | igen  | igen   |                                                                                        |
 | `gml:lineStringMember`  | igen  | igen   |                                                                                        |
 | `gml:lineStringMembers` | igen  | nem    |                                                                                        |
-| `gml:MultiCurve`        | igen  | nem    | Csak `gml:LineString` a tagokat olvassa. Írásbeli`gml.MultiLineString`                  |
-| `gml:MultiGeometry`     | Részleges  | Részleges   | Csak FeatureCollection-ként olvassa el.                                              |
+| `gml:MultiCurve`        | igen  | nem    | Csak a `gml:LineString` tagok olvasása. Írás másként`gml.MultiLineString`                  |
+| `gml:MultiGeometry`     | részleges  | részleges   | Csak FeatureCollection olvasása.                                              |
 | `gml:MultiLineString`   | igen  | igen   |                                                                                        |
 | `gml:MultiPoint`        | igen  | igen   |                                                                                        |
 | `gml:MultiPolygon`      | igen  | igen   |                                                                                        |
-| `gml:MultiSurface`      | igen  | nem    | Csak `gml:Polygon` a tagokat olvassa. Írásbeli`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | igen  | nem    | Csak a `gml:Polygon` tagok olvasása. Írás másként`gml.MultiPolygon`                        |
 | `gml:name`              | igen  | igen   |                                                                                        |
-| `gml:outerBoundaryIs`   | igen  | nem    | Írásbeli `gml.exterior`használatával .                                                          |
+| `gml:outerBoundaryIs`   | igen  | nem    | Írás a `gml.exterior`használatával.                                                          |
 | `gml:Point`             | igen  | igen   |                                                                                        |
 | `gml:pointMember`       | igen  | igen   |                                                                                        |
 | `gml:pointMembers`      | igen  | nem    |                                                                                        |
@@ -243,28 +243,28 @@ A térbeli IO modul a következő GML-elemeket támogatja.
 | `gml:posList`           | igen  | igen   |                                                                                        |
 | `gml:surfaceMember`     | igen  | igen   |                                                                                        |
 
-#### <a name="additional-notes"></a>további megjegyzések
+#### <a name="additional-notes"></a>További megjegyzések
 
-- A tagelemek olyan geometriát keresnek, amely a gyermekelemekben temethető el. Erre a keresési műveletre azért van szükség, mert a GML-ből kinyúló számos XML-formátum nem helyezhet geometriát egy tagelem közvetlen gyermekeként.
-- `srsName`a WGS84 koordinátái és a következő kódok esetében támogatott:[EPSG:4326](https://epsg.io/4326)), valamint web Mercator ([EPSG:3857](https://epsg.io/3857) vagy annak egyik alternatív kódja). Minden más koordináta-rendszer WGS84-ként lesz elemezve.
-- Ha az XML-hírcsatorna olvasásakor nincs megadva, a tengelysorrend az XML-hírcsatornában lévő tippek alapján kerül meghatározásra. Előnyben részesíti a "szélességi, hosszúsági" tengelysorrendet.
-- Ha a GML-fájlba íráskor nincs megadva egyéni GML-névtér a tulajdonságokhoz, a program nem ad hozzá további tulajdonságadatokat.
+- A rendszer megkeresi a tag elemeit egy olyan geometriában, amely a gyermek elemek között eltemethető. Erre a keresési műveletre azért van szükség, mert a GML-ből kiterjesztő számos XML-formátum esetében nem lehet a tag elem közvetlen gyermekének geometriáját elhelyezni.
+- `srsName`részlegesen támogatott a WGS84-koordináták esetében, valamint a következő kódokat:[EPSG: 4326](https://epsg.io/4326)) és web Mercator ([EPSG: 3857](https://epsg.io/3857) vagy az egyik alternatív kód. Minden más koordináta-rendszer a WGS84-ként lesz értelmezve.
+- Az XML-hírcsatornák olvasásakor a tengely sorrendjét az XML-hírcsatorna mutatói alapján határozzák meg. A "szélesség, hosszúság" tengely sorrendjére van megadva a beállítás.
+- Ha nem ad meg egyéni GML-névteret a tulajdonságokhoz a GML-fájl írásakor, a további tulajdonságértékek nem lesznek hozzáadva.
 
-### <a name="gpx-elements"></a>GPX-elemek
+### <a name="gpx-elements"></a>GPX elemek
 
-A térbeli IO modul a következő GPX-elemeket támogatja.
+A térbeli IO-modul a következő GPX-elemeket támogatja.
 
 | Elem neve             | Olvasás    | Írás   | Megjegyzések                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | igen     | igen     |                                                                                             |
 | `gpx:author`             | igen     | igen     |                                                                                             |
-| `gpx:bounds`             | igen     | igen     | Olvasáskor LocationRect-vé alakítják.                                                    |
+| `gpx:bounds`             | igen     | igen     | LocationRect konvertálva olvasáskor.                                                    |
 | `gpx:cmt`                | igen     | igen     |                                                                                             |
 | `gpx:copyright`          | igen     | igen     |                                                                                             |
-| `gpx:desc`               | igen     | igen     | Másolva egy leíró tulajdonságba olvasáskor, hogy igazodjon más XML-formátumokhoz.               |
+| `gpx:desc`               | igen     | igen     | Egy Description (Leírás) tulajdonságba másolva, ha az olvasás gombra más XML-formátumokkal való igazításra               |
 | `gpx:dgpsid`             | igen     | igen     |                                                                                             |
 | `gpx:ele`                | igen     | igen     |                                                                                             |
-| `gpx:extensions`         | Részleges | Részleges | Olvasáskor a stílusinformációk kibontása történik. Az összes többi bővítmény egy egyszerű JSON-objektumba lesz lapítva. Csak az alakzatstílus-információk vannak megírva. |
+| `gpx:extensions`         | részleges | részleges | Olvasáskor a rendszer kinyeri a stílussal kapcsolatos adatokat. Az összes többi bővítmény egy egyszerű JSON-objektumba lesz lelapulva. Csak az alakzat stílusa információ írása. |
 | `gpx:geoidheight`        | igen     | igen     |                                                                                             |
 | `gpx:gpx`                | igen     | igen     |                                                                                             |
 | `gpx:hdop`               | igen     | igen     |                                                                                             |
@@ -277,7 +277,7 @@ A térbeli IO modul a következő GPX-elemeket támogatja.
 | `gpx:rtept`              | igen     | igen     |                                                                                             |
 | `gpx:sat`                | igen     | igen     |                                                                                             |
 | `gpx:src`                | igen     | igen     |                                                                                             |
-| `gpx:sym`                | igen     | igen     | Az érték rögzítésre kerül, de nem használja a nyomótű ikonjának módosítására.                               |
+| `gpx:sym`                | igen     | igen     | Az érték rögzítése megtörténik, de nem a gombostű ikon módosítására szolgál.                               |
 | `gpx:text`               | igen     | igen     |                                                                                             |
 | `gpx:time`               | igen     | igen     |                                                                                             |
 | `gpx:trk`                | igen     | igen     |                                                                                             |
@@ -287,67 +287,67 @@ A térbeli IO modul a következő GPX-elemeket támogatja.
 | `gpx:vdop`               | igen     | igen     |                                                                                             |
 | `gpx:wpt`                | igen     | igen     |                                                                                             |
 | `gpx_style:color`        | igen     | igen     |                                                                                             |
-| `gpx_style:line`         | Részleges | Részleges | `color`, `opacity` `width`, `lineCap` , támogatottak.                                           |
+| `gpx_style:line`         | részleges | részleges | `color``width`,,, támogatottak `opacity` `lineCap` .                                           |
 | `gpx_style:opacity`      | igen     | igen     |                                                                                             |
 | `gpx_style:width`        | igen     | igen     |                                                                                             |
-| `gpxx:DisplayColor`      | igen     | nem      | Alakzat színének megadására szolgál. Íráskor `gpx_style:line` a program a színt használja.  |
-| `gpxx:RouteExtension`    | Részleges | nem      | A beolvassa `properties`az összes tulajdonságot. Csak `DisplayColor` a program használatban van.                     |
-| `gpxx:TrackExtension`    | Részleges | nem      | A beolvassa `properties`az összes tulajdonságot. Csak `DisplayColor` a program használatban van.                     |
-| `gpxx:WaypointExtension` | Részleges | nem      | A beolvassa `properties`az összes tulajdonságot. Csak `DisplayColor` a program használatban van.                     |
+| `gpxx:DisplayColor`      | igen     | nem      | Egy alakzat színének megadására szolgál. Íráskor a `gpx_style:line` rendszer a színt használja helyette.  |
+| `gpxx:RouteExtension`    | részleges | nem      | Az összes tulajdonság beolvasva `properties`. Csak `DisplayColor` a használatban van.                     |
+| `gpxx:TrackExtension`    | részleges | nem      | Az összes tulajdonság beolvasva `properties`. Csak `DisplayColor` a használatban van.                     |
+| `gpxx:WaypointExtension` | részleges | nem      | Az összes tulajdonság beolvasva `properties`. Csak `DisplayColor` a használatban van.                     |
 | `gpx:keywords`           | igen     | igen     |                                                                                             |
 | `gpx:fix`                | igen     | igen     |                                                                                             |
 
-#### <a name="additional-notes"></a>további megjegyzések
+#### <a name="additional-notes"></a>További megjegyzések
 
-Írásban;
+Íráskor;
 
-- A MultiPoints pontokat egyes útpontokra bontjuk.
-- A sokszögek és a Multisokonok számokként lesznek megírva. 
+- A többpontos bontás az egyes iránypontokba kerül.
+- A sokszögeket és a többsokszögű fájlokat zeneszámként fogja írni. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Támogatott, jól ismert szöveggeometria-típusok
+## <a name="supported-well-known-text-geometry-types"></a>A jól ismert szöveges geometriai típusok támogatottak
 
 | Geometria típusa | Olvasás | Írás |
 |--------------|:----:|:-----:|
-| Pont | x | x |
-| Z. pont | x | x | 
-| M. pont | x | x<sup>[2]</sup> |
-| Pont ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| VONALZSINÓR | x | x |
+| PONT | x | x |
+| Z. PONT | x | x | 
+| M PONT | x | x<sup>[2]</sup> |
+| ZM-PONT | x<sup>[1]</sup><sup>[2]</sup> | | 
+| LINESTRING | x | x |
 | LINESTRING Z | x | x | 
 | LINESTRING M | x | x<sup>[2]</sup> |
-| VONALZSINÓR ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| Sokszög | x | x |
-| Poligon Z | x | x |
-| Poligon M | x | x<sup>[2]</sup> |
-| Poligon ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| Multipont | x | x |
-| MULTIPOINT Z | x | x | 
+| LINESTRING ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| SOKSZÖG | x | x |
+| SOKSZÖG – Z | x | x |
+| SOKSZÖG M | x | x<sup>[2]</sup> |
+| SOKSZÖG ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| TÖBBPONTOS | x | x |
+| MULTIPOINT – Z | x | x | 
 | MULTIPOINT M | x | x<sup>[2]</sup> |
 | POMULTIPOINTINT ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| TÖBBSOROS KARAKTERLÁNC | x | x |
-| TöbbSOROS HÚRZ | x | x | 
-| TÖBBSOROS M | x | x<sup>[2]</sup> |
-| TÖBBSOROS HÚROs ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| POLIPOLIFON | x | x |
-| MULTIPOLINE Z | x | x | 
-| MULTIPOLINE M | x | x<sup>[2]</sup> |
-| MULTIPOLINE ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
-| GEOMETRIAGYŰJTEMÉNY | x | x |
-| GEOMETRIACOLLECTION Z | x | x | 
-| M. GEOMETRIAGYŰJTEMÉNY | x | x<sup>[2]</sup> | 
-| GEOMETRIACOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
+| MULTILINESTRING | x | x |
+| MULTILINESTRING Z | x | x | 
+| MULTILINESTRING M | x | x<sup>[2]</sup> |
+| MULTILINESTRING ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| MULTIPOLYGON | x | x |
+| TÖBBSOKSZÖGŰ Z | x | x | 
+| TÖBBSOKSZÖGŰ M | x | x<sup>[2]</sup> |
+| TÖBBSOKSZÖGES ZM | x<sup>[1]</sup><sup>[2]</sup> | | 
+| GEOMETRYCOLLECTION | x | x |
+| GEOMETRYCOLLECTION Z | x | x | 
+| GEOMETRYCOLLECTION M | x | x<sup>[2]</sup> | 
+| GEOMETRYCOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
 
-\[1\] A program csak z paramétert rögzít és ad hozzá harmadik értékként a Pozíció értékben.
+\[1\] csak Z paraméter van rögzítve, és harmadik értékként van hozzáadva a pozíció értékében.
 
-\[A\] 2 M paraméter nincs rögzítve.
+\[2\] M paraméter nincs rögzítve.
 
-## <a name="delimited-spatial-data-support"></a>Korlátozott térbeli adatok támogatása
+## <a name="delimited-spatial-data-support"></a>Tagolt térbeli adattámogatás
 
-A tagolt térbeli adatok, például a vesszővel tagolt értékfájlok (CSV) gyakran térbeli adatokat tartalmazó oszlopokkal rendelkeznek. Lehetnek például olyan oszlopok, amelyek szélességi és hosszúsági adatokat tartalmaznak. Jól ismert szöveg formátumban lehet egy térbeli geometriai adatokat tartalmazó oszlop.
+A tagolt térbeli adatok, például a vesszővel tagolt fájlok (CSV), gyakran tartalmaznak térbeli adatokkal rendelkező oszlopokat. Lehetnek például olyan oszlopok, amelyek szélességi és hosszúsági adatokat tartalmaznak. A jól ismert szöveges formátumban lehet olyan oszlop, amely térbeli geometriát tartalmaz.
 
-### <a name="spatial-data-column-detection"></a>Térbeli adatoszlop észlelése
+### <a name="spatial-data-column-detection"></a>Térbeli adatoszlopok észlelése
 
-Téradatokat tartalmazó tagolt fájl olvasásakor a program elemzi a fejlécet annak meghatározásához, hogy mely oszlopok tartalmazzák a helymezőket. Ha a fejléc típusadatokat tartalmaz, a cellaértékek et a megfelelő típusra kell leadni. Ha nincs megadva fejléc, a lesz elemezve az első sor, és a fejléc létrehozásához használható. Az első sor elemzésekor a program egy ellenőrzést hajt végre, amely az oszlopneveket a következő nevekkel egyezteti, a kis- és nagybetűk et nem figyelembe vevő módon. A nevek sorrendje a prioritás, abban az esetben, ha két vagy több név van egy fájlban.
+Térbeli értéket tartalmazó tagolt fájl olvasása esetén a rendszer elemzi a fejlécet annak meghatározására, hogy mely oszlopok tartalmaznak hely mezőket. Ha a fejléc típusú adatokat tartalmaz, a rendszer a cella értékeit a megfelelő típusra fogja használni. Ha nincs megadva fejléc, az első sor elemzése megtörténik, és a rendszer a fejléc létrehozásához használja. Az első sor elemzésekor a rendszer egy olyan ellenőrzési műveletet hajt végre, amely kis-és nagybetűket nem megkülönböztető módon egyezteti az oszlopnevek nevét. A nevek sorrendje a prioritás, abban az esetben, ha két vagy több név létezik egy fájlban.
 
 #### <a name="latitude"></a>Szélesség
 
@@ -375,7 +375,7 @@ Téradatokat tartalmazó tagolt fájl olvasásakor a program elemzi a fejlécet 
 - `xcenter`
 - `point-x`
 
-#### <a name="elevation"></a>Magasság
+#### <a name="elevation"></a>Jogosultságszint
 
 - `elevation`
 - `elv`
@@ -385,51 +385,51 @@ Téradatokat tartalmazó tagolt fájl olvasásakor a program elemzi a fejlécet 
 
 #### <a name="geography"></a>Földrajzi hely
 
-A program az adatok első sorát jól ismert szöveg formátumú karakterláncokra vizsgálja. 
+Az első adatsort a rendszer a jól ismert szöveges formátumú karakterláncok esetében ellenőrzi. 
 
-### <a name="delimited-data-column-types"></a>Tagolt adatoszlop-típusok
+### <a name="delimited-data-column-types"></a>Tagolt adatoszlopok típusai
 
-A fejlécsor beolvasásakor a program kivonja az oszlopnévben szereplő szövegadatokat, és az adott oszlop celláinak leadására használja fel. Íme egy példa egy oszlopnévre, amelynek típusértéke: "ColumnName (typeName)". A következő, kis- és nagybetűket nem megkülönböztető típusnevek támogatottak:
+A fejlécsor vizsgálatakor a rendszer az oszlop nevében található bármely típusú információt kinyeri és felhasználja a celláknak az adott oszlopban való elküldéséhez. Az alábbi példa egy olyan oszlopnevet mutat be, amely egy Type értékkel rendelkezik: "ColumnName (typeName)". A következő kis-és nagybetűket megkülönböztető típusú nevek támogatottak:
 
 #### <a name="numbers"></a>Számok
 
-- edm.int64
+- EDM. Int64
 - int
-- long
-- edm.double
+- hosszú
+- EDM. Double
 - lebegőpontos
 - double
 - szám
 
-#### <a name="booleans"></a>Logikai változók
+#### <a name="booleans"></a>Értékei
 
-- edm.boolean
-- Bool
+- EDM. Boolean
+- logikai
 - logikai
 
 #### <a name="dates"></a>Dátumok
 
-- edm.datetime
+- EDM. datetime
 - dátum
 - dátum/idő
 
 #### <a name="geography"></a>Földrajzi hely
 
-- edm.földrajz
-- Földrajz
+- EDM. földrajz
+- földrajz
 
 #### <a name="strings"></a>Sztringek
 
-- edm.string
+- EDM. String
 - varchar
 - szöveg
 - sztring
 
-Ha a fejlécből nem lehet szövegadatokat kinyerni, és a dinamikus gépelési beállítás engedélyezve van olvasáskor, akkor minden cella külön-külön lesz elemezve, hogy meghatározza, milyen adattípusra alkalmas a legalkalmasabb az öntéshez.
+Ha a fejlécből nem lehet kinyerni a típus adatait, és a dinamikus gépelési beállítás be van kapcsolva az olvasáskor, akkor minden egyes cella külön lesz elemezve annak meghatározásához, hogy melyik adattípust érdemes a legjobban átadni.
 
 ## <a name="next-steps"></a>További lépések
 
-További kódmintákat a térképekhez további kódmintákért tekintse meg:
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [Téradatok olvasása és írása](spatial-io-read-write-spatial-data.md)
+> [Térbeli információk olvasása és írása](spatial-io-read-write-spatial-data.md)

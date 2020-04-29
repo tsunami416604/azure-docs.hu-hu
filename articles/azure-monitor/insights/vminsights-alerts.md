@@ -1,47 +1,47 @@
 ---
-title: Riasztások az Azure Monitor virtuális gépekhez
-description: Bemutatja, hogyan hozhat létre riasztási szabályokat az Azure Monitor virtuális gépekhez gyűjtött teljesítményadatokból.
+title: Azure Monitor for VMs származó riasztások
+description: Ismerteti, hogyan lehet riasztási szabályokat létrehozni a Azure Monitor for VMs által összegyűjtött teljesítményadatokat.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
 ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289601"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Értesítések létrehozása az Azure Monitor szolgáltatásból a virtuális gépekhez
-[Riasztások az Azure Monitor](../platform/alerts-overview.md) ban proaktív módon értesíti Önt a figyelési adatok érdekes adatok és minták. A virtuális gépek hez nem tartalmaz előre konfigurált riasztási szabályokat, de létrehozhatja a saját adatok alapján, hogy az általa gyűjtött adatok alapján. Ez a cikk útmutatást nyújt a riasztási szabályok létrehozásához, beleértve a mintalekérdezések.
+# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Riasztások létrehozása a Azure Monitor for VMsból
+A [Azure monitor riasztásai](../platform/alerts-overview.md) proaktívan értesítik Önt a megfigyelési adataiban található érdekes adatmennyiségekről és mintákról. A Azure Monitor for VMs nem tartalmaz előre konfigurált riasztási szabályokat, de saját maga is létrehozhat saját adatokat a gyűjtött adatok alapján. Ez a cikk útmutatást nyújt a riasztási szabályok létrehozásához, többek között a példákat tartalmazó lekérdezésekhez.
 
 
-## <a name="alert-rule-types"></a>Riasztási szabálytípusok
-Az Azure Monitor [különböző típusú riasztási szabályok](../platform/alerts-overview.md#what-you-can-alert-on) alapján a riasztás létrehozásához használt adatokat. Az Azure Monitor virtuális gépekhez gyűjtött összes adatot az Azure Monitor naplók, amely támogatja a [naplóriasztásokat.](../platform/alerts-log.md) Jelenleg nem [használhatja metrikariasztások](../platform/alerts-log.md) teljesítményadatokat gyűjtött az Azure Monitor virtuális gépek, mert az adatok nem gyűjtik az Azure Monitor metrikák. Metrikariasztások adatok gyűjtéséhez telepítse a Windows virtuális gépek [diagnosztikai bővítményét](../platform/diagnostics-extension-overview.md) vagy a [Telegraf ügynök](../platform/collect-custom-metrics-linux-telegraf.md) linuxos virtuális gépekhez a teljesítményadatok metrikákba való gyűjtéséhez.
+## <a name="alert-rule-types"></a>Riasztási szabályok típusai
+A Azure Monitor [különböző típusú riasztási szabályokkal](../platform/alerts-overview.md#what-you-can-alert-on) rendelkeznek a riasztás létrehozásához használt adatmennyiség alapján. A Azure Monitor for VMs által összegyűjtött összes adatokat Azure Monitor naplófájlok tárolják, amelyek támogatják a [naplózási riasztásokat](../platform/alerts-log.md). Jelenleg nem használhat [metrikai riasztásokat](../platform/alerts-log.md) Azure monitor for VMS gyűjtött teljesítményadatokat, mert az adatokat nem Azure monitor metrikába gyűjti. A metrikai riasztások adatainak gyűjtéséhez telepítse a [diagnosztikai bővítményt](../platform/diagnostics-extension-overview.md) a Windows rendszerű virtuális gépekhez, vagy a Linux virtuális gépekhez készült, a Microsoft számára készült [Graf-ügynököt](../platform/collect-custom-metrics-linux-telegraf.md) , hogy teljesítményadatokat gyűjtsön a
 
-Az Azure Monitorban kétféle naplóriasztás létezik:
+A Azure Monitor két típusú naplózási riasztás létezik:
 
-- [Az eredmények száma riasztások](../platform/alerts-unified-log.md#number-of-results-alert-rules) hozzon létre egy riasztást, ha a lekérdezés legalább egy megadott számú rekordot ad vissza. Ezek ideálisak a nem numerikus adatokhoz, például a [Log Analytics-ügynök](../platform/log-analytics-agent.md) által gyűjtött Windows- és Syslog-eseményekhez, illetve a több számítógépen futó teljesítménytrendek elemzéséhez.
-- [Metrikamérési riasztások](../platform/alerts-unified-log.md#metric-measurement-alert-rules) külön riasztást hoznak létre a lekérdezés minden olyan rekordja számára, amelynek értéke meghaladja a riasztási szabályban meghatározott küszöbértéket. Ezek a riasztási szabályok ideálisak az Azure Monitor által virtuális gépekhez gyűjtött teljesítményadatokhoz, mivel az egyes számítógépekhez egyedi riasztásokat hozhatnak létre.
-
-
-## <a name="alert-rule-walkthrough"></a>Riasztási szabály forgatókönyve
-Ez a szakasz bemutatja egy metrikamérési riasztási szabály létrehozását az Azure Monitor virtuális gépek teljesítményadatainak használatával. Ezt az alapvető folyamatot számos naplólekérdezéssel használhatja a különböző teljesítményszámlálók riasztásához.
-
-Először hozzon létre egy új riasztási szabályt az Eljárást követve az [Azure Monitor használatával naplóriasztások létrehozása, megtekintése és kezelése című eljárással.](../platform/alerts-log.md) Az **erőforrás**hoz válassza ki a Log Analytics munkaterületet, amely az Azure Monitor virtuális gépek az előfizetésben. Mivel a naplóriasztási szabályok célerőforrása mindig egy Log Analytics-munkaterület, a naplólekérdezésnek tartalmaznia kell az adott virtuális gépek vagy a virtuálisgép-méretezési csoportok szűrőjét. 
-
-A riasztási szabály **feltételéhez** használja az [alábbi szakaszban](#sample-alert-queries) található lekérdezések egyikét **keresési lekérdezésként.** A lekérdezésnek egy AggregatedValue nevű numerikus tulajdonságot kell *visszaadnia.* Össze kell foglalnia az adatokat számítógép szerint, hogy minden olyan virtuális géphez külön riasztást hozhasson létre, amely meghaladja a küszöbértéket.
-
-A **Riasztás logika,** válassza **metrika mérés,** majd adja meg **a küszöbértéket.** Az **Eseményindító riasztás alapján mezőben**adja meg, hogy a riasztás létrehozása előtt hányszor kell túllépni a küszöbértéket. Például valószínűleg nem érdekli, ha a processzor egyszer túllépi a küszöbértéket, majd visszatér a normál értékre, de nem érdekli, ha továbbra is meghaladja a küszöbértéket több egymást követő mérés során.
-
-A **Kiértékelés alapján** szakasz határozza meg, hogy a lekérdezés milyen gyakran fusson, és a lekérdezés időablaka. Az alábbi példában a lekérdezés 15 percenként fut, és kiértékeli az előző 15 perc során gyűjtött teljesítményértékeket.
+- [Az eredmények száma riasztások](../platform/alerts-unified-log.md#number-of-results-alert-rules) esetén egyetlen riasztás jön létre, ha egy lekérdezés legalább egy megadott számú rekordot ad vissza. Ezek ideálisak a nem numerikus adatokhoz, például a [log Analytics ügynök](../platform/log-analytics-agent.md) által összegyűjtött Windows-és syslog-eseményekhez, vagy a teljesítménybeli trendek elemzéséhez több számítógép között.
+- A [metrikai mérési riasztások](../platform/alerts-unified-log.md#metric-measurement-alert-rules) külön riasztást hoznak létre minden olyan rekordhoz, amely egy olyan értékkel rendelkezik, amely meghaladja a riasztási szabályban meghatározott küszöbértéket. Ezek a riasztási szabályok ideálisak a Azure Monitor for VMs által gyűjtött teljesítményadatok számára, mivel egyéni riasztásokat hozhatnak létre az egyes számítógépekhez.
 
 
-![Metrikamérési riasztási szabály](media/vminsights-alerts/metric-measurement-alert.png)
+## <a name="alert-rule-walkthrough"></a>Riasztási szabály – útmutató
+Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be Azure Monitor for VMsból származó teljesítményadatokat használva. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében.
 
-## <a name="sample-alert-queries"></a>Mintafigyelmeztető lekérdezések
-A következő lekérdezések egy metrikamérési riasztási szabály segítségével az Azure Monitor virtuális gépek teljesítményadatok használatával használható. Mindegyik összefoglalja az adatokat számítógép szerint, hogy minden olyan számítógéphez riasztás jön létre, amelynek értéke meghaladja a küszöbértéket.
+Első lépésként hozzon létre egy új riasztási szabályt a [naplók létrehozása, megtekintése és kezelése a Azure monitor használatával című](../platform/alerts-log.md)szakaszban ismertetett eljárást követve. Az **erőforráshoz**válassza ki azt a log Analytics munkaterületet, amely Azure monitor virtuális gépeket az előfizetésében. Mivel a naplózási riasztási szabályok cél erőforrása mindig Log Analytics munkaterület, a naplózási lekérdezésnek tartalmaznia kell egy szűrőt az adott virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz. 
+
+A riasztási szabály **feltétele** a következő [szakaszban](#sample-alert-queries) található lekérdezések egyikét használja **keresési lekérdezésként**:. A lekérdezésnek egy *AggregatedValue*nevű numerikus tulajdonságot kell visszaadnia. A számítógépnek össze kell foglalnia az adatait, hogy külön riasztást hozzon létre minden olyan virtuális géphez, amely meghaladja a küszöbértéket.
+
+A **riasztási logikában**válassza a **metrika mérése** elemet, majd adjon meg egy **küszöbértéket**. Az **trigger riasztása alapján**beállításnál határozza meg, hogy a rendszer hányszor lépje túl a küszöbértéket a riasztás létrehozása előtt. Előfordulhat például, hogy nem biztos abban, hogy a processzor túllépte a küszöbértéket, majd visszatér a normál értékre, de ha továbbra is meghaladja a küszöbértéket több egymást követő mérésnél, akkor ügyeljen rá.
+
+A **kiértékelt szakasz alapján** határozza meg, hogy a lekérdezés milyen gyakran fusson, és a lekérdezés időablaka. Az alább látható példában a lekérdezés 15 percenként fog futni, és kiértékeli az elmúlt 15 percben összegyűjtött teljesítményadatokat.
+
+
+![Metrika mértékének riasztási szabálya](media/vminsights-alerts/metric-measurement-alert.png)
+
+## <a name="sample-alert-queries"></a>Példa riasztási lekérdezésekre
+A következő lekérdezések használhatók metrikus mérési riasztási szabályokkal Azure Monitor for VMs által gyűjtött teljesítményadatok használatával. Mindegyik összefoglalja az adatait a számítógép alapján, így minden olyan számítógép riasztást hoz létre, amelynek értéke meghaladja a küszöbértéket.
 
 ### <a name="cpu-utilization"></a>Processzorhasználat
 
@@ -52,7 +52,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="available-memory-in-mb"></a>Mb-ban rendelkezésre álló memória
+### <a name="available-memory-in-mb"></a>Rendelkezésre álló memória MB-ban
 
 ```kusto
 InsightsMetrics
@@ -61,7 +61,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="available-memory-in-percentage"></a>Rendelkezésre álló memória százalékban
+### <a name="available-memory-in-percentage"></a>Rendelkezésre álló memória százalékos aránya
 
 ```kusto
 InsightsMetrics 
@@ -72,7 +72,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---all-disks-on-each-computer"></a>Használt logikai lemez - az egyes számítógépek összes lemeze
+### <a name="logical-disk-used---all-disks-on-each-computer"></a>Használt logikai lemez – az összes lemez az egyes számítógépeken
 
 ```kusto
 InsightsMetrics
@@ -81,7 +81,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---individual-disks"></a>Használt logikai lemez - egyedi lemezek
+### <a name="logical-disk-used---individual-disks"></a>Használt logikai lemez – különálló lemezek
 
 ```kusto
 InsightsMetrics
@@ -101,7 +101,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) ), Computer, _ResourceId, Disk
 ```
 
-### <a name="logical-disk-data-rate"></a>Logikai lemezadat-sebesség
+### <a name="logical-disk-data-rate"></a>Logikai lemez adatátviteli sebessége
 
 ```kusto
 InsightsMetrics
@@ -111,7 +111,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
 ```
 
-### <a name="network-interfaces-bytes-received---all-interfaces"></a>Fogadott hálózati csatolók – az összes kapcsolat
+### <a name="network-interfaces-bytes-received---all-interfaces"></a>Hálózati adapterek fogadott bájtjai – minden csatoló
 
 ```kusto
 InsightsMetrics
@@ -120,7 +120,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Fogadott hálózati csatolók – egyedi összeköttetések
+### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Hálózati adapterek fogadott bájtjai – egyedi felületek
 
 ```kusto
 InsightsMetrics
@@ -130,7 +130,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, NetworkInterface
 ```
 
-### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Elküldött hálózati csatolók bájtjai – az összes kapcsolat
+### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Hálózati adapterek elküldésének bájtjai – minden csatoló
 
 ```kusto
 InsightsMetrics
@@ -139,7 +139,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Elküldött hálózati csatolók – egyedi összeköttetések
+### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Hálózati adapterek elküldésének bájtjai – egyedi felületek
 
 ```kusto
 InsightsMetrics
@@ -150,7 +150,7 @@ InsightsMetrics
 ```
 
 ### <a name="virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport
-Módosítsa az előfizetés-azonosítóval, az erőforráscsoporttal és a virtuálisgép-méretezési csoport nevével.
+Módosítsa az előfizetés-AZONOSÍTÓját, az erőforráscsoportot és a virtuálisgép-méretezési csoport nevét.
 
 ```kusto
 InsightsMetrics
@@ -161,7 +161,7 @@ InsightsMetrics
 ```
 
 ### <a name="specific-virtual-machine"></a>Adott virtuális gép
-Módosítsa az előfizetés-azonosítóval, az erőforráscsoporttal és a virtuális gép nevével.
+Módosítsa az előfizetés-AZONOSÍTÓját, az erőforráscsoportot és a virtuális gép nevét.
 
 ```kusto
 InsightsMetrics
@@ -171,8 +171,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m)
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>Az előfizetés összes számítási erőforrásának processzorkihasználtsága
-Módosítsa az előfizetés-azonosítójával.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>CPU-kihasználtság az előfizetésben lévő összes számítási erőforráshoz
+Módosítsa az előfizetés-AZONOSÍTÓját.
 
 ```kusto
 InsightsMetrics
@@ -182,8 +182,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>Egy erőforráscsoport összes számítási erőforrásának processzorkihasználtsága
-Módosítás az előfizetés-azonosítóval és az erőforráscsoporttal.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>CPU-kihasználtság az erőforráscsoport összes számítási erőforrásához
+Módosítsa az előfizetés-AZONOSÍTÓját és az erőforráscsoportot.
 
 ```kusto
 InsightsMetrics
@@ -197,5 +197,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [az Azure Monitor riasztásairól.](../platform/alerts-overview.md)
-- További információ a [virtuális gépekhez készült Azure Monitor adataival kapcsolatos naplólekérdezésekről.](vminsights-log-search.md)
+- További információ a [Azure monitor riasztásokról](../platform/alerts-overview.md).
+- További információ a [Azure monitor for VMS származó adatokkal történő naplózási lekérdezésekről](vminsights-log-search.md).

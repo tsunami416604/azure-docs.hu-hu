@@ -1,6 +1,6 @@
 ---
-title: Az ajánlat közzétételének automatizálása | Azure Piactér
-description: A cikk a virtuálisgép-közzétételi munkafolyamat programozott automatizálását ismerteti.
+title: Ajánlat-közzététel automatizálása | Azure piactér
+description: Ismerteti, hogyan lehet programozott módon automatizálni a virtuális gépek közzétételi munkafolyamatát.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280337"
 ---
 <a name="automate-offer-publishing"></a>Ajánlatok közzétételének automatizálása
 =========================
 
-Azt is programozott módon automatizálhatja a virtuális gép közzétételi munkafolyamat, az [API-referencia](./cloud-partner-portal-api-overview.md) szakaszapi-k használatával. Az automatizálás tervezésekor két különböző forgatókönyvet kell figyelembe venni: a kezdeti közzétételt és az azt követő ajánlatközzétételt.
+A virtuális gép közzétételi munkafolyamatát programozott módon is automatizálhatja az API-k használatával az [API-referenciák](./cloud-partner-portal-api-overview.md) szakaszban. Az automatizálás megtervezése során két különböző forgatókönyvnek kell megfontolnia: az ajánlat kezdeti közzététele és a további ajánlatok közzététele.
 
 
 <a name="offer-initial-publishing"></a>Ajánlat kezdeti közzététele
 -------------------------
 
-Amikor első alkalommal tesz közzé egy ajánlatot, néhány további lépést igényel a piactérre való feltöltés előtt.  Például elő kell készítenie a metaadatokat, és létre kell hoznia egy ajánlattervezetet. A kezdeti közzétételi munkafolyamat az alábbi ábrán látható.
+Amikor első alkalommal tesz közzé egy ajánlatot, néhány további lépést is igényel a piactérre való feltöltés előtt.  Elő kell készíteni például a metaadatokat, és létre kell hoznia egy ajánlat tervezetét. A kezdeti közzétételi munkafolyamat a következő ábrán látható.
 
 ![A kezdeti ajánlat közzétételének interakciói](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-A következő mintakód bemutatja ezeket a lépéseket.
+Az alábbi mintakód ezeket a lépéseket mutatja be.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -74,12 +74,12 @@ A következő mintakód bemutatja ezeket a lépéseket.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>További ajánlat közzététele
+<a name="subsequent-offer-publishing"></a>További ajánlatok közzététele
 ---------------------------
 
-Miután a virtuális gép (VM) ajánlat integrálva van egy folyamatos integrációs folyamatba, automatizálhatja a közzétételi munkafolyamat futtatásához minden alkalommal, amikor egy új virtuális merevlemez (VHD) jön létre.  Ezt a munkafolyamatot az alábbi ábra és mintakód szemlélteti.
+Miután a virtuális gép (VM) ajánlata integrálva van egy folyamatos integrációs folyamatba, automatizálhatja a közzétételi munkafolyamatot, hogy minden alkalommal fusson, amikor új virtuális merevlemezt (VHD-t) hoz létre.  Ezt a munkafolyamatot a következő diagram és mintakód szemlélteti.
 
-![A későbbi ajánlati publikációk kölcsönhatásai](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Az ajánlatok további kiadványainak interakciói](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()

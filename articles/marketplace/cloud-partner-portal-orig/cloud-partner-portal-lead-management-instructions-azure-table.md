@@ -1,6 +1,6 @@
 ---
-title: Azure Table tároló | Azure Piactér
-description: Konfigurálja az érdeklődőkezelést az Azure Table storage-ban.
+title: Azure Table Storage | Azure piactér
+description: Az érdeklődők felügyeletének konfigurálása az Azure Table Storage-ban.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,158 +8,158 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
 ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280354"
 ---
-# <a name="lead-management-instructions-for-table-storage"></a>A tábla tárolására vonatkozó ólomkezelési utasítások
+# <a name="lead-management-instructions-for-table-storage"></a>A Table Storage szolgáltatással kapcsolatos érdeklődői kezelési utasítások
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Table storage értékesítési érdeklődők kezelésére. A táblatárolás segít a vevői adatok tárolásában és módosításában.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Table Storage-t az értékesítési érdeklődők kezelésére. A Table Storage segítségével tárolhatja és módosíthatja az ügyfelek adatait.
 
-## <a name="configure-table-storage"></a>Táblatároló konfigurálása
+## <a name="configure-table-storage"></a>A Table Storage konfigurálása
 
-1. Ha nem rendelkezik Azure-fiókkal, [hozzon létre egy ingyenes próbafiókot.](https://azure.microsoft.com/pricing/free-trial/)
-1. Miután a fiókja aktív, jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Az Azure Portalon kövesse az alábbi lépéseket:  
-    1. Válassza **a +Erőforrás létrehozása lehetőséget** a bal oldali ablaktáblában. Megnyílik **az Új** ablaktábla.
-    1. Az **Új** ablaktáblán válassza a **Tárolás**lehetőséget. **A Kiemelt** lista a jobb oldalon nyílik meg.
-    1. Válassza **a Tárfiók lehetőséget.** Ezután kövesse a [Tárfiók létrehozása című útmutatóutasításait.](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
+1. Ha nem rendelkezik Azure-fiókkal, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/pricing/free-trial/).
+1. Ha a fiókja aktív, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+1. A Azure Portal hajtsa végre az alábbi lépéseket:  
+    1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali ablaktáblán. Ekkor megnyílik az **új** panel.
+    1. Az **új** panelen válassza a **Storage**lehetőséget. A jobb oldalon megnyílik egy **Kiemelt** lista.
+    1. Válassza a **Storage-fiók**lehetőséget. Ezután kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)című témakör utasításait.
 
     ![Azure Storage-fiók létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-    A tárfiókokról további információkért olvassa [el a Rövid útmutatók at.](https://docs.microsoft.com/azure/storage/) A díjszabási információkért lásd: [Azure storage-díjszabás.](https://azure.microsoft.com/pricing/details/storage/)
+    További információ a Storage-fiókokról: gyors [útmutató oktatóanyagok](https://docs.microsoft.com/azure/storage/). A díjszabással kapcsolatos információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Várjon, amíg a tárfiók ki van építve, ami általában néhány percet vesz igénybe. Ezután a fiók az Azure Portal kezdőlapjáról érhető el: válassza **az összes erőforrás vagy** az összes **erőforrás** megtekintése lehetőséget a navigációs ablakban.
+1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, ami általában néhány percet vesz igénybe. Ezután nyissa meg a fiókot a Azure Portal kezdőlapján: válassza az **összes erőforrás** vagy az összes **erőforrás** megjelenítése lehetőséget a navigációs ablaktáblán.
 
-    ![Az Azure storage-fiók elérése](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
+    ![Hozzáférés az Azure Storage-fiókhoz](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
-1. A tárfiók ablaktábláján másolja a tárfiók kapcsolati karakterláncát a kulcshoz. Illessze be a **Kapcsolati karakterlánc** mezőbe a felhőpartner-portálon lévő tárfiókhoz.
+1. A Storage-fiók ablaktáblán másolja a kulcshoz tartozó Storage-fiókhoz tartozó kapcsolatok karakterláncát. Illessze be a Cloud Partner Portal Storage-fiókjának **kapcsolatok karakterlánc** mezőjébe.
 
-    Példa kapcsolati karakterláncra:
+    Példa a kapcsolatok karakterláncára:
 
     ```sql
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
     ```
 
-      ![Azure tárolási kulcs](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+      ![Azure Storage-kulcs](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-Használhatja [az Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/) vagy egy hasonló eszköz a táblatárolóban lévő adatok megtekintéséhez. Az adatokat is exportálhatja belőle.
+A Table Storage-ban lévő információk megtekintéséhez [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/) vagy hasonló eszköz használható. Az adatok onnan is exportálhatók.
 
-## <a name="use-microsoft-flow-with-table-storage-optional"></a>A Microsoft Flow használata táblázattárolóval (*nem kötelező*)
+## <a name="use-microsoft-flow-with-table-storage-optional"></a>Microsoft Flow használata a Table Storage szolgáltatással (nem*kötelező*)
 
-A [Microsoft Flow](https://docs.microsoft.com/flow/) segítségével automatikusan küldhet értesítéseket, ha egy érdeklődőt ad hozzá a táblatárolóhoz. Ha nem rendelkezik Microsoft Flow-fiókkal, [regisztráljon egy ingyenes fiókot.](https://flow.microsoft.com/)
+A [Microsoft flow](https://docs.microsoft.com/flow/) használatával automatikusan küldhet értesítéseket, amikor egy érdeklődőt adnak hozzá a Table Storage-hoz. Ha nincs Microsoft Flow fiókja, [regisztráljon egy ingyenes fiókra](https://flow.microsoft.com/).
 
-### <a name="lead-notification-example"></a>Példa érdeklődőkeresési értesítésre
+### <a name="lead-notification-example"></a>Példa vezető értesítésre
 
-Ez a példa bemutatja, hogyan hozhat létre egy alapfolyamatot. A folyamat automatikusan küld egy e-mail értesítést óránként, amikor új érdeklődőket ad nak hozzá a táblatárolóhoz.
+Ebből a példából megtudhatja, hogyan hozhat létre egy alapszintű folyamatot. A folyamat óránként automatikusan elküld egy értesítő e-mailt, amikor új érdeklődőket adnak hozzá a Table Storage-hoz.
 
-1. Jelentkezzen be A Microsoft Flow-fiókba.
-1. A bal oldali navigációs ablakban válassza a **Saját folyamatok lehetőséget.**
-1. A felső navigációs sávon válassza a **+Új**lehetőséget.  
-1. A legördülő listában válassza a **+Létrehozás üresből**lehetőséget.
-1. A **Folyamat létrehozása üres ből**csoportban válassza a **Létrehozás üres ből**lehetőséget.
+1. Jelentkezzen be Microsoft Flow-fiókjába.
+1. A bal oldali navigációs ablaktáblán válassza a **saját folyamatok**lehetőséget.
+1. A felső navigációs sávon válassza az **+ új**lehetőséget.  
+1. A legördülő listában válassza a **+ Létrehozás üresből**lehetőséget.
+1. A **folyamat létrehozása üresből**területen válassza a **Létrehozás üresből**lehetőséget.
 
-   ![Új folyamat létrehozása üres](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
+   ![Új folyamat létrehozása üresből](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-1. Az összekötők és eseményindítók keresési lapján válassza az **Eseményindítók**lehetőséget.
-1. Az **Eseményindítók csoportban**válassza **az Ismétlődés**lehetőséget.
-1. Az **Ismétlődés** ablakban tartsa meg az **1** alapértelmezett beállítást az **Intervallum**mezőben. A **Gyakoriság** legördülő listában válassza az **Óra**lehetőséget.
+1. Az összekötők és eseményindítók keresése lapon válassza az **Eseményindítók**lehetőséget.
+1. Az **Eseményindítók**területen válassza az **Ismétlődés**lehetőséget.
+1. Az **ismétlődési** ablakban tartsa meg az alapértelmezett **1** értéket az **intervallum**értéknél. A **frekvencia** legördülő listából válassza az **óra**lehetőséget.
 
    >[!NOTE] 
-   >Ez a példa egyórás intervallumot használ. De kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
+   >Ez a példa egy egyórás időközt használ. Az üzleti igényeknek leginkább megfelelő intervallumot és gyakoriságot is kiválaszthatja.
 
-   ![1 órás gyakoriság beállítása az ismétlődéshez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
+   ![1 órás gyakoriság beállítása ismétlődéshez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
-1. Válassza **a +Új lépés lehetőséget.**
-1. Keressen a **Korábbi idő betöltése**mezőbe, és válassza a Művelet kiválasztása csoportban az **Elmúlt idő bekerülése** lehetőséget. **Choose an action**
+1. Válassza az **+ új lépés**lehetőséget.
+1. Keresse meg a **beolvasási időt**, majd kattintson **a művelet kiválasztása lehetőségre**a **múltbeli időpont beolvasása** elemre.
 
-    ![A "get past time" művelet megkeresése és kiválasztása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
+    ![A "múltbeli idő lekérése" művelet megkeresése és kiválasztása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-1. A **Get past time** ablakban állítsa az Intervallum ot **1-re.** **Interval**  Az **Időegység** legördülő listában válassza az **Óra**lehetőséget.
+1. A **beolvasás ideje** ablakban állítsa az **intervallumot** **1-re**.  Az **időegység** legördülő listából válassza az **óra**lehetőséget.
     >[!IMPORTANT] 
-    >Győződjön meg arról, hogy az **Időköz** és **az Időegység** megegyezik az ismétlődéshez beállított időközzel és gyakorisággal (8. lépés).
+    >Győződjön meg arról, hogy az **intervallum** és az **időegység** megegyezik az ismétlődéshez konfigurált intervallummal és gyakorisággal (8. lépés).
 
-    ![A bekerülési időintervallum beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
+    ![A múltbeli idő lekérése időintervallum beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >A folyamatot bármikor ellenőrizheti, hogy az egyes lépéseket megfelelően konfigurálta-e: Válassza a **Folyamat ellenőrzőelemet** a Folyamat menüsorból.
+    >Bármikor ellenőrizheti, hogy az egyes lépések megfelelően vannak-e konfigurálva: válassza a flow- **ellenőrző** lehetőséget a folyamat menüsorán.
 
-A következő lépésekben csatlakozhat a tárolótáblához, és beállíthatja a feldolgozási logikát az új érdeklődők kezeléséhez.
+A következő lépésben csatlakozik a Storage-táblához, és beállítja a feldolgozási logikát az új érdeklődők kezelésére.
 
-1. Az **Elmúlt idő bekerülése** lépés után válassza az **+Új lépés**lehetőséget, majd keresse meg az **Entitások betöltése**lehetőséget.
-1. A **Műveletek**csoportban jelölje be az **Entitások bekerülése**lehetőséget, majd válassza **a Speciális beállítások megjelenítése**lehetőséget.
-1. Az **Entitások bekerülése** ablakban töltse ki a következő mezőket:
+1. A **beolvasás időpontja** lépés után válassza az **+ új lépés**lehetőséget, majd keressen az **entitások beolvasása**lehetőségre.
+1. A **műveletek**területen válassza az **entitások beolvasása**, majd a **Speciális beállítások megjelenítése**lehetőséget.
+1. Az **entitások beolvasása** ablakban töltse ki a következő mezőket:
 
-   - **Táblázat:** a táblatároló neve. Az alábbi képen a "MarketPlaceLeads" szerepel:
+   - **Tábla**: a tábla tárterületének neve. Az alábbi képen a "MarketPlaceLeads" látható:
 
-     ![Egyéni érték választása az Azure-tábla nevéhez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
+     ![Egyéni érték választása az Azure-tábla neveként](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Lekérdezés szűrése:** Ha ezt a mezőt választja, a **Korábbi idők bekerülése** ikon egy előugró ablakban jelenik meg. Válassza **az Elmúlt idő** lehetőséget, ha ezt az értéket időbélyegként szeretné használni a lekérdezés szűréséhez. Vagy beillesztheti a következő függvényt a mezőbe:
+   - **Szűrő lekérdezése**: Ha bejelöli ezt a mezőt, a **beolvasás időpontja** ikon megjelenik egy előugró ablakban. Ha a lekérdezés szűréséhez időbélyegként szeretné használni ezt az értéket, válassza az **elmúlt idő** lehetőséget. A következő függvényt is beillesztheti a mezőbe:
    
       `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
-     ![A szűrőlekérdezési függvény beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
+     ![A szűrő lekérdezési funkciójának beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
-1. Válassza **az Új lépés** lehetőséget, ha feltételt szeretne hozzáadni az új érdeklődők táblatárolójának vizsgálatához.
+1. Válassza az **új lépés** lehetőséget, ha hozzá szeretne adni egy feltételt az új érdeklődők számára a tábla tárterületének vizsgálatához.
 
-   ![Az "Új lépés" használatával feltétel hozzáadása az asztaltároló beszkafétéihoz](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
+   ![A tábla tárterületének vizsgálatához használja az "új lépés" kifejezést.](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
 
-1. A **Művelet kiválasztása** ablakban válassza a **Műveletek**lehetőséget, majd a **Feltételvezérlés**lehetőséget.
+1. A **művelet kiválasztása** ablakban válassza a **műveletek**, majd a **feltétel vezérlőelem**elemet.
 
-     ![Feltételvezérlő hozzáadása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
+     ![Feltétel vezérlőelem hozzáadása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
-1. A **Feltétel** ablakban válassza az **Érték kiválasztása**lehetőséget, majd az előugró ablakban válassza a **Kifejezés** lehetőséget.
-1. Illessze `length(body('Get_entities')?['value'])` be az ***fx*** mezőbe. A függvény hozzáadásához válassza az **OK gombot.** 
+1. A **feltétel** ablakban válassza az **érték kiválasztása**lehetőséget, majd az előugró ablakban válassza a **kifejezés** lehetőséget.
+1. Illessze `length(body('Get_entities')?['value'])` be az ***FX*** mezőt. A függvény hozzáadásához kattintson **az OK gombra** . 
 
 
 
      ![Függvény hozzáadása a feltételhez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-fx0.png)
 
-1. Állítsa be a végrehajtandó műveletet a feltétel eredménye alapján.
+1. Állítsa be a feltétel eredményén alapuló műveletet.
 
-    1. A kijelölés **nagyobb, mint** a legördülő listából.
-   1. Adja meg a **0** értéket értékként.
+    1. A Select **érték nagyobb, mint** a legördülő listából.
+   1. Adja meg a **0** értéket.
 
-     ![Művelet beállítása feltételeredmények alapján](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
+     ![Művelet beállítása a feltétel eredményei alapján](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
 
-1. Ha a feltétel úgy dönt, hogy "Ha nem", ne tegyen semmit.
+1. Ha a feltétel a "Ha nem" értékre van feloldva, akkor semmit sem kell tennie.
 
-    Ha a feltétel "Ha igen" lesz, az Office 365-fiókot e-mail küldéséhez kapcsolódó művelet et indít:
+    Ha a feltételt a "Ha igen" értékre oldja fel, egy olyan műveletet indít el, amely összekapcsolja az Office 365-fiókját e-mailek küldéséhez:
    1. Válassza a **Művelet hozzáadása** lehetőséget.
    1. Válassza az **E-mail küldése** lehetőséget.
    1. Az **E-mail küldése** ablakban adja meg az adatokat a következő mezőkben:
 
-      - **Címzett**: egy e-mail cím mindenkinek, aki megkapja az értesítést.
-      - **Tárgy**: az e-mail tárgya. Például: *Új érdeklődők!*
-      - **Törzs:** az egyes e-mailekben szerepelni kívánt szöveg (nem kötelező). Az érdeklődőadatok `body('Get_entities')?['value']` beszúrásához beillesztendő funkcióként is.
+      - **To**: e-mail-cím mindenkinek, aki megkapja az értesítést.
+      - **Tárgy**: az e-mailek tárgya. Például: *új érdeklődők!*
+      - **Törzs**: az egyes e-mailekben szerepeltetni kívánt szöveg (nem kötelező). Az `body('Get_entities')?['value']` érdeklődői adatok beszúrásához is beillesztheti a függvényt.
 
         >[!NOTE] 
-        >További statikus vagy dinamikus adatpontokat szúrhat be az e-mail törzsében.
+        >Az e-mail törzsébe további statikus vagy dinamikus adatpontokat is beszúrhat.
 
-      ![E-mail beállítása érdeklődőértesítéshez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
+      ![E-mailek beállítása a vezető értesítéshez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
-1. A folyamat mentéséhez válassza a **Mentés** lehetőséget. A Microsoft Flow automatikusan teszteli a hibákat. Ha nincsenek hibák, a folyamat a mentés után elindul.
+1. A folyamat mentéséhez válassza a **Mentés** lehetőséget. A Microsoft Flow automatikusan ellenőrzi a hibákat. Ha nincsenek hibák, a folyamat a mentés után elindul.
 
-    Az alábbi képen egy példa látható arra, hogyan kell kinéznie a végső folyamatnak.
+    Az alábbi képen látható egy példa arra, hogy a végső folyamatnak hogyan kell kinéznie.
 
-    [![Végső áramlási sorrend](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+    [![Végső flow-sorozatot](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-    (*A nagyításhoz jelölje ki a képet.)*
+    (*Válassza ki a képre a nagyításhoz.*)
 
 ### <a name="manage-your-flow"></a>A folyamat kezelése
 
-A működés után könnyen kezelheti az áramlást. Ön teljes mértékben ellenőrzése alatt a flow. Például leállíthatja, szerkesztheti, megtekintheti a futtatási előzményeket, és elemzéseket kaphat. Az alábbi képen látható a folyamatkezelési beállítások.
+A folyamat futtatása után egyszerűen kezelheti a folyamatot. A folyamat teljes mértékben szabályozható. Leállíthatja például, szerkesztheti, megtekintheti a futtatási előzményeket, és lekérheti az elemzést. Az alábbi képen a folyamat-felügyeleti lehetőségek láthatók.
 
- ![Folyamatkezelési lehetőségek](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
+ ![Flow-felügyeleti lehetőségek](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
 
-A folyamat addig fut, amíg a Forgalom kikapcsolása lehetőséget nem **választja.**
+A folyamat addig fut, amíg ki nem választja a **flow kikapcsolása**lehetőséget.
 
-Ha nem kap érdeklődői e-mail értesítéseket, nem adott hozzá új érdeklődőket a táblázattárolóhoz.
-Folyamathiba esetén a következő példához hasonló e-mailt fog kapni:
+Ha nem kap érdeklődői e-mail-értesítéseket, a Table Storage-hoz nem kerültek új érdeklődők.
+A következő példához hasonló e-mail-üzenet jelenik meg, ha a folyamat meghiúsul:
 
- ![Folyamatsikertelen e-mail értesítés](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+ ![Sikertelen folyamat – e-mail-értesítés](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
 
 ## <a name="next-steps"></a>További lépések
 

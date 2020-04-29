@@ -1,6 +1,6 @@
 ---
-title: A Gen2 gyorsítótár optimalizálása
-description: Ismerje meg, hogyan figyelheti a Gen2 gyorsítótárát az Azure Portalon.
+title: Optimalizálja a Gen2 cache-t
+description: Megtudhatja, hogyan figyelheti a Gen2 cache-gyorsítótárat a Azure Portal használatával.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,51 +12,51 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: bb5560164af2b573e6aaffd4e4c62bbe0dc24a51
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350425"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 gyorsítótár figyelése
+# <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 
-Ez a cikk ismerteti, hogyan figyelheti és háríthatja el a lassú lekérdezési teljesítményt annak meghatározásával, hogy a számítási feladatok optimálisan használják-e ki a Gen2 gyorsítótárat.
+Ez a cikk bemutatja, hogyan figyelheti és elháríthatja a lassú lekérdezési teljesítményt, ha meghatározza, hogy a munkaterhelés optimálisan kihasználja-e a Gen2 cache-gyorsítótárat.
 
-A Gen2 tárolási architektúra automatikusan rétegezi a leggyakrabban lekérdezett oszlopcentrikus szegmenseket egy, a Gen2 adatraktárakhoz tervezett NVMe alapú SSD-k gyorsítótárában. Nagyobb teljesítmény akkor valósul meg, ha a lekérdezések a gyorsítótárban található szegmenseket kérik le.
+A Gen2-tároló architektúrája automatikusan lekéri a leggyakrabban lekérdezett oszlopcentrikus-szegmenseket a NVMe-alapú SSD-meghajtókon alapuló, Gen2 adattárházak számára tervezett gyorsítótárban. Nagyobb teljesítmény érhető el, ha a lekérdezések a gyorsítótárban lévő szegmenseket kérik le.
  
-## <a name="troubleshoot-using-the-azure-portal"></a>Hibaelhárítás az Azure Portal használatával
+## <a name="troubleshoot-using-the-azure-portal"></a>Hibakeresés a Azure Portal használatával
 
-Az Azure Monitor segítségével megtekintheti a Gen2 gyorsítótár-metrikákat a lekérdezési teljesítmény hibaelhárításához. Először lépjen az Azure Portalra, és kattintson a **Figyelő**, **Metrikák** és **+ Hatókör kiválasztása elemre:**
+Az Azure Monitor használatával megtekintheti a Gen2 gyorsítótár-metrikáit a lekérdezés teljesítményének hibakereséséhez. Először lépjen a Azure Portalra, és kattintson a **figyelés**, a **metrikák** és a **+ hatókör kijelölése**elemre:
 
 ![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-Az adattárház megkereséséhez használja a keresési és legördülő sávokat. Ezután válassza az alkalmaz lehetőséget.
+Az adattárház megkereséséhez használja a keresési és a legördülő sávokat. Ezután válassza az alkalmaz lehetőséget.
 
 ![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-A Gen2 gyorsítótár hibaelhárításának legfontosabb mutatói a **gyorsítótár találati százaléka** és **a gyorsítótár által használt százalékos arány.** Válassza a **Gyorsítótár beolvasási százalékának kiválasztását,** majd a **metrikus hozzáadása** gombbal adja hozzá a használt gyorsítótár **százalékát.** 
+A Gen2 gyorsítótár hibaelhárításának legfontosabb mérőszámai a **gyorsítótár-találatok százalékos aránya** és a **gyorsítótárban használt százalék**. Válassza a **gyorsítótár találati százaléka** lehetőséget, majd a **metrika hozzáadása** gombbal adja hozzá a **gyorsítótár használt százalékát**. 
 
-![Gyorsítótár-mutatók](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
+![Gyorsítótár Metrikái](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 
-## <a name="cache-hit-and-used-percentage"></a>Gyorsítótár találata és a felhasznált százalék
+## <a name="cache-hit-and-used-percentage"></a>Gyorsítótár-találat és a felhasznált százalék
 
-Az alábbi mátrix a gyorsítótár-metrikák értékein alapuló forgatókönyveket ismerteti:
+Az alábbi mátrix a gyorsítótár metrikáinak értékein alapuló forgatókönyveket ismerteti:
 
-|                                | **Magas gyorsítótár-találati arány** | **Alacsony gyorsítótár-találati arány** |
+|                                | **Nagy gyorsítótárbeli találatok százalékos aránya** | **Alacsony gyorsítótárbeli találatok százalékos aránya** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Magas gyorsítótár használt százalék** |          1. példa           |          2. példa          |
-| **Alacsony gyorsítótár használt százalék**  |          3. példa           |          4. példa          |
+| **Nagy gyorsítótár használt százaléka** |          1. példa           |          2. példa          |
+| **Alacsony gyorsítótár-használat százalékos aránya**  |          3. példa           |          4. példa          |
 
-**1. forgatókönyv:** Optimálisan használja a gyorsítótárat. A lekérdezéseket lassító egyéb területek [hibáinak elhárítása.](sql-data-warehouse-manage-monitor.md)
+**1. forgatókönyv:** Ön optimálisan használja a gyorsítótárat. A lekérdezéseket esetlegesen lelassító egyéb területek [hibáinak megoldása](sql-data-warehouse-manage-monitor.md) .
 
-**2. forgatókönyv:** Az aktuális munkaadatkészlet nem fér el a gyorsítótárba, ami a fizikai olvasások miatt alacsony gyorsítótár-leolvasási százalékot okoz. Fontolja meg a teljesítményszint növelése és a számítási feladatok újrafuttatását a gyorsítótár feltöltéséhez.
+**2. forgatókönyv:** A jelenlegi munkakészlet nem fér bele a gyorsítótárba, ami a fizikai olvasások miatt alacsony gyorsítótárbeli találati arányt okoz. Érdemes lehet felskálázást végezni a teljesítmény szintjén, és újra kell futtatni a munkaterhelést a gyorsítótár feltöltéséhez.
 
-**3. forgatókönyv:** Valószínű, hogy a lekérdezés lassú, mert a gyorsítótárhoz nem kapcsolódó okok miatt. A lekérdezéseket lassító egyéb területek [hibáinak elhárítása.](sql-data-warehouse-manage-monitor.md) A költségek [csökkentése érdekében a példány leskálázását](sql-data-warehouse-manage-monitor.md) is fontolóra veheti a gyorsítótár méretének csökkentése érdekében. 
+**3. forgatókönyv:** Valószínű, hogy a lekérdezés lassan fut, mert nem kapcsolódik a gyorsítótárhoz. A lekérdezéseket esetlegesen lelassító egyéb területek [hibáinak megoldása](sql-data-warehouse-manage-monitor.md) . Azt is megteheti, hogy [a példány méretezésével](sql-data-warehouse-manage-monitor.md) csökkenti a gyorsítótár méretét a költségek megtakarítása érdekében. 
 
-**4. forgatókönyv:** Volt egy hideg cache, amely lehet az oka annak, hogy a lekérdezés lassú volt. Fontolja meg a lekérdezés újrafuttatását, mivel a működő adatkészletnek most a gyorsítótárban kell lennie. 
+**4. forgatókönyv:** A lassú gyorsítótárat használta, ami lehet az oka, hogy a lekérdezés lassú volt. Érdemes lehet újból futtatni a lekérdezést, mert a munkakészlete most már gyorsítótárazva van. 
 
 > [!IMPORTANT]
-> Ha a gyorsítótár-leolvasási százalék vagy a használt gyorsítótár százaléka nem frissül a számítási feladatok újrafuttatása után, a munkakészlet már a memóriában található. A rendszer csak a fürtözött oszlopcentrikus táblákat gyorsítótárazza.
+> Ha a gyorsítótár-találatok százalékos aránya vagy a gyorsítótár kihasználtsági aránya nem frissül a munkaterhelés újbóli futtatása után, a munkakészlete már a memóriában is tartózkodik. A rendszer csak a fürtözött oszlopcentrikus-táblákat gyorsítótárazza.
 
 ## <a name="next-steps"></a>További lépések
-Az általános lekérdezési teljesítményhangolásról a [Lekérdezés végrehajtásának figyelése](sql-data-warehouse-manage-monitor.md#monitor-query-execution)című témakörben talál további információt.
+Az általános lekérdezési teljesítmény finomhangolásával kapcsolatos további információkért lásd: a [lekérdezés-végrehajtás figyelése](sql-data-warehouse-manage-monitor.md#monitor-query-execution).

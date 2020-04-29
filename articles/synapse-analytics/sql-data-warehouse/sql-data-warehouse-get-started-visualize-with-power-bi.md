@@ -1,5 +1,5 @@
 ---
-title: Adatok megjelenítése a Microsoft Azure Power BI-val
+title: Az adatmegjelenítés Power BI Microsoft Azure
 description: SQL-adatraktár adatainak megjelenítése Power BI használatával
 services: synapse-analytics
 author: mlee3gsd
@@ -12,13 +12,13 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7e764eeab6f681d90e1a602f02cdb03330d6fd3d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350951"
 ---
-# <a name="visualize-data-with-power-bi"></a>Adatok ábrázolása a Power BI használatával
+# <a name="visualize-data-with-power-bi"></a>Adatok megjelenítése Power BI használatával
 Az alábbi oktatóanyagból megtudhatja, hogyan kapcsolódhat a Power BI-ból az SQL Data Warehouse-hoz. Az oktatóanyag emellett néhány alapvető adatábrázolás létrehozásának lépéseit is bemutatja.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
@@ -28,9 +28,9 @@ Az alábbi oktatóanyagból megtudhatja, hogyan kapcsolódhat a Power BI-ból az
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Az adattárház kiépítéséhez olvassa el az [SQL Data Warehouse létrehozása](create-data-warehouse-portal.md) című témakört, és válassza ki a mintaadatok betöltését. Ha már rendelkezik adattárházával, de nincsenek mintaadatai, [betöltheti a WideWorldImportersDW -et.](load-data-wideworldimportersdw.md)
+* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Az adattárházak kiépítéséhez lásd: [SQL Data Warehouse létrehozása](create-data-warehouse-portal.md) és a mintaadatok betöltésének kiválasztása. Ha már rendelkezik adatraktárral, de nem rendelkezik mintaadatok használatával, [betöltheti az wideworldimportersdw adattárházat](load-data-wideworldimportersdw.md).
 
-## <a name="1-connect-to-your-database"></a>1. Csatlakozás az adatbázishoz
+## <a name="1-connect-to-your-database"></a>1. kapcsolódás az adatbázishoz
 A Power BI megnyitása és csatlakozás az AdventureWorksDW adatbázishoz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -43,34 +43,34 @@ A Power BI megnyitása és csatlakozás az AdventureWorksDW adatbázishoz:
 4. Az SQL Data Warehouse csatlakozási oldalán most meg kell jelennie az adatbázis webcímének. Kattintson a Tovább gombra.
    
     ![Power BI-csatlakozás](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png)
-5. Adja meg az Azure SQL-kiszolgáló felhasználónevét és jelszavát.
+5. Adja meg az Azure SQL Server-felhasználónevét és-jelszavát.
    
-    ![Power BI-bejelentkezés](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
-6. Az adatbázis megnyitásához kattintson az AdventureWorksDW adatkészletre a bal oldali panelen.
+    ![Bejelentkezés Power BI](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
+6. Az adatbázis megnyitásához kattintson a bal oldali panelen található AdventureWorksDW adatkészletre.
    
     ![Power BI, AdventureWorksDW megnyitása](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
-## <a name="2-create-a-report"></a>2. Jelentés létrehozása
+## <a name="2-create-a-report"></a>2. jelentés létrehozása
 Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI használatával. Az elemzés végrehajtásához az AdventureWorksDW AggregateSales nevű nézete használható. Ebben a nézetben megtalálhatóak a vállalati értékesítés elemzéséhez szükséges fő mutatók.
 
 1. Az értékesítési összegeket irányítószám szerint megjelenítő térkép létrehozásához kattintson a jobb oldali panelen az AggregateSales nézetre annak kibontásához. Kattintson a PostalCode és a SalesAmount oszlopra azok kiválasztásához.
    
-    ![A Power BI kiválasztja az AggregateSales-t](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
+    ![Power BI kiválasztja a AggregateSales](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
    
-    A Power BI automatikusan felismerte a földrajzi adatokat, és egy térképen helyezte el azadatokat.
+    A Power BI automatikusan felismeri a földrajzi és a térképen.
    
     ![Power BI, térkép](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png)
 
-2. Ez a lépés egy oszlopdiagramot hoz létre, amely az értékesítési összegeket az ügyfélbevételek szerint jeleníti meg. Az oszlopdiagram létrehozásához nyissa meg a kibontott AggregateSales nézetet. Kattintson a SalesAmount mezőre. Húzza a CustomerIncome mezőt balra, és helyezze a Tengely alá.
+2. Ez a lépés egy oszlopdiagramot hoz létre, amely az értékesítési összegeket az ügyfélbevételek szerint jeleníti meg. A oszlopdiagram létrehozásához nyissa meg a kibontott AggregateSales nézetet. Kattintson a SalesAmount mezőre. Húzza a CustomerIncome mezőt balra, és helyezze a Tengely alá.
    
-    ![A Power BI kijelöli a tengelyt](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png)
+    ![Power BI tengely kiválasztása](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png)
    
-    A sávdiagram a bal oldalon.
+    A oszlopdiagram a bal oldalon.
    
     ![Power BI, oszlop](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png)
-3. Ez a lépés egy vonaldiagramot hoz létre, amely az értékesítési összegeket a megrendelési dátumok szerint mutatja. A vonaldiagram létrehozásához lépjen a kibontott AggregateSales nézetre. Kattintson a SalesAmount és az OrderDate oszlopra. A Vizualizációk oszlopban kattintson a Vonaldiagram ikonra, amely a vizualizációk alatti második sor első ikonja.
+3. Ez a lépés egy vonaldiagramot hoz létre, amely az értékesítési összegeket a megrendelési dátumok szerint mutatja. A diagram létrehozásához nyissa meg a kibontott AggregateSales nézetet. Kattintson a SalesAmount és az OrderDate oszlopra. A vizualizációk oszlopban kattintson a vonal diagram ikonjára, amely az első ikon a második sorban a vizualizációk alatt.
    
-    ![A Power BI vonaldiagramot jelöl ki](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
+    ![Power BI diagram kiválasztása](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
    
     Mostanra rendelkezésére áll egy jelentés, amely az adatok három különböző megjelenítését tartalmazza.
    
@@ -78,20 +78,20 @@ Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI h
 
 A folyamatot bármikor mentheti a **Fájl** gombra kattintva, majd a **Mentés** lehetőséget választva.
 
-## <a name="using-direct-connect"></a>A Direct Connect használata
-Az Azure SQL Database-hez is az SQL Data Warehouse Direct Connect a Power BI elemzési képességei mellett lehetővé teszi a logikai leküldéses leküldéset. A Direct Connect használatával a lekérdezések valós időben kerülnek vissza az Azure SQL Data Warehouse-ba az adatok feltárása során.  Ez a funkció az SQL Data Warehouse léptékével kombinálva lehetővé teszi dinamikus jelentések készítését percek alatt terabájtnyi adatok kal szemben. Emellett az Open in Power BI gomb bevezetése lehetővé teszi a felhasználók számára, hogy közvetlenül összekapcsolják a Power BI-t az SQL Data Warehouse-val anélkül, hogy az Azure más részeiről gyűjtenek adatokat.
+## <a name="using-direct-connect"></a>Közvetlen kapcsolat használata
+A Azure SQL Databasehoz hasonlóan SQL Data Warehouse közvetlen kapcsolat is lehetővé teszi a logikai pushdown a Power BI analitikai képességei mellett. A közvetlen kapcsolódást követően a rendszer valós időben visszaküldi a lekérdezéseket a Azure SQL Data Warehousera az adatelemzés során.  Ez a funkció a SQL Data Warehouse méretezésével együtt lehetővé teszi, hogy percek alatt hozzon létre dinamikus jelentéseket. Emellett a Megnyitás a Power BIban gomb lehetővé teszi, hogy a felhasználók közvetlenül Power BI kapcsolódjanak a SQL Data Warehousehoz anélkül, hogy az Azure más részeiről kellene adatokat gyűjteniük.
 
-A Direct Connect használataesetén:
+Közvetlen csatlakozás használata esetén:
 
-* Csatlakozáskor adja meg a teljesen minősített kiszolgáló nevét.
-* Győződjön meg arról, hogy az adatbázis tűzfalszabályai az Azure-szolgáltatásokhoz való hozzáférés engedélyezésére vannak konfigurálva.
-* Minden művelet, például egy oszlop kijelölése vagy egy szűrő hozzáadása, közvetlenül lekérdezi az adatraktárt.
-* A csempék frissítése automatikusan és körülbelül 15 percenként történik.
-* A Q&A nem érhető el a Direct Connect adatkészletek esetében.
-* A sémamódosítások automatikusan beépülnek.
-* Az összes Direct Connect-lekérdezés 2 perc elteltével idővel megszűnik.
+* A csatlakozáskor adja meg a kiszolgáló teljes nevét.
+* Győződjön meg arról, hogy az adatbázishoz tartozó tűzfalszabályok úgy vannak konfigurálva, hogy engedélyezzék az Azure-szolgáltatásokhoz való hozzáférést.
+* Minden művelet, például egy oszlop kijelölése vagy egy szűrő hozzáadása, közvetlenül az adattárházat kérdezi le.
+* A csempék automatikusan és körülbelül 15 percenként frissülnek.
+* A Q&A nem érhető el a közvetlen csatlakoztatási adatkészletekhez.
+* A séma módosításai automatikusan beépülnek.
+* Az összes közvetlen csatlakozási lekérdezés 2 perc elteltével időtúllépést eredményez.
 
-Ezek a korlátozások és megjegyzések a tapasztalatok javulásának javulása után változhatnak.
+Ezek a korlátozások és megjegyzések a tapasztalatok javításával változhatnak.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy adtunk egy kis időt, hogy felmelegedjen a minta adatok, hogyan [kell fejleszteni](sql-data-warehouse-overview-develop.md) vagy [betölteni](design-elt-data-loading.md). vagy körülnézhet a [Power BI webhelyén](https://www.powerbi.com/).
+Most, hogy kaptunk egy kis időt a mintaadatok betöltésére, tekintse meg a [fejlesztéssel](sql-data-warehouse-overview-develop.md) és [betöltéssel](design-elt-data-loading.md)foglalkozó témakört. vagy körülnézhet a [Power BI webhelyén](https://www.powerbi.com/).

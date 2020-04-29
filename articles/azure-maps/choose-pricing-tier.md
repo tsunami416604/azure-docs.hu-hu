@@ -1,6 +1,6 @@
 ---
-title: Válassza ki a megfelelő tarifacsomagot | Microsoft Azure Maps
-description: Ebben a cikkben a Microsoft Azure Maps által kínált tarifacsomagokról olvashat.
+title: Válassza ki a megfelelő árképzési szintet | Microsoft Azure térképek
+description: Ebben a cikkben a Microsoft Azure Maps által kínált díjszabási csomagokat ismerheti meg.
 author: philmea
 ms.author: philmea
 ms.date: 01/15/2020
@@ -9,59 +9,59 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: a8bf7ff9bacd4fe84ee5b64d0aed5cb271ce06f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335660"
 ---
-# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő tarifacsomagot az Azure Mapsben
+# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 
-Az Azure Maps két tarifacsomagot kínál, az S0 és az S1. A cikk célja, hogy segítsen kiválasztani az igényeinek megfelelő tarifacsomagot. A megfelelő tarifacsomag kiválasztásához tegye fel magának a következő két kérdést.
+A Azure Maps két díjszabási szintet kínál: S0 és S1. Ennek a cikknek a célja, hogy segítséget nyújtson az igényeinek megfelelő díjszabási csomag kiválasztásában. A megfelelő árképzési szint kiválasztásához Kérdezzen rá a következő két kérdésre.
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Hány egyidejű felhasználót tervezek támogatni? 
-Az S0 és S1 tarifacsomagok különböző mennyiségű adatátviteli szintet kezelnek. Az S0 tarifacsomag másodpercenként legfeljebb **50 lekérdezést**kezel. Míg az S1 réteg **másodpercenként több mint 50 lekérdezést**kezel.
+A S0 és S1 díjszabási szintjei különböző mennyiségű adatátviteli sebességet kezelnek. A S0 díjszabási szintje másodpercenként legfeljebb **50 lekérdezést**kezel. Míg az S1-es **szinten másodpercenként több mint 50 lekérdezés**kezelhető.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai képességeket tervezek használni?
-Az S0 tarifacsomag megfelelő az Ön számára, ha az alapvető térinformatikai API-k megfelelnek a szolgáltatási követelményeknek. Ha azt szeretné, hogy az alkalmazás fejlettebb képességek, fontolja meg az S1 tarifacsomag választása. A speciális képességek a következők: Légi felvétel és hibrid képek, útvonaltartomány és kötegelt geokódolás. Tekintse át a **tarifacsomag-képességek** táblázatot az alkalmazásnak leginkább megfelelő tarifacsomag kiválasztásához.
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai funkciókat kívánok használni?
+A S0 díjszabási szintje Önnek megfelelő, ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ha fejlettebb funkciókat szeretne használni az alkalmazáshoz, érdemes megfontolnia az S1 árképzési szintet. A speciális képességek többek között a következők: antenna és hibrid képek, az útválasztási tartomány és a Batch-helymeghatározáshoz. Tekintse át a **díjszabási csomag képességeinek** táblázatát, és válassza ki az alkalmazása számára legmegfelelőbb árképzési szintet.
 
-### <a name="pricing-tier-capabilities"></a>Tarifacsomag-képességek
+### <a name="pricing-tier-capabilities"></a>Díjszabási csomag képességei
 
 | Képesség                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Leképezési renderelés                              | ✓                   | ✓       |
-| Műholdképek                       |                     | ✓        |
+| Leképezés megjelenítése                              | ✓                   | ✓       |
+| Szatellit képek                       |                     | ✓        |
 | Keresés                                  | ✓                    | ✓        |
-| Kötegelt keresés                            |                     | ✓        |
+| Batch-keresés                            |                     | ✓        |
 | Útválasztás                                   | ✓                    |✓        |
-| Kötegelt műveletvezetés                            |                    | ✓        |
-| Mátrix-útválasztás                          |                     | ✓        |
-| Útvonaltartomány (Iochronok)                |                     | ✓        |
+| Kötegelt Útválasztás                            |                    | ✓        |
+| Mátrix-Útválasztás                          |                     | ✓        |
+| Útvonal tartománya (izokrón)                |                     | ✓        |
 | Adatforgalom                                |✓                    |✓        |
 | Időzóna                               |✓                    |✓        |
-| Földrajzi helymeghatározás (előzetes verzió)                    |✓                   |✓        |
+| Földrajzi hely (előzetes verzió)                    |✓                   |✓        |
 | Térbeli műveletek                        |                    |✓        |
 | Geokerítések kezelése                                |                    |✓        |
-| Azure Maps-adatok (előzetes verzió)                |                     | ✓        |
+| AdatAzure Maps (előzetes verzió)                |                     | ✓        |
 | Mobilitás (előzetes verzió)                       |                     | ✓        |
 | Időjárás (előzetes verzió)                        |✓                    |✓        |
 
-Tekintsük ezeket a további pontokat:
-* Milyen típusú vállalkozása van?
-* Mennyire kritikus az alkalmazás?
+Vegye figyelembe ezeket a további pontokat:
+* Milyen típusú vállalattal rendelkezik?
+* Mennyire kritikus az alkalmazása?
 
-### <a name="pricing-tier-targeted-customers"></a>Tarifaszintcélzott ügyfelek
+### <a name="pricing-tier-targeted-customers"></a>Árképzési szintek megcélzó ügyfelei
 
-Tekintse meg a **tarifacsomag célzott ügyfelek** táblázat, hogy jobban megismerjék az S0 és S1 tarifacsomagok. További információ: [Azure Maps díjszabás.](https://azure.microsoft.com/pricing/details/azure-maps/) 
+Tekintse meg a **díjszabási szinten megcélozott ügyfelek** táblázatát, hogy jobban érthető legyen a S0 és az S1 díjszabása. További információ: [Azure Maps díjszabása](https://azure.microsoft.com/pricing/details/azure-maps/). 
 
-| Tarifacsomag  |     Megcélzott ügyfelek                                                                |
+| Tarifacsomag  |     Megcélzó ügyfelek                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Az S0 tarifacsomag az alkalmazások számára működik az éles környezet minden szakaszában: a koncepció igazolásától és a korai szakaszban történő teszteléstől az alkalmazás élesg és üzembe helyezéséig. Ez a szint azonban kis léptékű fejlesztésre, vagy alacsony egyidejű felhasználókkal rendelkező ügyfelekre, vagy mindkettőre készült. <p>|
-| S1            |    <p>Az S1 tarifacsomag nagyméretű nagyvállalati alkalmazásokkal, kritikus fontosságú alkalmazásokkal vagy nagy mennyiségű egyidejű felhasználóval rendelkező ügyfelek számára készült. Ez azoknak az ügyfeleknek is szól, akik fejlett térinformatikai szolgáltatásokat igényelnek.</p>|
+| S0            |    <p>A S0 díjszabási szintje az éles környezetben futó alkalmazások számára is működik: a megvalósíthatósági fejlesztéstől és a korai teszteléstől az alkalmazások gyártásához és üzembe helyezéséhez. Ez a réteg azonban kisméretű fejlesztésre, vagy alacsony egyidejű felhasználókkal rendelkező ügyfelekre, vagy mindkettőre lett tervezve. <p>|
+| S1            |    <p>Az S1 díjszabási szintje olyan ügyfelek számára készült, akik nagyméretű nagyvállalati alkalmazásokat, kritikus fontosságú alkalmazásokat vagy nagy mennyiségű egyidejű felhasználót foglalnak magukban. Azok az ügyfelek is, akik speciális térinformatikai szolgáltatásokat igényelnek.</p>|
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a tarifacsomagok megtekintéséről és módosításáról:
+További információ a díjszabási szintek megtekintéséről és módosításáról:
 
 > [!div class="nextstepaction"] 
-> [Tarifacsomag kezelése](how-to-manage-pricing-tier.md)
+> [Árképzési szintek kezelése](how-to-manage-pricing-tier.md)

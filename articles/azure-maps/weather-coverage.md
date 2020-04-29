@@ -1,6 +1,6 @@
 ---
-title: Időjárás-lefedettség | Microsoft Azure Maps
-description: Ebben a cikkben a Microsoft Azure Maps időjárással kapcsolatos lefedettségéről olvashat.
+title: Időjárási lefedettség | Microsoft Azure térképek
+description: Ebben a cikkben a Microsoft Azure Maps időjárási lefedettségével kapcsolatos tudnivalókat talál.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,28 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333572"
 ---
-# <a name="azure-maps-weather-coverage"></a>Az Azure Maps időjárással kapcsolatos lefedettsége
+# <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
-Ez a cikk az Azure Maps [Időjárás-szolgáltatásainak](https://aka.ms/AzureMapsWeatherService)lefedettségi információit tartalmazza. Az Azure Maps Időjárás-szolgáltatás a radarcsempéket, az aktuális időjárási viszonyokat, az időjárás-előrejelzéseket és az útvonal mentén az időjárást adja vissza.
+Ez a cikk a Azure Maps [időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
 
-Az Azure Maps nem rendelkezik azonos szintű információkkal és pontossággal minden ország és régió esetében.
+Azure Maps az összes ország és régió esetében nem rendelkezik azonos szintű információval és pontossággal.
 
-Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási információkat kérhet az egyes országoktól/régióktól.
+Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási információkról nyújt információt.
 
 | Szimbólum | Jelentés |
 |--------|---------|
-|*       |Kiterjed az útvonal mentén időjárással, az aktuális feltételekkel, az óránkénti előrejelzéssel, a negyednapi előrejelzéssel és a napi előrejelzési API-kkal |
+|*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
 ## <a name="americas"></a>Amerika
 
-| Ország/régió              |  Műholdas csempék | Perc előrejelzés, Radar csempék | Egyéb* | 
+| Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktisz                               | ✓ |   |  ✓|
@@ -74,19 +74,19 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Puerto Rico                              | ✓ |   |  ✓| 
-| Szent Barthélemy                         | ✓ |   |  ✓| 
+| Saint Barthélemy                         | ✓ |   |  ✓| 
 | Saint Kitts és Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint Martin                             | ✓ |   |  ✓| 
-| Saint Pierre és Miquelon                | ✓ |   |  ✓| 
+| Saint-Pierre és Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent és Grenadine-szigetek         | ✓ |   |  ✓| 
 | Sint Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
-| Dél-Georgia és Dél-Sandwich-szigetek | ✓ |   |  ✓| 
+| Déli-Georgia és Déli-Sandwich-szigetek | ✓ |   |  ✓| 
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad és Tobago                      | ✓ |   |  ✓| 
 | Turks- és Caicos-szigetek                 | ✓ |   |  ✓| 
-| Az Egyesült Államok külső szigetei                    | ✓ |   |  ✓| 
+| Amerikai Egyesült Államok lakatlan külbirtokai                    | ✓ |   |  ✓| 
 | Amerikai Virgin-szigetek                      | ✓ |   |  ✓| 
 | Egyesült Államok                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -95,7 +95,7 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-| Ország/régió              |  Műholdas csempék | Perc előrejelzés, Radar csempék | Egyéb* | 
+| Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Algéria                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -111,12 +111,12 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 | Csád                        | ✓               |                              |        ✓| 
 | Comore-szigetek                     | ✓               |                              |        ✓| 
 | Kongó (KDK)                 | ✓               |                              |        ✓|
-| Elefántcsontpart               | ✓               |                              |        ✓| 
+| Elefántcsontparti               | ✓               |                              |        ✓| 
 | Dzsibuti                    | ✓               |                              |        ✓| 
 | Egyiptom                       | ✓               |                              |        ✓| 
 | Egyenlítői-Guinea           | ✓               |                              |        ✓| 
 | Eritrea                     | ✓               |                              |        ✓| 
-| eSwatini között                    | ✓               |                              |        ✓| 
+| eSwatini                    | ✓               |                              |        ✓| 
 | Etiópia                    | ✓               |                              |        ✓| 
 | Francia Déli Területek | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
@@ -150,7 +150,7 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 | Katar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Ruanda                      | ✓               |                              |        ✓| 
-| Szent Ilona, Mennybemenetel, Tristan da Cunha        | ✓               |                              |        ✓| 
+| Szent Ilona, Ascension, Tristan da Cunha        | ✓               |                              |        ✓| 
 | São Tomé és Príncipe       | ✓               |                              |        ✓| 
 | Szaúd-Arábia                | ✓               |                              |        ✓| 
 | Szenegál                     | ✓               |                              |        ✓| 
@@ -174,7 +174,7 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-| Ország/régió              |  Műholdas csempék | Perc előrejelzés, Radar csempék | Egyéb* | 
+| Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afganisztán                       | ✓ |   |  ✓| 
 | Amerikai Szamoa                    | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 
 ## <a name="europe"></a>Európa
 
-| Ország/régió              |  Műholdas csempék | Perc előrejelzés, Radar csempék | Egyéb* | 
+| Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albánia                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -299,4 +299,4 @@ Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen időjárási i
 | Törökország                 | ✓ |   |  ✓| 
 | Ukrajna                | ✓ |   |  ✓| 
 | Egyesült Királyság         | ✓ | ✓ |  ✓| 
-| Vatikán           | ✓ |   |  ✓| 
+| Vatikáni Városállam           | ✓ |   |  ✓| 

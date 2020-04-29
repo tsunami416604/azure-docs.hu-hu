@@ -1,6 +1,6 @@
 ---
-title: Reagálás a térképeseményekre az Event Grid használatával | Microsoft Azure Maps
-description: Ebben a cikkben megtudhatja, hogyan reagálhat a Microsoft Azure Maps-eseményekre az Event Grid használatával.
+title: Reagálás az események leképezésére Event Grid használatával | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan reagálhat Microsoft Azure Maps-eseményekre Event Grid használatával.
 author: philmea
 ms.author: philmea
 ms.date: 02/08/2019
@@ -10,31 +10,31 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335721"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagálás az Azure Maps-eseményekre az Event Grid használatával 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Azure Maps eseményekre való reagálás Event Grid használatával 
 
-Az Azure Maps integrálható az Azure Event Griddel, így a felhasználók eseményértesítéseket küldhetnek más szolgáltatásoknak, és elindíthatják az alsóbb rétegbeli folyamatokat. Ez a cikk célja, hogy segítsen beállítani az üzleti alkalmazások at az Azure Maps-események meghallgatására. Ez lehetővé teszi a felhasználók számára, hogy megbízható, skálázható és biztonságos módon reagáljanak a kritikus eseményekre. Például a felhasználók létrehozhatnak egy alkalmazást egy adatbázis frissítéséhez, létrehozhatnak egy jegyet, és e-mailértesítést adhatnak meg minden alkalommal, amikor egy eszköz belép egy geokerítésbe.
+A Azure Maps a Azure Event Gridsal integrálódik, így a felhasználók más szolgáltatásoknak is küldhetnek esemény-értesítéseket, és alsóbb rétegbeli folyamatokat indíthatnak. Ennek a cikknek a célja, hogy segítséget nyújtson az üzleti alkalmazások konfigurálásában Azure Maps események figyelésére. Ez lehetővé teszi a felhasználók számára, hogy megbízható, méretezhető és biztonságos módon reagáljanak a kritikus eseményekre. A felhasználók például létrehozhatnak egy alkalmazást egy adatbázis frissítéséhez, egy jegy létrehozásához és egy e-mail-értesítés kézbesítéséhez, valahányszor egy eszköz bekerül egy geokerítésen.
 
-Az Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi-előfizetési modellt használ. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokhoz, például az [Azure Functionshez](https://docs.microsoft.com/azure/azure-functions/functions-overview) és az [Azure Logic Apps ekhez.](https://docs.microsoft.com/azure/azure-functions/functions-overview) Eseményriasztásokat biztosíthat a nem Azure-szolgáltatások webhookok használatával. Az Event Grid által támogatott eseménykezelők teljes listáját az [Azure Event Grid bemutatkozása](https://docs.microsoft.com/azure/event-grid/overview)című témakörben található.
-
-
-![Az Azure Event Grid funkcionális modellje](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
+A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. A Event Grid beépített támogatást nyújt az Azure-szolgáltatások, például a [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) és a [Azure Logic apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)számára. A webhookok használatával az események riasztásait nem Azure-szolgáltatásokhoz is kézbesítheti. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](https://docs.microsoft.com/azure/event-grid/overview)című témakört.
 
 
-## <a name="azure-maps-events-types"></a>Az Azure Maps eseménytípusai
+![Azure Event Grid funkcionális modell](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
 
-Az eseményrács [esemény-előfizetéseket](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) használ az eseményüzenetek előfizetőkhöz való irányításához. Az Azure Maps-fiók a következő eseménytípusokat bocsátja ki: 
+
+## <a name="azure-maps-events-types"></a>Azure Maps események típusai
+
+Az Event Grid [esemény-előfizetések](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Egy Azure Maps fiók a következő típusú eseményeket bocsátja ki: 
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Amikor a kapott koordináták egy adott geokerítésen kívülről a megadott geokerítésen belülre |
-| Microsoft.Maps.GeofenceKilépett | Ha a kapott koordináták egy adott geokerítésen belülről külső |
-| Microsoft.Maps.GeofenceEredmény | Minden alkalommal, amikor egy geofencing lekérdezés eredményt ad vissza, függetlenül az állapottól |
+| Microsoft. maps. GeofenceEntered | Akkor következik be, amikor a fogadott koordináták egy adott geokerítésen kívülre kerültek a következőn belül: |
+| Microsoft. maps. GeofenceExited | Akkor következik be, amikor a fogadott koordináták egy adott geokerítésen kívülre lettek helyezve |
+| Microsoft. maps. GeofenceResult | Minden alkalommal, amikor egy geokerítések-lekérdezés eredményt ad vissza, az állapottól függetlenül |
 
 ## <a name="event-schema"></a>Eseményséma
 
@@ -76,17 +76,17 @@ A következő példa a GeofenceResult sémáját mutatja be:
 }
 ```
 
-## <a name="tips-for-consuming-events"></a>Tippek az események használatához
+## <a name="tips-for-consuming-events"></a>Tippek az események fogyasztásához
 
-Az Azure Maps geokerítés-eseményeit kezelő alkalmazásoknak néhány ajánlott gyakorlatot kell követniük:
+Az Azure Maps geokerítésen-eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlatot követniük kell:
 
-* Konfiguráljon több előfizetést az események ugyanazon eseménykezelőhöz való továbbításához. Fontos, hogy ne feltételezze, hogy az események egy adott forrásból származnak. Mindig ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az üzenet a várt forrásból érkezett.
-* A `X-Correlation-id` válaszfejléc mezője segítségével megtudhatja, hogy az objektumokkal kapcsolatos információk naprakészek-e. Az üzenetek nem sorrendben vagy késleltetés után érkezhetnek.
-* Ha a Geofence API-ban get vagy post a kérelmet hív meg `EnterAndExit`a módparaméter beállítása , majd egy Enter vagy Exit esemény jön létre a geokerítés minden olyan geometriájához, amelynek állapota megváltozott az előző Geofence API-híváshoz képest.
+* Több előfizetést konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához. Fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak. Mindig ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az üzenet a várt forrásból származik.
+* A válasz `X-Correlation-id` fejlécében található mező segítségével megtudhatja, hogy az objektumok adatai naprakészek-e. Az üzenetek megérkeznek a sorrendbe, vagy késés után is.
+* Ha a Geokerítésen API-ban a GET vagy a POST kérést a (z) paraméterrel `EnterAndExit`beállított Mode paraméterrel hívja meg, akkor létrejön egy Enter vagy Exit esemény a geokerítésen minden olyan geometriájában, amelynek az állapota módosult az előző geokerítésen API-hívásból.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni arról, hogyan használhatja a geofencing-t az építési műveletek ellenőrzésére, olvassa el az:
+Ha többet szeretne megtudni arról, hogyan használhatja a geokerítések-t egy építkezési helyen lévő műveletek vezérlésére, tekintse meg a következőt:
 
 > [!div class="nextstepaction"] 
-> [Geokerítés beállítása az Azure Maps használatával](tutorial-geofence.md)
+> [Geokerítésen beállítása Azure Maps használatával](tutorial-geofence.md)

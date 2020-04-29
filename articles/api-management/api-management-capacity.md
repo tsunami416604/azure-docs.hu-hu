@@ -1,6 +1,6 @@
 ---
-title: Egy Azure API Management példány kapacitása | Microsoft dokumentumok
-description: Ez a cikk ismerteti, mi a kapacitás metrika, és hogyan hozhat megalapozott döntéseket arról, hogy egy Azure API-felügyeleti példány méretezése.
+title: Azure API Management-példány kapacitása | Microsoft Docs
+description: Ez a cikk ismerteti, hogy mi a kapacitás mérőszáma, és hogyan lehet megalapozott döntéseket hozni az Azure API Management-példányok skálázásához.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,97 +13,97 @@ ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80336008"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Az Azure API Management-példányok kapacitása
 
-**A kapacitás** a legfontosabb [Azure Monitor-metrika,](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) amely megalapozott döntéseket hoz arról, hogy egy API Management-példányt skáláz-e a nagyobb terhelés hez. Építése összetett és bizonyos viselkedést ír elő.
+A **kapacitás** a legfontosabb [Azure monitor mérőszám](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) ahhoz, hogy megalapozott döntéseket hozhasson a API Management-példányok nagyobb terheléshez való méretezése érdekében. Az építkezés összetett, és bizonyos viselkedést ró.
 
-Ez a cikk ismerteti, hogy mi a **kapacitás,** és hogyan viselkedik. Bemutatja, hogyan **capacity** érheti el a kapacitásmetrikákat az Azure Portalon, és azt javasolja, hogy mikor vegye figyelembe az API Management-példány méretezését vagy frissítését.
+Ez a cikk a **kapacitást** és a működésének módját ismerteti. Bemutatja, hogyan érheti el a Azure Portal **kapacitás** metrikáit, és hogy mikor érdemes megfontolni a API Management-példány méretezését vagy frissítését.
 
 > [!IMPORTANT]
-> Ez a cikk bemutatja, hogyan figyelheti és skálázhatja az Azure API Management-példány kapacitásmetrikája alapján. Ugyanakkor ugyanilyen fontos megérteni, hogy mi történik, ha egy adott API Management-példány ténylegesen *elérte* a kapacitását. Az Azure API Management nem alkalmaz semmilyen szolgáltatásszintű szabályozást a példányok fizikai túlterhelésének megelőzése érdekében. Amikor egy példány eléri a fizikai kapacitását, hasonlóan fog elhasználódni minden olyan túlterhelt webkiszolgálóhoz, amely nem tudja feldolgozni a bejövő kérelmeket: a késés növekedni fog, a kapcsolatok megszakadnak, időtúllépési hibák lépnek fel stb. Ez azt jelenti, hogy az API-ügyfeleknek fel kell készülniük arra, hogy ezt a lehetőséget ugyanúgy kezeljék, mint bármely más külső szolgáltatást (pl. újrapróbálkozási házirendek alkalmazásával).
+> Ebből a cikkből megtudhatja, hogyan figyelheti és méretezheti az Azure API Management-példányát a kapacitás mérőszáma alapján. Ugyanakkor fontos tisztában lenni azzal, hogy mi történik, ha egy adott API Management-példány ténylegesen *elérte* a kapacitását. Az Azure API Management nem alkalmaz semmilyen szolgáltatási szintű szabályozást, hogy megakadályozza a példányok fizikai túlterhelését. Ha egy példány eléri a fizikai kapacitását, az a túlterhelt webkiszolgálóhoz hasonlóan fog működni, amely nem tudja feldolgozni a bejövő kérelmeket: a késés növekedni fog, a kapcsolatok megszakadnak, időtúllépési hibák lépnek fel, stb. Ez azt jelenti, hogy az API-ügyfeleknek fel kell készülniük arra, hogy hasonló módon kezeljék ezt a lehetőséget, mint bármely más külső szolgáltatáshoz (például újrapróbálkozási szabályzatok alkalmazásával).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk ben leírt lépések követéséhez a következőkre van szüksége:
+A cikk lépéseinek követéséhez a következőket kell tennie:
 
 + Aktív Azure-előfizetés.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Egy APIM-példány. További információ: [Create an Azure API Management instance](get-started-create-service-instance.md).
++ Egy APIM-példány. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="what-is-capacity"></a>Mi a kapacitás
+## <a name="what-is-capacity"></a>Mi az a kapacitás?
 
 ![Kapacitási mérőszám](./media/api-management-capacity/capacity-ingredients.png)
 
-**A kapacitás** egy API Management-példány terhelésének jelzője. Ez tükrözi az erőforrások használatát (CPU, memória) és a hálózati várólista hossza. A PROCESSZOR- és memóriahasználat a következők segítségével tárja fel az erőforrások felhasználását:
+A **kapacitás** egy API Management-példány terhelésének kijelzője. Az erőforrások felhasználását (CPU, memória) és a hálózati üzenetsor hosszát tükrözi. A processzor-és memóriahasználat az erőforrások felhasználását mutatja:
 
-+ API-kezelés adatsík-szolgáltatások, például a kérelmek feldolgozása, amely magában foglalhatja a kérelmek továbbítása vagy a szabályzat futtatása.
-+ Az API Management management síkszolgáltatások, például az Azure Portalon vagy az ARM-on keresztül alkalmazott felügyeleti műveletek, vagy a [fejlesztői portálról](api-management-howto-developer-portal.md)érkező terhelés.
-+ A kiválasztott operációsrendszer-folyamatok, beleértve azokat a folyamatokat is, amelyek az új kapcsolatokra vonatkozó TLS-kézfogások költségét foglalják magukban.
++ API Management adatközpont-szolgáltatásokat, például a kérelmek feldolgozását, amely tartalmazhat továbbítási kéréseket vagy házirendet futtat.
++ API Management a felügyeleti sík szolgáltatásai, például az Azure Portalon vagy az ARM-on keresztül alkalmazott felügyeleti műveletek, illetve a [fejlesztői portálról](api-management-howto-developer-portal.md)érkező betöltések.
++ Kiválasztott operációsrendszer-folyamatok, beleértve az új kapcsolatokon a TLS-kézfogások költségeit érintő folyamatokat.
 
-A teljes **kapacitás** a saját értékeinek átlaga egy API Management-példány minden egységéből.
+A teljes **kapacitás** a saját értékeit egy API Management példány minden egységének átlaga.
 
-Bár a **kapacitásmetrika** úgy van kialakítva, hogy problémákat okozz az API Management-példánysal, vannak olyan esetek, amikor a problémák nem jelennek meg a **kapacitásmetrika**változásaiban.
+Bár a **Kapacitási metrika** úgy lett kialakítva, hogy problémákba ütközik a API Management-példánnyal, vannak olyan esetek, amikor problémák nem tükröződnek a **kapacitás metrikájának**változásaiban.
 
-## <a name="capacity-metric-behavior"></a>Kapacitásmérő viselkedése
+## <a name="capacity-metric-behavior"></a>Kapacitás metrikájának viselkedése
 
-Az építés miatt a valós **életkapacitásra** számos változó hatással lehet, például:
+Az építkezés miatt a valós életben számos változó befolyásolhatja a valós **kapacitást** , például:
 
-+ kapcsolati minták (új kapcsolat kérésre és a meglévő kapcsolat újrafelhasználása)
-+ a kérelem és a válasz mérete
-+ az egyes API-kon vagy a kéréseket küldő ügyfelek számán konfigurált házirendek.
++ kapcsolatok mintázata (új kapcsolatok a kérelemben és a meglévő kapcsolatok újrafelhasználása)
++ kérelem és válasz mérete
++ az egyes API-k és a kérelmeket küldő ügyfelek száma alapján konfigurált szabályzatok.
 
-Minél összetettebb műveletek a kérelmek, annál nagyobb a **kapacitás-fogyasztás** lesz. Például az összetett átalakítási házirendek sokkal több PROCESSZORt fogyasztanak, mint egy egyszerű kérelemtovábbítás. Lassú háttér szolgáltatás válasz akarat növekszik ez túl.
+A kérések összetettebb műveletei, annál nagyobb a **kapacitás** -felhasználás. Az összetett átalakítási házirendek például sokkal több PROCESSZORt használnak, mint egy egyszerű kérelem továbbítása. A háttérbeli szolgáltatásokra adott válaszok lassan növekedni fognak.
 
 > [!IMPORTANT]
-> **A kapacitás** nem a feldolgozott kérelmek számának közvetlen mérőszáma.
+> A **kapacitás** nem a feldolgozott kérelmek számának közvetlen mértéke.
 
-![Kapacitásmetrikus csúcsok](./media/api-management-capacity/capacity-spikes.png)
+![Kapacitás metrikájának tüskék](./media/api-management-capacity/capacity-spikes.png)
 
-**A kapacitás** is kiugró szakaszosan, vagy nagyobb, mint nulla akkor is, ha nincsenek feldolgozás alatt nem kérelmek feldolgozása. Ez a rendszer- vagy platformspecifikus műveletek miatt történik, és nem szabad figyelembe venni annak eldöntésekor, hogy egy példányméretezése megtörtént-e.
+A **kapacitás** időszakosan vagy nullánál nagyobb lehet, még akkor is, ha nincsenek feldolgozva kérelmek. Ez a rendszer-vagy platform-specifikus műveletek miatt fordul elő, és nem kell figyelembe vennie a példányok méretezésének eldöntése során.
 
-Az alacsony **kapacitásmérő** nem feltétlenül jelenti azt, hogy az API Management-példány nem tapasztal semmilyen problémát.
+Az alacsony **kapacitású metrika** nem feltétlenül jelenti azt, hogy a API Management-példány nem tapasztal problémát.
   
-## <a name="use-the-azure-portal-to-examine-capacity"></a>Az Azure Portal használata a kapacitás vizsgálatához
+## <a name="use-the-azure-portal-to-examine-capacity"></a>A kapacitás vizsgálata az Azure Portal használatával
   
 ![Kapacitási mérőszám](./media/api-management-capacity/capacity-metric.png)  
 
-1. Nyissa meg az APIM-példányt az [Azure Portalon.](https://portal.azure.com/)
+1. Navigáljon a [Azure Portal](https://portal.azure.com/)APIM-példányához.
 2. Válassza a **Metrika** lehetőséget.
-3. A lila szakaszban válassza **kapacitás metrika** a rendelkezésre álló metrikák, és hagyja meg az alapértelmezett **avg** összesítés.
+3. A lila szakaszban válassza ki a **kapacitás** metrikája lehetőséget a rendelkezésre álló metrikák közül, és hagyja meg az alapértelmezett **AVG** összesítést.
 
     > [!TIP]
-    > Mindig tekintse meg a **kapacitás** metrikus bontáshely helyenként, hogy elkerüljék a téves értelmezések.
+    > A helytelen értelmezések elkerülése érdekében mindig tekintse meg a **kapacitás** metrikájának részletezését.
 
-4. A zöld szakaszban válassza a **Hely lehetőséget** a metrika dimenzió szerint történő felosztásához.
-5. Válassza ki a kívánt időkeretet a szakasz felső sávjából.
+4. A zöld szakaszban válassza a **hely** lehetőséget a metrika dimenzió szerinti felosztásához.
+5. Válasszon egy kívánt időkeretet a szakasz felső sávján.
 
-    Beállíthat egy metrikariasztást, amely értesíti, ha valami váratlan történik. Például értesítést kaphat, ha az APIM-példány több mint 20 percig túllépte a várható csúcskapacitást.
+    Beállíthat egy metrikai riasztást, amely értesíti, ha váratlan esemény történik. Például értesítést kaphat, ha a APIM-példány több mint 20 percen belül túllépte a várt maximális kapacitást.
 
     >[!TIP]
-    > Beállíthatja, hogy a riasztások, hogy tudassa, ha a szolgáltatás kapacitása alacsony, vagy használja az Azure Monitor automatikus skálázási funkció automatikusan hozzá egy Azure API Management egység automatikusan hozzá. A skálázási művelet körülbelül 30 percet is igénybe vehet, ezért ennek megfelelően kell megterveznie a szabályokat.  
-    > Csak a főhely méretezése engedélyezett.
+    > Beállíthatja, hogy a riasztások segítségével jelezze, ha a szolgáltatás alacsony kapacitású, vagy ha Azure Monitor automatikus skálázási funkciót használ az Azure API Management-egység automatikus hozzáadásához. A skálázási művelet körülbelül 30 percet vesz igénybe, ezért a szabályokat ennek megfelelően kell megterveznie.  
+    > Csak a fő hely skálázása engedélyezett.
 
-## <a name="use-capacity-for-scaling-decisions"></a>Kapacitás használata a döntések méretezése során
+## <a name="use-capacity-for-scaling-decisions"></a>Kapacitás használata méretezési döntések meghozatalához
 
-**A kapacitás** a metrika, amely eldönti, hogy egy API Management-példány méretezése több terhelés t. Megfontolandó szempontok:
+A **kapacitás** azt a mérőszámot határozza meg, amely szerint a API Management-példány skálázása nagyobb terheléshez igazodik. Megfontolandó szempontok:
 
-+ Keresi a hosszú távú trend és az átlagos.
-+ Figyelmen kívül hagyva a hirtelen kiugrásokat, amelyek valószínűleg nem kapcsolódnak a terhelés növekedéséhez (magyarázatért lásd a "Kapacitás metrika viselkedése" című szakaszt).
-+ A példány frissítése vagy méretezése, ha a **kapacitás**értéke hosszabb ideig (például 30 perc) meghaladja a 60%-ot vagy a 70%-ot. A különböző értékek jobban működhetnek a szolgáltatás vagy a forgatókönyv számára.
++ Hosszú távú trendet és átlagot vizsgálunk.
++ Figyelmen kívül hagyva a hirtelen tüskéket, amelyek valószínűleg nem kapcsolódnak a terhelés növekedéséhez (lásd a "kapacitás metrikájának viselkedése" szakaszt a magyarázathoz).
++ A példány frissítése vagy méretezése, ha a **kapacitás**értéke hosszabb ideig meghaladja a 60%-ot vagy a 70%-ot (például 30 perc). A különböző értékek jobban működhetnek a szolgáltatásban vagy a forgatókönyvben.
 
 >[!TIP]  
-> Ha előre meg tudja becsülni a forgalmat, tesztelje az APIM-példányt a várt számítási feladatokon. Fokozatosan növelheti a bérlői kérelemterhelést, és figyelheti, hogy a kapacitásmetrika milyen értéke felel meg a csúcsterhelésnek. Kövesse az előző szakaszlépéseit az Azure Portal használatához, hogy megértse, mekkora kapacitást használ fel egy adott időpontban.
+> Ha előre tudja megbecsülni a forgalmat, tesztelje a APIM-példányt a várt számítási feladatokon. A kérések terhelését fokozatosan növelheti a bérlőn, és megfigyelheti, hogy a kapacitás metrikájának mekkora értéke felel meg a maximális terhelésnek. Az előző szakasz lépéseit követve Azure Portal használatával megtudhatja, mennyi kapacitást használ a rendszer egy adott időpontban.
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure API Management szolgáltatáspéldány méretezése vagy frissítése](upgrade-and-scale.md)
+[Azure API Management Service-példány méretezése vagy frissítése](upgrade-and-scale.md)

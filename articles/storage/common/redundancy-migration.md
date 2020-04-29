@@ -1,7 +1,7 @@
 ---
-title: Tárfiók replikálásának módosítása
+title: A Storage-fiók replikálási módjának módosítása
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan módosíthatja a meglévő tárfiók ban lévő adatok replikálásának módját.
+description: Megtudhatja, hogyan replikálhatja a meglévő Storage-fiókokban lévő információkat.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,62 +11,62 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337071"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálásának módosítása
+# <a name="change-how-a-storage-account-is-replicated"></a>A Storage-fiók replikálási módjának módosítása
 
-Az Azure Storage mindig tárolja az adatok több példányát, hogy védve legyenak a tervezett és nem tervezett eseményekkel szemben, beleértve az átmeneti hardverhibákat, a hálózati vagy áramkimaradásokat és a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a tárfiók még a hibák ellenére is megfeleljen az [Azure Storage szolgáltatásiszintű szerződésének (SLA).](https://azure.microsoft.com/support/legal/sla/storage/)
+Az Azure Storage mindig több példányban tárolja az adatait, így védve van a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardver meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a Storage-fiókja a meghibásodások előtt is teljesítse az [Azure Storage szolgáltatói szerződését (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) .
 
-Az Azure Storage a következő típusú replikációt kínálja:
+Az Azure Storage a következő típusú replikációkat kínálja:
 
 - Helyileg redundáns tárolás (LRS)
 - Zónaredundáns tárolás (ZRS)
-- Georedundáns tárolás (GRS) vagy olvasási hozzáférésű georedundáns tárolás (RA-GRS)
-- Geozónaredundáns tárolás (GZRS) vagy olvasási hozzáférésű geozónaredundáns tárolás (RA-GZRS) (előzetes verzió)
+- Geo-redundáns tárolás (GRS) vagy olvasási hozzáférés geo-redundáns tárolás (RA-GRS)
+- Geo-Zone-redundáns tárolás (GZRS) vagy olvasási hozzáférés geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)
 
-Az egyes beállítások áttekintését az [Azure Storage redundanciája](storage-redundancy.md)című témakörben találja.
+Az egyes lehetőségek áttekintését az [Azure Storage redundancia](storage-redundancy.md)című témakörben tekintheti meg.
 
-## <a name="switch-between-types-of-replication"></a>Váltás a replikáció típusai között
+## <a name="switch-between-types-of-replication"></a>Váltás a replikálási típusok között
 
-A tárfiókot az egyik típusú replikációról bármely más típusra válthat, de egyes esetek egyszerűbbek, mint mások. Ha georeplikációt vagy olvasási hozzáférést szeretne hozzáadni vagy eltávolítani a másodlagos régióhoz, használhatja az Azure Portalt, a PowerShellt vagy az Azure CLI-t a replikációs beállítás frissítéséhez. Ha azonban módosítani szeretné az adatok replikálásának módját az elsődleges régióban, az LRS-ről a ZRS-re való áttéréssel vagy fordítva, manuális áttelepítést kell végrehajtania.
+A Storage-fiókokat az egyik típusú replikációból bármilyen más típusra válthat, de egyes forgatókönyvek egyszerűbbek, mint mások. Ha a másodlagos régióhoz földrajzi replikálást vagy olvasási hozzáférést szeretne hozzáadni vagy eltávolítani, akkor a Azure Portal, a PowerShell vagy az Azure CLI használatával frissítheti a replikálási beállítást. Ha azonban módosítani szeretné az adatok replikálásának módját az elsődleges régióban, a LRS-ról ZRS-re való áthelyezéssel vagy fordítva, akkor manuális áttelepítést kell végeznie.
 
-Az alábbi táblázat áttekintést nyújt az egyes replikációtípusokról a másikra való váltásról:
+Az alábbi táblázat áttekintést nyújt az egyes replikálási típusokról a másikra való váltásról:
 
-| Kapcsol | ... az LRS-hez | ... GRS/RA-GRS-re | ... a ZRS-hez | ... a GZRS/RA-GZRS-hez |
+| Váltás | ... LRS | ... GRS/RA-GRS | ... ZRS | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... innen: LRS</b> | N/A | Az Azure Portal, a PowerShell vagy a CLI használata az<sup>1</sup> replikációs beállítás módosításához | Kézi áttelepítés végrehajtása <br /><br />Élő áttelepítés kérése | Kézi áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson grs/RA-GRS-re, majd kérjen élő áttelepítést<sup>1</sup> |
-| <b>... innen: GRS/RA-GRS</b> | Az Azure Portal, a PowerShell vagy a CLI használata a replikációs beállítás módosításához | N/A | Kézi áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson LRS-re, majd kérjen élő áttelepítést | Kézi áttelepítés végrehajtása <br /><br /> Élő áttelepítés kérése |
-| <b>... innen: ZRS</b> | Kézi áttelepítés végrehajtása | Kézi áttelepítés végrehajtása | N/A | Az Azure Portal, a PowerShell vagy a CLI használata az<sup>1</sup> replikációs beállítás módosításához |
-| <b>... innen: GZRS/RA-GZRS</b> | Kézi áttelepítés végrehajtása | Kézi áttelepítés végrehajtása | Az Azure Portal, a PowerShell vagy a CLI használata a replikációs beállítás módosításához | N/A |
+| <b>... LRS</b> | N/A | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br />Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
+| <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> Élő áttelepítés kérése |
+| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával |
+| <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A |
 
-<sup>1</sup> Egyszeri kimenő terhelést jelent.
+<sup>1</sup> egyszeri kimenő díj.
 
 > [!CAUTION]
-> Ha a (RA)GRS vagy (RA-)GZRS-fiók hoz létre [egy fiókfeladat-átvételt,](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) akkor az új elsődleges régióban helyileg redundánsként van konfigurálva. Az ilyen LRS-fiókokra való élő áttérés zrs-re vagy GZRS-re nem támogatott. [Manuális áttelepítést](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)kell végrehajtania.
+> Ha a (RA-) GRS vagy (RA-) GZRS fiók [feladatátvételét](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) hajtotta végre, az az új elsődleges régióban helyileg redundánsként van konfigurálva. Az ilyen LRS-fiókok ZRS vagy GZRS való élő áttelepítése nem támogatott. [Manuális áttelepítést](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)kell végeznie.
 
-## <a name="change-the-replication-setting"></a>A replikációs beállítás módosítása
+## <a name="change-the-replication-setting"></a>Replikációs beállítás módosítása
 
-Az Azure Portalon, a PowerShellben vagy az Azure CLI-ben módosíthatja a tárfiók replikációs beállítását, feltéve, hogy nem módosítja az adatok replikálásának módját az elsődleges régióban. Ha az elsődleges régióLRS-ről az elsődleges régióban lévő ZRS-re, vagy fordítva, [manuális vagy](#perform-a-manual-migration-to-zrs) [élő áttelepítést](#request-a-live-migration-to-zrs)kell végrehajtania.
+A Azure Portal, a PowerShell vagy az Azure CLI használatával módosíthatja a Storage-fiókok replikálási beállításait, ha nem módosítja az elsődleges régióban lévő adatreplikálás módját. Ha az elsődleges régióban lévő LRS-ről kíván áttelepítést végezni az elsődleges régióban lévő ZRS, vagy fordítva, akkor [manuális áttelepítést](#perform-a-manual-migration-to-zrs) vagy [élő áttelepítést](#request-a-live-migration-to-zrs)kell végrehajtania.
 
-A tárfiók replikálásimódjának módosítása nem eredményez állásidőt az alkalmazások számára.
+A Storage-fiók replikálásának módosítása nem eredményezi az alkalmazásokhoz való időkorlátot.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-A tárfiók redundanciabeállításának módosításához kövesse az alábbi lépéseket:
+Ha módosítani szeretné a Storage-fiókjához tartozó redundancia beállítást a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
-1. Válassza a **Konfiguráció** beállítást.
-1. Frissítse a **replikációs** beállítást.
+1. Válassza ki a **konfigurációs** beállítást.
+1. Frissítse a **replikálási** beállítást.
 
-![Képernyőkép a replikációs beállítás módosításáról a portálon](media/redundancy-migration/change-replication-option.png)
+![A portál replikációs lehetőségének módosítását bemutató képernyőkép](media/redundancy-migration/change-replication-option.png)
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A PowerShell-fiók redundanciabeállításának módosításához hívja meg a [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot, és adja meg a `-SkuName` paramétert:
+Ha módosítani szeretné a Storage-fiók redundancia beállítását a PowerShell-lel, hívja meg a [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot, és adja meg a `-SkuName` következő paramétert:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -76,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A tárfiók redundanciabeállításának az Azure CLI-vel való módosításához `--sku` hívja meg az [az storage-fiók frissítési](/cli/azure/storage/account#az-storage-account-update) parancsát, és adja meg a paramétert:
+Ha módosítani szeretné a Storage-fiókjához tartozó redundancia beállítást az Azure CLI-vel, hívja meg az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) parancsot, és adja meg a `--sku` következő paramétert:
 
 ```azurecli-interactive
 az storage account update \
@@ -87,84 +87,84 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>Kézi áttelepítés végrehajtása a ZRS-be
+## <a name="perform-a-manual-migration-to-zrs"></a>Manuális áttelepítés ZRS
 
-Ha módosítani szeretné, hogyan replikálja a tárfiókban lévő adatok replikálása az elsődleges régióban, az LRS-ről a ZRS-re való áttéréssel vagy fordítva, akkor manuális áttelepítést hajthat végre. A manuális migrálás az élő migrálásnál nagyobb rugalmasságot biztosít. Ön szabályozhatja a manuális áttelepítés időzítését, ezért használja ezt a lehetőséget, ha az áttelepítést egy bizonyos dátumig kell végrehajtania.
+Ha módosítani szeretné a Storage-fiókban lévő adatok replikálásának módját az elsődleges régióban, akkor a LRS-ről ZRS-re való áttéréssel vagy fordítva, akkor dönthet úgy, hogy manuális áttelepítést hajt végre. A manuális migrálás az élő migrálásnál nagyobb rugalmasságot biztosít. A manuális áttelepítés időzítését szabályozhatja, ezért akkor használja ezt a beállítást, ha az áttelepítésnek egy adott dátummal kell végrehajtania.
 
-Amikor manuális áttelepítést hajt végre lrs-ről ZRS-re az elsődleges régióban vagy fordítva, a céltárfiók georedundáns lehet, és a másodlagos régió olvasási hozzáféréséhez is konfigurálható. Egy LRS-fiókot például egy lépésben áttelepíthet egy GZRS- vagy RA-GZRS-fiókba.
+Ha manuális áttelepítést végez a LRS-ből az elsődleges régióban lévő ZRS, vagy fordítva, a célként megadott Storage-fiók földrajzilag redundáns lehet, és a másodlagos régió olvasási hozzáférésére is konfigurálható. Egy lépésben például áttelepítheti egy LRS-fiókot egy GZRS vagy RA-GZRS-fiókba.
 
-A manuális áttelepítés alkalmazásleállást eredményezhet. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő migrálási lehetőséget is biztosít. Az élő migrálás egy állásidő nélküli, helyszíni migrálás.
+A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő migrálási lehetőséget is biztosít. Az élő migrálás egy állásidő nélküli, helyszíni migrálás.
 
-A manuális áttelepítés, az adatokat a meglévő tárfiókból egy új tárfiókba, amely zrs az elsődleges régióban. Manuális áttelepítés végrehajtásához az alábbi lehetőségek közül választhat:
+Manuális áttelepítés esetén a meglévő Storage-fiókból származó adatok másolása egy új, az elsődleges régióban ZRS használó Storage-fiókba. Manuális áttelepítés végrehajtásához a következő lehetőségek közül választhat:
 
-- Adatok másolása egy meglévő eszköz, például az AzCopy, az Egyik Az Azure Storage-ügyfélkódtárak, vagy egy megbízható külső eszköz használatával.
-- Ha ismeri a Hadoop vagy a HDInsight, csatolhatja mind a forrástárfiók és a céltárfiók fiók a fürthöz. Ezután párhuzamosítsa az adatmásolási folyamatot egy olyan eszközzel, mint a DistCp.
+- Az Adatmásolás egy meglévő eszközzel, például a AzCopy, az egyik Azure Storage ügyféloldali kódtár vagy egy megbízható, harmadik féltől származó eszköz használatával.
+- Ha már ismeri a Hadoop-t vagy a HDInsight-t, csatolhatja a forrás-és a cél Storage-fiók fiókját is a fürthöz. Ezután integrálással az adatmásolási folyamatot egy olyan eszközzel, mint a DistCp.
 
-## <a name="request-a-live-migration-to-zrs"></a>Élő áttelepítés kérése a ZRS-re
+## <a name="request-a-live-migration-to-zrs"></a>Élő áttelepítés kérése a ZRS-be
 
-Ha a tárfiókot LRS-ről vagy GRS-ről zrs-re kell áttelepítenie az elsődleges régióban, alkalmazásállás nélkül, kérheti a Microsofttól az élő áttelepítést. Az élő áttelepítés során hozzáférhet a tárfiókban lévő adatokhoz, a tartósság és a rendelkezésre állás elvesztése nélkül. Az Azure Storage SLA az áttelepítési folyamat során megmarad. Az élő áttelepítéshez nincs adatvesztés társítva. A szolgáltatásvégpontok, a hozzáférési kulcsok, a megosztott hozzáférés-aláírások és az egyéb fiókbeállítások az áttelepítés után változatlanok maradnak.
+Ha a Storage-fiókot a LRS vagy a GRS-ből kell áttelepítenie az elsődleges régióban az alkalmazás leállása nélkül, akkor a Microsofttól élő áttelepítést igényelhet. Az élő áttelepítés során hozzáférhet a Storage-fiókban tárolt adataihoz, és a tartósság és a rendelkezésre állás elvesztése nélkül is elérhető. Az Azure Storage SLA az áttelepítési folyamat során megmarad. Az élő áttelepítéshez nem tartozik adatvesztés. A szolgáltatás-végpontok, a hozzáférési kulcsok, a közös hozzáférésű aláírások és az egyéb Fiókbeállítások az áttelepítés után változatlanok maradnak.
 
-A ZRS csak az általános célú v2-fiókokat támogatja, ezért a tárfiók frissítése előtt frissítse a ZRS-re irányuló élő áttelepítési kérelmet. További információ: [Frissítés általános célú v2-es tárfiókra.](storage-account-upgrade.md) A tárfióknak olyan adatokat kell tartalmaznia, amelyeket élő áttelepítéssel kell áttelepíteni.
+A ZRS csak az általános célú v2-fiókokat támogatja, ezért mindenképpen frissítse a Storage-fiókját, mielőtt beküld egy élő áttelepítésre vonatkozó kérést a ZRS-be. További információ: [frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md). A Storage-fióknak tartalmaznia kell az áttelepíteni kívánt, élő áttelepítéssel kapcsolatos adatátvitelt.
 
-Az élő áttelepítés csak LRS- vagy GRS-replikációt használó tárfiókok esetén támogatott. Ha fiókja RA-GRS-t használ, akkor a folytatás előtt módosítania kell a fiók replikációs típusát LRS-re vagy GRS-re. Ez a köztes lépés eltávolítja a másodlagos csak olvasható végpont által biztosított RA-GRS áttelepítés előtt.
+Az élő áttelepítés csak LRS vagy GRS replikálást használó Storage-fiókok esetén támogatott. Ha a fiókja RA-GRS-t használ, előbb módosítania kell a fiók replikálási típusát a LRS vagy a GRS értékre a továbblépés előtt. Ez a közbenső lépés eltávolítja az RA-GRS által az áttelepítés előtt megadott másodlagos írásvédett végpontot.
 
 Bár a Microsoft azonnal kezeli az élő migrálási kérelmet, a migrálás befejezésének időpontjára nem vállal garanciát. Ha egy adott időpontig szükséges az adatok ZRS-re való migrálása, a Microsoft a manuális migrálás végrehajtását javasolja. Minél több adat található a fiókban, általában annál tovább tart az adatok migrálása.
 
 Manuális áttelepítést kell végrehajtania, ha:
 
-- Az adatokat egy ZRS-tárfiókba szeretné áttelepíteni, amely a forrásfióktól eltérő régióban található.
-- A tárfiók egy prémium szintű lapblob vagy blokk blob fiók.
-- Adatokat szeretne áttelepíteni a ZRS-ről az LRS, GRS vagy RA-GRS-re.
-- A tárfiók adatokat tartalmaz az archív rétegben.
+- Az adatait olyan ZRS szeretné áttelepíteni, amely a forrásoldali fióktól eltérő régióban található.
+- A Storage-fiók egy prémium szintű oldal blobja vagy egy blob-fiók blokkolása.
+- Az adatok áttelepíthetők a ZRS-ből LRS, GRS vagy RA-GRS.
+- A Storage-fiók az archiválási szinten található adatokkal is rendelkezik.
 
-Élő áttelepítést kérhet az [Azure Támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)keresztül. A portálon válassza ki a ZRS-re konvertálni kívánt tárfiókot.
+Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)keresztül is kérhet élő áttelepítést. A portálon válassza ki azt a Storage-fiókot, amelyet ZRS szeretne alakítani.
 
 1. **Új támogatási kérelem** kiválasztása
-2. Töltse ki **az alapokat** a fiókadatai alapján. A **Szolgáltatás** szakaszban válassza **a Tárfiók kezelése** és a ZRS-re konvertálni kívánt erőforrás lehetőséget.
-3. Válassza a **Tovább lehetőséget.**
-4. Adja meg a következő értékeket a **Probléma** szakaszban:
-    - **Súlyosság**: Hagyja az alapértelmezett értéket a hogy-van.
-    - **Problématípusa**: Válassza az **Adatáttelepítés**lehetőséget.
-    - **Kategória**: Válassza **az Áttelepítés zrs-be**lehetőséget.
-    - **Cím**: Írjon be egy leíró címet, például **zrs-fiók áttelepítése**.
-    - **Részletek**: Írja be a további részleteket a **Részletek** mezőbe, például szeretnék áttérni \_ \_ a ZRS-re a régió [LRS, GRS] területéről.
-5. Válassza a **Tovább lehetőséget.**
-6. Ellenőrizze, hogy a kapcsolattartási adatok helyesek-e a **Kapcsolattartási adatok** panelen.
+2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** elemet, majd a ZRS konvertálni kívánt erőforrást.
+3. Kattintson a **Tovább** gombra.
+4. A **probléma** szakasz a következő értékeket határozza meg:
+    - **Súlyosság**: hagyja meg az alapértelmezett értéket.
+    - **Probléma típusa**: válassza **Az adatáttelepítés**lehetőséget.
+    - **Kategória**: válassza **az áttelepítés a ZRS**lehetőséget.
+    - **Title**: adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
+    - **Részletek**: írja be a részletek mezőbe a további részleteket, **például a (** z) [LRS, GRS] régióból a \_ \_ ZRS-be kíván migrálni.
+5. Kattintson a **Tovább** gombra.
+6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
 
-A támogatási személy felveszi Önnel a kapcsolatot, és minden szükséges segítséget megad.
+A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a szükséges segítségért.
 
 > [!NOTE]
-> Az élő áttelepítés jelenleg nem támogatott a prémium fájlmegosztások esetében. Jelenleg csak az adatok manuális másolása vagy áthelyezése támogatott.
+> A prémium szintű fájlmegosztás jelenleg nem támogatja az élő áttelepítést. Az adatok manuális másolása és áthelyezése jelenleg nem támogatott.
 >
-> A GZRS-tárfiókok jelenleg nem támogatják az archív szintet. További részletekért tekintse meg az [Azure Blob storage: gyakori elérésű, ritka elérésű és archiválási hozzáférési szinteket.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)
+> A GZRS-tárolási fiókok jelenleg nem támogatják az archiválási szintet. További részletekért tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintet](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
 >
-> A felügyelt lemezek csak LRS-hez érhetők el, és nem telepíthetők át a ZRS-re. A szabványos SSD-kezelt lemezek pillanatképeit és képeit szabványos HDD-tárolón tárolhatja, és [választhat az LRS és a ZRS beállítások közül.](https://azure.microsoft.com/pricing/details/managed-disks/) A rendelkezésre állási készletekkel való integrációról az Azure által felügyelt lemezek – bevezetés című [témakörben talál](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)további információt.
+> A felügyelt lemezek csak a LRS számára érhetők el, és nem telepíthetők át a ZRS. A standard szintű SSD-meghajtókon pillanatképeket és lemezképeket tárolhat szabványos HDD-tárolón, és [választhat a LRS és a ZRS lehetőségek közül](https://azure.microsoft.com/pricing/details/managed-disks/). További információ a rendelkezésre állási csoportokkal való integrációról: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)szolgáltatásba.
 
-## <a name="switch-from-zrs-classic"></a>Váltás a ZRS Classic-ról
+## <a name="switch-from-zrs-classic"></a>Váltás a klasszikus ZRS
 
 > [!IMPORTANT]
-> 2021. március 31-én a Microsoft elavultolja és áttelepíti a ZRS Classic fiókokat. További részleteket a ZRS Classic ügyfelei kapnak az eprecation előtt.
+> A Microsoft a ZRS klasszikus fiókjait a 2021. március 31-én fogja érvényteleníteni és áttelepíteni. További részletek a klasszikus ügyfelek ZRS az elavultság előtt.
 >
-> Miután a ZRS általánosan elérhetővé válik egy adott régióban, az ügyfelek a továbbiakban nem hozhatnak létre ZRS Classic-fiókokat az adott régióban lévő Azure portalról. A Microsoft PowerShell és az Azure CLI használatával ZRS Classic-fiókok létrehozása egy lehetőség, amíg a ZRS Classic elavult. A ZRS elérhetőségéről az [Azure Storage redundanciája](storage-redundancy.md)című témakörben talál további információt.
+> Miután az ZRS általánosan elérhetővé válik egy adott régióban, az ügyfelek többé nem tudnak ZRS klasszikus fiókokat létrehozni az adott régióban lévő Azure Portal. Ha a klasszikus ZRS elavult, a Microsoft PowerShell és az Azure CLI használatával hozhat létre klasszikus ZRS-fiókokat. További információ a ZRS rendelkezésre állásáról: [Azure Storage redundancia](storage-redundancy.md).
 
-A ZRS Classic aszinkron módon replikálja az adatokat egy-két régión belüli adatközpontok között. Előfordulhat, hogy a replikált adatok csak akkor érhetők el, ha a Microsoft kezdeményezi a feladatátvételt a másodlagos részére. A Klasszikus ZRS-fiók lrs-re, GRS-re vagy RA-GRS-re nem konvertálható. A Klasszikus ZRS-fiókok nem támogatják a metrikákat vagy a naplózást.
+A klasszikus ZRS aszinkron módon replikálja az adatközpontokat egy-két régión belül. Előfordulhat, hogy a replikált adatértékek nem állnak rendelkezésre, kivéve, ha a Microsoft feladatátvételt kezdeményez a másodlagosnak. A klasszikus ZRS-fiók nem alakítható át LRS, GRS vagy RA-GRS típusúra vagy onnan. A klasszikus ZRS-fiókok nem támogatják a metrikákat és a naplózást is.
 
-A ZRS Classic csak az általános célú V1 (GPv1) tárfiókok **blokkblobjaihoz** érhető el. A tárfiókokról az [Azure storage-fiók áttekintése című témakörben olvashat bővebben.](storage-account-overview.md)
+A klasszikus ZRS csak az általános célú v1-(GPv1-) Storage-fiókokban lévő **blokkos Blobok** esetén érhető el. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
 
-A ZRS-fiók adatainak manuális áttelepítéséhez LRS, GRS, RA-GRS vagy ZRS Klasszikus fiókból, használja az alábbi eszközök egyikét: AzCopy, Azure Storage Explorer, PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage-ügyfélkódtárak egyikével.
+Ha manuálisan szeretné áttelepíteni a ZRS-fiók adatait egy LRS, GRS, RA-GRS vagy klasszikus ZRS-fiókból, használja a következő eszközök egyikét: AzCopy, Azure Storage Explorer, PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage ügyféloldali kódtárainak egyikével.
 
-A ZRS Classic tárfiókot zrs-re is frissítheti az Azure Portal, a PowerShell vagy az Azure CLI használatával azokban a régiókban, ahol a ZRS elérhető.
+A ZRS klasszikus Storage-fiókját a Azure Portal, a PowerShell vagy az Azure CLI használatával is frissítheti a ZRS elérhető régiókban.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-Ha az Azure Portalon a ZRS-re szeretne frissíteni, keresse meg a fiók **konfigurációs** beállításait, és válassza a **Frissítés**lehetőséget:
+A Azure Portal ZRS való frissítéséhez navigáljon a fiók **konfigurációs** beállításaihoz, és válassza a **frissítés**lehetőséget:
 
-![Frissítés a ZRS Classic-ról zrs-re a portálon](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![A ZRS klasszikus frissítése ZRS a portálon](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha a PowerShell használatával szeretne ZRS-re frissíteni, hívja meg a következő parancsot:
+Ha a PowerShell használatával szeretne frissíteni a ZRS, hívja meg a következő parancsot:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
@@ -172,7 +172,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha az Azure CLI használatával szeretne ZRS-re frissíteni, hívja meg a következő parancsot:
+A ZRS az Azure CLI használatával történő frissítéséhez hívja meg a következő parancsot:
 
 ```cli
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
@@ -180,19 +180,19 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 ---
 
-## <a name="costs-associated-with-changing-how-data-is-replicated"></a>Az adatok replikálásának módosításával kapcsolatos költségek
+## <a name="costs-associated-with-changing-how-data-is-replicated"></a>Az adatreplikálás módjának megváltoztatásához kapcsolódó költségek
 
-Az adatok replikálásának módosításával kapcsolatos költségek a konverziós útvonaltól függenek. A legköltségesebb Azure Storage-redundancia ajánlatok közé tartozik az LRS, zrs, GRS, RA-GRS, GZRS és RA-GZRS.
+Az adatok replikálásának megváltoztatásához kapcsolódó költségek a konverziós útvonaltól függenek. A legdrágább, Azure Storage-beli redundancia-ajánlatok megrendelése az LRS, a ZRS, a GRS, az RA-GRS, a GZRS és az RA-GZRS.
 
-Például az *LRS-ről* bármely más típusú replikációra való áttérés további költségeket von maga után, mert kifinomultabb redundanciaszintre kerül. *GrS-be* vagy RA-GRS-be való áttelepítés esetén a kimenő sávszélesség-díj merül fel, mivel az adatok (az elsődleges régióban) replikálódnak a távoli másodlagos régióba. Ez a díj a kezdeti beállításkor egyszeri költség. Az adatok másolása után nincsenek további áttelepítési díjak. A sávszélesség-díjakról az [Azure Storage díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/blobs/)talál.
+Ha például *a LRS-ből bármilyen* más típusú replikációra kerül, további díjakat számítunk fel, mert összetettebb redundancia-szintre vált. A GRS-RA vagy RA-GRS-re *való* Migrálás esetén a kimenő sávszélességért fizetendő díj várható, mert az elsődleges régiójában lévő adatai replikálódnak a távoli másodlagos régióba. Ez a díj egy egyszeri költség a kezdeti beállításnál. Az adatok másolása után nincsenek további áttelepítési díjak. A sávszélességgel kapcsolatos további információkért lásd az [Azure Storage díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Ha grs-ről LRS-re telepíti át a tárfiókot, nincs további költség, de a replikált adatok törlődnek a másodlagos helyről.
+Ha a Storage-fiókot a GRS-ből a LRS-be telepíti át, akkor nem jár további díjszabással, de a replikált adatok törlődnek a másodlagos helyről.
 
 > [!IMPORTANT]
-> Ha áttelepíti a tárfiókot RA-GRS-ről GRS-re vagy LRS-re, akkor a fiók ra-GRS-ként kerül számlázásra további 30 nappal az konvertálás dátumától számítva.
+> Ha a Storage-fiókját az RA-GRS-ről a GRS vagy a LRS-re telepíti át, akkor ez a fiók az RA-GRS-ként lesz kiszámlázva az RA-tól számított további 30 nap után.
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Storage redundanciája](storage-redundancy.md)
-- [Tárfiók utolsó szinkronizálási ideje tulajdonságának ellenőrzése](last-sync-time-get.md)
-- [Magas rendelkezésre állású alkalmazások tervezése olvasási hozzáférésű georedundáns tárolással](storage-designing-ha-apps-with-ragrs.md)
+- [Azure Storage-redundancia](storage-redundancy.md)
+- [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
+- [A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással](storage-designing-ha-apps-with-ragrs.md)

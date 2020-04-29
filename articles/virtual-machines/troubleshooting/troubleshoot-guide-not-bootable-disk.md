@@ -1,6 +1,6 @@
 ---
-title: Boot hiba - "ez nem egy bootolható lemez"
-description: Ez a cikk olyan problémák megoldásához nyújt lépéseket, amelyek miatt a lemez nem indítható az Azure virtuális gépen
+title: Rendszerindítási hiba – "ez nem rendszerindító lemez"
+description: Ez a cikk a hibák megoldásának lépéseit ismerteti, amelyekkel a lemez nem indítható el egy Azure-beli virtuális gépen
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,99 +15,99 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300978"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>Rendszerindítási hiba – Ez nem rendszerindításra alkalmas lemez
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>Rendszerindítási hiba – ez nem rendszerindító lemez
 
-Ez a cikk olyan problémák megoldásához, ahol a lemez nem indítható egy Azure virtuális gép (VM) problémák megoldásához.
+Ez a cikk olyan problémák megoldását ismerteti, amelyekben a lemez nem indítható el egy Azure-beli virtuális gépen (VM).
 
 ## <a name="symptoms"></a>Probléma
 
-Amikor [a rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) segítségével tekinti meg a virtuális gép képernyőképét, látni fogja, hogy a képernyőkép egy "Ez nem rendszerindításra alkalmas lemez" üzenettel jelenik meg. Helyezzen be egy bootolható hajlékonylemezt, és nyomja meg bármelyik billentyűt, hogy újra megpróbálja...'.
+Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik egy üzenet, amely a következő üzenetet jeleníti meg: "ez nem rendszerindító lemez. Helyezzen be egy rendszerindító lemezt, és nyomja le az egyik billentyűt az újbóli próbálkozáshoz...
 
    1. ábra
 
-   ![Ábra 1 mutatja az üzenetet *"Ez nem egy bootolható lemez. Helyezzen be egy bootolható hajlékonylemezt, és nyomja meg bármelyik billentyűt, hogy újra megpróbálja..."*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![Az 1. ábra a következő üzenetet jeleníti meg: * "ez nem rendszerindító lemez. Helyezzen be egy rendszerindító hajlékonylemezt, és nyomja le az egyik billentyűt az újbóli próbálkozáshoz... "*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>Ok
 
-Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási folyamata nem talált aktív rendszerpartíciót. Ez a hiba azt is jelentheti, hogy hiányzik egy hivatkozás a rendszerindítási konfigurációs adatok (BCD) tárolóban, megakadályozva, hogy megtalálja a Windows partíciót.
+Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási folyamata nem talált aktív rendszerpartíciót. Ez a hiba azt is jelentheti, hogy hiányzik egy hivatkozás a rendszerindítási konfigurációs adatok (BCD) tárolóban, ami megakadályozza a Windows-partíció megkeresését.
 
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
-1. Hozzon létre és férjen hozzá egy javítási virtuális géphez.
-2. A Partíció állapotának beállítása Aktív ra.
-3. Javítsa ki a lemezpartíciót.
-4. **Ajánlott:** A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét.
-5. Építse újra az eredeti virtuális gép.
+1. Hozzon létre és nyissa meg a javítási virtuális gépet.
+2. A partíció állapotának beállítása aktívra.
+3. Javítsa ki a lemez partícióját.
+4. **Ajánlott**: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét.
+5. Hozza létre újra az eredeti virtuális gépet.
 
    > [!NOTE]
-   > A rendszerindítási hiba találkozásakor a vendég operációs rendszer nem működik. A probléma megoldásához offline módban kell hibaelhárítást elhárítania.
+   > Ha ezt a rendszerindítási hibát tapasztalja, a vendég operációs rendszer nem működik. A probléma megoldásához offline módban hibaelhárítást hajthat végre.
 
-### <a name="create-and-access-a-repair-vm"></a>Virtuális gép létrehozása és elérése
+### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A [virtuális gép javítási parancsainak](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3.
-2. A Távoli asztali kapcsolat használatával csatlakozzon a javítási virtuális géphez.
+1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+2. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="set-partition-status-to-active"></a>Partíció állapotának beállítása aktívra
 
-Az *1.* Ha 2. generációs virtuális gépe van, ugorjon előre [a Lemezpartíció javítása](#fix-the-disk-partition)elemre, mivel az *állapotjelző* elavult a későbbi generációban.
+Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció *aktívként*van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az *állapot* jelzője elavult volt.
 
-1. Nyisson meg egy rendszergazda jogú parancssort *(cmd.exe).*
-2. A DISKPART eszköz elindításához írja be a *diskpart* értéket.
-3. Írja be a *listalemezt* a rendszer lemezeinek listázásához, és azonosítsa a csatlakoztatott operációsrendszer-virtuális merevlemezt.
-4. Miután a csatlakoztatott operációs rendszer virtuális merevlemeztalálható, írja be *sel disk #* a lemez kiválasztásához.  Lásd a 2.
+1. Nyisson meg egy rendszergazda jogú parancssort *(Cmd. exe)*.
+2. Adja meg a *DiskPart* eszközt a DiskPart eszköz elindításához.
+3. Írja be a *lemez listázása* lehetőséget a rendszerlemezek listázásához, és keresse meg a csatolt operációs rendszer virtuális merevlemezét.
+4. Ha a csatlakoztatott operációs rendszer VHD-je található, írja be a *sel Disk #* értéket a lemez kiválasztásához.  Lásd a 2. ábrát, ahol az 1. lemez a csatolt operációs rendszer VHD-je.
 
    2. ábra
 
-   ![Ábra 2.  Azt is mutatja kimeneta sel disk 1 parancs, 1.](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![A 2. ábrán a * DISKPART * ablak látható, amely a tábla lemez megjelenítése parancs, a 0. lemez és az 1. lemez megjelenítésének kimenetét mutatja a táblában.  A sel-lemez 1 parancs kimenetét is megjeleníti, 1. lemez a kiválasztott lemez](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. A lemez kiválasztása után adja meg a *listapartíciót* a kijelölt lemez partícióinak listázásához.
-6. Miután a rendszerindító partíciót azonosította, írja be *a sel partition # parancsot* a partíció kiválasztásához.  Általában a boot partíció körülbelül 350 MB méretű lesz.  Lásd a 3.
+5. A lemez kijelölése után írja be a *lista partícióját* a kiválasztott lemez partícióinak listázásához.
+6. A rendszerindító partíció azonosítása után adja meg a *sel Partition #* elemet a partíció kiválasztásához.  Általában a rendszerindító partíció körülbelül 350 MB méretű lesz.  Lásd a 3. ábrát, ahol az 1. partíció a rendszerindító partíció.
 
    3. ábra
 
-   ![3. ábra a *DISKPART* ablakot mutatja a *list partition* parancs kimenetével. Az 1- es és a 2-es partíció megjelenik a táblázatban. Azt is mutatja, a kimeneta a *sel partíció 1 * parancs, ha a partíció 1 a kijelölt lemez.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![A 3. ábrán a * DISKPART * ablak látható a * List Partition * parancs kimenetével. Az 1. és a 2. partíció megjelenik a táblázatban. Emellett a * sel Partition 1 * parancs kimenetét is megjeleníti, ha az 1. partíció a kiválasztott lemez.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Adja meg a "részletpartíció" értéket a partíció állapotának ellenőrzéséhez. Lásd a 4. *Active: No*
+7. A partíció állapotának vizsgálatához adja meg a "részletek partíció" értéket. Lásd: 4. ábra, ahol a partíció *aktív: nem*, vagy 5. ábra, ahol a partíció "Active: igen".
 
-   4.
+   4. ábra
 
-   ![Ábra 4 mutatja a *DISKPART* ablakkimenettel a * részlet partíció * parancs, ha partíció 1 van beállítva, hogy *Aktív: Nem *](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![A 4. ábrán a * DISKPART * ablak látható a * detail Partition * parancs kimenetével, ha az 1. partíció értéke * Active: No *](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    5. ábra
 
-   ![Ábra 5 mutatja a *DISKPART* ablak kimenetét a * részlet partíció * parancs, ha partíció 1 van beállítva, hogy *Aktív: Igen *.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![Az 5. ábrán a * DISKPART * ablak látható a * detail Partition * parancs kimenetével, ha az 1. partíció az * Active: Igen * értékre van állítva.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. Ha a partíció **nem aktív,** adja meg az Aktív jelző módosításához *az* *aktív* értéket.
-9. Ellenőrizze, hogy az állapotváltozás megfelelően történt-e a *részletpartíció*beírásával.
+8. Ha a partíció **nem aktív** *, az aktív jelző* megváltoztatásához adja meg az *aktív* értéket.
+9. A *részletek partíció*beírásával győződjön meg róla, hogy az állapot változása megfelelően lett végrehajtva.
 
    6. ábra
 
-   ![Ábra 6 mutatja a diskpart ablak kimeneti * részlet partíció * parancs, ha partíció 1 van beállítva, hogy *Aktív: Igen *](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![A 6. ábrán a DiskPart ablak a * detail Partition * parancs kimenetével jelenik meg, ha az 1. partíció értéke * aktív: igen *](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. A DISKPART eszköz bezárásához és a konfigurációs módosítások mentéséhez lépjen *be.*
+10. A *Kilépés* gombra kattintva zárja be a DiskPart eszközt, és mentse a konfiguráció módosításait.
 
-### <a name="fix-the-disk-partition"></a>A lemezpartíció javítása
+### <a name="fix-the-disk-partition"></a>A lemezpartíció kijavítása
 
-1. Nyisson meg egy rendszergazda jogú parancssort (cmd.exe).
-2. A *CHKDSK* futtatásához és a hibák javításához használja a következő parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort (Cmd. exe).
+2. A következő parancs használatával futtassa a *chkdsk* parancsot a lemez (ek) re, és javítsa a hibákat:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   A '/f' parancs hozzáadásával kijavítja a lemezen található hibákat. Győződjön meg <DRIVE LETTER> arról, hogy cserélje ki a mellékelt operációs rendszer virtuális merevlemezének betűjét.
+   Az "/f" parancs hozzáadásával kijavíthatja az esetleges hibákat a lemezen. Ügyeljen arra, hogy <DRIVE LETTER> a helyére a csatolt operációs rendszer virtuális merevlemezének betűjelét írja.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriaképek gyűjtését
 
-A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a következő parancsfájlt:
+A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a következő parancsfájlt:
 
-1. Nyisson meg egy rendszergazdai parancssori munkamenetet (Futtatás rendszergazdaként).
+1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa az alábbi parancsot:
 
    Soros konzol engedélyezése
@@ -116,17 +116,17 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. Ellenőrizze, hogy az operációs rendszer lemezén lévő szabad terület legalább annyira megvan-e, mint a virtuális gép memóriamérete (RAM).
+3. Győződjön meg arról, hogy az operációsrendszer-lemezen lévő szabad terület a virtuális gép memóriájának méretétől (RAM) függ.
 
-   Ha nincs elég hely az operációs rendszer lemezén, meg kell változtatnia a helyet, ahol a memóriakép fájl jön létre, és olvassa el, hogy minden adatlemez csatlakozik a virtuális gép, amely elegendő szabad terület. A hely módosításához cserélje le a(z) "%SystemRoot%" parancsot az alábbi parancsokban lévő adatlemez meghajtóbetűjelére (például "F:").
+   Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítania kell a memóriakép fájljának helyét, és a virtuális géphez csatlakoztatott minden olyan adatlemezre, amely elegendő szabad hellyel rendelkezik. A hely módosításához cserélje le a "% SystemRoot%" kifejezést az alábbi parancsokban található adatlemez meghajtóbetűjelére (például "F:").
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Javasolt konfiguráció az operációs rendszer memóriaképengedélyezéséhez
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Az operációs rendszer kiírásának engedélyezése javasolt konfiguráció
 
-**Hibás operációsrendszer-lemez betöltése:**
+**Sérült operációsrendszer-lemez betöltése**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Engedélyezés a ControlSet001-en:**
+**Engedélyezés a ControlSet001:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -134,7 +134,7 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Engedélyezés a ControlSet002-n:**
+**Engedélyezés a ControlSet002:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -142,10 +142,10 @@ A memóriakép-gyűjtemény és a Soros konzol engedélyezéséhez futtassa a k�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Hibás operációsrendszer-lemez eltávolítása:**
+**Sérült operációsrendszer-lemez eltávolítása:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
 ### <a name="rebuild-the-original-vm"></a>Az eredeti virtuális gép újraépítése
 
-A [virtuális gép javítási parancsainak 5.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .

@@ -1,45 +1,45 @@
 ---
-Description: A fizetések átutalásának becsült ideje, a vonatkozó fizetési küszöbértékek és a Microsoft piacterei, ahonnan kifizetéseket kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat.
-title: Fizetési küszöbértékek, módszerek és időkeretek a kereskedelmi piacon | Azure Piactér
+Description: A kifizetések, valamint a fizetési küszöbértékek és a Microsoft piactérek a fizetések elfogadásának várható ideje az ország/régió és a kifizetési fiók típusától függően változhat.
+title: Fizetési küszöbértékek, módszerek és időkeretek a kereskedelmi piactéren | Azure piactér
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279725"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Fizetési küszöbértékek, módszerek és időkeretek
 
-A fizetések átutalásának becsült ideje és a Microsoft piacterei, ahonnan kifizetéseket kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat. Ez a témakör az egyes országokban/régiókban támogatott fizetési módokat ismerteti.
+A kifizetések átutalásának becsült időpontja és a Microsoft piactér, amelyből a fizetések fogadhatók, az országtól/régiótól és a kifizetési fiók típusától függően változhatnak. Ez a témakör az egyes országokban/régiókban támogatott fizetési módszereket ismerteti.
 
-Bármely adott országban/régióban az ACH/SEPA vagy az átutalást használjuk a kifizetések teljesítéséhez. Emellett egyes országok/régiók fizetési módként támogatják a PayPalt.
+Az adott ország/régió esetében a befizetések teljesítéséhez a ACH/SEPA vagy a vezetékes adatátvitel is használható. Emellett egyes országok/régiók is támogatják a PayPal fizetési módot.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Napok száma a kifizetési számla eléréséhez
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>A kifizetési fiókhoz való kifizetéshez szükséges napok száma
 
-Az adott hónap 15-ig általában az adott hónapban esedékes befizetést küldjük el, de a kifizetés hez további idő kell, hogy eljusson a fiókjába. A napok száma a ttól függ, hogy milyen fizetési módot használunk a fiókjához, az alábbiakszerint.
+Általában a hónap 15. napján egy adott hónapban esedékes fizetést küldünk, de a fizetéshez további időt is igénybe kell venni. A napok mennyisége attól függően változik, hogy milyen fizetési módot használunk a fiókjához az alább leírtak szerint.
 
 > [!NOTE]
-> Az alábbi napok hozzávetőlegesek; egy adott kifizetés hosszabb vagy rövidebb időt vehet igénybe.
+> Az alább látható napok a következők: közelítő; az adott kifizetés hosszabb vagy rövidebb időt is igénybe vehet.
 
-| Payment Method (Fizetési mód)     | A kifizetési számla eléréséhez eltelt napok száma     |
+| Payment Method (Fizetési mód)     | A kifizetési fiók eléréséhez szükséges napok száma     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 munkanap                             |
 | ACH/SEPA           | 2-3 munkanap                          |
 | Átutalás      | 7-10 munkanap                         |
 
-Az alábbi táblázatokból megtekintheti azokat az országokat/régiókat, amelyekben ezeket a fizetési módokat használják az egyes piactereken.
+Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amelyekben ezeket a fizetési módszereket használják a piactéren.
 
 ## <a name="payment-methods-in-countriesregions"></a>Fizetési módok országokban/régiókban
 
 > [!NOTE]
-> A kifizetési küszöbértékek minden régióban $50 USD.
+> A fizetési küszöbértékek minden régióban $50 USD értékűek.
 
-| Ország                          | Azure Piactér | Áruház, reklám, keverő és Minecraft | Office | PayPal kifizetések |
+| Ország                          | Azure Piactér | Áruház, reklám, keverő és Minecraft | Office | PayPal-kifizetések |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afganisztán                      | Igen               | Igen                                      | Nem     | Nem              |
 | Albánia                          | Igen               | Igen                                      | Igen    | Igen             |
@@ -74,9 +74,9 @@ Az alábbi táblázatokból megtekintheti azokat az országokat/régiókat, amel
 | Kolumbia                         | Igen               | Igen                                      | Igen    | Igen             |
 | Comore-szigetek                          | Igen               | Igen                                      | Nem     | Nem              |
 | Kongó (KDK)                      | Igen               | Igen                                      | Igen    | Nem              |
-| Kongó, Köztársaság               | Igen               | Igen                                      | Igen    | Nem              |
+| Kongói Köztársaság               | Igen               | Igen                                      | Igen    | Nem              |
 | Costa Rica                       | Igen               | Igen                                      | Igen    | Igen             |
-| Cote D'Elefántcsontpart                    | Igen               | Igen                                      | Igen    | Nem              |
+| Elefántcsontpart                    | Igen               | Igen                                      | Igen    | Nem              |
 | Horvátország                          | Igen               | Igen                                      | Igen    | Nem              |
 | Ciprus                           | Igen               | Igen                                      | Igen    | Igen             |
 | Cseh Köztársaság                   | Igen               | Igen                                      | Igen    | Igen             |
@@ -114,7 +114,7 @@ Az alábbi táblázatokból megtekintheti azokat az országokat/régiókat, amel
 | Jordánia                           | Igen               | Igen                                      | Igen    | Igen             |
 | Kazahsztán                       | Igen               | Igen                                      | Igen    | Igen             |
 | Kenya                            | Igen               | Igen                                      | Igen    | Igen             |
-| Korea (dél)                    | Igen               | Igen                                      | Igen    | Nem              |
+| Dél-Korea                    | Igen               | Igen                                      | Igen    | Nem              |
 | Kuvait                           | Igen               | Igen                                      | Igen    | Igen             |
 | Kirgizisztán                       | Nem                | Nem                                       | Igen    | Nem              |
 | Laosz                             | Igen               | Igen                                      | Igen    | Nem              |
@@ -138,7 +138,7 @@ Az alábbi táblázatokból megtekintheti azokat az országokat/régiókat, amel
 | Marokkó                          | Igen               | Igen                                      | Igen    | Nem              |
 | Mozambik                       | Igen               | Igen                                      | Igen    | Igen             |
 | Nepál                            | Igen               | Igen                                      | Igen    | Nem              |
-| Hollandia, A                 | Igen               | Igen                                      | Igen    | Igen             |
+| Hollandia, a                 | Igen               | Igen                                      | Igen    | Igen             |
 | Új-Zéland                      | Igen               | Igen                                      | Igen    | Igen             |
 | Nicaragua                        | Igen               | Igen                                      | Igen    | Igen             |
 | Niger                            | Igen               | Igen                                      | Igen    | Nem              |

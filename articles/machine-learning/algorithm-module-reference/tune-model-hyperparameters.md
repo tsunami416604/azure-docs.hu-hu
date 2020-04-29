@@ -1,7 +1,7 @@
 ---
 title: Modell-hiperparaméterek hangolása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a Tune Model Hyperparameters modult az Azure Machine Learningben egy paraméter-söprés végrehajtásához egy modellen az optimális paraméterbeállítások meghatározásához.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning modell Hiperparaméterek beállítása modulját a modellben lévő paraméterek elvégzéséhez a modellben az optimális paraméterek beállításának meghatározásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,144 +10,144 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064160"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
-Ez a cikk ismerteti, hogyan használhatja a Tune Model Hyperparameters modul az Azure Machine Learning designer (előzetes verzió). A cél a gépi tanulási modell optimális hiperparamétereinek meghatározása. A modul több modellt épít és tesztel a beállítások különböző kombinációinak használatával. Összehasonlítja a mutatókat az összes modell, hogy a beállítások kombinációit. 
+Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben (előzetes verzió). A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
 
-A kifejezés *paraméter* és *hiperparaméter* zavaró lehet. A modell *paraméterei* a modul jobb oldali ablaktáblájában beállítottak. Alapvetően ez a modul *paraméteres söprést* hajt végre a megadott paraméterbeállításokon. Megtanulja a _hiperparaméterek_optimális készletét, amely az egyes döntési fa, adatkészlet vagy regressziós módszer esetében eltérő lehet. Az optimális konfiguráció megtalálásának folyamatát néha tuningnak is *nevezik.* 
+A feltételek *paraméter* és a *hiperparaméter* zavaró lehet. A modell *paramétereit* a modul jobb oldali ablaktábláján állíthatja be. Alapvetően ez a modul egy *paramétert* hajt végre a megadott paraméterek beállításain. Megtanulja a _hiperparaméterek beállítása_optimális készletét, amely minden egyes konkrét döntési fa, adatkészlet vagy regressziós módszer esetében eltérő lehet. Az optimális konfiguráció megtalálásának folyamatát más néven *hangolásnak*nevezzük. 
 
-A modul a következő módszert támogatja a modell optimális beállításainak megtalálásához: *integrált vonat és dallam.* Ebben a módszerben konfigurálja a használni kívánt paramétereket. Ezután hagyja, hogy a modul több kombinációra is legépelje. A modul addig méri a pontosságot, amíg meg nem találja a "legjobb" modellt. A legtöbb tanuló modulnál kiválaszthatja, hogy mely paramétereket kell módosítani a képzési folyamat során, és melyekmaradjanak rögzítettek.
+A modul a következő módszert támogatja a modell optimális beállításainak megkereséséhez: *integrált vonat és Finomhangolás.* Ebben a metódusban a használandó paraméterek halmazát konfigurálja. Ezután a modul több kombináción is megismételhető. A modul megméri a pontosságot, amíg meg nem találja a "legjobb" modellt. A legtöbb tanulói modul esetében kiválaszthatja, hogy mely paramétereket kell módosítani a betanítási folyamat során, és melyeket továbbra is rögzíteni kell.
 
-Attól függően, hogy mennyi ideig szeretné futtatni a hangolási folyamatot, dönthet úgy, hogy az összes kombinációt kimerítően teszteli. Vagy lerövidítheti a folyamatot a paraméterkombinációk rácsának létrehozásával és a paraméterrács randomizált részhalmazának tesztelésével.
+Attól függően, hogy mennyi ideig szeretné futtatni a hangolási folyamatot, dönthet úgy, hogy kimerítően teszteli az összes kombinációt. Vagy lerövidítheti a folyamatot egy paraméter-kombinációk rácsának létrehozásával és a paraméter rácsának véletlenszerű részhalmazának tesztelésével.
 
-Ez a módszer egy betanított modellt hoz létre, amelyet újrafelhasználhat.  
+Ez a metódus egy betanított modellt hoz létre, amelyet újból felhasználhat.  
 
 > [!TIP] 
-> Elvégezhet egy kapcsolódó feladatot. A finomhangolás megkezdése előtt alkalmazza a szolgáltatáskijelölést a legmagasabb információs értékkel rendelkező oszlopok vagy változók meghatározásához.
+> Egy kapcsolódó feladatot is végrehajthat. A hangolás megkezdése előtt alkalmazza a szolgáltatás kijelölését a legmagasabb adatértékkel rendelkező oszlopok vagy változók meghatározásához.
 
-## <a name="how-to-configure-tune-model-hyperparameters"></a>A Tune Model hyperparameters konfigurálása  
+## <a name="how-to-configure-tune-model-hyperparameters"></a>A Tune Model Hiperparaméterek beállítása konfigurálása  
 
-A gépi tanulási modell optimális hiperparamétereinek megismerése a folyamatok jelentős használatát igényli.
+A gépi tanulási modellek optimális hiperparaméterek beállítása megtanulása a folyamatok jelentős mértékű használatát igényli.
 
-### <a name="train-a-model-by-using-a-parameter-sweep"></a>Modell betanítása paraméteres söpréssel  
+### <a name="train-a-model-by-using-a-parameter-sweep"></a>Modell betanítása egy paraméteres sweep használatával  
 
-Ez a szakasz azt ismerteti, hogyan hajthatja végre az alapvető paraméter-söprést, amely beiktat egy modellt a Modell hiperparamétereinek finomhangolása modul használatával.
+Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres sweep, amely a modell Hiperparaméterek beállítása-moduljának finomhangolását végzi.
 
-1.  Adja hozzá a Tune Model Hyperparameters modult a tervező ben lévő folyamathoz.
+1.  Adja hozzá a Tune Model Hiperparaméterek beállítása modult a folyamathoz a tervezőben.
 
-2.  Képzetlen modell csatlakoztatása a bal szélső bemenethez. 
+2.  Csatlakoztasson egy nem betanított modellt a bal szélső bemenethez. 
 
 
 
-4.  Adja hozzá a betanításhoz használni kívánt adatkészletet, és csatlakoztassa a Tune Model Hyperparameters középső bemenetéhez.  
+4.  Adja hozzá a betanításhoz használni kívánt adatkészletet, és kapcsolja össze a Hiperparaméterek beállítása hangolási modell középső bemenetével.  
 
-    Ha címkézett adatkészlettel rendelkezik, csatlakoztathatja a jobb szélső bemeneti porthoz (**Nem kötelező érvényesítési adatkészlet**). Ez lehetővé teszi a pontosság mérését edzés és hangolás közben.
+    Ha címkézett adatkészlettel rendelkezik, a jobb szélső bemeneti porthoz (**opcionális ellenőrzési adatkészlet**) is csatlakoztatható. Ez lehetővé teszi a pontosság mérését a képzés és a hangolás során.
 
-5.  A Tune Model Hyperparameters jobb oldali panelén válasszon egy értéket a **Paraméterssöprés isztikai módhoz.** Ez a beállítás határozza meg a paraméterek kijelölésének módját.
+5.  A modell Hiperparaméterek beállítása finomhangolása jobb oldali paneljén válasszon egy értéket a **paraméter-elsöprő üzemmódhoz**. Ezzel a beállítással szabályozhatja, hogy a paraméterek hogyan legyenek kiválasztva.
 
-    - **Teljes rács**: Ha ezt a lehetőséget választja, a modul a rendszer által előre meghatározott rácson keresztül hurkok, hogy kipróbálja a különböző kombinációkat, és azonosítsa a legjobb tanulót. Ez a beállítás akkor hasznos, ha nem tudja, mi lehet a legjobb paraméterbeállítások, és szeretné kipróbálni az összes lehetséges értékkombinációt.
+    - **Teljes rács**: Ha ezt a beállítást választja, a modul hurkot mutat a rendszer által előre meghatározott rács fölé, hogy kipróbálja a különböző kombinációkat, és azonosítsa a legjobb tanulót. Ez a beállítás akkor lehet hasznos, ha nem tudja, mi a legjobb paraméter-beállítás, és szeretné kipróbálni az értékek összes lehetséges kombinációját.
 
-    - **Véletlenszerű söprés:** Ha ezt a beállítást választja, a modul véletlenszerűen kiválasztja a paraméterértékeket egy rendszer által definiált tartományban. Meg kell adnia a modul által végrehajtandó futtatások maximális számát. Ez a beállítás akkor hasznos, ha szeretné növelni a modell teljesítményét a kiválasztott mérőszámok használatával, de továbbra is megőrzése számítási erőforrások.    
+    - **Véletlenszerű sweep**: Ha ezt a beállítást választja, a modul véletlenszerűen kiválasztja a paraméterek értékét a rendszer által meghatározott tartományon. Meg kell adnia, hogy legfeljebb hány futtatást kíván végrehajtani a modul végrehajtásához. Ez a beállítás akkor hasznos, ha a modell teljesítményét a választott mérőszámok használatával szeretné bővíteni, de továbbra is megőrzi a számítástechnikai erőforrásokat.    
 
-6.  A **Címke oszlopban**nyissa meg az oszlopkijelölőt, és válasszon egyetlen feliratoszlopot.
+6.  A **label (címke) oszlopban**nyissa meg az oszlop-választót egyetlen feliratú oszlop kiválasztásához.
 
 7.  Válassza ki a futtatások számát:
 
-    1. **A véletlenszerű söprésen futó futtatások maximális száma:** Ha véletlenszerű söprést választ, megadhatja, hogy a modellt hányszor kell betanítani a paraméterértékek véletlenszerű kombinációjának használatával.
+    1. **Futtatások maximális száma véletlenszerű húzáskor**: ha véletlenszerű sweepet választ, megadhatja, hogy a modell hány alkalommal legyen betanítva, a paraméterek véletlenszerű kombinációjának használatával.
 
-8.  A **Rangsorolás**területen válasszon egyetlen metrikát a modellek rangsorolásához.
+8.  A **rangsoroláshoz**válassza ki a modellek rangsorolásához használandó egyetlen mérőszámot.
 
-    Paraméter-söprés futtatásakor a modul kiszámítja a modelltípus összes vonatkozó metrikáját, és visszaadja azokat a **Sweep results** jelentésben. A modul külön metrikákat használ a regressziós és besorolási modellekhez.
+    Ha lefuttat egy paramétert, a modul kiszámítja a modell típusához tartozó összes vonatkozó mérőszámot, és visszaadja azokat a **sweep Results** jelentésben. A modul külön mérőszámokat használ a regressziós és besorolási modellekhez.
 
-    A kiválasztott mérőszám azonban meghatározza a modellek rangsorolásának módját. Csak a felső modell, a kiválasztott metrika szerint rangsorolva, a kimenet, mint egy betanított modell a pontozáshoz használható.
+    A kiválasztott metrika azonban meghatározza a modellek rangsorolásának módját. Csak a legfelső szintű modell, amelyet a kiválasztott metrika rangsorol, a kiképzésen alapuló modellként jeleníti meg az eredményt.
 
-9.  A **Véletlenszerű vetőmag**mezőbe írja be a paraméters söprés indításához használandó számot. 
+9.  A **véletlenszerű mag**mezőben adja meg a paraméter elindításához használandó számot. 
 
-10. Küldje el a folyamatot.
+10. A folyamat elküldése.
 
-## <a name="results-of-hyperparameter-tuning"></a>A hiperparaméter-hangolás eredménye
+## <a name="results-of-hyperparameter-tuning"></a>A hiperparaméter hangolásának eredményei
 
-Amikor a képzés befejeződött:
+A betanítás befejezése után:
 
-+ A legjobb modell pontossági mutatóinak megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Visualize parancsot.**
++ A legjobb modellhez tartozó pontossági mérőszámok megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
 
-    A kimenet tartalmazza a modelltípusra vonatkozó összes pontossági mutatót, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell tekinthető "legjobbnak".
+    A kimenet tartalmazza a modell típusára vonatkozó összes pontossági mérőszámot, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
 
-+ A betanított modell pillanatképének mentéséhez válassza a **Kimenetek** lapot a **Train modell** modul jobb oldali paneljén. Az **adatkészlet regisztrálása** ikonra lehetőséget választva mentse a modellt újrafelhasználható modulként.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-Ez a rész a megvalósítás részleteit és tippjeit tartalmazza.
+Ez a szakasz a megvalósítás részleteit és a tippeket tartalmazza.
 
-### <a name="how-a-parameter-sweep-works"></a>A paraméteres söprés működése
+### <a name="how-a-parameter-sweep-works"></a>A paraméter-elsöpörés működése
 
-A paraméteres söprés beállításakor meghatározhatja a keresés hatókörét. A keresés a véletlenszerűen kiválasztott paraméterek véges számát használhatja. Vagy lehet, hogy egy kimerítő keresés egy paraméter térben, hogy a megadott.
+Amikor beállít egy paramétert, megadhatja a keresés hatókörét. Előfordulhat, hogy a keresés a véletlenszerűen kiválasztott, véges számú paramétert használja. Vagy lehet, hogy az Ön által definiált paraméter-terület teljes körű keresést végez.
 
-+ **Véletlenszerű söprés:** Ez a beállítás egy modellt egy meghatározott számú iteráció használatával képez be. 
++ **Véletlenszerű sweep**: Ez a beállítás egy modellt állít be egy megadott számú iteráció használatával. 
 
-  Meg kell adnia egy értéktartományt, amely felett kell, és a modul az értékek véletlenszerűen kiválasztott részhalmazát használja. Az értékek et csereként választjuk ki, ami azt jelenti, hogy a korábban véletlenszerűen kiválasztott számok nem törlődnek a rendelkezésre álló számok készletéből. Így annak az esélye, hogy bármilyen értéket kiválasztanak, ugyanaz marad az összes menetben.  
+  Megadhatja az értékek tartományát, és a modul az értékek véletlenszerűen kiválasztott részhalmazát használja. Az értékek helyettesítéssel vannak kiválasztva, ami azt jelenti, hogy az előzőleg véletlenszerűen kiválasztott számok nem törlődnek a rendelkezésre álló számok készletéből. Így az is lehetséges, hogy bármely kiválasztott érték ugyanaz marad, mint minden halad.  
 
-+ **Teljes rács**: A teljes rács használatának lehetősége azt jelenti, hogy minden kombinációt tesztelnek. Ez a lehetőség a legalaposabb, de a legtöbb időt igényli. 
++ **Teljes rács**: a teljes rács használatának lehetősége azt jelenti, hogy minden kombináció tesztelve van. Ez a lehetőség a legalaposabb, de a legtöbb időt igényli. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>A képzés hosszának és összetettségének szabályozása
 
-A beállítások számos kombinációjára történő iterálás időigényes lehet, így a modul számos lehetőséget kínál a folyamat korlátozására:
+A beállítások több kombinációjának megismétlése időigényes lehet, így a modul számos módot biztosít a folyamat korlátozására:
 
-+ Korlátozza a modell teszteléséhez használt ismétlések számát.
-+ Korlátozza a paraméter helyet.
-+ Korlátozza mind az ismétlések számát, mind a paraméterterületet.
++ Korlátozza a modellek teszteléséhez használt iterációk számát.
++ Korlátozza a paraméter területét.
++ Korlátozza az ismétlések számát és a paraméter területét.
 
-Azt javasoljuk, hogy a folyamat a beállításokat, hogy meghatározza a leghatékonyabb betanítási módszer egy adott adatkészlet és modell.
+Azt javasoljuk, hogy az adott adatkészletre és modellre vonatkozóan a leghatékonyabb képzési módszer meghatározásához a beállításokkal folyamatokat.
 
-### <a name="choosing-an-evaluation-metric"></a>Értékelési mérőszám kiválasztása
+### <a name="choosing-an-evaluation-metric"></a>Értékelési metrika kiválasztása
 
-A tesztelés végén a modell egy jelentést jelenít meg, amely tartalmazza az egyes modellek pontosságát, így áttekintheti a metrika eredményeit:
+A tesztelés végén a modell egy jelentést jelenít meg, amely tartalmazza az egyes modellek pontosságát, hogy áttekintse a mérőszám eredményeit:
 
-- A metrikák egységes készlete minden bináris osztályozási modellhez használatos.
-- A pontosság minden többosztályos besorolási modellhez használatos.
-- A regressziós modellek hez különböző metrikák at használnak. 
+- A rendszer az összes bináris besorolási modellhez egységes mérőszámot használ.
+- Az összes többosztályos besorolási modell pontosságát használja a rendszer.
+- A regressziós modellekhez a metrikák különböző készletei használatosak. 
 
-Azonban az edzés során ki kell *választania* egy metrikát a hangolási folyamat során létrehozott modellek rangsorolásához. Előfordulhat, hogy a legjobb mérőszám az üzleti problémától, valamint a hamis pozitív és hamis negatív értékektől függően változik.
+A képzés során azonban *egyetlen* mérőszámot kell kiválasztania, amelyet a hangolási folyamat során generált modellek rangsorolásához kíván használni. Előfordulhat, hogy a legjobb metrika az üzleti problémától és a téves pozitív és a hamis negatív értéktől függően változhat.
 
-#### <a name="metrics-used-for-binary-classification"></a>Bináris osztályozáshoz használt mérőszámok
+#### <a name="metrics-used-for-binary-classification"></a>A bináris besoroláshoz használt metrikák
 
--   **A pontosság** a valódi eredmények és az összes eset aránya.  
+-   A **pontosság** a valódi eredmények aránya az összes esetben.  
 
--   **A precizitás** a valódi eredmények pozitív eredményekhez viszonyított aránya.  
+-   A **pontosság** a pozitív eredmények valódi eredményeinek aránya.  
 
--   **Visszahívás** a töredéke az összes helyes eredményt az összes eredményt.  
+-   A **visszahívás** az összes eredmény összes helyes eredményének töredéke.  
 
--   **Az F-pontszám** olyan mérték, amely egyensúlyt teremt a pontosság és a visszahívás között.  
+-   Az **F-score** egy mérték, amely egyensúlyt teremt a pontosság és a visszahívás között.  
 
--   **Az AUC** olyan érték, amely a görbe alatti területet jelöli, amikor az x tengelyen hamis pozitívokat ábrázolnak, és a valódi pozitívokat az y tengelyen ábrázolja.  
+-   A **AUC** olyan érték, amely a görbe alatti területnek felel meg, ha a hamis pozitív értékek az x tengelyen jelennek meg, és az igaz pozitív értékek az y tengelyen vannak ábrázolva.  
 
--   **Az átlagos naplóveszteség** két valószínűségi eloszlás közötti különbség: az igaz és a modellben lévő.  
+-   A **naplózási műveletek átlagos elvesztése** a két valószínűségi eloszlás közötti különbség: az igaz, a modellben pedig egy.  
 
-#### <a name="metrics-used-for-regression"></a>Regresszióhoz használt mérőszámok
+#### <a name="metrics-used-for-regression"></a>Regresszióhoz használt metrikák
 
--   **Az átlagos abszolút hiba** átlaga a modell összes hibáját, ahol a *hiba* az előre jelzett érték és a valós érték távolságát jelenti. Ez gyakran rövidítve *MAE*.  
+-   **Abszolút érték:** a modellben lévő összes hiba átlaga, ahol a *hiba* azt jelenti, hogy az előre jelzett érték távolsága igaz. Gyakran *Mae*-ként van rövidítve.  
 
--   **Az átlagos négyzetes hiba gyöke** a hibák négyzeteinek átlagát méri, majd ennek az értéknek a gyökerét veszi. Ez gyakran rövidítve *RMSE*.  
+-   Az **átlagosan négyzetes hiba gyökere** a hibák négyzetének átlagát méri, majd az érték gyökerét veszi át. Ez gyakran rövidítve *gyökátlagos*.  
 
--   **A relatív abszolút hiba** a hibát a valós érték százalékában jelöli.  
+-   A **relatív abszolút hiba** a True érték százalékaként jeleníti meg a hibát.  
 
--   **A relatív négyzetes hiba** normalizálja a teljes négyzetes hibát az előre jelzett értékek teljes négyzetes hibájával való osztva.  
+-   A **relatív négyzetes hiba** a teljes négyzetes hibát normalizálja úgy, hogy az előre jelzett értékek teljes négyzetes hibáját választja.  
 
--   **A meghatározási együttható** egyetlen szám, amely azt jelzi, hogy az adatok mennyire illeszkednek egy modellhez. Az egyik értéke azt jelenti, hogy a modell pontosan egyezik az adatokkal. A nulla érték azt jelenti, hogy az adatok véletlenszerűek, vagy más módon nem illeszkednek a modellhez. Ez gyakran nevezik *r<sup>2</sup>*, *R<sup>2</sup>*, vagy *r-négyzet*.  
+-   A **meghatározási együttható** egyetlen szám, amely azt jelzi, hogy mennyire jól illeszkednek az adatmodellek. Az egyik érték azt jelenti, hogy a modell pontosan megfelel az adatmennyiségnek. A nulla érték azt jelenti, hogy az adatmennyiség véletlenszerű, vagy más módon nem fér hozzá a modellhez. Gyakran nevezik *r<sup>2</sup>*, *r<sup>2</sup>* vagy *r-négyzet alakúnak*.  
 
-### <a name="modules-that-dont-support-a-parameter-sweep"></a>Olyan modulok, amelyek nem támogatják a paraméteres söprést
+### <a name="modules-that-dont-support-a-parameter-sweep"></a>A paramétert nem támogató modulok
 
-Az Azure Machine Learning szinte minden tanulója támogatja a keresztellenőrzést egy integrált paraméteres söpréssel, amellyel kiválaszthatja a folyamatparamétereit. Ha a tanuló nem támogatja egy értéktartomány beállítását, akkor is használhatja azt keresztérvényesítésben. Ebben az esetben a letapogatáshoz egy tartománynyi engedélyezett érték van kiválasztva. 
+A Azure Machine Learning szinte minden tanuló támogatja a többtényezős hitelesítést egy integrált paraméteres sweeptel, amely lehetővé teszi, hogy kiválassza a folyamathoz használandó paramétereket. Ha a tanuló nem támogatja az értékek tartományának beállítását, akkor továbbra is használhatja azt több érvényesítéssel. Ebben az esetben a rendszer az összes engedélyezett értéket kijelöli a sweep értékre. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

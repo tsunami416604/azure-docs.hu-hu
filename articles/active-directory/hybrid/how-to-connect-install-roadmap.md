@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331441"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
@@ -25,7 +25,7 @@ ms.locfileid: "80331441"
 ## <a name="install-azure-ad-connect"></a>Az Azure AD Connect telepítése
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Ezen műveletek bármelyike az Azure AD Connect szinkronizálásának inkonzisztens vagy nem támogatott állapotát eredményezheti. Ennek eredményeképpen a Microsoft nem tud technikai támogatást nyújtani az ilyen telepítésekhez.
+> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Ezen műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. Ennek eredményeképpen a Microsoft nem tud technikai támogatást biztosítani az ilyen üzemelő példányokhoz.
 
 Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
 
@@ -68,7 +68,7 @@ A [jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization
 
 A [jelszóvisszaíró](../authentication/quickstart-sspr.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
 
-[Az eszköz-visszaírás](how-to-connect-device-writeback.md) lehetővé teszi, hogy az Azure AD-ben regisztrált eszköz a helyszíni Active Directoryba írják vissza, így feltételes hozzáféréshez használható.
+Az [eszköz visszaírási](how-to-connect-device-writeback.md) lehetővé teszi, hogy az Azure ad-ban regisztrált eszközök visszakerüljenek a helyszíni Active Directoryra, így feltételes hozzáféréshez is használhatók.
 
 A [véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) szolgáltatás alapértelmezés szerint be van kapcsolva, és a felhőcímtárat védi az egy időben végrehajtott többszörös törlésektől. Alapértelmezés szerint futtatásonként 500 törlést tesz lehetővé. Ezt a beállítást szervezetének mérete alapján módosíthatja.
 
@@ -80,7 +80,7 @@ Az [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) szolg�
 |A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)|
 |Jelszókivonat szinkronizálása | [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
 |Átmenő hitelesítés | [Átmenő hitelesítés](how-to-connect-pta.md)
-|Jelszóvisszaíró | [A jelszókezelés első lépései](../authentication/quickstart-sspr.md)|
+|Jelszóvisszaíró | [A jelszavak kezelésének első lépései](../authentication/quickstart-sspr.md)|
 |Eszközvisszaíró | [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md)|
 |Véletlen törlések megakadályozása | [Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |Automatikus frissítés | [Azure AD Connect: automatikus frissítés](how-to-connect-install-automatic-upgrade.md)|
@@ -97,8 +97,8 @@ A szinkronizálás során alkalmazott konfigurációs modell neve: [deklaratív 
 ### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>Az Azure AD Connect-szinkronizálás testreszabásának következő lépései
 |Témakör |Hivatkozás|  
 | --- | --- |
-|Az Azure AD Connect-szinkronizáláshoz kapcsolódó összes cikk | [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)|
-|Technikai kulcsfogalmak | [Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak](how-to-connect-sync-technical-concepts.md)|
+|Az Azure AD Connect-szinkronizáláshoz kapcsolódó összes cikk | [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)|
+|Technikai kulcsfogalmak | [Azure AD Connect Sync: technikai fogalmak](how-to-connect-sync-technical-concepts.md)|
 |Az alapértelmezett konfiguráció ismertetése | [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md)|
 |A felhasználók és a kapcsolattartók ismertetése | [Az Azure AD Connect szinkronizálása: a felhasználók és a kapcsolattartók ismertetése](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Deklaratív kiépítés | [Az Azure AD Connect szinkronizálása: a deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
@@ -108,7 +108,7 @@ A szinkronizálás során alkalmazott konfigurációs modell neve: [deklaratív 
 
 Az Azure AD Connect több olyan szolgáltatást is kínál, amelyek segítségével az Azure AD összevonási szolgáltatás egyszerűbben alkalmazható az AD FS használatával, valamint egyszerűbben kezelhető az összevonási megbízhatósági kapcsolat. Az Azure AD Connect az AD FS szolgáltatást a Windows Server 2012 R2-es és azt követő verzióin támogatja.
 
-[Frissítse az AD FS-farm TLS/SSL-tanúsítványát](how-to-connect-fed-ssl-update.md) akkor is, ha nem az Azure AD Connect et használja az összevonási megbízhatóság kezeléséhez.
+[Frissítse a AD FS Farm TLS/SSL-tanúsítványát](how-to-connect-fed-ssl-update.md) akkor is, ha az összevonási megbízhatóság kezeléséhez nem Azure ad Connect használ.
 
 Szükség szerint bővítse a farmot [egy AD FS-kiszolgáló hozzáadásával](how-to-connect-fed-management.md#addadfsserver).
 
@@ -130,9 +130,9 @@ Ha az ADFS-kiszolgáló még nem lett konfigurálva az Azure AD-tanúsítványok
 ## <a name="get-started-with-azure-ad-connect-health"></a>Az Azure AD Connect Health használatának első lépései
 Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a következő lépéseket:
 
-1. [Az Azure AD Premium beszerezhető](../fundamentals/active-directory-get-started-premium.md) vagy [próbaverziót indíthat.](https://azure.microsoft.com/trial/get-started-active-directory/)
-2. Töltse le és telepítse az [Azure AD Connect állapotügynökeit](#download-and-install-azure-ad-connect-health-agent) az identitáskiszolgálókon.
-3. Tekintse meg az Azure AD Connect Health irányítópultját a. [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)
+1. [Prémium szintű Azure ad beszerzése](../fundamentals/active-directory-get-started-premium.md) vagy [próbaverzió elindítása](https://azure.microsoft.com/trial/get-started-active-directory/).
+2. [Töltse le és telepítse Azure ad Connect Health-ügynököket](#download-and-install-azure-ad-connect-health-agent) az identitás-kiszolgálókra.
+3. Tekintse meg a Azure AD Connect Health [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)-irányítópultot a következő címen:.
 
 > [!NOTE]
 > Ne feledje, hogy mielőtt bármilyen adatot megtekinthetne az Azure AD Connect Health irányítópultján, telepítenie kell az Azure AD Connect Health-ügynököket a célkiszolgálókon.
@@ -143,16 +143,16 @@ Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a követ
 * Győződjön meg róla, hogy [teljesülnek az Azure AD Connect Health követelményei](how-to-connect-health-agent-install.md#requirements).
 * Ismerkedés az Azure AD Connect Health for AD FS használatával
     * [Töltse le az Azure AD Connect Health-ügynököt az AD FS szolgáltatáshoz.](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [Lásd a telepítési útmutatót](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
 * Ismerkedés az Azure AD Connect Health szinkronizálási szolgáltatás használatával
     * [Töltse le, és telepítse az Azure AD Connect legújabb verzióját.](https://go.microsoft.com/fwlink/?linkid=615771) A szinkronizálási állapotügynök az (1.0.9125.0-s verziójú vagy újabb) Azure AD Connect részeként telepíthető.
 * Ismerkedés az Azure AD Connect Health for AD DS használatával
-    * [Töltse le az Azure AD Connect állapotügynököt az AD DS szolgáltatáshoz.](https://go.microsoft.com/fwlink/?LinkID=820540)
-    * [Lásd a telepítési útmutatót](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Töltse le a AD DS Azure ad Connect Health Agent ügynököt](https://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Az Azure AD Connect Health portál
-Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési adatokat és használatelemzési információkat tekinthet meg. Az Azure AD Connect Health fő panelje a https://aka.ms/aadconnecthealth URL-címen található. A panelek az ablakoknak megfelelő funkciót töltenek be. A fő panelen megjelenik a **Gyors indítás**, az Azure AD Connect Health szolgáltatása, valamint további konfigurációs lehetőségek. Tekintse meg az alábbi képernyőfelvételt, valamint az azt követő rövid magyarázatot. Az ügynökök üzembe helyezése után az állapotfigyelő szolgáltatás automatikusan azonosítja az Azure AD Connect Health által monitorozott szolgáltatásokat.
+Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési adatokat és használatelemzési információkat tekinthet meg. Az Azure AD Connect Health fő panelje a https://aka.ms/aadconnecthealth URL-címen található. A panelek az ablakoknak megfelelő funkciót töltenek be. A fő panelen a **gyorskonfigurálás**, a Azure ad Connect Healthon belüli szolgáltatások és további konfigurációs beállítások láthatók. Tekintse meg az alábbi képernyőfelvételt, valamint az azt követő rövid magyarázatot. Az ügynökök üzembe helyezése után az állapotfigyelő szolgáltatás automatikusan azonosítja az Azure AD Connect Health által monitorozott szolgáltatásokat.
 
 > [!NOTE]
 > A licencelési információkért lásd: [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md) vagy [Az Azure AD díjszabási oldala](https://aka.ms/aadpricing).
@@ -165,8 +165,8 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
 * **Active Directory Domain Services** (Active Directory tartományi szolgáltatások): Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md).
 * **Configure** (Konfigurálás): Ez a szakasz az alábbi funkciók be- vagy kikapcsolására szolgáló lehetőségeket tartalmaz:
 
-   - Az Azure AD Connect Health ügynök **automatikus frissítése** a legújabb verzióra: az Azure AD Connect Health ügynök automatikusan frissül, amikor új verziók érhetők el. A beállítás alapértelmezés szerint engedélyezett.
-   - Az Azure AD címtár integritásának a Microsoft csak hibaelhárítási célokat **szolgáló hozzáférés:** ha ez a beállítás engedélyezve van, a Microsoft hozzáférhet a felhasználó által megtekintett adatokhoz. Ez az információ hibaelhárításhoz és a szükséges segítség biztosításához hasznos lehet. Ez a beállítás alapértelmezés szerint le van tiltva
+   - Az Azure AD Connect Health-ügynök **frissítése** a legújabb verzióra: a Azure ad Connect Health ügynök automatikusan frissül, amikor új verziók állnak rendelkezésre. A beállítás alapértelmezés szerint engedélyezett.
+   - Az Azure AD-címtárból származó **adatokhoz való hozzáférés** csak hibaelhárítási célból a Microsoft számára: Ha ez a beállítás engedélyezve van, a Microsoft ugyanazokat az adatokhoz férhet hozzá, amelyet a felhasználó megtekint. Ezek az információk hasznosak lehetnek a hibaelhárításhoz és a szükséges segítség biztosításához. Ez a beállítás alapértelmezés szerint le van tiltva
 * A **Szerepköralapú hozzáférés-vezérlés (IAM)** szakasz ismerteti a Connect Health adatokhoz való hozzáférés felügyeletét szerepkör alapban. 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -174,8 +174,8 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
 - [Testreszabott beállítások](how-to-connect-install-custom.md)
-- [Jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization.md)|
+- [Jelszó-kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
 - [Átmenő hitelesítés](how-to-connect-pta.md)
 - [Azure AD Connect és összevonás](how-to-connect-fed-whatis.md)
 - [Az Azure AD Connect Health-ügynökök telepítése](how-to-connect-health-agent-install.md) 
-- [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
+- [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)

@@ -1,6 +1,6 @@
 ---
-title: Automatikus skálázású AKS-podok az Azure Application Gateway-metrikákkal
-description: Ez a cikk az AKS-háttérpodok méretezésével kapcsolatos útmutatást nyújt az Application Gateway-metrikák és az Azure Kubernetes metrikaadapter használatával
+title: AK-hüvelyek autoskálázása Azure Application Gateway metrikákkal
+description: Ez a cikk útmutatást nyújt az AK háttérbeli hüvelyek Application Gateway mérőszámok és az Azure Kubernetes metrikus adapter használatával történő méretezéséhez
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239448"
 ---
-# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Az AKS-podok automatikus skálázása az Application Gateway metrikáival (béta)
+# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
 
-A bejövő forgalom növekedésével elengedhetetlen, hogy az alkalmazások igény alapján felskálázható.
+Ahogy a bejövő forgalom megnövekszik, elengedhetetlen az alkalmazások vertikális felskálázása az igények alapján.
 
-A következő oktatóanyagban bemutatjuk, hogyan használhatja az Application Gateway metrikáját `AvgRequestCountPerHealthyHost` az alkalmazás méretezéséhez. `AvgRequestCountPerHealthyHost`egy adott háttérkészletbe és háttér-HTTP-beállításkombinációba küldött átlagos kérelmeket méri.
+Az alábbi oktatóanyagban azt ismertetjük, hogyan használható a Application Gateway `AvgRequestCountPerHealthyHost` mérőszáma az alkalmazás vertikális felskálázásához. `AvgRequestCountPerHealthyHost`egy adott háttérbeli készletre és háttérbeli HTTP-beállítási kombinációra küldött átlagos kérelmeket méri.
 
 A következő két összetevőt fogjuk használni:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)- A metrikaadaptert az Application Gateway metrikák nak a metrikakiszolgálón keresztül történő elérhetővé tjük. Az Azure Kubernetes metric adapter egy nyílt forráskódú projekt az Azure-ban, hasonló az Application Gateway ingress controller. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)- HpA használatával fogjuk használni az Application Gateway metrikákat, és a méretezésközponti telepítést.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)– A metrika-adapter használatával tesz elérhetővé Application Gateway metrikákat a metrikai kiszolgálón. Az Azure Kubernetes metrika-adapter egy nyílt forráskódú projekt az Azure-ban, amely a Application Gateway beáramló vezérlőhöz hasonlóan működik. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)– A HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
 
-## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes mérőszámadapterének beállítása
+## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes metrikus adapter beállítása
 
-1. Először létrehozunk egy Azure AAD `Monitoring Reader` egyszerű szolgáltatást, és hozzárendeljük a hozzáférést az Application Gateway erőforráscsoportján keresztül. 
+1. Először létre kell hozni egy Azure HRE egyszerű szolgáltatásnevet, és hozzá `Monitoring Reader` kell rendelnie Application Gateway erőforráscsoporthoz. 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -35,7 +35,7 @@ A következő két összetevőt fogjuk használni:
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Most telepítjük a [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) fent létrehozott AAD szolgáltatásnév használatával.
+1. Most a fent létrehozott HRE egyszerű [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) szolgáltatásnév használatával fogjuk telepíteni.
 
     ```bash
     kubectl create namespace custom-metrics
@@ -47,7 +47,7 @@ A következő két összetevőt fogjuk használni:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Létrehozunk egy `ExternalMetric` erőforrást `appgw-request-count-metric`a nevével. Ez az erőforrás arra utasítja a metrika adaptert, hogy tegye elérhetővé `AvgRequestCountPerHealthyHost` az erőforráscsoportban lévő `myApplicationGateway` `myResourceGroup` erőforrás metrikáját. A `filter` mező segítségével egy adott háttérkészletet és háttérHTTP-beállítást célozhat meg az Application Gateway-ben.
+1. Létre fogunk hozni egy `ExternalMetric` nevű `appgw-request-count-metric`erőforrást. Ez az erőforrás utasítja a metrikai adaptert `AvgRequestCountPerHealthyHost` , hogy `myApplicationGateway` kimutassa `myResourceGroup` a metrikát az erőforráscsoport erőforrásai számára. A `filter` mező használatával megcélozhat egy adott háttérbeli készletet és a háttérbeli http-beállítást a Application Gatewayban.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -67,7 +67,7 @@ A következő két összetevőt fogjuk használni:
             filter: BackendSettingsPool eq '<backend-pool-name>~<backend-http-setting-name>' # optional
     ```
 
-Most már kérhet egy kérést a metrikakiszolgálón, hogy lássa, az új metrika elérhetővé tesz-e:
+Mostantól kérheti a metrika-kiszolgálónak, hogy ellenőrizze, hogy az új metrika elérhető-e:
 ```bash
 kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appgw-request-count-metric"
 # Sample Output
@@ -90,13 +90,13 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata a központi telepítés méretezéséhez
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata az üzemelő példány vertikális felskálázásához
 
-Amint képesek vagyunk a metrikakiszolgálón keresztül elérhetővé `appgw-request-count-metric` tenni, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) céltelepítés felskálázására.
+`appgw-request-count-metric` Miután elérhetővé tettük a metrika-kiszolgálót, készen [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) állunk a cél üzembe helyezésének vertikális felskálázására.
 
-A következő példában egy mintatelepítést fogunk megcélozni. `aspnet` Mi lesz bővíteni podok, amikor `appgw-request-count-metric` > 200 `10` podonként legfeljebb egy podok.
+A következő példában egy minta üzembe helyezést `aspnet`fogunk megcélozni. A hüvelyek felskálázása `appgw-request-count-metric` akkor történik, amikor a > 200/Pod `10` akár max.
 
-Cserélje le a céltelepítési nevet, és alkalmazza a következő automatikus méretezési konfigurációt:
+Cserélje le a cél központi telepítési nevét, és alkalmazza a következő automatikus méretezési konfigurációt:
 ```yaml
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -116,10 +116,10 @@ spec:
       targetAverageValue: 200
 ```
 
-Tesztelje a beállításokat egy terhelésteszt-eszközzel, például apache paddal:
+Tesztelje a telepítőt egy terhelési teszt eszközzel, például az Apache pad használatával:
 ```bash
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [**A be- és ac.**](ingress-controller-troubleshoot.md)
+- A [**beáramló vezérlővel kapcsolatos problémák elhárítása**](ingress-controller-troubleshoot.md): a bejövő adatkezelővel kapcsolatos problémák elhárítása.

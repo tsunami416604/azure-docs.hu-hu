@@ -1,31 +1,31 @@
 ---
-title: Virtuálisgép-méretezési készlet konfigurálása meglévő Azure Load Balancer -Azure CLI-vel
-description: Ismerje meg, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel.
+title: Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer – Azure CLI
+description: Megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/25/2020
 ms.openlocfilehash: a7f44a21dd404c556d6f3d8444fa70583cd71c57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349739"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Virtuálisgép-méretezési készlet konfigurálása egy meglévő Azure Load Balancer-rel az Azure CLI használatával
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer az Azure CLI használatával
 
-Ebben a cikkben megtudhatja, hogyan konfigurálhatja a virtuális gép méretezési készlet egy meglévő Azure Load Balancer. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés.
-- Egy meglévő szabványos sku terheléselosztó az előfizetésben, ahol a virtuális gép méretezési csoport lesz telepítve.
-- Egy Azure virtuális hálózat a virtuális gép méretezési készlet.
+- Egy meglévő standard SKU-terheléselosztó abban az előfizetésben, amelyben a virtuálisgép-méretezési csoport telepítve lesz.
+- Egy Azure-Virtual Network a virtuálisgép-méretezési csoport számára.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Ha úgy dönt, hogy a CLI helyileg használja, ez a cikk megköveteli, hogy az Azure CLI 2.0.28-as vagy újabb verziójának egy-egy verziója legyen telepítve. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójának kell telepítve lennie. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 
@@ -35,9 +35,9 @@ Jelentkezzen be az Azure-ba.
 az login
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési csoport üzembe helyezése meglévő terheléselosztóval
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Virtuálisgép-méretezési csoport üzembe helyezése meglévő Load balancerrel
 
-Cserélje le a zárójelben lévő értékeket a konfigurációban lévő erőforrások nevére.
+Cserélje le a zárójelben lévő értékeket a konfigurációban található erőforrások nevére.
 
 ```azurecli-interactive
 az vmss create \
@@ -54,15 +54,15 @@ az vmss create \
     --backend-pool-name <backend-pool-name>
 ```
 
-Az alábbi példa egy virtuálisgép-méretezési készletet telepít a következőkkel:
+Az alábbi példa egy virtuálisgép-méretezési csoport üzembe helyezését mutatja be:
 
-- **MyVMSS** nevű virtuálisgép-méretezési készlet
-- Az Azure Load Balancer nevű Azure load **balancer**
-- **MyBackendPool** nevű terheléselosztó háttérkészlete
-- Az Azure virtuális hálózat neve **myVnet**
+- **MyVMSS** nevű virtuálisgép-méretezési csoport
+- Azure Load Balancer nevű **myLoadBalancer**
+- **MyBackendPool** nevű terheléselosztó-háttérbeli készlet
+- **MyVnet** nevű Azure Virtual Network
 - **MySubnet** nevű alhálózat
 - **MyResourceGroup** nevű erőforráscsoport
-- Ubuntu Server lemezkép a virtuális gép méretezési készletéhez
+- A virtuálisgép-méretezési csoporthoz tartozó Ubuntu Server-rendszerkép
 
 ```azurecli-interactive
 az vmss create \
@@ -79,11 +79,11 @@ az vmss create \
     --backend-pool-name myBackendPool
 ```
 > [!NOTE]
-> A méretezési készlet létrehozása után a háttérport nem módosítható a terheléselosztó állapotminta által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapotminta az Azure virtuálisgép-méretezési készlet frissítésével, frissítse a portot, majd konfigurálja újra az állapotminta.
+> A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben üzembe helyezett egy virtuális gép méretezési készlet egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési készletekről és a terheléselosztóról a következő témakörben olvashat bővebben:
+Ebben a cikkben egy virtuálisgép-méretezési csoport üzembe helyezését egy meglévő Azure Load Balancer.  A virtuálisgép-méretezési csoportokról és a Load balancerről további információt a következő témakörben talál:
 
 - [Mi az az Azure Load Balancer?](load-balancer-overview.md)
 - [Mik a virtuálisgép-méretezési csoportok?](../virtual-machine-scale-sets/overview.md)

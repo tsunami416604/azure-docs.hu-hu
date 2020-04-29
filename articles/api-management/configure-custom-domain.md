@@ -1,7 +1,7 @@
 ---
-title: Egyéni tartománynév konfigurálása az Azure API Management példányhoz
+title: Egyéni tartománynév konfigurálása az Azure API Management-példányhoz
 titleSuffix: Azure API Management
-description: Ez a témakör azt ismerteti, hogyan konfigurálhat egyéni tartománynevet az Azure API Management-példányhoz.
+description: Ez a témakör bemutatja, hogyan konfigurálhat egyéni tartománynevet az Azure API Management-példányához.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,87 +13,87 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335840"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
-Amikor létrehoz egy Azure API Management szolgáltatáspéldányt, az `azure-api.net` Azure hozzárendeli azt egy altartományhoz `apim-service-name.azure-api.net`(például). Az API Management-végpontokat azonban saját egyéni tartománynévvel, például **contoso.com**is elérhetővé teheti. Ez az oktatóanyag bemutatja, hogyan képezheti le egy meglévő egyéni DNS-nevet egy API Management-példány által elérhetővé tett végpontokhoz.
+Amikor létrehoz egy Azure API Management Service-példányt, az Azure a `azure-api.net` (például `apim-service-name.azure-api.net`) altartományát rendeli hozzá. Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
 
 > [!IMPORTANT]
-> Az API Management csak olyan kérelmeket fogad [el,](https://tools.ietf.org/html/rfc2616#section-14.23) amelyek állomásfejléc-értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
+> A API Management csak olyan kérelmeket fogad el, amelyek [állomásfejléc](https://tools.ietf.org/html/rfc2616#section-14.23) -értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
 
 > [!WARNING]
-> Azoknak az ügyfeleknek, akik tanúsítványrögzítéssel kívánják növelni alkalmazásaik biztonságát, egyéni tartománynevet és tanúsítványt kell használniuk, amelyet ők kezelnek, nem pedig az alapértelmezett tanúsítványt. Azok az ügyfelek, akik ehelyett az alapértelmezett tanúsítványt rögzítik, szigorú függőséget kapnak a nem általuk nem szabályozható tanúsítvány tulajdonságaitól, ami nem ajánlott.
+> Azok az ügyfelek, akik a tanúsítvány-rögzítést szeretnék használni az alkalmazásaik biztonságának javítása érdekében, az alapértelmezett tanúsítvány helyett egyéni tartománynevet és tanúsítványt kell használniuk. Azok az ügyfelek, amelyek az alapértelmezett tanúsítványt rögzítik, a nem felügyelt tanúsítvány tulajdonságaitól, illetve a nem javasolt eljárástól függenek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben ismertetett lépések végrehajtásához a következőkre van szüksége:
+A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 -   Aktív Azure-előfizetés.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
--   Egy API Management-példány. További információ: [Create an Azure API Management instance](get-started-create-service-instance.md).
--   Egyéni tartománynév, amely az Ön vagy a szervezet tulajdonában van. Ez a témakör nem ad útmutatást az egyéni tartománynév beszerzéséhez.
--   Egy DNS-kiszolgálón tárolt CNAME rekord, amely az egyéni tartománynevet az API Management példány alapértelmezett tartománynevére képezi le. Ez a témakör nem ad útmutatást a CNAME rekord üzemeltetéséhez.
--   Érvényes tanúsítvánnyal kell rendelkeznie nyilvános és személyes kulccsal (. PFX). A tulajdonos vagy a tulajdonos alternatív nevének (SAN) meg kell egyeznie a tartománynévvel (ez lehetővé teszi, hogy az API Management-példány biztonságosan tegye elérhetővé az URL-címeket a TLS-en keresztül).
+-   Egy API Management példány. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
+-   Az Ön vagy a szervezete tulajdonában álló egyéni tartománynév. Ez a témakör nem nyújt útmutatást az Egyéni tartománynév beszerzéséhez.
+-   Egy DNS-kiszolgálón tárolt CNAME rekord, amely az egyéni tartománynevet az API Management-példány alapértelmezett tartománynevére képezi le. Ez a témakör nem nyújt útmutatást a CNAME rekordok üzemeltetéséhez.
+-   Rendelkeznie kell egy nyilvános és titkos kulccsal rendelkező érvényes tanúsítvánnyal (. PFX). A tulajdonos vagy a tulajdonos alternatív neve (SAN) meg kell egyeznie a tartománynévvel (Ez lehetővé teszi API Management példány számára, hogy biztonságosan tegye elérhetővé a TLS-t).
 
-## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása az Azure Portalon
+## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása a Azure Portal használatával
 
-1. Nyissa meg az API Management-példányt az [Azure Portalon.](https://portal.azure.com/)
-1. Válassza **az Egyéni tartományok lehetőséget**.
+1. Navigáljon a API Management-példányhoz a [Azure Portal](https://portal.azure.com/).
+1. Válassza az **Egyéni tartományok**lehetőséget.
 
-    Számos végponthoz rendelhet egyéni tartománynevet. Jelenleg a következő végpontok érhetők el:
+    Több végpont is van, amelyekhez egyéni tartománynevet rendelhet hozzá. Jelenleg a következő végpontok érhetők el:
 
-    - **Átjáró** (alapértelmezett: `<apim-service-name>.azure-api.net`)
-    - **Portál** (az `<apim-service-name>.portal.azure-api.net`alapértelmezett érték: )
-    - **Kezelés** (alapértelmezett: `<apim-service-name>.management.azure-api.net`)
-    - **SCM** (alapértelmezett: `<apim-service-name>.scm.azure-api.net`)
-    - **NewPortal** (az `<apim-service-name>.developer.azure-api.net`alapértelmezett érték: ).
-
-    > [!NOTE]
-    > Csak az **átjáró** végpont érhető el a konfiguráció a felhasználási rétegben.
-    > Frissítheti az összes végpontot vagy néhányat. Az ügyfelek általában frissítik az **átjárót** (ez az URL-cím az API Management en keresztül elérhetővé tett API hívására szolgál) és a **Portálra** (a fejlesztői portál URL-címére).
-    > **A felügyeleti** és **scm-végpontokat** csak az API Management-példány tulajdonosai használják belsőleg, és így ritkábban rendelnek egyéni tartománynevet.
-    > A **prémium szintű** támogatja a beállítás több állomásnevét az **átjáró** végpont.
-
-1. Jelölje ki a frissíteni kívánt végpontot.
-1. A jobb oldali ablakban kattintson az **Egyéni gombra.**
-
-    - Az **Egyéni tartománynév**mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`.
-    - A **tanúsítványban**válasszon ki egy tanúsítványt a Key Vaultból. Érvényes . PFX fájlt, és adja meg **a jelszót**, ha a tanúsítvány jelszóval védett.
+    - **Átjáró** (alapértelmezett: `<apim-service-name>.azure-api.net`),
+    - **Portál** (alapértelmezett: `<apim-service-name>.portal.azure-api.net`),
+    - **Felügyelet** (alapértelmezett: `<apim-service-name>.management.azure-api.net`),
+    - **SCM** (alapértelmezett: `<apim-service-name>.scm.azure-api.net`),
+    - **Newportal** (alapértelmezett: `<apim-service-name>.developer.azure-api.net`).
 
     > [!NOTE]
-    > A helyettesítő tartománynevek, például a Felhasználás szint kivételével minden rétegben `*.contoso.com` támogatottak.
+    > Csak az **átjáró** végpontja érhető el a felhasználási szinten való konfiguráláshoz.
+    > Frissítheti az összes végpontot vagy azok némelyikét. Általában az ügyfelek Update **Gateway** (ez az URL-cím a API Management) és a **portálon** (a fejlesztői portál URL-címe) elérhetővé tett API meghívására szolgál.
+    > A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet.
+    > A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
+
+1. Válassza ki a frissíteni kívánt végpontot.
+1. A jobb oldali ablakban kattintson az **Egyéni**elemre.
+
+    - Az **egyéni tartomány neve**mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`.
+    - A **tanúsítványban**válasszon ki egy tanúsítványt Key Vault. Egy érvényes is feltölthető. PFX-fájl, és adja meg a **jelszavát**, ha a tanúsítvány jelszavas védelemmel van ellátva.
+
+    > [!NOTE]
+    > A helyettesítő tartománynevek, például `*.contoso.com` az összes szinten támogatottak, kivéve a felhasználási szintet.
 
     > [!TIP]
-    > Azt javasoljuk, hogy az Azure Key Vault a tanúsítványok kezeléséhez, és azokat az automatikus forgatásbeállításhoz.
-    > Ha az Azure Key Vault használatával kezeli az egyéni tartomány TLS/SSL tanúsítvány, győződjön meg arról, hogy a tanúsítvány be van illesztve a Key Vault [ _tanúsítványként_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem _egy titkos._
+    > Javasoljuk, hogy használjon Azure Key Vault a tanúsítványok kezeléséhez, és állítsa be őket az autoforgatáshoz.
+    > Ha a Azure Key Vault használatával kezeli az egyéni tartomány TLS/SSL-tanúsítványát, akkor győződjön meg arról, hogy a tanúsítvány bekerül a Key Vaultba [ _tanúsítványként_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem _titkosként_.
     >
-    > TLS/SSL-tanúsítvány lekéréséhez az API Managementnek rendelkeznie kell a listával, és titkos kulcsokat kell beszereznie a tanúsítványt tartalmazó Azure Key Vaulton. Az Azure Portal használatakor az összes szükséges konfigurációs lépés automatikusan befejeződik. A parancssori eszközök vagy felügyeleti API használataesetén ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a Felügyelt identitások lapot az API Management-példányon, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az adott lapon megjelenő elsődleges azonosítót. Másodszor adja meg az engedélylistát, és titkos kulcsokat kap a fő azonosító az Azure Key Vault a tanúsítványt tartalmazó.
+    > A TLS/SSL-tanúsítvány lekéréséhez API Managementnak tartalmaznia kell a listát, és meg kell kapnia a titkokat a tanúsítványt tartalmazó Azure Key Vault. Azure Portal használatakor a rendszer az összes szükséges konfigurációs lépést automatikusan végrehajtja. Parancssori eszközök vagy felügyeleti API használatakor ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a API Management-példány felügyelt identitások lapját, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az oldalon megjelenő résztvevő azonosítóját. Másodszor, adja meg az engedélyek listáját, és szerezzen be titkokat a rendszerbiztonsági tag számára a tanúsítványt tartalmazó Azure Key Vault.
     >
-    > Ha a tanúsítvány automatikus elforgatásra van beállítva, az API Management automatikusan felveszi a legújabb verziót a szolgáltatás leállása nélkül (ha az API Felügyeleti szint SLA-val rendelkezik – azaz a fejlesztői szint kivételével minden rétegben).
+    > Ha a tanúsítvány automatikus elforgatásra van beállítva, akkor API Management automatikusan a szolgáltatás leállása nélkül fogja felvenni a legújabb verziót (ha a API Managementi szint SLA-i. e. az összes szinten, kivéve a fejlesztői szintet).
 
 1. Kattintson az Apply (Alkalmaz) gombra.
 
     > [!NOTE]
-    > A tanúsítvány hozzárendelésének folyamata a telepítés méretétől függően 15 percet vagy többet is igénybe vehet. Fejlesztői termékváltozat rendelkezik állásidő, alapszintű és magasabb termékváltozatok nem rendelkeznek állásidő.
+    > A tanúsítvány hozzárendelésének folyamata az üzembe helyezés méretétől függően 15 vagy több percet is igénybe vehet. A fejlesztői SKU állásidővel rendelkezik, az alapszintű és a magasabb SKU-ban nincs leállás.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció
 
-Amikor a DNS-t az egyéni tartománynévhez konfigurálja, két lehetősége van:
+Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül választhat:
 
--   Konfiguráljon egy CNAME-rekordot, amely a konfigurált egyéni tartománynév végpontjára mutat.
--   Konfiguráljon egy A-rekordot, amely az API Management átjáró IP-címére mutat.
+-   Állítson be egy olyan CNAME rekordot, amely a konfigurált Egyéni tartománynév végpontján mutat.
+-   Konfiguráljon egy olyan rekordot, amely a API Management átjáró IP-címére mutat.
 
 > [!NOTE]
-> Bár az API Managment példány IP-címe statikus, néhány esetben változhat. Emiatt ajánlott a CNAME használata az egyéni tartomány konfigurálásakor. Ezt vegye figyelembe a DNS-konfigurációs módszer kiválasztásakor. További információ [az IP dokumentációs cikkben](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) és az [API Management GYIK-ben.](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
+> Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További tudnivalókat az [IP-dokumentációs cikkben](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) és a [API Management GYIK](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

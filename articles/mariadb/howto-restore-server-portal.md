@@ -1,105 +1,105 @@
 ---
-title: Biztonsági mentés és visszaállítás – Azure portal – Azure Database for MariaDB
-description: Ez a cikk ismerteti, hogyan lehet visszaállítani egy kiszolgálót az Azure Database for MariaDB az Azure Portal használatával.
+title: Biztonsági mentés és visszaállítás – Azure Portal – Azure Database for MariaDB
+description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy kiszolgálót Azure Database for MariaDB a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: fa8ead8daa202f5747c134a62fbd43bcdf2af0d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369248"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgáló biztonsági mentése és visszaállítása a MariaDB Azure Database szolgáltatásában az Azure Portal használatával
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MariaDB a Azure Portal használatával
 
 ## <a name="backup-happens-automatically"></a>A biztonsági mentés automatikusan megtörténik
-A MariaDB-kiszolgálók Azure Database szolgáltatásáról rendszeres időközönként készül biztonsági mentés a visszaállítási funkciók engedélyezéséhez. Ezzel a szolgáltatással visszaállíthatja a kiszolgálót és annak adatbázisait egy korábbi időpontra, egy új kiszolgálóra.
+A visszaállítási funkciók engedélyezéséhez rendszeresen biztonsági mentést kell készíteni Azure Database for MariaDB-kiszolgálókról. A szolgáltatás használatával visszaállíthatja a kiszolgálót és az összes adatbázisát egy korábbi időpontra, egy új kiszolgálón.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató befejezéséhez a következőkre van szükség:
-- [Azure-adatbázis a MariaDB-kiszolgálóhoz és -adatbázishoz](quickstart-create-mariadb-server-database-using-azure-portal.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for MariaDB-kiszolgáló és-adatbázis](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="set-backup-configuration"></a>Biztonsági másolat konfigurációjának beállítása
+## <a name="set-backup-configuration"></a>Biztonsági mentési konfiguráció beállítása
 
-A kiszolgáló helyiredundáns biztonsági mentések vagy földrajzilag redundáns biztonsági mentések konfigurálása között választhat a kiszolgáló létrehozásakor, a **Tarifacsomag** ablakban.
+A kiszolgáló létrehozásakor a **díjszabási** szinten ablakban beállíthatja, hogy a kiszolgálót helyileg redundáns biztonsági mentésekhez vagy földrajzilag redundáns biztonsági másolatokhoz konfigurálja.
 
 > [!NOTE]
-> A kiszolgáló létrehozása után a redundancia, földrajzilag redundáns vs helyileg redundáns, nem lehet váltani.
+> A kiszolgáló létrehozása után a redundancia, földrajzilag redundáns vagy helyileg redundáns, nem állítható be.
 >
 
-Kiszolgáló létrehozása közben az Azure Portalon keresztül, a **tarifacsomag** ablakban választhat **ja helyileg redundáns** vagy **földrajzilag redundáns** biztonsági mentések a kiszolgálóhoz. Ebben az ablakban választhatja ki a **biztonsági mentés megőrzési időszakát** is , hogy mennyi ideig (napok ban) szeretné tárolni a kiszolgáló biztonsági másolatait.
+Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási rétegek** ablakban a **helyi redundáns** vagy **földrajzilag redundáns** biztonsági másolatokat választhatja a kiszolgáló számára. Ezen az ablakban is kiválaszthatja a **biztonsági mentés megőrzési időtartamát** – mennyi ideig (hány nap múlva) kívánja tárolni a kiszolgáló biztonsági másolatait.
 
-   ![Tarifacsomag – Biztonsági mentési redundancia kiválasztása](./media/howto-restore-server-portal/pricing-tier.png)
+   ![Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása](./media/howto-restore-server-portal/pricing-tier.png)
 
-Az értékek létrehozás során történő beállításáról az [Azure Database for MariaDB server rövid útmutatójában](quickstart-create-mariadb-server-database-using-azure-portal.md)talál további információt.
+További információ ezekről az értékekről a létrehozás során: [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md)gyors üzembe helyezése.
 
-A biztonsági mentés megőrzési ideje a kiszolgálón a következő lépésekkel módosítható:
+A biztonsági másolatok megőrzési időszaka a kiszolgálón a következő lépésekkel módosítható:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki az Azure-adatbázis Tiamikiszolgálóhoz. Ez a művelet **megnyitja** az Áttekintés lapot.
+2. Válassza ki a Azure Database for MariaDB-kiszolgálót. Ez a művelet megnyitja az **Áttekintés** lapot.
 
-3. Válassza a Beállítási szint menü **Ditaszint parancsát** a **BEÁLLÍTÁSOK csoportban.** A csúszka segítségével **módosíthatja** a biztonsági mentés megőrzési időszak a kívánt 7 és 35 nap között.
-Az alábbi képernyőképen 35 napra növelték.
-![A biztonsági mentés megőrzési ideje megnövelt](./media/howto-restore-server-portal/3-increase-backup-days.png)
+3. Válassza ki az **árképzési szintet** a menü **Beállítások**területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
+Az alábbi képernyőképen a 35 napra nőtt.
+![A biztonsági másolatok megőrzési időszaka nagyobb](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
-4. A módosítás megerősítéséhez kattintson az **OK** gombra.
+4. A módosítás megerősítéséhez kattintson **az OK** gombra.
 
-A biztonsági mentés megőrzési időszak határozza meg, hogy milyen messze vissza az időben egy időpontban vissza egy időpontban visszaállítási lehet letölteni, mivel ez a rendelkezésre álló biztonsági mentések alapján. Az időponthoz való időpontvisszaállítást a következő szakasz ismerteti. 
+A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott időpontra visszamenőleges visszaállítás hogyan kérhető le, mert az elérhető biztonsági másolatokon alapul. Az időponthoz való visszaállítást a következő szakasz ismerteti részletesebben. 
 
 ## <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
-A MariaDB Azure Database lehetővé teszi, hogy visszaállítsa a kiszolgálót egy adott időpontra és a kiszolgáló új példányára. Ezzel az új kiszolgálóval helyreállíthatja az adatokat, vagy beállíthatja, hogy az ügyfélalkalmazások erre az új kiszolgálóra mutassanak.
+Azure Database for MariaDB lehetővé teszi, hogy visszaállítsa a kiszolgálót egy adott időpontra, és a-kiszolgáló egy új példányára. Ezt az új kiszolgálót használhatja az adatok helyreállításához, vagy az ügyfélalkalmazások erre az új kiszolgálóra mutatnak.
 
-Ha például egy táblát véletlenül ma délben dobtak ki, visszaállíthatja a dél előtti időt, és lekérheti a hiányzó táblát és adatokat a kiszolgáló új példányából. Az időponthoz való visszaállítás kiszolgálószinten van, nem az adatbázis szintjén.
+Ha például egy táblázatot véletlenül a mai napig dobott el, akkor a visszaállíthatja a déli idő előtt, és lekérheti a hiányzó táblát és adatforrást a kiszolgáló új példányáról. Az időponthoz való visszaállítás a kiszolgáló szintjén, nem pedig az adatbázis szintjén történik.
 
-A következő lépések visszaállítják a mintakiszolgálót egy adott időpontra:
-1. Az Azure Portalon válassza ki az Azure Database for MariaDB-kiszolgálót. 
+A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
+1. A Azure Portal válassza ki a Azure Database for MariaDB kiszolgálót. 
 
-2. A kiszolgáló **áttekintése** lapjának eszköztárán válassza a **Visszaállítás**lehetőséget.
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás**lehetőséget.
 
-   ![Azure Database for MariaDB – Áttekintés – Visszaállítás gomb](./media/howto-restore-server-portal/2-server.png)
+   ![Azure Database for MariaDB – áttekintés – visszaállítás gomb](./media/howto-restore-server-portal/2-server.png)
 
 3. Töltse ki a Visszaállítás űrlapot a szükséges információkkal:
 
-   ![Azure Database for MariaDB – Adatok visszaállítása](./media/howto-restore-server-portal/3-restore.png)
-   - **Visszaállítási pont**: Jelölje ki azt a pont-időpontot, amelybe vissza szeretné állítani.
-   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
-   - **Hely**: A régió nem választható ki. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
-   - **Tarifacsomag**: Ezeket a paramétereket nem módosíthatja, ha időponthoz ért visszaállítást végez. Ugyanaz, mint a forráskiszolgálóé. 
+   ![Azure Database for MariaDB – adatok visszaállítása](./media/howto-restore-server-portal/3-restore.png)
+   - **Visszaállítási pont**: válassza ki azt az időpontot, amelyet vissza szeretne állítani.
+   - **Célkiszolgáló**: adja meg az új kiszolgáló nevét.
+   - **Hely**: nem választhatja ki a régiót. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
+   - **Díjszabási**csomag: ezeket a paramétereket nem módosíthatja az időponthoz tartozó visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
 
-4. Kattintson **az OK** gombra a kiszolgáló pont-in-time visszaállításához. 
+4. Kattintson **az OK** gombra, ha vissza szeretné állítani a kiszolgálót egy adott időpontra való visszaállításhoz. 
 
-5. A visszaállítás befejezése után keresse meg a létrehozott új kiszolgálót, amely ellenőrzi, hogy az adatok a várt módon lett-e visszaállítva.
+5. A visszaállítás befejeződése után keresse meg a létrehozott új kiszolgálót annak ellenőrzéséhez, hogy az Adathelyreállítás a várt módon történt-e.
 
 
-A pont-az-idő visszaállítás sal létrehozott új kiszolgáló ugyanaza a kiszolgálórendszergazdai bejelentkezési név és jelszó, amely a meglévő kiszolgálóra érvényes volt a kiválasztott időpontban. A jelszót az új kiszolgáló áttekintése lapon **módosíthatja.**
+Az időponthoz tartozó visszaállítás által létrehozott új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely érvényes volt a meglévő kiszolgáló számára a kiválasztott időpontban. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet módosítani.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón létező virtuális hálózat szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz. Az eredeti kiszolgáló tűzfalszabályai visszaállnak.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
 ## <a name="geo-restore"></a>Geo-visszaállítás
 
-Ha a kiszolgálót földrajzilag redundáns biztonsági másolatokra állította be, a meglévő kiszolgáló biztonsági másolatából új kiszolgáló hozható létre. Ez az új kiszolgáló bármely olyan régióban létrehozható, amelyen az Azure Database for MariaDB elérhető.  
+Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta, akkor a rendszer létrehoz egy új kiszolgálót a meglévő kiszolgáló biztonsági másolatából. Ezt az új kiszolgálót bármely olyan régióban létre lehet hozni, amely Azure Database for MariaDB elérhető.  
 
-1. Válassza **az Adatbázisok** > **Azure-adatbázisa a MariaDB-hez**lehetőséget. A **mariadb** beírásával is keresheti a szolgáltatást.
+1. Válassza az **adatbázisok** > **Azure Database for MariaDB**elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
 
-   ![Az "Azure Database for MariaDB" opció](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
+   ![A "Azure Database for MariaDB" lehetőség](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 
-2. Az űrlap **Forrás kiválasztása** legördülő menüjében válassza a Biztonsági **másolat lehetőséget.** Ez a művelet betölti azoknak a kiszolgálóknak a listáját, amelyeken engedélyezve van a georedundáns biztonsági mentések. Válassza ki az egyik ilyen biztonsági másolatot, hogy a forrása az új kiszolgáló.
-   ![Válassza a Forrás: Biztonsági mentés és georedundáns biztonsági mentések listája lehetőséget](./media/howto-restore-server-portal/2-georestore.png)
+2. Az űrlap **Select Source (forrás kiválasztása** ) legördülő menüben válassza a **biztonsági mentés**lehetőséget. Ez a művelet betölti azon kiszolgálók listáját, amelyeken engedélyezve van a földrajzi redundáns biztonsági másolatok. Válassza ki az egyik biztonsági mentést az új kiszolgáló forrásaként.
+   ![Forrás kiválasztása: a redundáns biztonsági másolatok biztonsági mentése és listázása](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
-   > A kiszolgáló első létrehozásakor előfordulhat, hogy nem érhető el azonnal a geo-visszaállításhoz. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
+   > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
    >
 
-3. Töltse ki az űrlap többi részét a preferenciáival. Bármelyik helyet **kiválaszthatja.** A hely kiválasztása után **kiválaszthatja a Tarifacsomagot.** Alapértelmezés szerint azok a meglévő kiszolgáló paraméterei jelennek meg, amelyről visszaállítja azokat. Az **OK** gombra kattintva anélkül, hogy módosításokat végezne a beállítások örökléséhez. Vagy **módosíthatja a számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális magok**számát , a biztonsági **mentés megőrzési időszakát**és a **biztonsági mentési redundancia beállítást.** A visszaállítás során nem támogatott **a tarifacsomag** (alapszintű, általános célú vagy memóriaoptimalizált) vagy **a tárhely** méret módosítása.
+3. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja. A hely kiválasztása után kiválaszthatja az **árképzési szintet**. Alapértelmezés szerint a rendszer megjeleníti a meglévő, visszaállításra szolgáló kiszolgáló paramétereit. **Az OK** gombra kattintva módosíthatja a beállítások öröklését. Vagy módosíthatja a **számítási generációt** (ha elérhető a választott régióban), a **virtuális mag**számát, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
 
-A geo-visszaállítás által létrehozott új kiszolgáló ugyanazokkal a kiszolgálórendszergazdai bejelentkezési névvel és jelszóval rendelkezik, mint amely a visszaállítás indításakor érvényes volt a meglévő kiszolgálóra. A jelszó az új kiszolgáló **áttekintő** lapjáról módosítható.
+A földrajzi visszaállítás által létrehozott új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely a visszaállítás kezdeményezésének időpontjában érvényes a meglévő kiszolgálóhoz. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet megváltoztatni.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón létező virtuális hálózat szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz. Az eredeti kiszolgáló tűzfalszabályai visszaállnak.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
 ## <a name="next-steps"></a>További lépések
-- További információ a szolgáltatás [biztonsági másolatairól](concepts-backup.md)
-- További információ a [replikákról](concepts-read-replicas.md)
+- További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)
+- A [replikák](concepts-read-replicas.md) megismerése
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről

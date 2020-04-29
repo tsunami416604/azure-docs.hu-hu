@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés – Hozzáférés letiltása hely szerint – Azure Active Directory
-description: Egyéni feltételes hozzáférési házirend létrehozása az erőforrásokhoz való hozzáférés IP-hely szerint történő letiltásához
+title: Feltételes hozzáférés – hozzáférés tiltása hely alapján – Azure Active Directory
+description: Egyéni feltételes hozzáférési szabályzat létrehozása az erőforrásokhoz való hozzáférés blokkolására IP-hely alapján
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,53 +12,53 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295191"
 ---
-# <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: Hozzáférés letiltása hely szerint
+# <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
-A feltételes hozzáférés helyfeltételével szabályozhatja a felhőalapú alkalmazásokhoz való hozzáférést a felhasználó hálózati helye alapján. A helyfeltétel tágan használható olyan országokból származó hozzáférés letiltására, ahol a szervezet tudja, hogy a forgalom nem származhat.
+A feltételes hozzáférés helyének feltételével a felhasználó hálózati helye alapján vezérelheti a felhőalapú alkalmazásokhoz való hozzáférést. A hely feltételét általában arra használják, hogy blokkolja azokat az országokat, ahol a szervezet tudja, hogy a forgalom nem származik.
 
-## <a name="define-locations"></a>Helyek meghatározása
+## <a name="define-locations"></a>Telephelyek definiálása
 
-1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
-1. Tallózással keresse meg az **Azure Active Directory** > **–feltételes** > **hozzáféréssel** > **ellátott helyek et.**
-1. Válassza az **Új hely lehetőséget.**
-1. Adja meg a tartózkodási helyét a nevét.
-1. Válassza **az IP-tartományok at,** ha ismeri az adott helyet vagy **országokat/régiókat.**
-   1. Adja meg az **IP-tartományokat,** vagy válassza ki a megadott **helyhez az Országok/régiók** lehetőséget.
-      * Ha az Országok/régiók lehetőséget választja, választható, hogy ismeretlen területeket is felszeretne tüntetni.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés** > **elnevezett helyeinek nevét**.
+1. Válassza az **új hely**lehetőséget.
+1. Adjon nevet a helynek.
+1. Válassza az **IP-címtartományok** lehetőséget, ha ismeri az adott helyet vagy **országokat vagy régiókat**alkotó, külsőleg elérhető IPv4-címtartományt.
+   1. Adja meg az **IP-tartományokat** , vagy válassza ki a megadott hely **országait/régióit** .
+      * Ha az országok/régiók lehetőséget választja, dönthet úgy, hogy ismeretlen területeket is tartalmaz.
 1. **Mentés** kiválasztása
 
-További információ a helyfeltétel feltételes hozzáférés megtalálható a cikkben, [Mi a hely feltétele az Azure Active Directory feltételes hozzáférés](location-condition.md)
+A feltételes hozzáférés hely feltételével kapcsolatos további információkért tekintse meg a cikk a [feltételes hozzáférés Azure Active Directory a hely feltételeit](location-condition.md) ismertető cikket.
 
-## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása
+## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
-1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Válassza az **Új házirend lehetőséget.**
-1. Adjon nevet a szabályzatának. Azt javasoljuk, hogy a szervezetek hozzanak létre egy értelmes szabvány a házirendek nevét.
-1. A **Hozzárendelések**csoportban válassza a **Felhasználók és csoportok lehetőséget.**
-   1. A **Belefoglalás**csoportban válassza a **Minden felhasználó lehetőséget.**
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Felhőalapú alkalmazások vagy műveletek** > közé tartozik a Include (**Felhőalapú alkalmazások)** csoportban válassza az **Összes felhőalapú alkalmazás**lehetőséget, és válassza a **Kész**lehetőséget.
-1. **Feltételek szerint** > **hely**.
-   1. A **Konfigurálás** beállítása **Igen-re**
-   1. **Kijelölt** **helyek** felvétele
-   1. Válassza ki a szervezethez létrehozott letiltott helyet.
-   1. Kattintson a**Kész** >  **kijelölése** > **gombra.**
-1. A **Feltételek** > **az ügyfélalkalmazások (előzetes verzió)** csoportban állítsa a **Konfigurálás** beállítást **Igen**értékre, és válassza a **Kész gombot.**
-1. Az **Access vezérlői blokk** > **csoportban**válassza **a Kijelölés**lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa a **Házirend engedélyezése** **be**beállítást.
-1. A létrehozás gombra a házirend engedélyezéséhez válassza a **Létrehozás** gombot.
+1. A **Cloud apps vagy a műveletek** > **válassza a** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
+1. A **feltételek** > **helye**alatt.
+   1. **Konfigurálás** beállítása **Igen** értékre
+   1. **Include** **Kiválasztott helyszínek** kijelölése
+   1. Válassza ki a szervezet számára létrehozott tiltott helyet.
+   1. Kattintson a **kiválasztás** > **Done** > **Done**kész lehetőségre.
+1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlések** > **blokk**alatt, és válassza a **kiválasztás**lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[Hatás meghatározása csak feltételes hozzáférésű jelentésmódhasználatával](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
-[Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)
+[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

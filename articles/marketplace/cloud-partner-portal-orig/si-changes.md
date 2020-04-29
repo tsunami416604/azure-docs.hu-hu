@@ -1,6 +1,6 @@
 ---
-title: Eladó insights kibocsátási megjegyzések
-description: Az Eladói elemzési szolgáltatás változásairól nyújt tájékoztatást.
+title: Az értékesítői információk kibocsátási megjegyzései
+description: Információt nyújt az eladói információk funkciójának változásairól.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.date: 3/3/2019
 ms.author: dsindona
 ms.openlocfilehash: 1b88a8353c1cb9f97f18d720171f0827d7d85254
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80285401"
 ---
-# <a name="seller-insights-release-notes"></a>Az Seller Insights kibocsátási megjegyzések 
+# <a name="seller-insights-release-notes"></a>Az értékesítői információk kibocsátási megjegyzései 
 
-(Megjelenési dátum: 2019. március 1.)
+(Kiadás dátuma: március 1., 2019)
 
-Ez a cikk az Seller Insights funkció változásairól nyújt tájékoztatást a [Cloud Partner Portal](https://cloudpartner.azure.com/#insights)webhelyen.
+Ez a cikk a [Cloud Partner Portal](https://cloudpartner.azure.com/#insights)eladói bepillantást nyújtó funkciójának változásairól nyújt információkat.
 
-## <a name="release-highlights-for-march-1-2019"></a>2019. március 1-i megjelenési összefoglalók
+## <a name="release-highlights-for-march-1-2019"></a>Kiadási csúcsfények a 2019. március 1-től
 
-* *Ügyfél trend* hozzáadva az összegzéshez
-* *Az* összefoglaló öt legfontosabb ügyfele az összes Olyan Azure-előfizetést tükrözi, amely
-* *Normalizált használati trend & Az aktív rendelések trendje* az összesített állapotban *a Havi rendelések egy pillantással átkerülése* alatt
-* *Kifizetés-egyeztetési jelentés* frissítve
-* *A* kifizetés első öt ügyfele az összes Olyan Azure-előfizetést tükrözi, amelyet az ügyfél
-* *A használati jelentés* frissült a vevőazonosítóval
-* *A* rendelések & a használat minden Olyan Azure-előfizetést tükröz,
-
-
-(Megjelenési dátum: 2018. július 28.)
-
-## <a name="release-highlights-for-july-28-2018"></a>2018. július 28-i kiadáskiemelt eseményei
+* A *vásárlói trend* hozzá lett adva az összegzéshez
+* Az *első öt* ügyfél az összegzésen minden olyan Azure-előfizetést tükröz, amely az ügyfél
+* A *normalizált használati trend & az aktív Orders trendeket* az összefoglalás során áthelyezett *havi rendeléseknél*
+* A *kifizetési egyeztetési jelentés* frissítve
+* A kifizetés *első öt* ügyfelének a vásárló összes Azure-előfizetését tükrözi
+* Az ügyfél-AZONOSÍTÓval frissített *használati jelentés*
+* A *vásárlói* szerződések & a használati díjak az ügyfél által birtokolt összes Azure-előfizetést tükrözik
 
 
--   *A becsült árak* a pénznemátváltási hatással járó ügyféldíjakat tekintik meg.
--   *Az előre jelzett kifizetések* korábbi képet adnak a lehetséges kifizetésekről.
--  *A használati referenciaazonosítók adathűséget biztosítanak* az ügyfél használata és a kifizetéssel rendelkező rendelések között
--   *A napi gabonával történő használat* részletesebb és jobb betekintést nyújt az ügyfelek használatába.
+(Kiadás dátuma: július 28., 2018)
+
+## <a name="release-highlights-for-july-28-2018"></a>Kiadási csúcsfények, 2018. július 28.
 
 
-### <a name="changes-to-data-structure-and-taxonomy"></a>Az adatszerkezet és a rendszerrendszer módosítása
+-   A *becsült árak* a pénznem-átalakítással kapcsolatos költségekkel szolgálnak az ügyfelek díjairól.
+-   Az *előre jelzett kifizetések* egy korábbi nézetet biztosítanak a lehetséges kifizetésekhez.
+-  A *használati hivatkozási azonosítók* az ügyfelek és a megrendelések közötti adathűséget biztosítják a kifizetésekhez.
+-   *A napi szinten történő használat* több részletességet és jobb betekintést nyújt az ügyfelek általi használatba.
 
-Az alábbi táblázat felsorolja a metrikákat, amelyek et adtak hozzá, vagy jelentősen megváltozott ebben a kiadásban. 
+
+### <a name="changes-to-data-structure-and-taxonomy"></a>Az adatstruktúra és a taxonómia változásai
+
+A következő táblázat felsorolja azokat a metrikákat, amelyeket ezzel a kiadással hozzáadott vagy jelentős mértékben módosítottak. 
 
 | **Új kifejezés**                   |    **Meghatározás**                                                             |
 |--------------------------------|  ---------------------------------------------------------------------------- |
-| Ár (CC)                     | Egy adott termékváltozat használati egységének ára (a vevő pénznemében).       |
-| Becsült kiterjesztett díj (CC) | Egy adott termékváltozat használati egységeinek becsült kiterjesztett díja (a vevő pénznemében). Ez az érték nem lehet pontos a kerekítési vagy csonkolási hibák miatt.   |
-| Publisher pénzneme (PC)        | A megjelenítő által a kifizetéshez előnyben részesített pénznem.                               |
-| Becsült ár (PC)           | Egy adott termékváltozat használati egységének becsült ára a kiszámítás napján (a közzétevő pénznemében) devizaátváltás alapján. Ez az érték nem lehet pontos a kerekítési vagy csonkolási hibák miatt.   |
-| Becsült kiterjesztett töltés (PC) | Egy adott termékváltozat használati egységeinek becsült kiterjesztett díja a kiszámítás napján (a közzétevő pénznemében) devizaátváltás alapján. Ez az érték nem lehet pontos a kerekítési vagy csonkolási hibák miatt. |
-| Becsült kifizetés (PC)          | Egy adott termékváltozat használati egységeinek becsült kifizetése a használat kiszámításának napján (a közzétevő pénznemében) devizaátváltás alapján. Ez az érték nem lehet pontos a kerekítési vagy csonkolási hibák miatt.   |
-| Használati útmutató                | Egy adott termékváltozat hoz tartozó egy adott termékváltozat egy vagy több nap vevői felhasználásának azonosítója, amely a kifizetési jelentésben szereplő bejegyzéshez van társítva. |
+| Ár (CC)                     | Egy adott SKU használati egységének díja (az ügyfél pénznemében).       |
+| Becsült kiterjesztett díj (CC) | Az adott SKU (az ügyfél pénznemében) használati egységei mennyiségének becsült kibővített díja. Ez az érték nem lehet pontos a kerekítés vagy a csonkítás hibája miatt.   |
+| Közzétevői pénznem (számítógép)        | A kiadó által a kifizetéshez előnyben részesített pénznem.                               |
+| Becsült ár (PC)           | Egy adott SKU használati egységének becsült díja a dátumon alapuló deviza-konverzió alapján számított (a kiadó pénznemében). Ez az érték nem lehet pontos a kerekítés vagy a csonkítás hibája miatt.   |
+| Becsült kiterjesztett díj (PC) | Egy adott SKU használati egységei mennyiségének becsült kibővített díja (a kiadó pénznemében) számított árfolyam-konverzió alapján. Ez az érték nem lehet pontos a kerekítés vagy a csonkítás hibája miatt. |
+| Becsült kifizetés (számítógép)          | Egy adott SKU használati egységei mennyiségének becsült összege a deviza-konverzió alapján a használat kiszámításának napján (a kiadó pénznemében). Ez az érték nem lehet pontos a kerekítés vagy a csonkítás hibája miatt.   |
+| Használati útmutató                | Egy vagy több napra vonatkozó ügyfél-használat azonosítója a kifizetési jelentésben szereplő bejegyzéshez társított adott SKU esetében. |
 |  |  |

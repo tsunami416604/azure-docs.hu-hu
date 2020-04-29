@@ -1,6 +1,6 @@
 ---
-title: Insights lap az Azure Piactérhez
-description: Az Azure Marketplace-hez való Felhőpartnerportál Insights lapjának áttekintése.
+title: Az Azure Marketplace-ről szóló áttekintések lapja
+description: Az Azure Marketplace Cloud Partner Portal betekintési oldalának áttekintése.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: dsindona
 ms.openlocfilehash: 8002d67ebd6dbeb70282bbbae84b115a778cffaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288869"
 ---
 # <a name="insights-page"></a>Megállapítások oldal
 
-Az [**Insights**](https://cloudpartner.azure.com/#insights) lap a következő irányítópult-készleteket tartalmazza, amelyek segítenek a piactéri ajánlatok értékesítésének megértésében és maximalizálásában.  Minden irányítópult az azonos nevű lapon keresztül érhető el a lap tetején.
+Az [**Áttekintés oldalon a**](https://cloudpartner.azure.com/#insights) következő irányítópultok érhetők el, amelyekkel megismerheti és maximalizálhatja a Piactéri ajánlatok értékesítését.  Az irányítópultok az oldal tetején található azonos nevű lapon érhetők el.
 
 
 |  **Irányítópult**    |  **Megjelenített tartalom**               |
 |  -------------    |  ---------------------               |
-| **Összefoglalás**       | grafikonok, trendek és értékek az összesített adatok, amelyek összeadják a piactér tevékenységét a közzétevő ajánlatai |
+| **Összefoglalás**       | a kiadói ajánlatokhoz kapcsolódó Piactéri tevékenységet összefoglaló összesített adatok diagramjai, trendjei és értékei |
 | **Kifizetés**        | kifizetések és kapcsolódó tranzakciók grafikus és letölthető formátumokban |
 | **Rendelések & használat** | megrendelések és használati információk grafikus és letölthető formátumokban |
-| **Customer** (Ügyfél)      | ügyféladatok, beleértve a vásárlási profiljukat |
-| **Környezet**    | a telepítés sikeres és sikertelen tájékoztatása grafikus és eseményszintű formátumokban egyaránt |
-| **Letöltések**     | az elmúlt 30 nap letöltési kérelmeinek listája |
-| **Elemzés**     | a webes elemzések és a kampányteljesítmény elemzése |
+| **Ügyfél**      | vásárlói adatok, beleértve a beszerzési profilt |
+| **Üzembe helyezés**    | sikeres üzembe helyezési és meghibásodási információk grafikus és eseményvezérelt formátumokban |
+| **Letöltések**     | az elmúlt 30 napban letöltött kérelmek listája |
+| **Elemzés**     | a webes elemzések összefoglalása és a kampány teljesítményének elemzése |
 |  |  |
 
 
 ## <a name="summary-dashboard"></a>Összegzés irányítópult
-Az Összefoglaló irányítópult az első lap, és az alapértelmezett lap jelenik meg, amikor az Insights lapra navigál.  Ez a szándékos kialakítás azt tükrözi, hogy ez az irányítópult a megjelenítők számára a legszélesebb képet ad ajánlataik értékesítési tevékenységéről.  Grafikus annektálást biztosít a normalizált használati trendről; havi használat; földrajzi piac, ajánlat és ügyfél szerinti felkapott használat; és a kifizetési trend.  A kimenet testre szabható az elemzés kezdési és befejezési dátumának megadásával.  Az alábbi képen látható egy példa összefoglaló irányítópult a Contoso számára 2018 júniusa és augusztusa között.
+Az összegzési irányítópult az első lap, amely az Alapértelmezések lapon jelenik meg, amikor megnyitja az adatkeresések lapot.  Ez a szándékos kialakítás azt tükrözi, hogy ez az irányítópult a kiadók számára az ajánlatok értékesítési tevékenységének legszélesebb áttekintését biztosítja.  A normalizált használati trend grafikus ábrázolásait biztosítja. havi használat; a földrajzi piac, az ajánlat és az ügyfél általi használat tendenciája; és a kifizetési trend.  A kimenet testreszabható az elemzés kezdő és záró dátumának megadásával.  Az alábbi képen egy példa a contoso összefoglaló irányítópultja a 2018-es év júniusára.
 
-![Az Seller Insights oldal összefoglaló irányítópultja](./media/insights-page1.png)
+![Az értékesítői információk összefoglaló lapja](./media/insights-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Eladói elemzések értékesítés optimalizálása érdekében történő használatáról az Első lépések az [Eladóelemzésekkel](./../../cloud-partner-portal-orig/si-getting-started.md)című szakaszban talál további információt.
+További információ az értékesítési információk értékesítésének optimalizálásáról: [első lépések az eladói](./../../cloud-partner-portal-orig/si-getting-started.md)információk című részben.
 

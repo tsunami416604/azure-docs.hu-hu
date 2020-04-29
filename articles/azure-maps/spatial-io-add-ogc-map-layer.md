@@ -1,6 +1,6 @@
 ---
-title: Nyílt térinformatikai konzorcium (OGC) térképréteg hozzáadása | Microsoft Azure Maps
-description: Megtudhatja, hogyan fedhet le egy OGC-térképréteget a térképen, és hogyan használhatja az OgcMapLayer osztály különböző beállításait.
+title: Nyílt térinformatikai konzorcium (OGC) Térkép réteg hozzáadása | Microsoft Azure térképek
+description: Megtudhatja, hogyan fedi le egy OGC-Térkép réteget a térképen, és hogyan használhatja a OgcMapLayer osztály különböző lehetőségeit.
 author: philmea
 ms.author: philmea
 ms.date: 03/02/2020
@@ -9,92 +9,92 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334285"
 ---
-# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térképréteg hozzáadása az Open Geospatial Consortium (OGC) területről
+# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térkép réteg hozzáadása a Nyílt térinformatikai konzorciumból (OGC)
 
-Az `atlas.layer.OgcMapLayer` osztály átfedheti a Web Map Services (WMS) képeit és a WMTS-képeket a térképen. A WMS egy szabványos protokoll, amelyet az OGC fejlesztett ki a georeferencia-térképképek interneten történő kiszolgálására. A kép georeferencálása a kép földrajzi helyhez való társításának folyamata. WMTS is egy szabványos protokoll által kifejlesztett OGC. Előre renderelt és georeferenciaű térképcsempék kiszolgálására tervezték.
+Az `atlas.layer.OgcMapLayer` osztály a térképeken a web Map Services (WMS) képi és a web Map csempe-(WMTS-) képek ábrázolását is elvégezheti. A WMS egy szabványos protokoll, amelyet a OGC fejlesztett ki a georeferens-leképezési lemezképek interneten keresztüli kiszolgálásához. A rendszerkép georeferencing a képek földrajzi helyre való társításának folyamatai. A WMTS a OGC által fejlesztett szabványos protokoll is. A szolgáltatás az előre megjelenített és a georeferens Térkép csempék kiszolgálására szolgál.
 
-A következő szakaszok ismertetik az `OgcMapLayer` osztály által támogatott webtérkép-szolgáltatás szolgáltatásait.
+A következő részekben a `OgcMapLayer` osztály által támogatott webszolgáltatás-funkciók szerepelnek.
 
-**Webtérkép-szolgáltatás (WMS)**
+**Web Map szolgáltatás (WMS)**
 
-- Támogatott verziók: `1.0.0`, `1.1.0`, `1.1.1`, és`1.3.0`
-- A szolgáltatásnak `EPSG:3857` támogatnia kell a vetítési rendszert, vagy kezelnie kell az újravetítéseket.
-- A GetFeatureInfo használatához `EPSG:4326` a szolgáltatásnak támogatnia kell vagy kezelnie kell az újravetítéseket. 
+- Támogatott verziók: `1.0.0`, `1.1.0` `1.1.1`, és`1.3.0`
+- A szolgáltatásnak támogatnia `EPSG:3857` kell a kivetítési rendszer vagy az újravetítések kezelését.
+- A GetFeatureInfo használatához a szolgáltatásnak `EPSG:4326` támogatnia vagy kezelnie kell a kivetítéseket. 
 - Támogatott műveletek:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities (GetCapabilities) | A szolgáltatás metaadatainak beolvasása a támogatott képességekkel |
-    | GetMap (GetMap) | Egy adott terület térképképének lekérése |
-    | GetFeatureInfo | Lekéri `feature_info`, amely a szolgáltatás alapjául szolgáló adatokat tartalmaz |
+    | GetCapabilities | A szolgáltatás metaadatainak beolvasása a támogatott funkciókkal |
+    | GetMap | Egy adott régióhoz tartozó térképi rendszerkép lekérése |
+    | GetFeatureInfo | `feature_info`A szolgáltatás alapjául szolgáló adatokat tartalmazó lekérések |
 
-**Webtérkép csempeszolgáltatás (WMTS)**
+**Web Map csempe szolgáltatás (WMTS)**
 
 - Támogatott verziók:`1.0.0`
-- Csempe kell négyzet, `TileWidth == TileHeight`úgy, hogy .
-- CRS támogatott: `EPSG:3857` vagy`GoogleMapsCompatible` 
-- A TileMatrix azonosítójának egész számnak kell lennie, amely megfelel a térképen lévő nagyítási szintnek. Az azure-térképen a nagyítási `"0"` `"22"`szint a és a között van. Tehát `"0"` támogatott, de `"00"` nem támogatott.
+- A csempének szögletesnek kell lennie, például: `TileWidth == TileHeight`.
+- A CRS támogatott `EPSG:3857` : vagy`GoogleMapsCompatible` 
+- A TileMatrix azonosítójának olyan egész számnak kell lennie, amely megfelel a Térkép nagyítási szintjének. Az Azure-térképen a nagyítási szint a és `"0"` `"22"`a közötti érték. `"0"` Tehát támogatott, de `"00"` nem támogatott.
 - Támogatott műveletek:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities (GetCapabilities) | A támogatott műveletek és szolgáltatások lekérése |
-    | GetTile (GetTile) | Egy adott csempe képeinek lekérése |
+    | GetCapabilities | A támogatott műveletek és funkciók beolvasása |
+    | GetTile | Képek lekérése egy adott csempéhez |
 
-## <a name="overlay-an-ogc-map-layer"></a>OGC-térképréteg átfedése
+## <a name="overlay-an-ogc-map-layer"></a>OGC-Térkép rétegének átfedése
 
-A `url` lehet a szolgáltatás alap URL-címe, vagy egy teljes URL-cím a lekérdezéssel a szolgáltatás képességeinek beolvasásához. A megadott adatoktól függően a WFS-ügyfél több szabványos URL-formátumot is megpróbálhat annak meghatározásához, hogy kezdetben hogyan férhet hozzá a szolgáltatáshoz.
+A `url` lehet a szolgáltatás alap URL-címe vagy egy teljes URL-cím a szolgáltatás képességeinek beszerzéséhez. A megadott adatoktól függően előfordulhat, hogy a WFS-ügyfél számos szabványos URL-formátumot próbál megállapítani a szolgáltatás kezdeti eléréséhez.
 
-A következő kód bemutatja, hogyan fedhet le egy OGC térképréteget a térképen.
-
-<br/>
-
-<iframe height='700' scrolling='no' title='Példa az OGC-térképrétegre' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC Map layer példát</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="ogc-map-layer-options"></a>OGC térképréteg beállításai
-
-Az alábbi minta bemutatja a különböző OGC térképréteg-beállításokat. A kódtoll szerkesztéséhez kattintson a jobb felső sarokban található kódtoll gombra.
+A következő kód bemutatja, hogyan fedi le az OGC Térkép rétegét.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC térképréteg beállításai' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC térképréteg-beállításait</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height='700' scrolling='no' title='Példa OGC' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC Térkép rétegét</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="ogc-web-map-service-explorer"></a>Ogc webtérkép-szolgáltatás kezelője
+## <a name="ogc-map-layer-options"></a>OGC Térkép rétegének beállításai
 
-A következő eszköz rétegként fedi le a Web Map Services (WMS) és a Web Map Tile Services (WMTS) képeit. Kiválaszthatja, hogy a szolgáltatás mely rétegei jelenjenek meg a térképen. Megtekintheti a társított jelmagyarázatokat is ezekhez a rétegekhez.
+Az alábbi minta bemutatja a különböző OGC-Térkép réteg beállításait. A kód toll szerkesztéséhez kattintson a jobb felső sarokban található kód toll gombra.
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='Ogc webtérkép-szolgáltatás kezelője' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>Map Service explorer by Azure Maps ( ) alkalmazást a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height='700' scrolling='no' title='OGC Térkép rétegének beállításai' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) elemét a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Megadhatja a proxyszolgáltatás használatához használt térképbeállításokat is. A proxyszolgáltatás lehetővé teszi a CORS-t nem engedélyező tartományokban üzemeltetett erőforrások betöltését.
+## <a name="ogc-web-map-service-explorer"></a>OGC web Map Service Explorer
+
+Az alábbi eszköz a webes térképi szolgáltatásokból (WMS) és a web Map csempe-szolgáltatásokból (WMTS) származó képeket fedi fel rétegként. Megadhatja, hogy a szolgáltatás mely rétegeit jelenítse meg a térképen. Ezen rétegek társított jelmagyarázatait is megtekintheti.
+
+<br/>
+
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC web Map Service Explorer' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC web Map Service explorert</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>-on.
+</iframe>
+
+A Térkép beállításait a proxy szolgáltatás használatára is megadhatja. A proxy szolgáltatás lehetővé teszi az olyan tartományokban tárolt erőforrások betöltését, amelyeken nincs engedélyezve a CORS.
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [OgcMapLayer között](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
+> [OgcMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
 
 > [!div class="nextstepaction"]
-> [OgcMapLayerOpciók](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
+> [OgcMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
 
-Lásd a következő cikkeket, amelyek kódmintákat adhat hozzá a térképek:
-
-> [!div class="nextstepaction"]
-> [Csatlakozás WFS-szolgáltatáshoz](spatial-io-connect-wfs-service.md)
+Tekintse meg az alábbi cikkeket, amelyek tartalmazzák a térképekhez felvehető mintakód-mintákat:
 
 > [!div class="nextstepaction"]
-> [Az alapvető műveletek kihasználása](spatial-io-core-operations.md)
+> [Kapcsolódás WFS szolgáltatáshoz](spatial-io-connect-wfs-service.md)
+
+> [!div class="nextstepaction"]
+> [Alapvető műveletek kihasználása](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
 > [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)
