@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus – Áttelepítés a megosztott hozzáférésű aláírás engedélyezésére
-description: Megtudhatja, hogy miként migrálhat az Azure Active Directory hozzáférés-vezérlési szolgáltatásból a megosztott hozzáférés-aláírás engedélyezésére.
+title: Azure Service Bus – áttelepítés közös hozzáférésű aláírás engedélyezésére
+description: Tudnivalók a Azure Active Directory Access Control Service áttelepítéséről a közös hozzáférésű aláírás engedélyezésére.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,56 +13,56 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774619"
 ---
-# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – Áttelepítés az Azure Active Directory hozzáférés-vezérlési szolgáltatásáról a megosztott hozzáférés-aláírás engedélyezésére
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
 
-A Service Bus-alkalmazások korábban két különböző engedélyezési modellt is választhattak: a közvetlenül a Service Bus által biztosított [megosztott hozzáférésű aláírási (SAS)](service-bus-sas.md) jogkivonat-modellt, és egy összevont modellt, ahol az engedélyezési szabályok kezelését az [Azure Active Directory](/azure/active-directory/) hozzáférés-vezérlési szolgáltatás (ACS) kezeli, és az ACS-ből beszerzett jogkivonatokat átadják a Service Bus-nak a kívánt funkciókhoz való hozzáférés engedélyezéséhez.
+Service Bus az alkalmazások korábban két különböző engedélyezési modell közül választhattak: a közvetlenül a Service Bus által biztosított [közös hozzáférésű aláírási (SAS)](service-bus-sas.md) jogkivonat-modell, valamint egy összevont modell, amelyben az engedélyezési szabályok kezelését a [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) végzi, és a rendszer átadja az ACS-től kapott jogkivonatokat a kívánt funkciókhoz való hozzáférés engedélyezéséhez Service Bus számára.
 
-Az ACS engedélyezési modell már régóta felülírta a [SAS-hitelesítés,](service-bus-authentication-and-authorization.md) mint az előnyben részesített modell, és minden dokumentáció, útmutatás t és minták kizárólag a SAS ma. Ezenkívül már nem lehet új Service Bus-névtereket létrehozni, amelyek az ACS-vel vannak párosítva.
+Az ACS engedélyezési modelljét az [sas-hitelesítés](service-bus-authentication-and-authorization.md) az előnyben részesített modellként váltotta fel, és az összes dokumentáció, útmutató és minta kizárólag az SAS-t használja. Emellett már nem lehet új Service Bus-névtereket létrehozni, amelyek az ACS-vel párosítva vannak.
 
-A SAS azzal az előnnyel rendelkezik, hogy nem függ azonnal egy másik szolgáltatástól, hanem közvetlenül az ügyféltől is használható közvetítők nélkül, ha hozzáférést biztosít az ügyfélnek a SAS-szabály nevéhez és szabálykulcsához. A SAS könnyen integrálható egy olyan megközelítéssel, amelyben az ügyfélnek először át kell mennie egy engedélyezési ellenőrzésen egy másik szolgáltatással, majd jogkivonatot kell kiadnia. Az utóbbi megközelítés hasonló az ACS-használati mintához, de lehetővé teszi a hozzáférési jogkivonatok kiadását az ACS-ben nehezen fejezhetővé, alkalmazásspecifikus feltételek alapján.
+Az SAS azzal az előnnyel jár, hogy az nem függ azonnal egy másik szolgáltatástól, de közvetlenül egy ügyfélről is használhatja, ha az ügyfél hozzáférést ad az SAS-szabály nevének és a szabály kulcsának. Az SAS könnyen integrálható egy olyan megközelítéssel, amelyben az ügyfélnek először át kell adnia egy engedélyezési vizsgálatot egy másik szolgáltatással, majd ki kell állítani egy jogkivonatot. Az utóbbi módszer hasonló az ACS használati mintához, de lehetővé teszi a hozzáférési jogkivonatok kiállítását olyan alkalmazásspecifikus feltételek alapján, amelyek nehezen használhatók az ACS-ben.
 
-Az ACS-től függő összes meglévő alkalmazás esetében arra kérjük az ügyfeleket, hogy inkább a SAS-ra támaszkodva telepítsék át alkalmazásaikat.
+Az ACS-től függő összes meglévő alkalmazás esetében arra buzdítjuk az ügyfeleket, hogy az alkalmazásokat az SAS-re támaszkodva használják.
 
 ## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
 
-Az ACS és a Service Bus az *aláíró kulcs*közös ismeretein keresztül integrálódik. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Service Bus használja annak ellenőrzésére, hogy a jogkivonatot a párosított ACS-névtér adta-e ki. Az ACS-névtér szolgáltatásidentitásokat és engedélyezési szabályokat tartalmaz. Az engedélyezési szabályok határozzák meg, hogy mely szolgáltatásidentitás vagy egy külső identitásszolgáltató által kibocsátott jogkivonat kapja meg, hogy a Service Bus névtérgráf egy részéhez milyen típusú hozzáférést kap, leghosszabb előtag egyezés formájában.
+Az ACS és a Service Bus az *aláírási kulcs*megosztott ismerete révén integrálhatók. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Service Bus használja annak ellenőrzéséhez, hogy a tokent a párosított ACS-névtér adta-e ki. Az ACS-névtér a szolgáltatás identitásait és engedélyezési szabályait tartalmazza. Az engedélyezési szabályok határozzák meg, hogy melyik szolgáltatás-identitás vagy a külső Identitáskezelő által kiállított jogkivonat milyen típusú hozzáférést kap a Service Bus névtér-gráf egy részéhez, egy leghosszabb előtagú egyezés formájában.
 
-Egy ACS-szabály például adhat a **Küldés** `/` jogcímet egy szolgáltatásidentitás elérési útelőtagja, ami azt jelenti, hogy az ACS által a szabály alapján kibocsátott jogkivonat megadja az ügyfélnek a névtér ben lévő összes entitásnak való küldéshez való jogot. Ha az elérési `/abc`út előtagja, az identitás az `abc` adott előtag alatt elnevezett vagy rendezett entitások nak való küldésre korlátozódik. Feltételezzük, hogy az áttelepítési útmutató olvasói már ismerik ezeket a fogalmakat.
+Egy ACS-szabály például megadhatja a **küldési** jogcímet az `/` elérési út előtagjaként egy szolgáltatás identitásának, ami azt jelenti, hogy az ACS által az adott szabály alapján kiadott jogkivonat megadja az ügyfél jogosultságait a névtérben lévő összes entitásnak való küldéshez. Ha az elérési út `/abc`előtagja, az identitás csak az előtagja alatt `abc` elnevezett vagy az előtag alá rendezett entitások küldésére korlátozódik. Feltételezzük, hogy az áttelepítési útmutató olvasói már ismerik ezeket a fogalmakat.
 
-Az áttelepítési forgatókönyvek három fő kategóriába sorolhatók:
+Az áttelepítési forgatókönyvek három széles kategóriába sorolhatók:
 
-1.  **Változatlan alapértelmezett értékek**. Egyes ügyfelek egy [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) objektumot használnak, amely átadja az automatikusan létrehozott **tulajdonosi** szolgáltatásidentitást és titkos kulcsát az ACS névtérhez, párosítva a Service Bus névtérrel, és nem ad hozzá új szabályokat.
+1.  **Változatlan alapértékek**. Néhány ügyfél egy [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) objektumot használ, átadja az automatikusan generált **tulajdonosi** szolgáltatás identitását és annak titkos kulcsát az ACS-névtérhez, párosítva a Service Bus névtérrel, és ne vegyen fel új szabályokat.
 
-2.  **Egyéni szolgáltatásidentitások egyszerű szabályokkal.** Egyes ügyfelek új szolgáltatásidentitásokat adnak hozzá, és minden új szolgáltatásidentitást, **küldés,** **figyelés**és **kezelés** engedélyt adnak egy adott entitáshoz.
+2.  **Egyéni szolgáltatás-identitások egyszerű szabályokkal**. Egyes ügyfelek új szolgáltatás-identitásokat adnak hozzá, és minden új szolgáltatás identitásának **küldési**, **figyelési**és **kezelési** engedélyeit biztosítják egy adott entitáshoz.
 
-3.  **Egyéni szolgáltatásidentitások összetett szabályokkal.** Nagyon kevés ügyfél rendelkezik összetett szabálykészletekkel, amelyekben a külsőleg kiállított jogkivonatok le vannak képezve a továbbítási jogokhoz, vagy ahol egyetlen szolgáltatásidentitás hoz létre differenciált jogokat több névtérútvonalon több szabályon keresztül.
+3.  **Egyéni szolgáltatásbeli identitások összetett szabályokkal**. Nagyon kevés ügyfél rendelkezik olyan összetett szabályokkal, amelyekben a külsőleg kiállított jogkivonatok a továbbítási jogosultságokra vannak leképezve, vagy ha egy szolgáltatás identitása több szabályon keresztül különböző névtérbeli elérési utakon eltérő jogokat kap.
 
-Az összetett szabálykészletek áttelepítésével kapcsolatos segítségért forduljon az [Azure támogatási szolgálatához.](https://azure.microsoft.com/support/options/) A másik két forgatókönyv lehetővé teszi az egyszerű áttelepítést.
+Az összetett szabálykészlet áttelepítésével kapcsolatos segítségért forduljon az [Azure támogatási szolgálatához](https://azure.microsoft.com/support/options/). A másik két forgatókönyv egyszerű áttelepítést tesz lehetővé.
 
-### <a name="unchanged-defaults"></a>Változatlan alapértelmezett értékek
+### <a name="unchanged-defaults"></a>Változatlan alapértékek
 
-Ha az alkalmazás nem módosította az ACS alapértelmezett beállításait, lecserélheti az összes [SharedSecretTokenProvider-használatot](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) egy [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) objektumra, és az ACS **tulajdonosi** fiók helyett az előre konfigurált **RootManageSharedAccessKey** névteret használhatja. Vegye figyelembe, hogy még az **ACS-tulajdonosi** fiókesetében is ez a konfiguráció általában nem ajánlott (és még mindig ajánlott), mivel ez a fiók/szabály teljes felügyeleti jogosultságot biztosít a névtér felett, beleértve az entitások törlésének engedélyezését is.
+Ha az alkalmazás nem módosította az ACS alapértelmezett értékeit, lecserélheti az összes [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) -használatot egy [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) objektumra, és az ACS- **tulajdonos** fiók helyett az előre konfigurált **RootManageSharedAccessKey** is használhatja. Vegye figyelembe, hogy még az ACS **tulajdonosi** fiókjával is, ez a konfiguráció (és még mindig) nem ajánlott, mert ez a fiók/szabály teljes körű felügyeleti szolgáltatót biztosít a névtérben, beleértve az entitások törlésére vonatkozó engedélyeket is.
 
 ### <a name="simple-rules"></a>Egyszerű szabályok
 
-Ha az alkalmazás egyszerű szabályokkal rendelkező egyéni szolgáltatásidentitásokat használ, az áttelepítés egyszerű abban az esetben, ha egy ACS-szolgáltatásidentitást hoztak létre egy adott várólistán való hozzáférés-vezérlés biztosítása érdekében. Ez a forgatókönyv gyakran előfordul saas-stílusú megoldások, ahol minden várólista egy bérlői hely vagy fiókiroda hídként használják, és a szolgáltatás identitásjön létre az adott helyhez. Ebben az esetben a megfelelő szolgáltatásidentitás áttelepíthető egy megosztott hozzáférésű aláírásszabályba, közvetlenül a várólistán. A szolgáltatás identitásneve válhat a SAS-szabály neve és a szolgáltatás identitáskulcs válhat a SAS szabály kulcs. A SAS-szabály jogosultságai ezután az entitásra vonatkozó ACS-szabállyal egyenértékűek.
+Ha az alkalmazás egyéni szolgáltatásbeli identitásokat használ egyszerű szabályokkal, az áttelepítés egyértelmű abban az esetben, ha egy ACS-szolgáltatás identitását hozták létre egy adott várólista hozzáférés-vezérlésének biztosításához. Ez a forgatókönyv gyakran előfordul olyan SaaS-stílusú megoldásokban, ahol az egyes várólisták a bérlői hely vagy a fiókirodák számára hidat képeznek, és az adott helyhez létrejön a szolgáltatás identitása. Ebben az esetben a megfelelő szolgáltatási identitás áttelepíthető egy megosztott hozzáférési aláírási szabályba, közvetlenül a várólistán. A szolgáltatás identitásának neve lehet az SAS-szabály neve, a szolgáltatás identitásának kulcsa pedig az SAS-szabály kulcsa. Az SAS-szabály jogosultságait a rendszer az entitáshoz tartozó, illetve a vonatkozó ACS-szabályokkal egyenértékűként konfigurálja.
 
-A SAS új és további konfigurációját helyben is elvégezheti bármely meglévő névtérben, amely az ACS-vel van összefoglalva, és az ACS-ből való elmigrálás tkövetően a [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) használatával történik a [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)helyett. A névteret nem kell leválasztani az ACS-ről.
+Ezt az új és további konfigurációt is elvégezheti a SAS-ben az ACS-vel összevont meglévő névtérben, és az ACS-ről való áttelepítést a [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)helyett a [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) használatával végezheti el. A névtér nem szükséges az ACS-ből való leválasztáshoz.
 
 ### <a name="complex-rules"></a>Összetett szabályok
 
-A SAS-szabályok nem fiókok, hanem a jogokhoz társított aláíró kulcsok. Mint ilyen, forgatókönyvek, amelyben az alkalmazás számos szolgáltatásidentitást hoz létre, és több entitás hoz létre hozzáférési jogokat, vagy a teljes névtér továbbra is szükség van egy jogkivonat-kibocsátó közvetítő. Az ilyen közvetítővel kapcsolatos útmutatást az [ügyfélszolgálattal való kapcsolatfelvétel útján kaphatja](https://azure.microsoft.com/support/options/)meg.
+Az SAS-szabályok nem jelentenek fióknak, de a jogosultságokhoz társított aláíró kulcsok névvel rendelkeznek. Ilyenek például azok a forgatókönyvek, amelyekben az alkalmazás számos szolgáltatásbeli identitást hoz létre, és hozzáférést biztosít számukra a különböző entitások számára, vagy a teljes névtér továbbra is jogkivonatot kiállító közvetítőt igényel. Ehhez [forduljon a támogatási szolgálathoz](https://azure.microsoft.com/support/options/), és kérjen útmutatást ehhez a közvetítőhöz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Service Bus-hitelesítésről, olvassa el az alábbi témaköröket:
+A Service Bus hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Service Bus-hitelesítés és -engedélyezés](service-bus-authentication-and-authorization.md)
-* [Service Bus-hitelesítés megosztott hozzáférésű aláírásokkal](service-bus-sas.md)
+* [Service Bus hitelesítés közös hozzáférési aláírásokkal](service-bus-sas.md)
 

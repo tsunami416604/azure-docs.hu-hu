@@ -1,71 +1,71 @@
 ---
-title: Az Azure Service Fabric CLI- sfctl mesh szolgáltatás
-description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. Az alkalmazás-erőforrások szolgáltatásrészleteinek beszerzésére vonatkozó parancsok listáját tartalmazza.
+title: Azure Service Fabric CLI – sfctl Mesh szolgáltatás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazás-erőforrások szolgáltatás részleteinek beolvasására szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905924"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh szolgáltatás
-Egy alkalmazás-erőforrás szolgáltatásrészleteinek és listázásának beszereznie.
+Szolgáltatás részleteinek beolvasása és az alkalmazás-erőforrások listázása.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| lista | Felsorolja az összes szolgáltatási erőforrást. |
-| megjelenítés | Letöltődik a szolgáltatás erőforrás a megadott nevet. |
+| lista | Felsorolja az összes szolgáltatás-erőforrást. |
+| megjelenítés | Lekéri a szolgáltatás erőforrását a megadott névvel. |
 
-## <a name="sfctl-mesh-service-list"></a>sfctl háló szolgáltatáslista
-Felsorolja az összes szolgáltatási erőforrást.
+## <a name="sfctl-mesh-service-list"></a>sfctl Mesh-szolgáltatás listája
+Felsorolja az összes szolgáltatás-erőforrást.
 
-Egy alkalmazás-erőforrás összes szolgáltatására vonatkozó információ lekért. Az információk tartalmazzák a Szolgáltatás leírását és egyéb tulajdonságait.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --app-name --alkalmazás-név [Kötelező] | Az alkalmazás neve. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-mesh-service-show"></a>sfctl háló szolgáltatás show
-Letöltődik a szolgáltatás erőforrás a megadott nevet.
-
-A megadott nevű Service erőforrásadatainak bekerülése. Az információk tartalmazzák a Szolgáltatás leírását és egyéb tulajdonságait.
+Az alkalmazás-erőforrások összes szolgáltatásával kapcsolatos információk beolvasása. Az információ tartalmazza a szolgáltatás leírását és egyéb tulajdonságait.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --app-name --alkalmazás-név [Kötelező] | Az alkalmazás neve. |
-| --név -n [Kötelező] | A szolgáltatás neve. |
+| --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-mesh-service-show"></a>sfctl Mesh Service show
+Lekéri a szolgáltatás erőforrását a megadott névvel.
+
+Lekéri a szolgáltatás erőforrásának adatait a megadott névvel. Az információ tartalmazza a szolgáltatás leírását és egyéb tulajdonságait.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
+| --Name-n [kötelező] | A szolgáltatás neve. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI.Set up the Service Fabric CLI.
-- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

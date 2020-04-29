@@ -1,6 +1,6 @@
 ---
-title: Azure ADAL a MSAL migrálásvideók | Azure
-description: Az Azure Active Directory fejlesztői platformjáról a Microsoft identity platformra való áttelepítést segítő videók
+title: Az Azure ADAL MSAL áttelepítési videók | Azure
+description: Videók, amelyek segítséget nyújtanak a Azure Active Directory fejlesztői platformról a Microsoft Identity platformra való Migrálás során
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,29 +14,29 @@ ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
 ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202059"
 ---
-# <a name="azure-active-directory-developer-platform-videos"></a>Az Azure Active Directory fejlesztői platformvideói
+# <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory fejlesztői platform – videók
 
-Ismerje meg az új Microsoft-identitásplatformot, és azt, hogyan telepíthető át az Azure Active Directory (Azure AD) fejlesztői platformjáról. A videók általában 1-2 percesek.
+Ismerje meg az új Microsoft Identity platformot, és hogyan telepítheti át azt a Azure Active Directory (Azure AD) fejlesztői platformról. A videók általában 1-2 percet vesznek igénybe.
 
-## <a name="migrate-from-v10-to-v20"></a>Áttelepítés az 1.0-s és a 2.0-s
+## <a name="migrate-from-v10-to-v20"></a>Áttelepítés v 1.0-ről v 2.0-ra
 
-**További információ a Microsoft-identitásplatform legújabb verziójára való áttérésről**
+**Tudnivalók a Microsoft Identity platform legújabb verziójára való áttérésről**
 
 :::row:::
     :::column:::
-        Új Microsoft-identitásplatform – áttekintés
+        Új Microsoft Identity platform – áttekintés
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
-        Bevezetés az MSAL könyvtárakba
+        A MSAL-kódtárak bemutatása
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
@@ -44,13 +44,13 @@ Ismerje meg az új Microsoft-identitásplatformot, és azt, hogyan telepíthető
 :::row-end:::
 :::row:::
     :::column:::
-        Végpontok és a 2.0-s v.-re való áttérés előnyei
+        Végpontok és a v 2.0-ra való áttérés előnyei
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Az ADAL kódbázis áttelepítése msal-ra
+        A ADAL-kód áttelepítése a MSAL-be
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -58,13 +58,13 @@ Ismerje meg az új Microsoft-identitásplatformot, és azt, hogyan telepíthető
 :::row-end:::
 :::row:::
     :::column:::
-        Miért vándorolnak ADAL MSAL
+        Miért érdemes a ADAL-ről MSAL-re migrálni?
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Az MSAL előnyei az ADAL-lal szemben
+        A MSAL előnyei a ADAL-en keresztül
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
@@ -73,4 +73,4 @@ Ismerje meg az új Microsoft-identitásplatformot, és azt, hogyan telepíthető
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az új [Microsoft-identitásplatformról](https://docs.microsoft.com/azure/active-directory/develop)
+További információ az új [Microsoft Identity platformról](https://docs.microsoft.com/azure/active-directory/develop)

@@ -1,161 +1,161 @@
 ---
-title: Gyakori mérőszámok automatikus skálázása
-description: Ismerje meg, hogy mely metrikákat használják a felhőszolgáltatások, a virtuális gépek és a webalkalmazások automatikus skálázásához.
+title: Gyakori metrikák autoskálázása
+description: Megtudhatja, hogy mely metrikákat használják általában a Cloud Services, Virtual Machines és Web Apps automatikus skálázásához.
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845561"
 ---
-# <a name="azure-monitor-autoscaling-common-metrics"></a>Az Azure Monitor automatikus skálázása gyakori metrikák
+# <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor automatikus skálázás lehetővé teszi, hogy a futó példányok száma fel- vagy leskálázása telemetriai adatok (metrikák) alapján. Ez a dokumentum ismerteti a gyakori metrikákat, amelyeket érdemes lehet használni. Az Azure Portalon kiválaszthatja az erőforrás metrikáját, amely szerint skálázható. Azonban azt is kiválaszthatja a metrika egy másik erőforrás skálázása.
+Azure Monitor az automatikus skálázás lehetővé teszi a futó példányok számának méretezését a telemetria-adatok (mérőszámok) alapján. Ez a dokumentum az esetlegesen használni kívánt általános mérőszámokat ismerteti. A Azure Portalban kiválaszthatja a skálázáshoz használandó erőforrás metrikáját. Más erőforrásokból is kiválaszthat bármely mérőszámot a skálázáshoz.
 
-Az Azure Monitor automatikus skálázása csak [a virtuális gép méretezési készleteire,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [a felhőszolgáltatásokra,](https://azure.microsoft.com/services/cloud-services/) [az appszolgáltatásra – webalkalmazásokra](https://azure.microsoft.com/services/app-service/web/)és [az API-kezelési szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik. Más Azure-szolgáltatások különböző skálázási módszereket használnak.
+Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik. Más Azure-szolgáltatások eltérő skálázási módszereket használnak.
 
-## <a name="compute-metrics-for-resource-manager-based-vms"></a>Számítási mérőszámok az Erőforrás-kezelő alapú virtuális gépekhez
-Alapértelmezés szerint az Erőforrás-kezelő-alapú virtuális gépek és a virtuálisgép-méretezési készletek alapszintű (állomásszintű) metrikákat bocsátanak ki. Emellett az Azure VM és VMSS diagnosztikai adatgyűjtésének konfigurálásakor az Azure diagnosztikai bővítmény vendégoperációs rendszer teljesítményszámlálókat is bocsát ki (közismert nevén "vendég-operációs rendszer metrikák").  Ezeket a metrikákat automatikus skálázási szabályokban használja.
+## <a name="compute-metrics-for-resource-manager-based-vms"></a>A Resource Manager-alapú virtuális gépek számítási mérőszámai
+Alapértelmezés szerint a Resource Manager-alapú Virtual Machines és Virtual Machine Scale Sets alapszintű (gazdagép szintű) mérőszámokat bocsát ki. Emellett az Azure-beli virtuális gépek és VMSS diagnosztikai adatgyűjtésének konfigurálásakor az Azure diagnosztikai bővítmény a vendég-operációsrendszer-teljesítményszámlálók (általában "Vendég-OS mérőszámok") kitöltésére is lehetőséget nyújt.  Ezeket a metrikákat az autoskálázási szabályokban használhatja.
 
-Az `Get MetricDefinitions` API/PoSH/CLI segítségével megtekintheti a VMSS-erőforrás számára elérhető metrikákat.
+Az `Get MetricDefinitions` API/Posh/CLI használatával megtekintheti a VMSS-erőforráshoz elérhető metrikákat.
 
-Ha virtuálisgép-méretezési csoportokat használ, és nem lát egy adott metrika szerepel, majd valószínűleg *le van tiltva* a diagnosztikai bővítményben.
+Ha virtuálisgép-méretezési csoportokat használ, és nem jelenik meg egy adott metrika, akkor a diagnosztika bővítmény valószínűleg *le lesz tiltva* .
 
-Ha egy adott metrika nincs mintavételezve vagy átvitele a kívánt gyakorisággal, frissítheti a diagnosztikai konfigurációt.
+Ha egy adott metrika nem mintavételezés alatt áll, vagy a kívánt gyakorisággal kerül át, akkor frissítheti a diagnosztikai konfigurációt.
 
-Ha bármelyik előző eset igaz, tekintse át [a PowerShell használatával, hogy az Azure Diagnostics egy virtuális gépen windows os PowerShell](../../virtual-machines/extensions/diagnostics-windows.md) konfigurálásához és frissítéséhez az Azure VM diagnosztikai bővítmény, hogy a metrika engedélyezéséhez. Ez a cikk egy mintadiagnosztikai konfigurációs fájlt is tartalmaz.
+Ha az előző eset értéke TRUE (igaz), akkor tekintse át a [PowerShell használata a Windows rendszerű virtuális gépeken a PowerShell használatával történő Azure Diagnosticsának engedélyezéséhez](../../virtual-machines/extensions/diagnostics-windows.md) és frissítéséhez az Azure VM Diagnostics bővítményt a metrika engedélyezéséhez. Ez a cikk egy példa diagnosztikai konfigurációs fájlt is tartalmaz.
 
-### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Az Erőforrás-kezelőn alapuló Windows- és Linux-virtuális gépek gazdagép-metrikái
-A következő állomásszintű metrikák at alapértelmezés szerint az Azure VM és VMSS a Windows és a Linux-példányok. Ezek a metrikák az Azure virtuális gép, de az Azure virtuális gép gazdagép, nem pedig a vendég virtuális gépre telepített ügynök. Ezeket a metrikákat használhatja az automatikus skálázási szabályokban.
+### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái
+Az Azure-beli virtuális gép és a VMSS esetében alapértelmezés szerint a következő gazdagép-szintű metrikák vannak kibocsátva Windows-és Linux-példányokban. Ezek a metrikák írják le az Azure-beli virtuális gépet, de az Azure VM-gazdagépről gyűjtik, nem pedig a vendég virtuális gépen telepített ügynökön keresztül. Ezeket a metrikákat az automatikus skálázási szabályokban használhatja.
 
-- [Az Erőforrás-kezelőn alapuló Windows- és Linux-virtuális gépek gazdagép-metrikái](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Az Erőforrás-kezelőn alapuló Windows- és Linux-méretezési készletek gazdamutatói](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [A Resource Manager-alapú Windows-és Linux-VM Scale Sets gazdagép-metrikái](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Vendég operációsrendszer-mérőszámok az Erőforrás-kezelőn alapuló Windows-virtuális gépekhez
-Amikor virtuális gép az Azure-ban, diagnosztika engedélyezve van a Diagnosztika bővítmény használatával. A diagnosztikai bővítmény a virtuális gép belsejéből vett metrikák készletét bocsátja ki. Ez azt jelenti, hogy az alapértelmezés szerint nem kibocsátott metrikák automatikus skálázásával is leskálázhatja.
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Vendég operációs rendszer metrikái a Resource Manager-alapú Windows rendszerű virtuális gépekhez
+Amikor létrehoz egy virtuális gépet az Azure-ban, a diagnosztika a diagnosztika bővítmény használatával engedélyezhető. A diagnosztikai bővítmény a virtuális gép belsejéből származó mérőszámok készletét bocsátja ki. Ez azt jelenti, hogy az alapértelmezés szerint nem kibocsátott mérőszámok autoskálázása is megtörténik.
 
-A metrikák listáját a PowerShell következő parancsával hozhatlétre.
+A metrikák listáját a PowerShellben a következő parancs használatával hozhatja meg.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-A következő mutatókhoz hozhat létre riasztást:
+Riasztást a következő mérőszámokhoz hozhat létre:
 
-| Metrikus neve | Unit (Egység) |
+| Metrika neve | Unit (Egység) |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Százalék |
-| \Processzor(_Total)\% Kiemelt idő |Százalék |
-| \Processzor(_Total)\% Felhasználói idő |Százalék |
-| \Processzoradatok(_Total)\Processzor gyakorisága |Darabszám |
-| \Rendszer\Folyamatok |Darabszám |
-| \Folyamat(_Total)\Szálak száma |Darabszám |
-| \Folyamat(_Total)\Leírók száma |Darabszám |
-| \Használatban lévő memóriavéglegesített\% bájtok |Százalék |
+| \Processor (_Total)\% Kiemelt idő |Százalék |
+| \Processor (_Total)\% felhasználói idő |Százalék |
+| \Processor információ (_Total) \Processor gyakorisága |Darabszám |
+| \System\Processes |Darabszám |
+| \Process (_Total) \Thread száma |Darabszám |
+| \Process (_Total) \Handle száma |Darabszám |
+| \Memory\% előjegyzett bájtok használatban |Százalék |
 | \Memory\Available Bytes |Bájt |
-| \Memória\Véglegesített bájtok |Bájt |
-| \Memória\Véglegesítési korlát |Bájt |
-| \Memória\Lapozható készletbájt |Bájt |
-| \Memória\Nem lapozható készlet bájtjai |Bájt |
-| \PhysicalDisk(_Total)\% Lemezidő |Százalék |
-| \PhysicalDisk(_Total)\% lemez olvasási ideje |Százalék |
-| \PhysicalDisk(_Total)\% lemez írási ideje |Százalék |
-| \PhysicalDisk(_Total)\Lemezátvitel/mp |CountPerSzekszekundum |
-| \PhysicalDisk(_Total)\Lemezolvasás/mp |CountPerSzekszekundum |
-| \PhysicalDisk(_Total)\Lemezírás/mp |CountPerSzekszekundum |
-| \PhysicalDisk(_Total)\Lemezbájt/mp |BytesPerSecond |
-| \PhysicalDisk(_Total)\Lemezolvasási bájt/mp |BytesPerSecond |
-| \PhysicalDisk(_Total)\Lemezírási bájtok/mp |BytesPerSecond |
-| \PhysicalDisk(_Total)\Átlagos lemezvárólista hossza |Darabszám |
-| \PhysicalDisk(_Total)\Átlagos lemezolvasási várólista hossza |Darabszám |
-| \PhysicalDisk(_Total)\Átlagos lemezírási várólista hossza |Darabszám |
-| \LogicalDisk(_Total)\% szabad terület |Százalék |
-| \LogicalDisk(_Total)\Ingyenes megabájt |Darabszám |
+| \Memory\Committed bájtok |Bájt |
+| \Memory\Commit korlátja |Bájt |
+| \Memory\Pool lapozható bájtok |Bájt |
+| \Memory\Pool, nem lapozható bájtok |Bájt |
+| \PhysicalDisk (_Total)\% lemez ideje |Százalék |
+| \PhysicalDisk (_Total)\% lemez olvasási ideje |Százalék |
+| \PhysicalDisk (_Total)\% lemez írási ideje |Százalék |
+| \PhysicalDisk (_Total) \ átvitel másodpercenként |CountPerSecond |
+| \PhysicalDisk (_Total) \ Olvasás gyakorisága másodpercenként |CountPerSecond |
+| \PhysicalDisk (_Total) \ írás gyakorisága (művelet/mp) |CountPerSecond |
+| \PhysicalDisk (_Total) \ sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ olvasási sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ írási sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ átlagos a lemez várólistájának hossza |Darabszám |
+| \PhysicalDisk (_Total) \ átlagos lemez olvasási várólistájának hossza |Darabszám |
+| \PhysicalDisk (_Total) \ átlagos lemez írási várólistájának hossza |Darabszám |
+| \Logikai lemez (_Total)\% szabad terület |Százalék |
+| \Logikai lemez (_Total) \Szabad hely (MB) |Darabszám |
 
-### <a name="guest-os-metrics-linux-vms"></a>Vendég operációs rendszer linuxos virtuális gépeket mérőszámokat
-Amikor virtuális gép az Azure-ban, diagnosztika alapértelmezés szerint engedélyezve van a Diagnosztikai bővítmény használatával.
+### <a name="guest-os-metrics-linux-vms"></a>Vendég operációs rendszer mérőszámai Linux rendszerű virtuális gépek
+Amikor létrehoz egy virtuális gépet az Azure-ban, a diagnosztika alapértelmezés szerint engedélyezve van a diagnosztikai bővítmény használatával.
 
-A metrikák listáját a PowerShell következő parancsával hozhatlétre.
+A metrikák listáját a PowerShellben a következő parancs használatával hozhatja meg.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
- A következő mutatókhoz hozhat létre riasztást:
+ Riasztást a következő mérőszámokhoz hozhat létre:
 
-| Metrikus neve | Unit (Egység) |
+| Metrika neve | Unit (Egység) |
 | --- | --- |
-| \Memória\Elérhető memória |Bájt |
-| \Memória\PercentAvailableMemory |Százalék |
-| \Memória\Használt memória |Bájt |
-| \Memória\Százalékkal használt memória |Százalék |
+| \Memory\AvailableMemory |Bájt |
+| \Memory\PercentAvailableMemory |Százalék |
+| \Memory\UsedMemory |Bájt |
+| \Memory\PercentUsedMemory |Százalék |
 | \Memory\PercentUsedByCache |Százalék |
-| \Memória\PagesPerSec |CountPerSzekszekundum |
-| \Memória\PagesreadperSec |CountPerSzekszekundum |
-| \Memória\PagesWrittenperSec |CountPerSzekszekundum |
-| \Memória\Elérhető swap |Bájt |
-| \Memória\PercentAvailableSwap |Százalék |
-| \Memória\UsedSwap |Bájt |
-| \Memória\PercentUsedSwap |Százalék |
-| \Processzor\PercentIdleTime |Százalék |
-| \Processzor\PercentUserTime |Százalék |
-| \Processzor\PercentNiceTime |Százalék |
-| \Processzor\PercentPrivilegedTime |Százalék |
-| \Processzor\PercentInterruptTime |Százalék |
-| \Processzor\PercentDPCTime |Százalék |
-| \Processzor\PercentProcessorTime |Százalék |
-| \Processzor\PercentIOWaitTime |Százalék |
+| \Memory\PagesPerSec |CountPerSecond |
+| \Memory\PagesReadPerSec |CountPerSecond |
+| \Memory\PagesWrittenPerSec |CountPerSecond |
+| \Memory\AvailableSwap |Bájt |
+| \Memory\PercentAvailableSwap |Százalék |
+| \Memory\UsedSwap |Bájt |
+| \Memory\PercentUsedSwap |Százalék |
+| \Processor\PercentIdleTime |Százalék |
+| \Processor\PercentUserTime |Százalék |
+| \Processor\PercentNiceTime |Százalék |
+| \Processor\PercentPrivilegedTime |Százalék |
+| \Processor\PercentInterruptTime |Százalék |
+| \Processor\PercentDPCTime |Százalék |
+| \Processor\PercentProcessorTime |Százalék |
+| \Processor\PercentIOWaitTime |Százalék |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\TransfersPerSecond |CountPerSzekszekundum |
-| \PhysicalDisk\Olvasásszekunduma |CountPerSzekszekundum |
-| \PhysicalDisk\WritesPerSecond |CountPerSzekszekundum |
+| \PhysicalDisk\TransfersPerSecond |CountPerSecond |
+| \PhysicalDisk\ReadsPerSecond |CountPerSecond |
+| \PhysicalDisk\WritesPerSecond |CountPerSecond |
 | \PhysicalDisk\AverageReadTime |Másodperc |
 | \PhysicalDisk\AverageWriteTime |Másodperc |
 | \PhysicalDisk\AverageTransferTime |Másodperc |
 | \PhysicalDisk\AverageDiskQueueLength |Darabszám |
-| \NetworkInterface\Bájtátvitel |Bájt |
-| \NetworkInterface\Fogadott bájtok |Bájt |
+| \NetworkInterface\BytesTransmitted |Bájt |
+| \NetworkInterface\BytesReceived |Bájt |
 | \NetworkInterface\PacketsTransmitted |Darabszám |
-| \NetworkInterface\Fogadott csomagok |Darabszám |
-| \NetworkInterface\BájtÖsszes |Bájt |
+| \NetworkInterface\PacketsReceived |Darabszám |
+| \NetworkInterface\BytesTotal |Bájt |
 | \NetworkInterface\TotalRxErrors |Darabszám |
 | \NetworkInterface\TotalTxErrors |Darabszám |
 | \NetworkInterface\TotalCollisions |Darabszám |
 
-## <a name="commonly-used-app-service-server-farm-metrics"></a>Általánosan használt App Service (Server Farm) mérőszámok
-Automatikus skálázást is végrehajthat a közös webkiszolgáló-metrikák, például a Http-várólista hossza alapján. A metrika neve **HttpQueueLength**.  A következő szakasz felsorolja az elérhető kiszolgálófarm (App Service) metrikákat.
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Gyakran használt App Service (kiszolgálófarm) metrikák
+Az autoskálázást a gyakori webkiszolgáló-metrikák, például a http-várólista hossza alapján is elvégezheti. A metrika neve **HttpQueueLength**.  A következő szakasz felsorolja a rendelkezésre álló kiszolgálófarm (App Service) mérőszámait.
 
-### <a name="web-apps-metrics"></a>Webalkalmazások mutatói
-A Web Apps-metrikák listáját a PowerShell következő parancsával hozhatja létre.
+### <a name="web-apps-metrics"></a>Web Apps metrikák
+A Web Apps metrikáinak listáját a PowerShellben a következő paranccsal hozhatja meg.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Ezekre a mutatókra vonatkozó anam-es riasztást vagy méretezést.
+Ezeket a metrikákat riasztással vagy méretezhetővé teheti.
 
-| Metrikus neve | Unit (Egység) |
+| Metrika neve | Unit (Egység) |
 | --- | --- |
-| Cpuszázalék |Százalék |
-| Memóriaszázalék |Százalék |
+| CpuPercentage |Százalék |
+| MemoryPercentage |Százalék |
 | DiskQueueLength |Darabszám |
-| HttpQueueLength között |Darabszám |
-| Fogadott bájt |Bájt |
-| Küldött bájt |Bájt |
+| HttpQueueLength |Darabszám |
+| BytesReceived |Bájt |
+| BytesSent |Bájt |
 
-## <a name="commonly-used-storage-metrics"></a>Általánosan használt tárolási metrikák
-A storage-várólista hossza szerint méretezhető, amely a tárolóvárólistában lévő üzenetek száma. A tárolási várólista hossza egy speciális metrika, és a küszöbérték az üzenetek példányonkénti száma. Ha például két példány van, és a küszöbérték 100-ra van állítva, a méretezés akkor következik be, amikor a várólistában lévő üzenetek teljes száma 200. Ez lehet 100 üzenet példányonként, 120 és 80, vagy bármely más kombináció, amely összeadja a 200 vagy több.
+## <a name="commonly-used-storage-metrics"></a>Gyakran használt tárolási metrikák
+A tárolási várólista hossza méretezhető, ami a tárolási várólistában lévő üzenetek száma. A tárolási várólista hossza egy speciális metrika, a küszöbérték pedig az üzenetek száma egy példányban. Ha például két példány van megadva, és ha a küszöbérték 100 értékre van állítva, akkor a skálázás akkor fordul elő, ha a várólistán lévő üzenetek száma összesen 200. A példányok száma 100, 120 és 80, vagy bármely más kombináció, amely akár 200-et, akár többet is felvesz.
 
-Konfigurálja ezt a beállítást az Azure Portalon a **Beállítások** panelen. Virtuálisgép-méretezési csoportok esetén frissítheti az Erőforrás-kezelő sablon automatikus skálázási beállítását, hogy *a metricName-t* *approximateMessageCount-ként* használja, és adja át a tárolóvárólista azonosítóját *metricResourceUri*néven.
+Konfigurálja ezt a beállítást a Azure Portal a **Beállítások** panelen. A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri*azonosítóját adja át.
 
-Például egy klasszikus tárfiók az automatikus skálázási beállítás metricTrigger tartalmazná:
+Egy klasszikus Storage-fiókkal például a metricTrigger az autoskálázási beállítás a következőket fogja tartalmazni:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -163,7 +163,7 @@ Például egy klasszikus tárfiók az automatikus skálázási beállítás metr
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
-Egy (nem klasszikus) tárfiók esetén a metricTrigger a következőket tartalmazza:
+Egy (nem klasszikus) Storage-fiók esetében a metricTrigger a következőket foglalja magában:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -171,10 +171,10 @@ Egy (nem klasszikus) tárfiók esetén a metricTrigger a következőket tartalma
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.Storage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
 ```
 
-## <a name="commonly-used-service-bus-metrics"></a>Általánosan használt Service Bus-metrikák
-A Service Bus várólista hossza szerint méretezhető, amely a Service Bus várólistában lévő üzenetek száma. A Service Bus várólista hossza egy speciális metrika, és a küszöbérték az üzenetek száma példányonként. Ha például két példány van, és a küszöbérték 100-ra van állítva, a méretezés akkor következik be, amikor a várólistában lévő üzenetek teljes száma 200. Ez lehet 100 üzenet példányonként, 120 és 80, vagy bármely más kombináció, amely összeadja a 200 vagy több.
+## <a name="commonly-used-service-bus-metrics"></a>Gyakran használt Service Bus metrikák
+Service Bus üzenetsor hosszával méretezheti a méretezést, amely a Service Bus üzenetsor üzeneteinek száma. Service Bus üzenetsor hossza egy speciális metrika, és a küszöbérték a példányok száma. Ha például két példány van megadva, és ha a küszöbérték 100 értékre van állítva, akkor a skálázás akkor fordul elő, ha a várólistán lévő üzenetek száma összesen 200. A példányok száma 100, 120 és 80, vagy bármely más kombináció, amely akár 200-et, akár többet is felvesz.
 
-Virtuálisgép-méretezési csoportok esetén frissítheti az Erőforrás-kezelő sablon automatikus skálázási beállítását, hogy *a metricName-t* *approximateMessageCount-ként* használja, és adja át a tárolóvárólista azonosítóját *metricResourceUri*néven.
+A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri*azonosítóját adja át.
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -183,7 +183,7 @@ Virtuálisgép-méretezési csoportok esetén frissítheti az Erőforrás-kezel�
 ```
 
 > [!NOTE]
-> A Service Bus esetében az erőforráscsoport koncepciója nem létezik, de az Azure Resource Manager régiónként létrehoz egy alapértelmezett erőforráscsoportot. Az erőforráscsoport általában "Default-ServiceBus-[region]" formátumban van. Például a "Default-ServiceBus-EastUS", a "Default-ServiceBus-WestUS", a "Default-ServiceBus-AustraliaEast" stb.
+> Service Bus esetében az erőforráscsoport fogalma nem létezik, de a Azure Resource Manager régiónként létrehoz egy alapértelmezett erőforráscsoportot. Az erőforráscsoport általában az "alapértelmezett-ServiceBus-[region]" formátumban van. Például: "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" stb.
 >
 >
 

@@ -10,68 +10,68 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76984569"
 ---
-1. Az [Azure Portalon](https://ms.portal.azure.com/)válassza az **Azure Active Directory** > **alkalmazás regisztrációk** > **Új regisztráció**.
+1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 
-   [![Új alkalmazásregisztráció az Azure Active Directoryban](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
+   [![Új alkalmazás regisztrálása Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
-    Az alkalmazás a regisztráció után itt jelenik meg.
+    A regisztrálás után az alkalmazás itt jelenik meg.
 
-1. Adjon nevet az alkalmazásnak, és válassza **a Fiókok lehetőséget ebben a szervezeti címtárban csak** az API-hoz hozzáférő támogatott **fióktípusok** megadásához. Válasszon egy érvényes URI-t, ahamelya felhasználókat a hitelesítés után átirányít, majd **regisztráljon.**
+1. Adjon nevet az alkalmazásnak, és válassza ki a **fiókokat ebben a szervezeti könyvtárban csak** az API-hoz hozzáférő **támogatott fióktípus** megadásához. Válasszon egy érvényes URI-t a felhasználók a hitelesítés után való átirányításához, majd **regisztrálja**őket.
 
-   [![Az alkalmazás létrehozása az Azure Active Directoryban](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
+   [![Az alkalmazás létrehozása Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Fontos Az Azure Active Directory alkalmazás adatai jelennek meg a felsorolt alkalmazás **áttekintése** panelen. Válassza ki az alkalmazást **a Saját alkalmazások**területen, majd az Áttekintés **lehetőséget.**
+1. Fontos Azure Active Directory az alkalmazásadatok a felsorolt alkalmazás **Áttekintés** paneljén jelennek meg. Válassza ki az alkalmazást a **tulajdonában lévő alkalmazások**területen, majd az **Áttekintés**lehetőséget.
 
-   [![Az alkalmazásazonosító másolása](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
+   [![Az alkalmazás AZONOSÍTÓjának másolása](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
-   Másolja az **alkalmazás (ügyfél) azonosítóját** az ügyfélalkalmazásban való használatra.
+   Másolja az **alkalmazás (ügyfél) azonosítóját** az ügyfélalkalmazás használatára.
 
-1. A **Hitelesítés** panel fontos hitelesítési konfigurációs beállításokat ad meg. 
+1. A **hitelesítés** panelen a fontos hitelesítési konfigurációs beállítások adhatók meg. 
 
-    1. Adja hozzá **az átirányítási URI-kat,** és konfigurálja **a hozzáférési jogkivonatokat** **a + Platform hozzáadása**lehetőség kiválasztásával .
+    1. Adja hozzá az **átirányítási URI-ket** , és konfigurálja a **hozzáférési jogkivonatokat** a **+ platform hozzáadása**lehetőség kiválasztásával.
 
-    1. Az **Igen** vagy a **Nem**lehetőség kiválasztásával állapítsa meg, hogy az alkalmazás **nyilvános ügyfél-e** vagy sem.
+    1. Döntse el, hogy az alkalmazás **nyilvános** -e, vagy sem, ha az **Igen** vagy a **nem**lehetőséget választja.
 
     1. Ellenőrizze, hogy mely fiókok és bérlők támogatottak.
 
-    [![Implicit támogatás konfigurálása](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![Implicit engedélyezés konfigurálása](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-1. A megfelelő platform kiválasztása után konfigurálja az **átirányítási URI-kat** és a **hozzáférési jogkivonatokat** a felhasználói felület jobb oldalán lévő oldalsó panelen.
+1. Miután kiválasztotta a megfelelő platformot, konfigurálja az **átirányítási URI-ket** és a **hozzáférési jogkivonatokat** a felhasználói felület jobb oldalán lévő oldalsó panelen.
 
-    1. **Az átirányítási URI-knak** meg kell egyezniük a hitelesítési kérelem által megadott címmel:
+    1. Az **átirányítási URI-azonosítóknak** meg kell egyezniük a hitelesítési kérelem által megadott címtől:
 
-        * Helyi fejlesztői környezetben üzemeltetett alkalmazások esetén válassza a **Nyilvános ügyfél (mobil & asztali)** lehetőséget. Győződjön meg arról, hogy **a nyilvános ügyfelet** **Igen**beállításra állítja.
-        * Az Azure App Service szolgáltatásban üzemeltetett egyoldalas alkalmazások esetén válassza a **Web**lehetőséget.
+        * Helyi fejlesztési környezetben üzemeltetett alkalmazásokhoz válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget. Ügyeljen arra, hogy a **nyilvános ügyfelet** állítsa **Igen**értékre.
+        * Azure App Serviceon üzemeltetett egylapos alkalmazások esetében válassza a **web**lehetőséget.
 
-    1. Határozza meg, hogy a **kijelentkezési URL-cím** megfelelő-e.
+    1. Döntse el, hogy megfelelő-e a **kijelentkezési URL-cím** .
 
-    1. Engedélyezze az implicit támogatási **folyamatot az Access-jogkivonatok** vagy **-azonosítójogtok**ellenőrzésével.
+    1. Engedélyezze az implicit engedélyezési folyamatot a **hozzáférési jogkivonatok** vagy **azonosító tokenek**ellenőrzésével.
 
     [![Átirányítási URI-k létrehozása](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-    Kattintson **a Konfigurálás**gombra, majd a **Mentés gombra.**
+    Kattintson a **Konfigurálás**, majd a **Mentés**elemre.
 
-1. Válassza **a tanúsítványok & titkos kulcsokat,** majd az új **ügyféltitok** egy alkalmazásjelszót hozzon létre, amelyet az ügyfélalkalmazás az identitásának igazolására használhat.
+1. Válassza a **tanúsítványok & Secrets** , majd az **új ügyfél titka** elemet egy olyan alkalmazás jelszavának létrehozásához, amelyet az ügyfélalkalmazás a személyazonosságának igazolására használhat.
 
-   [![Új ügyféltitok létrehozása](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
+   [![Új ügyfél titkos kulcsának létrehozása](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
-   Ekkor megjelenik az ügyféltitkos jelszava. Másolja a kulcsot a kedvenc szövegszerkesztőbe.
+   Ekkor megjelenik az ügyfél titkos jelszava. Másolja a kulcsot a kedvenc szövegszerkesztőbe.
 
    > [!NOTE]
-   > Ehelyett importálhat egy tanúsítványt. A fokozott biztonság érdekében tanúsítvány használata ajánlott. Tanúsítvány használatához válassza a **Tanúsítvány feltöltése**lehetőséget.
+   > Lehetőség van egy tanúsítvány importálására. A fokozott biztonság érdekében ajánlott a tanúsítvány használata. A tanúsítvány használatához válassza a **tanúsítvány feltöltése**lehetőséget.
 
-1. Társítsa az Azure Active Directory-alkalmazást, az Azure TIme Series Insights-ot. **API-engedélyek** > **kiválasztása: Adjon hozzá egy** > **engedélyAPI-t, amelyet a szervezet használ.** 
+1. A Azure Active Directory alkalmazásának Azure TIme Series-beli bepillantást kell rendelnie. Válassza **az API-engedélyek** > lehetőséget a**szervezetem által használt API**-k**hozzáadása** > lehetőségre. 
 
-    [![API társítása az Azure Active Directory-alkalmazáshoz](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
+    [![API hozzárendelése a Azure Active Directory-alkalmazáshoz](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
-   Írja `Azure Time Series Insights` be a keresősávba, majd válassza a lehetőséget. `Azure Time Series Insights`
+   Írja `Azure Time Series Insights` be a keresősáv kifejezést, majd `Azure Time Series Insights`válassza a elemet.
 
-1. Ezután adja meg az alkalmazás által igényelt API-engedélyek et. Alapértelmezés szerint a **delegált engedélyek** ki lesznek emelve. Válasszon majd egy engedélytípust, és válassza **az Engedélyek hozzáadása**lehetőséget.
+1. Ezután adja meg az alkalmazás által igényelt API-engedélyt. Alapértelmezés szerint a **delegált engedélyek** ki lesznek emelve. Válassza ki az engedély típusát, majd válassza az **engedélyek hozzáadása**lehetőséget.
 
-    [![Adja meg, hogy milyen API-engedélyre van szükség az alkalmazásnak](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+    [![Adja meg az alkalmazás által igényelt API-engedély típusát](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs használata képzéshez | Microsoft dokumentumok
-description: Ez a cikk részletes lépéseket tartalmaz, amelyek végrehajtásához hozzon létre egy labort az Azure DevTest Labs betanításához.
+title: Azure DevTest Labs használata a betanításhoz | Microsoft Docs
+description: Ez a cikk részletesen ismerteti, hogyan állíthatja be a labort a Azure DevTest Labs betanításához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,91 +14,91 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759977"
 ---
-# <a name="use-azure-devtest-labs-for-training"></a>Az Azure DevTest Labs használata az oktatáshoz
-Az Azure DevTest Labs számos kulcsfontosságú forgatókönyv megvalósításához használható a fejlesztés/tesztelés mellett. Az egyik ilyen forgatókönyv az, hogy hozzon létre egy labort a képzéshez. Az Azure DevTest Labs lehetővé teszi, hogy hozzon létre egy labor, ahol egyéni sablonokat, amelyek minden gyakornok használhatja, hogy azonos és elszigetelt környezetek képzéséhez. Szabályzatokat alkalmazhat annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők minden gyakornok számára, amikor szükségük van rájuk, és elegendő erőforrást – például virtuális gépeket – tartalmaznak a képzéshez. Végül könnyedén megoszthatja a labort a gyakornokokkal, amelyeket egy kattintással elérhetnek.
+# <a name="use-azure-devtest-labs-for-training"></a>Azure DevTest Labs használata képzéshez
+A Azure DevTest Labs számos kulcsfontosságú forgatókönyvet valósíthat meg a fejlesztési és tesztelési funkciókon kívül is. Ezen forgatókönyvek egyike a képzéshez szükséges labor beállítása. Azure DevTest Labs lehetővé teszi, hogy egy olyan labort hozzon létre, ahol egyéni sablonokat biztosíthat, amelyekkel az egyes gyakornokok azonos és elszigetelt környezeteket hozhatnak létre a képzéshez. Házirendeket alkalmazhat annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők az egyes gyakornokok számára, ha szükségük van rájuk, és elegendő erőforrást (például virtuális gépeket) tartalmaznak, amelyek a képzéshez szükségesek Végül egyszerűen megoszthatja a labort a gyakornokokkal, amelyeket egyetlen kattintással elérhet.
 
-![A DevTest Labs használata a képzéshez](./media/devtest-lab-training-lab/devtest-lab-training.png)
+![DevTest Labs használata képzéshez](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Az Azure DevTest Labs megfelel az alábbi követelményeknek, amelyek szükségesek a képzés elvégzéséhez bármilyen virtuális környezetben: 
+A Azure DevTest Labs megfelel a következő követelményeknek, amelyek szükségesek a betanítás bármely virtuális környezetben való végrehajtásához: 
 
-* A gyakornokok nem láthatják a más gyakornokok által létrehozott virtuális gépeket
-* Minden edzőgépnek azonosnak kell lennie
-* A gyakornokok gyorsan elláthatják képzési környezetüket
-* A költségek szabályozása annak biztosításával, hogy a gyakornokok ne kaphassanak több virtuális gépet, mint amennyi a képzéshez szükséges, valamint a virtuális gépek leállítása, amikor nem használják őket
-* Egyszerűen megoszthatja a képzési labort minden gyakornokkal
-* Használja újra és újra az edzéslabort
+* A gyakornokok nem látják a más gyakornokok által létrehozott virtuális gépeket
+* Minden betanítási gépnek azonosnak kell lennie
+* A gyakornokok gyorsan üzembe helyezhetik a képzési környezeteket
+* Szabályozhatja a költségeket azáltal, hogy a gyakornokok nem tudnak több virtuális gépet lekérni, mint amennyit a képzéshez és a virtuális gépek leállításához, amikor nem használják őket
+* Az oktatási laborok könnyedén megoszthatók az egyes gyakornokokkal
+* Újra és újra újra felhasználja a betanítási labort
 
-Ebben a cikkben megismerheti a különböző Azure DevTest Labs funkciók, amelyek a korábban leírt képzési követelmények és a részletes lépéseket, amelyek segítségével egy labor betanítása.  
+Ebben a cikkben megismerheti azokat a különböző Azure DevTest Labs funkciókat, amelyek a korábban leírt képzési követelmények teljesítéséhez használhatók, és részletesen ismertetjük azokat a lépéseket, amelyekkel labort állíthat be a képzéshez.  
 
-## <a name="implementing-training-with-azure-devtest-labs"></a>Oktatás megvalósítása az Azure DevTest Labs segítségével
-1. **A labor létrehozása** 
+## <a name="implementing-training-with-azure-devtest-labs"></a>Képzés megvalósítása Azure DevTest Labs
+1. **A tesztkörnyezet létrehozása** 
    
-    Labs a kiindulási pont az Azure DevTest Labs. Miután létrehozott egy tesztkörnyezetet, olyan feladatokat hajthat végre, mint például felhasználók (gyakornokok) hozzáadása a laborhoz, házirendek beállítása a költségek szabályozásához, a gyorsan létrehozható virtuálisgép-lemezképek definiálása és egyebek.   
+    A Labs a Azure DevTest Labs kiindulási pontja. A labor létrehozása után olyan feladatokat hajthat végre, mint például a felhasználók (gyakornokok) hozzáadása a laborhoz, szabályzatok beállítása a költségek szabályozására, a gyorsan készíthető virtuálisgép-rendszerképek definiálása és egyebek.   
    
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
-   
-   | Tevékenység | Ismertetett témák |
-   | --- | --- |
-   | [Labor létrehozása az Azure DevTest Labs szolgáltatásban](devtest-lab-create-lab.md) |Ismerje meg, hogyan hozhat létre labort az Azure DevTest Labs az Azure Portalon. |
-2. **Betanítási virtuális gépek létrehozása percek alatt kész piactéri lemezképek és egyéni lemezképek használatával** 
-   
-    Az Azure Marketplace-en a képek széles választékából választhat kész képeket, és elérhetővé teheti azokat a laborban lévő gyakornokok számára. Ha a kész lemezképek nem felelnek meg a követelményeknek, létrehozhat egy egyéni lemezképet egy tesztkörnyezetvirtuális gép létrehozásával az Azure Marketplace-ről, az összes szoftver telepítése, amely szükséges a betanításhoz, és mentse a virtuális gép egyéni lemezképként a laborban. 
-   
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
    | Tevékenység | Ismertetett témák |
    | --- | --- |
-   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Ismerje meg, hogyan listázhatja az Azure Marketplace-lemezképeket; csak a képzéshez kívánt képek et szeretné kiválasztani. |
-   | [Egyéni lemezkép létrehozása](devtest-lab-create-template.md) |Hozzon létre egy egyéni lemezképet a képzéshez szükséges szoftver előzetes telepítésével, hogy a gyakornokok gyorsan létrehozhathassanak egy virtuális gépet az egyéni lemezkép használatával. |
-3. **Újrafelhasználható sablonok létrehozása az oktatógépekhez** 
+   | [Labor létrehozása az Azure DevTest Labs szolgáltatásban](devtest-lab-create-lab.md) |Megtudhatja, hogyan hozhat létre labort Azure DevTest Labs a Azure Portalban. |
+2. **A kész Piactéri rendszerképek és az Egyéni rendszerképek használatával percek alatt hozhat létre képzési virtuális gépeket** 
    
-    Az Azure DevTest Labs képlete a virtuális gép létrehozásához használt alapértelmezett tulajdonságértékek listája. Képletet hozhat létre a laborban egy lemezkép, a virtuális gép méretének (a CPU és a RAM kombinációja) és egy virtuális hálózat kiválasztásával. Minden gyakornok láthatja a képletet a laborban, és használja a virtuális gép létrehozásához. 
+    Az Azure Marketplace-en számos rendszerképből választhat előre elkészített képeket, és elérhetővé teheti azokat a laborban található gyakornokoknak. Ha a kész lemezképek nem felelnek meg a követelményeknek, létrehozhat egy egyéni rendszerképet úgy, hogy létrehoz egy, az Azure Marketplace-ről készített, előre elkészített rendszerképet használó Tesztkörnyezet-virtuális gépet, telepíti az összes szükséges szoftvert, és a virtuális gépet a laborban egyéni rendszerképként menti. 
    
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
-   
-   | Tevékenység | Ismertetett témák |
-   | --- | --- |
-   | [DevTest Labs képletek kezelése virtuális gépek létrehozásához](devtest-lab-manage-formulas.md) |Megtudhatja, hogyan hozhat létre képletet egy lemezkép, a virtuális gép méretének (a CPU és a RAM kombinációja) és a virtuális hálózat felvételével. |
-4. **Ellenőrzési költségek**
-   
-    Az Azure DevTest Labs lehetővé teszi, hogy a laborban megadott szabályzatadja meg a tesztkörnyezetben egy gyakornok által létrehozható virtuális gépek maximális számát. 
-   
-    Ha többnapos betanítást végez, és szeretné leállítani az összes virtuális gépet a nap egy adott időpontjában, majd a következő napon automatikusan újra szeretné indítani őket, ezt egyszerűen elvégezheti az automatikus leállítás és az automatikus indítási házirendek beállításával a laborban. 
-   
-    Végül, ha a betanítás befejeződött, egyszerre törölheti az összes virtuális gépet egyetlen PowerShell-parancsfájl futtatásával. 
-   
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
    | Tevékenység | Ismertetett témák |
    | --- | --- |
-   | [Laborszabályzatok definiálása](devtest-lab-set-lab-policy.md) |A környezetkörnyezetházirendek beállításával szabályozhatja a költségeket. |
-   | [Az összes tesztkörnyezetbeli virtuális gép törlése PowerShell-parancsfájl használatával](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Törölje az összes laborok egy műveletben, ha a betanítás befejeződött. |
-5. **Ossza meg a labort minden gyakornokkal**
+   | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Ismerje meg, hogyan engedélyezheti az Azure Marketplace-lemezképek engedélyezési lehetőségeit; csak a betanításhoz használni kívánt rendszerképek kiválasztására használható. |
+   | [Egyéni lemezkép létrehozása](devtest-lab-create-template.md) |Hozzon létre egy egyéni rendszerképet a betanításhoz szükséges szoftver előzetes telepítésével, így a gyakornokok gyorsan létrehozhatnak egy virtuális gépet az egyéni rendszerkép használatával. |
+3. **Újrafelhasználható sablonok létrehozása a betanítási gépekhez** 
    
-    A laborok közvetlenül elérhetők egy link segítségével, amelyet megoszt a gyakornokokkal. A gyakornokok nem is kell, hogy egy Azure-fiókot, mindaddig, amíg van egy [Microsoft-fiók.](devtest-lab-faq.md#what-is-a-microsoft-account) A gyakornokok nem láthatják a más gyakornokok által létrehozott virtuális gépeket.  
+    A Azure DevTest Labs képlete a virtuális gép létrehozásához használt alapértelmezett tulajdonságértékek listáját tartalmazza. Létrehozhat egy képletet a laborban egy rendszerkép, egy virtuálisgép-méret (a CPU és a RAM kombinációja) és egy virtuális hálózat segítségével. Minden gyakornok láthatja a képletet a laborban, és felhasználhatja egy virtuális gép létrehozásához. 
    
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
-   
-   | Tevékenység | Ismertetett témák |
-   | --- | --- |
-   | [Gyakornok felvétele egy laborba az Azure DevTest Labs-ben](devtest-lab-add-devtest-user.md) |Az Azure Portal segítségével gyakornokokat vehet fel a képzési laborba. |
-   | [Gyakornokok hozzáadása a laborhoz PowerShell-parancsfájl használatával](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |A PowerShell segítségével automatizálhatja a gyakornokok hozzáadását a képzési laborba. |
-   | [Hivatkozás beszerezni a labort](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Ismerje meg, hogyan érhető el közvetlenül egy tesztkörnyezet hivatkozáson keresztül. |
-6. **Újra és újra használja fel a labort** 
-   
-    A laborok létrehozását , beleértve az egyéni beállításokat is, automatizálhatja egy Erőforrás-kezelő sablon létrehozásával, és azonos laborok újbóli és újra létrehozásához. 
-   
-    További információ az alábbi táblázatban található hivatkozásokra kattintva:
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
    | Tevékenység | Ismertetett témák |
    | --- | --- |
-   | [Labor létrehozása Erőforrás-kezelő sablon nal](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Laborokat hozhat létre az Azure DevTest Labs ben az Erőforrás-kezelő sablonjainak használatával. |
+   | [DevTest Labs-képletek kezelése virtuális gépek létrehozásához](devtest-lab-manage-formulas.md) |Megtudhatja, hogyan hozhat létre képletet a rendszerkép, a virtuálisgép-méret (a CPU és a RAM kombinációja) és egy virtuális hálózat kiválasztásával. |
+4. **A költségek szabályozása**
+   
+    Azure DevTest Labs lehetővé teszi, hogy házirendet állítson be a laborban a laborban gyakornokként létrehozott virtuális gépek maximális számának megadásához. 
+   
+    Ha többnapos képzést végez, és egy adott időpontban szeretné leállítani az összes virtuális gépet, majd automatikusan újraindítja őket a következő napon, egyszerűen elvégezheti ezt az automatikus leállítás és az automatikus indítási házirendek beállításával a laborban. 
+   
+    Végül, ha a képzés befejeződött, egyetlen PowerShell-szkript futtatásával bármikor törölheti az összes virtuális gépet. 
+   
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
+   
+   | Tevékenység | Ismertetett témák |
+   | --- | --- |
+   | [Laborszabályzatok definiálása](devtest-lab-set-lab-policy.md) |Szabályozza a költségeket a szabályzatok beállításával a laborban. |
+   | [Az összes tesztkörnyezetben működő virtuális gép törlése PowerShell-parancsfájl használatával](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |A képzés befejezésekor törölje az összes labort egy művelettel. |
+5. **A labor megosztása minden gyakornoktal**
+   
+    A laborok közvetlenül is elérhetők egy, a gyakornokokkal megosztott hivatkozás használatával. A gyakornokoknak még egy Azure-fiókkal sem kell rendelkezniük, feltéve, hogy [Microsoft-fiókük](devtest-lab-faq.md#what-is-a-microsoft-account)van. A gyakornokok nem látják a más gyakornokok által létrehozott virtuális gépeket.  
+   
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
+   
+   | Tevékenység | Ismertetett témák |
+   | --- | --- |
+   | [Gyakornok hozzáadása laborhoz Azure DevTest Labs](devtest-lab-add-devtest-user.md) |A Azure Portal használatával vehet fel gyakornokokat a betanítási laborba. |
+   | [Gyakornokok hozzáadása a laborhoz PowerShell-parancsfájl használatával](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |A PowerShell használatával automatizálhatja a gyakornokok felvételét a képzési laborba. |
+   | [A laborra mutató hivatkozás beszerzése](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Megtudhatja, hogyan lehet közvetlenül hozzáférni a laborhoz egy hiperhivatkozáson keresztül. |
+6. **Újra és újra újra újra a labort** 
+   
+    Egy Resource Manager-sablon létrehozásával automatizálhatja a laborok létrehozását, beleértve az egyéni beállításokat is, és a használatával újra és újra létrehozhatja az azonos Labs-t. 
+   
+    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
+   
+   | Tevékenység | Ismertetett témák |
+   | --- | --- |
+   | [Labor létrehozása Resource Manager-sablonnal](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Hozzon létre laborokat a Azure DevTest Labs Resource Manager-sablonok használatával. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
