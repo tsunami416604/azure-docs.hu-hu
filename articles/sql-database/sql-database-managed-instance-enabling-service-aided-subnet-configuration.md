@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatásáltal támogatott alhálózati konfiguráció engedélyezése az Azure SQL Database felügyelt példányához
-description: Szolgáltatásáltal támogatott alhálózati konfiguráció engedélyezése az Azure SQL Database felügyelt példányához
+title: A szolgáltatással segített alhálózat konfigurációjának engedélyezése Azure SQL Database felügyelt példányhoz
+description: A szolgáltatással segített alhálózat konfigurációjának engedélyezése Azure SQL Database felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,35 +11,35 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79533266"
 ---
-# <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Szolgáltatásáltal támogatott alhálózati konfiguráció engedélyezése az Azure SQL Database felügyelt példányához
-A szolgáltatásáltal támogatott alhálózati konfiguráció automatikus hálózati konfigurációkezelést biztosít a felügyelt példányokat tároló alhálózatok számára. A szolgáltatás által támogatott alhálózati konfiguráció felhasználó marad teljes mértékben ellenőrzése az adatokhoz való hozzáférés (TDS forgalom áramlása), míg a felügyelt példány felelősséget vállal a felügyeleti forgalom folyamatos áramlásának biztosításáért az SLA teljesítése érdekében.
+# <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>A szolgáltatással segített alhálózat konfigurációjának engedélyezése Azure SQL Database felügyelt példányhoz
+A szolgáltatással segített alhálózat-konfiguráció automatizált hálózati konfiguráció-felügyeletet biztosít a felügyelt példányokat üzemeltető alhálózatok számára. A szolgáltatással segített alhálózat-konfigurációval rendelkező felhasználó teljes mértékben felügyeli az adatokhoz való hozzáférést (TDS-adatforgalom), míg a felügyelt példányok feladata, hogy a felügyeleti forgalom zavartalan áramlását biztosítsa, hogy az SLA-t teljesítse.
 
-Az automatikusan konfigurált hálózati biztonsági csoportok és útvonaltábla-szabályok láthatók az ügyfelek számára, és a _Microsoft.Sql-managedInstances_UseOnly__- előtaggal vannak elrendelve.
+Az automatikusan konfigurált hálózati biztonsági csoportok és útválasztási szabályok az ügyfél számára láthatók, és a _Microsoft. SQL-managedInstances_UseOnly__ előtaggal vannak ellátva.
 
-A szolgáltatás által támogatott konfiguráció automatikusan engedélyezve van, ha bekapcsolja az [erőforrás-szolgáltató alhálózati delegálását.](../virtual-network/subnet-delegation-overview.md) `Microsoft.Sql/managedInstances`
+A szolgáltatással segített konfiguráció automatikusan engedélyezve van, ha bekapcsolja az [alhálózat delegálását](../virtual-network/subnet-delegation-overview.md) az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónál.
 
 > [!IMPORTANT] 
-> Az alhálózati delegálás bekapcsolása után nem tudta kikapcsolni, amíg el nem távolítja az utolsó virtuális fürtöt az alhálózatról. A virtuális fürt törlésével kapcsolatos további részletekért tekintse meg a következő [cikket.](sql-database-managed-instance-delete-virtual-cluster.md#delete-virtual-cluster-from-the-azure-portal)
+> Ha az alhálózat – delegálás be van kapcsolva, nem kapcsolhatja ki, amíg el nem távolítja az utolsó virtuális fürtöt az alhálózatról. A virtuális fürt törlésével kapcsolatos további információkért tekintse meg a következő [cikket](sql-database-managed-instance-delete-virtual-cluster.md#delete-virtual-cluster-from-the-azure-portal).
 
 > [!NOTE] 
-> Mivel a szolgáltatás által támogatott alhálózati konfiguráció alapvető jellemzője az SLA karbantartásának, 2020. 2020. július 1-jén a felügyelt példányokat tartalmazó összes alhálózat automatikusan delegálva lesz a felügyelt példány erőforrás-szolgáltatószámára. 
+> Mivel a szolgáltatással segített alhálózati konfiguráció elengedhetetlen az SLA fenntartásához, a 2020. május 1-től kezdődően a felügyelt példányokat nem lehet olyan alhálózatokban telepíteni, amelyek nem a felügyelt példány erőforrás-szolgáltatóhoz vannak delegálva. Július 1-jén 2020 a felügyelt példányokat tartalmazó összes alhálózat automatikusan delegálásra kerül a felügyelt példány erőforrás-szolgáltatója számára. 
 
-## <a name="enabling-subnet-delegation-for-new-deployments"></a>Alhálózati delegálás engedélyezése új telepítéseknél
-A felügyelt példány üres alhálózatba történő `Microsoft.Sql/managedInstances` telepítéséhez delegálnia kell az erőforrás-szolgáltatónak a következő [cikkben leírtak szerint.](../virtual-network/manage-subnet-delegation.md) _Kérjük, vegye figyelembe, hogy a hivatkozott cikk például erőforrás-szolgáltatót használ. `Microsoft.DBforPostgreSQL/serversv2` Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
+## <a name="enabling-subnet-delegation-for-new-deployments"></a>Alhálózat delegálásának engedélyezése új központi telepítések esetén
+Ha felügyelt példányt kíván üzembe helyezni az üres alhálózaton, a következő `Microsoft.Sql/managedInstances` [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint delegálnia kell az erőforrás-szolgáltatónak. _Vegye figyelembe, hogy a hivatkozott `Microsoft.DBforPostgreSQL/serversv2` cikk erőforrás-szolgáltatót használ például. Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
 
-## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Alhálózati delegálás engedélyezése meglévő telepítéseknél
+## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Alhálózati delegálás engedélyezése meglévő központi telepítésekhez
 
-Annak érdekében, hogy lehetővé tegye az alhálózati delegálást a meglévő felügyelt példány telepítéséhez, meg kell találnia a virtuális hálózati alhálózatot, ahol el helyezik. 
+Az alhálózati delegálás engedélyezéséhez a felügyelt példányok meglévő központi telepítéséhez meg kell találnia azt a virtuális hálózati alhálózatot, ahol elhelyezve van. 
 
-Ennek megismeréséhez `Virtual network/subnet` ellenőrizze `Overview` a felügyelt példány portálpaneljén.
+Ennek `Virtual network/subnet` megismeréséhez tekintse meg a `Overview` felügyelt példány portáljának paneljét.
 
-Alternatív megoldásként futtathatja a következő PowerShell-parancsokat, hogy ezt megismerhesse. Cserélje le **az előfizetés-azonosítót** az előfizetés-azonosítóra. Az **rg-name-t** a felügyelt példány erőforráscsoportjára is cserélje le, és cserélje le a **mi-name-t** a felügyelt példány nevére.
+Másik lehetőségként a következő PowerShell-parancsok futtatásával is elsajátíthatja ezt. Cserélje le az **előfizetés-azonosítót** az előfizetés-azonosítójával. Továbbá cserélje le a **RG nevet** a felügyelt példányhoz tartozó erőforráscsoporthoz, és cserélje le a **mi-Name nevet** a felügyelt példány nevére.
 
 ```powershell
 Install-Module -Name Az
@@ -60,8 +60,8 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi.SubnetId
 ```
 
-Miután megtalálta a felügyelt példány alhálózatát, delegálnia kell az erőforrás-szolgáltatónak `Microsoft.Sql/managedInstances` a következő cikkben leírtak [szerint.](../virtual-network/manage-subnet-delegation.md) _Kérjük, vegye figyelembe, hogy a hivatkozott cikk például erőforrás-szolgáltatót használ. `Microsoft.DBforPostgreSQL/serversv2` Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
+Miután megtalálta a felügyelt példány alhálózatát, delegálnia kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónak az alábbi [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint. _Vegye figyelembe, hogy a hivatkozott `Microsoft.DBforPostgreSQL/serversv2` cikk erőforrás-szolgáltatót használ például. Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
 
 
 > [!IMPORTANT]
-> A szolgáltatás által támogatott konfiguráció engedélyezése nem okoz feladatátvételt vagy megszakítást az alhálózatban már meglévő felügyelt példányok kapcsolatában.
+> A szolgáltatással segített konfiguráció engedélyezése nem okoz feladatátvételt vagy megszakítást az alhálózatban már meglévő felügyelt példányok esetén.

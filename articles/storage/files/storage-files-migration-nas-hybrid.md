@@ -1,6 +1,6 @@
 ---
-title: Helyszíni NAS-áttelepítés az Azure File Sync szolgáltatásba
-description: Ismerje meg, hogyan telepítheti át a fájlokat egy helyszíni hálózati csatolt tárolóból (NAS) egy hibrid felhőbeli üzembe helyezésre az Azure File Sync és az Azure fájlmegosztások segítségével.
+title: Helyszíni NAS-áttelepítés Azure File Syncre
+description: Megtudhatja, hogyan telepítheti át a fájlokat egy helyszíni hálózati tároló (NAS) helyről egy hibrid Felhőbeli üzemelő példányra Azure File Sync és Azure-fájlmegosztás használatával.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,126 +8,126 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247350"
 ---
-# <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Áttelepítés a hálózathoz csatlakoztatott tárolóról (NAS) egy hibrid felhőtelepítésre az Azure File Sync segítségével
+# <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás hálózati csatlakoztatott tárolóból (NAS) hibrid felhőbe történő központi telepítésre Azure File Sync
 
-Az Azure File Sync a Közvetlen csatlakoztatott tároló (DAS) helyeken működik, és nem támogatja a hálózati csatolt tároló (NAS) helyekkel való szinkronizálást.
-Ez a tény teszi a fájlok áttelepítése szükséges, és ez a cikk végigvezeti Önt a tervezés és az ilyen áttelepítés végrehajtása.
+Azure File Sync a közvetlenül csatlakoztatott tároló (DAS) helyein működik, és nem támogatja a hálózati csatolású tárolók (NAS) helyein való szinkronizálást.
+Ez a tény a szükséges fájlok áttelepítését végzi el, és ez a cikk végigvezeti Önt a Migrálás megtervezésén és végrehajtásán.
 
 ## <a name="migration-goals"></a>Migrálási célok
 
-A cél az, hogy a NAS-készüléken lévő megosztásokat windows Server rendszerbe helyezze át. Ezután használja az Azure File Sync egy hibrid felhőbeli telepítés. Ezt az áttelepítést úgy kell elvégezni, hogy az garantálja a termelési adatok integritását, valamint az áttelepítés során rendelkezésre álló. Ez utóbbi minimálisra kell szorítani az állásidőt, hogy beférjen a szokásos karbantartási időszakokba, vagy csak kis mértékben haladja meg azt.
+A cél a NAS-berendezésen lévő megosztások áthelyezése Windows Serverre. Ezután használja a Azure File Synct a hibrid felhőalapú telepítéshez. Ezt az áttelepítést olyan módon kell végrehajtani, amely garantálja az üzemi adatok integritását, valamint a rendelkezésre állást az áttelepítés során. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
 
-## <a name="migration-overview"></a>Áttelepítés – áttekintés
+## <a name="migration-overview"></a>Migrálás áttekintése
 
-Ahogy azt az Azure Files [áttelepítésáttekintése cikkben,](storage-files-migration-overview.md)a megfelelő másolási eszköz és a megközelítés használata fontos. A NAS készülék közvetlenül a helyi hálózaton teszi ki az SMB-megosztásokat. RoboCopy, beépített Windows Server, a legjobb módja annak, hogy helyezze át a fájlokat ebben az áttelepítési forgatókönyv.
+Ahogy azt a Azure Files [áttelepítésének áttekintése című cikkben](storage-files-migration-overview.md)említettük, fontos a megfelelő másolási eszköz és megközelítés használata. A NAS-berendezés közvetlenül a helyi hálózaton teszi elérhetővé az SMB-megosztásokat. A RoboCopy, beépített Windows Server, a legjobb módszer a fájlok áthelyezésére ebben az áttelepítési forgatókönyvben.
 
-- 1. fázis: [Azonosítsa, hogy hány Azure-fájlmegosztásra van szüksége](#phase-1-identify-how-many-azure-file-shares-you-need)
-- 2. fázis: [Megfelelő helyszíni Windows Server kiépítése](#phase-2-provision-a-suitable-windows-server-on-premises)
-- 3. fázis: [Az Azure File Sync felhőalapú erőforrásának üzembe helyezése](#phase-3-deploy-the-azure-file-sync-cloud-resource)
-- 4. fázis: [Azure storage-erőforrások üzembe helyezése](#phase-4-deploy-azure-storage-resources)
-- 5. fázis: [Az Azure File Sync ügynök telepítése](#phase-5-deploy-the-azure-file-sync-agent)
-- 6. fázis: [Az Azure File Sync konfigurálása Windows Server rendszeren](#phase-6-configure-azure-file-sync-on-the-windows-server)
-- 7. fázis: [RoboCopy](#phase-7-robocopy)
-- 8. fázis: [A felhasználó által idoben](#phase-8-user-cut-over)
+- 1. fázis: annak [meghatározása, hogy hány Azure-fájlmegosztás szükséges](#phase-1-identify-how-many-azure-file-shares-you-need)
+- 2. fázis: [megfelelő Windows Server-kiszolgáló kiépítése a helyszínen](#phase-2-provision-a-suitable-windows-server-on-premises)
+- 3. fázis: [a Azure file Sync felhőalapú erőforrás üzembe helyezése](#phase-3-deploy-the-azure-file-sync-cloud-resource)
+- 4. fázis: az [Azure Storage-erőforrások üzembe helyezése](#phase-4-deploy-azure-storage-resources)
+- 5. fázis: [az Azure file Sync-ügynök üzembe helyezése](#phase-5-deploy-the-azure-file-sync-agent)
+- 6. fázis: [Azure file Sync konfigurálása a Windows Serveren](#phase-6-configure-azure-file-sync-on-the-windows-server)
+- 7. fázis: [Robocopy](#phase-7-robocopy)
+- 8. fázis: [felhasználói kivágás](#phase-8-user-cut-over)
 
-## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>1. fázis: Azonosítsa, hogy hány Azure-fájlmegosztásra van szüksége
+## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>1. fázis: annak meghatározása, hogy hány Azure-fájlmegosztás szükséges
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>2. fázis: Megfelelő helyszíni Windows Server kiépítése
+## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>2. fázis: megfelelő Windows Server-kiszolgáló kiépítése a helyszínen
 
-* Hozzon létre egy Windows Server 2019 - legalább 2012R2 - virtuális gépként vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürtje is támogatott.
-* Közvetlen csatlakoztatott tároló kiépítése vagy hozzáadása (DAS a NAS-hoz képest, amely nem támogatott).
+* Hozzon létre egy Windows Server 2019-at a minimális 2012R2 virtuális gép vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürt is támogatott.
+* Hozzon létre vagy adjon hozzá közvetlenül csatlakoztatott tárolót (a DAS-t a NAS-hez képest, amely nem támogatott).
 
-    Az Azure File Syncs [felhőrétegezési](storage-sync-cloud-tiering.md) funkció használata esetén a rendelkezésre álló tárterület mennyisége kisebb lehet, mint amit jelenleg használ a NAS-készüléken.
-    Ha azonban a fájlokat a nagyobb NAS-területről a kisebb Windows Server-kötetre másolja egy későbbi fázisban, kötegekben kell dolgoznia:
+    Ha az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering.md) funkciót használja, a kiépített tárterület mérete kisebb lehet, mint amit jelenleg használ a NAS-berendezésben.
+    Ha azonban a nagyobb NAS-területről másolja a fájlokat a kisebb Windows Server-kötetre egy későbbi fázisban, akkor a kötegekben kell működnie:
 
-    1. A lemezre illeszkedő fájlok áthelyezése
-    2. hagyja, hogy a fájlok szinkronizálása és a felhőrétegezés
-    3. ha több szabad terület jön létre a köteten, folytassa a következő fájlkötegeléssel. 
+    1. Helyezze át a lemezre illeszkedő fájlok készletét
+    2. a fájlok szinkronizálása és a felhőalapú rétegek bevonása
+    3. Ha a köteten több szabad terület jön létre, folytassa a következő batch-fájllal. 
     
-    Ezt a kötegelési megközelítést elkerülheti, ha a Windows Serveren a nas-készüléken elfoglalni kívánt megfelelő helyet építi ki. Fontolja meg a deduplikáció a NAS / Windows. Ha nem szeretné véglegesen véglegesen lekötni ezt a nagy mennyiségű tárhelyet a Windows Server kiszolgálón, csökkentheti a kötet méretét az áttelepítés után és a felhőrétegezési házirendek módosítása előtt. Ez létrehoz egy kisebb helyszíni gyorsítótárazásaz Azure-fájlmegosztások.
+    Ennek a kötegelt megközelítésnek a elkerülésével kiépítheti a Windows Server megfelelő területét, amelyet a fájlok elfoglalnak a NAS-berendezésen. Érdemes lehet a NAS/Windows-t megismételni. Ha nem szeretné véglegesen véglegesíteni ezt a nagy mennyiségű tárterületet a Windows-kiszolgálóval, csökkentheti a kötet méretét az áttelepítés után, és a felhőalapú adatkorlátozási szabályzatok módosítása előtt. Az Azure-fájlmegosztás kisebb helyszíni gyorsítótárát hozza létre.
 
-A telepített Windows Server erőforrás-konfigurációja (számítási és RAM-ja) főként a szinkronizálandó elemek (fájlok és mappák) számától függ. Javasoljuk, hogy ha bármilyen problémája van, menjen magasabb teljesítménykonfigurációval.
+A telepített Windows Server erőforrás-konfigurációja (számítás és RAM) a szinkronizálni kívánt elemek (fájlok és mappák) számától függ. Ha bármilyen probléma merül fel, javasoljuk, hogy nagyobb teljesítmény-konfigurációt végezzen.
 
-[Megtudhatja, hogy miként méretezheti a Windows Serverrendszert a szinkronizálandó elemek (fájlok és mappák) száma alapján.](storage-sync-files-planning.md#recommended-system-resources)
+[Megtudhatja, hogyan méretezhető a Windows Server a szinkronizálni kívánt elemek (fájlok és mappák) száma alapján.](storage-sync-files-planning.md#recommended-system-resources)
 
 > [!NOTE]
-> A korábban csatolt cikk egy kiszolgálói memória (RAM) tartományt jelző táblázatot jelenít meg. A kiszolgáló kisebb száma felé orientálódik, de arra számít, hogy a kezdeti szinkronizálás lényegesen több időt vehet igénybe.
+> A korábban csatolt cikk egy olyan táblázatot mutat be, amely a kiszolgáló memóriájának (RAM) tartományát tartalmazza. A kiszolgáló kisebb számára irányíthatja a kiszolgálót, de várhatóan a kezdeti szinkronizálás sokkal több időt vehet igénybe.
 
-## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>3. fázis: Az Azure File Sync felhőalapú erőforrásának üzembe helyezése
+## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>3. fázis: a Azure File Sync felhőalapú erőforrás üzembe helyezése
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
-## <a name="phase-4-deploy-azure-storage-resources"></a>4. fázis: Azure storage-erőforrások üzembe helyezése
+## <a name="phase-4-deploy-azure-storage-resources"></a>4. fázis: az Azure Storage-erőforrások üzembe helyezése
 
-Ebben a fázisban tekintse meg a leképezési táblát az 1.
+Ebben a fázisban az 1. fázisban található leképezési táblázat alapján kell kiépíteni az Azure Storage-fiókok és-megosztások megfelelő számát.
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
-## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>5. fázis: Az Azure File Sync ügynök telepítése
+## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>5. fázis: az Azure File Sync-ügynök üzembe helyezése
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>6. fázis: Az Azure File Sync konfigurálása Windows Server rendszeren
+## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>6. fázis: Azure File Sync konfigurálása a Windows Serveren
 
-A regisztrált helyszíni Windows Server rendszernek készen kell lennie, és csatlakoznia kell az internethez ehhez a folyamathoz.
+A regisztrált helyszíni Windows Servernek késznek kell lennie az internethez való csatlakozásra ehhez a folyamathoz.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!IMPORTANT]
-> A felhőrétegezés az AFS-szolgáltatás, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárolókapacitással rendelkezik, mint a felhőben, de a teljes névtér elérhető. A helyileg érdekes adatok helyi gyorsítótárba helyezhetőak a gyors hozzáférési teljesítmény érdekében. A felhőrétegezés egy opcionális funkció az Azure File Sync "kiszolgálóvégpont" szerint.
+> A felhő-rétegek az AFS szolgáltatás, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárolókapacitással rendelkezzen, mint amennyit a felhőben tárol, de a teljes névtér elérhetővé válik. Helyileg érdekes adat a gyors elérés érdekében helyileg is gyorsítótárazható. A felhőalapú rétegek a Azure File Sync "kiszolgálói végpont" választható funkciói.
 
 > [!WARNING]
-> Ha kevesebb tárhelyet épített ki a Windows-kiszolgálókötet(ek)en, mint a NAS-készüléken használt adatok, akkor a felhőrétegezés kötelező. Ha nem kapcsolja be a felhőrétegezést, a kiszolgáló nem szabadít fel helyet az összes fájl tárolásához. Állítsa be a rétegezési szabályzatot, ideiglenesen az áttelepítéshez, 99%-os szabad területre. Győződjön meg róla, hogy az áttelepítés befejezése után visszatér a felhőrétegezési beállításokhoz, és állítsa be egy hosszú távú hasznos szintre.
+> Ha kevesebb tárterületet telepített a Windows Server-kötet (ek) ben a NAS-berendezésen használt adatainál, akkor a Felhőbeli rétegek kitöltése kötelező. Ha nem kapcsolja be a Felhőbeli rétegek bekapcsolását, akkor a kiszolgáló nem szabadít fel lemezterületet az összes fájl tárolásához. Állítsa be az áttelepítéshez ideiglenesen az 99%-os mennyiségű szabad területre vonatkozó előállítási szabályzatot. A Migrálás befejezése után térjen vissza a Felhőbeli rétegbeli beállításokhoz, és állítsa be azt egy hosszú távú hasznos szintre.
 
-Ismételje meg a szinkronizálási csoport létrehozásának lépéseit és a megfelelő kiszolgálómappa kiszolgálóvégpontként való hozzáadását az összes Azure-fájlmegosztáshoz / kiszolgálóhelyhez, amelyeket szinkronizálásra kell konfigurálni.
+Ismételje meg a szinkronizálási csoport létrehozásának lépéseit és a megfelelő kiszolgáló mappa hozzáadását kiszolgálói végpontként az összes Azure-fájlmegosztás/-kiszolgáló helye számára, amelyet a szinkronizáláshoz kell konfigurálni.
 
-Az összes kiszolgálóvégpont létrehozása után működik a szinkronizálás. Létrehozhat egy tesztfájlt, és láthatja, hogy szinkronizálja a kiszolgáló helyét a csatlakoztatott Azure-fájlmegosztás (a felhő végpont a szinkronizálási csoportban).
+Az összes kiszolgálói végpont létrehozása után a szinkronizálás működik. Létrehozhat egy tesztoldalt, és megtekintheti a kiszolgáló helyéről a csatlakoztatott Azure-fájlmegosztás (a szinkronizálási csoport Felhőbeli végpontja által leírtak szerint) szinkronizálását.
 
-Mindkét hely, a kiszolgálómappák és az Azure-fájlmegosztások egyébként üresek, és mindkét helyen adatokra várnak. A következő lépésben elkezdi a fájlok másolását a Windows Server for Azure File Sync-be, hogy áthelyezze őket a felhőbe. Abban az esetben, ha engedélyezte a felhőrétegezést, a kiszolgáló megkezdi a fájlok rétegezését, ha elfogy a kapacitás a helyi kötet(ek)en.
+A kiszolgálói mappák és az Azure-fájlmegosztás mindkét helyen üresen maradnak, és a rendszer mindkét helyen várja az adattárolást. A következő lépésben megkezdi a fájlok másolását a Windows Serverbe Azure File Sync a felhőbe való áthelyezéshez. Ha engedélyezte a Felhőbeli rétegek használatát, a kiszolgáló elkezdi a rétegek fájljait, ha a helyi kötet (ek) on kívülről kifogyott a kapacitás.
 
 ## <a name="phase-7-robocopy"></a>7. fázis: RoboCopy
 
-Az alapvető áttelepítési megközelítés egy RoboCopy a NAS-készülékről a Windows Server, és az Azure File Sync azure-fájlmegosztások.
+Az alapszintű áttelepítési módszer egy RoboCopy a NAS-készülékről a Windows Serverre, és Azure File Sync az Azure-fájlmegosztást.
 
-Futtassa a Windows Server célmappájának első helyi példányát:
+Futtassa az első helyi másolatot a Windows Server célmappájában:
 
-* Azonosítsa a NAS készülék első helyét.
-* Azonosítsa az egyező mappát a Windows Server, amely már rendelkezik az Azure File Sync konfigurálva van.
-* A másolás indítása a RoboCopy segítségével
+* Azonosítsa a NAS-berendezés első helyét.
+* Azonosítsa a Windows Server megfelelő mappáját, amely már konfigurálva van Azure File Sync.
+* A másolás elindítása a RoboCopy használatával
 
-A következő RoboCopy parancs fájlokat másol a NAS-tárolóból a Windows Server célmappájába. A Windows Server szinkronizálja azt az Azure fájlmegosztás(ok)kal. 
+A következő RoboCopy parancs a NAS-tárolóból másolja a fájlokat a Windows Server célmappába. A Windows Server szinkronizálja az Azure-fájlmegosztás (ok) val. 
 
-Ha kevesebb tárhelyet épített ki a Windows Serveren, mint amennyit a fájlok a NAS-eszközön vesznek fel, akkor konfigurálta a felhőrétegezést. Ahogy a helyi Windows Server-kötet megtelik, a [felhőrétegezés](storage-sync-cloud-tiering.md) beindul, és a már sikeresen szinkronizált fájlok at. A felhőrétegezés elegendő helyet biztosít a NAS-készülékről való másolás folytatásához. A felhőrétegezés óránként egyszer ellenőrzi, hogy mi szinkronizált, és lemezterületet szabadítson fel a 99%-os szabad terület eléréséhez.
-Lehetséges, hogy a RoboCopy gyorsabban mozgatja a fájlokat, mint ahogy a felhőre és a rétegre helyileg szinkronizálható, így elfogy a helyi lemezterület. RoboCopy akarat megbukik. Javasoljuk, hogy a megosztások on egy sorozat, amely megakadályozza, hogy a munka. Például nem indítroboCopy feladatokat az összes megosztásegy időben, vagy csak a mozgó részvények, amelyek illeszkednek az aktuális szabad hely a Windows Server, hogy csak néhányat említsünk.
+Ha kevesebb tárterületet telepített a Windows-kiszolgálón, mint amennyit a fájlok felvesznek a NAS-készülékre, akkor konfigurálta a Felhőbeli adatmennyiséget. Mivel a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering.md) beindulnak, és a már sikeresen szinkronizált fájlokat. A Felhőbeli rétegek létrehozásához elegendő hely áll rendelkezésre, hogy továbbra is a NAS-berendezésből folytassa a másolást. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a 99%-os mennyiségű szabad terület eléréséhez.
+Lehetséges, hogy a RoboCopy a fájlokat gyorsabban helyezi át, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így a helyi lemezterület nem működik. A RoboCopy sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa meg, amely meggátolja a működését. Ha például nem indítja el a RoboCopy-feladatokat az összes megosztáshoz, vagy csak olyan megosztásokat helyez át, amelyek megfelelnek a Windows Server jelenlegi szabad területének, néhányat említve.
 
 ```console
 Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Háttér:
+Háttér
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi a RoboCopy többszálas futtatását. Az alapértelmezett érték 8, max 128.
+      Lehetővé teszi, hogy a RoboCopy több szálon fusson. Az alapértelmezett érték 8, Max 128.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<fájlnév\>
+      /UNILOG:\<fájl neve\>
    :::column-end:::
    :::column span="1":::
-      Unicode-ként adja ki a LOG fájl állapotát (felülírja a meglévő naplót).
+      Az állapotot a NAPLÓFÁJLba UNICODE-ként adja vissza (felülírja a meglévő naplót).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -135,7 +135,7 @@ Háttér:
       /TEE
    :::column-end:::
    :::column span="1":::
-      Kimenetek a konzolablakba. A naplófájlkimenettel együtt használva.
+      A konzol ablakának kimenete. Egy naplófájlban a kimenettel együtt használatos.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -143,7 +143,7 @@ Háttér:
       /B
    :::column-end:::
    :::column span="1":::
-      Futtatja a RoboCopy-t ugyanabban az üzemmódban, amelyet egy biztonsági másolat készítő alkalmazás használna. Ez lehetővé teszi RoboCopy átfájlokat, hogy az aktuális felhasználó nem rendelkezik engedélyekkel.
+      A RoboCopy szolgáltatást ugyanazon a módban futtatja, amikor a biztonságimásolat-készítő alkalmazás használni fogja. Lehetővé teszi, hogy a RoboCopy olyan fájlokat helyezzen át, amelyekhez az aktuális felhasználónak nincs engedélye.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -151,15 +151,15 @@ Háttér:
       /MIR
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi, hogy futtassa ezt a RoboCopy parancsot többször, egymás után ugyanazon a célon / cél. Azonosítja, hogy mit másolt, és kihagyja azt. A program csak az utolsó futtatás óta bekövetkezett módosításokat, kiegészítéseket és "*törléseket*dolgozza fel. Ha a parancs nem futott korábban, semmi sem marad ki. A */MIR* jelző kiváló lehetőség a még aktívan használt és változó forráshelyekhez.
+      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és*törlések*lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. A */Mir* jelző kiváló megoldás a forrásként szolgáló helyekhez, amelyek továbbra is aktívan használatban vannak és változnak.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY:copyflag[s]
+      /COPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      a fájlmásolás hűsége (alapértelmezett: /COPY:DAT), másolási jelzők: D=Data, A=Attributes, T=Timestamps, S=Security=NTFS ACLs, O=Owner info, U=aUditing info
+      a fájlmásolás hűsége (az alapértelmezett érték a/COPY: DAT), a másolási jelzők: D = adat, A = attribútumok, T = időbélyeg, S = biztonság = NTFS ACL, O = tulajdonos adatai, U = naplózási információ
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -167,65 +167,65 @@ Háttér:
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      AZ ÖSSZES fájlinformáció MÁSOLÁSA (egyenértékű a /COPY:DATSOU kapcsolóval)
+      A fájl összes adatának másolása (egyenértékű a következő/COPY: DATSOU)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY:copyflag[s]
+      /DCOPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      könyvtárak másolásának hűsége (alapértelmezett: /DCOPY:DA), másolási jelzők: D=Adatok, A=Attribútumok, T=Időbélyegek
+      a címtárak másolásának hűsége (az alapértelmezett érték a/DCOPY: DA), a másolási jelzők: D = az adat, A = attribútumok, A T = timestamps
    :::column-end:::
 :::row-end:::
 
-## <a name="phase-8-user-cut-over"></a>8. fázis: A felhasználó által idoben
+## <a name="phase-8-user-cut-over"></a>8. fázis: felhasználói kivágás
 
-Amikor először futtatja a RoboCopy parancsot, a felhasználók és az alkalmazások továbbra is hozzáférnek a NAS fájljaihoz, és potenciálisan módosítják azokat. Lehetséges, hogy a RoboCopy feldolgozta a könyvtárat, továbblép a következőre, majd a felhasználó a forrás helyen (NAS) hozzáad, módosít vagy töröl egy fájlt, amely most nem lesz feldolgozva ebben a jelenlegi RoboCopy futtatásban. Ez várt működés.
+Amikor első alkalommal futtatja a RoboCopy parancsot, a felhasználók és az alkalmazások továbbra is hozzáférhetnek a NAS-fájlokhoz, és potenciálisan megváltoztathatják azokat. Lehetséges, hogy a RoboCopy egy könyvtárat dolgoz fel, a következőre lép, majd egy felhasználó a forrás helye (NAS) egy olyan fájlt ad hozzá, módosít vagy töröl, amely most nem lesz feldolgozva ebben a RoboCopy-futtatásban. Ez várt működés.
 
-Az első futtatás az adatok nagy részét a Windows Serverbe és a felhőbe való áthelyezéséről szól az Azure File Sync segítségével. Ez az első példány hosszú időt vehet igénybe, a következőktől függően:
+Az első futtatás arról szól, hogy az adatmennyiséget a Windows Serverre és a felhőbe helyezi át Azure File Syncon keresztül. Ez az első másolat hosszú időt is igénybe vehet, attól függően, hogy:
 
-* a letöltési sávszélesség
+* letöltési sávszélesség
 * a feltöltési sávszélesség
-* a helyi hálózati sebesség és annak száma, hogy a RoboCopy szálak száma milyen optimálisan illeszkedik
-* a RoboCopy és az Azure File Sync által feldolgozandó elemek (fájlok és mappák) száma
+* a helyi hálózati sebesség és a szám, hogy az optimálisan hány RoboCopy-szálnak felel meg
+* a RoboCopy és a Azure File Sync által feldolgozandó elemek (fájlok és mappák) száma
 
-A kezdeti futtatás befejezése után futtassa újra a parancsot.
+A kezdeti Futtatás befejezése után futtassa újra a parancsot.
 
-A második alkalommal gyorsabban fog befejeződni, mert csak az utolsó futtatás óta bekövetkezett változásokat kell szállítania. A második futtatás során még mindig új módosítások halmozódhatnak fel.
+A második alkalommal, amikor a rendszer gyorsabban befejeződik, mert csak az utolsó Futtatás óta végrehajtott módosításokat kell továbbítania. A második futtatás során a rendszer továbbra is felhalmozhat új módosításokat.
 
-Ismételje meg ezt a folyamatot, amíg meg nem győződik arról, hogy a RoboCopy kitöltéséhez szükséges idő egy adott helyen egy elfogadható ablakon belül van az állásidő számára.
+Ismételje meg ezt a folyamatot, amíg meggyőződött arról, hogy egy adott helyhez tartozó RoboCopy végrehajtásához szükséges idő egy elfogadható ablakban van az állásidőhöz.
 
-Ha az állásidőt elfogadhatónak tartja, és készen áll arra, hogy a NAS-helyet offline állapotba vigye: A felhasználói hozzáférés offline állapotba hozásához lehetősége van arra, hogy a megosztási gyökérre vonatkozó Hozzáférés-fiókokat úgy módosítsa, hogy a felhasználók többé ne férhessenek hozzá a helyhez, vagy ne tegyünk meg minden más megfelelő lépést. amely megakadályozza, hogy a nas-on lévő mappában lévő tartalom megváltozzon.
+Ha figyelembe veszi az állásidőt, és készen áll arra, hogy offline állapotba hozza a hálózati hozzáférést: a felhasználói hozzáférés offline állapotba léptetéséhez lehetősége van módosítani a megosztási gyökér ACL-jeit úgy, hogy a felhasználók többé nem férhetnek hozzá a helyhez, vagy bármilyen más olyan lépést is megtehetnek, amely megakadályozza a tartalom módosítását a NAS kiszolgálón.
 
-Fuss egy utolsó RoboCopy kerek. Ez akarat felfedez akármi megváltozik, amit erő volt eltévesztett.
-Mennyi ideig tart ez az utolsó lépés, a RoboCopy vizsgálat sebességététől függ. Megbecsülheti az időt (ami megegyezik az állásidővel) az előző futtatás élettartamának mérésével.
+Futtasson egy utolsó RoboCopy kört. Felveszi a módosításokat, amelyek esetleg kimaradtak.
+Az utolsó lépés elvégzésének időtartama a RoboCopy vizsgálat sebességétől függ. A korábbi Futtatás időtartamának mérésével megbecsülheti az időt (amely az állásidővel egyenlő).
 
-Hozzon létre egy megosztást a Windows Server mappában, és esetleg állítsa be a DFS-N központi telepítését úgy, hogy az mutasson rá. Ügyeljen arra, hogy ugyanazokat a megosztási szintű engedélyeket állítsa be, mint a NAS SMB-megosztáson. Ha vállalati szintű tartományhoz csatlakozott NAS-t tartalmaz, akkor a felhasználói azonosítók automatikusan egyeznek, mivel a felhasználók léteznek az Active Directoryban, és a RoboCopy teljes hűséggel másolja a fájlokat és a metaadatokat. Ha helyi felhasználókat használt a NAS-on, újra létre kell hoznia ezeket a felhasználókat Windows Server helyi felhasználóként, és le kell képeznie a meglévő Biztonsági azonosítókat, amelyeket a RoboCopy áthelyezett a Windows Server kiszolgálóra az új, Windows Server helyi felhasználók azonosítóihoz.
+Hozzon létre egy megosztást a Windows Server mappában, és módosítsa a DFS-N központi telepítését úgy, hogy mutasson rá. Ügyeljen arra, hogy ugyanazokat a megosztási szintű engedélyeket adja meg, mint a NAS SMB-megosztás. Ha nagyvállalati szintű tartományhoz csatlakoztatott NAS-kiszolgálóval rendelkezett, akkor a felhasználói biztonsági azonosítók automatikusan egyeznek, ahogy a felhasználók szerepelnek Active Directoryban, és a RoboCopy teljes hűséggel másolja a fájlokat és a metaadatokat. Ha helyi felhasználókat használt a NAS-on, újra létre kell hoznia ezeket a felhasználókat a Windows Server helyi felhasználóként, és le kell képeznie a meglévő SID-ket a Windows Serverre az új, Windows Server helyi felhasználók biztonsági azonosítói között.
 
-Befejezte a megosztás / megosztáscsoport közös gyökérbe vagy kötetbe történő áttelepítését. (Az 1. fázistól függően)
+Elvégezte a megosztások/csoportok egy közös gyökerébe vagy kötetbe való áttelepítését. (Az 1. fázisból származó leképezéstől függően)
 
-Megpróbálhat párhuzamosan futtatni néhány példányt. Azt javasoljuk, hogy egyszerre csak egy Azure-fájlmegosztás hatókörét dolgozza fel.
+A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Miután áthelyezte az összes adatot a NAS-ból a Windows Serverkiszolgálóra, és az áttelepítés befejeződött: Térjen vissza az Azure ***Portalon az összes*** szinkronizálási csoporthoz, és állítsa be a felhőrétegezési kötet szabad területének értékét valami jobban alkalmas gyorsítótár-kihasználtsági értékre, mondjuk 20%. 
+> Ha áthelyezte az összes adatforrást a Windows Server rendszerbe, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes*** szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, azaz 20%-ot. 
 
-A felhőrétegezési kötet szabad helyházirendje kötetszinten működik, és potenciálisan több kiszolgálóvégpont szinkronizálódik belőle. Ha elfelejti beállítani a szabad területet akár csak egy kiszolgálóvégponton is, a szinkronizálás továbbra is a legszigorúbb szabályt alkalmazza, és 99%-os szabad lemezterületet próbál meg tartani, így a helyi gyorsítótár nem a várt módon fog elhelyezkedni. Kivéve, ha a cél az, hogy csak egy olyan kötet névtere legyen, amely csak ritkán elérhető, archiválási adatokat tartalmaz, és a tárolóhely többi részét egy másik forgatókönyv számára foglalja le.
+A felhő-rétegek kötetének szabad területére vonatkozó házirend olyan kötet szintjén működik, amelynek több kiszolgálói végpontja is szinkronizálva van. Ha a szabad területet még egy kiszolgálói végponton is módosítani szeretné, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és megkísérli a 99%-os szabad lemezterület fenntartását, így a helyi gyorsítótár nem végezhető el a várt módon. Kivéve, ha a célja, hogy csak a ritkán használt, archivált adatok tárolására szolgáló kötet névterét adja meg, és egy másik forgatókönyvben a tárterület többi részét is kiszolgálja.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-A legvalószínűbb probléma, amivel befuthat, az, hogy a RoboCopy parancs sikertelen a *"Kötet teljes"* a Windows Server oldalán. A felhőrétegezés óránként egyszer működik, hogy kiürítse a tartalmat a szinkronizált helyi Windows Server lemezről. Célja, hogy elérje a 99%-os szabad helyet a hangerőn.
+A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a *"teljes kötet"* művelettel meghiúsul. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat. A cél az, hogy eléri a 99%-os szabad területet a köteten.
 
-Hagyja, hogy a szinkronizálási folyamat és a felhőrétegezés lemezterületet szabadítson fel. Ezt a Windows Server fájlkezelőjében is megfigyelheti.
+A szinkronizálási folyamat és a Felhőbeli rétegek felszabadítása szabad lemezterületet szabadít fel. Megfigyelheti, hogy a Fájlkezelőben a Windows Serveren.
 
-Ha a Windows Server elegendő rendelkezésre álló kapacitással rendelkezik, a parancs újbóli futtatása megoldja a problémát. Semmi sem törik el, ha ilyen helyzetbe kerülsz, és magabiztosan haladhatsz előre. A parancs ismételt futtatásának kényelmetlensége az egyetlen következmény.
+Ha a Windows-kiszolgáló elegendő rendelkezésre álló kapacitással rendelkezik, a parancs újbóli futtatása megoldja a problémát. Ha ezt a helyzetet tapasztalja, nem szakítja meg a biztonságot, és nyugodtan mozoghat. A parancs futtatásának kellemetlensége az egyetlen következmény.
 
-Ellenőrizze a következő szakaszban található hivatkozást az Azure File Sync problémák elhárításához.
+A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan hibaelhárítási Azure File Sync problémákat.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure-fájlmegosztásokról és az Azure File Sync-ről további információk is megtudhatók. Az alábbi cikkek segítenek megérteni a speciális beállításokat, gyakorlati tanácsokat, és hibaelhárítási súgót is tartalmaznak. Ezek a cikkek adott [esetben az Azure fájlmegosztási dokumentációjára](storage-files-introduction.md) hivatkoznak.
+További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek segítséget nyújtanak a speciális beállítások, az ajánlott eljárások és a hibaelhárítással kapcsolatos súgó megismerésében. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 
-* [AFS – áttekintés](https://aka.ms/AFS)
-* [AFS telepítési útmutató](storage-files-deployment-guide.md)
-* [AFS hibaelhárítás](storage-sync-files-troubleshoot.md)
+* [Az AFS áttekintése](https://aka.ms/AFS)
+* [Az AFS telepítési útmutatója](storage-files-deployment-guide.md)
+* [AFS – hibaelhárítás](storage-sync-files-troubleshoot.md)

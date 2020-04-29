@@ -1,34 +1,34 @@
 ---
-title: A telepítési kvóta túllépve
-description: Ez a témakör azt a hibát ismerteti, hogy miként lehet több mint 800 központi telepítést az erőforráscsoport előzményei között.
+title: Az üzembe helyezési kvóta túllépve
+description: Ismerteti, hogyan oldható fel a több mint 800 üzemelő példány hibája az erőforráscsoport előzményeiben.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80245089"
 ---
-# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a telepítésszáma meghaladja a 800-at
+# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a központi telepítés száma meghaladja a 800
 
-Minden erőforráscsoport legfeljebb 800 központi telepítést a központi telepítési előzményekben. Ez a cikk azt a hibát ismerteti, amely akkor jelenik meg, ha egy központi telepítés sikertelen, mert túllépné az engedélyezett 800 központi telepítést. A hiba elhárításához törölje a központi telepítéseket az erőforráscsoport előzményeiből. Egy központi telepítés törlése az előzményekből nincs hatással az üzembe helyezett erőforrások egyikére sem.
+Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak. Ez a cikk azt a hibát ismerteti, amikor egy központi telepítés meghiúsul, mert túllépi az engedélyezett 800 üzemelő példányokat. A hiba megoldásához törölje az üzemelő példányokat az erőforráscsoport előzményeiből. Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A központi telepítés során hibaüzenet jelenik meg arról, hogy az aktuális központi telepítés meghaladja a 800 központi telepítéskvótát.
+Az üzembe helyezés során hibaüzenetet kap arról, hogy a jelenlegi központi telepítés túllépi a 800-es üzemelő példányok kvótáját.
 
 ## <a name="solution"></a>Megoldás
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [az üzembe helyezési csoport törlési](/cli/azure/group/deployment) parancsával törölheti a központi telepítéseket az előzményekből.
+Az az [üzembe helyezési csoport törlése](/cli/azure/group/deployment) paranccsal törölheti az előzményekből származó központi telepítéseket.
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
-Az öt napnál régebbi összes központi telepítés törléséhez használja a következőket:
+Az öt napnál régebbi központi telepítések törléséhez használja a következőt:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
@@ -40,7 +40,7 @@ do
 done
 ```
 
-Az aktuális számot a következő paranccsal kaphatja meg a telepítési előzményekben:
+Az aktuális szám a telepítési előzményekben a következő paranccsal kérhető le:
 
 ```azurecli-interactive
 az deployment group list --resource-group exampleGroup --query "length(@)"
@@ -48,13 +48,13 @@ az deployment group list --resource-group exampleGroup --query "length(@)"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az [Eltávolítás-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) paranccsal törölheti a központi telepítéseket az előzményekből.
+A [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) parancs használatával törölje az előzményekből a központi telepítéseket.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
 ```
 
-Az öt napnál régebbi összes központi telepítés törléséhez használja a következőket:
+Az öt napnál régebbi központi telepítések törléséhez használja a következőt:
 
 ```azurepowershell-interactive
 $deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
@@ -64,7 +64,7 @@ foreach ($deployment in $deployments) {
 }
 ```
 
-Az aktuális számot a következő paranccsal kaphatja meg a telepítési előzményekben:
+Az aktuális szám a telepítési előzményekben a következő paranccsal kérhető le:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
@@ -72,7 +72,7 @@ Az aktuális számot a következő paranccsal kaphatja meg a telepítési előzm
 
 ## <a name="third-party-solutions"></a>Harmadik féltől származó megoldások
 
-A következő külső megoldások konkrét forgatókönyvekkel foglalkoznak:
+A következő külső megoldások specifikus forgatókönyvek:
 
-* [Azure Logic-alkalmazások és PowerShell-megoldások](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [Azure Logic Apps és PowerShell-megoldások](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
 * [AzDevOps-bővítmény](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services felhasználói nak f. WebRole-sémája | Microsoft dokumentumok
-description: Az Azure webes szerepköre a ASP.NET, a PHP, a WCF és a FastCGI támogatásával támogatott webes alkalmazások programozásához van testre szabva. További információ a webes szerepkör szolgáltatásdefiníciós elemeiről.
+title: Azure Cloud Services def. webrole-séma | Microsoft Docs
+description: Az Azure web role testre szabott a ASP.NET, a PHP, a WCF és a FastCGI-t támogató webalkalmazás-programozáshoz. Tudnivalók a webes szerepkörök szolgáltatás-definíciós elemeiről.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,19 +14,19 @@ caps.latest.revision: 60
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535680"
 ---
-# <a name="azure-cloud-services-definition-webrole-schema"></a>Az Azure Cloud Services-definíciós WebRole-séma
+# <a name="azure-cloud-services-definition-webrole-schema"></a>Az Azure Cloud Services Definition webszerepkör-sémája
 Az Azure webes szerepkör olyan szerepkör, amely az IIS 7 által támogatott webalkalmazás-programozáshoz van testreszabva, például ASP.NET, PHP, Windows Communication Foundation és FastCGI.
 
-A szolgáltatásdefiníciós fájl alapértelmezett kiterjesztése .csdef.
+A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
 
-## <a name="basic-service-definition-schema-for-a-web-role"></a>Webes szerepkör alapszintű szolgáltatásdefiníciós sémája  
-A webes szerepkört tartalmazó szolgáltatásdefiníciós fájl alapformátuma a következő.
+## <a name="basic-service-definition-schema-for-a-web-role"></a>Alapszintű szolgáltatás-definíciós séma webes szerepkörhöz  
+A webes szerepkört tartalmazó szolgáltatás-definíciós fájl alapszintű formátuma a következő.
 
 ```xml
 <ServiceDefinition …>  
@@ -93,28 +93,28 @@ A webes szerepkört tartalmazó szolgáltatásdefiníciós fájl alapformátuma 
 </ServiceDefinition>  
 ```  
 
-## <a name="schema-elements"></a>Sémaelemek  
-A szolgáltatásdefiníciós fájl ezeket az elemeket tartalmazza, amelyeket a témakör későbbi szakaszai részletesen ismertetett:  
+## <a name="schema-elements"></a>Séma elemei  
+A szolgáltatás definíciós fájlja tartalmazza ezeket az elemeket, amelyeket a jelen témakör következő részeiben talál részletesen:  
 
-[WebRole](#WebRole)
+[Webszerepkör](#WebRole)
 
-[ConfigurationSettings (Konfigurációs beállítások)](#ConfigurationSettings)
+[ConfigurationSettings](#ConfigurationSettings)
 
 [Beállítás](#Setting)
 
-[Helyi források](#LocalResources)
+[LocalResources](#LocalResources)
 
-[Localstorage](#LocalStorage)
+[LocalStorage](#LocalStorage)
 
 [Végpontok](#Endpoints)
 
-[Belső végpont](#InternalEndpoint)
+[InternalEndpoint](#InternalEndpoint)
 
 [InstanceInputEndpoint](#InstanceInputEndpoint)
 
-[PublicPortFrom felosztása](#AllocatePublicPortFrom)
+[AllocatePublicPortFrom](#AllocatePublicPortFrom)
 
-[Rögzített port](#FixedPort)
+[FixedPort](#FixedPort)
 
 [FixedPortRange](#FixedPortRange)
 
@@ -122,7 +122,7 @@ A szolgáltatásdefiníciós fájl ezeket az elemeket tartalmazza, amelyeket a t
 
 [Tanúsítvány](#Certificate)
 
-[Behozatal](#Imports)
+[Importálja](#Imports)
 
 [Importálás](#Import)
 
@@ -132,17 +132,17 @@ A szolgáltatásdefiníciós fájl ezeket az elemeket tartalmazza, amelyeket a t
 
 [Változó](#Variable)
 
-[RoleInstanceValue érték](#RoleInstanceValue)
+[RoleInstanceValue](#RoleInstanceValue)
 
-[NetfxEntryPoint](#NetFxEntryPoint)
+[NetFxEntryPoint](#NetFxEntryPoint)
 
 [Webhelyek](#Sites)
 
 [Webhely](#Site)
 
-[VirtualApplication alkalmazása](#VirtualApplication)
+[VirtualApplication](#VirtualApplication)
 
-[VirtualApplication alkalmazása](#VirtualApplication)
+[VirtualApplication](#VirtualApplication)
 
 [Kötések](#Bindings)
 
@@ -156,24 +156,24 @@ A szolgáltatásdefiníciós fájl ezeket az elemeket tartalmazza, amelyeket a t
 
 [Tartalom](#Content)
 
-[Forráskönyvtár](#SourceDirectory)
+[SourceDirectory](#SourceDirectory)
 
-##  <a name="webrole"></a><a name="WebRole"></a>WebRole  
-Az `WebRole` elem egy olyan szerepkört ír le, amely a webalkalmazások programozásához van testreszabva, az IIS 7 és ASP.NET támogatásával. Egy szolgáltatás nulla vagy több webes szerepkört tartalmazhat.
+##  <a name="webrole"></a><a name="WebRole"></a>Webszerepkör  
+Az `WebRole` elem egy webalkalmazás-programozáshoz testre szabott szerepkört ismertet, amelyet az IIS 7 és a ASP.net támogat. Egy szolgáltatás nulla vagy több webes szerepkört is tartalmazhat.
 
 Az alábbi táblázat az `WebRole` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |név|sztring|Kötelező. A webes szerepkör neve. A szerepkör nevének egyedinek kell lennie.|  
-|enableNativeCodeExecution|logikai|Választható. Az alapértelmezett `true`érték a ; natív kódfuttatásés a teljes megbízhatóság alapértelmezés szerint engedélyezve van. Állítsa be ezt `false` az attribútumot, hogy tiltsa le a natív kódfuttatást a webes szerepkör, és használja az Azure részleges megbízhatósági kapcsolat helyett.|  
-|vmsize|sztring|Választható. Állítsa be ezt az értéket a szerepkörhöz kiosztott virtuális gép méretének módosításához. Az alapértelmezett érték `Small`. További információ: [Virtual Machine sizes for Cloud Services](cloud-services-sizes-specs.md).|  
+|enableNativeCodeExecution|logikai|Választható. Az alapértelmezett érték: `true`; a natív kód végrehajtása és a teljes megbízhatóság alapértelmezés szerint engedélyezve van. Ezt az attribútumot `false` úgy állítsa be, hogy letiltsa a natív kód végrehajtását a webes szerepkör esetében, és használja helyette az Azure részleges megbízhatóságát.|  
+|vmsize|sztring|Választható. Állítsa be ezt az értéket a szerepkörre kiosztott virtuális gép méretének módosításához. Az alapértelmezett érték `Small`. További információ: [Cloud Services virtuális gépek méretei](cloud-services-sizes-specs.md).|  
 
-##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a>ConfigurationSettings (Konfigurációs beállítások)  
-Az `ConfigurationSettings` elem egy webes szerepkör konfigurációs beállításainak gyűjteményét írja le. Ez az elem az `Setting` elem szülője.
+##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a>ConfigurationSettings  
+Az `ConfigurationSettings` elem a webes szerepkör konfigurációs beállításainak gyűjteményét írja le. Ez az elem az `Setting` elem szülője.
 
 ##  <a name="setting"></a><a name="Setting"></a>Beállítás  
-Az `Setting` elem egy nevet és értékpárt ír le, amely egy szerepkör egy példányának konfigurációs beállítását adja meg.
+Az `Setting` elem egy név és egy érték párokat ír le, amely meghatározza a szerepkör egy példányának konfigurációs beállításait.
 
 Az alábbi táblázat az `Setting` elem attribútumait ismerteti.
 
@@ -181,109 +181,109 @@ Az alábbi táblázat az `Setting` elem attribútumait ismerteti.
 | --------- | ---- | ----------- |  
 |név|sztring|Kötelező. A konfigurációs beállítás egyedi neve.|  
 
-A szerepkör konfigurációs beállításai a szolgáltatásdefiníciós fájlban deklarált és a szolgáltatáskonfigurációs fájlban beállított név- és értékpárok.
+A szerepkör konfigurációs beállításai név és érték párok, amelyek deklarálva vannak a szolgáltatás-definíciós fájlban, és a szolgáltatás konfigurációs fájljában vannak megadva.
 
-##  <a name="localresources"></a><a name="LocalResources"></a>Helyi források  
-Az `LocalResources` elem egy webes szerepkör helyi tárolóerőforrásainak gyűjteményét ismerteti. Ez az elem az `LocalStorage` elem szülője.
+##  <a name="localresources"></a><a name="LocalResources"></a>LocalResources  
+Az `LocalResources` elem a webes szerepkör helyi tárolási erőforrásainak gyűjteményét írja le. Ez az elem az `LocalStorage` elem szülője.
 
-##  <a name="localstorage"></a><a name="LocalStorage"></a>Localstorage  
-Az `LocalStorage` elem azonosítja a helyi tárolási erőforrást, amely futásidőben helyet biztosít a szolgáltatás számára. Egy szerepkör nulla vagy több helyi tárolási erőforrást határozhat meg.
+##  <a name="localstorage"></a><a name="LocalStorage"></a>LocalStorage  
+Az `LocalStorage` elem egy helyi tárolási erőforrást azonosít, amely a szolgáltatás futtatásához rendelkezésre álló fájlrendszert biztosít. Egy szerepkör nulla vagy több helyi tárolási erőforrást is meghatározhat.
 
 > [!NOTE]
->  Az `LocalStorage` elem megjelenhet az `WebRole` elem gyermekeként az Azure SDK korábbi verzióival való kompatibilitás támogatásához.
+>  Az `LocalStorage` elem gyermekként `WebRole` is megjelenhet az Azure SDK korábbi verzióival való kompatibilitás támogatásához.
 
 Az alábbi táblázat az `LocalStorage` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A helyi üzlet egyedi neve.|  
-|cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a szerepkör újraindításakor meg kell-e tisztítani a helyi tárolót. Az alapértelmezett `true`érték a .|  
-|méretInMb|int|Választható. A helyi tároló számára lefoglalandó tárhely kívánt mennyisége MB-ban. Ha nincs megadva, az alapértelmezett lefoglalt tárhely 100 MB. A lefoglalható tárterület minimális összege 1 MB.<br /><br /> A helyi erőforrások maximális mérete a virtuális gép méretétől függ. További információ: [Virtual Machine sizes for Cloud Services](cloud-services-sizes-specs.md).|  
+|név|sztring|Kötelező. A helyi tároló egyedi neve.|  
+|cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a helyi tárolót meg kell-e tisztítani a szerepkör újraindításakor. Az `true`alapértelmezett érték:.|  
+|sizeInMb|int|Választható. A helyi tároló számára lefoglalni kívánt tárterület (MB). Ha nincs megadva, a lefoglalt alapértelmezett tárterület 100 MB. A lefoglalt tárterület minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete a virtuális gép méretétől függ. További információ: [Cloud Services virtuális gépek méretei](cloud-services-sizes-specs.md).|  
   
-A helyi tárolási erőforrásszámára lefoglalt könyvtár neve megfelel a névattribútumhoz megadott értéknek.
+A helyi tárolási erőforráshoz lefoglalt könyvtár neve megegyezik a name attribútumhoz megadott értékkel.
 
 ##  <a name="endpoints"></a><a name="Endpoints"></a>Végpontok  
-Az `Endpoints` elem egy szerepkör bemeneti (külső), belső és példánybemeneti végpontjainak gyűjteményét írja le. Ez az elem a `InputEndpoint` `InternalEndpoint`, `InstanceInputEndpoint` és az elemek szülője.
+Az `Endpoints` elem ismerteti egy szerepkör bemeneti (külső), belső és példány típusú bemeneti végpontok gyűjteményét. Ez az elem a `InputEndpoint`, `InternalEndpoint`és `InstanceInputEndpoint` elemek szülője.
 
-A bemeneti és a belső végpontok külön vannak lefoglalva. Egy szolgáltatás összesen 25 bemeneti, belső és példány bemeneti végpontok, amelyek egy szolgáltatásban engedélyezett 25 szerepkör között foglalható el. Ha például 5 szerepkörrel rendelkezik, szerepkörenként 5 bemeneti végpontot rendelhet hozzá, vagy 25 bemeneti végpontot rendelhet egyetlen szerepkörhöz, vagy egyenként 1 bemeneti végpontot rendelhet ki 25 szerepkörhöz.
+A bemeneti és a belső végpontok külön vannak lefoglalva. A szolgáltatás összesen 25 bemeneti, belső és példány típusú bemeneti végponttal rendelkezhet, amelyek lefoglalhatók a szolgáltatásban engedélyezett 25 szerepkör között. Ha például 5 szerepkörrel rendelkezik, legfeljebb 5 bemeneti végpontot foglalhat le, vagy 25 bemeneti végpontot foglalhat le egyetlen szerepkörhöz, vagy 1 bemeneti végpontot is lefoglalhat 25 szerepkörre.
 
 > [!NOTE]
->  Minden üzembe helyezett szerepkörhöz szerepkörenként egy példány szükséges. Az előfizetés alapértelmezett kiépítése legfeljebb 20 mag, és így egy szerepkör 20 példányai. Ha az alkalmazás több példányt igényel, mint amennyit az alapértelmezett kiépítés biztosít, olvassa el a [Számlázás, az előfizetés-kezelés és a kvótatámogatás](https://azure.microsoft.com/support/options/) című témakört a kvóta növelésével kapcsolatos további információkért.
+>  Minden telepített szerepkörhöz egy példány szükséges. Az előfizetéshez tartozó alapértelmezett kiépítés legfeljebb 20 magot jelent, így a szerepkör 20 példányára van korlátozva. Ha az alkalmazásnak több példányra van szüksége, mint amennyit az alapértelmezett kiépítés során, tekintse meg a [Számlázási, az előfizetés-kezelés és a kvóta támogatását](https://azure.microsoft.com/support/options/) a kvóta növelésével kapcsolatos további információkért.
 
-##  <a name="inputendpoint"></a><a name="InputEndpoint"></a>Bemenetivégpont  
-Az `InputEndpoint` elem egy webes szerepkör külső végpontját írja le.
+##  <a name="inputendpoint"></a><a name="InputEndpoint"></a>InputEndpoint  
+Az `InputEndpoint` elem egy webes szerepkörhöz tartozó külső végpontot ír le.
 
-Több végpontot is definiálhat, amelyek HTTP, HTTPS, UDP és TCP-végpontok kombinációját képezik. Bármilyen portszámot megadhat egy bemeneti végponthoz, de a szolgáltatás egyes szerepköreihez megadott portszámoknak egyedinek kell lenniük. Ha például azt adja meg, hogy egy webes szerepkör a HTTP 80-as portját, a HTTPS-hez pedig a 443-as portot használja, megadhatja, hogy egy második webes szerepkör a 8080-as portot használja a HTTP-hez és a 8043-as portot a HTTPS-hez.
+Több végpontot is megadhat, amelyek a HTTP-, HTTPS-, UDP-és TCP-végpontok kombinációját jelentik. Megadhatja a bemeneti végponthoz választott portszámot, de a szolgáltatás egyes szerepköreihez megadott portszámoknak egyedinek kell lenniük. Ha például azt adja meg, hogy egy webes szerepkör a HTTP-t és a 443-es portot használja a HTTPS-hez, akkor előfordulhat, hogy egy második webes szerepkör a 80-as portot 8080 használja a HTTP protokollhoz, és az 8043 portot HTTPS-kapcsolatra.
 
 Az alábbi táblázat az `InputEndpoint` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |név|sztring|Kötelező. A külső végpont egyedi neve.|  
-|Protokoll|sztring|Kötelező. A külső végpont átviteli protokollja. Webes szerepkör esetén a `HTTP`lehetséges `HTTPS` `UDP`értékek `TCP`a , , vagy a .|  
-|port|int|Kötelező. A külső végpont portja. Bármilyen portszámot megadhat, de a szolgáltatás egyes szerepköreihez megadott portszámoknak egyedinek kell lenniük.<br /><br /> A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).|  
-|tanúsítvány|sztring|HTTPS-végponthoz szükséges. Egy `Certificate` elem által definiált tanúsítvány neve.|  
-|localPort|int|Választható. A végpont belső kapcsolataihoz használt portot adja meg. Az `localPort` attribútum leképezi a külső port a végponton egy belső port egy szerepkör. Ez olyan esetekben hasznos, amikor egy szerepkörnek kommunikálnia kell egy külsőleg elérhető port egy belső összetevőjével.<br /><br /> Ha nincs megadva, `localPort` az értéke megegyezik az `port` attribútummal. Állítsa be `localPort` a "*" értéket, hogy automatikusan hozzárendeljen egy fel nem osztott portot, amely felderíthető a futásidejű API-val.<br /><br /> A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).<br /><br /> Az `localPort` attribútum csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.|  
-|ignoreRoleInstanceStatus|logikai|Választható. Ha ennek az attribútumnak `true`az értéke a beállítás, a szolgáltatás állapotát a rendszer figyelmen kívül hagyja, és a végpontot a terheléselosztó nem távolítja el. Ha ezt `true` az értéket hasznosra állítja egy szolgáltatás foglalt példányainak hibakereséséhez. Az alapértelmezett érték `false`. **Megjegyzés:**  Egy végpont továbbra is fogadhat forgalmat akkor is, ha a szerepkör nem kész állapotban van.|  
-|loadBalancerProbe|sztring|Választható. A bemeneti végponthoz társított terheléselosztó mintavételének neve. További információ: [LoadBalancerProbe Séma](schema-csdef-loadbalancerprobe.md).|  
+|protokoll|sztring|Kötelező. A külső végpont átviteli protokollja. Webes szerepkör esetén a lehetséges értékek a következők `HTTP` `HTTPS` `UDP`:,, vagy `TCP`.|  
+|port|int|Kötelező. A külső végpont portja. Megadhat bármely kiválasztott portszámot, de a szolgáltatás egyes szerepköreihez megadott portszámoknak egyedinek kell lenniük.<br /><br /> A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|  
+|tanúsítvány|sztring|HTTPS-végponthoz szükséges. Egy `Certificate` elem által meghatározott tanúsítvány neve.|  
+|localPort|int|Választható. A végponton belüli belső kapcsolatokhoz használt portot adja meg. Az `localPort` attribútum a végpont külső portját a szerepkör belső portjára képezi le. Ez olyan esetekben hasznos, amikor a szerepkörnek olyan belső összetevővel kell kommunikálnia egy olyan porton, amely különbözik a külsőleg elérhetőtől.<br /><br /> Ha nincs megadva, az értéke `localPort` megegyezik az `port` attribútummal. A "*" `localPort` értékének beállításával automatikusan hozzárendelhet egy nem lefoglalt portot, amely a futásidejű API használatával felderíthető.<br /><br /> A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).<br /><br /> Az `localPort` attribútum csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.|  
+|ignoreRoleInstanceStatus|logikai|Választható. Ha ennek az attribútumnak az értéke `true`, akkor a rendszer figyelmen kívül hagyja a szolgáltatás állapotát, és a terheléselosztó nem távolítja el a végpontot. Ennek az értéknek `true` a beállításával hasznos lehet a szolgáltatás foglalt példányainak hibakereséséhez. Az alapértelmezett érték `false`. **Megjegyzés:**  A végpontok akkor is fogadhatnak forgalmat, ha a szerepkör nem üzemkész állapotban van.|  
+|loadBalancerProbe|sztring|Választható. A bemeneti végponthoz rendelt terheléselosztó-mintavétel neve. További információ: [LoadBalancerProbe Schema](schema-csdef-loadbalancerprobe.md).|  
 
-##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a>Belső végpont  
-Az `InternalEndpoint` elem egy webes szerepkör belső végpontját írja le. A belső végpont csak a szolgáltatáson belül futó többi szerepkörpéldány számára érhető el; nem érhető el a szolgáltatáson kívüli ügyfelek számára. Az `Sites` elemet nem tartalmazó webes szerepkörök csak egyetlen HTTP- vagy UDP- vagy TCP belső végponttal rendelkezhetnek.
+##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a>InternalEndpoint  
+Az `InternalEndpoint` elem egy webes szerepkör belső végpontját ismerteti. Egy belső végpont csak a szolgáltatáson belül futó egyéb szerepkör-példányok számára érhető el. a szolgáltatáson kívüli ügyfelek számára nem érhető el. Az `Sites` elemet nem tartalmazó webes szerepkörök csak egyetlen http-, UDP-vagy TCP belső végponttal rendelkezhetnek.
 
 Az alábbi táblázat az `InternalEndpoint` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |név|sztring|Kötelező. A belső végpont egyedi neve.|  
-|Protokoll|sztring|Kötelező. A belső végpont átviteli protokollja. A lehetséges `HTTP` `TCP`értékek `UDP`a `ANY`, , vagy .<br /><br /> Az érték `ANY` azt adja meg, hogy bármely protokoll, bármely port engedélyezett.|  
-|port|int|Választható. A végpont belső terheléselosztásos kapcsolataihoz használt port. A Terheléselosztású végpont két portot használ. A nyilvános IP-címhez használt port és a privát IP-címen használt port. Ezek általában azonosra vannak állítva, de választhat, hogy különböző portokat használ.<br /><br /> A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).<br /><br /> Az `Port` attribútum csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.|  
+|protokoll|sztring|Kötelező. A belső végpont átviteli protokollja. A `HTTP` `TCP`lehetséges értékek:,, vagy `ANY` `UDP`<br /><br /> A érték `ANY` azt határozza meg, hogy bármely protokoll, bármely port engedélyezett-e.|  
+|port|int|Választható. A végponton belüli belső terheléselosztási kapcsolatokhoz használt port. Egy elosztott terhelésű végpont két portot használ. A nyilvános IP-címhez használt port, valamint a magánhálózati IP-címen használt port. Ezek általában ugyanazok, de különböző portok használatát is választhatja.<br /><br /> A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).<br /><br /> Az `Port` attribútum csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.|  
 
 ##  <a name="instanceinputendpoint"></a><a name="InstanceInputEndpoint"></a>InstanceInputEndpoint  
-Az `InstanceInputEndpoint` elem egy példány bemeneti végpontját írja le egy webes szerepkörhöz. Egy példány bemeneti végpont jaszmer egy adott szerepkörpéldány használatával porttovábbítás a terheléselosztó. Minden példány bemeneti végpontja egy adott porthoz van leképezve a lehetséges portok tartományából. Ez az elem az `AllocatePublicPortFrom` elem szülője.
+Az `InstanceInputEndpoint` elem egy példány bemeneti végpontját írja le egy webes szerepkörhöz. Egy példány bemeneti végpontja egy adott szerepkör-példánnyal van társítva a terheléselosztó porton keresztüli továbbításával. Az egyes példányok bemeneti végpontja egy adott portra van leképezve a lehetséges portok köréből. Ez az elem az `AllocatePublicPortFrom` elem szülője.
 
-Az `InstanceInputEndpoint` elem csak az Azure SDK 1.7-es vagy újabb verziójával érhető el.
+Az `InstanceInputEndpoint` elem csak az Azure SDK 1,7-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `InstanceInputEndpoint` elem attribútumait ismerteti.
   
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |név|sztring|Kötelező. A végpont egyedi neve.|  
-|localPort|int|Kötelező. Megadja azt a belső portot, amelyet az összes szerepkörpéldány figyelni fog a terheléselosztótól továbbított bejövő forgalom fogadásához. A lehetséges értékek 1 és 65535 között mozognak, beleértve a értéket is.|  
-|Protokoll|sztring|Kötelező. A belső végpont átviteli protokollja. A lehetséges értékek: `udp` és `tcp`. Http/https alapú forgalomhoz használható. `tcp`|  
+|localPort|int|Kötelező. Meghatározza azt a belső portot, amelyet az összes szerepkör-példány figyelni fog a terheléselosztó által továbbított bejövő forgalom fogadásához. A lehetséges értékek tartománya 1 és 65535 között van, beleértve a értéket.|  
+|protokoll|sztring|Kötelező. A belső végpont átviteli protokollja. A lehetséges értékek: `udp` és `tcp`. Http `tcp` /HTTPS-alapú forgalomhoz használható.|  
   
-##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>PublicPortFrom felosztása  
-Az `AllocatePublicPortFrom` elem leírja a nyilvános port tartomány, amely a külső ügyfelek által használható az egyes példánybemeneti végpontok eléréséhez. A nyilvános (VIP) portszáma ebből a tartományból van lefoglalva, és a bérlői telepítés és frissítés során minden egyes szerepkörpéldány-végponthoz hozzá van rendelve. Ez az elem az `FixedPortRange` elem szülője.
+##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom  
+Az `AllocatePublicPortFrom` elem azt a nyilvános porttartomány ismerteti, amelyet a külső ügyfelek az egyes példányok bemeneti végpontjának eléréséhez használhatnak. A nyilvános (VIP) portszám le van foglalva ebből a tartományból, és az egyes szerepkör-példányok végpontja számára van hozzárendelve a bérlői telepítés és a frissítés során. Ez az elem az `FixedPortRange` elem szülője.
 
-Az `AllocatePublicPortFrom` elem csak az Azure SDK 1.7-es vagy újabb verziójával érhető el.
+Az `AllocatePublicPortFrom` elem csak az Azure SDK 1,7-es vagy újabb verziójának használatával érhető el.
 
-##  <a name="fixedport"></a><a name="FixedPort"></a>Rögzített port  
-Az `FixedPort` elem a belső végpont portját adja meg, amely lehetővé teszi a terheléselosztásos kapcsolatokat a végponton.
+##  <a name="fixedport"></a><a name="FixedPort"></a>FixedPort  
+Az `FixedPort` elem a belső végponthoz tartozó portot adja meg, amely lehetővé teszi a terheléselosztás elosztott terhelésű kapcsolatait a végponton.
 
-Az `FixedPort` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `FixedPort` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `FixedPort` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|port|int|Kötelező. A belső végpont portja. Ennek ugyanaz a hatása, `FixedPortRange` mint a min és max beállításának beállítása ugyanarra a portra.<br /><br /> A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).|  
+|port|int|Kötelező. A belső végpont portja. Ennek ugyanaz a hatása, mint a `FixedPortRange` min és a Max beállítása ugyanahhoz a porthoz.<br /><br /> A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|  
 
 ##  <a name="fixedportrange"></a><a name="FixedPortRange"></a>FixedPortRange  
-Az `FixedPortRange` elem meghatározza a belső végponthoz vagy példánybemeneti végponthoz rendelt portok tartományát, és beállítja a terheléselosztásos kapcsolatokhoz használt portot a végponton.
+Az `FixedPortRange` elem megadja a belső végponthoz vagy példányhoz tartozó bemeneti végponthoz rendelt portok tartományát, és beállítja a végponton elosztott terhelésű kapcsolatokhoz használt portot.
 
 > [!NOTE]
->  Az `FixedPortRange` elem másképp működik attól függően, hogy melyik elemben található. Ha `FixedPortRange` az elem `InternalEndpoint` az elem, megnyitja az összes portot a terheléselosztó tartományon belül a min és max attribútumok minden virtuális gép, amelyen a szerepkör fut. Ha `FixedPortRange` az elem `InstanceInputEndpoint` az elemben van, csak egy portot nyit meg a min és a max attribútumok tartományán belül minden olyan virtuális gépen, amely a szerepkört futtatja.
+>  Az `FixedPortRange` elem eltérő módon működik attól függően, hogy melyik elemet tárolja. Ha az `FixedPortRange` elem szerepel a `InternalEndpoint` elemben, a a terheléselosztó összes portját a minimális és a maximális attribútumok tartományán belül nyitja meg az összes olyan virtuális géphez, amelyen a szerepkör fut. Ha a `FixedPortRange` elem szerepel a `InstanceInputEndpoint` elemben, az csak egy portot nyit meg a minimális és a maximális attribútum tartományán belül minden olyan virtuális gépen, amelyen a szerepkör fut.
 
-Az `FixedPortRange` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `FixedPortRange` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `FixedPortRange` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|p|int|Kötelező. A tartomány minimális portja. A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).|  
-|Max|sztring|Kötelező. A tartomány maximális portja. A lehetséges értékek 1 és 65535 között mozognak, bezárólag (Az Azure SDK 1.7-es vagy újabb verziója).|  
+|p|int|Kötelező. A tartomány minimális portszáma. A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|  
+|Max|sztring|Kötelező. A tartományon belüli maximális port. A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|  
 
 ##  <a name="certificates"></a><a name="Certificates"></a>Tanúsítványok  
-Az `Certificates` elem egy webes szerepkör tanúsítványainak gyűjteményét írja le. Ez az elem az `Certificate` elem szülője. Egy szerepkörhöz tetszőleges számú társított tanúsítvány tartozhat. A tanúsítványelem használatáról a [Szolgáltatásdefiníció-fájl módosítása tanúsítvánnyal](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files)című témakörben talál további információt.
+Az `Certificates` elem a webes szerepkör tanúsítványainak gyűjteményét írja le. Ez az elem az `Certificate` elem szülője. Egy szerepkörhöz a társított tanúsítványok száma is tartozhat. További információ a tanúsítványok elem használatáról: [a szolgáltatás definíciós fájljának módosítása tanúsítvánnyal](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
 
 ##  <a name="certificate"></a><a name="Certificate"></a>Tanúsítvány  
 Az `Certificate` elem egy webes szerepkörhöz társított tanúsítványt ír le.
@@ -292,190 +292,190 @@ Az alábbi táblázat az `Certificate` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A tanúsítvány neve, amely https-elemhez `InputEndpoint` való hozzárendeltként hivatkozik rá.|  
-|storeLocation (üzlet helye)|sztring|Kötelező. Annak a tanúsítványtárolónak a helye, ahol ez a tanúsítvány megtalálható a helyi számítógépen. A lehetséges `CurrentUser` `LocalMachine`értékek a és a.|  
-|storeName (üzletneve)|sztring|Kötelező. Annak a tanúsítványtárolónak a neve, ahol ez a tanúsítvány a helyi számítógépen található. A lehetséges értékek közé tartoznak `Root` `CA`a `Trust` `Disallowed`beépített `TrustedPeople` `TrustedPublisher` `AuthRoot`üzletnevek `AddressBook` `My`, , , , , , , , , , vagy bármely egyéni üzletnév. Ha meg van adva egyéni üzletnév, a rendszer automatikusan létrehozza az üzletet.|  
-|permissionLevel|sztring|Választható. Megadja a szerepkör-folyamatokhozzáférési engedélyeit. Ha azt szeretné, hogy csak emelt szintű folyamatok férhessenek hozzá a személyes kulcshoz, adja meg `elevated` az engedélyt. `limitedOrElevated`engedély lehetővé teszi, hogy minden szerepkör-folyamat hozzáférjen a személyes kulcshoz. A lehetséges értékek: `limitedOrElevated` és `elevated`. Az alapértelmezett érték `limitedOrElevated`.|  
+|név|sztring|Kötelező. A tanúsítvány neve, amely akkor használható, ha egy HTTPS `InputEndpoint` -elemmel társítva van.|  
+|storeLocation|sztring|Kötelező. Azon tanúsítványtároló helye, ahol ez a tanúsítvány megtalálható a helyi gépen. A lehetséges értékek `CurrentUser` a `LocalMachine`következők: és.|  
+|storeName|sztring|Kötelező. Annak a tanúsítványtárolónak a neve, ahol a tanúsítvány a helyi gépen található. A lehetséges értékek közé tartoznak a beépített tárolók `My`neve `Root`, `CA` `Trust` `Disallowed` `TrustedPeople` `TrustedPublisher` `AuthRoot` `AddressBook`,,,,,,, vagy bármely egyéni tároló neve. Ha meg van adva egy egyéni tároló neve, a rendszer automatikusan létrehozza az áruházat.|  
+|permissionLevel|sztring|Választható. Megadja a szerepkör-folyamatok számára megadott hozzáférési engedélyeket. Ha azt szeretné, hogy csak emelt szintű folyamatok férhessenek hozzá a titkos kulcshoz, `elevated` adja meg az engedélyt. `limitedOrElevated`az engedély lehetővé teszi az összes szerepkör-folyamat számára a titkos kulcs elérését. A lehetséges értékek: `limitedOrElevated` és `elevated`. Az alapértelmezett érték `limitedOrElevated`.|  
 
-##  <a name="imports"></a><a name="Imports"></a>Behozatal  
-Az `Imports` elem egy webes szerepkör importálási moduljainak gyűjteményét írja le, amely összetevőket ad hozzá a vendég operációs rendszerhez. Ez az elem az `Import` elem szülője. Ez az elem nem kötelező, és egy szerepkörnek csak egy importálási blokkja lehet. 
+##  <a name="imports"></a><a name="Imports"></a>Importálja  
+Az `Imports` elem az importálási modulok gyűjteményét írja le egy webes szerepkörhöz, amely összetevőket ad hozzá a vendég operációs rendszerhez. Ez az elem az `Import` elem szülője. Ez az elem nem kötelező, és egy szerepkör csak egyetlen importálási blokkot tartalmazhat. 
 
-Az `Imports` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Imports` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 ##  <a name="import"></a><a name="Import"></a>Importálása  
-Az `Import` elem megad egy modult, amelyet hozzá kell adni a vendég operációs rendszerhez.
+Az `Import` elem a vendég operációs rendszerhez hozzáadandó modult adja meg.
 
-Az `Import` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Import` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `Import` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|modulNeve|sztring|Kötelező. Az importálandó modul neve. Az érvényes importálási modulok a következők:<br /><br /> - RemoteAccess<br />- RemoteForwarder<br />- Diagnosztika<br /><br /> A RemoteAccess és a RemoteForwarder modulok lehetővé teszik a szerepkörpéldány távoli asztali kapcsolatokhoz való konfigurálását. További információt a [Távoli asztali kapcsolat engedélyezése](cloud-services-role-enable-remote-desktop-new-portal.md)című témakörben talál.<br /><br /> A Diagnosztika modul lehetővé teszi egy szerepkörpéldány diagnosztikai adatainak gyűjtését.|  
+|moduleName|sztring|Kötelező. Az importálandó modul neve. Az érvényes importálási modulok a következők:<br /><br /> – RemoteAccess<br />- RemoteForwarder<br />-Diagnosztika<br /><br /> A RemoteAccess és a RemoteForwarder modulok lehetővé teszik a szerepkör-példány konfigurálását a távoli asztali kapcsolatokhoz. További információ: [Távoli asztali kapcsolat engedélyezése](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> A diagnosztikai modul lehetővé teszi a szerepkör-példányok diagnosztikai adatainak gyűjtését.|  
 
 ##  <a name="runtime"></a><a name="Runtime"></a>Runtime  
-Az `Runtime` elem egy webes szerepkör környezeti változóbeállításainak gyűjteményét ismerteti, amelyek az Azure gazdagépfolyamat futásidejű környezetét szabályozzák. Ez az elem az `Environment` elem szülője. Ez az elem nem kötelező, és egy szerepkör csak egy futásidejű blokk.
+Az `Runtime` elem a környezeti változók egy gyűjteményét írja le egy webes szerepkörhöz, amely az Azure-gazdagép folyamatának futásidejű környezetét vezérli. Ez az elem az `Environment` elem szülője. Ez az elem nem kötelező, és a szerepkörnek csak egy futásidejű blokkja lehet.
 
-Az `Runtime` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Runtime` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-Az alábbi táblázat az `Runtime` elem jellemzőit ismerteti:  
+A következő táblázat a `Runtime` elem attribútumait ismerteti:  
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|executionContext|sztring|Választható. Megadja azt a környezetet, amelyben a szerepkör-folyamat elindul. Az alapértelmezett `limited`környezet a .<br /><br /> -   `limited`– A folyamat rendszergazdai jogosultságok nélkül indul el.<br />-   `elevated`– A folyamat rendszergazdai jogosultságokkal indul.|  
+|executionContext|sztring|Választható. Meghatározza azt a környezetet, amelyben a szerepkör-folyamat elindul. Az alapértelmezett környezet: `limited`.<br /><br /> -   `limited`– A folyamat rendszergazdai jogosultságok nélkül indul el.<br />-   `elevated`– A folyamat rendszergazdai jogosultságokkal van elindítva.|  
 
 ##  <a name="environment"></a><a name="Environment"></a>Környezet  
-Az `Environment` elem egy webes szerepkör környezeti változóbeállításainak gyűjteményét írja le. Ez az elem az `Variable` elem szülője. Egy szerepkörhöz tetszőleges számú környezeti változó van beállítva.
+Az `Environment` elem egy webes szerepkörhöz tartozó környezeti változó beállításainak gyűjteményét ismerteti. Ez az elem az `Variable` elem szülője. Egy szerepkörhöz tetszőleges számú környezeti változó állítható be.
 
 ##  <a name="variable"></a><a name="Variable"></a>Változó  
-Az `Variable` elem egy környezeti változót ad meg, amelyet a vendég működik.
+Az `Variable` elem egy környezeti változót határoz meg, amely a vendég operációs szolgáltatásban állítható be.
 
-Az `Variable` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Variable` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-Az alábbi táblázat az `Variable` elem jellemzőit ismerteti:  
+A következő táblázat a `Variable` elem attribútumait ismerteti:  
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A beállítandó környezeti változó neve.|  
-|érték|sztring|Választható. A környezeti változóhoz beállítandó érték. Értékattribútumot vagy `RoleInstanceValue` elemet kell megadnia.|  
+|név|sztring|Kötelező. A beállítani kívánt környezeti változó neve.|  
+|érték|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|  
 
-##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a>RoleInstanceValue érték  
-Az `RoleInstanceValue` elem azt az xPath-ot adja meg, amelyből a változó értékét be szeretné olvasni.
+##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a>RoleInstanceValue  
+Az `RoleInstanceValue` elem azt az xPath-értéket adja meg, amelyből be kell olvasni a változó értékét.
 
 Az alábbi táblázat az `RoleInstanceValue` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|Xpath|sztring|Választható. A példány telepítési beállításainak helyelérési útja. További információt a [Konfigurációs változók az XPath segítségével című témakörben talál.](cloud-services-role-config-xpath.md)<br /><br /> Értékattribútumot vagy `RoleInstanceValue` elemet kell megadnia.|  
+|XPath|sztring|Választható. A példány telepítési beállításainak helyének elérési útja. További információ: [konfigurációs változók az XPath](cloud-services-role-config-xpath.md)-ban.<br /><br /> Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|  
 
-##  <a name="entrypoint"></a><a name="EntryPoint"></a>Belépési pont  
-Az `EntryPoint` elem egy szerepkör belépési pontját adja meg. Ez az elem az `NetFxEntryPoint` elemek szülője. Ezek az elemek lehetővé teszik, hogy az alapértelmezett WaWorkerHost.exe alkalmazástól eltérő alkalmazást adjon meg, amely szerepkör-belépési pontként működjön.
+##  <a name="entrypoint"></a><a name="EntryPoint"></a>BelépésiPont  
+Az `EntryPoint` elem a szerepkör belépési pontját adja meg. Ez az elem az `NetFxEntryPoint` elemek szülője. Ezek az elemek lehetővé teszik, hogy az alapértelmezett WaWorkerHost. exe fájltól eltérő alkalmazást határozzon meg szerepkör-belépési pontként.
 
-Az `EntryPoint` elem csak az Azure SDK 1.5-ös vagy újabb verziójával érhető el.
+Az `EntryPoint` elem csak az Azure SDK 1,5-es vagy újabb verziójának használatával érhető el.
 
-##  <a name="netfxentrypoint"></a><a name="NetFxEntryPoint"></a>NetfxEntryPoint  
-Az `NetFxEntryPoint` elem határozza meg a szerepkörhöz futtatandó programot.
+##  <a name="netfxentrypoint"></a><a name="NetFxEntryPoint"></a>NetFxEntryPoint  
+Az `NetFxEntryPoint` elem meghatározza a szerepkörhöz futtatandó programot.
 
 > [!NOTE]
->  Az `NetFxEntryPoint` elem csak az Azure SDK 1.5-ös vagy újabb verziójával érhető el.
+>  Az `NetFxEntryPoint` elem csak az Azure SDK 1,5-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `NetFxEntryPoint` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|szerelvényneve|sztring|Kötelező. A belépési pontot tartalmazó szerelvény elérési útja és fájlneve. Az elérési út a ** \\%ROLEROOT%\Approot** mappához képest van (ne `commandLine`adja meg ** \\a %ROLEROOT%\Approot** értéket a mappában, a(z) feltételezi). **A %ROLEROOT%** az Azure által karbantartott környezeti változó, amely a szerepkör gyökérmappájának helyét jelöli. A ** \\%ROLEROOT%\Approot** mappa a szerepkör alkalmazásmappáját jelöli.<br /><br /> HWC-szerepkörök esetén az elérési út mindig a ** \\%ROLEROOT%\Approot\bin** mappához képest érhető el.<br /><br /> Ha a teljes IIS- és IIS Express webes szerepkörök esetében a szerelvény nem található a ** \\%ROLEROOT%\Approot** mappához képest, a program rákeresi a ** \\%ROLEROOT%\Approot\bin** mappát.<br /><br /> Ez a teljes IIS-hez való visszalépési viselkedés nem ajánlott, és a későbbi verziókban is eltávolítható.|  
-|targetFrameworkVersion|sztring|Kötelező. A .NET keretrendszer azon verziója, amelyre a szerelvény épült. Például: `targetFrameworkVersion="v4.0"`.|  
+|assemblyName|sztring|Kötelező. A belépési pontot tartalmazó szerelvény elérési útja és fájlneve. Az elérési út a ** \\%ROLEROOT%\Approot** mappához képest relatív (ne ** \\** határozza meg `commandLine`a%ROLEROOT%\Approot a alkalmazásban, feltételezve). **% ROLEROOT%** az Azure által fenntartott környezeti változó, amely a szerepkör gyökérkönyvtárának helyét jelöli. A ** \\%ROLEROOT%\Approot** mappa a szerepkörhöz tartozó alkalmazás mappáját jelöli.<br /><br /> Üzemeltethető webmag-szerepkörök esetén az elérési út mindig a ** \\%ROLEROOT%\Approot\bin** mappához viszonyított.<br /><br /> Teljes IIS-és IIS Express webes szerepkörök esetén, ha a szerelvény nem található a ** \\%ROLEROOT%\Approot** mappához képest, a rendszer a ** \\%ROLEROOT%\Approot\bin** keresi.<br /><br /> Ez a teljes IIS-re vonatkozó biztonsági mentés nem ajánlott eljárás, és a későbbi verziókban valószínűleg el lesz távolítva.|  
+|targetFrameworkVersion|sztring|Kötelező. A .NET-keretrendszer azon verziója, amelyen a szerelvény létrejött. Például: `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="sites"></a><a name="Sites"></a>Helyek  
-Az `Sites` elem olyan webhelyek és webalkalmazások gyűjteményét írja le, amelyek webes szerepkörben találhatók. Ez az elem az `Site` elem szülője. Ha nem ad `Sites` meg egy elemet, a webes szerepkör örökölt webes szerepkörként lesz tárolva, és csak egy webhely et üzemeltethet a webes szerepkörben. Ez az elem nem kötelező, és egy szerepkör csak egy helyblokkot tartalmaz.
+Az `Sites` elem a webes szerepkörben üzemeltetett webhelyek és webalkalmazások gyűjteményét ismerteti. Ez az elem az `Site` elem szülője. Ha nem ad meg egy `Sites` elemet, a webes szerepkör örökölt webes szerepkörként fut, és csak egy webhely fut a webes szerepkörben. Ez az elem nem kötelező, és egy szerepkör csak egy hellyel rendelkezhet.
 
-Az `Sites` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Sites` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-##  <a name="site"></a><a name="Site"></a>Oldalon  
-Az `Site` elem olyan webhelyet vagy webalkalmazást határoz meg, amely a webes szerepkör része.
+##  <a name="site"></a><a name="Site"></a>Hely  
+Az `Site` elem a webes szerepkör részét képező webhelyet vagy webalkalmazást adja meg.
 
-Az `Site` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Site` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `Site` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A weboldal vagy alkalmazás neve.|  
-|fizikai könyvtár|sztring|A helygyökér tartalomkönyvtárának helye. A hely abszolút elérési útként vagy a .csdef helyhez viszonyítva adható meg.|  
+|név|sztring|Kötelező. A webhely vagy alkalmazás neve.|  
+|physicalDirectory|sztring|A hely gyökeréhez tartozó tartalom könyvtárának helye. A hely abszolút elérési úttal vagy a. csdef helyhez viszonyítva is megadható.|  
 
-##  <a name="virtualapplication"></a><a name="VirtualApplication"></a>VirtualApplication alkalmazása  
-Az `VirtualApplication` elem az Internet Information Services (IIS) 7 alkalmazásban olyan fájlok csoportja, amelyek tartalmat szolgáltatnak, vagy protokollokon, például HTTP-n keresztül nyújtanak szolgáltatásokat. Amikor létrehoz egy alkalmazást az IIS 7-ben, az alkalmazás elérési útja a webhely URL-címének részévé válik.
+##  <a name="virtualapplication"></a><a name="VirtualApplication"></a>VirtualApplication  
+Az `VirtualApplication` elem a Internet Information Services (IIS) 7 alkalmazásban definiál egy alkalmazást, amely tartalmat biztosít vagy szolgáltatásokat biztosít protokollokon, például HTTP-n keresztül. Amikor létrehoz egy alkalmazást az IIS 7-es verziójában, az alkalmazás elérési útja a hely URL-címévé válik.
 
-Az `VirtualApplication` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `VirtualApplication` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `VirtualApplication` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A virtuális alkalmazás azonosítására szolgáló nevet ad meg.|  
-|fizikai könyvtár|sztring|Kötelező. Megadja a virtuális alkalmazást tartalmazó fejlesztői gépen lévő elérési utat. A számítási emulátorban az IIS úgy van beállítva, hogy lekérje a tartalmat erről a helyről. Az Azure-ba való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. Amikor a szolgáltatáscsomag telepítve van az Azure-ban, az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
+|név|sztring|Kötelező. A virtuális alkalmazás azonosítására szolgáló nevet adja meg.|  
+|physicalDirectory|sztring|Kötelező. Megadja a virtuális alkalmazást tartalmazó fejlesztői gép elérési útját. A Compute Emulator az IIS úgy van konfigurálva, hogy tartalmat kérjen le erről a helyről. Az Azure-ban való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. A szervizcsomag Azure-beli üzembe helyezése után az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
 
-##  <a name="virtualdirectory"></a><a name="VirtualDirectory"></a>VirtualDirectory  
-Az `VirtualDirectory` elem megadja az IIS-ben megadott könyvtárnevet (más néven elérési utat), és leképezegy helyi vagy távoli kiszolgáló fizikai könyvtárára.
+##  <a name="virtualdirectory"></a><a name="VirtualDirectory"></a>Virtuáliskönyvtár  
+Az `VirtualDirectory` elem megadja az IIS-ben megadott könyvtárnév (más néven elérési út) nevét, amely a helyi vagy távoli kiszolgálón található fizikai könyvtárra van leképezve.
 
-Az `VirtualDirectory` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `VirtualDirectory` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `VirtualDirectory` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. Megadja a virtuális könyvtár azonosítására szolgáló nevet.|  
-|érték|fizikai könyvtár|Kötelező. Megadja a webhely et vagy a virtuális könyvtár tartalmát tartalmazó fejlesztői gépen lévő elérési utat. A számítási emulátorban az IIS úgy van beállítva, hogy lekérje a tartalmat erről a helyről. Az Azure-ba való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. Amikor a szolgáltatáscsomag telepítve van az Azure-ban, az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
+|név|sztring|Kötelező. A virtuális könyvtár azonosítására szolgáló nevet adja meg.|  
+|érték|physicalDirectory|Kötelező. Megadja a webhelyet vagy a virtuális könyvtár tartalmát tartalmazó fejlesztői számítógép elérési útját. A Compute Emulator az IIS úgy van konfigurálva, hogy tartalmat kérjen le erről a helyről. Az Azure-ban való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. A szervizcsomag Azure-beli üzembe helyezése után az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
 
 ##  <a name="bindings"></a><a name="Bindings"></a>Kötések  
-Az `Bindings` elem egy webhely kötéseinek gyűjteményét írja le. Ez az `Binding` elem szülőeleme. Az elem minden `Site` elemhez szükséges. A végpontok konfigurálásáról a [Kommunikáció engedélyezése szerepkörpéldányokhoz](cloud-services-enable-communication-role-instances.md)című témakörben talál további információt.
+Az `Bindings` elem egy webhely kötéseinek gyűjteményét írja le. Ez a `Binding` elem szülő eleme. Az elemnek minden `Site` elemhez kötelezőnek kell lennie. A végpontok konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-példányok kommunikációjának engedélyezése](cloud-services-enable-communication-role-instances.md).
 
-Az `Bindings` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Bindings` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-##  <a name="binding"></a><a name="Binding"></a>Kötelező  
-Az `Binding` elem meghatározza a webhelyekkel vagy webalkalmazásokkal való kommunikációhoz szükséges konfigurációs adatokat.
+##  <a name="binding"></a><a name="Binding"></a>Kötés  
+Az `Binding` elem határozza meg a webhelyekkel vagy webalkalmazásokkal való kommunikációra irányuló kérésekhez szükséges konfigurációs adatokat.
 
-Az `Binding` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Binding` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|név|sztring|Kötelező. A kötés azonosítására szolgáló nevet ad meg.|  
-|végpontneve|sztring|Kötelező. Megadja a végpont nevét, amelyhez kötődni szeretne.|  
-|hostHeader fejléc|sztring|Választható. Olyan állomásnevet ad meg, amely lehetővé teszi, hogy egyetlen IP-cím/portszám kombinációban több, különböző állomásnévvel rendelkező helyet adjon meg.|  
+|név|sztring|Kötelező. Megadja a kötés azonosítására szolgáló nevet.|  
+|Végpontneve|sztring|Kötelező. A végpont nevét adja meg a kötéshez.|  
+|állomásfejléccel|sztring|Választható. Megadja azt az állomásnevet, amely lehetővé teszi több, különböző állomásnévvel rendelkező hely üzemeltetését egyetlen IP-cím/portszám kombinációban.|  
 
 ##  <a name="startup"></a><a name="Startup"></a>Indítási  
-Az `Startup` elem a szerepkör indításakor futó feladatok gyűjteményét írja le. Ez az elem lehet `Variable` az elem szülője. A szerepkör indítási feladatainak használatáról az [indítási feladatok konfigurálása](cloud-services-startup-tasks.md)című témakörben talál további információt. Ez az elem nem kötelező, és egy szerepkörnek csak egy indítási blokkja lehet.
+Az `Startup` elem a szerepkör indításakor futtatott feladatok gyűjteményét írja le. Ez az elem lehet az `Variable` elem szülője. További információ a szerepkör-indítási feladatok használatáról: [indítási feladatok konfigurálása](cloud-services-startup-tasks.md). Ez az elem nem kötelező, és a szerepkörnek csak egy indítási blokkja lehet.
 
 Az alábbi táblázat az `Startup` elem attribútumát ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|Prioritás|int|Csak belső használatra.|  
+|prioritású|int|Csak belső használatra.|  
 
 ##  <a name="task"></a><a name="Task"></a>Feladat  
-Az `Task` elem meghatározza a szerepkör indításakor bekövetkező indítási feladatot. Az indítási feladatok olyan feladatok végrehajtására használhatók, amelyek előkészítik a szerepkört az ilyen telepítési szoftverösszetevők vagy más alkalmazások futtatására. A feladatok abban a sorrendben `Startup` hajthatók végre, ahogyan az elemblokkban megjelennek.
+Az `Task` elem a szerepkör indításakor megjelenő indítási feladatot határozza meg. Az indítási feladatok olyan feladatok elvégzésére használhatók, amelyek előkészítik a szerepkört az ilyen telepítési szoftver-összetevők futtatására vagy más alkalmazások futtatására. A feladatok az `Startup` Element blokkban megjelenő sorrendben futnak.
 
-Az `Task` elem csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+Az `Task` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `Task` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|Commandline|sztring|Kötelező. A futtatandó parancsokat tartalmazó parancsfájl, például cmd-fájl. Az indítási parancsot és a kötegfájlokat ANSI formátumban kell menteni. A bájtsorrend-jelölőt a fájl elején beállító fájlformátumok nem lesznek megfelelően feldolgozva.|  
-|executionContext|sztring|Megadja azt a környezetet, amelyben a parancsfájl fut.<br /><br /> -   `limited`[Default] – A folyamatot tároló szerepkörrel azonos jogosultságokkal fut.<br />-   `elevated`– Rendszergazdai jogosultságokkal fut.|  
-|taskType típusú|sztring|A parancs végrehajtási viselkedését adja meg.<br /><br /> -   `simple`[Alapértelmezett] – A rendszer megvárja, amíg a feladat kilép, mielőtt bármilyen más feladatot indítana.<br />-   `background`– A rendszer nem várja meg, amíg a feladat kilép.<br />-   `foreground`– Hasonló a háttérhez, kivéve, hogy a szerepkör nem indul újra, amíg az összes előtér-feladat ki nem lép.|  
+|commandLine|sztring|Kötelező. Egy parancsfájl, például egy CMD-fájl, amely a futtatandó parancsokat tartalmazza. Az indítási parancsot és a Batch-fájlokat ANSI formátumban kell menteni. A byte-Order jelölőt a fájl elején beállított fájlformátumok nem fognak megfelelően feldolgozni.|  
+|executionContext|sztring|Meghatározza azt a környezetet, amelyben a parancsfájl fut.<br /><br /> -   `limited`[Alapértelmezett] – futtassa ugyanazokkal a jogosultságokkal, mint a folyamatot üzemeltető szerepkör.<br />-   `elevated`– Futtatás rendszergazdai jogosultságokkal.|  
+|taskType|sztring|Meghatározza a parancs végrehajtási viselkedését.<br /><br /> -   `simple`[Alapértelmezett] – a rendszer megvárja, amíg a feladat kilép, mielőtt más feladatok elindulnak.<br />-   `background`– A rendszer nem várja meg a feladat kilépését.<br />-   `foreground`– A háttérhez hasonlóan, a szerepkör nem indul újra, amíg az összes előtér-feladat ki nem fejeződik.|  
 
 ##  <a name="contents"></a><a name="Contents"></a>Tartalmát  
-Az `Contents` elem egy webes szerepkör tartalomgyűjteményét írja le. Ez az elem az `Content` elem szülője.
+Az `Contents` elem a webes szerepkörök tartalmának gyűjteményét írja le. Ez az elem az `Content` elem szülője.
 
-Az `Contents` elem csak az Azure SDK 1.5-ös vagy újabb verziójával érhető el.
+Az `Contents` elem csak az Azure SDK 1,5-es vagy újabb verziójának használatával érhető el.
 
 ##  <a name="content"></a><a name="Content"></a>Tartalom  
-Az `Content` elem határozza meg az Azure virtuális gépre másolandó tartalom forráshelyét és azt a célelérési utat, amelyre a rendszer másolja.
+Az `Content` elem határozza meg az Azure-beli virtuális gépre másolandó tartalom forrásának helyét, valamint a cél elérési útját, ahová a rendszer átmásolja.
 
-Az `Content` elem csak az Azure SDK 1.5-ös vagy újabb verziójával érhető el.
+Az `Content` elem csak az Azure SDK 1,5-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `Content` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|destination|sztring|Kötelező. Hely az Azure virtuális gépen, amelyre a tartalom van elhelyezve. Ez a hely a **%ROLEROOT%\Approot**mappához képest van.|  
+|destination|sztring|Kötelező. Annak az Azure-beli virtuális gépnek a helye, ahová a tartalom kerül. Ez a hely a **%ROLEROOT%\Approot**mappához képest relatív.|  
 
-Ez az elem az `SourceDirectory` elem szülőeleme.
+Ez az elem a `SourceDirectory` elem szülő eleme.
 
-##  <a name="sourcedirectory"></a><a name="SourceDirectory"></a>Forráskönyvtár  
-Az `SourceDirectory` elem határozza meg azt a helyi könyvtárat, amelyből a tartalmat másolja. Ezzel az elemmel megadhatja az Azure virtuális gépre másolni kívánt helyi tartalmat.
+##  <a name="sourcedirectory"></a><a name="SourceDirectory"></a>SourceDirectory  
+Az `SourceDirectory` elem határozza meg azt a helyi könyvtárat, amelyből a tartalmat másolni kívánja. Ezzel az elemmel adhatja meg az Azure-beli virtuális gépre másolandó helyi tartalmat.
 
-Az `SourceDirectory` elem csak az Azure SDK 1.5-ös vagy újabb verziójával érhető el.
+Az `SourceDirectory` elem csak az Azure SDK 1,5-es vagy újabb verziójának használatával érhető el.
 
 Az alábbi táblázat az `SourceDirectory` elem attribútumait ismerteti.
 
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
-|path|sztring|Kötelező. Relatív vagy abszolút elérési útja egy helyi könyvtár, amelynek tartalmát másolja az Azure virtuális gépre. A címtár elérési útján a környezeti változók bővítése támogatott.|  
+|path|sztring|Kötelező. Egy helyi könyvtár relatív vagy abszolút elérési útja, amelynek tartalmát a rendszer az Azure-beli virtuális gépre másolja. A környezeti változók kiterjesztése a könyvtár elérési útjában támogatott.|  
   
 ## <a name="see-also"></a>Lásd még:
-[Felhőszolgáltatás (klasszikus) definícióséma](schema-csdef-file.md)
+[Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md)
 
 
 

@@ -1,22 +1,22 @@
 ---
 title: Kimenetek a sablonokban
-description: Bemutatja, hogyan definiálható kimeneti értékek egy Azure Resource Manager-sablonban.
+description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460024"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek az Azure Resource Manager-sablonban
+# <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
 
-Ez a cikk ismerteti, hogyan definiálhatja a kimeneti értékeket az Azure Resource Manager-sablonban. A kimeneteket akkor használja, amikor értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
+Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban. A kimenetek akkor használhatók, ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
 
-## <a name="define-output-values"></a>Kimeneti értékek meghatározása
+## <a name="define-output-values"></a>Kimeneti értékek definiálása
 
-A következő példa bemutatja, hogyan adja vissza az erőforrás-azonosítót egy nyilvános IP-címhez:
+Az alábbi példa azt szemlélteti, hogyan lehet visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját:
 
 ```json
 "outputs": {
@@ -29,7 +29,7 @@ A következő példa bemutatja, hogyan adja vissza az erőforrás-azonosítót e
 
 ## <a name="conditional-output"></a>Feltételes kimenet
 
-A kimenetek szakaszban feltételesen visszaadhat egy értéket. Általában feltételt használ a kimenetekben, ha feltételesen telepített egy [erőforrást.](conditional-resource-deployment.md) A következő példa bemutatja, hogyan lehet feltételesen visszaadni egy nyilvános IP-cím erőforrás-azonosítóját annak alapján, hogy újat telepítettek-e:
+A kimenetek szakaszban feltételesen adhat vissza értéket. A kimenetekben jellemzően feltételt kell használni, amikor [feltételesen telepített](conditional-resource-deployment.md) egy erőforrást. Az alábbi példa azt mutatja be, hogyan lehet feltételesen visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját attól függően, hogy egy újat telepített-e:
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ A kimenetek szakaszban feltételesen visszaadhat egy értéket. Általában felt
 }
 ```
 
-A feltételes kimenet egyszerű példáját a [feltételes kimeneti sablon című témakörben olvashatja.](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)
+A feltételes kimenet egyszerű példáját lásd: [feltételes kimeneti sablon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="dynamic-number-of-outputs"></a>A kimenetek dinamikus száma
+## <a name="dynamic-number-of-outputs"></a>Kimenetek dinamikus száma
 
-Bizonyos esetekben nem tudja, hogy a sablon létrehozásakor hány értéket kell visszaadnia. A **másolási** elem segítségével változó számú értéket adhat vissza.
+Bizonyos helyzetekben nem tudja, hogy hány példányban kell visszaadni a sablon létrehozásakor. A **copy** elem használatával változó számú értéket adhat vissza.
 
 ```json
 "outputs": {
@@ -59,19 +59,19 @@ Bizonyos esetekben nem tudja, hogy a sablon létrehozásakor hány értéket kel
 }
 ```
 
-További információ: [Outputs iteráció az Azure Resource Manager-sablonokban.](copy-outputs.md)
+További információ: [outputs iteráció Azure Resource Manager-sablonokban](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Hivatkozott sablonok
 
-A kimeneti érték csatolt sablonból történő beolvasásához használja a [szülősablon hivatkozási](template-functions-resource.md#reference) függvényét. A szülősablon szintaxisa a következő:
+Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérendelt sablon [hivatkozási](template-functions-resource.md#reference) függvényét. A fölérendelt sablon szintaxisa a következőket eredményezi:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Amikor egy kimeneti tulajdonságot egy csatolt sablonból kap, a tulajdonság neve nem tartalmazhat kötőjelet.
+Ha csatolt sablonból kap kimeneti tulajdonságot, a tulajdonság neve nem tartalmazhat kötőjelet.
 
-A következő példa bemutatja, hogyan állíthatja be az IP-címet egy terheléselosztón egy csatolt sablonból származó érték beolvasásával.
+Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terheléselosztó számára egy érték egy csatolt sablonból való beolvasásával.
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ A következő példa bemutatja, hogyan állíthatja be az IP-címet egy terhelé
 }
 ```
 
-A függvény nem `reference` használható a beágyazott sablon kimenetek [szakaszában.](linked-templates.md#nested-template) Ha egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeit szeretné visszaadni, konvertálja a beágyazott sablont csatolt sablonná.
+[Beágyazott sablon](linked-templates.md#nested-template)kimenetek `reference` szakaszában nem használhatja a függvényt. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez alakítsa át a beágyazott sablont egy csatolt sablonba.
 
-## <a name="get-output-values"></a>Kimeneti értékek bekése
+## <a name="get-output-values"></a>Kimeneti értékek beolvasása
 
-Ha a központi telepítés sikeres, a kimeneti értékek automatikusan visszaadják a központi telepítés eredményeként.
+Az üzembe helyezés sikeressége után a rendszer automatikusan visszaadja a kimeneti értékeket a központi telepítés eredményeiben.
 
-A központi telepítési előzmények kimeneti értékek beírásához parancsfájlt használhat.
+A telepítési előzményekből származó kimeneti értékek lekéréséhez használhatja a parancsfájlt.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -106,16 +106,16 @@ az deployment group show \
 
 ---
 
-## <a name="example-templates"></a>Példa sablonok
+## <a name="example-templates"></a>Példák sablonokra
 
-Az alábbi példák bemutatják a kimenetek használatának forgatókönyveit.
+Az alábbi példák a kimenetek használatának forgatókönyveit mutatják be.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Összetett változókat hoz létre, és ezeket az értékeket adja ki. Nem telepít erőforrásokat. |
-|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Nyilvános IP-címet hoz létre, és kiadja az erőforrás-azonosítót. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablonra mutató hivatkozások. A terheléselosztó létrehozásakor a kimenetben lévő erőforrás-azonosítót használja. |
+|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Összetett változókat hoz létre, és megjeleníti ezeket az értékeket. Nem helyez üzembe semmilyen erőforrást. |
+|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítót. |
+|[Terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablonra mutató hivatkozások. A terheléselosztó létrehozásakor a kimenetben lévő erőforrás-azonosítót használja. |
 
 ## <a name="next-steps"></a>További lépések
 
-* A kimenetek elérhető tulajdonságairól az [Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat.](template-syntax.md)
+* További információ a kimenetek elérhető tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
