@@ -1,6 +1,6 @@
 ---
-title: Adatparticionálás az Azure Cosmos DB Gremlin API-ban
-description: Megtudhatja, hogyan használhatja a particionált grafikont az Azure Cosmos DB-ben. Ez a cikk a particionált grafikon követelményeit és ajánlott eljárásokat is ismerteti.
+title: Adatparticionálás Azure Cosmos DB Gremlin API-ban
+description: Megtudhatja, hogyan használható particionált gráf a Azure Cosmos DBban. Ez a cikk a particionált gráfokra vonatkozó követelményeket és ajánlott eljárásokat is ismerteti.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -9,83 +9,83 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623372"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Particionált gráfok használata az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB Gremlin API-jának egyik legfontosabb jellemzője a nagyméretű grafikonok vízszintes skálázáson keresztüli kezelése. A tárolók a tárolás és az átviteli érték tekintetében egymástól függetlenül skálázhatók. Az Azure Cosmos DB-ben hozhat létre tárolókat, amelyek automatikusan méretezhetők a gráfadatok tárolásához. Az adatok automatikusan kiegyensúlyozó alapján a megadott **partíciókulcs**.
+A Azure Cosmos DB Gremlin API egyik fő funkciója a horizontális skálázási képességgel rendelkező nagyméretű diagramok kezelése. A tárolók egymástól függetlenül méretezhetők a tárolás és az átviteli sebesség tekintetében. Létrehozhat olyan Azure Cosmos DB tárolókat, amelyek automatikusan méretezhetők a Graph-adatmennyiség tárolására. Az adatértékek a megadott **partíciós kulcs**alapján automatikusan egyensúlyban vannak.
 
-**Particionálás szükséges,** ha a tároló várhatóan tárolni több mint 20 GB méretű, vagy ha azt szeretné, hogy lefoglalja több mint 10 000 kérelem egység másodpercenként (RT). Az [Azure Cosmos DB particionálási mechanizmus](partition-data.md) ugyanazok at alkalmaznak az alábbiakban ismertetett néhány graph-specifikus optimalizálással.
+A **particionálásra akkor van szükség** , ha a tároló várhatóan több mint 20 GB-ot tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A [Azure Cosmos db particionálási mechanizmussal](partition-data.md) azonos általános elvek vonatkoznak néhány, az alábbiakban ismertetett gráf-specifikus optimalizálásra.
 
-![Graph particionálás.](./media/graph-partitioning/graph-partitioning.png)
+![Gráf particionálás.](./media/graph-partitioning/graph-partitioning.png)
 
 ## <a name="graph-partitioning-mechanism"></a>Gráf particionálási mechanizmusa
 
-Az alábbi irányelvek ismertetik, hogyan működik a particionálási stratégia az Azure Cosmos DB-ben:
+Az alábbi irányelvek azt írják le, hogyan működik a Azure Cosmos DB particionálási stratégiája:
 
-- **A csúcsok és az élek json-dokumentumként tárolódnak.**
+- **A csúcspontokat és az éleket JSON-dokumentumként tárolja a rendszer**.
 
-- **A csúcspontokhoz partíciókulcs szükséges.** Ez a kulcs határozza meg, hogy a csúcspont melyik partíción lesz tárolva kivonatoló algoritmuson keresztül. A partíciókulcs tulajdonságneve új tároló létrehozásakor van definiálva, és formátuma van: `/partitioning-key-name`.
+- **A csúcspontok partíciós kulcsot igényelnek**. Ez a kulcs határozza meg, hogy a rendszer melyik partíción tárolja a csúcspontot egy kivonatoló algoritmus használatával. A Partition Key tulajdonság neve az új tároló létrehozásakor van meghatározva, és a formátuma `/partitioning-key-name`a (z):.
 
-- Az élek a **forráscsúcsgal együtt lesznek tárolva.** Más szóval, minden csúcspont nál a partíciókulcs határozza meg, hogy hol tárolják őket a kimenő élek mellett. Ez az optimalizálás a partíciók közötti `out()` lekérdezések elkerülése érdekében a számosság diagram lekérdezések használata esetén.
+- Az **élek a forrás csúcspontjának megfelelően lesznek tárolva**. Más szóval a partíciós kulcs minden csúcspontján meghatározza, hogy a rendszer hol tárolja azokat a kimenő élekkel együtt. Ez az optimalizálás elkerüli a több partíciós lekérdezések használatát a `out()` diagramos lekérdezésekben felhasznált kardinális használatakor.
 
-- **Az élek a csúcsokra mutató csúcsokra mutató hivatkozásokat tartalmaznak.** Az összes él a partícióbillentyűkkel és az ondópontok azonosítóival van tárolva. Ez a számítás `out()` teszi az összes iránylekérdezések mindig egy hatókörrel particionált lekérdezés, és nem egy vak partícióközi lekérdezés. 
+- **Az élek a csúcspontokra mutató hivatkozásokat tartalmaznak**. Az összes élek tárolása a csúcspontok partíciós kulcsaival és azonosítói történik. Ez a számítás lehetővé `out()` teszi, hogy az összes irány lekérdezése mindig hatókörrel rendelkező particionált lekérdezés legyen, és ne egy vak, több partíciós lekérdezést. 
 
-- **A gráflekérdezéseknek meg kell adniuk egy partíciókulcsot.** Az Azure Cosmos DB horizontális particionálásának teljes kihasználásához a partíciókulcsot meg kell adni, ha egyetlen csúcspont van kiválasztva, amikor csak lehetséges. A particionált diagramon egy vagy több csúcs kiválasztására szolgáló lekérdezések a következők:
+- **A Graph-lekérdezéseknek partíciós kulcsot kell megadniuk**. A Azure Cosmos DB vízszintes particionálásának teljes kihasználása érdekében a partíciós kulcsot meg kell adni, ha egyetlen csúcspont van kiválasztva, amikor lehetséges. A következő lekérdezések egy vagy több csúcspont kiválasztására szolgálnak egy particionált gráfban:
 
-    - `/id`és `/label` nem támogatott partíciós kulcsok egy tároló Gremlin API-ban.
+    - `/id`a `/label` és a nem támogatottak a Gremlin API-hoz tartozó tárolók partíciós kulcsaként.
 
 
-    - Csúcspont kiválasztása azonosító szerint, majd **a `.has()` lépés sel a partíciókulcs tulajdonságának megadása:** 
+    - Jelölje ki az azonosító alapján egy csúcspontot, majd **a `.has()` lépés használatával adja meg a Partition Key tulajdonságot**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
     
-    - Csúcspont kiválasztása a **partíciókulcs értékét és azonosítóját tartalmazó függő megadásával**: 
+    - Csúcspont kiválasztása **egy olyan rekord megadásával, amely tartalmazza a partíciós kulcs értékét és azonosítóját**: 
     
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
         
-    - **Partíciókulcs-értékek és -azonosítók tuple-jainak tömbjének**megadása:
+    - **Rekordok-értékek és-azonosítók tömbjét**határozza meg:
     
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
         
-    - Csúcsok készletének kiválasztása az azonosítóikkal együtt, és **a partíciókulcs-értékek listájának megadása**: 
+    - A csúcspontok és az azonosítóik kiválasztásával **megadhatja a partíciós kulcs értékeinek listáját**: 
     
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - A **partíciós stratégia** használata a lekérdezés elején, és a Gremlin-lekérdezés többi részének hatókörének partíciójának megadása: 
+    - A **partíciós stratégia** használata a lekérdezés elején, valamint egy partíció megadása a Gremlin-lekérdezés további részének hatóköréhez: 
     
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```
 
-## <a name="best-practices-when-using-a-partitioned-graph"></a>Gyakorlati tanácsok particionált grafikon használata esetén
+## <a name="best-practices-when-using-a-partitioned-graph"></a>Ajánlott eljárások particionált gráfok használatakor
 
-Az alábbi irányelvek segítségével biztosítható a teljesítmény és a méretezhetőség, ha korlátlan tárolókat tartalmazó particionált grafikonokat használ:
+A következő irányelvek segítségével biztosíthatja a teljesítményt és a méretezhetőséget, ha korlátlan számú tárolóval rendelkező particionált gráfokat használ:
 
-- **Csúcspont lekérdezésekéneknél mindig adja meg a partíciókulcs értékét.** A csúcspont ismert partícióról való leelső szerzése a teljesítmény elérésének egyik módja. Minden további szomszédos művelet hatóköre mindig egy partícióra lesz hatóköre, mivel az Élek hivatkozási azonosítót és partíciókulcsot tartalmaz a célcsúcsokhoz.
+- **A csúcspont lekérdezésekor mindig meg kell adni a partíciós kulcs értékét**. A teljesítmény eléréséhez a csúcspont egy ismert partícióból való beolvasása. Az összes további érintkezési művelet mindig a partícióra lesz kiterjedően, mivel a szegélyek hivatkozási azonosítót és partíciós kulcsot tartalmaznak a cél csúcspontokra.
 
-- **A kimenő irány használata élek lekérdezésekénélek lekérdezésekénélek lekérdezésekénéléseksorán, amikor csak lehetséges.** Mint már említettük, élek tárolja a forrás csúcsok a kimenő irányba. Így az esélyek a partíciók közötti lekérdezések minimálisra csökken, ha az adatok és lekérdezések tervezték ezt a mintát szem előtt tartva. Éppen ellenkezőleg, `in()` a lekérdezés mindig egy drága fan-out lekérdezést.
+- **Ha lehetséges, használja a kimenő irányt az élek lekérdezéséhez**. A fentiekben leírtaknak megfelelően a rendszer a széleket a kimenő irányú forrás csúcspontokkal tárolja. Így a több partíciós lekérdezések kiszolgálása a lehető legkisebbre csökkenthető, ha az adatforrásokat és a lekérdezéseket szem előtt tartva tervezték meg. Éppen ellenkezőleg, a `in()` lekérdezés mindig drága kiugró lekérdezés lesz.
 
-- **Válasszon olyan partíciókulcsot, amely egyenletesen osztja el az adatokat a partíciók között.** Ez a döntés nagymértékben függ a megoldás adatmodelljétől. További információ a megfelelő partíciókulcs létrehozásáról [az Azure Cosmos DB particionálási és méretezési szolgáltatásában.](partition-data.md)
+- **Olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az adatelosztást a partíciók között**. Ez a döntés nagy mértékben függ a megoldás adatmodelljétől. További információ a megfelelő partíciós kulcs létrehozásáról a [particionálás és méretezés Azure Cosmos DBban című részében található](partition-data.md).
 
-- **A lekérdezések optimalizálása a partíció határain belüli adatok beszerzéséhez.** Az optimális particionálási stratégia a lekérdezési mintákhoz igazodna. Az egyetlen partícióról adatokat beszerző lekérdezések a lehető legjobb teljesítményt nyújtják.
+- **Optimalizálja a lekérdezéseket a partíció határain belüli**adatgyűjtéshez. Az optimális particionálási stratégia a lekérdezési mintákhoz igazodik. Az adatok egyetlen partícióból való beszerzését biztosító lekérdezések biztosítják a lehető legjobb teljesítményt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután folytassa a következő cikkek elolvasását:
+Ezután folytassa a következő cikkek elolvasásával:
 
-* Ismerje meg [a partícióés a méretezés az Azure Cosmos DB.](partition-data.md)
-* További információ a [Gremlin-támogatásról a Gremlin API-ban.](gremlin-support.md)
-* További információ [a Gremlin API bevezetésről.](graph-introduction.md)
+* Tudnivalók a [particionálásról és a méretezésről Azure Cosmos db](partition-data.md).
+* Ismerje meg a [GREMLIN API Gremlin-támogatását](gremlin-support.md).
+* Ismerje meg a [GREMLIN API bevezetését](graph-introduction.md).

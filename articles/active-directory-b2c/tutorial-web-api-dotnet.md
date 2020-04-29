@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Hozzáférés adása egy ASP.NET webes API-hoz'
+title: 'Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz'
 titleSuffix: Azure AD B2C
-description: Oktatóanyag arról, hogyan használhatja az Active Directory B2C-t egy ASP.NET webes API védelmére, és hogyan hívhatja meg egy ASP.NET webalkalmazásból.
+description: Útmutató a ASP.NET webes API-k és a ASP.NET-webalkalmazások általi meghívásához a Active Directory B2C használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,59 +12,59 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 23531bd4c53dc2fc4851a1e4718fca0e9c3bfc1c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187423"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés adása egy ASP.NET webes API-hoz az Azure Active Directory B2C használatával
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
-Ez az oktatóanyag bemutatja, hogyan hívhat meg egy védett webes API-erőforrást az Azure Active Directory B2C (Azure AD B2C) egy ASP.NET webalkalmazásból.
+Ez az oktatóanyag bemutatja, hogyan hívhat meg egy védett webes API-erőforrást Azure Active Directory B2C (Azure AD B2C) egy ASP.NET-webalkalmazásból.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Webes API-alkalmazás hozzáadása
 > * Hatókörök konfigurálása webes API-hoz
-> * Engedélyek megadása a webes API-hoz
-> * A minta konfigurálása az alkalmazás használatára
+> * Engedélyek megadása a webes API számára
+> * A minta beállítása az alkalmazás használatára
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a lépéseket és előfeltételeket az [Oktatóanyagban: Hitelesítse a hitelesítést egy webalkalmazásban az Azure Active Directory B2C használatával.](tutorial-web-app-dotnet.md)
+Hajtsa végre a következő lépéseket és előfeltételeket az [oktatóanyagban: a hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával](tutorial-web-app-dotnet.md).
 
 ## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
 
-A webes API-erőforrásokat regisztrálni kell a bérlőben, mielőtt elfogadnák és válaszolnának a hozzáférési jogkivonatot tartalmazó ügyfélalkalmazások védett erőforrás-kéréseire.
+A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogadják és reagálni tudják a védett erőforrásokra vonatkozó kéréseket olyan ügyfélalkalmazások számára, amelyek hozzáférési jogkivonatot mutatnak be.
 
-Ha regisztrálegy alkalmazást az Azure AD B2C-bérlőben, használhatja az aktuális **alkalmazások** vagy az új egyesített **alkalmazásregisztrációk (előzetes verzió)** használatát. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
-3. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
-4. Válassza **az Alkalmazások**lehetőséget, majd a **Hozzáadás**lehetőséget.
-5. Adjon nevet az alkalmazásnak. Például *webapi1*.
-6. A **Webapp/web API belefoglalása csoportban**válassza az **Igen**lehetőséget.
-7. A **válasz URL-cím,** adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta `https://localhost:44332`helyileg fut, és a .
-8. **Az App ID URI mezőben**adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson **a Létrehozás gombra.**
-10. A tulajdonságok lapon rögzítse a webalkalmazás konfigurálásakor használni kívánt alkalmazásazonosítót.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+5. Adjon nevet az alkalmazásnak. Például: *webapi1*.
+6. A **Web App/web API belefoglalásához**válassza az **Igen**lehetőséget.
+7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:44332`következőt:.
+8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
+9. Kattintson a **Létrehozás**gombra.
+10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
-1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
-1. Válassza **az Alkalmazásregisztrációk (Előzetes verzió)** lehetőséget, majd az **Új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás **nevét.** Például *webapi1*.
-1. Az **ÁTirányítás URI,válassza**ki **a Web**lehetőséget, majd adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta `https://localhost:44332`helyileg fut, és a .
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Például: *webapi1*.
+1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:44332`következőt:.
 1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
+1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
 * * *
 
@@ -76,32 +76,32 @@ A hatókörök lehetőséget nyújtanak a védett erőforrásokhoz való hozzáf
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-A védett webes API-t egy alkalmazásból, meg kell adnia az alkalmazás engedélyeket az API-t. Az előfeltételként szolgáló oktatóanyagban létrehozott egy webalkalmazást az Azure AD B2C nevű *webapp1.* Ezzel az alkalmazással hívja meg a webes API-t.
+Ha egy védett webes API-t szeretne meghívni egy alkalmazásból, meg kell adnia az alkalmazás engedélyeit az API-nak. Az előfeltételként szolgáló oktatóanyagban létrehozott egy webalkalmazást a *webapp1*nevű Azure ad B2Cban. Ezt az alkalmazást használhatja a webes API meghívásához.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Az alkalmazás regisztrálva van a védett webes API hívásához. A felhasználó hitelesíti magát az Azure AD B2C az alkalmazás használatához. Az alkalmazás beszerzi az Azure AD B2C engedélyezési engedélyt a védett webes API eléréséhez.
+Az alkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik az alkalmazást. Az alkalmazás a védett webes API-hoz való hozzáféréshez Azure AD B2C engedélyezési engedélyt kap.
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
-Most, hogy a webes API regisztrálva van, és a hatókörök definiálva, konfigurálja a webes API-t az Azure AD B2C-bérlő használatára. Ebben az oktatóanyagban egy mintául szolgáló webes API-t fog konfigurálni. A minta webes API szerepel a projekt letöltött az előfeltételi oktatóanyag.
+Most, hogy regisztrálta a webes API-t, és hatókörök vannak definiálva, a webes API-t a Azure AD B2C bérlő használatára konfigurálja. Ebben az oktatóanyagban egy mintául szolgáló webes API-t fog konfigurálni. A minta webes API az előfeltételként megadott oktatóanyagban letöltött projekt részét képezi.
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
-* **TaskWebApp** - Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat segítségével regisztrál, vagy jelentkezzen be a felhasználók.
-* **TaskService** – Támogatja a feladatlista létrehozásához, olvasásához, frissítéséhez és törléséhez. Az API-t az Azure AD B2C védi, és a TaskWebApp szólítja meg.
+* **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
+* **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
 
 ### <a name="configure-the-web-application"></a>A webalkalmazás konfigurálása
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-1. A **TaskWebApp** projektben nyissa meg a **Web.config programot.**
+1. A **TaskWebApp** projektben nyissa meg a **web. config**fájlt.
 1. Az API helyi futtatásához használja az **api:TaskServiceUrl** localhost-beállítást. Az alábbiak szerint módosítsa a Web.config fájlt:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-1. Konfigurálja az API URI-ját. Ez az az URI, amelyet a webalkalmazás az API-kérelem hez használ. A kért engedélyeket is konfigurálja.
+1. Konfigurálja az API URI-ját. Ez az az URI, amelyet a webalkalmazás az API-kérelem elvégzéséhez használ. A kért engedélyeket is konfigurálja.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -111,7 +111,7 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. A **TaskService** projektben nyissa meg a **Web.config programot.**
+1. A **TaskService** projektben nyissa meg a **web. config**fájlt.
 1. Konfigurálja az API-t a bérlő használatához.
 
     ```csharp
@@ -119,19 +119,19 @@ Két projekt szerepel a mintául szolgáló megoldásban:
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-1. Állítsa be az ügyfélazonosítót a regisztrált web *API-alkalmazás,webapi1 alkalmazásazonosítójára.*
+1. Állítsa be az ügyfél-azonosítót a regisztrált webes API-alkalmazás *webapi1*.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. Frissítse a felhasználói folyamat beállítást a regisztrációs és bejelentkezési felhasználói folyamat *nevével, B2C_1_signupsignin1.*
+1. Frissítse a felhasználói folyamat beállítását a regisztrációs és bejelentkezési felhasználói folyamat nevével, *B2C_1_signupsignin1*.
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-1. Konfigurálja úgy a hatókörök et, hogy azok megfeleljenek a portálon létrehozottaknak.
+1. Konfigurálja a hatókörök beállítást a portálon létrehozott beállításoknak megfelelően.
 
     ```csharp
     <add key="api:ReadScope" value="demo.read" />
@@ -143,17 +143,17 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 A **TaskWebApp** és a **TaskService** projektet is futtatnia kell.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, és válassza az **Indítási projektek beállítása...** lehetőséget.
-1. Válassza **a Több indítási projekt lehetőséget.**
+1. **Több indítási projektet**is kijelölhet.
 1. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**.
-1. A konfiguráció mentéséhez kattintson az **OK** gombra.
-1. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás megnyílik a saját böngészőablakában.
-    * `https://localhost:44316/`a webes alkalmazás.
+1. A konfiguráció mentéséhez kattintson **az OK** gombra.
+1. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás saját böngészőablakban nyílik meg.
+    * `https://localhost:44316/`a webalkalmazás.
     * `https://localhost:44332/` a webes API.
 
-1. A webalkalmazásban válassza ki a **regisztráció / bejelentkezés** a webalkalmazásba való bejelentkezéshez. Használja a korábban létrehozott fiókot.
-1. Miután bejelentkezett, válassza a **Teendők listát,** és hozzon létre egy feladatlistaelemet.
+1. A webalkalmazásban válassza a **regisztráció/bejelentkezés** lehetőséget a webalkalmazásba való bejelentkezéshez. Használja a korábban létrehozott fiókot.
+1. A bejelentkezést követően válassza a **Feladatlista** elemet, és hozzon létre feladatlistát.
 
-Amikor létrehoz egy feladatlista elemet, a webalkalmazás kéri a webes API-t a feladatlista elem létrehozásához. A védett webalkalmazás az Azure AD B2C által védett webes API-t hívja meg.
+Ha feladatlistát hoz létre, a webalkalmazás egy kérést küld a webes API-nak a Feladatlista elem létrehozásához. A védett webalkalmazás a Azure AD B2C által védett webes API-t hívja meg.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -162,8 +162,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Webes API-alkalmazás hozzáadása
 > * Hatókörök konfigurálása webes API-hoz
-> * Engedélyek megadása a webes API-hoz
-> * A minta konfigurálása az alkalmazás használatára
+> * Engedélyek megadása a webes API számára
+> * A minta beállítása az alkalmazás használatára
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Identitásszolgáltatók hozzáadása az alkalmazásokhoz az Azure Active Directory B2C-ben](tutorial-add-identity-providers.md)
+> [Oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C](tutorial-add-identity-providers.md)

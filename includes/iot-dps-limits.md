@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77592422"
 ---
-Az alábbi táblázat az Azure IoT Hub-eszközkiépítési szolgáltatás erőforrásaira vonatkozó korlátozásokat sorolja fel.
+A következő táblázat felsorolja az Azure IoT Hub Device Provisioning Service-erőforrásokra vonatkozó korlátozásokat.
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Maximális eszközkiépítési szolgáltatások Azure-előfizetésenként | 10 |
-| A regisztrációk maximális száma | 1,000,000 |
-| A regisztrációk maximális száma | 1,000,000 |
+| Azure-előfizetések maximális eszköz-kiépítési szolgáltatásai | 10 |
+| Regisztrációk maximális száma | 1,000,000 |
+| Regisztrációk maximális száma | 1,000,000 |
 | Beléptetési csoportok maximális száma | 100 |
-| A hitelesítés- és hitelesítés- és csoportonként iratikus okainak maximális száma | 25 |
-| Összekapcsolt IoT-központok maximális száma | 50 |
-| Az üzenet maximális mérete | 96 KB|
+| Hitelesítésszolgáltatók maximális száma | 25 |
+| Csatolt IoT-hubok maximális száma | 50 |
+| Üzenet maximális mérete | 96 KB|
 
 > [!NOTE]
-> A kiépítési szolgáltatásban történő regisztrációk és regisztrációk számának növeléséhez forduljon a [Microsoft támogatási szolgálatához.](https://azure.microsoft.com/support/options/)
+> A kiépítési szolgáltatásban beléptetések és regisztrációk számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> A hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés- és hitelesítés
+> A hitelesítésszolgáltatók maximális számának növelése nem támogatott.
 
-Az eszközkiépítési szolgáltatás szabályozása a következő kvóták túllépése esetén kéri.
+Az eszköz kiépítési szolgáltatása a következő kvóták túllépése esetén szabályozza a kérelmeket.
 
 | Szabályozás | Egységnyi érték |
 | --- | --- |
-| Műveletek | 200/min/szolgáltatás |
-| Eszközregisztrációk | 200/min/szolgáltatás |
-| Eszközlekérdezési művelet | 5/10 mp/eszköz |
+| Műveletek | 200/perc/szolgáltatás |
+| Eszközregisztrációk | 200/perc/szolgáltatás |
+| Eszköz lekérdezési művelete | 5/10 mp/eszköz |

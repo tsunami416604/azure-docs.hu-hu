@@ -1,45 +1,45 @@
 ---
-title: A Linkerd telepítése az Azure Kubernetes szolgáltatásban (AKS)
-description: Megtudhatja, hogy miként telepítheti és használhatja a Linkerd szolgáltatást egy Azure Kubernetes-szolgáltatás (AKS) fürtben lévő szolgáltatásháló létrehozásához
+title: A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg, hogyan telepítheti és használhatja a Linkerd a Service Mesh Azure Kubernetes szolgáltatásbeli (ak-) fürtben való létrehozásához
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593723"
 ---
-# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>A Linkerd telepítése az Azure Kubernetes szolgáltatásban (AKS)
+# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)
 
-[A Linkerd][linkerd-github] egy nyílt forráskódú szolgáltatásháló és [cncf inkubátorprojekt.][linkerd-cncf] A Linkerd egy ultrakönnyű szolgáltatásháló, amely olyan funkciókat kínál, mint a forgalomkezelés, a szolgáltatás identitása és biztonsága, a megbízhatóság és a megfigyelhetőség. A Linkerdről további információt a [Linkerd GYIK][linkerd-faq] és a [Linkerd Architecture][linkerd-architecture] hivatalos dokumentációjában talál.
+A [Linkerd][linkerd-github] egy nyílt forráskódú Service Mesh-és [CNCF-inkubációs projekt][linkerd-cncf]. A Linkerd egy ultrakönnyű szolgáltatás hálója, amely a forgalomirányítás, a szolgáltatás identitása, a biztonság, a megbízhatóság és a Megfigyelhetőség terén nyújt szolgáltatásokat. A Linkerd kapcsolatos további információkért tekintse meg a hivatalos [Linkerd gyakori kérdések][linkerd-faq] és a [Linkerd architektúrájának][linkerd-architecture] dokumentációját.
 
-Ez a cikk bemutatja, hogyan kell telepíteni linkerd. A Linkerd `linkerd` ügyfél bináris telepítve van az ügyfélgépre, és a Linkerd összetevők egy Kubernetes-fürtbe vannak telepítve az AKS-en.
+Ez a cikk bemutatja, hogyan telepítheti a Linkerd. A Linkerd `linkerd` -ügyfél bináris fájlja telepítve van az ügyfélszámítógépre, és a Linkerd-összetevők a Kubernetes-fürtön vannak telepítve az AK-ban.
 
 > [!NOTE]
-> Ezek az utasítások hivatkozás `stable-2.6.0`Linkerd változat .
+> Ezek az utasítások a Linkerd `stable-2.6.0`-verzióra hivatkoznak.
 >
-> A Linkerd `stable-2.6.x` futtatható Kubernetes `1.13+`verziók . További stabil és peremhálózati Linkerd verziókat találhat a [GitHub - Linkerd Releases oldalon.][linkerd-github-releases]
+> A Linkerd `stable-2.6.x` Kubernetes-verziókkal `1.13+`is futtatható. További stabil és peremhálózati Linkerd-verziók a [GitHub-Linkerd kiadásokban][linkerd-github-releases]találhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * A Linkerd linkerd ügyfél bináris fájljának letöltése és telepítése
-> * A Linkerd telepítése AKS-re
+> * Töltse le és telepítse a Linkerd Linkerd-ügyfél bináris fájlját
+> * A Linkerd telepítése az AK-on
 > * A Linkerd telepítésének ellenőrzése
 > * Az irányítópult elérése
-> * A Linkerd eltávolítása az AKS-ből
+> * Linkerd eltávolítása az AK-ból
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben ismertetett lépések feltételezik, hogy létrehozott egy AKS-fürtöt (Kubernetes `1.13` és `kubectl` újabb, az RBAC engedélyezve), és kapcsolatot létesített a fürttel. Ha ezekhez az elemekhez segítségre van szüksége, olvassa el az [AKS rövid útmutatóját.][aks-quickstart]
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt `1.13` (Kubernetes és újabb, RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
-Minden Linkerd podot linuxos csomópontokon kell futtatni - ez a beállítás az alapértelmezett az alább részletezett telepítési módszerben, és nem igényel további konfigurációt.
+Az összes Linkerd-hüvelyt Linux-csomópontokon kell futtatni – ez a beállítás az alapértelmezett telepítési módszer az alábbiakban részletezett módon, és nem igényel további konfigurálást.
 
-Ez a cikk a Linkerd telepítési útmutatót több különálló lépésre bontja el. Az eredmény ugyanaz a szerkezet, mint a hivatalos Linkerd első lépések [útmutatást][linkerd-getting-started].
+Ez a cikk a Linkerd telepítési útmutatóját több különálló lépésben elkülöníti. Az eredmény ugyanaz, mint a hivatalos Linkerd az első lépéseket ismertető [útmutatóban][linkerd-getting-started].
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -59,15 +59,15 @@ Ez a cikk a Linkerd telepítési útmutatót több különálló lépésre bontj
 
 ::: zone-end
 
-## <a name="install-linkerd-on-aks"></a>A Linkerd telepítése AKS-re
+## <a name="install-linkerd-on-aks"></a>A Linkerd telepítése az AK-on
 
-A Linkerd telepítése előtt a telepítés előtti ellenőrzéseket futtatjuk annak megállapítására, hogy a vezérlősík telepíthető-e az AKS-fürtre:
+A Linkerd telepítése előtt a telepítés előtti ellenőrzéseket futtatjuk annak megállapításához, hogy a vezérlő síkja telepíthető-e az AK-fürtön:
 
 ```console
 linkerd check --pre
 ```
 
-Az alábbiakhoz hasonló tetszés szerint az AKS-fürt a Linkerd érvényes telepítési célpontja:
+A következőhöz hasonlóan kell megjelennie, hogy az AK-fürt érvényes telepítési cél a Linkerd számára:
 
 ```console
 kubernetes-api
@@ -117,26 +117,26 @@ linkerd-version
 Status check results are √
 ```
 
-Most itt az ideje, hogy telepítse a Linkerd alkatrészeket. A `linkerd` és `kubectl` a bináris fájlok segítségével telepítse a Linkerd összetevőket az AKS-fürtbe. A `linkerd` program automatikusan létrehoz egy névteret, és az összetevők telepítve lesznek a névtérben.
+Most itt az ideje, hogy telepítse a Linkerd-összetevőket. A és `linkerd` `kubectl` a bináris fájlok használatával telepítse a Linkerd összetevőket az AK-fürtbe. A `linkerd` rendszer automatikusan létrehozza a névteret, és az összetevőket a rendszer ebbe a névtérbe telepíti.
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-A Linkerd számos objektumot telepít. A fenti parancs kimenetének listájában `linkerd install` jelenik meg. A Linkerd-összetevők üzembe helyezése a fürtkörnyezettől függően körülbelül 1 percet vesz igénybe.
+A Linkerd számos objektumot telepít. A lista a fenti `linkerd install` parancs kimenetében jelenik meg. A Linkerd-összetevők üzembe helyezéséhez a fürt környezetéből függően 1 percet kell elvégeznie.
 
-Ezen a ponton telepítette a Linkerd-et az AKS-fürthöz. Annak érdekében, hogy a Linkerd sikeres telepítése sikeres legyen, térjünk át a következő szakaszra [a Linkerd telepítésének ellenőrzése.](#validate-the-linkerd-installation)
+Ezen a ponton üzembe helyezte a Linkerd-t az AK-fürtön. A Linkerd sikeres üzembe helyezésének biztosítása érdekében térjünk át a következő szakaszra a [Linkerd telepítésének ellenőrzéséhez](#validate-the-linkerd-installation).
 
 ## <a name="validate-the-linkerd-installation"></a>A Linkerd telepítésének ellenőrzése
 
-Ellenőrizze, hogy az erőforrások sikeresen létrejöttek-e. Használja a [kubectl get svc][kubectl-get] és [kubectl get pod][kubectl-get] parancsokat a `linkerd` névtér lekérdezéséhez, ahol a Linkerd összetevők telepítve voltak a `linkerd install` parancs:
+Győződjön meg arról, hogy az erőforrások létrehozása sikeresen megtörtént. A [kubectl Get SVC][kubectl-get] és a [kubectl Get Pod][kubectl-get] parancsok használatával kérdezheti `linkerd` le a névteret, ahol a Linkerd-összetevőket `linkerd install` a parancs telepítette:
 
 ```console
 kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-A következő példa kimeneti jeleníti meg a szolgáltatások és a podok (linuxos csomópontokon ütemezve), amelyek most már fut:
+A következő példa kimenetében láthatók a szolgáltatások és a hüvelyek (a Linux-csomópontokon ütemezettek), amelyeknek mostantól futniuk kell:
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -163,13 +163,13 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-A Linkerd parancsot `linkerd` ad az ügyfél bináris fájljának segítségével annak ellenőrzésére, hogy a Linkerd vezérlősík telepítése és konfigurálása sikeresen megtörtént-e.
+A Linkerd az `linkerd` ügyfél bináris fájlján keresztül biztosít egy parancsot annak ellenőrzéséhez, hogy a Linkerd vezérlő síkja sikeresen telepítve és konfigurálva van-e.
 
 ```console
 linkerd check
 ```
 
-A telepítés sikerességedet jelezve a következőkhöz hasonló tetszést kell látnia:
+A telepítés sikerességét az alábbihoz hasonló módon kell megjelennie:
 
 ```console
 kubernetes-api
@@ -226,13 +226,13 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>Az irányítópult elérése
 
-A Linkerd egy irányítópultot tartalmaz, amely betekintést nyújt a szolgáltatáshálóba és a munkaterhelésekbe. Az irányítópult eléréséhez `linkerd dashboard` használja a parancsot. Ez a parancs [kubectl port-forward-t][kubectl-port-forward] használ, hogy biztonságos kapcsolatot hozzon létre az ügyfélgép és az AKS-fürt megfelelő podjai között. Ezután automatikusan megnyitja az irányítópultot az alapértelmezett böngészőben.
+A Linkerd tartalmaz egy irányítópultot, amely betekintést nyújt a szolgáltatás hálóba és munkaterhelésbe. Az irányítópult eléréséhez használja az `linkerd dashboard` parancsot. Ez a parancs a [kubectl-portot][kubectl-port-forward] használja fel, hogy biztonságos kapcsolatot hozzon létre az ügyfélszámítógép és az AK-fürt megfelelő hüvelyei között. Ekkor a rendszer automatikusan megnyitja az irányítópultot az alapértelmezett böngészőben.
 
 ```console
 linkerd dashboard
 ```
 
-A parancs port-forward-ot is létrehoz, és visszaad egy hivatkozást a Grafana irányítópultokhoz.
+A parancs egy portot is létrehoz, és egy hivatkozást ad vissza a Grafana-irányítópultokhoz.
 
 ```console
 Linkerd dashboard available at:
@@ -242,14 +242,14 @@ http://127.0.0.1:50750/grafana
 Opening Linkerd dashboard in the default browser
 ```
 
-## <a name="uninstall-linkerd-from-aks"></a>A Linkerd eltávolítása az AKS-ből
+## <a name="uninstall-linkerd-from-aks"></a>Linkerd eltávolítása az AK-ból
 
 > [!WARNING]
-> A Linkerd törlése egy futó rendszerből a szolgáltatások közötti forgalommal kapcsolatos problémákat okozhat. A folytatás előtt győződjön meg arról, hogy rendelkezik arról, hogy a rendszer továbbra is megfelelően működjön a Linkerd nélkül.
+> A Linkerd egy futó rendszerből való törlése a szolgáltatások közötti forgalomhoz vezethet. A folytatás előtt győződjön meg arról, hogy rendelkezik a rendszer megfelelő működéséhez szükséges Linkerd nélkül.
 
-Először el kell távolítania az adatsík proxyit. Távolítsa el az automatikus [proxy-injektálási jegyzeteket][linkerd-automatic-proxy-injection] a számítási feladatok névtereiből, és terjesítse el a számítási feladatok központi telepítését. A számítási feladatok nak már nem kell rendelkezniük az adatsík-összetevőkhöz.
+Először el kell távolítania az adatsík-proxykat. Távolítsa el az automatikus proxy-injektálási [megjegyzéseket][linkerd-automatic-proxy-injection] a számítási feladatok névterei közül, és állítsa be a számítási feladatok központi telepítését. A munkaterhelések nem rendelkezhetnek többé társított adatsík-összetevőkkel.
 
-Végül távolítsa el a vezérlősíkot az alábbiak szerint:
+Végül távolítsa el a vezérlő síkot a következőképpen:
 
 ```console
 linkerd install --ignore-cluster | kubectl delete -f -
@@ -257,15 +257,15 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 ## <a name="next-steps"></a>További lépések
 
-A Linkerd további telepítési és konfigurációs lehetőségeinek megismeréséhez olvassa el a Linkerd alábbi hivatalos útmutatóját:
+A Linkerd további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos Linkerd útmutatót:
 
-- [Linkerd - Helm telepítés][linkerd-install-with-helm]
-- [Linkerd - Többlépcsős telepítés a szerepkör-jogosultságok kielégítésére][linkerd-multi-stage-installation]
+- [Linkerd-Helm telepítés][linkerd-install-with-helm]
+- [Linkerd – többfázisú telepítés a szerepkör-jogosultságok ellátásához][linkerd-multi-stage-installation]
 
-További forgatókönyveket is követhet a következő használatával:
+A következő esetekben is elvégezheti a további forgatókönyvek használatát:
 
-- [Linkerd emojivoto demó][linkerd-demo-emojivoto]
-- [Linkerd könyvek demo][linkerd-demo-books]
+- [Linkerd emojivoto bemutató][linkerd-demo-emojivoto]
+- [Linkerd könyvek bemutatója][linkerd-demo-books]
 
 <!-- LINKS - external -->
 

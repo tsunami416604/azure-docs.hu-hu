@@ -1,6 +1,6 @@
 ---
-title: Cisco-adatok csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan kapcsolhatja össze a Cisco-adatokat az Azure Sentinelhez.
+title: Cisco-adatkapcsolatok az Azure Sentinel-be | Microsoft Docs
+description: Ismerje meg, hogyan kapcsolódhat a Cisco-beli adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,39 +16,39 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588399"
 ---
-# <a name="connect-cisco-asa-to-azure-sentinel"></a>A Cisco ASA csatlakoztatása az Azure Sentinelhez
+# <a name="connect-cisco-asa-to-azure-sentinel"></a>A Cisco ASA összekötése az Azure Sentinel-vel
 
 
 
-Ez a cikk bemutatja, hogyan csatlakoztathatja a Cisco ASA-készüléket az Azure Sentinelhez. A Cisco ASA adatösszekötő lehetővé teszi, hogy könnyedén csatlakoztassa a Cisco ASA-naplókat az Azure Sentinelhez, irányítópultokat tekinthet meg, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Cisco ASA azure Sentinel en való használatával további betekintést nyerhet a szervezet internethasználatába, és javíthatja a biztonsági üzemeltetési képességeit. 
+Ez a cikk azt ismerteti, hogyan csatlakoztatható a Cisco ASA-berendezés az Azure Sentinelhez. A Cisco ASA adatösszekötővel könnyedén csatlakoztathatja a Cisco ASA-naplókat az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Cisco ASA használata az Azure Sentinelben további információkat biztosít a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
 
 
 
-## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Cisco ASA-naplók továbbítása a Syslog-ügynöknek
+## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Cisco ASA-naplók továbbítása a syslog-ügynöknek
 
-A Cisco ASA nem támogatja a CEF-et, így a naplók at Syslog néven küldi el a rendszer, és az Azure Sentinel-ügynök úgy tudja, hogyan elemezheti őket, mintha CEF-naplók lennének. Konfigurálja a Cisco ASA-t úgy, hogy a Syslog-üzeneteket a Syslog-ügynökön keresztül továbbítsa az Azure-munkaterületre:
+A Cisco ASA nem támogatja a CEF, ezért a rendszer syslog-ként küldi el a naplókat, és az Azure Sentinel-ügynök tudja, hogyan elemezheti őket úgy, mintha CEF naplókat. A Cisco ASA konfigurálása a syslog-üzenetek Azure-munkaterületre történő továbbításához a syslog-ügynök használatával:
 
-1. Nyissa meg [a Syslog üzenetek küldése külső Syslog-kiszolgálóra](https://aka.ms/asi-syslog-cisco-forwarding)lehetőséget, és kövesse a kapcsolat beállításához adott utasításokat. A következő paramétereket használja, amikor a rendszer kéri:
+1. Válassza a [syslog-üzenetek küldése egy külső syslog-kiszolgálónak lehetőséget](https://aka.ms/asi-syslog-cisco-forwarding), majd kövesse az utasításokat a kapcsolódás beállításához. Ha a rendszer kéri, használja ezeket a paramétereket:
     - Állítsa a **portot** 514-re vagy az ügynökben beállított portra.
-    - Állítsa **syslog_ip** az ügynök IP-címére.
+    - **Syslog_ip** beállítása az ügynök IP-címére.
 
-1. Ha a Megfelelő sémát szeretné használni a Log `CommonSecurityLog`Analytics szolgáltatásban a Cisco-eseményekhez, keresse meg a keresett fájlt.
+1. A Cisco-események Log Analytics vonatkozó sémájának használatához keresse a következőt `CommonSecurityLog`:.
 
-1. Folytassa a [3.](connect-cef-verify.md)
+1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Cisco ASA-készülékeket az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a Cisco ASA-készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-adatok csatlakoztatása az Azure Sentinelhez | Microsoft dokumentumok
-description: Megtudhatja, hogyan kapcsolhatja össze az Azure Active Directory-adatokat az Azure Sentinelhez.
+title: Azure AD-adatkapcsolatok összekapcsolhatók az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Megtudhatja, hogyan csatlakoztatható Azure Active Directory-adatkapcsolat az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,41 +16,41 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: be9241a6156621d3f90dbab2da5bebeb463b4232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588620"
 ---
-# <a name="connect-data-from-azure-active-directory"></a>Adatok csatlakoztatása az Azure Active Directoryból
+# <a name="connect-data-from-azure-active-directory"></a>Adatok összekapcsolásának Azure Active Directory
 
 
 
-Az Azure Sentinel lehetővé teszi, hogy adatokat gyűjtsön az [Azure Active Directoryból,](../active-directory/fundamentals/active-directory-whatis.md) és továbbítsa azokat az Azure Sentinelbe. Választhat, hogy a [bejelentkezési naplókat](../active-directory/reports-monitoring/concept-sign-ins.md) és [a naplókat streameli.](../active-directory/reports-monitoring/concept-audit-logs.md)
+Az Azure Sentinel lehetővé teszi az adatok összegyűjtését [Azure Active Directoryről](../active-directory/fundamentals/active-directory-whatis.md) , és az Azure sentinelbe való továbbítását. Dönthet úgy, hogy a [bejelentkezési naplókat](../active-directory/reports-monitoring/concept-sign-ins.md) [és a naplókat](../active-directory/reports-monitoring/concept-audit-logs.md) is továbbítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha az Active Directoryból szeretne bejelentkezési adatokat exportálni, rendelkeznie kell egy Azure AD P1 vagy P2 licenccel.
+- Ha a bejelentkezési adatok Active Directoryból való exportálására van szükség, rendelkeznie kell Azure AD P1 vagy P2 licenccel.
 
-- Globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel rendelkező felhasználó azon a bérlőn, amelyről a naplókat streamelni szeretné.
+- A globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal rendelkező felhasználó, aki a naplókat továbbítani szeretné a bérlőn.
 
 - A kapcsolat állapotának megtekintéséhez engedéllyel kell rendelkeznie az Azure AD diagnosztikai naplók eléréséhez. 
 
 
 ## <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
 
-1. Az Azure Sentinelben válassza **az Adatösszekötők** lehetőséget, majd kattintson az **Azure Active Directory** csempére.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson a **Azure Active Directory** csempére.
 
-1. Az Azure Sentinelbe streamelni kívánt naplók mellett kattintson a **Csatlakozás**gombra.
+1. Kattintson a **Kapcsolódás**lehetőségre az Azure sentinelbe továbbítani kívánt naplók mellett.
 
-1. Kiválaszthatja, hogy szeretné-e, hogy az Azure AD-ből érkező riasztások automatikusan incidenseket hozzanak létre az Azure Sentinelben. Az **Incidensek létrehozása csoportban** válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **Analytics,** majd **az Aktív szabályok**csoportban szerkesztheti.
+1. Kiválaszthatja, hogy az Azure AD-riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
 
-1. Ha a megfelelő sémát szeretné használni a Log Analytics az Azure AD-riasztások, keresse meg a **SigninLogs** és **AuditLogs.**
+1. Az Azure AD-riasztásokhoz tartozó Log Analytics vonatkozó sémájának használatához keresse meg a **SigninLogs** és a **AuditLogs**.
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja az Azure AD-t az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Azure AD az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

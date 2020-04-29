@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver magas rendelkezésre állású telepítés a Windows feladatátvételi fürt és fájlmegosztás SAP ASCS/SCS példányok az Azure-ban | Microsoft dokumentumok
-description: SAP NetWeaver magas rendelkezésre állású telepítés Windows feladatátvevő fürtön és fájlmegosztáson SAP ASCS/SCS-példányok esetén
+title: SAP NetWeaver magas rendelkezésre állású telepítés Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányokhoz | Microsoft Docs
+description: SAP NetWeaver magas rendelkezésre állású telepítés Windows feladatátvevő fürtön és fájlmegosztás SAP ASCS/SCS-példányokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617329"
 ---
-# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvételi fürtre és fájlmegosztásra sap ASCS/SCS-példányok számára az Azure-ban
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányok esetén
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -89,7 +89,7 @@ ms.locfileid: "77617329"
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állási konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -197,55 +197,55 @@ ms.locfileid: "77617329"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Ez a cikk azt ismerteti, hogyan telepíthet és konfigurálhat egy magas rendelkezésre állású SAP-rendszert az Azure-ban, a Windows Server feladatátvevő fürtjével (WSFC) és a kibővített fájlkiszolgálóval az SAP ASCS/SCS-példányok fürtözésének lehetővé tételeként.
+Ez a cikk bemutatja, hogyan telepíthet és konfigurálhat magas rendelkezésre állású SAP-rendszert az Azure-ban, a Windows Server feladatátvételi fürt (WSFC) és a Kibővíthető fájlkiszolgáló az SAP ASCS/SCS-példányok fürtözésének lehetőségeként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A telepítés megkezdése előtt tekintse át az alábbi cikkeket:
+A telepítés megkezdése előtt tekintse át a következő cikkeket:
 
-* [Architektúra-útmutató: SAP ASCS/SCS-példány fürtje windowsos feladatátvevő fürtön fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share]
+* [Architektúra-útmutató: SAP ASCS/SCS-példány fürtözése Windows feladatátvevő fürtön a fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share]
 
-* [Az Azure-infrastruktúra SAP-nvaló-nkeresztüli magas rendelkezésre állásának előkészítése Windows feladatátvételi fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-infrastructure-wsfc-file-share]
+* [Az Azure Infrastructure SAP magas rendelkezésre állásának előkészítése Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-infrastructure-wsfc-file-share]
 
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure virtuális gépein][high-availability-guide]
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára][high-availability-guide]
 
-A következő végrehajtható fájlokra és DL-ekre van szüksége az SAP-tól:
-* SAP Szoftverkiépítési Kezelő (SWPM) telepítőeszköz verziója SPS25 vagy újabb.
-* SAP Kernel 7.49 vagy újabb
+Az SAP-től a következő végrehajtható fájlok és DLL-ek szükségesek:
+* Az SAP Software kiépítési kezelője (SWPM) telepítési eszközének SPS25 vagy újabb verziója.
+* SAP kernel 7,49 vagy újabb
 
 > [!IMPORTANT]
-> Az SAP ASCS/SCS-példányok fájlmegosztás használatával történő fürtözése az SAP NetWeaver 7.40 (és újabb), az SAP Kernel 7.49 (és újabb) számára támogatott.
+> Az SAP ASCS/SCS-példányok egy fájlmegosztás használatával történő fürtözését az SAP NetWeaver 7,40 (és újabb) SAP kernel 7,49 (és újabb verziók) támogatják.
 >
 
 
-Nem írjuk le az adatbázis-kezelő rendszer (DBMS) beállítását, mert a beállítások a használt ADATBÁZIS-rendszertől függően változnak. Azonban feltételezzük, hogy a magas rendelkezésre állású aggodalmak a DBMS foglalkozik a funkciókat, amelyek et a különböző DBMS-szállítók támogatja az Azure-ban. Ilyen funkciók közé tartozik az AlwaysOn vagy az SQL Server adatbázis-tükrözése, valamint az Oracle Data Guard for Oracle adatbázisok. Az ebben a cikkben használt forgatókönyvben nem adtunk hozzá további védelmet a DBMS-hez.
+Nem írja le az adatbázis-kezelő rendszer (adatbázisok) beállítását, mert a beállítások a használt adatbázis-KEZELŐtől függően változnak. Feltételezzük azonban, hogy az adatbázis-kezelői szolgáltatással kapcsolatos magas rendelkezésre állási problémákat a különböző adatbázis-kezelők gyártói támogatják az Azure-ban. Ilyen funkciók például a AlwaysOn vagy az adatbázis-tükrözés a SQL Server és az Oracle-adatőr Oracle-adatbázisokhoz. Az ebben a cikkben használt forgatókönyvben nem adtak hozzá további védelmet az adatbázis-kezelő szolgáltatáshoz.
 
-Nincsenek különleges szempontok, ha különböző DBMS-szolgáltatások az azure-beli fürtözött SAP ASCS/SCS-konfigurációval kommunikálnak.
+A különböző adatbázis-kezelői szolgáltatások az Azure-ban az ilyen típusú fürtözött SAP ASCS/SCS-konfigurációval együttműködve nem rendelkeznek speciális szempontokkal.
 
 > [!NOTE]
-> Az SAP NetWeaver ABAP rendszerek, Java rendszerek és ABAP+Java rendszerek telepítési eljárásai majdnem azonosak. A legjelentősebb különbség az, hogy egy SAP ABAP rendszer rendelkezik egy ASCS-példány. Az SAP Java rendszer egy SCS-példányt rendelkezik. Az SAP ABAP+Java rendszer egy ASCS-és egy SCS-példányt futtat ugyanabban a Microsoft feladatátvevő fürtcsoportban. Az egyes SAP NetWeaver telepítési veremtelepítési különbségek et kifejezetten megemlíti. Feltételezheti, hogy minden más rész ugyanaz.  
+> Az SAP NetWeaver ABAP rendszerek, a Java-rendszerek és a ABAP + Java rendszerek telepítési eljárásai csaknem azonosak. A legfontosabb különbség az, hogy egy SAP ABAP rendszernek van egy ASCS-példánya. Az SAP Java-rendszeren egy SCS-példány van. Az SAP ABAP + Java rendszer egy ASCS-példánnyal és egy olyan SCS-példánnyal rendelkezik, amely ugyanabban a Microsoft feladatátvételi fürtben fut. A rendszer explicit módon megemlíti az egyes SAP NetWeaver telepítési verem telepítési különbségeit. Feltételezzük, hogy minden más rész azonos.  
 >
 >
 
-## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Sap globális állomás előkészítése a SOFS-fürtön
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>SAP globális gazdagép előkészítése a SOFS-fürtön
 
-Hozza létre a következő kötet- és fájlmegosztást a SOFS-fürtön:
+Hozza létre a következő kötet-és fájlmegosztást a SOFS-fürtön:
 
-* SAP GLOBALHOST `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` fájlstruktúra a SOFS fürt megosztott kötetén (CSV)
+* SAP GLOBALHOST- `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` fájl szerkezete a SOFS-fürt megosztott kötetén (CSV)
 
-* SAPMNT fájlmegosztás
+* SAPMNT-fájlmegosztás
 
-* Állítsa be a biztonságot a SAPMNT fájlmegosztáson és mappán, amely teljes hozzáféréssel rendelkezik:
-    * A \<DOMAIN>\SAP_\<SID>_GlobalAdmin felhasználói csoport
-    * Az SAP ASCS/SCS fürtcsomópont \<számítógépobjektumai DOMAIN>\ClusterNode1$ és \<DOMAIN>\ClusterNode2$
+* A SAPMNT-fájlmegosztás és-mappa biztonságának beállítása a teljes hozzáférés-vezérléssel:
+    * A \<tartomány> \ SAP_\<SID>_GlobalAdmin felhasználói csoport
+    * Az SAP ASCS/SCS fürtcsomópont számítógép-objektumok \<tartománya> \clusternode1 $ \<és a tartomány> \clusternode2 $
 
-A tükrözött rugalmassággal rendelkező CSV-kötet létrehozásához hajtsa végre a következő PowerShell-parancsmavet a SOFS-fürt egyik csomópontján:
+Ha egy CSV-kötetet tükrözött rugalmassággal szeretne létrehozni, hajtsa végre a következő PowerShell-parancsmagot az egyik SOFS-fürt csomópontjain:
 
 
 ```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
-SAPMNT létrehozásához és a mappa beállításához és a biztonság megosztásához hajtsa végre a következő PowerShell-parancsfájlt a SOFS-fürtcsomópontok egyikén:
+A SAPMNT létrehozásához, valamint a mappa és a megosztás biztonságának beállításához hajtsa végre a következő PowerShell-parancsfájlt az egyik SOFS-fürtcsomóponton:
 
 ```powershell
 # Create SAPMNT on file share
@@ -290,54 +290,54 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz
 
-Hozzon létre egy SAP ASCS/SCS-fürthálózati nevet (például **pr1-ascs [10.0.6.7]**), [a fürtözött SAP ASCS/SCS-példány virtuális állomásnevének létrehozása][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]című részben leírtak szerint.
+Hozzon létre egy SAP ASCS/SCS-fürt hálózati nevét (például **PR1-ASCS [10.0.6.7]**) a következő témakörben leírtak szerint: [virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
 
 
-## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>ASCS/SCS- és ERS-példányok telepítése a fürtben
+## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>ASCS-/SCS-és ERS-példányok telepítése a fürtben
 
-### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>ASCS/SCS-példány telepítése az első ASCS/SCS fürtcsomópontra
+### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Telepítsen egy ASCS-/SCS-példányt az első ASCS/SCS-fürtcsomóponton
 
-Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomópontra. A példány telepítéséhez az SAP SWPM telepítőeszközében nyissa meg a következő témakört:
+Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. A példány telepítéséhez az SAP SWPM telepítési eszközében válassza a következőt:
 
-**\<A termék>**  >  ** \<a DBMS>**  >  **Installation** > **Application Server ABAP** (vagy **Java)**> **a magas rendelkezésre állású rendszer** > **ASCS/SCS példányelső** > **fürtcsomópontja.**
+**\<Termék>**  >   >  **Installation** >  >  >  **Java****First cluster node****Application Server ABAP** ** \<adatbázis-kezelő>** telepítő Application Server ABAP (vagy Java) > **magas rendelkezésre állású rendszer****ASCS/SCS instance**első fürtcsomópont.
 
-### <a name="add-a-probe-port"></a>Mintavételi port hozzáadása
+### <a name="add-a-probe-port"></a>Mintavételi Port hozzáadása
 
-Konfiguráljon egy SAP-fürterőforrást, az SAP-SID-IP-mintavételi portot a PowerShell használatával. Hajtsa végre ezt a konfigurációt az SAP ASCS/SCS fürtcsomópontok egyikén, [a jelen cikkben][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]leírtak szerint.
+Konfigurálja az SAP-fürt erőforrását, az SAP-SID-IP mintavételi portot a PowerShell használatával. Hajtsa végre ezt a konfigurációt az egyik SAP ASCS/SCS fürtcsomópontokon a [jelen cikkben][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]leírtak szerint.
 
-### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>ASCS/SCS-példány telepítése a második ASCS/SCS fürtcsomópontra
+### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>ASCS-/SCS-példány telepítése a második ASCS/SCS-fürtön
 
-Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomópontra. A példány telepítéséhez az SAP SWPM telepítőeszközében nyissa meg a következő témakört:
+Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. A példány telepítéséhez az SAP SWPM telepítési eszközében válassza a következőt:
 
-**\<A termék>**  >  ** \<a DBMS>**  >  **Installation** > **Application Server ABAP** (vagy **Java)**> **a magas rendelkezésre állású rendszer** > **ASCS/SCS példányát** > **További fürtcsomópont**.
+**\<Termék>**  >   >  **Installation** >  >  >  **Java****Additional cluster node****Application Server ABAP** ** \<adatbázis-kezelő>** telepítő Application Server ABAP (vagy Java) > **magas rendelkezésre állású rendszer****ASCS/SCS instance**további fürtcsomópont.
 
 
-## <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASCS/SCS-példányprofil frissítése
+## <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASCS/SCS-példány profiljának frissítése
 
-Paraméterek frissítése az SAP ASCS/SCS \<példányprofil SID>_ASCS/SCS\<Nr>_ \<Host>.
+Frissítse a paramétereket az SAP ASCS/SCS instance profil \<SID>_ASCS/SCS\<Nr>_ \<Host>.
 
 
 | Paraméter neve | Paraméter értéke |
 | --- | --- |
-| gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **Igaz** |
+| GW/netstat_once | **0** |
+| enque/encni/set_so_keepalive  | **igaz** |
 | szolgáltatás/ha_check_node | **1** |
 
-Indítsa újra az SAP ASCS/SCS-példányt. Paraméterek `KeepAlive` beállítása az SAP ASCS/SCS fürtcsomópontokon az [SAP ASCS/SCS-példány fürtcsomópontjainak beállítási bejegyzéseinek beállítása][high-availability-guide]utasításokat követve. 
+Indítsa újra az SAP ASCS/SCS-példányt. Állítsa `KeepAlive` be a paramétereket mind az SAP-ASCS, mind az SCS-fürtcsomópontok esetében, és az [SAP ASCS/SCS-példány fürtcsomópontok esetében adja meg a beállításjegyzékbeli bejegyzéseket][high-availability-guide]. 
 
-## <a name="install-a-dbms-instance-and-sap-application-servers"></a>DBMS-példány és SAP-alkalmazáskiszolgálók telepítése
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Adatbázis-kezelő példány és SAP-alkalmazáskiszolgáló telepítése
 
-Véglegesítse az SAP rendszer telepítését a következők telepítésével:
-* DbMS-példány.
+Véglegesítse az SAP rendszer telepítését a telepítéssel:
+* Egy adatbázis-kezelő példány.
 * Elsődleges SAP-alkalmazáskiszolgáló.
 * Egy további SAP-alkalmazáskiszolgáló.
 
 ## <a name="next-steps"></a>További lépések
 
-* [ASCS/SCS-példány telepítése megosztott lemezek nélküli feladatátvevő fürtre – Hivatalos SAP-irányelvek a magas rendelkezésre állású fájlmegosztáshoz][sap-official-ha-file-share-document]
+* [ASCS-/SCS-példány telepítése megosztott lemezek nélküli feladatátvevő fürtön – hivatalos SAP-irányelvek a magas rendelkezésre állású fájlmegosztás számára][sap-official-ha-file-share-document]
 
 * [A Windows Server 2016 Közvetlen tárolóhelyek szolgáltatása][s2d-in-win-2016]
 
-* [Kibővített fájlkiszolgáló alkalmazásadatok – áttekintés][sofs-overview]
+* [Kibővíthető fájlkiszolgáló az alkalmazásadatok áttekintéséhez][sofs-overview]
 
-* [A Windows Server 2016 tárolási újdonságai][new-in-win-2016-storage]
+* [Újdonságok a Storage szolgáltatásban a Windows Server 2016-ben][new-in-win-2016-storage]

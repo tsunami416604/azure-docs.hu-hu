@@ -1,6 +1,6 @@
 ---
-title: További hálózati követelmények az SAP HANA az Azure-ban (nagy példányok) | Microsoft dokumentumok
-description: Az SAP HANA további hálózati követelményei az Azure-ban (nagy példányok).
+title: Az Azure-beli SAP HANA további hálózati követelményei (nagyméretű példányok) | Microsoft Docs
+description: Az Azure-beli SAP HANA további hálózati követelményei (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,57 +14,57 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77614578"
 ---
-# <a name="additional-network-requirements-for-large-instances"></a>További hálózati követelmények nagy példányokra
+# <a name="additional-network-requirements-for-large-instances"></a>A nagyméretű példányok további hálózati követelményei
 
-Előfordulhat, hogy további hálózati követelmények részeként az SAP HANA nagy példányainak az Azure-ban központi telepítése.
+Előfordulhat, hogy további hálózati követelményekre van szüksége az Azure-beli SAP HANA nagyméretű példányainak központi telepítésének részeként.
 
 ## <a name="add-more-ip-addresses-or-subnets"></a>További IP-címek vagy alhálózatok hozzáadása
 
-Használja az Azure Portalon, a PowerShellben vagy az Azure CLI-ben, ha további IP-címeket vagy alhálózatokat ad hozzá.
+Ha több IP-címet vagy alhálózatot ad hozzá, használja a Azure Portal, a PowerShell vagy az Azure CLI-t.
 
-Adja hozzá az új IP-címtartományt új tartományként a virtuális hálózati címterülethez, ahelyett, hogy új összesített tartományt hozna létre. Küldje el ezt a módosítást a Microsoftnak. Ez lehetővé teszi, hogy az új IP-címtartományból csatlakozzon az ügyfél HANA nagy példányegységeihez. Megnyithat egy Azure-támogatási kérelmet az új virtuális hálózati címterület hozzáadásához. Miután megkapta a megerősítést, hajtsa végre a következő lépéseket.
+Új összesített tartomány létrehozása helyett adja hozzá az új IP-címtartományt új tartományként a virtuális hálózati címtartomány területéhez. Ezt a módosítást küldje el a Microsoftnak. Ez lehetővé teszi, hogy az adott új IP-címtartomány és az ügyfélben lévő HANA nagyméretű példány egységei között csatlakozhasson. Nyisson meg egy Azure-támogatási kérést az új virtuális hálózati címtartomány hozzáadásához. Miután megkapta a jóváhagyást, hajtsa végre a következő lépéseket.
 
-Ha további alhálózatot szeretne létrehozni az Azure Portalról, olvassa el a Virtuális hálózat létrehozása az Azure Portal használatával című [témakört.](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network) Ha a PowerShellből szeretne létrehozni egyet, olvassa el a Virtuális hálózat létrehozása a PowerShell használatával című [témakört.](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)
+Ha további alhálózatot szeretne létrehozni a Azure Portalból, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)című témakört. A PowerShellből való létrehozással kapcsolatban lásd: [virtuális hálózat létrehozása a PowerShell használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Virtuális hálózatok hozzáadása
 
-Miután először csatlakozott egy vagy több Azure virtuális hálózathoz, érdemes lehet csatlakozni a további, amelyek az SAP HANA azure-beli (nagy példányok) eléréséhez. Először küldjön el egy Azure-támogatási kérelmet. Ebben a kérelemben adja meg az adott Azure-telepítés azonosítására szolgáló konkrét információkat. Az IP-címterület-tartományt vagy az Azure virtuális hálózati címterület tartományait is tartalmazza. Az SAP HANA a Microsoft Service Management szolgáltatáskezelő ezután biztosítja a szükséges információkat a további virtuális hálózatok és az Azure ExpressRoute csatlakoztatásához. Minden virtuális hálózathoz egyedi engedélyezési kulcsra van szükség az ExpressRoute-kapcsolat hana nagy példányokhoz való csatlakoztatásához.
+Miután először csatlakoztatta egy vagy több Azure-beli virtuális hálózatot, érdemes lehet további, az Azure-ban SAP HANA (nagyméretű példányok) elérését is csatlakoztatni. Először küldje el az Azure-támogatási kérelmet. Ebben a kérelemben adja meg az adott Azure-telepítést azonosító adatokat. Adja meg az IP-címtartomány tartományát vagy az Azure-beli virtuális hálózati címtartomány tartományait is. A Microsoft Service Management SAP HANA a további virtuális hálózatok és az Azure-ExpressRoute összekapcsolásához szükséges információkat biztosítja. Minden virtuális hálózat esetében egyedi engedélyezési kulcsra van szükség, hogy a ExpressRoute-áramkörhöz a nagyméretű HANA-példányokhoz kapcsolódjon.
 
-## <a name="increase-expressroute-circuit-bandwidth"></a>Az ExpressRoute-áramkör sávszélességének növelése
+## <a name="increase-expressroute-circuit-bandwidth"></a>ExpressRoute-áramköri sávszélesség növelésének fokozása
 
-Forduljon az SAP HANA-hoz a Microsoft Service Management szolgáltatáskezelés. Ha azt tanácsolják, hogy növelje az SAP HANA sávszélességét az Azure-beli (nagy példányok) ExpressRoute-kapcsolaton, hozzon létre egy Azure-támogatási kérelmet. (Egyetlen áramköri sávszélesség növelését kérheti legfeljebb 10 Gb/s-ig.) Ezután értesítést kap a művelet befejezése után; nem kell mást tennie ahhoz, hogy ezt a nagyobb sebességet engedélyezze az Azure-ban.
+Forduljon SAP HANA a Microsoft Service Management szolgáltatáshoz. Ha azt javasoljuk, hogy növelje az Azure-beli (nagyméretű példányok) ExpressRoute áramköri SAP HANA sávszélességét, hozzon létre egy Azure-támogatási kérelmet. (Legfeljebb 10 GB/s sebességű egyetlen áramköri sávszélességet igényelhet.) Ezután értesítést kap a művelet befejezését követően. nem kell mást tennie, hogy engedélyezze ezt a nagyobb sebességet az Azure-ban.
 
-## <a name="add-an-additional-expressroute-circuit"></a>További ExpressRoute-áramkör hozzáadása
+## <a name="add-an-additional-expressroute-circuit"></a>További ExpressRoute áramkör hozzáadása
 
-Forduljon az SAP HANA-hoz a Microsoft Service Management szolgáltatáskezelés. Ha azt tanácsolják, hogy adjon hozzá egy további ExpressRoute-csoportot, hozzon létre egy Azure-támogatási kérelmet (beleértve az engedélyezési adatok lekérését az új kapcsolatcsoporthoz való csatlakozáshoz). A kérelem benyújtása előtt meg kell határoznia a virtuális hálózatokon használt címterületet. Az SAP HANA a Microsoft Service Management ezután engedélyt adhat.
+Forduljon SAP HANA a Microsoft Service Management szolgáltatáshoz. Ha további ExpressRoute-áramkör hozzáadására tesznek javaslatot, hozzon létre egy Azure-támogatási kérést (beleértve az új áramkörhöz való kapcsolódáshoz szükséges hitelesítési adatok beszerzésére vonatkozó kérést is). A kérelem elkészítése előtt meg kell határoznia a virtuális hálózatokon használt címtartomány méretét. Az SAP HANA a Microsoft Service Management szolgáltatásban megadhatja az engedélyt.
 
-Amikor az új kapcsolatcsoport jön létre, és az SAP HANA a Microsoft Service Management konfiguráció befejeződött, értesítést kap a folytatáshoz szükséges információkat. Nem tud azure-beli virtuális hálózatokat csatlakoztatni ehhez a további kapcsolatcsoporthoz, ha azok már csatlakoznak egy másik SAP HANA-hoz az Azure -ban (nagypéldány) ExpressRoute-kapcsolaton ugyanabban az Azure-régióban.
+Amikor létrejön az új áramkör, és a Microsoft Service Management konfigurációjának SAP HANAa befejeződött, értesítést kap a folytatáshoz szükséges információkkal. Az Azure-beli virtuális hálózatok nem csatlakoztathatók ehhez a további áramkörhöz, ha már csatlakoznak egy másik SAP HANAhoz az Azure-beli (nagyméretű példány) ExpressRoute áramkörben ugyanabban az Azure-régióban.
 
 ## <a name="delete-a-subnet"></a>Alhálózat törlése
 
-Virtuális hálózati alhálózat eltávolításához használhatja az Azure Portal, a PowerShell vagy az Azure CLI. Ha az Azure virtuális hálózati IP-címtartománya vagy címterülete összesített tartomány volt, a Microsoft nem követi nyomon. (Ne feledje azonban, hogy a virtuális hálózat továbbra is propagálja a BGP-útvonal címterületét, amely tartalmazza a törölt alhálózatot.) Előfordulhat, hogy az Azure virtuális hálózati címtartományt vagy címterületet több IP-címtartományként definiálta, amelyek közül az egyik a törölt alhálózathoz volt rendelve. Ügyeljen arra, hogy törölje a virtuális hálózati címterületről. Ezután tájékoztassa az SAP HANA-t a Microsoft Service Management szolgáltatáskezelésről, hogy távolítsa el azokat a tartományokat, amelyekkel az SAP HANA az Azure-ban (nagy példányok) kommunikálhat.
+A virtuális hálózati alhálózat eltávolításához használhatja a Azure Portal, a PowerShellt vagy az Azure CLI-t. Ha az Azure-beli virtuális hálózati IP-címtartomány vagy a Címterület összesített tartománya volt, a Microsoft nem végez nyomon követést. (Ne feledje azonban, hogy a virtuális hálózat továbbra is propagálja a BGP-útvonal címterület-területét, amely tartalmazza a törölt alhálózatot.) Lehetséges, hogy az Azure-beli virtuális hálózati címtartomány vagy a címtartomány több IP-címtartomány formájában lett definiálva, amelyek közül egyet a törölt alhálózathoz rendeltek. Ügyeljen arra, hogy a virtuális hálózati címtartomány alapján törölje azt. Ezután tájékoztassa SAP HANA a Microsoft Service Management szolgáltatásról, hogy eltávolítsa azt az Azure-on SAP HANA tartományokból (nagyméretű példányok).
 
-További információt az [Alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)című témakörben talál.
+További információ: [alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Virtuális hálózat törlése
 
-További információt a [Virtuális hálózat törlése](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)című témakörben talál.
+További információ: [Virtual Network (virtuális hálózat törlése](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)).
 
-SAP HANA a Microsoft Service Management eltávolítja a meglévő engedélyeket az SAP HANA az Azure-ban (nagy példányok) ExpressRoute-kapcsolat. Emellett eltávolítja az Azure virtuális hálózati IP-címtartományt vagy címterületet a HANA nagy példányokkal való kommunikációhoz.
+A Microsoft Service Management SAP HANA eltávolítja a meglévő engedélyeket az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön található SAP HANA. Emellett eltávolítja az Azure Virtual Network IP-címtartomány vagy a címtartomány a HANA nagyméretű példányokkal folytatott kommunikációhoz.
 
-A virtuális hálózat eltávolítása után nyisson meg egy Azure-támogatási kérelmet az ELTÁVOLÍTandó IP-címterület-tartomány vagy -tartományok megadásához.
+A virtuális hálózat eltávolítása után nyisson meg egy Azure-támogatási kérést az IP-címtartomány vagy az eltávolítandó tartományok megadásához.
 
-Annak érdekében, hogy mindent eltávolítson, törölje az ExpressRoute-kapcsolatot, a virtuális hálózati átjárót, a nyilvános virtuális hálózati átjáró t és a virtuális hálózatot.
+Annak érdekében, hogy eltávolítsa a mindent, törölje a ExpressRoute, a virtuális hálózati átjárót, a virtuális hálózati átjáró nyilvános IP-címét és a virtuális hálózatot.
 
-## <a name="delete-an-expressroute-circuit"></a>ExpressRoute-kapcsolat törlése
+## <a name="delete-an-expressroute-circuit"></a>ExpressRoute kör törlése
 
-Ha el szeretne távolítani egy további SAP HANA az Azure-ban (nagy példányok) ExpressRoute-kapcsolat, nyisson meg egy Azure-támogatási kérelmet az SAP HANA a Microsoft Service Management. Kérje az áramkör törlését. Az Azure-előfizetésen belül szükség esetén törölheti vagy megtarthatja a virtuális hálózatot. Azonban törölnie kell a hana nagy példányok ExpressRoute-kapcsolat és a csatolt virtuális hálózati átjáró közötti kapcsolatot.
+Ha el szeretne távolítani egy további SAP HANAt az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön, nyisson meg egy Azure-támogatási kérelmet a SAP HANA a Microsoft Service Management szolgáltatásban. Az áramkör törlésére vonatkozó kérés. Az Azure-előfizetésen belül szükség esetén törölheti vagy megtarthatja a virtuális hálózatot. Azonban a HANA Large instances ExpressRoute áramkör és a társított virtuális hálózati átjáró közötti kapcsolatot törölnie kell.
 
 ## <a name="next-steps"></a>További lépések
 

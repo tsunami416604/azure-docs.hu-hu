@@ -1,6 +1,6 @@
 ---
-title: Bérlőközi felügyelet az Azure Security Centerben | Microsoft dokumentumok
-description: Ismerje meg, hogyan állíthatja be a bérlők közötti felügyeletet a Security Center több bérlőbiztonsági állapotának kezelésére az Azure delegált erőforrás-kezelése használatával.
+title: Több-bérlős felügyelet a Azure Security Centerban | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be a több-bérlős felügyeletet az Azure-beli delegált erőforrás-kezelési szolgáltatással Security Center több bérlő biztonsági állapotának kezeléséhez.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,47 +14,47 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919481"
 ---
-# <a name="cross-tenant-management-in-security-center"></a>Bérlőközi felügyelet a Biztonsági központban
+# <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
-A bérlők közötti felügyelet lehetővé teszi több bérlő biztonsági állapotának megtekintését és kezelését a Security Centerben az [Azure delegált erőforrás-kezelésének](../lighthouse/concepts/azure-delegated-resource-management.md) kihasználásával. Több bérlő hatékony kezelése egyetlen nézetből, anélkül, hogy minden bérlő könyvtárába be kellene jelentkeznie.
+A több-bérlős felügyelet lehetővé teszi, hogy az Azure-beli [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md) kihasználva megtekintse és felügyelje Security Center több bérlő biztonsági állapotát. Több bérlő hatékony kezelése egyetlen nézetből, anélkül, hogy be kellene jelentkeznie az egyes bérlői címtárba.
 
-- A szolgáltatók kezelhetik az erőforrások biztonsági állapotát több ügyfél számára a saját bérlőjükön belül.
+- A szolgáltatók több ügyfél számára is kezelhetik az erőforrások biztonsági állapotát, a saját bérlőn belül.
 
-- A több bérlővel rendelkező szervezetek biztonsági csapatai egyetlen helyről tekinthetik meg és kezelhetik biztonsági állapotukat.
+- A több Bérlővel rendelkező szervezetek biztonsági csoportjai egyetlen helyről tekinthetik meg és kezelhetik biztonsági állapotát.
 
-## <a name="set-up-cross-tenant-management"></a>Több bérlő közötti felügyelet beállítása
+## <a name="set-up-cross-tenant-management"></a>A több-bérlős felügyelet beállítása
 
-Bérlőközi felügyelet beállítása a felügyelt bérlők erőforrásaihoz való hozzáférés delegálásával a saját bérlőre az [Azure delegált erőforrás-kezelése](../lighthouse/concepts/azure-delegated-resource-management.md)használatával.
+A több-bérlős felügyelet beállítása a felügyelt bérlők erőforrásaihoz való hozzáférés delegálásával a saját bérlőhöz az [Azure delegált erőforrás-kezelés](../lighthouse/concepts/azure-delegated-resource-management.md)használatával.
 
 > [!NOTE]
-> Az Azure delegált erőforrás-kezelése az Azure Lighthouse egyik legfontosabb összetevője.
+> Az Azure-beli delegált erőforrás-kezelés az Azure Lighthouse egyik fő összetevője.
 
-## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Hogyan működik a bérlők közötti felügyelet a Security Centerben?
+## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Hogyan működik a több-bérlős felügyelet Security Center
 
-Több bérlő előfizetését is áttekintheti és kezelheti ugyanúgy, ahogyan egyetlen bérlőben több előfizetést is kezelhet.
+Az előfizetések több bérlőn is megtekinthetők és kezelhetők ugyanúgy, mint a több előfizetés egyetlen bérlőn való kezeléséhez.
 
-A felső menüsorban kattintson a szűrő ikonra, és válassza ki az egyes bérlői címtárban megtekinteni kívánt előfizetéseket.
+A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizetéseket minden bérlő címtárában, amelyet meg szeretne tekinteni.
 
   ![Bérlők szűrése](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-A nézetek és intézkedések alapvetően azonosak. Néhány példa:
+A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 
-- **Biztonsági házirendek kezelése**: Egyetlen nézetben kezelheti számos erőforrás biztonsági állapotát [házirendekkel,](tutorial-security-policy.md)biztonsági javaslatokkal műveleteket hajtson végre, valamint gyűjtsön és kezeljen a biztonsággal kapcsolatos adatokat.
-- **A biztonságos pontszám és megfelelőségi állapot javítása:** A bérlők közötti láthatóság lehetővé teszi az összes bérlő általános biztonsági állapotának megtekintését, valamint azt, hogy hol és hogyan javíthatja a [biztonságos pontszámot](security-center-secure-score.md) és [a megfelelőségi állapotot.](security-center-compliance-dashboard.md)
-- **Javaslatok javítása:** Figyelheti és kiigazítja a különböző bérlők től származó erőforrások egy időben [számos erőforrásra vonatkozó javaslat.](security-center-recommendations.md) Ezután azonnal kezelni a biztonsági réseket, amelyek a legnagyobb kockázatot az összes bérlő.
-- **Riasztások kezelése:** [riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. A végrehajtható [javítási lépéseknek](security-center-managing-and-responding-alerts.md)nem megfelelő erőforrásokkal kapcsolatos műveletek et kell végrehajtania.
+- **Biztonsági házirendek kezelése**: az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), a biztonsági javaslatokkal kapcsolatos műveleteket, valamint a biztonsági adatok gyűjtését és kezelését.
+- A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](security-center-secure-score.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
+- **Szervizeléssel kapcsolatos javaslatok**: a különböző bérlők számos erőforrására [vonatkozó javaslatok](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
+- **Riasztások kezelése**: [riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a gyakorlatban használható [szervizelési lépéseknek](security-center-managing-and-responding-alerts.md).
 
-- **Fejlett felhővédelmi funkciók kezelése és egyebek:** Kezelheti a különböző veszélyforrások elleni védelmi szolgáltatásokat, például [a just-in-time (JIT) virtuális gép-hozzáférést,](security-center-just-in-time.md) [az adaptív hálózati edzést,](security-center-adaptive-network-hardening.md) [az adaptív alkalmazásvezérlőket](security-center-adaptive-application.md)stb.
+- A **speciális Cloud Defense-funkciók kezelése és egyebek**: a veszélyforrások elleni védelem különböző szolgáltatásainak kezelése, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférés, az [adaptív hálózatok megerősítése](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlése](security-center-adaptive-application.md)stb.
  
 ## <a name="next-steps"></a>További lépések
-Ez a cikk bemutatja, hogyan működik a bérlők közötti felügyelet a Security Centerben. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Az Azure Security Center rel való biztonsági állapot megerősítése](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát.
-* [Az Azure Security Center –](faq-general.md) Gyakori kérdések – Gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Ismerje meg az Azure Lighthouse vállalati forgatókönyvekben](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) – Fedezze fel, hogyan egyszerűsítheti az Azure Lighthouse a több Azure AD-bérlőt használó vállalaton belüli bérlők közötti felügyeletet.
+* [Megerősítheti a biztonsági helyzeteket Azure Security Centerekkel](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának monitorozását.
+* [Azure Security Center GYIK](faq-general.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Ismerje meg az Azure Lighthouse nagyvállalati forgatókönyveit – megismerheti,](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) hogy az Azure Lighthouse hogyan egyszerűsítheti le a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure ad-bérlőt használ.

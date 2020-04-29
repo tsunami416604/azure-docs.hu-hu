@@ -1,6 +1,6 @@
 ---
-title: A Citrix Analytics (Biztonság) csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
-description: Ismerje meg, hogyan csatlakoztathatja a Citrix Analytics (Security) alkalmazást az Azure Sentinelhez.
+title: A Citrix Analytics (biztonság) és az Azure Sentinel összekötése | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható a Citrix Analytics (Security) az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,37 +15,37 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588382"
 ---
 # <a name="connect-citrix-analytics-security"></a>Citrix Analytics (Security) csatlakoztatása 
 
-A Citrix Analytics (Security) és az Azure Sentinel integrációja segít a kockázatos eseményekre vonatkozó adatok exportálásában a Citrix Analytics (Security) szolgáltatásból az Azure Sentinelbe. Egyéni irányítópultokat hozhat létre, más forrásokból származó adatokat elemezhet a Citrix Analytics (Biztonság) adataival együtt, és egyéni munkafolyamatokat hozhat létre a Logic Apps használatával a biztonsági események figyeléséhez és csökkentéséhez. 
+A Citrix Analytics (biztonság) integrálása az Azure Sentinel szolgáltatással lehetővé teszi a Citrix Analytics (biztonság) kockázatos eseményeinek elemzését az Azure Sentinel szolgáltatásba. Egyéni irányítópultokat hozhat létre, más forrásokból származó adatok elemzését is elvégezheti a Citrix Analytics (biztonság) használatával, és egyéni munkafolyamatokat hozhat létre az Logic Apps segítségével a biztonsági események figyeléséhez és enyhítéséhez. 
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Olvasási és írási engedélyek az Azure Sentinel-munkaterületre.
+- Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez.
 
-- Jogosultság a Citrix Security Analytics szolgáltatásra a Citrix Cloud-ban.
+- A Citrix biztonsági elemzésekhez való jogosultság a Citrix Cloud-ban.
 
 
-## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Az Azure Sentinel csatlakoztatása a Citrix Analytics szolgáltatáshoz (biztonság)
+## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Az Azure Sentinel és a Citrix Analytics (biztonság) összekötése
 
-1. Az Azure Portalon keresse meg az **Azure Sentinel** > **Data-összekötők,** és válassza ki a **Citrix Analytics (Security)** összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** elemre, majd válassza ki a **Citrix Analytics-(biztonsági)** összekötőt.
 
-2. Válassza **az Összekötő lap megnyitása lehetőséget**.
+2. Válassza az **összekötő megnyitása lapot**.
 
-3. Kövesse a **Citrix Analytics (Biztonság)** oldalon található utasításokat.
+3. Kövesse a **Citrix Analytics (biztonság)** lapon megjelenő utasításokat.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Citrix Analytics (Security) alkalmazást az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Citrix Analytics (Security) az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 
 

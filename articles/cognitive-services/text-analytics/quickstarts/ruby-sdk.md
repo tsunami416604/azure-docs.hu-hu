@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Text Analytics ügyféltár a Ruby | Microsoft dokumentumok'
+title: 'Rövid útmutató: Text Analytics ügyféloldali kódtár a Rubyhoz | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban észlelheti a nyelvet az Azure Cognitive Services Ruby Text Analytics ügyfélkönyvtárának használatával.
+description: Ebben a rövid útmutatóban a nyelvet az Azure Cognitive Services Ruby Text Analytics ügyféloldali kódtár használatával ismeri fel.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919668"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Rövid útmutató: A Ruby Text Analytics ügyfélkönyvtárának használata
+# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata a Rubyhoz
 
-Ismerkedés a Text Analytics ügyféltárral. Az alábbi lépésekkel telepítheti a csomagot, és kipróbálhatja az alapvető feladatok példakódját.
+Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
-A Szövegelemzési ügyféltár segítségével hajtsa végre a következőket:
+A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali függvénytárat:
 
 * Hangulatelemzés
 * Nyelvfelismerés
@@ -29,31 +29,31 @@ A Szövegelemzési ügyféltár segítségével hajtsa végre a következőket:
 * Kulcskifejezések kinyerése
 
 > [!NOTE]
-> Ez a rövid útmutató csak a Text Analytics 2.1-es verziójára vonatkozik. Jelenleg a Ruby v3-as ügyfélkönyvtára nem érhető el.
+> Ez a rövid útmutató csak az Text Analytics 2,1-es verziójára vonatkozik. Jelenleg a Rubyhoz készült v3 ügyféloldali kódtár nem érhető el.
 
-[Referenciadokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [csomag (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[A dokumentációs](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [-csomagjához (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Ruby](https://www.ruby-lang.org/) jelenlegi verziója
-* Miután rendelkezik az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure-előfizetéssel, hozzon <span class="docon docon-navigate-external x-hidden-focus"></span> </a> létre egy Text Analytics-erőforrást"  target="_blank">az Azure Portalon a kulcs és a végpont leéséhez. 
-    * Szüksége lesz a kulcs és a végpont a létrehozott erőforrásból az alkalmazás és a Text Analytics API csatlakoztatásához. Ezt később a rövid útmutatóban fogja megtenni.
-    * Használhatja az ingyenes tarifacsomag a szolgáltatás kipróbálásához, és frissítse később egy fizetett szint éles környezetben.
+* A [Ruby](https://www.ruby-lang.org/) aktuális verziója
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon"  target="_blank">létre egy Text Analytics erőforrást, és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. 
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
+    * Az ingyenes díjszabási csomaggal kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-new-ruby-application"></a>Új Ruby-alkalmazás létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg azt. Ezután hozzon `GemFile`létre egy nevű fájlt és egy Ruby fájlt a kódhoz.
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. Ezután hozzon létre egy `GemFile`nevű fájlt, és egy Ruby-fájlt a kódjához.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-A `GemFile`alkalmazásban adja hozzá a következő sorokat az ügyféltár függőségként való hozzáadásához.
+`GemFile`A alkalmazásban adja hozzá a következő sorokat az ügyféloldali függvénytár függőségként való hozzáadásához.
 
 ```ruby
 source 'https://rubygems.org'
@@ -64,7 +64,7 @@ A Ruby-fájlban importálja a következő csomagokat.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és kulcsának. 
+Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. 
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
@@ -75,25 +75,25 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`
 
 ## <a name="object-model"></a>Objektummodell 
 
-A Text Analytics-ügyfél a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg elemzésére, egyetlen karakterláncként vagy kötegként. 
+A Text Analytics ügyfél a kulcsával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként. 
 
-A program a szöveget a `documents`használt `dictionary` módszertől függően `id`a `text`, `language` a kombinációját és attribútumokat tartalmazó objektumok listájaként küldi el az API-nak. Az `text` attribútum az eredeti `language`helyen tárolja az elemzendő szöveget, és az `id` bármilyen érték lehet. 
+A rendszer az API- `documents`nak elküldi a szöveget, amely a használt `dictionary` módszertől függően a, `id`a `text`és `language` az attribútumok kombinációját tartalmazó objektumokat tartalmazza. Az `text` attribútum tárolja a forrásban `language`elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
-A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tartalmazza. 
+A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek bemutatják, hogyan kell a következőket a Pythonszöveg-elemzési ügyfélkódtárban végezni:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Text Analytics ügyféloldali kódtár használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
 * [Entitások felismerése](#entity-recognition)
-* [Kulcskifejezés kinyerése](#key-phrase-extraction)
+* [Fő kifejezés kibontása](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Hozzon létre `TextAnalyticsClient`egy nevű osztályt. 
+Hozzon létre egy `TextAnalyticsClient`nevű osztályt. 
 
 ```ruby
 class TextAnalyticsClient
@@ -102,11 +102,11 @@ class TextAnalyticsClient
 end
 ```
 
-Ebben az osztályban hozzon létre egy függvényt, amelynek célja `initialize` az ügyfél hitelesítése a kulcs és a végpont használatával. 
+Ebben az osztályban hozzon létre egy nevű `initialize` függvényt, amely a kulcsot és a végpontot használva hitelesíti az ügyfelet. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
-Az osztályon kívül használja az `new()` ügyfél funkcióját a példányosítására.
+A osztályon kívül használja az ügyfél `new()` függvényét a létrehozásához.
 
 [!code-ruby[client creation](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=clientCreation)] 
 
@@ -114,15 +114,15 @@ Az osztályon kívül használja az `new()` ügyfél funkcióját a példányos�
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Az ügyfélobjektumban hozzon `AnalyzeSentiment()` létre egy nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja fel az `sentiment()` ügyfél funkcióját, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját és a hangulatpontszámát. A 0-hoz közelebbi pontszám negatív érzést, míg az 1-hez közelebbi pontszám pozitív véleményt jelez.
+Az ügyfél objektumban hozzon létre egy nevű `AnalyzeSentiment()` függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja meg `sentiment()` az ügyfél függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 [!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 
-Az ügyfélfüggön kívül hozzon `SentimentAnalysisExample()` létre egy `TextAnalyticsClient` új függvényt, amely a korábban létrehozott objektumot veszi fel. Hozzon létre `MultiLanguageInput` egy objektumlistát, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz `id` `Language` egy `text` t és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a dokumentum `id` nyelve, és bármilyen érték lehet. Ezután hívja meg `AnalyzeSentiment()` az ügyfél funkcióját.
+Az ügyfél függvényen kívül hozzon létre egy nevű `SentimentAnalysisExample()` új függvényt, `TextAnalyticsClient` amely a korábban létrehozott objektumot veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id` `Language` és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a dokumentum nyelvét, a `id` pedig bármely értéket. Ezután hívja meg `AnalyzeSentiment()` az ügyfél függvényét.
 
 [!code-ruby[sentiment analysis document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=sentimentCall)] 
 
-Hívja `SentimentAnalysisExample()` meg a függvényt.
+Hívja meg `SentimentAnalysisExample()` a függvényt.
 
 ```ruby
 SentimentAnalysisExample(textAnalyticsClient)
@@ -142,15 +142,15 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Az ügyfélobjektumban hozzon `DetectLanguage()` létre egy nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja fel az `detect_language()` ügyfél funkcióját, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját, és észlelte a nyelvet.
+Az ügyfél objektumban hozzon létre egy nevű `DetectLanguage()` függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja meg `detect_language()` az ügyfél függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt nyelvet.
 
 [!code-ruby[client method for language detection](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguage)] 
 
-Az ügyfélfüggön kívül hozzon `DetectLanguageExample()` létre egy `TextAnalyticsClient` új függvényt, amely a korábban létrehozott objektumot veszi fel. Hozzon létre `LanguageInput` egy objektumlistát, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz `id`egy `text` t és egy attribútumot. Az `text` attribútum tárolja az elemzendő `id` szöveget, és bármilyen érték lehet. Ezután hívja meg `DetectLanguage()` az ügyfél funkcióját.
+Az ügyfél függvényen kívül hozzon létre egy nevű `DetectLanguageExample()` új függvényt, `TextAnalyticsClient` amely a korábban létrehozott objektumot veszi fel. Hozzon létre egy `LanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. Ezután hívja meg `DetectLanguage()` az ügyfél függvényét.
 
 [!code-ruby[language detection document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguageCall)] 
 
-Hívja `DetectLanguageExample()` meg a függvényt.
+Hívja meg `DetectLanguageExample()` a függvényt.
 
 ```ruby
 DetectLanguageExample(textAnalyticsClient)
@@ -169,15 +169,15 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Entitások felismerése
 
-Az ügyfélobjektumban hozzon `RecognizeEntities()` létre egy nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja fel az `entities()` ügyfél funkcióját, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját és a felismert entitásokat.
+Az ügyfél objektumban hozzon létre egy nevű `RecognizeEntities()` függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja meg `entities()` az ügyfél függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az elismert entitásokat.
 
 [!code-ruby[client method for entity recognition](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntities)]
 
-Az ügyfélfüggön kívül hozzon `RecognizeEntitiesExample()` létre egy `TextAnalyticsClient` új függvényt, amely a korábban létrehozott objektumot veszi fel. Hozzon létre `MultiLanguageInput` egy objektumlistát, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz `id`egy `language`, `text` a és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a szöveg `id` nyelve, és bármilyen érték lehet. Ezután hívja meg `RecognizeEntities()` az ügyfél funkcióját.
+Az ügyfél függvényen kívül hozzon létre egy nevű `RecognizeEntitiesExample()` új függvényt, `TextAnalyticsClient` amely a korábban létrehozott objektumot veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id`, a `language`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a szöveg nyelvét, a `id` pedig bármely értéket. Ezután hívja meg `RecognizeEntities()` az ügyfél függvényét.
 
 [!code-ruby[entity recognition documents and method call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntitiesCall)] 
 
-Hívja `RecognizeEntitiesExample()` meg a függvényt.
+Hívja meg `RecognizeEntitiesExample()` a függvényt.
 
 ```ruby
 RecognizeEntitiesExample(textAnalyticsClient)
@@ -227,16 +227,16 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-Az ügyfélobjektumban hozzon `ExtractKeyPhrases()` létre egy nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja fel az `key_phrases()` ügyfél funkcióját, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és nyomtassa ki az egyes dokumentumok azonosítóját és a kinyert kulcskifejezéseket.
+Az ügyfél objektumban hozzon létre egy nevű `ExtractKeyPhrases()` függvényt, amely a később létrehozandó bemeneti dokumentumok listáját veszi fel. Hívja meg `key_phrases()` az ügyfél függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a kinyert kulcs kifejezéseit.
 
 [!code-ruby[key phrase extraction client method](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=extractKeyPhrases)] 
 
-Az ügyfélfüggön kívül hozzon `KeyPhraseExtractionExample()` létre egy `TextAnalyticsClient` új függvényt, amely a korábban létrehozott objektumot veszi fel. Hozzon létre `MultiLanguageInput` egy objektumlistát, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz `id`egy `language`, `text` a és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a szöveg `id` nyelve, és bármilyen érték lehet. Ezután hívja meg `ExtractKeyPhrases()` az ügyfél funkcióját.
+Az ügyfél függvényen kívül hozzon létre egy nevű `KeyPhraseExtractionExample()` új függvényt, `TextAnalyticsClient` amely a korábban létrehozott objektumot veszi fel. Hozzon létre egy `MultiLanguageInput` listát az objektumok listájáról, amely tartalmazza az elemezni kívánt dokumentumokat. Minden objektum tartalmaz egy `id`, a `language`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a szöveg nyelvét, a `id` pedig bármely értéket. Ezután hívja meg `ExtractKeyPhrases()` az ügyfél függvényét.
 
 [!code-ruby[key phrase document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=keyPhrasesCall)]
 
 
-Hívja `KeyPhraseExtractionExample()` meg a függvényt.
+Hívja meg `KeyPhraseExtractionExample()` a függvényt.
 
 ```ruby
 KeyPhraseExtractionExample(textAnalyticsClient)

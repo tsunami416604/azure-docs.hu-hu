@@ -1,6 +1,6 @@
 ---
-title: A távoli asztal gyakran bontja a kapcsolatot az Azure Virtuálisgépben| Microsoft dokumentumok
-description: Megtudhatja, hogyan háríthatja el a távoli asztal gyakori lekapcsolódásainak elhárítását az Azure virtuális gépben.
+title: Távoli asztal gyakori leválasztása az Azure-beli virtuális gépen | Microsoft Docs
+description: Ismerje meg, hogy miként lehet elhárítani az Azure-beli virtuális gépek Távoli asztal gyakori leválasztásait.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,41 +13,41 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918223"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>A távoli asztal kapcsolata gyakran megszakad az Azure-beli virtuális gépen
 
-Ez a cikk bemutatja, hogyan háríthatja el az Azure virtuális géppel (VM) a Távoli asztali protokoll RDP-n keresztül történő gyakori lekapcsolódások hibáit.
+Ez a cikk azt ismerteti, hogyan lehet az Azure-beli virtuális gépek (VM) gyakori leválasztásait RDP protokoll RDP-n keresztül elhárítani.
 
 
 ## <a name="symptom"></a>Hibajelenség
 
-A munkamenetek során időszakos RDP-kapcsolati problémákkal szembesül. Kezdetben csatlakozhat a virtuális géphez, de a kapcsolat megszakad.
+A munkamenetek során átmeneti RDP-kapcsolati problémákba ütköznek. Kezdetben csatlakozhat a virtuális géphez, de a kapcsolat elesik.
 
 ## <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha az RDP-figyelő helytelenül van konfigurálva. Ez a probléma általában egy egyéni lemezképet használó virtuális számítógépen fordul elő.
+Ez a probléma akkor fordulhat elő, ha az RDP-figyelő helytelenül van konfigurálva. Ez a probléma általában egy egyéni rendszerképet használó virtuális gépen fordul elő.
 
 ## <a name="solution"></a>Megoldás
 
-Az alábbi lépések végrehajtása előtt készítsen pillanatképet az érintett virtuális gép [operációsrendszer-lemezéről](../windows/snapshot-copy-managed-disk.md) biztonsági másolatként. 
+Az alábbi lépések [elvégzése előtt készítsen pillanatképet](../windows/snapshot-copy-managed-disk.md) az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. 
 
-A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezérlőt, vagy javítsa ki a virtuális gép offline állapotban lévő operációs rendszerének csatlakoztatásával a virtuális gép operációs rendszerlemezét egy helyreállítási virtuális géphez.
+A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez csatolva csatlakoztassa a soros vezérlőt vagy [javítsa ki a virtuális gépet](#repair-the-vm-offline) .
 
-### <a name="serial-control"></a>Soros vezérlés
+### <a name="serial-control"></a>Soros vezérlő
 
-1. Csatlakozzon a [Soros konzolhoz, és nyissa meg a CMD-példányt.](./serial-console-windows.md) Ezután futtassa a következő parancsokat az RDP-konfigurációk alaphelyzetbe állításához. Ha a soros konzol nincs engedélyezve a virtuális gép, folytassa a következő lépéssel.
-2. Csökkentse az RDP biztonsági réteget 0-ra. Ebben a beállításban a kiszolgáló és az ügyfél közötti kommunikáció a natív RDP-titkosítást használja.
+1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](./serial-console-windows.md). Ezután futtassa az alábbi parancsokat az RDP-konfigurációk alaphelyzetbe állításához. Ha a soros konzol nincs engedélyezve a virtuális gépen, folytassa a következő lépéssel.
+2. Csökkentse az RDP biztonsági réteget 0-ra. Ezzel a beállítással a kiszolgáló és az ügyfél közötti kommunikáció a natív RDP-titkosítást használja.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-3. Csökkentse a titkosítási szintet a minimális beállításra, hogy az örökölt RDP-ügyfelek csatlakozni.
+3. Csökkentse a titkosítási szintet a minimális beállításra, hogy az örökölt RDP-ügyfelek csatlakozhassanak.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-4. Állítsa be az RDP-t az ügyfélszámítógép felhasználói konfigurációjának betöltésére.
+4. Állítsa be az RDP-t az ügyfélszámítógép felhasználói konfigurációjának betöltéséhez.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
 5. Az RDP Keep-Alive vezérlő engedélyezése:
@@ -57,7 +57,7 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-6. Az RDP Újracsatlakozás vezérlő beállítása:
+6. Az RDP rekapcsolási vezérlő beállítása:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f
 
@@ -67,33 +67,33 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
 7. Az RDP-munkamenet idővezérlőjének beállítása:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-8. Állítsa be az RDP lekapcsolási idő vezérlőt: 
+8. Az RDP-leválasztási idő vezérlőelem beállítása: 
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-9. Az RDP-kapcsolat idővezérlőjének beállítása:
+9. Adja meg az RDP-kapcsolat időpontjának vezérlőjét:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-10. Az RDP-munkamenet tétlenidő-vezérlőjének beállítása:
+10. Az RDP-munkamenet üresjárati időkorlátjának beállítása:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxIdleTime' /t REG_DWORD /d 0 /f
-11. Állítsa be a "Maximális egyidejű kapcsolatok korlátozása" vezérlőt:
+11. "Az egyidejű kapcsolatok maximális számának korlátozása" vezérlő beállítása:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d 4294967295 /f
 
-12. Indítsa újra a virtuális gép, és próbálja meg újra csatlakozni az RDP használatával.
+12. Indítsa újra a virtuális gépet, majd próbálja meg újra az RDP használatával való kapcsolódáshoz.
 
-### <a name="repair-the-vm-offline"></a>A virtuális gép kapcsolat nélküli javítása
+### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban
 
-1. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](../windows/troubleshoot-recovery-disks-portal.md)
-2. Miután az operációs rendszer lemeze csatlakozik a helyreállítási virtuális géphez, győződjön meg arról, hogy a lemez **online** ként van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
-3. A csatolt operációsrendszer-lemezen keresse meg a **\windows\system32\config** mappát. Másolja a mappában lévő összes fájlt biztonsági másolatként, ha visszaállításra van szükség.
-4. Indítsa el a Rendszerleíróadatbázis-szerkesztőt (regedit.exe).
-5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a > **Fájlbetöltő hive parancsot:** **File**
-6. Tallózással keresse meg a csatolt operációsrendszer-lemez **\windows\system32\config\SYSTEM** mappáját. A struktúra nevéhez írja be a **BROKENSYSTEM**. Az új beállításstruktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg. Ezután töltse be a szoftverstruktúrát **\windows\system32\config\SOFTWARE** a **HKEY_LOCAL_MACHINE** kulcs alá. A kaptárszoftver nevéhez írja be a **BROKENSOFTWARE**. 
-7. Nyisson meg egy rendszergazdai jogú parancssori ablakot (**Rendszergazdaként futtatása**), és futtasson parancsokat az RDP-konfigurációk alaphelyzetbe állításához szükséges további lépésekben. 
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+2. Miután az operációsrendszer-lemezt csatlakoztatta a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
+3. A csatlakoztatott operációsrendszer-lemezen navigáljon a **\Windows\System32\Config** mappára. Másolja a mappában található összes fájlt biztonsági másolatként, ha visszaállításra van szükség.
+4. Indítsa el a Beállításszerkesztőt (Regedit. exe).
+5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **Load struktúra**elemet:
+6. Keresse meg a **\windows\system32\config\SYSTEM** mappát a csatlakoztatott operációsrendszer-lemezen. A struktúra neveként írja be a következőt: **BROKENSYSTEM**. Az új beállításjegyzék-struktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg. Ezután töltse be a szoftver-struktúra **\windows\system32\config\SOFTWARE** a **HKEY_LOCAL_MACHINE** kulcs alatt. A kaptár szoftver neveként írja be a következőt: **BROKENSOFTWARE**. 
+7. Nyisson meg egy rendszergazda jogú parancssort (**Futtatás rendszergazdaként**), és futtassa a további lépések parancsait az RDP-konfigurációk alaphelyzetbe állításához. 
 8. Csökkentse az RDP biztonsági réteget 0-ra, hogy a kiszolgáló és az ügyfél közötti kommunikáció a natív RDP-titkosítást használja:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -104,7 +104,7 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-10. Állítsa be az RDP-t az ügyfélgép felhasználói konfigurációjának betöltésére.
+10. Állítsa be az RDP-t az ügyfélszámítógép felhasználói konfigurációjának betöltéséhez.
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
 
@@ -118,7 +118,7 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-12. Az RDP Újracsatlakozás vezérlő beállítása:
+12. Az RDP rekapcsolási vezérlő beállítása:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f 
         
@@ -135,7 +135,7 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-14. Állítsa be az RDP lekapcsolási idő vezérlőt:
+14. Az RDP-leválasztási idő vezérlőelem beállítása:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
@@ -144,24 +144,24 @@ A probléma elhárításához használja [a](#repair-the-vm-offline) Soros-vezé
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-15. Az RDP-kapcsolat idővezérlőjének beállítása:
+15. Adja meg az RDP-kapcsolat időpontjának vezérlőjét:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. RdP-munkamenet tétlen időszabályozásának beállítása: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d /f 
+16. Az RDP-munkamenet üresjárati időkorlátjának beállítása: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
-17. Állítsa be a "Maximális egyidejű kapcsolatok korlátozása" vezérlőt:
+17. "Az egyidejű kapcsolatok maximális számának korlátozása" vezérlő beállítása:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
-18. Indítsa újra a virtuális gép, és próbálja meg újra csatlakozni az RDP használatával.
+18. Indítsa újra a virtuális gépet, majd próbálja meg újra az RDP használatával való kapcsolódáshoz.
 
 ## <a name="need-help"></a>Segítségre van szüksége? 
 Vegye fel a kapcsolatot az ügyfélszolgálattal. Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

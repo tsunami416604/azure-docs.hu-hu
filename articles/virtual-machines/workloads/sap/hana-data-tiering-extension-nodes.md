@@ -1,6 +1,6 @@
 ---
-title: Adatrétegezés és bővítménycsomópontok az SAP HANA az Azure-ban (nagy példányok) | Microsoft dokumentumok
-description: Adatrétegezés és bővítmény csomópontok AZ SAP HANA az Azure-ban (nagy példányok).
+title: Az Azure-ban SAP HANA adatrétegek és bővítmények csomópontjai (nagyméretű példányok) | Microsoft Docs
+description: Az Azure-ban SAP HANA adatrétegek és bővítmények csomópontjai (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,25 +14,25 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617163"
 ---
-# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA-adatrétegezés és bővítménycsomópontok használata
+# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA adatrétegek és kiterjesztésű csomópontok használata
 
-Az SAP támogatja a különböző SAP NetWeaver-kiadások sap BW és AZ SAP BW/4HANA adatrétegezési modelljét. Az adatrétegezési modellről további információt az [SAP-dokumentum SAP BW/4HANA és SAP BW a HANA AZ SAP HANA bővítmény csomópontok.](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)
-Hana nagy példány, használhatja az SAP HANA bővítmény csomópontok 1-es beállításkonfigurációját a gyIK és az SAP blog dokumentumok magyarázata szerint. Az Option-2 konfigurációk a következő HANA nagypéldány-példányváltozatokkal állíthatók be: S72m, S192, S192m, S384 és S384m. 
+Az SAP támogatja a különböző SAP NetWeaver-kiadások és a SAP BW/4HANA SAP BWához szükséges adatrétegek modellezését. Az adatrétegek modelljével kapcsolatos további információkért tekintse meg az SAP [-dokumentum SAP BW/4HANA és a SAP BW a HANA-ben SAP HANA kiterjesztésű csomópontokkal](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)című témakört.
+A HANA nagyméretű példányával a gyakori kérdések és az SAP-blog dokumentumaiban a SAP HANA bővítmények csomópontjainak 1. kapcsolóját használhatja. Az Option-2 konfigurációk a következő HANA Large instance SKU-val állíthatók be: S72m, S192, S192m, S384 és S384m. 
 
-Ha megnézi a dokumentációt, előfordulhat, hogy az előny nem lesz azonnal látható. De ha megnézzük az SAP méretezési irányelvek, láthatja az előnyt a option-1 és a 2-es sap HANA-bővítmény csomópontok használatával. Például:
+Ha megtekinti a dokumentációt, előfordulhat, hogy az előny nem látható azonnal. Ha azonban megtekinti az SAP-méretezési irányelveket, a-1 és a-2 SAP HANA kiterjesztésű csomópontok lehetőségével megtekintheti az előnyt. Például:
 
-- Az SAP HANA méretezési irányelvei általában az adatmennyiség kétszeresét igénylik memóriaként. Amikor futtatja az SAP HANA-példánya a ritka elérésű adatokkal, csak 50 százaléka vagy kevesebb a memória töltött adatokkal. A memória fennmaradó ideális ansap hana a munkáját végzi.
-- Ez azt jelenti, hogy egy HANA nagy példány S192 egység 2 TB memóriával, egy SAP BW adatbázis futtatásával, csak 1 TB adatkötetként.
-- Ha egy további SAP HANA-bővítmény csomópontot használ az 1-es lehetőséghez, valamint egy S192 HANA nagypéldány-termékváltozatot, további 2 TB-os kapacitást biztosít az adatkötethez. Az option-2 konfigurációban további 4 TB-ot kap a meleg adatmennyiséghez. A forró csomóponthoz képest a "meleg" bővítménycsomópont teljes memóriakapacitása használható az 1-es beállítás hoz tárolt adatokhoz. A memória kétszerese adatkötethez használható a 2 SAP HANA-bővítmény csomópontkonfigurációjában.
-- A végén az adatok kapacitása 3 TB, az 1-es opció esetében pedig 1:2 meleg-meleg arány. 5 TB adattal és 1:4-es aránnyal rendelkezik az option-2 bővítmény csomópont konfigurációjával.
+- SAP HANA Méretezési irányelvek esetében általában a memóriának kell megdupláznia az adatmennyiséget. Ha a SAP HANA-példányt a forró adatokkal futtatja, akkor az adatokkal kitöltött memória 50%-a vagy annál kevesebbnek kell lennie. A memória hátralévő része ideális SAP HANA a munkája elvégzéséhez.
+- Ez azt jelenti, hogy egy HANA nagyméretű példány S192 egysége 2 TB memóriával rendelkezik, és egy SAP BW adatbázist futtat, és csak 1 TB adatmennyiséggel rendelkezik.
+- Ha a-1 lehetőség további SAP HANA kiterjesztési csomópontját használja, a nagyméretű HANA-példány S192 is, akkor további 2 TB-os kapacitást biztosít az adatmennyiséghez. A 2. lehetőség konfigurációjában további 4 TB-nyi meleg adatmennyiséget kap. A gyors elérésű csomóponthoz képest a "meleg" kiterjesztésű csomópont teljes memóriájának kapacitása használható az 1. lehetőséghez tartozó adattároláshoz. Duplán a memória felhasználható adatmennyiséghez az Option-2 SAP HANA a bővítmény csomópontjának konfigurációjában.
+- Az adatokhoz 3 TB-os kapacitást, az 1. lehetőséghez pedig a 1:2-es meleg-meleg arányt használhatja. 5 TB adat és egy 1:4-es arány az Option-2 kiterjesztésű csomópont-konfigurációval.
 
-Minél nagyobb az adatmennyiség a memóriához képest, annál nagyobb az esélye annak, hogy a kért meleg adatok a lemeztárolón tárolódnak.
+Minél nagyobb az adatmennyiség a memóriához képest, annál nagyobb az esélye, hogy a kért meleg adatmennyiséget a lemezes tárolás tárolja.
 
 **További lépések**
-- SAP [HANA (nagy példányok) architektúrájának ajánlása az Azure-ban](hana-architecture.md)
+- Tekintse át [SAP HANA (nagyméretű példányok) architektúráját az Azure-](hana-architecture.md) ban

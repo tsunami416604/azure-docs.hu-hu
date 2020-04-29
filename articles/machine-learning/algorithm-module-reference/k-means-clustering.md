@@ -1,7 +1,7 @@
 ---
-title: 'K-eszközök fürtözés: modul hivatkozás'
+title: 'K – fürtözés: modulok leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a K-Means fürtözési modult az Azure Machine Learningben a fürtözési modellek betanításához.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning a fürtözési modelleket a fürtözési modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,139 +10,139 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921164"
 ---
-# <a name="module-k-means-clustering"></a>Modul: K-means klaszterek
+# <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
-Ez a cikk ismerteti, hogyan használhatja a *K-Means fürtözési* modul az Azure Machine Learning designer (előzetes verzió) egy képzetlen K-eszközök fürtözési modell létrehozásához. 
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) *"k-Mean" fürtszolgáltatási* modulja egy nem betanított K – fürtözési modell létrehozásához. 
  
-K-eszközök az egyik legegyszerűbb és a legismertebb *felügyelet nélküli* tanulási algoritmusok. Az algoritmus taszthat különböző gépi tanulási feladatokhoz, például a következőkre: 
+A K-means az egyik legegyszerűbb és legismertebb, nem *felügyelt* tanulási algoritmus. Az algoritmus számos gépi tanulási feladathoz használható, például: 
 
-* [Rendellenes adatok észlelése](https://msdn.microsoft.com/magazine/jj891054.aspx).
-* Szöveges dokumentumok fürtözése.
-* Az adatkészletek elemzése más besorolási vagy regressziós módszerek használata előtt. 
+* [Rendellenes adatelemzések észlelése](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* Fürtözött szöveges dokumentumok.
+* Adatkészletek elemzése más besorolási vagy regressziós módszerek használata előtt. 
 
-Fürthálózati modell létrehozásához:
+A fürtszolgáltatási modell létrehozásához a következőket kell tennie:
 
 * Adja hozzá ezt a modult a folyamathoz.
 * Adatkészlet csatlakoztatása.
-* Állítsa be a paramétereket, például a várható fürtök számát, a fürtök létrehozásához használandó távolságmérőszámot stb. 
+* Állítsa be a paramétereket, például a várt fürtök számát, a fürtök létrehozásához használandó távolsági metrikát és így tovább. 
   
-Miután konfigurálta a modul hiperparamétereit, csatlakoztatja a képzetlen modellt a [vonatfürtözési modellhez.](train-clustering-model.md) Mivel a K-means algoritmus felügyelet nélküli tanulási módszer, a címkeoszlop nem kötelező. 
+A modul hiperparaméterek beállítása konfigurálása után a nem betanított modellt a [vonat-fürtszolgáltatási modellhez](train-clustering-model.md)kell kötni. Mivel a K-means algoritmus egy nem felügyelt tanulási módszer, a Label (címke) oszlop nem kötelező. 
 
-+ Ha az adatok tartalmaznak egy címkét, a címke értékek segítségével irányíthatja a fürtök kiválasztását, és optimalizálhatja a modellt. 
++ Ha az adatok címkét tartalmaznak, a címke értékeit követve megtekintheti a fürtök kijelölését, és optimalizálhatja a modellt. 
 
-+ Ha az adatok nem rendelkeznek címkével, az algoritmus olyan fürtöket hoz létre, amelyek a lehetséges kategóriákat képviselik, kizárólag az adatok alapján.  
++ Ha az adatai nem rendelkeznek címkével, az algoritmus kizárólag az adatain alapuló, lehetséges kategóriákat jelképező fürtöket hoz létre.  
 
-##  <a name="understand-k-means-clustering"></a>A K-eszközök fürtözésének megértése
+##  <a name="understand-k-means-clustering"></a>A K értelmezése: fürtözés
  
-A fürtözés általában iteratív technikákat használ az adatkészletben lévő esetek hasonló jellemzőkkel rendelkező fürtökbe történő csoportosításához. Ezek a csoportosítások hasznosak az adatok feltárásához, az adatok anomáliáinak azonosításához és végül az előrejelzések készítéséhez. A fürtözési modellek segítségével azonosíthatja az adatkészletben lévő olyan kapcsolatokat is, amelyeket előfordulhat, hogy nem logikailag levezethet a böngészéssel vagy az egyszerű megfigyeléssel. Ezen okok miatt a fürtözést gyakran használják a gépi tanulási feladatok korai fázisaiban az adatok feltárására és a váratlan korrelációk felfedezésére.  
+Általánosságban elmondható, hogy a fürtözés iterációs technikákat használ az adatkészletekben lévő esetek csoportosítására a hasonló tulajdonságokkal rendelkező fürtökön. Ezek a Csoportosítások hasznosak az adatelemzéshez, az adatrendellenességek azonosításához, és végül az előrejelzések készítéséhez. A fürtözési modellek segíthetnek az adatkészletben lévő olyan kapcsolatok azonosításában is, amelyeket nem lehet logikailag a tallózással vagy egyszerű megfigyeléssel származtatni. Ezen okok miatt a fürtözést gyakran használják a gépi tanulási feladatok korai fázisában, az adatok feltárására és a váratlan korrelációk felderítésére.  
   
- Ha egy fürtözési modellt a K-means metódussal konfigurál, meg kell adnia egy *k* célszámot, amely jelzi a modellben használni kívánt *centroidok* számát. A centroid egy olyan pont, amely minden egyes halmazt reprezentatot képvisel. A K-eszközök algoritmus hozzárendeli az egyes bejövő adatpont az egyik a klaszterek minimalizálásával a fürtön belüli összeg négyzetek. 
+ Ha a K-Mean metódus használatával konfigurál egy fürtszolgáltatási modellt, meg kell adnia a *centroids* *kívánt számát a* modellben. A középpontját az egyes fürtökre jellemző pont. A K-azt jelenti, hogy az algoritmus az egyes bejövő adatpontokat az egyik fürthöz rendeli úgy, hogy minimalizálja a mezőkön belüli összegét. 
  
-Amikor feldolgozza a betanítási adatokat, a K-means algoritmus véletlenszerűen kiválasztott centroidok kezdeti készletével kezdődik. A centroidok a fürtök kiindulópontjaként szolgálnak, és Lloyd algoritmusát alkalmazzák a helyük iteratív finomítására. A K-eszközök algoritmus leállítja a fürtök építését és finomítását, ha azok megfelelnek az alábbi feltételek közül egynek:  
+Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véletlenszerűen kiválasztott centroids kezdeti készletével kezdődik. A Centroids kiindulási pontként szolgálnak a fürtökhöz, és a Lloyd algoritmust alkalmazva iteratív a helyüket. A K-means algoritmus a fürtök kiépítése és finomítása miatt leáll, ha az megfelel a következő feltételek közül:  
   
--   A centroidok stabilizálódnak, ami azt jelenti, hogy az egyes pontok fürthozzárendelései már nem változnak, és az algoritmus egy megoldásra konvergált.  
+-   A centroids stabilizálása, ami azt jelenti, hogy az egyes pontokhoz tartozó fürt-hozzárendelések már nem változnak, és az algoritmus egy megoldáshoz konvergált.  
   
--   Az algoritmus befejezte a megadott számú ismétlés futtatását.  
+-   Az algoritmus a megadott számú iteráció futtatásával fejeződött be.  
   
- Miután befejezte a betanítási fázist, az [Adatok hozzárendelése a fürtökhöz](assign-data-to-clusters.md) modul segítségével új eseteket rendelhet hozzá a K-means algoritmus sal talált fürtök egyikéhez. A fürthozzárendelést az új eset és az egyes fürtök centroidja közötti távolság kiszámításával hajthatja végre. Minden új eset a legközelebbi centroidtal rendelkező fürthöz van rendelve.  
+ Miután elvégezte a betanítási fázist, az [adatgyűjtés a fürtökhöz](assign-data-to-clusters.md) modul használatával új eseteket rendelhet hozzá a K-means algoritmus használatával talált fürtök valamelyikéhez. A fürt kiosztását az új eset és az egyes fürtök középpontját közötti távolság kiszámításával végezheti el. Minden új eset a legközelebbi középpontját rendelkező fürthöz van rendelve.  
 
-## <a name="configure-the-k-means-clustering-module"></a>A K-Means fürtöző modul konfigurálása
+## <a name="configure-the-k-means-clustering-module"></a>A K-Meaning-fürtszolgáltatási modul konfigurálása
   
-1.  Adja hozzá a **K-Means fürtözési** modult a folyamathoz.  
+1.  Adja hozzá a **K-means fürtszolgáltatási** modult a folyamathoz.  
   
-2.  Ha meg szeretné adni, hogyan szeretné betanítani a modellt, válassza az **Oktatói mód létrehozása** lehetőséget.  
+2.  A modell képzésének megadásához válassza az **oktatói mód létrehozása** lehetőséget.  
   
-    -   **Egyetlen paraméter:** Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, argumentumként megadhat egy adott értékkészletet.  
+    -   **Egyetlen paraméter**: Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
   
-3.  A **Centroidok száma**mezőbe írja be azalgoritmus kezdetét.  
+3.  A **Centroids száma**mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
   
-     A modell nem garantált, hogy pontosan ennyi fürtöt hoz létre. Az algoritmus ezzel az adatponttal kezdődik, és az optimális konfiguráció megtalálásához iterálja.  
+     A modell nem garantált, hogy pontosan ezt a számú fürtöt hozza létre. Az algoritmus ezzel a számú adatponttal és iterációval kezdődik az optimális konfiguráció megtalálásához.  
   
-4.  A tulajdonságok **inicializálása** a kezdeti fürtkonfiguráció definiálására használt algoritmus megadására szolgál.  
+4.  A tulajdonságok **inicializálásával** adhatja meg a fürt kezdeti konfigurációjának definiálásához használt algoritmust.  
   
-    -   **Első N**: Néhány kezdeti adatpont az adatkészletből választódik ki, és kezdeti eszközként szolgál. 
+    -   **Első N**: egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
     
-         Ezt a módszert *Forgy módszernek is nevezik.*  
+         Ezt a metódust *hamis metódusnak*is nevezzük.  
   
-    -   **Véletlenszerű**: Az algoritmus véletlenszerűen elhelyez egy adatpontot egy fürtben, majd kiszámítja a kezdeti átlagot a fürt véletlenszerűen hozzárendelt pontjainak centroidjának. 
+    -   **Véletlenszerű**: az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
 
-         Ezt a módszert *véletlenszerű partíciós* módszernek is nevezik.  
+         Ezt a metódust *véletlenszerű partíciós* metódusnak is nevezzük.  
   
-    -   **K-Means++**: Ez a fürtök inicializálásának alapértelmezett módszere.  
+    -   **K-azt jelenti + +**: ez az alapértelmezett módszer a fürtök inicializálásához.  
   
-         A **K-means++** algoritmust David Arthur és Szergej Vassilvitskii javasolta 2007-ben, hogy elkerüljék a rossz klaszterek a szabványos K-eszközök algoritmus. **A K-means++** a szabványos K-eszközökhöz egy másik módszerrel javítja a kezdeti fürtközpontok kiválasztását.  
+         A **k-= + +** algoritmust a 2007-as, David Arthur és Szergej Vassilvitskii javasolta, hogy elkerülje a standard k-means algoritmus általi gyenge fürtözést. A **k-azt jelenti** , hogy a + + és a standard szintű k-t is javítja, ha más módszert használ a kezdeti fürtcsomópontok kiválasztásához.  
   
     
-5.  A **véletlenszám-vetőmag**esetében tetszés szerint írjon be egy értéket, amelyet a fürt inicializálásának vetőmagjaként szeretne használni. Ez az érték jelentős hatással lehet a fürt kiválasztására.  
+5.  A **véletlenszerű számú magok**esetében szükség esetén adja meg a fürt inicializálásának magjaként használandó értéket. Ez az érték jelentős hatással lehet a fürt kiválasztására.  
   
-6.  A **Metric**területen válassza ki a fürtvektorok közötti távolság méréséhez, vagy az új adatpontok és a véletlenszerűen kiválasztott centroid közötti távolság méréséhez használt függvényt. Az Azure Machine Learning a következő fürttávolság-metrikákat támogatja:  
+6.  A **metrika**mezőben válassza ki a fürt vektorai közötti távolság, illetve az új adatpontok és a véletlenszerűen kiválasztott középpontját közötti távolság méréséhez használni kívánt függvényt. Azure Machine Learning a következő szektorcsoport-távolsági metrikákat támogatja:  
   
-    -   **Euklideszi**: Az euklideszi távolság gyakran használják, mint egy intézkedés klaszter scatter a K-eszközök klaszterek. Ez a mérőszám azért előnyös, mert minimalizálja a pontok és a centroidok közötti átlagos távolságot.
+    -   **Euklideszi**: a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
   
-7.  **Iterációk**esetén írja be, hogy az algoritmus hányszor kell a betanítási adatokat, mielőtt véglegesíti a centroidok kiválasztását.  
+7.  Az **Ismétlések**mezőben adja meg, hogy az algoritmus hány alkalommal ismételje meg a betanítási adatmennyiséget, mielőtt véglegesíti a centroids kiválasztását.  
   
-     Ezt a paramétert úgy módosíthatja, hogy egyensúlyba hozza a pontosságot az edzési idővel.  
+     Ezt a paramétert beállíthatja úgy, hogy a pontosságot kiegyensúlyozza a képzési idő alapján.  
   
-8.  A **Címke hozzárendelése módban**válasszon egy beállítást, amely megadja, hogy az adatkészletben található címkeoszlophogyan legyen kezelve.  
+8.  A **címke-hozzárendelési mód**beállításnál válassza ki azt a lehetőséget, amely meghatározza, hogy a felirat oszlop hogyan legyen kezelve az adatkészletben.  
   
-     Mivel a K-means fürtözés egy felügyelet nélküli gépi tanulási módszer, a címkék nem kötelező. Ha azonban az adatkészlet már rendelkezik címkeoszloppal, ezekkel az értékekkel irányíthatja a fürtök kiválasztását, vagy megadhatja, hogy az értékeket figyelmen kívül hagyja.  
+     Mivel a K-azt jelenti, hogy a fürtözés nem felügyelt gépi tanulási módszer, a címkék megadása nem kötelező. Ha azonban az adatkészlet már rendelkezik címke oszloppal, ezeket az értékeket használhatja a fürtök kijelölésének irányításához, vagy megadhatja, hogy a rendszer figyelmen kívül hagyja-e az értékeket.  
   
-    -   **Címkeoszlop figyelmen kívül hagyása:** A címkeoszlop értékeit a program figyelmen kívül hagyja, és nem használja a modell létrehozásához.
+    -   **Címke oszlopának mellőzése**: a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
   
-    -   **Hiányzó értékek kitöltése**: A címkeoszlop értékei a fürtök létrehozásának elősegítésére szolgálnak. Ha valamelyik sorból hiányzik egy címke, az értéket más szolgáltatások kal imputálja a függvény.  
+    -   **Hiányzó értékek kitöltése**: a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
   
-    -   **Felülírás a legközelebbitől a közepéig**: A feliratoszlop értékeit a program az aktuális centroidhoz legközelebb eső pont címkéjének használatával lecseréli a várt feliratértékekre.  
+    -   **Felülírás a legközelebb a középponthoz**: a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
 
-8.  Válassza a **Jellemzők normalizálása** lehetőséget, ha a betanítás előtt normalizálni szeretné a funkciókat.
+8.  Válassza a **funkciók normalizálása** lehetőséget, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   
-     Ha normalizálást alkalmaz, a betanítás előtt `[0,1]` az adatpontokat a MinMaxNormalizer normalizálja.
+     Ha a normalizálás alkalmazása előtt betanítást alkalmaz, az adatpontokat a `[0,1]` MinMaxNormalizer szerint normalizálja a rendszer.
 
 10. A modell betanítása.  
   
-    -   Ha az **Oktató létrehozása mód létrehozása** **beállítását egy paraméterre állítja**be, adjon hozzá egy címkézett adatkészletet, és tanítsa be a modellt a [Fürtözési modell betanítása](train-clustering-model.md) modul használatával.  
+    -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
 ## <a name="results"></a>Results (Eredmények)
 
-Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy modellel, amely segítségével pontszámokat hozhat létre. A modell betanításának azonban többféle módja van, és többféle módon is megtekintheti és használhatja az eredményeket: 
+Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 
-### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Pillanatkép készítése a modellről a munkaterületen
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>A modell pillanatképének rögzítése a munkaterületen
 
-Ha a [Train Clustering Model modult](train-clustering-model.md) használta:
+Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
-1. Jelölje ki a **Vonatfürttípus modult,** és nyissa meg a jobb oldali panelt.
+1. Válassza ki a **vonat-fürtszolgáltatási modell** modult, és nyissa meg a jobb oldali panelt.
 
-2. Válassza **a Kimenetek** **Register dataset** lapot.
+2. Válassza a **kimenetek** fület. Válassza az **adatkészlet regisztrálása** ikont a betanított modell másolatának mentéséhez.
 
-A mentett modell a betanítási adatokat jelöli a modell mentésekor. Ha később frissíti a folyamatban használt betanítási adatokat, nem frissíti a mentett modellt. 
+A mentett modell a modell mentésekor a betanítási adategységeket jelöli. Ha később frissíti a folyamat során használt betanítási adattípust, nem frissíti a mentett modellt. 
 
-### <a name="see-the-clustering-result-dataset"></a>A fürtözés eredményadatkészletének megtekintése 
+### <a name="see-the-clustering-result-dataset"></a>Tekintse meg a fürtözési eredmény adatkészletét 
 
-Ha a [Train Clustering Model modult](train-clustering-model.md) használta:
+Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
-1. Kattintson a jobb gombbal a **Train Clustering Model** modulra.
+1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
 
-2. Válassza a **Megjelenítés lehetőséget.**
+2. Válassza a **Megjelenítés**lehetőséget.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tippek a legjobb fürtözési modell létrehozásához  
 
-Ismeretes, hogy a fürtözés során használt *vetési* folyamat jelentősen befolyásolhatja a modellt. A vetés a pontok kezdeti elhelyezését jelenti a potenciális centroidokba.
+Ismeretes, hogy a fürtözés során használt *előkészítési* folyamat jelentős hatással lehet a modellre. A beültetés azt jelenti, hogy a pontok kezdeti elhelyezése lehetséges centroids.
  
-Ha például az adatkészlet sok kiugró értékkel rendelkezik, és a fürtvetéshez egy kiugró érték kerül kiválasztásra, más adatpont nem illeszkedne jól a fürthöz, és a fürt lehet egyton. Azaz, lehet, hogy csak egy pont.  
+Ha például az adatkészlet sok kiugró értéket tartalmaz, és a rendszer kiugróan kiválasztja a fürtöket, akkor más adatpontok nem illenek jól az adott fürthöz, és a fürt lehet egypéldányos. Ez azt okozhatja, hogy csak egy ponttal rendelkezhet.  
   
-Ezt a problémát többféleképpen is elkerülheti:  
+Ezt a problémát több módon is elkerülheti:  
   
--   Változtassa meg a centroidok számát, és próbáljon ki több magértéket.  
+-   Módosítsa a centroids számát, és próbálkozzon több kezdőtőke értékkel.  
   
--   Hozzon létre több modellt, a metrikát változóan, vagy több iterációt.  
+-   Hozzon létre több modellt, amely változó a metrikát vagy az iterációt.  
   
-Általában fürtözési modellek, lehetséges, hogy egy adott konfiguráció eredményez helyileg optimalizált fürtkészletét. Más szóval a modell által visszaadott fürtök készlete csak az aktuális adatpontoknak felel meg, és nem általánosítható más adatokkal. Ha egy másik kezdeti konfigurációt használ, a K-means metódus előfordulhat, hogy egy másik, jobb, konfiguráció. 
+A fürtözési modellek esetében általánosságban lehetséges, hogy bármely adott konfiguráció a fürtök helyileg optimalizált halmazát fogja eredményezni. Más szóval a modell által visszaadott fürtök halmaza csak az aktuális adatpontokat, és nem általánosítható más adatértékekhez. Ha más kezdeti konfigurációt használ, a K-Mean metódus egy másik, magasabb szintű konfigurációt is talál. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

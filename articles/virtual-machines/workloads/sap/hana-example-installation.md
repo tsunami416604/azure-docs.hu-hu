@@ -1,6 +1,6 @@
 ---
-title: Hana telepítése sap hana-ra az Azure-on (nagy példányok) | Microsoft dokumentumok
-description: Hana telepítése az SAP HANA az Azure-ban (nagy példányok).
+title: A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok) | Microsoft Docs
+description: A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,123 +14,123 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617212"
 ---
-# <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Hana telepítése SAP HANA-ra az Azure-on (nagy példányok)
+# <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok)
 
-A HANA telepítése az SAP HANA az Azure-ban (nagy példányok), először a következőket kell tennie:
-- A Microsoft az sap HANA nagy példányon üzembe helyezhető összes adatot.
-- Az SAP HANA nagy példány a Microsofttól kap.
-- Hozzon létre egy Azure virtuális hálózat, amely csatlakozik a helyszíni hálózathoz.
-- A HANA nagy példányok ExpressRoute-áramkörét ugyanahhoz az Azure virtuális hálózathoz csatlakoztatja.
-- Telepíti az Azure virtuális gép, amely a HANA nagy példányok ugródobozként használható.
-- Győződjön meg arról, hogy az ugródobozból csatlakozhat a HANA nagy példány egységhez, és fordítva.
-- Ellenőrizze, hogy minden szükséges csomag és javítás telepítve van-e.
-- Elolvasta az SAP-megjegyzéseket és dokumentációt a HANA telepítéséről a használt operációs rendszeren. Győződjön meg arról, hogy a hana kiadás a választás támogatott az operációs rendszer kiadása.
+Ha a HANA-t SAP HANA szeretné telepíteni az Azure-ban (nagyméretű példányok), először a következőket kell tennie:
+- A Microsoft számára minden olyan adattal megadható, amelyet egy SAP HANA nagyméretű példányon kíván üzembe helyezni.
+- A Microsoft SAP HANA nagyméretű példányát kapja meg.
+- Létre kell hoznia egy Azure-beli virtuális hálózatot, amely a helyszíni hálózathoz csatlakozik.
+- A HANA nagyméretű példányok ExpressRoute áramkörét ugyanahhoz az Azure-beli virtuális hálózathoz kell kapcsolni.
+- Olyan Azure-beli virtuális gépet telepít, amelyet a HANA nagyméretű példányaihoz tartozó Jump boxként használ.
+- Győződjön meg arról, hogy a Jump Box-ból a nagyméretű HANA-példány egységéhez tud csatlakozni, és fordítva.
+- Győződjön meg arról, hogy az összes szükséges csomag és javítás telepítve van-e.
+- Olvassa el az SAP-megjegyzéseket és a HANA-telepítésre vonatkozó dokumentációt az Ön által használt operációs rendszeren. Győződjön meg arról, hogy az operációs rendszer kiadásában a választott HANA-kiadás támogatott.
 
-A következő szakasz ban egy példa a HANA telepítőcsomagok letöltése a jump box virtuális gépre. Ebben az esetben az operációs rendszer a Windows.
+A következő szakasz egy példát mutat be a HANA telepítési csomagjainak a Jump Box virtuális gépre való letöltésére. Ebben az esetben az operációs rendszer a Windows.
 
-## <a name="download-the-sap-hana-installation-bits"></a>Az SAP HANA telepítési bitek letöltése
-A HANA nagy példány egységek nem közvetlenül csatlakozik az internethez. A telepítőcsomagok közvetlenül nem tölthetők le az SAP-ból a HANA nagy példány virtuális gépre. Ehelyett letölti a csomagokat a jump box virtuális gépre.
+## <a name="download-the-sap-hana-installation-bits"></a>A SAP HANA telepítési BITS letöltése
+A HANA nagyméretű példányok egysége nem kapcsolódik közvetlenül az internethez. A telepítési csomagokat nem lehet közvetlenül az SAP-ból a HANA nagyméretű példány virtuális gépre letölteni. Ehelyett letölti a csomagokat a Jump Box virtuális gépre.
 
-Szüksége van egy SAP S-felhasználó vagy más felhasználó, amely lehetővé teszi az SAP Piactér eléréséhez.
+Szüksége van egy SAP S-User vagy más felhasználóra, amely lehetővé teszi az SAP piactér elérését.
 
-1. Jelentkezzen be, és nyissa meg az [SAP Service Marketplace-t.](https://support.sap.com/en/index.html) Válassza a**Szoftvertelepítések** >  >  **letöltése**és a Frissítés**betűrendes index szerint**lehetőséget. Ezután válassza **a H – SAP HANA Platform Edition** > **SAP HANA Platform Edition 2.0** > **telepítés lehetőséget.** Töltse le a következő képernyőképen látható fájlokat.
+1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés** > letöltése**és a frissítés** > **ABC-index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása** > **SAP HANA platform Edition 2,0** > -**telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
 
-   ![Képernyőkép a letöltandó fájlokról](./media/hana-installation/image16_download_hana.PNG)
+   ![Képernyőkép a letölteni kívánt fájlokról](./media/hana-installation/image16_download_hana.PNG)
 
-2. Ebben a példában az SAP HANA 2.0 telepítőcsomagokat töltöttük le. Az Azure jump box virtuális gép, bontsa ki az önkicsomagoló archívumok a címtárban az alábbiak szerint.
+2. Ebben a példában a SAP HANA 2,0 telepítési csomagokat töltöttük le. Az Azure Jump Box virtuális gépen bontsa ki az önkicsomagoló archívumokat a könyvtárba az alábbi ábrán látható módon.
 
    ![Képernyőkép az önkicsomagoló archívumról](./media/hana-installation/image17_extract_hana.PNG)
 
-3. Az archívum okainak kinyerése után másolja a kinyerés által létrehozott könyvtárat (ebben az esetben az 51052030-at). Másolja a könyvtárat a HANA nagypéldány egység /hana/megosztott kötet egy létrehozott könyvtárba.
+3. Az archívumok kibontásakor másolja a kinyeréssel létrehozott könyvtárat (ebben az esetben 51052030). Másolja a könyvtárat a HANA Large instance Unit/Hana/Shared kötetből egy létrehozott könyvtárba.
 
    > [!Important]
-   > Ne másolja a telepítőcsomagokat a gyökér- vagy rendszerindító fősugárzóba, mert a hely korlátozott, és más folyamatoknak is használniuk kell.
+   > Ne másolja a telepítési csomagokat a gyökér vagy a rendszerindító logikai egységbe, mert a terület korlátozott, és más folyamatok is használni szeretnék.
 
 
-## <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Telepítse az SAP HANA-t a HANA nagy példányegységre
-Az SAP HANA telepítéséhez jelentkezzen be felhasználói gyökérként. Csak a gyökér rendelkezik elegendő engedéllyel az SAP HANA telepítéséhez. Állítsa be az engedélyeket a könyvtárba, amelyet átmásolt a /hana/shared könyvtárba.
+## <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>SAP HANA telepítése a HANA nagyméretű példány-egységen
+SAP HANA telepítéséhez jelentkezzen be felhasználói gyökérként. A SAP HANA telepítéséhez csak a legfelső szintű engedélyek szükségesek. Engedélyek beállítása a/Hana/Shared. átmásolt könyvtárra
 
 ```
 chmod –R 744 <Installation bits folder>
 ```
 
-Ha az SAP HANA-t a grafikus felhasználói felület beállításával szeretné telepíteni, a gtk2 csomagot telepíteni kell a HANA nagy példányokra. Annak ellenőrzéséhez, hogy telepítve van-e, futtassa a következő parancsot:
+Ha a grafikus felhasználói felület beállításával szeretné SAP HANA telepíteni, a GTK2 csomagot a HANA Large-példányokra kell telepíteni. A következő parancs futtatásával ellenőrizhető, hogy telepítve van-e:
 
 ```
 rpm –qa | grep gtk2
 ```
 
-(A későbbi lépésekben az SAP HANA telepítőjét a grafikus felhasználói felülettel jelenítjük meg.)
+(A későbbi lépésekben a SAP HANA a telepítőt a grafikus felhasználói felülettel jelenítjük meg.)
 
-Lépjen be a telepítési könyvtárba, és navigáljon az alkönyvtárba HDB_LCM_LINUX_X86_64. 
+Lépjen be a telepítési könyvtárba, és navigáljon a HDB_LCM_LINUX_X86_64 alkönyvtárba. 
 
-Ebből a könyvtárból, indítsa el:
+A könyvtárból indítsa el a következőket:
 
 ```
 ./hdblcmgui 
 ```
-Ezen a ponton egy képernyősorozaton keresztül halad, amelyben megadja a telepítéshez tartozó adatokat. Ebben a példában telepítjük az SAP HANA adatbázis-kiszolgálót és az SAP HANA ügyfélösszetevőket. Ezért a választék unk AZ **SAP HANA Adatbázis**.
+Ezen a ponton olyan képernyőkép-sorozatot végez, amelyben megadja a telepítéshez szükséges adatmennyiséget. Ebben a példában a SAP HANA adatbázis-kiszolgálót és a SAP HANA ügyfél-összetevőket telepíti. Ezért a kiválasztás **SAP HANA adatbázis**.
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, amelyen az SAP HANA-adatbázis van kiválasztva](./media/hana-installation/image18_hana_selection.PNG)
+![Képernyőfelvétel SAP HANA életciklus-kezelési képernyőről, SAP HANA-adatbázis kiválasztásával](./media/hana-installation/image18_hana_selection.PNG)
 
-A következő képernyőn válassza az **Új rendszer telepítése**lehetőséget.
+A következő képernyőn válassza az **új rendszer telepítése**lehetőséget.
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, amelyen az Új rendszer telepítése lehetőség van kiválasztva](./media/hana-installation/image19_select_new.PNG)
+![Képernyőfelvétel SAP HANA életciklus-kezelési képernyőről, az új rendszerek telepítése beállítással](./media/hana-installation/image19_select_new.PNG)
 
-Ezután válasszon a telepíthető további összetevők közül.
+Ezután válasszon több további telepítendő összetevő közül.
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, további összetevők listájával](./media/hana-installation/image20_select_components.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, a további összetevők listájával](./media/hana-installation/image20_select_components.PNG)
 
-Itt választjuk ki az SAP HANA-ügyfelet és az SAP HANA Studio-t. Egy felskálázási példányt is telepítünk. Ezután válassza **az egyállomásos rendszert**. 
+Itt választjuk ki a SAP HANA ügyfelet és a SAP HANA studiót. Egy Felskálázási példányt is telepítünk. Ezután válassza az **Egygazda rendszer**lehetőséget. 
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, kijelölve az egyetlen állomásrendszer](./media/hana-installation/image21_single_host.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, amelyen egyetlen gazda rendszer van kiválasztva](./media/hana-installation/image21_single_host.PNG)
 
-Ezután adjon meg néhány adatot.
+A következő lépésben adjon meg néhány adattal.
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, amelynek rendszertulajdonságmezőit kell definiálni](./media/hana-installation/image22_provide_sid.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, amely meghatározza a Rendszertulajdonságok mezőit](./media/hana-installation/image22_provide_sid.PNG)
 
 > [!Important]
-> HANA-rendszerazonosító (SID) szerint ugyanazt a biztonsági azonosítót kell megadnia, mint a Microsoftnak, amikor megrendelte a HANA nagy példány központi telepítését. Ha másik BIZTONSÁGI azonosítót választ, a telepítés sikertelen lesz a különböző kötetekhozzáférési engedélyproblémái miatt.
+> A HANA rendszerazonosítóként (SID) meg kell adnia ugyanazt a biztonsági azonosítót, amelyet a Microsofthoz adott meg, amikor a HANA nagyméretű példány üzembe helyezését rendelte. Ha egy másik SID-t választ, a telepítés sikertelen lesz, mert a különböző köteteken hozzáférési jogosultsági problémák léptek fel.
 
-A telepítési elérési úthoz használja a /hana/shared könyvtárat. A következő lépésben adja meg a hana adatfájlok és a HANA naplófájlok helyét.
+A telepítési útvonalhoz használja a/Hana/Shared könyvtárat. A következő lépésben megadja a HANA-adatfájlok és a HANA-naplófájlok helyét.
 
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, amely adat- és naplóterület-mezőket](./media/hana-installation/image23_provide_log.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, az adat-és a naplózási terület mezővel](./media/hana-installation/image23_provide_log.PNG)
 
 > [!Note]
-> A rendszertulajdonságok (két képernyővel ezelőtt) definiálásakor megadott sid-nek meg kell egyeznie a csatlakoztatási pontok sid-jével. Ha eltérés van, lépjen vissza, és állítsa be a biztonsági azonosítót a csatlakoztatási pontokon lévő értékhez.
+> A Rendszertulajdonságok definiálása során megadott SID (két képernyő ago) meg kell egyeznie a csatlakoztatási pontok SID-azonosítójával. Ha eltérés van, lépjen vissza, és állítsa be a SID-t a csatlakoztatási pontokon lévő értékre.
 
-A következő lépésben tekintse át az állomásnevét, és végül javítsa ki. 
+A következő lépésben tekintse át az állomásnév nevét, és végül javítsa ki. 
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről állomásnévvel](./media/hana-installation/image24_review_host_name.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, a gazdagép nevével](./media/hana-installation/image24_review_host_name.PNG)
 
-A következő lépésben is be kell olvasnia a Microsoftnak a HANA nagy példány központi telepítésének megrendelt adatait. 
+A következő lépésben le kell kérnie a Microsoft számára megadott, a HANA nagyméretű példány központi telepítésének elvégzése során kapott adatmennyiséget is. 
 
-![Képernyőkép az SAP HANA életciklus-kezelésről, amelynek definiálandó rendszergazdai mezőit](./media/hana-installation/image25_provide_guid.PNG)
+![Képernyőfelvétel a SAP HANA életciklus-felügyeletről](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> Adja meg ugyanazt a **rendszergazdai felhasználói azonosítót** és **felhasználói csoport azonosítóját,** mint amelyet a Microsoft nak megadott, amikor megrendeli az egység központi telepítését. Ellenkező esetben az SAP HANA telepítése a HANA nagy példány egység sikertelen lesz.
+> Az egység központi telepítésének megrendeléséhez adja meg ugyanazt a rendszergazda **felhasználói azonosítót** és azonosítót a Microsoft számára megadott **felhasználói csoport** számára. Ellenkező esetben a SAP HANA telepítése nem sikerül a HANA nagyméretű példány-egységen.
 
-A következő két képernyő itt nem jelenik meg. Lehetővé teszik, hogy adja meg a jelszót a RENDSZER felhasználó az SAP HANA adatbázis, és a jelszót a sapadm felhasználó. Ez utóbbi az SAP-kiszolgáló ügynök, amely az SAP HANA adatbázispéldány részeként lesz telepítve.
+A következő két képernyő nem jelenik meg itt. Lehetővé teszik a SAP HANA adatbázis rendszerfelhasználójának, valamint a sapadm-felhasználó jelszavának megadását. Az utóbbit a SAP HANA adatbázis-példányának részeként telepítendő SAP-gazdagép ügynöke használja.
 
-A jelszó megadása után megjelenik egy megerősítő képernyő. ellenőrizze az összes felsorolt adatot, és folytassa a telepítést. A telepítés előrehaladását dokumentáló folyamatjelző képernyőt érhet el, például ezt:
+A jelszó meghatározása után egy megerősítő képernyő jelenik meg. Győződjön meg a felsorolt összes adattal, és folytassa a telepítést. Elér egy folyamatjelző képernyőt, amely dokumentálja a telepítési folyamatot, például a következőt:
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, telepítési folyamatjelzőkkel](./media/hana-installation/image27_show_progress.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, a telepítési folyamat indikátorai](./media/hana-installation/image27_show_progress.PNG)
 
-A telepítés befejezésekor egy ilyen képernyőt kell látnia:
+A telepítés befejezésekor a következőhöz hasonló képernyőnek kell megjelennie:
 
-![Képernyőkép az SAP HANA életciklus-kezelés képernyőjéről, amely azt jelzi, hogy a telepítés befejeződött](./media/hana-installation/image28_install_finished.PNG)
+![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, amely a telepítés befejezését jelzi](./media/hana-installation/image28_install_finished.PNG)
 
-Az SAP HANA-példány nak most már készen kell lennie, és használatra kész. Képesnek kell lennie arra, hogy csatlakozzon hozzá az SAP HANA Studio. Győződjön meg arról is, hogy megkeresi és alkalmazza a legújabb frissítéseket.
+A SAP HANA példánynak most már működnie kell, és használatra készen kell állnia. Csatlakoznia kell hozzá SAP HANA studióból. Győződjön meg arról is, hogy megkeresi és alkalmazza a legújabb frissítéseket.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [AZ SAP HANA nagy példányai magas rendelkezésre állású és vészhelyreállítást jelentenek az Azure-ban](hana-overview-high-availability-disaster-recovery.md)
+- [Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban](hana-overview-high-availability-disaster-recovery.md)
 

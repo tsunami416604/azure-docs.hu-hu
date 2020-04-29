@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: e8b94b4adc39de81dbdf17dfd24fcff39532b482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593971"
 ---
-### <a name="add-grafana-secret"></a>Grafana secret hozzáadása
+### <a name="add-grafana-secret"></a>Titkos Grafana hozzáadása
 
-Cserélje `REPLACE_WITH_YOUR_SECURE_PASSWORD` le a tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje le `REPLACE_WITH_YOUR_SECURE_PASSWORD` a tokent a jelszavára, és futtassa a következő parancsokat:
 
 ```bash
 GRAFANA_USERNAME=$(echo -n "grafana" | base64)
@@ -33,9 +33,9 @@ data:
 EOF
 ```
 
-### <a name="add-kiali-secret"></a>Kiali Secret hozzáadása
+### <a name="add-kiali-secret"></a>Titkos Kiali hozzáadása
 
-Cserélje `REPLACE_WITH_YOUR_SECURE_PASSWORD` le a tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje le `REPLACE_WITH_YOUR_SECURE_PASSWORD` a tokent a jelszavára, és futtassa a következő parancsokat:
 
 ```bash
 KIALI_USERNAME=$(echo -n "kiali" | base64)

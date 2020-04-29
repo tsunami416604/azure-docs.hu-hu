@@ -1,6 +1,6 @@
 ---
-title: Megosztott képgaléria konfigurálása az Azure DevTest Labs ben | Microsoft dokumentumok
-description: Megtudhatja, hogyan konfigurálhat megosztott képgalériát az Azure DevTest Labs ben
+title: Megosztott képgyűjtemény konfigurálása a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat megosztott képtárat Azure DevTest Labs
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77589317"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
-A DevTest Labs mostantól támogatja a [Megosztott képtár](../virtual-machines/windows/shared-image-galleries.md) funkciót. Lehetővé teszi, hogy a tesztkörnyezet felhasználói egy megosztott helyről férjenek hozzá a lemezképekhez, miközben laborerőforrásokat hoznak létre. Emellett az egyénileg felügyelt virtuálisgép-lemezképek köréalakíthatja a struktúrát és a szervezetet. A Megosztott képtár szolgáltatás a következőket támogatja:
+A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
 
-- Képek felügyelt globális replikációja
-- A képek verziószámozása és csoportosítása a könnyebb kezelés érdekében
-- A zone redundáns tárolás (ZRS) fiókokkal magas szintű elérhetővé teheti a lemezképeket a rendelkezésre állási zónákat támogató régiókban. A ZRS jobb rugalmasságot kínál a zónahibákkal szemben.
-- Megosztás előfizetések között, és még a bérlők között, szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+- Lemezképek felügyelt globális replikálása
+- Lemezképek verziószámozása és csoportosítása a könnyebb felügyelet érdekében
+- A rendszerképeket a rendelkezésre állási zónákat támogató régiókban a zónák redundáns tárolási (ZRS) fiókjaival is elérhetővé teheti. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
+- Az előfizetések és a bérlők közötti megosztás szerepköralapú hozzáférés-vezérléssel (RBAC).
 
-További információt a [Megosztott képtár dokumentációjában](../virtual-machines/windows/shared-image-galleries.md)talál. 
+További információ: megosztott képkatalógus [dokumentációja](../virtual-machines/windows/shared-image-galleries.md). 
  
-Ha nagy számú felügyelt lemezképet kell karbantartania, és szeretné elérhetővé tenni őket a vállalategész területén, használhat egy megosztott képgalériát tárházként, amely megkönnyíti a képek frissítését és megosztását. A tesztkörnyezet tulajdonosaként egy meglévő megosztott képgalériát csatolhat a tesztkörnyezethez. A galéria csatlakoztatása után a tesztkörnyezet-felhasználók gépeket hozhatnak létre ezekből a legújabb képekből. A funkció egyik fő előnye, hogy a DevTest Labs most már kihasználhatja a képek megosztása a laborok között, az előfizetések között és a régiók között. 
+Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton belül elérhetővé szeretné tenni őket, a megosztott képtárat tárházként használhatja, amely megkönnyíti a képek frissítését és megosztását. A labor tulajdonosaként egy meglévő megosztott képtárat is csatolhat a laborhoz. A katalógus csatolása után a labor felhasználói a legújabb rendszerképekből hozhatnak létre gépeket. Ennek a funkciónak a legfőbb előnye, hogy a DevTest Labs mostantól kihasználhatja a képek megosztásának előnyeit a laborokban, az előfizetésekben és az egyes régiókban is. 
 
 > [!NOTE]
-> A Megosztott képtár szolgáltatással kapcsolatos költségekről a [Megosztott képtár számlázása](../virtual-machines/windows/shared-image-galleries.md#billing)című témakörben olvashat.
+> A megosztott képkatalógus szolgáltatással kapcsolatos költségek megismeréséhez tekintse meg a [megosztott képgyűjtemény számlázása](../virtual-machines/windows/shared-image-galleries.md#billing)című témakört.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-- Egyszerre csak egy megosztott képgalériát csatolhat egy tesztkörnyezethez. Ha szeretne csatolni egy másik galéria, akkor le kell választania a meglévőt, és csatolja egy másik. 
-- DevTest Labs jelenleg csak a megosztott képgaléria általános képeket támogatja.
-- DevTest Labs jelenleg nem támogatja a képek feltöltését a gyűjteménya laboron keresztül. 
-- A devtest labs mindig a lemezkép legújabb közzétett verzióját használja egy megosztott képgaléria-lemezkép használatával. Ha azonban egy lemezkép több verzióval rendelkezik, a felhasználó úgy is választhat, hogy egy korábbi verzióból hozzon létre egy gépet a Speciális beállítások lapon a virtuális gép létrehozása során.  
-- Bár a DevTest Labs automatikusan a legjobb kísérletet teszi annak biztosítására, hogy a megosztott képgaléria replikálja a képeket arra a régióra, ahol a labor létezik, ez nem mindig lehetséges. Annak elkerülése érdekében, hogy a felhasználók nak problémái vannak a virtuális gépek létrehozásával ezekből a lemezképekből, győződjön meg arról, hogy a rendszerképek már replikálódnak a labor régiójába."
+- Egyszerre csak egy megosztott képtárat lehet csatlakoztatni a laborhoz. Ha másik gyűjteményt szeretne csatolni, le kell választania a meglévőt, és csatolnia kell egy másikat. 
+- A DevTest Labs jelenleg csak általánosított rendszerképeket támogat a megosztott lemezképek gyűjteményében.
+- A DevTest Labs jelenleg nem támogatja lemezképek feltöltését a galérián a laboron keresztül. 
+- Ha a virtuális gépet megosztott képkatalógus-rendszerkép használatával hozza létre, a DevTest Labs mindig a lemezkép legújabb közzétett verzióját használja. Ha azonban egy rendszerkép több verzióval rendelkezik, a felhasználó úgy is kiválaszthatja, hogy egy korábbi verzióból hozzon létre egy gépet. Ehhez nyissa meg a speciális beállítások lapot a virtuális gép létrehozásakor.  
+- Habár a DevTest Labs automatikusan elvégzi a legjobb kísérletet annak biztosítására, hogy a megosztott képtárak replikálják a lemezképeket arra a régióra, amelyben a labor létezik, nem mindig lehetséges. Annak elkerülése érdekében, hogy a felhasználók ne hozzanak létre virtuális gépeket ezekből a lemezképekről, győződjön meg arról, hogy a lemezképek már replikálódnak a labor régiójába.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Válassza a bal oldali navigációs menü **Minden szolgáltatás lehetőséget.**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget.
 1. Válassza a **DevTest Labs** elemet a listából.
-1. A laborok listájából válassza ki a **labort.**
-1. A bal oldali menü **Beállítások** szakaszában válassza a **Konfiguráció és házirendek** lehetőséget.
-1. A bal oldali menü **Virtuálisgép-alapokkal** csoportban válassza a **Megosztott képgalériák** lehetőséget.
+1. A Labs listából válassza ki a **labort**.
+1. A bal oldali menüben a **Beállítások** szakaszban válassza a **konfiguráció és szabályzatok** lehetőséget.
+1. A bal oldali menüben válassza a **virtuális gépek alapjainak** **megosztott képgyűjtemények** lehetőséget.
 
-    ![Megosztott képgalériák menü](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
-1. Csatoljon egy meglévő megosztott képgalériát a laborhoz a **Csatolás gombra** kattintva, és válassza ki a galériát a legördülő menüben.
+    ![Megosztott képtárak menü](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
+1. Csatoljon egy meglévő megosztott képtárat a laborhoz. ehhez kattintson a **csatolás** gombra, és válassza ki a katalógust a legördülő menüben.
 
     ![Csatolás](./media/configure-shared-image-gallery/attach-options.png)
-1. Nyissa meg a csatolt katalógust, és konfigurálja a katalógust a virtuális gép létrehozásához megosztott képek **engedélyezéséhez vagy letiltásához.** A beállításhoz jelöljön ki egy képgyűjteményt a listából. 
+1. Nyissa meg a csatolt katalógust, és konfigurálja a katalógust, hogy **engedélyezze vagy tiltsa le** a virtuális gépek létrehozásához szükséges megosztott lemezképeket. A konfiguráláshoz válasszon ki egy képtárat a listából. 
 
-    Alapértelmezés szerint **az összes lemezkép használatba veendő engedélyezése, mivel a virtuálisgép-alapzat** **beállítása Igen**. Ez azt jelenti, hogy a csatolt megosztott képtárban elérhető összes kép elérhető lesz a labor felhasználó számára egy új tesztkörnyezet virtuális gép létrehozásakor. Ha bizonyos képekhez való hozzáférést korlátozni kell, módosítsa az **Összes lemezkép virtuálisgép-bázisként való használatának engedélyezése** **lehetőséget ,** és jelölje ki azokat a képeket, amelyeket a virtuális gépek létrehozásakor engedélyezni szeretne, majd kattintson a **Mentés gombra.**
+    Alapértelmezés szerint a **virtuális gépek alapértékeiként használandó összes lemezkép** **Igen**értékre van állítva. Ez azt jelenti, hogy a csatlakoztatott megosztott lemezképek katalógusában elérhető összes lemezkép elérhetővé válik egy tesztkörnyezet-felhasználó számára új tesztkörnyezet létrehozásakor. Ha bizonyos lemezképekhez való hozzáférést korlátozni kell, módosítsa a **nem**értékre a **virtuális gép alapjaként használni** kívánt rendszerképeket, majd válassza ki azokat a lemezképeket, amelyeket engedélyezni szeretne a virtuális gépek létrehozásakor, majd kattintson a **Save (Mentés** ) gombra.
 
-    ![Engedélyezés vagy letiltás](./media/configure-shared-image-gallery/enable-disable.png)
-1. A Labor-felhasználók ezután létrehozhatnak egy virtuális gépet az engedélyezett képek használatával, ha a **+Hozzáadás** gombra kattintanak, és megkeresik a képet az **alaplapon.**
+    ![Engedélyezés vagy Letiltás](./media/configure-shared-image-gallery/enable-disable.png)
+1. A labor felhasználói ezután létrehozhatnak egy virtuális gépet az elérhető lemezképek használatával, ha a **válassza ki a kiindulási** lapon a **+ Hozzáadás** és a kép keresése lehetőséget.
 
-    ![Labor felhasználók](./media/configure-shared-image-gallery/lab-users.png)
-## <a name="use-azure-resource-manager-template"></a>Az Azure Resource Manager sablon használata
+    ![Tesztkörnyezet felhasználói](./media/configure-shared-image-gallery/lab-users.png)
+## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 
-### <a name="attach-a-shared-image-gallery-to-your-lab"></a>Megosztott képtár csatolása a laborhoz
-Ha egy Azure Resource Manager-sablont használ egy megosztott képtár csatolásához a laborhoz, hozzá kell adnia azt az Erőforrás-kezelő sablon erőforrások szakasza alatt, ahogy az a következő példában látható:
+### <a name="attach-a-shared-image-gallery-to-your-lab"></a>Megosztott képgyűjtemény csatolása a laborhoz
+Ha Azure Resource Manager sablonnal csatlakoztat egy megosztott képtárat a laborhoz, azt a Resource Manager-sablon erőforrások szakaszában kell hozzáadnia, az alábbi példában látható módon:
 
 ```json
 "resources": [
@@ -89,11 +89,11 @@ Ha egy Azure Resource Manager-sablont használ egy megosztott képtár csatolás
 }
 ```
 
-Egy teljes Erőforrás-kezelő sablon például lásd az alábbi Erőforrás-kezelő sablon minták nyilvános GitHub-tárházban: [Konfigurálása egy megosztott képtár létrehozása közben egy tesztkörnyezet.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)
+A Resource Manager-sablonok teljes leírását lásd: ezek a Resource Manager-sablonok a nyilvános GitHub-tárházban: a [közös rendszerkép-katalógus konfigurálása a tesztkörnyezet létrehozásakor](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured).
 
-## <a name="use-api"></a>AZ API használata
+## <a name="use-api"></a>API használata
 
-### <a name="shared-image-galleries---create-or-update"></a>Megosztott képgalériák – létrehozás vagy frissítés
+### <a name="shared-image-galleries---create-or-update"></a>Megosztott képtárak – létrehozás vagy frissítés
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,7 +107,7 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>Megosztott képgalériák képek - Lista 
+### <a name="shared-image-galleries-images---list"></a>Megosztott képtárak képei – lista 
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
@@ -117,4 +117,4 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a virtuális gép létrehozásáról szóló alábbi cikkeket a csatolt megosztott képtárból származó kép használatával: [Virtuális gép létrehozása a katalógusból megosztott képpel](add-vm-use-shared-image.md)
+Tekintse meg a virtuális gép létrehozása a csatolt megosztott rendszerképből rendszerkép használatával című cikket a következő cikkekből: virtuális gép [létrehozása megosztott rendszerkép használatával a gyűjteményből](add-vm-use-shared-image.md)

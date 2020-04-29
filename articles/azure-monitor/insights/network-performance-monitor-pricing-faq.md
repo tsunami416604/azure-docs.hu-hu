@@ -1,115 +1,115 @@
 ---
-title: Általános kérdések az Azure Network Performance Monitorhoz | Microsoft dokumentumok
-description: Gyakori kérdések – Azure Hálózati teljesítményfigyelő
+title: Az Azure Network Performance Monitor díjszabása – GYIK | Microsoft Docs
+description: Gyakori kérdések – Azure Network Performance Monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77654392"
 ---
-# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Hálózati teljesítményfigyelő díjváltozásai
+# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Network Performance Monitor díjszabásának változásai
 
-Meghallgattuk a visszajelzéseit, és a közelmúltban [új díjszabási élményt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) vezettünk be az Azure különböző figyelési szolgáltatásaihoz. Ez a cikk az Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) díjszabási módosításait könnyen olvasható kérdés- és válaszformátumban rögzíti.
+Meghallgatta visszajelzését, és a közelmúltban bevezetett egy [új díjszabást](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure különböző monitorozási szolgáltatásaihoz. Ez a cikk az Azure [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) szolgáltatással kapcsolatos árképzési változásokat rögzíti egy könnyen olvasható kérdés-és válasz formátumban.
 
-A Hálózati teljesítményfigyelő három összetevőből áll:
+A Network Performance Monitor három összetevőből áll:
 * [Teljesítménymonitorozás](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Szolgáltatásvégpont-figyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
+* [Szolgáltatás végpontjának figyelője](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute-figyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-A következő szakaszok ismertetik az NPM-összetevők díjváltozásait.
+A következő részek a NPM összetevőinek díjszabási változásait ismertetik.
 
 ## <a name="performance-monitor"></a>Teljesítménymonitorozás
 
-**Hogyan számlázták a Teljesítményfigyelő használatát a régi modellben?**
+**Hogyan számlázta a Teljesítményfigyelő a régi modellben?**
 
-Az NPM számlázása két összetevő használatán és fogyasztásán alapult:
-* **Csomópontok:** Minden szintetikus tranzakció a csomópontokból származik, és a csomópontokon végződik. A csomópontokat ügynököknek vagy Microsoft Management Agents-eknek is nevezik.
-* **Adatok**: A különböző hálózati tesztek eredményeit a Log Analytics-munkaterület tárolja.
+A NPM-számlázás a két összetevő használatának és felhasználásának függvénye:
+* **Csomópontok**: az összes szintetikus tranzakció származik és leáll a csomópontokon. A csomópontokat ügynöknek vagy Microsoft Management agentnek is nevezzük.
+* **Adatmennyiség: a**különböző hálózati tesztek eredményei a log Analytics munkaterületen vannak tárolva.
 
-A régi modell szerint a számlát a csomópontok száma és a létrehozott adatok mennyisége alapján számították ki. 
+A régi modellben a számla kiszámítása a csomópontok száma és a generált adatok mennyisége alapján történik. 
 
-**Hogyan történik a Teljesítményfigyelő használata az új modell alatt?**
+**Hogyan számítják fel a Teljesítményfigyelő használatát az új modell alapján?**
 
-Az NPM Teljesítményfigyelő szolgáltatása mostantól a következők kombinációja alapján kerül számlázásra: 
+A NPM Teljesítményfigyelő funkciója mostantól a következő kombináción alapul: 
 
-* Figyelt alhálózati hivatkozások
+* Figyelt alhálózati kapcsolatok
 * Adatmennyiség
 
-**Mi az alhálózati kapcsolat?**
+**Mi az alhálózat-hivatkozás?**
 
-A Teljesítményfigyelő a hálózat két vagy több helye közötti kapcsolatot figyeli. Az egyik alhálózaton lévő csomópontok vagy ügynökök csoportja és egy másik alhálózat csomópontjai közötti kapcsolatot alhálózati kapcsolatnak nevezzük.
+A Teljesítményfigyelő figyeli a hálózat két vagy több helye közötti kapcsolatot. Az egyik alhálózaton lévő csomópontok vagy ügynökök csoportjának, valamint egy másik alhálózat csomópontjainak egy csoportjának a kapcsolatát alhálózati kapcsolatnak nevezik.
 
-**Két alhálózatom van (A és B), és minden alhálózaton több ügynök van. A Teljesítményfigyelő az A alhálózat összes ügynökének a B alhálózat összes ügynökéhez való kapcsolódását figyeli. Kell-e díjat fizetnem az alhálózati kapcsolatok száma alapján?**
+**Két alhálózattal rendelkezem (A és B), és az egyes alhálózatokon több ügynök is van. A Teljesítményfigyelő az A alhálózaton lévő összes ügynök kapcsolatát figyeli a B alhálózaton lévő összes ügynökkel. Az alhálózatok közötti kapcsolatok száma alapján kell díjat fizetni?**
 
-Nem. Számlázási célokra az A alhálózatés a B alhálózat közötti összes kapcsolat egy alhálózati kapcsolatba van csoportosítva. Egyetlen kapcsolatért kell fizetnie. A Teljesítményfigyelő továbbra is figyeli az egyes alhálózatok különböző ügynökei közötti kapcsolatot.
+Nem. Számlázási célokra az A alhálózatról a B alhálózatra irányuló összes kapcsolat egy alhálózati kapcsolatba van csoportosítva. Egyetlen kapcsolatban számítunk fel díjat. A Teljesítményfigyelő továbbra is figyeli az egyes alhálózatokon lévő különböző ügynökök közötti kapcsolatokat.
 
-**Milyen költségekkel jár az alhálózati kapcsolat figyelése?**
+**Milyen költségekkel jár az alhálózat kapcsolatának figyelése?**
 
-A teljes hónap egyetlen alhálózati kapcsolatfigyelési költségeiről a Ping Mesh című [szakaszban](https://azure.microsoft.com/pricing/details/network-watcher/) található.
+A teljes hónapra vonatkozó egyetlen alhálózati kapcsolat figyelési díjait a [ping Mesh](https://azure.microsoft.com/pricing/details/network-watcher/) szakaszban találja.
 
-**Milyen díjakat generál a Teljesítményfigyelő az adatokért?**
+**Mik a Teljesítményfigyelő által generált adatok díjai?**
 
-A betöltési díj (adatok feltöltése a Log Analytics munkaterületre az Azure Monitor, feldolgozás és indexelés) érhető el a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/log-analytics/) a Log Analytics, az adatok betöltése szakaszban érhető el. Az adatmegőrzési díj (azaz az ügyfél által az első hónapban megőrzött adatok) szintén elérhető az [árképzési oldalon](https://azure.microsoft.com/pricing/details/log-analytics/), az Adatmegőrzés szakaszban.
+A betöltési díj (adatfeltöltés Log Analytics munkaterületre Azure Monitor, feldolgozás és indexelés során) a Log Analytics [díjszabási lapján](https://azure.microsoft.com/pricing/details/log-analytics/) érhető el az adatfeldolgozási szakaszban. Az adatmegőrzési díj (vagyis az ügyfél az első hónap után megőrzött adatok) a [díjszabás lapon](https://azure.microsoft.com/pricing/details/log-analytics/)is elérhető az adatmegőrzési szakaszban.
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
-**Milyen díjakat számítunk fel az ExpressRoute-figyelő használatáért?**
+**Milyen díjak vonatkoznak a ExpressRoute-figyelő használatára?**
 
-Az ExpressRoute-figyelő díjait a figyelés során generált adatok mennyisége alapján számítjuk fel. További információt a "Milyen díjakat generál a Teljesítményfigyelő?" című témakörben talál.
+A ExpressRoute-figyelő díjait a figyelés során generált adatok mennyisége alapján számítjuk fel. További információ: "Mik a Teljesítményfigyelő által generált adatok díjai?"
 
-**ExpressRoute-figyelővel több ExpressRoute-áramkört figyelek. A megfigyelt áramkörök száma alapján kell fizetnem?**
+**ExpressRoute-figyelőt használok több ExpressRoute-áramkör figyelésére. Számítanak fel díjat a figyelt áramkörök száma alapján?**
 
-Az áramkörök száma vagy a társviszony-létesítés típusa (például a privát társviszony-létesítés, a Microsoft társviszony-létesítése) alapján nem számítunk fel díjat. Az adatok mennyisége alapján számítunk fel díjat, ahogy azt korábban kifejtettük.
+Nem számítunk fel díjat az áramkörök száma vagy a társítás típusa (például privát partneri kapcsolatok, Microsoft-társ) alapján. Az adatmennyiség alapján számolunk fel díjat, a korábban leírtaknak megfelelően.
 
-**Mi az az adatmennyiség, amely akkor jön létre, ha az ExpressRoute egyetlen áramkört figyel?**
+**Milyen mennyiségű adatmennyiség keletkezik, amikor a ExpressRoute egyetlen áramkört figyel?**
 
-A havonta generált adatok mennyisége, amikor az ExpressRoute privát társviszony-létesítési kapcsolatot figyel, a következő:
+A havonta generált adatmennyiség, amikor a ExpressRoute a privát társ-létesítési kapcsolatot figyeli, a következő:
 
-|Percentilis      |Adatok/hó (MB)|
+|Percentilis      |Adatmennyiség/hónap (MB)|
 | :---:          |           ---:|
-|<sup>50.-e</sup> |            192|
-|<sup>60.-a</sup> |            256|
-|<sup>70.-e</sup> |            360|
-|<sup>80.-a</sup> |            498|
-|<sup>90.-én</sup> |            870|
-|<sup>95., 19.00.0</sup> |           1560|
+|50<sup>th</sup> |            192|
+|60<sup>th</sup> |            256|
+|70<sup>th</sup> |            360|
+|80<sup>th</sup> |            498|
+|90<sup>th</sup> |            870|
+|95<sup>th</sup> |           1560|
 
 
-A tábla szerint az 50. percentilisnél lévő ügyfelek 192 MB adatot fizetnek. Az első hónapban 2,30 USD/GB értékben az áramkör figyelésének költsége 0,43 USD (= 192 * 2,30 / 1024).
+A táblázat szerint az 50%-os számú ügyfél 192 MB adatmennyiséget fizet. Az első hónapban $2.30/GB-onként az áramkör figyelésére fordított költségek $0,43 USD (= 192 * 2,30/1024).
 
-**Mi az oka az adatmennyiség változásainak?**
+**Milyen okai vannak az adatmennyiség változásainak?**
 
-A létrehozott figyelési adatok mennyisége több tényezőtől függ, például:
-* Ügynökök száma. A hibaelkülönítés pontossága az ügynökök számának növekedésével nő.
-* Ugrások száma a hálózaton.
-* A forrás és a cél közötti elérési utak száma.
+A létrehozott megfigyelési adatok mennyisége több tényezőtől függ, például:
+* Ügynökök száma. A hibák elkülönítésének pontossága az ügynökök számának növekedésével növekszik.
+* A hálózaton lévő ugrások száma.
+* A forrás és a cél közötti elérési utak száma
 
-A magasabb százalékos (az előző táblázatban) lévő ügyfelek általában a helyszíni hálózatuk több nézőpontjából figyelik az áramköreiket. Több ügynök is mélyebbre kerül a hálózatban, távolabb a szolgáltató peremhálózati útválasztójától. Az ügynökök gyakran elhelyezett több felhasználói helyek, ágak és állványok adatközpontokban.
+A magasabb százalékos értékkel rendelkező ügyfelek (az előző táblázatban) általában a helyszíni hálózaton lévő különböző nézőpontokból származó áramköröket figyelik. Több ügynök is mélyebbre kerül a hálózatban, a szolgáltató peremhálózati útválasztóján kívül. Az ügynököket gyakran több felhasználói hely, ág és állvány számára helyezik el az adatközpontokban.
 
-## <a name="service-endpoint-monitor"></a>Szolgáltatásvégpont-figyelő
+## <a name="service-endpoint-monitor"></a>Szolgáltatás végpontjának figyelője
 
-**Milyen díjakat számítunk fel a Service Endpoint Monitor használatáért?**
+**Milyen díjak vonatkoznak a Service Endpoint monitor használatára?**
 
-A Szolgáltatásvégpont-figyelő használatának díjai a következők alapján kerülnek kiszámításra:
+A Service Endpoint monitor használati díjait a következők alapján számítjuk ki:
 * Kapcsolatok száma
-* Az adatok mennyisége
+* Adatmennyiség
 
-**Mi a kapcsolat?**
+**Mi a kapcsolatok?**
 
-A kapcsolat az egyetlen ügynök egyetlen végpontjának (URL-címének vagy hálózati szolgáltatásának) elérésének tesztje a teljes hónapra vonatkozóan. Például a kapcsolat figyelése bing.com három ügynök három kapcsolatot jelent.
+A kapcsolat egy végpont (URL-cím vagy hálózati szolgáltatás) egyetlen ügynökből való elérésének tesztelése az egész hónapra. Például a három ügynök bing.com való kapcsolatának figyelése három kapcsolatot jelent.
 
-**Milyen költségekkel jár a Service Endpoint Monitor?**
+**Milyen költségekkel jár a szolgáltatás-végpont figyelője?**
 
-Tekintse meg a [kapcsolat figyelése](https://azure.microsoft.com/pricing/details/network-watcher/) szakasz a végpont figyelésének költségét a teljes hónapra. Az adatok díja a Log Analytics [díjszabási oldalán](https://azure.microsoft.com/pricing/details/log-analytics/) érhető el, az Adatbetöltés szakaszban.
+A végpontok teljes hónapra történő figyelésének költségeit a [Kapcsolódás figyelése](https://azure.microsoft.com/pricing/details/network-watcher/) című szakaszban találja. Az adatfeltöltés az adatfeldolgozási szakaszban Log Analytics [díjszabási oldalán](https://azure.microsoft.com/pricing/details/log-analytics/) érhető el.
 
 ## <a name="references"></a>Referencia
 
-[Log Analytics-díjszabás – Gyakori](https://azure.microsoft.com/pricing/details/log-analytics/)kérdések : A GYIK rész az ingyenes szintről, a csomópontonkénti díjszabásról és az egyéb díjszabási részletekről tartalmaz információkat.
+[Log Analytics díjszabás – gyakori](https://azure.microsoft.com/pricing/details/log-analytics/)kérdések: a GYIK szakasz az ingyenes csomaggal, a csomópontok díjszabásával és egyéb díjszabással kapcsolatos információkat tartalmaz.
 

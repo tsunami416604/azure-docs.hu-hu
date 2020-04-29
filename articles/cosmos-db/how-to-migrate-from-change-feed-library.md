@@ -1,57 +1,57 @@
 ---
-title: Áttelepítés a változáscsatorna-feldolgozókönyvtárról az Azure Cosmos DB .NET V3 SDK-ba
-description: Ismerje meg, hogyan telepítheti át az alkalmazást a változáscsatorna-feldolgozókód-könyvtárból az Azure Cosmos DB SDK V3-ba
+title: Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
+description: Megtudhatja, hogyan migrálhatja az alkalmazást a refeed Processor Library módosítása a Azure Cosmos DB SDK v3 verzióra
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588883"
 ---
-# <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Áttelepítés a változáscsatorna-feldolgozókönyvtárról az Azure Cosmos DB .NET V3 SDK-ba
+# <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 
-Ez a cikk azokat a szükséges lépéseket ismerteti, amelyek a [változáscsatorna-processzorkönyvtárat](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) a .NET SDK (más néven .NET V3 SDK) [módosítási hírcsatorna](change-feed.md) szolgáltatására használó meglévő alkalmazáskódjának áttelepítéséhez szükségesek.
+Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepítheti a meglévő alkalmazás kódját, amely a a .NET SDK legújabb verziójában (más néven .NET v3 SDK) módosítja a [hírcsatorna-feldolgozó függvénytárának](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) módosítása funkciót a [változási](change-feed.md) hírcsatorna szolgáltatásban.
 
-## <a name="required-code-changes"></a>Szükséges kódmódosítások
+## <a name="required-code-changes"></a>Szükséges kód módosításai
 
-A .NET V3 SDK számos törési módosítást hajt végre, az alkalmazás áttelepítésének legfontosabb lépései az alábbiak:
+A .NET v3 SDK több feltörési változást is tartalmaz, az alábbi lépésekkel telepítheti át az alkalmazást:
 
-1. A `DocumentCollectionInfo` példányok `Container` átalakítása a figyelt és a lízingeléstárolók hivatkozásaivá.
-1. `WithProcessorOptions` A használt testreszabásokat frissíteni `WithLeaseConfiguration` kell `WithPollInterval` a használathoz és az intervallumokhoz, `WithStartTime` [a kezdési időponthoz](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális cikkszám meghatározásához.
-1. Állítsa `processorName` be `GetChangeFeedProcessorBuilder` a be, `ChangeFeedProcessorOptions.LeasePrefix`hogy megfeleljen `string.Empty` a konfigurált érték , vagy használja másképp.
-1. A módosítások már nem `IReadOnlyList<Document>`lesznek kézbesítve, `IReadOnlyCollection<T>` hanem `T` egy olyan típus, amelyet meg kell határoznia, már nincs alap cikkosztály.
-1. A módosítások kezeléséhez már nincs szükség megvalósításra, hanem meghatalmazottat kell [definiálnia.](change-feed-processor.md#implementing-the-change-feed-processor) A delegált lehet statikus függvény, vagy ha a végrehajtások között állapotot kell fenntartania, létrehozhatja saját osztályát, és átadhat egy példánymetódust delegáltként.
+1. Alakítsa át `DocumentCollectionInfo` a példányokat a figyelt és a bérleti tárolók `Container` hivatkozásaira.
+1. A `WithProcessorOptions` használatban lévő testreszabásokat a használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, `WithStartTime` a [Kezdési idő](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
+1. A `processorName` on `GetChangeFeedProcessorBuilder` érték megadásával egyeztetheti a `ChangeFeedProcessorOptions.LeasePrefix`vagy `string.Empty` más módon konfigurált értéket.
+1. A módosítások már nem `IReadOnlyList<Document>`kerülnek be a rendszerbe, hanem az a `IReadOnlyCollection<T>` hely, `T` ahol meg kell határozni a kívánt típust, már nincs alapelem osztálya.
+1. A módosítások kezeléséhez már nincs szükség megvalósításra, hanem meg kell [adnia egy delegált](change-feed-processor.md#implementing-the-change-feed-processor). A delegált lehet statikus függvény, vagy ha meg kell őriznie az állapotot a végrehajtások között, létrehozhat egy saját osztályt, és delegált néven is átadhat egy példány-metódust.
 
-Ha például a változáscsatorna-processzor létrehozásának eredeti kódja a következőképpen néz ki:
+Ha például az eredeti kód a módosítási hírcsatorna processzorának összeállítására szolgál, a következőképpen néz ki:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
 
-Az áttelepített kód így fog kinézni:
+Az áttelepített kód a következőképpen fog kinézni:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
 
-És a delegált, lehet statikus módszer:
+A delegált pedig statikus metódus lehet:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
 
-## <a name="state-and-lease-container"></a>Állami és lízingkonténer
+## <a name="state-and-lease-container"></a>Állapot-és bérlet tároló
 
-A változáscsatorna-processzorkönyvtárhoz hasonlóan a .NET V3 SDK módosítási hírcsatorna-szolgáltatása [is egy címbérlet-tárolót](change-feed-processor.md#components-of-the-change-feed-processor) használ az állapot tárolásához. A sémák azonban eltérőek.
+A Restore Processor Library-hez hasonlóan a .NET v3 SDK-ban a hírcsatorna módosítása szolgáltatás egy [bérlet tárolót](change-feed-processor.md#components-of-the-change-feed-processor) használ az állapot tárolásához. A sémák azonban eltérőek.
 
-Az SDK V3 változáscsatorna-processzor észleli a régi könyvtárállapotokat, és az áttelepített alkalmazáskód első végrehajtásakor automatikusan áttelepíti azt az új sémába. 
+Az SDK v3 változási hírcsatorna-feldolgozó processzora észlelni fogja a régi függvénytár-állapotot, és automatikusan áttelepíti az új sémára az áttelepített alkalmazás kódjának első végrehajtásakor. 
 
-Biztonságosan leállíthatja az alkalmazást a régi kód használatával, áttelepítheti a kódot az új verzióra, elindíthatja az áttelepített alkalmazást, és az alkalmazás leállítása során történt módosításokat az új verzió felveszi és feldolgozza.
+A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a kódot az új verzióra, elindíthatja az áttelepített alkalmazást, és az alkalmazás leállításakor bekövetkezett változásokat az új verzió fogja felvenni és feldolgozni.
 
 > [!NOTE]
-> A függvénytárat használó alkalmazásokból a .NET V3 SDK-ba való áttelepítés egyirányú, mivel az állapot (bérletek) átkerülnek az új sémába. Az áttelepítés nem visszamenőlegesen kompatibilis.
+> A kódtárat a .NET v3 SDK-val használó alkalmazásokból való Migrálás egyirányú, mivel az állapot (bérletek) át lesz telepítve az új sémába. Az áttelepítés visszafelé nem kompatibilis.
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -59,8 +59,8 @@ Biztonságosan leállíthatja az alkalmazást a régi kód használatával, átt
 
 ## <a name="next-steps"></a>További lépések
 
-Most a következő cikkekben olvashat bővebben a hírcsatorna-feldolgozó módosításáról:
+A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
-* [A módosítási hírcsatorna-processzor áttekintése](change-feed-processor.md)
+* [A hírcsatorna-feldolgozó változásának áttekintése](change-feed-processor.md)
 * [A változáscsatorna-becslő használata](how-to-use-change-feed-estimator.md)
 * [Változáscsatorna-feldolgozó indításának időpontja](how-to-configure-change-feed-start-time.md)

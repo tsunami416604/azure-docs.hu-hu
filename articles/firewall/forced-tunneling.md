@@ -1,6 +1,6 @@
 ---
-title: Az Azure Firewall kényszerített bújtatása
-description: Beállíthatja a kényszerített bújtatást, hogy az internethez kötött forgalmat egy további tűzfalra vagy hálózati virtuális készülékre irányítsa további feldolgozáscéljából.
+title: Kényszerített bújtatás Azure Firewall
+description: A kényszerített bújtatást beállíthatja úgy, hogy az internetes forgalmat egy további tűzfalra vagy hálózati virtuális készülékre irányítsa további feldolgozás céljából.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: victorh
 ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77597276"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Az Azure Firewall kényszerített bújtatása (előzetes verzió)
+# <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall kényszerített bújtatás (előzetes verzió)
 
-Beállíthatja, hogy az Azure Firewall az összes internethez kötött forgalmat egy kijelölt következő ugráshoz irányítsa, ahelyett, hogy közvetlenül az internetre menne. Előfordulhat például, hogy egy helyszíni tűzfal vagy más hálózati virtuális berendezés (NVA) rendelkezik a hálózati forgalom feldolgozásához, mielőtt azt átadnák az internetnek.
+A Azure Firewall konfigurálható úgy, hogy az összes internetes forgalmat a következő ugrásra irányítsa, ahelyett, hogy közvetlenül az internethez kellene jutnia. Előfordulhat például, hogy egy helyszíni peremhálózati tűzfallal vagy más hálózati virtuális berendezéssel (NVA) szeretné feldolgozni a hálózati forgalmat az internetre való továbbítás előtt.
 
 > [!IMPORTANT]
-> Az Azure Firewall kényszerített bújtatása jelenleg nyilvános előzetes verzióban.
+> Azure Firewall kényszerített bújtatás jelenleg nyilvános előzetes verzióban érhető el.
 >
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Alapértelmezés szerint kényszerített bújtatás nem engedélyezett az Azure Firewall annak biztosítása érdekében, az összes kimenő Azure-függőség teljesülnek. Az *AzureFirewallSubnet* felhasználói által definiált útvonalkonfigurációi, amelyek alapértelmezett útvonala nem megy közvetlenül az internetre, le vannak tiltva.
+Alapértelmezés szerint a kényszerített bújtatás nem engedélyezett a Azure Firewallon annak biztosítása érdekében, hogy az összes kimenő Azure-függősége teljesül. A felhasználó által megadott route-(UDR-) konfigurációk a *AzureFirewallSubnet* , amelyek alapértelmezett útvonala nem közvetlenül az internetre van letiltva.
 
-## <a name="forced-tunneling-configuration"></a>Kényszerített bújtatási konfiguráció
+## <a name="forced-tunneling-configuration"></a>Kényszerített bújtatás konfigurálása
 
-A kényszerített bújtatás támogatása érdekében a szolgáltatáskezelési forgalom elkülönül az ügyfélforgalomtól. Egy további dedikált alhálózat nevű *AzureFirewallManagementSubnet* (minimális alhálózati méret /26) van szükség a saját társított nyilvános IP-címet. Az alhálózaton csak az internetre szóló alapértelmezett útvonal engedélyezett, és a BGP-útvonal propagálását le kell tiltani.
+A kényszerített bújtatás támogatásához a szolgáltatás-felügyeleti forgalom el van különítve az ügyfelek forgalmával. Egy *AzureFirewallManagementSubnet* nevű további dedikált alhálózat (minimális alhálózat mérete/26) szükséges a saját társított nyilvános IP-címéhez. Az ezen az alhálózaton engedélyezett egyetlen útvonal az Internet alapértelmezett útvonala, a BGP-útvonalak propagálását pedig le kell tiltani.
 
-Ha a BGP-n keresztül meghirdetett alapértelmezett útvonallal rendelkezik a forgalom helyszíni kikényszerítéséhez, létre kell hoznia az *AzureFirewallSubnet* és az *AzureFirewallManagementSubnet* alkalmazást a tűzfal üzembe helyezése előtt, és rendelkeznie kell egy UDR-rel az internetre, és le kell tiltania a **virtuális hálózati átjáró propagálását.**
+Ha a BGP-n keresztül meghirdetett alapértelmezett útvonalon keresztül kényszeríti a forgalmat a helyszíni rendszerbe, létre kell hoznia a *AzureFirewallSubnet* és a *AzureFirewallManagementSubnet* a tűzfal üzembe helyezése előtt, és rendelkeznie kell egy, az internetre irányuló alapértelmezett útvonallal, és a **virtuális hálózati átjáró útvonal-propagálása** le van tiltva.
 
-Ebben a konfigurációban az *AzureFirewallSubnet* mostantól útvonalakat bármely helyszíni tűzfalvagy NVA a forgalom feldolgozásához, mielőtt az átaz internetre. Ezeket az útvonalakat a BGP-n keresztül az *AzureFirewallSubnet* szolgáltatásnak is közzéteheti, ha **a virtuális hálózati átjáróútvonal-propagálás** engedélyezve van ezen az alhálózaton.
+Ezen a konfiguráción belül a *AzureFirewallSubnet* mostantól útvonalakat is tartalmazhatnak bármely helyszíni TŰZFAL vagy NVA számára, hogy a forgalmat az internetre való továbbítás előtt dolgozzák fel. Ezeket az útvonalakat a BGP-n keresztül is közzéteheti, ha engedélyezve van a **virtuális hálózati átjáró** *AzureFirewallSubnet* ezen az alhálózaton.
 
-Létrehozhat például egy alapértelmezett útvonalat az *AzureFirewallSubnet-en* a VPN-átjáróval a következő ugrásként a helyszíni eszközhöz való eljuttatáshoz. Vagy engedélyezheti **a virtuális hálózati átjáró útvonalpropagálását** a megfelelő útvonalak leválasztásához a helyszíni hálózathoz.
+Létrehozhat például egy alapértelmezett útvonalat a *AzureFirewallSubnet* a VPN-átjáróval a következő ugrásként a helyszíni eszköz beszerzéséhez. Vagy engedélyezheti a **virtuális hálózati átjáró útvonal-propagálását** , hogy lekérje a megfelelő útvonalakat a helyszíni hálózatra.
 
 ![Virtuális hálózati átjáró útvonalának propagálása](media/forced-tunneling/route-propagation.png)
 
-Miután konfigurálta az Azure Firewall-t a kényszerített bújtatás támogatására, nem vonhatja vissza a konfigurációt. Ha eltávolítja az összes többi IP-konfigurációt a tűzfalon, a felügyeleti IP-konfiguráció is törlődik, és a tűzfal felvan osztva. A felügyeleti IP-konfigurációhoz rendelt nyilvános IP-cím nem távolítható el, de másik nyilvános IP-címet rendelhet hozzá.
+Miután konfigurálta Azure Firewall a kényszerített bújtatás támogatásához, nem vonhatja vissza a konfigurációt. Ha eltávolítja az összes többi IP-konfigurációt a tűzfalon, a rendszer eltávolítja a felügyeleti IP-konfigurációt is, és a tűzfal fel van foglalva. A felügyeleti IP-konfigurációhoz rendelt nyilvános IP-cím nem távolítható el, de másik nyilvános IP-címet is hozzárendelhet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Az Azure Tűzfal telepítése és konfigurálása hibrid hálózatban az Azure Portal használatával](tutorial-hybrid-portal.md)
+- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)

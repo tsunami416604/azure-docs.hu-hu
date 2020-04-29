@@ -1,6 +1,6 @@
 ---
-title: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen | Microsoft dokumentumok
-description: SAP S/4HANA vagy BW/4HANA üzembe helyezése Egy Azure virtuális gépen
+title: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen | Microsoft Docs
+description: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -16,150 +16,150 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616210"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban
-Ez a cikk ismerteti, hogyan telepítheti az S/4HANA az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3.0 használatával. Más SAP HANA-alapú megoldások, például a BW/4HANA üzembe helyezéséhez kövesse ugyanazokat a lépéseket.
+Ez a cikk bemutatja, hogyan helyezhet üzembe S/4HANA az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. Más SAP HANA-alapú megoldások, például a BW/4HANA üzembe helyezéséhez kövesse ugyanezeket a lépéseket.
 
 > [!NOTE]
-> Az SAP CAL-ről további információt az [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén talál. Az SAP-nak blogja is van az [SAP Cloud Appliance Library 3.0-ról.](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)
+> Az SAP CAL-ról az [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén talál további információt. Az SAP a 3,0-es [SAP Cloud Appliance Library könyvtáráról](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)is tartalmaz blogot.
 > 
 > [!NOTE]
-> 2017. május 29-től használhatja az Azure Resource Manager üzembe helyezési modelljét a kevésbé preferált klasszikus üzembe helyezési modell mellett az SAP CAL üzembe helyezéséhez. Azt javasoljuk, hogy használja az új Resource Manager telepítési modell, és figyelmen kívül hagyja a klasszikus központi telepítési modell.
+> 2017. május 29-én az SAP CAL üzembe helyezéséhez a kevésbé előnyben részesített klasszikus üzemi modell mellett használhatja a Azure Resource Manager üzemi modellt is. Javasoljuk, hogy az új Resource Manager-alapú üzemi modellt használja, és hagyja figyelmen kívül a klasszikus üzemi modellt.
 
-## <a name="step-by-step-process-to-deploy-the-solution"></a>Lépésről lépésre a megoldás üzembe helyezéséhez
+## <a name="step-by-step-process-to-deploy-the-solution"></a>Lépésenkénti folyamat a megoldás üzembe helyezéséhez
 
-A következő képernyőképek sorozata bemutatja, hogyan telepítheti az S/4HANA-t az Azure-on az SAP CAL használatával. A folyamat ugyanúgy működik más megoldások, mint például a BW/4HANA esetében.
+A következő képernyőképek azt mutatják be, hogyan helyezhet üzembe S/4HANA az Azure-ban az SAP CAL használatával. A folyamat ugyanúgy működik, mint az egyéb megoldások, például a BW/4HANA.
 
-A **Megoldások** lap az Azure-ban elérhető SAP CAL HANA-alapú megoldások at jeleníti meg. **SAP S/4HANA 1610 FPS01, Teljesen aktivált készülék** a középső sorban van:
+A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások láthatók. **SAP S/4HANA 1610 FPS01, teljesen aktivált készülék** a középső sorban:
 
-![SAP CAL megoldások](./media/cal-s4h/s4h-pic-1c.png)
+![SAP CAL-megoldások](./media/cal-s4h/s4h-pic-1c.png)
 
-### <a name="create-an-account-in-the-sap-cal"></a>Fiók létrehozása az SAP CAL-ban
-1. Az SAP CAL-ba való első bejelentkezéshez használja az SAP S-felhasználót vagy az SAP-hoz regisztrált más felhasználót. Ezután definiálja az SAP CAL-fiók által használt SAP CAL az Azure-ban üzembe helyezése. A fiókdefinícióban a következőket kell tenni:
+### <a name="create-an-account-in-the-sap-cal"></a>Fiók létrehozása az SAP CAL-ben
+1. Ha első alkalommal szeretne bejelentkezni az SAP CAL-be, használja az SAP S-User vagy más, az SAP-ban regisztrált felhasználót. Ezután Definiáljon egy SAP CAL-fiókot, amelyet az SAP CAL használ a berendezések Azure-beli üzembe helyezéséhez. A fiók definíciójában a következőket kell tennie:
 
-    a. Válassza ki a központi telepítési modell az Azure-ban (Resource Manager vagy klasszikus).
+    a. Válassza ki az Azure-beli üzembe helyezési modellt (Resource Manager vagy klasszikus).
 
-    b. Adja meg Azure-előfizetését. Egy SAP CAL-fiók csak egy előfizetéshez rendelhető hozzá. Ha egynél több előfizetésre van szüksége, létre kell hoznia egy másik SAP CAL-fiókot.
+    b. Adja meg az Azure-előfizetését. Egy SAP CAL-fiók csak egy előfizetéshez rendelhető hozzá. Ha egynél több előfizetésre van szüksége, létre kell hoznia egy másik SAP CAL-fiókot.
 
     c. Adja meg az SAP CAL engedélyt az Azure-előfizetésében való üzembe helyezéshez.
 
    > [!NOTE]
-   >  A következő lépések bemutatják, hogyan hozhat létre egy SAP CAL-fiókot az Erőforrás-kezelő központi telepítések. Ha már rendelkezik egy SAP CAL-fiókkal, amely kapcsolódik a klasszikus üzembe helyezési modellhez, az alábbi lépéseket *kell* végrehajtania egy új SAP CAL-fiók létrehozásához. Az új SAP CAL-fiók nak telepítenie kell az Erőforrás-kezelő modellben.
+   >  A következő lépések bemutatják, hogyan hozhat létre SAP CAL-fiókot a Resource Manager-alapú üzemelő példányokhoz. Ha már rendelkezik egy, a klasszikus üzemi modellel társított SAP CAL-fiókkal *, akkor az* alábbi lépéseket követve hozzon létre egy új SAP Cal-fiókot. Az új SAP CAL-fióknak üzembe kell helyeznie a Resource Manager-modellben.
 
-1. Hozzon létre egy új SAP CAL-fiókot. A Fiókok lapon három lehetőség közül választhat az **Azure:The Accounts** page shows three choices for Azure: 
+1. Hozzon létre egy új SAP CAL-fiókot. A **fiókok** lapon három választási lehetőség látható az Azure-hoz: 
 
-    a. **A Microsoft Azure (klasszikus)** a klasszikus üzembe helyezési modell, és már nem előnyös.
+    a. A **Microsoft Azure (klasszikus)** a klasszikus üzemi modell, és már nem ajánlott.
 
-    b. **A Microsoft Azure** az új Resource Manager telepítési modell.
+    b. **Microsoft Azure** az új Resource Manager-alapú üzemi modell.
 
-    c. **A 21Vianet által üzemeltetett Windows Azure** egy olyan lehetőség Kínában, amely a klasszikus telepítési modellt használja.
+    c. A **21Vianet által üzemeltetett Windows Azure** egy olyan lehetőség Kínában, amely a klasszikus üzemi modellt használja.
 
-    Az Erőforrás-kezelő modellben való üzembe helyezéshez válassza a **Microsoft Azure**lehetőséget.
+    A Resource Manager-modellben való üzembe helyezéshez válassza a **Microsoft Azure**lehetőséget.
 
     ![SAP CAL-fiók részletei](./media/cal-s4h/s4h-pic-2a.png)
 
-1. Adja meg az **Azure-előfizetési azonosítót,** amely megtalálható az Azure Portalon.
+1. Adja meg a Azure Portal található Azure- **előfizetés azonosítóját** .
 
    ![SAP CAL-fiókok](./media/cal-s4h/s4h-pic3c.png)
 
-1. Ha engedélyezni szeretné az SAP cal üzembe helyezését a megadott Azure-előfizetésben, kattintson a **Engedélyezés gombra.** A böngészőlapon a következő oldal jelenik meg:
+1. Ha engedélyezni szeretné az SAP CAL üzembe helyezését az Ön által megadott Azure-előfizetésben, kattintson az **Engedélyezés**elemre. A böngésző lapon a következő oldal jelenik meg:
 
-   ![Bejelentkezés az Internet Explorer felhőszolgáltatásaiba](./media/cal-s4h/s4h-pic4c.png)
+   ![Internet Explorer Cloud Services-bejelentkezés](./media/cal-s4h/s4h-pic4c.png)
 
-1. Ha egynél több felhasználó szerepel a listában, válassza ki azt a Microsoft-fiókot, amely a kiválasztott Azure-előfizetés társadminisztrátora ként kapcsolódik. A böngészőlapon a következő oldal jelenik meg:
+1. Ha több felhasználó is szerepel a listában, válassza ki azt a Microsoft-fiók, amely kapcsolódik a kiválasztott Azure-előfizetés rendszergazdájának. A böngésző lapon a következő oldal jelenik meg:
 
-   ![Az Internet Explorer felhőszolgáltatásainak megerősítése](./media/cal-s4h/s4h-pic5a.png)
+   ![Az Internet Explorer Cloud Services megerősítése](./media/cal-s4h/s4h-pic5a.png)
 
-1. Kattintson az **Elfogadás** lehetőségre. Ha az engedélyezés sikeres, az SAP CAL fiókdefiníció ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
+1. Kattintson az **Elfogadás** lehetőségre. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
 
-1. Ha az újonnan létrehozott SAP CAL-fiókot hozzá szeretné rendelni a felhasználóhoz, írja be **a felhasználói azonosítóját** a jobb oldali szövegmezőbe, és kattintson a **Hozzáadás gombra.**
+1. Ha az újonnan létrehozott SAP CAL-fiókot szeretné hozzárendelni a felhasználóhoz, adja meg a **felhasználói azonosítóját** a jobb oldali szövegmezőben, majd kattintson a **Hozzáadás**gombra.
 
-   ![Fiók a felhasználói asszociációhoz](./media/cal-s4h/s4h-pic8a.png)
+   ![Fiók a felhasználói társításhoz](./media/cal-s4h/s4h-pic8a.png)
 
-1. Ha a fiókot az SAP-ügyféllicencbe való bejelentkezéshez használt felhasználóhoz szeretné társítani, kattintson a **Véleményezés**gombra. 
+1. A fiók az SAP CAL-be való bejelentkezéshez használt felhasználóhoz való hozzárendeléséhez kattintson a **felülvizsgálat**gombra. 
  
-1. A felhasználó és az újonnan létrehozott SAP CAL-fiók közötti társítás létrehozásához kattintson a **Létrehozás gombra.**
+1. A felhasználó és az újonnan létrehozott SAP CAL-fiók közötti társítás létrehozásához kattintson a **Létrehozás**gombra.
 
-   ![Felhasználó az SAP CAL fiók társításához](./media/cal-s4h/s4h-pic9b.png)
+   ![Felhasználó – SAP CAL-fiók társítása](./media/cal-s4h/s4h-pic9b.png)
 
-Sikeresen létrehozott egy SAP CAL-fiókot, amely képes:
+Sikeresen létrehozott egy SAP CAL-fiókot, amely a következőket teszi lehetővé:
 
 - Használja a Resource Manager-alapú üzemi modellt.
-- Telepítse az SAP-rendszereket az Azure-előfizetésébe.
+- SAP-rendszerek üzembe helyezése az Azure-előfizetésében.
 
-Most már elkezdheti üzembe helyezni az S/4HANA-t a felhasználói előfizetésében az Azure-ban.
+Most már elkezdheti az S/4HANA üzembe helyezését a felhasználói előfizetésben az Azure-ban.
 
 > [!NOTE]
-> Mielőtt folytatna, határozza meg, hogy rendelkezik-e Azure-vCPU-kvótákkal az Azure H sorozatú virtuális gépekhez. Jelenleg az SAP CAL az Azure H-sorozatú virtuális gépeit használja az SAP HANA-alapú megoldások telepítéséhez. Előfordulhat, hogy az Azure-előfizetés nem rendelkezik H-sorozatú vCPU-kvótákkal a H-sorozathoz. Ha igen, előfordulhat, hogy legalább 16 H sorozatú vCPU-kvótát kell leigazolnia az Azure-támogatáshoz.
+> Mielőtt továbblépne, állapítsa meg, hogy rendelkezik-e Azure vCPU-kvótákkal az Azure H-sorozatú virtuális gépekhez. Az SAP CAL jelenleg a H-sorozatú virtuális gépeket használja az Azure-ban a SAP HANA-alapú megoldások üzembe helyezéséhez. Előfordulhat, hogy az Azure-előfizetése nem rendelkezik H-sorozatú vCPU-kvótával a H-sorozathoz. Ha igen, előfordulhat, hogy kapcsolatba kell lépnie az Azure támogatási szolgálatával legalább 16 H-sorozatú vCPU kvótájának lekéréséhez.
 > 
 > [!NOTE]
-> Amikor egy megoldást üzembe helyez az Azure-ban az SAP CAL, előfordulhat, hogy csak egy Azure-régiót választhat. Az SAP CAL által javasolttól eltérő Azure-régiókban való üzembe helyezéshez meg kell vásárolnia egy CAL-előfizetést az SAP-tól. Előfordulhat, hogy meg kell nyitnia egy üzenetet az SAP-val, hogy a CAL-fiók engedélyezve legyen az Eredetileg javasolttól eltérő Azure-régiókba való kézbesítéshez.
+> Ha az SAP CAL-ben üzembe helyez egy megoldást az Azure-ban, akkor előfordulhat, hogy csak egy Azure-régiót választ ki. Az SAP CAL által javasolt Azure-régiókban való üzembe helyezéshez az SAP-Cal-előfizetést kell vásárolnia. Előfordulhat, hogy meg kell nyitnia egy SAP-üzenetet, hogy az CAL-fiókja engedélyezve legyen az eredetileg javasolt Azure-régiókba való továbbításhoz.
 
-### <a name="deploy-a-solution"></a>Megoldás telepítése
+### <a name="deploy-a-solution"></a>Megoldás üzembe helyezése
 
-Vessünk fel egy megoldást az SAP CAL **Megoldások** lapjáról. Az SAP CAL két szekvenciát telepít:
+Hozzon üzembe egy megoldást az SAP CAL **Solutions** oldaláról. Az SAP CAL két sorozatot tartalmaz a üzembe helyezéshez:
 
-- Alapsorrend, amely egy oldalt használ a telepítendő rendszer meghatározásához
-- Speciális szekvencia, amely bizonyos választási lehetőségeket biztosít a virtuális gép méretekkel 
+- Egy alapszintű sorozatot, amely egy oldalt használ a telepítendő rendszer definiálásához
+- Egy speciális folyamat, amely a virtuálisgép-méretekhez biztosít bizonyos döntéseket 
 
-Bemutatjuk az itteni bevetés hez vezető alapvető utat.
+Itt mutatjuk be az üzembe helyezés alapvető elérési útját.
 
-1. A **Fiók részletei** lapon a következőket kell megadnia:
+1. A **fiók részletei** lapon a következőket kell tennie:
 
-    a. Válasszon egy SAP CAL-fiókot. (Az Erőforrás-kezelő telepítési modelljével való üzembe helyezéshez társított fiók használata.)
+    a. Válasszon ki egy SAP CAL-fiókot. (Használjon olyan fiókot, amely a Resource Manager-alapú üzemi modellel való üzembe helyezéshez van társítva.)
 
-    b. Adjon meg egy példány **nevet**.
+    b. Adja meg a példány **nevét**.
 
-    c. Válasszon egy **Azure-régiót.** Az SAP CAL egy régiót javasol. Ha szüksége van egy másik Azure-régióban, és nem rendelkezik SAP CAL-előfizetéssel, meg kell rendelnie egy CAL-előfizetést az SAP-val.
+    c. Válasszon ki egy Azure- **régiót**. Az SAP CAL a régiót javasolja. Ha egy másik Azure-régióra van szüksége, és nem rendelkezik SAP CAL-előfizetéssel, az SAP-val kell rendelnie egy CAL-előfizetést.
 
-    d. Adjon meg egy fő **jelszót** a nyolc vagy kilenc karakterből álló megoldáshoz. A jelszó a különböző összetevők rendszergazdái számára használatos.
+    d. Adja meg a nyolc vagy kilenc karakterből álló megoldás fő **jelszavát** . A jelszót a különböző összetevők rendszergazdái használják.
 
-   ![SAP CAL alapmód: Példány létrehozása](./media/cal-s4h/s4h-pic10a.png)
+   ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-s4h/s4h-pic10a.png)
 
-1. Kattintson a **Létrehozás gombra,** és a megjelenő üzenetpanelen kattintson az **OK gombra.**
+1. Kattintson a **Létrehozás**gombra, és a megjelenő üzenetablakban kattintson **az OK**gombra.
 
-   ![SAP CAL által támogatott virtuális gép méretei](./media/cal-s4h/s4h-pic10b.png)
+   ![SAP CAL támogatott VM-méretek](./media/cal-s4h/s4h-pic10b.png)
 
-1. A **Személyes kulcs** párbeszédpanelen kattintson az **Üzlet elemre** a személyes kulcs SAP-cal való tárolásához. A személyes kulcs jelszavas védelmének használatához kattintson a **Letöltés gombra.** 
+1. A **titkos kulcs** párbeszédpanelen kattintson a **tároló** elemre a titkos kulcs az SAP Cal-ben való tárolásához. Ha a titkos kulcs jelszavas védelmét szeretné használni, kattintson a **Letöltés**gombra. 
 
-   ![SAP CAL személyes kulcs](./media/cal-s4h/s4h-pic10c.png)
+   ![SAP CAL titkos kulcsa](./media/cal-s4h/s4h-pic10c.png)
 
 1. Olvassa el az SAP CAL **figyelmeztető** üzenetet, és kattintson **az OK**gombra.
 
-   ![SAP CAL – figyelmeztetés](./media/cal-s4h/s4h-pic10d.png)
+   ![SAP CAL figyelmeztetés](./media/cal-s4h/s4h-pic10d.png)
 
-    Most a telepítés zajlik. Egy idő után, a ttól függően, hogy a méret és a komplexitás a megoldás (az SAP CAL becslést biztosít), az állapot aktívként jelenik meg, és használatra kész.
+    Az üzembe helyezés most megtörténik. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és használatra kész.
 
-1. Az egyik erőforráscsoportban lévő többi társított erőforrással együtt gyűjtött virtuális gépek megkereséséhez nyissa meg az Azure Portalt: 
+1. Egy erőforráscsoport más kapcsolódó erőforrásaival gyűjtött virtuális gépek megkereséséhez nyissa meg a Azure Portal: 
 
-   ![Az új portálon telepített SAP CAL-objektumok](./media/cal-s4h/sapcaldeplyment_portalview.png)
+   ![Az új portálon üzembe helyezett SAP CAL-objektumok](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. Az SAP CAL portálon az állapot **aktív**állapotként jelenik meg. A megoldáshoz való csatlakozáshoz kattintson a **Csatlakozás gombra.** A megoldáson belül különböző lehetőségek vannak telepítve a különböző összetevőkhöz való csatlakozáshoz.
+1. Az SAP CAL portálon az állapot **aktívként**jelenik meg. A megoldáshoz való kapcsolódáshoz kattintson a **Kapcsolódás**gombra. A különböző összetevőkhöz való kapcsolódás különböző beállításai a megoldáson belül vannak telepítve.
 
    ![SAP CAL-példányok](./media/cal-s4h/active_solution.png)
 
-1. Mielőtt az üzembe helyezett rendszerekhez való csatlakozás egyik ével kapcsolatba léphetne, kattintson az **Első lépések útmutatója gombra.** 
+1. Mielőtt az egyik lehetőséget használja az üzembe helyezett rendszerekhez való kapcsolódásra, kattintson **első lépések útmutató**. 
 
-   ![Csatlakozás a példányhoz](./media/cal-s4h/connect_to_solution.png)
+   ![Kapcsolódás a példányhoz](./media/cal-s4h/connect_to_solution.png)
 
-    A dokumentáció minden egyes kapcsolódási módszerhez megnevezi a felhasználókat. A felhasználók jelszavai a központi telepítési folyamat elején megadott fő jelszóra vannak beállítva. A dokumentációban más funkcionális felhasználók is megjelennek a jelszavukkal, amelyek segítségével bejelentkezhet a telepített rendszerbe. 
+    A dokumentáció minden kapcsolódási módszerhez megnevezi a felhasználókat. A felhasználók jelszavai a telepítési folyamat elején megadott fő jelszóra vannak beállítva. A dokumentációban a többi funkcionális felhasználó is megjelenik a jelszavuk alapján, amelyek segítségével bejelentkezhet a telepített rendszerbe. 
 
-    Ha például a Windows Távoli asztali gépen előtelepített SAP grafikus felhasználói felületet használja, az S/4 rendszer a következőkre néz ki:
+    Ha például a Windows Távoli asztal gépen előre telepített SAP GUI-t használja, az S/4 rendszer a következőhöz hasonló lehet:
 
-   ![SM50 az előtelepített SAP GUI-ban](./media/cal-s4h/gui_sm50.png)
+   ![SM50 az előre telepített SAP grafikus felhasználói felületén](./media/cal-s4h/gui_sm50.png)
 
-    Vagy ha a DBACockpit-et használja, a példány a következőkre néz ki:
+    Ha a DBACockpit használja, a példány a következőhöz hasonló lehet:
 
-   ![SM50 a DBACockpit SAP GRAFIKUS felhasználói felületén](./media/cal-s4h/dbacockpit.png)
+   ![SM50 a DBACockpit SAP grafikus felhasználói felületén](./media/cal-s4h/dbacockpit.png)
 
-Néhány órán belül egy kifogástalan állapotú SAP S/4-es készülék van telepítve az Azure-ban.
+Néhány órán belül egy kifogástalan SAP S/4 készülék üzembe helyezése az Azure-ban történik.
 
-Ha vásárolt egy SAP CAL-előfizetést, az SAP teljes mértékben támogatja a központi telepítéseket az Azure-beli SAP CAL-on keresztül. A támogatási várólista BC-VCM-CAL.
+Ha SAP CAL-előfizetést vásárolt, az SAP teljes mértékben támogatja az Azure-beli SAP CAL-n keresztül történő üzembe helyezést. A támogatási várólista a BC-VCM-CAL.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center adatainak összekapcsolása az Azure Sentinelhez
-description: Ismerje meg, hogyan kapcsolhatja össze az Azure Security Center adatait az Azure Sentinelhez.
+title: Azure Security Center-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással
+description: Megtudhatja, hogyan csatlakoztatható Azure Security Center-adatkapcsolat az Azure Sentinelhez.
 author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588535"
 ---
-# <a name="connect-data-from-azure-security-center"></a>Adatok csatlakoztatása az Azure Security Centerből
+# <a name="connect-data-from-azure-security-center"></a>Adatok összekapcsolásának Azure Security Center
 
 
 
 
 
-Az Azure Sentinel lehetővé teszi, hogy az [Azure Security Centerből](../security-center/security-center-intro.md) riasztásokat csatlakoztasson, és továbbítsa azokat az Azure Sentinelbe. 
+Az Azure Sentinel lehetővé teszi a riasztások összekapcsolását [Azure Security Center](../security-center/security-center-intro.md) és az Azure sentinelbe való továbbítását. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Security Centerből származó riasztások exportálásához rendelkeznie kell a Security Reader szerepkörrel az adatfolyamok előfizetésében.
+- A riasztások Azure Security Centerból való exportálásához a továbbított naplók előfizetésében a biztonsági olvasó szerepkörrel kell rendelkeznie.
 
-- Az Azure [Security Center standard szintű alapcsomagnak](../security-center/security-center-pricing.md) az előfizetésen kell futnia. Ha nem, [frissítse az előfizetést a standardra.](https://azure.microsoft.com/pricing/details/security-center/)
+- Az előfizetésben az [Azure Security Center standard szintű](../security-center/security-center-pricing.md) csomagnak kell futnia. Ha nem, [frissítse az előfizetést a standard szintre](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 
-## <a name="connect-to-azure-security-center"></a>Csatlakozás az Azure Security Centerhez
+## <a name="connect-to-azure-security-center"></a>Kapcsolódás Azure Security Centerhoz
 
-1. Az Azure Sentinelben válassza **az Adatösszekötők** lehetőséget, majd kattintson az **Azure Security Center** csempére.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson a **Azure Security Center** csempére.
 
-1. A jobb oldalon kattintson a **Csatlakozás** lehetőségre minden olyan előfizetés mellett, amelynek az Azure Sentinelbe szeretne streamelni a riasztásait. Győződjön meg arról, hogy minden előfizetést az Azure Security Center standard szintre frissít, hogy riasztásokat továbbítson az Azure Sentinelbe.
+1. A jobb oldalon kattintson a **Kapcsolódás** elemre minden olyan előfizetés mellett, amelynek a riasztásait továbbítani szeretné az Azure Sentinel szolgáltatásba. Ügyeljen arra, hogy az egyes előfizetéseket Azure Security Center Standard szintre frissítse, hogy a riasztásokat továbbítsa az Azure Sentinelnek.
 
-1. Kiválaszthatja, hogy szeretné-e, hogy az Azure Security Center ből érkező riasztások automatikusan generálják az incidenseket az Azure Sentinelben. Az **Incidensek létrehozása csoportban** válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **Analytics,** majd **az Aktív szabályok**csoportban szerkesztheti.
+1. Kiválaszthatja, hogy a riasztások a Azure Security Center automatikusan előállítsák-e az incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
 
 3. Kattintson a **Csatlakozás** gombra.
 
-4. Ha az Azure Security Center-riasztások naplóanalytics szolgáltatásában a megfelelő sémát szeretné használni, keresse meg a **SecurityAlert (SecurityAlert)** kifejezést.
+4. Ha a Log Analytics vonatkozó sémát szeretné használni a Azure Security Center riasztásokhoz, keresse meg a **SecurityAlert**.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja az Azure Security Centert az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
+Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Security Center az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

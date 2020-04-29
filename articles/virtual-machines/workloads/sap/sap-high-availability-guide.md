@@ -1,6 +1,6 @@
 ---
-title: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára | Microsoft dokumentumok
-description: Magas rendelkezésre állási útmutató az SAP NetWeaver számára az Azure virtuális gépeken
+title: Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver szolgáltatáshoz | Microsoft Docs
+description: Magas rendelkezésre állási útmutató az Azure-beli SAP NetWeaver-Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 65037ec0cc8b10b176622a7047beb7d912c7f701
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617547"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -71,7 +71,7 @@ ms.locfileid: "77617547"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állási konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -154,846 +154,846 @@ ms.locfileid: "77617547"
 
 
 
-Az Azure Virtual Machines olyan megoldások, amelyeknek számítási, tárolási és hálózati erőforrásokra van szükségük, minimális idő alatt és hosszadalmas beszerzési ciklusok nélkül. Az Azure virtuális gépek segítségével klasszikus alkalmazásokat, például AZ SAP NetWeaver-alapú ABAP, Java és egy ABAP+Java verem üzembe helyezhet. Bővítse a megbízhatóságot és a rendelkezésre állást további helyszíni erőforrások nélkül. Az Azure virtual machines támogatja a létesítmények közötti kapcsolatot, így integrálhatja az Azure virtuális gépeket a szervezet helyszíni tartományaiba, a magánfelhőkbe és az SAP-rendszerkörnyezetbe.
+Az Azure Virtual Machines a számítási, tárolási és hálózati erőforrásokat, minimális idő és hosszú beszerzési ciklusok nélkül igénylő szervezeteknek szóló megoldás. Az Azure Virtual Machines használatával olyan klasszikus alkalmazásokat telepíthet, mint például az SAP NetWeaver-alapú ABAP, a Java és a ABAP + Java stack. Kiterjesztheti a megbízhatóságot és a rendelkezésre állást további helyszíni erőforrások nélkül. Az Azure Virtual Machines támogatja a létesítmények közötti kapcsolatokat, így integrálhatja az Azure Virtual Machinest a szervezet helyi tartományában, a privát felhőkben és az SAP-rendszer környezetében.
 
-Ebben a cikkben ismertetik azokat a lépéseket, amelyek segítségével telepítheti a magas rendelkezésre állású SAP-rendszerek az Azure-ban az Azure Resource Manager telepítési modell használatával. Végigvezetjük az alábbi főfeladatokon:
+Ebben a cikkben a magas rendelkezésre állású SAP-rendszerek üzembe helyezéséhez szükséges lépéseket ismertetjük az Azure-ban a Azure Resource Manager üzemi modell használatával. A főbb feladatok elvégzése:
 
-* Keresse meg a megfelelő SAP-jegyzeteket és telepítési útmutatókat, amelyek az [Erőforrások][sap-ha-guide-2] szakaszban találhatók. Ez a cikk kiegészíti az SAP telepítési dokumentációt és az SAP Notes-t, amelyek az elsődleges erőforrások, amelyek segítségével telepítheti és telepítheti az SAP-szoftvereket adott platformokon.
-* Ismerje meg az Azure Resource Manager üzembe helyezési modellje és az Azure klasszikus telepítési modell közötti különbségeket.
-* Ismerje meg a Windows Server feladatátvételi fürtözési kvórummód, így kiválaszthatja a modellt, amely megfelelő az Azure-telepítés.
-* Információ a Windows Server feladatátvételi fürtözésmegosztott tárolásáról az Azure-szolgáltatásokban.
-* Ismerje meg, hogyan védheti meg az olyan egypontos összetevőket, mint az Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) és az adatbázis-kezelő rendszerek (DBMS), valamint a redundáns összetevőket, például az SAP Application Servert az Azure-ban.
-* Kövesse a részletes példát egy nagy rendelkezésre állású SAP-rendszer telepítésére és konfigurálására egy Windows Server feladatátvételi fürtfürtben az Azure-ban az Azure Resource Manager használatával.
-* Ismerje meg a Windows Server feladatátvételi fürtözésének azure-beli használatához szükséges további lépéseket, amelyek azonban nem szükségesek a helyszíni telepítéshez.
+* Keresse meg a megfelelő SAP-megjegyzéseket és telepítési útmutatókat, amelyek az [erőforrások][sap-ha-guide-2] szakaszban vannak felsorolva. Ez a cikk az SAP telepítési dokumentációját és az SAP-megjegyzéseket egészíti ki, amelyek az elsődleges erőforrások, amelyek segítségével az SAP-szoftvereket telepítheti és telepítheti adott platformokon.
+* Ismerje meg a Azure Resource Manager üzemi modell és a klasszikus Azure üzemi modell közötti különbségeket.
+* Ismerje meg a Windows Server feladatátvételi fürtszolgáltatás Kvórumának módozatait, így kiválaszthatja az Azure-beli üzembe helyezéshez legmegfelelőbb modellt.
+* Ismerje meg a Windows Server feladatátvételi fürtszolgáltatás megosztott tárolóját az Azure-szolgáltatásokban.
+* Ismerje meg, hogyan biztosítható az olyan egypontos meghibásodású összetevők, mint például a speciális üzleti alkalmazások programozása (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) és adatbázis-felügyeleti rendszerek (adatbázisok), valamint a redundáns összetevők, például az SAP Application Server az Azure-ban.
+* Az Azure-beli Windows Server feladatátvételi Fürtszolgáltatású fürt Azure Resource Manager használatával történő telepítésének és konfigurációjának lépésenkénti példáját követve telepítheti a magas rendelkezésre állású SAP-rendszereket.
+* Ismerje meg a Windows Server feladatátvételi fürtszolgáltatás Azure-ban való használatához szükséges további lépéseket, de nincs szükség helyszíni telepítésre.
 
-Az üzembe helyezés és a konfiguráció egyszerűsítése érdekében ebben a cikkben az SAP háromrétegű, magas rendelkezésre állású Erőforrás-kezelő sablonokat használjuk. A sablonok automatizálják a teljes infrastruktúra üzembe helyezését, amely egy magas rendelkezésre állású SAP-rendszerhez szükséges. Az infrastruktúra is támogatja az SAP-alkalmazás teljesítményszabvány (SAPS) méretezése az SAP-rendszer.
+Az üzembe helyezés és a konfiguráció egyszerűsítése érdekében ebben a cikkben a SAP háromrétegű magas rendelkezésre állású Resource Manager-sablonokat használjuk. A sablonok a magas rendelkezésre állású SAP-rendszerhez szükséges teljes infrastruktúra üzembe helyezését automatizálják. Az infrastruktúra Emellett támogatja az SAP-rendszeren az SAP Application Performance standard (NEDV) méretezését is.
 
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Előfeltételek
-Mielőtt elkezdené, győződjön meg arról, hogy megfelel az alábbi szakaszokban ismertetett előfeltételeknek. Ügyeljen arra is, hogy ellenőrizze az [Erőforrások][sap-ha-guide-2] szakaszban felsorolt összes erőforrást.
+Mielőtt elkezdené, győződjön meg arról, hogy megfelel az alábbi szakaszokban ismertetett előfeltételeknek. Ügyeljen arra is, hogy ellenőrizze az [erőforrások][sap-ha-guide-2] szakaszban felsorolt összes erőforrást.
 
-Ebben a cikkben az Azure Resource Manager-sablonokat használjuk [a háromrétegű SAP NetWeaver felügyelt lemezek használatával.](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) A sablonok hasznos áttekintését az [SAP Azure Resource Manager-sablonok című témakörben találja.](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)
+Ebben a cikkben Azure Resource Manager sablonokat használunk a [HÁROMRÉTEGŰ SAP NetWeaver-hoz a Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Erőforrások
-Ezek a cikkek az Azure-beli SAP-telepítéseket fedik le:
+Ezek a cikkek a SAP üzembe helyezéseit fedik le az Azure-ban:
 
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP NetWeaver számára][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése az SAP NetWeaver számára][deployment-guide]
-* [Az Azure Virtual Machines DBMS üzembe helyezése az SAP NetWeaver számára][dbms-guide]
-* [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára (ez az útmutató)][sap-ha-guide]
+* [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP NetWeaver számára][dbms-guide]
+* [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára (ez az útmutató)][sap-ha-guide]
 
 > [!NOTE]
-> Amikor csak lehetséges, adunk egy linket a hivatkozó SAP telepítési útmutató (lásd az [SAP telepítési útmutató ).][sap-installation-guides] Az előfeltételek és a telepítési folyamattal kapcsolatos információk, célszerű figyelmesen elolvasni az SAP NetWeaver telepítési útmutatókat. Ez a cikk csak az SAP NetWeaver-alapú rendszerek, amelyek azure virtuális gépek használható feladatokat.
+> Amikor csak lehetséges, a hivatkozó SAP telepítési útmutatóra mutató hivatkozást adunk (lásd: [SAP telepítési útmutatók][sap-installation-guides]). A telepítési folyamatra vonatkozó előfeltételek és információk esetén érdemes alaposan beolvasni az SAP NetWeaver telepítési útmutatóit. Ez a cikk csak az Azure Virtual Machines használatával használható SAP NetWeaver-alapú rendszerek meghatározott feladatait ismerteti.
 >
 >
 
-Ezek az SAP-megjegyzések az Sap azure-beli témaköréhez kapcsolódnak:
+Ezek az SAP-megjegyzések a SAP Azure-beli témaköréhez kapcsolódnak:
 
 | Megjegyzés száma | Cím |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és méretezés |
-| [2015553] |SAP a Microsoft Azure-on: Támogatási előfeltételek |
+| [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és méretezés |
+| [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
 | [1999351] |Továbbfejlesztett Azure-figyelés az SAP-hoz |
-| [2178632] |Az SAP legfontosabb figyelési mutatói a Microsoft Azure-ban |
-| [1999351] |Virtualizáció Windowsrendszeren: Továbbfejlesztett figyelés |
-| [2243692] |Az Azure Premium SSD storage használata az SAP DBMS-példányhoz |
+| [2178632] |Az SAP-hez Microsoft Azure legfontosabb monitorozási metrikák |
+| [1999351] |Virtualizáció Windows rendszeren: továbbfejlesztett figyelés |
+| [2243692] |Az Azure prémium SSD Storage használata az SAP adatbázis-kezelő példányához |
 
-További információ az [Azure-előfizetések korlátairól,][azure-resource-manager/management/azure-subscription-service-limits-subscription]beleértve az általános alapértelmezett korlátozásokat és a maximális korlátozásokat.
+További információ az [Azure-előfizetések korlátairól][azure-resource-manager/management/azure-subscription-service-limits-subscription], beleértve az általános alapértelmezett korlátozásokat és a maximális korlátozásokat.
 
-## <a name="high-availability-sap-with-azure-resource-manager-vs-the-azure-classic-deployment-model"></a><a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Magas rendelkezésre állású SAP az Azure Resource Managerrel és az Azure klasszikus telepítési modelljével
-Az Azure Resource Manager és az Azure klasszikus üzembe helyezési modelljei a következő területeken különböznek:
+## <a name="high-availability-sap-with-azure-resource-manager-vs-the-azure-classic-deployment-model"></a><a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Magas rendelkezésre állású SAP a Azure Resource Manager és a klasszikus Azure üzemi modellel
+A Azure Resource Manager és a klasszikus Azure-beli üzembe helyezési modellek a következő területeken különböznek:
 
 - Erőforráscsoportok
-- Az Azure belső terheléselosztófüggősége az Azure erőforráscsoporttól
-- Az SAP több SID-forgatókönyvek támogatása
+- Azure-beli belső terheléselosztó-függőség az Azure-erőforráscsoporthoz
+- SAP multi-SID-forgatókönyvek támogatása
 
 ### <a name="resource-groups"></a><a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Erőforráscsoportok
-Az Azure Resource Managerben erőforráscsoportok használatával kezelheti az Azure-előfizetésében lévő összes alkalmazás-erőforrást. Az erőforráscsoportban az integrált megközelítés életciklusa megegyezik. Például az összes erőforrás egyszerre jön létre, és egyszerre törlődnek. További információk az [erőforráscsoportokról](../../../azure-resource-manager/management/overview.md#resource-groups).
+Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. Egy adott erőforráscsoport integrált megközelítése minden erőforrásnak azonos életciklusa van. Például az összes erőforrás ugyanabban az időben jön létre, és egyszerre törlődik. További információk az [erőforráscsoportokról](../../../azure-resource-manager/management/overview.md#resource-groups).
 
-### <a name="azure-internal-load-balancer-dependency-on-the-azure-resource-group"></a><a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Az Azure belső terheléselosztófüggősége az Azure erőforráscsoporttól
+### <a name="azure-internal-load-balancer-dependency-on-the-azure-resource-group"></a><a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure-beli belső terheléselosztó-függőség az Azure-erőforráscsoporthoz
 
-A klasszikus Azure-telepítési modellben függőség van az Azure belső terheléselosztó (Azure Load Balancer szolgáltatás) és a felhőszolgáltatás között. Minden belső terheléselosztónak egy felhőszolgáltatásra van szüksége.
+A klasszikus Azure üzembe helyezési modellben az Azure belső terheléselosztó (Azure Load Balancer szolgáltatás) és a Cloud Service közötti függőség áll fenn. Minden belső terheléselosztó egy felhőalapú szolgáltatást igényel.
 
-Az Azure Resource Managerben minden Azure-erőforrást egy Azure-erőforráscsoportba kell helyezni, és ez az Azure Load Balancer esetében is érvényes. Azonban nincs szükség egy Azure-erőforráscsoportra Az Azure terheléselosztónként, például egy Azure-erőforráscsoport több Azure load balancers-t tartalmazhat. A környezet egyszerűbb és rugalmasabb. 
+Azure Resource Manager minden Azure-erőforrást egy Azure-erőforráscsoporthoz kell helyezni, és ez Azure Load Balancer is érvényes. Az Azure Load Balancerhez azonban egyetlen Azure-erőforráscsoport szükséges, például egy Azure-erőforráscsoport több Azure Load Balancert is tartalmazhat. A környezet egyszerűbb és rugalmasabb. 
 
-### <a name="support-for-sap-multi-sid-scenarios"></a>Az SAP több SID-forgatókönyvek támogatása
+### <a name="support-for-sap-multi-sid-scenarios"></a>SAP multi-SID-forgatókönyvek támogatása
 
-Az Azure Resource Managerben több SAP-rendszerazonosítót (SID) ASCS/SCS-példányt telepíthet egy fürtbe. Több-SID-példányok azért lehetséges, mert a támogatás több IP-címek minden Azure belső terheléselosztó.
+Azure Resource Manager több SAP System Identifier (SID) ASCS/SCS-példányt is telepíthet egy fürtben. Több SID-példány is lehetséges, mivel az egyes Azure-beli belső terheléselosztó több IP-címet támogat.
 
-Az Azure klasszikus telepítési modelljének használatához kövesse az SAP NetWeaver az [Azure-ban: Az SAP ASCS/SCS-példányok fürtözése az Azure-beli Windows Server feladatátvételi fürtözés használatával a SIOS DataKeeper használatával leírt eljárásokat.](https://go.microsoft.com/fwlink/?LinkId=613056)
+A klasszikus Azure-telepítési modell használatához kövesse az SAP NetWeaver az Azure-ban című témakörben ismertetett eljárásokat [: az SAP ASCS/SCS-példányok fürtözése a Windows Server feladatátvételi fürtszolgáltatással az Azure-ban a SIOS DataKeeper használatával](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy az Azure Resource Manager üzembe helyezési modelljét használja az SAP-telepítésekhez. Számos olyan előnyt kínál, amelyek nem érhetők el a klasszikus üzembe helyezési modellben. További információ az Azure [üzembe helyezési modelljeiről.][virtual-machines-azure-resource-manager-architecture-benefits-arm]   
+> Javasoljuk, hogy az SAP-telepítések Azure Resource Manager üzemi modelljét használja. Számos előnyt kínál, amelyek nem érhetők el a klasszikus üzemi modellben. További információ az Azure [üzembe helyezési modelljeiről][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
 >
 >
 
-## <a name="windows-server-failover-clustering"></a><a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server feladatátvevő fürtözés
-A Windows Server feladatátvételi fürtözése a Windows magas rendelkezésre állású SAP ASCS/SCS telepítésének és ADATBÁZIS-rendszerének alapja.
+## <a name="windows-server-failover-clustering"></a><a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server feladatátvételi fürtszolgáltatás
+A Windows Server feladatátvételi fürtszolgáltatás a magas rendelkezésre állású SAP ASCS/SCS-telepítés és az adatbázis-kezelő rendszer alapja a Windows rendszerben.
 
-A feladatátvevő fürt 1+n független kiszolgálók (csomópontok) csoportja, amelyek együttműködnek az alkalmazások és szolgáltatások elérhetőségének növelése érdekében. Csomóponthiba esetén a Windows Server feladatátvevő fürtözéskiszámítja, hogy hány hiba fordulhat elő az alkalmazások és szolgáltatások biztosításához a kifogástalan állapotú fürt karbantartása közben. A feladatátvevő fürtözés eléréséhez különböző kvórummódok közül választhat.
+A feladatátvevő fürt 1 + n független kiszolgálók (csomópontok) csoportja, amelyek együttműködve fokozzák az alkalmazások és szolgáltatások rendelkezésre állását. Csomópont meghibásodása esetén a Windows Server feladatátvételi fürtszolgáltatás kiszámítja a hibák számát, amely egy kifogástalan állapotú fürtnek az alkalmazások és szolgáltatások biztosítására való fenntartása közben fordulhat elő. A feladatátvételi fürtszolgáltatás eléréséhez különböző kvórum módok közül választhat.
 
-### <a name="quorum-modes"></a><a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Kvórum módok
-A Windows Server feladatátvevő fürtözésének használatakor négy kvórummód közül választhat:
+### <a name="quorum-modes"></a><a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Kvórum üzemmódok
+A Windows Server feladatátvételi fürtszolgáltatás használatakor négy kvórum mód közül választhat:
 
-* **Csomópont többség**. A fürt minden csomópontja szavazhat. A klaszter csak a szavazatok többségével működik, azaz a szavazatok több mint felével. Ezt a beállítást olyan fürtök esetén javasoljuk, amelyek egyenlőtlen számú csomóponttal rendelkeznek. Egy hétcsomópontos fürt három csomópontja például meghibásodhat, és a fürt állóképek többséget ér el, és továbbra is futnak.  
-* **Csomópont és lemez többség**. A fürttárolóban lévő minden csomópont és egy kijelölt lemez (egy tanúsító lemez) szavazhat, ha rendelkezésre állnak és kommunikációban vannak. A klaszter csak a szavazatok többségével működik, azaz a szavazatok több mint felével. Ennek a módnak van értelme egy páros számú csomópontos fürtkörnyezetben. Ha a csomópontok és a lemez fele online állapotban van, a fürt kifogástalan állapotban marad.
-* **Csomópont- és fájlmegosztási többség**. Minden csomópont, valamint egy kijelölt fájlmegosztás (egy tanúsító fájlmegosztás), amelyet a rendszergazda létrehoz, szavazhat, függetlenül attól, hogy a csomópontok és a fájlmegosztás rendelkezésre állnak-e és a kommunikációban. A klaszter csak a szavazatok többségével működik, azaz a szavazatok több mint felével. Ennek a módnak van értelme egy páros számú csomópontos fürtkörnyezetben. Hasonló a Csomópont és a Lemez többség módhoz, de tanúsító lemez helyett tanúsító fájlmegosztást használ. Ez a mód könnyen megvalósítható, de ha maga a fájlmegosztás nem magas rendelkezésre állású, akkor egyetlen hibaponttá válhat.
-* **Nincs többség: Csak lemez**. A fürt kvórummal rendelkezik, ha egy csomópont elérhető, és a fürttárolóban egy adott lemezzel kommunikál. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek szintén kommunikálnak a lemezzel. Azt javasoljuk, hogy ne használja ezt a módot.
+* A **csomópontok többsége**. A fürt minden csomópontja szavazhat. A fürt csak a szavazatok többségével működik, azaz a szavazatok több mint fele. Ez a beállítás olyan fürtök esetében ajánlott, amelyek egyenlőtlen számú csomóponttal rendelkeznek. Például egy hét csomópontos fürt három csomópontja meghiúsulhat, és a fürt továbbra is a többséget futtatja, és folytatja a futtatást.  
+* **A csomópont és a lemez többsége**. Minden csomópont és egy kijelölt lemez (a tanúsító lemez) a fürt tárterületén szavazhat, ha elérhetők és a kommunikációban is. A fürt csak a szavazatok többségével működik, azaz a szavazatok több mint fele. Ez a mód egy fürtözött környezetben is működik, ahol páros számú csomópont van. Ha a csomópontok fele és a lemez online állapotban van, a fürt állapota Kifogástalan marad.
+* **A csomópont-és a fájlmegosztás többsége**. Minden csomópont és egy kijelölt fájlmegosztás (egy tanúsító fájlmegosztás), amelyet a rendszergazda hoz létre, szavazhat, függetlenül attól, hogy elérhetők-e a csomópontok és a fájlmegosztás. A fürt csak a szavazatok többségével működik, azaz a szavazatok több mint fele. Ez a mód egy fürtözött környezetben is működik, ahol páros számú csomópont van. Ez a csomópont és a lemez többségi módjához hasonló, de tanúsító lemez helyett egy tanúsító fájlmegosztást használ. Ez a mód könnyen megvalósítható, de ha maga a fájlmegosztás nem túl hosszú, akkor előfordulhat, hogy egy meghibásodási pont lehet.
+* **Nincs többség: csak lemez**. A fürt kvórumot tartalmaz, ha az egyik csomópont elérhető, és a fürt egy adott lemezével kommunikál. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek a lemezzel is kommunikálnak. Azt javasoljuk, hogy ne használja ezt a módot.
  
 
-## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Windows Server feladatátvevő fürtözés a helyszínen
-Az 1. Ha a csomópontok közötti hálózati kapcsolat meghibásodik, és mindkét csomópont működik, a kvórumlemez vagy a fájlmegosztás határozza meg, hogy melyik csomópont fogja továbbra is biztosítani a fürt alkalmazásait és szolgáltatásait. A kvórumlemezhez vagy fájlmegosztáshoz hozzáféréssel rendelkező csomópont az a csomópont, amely biztosítja a szolgáltatások folytatását.
+## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Helyszíni Windows Server feladatátvételi fürtszolgáltatás
+Az 1. ábra két csomópontból álló fürtöt mutat be. Ha a csomópontok közötti hálózati kapcsolat meghiúsul, és mindkét csomópont megmarad és fut, a kvórum lemez vagy fájlmegosztás határozza meg, hogy melyik csomópont fogja továbbra is biztosítani a fürt alkalmazásait és szolgáltatásait. A kvórum lemezének vagy fájlmegosztás hozzáférését biztosító csomópont a csomópont, amely biztosítja a szolgáltatások folytatását.
 
-Mivel ez a példa kétcsomópontos fürtöt használ, a Csomópont- és fájlmegosztási többség kvórummódot használjuk. A csomópont és a lemez többség is érvényes lehetőség. Éles környezetben azt javasoljuk, hogy használjon kvórumlemezt. A hálózati és tárolási rendszer technológiájával magas rendelkezésre állásúvá teheti azt.
+Mivel ez a példa egy két csomópontos fürtöt használ, a csomópont és a fájlmegosztás többsége kvórum üzemmódot használjuk. A csomópont és a lemez többsége is érvényes beállítás. Éles környezetben javasoljuk, hogy használjon kvórum lemezt. A hálózati és tárolási rendszertechnológia segítségével elérhetővé teheti azt.
 
-![1. ábra: Példa egy Windows Server feladatátvételi fürtözési konfigurációra az SAP ASCS/SCS-hez az Azure-ban][sap-ha-guide-figure-1000]
+![1. ábra: példa a Windows Server feladatátvételi Fürtszolgáltatására az Azure-beli SAP ASCS/SCS-konfigurációhoz][sap-ha-guide-figure-1000]
 
-_**1. ábra:** Példa az SAP ASCS/SCS Windows Server feladatátvételi fürtkonfigurációjára az Azure-ban_
+_**1. ábra:** Windows Server feladatátvételi fürtszolgáltatási konfiguráció – példa az Azure-beli SAP ASCS/SCS-re_
 
 ### <a name="shared-storage"></a><a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>Megosztott tároló
-Az 1. A helyszíni megosztott tárolófürtben a fürt összes csomópontja észleli a megosztott tárolót. A zárolási mechanizmus megvédi az adatokat a sérüléstől. Minden csomópont észleli, ha egy másik csomópont meghibásodik. Ha egy csomópont meghibásodik, a fennmaradó csomópont a tárolási erőforrások tulajdonjogát veszi át, és biztosítja a szolgáltatások rendelkezésre állását.
+Az 1. ábrán egy két csomópontos megosztott tároló fürt is látható. Egy helyszíni megosztott tároló fürtben a fürt összes csomópontja felismeri a megosztott tárolót. A zárolási mechanizmus védi az adatok sérülését. Az összes csomópont képes észlelni, ha egy másik csomópont meghibásodik. Ha egy csomópont meghibásodik, a fennmaradó csomópont a tárolási erőforrások tulajdonjogát veszi figyelembe, és biztosítja a szolgáltatások rendelkezésre állását.
 
 > [!NOTE]
-> Néhány DBMS-alkalmazás, például az SQL Server esetében nem szükséges megosztott lemezekre van szükség a magas rendelkezésre álláshoz. Az SQL Server Always On replikálja az ADATBÁZIS-adatokat és a naplófájlokat az egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows fürtkonfigurációnak nincs szüksége megosztott lemezre.
+> A magas rendelkezésre álláshoz nincs szükség megosztott lemezekre, néhány adatbázis-kezelő alkalmazással, mint például a SQL Server. SQL Server always on replikálja az adatbázis-kezelői adatok és naplófájlok egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows-fürt konfigurációjának nincs szüksége megosztott lemezre.
 >
 >
 
 ### <a name="networking-and-name-resolution"></a><a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>Hálózatkezelés és névfeloldás
-Az ügyfélszámítógépek a DNS-kiszolgáló által biztosított virtuális IP-címen és virtuális állomásnévvel érik el a fürtöt. A helyszíni csomópontok és a DNS-kiszolgáló több IP-címet is képes kezelni.
+Az ügyfélszámítógépek a virtuális IP-címen és a DNS-kiszolgáló által biztosított virtuális állomásnévn keresztül érik el a fürtöt. A helyszíni csomópontok és a DNS-kiszolgáló több IP-címet is képes kezelni.
 
-Egy tipikus beállításnál két vagy több hálózati kapcsolatot használ:
+Egy tipikus beállításban két vagy több hálózati kapcsolatot használ:
 
-* Külön csatlakozás a tárolóhoz
-* Fürt-belső hálózati kapcsolat a szívveréshez
-* Nyilvános hálózat, amelyet az ügyfelek a fürthöz való csatlakozáshoz használnak
+* Dedikált kapcsolódás a tárolóhoz
+* Fürt – belső hálózati kapcsolatok a szívveréshez
+* Az ügyfelek által a fürthöz való kapcsolódáshoz használt nyilvános hálózat
 
-## <a name="windows-server-failover-clustering-in-azure"></a><a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Windows Server feladatátvételi fürtözés az Azure-ban
-A csupasz fémes vagy magánfelhő-telepítésekhez képest az Azure virtuális gépek további lépéseket igényelnek a Windows Server feladatátvételi fürtözésének konfigurálásához. Megosztott fürtlemez létrehozásakor több IP-címet és virtuális állomásnevet kell beállítania az SAP ASCS/SCS-példányhoz.
+## <a name="windows-server-failover-clustering-in-azure"></a><a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Windows Server feladatátvételi fürtszolgáltatás az Azure-ban
+Az operációs rendszer nélküli vagy a saját felhőalapú üzemelő példányokhoz képest az Azure Virtual Machines további lépéseket igényel a Windows Server feladatátvételi fürtszolgáltatás konfigurálásához. Megosztott fürtözött lemez létrehozásakor több IP-címet és virtuális állomásnevet kell beállítania az SAP ASCS/SCS példányhoz.
 
-Ebben a cikkben bemutatjuk a legfontosabb fogalmakat és a további lépéseket hozhat létre egy SAP magas rendelkezésre állású központi szolgáltatási fürt az Azure-ban. Bemutatjuk, hogyan állíthatja be a harmadik féltől származó SIOS DataKeeper eszközt, és hogyan konfigurálhatja az Azure belső terheléselosztóját. Ezekkel az eszközökkel hozhat létre egy Windows feladatátvételi fürt egy fájlmegosztás tanúsító az Azure-ban.
+Ebben a cikkben a főbb fogalmakat és a SAP magas rendelkezésre állású központi szolgáltatások Azure-beli létrehozásához szükséges további lépéseket tárgyaljuk. Bemutatjuk, hogyan állíthatja be a külső gyártótól származó eszközt a SIOS DataKeeper, és hogyan konfigurálhatja az Azure belső Load balancert. Ezekkel az eszközökkel létrehozhat egy, az Azure-ban tanúsító fájlmegosztás használatával létrehozott Windows feladatátvevő fürtöt.
 
-![2. ábra: Windows Server feladatátvevő fürtözési konfiguráció az Azure-ban megosztott lemez nélkül][sap-ha-guide-figure-1001]
+![2. ábra: Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül][sap-ha-guide-figure-1001]
 
-_**2. ábra:** Windows Server feladatátvevő fürtözési konfiguráció az Azure-ban megosztott lemez nélkül_
+_**2. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül_
 
-### <a name="shared-disk-in-azure-with-sios-datakeeper"></a><a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Megosztott lemez az Azure-ban a SIOS DataKeeper-rel
-Fürt megosztott tároló egy magas rendelkezésre állású SAP ASCS/SCS-példány. 2016 szeptemberétől az Azure nem kínál megosztott tárhelyet, amely segítségével megosztott tárolófürtöt hozhat létre. A harmadik féltől származó SIOS DataKeeper Cluster Edition szoftverrel létrehozhat egy tükrözött tárolót, amely szimulálja a fürt megosztott tárolását. A SIOS megoldás valós idejű szinkron adatreplikációt biztosít. Így hozhat létre megosztott lemezerőforrást egy fürthöz:
+### <a name="shared-disk-in-azure-with-sios-datakeeper"></a><a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Megosztott lemez az Azure-ban a SIOS DataKeeper
+A magas rendelkezésre állású SAP ASCS/SCS-példányhoz fürt megosztott tárterületre van szükség. Szeptember 2016-én az Azure nem kínál megosztott tárolót, amellyel megosztott tárolókat hozhat létre. A külső gyártóktól származó szoftverek SIOS DataKeeper cluster Edition használatával létrehozhat egy tükrözött tárolót, amely szimulálja a fürt megosztott tárolóját. A SIOS megoldás valós idejű szinkron adatreplikálást biztosít. Így hozhat létre megosztott lemezes erőforrást egy fürthöz:
 
-1. Csatlakoztasson egy további lemezt a Windows fürtkonfigurációban lévő virtuális gépekhez.Attach a additional disk to each of the virtual machines (VM) in a Windows cluster configuration.
-2. Futtassa a SIOS DataKeeper Cluster Edition-t mindkét virtuálisgép-csomóponton.
-3. Állítsa be a SIOS DataKeeper Cluster Edition rendszert úgy, hogy az tükrözze a forrásvirtuális gépről a célvirtuális gép további lemezhez csatlakoztatott kötetének tartalmát. A SIOS DataKeeper kivonta a forrást és a helyi köteteket, majd egyetlen megosztott lemezként mutatja be azokat a Windows Server feladatátvételi fürtözésének.
+1. Csatoljon egy további lemezt a virtuális gépekhez (VM) a Windows-fürt konfigurációjában.
+2. Futtassa a SIOS DataKeeper cluster Editiont mindkét virtuálisgép-csomóponton.
+3. Konfigurálja a SIOS DataKeeper-fürt kiadását úgy, hogy az a forrás virtuális gépről a további lemezhez csatolt kötet tartalmát a cél virtuális gép további lemezhez csatolt kötetére használja. A SIOS DataKeeper elküldi a forrás-és a célként megadott helyi köteteket, majd a Windows Server feladatátvételi fürtszolgáltatást egy megosztott lemezként jeleníti meg.
 
-További információ a [SIOS DataKeeper-](https://us.sios.com/products/datakeeper-cluster/)ről.
+További információ a [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![3. ábra: Windows Server feladatátvételi fürtözési konfiguráció az Azure-ban a SIOS DataKeeper segítségével][sap-ha-guide-figure-1002]
+![3. ábra: Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**3. ábra:** Windows Server feladatátvételi fürtözési konfiguráció az Azure-ban a SIOS DataKeeper segítségével_
+_**3. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SIOS DataKeeper_
 
 > [!NOTE]
-> Egyes DBMS-termékek, például az SQL Server esetében nem szükséges megosztott lemezekre van szükség a magas rendelkezésre álláshoz. Az SQL Server Always On replikálja az ADATBÁZIS-adatokat és a naplófájlokat az egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows fürtkonfigurációnak nincs szüksége megosztott lemezre.
+> A magas rendelkezésre álláshoz nincs szükség megosztott lemezekre, néhány adatbázis-kezelő termékkel, például a SQL Serversal. SQL Server always on replikálja az adatbázis-kezelői adatok és naplófájlok egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows-fürt konfigurációjának nincs szüksége megosztott lemezre.
 >
 >
 
 ### <a name="name-resolution-in-azure"></a><a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Névfeloldás az Azure-ban
-Az Azure felhőplatform nem kínál lehetőséget a virtuális IP-címek, például a lebegő IP-címek konfigurálására. Egy alternatív megoldásra van szüksége egy virtuális IP-cím beállításához a fürterőforrás felhőbeli eléréséhez.
-Az Azure rendelkezik egy belső terheléselosztóval az Azure Load Balancer szolgáltatásban. A belső terheléselosztóval az ügyfelek a fürt virtuális IP-címén keresztül érik el a fürtöt.
-A fürtcsomópontokat tartalmazó erőforráscsoportban telepítenie kell a belső terheléselosztót. Ezután konfigurálja az összes szükséges porttovábbítási szabályt a belső terheléselosztó mintavételi portjaival.
-Az ügyfelek a virtuális állomás névvel csatlakozhatnak. A DNS-kiszolgáló feloldja a fürt IP-címét, és a belső terheléselosztó kezeli a porttovábbítást a fürt aktív csomópontjára.
+Az Azure Cloud platform nem nyújt lehetőséget a virtuális IP-címek, például a lebegő IP-címek konfigurálására. Egy alternatív megoldásra van szükség egy virtuális IP-cím beállításához, hogy elérje a fürt erőforrását a felhőben.
+Az Azure-ban belső terheléselosztó található a Azure Load Balancer szolgáltatásban. A belső terheléselosztó révén az ügyfelek a fürt virtuális IP-címén keresztül érik el a fürtöt.
+Telepítenie kell a belső terheléselosztót a fürtcsomópontokon tartalmazó erőforráscsoporthoz. Ezután konfigurálja az összes szükséges port továbbítási szabályt a belső terheléselosztó mintavételi portjaival.
+Az ügyfelek csatlakozhatnak a virtuális gazdagép nevével. A DNS-kiszolgáló feloldja a fürt IP-címét, és a belső terheléselosztó kezeli a port továbbítását a fürt aktív csomópontjára.
 
-## <a name="sap-netweaver-high-availability-in-azure-infrastructure-as-a-service-iaas"></a><a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>SAP NetWeaver magas rendelkezésre állás az Azure Infrastructure-as-a-Service (IaaS)
-Az SAP-alkalmazások magas rendelkezésre állásának eléréséhez, például az SAP szoftverösszetevőihez, a következő összetevőket kell védenie:
+## <a name="sap-netweaver-high-availability-in-azure-infrastructure-as-a-service-iaas"></a><a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>SAP NetWeaver magas rendelkezésre állás az Azure infrastruktúra szolgáltatásában (IaaS)
+Az SAP-alkalmazások magas rendelkezésre állásának, például az SAP-szoftverek összetevőinek eléréséhez a következő összetevőket kell védelemmel ellátnia:
 
-* SAP Alkalmazáskiszolgáló példánya
+* SAP Application Server-példány
 * SAP ASCS/SCS-példány
-* ADATBÁZIS-KEZELŐ-kiszolgáló
+* Adatbázis-kezelő kiszolgáló
 
-Az SAP-összetevők magas rendelkezésre állású forgatókönyvekben való védelméről az [Azure Virtual Machines tervezése és megvalósítása az SAP NetWeaver számára][planning-guide-11]című témakörben talál további információt.
+További információ az SAP-összetevők magas rendelkezésre állású helyzetekben való védelméről: [Azure Virtual Machines tervezése és implementálása az SAP NetWeaver][planning-guide-11]-ben.
 
-### <a name="high-availability-sap-application-server"></a><a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>Magas rendelkezésre állású SAP-alkalmazáskiszolgáló
-Általában nincs szükség egy adott magas rendelkezésre állású megoldásra az SAP Application Server és a párbeszédpéldányok. Redundanciával magas rendelkezésre állást érhet el, és az Azure virtuális gépek különböző példányaiban több párbeszédpéldányt is konfigurálhat. Legalább két SAP-alkalmazáspéldánynak kell telepítve lennie az Azure virtuális gépek két példányában.
+### <a name="high-availability-sap-application-server"></a><a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>Magas rendelkezésre állású SAP Application Server
+Általában nincs szükség speciális, magas rendelkezésre állású megoldásra az SAP-alkalmazáskiszolgáló és a párbeszédpanel-példányok esetében. A redundancia révén magas rendelkezésre állást érhet el, és az Azure Virtual Machines különböző példányain több párbeszédpanel-példányt is konfigurálhat. Legalább két, az Azure Virtual Machines két példányán telepített SAP-alkalmazás példányának kell lennie.
 
-![4. ábra: Magas rendelkezésre állású SAP-alkalmazáskiszolgáló][sap-ha-guide-figure-2000]
+![4. ábra: magas rendelkezésre állású SAP-alkalmazáskiszolgáló][sap-ha-guide-figure-2000]
 
-_**4. ábra:** Magas rendelkezésre állású SAP-alkalmazáskiszolgáló_
+_**4. ábra:** Magas rendelkezésre állású SAP Application Server_
 
-Az SAP Application Server-példányokat tároló összes virtuális gépet ugyanabban az Azure-rendelkezésre állási csoportban kell elhelyeznie. Az Azure rendelkezésre állási készlete biztosítja a következőket:
+Az SAP Application Server-példányokat futtató összes virtuális gépet ugyanabba az Azure-beli rendelkezésre állási csoportba kell helyeznie. Az Azure rendelkezésre állási készlete biztosítja a következőket:
 
-* Minden virtuális gép ugyanannak a frissítési tartománynak a része. Egy frissítési tartomány, például győződjön meg arról, hogy a virtuális gépek nem frissülnek egy időben a tervezett karbantartási állásidő alatt.
-* Minden virtuális gép ugyanannak a tartalék tartománynak a része. A tartalék tartomány, például gondoskodik arról, hogy a virtuális gépek telepítése, hogy egyetlen hibapont nem befolyásolja az összes virtuális gép rendelkezésre állását.
+* Minden virtuális gép ugyanahhoz a frissítési tartományhoz tartozik. Egy frissítési tartomány például gondoskodik arról, hogy a virtuális gépek ne frissüljenek egyszerre a tervezett karbantartási állásidő során.
+* Minden virtuális gép ugyanahhoz a tartalék tartományhoz tartozik. A tartalék tartomány például gondoskodik arról, hogy a virtuális gépek telepítve legyenek, így egyetlen meghibásodási pont sem befolyásolja az összes virtuális gép rendelkezésre állását.
 
-További információ [a virtuális gépek rendelkezésre állásának kezeléséről.][virtual-machines-manage-availability]
+További információ a [virtuális gépek rendelkezésre állásának kezeléséről][virtual-machines-manage-availability].
 
-Csak nem felügyelt lemez: Mivel az Azure storage-fiók egy potenciális hibapont, fontos, hogy legalább két Azure storage-fiókkal, amelyben legalább két virtuális gépek vannak elosztva. Ideális beállítás esetén az SAP-párbeszédpanelt futtató virtuális gépek lemezei egy másik tárfiókban lesznek telepítve.
+Csak nem felügyelt lemez: mivel az Azure Storage-fiók egy lehetséges meghibásodási pont, fontos, hogy legalább két Azure Storage-fiókkal rendelkezzen, amelyekben legalább két virtuális gép el van osztva. Egy ideális beállítás esetén az SAP-példányt futtató virtuális gépek lemezei egy másik Storage-fiókban lesznek telepítve.
 
 ### <a name="high-availability-sap-ascsscs-instance"></a><a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>Magas rendelkezésre állású SAP ASCS/SCS-példány
-5. ábra egy példa egy magas rendelkezésre állású SAP ASCS/SCS-példány.
+Az 5. ábra egy példa egy magas rendelkezésre állású SAP ASCS/SCS-példányra.
 
-![5. ábra: Magas rendelkezésre állású SAP ASCS/SCS-példány][sap-ha-guide-figure-2001]
+![5. ábra: magas rendelkezésre állású SAP ASCS/SCS-példány][sap-ha-guide-figure-2001]
 
 _**5. ábra:** Magas rendelkezésre állású SAP ASCS/SCS-példány_
 
-#### <a name="sap-ascsscs-instance-high-availability-with-windows-server-failover-clustering-in-azure"></a><a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>Az SAP ASCS/SCS-példány magas rendelkezésre állása a Windows Server feladatátvételi fürtözésével az Azure-ban
-A csupasz fémes vagy magánfelhő-telepítésekhez képest az Azure virtuális gépek további lépéseket igényelnek a Windows Server feladatátvételi fürtözésének konfigurálásához. Windows feladatátvételi fürt létrehozásához szüksége van egy megosztott fürtlemezre, több IP-címre, több virtuális állomásnévre és egy Azure belső terheléselosztóra egy SAP ASCS/SCS-példány fürtözéséhez. Ezt részletesebben megbeszéljük a cikk későbbi részében.
+#### <a name="sap-ascsscs-instance-high-availability-with-windows-server-failover-clustering-in-azure"></a><a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>SAP ASCS/SCS-példány magas rendelkezésre állása a Windows Server feladatátvételi fürtszolgáltatással az Azure-ban
+Az operációs rendszer nélküli vagy a saját felhőalapú üzemelő példányokhoz képest az Azure Virtual Machines további lépéseket igényel a Windows Server feladatátvételi fürtszolgáltatás konfigurálásához. Windows feladatátvevő fürt létrehozásához szükség van egy megosztott fürtözött lemezre, több IP-címre, több virtuális állomásnévre és egy Azure belső terheléselosztó használatára, amely egy SAP ASCS/SCS-példány fürtözéséhez szükséges. Ezt részletesebben is megbeszéljük a cikk későbbi részében.
 
-![6. ábra: Windows Server feladatátvételi fürtözés egy SAP ASCS/SCS-konfigurációhoz az Azure-ban a SIOS DataKeeper használatával][sap-ha-guide-figure-1002]
+![6. ábra: Windows Server feladatátvételi fürtszolgáltatás az Azure-beli SAP ASCS/SCS-konfigurációhoz az SIOS DataKeeper használatával][sap-ha-guide-figure-1002]
 
-_**6. ábra:** Windows Server feladatátvételi fürtözés az Azure-beli SAP ASCS/SCS-konfigurációhoz a SIOS DataKeeper segítségével_
+_**6. ábra:** Windows Server feladatátvételi fürtszolgáltatás az Azure-beli SAP ASCS/SCS-konfigurációhoz az Azure-ban a SIOS DataKeeper_
 
-### <a name="high-availability-dbms-instance"></a><a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>Magas rendelkezésre állású DBMS-példány
-A DBMS is egy kapcsolattartó pont egy SAP-rendszerben. Meg kell védeni egy magas rendelkezésre állású megoldás használatával. 7. ábra egy SQL Server Mindig a magas rendelkezésre állású megoldás az Azure-ban, a Windows Server feladatátvételi fürtözés és az Azure belső terheléselosztó. Az SQL Server Always On replikálja az ADATBÁZIS-adatokat és a naplófájlokat a saját DBMS-replikációjával. Ebben az esetben nincs szükség fürtmegosztott lemezekre, ami leegyszerűsíti a teljes telepítést.
+### <a name="high-availability-dbms-instance"></a><a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>Magas rendelkezésre állású adatbázis-kezelő példány
+Az adatbázis-kezelő az SAP-rendszer egyetlen kapcsolódási pontja is. Magas rendelkezésre állású megoldás használatával kell védelemmel ellátnia. A 7. ábrán egy SQL Server always on magas rendelkezésre állású megoldás látható az Azure-ban, a Windows Server feladatátvételi fürtszolgáltatással és az Azure belső Load balancerrel. SQL Server always on replikálja az adatbázis-kezelői és naplófájlokat a saját adatbázis-replikációs szolgáltatásának használatával. Ebben az esetben nincs szükség fürt megosztott lemezekre, ami leegyszerűsíti a teljes telepítést.
 
-![7. ábra: Példa egy magas rendelkezésre állású SAP DBMS-re, amelyen az SQL Server mindig be van kapcsolva][sap-ha-guide-figure-2003]
+![7. ábra: példa a magas rendelkezésre állású SAP adatbázis-kezelőre, SQL Server always on][sap-ha-guide-figure-2003]
 
-_**7. ábra:** Példa egy magas rendelkezésre állású SAP DBMS-re, amelyen az SQL Server mindig be van kapcsolva_
+_**7. ábra:** Példa magas rendelkezésre állású SAP adatbázis-kezelőre, SQL Server always on_
 
-Az SQL Server Azure-beli fürtözéséről az Azure Resource Manager telepítési modelljének használatával az alábbi cikkekben talál további információt:
+További információ az Azure-beli fürtözési SQL Server az Azure Resource Manager üzembe helyezési modell használatával:
 
-* [A Mindig elérhető helyen beállítás az Azure virtuális gépekben manuálisan az Erőforrás-kezelő használatával] [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
-* [Azure belső terheléselosztó konfigurálása az Azure mindig rendelkezésre állási csoportjához] [virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [Always on rendelkezésre állási csoport konfigurálása az Azure Virtual Machines manuálisan a Resource Manager használatával] [Virtual-Machines-Windows-Portal-SQL-AlwaysOn-elérhetőségi csoportok-Manual]
+* [Azure belső terheléselosztó konfigurálása always on rendelkezésre állási csoport számára az Azure-ban] [Virtual-Machines-Windows-Portal-SQL-AlwaysOn-int-Listener]
 
-## <a name="end-to-end-high-availability-deployment-scenarios"></a><a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>Teljes körű, magas rendelkezésre állású telepítési forgatókönyvek
+## <a name="end-to-end-high-availability-deployment-scenarios"></a><a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>Végpontok közötti magas rendelkezésre állású központi telepítési forgatókönyvek
 
-### <a name="deployment-scenario-using-architectural-template-1"></a>Telepítési forgatókönyv az 1.
+### <a name="deployment-scenario-using-architectural-template-1"></a>Üzembe helyezési forgatókönyv az 1. építészeti sablon használatával
 
-ábra egy példa egy SAP NetWeaver magas rendelkezésre állású architektúra az Azure-ban **egy** SAP-rendszer. Ez a forgatókönyv a következőképpen van beállítva:
+A 8. ábrán egy példa látható egy SAP NetWeaver magas rendelkezésre állású architektúrára az Azure-ban **egy** SAP-rendszer számára. Ez a forgatókönyv a következőképpen van beállítva:
 
-- Egy dedikált fürt az SAP ASCS/SCS-példányhoz használatos.
-- Egy dedikált fürt használatos a DBMS-példányhoz.
+- Az SAP ASCS/SCS példányhoz egy dedikált fürtöt használunk.
+- Az adatbázis-kezelő példányhoz egy dedikált fürtöt használunk.
 - Az SAP Application Server-példányok saját dedikált virtuális gépeken vannak telepítve.
 
-![8. ábra: SAP magas rendelkezésre állású architekturális sablon 1, az ASCS/SCS és a DBMS dedikált fürtjével][sap-ha-guide-figure-2004]
+![8. ábra: SAP magas rendelkezésre állású építészeti sablon 1, dedikált fürttel a ASCS/SCS és az adatbázis-kezelő rendszerhez][sap-ha-guide-figure-2004]
 
-_**8. ábra:** SAP magas rendelkezésre állású architekturális sablon 1, dedikált fürtök ASCS/SCS és DBMS_
+_**8. ábra:** SAP magas rendelkezésre állású építészeti sablon 1, dedikált fürtök a ASCS/SCS és az adatbázis-kezelő rendszerekhez_
 
-### <a name="deployment-scenario-using-architectural-template-2"></a>Telepítési forgatókönyv a 2.
+### <a name="deployment-scenario-using-architectural-template-2"></a>Üzembe helyezési forgatókönyv a 2. építészeti sablon használatával
 
-9. ábra egy példa egy SAP NetWeaver magas rendelkezésre állású architektúra az Azure-ban **egy** SAP-rendszer. Ez a forgatókönyv a következőképpen van beállítva:
+A 9. ábra egy SAP NetWeaver magas rendelkezésre állású architektúrát mutat be az Azure-ban **egy** SAP-rendszer számára. Ez a forgatókönyv a következőképpen van beállítva:
 
-- Egy dedikált fürt **both** az SAP ASCS/SCS-példányhoz és a DBMS-hez egyaránt használatos.
-- Az SAP Application Server-példányok saját dedikált virtuális gépeken vannak telepítve.
+- **Az SAP** ASCS/SCS-példányhoz és az adatbázis-kezelő rendszerhez egy dedikált fürtöt használunk.
+- Az SAP Application Server-példányok saját dedikált virtuális gépeken vannak üzembe helyezve.
 
-![9. ábra: SAP magas rendelkezésre állású architekturális sablon 2, egy dedikált klaszter ESCS /SCS és egy dedikált fürt dbms][sap-ha-guide-figure-2005]
+![9. ábra: SAP magas rendelkezésre állású építészeti sablon 2, dedikált fürttel a ASCS/SCS számára, valamint egy dedikált fürt az adatbázis-kezelő szolgáltatáshoz][sap-ha-guide-figure-2005]
 
-_**9. ábra:** SAP magas rendelkezésre állású architekturális sablon 2, egy dedikált fürt az ASCS/SCS és egy dedikált fürt a DBMS_
+_**9. ábra:** SAP magas rendelkezésre állású építészeti sablon 2, dedikált fürttel a ASCS/SCS számára, valamint egy dedikált fürt az adatbázis-kezelő szolgáltatáshoz_
 
-### <a name="deployment-scenario-using-architectural-template-3"></a>Telepítési forgatókönyv a 3.
+### <a name="deployment-scenario-using-architectural-template-3"></a>Üzembe helyezési forgatókönyv 3. építészeti sablon használatával
 
-10. ábra egy példa egy SAP NetWeaver magas rendelkezésre állású&gt; architektúra az Azure-ban **két** SAP-rendszerek, &lt;a SID1 és &lt;SID2.&gt; Ez a forgatókönyv a következőképpen van beállítva:
+A 10. ábrán egy példa látható egy SAP NetWeaver magas rendelkezésre állású architektúrára az Azure-ban **két** SAP &lt;-&gt;rendszer számára, a SID1 &lt;&gt; és a SID2. Ez a forgatókönyv a következőképpen van beállítva:
 
-- Egy dedikált fürt az SAP ASCS/SCS SID1 *példányhoz és* az SAP ASCS/SCS SID2 **példányhoz** (egy fürthöz) is használatos.
-- Az egyik dedikált fürt a DBMS SID1, egy másik dedikált fürt pedig a DBMS SID2 (két fürt) esetében használatos.
-- Az SAP-rendszer SID1 SAP alkalmazáskiszolgálói példányai saját dedikált virtuális gépekkel rendelkeznek.
-- Az SAP-rendszer SID2-jének SAP Alkalmazáskiszolgáló-példányai saját dedikált virtuális gépekkel rendelkeznek.
+- A rendszer egy dedikált fürtöt **használ az SAP** ASCS/SCS SID1-példányhoz *és* az SAP ASCS/SCS SID2-példányhoz (egy fürthöz).
+- A rendszer egy dedikált fürtöt használ az adatbázis-kezelő SID1, és egy másik dedikált fürtöt használ az adatbázis-kezelői SID2 (két fürt).
+- Az SAP-rendszer SID1 tartozó SAP Application Server-példányokhoz saját dedikált virtuális gépek tartoznak.
+- Az SAP-rendszer SID2 tartozó SAP Application Server-példányokhoz saját dedikált virtuális gépek tartoznak.
 
-![10. ábra: SAP magas rendelkezésre állású 3-as architekturális sablon, különböző ASCS/SCS-példányok dedikált fürtjével][sap-ha-guide-figure-6003]
+![10. ábra: SAP magas rendelkezésre állású építészeti sablon 3, dedikált fürttel különböző ASCS/SCS-példányokhoz][sap-ha-guide-figure-6003]
 
-_**10. ábra:** SAP magas rendelkezésre állású 3-as architekturális sablon, dedikált fürttel a különböző ASCS/SCS-példányok számára_
+_**10. ábra:** SAP magas rendelkezésre állású építészeti sablon 3, dedikált fürttel különböző ASCS/SCS-példányokhoz_
 
 ## <a name="prepare-the-infrastructure"></a><a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>Az infrastruktúra előkészítése
 
-### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Az infrastruktúra előkészítése az 1.
-Az Sap-hoz készült Azure Resource Manager-sablonok megkönnyítik a szükséges erőforrások üzembe helyezését.
+### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Az infrastruktúra előkészítése az építészeti sablonhoz 1
+Az SAP-hez készült Azure Resource Manager-sablonok megkönnyítik a szükséges erőforrások üzembe helyezését.
 
-Az Azure Resource Manager háromrétegű sablonjai is támogatják a magas rendelkezésre állású forgatókönyveket, például az 1-es architekturális sablonban, amely két fürttel rendelkezik. Minden fürt egy SAP egyetlen meghibásodási pont az SAP ASCS/SCS és a DBMS.
+A Azure Resource Manager háromrétegű sablonjai a magas rendelkezésre állású forgatókönyveket is támogatják, például az 1. építészeti sablonban, amely két fürttel rendelkezik. Mindegyik fürt egy SAP-meghibásodási pont az SAP ASCS/SCS és az adatbázis-kezelő számára.
 
-Itt szerezheti be az Azure Resource Manager-sablonokat a cikkben leírt példaforgatókönyvhöz:
+Itt bemutathatja Azure Resource Manager sablonokat a jelen cikkben ismertetett példához:
 
-* [Azure Piactér lemezképe](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Azure Piactér lemezkép felügyelt lemezek használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [Egyéni kép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
-* [Egyéni lemezkép a Felügyelt lemezek használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace-rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Egyéni rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
-Az 1.
+Az infrastruktúra előkészítése az 1. építészeti sablonhoz:
 
-- Az Azure Portalon a **Paraméterek** panelen, a **SYSTEMAVAILABILITY** mezőben válassza a **HA**lehetőséget.
+- A Azure Portal a **Paraméterek** panel **SYSTEMAVAILABILITY** mezőjében válassza a **Ha**lehetőséget.
 
-  ![11. ábra: Sap magas rendelkezésre állású Azure Resource Manager-paraméterek beállítása][sap-ha-guide-figure-3000]
+  ![11. ábra: az SAP magas rendelkezésre állású Azure Resource Manager paramétereinek beállítása][sap-ha-guide-figure-3000]
 
-_**11. ábra:** Sap magas rendelkezésre állású Azure Resource Manager-paramétereinek beállítása_
+_**11. ábra:** SAP magas rendelkezésre állású Azure Resource Manager paramétereinek beállítása_
 
 
-  A sablonok a következőket hozzák létre:
+  A sablonok létrehozása:
 
   * **Virtuális gépek**:
-    * SAP Application Server virtuális gépek: <*SAPSystemSID*>-di-<*szám*>
-    * ASCS/SCS fürt virtuális gépei: <*SAPSystemSID*>-ascs-<*szám*>
-    * DBMS-fürt: *SAPSystemSID*>-db-<*szám* <>
+    * SAP Application Server Virtual Machines: <*SAPSystemSID*>-di-<*száma*>
+    * ASCS/SCS-fürt virtuális gépei: <*SAPSystemSID*>-ASCS-<*száma*>
+    * Adatbázis-kezelő fürt: <*SAPSystemSID*>-db-<*száma*>
 
-  * **Hálózati kártyák az összes virtuális géphez, ip-címekkel:**
-    * <*SAPSystemSID*>-nic-di-<*szám*>
-    * <*SAPSystemSID*>-nic-ascs-<*szám*>
-    * <*SAPSystemSID*>-nic-db-<*szám*>
+  * **Hálózati kártyák az összes virtuális géphez, társított IP-címekkel**:
+    * <*SAPSystemSID*>-NIC-di-<*szám*>
+    * <*SAPSystemSID*>-NIC-ascs-<*szám*>
+    * <*SAPSystemSID*>-NIC-db-<*szám*>
 
-  * **Azure storage-fiókok (csak nem felügyelt lemezekesetén)**
+  * **Azure Storage-fiókok (csak nem felügyelt lemezek esetén)**
 
-  * **Elérhetőségi csoportok:**
+  * **Rendelkezésre állási csoportok** a következőhöz:
     * SAP Application Server virtuális gépek: <*SAPSystemSID*>-avset-di
-    * SAP ASCS/SCS fürt virtuális gépei: <*SAPSystemSID*>-avset-ascs
-    * DBMS fürt virtuális gépei: <*SAPSystemSID*>-avset-db
+    * SAP-ASCS/SCS-fürt virtuális gépei: <*SAPSystemSID*>-avset-ASCS
+    * Adatbázis-kezelő fürt virtuális gépei: <*SAPSystemSID*>-avset-db
 
-  * **Az Azure belső terheléselosztója:**
-    * Az ASCS/SCS példány összes portjával és az *SAPSystemSID*>-lb-ascs-<IP-címmel
-    * Az SQL Server DBMS és IP-cím összes portjával <*SAPSystemSID*>-lb-db
+  * **Azure belső terheléselosztó**:
+    * A ASCS/SCS-példány összes portja és az IP-cím <*SAPSystemSID*>-LB-ASCS
+    * Az SQL Server adatbázis-kezelő és IP-cím összes portja <*SAPSystemSID*>-LB-db
 
-  * **Hálózati biztonsági csoport**: <*SAPSystemSID*>-nsg-ascs-0  
-    * Az *SAPSystemSID*>-ascs-0 virtuális gép <lévő távoli távoli asztali protokoll (RDP) portjával
-
-> [!NOTE]
-> A hálózati kártyák és az Azure belső terheléselosztók összes IP-címe alapértelmezés szerint **dinamikus.** Módosítsa őket **statikus** IP-címekre. Ezt a cikk későbbi részében ismertetjük.
->
->
-
-### <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Vállalati hálózati kapcsolattal (telephelyek közötti) rendelkező virtuális gépek üzembe helyezése éles környezetben való használatra
-Éles SAP-rendszerek esetén telepítse na a vállalati hálózati kapcsolattal rendelkező Azure virtuális gépeket az Azure helyek közötti VPN vagy az Azure ExpressRoute használatával.
+  * **Hálózati biztonsági csoport**: <*SAPSystemSID*>-NSG-ASCs-0  
+    * Nyitott külső RDP protokoll (RDP) porttal a <*SAPSystemSID*>-ASCs-0 virtuális géphez
 
 > [!NOTE]
-> Használhatja az Azure virtuális hálózati példányt. A virtuális hálózat és az alhálózat már létrejött és előkészített.
+> Alapértelmezés szerint a hálózati kártyák és az Azure belső terheléselosztó összes IP-címe **dinamikus** . Módosítsa **statikus** IP-címekre. Ezt a cikket a cikk későbbi részében ismertetjük.
 >
 >
 
-1. Az Azure Portalon a **Paraméterek** panelEN a **NEWOREXISTINGSUBNET** mezőben válassza a **meglévőt.**
-2. A **SUBNETID** mezőben adja hozzá az előkészített Azure-hálózat SubnetID teljes karakterláncát, ahol az Azure virtuális gépeit szeretné telepíteni.
-3. Az Azure hálózati alhálózatainak listájának lefelvételéhez futtassa ezt a PowerShell-parancsot:
+### <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Virtuális gépek üzembe helyezése vállalati hálózati kapcsolattal (telephelyek közötti) az éles környezetben való használatra
+Az éles környezetben futó SAP-rendszerek esetében az Azure-beli virtuális gépeket üzembe helyezheti vállalati hálózati kapcsolattal az Azure webhelyek közötti VPN vagy az Azure ExpressRoute használatával.
+
+> [!NOTE]
+> Használhatja az Azure Virtual Network-példányát. A virtuális hálózat és az alhálózat már létrehozva és előkészített állapotban van.
+>
+>
+
+1. A Azure Portal a **Paraméterek** panel **NEWOREXISTINGSUBNET** mezőjében válassza a **meglévő**lehetőséget.
+2. A **DEnetid** mezőben adja meg az előkészített Azure-hálózat teljes karakterláncát, ahol az Azure-beli virtuális gépek üzembe helyezését tervezi.
+3. Az összes Azure-beli hálózati alhálózat listájának lekéréséhez futtassa a következő PowerShell-parancsot:
 
    ```powershell
    (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
-   Az **Azonosító** mezőben a **SUBNETID látható.**
-4. Az összes **SUBNETID** érték listájának lefelvételéhez futtassa ezt a PowerShell-parancsot:
+   Az **azonosító** mező a **denetid**-t jeleníti meg.
+4. A következő PowerShell-parancs futtatásával kérheti le, hogy a rendszer hogyan olvassa be **az összes** alalkalmazási értéket:
 
    ```powershell
    (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
-   A **SUBNETID** így néz ki:
+   A **SUBNETID** következőhöz hasonlóan néz ki:
 
    ```
    /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
    ```
 
 ### <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Csak felhőalapú SAP-példányok üzembe helyezése teszteléshez és bemutatóhoz
-A magas rendelkezésre állású SAP-rendszert csak felhőalapú üzembe helyezési modellben telepítheti. Ez a fajta központi telepítés elsősorban a bemutató és a tesztelési használati esetek. Nem alkalmas gyártási használati esetekre.
+A magas rendelkezésre állású SAP-rendszer üzembe helyezése csak felhőalapú üzemi modellben végezhető el. Az ilyen típusú központi telepítés elsősorban bemutató és tesztelési célú esetekben hasznos. Éles használati esetekhez nem alkalmas.
 
-- Az Azure Portalon a **Paraméterek** panelEN a **NEWOREXISTINGSUBNET** mezőben válassza az **Új**lehetőséget. Hagyja üresen a **SUBNETID mezőt.**
+- A Azure Portal a **Paraméterek** panel **NEWOREXISTINGSUBNET** mezőjében válassza az **új**lehetőséget. Hagyja üresen a **deneti** mezőt.
 
-  Az SAP Azure Resource Manager sablon automatikusan létrehozza az Azure virtuális hálózatot és alhálózatot.
+  Az SAP Azure Resource Manager sablon automatikusan létrehozza az Azure-beli virtuális hálózatot és alhálózatot.
 
 > [!NOTE]
-> Emellett legalább egy dedikált virtuális gépet kell telepítenie az Active Directoryhoz és a DNS-hez ugyanabban az Azure virtuális hálózati példányban. A sablon nem hozza létre ezeket a virtuális gépeket.
+> A Active Directory és a DNS szolgáltatáshoz is telepítenie kell legalább egy dedikált virtuális gépet ugyanabban az Azure Virtual Network-példányban. A sablon nem hozza létre ezeket a virtuális gépeket.
 >
 >
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Az infrastruktúra előkészítése a 2.
+### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Az infrastruktúra előkészítése a 2. építészeti sablonhoz
 
-Ezt az Azure Resource Manager-sablont az SAP-hoz használhatja a szükséges infrastruktúra-erőforrások üzembe helyezésének egyszerűsítéséhez az SAP 2-es architekturális sablonhoz.
+Az SAP-hez készült Azure Resource Manager-sablon segítségével egyszerűbbé teheti a szükséges infrastruktúra-erőforrások üzembe helyezését az SAP architektúra 2. sablonjában.
 
-Itt szerezheti be az Azure Resource Manager-sablonokat ehhez a telepítési forgatókönyvhöz:
+A következő helyen kaphat Azure Resource Manager sablonokat ehhez a telepítési forgatókönyvhöz:
 
-* [Azure Piactér lemezképe](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Azure Piactér lemezkép felügyelt lemezek használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Egyéni kép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
-* [Egyéni lemezkép a Felügyelt lemezek használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace-rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Egyéni rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Az infrastruktúra előkészítése a 3- as építészeti sablonhoz
+### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Az infrastruktúra előkészítése a 3. építészeti sablonhoz
 
-Előkészítheti az infrastruktúrát, és konfigurálhatja az **SAP-t a több-SID.You**can prepare the infrastructure and configure SAP for multi-SID . Például hozzáadhat egy további SAP ASCS/SCS-példányt egy *meglévő* fürtkonfigurációhoz. További információ: [Egy további SAP ASCS/SCS-példány konfigurálása egy meglévő fürtkonfigurációba SAP többSID-konfiguráció létrehozásához az Azure Resource Managerben.][sap-ha-multi-sid-guide]
+Előkészítheti az infrastruktúrát, és konfigurálhatja az SAP-t a **többszörös SID-** hez. Hozzáadhat például egy további SAP ASCS/SCS-példányt egy *meglévő* fürtkonfiguráció-konfigurációhoz. További információkért lásd: [további SAP ASCS/SCS-példány konfigurálása meglévő fürtkonfiguráció a Azure Resource Manager SAP multi-SID konfigurációjának létrehozásához][sap-ha-multi-sid-guide].
 
-Ha új, több SID-fürtöt szeretne létrehozni, használhatja a [githubon a több SID-s gyorsindítási sablonokat.](https://github.com/Azure/azure-quickstart-templates)
+Ha új, több SID-alapú fürtöt szeretne létrehozni, használhatja a több SID-alapú [Gyorsindítás-sablonokat a githubon](https://github.com/Azure/azure-quickstart-templates).
 Új, több SID-fürt létrehozásához a következő három sablont kell telepítenie:
 
-* [ASCS/SCS sablon](#ASCS-SCS-template)
-* [Adatbázissablon](#database-template)
-* [Alkalmazáskiszolgálók sablonja](#application-servers-template)
+* [ASCS/SCS-sablon](#ASCS-SCS-template)
+* [Adatbázis-sablon](#database-template)
+* [Application Server-sablon](#application-servers-template)
 
-A következő szakaszok további részleteket tartalmaznak a sablonokról és a sablonokban megadandó paraméterekről.
+A következő szakaszokban további részleteket talál a sablonokkal és a sablonokban megadható paraméterekkel kapcsolatban.
 
-#### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a>ASCS/SCS sablon
+#### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a>ASCS/SCS-sablon
 
-Az ASCS/SCS sablon két virtuális gépet telepít, amelyek segítségével több ASCS/SCS-példányt tartalmazó Windows Server feladatátvevő fürtet hozhat létre.
+A ASCS/SCS-sablon két virtuális gépet telepít, amelyek segítségével több ASCS/SCS-példányt üzemeltető Windows Server feladatátvevő fürt hozható létre.
 
-Az ASCS/SCS multi-SID sablon beállításához az [ASCS/SCS multi-SID vagy][sap-templates-3-tier-multisid-xscs-marketplace-image] [ASCS/SCS multi-SID sablonban a Felügyelt lemezek használatával][sap-templates-3-tier-multisid-xscs-marketplace-image-md]adja meg a következő paraméterek értékeit:
+A ASCS/SCS multi-SID sablon beállításához a [ASCS/SCS multi-SID sablonban][sap-templates-3-tier-multisid-xscs-marketplace-image] vagy a [ASCS/SCS multi-SID Managed Disks sablonban][sap-templates-3-tier-multisid-xscs-marketplace-image-md]adja meg az értékeket a következő paraméterekhez:
 
-  - **Erőforrás-előtag**.  Állítsa be az erőforrás-előtagot, amely a központi telepítés során létrehozott összes erőforrás előtagra szolgál. Mivel az erőforrások nem csak egy SAP-rendszerhez tartoznak, az erőforrás előtagja nem egy SAP-rendszer sid-je.  Az előtagnak **három és hat karakter**között kell lennie .
-  - **Halom típusa**. Válassza ki az SAP-rendszer veremtípusát. A verem típusától függően az Azure Load Balancer rendelkezik egy (Csak ABAP vagy Java) vagy két (ABAP+Java) privát IP-címSAP-rendszerenként.
+  - **Erőforrás-előtag**.  Állítsa be az erőforrás-előtagot, amely az üzembe helyezés során létrehozott összes erőforrás előállítására szolgál. Mivel az erőforrások nem csak egy SAP-rendszerhez tartoznak, az erőforrás előtagja nem egy SAP-rendszer SID-azonosítója.  Az előtagnak **három és hat karakter**közöttinek kell lennie.
+  - **Verem típusa** Válassza ki az SAP-rendszerek halmozási típusát. A verem típusától függően Azure Load Balancer rendelkezik egy (ABAP vagy Java only) vagy két (ABAP + Java) magánhálózati IP-címmel SAP-rendszeren.
   -  **Operációs rendszer típusa**. Válassza ki a virtuális gépek operációs rendszerét.
-  -  **SAP-rendszerszáma**. Válassza ki a fürtben telepíteni kívánt SAP-rendszerek számát.
-  -  **A rendszer elérhetősége**. Válassza a **HA**lehetőséget.
-  -  **Rendszergazdai felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely segítségével jelentkezzen be a gépre.
-  -  **Új vagy meglévő alhálózat**. Állítsa be, hogy új virtuális hálózatot és alhálózatot kell-e létrehozni, vagy egy meglévő alhálózatot kell használni. Ha már rendelkezik olyan virtuális hálózattal, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
-  -  **Alhálózati azonosító**. Ha azt szeretné, hogy a virtuális gép egy meglévő virtuális hálózat, ahol a virtuális gép definiált alhálózat a virtuális gép kell hozzárendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában így néz ki: /subscriptions/<*subscription id*>/resourceGroups/<*resource group name*>/providers/Microsoft.Network/virtualNetworks/<virtual network *name*>/subnets/<*subnet name*>
+  -  Az **SAP-rendszerek száma**. Válassza ki a fürtben telepíteni kívánt SAP-rendszerek számát.
+  -  A **rendszerek rendelkezésre állása**. Válassza a **Ha**lehetőséget.
+  -  **Rendszergazdai Felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely használható a gépre való bejelentkezéshez.
+  -  **Új vagy meglévő alhálózat**. Állítsa be, hogy új virtuális hálózatot és alhálózatot kell-e létrehozni, vagy egy meglévő alhálózatot kell használni. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
+  -  **Alhálózat-azonosító**. Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ *<előfizetés-azonosító*>/resourcegroups/<*erőforráscsoport neve*>/Providers/Microsoft.Network/virtualnetworks/<*virtuális hálózat neve*>/Subnets/<*alhálózat neve*>
 
-A sablon egyetlen Azure Load Balancer-példányt telepít, amely több SAP-rendszert támogat.
+A sablon egy Azure Load Balancer példányt telepít, amely több SAP-rendszert is támogat.
 
-- Az ASCS-példányok a 00, 10, 20...
-- Az SCS-példányok a 01, 11, 21...
-- Az ASCS enqueue replikációs kiszolgáló (ERS) (csak Linux) példányai a 02, 12, 22 számú példányra vannak konfigurálva...
-- Az SCS ERS (csak Linux) példányok a 03, 13, 23...
+- A ASCS-példányok a 00, 10, 20 példányra vannak konfigurálva...
+- Az SCS-példányok a következő példányhoz vannak konfigurálva: 01, 11, 21...
+- A ASCS sorba helyezni replikációs kiszolgáló (ERS) (csak Linux) példányok a 02, 12, 22... számú példányra vannak konfigurálva...
+- Az SCS ERS (csak Linux) példányok konfigurálva vannak a következő példányhoz: 03, 13, 23...
 
-A terheléselosztó 1 (2 For Linux) VIP(s), 1x VIP ASCS/SCS és 1x VIP for ERS (csak Linux) tartalmazza.
+A terheléselosztó 1 (2 Linux) virtuális IP-címet, 1x VIP-t (ASCS/SCS és 1x VIP for ERS) tartalmaz (csak Linux).
 
-Az alábbi lista tartalmazza az összes terheléselosztási szabályt (ahol x az SAP-rendszer száma, például 1, 2, 3...):
-- Windows-specifikus portok minden SAP rendszerhez: 445, 5985
-- ASCS-portok (példányszám x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
-- SCS-portok (példányszám x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
-- ASCS ERS portok Linuxon (példányszám x2): 33x2, 5x213, 5x214, 5x216
-- SCS ERS portok Linuxon (példányszám x3): 33x3, 5x313, 5x314, 5x316
+Az alábbi lista tartalmazza az összes terheléselosztási szabályt (ahol az x az SAP-rendszer száma, például 1, 2, 3...):
+- Windows-specifikus portok minden SAP-rendszerhez: 445, 5985
+- ASCS-portok (példányok száma X0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
+- SCS-portok (X1-példány száma): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
+- ASCS-portok Linuxon (példány száma x2): 33x2, 5x213, 5x214, 5x216
+- SCS ERS-portok Linux rendszeren (3. példány száma): 33x3, 5x313, 5x314, 5x316
 
-A terheléselosztó a következő mintavételi portok használatára van konfigurálva (ahol x az SAP-rendszer száma, például 1, 2, 3...):
-- ASCS/SCS belső terheléselosztó szondaport: 620x0
-- ERS belső terheléselosztó szondaport (csak Linux esetén): 621x2
+A terheléselosztó a következő mintavételi portok használatára van konfigurálva (ahol az x az SAP-rendszer száma, például 1, 2, 3...):
+- ASCS/SCS belső terheléselosztó mintavételi portja: 620x0
+- ERS belső terheléselosztó mintavételi portja (csak Linux): 621x2
 
-#### <a name="database-template"></a><a name="database-template"></a>Adatbázissablon
+#### <a name="database-template"></a><a name="database-template"></a>Adatbázis-sablon
 
-Az adatbázissablon egy vagy két virtuális gépet telepít, amelyek segítségével telepítheti a relációs adatbázis-kezelő rendszert (RDBMS) egy SAP-rendszerhez. Ha például öt SAP-rendszerhez telepít egy ASCS/SCS-sablont, akkor ezt a sablont ötször kell telepítenie.
+Az adatbázis-sablon egy vagy két virtuális gépet telepít, amelyekkel egy SAP-rendszerhez a (z) RDBMS-kezelő rendszer telepíthető. Ha például öt SAP-rendszerhez telepít egy ASCS/SCS-sablont, akkor öt alkalommal kell telepítenie ezt a sablont.
 
-Az adatbázis több-SID sablonjának beállításához az [adatbázis több-SID vagy][sap-templates-3-tier-multisid-db-marketplace-image] [adatbázis több-SID sablonban a Felügyelt lemezek használatával][sap-templates-3-tier-multisid-db-marketplace-image-md]adja meg a következő paraméterek értékeit:
+Az adatbázis multi-SID sablonjának beállításához az [adatbázis multi-SID sablonjában][sap-templates-3-tier-multisid-db-marketplace-image] vagy az [adatbázis multi-sid sablonjában Managed Disks használatával][sap-templates-3-tier-multisid-db-marketplace-image-md]adja meg a következő paraméterek értékeit:
 
-- **Sap rendszer azonosító**. Adja meg a telepíteni kívánt SAP-rendszer azonosítóját. Az azonosító az üzembe helyezett erőforrások előtagjaként lesz használva.
-- **Os típus**. Válassza ki a virtuális gépek operációs rendszerét.
-- **Adatbázisgép típusa**. Válassza ki a fürtre telepíteni kívánt adatbázis típusát. Válassza az **SQL** lehetőséget, ha telepíteni szeretné a Microsoft SQL Server kiszolgálót. Válassza ki **a HANA,** ha azt tervezi, hogy telepítse az SAP HANA a virtuális gépeken. Győződjön meg arról, hogy válassza ki a megfelelő operációs rendszer típusát: válassza ki a **Windows** SQL,és válasszon egy Linux disztribúció hana. A virtuális gépekhez csatlakoztatott Azure load balancer a kiválasztott adatbázistípus támogatására lesz konfigurálva:
-  * **SQL**. A terheléselosztó teherelosztási port1433. Győződjön meg arról, hogy ezt a portot használja az SQL Server Always On beállításához.
-  * **Hana**. A terheléselosztó a 35015-ös és a 35017-es portokat fogja kiegyensúlyozni. Győződjön meg arról, hogy az SAP HANA-t **az 50-es**példányszámmal telepíti.
-  A terheléselosztó a 62550-es szondaportot fogja használni.
-- **Sap rendszer mérete**. Állítsa be az új rendszer által biztosított SAPS számát. Ha nem biztos abban, hogy hány SAP-t igényel a rendszer, kérdezze meg az SAP technológiai partnervagy a rendszerintegrátor.
-- **A rendszer elérhetősége**. Válassza a **HA**lehetőséget.
-- **Rendszergazdai felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely segítségével jelentkezzen be a gépre.
-- **Alhálózati azonosító**. Adja meg az ASCS/SCS sablon telepítése során használt alhálózat azonosítóját, vagy az ASCS/SCS sablon központi telepítésének részeként létrehozott alhálózat azonosítóját.
+- **SAP-rendszerazonosító**. Adja meg a telepíteni kívánt SAP-System AZONOSÍTÓját. Az azonosító az üzembe helyezett erőforrások előtagjaként lesz használva.
+- **Operációs rendszer típusa**. Válassza ki a virtuális gépek operációs rendszerét.
+- **DbType**. Válassza ki a fürtön telepíteni kívánt adatbázis típusát. Válassza az **SQL** lehetőséget, ha Microsoft SQL Server szeretné telepíteni. Válassza a **HANA** lehetőséget, ha SAP HANA telepítését tervezi a virtuális gépeken. Ügyeljen arra, hogy a megfelelő operációsrendszer-típust válassza: válassza a **Windows** for SQL lehetőséget, és válasszon egy Linux-disztribúciót a HANA számára. A virtuális gépekhez csatlakozó Azure Load Balancer a kiválasztott adatbázis-típus támogatásához lesz konfigurálva:
+  * **SQL**. A terheléselosztó a 1433-es portot fogja betölteni. Ügyeljen arra, hogy ezt a portot használja a SQL Server mindig a telepítőn.
+  * **HANA**. A terheléselosztó a 35015-es és a 35017-es portot fogja betölteni. Győződjön meg arról, hogy a **50**-as számú példánnyal telepíti a SAP HANA.
+  A terheléselosztó a 62550-es mintavételi portot fogja használni.
+- Az **SAP-rendszerméret**. Állítsa be, hogy az új rendszer hány SAP-t adjon meg. Ha nem biztos benne, hogy a rendszer hány SAP-t igényel, kérdezze meg az SAP-technológiai partnerét vagy rendszerintegrátorát.
+- A **rendszerek rendelkezésre állása**. Válassza a **Ha**lehetőséget.
+- **Rendszergazdai Felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely használható a gépre való bejelentkezéshez.
+- **Alhálózat-azonosító**. Adja meg annak az alhálózatnak az AZONOSÍTÓját, amelyet a ASCS/SCS sablon telepítése során használt, vagy a ASCS/SCS-sablon üzembe helyezésének részeként létrehozott alhálózat AZONOSÍTÓját.
 
-#### <a name="application-servers-template"></a><a name="application-servers-template"></a>Alkalmazáskiszolgálók sablonja
+#### <a name="application-servers-template"></a><a name="application-servers-template"></a>Application Server-sablon
 
-Az alkalmazáskiszolgálók sablon két vagy több virtuális gépet telepít, amelyek SAP Application Server-példányként használhatók egy SAP-rendszerhez. Ha például öt SAP-rendszerhez telepít egy ASCS/SCS-sablont, akkor ezt a sablont ötször kell telepítenie.
+Az alkalmazáskiszolgáló sablon két vagy több virtuális gépet telepít, amelyek SAP Application Server-példányként használhatók egy SAP-rendszerhez. Ha például öt SAP-rendszerhez telepít egy ASCS/SCS-sablont, akkor öt alkalommal kell telepítenie ezt a sablont.
 
-Az alkalmazáskiszolgálók többSID-sablonjának beállításához az [alkalmazáskiszolgálók több SID-sablonjában][sap-templates-3-tier-multisid-apps-marketplace-image] vagy a [Managed Disks használatával több SID-sablonban][sap-templates-3-tier-multisid-apps-marketplace-image-md]adja meg a következő paraméterek értékeit:
+Az alkalmazáskiszolgáló több SID-sablonjának beállításához a Managed Disks használatával adja meg az Application [Servers multi-SID sablon][sap-templates-3-tier-multisid-apps-marketplace-image] vagy [az ALKALMAZÁSKISZOLGÁLÓ multi-SID sablonját][sap-templates-3-tier-multisid-apps-marketplace-image-md]a következő paraméterek értékének megadásával:
 
-  -  **Sap rendszer azonosító**. Adja meg a telepíteni kívánt SAP-rendszer azonosítóját. Az azonosító az üzembe helyezett erőforrások előtagjaként lesz használva.
-  -  **Os típus**. Válassza ki a virtuális gépek operációs rendszerét.
-  -  **Sap rendszer mérete**. Az új rendszer által biztosított SAPS-ek száma. Ha nem biztos abban, hogy hány SAP-t igényel a rendszer, kérdezze meg az SAP technológiai partnervagy a rendszerintegrátor.
-  -  **A rendszer elérhetősége**. Válassza a **HA**lehetőséget.
-  -  **Rendszergazdai felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely segítségével jelentkezzen be a gépre.
-  -  **Alhálózati azonosító**. Adja meg az ASCS/SCS sablon telepítése során használt alhálózat azonosítóját, vagy az ASCS/SCS sablon központi telepítésének részeként létrehozott alhálózat azonosítóját.
+  -  **SAP-rendszerazonosító**. Adja meg a telepíteni kívánt SAP-System AZONOSÍTÓját. Az azonosító az üzembe helyezett erőforrások előtagjaként lesz használva.
+  -  **Operációs rendszer típusa**. Válassza ki a virtuális gépek operációs rendszerét.
+  -  Az **SAP-rendszerméret**. Az új rendszer által biztosított SAP-t. Ha nem biztos benne, hogy a rendszer hány SAP-t igényel, kérdezze meg az SAP-technológiai partnerét vagy rendszerintegrátorát.
+  -  A **rendszerek rendelkezésre állása**. Válassza a **Ha**lehetőséget.
+  -  **Rendszergazdai Felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely használható a gépre való bejelentkezéshez.
+  -  **Alhálózat-azonosító**. Adja meg annak az alhálózatnak az AZONOSÍTÓját, amelyet a ASCS/SCS sablon telepítése során használt, vagy a ASCS/SCS-sablon üzembe helyezésének részeként létrehozott alhálózat AZONOSÍTÓját.
 
 
-### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure virtuális hálózat
-A példában az Azure virtuális hálózat címtere 10.0.0.0/16. Van egy Alhálózat nevű **alhálózat,** amelynek címtartománya 10.0.0.0/24. Az összes virtuális gép és belső terheléselosztó telepítve van ebben a virtuális hálózatban.
+### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure-beli virtuális hálózat
+Példánkban az Azure-beli virtuális hálózat 10.0.0.0/16. Az **alhálózat**nevű alhálózat egy 10.0.0.0/24 címtartomány. Az összes virtuális gép és belső terheléselosztó üzembe helyezése ebben a virtuális hálózaton történik.
 
 > [!IMPORTANT]
-> Ne módosítsa a hálózati beállításokat a vendég operációs rendszeren belül. Ide tartoznak az IP-címek, a DNS-kiszolgálók és az alhálózatok. Konfigurálja az összes hálózati beállítást az Azure-ban. A DHCP (Dynamic Host Configuration Protocol) szolgáltatás propagálja a beállításokat.
+> Ne módosítsa a hálózati beállításokat a vendég operációs rendszeren belül. Ide tartoznak az IP-címek, a DNS-kiszolgálók és az alhálózatok. Konfigurálja az összes hálózati beállítást az Azure-ban. A Dynamic Host Configuration Protocol (DHCP) szolgáltatás propagálja a beállításokat.
 >
 >
 
-### <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>DNS-IP-címek
+### <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>DNS IP-címek
 
-A szükséges DNS-IP-címek beállításához tegye a következő lépéseket.
+A szükséges DNS IP-címek megadásához hajtsa végre a következő lépéseket.
 
-1. Az Azure PortalON a **DNS-kiszolgálók** panelen győződjön meg arról, hogy a virtuális hálózati **DNS-kiszolgálók** beállítása **Egyéni DNS**.
+1. A Azure Portal **DNS-kiszolgálók** paneljén győződjön meg arról, hogy a virtuális hálózati **DNS-kiszolgálók** beállítás értéke **Egyéni DNS**.
 2. Válassza ki a beállításokat a hálózat típusa alapján. További információkért lásd a következőket:
-   * Adja hozzá a helyszíni DNS-kiszolgálók IP-címét.  
-   A helyszíni DNS-kiszolgálókat kiterjesztheti az Azure-ban futó virtuális gépekre. Ebben a forgatókönyvben hozzáadhatja azoknak az Azure virtuális gépeknek az IP-címeit, amelyeken a DNS-szolgáltatást futtatja.
-   * Az Azure-ban elkülönített virtuálisgép-telepítések esetén: Telepítsen egy további virtuális gépet ugyanabban a virtuális hálózati példányban, amely DNS-kiszolgálóként szolgál. Adja hozzá a DNS-szolgáltatás futtatásához beállított Azure virtuális gépek IP-címét.
+   * Adja hozzá a helyszíni DNS-kiszolgálók IP-címeit.  
+   A helyszíni DNS-kiszolgálókat az Azure-ban futó virtuális gépekre is kiterjesztheti. Ebben az esetben felveheti azon Azure-beli virtuális gépek IP-címeit, amelyeken a DNS szolgáltatást futtatja.
+   * Az Azure-ban elkülönített VM-példányok esetén: helyezzen üzembe egy további virtuális gépet ugyanabban a Virtual Network-példányban, amely DNS-kiszolgálóként szolgál. Adja hozzá a DNS-szolgáltatás futtatásához beállított Azure-beli virtuális gépek IP-címeit.
 
-   ![12. ábra: DNS-kiszolgálók konfigurálása az Azure virtuális hálózathoz][sap-ha-guide-figure-3001]
+   ![12. ábra: az Azure-hoz készült DNS-kiszolgálók konfigurálása Virtual Network][sap-ha-guide-figure-3001]
 
-   _**12. ábra:** DNS-kiszolgálók konfigurálása az Azure virtuális hálózathoz_
+   _**12. ábra:** DNS-kiszolgálók konfigurálása az Azure Virtual Network_
 
    > [!NOTE]
-   > Ha módosítja a DNS-kiszolgálók IP-címét, újra kell indítania az Azure virtuális gépeket a módosítás alkalmazásához és az új DNS-kiszolgálók terjesztéséhez.
+   > Ha megváltoztatja a DNS-kiszolgálók IP-címeit, újra kell indítania az Azure-beli virtuális gépeket a módosítás alkalmazásához és az új DNS-kiszolgálók propagálásához.
    >
    >
 
-A példánkban a DNS-szolgáltatás telepítve és konfigurálva van ezeken a Windows virtuális gépeken:
+A példánkban a DNS szolgáltatás telepítve van és konfigurálva van ezeken a Windows-alapú virtuális gépeken:
 
-| Virtuális gép szerepkör | Virtuálisgép-állomás neve | Hálózati kártya neve | Statikus IP-cím |
+| Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első DNS-kiszolgáló |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
-| Második DNS-kiszolgáló |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
+| Első DNS-kiszolgáló |domcontr – 0 |PR1-NIC-domcontr-0 |10.0.0.10 |
+| Második DNS-kiszolgáló |domcontr – 1 |PR1-NIC-domcontr-1 |10.0.0.11 |
 
-### <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Állomásnevek és statikus IP-címek az SAP ASCS/SCS fürtözött példányhoz és az DBMS fürtözött példányhoz
+### <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Az SAP ASCS/SCS fürtözött példány és az adatbázis-kezelő fürtözött példány állomásneve és statikus IP-címei
 
-A helyszíni telepítéshez ezekre a fenntartott állomásnevekre és IP-címekre van szükség:
+Helyszíni központi telepítés esetén ezekre a fenntartott állomásnévekre és IP-címekre van szükség:
 
-| Virtuális állomásnév szerepkör | Virtuális állomás neve | Virtuális statikus IP-cím |
+| Virtuális gazdagép neve szerepkör | Virtuális gazdagép neve | Virtuális statikus IP-cím |
 | --- | --- | --- |
-| SAP ASCS/SCS első fürtvirtuális állomásneve (fürtkezeléshez) |pr1-ascs-vir |10.0.0.42 |
-| SAP ASCS/SCS-példány virtuális állomásneve |pr1-ascs-nedv |10.0.0.43 |
-| SAP DBMS második fürt virtuális állomásneve (fürtkezelés) |pr1-dbms-vir |10.0.0.32 |
+| SAP ASCS/SCS első fürt virtuális gazdagépének neve (fürtözési felügyelethez) |PR1-ASCs-VIR |10.0.0.42 |
+| SAP-ASCS/SCS-példány virtuális gazdagépének neve |PR1-ASCs-SAP |10.0.0.43 |
+| SAP adatbázis-kezelő második fürt virtuális gazdagépének neve (fürtszolgáltatás) |PR1 – adatbázis-kezelő – VIR |10.0.0.32 |
 
-A fürt létrehozásakor hozza létre a virtuális állomás **neveket pr1-ascs-vir** és **pr1-dbms-vir** és a kapcsolódó IP-címeket, amelyek kezelik a fürt maga. Ennek módjáról a [Fürtcsomópontok gyűjtése fürtkonfigurációban][sap-ha-guide-8.12.1]című témakörben talál további információt.
+A fürt létrehozásakor hozza létre a **PR1-ASCs-VIR** és a **PR1-adatbázis-VIR** nevű virtuális gazdagép nevét, valamint a FÜRTÖt kezelő társított IP-címeket. Ennek módjával kapcsolatos további információkért lásd: fürtcsomópontok [gyűjtése a fürt konfigurációjában][sap-ha-guide-8.12.1].
 
-A másik két virtuális állomásnevet, a **pr1-ascs-sap** és **pr1-dbms-sap**és a kapcsolódó IP-címeket manuálisan is létrehozhatja a DNS-kiszolgálón. A fürtözött SAP ASCS/SCS-példány és a fürtözött DBMS-példány ezeket az erőforrásokat használja. Ennek módjáról a [Fürtözött SAP ASCS/SCS-példány virtuális állomásnevének létrehozása][sap-ha-guide-9.1.1]című témakörben talál.
+A DNS-kiszolgálón manuálisan is létrehozhatja a másik két virtuális gazdagép nevét, a **PR1-ASCs-SAP** és a **PR1-adatbázis-SAP protokollt**, valamint a hozzájuk tartozó IP-címeket. A fürtözött SAP ASCS/SCS-példány és a fürtözött adatbázis-kezelő példány ezeket az erőforrásokat használja. Ennek módjáról a következő témakörben talál további információt: [virtuális állomásnév létrehozása FÜRTÖZÖTT SAP ASCS/SCS-példányhoz][sap-ha-guide-9.1.1].
 
-### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statikus IP-címek beállítása az SAP virtuális gépekhez
-Miután üzembe helyezte a fürtben használt virtuális gépeket, statikus IP-címeket kell beállítania az összes virtuális géphez. Ehhez az Azure virtuális hálózat konfiguráció, és nem a vendég operációs rendszer.
+### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statikus IP-címek beállítása az SAP-beli virtuális gépekhez
+Miután telepítette a virtuális gépeket a fürtben való használatra, statikus IP-címeket kell megadnia az összes virtuális géphez. Ezt megteheti az Azure Virtual Network konfigurációjában, nem pedig a vendég operációs rendszeren.
 
-1. Az Azure portalon válassza az **Erőforráscsoport** >  >  > **hálózatikártya-beállítások****IP-címét**lehetőséget.**Settings**
-2. Az **IP-címek** panel hozzárendelés **e**területén válassza a **Statikus**lehetőséget. Az **IP-cím** mezőbe írja be a használni kívánt IP-címet.
+1. A Azure Portal válassza az **erőforráscsoport** > **hálózati kártya** > **beállításai** > **IP-cím**elemet.
+2. Az **IP-címek** panel **hozzárendelés**területén válassza a **statikus**lehetőséget. Az **IP-cím** mezőbe írja be a használni kívánt IP-címet.
 
    > [!NOTE]
-   > Ha módosítja a hálózati kártya IP-címét, újra kell indítania az Azure virtuális gépeket a módosítás alkalmazásához.  
+   > Ha módosítja a hálózati kártya IP-címét, a módosítás alkalmazásához újra kell indítania az Azure-beli virtuális gépeket.  
    >
    >
 
-   ![13. ábra: Statikus IP-címek beállítása az egyes virtuális gépek hálózati kártyáihoz][sap-ha-guide-figure-3002]
+   ![13. ábra: az egyes virtuális gépek hálózati kártyájának statikus IP-címeinek beállítása][sap-ha-guide-figure-3002]
 
-   _**13. ábra:** Statikus IP-címek beállítása az egyes virtuális gépek hálózati kártyáihoz_
+   _**13. ábra:** Statikus IP-címek beállítása az egyes virtuális gépek hálózati kártyája számára_
 
-   Ismételje meg ezt a lépést az összes hálózati csatoló esetében, azaz az összes virtuális gépen, beleértve az Active Directory/DNS szolgáltatáshoz használni kívánt virtuális gépeket is.
+   Ismételje meg ezt a lépést minden hálózati adapter esetében, azaz minden virtuális gép esetében, beleértve a Active Directory/DNS szolgáltatáshoz használni kívánt virtuális gépeket is.
 
-A példánkban ezek a virtuális gépek és statikus IP-címek:
+A példánkban a következő virtuális gépek és statikus IP-címek vannak:
 
-| Virtuális gép szerepkör | Virtuálisgép-állomás neve | Hálózati kártya neve | Statikus IP-cím |
+| Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első SAP-alkalmazáskiszolgáló-példány |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
-| Második SAP-alkalmazáskiszolgáló példány |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
+| Első SAP Application Server-példány |PR1-di-0 |PR1-NIC-di-0 |10.0.0.50 |
+| Második SAP Application Server-példány |PR1-di-1 |PR1-NIC-di-1 |10.0.0.51 |
 | ... |... |... |... |
-| Utolsó SAP-alkalmazáskiszolgáló-példány |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Az ASCS/SCS-példány első fürtcsomópontja |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Második fürtcsomópont AZ ASCS/SCS-példányhoz |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
-| A DBMS-példány első fürtcsomópontja |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
-| A DBMS-példány második fürtcsomópontja |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
+| Utolsó SAP Application Server-példány |PR1-di-5 |PR1-NIC-di-5 |10.0.0.55 |
+| Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |PR1-NIC-ASCs-0 |10.0.0.40 |
+| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |PR1-NIC-ASCs-1 |10.0.0.41 |
+| Első fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-0 |PR1-NIC-db-0 |10.0.0.30 |
+| Második fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-1 |PR1-NIC-db-1 |10.0.0.31 |
 
-### <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Statikus IP-cím beállítása az Azure belső terheléselosztójának
+### <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Statikus IP-cím beállítása az Azure belső terheléselosztó számára
 
-Az SAP Azure Resource Manager-sablon létrehoz egy Azure belső terheléselosztót, amely az SAP ASCS/SCS-példányfürthöz és a DBMS-fürthöz használatos.
+Az SAP Azure Resource Manager sablon egy belső Azure Load balancert hoz létre, amely az SAP ASCS/SCS instance-fürthöz és az adatbázis-kezelő fürthöz használható.
 
 > [!IMPORTANT]
-> Az SAP ASCS/SCS virtuális állomásnevének IP-címe megegyezik az SAP ASCS/SCS belső terheléselosztó: **pr1-lb-ascs**IP-címével.
-> A DBMS virtuális nevének IP-címe megegyezik a DBMS belső terheléselosztójának **IP-címével: pr1-lb-dbms**.
+> Az SAP ASCS/SCS virtuális állomásneve IP-címe megegyezik az SAP ASCS/SCS belső terheléselosztó IP-címével: **PR1-LB-ASCS**.
+> Az adatbázis-kezelőrendszer virtuális nevének IP-címe megegyezik az adatbázis-kezelő belső terheléselosztó IP-címével: **PR1-LB-adatbázis-kezelő**.
 >
 >
 
-Statikus IP-cím beállítása az Azure belső terheléselosztóhoz:
+Statikus IP-cím beállítása az Azure belső terheléselosztó számára:
 
-1. A kezdeti központi telepítés a belső terheléselosztó IP-címét **dinamikusra állítja.** Az Azure Portalon az **IP-címek** panelen a **Hozzárendelés**csoportban válassza a **Statikus**lehetőséget.
-2. Állítsa be a belső terheléselosztó **pr1-lb-ascs** IP-címét az SAP ASCS/SCS-példány virtuális állomásnevének IP-címére.
-3. Állítsa be a belső terheléselosztó **pr1-lb-dbms** IP-címét a DBMS-példány virtuális állomásnevének IP-címére.
+1. A kezdeti telepítés a belső terheléselosztó IP-címét a **dinamikus**értékre állítja. A Azure Portal **IP-címek** paneljének **hozzárendelés**területén válassza a **statikus**lehetőséget.
+2. Állítsa be a belső terheléselosztó **PR1-LB-ASCS** IP-címét az SAP ASCS/SCS-példány virtuális állomásneve IP-címére.
+3. Állítsa be a belső terheléselosztó **PR1-LB-adatbázis IP-** címét az adatbázis-kezelő példány virtuális állomásneve IP-címére.
 
-   ![14. ábra: Statikus IP-címek beállítása az SAP ASCS/SCS-példány belső terheléselosztójának][sap-ha-guide-figure-3003]
+   ![14. ábra: statikus IP-címek beállítása a belső terheléselosztó számára az SAP ASCS/SCS-példányhoz][sap-ha-guide-figure-3003]
 
-   _**14. ábra:** Statikus IP-címek beállítása az SAP ASCS/SCS-példány belső terheléselosztójának_
+   _**14. ábra:** Statikus IP-címek beállítása a belső terheléselosztó számára az SAP ASCS/SCS-példányhoz_
 
-A példában két Azure belső terheléselosztóval rendelkezik, amelyek rendelkeznek ezekkel a statikus IP-címekkel:
+A példánkban két Azure belső terheléselosztó van, amelyek rendelkeznek ezekkel a statikus IP-címekkel:
 
-| Az Azure belső terheléselosztó szerepköre | Az Azure belső terheléselosztójának neve | Statikus IP-cím |
+| Azure belső terheléselosztó szerepkör | Azure belső terheléselosztó neve | Statikus IP-cím |
 | --- | --- | --- |
-| SAP ASCS/SCS-példány belső terheléselosztója |pr1-lb-ascs |10.0.0.43 |
-| SAP DBMS belső terheléselosztó |pr1-lb-dbms |10.0.0.33 |
+| SAP ASCS/SCS-példány belső terheléselosztó |PR1-LB – ASCs |10.0.0.43 |
+| SAP adatbázis-kezelő belső terheléselosztó |PR1-LB – adatbázis-kezelő |10.0.0.33 |
 
 
-### <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztóhoz
+### <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztó számára
 
 Az SAP Azure Resource Manager sablon létrehozza a szükséges portokat:
-* ABAP ASCS-példány, **00** alapértelmezett példányszámmal
-* Java SCS-példány, **01-es** alapértelmezett példányszámmal
+* ABAP ASCS-példány, az alapértelmezett **00** -as számú példánnyal
+* Egy Java SCS-példány, amely az alapértelmezett **1** . számú példánnyal rendelkezik
 
-Az SAP ASCS/SCS-példány telepítésekor az ABAP ASCS-példány **00-as** számú példányát és a Java SCS-példány **01-es** számú példányát kell használnia.
+Az SAP-ASCS/SCS-példány telepítésekor a következő alapértelmezett példányt kell használnia a ABAP ASCS-példányához, valamint a Java SCS-példányhoz tartozó alapértelmezett **01** - **es számú** példányt.
 
-Ezután hozza létre a szükséges belső terheléselosztási végpontokat az SAP NetWeaver portokhoz.
+Ezután hozza létre a szükséges belső terheléselosztási végpontokat az SAP NetWeaver-portok számára.
 
-A szükséges belső terheléselosztási végpontok létrehozásához először hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver ABAP ASCS portokhoz:
+A szükséges belső terheléselosztási végpontok létrehozásához először hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver ABAP ASCS-portok számára:
 
-| Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Konkrét portok (ASCS-példány 00-s példányszámmal) (ERS 10-el) |
+| Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Beton portok (a 00-as példánnyal rendelkező ASCS-példány esetében) (10-ESEK) |
 | --- | --- | --- |
-| Várólistára helyezett kiszolgáló / *lbrule3200* |32<*példányszáma*> |3200 |
-| ABAP üzenetkiszolgáló / *lbrule3600* |36<*példányszáma*> |3600 |
-| Belső ABAP üzenet / *lbrule3900* |39<*példányszáma*> |3900 |
-| Üzenetkiszolgáló HTTP / *Lbrule8100* |81<*példányszáma*> |8100 |
-| SAP Start Service ASCS HTTP / *Lbrule50013* |5<*példányszáma*>13 |50013 |
-| SAP Start Service ASCS HTTPS / *Lbrule50014* |5<*példányszáma*>14 |50014 |
-| Várólistára helyezett replikáció / *Lbrule50016* |5<*példányszáma*>16 |50016 |
-| SAP Start Service ERS HTTP *Lbrule51013* |5<*példányszáma*>13 |51013 |
-| SAP Start Service ERS HTTP *Lbrule51014* |5<*példányszáma*>14 |51014 |
-| Győzelem *RM Lbrule5985* | |5985 |
+| Sorba helyezni-kiszolgáló/ *lbrule3200* |32<*Példányszám*> |3200 |
+| ABAP üzenetkezelő kiszolgáló/ *lbrule3600* |36<*Példányszám*> |3600 |
+| Belső ABAP üzenet/ *lbrule3900* |39<*Példányszám*> |3900 |
+| Message Server HTTP/ *Lbrule8100* |81<*Példányszám*> |8100 |
+| SAP Start Service ASCS HTTP/ *Lbrule50013* |5<*példányszám*>13 |50013 |
+| SAP Start Service ASCS HTTPS/ *Lbrule50014* |5<*példányszám*>14 |50014 |
+| Sorba helyezni-replikáció/ *Lbrule50016* |5<*példányszám*>16 |50016 |
+| SAP Start Service ERS HTTP- *Lbrule51013* |5<*példányszám*>13 |51013 |
+| SAP Start Service ERS HTTP- *Lbrule51014* |5<*példányszám*>14 |51014 |
+| Win RM *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
-_**1.** Az SAP NetWeaver ABAP ASCS-példányok portszámai_
+_**1. táblázat:** Az SAP NetWeaver ABAP ASCS-példányok portszámai_
 
-Ezután hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver Java SCS portokhoz:
+Ezután hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver Java SCS-portok számára:
 
-| Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Betonportok (SCS-példány 01-es példányszámmal) (ERS 11-es sel) |
+| Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Beton portok (a 01-es példánnyal rendelkező SCS-példány esetében) (11-ESEK) |
 | --- | --- | --- |
-| Várólistára helyezett kiszolgáló / *lbrule3201* |32<*példányszáma*> |3201 |
-| Átjárókiszolgáló / *lbrule3301* |33<*példányszáma*> |3301 |
-| Java üzenetkiszolgáló / *lbrule3900* |39<*példányszáma*> |3901 |
-| Üzenetkiszolgáló HTTP / *Lbrule8101* |81<*példányszáma*> |8101 |
-| SAP Start Service SCS HTTP / *Lbrule50113* |5<*példányszáma*>13 |50113 |
-| SAP Start Service SCS HTTPS / *Lbrule50114* |5<*példányszáma*>14 |50114 |
-| Várólistára helyezett replikáció / *Lbrule50116* |5<*példányszáma*>16 |50116 |
-| SAP Start Service ERS HTTP *Lbrule51113* |5<*példányszáma*>13 |51113 |
-| SAP Start Service ERS HTTP *Lbrule51114* |5<*példányszáma*>14 |51114 |
-| Győzelem *RM Lbrule5985* | |5985 |
+| Sorba helyezni-kiszolgáló/ *lbrule3201* |32<*Példányszám*> |3201 |
+| Átjárókiszolgáló/ *lbrule3301* |33<*Példányszám*> |3301 |
+| Java-üzenet kiszolgálója/ *lbrule3900* |39<*Példányszám*> |3901 |
+| Message Server HTTP/ *Lbrule8101* |81<*Példányszám*> |8101 |
+| SAP Start Service SCS HTTP/ *Lbrule50113* |5<*példányszám*>13 |50113 |
+| SAP Start Service SCS HTTPS/ *Lbrule50114* |5<*példányszám*>14 |50114 |
+| Sorba helyezni-replikáció/ *Lbrule50116* |5<*példányszám*>16 |50116 |
+| SAP Start Service ERS HTTP- *Lbrule51113* |5<*példányszám*>13 |51113 |
+| SAP Start Service ERS HTTP- *Lbrule51114* |5<*példányszám*>14 |51114 |
+| Win RM *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
-_**2.** Az SAP NetWeaver Java SCS-példányok portszámai_
+_**2. táblázat:** Az SAP NetWeaver Java SCS-példányok portszámai_
 
-![15. ábra: Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztóhoz][sap-ha-guide-figure-3004]
+![15. ábra: az Azure belső terheléselosztó alapértelmezett ASCS/SCS terheléselosztási szabályai][sap-ha-guide-figure-3004]
 
-_**15. ábra:** Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztóhoz_
+_**15. ábra:** Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztó számára_
 
-Állítsa be a **pr1-lb-dbms** terheléselosztó IP-címét a DBMS-példány virtuális állomásnevének IP-címére.
+Állítsa be a terheléselosztó **PR1-LB-adatbázis IP-** címét az adatbázis-kezelő példány virtuális állomásneve IP-címére.
 
-### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Az ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása az Azure belső terheléselosztójára vonatkozóan
+### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Az Azure belső terheléselosztó ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása
 
-Ha az SAP ASCS- vagy SCS-példányokhoz különböző számokat szeretne használni, módosítania kell a portok nevét és értékeit az alapértelmezett értékekről.
+Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni, akkor a portok nevét és értékeit az alapértelmezett értékekkel kell módosítania.
 
-1. Az Azure Portalon válassza >  ** <a *SID*>-lb-ascs terheléselosztási****szabályok.**
-2. Az SAP ASCS- vagy SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa ezeket az értékeket:
+1. A Azure Portal válassza ** <a *SID*>-LB-ASCs terheléselosztó** > terheléselosztási**szabályokat**.
+2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Név
+   * Name (Név)
    * Port
-   * Háttérport
+   * Háttérbeli port
 
-   Ha például az alapértelmezett ASCS-példányszámot 00-ról 31-re szeretné módosítani, az 1.
+   Ha például meg szeretné változtatni az alapértelmezett ASCS-példány számát 00 és 31 között, akkor az 1. táblázatban felsorolt összes porton módosítania kell a módosításokat.
 
-   Íme egy példa az *lbrule3200*port frissítésére.
+   Az alábbi példa egy frissítést mutat be a port *lbrule3200*.
 
-   ![16. ábra: Az ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása az Azure belső terheléselosztójára vonatkozóan][sap-ha-guide-figure-3005]
+   ![16. ábra: az Azure belső terheléselosztó ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása][sap-ha-guide-figure-3005]
 
-   _**16. ábra:** Az ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása az Azure belső terheléselosztójára vonatkozóan_
+   _**16. ábra:** Az Azure belső terheléselosztó ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása_
 
-### <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Windows virtuális gépek hozzáadása a tartományhoz
+### <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Windows rendszerű virtuális gépek hozzáadása a tartományhoz
 
-Miután statikus IP-címet rendelt a virtuális gépekhez, adja hozzá a virtuális gépeket a tartományhoz.
+Miután hozzárendelt egy statikus IP-címet a virtuális gépekhez, adja hozzá a virtuális gépeket a tartományhoz.
 
-![17. ábra: Virtuális gép hozzáadása tartományhoz][sap-ha-guide-figure-3006]
+![17. ábra: virtuális gép hozzáadása tartományhoz][sap-ha-guide-figure-3006]
 
 _**17. ábra:** Virtuális gép hozzáadása tartományhoz_
 
-### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Rendszerleíró bejegyzések hozzáadása az SAP ASCS/SCS-példány mindkét fürtcsomópontján
+### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányhoz tartozó fürtcsomópontok esetében
 
-Az Azure Load Balancer rendelkezik egy belső terheléselosztóval, amely bezárja a kapcsolatokat, ha a kapcsolatok egy meghatározott ideig (egy tétlen időtúltöltés) tétlenek. A párbeszédpéldányokban lévő SAP-munkafolyamatok megnyitják az SAP-várólistás folyamattal létesített kapcsolatokat, amint az első enqueue/dequeue kérelmet el kell küldeni. Ezek a kapcsolatok általában a munkafolyamat vagy a várólistán lévő folyamat újraindításáig maradnak létre. Azonban ha a kapcsolat egy meghatározott ideig tétlen, az Azure belső terheléselosztó bezárja a kapcsolatokat. Ez nem probléma, mert az SAP munkafolyamat újra létrehozza a kapcsolatot a várólistára folyamat, ha már nem létezik. Ezeket a tevékenységeket az SAP-folyamatok fejlesztői nyomai dokumentálják, de nagy mennyiségű extra tartalmat hoznak létre ezekben a nyomkövetésekben. Célszerű módosítani a TCP/IP protokollt `KeepAliveTime` `KeepAliveInterval` és mindkét fürtcsomóponton. Kombinálja ezeket a változásokat a TCP/IP paraméterek et az SAP profil paraméterekkel, amelyeket a cikk későbbi részében ismertetett.
+A Azure Load Balancer belső terheléselosztó zárja be a kapcsolatokat, ha a kapcsolatok meghatározott időtartamon belül üresjáratban vannak (Üresjárati időkorlát). A párbeszédpanelen lévő SAP-munkafolyamatok az első sorba helyezni/deüzenetsor-kérelem elküldését követően megnyitják az SAP sorba helyezni folyamathoz való kapcsolódást. Ezek a kapcsolatok általában mindaddig megmaradnak, amíg a munkahelyi folyamat vagy a sorba helyezni folyamat újraindul. Ha azonban a kapcsolat üresjáratban van egy meghatározott időtartamon belül, az Azure belső terheléselosztó kizárja a kapcsolatokat. Ez nem jelent problémát, mert az SAP munkafolyamata újra létrehozza a kapcsolatot a sorba helyezni folyamattal, ha már nem létezik. Ezek a tevékenységek dokumentálva vannak az SAP-folyamatok fejlesztői nyomkövetésében, de nagy mennyiségű extra tartalmat hoznak létre ezekben a nyomkövetésekben. Érdemes megváltoztatnia a TCP/IP-t `KeepAliveTime` és `KeepAliveInterval` a fürt csomópontjait is. Kombinálja ezeket a módosításokat a TCP/IP-paraméterekben az SAP-profil paramétereinek leírásával, a cikk későbbi részében leírtak szerint.
 
-Az SAP ASCS/SCS-példány mindkét fürtcsomópontjának rendszerleíró bejegyzéseinek hozzáadásához először adja hozzá ezeket a Windows rendszerleíró bejegyzéseket az SAP ASCS/SCS mindkét Windows-fürtcsomópontján:
+Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, először adja hozzá ezeket a Windows-beállításjegyzékbeli bejegyzéseket az SAP ASCS/SCS-hez készült Windows-fürtcsomópontokon:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Paraméterek |
+| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
-_**3.** Az első TCP/IP paraméter módosítása_
+_**3. táblázat:** Az első TCP/IP-paraméter módosítása_
 
-Ezután adja hozzá ezt a Windows rendszerleíró bejegyzéseket az SAP ASCS/SCS mindkét Windows fürtcsomópontján:
+Ezt követően adja hozzá ezt a Windows-beállításjegyzékbeli bejegyzést a Windows-fürtcsomópontokon az SAP ASCS/SCS-hez:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Paraméterek |
+| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
-_**4.** A második TCP/IP paraméter módosítása_
+_**4. táblázat:** A második TCP/IP-paraméter módosítása_
 
-**A módosítások alkalmazásához indítsa újra mindkét fürtcsomópontot.**
+**A módosítások alkalmazásához indítsa újra a fürtcsomópontok csomópontját**.
 
-### <a name="set-up-a-windows-server-failover-clustering-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Windows Server feladatátvevő fürtfürt beállítása SAP ASCS/SCS-példányhoz
+### <a name="set-up-a-windows-server-failover-clustering-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Windows Server feladatátvételi fürtszolgáltatási fürt beállítása SAP ASCS/SCS-példányhoz
 
-Windows Server feladatátvevő fürt fürt beállítása SAP ASCS/SCS-példányhoz a következő feladatokat foglalja magában:
+A Windows Server feladatátvételi fürtszolgáltatási fürt SAP ASCS/SCS-példányhoz való beállítása a következő feladatokat foglalja magában:
 
-- A fürtcsomópontok gyűjtése fürtkonfigurációban
-- Fürtfájlmegosztás tanúsítójának konfigurálása
+- Fürtcsomópontok összegyűjtése a fürt konfigurációjában
+- Fürt fájlmegosztás-megosztásának konfigurálása
 
-#### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>A fürtcsomópontok gyűjtése fürtkonfigurációban
+#### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>Fürt csomópontjainak összegyűjtése
 
-1. A Szerepkör és szolgáltatások hozzáadása varázslóban adja hozzá a feladatátvevő fürtözést mindkét fürtcsomóponthoz.
-2. Állítsa be a feladatátvevő fürtöt a Feladatátvevő fürtkezelővel. A Feladatátvevőfürt-kezelőben válassza **a Fürt létrehozása**lehetőséget, majd csak az első fürt, az A csomópont nevét adja hozzá. Még ne adja hozzá a második csomópontot; egy későbbi lépésben adja hozzá a második csomópontot.
+1. A szerepkörök és szolgáltatások hozzáadása varázslóban adja hozzá a feladatátvételi fürtszolgáltatást a fürtcsomópontokon.
+2. Állítsa be a feladatátvevő fürtöt Feladatátvevőfürt-kezelő használatával. A Feladatátvevőfürt-kezelő területen válassza a **fürt létrehozása**lehetőséget, majd adja hozzá a csak az első fürt nevét, a csomópontot. Még ne adja hozzá a második csomópontot; egy későbbi lépésben hozzáadja a második csomópontot.
 
-   ![18. ábra: Adja hozzá az első fürtcsomópont kiszolgáló- vagy virtuálisgép-nevét][sap-ha-guide-figure-3007]
+   ![18. ábra: az első fürtcsomópont kiszolgálójának vagy virtuális gépnek a nevének hozzáadása][sap-ha-guide-figure-3007]
 
-   _**18. ábra:** Az első fürtcsomópont kiszolgáló- vagy virtuálisgép-nevének hozzáadása_
+   _**18. ábra:** Adja hozzá az első fürtcsomópont-kiszolgáló vagy virtuális gép nevét_
 
-3. Adja meg a fürt hálózati nevét (virtuális állomásnevét).
+3. Adja meg a fürt hálózatnév (virtuális állomásnév) nevét.
 
-   ![19. ábra: Adja meg a fürt nevét][sap-ha-guide-figure-3008]
+   ![19. ábra: a fürt nevének megadása][sap-ha-guide-figure-3008]
 
    _**19. ábra:** Adja meg a fürt nevét_
 
-4. A fürt létrehozása után futtasson fürtérvényesítési tesztet.
+4. A fürt létrehozása után futtasson egy fürt-ellenőrzési tesztet.
 
-   ![20. ábra: A fürtérvényesítési ellenőrzés futtatása][sap-ha-guide-figure-3009]
+   ![20. ábra: a fürt érvényesítési ellenőrzésének futtatása][sap-ha-guide-figure-3009]
 
-   _**20. ábra:** A fürtérvényesítési ellenőrzés futtatása_
+   _**20. ábra:** A fürt érvényesítési ellenőrzésének futtatása_
 
-   A folyamat ezen pontján figyelmen kívül hagyhatja a lemezekkel kapcsolatos figyelmeztetéseket. Később hozzá kell adnia egy fájlmegosztási tanúsítót és a SIOS megosztott lemezeket. Ebben a szakaszban nem kell aggódnia a kvórum miatt.
+   A folyamat ezen pontján a lemezekkel kapcsolatos figyelmeztetések figyelmen kívül hagyhatók. Később a tanúsító fájlmegosztás és a SIOS megosztott lemezek is felvehetők. Ebben a szakaszban nem kell aggódnia a kvórumtal kapcsolatban.
 
-   ![21. ábra: Nem található kvórumlemez][sap-ha-guide-figure-3010]
+   ![21. ábra: nem található kvórum lemez][sap-ha-guide-figure-3010]
 
-   _**21. ábra:** Nem található kvórumlemez_
+   _**21. ábra:** Nem található kvórum lemez_
 
-   ![22. ábra: A központi fürterőforrásnak új IP-címre van szüksége][sap-ha-guide-figure-3011]
+   ![22. ábra: az alapfürt erőforrásának új IP-címnek kell lennie][sap-ha-guide-figure-3011]
 
-   _**22. ábra:** A központi fürterőforrásnak új IP-címre van szüksége_
+   _**22. ábra:** Az alapszintű fürt erőforrásának új IP-címnek kell lennie_
 
-5. Módosítsa a központi fürtszolgáltatás IP-címét. A fürt nem indítható el, amíg nem módosítja a központi fürtszolgáltatás IP-címét, mert a kiszolgáló IP-címe a virtuális gép egyik csomópontjára mutat. Ehhez a fő fürtszolgáltatás IP-erőforrásának **Tulajdonságok** lapján.
+5. Módosítsa az alapszintű fürtszolgáltatás IP-címét. A fürt addig nem indul el, amíg meg nem változtatja az alapvető fürtszolgáltatás IP-címét, mert a kiszolgáló IP-címe a virtuálisgép-csomópontok egyikére mutat. Ezt az alapszintű fürtszolgáltatás IP-erőforrásának **Tulajdonságok** lapján teheti meg.
 
-   Például hozzá kell rendelnünk egy IP-címet (példában **10.0.0.42)** a fürt virtuális állomásnevéhez **pr1-ascs-vir**.
+   Például hozzá kell rendelni egy IP-címet (példánkban a **10.0.0.42**) a fürt virtuális **PR1-ASCs-VIR**-hez.
 
-   ![23. ábra: A Tulajdonságok párbeszédpanelen módosítsa az IP-címet][sap-ha-guide-figure-3012]
+   ![23. ábra: a Properties (Tulajdonságok) párbeszédpanelen módosítsa az IP-címet][sap-ha-guide-figure-3012]
 
    _**23. ábra:** A **Tulajdonságok** párbeszédpanelen módosítsa az IP-címet_
 
-   ![24. ábra: A fürt számára fenntartott IP-cím hozzárendelése][sap-ha-guide-figure-3013]
+   ![24. ábra: a fürt számára fenntartott IP-cím kiosztása][sap-ha-guide-figure-3013]
 
-   _**24. ábra:** A fürt számára fenntartott IP-cím hozzárendelése_
+   _**24. ábra:** A fürt számára fenntartott IP-cím kiosztása_
 
-6. A fürt virtuális állomásnevének online állapotba hozása.
+6. A fürt virtuális gazdagépének neve online állapotba hozása.
 
-   ![25. ábra: A fürt alapszolgáltatása működik, és a megfelelő IP-címmel működik][sap-ha-guide-figure-3014]
+   ![25. ábra: a cluster Core szolgáltatás működik, és a megfelelő IP-címmel rendelkezik.][sap-ha-guide-figure-3014]
 
-   _**25. ábra:** A fürt alapszolgáltatása működik, és a megfelelő IP-címmel működik_
+   _**25. ábra:** A cluster Core szolgáltatás működik, és a megfelelő IP-címmel rendelkezik_
 
-7. Adja hozzá a második fürtcsomópontot.
+7. Adja hozzá a második fürtcsomópont-csomópontot.
 
-   Most, hogy a fő fürtszolgáltatás működik, hozzáadhatja a második fürtcsomópontot.
+   Most, hogy az alapszintű fürtszolgáltatás működik, felveheti a második fürtcsomópont-csomópontot.
 
-   ![26. ábra: A második fürtcsomópont hozzáadása][sap-ha-guide-figure-3015]
+   ![26. ábra: a második fürtcsomópont hozzáadása][sap-ha-guide-figure-3015]
 
    _**26. ábra:** A második fürtcsomópont hozzáadása_
 
-8. Adja meg a második fürtcsomópont-állomás nevét.
+8. Adja meg a második fürtcsomópont-gazdagép nevét.
 
-   ![27. ábra: Adja meg a második fürtcsomópont állomásnevét][sap-ha-guide-figure-3016]
+   ![27. ábra: adja meg a fürt második csomópontjának állomásnevét][sap-ha-guide-figure-3016]
 
-   _**27. ábra:** Adja meg a második fürtcsomópont állomásnevét_
+   _**27. ábra:** Adja meg a fürt második csomópontjának állomásnevét_
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy az **Összes jogosult tároló hozzáadása a fürthöz** jelölőnégyzet **NINCS** bejelölve.  
+   > Ügyeljen arra, hogy az **összes megfelelő tároló hozzáadása a fürthöz** jelölőnégyzet **ne** legyen bejelölve.  
    >
    >
 
-   ![28. ábra: Ne jelölje be a jelölőnégyzetet][sap-ha-guide-figure-3017]
+   ![28. ábra: ne jelölje be a jelölőnégyzetet][sap-ha-guide-figure-3017]
 
-   _**28. ábra:** **Ne** jelölje be a jelölőnégyzetet_
+   _**28. ábra:** Ne **jelölje be** a jelölőnégyzetet_
 
-   Figyelmen kívül hagyhatja a kvórumra és a lemezekre vonatkozó figyelmeztetéseket. A kvórumot később fogja beállítani, és a lemezt később fogja megosztani, az [SAP ASCS/SCS fürtmegosztási lemez SIOS DataKeeper Cluster Edition telepítése című][sap-ha-guide-8.12.3]témakörben leírtak szerint.
+   A kvórumtal és a lemezekkel kapcsolatos figyelmeztetések figyelmen kívül hagyhatók. Állítsa be a kvórumot, és ossza meg később a lemezt a következő témakörben leírtak szerint: a [SIOS DataKeeper-fürt kiadásának telepítése az SAP ASCS/SCS-fürt megosztott lemeze számára][sap-ha-guide-8.12.3].
 
-   ![29. ábra: A lemezkvórumra vonatkozó figyelmeztetések figyelmen kívül hagyása][sap-ha-guide-figure-3018]
+   ![29. ábra: a lemez kvórumával kapcsolatos figyelmeztetések figyelmen kívül hagyása][sap-ha-guide-figure-3018]
 
-   _**29. ábra:** A lemezkvórumra vonatkozó figyelmeztetések figyelmen kívül hagyása_
+   _**29. ábra:** A lemez kvórumával kapcsolatos figyelmeztetések figyelmen kívül hagyása_
 
 
-#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Fürtfájlmegosztás tanúsítójának konfigurálása
+#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Fürt fájlmegosztás-megosztásának konfigurálása
 
-A fürtfájlmegosztás tanúsítójának konfigurálása a következő feladatokat foglalja magában:
+A fürt fájlmegosztás-megosztásának konfigurálása a következő feladatokat foglalja magában:
 
 - Fájlmegosztás létrehozása
-- A fájlmegosztási tanúsító kvórumának beállítása a feladatátvevői fürtkezelőben
+- A tanúsító fájlmegosztás Kvórumának beállítása Feladatátvevőfürt-kezelő
 
 ##### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Fájlmegosztás létrehozása
 
-1. Kvórumlemez helyett jelöljön ki egy tanúsító fájlmegosztást. A SIOS DataKeeper támogatja ezt a lehetőséget.
+1. Jelöljön ki egy tanúsító fájlmegosztást a kvórum lemeze helyett. A SIOS DataKeeper támogatja ezt a beállítást.
 
-   Ebben a cikkben a példákban a fájlmegosztás tanúsító az Azure-ban futó Active Directory/DNS-kiszolgálón található. Az aktamegosztási tanú neve **domcontr-0.** Mivel vpn-kapcsolatot konfigurált volna az Azure-ral (a helyek közötti VPN-en vagy az Azure ExpressRoute-on keresztül), az Active Directory/DNS-szolgáltatás helyszíni, és nem alkalmas fájlmegosztási tanúsító futtatására.
+   A jelen cikkben szereplő példákban a tanúsító fájlmegosztás az Azure-ban futó Active Directory/DNS-kiszolgálón található. A tanúsító fájlmegosztás neve **domcontr-0**. Mivel a VPN-kapcsolat az Azure-hoz lett konfigurálva (helyek közötti VPN-vagy Azure-ExpressRoute keresztül), a Active Directory/DNS szolgáltatás a helyszínen található, és nem alkalmas a tanúsító fájlmegosztás futtatására.
 
    > [!NOTE]
-   > Ha az Active Directory/DNS szolgáltatás csak a helyszínen fut, ne konfigurálja a fájlmegosztás tanúsítóját a helyszíni Active Directory/DNS Windows operációs rendszeren. Az Azure-ban futó fürtcsomópontok és a helyszíni Active Directory/DNS közötti hálózati késés túl nagy lehet, és kapcsolódási problémákat okozhat. Ügyeljen arra, hogy konfigurálja a fájlmegosztás tanúsító egy Azure virtuális gépen, amely a fürtcsomópont közelében fut.  
+   > Ha a Active Directory/DNS szolgáltatás csak a helyszínen fut, ne konfigurálja a tanúsító fájlmegosztás a helyszínen futó Active Directory/DNS Windows operációs rendszeren. Az Azure-ban futó fürtcsomópontok és a helyszíni Active Directory/DNS helyszíni hálózati késése túl nagy lehet, és kapcsolódási problémákhoz vezethet. Ügyeljen arra, hogy a tanúsító fájlmegosztás olyan Azure-beli virtuális gépen legyen konfigurálva, amely a fürtcsomópont mellett fut.  
    >
    >
 
-   A kvórummeghajtónak legalább 1024 MB szabad helyre van szüksége. Javasoljuk, hogy 2048 MB szabad terület a kvórummeghajtó.
+   A kvórum meghajtójának legalább 1 024 MB szabad területtel kell rendelkeznie. A kvórum meghajtójának 2 048 MB szabad területét javasoljuk.
 
-2. Adja hozzá a fürtnév-objektumot.
+2. Adja hozzá a fürt neve objektumot.
 
-   ![30. ábra: A fürtnév-objektum megosztására vonatkozó engedélyek hozzárendelése][sap-ha-guide-figure-3019]
+   ![30. ábra: a fürt nevének objektumához tartozó megosztási engedélyek kiosztása][sap-ha-guide-figure-3019]
 
-   _**30. ábra:** A fürtnév-objektum megosztására vonatkozó engedélyek hozzárendelése_
+   _**30. ábra:** Rendelje hozzá az engedélyeket a fürt neve objektum megosztásához_
 
-   Győződjön meg arról, hogy az engedélyek tartalmazzák a fürtnév-objektum megosztásának adatait (példánkban **pr1-ascs-vir$**).
+   Győződjön meg arról, hogy az engedélyek tartalmazzák a hatóságot a fürt neve objektum (példánkban: **PR1-ASCs-VIR $**) megosztásában tárolt adatmódosításra.
 
-3. Ha hozzá szeretné adni a fürtnév-objektumot a listához, válassza a **Hozzáadás gombot.** Módosítsa a szűrőt a számítógép-objektumok ellenőrzésére a 31.
+3. A fürt neve objektum listához való hozzáadásához válassza a **Hozzáadás**lehetőséget. Módosítsa a szűrőt a számítógép-objektumok kereséséhez a 31. ábrán láthatók mellett.
 
-   ![31. ábra: Az objektumtípusok módosítása a számítógépekre][sap-ha-guide-figure-3020]
+   ![31. ábra: az Objektumtípusok módosítása a számítógépek belefoglalásához][sap-ha-guide-figure-3020]
 
-   _**31. ábra:** Az objektumtípusok módosítása számítógépekre_
+   _**31. ábra:** Az Objektumtípusok módosítása a számítógépek belefoglalásához_
 
-   ![32. ábra: Jelölje be a Számítógépek jelölőnégyzetet.][sap-ha-guide-figure-3021]
+   ![32. ábra: a számítógépek jelölőnégyzet bejelölése][sap-ha-guide-figure-3021]
 
-   _**32. ábra:** Jelölje be a **Számítógépek** jelölőnégyzetet._
+   _**32. ábra:** Jelölje be a **számítógépek** jelölőnégyzetet_
 
-4. Írja be a fürtnév-objektumot a 31. Mivel a rekord már létrejött, módosíthatja az engedélyeket, ahogy az a 30.
+4. Adja meg a fürt neve objektumot a 31. ábrán látható módon. Mivel a rekord már létrejött, módosíthatja az engedélyeket, ahogy az a 30. ábrán látható.
 
-5. Válassza a megosztás **Biztonság** lapját, majd adja meg a fürtnév-objektum részletesebb engedélyeit.
+5. Válassza ki a megosztás **Biztonság** lapját, majd állítsa be részletesebben a fürt neve objektumra vonatkozó engedélyeket.
 
-   ![33. ábra: A fürtnév-objektum biztonsági attribútumainak beállítása a fájlmegosztáskvórumban][sap-ha-guide-figure-3022]
+   ![33. ábra: a fürt neve objektum biztonsági attribútumainak beállítása a fájlmegosztás kvórumán][sap-ha-guide-figure-3022]
 
-   _**33. ábra:** A fürtnév-objektum biztonsági attribútumainak beállítása a fájlmegosztáskvórumban_
+   _**33. ábra:** A fürt neve objektum biztonsági attribútumainak beállítása a fájlmegosztás kvórumán_
 
-##### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>A fájlmegosztási tanúsító kvórumának beállítása a Feladatátvevői fürtkezelőben
+##### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>A tanúsító fájlmegosztás Kvórumának beállítása Feladatátvevőfürt-kezelő
 
-1. Nyissa meg a Kvórum beállítása varázslót.
+1. Nyissa meg a kvórum beállításának konfigurálása varázslót.
 
-   ![34. ábra: A Fürtkvórum beállítása varázsló indítása][sap-ha-guide-figure-3023]
+   ![34. ábra: a fürt Kvórumának beállítása varázsló elindítása][sap-ha-guide-figure-3023]
 
-   _**34. ábra:** A Fürtkvórum beállítása varázsló indítása_
+   _**34. ábra:** A fürt Kvórumának beállítása varázsló elindítása_
 
-2. A **Kvórumkonfiguráció kiválasztása** lapon válassza **a Kvórumtanúsító kiválasztása**lehetőséget.
+2. A **kvórum konfigurációjának kiválasztása** lapon válassza **a tanúsító kvórum kijelölése**lehetőséget.
 
-   ![35. ábra: A kvórum konfigurációi közül választhat][sap-ha-guide-figure-3024]
+   ![35. ábra: az Ön által választható kvórum-konfigurációk][sap-ha-guide-figure-3024]
 
-   _**35. ábra:** Kvórum konfigurációk közül választhat_
+   _**35. ábra:** Olyan kvórum-konfigurációk, amelyek közül választhat_
 
-3. A **Kvórum tanúsító kiválasztása** lapon válassza **a Fájlmegosztási tanúsító konfigurálása**lehetőséget.
+3. A **tanúsító kvórum kijelölése** lapon válassza a **tanúsító fájlmegosztás konfigurálása**lehetőséget.
 
-   ![36. ábra: Válassza ki a tanúsító fájlmegosztást][sap-ha-guide-figure-3025]
+   ![36. ábra: a tanúsító fájlmegosztás kiválasztása][sap-ha-guide-figure-3025]
 
-   _**36. ábra:** A tanúsító fájlmegosztás kiválasztása_
+   _**36. ábra:** Tanúsító fájlmegosztás kiválasztása_
 
-4. Adja meg a fájlmegosztás UNC elérési \\útját (példánkban: domcontr-0\FSW). A módosítások listájának megtekintéséhez válassza a **Tovább gombot.**
+4. Adja meg a fájlmegosztás UNC elérési útját (példánkban: \\domcontr-0\FSW). Ha meg szeretné tekinteni az elvégezhető módosítások listáját, válassza a **tovább**lehetőséget.
 
-   ![37. ábra: A tanúsító megosztás fájlmegosztási helyének meghatározása][sap-ha-guide-figure-3026]
+   ![37. ábra: a tanúsító megosztás fájlmegosztási helyének megadása][sap-ha-guide-figure-3026]
 
-   _**37. ábra:** A tanúsító megosztás fájlmegosztási helyének meghatározása_
+   _**37. ábra:** A tanúsító megosztás fájlmegosztás helyének megadása_
 
-5. Jelölje ki a kívánt módosításokat, majd kattintson a **Tovább gombra.** Sikeresen újra kell konfigurálnia a fürtkonfigurációt a 38.  
+5. Válassza ki a kívánt módosításokat, majd kattintson a **tovább**gombra. A fürtkonfiguráció sikeres újrakonfigurálását az 38. ábrán látható módon kell megadnia.  
 
-   ![38. ábra: Megerősítés a fürt újrakonfigurálása][sap-ha-guide-figure-3027]
+   ![38. ábra: a fürt újrakonfigurálásának megerősítése][sap-ha-guide-figure-3027]
 
-   _**38. ábra:** A fürt újrakonfigurálásának megerősítése_
+   _**38. ábra:** Erősítse meg, hogy újrakonfigurálta a fürtöt_
 
-A Windows feladatátvevő fürt sikeres telepítése után bizonyos küszöbértékek módosításait az Azure-beli körülményekhez igazítandó feladatátvételi észleléshez kell igazítani. A paramétereket meg kell változtatni dokumentálni https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ ebben a blogban: . Feltételezve, hogy az ASCS/SCS Windows fürtkonfigurációját létrehozó két virtuális gép ugyanabban az alhálózatban van, a következő paramétereket kell módosítani ezekre az értékekre:
+Miután sikeresen telepítette a Windows feladatátvevő fürtöt, módosítania kell néhány küszöbértéket a feladatátvétel észlelésének az Azure-beli feltételekhez való hozzáigazításához. A módosítandó paramétereket ebben a blogban dokumentáljuk: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Feltételezve, hogy a ASCS/SCS-hoz készült Windows-fürt konfigurációját felépítő két virtuális gép ugyanabban az alhálózatban található, a következő paramétereket kell módosítania ezekre az értékekre:
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 
-Ezeket a beállításokat tesztelték az ügyfelekkel, és jó kompromisszumot biztosítottak ahhoz, hogy egyoldalon elég rugalmasak legyenek. Másrészt ezek a beállítások elegendő gyors feladatátvételt biztosítottak az SAP-szoftverek vagy csomópont/virtuális gép meghibásodása esetén. 
+Ezek a beállítások az ügyfelekkel lettek tesztelve, és jó kompromisszumot biztosítanak ahhoz, hogy az egyik oldalon elég rugalmasak legyenek. Másfelől ezek a beállítások gyors feladatátvételt biztosítanak a valós hibákra vonatkozóan az SAP szoftver vagy a csomópont/virtuális gép meghibásodása esetén. 
 
-### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>SIOS DataKeeper Cluster Edition telepítése az SAP ASCS/SCS fürtmegosztási lemezre
+### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>A SIOS DataKeeper-fürt kiadásának telepítése az SAP ASCS/SCS-fürt megosztott lemezéhez
 
-Most már rendelkezik egy működő Windows Server feladatátvételi fürtözési konfigurációval az Azure-ban. De egy SAP ASCS/SCS-példány telepítéséhez egy megosztott lemezerőforrásra van szükség. Az Azure-ban nem hozhat létre a szükséges megosztott lemezerőforrásokat. A SIOS DataKeeper Cluster Edition egy külső gyártótól származó megoldás, amelynek segítségével megosztott lemezerőforrásokat hozhat létre.
+Most már rendelkezik egy működő Windows Server feladatátvételi fürtszolgáltatási konfigurációval az Azure-ban. Egy SAP ASCS/SCS-példány telepítéséhez azonban szükség van egy megosztott lemez erőforrásra. Nem hozható létre az Azure-ban szükséges megosztott lemez erőforrásai. A SIOS DataKeeper-fürt kiadása egy külső gyártótól származó megoldás, amellyel megosztott lemezes erőforrásokat hozhat létre.
 
-A SIOS DataKeeper Cluster Edition telepítése az SAP ASCS/SCS fürtmegosztási lemezhez a következő feladatokat foglalja magában:
+A SIOS DataKeeper-fürt kiadásának az SAP ASCS/SCS-fürt megosztott lemezre való telepítése a következő feladatokat foglalja magában:
 
-- A .NET Framework 3.5 hozzáadása
-- A SIOS DataKeeper telepítése
-- A SIOS DataKeeper beállítása
+- A .NET-keretrendszer 3,5 hozzáadása
+- SIOS-DataKeeper telepítése
+- SIOS DataKeeper beállítása
 
-#### <a name="add-the-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>A .
-A Microsoft . Mivel a SIOS DataKeeper megköveteli, hogy a .
+#### <a name="add-the-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>A .NET-keretrendszer 3,5-es hozzáadása
+A Microsoft .NET Framework 3,5 nem aktiválódik automatikusan, vagy nincs telepítve a Windows Server 2012 R2 rendszerre. Mivel a SIOS DataKeeper a .NET-keretrendszert a DataKeeper telepített összes csomóponton telepíteni kell, a .NET-keretrendszer 3,5-es verziójának telepítése szükséges a fürtben lévő összes virtuális gép vendég operációs rendszerén.
 
-A .
+A .NET-keretrendszer 3,5 kétféleképpen adható hozzá:
 
-- Használja a Szerepkörök és szolgáltatások hozzáadása varázslót a Windows rendszerben a 39.
+- A Windows szerepkörök és szolgáltatások hozzáadása varázslójával a 39 ábrán látható módon.
 
-  ![39. ábra: A .NET Framework 3.5 telepítése a Szerepkörök és szolgáltatások hozzáadása varázslóval][sap-ha-guide-figure-3028]
+  ![39. ábra: a .NET-keretrendszer 3,5 telepítése a szerepkörök és szolgáltatások hozzáadása varázsló használatával][sap-ha-guide-figure-3028]
 
-  _**39. ábra:** A .NET Framework 3.5 telepítése a Szerepkörök és szolgáltatások hozzáadása varázslóval_
+  _**39. ábra:** A .NET-keretrendszer 3,5-es telepítése a szerepkörök és szolgáltatások hozzáadása varázsló használatával_
 
-  ![40. ábra: A .][sap-ha-guide-figure-3029]
+  ![40. ábra: telepítési folyamatjelző sáv a .NET-keretrendszer 3,5-es verziójának a szerepkörök és szolgáltatások hozzáadása varázsló használatával történő telepítésekor][sap-ha-guide-figure-3029]
 
-  _**40. ábra:** A ._
+  _**40. ábra:** Telepítési folyamatjelző sáv a .NET-keretrendszer 3,5-es verziójának a szerepkörök és szolgáltatások hozzáadása varázslóval történő telepítésekor_
 
-- Használja a dism.exe parancssori eszközt. Az ilyen típusú telepítéshez hozzá kell férnie a Windows telepítési adathordozójának SxS könyvtárához. A rendszergazda jogú parancssorba írja be a következőt:
+- Használja a DISM. exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Egy rendszergazda jogú parancssorba írja be a következőt:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-#### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a>SIOS DataKeeper telepítése
+#### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a>A SIOS DataKeeper telepítése
 
-Telepítse a SIOS DataKeeper Cluster Edition-t a fürt minden csomópontjára. Virtuális megosztott tároló létrehozásához a SIOS DataKeeper segítségével hozzon létre egy szinkronizált tükröt, majd szimulálja a fürt megosztott tárolóját.
+Telepítse a SIOS DataKeeper-fürt kiadását a fürt mindegyik csomópontján. Ha virtuális megosztott tárolót szeretne létrehozni a SIOS DataKeeper, hozzon létre egy szinkronizált tükröt, majd szimulálja a fürt megosztott tárolóját.
 
-A SIOS szoftver telepítése előtt hozza létre a **DataKeeperSvc tartományi felhasználót.**
+A SIOS szoftver telepítése előtt hozza létre a tartományi felhasználó **DataKeeperSvc**.
 
 > [!NOTE]
 > Adja hozzá a **DataKeeperSvc** felhasználót a **helyi rendszergazda** csoporthoz mindkét fürtcsomóponton.
@@ -1002,198 +1002,198 @@ A SIOS szoftver telepítése előtt hozza létre a **DataKeeperSvc tartományi f
 
 A SIOS DataKeeper telepítése:
 
-1. Telepítse a SIOS-szoftvert mindkét fürtcsomópontra.
+1. Telepítse a SIOS szoftvert mindkét fürtcsomóponton.
 
-   ![SIOS telepítő][sap-ha-guide-figure-3030]
+   ![SIOS-telepítő][sap-ha-guide-figure-3030]
 
-   ![41. ábra: A SIOS DataKeeper telepítésének első oldala][sap-ha-guide-figure-3031]
+   ![41. ábra: a SIOS DataKeeper-telepítésének első lapja][sap-ha-guide-figure-3031]
 
-   _**41. ábra:** A SIOS DataKeeper telepítésének első oldala_
+   _**41. ábra:** A SIOS-DataKeeper telepítésének első lapja_
 
-2. A **42.**
+2. Az 42 ábrán látható párbeszédpanelen válassza az **Igen**lehetőséget.
 
-   ![42. ábra: A DataKeeper tájékoztatja, hogy egy szolgáltatás le lesz tiltva][sap-ha-guide-figure-3032]
+   ![42. ábra: a DataKeeper értesíti, hogy a szolgáltatás le lesz tiltva][sap-ha-guide-figure-3032]
 
-   _**42. ábra:** A DataKeeper tájékoztatja, hogy egy szolgáltatás le lesz tiltva_
+   _**42. ábra:** A DataKeeper tájékoztatja, hogy a szolgáltatás le lesz tiltva_
 
-3. A **43.**
+3. A 43 ábrán látható párbeszédpanelen azt javasoljuk, hogy válasszon ki egy **tartományi vagy kiszolgálói fiókot**.
 
-   ![43. ábra: A SIOS DataKeeper felhasználói kiválasztása][sap-ha-guide-figure-3033]
+   ![43. ábra: felhasználó kiválasztása a SIOS DataKeeper][sap-ha-guide-figure-3033]
 
-   _**43. ábra:** A SIOS DataKeeper felhasználóválasztása_
+   _**43. ábra:** Felhasználó kiválasztása a SIOS DataKeeper_
 
-4. Adja meg a SIOS DataKeeper számára létrehozott tartományi fiók felhasználónevét és jelszavait.
+4. Adja meg a SIOS DataKeeper létrehozott tartományi fiók felhasználónevét és jelszavát.
 
-   ![44. ábra: Adja meg a SIOS DataKeeper telepítéséhez megadott tartomány-felhasználónevet és -jelszót][sap-ha-guide-figure-3034]
+   ![44. ábra: adja meg a SIOS-DataKeeper telepítésének tartományhoz tartozó felhasználónevét és jelszavát][sap-ha-guide-figure-3034]
 
-   _**44. ábra:** Adja meg a SIOS DataKeeper telepítéséhez megadott tartományfelhasználónevet és jelszót_
+   _**44. ábra:** Adja meg a SIOS-DataKeeper telepítésének tartományhoz tartozó felhasználónevét és jelszavát_
 
-5. Telepítse a SIOS DataKeeper példány licenckulcsát a 45.
+5. Telepítse a SIOS DataKeeper-példányának licenckulcs értékét az 45. ábrán látható módon.
 
-   ![45. ábra: Adja meg a SIOS DataKeeper licenckulcsát][sap-ha-guide-figure-3035]
+   ![45. ábra: a SIOS DataKeeper-licenckulcs megadása][sap-ha-guide-figure-3035]
 
-   _**45. ábra:** Adja meg a SIOS DataKeeper licenckulcsát_
+   _**45. ábra:** Adja meg a SIOS DataKeeper-licenckulcs_
 
-6. Amikor a rendszer kéri, indítsa újra a virtuális gépet.
+6. Ha a rendszer kéri, indítsa újra a virtuális gépet.
 
-#### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>A SIOS DataKeeper beállítása
+#### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>SIOS DataKeeper beállítása
 
-Miután mindkét csomópontra telepítette a SIOS DataKeeper-t, el kell indítania a konfigurációt. A konfiguráció célja, hogy az egyes virtuális gépekhez csatlakoztatott további lemezek között szinkron adatreplikáció legyen.
+Miután mindkét csomóponton telepítette a SIOS DataKeeper, el kell indítania a konfigurációt. A konfiguráció célja, hogy szinkron adatreplikációt lehessen végrehajtani az egyes virtuális gépekhez csatlakoztatott további lemezek között.
 
-1. Indítsa el a DataKeeper Management and Configuration eszközt, majd válassza **a Kiszolgáló csatlakoztatása**lehetőséget. (A 46. ábrán ez a beállítás pirossal van bekarikázva.)
+1. Indítsa el a DataKeeper-kezelő és a konfigurációs eszközt, majd válassza a **kiszolgáló összekapcsolását**. (Az 46. ábrán ez a beállítás piros színnel van elválasztva.)
 
-   ![46. ábra: A SIOS DataKeeper felügyeleti és konfigurációs eszköze][sap-ha-guide-figure-3036]
+   ![46. ábra: SIOS DataKeeper-kezelő és-konfigurációs eszköz][sap-ha-guide-figure-3036]
 
-   _**46. ábra:** SIOS DataKeeper felügyeleti és konfigurációs eszköz_
+   _**46. ábra:** SIOS DataKeeper-kezelő és-konfigurációs eszköz_
 
-2. Adja meg annak az első csomópontnak a nevét vagy TCP/IP-címét, amelyhez a Felügyeleti és konfiguráció eszköznek csatlakoznia kell, és egy második lépésben a második csomóponthoz.
+2. Adja meg az első csomópont nevét vagy TCP/IP-címét, amelyhez a felügyelet és a konfigurációs eszköz csatlakozni kíván, a második lépésben pedig a második csomópontot.
 
-   ![47. ábra: Adja meg annak az első csomópontnak a nevét vagy TCP/IP-címét, amelyhez a Felügyeleti és konfiguráció staféta a második csomóponthoz, a második csomóponthoz pedig a második][sap-ha-guide-figure-3037]
+   ![47. ábra: az első csomópont nevének vagy TCP/IP-címének beszúrása a felügyeleti és konfigurációs eszköznek csatlakoznia kell a kiszolgálóhoz, a második lépésben pedig a második csomópontot.][sap-ha-guide-figure-3037]
 
-   _**47. ábra:** A Felügyeleti és konfigurációs eszköz első csomópontjának nevét vagy TCP/IP-címét szúrja be, és egy második lépésben a második csomópontot._
+   _**47. ábra:** Szúrja be az első csomópont nevét vagy TCP/IP-címét a felügyeleti és konfigurációs eszközhöz, és a második lépésben a második csomópontot._
 
 3. Hozza létre a replikációs feladatot a két csomópont között.
 
-   ![48. ábra: Replikációs feladat létrehozása][sap-ha-guide-figure-3038]
+   ![48. ábra: replikációs feladatok létrehozása][sap-ha-guide-figure-3038]
 
-   _**48. ábra:** Replikációs feladat létrehozása_
+   _**48. ábra:** Replikációs feladatok létrehozása_
 
-   A varázsló végigvezeti a replikációs feladat létrehozásának folyamatán.
-4. Adja meg a forráscsomópont nevét, TCP/IP-címét és lemezkötetét.
+   A varázsló végigvezeti a replikációs feladatok létrehozásának folyamatán.
+4. Adja meg a forrás-csomópont nevét, TCP/IP-címét és a lemez kötetét.
 
-   ![49. ábra: A replikációs feladat nevének meghatározása][sap-ha-guide-figure-3039]
+   ![49. ábra: a replikációs feladatok nevének megadása][sap-ha-guide-figure-3039]
 
-   _**49. ábra:** A replikációs feladat nevének megadása_
+   _**49. ábra:** A replikációs feladatok nevének megadása_
 
-   ![50. ábra: Adja meg a csomópont alapadatait, amely nek az aktuális forráscsomópontnak kell lennie.][sap-ha-guide-figure-3040]
+   ![50. ábra: a csomópont alapadatának megadása, amelynek az aktuális forrás-csomópontnak kell lennie.][sap-ha-guide-figure-3040]
 
-   _**50. ábra:** Adja meg a csomópont alapadatait, amely nek az aktuális forráscsomópontnak kell lennie_
+   _**50. ábra:** Adja meg a csomópont alapadatait, amelyeknek az aktuális forrás-csomópontnak kell lennie._
 
-5. Adja meg a célcsomópont nevét, TCP/IP-címét és lemezkötetét.
+5. Adja meg a cél csomópont nevét, TCP/IP-címét és a lemez kötetét.
 
-   ![51. ábra: A csomópont alapadatainak meghatározása, amely nek az aktuális célcsomópontnak kell lennie][sap-ha-guide-figure-3041]
+   ![51. ábra: a csomópont alapadatának megadása, amelynek az aktuális célként megadott csomópontnak kell lennie][sap-ha-guide-figure-3041]
 
-   _**51. ábra:** Adja meg a csomópont alapadatait, amely nek az aktuális célcsomópontnak kell lennie_
+   _**51. ábra:** Adja meg a csomópont alapadatait, amelyeknek az aktuális célként megadott csomópontnak kell lennie._
 
-6. Adja meg a tömörítési algoritmusokat. A példában azt javasoljuk, hogy tömörítse a replikációs adatfolyamot. Különösen az újraszinkronizálási helyzetekben a replikációs adatfolyam tömörítése jelentősen csökkenti az újraszinkronizálási időt. Vegye figyelembe, hogy a tömörítés a virtuális gép PROCESSZOR- és RAM-erőforrásait használja. A tömörítési sebesség növekedésével a felhasznált CPU-erőforrások mennyisége is növekszik. Ezt a beállítást később is módosíthatja.
+6. Adja meg a tömörítési algoritmusokat. A példánkban azt javasoljuk, hogy tömörítse a replikálási adatfolyamot. Különösen újraszinkronizálási helyzetekben a replikálási adatfolyam tömörítése jelentősen csökkenti az újraszinkronizálás idejét. Vegye figyelembe, hogy a tömörítés a virtuális gép processzor-és RAM-erőforrásait használja. A tömörítési sebesség növekszik, így a felhasznált CPU-erőforrások mennyisége. Ezt a beállítást később is módosíthatja.
 
-7. Egy másik beállítás, amelyet ellenőriznie kell, hogy a replikáció aszinkron vagy szinkron módon történik-e. *Az SAP ASCS/SCS-konfigurációk védelme kor szinkron replikációt kell használnia.*  
+7. Egy másik beállításnak ellenőriznie kell, hogy a replikáció aszinkron módon vagy szinkronban történjen-e. Az *SAP ASCS/SCS-konfigurációk védetté tételéhez szinkron replikálást kell használni*.  
 
-   ![52. ábra: Replikációs adatok meghatározása][sap-ha-guide-figure-3042]
+   ![52. ábra: a replikáció részleteinek meghatározása][sap-ha-guide-figure-3042]
 
-   _**52. ábra:** Replikációs adatok megadása_
+   _**52. ábra:** Replikáció részleteinek megadása_
 
-8. Adja meg, hogy a replikációs feladat által replikált kötetet megosztott lemezként kell-e ábrázolni a Windows Server feladatátvevő fürtkonfigurációjában. Az SAP ASCS/SCS konfiguráció esetében válassza az **Igen** lehetőséget, hogy a Windows-fürt a replikált kötetet megosztott lemezként lássa, amelyet fürtkötetként használhat.
+8. Annak megadása, hogy a replikálási feladatokkal replikált kötetet a Windows Server feladatátvételi fürtszolgáltatási fürt megosztott lemezének konfigurációjában kell-e megjeleníteni. Az SAP ASCS/SCS konfiguráció esetében válassza az **Igen** lehetőséget, hogy a Windows-fürt a replikált kötetet megosztott lemezként látja, amelyet fürtözött kötetként használhat.
 
-   ![53. ábra: Válassza az Igen lehetőséget a replikált kötet fürtkötetként való beállításához][sap-ha-guide-figure-3043]
+   ![53. ábra: válassza az Igen lehetőséget a replikált kötet fürtözött kötetként való beállításához.][sap-ha-guide-figure-3043]
 
-   _**53. ábra:** Válassza az **Igen** lehetőséget a replikált kötet fürtkötetként való beállításához_
+   _**53. ábra:** Válassza az **Igen** lehetőséget a replikált kötet fürtözött kötetként való beállításához_
 
-   A kötet létrehozása után a DataKeeper-kezelés és konfiguráció eszköz azt mutatja, hogy a replikációs feladat aktív.
+   A kötet létrehozása után a DataKeeper-kezelés és-konfiguráció eszköz azt mutatja, hogy a replikációs feladatok aktívak.
 
-   ![54. ábra: A DataKeeper szinkron tükrözése az SAP ASCS/SCS megosztási lemezhez aktív][sap-ha-guide-figure-3044]
+   ![54. ábra: az SAP ASCS/SCS-megosztási lemez DataKeeper szinkron tükrözése aktív][sap-ha-guide-figure-3044]
 
-   _**54. ábra:** Az SAP ASCS/SCS megosztási lemez DataKeeper szinkron tükrözése aktív_
+   _**54. ábra:** Az SAP ASCS/SCS-megosztási lemez DataKeeper szinkron tükrözése aktív_
 
-   A feladatátvevőfürt-kezelő mostantól datakeeper lemezként jeleníti meg a lemezt, ahogy az az 55.
+   Feladatátvevőfürt-kezelő most a lemezt DataKeeper lemezként jeleníti meg, ahogy az a 55. ábrán látható.
 
-   ![55. ábra: A feladatátvevőfürt-kezelő a DataKeeper által replikált lemezt jeleníti meg][sap-ha-guide-figure-3045]
+   ![55. ábra: az Feladatátvevőfürt-kezelő a replikált DataKeeper lemezt mutatja][sap-ha-guide-figure-3045]
 
-   _**55. ábra:** A feladatátvevőfürt-kezelő a DataKeeper által replikált lemezt jeleníti meg_
+   _**55. ábra:** Feladatátvevőfürt-kezelő megjeleníti a replikált DataKeeper lemezt_
 
-## <a name="install-the-sap-netweaver-system"></a><a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>Az SAP NetWeaver rendszer telepítése
+## <a name="install-the-sap-netweaver-system"></a><a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>Az SAP NetWeaver System telepítése
 
-Nem fogjuk leírni a DBMS beállítását, mert a beállítások a használt DBMS-rendszertől függően változnak. Azonban feltételezzük, hogy a magas rendelkezésre állású aggodalmak a DBMS foglalkozik a funkciókat a különböző DBMS-szállítók támogatja az Azure-ban. Például az SQL Server mindig bekapcsolva vagy adatbázis-tükrözése, valamint oracle-adatbázisokhoz készült Oracle Data Guard. Az ebben a cikkben használt forgatókönyvben nem adtunk hozzá további védelmet a DBMS-hez.
+Nem írja le az adatbázis-kezelő rendszer beállítását, mert a beállítások a használt adatbázis-kezelő rendszertől függően változnak. Feltételezzük azonban, hogy az adatbázis-kezelői szolgáltatással kapcsolatos magas rendelkezésre állási problémákat a különböző adatbázis-kezelők gyártói támogatják az Azure-ban. Például a SQL Server és az Oracle-adatvédelmet az Oracle-adatbázisok esetében mindig vagy adatbázis-tükrözéssel. Az ebben a cikkben használt forgatókönyvben nem adtak hozzá további védelmet az adatbázis-kezelő szolgáltatáshoz.
 
-Nincsenek különleges szempontok, ha a különböző DBMS-szolgáltatások az azure-beli fürtözött SAP ASCS/SCS-konfigurációval kommunikálnak.
+Nincsenek különleges megfontolások, ha a különböző adatbázis-kezelő szolgáltatások az Azure-ban ilyen típusú fürtözött SAP ASCS/SCS-konfigurációval működnek.
 
 > [!NOTE]
-> Az SAP NetWeaver ABAP rendszerek, Java rendszerek és ABAP+Java rendszerek telepítési eljárásai majdnem azonosak. A legjelentősebb különbség az, hogy egy SAP ABAP rendszer rendelkezik egy ASCS-példány. Az SAP Java rendszer egy SCS-példányt rendelkezik. Az SAP ABAP+Java rendszer egy ASCS-és egy SCS-példányt futtat ugyanabban a Microsoft feladatátvevő fürtcsoportban. Az egyes SAP NetWeaver telepítési veremtelepítési különbségek et kifejezetten megemlíti. Feltételezheti, hogy minden más rész ugyanaz.  
+> Az SAP NetWeaver ABAP rendszerek, a Java-rendszerek és a ABAP + Java rendszerek telepítési eljárásai csaknem azonosak. A legfontosabb különbség az, hogy egy SAP ABAP rendszernek van egy ASCS-példánya. Az SAP Java-rendszeren egy SCS-példány van. Az SAP ABAP + Java rendszer egy ASCS-példánnyal és egy olyan SCS-példánnyal rendelkezik, amely ugyanabban a Microsoft feladatátvételi fürtben fut. A rendszer explicit módon megemlíti az egyes SAP NetWeaver telepítési verem telepítési különbségeit. Feltételezzük, hogy minden más rész azonos.  
 >
 >
 
-### <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Telepítse az SAP-t magas rendelkezésre állású ASCS/SCS-példányokkal
+### <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Az SAP telepítése magas rendelkezésre állású ASCS/SCS-példánnyal
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy ne helyezze el a lapfájlt a DataKeeper tükrözött köteteken. A DataKeeper nem támogatja a tükrözött köteteket. A lapozófájlt az Azure virtuális gép D ideiglenes meghajtóján hagyhatja, amely az alapértelmezett. Ha még nincs ott, helyezze át a Windows-lapfájlt az Azure virtuális gép D: meghajtójára.
+> Ügyeljen arra, hogy a DataKeeper tükrözött köteteken ne helyezze el a lapozófájlt. A DataKeeper nem támogatja a tükrözött köteteket. A lapozófájlt egy Azure-beli virtuális gép ideiglenes meghajtójába helyezheti el, amely az alapértelmezett. Ha még nem tette meg, helyezze át a Windows-lapozófájlt az Azure-beli virtuális gép D: meghajtóján.
 >
 >
 
-Az SAP telepítése magas rendelkezésre állású ASCS/SCS-példányokkal a következő feladatokat foglalja magában:
+A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepítése a következő feladatokat foglalja magában:
 
-- Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányszámára
-- Az SAP első fürtcsomópontjának telepítése
+- Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz
+- Az SAP első fürtcsomópont telepítése
 - Az ASCS/SCS-példány SAP-profiljának módosítása
-- Mintavételi port hozzáadása
+- Mintavételi Port hozzáadása
 - A Windows tűzfal mintavételi portjának megnyitása
 
 #### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz
 
-1. A Windows DNS-kezelőben hozzon létre egy DNS-bejegyzést az ASCS/SCS-példány virtuális állomásnevéhez.
+1. A Windows DNS-kezelőben hozzon létre egy DNS-bejegyzést a ASCS/SCS-példány virtuális állomásnevét.
 
    > [!IMPORTANT]
-   > Az ASCS/SCS-példány virtuális állomásnevéhez rendelt IP-címnek meg kell egyeznie az Azure Load Balancerhez rendelt IP-címmel (**<*SID*>-lb-ascs).**  
+   > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel (**<*SID*>-LB-ASCS**).  
    >
    >
 
-   A virtuális SAP ASCS/SCS állomásnév (**pr1-ascs-sap**) IP-címe megegyezik az Azure Load Balancer (**pr1-lb-ascs**) IP-címével.
+   A virtuális SAP ASCS/SCS-állomásnév (**PR1-ASCS-SAP**) IP-címe megegyezik a Azure Load Balancer IP-címével (**PR1-LB-ASCS**).
 
-   ![56. ábra: Az SAP ASCS/SCS fürt virtuális nevéhez és TCP/IP-címéhez tartozó DNS-bejegyzés megadása][sap-ha-guide-figure-3046]
+   ![56. ábra: az SAP ASCS/SCS-fürt virtuális neve és a TCP/IP-cím DNS-bejegyzésének megadása][sap-ha-guide-figure-3046]
 
-   _**56. ábra:** Az SAP ASCS/SCS fürt virtuális nevének és A TCP/IP-címnek a DNS-bejegyzésének megadása_
+   _**56. ábra:** Adja meg a DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára._
 
-2. A virtuális állomásnévhez rendelt IP-cím meghatározásához válassza a **DNS-kezelői** > **tartomány**lehetőséget.
+2. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő** > **tartomány**lehetőséget.
 
-   ![57. ábra: Új virtuális név és TCP/IP-cím az SAP ASCS/SCS fürtkonfigurációhoz][sap-ha-guide-figure-3047]
+   ![57. ábra: új virtuális név és TCP/IP-cím az SAP ASCS/SCS-fürt konfigurációjához][sap-ha-guide-figure-3047]
 
-   _**57. ábra:** Új virtuális név és TCP/IP-cím az SAP ASCS/SCS fürtkonfigurációhoz_
+   _**57. ábra:** Új virtuális név és TCP/IP-cím az SAP ASCS/SCS-fürt konfigurációjához_
 
-#### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>Az SAP első fürtcsomópontjának telepítése
+#### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>Az SAP első fürtcsomópont telepítése
 
-1. Az első fürtcsomópont-beállítás végrehajtása az A fürtcsomóponton. Például a **pr1-ascs-0** gazdagépen.
-2. Az Azure belső terheléselosztó alapértelmezett portjainak megtartásához válassza a következőket:
+1. Hajtsa végre az A fürt első csomópontjának beállítását a csomóponton. Például a **PR1-ASCs-0** gazdagépen.
+2. Az Azure belső terheléselosztó alapértelmezett portjainak megtartásához válassza a következő lehetőséget:
 
-   * **ABAP rendszer**: **00-as SZÁMÚ ASCS-példány** **00**
-   * **Java rendszer**: **SCS** példány száma **01**
-   * **ABAP+Java rendszer**: **00-as SZÁMÚ ASCS-példány** és **01-es** **00** **SCS-példányszám**
+   * **ABAP-System**: **ASCS** -példány száma **00**
+   * **Java-System**: **SCS** -példány száma **01**
+   * **ABAP + Java System**: **ASCS** -példány száma **00** és **SCS** -példány száma **01**
 
-   Ha 00-tól eltérő példányszámokat szeretne használni az ABAP ASCS-példányhoz és a 01-hez a Java SCS-példányhoz, először módosítania kell az Azure belső terheléselosztó alapértelmezett terheléselosztási szabályait, amelyet [az AsCS/SCS alapértelmezett terheléselosztási szabályainak módosítása az Azure belső terheléselosztóhoz][sap-ha-guide-8.9]című részben ismertetett.
+   Ha a 00-nál nem nagyobb példányszámot kíván használni a Java SCS-példányhoz tartozó ABAP ASCS-példányhoz és 01-nél, először módosítania kell az Azure belső terheléselosztó alapértelmezett terheléselosztási szabályait az [Azure belső TERHELÉSELOSZTÓ ASCS/SCS alapértelmezett terheléselosztási szabályainak módosítása][sap-ha-guide-8.9]című cikkben leírtak szerint.
 
-A következő néhány feladat nem ismertetésa a szabványos SAP telepítési dokumentációban.
+A következő néhány feladat nem szerepel a szabványos SAP-telepítési dokumentációban.
 
 > [!NOTE]
-> Az SAP telepítési dokumentációja leírja, hogyan kell telepíteni az első ASCS/SCS fürtcsomópontot.
+> Az SAP telepítési dokumentációja leírja, hogyan telepítheti az első ASCS/SCS fürtcsomópont-csomópontot.
 >
 >
 
 #### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Az ASCS/SCS-példány SAP-profiljának módosítása
 
-Új profilparamétert kell hozzáadnia. A profilparaméter megakadályozza az SAP munkafolyamatok és a várólistára helyezett kiszolgáló közötti kapcsolatok bezárását, ha túl sokáig üresjáratban vannak. Említettük a problémát az [SAP ASCS/SCS-példány mindkét fürtcsomópontján a rendszerleíró bejegyzések hozzáadása című részben.][sap-ha-guide-8.11] Ebben a szakaszban két módosítást is bevezettünk néhány alapvető TCP/IP kapcsolati paraméterben. A második lépésben be kell állítania a `keep_alive` várólistára helyezett kiszolgálót, hogy jelet küldjön, hogy a kapcsolatok ne érjék el az Azure belső terheléselosztó tétlen küszöbértékét.
+Új profil paramétert kell hozzáadnia. A profil paraméter megakadályozza a kapcsolódást az SAP-munkafolyamatok és a sorba helyezni-kiszolgáló között, ha túl sokáig tétlenek. Említettük a probléma forgatókönyvét a [beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányon mindkét fürtcsomóponton][sap-ha-guide-8.11]. Ebben a szakaszban két módosítást is bevezetünk néhány Alapszintű TCP/IP-kapcsolódási paraméterre. Egy második lépésben be kell állítania a sorba helyezni-kiszolgálót egy `keep_alive` jel küldéséhez, hogy a kapcsolatok ne elérjenek az Azure belső terheléselosztó üresjárati küszöbértékét.
 
 Az ASCS/SCS-példány SAP-profiljának módosítása:
 
-1. Adja hozzá ezt a profilparamétert az SAP ASCS/SCS-példányprofilhoz:
+1. Adja hozzá ezt a profil paramétert az SAP ASCS/SCS instance profilhoz:
 
    ```
    enque/encni/set_so_keepalive = true
    ```
-   A mi példánkban az út a következő:
+   A példánkban az elérési út a következőket eredményezi:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-   Például az SAP SCS-példány profil és a megfelelő elérési út:
+   Például az SAP SCS-példány profiljához és a megfelelő elérési úthoz:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2. A módosítások alkalmazásához indítsa újra az SAP ASCS /SCS-példányt.
+2. A módosítások alkalmazásához indítsa újra az SAP ASCS/SCS-példányt.
 
-#### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Mintavételi port hozzáadása
+#### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Mintavételi Port hozzáadása
 
-A belső terheléselosztó mintavételi funkciójával a teljes fürtkonfiguráció együttműködik az Azure Load Balancer használatával. Az Azure belső terheléselosztó általában egyenlően osztja el a bejövő számítási feladatokat a részt vevő virtuális gépek között. Ez azonban egyes fürtkonfigurációkban nem működik, mert csak egy példány aktív. A másik példány passzív, és nem tudja elfogadni a számítási feladatok egyikét sem. A mintavételi funkció segít, ha az Azure belső terheléselosztó csak egy aktív példányhoz rendeli hozzá a munkát. A mintavételi funkcióval a belső terheléselosztó észleli, hogy mely példányok aktívak, és csak a számítási feladattal rendelkező példányt célozza meg.
+A belső terheléselosztó mintavételi funkciójának használatával biztosíthatja, hogy a teljes fürtkonfiguráció működjön a Azure Load Balancer. Az Azure belső terheléselosztó általában a bejövő munkaterheléseket a részt vevő virtuális gépek között egyenlően osztja el. Ez azonban nem fog működni bizonyos fürtkonfiguráció esetén, mert csak egy példány aktív. A másik példány passzív, és nem fogadja el a számítási feladatok egyikét sem. A mintavételi funkciók segítenek abban az esetben, ha az Azure belső terheléselosztó csak aktív példányhoz rendeli a munkát. A mintavétel funkcióval a belső terheléselosztó képes érzékelni, hogy mely példányok aktívak, és csak a számítási feladattal rendelkező példányt célozzák meg.
 
-Mintavételi port hozzáadása:
+Mintavételi Port hozzáadása:
 
-1. Ellenőrizze az aktuális **ProbePort-beállítást** a következő PowerShell-parancs futtatásával. A fürtkonfigurációegyik virtuális gépéről hajtsa végre.
+1. A következő PowerShell-parancs futtatásával keresse meg az aktuális **ProbePort** -beállítást. A fürt konfigurációjában lévő egyik virtuális gépen hajtsa végre.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1202,15 +1202,15 @@ Mintavételi port hozzáadása:
    Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
    ```
 
-2. Mintavételi port definiálása. A mintavételi port alapértelmezett száma **0**. Példánkban a **62000**szondaportot használjuk.
+2. Adjon meg egy mintavételi portot. A mintavétel alapértelmezett portszáma **0**. A példánkban a **62000**-es mintavételi portot használjuk.
 
-   ![58. ábra: A fürtkonfiguráció mintavételi portja alapértelmezés szerint 0.][sap-ha-guide-figure-3048]
+   ![58. ábra: a fürtkonfiguráció mintavételi portja alapértelmezés szerint 0.][sap-ha-guide-figure-3048]
 
-   _**58. ábra:** A fürt konfigurációs mintavételi portjának alapértelmezett portja 0_
+   _**58. ábra:** Az alapértelmezett fürtkonfiguráció-mintavételi port a 0_
 
-   A portszám az SAP Azure Resource Manager-sablonokban van definiálva. A portszámát a PowerShellben rendelheti hozzá.
+   A portszám az SAP Azure Resource Manager-sablonokban van meghatározva. A portszám a PowerShellben is hozzárendelhető.
 
-   Új ProbePort-érték beállításához az **SAP <*SID*> IP-fürterőforráshoz,** futtassa a következő PowerShell-parancsfájlt. Frissítse a PowerShell-változókat a környezetben. A parancsfájl futtatása után a rendszer kéri, hogy indítsa újra az SAP-fürtcsoportot a módosítások aktiválásához.
+   Ha új ProbePort értéket szeretne beállítani az **SAP <*SID*> IP-** fürterőforrás erőforráshoz, futtassa a következő PowerShell-parancsfájlt. Frissítse a környezet PowerShell-változóit. A szkript futtatása után a rendszer felszólítja, hogy indítsa újra az SAP-fürtöt a módosítások aktiválásához.
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1268,7 +1268,7 @@ Mintavételi port hozzáadása:
    }
    ```
 
-   Miután online állapotba hozta az **SAP <*SID-fürtszerepkört,* > ** ellenőrizze, hogy a **ProbePort** értéke az új értékre van-e beállítva.
+   Az **SAP <*SID* > ** -fürt szerepkör online állapotba hozása után ellenőrizze, hogy az **ProbePort** az új értékre van-e állítva.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1278,13 +1278,13 @@ Mintavételi port hozzáadása:
 
    ```
 
-   ![59. ábra: A fürtport vizsgálata az új érték beállítása után][sap-ha-guide-figure-3049]
+   ![59. ábra: a fürt portjának mintavétele az új érték beállítása után][sap-ha-guide-figure-3049]
 
-   _**59. ábra:** A fürtport vizsgálata az új érték beállítása után_
+   _**59. ábra:** A fürt portjának mintavétele az új érték beállítása után_
 
 #### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>A Windows tűzfal mintavételi portjának megnyitása
 
-Mindkét fürtcsomóponton meg kell nyitnia egy Windows tűzfal mintavételi portját. A következő parancsfájl segítségével nyissa meg a Windows tűzfal mintavételi portját. Frissítse a PowerShell-változókat a környezetben.
+A fürt csomópontjain egy Windows tűzfal mintavételi portot kell megnyitni. A következő parancsfájl használatával nyisson meg egy Windows tűzfal mintavételi portot. Frissítse a környezet PowerShell-változóit.
 
   ```powershell
   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
@@ -1292,59 +1292,59 @@ Mindkét fürtcsomóponton meg kell nyitnia egy Windows tűzfal mintavételi por
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-A **ProbePort** **62000-re**van állítva. Most már más állomásokról, például **ascsha-dbas-ból**is elérheti a ** \\fájlmegosztást \ascsha-clsap\sapmnt.**
+A **ProbePort** értéke **62000**. Most már elérheti a fájlmegosztás ** \\\ascsha-clsap\sapmnt** más gazdagépekről, például a következőről: **ascsha-adattervezők**.
 
-### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Az adatbázispéldány telepítése
+### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Az adatbázis-példány telepítése
 
-Az adatbázispéldány telepítéséhez kövesse az SAP telepítési dokumentációjában ismertetett eljárást.
+Az adatbázis-példány telepítéséhez kövesse az SAP telepítési dokumentációjában leírt eljárást.
 
 ### <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>A második fürtcsomópont telepítése
 
 A második fürt telepítéséhez kövesse az SAP telepítési útmutatójának lépéseit.
 
-### <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>Az SAP ERS Windows szolgáltatáspéldány indítási típusának módosítása
+### <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>Az SAP ERS Windows-szolgáltatás példányának indítási típusának módosítása
 
-Módosítsa az SAP ERS Windows-szolgáltatás indítási típusát **automatikusra (késleltetett indítás)** mindkét fürtcsomóponton.
+Módosítsa az SAP ERS Windows szolgáltatás indítási típusát **automatikus (Késleltetett indítás)** értékre mindkét fürtcsomóponton.
 
-![60. ábra: Módosítsa az SAP ERS-példány szolgáltatástípusát késleltetett automatikusra][sap-ha-guide-figure-3050]
+![60. ábra: az SAP ERS-példány szolgáltatástípus-típusának módosítása késleltetett automatikusra][sap-ha-guide-figure-3050]
 
-_**60. ábra:** Módosítsa az SAP ERS-példány szolgáltatástípusát késleltetett automatikusra_
+_**60. ábra:** Az SAP ERS-példány szolgáltatás típusának megváltoztatása késleltetett automatikusra_
 
-### <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>Az SAP elsődleges alkalmazáskiszolgáló telepítése
+### <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>Az SAP Primary Application Server telepítése
 
-Telepítse az elsődleges alkalmazáskiszolgáló (PAS) példányát <*SID*>-di-0 azonosítót azon a virtuális gépen, amelyet a PAS üzemeltetésére kijelölt. Nincsenek függőségek az Azure-tól vagy a DataKeeper-specifikus beállításoktól.
+Telepítse az elsődleges alkalmazáskiszolgáló (PAS) példányát <*SID*>-di-0 értéket azon a virtuális gépen, amelyet a Pas számára jelölt ki. Nincsenek függőségek az Azure-ban vagy a DataKeeper-specifikus beállításokban.
 
-### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Az SAP additional Application Server telepítése
+### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Az SAP további alkalmazáskiszolgáló telepítése
 
-Telepítsen egy SAP additional Application Server (AAS) rendszert az összes olyan virtuális gépen, amelyet egy SAP Application Server-példány üzemeltetésére kijelölt. Például <*SID* SID->-di-1-en <*SID* &lt;>-di-n&gt;.
+Telepítsen egy SAP további alkalmazáskiszolgáló (AAS) szolgáltatást minden olyan virtuális gépre, amelyet az SAP Application Server-példány üzemeltetésére jelölt ki. Például <*sid*>-di-1 <*SID*>-di-&lt;n.&gt;
 
 > [!NOTE]
-> Ezzel befejezi a telepítést a magas rendelkezésre állású SAP NetWeaver rendszer. Ezután folytassa a feladatátvételi tesztelést.
+> Ez befejezi a magas rendelkezésre állású SAP NetWeaver rendszer telepítését. Ezután folytassa a feladatátvételi teszttel.
 >
 
 
-## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>Az SAP ASCS/SCS-példány feladatátvételének és a SIOS-replikációnak a tesztelése
-Az SAP ASCS/SCS-példány feladatátvétele és a SIOS-lemezreplikáció tesztelése és figyelése a Feladatátvevő fürtkezelő és a SIOS DataKeeper Management and Configuration eszközzel könnyen ellenőrizhető és figyelhető.
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>Az SAP-ASCS/SCS-példány feladatátvételi és SIOS-replikálásának tesztelése
+A Feladatátvevőfürt-kezelő és a SIOS DataKeeper-kezelő és konfigurációs eszköz használatával egyszerűen tesztelheti és figyelheti az SAP ASCS/SCS-példányok feladatátvételét és SIOS.
 
-### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>Az SAP ASCS/SCS-példány az A fürtcsomóponton fut
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS-példány fut az A fürtcsomóponton
 
-Az **SAP PR1** fürtcsoport az A fürtcsomóponton fut. Például a **pr1-ascs-0.** Rendelje hozzá az **SAP PR1** fürtcsoport részét képező s-meghajtót az A fürtcsomóponthoz.
+Az **SAP PR1** -fürt az a fürtcsomóponton fut. Például: **PR1-ASCs-0**. Rendelje hozzá a (z) az **SAP PR1** tartozó megosztott lemezmeghajtót, amely a ASCS/SCS-példány által használt, az a csomópontra.
 
-![61. ábra: Feladatátvevőfürt-kezelő: Az SAP <SID> fürtcsoport az A fürtcsomóponton fut][sap-ha-guide-figure-5000]
+![61. ábra: Feladatátvevőfürt-kezelő: az SAP <SID> fürtözött csoport az A fürtcsomóponton fut][sap-ha-guide-figure-5000]
 
-_**61. ábra:** Feladatátvevőfürt-kezelő: Az SAP <*SID*> fürtcsoport az A fürtcsomóponton fut_
+_**61. ábra:** Feladatátvevőfürt-kezelő: az SAP <*SID*> a fürt csomópontja az a fürtcsomóponton fut_
 
-A SIOS DataKeeper Management and Configuration eszközben láthatja, hogy a megosztott lemezadatok szinkron módon replikálódnak az A fürtsen lévő S forráskötet-meghajtóról a B fürtcsomópont S célkötet-meghajtójára. Például **a pr1-ascs-0 -ról [10.0.0.40]** **pr1-ascs-1 [10.0.0.41]** replikálódik.
+A SIOS DataKeeper-kezelés és-konfigurálás eszközben láthatja, hogy a megosztott lemez adatainak szinkron módon replikálódnak a (z) "A" fürt " Például a rendszer replikálja a **PR1-ASCs-0 [10.0.0.40]** típusról a **PR1-ASCs-1 [10.0.0.41]** értékre.
 
-![62. ábra: A SIOS DataKeeper alkalmazásban replikálja a helyi kötetet az A fürtcsomópontról a B fürtcsomópontra][sap-ha-guide-figure-5001]
+![62. ábra: a SIOS DataKeeper-ben replikálja a helyi kötetet a fürt csomópontból a B csomópontba][sap-ha-guide-figure-5001]
 
-_**62. ábra:** A SIOS DataKeeper alkalmazásban replikálja a helyi kötetet az A fürtcsomópontról a B fürtcsomópontra_
+_**62. ábra:** A SIOS DataKeeper-ben replikálja a helyi kötetet a fürt csomópontból a B csomópontba._
 
-### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Feladatátvétel az A csomópontról a B csomópontba
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Feladatátvétel az A csomópontról a B csomópontra
 
-1. Az sap-<*SID*> fürtcsoport feladatátvételének kezdeményezéséhez válasszon az Alábbi lehetőségek közül a B fürtcsomópontról:
+1. Válassza ki az alábbi lehetőségek egyikét az SAP <*SID*>-fürt feladatátvételének elindításához a (z) "a" fürt "a" csomópontról a B fürtre:
    - Feladatátvevőfürt-kezelő használata  
-   - Feladatátvevő fürt powershell használata
+   - A feladatátvevő fürt PowerShell használata
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1353,18 +1353,18 @@ _**62. ábra:** A SIOS DataKeeper alkalmazásban replikálja a helyi kötetet az
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Indítsa újra az A fürtcsomópontot a Windows vendég operációs rendszeren belül (ez elindítja az SAP <*SID*> fürtcsoport automatikus feladatátvételét az A csomópontról a B csomópontba).  
-3. Indítsa újra az A fürtcsomópontot az Azure Portalról (ez elindítja az SAP <*SID*> fürtcsoport automatikus feladatátvételét az A csomópontról a B csomópontba).  
-4. Indítsa újra az A fürtcsomópontot az Azure PowerShell használatával (ez elindítja az SAP <*SID*> fürtcsoport automatikus feladatátvételét az A csomópontról a B csomópontba).
+2. Indítsa újra az A fürtöt a Windows vendég operációs rendszeren belül (ez automatikusan feladatátvételt kezdeményez az SAP <*SID*> fürtcsomóponton az a csomópontról a B csomópontra).  
+3. Indítsa újra az A fürtcsomópont-csomópontot a Azure Portalból (Ezzel elindítja az SAP <*SID*> fürtözött csoport automatikus feladatátvételét az a csomópontról a B csomópontra).  
+4. Indítsa újra az A csomópontot a Azure PowerShell használatával (Ezzel elindítja az SAP <*SID*> fürtözött csoport automatikus feladatátvételét az a csomópontról a B csomópontra).
 
-   Feladatátvétel után az SAP <*SID*> fürtcsoport a B fürtcsomóponton fut. Például, ez fut **pr1-ascs-1**.
+   A feladatátvételt követően az SAP <*SID*> a fürt a B csomóponton fut. Például a **PR1-ASCs-1**számítógépen fut.
 
-   ![63. ábra: A feladatátvevői fürtkezelőben az SAP <SID> fürtcsoport a B fürtcsomóponton fut][sap-ha-guide-figure-5002]
+   ![63. ábra: Feladatátvevőfürt-kezelő az SAP <SID> fürterőforrás a B fürtcsomóponton fut.][sap-ha-guide-figure-5002]
 
-   _**63. ábra:** A feladatátvevőfürt-kezelőben az SAP <*SID*> fürtcsoport a B fürtcsomóponton fut_
+   _**63. ábra**: FELADATÁTVEVŐFÜRT-kezelő az SAP <*SID*> fürterőforrás a B fürtcsomóponton fut._
 
-   A megosztott lemez most már csatlakoztatva van a B fürtcsomópontra. Például **a pr1-ascs-1 [10.0.0.41]** **pr1-ascs-0 [10.0.0.40]** értékre replikál.
+   A megosztott lemez most már csatolva van a B csomóponthoz. a SIOS DataKeeper a B csomóponton lévő forrás kötet-meghajtóról származó adatok replikálását célozza meg a (z) "A" fürt "A" csomópontjára. A replikálás például a **PR1-ASCs-1 [10.0.0.41]** verzióról a **PR1-ASCs-0 [10.0.0.40]** verzióra.
 
-   ![64. ábra: A SIOS DataKeeper replikálja a helyi kötetet a B fürtcsomópontról az A fürtcsomópontra][sap-ha-guide-figure-5003]
+   ![64. ábra: a SIOS DataKeeper replikálja a B fürtcsomópont helyi kötetét az A fürtcsomópont-csomópontra][sap-ha-guide-figure-5003]
 
-   _**64. ábra:** A SIOS DataKeeper replikálja a helyi kötetet a B fürtcsomópontról az A fürtcsomópontra_
+   _**64. ábra:** A SIOS DataKeeper replikálja a B fürtcsomópont helyi kötetét az A fürt csomópontjának_

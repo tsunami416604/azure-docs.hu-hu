@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920637"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Az Azure Data Box kábelezési lehetőségei
@@ -74,7 +74,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
 Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
-1. A konfigurációhoz használjon RJ45 Ethernet kábelt a különálló számítógépről közvetlenül az MGMT portra.
+1. A különálló számítógépről származó RJ45 Ethernet-kábelt közvetlenül a MGMT-portra használhatja a konfiguráláshoz.
 2. Egy DATA 3-porthoz készült RJ45- vagy SFP+ kábellel csatlakoztassa a DATA 1 vagy a DATA 2 portot a kiszolgálóhoz. Azt javasoljuk, hogy a jó teljesítmény érdekében 10-GbE DATA 1- és DATA 2- portokat használjon. Az adatportok egy 10-GbE-kapcsolón keresztül csatlakoznak az adatokat tartalmazó kiszolgálóhoz.
 3. Konfigurálja az Ethernet-adaptert azon a laptopon, amellyel az eszközhöz csatlakozik:
 

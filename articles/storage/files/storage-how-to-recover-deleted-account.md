@@ -1,6 +1,6 @@
 ---
 title: Törölt tárfiók helyreállítása
-description: További információ a törölt tárfiók helyreállításáról
+description: További információ a törölt Storage-fiókok helyreállításáról
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -11,35 +11,35 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252634"
 ---
 # <a name="how-to-recover-a-deleted-storage-account"></a>Törölt tárfiók helyreállítása
 
-Az Azure Storage automatikus replikákon keresztül biztosítja az adatok rugalmasságát, de nem akadályozza meg, hogy a felhasználók vagy az alkalmazáskód megsérüljön az adatokban, akár véletlenül, akár rosszindulatúan. Az adatok hűségének fenntartása alkalmazás- vagy felhasználói hibapéldányok esetén fejlettebb technikákat igényel, például az adatok másolását egy másodlagos tárolóhelyre egy naplóval.
+Az Azure Storage adatrugalmasságot biztosít az automatizált replikák használatával, de nem akadályozza meg, hogy a felhasználók vagy az alkalmazások kódja véletlenül vagy rosszindulatúan sérült legyen. Az alkalmazás-vagy felhasználói hiba példányaiban az adathűség fenntartása fejlettebb technikákat igényel, például az adatok egy másodlagos tárolóhelyre való másolását egy naplóval.
 
-Az alábbi táblázat áttekintést nyújt a tárfiók-helyreállítás hatóköréről a replikációs stratégiától függően.
+Az alábbi táblázat a Storage-fiók helyreállításának hatókörét mutatja be a replikációs stratégiától függően.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Tárfiók Azure Erőforrás-kezelő|Igen|Igen|Igen|Igen|
-|Klasszikus tárfiók|Igen|Igen|Igen|Igen|
+|Storage-fiók Azure Resource Manager|Igen|Igen|Igen|Igen|
+|Klasszikus Storage-fiók|Igen|Igen|Igen|Igen|
 
-Gyűjtse össze a következő információkat, és nyújtson be támogatási kérelmet a Microsoft támogatási szolgálatához:
+Gyűjtse össze a következő információkat, és küldjön egy támogatási kérést Microsoft ügyfélszolgálata:
 
 * Storage account name (Tárfiók neve)
 * Törlés dátuma
-* Tárfiók régiója
-* Hogyan törölték a tárfiókot?
-* Milyen módszer törölte a tárfiókot? (Portál, PowerShell stb.)
+* Storage-fiók régiója
+* Hogyan törölte a Storage-fiókot?
+* Milyen módszerrel törölte a Storage-fiókot? (Portál, PowerShell stb.)
 
 Fontos pontok
 
-* Általában a törlés időpontjától a storage service szemétgyűjtés végrehajtásához, így a tárfiókok helyreállítása nem lehet helyreállítanak egy SLA-val.
-* A Microsoft támogatási szolgálata a lehető legjobb anam-es módon próbálja meg helyreállítani a tárolót/fiókot, és nem tudja garantálni a helyreállítást.
+* Általában akár 15 napig is eltarthat, amíg a tárolási szolgáltatás nem végez adatgyűjtést, ezért előfordulhat, hogy a Storage-fiókok helyreállítása nem állítható vissza SLA-val.
+* Microsoft ügyfélszolgálata megpróbálja helyreállítani a tárolót/fiókot a legjobb erőfeszítés alapján, és nem tudja garantálni a helyreállítást.
 
 > [!NOTE]
-> Előfordulhat, hogy a helyreállítás nem lesz sikeres, ha a fiókot újra létrehozták. Ha már újra létrehozta a fiókot, először törölnie kell azt, mielőtt a helyreállítást megkísérelheti.
+> Előfordulhat, hogy a helyreállítás nem lesz sikeres, ha a fiók újra lett létrehozva. Ha már újra létrehozta a fiókot, először törölnie kell azt a helyreállítás megkísérlése előtt.

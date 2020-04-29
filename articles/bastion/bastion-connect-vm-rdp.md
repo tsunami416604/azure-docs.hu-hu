@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás Windows virtuális géphez az Azure Bastion használatával
-description: Ebből a cikkből megtudhatja, hogyan csatlakozhat egy Azure-beli virtuális géphez Az Azure Bastion használatával.
+title: Kapcsolódás Windows rendszerű virtuális géphez az Azure Bastion használatával
+description: Ebből a cikkből megtudhatja, hogyan csatlakozhat egy Windows rendszerű Azure-beli virtuális géphez az Azure Bastion használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77597344"
 ---
-# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Csatlakozás Windows-alapú virtuális géphez az Azure Bastion használatával
+# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Kapcsolódás Windowsos virtuális géphez az Azure Bastion használatával
 
-Az Azure Bastion használatával biztonságosan és zökkenőmentesen csatlakozhat a virtuális gépekhez SSL-en keresztül közvetlenül az Azure Portalon. Az Azure Bastion használatakor a virtuális gépek nem igényelnek ügyfelet, ügynököt vagy további szoftvert. Ez a cikk bemutatja, hogyan csatlakozhat a Windows virtuális gépekhez. A Linux virtuális géphez való csatlakozásról a [Csatlakozás virtuális géphez az Azure Bastion - Linux használatával című](bastion-connect-vm-ssh.md)témakörben talál.
+Az Azure Bastion használatával biztonságosan és zökkenőmentesen csatlakozhat a virtuális gépekhez az SSL-en keresztül közvetlenül a Azure Portal. Az Azure Bastion használata esetén a virtuális gépekhez nem szükséges ügyfél, ügynök vagy további szoftver. Ez a cikk bemutatja, hogyan csatlakozhat a Windows rendszerű virtuális gépekhez. További információ a Linux rendszerű virtuális gépekhez való csatlakozásról: [Csatlakozás virtuális géphez az Azure Bastion-Linux használatával](bastion-connect-vm-ssh.md).
 
-Az Azure Bastion biztonságos kapcsolatot biztosít a virtuális hálózat összes virtuális gépéhez, amelyben ki van építve. Az Azure Bastion használatával megvédi a virtuális gépeket az RDP/SSH portok külvilág számára való kiteszik, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. További információ: [Áttekintés](bastion-overview.md).
+Az Azure Bastion biztonságos kapcsolatot biztosít a virtuális hálózatban lévő összes olyan virtuális géphez, amelyben kiépítve van. Az Azure Bastion használatával megvédheti a virtuális gépeket az RDP/SSH-portok a külvilág felé való kitéve, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. További információ: [Áttekintés](bastion-overview.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Győződjön meg arról, hogy beállított egy Azure-bastion gazdagépet a virtuális hálózathoz, amelyben a virtuális gép található. Miután a megerősített szolgáltatás kivan építve és üzembe helyezve a virtuális hálózatban, használhatja a virtuális hálózat bármely virtuális géphez való csatlakozásához. Az Azure Bastion gazdagép beállításához [lásd: Hozzon létre egy Azure-bastion host.](bastion-create-host-portal.md)
+Győződjön meg arról, hogy beállította az Azure-beli megerősített gazdagépet ahhoz a virtuális hálózathoz, amelyben a virtuális gép található. A megerősített szolgáltatás a virtuális hálózatban való üzembe helyezése és telepítése után a használatával csatlakozhat a virtuális hálózatban található bármelyik virtuális GÉPHEZ. Az Azure Bastion-gazdagépek beállításával kapcsolatban lásd: [Azure Bastion-gazdagép létrehozása](bastion-create-host-portal.md).
 
 ### <a name="required-roles"></a>Szükséges szerepkörök
 
-A kapcsolat létrejöttéhez a következő szerepkörök szükségesek:
+A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
-* Olvasói szerepkör a virtuális gépen
-* Olvasói szerepkör a virtuális gép privát IP-címével rendelkező hálózati adapteren
-* Olvasói szerepkör az Azure Bastion erőforráson
+* Olvasó szerepkör a virtuális gépen
+* Olvasó szerepkör a virtuális gép magánhálózati IP-címével rendelkező hálózati adapteren
+* Olvasói szerepkör az Azure-beli megerősített erőforráson
 
 ### <a name="ports"></a>Portok
 
-A Windows virtuális géphez való csatlakozáshoz a következő portok vannak megnyitva a Windows virtuális gépen:
+A Windows rendszerű virtuális géphez való csatlakozáshoz a következő portokat kell megnyitnia a Windows rendszerű virtuális gépen:
 
 * Bejövő portok: RDP (3389)
 
 ## <a name="connect"></a><a name="rdp"></a>Kapcsolódás
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Csatlakozás** gombra, és válassza a **Bástya** lehetőséget a legördülő menüből.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
 
-   ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-rdp/connect.png)
-1. Miután a Bastion gombra kattintott, egy oldalsáv jelenik meg, amely három lapot – RDP, SSH és Bástya . Ha a Bastion ki van építve a virtuális hálózathoz, a Bástya lap alapértelmezés szerint aktív. Ha nem létesített hidasztiszt a virtuális hálózathoz, a hivatkozásra kattintva konfigurálhatja a Bastion t. A konfigurációs utasításokat a [Bastion konfigurálása](bastion-create-host-portal.md)című témakörben találja.
+   ![VM-kapcsolat](./media/bastion-connect-vm-rdp/connect.png)
+1. Miután rákattintott a Bastion elemre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, akkor a következő hivatkozásra kattintva konfigurálhatja a Bastion-t. A konfigurációs utasításokért lásd: a [Bastion konfigurálása](bastion-create-host-portal.md).
 
-   ![bástya lap](./media/bastion-connect-vm-rdp/bastion.png)
-1. A Bástya lapon adja meg a virtuális gép felhasználónevét és jelszavát, majd kattintson a **Csatlakozás gombra.** Az RDP-kapcsolat a virtuális gép hez keresztül Bastion nyílik meg közvetlenül az Azure Portalon (HTML5 felett) a 443-as port és a Bástya szolgáltatás használatával.
+   ![megerősített lap](./media/bastion-connect-vm-rdp/bastion.png)
+1. A megerősített lapon adja meg a virtuális gép felhasználónevét és jelszavát, majd kattintson a **kapcsolat**gombra. Az ehhez a virtuális géphez a Bastion-en keresztül létesített RDP-kapcsolat közvetlenül a Azure Portal (HTML5-n keresztül) lesz megnyitva a 443-es port és a megerősített szolgáltatás használatával.
 
-   ![RDP-csatlakozás](./media/bastion-connect-vm-rdp/443rdp.png)
+   ![RDP-kapcsolat](./media/bastion-connect-vm-rdp/443rdp.png)
  
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Bástya GYIK-et](bastion-faq.md)
+A [megerősített GYIK](bastion-faq.md) áttekintése

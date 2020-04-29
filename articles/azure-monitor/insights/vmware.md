@@ -1,204 +1,204 @@
 ---
-title: VMware figyelési megoldás az Azure Monitorban | Microsoft dokumentumok
-description: Ismerje meg, hogyan segíthet a VMware monitoring megoldás a naplók kezelésében és az ESXi-állomások figyelésében.
+title: VMware Monitoring megoldás a Azure Monitorban | Microsoft Docs
+description: Ismerje meg, hogyan segíthet a VMware Monitoring-megoldás a naplók kezelésében és az ESXi-gazdagépek figyelésében.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664779"
 ---
-# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware monitoring (elavult) megoldás az Azure Monitorban
+# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
 
-![VMware szimbólum](./media/vmware/vmware-symbol.png)
+![VMware-szimbólum](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
-> A VMware figyelési megoldás elavult.  Azok az ügyfelek, akik már telepítették a megoldást, továbbra is használhatják, de a VMware Monitoring nem adható hozzá új munkaterületekhez.
+> A VMware Monitoring megoldás elavult.  Azok a felhasználók, akik már telepítették a megoldást, továbbra is használhatják, de VMware Monitoring nem vehetők fel új munkaterületekre.
 
-A VMware figyelési megoldás az Azure Monitor egy olyan megoldás, amely segít létrehozni egy központosított naplózási és figyelési megközelítést a nagy VMware naplók. Ez a cikk azt ismerteti, hogyan háríthatja el, rögzítheti és kezelheti az ESXi-állomásokat egyetlen helyen a megoldás használatával. A megoldással egyetlen helyen láthatja az összes ESXi-állomás részletes adatait. Megtekintheti a virtuális gépek és az ESXi-állomások legfontosabb eseményszámait, állapotát és trendjeit az ESXi gazdanaplókon keresztül. A hibaelhárítást a központosított ESXi állomásnaplók megtekintésével és keresésével teheti meg. És naplókeresési lekérdezések alapján is létrehozhat riasztásokat.
+A Azure Monitor VMware Monitoring megoldása olyan megoldás, amellyel központosított naplózási és figyelési módszert hozhat létre a nagyméretű VMware-naplók számára. Ez a cikk azt ismerteti, hogyan lehet az ESXi-gazdagépeket a megoldás használatával egyetlen helyen elhárítani, rögzíteni és felügyelni. A megoldással egyetlen helyen láthatja az ESXi-gazdagépek részletes adatait. Az ESXi-gazdagép naplófájljain keresztül megtekintheti a virtuálisgép-és ESXi-gazdagépek leggyakoribb események számát, állapotát és trendjét. A hibakeresést a központosított ESXi-gazdagép naplófájljainak megtekintésével és keresésével végezheti el. Emellett a naplóbeli keresési lekérdezések alapján is létrehozhat riasztásokat.
 
-A megoldás az ESXi gazdagép natív syslog funkcióját használja az adatok leküldése a cél virtuális gépre, amely rendelkezik a Log Analytics-ügynökkel. Azonban a megoldás nem ír fájlokat a syslog a cél virtuális gépen belül. A Log Analytics-ügynök megnyitja az 1514-es portot, és ezt figyeli. Miután megkapta az adatokat, a Log Analytics-ügynök leküldéses az adatokat az Azure Monitorba.
+A megoldás az ESXi-gazdagép natív syslog funkcióját használja az adat leküldésére egy célként megadott virtuális gépre, amely rendelkezik a Log Analytics ügynökkel. A megoldás azonban nem ír fájlokat a syslog-be a cél virtuális gépen belül. A Log Analytics ügynök megnyitja a 1514-es portot, és ezt figyeli. Amint megkapja az adatkérést, a Log Analytics ügynök leküldi az adatAzure Monitorba.
 
 ## <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* Adja hozzá a VMware figyelési megoldás át az előfizetést a [Felügyeleti megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution)című témakörben leírt folyamat tal.
+* Adja hozzá a VMware Monitoring megoldást az előfizetéséhez a [figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution)című témakörben ismertetett eljárás használatával.
 
-#### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi állomások
-vSphere ESXi host 5.5, 6.0 és 6.5
+#### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi gazdagépek
+vSphere ESXi-gazdagép 5,5, 6,0 és 6,5
 
 #### <a name="prepare-a-linux-server"></a>Linux-kiszolgáló előkészítése
-Hozzon létre egy Linux operációs rendszer virtuális gép fogadásához az összes syslog adatokat az ESXi házigazdák. A [Log Analytics Linux-ügynök](../learn/quick-collect-linux-computer.md) az összes ESXi gazdarendszer syslog-adat gyűjtőpontja. Több ESXi-állomás segítségével továbbíthatja a naplókat egyetlen Linux-kiszolgálóra, ahogy az a következő példában is.
+Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagépekről származó összes syslog-adatok fogadásához. A [log Analytics Linux-ügynök](../learn/quick-collect-linux-computer.md) az ESXi-gazdagép syslog-adatgyűjtési pontja. Több ESXi-gazdagép használatával továbbíthatja a naplókat egyetlen Linux-kiszolgálóra, ahogy az alábbi példában is látható.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-   ![syslog áramlás](./media/vmware/diagram.png)
+   ![syslog-folyamat](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
-1. Állítsa be a syslog forwarding-ot a VSphere-hez. A syslog forwarding beállításának elősegítéséről az [ESXi 5.0 és újabb verziók (2003322) beállításáról](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)nyújt be részletes információt. Tovább az **ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
-   ![vsphereconfig között](./media/vmware/vsphere1.png)  
-1. A *Syslog.global.logHost* mezőben adja hozzá a Linux-kiszolgálót és az *1514-es*portszámot. Példa: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
-1. Nyissa meg az ESXi gazdatűzfalat a syslog számára. **ESXi Host Konfigurációs** > **szoftver** > biztonsági**profil** > **tűzfal** és a nyitott **tulajdonságok**.  
+1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás az **ESXi-gazdagép konfigurációs** > **szoftver** > **Speciális beállítások** > **syslog**.
+   ![vsphereconfig](./media/vmware/vsphere1.png)  
+1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Példa: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
+1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációs** > **szoftver** > **biztonsági profilja** > **tűzfal** és nyitott **Tulajdonságok**.  
 
-    ![vspherefw között](./media/vmware/vsphere2.png)  
+    ![vspherefw](./media/vmware/vsphere2.png)  
 
-    ![vspherefwproperties (vspherefwproperties)](./media/vmware/vsphere3.png)  
-1. Ellenőrizze a vSphere konzolon, hogy a syslog megfelelően van-e beállítva. Ellenőrizze az ESXI gazdagépen, hogy az **1514-es** port be van állítva.
-1. Töltse le és telepítse a Log Analytics ügynök Linux a Linux-kiszolgálón. További információt a [Linuxos Log Analytics-ügynök dokumentációja című](https://github.com/Microsoft/OMS-Agent-for-Linux)témakörben talál.
-1. A Linuxalapú Log Analytics-ügynök telepítése után nyissa meg az /etc/opt/microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi.conf fájlt az /etc/opt/microsoft/omsagent/conf/omsagent.d könyvtárba, és módosítsa a fájl tulajdonosát/csoportját és engedélyeit. Példa:
+    ![vspherefwproperties](./media/vmware/vsphere3.png)  
+1. A vSphere-konzolon ellenőrizze, hogy a syslog megfelelően van-e beállítva. Erősítse meg az ESXI-gazdagépen, hogy a **1514** -es port konfigurálva van.
+1. Töltse le és telepítse a Linux rendszerhez készült Log Analytics-ügynököt a Linux-kiszolgálón. További információkért tekintse meg a [Linux rendszerhez készült log Analytics-ügynök dokumentációját](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. A Linux rendszerhez készült Log Analytics-ügynök telepítése után nyissa meg a/etc/opt/Microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi. conf fájlt a/etc/opt/Microsoft/omsagent/conf/omsagent.d könyvtárba, és módosítsa a fájl tulajdonosát, csoportját és engedélyeit. Például:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Indítsa újra a Log Analytics `sudo /opt/microsoft/omsagent/bin/service_control restart`ügynököt Linuxra a futtatásával.
-1. Tesztelje a kapcsolatot a Linux szerver és `nc` az ESXi állomás között az ESXi Host parancsával. Példa:
+1. Indítsa újra a Log Analytics Linux-ügynököt `sudo /opt/microsoft/omsagent/bin/service_control restart`a futtatásával.
+1. Tesztelje a Linux-kiszolgáló és az ESXi-gazdagép közötti kapcsolatot az `nc` ESXi-gazdagépen található parancs használatával. Például:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Az Azure Portalon naplólekérdezést `VMware_CL`hajtson végre a számára. Amikor az Azure Monitor gyűjti a syslog adatokat, megőrzi a syslog formátumban. A portálon a program bizonyos mezőket rögzít, például *az Állomásnevet* és *a Folyamatnév mezőt.*  
+1. A Azure Portal hajtson végre egy log-lekérdezést `VMware_CL`a következőhöz:. Amikor Azure Monitor gyűjti a syslog-adatokat, megőrzi a syslog formátumát. A portálon bizonyos mezők rögzítése történik, például az *állomásnév* és a *processname*.  
 
     ![type](./media/vmware/type.png)  
 
-    Ha a nézetnapló keresési eredményei hasonlóak a fenti képhez, akkor a VMware figyelési megoldás irányítópultját használja.  
+    Ha a nézet naplójának keresési eredményei hasonlóak a fenti képen láthatóhoz, akkor a VMware Monitoring megoldás irányítópultjának használatára van beállítva.  
 
-## <a name="vmware-data-collection-details"></a>A VMware adatgyűjtésének részletei
-A VMware monitoring megoldás különböző teljesítmény-mérőszámokat és naplóadatokat gyűjt az ESXi-állomásoktól az Ön által engedélyezett Linux-logAnalytics-ügynökök használatával.
+## <a name="vmware-data-collection-details"></a>A VMware-adatok gyűjtésének részletei
+A VMware Monitoring megoldás különféle teljesítménymutatókat és adatokat gyűjt az ESXi-gazdagépekről az Ön által engedélyezett linuxos Log Analytics-ügynökök használatával.
 
-Az alábbi táblázat az adatgyűjtési módszereket és az adatgyűjtés egyéb részleteit mutatja be.
+Az alábbi táblázat az adatgyűjtés módszereit és az adatok gyűjtésének egyéb részleteit mutatja be.
 
 | 
     platform
-   | Log Analytics ügynök Linuxra | SCOM ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül küldött SCOM-ügynökadatok | gyűjtés gyakorisága |
+   | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 percenként |
 
-Az alábbi táblázat példákat mutat be a VMware figyelési megoldása által gyűjtött adatmezőkre:
+A következő táblázat példákat mutat be a VMware Monitoring megoldás által összegyűjtött adatmezőkre:
 
 | mező neve | leírás |
 | --- | --- |
-| Device_s |VMware tárolóeszközök |
-| ESXIFailure_s |hibatípusok |
-| EventTime_t |esemény bekövetkezésének időpontja |
-| HostName_s |ESXi állomásnév |
+| Device_s |VMware Storage-eszközök |
+| ESXIFailure_s |hibák típusai |
+| EventTime_t |az esemény bekövetkezésekor bekövetkezett idő |
+| HostName_s |ESXi-gazdagép neve |
 | Operation_s |virtuális gép létrehozása vagy virtuális gép törlése |
 | ProcessName_s |esemény neve |
-| ResourceId_s |A VMware-állomás neve |
+| ResourceId_s |a VMware-gazdagép neve |
 | ResourceLocation_s |VMware |
 | ResourceName_s |VMware |
 | ResourceType_s |Hyper-V |
-| SCSIStatus_s |VMware SCSI állapota |
-| SyslogMessage_s |Syslog-adatok |
-| UserName_s |felhasználó, aki virtuális gép létrehozása vagy törlése |
+| SCSIStatus_s |VMware SCSI-állapot |
+| SyslogMessage_s |Syslog-adatbázis |
+| UserName_s |a virtuális gépet létrehozó vagy törölt felhasználó |
 | VMName_s |a virtuális gép neve |
 | Computer |gazdaszámítógép |
-| TimeGenerated |az adatok létrehozásának időpontja |
-| DataCenter_s |VMware adatközpont |
-| StorageLatency_s |tárolási késés (ms) |
+| TimeGenerated |az adatgyűjtés ideje |
+| DataCenter_s |VMware Datacenter |
+| StorageLatency_s |tárolási késés (MS) |
 
-## <a name="vmware-monitoring-solution-overview"></a>VMware figyelési megoldás – áttekintés
-A VMware csempe megjelenik a Log Analytics-munkaterületen. Magas szintű képet nyújt a hibákról. Amikor a csempére kattint, irányítópult-nézetbe lép.
+## <a name="vmware-monitoring-solution-overview"></a>VMware Monitoring megoldás áttekintése
+A VMware csempe megjelenik a Log Analytics munkaterületen. Magas szintű áttekintést nyújt a hibákról. Amikor rákattint a csempére, egy irányítópult-nézetet nyithat meg.
 
 ![csempéző](./media/vmware/tile.png)
 
-#### <a name="navigate-the-dashboard-view"></a>Navigálás az irányítópult nézetben
-A **VMware** irányítópult nézetben a blade-ek a következők szerint vannak rendezve:
+#### <a name="navigate-the-dashboard-view"></a>Navigáljon az irányítópult nézetbe
+A **VMware** irányítópult nézetében a pengék a következők szerint vannak rendezve:
 
-* Hibaállapot-szám
-* Legnépszerűbb állomás eseményszám szerint
-* A legfontosabb események száma
-* Virtuális gép tevékenységei
-* ESXi host lemez események
+* Sikertelen állapotok száma
+* Legfelső szintű gazdagép események száma szerint
+* Leggyakoribb események száma
+* Virtuális gépekkel kapcsolatos tevékenységek
+* ESXi-gazdagép eseményei
 
-![megoldás1](./media/vmware/solutionview1-1.png)
+![solution1](./media/vmware/solutionview1-1.png)
 
-![megoldás2](./media/vmware/solutionview1-2.png)
+![solution2](./media/vmware/solutionview1-2.png)
 
-Kattintson bármelyik panelre a Log Analytics keresési ablaktábla megnyitásához, amely a panelre vonatkozó részletes információkat jeleníti meg.
+Kattintson bármelyik panelre a Log Analytics keresési ablaktáblájának megnyitásához, amely a panel részletes információit jeleníti meg.
 
-Itt szerkesztheti a naplólekérdezést, hogy valami konkrétat módosítson. A naplólekérdezések létrehozásáról az [Adatok keresése naplólekérdezések használatával az Azure Monitorban.](../log-query/log-query-overview.md)
+Itt szerkesztheti a napló lekérdezését, hogy az adott dologra vonatkozóan módosítható legyen. A naplók létrehozásával kapcsolatos további információkért lásd: [adatok keresése a Azure monitor található naplók használatával](../log-query/log-query-overview.md).
 
-#### <a name="find-esxi-host-events"></a>ESXi gazdaesemények keresése
-Egyetlen ESXi-állomás több naplót hoz létre a folyamataik alapján. A VMware figyelési megoldás központosítja őket, és összefoglalja az eseményszámait. Ez a központosított nézet segít megérteni, hogy melyik ESXi gazdagép rendelkezik nagy mennyiségű eseménysel, és milyen események fordulnak elő a leggyakrabban a környezetben.
+#### <a name="find-esxi-host-events"></a>ESXi-gazdagép eseményeinek keresése
+Egyetlen ESXi-gazdagép több naplót hoz létre a folyamataik alapján. A VMware Monitoring megoldás központosítja őket, és összegzi az események számát. Ez a központosított nézet segít megérteni, hogy mely ESXi-állomás nagy mennyiségű eseményt tartalmaz, és milyen események történnek a leggyakrabban a környezetben.
 
-![Esemény](./media/vmware/events.png)
+![esemény](./media/vmware/events.png)
 
-Tovább fúrhat egy ESXi-állomásra vagy eseménytípusra kattintva.
+További részletezéshez kattintson egy ESXi-gazdagépre vagy egy esemény típusára.
 
-Amikor egy ESXi állomásnévre kattint, az adott ESXi állomás adatait tekinti meg. Ha az eseménytípussal szeretné szűkíteni `“ProcessName_s=EVENT TYPE”` a találatokat, vegye fel a lekérdezésbe. A keresési szűrőben kiválaszthatja a **Folyamatnév** lehetőséget. Ez leszűkíti az információt.
+Az ESXi-állomásnévre kattintva megtekintheti az adott ESXi-gazdagép adatait. Ha az esemény típusával szeretné szűkíteni az eredményeket, vegye `“ProcessName_s=EVENT TYPE”` fel a kifejezést a keresési lekérdezésbe. A keresési szűrőben a **processname** is kiválaszthatja. Ez leszűkíti az adatokat.
 
-![Fúró](./media/vmware/eventhostdrilldown.png)
+![részletezés](./media/vmware/eventhostdrilldown.png)
 
-#### <a name="find-high-vm-activities"></a>Magas virtuálisgép-tevékenységek keresése
-A virtuális gép bármely ESXi-állomáson létrehozható és törölhető. A rendszergazda számára hasznos lehet annak meghatározása, hogy hány virtuális gépet hoz létre egy ESXi-állomás. Ez viszont segít megérteni a teljesítményt és a kapacitástervezést. A virtuális gép tevékenységi eseményeinek nyomon követése elengedhetetlen a környezet kezeléséhez.
+#### <a name="find-high-vm-activities"></a>Magas virtuális gépekkel kapcsolatos tevékenységek keresése
+A virtuális gépek bármelyik ESXi-gazdagépen létrehozhatók és törölhetők. A rendszergazdák számára hasznos lehet azonosítani, hogy hány virtuális gépet hoz létre ESXi-gazdagép. Ez pedig segít megérteni a teljesítményt és a kapacitás megtervezését. A virtuális gépek tevékenységi eseményeinek nyomon követése létfontosságú a környezet kezelésekor.
 
-![Fúró](./media/vmware/vmactivities1.png)
+![részletezés](./media/vmware/vmactivities1.png)
 
-Ha további ESXi gazdagép virtuális gép létrehozási adatait szeretné látni, kattintson egy ESXi állomásnévre.
+Ha további ESXi-gazdagép virtuális gépek létrehozási információit szeretné látni, kattintson az ESXi-gazdagép nevére.
 
-![Fúró](./media/vmware/createvm.png)
+![részletezés](./media/vmware/createvm.png)
 
-#### <a name="common-log-queries"></a>Gyakori naplólekérdezések
-A megoldás más hasznos lekérdezéseket is tartalmaz, amelyek segítségével kezelheti az ESXi-állomásokat, például a magas tárhelyet, a tárolási késést és az elérési út hibáját.
+#### <a name="common-log-queries"></a>Gyakori naplók lekérdezései
+A megoldás más hasznos lekérdezéseket is tartalmaz, amelyek segíthetnek az ESXi-gazdagépek, például a nagy tárterület, a tárolási késés és az elérési út meghibásodásának kezelésében.
 
-![Lekérdezések](./media/vmware/queries.png)
+![lekérdezések](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Lekérdezések mentése
-A naplólekérdezések mentése az Azure Monitor általános szolgáltatása, és segítséget nyújt a hasznosnak talált lekérdezések megőrzésében. Miután létrehozott egy hasznosnak talált lekérdezést, mentse azt a **Kedvencek**gombra kattintva. A mentett lekérdezések segítségével később egyszerűen újra felhasználhatja azt a [Saját irányítópult](../learn/tutorial-logs-dashboards.md) lapon, ahol saját egyéni irányítópultokat hozhat létre.
+A naplófájlok mentése a Azure Monitor egy szabványos funkciója, amely segítséget nyújt a hasznosnak ítélt lekérdezések megtartásában. Ha olyan lekérdezést hoz létre, amelyet hasznosnak talál, mentse azt a **Kedvencek**elemre kattintva. A mentett lekérdezésekkel könnyedén újra felhasználhatja később a saját [irányítópult](../learn/tutorial-logs-dashboards.md) oldaláról, ahol létrehozhat saját egyéni irányítópultokat is.
 
-![DockerDashboardNézet](./media/vmware/dockerdashboardview.png)
+![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
-#### <a name="create-alerts-from-queries"></a>Értesítések létrehozása lekérdezésekből
-Miután létrehozta a lekérdezéseket, érdemes lehet a lekérdezések segítségével figyelmeztetni, ha bizonyos események bekövetkeznek. A riasztások létrehozásáról a [Log Analytics riasztásai](../platform/alerts-overview.md) című témakörben talál információt. Példák a riasztási lekérdezések és egyéb lekérdezési példák, tekintse meg a [VMware figyelése a Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
+#### <a name="create-alerts-from-queries"></a>Riasztások létrehozása lekérdezésekből
+A lekérdezések létrehozása után érdemes lehet a lekérdezésekkel riasztást küldeni, ha adott események történnek. Riasztások létrehozásával kapcsolatos információkért tekintse [meg a log Analytics riasztásait](../platform/alerts-overview.md) . A lekérdezések és az egyéb lekérdezési példák esetében tekintse meg a [VMware Monitor log Analytics blogbejegyzés használatával](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) című témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell tennem az ESXi gazdagép beállításával? Milyen hatással lesz ez a jelenlegi környezetemre?
-A megoldás a natív ESXi Host Syslog továbbítási mechanizmust használja. A naplók rögzítéséhez nincs szükség további Microsoft-szoftverekre az ESXi Host szolgáltatásban. A meglévő környezetre gyakorolt hatása alacsony lehet. Azonban be kell állítania a syslog forwarding-ot, amely az ESXI funkció.
+### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell tennem az ESXi-gazdagép beállításain? Milyen hatással lesz a jelenlegi környezetre?
+A megoldás a natív ESXi-gazdagép syslog-továbbító mechanizmusát használja. A naplók rögzítéséhez nincs szükség további Microsoft-szoftverekre az ESXi-gazdagépen. Kis hatással kell lennie a meglévő környezetre. Azonban be kell állítania a syslog-továbbítást, amely ESXI-funkció.
 
-### <a name="do-i-need-to-restart-my-esxi-host"></a>Újra kell indítanom az ESXi gazdagépemet?
-Nem. Ez a folyamat nem igényel újraindítást. Néha a vSphere nem frissíti megfelelően a syslog-ot. Ebben az esetben jelentkezzen be az ESXi állomásra, és töltse be újra a syslog-ot. Ismét nem kell újraindítania a gazdagép, így ez a folyamat nem zavarja a környezetet.
+### <a name="do-i-need-to-restart-my-esxi-host"></a>Újra kell indítani az ESXi-gazdagépet?
+Nem. Ez a folyamat nem igényel újraindítást. Időnként a vSphere nem frissíti megfelelően a syslog-t. Ilyen esetben jelentkezzen be az ESXi-gazdagépre, és töltse be újra a syslog-t. Megint nem kell újraindítani a gazdagépet, így ez a folyamat nem zavarja meg a környezetét.
 
-### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Növelhetem vagy csökkenthetem a Log Analytics szolgáltatásba küldött naplóadatok mennyiségét?
-De igen, megteheted. Használhatja az ESXi host log szint beállításait vSphere. A naplógyűjtés az *információs* szinten alapul. Így ha azt szeretné, hogy a virtuális gép létrehozása vagy törlése, meg kell tartani a *hostd információs* szintet. További információt a [VMware Tudásbázisban talál.](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)
+### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Megnövelhető vagy csökkenthető a Log Analytics elküldhető naplófájlok mennyisége?
+Igen, lehet. Az ESXi-gazdagép naplózási szintjének beállításai a vSphere-ben használhatók. A naplók gyűjtése az *információs* szint alapján történik. Ha tehát a virtuális gép létrehozását vagy törlését szeretné naplózni, akkor meg kell őriznie az *információs* szintet a gazdagépen. További információ: [VMware Tudásbázis](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658).
 
-### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Miért nem ad meg a Hostd adatokat a Log Analytics szolgáltatásnak? A naplóbeállítás info beállításra van állítva.
-Volt egy ESXi host hiba a syslog időbélyeg. További információt a [VMware Tudásbázisban talál.](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202) A megoldás alkalmazása után a Hostd nak megfelelően kell működnie.
+### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Miért van a gazdagépen nem biztosítva az adatLog Analytics? A napló beállítása az info (adatok) értékre van állítva.
+ESXi-gazdagép hibája volt a syslog timestamp számára. További információ: [VMware Tudásbázis](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). A megkerülő megoldás alkalmazása után a gazdagépnek rendesen működnie kell.
 
-### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Lehet több ESXi gazdagép továbbítja a syslog adatokat egyetlen virtuális gépomon omsagent?
-Igen. Több ESXi-állomás továbbítása egyetlen virtuális gépomsa.
+### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Használhatok több ESXi-gazdagépet arra, hogy egyetlen virtuális gépre továbbítsák a syslog-omsagent?
+Igen. Több ESXi-gazdagép is továbbítható egyetlen virtuális géphez a omsagent-mel.
 
-### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Miért nem látom az adatok at a Log Analytics?
-Ennek több oka is lehet:
+### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Miért nem látom a Log Analyticsbe áramló adatforgalmat?
+Több oka is lehet:
 
-* Az ESXi gazdagép nem megfelelően lenyomja az adatokat a virtuális gép futó omsagent. A teszteléshez hajtsa végre az alábbi lépéseket:
+* Az ESXi-gazdagép nem megfelelően küldi el az adattovábbítást a omsagent-t futtató virtuális gépre. A teszteléshez hajtsa végre a következő lépéseket:
 
-  1. A megerősítéshez jelentkezzen be az ESXi állomásra az ssh használatával, és futtassa a következő parancsot:`nc -z ipaddressofVM 1514`
+  1. A megerősítéshez jelentkezzen be az ESXi-gazdagépre SSH használatával, és futtassa a következő parancsot:`nc -z ipaddressofVM 1514`
 
-      Ha ez nem sikerül, a speciális konfigurációban lévő vSphere-beállítások valószínűleg nem megfelelőek. A [syslog-gyűjtemény konfigurálása](#configure-syslog-collection) című témakörben talál további információt az ESXi gazdagép syslog továbbításhoz való beállításáról.
-  1. Ha a syslog port kapcsolata sikeres, de még mindig nem lát adatokat, majd töltse be újra a syslog-ot az ESXi gazdagépen az ssh használatával a következő parancs futtatásához:`esxcli system syslog reload`
-* A virtuális gép a Log Analytics-ügynök nincs megfelelően beállítva. A teszteléshez hajtsa végre az alábbi lépéseket:
+      Ha ez nem sikerül, a Speciális konfiguráció vSphere beállításai valószínűleg nem megfelelőek. A syslog-továbbítás beállításával kapcsolatos információkért lásd: a [syslog-gyűjtemény konfigurálása](#configure-syslog-collection) .
+  1. Ha a syslog-port kapcsolata sikeres, de még nem lát semmilyen adatmennyiséget, akkor az ESXi-gazdagépen töltse be a syslog-t az alábbi parancs futtatásához:`esxcli system syslog reload`
+* A Log Analytics ügynökkel rendelkező virtuális gép helytelenül van beállítva. Ennek teszteléséhez hajtsa végre a következő lépéseket:
 
-  1. A Log Analytics az 1514-es portot figyeli. Annak ellenőrzéséhez, hogy meg van-e nyitva, futtassa a következő parancsot:`netstat -a | grep 1514`
-  1. Látnia kellene, hogy a port `1514/tcp` nyitva van. Ha nem, ellenőrizze, hogy az omsagent megfelelően van-e telepítve. Ha nem látja a port adatait, majd a syslog port nincs megnyitva a virtuális gép.
+  1. Log Analytics figyeli a 1514-es portot. A megnyitásának ellenőrzéséhez futtassa a következő parancsot:`netstat -a | grep 1514`
+  1. Ekkor meg kell jelennie `1514/tcp` a port megnyitásának. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a port információit, akkor a syslog-port nincs megnyitva a virtuális gépen.
 
-    a. Ellenőrizze, hogy a Log Analytics-ügynök fut-e a használatával. `ps -ef | grep oms` Ha nem fut, indítsa el a folyamatot a parancs futtatásával`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Ellenőrizze, hogy a Log Analytics-ügynök fut- `ps -ef | grep oms`e a használatával. Ha nem fut, indítsa el a folyamatot a parancs futtatásával.`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 
-     c. Ellenőrizze, hogy a megfelelő felhasználói és csoportbeállítás érvényes-e, hasonlóan a következőkhöz:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Győződjön meg arról, hogy a megfelelő felhasználó és Csoport beállítás érvényes, a következőhöz hasonlóan:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-     d. Ha a fájl nem létezik, vagy a felhasználó és a csoport beállítása hibás, a [Linux-kiszolgáló előkészítése](#prepare-a-linux-server)segítségével tegye meg a korrekciós intézkedéseket.
+     d. Ha a fájl nem létezik, vagy a felhasználó és a csoport beállításai nem megfelelőek, végezze el a megfelelő műveletet a [Linux-kiszolgáló előkészítésével](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
-* A Log Analytics [naplólekérdezései](../log-query/log-query-overview.md) segítségével részletes VMware-gazdaadatokat tekinthet meg.
-* [Hozzon létre saját irányítópultokat a](../learn/tutorial-logs-dashboards.md) VMware gazdaadatait megjelenítő irányítópultokon.
-* [Hozzon létre riasztásokat,](../platform/alerts-overview.md) ha adott VMware gazdagép események fordulnak elő.
+* A részletes VMware-gazdagépek részleteinek megtekintéséhez használjon Log Analytics [naplózási lekérdezéseket](../log-query/log-query-overview.md) .
+* [Hozzon létre saját irányítópultokat a](../learn/tutorial-logs-dashboards.md) VMware-gazdagép adataival.
+* [Riasztások létrehozása](../platform/alerts-overview.md) , ha adott VMware-gazdagép eseményei történnek.

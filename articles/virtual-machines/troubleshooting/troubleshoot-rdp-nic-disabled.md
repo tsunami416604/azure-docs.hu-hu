@@ -1,6 +1,6 @@
 ---
-title: Nem lehet távolról csatlakozni az Azure virtuális gépekhez, mert a hálózati adapter le van tiltva | Microsoft dokumentumok
-description: Megtudhatja, hogyan háríthatja el azt a problémát, amelynek során az RDP meghibásodik, mert a hálózati adapter le van tiltva az Azure VM- ben| Microsoft dokumentumok
+title: Nem lehet távolról kapcsolódni az Azure Virtual Machineshoz, mert a hálózati adapter le van tiltva | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a problémát, amikor az RDP nem sikerül, mert a NIC le van tiltva az Azure-beli virtuális gépen | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,32 +13,32 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918240"
 ---
-#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Az asztal nem távolítható el a virtuális géphez, mert a hálózati adapter le van tiltva
+#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nem lehet a Távoli asztalt a virtuális géphez kapcsolni, mert a hálózati adapter le van tiltva
 
-Ez a cikk bemutatja, hogyan oldható meg az a probléma, amelyben nem tud távoli asztali kapcsolatot létesíteni az Azure Windows virtuális gépekkel ,, ha a hálózati adapter le van tiltva.
+Ez a cikk azt ismerteti, hogyan oldható meg egy olyan probléma, amelyben nem lehet Távoli asztal kapcsolatot létesíteni az Azure Windows Virtual Machines (VM) szolgáltatással, ha a hálózati adapter le van tiltva.
 
 
 ## <a name="symptoms"></a>Probléma
 
-Nem hozhat létre RDP-kapcsolatot vagy más típusú kapcsolatot más portokkal az Azure-beli virtuális géphez, mert a virtuális gép hálózati illesztője le van tiltva.
+Az Azure-beli virtuális gépekhez nem lehet RDP-kapcsolatot vagy bármilyen más típusú kapcsolatot létesíteni bármely más porttal, mert a virtuális gép hálózati adaptere le van tiltva.
 
 ## <a name="solution"></a>Megoldás
 
-Az alábbi lépések végrehajtása előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](../windows/snapshot-copy-managed-disk.md)című témakörben talál.
+Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 
-A virtuális gép összeköttetésének engedélyezéséhez használja a Soros vezérlőt, vagy [állítsa alaphelyzetbe](#reset-network-interface) a virtuális gép hálózati összeköttetését.
+A virtuális gép felületének engedélyezéséhez használja a soros vezérlés vagy a [hálózati adapter alaphelyzetbe állítása](#reset-network-interface) lehetőséget a virtuális géphez.
 
 ### <a name="use-serial-control"></a>Soros vezérlő használata
 
-1. Csatlakozzon a [Soros konzolhoz, és nyissa meg a CMD-példányt.](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-) Ha a soros konzol nincs engedélyezve a virtuális gépen, olvassa el a [hálózati adapter alaphelyzetbe állítása című témakört.](#reset-network-interface)
-2. Ellenőrizze a hálózati adapter állapotát:
+1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](#reset-network-interface)című témakört.
+2. Győződjön meg arról, hogy a hálózati adapter állapota:
 
         netsh interface show interface
 
@@ -48,18 +48,18 @@ A virtuális gép összeköttetésének engedélyezéséhez használja a Soros v
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Ha például a munkaközi felület neve "Ethernet 2", futtassa a következő parancsot:
+    Ha például az adatkapcsolati felület neve "Ethernet 2", futtassa a következő parancsot:
 
         netsh interface set interface name="Ethernet 2" admin=enabled
 
-4.  Ellenőrizze újra a hálózati adapter állapotát, és győződjön meg arról, hogy a hálózati csatoló engedélyezve van.
+4.  Ellenőrizze a hálózati adapter állapotát, és győződjön meg arról, hogy a hálózati adapter engedélyezve van.
 
         netsh interface show interface
 
-    Ezen a ponton nem kell újraindítania a virtuális gép. A virtuális gép újra elérhető lesz.
+    Ezen a ponton nem kell újraindítani a virtuális gépet. A virtuális gép elérhető lesz.
 
-5.  Csatlakozzon a virtuális géphez, és nézze meg, hogy a probléma megoldódott-e.
+5.  Kapcsolódjon a virtuális géphez, és ellenőrizze, hogy megoldódott-e a probléma.
 
 ## <a name="reset-network-interface"></a>Hálózati adapter alaphelyzetbe állítása
 
-A hálózati adapter alaphelyzetbe állításához módosítsa az IP-címet egy másik, az alhálózatban elérhető IP-címre. Ehhez használja az Azure Portalon vagy az Azure PowerShell. További információt a [Hálózati adapter visszaállítása című témakörben talál.](reset-network-interface.md)
+A hálózati adapter alaphelyzetbe állításához módosítsa az IP-címet egy másik, az alhálózaton elérhető IP-címhez. Ehhez használja Azure Portal vagy Azure PowerShell. További információ: a [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md).

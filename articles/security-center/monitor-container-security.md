@@ -1,6 +1,6 @@
 ---
-title: A tárolók biztonságának figyelése az Azure Security Centerben
-description: Ismerje meg, hogyan ellenőrizheti a tárolók biztonsági állapotát az Azure Security Centerből
+title: A tárolók biztonságának figyelése Azure Security Center
+description: Ismerje meg, hogyan ellenőrizhető a tárolók biztonsági helyzete Azure Security Center
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
 ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919532"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>A tárolók biztonságának figyelése
 
-Ez az oldal bemutatja, hogyan használhatja a tároló biztonsági funkciók a [tároló biztonsági cikkben](container-security.md) leírt fogalmak szakaszban.
+Ez az oldal ismerteti, hogyan használható a Container [Security című cikkben](container-security.md) ismertetett tároló biztonsági szolgáltatások a fogalmak szakaszban.
 
-Az Azure Security Center a tárolóbiztonság alábbi három aspektusát fedi le:
+A Azure Security Center a tárolók biztonságának következő három aspektusát fedi le:
 
-- **Biztonsági rés kezelése** – Ha a Security Center szabványos tarifacsomagját (lásd: [díjszabási)](/azure/security-center/security-center-pricing)látja el, minden alkalommal beszkatolta az ARM-alapú Azure Container Registry-t, amikor új rendszerképet lenyom. A lapolvasó (qualys-i működtetés) a megállapításokat a Security Center ajánlásaként mutatja be.
-    A részletes utasításokat az [alábbi, a tárolójegyzékek beolvasása](#scanning-your-arm-based-container-registries-for-vulnerabilities) című témakörben találja.
+- **Biztonsági rések kezelése** – ha Security Center Standard díjszabási szinttel rendelkezik (lásd a [díjszabást](/azure/security-center/security-center-pricing)), akkor a ARM-alapú Azure Container Registry minden alkalommal beolvashatók, amikor új rendszerképet küldenek. A képolvasó (Qualys-alapú) Security Center javaslatként mutatja be az eredményeket.
+    Részletes útmutatásért lásd: a tároló-beállításjegyzékek keresése az alábbi [biztonsági rések esetében](#scanning-your-arm-based-container-registries-for-vulnerabilities) .
 
-- **A tárolók Docker-gazdagépeinek megerősítésé** – A Security Center megtalálja az IaaS Linux-virtuális gépeken vagy más, Docker-t futtató Linux-gépeken tárolt nem felügyelt tárolókat, és folyamatosan összehasonlítja a tárolók konfigurációit a Center for Internet Security (CIS) Docker Benchmark szolgáltatással. A Security Center figyelmezteti, ha a tárolók nem felelnek meg a vezérlők egyikének sem. A helytelen konfigurációk ból eredő biztonsági kockázatok folyamatos figyelése minden biztonsági program kulcsfontosságú eleme. 
-    Részletes utasításokat lásd: [A tárolók Docker-gazdagépeinek megerősítéséről.](#hardening-your-containers-docker-hosts)
+- **A tárolók Docker-gazdagépek** megtartása – Security Center megkeresi a IaaS Linux rendszerű virtuális gépeken, illetve a Docker-t futtató más Linux-gépeken üzemeltetett nem felügyelt tárolókat, és folyamatosan összehasonlítja a tárolók konfigurációit az Internet Security (CIS) Docker-viszonyítási Security Center riasztást küld, ha a tárolók nem elégítik ki a vezérlők egyikét sem. A biztonsági kockázatok folyamatos figyelése a helytelen konfigurációk miatt a biztonsági programok kulcsfontosságú összetevője. 
+    Részletes útmutatásért lásd: [a tárolók Docker-gazdagépek megkeményedése](#hardening-your-containers-docker-hosts) alább.
 
-- **Az Azure Kubernetes service-fürtök megerősítése** – A Biztonsági központ javaslatokat tartalmaz, ha az Azure Kubernetes-szolgáltatásfürtjainak konfigurációjában biztonsági réseket talál. A megjelenő konkrét javaslatok ról a [Kubernetes-szolgáltatás ajánlásai ban talál részleteket.](recommendations-reference.md#recs-containers)
+- **Az Azure Kubernetes Service-fürtök megerősítése** – a Security Center ajánlásokat nyújt, amikor megkeresi a biztonsági réseket az Azure Kubernetes Service-fürtök konfigurációjában. Az esetlegesen megjelenő javaslatok részleteiért tekintse meg a [Kubernetes szolgáltatási javaslatait](recommendations-reference.md#recs-containers).
 
-- **Futásidejű védelem** – Ha a Security Center szabványos tarifacsomagját biztosítja, valós idejű fenyegetésvédelmet kap a tárolóba helyezett környezetekben. A Security Center riasztásokat hoz létre a gyanús tevékenységekről a gazdagép és az AKS-fürt szintjén. A vonatkozó biztonsági riasztások, amelyek megjelenhetnek, tekintse meg az [Azure Kubernetes szolgáltatás fürtjei](alerts-reference.md#alerts-akscluster) és [riasztások a tárolók – állomás szintű](alerts-reference.md#alerts-containerhost) szakaszok a riasztások referenciatábla.
+- **Futtatókörnyezet védelme** – ha Security Center Standard díjszabási szintje, valós idejű veszélyforrások elleni védelmet kap a tároló környezetek számára. Security Center riasztásokat hoz létre a gyanús tevékenységekhez a gazdagép és az AK-fürt szintjén. Az esetlegesen megjelenő biztonsági riasztások részleteiért tekintse meg az [Azure Kubernetes Service Clusters szolgáltatáshoz tartozó riasztásokat](alerts-reference.md#alerts-akscluster) , valamint a [tárolók –](alerts-reference.md#alerts-containerhost) a riasztások című táblázat gazdagép szintű fejezeteinek riasztásait.
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Az ARM-alapú tárolójegyzékek biztonsági résének vizsgálata 
+## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>A ARM-alapú tároló-beállításjegyzékek vizsgálata a biztonsági rések esetében 
 
-1. Az Azure Container Registry rendszerképek biztonsági résének engedélyezése:
+1. A Azure Container Registry-lemezképek sebezhetőségi vizsgálatának engedélyezése:
 
-    1. Győződjön meg arról, hogy az Azure Security Center szabványos tarifacsomagját támogatja.
+    1. Győződjön meg arról, hogy a Azure Security Center Standard díjszabási szintje van.
 
-    1. Az **Árképzési & beállítások** lapon engedélyezze az előfizetéshez szükséges ![opcionális tárolójegyzék-csomagot: A tárolójegyzék-csomag engedélyezése](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. A **díjszabási & beállítások** lapon engedélyezze az előfizetéshez választható tároló-beállításjegyzékek köteget ![: a Container nyilvántartórendszer-köteg engedélyezése](media/monitor-container-security/enabling-container-registries-bundle.png)
 
-        A Security Center most már készen áll a rendszerleíró adatbázisba kerülő képek beszamártására. 
+        Security Center most már készen áll a beállításjegyzékbe leküldeni kívánt rendszerképek vizsgálatára. 
 
         >[!NOTE]
-        >Ez a funkció képenként kerül felszámolásra.
+        >Ez a funkció rendszerkép alapján van felszámítva.
 
 
-1. A lemezkép vizsgálatának elindításához nyomja le a képazonosítóba. 
+1. A rendszerkép vizsgálatának elindításához küldje le azt a beállításjegyzékbe. 
 
-    Amikor a vizsgálat befejeződik (általában körülbelül 10 perc után), a megállapítások elérhetők a Security Center ajánlásaiban.
+    Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények Security Center javaslatokban érhetők el.
     
 
-1. Az eredmények megtekintéséhez lépjen a **Javaslatok** lapra. Ha problémákat talál, a következő javaslat jelenik meg:
+1. A megállapítások megtekintéséhez nyissa meg a **javaslatok** lapot. Ha probléma merült fel, a következő javaslat jelenik meg:
 
-    ![Ajánlás a problémák elhárítására ](media/monitor-container-security/acr-finding.png)
+    ![Javaslatok a problémák megoldásához ](media/monitor-container-security/acr-finding.png)
 
 
 1. Válassza ki a javaslatot. 
-    A javaslat részletei lap további információkkal jelenik meg. Ez az információ tartalmazza a sebezhető képekkel rendelkező nyilvántartások listáját ("Érintett erőforrások") és a javítási lépéseket. 
+    Megnyílik a javaslat részletei lap, amely további információkat tartalmaz. Ez az információ tartalmazza a sebezhető rendszerképekkel ("érintett erőforrásokkal") és a Szervizelési lépésekkel rendelkező kibocsátásiegység-forgalmi jegyzékek listáját. 
 
-1. Válasszon ki egy adott beállításjegyzéket a sebezhető adattárakat tartalmazó tárolók megtekintéséhez.
+1. Válasszon ki egy adott beállításjegyzéket, és tekintse meg a védett adattárakkal rendelkező adattárakat.
 
-    ![Rendszerleíró adatbázis kiválasztása](media/monitor-container-security/acr-finding-select-registry.png)
+    ![Beállításjegyzék kiválasztása](media/monitor-container-security/acr-finding-select-registry.png)
 
-    Megnyílik a rendszerleíró adatbázis részletei lap az érintett adattárak listájával.
+    Megnyílik a beállításjegyzék részletei lap az érintett adattárak listájával.
 
-1. Válasszon ki egy adott tárházat a benne lévő, sebezhető rendszerképeket tartalmazó adattárak megtekintéséhez.
+1. Válasszon ki egy adott tárházat a sebezhető lemezképekkel rendelkező adattárak megtekintéséhez.
 
-    ![Tárház kiválasztása](media/monitor-container-security/acr-finding-select-repository.png)
+    ![Adattár kiválasztása](media/monitor-container-security/acr-finding-select-repository.png)
 
-    Megnyílik a tárház részleteit tartalmazó lap. Felsorolja a sebezhető képeket, valamint a megállapítások súlyosságának értékelését.
+    Megnyílik az adattár részletei lap. Felsorolja a sebezhető lemezképeket, valamint az eredmények súlyosságának értékelését.
 
-1. A biztonsági rések megtekintéséhez jelöljön ki egy adott képet.
+1. Válasszon ki egy adott képet a biztonsági rések megtekintéséhez.
 
-    ![Képek kijelölése](media/monitor-container-security/acr-finding-select-image.png)
+    ![Képek kiválasztása](media/monitor-container-security/acr-finding-select-image.png)
 
-    Megnyílik a kijelölt képre vonatkozó megállapítások listája.
+    Megnyílik a kiválasztott rendszerkép megállapításainak listája.
 
-    ![A megállapítások listája](media/monitor-container-security/acr-findings.png)
+    ![Megállapítások listája](media/monitor-container-security/acr-findings.png)
 
-1. Ha többet szeretne megtudni a megállapításokról, válassza a keresés lehetőséget. 
+1. Ha többet szeretne megtudni a keresésről, válassza a keresés lehetőséget. 
 
-    Megnyílik az eredmények részletei ablaktábla.
+    Megnyílik a megállapítások részletei ablaktábla.
 
-    [![Eredmények részletei ablaktábla](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![Megállapítások részletei ablaktábla](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
-    Ez az ablaktábla részletesen ismerteti a problémát, és a fenyegetések csökkentése érdekében külső erőforrásokra mutató hivatkozásokat tartalmaz.
+    Ez a panel a probléma részletes ismertetését és a külső erőforrásokra mutató hivatkozásokat tartalmaz a fenyegetések enyhítése érdekében.
 
-1. Kövesse az ablaktábla szervizelési szakaszának lépéseit.
+1. Kövesse az ablaktábla szervizelés szakaszának lépéseit.
 
-1. Miután megtette a biztonsági probléma elhárításához szükséges lépéseket, cserélje le a lemezképet a beállításjegyzékben:
+1. Ha elvégezte a biztonsági probléma megoldásához szükséges lépéseket, cserélje le a rendszerképet a beállításjegyzékbe:
 
-    1. Nyomja le a frissített képet. Ez elindítja a leés. 
+    1. A frissített rendszerkép leküldése. Ez elindítja a vizsgálatot. 
     
-    1. Tekintse meg a javaslatok oldalon a javaslat "Biztonsági rések az Azure Container Registry rendszerképek kell kikell újult". 
+    1. Tekintse meg a "biztonsági rések a Azure Container Registry lemezképekben" című részt a javaslatok oldalon. 
     
-        Ha a javaslat továbbra is megjelenik, és a kezelt kép továbbra is megjelenik a sebezhető képek listájában, ellenőrizze újra a javítási lépéseket.
+        Ha a javaslat továbbra is megjelenik, és a kezelt lemezkép továbbra is megjelenik a sebezhető lemezképek listájában, ellenőrizze újra a szervizelés lépéseit.
 
-    1. Ha biztos benne, hogy a frissített lemezképet lenyomták, beolvasták, és már nem jelenik meg a javaslatban, törölje a "régi" sebezhető lemezképet a rendszerleíró adatbázisból.
+    1. Ha biztos abban, hogy a frissített rendszerkép le lett küldve, a vizsgálat megtörtént, és már nem jelenik meg a javaslatban, törölje a "régi" sebezhető rendszerképet a beállításjegyzékből.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>A tárolók Docker-gazdagépeinek keményedése
+## <a name="hardening-your-containers-docker-hosts"></a>A tárolók Docker-gazdagépének megerősítése
 
-A Security Center folyamatosan figyeli a Docker-állomások konfigurációját, és az iparági szabványoknak megfelelő biztonsági javaslatokat hoz létre.
+Security Center folyamatosan figyeli a Docker-gazdagépek konfigurációját, és biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
 
-Az Azure Security Center docker-gazdagépeire vonatkozó biztonsági javaslatok megtekintése:
+A Azure Security Center a tárolók Docker-gazdagépekre vonatkozó biztonsági javaslatainak megtekintéséhez:
 
-1. A Biztonsági központ navigációs sávján nyissa meg a **Számítási & alkalmazásokat,** és válassza a **Tárolók** lapot.
+1. A Security Center navigációs sávon nyissa meg a **számítási & alkalmazások** elemet, és válassza a **tárolók** fület.
 
-1. Szükség esetén szűrje a tároló-erőforrások listáját a tárológazdagépekre.
+1. Szükség esetén szűrheti a tároló-erőforrások listáját a tároló gazdagépei számára.
 
-    ![Tároló erőforrások szűrője](media/monitor-container-security/container-resources-filter.png)
+    ![Tároló erőforrásainak szűrője](media/monitor-container-security/container-resources-filter.png)
 
-1. A tárológazdagépek listájából válasszon egyet a további vizsgálathoz.
+1. A Container Host Machines listájából válassza ki az egyiket a további vizsgálathoz.
 
-    ![Tárológazda javaslatok](media/monitor-container-security/container-resources-filtered-to-hosts.png)
+    ![A Container Host-javaslatok](media/monitor-container-security/container-resources-filtered-to-hosts.png)
 
-    Megnyílik **a Tárológazdagép információs lapja** az állomás részleteivel és a javaslatok listájával.
+    Megnyílik a **tároló-gazdagép adatai lap** , amely a gazdagép adatait és a javaslatok listáját tartalmazza.
 
-1. A javaslatok listájából válasszon ki egy javaslatot a további vizsgálathoz.
+1. A javaslatok listából válasszon ki egy javaslatot a további vizsgálathoz.
 
-    ![Tárológazda javaslatlistája](media/monitor-container-security/container-host-rec.png)
+    ![Container Host-javaslatok listája](media/monitor-container-security/container-host-rec.png)
 
-1. Szükség esetén olvassa el a leírás, az információk, a fenyegetések és a javítási lépéseket. 
+1. Szükség esetén olvassa el a leírást, az információkat, a fenyegetéseket és a Szervizelési lépéseket. 
 
-1. Válassza a **Művelet művelet et** a lap alján.
+1. A lap alján válassza a **művelet elvégzése** elemet.
 
-    [![Művelet ellépése gomb](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
+    [![Művelet elvégzése gomb](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
 
-    A Log Analytics egy futtatására kész egyéni művelettel nyílik meg. Az alapértelmezett egyéni lekérdezés tartalmazza az összes értékelt sikertelen szabály listáját, valamint a problémák megoldásához szükséges irányelveket.
+    A Log Analytics egy egyéni művelettel nyílik meg, amely készen áll a futtatásra. Az alapértelmezett egyéni lekérdezés tartalmazza az összes észlelt szabály listáját, valamint útmutatást nyújt a problémák megoldásához.
 
     [![Log Analytics művelet](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Csípés a lekérdezési paramétereket, és válassza **a Futtatás,** ha biztos benne, hogy készen áll a gazdagép. 
+1. Állítsa be a lekérdezési paramétereket, és válassza a **Futtatás** lehetőséget, ha biztos benne, hogy készen áll a gazdagépre. 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja a Security Center tárolóbiztonsági szolgáltatásait. 
+Ebben a cikkben megtanulta, hogyan használhatja a Security Center tároló biztonsági funkcióit. 
 
-Egyéb kapcsolódó anyagokról lásd a következő oldalakat: 
+Más kapcsolódó anyagok esetében tekintse meg a következő lapokat: 
 
-- [A Biztonsági központ javaslatai a tárolókhoz](recommendations-reference.md#recs-containers)
-- [Riasztások az AKS-fürtszintjére](alerts-reference.md#alerts-akscluster)
-- [Riasztások a tárológazdagép szintjéhez](alerts-reference.md#alerts-containerhost)
+- [Security Centeri javaslatok a tárolók számára](recommendations-reference.md#recs-containers)
+- [AK-fürt szintű riasztások](alerts-reference.md#alerts-akscluster)
+- [A Container Host szintű riasztások](alerts-reference.md#alerts-containerhost)

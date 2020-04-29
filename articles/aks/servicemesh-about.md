@@ -1,113 +1,113 @@
 ---
-title: A szolgáltatásminta
-description: Áttekintést kaphat a szolgáltatás-mintaképekről, azok architektúrájáról és képességeiről, valamint arról, hogy milyen feltételeket kell figyelembe vennie az üzembe helyezendő alkalmazás kiválasztásakor.
+title: A szolgáltatás rácsvonalai
+description: Tekintse át a szolgáltatás rácsvonalait, azok architektúráját és képességeit, valamint azt, hogy milyen szempontokat kell figyelembe vennie, amikor kiválasztja az egyiket az üzembe helyezéshez.
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594311"
 ---
-# <a name="about-service-meshes"></a>A szolgáltatásminta
+# <a name="about-service-meshes"></a>A szolgáltatás rácsvonalai
 
-A szolgáltatásháló olyan képességeket biztosít, mint a forgalomkezelés, a rugalmasság, a házirend, a biztonság, az erős identitás és a számítási feladatok megfigyelhetősége. Az alkalmazás levan választva ezektől a működési képességektől, és a szolgáltatásháló kihelyezi őket az alkalmazásrétegből, és le az infrastruktúra-rétegre.
+A Service Mesh olyan képességeket biztosít, mint például a forgalomirányítási, a rugalmasság, a házirend, a biztonság, az erős identitás és a munkaterhelések megfigyelése. Az alkalmazás elválasztja ezeket az üzemeltetési képességeket, és a szolgáltatás rácsvonala áthelyezi őket az alkalmazási rétegből, és leállítja az infrastruktúra réteget.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Íme néhány olyan forgatókönyv, amely szolgáltatásháló használata esetén engedélyezhető a számítási feladatokhoz:
+Íme néhány olyan forgatókönyv, amely a szolgáltatásbeli háló használatakor engedélyezhető a számítási feladatokhoz:
 
-- **A fürt összes forgalmának titkosítása** – A fürt ben megadott szolgáltatások közötti kölcsönös TLS engedélyezése. Ez kiterjeszthető a hálózati peremhálózaton lévő be- és kijutásra. Alapértelmezés szerint biztonságos beállítást biztosít, és nincs szükség az alkalmazáskódra és az infrastruktúrára vonatkozó módosításokra.
+- A **fürtben lévő összes forgalom titkosítása** – engedélyezze a kölcsönös TLS protokollt a fürt megadott szolgáltatásai között. Ezt kiterjesztheti a bejövő és kimenő forgalomra a hálózati peremhálózaton. Az alapértelmezés szerint biztonságos beállítás, amely az alkalmazás kódjához és az infrastruktúrához nem szükséges módosításokat tartalmaz.
 
-- **Kanári és szakaszos bevezetés –** Adja meg a feltételeket egy részhalmaza a forgalom kell irányítani egy sor új szolgáltatások a fürtben. A kanári-kiengedés sikeres tesztelése után távolítsa el a feltételes útválasztást, és fokozatosan növelje az új szolgáltatásba irányuló forgalom %-át. Végül minden forgalom új szolgáltatásra lesz irányítva.
+- **Kanári és szakaszos** bevezetések – adja meg, hogy a forgalom egy részhalmaza számára milyen feltételek legyenek átirányítva a fürtben lévő új szolgáltatások készletére. A Kanári-kiadás sikeres tesztelésekor távolítsa el a feltételes útválasztást, és fokozatosan növelje az új szolgáltatás felé irányuló összes forgalom százalékos arányát. Végül az összes forgalom az új szolgáltatásra lesz irányítva.
 
-- **Forgalomkezelés és -kezelés** – Hozzon létre egy szabályzatot egy szolgáltatáson, amely az összes forgalmat egy adott eredetű szolgáltatás verziójára korlátozza. Vagy egy olyan házirend, amely újrapróbálkozási stratégiát alkalmaz a megadott szolgáltatások közötti hibaosztályokra. Az élő forgalom tükrözése a szolgáltatások új verzióira az áttelepítés vagy a hibakeresés során. A rugalmasság tesztelése érdekében adja be a szolgáltatások közötti hibákat egy tesztkörnyezetben.
+- **Forgalomirányítási és-manipuláció** – szabályzat létrehozása egy olyan szolgáltatáshoz, amely a szolgáltatás egy adott forrásból származó verziójára korlátozza az összes forgalmat. Vagy egy olyan szabályzat, amely újrapróbálkozási stratégiát alkalmaz a megadott szolgáltatások közötti meghibásodási osztályokra. Átirányíthatja az élő forgalmat a szolgáltatások új verzióiba az áttelepítés során vagy hibakeresési problémák esetén. A rugalmasság teszteléséhez adja meg a szolgáltatások közötti hibákat a tesztkörnyezetben.
 
-- **Megfigyelhetőség** – Betekintést nyerhet abba, hogy a szolgáltatások hogyan kapcsolódnak egymás között a forgalomhoz. Metrikák, naplók és nyomkövetések a fürt összes forgalmat, és a bejövő/kimenő forgalom. Elosztott nyomkövetési képességeket adhat az alkalmazásokhoz.
+- **Megfigyelhetőség** – betekintést nyerhet abba, hogy a szolgáltatások hogyan csatlakoznak a közöttük zajló forgalomhoz. A fürtben lévő összes forgalom metrikáinak, naplóinak és nyomkövetésének beszerzése, valamint a bejövő és kimenő forgalom. Elosztott nyomkövetési képességek hozzáadása az alkalmazásokhoz.
 
 ## <a name="architecture"></a>Architektúra
 
-A szolgáltatásháló általában egy vezérlősíkból és az adatsíkból áll.
+A szolgáltatás hálója általában egy vezérlő síkja és az adatsíkon áll.
 
-A **vezérlősík** számos olyan összetevővel rendelkezik, amelyek támogatják a szolgáltatásháló kezelését. Ez általában tartalmaz egy felügyeleti felületet, amely lehet felhasználói felület vagy API. Általában lesznek olyan összetevők is, amelyek kezelik a szabályt és a házirend-definíciókat, amelyek meghatározzák, hogy a szolgáltatáshálónak hogyan kell végrehajtania bizonyos képességeket. Vannak olyan összetevők is, amelyek kezelik a biztonság szempontjait, például az erős identitást és az mTLS tanúsítványait. A szolgáltatás-menekáltalában egy metrikák vagy megfigyelhetőségi összetevő, amely összegyűjti és összesíti a metrikák és a telemetriai adatokat a számítási feladatokból.
+A **vezérlő síkja** számos olyan összetevőt tartalmaz, amelyek támogatják a szolgáltatás hálójának kezelését. Ez általában olyan felügyeleti felületet tartalmaz, amely felhasználói felület vagy API lehet. Emellett jellemzően olyan összetevőket is tartalmaznak, amelyek a szabály-és szabályzat-definíciókat kezelik, amelyek meghatározzák, hogy a szolgáltatás hálójának hogyan kell megvalósítani bizonyos képességeket. Vannak olyan összetevők is, amelyek a biztonság, például az erős identitás és a mTLS-tanúsítványok aspektusait kezelik. A szolgáltatás-rácsvonalak általában metrikákkal vagy megfigyelhető összetevővel is rendelkeznek, amely a számítási feladatokból származó mérőszámokat és telemetria gyűjti és összesíti.
 
-Az **adatsík** általában egy proxyból áll, amely et transzparens módon injektál a számítási feladatokoldalként. Ez a proxy úgy van beállítva, hogy a számítási feladatokat tartalmazó podba irányuló és kívüli összes hálózati forgalmat szabályozza. Ez lehetővé teszi, hogy a proxy konfigurálva legyen az mTLS-en keresztüli forgalom biztonságossá tétele, dinamikus útvonalforgalom, szabályzatok alkalmazása a forgalomra, valamint a metrikák és a nyomkövetési információk gyűjtésére. 
+Az **adatsík** jellemzően olyan proxyból áll, amely transzparens módon van befecskendezve oldalkocsiként a munkaterhelések számára. Ez a proxy úgy van konfigurálva, hogy a munkaterhelést tartalmazó Pod összes hálózati forgalmát vezérelje. Ez lehetővé teszi, hogy a proxy a mTLS-on keresztül biztonságossá tegye a forgalmat, dinamikusan irányítsa a forgalmat, alkalmazza a házirendeket a forgalomra, valamint a mérőszámok és a nyomkövetési információk gyűjtésére. 
 
-![Tipikus szolgáltatásháló architektúra](media/servicemesh/typical-architecture.png)
+![Jellemző a Service Mesh architektúrája](media/servicemesh/typical-architecture.png)
 
 ## <a name="capabilities"></a>Funkciók
 
-A szolgáltatás egyes mintaegy természetes illeszkedést, és a hangsúly az adott forgatókönyvek támogatása, de általában azt találjuk, hogy a legtöbb fogja megvalósítani számos, ha nem az összes, a következő képességek.
+Az egyes szolgáltatásokhoz tartozó rácsvonalak természetes illeszkedéssel rendelkeznek, és a konkrét forgatókönyvek támogatására összpontosítanak, de általában úgy találja, hogy a legtöbb esetben a következő lehetőségek közül több is megvalósítható.
 
-### <a name="traffic-management"></a>Forgalomirányítás 
+### <a name="traffic-management"></a>Traffic Management 
 
-- **Protokoll** – 7.
+- **Protokoll** – 7. réteg (http, grpc)
 - **Dinamikus útválasztás** – feltételes, súlyozás, tükrözés
-- **Rugalmasság** – időhosszabbítások, újrapróbálkozások, megszakítók
-- **Házirend** – hozzáférés-ellenőrzés, árfolyamkorlátok, kvóták
-- **Tesztelés** - hibabefecskendezés
+- **Rugalmasság** – időtúllépések, újrapróbálkozások, áramkör-megszakítók
+- **Házirend** – hozzáférés-vezérlés, díjszabási korlátok, kvóták
+- **Tesztelés** – hiba-injektálás
 
 ### <a name="security"></a>Biztonság
 
-- **Titkosítás** – mTLS, tanúsítványkezelés, külső hitelesítésszolgáltató
+- **Titkosítás** – mTLS, tanúsítványkezelő, külső hitelesítésszolgáltató
 - **Erős identitás** – SPIFFE vagy hasonló
-- **Hitelesítés** – hitelesítés, engedélyezés
+- **Hitelesítés – hitelesítés** , engedélyezés
 
 ### <a name="observability"></a>Megfigyelhetőség
 
-- **Mérőszámok** – arany mérőszámok, prométheusz, grafana
-- **Nyomkövetés** – nyomkövetések a munkaterhelések között
-- **Forgalom** – fürt, be- és kijutás
+- **Metrikák** – arany metrikák, Prometheus, grafana
+- **Nyomkövetés** – a számítási feladatok közötti nyomkövetés
+- **Forgalom** – fürt, bejövő/kimenő forgalom
 
 ### <a name="mesh"></a>Teljes
 
-- **Támogatott számítástechnika** - Kubernetes, virtuális gépek
-- **Többfürtös** - átjárók, összevonás
+- **Támogatott számítási** Kubernetes, virtuális gépek
+- **Több fürtből** álló átjárók, összevonás
 
-## <a name="selection-criteria"></a>Kiválasztási kritériumok
+## <a name="selection-criteria"></a>Kiválasztási feltételek
 
-A szolgáltatásháló kiválasztása előtt győződjön meg arról, hogy tisztában van a követelményekkel és a szolgáltatásháló telepítésének okaival. Próbálja meg feltenni a következő kérdéseket.
+A szolgáltatás hálójának kiválasztása előtt győződjön meg róla, hogy tisztában van a követelményekkel és a Service Mesh telepítésének okaival. Próbálja ki az alábbi kérdéseket.
 
-- **A ingress vezérlő elegendő az igényeimnek?** - Néha rendelkezik egy képesség, mint a/ b tesztelés vagy forgalom felosztása a be- és be- és be- és be- és be- és betolatás elegendő a szükséges forgatókönyv támogatásához. Ne adjon komplexitást a környezethez, ha nincs jó oldala.
+- **Elegendő-e a beáramlási vezérlő a saját igényeihez?** – Időnként olyan képességgel rendelkezik, mint a/b tesztelés vagy a bejövő forgalom elosztása, elegendő a szükséges forgatókönyv támogatásához. Ne vegyen fel összetettséget a környezetbe, és ne legyenek felfelé.
 
-- **A számítási feladatok és a környezet eltűrheti a további általános költségeket?** - A szolgáltatásháló támogatásához szükséges összes további összetevő további erőforrásokat igényel, például a processzort és a memóriát. Emellett az összes proxy és a hozzájuk tartozó házirend-ellenőrzések késést adnak a forgalomhoz. Ha olyan számítási feladatok vannak, amelyek nagyon érzékenyek a késésre, vagy nem tudják biztosítani a további erőforrásokat a szolgáltatásháló-összetevők lefedéséhez, akkor fontolja meg újra.
+- **El tudják-e viselni a számítási feladatokat és a környezetet a további költségekkel kapcsolatban?** – A Service Mesh támogatásához szükséges további összetevőknek további erőforrásokra, például CPU-ra és memóriára van szükségük. Emellett az összes proxy és a hozzájuk kapcsolódó házirend ellenőrzi a forgalom késését. Ha olyan számítási feladatokkal rendelkezik, amelyek nagyon érzékenyek a késésre, vagy nem tudja biztosítani a további erőforrásokat a szolgáltatás hálójának összetevőinek lefedéséhez, majd gondolja át újra.
 
-- **Feleslegesen növeli-e a további komplexitást?** - Ha a szolgáltatásháló telepítésének oka az, hogy olyan képességet szerezzen, amely nem feltétlenül kritikus az üzleti vagy üzemeltetési csapatok számára, akkor fontolja meg, hogy a telepítés, a karbantartás és a konfiguráció további összetettsége megéri-e.
+- **Szükségtelen a további bonyolultság?** – Ha a szolgáltatás hálójának telepítésének oka az, hogy olyan képességet szerezzen, amely nem feltétlenül kritikus fontosságú az üzleti vagy az operatív csapat számára, akkor vegye figyelembe, hogy a telepítés, a karbantartás és a konfiguráció további összetettsége is megéri-e.
 
-- **Lehet-e ezt fokozatosan alkalmazni?** - Néhány szolgáltatás sikamlós, hogy a sok képesség lehet elfogadni egy növekményes megközelítés. Telepítse csak azokat az összetevőket, amelyek a siker biztosításához szükséges. Ha már magabiztosabb, és további képességekre van szükség, majd fedezze fel azokat. Ellenállni a késztetésnek, hogy telepíteni *mindent* a kezdetektől fogva.
+- **Elfogadható a növekményes megközelítés?** – A számos képességet biztosító szolgáltatási rácsvonalak több növekményes megközelítésben is megadhatók. Csak azokat az összetevőket telepítse, amelyek szükségesek a sikeres sikeresség biztosításához. Ha jobban bízik, és további funkciókra van szükség, akkor vizsgálja meg ezeket. A kezdeti lépések elvégzésével a késztetésnek kell elállnia. *everything*
 
-Ha alapos megfontolás után úgy dönt, hogy szüksége van egy szolgáltatáshálóra a szükséges képességek biztosításához, akkor a következő döntés az, hogy *melyik szolgáltatásháló?*
+Ha alapos megfontolás után úgy dönt, hogy szükség van egy szolgáltatási hálóra a szükséges képességek biztosításához, akkor a következő döntés a *Service Mesh?*
 
-Vegye figyelembe a következő területeket, és melyek azok leginkább igazodnak az Ön igényeinek. Ez elvezeti Önt a környezetének és a munkaterhelésnek leginkább megfelelő hez. A [Következő lépések](#next-steps) szakasz további részletes információkat nyújt az adott szolgáltatási kapcsolatokról és arról, hogy hogyan vannak leképezve ezekre a területekre.
+Vegye figyelembe a következő területeket, és ezek közül a leginkább igazodik a követelményekhez. Ez végigvezeti Önt a környezet és a számítási feladatok legmegfelelőbb méretének. A [következő lépések](#next-steps) szakaszban további információkat talál az egyes szolgáltatásbeli hálókkal kapcsolatban, valamint arról, hogy azok hogyan képezik le ezeket a területeket.
 
-- **Műszaki** - forgalomirányítás, politika, biztonság, megfigyelhetőség
+- **Technikai** forgalmi felügyelet, házirend, biztonság, Megfigyelhetőség
 
-- **Üzleti** - kereskedelmi támogatás, alapítvány (CNCF), OSS licenc, irányítás
+- **Üzleti** – kereskedelmi támogatás, Alapítvány (CNCF), OSS-licenc, irányítás
 
-- **Működés** – telepítés/frissítések, erőforrás-követelmények, teljesítménykövetelmények, integrációk (metrikák, telemetria, irányítópultok, eszközök, SMI), vegyes számítási feladatok (Linux és Windows csomópontkészletek), számítástechnika (Kubernetes, virtuális gépek), többfürtös
+- **Működés** – telepítés/verziófrissítés, erőforrás-követelmények, teljesítménnyel kapcsolatos követelmények, integrációk (mérőszámok, telemetria, irányítópultok, eszközök, SMI), vegyes munkaterhelések (Linux és Windows Node-készletek), számítás (Kubernetes, virtuális gépek), több fürt
 
-- **Biztonság** - hitelesítés, identitás, tanúsítványkezelés és elforgatás, dugasztalható külső hitelesítésszolgáltató
+- **Biztonság** – hitelesítés, identitás, tanúsítványkezelő és rotáció, csatlakoztatott külső hitelesítésszolgáltató
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi dokumentáció további információt nyújt az Azure Kubernetes-szolgáltatásban (AKS) kipróbálható szolgáltatáshálókról:
+Az alábbi dokumentáció további információkat tartalmaz az Azure Kubernetes Service (ak) szolgáltatásban kipróbálható szolgáltatási hálókkal kapcsolatban:
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet Istio ...][istio-about]
+> [További információ a Istio...][istio-about]
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet a Linkerd ...][linkerd-about]
+> [További információ a Linkerd...][linkerd-about]
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet a konzul ...][consul-about]
+> [További információ a Konzulról...][consul-about]
 
-A Service Mesh Interface (SMI) egy szabványos felületet is felfedezhet a Kubernetes szolgáltatáshálóihoz:
+Érdemes megvizsgálni a Service Mesh-felületet (SMI) is, amely a Service Mesh-hálók szabványos felülete a Kubernetes:
 
-- [Szolgáltatásháló illesztőfelülete (SMI)][smi]
+- [Service Mesh-felület (SMI)][smi]
 
 
 <!-- LINKS - external -->

@@ -1,63 +1,63 @@
 ---
 title: Alkalmazás visszaállítása pillanatképből
-description: További információ arról, hogyan állíthatja vissza az alkalmazást pillanatképből. Az automatikus árnyékmásolatokkal a prémium szintű váratlan adatvesztés helyreállítása.
+description: Ismerje meg, hogyan állíthatja vissza az alkalmazást egy pillanatképből. A prémium szintű adatvesztés miatt nem várt adatvesztéssel állítható vissza az automatikus árnyékmásolatok.
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255151"
 ---
-# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Alkalmazás visszaállítása az Azure-ban pillanatképből
-Ez a cikk bemutatja, hogyan állíthat vissza egy alkalmazást az [Azure App Service-ben](../app-service/overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja az alkalmazást egy korábbi állapotba az alkalmazás egyik pillanatképe alapján. Nem kell engedélyeznie a pillanatképek biztonsági mentését, a platform automatikusan elmenti az összes alkalmazás pillanatképét az adatok helyreállításához.
+# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure-beli alkalmazás visszaállítása pillanatképből
+Ebből a cikkből megtudhatja, hogyan állíthat vissza egy alkalmazást [Azure app Service](../app-service/overview.md) egy pillanatképből. Az alkalmazás egy korábbi állapotba állítható vissza az alkalmazás pillanatképei alapján. Nem kell engedélyeznie a pillanatképek biztonsági mentését, a platform automatikusan elmenti az összes alkalmazás pillanatképét az adatok helyreállításához.
 
-A pillanatképek növekményes árnyékmásolatok, és számos előnnyel járnak a rendszeres [biztonsági másolatokkal](manage-backup.md)szemben:
-- A fájlzárolások miatt nincs fájlmásolási hiba.
-- Nincs tárhelyméret korlátozása.
+A pillanatképek növekményes árnyékmásolatok, és számos előnyt kínálnak a rendszeres [biztonsági mentésekhez](manage-backup.md):
+- A fájlok zárolása miatt nem történt fájlmásolási hiba.
+- Nincs tárolási méretre vonatkozó korlátozás.
 - Nincs szükség konfigurációra.
 
-A pillanatképek visszaállítása **a prémium szintű** vagy magasabb szinten futó alkalmazások számára érhető el. Az alkalmazás bővítéséről az [Alkalmazás felskálázása az Azure-ban](manage-scale-up.md)című témakörben talál további információt.
+A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű alkalmazások számára érhető el. Az alkalmazás skálázásával kapcsolatos további információkért lásd: alkalmazás vertikális felskálázása [Az Azure-ban](manage-scale-up.md).
 
 ## <a name="limitations"></a>Korlátozások
 
-- A funkció jelenleg előzetes verzióban érhető el.
-- Csak ugyanabba az alkalmazásba vagy az adott alkalmazáshoz tartozó tárolóhelyre állíthatja vissza.
-- Az App Service leállítja a célalkalmazást vagy a céltárolóhelyet a visszaállítás közben.
-- Az App Service három hónapnyi pillanatképet tart meg platformadat-helyreállítási célokra.
-- Csak az elmúlt 30 nap pillanatképeit állíthatja vissza.
-- Az App Service-környezetben futó App Services nem támogatja a pillanatképeket.
+- A szolgáltatás jelenleg előzetes verzióban érhető el.
+- Csak ugyanarra az alkalmazásra vagy az alkalmazáshoz tartozó tárolóhelyre lehet visszaállítani.
+- App Service leállítja a cél alkalmazást vagy a cél tárolóhelyet a visszaállítás során.
+- A App Service a platform adathelyreállításának érdekében három hónapig is megőrzi a pillanatképeket.
+- A pillanatképeket csak az elmúlt 30 napra állíthatja vissza.
+- A App Service Environmenton futó App Services nem támogatja a pillanatképeket.
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Alkalmazás visszaállítása pillanatképből
 
-1. Az [Azure Portalon](https://portal.azure.com)az alkalmazás **Beállítások** lapján kattintson a **Biztonsági mentések** elemre a **Biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **Visszaállítás gombra** a **Snapshot(Preview)** szakaszban.
+1. Az alkalmazás **Beállítások** lapján a [Azure Portalban](https://portal.azure.com)kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás** elemre a **Pillanatkép (előzetes verzió)** szakaszban.
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. A **Visszaállítás** lapon jelölje ki a visszaállítani kívánt pillanatképet.
+2. A **visszaállítás** lapon válassza ki a visszaállítani kívánt pillanatképet.
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. Adja meg az alkalmazás-visszaállítás célját a **Visszaállítás célban.**
+3. Adja meg az alkalmazás visszaállításának célhelyét a **visszaállítási célhelyen**.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Ha a Felülírás lehetőséget **választja,** az alkalmazás jelenlegi fájlrendszerében lévő összes adat törlődik és felülíródik. Mielőtt az **OK**gombra kattintana, győződjön meg arról, hogy ezt szeretné tenni.
+   > Ha a **felülírás**lehetőséget választja, a rendszer az alkalmazás aktuális fájlrendszerében lévő összes meglévő adat törlődik és felülíródik. Mielőtt rákattintott az **OK**gombra, győződjön meg arról, hogy az, amit kíván tenni.
    > 
    > 
       
    > [!Note]
-   > A jelenlegi technikai korlátok miatt csak az azonos méretezési egységben lévő alkalmazásokat állíthatja vissza. Ez a korlátozás egy későbbi kiadásban megszűnik.
+   > A jelenlegi technikai korlátozások miatt csak ugyanabban a skálázási egységben lévő alkalmazásokra lehet visszaállítani. Ez a korlátozás egy későbbi kiadásban lesz eltávolítva.
    > 
    > 
    
-    A **Meglévő alkalmazás** kiválasztásával visszaállíthatja a tárolóhelyet. A beállítás használata előtt már létre kellett volna hoznia egy tárolóhelyet az alkalmazásban.
+    A **meglévő alkalmazást** kiválaszthatja egy tárolóhelyre való visszaállításhoz. Ennek a lehetőségnek a használata előtt már létrehozott egy tárolóhelyet az alkalmazásban.
 
 4. Dönthet úgy, hogy visszaállítja a hely konfigurációját.
    

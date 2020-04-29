@@ -16,10 +16,10 @@ ms.date: 02/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38cad1262d9da836b23f9042734e13aa533cd69e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78207560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trunarrative"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a TruNarrative
