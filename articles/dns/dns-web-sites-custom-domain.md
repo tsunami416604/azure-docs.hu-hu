@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939098"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
 
-Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és beállíthatja,\.hogy a felhasználók a www contoso.com vagy contoso.com teljesen minősített tartománynévként (FQDN) használatával érhessék el azt.
+Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és a felhasználók a www\.contoso.com vagy a contoso.com használatával érhetik el a teljes tartománynevet (FQDN).
 
 > [!NOTE]
 > A jelen oktatóanyag példáiban a contoso.com szerepel. A contoso.com helyére írja be a saját tartománynevét.
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az egyéni gazdagépnevek tesztelése
 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Az Azure DNS-ben üzemeltethető tartománynévvel kell rendelkeznie. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
+* Meg kell adnia egy tartománynevet, hogy tesztelni tudja, hogy Azure DNS üzemeltethető-e. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 * [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
 
 * Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Az App Services ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
 > [!NOTE]
-> Ha ellenőrizni szeretné a tartománynevet, de nem szeretné az éles forgalmat a webalkalmazásba irányítani, csak meg kell adnia az ellenőrzési lépés TXT rekordját.  Az ellenőrzéshez nincs szükség A vagy CNAME rekordra a TXT rekord mellett.
+> Ha szeretné ellenőrizni a tartománynevet, de a webalkalmazáshoz nem irányítja a termelési forgalmat, csak az ellenőrzési lépéshez tartozó TXT-rekordot kell megadnia.  Az ellenőrzéshez nem szükséges egy vagy CNAME rekord a TXT-rekordon kívül.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Nyissa meg valamilyen böngészőben a `http://www.<your domainname>` és a `http://<you domain name>` webhelyet.
 
 > [!NOTE]
-> Győződjön meg `http://` róla, hogy tartalmazza az előtagot, különben a böngésző megkísérli megjósolni az URL-t az Ön számára!
+> Győződjön meg róla, hogy `http://` tartalmazza az előtagot, ellenkező esetben előfordulhat, hogy a böngésző megpróbál előre megjósolni egy URL-címet.
 
-Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Példa:
+Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Például:
 
 ![Contoso App Service](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

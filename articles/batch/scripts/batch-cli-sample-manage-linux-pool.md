@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script Példa – Linux-készlet kötegben
-description: Ez a parancsfájl bemutatja az Azure CLI-ben elérhető néhány parancsot a Linux számítási csomópontok azure batch-ben való létrehozásához és kezeléséhez.
+title: Azure CLI parancsfájl-példa – Linux-készlet a Batch-ben
+description: Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja be, hogy a Linux számítási csomópontok készletét hozza létre és felügyelje Azure Batchban.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 7f896f7f6493cff8c25d4ccfd5a15f5edb11258f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77024483"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Linux-készlet létrehozása és kezelése az Azure Batch szolgáltatásban
 
-Ez a parancsfájl bemutatja az Azure CLI-ben elérhető néhány parancsot a Linux számítási csomópontok azure batch-ben való létrehozásához és kezeléséhez.
+Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja be, hogy a Linux számítási csomópontok készletét hozza létre és felügyelje Azure Batchban.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

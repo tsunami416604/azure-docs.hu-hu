@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Linux virtuálisgép-konfiguráció kezelése az Azure-ban
-description: Ebben az oktatóanyagban megtudhatja, hogyan azonosíthatja a módosításokat és kezelheti a csomagfrissítéseket egy Linux virtuális gépen
+title: Oktatóanyag – Linux rendszerű virtuális gépek konfigurációjának kezelése az Azure-ban
+description: Ebből az oktatóanyagból megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit Linux rendszerű virtuális gépen
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,15 +16,15 @@ ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239293"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Változások figyelése és linuxos virtuális gép frissítése az Azure-ban
+# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: a változások monitorozása és a Linux rendszerű virtuális gépek frissítése az Azure-ban
 
-Az Azure [Change Tracking](../../automation/change-tracking.md) lehetővé teszi a módosítások egyszerű azonosítását, és az [Update Management](../../automation/automation-update-management.md) lehetővé teszi az Azure Linux-alapú virtuális gépek operációsrendszer-frissítéseinek kezelését.
+Az Azure [change Tracking](../../automation/change-tracking.md) segítségével könnyedén azonosíthatja a módosításokat, és [Update Management](../../automation/automation-update-management.md) lehetővé teszi az operációs rendszer frissítéseinek kezelését az Azure Linux rendszerű virtuális gépekhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -81,9 +81,9 @@ A [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület a
 A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 A frissítést igénylő virtuális gépeken további műveletek elvégzése érdekében az Azure Automation runbookok futtatását is lehetővé teszi a virtuális gépeken (pl. letöltés és frissítések alkalmazása).
 
-Az ellenőrzési folyamat azt is ellenőrzi, hogy a virtuális gép ki van-e építve a Log Analytics-ügynök és az Automation hibrid runbook-feldolgozó. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
+Az érvényesítési folyamat azt is ellenőrzi, hogy a virtuális gép a Log Analytics ügynökkel és az Automation hibrid runbook-feldolgozóval van-e kiépítve. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
 
-Válassza a Log Analytics munkaterület és automatizálási fiók, és válassza **az Engedélyezés** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+Válassza ki az Log Analytics munkaterület és Automation-fiókot, és válassza az **Engedélyezés** lehetőséget a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
@@ -91,11 +91,11 @@ Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, 
 * [Automation-fiók](../../automation/automation-offering-get-started.md)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
-Megnyílik az **Update Management** képernyő. Konfigurálja a hely, a Log Analytics munkaterület és az Automation-fiók használatát, és válassza **az Engedélyezés**lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
+Megnyílik az **Update Management** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
 
 ![Az Update Management megoldás engedélyezése](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezése után a virtuális gép hiányzó frissítései az Azure Monitor-naplókba irányuló információk. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
+A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos információk Azure Monitor naplókra áramlanak. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -109,22 +109,22 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez kattintson a **Frissítéskezelés** képernyő felső részén található **Frissítések központi telepítésének ütemezése** elemre. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
 
-Új központi telepítés létrehozásához válassza **a Frissítés telepítésének ütemezése**lehetőséget. Megnyílik **az Új frissítés központi telepítése** lap. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás gombra:**
+Új frissítés központi telepítésének létrehozásához válassza a **frissítés központi telepítésének ütemezett**beállítást. Megnyílik az **új frissítés központi telepítése** oldal. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás**gombra:
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Név |A frissítéstelepítést beazonosító egyedi név. |
+| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| Frissítandó csoportok |Azure-gépek esetén hozzon létre egy lekérdezést előfizetés, erőforráscsoportok, helyek és címkék kombinációjára, hogy az Azure-beli virtuális gépek dinamikus csoportját hozhatja létre a központi telepítésben. </br></br>Nem Azure-alapú gépek esetén válasszon ki egy meglévő mentett keresést a nem Azure-alapú gépek egy csoportjának kiválasztásához, amelyet a központi telepítésbe szeretne felvenni. </br></br>További információ: [Dinamikus csoportok](../../automation/automation-update-management-groups.md)|
-| Frissíthető gépek |Jelöljön ki egy Mentett keresést, importált csoportot, vagy válassza a Gép elemet a legördülő menüből, és válassza ki az egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok létrehozásának különböző módszereiről az Azure Monitor naplóiban a [Számítógépcsoportok az Azure Monitor naplóiban című témakörben olvashat.](../../azure-monitor/platform/computer-groups.md) |
+| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management-groups.md)|
+| Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
-|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** lap. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A felvétel kezelésének módjáról a [Frissítés telepítésének ütemezése című témakörben](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) talál további információt. |
-|Ütemezési beállítások|Válassza ki az indítási időt, és válassza az Egyszer vagy az ismétlődő lehetőséget az ismétlődéshez|
-| Előszkriptek + Utószkriptek|Válassza ki a telepítés előtt és után futtatandó parancsfájlokat|
-| Karbantartási ablak |A frissítésekhez beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, és nem lehet több, mint 6 óra |
-| Újraindítás vezérlése| Meghatározza az újraindítások kezelésének módját. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
+|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
+| Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
+| Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
+| Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
-A központi telepítések frissítése programozott módon is létrehozható. Ha tudni szeretné, hogyan hozhat létre frissítési központi telepítést a REST API-val, olvassa el a [Szoftverfrissítési konfigurációk – Létrehozás című témakört.](/rest/api/automation/softwareupdateconfigurations/create) Van is egy minta runbook, amely heti frissítési központi telepítés létrehozásához használható. A runbookról további információ: [Heti frissítési központi telepítés létrehozása egy erőforráscsoport egy vagy több virtuális gépéhez.](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)
+A frissítési központi telepítések programozott módon is létrehozhatók. Ha meg szeretné tudni, hogyan hozhat létre frissítési központi telepítést a REST API, tekintse meg a [szoftverfrissítési konfigurációk – létrehozás](/rest/api/automation/softwareupdateconfigurations/create)című témakört. Létezik egy minta runbook is, amely a heti frissítés központi telepítésének létrehozására használható. További információ erről a runbook: [heti frissítési telepítés létrehozása egy vagy több virtuális géphez egy erőforráscsoport esetében](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 Ha befejezte az ütemezés konfigurálását, kattintson a **Létrehozás** gombra. Ezután visszalép az állapot-irányítópultra.
 Ekkor az **Ütemezett** táblázatban már látható az Ön által létrehozott telepítésütemezés.
@@ -142,8 +142,8 @@ A **Frissítés eredményei** csempe összesíti a frissítések teljes számát
 A jobb oldali táblázat az egyes frissítések részletes áttekintését és a telepítés eredményét tartalmazza, amely a következők egyike lehet:
 
 * **Nem lett megkísérelve** – a frissítés nem lett telepítve, mert a megadott karbantartási időszak alapján nem lett volna rá elég idő.
-* **Sikeres -** a frissítés sikerült
-* **Nem sikerült** - a frissítés nem sikerült
+* **Sikeres** – a frissítés sikeres volt.
+* **Sikertelen** – a frissítés nem sikerült
 
 A telepítés által létrehozott összes naplóbejegyzés megtekintéséhez válassza **Az összes napló** elemet.
 
@@ -153,7 +153,7 @@ A telepítés közben felmerülő hibák részletes információinak megtekinté
 
 ## <a name="monitor-changes-and-inventory"></a>A módosítások és a leltár monitorozása
 
-A számítógépen lévő szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows beállításkulcsok leltárait gyűjtheti és tekintheti meg. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
+A számítógépeken összegyűjtheti és megtekintheti a szoftverek, a fájlok, a Linux-démonok, a Windows-szolgáltatások és a Windows-beállításkulcsok leltárát. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
 
 ### <a name="enable-change-and-inventory-management"></a>A változás- és leltárkezelés engedélyezése
 
@@ -163,7 +163,7 @@ A változás- és leltárkezelés engedélyezése a virtuális géphez:
 2. Válasszon ki egy virtuális gépet a listából.
 3. A virtuális gép képernyőjének **Műveletek** szakaszában válassza az **Inventory** vagy a **Change Tracking** elemet. Megnyílik **A Change Tracking and Inventory engedélyezése** képernyő.
 
-Konfigurálja a hely, a Log Analytics munkaterület és az Automation-fiók használatát, és válassza **az Engedélyezés**lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
+Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
 
 ![A változások és a leltár követésének engedélyezése](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -175,11 +175,11 @@ A virtuális gépen kattintson a **Change Tracking** elemre a **MŰVELETEK** ter
 
 A Change Tracking megoldásról további információt a [Virtuális gép módosításainak hibaelhárítása](../../automation/automation-tutorial-troubleshoot-changes.md) című cikkben talál.
 
-### <a name="view-inventory"></a>Leltár megtekintése
+### <a name="view-inventory"></a>Leltár megjelenítése
 
 A virtuális gépen kattintson az **Inventory** elemre a **MŰVELETEK** területen. A **Szoftver** lapon egy táblázat formátumú lista jeleníti meg a felderített szoftvereket. Az egyes szoftverrekordok részletes információi megtekinthetők a táblázatban. Ilyen információ például a szoftver neve, verziója, közzétevője és a legutóbbi frissítés ideje.
 
-![Leltár megtekintése](./media/tutorial-monitoring/inventory-view-results.png)
+![Leltár megjelenítése](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>Tevékenységnaplók és változások monitorozása
 
@@ -195,14 +195,14 @@ A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevéken
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban konfigurálta és áttekintette a virtuális gép változáskövetésés frissítés-kezelése. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Erőforráscsoport és virtuális gép létrehozása
 > * Linux-frissítések kezelése
 > * A módosítások és a leltár monitorozása
 
-A következő oktatóanyagra a virtuális gép figyelésének megismeréséhez jusson tovább.
+Folytassa a következő oktatóanyaggal, amely a virtuális gép monitorozását ismerteti.
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek figyelése](tutorial-monitor.md)

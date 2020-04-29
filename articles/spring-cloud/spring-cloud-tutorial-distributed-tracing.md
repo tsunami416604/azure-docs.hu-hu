@@ -1,45 +1,45 @@
 ---
-title: Oktatóanyag – Az elosztott nyomkövetés használata az Azure Spring Cloud szolgáltatással
-description: Ez az oktatóanyag bemutatja, hogyan használhatja a Spring Cloud elosztott nyomkövetési szolgáltatását az Azure Application Insights on keresztül
+title: Oktatóanyag – elosztott nyomkövetés használata az Azure Spring Cloud használatával
+description: Ez az oktatóanyag bemutatja, hogyan használható a Spring Cloud elosztott nyomkövetése az Azure Application Insights
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
 ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273214"
 ---
-# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud szolgáltatással
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
-Az Azure Spring Cloud elosztott nyomkövetési eszközeivel egyszerűen debugolhatja és figyelheti az összetett problémákat. Az Azure Spring Cloud integrálja a [spring cloud sleuth-ot](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insights szolgáltatással.](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) Ez az integráció hatékony elosztott nyomkövetési képességet biztosít az Azure Portalról.
+Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
 
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Engedélyezze az elosztott nyomkövetést az Azure Portalon.
-> * Adja hozzá a Spring Cloud Sleuth-ot az alkalmazáshoz.
-> * Tekintse meg a mikroszolgáltatási alkalmazások függőségi leképezéseit.
-> * Keresés nyomkövetési adatok különböző szűrőkkel.
+> * Az elosztott nyomkövetés engedélyezése a Azure Portalban.
+> * A Spring Cloud Sleuth hozzáadása az alkalmazáshoz.
+> * Tekintse meg a szolgáltatói alkalmazások függőségi térképeit.
+> * Keresési nyomkövetési adatkeresés különböző szűrőkkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag végrehajtásához olyan Azure Spring Cloud-szolgáltatásra van szüksége, amely már ki van építve és fut. Az Azure Spring Cloud-szolgáltatás kiépítéséhez és futtatásához az Azure Spring Cloud szolgáltatás kiépítéséhez és futtatásához az [Azure CLI-n keresztül](spring-cloud-quickstart-launch-app-cli.md) iüzembe helyezés rövid útmutatót végezhet el.
+Az oktatóanyag elvégzéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szüksége, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart-launch-app-cli.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
     
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-1. Adja hozzá a következő sort az application.properties fájlhoz:
+1. Adja hozzá a következő sort az Application. properties fájlhoz:
 
    ```xml
    spring.zipkin.sender.type = web
    ```
 
-   A módosítás után a Zipkin feladója elküldheti az internetre.
+   A módosítás után a Zipkin küldő küldhet a weben.
 
-1. Hagyja ki ezt a lépést, ha az [Azure Spring Cloud-alkalmazás elkészítéséhez vezető útmutatónkat](spring-cloud-tutorial-prepare-app-deployment.md)követte. Ellenkező esetben lépjen a helyi fejlesztői környezetbe, és szerkesztheti a pom.xml fájlt, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
+1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze a Pom. xml fájlt, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
 
     ```xml
     <dependencyManagement>
@@ -61,48 +61,48 @@ Az oktatóanyag végrehajtásához olyan Azure Spring Cloud-szolgáltatásra van
     </dependencies>
     ```
 
-1. Építsen és telepítse újra az Azure Spring Cloud szolgáltatáshoz, hogy tükrözze ezeket a változásokat.
+1. Hozza létre és telepítse újra az Azure Spring Cloud Service-t, hogy tükrözze ezeket a módosításokat.
 
 ## <a name="modify-the-sample-rate"></a>A mintavételi sebesség módosítása
 
-Módosíthatja a telemetriai adatok gyűjtésének sebességét a mintasebesség módosításával. Ha például fele olyan gyakran szeretne mintát venni, nyissa meg az application.properties fájlt, és módosítsa a következő sort:
+A mintavételi sebesség módosításával módosíthatja a telemetria gyűjtésének gyakoriságát. Ha például a felet gyakran szeretné felvenni, nyissa meg az Application. properties fájlt, és módosítsa a következő sort:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-Ha már készített és telepített egy alkalmazást, módosíthatja a mintavételi sebességet. Ehhez adja hozzá az előző sort környezeti változóként az Azure CLI-ben vagy az Azure Portalon.
+Ha már létrehozott és telepített egy alkalmazást, módosíthatja a mintavételezési arányt. Ezt úgy teheti meg, ha hozzáadja az előző sort környezeti változóként az Azure CLI-ben vagy a Azure Portal.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
-1. Nyissa meg az Azure Spring Cloud szolgáltatáslapját az Azure Portalon.
-1. A **Figyelés** lapon válassza az **Elosztott nyomkövetés lehetőséget.**
-1. Új beállítás szerkesztéséhez vagy hozzáadásához válassza a **Szerkesztés lehetőséget.**
-1. Hozzon létre egy új Application Insights-lekérdezést, vagy válasszon ki egy meglévőt.
-1. Válassza ki, hogy melyik naplózási kategóriát szeretné figyelni, és adja meg a megőrzési időt napokban.
-1. Az új kontúrozás alkalmazásához válassza az **Alkalmaz** lehetőséget.
+1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára.
+1. A **figyelés** lapon válassza az **elosztott nyomkövetés**lehetőséget.
+1. Válassza a **beállítás szerkesztése** lehetőséget egy új beállítás szerkesztéséhez vagy hozzáadásához.
+1. Hozzon létre egy új Application Insights lekérdezést, vagy válasszon ki egy meglévőt.
+1. Válassza ki a figyelni kívánt naplózási kategóriát, és adja meg a megőrzési időt napokban.
+1. Az új nyomkövetés alkalmazásához kattintson az **alkalmaz** gombra.
 
-## <a name="view-the-application-map"></a>Az alkalmazástérkép megtekintése
+## <a name="view-the-application-map"></a>Az alkalmazás-hozzárendelés megtekintése
 
-Térjen vissza az **Elosztott nyomkövetési** lapra, és válassza **az Alkalmazástérkép megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazástérkép használatáról az [Alkalmazástérkép: Triage elosztott alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/app-map)című témakörben olvashat.
+Térjen vissza az **elosztott nyomkövetés** lapra, és válassza az **alkalmazás-hozzárendelés megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg az [Application Map: elosztott alkalmazások osztályozása](https://docs.microsoft.com/azure/azure-monitor/app/app-map)című témakört.
 
 ## <a name="use-search"></a>Keresés használata
 
-A keresési funkció segítségével más konkrét telemetriai elemek lekérdezése. Az **Elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. A keresési funkció használatáról a Keresés használata az [Application Insights ban című témakörben](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)talál további információt.
+Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. További információ a keresési funkció használatáról: [Keresés használata Application Insightsban](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 
-## <a name="use-application-insights"></a>Az Application Insights használata
+## <a name="use-application-insights"></a>Application Insights használata
 
-Az Application Insights az alkalmazástérkép- és keresési funkció mellett figyelési lehetőségeket is biztosít. Keresse meg az Azure Portalon az alkalmazás nevét, majd nyisson meg egy Application Insights-lapot a figyelési információk megkereséséhez. Az eszközök használatával kapcsolatos további útmutatásért tekintse meg az [Azure Monitor naplólekérdezéseit.](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)
+A Application Insights az Application Map és a Search függvény mellett biztosít figyelési képességeket. Keresse meg az alkalmazás neve Azure Portal, majd nyisson meg egy Application Insights lapot a figyelési információk megkereséséhez. Az eszközök használatáról további útmutatásért tekintse meg Azure Monitor a [naplók lekérdezéseit](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
-## <a name="disable-application-insights"></a>Alkalmazáselemzési adatok letiltása
+## <a name="disable-application-insights"></a>Application Insights letiltása
 
-1. Nyissa meg az Azure Spring Cloud szolgáltatáslapját az Azure Portalon.
-1. A **Figyelés kor**válassza **az Elosztott nyomkövetés lehetőséget.**
-1. Az Application Insights **letiltása** lehetőséget.
+1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára.
+1. A **figyelés**lapon válassza az **elosztott nyomkövetés**lehetőséget.
+1. Application Insights letiltásához válassza a **Letiltás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és értheti meg az elosztott nyomkövetést az Azure Spring Cloudban. Ha meg szeretné tudni, hogyan kötheti össze az alkalmazást egy Azure Cosmos DB-adatbázishoz, folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazás Azure Cosmos DB-adatbázishoz való kötésének megismeréséhez folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan köthető kontúrható egy Azure Cosmos DB-adatbázishoz](spring-cloud-tutorial-bind-cosmos.md)
+> [Útmutató Azure Cosmos DB adatbázishoz való kötéshez](spring-cloud-tutorial-bind-cosmos.md)

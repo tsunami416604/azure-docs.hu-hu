@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásfelügyeleti felügyeleti dauerok delegálása – Azure AD | Microsoft dokumentumok
-description: Engedélyek megadása az Azure Active Directory ban az alkalmazáshozzáférés-kezeléshez
+title: Az alkalmazás-adminisztrátorok felügyeletének engedélyezése – Azure AD | Microsoft Docs
+description: Engedélyek megadása az alkalmazás-hozzáférés kezeléséhez Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,93 +15,93 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253038"
 ---
-# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazásregisztrációs engedélyek delegálása az Azure Active Directoryban
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
-Ez a cikk ismerteti, hogyan használhatja az egyéni szerepkörök által az Azure Active Directoryban (Azure AD) megadott engedélyeket az alkalmazáskezelési igények kielégítésére. Az Azure AD-ben az alábbi módokon delegálhatja az alkalmazások létrehozásához és kezeléséhez szükséges engedélyeket:
+Ez a cikk azt ismerteti, hogyan használhatók a Azure Active Directory (Azure AD) egyéni szerepkörei által biztosított engedélyek az alkalmazás-kezelési igények kielégítéséhez. Az Azure AD-ben a következő módokon delegálhatja az alkalmazás-létrehozási és-kezelési engedélyeket:
 
-- [Annak korlátozása, hogy ki hozhat létre alkalmazásokat,](#restrict-who-can-create-applications) és ki kezelheti az általuk létrehozott alkalmazásokat. Alapértelmezés szerint az Azure AD-ben minden felhasználó regisztrálhatja az alkalmazásregisztrációkat, és kezelheti az általuk létrehozott alkalmazások minden aspektusát. Ez korlátozható úgy, hogy csak az engedélyt engedélyező személyeket engedélyezze.
-- [Egy vagy több tulajdonos hozzárendelése egy alkalmazáshoz.](#assign-application-owners) Ez egy egyszerű módja annak, hogy valaki képes kezelni az Azure AD-konfiguráció minden szempontból egy adott alkalmazáshoz.
-- [Egy beépített felügyeleti szerepkör hozzárendelése,](#assign-built-in-application-admin-roles) amely hozzáférést biztosít a konfiguráció kezeléséhez az Azure AD-ben az összes alkalmazás hoz. Ez az ajánlott módja annak, hogy informatikai szakértők számára hozzáférést biztosítson az általános alkalmazáskonfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést biztosítana az Azure AD más, az alkalmazáskonfigurációhoz nem kapcsolódó részeinek kezeléséhez.
-- [Egyéni szerepkör létrehozása](#create-and-assign-a-custom-role-preview) nagyon specifikus engedélyek definiálása és hozzárendelése valakihez, vagy egyetlen alkalmazás hatóköréhez korlátozott tulajdonosként, vagy a címtárhatókörben (az összes alkalmazás) korlátozott rendszergazdaként.
+- Korlátozza, hogy kik hozhatnak [létre alkalmazásokat](#restrict-who-can-create-applications) és kezelhetik a létrehozott alkalmazásokat. Az Azure AD-ben alapértelmezés szerint minden felhasználó regisztrálhatja az alkalmazás regisztrációját, és kezelheti az általuk létrehozott alkalmazások minden aspektusát. Ez korlátozható úgy, hogy csak a kijelölt személyek számára engedélyezze az engedélyt.
+- [Egy vagy több tulajdonos társítása egy alkalmazáshoz](#assign-application-owners). Ez egy egyszerű módja annak, hogy valaki az Azure AD-konfiguráció minden aspektusát felügyelni tudja egy adott alkalmazáshoz.
+- [Egy beépített rendszergazdai szerepkör kiosztása](#assign-built-in-application-admin-roles) , amely hozzáférést biztosít az Azure ad-ben az összes alkalmazás konfigurációjának kezeléséhez. Ez az ajánlott módszer arra, hogy az informatikai szakértők hozzáférjenek a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést kellene biztosítani az Azure AD más részeihez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
+- [Egyéni szerepkör létrehozása](#create-and-assign-a-custom-role-preview) , amely a nagyon konkrét engedélyeket definiálja, és hozzárendeli azt valakihöz, vagy egyetlen alkalmazás hatóköréhez korlátozott tulajdonosként, vagy a címtár hatókörében (az összes alkalmazás) korlátozott rendszergazdaként.
 
-Fontos, hogy fontolja meg a hozzáférés megadását a fenti módszerek egyikének használatával két okból. Először is a felügyeleti feladatok elvégzésének lehetősége csökkenti a globális rendszergazdai terhelést. Másodszor, a korlátozott engedélyek használata javítja a biztonsági pozíciót, és csökkenti a jogosulatlan hozzáférés lehetőségét. A delegálási problémákat és az általános irányelveket az [Azure Active Directory delegálási felügyelete](roles-concept-delegation.md)tárgyalja.
+Fontos figyelembe venni a hozzáférést a fenti módszerek egyikének két okból való megadásával. Először is a felügyeleti feladatok elvégzésére való jogosultságok delegálása csökkenti a globális rendszergazda terhelését. Másodszor, a korlátozott engedélyek használata javítja a biztonsági helyzeteket, és csökkenti a jogosulatlan hozzáférés lehetséges lehetőségét. A delegálással kapcsolatos problémákat és az általános irányelveket a [Azure Active Directory felügyeletének delegálása](roles-concept-delegation.md)című szakaszban tárgyaljuk.
 
-## <a name="restrict-who-can-create-applications"></a>Annak korlátozása, hogy ki hozhat létre alkalmazásokat
+## <a name="restrict-who-can-create-applications"></a>Alkalmazások létrehozására jogosult felhasználók korlátozása
 
-Alapértelmezés szerint az Azure AD-ben minden felhasználó regisztrálhatja az alkalmazásregisztrációkat, és kezelheti az általuk létrehozott alkalmazások minden aspektusát. Mindenkinek lehetősége van arra is, hogy hozzájáruljon ahhoz, hogy az alkalmazások hozzáférjenek a vállalati adatokhoz a nevükben. Dönthet úgy, hogy ezeket az engedélyeket szelektíven adja meg, ha a globális kapcsolókat "Nem"-re állítja, és hozzáadja a kiválasztott felhasználókat az Alkalmazásfejlesztői szerepkörhöz.
+Az Azure AD-ben alapértelmezés szerint minden felhasználó regisztrálhatja az alkalmazás regisztrációját, és kezelheti az általuk létrehozott alkalmazások minden aspektusát. Mindenkinek lehetősége van arra is, hogy hozzájáruljon az alkalmazásoknak a céges adatokhoz való hozzáféréshez a nevükben. Dönthet úgy, hogy szelektíven adja meg ezeket az engedélyeket úgy, hogy a globális kapcsolókat "nem" értékre állítja, és hozzáadja a kiválasztott felhasználókat az alkalmazás fejlesztői szerepköréhez.
 
-### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Alkalmazásregisztrációk létrehozásának vagy alkalmazásokhoz való hozzájárulásának letiltása
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Az alkalmazás regisztrációjának vagy az alkalmazások jóváhagyásának alapértelmezett lehetőségének letiltása
 
-1. Jelentkezzen be az Azure AD-szervezetbe egy olyan fiókkal, amely jogosult az Azure AD-szervezet globális rendszergazdai szerepkörére.
-1. Állítsa be az alábbiak egyikét vagy mindkettőt:
+1. Jelentkezzen be az Azure AD-szervezetbe egy olyan fiókkal, amely jogosult a globális rendszergazdai szerepkörre az Azure AD-szervezetben.
+1. Állítsa be a következők egyikét vagy mindkettőt:
 
-    - A [szervezet Felhasználói beállítások lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)állítsa be, hogy a **Felhasználók regisztrálhatnak alkalmazásokat,** állítsa a Nem beállítást. Ez letiltja a felhasználók alapértelmezett alkalmazásregisztrációk létrehozására való képességét.
-    - A [vállalati alkalmazások felhasználói beállításainál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)állítsa be, hogy a Felhasználók beleegyezhetnek abba, hogy a **vállalati adatokhoz a nevükben hozzáférő alkalmazások** beállítása Nem. Ez letiltja azt az alapértelmezett lehetőséget, hogy a felhasználók hozzájáruljanak ahhoz, hogy a vállalati adatokhoz a nevükben hozzáférő alkalmazások hozzáférjenek.
+    - A [szervezet felhasználói beállítások lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)állítsa be, hogy a **felhasználók regisztrálhatják az alkalmazások** beállítást a nem értékre. Ez letiltja a felhasználók számára az alkalmazás-regisztrációk létrehozásának alapértelmezett lehetőségét.
+    - A [vállalati alkalmazások felhasználói beállításainál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)a **felhasználók megadhatják, hogy az alkalmazások a vállalati adatokhoz hozzáférjenek** a nem értékre. Ez letiltja az alapértelmezett képességet, hogy a felhasználók beleférjenek a céges adatokhoz való hozzáférésre a nevükben.
 
-### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Egyéni engedélyek megadása az alkalmazások létrehozásához és beleegyezéséhez, ha az alapértelmezett képesség le van tiltva
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Egyéni engedélyek megadása az alkalmazások létrehozásához és jóváhagyásához, ha az alapértelmezett képesség le van tiltva
 
-Rendelje hozzá az Alkalmazás fejlesztői szerepkörét, hogy lehetővé tegye az alkalmazásregisztrációk létrehozását, ha a **Felhasználók regisztrálhatnak alkalmazásokat,** és az alkalmazás beállítása Nem. Ez a szerepkör is engedélyt ad a hozzájárulásra a saját nevében, ha a **Felhasználók beleegyezhetnek abba, hogy a vállalati adatokhoz a nevükben hozzáférő alkalmazások** beállítása Nem. Rendszerbeli viselkedésként, amikor egy felhasználó új alkalmazásregisztrációt hoz létre, a rendszer automatikusan hozzáadja őket az első tulajdonosként. A tulajdonosi engedélyek lehetővé teszik a felhasználó számára, hogy a saját alkalmazásregisztrációjának vagy vállalati alkalmazásának minden aspektusát kezelje.
+Rendelje hozzá az alkalmazás fejlesztői szerepkörét, hogy lehetővé teszi az alkalmazások regisztrációjának létrehozását, ha a **felhasználók regisztrálhatják az alkalmazásokat** beállítás értéke nem. Ez a szerepkör lehetővé teszi az engedély megadását a saját nevében, amikor a felhasználók beleegyeznek a **vállalati adatokhoz való hozzáférésre az alkalmazásokban** a nem értékre van állítva. Rendszerviselkedés, amikor egy felhasználó új alkalmazás-regisztrációt hoz létre, a rendszer automatikusan hozzáadja őket az első tulajdonosként. A tulajdonosi engedélyek lehetővé teszi a felhasználó számára, hogy egy adott alkalmazás regisztrációjának vagy vállalati alkalmazásának minden aspektusát kezelhesse.
 
-## <a name="assign-application-owners"></a>Alkalmazástulajdonosok hozzárendelése
+## <a name="assign-application-owners"></a>Alkalmazás-tulajdonosok kiosztása
 
-A tulajdonosok hozzárendelése egy egyszerű módja annak, hogy egy adott alkalmazásregisztrációvagy vállalati alkalmazás esetén az Azure AD-konfiguráció minden aspektusát kezelje. Rendszerbeli viselkedésként, amikor egy felhasználó új alkalmazásregisztrációt hoz létre, a rendszer automatikusan hozzáadja őket első tulajdonosként. A tulajdonosi engedélyek lehetővé teszik a felhasználó számára, hogy a saját alkalmazásregisztrációjának vagy vállalati alkalmazásának minden aspektusát kezelje. Az eredeti tulajdonos eltávolítható, és további tulajdonosok is hozzáadhatók.
+A tulajdonosok hozzárendelése egy egyszerű módja annak, hogy az Azure AD-konfiguráció minden aspektusát felügyelje egy adott alkalmazás-regisztráció vagy vállalati alkalmazás számára. Rendszerviselkedésként, amikor egy felhasználó új alkalmazás-regisztrációt hoz létre, a rendszer automatikusan hozzáadja őket az első tulajdonosként. A tulajdonosi engedélyek lehetővé teszi a felhasználó számára, hogy egy adott alkalmazás regisztrációjának vagy vállalati alkalmazásának minden aspektusát kezelhesse. Az eredeti tulajdonos törölhető, és további tulajdonosok is hozzáadhatók.
 
 ### <a name="enterprise-application-owners"></a>Vállalati alkalmazások tulajdonosai
 
-Tulajdonosként a felhasználó kezelheti a vállalati alkalmazás szervezetspecifikus konfigurációját, például az egyszeri bejelentkezési konfigurációt, a kiépítést és a felhasználói hozzárendeléseket. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdákkal ellentétben a tulajdonosok csak a saját vállalati alkalmazásaikat kezelhetik.
+Tulajdonosként a felhasználók kezelhetik a vállalati alkalmazás szervezetre jellemző konfigurációját, például az egyszeri bejelentkezés konfigurációját, a létesítést és a felhasználói hozzárendeléseket. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdáktól eltérően a tulajdonosok csak a saját vállalati alkalmazásokat kezelhetik.
 
-Bizonyos esetekben az alkalmazáskatalógusból létrehozott vállalati alkalmazások vállalati alkalmazást is tartalmaznak egy vállalati alkalmazás és egy alkalmazásregisztráció. Ha ez igaz, ha tulajdonos hozzáadása a vállalati alkalmazáshoz automatikusan hozzáadja a tulajdonost a megfelelő alkalmazásregisztrációhoz tulajdonosként.
+Bizonyos esetekben az alkalmazás-katalógusból létrehozott vállalati alkalmazások a vállalati alkalmazások és az alkalmazások regisztrálását is tartalmazzák. Ha ez igaz, a tulajdonos hozzáadásával a vállalati alkalmazás automatikusan hozzáadja a tulajdonost a megfelelő alkalmazás-regisztrációhoz a tulajdonosként.
 
-### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Tulajdonos hozzárendelése vállalati alkalmazáshoz
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Tulajdonos társítása vállalati alkalmazásokhoz
 
-1. Jelentkezzen be [az Azure AD-szervezetbe](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult a szervezet alkalmazás- vagy felhőalkalmazás-rendszergazdájára.
-1. A szervezet [alkalmazásregisztrációk lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) válasszon ki egy alkalmazást az alkalmazás áttekintése lap megnyitásához.
-1. Válassza a **Tulajdonosok** lehetőséget az alkalmazás tulajdonosainak listájának megtekintéséhez.
-1. Válassza a **Hozzáadás** lehetőséget, ha ki szeretne választani egy vagy több tulajdonost az alkalmazásba.
+1. Jelentkezzen be az [Azure ad-szervezetbe](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult az alkalmazás-rendszergazda vagy a felhőalapú alkalmazás-rendszergazda számára a szervezet számára.
+1. A szervezet [Alkalmazásregisztrációk lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) válasszon ki egy alkalmazást az alkalmazás Áttekintés lapjának megnyitásához.
+1. A **tulajdonosok** lehetőség kiválasztásával megtekintheti az alkalmazás tulajdonosainak listáját.
+1. Válassza a **Hozzáadás** lehetőséget, ha egy vagy több tulajdonost szeretne hozzáadni az alkalmazáshoz.
 
 > [!IMPORTANT]
-> A felhasználók és a szolgáltatástagok az alkalmazásregisztrációk tulajdonosai lehetnek. Csak a felhasználók lehetnek vállalati alkalmazások tulajdonosai. A csoportok nem rendelhetők hozzá egyik tulajdonosához sem.
+> A felhasználók és az egyszerű szolgáltatások lehetnek az alkalmazások tulajdonosainak tulajdonosai. Csak a felhasználók lehetnek vállalati alkalmazások tulajdonosai. Csoport nem rendelhető hozzá tulajdonosként sem.
 >
-> A tulajdonosok hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és ezekkel a hitelesítő adatokkal megszemélyesíthetik az alkalmazás identitását. Előfordulhat, hogy az alkalmazás több engedéllyel rendelkezik, mint a tulajdonos, és így a tulajdonos felhasználói vagy egyszerű szolgáltatásként való hozzáférésével kapcsolatos jogosultság illetéktelen megszerzését jelentené. Az alkalmazás tulajdonosa az alkalmazás engedélyeitől függően felhasználókat vagy más objektumokat hozhat létre vagy frissíthet az alkalmazás megszemélyesítése közben.
+> A tulajdonosok hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és a hitelesítő adatok használatával megszemélyesítik az alkalmazás identitását. Előfordulhat, hogy az alkalmazás több jogosultsággal rendelkezik, mint a tulajdonos, így magasabb szintű jogosultságot biztosít a tulajdonos felhasználói vagy szolgáltatásnév számára. Az alkalmazás tulajdonosai az alkalmazás engedélyeitől függően létrehozhatnak vagy frissíthetnek felhasználókat vagy más objektumokat az alkalmazás megszemélyesítése közben.
 
-## <a name="assign-built-in-application-admin-roles"></a>Beépített alkalmazásfelügyeleti szerepkörök hozzárendelése
+## <a name="assign-built-in-application-admin-roles"></a>Beépített alkalmazás-rendszergazdai szerepkörök kiosztása
 
-Az Azure AD beépített rendszergazdai szerepkörökkészletével rendelkezik, amelyek hozzáférést biztosítanak az Azure AD-ben az összes alkalmazás konfigurációjának kezeléséhez. Ezek a szerepkörök az ajánlott módja annak, hogy informatikai szakértők számára hozzáférést biztosítson az általános alkalmazáskonfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést biztosítana az Azure AD más, az alkalmazáskonfigurációhoz nem kapcsolódó részeinek kezeléséhez.
+Az Azure AD beépített rendszergazdai szerepkörökkel rendelkezik, amelyek hozzáférést biztosítanak az Azure AD-ben az összes alkalmazás konfigurációjának kezeléséhez. Ezek a szerepkörök ajánlottak az informatikai szakértők számára a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést biztosítanak az Azure AD egyéb részeinek kezeléséhez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
 
-- Alkalmazásadminisztrátor: Az ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazásregisztrációk és az alkalmazásproxy-beállítások minden aspektusát. Ez a szerepkör is lehetővé teszi, hogy hozzájáruljon a delegált engedélyek, és alkalmazás engedélyeket, kivéve a Microsoft Graph. Az ehhez a szerepkörhöz rendelt felhasználók nem kerülnek tulajdonosként új alkalmazásregisztrációk vagy vállalati alkalmazások létrehozásakor.
-- Felhőalkalmazás-rendszergazda: A szerepkörben lévő felhasználók ugyanolyan engedélyekkel rendelkeznek, mint az Alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy kezelését. Az ehhez a szerepkörhöz rendelt felhasználók nem kerülnek tulajdonosként új alkalmazásregisztrációk vagy vállalati alkalmazások létrehozásakor.
+- Alkalmazás-rendszergazda: ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát. Ez a szerepkör lehetővé teszi a delegált engedélyekkel való hozzájárulást, valamint az Microsoft Graph nélküli alkalmazás-engedélyek megadását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
+- Cloud Application Administrator: az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy felügyeletének képességét. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-További információt és a szerepkörök leírásának megtekintéséhez olvassa el az Elérhető szerepkörök című [témakört.](directory-assign-admin-roles.md#available-roles)
+További információért és a szerepkörök leírásának megtekintéséhez tekintse meg a [rendelkezésre álló szerepkörök](directory-assign-admin-roles.md#available-roles)című témakört.
 
-Kövesse a [Szerepkörök hozzárendelése](../fundamentals/active-directory-users-assign-role-azure-portal.md) a felhasználókaz Azure Active Directory útmutató útmutató az alkalmazásrendszergazda i vagy a felhőbeli alkalmazás-rendszergazdai szerepkörök hozzárendelése utasításokat.
+Az alkalmazás-rendszergazda vagy a Felhőbeli alkalmazás rendszergazdai szerepköreinek hozzárendeléséhez kövesse a [szerepkörök társítása felhasználók számára Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) útmutatóban található utasításokat.
 
 > [!IMPORTANT]
-> Az alkalmazás- és felhőalkalmazás-rendszergazdák hitelesítő adatokat adhatnak hozzá az alkalmazásokhoz, és ezekkel a hitelesítő adatokkal megszemélyesíthetik az alkalmazás identitását. Előfordulhat, hogy az alkalmazás olyan engedélyekkel rendelkezik, amelyek a rendszergazdai szerepkör engedélyeit fölé ni. A szerepkörben lévő rendszergazda az alkalmazás engedélyeitől függően felhasználókat vagy más objektumokat hozhat létre vagy frissíthet az alkalmazás megszemélyesítése közben.
-> Egyik szerepkör sem teszi lehetővé a feltételes hozzáférési beállítások kezelését.
+> Az alkalmazás-rendszergazdák és a felhőalapú alkalmazások rendszergazdái hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és a hitelesítő adatok használatával megszemélyesítik az alkalmazás identitását. Előfordulhat, hogy az alkalmazás jogosultságokat emel a rendszergazdai szerepkör engedélyeivel szemben. Az ebben a szerepkörben található rendszergazda létrehozhat vagy frissíthet felhasználókat vagy más objektumokat az alkalmazás megszemélyesítése közben az alkalmazás engedélyeitől függően.
+> Egyik szerepkör sem biztosít lehetőséget a feltételes hozzáférési beállítások kezelésére.
 
-## <a name="create-and-assign-a-custom-role-preview"></a>Egyéni szerepkör létrehozása és hozzárendelése (előzetes verzió)
+## <a name="create-and-assign-a-custom-role-preview"></a>Egyéni szerepkör létrehozása és társítása (előzetes verzió)
 
-Az egyéni szerepkörök létrehozása és az egyéni szerepkörök hozzárendelése külön lépés:
+Az egyéni szerepkörök létrehozása és az egyéni szerepkörök hozzárendelésének lépései külön lépések:
 
-- [Hozzon létre egyéni *szerepkör-definíciót,* ](roles-create-custom.md) és [adjon hozzá engedélyeket egy készletlistából.](roles-custom-available-permissions.md) Ezek ugyanazok az engedélyek, amelyeket a beépített szerepkörökben használnak.
-- [Hozzon létre *szerepkör-hozzárendelést* ](roles-assign-powershell.md) az egyéni szerepkör hozzárendeléséhez.
+- [Hozzon létre egy egyéni *szerepkör-definíciót* ](roles-create-custom.md) , és [adjon hozzá engedélyeket egy előre definiált listából](roles-custom-available-permissions.md). Ezek ugyanazok a beépített szerepkörökben használt engedélyek.
+- [Hozzon létre egy *szerepkör-hozzárendelést* ](roles-assign-powershell.md) az egyéni szerepkör hozzárendeléséhez.
 
-Ez a szétválasztás lehetővé teszi, hogy egyetlen szerepkör-definíciót hozzon létre, majd többször hozzárendelje különböző *hatókörökhöz.* Egy egyéni szerepkör szervezeti szintű hatókörhöz rendelhető, vagy a hatókörhöz rendelhető, ha egyetlen Azure AD-objektum. Egy objektumhatókör például egyetlen alkalmazásregisztráció. Különböző hatókörök használatával ugyanaz a szerepkör-definíció rendelhető Sally-hez a szervezet összes alkalmazásregisztrációja során, majd a Naveen-hez csak a Contoso Költségjelentések alkalmazás regisztrációja esetén.
+Ez az elkülönítés lehetővé teszi egyetlen szerepkör-definíció létrehozását, majd a különböző *hatókörökben*többszöri hozzárendelését. Az egyéni szerepkört a szervezetre kiterjedő hatókörben lehet hozzárendelni, vagy ha egyetlen Azure AD-objektum is hozzárendelhető a hatókörhöz. Egy objektum hatóköre például egyetlen alkalmazás regisztrálása. A különböző hatókörök használata esetén ugyanaz a szerepkör-definíció rendelhető hozzá az Sally szolgáltatáshoz a szervezet összes alkalmazás-regisztrációjában, majd csak a contoso-költségelszámolás alkalmazás regisztrálására.
 
-Tippek egyéni szerepkörök létrehozásához és használatához az alkalmazáskezelés delegálásakor:
-- Az egyéni szerepkörök csak az Azure AD-portál legújabb alkalmazásregisztrációs paneljein biztosítanak hozzáférést. Nem biztosítanak hozzáférést az örökölt alkalmazásregisztrációs panelek.
-- Egyéni szerepkörök nem adnak hozzáférést az Azure AD-portálhoz, ha a "Hozzáférés korlátozása az Azure AD felügyeleti portálhoz" felhasználói beállítás van beállítva Igen.
-- Az alkalmazásregisztrációk, amelyekhez a felhasználó hozzáférhet a szerepkör-hozzárendelések használatával, csak az Alkalmazás regisztrációs lapjának "Minden alkalmazás" lapján jelennek meg. Nem jelennek meg a "Saját alkalmazások" lapon.
+Tippek az alkalmazások kezelésének delegálásához egyéni szerepkörök létrehozásakor és használatakor:
+- Az egyéni szerepkörök csak az Azure AD-portál legfrissebb alkalmazás-regisztrációs feladataiban biztosítanak hozzáférést. Nem biztosítanak hozzáférést a régi alkalmazás-regisztrációk paneleken.
+- Az egyéni szerepkörök nem biztosítanak hozzáférést az Azure AD-portálhoz, ha az "Azure AD felügyeleti portálhoz való hozzáférés korlátozása" felhasználói beállítás Igen értékre van állítva.
+- Alkalmazásregisztrációk, hogy a felhasználó csak a "minden alkalmazás" lapon jelenjen meg a szerepkör-hozzárendelések használatával, megjelenik az alkalmazás regisztrációs lapján. Nem jelennek meg a "tulajdonban lévő alkalmazások" lapon.
 
-Az egyéni szerepkörök alapjairól az [egyéni szerepkörök áttekintésében,](roles-custom-overview.md)valamint az [egyéni szerepkör létrehozásának](roles-create-custom.md) módjában és a [szerepkör hozzárendelésében](roles-assign-powershell.md)olvashat bővebben.
+Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-powershell.md)ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazásregisztrációs altípusok és engedélyek](roles-custom-available-permissions.md)
-- [Azure AD rendszergazdai szerepkör-hivatkozás](directory-assign-admin-roles.md)
+- [Alkalmazás regisztrációs altípusai és engedélyei](roles-custom-available-permissions.md)
+- [Azure AD-rendszergazdai szerepkör-hivatkozás](directory-assign-admin-roles.md)

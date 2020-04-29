@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-minták JavaScript használatával | Microsoft dokumentumok
-description: Tekintse meg, töltse le és futtassa az Azure Storage-hoz készült mintakódot és alkalmazásokat. Fedezze fel a blobok, várólisták, táblák és fájlok első lépésekre vonatkozó mintáit a JavaScript/Node.js tárolóügyfél-kódtárak használatával.
+title: Azure Storage-minták JavaScript használatával | Microsoft Docs
+description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A JavaScript/Node. js Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
@@ -8,37 +8,37 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77485845"
 ---
-# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-minták a v12-es JavaScript-ügyfélkódtárak használatával
+# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-minták a V12-es JavaScript ügyféloldali kódtárak használatával
 
-Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az egyes mintákban szereplő forgatókönyvekről. Kattintson a hivatkozásokra a megfelelő mintakód megtekintéséhez a GitHubon.
+A következő táblázatok áttekintést nyújtanak a minták tárházáról és az egyes mintákban szereplő forgatókönyvekről. A hivatkozásokra kattintva megtekintheti a megfelelő mintakód-kódot a GitHubon.
 
 > [!NOTE]
-> Ezek a minták a legújabb Azure Storage JavaScript v12-kódtárat használják. Az örökölt v11-es kód, lásd: [Első lépések az Azure Blob Service Node.js](https://github.com/Azure-Samples/storage-blob-node-getting-started) a GitHub-tárházban.
+> Ezek a minták a legújabb Azure Storage JavaScript V12 könyvtárat használják. Örökölt v11-kódok: [első lépések az Azure Blob Service-ben](https://github.com/Azure-Samples/storage-blob-node-getting-started) a GitHub-tárházban a Node. js-ben.
 
-## <a name="blob-samples"></a>Blob minták
+## <a name="blob-samples"></a>BLOB-minták
 
 ### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés SAS-kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [Hitelesítés SAS-kapcsolatok sztringje használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
+      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés névtelen hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+      [Hitelesítés a AnonymousCredential használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -51,7 +51,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Csatlakozás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
+      [Összekapcsolás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
    :::column-end:::
 :::row-end:::
 
@@ -59,7 +59,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 
 :::row:::
    :::column span="2":::
-      [Blob szolgáltatásügyfél létrehozása SAS-URL-cím használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
+      [BLOB Service-ügyfél létrehozása SAS URL-cím használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
    :::column-end:::
 :::row-end:::
 
@@ -70,7 +70,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Tároló létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
    :::column-end:::
    :::column span="":::
-      [Tároló létrehozása megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
+      [Tároló létrehozása megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -78,12 +78,12 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Tárolók listázása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
    :::column-end:::
    :::column span="":::
-      [Tárolók listázása iterátorral](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
+      [Tárolók listázása egy iteráció használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tárolók listázása oldalasok szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
+      [Tárolók listázása oldal szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
    :::column-end:::
    :::column span="":::
       [Tároló törlése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L82)
@@ -105,12 +105,12 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Blob letöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
    :::column-end:::
    :::column span="":::
-      [Blobok listázása iterátorral](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
+      [Blobok listázása egy iteráció használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blobok listázása oldalasok szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
+      [Blobok listázása oldal szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
    :::column-end:::
    :::column span="":::
       [Blobok listázása hierarchia szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
@@ -126,18 +126,18 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blob-pillanatkép letöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+      [BLOB-pillanatkép letöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
    :::column-end:::
    :::column span="":::
-      [Adatfolyam párhuzamos feltöltése blobba](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+      [Stream feltöltése párhuzamosan egy blobba](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Párhuzamos letöltési blokkblob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
+      [Párhuzamos letöltési blokk blobja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
    :::column-end:::
    :::column span="":::
-      [A hozzáférési szint beállítása egy blobon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
+      [A hozzáférési szintek beállítása egy blobon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
    :::column-end:::
 :::row-end:::
 
@@ -145,7 +145,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 
 :::row:::
    :::column span="2":::
-      [Helyreállítható hiba aktiválása tárolóügyfél használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
+      [Helyreállítható hiba kiváltása tároló-ügyfél használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
 
@@ -154,7 +154,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 
 :::row:::
    :::column span="":::
-      [Data Lake szolgáltatásügyfél létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
+      [Data Lake szolgáltatás ügyfelének létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
    :::column-end:::
    :::column span="":::
       [Fájlrendszer létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L47)
@@ -182,24 +182,24 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Az Azure Files mintái
+## <a name="azure-files-samples"></a>Azure Files minták
 
 ### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
+      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
+      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés névtelen hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
+      [Hitelesítés a AnonymousCredential használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Csatlakozás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
+      [Összekapcsolás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -215,12 +215,12 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Megosztás létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
    :::column-end:::
    :::column span="":::
-      [Listamegosztások](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
+      [Megosztások listázása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Listamegosztások oldalasok szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
+      [Megosztások listázása oldal szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
    :::column-end:::
    :::column span="":::
       [Megosztás törlése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L104)
@@ -239,7 +239,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Fájlok és könyvtárak listázása lapszerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
+      [Fájlok és könyvtárak listázása oldal szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
    :::column-end:::
 :::row-end:::
 
@@ -250,7 +250,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Fájl párhuzamos feltöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L65)
    :::column-end:::
    :::column span="":::
-      [Párhuzamosan feltöltegy olvasható adatfolyamot](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
+      [Egy olvasható stream párhuzamos feltöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -258,33 +258,33 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Fájl párhuzamos letöltése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
    :::column-end:::
    :::column span="":::
-      [Fájlleírók listázása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
+      [Fájlleíró listázása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Fájlleírók listázása oldalasok szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
+      [Fájlok listázása oldal szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Várólista-minták
+## <a name="queue-samples"></a>Üzenetsor-minták
 
 ### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
+      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
+      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés névtelen hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
+      [Hitelesítés a AnonymousCredential használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Csatlakozás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
+      [Összekapcsolás egyéni folyamat használatával](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -296,11 +296,11 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Várólista-szolgáltatás
+### <a name="queue-service"></a>Queue szolgáltatás
 
 :::row:::
    :::column span="2":::
-      [Várólista-szolgáltatás ügyfél létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
+      [Üzenetsor-kezelési ügyfél létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
    :::column-end:::
 :::row-end:::
 
@@ -308,7 +308,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 
 :::row:::
    :::column span="":::
-      [Új várólista létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
+      [Új üzenetsor létrehozása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
    :::column-end:::
    :::column span="":::
       [Várólisták listázása](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
@@ -316,7 +316,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Várólisták listázása oldalasok szerint](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
+      [Várólisták listázása oldal alapján](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
    :::column-end:::
    :::column span="":::
       [Üzenetsor törlése](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L89)
@@ -327,10 +327,10 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 
 :::row:::
    :::column span="":::
-      [Üzenet küldése várólistába](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
+      [Üzenet küldése egy várólistába](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
    :::column-end:::
    :::column span="":::
-      [Betekintés az üzenetekbe](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
+      [Betekintés üzenetekben](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -342,11 +342,11 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Táblázatminták (v11)
+## <a name="table-samples-v11"></a>Table Samples (v11)
 
 :::row:::
    :::column span="":::
-      [Kötegentitások](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
+      [Batch-entitások](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
       [Tábla létrehozása](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
@@ -362,10 +362,10 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Táblázatok listázása](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63)
+      [Táblák listázása](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63)
    :::column-end:::
    :::column span="":::
-      [Entitások lekérdezése](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59)
+      [Lekérdezési entitások](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -373,7 +373,7 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Táblák lekérdezése](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140)
    :::column-end:::
    :::column span="":::
-      [Tartomány lekérdezés](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102)
+      [Tartomány lekérdezése](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -381,50 +381,50 @@ Az alábbi táblázatok áttekintést nyújtanak a mintatárházunkról és az e
       [Közös hozzáférésű jogosultságkód (SAS)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87)
    :::column-end:::
    :::column span="":::
-      [Tábla ACL](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
+      [Táblázat ACL](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tábla több eredetre vonatkozó erőforrás-megosztási (CORS) szabályai](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
+      [A tábla több eredetű erőforrás-megosztási (CORS) szabályai](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
    :::column-end:::
    :::column span="":::
-      [Táblázat tulajdonságai](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
+      [Tábla tulajdonságai](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Táblázat statisztika](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243)
+      [Tábla statisztikái](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243)
    :::column-end:::
    :::column span="":::
       [Entitás frissítése](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Azure-kódmintatárak
+## <a name="azure-code-sample-libraries"></a>Azure code-minta kódtárak
 
-A teljes JavaScript mintatárak megtekintéséhez nyissa meg a következő tárat:
+A teljes JavaScript-függvénytárak megtekintéséhez lépjen a következőre:
 
-* [Az Azure blob-kódminták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Az Azure Data Lake kódmintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Az Azure Files kódmintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Az Azure-várólista-kódminták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+* [Azure Blob Code-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+* [Azure Data Lake kód mintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+* [Azure Files kód mintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+* [Azure üzenetsor-kódok mintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
-A GitHub-tárminden tárban tallózhat és klónozhatja az egyes tárakat.
+Az egyes tárakhoz tartozó GitHub-tárházat tallózással és klónozással is megtekintheti.
 
-## <a name="getting-started-guides"></a>Útmutatók az első lépésekhez
+## <a name="getting-started-guides"></a>Első lépések útmutatók
 
-Tekintse meg az alábbi útmutatókat, ha az Azure Storage ügyfélkódtárak telepítésével és használatának megkezdésével kapcsolatos útmutatást keresi.
+A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage ügyféloldali kódtárait, és hogyan kezdheti meg az első lépéseket.
 
-* [Az Azure Blob-szolgáltatás első lépései JavaScript-nyelven](../blobs/storage-quickstart-blobs-nodejs.md)
-* [Az Azure Várólista-szolgáltatás első lépései JavaScript-ben](../queues/storage-quickstart-queues-nodejs.md)
-* [Az Azure Table Service – Első lépések JavaScript-nyelven](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Első lépések az Azure Blob Service-szel a JavaScriptben](../blobs/storage-quickstart-blobs-nodejs.md)
+* [Első lépések az Azure üzenetsor-kezelési szolgáltatással a JavaScriptben](../queues/storage-quickstart-queues-nodejs.md)
+* [Első lépések az Azure Table Service-szel a JavaScriptben](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>További lépések
 
-A más nyelvekre vonatkozó mintákkal kapcsolatos információk:
+További információ a mintákról más nyelveken:
 
-* .NET: [Azure Storage-minták a .NET használatával](storage-samples-dotnet.md)
+* .NET: [Azure Storage-minták .NET használatával](storage-samples-dotnet.md)
 * Java: [Azure Storage-minták Java használatával](storage-samples-java.md)
-* Python: [Azure Storage-minták python használatával](storage-samples-python.md)
+* Python: [Azure Storage-minták a Python használatával](storage-samples-python.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

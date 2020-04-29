@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Hálózati kommunikáció figyelése az Azure Portal használatával
-description: Ebben az oktatóanyagban megtudhatja, hogyan figyelheti a hálózati kommunikációt két virtuális gép között az Azure Network Watcher kapcsolatfigyelőképességével.
+title: Oktatóanyag – hálózati kommunikáció figyelése a Azure Portal használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti meg a két virtuális gép közötti hálózati kommunikációt az Azure Network Watcher kapcsolat-figyelő képességével.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76834654"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
@@ -32,11 +32,11 @@ A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti 
 > * Riasztások létrehozása a kapcsolatfigyelő metrikáin
 > * Virtuális gépek közötti kommunikációs probléma diagnosztizálása és a megoldás megismerése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Virtuális gépek létrehozása
 
@@ -46,16 +46,16 @@ Hozzon létre két virtuális gépet.
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
 2. Válassza a **Számítás** lehetőséget, majd válasszon egy operációs rendszert. Ebben az oktatóanyagban **Windows Server 2016 Datacenter** rendszert használunk.
-3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó beállítások alapértelmezett beállításait, majd kattintson az **OK gombra:**
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myVm1|
+    |Name (Név)|myVm1|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| **Usa keleti része**|
+    |Hely| Válassza ki az **USA keleti** régióját|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet. Válassza a **Bővítmény hozzáadása**, majd a **Windowshoz készült Network Watcher-ügynök** lehetőséget, ahogyan az az alábbi képen is látható:
@@ -72,11 +72,11 @@ Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm
 
 |Lépés|Beállítás|Érték|
 |---|---|---|
-| 1 | Válassza ki az **Ubuntu Server** egy verzióját |                                                                         |
-| 3 | Név                                  | myVm2                                                                   |
+| 1 | **Ubuntu-kiszolgáló** verziójának kiválasztása |                                                                         |
+| 3 | Name (Név)                                  | myVm2                                                                   |
 | 3 | Hitelesítés típusa                   | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
 | 3 | Erőforráscsoport                        | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
-| 6 | Bővítmények                            | **Network Watcher Ügynök Linuxra**                                             |
+| 6 | Bővítmények                            | **Linux-Network Watcher ügynök**                                             |
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a virtuális gép üzembe helyezése befejeződik, mielőtt folytatná a további lépésekkel.
 
@@ -92,7 +92,7 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
 
     | Beállítás                  | Érték               |
     | ---------                | ---------           |
-    | Név                     | myVm1-myVm2(22)     |
+    | Name (Név)                     | myVm1-myVm2(22)     |
     | Forrás                   |                     |
     | Virtuális gép          | myVm1               |
     | Cél              |                     |
@@ -151,7 +151,7 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
     | Célporttartományok | 22             |
     | Műveletek                  | Megtagadás           |
     | Prioritás                | 100            |
-    | Név                    | DenySshInbound |
+    | Name (Név)                    | DenySshInbound |
 
 5. Mivel a kapcsolatfigyelő 60 másodpercenként vesz mintát, várjon néhány percet, és a portál bal oldalán válassza a **Network Watcher**, majd a **Kapcsolatfigyelő** elemet, és válassza ki ismét a **myVm1-myVm2(22)** figyelőt. Az eredmények most eltérőek lesznek, ahogyan az a következő képen látható:
 

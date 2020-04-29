@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Indexelés i. félstrukturált adatok JSON-blobokban'
+title: 'Oktatóanyag: részben strukturált adathalmazok indexelése JSON-blobokban'
 titleSuffix: Azure Cognitive Search
-description: Megtudhatja, hogyan indexeli és kereshet félig strukturált Azure JSON-blobokat az Azure Cognitive Search REST API-k és postás használatával.
+description: Ismerje meg, hogyan indexelheti és keresheti meg a félig strukturált Azure JSON-blobokat az Azure Cognitive Search REST API-k és a Poster használatával.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,76 +9,76 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.openlocfilehash: ce3b3839319de38020b968ff8db1ee6713b29c47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78269983"
 ---
-# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: Index JSON-blobok az Azure Storage-ból rest használatával
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
-Az Azure Cognitive Search indexelheti a JSON-dokumentumokat és -tömböket az Azure blobstorage-ban egy [olyan indexelő](search-indexer-overview.md) használatával, amely tudja, hogyan kell olvasni a félig strukturált adatokat. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Felosztja a különbséget a strukturálatlan adatok, amelyeket teljes mértékben indexelt, és hivatalosan strukturált adatok, amelyek megfelelnek egy adatmodell, például egy relációs adatbázis séma, amely mezőnként indexelhető.
+Az Azure Cognitive Search képes indexelni az Azure Blob Storage-ban található JSON-dokumentumokat és-tömböket olyan [Indexelő](search-indexer-overview.md) használatával, amely képes a részben strukturált információk beolvasására. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Feldarabolja a strukturálatlan adatmennyiségek közötti különbséget, amelyeknek teljes mértékben indexelve kell lenniük, és az olyan, az adatmodellbe (például egy olyan kapcsolati adatbázis-sémához) tartozó, formálisan strukturált adat, amely egy mező alapján indexelhető.
 
-Ez az oktatóanyag a Postman és a [Search REST API-kat](https://docs.microsoft.com/rest/api/searchservice/) használja a következő feladatok végrehajtásához:
+Ez az oktatóanyag a Poster és a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Azure Cognitive Search adatforrás konfigurálása egy Azure blobtárolóhoz
-> * Azure Cognitive Search index létrehozása kereshető tartalom tárolására
-> * Indexelő konfigurálása és futtatása a tároló olvasásához és a kereshető tartalom azure blobstorage-ból való kinyeréséhez
+> * Azure Cognitive Search-adatforrás konfigurálása Azure Blob-tárolóhoz
+> * Kereshető tartalmat tartalmazó Azure Cognitive Search index létrehozása
+> * Indexelő konfigurálása és futtatása a tároló olvasásához és a kereshető tartalom kinyeréséhez az Azure Blob Storage-ból
 > * Keresés az újonnan létrehozott indexben
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 + [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 + [Postman asztali alkalmazás](https://www.getpostman.com/)
-+ Meglévő [keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
++ [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
 
 > [!Note]
-> Használhatja az ingyenes szolgáltatást az oktatóanyaghoz. Az ingyenes keresési szolgáltatás három indexre, három indexelőre és három adatforrásra korlátozza. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg róla, hogy van hely a szolgáltatás, hogy elfogadja az új forrásokat.
+> Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
 ## <a name="download-files"></a>Fájlok letöltése
 
-[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) tartalmazza az ebben az oktatóanyagban használt adatokat. Töltse le és csomagolja ki a fájlt a saját mappájába. Az adatok [az clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)származó , az oktatóanyag hoz JSON-ra konvertálva.
+A [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) tartalmazza az oktatóanyagban használt adatkészleteket. Töltse le és csomagolja ki a fájlt a saját mappájába. Az adatok a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)-ből származnak, és a JSON formátumba konvertálódnak erre az oktatóanyagra.
 
-## <a name="1---create-services"></a>1 - Szolgáltatások létrehozása
+## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
-Ez az oktatóanyag az Azure Cognitive Search indexelési és lekérdezések, és az Azure Blob storage az adatok biztosításához. 
+Ez az oktatóanyag az Azure Cognitive Searcht használja az indexeléshez és a lekérdezésekhez, valamint az Azure Blob Storage-hoz az adatkezeléshez. 
 
-Ha lehetséges, hozzon létre mind ugyanabban a régióban, mind az erőforráscsoportban a közelség és a kezelhetőség érdekében. A gyakorlatban az Azure Storage-fiók bármely régióban lehet.
+Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforráscsoporthoz a közelség és a kezelhetőség érdekében. A gyakorlatban az Azure Storage-fiók bármely régióban lehet.
 
-### <a name="start-with-azure-storage"></a>Kezdje az Azure Storage szolgáltatással
+### <a name="start-with-azure-storage"></a>Első lépések az Azure Storage-ban
 
-1. [Jelentkezzen be az Azure Portalra,](https://portal.azure.com/) és kattintson **a + Erőforrás létrehozása gombra.**
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása**elemre.
 
-1. Keressen *tárfiókot,* és válassza a Microsoft tárfiók-ajánlatát.
+1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
-   ![Tárfiók létrehozása](media/cognitive-search-tutorial-blob/storage-account.png "Tárfiók létrehozása")
+   ![Storage-fiók létrehozása](media/cognitive-search-tutorial-blob/storage-account.png "Storage-fiók létrehozása")
 
-1. Az Alapok lapon a következő elemek szükségesek. Fogadja el az alapértelmezett értékeket minden máshoz.
+1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
-   + **Erőforráscsoport**. Jelöljön ki egy meglévőt, vagy hozzon létre egy újat, de használja ugyanazt a csoportot az összes szolgáltatáshoz, hogy együttesen kezelhesse őket.
+   + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + **Tárfiók neve**. Ha úgy gondolja, hogy több azonos típusú erőforrással rendelkezik, használja a nevet típus és régió, például *blobstoragewestus*szerint. 
+   + A **Storage-fiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
-   + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és a Cognitive Services használt. Egyetlen hely érvényteleníti a sávszélesség-díjakat.
+   + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
-   + **Számla fajta**. Válassza ki az alapértelmezett, *StorageV2 (általános célú v2)*.
+   + **Fiók típusa**. Válassza ki az alapértelmezett *StorageV2 (általános célú v2)*.
 
-1. A szolgáltatás létrehozásához kattintson a **Véleményezés + Létrehozás** gombra.
+1. A szolgáltatás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
-1. Létrehozása után kattintson **az Ugrás az erőforrásra** gombra az Áttekintés lap megnyitásához.
+1. A létrehozás után kattintson **az erőforrás** megnyitása lehetőségre az Áttekintés lap megnyitásához.
 
-1. Kattintson **a Blobs** szolgáltatás elemre.
+1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. [Hozzon létre egy Blob-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolására. A nyilvános hozzáférési szintet bármely érvényes értékére állíthatja be.
+1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
-1. A tároló létrehozása után nyissa meg, és válassza a **Feltöltés** lehetőséget a parancssávon.
+1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
-   ![Feltöltés a parancssávra](media/search-semi-structured-data/upload-command-bar.png "Feltöltés a parancssávra")
+   ![Feltöltés a parancssáv](media/search-semi-structured-data/upload-command-bar.png "Feltöltés a parancssáv")
 
-1. Nyissa meg a mintafájlokat tartalmazó mappát. Jelölje ki az összeset, majd kattintson a **Feltöltés gombra.**
+1. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
 
    ![Fájlok feltöltése](media/search-semi-structured-data/clinicalupload.png "Fájlok feltöltése")
 
@@ -86,39 +86,39 @@ Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg 
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-A következő erőforrás az Azure Cognitive Search, amelyet [a portálon hozhat létre.](search-create-service-portal.md) Az ingyenes szint segítségével elvégezheti ezt a forgatókönyvet. 
+A következő erőforrás az Azure Cognitive Search, amelyet [a portálon lehet létrehozni](search-create-service-portal.md). A bemutató elvégzéséhez használhatja az ingyenes szintet. 
 
-Az Azure Blob storage-hoz is szánjon egy kis ideig a hozzáférési kulcs összegyűjtését. Továbbá, amikor elkezdi strukturálni a kérelmeket, meg kell adnia a végpont és a rendszergazdai api-kulcs hitelesítéséhez használt minden egyes kérelmet.
+Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs gyűjtésére. Tovább, amikor megkezdi a kérelmek strukturálását, meg kell adnia az egyes kérések hitelesítéséhez használt Endpoint és admin API-kulcsot.
 
-### <a name="get-a-key-and-url"></a>Kulcs és URL beszerezése
+### <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A keresési szolgáltatás mindkettővel jön létre, így ha hozzáadta az Azure Cognitive Search-et az előfizetéséhez, kövesse az alábbi lépéseket a szükséges információk beszerezéséhez:
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon,](https://portal.azure.com/)és a keresési szolgáltatás **áttekintése** lapon lekell szereznie az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsok**párbeszédpanelen szerezzen be egy rendszergazdai kulcsot a szolgáltatás teljes jogához. Két cserélhető rendszergazdai kulcs van, amelyek az üzletmenet folytonosságát biztosítják arra az esetre, ha át kell görgetnie egyet. Az elsődleges vagy másodlagos kulcsot objektumok hozzáadására, módosítására és törlésére irányuló kérelmeken használhatja.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![HTTP-végpont és hozzáférési kulcs beszerezni](media/search-get-started-postman/get-url-key.png "HTTP-végpont és hozzáférési kulcs beszerezni")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-Minden kérelemhez api-kulcs szükséges a szolgáltatásnak küldött minden kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="2---set-up-postman"></a>2 - Postás beállítása
+## <a name="2---set-up-postman"></a>2 – Poster beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, [olvassa el az Azure Cognitive Search REST API-k felfedezése postán .](search-get-started-postman.md)
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k a Poster használatával való megismerését](search-get-started-postman.md)ismertető témakört.
 
-A kérelem módszerek minden hívás a bemutató **POST** és **GET**. Három API-hívást fog kezdeményezni a keresési szolgáltatáshoz adatforrás, index és indexelő létrehozásához. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
+Az oktatóanyag minden hívására vonatkozó kérési metódusok **post** és **Get**. A keresési szolgáltatás három API-hívást hajt végre egy adatforrás, egy index és egy indexelő létrehozásához. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
-A fejlécek, állítsa be a `application/json` "Tartalom-típus", és állítsa be `api-key` az Azure Cognitive Search szolgáltatás felügyeleti api-kulcs. Miután beállította a fejléceket, a gyakorlat minden kéréséhez használhatja őket.
+A fejlécekben a "Content-Type" értéket `application/json` állítsa be `api-key` , és állítsa az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
-  ![Postás kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Postás kérelem URL-címe és fejléce")
+  ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
-Az URI-knak api-verziót kell megadniuk, és minden hívásnak **201 Created 201-et kell visszaadnia.** A JSON-tömbök általánosan elérhető `2019-05-06`api-verziója a .
+Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő `2019-05-06`:.
 
-## <a name="3---create-a-data-source"></a>3 - Adatforrás létrehozása
+## <a name="3---create-a-data-source"></a>3 – adatforrás létrehozása
 
-Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatokat indexeljen.
+Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
 
-1. Állítsa a hívás végpontját `https://[service name].search.windows.net/datasources?api-version=2019-05-06`a beállításra. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -131,9 +131,9 @@ Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchser
     }
     ```
 
-1. Cserélje le a kapcsolati karakterláncot a fiókjához érvényes karakterláncra.
+1. Cserélje le a kapcsolatok karakterláncát érvényes sztringre a fiókjához.
 
-1. Cserélje le a "[blob tároló neve]" a mintaadatokhoz létrehozott tárolóra. 
+1. Cserélje le a "[blob Container name]" sort a mintaadatok számára létrehozott tárolóra. 
 
 1. Küldje el a kérést. A válasznak így kell kinéznie:
 
@@ -157,11 +157,11 @@ Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchser
     }
     ```
 
-## <a name="4---create-an-index"></a>4 - Index létrehozása
+## <a name="4---create-an-index"></a>4 – index létrehozása
     
-A második hívás a [Create Index API,](https://docs.microsoft.com/rest/api/searchservice/create-index)létrehozva egy Azure Cognitive Search index, amely tárolja az összes kereshető adatokat. Az index határozza meg az összes paramétert és ezek attribútumait.
+A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
-1. Állítsa a hívás végpontját `https://[service name].search.windows.net/indexes?api-version=2019-05-06`a beállításra. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -232,11 +232,11 @@ A második hívás a [Create Index API,](https://docs.microsoft.com/rest/api/sea
           }
     ```
 
-## <a name="5---create-and-run-an-indexer"></a>5 - Indexelő létrehozása és futtatása
+## <a name="5---create-and-run-an-indexer"></a>5 – indexelő létrehozása és futtatása
 
-Az indexelő csatlakozik az adatforráshoz, adatokat importál a célkeresési indexbe, és opcionálisan ütemezést biztosít az adatfrissítés automatizálásához. A REST API [create indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a cél keresési indexbe, és opcionálisan biztosít egy ütemtervet az Adatfrissítés automatizálásához. A REST API [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Állítsa be a hívás `https://[service name].search.windows.net/indexers?api-version=2019-05-06`URI-ját. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI- `https://[service name].search.windows.net/indexers?api-version=2019-05-06`ját a következőre:. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -249,7 +249,7 @@ Az indexelő csatlakozik az adatforráshoz, adatokat importál a célkeresési i
     }
     ```
 
-1. Küldje el a kérést. A kérés feldolgozása azonnal megtörténik. Amikor a válasz jön vissza, akkor egy index, amely teljes szöveges kereshető. A válasznak így kell kinéznie:
+1. Küldje el a kérést. A kérés feldolgozása azonnal megtörténik. Ha a válasz visszatér, egy teljes szöveges kereshető indextel fog rendelkezni. A válasznak így kell kinéznie:
 
     ```json
     {
@@ -275,15 +275,15 @@ Az indexelő csatlakozik az adatforráshoz, adatokat importál a célkeresési i
     }
     ```
 
-## <a name="6---search-your-json-files"></a>6 - Keresés a JSON fájlok
+## <a name="6---search-your-json-files"></a>6 – JSON-fájlok keresése
 
-Az első dokumentum betöltése után már elkezdheti a keresést.
+Az első dokumentum betöltését követően megkezdheti a keresést.
 
-1. Módosítsa az igét **get**gombra.
+1. Módosítsa a **lekérdezni**kívánt műveletet.
 
-1. Állítsa be a hívás `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`URI-ját. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI- `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`ját a következőre:. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
-1. Küldje el a kérést. Ez egy meghatározatlan teljes szöveges keresési lekérdezés, amely az indexben visszakereshetőként megjelölt összes mezőt, valamint egy dokumentumszámot ad vissza. A válasznak így kell kinéznie:
+1. Küldje el a kérést. Ez egy nem megadott teljes szöveges keresési lekérdezés, amely visszaadja az indexben beolvasható összes mezőt, valamint a dokumentumok számát. A válasznak így kell kinéznie:
 
     ```json
     {
@@ -313,24 +313,24 @@ Az első dokumentum betöltése után már elkezdheti a keresést.
             . . . 
     ```
 
-1. Adja `$select` hozzá a lekérdezési paramétert, `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`hogy az eredmények kevesebb mezőre korlátozódjanak: .  Ebben a lekérdezésben 100 dokumentum egyezik, de alapértelmezés szerint az Azure Cognitive Search csak 50-et ad vissza az eredményekben.
+1. Adja hozzá `$select` a lekérdezési paramétert az eredmények kevesebb mezőre `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`való korlátozásához:.  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
 
-   ![Paraméteres lekérdezés](media/search-semi-structured-data/lastquery.png "Lemásosított lekérdezés")
+   ![Paraméteres lekérdezés](media/search-semi-structured-data/lastquery.png "Paramterized-lekérdezés")
 
-1. Egy összetettebb lekérdezés például `$filter=MinimumAge ge 30 and MaximumAge lt 75`a , amely csak azokat az eredményeket adja vissza, ahol a MinimumAge paraméterek 30-nál nagyobbak vagy egyenlők, és a MaximumAge 75-nél kisebb. Cserélje `$select` le a `$filter` kifejezést a kifejezésre.
+1. Példa összetettebb lekérdezésre `$filter=MinimumAge ge 30 and MaximumAge lt 75`, amely csak azokat az eredményeket adja vissza, amelyekben a paraméterek minimális értéke nagyobb vagy egyenlő, mint 30, a maximális érték pedig 75. Cserélje le `$select` a kifejezést a `$filter` kifejezésre.
 
    ![Részben strukturált keresés](media/search-semi-structured-data/metadatashort.png)
 
-Használhatja a logikai operátorokat (és vagy nem) és az összehasonlító operátorokat (eq, ne, gt, lt, ge, le). A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket. További információt és példákat az [Egyszerű lekérdezés létrehozása](search-query-simple-examples.md)című témakörben talál.
+A logikai operátorok (és, vagy, nem) és az összehasonlító operátorok (EQ, ne, gt, lt, GE, le) is használhatók. A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket. További információkat és példákat az [egyszerű lekérdezés létrehozása](search-query-simple-examples.md)című témakörben talál.
 
 > [!NOTE]
 > A `$filter` paraméter csak olyan metaadatokkal működik, amelyek szűrhetőként lettek megjelölve az index létrehozásakor.
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-A fejlesztés korai kísérleti szakaszában a legpraktikusabb módszer az iteráció tervezésére, hogy törölje az objektumokat az Azure Cognitive Search szolgáltatásból, és lehetővé tegye a kód újraépítését. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
-A portál segítségével törölheti az indexeket, indexelők és adatforrások. Vagy használja **a DELETE parancsot,** és adja meg az URL-címeket az egyes objektumokhoz. A következő parancs töröl egy indexelőt.
+A portál használatával törölhet indexeket, indexelő fájlokat és adatforrásokat. Vagy használja a **delete (Törlés** ) lehetőséget, és adja meg az egyes objektumok URL-címét A következő parancs törli az indexelő.
 
 ```http
 DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
@@ -340,13 +340,13 @@ Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha saját előfizetésében dolgozik, a projekt végén célszerű eltávolítani azokat az erőforrásokat, amelyekre már nincs szüksége. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
-Az erőforrásokat a portálon keresheti meg és kezelheti a bal oldali navigációs ablak Minden erőforrás vagy Erőforráscsoport hivatkozásával.
+A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri az Azure Blob indexelésének alapjait, vessünk egy közelebbi pillantást a JSON-blobok indexelő konfigurációjának az Azure Storage-ban.
+Most, hogy már ismeri az Azure Blob-indexelés alapjait, ismerkedjen meg részletesebben a JSON-Blobok indexelési konfigurációjával az Azure Storage-ban.
 
 > [!div class="nextstepaction"]
-> [JSON blob indexelésének konfigurálása](search-howto-index-json-blobs.md)
+> [JSON-blob indexelésének konfigurálása](search-howto-index-json-blobs.md)

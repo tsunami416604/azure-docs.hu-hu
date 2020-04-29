@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script Példa – Kötegelt fiók létrehozása – felhasználói előfizetés
-description: Ez a szkript létrehoz egy Azure Batch-fiókot felhasználói előfizetési módban. Ez a fiók számítási csomópontokat oszt ki az előfizetésben.
+title: Azure CLI parancsfájl – példa – batch-fiók létrehozása – felhasználói előfizetés
+description: Ez a szkript létrehoz egy Azure Batch-fiókot felhasználói előfizetési módban. Ez a fiók számítási csomópontokat foglal le az előfizetésében.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 5cab96c148d52597ee024f1ddb0b683db8d52dd7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77024517"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI-példa: Batch-fiók létrehozása felhasználói előfizetési módban

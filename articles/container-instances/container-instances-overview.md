@@ -1,14 +1,14 @@
 ---
 title: Kiszolgáló nélküli tárolók az Azure-ban
-description: Az Azure Container Instances szolgáltatás a leggyorsabb és legegyszerűbb módja az elkülönített tárolók futtatásának az Azure-ban, anélkül, hogy a virtuális gépek kezelése, és anélkül, hogy egy magasabb szintű orchestrator.
+description: A Azure Container Instances szolgáltatás az elkülönített tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját kínálja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű Orchestrator alkalmaznia.
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79240253"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
@@ -23,12 +23,12 @@ A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel (VM-ekkel) s
 
 ## <a name="container-access"></a>Tároló-hozzáférés
 
-Az Azure Container Instances lehetővé teszi, hogy a tárolócsoportok at közvetlenül az interneten egy IP-cím és egy teljesen minősített tartománynév (FQDN). Tárolópéldány létrehozásakor egyéni DNS-névcímkét kell megadnia ahhoz, hogy az alkalmazás elérhető legyen a *customlabel*.*azureregion*.azurecontainer.io régióban.
+Azure Container Instances lehetővé teszi, hogy a tároló csoportok közvetlenül az interneten legyenek kitéve IP-címmel és teljes tartománynévvel (FQDN). Tárolópéldány létrehozásakor egyéni DNS-névcímkét kell megadnia ahhoz, hogy az alkalmazás elérhető legyen a *customlabel*.*azureregion*.azurecontainer.io régióban.
 
-Az Azure Container Instances is támogatja a parancs végrehajtása egy futó tárolóban azáltal, hogy egy interaktív rendszerhéj, amely segít az alkalmazás fejlesztésés hibaelhárítás. Az access HTTPS-kapcsolaton keresztül történik, a TLS használatával az ügyfélkapcsolatok védelmére.
+A Azure Container Instances támogatja egy parancs futtatását egy futó tárolóban azáltal, hogy egy interaktív rendszerhéj segítségével segíti az alkalmazások fejlesztését és hibaelhárítását. A hozzáférés HTTPS-kapcsolaton keresztül történik, a TLS használatával biztosítva az ügyfélkapcsolatokat.
 
 > [!IMPORTANT]
-> 2020. január 13-tól kezdődően az Azure Container Instances a TLS 1.2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolatára lesz szükség. A TLS 1.0 és 1.1 támogatása megszűnik.
+> 2020. január 13-án Azure Container Instances a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
 
 ## <a name="hypervisor-level-security"></a>Hipervizorszintű biztonság
 
@@ -39,36 +39,36 @@ Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülöníté
 
 A tárolók általában egyetlen alkalmazás futtatására vannak optimalizálva, azonban ezeknek az alkalmazásoknak a pontos igényei nagyon is eltérőek lehetnek. Az Azure Container Instances optimális kihasználtságot biztosít, mivel pontosan megadható a processzormagok száma és a memória mennyisége. A fizetés az igényelt erőforrások alapján történik másodpercalapú elszámolás szerint, így tényleges igényeinek megfelelően optimalizálhatja költségeit a legkisebb részletekig.
 
-A számítási igényű feladatok, például a gépi tanulás, az Azure Container Instances ütemezheti linuxos tárolók at NVIDIA Tesla [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió) használatával.
+A nagy számítási igényű feladatok, például a gépi tanulás esetében a Azure Container Instances a Linux-tárolókat az NVIDIA Tesla [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió) használatára is képes ütemezni.
 
 ## <a name="persistent-storage"></a>Állandó tárolók
 
-Az Azure Container Instances állapotának lekéréséhez és megőrzéséhez az Azure Storage által támogatott [Azure Files-megosztások](container-instances-mounting-azure-files-volume.md) közvetlen csatlakoztatását kínáljuk.
+Az Azure Container Instances-nal való lekéréséhez és megtartásához közvetlen csatlakoztatást biztosítunk az Azure Storage által támogatott [Azure Files-megosztásokhoz](container-instances-mounting-azure-files-volume.md) .
 
 ## <a name="linux-and-windows-containers"></a>Linux- és Windows-tárolók
 
 Az Azure Container Instances használatával a Windows- és a Linux-tárolókat ugyanazzal az API-val ütemezheti. Egyszerűen adja meg az operációs rendszer típusát a [tárolócsoportok](container-instances-container-groups.md) létrehozásakor.
 
-Egyes funkciók jelenleg linuxos tárolókra korlátozódnak:
+Egyes funkciók jelenleg csak Linux-tárolók:
 
 * Több tároló tárolócsoportonként
-* Kötetcsatlakoztatás ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [secret](container-instances-volume-secret.md))
-* [Erőforrás-használati metrikák az](container-instances-monitor.md) Azure Monitor segítségével
-* [Virtuális hálózat telepítése](container-instances-vnet.md)
+* Kötet csatlakoztatása ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo típusú](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
+* [Erőforrás-használati metrikák](container-instances-monitor.md) Azure monitor
+* [Virtuális hálózat központi telepítése](container-instances-vnet.md)
 * [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
 
-A Windows-tárolók központi telepítéséhez a gyakori [Windows alaplemezképeken](container-instances-faq.md#what-windows-base-os-images-are-supported)alapuló lemezképeket használjon.
+A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Windows alapképek](container-instances-faq.md#what-windows-base-os-images-are-supported)alapján kell használni.
 
 > [!NOTE]
-> A Windows Server 2019-alapú lemezképek használata az Azure Container Instances előzetes verzióban érhető el.
+> A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
 
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 
 Az Azure Container Instances támogatja az olyan [több tárolóból álló csoportok](container-instances-container-groups.md) ütemezését, amelyek osztoznak a gazdagépen, a helyi hálózaton és a tárolón, valamint azonos az életciklusuk. Ennek segítéségével kombinálhatja a fő alkalmazástárolóját más, támogató szerepű tárolókkal, például naplózó oldalkocsikkal.
 
-## <a name="virtual-network-deployment"></a>Virtuális hálózat telepítése
+## <a name="virtual-network-deployment"></a>Virtuális hálózat központi telepítése
 
-Jelenleg az Azure-régiók egy részhalmazában érhető el az éles számítási feladatok számára, az Azure Container Instances ezen szolgáltatása lehetővé teszi [a tárolópéldányok üzembe helyezését egy Azure virtuális hálózatba.](container-instances-vnet.md) Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
+Az Azure-régiók egy részében jelenleg az éles számítási feladatokhoz érhető el, Azure Container Instances ez a szolgáltatás lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
 
 ## <a name="next-steps"></a>További lépések
 

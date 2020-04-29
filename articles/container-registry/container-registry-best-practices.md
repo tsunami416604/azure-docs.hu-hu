@@ -4,17 +4,17 @@ description: Az ajánlott eljárások követésével megismerkedhet az Azure Con
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247071"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
 Az itt leírt ajánlott eljárások követésével a legjobb teljesítménnyel és költséghatékonysággal használhatja az Azure-ban található privát Docker regisztrációs adatbázist.
 
-Lásd [még: Javaslatok a tárolórendszerképek címkézésére és verziószámozására](container-registry-image-tag-version.md) a beállításjegyzékben lévő címke- és verziórendszerképek címkézésére vonatkozó stratégiákhoz. 
+Lásd még: [javaslatok a lemezképek címkézésére és verziószámozására](container-registry-image-tag-version.md) a beállításjegyzékben található rendszerképek címkézéséhez és verziószámozásához. 
 
 ## <a name="network-close-deployment"></a>Hálózatközeli központi telepítés
 
@@ -33,7 +33,7 @@ A georeplikáció használatának megismeréséhez tekintse meg háromrészes ú
 
 Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs adatbázis megosztását több csoporttal a szervezeten belül. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok.
 
-Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, például `aspnetcore`a rendszer a gyökérnévtérbe kerül, míg a Termékek és marketing csoportok tulajdonában lévő tárolóképek mindegyike a saját névterét használja.
+Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, `aspnetcore`például a-ben használt rendszerképek a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -42,7 +42,7 @@ Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati 
 
 ## <a name="dedicated-resource-group"></a>Dedikált erőforráscsoport
 
-Mivel a tárolójegyzékek olyan erőforrások, amelyek több tárolóállomáson használatosak, a beállításjegyzéknek a saját erőforráscsoportjában kell lennie.
+Mivel a tároló-beállításjegyzékek olyan erőforrások, amelyeket több tároló gazdagépe használ, a beállításjegyzéknek a saját erőforráscsoporthoz kell tartoznia.
 
 Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
@@ -53,7 +53,7 @@ Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forg
 | Típus | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
 | Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
-| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatás](container-registry-authentication.md#service-principal) |
+| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatásnév](container-registry-authentication.md#service-principal) |
 
 Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesítés Azure tárolóregisztrációs adatbázissal](container-registry-authentication.md).
 
@@ -61,7 +61,7 @@ Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesí
 
 A [tárolóregisztrációs adatbázis egyes termékváltozatainak][container-registry-skus] tárolási korlátai szándékaink szerint a tipikus forgatókönyvekhez igazodnak: **Alapszintű** az induláshoz, **Standard** az üzemi alkalmazások többségéhez és **Prémium** a nagy kapacitású teljesítményhez és a [georeplikációhoz][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
-Használja az Azure CLI parancs [az acr show-használat][az-acr-show-usage] megjelenítéséhez az aktuális mérete a rendszerleíró adatbázis:
+Használja az Azure CLI-parancsot az [ACR show-][az-acr-show-usage] use paranccsal a beállításjegyzék aktuális méretének megjelenítéséhez:
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -74,15 +74,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-Az aktuális anambejegyzés áttekintése az Azure Portalon használt aktuális tárhelyet is **megtalálhatja:**
+A Azure Portalban található beállításjegyzék **áttekintésében** használt aktuális tárterületet is megtalálhatja:
 
 ![Adattár használati adatainak megtekintése az Azure Portalon][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Képadatok törlése
+### <a name="delete-image-data"></a>Rendszerkép-adatok törlése
 
-Az Azure Container Registry számos módszert támogat a rendszerképadatok törléséhez a tároló beállításjegyzékéből. Törölheti a képeket címke vagy jegyzékfájl kivonatolása szerint, vagy törölhet idtárt.
+Azure Container Registry számos módszert támogat a képadatoknak a tároló-beállításjegyzékből való törléséhez. A képeket címkével vagy jegyzékfájl-kivonattal is törölheti, vagy törölheti a teljes tárházat.
 
-A lemezképek adatbázisból való törléséről, beleértve a címkézetlen (néha "lógó" vagy "árván yakandó") rendszerképeket, a [Tárolóképek törlése az Azure Container Registry alkalmazásban című témakörben](container-registry-delete.md)talál részleteket.
+A képadatok beállításjegyzékből való törlésével kapcsolatos részletekért, beleértve a címkézett (más néven "lelógó" vagy "árva") lemezképeket, lásd: [tároló lemezképek törlése Azure Container Registry](container-registry-delete.md).
 
 ## <a name="next-steps"></a>További lépések
 

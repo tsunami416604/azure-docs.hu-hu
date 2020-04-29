@@ -1,6 +1,6 @@
 ---
-title: Általános célú szolgáltatási szint
-description: Ismerje meg az Azure SQL Database általános célú rétegét
+title: Általános célú szolgáltatási réteg
+description: További információ a Azure SQL Database általános célú rétegéről
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,43 +12,43 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255885"
 ---
-# <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatási szint – Azure SQL-adatbázis
+# <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatási réteg – Azure SQL Database
 
 > [!NOTE]
-> A virtuálismag-alapú vásárlási modell általános célú szolgáltatási szintjét a DTU-alapú vásárlási modell standard szolgáltatási szintjének nevezzük. A virtuálismag-alapú vásárlási modell és a DTU-alapú vásárlási modell összehasonlítását az [Azure SQL Database modellek és erőforrások vásárlása](sql-database-purchase-models.md)című témakörben ismeri.
+> A virtuális mag-alapú vásárlási modell általános célú szolgáltatási rétegét a DTU-alapú vásárlási modell standard szintű szolgáltatási rétegének nevezzük. A virtuális mag-alapú vásárlási modellnek a DTU-alapú vásárlási modellel való összehasonlítását lásd: [Azure SQL Database vásárlási modellek és erőforrások](sql-database-purchase-models.md).
 
-Az Azure SQL Database az SQL Server adatbázis-motorarchitektúráján alapul, amelyet a felhőkörnyezethez igazítottak, hogy infrastruktúra-hibák esetén is 99,99%-os rendelkezésre állást biztosítson. Az Azure SQL Database három szolgáltatási szinttel van használatos, amelyek mindegyike különböző architekturális modellekkel van. Ezek a szolgáltatási szintek a következők:
+A Azure SQL Database a felhőalapú környezethez igazított SQL Server adatbázismotor-architektúrán alapul, hogy az infrastruktúra meghibásodása esetén is biztosítson 99,99%-os rendelkezésre állást. A Azure SQL Databaseben három szolgáltatási szintet használunk, amelyek mindegyike különböző építészeti modellekkel rendelkezik. A szolgáltatási szintek a következők:
 
 - Általános célú
-- Üzleti kritikus
+- Üzleti szempontból kritikus
 - Rugalmas skálázás
 
-Az általános célú szolgáltatási szint architekturális modellje a számítási és tárolási elkülönítésen alapul. Ez az architekturális modell az Azure Blob storage magas rendelkezésre állására és megbízhatóságára támaszkodik, amely transzparens módon replikálja az adatbázisfájlokat, és garantálja az adatvesztést, ha az alapul szolgáló infrastruktúra meghibásodása megtörténik.
+Az általános célú szolgáltatási réteg építészeti modellje a számítás és a tárolás elkülönítésén alapul. Ez az építészeti modell az Azure Blob Storage magas rendelkezésre állására és megbízhatóságára támaszkodik, amely az adatbázis-fájlokat átlátható módon replikálja, és a mögöttes infrastruktúra meghibásodása esetén nem garantálja az adatvesztést.
 
-Az alábbi ábrán négy csomópont látható a szabványos architekturális modellben a leválasztott számítási és tárolási rétegekkel.
+Az alábbi ábrán a standard építészeti modell négy csomópontja látható a elkülönített számítási és tárolási rétegekkel.
 
-![A számítás és a tárolás szétválasztása](media/sql-database-managed-instance/general-purpose-service-tier.png)
+![A számítás és a tárolás elkülönítése](media/sql-database-managed-instance/general-purpose-service-tier.png)
 
-Az általános célú szolgáltatási szint architekturális modelljében két réteg van:
+Az általános célú szolgáltatási réteg építészeti modellje két rétegből áll:
 
-- Állapot nélküli számítási réteg, amely `sqlservr.exe` fut a folyamat, és csak átmeneti és gyorsítótárazott adatokat tartalmaz (például – terv cache, pufferkészlet, oszlop tárolókészlet). Ezt az állapotmentes SQL Server-csomópontot az Azure Service Fabric üzemelteti, amely inicializálja a folyamatot, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik helyre.
-- Állapotalapú adatréteg az Azure Blob storage-ban tárolt adatbázisfájlokkal (.mdf/.ldf). Az Azure Blob storage garantálja, hogy nem lesz adatvesztés bármely rekord, amely bármely adatbázisfájlba kerül. Az Azure Storage beépített adatrendelkezésre állási/redundancia, amely biztosítja, hogy a naplófájlban vagy az adatfájlban lévő összes rekord akkor is megőrződjön, ha az SQL Server folyamat összeomlik.
+- Egy állapot nélküli számítási réteg, amely futtatja a `sqlservr.exe` folyamatot, és csak átmeneti és gyorsítótárazott adatokból áll (például: terv gyorsítótár, puffer készlet, oszlopdiagram-készlet). Ezt az állapot nélküli SQL Server csomópontot az Azure Service Fabric működteti, amely inicializálja a folyamatot, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik helyre.
+- Az Azure Blob Storage-ban tárolt, adatbázis-fájlokat (. MDF/. ldf) tartalmazó állapot-nyilvántartó adatréteg. Az Azure Blob Storage garantálja, hogy az adatbázis-fájlokban elhelyezett összes rekord adatvesztést nem eredményez. Az Azure Storage beépített adatelérhetőséget/redundanciát biztosít, amely biztosítja, hogy a naplófájlban vagy az adatfájlban lévő lapok minden rekordja megmaradjon, még akkor is, ha SQL Server folyamat összeomlik.
 
-Amikor az adatbázis-motor vagy az operációs rendszer frissül, az alapul szolgáló infrastruktúra egy része meghibásodik, vagy ha az SQL Server folyamatában kritikus problémát észlel, az Azure Service Fabric áthelyezi az állapotnélküli SQL Server-folyamatot egy másik állapotnélküli számítási csomópontra. Van egy tartalék csomópontkészlet, amely arra vár, hogy új számítási szolgáltatást futtasson, ha az elsődleges csomópont feladatátvételtörténik a feladatátvételi idő minimalizálása érdekében. Az Azure storage-rétegben lévő adatokat ez nem érinti, és az adatok/naplófájlok az újonnan inicializált SQL Server-folyamathoz kapcsolódnak. Ez a folyamat garantálja a 99,99%-os rendelkezésre állást, de előfordulhat, hogy bizonyos teljesítményhatással van a nagy számítási feladatok, amely az átmeneti idő miatt fut, és az a tény, az új SQL Server csomópont kezdődik hideg gyorsítótár.
+Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolgáló infrastruktúra egy része meghibásodik, vagy ha SQL Server folyamatban valamilyen kritikus problémát észlel, az Azure Service Fabric áthelyezi az állapot nélküli SQL Server folyamatot egy másik állapot nélküli számítási csomópontra. A tartalék csomópontok készlete új számítási szolgáltatás futtatására vár, ha az elsődleges csomópont feladatátvétele a feladatátvételi idő csökkentése érdekében történik. Az Azure Storage-rétegben tárolt adatműveletek nem érintettek, és az adatfájlok és a naplófájlok az újonnan inicializált SQL Server folyamathoz vannak csatolva. Ez a folyamat 99,99%-os rendelkezésre állást garantál, azonban lehetséges, hogy a nagy terhelésű számítási feladatok esetében az átmeneti idő miatt az új SQL Server csomópont a hideg gyorsítótárral kezdődik.
 
-## <a name="when-to-choose-this-service-tier"></a>Mikor válassza ezt a szolgáltatási szintet?
+## <a name="when-to-choose-this-service-tier"></a>Mikor válassza ezt a szolgáltatási szintet
 
-Általános célú szolgáltatási szint egy alapértelmezett szolgáltatási szint az Azure SQL Database, amely a legtöbb általános számítási feladatok. Ha egy teljes körűen felügyelt adatbázis-motor99,99%-os SLA-val rendelkező, 5 és 10 ms közötti tárolási késéssel, amely a legtöbb esetben megfelel az Azure SQL IaaS-nek, az Általános célú szint az Ön számára.
+Általános célú szolgáltatási szinten a Azure SQL Database alapértelmezett szolgáltatási szintje, amelyet az általános munkaterhelések többsége számára terveztek. Ha a legtöbb esetben egy teljes körűen felügyelt adatbázismotor 99,99%-os SLA-val, valamint 5 és 10 MS közötti tárolási késéssel rendelkezik, amelyek az esetek többségében megfelelnek az Azure SQL-IaaS, általános célú a szint az Ön számára.
 
 ## <a name="next-steps"></a>További lépések
 
-- Keresse meg az általános cél/standard szint erőforrás-jellemzőit (magok száma, I/O-, memória) [a felügyelt példányban,](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)az egyetlen [adatbázist a virtuálismag-modellben](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) vagy [a DTU-modellben,](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)vagy rugalmas készletet [a virtuálismag-modellben](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4) és [a DTU-modellben.](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)
-- További információ [az üzleti legkritikusabb](sql-database-service-tier-business-critical.md) és [a nagy méretű](sql-database-service-tier-hyperscale.md) szintekről.
-- További információ a [Service Fabricről.](../service-fabric/service-fabric-overview.md)
-- A magas rendelkezésre állás és a vészhelyreállítás további lehetőségeiről az [Üzletmenet folytonossága](sql-database-business-continuity.md)témakörben található.
+- Az erőforrás jellemzői (magok, IO, memória) a [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)általános célú/standard szint, a [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) -modellben vagy a [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)található önálló adatbázis, illetve a [virtuális mag-modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4) és a [DTU-modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)rugalmas készlete.
+- Ismerkedjen meg [üzletileg kritikus](sql-database-service-tier-business-critical.md) -és [nagy kapacitású](sql-database-service-tier-hyperscale.md) -szintekkel.
+- A [Service Fabric](../service-fabric/service-fabric-overview.md)megismerése.
+- A magas rendelkezésre állással és a vész-helyreállítással kapcsolatos további lehetőségekért lásd az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.

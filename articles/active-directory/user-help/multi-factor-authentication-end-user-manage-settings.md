@@ -1,6 +1,6 @@
 ---
 title: A kétfaktoros ellenőrzési módszer és beállítások módosítása – Azure Active Directory
-description: A További biztonsági ellenőrzés oldalon megtudhatja, hogyan módosíthatja a munkahelyi vagy iskolai fiókjához szükséges biztonsági ellenőrzési módszert és beállításokat.
+description: A további biztonsági ellenőrzés lapról megtudhatja, hogyan módosíthatja a munkahelyi vagy iskolai fiókjához tartozó biztonsági ellenőrzési módszert és beállításokat.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,129 +13,129 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: curtand
 ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253246"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
 
-Miután beállította a munkahelyi vagy iskolai fiókjához tartozó biztonsági ellenőrzési módszereket, frissítheti a kapcsolódó adatokat, beleértve a következőket:
+A munkahelyi vagy iskolai fiókjához tartozó biztonsági ellenőrzési módszerek beállítása után a kapcsolódó részletek bármelyikét frissítheti, beleértve a következőket:
 
 - Alapértelmezett biztonsági ellenőrzési módszer
 
-- A biztonsági ellenőrzési módszer részletei, például a telefonszám
+- Biztonsági ellenőrzési módszer részletei, például a telefonszáma
 
-- Hitelesítő alkalmazás beállítása vagy eszköz törlése a hitelesítő alkalmazásból
+- A hitelesítő alkalmazás beállítása vagy az eszköz törlése a hitelesítő alkalmazásból
 
-## <a name="using-the-additional-security-verification-page"></a>A További biztonsági ellenőrzés lap használata
+## <a name="using-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés lap használata
 
-Ha a szervezet konkrét lépéseket adott a kétfaktoros ellenőrzés bekapcsolásával és kezelésével kapcsolatban, először kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a További biztonsági ellenőrzés oldalon [érheti](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) el.
+Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének konkrét lépéseit is megadja, először kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a [további biztonsági ellenőrzés](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) oldalon érheti el.
 
 >[!Note]
->Ha a képernyőn látható szöveg nem egyezik a cikkben tárgyalt adatokkal, az azt jelenti, hogy a rendszergazda bekapcsolta a **Biztonsági adatok (előzetes verzió)** felületet, vagy hogy a szervezet saját egyéni portált adott meg. Az új biztonsági adatokról a [Biztonsági adatok (előzetes verzió) című témakörben olvashat bővebben.](user-help-security-info-overview.md) A szervezet egyéni portáljával kapcsolatos további információkért forduljon a szervezet ügyfélszolgálatához.
+>Ha a képernyőn megjelenő információk nem egyeznek meg a jelen cikkben ismertetett lépésekkel, az azt jelenti, hogy a rendszergazda bekapcsolta a **biztonsági adatok (előzetes verzió)** felhasználói élményét, vagy hogy a szervezete saját egyéni portált adott meg. További információ az új biztonsági információkkal kapcsolatban: biztonsági adatok [(előzetes verzió) – áttekintés](user-help-security-info-overview.md). Ha többet szeretne megtudni a szervezet egyéni portálján, forduljon a szervezet ügyfélszolgálatához.
 
-### <a name="to-get-to-the-additional-security-verification-page"></a>A További biztonsági ellenőrzés lap hoz
+### <a name="to-get-to-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés oldalának beolvasása
 
-Ezt a hivatkozást a További biztonsági ellenőrzés lapra mutató hivatkozásra kattintva [követheti.](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)
+Ezt a hivatkozást a [további biztonsági ellenőrzés lapra](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)is követheti.
 
-![További biztonsági ellenőrző lap, a rendelkezésre álló biztonsági ellenőrzési módszer adataival](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+![További biztonsági ellenőrzés lap, az elérhető biztonsági ellenőrzési módszer részleteivel](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-A További biztonsági **ellenőrzés** lap az alábbi lépésekkel is megtérülhet:
+A **további biztonsági ellenőrzés** oldalt a következő lépésekkel is elérheti:
 
-1. Jelentkezzen be [https://myapps.microsoft.com](https://myapps.microsoft.com)a ikonra.
+1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 1. Válassza ki a fiók nevét a jobb felső sarokban, majd válassza a **profil**lehetőséget.
 
-1. Válassza **a További biztonsági ellenőrzés lehetőséget.**  
+1. Válassza a **további biztonsági ellenőrzés**lehetőséget.  
 
-    ![A Saját alkalmazások hivatkozása a További biztonsági ellenőrzés lapra](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
+    ![Saját alkalmazások hivatkozás a további biztonsági ellenőrzés oldalára](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->A **További biztonsági ellenőrzés** lap **Alkalmazásjelszavak** szakaszának használatáról az [Alkalmazásjelszavak kezelése a kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md)című témakörben talál. Az alkalmazásjelszavakat csak olyan alkalmazásokhoz szabad használni, amelyek nem támogatják a kétfaktoros ellenőrzést.
+>További információ a **további biztonsági ellenőrzés** lap **alkalmazások jelszavai** szakaszának használatáról: [alkalmazások jelszavainak kezelése kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md). Az alkalmazás jelszavait csak olyan alkalmazásokhoz szabad használni, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
 ## <a name="change-your-default-security-verification-method"></a>Az alapértelmezett biztonsági ellenőrzési módszer módosítása
 
-Miután bejelentkezett munkahelyi vagy iskolai fiókjába a felhasználónevével és jelszavával, automatikusan megjelenik a választott biztonsági ellenőrzési módszer. A szervezet követelményeitől függően ez lehet egy értesítési vagy ellenőrző kód egy hitelesítő alkalmazáson, egy szöveges üzeneten vagy egy telefonhíváson keresztül.
+Miután bejelentkezett a munkahelyi vagy iskolai fiókjába a felhasználónevével és jelszavával, automatikusan megjelenik a választott biztonsági ellenőrzési módszer. A szervezet követelményeitől függően ez lehet értesítési vagy ellenőrző kód egy hitelesítő alkalmazásban, egy szöveges üzenetben vagy egy telefonhívásban.
 
-Ha úgy dönt, hogy módosítani szeretné a használt alapértelmezett biztonsági ellenőrzési módszert, azt innen teheti meg.
+Ha úgy dönt, hogy módosítani szeretné a használt alapértelmezett biztonsági ellenőrzési módszert, itt megteheti.
 
 ### <a name="to-change-your-default-security-verification-method"></a>Az alapértelmezett biztonsági ellenőrzési módszer módosítása
 
-1. A **További biztonsági ellenőrzés** lapon válassza ki a használni kívánt módszert a **Mi az előnyben részesített beállítás** listában. Az összes lehetőség megjelenik, de csak azokat választhatja ki, amelyeket a szervezet elérhetővé tett.
+1. A **további biztonsági ellenőrzés** lapon válassza ki az **előnyben részesített beállítások** listájából használni kívánt módszert. Ekkor megjelenik az összes lehetőség, de kiválaszthatja a szervezete számára elérhetővé tetteket is.
 
-    - **Értesítés az alkalmazáson keresztül:** A hitelesítő alkalmazáson keresztül értesítést kap arról, hogy várakozási ellenőrző kérése van.
+    - **Értesítés az alkalmazáson keresztül**: a rendszer értesítést küld a hitelesítő alkalmazásban, amelyen várakozó ellenőrzési kérés található.
 
-    - **Hívja fel a hitelesítési telefonomat:** Telefonhívást fog kapni a mobileszközén, amely arra kéri, hogy ellenőrizze adatait.
+    - **Saját hitelesítési telefon hívása**: telefonhívást kap a mobileszközön, és megkérdezi, hogy ellenőrizze-e az adatokat.
 
-    - **Szöveges kód a hitelesítési telefonomra:** A mobileszközön lévő szöveges üzenet részeként ellenőrző kódot kap. Ezt a kódot be kell írnia a munkahelyi vagy iskolai fiókjához szükséges ellenőrző üzenetbe.
+    - **Szöveges kód a saját hitelesítési telefonjára**: egy szöveges üzenet részeként egy ellenőrző kódot fog kapni a mobileszközön. Ezt a kódot kell megadnia a munkahelyi vagy iskolai fiókjához tartozó ellenőrző kérésben.
 
-    - **Hívja fel az irodai telefonomat:** Az irodai telefonon telefonhívást kap, és arra kéri, hogy ellenőrizze adatait.
+    - **Munkahelyi telefon hívása**: telefonhívást kap az irodai telefonján, és felszólítja Önt az adatok ellenőrzésére.
 
-    - **Ellenőrző kód használata az alkalmazásból:** A hitelesítő alkalmazássegítségével bekell szereznie egy ellenőrző kódot, amelyet a munkahelyi vagy iskolai fiókjából ír a kérdésbe.
+    - **Ellenőrző kód használata az alkalmazásból**: a hitelesítő alkalmazás használatával beolvassa a munkahelyi vagy iskolai fiókjából a parancssorba beírni kívánt ellenőrző kódot.
 
 2. Kattintson a **Mentés** gombra.
 
 ## <a name="add-or-change-your-phone-number"></a>Telefonszám hozzáadása vagy módosítása
 
-A **További biztonsági ellenőrzés** lapon új telefonszámokat adhat hozzá, vagy frissítheti a meglévő számokat.
+A **további biztonsági ellenőrzés** lapról új telefonszámokat adhat hozzá, vagy frissítheti a meglévő számokat.
 
 >[!Important]
->Javasoljuk, hogy adjon meg egy másodlagos telefonszámot, hogy megakadályozza a fiókból való kizárást, ha az elsődleges telefon elveszett vagy ellopták, vagy ha új telefont kap, és már nem rendelkezik az eredeti, elsődleges telefonszámával.
+>Javasoljuk, hogy adjon hozzá egy másodlagos telefonszámot, amely megakadályozza, hogy kizárja a fiókját, ha az elsődleges telefon elveszett vagy ellopták, vagy ha új telefont kap, és már nem rendelkezik az eredeti, elsődleges telefonszámmal.
 
 ### <a name="to-change-your-phone-numbers"></a>A telefonszámok módosítása
 
-1. A További **biztonsági ellenőrzés** lap **Hogyan szeretne válaszolni?** **Authentication phone** **Office phone**
+1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon frissítse a **hitelesítő telefon** (az elsődleges mobileszköz) telefonszámának adatait és az **irodai telefonját**.
 
-1. Jelölje be az **Alternatív hitelesítési telefon** beállítás melletti jelölőnégyzetet, majd írjon be egy másodlagos telefonszámot, ahol szöveges üzeneteket vagy telefonhívásokat fogadhat, ha nem tudja elérni az elsődleges eszközt.
+1. Jelölje be a **másodlagos hitelesítő telefon** lehetőség melletti jelölőnégyzetet, majd írja be azt a másodlagos telefonszámot, ahol szöveges üzeneteket vagy telefonhívásokat fogadhat, ha nem fér hozzá az elsődleges eszközhöz.
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Új fiók hozzáadása a Microsoft hitelesítő alkalmazásához
+## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Új fiók felvétele a Microsoft hitelesítő alkalmazásba
 
-Munkahelyi vagy iskolai fiókját az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy iOS rendszerre készült Microsoft Authenticator alkalmazásban [állíthatja](https://apps.apple.com/app/microsoft-authenticator/id983156458)be.
+Beállíthatja munkahelyi vagy iskolai fiókját az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)rendszerhez készült Microsoft Authenticator alkalmazásban.
 
-Ha már beállította munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazásban, nem kell újra megtennie.
+Ha már beállította munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazásban, akkor nem kell újra végrehajtania.
 
-1. A **További biztonsági ellenőrzés** lap **Hogyan szeretne válaszolni?** **Set up Authenticator app**
+1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon válassza a **hitelesítő alkalmazás beállítása**lehetőséget.
 
     ![Munkahelyi vagy iskolai fiók beállítása a Microsoft Authenticator alkalmazásban](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
 
-1. Kövesse a képernyőn megjelenő utasításokat, például a mobileszköz használatával a QR-kód beolvasóját, majd válassza a **Tovább**gombot.
+1. Kövesse a képernyőn megjelenő utasításokat, például a mobileszköz használatával ellenőrizze a QR-kódot, majd válassza a **tovább**lehetőséget.
 
-    Az adatok ellenőrzéséhez jóvá kell hagynia egy értesítést a Microsoft Authenticator alkalmazáson keresztül.
+    Az adatok ellenőrzéséhez meg kell adnia, hogy jóvá kell hagynia egy értesítést a Microsoft Authenticator alkalmazáson keresztül.
 
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Fiók vagy eszköz törlése a Microsoft Authenticator alkalmazásból
 
-A fiókot törölheti a Microsoft Authenticator alkalmazásból, és törölheti az eszközt munkahelyi vagy iskolai fiókjából. Általában törli az eszközt, hogy véglegesen eltávolítson egy elveszett, ellopott vagy régi eszközt a fiókjából, és törli a fiókját, hogy megpróbálja kijavítani a csatlakozási problémákat, vagy hogy megoldjon egy fiókváltozást, például egy új felhasználónevet.
+A fiókot törölheti a Microsoft Authenticator alkalmazásból, és törölheti az eszközt a munkahelyi vagy iskolai fiókjából. Általában törli az eszközt az elveszett, ellopott vagy régi eszközök fiókból való végleges eltávolításához, és törli a fiókját, hogy megpróbáljon valamilyen kapcsolódási problémát kijavítani, vagy egy fiók módosítását, például egy új felhasználónevet.
 
-### <a name="to-delete-your-device-from-your-work-or-school-account"></a>A készülék törlése munkahelyi vagy iskolai fiókjából
+### <a name="to-delete-your-device-from-your-work-or-school-account"></a>Az eszköz törlése munkahelyi vagy iskolai fiókból
 
-1. A **További biztonsági ellenőrzés** lap **Hogyan szeretne válaszolni?** **Set up Authenticator app**
+1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon jelölje be a **hitelesítő alkalmazás beállítása** gomb.
 
 1. Kattintson a **Mentés** gombra.
 
-### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>A fiók törlése a Microsoft Authenticator alkalmazásból
+### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Fiók törlése a Microsoft Authenticator alkalmazásból
 
-A Microsoft Authenticator alkalmazásban válassza a törölni kívánt eszköz melletti **Törlés** gombot.
+A Microsoft Authenticator alkalmazásban kattintson a törölni kívánt eszköz melletti **Törlés** gombra.
 
-## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>A kétfaktoros ellenőrzési kérések bekapcsolása megbízható eszközön
+## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>A kétfaktoros ellenőrzési kérések bekapcsolása egy megbízható eszközön
 
-A szervezeti beállításoktól függően megjelenhet egy jelölőnégyzet, amely en a böngészőkétlépéses ellenőrzés végrehajtásakor x nap esetén a **Ne kérjen újra X napot.** Ha ezt a lehetőséget választotta a kétfaktoros ellenőrzési kérések leállításához, majd elveszíti az eszközét, vagy az eszköz potenciálisan veszélybe kerül, a fiók védelme érdekében kapcsolja vissza a kétfaktoros ellenőrzési utasításokat. Az összes eszközre vonatkozóan egyszerre kell bekapcsolnia a figyelmeztetést. Sajnos a kérdésnem kapcsolható vissza csak egy adott eszközre.
+A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyzet jelenik meg, amely szerint a böngészőn kétfaktoros ellenőrzés végrehajtásakor a rendszer **nem kér újra X napra** . Ha ezt a beállítást választotta a kétfaktoros ellenőrző kérések leállításához, majd elveszíti az eszközét, vagy az eszköz esetleg sérült, akkor a fiók védelmének biztosításához kapcsolja be a kétfaktoros ellenőrzési kéréseket. A kéréseket egyszerre kell bekapcsolni az összes eszközön. Sajnos a kérések nem kapcsolhatók vissza csak egy adott eszközre.
 
-### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>A kétfaktoros ellenőrzés üzenetének visszakapcsolása az eszközökön
+### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>A kétfaktoros ellenőrzés bekapcsolásának visszahívása az eszközökön
 
-A [ **További biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **Többtényezős hitelesítés visszaállítása korábbi megbízható eszközökön**lehetőséget. Amikor legközelebb bejelentkezik valamelyik eszközre, a rendszer kéri a kétfaktoros ellenőrzés elvégzését.
+A [ **további biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget. Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
 ## <a name="next-steps"></a>További lépések
 
-A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazásjelszavakat, bejelentkezhet, vagy segítséget kaphat néhány gyakori, kéttényezős ellenőrzéssel kapcsolatos problémához.
+A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 
-- [Alkalmazásjelszavak kezelése a kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md) minden olyan alkalmazáshoz, amely nem támogatja a kétfaktoros ellenőrzést.
+- Az [alkalmazás jelszavainak kezelése kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md) minden olyan alkalmazás esetében, amely nem támogatja a kétfaktoros ellenőrzést.
 
-- [Bejelentkezés kétfaktoros ellenőrzéssel](multi-factor-authentication-end-user-signin.md)
+- [Bejelentkezés a kétfaktoros ellenőrzés használatával](multi-factor-authentication-end-user-signin.md)
 
-- [Gyakori problémák megoldása kétfaktoros ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md)
+- [A kétfaktoros ellenőrzés gyakori problémáinak megoldása](multi-factor-authentication-end-user-troubleshoot.md)

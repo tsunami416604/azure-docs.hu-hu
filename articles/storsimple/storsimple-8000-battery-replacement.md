@@ -1,43 +1,43 @@
 ---
-title: Akkumulátor cseréje a Microsoft Azure StorSimple 8000 sorozatú eszközön
-description: Ez a témakör a StorSimple-eszközön lévő tartalék akkumulátormodul eltávolítását, cseréjét és karbantartását ismerteti.
+title: Az akkumulátor cseréje Microsoft Azure StorSimple 8000 sorozatú eszközön
+description: Ismerteti, hogyan lehet eltávolítani, lecserélni és karbantartani a Backup akkumulátor-modult a StorSimple-eszközön.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255014"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>A tartalék akkumulátor modul cseréje a StorSimple-eszközön
 
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure StorSimple-eszköz elsődleges házteljesítmény- és hűtési modulja (PCM) egy további akkumulátorral rendelkezik. Ez a csomag biztosítja a tápellátást, így a StorSimple eszköz adatokat menthet, ha az elsődleges ház hálózati áramvesztése csökken. Ezt az akkumulátort *tartalék akkumulátormodulnak nevezzük.* A tartalék akkumulátor modul csak a StorSimple eszköz elsődleges házához létezik (az EBOD ház nem tartalmaz tartalék akkumulátormodult).
+A Microsoft Azure StorSimple eszköz elsődleges bekerítési teljesítmény-és hűtési moduljának (PCM) további akkumulátor-csomaggal rendelkezik. Ez a csomag lehetővé teszi, hogy a StorSimple-eszköz képes legyen az adatmentésre, ha áramkimaradás történt az elsődleges bekerítésnél. Ezt az akkumulátort a *Backup akkumulátor moduljának*nevezzük. A Backup akkumulátor modul csak a StorSimple-eszköz elsődleges bekerítéséhez létezik (a EBOD-ház nem tartalmaz Backup akkumulátor-modult).
 
 Ez az oktatóanyag a következőket ismerteti:
 
-* A tartalék akkumulátormodul eltávolítása
-* Új tartalék akkumulátormodul telepítése
-* A tartalék akkumulátormodul karbantartása
+* A biztonsági mentési akkumulátor modul eltávolítása
+* Új biztonsági mentési akkumulátor modul telepítése
+* A biztonsági mentési akkumulátor moduljának karbantartása
 
 > [!IMPORTANT]
-> A tartalék akkumulátormodul eltávolítása és cseréje előtt tekintse át a Biztonsági információkat a Bevezetés a [StorSimple hardverösszetevő-csere című](storsimple-8000-hardware-component-replacement.md)cikkből.
+> A Backup akkumulátor-modul eltávolítása és cseréje előtt tekintse át a biztonsági tudnivalókat a [StorSimple hardveres összetevők cseréjének bemutatása](storsimple-8000-hardware-component-replacement.md)című témakörben.
 
 
-## <a name="remove-the-backup-battery-module"></a>A tartalék akkumulátormodul eltávolítása
-A StorSimple eszköz tartalék akkumulátormodulja egy mezőre cserélhető egység. A PCM-be való beszerelés előtt az akkumulátormodult az eredeti csomagolásban kell tárolni. A tartalék akkumulátor eltávolításához hajtsa végre az alábbi lépéseket.
+## <a name="remove-the-backup-battery-module"></a>A biztonsági mentési akkumulátor modul eltávolítása
+A StorSimple-eszköz Backup akkumulátor-modulja egy mezőre cserélhető egység. A PCM-ben való telepítése előtt az akkumulátor-modult az eredeti csomagolásban kell tárolni. A biztonsági mentési akkumulátor eltávolításához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-remove-the-backup-battery-module"></a>A tartalék akkumulátormodul eltávolítása
-1. Az Azure Portalon nyissa meg a StorSimple Eszközkezelő szolgáltatás panel. Nyissa meg az **Eszközök lapot,** és válassza ki az eszközt az eszközök listájából. Nyissa meg a**Hardver állapotának** **figyelése** > lehetőséget. A **Megosztott összetevők csoportban**tekintse meg az akkumulátor állapotát.
-2. Azonosítsa azt a PCM-et, amelyben az akkumulátor meghibásodott. Az 1.
+#### <a name="to-remove-the-backup-battery-module"></a>A Backup akkumulátor moduljának eltávolítása
+1. A Azure Portal lépjen a StorSimple Eszközkezelő szolgáltatás paneljére. Nyissa meg az **eszközök** elemet, majd válassza ki az eszközt az eszközök listájából. Navigáljon a**hardver állapotának** **figyeléséhez** > . A **megosztott összetevők**területen tekintse meg az akkumulátor állapotát.
+2. Azonosítsa azt a PCM-t, amelyben az akkumulátor meghiúsult. Az 1. ábrán az StorSimple-eszköz hátoldala látható.
    
-    ![Az eszköz elsődleges házmoduljainak hátlapja](./media/storsimple-battery-replacement/IC740994.png)
+    ![Az eszköz elsődleges bekerítési moduljainak hátlapja](./media/storsimple-battery-replacement/IC740994.png)
    
-    **1. ábra** Az elsődleges eszköz háttekusa PCM- és vezérlőmodulokkal
+    **1. ábra** Az elsődleges eszköz hátoldala, amely a PCM és a vezérlő modulokat mutatja
    
    | Címke | Leírás |
    |:--- |:--- |
@@ -46,58 +46,58 @@ A StorSimple eszköz tartalék akkumulátormodulja egy mezőre cserélhető egys
    | 3 |Vezérlő 0 |
    | 4 |Vezérlő 1 |
    
-    Amint azt a 2. **Battery Fault**
+    Ahogy azt a 3. ábra is mutatja, az **akkumulátor meghibásodásának** megfelelő PCM 0 LED-es figyelési mutatót kell megvilágítani.
    
-    ![Backplane Eszköz PCM monitoring jelző LED-ek](./media/storsimple-battery-replacement/IC740992.png)
+    ![Az eszköz PCM monitorozási jelző LED-ek hátlapja](./media/storsimple-battery-replacement/IC740992.png)
    
-    **2. ábra** A PCM hátulján a monitorozási jelző LED-ek láthatók
+    **2. ábra** A monitorozási kijelző LED-je a PCM hátoldalán látható
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Hálózati áramkimaradás |
-   | 2 |Ventilátor hiba |
-   | 3 |Akkumulátor hiba |
-   | 4 |PCM – rendben |
-   | 5 |DC áramkimaradás |
-   | 6 |Az akkumulátor kifogástalan |
-3. Ha a PCM-et meghibásodott akkumulátorral szeretné eltávolítani, kövesse a [PCM eltávolítása](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)című részben leírt lépéseket.
-4. A PCM eltávolítása után emelje fel és forgassa felfelé az akkumulátormodul fogantyúját az alábbi ábrán látható módon, és húzza fel felé az akkumulátor eltávolításához.
+   | 1 |AC áramszünet |
+   | 2 |Ventilátor meghibásodása |
+   | 3 |Akkumulátor meghibásodása |
+   | 4 |PCM OK |
+   | 5 |EGYENÁRAMÚ áramszünet |
+   | 6 |Akkumulátor állapota Kifogástalan |
+3. A PCM hibás elemmel való eltávolításához kövesse a [PCM eltávolítása](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)című témakör lépéseit.
+4. Ha a PCM el lett távolítva, a következő ábrán látható módon emelje le és forgassa el az akkumulátor-modul fogantyúját, és húzza fel az akkumulátor eltávolításához.
    
-    ![Akkumulátor eltávolítása pcm-ből](./media/storsimple-battery-replacement/IC741019.png)
+    ![Akkumulátor eltávolítása a PCM-ből](./media/storsimple-battery-replacement/IC741019.png)
    
     **3. ábra** Az akkumulátor eltávolítása a PCM-ből
-5. Helyezze a modult a mezőre cserélhető egység csomagolásába.
-6. A hibás egységet a megfelelő szervizelés és kezelés érdekében juttassa vissza a Microsoftnak.
+5. Helyezze a modult a kihelyezhető egység csomagolása mezőbe.
+6. A megfelelő karbantartás és felügyelet érdekében visszaküldi a hibás egységet a Microsoftnak.
 
-## <a name="install-a-new-backup-battery-module"></a>Új tartalék akkumulátormodul telepítése
-Hajtsa végre az alábbi lépéseket a csereakkumulátor-modul telepítéséhez a PCM-ben a StorSimple-eszköz elsődleges burkolatában.
+## <a name="install-a-new-backup-battery-module"></a>Új biztonsági mentési akkumulátor modul telepítése
+A következő lépésekkel telepítheti a helyettesítő akkumulátor-modult a PCM-ben a StorSimple-eszköz elsődleges borításában.
 
-#### <a name="to-install-the-battery-module"></a>Az akkumulátormodul telepítése
-1. Helyezze a tartalék akkumulátormodult a megfelelő tájolásba a PCM-ben.
-2. Nyomja le az akkumulátormodul fogantyúját egészen a csatlakozó üléséhez.
-3. Cserélje ki a PCM-et az elsődleges házban a [StorSimple eszköz energia- és hűtőmodulcseréje](storsimple-8000-power-cooling-module-replacement.md)című irányelv ben található irányelvek betartásával.
-4. A csere befejezése után nyissa meg az eszközt, majd nyissa meg a**Hardver állapotának** **figyelése** > az Azure Portalon. Ellenőrizze az akkumulátor állapotát, és ellenőrizze, hogy a telepítés sikeres volt-e. A zöld állapot azt jelzi, hogy az akkumulátor kifogástalan állapotban van.
+#### <a name="to-install-the-battery-module"></a>Az akkumulátor moduljának telepítése
+1. Helyezze a Backup akkumulátor modulját a PCM megfelelő tájolására.
+2. Tartsa lenyomva az akkumulátor-modul leíróját, hogy az összekötőt helyezze el.
+3. Cserélje le a PCM-t az elsődleges házban a StorSimple- [eszköz energiagazdálkodási és hűtési moduljának cseréje](storsimple-8000-power-cooling-module-replacement.md)című rész útmutatását követve.
+4. A csere befejezése után lépjen az eszközre, majd lépjen a Azure Portal a**hardver állapotának** **figyelése** > elemre. Ellenőrizze az akkumulátor állapotát, és győződjön meg arról, hogy a telepítés sikeres volt. A zöld állapot azt jelzi, hogy az akkumulátor kifogástalan állapotban van.
 
-## <a name="maintain-the-backup-battery-module"></a>A tartalék akkumulátormodul karbantartása
-A StorSimple-eszközben a tartalék akkumulátormodul áramellátással biztosítja a vezérlőt áramkimaradás esetén. Lehetővé teszi, hogy a StorSimple eszköz mentse a kritikus adatokat, mielőtt ellenőrzött módon leállna. A PCM-ek két teljesen feltöltött akkumulátorával a rendszer két egymást követő veszteséges eseményt képes kezelni.
+## <a name="maintain-the-backup-battery-module"></a>A biztonsági mentési akkumulátor moduljának karbantartása
+A StorSimple-eszközön a Backup akkumulátor modul a vezérlő áramellátását is biztosítja az áramkimaradás esetén. Lehetővé teszi a StorSimple-eszköz számára a kritikus fontosságú adatmentést az ellenőrzött módon történő leállítás előtt. A PCMs két, teljes mértékben felszámított akkumulátort képes kezelni két egymást követő veszteséges eseményt.
 
-Az Azure Portalon a **Hardver állapota** a **Figyelő** panel alatt azt jelzi, hogy az akkumulátor hibásan működik, vagy az élettartam vége közeledik. Az akkumulátor állapotát a **PCM 0 akkumulátora** vagy **a PCM 1 akkumulátora** a **Megosztott összetevők**csoportban jelzi. Ez a panel egy **degradált állapotot** jelenít meg az élettartam vége közeledtével, és **sikertelen** az elért élettartam végén.
+A Azure Portal a **monitor** panelen a **hardver állapota** jelzi, hogy az akkumulátor meghibásodik-e, vagy közeledik-e az élettartam. Az akkumulátor állapotát a **PCM 0 elemnél** vagy a **PCM 1** elemnél, a **megosztott összetevők**területen kell megadni. Ez a panel a teljes életciklusra kiterjedően **lecsökkentett** állapotot mutat, és **nem tudta** elérni az élettartam végét.
 
 > [!NOTE]
-> Az akkumulátor **jelentheti, hogy nem sikerült,** ha egyszerűen csak fel kell tölteni.
+> Az akkumulátor **nem** tud jelentést készíteni, ha egyszerűen fel kell számolni.
 
 
-Ha a **DEGRADED** állapot jelenik meg, a következő lépéseket javasoljuk:
+Ha a **csökkentett teljesítményű** állapot jelenik meg, a következő műveletet javasoljuk:
 
-* Előfordulhat, hogy a rendszer áramkimaradást szenvedett, vagy az elemek időszakos karbantartáson estek át. A folytatás előtt 12 órán át figyelje meg a rendszert.
+* Előfordulhat, hogy a rendszer egy közelmúltbeli áramkimaradást észlelt, vagy az akkumulátorok rendszeres karbantartás alatt állnak. A folytatás előtt 12 órával figyelje a rendszerét.
   
-  * Ha az állapot 12 órás folyamatos csatlakozás után is **romlik** a hálózati áramhoz, és a vezérlők és a PCM-ek működnek, akkor az akkumulátort ki kell cserélni. A tartalék akkumulátormodul cseréjével [kapcsolatban forduljon](storsimple-8000-contact-microsoft-support.md) a Microsoft támogatási szolgálatához.
-  * Ha az állapot 12 óra elteltével rendben lesz, az akkumulátor működőképes, és csak karbantartási díjra volt szüksége.
-* Ha nem történt hálózati áramveszteség, és a PCM be van kapcsolva, és hálózati tápellátáshoz csatlakozik, az akkumulátort ki kell cserélni. A tartalék akkumulátormodul megrendeléséhez forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md)
+  * Ha az **állapot továbbra** is 12 órányi folyamatos kapcsolódás után, a vezérlőkkel és a PCMs fut, akkor az akkumulátort le kell cserélni. Kérjük, [lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) a tartalék akkumulátor-modul cseréjéhez.
+  * Ha az állapot 12 óra elteltével válik aktívvá, az akkumulátor működőképes lesz, és csak karbantartási díj szükséges.
+* Ha nem fordult elő áramkimaradás, és a PCM be van kapcsolva, és csatlakoztatva van a hálózati adapterhez, az akkumulátort le kell cserélni. A biztonsági mentési akkumulátor-modul megrendeléséhez [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 
 > [!IMPORTANT]
-> A meghibásodott akkumulátort a nemzeti és regionális előírásoknak megfelelően dobja ki.
+> A meghibásodott akkumulátor a nemzeti és regionális előírásoknak megfelelően.
 
 ## <a name="next-steps"></a>További lépések
-További információ a [StorSimple hardverösszetevő-cseréjéről.](storsimple-8000-hardware-component-replacement.md)
+További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

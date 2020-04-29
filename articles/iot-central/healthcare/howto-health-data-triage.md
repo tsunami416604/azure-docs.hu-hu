@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy állapotadat-osztályozási irányítópultot az Azure IoT Central szolgáltatással | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre egy állapotadat-osztályozási irányítópultot az Azure IoT Central alkalmazássablonjaival.
+title: Health adatosztályozási irányítópult létrehozása az Azure IoT Central | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Health adatosztályozási irányítópultot az Azure IoT Central alkalmazás-sablonok használatával.
 author: philmea
 ms.author: philmea
 ms.date: 10/23/2019
@@ -9,73 +9,73 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021644"
 ---
-# <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának létrehozása
+# <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
 
 
 
-A folyamatos betegfigyelési megoldás létrehozásakor létrehozhat egy irányítópultot is egy kórházi ápolócsapat számára a betegadatok megjelenítéséhez. Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy Power BI valós idejű streamelési irányítópultot az IoT Central folyamatos betegfigyelési alkalmazássablonjából.
+A folyamatos beteg-figyelési megoldás létrehozásakor létrehozhat egy irányítópultot a kórházi ápolási csapat számára a páciensek adatainak megjelenítéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Power BI valós idejű adatfolyam-irányítópultot a IoT Central folyamatos beteg-figyelési alkalmazás sablonból.
 
 >[!div class="mx-imgBorder"]
->![Műszerfal GIF](media/dashboard-gif-3.gif)
+>![Irányítópult GIF](media/dashboard-gif-3.gif)
 
-Az alapvető architektúra követi ezt a struktúrát:
+Az alapszintű architektúra a következő struktúrát fogja követni:
 
 >[!div class="mx-imgBorder"] 
->![Szolgáltató osztályozási irányítópultja](media/dashboard-architecture.png)
+>![Szolgáltató osztályozása irányítópult](media/dashboard-architecture.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Adatok exportálása az Azure IoT Central szolgáltatásból az Azure Event Hubs-ba
-> * Power BI streamelési adatkészlet beállítása
-> * A logikai alkalmazás csatlakoztatása az Azure Event Hubs-hoz
-> * Adatok streamelése a Power BI-ba a Logic App alkalmazásból
-> * Valós idejű műszerfal létrehozása a betegek létfontosságú aktaszámára
+> * Adatok exportálása az Azure IoT Centralból az Azure-ba Event Hubs
+> * Power BI folyamatos átviteli adatkészlet beállítása
+> * A logikai alkalmazás összekötése az Azure Event Hubs
+> * Stream-adatok Power BI a logikai alkalmazásból
+> * Valós idejű irányítópult létrehozása a páciensek számára – létfontosságú
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy Azure IoT Central folyamatos betegfigyelésalkalmazás-sablon. Ha még nem rendelkezik ilyen, az [alkalmazássablon központi telepítésével](overview-iot-central-healthcare.md)teendő lépéseket hajthatja végre.
+* Egy Azure IoT Central folyamatos beteg monitorozási alkalmazás sablonja. Ha még nem rendelkezik ilyennel, kövesse az [alkalmazás-sablonok üzembe helyezésének](overview-iot-central-healthcare.md)lépéseit.
 
-* Az Azure [Event Hubs névtere és az Event Hub.](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Egy Azure [Event Hubs névtér és Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-* A logikai alkalmazás, amely szeretné elérni az Event Hub. A logikai alkalmazás Azure-eseményközpontok eseményindítóval való elindításához [egy üres logikai alkalmazásra](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)van szükség.
+* Az Event hub eléréséhez használni kívánt logikai alkalmazás. A logikai alkalmazás Azure Event Hubs triggerrel való indításához [üres logikai alkalmazásra](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)van szükség.
 
-* Power BI szolgáltatásfiók. Ha még nem rendelkezik ilyen, [létrehozhat egy ingyenes próbafiókot a Power BI szolgáltatáshoz.](https://app.powerbi.com/) Ha korábban még nem használta a Power BI-t, hasznos lehet az Első lépések a [Power BI-val](https://docs.microsoft.com/power-bi/service-get-started)( Első lépések a Power BI- val ) kapcsolatban .
+* Egy Power BI szolgáltatás-fiók. Ha még nem rendelkezik ilyennel, [létrehozhat egy ingyenes próbaverziós fiókot Power bi szolgáltatáshoz](https://app.powerbi.com/). Ha még nem használta Power BI korábban, hasznos lehet a [Power bi](https://docs.microsoft.com/power-bi/service-get-started)használatának megkezdéséhez.
 
-## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Folyamatos adatexportálás beállítása az Azure Event Hubs szolgáltatásba
-Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central alkalmazássablonból az Azure Event Hubba az előfizetésében. Ehhez kövesse az Azure IoT Central event [hubs-exportálási](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)oktatóanyagának lépéseit. Csak az oktatóanyag alkalmazásában kell exportálnia a telemetriai adatokat.
+## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Folyamatos adatexportálás beállítása az Azure-ba Event Hubs
+Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central-alkalmazás sablonból az előfizetésében található Azure Event hub-ba. Ezt az Azure IoT Central oktatóanyag lépéseit követve végezheti el [Event Hubs exportálásához](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Ehhez az oktatóanyaghoz csak a telemetria kell exportálni.
 
-## <a name="create-a-power-bi-streaming-dataset"></a>Power BI streamelési adatkészlet létrehozása
+## <a name="create-a-power-bi-streaming-dataset"></a>Power BI folyamatos átviteli adatkészlet létrehozása
 
 1. Jelentkezzen be a Power BI-fiókjába.
 
-2. A kívánt munkaterületen hozzon létre egy új streamelési adatkészletet az eszköztár jobb felső sarkában található **+ Create** gombra kattintva. Minden olyan beteghez külön adatkészletet kell létrehoznia, amelyet az irányítópulton szeretne.
+2. Az előnyben részesített munkaterületen hozzon létre egy új folyamatos átviteli adatkészletet az eszköztár jobb felső sarkában található **+ Létrehozás** gombra kattintva. Létre kell hoznia egy külön adatkészletet minden olyan beteg számára, amelyet szeretne az irányítópulton.
 
     >[!div class="mx-imgBorder"] 
-    >![Streamelési adatkészlet létrehozása](media/create-streaming-dataset.png)
+    >![Folyamatos átviteli adatkészlet létrehozása](media/create-streaming-dataset.png)
 
-3. Válassza az **API-t** az adatkészlet forrásához.
+3. Válassza az **API** lehetőséget az adatkészlet forrásához.
 
-4. Adja meg az adatkészlet **nevét** (például egy beteg nevét), majd töltse ki az értékeket az adatfolyamból. A szimulált eszközökről érkező értékek alapján az alábbi példa látható a folyamatos betegfigyelési alkalmazássablonban. A példában két beteg van:
+4. Adjon meg egy **nevet** (például a beteg nevét) az adatkészlethez, majd töltse ki a streamben található értékeket. Az alábbi példát láthatja a folyamatos beteg monitorozási alkalmazás sablonjában a szimulált eszközökről érkező értékek alapján. A példa két betegből áll:
 
-    * Teddy Silvers, aki az adatokat a Smart Knee Brace
-    * Yesenia Sanford, aki adatokat a Smart Vitals Patch
+    * Teddy Silvers, akik a Smart térd Zárójelből származó adatokkal rendelkeznek
+    * Yesenia Sanford, amely az intelligens vitális javításból származó adatokkal rendelkezik
 
     >[!div class="mx-imgBorder"] 
-    >![Adatkészletértékek megadása](media/enter-dataset-values.png)
+    >![Adatkészlet értékeinek megadása](media/enter-dataset-values.png)
 
-Ha többet szeretne megtudni a Power BI adatfolyam-adatfolyam-továbbítási adatkészleteiről, olvassa el ezt a dokumentumot [valós idejű streamelésközben a Power BI-ban.](https://docs.microsoft.com/power-bi/service-real-time-streaming)
+Ha többet szeretne megtudni a Power BI lévő adatfolyam-adatkészletekről, olvassa el a következő dokumentumot [valós idejű adatfolyamként Power BIban:](https://docs.microsoft.com/power-bi/service-real-time-streaming).
 
-## <a name="connect-your-logic-app-to-azure-event-hubs"></a>A logikai alkalmazás csatlakoztatása az Azure Event Hubs-hoz
-A logic app azure-eseményközpontokhoz való csatlakoztatásához kövesse az ebben a dokumentumban ismertetett utasításokat az [Események küldése az Azure Event Hubs és](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)az Azure Logic Apps szolgáltatással kapcsolatban. Íme néhány javasolt paraméter:
+## <a name="connect-your-logic-app-to-azure-event-hubs"></a>A logikai alkalmazás összekötése az Azure Event Hubs
+A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a jelen dokumentumban ismertetett utasításokat az [események az azure Event Hubs és a Azure Logic Apps használatával való elküldéséhez](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Néhány javasolt paraméter:
 
 |Paraméter|Érték|
 |---|---|
@@ -83,17 +83,17 @@ A logic app azure-eseményközpontokhoz való csatlakoztatásához kövesse az e
 |Intervallum|3|
 |Frequency|Másodperc|
 
-A lépés végén a Logikai alkalmazástervezőnek így kell kinéznie:
+Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 
 >[!div class="mx-imgBorder"] 
->![A Logic Apps az Eseményközpontokhoz csatlakozik](media/eh-logic-app.png)
+>![Logic Apps csatlakozik Event Hubs](media/eh-logic-app.png)
 
-## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Adatok streamelése a Power BI-ba a Logic App alkalmazásból
-A következő lépés az Event Hubról érkező adatok elemzésével történik, hogy azokat a korábban létrehozott Power BI-adatkészletekbe továbbíthassa.
+## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Stream-adatok Power BI a logikai alkalmazásból
+A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a korábban létrehozott Power BI adatkészletekben.
 
-1. Ehhez meg kell értenie a JSON hasznos, amely az eszközről az Event Hub. Ehhez nézd meg ezt a [mintasémát,](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) és módosítsa azt, hogy megfeleljen a sémának, vagy a [Service Bus explorer](https://github.com/paolosalvatori/ServiceBusExplorer) segítségével vizsgálja meg az üzeneteket. Ha folyamatos betegfigyelő alkalmazásokat használ, az üzenetek a következőkre fognak kinézni:
+1. A művelet megkezdése előtt meg kell ismernie az eszközről az Event hub-ba küldött JSON-adattartalmat. Ehhez tekintse meg ezt a [minta sémát](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) , és módosítsa úgy, hogy az megfeleljen a sémának, vagy a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával vizsgálja meg az üzeneteket. Ha a folyamatos beteg monitorozási alkalmazásokat használja, az üzenetek a következőképpen fognak kinézni:
 
-**Smart Vitals Patch telemetriai adatok**
+**Smart Vitals – javítási telemetria**
 
 ```json
 {
@@ -109,7 +109,7 @@ A következő lépés az Event Hubról érkező adatok elemzésével történik,
 }
 ```
 
-**Intelligens térdmerevítő telemetria**
+**Intelligens térd kapcsos zárójel telemetria**
 
 ```json
 {
@@ -139,72 +139,72 @@ A következő lépés az Event Hubról érkező adatok elemzésével történik,
 }
 ```
 
-2. Most, hogy megvizsgálta a JSON hasznos adatait, menjen vissza a Logic App Designer-hez, és válassza a **+ Új lépés lehetőséget.** Következő lépésként keressen rá a Keresésre, és adja hozzá az **Inicializálás változót,** és adja meg a következő paramétereket:
+2. Most, hogy megtekintette a JSON-adattartalmakat, térjen vissza a Logic app Designerre, és válassza az **+ új lépés**lehetőséget. A következő lépésként keresse meg és adja hozzá az **inicializálás változót** , és adja meg a következő paramétereket:
 
     |Paraméter|Érték|
     |---|---|
-    |Név|Kapcsolat neve|
+    |Name (Név)|Csatoló neve|
     |Típus|Sztring|
 
     Kattintson a **Mentés** gombra. 
 
-3. Adjon hozzá egy **másik, Szövegtörzs** karakterláncként nevű **változót.** A logikai alkalmazás ezeket a műveleteket adja hozzá:
+3. Adjon hozzá egy " **Body** " nevű másik változót **karakterláncként**. A logikai alkalmazás a következő műveleteket fogja hozzáadni:
 
     >[!div class="mx-imgBorder"]
     >![Változók inicializálása](media/initialize-string-variables.png)
     
-4. Válassza a **+ Új lépés** lehetőséget, és adjon hozzá egy **Parse JSON** műveletet. Nevezze át ezt **elemzési tulajdonságokra.** A tartalomhoz válassza az Event Hubról érkező **tulajdonságok lehetőséget.** Válassza a Minta hasznos adat használata a **séma létrehozásához** az alján lehetőséget, és illessze be a minta hasznos adatát a fenti Tulajdonságok szakaszból.
+4. Válassza az **+ új lépés** lehetőséget, és adjon hozzá egy **elemzési JSON** -műveletet. Nevezze át ezt az **elemzési tulajdonságokra**. A tartalomhoz válassza az Event hub-ból származó **Tulajdonságok** elemet. Válassza a minta hasznos adatok használata lehetőséget a séma alján **való létrehozásához** , majd illessze be a minta adattartalmat a fenti tulajdonságok szakaszból.
 
-5. Ezután válassza a **Változó beállítása** műveletet, és frissítse a **felület neve** változót az **iothub-interface-name-nel** az elemző JSON-tulajdonságokból.
+5. Ezután válassza a **változó beállítása** műveletet, és frissítse a **csatoló neve** változót a **iothub-Interface-Name** elemre az elemzett JSON-tulajdonságok közül.
 
-6. Adjon hozzá egy **osztott** vezérlőt a következő műveletként, és válassza a **Kapcsolat neve** változót On paraméterként. Ezzel a segítségével az adatokat a megfelelő adatkészletbe irányíthatja.
+6. Vegyen fel egy **felosztott** vezérlőelemet a következő műveletként, és válassza ki a **csatoló neve** változót az on paraméterrel. Ezzel az adatok a megfelelő adatkészletbe lesznek tölcsérben.
 
-7. Az Azure IoT Central alkalmazásban keresse meg a felület nevét a Smart Vitals patch állapotadatok és a Smart Knee Brace egészségügyi adatok at the **Device Templates** view. Hozzon létre két különböző esetet a **kapcsolóvezérléshez** az egyes illesztőkapcsolatok nevéhez, és nevezze át megfelelően a vezérlőt. Beállíthatja, hogy az Alapértelmezett eset a **Vezérlő leállítása beállítást** használja, és megadhatja, hogy milyen állapotot szeretne megjeleníteni.
-
-    >[!div class="mx-imgBorder"] 
-    >![Megosztásvezérlő](media/split-by-interface.png)
-
-8. A **Smart Vitals Patch** tokhoz adjon hozzá egy **Parse JSON** műveletet. A Tartalom hoz válassza az Event Hubról érkező **Tartalom** lehetőséget. Másolja és illessze be a fenti Smart Vitals patch mintarakományát a séma létrehozásához.
-
-9. Adjon hozzá egy **Set változó** műveletet, és frissítse a **Törzs** változót a **Testtel** az elemzésáltal ossze JSON-ból a 7.
-
-10. Add hozzá a **feltételvezérlőt** a következő műveletként, és állítsd a Feltétel feltételt **a Body**, **tartalmazza**, **HeartRate**. Ez biztosítja, hogy a Power BI-adatkészlet feltöltése előtt a Megfelelő adatkészletet hozza létre a Smart Vitals patch-ből. A 7-9.
+7. Az Azure IoT Central alkalmazásban keresse meg az intelligens létfontosságú adatok javítási állapotának adatait, valamint az intelligens térd zárójelek állapotának adatait az **eszköz sablonok** nézetből. Hozzon létre két különböző esetet az egyes interfészekhez tartozó **kapcsolók** vezérléséhez, és nevezze át a vezérlőt megfelelően. Beállíthatja az alapértelmezett esetet **a leállítási vezérlő használatára** , és kiválaszthatja, hogy melyik állapotot szeretné megjeleníteni.
 
     >[!div class="mx-imgBorder"] 
-    >![A Smart Vitals állapotot ad](media/smart-vitals-pbi.png)
+    >![Felosztás vezérlése](media/split-by-interface.png)
 
-11. A Feltétel **Igaz** esetéhez adjon hozzá egy műveletet, amely meghívja a **Sorok hozzáadása egy adatkészlethez** Power BI funkciót. Ehhez be kell jelentkeznie a Power BI-ba. A **Hamis** eset ismét **használhatja** a Terminate vezérlőt.
+8. A **Smart vitals patch** esetében adjon hozzá egy **elemzési JSON** -műveletet. A tartalomhoz válassza az Event hub-ból származó **tartalmat** . Másolja ki és illessze be a fenti Smart Vitals-javításhoz tartozó minta hasznos adatokat a séma létrehozásához.
 
-12. Válassza ki a megfelelő **munkaterületet**, **adatkészletet**és **táblát.** Rendelje hozzá a Power BI-ban a streamelési adatkészlet létrehozásakor megadott paramétereket az Event Hubról származó, az elemzésben szereplő JSON-értékekhez. A kitöltött műveleteknek így kell kinézniük:
+9. Adjon hozzá egy **set változót** , és frissítse a **Body** változót az elemzett JSON **törzsével** a 7. lépésben.
 
-    >[!div class="mx-imgBorder"] 
-    >![Sorok hozzáadása a Power BI-hoz](media/add-rows-yesenia.png)
-
-13. A **Smart Knee Brace** kapcsoló esetében adjon hozzá egy **Parse JSON** műveletet a tartalom elemzéséhez, hasonlóan a 7. Ezután **sorokhozzáadása egy adatkészlethez** a Teddy Silvers adatkészlet frissítéséhez a Power BI-ban.
+10. Vegyen fel egy **feltétel** vezérlőelemet a következő műveletként, és állítsa be a feltételt a **törzs**, a **tartalmaz**, a **HeartRate**. Ezzel a beállítással megadhatja, hogy az intelligens létfontosságú javításokból származó adatok megfelelő készlete legyen az Power BI adatkészlet feltöltése előtt. A 7-9. lépés a következőképpen fog kinézni:
 
     >[!div class="mx-imgBorder"] 
-    >![A Smart Vitals állapotot ad](media/knee-brace-pbi.png)
+    >![Intelligens Vitals – feltétel hozzáadása](media/smart-vitals-pbi.png)
 
-14. Nyomja **le a Mentés gombot,** majd futtassa a logikai alkalmazást.
+11. A feltétel **valódi** esetéhez adjon hozzá egy műveletet, amely meghívja a **sorok hozzáadása egy adatkészlethez** Power bi funkciót. Ehhez be kell jelentkeznie Power BI. A **hamis** eset újra használhatja a **megszakítási** vezérlőt.
 
-## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Valós idejű műszerfal létrehozása a betegek létfontosságú aktaszámára
-Most lépjen vissza a Power BI-hoz, és válassza **a + Létrehozás** lehetőséget új **irányítópult**létrehozásához. Adjon nevet az irányítópultnak, és nyomja le a **Create (Létrehozás) lehetőséget.**
+12. Válassza ki a megfelelő **munkaterületet**, **adatkészletet**és **táblát**. Képezze le a Power BI adatfolyam-adatkészletének létrehozásakor megadott paramétereket az Event hub-ból származó elemzett JSON-értékekre. A kitöltött műveleteknek így kell kinéznie:
 
-Jelölje ki a felső navigációs sávon a három pont, majd a **+ Mozaik hozzáadása**lehetőséget.
+    >[!div class="mx-imgBorder"] 
+    >![Sorok hozzáadása a Power BIhoz](media/add-rows-yesenia.png)
+
+13. Az **intelligens térd zárójeles** kapcsoló esetében adjon hozzá egy **elemzési JSON** -műveletet a tartalom elemzéséhez, hasonlóan a 7. lépéshez. Ezután **sorokat adhat hozzá egy adatkészlethez** , hogy frissítse a Teddy Silvers-adatkészletet a Power BIban.
+
+    >[!div class="mx-imgBorder"] 
+    >![Intelligens Vitals – feltétel hozzáadása](media/knee-brace-pbi.png)
+
+14. Kattintson a **Save (Mentés** ) gombra, majd futtassa a logikai alkalmazást.
+
+## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Valós idejű irányítópult létrehozása a páciensek számára – létfontosságú
+Most lépjen vissza a Power BIra, és válassza a **+ Létrehozás** lehetőséget egy új **irányítópult**létrehozásához. Adja meg az irányítópult nevét, és kattintson a **create (létrehozás**).
+
+Válassza ki a három pontot a felső navigációs sávon, majd válassza a **+ csempe hozzáadása**lehetőséget.
 
 >[!div class="mx-imgBorder"] 
 >![Csempe hozzáadása az irányítópulthoz](media/add-tile.png)
 
-Válassza ki, hogy milyen típusú csempét szeretne hozzáadni, és úgy szabhatja testre az alkalmazást, ahogy szeretné.
+Válassza ki, hogy milyen típusú csempét szeretne felvenni, és testreszabni szeretné az alkalmazást.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem fogja tovább használni ezt az alkalmazást, törölje az erőforrásokat a következő lépésekkel:
+Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a következő lépésekkel:
 
-1. Az Azure Portalon törölheti az Event Hub és a Logic Apps által létrehozott erőforrásokat.
+1. A Azure Portal törölheti az Event hub-t és Logic Apps a létrehozott erőforrásokat.
 
-2. Az IoT Central alkalmazás esetén lépjen a Felügyelet fülre, és válassza a **Törlés**lehetőséget.
+2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [betegek folyamatos monitorozási architektúrájának útmutatását.](concept-continuous-patient-monitoring-architecture.md)
+* Tekintse át a [folyamatos beteg monitorozási architektúrával kapcsolatos útmutatót](concept-continuous-patient-monitoring-architecture.md).

@@ -1,6 +1,6 @@
 ---
-title: Eszközök kezelése a StorSimple Snapshot Manager segítségével | Microsoft dokumentumok
-description: A StorSimple Snapshot Manager MMC beépülő modul használatával csatlakozhat és kezelhető a StorSimple-eszközök.
+title: Eszközök kezelése a StorSimple Snapshot Managersal | Microsoft Docs
+description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul a StorSimple-eszközök csatlakoztatásához és kezeléséhez.
 services: storsimple
 documentationcenter: ''
 author: twooley
@@ -15,200 +15,200 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254689"
 ---
-# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple-eszközök csatlakoztatása és kezelése a StorSimple Snapshot Manager használatával
+# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
-A StorSimple Snapshot Manager **hatóköre** ablaktáblában a csomópontok segítségével ellenőrizheti az importált StorSimple-eszközadatokat, és frissítheti a csatlakoztatott tárolóeszközöket. Ezenkívül ha az **Eszközök** csomópontra kattint, az **Eredmények** ablaktáblán megtekintheti a csatlakoztatott eszközök listáját és a megfelelő állapotinformációkat.
+A StorSimple Snapshot Manager **hatóköre** ablaktáblán a csomópontok segítségével ellenőrizheti az importált StorSimple-eszközök adatai és a csatlakoztatott tárolóeszközök frissítése is. Emellett, ha az **eszközök** csomópontra kattint, a csatlakoztatott eszközök és a megfelelő állapotadatok listáját az **eredmények** ablaktábláján tekintheti meg.
 
 ![Csatlakoztatott eszközök](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **1. ábra: StorSimple Snapshot Manager csatlakoztatott eszköz** 
 
-A **Nézet-beállításoktól** függően az **Eredmények** ablaktábla az egyes eszközökre vonatkozó alábbi információkat jeleníti meg. (A nézet konfigurálásáról a [Nézet menüben](storsimple-use-snapshot-manager.md#view-menu)talál további információt.
+A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a következő információkat jeleníti meg az egyes eszközökről. (A nézetek konfigurálásával kapcsolatos további információkért nyissa meg a [Nézet menüt](storsimple-use-snapshot-manager.md#view-menu).
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Név |Az eszköz neve az Azure klasszikus portálon konfigurálva |
-| Modell |A készülék típusszáma |
+| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
+| Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
-| status |Azt jelzi, hogy az eszköz elérhető-e |
-| Utolsó szinkronizált |Az eszköz utolsó szinkronizálásának dátuma és időpontja |
-| Sorozatszám |A készülék sorozatszáma |
+| status |Az eszköz elérhető-e |
+| Legutóbb szinkronizálva |Az eszköz legutóbbi szinkronizálásának dátuma és időpontja |
+| Sorozatszám. |Az eszköz sorozatszáma |
 
-Ha a jobb gombbal az **Eszközök** csomópontra kattint a **Hatókör** ablaktáblában, a következő műveletek közül választhat:
+Ha a jobb gombbal az **eszközök** csomópontra kattint a **hatókör** ablaktáblán, a következő műveletek közül választhat:
 
 * Eszköz hozzáadása vagy cseréje
-* Eszköz csatlakoztatása és az importálás ellenőrzése
+* Eszköz csatlakoztatása és az Importálások ellenőrzése
 * Csatlakoztatott eszközök frissítése
 
-Ha az **Eszközök** csomópontra kattint, majd a jobb gombbal az eszköz nevére kattint az **Eredmények** ablaktáblán, a következő műveletek közül választhat:
+Ha az **eszközök** csomópontra kattint, majd a jobb gombbal az eszköz nevére kattint, **az alábbi** műveletek közül választhat:
 
 * Eszköz hitelesítése
 * Eszközadatok megtekintése
 * Eszköz frissítése
-* Eszközkonfiguráció törlése
-* Eszközjelszó módosítása
+* Eszköz konfigurációjának törlése
+* Eszköz jelszavának módosítása
 
 > [!NOTE]
-> Mindezek a műveletek a **Műveletek** ablaktáblán is elérhetők.
+> Az összes művelet a **műveletek** ablaktáblán is elérhető.
 
 
-Ez az oktatóanyag bemutatja, hogyan lehet a StorSimple Snapshot Manager használatával eszközöket csatlakoztatni és kezelni, és végrehajtani a következő feladatokat:
+Ez az oktatóanyag azt ismerteti, hogyan használható az StorSimple Snapshot Manager az eszközök csatlakoztatásához és kezeléséhez, valamint a következő feladatok elvégzéséhez:
 
 * Eszköz hozzáadása vagy cseréje
-* Eszköz csatlakoztatása és az importálás ellenőrzése
+* Eszköz csatlakoztatása és az Importálások ellenőrzése
 * Csatlakoztatott eszközök frissítése
 * Eszköz hitelesítése
 * Eszközadatok megtekintése
-* Egyedi eszköz frissítése
-* Eszközkonfiguráció törlése
-* Lejárt eszközjelszó módosítása
-* Meghibásodott eszköz cseréje
+* Egyéni eszköz frissítése
+* Eszköz konfigurációjának törlése
+* Lejárt eszköz jelszavának módosítása
+* Sikertelen eszköz cseréje
 
 > [!NOTE]
-> A StorSimple Snapshot Manager felület használatával kapcsolatos általános tudnivalókért látogasson el a [StorSimple Snapshot Manager felhasználói felületére.](storsimple-use-snapshot-manager.md)
+> Az StorSimple Snapshot Manager felületének használatával kapcsolatos általános információkért nyissa meg a [StorSimple Snapshot Manager felhasználói felületét](storsimple-use-snapshot-manager.md).
 
 
 ## <a name="add-or-replace-a-device"></a>Eszköz hozzáadása vagy cseréje
-StorSimple-eszköz hozzáadásához vagy cseréjéhez kövesse az alábbi eljárást.
+A következő eljárással adhat hozzá vagy cserélhet le egy StorSimple-eszközt.
 
 #### <a name="to-add-or-replace-a-device"></a>Eszköz hozzáadása vagy cseréje
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-2. A **Hatókör** ablaktáblán kattintson a jobb gombbal az **Eszközök** csomópontra, majd kattintson **az Eszköz konfigurálása parancsra.** Megjelenik **az Eszköz konfigurálása** párbeszédpanel.
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal az **eszközök** csomópontra, majd kattintson az **eszköz konfigurálása**parancsra. Megjelenik az **eszköz konfigurálása** párbeszédpanel.
    
-    ![StorSimple eszköz konfigurálása](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
-3. Az **Eszköz** legördülő lista válassza ki az eszköz vagy a virtuális eszköz IP-címét. 
-4. A **Jelszó** mezőbe írja be a StorSimple Snapshot Manager jelszót, amelyet az eszközhöz az Azure klasszikus portálon hozott létre. Kattintson az **OK** gombra. A StorSimple Snapshot Manager megkeresi az azonosított eszközt. 
+    ![StorSimple-eszköz konfigurálása](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
+3. Az **eszköz** legördülő listából válassza ki az eszköz vagy virtuális eszköz IP-címét. 
+4. A **jelszó** szövegmezőbe írja be a klasszikus Azure portálon az eszközhöz létrehozott StorSimple Snapshot Manager jelszavát. Kattintson az **OK** gombra. A StorSimple Snapshot Manager megkeresi az Ön által azonosított eszközt. 
    
-   * Ha az eszköz elérhető, a StorSimple Snapshot Manager hozzáad egy kapcsolatot.
-   * Ha az eszköz bármilyen okból nem érhető el, a StorSimple Snapshot Manager hibaüzenetet ad vissza. A hibaüzenet bezárásához kattintson az **OK** gombra, majd a **Mégse gombra** az **Eszköz konfigurálása** párbeszédpanel bezárásához.
+   * Ha az eszköz elérhető, a StorSimple Snapshot Manager hozzáadja a csatlakozást.
+   * Ha az eszköz valamilyen okból nem érhető el, a StorSimple Snapshot Manager egy hibaüzenetet ad vissza. A hibaüzenet bezárásához kattintson az **OK** gombra, majd kattintson a **Mégse** gombra az **eszköz konfigurálása** párbeszédpanel bezárásához.
 
-## <a name="connect-a-device-and-verify-imports"></a>Eszköz csatlakoztatása és az importálás ellenőrzése
-Az alábbi eljárással csatlakoztasson egy StorSimple-eszközt, és ellenőrizze, hogy a társított biztonsági másolatokkal rendelkező meglévő kötetcsoportok importálása megtörtént-e.
+## <a name="connect-a-device-and-verify-imports"></a>Eszköz csatlakoztatása és az Importálások ellenőrzése
+A következő eljárással csatlakozhat egy StorSimple-eszközhöz, és ellenőrizheti, hogy a társított biztonsági másolatokkal rendelkező meglévő kötetek importálása megtörtént-e.
 
 #### <a name="to-connect-a-device-and-verify-imports"></a>Eszköz csatlakoztatása és az importálás ellenőrzése
-1. Ha egy eszközt a StorSimple Snapshot Managerhez szeretne csatlakoztatni, kövesse az eszköz hozzáadása vagy cseréje című részben található utasításokat. Amikor egy eszközhöz csatlakozik, a StorSimple Snapshot Manager a következőképpen válaszol:
+1. Az eszköz StorSimple Snapshot Manager csatlakoztatásához kövesse az eszköz hozzáadása vagy cseréje című témakör utasításait. Ha egy eszközhöz csatlakozik, a StorSimple Snapshot Manager a következőképpen válaszol:
    
-   * Ha az eszköz bármilyen okból nem érhető el, a StorSimple Snapshot Manager hibaüzenetet ad vissza. 
+   * Ha az eszköz valamilyen okból nem érhető el, a StorSimple Snapshot Manager egy hibaüzenetet ad vissza. 
    
-   * Ha az eszköz elérhető, a StorSimple Snapshot Manager hozzáad egy kapcsolatot. Amikor kiválasztja az eszközt, az megjelenik az **Eredmények** ablaktáblán, és az állapotmező azt jelzi, hogy az eszköz **elérhető.** A StorSimple Snapshot Manager importálja az eszközhöz konfigurált kötetcsoportokat, feltéve, hogy a kötetcsoportokhoz biztonsági másolatok tartoznak. A biztonsági mentési házirendek importálása nem történik meg. A társított biztonsági másolattal nem rendelkező kötetcsoportok importálása nem történik meg.
-2. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-3. Kattintson a jobb gombbal a felső csomópontra a **Hatókör** ablaktáblában, majd kattintson az **Importálás megjelenítése parancs váltása parancsra.**
+   * Ha az eszköz elérhető, a StorSimple Snapshot Manager hozzáadja a csatlakozást. Ha kijelöli az eszközt, az az **eredmények** ablaktáblájában jelenik meg, és az állapot mező jelzi, hogy az eszköz **elérhető**. A StorSimple Snapshot Manager importálja az eszközhöz konfigurált összes mennyiségi csoportot, ha a kötetek biztonsági másolatokkal rendelkeznek. A biztonsági mentési házirendek importálása nem történik meg. A társított biztonsági másolatokkal nem rendelkező kötetek importálása nem történik meg.
+2. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+3. A **hatókör** ablaktáblán kattintson a jobb gombbal a legfelső csomópontra, majd kattintson az **importálások váltása megjelenítés**elemre.
    
-    ![Import megjelenítése](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. Megjelenik az **Importálások megjelenítése** párbeszédpanel, amely az importált kötetcsoportok és biztonsági mentések állapotát mutatja. Kattintson az **OK** gombra.
+    ![Az Importálások megjelenítésének kiválasztása](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
+4. Megjelenik az Importálások **megjelenítése** párbeszédpanel, amely az importált kötetek és biztonsági másolatok állapotát mutatja. Kattintson az **OK** gombra.
 
-A kötetcsoportok és biztonsági mentések importálása után a StorSimple Snapshot Manager segítségével kezelheti őket, ugyanúgy, mint a StorSimple Snapshot Managerrel létrehozott és konfigurált kötetcsoportok és biztonsági mentések kezelése. 
+A kötetek és a biztonsági másolatok sikeres importálása után a StorSimple Snapshot Manager segítségével kezelheti őket, ugyanúgy, mint a StorSimple Snapshot Manager által létrehozott és konfigurált mennyiségi csoportok és biztonsági másolatok kezelése során. 
 
 ## <a name="refresh-connected-devices"></a>Csatlakoztatott eszközök frissítése
-Az alábbi eljárással szinkronizálhatja a csatlakoztatott StorSimple eszközöket a StorSimple Snapshot Managerrel.
+A következő eljárással szinkronizálhatja a csatlakoztatott StorSimple-eszközöket a StorSimple Snapshot Manager használatával.
 
 #### <a name="to-refresh-connected-devices"></a>Csatlakoztatott eszközök frissítése
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-2. A **Hatókör** ablaktáblán kattintson a jobb gombbal **az Eszközök**elemre, majd kattintson az Eszközök **frissítése parancsra.** Ez szinkronizálja a csatlakoztatott eszközöket a StorSimple Snapshot Managerrel, így megtekintheti a kötetcsoportokat és a biztonsági másolatokat, beleértve a legutóbbi kiegészítéseket is. 
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal az **eszközök**elemre, majd kattintson az **eszközök frissítése**parancsra. Ezzel szinkronizálja a csatlakoztatott eszközöket a StorSimple Snapshot Manager, így megtekintheti a köteteket és a biztonsági másolatokat, beleértve a legújabb kiegészítéseket is. 
    
-    ![A StorSimple eszközök frissítése](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
+    ![A StorSimple-eszközök frissítése](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
 
-Az **Eszközök frissítése** művelet lekéri az új kötetcsoportokat és a kapcsolódó biztonsági másolatokat a csatlakoztatott eszközökről. A Kötetek csomóponthoz elérhető **Rescan volumes** művelettel **ellentétben** az **Eszközök frissítése** nem állítja vissza a biztonsági másolat beállításjegyzékét.
+Az **eszközök frissítése** művelet lekérdezi a csatlakoztatott eszközökről az új kötet-és a kapcsolódó biztonsági másolatokat. A **kötetek** csomóponthoz elérhető **újraellenőrzési** művelettől eltérően a **frissítési eszközök** nem állítják vissza a biztonsági mentési beállításjegyzéket.
 
 ## <a name="authenticate-a-device"></a>Eszköz hitelesítése
-Az alábbi eljárással hitelesítheti a StorSimple-eszközt a StorSimple Snapshot Manager rel.
+Az alábbi eljárást követve hitelesítheti a StorSimple eszközt a StorSimple Snapshot Manager használatával.
 
 #### <a name="to-authenticate-a-device"></a>Eszköz hitelesítése
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-2. A **Hatókör** ablaktáblán kattintson az **Eszközök gombra.**
-3. Az **Eredmények** ablaktáblán kattintson a jobb gombbal az eszköz nevére, majd kattintson a **Hitelesítés parancsra.**
-4. Megjelenik **a Hitelesítés** párbeszédpanel. Írja be az eszköz jelszavát, majd kattintson **az OK gombra.**
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson az **eszközök**elemre.
+3. Az **eredmények** ablaktáblájában kattintson a jobb gombbal az eszköz nevére, majd kattintson a **hitelesítés**elemre.
+4. Megjelenik a **hitelesítés** párbeszédpanel. Írja be az eszköz jelszavát, majd kattintson **az OK**gombra.
    
     ![Hitelesítés párbeszédpanel](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
 
 ## <a name="view-device-details"></a>Eszközadatok megtekintése
-Az alábbi eljárással megtekintheti a StorSimple-eszköz részleteit, és szükség esetén újraszinkronizálhatja az eszközt a StorSimple Snapshot Managerrel.
+Az alábbi eljárással megtekintheti a StorSimple-eszközök részleteit, és szükség esetén újraszinkronizálhatja az eszközt a StorSimple Snapshot Manager.
 
-#### <a name="to-view-and-resynchronize-device-details"></a>Az eszköz részleteinek megtekintése és újraszinkronizálása
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-2. A **Hatókör** ablaktáblán kattintson az **Eszközök gombra.**
-3. Az **Eredmények** ablaktáblán kattintson a jobb gombbal az eszköz nevére, majd kattintson a **Részletek parancsra.**
+#### <a name="to-view-and-resynchronize-device-details"></a>Az eszköz adatainak megtekintése és újraszinkronizálása
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson az **eszközök**elemre.
+3. Az **eredmények** ablaktáblájában kattintson a jobb gombbal az eszköz nevére, majd kattintson a **részletek**elemre.
 
-4.Megjelenik **az Eszköz részletei** párbeszédpanel. Ebben a mezőben a név, a modell, a verziószám, a sorozatszám, az állapot, a cél iSCSI minősített név (IQN) és az utolsó szinkronizálás dátuma és időpontja látható.
+4. megjelenik az **eszköz részletei** párbeszédpanel. Ebben a mezőben a név, a modell, a verziószám, a sorozatszám, az állapot, a célként megadott iSCSI minősített neve (IQN) és a legutóbbi szinkronizálás dátuma és időpontja látható.
 
-* Az eszköz szinkronizálásához kattintson az **Újraszinkronizálás gombra.**
-* A párbeszédpanel bezárásához kattintson az **OK** vagy a **Mégse** gombra.
+* Az eszköz szinkronizálásához kattintson az **Újraszinkronizálás** elemre.
+* A párbeszédpanel bezárásához kattintson **az OK** vagy a **Mégse** gombra.
   
   ![Eszközadatok](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
-## <a name="refresh-an-individual-device"></a>Egyedi eszköz frissítése
-Az alábbi eljárással szinkronizálhatja újra az egyes StorSimple-eszközöket a StorSimple Snapshot Managerrel.
+## <a name="refresh-an-individual-device"></a>Egyéni eszköz frissítése
+A következő eljárással újraszinkronizálhatja az egyes StorSimple-eszközöket a StorSimple Snapshot Manager használatával.
 
 #### <a name="to-refresh-a-device"></a>Eszköz frissítése
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához. 
-2. A **Hatókör** ablaktáblán kattintson az **Eszközök gombra.** 
-3. Az **Eredmények** ablaktáblán kattintson a jobb gombbal az eszköz nevére, majd kattintson az **Eszköz frissítése parancsra.** Ez szinkronizálja az eszközt a StorSimple Snapshot Manager rel.
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára. 
+2. A **hatókör** ablaktáblán kattintson az **eszközök**elemre. 
+3. Az **eredmények** ablaktáblájában kattintson a jobb gombbal az eszköz nevére, majd kattintson az **eszköz frissítése**parancsra. Ezzel szinkronizálja az eszközt a StorSimple Snapshot Manager.
 
-## <a name="delete-a-device-configuration"></a>Eszközkonfiguráció törlése
-Az alábbi eljárással törölheti az egyes StorSimple-eszközkonfigurációt a StorSimple Snapshot Managerből.
+## <a name="delete-a-device-configuration"></a>Eszköz konfigurációjának törlése
+A következő eljárással törölheti az egyes StorSimple-eszközök konfigurációját a StorSimple Snapshot Managerból.
 
-#### <a name="to-delete-a-device-configuration"></a>Eszközkonfiguráció törlése
-1. Kattintson az asztal ikonra a StorSimple Snapshot Manager elindításához.
-2. A **Hatókör** ablaktáblán kattintson az **Eszközök gombra.** 
-3. Az **Eredmények** ablaktáblán kattintson a jobb gombbal az eszköz nevére, majd kattintson a **Törlés parancsra.** 
-4. A következő üzenet jelenik meg. Kattintson az **Igen** gombra a konfiguráció törléséhez, vagy kattintson a **Nem** gombra a törlés megszakításához.
+#### <a name="to-delete-a-device-configuration"></a>Eszköz konfigurációjának törlése
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson az **eszközök**elemre. 
+3. Az **eredmények** ablaktáblájában kattintson a jobb gombbal az eszköz nevére, majd kattintson a **Törlés**parancsra. 
+4. A következő üzenet jelenik meg. Kattintson az **Igen** gombra a konfiguráció törléséhez, vagy kattintson a **nem** gombra a törlés megszakításához.
    
     ![Eszköz konfigurációjának törlése](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
-## <a name="change-an-expired-device-password"></a>Lejárt eszközjelszó módosítása
-Meg kell adnia egy jelszót a StorSimple-eszköz storSimple Snapshot Manager hitelesítéséhez. Ezt a jelszót akkor konfigurálja, amikor a Windows PowerShell-felületen állítja be az eszközt. A jelszó azonban lejár. Ha ez történik, használhatja az Azure klasszikus portálon a jelszó módosításához. Ezután, mivel az eszköz a Jelszó lejárta előtt konfigurálva volt a StorSimple Snapshot Managerben, újra kell hitelesítenie az eszközt a StorSimple Snapshot Managerben.
+## <a name="change-an-expired-device-password"></a>Lejárt eszköz jelszavának módosítása
+Meg kell adnia egy jelszót a StorSimple-eszköz StorSimple Snapshot Manager való hitelesítéséhez. Ezt a jelszót akkor konfigurálja, ha a Windows PowerShell felületét használja az eszköz beállításához. A jelszó azonban lejárhat. Ha ez történik, a klasszikus Azure portál használatával módosíthatja a jelszót. Ezt követően, mivel az eszköz StorSimple Snapshot Manager lett konfigurálva a jelszó lejárta előtt, újra hitelesítenie kell az eszközt a StorSimple-Snapshot Managerban.
 
 #### <a name="to-change-the-expired-password"></a>A lejárt jelszó módosítása
-1. A klasszikus Azure-portálon indítsa el a StorSimple Manager szolgáltatást.
-2. Kattintson az **Eszköz** > **konfigurálása** elemre.
-3. Görgessen le a StorSimple Snapshot Manager szakaszhoz. Adjon meg egy 14-15 karakterből álló jelszót. Győződjön meg arról, hogy a jelszó nagybetűs, kis- és numerikus és speciális karaktereket tartalmaz.
-4. A megerősítéshez adja meg újra a jelszót.
+1. A klasszikus Azure portálon indítsa el a StorSimple Manager szolgáltatást.
+2. Kattintson az **eszközök** > **konfigurálása** az eszközhöz elemre.
+3. Görgessen le a StorSimple Snapshot Manager szakaszhoz. 14-15 karakterből álló jelszót adjon meg. Győződjön meg arról, hogy a jelszó kis-és nagybetűket, számokat és speciális karaktereket tartalmaz.
+4. Írja be újra a jelszót a megerősítéshez.
 5. Kattintson a lap alján található **Mentés** gombra.
 
 #### <a name="to-re-authenticate-the-device"></a>Az eszköz újbóli hitelesítése
-1. Indítsa el a StorSimple Snapshot Managert.
-2. A **Hatókör** ablaktáblán kattintson az **Eszközök gombra.** A konfigurált eszközök listája megjelenik az **Eredmények** ablaktáblán.
-3. Jelölje ki az eszközt, kattintson a jobb gombbal, majd kattintson a **Hitelesítés parancsra.**
-4. A **Hitelesítés** ablakban adja meg az új jelszót.
-5. Jelölje ki az eszközt, kattintson a jobb gombbal, és válassza **az Eszköz frissítése parancsot.** Ez szinkronizálja az eszközt a StorSimple Snapshot Manager rel.
+1. Indítsa el a StorSimple Snapshot Manager.
+2. A **hatókör** ablaktáblán kattintson az **eszközök**elemre. A konfigurált eszközök listája megjelenik az **eredmények** ablaktábláján.
+3. Válassza ki az eszközt, kattintson a jobb gombbal, majd kattintson a **hitelesítés**elemre.
+4. A **hitelesítés** ablakban adja meg az új jelszót.
+5. Válassza ki az eszközt, kattintson a jobb gombbal, majd válassza az **eszköz frissítése**lehetőséget. Ezzel szinkronizálja az eszközt a StorSimple Snapshot Manager.
 
-## <a name="replace-a-failed-device"></a>Meghibásodott eszköz cseréje
-Ha egy StorSimple-eszköz meghibásodik, és egy készenléti (feladatátvételi) eszköz váltja fel, az alábbi lépésekkel csatlakozhat az új eszközhöz, és megtekintheti a kapcsolódó biztonsági másolatokat.
+## <a name="replace-a-failed-device"></a>Sikertelen eszköz cseréje
+Ha egy StorSimple-eszköz meghibásodik, és egy készenléti (feladatátvételi) eszköz váltja fel, akkor a következő lépésekkel csatlakozhat az új eszközhöz, és megtekintheti a kapcsolódó biztonsági másolatokat.
 
-#### <a name="to-connect-to-a-new-device-after-failover"></a>Csatlakozás új eszközhöz feladatátvétel után
-1. Konfigurálja újra az iSCSI-kapcsolatot az új eszközhöz. Az utasításokért válassza a ["7.](storsimple-8000-deployment-walkthrough-u2.md)
+#### <a name="to-connect-to-a-new-device-after-failover"></a>Kapcsolódás új eszközhöz a feladatátvétel után
+1. Konfigurálja újra az iSCSI-kapcsolatokat az új eszközzel. Útmutatásért keresse fel a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md)című témakör 7. lépés: kötet csatlakoztatása, inicializálása és formázása című szakaszát.
 
 > [!NOTE]
-> Ha az új StorSimple-eszköz ugyanazt az IP-címet, mint a régi, előfordulhat, hogy képes csatlakozni a régi konfigurációt.
+> Ha az új StorSimple-eszköz ugyanazzal az IP-címmel rendelkezik, mint a régi, akkor lehet, hogy csatlakozni tud a régi konfigurációhoz.
 
 
-1. A Microsoft StorSimple felügyeleti szolgáltatás leállítása:
+1. Állítsa le a Microsoft StorSimple-kezelő szolgáltatást:
    
    1. Indítsa el a Kiszolgálókezelőt.
-   2. A Kiszolgálókezelő irányítópultjának **Eszközök** menüjében válassza a **Szolgáltatások parancslehetőséget.**
-   3. A **Szolgáltatások** ablakban válassza a **Microsoft StorSimple Management Service lehetőséget.**
-   4. A jobb oldali ablaktáblában, a **Microsoft StorSimple Management Service csoportban**kattintson **a Szolgáltatás leállítása**elemre.
-2. Távolítsa el a régi eszközhöz kapcsolódó konfigurációs információkat:
+   2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
+   3. A **szolgáltatások** ablakban válassza ki a **Microsoft StorSimple-kezelő szolgáltatást**.
+   4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás leállítása**elemre.
+2. Távolítsa el a régi eszközhöz kapcsolódó konfigurációs adatokat:
    
-   1. A Fájlkezelőben keresse meg a C:\ProgramData\Microsoft\StorSimple\BACatalog mappát.
-   2. Törölje a BACatalog mappában lévő fájlokat.
-3. Indítsa újra a Microsoft StorSimple felügyeleti szolgáltatást:
+   1. A Fájlkezelőben keresse meg a C:\ProgramData\Microsoft\StorSimple\BACatalog.
+   2. Törölje a fájlokat a BACatalog mappában.
+3. Indítsa újra a Microsoft StorSimple-kezelő szolgáltatást:
    
-   1. A Kiszolgálókezelő irányítópultjának **Eszközök** menüjében válassza a **Szolgáltatások parancslehetőséget.**
-   2. A **Szolgáltatások** ablakban válassza a **Microsoft StorSimple Management Service lehetőséget.**
-   3. A jobb oldali ablaktáblában, a **Microsoft StorSimple Management Service csoportban**kattintson **a Szolgáltatás újraindítása**elemre.
-4. Indítsa el a StorSimple Snapshot Managert.
-5. Az új StorSimple-eszköz konfigurálásához hajtsa végre a [2.](storsimple-snapshot-manager-deployment.md)
-6. Kattintson a jobb gombbal a felső szintű csomópontra a **Hatókör** ablaktáblában (a példában a StorSimple Snapshot Manager), majd kattintson az **Importálásmegjelenítése váltása parancsra.** 
-7. Egy üzenet jelenik meg, ha az importált kötetcsoportok és biztonsági mentések láthatók a StorSimple Snapshot Manager ben. Kattintson az **OK** gombra.
+   1. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
+   2. A **szolgáltatások** ablakban válassza ki a **Microsoft StorSimple-kezelő szolgáltatást**.
+   3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás újraindítása**elemre.
+4. Indítsa el a StorSimple Snapshot Manager.
+5. Az új StorSimple-eszköz konfigurálásához végezze el a 2. lépés: StorSimple-eszköz csatlakoztatása a [StorSimple üzembe helyezése Snapshot Manager](storsimple-snapshot-manager-deployment.md)című szakasz lépéseit.
+6. A **hatókör** ablaktáblán kattintson a jobb gombbal a legfelső szintű csomópontra (a példában a StorSimple Snapshot Manager), majd kattintson az **importálások megjelenítése**elemre. 
+7. Üzenet jelenik meg, amikor az importált kötetek és a biztonsági másolatok láthatók a StorSimple Snapshot Manager. Kattintson az **OK** gombra.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [kezelheti a StorSimple snapshot kezelőt a StorSimple megoldás felügyeletéhez.](storsimple-snapshot-manager-admin.md)
-* Ismerje meg, hogyan tekintheti meg [és kezelheti a köteteket a StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-volumes.md)segítségével.
+* Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
+* Megtudhatja, hogyan [használhatja a StorSimple Snapshot Manager a kötetek megtekintésére és kezelésére](storsimple-snapshot-manager-manage-volumes.md).
 
